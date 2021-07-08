@@ -549,4 +549,41 @@ Use SPDX- proprietary prefix until this license is accepted upstream by spdx.org
   Define byteswap() functions before use (bsc#1181523). (forwarded request 867729 from eeich)</comment>
     <requestid>867730</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>16b4844b407379beffdd1917f44a55f4</srcmd5>
+    <version>4.8.0</version>
+    <time>1625777348</time>
+    <user>dimstar_suse</user>
+    <comment>- Gcc11 has raised the bar on strict aliasing requirements even
+  further. This has given rise to seemingly senseless warnings
+  like:
+  ncx.c: In function 'ncx_putn_float_double':
+  ncx.c:272:20: warning: 'xx' may be used uninitialized [-Wmaybe-uninitialized]
+      272 |     uint32_t tmp = *(uint32_t*)src;
+          |                    ^~~~~~~~~~~~~~~
+	  ncx.c:3562:14: note: 'xx' was declared here
+     3562 |     ix_float xx = NC_FILL_FLOAT;
+          |              ^~
+  but what is worse, data in netcdf files is missing. Luckily, this
+  was caught by the test suite.
+  These warnings and further type punning warnings should be fixed
+  eventually. However, for now, lets cry defeat, disable strict
+  aliasing and get netcdf back working again.
+
+- Add build support for gcc11 to HPC build.
+- Update to version 4.7.4.
+  * Enhancements:
+    - Bump the NC_DISPATCH_VERSION from 2 to 3
+    - Better cross platform path name management. This converts paths for
+      various platforms (e.g. Windows, MSYS, etc.) so that they are in
+      the proper format for the executing platform. See Github #1958.
+    - Add support for storing NCZarr data in zip files. See Github #1908.
+    - Optimizations to NCZarr, cleanup of code cruft, NCZarr test cases,
+      performance test to NCZarr. See Github #1942.
+    - Provide .rc fields for S3 authentication: HTTP.S3.ACCESSID and
+      HTTP.S3.SECRETKEY.
+    - Give the client control over what parts of a DAP2 URL are URL
+      encoded (i.e. xx). This is to support the different decoding</comment>
+    <requestid>904626</requestid>
+  </revision>
 </revisionlist>

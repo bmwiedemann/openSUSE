@@ -20,10 +20,10 @@
 
 %define _do_check 1
 
-%define ver 4.7.4
-%define _ver 4_7_4
+%define ver 4.8.0
+%define _ver 4_8_0
 %define pname netcdf
-%define sonum   18
+%define sonum   19
 
 %if 0%{?sle_version} >= 150200
 %define DisOMPI1 ExclusiveArch:  do_not_build
@@ -332,6 +332,56 @@ ExcludeArch:    s390
 %define mpi_flavor mpich
 %bcond_without hpc
 %endif
+#
+%if "%{flavor}" == "gnu11-openmpi-hpc"
+%{?DisOMPI1}
+%global compiler_family gnu
+%define c_f_ver 11
+%define mpi_flavor openmpi
+%define mpi_ver 1
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu11-openmpi2-hpc"
+%{?DisOMPI2}
+%global compiler_family gnu
+%define c_f_ver 11
+%define mpi_flavor openmpi
+%define mpi_ver 2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu11-openmpi3-hpc"
+%{?DisOMPI3}
+%global compiler_family gnu
+%define c_f_ver 11
+%define mpi_flavor openmpi
+%define mpi_ver 3
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu11-openmpi4-hpc"
+%{?DisOMPI4}
+%global compiler_family gnu
+%define c_f_ver 11
+%define mpi_flavor openmpi
+%define mpi_ver 4
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu11-mvapich2-hpc"
+%global compiler_family gnu
+%define c_f_ver 11
+%define mpi_flavor mvapich2
+%bcond_without hpc
+%endif
+
+%if "%{flavor}" == "gnu11-mpich-hpc"
+%global compiler_family gnu
+%define c_f_ver 11
+%define mpi_flavor mpich
+%bcond_without hpc
+%endif
 
 %if "%{flavor}" == "mvapich2"
 %define mpi_flavor mvapich2
@@ -419,9 +469,6 @@ Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         ftp://ftp.unidata.ucar.edu/pub/%{pname}/%{pname}-c-%{version}.tar.gz
 Source1:        nc-config.1.gz
-Patch0:         Fix-logging-argument.patch
-Patch1:         get_filter_info-get-correct-number-of-filter-elements.patch
-Patch2:         Define-byteswap-functions-before-use.patch
 BuildRequires:  gawk
 BuildRequires:  libtool
 BuildRequires:  m4
@@ -598,6 +645,9 @@ export FC=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpif90
 export CXX=%{!?with_hpc:/usr/%_lib/mpi/gcc/%{mpi_flavor}%{?mpi_ext}/bin/}mpic++
 %endif
 autoreconf -fv
+%if %{gcc_version} >= 11
+%global optflags %optflags -fno-strict-aliasing
+%endif
 export CFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 export CXXFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"
 export FCFLAGS="%{optflags} %{?with_hpc:-L$HDF5_LIB -I$HDF5_INC}"

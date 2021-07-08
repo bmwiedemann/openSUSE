@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Jul  6 11:54:21 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Gcc11 has raised the bar on strict aliasing requirements even
+  further. This has given rise to seemingly senseless warnings
+  like:
+  ncx.c: In function 'ncx_putn_float_double':
+  ncx.c:272:20: warning: 'xx' may be used uninitialized [-Wmaybe-uninitialized]
+      272 |     uint32_t tmp = *(uint32_t*)src;
+          |                    ^~~~~~~~~~~~~~~
+	  ncx.c:3562:14: note: 'xx' was declared here
+     3562 |     ix_float xx = NC_FILL_FLOAT;
+          |              ^~
+  but what is worse, data in netcdf files is missing. Luckily, this
+  was caught by the test suite.
+  These warnings and further type punning warnings should be fixed
+  eventually. However, for now, lets cry defeat, disable strict
+  aliasing and get netcdf back working again.
+
+-------------------------------------------------------------------
+Sun Jul  4 06:50:29 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add build support for gcc11 to HPC build.
+- Update to version 4.7.4.
+  * Enhancements:
+    - Bump the NC_DISPATCH_VERSION from 2 to 3
+    - Better cross platform path name management. This converts paths for
+      various platforms (e.g. Windows, MSYS, etc.) so that they are in
+      the proper format for the executing platform. See Github #1958.
+    - Add support for storing NCZarr data in zip files. See Github #1908.
+    - Optimizations to NCZarr, cleanup of code cruft, NCZarr test cases,
+      performance test to NCZarr. See Github #1942.
+    - Provide .rc fields for S3 authentication: HTTP.S3.ACCESSID and
+      HTTP.S3.SECRETKEY.
+    - Give the client control over what parts of a DAP2 URL are URL
+      encoded (i.e. xx). This is to support the different decoding
+	 rules that servers apply to incoming URLS. See Github #1884 for
+	 more information.
+    - Added new parallel I/O benchmark program to mimic NOAA UFS data
+      writes. See [https://github.com/Unidata/netcdf-c/pull/1777].
+    - Add support for cloud storage using a variant of the Zarr storage
+      format. Warning: this feature is highly experimental and is subject
+	 to rapid evolution
+      [https://www.unidata.ucar.edu/blogs/developer/en/entry/overview-of-zarr-support-in].
+    - When a filter is applied twice with different parameters, the
+      second set is used for writing the dataset
+      [https://github.com/Unidata/netcdf-c/issues/1713].
+  * Bug Fixes:
+    - The nccopy program was treating -d0 as turning deflation on rather
+      than interpreting it as "turn off deflation". See Github #1944.
+    - Make fillmismatch the default for DAP2 and DAP4; too many servers
+      ignore this requirement.
+    - Fix some memory leaks in NCZarr, fix a bug with long strides in
+      NCZarr. See Github #1913.
+    - Implement a better chunk cache system for NCZarr. The cache now
+      uses extendible hashing plus a linked list for provide a combination
+	 of expandibility, fast access, and LRU behavior. See Github #1887.
+    - Fix incorrect time offsets from ncdump -t, in some cases when the
+      time units attribute contains both a non-zero time-of-day, and a
+      time zone suffix containing the letter "T", such as "UTC". See
+      Github #1866.
+    - Cleanup the NCZarr S3 build options. See Github #1869.
+    - Support aligned access for selected ARM processors. See Github #1871.
+    - Revert the internal filter code to simplify it. From the user's
+      point of view, the only visible change should be that (1) the
+      functions that convert text to filter specs have had their signature
+      reverted and renamed and have been moved to netcdf_aux.h, and (2)
+      Some filter API functions now return NC_ENOFILTER when inquiry is
+      made about some filter. Internally, the dispatch table has been
+      modified to get rid of the complex structures.
+    - If the HDF5 byte-range Virtual File Driver is available) HDf5 1.10.6
+      or later) then use it because it has better performance than the one
+      currently built into the netcdf library.
+    - Fixed byte-range support with cURL > 7.69. See
+      https://github.com/Unidata/netcdf-c/pull/1798.
+    - Added new test for using compression with parallel I/O:
+      nc_test4/tst_h_par_compress.c. See
+      [https://github.com/Unidata/netcdf-c/pull/1784].
+    - Don't return error for extra calls to nc_redef() for netCDF/HDF5
+      files, unless classic model is in use. See
+      [https://github.com/Unidata/netcdf-c/issues/1779].
+    - Now allow szip to be used on variables with unlimited
+      dimension [https://github.com/Unidata/netcdf-c/issues/1774].
+    - Fix nccopy to properly set default chunking parameters when
+      not otherwise specified. This can significantly improve performance
+      in selected cases. Note that if seeing slow performance with nccopy,
+      then, as a work-around, specifically set the chunking parameters.
+      [https://github.com/Unidata/netcdf-c/issues/1763].
+    - Fix some protocol bugs/differences between the netcdf-c library and
+      the OPeNDAP Hyrax server. Also cleanup checksum handling
+      [https://github.com/Unidata/netcdf-c/issues/1712].*
+    - IMPORTANT: Ncgen was not properly handling large data sections.
+      The problem manifests as incorrect ordering of data in the created
+      file. Aside from examining the file with ncdump, the error can be
+      detected by running ncgen with the -lc flag (to produce a C file).
+      Examine the file to see if any variable is written in pieces as
+      opposed to a single call to nc_put_vara. If multiple calls to
+      nc_put_vara are used to write a variable, then it is probable
+      that the data order is incorrect. Such multiple writes can occur
+      for large variables and especially when one of the dimensions is
+      unlimited.
+    - Add necessary __declspec declarations to allow compilation
+      of netcdf library without causing errors or (_declspec related)
+      warnings
+      [https://github.com/Unidata/netcdf-c/issues/1725].
+    - Now larger cache settings are used for sequential HDF5 file
+      creates/opens on parallel I/O capable builds; see Github #1716.
+    - Add functions to libdispatch/dnotnc4.c to support dispatch
+      table operations that should work for any dispatch table, even
+	 if they do not do anything; functions such as nc_inq_var_filter
+      [https://github.com/Unidata/netcdf-c/issues/1693].
+    - Fixed a scalar annotation error when scalar == 0; see Github #1707.
+    - Use proper CURLOPT values for VERIFYHOST and VERIFYPEER; the
+      semantics for VERIFYHOST in particular changed. Documented in
+      NUG/DAP2.md.
+      See [https://github.com/Unidata/netcdf-c/issues/1684].
+    - [cmake] Correct an issue with parallel filter test logic in
+      CMake-based builds.
+    - Now allow nc_inq_var_deflate()/nc_inq_var_szip() to be called for
+      all formats, not just HDF5. Non-HDF5 files return NC_NOERR and
+      report no compression in use. This reverts behavior that was changed
+      in the 4.7.4 release.
+      See [https://github.com/Unidata/netcdf-c/issues/1691].
+    - Compiling on a big-endian machine exposes some missing forward
+      delcarations in dfilter.c.
+  * Documentation:
+    - Migrated the documents in the NUG/ directory to the dedicated NUG
+      repository found at https://github.com/Unidata/netcdf
+  * Remove obsolete:
+    Define-byteswap-functions-before-use.patch
+    Fix-logging-argument.patch
+    get_filter_info-get-correct-number-of-filter-elements.patch
+
+-------------------------------------------------------------------
 Fri Jan 29 14:21:02 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Define-byteswap-functions-before-use.patch:
