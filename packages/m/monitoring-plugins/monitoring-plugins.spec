@@ -1132,7 +1132,7 @@ find -type f -exec chmod 644 {} +
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -DLDAP_DEPRECATED"
-gettextize -f
+gettextize -f --no-changelog
 autoreconf -fi
 chmod a+x NP-VERSION-GEN
 chmod +x configure # needed as configure script is not executable in 1.5..
