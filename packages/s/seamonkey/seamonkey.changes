@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jul 07 13:50:05 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.8
+  * Serious performance improvements and bug fixes tracked in bug
+    1633339 and bug 1711050.
+  * Language attributes with country codes not recognized when
+    building the Website Navigation Bar link toolbar bug 134436 and
+    bug 1709443.
+  * Optimize SeaMonkey icons for speed and optional higher quality for
+    branding bug 1362210 and bug 1699322.
+  * Support from= option when opening email compose window from the
+    command line bug 1628671.
+  * Update subject handling and GenericSendMessage function in compose
+    window bug 1693994.
+  * All message windows should update when view preferences are
+    changed bug 1694765.
+  * Improve marking of multiple messages as read / unread bug 1700530.
+  * Show version numbers again in the add-on manager by the partial
+    backout of bug 1161183.
+  * Update available networks in chatZilla (including adding
+    libera.chat)bug 1704392 and bug 1712505.
+  * Change default port for IRC via TLS/SSL to 6697 bug 1704280.
+  * Remove chatZilla and Lightning extension language packs and
+    incorpate localisations within the main language pack bug 1604663.
+  * Fix address drag and drop handling in compose window bug 1712002
+    and bug 1712227.
+  * Further fixes for legacy generators and the deprecated for each
+    statement in add-ons and the Add-on SDK bug 1702903.
+  * For developers, fork DOMi repo into main SeaMonkey one which means
+    no need to separately checkout the extension bug 1700003.
+  * SeaMonkey 2.53.8 uses the same backend as Firefox and contains the
+    relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.8 shares most parts of the mail and news code with
+    Thunderbird. Please read the Thunderbird 60.0 release notes for
+    specific changes and security fixes in this release.
+  * Additional important security fixes up to Current Firefox 78.11
+    ESR and a few enhancements have been backported. We will continue
+    to enhance SeaMonkey security in subsequent 2.53.x beta and
+    release versions as fast as we are able to.
+- removed obsolete seamonkey-websocketloop.patch and
+  seamonkey-rustc-bootstrap.patch (now integrated upstream)
+
+-------------------------------------------------------------------
 Tue May 18 07:04:59 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - add patch seamonkey-rustc-bootstrap.patch adapted from

@@ -65,9 +65,9 @@ BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.7.1
+Version:        2.53.8
 Release:        0
-%define releasedate 20210415000000
+%define releasedate 20210630000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers
@@ -86,8 +86,6 @@ Patch2:         mozilla-language.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         seamonkey-lto.patch
 Patch5:         seamonkey-man-page.patch
-Patch6:         seamonkey-websocketloop.patch
-Patch7:         seamonkey-rustc-bootstrap.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -220,8 +218,6 @@ cp %{SOURCE12} GNUmakefile
 %patch3 -p2
 %patch4 -p2
 %patch5 -p0
-%patch6 -p1
-%patch7 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
@@ -414,7 +410,6 @@ rm -rf %{_tmppath}/translations.*
 %{progdir}/extensions/modern@themes.mozilla.org.xpi
 %{progdir}/extensions/{972ce4c6-7e08-4474-a285-3208198ce6fd}.xpi
 %{progdir}/extensions/{e2fda1a4-762b-4020-b5ad-a41df1933103}.xpi
-%{progdir}/pingsender
 %{progdir}/fonts/
 %{progdir}/isp/
 %{progdir}/application.ini
