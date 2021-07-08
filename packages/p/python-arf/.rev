@@ -35,4 +35,13 @@
     <comment></comment>
     <requestid>884574</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>feeb84c5f655346a0ee96ee6025c5991</srcmd5>
+    <version>2.6.1</version>
+    <time>1625777352</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing test test01_creation_iter (gh#melizalab/arf#8).
+</comment>
+    <requestid>904652</requestid>
+  </revision>
 </revisionlist>

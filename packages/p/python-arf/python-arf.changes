@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  7 22:20:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing test test01_creation_iter (gh#melizalab/arf#8).
+
+-------------------------------------------------------------------
 Fri Apr  9 20:46:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.6.1

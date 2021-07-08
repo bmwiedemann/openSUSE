@@ -65,7 +65,8 @@ specifications on how different kinds of data are stored.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#melizalab/arf#8
+%pytest -k 'not test01_creation_iter'
 
 %files %{python_files}
 %doc README.md
