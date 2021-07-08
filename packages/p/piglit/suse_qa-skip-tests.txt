@@ -194,3 +194,4 @@ spec@glsl-4.00@execution@inout@vs-out-fs-in-s2@2-vec3-dmat2x2
 spec@glsl-4.00@execution@inout@vs-out-fs-in-s2@2@2-float-double
 spec@glsl-4.00@execution@inout@vs-out-fs-in-s2@2@2-vec3-double
 spec@glsl-4.00@execution@inout@vs-out-fs-in-s2@3-dvec2-float
+spec@arb_arrays_of_arrays@execution@sampler@vs-struct-nonconst-non-opaque-members

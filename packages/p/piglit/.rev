@@ -198,4 +198,12 @@
   * util: expose read_pixels_float/compare_pixels_float</comment>
     <requestid>895688</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>a7c60b245893d785c98163da21d00512</srcmd5>
+    <version>1~20210326.6a4be9e99</version>
+    <time>1625777355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904705</requestid>
+  </revision>
 </revisionlist>

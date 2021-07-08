@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  7 12:16:31 UTC 2021 - Jozef Pupava <jpupava@suse.com>
+
+- Update suse_qa-skip-tests.txt with tests crashing on 15 SP3
+  * arb_arrays_of_arrays/execution/sampler/vs-struct-nonconst-non-opaque-members
+
+-------------------------------------------------------------------
 Thu May 27 08:33:43 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1~20210326.6a4be9e99:
