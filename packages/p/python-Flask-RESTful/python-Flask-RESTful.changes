@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 17 20:45:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.9:
+  * Werkzeug 1.x compatibility
+  * remove unused deps
+  * Flask 2.x compatibiliy 
+
+-------------------------------------------------------------------
 Sat Feb  8 20:59:41 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:
