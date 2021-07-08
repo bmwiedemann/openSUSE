@@ -16,14 +16,12 @@
 #
 
 
-# Enable CAFFE
-%bcond_without armnn_caffe
+# Disable CAFFE and Tensorflow since it has been dropped in latest armnn
+%bcond_with armnn_caffe
+%bcond_with armnn_tf
 
 # Disable ONNX due to https://github.com/ARM-software/armnn/issues/292
 %bcond_with armnn_onnx
-
-# Enable Tensorflow
-%bcond_without armnn_tf
 
 # Enable TensorFlowLite
 %bcond_without armnn_tflite
@@ -46,9 +44,6 @@ BuildRequires:  libboost_system-devel
 %endif
 # Examples are useful only with the data
 Requires:       arm-ml-examples-data
-%if %{without armnn_caffe} && %{without armnn_tf}
-ExclusiveArch:  
-%endif
 ExcludeArch:    %ix86
 
 %description
@@ -116,9 +111,11 @@ pushd armnn-mnist
 %endif
 popd
 
+%if %{with armnn_caffe} || %{with armnn_tf}
 %files
 %defattr(-,root,root)
 %{_bindir}/*
+%endif
 
 %files data
 %dir %{_datadir}/armnn-mnist
