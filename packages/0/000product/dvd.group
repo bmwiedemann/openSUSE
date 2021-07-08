@@ -235,7 +235,7 @@
     <package name="btrfsprogs-udev-rules" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="bubblewrap" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:grub2-systemd-sleep-plugin -->
     <package name="busybox-findutils" supportstatus="unsupported"/> <!-- reason: dvd:arabic-fonts -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
