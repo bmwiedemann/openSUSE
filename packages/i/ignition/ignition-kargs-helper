@@ -1,0 +1,79 @@
+#!/bin/bash
+# Based on Ignition's examples/ignition-kargs-helper
+
+set -euxo pipefail
+
+grubcfg="/sysroot/etc/default/grub"
+
+# Mount root file system. Note that we mount /boot but we don't unmount it
+# because we are run in a systemd unit with MountFlags=slave so it is unmounted
+# for us.
+. /dracut-state.sh
+mount "${root#block:}" "${NEWROOT}"
+# Also mount x-initrd.mount flagged mounts to get the current /etc state
+awk '$4 ~ /x-initrd.mount/ { system("findmnt /sysroot" $2 " >/dev/null || mount -t " $3 " -o " $4 " " $1 " /sysroot" $2) }' /sysroot/etc/fstab
+
+orig_kernelopts="$(grep GRUB_CMDLINE_LINUX_DEFAULT "${grubcfg}")"
+orig_kernelopts="${orig_kernelopts#*=}"
+# trim the leading and trailing quote
+orig_kernelopts="${orig_kernelopts:1:-1}"
+
+# add leading and trailing whitespace to allow for easy sed replacements
+kernelopts=" $orig_kernelopts "
+
+while [[ $# -gt 0 ]]
+do
+    key="$1"
+
+    case $key in
+    --should-exist)
+        arg="$2"
+        # don't repeat the arg
+        if [[ ! "${kernelopts[*]}" =~ " ${arg} " ]]; then
+            kernelopts="$kernelopts$arg "
+        fi
+        shift 2
+        ;;
+    --should-not-exist)
+        kernelopts="$(echo "$kernelopts" | sed "s| $2 | |g")"
+        shift 2
+        ;;
+    *)
+        echo "Unknown option"
+        exit 1
+        ;;
+    esac
+done
+
+# trim the leading and trailing whitespace
+kernelopts="$(echo "$kernelopts" | sed -e 's,^[[:space:]]*,,' -e 's,[[:space:]]*$,,')"
+
+# only apply the changes & reboot if changes have been made
+if [[ "$kernelopts" != "$orig_kernelopts" ]]; then
+    combustiondir="/run/combustion/mount/combustion"
+    # The Combustion script may be located on an external device; if so the
+    # device is guaranteed to mounted here already:
+    #   combustion-prepare: Before=dracutinitqueue.service
+    #   ignition-fetch: After=basic.target
+    # Unmount the device, as the new Combustion script will be put at the
+    # same location below.
+    if findmnt "${combustiondir}"/.. >/dev/null; then
+        umount "${combustiondir}"/..
+    fi
+    mkdir -p "${combustiondir}"
+    # escape escapes to survive the multiple shell invocations
+    kernelopts="${kernelopts//\\/\\\\\\\\}"
+    kernelopts="${kernelopts//$/\\\$}"
+    cat << EOF > "${combustiondir}/script"
+sed -i "s|^\(GRUB_CMDLINE_LINUX_DEFAULT=\).*|\1\"$kernelopts\"|" /etc/default/grub
+/usr/sbin/grub2-mkconfig > /boot/grub2/grub.cfg
+EOF
+    SYSTEMD_OFFLINE=1 combustion
+
+    # Reset health-checker to prevent an unintended rollback
+    echo "Clearing GRUB flag"
+    chroot /sysroot grub2-editenv - set health_checker_flag=0 || true
+
+    reboot
+fi
+

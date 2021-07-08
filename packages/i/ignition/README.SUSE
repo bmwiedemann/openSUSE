@@ -35,3 +35,5 @@ Changes for openSUSE / SLE:
   to avoid having to boot with networking enabled even when it isn't
   necessary; the actual implementation to start the network is left to the
   distribution.
+* ignition-kargs-helper:
+  Distribution specific helper script to implement kernel argument support.

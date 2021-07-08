@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Thu Jul  8 10:47:50 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- If a Combustion device was mounted, then unmount it in
+  ignition-kargs-helper - the replacement script will be put on
+  the same location
+
+-------------------------------------------------------------------
+Wed Jul 07 16:39:04 UTC 2021 - iforster@suse.com
+
+- Update to version 2.11.0:
+  * news: add notes for 2.11.0
+  * Upgraded docs
+  * config/*: return report from previous parser when chaining
+  * config/*: re-order testcases by version
+  * tree: update for stable v3.3.0 and new v3.4.0-experimental
+  * config/v3_4_experimental: adapt for experimental
+  * config/v3_4_experimental: copy from config/v3_3
+  * config/v3_3: adapt for stabilization
+  * config/v3_3_experimental: rename to config/v3_3
+  * config/v3_3_exp: pointerify ClevisCustom Config and Pin
+  * config/v3_3_exp: pointerify Raid.Level
+  * config/v3_3_exp: pointerify LinkEmbedded1.Target
+  * stages/disks: simplify a check
+  * config/v3_1/translate: don't point to field from input struct
+  * config/v3_3_exp: drop devices from schema "required" field
+  * config/*: validate that storage.raid.devices is non-empty
+  * config/*/types: add RAID validation tests
+  * config/shared/errors: fix ErrSparesUnsupportedForLevel message
+  * config: fix comment
+  * *: formally bump Go to 1.13
+  * platform: add powervs platform
+  * internal/providers/*stack: drop dead timeout code
+  * stages/disks: improve error reporting for LUKS device reuse
+  * ignition-setup-user.service: drop Before=multipathd.service
+  * Dockerfile: build ignition-validate container using Fedora
+  * workflows: test on Go 1.16
+  * tests/*: verify deletion of block device w/o creating a FS
+  * *: allow erasing block device without creating a filesystem
+  * *: rename other projects' master branches to main
+  * *: rename master branch to main
+  * config/*: add export functions for parsing any config version < N
+  * config/*: refactor config.go's Parse() to use GetConfigVersion
+  * config/* : minor cleanup
+- Refreshed to match new Ignition spec
+  * 0002-allow-multiple-mounts-of-same-device.patch
+
+-------------------------------------------------------------------
+Wed Jul  7 16:05:49 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Implement missing ignition-kargs-helper script for kernel
+  argument support
+
+-------------------------------------------------------------------
+Mon May 31 14:57:06 UTC 2021 - rpm@fthiessen.de
+
+- Update to version 2.10.1:
+  * Breaking Changes:
+    * Rename Custom struct to ClevisCustom
+    * Embed Clevis and ClevisCustom structs in parents
+    * Always include interior nodes in merge transcript
+  * Add kernel argument support
+  * Fix fetching userdata on AWS when IMDSv1 is disabled
+  * Fix creating Tang-based LUKS volumes before network is up
+  * Document storage.filesystems.wipeFilesystem default
+  * Fix file mode of ignition-kargs-helper script
+- Fix Go dependency, 1.13+ is required
+
+-------------------------------------------------------------------
 Wed Mar 31 16:03:16 UTC 2021 - hello@anthonyrabbito.com
 
 - Update to version 2.9.0:

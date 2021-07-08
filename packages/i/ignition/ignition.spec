@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.9.0
+Version:        2.11.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -34,6 +34,7 @@ Source7:        README.SUSE
 Source8:        ignition-setup-user-suse.sh
 Source9:        ignition-enable-network.service
 Source10:       ignition-enable-network.sh
+Source11:       ignition-kargs-helper
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
@@ -41,7 +42,7 @@ BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
-BuildRequires:  golang(API) >= 1.12
+BuildRequires:  golang(API) >= 1.13
 Requires:       %{name}-dracut-grub2
 Requires:       dracut
 Recommends:     %{_sbindir}/groupadd
@@ -85,7 +86,7 @@ which creates firstboot_happened after the first boot.
 %patch2 -p1
 
 mkdir dracut/30ignition-microos grub systemd_suse
-chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8}
+chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE11}
 cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
 cp %{SOURCE21} dracut/30ignition-microos/ignition-userconfig-timeout.conf
@@ -95,6 +96,7 @@ cp %{SOURCE20} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd_suse/
 cp %{SOURCE7} .
+cp %{SOURCE11} dracut/30ignition/ignition-kargs-helper.sh
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
