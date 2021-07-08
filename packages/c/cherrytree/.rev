@@ -1355,4 +1355,12 @@
   * Translation updates. (forwarded request 894821 from malcolmlewis)</comment>
     <requestid>895972</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>0b43bc08547d593aac5a985b48b84cf5</srcmd5>
+    <version>0.99.38+7</version>
+    <time>1625777363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904856</requestid>
+  </revision>
 </revisionlist>

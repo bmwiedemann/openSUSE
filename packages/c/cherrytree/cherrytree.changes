@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  8 10:32:02 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 0.99.38:
+  * Fix crash visiting node with a corrupted/invalid utf-8 character.
+  * Fix crash when trying to insert image from file with format not
+    supported from Glib such as .webp.
+  * Fix unwanted characters found after copy/paste.
+  * Fix status icon missing / bad rendered in tray.
+  * Fixed tree node visibility issue when starting minimised
+    on system tray.
+  * Fix link markdown paste broken link.
+  * Fix issues with spell check enabled and no languages available.
+  * Improved web link recognition.
+
+-------------------------------------------------------------------
 Fri May 21 13:28:05 UTC 2021 - malcolmlewis@opensuse.org
 
 - Update to version 0.99.37:
