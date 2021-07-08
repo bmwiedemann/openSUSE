@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  7 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream version (2.5.0)
+  * display all themes in system theme menu
+  * display hour in status bar on startup, on theme reload,
+    on theme change
+  * add new toolbar button (minus icon) to switch text direction
+  * add new dialog with many scales
+
+-------------------------------------------------------------------
 Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream version (2.4.0)
@@ -14,4 +24,4 @@ Thu Apr  8 20:24:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Tue Apr  6 13:56:04 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
-- Initial opensuse package release 
+- Initial openSUSE package release 
