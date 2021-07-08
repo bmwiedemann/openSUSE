@@ -51,4 +51,12 @@ This is a maintained fork of python-Flask-Security</comment>
     <comment></comment>
     <requestid>819755</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d11d7e2db6849ff7b044a55ea59e370d</srcmd5>
+    <version>3.4.5</version>
+    <time>1625777356</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>904704</requestid>
+  </revision>
 </revisionlist>

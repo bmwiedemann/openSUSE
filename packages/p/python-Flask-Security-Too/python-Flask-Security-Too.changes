@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Jun 15 16:37:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.4.5
+  * Security Vulnerability Fix. Two CSRF vulnerabilities were
+    reported: qrcode and login. This release fixes the more severe
+    of the 2 - the /login vulnerability. The QRcode issue has a
+    much smaller risk profile since a) it is only for two-factor
+    authentication using an authenticator app b) the qrcode is only
+    available during the time the user is first setting up their
+    authentication app. The QRcode issue has been fixed in 4.0.
+  * Fixed
+    - GET on /login and /change could return the callers
+      authentication_token. This is a security concern since GETs
+      don't have CSRF protection. This bug was introduced in 3.3.0.
+  * Backwards Compatibility Concerns. Fix CSRF vulnerability on
+    /login and /change that could return the callers authentication
+    token. Now, callers can only get the authentication token on
+    successful POST calls.
+
+- Update to 3.4.4
+  * Fix 3 regressions and a couple other bugs
+  * Fixed
+    - Basic Auth broken. When the unauthenticated handler was
+      changed to provide a more uniform/consistent response - it
+      broke using Basic Auth from a browser, since it always
+      redirected rather than returning 401. Now, if the response
+      headers contain WWW-Authenticate (which is set if basic
+      @auth_required method is used), a 401 is returned. See below
+      for backwards compatibility concerns.
+    - As part of figuring out issue 359 - a redirect loop was
+      found. In release 3.3.0 code was put in to redirect to
+      :py:data:`SECURITY_POST_LOGIN_VIEW` when GET or POST was
+      called and the caller was already authenticated. The method
+      used would honor the request next query parameter. This could
+      cause redirect loops. The pre-3.3.0 behavior of redirecting
+      to :py:data:`SECURITY_POST_LOGIN_VIEW` and ignoring the next
+      parameter has been restored.
+    - Fix peewee. Turns out - due to lack of unit tests - peewee
+      hasn't worked since 'permissions' were added in 3.3.
+      Furthermore, changes in 3.4 around get_id and alternative
+      tokens also didn't work since peewee defines its own get_id
+      method.
+  * Compatibility Concerns. In 3.3.0, flask_security.auth_required
+    was changed to add a default argument if none was given. The
+    default include all current methods - session, token, and
+    basic. However basic really isn't like the others and requires
+    that we send back a WWW-Authenticate header if authentication
+    fails (and return a 401 and not redirect). basic has been
+    removed from the default set and must once again be explicitly
+    requested.
+- Rebase patch to remove another case where mongo is used:
+  * no-mongodb.patch
+- Rebase patch to fix context:
+  * fix-dependencies.patch
+- Add patch to fix failed tests (so an exception is not
+  raised if phone.data is None). Submitted upstream at
+  gh#Flask-Middleware/flask-security#495:
+  * 0001-Do-not-raise-a-TypeError-exception-if-phone.data-is-.patch
+
+-------------------------------------------------------------------
 Wed Jul  1 10:13:03 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 3.4.3

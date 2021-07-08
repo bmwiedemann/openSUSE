@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Security-Too
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Security-Too
-Version:        3.4.3
+Version:        3.4.5
 Release:        0
 Summary:        Security for Flask apps
 License:        MIT
@@ -28,6 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/F/Flask-Security-
 Patch0:         no-mongodb.patch
 Patch1:         no-setup-dependencies.patch
 Patch2:         fix-dependencies.patch
+Patch3:         0001-Do-not-raise-a-TypeError-exception-if-phone.data-is-.patch
 BuildRequires:  %{python_module Babel >= 1.3}
 BuildRequires:  %{python_module Flask >= 1.0.2}
 BuildRequires:  %{python_module Flask-BabelEx >= 0.9.3}

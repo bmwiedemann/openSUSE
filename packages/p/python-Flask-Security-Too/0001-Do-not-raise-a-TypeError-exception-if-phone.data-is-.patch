@@ -1,0 +1,50 @@
+From fc94ad58537d83b1f5500876da4a3026654645ba Mon Sep 17 00:00:00 2001
+From: Antonio Larrosa <antonio.larrosa@gmail.com>
+Date: Tue, 15 Jun 2021 19:36:50 +0200
+Subject: [PATCH] Do not raise a TypeError exception if phone.data is None
+
+Running the tests on the openSUSE build service to generate
+packages fails because a TypeError exception is raised.
+
+```
+TypeError: object of type 'NoneType' has no len()
+```
+
+This commit checks that phone.data is not None before calling
+len() in the two lines where the exception is raised.
+---
+ flask_security/forms.py | 3 ++-
+ flask_security/views.py | 3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/flask_security/forms.py b/flask_security/forms.py
+index c793a99..83665fa 100644
+--- a/flask_security/forms.py
++++ b/flask_security/forms.py
+@@ -593,7 +593,8 @@ class TwoFactorSetupForm(Form, UserEmailFormMixin):
+             self.setup.errors = list()
+             self.setup.errors.append(get_message("TWO_FACTOR_METHOD_NOT_AVAILABLE")[0])
+             return False
+-        if self.setup.data == "sms" and len(self.phone.data) > 0:
++        if (self.setup.data == "sms" and
++                self.phone.data and len(self.phone.data) > 0):
+             # Somewhat bizarre - but this isn't required the first time around
+             # when they select "sms". Then they get a field to fill out with
+             # phone number, then Submit again.
+diff --git a/flask_security/views.py b/flask_security/views.py
+index c33a016..3aaca95 100644
+--- a/flask_security/views.py
++++ b/flask_security/views.py
+@@ -751,7 +751,8 @@ def two_factor_setup():
+ 
+         session["tf_primary_method"] = pm
+         session["tf_state"] = "validating_profile"
+-        new_phone = form.phone.data if len(form.phone.data) > 0 else None
++        new_phone = form.phone.data if (form.phone.data and
++                                        len(form.phone.data) > 0) else None
+         if new_phone:
+             user.tf_phone_number = new_phone
+             _datastore.put(user)
+-- 
+2.31.1
+

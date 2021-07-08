@@ -1,8 +1,17 @@
-Index: Flask-Security-Too-3.4.0/tests/conftest.py
+Index: Flask-Security-Too-3.4.5/tests/conftest.py
 ===================================================================
---- Flask-Security-Too-3.4.0.orig/tests/conftest.py
-+++ Flask-Security-Too-3.4.0/tests/conftest.py
-@@ -617,7 +617,7 @@ def get_message(app):
+--- Flask-Security-Too-3.4.5.orig/tests/conftest.py
++++ Flask-Security-Too-3.4.5/tests/conftest.py
+@@ -607,7 +607,7 @@ def client_nc(request, sqlalchemy_app):
+     return app.test_client(use_cookies=False)
+ 
+ 
+-@pytest.fixture(params=["cl-sqlalchemy", "c2", "cl-mongo", "cl-peewee"])
++@pytest.fixture(params=["cl-sqlalchemy", "c2", "cl-peewee"])
+ def clients(request, app, tmpdir, realdburl):
+     if request.param == "cl-sqlalchemy":
+         ds = sqlalchemy_setup(request, app, tmpdir, realdburl)
+@@ -645,7 +645,7 @@ def get_message(app):
  
  
  @pytest.fixture(
