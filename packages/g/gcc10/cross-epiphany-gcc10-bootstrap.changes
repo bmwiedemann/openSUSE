@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  7 10:28:45 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-10 branch head (048117e16c77f82598fca9af5), git1893
+  * Removes cyclades header use from libsanitizer.  [boo#1188076]
+
+-------------------------------------------------------------------
 Tue Jun  1 07:31:06 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Force using llvm11 for amdgcn offloading since llvm12 doesn't

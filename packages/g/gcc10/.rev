@@ -229,4 +229,13 @@
 - Fix value of %slibdir64 for usrmerge</comment>
     <requestid>896592</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>571a825232d1304449be74f56ecf7b0a</srcmd5>
+    <version>10.3.1+git1893</version>
+    <time>1625777346</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-10 branch head (048117e16c77f82598fca9af5), git1893
+  * Removes cyclades header use from libsanitizer.  [boo#1188076]</comment>
+    <requestid>904605</requestid>
+  </revision>
 </revisionlist>
