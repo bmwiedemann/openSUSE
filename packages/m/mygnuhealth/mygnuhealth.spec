@@ -16,6 +16,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define modname MyGNUHealth
 %define majorver 1
 
@@ -23,7 +24,7 @@
 %global __requires_exclude qmlimport\\((BloodPressure|FedLogin|GHBio|GHBol|GHPsycho|Glucose|LocalAccountManager|MoodEnergy|NetworkSettings|Osat|ProfileSettings|Weight|PoL|GHLifestyle|GHPhysicalActivity|GHNutrition|GHSleep|GHAbout)
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.0
+Version:        %{majorver}.0.1
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-only
@@ -31,19 +32,20 @@ Group:          Productivity/Office/Management
 URL:            http://health.gnu.org/
 Source:         https://files.pythonhosted.org/packages/source/M/%{modname}/%{modname}-%{version}.tar.gz
 Patch0:         shebang.diff
+Patch1:         doc_path.diff
 BuildRequires:  fdupes
-BuildRequires:  python3-pyside2 >= 5.15
-BuildRequires:  python3-matplotlib
-BuildRequires:  python3-tinydb
 BuildRequires:  python3-bcrypt
+BuildRequires:  python3-matplotlib
+BuildRequires:  python3-pyside2 >= 5.15
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-tinydb
 BuildRequires:  update-desktop-files
 Requires:       kirigami2
-Requires:       python3-pyside2 >= 5.15
+Requires:       python3-bcrypt
 Requires:       python3-matplotlib
+Requires:       python3-pyside2 >= 5.15
 Requires:       python3-requests
 Requires:       python3-tinydb
-Requires:       python3-bcrypt
 
 %description
 The Personal Health Information Management System for Desktop and Mobile Devices
@@ -55,12 +57,12 @@ Group:          Productivity/Office/Management
 BuildArch:      noarch
 
 %description -n %{name}-doc
-This package includes the documentation for MyGNUHealth Personal Health 
+This package includes the documentation for MyGNUHealth Personal Health
 Information Management System for Desktop and Mobile Devices
 
 %prep
 %setup -q -n %{modname}-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python3_build
@@ -71,6 +73,9 @@ Information Management System for Desktop and Mobile Devices
 # menu-entry
 desktop-file-install --dir %{buildroot}%{_datadir}/applications org.kde.mygnuhealth.desktop
 %suse_update_desktop_file org.kde.mygnuhealth
+
+#documentation in the MyGNUHealth-doc package is sufficient
+rm -rf %{buildroot}%{_docdir}/*
 
 %python_expand %fdupes %{buildroot}%{python3_sitelib}
 

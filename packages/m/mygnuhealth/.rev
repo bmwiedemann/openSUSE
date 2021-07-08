@@ -7,4 +7,20 @@
     <comment>version 1.0</comment>
     <requestid>901770</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6308b5708ab779206328a572c09e6b6b</srcmd5>
+    <version>1.0.1</version>
+    <time>1625777364</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.1
+* Fix the download path within GNU.org. Now it points to
+  https://ftp.gnu.org/gnu/health/mygnuhealth/
+* Include Changelog file
+* Include local / offline documentation (resides on
+  /usr/share/doc/packages/mygnuhealth) 
+* doc_path.diff added
+* Clean up __pycache__ from tarball 
+</comment>
+    <requestid>905077</requestid>
+  </revision>
 </revisionlist>

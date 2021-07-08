@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  8 06:40:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.0.1
+* Fix the download path within GNU.org. Now it points to
+  https://ftp.gnu.org/gnu/health/mygnuhealth/
+* Include Changelog file
+* Include local / offline documentation (resides on
+  /usr/share/doc/packages/mygnuhealth) 
+* doc_path.diff added
+* Clean up __pycache__ from tarball 
+
+-------------------------------------------------------------------
 Thu Jun 24 15:30:33 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.0.0
