@@ -7,4 +7,12 @@
     <comment>Not sure if I do make this request or not, but this package (awf-gtk4) was not submitted to openSUSE:Factory contrary to awf-gtk2.</comment>
     <requestid>891346</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cda8ddc0f1d2b45fdb5106310d5cd0aa</srcmd5>
+    <version>2.5.0</version>
+    <time>1625777352</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904644</requestid>
+  </revision>
 </revisionlist>
