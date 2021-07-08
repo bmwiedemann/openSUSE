@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  7 16:33:33 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- build non-parallel for reproducible build results (boo#1170378)
+
+-------------------------------------------------------------------
 Wed May 12 20:56:10 UTC 2021 - Jonathan Brielmaier <jbrielmaier@opensuse.org>
 
 - Update to version 0.5.1:

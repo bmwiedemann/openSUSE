@@ -47,7 +47,8 @@ autoreconf -vif
 
 %build
 %configure
-make %{?_smp_mflags}
+# build non-parallel for reproducible build results (boo#1170378)
+make
 
 %install
 %make_install
