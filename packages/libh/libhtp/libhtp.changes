@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  4 11:53:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.38
+  * consume empty lines when parsing chunks to avoid quadratic
+    complexity.
+
+-------------------------------------------------------------------
 Wed Mar  3 20:52:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.37
