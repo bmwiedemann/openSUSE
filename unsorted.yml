@@ -1135,6 +1135,7 @@ unsorted:
   - bazel-apple-support-source 
   - bazel-compilation-database-source 
   - bazel-platforms 
+  - bazel-rules-android-source 
   - bazel-rules-apple-source 
   - bazel-rules-cc-source 
   - bazel-rules-foreign-cc-source 
@@ -1740,7 +1741,8 @@ unsorted:
   - cargo-audit: [x86_64] 
   - cargo-audit-advisory-db 
   - cargo-c 
-  - cargo-doc 
+  - cargo1.53 
+  - cargo1.53-doc: [x86_64] 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -1912,8 +1914,9 @@ unsorted:
   - cifs-utils-devel 
   - cilium: [x86_64] 
   - cilium-cni: [x86_64] 
-  - cilium-devel: [x86_64] # devel package of opensuse_kubic:cilium-k8s-yaml 
+  - cilium-devel: [x86_64] 
   - cilium-docker: [x86_64] 
+  - cilium-k8s-yaml: [x86_64] 
   - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cim-schema 
@@ -1995,7 +1998,6 @@ unsorted:
   - clipman 
   - clipped 
   - clipped-lang 
-  - clippy 
   - cliquer 
   - cliquer-devel 
   - clisp 
@@ -4105,6 +4107,7 @@ unsorted:
   - geos-devel 
   - geotiff 
   - geotiff-devel 
+  - gerbera 
   - gerbv 
   - gerbv-devel 
   - german-pos-dict 
@@ -23851,6 +23854,7 @@ unsorted:
   - python36-sphinx-tabs 
   - python36-sphinx-testing 
   - python36-sphinx-version-warning 
+  - python36-sphinx_press_theme 
   - python36-sphinx_rtd_theme 
   - python36-sphinxcontrib-actdiag 
   - python36-sphinxcontrib-apidoc 
@@ -24819,6 +24823,7 @@ unsorted:
   - python38-boltons 
   - python38-boolean.py 
   - python38-booleanOperations 
+  - python38-boost-histogram 
   - python38-boto 
   - python38-boto3 
   - python38-botocore 
@@ -26750,6 +26755,7 @@ unsorted:
   - python38-sphinx-tabs 
   - python38-sphinx-testing 
   - python38-sphinx-version-warning 
+  - python38-sphinx_press_theme 
   - python38-sphinx_rtd_theme 
   - python38-sphinxcontrib-actdiag 
   - python38-sphinxcontrib-apidoc 
@@ -27774,6 +27780,7 @@ unsorted:
   - python39-boltons 
   - python39-boolean.py 
   - python39-booleanOperations 
+  - python39-boost-histogram 
   - python39-boto 
   - python39-boto3 
   - python39-botocore 
@@ -29819,6 +29826,7 @@ unsorted:
   - python39-sphinx-tabs 
   - python39-sphinx-testing 
   - python39-sphinx-version-warning 
+  - python39-sphinx_press_theme 
   - python39-sphinx_rtd_theme 
   - python39-sphinxcontrib-actdiag 
   - python39-sphinxcontrib-apidoc 
@@ -30883,7 +30891,8 @@ unsorted:
   - rke 
   - rkhunter 
   - rkward 
-  - rls 
+  - rls: [x86_64] 
+  - rls1.53: [x86_64] 
   - rlwrap 
   - rmail 
   - rmedigicontrol 
@@ -31376,15 +31385,15 @@ unsorted:
   - rungetty 
   - ruqola 
   - rust 
-  - rust-analysis 
   - rust-cbindgen 
-  - rust-doc 
   - rust-gdb 
   - rust-packaging 
-  - rust-src 
   - rust-srpm-macros 
-  - rust-std-static 
-  - rustfmt 
+  - rust1.53 
+  - rust1.53-analysis: [x86_64] 
+  - rust1.53-doc: [x86_64] 
+  - rust1.53-gdb 
+  - rust1.53-src 
   - rustscan 
   - rxp 
   - rxtx-java 
