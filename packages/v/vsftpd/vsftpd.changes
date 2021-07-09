@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 15 07:49:13 AM UTC 2021 - Peter Simons <psimons@suse.com>
+
+- Update to version 3.0.4.
+  * Fix runtime SIGSYS crashes (seccomp sandbox policy tweaks).
+  * Reject HTTP verbs pre-login.
+  * Disable TLS prior to v1.2 by default.
+  * Close the control connection after 10 unknown commands pre-login.
+  * Reject any TLS ALPN advertisement that's not 'ftp'.
+  * Add ssl_sni_hostname option to require a match on incoming SNI hostname.
+
+- Upstream has a new GPG key (7B89011BCAE1CFEA).
+
+- "0001-Introduce-TLSv1.1-and-TLSv1.2-options.patch" is now obsolete.
+
+-------------------------------------------------------------------
 Thu Dec  3 11:20:20 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Add seccomp-fixes.patch to allow getdents64 syscall in seccomp
@@ -121,7 +136,7 @@ Thu Sep  7 12:24:26 UTC 2017 - psimons@suse.com
   log. We stumbled across this issue when vsftpd suddendly had
   build failures on i586 platforms because the script decided to
   try and link "-lnsl" even though the library was neither
-  installed nor required.  
+  installed nor required.
 
 - Drop the explicit specification of the LDFLAGS and LINK variables
   from the call to make. The value of LDFLAGS we passed is the
@@ -160,7 +175,7 @@ Mon Sep 19 11:39:04 UTC 2016 - psimons@suse.com
   where files uploaded by an anonymous user could not be chown()ed
   to the desired UID as specified in the daemon's configuration
   file. [bnc#996370]
-  
+
 -------------------------------------------------------------------
 Wed Aug 31 17:21:04 UTC 2016 - dimstar@opensuse.org
 
@@ -206,7 +221,7 @@ Mon Sep 21 11:34:46 UTC 2015 - tchvatal@suse.com
 -------------------------------------------------------------------
 Mon Sep 21 11:14:59 UTC 2015 - joop.boonen@opensuse.org
 
-- Brought back additional systemv support so it also builds for SLES 10 and 11 
+- Brought back additional systemv support so it also builds for SLES 10 and 11
 
 -------------------------------------------------------------------
 Tue Sep  8 10:57:55 UTC 2015 - tchvatal@suse.com
@@ -439,7 +454,7 @@ Tue Nov 20 09:21:17 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Mon Oct 22 13:38:57 UTC 2012 - mvyskocil@suse.com
 
-- update to 3.0.2 (bnc#786024) 
+- update to 3.0.2 (bnc#786024)
   * Fix some seccomp related build errors on certain CentOS and Debian versions.
   * Seccomp filter sandbox: missing munmap() -- oops. Did you know that qsort()
   opens and maps /proc/meminfo but only for larger item counts?
@@ -557,12 +572,12 @@ Fri Dec 23 17:48:04 UTC 2011 - andreas.stieger@gmx.de
 -------------------------------------------------------------------
 Sat Nov 26 16:31:20 UTC 2011 - crrodriguez@opensuse.org
 
-- fis copy/paste error in previous change 
+- fis copy/paste error in previous change
 
 -------------------------------------------------------------------
 Fri Nov 25 22:14:14 UTC 2011 - crrodriguez@opensuse.org
 
-- Add systemd unit 
+- Add systemd unit
 
 -------------------------------------------------------------------
 Thu Sep 22 11:17:04 UTC 2011 - mvyskocil@suse.cz
@@ -579,14 +594,14 @@ Fri Feb 25 01:37:38 UTC 2011 - crrodriguez@opensuse.org
 - Avoid consuming excessive CPU when matching filenames to patterns. Thanks to
 Maksymilian Arciemowicz <cxib@securityreason.com>.
 - Some bugfixes from Raphaël Rigo <raphael.rigo@syscall.eu> -- good bugs but
-no apparent security impact. 
+no apparent security impact.
 
 -------------------------------------------------------------------
 Tue Sep 21 16:31:39 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Update to version 2.3.2
 - Fix silly regression re: log files being overwritten from the start.
-- Rename a few file-open functions to make it clearer what they do 
+- Rename a few file-open functions to make it clearer what they do
 
 -------------------------------------------------------------------
 Tue Aug 10 04:55:16 UTC 2010 - cristian.rodriguez@opensuse.org
@@ -606,12 +621,12 @@ truncating it.
 the transmission of plaintext passwords by buggy clients.
 - Fix failure to transmit a large ASCII file over SSL, if it contains \n -> \r\n
 fixups.
- 
+
 
 -------------------------------------------------------------------
 Tue May 25 13:05:30 UTC 2010 - cristian.rodriguez@opensuse.org
 
-- $remote_fs --> network-remotefs  
+- $remote_fs --> network-remotefs
 
 -------------------------------------------------------------------
 Sun Feb 21 19:28:29 UTC 2010 - mseben@novell.com
@@ -647,7 +662,7 @@ Mon Sep 15 14:52:05 CEST 2008 - hvogel@suse.de
 -------------------------------------------------------------------
 Mon Sep  8 15:30:43 CEST 2008 - hvogel@suse.de
 
-- version 2.0.7 
+- version 2.0.7
   * Fix man page typo
   * Enhance logging for debug_ssl
   * Shutdown the SSL data connections properly
@@ -677,7 +692,7 @@ Wed Apr 30 11:58:17 CEST 2008 - hvogel@suse.de
 Tue Apr  1 16:23:57 CEST 2008 - mkoenig@suse.de
 
 - remove dir /usr/share/omc/svcinfo.d as it is provided now
-  by filesystem 
+  by filesystem
 
 -------------------------------------------------------------------
 Tue Mar 11 20:56:47 CET 2008 - crrodriguez@suse.de
@@ -715,17 +730,17 @@ data connection. Still does not seem to coax lftp to retry :(
 - Recognize OPTS pre-login.
 - A whole ton of SSL improvements, including ability to force requirement of
 a client cert; data and control channel client cert cross checking. Ability
-to require fully valid / authentic client certs. No cert-based auth yet. 
+to require fully valid / authentic client certs. No cert-based auth yet.
 
 -------------------------------------------------------------------
 Tue Mar 27 14:45:11 CEST 2007 - mskibbe@suse.de
 
-- change path to firewall script (#247352) 
+- change path to firewall script (#247352)
 
 -------------------------------------------------------------------
 Fri Mar  2 10:34:33 CET 2007 - mskibbe@suse.de
 
-- change path to firewall script (#247352) 
+- change path to firewall script (#247352)
 
 -------------------------------------------------------------------
 Wed Feb 28 08:46:47 CET 2007 - mskibbe@suse.de
@@ -747,12 +762,12 @@ Fri Jan 12 09:39:24 CET 2007 - mskibbe@suse.de
 -------------------------------------------------------------------
 Thu Jan 11 09:54:07 CET 2007 - mskibbe@suse.de
 
-- change path to xml service document (fate #301713) 
+- change path to xml service document (fate #301713)
 
 -------------------------------------------------------------------
 Mon Jan  8 10:31:52 CET 2007 - mskibbe@suse.de
 
-- fix Bug #230220 - vsftp no debuginfo 
+- fix Bug #230220 - vsftp no debuginfo
 
 -------------------------------------------------------------------
 Mon Jan  8 09:27:36 CET 2007 - mskibbe@suse.de
@@ -762,7 +777,7 @@ Mon Jan  8 09:27:36 CET 2007 - mskibbe@suse.de
 -------------------------------------------------------------------
 Wed Dec  6 12:03:32 CET 2006 - mskibbe@suse.de
 
-- add service xml document (fate #301713 ) 
+- add service xml document (fate #301713 )
 
 -------------------------------------------------------------------
 Mon Oct 23 09:42:05 CEST 2006 - mskibbe@suse.de
@@ -781,7 +796,7 @@ Fri Jul 14 10:57:58 CEST 2006 - mskibbe@suse.de
   o IE should now show the login dialog again
   o configurable login attempt limits and delays were added
   o a bad intereaction with DMAPI filesystems was fixed and chained
-    certs should now work. 
+    certs should now work.
 
 -------------------------------------------------------------------
 Fri May 26 11:50:07 CEST 2006 - schwab@suse.de
@@ -792,7 +807,7 @@ Fri May 26 11:50:07 CEST 2006 - schwab@suse.de
 Thu Apr 20 18:03:29 CEST 2006 - hvogel@suse.de
 
 - revert the rename to vsftp for the xinetd config file. chkconfig
-  knows on for init and xinetd. So this wasnt a bug but a misusage 
+  knows on for init and xinetd. So this wasnt a bug but a misusage
   of chkconfig
 
 -------------------------------------------------------------------
@@ -809,12 +824,12 @@ Wed Apr 19 11:13:47 CEST 2006 - hvogel@suse.de
 -------------------------------------------------------------------
 Thu Feb 16 12:27:53 CET 2006 - hvogel@suse.de
 
-- enable ssl for real [#151453] 
+- enable ssl for real [#151453]
 
 -------------------------------------------------------------------
 Mon Feb  6 14:31:27 CET 2006 - hvogel@suse.de
 
-- The switch to standalone should not happen in update. 
+- The switch to standalone should not happen in update.
   Installed xinetd config file again. The configuration file is
   marked as noreplace anyway so if you are updating you will
   get a xinetd.d/vsftpd.rpmnew and a vsftpd.conf.rpmnew
@@ -875,7 +890,7 @@ Mon Aug  8 14:39:16 CEST 2005 - uli@suse.de
 -------------------------------------------------------------------
 Mon Jun 27 14:09:14 CEST 2005 - ro@suse.de
 
-- use libcap 
+- use libcap
 
 -------------------------------------------------------------------
 Fri Jun 17 10:16:13 CEST 2005 - mmj@suse.de
@@ -1123,7 +1138,7 @@ Sun Feb 17 18:14:13 CET 2002 - mmj@suse.de
 -------------------------------------------------------------------
 Tue Feb 12 13:52:01 MET 2002 - mmj@suse.de
 
-- Remove Requires: ftpdir 
+- Remove Requires: ftpdir
 
 -------------------------------------------------------------------
 Mon Feb  4 18:02:20 CET 2002 - choeger@suse.de

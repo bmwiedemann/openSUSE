@@ -1,7 +1,7 @@
-Index: vsf_findlibs.sh
+Index: vsftpd-3.0.4/vsf_findlibs.sh
 ===================================================================
---- vsf_findlibs.sh.orig
-+++ vsf_findlibs.sh
+--- vsftpd-3.0.4.orig/vsf_findlibs.sh	2021-05-18 07:14:35.000000000 +0000
++++ vsftpd-3.0.4/vsf_findlibs.sh	2021-06-29 09:24:32.833223756 +0000
 @@ -14,6 +14,7 @@ fi
  # crypt library.
  if find_func pam_start sysdeputil.o; then
@@ -18,11 +18,11 @@ Index: vsf_findlibs.sh
    locate_library /usr/lib/libcrypt.so && echo "-lcrypt";
    locate_library /usr/lib64/libcrypt.so && echo "-lcrypt";
    locate_library /lib/x86_64-linux-gnu/libcrypt.so && echo "-lcrypt";
-@@ -54,6 +56,7 @@ elif locate_library /lib/libcap.so.2; th
-   echo "/lib/libcap.so.2";
- else
-   locate_library /usr/lib/libcap.so && echo "-lcap";
-+  locate_library /usr/lib64/libcap.so && echo "-lcap";
-   locate_library /lib/libcap.so && echo "-lcap";
-   locate_library /lib64/libcap.so && echo "-lcap";
- fi
+@@ -52,6 +54,7 @@ locate_library /usr/lib/libsec.sl && ech
+ # /usr/bin/ld: cannot find -lcap
+ # If the libcap-devel package isn't installed.
+ locate_library /usr/lib/libcap.so && echo "-lcap";
++locate_library /usr/lib64/libcap.so && echo "-lcap";
+ locate_library /lib/libcap.so && echo "-lcap";
+ locate_library /lib64/libcap.so && echo "-lcap";
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package vsftpd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %define use_firewalld 0
 %endif
 Name:           vsftpd
-Version:        3.0.3
+Version:        3.0.4
 Release:        0
 Summary:        Very Secure FTP Daemon - Written from Scratch
 License:        SUSE-GPL-2.0-with-openssl-exception
@@ -85,7 +85,6 @@ Patch30:        vsftpd-3.0.3-address_space_limit.patch
 Patch31:        vsftpd-enable-syscalls-needed-by-sle15.patch
 Patch32:        vsftpd-support-dsa-only-setups.patch
 Patch33:        vsftpd-avoid-bogus-ssl-write.patch
-Patch34:        0001-Introduce-TLSv1.1-and-TLSv1.2-options.patch
 Patch35:        0001-When-handling-FEAT-command-check-ssl_tlsv1_1-and-ssl.patch
 # PATCH-FIX-UPSTREAM https://bugzilla.suse.com/show_bug.cgi?id=1179553
 Patch36:        seccomp-fixes.patch
@@ -123,7 +122,7 @@ tests.
 
 %prep
 %setup -q
-%patch1
+%patch1 -p1
 %patch3 -p1
 %patch4
 %patch5
@@ -154,7 +153,6 @@ tests.
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
-%patch34 -p1
 %patch35 -p1
 %patch36 -p1
 

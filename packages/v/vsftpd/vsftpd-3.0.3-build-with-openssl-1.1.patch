@@ -1,13 +1,13 @@
-Index: vsftpd-3.0.3/vsf_findlibs.sh
+Index: vsftpd-3.0.4/vsf_findlibs.sh
 ===================================================================
---- vsftpd-3.0.3.orig/vsf_findlibs.sh
-+++ vsftpd-3.0.3/vsf_findlibs.sh
-@@ -72,7 +72,7 @@ locate_library /usr/shlib/librt.so && ec
+--- vsftpd-3.0.4.orig/vsf_findlibs.sh	2021-06-15 07:58:45.004475824 +0000
++++ vsftpd-3.0.4/vsf_findlibs.sh	2021-06-15 07:59:59.039320940 +0000
+@@ -69,7 +69,7 @@ locate_library /usr/shlib/librt.so && ec
  locate_library /usr/lib/libsendfile.so && echo "-lsendfile";
  
  # OpenSSL
 -if find_func SSL_library_init ssl.o; then
 +if find_func SSL_CTX_new ssl.o; then
    echo "-lssl -lcrypto";
- fi
- 
+ elif find_func SSL_new ssl.o; then
+   echo "-lssl -lcrypto";
