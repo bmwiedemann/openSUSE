@@ -1,7 +1,7 @@
 #
 # spec file for package jnr-posix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,15 @@
 #
 
 
-Name:           jnr-posix
-Version:        3.0.47
+%global cluster jnr
+Name:           %{cluster}-posix
+Version:        3.1.7
 Release:        0
 Summary:        Java Posix layer
 License:        CPL-1.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later
-URL:            https://github.com/jnr/jnr-posix
-Source0:        https://github.com/jnr/%{name}/archive/%{name}-%{version}.tar.gz
+Group:          Development/Libraries/Java
+URL:            https://github.com/%{cluster}/%{name}
+Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.jnr:jnr-constants)
@@ -34,19 +36,18 @@ BuildArch:      noarch
 
 %description
 jnr-posix is a lightweight cross-platform POSIX emulation layer for Java,
-written in Java and is part of the JNR project
+written in Java and is part of the JNR project (http://github.com/jnr).
 
 %package        javadoc
 Summary:        Javadoc for %{name}
+Group:          Development/Libraries/Java
 
 %description    javadoc
 Javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-
-# fix test which assumes that there is a group named "nogroup"
-sed -i 's|"nogroup"|"root"|' src/test/java/jnr/posix/GroupTest.java
+%{mvn_file} : %{cluster}/%{name}
 
 # Remove useless wagon extension.
 %pom_xpath_remove "pom:build/pom:extensions"
@@ -55,7 +56,7 @@ sed -i 's|"nogroup"|"root"|' src/test/java/jnr/posix/GroupTest.java
 %pom_remove_plugin ":maven-javadoc-plugin"
 
 %build
-%{mvn_build} -f -- -Dsource=6
+%{mvn_build} -f
 
 %install
 %mvn_install
