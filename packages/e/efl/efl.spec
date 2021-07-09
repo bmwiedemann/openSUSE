@@ -260,7 +260,7 @@ BuildRequires:  fdupes
 %endif
 
 %description
-EFL is library collection providing various functionality used (not onyl)
+EFL is library collection providing various functionality used (not only)
 by Enlightenment 17, Terminology, Tizen mobile platform and much more.
 
 %lang_package
