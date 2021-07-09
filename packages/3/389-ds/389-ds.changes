@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul 08 01:03:10 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update to version 2.0.6~git0.d81dc6c90:
+  * Bump version to 2.0.6
+  * Issue 4803 - Improve DB Locks Monitoring Feature Descriptions
+  * Issue 4803 - Improve DB Locks Monitoring Feature Descriptions (#4810)
+  * Issue 4169 - UI - Migrate Typeaheads to PF4 (#4808)
+  * Issue 4414 - disk monitoring - prevent division by zero crash
+  * Issue 4788 - CLI should support Temporary Password Rules attributes (#4793)
+  * Issue 4656 - Fix replication plugin rename dependency issues
+  * Issue 4656 - replication name change upgrade code causes crash with dynamic plugins
+  * Issue 4506 - Improve SASL logging
+  * Issue 4709 - Fix double free in dbscan
+  * Issue 4093 - Fix MEP test case
+  * Issue 4747 - Remove unstable/unstatus tests (followup) (#4809)
+  * Issue 4791 - Missing dependency for RetroCL RFE (#4792)
+  * Issue 4794 - BUG - don't capture container output (#4798)
+  * Issue 4593 - Log an additional message if the server certificate nickname doesn't match nsSSLPersonalitySSL value
+  * Issue 4797 - ACL IP ADDRESS evaluation may corrupt c_isreplication_session connection flags (#4799)
+  * Issue 4169 - UI Migrate checkbox to PF4 (#4769)
+  * Issue 4447 - Crash when the Referential Integrity log is manually edited
+  * Issue 4773 - Add CI test for DNA interval assignment
+  * Issue 4789 - Temporary password rules are not enforce with local password policy (#4790)
+  * Issue 4379 - fixing regression in test_info_disclosure
+  * Issue 4379 - Allow more than 1 empty AttributeDescription for ldapsearch, without the risk of denial of service
+  * Issue 4379 - Allow more than 1 empty AttributeDescription for ldapsearch, without the risk of denial of service
+  * Issue 4575 Update test docstrings metadata
+  * Issue 4753 - Adjust our tests to 389-ds-base-snmp missing in RHEL 9 Appstream
+  * removed the snmp_present() from utils.py as we have get_rpm_version() in conftest.py
+  * Issue 4753 - Adjust our tests to 389-ds-base-snmp missing in RHEL 9 Appstream
+
+-------------------------------------------------------------------
+Thu Jul  8 01:02:13 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Fix requires as openssl cli is required by 389-ds now.
+
+-------------------------------------------------------------------
 Sat Jun 19 13:01:06 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator

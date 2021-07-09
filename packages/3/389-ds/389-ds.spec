@@ -37,7 +37,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.5~git0.607bfbf16
+Version:        2.0.6~git0.d81dc6c90
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -185,13 +185,11 @@ Requires:       %{use_python}-python-dateutil
 Requires:       %{use_python}-six
 Requires:       krb5-client
 Requires:       mozilla-nss-tools
+# Tools like dscreate would call out to /usr/bin/openssl
+Requires:       openssl(cli)
 # We recommend this here as a supplementary tool for ldap
 # server interaction, but it's in no way required.
 Recommends:     openldap2-client
-# Tools like dscreate would call out to /usr/bin/openssl; there can
-# be other ways for the admin to maintain his certificates, thus only
-# recommend the openssl-cli tools
-Recommends:     openssl(cli)
 # These are recommended if you have selinux on your system
 # to allow some supplementary automated interactions during
 # setup, but it's not required.
