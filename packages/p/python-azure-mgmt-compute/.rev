@@ -147,4 +147,15 @@
     CHANGELOG.md file provided with this package (forwarded request 898320 from glaubitz)</comment>
     <requestid>898412</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>132124de424063340801e63d78254482</srcmd5>
+    <version>22.0.0</version>
+    <time>1625868038</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 22.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 905238 from glaubitz)</comment>
+    <requestid>905283</requestid>
+  </revision>
 </revisionlist>
