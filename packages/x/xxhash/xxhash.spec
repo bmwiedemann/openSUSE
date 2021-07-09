@@ -1,7 +1,7 @@
 #
 # spec file for package xxhash
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,10 +20,11 @@ Name:           xxhash
 Version:        0.8.0
 Release:        0
 Summary:        Non-cryptographic hash algorithm
-License:        GPL-2.0-only AND BSD-2-Clause
+License:        BSD-2-Clause AND GPL-2.0-only
 Group:          Productivity/Security
 URL:            https://github.com/Cyan4973/xxHash
 Source0:        https://github.com/Cyan4973/xxHash/archive/v%{version}.tar.gz#/xxHash-%{version}.tar.gz
+Patch0:         xxhash-avoid-armv6-unaligned-access.patch
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 
@@ -56,6 +57,7 @@ functions. Hashes are identical on all platforms.
 
 %prep
 %setup -q -n xxHash-%{version}
+%patch0 -p1
 
 %build
 make %{?_smp_mflags} prefix=%{_prefix} libdir=%{_libdir}

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  6 17:15:34 CEST 2021 - ro@suse.de
+
+- add patch xxhash-avoid-armv6-unaligned-access.patch
+  do not expect unaligned accesses to work on armv6, it breaks
+  in our build setup using aarch64 kernels 
+
+-------------------------------------------------------------------
 Mon Aug  3 05:43:31 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 0.8.0
