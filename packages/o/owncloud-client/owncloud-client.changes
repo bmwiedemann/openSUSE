@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  9 07:39:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build:
+  * fix-use-of-deleted-function.patch
+
+-------------------------------------------------------------------
+Mon Jun 28 06:27:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the unneeded QtWebKit build dependency.
+
+-------------------------------------------------------------------
 Thu May 27 08:35:43 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Update to upstream version 2.8.1
