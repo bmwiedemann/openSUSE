@@ -16,22 +16,19 @@
 #
 
 
-%bcond_without  remmina_nx
 %if 0%{?is_opensuse}
 %bcond_without  remmina_kwallet
 %else
 %bcond_with	remmina_kwallet
 %endif
 Name:           remmina
-Version:        1.4.19
+Version:        1.4.20
 Release:        0
 Summary:        Versatile Remote Desktop Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://www.remmina.org/
 Source0:        https://gitlab.com/Remmina/Remmina/-/archive/v%{version}/Remmina-v%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM mark-appindicator-as-required.patch gl#Remmina/Remmina#2290
-Patch0:         mark-appindicator-as-required.patch
 BuildRequires:  cmake
 BuildRequires:  cups-devel
 BuildRequires:  ed
@@ -119,24 +116,6 @@ Requires:       remmina = %{version}
 %description plugin-spice
 This package provides the SPICE protocol plugin for Remmina.
 
-%package plugin-xdmcp
-Summary:        XDMCP Protocol Plugin for Remmina
-Group:          Productivity/Networking/Other
-Requires:       remmina = %{version}
-
-%description plugin-xdmcp
-This package provides the XDMCP protocol plugin for Remmina.
-
-%if %{with remmina_nx}
-%package plugin-nx
-Summary:        NX Protocol Plugin for Remmina
-Group:          Productivity/Networking/Other
-Requires:       remmina = %{version}
-
-%description plugin-nx
-This package provides the NX protocol plugin for Remmina.
-%endif
-
 %if %{with remmina_kwallet}
 %package plugin-kwallet
 Summary:        Remmina plugin to support the KDE Wallet
@@ -155,14 +134,6 @@ Requires:       remmina = %{version}
 
 %description plugin-rdp
 This package provides the RDP protocol plugin for Remmina.
-
-%package plugin-st
-Summary:        Simple terminal Plugin for Remmina
-Group:          Productivity/Networking/Other
-Requires:       remmina = %{version}
-
-%description plugin-st
-This package provides the simple terminal plugin for Remmina.
 
 %package plugin-vnc
 Summary:        VNC Protocol Plugin for Remmina
@@ -224,23 +195,12 @@ export CFLAGS="$CFLAGS -fPIC"
 	-DWITH_KF5WALLET=OFF \
 %endif
 	-DWITH_APPINDICATOR=ON \
-%if %{with remmina_nx}
-        -DWITH_NX=ON \
-%else
-        -DWITH_NX=OFF \
-%endif
-
 	%{nil}
 
 %cmake_build
 
 %install
 %cmake_install
-
-%if %{without remmina_nx}
-rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
-    %{buildroot}%{_datadir}/icons/hicolor/*/emblems/remmina-nx.png
-%endif
 
 %suse_update_desktop_file org.remmina.Remmina Network RemoteAccess GTK
 
@@ -272,27 +232,10 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %postun plugin-spice
 %icon_theme_cache_postun
 
-%post plugin-xdmcp
-%icon_theme_cache_post
-
-%postun plugin-xdmcp
-%icon_theme_cache_postun
-
-%if %{with remmina_nx}
-%post plugin-nx
-%icon_theme_cache_post
-
-%postun plugin-nx
-%icon_theme_cache_postun
-%endif
-
 %post plugin-rdp
 %icon_theme_cache_post
 
 %postun plugin-rdp
-%icon_theme_cache_postun
-
-%postun plugin-st
 %icon_theme_cache_postun
 
 %post  plugin-vnc
@@ -351,10 +294,6 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/xsessions/remmina-gnome.desktop
 %{_datadir}/applications/%{name}-gnome.desktop
 
-%if %{without remmina_nx}
-%exclude %{_datadir}/icons/hicolor/scalable/emblems/remmina-nx-symbolic.svg
-%endif
-
 %files lang -f %{name}.lang
 
 %files devel
@@ -370,17 +309,6 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-spice-ssh-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-spice-symbolic.svg
 
-%files plugin-xdmcp
-%{_libdir}/remmina/plugins/remmina-plugin-xdmcp.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-xdmcp-ssh-symbolic.svg
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-xdmcp-symbolic.svg
-
-%if %{with remmina_nx}
-%files plugin-nx
-%{_libdir}/remmina/plugins/remmina-plugin-nx.so
-%{_datadir}/icons/hicolor/scalable/emblems/remmina-nx-symbolic.svg
-%endif
-
 %if %{with remmina_kwallet}
 %files plugin-kwallet
 %{_libdir}/remmina/plugins/remmina-plugin-kwallet.so
@@ -390,9 +318,6 @@ rm -f %{buildroot}%{_libdir}/remmina/plugins/remmina-plugin-nx.so \
 %{_libdir}/remmina/plugins/remmina-plugin-rdp.so
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-rdp-ssh-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/emblems/remmina-rdp-symbolic.svg
-
-%files plugin-st
-%{_libdir}/remmina/plugins/remmina-plugin-st.so
 
 %files plugin-vnc
 %{_libdir}/remmina/plugins/remmina-plugin-vnc.so

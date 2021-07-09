@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  9 05:32:17 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- the following plug-ins are no longer generated:
+  * remmina-plugin-xdmcp
+  * remmina-plugin-nx
+  * remmina-plugin-st
+
+- Removed obsolete mark-appindicator-as-required.patch
+
+- Update ro remmina 1.4.20
+
+  * Mark appindicator as required !2290
+  * Disabling XDMCP, NX, and ST !2291
+  * Remove plugins/st,xdmcp,nx for submodule replacement !2292
+  * SSH tunnel MFA !2293
+  * Adding connection profiles menu into the toolbar !2295
+  * Resolve "Preferences buttons not working since v1.4.19" !2296
+  * Some X11 related functions cleanup
+
+
+-------------------------------------------------------------------
 Wed Jun 30 13:45:32 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - App-Indicator is now required
