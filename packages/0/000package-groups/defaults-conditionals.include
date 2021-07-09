@@ -51,5 +51,8 @@
 	<conditional name="only_s390x">
 		<platform arch="s390x" />
 	</conditional>
+	<conditional name="only_riscv64">
+		<platform arch="riscv64" />
+	</conditional>
     </conditionals>
 

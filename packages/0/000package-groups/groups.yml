@@ -47,6 +47,7 @@ dvd:
   - grub2-i386-pc: [x86_64,i586]
   - grub2-arm64-efi: [aarch64]
   - grub2-arm-efi: [armv7l]
+  - grub2-riscv64-efi: [riscv64]
   - shim: [x86_64,aarch64]
   - patterns-gnome-gnome: [required,suggested]
   - patterns-gnome-gnome_basis: [required,suggested]

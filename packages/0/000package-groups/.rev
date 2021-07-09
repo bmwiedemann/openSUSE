@@ -1106,4 +1106,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>defined build.opensuse.org default repository name in default_obs_repository_name. The default_obs_download_url will get added automatically. You will need to use obs-service-product_converter 1.4.6 for this.</comment>
     <requestid>903235</requestid>
   </revision>
+  <revision rev="153" vrev="151">
+    <srcmd5>3cc6da45ec3c924706a43e8147652fcd</srcmd5>
+    <version>unknown</version>
+    <time>1625867804</time>
+    <user>dimstar_suse</user>
+    <comment>Add support for riscv64</comment>
+    <requestid>904555</requestid>
+  </revision>
 </revisionlist>
