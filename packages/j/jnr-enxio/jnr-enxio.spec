@@ -1,7 +1,7 @@
 #
 # spec file for package jnr-enxio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,19 @@
 #
 
 
-Name:           jnr-enxio
-Version:        0.19
+%global cluster jnr
+Name:           %{cluster}-enxio
+Version:        0.32.6
 Release:        0
-Summary:        Unix sockets for Java
+Summary:        Native I/O access for java
 # src/main/java/jnr/enxio/channels/PollSelectionKey.java is LGPLv3
 # rest of the source code is ASL 2.0
 License:        Apache-2.0 AND LGPL-3.0-only
-URL:            https://github.com/jnr/%{name}/
-Source0:        https://github.com/jnr/%{name}/archive/%{name}-%{version}.tar.gz
+Group:          Development/Libraries/Java
+URL:            https://github.com/%{cluster}/%{name}/
+Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 # Avoid split-package situation, this patch submitted upstream here: https://github.com/jnr/jnr-enxio/pull/26
-Patch0:         0001-Add-enxio-classes-from-jnr-unixsocket.patch
+#Patch0:         0001-Add-enxio-classes-from-jnr-unixsocket.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.jnr:jnr-constants)
@@ -36,30 +38,25 @@ BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
-Unix sockets for Java.
+Java Native Runtime Enhanced X-platform I/O
 
 %package javadoc
 Summary:        Javadocs for %{name}
+Group:          Development/Libraries/Java
 
 %description javadoc
 This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch0 -p1
-
-find ./ -name '*.jar' -delete
-find ./ -name '*.class' -delete
+%{mvn_file} : %{cluster}/%{name}
 
 # Unnecessary for RPM builds
-%pom_remove_plugin ":maven-javadoc-plugin"
-%pom_remove_plugin ":maven-source-plugin"
+%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :maven-source-plugin
 
 %build
-%{mvn_build} -f \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=7 \
-%endif
+%{mvn_build} -f
 
 %install
 %mvn_install

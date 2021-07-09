@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  8 13:48:55 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v0.32.6
+- Fix summary and description
+- Remove patch 0001-Add-enxio-classes-from-jnr-unixsocket.patch
+- Install artifact into %{_javadir}/jnr
+
+-------------------------------------------------------------------
 Fri Jul 24 11:38:57 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jnr-enxio 0.19
