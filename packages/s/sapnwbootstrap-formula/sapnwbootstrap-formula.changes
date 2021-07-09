@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  7 13:32:06 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
+
+- Version bump 0.6.6
+  * fix sap_host_exporter to run on both HA nodes
+
+-------------------------------------------------------------------
 Thu Jun 17 13:56:06 UTC 2021 - Eike Waldt <waldt@b1-systems.de>
 
 - Version bump 0.6.5
