@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 09 08:24:15 UTC 2021 - coolo@suse.com
+
+- Update to version 4.6.1625814138.021a88a2a:
+  * t: Simplify "linked" lookup in 10-jobs.t
+  * t: Add test for happy-path of OpenQA::Worker::Engines::isotovideo::sync_tests
+  * OpenQA::Worker::Engines::isotovideo: Remove dead code "_kill"
+  * t: Increase timeouts
+  * Fix use of `isnt` in `t/lib/OpenQA/Test/Utils.pm`
+  * t: Bump timeout in more slow tests
+  * t: Bump timeout for ui/26-jobs_restart.t
+  * Distinguish comment types on /tests
+  * t: Bump timeout for deploy.t after recent slowdown
+  * Fix typos found by codespell
+  * Update parent_group link to test/overview to the new icon format
+  * Add link to /test/overview from index page for every parent group
+  * Add a check for the geekotest & _openqa-worker user to test specs
+  * Switch to systemd-sysusers instead of getent + useradd
+  * Mark uncovered line in OpenQA::Schema::Result::Assets
+  * Remove uncovered conditions for internal search of job settings
+  * Delete unused args special case handling in OpenQA::Schema::Result::GruTasks
+  * Simplify OpenQA::Schema::ResultSet::JobSettings
+  * Slightly simplify OpenQA::Schma::ResultSet::Assets for full statement coverage
+  * Slightly simplify OpenQA::Schma::ResultSet::AuditEvents for full statement coverage
+  * Do not fail Minion jobs when asset download fails due to a client error
+
+-------------------------------------------------------------------
 Wed Jul 07 00:24:13 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1625604748.6b93c98dd:
