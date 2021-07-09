@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 06:24:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update opae-missing-shebang.patch to correctly call all scripts with
+  Python 3.
+
+-------------------------------------------------------------------
 Fri Jun  4 09:10:41 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Add patches to fix compilation with GCC11
