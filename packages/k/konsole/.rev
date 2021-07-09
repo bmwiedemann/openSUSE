@@ -1135,4 +1135,12 @@
   * 0001-Prevent-1px-sizehint-when-there-is-no-preconfigurati.patch</comment>
     <requestid>903316</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>9a4349c362b4186ee78b0b009f886dee</srcmd5>
+    <version>21.04.3</version>
+    <time>1625867885</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04.3</comment>
+    <requestid>904976</requestid>
+  </revision>
 </revisionlist>
