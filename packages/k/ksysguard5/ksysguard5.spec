@@ -38,7 +38,9 @@ Source3:        ksysguardd.service
 Patch0:         0001-Use-run-for-ksysguardd-s-pid-file.patch
 BuildRequires:  extra-cmake-modules >= 5.81.0
 BuildRequires:  kf5-filesystem
+%ifnarch s390 s390x
 BuildRequires:  libsensors4-devel
+%endif
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Config)
