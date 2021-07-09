@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  6 12:01:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.2.1:
+  * Don't hide expanded representation if plasmoid is pinned (kde#439269)
+  * [Task Manager] Load album art background asynchronously (kde#439512)
+  * [kimpanel] Use window flag ToolTip on wayland to avoid grab focus from input method.
+  * [keyboard layout applet] Fix auto-opening fullRepresentation on start (kde#438460)
+
+-------------------------------------------------------------------
 Wed Jun 23 08:24:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.2.1
