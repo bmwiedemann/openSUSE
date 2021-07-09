@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 05:52:38 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add scripts-sf2rg-python3.patch:
+  - Port scripts/sf2rg.py to Python 3 
+
+-------------------------------------------------------------------
 Mon Jan 18 00:12:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.12:

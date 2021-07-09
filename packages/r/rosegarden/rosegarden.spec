@@ -30,6 +30,8 @@ Source2:        %{name}.1
 Patch1:         rosegarden-10.10-filepaths.patch
 # PATCH-FIX-OPENSUSE ledest@gmail.com fix bashisms in scripts
 Patch2:         rosegarden-14.02-fix-bashisms.patch
+# PATCH-FIX-OPENSUSE port scripts/sf2rg.py to Python 3
+Patch3:         scripts-sf2rg-python3.patch
 BuildRequires:  alsa-devel
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  dssi-devel
@@ -116,9 +118,6 @@ chmod 644 %{buildroot}%{_datadir}/%{name}/scripts/README
 chmod 644 %{buildroot}%{_datadir}/%{name}/scripts/color-list
 #chmod 644 %%{buildroot}%%{_datadir}/%%{name}/scripts/simple-makefile
 rm -f %{buildroot}%{_datadir}/%{name}/scripts/svn-to-hg-and-git.sh
-pushd %{buildroot}%{_datadir}/%{name}/scripts
-sed -i '1s/^#!.*/#!\/usr\/bin\/python/' sf2rg.py
-popd
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/pixmaps/%{name}.xpm"
 %suse_update_desktop_file %{buildroot}/%{_datadir}/applications/com.rosegardenmusic.%{name}.desktop
 #This is a man page made by help2man to satisfy factories hunger for one /usr/bin/ one man page.
