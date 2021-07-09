@@ -16,6 +16,7 @@ Wed Jun 23 22:28:52 UTC 2021 - Christian Wittmer <chris@computersalat.de>
 Fri Jun 18 17:11:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator
+- Remove unnecessary group line from postfix-vmail-user.conf
 
 -------------------------------------------------------------------
 Mon Jun 14 15:46:54 UTC 2021 - Michael Ströder <michael@stroeder.com>

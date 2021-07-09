@@ -103,8 +103,7 @@ Provides:       smtp_daemon
 BuildRequires:  libnsl-devel
 %endif
 BuildRequires:  sysuser-tools
-Requires:       system-user-nobody
-Requires:       group(%{mail_group})
+Requires(pre):  user(nobody)
 Requires(pre):  group(%{mail_group})
 %sysusers_requires
 
@@ -132,6 +131,9 @@ This package contains the documentation for %{name}
 Summary:        Postfix plugin to support MySQL maps
 Group:          Productivity/Networking/Email/Servers
 Requires(pre):  %{name} = %{version}
+%if 0%{?suse_version} < 1550
+Provides:       group(vmail)
+%endif
 %sysusers_requires
 
 %description mysql

@@ -117,8 +117,7 @@ BuildRequires:  libnsl-devel
 %endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  sysuser-tools
-Requires:       system-user-nobody
-Requires:       group(%{mail_group})
+Requires(pre):  user(nobody)
 Requires(pre):  group(%{mail_group})
 %sysusers_requires
 %else
@@ -222,8 +221,8 @@ make makefiles pie=yes shared=yes dynamicmaps=yes \
 make %{?_smp_mflags}
 %if 0%{?suse_version} >= 1330
 # Create postfix user
-%sysusers_generate_pre %{SOURCE12} postfix
-%sysusers_generate_pre %{SOURCE13} vmail
+%sysusers_generate_pre %{SOURCE12} postfix postfix-user.conf
+%sysusers_generate_pre %{SOURCE13} vmail postfix-vmail-user.conf
 %endif
 # ---------------------------------------------------------------------------
 
