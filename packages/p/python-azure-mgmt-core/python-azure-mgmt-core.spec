@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.3.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-core
-Version:        1.3.0b3
+Version:        1.3.0.0
 Release:        0
 Summary:        Microsoft Azure Management Core Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-core/azure-mgmt-core-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-core/azure-mgmt-core-%{realversion}.zip
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -54,7 +56,7 @@ As an end user, you don't need to manually install azure-mgmt-core because it wi
 be installed automatically when you install other SDKs.
 
 %prep
-%setup -q -n azure-mgmt-core-%{version}
+%setup -q -n azure-mgmt-core-%{realversion}
 
 %build
 # Required for Python2 builds
