@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  7 08:56:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- Changes since 21.04.2:
+  * Obey the Exclude Private/Confidential flags
+  * Infinite loop if Exclude Private/Confidential skipped something
+  * Fix the split week printout
+  * Improve the small calendars in the printed headers
+
+-------------------------------------------------------------------
 Tue Jun  8 12:39:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.2
