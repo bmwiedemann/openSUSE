@@ -1,7 +1,7 @@
 #
 # spec file for package jffi
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,32 +19,29 @@
 %global cluster jnr
 %global sover 1.2
 Name:           jffi
-Version:        1.2.12
+Version:        1.3.4
 Release:        0
 Summary:        Java Foreign Function Interface
-License:        LGPL-3.0-or-later OR Apache-2.0
+License:        Apache-2.0 OR LGPL-3.0-or-later
 Group:          Development/Libraries/Java
-URL:            http://github.com/jnr/jffi
-Source0:        https://github.com/%{cluster}/%{name}/archive/%{name}-%{version}.tar.gz
+URL:            https://github.com/%{cluster}/%{name}
+Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 Source3:        p2.inf
 Patch0:         jffi-fix-dependencies-in-build-xml.patch
 Patch1:         jffi-add-built-jar-to-test-classpath.patch
-Patch2:         jffi-fix-compilation-flags.patch
-Patch3:         jffi-1.2.12-no_javah.patch
 Patch4:         jffi-fix-system-ffi.patch
 BuildRequires:  ant
-BuildRequires:  ant-junit
 BuildRequires:  fdupes
 BuildRequires:  gcc
-BuildRequires:  libffi-devel
 BuildRequires:  make
 BuildRequires:  maven-local
+BuildRequires:  pkgconfig
 BuildRequires:  unzip
-BuildRequires:  mvn(junit:junit)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
 BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
+BuildRequires:  pkgconfig(libffi)
 
 %description
 An optimized Java interface to libffi.
@@ -68,35 +65,32 @@ This package contains the API documentation for %{name}.
 %setup -q -n %{name}-%{name}-%{version}
 %patch0
 %patch1
-%patch2
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 1.8}%{!?pkg_vcmp:0}
-%patch3 -p1
-%endif
-%patch4 -p1
+%patch4
 
 # ppc{,64} fix
 # https://bugzilla.redhat.com/show_bug.cgi?id=561448#c9
-sed -i.cpu -e '/m\$(MODEL)/d' jni/GNUmakefile libtest/GNUmakefile
+sed -i.cpu -e '/m\$(MODEL)/d' {jni,libtest}/GNUmakefile
 
 # remove uneccessary directories
-rm -rf archive/* jni/libffi/ jni/win32/ lib/CopyLibs/ lib/junit*
+rm -rf archive/* jni/libffi/ lib/junit*
 
-find ./ -name '*.jar' -exec rm -f '{}' \;
-find ./ -name '*.class' -exec rm -f '{}' \;
+find . -name '*.jar' -delete
 
 build-jar-repository -s -p lib/ junit hamcrest/core
 
-%{mvn_package} 'com.github.jnr:jffi::native:' native
+%{mvn_package} ':::native:' native
 %{mvn_file} ':{*}' %{name}/@1 @1
 
 %build
+export CFLAGS=-O2
 # ant will produce JAR with native bits
 ant jar build-native -Duse.system.libffi=1
 
 # maven will look for JAR with native bits in archive/
 cp -p dist/jffi-*-Linux.jar archive/
 
-%{mvn_build}
+%{mvn_build} -f
+cp target/%{name}-%{version}-complete.jar target/%{name}-%{version}.jar
 
 %install
 %mvn_install
@@ -104,10 +98,10 @@ cp -p dist/jffi-*-Linux.jar archive/
 
 mkdir -p META-INF/
 cp %{SOURCE3} META-INF/
-jar uf %{buildroot}%{_jnidir}/%{name}/%{name}.jar META-INF/p2.inf
+jar -uf %{buildroot}%{_jnidir}/%{name}/%{name}.jar META-INF/p2.inf
 
 # install *.so
-install -dm 755 %{buildroot}%{_libdir}/%{name}
+install -dm0755 %{buildroot}%{_libdir}/%{name}
 unzip dist/jffi-*-Linux.jar
 mv jni/*-Linux %{buildroot}%{_libdir}/%{name}/
 # create version-less symlink for .so file
@@ -116,19 +110,14 @@ chmod +x lib%{name}-%{sover}.so
 ln -s lib%{name}-%{sover}.so lib%{name}.so
 popd
 
-%check
-# don't fail on unused parameters... (TODO: send patch upstream)
-sed -i 's|-Werror||' libtest/GNUmakefile
-ant -Duse.system.libffi=1 test
-
 %files -f .mfiles
-%license COPYING.GPL COPYING.LESSER LICENSE
+%license COPYING.{GPL,LESSER} LICENSE
 
 %files native -f .mfiles-native
 %{_libdir}/%{name}
-%license COPYING.GPL COPYING.LESSER LICENSE
+%license COPYING.{GPL,LESSER} LICENSE
 
 %files javadoc -f .mfiles-javadoc
-%license COPYING.GPL COPYING.LESSER LICENSE
+%license COPYING.{GPL,LESSER} LICENSE
 
 %changelog

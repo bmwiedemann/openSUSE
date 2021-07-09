@@ -1,6 +1,7 @@
---- jffi-jffi-1.2.12/jni/GNUmakefile	2016-04-29 23:23:51.000000000 +0200
-+++ jffi-jffi-1.2.12/jni/GNUmakefile	2019-04-03 19:52:03.140582936 +0200
-@@ -279,7 +279,7 @@
+diff -up jni/GNUmakefile.patch4 jni/GNUmakefile
+--- jni/GNUmakefile.patch4	2021-07-08 22:01:13.455019146 +0300
++++ jni/GNUmakefile	2021-07-08 22:10:00.737857846 +0300
+@@ -265,7 +265,7 @@ debug:
  	@echo "JFFI_BUILD_DIR=$(JFFI_BUILD_DIR)"
  	@echo "OBJS=$(OBJS)"
  
@@ -9,7 +10,7 @@
  	$(CC) -o $@ $(LDFLAGS) $(SOFLAGS) $(OBJS) $(LIBFFI_LIBS) $(LIBS)
  	$(STRIP) $@
  
-@@ -291,7 +291,9 @@
+@@ -277,7 +277,9 @@ $(BUILD_DIR)/%.o : $(SRC_DIR)/%.S $(wild
  	@mkdir -p $(@D)
  	@$(CC) $(CFLAGS) -o $@ -c $<
  
