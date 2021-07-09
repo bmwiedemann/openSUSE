@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  7 08:56:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.04.3
+- No code change since 21.04.2
+
+-------------------------------------------------------------------
 Fri Jun 25 07:59:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the musicbrainz build dependency. k3b still uses the
