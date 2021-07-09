@@ -1021,7 +1021,7 @@ Prefer: libusb-0_1-4
 Prefer: libreoffice:xerces-j2
 Prefer: glibc-devel
 Prefer: netcdf-devel
-Prefer: libnetcdf18
+Prefer: libnetcdf19 libnetcdf18
 Prefer: NetworkManager:dhcp-client
 Prefer: pcre-tools
 Prefer: libpopt0 makeinfo
