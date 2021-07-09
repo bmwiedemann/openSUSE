@@ -734,7 +734,6 @@ unsorted:
   - argyllcms-doc 
   - aria2-devel 
   - arkade 
-  - arm-ml-examples: [x86_64] 
   - arm-ml-examples-data: [x86_64] 
   - arm-trusted-firmware 
   - arm-trusted-firmware-tools 
@@ -1815,6 +1814,9 @@ unsorted:
   - celt 
   - celt051 
   - celt051-devel 
+  - cepces 
+  - cepces-certmonger 
+  - cepces-selinux 
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
   - ceph-csi: [x86_64] 
@@ -2342,6 +2344,7 @@ unsorted:
   - cross-aarch64-gcc11-icecream-backend: [x86_64] 
   - cross-aarch64-gcc7: [x86_64] 
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
+  - cross-aarch64-linux-glibc-devel 
   - cross-amdgcn-gcc10: [x86_64] 
   - cross-amdgcn-gcc11: [x86_64] 
   - cross-amdgcn-newlib10-devel: [x86_64] 
@@ -2352,6 +2355,7 @@ unsorted:
   - cross-arm-gcc11: [x86_64] 
   - cross-arm-gcc11-icecream-backend: [x86_64] 
   - cross-arm-gcc7: [x86_64] 
+  - cross-arm-linux-glibc-devel 
   - cross-arm-none-gcc10 
   - cross-arm-none-gcc10-bootstrap 
   - cross-arm-none-gcc11 
@@ -2381,6 +2385,7 @@ unsorted:
   - cross-hppa-gcc11-icecream-backend: [x86_64] 
   - cross-hppa-gcc7: [x86_64] 
   - cross-hppa-gcc7-icecream-backend: [x86_64] 
+  - cross-hppa-linux-glibc-devel 
   - cross-hppa64-binutils 
   - cross-i386-binutils: [x86_64] 
   - cross-i386-gcc10: [x86_64] 
@@ -2389,6 +2394,7 @@ unsorted:
   - cross-i386-gcc11-icecream-backend: [x86_64] 
   - cross-i386-gcc7: [x86_64] 
   - cross-i386-gcc7-icecream-backend: [x86_64] 
+  - cross-i386-linux-glibc-devel 
   - cross-ia64-binutils 
   - cross-m68k-binutils 
   - cross-m68k-gcc10: [x86_64] 
@@ -2397,6 +2403,7 @@ unsorted:
   - cross-m68k-gcc11-icecream-backend: [x86_64] 
   - cross-m68k-gcc7: [x86_64] 
   - cross-m68k-gcc7-icecream-backend: [x86_64] 
+  - cross-m68k-linux-glibc-devel 
   - cross-mips-binutils 
   - cross-mips-gcc10: [x86_64] 
   - cross-mips-gcc10-icecream-backend: [x86_64] 
@@ -2404,6 +2411,7 @@ unsorted:
   - cross-mips-gcc11-icecream-backend: [x86_64] 
   - cross-mips-gcc7: [x86_64] 
   - cross-mips-gcc7-icecream-backend: [x86_64] 
+  - cross-mips-linux-glibc-devel 
   - cross-nvptx-gcc10: [x86_64] 
   - cross-nvptx-gcc11: [x86_64] 
   - cross-nvptx-gcc7: [x86_64] 
@@ -2418,6 +2426,7 @@ unsorted:
   - cross-ppc64-gcc11-icecream-backend: [x86_64] 
   - cross-ppc64-gcc7: [x86_64] 
   - cross-ppc64-gcc7-icecream-backend: [x86_64] 
+  - cross-ppc64-linux-glibc-devel 
   - cross-ppc64le-binutils 
   - cross-ppc64le-gcc10: [x86_64] 
   - cross-ppc64le-gcc10-icecream-backend: [x86_64] 
@@ -2425,6 +2434,7 @@ unsorted:
   - cross-ppc64le-gcc11-icecream-backend: [x86_64] 
   - cross-ppc64le-gcc7: [x86_64] 
   - cross-ppc64le-gcc7-icecream-backend: [x86_64] 
+  - cross-ppc64le-linux-glibc-devel 
   - cross-riscv64-binutils 
   - cross-riscv64-elf-gcc10 
   - cross-riscv64-elf-gcc10-bootstrap 
@@ -2434,6 +2444,7 @@ unsorted:
   - cross-riscv64-gcc10-icecream-backend: [x86_64] 
   - cross-riscv64-gcc11: [x86_64] 
   - cross-riscv64-gcc11-icecream-backend: [x86_64] 
+  - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
   - cross-rx-binutils 
   - cross-rx-gcc10 
@@ -2451,10 +2462,12 @@ unsorted:
   - cross-s390x-gcc11-icecream-backend: [x86_64] 
   - cross-s390x-gcc7: [x86_64] 
   - cross-s390x-gcc7-icecream-backend: [x86_64] 
+  - cross-s390x-linux-glibc-devel 
   - cross-sparc-binutils 
   - cross-sparc-gcc10: [x86_64] 
   - cross-sparc-gcc11: [x86_64] 
   - cross-sparc-gcc7: [x86_64] 
+  - cross-sparc-linux-glibc-devel 
   - cross-sparc64-binutils 
   - cross-sparc64-gcc10: [x86_64] 
   - cross-sparc64-gcc10-icecream-backend: [x86_64] 
@@ -2462,11 +2475,13 @@ unsorted:
   - cross-sparc64-gcc11-icecream-backend: [x86_64] 
   - cross-sparc64-gcc7: [x86_64] 
   - cross-sparc64-gcc7-icecream-backend: [x86_64] 
+  - cross-sparc64-linux-glibc-devel 
   - cross-sparcv9-gcc10-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc11-icecream-backend: [x86_64] 
   - cross-sparcv9-gcc7-icecream-backend: [x86_64] 
   - cross-spu-binutils 
   - cross-x86_64-binutils: [i586] 
+  - cross-x86_64-linux-glibc-devel 
   - cross-xtensa-binutils 
   - crossguid-devel 
   - crosstool-ng 
@@ -12163,23 +12178,23 @@ unsorted:
   - libnetcdf-gnu-openmpi2-hpc 
   - libnetcdf-gnu-openmpi3-hpc 
   - libnetcdf-gnu-openmpi4-hpc 
-  - libnetcdf18 
-  - libnetcdf18-32bit: [x86_64] 
-  - libnetcdf18-openmpi1 
-  - libnetcdf18-openmpi1-32bit: [x86_64] 
-  - libnetcdf18-openmpi2 
-  - libnetcdf18-openmpi2-32bit: [x86_64] 
-  - libnetcdf18-openmpi3 
-  - libnetcdf18-openmpi3-32bit: [x86_64] 
-  - libnetcdf18-openmpi4 
-  - libnetcdf18-openmpi4-32bit: [x86_64] 
-  - libnetcdf_4_7_4-gnu-hpc 
-  - libnetcdf_4_7_4-gnu-mpich-hpc 
-  - libnetcdf_4_7_4-gnu-mvapich2-hpc 
-  - libnetcdf_4_7_4-gnu-openmpi1-hpc 
-  - libnetcdf_4_7_4-gnu-openmpi2-hpc 
-  - libnetcdf_4_7_4-gnu-openmpi3-hpc 
-  - libnetcdf_4_7_4-gnu-openmpi4-hpc 
+  - libnetcdf19 
+  - libnetcdf19-32bit: [x86_64] 
+  - libnetcdf19-openmpi1 
+  - libnetcdf19-openmpi1-32bit: [x86_64] 
+  - libnetcdf19-openmpi2 
+  - libnetcdf19-openmpi2-32bit: [x86_64] 
+  - libnetcdf19-openmpi3 
+  - libnetcdf19-openmpi3-32bit: [x86_64] 
+  - libnetcdf19-openmpi4 
+  - libnetcdf19-openmpi4-32bit: [x86_64] 
+  - libnetcdf_4_8_0-gnu-hpc 
+  - libnetcdf_4_8_0-gnu-mpich-hpc 
+  - libnetcdf_4_8_0-gnu-mvapich2-hpc 
+  - libnetcdf_4_8_0-gnu-openmpi1-hpc 
+  - libnetcdf_4_8_0-gnu-openmpi2-hpc 
+  - libnetcdf_4_8_0-gnu-openmpi3-hpc 
+  - libnetcdf_4_8_0-gnu-openmpi4-hpc 
   - libnetcdf_c++-devel 
   - libnetcdf_c++4 
   - libnetcdf_c++4-1 
@@ -16885,27 +16900,27 @@ unsorted:
   - netcdf-openmpi4 
   - netcdf-openmpi4-devel 
   - netcdf-openmpi4-devel-static 
-  - netcdf_4_7_4-gnu-hpc 
-  - netcdf_4_7_4-gnu-hpc-devel 
-  - netcdf_4_7_4-gnu-hpc-devel-static 
-  - netcdf_4_7_4-gnu-mpich-hpc 
-  - netcdf_4_7_4-gnu-mpich-hpc-devel 
-  - netcdf_4_7_4-gnu-mpich-hpc-devel-static 
-  - netcdf_4_7_4-gnu-mvapich2-hpc 
-  - netcdf_4_7_4-gnu-mvapich2-hpc-devel 
-  - netcdf_4_7_4-gnu-mvapich2-hpc-devel-static 
-  - netcdf_4_7_4-gnu-openmpi1-hpc 
-  - netcdf_4_7_4-gnu-openmpi1-hpc-devel 
-  - netcdf_4_7_4-gnu-openmpi1-hpc-devel-static 
-  - netcdf_4_7_4-gnu-openmpi2-hpc 
-  - netcdf_4_7_4-gnu-openmpi2-hpc-devel 
-  - netcdf_4_7_4-gnu-openmpi2-hpc-devel-static 
-  - netcdf_4_7_4-gnu-openmpi3-hpc 
-  - netcdf_4_7_4-gnu-openmpi3-hpc-devel 
-  - netcdf_4_7_4-gnu-openmpi3-hpc-devel-static 
-  - netcdf_4_7_4-gnu-openmpi4-hpc 
-  - netcdf_4_7_4-gnu-openmpi4-hpc-devel 
-  - netcdf_4_7_4-gnu-openmpi4-hpc-devel-static 
+  - netcdf_4_8_0-gnu-hpc 
+  - netcdf_4_8_0-gnu-hpc-devel 
+  - netcdf_4_8_0-gnu-hpc-devel-static 
+  - netcdf_4_8_0-gnu-mpich-hpc 
+  - netcdf_4_8_0-gnu-mpich-hpc-devel 
+  - netcdf_4_8_0-gnu-mpich-hpc-devel-static 
+  - netcdf_4_8_0-gnu-mvapich2-hpc 
+  - netcdf_4_8_0-gnu-mvapich2-hpc-devel 
+  - netcdf_4_8_0-gnu-mvapich2-hpc-devel-static 
+  - netcdf_4_8_0-gnu-openmpi1-hpc 
+  - netcdf_4_8_0-gnu-openmpi1-hpc-devel 
+  - netcdf_4_8_0-gnu-openmpi1-hpc-devel-static 
+  - netcdf_4_8_0-gnu-openmpi2-hpc 
+  - netcdf_4_8_0-gnu-openmpi2-hpc-devel 
+  - netcdf_4_8_0-gnu-openmpi2-hpc-devel-static 
+  - netcdf_4_8_0-gnu-openmpi3-hpc 
+  - netcdf_4_8_0-gnu-openmpi3-hpc-devel 
+  - netcdf_4_8_0-gnu-openmpi3-hpc-devel-static 
+  - netcdf_4_8_0-gnu-openmpi4-hpc 
+  - netcdf_4_8_0-gnu-openmpi4-hpc-devel 
+  - netcdf_4_8_0-gnu-openmpi4-hpc-devel-static 
   - netcomponents 
   - netcomponents-javadoc 
   - netconsole-tools 
@@ -21134,6 +21149,7 @@ unsorted:
   - python3-casacore: [x86_64] 
   - python3-castellan 
   - python3-ccm 
+  - python3-cepces 
   - python3-cinderclient 
   - python3-clang 
   - python3-cliff 
@@ -23309,6 +23325,7 @@ unsorted:
   - python36-pydot 
   - python36-pydot3 
   - python36-pydotplus 
+  - python36-pydrive2 
   - python36-pydub 
   - python36-pyeapi 
   - python36-pyee 
@@ -26184,6 +26201,7 @@ unsorted:
   - python38-pydocumentdb 
   - python38-pydot3 
   - python38-pydotplus 
+  - python38-pydrive2 
   - python38-pydub 
   - python38-pyeapi 
   - python38-pyee 
@@ -29225,6 +29243,7 @@ unsorted:
   - python39-pydot 
   - python39-pydot3 
   - python39-pydotplus 
+  - python39-pydrive2 
   - python39-pydub 
   - python39-pyeapi 
   - python39-pyee 
