@@ -123,4 +123,15 @@
     CHANGELOG.md file provided with this package (forwarded request 898296 from glaubitz)</comment>
     <requestid>898364</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9d4dbf670bbff60a00d33c40a556820a</srcmd5>
+    <version>1.16.0</version>
+    <time>1625868034</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.16.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 905225 from glaubitz)</comment>
+    <requestid>905234</requestid>
+  </revision>
 </revisionlist>
