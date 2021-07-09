@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 09 08:42:05 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1625796159.4048f0f9:
+  * Improve error message when cloning git repository
+  * Set default value for HDDSIZEGB as in QEMU or PVM backends
+
+-------------------------------------------------------------------
 Tue Jul 06 20:33:28 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1625603601.8466828c:
