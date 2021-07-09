@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  8 14:20:52 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update with v0.10.2
+- Change the description
+- Spec file cleanup
+- Install artifact into %{_javadir}/jnr
+
+-------------------------------------------------------------------
 Fri Jul 24 08:51:05 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
-- Initial packaging of jnr-constands 0.9.12
+- Initial packaging of jnr-constants 0.9.12
