@@ -677,4 +677,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE gear 21.04.2</comment>
     <requestid>899121</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>768a0e6f6da1c3244f0ec2b3581edea3</srcmd5>
+    <version>21.04.3</version>
+    <time>1625867854</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04.3</comment>
+    <requestid>904850</requestid>
+  </revision>
 </revisionlist>
