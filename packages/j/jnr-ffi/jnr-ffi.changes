@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  8 13:08:02 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update with v2.2.4
+- Add build dependency on mvn(com.github.jnr:jnr-a64asm)
+- Remove build dependencies on gcc, make
+- Change the package description
+- Install artifact into %{_javadir}/jnr
+- Wipe obsolete stuff out from the spec file
+
+-------------------------------------------------------------------
 Fri Jul 24 09:01:37 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jnr-ffi 2.1.8

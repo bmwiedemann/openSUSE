@@ -1,7 +1,7 @@
 #
 # spec file for package jnr-ffi
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,20 @@
 #
 
 
-Name:           jnr-ffi
-Version:        2.1.8
+%global cluster jnr
+Name:           %{cluster}-ffi
+Version:        2.2.4
 Release:        0
 Summary:        Java Abstracted Foreign Function Layer
 License:        Apache-2.0
-URL:            http://github.com/jnr/%{name}/
-Source0:        https://github.com/jnr/%{name}/archive/%{name}-%{version}.tar.gz
+Group:          Development/Libraries/Java
+URL:            http://github.com/%{cluster}/%{name}/
+Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  gcc
-BuildRequires:  make
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.jnr:jffi)
 BuildRequires:  mvn(com.github.jnr:jffi::native:)
+BuildRequires:  mvn(com.github.jnr:jnr-a64asm)
 BuildRequires:  mvn(com.github.jnr:jnr-x86asm)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
@@ -42,32 +43,28 @@ BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
-An abstracted interface to invoking native functions from java
+JNR-FFI is a Java library for loading native libraries without writing JNI code
+by hand, or using tools such as SWIG.
 
 %package javadoc
 Summary:        Javadocs for %{name}
+Group:          Development/Libraries/Java
 
 %description javadoc
 This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%{mvn_file} : %{cluster}/%{name}
 
 # remove all builtin jars
-find -name '*.jar' -o -name '*.class' -exec rm -f '{}' \;
+find -name '*.jar' -delete
 
 # Unnecessary for RPM builds
-%pom_remove_plugin ":maven-javadoc-plugin"
-
-# don't fail on unused parameters... (TODO: send patch upstream)
-sed -i 's|-Werror||' libtest/GNUmakefile
+%pom_remove_plugin :maven-javadoc-plugin
 
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-Dmaven.compiler.release=6 \
-%endif
-	-Dasm.version=7.0
+%{mvn_build} -f -- -Dmaven.compiler.release=8
 
 %install
 %mvn_install
