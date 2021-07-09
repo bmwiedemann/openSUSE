@@ -218,4 +218,12 @@
     <comment>- Update to release 11.4.0</comment>
     <requestid>890655</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8b39c47337235201a3aac847af0d5759</srcmd5>
+    <version>11.5.0</version>
+    <time>1625867801</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 11.5.0</comment>
+    <requestid>904443</requestid>
+  </revision>
 </revisionlist>
