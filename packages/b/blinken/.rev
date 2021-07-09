@@ -1046,4 +1046,12 @@
     <comment>KDE gear 21.04.2</comment>
     <requestid>899127</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>2f51aefb1f2fc9f813c930284e10ad1f</srcmd5>
+    <version>21.04.3</version>
+    <time>1625867923</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04.3</comment>
+    <requestid>904858</requestid>
+  </revision>
 </revisionlist>
