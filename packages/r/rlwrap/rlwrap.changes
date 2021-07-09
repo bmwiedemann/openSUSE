@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul  9 12:13:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use upstream tar ball, that do not repack 
+- Skip /usr/bin/env in filter scripts
+
+-------------------------------------------------------------------
+Thu Jul  8 13:59:05 UTC 2021 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to 0.45.2:
+
+  * Bug fixes:
+
+  - rlwrap enables bracketed-paste when instructed to do so by .inputrc, but would then never disable it at exit.
+  - rlwrap -z (i.e. rlwrap when using a filter) would still open /tmp/rlwrap.debug after forking the filter command, preventing other users from running it afterwards
+ 
+-------------------------------------------------------------------
 Mon Jun 14 09:56:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - switch to github release urls

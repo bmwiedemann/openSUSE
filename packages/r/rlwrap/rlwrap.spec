@@ -17,7 +17,7 @@
 
 
 Name:           rlwrap
-Version:        0.45.1
+Version:        0.45.2
 Release:        0
 Summary:        A Readline Wrapper
 License:        GPL-2.0-or-later
@@ -26,6 +26,8 @@ URL:            https://github.com/hanslub42/rlwrap/
 Source0:        https://github.com/hanslub42/rlwrap/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  ed
+BuildRequires:  grep
 BuildRequires:  ncurses-devel
 BuildRequires:  readline-devel
 
@@ -44,11 +46,28 @@ autoreconf --install
 %configure
 make %{?_smp_mflags}
 
+pushd filters
+    for scr in $(grep -lE '^#![[:space:]]*/usr/bin/env[[:space:]]+' *)
+    do
+	ed ${scr} <<-'EOF'
+		1
+		s@/env[[:blank:]]\+@/@
+		.
+		w
+		q
+	EOF
+    done
+popd
+
 %check
 make %{?_smp_mflags} test
 
 %install
 %make_install
+
+pushd %{buildroot}%{_datadir}/rlwrap/filters
+    chmod a-x README *.pm *.3pm
+popd
 
 %files
 %doc AUTHORS BUGS ChangeLog NEWS README.md

@@ -189,4 +189,18 @@
       window titles.</comment>
     <requestid>899914</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b3fe2ab428a1a6adf5921c6439ddc818</srcmd5>
+    <version>0.45.2</version>
+    <time>1625868028</time>
+    <user>dimstar_suse</user>
+    <comment>- Use upstream tar ball, that do not repack 
+- Skip /usr/bin/env in filter scripts
+
+- Update to 0.45.2:
+  * Bug fixes:
+  - rlwrap enables bracketed-paste when instructed to do so by .inputrc, but would then never disable it at exit.
+  - rlwrap -z (i.e. rlwrap when using a filter) would still open /tmp/rlwrap.debug after forking the filter command, preventing other users from running it afterwards</comment>
+    <requestid>905286</requestid>
+  </revision>
 </revisionlist>
