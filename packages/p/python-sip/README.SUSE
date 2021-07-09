@@ -1,0 +1,3 @@
+This is a meta package providing the preferred SIP version for the distribution.
+It should always depend on the preferred numbered version of the SIP build tools, so 
+"python-sipX-devel" where "X" is the major version number.

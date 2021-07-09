@@ -4,5 +4,5 @@
 and C++ libraries. It was originally developed to create PyQt, the
 Python bindings for the Qt toolkit, but can be used to create bindings
 for any C or C++ library.</description>
-  <devel project="KDE:Qt5" package="python-sip"/>
+  <devel project="KDE:Qt:PyQt" package="python-sip"/>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-sip
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,60 +16,60 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if 0%{?suse_version} <= 1500
+%define sipN sip4
+%else
+%define sipN sip6
+%endif
+
+# query the default provider and assume that all installed python flavors have the same version
+%define Nversion %(rpm -q --qf '%%{version}' --whatprovides python3-%{sipN}-devel)
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
+%define plainpython python
 Name:           python-sip
-Version:        5.5.0
+Version:        %{Nversion}
 Release:        0
 Summary:        A Python bindings generator for C/C++ libraries
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/sip
-Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module qt5-sip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module toml}
-BuildRequires:  %{pythons >= 3.5.1}
-BuildRequires:  c++_compiler
-BuildRequires:  fdupes
+Source0:        README.SUSE
+BuildRequires:  %{python_module %{sipN}-devel}
 BuildRequires:  python-rpm-macros
-
+BuildArch:      noarch
+%requires_eq    python-%{sipN}
 %python_subpackages
 
 %description
-SIP is a tool that makes it very easy to create Python bindings for C
-and C++ libraries. It was originally developed to create PyQt, the
-Python bindings for the Qt toolkit, but can be used to create bindings
-for any C or C++ library.
+SIP is a collection of tools that makes it very easy to create Python
+bindings for C and C++ libraries. It was originally developed in 1998
+to create PyQt, the Python bindings for the Qt toolkit, but can be used
+to create bindings for any C or C++ library. For example it is also used
+to generate wxPython, the Python bindings for wxWidgets.
 
 %package devel
 Summary:        A Python bindings generator for C/C++ libraries
 Group:          Development/Libraries/Python
-Requires:       c++_compiler
-Requires:       python >= 3.5.1
-Requires:       python-devel
-# python-qt5-sip provides the QtPy5.sip module and macros
-Requires:       python-qt5-sip
-Requires:       python-setuptools
-Requires:       python-toml
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+%requires_eq    python-%{sipN}-devel
 
 %description devel
-SIP is a tool that makes it very easy to create Python bindings for C
-and C++ libraries. It was originally developed to create PyQt, the
-Python bindings for the Qt toolkit, but can be used to create bindings
-for any C or C++ library.
+SIP is a collection of tools that makes it very easy to create Python
+bindings for C and C++ libraries. It was originally developed in 1998
+to create PyQt, the Python bindings for the Qt toolkit, but can be used
+to create bindings for any C or C++ library. For example it is also used
+to generate wxPython, the Python bindings for wxWidgets.
 
 This package contains all the developer tools you need to create your
-own sip bindings.
+own sip bindings in the currently default version. Look for
+%{python_prefix}-sip<N>-devel, if you need to build a package with a
+specific version of SIP v<N>.
 
 %package -n python-sip-doc
 Summary:        A Python bindings generator for C/C++ libraries -- common documentation
 Group:          Development/Libraries/Python
 Provides:       %{python_module sip-doc = %{version}-%{release}}
+%requires_eq    %{plainpython}-%{sipN}-doc
 
 %description -n python-sip-doc
 SIP is a tool that makes it very easy to create Python bindings for C
@@ -77,47 +77,27 @@ and C++ libraries. It was originally developed to create PyQt, the
 Python bindings for the Qt toolkit, but can be used to create bindings
 for any C or C++ library.
 
-This package contains the documentation and example files.
+This package contains the documentation and example files in the
+currently default version. Look for %{python_prefix}-sip<N>-devel, 
+if you need to build a package with a specific version of SIP v<N>.
 
 %prep
-%setup -q -n sip-%{version}
-%autopatch -p1
+%setup -q -T -c
+cp %{SOURCE0} .
 
 %build
-%python_build
+:
 
 %install
-%python_install
-%python_clone -a %{buildroot}%{_bindir}/sip-build
-%python_clone -a %{buildroot}%{_bindir}/sip-distinfo
-%python_clone -a %{buildroot}%{_bindir}/sip-install
-%python_clone -a %{buildroot}%{_bindir}/sip-module
-%python_clone -a %{buildroot}%{_bindir}/sip-sdist
-%python_clone -a %{buildroot}%{_bindir}/sip-wheel
-%python_clone -a %{buildroot}%{_bindir}/sip5
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
-%fdupes -s doc
+:
 
-%post devel
-%python_install_alternative sip-build sip-distinfo sip-install sip-module sip-sdist sip-wheel sip5
-
-%postun devel
-%python_uninstall_alternative sip-build
+%files %{python_files}
+%doc README.SUSE
 
 %files %{python_files devel}
-%license LICENSE*
-%python_alternative %{_bindir}/sip-build
-%python_alternative %{_bindir}/sip-distinfo
-%python_alternative %{_bindir}/sip-install
-%python_alternative %{_bindir}/sip-module
-%python_alternative %{_bindir}/sip-sdist
-%python_alternative %{_bindir}/sip-wheel
-%python_alternative %{_bindir}/sip5
-%{python_sitearch}/sipbuild
-%{python_sitearch}/sip-%{version}-py*.egg-info
+%doc README.SUSE
 
 %files -n python-sip-doc
-%license LICENSE*
-%doc doc/
+%doc README.SUSE
 
 %changelog

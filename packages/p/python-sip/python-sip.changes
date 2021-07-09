@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Feb 26 09:46:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Upgrade defaults: SIPv6 for TW
+
+-------------------------------------------------------------------
+Fri Feb 19 23:02:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Make this a meta package
+  * Depends on python-sip5 as default for Tumbleweed 
+  * Depends on python-sip4 for Leap 15.3 and older
+  * Package python-sip6 is new and might become default in the 
+    future.
+
+-------------------------------------------------------------------
 Tue Nov 24 15:01:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 5.5.0

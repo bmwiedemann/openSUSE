@@ -934,4 +934,12 @@ I need to make a separate request for the py2 version.
     <comment></comment>
     <requestid>850605</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>992edc815bb93870e544c3d44dea947b</srcmd5>
+    <version>MACRO</version>
+    <time>1625867797</time>
+    <user>dimstar_suse</user>
+    <comment>make it a meta package similar to the python-tornado approach: This package depends on python-sip6 for Tumbleweed</comment>
+    <requestid>904266</requestid>
+  </revision>
 </revisionlist>
