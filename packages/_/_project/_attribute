@@ -142,7 +142,7 @@
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210519'
-  boo#1183082: '20210706'
+  boo#1183082: '20210707'
   boo#1183454: '20210707'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
@@ -164,7 +164,7 @@
   boo#1185933: '20210514'
   boo#1186083: '20210705'
   boo#1186363: '20210605'
-  boo#1186735: '20210706'
+  boo#1186735: '20210707'
   boo#1186775: '20210615'
   boo#1186890: '20210603'
   boo#1187019: '20210706'
@@ -188,7 +188,7 @@
   bsc#1179417: '20201129'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
-  gh#OSInside/kiwi#1867: '20210706'
+  gh#OSInside/kiwi#1867: '20210707'
   gh#containers/podman#10685: '20210628'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
@@ -363,7 +363,7 @@
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
-  poo#91830: '20210706'
+  poo#91830: '20210707'
   poo#92004: '20210707'
   poo#92080: '20210520'
   poo#92401: '20210527'
@@ -385,11 +385,11 @@
   poo#93847: '20210621'
   poo#93850: '20210620'
   poo#93865: '20210609'
-  poo#94009: '20210706'
+  poo#94009: '20210707'
   poo#94108: '20210615'
   poo#94225: '20210618'
   poo#94973: '20210706'
-  poo#95120: '20210706'
+  poo#95120: '20210707'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -433,7 +433,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210707</value>
+    <value>20210708</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
