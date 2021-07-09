@@ -19,15 +19,15 @@
 %bcond_without lang
 
 Name:           pam_kwallet
-Version:        5.22.2.1
+Version:        5.22.3
 Release:        0
 Summary:        A PAM Module for KWallet signing
 License:        LGPL-2.1-only AND GPL-2.0-or-later AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/5.22.2/kwallet-pam-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.22.2/kwallet-pam-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/kwallet-pam-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        baselibs.conf
