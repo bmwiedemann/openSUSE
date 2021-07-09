@@ -54,4 +54,16 @@
 - Update Requires from setup.py (forwarded request 890789 from glaubitz)</comment>
     <requestid>890798</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1b018574e9b5d0c7907a7fad33d0ccf8</srcmd5>
+    <version>6.1.0</version>
+    <time>1625868042</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 6.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 905226 from glaubitz)</comment>
+    <requestid>905296</requestid>
+  </revision>
 </revisionlist>
