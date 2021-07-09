@@ -1071,4 +1071,12 @@
     <comment>- Remove the unneeded QtWebKit build dependency</comment>
     <requestid>902592</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>f0ce558fddb314161ab9e73154a397a8</srcmd5>
+    <version>21.04.3</version>
+    <time>1625868006</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.04.3</comment>
+    <requestid>905059</requestid>
+  </revision>
 </revisionlist>
