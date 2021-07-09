@@ -1,7 +1,7 @@
 #
 # spec file for package jnr-x86asm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,15 @@
 #
 
 
-%global commit_hash 1dead92
-%global tag_hash 2a7fb9b
-Name:           jnr-x86asm
+%global cluster jnr
+Name:           %{cluster}-x86asm
 Version:        1.0.2
 Release:        0
-Summary:        Pure-java port of asmjit
+Summary:        Pure java x86 and x86_64 assembler
 License:        MIT
 Group:          Development/Libraries/Java
-URL:            https://github.com/jnr/%{name}/
-Source0:        https://github.com/jnr/%{name}/tarball/%{version}/jnr-%{name}-%{version}-0-g%{commit_hash}.tar.gz
+URL:            https://github.com/%{cluster}/%{name}/
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz
 Source1:        MANIFEST.MF
 Patch0:         add-manifest.patch
 BuildRequires:  fdupes
@@ -34,7 +33,7 @@ BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
-Pure-java port of asmjit (http://code.google.com/p/asmjit/)
+This is a pure-java port of asmjit (http://code.google.com/p/asmjit/).
 
 %package        javadoc
 Summary:        Javadoc for %{name}
@@ -44,20 +43,13 @@ Group:          Documentation/HTML
 Javadoc for %{name}.
 
 %prep
-%setup -q -n jnr-%{name}-%{tag_hash}
+%setup -q
 %patch0
 cp %{SOURCE1} .
-find ./ -name '*.jar' -delete
-find ./ -name '*.class' -delete
-
-%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.6"
-%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.6"
+%{mvn_file} : %{cluster}/%{name}
 
 %build
-%{mvn_build} -f \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6
-%endif
+%{mvn_build} -f -- -Dmaven.compiler.{source,target}=8
 
 %install
 %mvn_install

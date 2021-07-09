@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  8 18:06:02 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Change the source link
+- Spec file cleanup
+- Install artifact into %{_javadir}/jnr
+
+-------------------------------------------------------------------
 Fri Jul 24 08:47:52 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of jnr-x86asm 1.0.2
