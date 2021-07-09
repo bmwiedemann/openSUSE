@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  9 12:23:30 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.14.1:
+  * surface: accept commits with buffer size not divisible by scale
+  * buffer: make enum wlr_buffer_cap public
+  * surface: allow locking pending state in commit handler
+  * Revert "backend/drm: populate cursor plane's current_fb"
+  * backend/drm: don't clear pending cursor FB on failed commit
+  * output: detach buffer from renderer before commit
+  * output-damage: fix output swapchain handling
+  * tablet-v2: fix pad and tool object versions
+  * backend/drm: force linear layout for multi-GPU buffers
+
+-------------------------------------------------------------------
 Thu Jun 24 08:14:39 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.14.0:

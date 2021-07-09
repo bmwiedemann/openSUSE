@@ -288,4 +288,21 @@
     <comment></comment>
     <requestid>902217</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>0fd9936e54a6699b495f223383e4e907</srcmd5>
+    <version>0.14.1</version>
+    <time>1625868029</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.1:
+  * surface: accept commits with buffer size not divisible by scale
+  * buffer: make enum wlr_buffer_cap public
+  * surface: allow locking pending state in commit handler
+  * Revert &quot;backend/drm: populate cursor plane's current_fb&quot;
+  * backend/drm: don't clear pending cursor FB on failed commit
+  * output: detach buffer from renderer before commit
+  * output-damage: fix output swapchain handling
+  * tablet-v2: fix pad and tool object versions
+  * backend/drm: force linear layout for multi-GPU buffers</comment>
+    <requestid>905285</requestid>
+  </revision>
 </revisionlist>
