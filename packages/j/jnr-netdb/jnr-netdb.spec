@@ -1,7 +1,7 @@
 #
 # spec file for package jnr-netdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,15 @@
 #
 
 
-Name:           jnr-netdb
-Version:        1.1.6
+%global cluster jnr
+Name:           %{cluster}-netdb
+Version:        1.2.0
 Release:        0
 Summary:        Network services database access for java
 License:        Apache-2.0
-URL:            https://github.com/jnr/%{name}/
-Source0:        https://github.com/jnr/%{name}/archive/%{name}-%{version}.tar.gz
+Group:          Development/Libraries/Java
+URL:            https://github.com/%{cluster}/%{name}/
+Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.github.jnr:jnr-ffi)
@@ -30,28 +32,27 @@ BuildRequires:  mvn(org.sonatype.oss:oss-parent:pom:)
 BuildArch:      noarch
 
 %description
-jnr-netdb is a java interface to getservbyname(3), getservbyport(3)
+jnr-netdb is a java interface to getservbyname(3), getservbyport(3).
+
+It tries to use the native functions if possible, falling back to parsing
+/etc/services directly, and finally to an inbuilt table for use in environments
+where neither native code, nor filesystem access is possible.
 
 %package        javadoc
 Summary:        Javadoc for %{name}
+Group:          Development/Libraries/Java
 
 %description    javadoc
 Javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
+%{mvn_file} : %{cluster}/%{name}
 
-find ./ -name '*.jar' -exec rm -f '{}' \;
-find ./ -name '*.class' -exec rm -f '{}' \;
-
-%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.source" "1.6"
-%pom_xpath_set "pom:project/pom:properties/pom:maven.compiler.target" "1.6"
+find . -name '*.jar' -delete
 
 %build
-%{mvn_build} -f \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-	-- -Dmaven.compiler.release=6 \
-%endif
+%{mvn_build} -f
 
 %install
 %mvn_install
