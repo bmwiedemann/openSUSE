@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konversation
-Version:        21.04.2
+Version:        21.04.3
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
@@ -35,11 +35,10 @@ Source2:        applications.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Use-qdbus-qt5-on-openSUSE.patch
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Minimal-changes-to-use-libera.chat.patch
-Patch2:         0002-appdata-reference-Libera-fix-the-wording.patch
-Patch3:         0003-Replace-Freenode-with-Libera.patch
+Patch1:         0002-appdata-reference-Libera-fix-the-wording.patch
+Patch2:         0003-Replace-Freenode-with-Libera.patch
 # PATCH-FIX-OPENSUSE -- Mention libera in localized files
-Patch4:         0001-Bulk-search-replace-to-mention-Libera-in-localized-f.patch
+Patch3:         0001-Bulk-search-replace-to-mention-Libera-in-localized-f.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
 BuildRequires:  cmake(KF5Bookmarks) >= %{kf5_version}
