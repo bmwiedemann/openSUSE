@@ -15662,6 +15662,7 @@ Provides: weakremover(skelcd-sled)
 Provides: weakremover(openSUSE-Addon-NonOss-release)
 %endif
 # 15.3:update
+Provides: weakremover(atftp)
 Provides: weakremover(openSUSE-release-appliance-custom)
 Provides: weakremover(openSUSE-release-appliance-docker)
 Provides: weakremover(openSUSE-release-appliance-hyperv)
@@ -15680,6 +15681,24 @@ Provides: weakremover(openSUSE-release-usb-kde)
 Provides: weakremover(openSUSE-release-usb-x11)
 %ifarch aarch64 ppc64le x86_64
 Provides: weakremover(openSUSE-release-usb-xfce)
+%endif
+%ifarch aarch64_ilp32
+Provides: weakremover(gstreamer-plugins-bad-64bit)
+Provides: weakremover(gstreamer-plugins-bad-chromaprint-64bit)
+Provides: weakremover(gstreamer-plugins-bad-fluidsynth-64bit)
+Provides: weakremover(libgstadaptivedemux-1_0-0-64bit)
+Provides: weakremover(libgstbadaudio-1_0-0-64bit)
+Provides: weakremover(libgstbasecamerabinsrc-1_0-0-64bit)
+Provides: weakremover(libgstcodecparsers-1_0-0-64bit)
+Provides: weakremover(libgstinsertbin-1_0-0-64bit)
+Provides: weakremover(libgstisoff-1_0-0-64bit)
+Provides: weakremover(libgstmpegts-1_0-0-64bit)
+Provides: weakremover(libgstphotography-1_0-0-64bit)
+Provides: weakremover(libgstplayer-1_0-0-64bit)
+Provides: weakremover(libgstsctp-1_0-0-64bit)
+Provides: weakremover(libgsturidownloader-1_0-0-64bit)
+Provides: weakremover(libgstwayland-1_0-0-64bit)
+Provides: weakremover(libgstwebrtc-1_0-0-64bit)
 %endif
 # 42.1
 Provides: weakremover(arista)
