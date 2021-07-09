@@ -127,7 +127,7 @@ isci:		intel
 ar5523:		atheros
 s5p-mfc:	media
 carl9170:	atheros
-snd-hda-codec-ca0132: SKIP
+snd-hda-codec-ca0132: sound
 btusb:		bluetooth	btusb btintel btrtl
 btmtk_usb:	mediatek
 rp2:		serial

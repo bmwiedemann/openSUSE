@@ -124,7 +124,7 @@ isci:		intel		GPL-2
 ar5523:		atheros		LICENCE.atheros_firmware
 s5p-mfc:	media
 carl9170:	atheros		GPL-2
-snd-hda-codec-ca0132: SKIP	LICENCE.ca0132
+snd-hda-codec-ca0132: sound	LICENCE.ca0132
 btusb:		bluetooth	LICENCE.ibt_firmware LICENCE.rtlwifi_firmware.txt
 btmtk_usb:	mediatek	LICENCE.ralink_a_mediatek_company_firmware
 rp2:		serial

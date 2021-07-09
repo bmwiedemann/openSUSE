@@ -2719,10 +2719,22 @@ msm: of:N*T*Cqcom,sc7180-dpu
 msm: of:N*T*Cqcom,sc7180-dpuC*
 msm: of:N*T*Cqcom,sc7180-mdss
 msm: of:N*T*Cqcom,sc7180-mdssC*
+msm: of:N*T*Cqcom,sc7280-dpu
+msm: of:N*T*Cqcom,sc7280-dpuC*
+msm: of:N*T*Cqcom,sc7280-mdss
+msm: of:N*T*Cqcom,sc7280-mdssC*
 msm: of:N*T*Cqcom,sdm845-dpu
 msm: of:N*T*Cqcom,sdm845-dpuC*
 msm: of:N*T*Cqcom,sdm845-mdss
 msm: of:N*T*Cqcom,sdm845-mdssC*
+msm: of:N*T*Cqcom,sm8150-dpu
+msm: of:N*T*Cqcom,sm8150-dpuC*
+msm: of:N*T*Cqcom,sm8150-mdss
+msm: of:N*T*Cqcom,sm8150-mdssC*
+msm: of:N*T*Cqcom,sm8250-dpu
+msm: of:N*T*Cqcom,sm8250-dpuC*
+msm: of:N*T*Cqcom,sm8250-mdss
+msm: of:N*T*Cqcom,sm8250-mdssC*
 mt7601u: usb:v0B05p17D3d*dc*dsc*dp*ic*isc*ip*in*
 mt7601u: usb:v0E8Dp760Ad*dc*dsc*dp*ic*isc*ip*in*
 mt7601u: usb:v0E8Dp760Bd*dc*dsc*dp*ic*isc*ip*in*
@@ -3102,6 +3114,8 @@ qcom_q6v5_pas: of:N*T*Cqcom,sdm845-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sdm845-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom,sdx55-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom,sm8150-cdsp-pas
@@ -4859,6 +4873,7 @@ smc91c92_cs: pcmcia:m0109c0501f*fn*pfn00pa*pb*pc*pd*
 smc91c92_cs: pcmcia:m0140c000Af*fn*pfn00pa*pb*pc*pd*
 smc91c92_cs: pcmcia:m016Cc0020f*fn00pfn*pa*pb*pc*pd*
 smc91c92_cs: pcmcia:m016Cc0023f*fn*pfn*pa*pb*pc*pd*
+snd_hda_codec_ca0132: hdaudio:v11020011r*a01*
 snd_intel_sst_acpi: acpi*:80860F28:*
 snd_intel_sst_acpi: acpi*:808622A8:*
 snd_intel_sst_acpi: sst
@@ -5095,6 +5110,7 @@ ti_usb_3410_5052: usb:v110Ap1130d*dc*dsc*dp*ic*isc*ip*in*
 ti_usb_3410_5052: usb:v110Ap1131d*dc*dsc*dp*ic*isc*ip*in*
 ti_usb_3410_5052: usb:v110Ap1150d*dc*dsc*dp*ic*isc*ip*in*
 ti_usb_3410_5052: usb:v110Ap1151d*dc*dsc*dp*ic*isc*ip*in*
+ti_usb_3410_5052: usb:v14B0p3410d*dc*dsc*dp*ic*isc*ip*in*
 ti_usb_3410_5052: usb:v1A61p3410d*dc*dsc*dp*ic*isc*ip*in*
 ti_usb_3410_5052: usb:v1A61p3420d*dc*dsc*dp*ic*isc*ip*in*
 ti_vpe: of:N*T*Cti,dra7-vpe

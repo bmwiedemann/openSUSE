@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20210609
+%define version_unconverted 20210629
 
 Name:           kernel-firmware
-Version:        20210609
+Version:        20210629
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -3797,6 +3797,10 @@ Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,sc7180-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7280-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sc7280-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sc7280-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sc7280-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-cdsp-pas)
@@ -3807,10 +3811,16 @@ Supplements:    modalias(of:N*T*Cqcom,sdm845-mdss)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pil)
 Supplements:    modalias(of:N*T*Cqcom,sdm845-mss-pilC*)
+Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom,sdx55-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm8150-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8150-slpi-pas)
@@ -3819,6 +3829,10 @@ Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-dpu)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-mdss)
+Supplements:    modalias(of:N*T*Cqcom,sm8250-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pas)
 Supplements:    modalias(of:N*T*Cqcom,sm8250-slpi-pasC*)
 Supplements:    modalias(of:N*T*Cqcom,sm8350-adsp-pas)
@@ -5539,6 +5553,7 @@ Supplements:    modalias(usb:v110Ap1613d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1618d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1653d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v110Ap1658d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v14B0p3410d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p0001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p0002d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v1608p0003d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5616,6 +5631,7 @@ Supplements:    modalias(acpi*:CSC0010:*)
 Supplements:    modalias(acpi*:INT33C8:*)
 Supplements:    modalias(acpi*:INT3438:*)
 Supplements:    modalias(acpi*:PNPB006:*)
+Supplements:    modalias(hdaudio:v11020011r*a01*)
 Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001073d0000000Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001073d0000000Csv*sd*bc*sc*i*)
