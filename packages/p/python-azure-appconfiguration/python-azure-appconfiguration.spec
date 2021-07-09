@@ -16,18 +16,20 @@
 #
 
 
+%define realversion 1.2.0
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-appconfiguration
-Version:        1.2.0b2
+Version:        1.2.0.0
 Release:        0
 Summary:        Microsoft App Configuration Data Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration/azure-appconfiguration-%{version}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-appconfiguration/azure-appconfiguration-%{realversion}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module setuptools}
@@ -55,10 +57,10 @@ application deployment. Use App Configuration to securely store all the
 settings for your application in one place.
 
 %prep
-%setup -q -n azure-appconfiguration-%{version}
+%setup -q -n azure-appconfiguration-%{realversion}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-appconfiguration-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure-appconfiguration-%{realversion}
 %python_build
 
 %install
