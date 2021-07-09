@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  7 09:22:03 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Add the os-prober package to the set of packages to install
+  if the package is available and supported on the arch
+  (bsc#1186369)
+- 4.4.5
+
+-------------------------------------------------------------------
 Fri Jun 18 07:28:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add riscv64 support (jsc#PM-2612)
