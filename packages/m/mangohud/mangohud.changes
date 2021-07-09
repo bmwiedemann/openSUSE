@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  9 02:44:39 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.5:
+  * Fixed more issues where incorrect engine name would be shown.
+  * ToGL detection.
+  * middle-left and middle-right are now options in the position param.
+  * Fixed issue where vulkan driver version would be incorrect. 
+
+-------------------------------------------------------------------
 Thu Jun 24 11:05:34 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.4:

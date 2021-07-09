@@ -19,7 +19,7 @@
 %define imgui_ver 1.81
 %define imgui_wrap 1
 Name:           mangohud
-Version:        0.6.4
+Version:        0.6.5
 Release:        0
 Summary:        A Vulkan and OpenGL overlay for monitoring
 License:        MIT
