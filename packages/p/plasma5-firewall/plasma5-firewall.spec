@@ -21,15 +21,15 @@
 
 %bcond_without lang
 Name:           plasma5-firewall
-Version:        5.22.2.1
+Version:        5.22.3
 Release:        0
 Summary:        Config Module for the System Firewall
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            https://www.kde.org
-Source0:        https://download.kde.org/stable/plasma/5.22.2/plasma-firewall-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/plasma/%{version}/plasma-firewall-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.22.2/plasma-firewall-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-firewall-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
