@@ -80,7 +80,6 @@ BuildRequires:  %{python_module pyqt-builder >= 1.9}
 BuildRequires:  %{python_module qt5-sip}
 BuildRequires:  %{python_module sip-devel >= 5.3}
 Requires:       python-qt5-sip
-%requires_ge    libqt5-x11
 %requires_ge    python-dbus-python
 Provides:       python-PyQt5 = %{version}-%{release}
 Suggests:       python-%{mname}-quick3d

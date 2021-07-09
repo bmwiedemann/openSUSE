@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  6 11:51:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- remove the noop %requires_ge libqt5-x11
+
+-------------------------------------------------------------------
 Wed Apr 14 08:29:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the QtWebKit dependency everywhere.
