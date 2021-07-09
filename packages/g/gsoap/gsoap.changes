@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  7 06:42:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.115
+  * Upgraded Apache module `mod_gsoap` with new features to
+    simplify support for HTTP PUT, GET, PATCH and DELETE using
+    the `httpget` and `httppost` plugins.
+  * Updated `wsaapi` plugin with new registry parameter
+    `SOAP_WSA_NEW_TRANSFER` to allow `wsaapi` to be used with the
+    `mod_gsoap` plugin.
+
+-------------------------------------------------------------------
 Mon Apr 26 15:33:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.114
