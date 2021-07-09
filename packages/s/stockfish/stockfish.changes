@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul  9 08:34:14 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Update to version 14:
+  The engine is now significantly stronger than just a few months
+  ago, and wins four times more game pairs than it loses against 
+  the previous release version. 
+ 
+  Stockfish 14 is now at least 400 Elo ahead of Stockfish 7, a 
+  top engine in 2016. During the last five years, Stockfish has thus 
+  gained about 80 Elo per year.
+- Refresh date.patch
+
+-------------------------------------------------------------------
 Thu Apr 29 09:44:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 13:

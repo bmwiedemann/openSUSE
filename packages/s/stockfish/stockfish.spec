@@ -1,7 +1,7 @@
 #
 # spec file for package stockfish
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 # See evaluate.h > EvalFileDefaultName
-%define nnuenet nn-62ef826d1a6d.nnue
+%define nnuenet nn-3475407dc199.nnue
 Name:           stockfish
-Version:        13
+Version:        14
 Release:        0
 Summary:        Chess engine
 License:        GPL-3.0-or-later

@@ -1,10 +1,10 @@
-Index: Stockfish-sf_12/src/misc.cpp
+Index: Stockfish-sf_14/src/misc.cpp
 ===================================================================
---- Stockfish-sf_12.orig/src/misc.cpp
-+++ Stockfish-sf_12/src/misc.cpp
-@@ -140,18 +140,10 @@ public:
+--- Stockfish-sf_14.orig/src/misc.cpp
++++ Stockfish-sf_14/src/misc.cpp
+@@ -142,18 +142,10 @@ public:
  
- const string engine_info(bool to_uci) {
+ string engine_info(bool to_uci) {
  
 -  const string months("Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec");
 -  string month, day, year;
