@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  5 11:31:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix use-after-free in __cil_verify_classperms (CVE-2021-36085, 1187965).
+  Added CVE-2021-36085.patch
+- Fix use-after-free in cil_reset_classpermission (CVE-2021-36086, 1187964).
+  Added CVE-2021-36086.patch
+
+-------------------------------------------------------------------
 Tue Mar  9 09:11:42 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 3.2

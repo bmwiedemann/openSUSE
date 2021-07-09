@@ -27,6 +27,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/SELinuxProject/selinux/wiki/Releases
 Source:         https://github.com/SELinuxProject/selinux/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source2:        baselibs.conf
+# all upstream, remove in next version
+Patch0:         CVE-2021-36085.patch
+Patch1:         CVE-2021-36086.patch
 BuildRequires:  flex
 BuildRequires:  pkgconfig
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -88,6 +91,7 @@ policies.
 
 %prep
 %setup -q
+%autopatch -p2
 
 %build
 %define _lto_cflags %{nil}
