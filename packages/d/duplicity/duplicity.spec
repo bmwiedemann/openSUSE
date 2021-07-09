@@ -23,7 +23,7 @@ Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Backup
 URL:            http://duplicity.nongnu.org/
-Source:         %{name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/duplicity/duplicity-%{version}.tar.gz
 Patch1:         duplicity-remove_shebang.patch
 BuildRequires:  fdupes
 BuildRequires:  librsync-devel >= 0.9.6
