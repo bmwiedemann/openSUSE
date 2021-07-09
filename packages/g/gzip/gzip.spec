@@ -76,6 +76,9 @@ export LDFLAGS="-pie"
 autoreconf -f -i
 export CFLAGS="$CFLAGS -DDFLTCC_LEVEL_MASK=0x7e"
 %endif
+# Avoid text relocations on i386 as the assembler code (in
+# lib/match.c) is not prepared for PIE (bsc#1143125).
+export DEFS=NO_ASM
 %configure --disable-silent-rules \
   gl_cv_func_printf_directive_n=yes \
   gl_cv_func_printf_infinite_long_double=yes \

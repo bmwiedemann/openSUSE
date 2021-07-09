@@ -448,4 +448,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment></comment>
     <requestid>885153</requestid>
   </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>d7cf8438131c0264b45a9311b22a166c</srcmd5>
+    <version>1.10</version>
+    <time>1625867793</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>903071</requestid>
+  </revision>
 </revisionlist>
