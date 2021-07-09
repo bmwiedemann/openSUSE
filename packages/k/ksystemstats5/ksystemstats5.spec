@@ -19,10 +19,10 @@
 
 %bcond_without lang
 Name:           ksystemstats5
-Version:        5.22.2.1
+Version:        5.22.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
-%{!?_plasma5_bugfix: %define _plasma5_bugfix 5.22.2}
+%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 Summary:        Plugin based system monitoring daemon
@@ -30,14 +30,16 @@ Summary:        Plugin based system monitoring daemon
 License:        GPL-2.0-or-later AND CC0-1.0 AND BSD-3-Clause AND BSD-2-Clause
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/5.22.2/ksystemstats-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.22.2/ksystemstats-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/ksystemstats-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 5.78.0
+%ifnarch s390 s390x
 BuildRequires:  libsensors4-devel
+%endif
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
@@ -90,7 +92,10 @@ dbus-run-session make %{?_smp_mflags} -C build VERBOSE=1 test
 %{_kf5_bindir}/ksystemstats
 %{_kf5_bindir}/kstatsviewer
 %dir %{_kf5_plugindir}/ksystemstats/
-%{_kf5_plugindir}/ksystemstats/ksystemstats_plugin_{cpu,disk,gpu,lmsensors,memory,network,osinfo,power}.so
+%{_kf5_plugindir}/ksystemstats/ksystemstats_plugin_{cpu,disk,gpu,memory,network,osinfo,power}.so
+%ifnarch s390 s390x
+%{_kf5_plugindir}/ksystemstats/ksystemstats_plugin_lmsensors.so
+%endif
 %{_kf5_sharedir}/dbus-1/services/org.kde.ksystemstats.service
 %{_userunitdir}/plasma-ksystemstats.service
 

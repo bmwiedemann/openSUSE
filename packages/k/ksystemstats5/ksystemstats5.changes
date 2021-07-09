@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul  6 12:01:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.2.1:
+  * Really fix build
+  * Fix build
+- Drop patches, now upstream:
+  * 0001-Fix-build.patch
+  * 0002-Really-fix-build.patch
+
+-------------------------------------------------------------------
+Sat Jun 26 19:58:31 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- s390 has no libsensors
+- Add patches to fix build without libsensors:
+  * 0001-Fix-build.patch
+  * 0002-Really-fix-build.patch
+
+-------------------------------------------------------------------
 Wed Jun 23 08:24:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.2.1
