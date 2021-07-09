@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  5 23:59:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.182.0
+  * loader: Prevent crash from VK_KHR_display
+  * loader: Silence erroneous implicit layer warning
+
+-------------------------------------------------------------------
 Wed May  5 07:25:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.176.0
