@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  6 12:01:51 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.2.1:
+  * [Media Player] Skip source if it doesn't exist (kde#439309)
+  * Guard calls into layer shell (kde#439356)
+  * xembed-sni-proxy: Add Menu property (kde#439229)
+  * Assing first screen if `screen` is null (kde#438277)
+
+-------------------------------------------------------------------
 Fri Jun 25 21:13:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - No longer force GDK_BACKEND, kde-gtk-config deals with it meanwhile:

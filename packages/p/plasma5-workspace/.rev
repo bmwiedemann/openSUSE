@@ -1712,4 +1712,21 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
   * Init ShellCorona after KDBusService (kde#408310)</comment>
     <requestid>902488</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>0b20181e8b69e525afb8db5703f36c8e</srcmd5>
+    <version>5.22.3</version>
+    <time>1625867846</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.22.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.2
+- Changes since 5.22.2.1:
+  * [Media Player] Skip source if it doesn't exist (kde#439309)
+  * Guard calls into layer shell (kde#439356)
+  * xembed-sni-proxy: Add Menu property (kde#439229)
+  * Assing first screen if `screen` is null (kde#438277)
+</comment>
+    <requestid>904552</requestid>
+  </revision>
 </revisionlist>
