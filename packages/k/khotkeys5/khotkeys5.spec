@@ -18,19 +18,19 @@
 
 %bcond_without lang
 Name:           khotkeys5
-Version:        5.22.2.1
+Version:        5.22.3
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
-%{!?_plasma5_bugfix: %define _plasma5_bugfix 5.22.2}
+%{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 Summary:        KDE's hotkey daemon
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            http://www.kde.org
-Source:         https://download.kde.org/stable/plasma/5.22.2/khotkeys-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz
 %if %{with lang}
-Source1:        https://download.kde.org/stable/plasma/5.22.2/khotkeys-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/khotkeys-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
