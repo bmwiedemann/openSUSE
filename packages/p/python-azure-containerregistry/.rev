@@ -19,4 +19,15 @@
     CHANGELOG.md file provided with this package (forwarded request 903219 from glaubitz)</comment>
     <requestid>903222</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f7bd91d24845422ea0e4ea8c21db0e8d</srcmd5>
+    <version>1.0.0b4</version>
+    <time>1625868038</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b4
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 905266 from glaubitz)</comment>
+    <requestid>905281</requestid>
+  </revision>
 </revisionlist>

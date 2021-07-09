@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-containerregistry
-Version:        1.0.0b3
+Version:        1.0.0b4
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library for Python
 License:        MIT
