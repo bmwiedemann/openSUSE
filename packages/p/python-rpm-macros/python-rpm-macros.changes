@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 29 20:51:43 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20210628.eccf3f2:
+  * fix boolean split gh#openSUSE/python-rpm-macros#111
+
+-------------------------------------------------------------------
+Mon Jun 07 12:15:13 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 20210607.c22f1cc:
+  * increase default python3 update-alternative prio by 1000
+  * Update default-prjconf
+  * Support flavor rewriting of boolean runtime dependencies
+
+-------------------------------------------------------------------
 Thu Feb 04 22:27:24 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 20210204.937b8d8:

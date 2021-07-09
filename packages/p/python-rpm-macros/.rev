@@ -417,4 +417,12 @@ prerequisite for new python submission</comment>
 </comment>
     <requestid>869588</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d7cc53abae09e78bf8607ea54a744080</srcmd5>
+    <version>20210628.eccf3f2</version>
+    <time>1625867795</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>904437</requestid>
+  </revision>
 </revisionlist>
