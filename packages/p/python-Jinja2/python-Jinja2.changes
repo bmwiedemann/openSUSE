@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  9 11:03:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- clean up single-spec: Remove python2 remnants
+
+-------------------------------------------------------------------
+Sun Jun 13 13:55:29 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- skip building for Python 2.x
+
+-------------------------------------------------------------------
+Mon May 31 06:38:35 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to 3.0.1
+   Read the announcement:
+    https://palletsprojects.com/blog/flask-2-0-released/
+   Read the full list of changes:
+    https://jinja.palletsprojects.com/changes/#version-3-0-0
+- python-Jinja2-vim subpackage dropped
+  vim highlight rule files do not exist anymore
+
+-------------------------------------------------------------------
 Tue Feb  9 15:42:40 UTC 2021 - Alexandros Toptsoglou <atoptsoglou@suse.com>
 
 - update to 2.11.3  

@@ -21,14 +21,14 @@
 %else
 %bcond_without test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-Jinja2
-Version:        2.11.3
+Version:        3.0.1
 Release:        0
 Summary:        A template engine written in pure Python
 License:        BSD-3-Clause
-URL:            https://github.com/pallets/jinja
+URL:            https://jinja.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/J/Jinja2/Jinja2-%{version}.tar.gz
 BuildRequires:  %{python_module MarkupSafe >= 0.23}
 BuildRequires:  %{python_module pytest}
@@ -40,26 +40,14 @@ Requires:       python-Babel >= 0.8
 Requires:       python-MarkupSafe >= 0.23
 # Do not declare buildarch as the tests are arch specific
 #BuildArch:      noarch
-%ifpython2
-Provides:       %{oldpython}-jinja2 = %{version}
-Obsoletes:      %{oldpython}-jinja2 < %{version}
-%endif
+Provides:       python-jinja2 = %{version}-%{release}
+Obsoletes:      python-jinja2 < %{version}-%{release}
 %python_subpackages
 
 %description
 Jinja2 is a template engine written in pure Python.  It provides a Django
 inspired non-XML syntax but supports inline expressions and an optional
 sandboxed environment.
-
-%package -n python-Jinja2-vim
-Summary:        Jinja2 syntax files for Vim
-%if 0%{?suse_version} || 0%{?fedora_version} >= 24
-Recommends:     vim
-%endif
-
-%description -n python-Jinja2-vim
-Vim syntax highlighting scheme for Jinja2 templates.
-
 
 %prep
 %setup -q -n Jinja2-%{version}
@@ -70,7 +58,6 @@ dos2unix LICENSE.rst # Fix wrong EOL encoding
 
 %install
 %python_install
-install -Dm644 ext/Vim/jinja.vim %{buildroot}%{_datadir}/vim/site/syntax/jinja.vim # Install VIM syntax file
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -83,11 +70,5 @@ install -Dm644 ext/Vim/jinja.vim %{buildroot}%{_datadir}/vim/site/syntax/jinja.v
 %doc README.rst CHANGES.rst artwork examples
 %{python_sitelib}/jinja2
 %{python_sitelib}/Jinja2-%{version}-py%{python_version}.egg-info
-
-%files -n python-Jinja2-vim
-%dir %{_datadir}/vim
-%dir %{_datadir}/vim/site
-%dir %{_datadir}/vim/site/syntax
-%{_datadir}/vim/site/syntax/jinja.vim
 
 %changelog
