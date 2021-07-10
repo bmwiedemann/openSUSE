@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 16:26:12 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add spdlog-1.8.5-fmt8.patch and spdlog-1.8.5-fmt8_tests.patch
+  to fix compatibility with fmt 8
+
+-------------------------------------------------------------------
 Thu Mar 25 19:43:50 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.8.5

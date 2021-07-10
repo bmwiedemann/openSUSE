@@ -24,9 +24,12 @@ Summary:        C++ logging library
 License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM spdlog-1.8.5-fmt8.patch
+Patch0:         spdlog-1.8.5-fmt8.patch
+# PATCH-FIX-UPSTREAM spdlog-1.8.5-fmt8_tests.patch
+Patch1:         spdlog-1.8.5-fmt8_tests.patch
 BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake >= 3.10
-BuildRequires:  gcc
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++ >= 8
 %else
@@ -34,7 +37,7 @@ BuildRequires:  gcc8-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(fmt) >= 8.0.0
 BuildRequires:  pkgconfig(libsystemd)
 
 %description
