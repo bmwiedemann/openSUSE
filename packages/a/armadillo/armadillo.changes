@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  9 20:37:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 10.5.3
+  * fix for handling sparse matrices with no elements
+  * minor speedups
+
+-------------------------------------------------------------------
 Mon Jun 21 00:13:52 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.5.2:
