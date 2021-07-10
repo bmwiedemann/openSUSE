@@ -29,13 +29,17 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
+%if %{?suse_version} < 1540
+BuildRequires:  %{python_module typing_extensions}
+%else
+BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
+%endif
 %if 0%{python_version_nodots} < 38
 Requires:       python-typing_extensions
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
