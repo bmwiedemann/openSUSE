@@ -462,4 +462,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>883028</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>d60249511703a231a20284e81b70de1b</srcmd5>
+    <version>8.3.1</version>
+    <time>1625950446</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904590</requestid>
+  </revision>
 </revisionlist>

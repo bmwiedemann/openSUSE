@@ -20,7 +20,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pillow
-Version:        8.2.0
+Version:        8.3.1
 Release:        0
 Summary:        Python Imaging Library (Fork)
 License:        HPND
