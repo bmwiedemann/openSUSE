@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 19 14:16:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 8.0.1:
+  way too many changes to be listed here, see:
+  https://click.palletsprojects.com/en/8.0.x/changes/#version-8-0-1
+
+-------------------------------------------------------------------
 Thu Aug 20 23:45:47 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Add runtime dependency on setuptools
