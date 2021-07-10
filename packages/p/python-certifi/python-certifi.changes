@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 17 20:53:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.5.30:
+  Added certs:
+  * CN=AC RAIZ FNMT-RCM SERVIDORES SEGUROS O=FNMT-RCM OU=Ceres
+  * CN=GlobalSign Root R46 O=GlobalSign nv-sa
+  * CN=GlobalSign Root E46 O=GlobalSign nv-sa
+  * CN=GLOBALTRUST 2020 O=e-commerce monitoring GmbH
+  * CN=ANF Secure Server Root CA O=ANF Autoridad de Certificacion OU=ANF CA Raiz
+  * CN=Certum EC-384 CA O=Asseco Data Systems S.A. OU=Certum Certification Authority
+  * CN=Certum Trusted Root CA O=Asseco Data Systems S.A. OU=Certum Certification Authority
+
+-------------------------------------------------------------------
 Sat Dec 19 10:43:30 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2020.12.5 

@@ -214,4 +214,20 @@
     <comment>- update to 2020.12.5</comment>
     <requestid>856972</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3f402f57769da99e1f07d730b2f8a9f5</srcmd5>
+    <version>2021.5.30</version>
+    <time>1625950413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.5.30:
+  Added certs:
+  * CN=AC RAIZ FNMT-RCM SERVIDORES SEGUROS O=FNMT-RCM OU=Ceres
+  * CN=GlobalSign Root R46 O=GlobalSign nv-sa
+  * CN=GlobalSign Root E46 O=GlobalSign nv-sa
+  * CN=GLOBALTRUST 2020 O=e-commerce monitoring GmbH
+  * CN=ANF Secure Server Root CA O=ANF Autoridad de Certificacion OU=ANF CA Raiz
+  * CN=Certum EC-384 CA O=Asseco Data Systems S.A. OU=Certum Certification Authority
+  * CN=Certum Trusted Root CA O=Asseco Data Systems S.A. OU=Certum Certification Authority</comment>
+    <requestid>900658</requestid>
+  </revision>
 </revisionlist>
