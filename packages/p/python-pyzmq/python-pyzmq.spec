@@ -25,7 +25,7 @@
 %bcond_with     tests
 %endif
 Name:           python-pyzmq
-Version:        22.0.3
+Version:        22.1.0
 Release:        0
 Summary:        Python bindings for 0MQ
 License:        BSD-3-Clause AND LGPL-3.0-or-later

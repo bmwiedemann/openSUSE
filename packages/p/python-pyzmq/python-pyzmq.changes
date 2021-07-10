@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul  5 16:30:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 22.1.0
+  * New features:
+    - asyncio: experimental support for Proactor eventloop if
+      tornado 6.1 is available by running a selector in a
+      background thread.
+  * Fixes:
+    - Windows: fix type of socket.FD option in win-amd64
+    - asyncio: Cancel timers when using HWM with async Sockets
+  * Other changes:
+    - Windows: update bundled libzmq dll URLs for Windows. Windows
+      wheels no longer include concrt140.dll.
+    - adopt pre-commit for formatting, linting
+
+-------------------------------------------------------------------
+Mon Jul  5 16:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase memory constraint from 8000M to 9000M since build
+  sometimes fails with "Out of memory" errors.
+
+-------------------------------------------------------------------
 Fri Mar 12 09:13:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Clean up of SPEC file, while investigating test suite errors.
