@@ -156,4 +156,14 @@
     <comment>- Add patch gcc6-fix-errors.patch to remove errors seen by GCC6.</comment>
     <requestid>397948</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>28034c5ec6388a97963c08ea664d79d0</srcmd5>
+    <version>5.1.0</version>
+    <time>1625950478</time>
+    <user>dimstar_suse</user>
+    <comment>- Copied libmusicbrainz5 package and fixed spec file to fix factory
+  build failure. Deleted obsolete libmusicbrainz-2.1.5-gcc43.patch
+  and gcc6-fix-errors.patch</comment>
+    <requestid>905434</requestid>
+  </revision>
 </revisionlist>

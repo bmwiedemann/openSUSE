@@ -1,7 +1,7 @@
 #
 # spec file for package libmusicbrainz
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,84 +12,78 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libmusicbrainz
-BuildRequires:  gcc-c++
-BuildRequires:  libexpat-devel
-BuildRequires:  libtool
-BuildRequires:  pkg-config
-Summary:        Library That Provides Access to the MusicBrainz Server
-License:        LGPL-2.1+
-Group:          System/Libraries
-Version:        2.1.5
+Version:        5.1.0
 Release:        0
-Url:            http://www.musicbrainz.org/
-Source:         %{name}-%{version}.tar.bz2
-Source1000:     baselibs.conf
-Patch0:         libmusicbrainz-2.1.5-gcc43.patch
-# PATCH-FIX-OPENSUSE gcc6-fix-errors.patch -- Fix errors spotted by GCC6.
-Patch1:         gcc6-fix-errors.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Library That Provides Access to the MusicBrainz Server
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+URL:            http://musicbrainz.org/doc/libmusicbrainz
+Source0:        https://github.com/metabrainz/libmusicbrainz/releases/download/release-%{version}/%{name}-%{version}.tar.gz
+Source1:        baselibs.conf
+# PATCH-FIX-UPSTREAM musicbrainz-cmake-noglob.patch dimstar@opensuse.org -- do not use wildcards for dependencies
+Patch0:         musicbrainz-cmake-noglob.patch
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  neon-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libxml-2.0)
 
 %description
 MusicBrainz is the second generation incarnation of the CD Index. This
 server is designed to enable audio CD, MP3 and Vorbis players to
 download metadata about the music they are playing.
 
-%package -n libmusicbrainz4
+%package -n libmusicbrainz5-1
 Summary:        Library That Provides Access to the MusicBrainz Server
 Group:          System/Libraries
-Provides:       %{name} = %{version}
-Obsoletes:      %{name} < %{version}
 
-%description -n libmusicbrainz4
+%description -n libmusicbrainz5-1
 MusicBrainz is the second generation incarnation of the CD Index. This
 server is designed to enable audio CD, MP3 and Vorbis players to
 download metadata about the music they are playing.
 
 %package devel
-Requires:       libmusicbrainz4 = %{version} libstdc++-devel
-Summary:        Include Files and Libraries Mandatory for Development
+Summary:        Library That Provides Access to the MusicBrainz Server
 Group:          Development/Libraries/C and C++
+Requires:       libmusicbrainz5-1 = %{version}
+Requires:       libstdc++-devel
+Provides:       libmusicbrainz5-devel = %{version}-%{release}
+Obsoletes:      libmusicbrainz5-devel < %{version}-%{release}
 
 %description devel
-This package contains all necessary include files and libraries needed
-to develop applications that require these.
+MusicBrainz is the second generation incarnation of the CD Index. This
+server is designed to enable audio CD, MP3 and Vorbis players to
+download metadata about the music they are playing.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -n %{name}-%{version} -p1
 
 %build
-autoreconf -fiv
-%configure --disable-static --with-pic
-%{__make} %{?jobs:-j%jobs}
+CFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64"
+CXXFLAGS="%{optflags} -D_FILE_OFFSET_BITS=64 -fvisibility-inlines-hidden"
+%cmake
+make %{?_smp_mflags} VERBOSE=1
 
 %install
-%makeinstall
-rm -f %{buildroot}%{_libdir}/libmusicbrainz.la
+%cmake_install
 
-%clean
-rm -rf $RPM_BUILD_ROOT
+%post -n libmusicbrainz5-1 -p /sbin/ldconfig
+%postun -n libmusicbrainz5-1 -p /sbin/ldconfig
 
-%post -n libmusicbrainz4 -p /sbin/ldconfig
-
-%postun -n libmusicbrainz4 -p /sbin/ldconfig
-
-%files -n libmusicbrainz4
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog README TODO
-%{_libdir}/libmusicbrainz.so.4*
+%files -n libmusicbrainz5-1
+%license COPYING.txt
+%doc AUTHORS.txt NEWS.txt README.md
+%{_libdir}/libmusicbrainz5.so.[0-9]*
 
 %files devel
-%defattr(-, root, root)
-%doc examples/*cpp examples/*c
-%{_includedir}/musicbrainz
-%{_libdir}/libmusicbrainz.so
-%{_libdir}/pkgconfig/*.pc
+%doc examples/*.cc examples/*.c
+%{_includedir}/musicbrainz5/
+%{_libdir}/libmusicbrainz5.so
+%{_libdir}/pkgconfig/libmusicbrainz5.pc
 
 %changelog
