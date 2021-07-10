@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        58.0.0
+Version:        59.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -35,12 +35,13 @@ BuildRequires:  fdupes
 BuildRequires:  file-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(gmp)
 %else
 BuildRequires:  gcc8-c++
+BuildRequires:  gmp-devel
 %endif
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  jpcre2-devel
 BuildRequires:  libboost_headers-devel >= 1.66.0
 BuildRequires:  libxslt-tools
 BuildRequires:  nlohmann_json-devel
@@ -84,12 +85,12 @@ This package contains the graphical user interface for the mkvtoolnix utils.
 %prep
 %autosetup -p1
 # Make sure to use system libs:
-rm -rf lib/{boost,libebml,libmatroska,nlohmann-json,pugixml,fmt}
+rm -rf lib/{boost,libebml,libmatroska,nlohmann-json,pugixml,fmt,utf8-cpp}
 
 %build
 export CXX=g++
 test -x "$(type -p g++-8)" && export CXX=g++-8
-export CXXFLAGS="%{optflags} -I%{_include}/utf8cpp"
+export CPPFLAGS="%{optflags} -I%{_includedir}/utf8cpp"
 %configure --disable-update-check --enable-debug --enable-optimization
 rake --verbose %{?_smp_mflags} V=1
 

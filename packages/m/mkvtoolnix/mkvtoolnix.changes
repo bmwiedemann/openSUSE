@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sat Jul 10 11:41:00 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 59.0.0
+  New features and enhancements:
+  * mkvmerge: WebVTT parser: the parser now follows the specs'
+    rules for parsing timestamps more closely by being more
+    lenient: it allows arbitrary number of spaces & tabs at the
+    start of the line & around the arrow; it allows any number
+    of digits for the hours.
+  * MKVToolNix GUI: multiplexer: when adding a Blu-ray playlist
+    without scanning for other playlists the GUI will now look
+    for disc library information & let the user select which one
+    to use if there's more than one entry.
+  * MKVToolNix GUI: multiplexer: added an option for sorting
+    files & tracks by track types when adding them to multiplex
+    settings. The order is: video first followed by audio,
+    subtitles and other types. Files & tracks can still be
+    reordered manually later. The option is enabled by default &
+    can be found in the preferences → "Multiplexer" page →
+    "Adding files" section.
+  * MKVToolNix GUI: multiplexer: added an option for recognizing
+    file name sequences such as `movie.001.mp4`, `movie.002.mp4`,
+    `movie.003.mp4` when adding multiple files at once. If a
+    sequence is detected, the only first file will be added while
+    the second and following file names will be appended to the
+    first one. The option is enabled by default & can be found
+    in the preferences → "Multiplexer" page → "Adding files"
+    section.
+  * MKVToolNix GUI: multiplexer: added small colored boxes for
+    each file & track in order to indicate from which file each
+    track is read. The colors used can be configured in the
+    preferences → "Multiplexer" page → "File & track colors"
+    section.
+  Bug fixes:
+  * build system: fixed compilation with fmt v8. Fixes #3151.
+  * mkvmerge: SRT subtitle reader: characters that aren't valid
+    according to the assumed encoding of the file will now be
+    replaced by the Unicode "Replacement Character" U+FFFD
+    instead of keeping the invalid characters, potentially
+    violating the Matroska specs.
+  * mkvmerge: WebVTT parser: the parser now accepts timestamps
+    with hours larger than 99.
+  * mkvextract: TTA extraction, only on Windows: fixed removing
+    the temporary file created during extraction.
+  * mkvmerge, mkvpropedit, MKVToolNix GUI's multiplexer & header
+    editor: MIME type detection is now done using Qt instead of
+    the `magic` library. The main impact is the MIME types of
+    TrueType & OpenType fonts are now detected correctly.
+  * MKVToolNix GUI: multiplexer: when adding files to the
+    multiplexer by running the GUI's executable with file names
+    as command line arguments, the source directory will be
+    remembered as the "last open directory" again, causing
+    subsequent uses of the "open file" dialog to start in the
+    same directory.
+  * MKVToolNix GUI: multiplexer: the "default track flag" column
+    in the track list was missing its icons. Additionally it
+    contained text even for things that aren't regular tracks
+    and therefore do not actually have that flag (e.g. chapters
+    or tags).
+  * MKVToolNix GUI: multiplexer: the default for the dialog
+    asking the user what to do with dragged & dropped files if
+    they've never seen the dialog is back to adding the files to
+    the current multiplex settings instead of "add as additional
+    parts" which was an unintentional default.
+  * MKVToolNix GUI: multiplexer: the "show command line" dialog
+    will now always use backward slashes for the "Windows
+    (cmd.exe)" mode and forward slashes for the "Linux/Unix
+    shells" mode, regardless of the operating system it's
+    currently running on.
+  Build system changes:
+  * The Qt library is now required for building all
+    applications, even the command-line ones, as they use Qt's
+    MIME type detection capabilities. In turn this means that
+    you cannot disable the Qt usage anymore; either Qt5 or Qt 6
+    is required. You can still chose not to build MKVToolNix
+    GUI, though. A new option has been added to `configure`
+    for this purpose: `--disable-gui`.
+  * The `gmp` library is now required.
+  * The `magic` library is not used anymore.
+  * The `PCRE2` & `JPCRE2` libraries are not used anymore. The
+    bundled version of `JPCRE2` was removed.
+  * Boost's "rational" library is not used anymore.
+  * `configure`: the option `--enable-appimage` has been
+    removed. The location of the relevant directories within an
+    AppImage is now detected automatically.
+  * The bundled `fmt` library was updated to v8.0.0.
+- Use system version of utfcpp
+
+-------------------------------------------------------------------
 Sun Jun 13 17:21:56 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 58.0.0
