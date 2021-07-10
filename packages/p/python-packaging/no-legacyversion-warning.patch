@@ -1,0 +1,30 @@
+--- packaging-20.9/packaging/specifiers.py
++++ packaging-20.9/packaging/specifiers.py
+@@ -280,12 +280,6 @@
+         # type: (str, Optional[bool]) -> None
+         super(LegacySpecifier, self).__init__(spec, prereleases)
+ 
+-        warnings.warn(
+-            "Creating a LegacyVersion has been deprecated and will be "
+-            "removed in the next major release",
+-            DeprecationWarning,
+-        )
+-
+     def _coerce_version(self, version):
+         # type: (Union[ParsedVersion, str]) -> LegacyVersion
+         if not isinstance(version, LegacyVersion):
+--- packaging-20.9/packaging/version.py
++++ packaging-20.9/packaging/version.py	
+@@ -124,12 +124,6 @@
+         self._version = str(version)
+         self._key = _legacy_cmpkey(self._version)
+ 
+-        warnings.warn(
+-            "Creating a LegacyVersion has been deprecated and will be "
+-            "removed in the next major release",
+-            DeprecationWarning,
+-        )
+-
+     def __str__(self):
+         # type: () -> str
+         return self._version

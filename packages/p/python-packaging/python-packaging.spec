@@ -1,5 +1,5 @@
 #
-# spec file for package python-packaging
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -25,6 +25,8 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 Name:           python-packaging%{psuffix}
 Version:        20.9
 Release:        0
@@ -32,6 +34,8 @@ Summary:        Core utilities for Python packages
 License:        Apache-2.0
 URL:            https://github.com/pypa/packaging
 Source:         https://files.pythonhosted.org/packages/source/p/packaging/packaging-%{version}.tar.gz
+# Restore compatibility with 20.4 for setuptools
+Patch1:         no-legacyversion-warning.patch
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -48,6 +52,11 @@ BuildRequires:  %{python_module pretend}
 BuildRequires:  %{python_module pyparsing >= 2.0.2}
 BuildRequires:  %{python_module pytest}
 %endif
+# work around boo#1186870
+Provides:       %{mypython}%{python_version}dist(packaging) = %{version}-%{release}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(packaging) = %{version}-%{release}
+%endif
 %python_subpackages
 
 %description
@@ -55,6 +64,7 @@ Core utilities for Python packages
 
 %prep
 %setup -q -n packaging-%{version}
+%patch1 -p1
 # sdist must provide a packaging.egg-info, used below in install phase
 test -d packaging.egg-info
 
@@ -63,7 +73,9 @@ test -d packaging.egg-info
 
 %if %{with test}
 %check
-%pytest
+# no-legacyversion-warning.patch causes these to fail
+%pytest -k "not (test_legacy_specifier_is_deprecated or test_legacy_version_is_deprecated)"
+
 %endif # %%{with_test}
 
 %if !%{with test}

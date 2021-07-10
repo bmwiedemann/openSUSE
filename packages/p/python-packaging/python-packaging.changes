@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 17 17:28:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add Provides: for python*dist(packaging): work around boo#1186870 
+- skip tests failing because of no-legacyversion-warning.patch
+
+-------------------------------------------------------------------
+Sat May  1 21:03:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add no-legacyversion-warning.patch to restore compatibility with 20.4 
+
+-------------------------------------------------------------------
 Tue Feb  2 01:02:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20.9:
