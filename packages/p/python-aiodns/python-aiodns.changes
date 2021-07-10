@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 16 13:48:13 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.0.0
+  * Release wheels and source to PyPI with GH actions
+  * Try to make tests more resilient
+  * Don't build universal wheels
+  * Migrate CI to GH Actions
+  * Fix TXT CHAOS test
+  * Add support for CAA queries
+  * Support Python >= 3.6
+  * Bump pycares dependency
+  * Drop tasks.py
+  * Allow specifying dnsclass for queries
+  * Set URL to https
+  * Add license args in setup.py
+  * Converted Type Annotations to Py3 syntax Closes
+  * Only run mypy on cpython versions
+  * Also fix all type errors with latest mypy - pycares seems to have
+    no typing / stubs so lets ignore it via `mypy.ini`
+  * setup: typing exists since Python 3.5
+  * Fix type annotation of gethostbyname()
+  * Updated README
+- Drop patches for issues fixed upstream
+  * python-aiodns-2.0.0-fix-typing-dependency.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 07:47:23 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - fix python-aiodns-2.0.0-fix-typing-dependency.patch and really

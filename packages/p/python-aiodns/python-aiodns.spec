@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiodns
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,15 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aiodns
-Version:        2.0.0
+Version:        3.0.0
 Release:        0
 Summary:        Simple DNS resolver for asyncio
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/saghul/aiodns/releases
 Source0:        https://github.com/saghul/aiodns/archive/aiodns-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-aiodns-2.0.0-fix-typing-dependency.patch gh#saghul/aiodns/issues/71 -- buschmann23@opensuse.org
-Patch0:         python-aiodns-2.0.0-fix-typing-dependency.patch
 BuildRequires:  %{python_module setuptools}
-Requires:       python-pycares >= 3.0.0
+Requires:       python-pycares >= 4.0.0
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with tests}
@@ -48,7 +46,6 @@ Simple DNS resolver for asyncio module.
 
 %prep
 %setup -q -n aiodns-aiodns-%{version}
-%patch0 -p1
 
 %build
 %python_build
