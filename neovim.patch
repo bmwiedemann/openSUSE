@@ -1,6 +1,10 @@
+---
+ third-party/cmake/BuildLuarocks.cmake |    4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
 --- a/third-party/cmake/BuildLuarocks.cmake
 +++ b/third-party/cmake/BuildLuarocks.cmake
-@@ -75,7 +75,9 @@ if(UNIX OR (MINGW AND CMAKE_CROSSCOMPILI
+@@ -93,7 +93,9 @@ if(UNIX OR (MINGW AND CMAKE_CROSSCOMPILI
    BuildLuarocks(
      CONFIGURE_COMMAND ${DEPS_BUILD_DIR}/src/luarocks/configure
        --prefix=${HOSTDEPS_INSTALL_DIR} --force-config ${LUAROCKS_OPTS}

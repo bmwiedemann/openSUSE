@@ -374,4 +374,27 @@
 </comment>
     <requestid>896317</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>44413b38e1b8387a089911868c39cf3b</srcmd5>
+    <version>0.5.0</version>
+    <time>1625950474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.5.0 (FINALLY!!!):
+  This release represents ~4000 commits since v0.4.4, the
+  previous non-maintenance release. Highlights include builtin
+  support for LSP, new APIs for extended marks (with byte
+  resolution tracking of changes) and buffer decorations, as
+  well as vast improvements to lua as a plugin and configuration
+  language. Experimental support for tree-sitter as a syntax
+  engine is also included, building on the new core APIs for byte
+  tracking and decorations. There is also very visible shift
+  towards using more of Lua.
+  The full list of all changes is truly huge, the
+  best list is the 0.5.0 commit message on
+  https://github.com/neovim/neovim/commit/a5ac2f45ff84.
+- Removes upstreamed patches:
+  - libuv-compat.patch
+  - neovim-0.4.4-findlua54.patch</comment>
+    <requestid>905327</requestid>
+  </revision>
 </revisionlist>

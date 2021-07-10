@@ -16,6 +16,7 @@
 #
 
 
+%define luv_min_ver 1.30.0
 # Luajit not available on all platforms
 %ifarch %{arm} %{ix86} x86_64
 %bcond_without luajit
@@ -34,11 +35,8 @@
 %define luaver_nopoint 53
 %endif
 %endif
-
-%define luv_min_ver 1.30.0
-
 Name:           neovim
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
@@ -53,14 +51,9 @@ Source99:       neovim-rpmlintrc
 Patch0:         neovim.patch
 # PATCH-FIX-OPENSUSE neovim-0.1.7-bitop.patch mcepl@cepl.eu build with old Lua with external bit module
 Patch1:         neovim-0.1.7-bitop.patch
-# PATCH-FIX-SLE libuv-compat.patch sr#793088 gh#neovim/neovim#12108 mcepl@suse.com
-# works around too old version of libuv on Leap 15.*
-Patch2:         libuv-compat.patch
-# PATCH-FIx-UPSTREAM https://github.com/neovim/neovim/pull/12820
-Patch3:         neovim-0.4.4-findlua54.patch
 # PATCH-FIX-UPSTREAM vim7188-fix-netrw-command.patch gh#vim/vim#4738 mcepl@suse.com
 # make gx in netrw working again
-Patch4:         vim7188-fix-netrw-command.patch
+Patch2:         vim7188-fix-netrw-command.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
@@ -76,7 +69,21 @@ BuildRequires:  libtool
 BuildRequires:  libuv-devel
 BuildRequires:  libvterm-devel >= 0.1
 BuildRequires:  lua-macros
-
+BuildRequires:  make
+BuildRequires:  msgpack-devel
+BuildRequires:  pkgconfig
+BuildRequires:  python-rpm-macros
+BuildRequires:  tree-sitter-devel
+BuildRequires:  unibilium-devel
+BuildRequires:  unzip
+BuildRequires:  update-desktop-files
+Requires:       gperf
+Requires:       libvterm0 >= 0.1
+Requires:       python3-neovim
+Requires(post): desktop-file-utils
+Requires(postun):desktop-file-utils
+# XSel provides access to the system clipboard
+Recommends:     xsel
 %if %{with luajit}
 # luajit implements version 5.1 of the lua language spec, so it needs the
 # compat versions of libs.
@@ -101,20 +108,6 @@ BuildRequires:  lua%{luaver_nopoint}-compat-5.3
 Requires:       lua%{luaver_nopoint}-compat-5.3
 %endif
 %endif
-BuildRequires:  make
-BuildRequires:  msgpack-devel
-BuildRequires:  pkgconfig
-BuildRequires:  python-rpm-macros
-BuildRequires:  unibilium-devel
-BuildRequires:  unzip
-BuildRequires:  update-desktop-files
-Requires:       gperf
-Requires:       libvterm0 >= 0.1
-Requires:       python3-neovim
-Requires(post): desktop-file-utils
-Requires(postun):desktop-file-utils
-# XSel provides access to the system clipboard
-Recommends:     xsel
 %if 0%{?suse_version} < 1330
 BuildRequires:  hicolor-icon-theme
 Requires(post): gtk3-tools
@@ -136,14 +129,7 @@ parts of Vim, without compromise, and more.
 %define vimplugin_dir %{_datadir}/vim/site
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%if 0%{?suse_version} == 1500
-%patch2 -p1
-%endif
-%patch3 -p1
-%patch4 -p1
+%autosetup -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -171,7 +157,7 @@ export CXXFLAGS="%{optflags} -fcommon"
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
        -DLIBLUV_LIBRARY=%{lua_archdir}/luv.so \
        -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 popd
 
@@ -189,6 +175,12 @@ install -p -m 644 %{SOURCE2} %{buildroot}%{_datadir}/nvim/template.spec
 %endif
 
 %suse_update_desktop_file -r nvim ConsoleOnly Application Utility TextEditor
+install -d -m0755 %{buildroot}%{_datadir}/pixmaps
+install -m0644 runtime/nvim.png %{buildroot}%{_datadir}/pixmaps/nvim.png
+
+# Fix exec bits
+find %{buildroot}%{_datadir} \( -name \*.bat -o -name \*.awk \) \
+    -print -exec chmod -x '{}' \;
 
 # vim/site directories for plugins shared with vim
 mkdir -p %{buildroot}%{vimplugin_dir}/{after,after/syntax,autoload,colors,doc,ftdetect,plugin,syntax}
@@ -219,6 +211,7 @@ export NO_BRP_CHECK_RPATH=true
 %{_datadir}/nvim/
 %{_datadir}/applications/nvim.desktop
 %{_datadir}/pixmaps/nvim.png
+%{_datadir}/icons/hicolor/*/apps/nvim.png
 %{_mandir}/man1/nvim.1%{?ext_man}
 %dir %{_sysconfdir}/nvim
 %config(noreplace) %{_sysconfdir}/nvim/sysinit.vim
