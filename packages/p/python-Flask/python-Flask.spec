@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,36 +17,34 @@
 
 
 %define oldpython python
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask
-Version:        1.1.2
+Version:        2.0.1
 Release:        0
 Summary:        A microframework based on Werkzeug, Jinja2 and good intentions
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/mitsuhiko/flask/
+URL:            https://flask.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/F/Flask/Flask-%{version}.tar.gz
-BuildRequires:  %{python_module Jinja2 >= 2.4}
-BuildRequires:  %{python_module Werkzeug >= 0.15}
-BuildRequires:  %{python_module click >= 5.1}
-BuildRequires:  %{python_module itsdangerous >= 0.24}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module Jinja2 >= 3.0}
+BuildRequires:  %{python_module Werkzeug >= 2.0}
+BuildRequires:  %{python_module click >= 7.1.2}
+BuildRequires:  %{python_module contextvars}
+BuildRequires:  %{python_module itsdangerous >= 2.0}
+BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.10
-Requires:       python-Werkzeug >= 0.15
-Requires:       python-click >= 5.1
-Requires:       python-itsdangerous >= 0.24
+Requires:       python-Jinja2 >= 3.0
+Requires:       python-Werkzeug >= 2.0
+Requires:       python-click >= 7.1.2
+Requires:       python-itsdangerous >= 2.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{?suse_version} < 1500
 BuildRequires:  python
-%endif
-%ifpython2
-Provides:       %{oldpython}-flask = %{version}
-Obsoletes:      %{oldpython}-flask < %{version}
 %endif
 %python_subpackages
 
