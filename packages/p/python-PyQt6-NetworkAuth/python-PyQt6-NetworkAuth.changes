@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Jun 15 13:14:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.1.1
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu May 13 21:19:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.1.0
+  * Added support for Qt v6.1.
+
+-------------------------------------------------------------------
+Thu Mar 11 19:52:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.0.3
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:15:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- update to version v6.0.2
+  * Added PYQT_NETWORKAUTH_VERSION and
+    PYQT_NETWORKAUTH_VERSION_STR.
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Sat Feb 20 18:06:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for v6.0.1 based on python-PyQt6-3D
