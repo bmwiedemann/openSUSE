@@ -1,7 +1,7 @@
 #
-# spec file for package python-ordered-set
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,6 +17,8 @@
 #
 
 
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 %global modname ordered-set
 %global dir_name ordered_set
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -43,6 +45,11 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+%endif
+# work around boo#1186870
+Provides:       %{mypython}%{python_version}dist(%modname) = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(%modname) = %{version}
 %endif
 %python_subpackages
 

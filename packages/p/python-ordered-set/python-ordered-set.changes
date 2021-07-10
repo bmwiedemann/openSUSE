@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 17 17:22:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add Provides: for python*dist(ordered-set): work around
+  boo#1186870
+
+-------------------------------------------------------------------
 Fri Oct 23 14:43:30 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Use %pycache_only %python_sitelib instead of %python3_sitelib
