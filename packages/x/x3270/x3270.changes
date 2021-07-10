@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon May 31 13:18:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use https for URL and Source
+
+-------------------------------------------------------------------
+Mon Feb 22 20:03:25 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Update to ga14 of 4.0 series:
+  * The scripting infrastructure has been rewritten and renamed to
+    task engine. 
+    * No artificial dependencies between actions initiated by
+     different sources.
+    * Accidental blocking behavior has been eliminated.
+    * Unrelated operations are now properly concurrent
+  * A new emulator has been created, b3270, as a common back-end
+    process that handles the 3270 protocol and host interactions,
+    using a simple XML-based protocol.
+  * The c3270 prompt has been generalized and is available to all
+    of the 3270 emulators as the x3270 prompt.
+    * The prompt now uses color to distinguish error messages.
+  * APL keyboard operation on x3270 has changed, fixed APL keymap
+    was removed in favor of key combination Shift-Escape toggling
+    a new APL mode
+  * Many other bug fixes and features
+- Removed x3270-handle-missing-font.patch, mkversion.patch, and
+  reproducible.patch, merged upstream.
+- Expat added as its BuildRequires
+
+-------------------------------------------------------------------
 Thu Feb 11 22:21:36 UTC 2021 - Mark Post <mpost@suse.com>
 
 - Added x3270-handle-missing-font.patch (bsc#1177104)

@@ -313,4 +313,13 @@
     <comment></comment>
     <requestid>871353</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>a611e399497ef583454c2701178bb294</srcmd5>
+    <version>4.0</version>
+    <time>1625950468</time>
+    <user>dimstar_suse</user>
+    <comment>- Use https for URL and Source
+- Update to ga14 of 4.0 series (forwarded request 897582 from susnux)</comment>
+    <requestid>905252</requestid>
+  </revision>
 </revisionlist>

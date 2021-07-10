@@ -1,7 +1,7 @@
 #
 # spec file for package x3270
 #
-# Copyright (c) 2016,2020,2021 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,28 +16,25 @@
 #
 
 
-%define _suffix ga12
+%define _suffix ga14
 %define _fullname suite3270-%{version}%{_suffix}
 %define _x026ver 1.2
 Name:           x3270
-Version:        3.6
+Version:        4.0
 Release:        0
 Summary:        A Family of IBM 3270 Terminal Emulators
 License:        MIT
 Group:          System/X11/Terminals
-URL:            http://x3270.bgp.nu
+URL:            https://x3270.miraheze.org
 #Git-Clone:     https://github.com/pmattes/x3270
-Source0:        http://download.sourceforge.net/%{name}/%{_fullname}-src.tgz
-Source1:        http://download.sourceforge.net/%{name}/x026-%{_x026ver}.tgz
+Source0:        https://download.sourceforge.net/x3270/%{_fullname}-src.tgz
+Source1:        https://download.sourceforge.net/x3270/x026-%{_x026ver}.tgz
 Source2:        x3270.desktop
 Patch0:         mknod.patch
-Patch1:         x3270-handle-missing-font.patch
 Patch100:       usr_local_bin.patch
 Patch102:       x026-offset.diff
 Patch105:       x3270-missing-include.patch
 Patch106:       x3270-missing-file.patch
-Patch108:       mkversion.patch
-Patch109:       reproducible.patch
 BuildRequires:  bdftopcf
 BuildRequires:  fdupes
 BuildRequires:  fontpackages-devel
@@ -50,6 +47,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  tcl-devel
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
@@ -76,6 +74,15 @@ either an IBM 3279 (color) or 3278 (monochrome).  It supports APL2
 characters, IND$FILE file transfer, NVT mode, a pop-up keypad for
 3270-specific keys, alternative keymaps, 3287 printer sessions, and a
 scrollbar and has extensive debugging and scripting facilities.
+
+x3270a is a script that computes the correct font sizes for
+higher-resolution displays, then runs x3270.
+(x3270 handles scaling of visual elements automatically,
+but it cannot adjust the font sizes by itself.)
+
+b3270 is a generic back-end for 3270 emulators.
+It implements the 3270 protocol and host input/output,
+and communicates with a front end application using a simple XML-based protocol.
 
 c3270 is the curses-based version of x3270.  It runs on any dumb
 terminal (an xterm or a console, for example), and supports (almost)
@@ -104,17 +111,10 @@ x026 is a fun toy which emulates an x026 puncher.
 # -a fter changing into all3270, expand sources
 %setup -q -n suite3270-%{version} -a1
 %patch0
-%patch1
 %patch100
 %patch102
 %patch105 -p1
 %patch106 -p1
-for d in x3270 c3270 s3270 tcl3270 pr3287 ; do
-(cd $d
-%patch108 -p2
-%patch109 -p2
-)
-done
 
 %build
 export CFLAGS="%{optflags}"
@@ -165,6 +165,7 @@ rm %{buildroot}%{_miscfontsdir}/fonts.dir
 mkdir -p %{buildroot}%{_docdir}/%{name}
 cp -pr --parents Playback %{buildroot}%{_docdir}/%{name}
 cp -pr --parents x3270/{Examples,html} %{buildroot}%{_docdir}/%{name}
+cp -pr --parents b3270/html %{buildroot}%{_docdir}/%{name}
 cp -pr --parents c3270/html %{buildroot}%{_docdir}/%{name}
 cp -pr --parents pr3287/html %{buildroot}%{_docdir}/%{name}
 cp -pr --parents s3270/{Examples,html} %{buildroot}%{_docdir}/%{name}
@@ -199,6 +200,7 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 %{_bindir}/x3270if
 # x3270
 %{_bindir}/x3270
+%{_bindir}/x3270a
 %dir %{_miscfontsdir}
 %{_miscfontsdir}/*
 %{_mandir}/man1/x3270.1%{?ext_man}
@@ -206,6 +208,10 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/x3270.desktop
 %doc %{_docdir}/%{name}/x3270/html
 %doc %{_docdir}/%{name}/Playback
 %{_datadir}/applications/x3270.desktop
+# b3270
+%{_bindir}/b3270
+%{_mandir}/man1/b3270.1%{?ext_man}
+%doc %{_docdir}/%{name}/b3270/html
 # c3270
 %{_bindir}/c3270
 %{_mandir}/man1/c3270.1%{?ext_man}
