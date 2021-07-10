@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  6 21:28:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.182.0
+  * vkcube: Fix disturbed rotation after many iterations
+
+-------------------------------------------------------------------
 Wed May  5 07:26:24 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.176.0
