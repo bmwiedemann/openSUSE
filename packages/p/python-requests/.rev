@@ -732,4 +732,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>871198</requestid>
   </revision>
+  <revision rev="70" vrev="4">
+    <srcmd5>0e9c3d88ddc3ac804251619ebf793183</srcmd5>
+    <version>2.25.1</version>
+    <time>1625950432</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_pyopenssl_redirect due to gh#psf/requests#5846</comment>
+    <requestid>903344</requestid>
+  </revision>
 </revisionlist>

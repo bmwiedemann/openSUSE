@@ -1,5 +1,5 @@
 #
-# spec file for package python-requests
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -118,7 +118,7 @@ test ! -e %{buildroot}%{python3_sitelib}/requests/packages/urllib3
 touch Pipfile
 # exclude tests connecting to TARPIT
 # exclude test_https_warnings as is flaky
-%python_exec -m pytest -v tests -k "not (TestTimeout or connect or test_https_warnings)"
+%python_exec -m pytest -v tests -k "not (TestTimeout or connect or test_https_warnings or test_pyopenssl_redirect)"
 %endif
 
 %if !%{with test}
