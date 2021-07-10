@@ -231,4 +231,18 @@
   * [FIX] Audited all docstrings for style, typos and outdated info.</comment>
     <requestid>894168</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3c965375b0a563c2e73691292d639fa6</srcmd5>
+    <version>1.1.1</version>
+    <time>1625950439</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Added Odia, Maltese, Serbian, Sami, and Luxembourgish locales.
+  * All calls to ``arrow.get()`` should now properly pass the ``tzinfo``
+    argument to the Arrow constructor. 
+  * Humanize output is now properly truncated when a locale class
+    overrides ``_format_timeframe()``.
+  * Updated Turkish locale and added tests.</comment>
+    <requestid>903987</requestid>
+  </revision>
 </revisionlist>

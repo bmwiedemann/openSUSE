@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  4 19:48:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Added Odia, Maltese, Serbian, Sami, and Luxembourgish locales.
+  * All calls to ``arrow.get()`` should now properly pass the ``tzinfo``
+    argument to the Arrow constructor. 
+  * Humanize output is now properly truncated when a locale class
+    overrides ``_format_timeframe()``.
+  * Updated Turkish locale and added tests. 
+
+-------------------------------------------------------------------
 Tue May 18 22:06:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
