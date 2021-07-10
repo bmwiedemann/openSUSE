@@ -1,7 +1,7 @@
 #
 # spec file for package python-fakeredis
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-fakeredis
-Version:        1.3.0
+Version:        1.5.2
 Release:        0
 Summary:        Fake implementation of redis API for testing purposes
 License:        BSD-3-Clause AND MIT
@@ -33,13 +33,18 @@ Requires:       python-redis
 Requires:       python-six >= 1.12
 Requires:       python-sortedcontainers
 Recommends:     python-future
+Suggests:       python-aioredis < 2
 Suggests:       python-lupa
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module aioredis < 2}
+BuildRequires:  %{python_module async_generator}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lupa}
 BuildRequires:  %{python_module pytest >= 4.0}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module six >= 1.12}
 BuildRequires:  %{python_module sortedcontainers}

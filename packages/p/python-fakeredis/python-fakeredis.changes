@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 29 10:49:15 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 1.5.2
+ * support python 3.9
+ * support aioredis
+
+-------------------------------------------------------------------
 Fri Mar 20 12:31:00 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable py2 as upstream actually disabled python2 support competely

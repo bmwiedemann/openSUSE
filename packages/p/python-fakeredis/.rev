@@ -42,4 +42,14 @@
 - python2 tests are dysfunctional, test with python3 only</comment>
     <requestid>786873</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>78e5edfd6ba00ce45455b9c45fad9a40</srcmd5>
+    <version>1.5.2</version>
+    <time>1625950431</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.2
+ * support python 3.9
+ * support aioredis</comment>
+    <requestid>903056</requestid>
+  </revision>
 </revisionlist>
