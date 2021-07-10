@@ -391,4 +391,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>870385</requestid>
   </revision>
+  <revision rev="38" vrev="3">
+    <srcmd5>f48a01b7bdd12ccf9f94e6ec9dacbe41</srcmd5>
+    <version>5.0.5</version>
+    <time>1625950435</time>
+    <user>dimstar_suse</user>
+    <comment>- Add PyYAML dependency for tests
+</comment>
+    <requestid>903633</requestid>
+  </revision>
 </revisionlist>

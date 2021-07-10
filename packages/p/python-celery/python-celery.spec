@@ -59,6 +59,7 @@ Suggests:       python-pytyrant
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module SQLAlchemy}
+BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}
