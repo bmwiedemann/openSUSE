@@ -357,4 +357,22 @@
     tests that were being repeated over an</comment>
     <requestid>868434</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>961f217f50e5ef9ecb7e179151961c2b</srcmd5>
+    <version>5.0.6</version>
+    <time>1625950413</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.6:
+  - Change the order in which context.check_hostname and context.verify_mode get set
+    in SSLTransport._wrap_socket_sni. Fixes bug introduced in 5.0.3 where setting
+    context.verify_mode = ssl.CERT_NONE would raise
+    &quot;ValueError: Cannot set verify_mode to CERT_NONE when check_hostname is enabled.&quot;
+    Setting context.check_hostname prior to setting context.verify_mode resolves the
+    issue.
+  - Remove TCP_USER_TIMEOUT option for Solaris (#355) 
+  - Pass long_description to setup() (#353)
+  - Fix for tox-docker 2.0
+  - Moved to GitHub actions CI (#359)</comment>
+    <requestid>900656</requestid>
+  </revision>
 </revisionlist>

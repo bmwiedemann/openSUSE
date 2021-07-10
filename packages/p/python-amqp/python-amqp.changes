@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 17 20:47:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.6:
+  - Change the order in which context.check_hostname and context.verify_mode get set
+    in SSLTransport._wrap_socket_sni. Fixes bug introduced in 5.0.3 where setting
+    context.verify_mode = ssl.CERT_NONE would raise
+    "ValueError: Cannot set verify_mode to CERT_NONE when check_hostname is enabled."
+    Setting context.check_hostname prior to setting context.verify_mode resolves the
+    issue.
+  - Remove TCP_USER_TIMEOUT option for Solaris (#355) 
+  - Pass long_description to setup() (#353)
+  - Fix for tox-docker 2.0
+  - Moved to GitHub actions CI (#359)
+
+-------------------------------------------------------------------
 Mon Feb  1 17:40:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.5:
