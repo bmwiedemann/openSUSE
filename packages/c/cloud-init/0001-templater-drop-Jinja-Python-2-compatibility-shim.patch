@@ -1,0 +1,49 @@
+From f23a4c4262ac11cd75c99fcbfbfe453f4e115f18 Mon Sep 17 00:00:00 2001
+From: Daniel Watkins <oddbloke@ubuntu.com>
+Date: Thu, 14 May 2020 23:22:27 -0400
+Subject: [PATCH] templater: drop Jinja Python 2 compatibility shim (#353)
+
+---
+ cloudinit/helpers.py   | 4 ----
+ cloudinit/templater.py | 4 ----
+ 2 files changed, 8 deletions(-)
+
+diff --git a/cloudinit/helpers.py b/cloudinit/helpers.py
+index 7d2a330582..9752ad2831 100644
+--- a/cloudinit/helpers.py
++++ b/cloudinit/helpers.py
+@@ -451,8 +451,4 @@ def stringify(self, header=None):
+             contents = '\n'.join([header, contents, ''])
+         return contents
+ 
+-
+-def identity(object):
+-    return object
+-
+ # vi: ts=4 expandtab
+diff --git a/cloudinit/templater.py b/cloudinit/templater.py
+index e47cdedaf7..a00ade200c 100644
+--- a/cloudinit/templater.py
++++ b/cloudinit/templater.py
+@@ -21,13 +21,10 @@
+     CHEETAH_AVAILABLE = False
+ 
+ try:
+-    from jinja2.runtime import implements_to_string
+     from jinja2 import Template as JTemplate
+     from jinja2 import DebugUndefined as JUndefined
+     JINJA_AVAILABLE = True
+ except (ImportError, AttributeError):
+-    from cloudinit.helpers import identity
+-    implements_to_string = identity
+     JINJA_AVAILABLE = False
+     JUndefined = object
+ 
+@@ -42,7 +39,6 @@
+ MISSING_JINJA_PREFIX = u'CI_MISSING_JINJA_VAR/'
+ 
+ 
+-@implements_to_string   # Needed for python2.7. Otherwise cached super.__str__
+ class UndefinedJinjaVariable(JUndefined):
+     """Class used to represent any undefined jinja template variable."""
+ 

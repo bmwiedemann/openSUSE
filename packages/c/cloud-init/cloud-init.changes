@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  9 10:45:23 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to remove python2 compatibility so
+  cloud-init builds fine in Tumbleweed with a recent Jinja2
+  version. This patch is only applied in TW.
+  * 0001-templater-drop-Jinja-Python-2-compatibility-shim.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 12:13:54 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Add cloud-init-log-file-mode.patch (bsc#1183939)
