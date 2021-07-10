@@ -19,7 +19,7 @@
 %global pkg_name formatting
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        7.1.2
+Version:        7.1.3
 Release:        0
 Summary:        Combinator-based type-safe formatting (like printf() or FORMAT)
 License:        BSD-3-Clause
