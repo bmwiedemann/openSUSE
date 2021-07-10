@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 17 21:22:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.4:
+  * Add testing config for Python 3.10 (Tox and CI)
+  * Fix internal _PurePath class with Python 3.10 (issue #251)
+  * Remove redundant xmlns="" declaration when encoding with lxml (issue #252)
+  * Refactor normalize_url() using pathlib.PurePath
+  * Support UNC paths (issue #246)
+  * Fix API docs (issue #248)
+  * Fix for issue #245 (key/keyref with dynamic types)
+  * Change default decoding of mixed content with only text to a string
+    instead of a dictionary (issue #242)
+
+-------------------------------------------------------------------
 Tue May 18 21:44:06 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.1:

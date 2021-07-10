@@ -172,4 +172,21 @@
   * Fix schema logger (issue #228)</comment>
     <requestid>894173</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bccf18751b94360e4ac0dc3e167aa77b</srcmd5>
+    <version>1.6.4</version>
+    <time>1625950414</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.4:
+  * Add testing config for Python 3.10 (Tox and CI)
+  * Fix internal _PurePath class with Python 3.10 (issue #251)
+  * Remove redundant xmlns=&quot;&quot; declaration when encoding with lxml (issue #252)
+  * Refactor normalize_url() using pathlib.PurePath
+  * Support UNC paths (issue #246)
+  * Fix API docs (issue #248)
+  * Fix for issue #245 (key/keyref with dynamic types)
+  * Change default decoding of mixed content with only text to a string
+    instead of a dictionary (issue #242)</comment>
+    <requestid>900664</requestid>
+  </revision>
 </revisionlist>
