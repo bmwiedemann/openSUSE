@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul  3 16:41:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.5.0 (FINALLY!!!):
+  This release represents ~4000 commits since v0.4.4, the
+  previous non-maintenance release. Highlights include builtin
+  support for LSP, new APIs for extended marks (with byte
+  resolution tracking of changes) and buffer decorations, as
+  well as vast improvements to lua as a plugin and configuration
+  language. Experimental support for tree-sitter as a syntax
+  engine is also included, building on the new core APIs for byte
+  tracking and decorations. There is also very visible shift
+  towards using more of Lua.
+
+  The full list of all changes is truly huge, the
+  best list is the 0.5.0 commit message on
+  https://github.com/neovim/neovim/commit/a5ac2f45ff84.
+- Removes upstreamed patches:
+  - libuv-compat.patch
+  - neovim-0.4.4-findlua54.patch
+
+-------------------------------------------------------------------
 Mon May 31 06:00:27 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add vim7188-fix-netrw-command.patch to fix gh#vim/vim#4738.

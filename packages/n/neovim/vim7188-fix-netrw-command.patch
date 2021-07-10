@@ -17,9 +17,9 @@ remote URL.
 
 --- a/runtime/autoload/netrw.vim
 +++ b/runtime/autoload/netrw.vim
-@@ -5178,6 +5178,12 @@ fun! netrw#BrowseX(fname,remote)
- "   call Dret("(netrw#BrowseX) did gf instead")
+@@ -5220,6 +5220,12 @@ fun! netrw#BrowseX(fname,remote)
    endif
+ "  call Decho("not a local file nor a webpage request",'~'.expand("<slnum>"))
  
 +  if exists("g:netrw_browsex_viewer") && exists("g:netrw_browsex_support_remote") && !g:netrw_browsex_support_remote
 +    let remote = a:remote
@@ -30,7 +30,7 @@ remote URL.
    let ykeep      = @@
    let screenposn = winsaveview()
  "  call Decho("saving posn to screenposn<".string(screenposn).">",'~'.expand("<slnum>"))
-@@ -5222,9 +5228,9 @@ fun! netrw#BrowseX(fname,remote)
+@@ -5264,9 +5270,9 @@ fun! netrw#BrowseX(fname,remote)
    endif
  "  call Decho("exten<".exten.">",'~'.expand("<slnum>"))
  
@@ -42,7 +42,7 @@ remote URL.
     setl bh=delete
     call netrw#NetRead(3,a:fname)
     " attempt to rename tempfile
-@@ -5246,7 +5252,7 @@ fun! netrw#BrowseX(fname,remote)
+@@ -5288,7 +5294,7 @@ fun! netrw#BrowseX(fname,remote)
      let fname= s:netrw_tmpfile
     endif
    else
@@ -51,7 +51,7 @@ remote URL.
     let fname= a:fname
     " special ~ handler for local
     if fname =~ '^\~' && expand("$HOME") != ""
-@@ -5378,12 +5384,12 @@ fun! netrw#BrowseX(fname,remote)
+@@ -5431,12 +5437,12 @@ fun! netrw#BrowseX(fname,remote)
    "          return to prior buffer (directory listing)
    "          Feb 12, 2008: had to de-activiate removal of
    "          temporary file because it wasn't getting seen.
@@ -68,7 +68,7 @@ remote URL.
      setl noswf
 --- a/runtime/doc/pi_netrw.txt
 +++ b/runtime/doc/pi_netrw.txt
-@@ -1504,6 +1504,9 @@ Netrw determines which special handler b
+@@ -1510,6 +1510,9 @@ Netrw determines which special handler b
      If g:netrw_browsex_viewer == '-', then netrwFileHandlers#Invoke() will be
      used instead (see |netrw_filehandler|).
  
@@ -78,7 +78,7 @@ remote URL.
    * for Windows 32 or 64, the URL and FileProtocolHandler dlls are used.
    * for Gnome (with gnome-open): gnome-open is used.
    * for KDE (with kfmclient)   : kfmclient is used
-@@ -2601,6 +2604,10 @@ your browsing preferences.  (see also: |
+@@ -2607,6 +2610,10 @@ your browsing preferences.  (see also: |
  				a script/function to handle the given
  				extension.  (see |netrw_filehandler|).
  
