@@ -36,4 +36,12 @@
   * werkzeug.patch</comment>
     <requestid>705887</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>71d4d808b5882565c696b0bb7d13123f</srcmd5>
+    <version>0.7.0+git20181107.f8ec666</version>
+    <time>1625950426</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify werkzeug.patch to support Werkzeug 2.0, update Requires.</comment>
+    <requestid>901426</requestid>
+  </revision>
 </revisionlist>

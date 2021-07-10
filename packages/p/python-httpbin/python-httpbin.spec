@@ -1,7 +1,7 @@
 #
 # spec file for package python-httpbin
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@ Patch0:         werkzeug.patch
 BuildRequires:  %{python_module Brotli}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module MarkupSafe}
-BuildRequires:  %{python_module Werkzeug >= 0.14.1}
+BuildRequires:  %{python_module Werkzeug >= 2.0}
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module decorator}
 BuildRequires:  %{python_module flasgger}
@@ -44,7 +44,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Brotli
 Requires:       python-Flask
 Requires:       python-MarkupSafe
-Requires:       python-Werkzeug >= 0.14.1
+Requires:       python-Werkzeug >= 2.0
 Requires:       python-blinker
 Requires:       python-decorator
 Requires:       python-flasgger
