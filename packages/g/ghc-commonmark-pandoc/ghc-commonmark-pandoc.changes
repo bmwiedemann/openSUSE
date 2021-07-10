@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:50:31 UTC 2021 - psimons@suse.com
+
+- Update commonmark-pandoc to version 0.2.1.1.
+  ## 0.2.1.1
+
+  - Don't collapse Para to Plain in task lists (#77).
+
+-------------------------------------------------------------------
 Sat May 29 15:59:30 UTC 2021 - psimons@suse.com
 
 - Update commonmark-pandoc to version 0.2.1.
