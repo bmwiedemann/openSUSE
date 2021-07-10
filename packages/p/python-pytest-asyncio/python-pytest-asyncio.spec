@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-asyncio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pytest-asyncio
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Pytest support for asyncio
 License:        Apache-2.0
 URL:            https://github.com/pytest-dev/pytest-asyncio
 Source:         https://github.com/pytest-dev/pytest-asyncio/archive/v%{version}.tar.gz#/pytest-asyncio-%{version}.tar.gz
+Patch0:         0001-removed-support-for-python-3.5.patch
 BuildRequires:  %{python_module async_generator >= 1.3}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module hypothesis >= 5.7.1}
@@ -46,6 +47,7 @@ provides useful fixtures and markers to make testing easier.
 %prep
 %setup -q -n pytest-asyncio-%{version}
 sed -ie '1i# -*- coding: utf-8 -*-' setup.py
+%patch0 -p1 -R
 
 %build
 %python_build

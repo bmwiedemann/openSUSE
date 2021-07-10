@@ -58,4 +58,12 @@ required by mycroft-core</comment>
   * Fix #162, and event_loop fixture behavior now is coherent on all scopes.</comment>
     <requestid>817722</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>733078ef4ebdef5419990ffedba13a0d</srcmd5>
+    <version>0.15.1</version>
+    <time>1625950440</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>904060</requestid>
+  </revision>
 </revisionlist>
