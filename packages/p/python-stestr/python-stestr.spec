@@ -1,5 +1,5 @@
 #
-# spec file for package python
+# spec file for package python-stestr%{psuffix}
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-stestr%{psuffix}
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        A test runner runner similar to testrepository
 License:        Apache-2.0
@@ -50,7 +50,7 @@ Requires:       python-six >= 1.10.0
 Requires:       python-testtools >= 2.2.0
 Requires:       python-voluptuous >= 0.8.9
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML >= 3.10.0}

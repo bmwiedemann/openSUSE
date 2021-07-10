@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 17 20:39:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Support for configuring stestr via a tox.ini file has been added. It's
+    now no longer needed to create a separate .stestr.conf file and
+    instead it can be embedded in an existing tox.ini file.
+  * A new stestr command, stestr history list has been added to list the
+    previous runs in the stestr repository.
+  * A new stestr command, stestr history show has been added to show the
+    output from a previous run from the stestr repository.
+  * A new stestr command, stestr history remove, has been added to
+    remove runs from the stestr repository.
+
+-------------------------------------------------------------------
 Tue Feb  9 15:34:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Get rid of %ifpython3

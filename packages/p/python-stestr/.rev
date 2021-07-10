@@ -253,4 +253,21 @@
     <comment></comment>
     <requestid>870627</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>87b9ef0762d8f3405640cf8ea0cae36f</srcmd5>
+    <version>3.2.0</version>
+    <time>1625950415</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.2.0:
+  * Support for configuring stestr via a tox.ini file has been added. It's
+    now no longer needed to create a separate .stestr.conf file and
+    instead it can be embedded in an existing tox.ini file.
+  * A new stestr command, stestr history list has been added to list the
+    previous runs in the stestr repository.
+  * A new stestr command, stestr history show has been added to show the
+    output from a previous run from the stestr repository.
+  * A new stestr command, stestr history remove, has been added to
+    remove runs from the stestr repository.</comment>
+    <requestid>900665</requestid>
+  </revision>
 </revisionlist>
