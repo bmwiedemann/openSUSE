@@ -113,4 +113,12 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     fixed by us in wxWidgets and accepted by the upstream. (forwarded request 886977 from bnavigator)</comment>
     <requestid>886978</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>22677df02e2e0564dc01a88d345cfd85</srcmd5>
+    <version>2.3.2</version>
+    <time>1625950476</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905330</requestid>
+  </revision>
 </revisionlist>

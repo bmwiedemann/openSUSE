@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  9 16:08:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.3.2
+  * Introducing support for the new Prusa SL1S SPEED masked
+    SLA printer, Prusa CW1S firmware updater, PrusaLink
+    host type for Prusa i3 MK3 printers, Monotonic infill
+    for all solid layers, better support for reading
+    configurations of newer PrusaSlicer releases, new 3rd
+    party printer profiles and a handful of bug fixes.
+- Switch to bundled GLEW -- gh#prusa3d/PrusaSlicer#6396
+
+-------------------------------------------------------------------
 Tue Apr 20 10:50:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.3.1

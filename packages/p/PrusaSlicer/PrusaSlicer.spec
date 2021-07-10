@@ -17,7 +17,7 @@
 
 
 Name:           PrusaSlicer
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        G-code generator for 3D printers (RepRap, Makerbot, Ultimaker etc.)
 License:        AGPL-3.0-only
@@ -31,7 +31,8 @@ BuildRequires:  eigen3-devel >= 3
 BuildRequires:  expat
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
+# For now, use bundled GLEW because of gh#prusa3d/PrusaSlicer#6396
+#!BuildIgnore:  glew-devel
 BuildRequires:  gtest >= 1.7
 BuildRequires:  ilmbase-devel
 BuildRequires:  libboost_atomic-devel
