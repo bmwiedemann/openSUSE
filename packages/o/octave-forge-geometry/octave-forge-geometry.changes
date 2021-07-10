@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 09:13:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch:
+  * compile-with-g++-v11.patch
+
+-------------------------------------------------------------------
 Thu Feb 20 13:54:49 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 4.0.0

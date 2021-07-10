@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later AND BSD-2-Clause
 Group:          Productivity/Scientific/Math
 URL:            https://octave.sourceforge.io/%{octpkg}/index.html
 Source0:        https://downloads.sourceforge.net/octave/%{octpkg}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         compile-with-g++-v11.patch
 BuildRequires:  octave-devel >= 4.2.0
 Requires:       octave-cli >= 4.0.1
 Requires:       octave-forge-matgeom >= 1.0.0
@@ -37,6 +39,9 @@ This is part of Octave-Forge project.
 
 %prep
 %setup -q -c %{name}-%{version}
+pushd %{octpkg}-%{version}
+%patch0 -p1
+popd
 %octave_pkg_src
 
 %build

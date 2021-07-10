@@ -1,0 +1,75 @@
+Description: Compile with g++ v11
+Author: Rafael Laboissière <rafael@debian.org>
+Bug-Debian: https://bugs.debian.org/984266
+Forwarded: no
+Last-Update: 2021-07-06
+
+--- octave-geometry-4.0.0.orig/src/martinez.cpp
++++ octave-geometry-4.0.0/src/martinez.cpp
+@@ -26,7 +26,7 @@ void Martinez::print (SweepEvent& e)
+ 
+ // Compare two sweep events
+ // Return true means that e1 is placed at the event queue after e2, i.e,, e1 is processed by the algorithm after e2
+-bool Martinez::SweepEventComp::operator() (SweepEvent* e1, SweepEvent* e2) {
++bool Martinez::SweepEventComp::operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 	if (e1->p.x > e2->p.x) // Different x-coordinate
+ 		return true;
+ 	if (e2->p.x > e1->p.x) // Different x-coordinate
+@@ -40,7 +40,7 @@ bool Martinez::SweepEventComp::operator(
+ }
+ 
+ // e1 and a2 are the left events of line segments (e1->p, e1->other->p) and (e2->p, e2->other->p)
+-bool Martinez::SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) {
++bool Martinez::SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 	if (e1 == e2)
+ 		return false;
+ 	if (signedArea (e1->p, e1->other->p, e2->p) != 0 || signedArea (e1->p, e1->other->p, e2->other->p) != 0) {
+--- octave-geometry-4.0.0.orig/src/martinez.h
++++ octave-geometry-4.0.0/src/martinez.h
+@@ -38,7 +38,7 @@ private:
+ 
+ 	struct SweepEvent;
+ 	struct SegmentComp : public binary_function<SweepEvent*, SweepEvent*, bool> { // for sorting edges in the sweep line
+-		bool operator() (SweepEvent* e1, SweepEvent* e2);
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const;
+ 	};
+ 	
+ 	struct SweepEvent {
+@@ -65,7 +65,7 @@ private:
+ 	static void print (SweepEvent& e); // This function is intended for debugging purposes
+ 
+ 	struct SweepEventComp : public binary_function<SweepEvent*, SweepEvent*, bool> { // for sortening events
+-		bool operator() (SweepEvent* e1, SweepEvent* e2);
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const;
+ 	};
+ 
+ 	/** @brief Event Queue */
+--- octave-geometry-4.0.0.orig/src/polygon.cpp
++++ octave-geometry-4.0.0/src/polygon.cpp
+@@ -94,7 +94,7 @@ void Polygon::move (double x, double y)
+ namespace { // start of anonymous namespace
+ 	struct SweepEvent;
+ 	struct SegmentComp : public binary_function<SweepEvent*, SweepEvent*, bool> {
+-		bool operator() (SweepEvent* e1, SweepEvent* e2);
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const;
+ 	};
+ 
+ 	struct SweepEvent {
+@@ -117,7 +117,7 @@ namespace { // start of anonymous namesp
+ 	};
+ 
+ 	struct SweepEventComp : public binary_function<SweepEvent*, SweepEvent*, bool> {
+-		bool operator() (SweepEvent* e1, SweepEvent* e2) {
++		bool operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 			if (e1->p.x < e2->p.x) // Different x coordinate
+ 				return true;
+ 			if (e2->p.x < e1->p.x) // Different x coordinate
+@@ -133,7 +133,7 @@ namespace { // start of anonymous namesp
+ 
+ } // end of anonymous namespace
+ 
+-bool SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) {
++bool SegmentComp::operator() (SweepEvent* e1, SweepEvent* e2) const {
+ 	if (e1 == e2)
+ 		return false;
+ 	if (signedArea (e1->p, e1->other->p, e2->p) != 0 || signedArea (e1->p, e1->other->p, e2->other->p) != 0) {
