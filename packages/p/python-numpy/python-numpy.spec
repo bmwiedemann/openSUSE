@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.20.3
-%define _ver 1_20_3
+%define ver 1.21.0
+%define _ver 1_21_0
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -77,11 +77,13 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-BuildRequires:  %{python_module Cython >= 0.29.21}
+# PATCH-FIX-UPSTREAM 0001-BUG-Fix-infinite-loop-on-gcc11.patch
+Patch2:         0001-BUG-Fix-infinite-loop-on-gcc11.patch
+BuildRequires:  %{python_module Cython >= 0.29.23}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module hypothesis >= 5.12.0}
-BuildRequires:  %{python_module pytest >= 5.4.2}
+BuildRequires:  %{python_module hypothesis >= 6.12.0}
+BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
@@ -160,6 +162,7 @@ This package contains files for developing applications using numpy.
 %setup -q -n numpy-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 # Fix non-executable scripts
 sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
 sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx

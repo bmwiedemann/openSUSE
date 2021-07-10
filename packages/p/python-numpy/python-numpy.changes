@@ -1,4 +1,605 @@
 -------------------------------------------------------------------
+Wed Jul  7 08:24:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to 1.21.0:
+  * DEP: Deprecate data_type.dtype if attribute is not already...
+  * ENH: Implement faster keyword argument parsing capable of METH_FASTCALL
+  * ENH: Optimize and cleanup ufunc calls and ufunc CheckOverrides
+  * BUG: Remove temporary change of descr/flags in VOID functions
+  * DOC: Add more information about poly1d -> polynomial to reference...
+  * ENH: Warn when reloading numpy or using numpy in sub-interpreter
+  * DOC: Fix for building with sphinx 3
+  * DOC: unify the docs for np.transpose and ndarray.transpose
+  * DOC: added examples section for rfft2 and irfft2 docstring
+  * DOC: Fix Typo (Wrong argument name)
+  * ENH: Phase unwrapping generalized to arbitrary interval size
+  * SIMD: Optimize the performance of np.packbits in AVX2/AVX512F/VSX.
+  * MAINT: Use numpy version for f2py version.
+  * DEP: Shift correlate mode parsing to C and deprecate inexact...
+  * DEP: Formally deprecate np.typeDict
+  * SIMD: Replace raw SIMD of sin/cos with NPYV(universal intrinsics)
+  * MAINT: Bump pydata-sphinx-theme and set logo link to index
+  * DOC: Add module template
+  * ENH: Make ndarray generic w.r.t. its shape and dtype
+  * ENH: Added libdivide for floor divide
+  * BUG, Benchmark: fix passing optimization build options to asv
+  * MAINT, Benchmark: print the supported CPU features during the...
+  * ENH: Add annotations for comparison operations
+  * SIMD: Optimize the performance of einsum's submodule multiply...
+  * ENH, SIMD: Add new NPYV intrinsics pack(0)
+  * ENH, SIMD: Add new NPYV intrinsics pack(1)
+  * BLD: Enable Werror=undef in travis
+  * ENH: add support for fujitsu compiler to numpy.
+  * ENH: Add two new _<X>Like unions
+  * BUG: Ignore fewer errors during array-coercion
+  * MAINT: Add git rules to ignore all SIMD generated files
+  * ENH: Add a mypy plugin for inferring platform-specific np.number...
+  * TST: use latest pypy37 not pypy36
+  * DOC: Doc for deprecate_with_doc
+  * DOC: Clarify docs of np.resize().
+  * MAINT: Update master after 1.20.x branch.
+  * Make it clearer that np.interp input must be monotonically increasing
+  * MAINT: Implement new casting loops based on NEP 42 and 43
+  * DOC: fix typo in glossary.rst
+  * BUG, TST: use python-version not PYTHON_VERSION
+  * DOC: update the release howto for oldest-supported-numpy
+  * MAINT: clean up a spurious warning in numpy/typing/setup.py
+  * DOC: Prepare for 1.20.0 release
+  * DOC: fixed typo in np-indexing.png explaining [-2:] slice in...
+  * BUG: Fix buffer readflag errors and small leaks
+  * BUG: np.arange: Allow stop not start as sole kwargs.
+  * MAINT: Bump hypothesis from 5.41.3 to 5.41.4
+  * MAINT: Remove duplicate dictionary entry
+  * BUG: numpy.putmask not respecting writeable flag
+  * ENH: Timestamp development versions.
+  * DOC: Update arraycreation
+  * DOC: Correct sentence/statement composition
+  * DOC: Rename basics to fundamentals + added description
+  * MAINT: Remove remaining uses of Python 3.6.
+  * ENH: Speed up default where in the reduce-like method
+  * BUG: merging PR to use -Werror=undef broke another PR
+  * DEP: Finalize unravel_index dims alias for shape keyword
+  * BUG: Fix a MacOS build failure
+  * BUG: 'bool' object has no attribute 'ndim'
+  * BUG: remove stray '+' from f-string upgrade in numba/extending.py
+  * DOC: Update release notes to mention type(dtype) is not np.dtype
+  * NEP: Update NEP 42 and 43 according to the current implementation
+  * BUG: Enforce high >= low on uniform number generators
+  * MAINT: Replace contextlib_nullcontext with contextlib.nullcontext
+  * DOC: Add information about leak checking and valgrind
+  * TST: Fixed an issue where the typing tests would fail for comparison...
+  * DOC: Clarify savez documentation of naming arrays in output file
+  * [DOC]: Wrong length for underline in docstring.
+  * MAINT: Bump hypothesis from 5.41.4 to 5.41.5
+  * BUG: Removed empty String from Nag Compiler's Flags
+  * NEP: Accept NEP 42 -- New and extensible DTypes
+  * DOC: Replace {var} in docstrings type annotation with `scalar...
+  * ENH: Use versioneer to manage numpy versions.
+  * TST: Fix crosstalk issues with polynomial str tests.
+  * MAINT: Optimize the performance of count_nonzero by using universal...
+  * TST, BUILD: Add a native x86 baseline build running on ubuntu-20.04
+  * TST: Ensure tests are not sensitive to execution order
+  * BUG: Add missing decref to arange
+  * ENH: Use more typevars in np.dtype
+  * BUG, SIMD: Fix direactive check for AVX512BW of intrinsics npyv_tobits_*
+  * DEP: Futurewarn on requiring __len__ on array-likes
+  * BLD: Fixes for versioneer and setup.py sdist.
+  * DOC: Add/remove spaces in snippets and re-format here and there
+  * MAINT: Update test_requirements and release_requirements.
+  * ENH: Add proper dtype-support to np.flatiter
+  * ENH, SIMD: Ditching the old CPU dispatcher(Arithmetic)
+  * DOC: Replace verbatim with reference to local parameter
+  * [DOC] np.kron use double backticks for non-references
+  * SIMD: Optimize the performance of einsum's submodule dot .
+  * MAINT: Bump pytest from 6.0.2 to 6.2.0
+  * MAINT: Update wheel requirement from <=0.35.1 to <0.36.3
+  * MAINT: Bump hypothesis from 5.41.5 to 5.43.3
+  * TST: ignore pytest warning
+  * Replace Numpy with NumPy
+  * BLD, BUG: Fix detecting aarch64 on macOS
+  * DOC: Fix and extend the docstring for np.inner
+  * DOC: Add a brief explanation of float printing
+  * DOC: fix for doctests
+  * BLD: update to OpenBLAS 0.3.13
+  * SIMD: Optimize the performance of einsum's submodule sum.
+  * DOC: random: add some examples for SeedSequence
+  * DOC, MAINT: Minor fixes to refguide_check.py documentation.
+  * BUG: make a variable volatile to work around clang compiler bug
+  * DOC: Parameter name typo axes -> axis in numpy.fft._pocketfft.
+  * ENH: Add annotations for np.core.arrayprint
+  * DOC: Fix a couple of reference to verbatim and vice versa
+  * MAINT: Add dist_info to "other" setup.py commands.
+  * MAINT: Bump pytest from 6.2.0 to 6.2.1
+  * TST: add back sdist test run
+  * BLD,DOC: pin sphinx to 3.3.1
+  * DOC: Update TESTS.rst.txt
+  * MAINT: Add aliases for commonly used ArrayLike objects
+  * DEP: deprecate np.testing.dec
+  * BUG: Fix concatenation when the output is "S" or "U"
+  * DOC: Update stack docstrings
+  * BLD: ensure we give the right error message for old Python versions
+  * DOC: add missing details to linalg.lstsq docstring
+  * MAINT: CPUs that support unaligned access.
+  * TST: Allow mypy output types to be specified via aliases
+  * MAINT: Remove obsolete workaround to set ndarray.__hash__ = None
+  * BUG: Fix unique handling of nan entries.
+  * MAINT: crackfortran regex simplify
+  * MAINT: exprtype regex simplify
+  * ENH, SIMD: Dispatch for unsigned floor division
+  * NEP: mark NEP 28 on website redesign as final
+  * Fix build warnings in NEPs
+  * MAINT: Bump sphinx from 3.3.1 to 3.4.1
+  * MAINT: Bump pytz from 2020.4 to 2020.5
+  * MAINT: Bump hypothesis from 5.43.3 to 5.43.4
+  * DOC: roadmap update
+  * MAINT: regex char class improve
+  * NEP: NumPy sponsorship guidelines (NEP 46)
+  * DOC: replace 'this platform' with the actual platform in the...
+  * BUG, SIMD: Fix _simd module build for 64bit Arm/neon clang
+  * DOC: Update reference to verbatim in a few location.
+  * MAINT: multiline regex class simplify
+  * DOC: Avoid using "set of" when talking about an ordered list.
+  * NEP: update backwards compatibility and deprecation policy NEP
+  * BUG, BLD: Generate the main dispatcher config header into the...
+  * ENH: move exp, log, frexp, ldexp to SIMD dispatching
+  * TST: Avoid changing odd tempfile names in tests' site.cfg
+  * TST: Turn some tests with loops into parametrized tests.
+  * MAINT: Fix exception cause in mingw32ccompiler.py
+  * API: make piecewise subclass safe using use zeros_like.
+  * MAINT: Bump hypothesis from 5.43.4 to 5.46.0
+  * BUG: Fix promotion of half and string
+  * DEP: Deprecate promotion of numbers and bool to string
+  * BUG, MAINT: improve avx512 mask logical operations
+  * REL: Update master after 1.19.5 release.
+  * ENH: Add dtype support to the array comparison ops
+  * ENH: Adding keyboard interrupt support for array creation
+  * BLD: add found Cython version to check in cythonize.py
+  * MAINT: Bump sphinx from 3.4.1 to 3.4.3
+  * MAINT: Bump hypothesis from 5.46.0 to 6.0.0
+  * BUG: Ensure too many advanced indices raises an exception
+  * BUG: Promotion between strings and objects was assymetric
+  * MAINT: Remove redundant null check before free
+  * BUG: Initialize value of no_castable_output used in ufunc_loop_matches
+  * MAINT: Make keyword arrays static
+  * TST: add a pypy37 windows 64-bit build
+  * Use sinus based formula for chebpts1
+  * ENH: cpu features detection implementation on FreeBSD ARM
+  * TST: Clear the mypy cache before running any typing tests
+  * MAINT: Changed the NBitBase variancy in number from co- to...
+  * ENH: Improve performance of tril_indices and triu_indices
+  * SIMD: add fast integer division intrinsics for all supported...
+  * BUG: threads.h existence test requires GLIBC > 2.12.
+  * ENH: [f2py] Add external attribute support.
+  * MAINT: Bump hypothesis from 6.0.0 to 6.0.2
+  * MAINT: Optimize numpy.count_nonzero for int types using SIMD...
+  * BUG: Fix f2py bugs when wrapping F90 subroutines.
+  * MAINT: Give the _<X>Like and _ArrayLike<X> type aliases a...
+  * STY: unify imports in __init__.py
+  * STY: Use explicit reexports for numpy.typing objects
+  * MAINT: Fix typo in docstring example
+  * MAINT: einsum: Optimize the sub function two-operands by using...
+  * BLD: update OpenBLAS to af2b0d02
+  * BUG: Keep ignoring most errors during array-protocol lookup
+  * ENH: Add new intrinsics sum_u8/u16/u64.
+  * TST: Speed up the typing tests
+  * MAINT: Update pavement.py to work with versioneer.
+  * TST: raise memory limit for test
+  * DOC: typo in post-loop return
+  * MAINT: random shuffle: warn on unrecognized objects, fix empty...
+  * DOC: Formatting consistency.
+  * DOC: Double backticks for inline code example.
+  * MAINT: Ignore ComplexWarning in test_iter_copy_casts.
+  * DOC: Misc single to double backticks fixes.
+  * DOC: Improve doc for numpy.random.Generator.choice
+  * MAINT: Bump pydata-sphinx-theme from 0.4.1 to 0.4.2
+  * MAINT: Bump mypy from 0.790 to 0.800
+  * MAINT: Bump hypothesis from 6.0.2 to 6.0.3
+  * MAINT: Bump pytest-cov from 2.10.1 to 2.11.1
+  * ENH: Add dtype-support to the ufunc-based ndarray magic methods...
+  * MAINT: Clean up all module-level dunders
+  * DOC: Clarify the type alias deprecation message
+  * DOC: lib/shape_base numpydoc formatting.
+  * NEP: accept NEP 23 (backwards compatibility policy)
+  * NEP: accept NEP 46 (sponsorship guidelines)
+  * DOC: Fix command in "Writing custom array containers" guide
+  * ENH: Add aliases for commonly used dtype-like objects
+  * DOC: __array__ accepts a dtype argument
+  * BLD: fix issue with bdist_egg, which made make dist in doc/...
+  * DOC: Misc numpydoc format fixes
+  * DOC: See also -> See Also (casing)
+  * DOC: more misc fixes of syntax
+  * DOC: cleanup of numpy/polynomial.
+  * DOC: improve description of _NoValue
+  * MAINT: add an 'apt update'
+  * REL: Update master after 1.20.0 release.
+  * ENH: Added sanity check to printoptions
+  * BUG: Use C linkage for random distributions
+  * DOC: Numpydoc format space before : in Parameters
+  * DOC: Numpydoc warning incorrect underline length.
+  * MAINT: Chain exceptions in linalg
+  * MAINT: Bump hypothesis from 6.0.3 to 6.1.1
+  * MAINT: Bump pytest from 6.2.1 to 6.2.2
+  * MAINT: Bump pydata-sphinx-theme from 0.4.2 to 0.4.3
+  * MAINT: defer the import of shutil
+  * MAINT: gracefully shuffle memoryviews
+  * ENH: Add annotations for the remaining np.generic aliases
+  * TST: Pin typing_extensions to the latest version
+  * MAINT: Move transferdata into buffer-wise struct
+  * BUG: Fix typo in numpy.__init__.py
+  * BUG: don't mutate list of fake libraries while iterating over...
+  * MAINT: avoid chaining exceptions in conv_template.py
+  * MAINT: Add missing placeholder annotations
+  * MAINT: Fix typo in PyArray_RegisterDataType error
+  * DOC: Corrected numpy.power example.
+  * Numpy logo fix on README
+  * CI: rearrange Azure build jobs
+  * MAINT: Fixed chain exception for array_split func
+  * DOC: add links to polynomial function/class listing
+  * ENH: Add a mypy plugin for exposing platform-specific extended-precision...
+  * ENH: Add dtype-support to the ufunc-based ndarray magic methods...
+  * MAINT: Avoid moveaxis overhead in median.
+  * BUG: Allow unmodified use of isclose, allclose, etc. with timedelta
+  * MAINT: Update openblas_support for macosx-arm64
+  * BUG: Allow pickling all relevant DType types/classes
+  * CI: fix when GitHub Actions builds trigger, and allow ci skips
+  * TST: use setup-python action for pypy, disable win64 pypy
+  * DOC: Fix whitespace before "last updated" on overview page
+  * DOC: Discussion on the @ operator and the matrix class
+  * DOC: remove pygments_style from conf.py
+  * DOC: Specified all possible return types for trapz function #18140
+  * DOC: Added sentence to docstring of histogram_bin_edges to explain...
+  * DOC: Change license date 2020 -> 2021
+  * MAINT: Delete unused "dst" clearing functions
+  * DEP: doc-deprecate BLAS_SRC/LAPACK_SRC
+  * CI: CircleCI seems to occasionally time out, increase the limit
+  * BUG: Fix missing signed_char dependency.
+  * ENH: Share memory of read-only intent(in) arrays.
+  * REL: Update master after 1.20.1 release.
+  * DOC: Update landing page to match table of contents
+  * MAINT: Disable TravisCI git clone depth.
+  * MAINT: Bump pytz from 2020.5 to 2021.1
+  * BUG: np.in1d bug on the object array (issue 17923)
+  * DOC: improve standard_t example in numpy.random.
+  * TST: Add a test for nditer write masked with references
+  * BUG: fix regression in a hidden callback use case in f2py.
+  * ENH: Add annotations for np.lib.ufunclike
+  * DOC: Fix docstring of _median_nancheck.
+  * BUG: improve the interface of tofile method
+  * MAINT: Fix version of wheel to support Python 3.10
+  * ENH: Add annotations for np.core.einsumfunc
+  * BUG: Remove check in shuffle for non-ndarrays
+  * MAINT: Added Chain exceptions where appropriate
+  * ENH: Initial typing of random
+  * MAINT: Threading and Unicode strings
+  * ENH: Add annotations for np.lib.index_tricks
+  * MAINT: Fix casting signatures to align with NEP 43 signature
+  * MAINT: Added Chain exceptions where appropriate
+  * BUG: Fix typo in char_codes
+  * BUG: Fix iterator shape in advanced index assignment broadcast...
+  * DOC: Mention scipy.signal.correlate and FFT method in `np.correlate`closes...
+  * MAINT: Bump sphinx from 3.4.3 to 3.5.0
+  * MAINT: Bump hypothesis from 6.1.1 to 6.2.0
+  * MAINT: Update END statements parsing for recent Fortran standards.
+  * BUG: Fix f2py parsing continued lines that follow comment lines.
+  * ENH: Add dtype-support to the ufunc-based ndarray magic methods...
+  * DOC: remove layout overrides for headers
+  * BUG: Fix tiny memory leaks when like= overrides are used
+  * ENH: Lint checks for PR diffs
+  * DOC: remove explanations.rst
+  * DOC: point intersphinx to matplotlib/stable...
+  * MAINT: Correct code producing warnings
+  * ENH: Add typing for RandomState
+  * BUG: Fix refcount leak in f2py complex_double_from_pyobj
+  * TST: Fix some uninitialized memory in the tests
+  * BUG: Correct shuffling of objects in 1-d array likes
+  * MAINT: random: Use 'from exc' when raising a ValueError in choice.
+  * BUG: fix stacklevel in warning within random.shuffle
+  * DOC: Remove unfinished Linear Algebra section from Quickstart...
+  * BUG: Segfault in nditer buffer dealloc for Object arrays
+  * NEP: add Spending NumPy Project Funds (NEP 48)
+  * BUG: diagflat could overflow on windows or 32-bit platforms
+  * NEP: array API standard adoption (NEP 47)
+  * DOC: update NEP status for accepted/finished NEPs
+  * MAINT: Bump mypy from 0.800 to 0.812
+  * MAINT: Bump sphinx from 3.5.0 to 3.5.1
+  * MAINT: Bump cython from 0.29.21 to 0.29.22
+  * MAINT: Bump hypothesis from 6.2.0 to 6.3.0
+  * ENH: Added type annotations to eye() function
+  * BUG: Remove suspicious type casting
+  * BUG: remove nonsensical comparison of pointer < 0
+  * BUG: verify pointer against NULL before using it
+  * BUG: check if PyArray_malloc succeeded
+  * DOC: Generator and RandomState doc improvements
+  * ENH: Improve error message in multinomial
+  * DOC: Rename "Ones and zeros" section in array-creation documentation.
+  * BUG: Fix non-versioneer uses of numpy.distutils
+  * TST: Remove the einsum typing tests reliance on issuing a ComplexWarning
+  * BUG: Fixed Von Mises distribution for big values of kappa
+  * TST: Branch coverage improvement for np.polynomial
+  * DOC: Fix links to landing page
+  * DOC: add guide for downstream package authors
+  * DOC: trunc, floor, ceil, rint, fix should all link to each other
+  * BLD: add _2_24 to valid manylinux names
+  * MAINT: Improve error message when common type not found.
+  * MAINT: Bump hypothesis from 6.3.0 to 6.3.4
+  * DOC Improve formatting in the depending_on_numpy documentation
+  * BUG: remove extraneous ARGOUTVIEWM dim. 4 typemaps
+  * MAINT: Specify color in RGB in the docs about the new NumPy logo
+  * BUG: incorrect error fallthrough in nditer
+  * CI: Use Ubuntu 18.04 to run "full" test.
+  * [BLD] use the new openblas lib
+  * Fix the numpy Apple M1 build
+  * BUG: NameError in numpy.distutils.fcompiler.compaq
+  * MAINT: Update master to main after branch rename
+  * ENH: Add annotations for np.lib.arrayterator
+  * CI: Pin docker image for Linux_Python_38_32bit_full_with_asserts...
+  * BUG: Fixed where keyword for np.mean & np.var methods
+  * CI: another master -> main fix
+  * CI: skip lint check on merges with main
+  * CI: Ensure that doc-build uses "main" as branch name
+  * CI: Use git branch -m instead of --initial-branch=main
+  * BUG: Fix overflow warning on apple silicon
+  * CI: Set git default branch to "main" in CircleCI.
+  * MAINT: Update the Call for Contributions section
+  * MAINT: Bump sphinx from 3.5.1 to 3.5.2
+  * MAINT: Bump hypothesis from 6.3.4 to 6.6.0
+  * MAINT: Bump pycodestyle from 2.5.0 to 2.6.0
+  * MAINT: OrderedDict is no longer necessary from Python 3.7
+  * BLD, TST: use pypy nightly to work around bug
+  * DOC: Clarify docs for fliplr() / flipud()
+  * DOC: Added documentation for linter (#18423)
+  * MAINT: Do not claim input to binops is self (array object)
+  * MAINT: Remove strange op == NULL check
+  * MAINT: Chain exceptions in index_tricks.py and mrecords.py
+  * MAINT: Add annotations for dtype.__getitem__, __mul__ and...
+  * CI: Do not fail CI on lint error
+  * BUG: Fix ma coercion list-of-ma-arrays if they do not cast to...
+  * MAINT: Bump pycodestyle from 2.6.0 to 2.7.0
+  * MAINT: Bump hypothesis from 6.6.0 to 6.8.1
+  * CI: Update apt package list before Python install
+  * MAINT: Ensure that re-exported sub-modules are properly annotated
+  * DOC: Consistently use rng as variable name for random generators
+  * BUG, ENH: fix array2string rounding bug by adding min_digits...
+  * DOC: add note to numpy.rint() docstrings
+  * BUG: Use npy_log1p where appropriate in random generation
+  * ENH: Improve the exception for default low in Generator.integers
+  * MAINT: Remove useless declarations in bad_commands
+  * ENH: Use new argument parsing for array creation functions
+  * DOC: Remove mention of nose from README
+  * DOC: Minor fix in inline code example of ufunc reference
+  * MAINT: use super() as described by PEP 3135
+  * MAINT: Add missing type to cdef statement
+  * BUG: Fix small valgrind-found issues
+  * DOC: Update some plotting code to current Matplotlib idioms
+  * ENH: Improve performance of np.save for small arrays
+  * BLD: remove /usr/include from default include dirs
+  * DEV: add a conda environment.yml with all development dependencies
+  * DOC: add release note for removal of /usr/include from include...
+  * MAINT: Bump sphinx from 3.5.2 to 3.5.3
+  * ENH: Use exponentials in place of inversion in Rayleigh and geometric
+  * BUG: Fix small issues found with pytest-leaks
+  * MAINT: Implement new style promotion for np.result_type, etc.
+  * BUG: Changed METH_VARARGS to METH_NOARGS
+  * Docs: simd-optimizations.rst: fix typo (basline ~> baseline)
+  * REL: Update main after 1.20.2 release.
+  * BUG: Fix test_ccompiler_opt when path contains dots
+  * DOC: Change matrix size in absolute beginners doc.
+  * BUG: Correct datetime64 missing type overload for datetime.date...
+  * BUG: fix segfault in object/longdouble operations
+  * MAINT: Bump pydata-sphinx-theme from 0.5.0 to 0.5.2
+  * MAINT: Bump hypothesis from 6.8.1 to 6.8.3
+  * TST: pin pypy version to 7.3.4rc1
+  * ENH: Support parsing Fortran abstract interface blocks.
+  * DEP: Disable PyUFunc_GenericFunction and PyUFunc_SetUsesArraysAsData
+  * MAINT: Specify the color space in all new NumPy logo files
+  * BLD: Strip extra newline when dumping gfortran version on MacOS
+  * DOC: update Steering Council membership and people on governance...
+  * DOC: Add release notes to upcoming_changes
+  * TST: add tests for using np.meshgrid for higher dimensional grids.
+  * DOC: Simplifies Mandelbrot set plot in Quickstart guide
+  * API, DEP: Move ufunc signature parsing to the start
+  * DOC: deduplicate dtype basic types (2)
+  * MAINT: Bump pytest from 6.2.2 to 6.2.3
+  * MAINT: Bump hypothesis from 6.8.3 to 6.8.4
+  * MAINT: Add exception chaining where appropriate
+  * BUG: Check out requirements and raise when not satisfied
+  * DEV: Adds gitpod to numpy
+  * BLD: introduce use of BLAS_LIBS and LAPACK_LIBS in distutils/system_info
+  * MAINT: Add exception chaining where appropriate
+  * DOC: Emphasize distinctions between np.copy and ndarray.copy
+  * CI: remove shippable CI
+  * MAINT: Allow more recursion depth for scalar tests.
+  * BUG: Regression #18075 | Fixing Ufunc TD generation order
+  * BLD: Negative zero handling with ifort
+  * MAINT: Bump sphinx from 3.5.3 to 3.5.4
+  * MAINT: Bump hypothesis from 6.8.4 to 6.9.1
+  * DOC: Update howto-docs with link to NumPy tutorials.
+  * DOC: Small fixes (including formatting) for NEP 43
+  * ENH: Improve the placeholder annotations for the main numpy namespace
+  * ENH, SIMD: Replace libdivide functions of signed integer division...
+  * DOC: More concise "How to import NumPy" description
+  * DOC: Use: from numpy.testing import ...
+  * CI: Use informational mode for codecov
+  * CI: Fixing typo in Azure job run
+  * DOC: update random and asserts in test guidelines
+  * MAINT: Relax the integer-type-constraint of npt._ShapeLike
+  * DOC: fix spelling of "reccomended" ("recommended")
+  * ENH: Improve the placeholder annotations for the main numpy namespace...
+  * ENH: Add __all__ to a number of public modules
+  * DOC: change dec.parametrize to pytest.mark.parametrize
+  * DOC: add note for clip() special case a_min > a_max See #18782
+  * DOC: Document newer pytest conventions
+  * DEV: Pin pydata-sphinx-theme to 0.5.2.
+  * CI: Use towncrier build explicitly
+  * DOC: Fixes small things in the genfromtext docstring
+  * MAINT: Use recent towncrier releases on PyPI.
+  * SIMD, TEST: Workaround for misaligned stack GCC BUG ABI on WIN64
+  * DOC: Misc Numpydoc and formatting for proper parsing.
+  * DOC: Update random c-api documentation
+  * MAINT: Improve the placeholder annotations for the main numpy...
+  * MAINT: Relax miscellaneous integer-type constraints
+  * DOC: fix typo in frexp docstring
+  * DOC: Improve random.choice() documentation
+  * NEP: propose new nep for allocator policies
+  * MAINT: Bump hypothesis from 6.9.1 to 6.10.0
+  * MAINT: Bump cython from 0.29.22 to 0.29.23
+  * MAINT: runtests help text cleanup
+  * DOC: Document howto build documentation in a virtual environment
+  * BUG: Initialize the full nditer buffer in case of error
+  * ENH: Add annotations for 4 objects in np.core.numerictypes
+  * MAINT: Remove incorrect inline
+  * DEV: general Gitpod enhancements
+  * MAINT: Minor fix to add reference link to numpy.fill_diagonal...
+  * MAINT: Update README.md
+  * BUG: Prevent nan being used in percentile
+  * DOC: Fix typo in random docs
+  * MAINT: Generalize and shorten the ufunc "trivially iterable"...
+  * ENH, SIMD: Add support for dispatching C++ sources
+  * DOC: Add Gitpod development documentation
+  * DOC: Add favicon
+  * ENH: Improve the placeholder annotations within sub-modules
+  * DOC: Clarify isreal docstring
+  * DOC: Move Sphinx numpy target in reference index.
+  * MAINT: Disable pip version check for azure lint check.
+  * ENH: Improve the placeholder annotations within sub-modules (part...
+  * STY: change CRLF line terminators to Unix
+  * MAINT: Fix the typo "implment"
+  * TST: Skip f2py TestSharedMemory for LONGDOUBLE on macos/arm64
+  * ENH: Add max values comparison for floating point
+  * MAINT: Remove dead codepath in generalized ufuncs
+  * Upgrade to GitHub-native Dependabot
+  * MAINT: Fix azure linter problems with pip 21.1
+  * MAINT: Bump hypothesis from 6.10.0 to 6.10.1
+  * BLD, ENH: Enable Accelerate Framework
+  * MAINT: Update PyPy version used by CI
+  * API: Ensure that casting does not affect ufunc loop
+  * ENH: Add min values comparison for floating point
+  * MAINT: Remove unsafe unions and ABCs from return-annotations
+  * ENH: Add SIMD operations for min and max value comparision
+  * MAINT: ssize_t -> Py_ssize_t and other fixes for Python v3.10.0
+  * MAINT: Bump typing-extensions from 3.7.4.3 to 3.10.0.0
+  * DOC: Add a set of standard replies.
+  * DOC: Improve cumsum documentation
+  * MAINT: Explicitly mark text files in .gitattributes.
+  * MAINT: Add ".csv" some data file names.
+  * BLD, BUG: Fix compiler optimization log AttributeError
+  * BLD: remove unnecessary flag -faltivec on macOS
+  * MAINT, CI: treats _SIMD module build warnings as errors through...
+  * ENH: Add PCG64DXSM BitGenerator
+  * MAINT: Adjust NumPy float hashing to Python's slightly changed...
+  * ENH: Improve the placeholder annotations within sub-modules (part...
+  * BUG : for MINGW, threads.h existence test requires GLIBC > 2.12
+  * BLD, BUG: Fix bdist_wheel duplicate building
+  * CI: fix the GitHub Actions trigger in docker.yml
+  * DOC: fix documentation of cloning over ssh
+  * ENH: Add placeholder annotations for two missing np.testing...
+  * BUG: Report underflow condition in AVX implementation of np.exp
+  * NEP: add mailing list thread, fixes from review
+  * BUG: Make changelog recognize gh- as a PR number prefix.
+  * BUG: Fix refcounting in string-promotion deprecation code path
+  * BUG: Fix underflow error in AVX512 implementation of ufunc exp/f64
+  * DOC: Add a release note for the improved placeholder annotations
+  * API: Add npt.NDArray, a runtime-subscriptable alias for np.ndarray
+  * DOC: Update performance for new PRNG
+  * ENH: manually inline PCG64DXSM code for performance.
+  * TST: xfail TestCond.test_nan unconditionally
+  * ENH: Add annotations for np.lib.utils
+  * DOC: Update beginners docu for sum function with axis
+  * DOC: add an extra example in runtests.py help test
+  * DOC: change copyright SciPy to NumPy
+  * DOC: Improve datetime64 docs.
+  * MAINT: Do not use deprecated mktemp()
+  * DOC: improve numpy.histogram2d() documentation
+  * BUG: fixed ma.average ignoring masked weights
+  * DOC: add note and examples to isrealobj docstring
+  * DOC: Update a page title with proper case
+  * DEP: remove PolyBase from np.polynomial.polyutils
+  * DOC: Improve description of array scalar in glossary
+  * BUG: fix np.ma.masked_where(copy=False) when input has no mask
+  * MAINT, SIMD: Hardened the AVX compile-time tests
+  * ENH: Include co-authors in changelog.
+  * MAINT: Bump sphinx from 3.5.4 to 4.0.0
+  * MAINT: Bump hypothesis from 6.10.1 to 6.12.0
+  * MAINT: Bump pytest from 6.2.3 to 6.2.4
+  * DOC: Gitpod documentation enhancements
+  * MAINT: Cleanup tools/changelog.py
+  * REL: Update main after 1.20.3 release.
+  * MAINT: Remove usage of the PEP 604 pipe operator
+  * BUG: Update coordinates in PyArray_ITER_GOTO1D
+  * BUG: fix potential buffer overflow(#18939)
+  * ENH: Add annotations for np.lib.NumpyVersion
+  * MAINT: Remove warning when checking AVX512f on MSVC
+  * ENH: Improve annotations of the item, tolist, take and...
+  * DEP: Ensure the string promotion FutureWarning is raised
+  * DEP: Deprecate error clearing for special method in array-coercion
+  * ENH: Add annotations for np.broadcast and np.DataSource
+  * ENH: Add dtype-support to 11 ndarray / generic methods
+  * BUG: fix potential use of null pointer in nditer buffers
+  * BUG: fix variable misprint in multiarray test code
+  * BUG: fix variable misprint checking wrong variable in umath tests
+  * BUG: fix ValueError in PyArray_Std on win_amd64
+  * MAINT: Small cleanups in PyArray_NewFromDescr_int
+  * Revert "BUG: Update coordinates in PyArray_ITER_GOTO1D"
+  * DOC: "NumPy" <- "numpy" in NumPy Fundamentals - Indexing
+  * DOC: Add comment for ifdef macro guard
+  * MAINT: Bump pytest-cov from 2.11.1 to 2.12.0
+  * MAINT: Bump sphinx from 4.0.0 to 4.0.1
+  * DOC: Clarify minimum numpy version needed to use random c-api
+  * ENH: Improve the annotations of np.core._internal
+  * DEP: Deprecate 4 ndarray.ctypes methods
+  * MAINT: Python3 classes do not need to inherit from object
+  * BUG: do not use PyLong_FromLong for intp
+  * DOC: Improve trapz docstring
+  * DOC: Fix typo in release notes for v1.21
+  * BUG, SIMD: Fix unexpected result of uint8 division on X86
+  * BUG, SIMD: Fix NumPy build on ppc64le(IBM/Power) for old versions...
+  * BUG: Fix duplicate variable names in compiler check for AVX512_SKX
+  * BLD,API: (distutils) Force strict floating point error model...
+  * ENH: Improve the np.ufunc annotations
+  * DOC: Forward port missing 1.18.5 release note.
+  * ENH: Stubs for array_equal appear out of date.
+  * BUG: Fixed an issue wherein nanmedian could return an array...
+  * MAINT: Update mailmap
+  * REL: Prepare 1.21.0 release
+  * BUG: Fix compile-time test of POPCNT
+  * BUG: Fix test_numpy_version.
+  * BUG: Fixed an issue wherein _GenericAlias.__getitem__ would...
+  * BUG: Linter should only run on pull requests.
+  * BUG: Fix setup.py to work in maintenance branches.
+  * BUG: expose short_version as previously in version.py
+  * API: Delay string and number promotion deprecation/future warning
+  * BUG, SIMD: Fix detect host/native CPU features on ICC at compile-time
+  * BUG: Add -std=c99 to intel icc compiler flags on linux
+  * NEP: Accept NEP 35 as final
+  * MAINT, BUG: Adapt castingimpl.casting to denote a minimal level
+  * REL: Prepare for NumPy 1.20.0rc2 release.
+  * MAINT: Add annotations for the missing period parameter to...
+  * MAINT: Add complex as allowed type for the np.complexfloating...
+  * TST: Ignore exp FP exceptions test for glibc ver < 2.17
+  * MAINT: replace imgmath with mathjax for docs
+  * BUG: Fix out-of-bounds access in convert_datetime_divisor_to_multiple
+  * ENH: Support major version larger than 9 in NumpyVersion
+  * DOC: fix duplicate navbar in development documentation index
+  * BUG: Invalid dtypes comparison should not raise TypeError
+  * BUG: Add missing DECREF in new path
+  * REL: Prepare for 1.21.0 release
+
+- Add patch from upstream to fix an infinite loop on gcc 11:
+  * 0001-BUG-Fix-infinite-loop-on-gcc11.patch
+
+- Remove patch which is not needed anymore in 1.21.0:
+  * fix-asarray.patch
+
+-------------------------------------------------------------------
+Mon Jul  5 12:22:33 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix an invalid usage of the dtype argument. This
+  has already been fixed upstream but since Staging:F is so
+  crowded now with python packages, I think it's better to patch
+  it and update numpy once Staging:F is cleared:
+  * fix-asarray.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 18:56:39 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.3:

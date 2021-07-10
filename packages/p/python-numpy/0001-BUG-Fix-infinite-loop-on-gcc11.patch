@@ -1,0 +1,33 @@
+From 820cb97bcad0d171c9efbb8fb8d7e987a0514aa9 Mon Sep 17 00:00:00 2001
+From: Sayed Adel <seiko@imavr.com>
+Date: Fri, 2 Jul 2021 04:58:37 +0200
+Subject: [PATCH] BUG, SIMD: Fix infinite loop during count non-zero on GCC-11
+
+  The issue appears when the compiler miss inlining a function that
+  returns or accepts a SIMD vector.
+---
+ numpy/core/src/multiarray/item_selection.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/numpy/core/src/multiarray/item_selection.c b/numpy/core/src/multiarray/item_selection.c
+index fb354ce5473..2b8ea9e79ac 100644
+--- a/numpy/core/src/multiarray/item_selection.c
++++ b/numpy/core/src/multiarray/item_selection.c
+@@ -2131,7 +2131,7 @@ count_nonzero_bytes_384(const npy_uint64 * w)
+ 
+ #if NPY_SIMD
+ /* Count the zero bytes between `*d` and `end`, updating `*d` to point to where to keep counting from. */
+-static NPY_INLINE NPY_GCC_OPT_3 npyv_u8
++NPY_FINLINE NPY_GCC_OPT_3 npyv_u8
+ count_zero_bytes_u8(const npy_uint8 **d, const npy_uint8 *end, npy_uint8 max_count)
+ {
+     const npyv_u8 vone = npyv_setall_u8(1);
+@@ -2150,7 +2150,7 @@ count_zero_bytes_u8(const npy_uint8 **d, const npy_uint8 *end, npy_uint8 max_cou
+     return vsum8;
+ }
+ 
+-static NPY_INLINE NPY_GCC_OPT_3 npyv_u16x2
++NPY_FINLINE NPY_GCC_OPT_3 npyv_u16x2
+ count_zero_bytes_u16(const npy_uint8 **d, const npy_uint8 *end, npy_uint16 max_count)
+ {
+     npyv_u16x2 vsum16;
