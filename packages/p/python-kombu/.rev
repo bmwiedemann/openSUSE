@@ -760,4 +760,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>853806</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c734886316df8bd31836f6cd57204d85</srcmd5>
+    <version>5.1.0</version>
+    <time>1625950438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0
+  * Add support for SQLAlchemy 1.4.
+  * prepare_accept_content() now raises SerializerNotInstalled instead of 
+    KeyError.
+  * Wheels are no longer universal.
+  * Remove python2 compatibility code
+  * Update default pickle protocol version to 4
+  * Drop support for the lzma backport.
+</comment>
+    <requestid>903718</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 30 09:16:13 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.1.0
+  * Add support for SQLAlchemy 1.4.
+  * prepare_accept_content() now raises SerializerNotInstalled instead of 
+    KeyError.
+  * Wheels are no longer universal.
+  * Remove python2 compatibility code
+  * Update default pickle protocol version to 4
+  * Drop support for the lzma backport.
+
+-------------------------------------------------------------------
 Mon Nov 16 01:50:08 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 5.0.2:
