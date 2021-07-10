@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jul  9 12:25:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.06.29:
+  Minor Additions or Changes:
+  * Added Speed parameter to the Timer video filter.
+  * Added keyboard shortcuts to switch between the stock layouts:
+    Alt+1 through 6.
+  * Added Import button to Playlist.
+  * Added an Apply button next to Properties > Speed to improve
+    workflow when using mouse wheel.
+  New Bugs (in version 21.05):
+  * Fixed playback may hang when playing different Playlist items.
+  * Fixed alpha presets in Export.
+  * Fixed a possible crash when changing Settings > Preview Scaling.
+  * Fixed a possible crash when using Crop: Source and Size,
+    Position & Rotate filters on the same clip.
+  * Fixed Size, Position & Rotate filters not reloading.
+  * Fixed reloading Keyframes for a filter on Output.
+  * Fixed changing Properties > Color Range for a clip in the Source player.
+  * Fixed playhead moves to the beginning of the Timeline when dragging an image from Source.
+  * Fixed a proxy may used instead of the original when dropping from file manager to Timeline.
+  * Fixed Fade In/Out on Timeline may add filters in wrong order.
+  * Fixed a crash trying to make thumbnail for an invalid playlist item when loading a project.
+  * Fixed Playlist > Play After Open not working.
+  * Fixed missing proxies not generated for an opened project when Settings > Proxy > Use Proxy turned on.
+  * Fixed File > Export EDL creates empty file.
+Recent Bugs
+  * Fixed Center bias in Crop: Source filter.
+  * Fixed a crash using Mask: From File and Size, Position & Rotate filters on the same color clip.
+  * Fixed a possible crash when changing Settings > Theme.
+  * Fixed Mask: Simple Shape moves when deleting all keyframes: no longer allowed
+    to delete the last keyframe; use the keyframe toggle button in the parameters area of Filters.
+  * Fixed maintaining the image center when reset Size, Position & Rotate > Zoom.
+  * Improved using the mouse wheel to zoom in Size, Position & Rotate filter.
+  * Improved the range of the new Zoom keyframe values when keyframes are changed or removed.
+  * Fixed custom Export preset may load with incorrect frame rate.
+  * Fixed a crash when a Stabilize analysis (.stab) file fails to open.
+  * Fixed a crash when Stabilize > Accuracy is 9 or higher.
+  Old Bugs:
+  * Fixed the Export > H.264 High Profile preset was producing main profile on NVIDIA.
+  * Fixed a crash when using Paste after a File > Close or File > New.
+  * Fixed a Project name with a slash is accepted but fails.
+  * Fixed Playlist > Replace may replaced with timeline and appear as <tractor> and cause a crash
+    if the Project player it active.
+  * Fixed inconsistent handling of keyframes when splitting a trimming a clip.
+  * Fixed high CPU usage and a long wait after multiple Stabilize analysis jobs.
+  * Fixed remembering the last-opened folder when choosing Properties > Video > Custom… for a
+    transition with video filter Mask: From File > File > Custom….
+
+-------------------------------------------------------------------
 Sun Jun 27 12:19:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded QtWebKit dependency.

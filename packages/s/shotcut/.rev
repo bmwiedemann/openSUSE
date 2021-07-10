@@ -449,4 +449,12 @@ Update to release 19.04.30.</comment>
     <comment></comment>
     <requestid>902639</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7d292f3977384ce9e968d04a12c38528</srcmd5>
+    <version>21.06.29</version>
+    <time>1625950473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905310</requestid>
+  </revision>
 </revisionlist>
