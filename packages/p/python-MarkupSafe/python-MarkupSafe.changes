@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 13 14:46:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- skip building for Python 2.x
+
+-------------------------------------------------------------------
+Tue Jun  1 10:23:06 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to v2.0.1
+  * Mark top-level names as exported so type checking understands
+    imports in user projects.
+  * Fix some types that weren’t available in Python 3.6.0.
+
+- Update to v2.0.0
+  * Drop Python 2.7, 3.4, and 3.5 support.
+  * Markup.unescape uses html.unescape() to support HTML5 character
+    references. #117
+  * Add type annotations for static typing tools. #149
+
+-------------------------------------------------------------------
 Fri Apr 16 07:30:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - allow tests to be disabled (still on by default)
@@ -7,7 +26,9 @@ Fri Apr 16 07:30:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Tue Mar  5 16:46:50 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 1.1.1:
-  * Fix segfault when __html__ method raises an exception when using the C speedups. The exception is now propagated correctly. (#109)
+  * Fix segfault when __html__ method raises an exception when
+    using the C speedups. The exception is now propagated
+    correctly. (#109)
 
 -------------------------------------------------------------------
 Thu Feb 21 16:13:28 UTC 2019 - John Vandenberg <jayvdb@gmail.com>

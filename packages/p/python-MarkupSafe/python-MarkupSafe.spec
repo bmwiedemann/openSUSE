@@ -18,9 +18,10 @@
 
 %bcond_without test
 %define oldpython python
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-MarkupSafe
-Version:        1.1.1
+Version:        2.0.1
 Release:        0
 URL:            https://github.com/pallets/markupsafe
 Summary:        Implements a XML/HTML/XHTML Markup safe string for Python
@@ -47,7 +48,6 @@ safely encode strings for dynamically generated web pages.
 
 %prep
 %setup -q -n MarkupSafe-%{version}
-rm docs/make.bat docs/Makefile docs/conf.py docs/requirements.txt
 
 %build
 export CFLAGS="%{optflags}"
