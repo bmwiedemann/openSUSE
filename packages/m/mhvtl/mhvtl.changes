@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Jul 09 00:22:26 UTC 2021 - lduncan@suse.com
+
+- Update to version 1.63_release+754.ff8861da60c9:
+  * Use bounce buffer if tape block size is larger than request buffer
+  * dump_tape: Fix segfault due to local variable conflict
+  * Fix typos in mktape man page
+  * Fix routine to extract barcode from string
+  * Correcting minor typos.
+  * Undo previous edits to LTO-7 media density
+  * Security Protocol OUT: Fix null pointer check
+  * Update LTO-8 media denisty codes
+  * small adjustment in the emulation of the ts3100 library
+  * Update for 1.6_3_release
+  * mktape: Set default version string based from MHVTL_VERSION
+  * mhvtl.ko: Bump kernel version
+  * mhvtl.ko: Initialise outstanding op struct before adding to list
+  * mhvtl.ko: Bump kernel module version string
+  * mhvtl.ko: Limit number of outstanding queued commands
+  * Add kernel file_inode() commit ID as comment
+  * mhvtl.ko: Bump kernel module version string
+  * mhvtl.ko: Use _safe version of list_for_each_entry
+  * mhvtl.ko: Simplify file_inode()
+  * mhvtl.ko: Correct compiler warning about printf var sizes
+  * mhvtl.ko: Log errors if they occur
+  * mhvtl.ko: bump kernel module version
+  * mhvtl.ko: kernel module oops on PPC
+  * mhvtl.ko: bump kernel module version
+  * Increase default kmem_cache bounce buffer size to 64k
+  * mhvtl.ko: Define SG_SEGMENT_SZ only if not defined
+  * Fix spelling of retrieving
+  * Exclude __builtin_cpu_supports() on non x86_64 CPU types
+  * fix wording
+  * rename log.h to avoid generic name conflict
+  * rename scsi.h to avoid generic name conflict
+  * rename list.h to avoid generic name conflict
+  * Rename tapeLoaded to load_status
+  * Use ccan version of crc32c
+  * Fix startup script
+
+- Also, remove patch (no longer needed, fixed upstream):
+  * mhvtl-fix-ppc-Makefile.patch
+  And add a patch: to handle an issue submitted upstream
+  but not yet integrated:
+  * Handle-scsi_host_template-removal-of-unchecked_isa_d.patch
+
+-------------------------------------------------------------------
 Thu Oct 29 18:09:33 UTC 2020 - Lee Duncan <lduncan@suse.com>
 
 - Added "-DHAVE_UNLOCKED_IOCTL" to kernel module build in SPEC file

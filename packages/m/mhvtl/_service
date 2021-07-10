@@ -4,10 +4,10 @@
     <param name="url">https://github.com/markh794/mhvtl.git</param>
     <param name="subdir"></param>
     <param name="filename">mhvtl</param>
-    <param name="versionformat">1.6-2_release</param>
-    <param name="revision">1.6-2_release</param>
+    <param name="revision">ff8861da60c9</param>
+    <param name="versionformat">1.6-3_release+@TAG_OFFSET@.%h</param>
+    <param name="match-tag">1.[0-0]-[0-0]_release</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">markh794@gmail.com</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*mhvtl*.tar</param>

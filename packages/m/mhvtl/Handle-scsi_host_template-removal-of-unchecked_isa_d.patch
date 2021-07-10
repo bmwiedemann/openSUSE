@@ -1,0 +1,31 @@
+From 59ec462acfd517355991086e823a03277966ef2a Mon Sep 17 00:00:00 2001
+From: Lee Duncan <lduncan@suse.com>
+Date: Fri, 9 Jul 2021 08:52:52 -0700
+Subject: [PATCH] Handle scsi_host_template removal of unchecked_isa_dma.
+
+This field was removed in upstream linux commit:
+
+>  aaff5ebaa269 ("scsi: remove the unchecked_isa_dma flag")
+
+And mhvtl didn't use it (set it to "1") anyway.
+---
+ kernel/mhvtl.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/kernel/mhvtl.c b/kernel/mhvtl.c
+index 341666d8cf4b..5ad108dbf5bc 100644
+--- a/kernel/mhvtl.c
++++ b/kernel/mhvtl.c
+@@ -328,7 +328,9 @@ static struct scsi_host_template vtl_driver_template = {
+ 	.sg_tablesize =		SCSI_MAX_SG_CHAIN_SEGMENTS,
+ 	.cmd_per_lun =		1,
+ 	.max_sectors =		4096,
++#if LINUX_VERSION_CODE < KERNEL_VERSION(5, 13, 0)
+ 	.unchecked_isa_dma =	0,
++#endif
+ #if LINUX_VERSION_CODE < KERNEL_VERSION(5, 0, 0)
+ 	.use_clustering =	ENABLE_CLUSTERING,
+ #else
+-- 
+2.26.2
+

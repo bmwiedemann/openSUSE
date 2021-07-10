@@ -1,7 +1,7 @@
 #
 # spec file for package mhvtl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.62
+Version:        1.63_release+754.ff8861da60c9
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -43,9 +43,9 @@ BuildRequires:  zlib-devel
 Summary:        Virtual Tape Library system
 License:        GPL-2.0-only
 Group:          System/Daemons
-Source:         %{name}-%{version}_release.tar.xz
+Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
-Patch1:         %{name}-fix-ppc-Makefile.patch
+Patch1:         Handle-scsi_host_template-removal-of-unchecked_isa_d.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -77,11 +77,11 @@ module, plus a character device "back end" to pass the SCSI commands
 through to user-space daemons.
 
 %prep
-%setup -qn %{name}-%{version}_release
+%setup -qn %{name}-%{version}
 %patch1 -p1
 
 %build
-make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version}_release \
+make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \
 	SYSTEMD_GENERATOR_DIR=%{_systemdgeneratordir}
 %if 0%{buildkmp} == 1
 for flavor in %flavors_to_build; do
