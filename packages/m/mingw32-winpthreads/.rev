@@ -15,4 +15,12 @@
     <comment>- Update to new upstream release 8.0.0</comment>
     <requestid>879903</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72c9765b975490d1b6a7d8f211110cb1</srcmd5>
+    <version>9.0.0</version>
+    <time>1625950482</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 9.0.0</comment>
+    <requestid>905553</requestid>
+  </revision>
 </revisionlist>

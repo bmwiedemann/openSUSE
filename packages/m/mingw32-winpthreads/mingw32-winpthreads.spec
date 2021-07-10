@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-winpthreads
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        A pthreads implementation for Windows
 License:        BSD-3-Clause AND MIT
