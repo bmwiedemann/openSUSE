@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul  8 19:37:59 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.5-29-g97c2c82c2f5:
+  + rebased on top of upstream commit SHA1 0883bdea7337b95e4b611c768c0279868462204a
+    upstream 16.2.5 release
+    https://ceph.io/releases/v16-2-5-pacific-released/
+  + cherry-pick fix for bsc#1188111:
+    * include/denc: include used header
+    * mon,osd: always init local variable
+    * common/Formatter: include used header
+
+-------------------------------------------------------------------
+Sat Jun 26 08:44:14 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.4-564-g9689286366a:
+  + rebased on top of upstream commit SHA1 e57defcbcc91e67aac958c4a52d657a7a907e8ef 
+
+-------------------------------------------------------------------
 Thu Jun 24 19:10:24 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update _constraints: only honor physical memory, not 'any memory'

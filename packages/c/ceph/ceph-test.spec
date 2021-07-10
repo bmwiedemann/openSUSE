@@ -123,7 +123,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.2.4.26+g555d38aa5a5
+Version: 16.2.5.29+g97c2c82c2f5
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -139,7 +139,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.2.4-26-g555d38aa5a5.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.2.5-29-g97c2c82c2f5.tar.bz2
 %if 0%{?suse_version}
 Source94: ceph-rpmlintrc
 Source95: checkin.sh
@@ -592,7 +592,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.2.4-26-g555d38aa5a5
+%autosetup -p1 -n ceph-16.2.5-29-g97c2c82c2f5
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -934,6 +934,7 @@ rm -rf %{buildroot}%{_datadir}/ceph/mgr/iostat
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/localpool
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/mds_autoscaler
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/mirroring
+rm -rf %{buildroot}%{_datadir}/ceph/mgr/nfs
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/orchestrator
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/osd_perf_query
 rm -rf %{buildroot}%{_datadir}/ceph/mgr/osd_support

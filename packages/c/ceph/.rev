@@ -557,4 +557,12 @@
     <comment>Update _constraints (physicalmemory) (forwarded request 902205 from smithfarm)</comment>
     <requestid>902209</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>6b3823f48a8a6480f58bf5e1a63823a4</srcmd5>
+    <version>16.2.5.29+g97c2c82c2f5</version>
+    <time>1625950452</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1188111 (forwarded request 905134 from smithfarm)</comment>
+    <requestid>905135</requestid>
+  </revision>
 </revisionlist>
