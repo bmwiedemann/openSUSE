@@ -1,7 +1,7 @@
 #
 # spec file for package sdlpop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 Name:           sdlpop
-Version:        1.21
+Version:        1.22
 Release:        0
 Summary:        An open-source port of Prince of Persia
 License:        GPL-3.0-only
 Group:          Amusements/Games/Other
-URL:            http://www.popot.org/get_the_games.php?game=SDLPoP
+URL:            https://www.popot.org/get_the_games.php?game=SDLPoP
 Source:         https://github.com/NagyD/SDLPoP/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         sdlpop-fix-sdl2-includes.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -44,6 +45,7 @@ game data files are located.
 
 %prep
 %setup -q -n SDLPoP-%{version}
+%patch0 -p1
 sed -i 's/\r$//' doc/*.txt
 
 %build
@@ -68,7 +70,7 @@ exec "%{_libexecdir}/%{name}/\${0##*/}" \$@
 EOF
 
 %files
-%doc doc/Readme.txt doc/ChangeLog.txt doc/bugs.txt
+%doc doc/Readme.txt doc/ChangeLog.txt
 %license doc/gpl-3.0.txt
 %attr(0755,root,root) %{_bindir}/sdlpop
 %{_libexecdir}/%{name}

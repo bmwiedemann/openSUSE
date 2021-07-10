@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Sat Jul 10 09:55:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.22
+  Fixed:
+  * The prince can now grab a ledge at the bottom right corner of
+    a room with no room below.
+  * Don't allow killing a skeleton in cheat mode.
+  * Ctrl+S didn't mute music (except death music).
+  * A falling tile on the left side of a pillar could cause the
+    blue stripe to be drawn over the pillar.
+  * The top of moving gates became glitched on levels using
+    non-default palettes.
+  * The right edge of pressed drop buttons was black if a big
+    pillar was next to them.
+  * Guards appeared in the current room when they fell into spikes
+    in an adjacent room. (Example: original level 11, room 22.)
+  * Show an error message if a data file is missing.
+  * Colored torches were not restored on quickload if you
+    (quit and) restarted the game after quicksave.
+  * Fixed compiling with some features #undefined. (USE_TEXT,
+    USE_LIGHTING, USE_MENU)
+  * Fixed the detection of Ctrl+L during the demo level.
+  * Create the screenshots directory in SDLPoP's directory, even
+    if the current directory is something else.
+    This is to match how the replay folder works.
+  * After quickload, show the room where the prince is, even if
+    the player moved the view away from it (with the H,J,U,N keys).
+  * After quickload, don't draw guard HP if a previously viewed
+    room (with the H,J,U,N keys) had a guard but the current room
+    doesn't have one.
+  * Prevent the modifier remapping from accessing out-of-range
+    rooms.
+  * Don't show the mirror image if the prince is not in the
+    currently shown room.
+  * Fixed the length of feather fall in fast-forward mode.
+  * Prevent torches from being randomly colored when an older
+    replay is loaded.
+  * If the prince is fighting a guard, and the player does a
+    quickload to a state where the prince is near the mouse, the
+    prince would draw the sword.
+  * Fixed graphical glitches with an opening gate:
+    1. with a loose floor above and a wall above-right.
+    2. with the top half of a big pillar above-right.
+       See FIX_ABOVE_GATE in config.h .
+  * Validate mode crashed with the error "init_scaling:
+    SDL_CreateTexture: Invalid renderer".
+  * Fixed crashing when a MIDI music interrupted another one.
+  * Make it possible to go through a certain closed gate on
+    level 11 of Demo by Suave Prince.
+  * When the prince jumps up at the bottom of a big pillar split
+    between two rooms, a part near the top of the screen
+    disappears.
+    + Example: The top row in the first room of the original
+      level 5.
+    + Details: See FIX_BIGPILLAR_JUMP_UP in config.h .
+  * Fixed spiked/chomped/bumped guards teleporting into the wrong
+    room. (if fixes are enabled)
+  * Quicksave during feather fall mode. (if fixes are enabled)
+  * Prevent the prince from entering a glitched room when he
+    falls into a wall or he is revived near a wall.
+  * Optimized OPL mixing (MIDI music).
+  * Fixed the prince sliding through closed gates when you are
+    using the caped prince graphics.
+  * If the prince dies on level 14, don't return to the intro
+    after the level was restarted.
+  Done:
+  * Added command-line parameter "mute": Start the game with
+    sound off.
+  * Hide references to various features if the game was compiled
+    without them.
+  * A scrollbar appears in the pause menu if scrolling is
+    possible.  It's not clickable yet, it just shows where you are
+    in the list.
+  * Added command-line parameter "playdemo": Make the demo level
+    playable.
+  * Speed up music, sounds, and transitions during fast forwarding.
+  * Added a new cheat key: Ctrl+B: Go back to the room where the
+    prince is. (Undo H,J,U,N.)
+  * Added options for changing speeds. They are detected from
+    PRINCE.EXE. (Used in Hurry up Prince, for example.)
+  * In the settings menu, allow using Page Up, Page Down, Home, End.
+  * Rewrote all mentions of key combinations to the "Ctrl+A" style.
+  * Marked which features of SDLPoP are not in the original game.
+  * Allow Backspace and Ctrl+C during replay.
+  * During playback, display the number of ticks since start, if
+    the timer is shown (debug cheats: T).
+  * Added a debug cheat to quickload but keep the currently loaded
+    level. (Shift+F9)
+  * Added a compilation-time flag to disable all fixes for vanilla
+    execution.
+  * Waste an RNG cycle in loose_shake() to match DOS PoP.
+  * In new replays, use deprecation_number = 2. On playback, waste
+    the RNG cycle only if deprecation_number >= 2.
+    Older replays have deprecation_number <= 1, and we don't waste
+    the RNG cycle when playing them back.
+  * When backing offscreen (to the left) from the first guard on
+    level 7 (among others), simulate the glitch from DOS PoP,
+    which causes the prince to fall through the floor.
+  * Added a more visible error message when a mod referenced by a
+    replay file cannot be found in the mods folder.
+  * Allow guard skill customizations in SDLPoP.ini.
+  * Made FIX_DOORTOP_DISABLING_GUARD configurable.
+- Add patch:
+  * sdlpop-fix-sdl2-includes.patch
+
+-------------------------------------------------------------------
 Sat Aug 22 21:19:57 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.21
