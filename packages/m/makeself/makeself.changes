@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 10 13:09:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 2.4.5
+  * Fix some issues with the compatibility of the archives
+  * Reversing the previous generation of strictly POSIX tar archives.
+  * Fix possible incompatibilities with the default ustar TAR format
+  * Introducing a new --tar-format option when creating the format
+
+-------------------------------------------------------------------
 Sat Jan 30 15:51:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.3:

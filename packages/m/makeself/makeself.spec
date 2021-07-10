@@ -1,7 +1,7 @@
 #
 # spec file for package makeself
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2011-2017 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           makeself
-Version:        2.4.3
+Version:        2.4.5
 Release:        0
 Summary:        Make self-extractable archives on Unix
 License:        GPL-2.0-or-later
