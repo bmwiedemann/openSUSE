@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  7 14:30:20 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch unicode.patch to fix random python crash
+
+-------------------------------------------------------------------
 Mon Feb 15 00:56:32 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Dont test with python36-numpy. Tumbleweed's NumPy >= 1.20 dropped

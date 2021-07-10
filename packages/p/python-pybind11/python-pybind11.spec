@@ -24,14 +24,16 @@ Summary:        Module for operability between C++11 and Python
 License:        BSD-3-Clause
 URL:            https://github.com/pybind/pybind11
 Source:         https://github.com/pybind/pybind11/archive/v%{version}.tar.gz#/pybind11-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/pybind/pybind11/commit/0c93a0f3fcf6bf26be584558d7426564720cea6f Fix Unicode support for ostream redirects
+Patch0:         unicode.patch
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,6 +61,7 @@ This package contains files for developing applications using pybind11.
 
 %prep
 %setup -q -n pybind11-%{version}
+%autopatch -p1
 
 %build
 %python_build
