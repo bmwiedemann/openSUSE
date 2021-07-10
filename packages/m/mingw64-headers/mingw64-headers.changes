@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  8 07:13:22 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * mingw-w64-v9.0.0-strnlen_s.patch
+    + work around the "multiple definition of `strnlen_s'" error
+    + the function still accessible by defining _NEEDS_STRNLEN_S
+      before inclusion of the header
+
+-------------------------------------------------------------------
+Fri Jul  2 12:34:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.0
+  * Various new and updated API headers
+  * at_quick_exit implementation
+  * dism API
+
+-------------------------------------------------------------------
 Thu Dec  3 12:18:00 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to new upstream release 8.0.0
