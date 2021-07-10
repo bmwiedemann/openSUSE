@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 10 15:49:27 CEST 2021 - nine@detonation.org
+
+- update to version 2021.06
+  * Simplify loop in optimizer's incorporate_inner
+  * Micro-optimize the sift_down sub in sorted_keys
+  * Remove no longer needed JVM workaround
+
+-------------------------------------------------------------------
 Mon May 24 15:56:57 CEST 2021 - nine@detonation.org
 
 - update to version 2021.05
