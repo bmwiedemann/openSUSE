@@ -1,0 +1,89 @@
+---
+ sphinxcontrib/autohttp/__init__.py   |   19 +++++++++++++++++++
+ sphinxcontrib/autohttp/bottle.py     |    5 ++++-
+ sphinxcontrib/autohttp/flask.py      |    5 ++++-
+ sphinxcontrib/autohttp/flask_base.py |    5 ++++-
+ sphinxcontrib/autohttp/tornado.py    |    5 ++++-
+ 5 files changed, 35 insertions(+), 4 deletions(-)
+
+--- a/sphinxcontrib/autohttp/__init__.py
++++ b/sphinxcontrib/autohttp/__init__.py
+@@ -9,3 +9,22 @@
+     :license: BSD, see LICENSE for details.
+ 
+ """
++
++# Taken from gh#sphinx-doc/sphinx#9326
++def force_decode(string: str, encoding: str) -> str:
++    """Forcibly get a unicode string out of a bytestring."""
++    warnings.warn('force_decode() is deprecated.',
++                  RemovedInSphinx50Warning, stacklevel=2)
++    if isinstance(string, bytes):
++        try:
++            if encoding:
++                string = string.decode(encoding)
++            else:
++                # try decoding with utf-8, should only work for real UTF-8
++                string = string.decode()
++        except UnicodeError:
++            # last resort -- can't fail
++            string = string.decode('latin1')
++    return string
++
++
+--- a/sphinxcontrib/autohttp/bottle.py
++++ b/sphinxcontrib/autohttp/bottle.py
+@@ -17,7 +17,10 @@ from docutils import nodes
+ from docutils.parsers.rst import directives, Directive
+ from docutils.statemachine import ViewList
+ 
+-from sphinx.util import force_decode
++try:
++    from sphinx.util import force_decode
++except ImportError:
++    from . import force_decode
+ from sphinx.util.nodes import nested_parse_with_titles
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+--- a/sphinxcontrib/autohttp/flask.py
++++ b/sphinxcontrib/autohttp/flask.py
+@@ -19,7 +19,10 @@ from docutils import nodes
+ from docutils.parsers.rst import directives, Directive
+ from docutils.statemachine import ViewList
+ 
+-from sphinx.util import force_decode
++try:
++    from sphinx.util import force_decode
++except ImportError:
++    from . import force_decode
+ from sphinx.util.nodes import nested_parse_with_titles
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+--- a/sphinxcontrib/autohttp/flask_base.py
++++ b/sphinxcontrib/autohttp/flask_base.py
+@@ -17,7 +17,10 @@ import collections
+ 
+ from docutils.parsers.rst import directives, Directive
+ 
+-from sphinx.util import force_decode
++try:
++    from sphinx.util import force_decode
++except ImportError:
++    from . import force_decode
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+ 
+--- a/sphinxcontrib/autohttp/tornado.py
++++ b/sphinxcontrib/autohttp/tornado.py
+@@ -18,7 +18,10 @@ from docutils import nodes
+ from docutils.parsers.rst import directives, Directive
+ from docutils.statemachine import ViewList
+ 
+-from sphinx.util import force_decode
++try:
++    from sphinx.util import force_decode
++except ImportError:
++    from . import force_decode
+ from sphinx.util.nodes import nested_parse_with_titles
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer

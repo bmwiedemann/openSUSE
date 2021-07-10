@@ -179,4 +179,14 @@
   is built for python2</comment>
     <requestid>876055</requestid>
   </revision>
+  <revision rev="22" vrev="9">
+    <srcmd5>e709d431052ea605667a1643c2037b72</srcmd5>
+    <version>1.7.0</version>
+    <time>1625950477</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing_force_decode.patch with shim for missing
+  force_decode method (gh#sphinx-contrib/httpdomain#46).
+</comment>
+    <requestid>905350</requestid>
+  </revision>
 </revisionlist>
