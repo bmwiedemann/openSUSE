@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            http://genshi.edgewall.org/
 Source:         https://files.pythonhosted.org/packages/source/G/Genshi/Genshi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Genshi-pr39-fix-setuptools-extension.patch -- gh#edgewall/genshi#39 fixes gh#edgewall/genshi#36
+Patch1:         Genshi-pr39-fix-setuptools-extension.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
@@ -64,7 +66,7 @@ feature is a template language, which is heavily inspired by Kid.
 This package contains documentation and examples.
 
 %prep
-%setup -q -n Genshi-%{version}
+%autosetup -p1 -n Genshi-%{version}
 
 %build
 %python_build

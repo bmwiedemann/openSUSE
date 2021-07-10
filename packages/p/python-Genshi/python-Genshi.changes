@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 26 12:47:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add Genshi-pr39-fix-setuptools-extension.patch in order to fix
+  failing the c extension with an updated setuptools
+  gh#edgewall/genshi#36
+
+-------------------------------------------------------------------
 Fri Mar 19 21:55:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.5
