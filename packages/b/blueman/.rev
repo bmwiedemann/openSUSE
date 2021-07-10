@@ -97,4 +97,13 @@
 </comment>
     <requestid>845884</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>843b42caf76655463896b48aa61c9d30</srcmd5>
+    <version>2.2.1</version>
+    <time>1625950467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2.1
+- Add subpackages for caja, nautilus, and nemo sendto extensions (forwarded request 897020 from susnux)</comment>
+    <requestid>905251</requestid>
+  </revision>
 </revisionlist>

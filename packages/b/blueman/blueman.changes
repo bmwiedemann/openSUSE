@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun  2 21:55:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.2.1
+  * New Desktop notifications on connect / disconnect
+  * New notifications with battery level for connecting devices
+  * Allow cancelling device connection attempts
+  * Allow opening device menus via keyboard (Shift+F10 or menu key)
+  * Add Ctrl+Q and Ctrl+W accelerators for closing blueman-manager
+  * Stop discovery and retry connection for broken adapter drivers
+  * Improved passkey handling
+  * Auto-connect settings for supported services
+  * Fix hide devices with no name
+  * Fix disconnecting NMDevice
+  * Fix DiscvManager plugin showed its icon unreliably
+  * Drop blueman-report, and blueman-assistant
+- Add subpackages for caja, nautilus, and nemo sendto extensions
+
+-------------------------------------------------------------------
 Tue Nov  3 10:21:11 UTC 2020 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 2.1.4
