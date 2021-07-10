@@ -7468,6 +7468,8 @@ unsorted:
   - jna 
   - jna-contrib 
   - jna-javadoc 
+  - jnr-a64asm 
+  - jnr-a64asm-javadoc 
   - jnr-constants 
   - jnr-constants-javadoc 
   - jnr-enxio 
@@ -7478,6 +7480,8 @@ unsorted:
   - jnr-netdb-javadoc 
   - jnr-posix 
   - jnr-posix-javadoc 
+  - jnr-process 
+  - jnr-process-javadoc 
   - jnr-unixsocket 
   - jnr-unixsocket-javadoc 
   - jnr-x86asm 
@@ -11007,7 +11011,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_114 
+  - libgsoap-2_8_115 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -21074,6 +21078,7 @@ unsorted:
   - python-sip-doc 
   - python-sip4-common 
   - python-sip4-doc 
+  - python-sip6-doc 
   - python-six-doc 
   - python-solo-python 
   - python-solv 
@@ -21821,7 +21826,9 @@ unsorted:
   - python36-azure-common 
   - python36-azure-communication-administration 
   - python36-azure-communication-chat 
+  - python36-azure-communication-identity 
   - python36-azure-communication-nspkg 
+  - python36-azure-communication-phonenumbers 
   - python36-azure-communication-sms 
   - python36-azure-confidentialledger 
   - python36-azure-containerregistry 
@@ -21976,11 +21983,14 @@ unsorted:
   - python36-azure-mgmt-subscription 
   - python36-azure-mgmt-support 
   - python36-azure-mgmt-synapse 
+  - python36-azure-mgmt-testbase 
   - python36-azure-mgmt-timeseriesinsights 
   - python36-azure-mgmt-trafficmanager 
   - python36-azure-mgmt-vmwarecloudsimple 
   - python36-azure-mgmt-web 
   - python36-azure-monitor 
+  - python36-azure-monitor-nspkg 
+  - python36-azure-monitor-query 
   - python36-azure-multiapi-storage 
   - python36-azure-nspkg 
   - python36-azure-sdk 
@@ -23828,9 +23838,11 @@ unsorted:
   - python36-single-version 
   - python36-singledispatch 
   - python36-siosocks 
+  - python36-sip 
   - python36-sip-devel 
   - python36-sip4 
   - python36-sip4-devel 
+  - python36-sip6-devel 
   - python36-siphashc 
   - python36-six 
   - python36-slackclient 
@@ -24109,6 +24121,7 @@ unsorted:
   - python36-vulture 
   - python36-w3lib 
   - python36-wadllib 
+  - python36-wafw00f 
   - python36-waitress 
   - python36-waitress-doc 
   - python36-wakeonlan 
@@ -24610,7 +24623,9 @@ unsorted:
   - python38-azure-common 
   - python38-azure-communication-administration 
   - python38-azure-communication-chat 
+  - python38-azure-communication-identity 
   - python38-azure-communication-nspkg 
+  - python38-azure-communication-phonenumbers 
   - python38-azure-communication-sms 
   - python38-azure-confidentialledger 
   - python38-azure-containerregistry 
@@ -24765,11 +24780,14 @@ unsorted:
   - python38-azure-mgmt-subscription 
   - python38-azure-mgmt-support 
   - python38-azure-mgmt-synapse 
+  - python38-azure-mgmt-testbase 
   - python38-azure-mgmt-timeseriesinsights 
   - python38-azure-mgmt-trafficmanager 
   - python38-azure-mgmt-vmwarecloudsimple 
   - python38-azure-mgmt-web 
   - python38-azure-monitor 
+  - python38-azure-monitor-nspkg 
+  - python38-azure-monitor-query 
   - python38-azure-multiapi-storage 
   - python38-azure-nspkg 
   - python38-azure-sdk 
@@ -26729,9 +26747,11 @@ unsorted:
   - python38-single-version 
   - python38-singledispatch 
   - python38-siosocks 
+  - python38-sip 
   - python38-sip-devel 
   - python38-sip4 
   - python38-sip4-devel 
+  - python38-sip6-devel 
   - python38-siphashc 
   - python38-sklearn-pandas 
   - python38-skyfield 
@@ -27036,6 +27056,7 @@ unsorted:
   - python38-vulture 
   - python38-w3lib 
   - python38-wadllib 
+  - python38-wafw00f 
   - python38-waitress 
   - python38-waitress-doc 
   - python38-wakeonlan 
@@ -27566,7 +27587,9 @@ unsorted:
   - python39-azure-common 
   - python39-azure-communication-administration 
   - python39-azure-communication-chat 
+  - python39-azure-communication-identity 
   - python39-azure-communication-nspkg 
+  - python39-azure-communication-phonenumbers 
   - python39-azure-communication-sms 
   - python39-azure-confidentialledger 
   - python39-azure-containerregistry 
@@ -27721,11 +27744,14 @@ unsorted:
   - python39-azure-mgmt-subscription 
   - python39-azure-mgmt-support 
   - python39-azure-mgmt-synapse 
+  - python39-azure-mgmt-testbase 
   - python39-azure-mgmt-timeseriesinsights 
   - python39-azure-mgmt-trafficmanager 
   - python39-azure-mgmt-vmwarecloudsimple 
   - python39-azure-mgmt-web 
   - python39-azure-monitor 
+  - python39-azure-monitor-nspkg 
+  - python39-azure-monitor-query 
   - python39-azure-multiapi-storage 
   - python39-azure-nspkg 
   - python39-azure-sdk 
@@ -29796,9 +29822,11 @@ unsorted:
   - python39-single-version 
   - python39-singledispatch 
   - python39-siosocks 
+  - python39-sip 
   - python39-sip-devel 
   - python39-sip4 
   - python39-sip4-devel 
+  - python39-sip6-devel 
   - python39-siphashc 
   - python39-six 
   - python39-sklearn-pandas 
@@ -30108,6 +30136,7 @@ unsorted:
   - python39-vulture 
   - python39-w3lib 
   - python39-wadllib 
+  - python39-wafw00f 
   - python39-waitress 
   - python39-waitress-doc 
   - python39-wakeonlan 
@@ -30823,9 +30852,7 @@ unsorted:
   - remmina-plugin-exec 
   - remmina-plugin-gvnc 
   - remmina-plugin-kwallet 
-  - remmina-plugin-nx 
   - remmina-plugin-spice 
-  - remmina-plugin-st 
   - remmina-plugin-www 
   - remontoire 
   - renameutils 

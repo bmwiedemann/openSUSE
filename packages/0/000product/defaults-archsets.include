@@ -60,6 +60,11 @@
         <arch>noarch</arch>
       </archset>
 
+      <archset name="riscv64" productarch="riscv64">
+        <arch>riscv64</arch>
+        <arch>noarch</arch>
+      </archset>
+
 
     </archsets>
 
