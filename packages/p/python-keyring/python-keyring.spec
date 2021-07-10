@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-keyring
-Version:        21.2.1
+Version:        23.0.1
 Release:        0
 Summary:        System keyring service access from Python
-License:        Python-2.0 AND MIT
+License:        MIT AND Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
-Patch:          fix-kwallet-tests.patch
+# Patch:          fix-kwallet-tests.patch
 BuildRequires:  %{python_module SecretStorage >= 3}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module importlib-metadata}
@@ -42,7 +42,7 @@ Requires:       python-importlib-metadata
 Requires:       python-jeepney >= 0.4.2
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -51,8 +51,8 @@ The Python keyring lib provides a way to access the system keyring service
 from python. It can be used in any application that needs safe password storage.
 
 %prep
-%setup -q -n keyring-%{version}
-%patch -p1
+%autosetup -p1 -n keyring-%{version}
+
 %if 0%{?sle_version}
 # keyring is not setting the egg version correctly without this:
 sed -i -e '1a version=%{version}' setup.cfg
