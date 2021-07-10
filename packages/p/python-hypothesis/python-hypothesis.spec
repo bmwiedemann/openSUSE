@@ -1,5 +1,5 @@
 #
-# spec file for package python-hypothesis-test
+# spec file for package python-hypothesis
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -33,7 +33,7 @@ ExclusiveArch:  do_not_build
 %bcond_with test
 %endif
 Name:           python-hypothesis%{psuffix}
-Version:        6.8.1
+Version:        6.14.1
 Release:        0
 Summary:        A library for property based testing
 License:        MPL-2.0
