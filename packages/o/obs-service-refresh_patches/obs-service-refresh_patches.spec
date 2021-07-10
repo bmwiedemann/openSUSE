@@ -19,11 +19,16 @@
 %define service refresh_patches
 
 Name:           obs-service-%{service}
-Version:        0.3.9+git.1537184752.d624424
+Version:        0.3.9+git.1625238904.d59f20e
 Release:        0
 Summary:        An OBS source service: Refreshs local patches
+%if 0%{?mageia}
+License:        ASL 2.0
+Group:          Development/Tools
+%else
 License:        Apache-2.0
 Group:          Development/Tools/Building
+%endif
 Url:            https://github.com/openSUSE/obs-service-%{service}
 Source:         %{name}-%{version}.tar.gz
 #NOTE(saschpe): Any Python will do:
@@ -51,5 +56,6 @@ install -m 0644 refresh_patches.service %{buildroot}%{_prefix}/lib/obs/service
 %defattr(-,root,root)
 %dir %{_prefix}/lib/obs
 %{_prefix}/lib/obs/service
+%license LICENSE-2.0
 
 %changelog

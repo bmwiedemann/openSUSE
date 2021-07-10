@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 02 16:13:40 UTC 2021 - bwiedemann@suse.com
+
+- Update to version 0.3.9+git.1625238904.d59f20e:
+  * Switch to python3
+  * add license file
+
+-------------------------------------------------------------------
+Mon Jun 21 22:13:03 UTC 2021 - Atilla ÖNTAŞ <tarakbumba@gmail.com>
+
+- Fix Group and License tags for Mageia packages 
+
+-------------------------------------------------------------------
 Mon Sep 17 11:55:40 UTC 2018 - bwiedemann@suse.com
 
 - Update to version 0.3.9+git.1537184752.d624424:
