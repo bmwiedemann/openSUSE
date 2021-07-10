@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  7 10:02:08 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patches from upstream to fix an raised exception saying
+  "__array__(): takes 1 positional argument but 2 were given"
+  and an incompatibility with numpy 1.21.0 (slightly rebased):
+  * 0001-FIX-Pillow-asarray-bug.patch
+  * 0002-Dont-modify-arrays-when-masking-values-for-log.patch
+
+-------------------------------------------------------------------
 Fri May 14 01:34:50 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 3.4.2:

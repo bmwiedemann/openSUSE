@@ -1,0 +1,71 @@
+From 48eef460e8c861321e6d6a08a86ef0e45a863b59 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Thu, 24 Jun 2021 04:11:39 -0400
+Subject: [PATCH] Don't modify arrays when masking values for log.
+
+NumPy 1.21.0 fixed a bug with `np.ma.masked_where` where `copy=False`
+now modifies the input if it is masked, which we do not want to do.
+`np.ma.array` defaults to not copying the data, but copies the mask
+(adding the new mask), which is what we wanted with `copy=False`.
+---
+ lib/matplotlib/colors.py           |  4 ++--
+ lib/matplotlib/tests/test_image.py | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 30 insertions(+), 2 deletions(-)
+
+diff --git a/lib/matplotlib/colors.py b/lib/matplotlib/colors.py
+index e0c42c5b69d5..0f6bf35dc440 100644
+--- a/lib/matplotlib/colors.py
++++ b/lib/matplotlib/colors.py
+@@ -1545,11 +1545,11 @@ class LogNorm(Normalize):
+ 
+     def autoscale(self, A):
+         # docstring inherited.
+-        super().autoscale(np.ma.masked_less_equal(A, 0, copy=False))
++        super().autoscale(np.ma.array(A, mask=(A <= 0)))
+ 
+     def autoscale_None(self, A):
+         # docstring inherited.
+-        super().autoscale_None(np.ma.masked_less_equal(A, 0, copy=False))
++        super().autoscale_None(np.ma.array(A, mask=(A <= 0)))
+ 
+ 
+ @_make_norm_from_scale(
+diff --git a/lib/matplotlib/tests/test_image.py b/lib/matplotlib/tests/test_image.py
+index 42ed7479ae54..0e385ba7a805 100644
+--- a/lib/matplotlib/tests/test_image.py
++++ b/lib/matplotlib/tests/test_image.py
+@@ -1233,6 +1233,34 @@ def test_imshow_quantitynd():
+     fig.canvas.draw()
+ 
+ 
++@check_figures_equal(extensions=['png'])
++def test_norm_change(fig_test, fig_ref):
++    # LogNorm should not mask anything invalid permanently.
++    data = np.full((5, 5), 1, dtype=np.float64)
++    data[0:2, :] = -1
++
++    masked_data = np.ma.array(data, mask=False)
++    masked_data.mask[0:2, 0:2] = True
++
++    cmap = plt.get_cmap('viridis').with_extremes(under='w')
++
++    ax = fig_test.subplots()
++    im = ax.imshow(data, norm=colors.LogNorm(vmin=0.5, vmax=1),
++                   extent=(0, 5, 0, 5), interpolation='nearest', cmap=cmap)
++    im.set_norm(colors.Normalize(vmin=-2, vmax=2))
++    im = ax.imshow(masked_data, norm=colors.LogNorm(vmin=0.5, vmax=1),
++                   extent=(5, 10, 5, 10), interpolation='nearest', cmap=cmap)
++    im.set_norm(colors.Normalize(vmin=-2, vmax=2))
++    ax.set(xlim=(0, 10), ylim=(0, 10))
++
++    ax = fig_ref.subplots()
++    ax.imshow(data, norm=colors.Normalize(vmin=-2, vmax=2),
++              extent=(0, 5, 0, 5), interpolation='nearest', cmap=cmap)
++    ax.imshow(masked_data, norm=colors.Normalize(vmin=-2, vmax=2),
++              extent=(5, 10, 5, 10), interpolation='nearest', cmap=cmap)
++    ax.set(xlim=(0, 10), ylim=(0, 10))
++
++
+ @check_figures_equal(extensions=['png'])
+ def test_huge_range_log(fig_test, fig_ref):
+     data = np.full((5, 5), -1, dtype=np.float64)

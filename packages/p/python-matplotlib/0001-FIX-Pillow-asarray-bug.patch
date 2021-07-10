@@ -1,0 +1,22 @@
+From 5a4f6f035339d3573aa7b1a0ba67dfd4efb8f568 Mon Sep 17 00:00:00 2001
+From: Jody Klymak <jklymak@gmail.com>
+Date: Thu, 1 Jul 2021 22:10:10 -0700
+Subject: [PATCH] FIX: PILLOW asarray bug
+
+---
+ lib/matplotlib/image.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/matplotlib/image.py b/lib/matplotlib/image.py
+index a59499cd966..b2c9c4b22f9 100644
+--- a/lib/matplotlib/image.py
++++ b/lib/matplotlib/image.py
+@@ -1688,7 +1688,7 @@ def _pil_png_to_float_array(pil_png):
+     mode = pil_png.mode
+     rawmode = pil_png.png.im_rawmode
+     if rawmode == "1":  # Grayscale.
+-        return np.asarray(pil_png, np.float32)
++        return np.asarray(pil_png).astype(np.float32)
+     if rawmode == "L;2":  # Grayscale.
+         return np.divide(pil_png, 2**2 - 1, dtype=np.float32)
+     if rawmode == "L;4":  # Grayscale.

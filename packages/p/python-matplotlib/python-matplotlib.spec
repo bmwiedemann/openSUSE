@@ -1,5 +1,5 @@
 #
-# spec file for package python-matplotlib-test
+# spec file for package python-matplotlib
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -41,6 +41,10 @@ Source1:        matplotlib-setup.cfg
 # Bundled version of freetype and qhull for testing purposes only
 Source98:       http://www.qhull.org/download/qhull-2020-src-8.0.2.tgz
 Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6.1/freetype-2.6.1.tar.gz
+# PATCH-FIX-UPSTREAM 0001-FIX-Pillow-asarray-bug.patch - Fix from upstream for an error related to asarray
+Patch0:         0001-FIX-Pillow-asarray-bug.patch
+# PATCH-FIX-UPSTREAM 0002-Dont-modify-arrays-when-masking-values-for-log.patch - Fix from upstream for numpy 1.21.0
+Patch1:         0002-Dont-modify-arrays-when-masking-values-for-log.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module kiwisolver >= 1.0.1}
@@ -245,6 +249,8 @@ for %{name} plotting package
 
 %prep
 %setup -q -n matplotlib-%{version}
+%patch0 -p1
+%patch1 -p1
 #copy freetype to the right location, so that matplotlib will not try to download it
 mkdir -p ~/.cache/matplotlib/
 SHA=($(sha256sum %{SOURCE98}))
