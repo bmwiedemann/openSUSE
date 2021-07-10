@@ -17,9 +17,9 @@
 
 
 Name:           vulkan-validationlayers
-Version:        1.2.176.0
+Version:        1.2.182.0
 Release:        0
-%define lname libVkLayer_utils-1_2_176_0
+%define lname libVkLayer_utils-1_2_182_0
 Summary:        Validation layers for Vulkan
 License:        Apache-2.0
 Group:          Development/Tools/Other
@@ -31,13 +31,14 @@ Patch1:         ver.diff
 Patch2:         xxhash.diff
 BuildRequires:  cmake >= 3.4
 BuildRequires:  gcc-c++ >= 4.8
-BuildRequires:  glslang-devel >= 11
+BuildRequires:  glslang-devel >= 11.4.0
+BuildRequires:  memory-constraints
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  spirv-headers >= 1.5.4.g57
 BuildRequires:  spirv-tools-devel >= 2020.7
 BuildRequires:  xxhash-devel
-BuildRequires:  pkgconfig(vulkan) >= 1.2.161
+BuildRequires:  pkgconfig(vulkan) >= 1.2.176
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 Conflicts:      vulkan < 1.1
@@ -73,6 +74,7 @@ This package contains support files for the VkLayer utility library.
 perl -i -pe 's{\@PACKAGE_VERSION\@}{%version}' CMakeLists.txt
 
 %build
+%limit_build -m 2000
 %cmake -DGLSLANG_INSTALL_DIR="%_bindir" \
 	-DSPIRV_HEADERS_INSTALL_DIR="%_includedir" \
 	-DBUILD_LAYER_SUPPORT_FILES=ON \

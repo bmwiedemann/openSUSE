@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  6 09:04:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.182.0
+  * Add VK_NV_inherited_viewport_scissor support
+  * Validate provoking vertex
+  * Add Support for VK_QCOM_render_pass_shader_resolve
+  * Add default shader validation cache
+  * Add validation for VK_EXT_multi_draw
+
+-------------------------------------------------------------------
 Wed May  5 08:03:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.176.0
