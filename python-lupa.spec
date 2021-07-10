@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(lua5.1)
 Recommends:     luajit
 Suggests:       lua
 %ifnarch riscv64
