@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:53:10 UTC 2021 - psimons@suse.com
+
+- Update email-validate to version 2.3.2.14.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Fri Mar 26 15:07:57 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - relax overconstrained deps on attoparsec 

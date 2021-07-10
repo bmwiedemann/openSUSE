@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-email-validate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name email-validate
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.3.2.13
+Version:        2.3.2.14
 Release:        0
 Summary:        Email address validation
 License:        BSD-3-Clause
@@ -52,8 +52,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-sed -i 's/\r//' LICENSE
-cabal-tweak-dep-ver 'attoparsec' '< 0.14' '< 0.15'
 
 %build
 %ghc_lib_build
