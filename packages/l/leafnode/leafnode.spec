@@ -1,7 +1,7 @@
 #
-# spec file for package leafnode
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,10 +50,10 @@ BuildRequires:  shadow
 BuildRequires:  pkgconfig(systemd)
 Requires(post): coreutils
 Requires(post): systemd
-Requires(postun): systemd
+Requires(postun):systemd
 Requires(pre):  permissions
 Requires(pre):  shadow
-Requires(preun): systemd
+Requires(preun):systemd
 # Because of moderators(5) manpage, and really these two
 # shouldn't be on one system at once.
 Conflicts:      inn
@@ -146,11 +146,6 @@ exit 0
 %post
 %set_permissions %{spooldir}/leaf.node
 %service_add_post leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer
-
-if [ $1 -eq 1 ] ; then
-    chown -R news:news %{spooldir}
-    chmod -R 775 %{spooldir}
-fi
 
 %preun
 %service_del_preun leafnode.service leafnode.socket leafnode@.service leafnode-daily.service leafnode-hourly.service leafnode-daily.timer leafnode-hourly.timer

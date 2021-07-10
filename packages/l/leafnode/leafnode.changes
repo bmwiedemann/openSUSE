@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 16:43:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- It is not necessary to manually set rights and ownership on
+  %{spooldir}, and it prevents a security issue (bsc#1159996).
+
+-------------------------------------------------------------------
 Sat Jun  6 21:54:51 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Add sudoers droplet to allow users in newsadmin group to
