@@ -1,0 +1,47 @@
+-------------------------------------------------------------------
+Tue Jul  6 11:52:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- remove the noop %requires_ge libqt6-x11
+
+-------------------------------------------------------------------
+Mon Jul  5 22:43:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Define skip_python2 for Leap
+
+-------------------------------------------------------------------
+Tue Jun 15 13:08:10 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+* Update to version 6.1.1
+  * Added the missing QtCore.QXmlStreamAttributes class.
+  * Added the missing QtQml.QQmlExtensionPlugin class.
+  * Added the --exclude command line option to pylupdate6.
+  * pylupdate6 now handles PEP 263 embedded source encodings in .py
+    files.
+  * Bug fixes. 
+
+-------------------------------------------------------------------
+Thu May 13 18:25:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.1.0
+  * Added support for Qt v6.1.
+  * All flag-based enums have been renamed so that they use the
+    name of the Qt enum rather than the name of the Qt QFlag.
+  * An integer ARGB value can now be used whenever a QColor is
+    expected.
+
+-------------------------------------------------------------------
+Thu Mar 11 19:52:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.0.3
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:12:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.0.2
+  * Bug fixes.
+
+-------------------------------------------------------------------
+Fri Feb 19 23:59:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 6.0.1, based on python-qt5 

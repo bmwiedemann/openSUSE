@@ -1,0 +1,72 @@
+From 90b1d19e4a65b1490f4ea277d81cbc96bcaa4c4d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Sun, 16 Feb 2020 18:00:54 +0100
+Subject: [PATCH] Use a noarch wrapper for dbus mainloop integration
+
+python-dbus installs in a noarch directory by default, so it not a
+suitable place for the binary module.
+
+Install the binary module to the same directory as all other binary
+modules, and just install a small wrapper for dbus.mainloop.pyqt5.
+---
+ configure.py  | 11 +++++++++--
+ dbus/dbus.cpp |  8 ++++----
+ dbus/pyqt5.py |  5 +++++
+ project.py    |  6 ++++++
+ 4 files changed, 24 insertions(+), 6 deletions(-)
+ create mode 100644 dbus/pyqt5.py
+
+Index: PyQt6-6.0.1/dbus/dbus.cpp
+===================================================================
+--- PyQt6-6.0.1.orig/dbus/dbus.cpp
++++ PyQt6-6.0.1/dbus/dbus.cpp
+@@ -404,11 +404,11 @@ static PyMethodDef module_functions[] =
+ 
+ 
+ // The module entry point.
+-PyMODINIT_FUNC PyInit_pyqt6()
++PyMODINIT_FUNC PyInit_dbus_mainloop()
+ {
+     static PyModuleDef module_def = {
+         PyModuleDef_HEAD_INIT,
+-        "pyqt6",
++        "dbus_mainloop",
+         NULL,
+         -1,
+         module_functions,
+Index: PyQt6-6.0.1/dbus/pyqt6.py
+===================================================================
+--- /dev/null
++++ PyQt6-6.0.1/dbus/pyqt6.py
+@@ -0,0 +1,5 @@
++"""Qt main loop integration using "python-PyQt6"""
++
++__all__ = ('DBusQtMainLoop', )
++
++from PyQt6.dbus_mainloop import DBusQtMainLoop
+Index: PyQt6-6.0.1/project.py
+===================================================================
+--- PyQt6-6.0.1.orig/project.py
++++ PyQt6-6.0.1/project.py
+@@ -276,7 +276,7 @@ del find_qt
+         # Create the buildable.
+         sources_dir = os.path.join(self.root_dir, 'dbus')
+ 
+-        buildable = BuildableModule(self, 'dbus', 'dbus.mainloop.pyqt6',
++        buildable = BuildableModule(self, 'dbus', 'PyQt6.dbus_mainloop',
+                 uses_limited_api=True)
+         buildable.builder_settings.append('QT -= gui')
+         buildable.sources.extend(glob.glob(os.path.join(sources_dir, '*.cpp')))
+@@ -286,6 +286,12 @@ del find_qt
+         buildable.libraries.extend(dbus_libs)
+         buildable.debug = debug
+ 
++        installable = Installable('pyqt6', target_subdir=dbus_module_dir)
++        installable.files.append(
++                os.path.join(self.root_dir, 'dbus',
++                        'pyqt6.py'))
++        self.installables.append(installable)
++
+         self.buildables.append(buildable)
+ 
+     def _add_plugin(self, name, user_name, target_name, target_subdir, debug):
