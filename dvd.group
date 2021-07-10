@@ -3828,7 +3828,6 @@
     <package name="remmina-plugin-rdp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-plugin-secret" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="remmina-plugin-vnc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
-    <package name="remmina-plugin-xdmcp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="restorecond" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="rgb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="ripit" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
