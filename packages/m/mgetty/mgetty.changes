@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:16:55 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add faxq-libexec.patch: adjust buildsystem to move faxq-helper setuid binary
+  to /usr/libexec (bsc#1171164)
+
+-------------------------------------------------------------------
 Tue May 25 16:44:06 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link /usr/bin/newslock as PIE (bsc#1184124).

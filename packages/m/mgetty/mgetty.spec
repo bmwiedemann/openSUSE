@@ -41,6 +41,7 @@ Patch10:        mgetty-1.1.36-fix-bashisms.patch
 Patch12:        mgetty-noroot.patch
 Patch13:        mgetty-mkdir-p.patch
 Patch14:        mgetty-fix-errlist.patch
+Patch15:        faxq-libexec.patch
 BuildRequires:  groff
 BuildRequires:  makeinfo
 BuildRequires:  netpbm
@@ -105,6 +106,7 @@ The g3utils are included in the mgetty source package.
 %patch12 -p1
 %patch13 -p1
 %patch14 -p1
+%patch15 -p1
 chmod +x mkidirs
 
 %build
@@ -142,10 +144,10 @@ chown fax:uucp %{_localstatedir}/log/sendfax.log
 chmod 664 %{_localstatedir}/log/sendfax.log
 
 %post -n sendfax
-%set_permissions  %{_localstatedir}/spool/fax/outgoing %{_prefix}/lib/mgetty+sendfax/faxq-helper
+%set_permissions  %{_localstatedir}/spool/fax/outgoing %{_libexecdir}/mgetty+sendfax/faxq-helper
 
 %verifyscript -n sendfax
-%verify_permissions -e %{_localstatedir}/spool/fax/outgoing -e %{_prefix}/lib/mgetty+sendfax/faxq-helper
+%verify_permissions -e %{_localstatedir}/spool/fax/outgoing -e %{_libexecdir}/mgetty+sendfax/faxq-helper
 
 %post
 %install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
@@ -251,6 +253,7 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %files -n sendfax
 %dir %{_sysconfdir}/mgetty+sendfax
 %dir %{_prefix}/lib/mgetty+sendfax
+%{_libexecdir}/mgetty+sendfax
 %attr(755,fax,root) %dir %{_localstatedir}/spool/fax
 %dir %{_localstatedir}/spool/fax/incoming
 %attr(755,fax,root) %verify(not mode) %dir %{_localstatedir}/spool/fax/outgoing
@@ -264,7 +267,7 @@ chmod 664 %{_localstatedir}/log/sendfax.log
 %{_bindir}/faxspool
 %{_sbindir}/faxrunqd
 %{_sbindir}/sendfax
-%attr(4750,fax,trusted) %verify(not mode group) %{_prefix}/lib/mgetty+sendfax/faxq-helper
+%attr(4750,fax,trusted) %verify(not mode group) %{_libexecdir}/mgetty+sendfax/faxq-helper
 %{_prefix}/lib/mgetty+sendfax/cour25.pbm
 %{_prefix}/lib/mgetty+sendfax/cour25n.pbm
 %{_mandir}/man1/fax.1%{?ext_man}
