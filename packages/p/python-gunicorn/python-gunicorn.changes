@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jul  5 15:12:53 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add a _multibuild file to separate the tests in another build
+  in order to break a cycle between: python-Django, python-aiohttp,
+  python-eventlet, python-geoip2, python-gunicorn, python-paramiko,
+  python-pyzmq and python-semantic_version.
+
+-------------------------------------------------------------------
+Tue Jun 29 08:52:40 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 20.1.0
+- gevent and evenlet are BuildRequires for check
+- add suggests
+ * document WEB_CONCURRENCY is set by, at least, Heroku
+ * capture peername from accept: Avoid calls to getpeername by capturing
+    the peer name returned by accept
+ * log a warning when a worker was terminated due to a signal
+ * fix tornado usage with latest versions of Django
+ * add support for python -m gunicorn
+ * fix systemd socket activation example
+ * allows to set wsgi application in configg file using wsgi_app
+ * document --timeout = 0
+ * always close a connection when the number of requests exceeds the max requests
+ * Disable keepalive during graceful shutdown
+ * kill tasks in the gthread workers during upgrade
+ * fix latency in gevent worker when accepting new requests
+ * fix file watcher: handle errors when new worker reboot and ensure
+    the list of files is kept
+ * document the default name and path of the configuration file
+ * document how variable impact configuration
+ * document the $PORT environment variable
+ * added milliseconds option to request_time in access_log
+ * added PIP requirements to be used for example
+ * remove version from the Server header
+ * fix sendfile: use socket.sendfile instead of os.sendfile
+ * reloader: use absolute path to prevent empty to prevent0 InotifyError
+   when a file is added to the working directory
+ * Add --print-config option to print the resolved settings at startup.
+ * remove the --log-dict-config CLI flag because it never had a working format
+
+-------------------------------------------------------------------
 Fri Dec  4 01:58:26 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Neither pytest-cov nor standalone mock are true BuildRequirements

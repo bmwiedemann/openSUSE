@@ -1,7 +1,7 @@
 #
-# spec file for package python-gunicorn
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,42 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-gunicorn
-Version:        20.0.4
+Name:           python-gunicorn%{psuffix}
+Version:        20.1.0
 Release:        0
 Summary:        WSGI HTTP Server for UNIX
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://gunicorn.org
 Source:         https://files.pythonhosted.org/packages/source/g/gunicorn/gunicorn-%{version}.tar.gz
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= 3.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+%if %{with test}
+BuildRequires:  %{python_module eventlet}
+BuildRequires:  %{python_module gevent >= 1.4}
+BuildRequires:  %{python_module gunicorn}
+BuildRequires:  %{python_module pytest}
+%endif
 Requires:       python-setuptools >= 3.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+Suggests:       python-evenlet
+Suggests:       python-gevent
+Suggests:       python-gthread
+Suggests:       python-setproctitle
+Suggests:       python-tornado
 BuildArch:      noarch
 %python_subpackages
 
@@ -62,6 +80,12 @@ sed -i -e '/cover/d' requirements_test.txt
 # do not check coverage
 sed -i -e 's/--cov[^ ]*//' -e 's/--cov-report[^ ]*//' setup.cfg
 
+%if %{with test}
+%check
+%pytest
+
+%else  # without test
+
 %build
 %python_build
 sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
@@ -70,9 +94,6 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %python_install
 %python_clone -a %{buildroot}%{_bindir}/gunicorn
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
-%check
-%pytest
 
 %post
 %python_install_alternative gunicorn
@@ -88,6 +109,6 @@ sphinx-build -b html -d docs/build/doctrees docs/source docs/build/html
 %files -n python-gunicorn-doc
 %license LICENSE
 %doc README.rst NOTICE THANKS docs/build/html
+%endif
 
 %changelog
-
