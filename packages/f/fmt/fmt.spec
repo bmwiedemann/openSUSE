@@ -1,7 +1,7 @@
 #
 # spec file for package fmt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define sover   7
+%define sover   8
 Name:           fmt
-Version:        7.1.3
+Version:        8.0.1
 Release:        0
 Summary:        A formatting library for C++
 License:        MIT

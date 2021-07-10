@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Sat Jul  3 05:28:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.0.1
+  * Fixed the version number in the inline namespace.
+  * Added a missing presentation type check for std::string.
+  * Fixed a linkage error when mixing code built with clang and
+    gcc.
+  * Fixed documentation issues.
+  * Removed dead code in FP formatter.
+  * Fixed various warnings and compilation issues.
+
+-------------------------------------------------------------------
+Mon Jun 21 14:48:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 8.0.0
+  * Enabled compile-time format string check by default.
+  * Added compile-time formatting.
+  * Optimized handling of format specifiers during format string
+    compilation.
+  * Added the ``_cf`` user-defined literal to represent a
+    compiled format string. It can be used instead of the
+    ``FMT_COMPILE`` macro.
+  * Format string compilation now requires ``format`` functions
+    of ``formatter`` specializations for user-defined types to
+    be ``const``.
+  * Added UDL-based named argument support to format string
+    compilation.
+  * Added format string compilation support to ``fmt::print``.
+  * Added initial support for compiling {fmt} as a C++20 module.
+  * Made symbols private by default reducing shared library size
+  * Optimized includes making the result of preprocessing
+    ``fmt/format.h``.
+  * Added support of ranges with non-const ``begin`` / ``end``
+  * Added support of ``std::byte`` and other formattable types
+    to ``fmt::join``.
+  * Implemented the default format for
+    ``std::chrono::system_clock``.
+  * Made more chrono specifiers locale independent by default.
+    Use the ``'L'`` specifier to get localized formatting.
+  * Improved locale handling in chrono formatting.
+  * Deprecated ``fmt/locale.h`` moving the formatting functions
+    that take a locale to ``fmt/format.h`` (``char``) and
+    ``fmt/xchar`` (other overloads). This doesn't introduce a
+    dependency on ``<locale>`` so there is virtually no compile
+    time effect.
+  * Made parameter order in ``vformat_to`` consistent with
+    ``format_to``.
+  * Added support for time points with arbitrary durations.
+  * Formatting floating-point numbers no longer produces
+    trailing zeros by default.
+    for consistency with ``std::format``.
+  * Dropped a limit on the number of elements in a range and
+    replaced ``{}`` with ``[]`` as range delimiters for
+    consistency with Python's ``str.format``.
+  * The ``'L'`` specifier for locale-specific numeric formatting
+    can now be combined with presentation specifiers as in
+    ``std::format``.
+  * Made the ``0`` specifier ignored for infinity and NaN.
+  * Made the hexfloat formatting use the right alignment by
+    default.
+  * Removed the deprecated numeric alignment (``'='``). Use the
+    ``'0'`` specifier instead.
+  * Removed the deprecated ``fmt/posix.h`` header that has been
+    replaced with ``fmt/os.h``.
+  * Removed the deprecated ``format_to_n_context``,
+    ``format_to_n_args`` and ``make_format_to_n_args``. They
+    have been replaced with ``format_context``, ``format_args`
+    and ``make_format_args`` respectively.
+  * Moved ``wchar_t``-specific functions and types to
+    ``fmt/wchar.h``. You can define
+    ``FMT_DEPRECATED_INCLUDE_WCHAR`` to automatically include
+    ``fmt/wchar.h`` from ``fmt/format.h`` but this will be
+    disabled in the next major release.
+  * Fixed handling of the ``'+'`` specifier in localized
+    formatting.
+  * Added support for the ``'s'`` format specifier that gives
+    textual representation of ``bool``.
+  * Made ``fmt::ptr`` work with function pointers.
+  * Fixed ``fmt::formatted_size`` with format string compilation
+  * Fixed handling of empty format strings during format string
+    compilation.
+  * Fixed handling of enums in ``fmt::to_string``.
+  * Improved width computation.
+  * The experimental fast output stream (``fmt::ostream``) is
+    now truncated by default for consistency with ``fopen``.
+  * Fixed moving of ``fmt::ostream`` that holds buffered data
+  * Replaced the ``fmt::system_error`` exception with a function
+    of the same name that constructs ``std::system_error``.
+  * Replaced the ``fmt::windows_error`` exception with a
+    function of the same name that constructs
+    ``std::system_error`` with the category returned by
+    ``fmt::system_category()``.
+  * Replaced ``fmt::error_code`` with ``std::error_code`` and
+    made it formattable.
+  * Added speech synthesis support.
+  * Made ``format_to`` work with a memory buffer that has a
+    custom allocator.
+  * Added ``Allocator::max_size`` support to
+    ``basic_memory_buffer``.
+  * Added wide string support to ``fmt::join``
+  * Made iterators passed to ``formatter`` specializations via a
+    format context satisfy C++20 ``std::output_iterator``
+    requirements.
+  * Optimized the ``printf`` implementation.
+  * Improved detection of ``constexpr`` ``char_traits``.
+  * Fixed exception propagation from iterators.
+  * Improved ``strftime`` error handling.
+  * Stopped using deprecated GCC UDL template extension.
+  * Added ``fmt/args.h`` to the install target.
+  * Error messages are now passed to assert when exceptions are
+    disabled.
+  * Added the ``FMT_MASTER_PROJECT`` CMake option to control
+    build and install targets when {fmt} is included via
+    ``add_subdirectory``.
+  * Improved build configuration.
+  * Fixed various warnings and compilation issues.
+  * Improved documentation.
+  * Continuous integration and test improvements.
+- Bump soversion to 8
+
+-------------------------------------------------------------------
 Wed Nov 25 14:55:58 UTC 2020 - aloisio@gmx.com
 
 - Update to version 7.1.3
