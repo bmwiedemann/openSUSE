@@ -232,4 +232,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>895191</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>bd36c59a93a5f0424a999e0d501c9b05</srcmd5>
+    <version>2021.06</version>
+    <time>1625950487</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905573</requestid>
+  </revision>
 </revisionlist>

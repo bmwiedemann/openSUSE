@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 10 15:45:40 CEST 2021 - nine@detonation.org
+
+- update to version 2021.06
+
++ Set sc.idx during deserialization to avoid costly lookup later
++ Try to trap concurrent hash accesses
++ Fix a case of heap-use-after-free rarely affecting `t/spec/S17-promise/nonblocking-await.t`
+
+-------------------------------------------------------------------
 Mon May 24 14:01:50 UTC 2021 - Stefan Seifert <nine@detonation.org>
 
 - Forward port reproducible.patch after build system changes
