@@ -1,7 +1,7 @@
 #
 # spec file for package python-itsdangerous
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,16 @@
 #
 
 
+%define oldpython python
+%define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-itsdangerous
-Version:        1.1.0
+Version:        2.0.1
 Release:        0
 Summary:        Various helpers to pass trusted data to untrusted environments and back
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            http://github.com/mitsuhiko/itsdangerous
+URL:            https://itsdangerous.palletsprojects.com
 Source:         https://files.pythonhosted.org/packages/source/i/itsdangerous/itsdangerous-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
