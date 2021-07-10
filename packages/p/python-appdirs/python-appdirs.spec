@@ -1,7 +1,7 @@
 #
 # spec file for package python-appdirs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,8 @@
 #
 
 
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-appdirs
 Version:        1.4.4
@@ -28,6 +30,11 @@ BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+# work around boo#1186870
+Provides:       %{mypython}%{python_version}dist(appdirs) = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(appdirs) = %{version}
+%endif
 %python_subpackages
 
 %description

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 17 17:16:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add Provides: for python*dist(appdirs): work around boo#1186870
+
+-------------------------------------------------------------------
 Tue Aug 18 23:32:44 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - We can finally use %pyunittest macro
