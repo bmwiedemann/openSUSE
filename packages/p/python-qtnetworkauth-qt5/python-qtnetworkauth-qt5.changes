@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Jun 18 21:49:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Provide the PyPI name
+
+-------------------------------------------------------------------
+Thu Mar 11 19:36:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.15.4
+  * Packaging bug fixes.
+- Fixes problems with packages checking the package metadata like 
+  boo#1183144
+
+-------------------------------------------------------------------
+Thu Feb 25 22:32:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 5.15.3
+  * this package was outsourced from the main PyQt5 
