@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 17 17:30:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add Provides: for python*dist(pyparsing): work around boo#1186870
+
+-------------------------------------------------------------------
 Wed Jun  3 08:31:39 UTC 2020 - pgajdos@suse.com
 
 - unittest2 -> pytest

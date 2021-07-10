@@ -1,7 +1,7 @@
 #
-# spec file for package python-pyparsing
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,8 @@
 
 
 %define modname pyparsing
-%define oldpython python
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
@@ -32,7 +33,7 @@ Name:           python-pyparsing%{psuffix}
 Version:        2.4.7
 Release:        0
 Summary:        Grammar Parser Library for Python
-License:        MIT AND GPL-2.0-or-later AND GPL-3.0-or-later
+License:        GPL-2.0-or-later AND MIT AND GPL-3.0-or-later
 URL:            https://github.com/pyparsing/pyparsing/
 Source:         https://files.pythonhosted.org/packages/source/p/pyparsing/pyparsing-%{version}.tar.gz
 BuildRequires:  %{python_module base}
@@ -43,8 +44,13 @@ BuildArch:      noarch
 BuildRequires:  %{python_module pytest}
 %endif
 %ifpython2
-Provides:       %{oldpython}-parsing = %{version}
-Obsoletes:      %{oldpython}-parsing < %{version}
+Provides:       %{mypython}-parsing = %{version}
+Obsoletes:      %{mypython}-parsing < %{version}
+%endif
+# work around boo#1186870
+Provides:       %{mypython}%{python_version}dist(pyparsing) = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(pyparsing) = %{version}
 %endif
 %python_subpackages
 
