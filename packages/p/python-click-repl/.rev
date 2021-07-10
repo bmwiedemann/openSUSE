@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>841720</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0d2f790fa62b480eb2135d3f0b77a238</srcmd5>
+    <version>0.2.0</version>
+    <time>1625950424</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.0:
+  * Update tests to expect hyphens
+  * Support for click 8 changes
+  * Backwards compatibility between click 7 &amp; 8 
+- Drop included patch click-repl-pr53-hyphens.patch</comment>
+    <requestid>901111</requestid>
+  </revision>
 </revisionlist>

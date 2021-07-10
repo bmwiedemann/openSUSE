@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 21 08:51:19 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.2.0:
+  * Update tests to expect hyphens
+  * Support for click 8 changes
+  * Backwards compatibility between click 7 & 8 
+- Drop included patch click-repl-pr53-hyphens.patch
+
+-------------------------------------------------------------------
 Tue Oct 13 15:52:41 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - use Github archive because it has the tests
