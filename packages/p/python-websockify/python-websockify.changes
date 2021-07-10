@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 08:57:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- disable test test_asymmetric_jwe_token_plugin because of new algorithms
+  in jwcrypto 0.9.0+
+
+-------------------------------------------------------------------
 Mon Dec 14 21:26:47 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - This package depends on python-mox3 from openstack, which is only
