@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 12 16:31:12 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added Requires: python-Deprecated
+- update to upstream release 0.9.1
+  * Create codeql-analysis.yml
+  * Add back ppc64le CI
+  * Actually add the split out ppc64le action
+  * Silence a test warning
+  * Remove the _params abstraction and simplify JWK
+  * Fix crash in exception handler
+  * Add test for Issue 209
+  * Fix keyset import with similar keys
+  * Test fix for Issue 208
+  * Add __repr__() to mask keys
+  * Adding Power support(ppc64le) with ci and testing to the project for architecture independent
+  * Added six as a dependency to avoid import error
+  * Make sure an empty dict is a valid JWT payload
+  * Turn JWK into a dict-like object
+  * Go one step further and provide access as attrs
+  * Drop support for py34 as it stopped working on F33
+  * Deprecate RSA1_5 and remove from defaults
+  * Make PBES2 behave like all other algorithms
+  * Enforce protected header in compact serilization
+  * Fix importing Public EC keys from PEM files
+  * Installation instructions + extra badges
+  * RFC 8812 - Add Default allowed algorithms
+
+-------------------------------------------------------------------
 Sun Sep  6 19:25:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Use constraints on the cryptography dependency
