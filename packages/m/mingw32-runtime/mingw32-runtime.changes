@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  3 10:32:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.0
+  * UCRT updates, Wine updates
+  * gettimeofday precision increase
+
+-------------------------------------------------------------------
 Thu Dec  3 12:18:00 UTC 2020 - Tobias Klausmann <tobias.klausmann@freenet.de>
 
 - Update to new upstream release 8.0.0

@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-runtime
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mingw32-runtime
-Version:        8.0.0
+Version:        9.0.0
 Release:        0
 Summary:        MinGW-w64 runtime libraries for Win32
 License:        SUSE-Public-Domain
@@ -39,7 +39,6 @@ Requires:       mingw32-headers <= %version
 # Once this is installed, mingw32-bootstrap (binary bootstrapper) is no
 # longer needed.
 Obsoletes:      mingw32-runtime-bootstrap
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %_mingw32_package_header
 
@@ -47,18 +46,17 @@ BuildArch:      noarch
 MinGW Win64 cross-compiler runtime, base libraries.
 
 %prep
-%setup -q -n mingw-w64-v%{version}/mingw-w64-crt
+%autosetup -n mingw-w64-v%version/mingw-w64-crt
 
 %build
 %_mingw32_configure --enable-lib32 --disable-lib64
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 rm -Rfv "%buildroot/%_mingw32_includedir"/*.c
 
 %files
-%defattr(-,root,root)
 %_mingw32_libdir/
 
 %changelog
