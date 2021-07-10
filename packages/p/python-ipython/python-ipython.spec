@@ -1,5 +1,5 @@
 #
-# spec file for package python-ipython-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -30,7 +30,7 @@
 %define         skip_python36 1
 %bcond_without  iptest
 Name:           python-ipython%{psuffix}
-Version:        7.22.0
+Version:        7.25.0
 Release:        0
 Summary:        Rich architecture for interactive computing with Python
 License:        BSD-3-Clause
@@ -48,11 +48,11 @@ Requires:       python-backcall
 Requires:       python-base >= 3.7
 Requires:       python-decorator
 Requires:       python-jedi >= 0.16
-Requires:       python-pexpect >= 4.6
+Requires:       python-matplotlib-inline
+Requires:       python-pexpect >= 4.3
 Requires:       python-pickleshare
 Requires:       python-prompt_toolkit < 3.1
 Requires:       python-prompt_toolkit >= 2.0
-Requires:       python-simplegeneric > 0.8
 Requires:       python-traitlets >= 4.2
 Recommends:     jupyter
 Recommends:     python-ipykernel
@@ -75,8 +75,8 @@ Provides:       python-jupyter_ipython-doc-pdf = %{version}
 Obsoletes:      python-jupyter_ipython-doc-pdf < %{version}
 BuildArch:      noarch
 %if %{with test}
+# test requirements are specified in the iptest subpackage below
 BuildRequires:  %{python_module ipython-iptest = %{version}}
-BuildRequires:  %{python_module matplotlib}
 %endif
 %if !%{with test}
 BuildRequires:  desktop-file-utils
@@ -128,7 +128,7 @@ Requires:       python-Pygments
 Requires:       python-ipykernel
 Requires:       python-nbformat
 Requires:       python-nose >= 0.10.1
-Requires:       python-numpy
+Requires:       python-numpy >= 1.17
 Requires:       python-requests
 Requires:       python-testpath
 Provides:       python-jupyter_ipython-iptest = %{version}

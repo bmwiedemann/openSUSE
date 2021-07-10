@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 26 14:45:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 7.25.0
+  * debugger bug fix
+- Release 7.24
+  * Fix an issue where %recall would both succeeded and print an
+    error message it failed.
+  * Drop support for NumPy 1.16 – practically has no effect beyond
+    indicating in package metadata that we do not support it.
+  * Debugger improvements
+- Release 7.23
+  * We have a new dependency: matplotlib-inline, which try to
+    extract matplotlib inline backend specific behavior. It is
+    available on PyPI and conda-forge thus should not be a problem
+    to upgrade to this version. If you are a package maintainer
+    that might be an extra dependency to package first.
+
+-------------------------------------------------------------------
 Sun Mar 28 16:53:58 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 7.22.0:
