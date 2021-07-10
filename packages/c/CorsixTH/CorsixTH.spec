@@ -1,7 +1,7 @@
 #
 # spec file for package CorsixTH
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.64
+Version:        0.65
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
@@ -41,18 +41,10 @@ BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(sdl2)
-%if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(luajit)
-%else
-BuildRequires:  lua51-luajit-devel
-%endif
-%if 0%{?suse_version} > 1210
-BuildRequires:  lua51-devel
-%else
-BuildRequires:  lua-devel
-%endif
-Requires:       lua51-LPeg
-Requires:       lua51-luafilesystem
+BuildRequires:  lua-devel <= 5.4.0
+Requires:       lua-lpeg
+Requires:       lua-luafilesystem
 Recommends:     timidity
 
 %description
@@ -68,7 +60,7 @@ improvements to the original game can be made.
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -80,9 +72,9 @@ rm -f %{buildroot}/%{_datadir}/corsix-{th,TH}/LICENSE.txt
 %doc README.txt
 %{_bindir}/corsix-th
 %{_datadir}/corsix-th
-%{_datadir}/applications/com.corsixth.CorsixTH.desktop
 %{_datadir}/icons/hicolor/scalable/apps/corsix-th.svg
+%{_datadir}/metainfo/com.corsixth.corsixth.metainfo.xml
+%{_datadir}/applications/com.corsixth.corsixth.desktop
 %{_mandir}/man6/corsix-th.6%{?ext_man}
-%{_datadir}/metainfo/com.corsixth.CorsixTH.appdata.xml
 
 %changelog

@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Jul 10 08:29:58 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix lua-lpeg requirement
+
+-------------------------------------------------------------------
+Wed Jun 30 13:08:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 0.65:
+  * Hospital policies will now carry over to your next level in
+    the campaign
+  * You can now remove destroyed rooms for a fee (config option)
+  * The information dialogs that appear when a room is first built
+    can be disabled in the configuration file
+  * Fire extinguishers in rooms now have a chance to save a smoking
+    machine from exploding
+  * Advisor has more advice
+  * Additional trophy of the original game is implemented
+  * Roujin's challenge cheat is back
+  * Experimental direct_zoom config option, for more efficient zoom.
+  * Fix: Emergencies with unknown diseases will no longer occur
+  * The VIP system has been overhauled to provide more balanced ratings
+  * Overpriced/Underpriced treatments now scale with difficulty
+  * Placing a receptionist on a desk will now call her to the desk
+  * Boiler breakdowns now depend on handymen
+  * Faxes can no longer be opened while paused
+  * Improvements to receptionist announcement frequency and behaviour
+  * Games compiled without movie/audio can no longer access these settings
+  * Greek language added!
+  * Updates to Brazilian-Portuguese and English language
+  * Fixes to Chinese unicode encoding
+  * Fix: Issues scheduling emergencies have been resolved
+  * Fix: Games will no longer crash on load if the jukebox was open
+  * Fix: Games will no longer crash because of an empty music folder
+  * Fix: Fixed a scenario where editing a room caused staff to get stuck
+  * Fix: Games that scrolled while saving stop scrolling on load
+  * Fix: Psychiatrists in the Operating Theatre are now properly counted
+  * Fix: Losing a game now gives the reason if the movie is skipped
+  * Fix: Exiting the game will no longer hang when using the
+    Wayland backend
+  * Fix: The mouse will now be freed on game crash
+
+-------------------------------------------------------------------
 Fri Jul 17 16:58:53 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 0.64
