@@ -412,4 +412,12 @@
 - Port _SixMetaPathImporter to Python 3.10.</comment>
     <requestid>891898</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>2494a22ddc8340709a98ed6018bc7e56</srcmd5>
+    <version>1.16.0</version>
+    <time>1625950417</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>900811</requestid>
+  </revision>
 </revisionlist>

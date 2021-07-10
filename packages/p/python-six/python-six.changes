@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 17 16:58:25 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
+
+- provide python3*dist(six): work around boo#1186870
+
+-------------------------------------------------------------------
 Sun May  9 17:19:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.16.0:

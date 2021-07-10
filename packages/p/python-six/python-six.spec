@@ -1,5 +1,5 @@
 #
-# spec file for package python-six-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,6 +27,8 @@
 %bcond_with test
 %define psuffix %{nil}
 %endif
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 Name:           python-six%{psuffix}
 Version:        1.16.0
 Release:        0
@@ -44,6 +46,11 @@ BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module py}
 BuildRequires:  python3-Sphinx
+%endif
+# work around boo#1186870
+Provides:       %{mypython}%{python_version}dist(six) = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(six) = %{version}
 %endif
 %python_subpackages
 
