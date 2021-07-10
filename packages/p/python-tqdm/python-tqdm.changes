@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  4 00:17:33 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.61.1:
+  * fix utils._screen_shape_linux() sometimes raising ValueError
+    (#1174)
+  * minor build/CI framework updates (#1175)
+  * minor documentation updates
+
+- changes from version 4.61.0 :
+  * keras support for initial_epoch (#1150 <- #1138)
+  * misc documentation updates
+    + update & shorten URLs (#1163)
+    + fix typos (#1162)
+  * fix & update tests (#1163)
+  * minor framework updates (#1163)
+
+-------------------------------------------------------------------
 Fri Apr 30 19:43:53 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.60.0:

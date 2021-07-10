@@ -1,5 +1,5 @@
 #
-# spec file for package python-tqdm-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-tqdm%{pkg_suffix}
-Version:        4.60.0
+Version:        4.61.1
 Release:        0
 Summary:        An extensible progress meter
 License:        MIT AND MPL-2.0
