@@ -19,7 +19,7 @@
 %global pkg_name persistent
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.13.0.3
+Version:        2.13.1.1
 Release:        0
 Summary:        Type-safe, multi-backend data serialization
 License:        MIT
