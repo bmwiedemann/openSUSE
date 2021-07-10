@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 10 12:04:06 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use default lua otherwise the Requires will be incorrect
+- Remove unnecessary luajit build dep
+
+-------------------------------------------------------------------
 Sat Jul 10 08:29:58 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix lua-lpeg requirement

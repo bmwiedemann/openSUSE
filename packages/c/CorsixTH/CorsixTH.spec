@@ -41,8 +41,7 @@ BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(sdl2)
-BuildRequires:  pkgconfig(luajit)
-BuildRequires:  lua-devel <= 5.4.0
+BuildRequires:  pkgconfig(lua)
 Requires:       lua-lpeg
 Requires:       lua-luafilesystem
 Recommends:     timidity
