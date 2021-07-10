@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 10 11:38:27 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.2.6:
+  - license changed to Apache-2.0
+  - This patch makes autodocsumm compatible with sphinx 4.0 and
+    from now on requires python>=3.6.
+  - implemented support for the :nosignatures:
+
+-------------------------------------------------------------------
 Sun Apr 18 12:32:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.2.3

@@ -24,4 +24,17 @@
     <comment></comment>
     <requestid>886562</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d9bcaa5131c1c195f6db147daebc0f7</srcmd5>
+    <version>0.2.6</version>
+    <time>1625950480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.2.6:
+  - license changed to Apache-2.0
+  - This patch makes autodocsumm compatible with sphinx 4.0 and
+    from now on requires python&gt;=3.6.
+  - implemented support for the :nosignatures:
+</comment>
+    <requestid>905461</requestid>
+  </revision>
 </revisionlist>
