@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 10 15:56:02 CEST 2021 - nine@detonation.org
+
+- update to version 2021.06
+  + Support generics with consumption and inheritance in roles
+  + Introduce done foo syntax as a shortcut for emit foo; done
+  + Implement pick method on Any taking HyperWhatever as an argument (.pick(**))
+  + Add a repl sub to enter the REPL from within a program
+  + Add Buf and Blob coercers to Blob and Buf roles
+  + Tweak worker addition for many small tasks
+  + Make .grep(Regex) and .first(Regex) about 40% faster
+  + Speed up setup of NativeCall subs and reduce memory usage
+  + Micro-optimize levenshtein sub used to suggest alternatives in error messages
+  + Fix bogus "emit without supply or react" error when using hyper to process arrays
+  + Fix some edge cases with (+), (.), (&) and (|) set operators
+  + Make signature destructuring with a Junction an error
+  + Make Mu eqv Mu work
+
+-------------------------------------------------------------------
 Mon May 24 15:57:56 CEST 2021 - nine@detonation.org
 
 - update to version 2021.05

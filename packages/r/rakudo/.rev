@@ -533,4 +533,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment></comment>
     <requestid>895193</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>5df1589ed4b8a3c7a7da34a68b4fae95</srcmd5>
+    <version>2021.06</version>
+    <time>1625950489</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905576</requestid>
+  </revision>
 </revisionlist>
