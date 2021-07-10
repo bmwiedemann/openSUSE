@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul  1 07:50:35 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.5 (CVE-2021-35042, bsc#1187785)
+  + Fixed a regression in Django 3.2 that caused a crash of
+    QuerySet.values_list(..., named=True) after prefetch_related()
+  + Fixed a bug in Django 3.2 that caused a migration crash on MySQL
+    8.0.13+ when altering BinaryField, JSONField, or TextField to
+    non-nullable
+  + Fixed a regression in Django 3.2 that caused a migration crash on
+    MySQL 8.0.13+ when adding nullable BinaryField, JSONField, or
+    TextField with a default value
+  + Fixed a bug in Django 3.2 where a system check would crash on a
+    model with an invalid app_label
+
+-------------------------------------------------------------------
 Wed Jun  2 10:45:01 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.4 (CVE-2021-33203, CVE-2021-33571)
