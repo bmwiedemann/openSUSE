@@ -1,0 +1,14 @@
+--- mingw-w64-v9.0.0/mingw-w64-headers/crt/sec_api/string_s.h	2021-05-22 14:34:25.000000000 +0200
++++ mingw-w64-v9.0.0/mingw-w64-headers/crt/sec_api/string_s.h	2021-07-08 09:10:48.082143084 +0200
+@@ -43,9 +43,11 @@
+   _CRTIMP errno_t __cdecl strcat_s(char *_Dst, rsize_t _SizeInBytes, const char * _Src);
+   __DEFINE_CPP_OVERLOAD_SECURE_FUNC_0_1(errno_t, strcat_s, char, _Dest, const char *, _Source)
+ 
++#ifdef _NEEDS_STRNLEN_S
+   __forceinline size_t __cdecl strnlen_s(const char * _src, size_t _count) {
+     return _src ? strnlen(_src, _count) : 0;
+   }
++#endif
+ 
+   _SECIMP errno_t __cdecl memmove_s(void *_dest,size_t _numberOfElements,const void *_src,size_t _count);
+ #ifndef _WSTRING_S_DEFINED
