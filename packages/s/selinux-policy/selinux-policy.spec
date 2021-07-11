@@ -81,6 +81,9 @@ Source125:      rtorrent.fc
 Source126:      wicked.te
 Source127:      wicked.if
 Source128:      wicked.fc
+Source129:      tabrmd.te
+Source130:      tabrmd.if
+Source131:      tabrmd.fc
 
 Patch001:       fix_djbdns.patch
 Patch002:       fix_dbus.patch
@@ -156,8 +159,8 @@ Recommends:     audit
 Recommends:     selinux-tools
 # for audit2allow
 Recommends:     python3-policycoreutils
-Recommends:     policycoreutils-python-utils
 Recommends:     container-selinux
+Recommends:     policycoreutils-python-utils
 Recommends:     selinux-autorelabel
 
 %define common_params DISTRO=%{distro} UBAC=%{ubac} DIRECT_INITRC=n MONOLITHIC=%{monolithic} MLS_CATS=1024 MCS_CATS=1024
@@ -366,7 +369,7 @@ creating other policies.
 %package sandbox
 Summary:        SELinux policy sandbox
 Group:          System/Management
-Requires(pre): selinux-policy-targeted = %{version}-%{release}
+Requires(pre):  selinux-policy-targeted = %{version}-%{release}
 
 %description sandbox
 SELinux sandbox policy used for the policycoreutils-sandbox package
@@ -421,7 +424,7 @@ for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15}
  cp $i selinux_config
 done
 
-for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128}; do
+for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128} %{SOURCE129} %{SOURCE130} %{SOURCE131}; do
  cp $i policy/modules/contrib
 done
 

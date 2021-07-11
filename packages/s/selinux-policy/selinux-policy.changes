@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  6 13:55:19 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add tabrmd SELinux modules from upstream (bsc#1187925)
+  https://github.com/tpm2-software/tpm2-abrmd/tree/master/selinux
+- Automatic spec-cleaner to fix ordering and misaligned spaces
+
+-------------------------------------------------------------------
 Tue May 18 11:10:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - allow systemd to watch /usr, /usr/lib, /etc, /etc/pki as we have path units
