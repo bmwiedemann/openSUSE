@@ -40,12 +40,16 @@ Source1:        vendor.tar.gz
 Source2:        prometheus.service
 Source3:        prometheus.yml
 Source4:        prometheus.sysconfig
+Source5:        prometheus.firewall.xml
 Patch1:         0001-Do-not-force-the-pure-Go-name-resolver.patch
 # Lifted from Debian's prometheus package
 Patch2:         0002-Default-settings.patch
 # PATCH-FEATURE-OPENSUSE 0003-Add-Uyuni-service-discovery.patch jcavalheiro@suse.de
 Patch3:         0003-Add-Uyuni-service-discovery.patch
 BuildRequires:  fdupes
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
+BuildRequires:  firewall-macros
+%endif
 # Adding glibc-devel-static seems to be required for linking if building
 # with -buildmode=pie
 BuildRequires:  glibc-devel-static
@@ -94,6 +98,11 @@ cp -fr console_libraries/ consoles/ %{buildroot}%{_datarootdir}/prometheus
 install -m 0755 -d %{buildroot}%{_fillupdir}
 install -m 0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.prometheus
 
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
+install -m 0755 -d %{buildroot}%{_libdir}/firewalld/services/
+install -m 0644 %{SOURCE5} %{buildroot}%{_libdir}/firewalld/services/prometheus.xml
+%endif
+
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/data
 install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
@@ -107,6 +116,9 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 %post
 %fillup_only -n prometheus
 %service_add_post prometheus.service
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
+%firewalld_reload
+%endif
 
 %preun
 %service_del_preun prometheus.service
@@ -132,5 +144,11 @@ install -Dd -m 0750 %{buildroot}%{_localstatedir}/lib/prometheus/metrics
 %dir %attr(0700,prometheus,prometheus) %{_sharedstatedir}/prometheus/metrics
 %dir %{_sysconfdir}/prometheus
 %config(noreplace) %{_sysconfdir}/prometheus/prometheus.yml
+
+%if 0%{?suse_version} == 1500 && 0%{?sle_version} < 150300
+%dir %{_libdir}/firewalld
+%dir %{_libdir}/firewalld/services
+%{_libdir}/firewalld/services/prometheus.xml
+%endif
 
 %changelog

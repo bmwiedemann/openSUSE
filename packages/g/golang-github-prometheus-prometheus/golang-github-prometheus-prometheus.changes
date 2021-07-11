@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  8 08:08:39 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Provide and reload firewalld configuration only for:
+  + openSUSE Leap 15.0, 15.1, 15.2
+  + SUSE SLE15, SLE15 SP1, SLE15 SP2
+
+-------------------------------------------------------------------
 Wed May 19 20:32:28 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Refresh patches
@@ -7,9 +14,9 @@ Wed May 19 20:32:28 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
     * 0002-Default-settings.patch
     * 0003-Add-Uyuni-service-discovery.patch
 
-- Upgrade to upstream version 2.27.1
+- Upgrade to upstream version 2.27.1 (jsc#SLE-18254)
   + Bugfix:
-   * SECURITY: Fix arbitrary redirects under the /new endpoint (CVE-2021-29622)  
+   * SECURITY: Fix arbitrary redirects under the /new endpoint (CVE-2021-29622)
 
 - Upgrade to upstream version 2.27.0
   + Features:
@@ -134,6 +141,14 @@ Mon Nov  9 10:49:39 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
   * Remove systemd and shadow hard requirements
   * use systemd-sysusers to configure the user in a dedicated 'system-user-prometheus' subpackage
   * add 'prometheus' package alias
+
+-------------------------------------------------------------------
+Mon Aug 31 13:59:02 UTC 2020 - Patrick Seidensal <pseidensal@suse.com>
+
+- Update package with changes from `server:monitoring` bsc#1175478
+
+  Left out removal of firewalld related configuration files as SLE-15-SP1's
+  `firewalld` package does not contain prometheus configuration yet.
 
 -------------------------------------------------------------------
 Fri Jul 31 14:50:21 UTC 2020 - Witek Bedyk <witold.bedyk@suse.com>
