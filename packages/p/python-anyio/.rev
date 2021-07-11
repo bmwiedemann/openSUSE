@@ -30,4 +30,12 @@
   * Fixed ``ValueError: Invalid file descriptor: -1`` when closing a ``SocketListener`` on asyncio</comment>
     <requestid>879046</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>258275cb7c35bd58e063a9470a852845</srcmd5>
+    <version>3.1.0</version>
+    <time>1626045890</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>897206</requestid>
+  </revision>
 </revisionlist>

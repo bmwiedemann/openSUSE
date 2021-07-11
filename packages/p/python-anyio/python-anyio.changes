@@ -1,4 +1,179 @@
 -------------------------------------------------------------------
+Thu Jun  3 09:17:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.1.0:
+  * Added env and cwd keyword arguments to run_process() and
+    open_process.
+  * Added support for mutation of CancelScope.shield
+    (PR by John Belmonte)
+  * Added the sleep_forever() and sleep_until() functions
+  * Changed asyncio task groups so that if the host and child tasks
+    have only raised CancelledErrors, just one CancelledError will
+    now be raised instead of an ExceptionGroup, allowing asyncio to
+    ignore it when it propagates out of the task
+  * Changed task names to be converted to str early on asyncio
+    (PR by Thomas Grainger)
+  * Fixed sniffio._impl.AsyncLibraryNotFoundError: unknown async
+    library, or not in async context on asyncio and Python 3.6 when
+    to_thread.run_sync() is used from loop.run_until_complete()
+  * Fixed odd ExceptionGroup: 0 exceptions were raised in the task
+    group appearing under certain circumstances on asyncio
+  * Fixed wait_all_tasks_blocked() returning prematurely on asyncio
+    when a previously blocked task is cancelled
+    (PR by Thomas Grainger)
+  * Fixed declared return type of TaskGroup.start() (it was
+    declared as None, but anything can be returned from it)
+  * Fixed TextStream.extra_attributes raising AttributeError
+    (PR by Thomas Grainger)
+  * Fixed await maybe_async(current_task()) returning None
+    (PR by Thomas Grainger)
+  * Fixed: pickle.dumps(current_task()) now correctly raises
+    TypeError instead of pickling to None (PR by Thomas Grainger)
+  * Fixed return type annotation of Event.wait() (bool → None)
+    (PR by Thomas Grainger)
+  * Fixed return type annotation of RunVar.get() to return either
+    the type of the default value or the type of the contained
+    value (PR by Thomas Grainger)
+  * Fixed a deprecation warning message to refer to maybe_async()
+    and not maybe_awaitable() (PR by Thomas Grainger)
+  * Filled in argument and return types for all functions and
+    methods previously missing them (PR by Thomas Grainger)
+
+- Update to 3.0.1:
+  * Fixed to_thread.run_sync() raising RuntimeError on asyncio
+    when no "root" task could be found for setting up a cleanup
+    callback. This was a problem at least on Tornado and possibly
+    also Twisted in asyncio compatibility mode. The life of worker
+    threads is now bound to the the host task of the topmost cancel
+    scope hierarchy starting from the current one, or if no cancel
+    scope is active, the current task.
+
+- Update to 3.0.0:
+  * Curio support has been dropped (see the :doc:`FAQ <faq>` as for
+    why)
+  * API changes:
+    - BACKWARDS INCOMPATIBLE Submodules under anyio.abc. have been
+      made private (use only anyio.abc from now on).
+    - BACKWARDS INCOMPATIBLE The following method was previously a
+      coroutine method and has been converted into a synchronous
+      one:
+      * MemoryObjectReceiveStream.receive_nowait()
+    - The following functions and methods are no longer
+      asynchronous but can still be awaited on (doing so will emit
+      a deprecation warning):
+      * current_time()
+      * current_effective_deadline()
+      * get_current_task()
+      * get_running_tasks()
+      * CancelScope.cancel()
+      * CapacityLimiter.acquire_nowait()
+      * CapacityLimiter.acquire_on_behalf_of_nowait()
+      * Condition.release()
+      * Event.set()
+      * Lock.release()
+      * MemoryObjectSendStream.send_nowait()
+      * Semaphore.release()
+    - The following functions now return synchronous context
+      managers instead of asynchronous context managers (and emit
+      deprecation warnings if used as async context managers):
+      * fail_after()
+      * move_on_after()
+      * open_cancel_scope() (now just CancelScope(); see below)
+      * open_signal_receiver()
+    - The following functions and methods have been renamed/moved
+      (will now emit deprecation warnings when you use them by
+      their old names):
+      * create_blocking_portal() →
+        anyio.from_thread.BlockingPortal()
+      * create_capacity_limiter() → anyio.CapacityLimiter()
+      * create_event() → anyio.Event()
+      * create_lock() → anyio.Lock()
+      * create_condition() → anyio.Condition()
+      * create_semaphore() → anyio.Semaphore()
+      * current_default_worker_thread_limiter() →
+        anyio.to_thread.current_default_thread_limiter()
+      * open_cancel_scope() → anyio.CancelScope()
+      * run_sync_in_worker_thread() → anyio.to_thread.run_sync()
+      * run_async_from_thread() → anyio.from_thread.run()
+      * run_sync_from_thread() → anyio.from_thread.run_sync()
+      * BlockingPortal.spawn_task → BlockingPortal.start_task_soon
+      * CapacityLimiter.set_total_tokens() → limiter.total_tokens
+        = ...
+      * TaskGroup.spawn() → TaskGroup.start_soon()
+    - BACKWARDS INCOMPATIBLE start_blocking_portal() must now be
+      used as a context manager (it no longer returns a
+      BlockingPortal, but a context manager that yields one)
+    - BACKWARDS INCOMPATIBLE The
+      BlockingPortal.stop_from_external_thread() method (use
+      portal.call(portal.stop) instead now)
+    - BACKWARDS INCOMPATIBLE The SocketStream and SocketListener
+      classes were made non-generic
+    - Made all non-frozen dataclasses hashable with eq=False
+    - Removed __slots__ from BlockingPortal
+    See the :doc:`migration documentation <migration>` for
+    instructions on how to deal with these changes.
+  * Improvements to running synchronous code:
+    - Added the run_sync_from_thread() function
+    - Added the run_sync_in_process() function for running code in
+      worker processes (big thanks to Richard Sheridan for his help
+      on this one!)
+  * Improvements to sockets and streaming:
+    - Added the UNIXSocketStream class which is capable of sending
+      and receiving file descriptors
+    - Added the FileReadStream and FileWriteStream classes
+    - create_unix_listener() now removes any existing socket at the
+      given path before proceeding (instead of raising OSError:
+      Address already in use)
+  * Improvements to task groups and cancellation:
+    - Added the TaskGroup.start() method and a corresponding
+      BlockingPortal.start_task() method
+    - Added the name argument to BlockingPortal.start_task_soon()
+      (renamed from BlockingPortal.spawn_task())
+    - Changed CancelScope.deadline to be writable
+    - Added the following functions in the anyio.lowlevel module:
+      * checkpoint()
+      * checkpoint_if_cancelled()
+      * cancel_shielded_checkpoint()
+  * Improvements and changes to synchronization primitives:
+    - Added the Lock.acquire_nowait(), Condition.acquire_nowait()
+      and Semaphore.acquire_nowait() methods
+    - Added the statistics() method to Event, Lock, Condition,
+      Semaphore, CapacityLimiter, MemoryObjectReceiveStream and
+      MemoryObjectSendStream
+    - Lock and Condition can now only be released by the task that
+      acquired them. This behavior is now consistent on all
+      backends whereas previously only Trio enforced this.
+    - The CapacityLimiter.total_tokens property is now writable and
+      CapacityLimiter.set_total_tokens() has been deprecated
+    - Added the max_value property to Semaphore
+  * Asyncio specific improvements (big thanks to Thomas Grainger
+    for his effort on most of these!):
+    - Cancel scopes are now properly enforced with native asyncio
+      coroutine functions (without any explicit AnyIO checkpoints)
+    - Changed the asyncio CancelScope to raise a RuntimeError if a
+      cancel scope is being exited before it was even entered
+    - Changed the asyncio test runner to capture unhandled
+      exceptions from asynchronous callbacks and unbound native
+      tasks which are then raised after the test function (or async
+      fixture setup or teardown) completes
+    - Changed the asyncio TaskGroup.start_soon() (formerly spawn())
+      method to call the target function immediately before
+      starting the task, for consistency across backends
+    - Changed the asyncio TaskGroup.start_soon() (formerly spawn())
+      method to avoid the use of a coroutine wrapper on Python 3.8+
+      and added a hint for hiding the wrapper in tracebacks on
+      earlier Pythons (supported by Pytest, Sentry etc.)
+    - Changed the default thread limiter on asyncio to use a RunVar
+      so it is scoped to the current event loop, thus avoiding
+      potential conflict among multiple running event loops
+    - Thread pooling is now used on asyncio with
+      run_sync_in_worker_thread()
+    - Fixed current_effective_deadline() raising KeyError on
+      asyncio when no cancel scope is active
+  * Added the RunVar class for scoping variables to the running
+    event loop
+
+-------------------------------------------------------------------
 Mon Mar 15 05:57:41 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.2.0:

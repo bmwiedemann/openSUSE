@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-anyio
-Version:        2.2.0
+Version:        3.1.0
 Release:        0
 Summary:        High level compatibility layer for asynchronous event loop implementations
 License:        MIT
@@ -36,7 +36,9 @@ BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
 BuildRequires:  python-rpm-macros >= 20210127.3a18043
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis >= 4.0}
+BuildRequires:  %{python_module mock >= 4.0}
 BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest-mock >= 3.6.1}
 BuildRequires:  %{python_module trio >= 0.16}
 BuildRequires:  %{python_module trustme}
 BuildRequires:  %{python_module uvloop}
@@ -60,7 +62,7 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Asynchronous compatibility API that allows applications and libraries written 
+Asynchronous compatibility API that allows applications and libraries written
 against it to run unmodified on asyncio, curio and trio.
 
 %prep
