@@ -1,7 +1,7 @@
 #
 # spec file for package libcdio-paranoia
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,55 +17,53 @@
 
 
 %define sonum 2
-
 Name:           libcdio-paranoia
-Version:        10.2+2.0.0
+Version:        10.2+2.0.1
 Release:        0
-Summary:        CDDA reader
-License:        GPL-3.0-only
+Summary:        CD-DA reader
+License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
-Url:            http://savannah.gnu.org/projects/libcdio
+URL:            http://savannah.gnu.org/projects/libcdio
 Source0:        http://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-%{version}.tar.bz2
 Source1:        http://ftp.gnu.org/gnu/libcdio/libcdio-paranoia-%{version}.tar.bz2.sig
 Source2:        https://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=libcdio&download=1#/%{name}.keyring
 Source3:        baselibs.conf
-Patch1:         libcdio-paranoia.libcdio_cddda-libs.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Patch0:         libcdio-paranoia.libcdio_cddda-libs.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcdio)
 
 %description
-This CDDA reader distribution ('libcdio-cdparanoia') reads audio from
-he CDROM directly as data, with no analog step between, and writes
-the data to a file or pipe as .wav, .aifc or as raw 16 bit linear PCM.
+This CD-DA reader distribution ("libcdio-cdparanoia") reads audio from
+CD-ROMs directly as data, with no analog step between, and writes
+the data to a file or pipe as .wav, .aifc or as raw 16-bit linear PCM.
 
 %package -n cd-paranoia
 Summary:        CDDA reader
 Group:          Productivity/Multimedia/Other
 
 %description -n cd-paranoia
-This CDDA reader distribution ('libcdio-cdparanoia') reads audio from
-he CDROM directly as data, with no analog step between, and writes
-the data to a file or pipe as .wav, .aifc or as raw 16 bit linear PCM.
+This CD-DA reader distribution ("libcdio-cdparanoia") reads audio from
+CD-ROMs directly as data, with no analog step between, and writes
+the data to a file or pipe as .wav, .aifc or as raw 16-bit linear PCM.
 
 %package -n libcdio_cdda%{sonum}
-Summary:        CDDA reader
+Summary:        CD-DA reading library
 Group:          System/Libraries
 
 %description -n libcdio_cdda%{sonum}
-This CDDA reader distribution ('libcdio-cdparanoia') reads audio from
-he CDROM directly as data, with no analog step between, and writes
-the data to a file or pipe as .wav, .aifc or as raw 16 bit linear PCM.
+This CD-DA reader distribution ("libcdio-cdparanoia") reads audio from
+CD-ROMs directly as data, with no analog step between, and writes
+the data to a file or pipe as .wav, .aifc or as raw 16-bit linear PCM.
 
 %package -n libcdio_paranoia%{sonum}
-Summary:        CDDA reader
+Summary:        Error correction library for CD-DA data blocks
 Group:          System/Libraries
 
 %description -n libcdio_paranoia%{sonum}
-This CDDA reader distribution ('libcdio-cdparanoia') reads audio from
-he CDROM directly as data, with no analog step between, and writes
-the data to a file or pipe as .wav, .aifc or as raw 16 bit linear PCM.
+This CD-DA reader distribution ("libcdio-cdparanoia") reads audio from
+CD-ROMs directly as data, with no analog step between, and writes
+the data to a file or pipe as .wav, .aifc or as raw 16-bit linear PCM.
 
 %package        devel
 Summary:        Development files for %{name}
@@ -79,22 +77,22 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
-%patch1 -p1
-%define buildir ${PWD}
+%autosetup -p1
 
 %build
-%configure --disable-static --with-pic
-make -e %{?_smp_mflags}
+%configure --disable-static
+%make_build -e
 
 %install
-make install DESTDIR=%{buildroot}
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+%make_install
+find %{buildroot} -name '*.la' -delete
 mv %{buildroot}%{_mandir}/jp %{buildroot}%{_mandir}/ja
 # I have no idea WTF upstream is trying to do. But most software currently
 # expects the headers to be in %%{_includedir}/cdio/, not in %%{_includedir}/cdio/paranoia/
 ln -s paranoia/cdda.h %{buildroot}%{_includedir}/cdio/cdda.h
 ln -s paranoia/paranoia.h %{buildroot}%{_includedir}/cdio/paranoia.h
+ln -s paranoia/toc.h %{buildroot}%{_includedir}/cdio/toc.h
+%find_lang cd-paranoia --with-man
 
 %post -n libcdio_cdda%{sonum} -p /sbin/ldconfig
 
@@ -104,24 +102,19 @@ ln -s paranoia/paranoia.h %{buildroot}%{_includedir}/cdio/paranoia.h
 
 %post -n libcdio_paranoia%{sonum} -p /sbin/ldconfig
 
-%files -n cd-paranoia
-%defattr (-, root, root)
-%doc README* NEWS NEWS AUTHORS
+%files -n cd-paranoia -f cd-paranoia.lang
+%doc README.md NEWS.md AUTHORS
 %license COPYING
 %{_bindir}/cd-paranoia
-%doc %{_mandir}/ja/man1/cd-paranoia.1.gz
-%doc %{_mandir}/man1/cd-paranoia.1.gz
+%doc %{_mandir}/man1/cd-paranoia.1%{?ext_man}
 
 %files -n libcdio_cdda%{sonum}
-%defattr (-, root, root)
 %{_libdir}/libcdio_cdda.so.*
 
 %files -n libcdio_paranoia%{sonum}
-%defattr (-, root, root)
 %{_libdir}/libcdio_paranoia.so.*
 
 %files devel
-%defattr (-, root, root)
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc

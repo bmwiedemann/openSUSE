@@ -1,3 +1,19 @@
+-------------------------------------------------------------------
+Wed Jul  7 18:45:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- version 10.2+2.0.1 (2019-09-16)
+  * cdda toc routines now included
+  * "make distcheck" broken in 2.0.0 works properly again
+  * Remove some gcc/clang warnings
+- Use %find_lang
+- Use correct License
+
+-------------------------------------------------------------------
+Fri Jun 18 14:29:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+- Trim old rpm macros/constructs
+- Update descriptions
 
 -------------------------------------------------------------------
 Mon Jan 28 08:13:34 UTC 2019 - Karol Babioch <kbabioch@suse.de>
