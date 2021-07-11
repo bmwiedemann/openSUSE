@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul  7 18:53:17 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 1.21.1
+  * https://nginx.org/en/CHANGES
+  * Now nginx always returns an error for the CONNECT method.
+  * Now nginx always returns an error if both "Content-Length"
+    and "Transfer-Encoding" header lines are present in the request.
+  * Now nginx always returns an error if spaces or control
+    characters are used in the request line.
+  * Now nginx always returns an error if spaces or control
+    characters are used in a header name.
+  * Now nginx always returns an error if spaces or control
+    characters are used in the "Host" request header line.
+  * Optimization of configuration testing when using many
+    listening sockets.
+  * Fixed: nginx did not escape """, "<", ">", "\", "^", "`", "{", "|",
+    and "}" characters when proxying with changed URI.
+  * Fixed: SSL variables might be empty when used in logs; the bug had
+    appeared in 1.19.5.
+  * Fixed: keepalive connections with gRPC backends might not be closed
+    after receiving a GOAWAY frame.
+  * Fixed: reduced memory consumption for long-lived requests when
+    proxying with more than 64 buffers.
+
+-------------------------------------------------------------------
 Wed Jun 16 13:13:12 UTC 2021 - Felix Schnizlein <fschnizlein@suse.com>
 
 - Fix race condition between nginx and logrotate causing mass reopening of
