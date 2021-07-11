@@ -1783,4 +1783,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>895411</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>241fb66a025172eea6c4a7edf2cab4d1</srcmd5>
+    <version>9.23.43</version>
+    <time>1626045887</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.42 → 9.23.43
+
+- Re-add suseImportBuildKey
+  suseImportBuildKey is not required during the image build as kiwi imports the
+  correct keys by itself. However, the created images lack the repository signing
+  keys and any `zypper` commands will thus fail.
+  This fixes https://github.com/OSInside/kiwi/issues/1876
+
+- Bump version: 9.23.41 → 9.23.42
+
+- Fixed fedora integration test builds
+  Maintain the repos in the obs prj config which prevents
+  the weird &quot;nothing provides kernel-obs-build&quot; error
+
+- Bump version: 9.23.40 → 9.23.41
+
+- Remove util-linux-systemd &amp; util-linux Requires from dracut-kiwi-overlay
+  These dependencies are pulled in via dracut-kiwi-lib.
+
+- Add missing util-linux-systemd Requires to dracut-kiwi-[live,libs]
+
+- Fixed test-image-orthos integration test
+  The test was missing btrfs_root_is_snapshot which is required
+  when using btrfs on tumbleweed.
+
+- Fixed test-image-disk-legacy integration test
+  The test did not set a device filter for ramdisk devices but
+  activates unattended mode. In this mode the first device in
+  the list is taken and this is a ramdisk device which is
+  by default too small to be used for the installation. Thus</comment>
+    <requestid>905081</requestid>
+  </revision>
 </revisionlist>

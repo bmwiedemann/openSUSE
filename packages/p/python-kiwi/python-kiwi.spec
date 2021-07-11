@@ -43,7 +43,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        9.23.31
+Version:        9.23.43
 Provides:       kiwi-schema = 7.4
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -426,6 +426,10 @@ Requires:       lvm2
 Requires:       mdadm
 Requires:       parted
 Requires:       util-linux
+# lsblk is part of util-linux-systemd on openSUSE
+%if 0%{?suse_version}
+Requires:       util-linux-systemd
+%endif
 Requires:       xfsprogs
 Requires:       dialog
 Requires:       pv
@@ -499,6 +503,10 @@ Requires:       dialog
 Requires:       xfsprogs
 Requires:       e2fsprogs
 Requires:       util-linux
+# lsblk is part of util-linux-systemd on openSUSE
+%if 0%{?suse_version}
+Requires:       util-linux-systemd
+%endif
 %if 0%{?debian} || 0%{?ubuntu}
 Requires:       dmsetup
 Requires:       dracut-network
@@ -529,7 +537,6 @@ Summary:        KIWI - Dracut module for vmx(+overlay) image type
 BuildRequires:  dracut
 %endif
 Requires:       dracut-kiwi-lib = %{version}-%{release}
-Requires:       util-linux
 Requires:       dracut
 License:        GPL-3.0-or-later
 Group:          %{sysgroup}

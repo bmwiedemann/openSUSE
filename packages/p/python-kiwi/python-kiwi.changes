@@ -1,4 +1,500 @@
 -------------------------------------------------------------------
+Mon Jul 05 14:58:02 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.42 → 9.23.43
+
+-------------------------------------------------------------------
+Mon Jul 05 08:47:39 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Re-add suseImportBuildKey
+
+  suseImportBuildKey is not required during the image build as kiwi imports the
+  correct keys by itself. However, the created images lack the repository signing
+  keys and any `zypper` commands will thus fail.
+
+  This fixes https://github.com/OSInside/kiwi/issues/1876
+
+-------------------------------------------------------------------
+Fri Jul 02 14:25:15 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.41 → 9.23.42
+
+-------------------------------------------------------------------
+Thu Jul 01 11:11:11 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed fedora integration test builds
+
+  Maintain the repos in the obs prj config which prevents
+  the weird "nothing provides kernel-obs-build" error
+
+-------------------------------------------------------------------
+Wed Jun 30 15:15:58 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.40 → 9.23.41
+
+-------------------------------------------------------------------
+Wed Jun 30 14:25:29 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Remove util-linux-systemd & util-linux Requires from dracut-kiwi-overlay
+
+  These dependencies are pulled in via dracut-kiwi-lib.
+
+-------------------------------------------------------------------
+Wed Jun 30 14:24:50 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add missing util-linux-systemd Requires to dracut-kiwi-[live,libs]
+
+-------------------------------------------------------------------
+Wed Jun 30 13:09:16 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed test-image-orthos integration test
+
+  The test was missing btrfs_root_is_snapshot which is required
+  when using btrfs on tumbleweed.
+
+-------------------------------------------------------------------
+Tue Jun 29 18:26:31 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed test-image-disk-legacy integration test
+
+  The test did not set a device filter for ramdisk devices but
+  activates unattended mode. In this mode the first device in
+  the list is taken and this is a ramdisk device which is
+  by default too small to be used for the installation. Thus
+  the install usually fails. This commit sets the device filter
+  for ramdisk devices such that only associated disk devices
+  can be used for the install process, which is the purpose
+  of this test. This is related to Issue OSInside/kiwi-functional-tests#8
+
+-------------------------------------------------------------------
+Tue Jun 29 17:51:37 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.39 → 9.23.40
+
+-------------------------------------------------------------------
+Tue Jun 29 12:54:58 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Mount dev and proc filesystems prior dracut
+
+  In newer versions of dracut /dev and /proc must be mounted
+  for dracut to work correctly. If not present the resulting
+  initrd is incomplete. This Fixes #1867
+
+-------------------------------------------------------------------
+Mon Jun 28 18:06:42 CEST 2021 - Neal Gompa <ngompa@datto.com>
+
+- Use namespaced files in /var/tmp for large temporary files
+
+  Previously, kiwi created staging image files as plain temporary files
+  in /tmp, which causes issues on operating systems where /tmp is tmpfs.
+  Notably, image builds would fail with "no space left on the device"
+  because the tmpfs was not big enough for everything to exist there.
+
+  To fix this, we change to use /var/tmp, and additionally add a prefix
+  for our temporary files so that the user knows which ones kiwi created.
+
+  Fixes: https://github.com/OSInside/kiwi/issues/1866
+
+-------------------------------------------------------------------
+Fri Jun 25 15:42:01 CEST 2021 - Tom Schraitle <tom_schr@web.de>
+
+- Use latest stylesheet in STYLEROOT
+
+  Use "suse2021-ns" instead of "suse2013-ns" due to new
+  branding.
+
+-------------------------------------------------------------------
+Wed Jun 23 14:45:09 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add missing util-linux-systemd dependency to dracut-kiwi-overlay
+
+  The script kiwi-overlay-root.sh requires lsblk which is provided by
+  util-linux-systemd. If that package is missing in the final image, then booting
+  an overlayroot image hangs with:
+
+  dracut-pre-mount[480]: //lib/dracut/hooks/pre-mount/30-kiwi-overlay-root.sh: line 46: lsblk: command not found
+
+-------------------------------------------------------------------
+Mon Jun 21 15:47:31 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure chat link points to Element not Riot
+
+  Riot has changed to Element. The index page on kiwi still
+  uses the old location. This updates the information how to
+  use the Matrix channel and the kiwi room name.
+  This Fixes #1854
+
+-------------------------------------------------------------------
+Mon Jun 21 15:16:40 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.38 → 9.23.39
+
+-------------------------------------------------------------------
+Mon Jun 21 15:03:13 CEST 2021 - Dan Čermák <45594031+dcermak@users.noreply.github.com>
+
+- Functions integration tests (#1851)
+
+  Add integration tests for functions.sh
+
+  Implement a container based test system to run shell code for testing.
+  The concept utilizes pytest-testinfra and runs a container per test.
+  The nested container in a container feature is supported by the github
+  actions workflow. Thus the integration of this testing concept runs in
+  the github actions CI rather than on gitlab
+
+-------------------------------------------------------------------
+Mon Jun 21 14:50:59 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Don't shell out for calling dnf
+
+  refactor the dnf call to install packages and groups in
+  one call. This allows to prevent calling dnf through a
+  shell. For installing of a package group the group ID
+  name is expected. This Fixes #1856
+
+-------------------------------------------------------------------
+Mon Jun 21 14:38:05 CEST 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- - Improve the error message if the config file cannot be parsed.
+
+-------------------------------------------------------------------
+Mon Jun 21 11:59:04 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Do not shell out for calling microdnf.
+
+  In fact it can be counter productive if the shell
+  evaluates eventually existing package name/instruction
+  patterns. This is related to Issue #1856
+
+-------------------------------------------------------------------
+Mon Jun 21 11:51:43 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Prevent calling pacman through a shell
+
+  There is no reason to shell out for calling pacman.
+  In fact it can be counter productive if the shell
+  evaluates eventually existing package name/instruction
+  patterns. This is related to Issue #1856
+
+-------------------------------------------------------------------
+Sat Jun 19 22:01:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure mypy stubs will be installed
+
+-------------------------------------------------------------------
+Wed Jun 16 11:33:24 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow creation of LUKS system with empty key
+
+  To support cloud platforms better we should allow the
+  creation of an initial(insecure) LUKS encrypted image
+  with an empty passphrase/keyfile. This Fixes
+  bsc#1187461 and bsc#1187460
+
+-------------------------------------------------------------------
+Fri Jun 11 14:47:11 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.37 → 9.23.38
+
+-------------------------------------------------------------------
+Thu Jun 10 11:10:56 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed cleanup of temporary directory
+
+  In the custom kiwi initrd build process a temporary directory
+  holding a copy of the initrd root tree is created. That data
+  got never cleaned up. This commit uses a TemporaryDirectory
+  object from the tempfile module to make sure it gets deleted
+  once the execution scope is done. This Fixes #1837
+
+-------------------------------------------------------------------
+Mon Jun 07 12:23:55 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.36 → 9.23.37
+
+-------------------------------------------------------------------
+Mon Jun 07 12:01:14 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete deprecated shell functions from docs
+
+  suseActivateDefaultServices
+  suseSetupProductInformation
+  suseImportBuildKey
+  suseConfig
+  baseCleanMount
+  baseSetupUserPermissions
+  baseGetPackagesForDeletion
+  baseGetProfilesUsed
+  baseStripMans
+  baseStripDocs
+  baseStripInfos
+  Rpm
+
+-------------------------------------------------------------------
+Sun Jun 06 15:39:11 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed creating grub bios module
+
+  If no prebuilt grub bios module was found, kiwi creates one.
+  In this case kiwi searches for the grub modules and runs
+  the grub mkimage tool. The search for the modules for the
+  bios module used the host system (/) grub and that fails if
+  the host has packaged grub differently than the image target.
+  This fix moves the lookup into the image root directory
+  which is the correct place to lookup the grub data
+
+-------------------------------------------------------------------
+Sat Jun 05 21:03:41 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.35 → 9.23.36
+
+-------------------------------------------------------------------
+Sat Jun 05 21:01:21 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed building with custom kiwi initrd setup
+
+  The change from allowing to build with initrd_system="none"
+  broke the build for initrd_system="kiwi". This commit fixes
+  the regression
+
+-------------------------------------------------------------------
+Sat Jun 05 20:06:13 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Use zypper --gpg-auto-import-keys option
+
+  When building an image against self managed repos the
+  auto import of the repo gpg key makes sense to me
+
+-------------------------------------------------------------------
+Sat Jun 05 19:54:03 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup integration tests from obsolete methods
+
+  Cleanup config.sh scripts calling obsolete helper methods
+
+-------------------------------------------------------------------
+Sat Jun 05 19:48:41 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Cleanup integration tests from obsolete methods
+
+  Cleanup config.sh scripts calling obsolete helper methods
+
+-------------------------------------------------------------------
+Sat Jun 05 19:13:26 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.34 → 9.23.35
+
+-------------------------------------------------------------------
+Fri Jun 04 16:31:38 CEST 2021 - gnuninu <dimarnicola@gmail.com>
+
+- Corrected preferences timezone code tag
+
+-------------------------------------------------------------------
+Tue Jun 01 11:49:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Refactor config functions code
+
+  Reorganize the code into more readable areas like methods
+  present as helpers, methods for customers, methods which are
+  distribution specific and also methods that are deprecated
+  and give a good reason why they are deprecated when they
+  get called. This is related to Issue #1828
+
+-------------------------------------------------------------------
+Tue Jun 01 00:48:39 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Revert "Switch test-image-live-disk to Fedora 33"
+
+  This reverts commit f80549474c4baa120e6e228bacc7b4a075265753.
+
+-------------------------------------------------------------------
+Tue Jun 01 00:37:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Switch test-image-live-disk to Fedora 33
+
+-------------------------------------------------------------------
+Fri May 28 14:50:29 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed codacy code smells
+
+-------------------------------------------------------------------
+Fri May 28 14:36:53 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add strong typing for the following API methods
+
+  kiwi/boot/image/base.py
+  kiwi/boot/image/builtin_kiwi.py
+  kiwi/boot/image/dracut.py
+
+  This references issue #1644
+
+-------------------------------------------------------------------
+Thu May 27 16:07:55 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added support for skipping initrd creation
+
+  Embedded systems and other customer use cases sometimes
+  doesn't require an initrd. So far the initrd creation was
+  a mandatory step in the process. With this commit it's
+  possible to configure <type ... initrd_system="none"/>
+  and therefore skip the creation and setup of an initrd.
+  Using this feature comes with a price. Without an initrd
+  the task of mounting the specified root=DEVICE_SPEC now
+  becomes a task of the kernel. If the kernel doesn't have
+  the required filesystem driver compiled in or the mount
+  process of the device is not just a simple mount
+  action, the boot of such an appliance will fail
+
+-------------------------------------------------------------------
+Thu May 27 13:26:38 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Remove grep and find from suseSetupProduct
+
+-------------------------------------------------------------------
+Thu May 27 10:55:06 CEST 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- config/functions.sh: Avoid non-zero exit status
+
+  In baseStripDocs and baseStripFirmware avoid non-zero exit status of grep.
+  This allows the functions to be used in a script that sets the exit-on-error
+  flag.
+
+-------------------------------------------------------------------
+Fri May 21 17:39:51 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.33 → 9.23.34
+
+-------------------------------------------------------------------
+Fri May 21 17:37:58 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure we use sphinx >= 4.0.2
+
+-------------------------------------------------------------------
+Fri May 21 17:32:23 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Revert "Revert "Fix installation of man pages""
+
+  This reverts commit db7410f3c5b7b101ec0974cc24de0400c491f065.
+
+-------------------------------------------------------------------
+Fri May 21 17:30:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Revert "Make sure man pages are part of the sdist tarball"
+
+  This reverts commit 3bf80506c4bbe381b66febdd38df93e65103ffb6.
+
+-------------------------------------------------------------------
+Fri May 21 17:11:44 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.32 → 9.23.33
+
+-------------------------------------------------------------------
+Fri May 21 17:02:07 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make sure man pages are part of the sdist tarball
+
+  Due to the move of man pages in sphinx the MANIFEST.in
+  has to be updated to provide the man pages in the
+  sdist tarball
+
+-------------------------------------------------------------------
+Fri May 21 17:01:26 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Revert "Fix installation of man pages"
+
+  This reverts commit 286b26b5b6598285bf6eb26a1f5c9200c925b529.
+
+-------------------------------------------------------------------
+Fri May 21 16:49:14 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed missing shebang in config.sh
+
+  The ubuntu integration test config.sh script was missing
+  the shebang to let the script code run through bash
+
+-------------------------------------------------------------------
+Fri May 21 14:35:42 CEST 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix installation of man pages
+
+  The generated source archive on PyPI has the man page files
+  in ./doc/build/man instead of ./doc/build/man/8.
+
+  Adjust the Makefile to use the correct path to install the
+  man pages.
+
+-------------------------------------------------------------------
+Fri May 21 11:53:35 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.31 → 9.23.32
+
+-------------------------------------------------------------------
+Thu May 20 15:45:16 CEST 2021 - David Cassany <dcassany@suse.com>
+
+- Do not return default stdout if it is no raising on failure
+
+  This commit prevents the use of a default stdout and stderr in case
+  return code reports errors and it is not raising an exception.
+
+  If we are not raising an exception there is no specific need to
+  artificially append some stdout and stderr default message, we just
+  behave as if there was no error.
+
+-------------------------------------------------------------------
+Thu May 20 13:05:24 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Update Ubuntu integration test for system settings
+
+  In Debian based distributions the kiwi built in way
+  to setup locale, keyboard and timezone via systemd tools
+  does not work because not(yet) provided by the distribution.
+  This commit adds a reference implementation in the Ubuntu
+  integration test to demonstrate how the settings given in
+  the kiwi image description needs to be handled to make
+  them effective in the later image. This Fixes #1787
+
+-------------------------------------------------------------------
+Thu May 20 12:47:46 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add log information on grub search
+
+  There is a method in kiwi which searches for grub files.
+  As grub is packaged differently within the distributions
+  a dynamic lookup is needed. However, the result and where
+  kiwi looked it up was not part of the log file. In terms
+  of issues like the one from Issue #1754 it would be very
+  handy to know about this information. Thus this commit
+  adds debug information to the log file regarding what
+  grub files are searched and where and if found
+
+-------------------------------------------------------------------
+Thu May 20 12:07:32 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed coday complains
+
+-------------------------------------------------------------------
+Thu May 20 11:49:29 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Make dracut version check more robust
+
+  The check_dracut_module_versions_compatible_to_kiwi() runtime
+  check calls the package manager from the host and reads the
+  package database from the image root. Doing this requires
+  the package database in the image to be compatible with the
+  package manager on the host. However this cannot be guarenteed
+  and it is more robust to chroot into the image root and call
+  the package manager from there. However, this change also comes
+  with the cost that it's required to have a package manager
+  available in the image root tree. Therefore along with the
+  chroot based call, eventual exceptions from the call are now
+  catched and leads to a debug message in the log file but will
+  not lead the runtime check to fail. I consider the cases
+  without a package database inside of the image to be less
+  critical than the incompatibility issue between the host
+  tooling and the package database in the image.
+  This Fixes bsc#1185937
+
+-------------------------------------------------------------------
 Tue May 18 18:13:48 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.30 → 9.23.31
