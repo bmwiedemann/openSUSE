@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul  9 07:16:22 UTC 2021 - schubi <schubi@localhost>
+
+- Update to version 0.4.1+git20210709.cf671f2:
+  * CMake fixes regarding installation of econftool and man pages.
+
+-------------------------------------------------------------------
+Thu Jul 08 08:49:53 UTC 2021 - Stefan Schubert schubi@suse.com
+
+- Update to version 0.4.0+git20210708.6918ea1:
+  * Fixed covscan FORWARD_NULL_issues warnings
+
+-------------------------------------------------------------------
+Wed Jul  7 12:11:36 UTC 2021 - Stefan Schubert <schubi@suse.com>
+
+- Update to version 0.4.0+git20210707.537a8a:
+  * Fixed resource leaks found by Iker Pedrosa.
+
+-------------------------------------------------------------------
 Thu Apr 15 10:31:02 UTC 2021 - schubi@suse.com 
 
 - Removed doxygen from build requires.
