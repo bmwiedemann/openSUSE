@@ -1,12 +1,12 @@
-Index: grub-2.02~beta2/util/grub-mkconfig.in
+Index: grub-2.06~rc1/util/grub-mkconfig.in
 ===================================================================
---- grub-2.02~beta2.orig/util/grub-mkconfig.in
-+++ grub-2.02~beta2/util/grub-mkconfig.in
-@@ -311,6 +311,11 @@ and /etc/grub.d/* files or please file a
-   else
+--- grub-2.06~rc1.orig/util/grub-mkconfig.in
++++ grub-2.06~rc1/util/grub-mkconfig.in
+@@ -347,6 +347,11 @@ and /etc/grub.d/* files or please file a
      # none of the children aborted with error, install the new grub.cfg
-     mv -f ${grub_cfg}.new ${grub_cfg}
-+    # check if default entry need to be corrected for updated distributor version 
+     cat ${grub_cfg}.new > ${grub_cfg}
+     rm -f ${grub_cfg}.new
++    # check if default entry need to be corrected for updated distributor version
 +    # and/or use fallback entry if default kernel entry removed
 +    if test -x /usr/sbin/grub2-check-default; then
 +       /usr/sbin/grub2-check-default >&2

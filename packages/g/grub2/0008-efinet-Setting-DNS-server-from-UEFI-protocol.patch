@@ -32,10 +32,10 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  include/grub/efi/api.h             |  76 +++++++++++++++++
  2 files changed, 239 insertions(+)
 
-Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
+Index: grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/net/drivers/efi/efinet.c
-+++ grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
+--- grub-2.06~rc1.orig/grub-core/net/drivers/efi/efinet.c
++++ grub-2.06~rc1/grub-core/net/drivers/efi/efinet.c
 @@ -30,6 +30,8 @@ GRUB_MOD_LICENSE ("GPLv3+");
  /* GUID.  */
  static grub_efi_guid_t net_io_guid = GRUB_EFI_SIMPLE_NETWORK_GUID;
@@ -241,12 +241,12 @@ Index: grub-2.04~rc1/grub-core/net/drivers/efi/efinet.c
        *use_ipv6 = 1;
      }
  
-Index: grub-2.04~rc1/include/grub/efi/api.h
+Index: grub-2.06~rc1/include/grub/efi/api.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/efi/api.h
-+++ grub-2.04~rc1/include/grub/efi/api.h
-@@ -334,6 +334,16 @@
-       { 0x8B, 0x8C, 0xE2, 0x1B, 0x01, 0xAE, 0xF2, 0xB7 } \
+--- grub-2.06~rc1.orig/include/grub/efi/api.h
++++ grub-2.06~rc1/include/grub/efi/api.h
+@@ -354,6 +354,16 @@
+     { 0x86, 0x2e, 0xc0, 0x1c, 0xdc, 0x29, 0x1f, 0x44 } \
    }
  
 +#define GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID \
@@ -262,9 +262,9 @@ Index: grub-2.04~rc1/include/grub/efi/api.h
  struct grub_efi_sal_system_table
  {
    grub_uint32_t signature;
-@@ -1749,6 +1759,72 @@ struct grub_efi_block_io
+@@ -1793,6 +1803,72 @@ struct grub_efi_rng_protocol
  };
- typedef struct grub_efi_block_io grub_efi_block_io_t;
+ typedef struct grub_efi_rng_protocol grub_efi_rng_protocol_t;
  
 +enum grub_efi_ip4_config2_data_type {
 +  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,

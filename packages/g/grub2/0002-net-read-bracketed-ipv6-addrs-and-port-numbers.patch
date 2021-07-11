@@ -15,11 +15,11 @@ number
  include/grub/net.h   |  1 +
  4 files changed, 104 insertions(+), 10 deletions(-)
 
-diff --git a/grub-core/net/http.c b/grub-core/net/http.c
-index 5aa4ad3..f182d7b 100644
---- a/grub-core/net/http.c
-+++ b/grub-core/net/http.c
-@@ -312,12 +312,14 @@ http_establish (struct grub_file *file, grub_off_t offset, int initial)
+Index: grub-2.06~rc1/grub-core/net/http.c
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/net/http.c
++++ grub-2.06~rc1/grub-core/net/http.c
+@@ -312,12 +312,14 @@ http_establish (struct grub_file *file,
    int i;
    struct grub_net_buff *nb;
    grub_err_t err;
@@ -35,7 +35,7 @@ index 5aa4ad3..f182d7b 100644
  			   + sizeof ("\r\nUser-Agent: " PACKAGE_STRING
  				     "\r\n") - 1
  			   + sizeof ("Range: bytes=XXXXXXXXXXXXXXXXXXXX"
-@@ -356,7 +358,7 @@ http_establish (struct grub_file *file, grub_off_t offset, int initial)
+@@ -356,7 +358,7 @@ http_establish (struct grub_file *file,
  	       sizeof (" HTTP/1.1\r\nHost: ") - 1);
  
    ptr = nb->tail;
@@ -44,7 +44,7 @@ index 5aa4ad3..f182d7b 100644
    if (err)
      {
        grub_netbuff_free (nb);
-@@ -365,6 +367,15 @@ http_establish (struct grub_file *file, grub_off_t offset, int initial)
+@@ -365,6 +367,15 @@ http_establish (struct grub_file *file,
    grub_memcpy (ptr, file->device->net->server,
  	       grub_strlen (file->device->net->server));
  
@@ -60,7 +60,7 @@ index 5aa4ad3..f182d7b 100644
    ptr = nb->tail;
    err = grub_netbuff_put (nb, 
  			  sizeof ("\r\nUser-Agent: " PACKAGE_STRING "\r\n")
-@@ -390,8 +401,10 @@ http_establish (struct grub_file *file, grub_off_t offset, int initial)
+@@ -390,8 +401,10 @@ http_establish (struct grub_file *file,
    grub_netbuff_put (nb, 2);
    grub_memcpy (ptr, "\r\n", 2);
  
@@ -70,14 +70,14 @@ index 5aa4ad3..f182d7b 100644
 +		data->filename, server, port ? port : HTTP_PORT);
 +  data->sock = grub_net_tcp_open (server,
 +				  port ? port : HTTP_PORT, http_receive,
- 				  http_err, http_err,
+ 				  http_err, NULL,
  				  file);
    if (!data->sock)
-diff --git a/grub-core/net/net.c b/grub-core/net/net.c
-index 10773fc..5cc0d2f 100644
---- a/grub-core/net/net.c
-+++ b/grub-core/net/net.c
-@@ -437,6 +437,12 @@ parse_ip6 (const char *val, grub_uint64_t *ip, const char **rest)
+Index: grub-2.06~rc1/grub-core/net/net.c
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/net/net.c
++++ grub-2.06~rc1/grub-core/net/net.c
+@@ -442,6 +442,12 @@ parse_ip6 (const char *val, grub_uint64_
    grub_uint16_t newip[8];
    const char *ptr = val;
    int word, quaddot = -1;
@@ -90,7 +90,7 @@ index 10773fc..5cc0d2f 100644
  
    if (ptr[0] == ':' && ptr[1] != ':')
      return 0;
-@@ -475,6 +481,9 @@ parse_ip6 (const char *val, grub_uint64_t *ip, const char **rest)
+@@ -480,6 +486,9 @@ parse_ip6 (const char *val, grub_uint64_
        grub_memset (&newip[quaddot], 0, (7 - word) * sizeof (newip[0]));
      }
    grub_memcpy (ip, newip, 16);
@@ -100,7 +100,7 @@ index 10773fc..5cc0d2f 100644
    if (rest)
      *rest = ptr;
    return 1;
-@@ -1260,8 +1269,10 @@ grub_net_open_real (const char *name)
+@@ -1265,8 +1274,10 @@ grub_net_open_real (const char *name)
  {
    grub_net_app_level_t proto;
    const char *protname, *server;
@@ -111,7 +111,7 @@ index 10773fc..5cc0d2f 100644
  
    if (grub_strncmp (name, "pxe:", sizeof ("pxe:") - 1) == 0)
      {
-@@ -1299,6 +1310,72 @@ grub_net_open_real (const char *name)
+@@ -1304,6 +1315,72 @@ grub_net_open_real (const char *name)
        return NULL;
      }  
  
@@ -184,7 +184,7 @@ index 10773fc..5cc0d2f 100644
    for (try = 0; try < 2; try++)
      {
        FOR_NET_APP_LEVEL (proto)
-@@ -1308,14 +1385,13 @@ grub_net_open_real (const char *name)
+@@ -1313,14 +1390,13 @@ grub_net_open_real (const char *name)
  	  {
  	    grub_net_t ret = grub_zalloc (sizeof (*ret));
  	    if (!ret)
@@ -203,11 +203,11 @@ index 10773fc..5cc0d2f 100644
  	    ret->fs = &grub_net_fs;
  	    return ret;
  	  }
-diff --git a/grub-core/net/tftp.c b/grub-core/net/tftp.c
-index 7d90bf6..a0817a0 100644
---- a/grub-core/net/tftp.c
-+++ b/grub-core/net/tftp.c
-@@ -314,6 +314,7 @@ tftp_open (struct grub_file *file, const char *filename)
+Index: grub-2.06~rc1/grub-core/net/tftp.c
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/net/tftp.c
++++ grub-2.06~rc1/grub-core/net/tftp.c
+@@ -295,6 +295,7 @@ tftp_open (struct grub_file *file, const
    grub_err_t err;
    grub_uint8_t *nbd;
    grub_net_network_level_address_t addr;
@@ -215,14 +215,13 @@ index 7d90bf6..a0817a0 100644
  
    data = grub_zalloc (sizeof (*data));
    if (!data)
-@@ -382,13 +383,16 @@ tftp_open (struct grub_file *file, const char *filename)
+@@ -361,12 +362,15 @@ tftp_open (struct grub_file *file, const
    err = grub_net_resolve_address (file->device->net->server, &addr);
    if (err)
      {
 +      grub_dprintf ("tftp", "file_size is %llu, block_size is %llu\n",
 +		    (unsigned long long)data->file_size,
 +		    (unsigned long long)data->block_size);
-       destroy_pq (data);
        grub_free (data);
        return err;
      }
@@ -233,10 +232,10 @@ index 7d90bf6..a0817a0 100644
  				  file);
    if (!data->sock)
      {
-diff --git a/include/grub/net.h b/include/grub/net.h
-index 2192fa1..ccc169c 100644
---- a/include/grub/net.h
-+++ b/include/grub/net.h
+Index: grub-2.06~rc1/include/grub/net.h
+===================================================================
+--- grub-2.06~rc1.orig/include/grub/net.h
++++ grub-2.06~rc1/include/grub/net.h
 @@ -270,6 +270,7 @@ typedef struct grub_net
  {
    char *server;
@@ -245,6 +244,3 @@ index 2192fa1..ccc169c 100644
    grub_net_app_level_t protocol;
    grub_net_packets_t packs;
    grub_off_t offset;
--- 
-2.6.6
-

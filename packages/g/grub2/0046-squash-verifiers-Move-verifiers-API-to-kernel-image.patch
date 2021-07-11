@@ -15,11 +15,11 @@ as module for i386-pc to avoid potential issue of looking up symbols.
  include/grub/verify.h       |  9 +++++++++
  6 files changed, 34 insertions(+), 1 deletion(-)
 
-diff --git a/configure.ac b/configure.ac
-index c39e8379f..530da4b01 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -1913,6 +1913,7 @@ AM_CONDITIONAL([COND_real_platform], [test x$platform != xnone])
+Index: grub-2.06~rc1/configure.ac
+===================================================================
+--- grub-2.06~rc1.orig/configure.ac
++++ grub-2.06~rc1/configure.ac
+@@ -1985,6 +1985,7 @@ AM_CONDITIONAL([COND_real_platform], [te
  AM_CONDITIONAL([COND_emu], [test x$platform = xemu])
  AM_CONDITIONAL([COND_NOT_emu], [test x$platform != xemu])
  AM_CONDITIONAL([COND_i386_pc], [test x$target_cpu = xi386 -a x$platform = xpc])
@@ -27,12 +27,12 @@ index c39e8379f..530da4b01 100644
  AM_CONDITIONAL([COND_i386_efi], [test x$target_cpu = xi386 -a x$platform = xefi])
  AM_CONDITIONAL([COND_ia64_efi], [test x$target_cpu = xia64 -a x$platform = xefi])
  AM_CONDITIONAL([COND_i386_qemu], [test x$target_cpu = xi386 -a x$platform = xqemu])
-diff --git a/grub-core/Makefile.am b/grub-core/Makefile.am
-index 6b2e5e139..47c91e35d 100644
---- a/grub-core/Makefile.am
-+++ b/grub-core/Makefile.am
-@@ -92,7 +92,9 @@ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/parser.h
- KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/partition.h
+Index: grub-2.06~rc1/grub-core/Makefile.am
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/Makefile.am
++++ grub-2.06~rc1/grub-core/Makefile.am
+@@ -93,7 +93,9 @@ KERNEL_HEADER_FILES += $(top_srcdir)/inc
+ KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/stack_protector.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/term.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/time.h
 +if COND_NOT_i386_pc
@@ -41,10 +41,10 @@ index 6b2e5e139..47c91e35d 100644
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/mm_private.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/net.h
  KERNEL_HEADER_FILES += $(top_srcdir)/include/grub/memory.h
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index eac42a7b7..893044538 100644
---- a/grub-core/Makefile.core.def
-+++ b/grub-core/Makefile.core.def
+Index: grub-2.06~rc1/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/Makefile.core.def
++++ grub-2.06~rc1/grub-core/Makefile.core.def
 @@ -141,7 +141,7 @@ kernel = {
    common = kern/rescue_parser.c;
    common = kern/rescue_reader.c;
@@ -54,23 +54,23 @@ index eac42a7b7..893044538 100644
  
    noemu = kern/compiler-rt.c;
    noemu = kern/mm.c;
-@@ -946,6 +946,12 @@ module = {
-   cppflags = '-I$(srcdir)/lib/posix_wrap';
+@@ -947,6 +947,12 @@ module = {
  };
  
-+module = {
+ module = {
 +  name = verifiers;
 +  common = kern/verifiers.c;
 +  enable = i386_pc;
 +};
 +
- module = {
++module = {
    name = hdparm;
    common = commands/hdparm.c;
-diff --git a/grub-core/kern/main.c b/grub-core/kern/main.c
-index 73967e2f5..c7c6d2d0b 100644
---- a/grub-core/kern/main.c
-+++ b/grub-core/kern/main.c
+   enable = pci;
+Index: grub-2.06~rc1/grub-core/kern/main.c
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/kern/main.c
++++ grub-2.06~rc1/grub-core/kern/main.c
 @@ -29,7 +29,9 @@
  #include <grub/command.h>
  #include <grub/reader.h>
@@ -92,11 +92,11 @@ index 73967e2f5..c7c6d2d0b 100644
  
    grub_load_config ();
  
-diff --git a/grub-core/kern/verifiers.c b/grub-core/kern/verifiers.c
-index 3d19bffd1..479253351 100644
---- a/grub-core/kern/verifiers.c
-+++ b/grub-core/kern/verifiers.c
-@@ -218,8 +218,19 @@ grub_verify_string (char *str, enum grub_verify_string_type type)
+Index: grub-2.06~rc1/grub-core/kern/verifiers.c
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/kern/verifiers.c
++++ grub-2.06~rc1/grub-core/kern/verifiers.c
+@@ -221,8 +221,19 @@ grub_verify_string (char *str, enum grub
    return GRUB_ERR_NONE;
  }
  
@@ -116,10 +116,10 @@ index 3d19bffd1..479253351 100644
 +  grub_file_filter_unregister (GRUB_FILE_FILTER_VERIFY);
 +}
 +#endif
-diff --git a/include/grub/verify.h b/include/grub/verify.h
-index cd129c398..6fde244fc 100644
---- a/include/grub/verify.h
-+++ b/include/grub/verify.h
+Index: grub-2.06~rc1/include/grub/verify.h
+===================================================================
+--- grub-2.06~rc1.orig/include/grub/verify.h
++++ grub-2.06~rc1/include/grub/verify.h
 @@ -64,10 +64,14 @@ struct grub_file_verifier
    grub_err_t (*verify_string) (char *str, enum grub_verify_string_type type);
  };
@@ -135,7 +135,7 @@ index cd129c398..6fde244fc 100644
  
  static inline void
  grub_verifier_register (struct grub_file_verifier *ver)
-@@ -81,7 +85,12 @@ grub_verifier_unregister (struct grub_file_verifier *ver)
+@@ -81,7 +85,12 @@ grub_verifier_unregister (struct grub_fi
    grub_list_remove (GRUB_AS_LIST (ver));
  }
  
@@ -148,6 +148,3 @@ index cd129c398..6fde244fc 100644
 +#endif
  
  #endif /* ! GRUB_VERIFY_HEADER */
--- 
-2.26.2
-

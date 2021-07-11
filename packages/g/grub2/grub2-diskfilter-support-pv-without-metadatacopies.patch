@@ -30,10 +30,10 @@ Signed-off-by: Lidong Zhong <lzhong@suse.com>
  grub-core/disk/lvm.c        |  15 ++++--
  2 files changed, 121 insertions(+), 6 deletions(-)
 
-Index: grub-2.02/grub-core/disk/diskfilter.c
+Index: grub-2.06~rc1/grub-core/disk/diskfilter.c
 ===================================================================
---- grub-2.02.orig/grub-core/disk/diskfilter.c
-+++ grub-2.02/grub-core/disk/diskfilter.c
+--- grub-2.06~rc1.orig/grub-core/disk/diskfilter.c
++++ grub-2.06~rc1/grub-core/disk/diskfilter.c
 @@ -28,6 +28,7 @@
  #include <grub/i18n.h>
  #include <grub/util/misc.h>
@@ -174,7 +174,7 @@ Index: grub-2.02/grub-core/disk/diskfilter.c
    return 0;
  }
  
-@@ -1249,6 +1345,20 @@ insert_array (grub_disk_t disk, const st
+@@ -1250,6 +1346,20 @@ insert_array (grub_disk_t disk, const st
  static void
  free_array (void)
  {
@@ -195,11 +195,11 @@ Index: grub-2.02/grub-core/disk/diskfilter.c
    while (array_list)
      {
        struct grub_diskfilter_vg *vg;
-Index: grub-2.02/grub-core/disk/lvm.c
+Index: grub-2.06~rc1/grub-core/disk/lvm.c
 ===================================================================
---- grub-2.02.orig/grub-core/disk/lvm.c
-+++ grub-2.02/grub-core/disk/lvm.c
-@@ -182,11 +182,16 @@ grub_lvm_detect (grub_disk_t disk,
+--- grub-2.06~rc1.orig/grub-core/disk/lvm.c
++++ grub-2.06~rc1/grub-core/disk/lvm.c
+@@ -235,11 +235,16 @@ grub_lvm_detect (grub_disk_t disk,
  		     sizeof (mdah->magic)))
        || (grub_le_to_cpu32 (mdah->version) != GRUB_LVM_FMTT_VERSION))
      {

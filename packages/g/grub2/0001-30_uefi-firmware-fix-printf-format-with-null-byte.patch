@@ -1,0 +1,88 @@
+From 47eddcfc6859f269bb3cfaf95d5b33502cafd9ec Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 21 Jun 2021 05:11:18 +0000
+Subject: [PATCH] 30_uefi-firmware: fix printf format with null byte
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+On a Raspberry Pi 4, the OsIndications variable is set as following
+
+ $ od -An -t u1 /sys/firmware/efi/efivars/OsIndicationsSupported-8be4df61-93ca-11d2-aa0d-00e098032b8c
+ 6   0   0   0   0   0   0   0   0   0   0   0
+
+The fifth byte indicates there's no boot to uefi firmware support as no
+bit is set. However the /etc/grub.d/30_uefi-firmware mistakenly detects
+that from the grub-mkconfig output.
+
+ /etc/grub.d/30_uefi-firmware: line 34: warning: command substitution: ignored null byte in input
+ Adding boot menu entry for UEFI Firmware Settings ...
+
+The warning has dictated that the null byte is ignored from the printf
+input arguments so that the expression of
+
+ rintf 0x%x \'"$(cat $OS_INDICATIONS | cut -b5)"\')
+
+becomes
+
+ printf 0x%x \'""\'
+ 0x27
+
+The numeric value of trailing character \' is outputted instead of the
+null byte.
+
+From the printf manual, there's description to the synax of formatting
+the numeric value ouput of a character.
+
+"If the leading character of a numeric argument is ‘"’ or ‘'’ then its
+value is the numeric value of the immediately following character. Any
+remaining characters are silently ignored if the POSIXLY_CORRECT
+environment variable is set; otherwise, a warning is printed. For
+example, ‘printf "%d" "'a"’ outputs ‘97’ on hosts that use the ASCII
+character set, since ‘a’ has the numeric value 97 in ASCII."
+
+From the descrption the trailing \' appears to be superfluous and should
+get removed to have correct output.
+
+ printf 0x%x \'""
+ 0x0
+
+In additon to suppress the warning message of ignored null byte in
+input, we can delete it so an empty string is used.
+
+To illustrate the problem using echo as example
+
+ printf 0x%x \'"$(echo -e '\x00')"
+ -bash: warning: command substitution: ignored null byte in input
+ 0x0
+
+And here using tr to delete the null character
+
+ printf 0x%x \'"$(echo -e '\x00'| tr -d '\000')"
+
+The expression above is substituted to
+
+ printf 0x%x \'""
+ 0x0
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/grub.d/30_uefi-firmware.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/grub.d/30_uefi-firmware.in b/util/grub.d/30_uefi-firmware.in
+index d344d3883..d069f2727 100644
+--- a/util/grub.d/30_uefi-firmware.in
++++ b/util/grub.d/30_uefi-firmware.in
+@@ -31,7 +31,7 @@ EFI_GLOBAL_VARIABLE=8be4df61-93ca-11d2-aa0d-00e098032b8c
+ OS_INDICATIONS="$EFI_VARS_DIR/OsIndicationsSupported-$EFI_GLOBAL_VARIABLE"
+ 
+ if [ -e "$OS_INDICATIONS" ] && \
+-   [ "$(( $(printf 0x%x \'"$(cat $OS_INDICATIONS | cut -b5)"\') & 1 ))" = 1 ]; then
++   [ "$(( $(printf 0x%x \'"$(cat $OS_INDICATIONS | cut -b5 | tr -d '\000')") & 1 ))" = 1 ]; then
+   LABEL="UEFI Firmware Settings"
+ 
+   gettext_printf "Adding boot menu entry for UEFI Firmware Settings ...\n" >&2
+-- 
+2.26.2
+

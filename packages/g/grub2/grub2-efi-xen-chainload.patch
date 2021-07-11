@@ -26,8 +26,10 @@ V3:
  util/grub.d/20_linux_xen.in |  109 +++++++++++++++++++++++++++++++++++++++-----
  1 file changed, 97 insertions(+), 12 deletions(-)
 
---- a/util/grub.d/20_linux_xen.in
-+++ b/util/grub.d/20_linux_xen.in
+Index: grub-2.06~rc1/util/grub.d/20_linux_xen.in
+===================================================================
+--- grub-2.06~rc1.orig/util/grub.d/20_linux_xen.in
++++ grub-2.06~rc1/util/grub.d/20_linux_xen.in
 @@ -21,6 +21,8 @@ prefix="@prefix@"
  exec_prefix="@exec_prefix@"
  datarootdir="@datarootdir@"
@@ -62,7 +64,7 @@ V3:
  # loop-AES arranges things so that /dev/loop/X can be our root device, but
  # the initrds that Linux uses don't like that.
  case ${GRUB_DEVICE} in
-@@ -87,6 +101,32 @@ esac
+@@ -97,6 +111,32 @@ esac
  
  title_correction_code=
  
@@ -94,8 +96,8 @@ V3:
 +
  linux_entry ()
  {
-   os="$1"
-@@ -124,6 +164,40 @@ linux_entry ()
+   linux_entry_xsm "$@" false
+@@ -150,6 +190,40 @@ linux_entry_xsm ()
        save_default_entry | grub_add_tab | sed "s/^/$submenu_indentation/"
    fi
  
@@ -136,7 +138,7 @@ V3:
    if [ -z "${prepare_boot_cache}" ]; then
      prepare_boot_cache="$(prepare_grub_to_access_device ${GRUB_DEVICE_BOOT} | grub_add_tab)"
    fi
-@@ -200,16 +274,6 @@ boot_device_id=
+@@ -241,16 +315,6 @@ boot_device_id=
  
  title_correction_code=
  
@@ -153,7 +155,7 @@ V3:
  # Extra indentation to add to menu entries in a submenu. We're not in a submenu
  # yet, so it's empty. In a submenu it will be equal to '\t' (one tab).
  submenu_indentation=""
-@@ -223,6 +287,24 @@ while [ "x${xen_list}" != "x" ] ; do
+@@ -264,6 +328,24 @@ while [ "x${xen_list}" != "x" ] ; do
      xen_dirname=`dirname ${current_xen}`
      rel_xen_dirname=`make_system_path_relative_to_its_root $xen_dirname`
      xen_version=`echo $xen_basename | sed -e "s,.gz$,,g;s,^xen-,,g"`
@@ -178,7 +180,7 @@ V3:
      if [ -z "$boot_device_id" ]; then
  	boot_device_id="$(grub_get_device_id "${GRUB_DEVICE}")"
      fi
-@@ -287,7 +369,6 @@ while [ "x${xen_list}" != "x" ] ; do
+@@ -373,7 +455,6 @@ while [ "x${xen_list}" != "x" ] ; do
      if [ x"$is_top_level" != xtrue ]; then
  	echo '	}'
      fi
@@ -186,7 +188,7 @@ V3:
  done
  
  # If at least one kernel was found, then we need to
-@@ -297,3 +378,7 @@ if [ x"$is_top_level" != xtrue ]; then
+@@ -383,3 +464,7 @@ if [ x"$is_top_level" != xtrue ]; then
  fi
  
  echo "$title_correction_code"

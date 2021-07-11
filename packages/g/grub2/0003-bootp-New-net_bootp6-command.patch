@@ -19,10 +19,10 @@ V1:
  include/grub/net.h    |  72 ++++
  3 files changed, 1018 insertions(+), 1 deletion(-)
 
-Index: grub-2.04/grub-core/net/bootp.c
+Index: grub-2.06/grub-core/net/bootp.c
 ===================================================================
---- grub-2.04.orig/grub-core/net/bootp.c
-+++ grub-2.04/grub-core/net/bootp.c
+--- grub-2.06.orig/grub-core/net/bootp.c
++++ grub-2.06/grub-core/net/bootp.c
 @@ -24,6 +24,98 @@
  #include <grub/net/netbuff.h>
  #include <grub/net/udp.h>
@@ -122,7 +122,7 @@ Index: grub-2.04/grub-core/net/bootp.c
  
  struct grub_dhcp_discover_options
  {
-@@ -563,6 +655,578 @@ out:
+@@ -607,6 +699,578 @@ out:
    return err;
  }
  
@@ -427,7 +427,7 @@ Index: grub-2.04/grub-core/net/bootp.c
 +  grub_dhcp6_session_t se;
 +  struct grub_datetime date;
 +  grub_err_t err;
-+  grub_int32_t t = 0;
++  grub_int64_t t = 0;
 +
 +  se = grub_malloc (sizeof (*se));
 +
@@ -701,7 +701,7 @@ Index: grub-2.04/grub-core/net/bootp.c
  /*
   * This is called directly from net/ip.c:handle_dgram(), because those
   * BOOTP/DHCP packets are a bit special due to their improper
-@@ -631,6 +1295,77 @@ grub_net_process_dhcp (struct grub_net_b
+@@ -675,6 +1339,77 @@ grub_net_process_dhcp (struct grub_net_b
      }
  }
  
@@ -776,10 +776,10 @@ Index: grub-2.04/grub-core/net/bootp.c
 +  return GRUB_ERR_NONE;
 +}
 +
- static char
- hexdigit (grub_uint8_t val)
- {
-@@ -864,7 +1599,174 @@ grub_cmd_bootp (struct grub_command *cmd
+ static grub_err_t
+ grub_cmd_dhcpopt (struct grub_command *cmd __attribute__ ((unused)),
+ 		  int argc, char **args)
+@@ -900,7 +1635,174 @@ grub_cmd_bootp (struct grub_command *cmd
    return err;
  }
  
@@ -955,7 +955,7 @@ Index: grub-2.04/grub-core/net/bootp.c
  
  void
  grub_bootp_init (void)
-@@ -878,6 +1780,9 @@ grub_bootp_init (void)
+@@ -914,6 +1816,9 @@ grub_bootp_init (void)
    cmd_getdhcp = grub_register_command ("net_get_dhcp_option", grub_cmd_dhcpopt,
  				       N_("VAR INTERFACE NUMBER DESCRIPTION"),
  				       N_("retrieve DHCP option and save it into VAR. If VAR is - then print the value."));
@@ -965,16 +965,16 @@ Index: grub-2.04/grub-core/net/bootp.c
  }
  
  void
-@@ -886,4 +1791,5 @@ grub_bootp_fini (void)
+@@ -922,4 +1827,5 @@ grub_bootp_fini (void)
    grub_unregister_command (cmd_getdhcp);
    grub_unregister_command (cmd_bootp);
    grub_unregister_command (cmd_dhcp);
 +  grub_unregister_command (cmd_bootp6);
  }
-Index: grub-2.04/grub-core/net/ip.c
+Index: grub-2.06/grub-core/net/ip.c
 ===================================================================
---- grub-2.04.orig/grub-core/net/ip.c
-+++ grub-2.04/grub-core/net/ip.c
+--- grub-2.06.orig/grub-core/net/ip.c
++++ grub-2.06/grub-core/net/ip.c
 @@ -239,6 +239,45 @@ handle_dgram (struct grub_net_buff *nb,
    {
      struct udphdr *udph;
@@ -1021,10 +1021,10 @@ Index: grub-2.04/grub-core/net/ip.c
      if (proto == GRUB_NET_IP_UDP && grub_be_to_cpu16 (udph->dst) == 68)
        {
  	const struct grub_net_bootp_packet *bootp;
-Index: grub-2.04/include/grub/net.h
+Index: grub-2.06/include/grub/net.h
 ===================================================================
---- grub-2.04.orig/include/grub/net.h
-+++ grub-2.04/include/grub/net.h
+--- grub-2.06.orig/include/grub/net.h
++++ grub-2.06/include/grub/net.h
 @@ -448,6 +448,66 @@ struct grub_net_bootp_packet
    grub_uint8_t vendor[0];
  } GRUB_PACKED;
@@ -1092,7 +1092,7 @@ Index: grub-2.04/include/grub/net.h
  #define	GRUB_NET_BOOTP_RFC1048_MAGIC_0	0x63
  #define	GRUB_NET_BOOTP_RFC1048_MAGIC_1	0x82
  #define	GRUB_NET_BOOTP_RFC1048_MAGIC_2	0x53
-@@ -481,6 +541,14 @@ grub_net_configure_by_dhcp_ack (const ch
+@@ -483,6 +543,14 @@ grub_net_configure_by_dhcp_ack (const ch
  				grub_size_t size,
  				int is_def, char **device, char **path);
  
@@ -1107,7 +1107,7 @@ Index: grub-2.04/include/grub/net.h
  grub_err_t
  grub_net_add_ipv4_local (struct grub_net_network_level_interface *inf,
  			 int mask);
-@@ -489,6 +557,10 @@ void
+@@ -491,6 +559,10 @@ void
  grub_net_process_dhcp (struct grub_net_buff *nb,
  		       struct grub_net_network_level_interface *iface);
  

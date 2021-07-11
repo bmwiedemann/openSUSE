@@ -16,16 +16,19 @@ keys to verify the image.
 The chainloader module could be used to load other UEFI bootloaders,
 such as xen.efi, and could be signed by any of MOK, KEK or DB.
 
+v1:
+Use grub_efi_get_secureboot to get secure boot status
+
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
  grub-core/loader/efi/chainloader.c |  538 +++++++++++++++++++++++++++++++++--
  1 files changed, 507 insertions(+), 31 deletions(-)
 
-Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
+Index: grub-2.04/grub-core/loader/efi/chainloader.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/loader/efi/chainloader.c
-+++ grub-2.04~rc1/grub-core/loader/efi/chainloader.c
-@@ -40,15 +40,31 @@
+--- grub-2.04.orig/grub-core/loader/efi/chainloader.c
++++ grub-2.04/grub-core/loader/efi/chainloader.c
+@@ -40,15 +40,32 @@
  #include <grub/i386/macho.h>
  #endif
  
@@ -35,6 +38,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
 +
 +#ifdef SUPPORT_SECURE_BOOT
 +#include <grub/efi/pe32.h>
++#include <grub/efi/sb.h>
 +#endif
 +
  GRUB_MOD_LICENSE ("GPLv3+");
@@ -57,7 +61,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
  
  static grub_err_t
  grub_chainloader_unload (void)
-@@ -63,6 +79,7 @@ grub_chainloader_unload (void)
+@@ -63,6 +80,7 @@ grub_chainloader_unload (void)
    grub_free (cmdline);
    cmdline = 0;
    file_path = 0;
@@ -65,7 +69,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
  
    grub_dl_unref (my_mod);
    return GRUB_ERR_NONE;
-@@ -197,12 +214,460 @@ make_file_path (grub_efi_device_path_t *
+@@ -197,12 +215,409 @@ make_file_path (grub_efi_device_path_t *
    return file_path;
  }
  
@@ -135,57 +139,6 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
 +
 +  grub_error (GRUB_ERR_BAD_ARGUMENT, "verify failed");
 +  return 0;
-+}
-+
-+static grub_efi_boolean_t
-+grub_secure_mode (void)
-+{
-+  grub_efi_guid_t efi_var_guid = GRUB_EFI_GLOBAL_VARIABLE_GUID;
-+  grub_uint8_t *data;
-+  grub_size_t datasize;
-+
-+  data = grub_efi_get_variable ("SecureBoot", &efi_var_guid, &datasize);
-+
-+  if (data)
-+    {
-+      grub_dprintf ("chain", "SecureBoot: %d, datasize %d\n", (int)*data, (int)datasize);
-+    }
-+
-+  if (data && (datasize == 1))
-+    {
-+      if (*data != 1)
-+        {
-+          grub_dprintf ("chain", "secure boot not enabled\n");
-+          return 0;
-+        }
-+    }
-+  else
-+    {
-+      grub_dprintf ("chain", "unknown secure boot status\n");
-+      return 0;
-+    }
-+
-+  grub_free (data);
-+
-+  data = grub_efi_get_variable ("SetupMode", &efi_var_guid, &datasize);
-+
-+  if (data)
-+    {
-+      grub_dprintf ("chain", "SetupMode: %d, datasize %d\n", (int)*data, (int)datasize);
-+    }
-+
-+  if (data && (datasize == 1))
-+    {
-+      if (*data == 1)
-+        {
-+          grub_dprintf ("chain", "platform in setup mode\n");
-+          return 0;
-+        }
-+    }
-+
-+  grub_free (data);
-+
-+  return 1;
 +}
 +
 +static grub_efi_boolean_t
@@ -527,7 +480,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
    grub_efi_status_t status;
    grub_efi_boot_services_t *b;
    grub_device_t dev = 0;
-@@ -210,7 +675,6 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -210,7 +625,6 @@ grub_cmd_chainloader (grub_command_t cmd
    grub_efi_loaded_image_t *loaded_image;
    char *filename;
    void *boot_image = 0;
@@ -535,7 +488,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
  
    if (argc == 0)
      return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("filename expected"));
-@@ -222,9 +686,36 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -222,9 +636,36 @@ grub_cmd_chainloader (grub_command_t cmd
    address = 0;
    image_handle = 0;
    file_path = 0;
@@ -572,7 +525,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
    file = grub_file_open (filename, GRUB_FILE_TYPE_EFI_CHAINLOADED_IMAGE);
    if (! file)
      goto fail;
-@@ -270,14 +761,14 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -270,14 +711,14 @@ grub_cmd_chainloader (grub_command_t cmd
    grub_printf ("file path: ");
    grub_efi_print_device_path (file_path);
  
@@ -590,7 +543,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
  
    status = efi_call_4 (b->allocate_pages, GRUB_EFI_ALLOCATE_ANY_PAGES,
  			      GRUB_EFI_LOADER_CODE,
-@@ -291,7 +782,7 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -291,7 +732,7 @@ grub_cmd_chainloader (grub_command_t cmd
      }
  
    boot_image = (void *) ((grub_addr_t) address);
@@ -599,7 +552,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
      {
        if (grub_errno == GRUB_ERR_NONE)
  	grub_error (GRUB_ERR_BAD_OS, N_("premature end of file %s"),
-@@ -301,7 +792,7 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -301,7 +742,7 @@ grub_cmd_chainloader (grub_command_t cmd
      }
  
  #if defined (__i386__) || defined (__x86_64__)
@@ -608,7 +561,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
      {
        struct grub_macho_fat_header *head = boot_image;
        if (head->magic
-@@ -324,20 +815,30 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -324,20 +765,30 @@ grub_cmd_chainloader (grub_command_t cmd
  	      > ~grub_cpu_to_le32 (archs[i].size)
  	      || grub_cpu_to_le32 (archs[i].offset)
  	      + grub_cpu_to_le32 (archs[i].size)
@@ -628,7 +581,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
  
 +#ifdef SUPPORT_SECURE_BOOT
 +  /* FIXME is secure boot possible also with universal binaries? */
-+  if (debug_secureboot || (grub_secure_mode() && grub_secure_validate ((void *)address, fsize)))
++  if (debug_secureboot || (grub_efi_get_secureboot () == GRUB_EFI_SECUREBOOT_MODE_ENABLED && grub_secure_validate ((void *)address, fsize)))
 +    {
 +      grub_file_close (file);
 +      grub_loader_set (grub_secureboot_chainloader_boot, grub_secureboot_chainloader_unload, 0);
@@ -642,7 +595,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
  		       &image_handle);
    if (status != GRUB_EFI_SUCCESS)
      {
-@@ -360,33 +861,10 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -360,33 +811,10 @@ grub_cmd_chainloader (grub_command_t cmd
      }
    loaded_image->device_handle = dev_handle;
  
@@ -678,7 +631,7 @@ Index: grub-2.04~rc1/grub-core/loader/efi/chainloader.c
      }
  
    grub_file_close (file);
-@@ -408,6 +886,9 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -408,6 +836,9 @@ grub_cmd_chainloader (grub_command_t cmd
    if (address)
      efi_call_2 (b->free_pages, address, pages);
  

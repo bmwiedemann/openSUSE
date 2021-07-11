@@ -4,6 +4,17 @@ Date: Fri, 6 Nov 2020 08:36:36 +0000
 Subject: [PATCH 1/9] Add support for Linux EFI stub loading on aarch64.
 
 Add support for Linux EFI stub loading on aarch64.
+
+v1:
+Make efi handoff the default loader for arm64 platform.
+
+v2:
+The efi shim_lock verifier has been moved to grub core so local
+shim_lock protocol is no longer needed here for aarch64 efi to verify
+the loaded kernel image. From now on the framework will take care the
+verificaion, consolidating the integration of various security verifiers
+like secure boot, gpg and tpm.
+
 ---
  grub-core/Makefile.core.def        |   4 +-
  grub-core/loader/arm64/efi/linux.c | 443 +++++++++++++++++++++++++++++
@@ -12,29 +23,33 @@ Add support for Linux EFI stub loading on aarch64.
  4 files changed, 465 insertions(+), 1 deletion(-)
  create mode 100644 grub-core/loader/arm64/efi/linux.c
 
-diff --git a/grub-core/Makefile.core.def b/grub-core/Makefile.core.def
-index 3ea9dace0..cfdd31431 100644
---- a/grub-core/Makefile.core.def
-+++ b/grub-core/Makefile.core.def
-@@ -1854,9 +1854,11 @@ module = {
+Index: grub-2.06~rc1/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/Makefile.core.def
++++ grub-2.06~rc1/grub-core/Makefile.core.def
+@@ -1812,7 +1812,7 @@ module = {
+   arm_coreboot = loader/arm/linux.c;
+   arm_efi = loader/arm64/linux.c;
+   arm_uboot = loader/arm/linux.c;
+-  arm64 = loader/arm64/linux.c;
++  arm64 = loader/arm64/efi/linux.c;
+   riscv32 = loader/riscv/linux.c;
+   riscv64 = loader/riscv/linux.c;
+   emu = loader/emu/linux.c;
+@@ -1879,7 +1879,7 @@ module = {
  
  module = {
    name = linuxefi;
 -  efi = lib/fake_module.c;
 +  x86 = lib/fake_module.c;
-+  arm64 = loader/arm64/efi/linux.c;
    enable = i386_efi;
    enable = x86_64_efi;
-+  enable = arm64_efi;
  };
- 
- module = {
-diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
-new file mode 100644
-index 000000000..d81a6d843
+Index: grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
+===================================================================
 --- /dev/null
-+++ b/grub-core/loader/arm64/efi/linux.c
-@@ -0,0 +1,443 @@
++++ grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
+@@ -0,0 +1,411 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2013  Free Software Foundation, Inc.
@@ -86,32 +101,6 @@ index 000000000..d81a6d843
 +static grub_addr_t initrd_start;
 +static grub_addr_t initrd_end;
 +
-+#define SHIM_LOCK_GUID \
-+ { 0x605dab50, 0xe046, 0x4300, {0xab, 0xb6, 0x3d, 0xd8, 0x10, 0xdd, 0x8b, 0x23} }
-+
-+struct grub_efi_shim_lock
-+{
-+  grub_efi_status_t (*verify) (void *buffer, grub_uint32_t size);
-+};
-+typedef struct grub_efi_shim_lock grub_efi_shim_lock_t;
-+
-+static grub_efi_boolean_t
-+grub_linuxefi_secure_validate (void *data, grub_uint32_t size)
-+{
-+  grub_efi_guid_t guid = SHIM_LOCK_GUID;
-+  grub_efi_shim_lock_t *shim_lock;
-+
-+  shim_lock = grub_efi_locate_protocol(&guid, NULL);
-+
-+  if (!shim_lock)
-+    return 1;
-+
-+  if (shim_lock->verify(data, size) == GRUB_EFI_SUCCESS)
-+    return 1;
-+
-+  return 0;
-+}
-+
 +#pragma GCC diagnostic push
 +#pragma GCC diagnostic ignored "-Wcast-align"
 +
@@ -131,9 +120,8 @@ index 000000000..d81a6d843
 +
 +#pragma GCC diagnostic pop
 +
-+/* FIXME: This is copy of grub_arch_efi_linux_check_image () */
-+static grub_err_t
-+grub_arch_efi_linux_check_image_XX (struct linux_arch_kernel_header * lh)
++grub_err_t
++grub_arch_efi_linux_check_image (struct linux_arch_kernel_header * lh)
 +{
 +  if (lh->magic != GRUB_LINUX_ARMXX_MAGIC_SIGNATURE)
 +    return grub_error(GRUB_ERR_BAD_OS, "invalid magic number");
@@ -229,9 +217,10 @@ index 000000000..d81a6d843
 +    }
 +}
 +
-+/* FIXME: This is to replace grub_arch_efi_linux_boot_image */
-+static grub_err_t
-+grub_arch_efi_linux_boot_image_XX (grub_addr_t addr, char *args)
++grub_err_t
++grub_arch_efi_linux_boot_image (grub_addr_t addr,
++			        grub_size_t size __attribute__ ((unused)),
++			        char *args)
 +{
 +  grub_err_t retval;
 +
@@ -251,7 +240,7 @@ index 000000000..d81a6d843
 +static grub_err_t
 +grub_linux_boot (void)
 +{
-+  return (grub_arch_efi_linux_boot_image_XX ((grub_addr_t)kernel_addr, linux_args));
++  return (grub_arch_efi_linux_boot_image ((grub_addr_t)kernel_addr, kernel_size, linux_args));
 +}
 +
 +static grub_err_t
@@ -385,7 +374,7 @@ index 000000000..d81a6d843
 +  if (grub_file_read (file, &lh, sizeof (lh)) < (long) sizeof (lh))
 +    return grub_errno;
 +
-+  if (grub_arch_efi_linux_check_image_XX (&lh) != GRUB_ERR_NONE)
++  if (grub_arch_efi_linux_check_image (&lh) != GRUB_ERR_NONE)
 +    goto fail;
 +
 +  grub_loader_unset();
@@ -410,12 +399,6 @@ index 000000000..d81a6d843
 +    }
 +
 +  grub_dprintf ("linux", "kernel @ %p\n", kernel_addr);
-+
-+  if (!grub_linuxefi_secure_validate (kernel_addr, kernel_size))
-+    {
-+      grub_error (GRUB_ERR_INVALID_COMMAND, N_("%s has invalid signature"), argv[0]);
-+      goto fail;
-+    }
 +
 +  pe = (void *)((unsigned long)kernel_addr + lh.hdr_offset);
 +  handover_offset = pe->opt.entry_addr;
@@ -466,9 +449,9 @@ index 000000000..d81a6d843
 +
 +GRUB_MOD_INIT (linux)
 +{
-+  cmd_linux = grub_register_command ("linuxefi", grub_cmd_linux, 0,
++  cmd_linux = grub_register_command ("linux", grub_cmd_linux, 0,
 +				     N_("Load Linux."));
-+  cmd_initrd = grub_register_command ("initrdefi", grub_cmd_initrd, 0,
++  cmd_initrd = grub_register_command ("initrd", grub_cmd_initrd, 0,
 +				      N_("Load initrd."));
 +  my_mod = mod;
 +}
@@ -478,10 +461,10 @@ index 000000000..d81a6d843
 +  grub_unregister_command (cmd_linux);
 +  grub_unregister_command (cmd_initrd);
 +}
-diff --git a/include/grub/arm/linux.h b/include/grub/arm/linux.h
-index 2e98a6689..775297db8 100644
---- a/include/grub/arm/linux.h
-+++ b/include/grub/arm/linux.h
+Index: grub-2.06~rc1/include/grub/arm/linux.h
+===================================================================
+--- grub-2.06~rc1.orig/include/grub/arm/linux.h
++++ grub-2.06~rc1/include/grub/arm/linux.h
 @@ -20,6 +20,7 @@
  #ifndef GRUB_ARM_LINUX_HEADER
  #define GRUB_ARM_LINUX_HEADER 1
@@ -508,20 +491,19 @@ index 2e98a6689..775297db8 100644
  #endif
  
  #if defined GRUB_MACHINE_UBOOT
-diff --git a/include/grub/arm64/linux.h b/include/grub/arm64/linux.h
-index 4269adc6d..a3be9dd70 100644
---- a/include/grub/arm64/linux.h
-+++ b/include/grub/arm64/linux.h
-@@ -19,6 +19,8 @@
- #ifndef GRUB_ARM64_LINUX_HEADER
+Index: grub-2.06~rc1/include/grub/arm64/linux.h
+===================================================================
+--- grub-2.06~rc1.orig/include/grub/arm64/linux.h
++++ grub-2.06~rc1/include/grub/arm64/linux.h
+@@ -20,6 +20,7 @@
  #define GRUB_ARM64_LINUX_HEADER 1
  
+ #include <grub/types.h>
 +#include <grub/efi/pe32.h>
-+
+ 
  #define GRUB_LINUX_ARM64_MAGIC_SIGNATURE 0x644d5241 /* 'ARM\x64' */
  
- /* From linux/Documentation/arm64/booting.txt */
-@@ -36,9 +38,17 @@ struct linux_arm64_kernel_header
+@@ -38,9 +39,17 @@ struct linux_arm64_kernel_header
    grub_uint32_t hdr_offset;	/* Offset of PE/COFF header */
  };
  
@@ -539,6 +521,3 @@ index 4269adc6d..a3be9dd70 100644
  #endif
  
  #endif /* ! GRUB_ARM64_LINUX_HEADER */
--- 
-2.26.2
-

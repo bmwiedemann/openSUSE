@@ -28,11 +28,11 @@ Signed-off-by: Javier Martinez Canillas <javierm@redhat.com>
  grub-core/loader/arm64/efi/linux.c | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/grub-core/loader/arm64/efi/linux.c b/grub-core/loader/arm64/efi/linux.c
-index 83d09b7e5..a4041be5c 100644
---- a/grub-core/loader/arm64/efi/linux.c
-+++ b/grub-core/loader/arm64/efi/linux.c
-@@ -84,8 +84,20 @@ static grub_err_t
+Index: grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
+===================================================================
+--- grub-2.06~rc1.orig/grub-core/loader/arm64/efi/linux.c
++++ grub-2.06~rc1/grub-core/loader/arm64/efi/linux.c
+@@ -58,9 +58,24 @@ static grub_err_t
  grub_efi_linux_boot (void *kernel_address, grub_off_t offset,
  		     void *kernel_params)
  {
@@ -50,9 +50,10 @@ index 83d09b7e5..a4041be5c 100644
 +  else
 +    grub_dprintf ("linux", "Loaded Image base address could not be set\n");
 +
-   grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
- 		kernel_address, (void *)(grub_efi_uintn_t)offset, kernel_params);
++  grub_dprintf ("linux", "kernel_addr: %p handover_offset: %p params: %p\n",
++		kernel_address, (void *)(grub_efi_uintn_t)offset, kernel_params);
    hf = (handover_func)((char *)kernel_address + offset);
--- 
-2.26.2
-
++  grub_dprintf ("linux", "handover_func() = %p\n", hf);
+   hf (grub_efi_image_handle, grub_efi_system_table, kernel_params);
+ 
+   return GRUB_ERR_BUG;

@@ -12,6 +12,15 @@ v2: Adjust patch according to new upstream commits
 ca0a4f689 verifiers: File type for fine-grained signature-verification controlling
 7d36709d5 i386: make struct linux_kernel_header architecture specific
 4bc909bf8 Remove grub_efi_allocate_pages.
+v3: 
+The upstream commit
+
+df84d6e94 efi: Print error messages to grub_efi_allocate_pages_real()
+
+adds grub_error() to set error message and return grub_errno. We have to
+unset the grub_errno if we want to ignore the error and proceed, or
+the inadvertently provoked error handler would lead to unspecified
+consequence.
 
 ---
  grub-core/Makefile.core.def       |    8 +
@@ -22,17 +31,16 @@ ca0a4f689 verifiers: File type for fine-grained signature-verification controlli
  5 files changed, 415 insertions(+), 0 deletions(-)
  create mode 100644 grub-core/loader/i386/efi/linux.c
 
-Index: grub-2.04~rc1/grub-core/Makefile.core.def
+Index: grub-2.06/grub-core/Makefile.core.def
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.04~rc1/grub-core/Makefile.core.def
-@@ -1850,6 +1850,14 @@ module = {
+--- grub-2.06.orig/grub-core/Makefile.core.def
++++ grub-2.06/grub-core/Makefile.core.def
+@@ -1875,6 +1875,13 @@ module = {
  };
  
  module = {
 +  name = linuxefi;
 +  efi = loader/i386/efi/linux.c;
-+  efi = lib/cmdline.c;
 +  enable = i386_efi;
 +  enable = x86_64_efi;
 +};
@@ -41,10 +49,10 @@ Index: grub-2.04~rc1/grub-core/Makefile.core.def
    name = chain;
    efi = loader/efi/chainloader.c;
    i386_pc = loader/i386/pc/chainloader.c;
-Index: grub-2.04~rc1/grub-core/kern/efi/mm.c
+Index: grub-2.06/grub-core/kern/efi/mm.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/efi/mm.c
-+++ grub-2.04~rc1/grub-core/kern/efi/mm.c
+--- grub-2.06.orig/grub-core/kern/efi/mm.c
++++ grub-2.06/grub-core/kern/efi/mm.c
 @@ -113,6 +113,38 @@ grub_efi_drop_alloc (grub_efi_physical_a
      }
  }
@@ -84,11 +92,11 @@ Index: grub-2.04~rc1/grub-core/kern/efi/mm.c
  /* Allocate pages. Return the pointer to the first of allocated pages.  */
  void *
  grub_efi_allocate_pages_real (grub_efi_physical_address_t address,
-Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
+Index: grub-2.06/grub-core/loader/i386/efi/linux.c
 ===================================================================
 --- /dev/null
-+++ grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
-@@ -0,0 +1,342 @@
++++ grub-2.06/grub-core/loader/i386/efi/linux.c
+@@ -0,0 +1,345 @@
 +/*
 + *  GRUB  --  GRand Unified Bootloader
 + *  Copyright (C) 2012  Free Software Foundation, Inc.
@@ -357,8 +365,11 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +				       BYTES_TO_PAGES(lh.init_size));
 +
 +  if (!kernel_mem)
-+    kernel_mem = grub_efi_allocate_pages_max(0x3fffffff,
++    {
++      grub_errno = GRUB_ERR_NONE;
++      kernel_mem = grub_efi_allocate_pages_max(0x3fffffff,
 +					     BYTES_TO_PAGES(lh.init_size));
++    }
 +
 +  if (!kernel_mem)
 +    {
@@ -431,10 +442,10 @@ Index: grub-2.04~rc1/grub-core/loader/i386/efi/linux.c
 +  grub_unregister_command (cmd_linux);
 +  grub_unregister_command (cmd_initrd);
 +}
-Index: grub-2.04~rc1/include/grub/efi/efi.h
+Index: grub-2.06/include/grub/efi/efi.h
 ===================================================================
---- grub-2.04~rc1.orig/include/grub/efi/efi.h
-+++ grub-2.04~rc1/include/grub/efi/efi.h
+--- grub-2.06.orig/include/grub/efi/efi.h
++++ grub-2.06/include/grub/efi/efi.h
 @@ -47,6 +47,9 @@ EXPORT_FUNC(grub_efi_allocate_fixed) (gr
  				      grub_efi_uintn_t pages);
  void *

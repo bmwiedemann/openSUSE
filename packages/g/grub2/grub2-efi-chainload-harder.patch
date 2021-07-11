@@ -1,12 +1,16 @@
+
+v2:
+Use grub_efi_get_secureboot to get secure boot status
+
 ---
  grub-core/loader/efi/chainloader.c |   62 +++++++++++++++++++++----------------
  1 file changed, 36 insertions(+), 26 deletions(-)
 
-Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
+Index: grub-2.04/grub-core/loader/efi/chainloader.c
 ===================================================================
---- grub-2.02~beta2.orig/grub-core/loader/efi/chainloader.c
-+++ grub-2.02~beta2/grub-core/loader/efi/chainloader.c
-@@ -326,40 +326,41 @@ grub_secure_mode (void)
+--- grub-2.04.orig/grub-core/loader/efi/chainloader.c
++++ grub-2.04/grub-core/loader/efi/chainloader.c
+@@ -286,40 +286,41 @@ grub_secure_validate (void *data, grub_e
  static grub_efi_boolean_t
  read_header (void *data, grub_efi_uint32_t size, pe_coff_loader_image_context_t *context)
  {
@@ -71,7 +75,7 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
  }
  
  static void*
-@@ -623,6 +624,9 @@ error_exit:
+@@ -583,6 +584,9 @@ error_exit:
    if (buffer)
        efi_call_1 (b->free_pool, buffer);
  
@@ -81,12 +85,12 @@ Index: grub-2.02~beta2/grub-core/loader/efi/chainloader.c
    return 0;
  
  }
-@@ -845,6 +849,19 @@ grub_cmd_chainloader (grub_command_t cmd
+@@ -790,6 +794,19 @@ grub_cmd_chainloader (grub_command_t cmd
    status = efi_call_6 (b->load_image, 0, grub_efi_image_handle, file_path,
  		       boot_image, fsize,
  		       &image_handle);
 +#ifdef SUPPORT_SECURE_BOOT
-+  if (status == GRUB_EFI_SECURITY_VIOLATION && !grub_secure_mode())
++  if (status == GRUB_EFI_SECURITY_VIOLATION && grub_efi_get_secureboot () != GRUB_EFI_SECUREBOOT_MODE_ENABLED)
 +    {
 +      /* If it failed with security violation while not in secure boot mode,
 +         the firmware might be broken. We try to workaround on that by forcing

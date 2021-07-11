@@ -11,22 +11,23 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  docs/grub.texi | 17 +++++++++++++++++
  1 file changed, 17 insertions(+)
 
-diff --git a/docs/grub.texi b/docs/grub.texi
-index 82f6fa4..60b4aa0 100644
---- a/docs/grub.texi
-+++ b/docs/grub.texi
-@@ -5173,6 +5173,7 @@ See @uref{http://wiki.xen.org/wiki/XSM} for more detail.
+Index: grub-2.06~rc1/docs/grub.texi
+===================================================================
+--- grub-2.06~rc1.orig/docs/grub.texi
++++ grub-2.06~rc1/docs/grub.texi
+@@ -5477,6 +5477,7 @@ This command is only available on AArch6
  * net_add_dns::                 Add a DNS server
  * net_add_route::               Add routing entry
- * net_bootp::                   Perform a bootp autoconfiguration
+ * net_bootp::                   Perform a bootp/DHCP autoconfiguration
 +* net_bootp6::                  Perform a DHCPv6 autoconfiguration
  * net_del_addr::                Remove IP address from interface
  * net_del_dns::                 Remove a DNS server
  * net_del_route::               Remove a route entry
-@@ -5254,6 +5255,22 @@ Sets environment variable @samp{net_}@var{<card>}@samp{_dhcp_extensionspath}
+@@ -5533,6 +5534,24 @@ command (@pxref{net_dhcp}).
  
  @end deffn
  
++
 +@node net_bootp6
 +@subsection net_bootp6
 +
@@ -43,9 +44,7 @@ index 82f6fa4..60b4aa0 100644
 +@end table
 +
 +@end deffn
++
  
  @node net_del_addr
  @subsection net_del_addr
--- 
-2.6.6
-

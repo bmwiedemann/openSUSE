@@ -2,19 +2,19 @@
 v2: Add GRUB_FILE_TYPE_CONFIG to grub_file_open, see also upstream commit
 ca0a4f689 verifiers: File type for fine-grained signature-verification controlling
 
-Index: grub-2.04~rc1/grub-core/kern/efi/init.c
+Index: grub-2.06~rc1/grub-core/kern/efi/init.c
 ===================================================================
---- grub-2.04~rc1.orig/grub-core/kern/efi/init.c
-+++ grub-2.04~rc1/grub-core/kern/efi/init.c
-@@ -25,6 +25,7 @@
+--- grub-2.06~rc1.orig/grub-core/kern/efi/init.c
++++ grub-2.06~rc1/grub-core/kern/efi/init.c
+@@ -27,6 +27,7 @@
  #include <grub/env.h>
  #include <grub/mm.h>
  #include <grub/kernel.h>
 +#include <grub/file.h>
+ #include <grub/stack_protector.h>
  
- grub_addr_t grub_modbase;
- 
-@@ -48,6 +49,67 @@ grub_efi_init (void)
+ #ifdef GRUB_STACK_PROTECTOR
+@@ -114,6 +115,67 @@ grub_efi_init (void)
  void (*grub_efi_net_config) (grub_efi_handle_t hnd, 
  			     char **device,
  			     char **path);
@@ -82,7 +82,7 @@ Index: grub-2.04~rc1/grub-core/kern/efi/init.c
  
  void
  grub_machine_get_bootlocation (char **device, char **path)
-@@ -72,6 +134,12 @@ grub_machine_get_bootlocation (char **de
+@@ -138,6 +200,12 @@ grub_machine_get_bootlocation (char **de
        p = grub_strrchr (*path, '/');
        if (p)
          *p = '\0';

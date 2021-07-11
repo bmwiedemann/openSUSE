@@ -12,16 +12,16 @@ Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
  configure.ac |    2 +-
  2 files changed, 13 insertions(+), 13 deletions(-)
 
-Index: grub-2.04/configure.ac
+Index: grub-2.06/configure.ac
 ===================================================================
---- grub-2.04.orig/configure.ac
-+++ grub-2.04/configure.ac
-@@ -31,7 +31,7 @@ dnl (such as BUILD_CC, BUILD_CFLAGS, etc
- dnl with the prefix "TARGET_" (such as TARGET_CC, TARGET_CFLAGS, etc.) are
- dnl used for the target type. See INSTALL for full list of variables.
+--- grub-2.06.orig/configure.ac
++++ grub-2.06/configure.ac
+@@ -34,7 +34,7 @@ dnl "TARGET_" (such as TARGET_CC, TARGET
+ dnl the target type. See INSTALL for full list of variables and
+ dnl description of the relationships between them.
  
--AC_INIT([GRUB],[2.04],[bug-grub@gnu.org])
-+AC_INIT([GRUB2],[2.04],[bug-grub@gnu.org])
+-AC_INIT([GRUB],[2.06],[bug-grub@gnu.org])
++AC_INIT([GRUB2],[2.06],[bug-grub@gnu.org])
  
  AC_CONFIG_AUX_DIR([build-aux])
  

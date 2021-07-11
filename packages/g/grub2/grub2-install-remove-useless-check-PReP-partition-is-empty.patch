@@ -16,11 +16,11 @@ Fixes: cd46aa6cefab ("Rewrite grub-install, grub-mkrescue,
  util/grub-install.c | 39 ++-------------------------------------
  1 file changed, 2 insertions(+), 37 deletions(-)
 
-diff --git a/util/grub-install.c b/util/grub-install.c
-index 75e3e5ba6f07..ae859476e3da 100644
---- a/util/grub-install.c
-+++ b/util/grub-install.c
-@@ -731,34 +731,6 @@ is_prep_partition (grub_device_t dev)
+Index: grub-2.06~rc1/util/grub-install.c
+===================================================================
+--- grub-2.06~rc1.orig/util/grub-install.c
++++ grub-2.06~rc1/util/grub-install.c
+@@ -756,34 +756,6 @@ is_prep_partition (grub_device_t dev)
    return 0;
  }
  
@@ -30,7 +30,7 @@ index 75e3e5ba6f07..ae859476e3da 100644
 -  grub_disk_addr_t dsize, addr;
 -  grub_uint32_t buffer[32768];
 -
--  dsize = grub_disk_get_size (dev->disk);
+-  dsize = grub_disk_native_sectors (dev->disk);
 -  for (addr = 0; addr < dsize;
 -       addr += sizeof (buffer) / GRUB_DISK_SECTOR_SIZE)
 -    {
@@ -55,7 +55,7 @@ index 75e3e5ba6f07..ae859476e3da 100644
  static void
  bless (grub_device_t dev, const char *path, int x86)
  {
-@@ -1772,16 +1744,9 @@ main (int argc, char *argv[])
+@@ -1923,16 +1895,9 @@ main (int argc, char *argv[])
  	    {
  	      grub_util_error ("%s", _("the chosen partition is not a PReP partition"));
  	    }
@@ -74,6 +74,3 @@ index 75e3e5ba6f07..ae859476e3da 100644
  	    }
  	  grub_device_close (ins_dev);
  	  if (update_nvram)
--- 
-2.13.6
-

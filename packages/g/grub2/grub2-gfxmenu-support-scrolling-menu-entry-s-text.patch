@@ -28,10 +28,10 @@ V1:
  include/grub/menu_viewer.h    |  1 +
  7 files changed, 112 insertions(+)
 
-Index: grub-2.04/grub-core/gfxmenu/gfxmenu.c
+Index: grub-2.06~rc1/grub-core/gfxmenu/gfxmenu.c
 ===================================================================
---- grub-2.04.orig/grub-core/gfxmenu/gfxmenu.c
-+++ grub-2.04/grub-core/gfxmenu/gfxmenu.c
+--- grub-2.06~rc1.orig/grub-core/gfxmenu/gfxmenu.c
++++ grub-2.06~rc1/grub-core/gfxmenu/gfxmenu.c
 @@ -108,6 +108,15 @@ grub_gfxmenu_try (int entry, grub_menu_t
    view->menu = menu;
    view->nested = nested;
@@ -56,10 +56,10 @@ Index: grub-2.04/grub-core/gfxmenu/gfxmenu.c
  
    grub_menu_register_viewer (instance);
  
-Index: grub-2.04/grub-core/gfxmenu/gui_label.c
+Index: grub-2.06~rc1/grub-core/gfxmenu/gui_label.c
 ===================================================================
---- grub-2.04.orig/grub-core/gfxmenu/gui_label.c
-+++ grub-2.04/grub-core/gfxmenu/gui_label.c
+--- grub-2.06~rc1.orig/grub-core/gfxmenu/gui_label.c
++++ grub-2.06~rc1/grub-core/gfxmenu/gui_label.c
 @@ -192,6 +192,8 @@ label_set_property (void *vself, const c
  	       "or `c' for a command-line.");
  	   else if (grub_strcmp (value, "@KEYMAP_SHORT@") == 0)
@@ -67,12 +67,12 @@ Index: grub-2.04/grub-core/gfxmenu/gui_label.c
 +	   else if (grub_strcmp (value, "@SUSE_KEYMAP_SCROLL_ENTRY@") == 0)
 +	    value = _("ctrl+l: scroll entry left, ctrl+r: scroll entry right");
  	   /* FIXME: Add more templates here if needed.  */
- 	  self->template = grub_strdup (value);
- 	  self->text = grub_xasprintf (value, self->value);
-Index: grub-2.04/grub-core/gfxmenu/gui_list.c
+ 
+ 	  if (grub_printf_fmt_check(value, "%d") != GRUB_ERR_NONE)
+Index: grub-2.06~rc1/grub-core/gfxmenu/gui_list.c
 ===================================================================
---- grub-2.04.orig/grub-core/gfxmenu/gui_list.c
-+++ grub-2.04/grub-core/gfxmenu/gui_list.c
+--- grub-2.06~rc1.orig/grub-core/gfxmenu/gui_list.c
++++ grub-2.06~rc1/grub-core/gfxmenu/gui_list.c
 @@ -24,6 +24,7 @@
  #include <grub/gfxmenu_view.h>
  #include <grub/gfxwidgets.h>
@@ -132,10 +132,10 @@ Index: grub-2.04/grub-core/gfxmenu/gui_list.c
        sviewport.y = item_top + top_pad;
        sviewport.width = viewport_width;
        grub_gui_set_viewport (&sviewport, &svpsave);
-Index: grub-2.04/grub-core/gfxmenu/view.c
+Index: grub-2.06~rc1/grub-core/gfxmenu/view.c
 ===================================================================
---- grub-2.04.orig/grub-core/gfxmenu/view.c
-+++ grub-2.04/grub-core/gfxmenu/view.c
+--- grub-2.06~rc1.orig/grub-core/gfxmenu/view.c
++++ grub-2.06~rc1/grub-core/gfxmenu/view.c
 @@ -37,6 +37,7 @@
  #include <grub/gui_string_util.h>
  #include <grub/icon_manager.h>
@@ -213,11 +213,11 @@ Index: grub-2.04/grub-core/gfxmenu/view.c
  static void
  grub_gfxmenu_draw_terminal_box (void)
  {
-Index: grub-2.04/grub-core/normal/menu.c
+Index: grub-2.06~rc1/grub-core/normal/menu.c
 ===================================================================
---- grub-2.04.orig/grub-core/normal/menu.c
-+++ grub-2.04/grub-core/normal/menu.c
-@@ -401,6 +401,15 @@ menu_set_chosen_entry (int entry)
+--- grub-2.06~rc1.orig/grub-core/normal/menu.c
++++ grub-2.06~rc1/grub-core/normal/menu.c
+@@ -400,6 +400,15 @@ menu_set_chosen_entry (int entry)
  }
  
  static void
@@ -233,7 +233,7 @@ Index: grub-2.04/grub-core/normal/menu.c
  menu_print_timeout (int timeout)
  {
    struct grub_menu_viewer *cur;
-@@ -828,6 +837,13 @@ run_menu (grub_menu_t menu, int nested,
+@@ -827,6 +836,13 @@ run_menu (grub_menu_t menu, int nested,
  	      menu_set_chosen_entry (current_entry);
  	      break;
  
@@ -247,10 +247,10 @@ Index: grub-2.04/grub-core/normal/menu.c
  	    case '\n':
  	    case '\r':
  	    case GRUB_TERM_KEY_RIGHT:
-Index: grub-2.04/include/grub/gfxmenu_view.h
+Index: grub-2.06~rc1/include/grub/gfxmenu_view.h
 ===================================================================
---- grub-2.04.orig/include/grub/gfxmenu_view.h
-+++ grub-2.04/include/grub/gfxmenu_view.h
+--- grub-2.06~rc1.orig/include/grub/gfxmenu_view.h
++++ grub-2.06~rc1/include/grub/gfxmenu_view.h
 @@ -61,6 +61,8 @@ void
  grub_gfxmenu_print_timeout (int timeout, void *data);
  void
@@ -269,10 +269,10 @@ Index: grub-2.04/include/grub/gfxmenu_view.h
  };
  
  #endif /* ! GRUB_GFXMENU_VIEW_HEADER */
-Index: grub-2.04/include/grub/menu_viewer.h
+Index: grub-2.06~rc1/include/grub/menu_viewer.h
 ===================================================================
---- grub-2.04.orig/include/grub/menu_viewer.h
-+++ grub-2.04/include/grub/menu_viewer.h
+--- grub-2.06~rc1.orig/include/grub/menu_viewer.h
++++ grub-2.06~rc1/include/grub/menu_viewer.h
 @@ -33,6 +33,7 @@ struct grub_menu_viewer
    void (*set_chosen_entry) (int entry, void *data);
    void (*print_timeout) (int timeout, void *data);
