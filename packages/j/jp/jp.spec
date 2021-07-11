@@ -1,7 +1,8 @@
 #
 # spec file for package jp
 #
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +13,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           jp
 Version:        1.1.12
@@ -24,11 +26,16 @@ Group:          Productivity/File utilities
 URL:            https://github.com/sgreben/jp
 #Git-Clone:     https://github.com/sgreben/jp.git
 Source:         https://github.com/sgreben/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+%if 0%{?suse_version} >= 1550
+BuildRequires:  golang(API) = 1.13
+%else
 BuildRequires:  golang(API) >= 1.9
-BuildRequires:  golang-packaging
+%endif
 BuildRequires:  fdupes
+BuildRequires:  golang-packaging
 Conflicts:      python2-jmespath
 Conflicts:      python3-jmespath
+Conflicts:      python3dist(jmespath)
 %{go_provides}
 
 %description
