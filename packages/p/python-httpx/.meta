@@ -1,0 +1,5 @@
+<package name="python-httpx" project="openSUSE:Factory">
+  <title>python-httpx</title>
+  <description>Python HTTP client with async support</description>
+  <devel project="devel:languages:python" package="python-httpx"/>
+</package>
