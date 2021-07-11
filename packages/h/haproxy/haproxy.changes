@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul 07 23:30:56 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.2+git0.553dee326:
+  * [RELEASE] Released version 2.4.2
+  * REGTESTS: add http scheme-based normalization test
+  * MEDIUM: h2: apply scheme-based normalization on h2 requests
+  * MEDIUM: h1-htx: apply scheme-based normalization on h1 requests
+  * MEDIUM: http: implement scheme-based normalization
+  * MINOR: http: implement http_get_scheme
+  * Revert "MINOR: tcp-act: Add set-src/set-src-port for "tcp-request content" rules"
+  * BUG/MINOR: cli: fix server name output in "show fd"
+  * BUG/MEDIUM: sock: make sure to never miss early connection failures
+  * DOC: stick-table: add missing documentation about gpt0 stored type
+  * BUG/MINOR: peers: fix data_type bit computation more than 32 data_types
+  * BUG/MINOR: stick-table: fix several printf sign errors dumping tables
+  * DOC: config: use CREATE USER for mysql-check
+  * BUG/MEDIUM: resolvers: Make 1st server of a template take part to SRV resolution
+  * BUG/MINOR: mqtt: Support empty client ID in CONNECT message
+  * BUG/MINOR: mqtt: Fix parser for string with more than 127 characters
+  * BUG/MINOR: tcpcheck: Fix numbering of implicit HTTP send/expect rules
+  * BUILD: Makefile: fix linkage for Haiku.
+  * BUG/MINOR: checks: return correct error code for srv_parse_agent_check
+  * MINOR: resolvers: Reset server IP on error in resolv_get_ip_from_response()
+  * BUG/MINOR: resolvers: Reset server IP when no ip is found in the response
+  * BUG/MINOR: resolvers: Always attach server on matching record on resolution
+  * CLEANUP: dns: Remove a forgotten debug message
+  * DOC: config: Add missing actions in "tcp-request session" documentation
+  * MINOR: tcp-act: Add set-src/set-src-port for "tcp-request content" rules
+  * REGTESTS: fix maxconn update with agent-check
+  * BUG/MAJOR: server: fix deadlock when changing maxconn via agent-check
+  * BUG/MINOR: cache: Correctly handle existing-but-empty 'accept-encoding' header
+  * BUG/MINOR: server/cli: Fix locking in function processing "set server" command
+  * BUG/MINOR: resolvers: Use resolver's lock in resolv_srvrq_expire_task()
+  * BUG/MEDIUM: resolvers: Add a task on servers to check SRV resolution status
+  * MINOR: resolvers: Remove server from named_servers tree when removing a SRV item
+  * MINOR: resolvers: Clean server in a dedicated function when removing a SRV item
+  * BUG/MEDIUM: server/cli: Fix ABBA deadlock when fqdn is set from the CLI
+  * BUG/MINOR: server: Forbid to set fqdn on the CLI if SRV resolution is enabled
+  * BUG/MINOR: server-state: load SRV resolution only if params match the config
+
+-------------------------------------------------------------------
 Thu Jun 17 16:38:50 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.1+git0.1ce7d4925:
