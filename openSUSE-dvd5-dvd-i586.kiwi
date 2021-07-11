@@ -3796,6 +3796,8 @@
       <repopackage name="python38-sortedcontainers"/>
       <repopackage name="python38-SQLAlchemy"/>
       <repopackage name="python38-tk"/>
+      <repopackage name="python38-tornado"/>
+      <repopackage name="python38-tornado5"/>
       <repopackage name="python38-tornado6"/>
       <repopackage name="python38-trio"/>
       <repopackage name="python38-Twisted"/>
