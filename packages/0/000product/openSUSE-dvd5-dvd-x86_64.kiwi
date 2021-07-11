@@ -1733,7 +1733,7 @@
       <repopackage name="libFLAC8"/>
       <repopackage name="libflatpak0"/>
       <repopackage name="libfltk1"/>
-      <repopackage name="libfmt7" arch="x86_64"/>
+      <repopackage name="libfmt8" arch="x86_64"/>
       <repopackage name="libfolks-eds25"/>
       <repopackage name="libfolks25"/>
       <repopackage name="libfontconfig1"/>
@@ -3258,6 +3258,7 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
+      <repopackage name="mhvtl-kmp-default" arch="x86_64"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
@@ -4110,6 +4111,8 @@
       <repopackage name="python38-sortedcontainers"/>
       <repopackage name="python38-SQLAlchemy"/>
       <repopackage name="python38-tk"/>
+      <repopackage name="python38-tornado"/>
+      <repopackage name="python38-tornado5"/>
       <repopackage name="python38-tornado6"/>
       <repopackage name="python38-trio"/>
       <repopackage name="python38-Twisted"/>

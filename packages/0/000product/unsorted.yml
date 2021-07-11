@@ -1670,6 +1670,7 @@ unsorted:
   - caja-extension-nitroshare 
   - caja-extension-open-terminal 
   - caja-extension-sendto 
+  - caja-extension-sendto-blueman 
   - caja-extension-sendto-devel 
   - caja-extension-sendto-gajim 
   - caja-extension-sendto-pidgin 
@@ -9212,7 +9213,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
-  - libVkLayer_utils-1_2_176_0 
+  - libVkLayer_utils-1_2_182_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -10627,8 +10628,8 @@ unsorted:
   - libfm4 
   - libfmapi-devel 
   - libfmapi1 
-  - libfmt7: [i586] 
-  - libfmt7-32bit: [x86_64] 
+  - libfmt8: [i586] 
+  - libfmt8-32bit: [x86_64] 
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy25 
@@ -12097,8 +12098,6 @@ unsorted:
   - libmuparser2_3_2-32bit: [x86_64] 
   - libmuparserx4_0_8 
   - libmusicbrainz-devel 
-  - libmusicbrainz4 
-  - libmusicbrainz4-32bit: [x86_64] 
   - libmusicbrainz5-1-32bit: [x86_64] 
   - libmusicbrainz5-devel 
   - libmwaw-devel 
@@ -12942,6 +12941,7 @@ unsorted:
   - libqrupdate1 
   - libqsastime0 
   - libqscintilla2_qt5-15 
+  - libqscintilla2_qt6-15 
   - libqscintilla_qt5-devel 
   - libqt5-creator 
   - libqt5-creator-plugin-devel 
@@ -15891,7 +15891,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
+  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -16728,6 +16728,7 @@ unsorted:
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
   - nautilus-extension-nitroshare 
+  - nautilus-extension-sendto-blueman 
   - nautilus-extension-tilix 
   - nautilus-file-roller 
   - nautilus-font-manager 
@@ -16804,6 +16805,7 @@ unsorted:
   - nemo-extension-preview 
   - nemo-extension-repairer 
   - nemo-extension-seahorse 
+  - nemo-extension-sendto-blueman 
   - nemo-extension-share 
   - nemo-extension-terminal 
   - nemo-extensions-lang 
@@ -20912,7 +20914,6 @@ unsorted:
   - pythia-doc 
   - python-32bit: [x86_64] 
   - python-Genshi-doc 
-  - python-Jinja2-vim 
   - python-Kivy-doc 
   - python-M2Crypto-doc 
   - python-OpenColorIO 
@@ -21078,6 +21079,7 @@ unsorted:
   - python-sip-doc 
   - python-sip4-common 
   - python-sip4-doc 
+  - python-sip5-doc 
   - python-sip6-doc 
   - python-six-doc 
   - python-solo-python 
@@ -21582,6 +21584,19 @@ unsorted:
   - python36-PyPrind 
   - python36-PyPrint 
   - python36-PyQRCode 
+  - python36-PyQt6 
+  - python36-PyQt6-3D 
+  - python36-PyQt6-3D-devel 
+  - python36-PyQt6-Charts 
+  - python36-PyQt6-Charts-devel 
+  - python36-PyQt6-DataVisualization 
+  - python36-PyQt6-DataVisualization-devel 
+  - python36-PyQt6-NetworkAuth 
+  - python36-PyQt6-NetworkAuth-devel 
+  - python36-PyQt6-QScintilla 
+  - python36-PyQt6-devel 
+  - python36-PyQt6-doc 
+  - python36-PyQt6-sip 
   - python36-PyRIC 
   - python36-PyRSS2Gen 
   - python36-PySDL2 
@@ -22772,6 +22787,7 @@ unsorted:
   - python36-jaraco.itertools 
   - python36-jaraco.logging 
   - python36-jaraco.packaging 
+  - python36-jaraco.path 
   - python36-jaraco.stream 
   - python36-jaraco.text 
   - python36-javapackages 
@@ -23543,6 +23559,7 @@ unsorted:
   - python36-pytest-verbose-parametrize 
   - python36-pytest-virtualenv 
   - python36-pytest-xdist 
+  - python36-pytest-xprocess 
   - python36-pytest-xvfb 
   - python36-pytest5 
   - python36-python-afl 
@@ -23672,6 +23689,8 @@ unsorted:
   - python36-qtdatavis3d-qt5-api 
   - python36-qtdatavis3d-qt5-doc 
   - python36-qtdatavis3d-qt5-sip 
+  - python36-qtnetworkauth-qt5 
+  - python36-qtnetworkauth-qt5-devel 
   - python36-qtwebengine-qt5 
   - python36-qtwebengine-qt5-api 
   - python36-qtwebengine-qt5-sip 
@@ -23842,6 +23861,7 @@ unsorted:
   - python36-sip-devel 
   - python36-sip4 
   - python36-sip4-devel 
+  - python36-sip5-devel 
   - python36-sip6-devel 
   - python36-siphashc 
   - python36-six 
@@ -24095,7 +24115,6 @@ unsorted:
   - python36-vcrpy 
   - python36-vcver 
   - python36-vcversioner 
-  - python36-vdirsyncer 
   - python36-venusian 
   - python36-venusian-doc 
   - python36-verboselogs 
@@ -24373,6 +24392,19 @@ unsorted:
   - python38-PyPrind 
   - python38-PyPrint 
   - python38-PyQRCode 
+  - python38-PyQt6 
+  - python38-PyQt6-3D 
+  - python38-PyQt6-3D-devel 
+  - python38-PyQt6-Charts 
+  - python38-PyQt6-Charts-devel 
+  - python38-PyQt6-DataVisualization 
+  - python38-PyQt6-DataVisualization-devel 
+  - python38-PyQt6-NetworkAuth 
+  - python38-PyQt6-NetworkAuth-devel 
+  - python38-PyQt6-QScintilla 
+  - python38-PyQt6-devel 
+  - python38-PyQt6-doc 
+  - python38-PyQt6-sip 
   - python38-PyRIC 
   - python38-PyRSS2Gen 
   - python38-PyRect 
@@ -25610,6 +25642,7 @@ unsorted:
   - python38-jaraco.itertools 
   - python38-jaraco.logging 
   - python38-jaraco.packaging 
+  - python38-jaraco.path 
   - python38-jaraco.stream 
   - python38-jaraco.text 
   - python38-javapackages 
@@ -25939,8 +25972,8 @@ unsorted:
   - python38-numpy-devel 
   - python38-numpy-gnu-hpc 
   - python38-numpy-gnu-hpc-devel 
-  - python38-numpy_1_20_3-gnu-hpc 
-  - python38-numpy_1_20_3-gnu-hpc-devel 
+  - python38-numpy_1_21_0-gnu-hpc 
+  - python38-numpy_1_21_0-gnu-hpc-devel 
   - python38-numpydoc 
   - python38-nwdiag 
   - python38-nxapi-plumbing 
@@ -26442,6 +26475,7 @@ unsorted:
   - python38-pytest-verbose-parametrize 
   - python38-pytest-virtualenv 
   - python38-pytest-xdist 
+  - python38-pytest-xprocess 
   - python38-pytest-xvfb 
   - python38-pytest5 
   - python38-python-afl 
@@ -26570,6 +26604,8 @@ unsorted:
   - python38-qtdatavis3d-qt5-api 
   - python38-qtdatavis3d-qt5-doc 
   - python38-qtdatavis3d-qt5-sip 
+  - python38-qtnetworkauth-qt5 
+  - python38-qtnetworkauth-qt5-devel 
   - python38-qtwebengine-qt5 
   - python38-qtwebengine-qt5-api 
   - python38-qtwebengine-qt5-sip 
@@ -26751,6 +26787,7 @@ unsorted:
   - python38-sip-devel 
   - python38-sip4 
   - python38-sip4-devel 
+  - python38-sip5-devel 
   - python38-sip6-devel 
   - python38-siphashc 
   - python38-sklearn-pandas 
@@ -26936,8 +26973,6 @@ unsorted:
   - python38-torch: [x86_64] 
   - python38-torch-devel: [x86_64] 
   - python38-torchvision: [x86_64] 
-  - python38-tornado 
-  - python38-tornado5 
   - python38-tortilla 
   - python38-towncrier 
   - python38-tox 
@@ -27322,6 +27357,19 @@ unsorted:
   - python39-PyPrind 
   - python39-PyPrint 
   - python39-PyQRCode 
+  - python39-PyQt6 
+  - python39-PyQt6-3D 
+  - python39-PyQt6-3D-devel 
+  - python39-PyQt6-Charts 
+  - python39-PyQt6-Charts-devel 
+  - python39-PyQt6-DataVisualization 
+  - python39-PyQt6-DataVisualization-devel 
+  - python39-PyQt6-NetworkAuth 
+  - python39-PyQt6-NetworkAuth-devel 
+  - python39-PyQt6-QScintilla 
+  - python39-PyQt6-devel 
+  - python39-PyQt6-doc 
+  - python39-PyQt6-sip 
   - python39-PyRIC 
   - python39-PyRSS2Gen 
   - python39-PyRect 
@@ -28615,6 +28663,7 @@ unsorted:
   - python39-jaraco.itertools 
   - python39-jaraco.logging 
   - python39-jaraco.packaging 
+  - python39-jaraco.path 
   - python39-jaraco.stream 
   - python39-jaraco.text 
   - python39-javapackages 
@@ -28965,8 +29014,8 @@ unsorted:
   - python39-numpy-devel 
   - python39-numpy-gnu-hpc 
   - python39-numpy-gnu-hpc-devel 
-  - python39-numpy_1_20_3-gnu-hpc 
-  - python39-numpy_1_20_3-gnu-hpc-devel 
+  - python39-numpy_1_21_0-gnu-hpc 
+  - python39-numpy_1_21_0-gnu-hpc-devel 
   - python39-numpydoc 
   - python39-nwdiag 
   - python39-nxapi-plumbing 
@@ -29497,6 +29546,7 @@ unsorted:
   - python39-pytest-verbose-parametrize 
   - python39-pytest-virtualenv 
   - python39-pytest-xdist 
+  - python39-pytest-xprocess 
   - python39-pytest-xvfb 
   - python39-pytest5 
   - python39-python-afl 
@@ -29634,6 +29684,8 @@ unsorted:
   - python39-qtdatavis3d-qt5-api 
   - python39-qtdatavis3d-qt5-doc 
   - python39-qtdatavis3d-qt5-sip 
+  - python39-qtnetworkauth-qt5 
+  - python39-qtnetworkauth-qt5-devel 
   - python39-qtwebengine-qt5 
   - python39-qtwebengine-qt5-api 
   - python39-qtwebengine-qt5-sip 
@@ -29826,6 +29878,7 @@ unsorted:
   - python39-sip-devel 
   - python39-sip4 
   - python39-sip4-devel 
+  - python39-sip5-devel 
   - python39-sip6-devel 
   - python39-siphashc 
   - python39-six 
@@ -30392,6 +30445,10 @@ unsorted:
   - qrupdate 
   - qrupdate-devel 
   - qrupdate-static 
+  - qscintilla-qt5 
+  - qscintilla-qt5-devel 
+  - qscintilla-qt6 
+  - qscintilla-qt6-devel 
   - qscintilla2_qt5 
   - qsyncthingtray 
   - qsynergy 
