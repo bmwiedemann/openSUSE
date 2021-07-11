@@ -1,0 +1,68 @@
+commit de1e0ae0e3119e9bfd0c21e8502e64c076009861
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Wed Jun 30 16:36:42 2021 -0600
+
+    virtlockd: Don't report error if lockspace exists
+    
+    When the qemu or libxl driver is configured to use lockd and
+    file_lockspace_dir is set, virtlockd emits an error when libvirtd
+    is retarted
+    
+    May 25 15:44:31 virt81 virtlockd[7723]: Requested operation is not
+    valid: Lockspace for path /data/libvirtd/lockspace already exists
+    
+    There is really no need to fail when the lockspace already exists,
+    paricularly since the user is expected to create the lockspace
+    specified in file_lockspace_dir. Failure to do so will prevent
+    starting any domains
+    
+    virsh start test
+    error: Failed to start domain 'test'
+    error: Unable to open/create resource /data/libvirtd/lockspace/de22c4bf931e7c48b49e8ca64b477d44e78a51543e534df488b05ccd08ec5caa: No such file or directory
+    
+    Also, virLockManagerLockDaemonSetupLockspace already has logic to ignore
+    the error. Since callers are not interested in the error, change
+    virtlockd to not report or return an error when the specified lockspace
+    already exists.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+
+Index: libvirt-7.5.0/src/locking/lock_daemon_dispatch.c
+===================================================================
+--- libvirt-7.5.0.orig/src/locking/lock_daemon_dispatch.c
++++ libvirt-7.5.0/src/locking/lock_daemon_dispatch.c
+@@ -405,9 +405,8 @@ virLockSpaceProtocolDispatchCreateLockSp
+     }
+ 
+     if (virLockDaemonFindLockSpace(lockDaemon, args->path) != NULL) {
+-        virReportError(VIR_ERR_OPERATION_INVALID,
+-                       _("Lockspace for path %s already exists"),
+-                       args->path);
++        VIR_DEBUG("Lockspace for path %s already exists", args->path);
++        rv = 0;
+         goto cleanup;
+     }
+ 
+Index: libvirt-7.5.0/src/locking/lock_driver_lockd.c
+===================================================================
+--- libvirt-7.5.0.orig/src/locking/lock_driver_lockd.c
++++ libvirt-7.5.0/src/locking/lock_driver_lockd.c
+@@ -281,15 +281,8 @@ static int virLockManagerLockDaemonSetup
+                                 VIR_LOCK_SPACE_PROTOCOL_PROC_CREATE_LOCKSPACE,
+                                 0, NULL, NULL, NULL,
+                                 (xdrproc_t)xdr_virLockSpaceProtocolCreateLockSpaceArgs, (char*)&args,
+-                                (xdrproc_t)xdr_void, NULL) < 0) {
+-        if (virGetLastErrorCode() == VIR_ERR_OPERATION_INVALID) {
+-            /* The lockspace already exists */
+-            virResetLastError();
+-            rv = 0;
+-        } else {
+-            goto cleanup;
+-        }
+-    }
++                                (xdrproc_t)xdr_void, NULL) < 0)
++        goto cleanup;
+ 
+     rv = 0;
+ 

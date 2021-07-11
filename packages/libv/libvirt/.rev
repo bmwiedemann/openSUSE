@@ -3853,4 +3853,16 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>903564</requestid>
   </revision>
+  <revision rev="333" vrev="2">
+    <srcmd5>6a5adb330cb0b1040d36dd9be7bab8d5</srcmd5>
+    <version>7.5.0</version>
+    <time>1626045877</time>
+    <user>dimstar_suse</user>
+    <comment>A small SLE bug fix that is pertinent to Factory too.
+
+- virtlockd: Don't report error if lockspace exists
+  de1e0ae0-lockd-no-error-if-lockspace.patch
+  bsc#1184253</comment>
+    <requestid>904628</requestid>
+  </revision>
 </revisionlist>
