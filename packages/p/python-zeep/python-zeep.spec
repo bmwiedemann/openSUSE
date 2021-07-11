@@ -17,16 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-zeep
-Version:        3.4.0
+Version:        4.0.0
 Release:        0
 Summary:        A Python SOAP client based on lxml/requests
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://docs.python-zeep.org
 Source:         https://files.pythonhosted.org/packages/source/z/zeep/zeep-%{version}.tar.gz
-Patch1:         pytest4.patch
-Patch2:         pytest5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -38,34 +37,30 @@ Requires:       python-isodate >= 0.5.4
 Requires:       python-lxml >= 3.1.0
 Requires:       python-pytz
 Requires:       python-requests >= 2.7.0
+Requires:       python-requests-file >= 1.5.1
 Requires:       python-requests-toolbelt >= 0.7.1
-Requires:       python-six >= 1.9.0
-Requires:       python-tornado >= 4.0.2
 Requires:       python-xmlsec >= 0.6.1
-%if 0%{?python_version_nodots} >= 34
-Requires:       python-aiohttp >= 1.0
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module appdirs >= 1.4.0}
-BuildRequires:  %{python_module aiohttp >= 1.0 if %python-base >= 3.4}
-BuildRequires:  %{python_module aioresponses >= 0.4.1 if %python-base > 3.4}
+BuildRequires:  %{python_module aiohttp >= 1.0}
+BuildRequires:  %{python_module aioresponses >= 0.4.1}
 BuildRequires:  %{python_module attrs >= 17.2.0}
 BuildRequires:  %{python_module cached-property >= 1.3.0}
 BuildRequires:  %{python_module defusedxml >= 0.4.1}
-BuildRequires:  %{python_module freezegun >= 0.3.8 if %python-base > 3.4}
+BuildRequires:  %{python_module freezegun >= 0.3.15}
 BuildRequires:  %{python_module isodate >= 0.5.4}
 BuildRequires:  %{python_module lxml >= 3.1.0}
 BuildRequires:  %{python_module mock >= 2.0.0}
-BuildRequires:  %{python_module pretend >= 1.0.8}
-BuildRequires:  %{python_module pytest >= 3.1.3}
-BuildRequires:  %{python_module pytest-tornado >= 0.4.5}
+BuildRequires:  %{python_module pretend >= 1.0.9}
+BuildRequires:  %{python_module pytest >= 6.0.1}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest-httpx}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.7.0}
+BuildRequires:  %{python_module requests-file >= 1.5.1}
 BuildRequires:  %{python_module requests-mock >= 0.7.0}
 BuildRequires:  %{python_module requests-toolbelt >= 0.7.1}
-BuildRequires:  %{python_module six >= 1.9.0}
-BuildRequires:  %{python_module tornado >= 4.0.2}
 BuildRequires:  %{python_module xmlsec >= 0.6.1}
 # /SECTION
 %python_subpackages

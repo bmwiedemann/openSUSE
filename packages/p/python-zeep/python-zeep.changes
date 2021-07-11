@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun  3 08:45:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 4.0.0
+  * Drop support for Python 2.7, 3.3, 3.4 and 3.5
+  * Remove both the aiohttp and the tornado transport class from
+    Zeep. These can be moved to their own Python package if anyone
+    is interested.
+  * Add zeep.transports.AsyncTransport which is based on httpx.
+    Note that loading wsdl files is still a sync process but
+    operations can be executed via async.
+  * Start adding more typehints to the package
+- Remove patches that are not needed anymore:
+  * pytest4.patch
+  * pytest5.patch
+
+-------------------------------------------------------------------
 Fri Apr 16 12:36:20 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix BuildRequires for new python39 flavor
