@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jul  3 08:40:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.0.0
+  * Supports Qt6 in addition to Qt5
+  * Minimum Qt version is 5.9
+  * The qmake buildsystem (via autogen.py) is removed.
+  * buildsystem: a new 'docs' target is created when CMake
+    -DKDSoap_DOCS=True.
+  * buildsystem: the API manual is now generated in build/docs
+    vice source/docs.
+  * buildsystem: added an uninstall target
+  * buildsystem: generate and install kdsoap-version.h
+  * The API manual is generated+installed in qch format for Qt
+    assistant.
+ + Client-side:
+  * Added options to the KDSoapClient specifying the SOAP action
+    sending method
+ + WSDL parser:
+  * Fix generated code in case a variable is called "d" or "q"
+  * Fix generated code for an enumeration type with a length
+    restriction
+  * Avoid potential type collisions in nested complexTypes
+- Drop the obsolete _service file. license issues were addressed.
+
+-------------------------------------------------------------------
 Wed Mar  4 22:30:45 UTC 2020 - Luca Beltrame <lbeltrame@kde.org>
 
 - Use a service to generate a tarball with no non-free unit

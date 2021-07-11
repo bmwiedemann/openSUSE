@@ -1,7 +1,7 @@
 #
 # spec file for package kdsoap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,27 +15,25 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define soname 1_9_0
-%define sonum 1.9.0
+
+%define soname 2
 
 Name:           kdsoap
-Version:        1.9.0
+Version:        2.0.0
 Release:        0
-Summary:        A Qt5-based client-side and server-side SOAP component
+Summary:        A Qt-based client-side and server-side SOAP component
 # No "or later" clause, licenses specified explicitly
 License:        (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only AND AGPL-3.0-only
 Group:          System/Libraries
 URL:            https://www.kdab.com/products/kd-soap
-# Tarball without non-free, unused and not installed unit tests
-# See https://github.com/KDAB/KDSoap/issues/207 for more information
-Source:         %{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.0.2
+Source:         https://github.com/KDAB/KDSoap/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(Qt5Core) >= 5.6.0
-BuildRequires:  cmake(Qt5Network) >= 5.6.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.6.0
-BuildRequires:  cmake(Qt5Xml) >= 5.6.0
+BuildRequires:  cmake(Qt5Core) >= 5.9.0
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -45,7 +43,7 @@ the means to create web services without the need for any further component such
 as a dedicated web server.
 
 %package -n libkdsoap%{soname}
-Summary:        A Qt5-based client-side and server-side SOAP component
+Summary:        A Qt-based client-side and server-side SOAP component
 License:        (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only
 Group:          System/Libraries
 Recommends:     %{name}
@@ -55,7 +53,7 @@ KD Soap is a Qt-based client-side and server-side SOAP component.
 This package provides the library for the client-side component.
 
 %package -n libkdsoap-server%{soname}
-Summary:        A Qt5-based client-side and server-side SOAP component
+Summary:        A Qt-based client-side and server-side SOAP component
 License:        AGPL-3.0-only
 Group:          System/Libraries
 
@@ -85,6 +83,9 @@ applications.
 %install
 %cmake_install
 
+mkdir -p %{buildroot}%{_libqt5_archdatadir}/mkspecs/features
+mv %{buildroot}%{_datadir}/mkspecs/features/kdsoap.prf %{buildroot}%{_libqt5_archdatadir}/mkspecs/features/
+
 %fdupes %{buildroot}%{_includedir}/KDSoapClient/
 
 %post -n libkdsoap-server%{soname}  -p /sbin/ldconfig
@@ -93,15 +94,15 @@ applications.
 %postun -n libkdsoap%{soname}  -p /sbin/ldconfig
 
 %files -n libkdsoap%{soname}
-%license LICENSE.GPL.txt LICENSE.LGPL.txt LICENSE.txt README.txt
-%{_libdir}/libkdsoap.so.%{sonum}
+%license LICENSES/{GPL-2.0-only.txt,GPL-3.0-only.txt,LGPL-2.1-only.txt,LGPL-3.0-only.txt} README.txt
+%{_libdir}/libkdsoap.so.%{soname}*
 
 %files -n libkdsoap-server%{soname}
-%license LICENSE.AGPL3-modified.txt README.txt
-%{_libdir}/libkdsoap-server.so.%{sonum}
+%license LICENSES/LicenseRef-KDAB-KDSoap-AGPL3-Modified.txt README.txt
+%{_libdir}/libkdsoap-server.so.%{soname}*
 
 %files devel
-%license LICENSE* README.txt
+%license LICENSES/* README.txt
 %{_bindir}/kdwsdl2cpp
 %{_libdir}/libkdsoap.so
 %{_libdir}/libkdsoap-server.so
@@ -109,8 +110,8 @@ applications.
 %{_includedir}/KDSoapServer
 %{_includedir}/KDSoapClient
 %{_datadir}/doc/KDSoap/
-%dir %{_datadir}/mkspecs
-%dir %{_datadir}/mkspecs/features
-%{_datadir}/mkspecs/features/kdsoap.prf
+%{_libqt5_archdatadir}/mkspecs/features/kdsoap.prf
+%{_libqt5_archdatadir}/mkspecs/modules/qt_KDSoapClient.pri
+%{_libqt5_archdatadir}/mkspecs/modules/qt_KDSoapServer.pri
 
 %changelog
