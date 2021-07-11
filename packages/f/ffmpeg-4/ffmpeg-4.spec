@@ -117,6 +117,8 @@ Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         soversion.patch
 Patch8:         vmaf-trim-usr-local.patch
+Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
+Patch10:        ffmpeg-CVE-2021-33815.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

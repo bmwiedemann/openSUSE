@@ -1,7 +1,7 @@
-Index: ffmpeg-4.2.1/configure
+Index: b/configure
 ===================================================================
---- ffmpeg-4.2.1.orig/configure
-+++ ffmpeg-4.2.1/configure
+--- a/configure
++++ b/configure
 @@ -232,6 +232,7 @@ External library support:
    --enable-libdc1394       enable IIDC-1394 grabbing using libdc1394
                             and libraw1394 [no]
@@ -10,7 +10,7 @@ Index: ffmpeg-4.2.1/configure
    --enable-libflite        enable flite (voice synthesis) support via libflite [no]
    --enable-libfontconfig   enable libfontconfig, useful for drawtext filter [no]
    --enable-libfreetype     enable libfreetype, needed for drawtext filter [no]
-@@ -1724,6 +1725,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
+@@ -1735,6 +1736,7 @@ EXTERNAL_LIBRARY_GPL_LIST="
  EXTERNAL_LIBRARY_NONFREE_LIST="
      decklink
      libfdk_aac
@@ -18,7 +18,7 @@ Index: ffmpeg-4.2.1/configure
      openssl
      libtls
  "
-@@ -6203,6 +6205,7 @@ enabled libdrm            && require_pkg
+@@ -6360,6 +6362,7 @@ enabled libdrm            && require_pkg
  enabled libfdk_aac        && { check_pkg_config libfdk_aac fdk-aac "fdk-aac/aacenc_lib.h" aacEncOpen ||
                                 { require libfdk_aac fdk-aac/aacenc_lib.h aacEncOpen -lfdk-aac &&
                                   warn "using libfdk without pkg-config"; } }
@@ -26,10 +26,10 @@ Index: ffmpeg-4.2.1/configure
  flite_extralibs="-lflite_cmu_time_awb -lflite_cmu_us_awb -lflite_cmu_us_kal -lflite_cmu_us_kal16 -lflite_cmu_us_rms -lflite_cmu_us_slt -lflite_usenglish -lflite_cmulex -lflite"
  enabled libflite          && require libflite "flite/flite.h" flite_init $flite_extralibs
  enabled fontconfig        && enable libfontconfig
-Index: ffmpeg-4.2.1/libavcodec/dlopen.h
+Index: b/libavcodec/dlopen.h
 ===================================================================
 --- /dev/null
-+++ ffmpeg-4.2.1/libavcodec/dlopen.h
++++ b/libavcodec/dlopen.h
 @@ -0,0 +1,12 @@
 +#ifndef LOCALINC_DLOPEN_H
 +#define LOCALINC_DLOPEN_H
@@ -43,10 +43,10 @@ Index: ffmpeg-4.2.1/libavcodec/dlopen.h
 +		goto error;
 +
 +#endif
-Index: ffmpeg-4.2.1/libavcodec/libfdk-aacdec.c
+Index: b/libavcodec/libfdk-aacdec.c
 ===================================================================
---- ffmpeg-4.2.1.orig/libavcodec/libfdk-aacdec.c
-+++ ffmpeg-4.2.1/libavcodec/libfdk-aacdec.c
+--- a/libavcodec/libfdk-aacdec.c
++++ b/libavcodec/libfdk-aacdec.c
 @@ -37,6 +37,54 @@
  #define AAC_PCM_MAX_OUTPUT_CHANNELS AAC_PCM_OUTPUT_CHANNELS
  #endif
@@ -102,7 +102,7 @@ Index: ffmpeg-4.2.1/libavcodec/libfdk-aacdec.c
  enum ConcealMethod {
      CONCEAL_METHOD_SPECTRAL_MUTING      =  0,
      CONCEAL_METHOD_NOISE_SUBSTITUTION   =  1,
-@@ -224,6 +272,11 @@ static av_cold int fdk_aac_decode_init(A
+@@ -229,6 +277,11 @@ static av_cold int fdk_aac_decode_init(A
      FDKAACDecContext *s = avctx->priv_data;
      AAC_DECODER_ERROR err;
  
@@ -114,11 +114,11 @@ Index: ffmpeg-4.2.1/libavcodec/libfdk-aacdec.c
      s->handle = aacDecoder_Open(avctx->extradata_size ? TT_MP4_RAW : TT_MP4_ADTS, 1);
      if (!s->handle) {
          av_log(avctx, AV_LOG_ERROR, "Error opening decoder\n");
-Index: ffmpeg-4.2.1/libavcodec/libfdk-aacenc.c
+Index: b/libavcodec/libfdk-aacenc.c
 ===================================================================
---- ffmpeg-4.2.1.orig/libavcodec/libfdk-aacenc.c
-+++ ffmpeg-4.2.1/libavcodec/libfdk-aacenc.c
-@@ -34,6 +34,48 @@
+--- a/libavcodec/libfdk-aacenc.c
++++ b/libavcodec/libfdk-aacenc.c
+@@ -35,6 +35,48 @@
  #define FDKENC_VER_AT_LEAST(vl0, vl1) 0
  #endif
  
@@ -167,7 +167,7 @@ Index: ffmpeg-4.2.1/libavcodec/libfdk-aacenc.c
  typedef struct AACContext {
      const AVClass *class;
      HANDLE_AACENCODER handle;
-@@ -126,6 +168,11 @@ static av_cold int aac_encode_init(AVCod
+@@ -128,6 +170,11 @@ static av_cold int aac_encode_init(AVCod
      int aot = FF_PROFILE_AAC_LOW + 1;
      int sce = 0, cpe = 0;
  

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 10 10:11:32 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Remove second hunk of ffmpeg-CVE-2020-22046.patch, that contains 
+  a goto to a none existing label. In order to distinguish this
+  patch from the original, I renamed it to
+  ffmpeg-4.4-CVE-2020-22046.patch
+- While at it, refresh the other patches with offsets
+
+-------------------------------------------------------------------
+Thu Jul  8 06:43:28 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2020-22046.patch: Backport from upstream to fix
+  a denial of service vulnerability exists in FFmpeg 4.2 due to a
+  memory leak in the avpriv_float_dsp_allocl function in
+  libavutil/float_dsp.c (bsc#1186849).
+- Add ffmpeg-CVE-2021-33815.patch: Backport from upstream to fix
+  dwa_uncompress in libavcodec/exr.c in FFmpeg 4.4 allows an
+  out-of-bounds array access because dc_count is not strictly
+  checked (bsc#1186865).
+
+-------------------------------------------------------------------
 Fri Jun  4 12:29:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable SVT-AV1 encoding

@@ -24,11 +24,11 @@ what dlopening programs have to deal with.
  configure |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: ffmpeg-4.3.1/configure
+Index: b/configure
 ===================================================================
---- ffmpeg-4.3.1.orig/configure
-+++ ffmpeg-4.3.1/configure
-@@ -3794,10 +3794,10 @@ SLIBPREF="lib"
+--- a/configure
++++ b/configure
+@@ -3833,10 +3833,10 @@ SLIBPREF="lib"
  SLIBSUF=".so"
  SLIBNAME='$(SLIBPREF)$(FULLNAME)$(SLIBSUF)'
  SLIBNAME_WITH_VERSION='$(SLIBNAME).$(LIBVERSION)'
