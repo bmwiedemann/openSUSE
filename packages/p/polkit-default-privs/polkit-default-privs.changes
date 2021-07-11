@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 08 11:49:36 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210708.6401347:
+  * fprint.device.enroll: keep restrictive profile in sync with upstream
+
+-------------------------------------------------------------------
+Thu Jul 08 11:42:03 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210708.c4d6bf4:
+  * kdenetwork-filesharing: align with upstream (#49)
+
+-------------------------------------------------------------------
+Thu Jul 08 09:47:18 UTC 2021 - wolfgang.frisch@suse.com
+
+- Update to version 1550+20210701.3047fcb:
+  * ModemManager1.USSD: fix inconsistencies in standard and easy profiles
+  * powerdevil.discretegpuhelper.hasdualgpu: align with upstream settings
+  * cupspkhelper.mechanism.job-edit: align with upstream setting
+  * org.fedoraproject.FirewallD1.info: don't be more restrictive than the 'standard' profile
+  * remove org.selinux.* (policycoreutils) since they no longer exist in Factory
+  * remove cinnamon.controlcenter.datetime.configure: no longer packaged
+  * net.connman.vpn.secret: fix invalid label "auth_admin_keep_session"
+
+-------------------------------------------------------------------
 Tue Jun 15 09:31:54 UTC 2021 - wolfgang.frisch@suse.com
 
 - Update to version 1550+20210615.e149f78:

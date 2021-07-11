@@ -1829,4 +1829,25 @@ for 12.3</comment>
   * Whitelist setroubleshoot (boo#1186344)</comment>
     <requestid>900117</requestid>
   </revision>
+  <revision rev="200" vrev="1">
+    <srcmd5>6796ef747d575bcadfea7670c4fcc171</srcmd5>
+    <version>1550+20210708.6401347</version>
+    <time>1626045884</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20210708.6401347:
+  * fprint.device.enroll: keep restrictive profile in sync with upstream
+
+- Update to version 1550+20210708.c4d6bf4:
+  * kdenetwork-filesharing: align with upstream (#49)
+
+- Update to version 1550+20210701.3047fcb:
+  * ModemManager1.USSD: fix inconsistencies in standard and easy profiles
+  * powerdevil.discretegpuhelper.hasdualgpu: align with upstream settings
+  * cupspkhelper.mechanism.job-edit: align with upstream setting
+  * org.fedoraproject.FirewallD1.info: don't be more restrictive than the 'standard' profile
+  * remove org.selinux.* (policycoreutils) since they no longer exist in Factory
+  * remove cinnamon.controlcenter.datetime.configure: no longer packaged
+  * net.connman.vpn.secret: fix invalid label &quot;auth_admin_keep_session&quot;</comment>
+    <requestid>904755</requestid>
+  </revision>
 </revisionlist>
