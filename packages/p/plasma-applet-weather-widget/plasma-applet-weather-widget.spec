@@ -1,7 +1,7 @@
 #
 # spec file for package plasma-applet-weather-widget
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/.
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define lang_name plasma_applet_org.kde.weatherWidget
 
@@ -23,12 +24,12 @@ Release:        0
 Summary:        Plasma 5 widget for displaying weather information
 License:        GPL-2.0-only
 Group:          System/GUI/KDE
-Url:            https://github.com/kotelnik/plasma-applet-weather-widget
+URL:            https://github.com/kotelnik/plasma-applet-weather-widget
 Source:         https://github.com/kotelnik/plasma-applet-weather-widget/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake(KF5Plasma)
-BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
+BuildRequires:  cmake(KF5Plasma)
+BuildRequires:  cmake(Qt5Quick)
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtxmlpatterns-imports
 
@@ -59,7 +60,9 @@ mv translations/po/%{lang_name}_hu_HU.po \
 %dir %{_kf5_plasmadir}/plasmoids
 %{_kf5_plasmadir}/plasmoids/org.kde.weatherWidget
 %{_kf5_qmldir}/org/kde/private/weatherWidget
+%if %{pkg_vcmp cmake(KF5Plasma) < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.weatherWidget.desktop
+%endif
 
 %files lang -f %{name}.lang
 

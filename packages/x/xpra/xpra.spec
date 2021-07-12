@@ -22,7 +22,7 @@
 %endif
 %bcond_with pandoc
 
-%define xpra_ver 4.2
+%define xpra_ver 4.2.1
 %define html5_ver 4.2
 %define uglifyjs_ver 3.13.9
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$

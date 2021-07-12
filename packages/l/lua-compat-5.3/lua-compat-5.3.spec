@@ -21,13 +21,13 @@
 
 # bit32 (dropped in 5.4) is the native Lua 5.2 bit manipulation library, in the version
 # from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
-%if "%{lua_version}" >= "5.4" 
+%if "%{lua_version}" >= "5.4" || "%{lua_version}" < "5.2"
 %bcond_with bit32
 %else
 %bcond_without bit32
 %endif
-
-Version:        0.9
+%define mversion 0.10
+Version:        %{mversion}
 Release:        0
 Summary:        Lua-5.3-style APIs for Lua 5.2 and 5.1
 License:        MIT
@@ -54,8 +54,11 @@ This package provides terminal operations for Lua
 
 %if %{without bit32}
 %package -n %{flavor}-bit32
+Version:        5.3.5.1
+Release:        0
 Summary:        Lua bit manipulation library
 Group:          Development/Libraries/Other
+%lua_provides -n lua-bit32
 
 %description -n %{flavor}-bit32
 bit32 is the native Lua 5.2 bit manipulation library, in the version
@@ -63,7 +66,7 @@ from Lua 5.3; it is compatible with Lua 5.1, 5.2 and 5.3.
 %endif
 
 %prep
-%autosetup -n %{mod_name}-%{version}
+%autosetup -n %{mod_name}-%{mversion}
 
 %build
 export CC="${COMPILER:-gcc}" DEF="" SRC="" CFLAGS="-Wall -Wextra $(pkg-config --cflags lua%{lua_version}) -Ic-api -O2 -fPIC"

@@ -65,4 +65,17 @@
 </comment>
     <requestid>898547</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>a25fbd463d3c2d6677e5cd16f60226b3</srcmd5>
+    <version>unknown</version>
+    <time>1626045912</time>
+    <user>dimstar_suse</user>
+    <comment>- Use %lua_provides for bit32
+- Create bit32 for Lua 5.1
+- Use correct bit32 version
+- Update to version 0.10
+  * Fix bit32 conversion issues for Lua 5.1 on 32 bit
+</comment>
+    <requestid>905681</requestid>
+  </revision>
 </revisionlist>

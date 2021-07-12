@@ -122,4 +122,13 @@
     <comment>fix installation after python2 removal (forwarded request 801753 from seife)</comment>
     <requestid>801757</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>2b47bddf0615d59d9fcc296b47cd6bee</srcmd5>
+    <version>1.21</version>
+    <time>1626045900</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libexec_fix.patch to rewrite module paths from /usr/lib/ to /usr/libexec/
+</comment>
+    <requestid>905639</requestid>
+  </revision>
 </revisionlist>

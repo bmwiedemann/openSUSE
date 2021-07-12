@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 11 01:51:19 UTC 2021 - Jonathan Papineau <jonathan@jpapineau.ca>
+
+- Add libexec_fix.patch to rewrite module paths from /usr/lib/ to /usr/libexec/
+
+-------------------------------------------------------------------
 Fri May  8 06:18:53 UTC 2020 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - fix installation after python2 removal:

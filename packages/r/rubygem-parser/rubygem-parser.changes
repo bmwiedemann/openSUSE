@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 11 10:51:59 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 3.0.2.0
+
+  API modifications:
+   * Bump maintenance branches to 3.0.2, 2.7.4, and 2.6.8 (#805) (Koichi ITO)
+
+  Features implemented:
+   * lexer.rl: reject `\u` after control/meta escape chars. (#807) (Ilya Bylich)
+   * ruby31.y: allow "command" syntax in endless method definition (#801) (Koichi ITO)
+
+-------------------------------------------------------------------
 Fri May 14 16:21:31 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 3.0.1.1

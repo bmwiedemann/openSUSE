@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 11 14:10:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %lua_provides for bit32
+- Create bit32 for Lua 5.1
+- Use correct bit32 version
+- Update to version 0.10
+  * Fix bit32 conversion issues for Lua 5.1 on 32 bit
+
+-------------------------------------------------------------------
 Tue Jun  8 20:35:28 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Split bit32 into separate package

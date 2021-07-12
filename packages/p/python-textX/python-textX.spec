@@ -1,7 +1,7 @@
 #
 # spec file for package python-textX
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,11 +29,17 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?sle_version} == 150200 || 0%{?sle_version} == 150300
+BuildRequires:  python2-xml
+%endif
 Requires:       python-Arpeggio >= 1.9.0
 Requires:       python-click >= 7.0
 Requires:       python-setuptools
+%if "%{python_flavor}" == "python2"
+Requires:       python2-xml
+%endif
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Obsoletes:      %{name}-doc
 BuildArch:      noarch
 # SECTION tests

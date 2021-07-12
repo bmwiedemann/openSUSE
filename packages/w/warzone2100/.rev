@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>888582</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d9917e6433fac748e5c6ae71bb7b800b</srcmd5>
+    <version>4.1.0</version>
+    <time>1626045898</time>
+    <user>dimstar_suse</user>
+    <comment>Updated to 4.1.0</comment>
+    <requestid>905607</requestid>
+  </revision>
 </revisionlist>

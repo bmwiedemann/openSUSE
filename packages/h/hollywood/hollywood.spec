@@ -1,7 +1,7 @@
 #
 # spec file for package hollywood
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,14 +26,16 @@ License:        Apache-2.0 AND CC0-1.0
 Group:          Amusements/Toys/Other
 URL:            https://launchpad.net/hollywood
 Source:         https://launchpad.net/hollywood/trunk/%{version}/+download/hollywood_%{version}.orig.tar.gz#/%{name}-%{version}.tar.gz
-Recommends:     byobu
+# PATCH-FIX-OPENSUSE libexec_fix.patch -- rewrite module paths from /usr/lib/ to /usr/libexec/
+Patch0:         libexec_fix.patch
 Recommends:     apg
 Recommends:     bmon
+Recommends:     byobu
 # in debian: bsdmainutils
 Recommends:     util-linux
-Recommends:     coreutils
 Recommends:     ccze
 Recommends:     cmatrix
+Recommends:     coreutils
 Recommends:     htop
 Recommends:     jp2a
 Recommends:     mlocate
@@ -85,6 +87,7 @@ and statistics, like any good computer screen on Wall Street.
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 

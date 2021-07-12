@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jul 11 06:06:50 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.11.1
+  * Fix sdist error when VCS has uncommitted renamed files
+    gh#PyO3/maturin#585
+  * Add `maturin completions <shell>` command to generate shell
+    completions
+    gh#PyO3/maturin#586
+- Changes in 0.11.0:
+  * Add support for reading metadata from PEP 621 project table in
+    `pyproject.toml`
+    gh#PyO3/maturin#555
+  * Users should migrate away from the old
+    `[package.metadata.maturin]` table of `Cargo.toml` to this new
+    `[project]` table of `pyproject.toml`
+  * Add PEP 656 musllinux support
+    gh#PyO3/maturin#543
+  * `--manylinux` is now called `--compatibility` and supports
+    musllinux
+  * The pure rust install layout changed from just the shared
+    library to a python module that reexports the shared library.
+    This should have now observable consequences for users of the
+    created wheel expect that `my_project.my_project` is now also
+    importable (and equal to just `my_project`)
+  * Add support for packaging type stubs in pure Rust project
+    layout
+    gh#PyO3/maturin#567
+  * `Cargo.toml`'s `authors` field is now optional per Rust
+    RFC 3052
+    gh#PyO3/maturin#573
+  * Allow dotted keys in `Cargo.toml` by switch from `toml_edit` to
+    `toml` crate
+    gh#PyO3/maturin#577
+
+-------------------------------------------------------------------
 Sat May 22 14:37:13 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.10.6

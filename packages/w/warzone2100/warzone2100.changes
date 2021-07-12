@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jul 10 16:13:13 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.1.0
+  * Merge of the “camBalance” mod that revamps campaign balance and
+    fixes numerous issues
+  * Numerous multiplayer balance tweaks (see full changelog for
+    details)
+  * Fix fog, add an option to toggle it on
+  * New design menu stats delta display
+  * Add a single player quit confirmation screen
+  * Allow building modules/derricks in a row (with drag & build)
+  * Add support for binding same keys to multiple actions
+    in non-conflicting contexts
+  * Allow assigning key bindings to mouse keys
+  * Add “selection without group” hotkeys
+  * Move the whole group to the target location, not only the
+    command droid
+  * New cheat makemehero makes selected units hero rank
+  * General improvements to Cobra AI / accounts for new balance
+    changes
+  * Fix: Muzzle flash effects for Gauss, laser, and all kinds of
+    weapons
+  * Fix: Several crash & UI soft-lock issues
+  * Fix: Various save-loading issues
+  * Fix: Do not handle RMB click while panning the camera
+  * Fix: Unclosable panels and flicker when using the Intelligence
+    map and Design menus
+  * Fix: Heavy CPU usage on the Intelligence map
+  * Fix: VTOL collision with ground units
+  * Fix: Normalmapping of 3D models in menus / buttons
+  * Many other bug fixes
+
+-------------------------------------------------------------------
 Sun Apr 25 07:44:03 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.0.1

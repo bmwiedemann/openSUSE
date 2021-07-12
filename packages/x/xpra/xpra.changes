@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Jul 11 05:16:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.1
+  build and packaging fixes:
+  * missing dependencies
+  * remove unused outdated code
+  * remove runtime dependency on distutils for 'which'
+  * cryptic error when a pkg_config file is missing
+  proxy server:
+  * deadlocks when queues fill up too quickly
+  * honour mode and display
+  * disconnections under heavy load
+  Network:
+  * fix RFB server protocol, sockets not timing out with VNC
+    clients
+  * invalid error when bind option points to a directory
+  * detect wifi network connections more reliably
+  * fix 'xpra' packet type auto detection
+  * default to ssl-mode if the 'wss' socket option is not
+    specified
+  * 'keydata' connection attribute should override other options
+  * correct exit code for encryption errors
+  Encodings:
+  * disable vaapi in ffmpeg codec by default (crashy / buggy)
+  * NVENC errors when retrying after a transient failure
+  * scroll detection bugs
+  * webp encoder invalid memory access (corruption)
+  Misc:
+  * notification forwarding errors with SVG icons
+  * disable SVG icon resizing (potential crashes on some
+    platforms)
+  * missing log prefix for 'xpra recover' subcommand
+  * faster server startup failures: don't wait for things that
+    were not started (ie: audio)
+  * fix commands started twice when upgrading (ie: ibus-daemon)
+  * local start with explicit attach was broken on Posix
+  * 'attach' option should not be forwarded to the server (which
+    then fails)
+  * invalid window resize counter (used for resize loop
+    prevention)
+  * missing icon errors when html5 client disconnects from
+    system-wide proxy server
+  * file transfer errors when a 'top' client is connected
+  * don't claim that non-interactive clients use the screen
+  * retry once after X11 query tree errors during startup
+  * provide XDG_RUNTIME_DIR if it is not defined
+  * add new 3x4K Xdummy modeline
+  * minor cosmetic and debug logging fixes
+
+-------------------------------------------------------------------
 Sun Jun 20 11:22:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Add python3-pyinotify as recommended dependency to allow watch
