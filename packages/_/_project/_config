@@ -435,6 +435,7 @@ Prefer: libftdi-devel
 Prefer: tensorflow2
 
 # have choice for python3-sip: python3-sip-devel python3-sip4
+Prefer: python38-sip-devel python36-sip-devel python39-sip-devel
 Prefer: -python36-sip4 -python36-sip4-devel
 Prefer: -python38-sip4 -python38-sip4-devel
 Prefer: -python39-sip4 -python39-sip4-devel
