@@ -21,12 +21,12 @@
 %define qmmp_ver_max 1.5.99
 %define mver    1.5
 Name:           qmmp-plugin-pack
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
 URL:            https://qmmp.ylsoftware.com/plugins.php
-Source:         https://qmmp.ylsoftware.com/files/plugins/%{name}-%{version}.tar.bz2
+Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libqmmp-plugins <= %{qmmp_ver_max}
