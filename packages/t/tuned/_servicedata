@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/redhat-performance/tuned</param>
+              <param name="changesrevision">bc3f737a0080d38863915217c2e4482bbb77b322</param></service></servicedata>

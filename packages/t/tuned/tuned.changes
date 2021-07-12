@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 09 11:13:35 UTC 2021 - trenn@suse.de
+
+- Update to version 2.15.0+git.1625694366.bc3f737:
+  * bootloader: support for systems that don't have grub installed
+  * Removing depedency on python-decorator package.
+  * Adding support for rpm-ostree system to bootloader plugin.
+  * profiles: drop sched_ tuning where appropriate
+  * scheduler: abstract sched_ and numa_ knobs
+  * realtime-virtual-*: Set irqaffinity through kernel command line
+  * After error while switching profiles attribute _active_profiles is not changed back.
+    That causes issues with wrong signals (and also more issues with restart after etc)
+- Enhance _service file
+
+-------------------------------------------------------------------
 Mon Apr 19 10:40:34 UTC 2021 - trenn@suse.de
 
 - Update _service file to always get latest sources from github
