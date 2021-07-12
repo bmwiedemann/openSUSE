@@ -1652,4 +1652,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
     <comment></comment>
     <requestid>902479</requestid>
   </revision>
+  <revision rev="196" vrev="4">
+    <srcmd5>dd9a60fd17827e57e60e90a3a5384eaa</srcmd5>
+    <version>7.2.0</version>
+    <time>1626118846</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905870</requestid>
+  </revision>
 </revisionlist>

@@ -253,7 +253,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %files -n libdigikamcore%{soversion}
 %license COPYING*
-%doc AUTHORS ChangeLog NEWS README.md
+%doc AUTHORS NEWS README.md
 %{_kf5_libdir}/libdigikamcore.so.%{soversion}.*
 %{_kf5_libdir}/libdigikamdatabase.so.%{soversion}.*
 %{_kf5_libdir}/libdigikamgui.so.%{soversion}.*
