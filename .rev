@@ -76,4 +76,30 @@
 </comment>
     <requestid>827089</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1222e6412e557670d3b58be150d464c8</srcmd5>
+    <version>0.11.3</version>
+    <time>1626118810</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.3:
+  - fix package bundling to include proselintrc (#1195)
+- Update to 0.11.2:
+  - correct false positives in lexical_illusions.misc
+  - fix package metadata and pypi upload (hotfix release)
+  - add warning for missing corpus
+  - reduce false positives for uncomparables.misc
+  - correct &quot;attorney and not a republic&quot; mondegreen
+  - correct unbound line and column in error printing
+  - fix false positive in misc.but
+  - add --config CLI argument
+  - add exceptions for proselint.tools.existence_check
+  - use regex for lexical_illusions.misc
+  - implement project-wide proselintrc
+Removed upstreamed patches:
+  - disable-empty-test.patch
+  - remove_nose.patch
+  - test-use-sys-executable.patch
+</comment>
+    <requestid>905848</requestid>
+  </revision>
 </revisionlist>
