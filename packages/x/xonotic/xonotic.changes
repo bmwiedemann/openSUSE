@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 11 16:45:49 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add gcc11-typedef-alignment.patch to fix build with GCC 11.
+
+-------------------------------------------------------------------
 Fri Mar 12 23:14:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - move licenses to licensedir 

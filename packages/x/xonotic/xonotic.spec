@@ -30,6 +30,8 @@ Source2:        xonotic.service
 Source3:        xonotic.init
 Source4:        %{name}.changes
 Source100:      xonotic.appdata.xml
+# PATCH-FIX-UPSTREAM gcc11-typedef-alignment.patch -- Fix build with GCC 11 on x86_64: https://gitlab.com/xonotic/darkplaces/-/issues/361
+Patch1:         gcc11-typedef-alignment.patch
 BuildRequires:  SDL2-devel
 BuildRequires:  alsa-devel
 BuildRequires:  d0_blind_id-devel
@@ -79,6 +81,9 @@ Data (textures, maps, sounds and models) required to play xonotic.
 
 %prep
 %setup -q -n Xonotic
+pushd source/darkplaces
+%patch1 -p1
+popd
 rm -rf misc/buildfiles/ # use system libs
 sed -i \
 		-e "/^EXE_/s:darkplaces:%{name}-%{version}:" \

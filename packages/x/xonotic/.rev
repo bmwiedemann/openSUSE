@@ -47,4 +47,13 @@
     <comment></comment>
     <requestid>878931</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>bf89e5989489c27a3580386387b9d275</srcmd5>
+    <version>0.8.2</version>
+    <time>1626118829</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gcc11-typedef-alignment.patch to fix build with GCC 11.
+</comment>
+    <requestid>905829</requestid>
+  </revision>
 </revisionlist>
