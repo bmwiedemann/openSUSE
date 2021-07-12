@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  5 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.500
+   see /usr/share/doc/packages/perl-Email-Sender/Changes
+
+  2.500     2021-07-04 13:26:47-04:00 America/New_York
+          - version bumped to account for change in fractional part precision
+
+-------------------------------------------------------------------
 Mon Jun 21 03:09:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.500

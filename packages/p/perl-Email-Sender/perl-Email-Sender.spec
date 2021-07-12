@@ -18,7 +18,7 @@
 
 %define cpan_name Email-Sender
 Name:           perl-Email-Sender
-Version:        1.500
+Version:        2.500
 Release:        0
 Summary:        Library for sending email
 License:        Artistic-1.0 OR GPL-1.0-or-later
