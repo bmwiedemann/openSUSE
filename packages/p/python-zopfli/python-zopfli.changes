@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 12 11:54:56 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.1.8
+  * add Python 3.9, remove 3.5 (EOL)
+
+-------------------------------------------------------------------
 Wed May 20 12:25:13 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Initial release of python-zopfli
