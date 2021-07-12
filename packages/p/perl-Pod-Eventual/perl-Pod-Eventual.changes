@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  4 03:07:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.094002
+   see /usr/share/doc/packages/perl-Pod-Eventual/Changes
+
+  0.094002  2021-07-03 13:16:26-04:00 America/New_York
+          - fix typo (thanks, BooK!)
+          - update author contact info
+          - document perl version policy
+
+-------------------------------------------------------------------
 Mon Nov 25 07:38:18 UTC 2013 - coolo@suse.com
 
 - updated to 0.094001
