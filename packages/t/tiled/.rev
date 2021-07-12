@@ -613,4 +613,24 @@
 - Remove tiled-endl.patch: upstreamed</comment>
     <requestid>898174</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>5c5f70c844d1f45a8f7c7d3e38dfcce0</srcmd5>
+    <version>1.7.1</version>
+    <time>1626118822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.1:
+  * Don't save export target and format to exported files
+  * Fixed crashes resulting from the Tile Animation Editor
+  * Fixed possible crash when pasting multi-layer stamp (#3097)
+  * Fixed possible crash when restoring expanded layers in Objects view
+  * Fixed parallax factor getting lost when layer is cloned (#3077)
+  * Fixed an issue with synchronizing selected tiles to current stamp (#3095)
+  * Commands: Fixed possible crash in Edit Commands window
+  * Commands: Automatically quote the command executable
+  * Commands: Improved starting directory for executable file chooser
+  * Commands: Fixed the 'Clear' button to reset the shortcut
+  * Updated to Sentry 0.4.11
+  * Updated French translation</comment>
+    <requestid>905772</requestid>
+  </revision>
 </revisionlist>
