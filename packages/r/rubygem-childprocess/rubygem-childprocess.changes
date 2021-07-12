@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 24 17:10:49 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 4.1.0
+ see installed CHANGELOG.md
+
+  ### Version 4.1.0 / 2021-06-08
+  
+  * [#170](https://github.com/enkessler/childprocess/pull/170): Update gem homepage to use `https://`
+  * [#177](https://github.com/enkessler/childprocess/pull/177): Add ARM64-macos support
+  
+
+-------------------------------------------------------------------
 Wed Aug 26 14:53:48 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 4.0.0
