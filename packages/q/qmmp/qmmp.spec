@@ -21,12 +21,12 @@
 %bcond_with faad
 %bcond_with restricted
 Name:           qmmp
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Qt-based Multimedia Player
 License:        GPL-2.0-or-later
 URL:            https://qmmp.ylsoftware.com/
-Source:         https://qmmp.ylsoftware.com/files/%{name}-%{version}.tar.bz2
+Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 # PATCH-FIX-UPSTREAM qmmp-fix_cdda_version.patch pascal.bleser@opensuse.org -- Fix header detection for cdparanoia cdda.h.
 Patch0:         %{name}-fix_cdda_version.patch

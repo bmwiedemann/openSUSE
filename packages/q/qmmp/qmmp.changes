@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 12 10:28:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.1
+  * added application startup optimization
+  * added Korean translation
+  * enabled Matroska container by default in the ffmpeg plugin
+  * removed mp3lyrics.org lyrics provider
+  * improved qsui plugin:
+    + added waveform seekbar optimization
+    + fixed waveform generation for 16-bit samples
+  * fixed plugin cache cleanup
+  * fixed build without mpg123
+  * fixed ladspa plugin regression
+
+-------------------------------------------------------------------
 Mon May 24 06:49:39 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.0
