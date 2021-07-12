@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 12 13:16:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.11.3:
+  - fix package bundling to include proselintrc (#1195)
+
+-------------------------------------------------------------------
+Thu Jul  8 00:03:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.11.2:
+  - correct false positives in lexical_illusions.misc
+  - fix package metadata and pypi upload (hotfix release)
+  - add warning for missing corpus
+  - reduce false positives for uncomparables.misc
+  - correct "attorney and not a republic" mondegreen
+  - correct unbound line and column in error printing
+  - fix false positive in misc.but
+  - add --config CLI argument
+  - add exceptions for proselint.tools.existence_check
+  - use regex for lexical_illusions.misc
+  - implement project-wide proselintrc
+Removed upstreamed patches:
+  - disable-empty-test.patch
+  - remove_nose.patch
+  - test-use-sys-executable.patch
+
+-------------------------------------------------------------------
 Sun Aug 16 17:49:59 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Replace the sed command from the previous commit with
