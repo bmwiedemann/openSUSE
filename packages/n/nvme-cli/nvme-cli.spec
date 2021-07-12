@@ -36,6 +36,7 @@ BuildRequires:  rubygem(asciidoctor)
 %ifarch x86_64 aarch64 i586
 Requires(post): dmidecode
 %endif
+Recommends:     bash-completion
 
 %description
 NVM Express (NVMe) is a direct attached storage interface. The
@@ -63,7 +64,7 @@ sed -i '/make.*/d' regress
 %install
 make PREFIX=%{_prefix} DESTDIR=%{buildroot} UDEVRULESDIR=%{_udevrulesdir} install-bin install-man install-udev install-systemd %{?_smp_mflags}
 install -m 644 -D /dev/null %{buildroot}%{_sysconfdir}/nvme/hostnqn
-install -m 644 -D completions/bash-nvme-completion.sh %{buildroot}%{_datadir}/bash_completion/completions/nvme
+install -m 644 -D completions/bash-nvme-completion.sh %{buildroot}%{_datadir}/bash-completion/completions/nvme
 %ifarch x86_64 aarch64 i586
 install -m 744 -D scripts/det-hostnqn.sh %{buildroot}%{_sbindir}/nvme-gen-hostnqn
 %endif
@@ -109,9 +110,7 @@ fi
 %{_sbindir}/nvme-gen-hostnqn
 %endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
-%dir %{_datadir}/bash_completion
-%dir %{_datadir}/bash_completion/completions/
-%{_datadir}/bash_completion/completions/nvme
+%{_datadir}/bash-completion/completions/nvme
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
 %{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules
 %{_unitdir}/nvmf-autoconnect.service
