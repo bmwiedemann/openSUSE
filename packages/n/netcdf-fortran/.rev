@@ -173,4 +173,14 @@
   proper ABI versioning. (forwarded request 869472 from eeich)</comment>
     <requestid>869477</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>26cf86042ed8d594108a341c1a410179</srcmd5>
+    <version>4.5.3</version>
+    <time>1626118827</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename nf-fortran-config back to nf-config.
+  * Include nf-config in netcdf-fortran*-devel.
+  * Remove netcdf-fortran package (bsc#1187910). (forwarded request 903575 from eeich)</comment>
+    <requestid>904648</requestid>
+  </revision>
 </revisionlist>

@@ -371,8 +371,6 @@ This package contains the %{mpi_flavor} version of utility functions for
 working with NetCDF files.
 %endif
 
-%{hpc_master_package}
-
 %package -n     %{libname}%{hpc_package_name_tail %_ver}
 Summary:        Shared libraries for the NetCDF scientific data format
 Group:          System/Libraries
@@ -431,7 +429,7 @@ and sharing of array-oriented scientific data.
 This package contains all files needed to create projects that use
 %{?mpi_flavor:the %mpi_flavor version of} NetCDF.
 
-%{hpc_master_package devel}
+%{hpc_master_package devel -O netcdf-fortran%{?hpc_package_name_tail}}
 
 %package devel-static
 Summary:        Static development files for %{name}
@@ -500,8 +498,6 @@ export F77="mpif77"
 make install DESTDIR="%{buildroot}"
 
 rm -f %{buildroot}%{hpc_libdir}/*.la
-
-mv %{buildroot}%{hpc_bindir}/nf-config %{buildroot}%{hpc_bindir}/nf-fortran-config
 
 %hpc_write_modules_files
 #%%Module1.0#####################################################################
@@ -580,11 +576,8 @@ export F77="mpif77"
 /sbin/ldconfig -N %{hpc_libdir}
 %hpc_module_delete_if_default
 
-%files
-%doc COPYRIGHT README.md RELEASE_NOTES.md
-%{hpc_bindir}/
-
 %files -n %{libname}%{hpc_package_name_tail %_ver}
+%doc COPYRIGHT README.md RELEASE_NOTES.md
 %{hpc_dirs}
 %{hpc_modules_files}
 %{hpc_libdir}/libnetcdff.so.*
@@ -596,6 +589,7 @@ export F77="mpif77"
 %{hpc_libdir}/*.so
 %dir %{hpc_datadir}
 %dir %{hpc_mandir}
+%{hpc_bindir}/
 %{hpc_mandir}/man3/
 %{hpc_libdir}/libnetcdff.settings
 

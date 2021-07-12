@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  1 15:30:24 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Rename nf-fortran-config back to nf-config.
+  * Include nf-config in netcdf-fortran*-devel.
+  * Remove netcdf-fortran package (bsc#1187910).
+
+-------------------------------------------------------------------
 Wed Feb  3 18:58:11 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Change 'Requires:' to other HPC packages to %requires_eq to depend
