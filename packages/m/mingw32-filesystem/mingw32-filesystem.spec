@@ -56,6 +56,7 @@ Provides:       mingw32(uxtheme.dll)
 Provides:       mingw32(d2d1.dll)
 Provides:       mingw32(d3d11.dll)
 Provides:       mingw32(dwrite.dll)
+Provides:       mingw32(ncrypt.dll)
 Requires:       mingw32-cross-breakpad-tools
 Requires:       python3
 Requires:       rpm

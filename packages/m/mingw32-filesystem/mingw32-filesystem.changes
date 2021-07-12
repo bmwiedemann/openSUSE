@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 12 14:28:25 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Add missing provide for ncrypt.dll
+
+-------------------------------------------------------------------
 Mon Jun 14 10:47:21 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir (boo#1185671)
