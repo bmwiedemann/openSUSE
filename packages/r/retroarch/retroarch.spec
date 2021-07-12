@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.9.1
+Version:        1.9.6
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
@@ -76,10 +76,10 @@ BuildRequires:  pkgconfig(libswscale)
 
 # Shared data
 Recommends:     retroarch-joypad-autoconfig
-Recommends:     retroarch-assets
 Recommends:     libretro-core-info
 Recommends:     libretro-database
 Recommends:     libretro-glsl-shaders
+Recommends:     retroarch-assets
 
 # Emulation cores
 
@@ -223,8 +223,7 @@ export CXXFLAGS="$CFLAGS"
     --enable-vulkan \
 %endif
     --enable-7zip \
-    --enable-mmap \
-    --disable-git_version
+    --enable-mmap
 make %{?_smp_mflags}
 
 %install

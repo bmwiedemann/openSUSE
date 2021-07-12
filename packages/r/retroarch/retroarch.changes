@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jul 04 15:05:26 UTC 2021 - i@guoyunhe.me
+
+- Remove unused --disable-git_version build option
+- Update to version 1.9.6:
+  * ARCHIVE: Fix archive delimiter detection when file path contains no slashes
+  * AUDIO/XAUDIO2: Fail instead of crashing when disconnecting an audio device
+  * CHEEVOS: Reset cached progress each time menu is opened
+  * CRT/SWITCHRES: Add support for switchres.ini core and directory overrides
+  * GFX: Fix uninitialized variables in gfx_display_draw_cursor
+  * HISTORY: Hide 'Add to Favorites' when viewing an entry of the favorites playlist
+  * INPUT: 'Analog to Digital Type' usability improvements
+  * INPUT: Add support for mapping multiple controllers to a single input device
+  * INPUT/REMAPPING: Add support for mapping multiple controllers to a single input device
+  * INPUT/LIGHTGUN: Bind lightgun trigger to first mouse button by default
+  * INPUT/WINDOWS/RAWINPUT: Mouse access violation fix
+  * INPUT/UDEV: Only add mouse if it has buttons and add vebose device friendly names
+  * INPUT/UDEV: Skip mouse with no button errors and keep the rest
+  * INPUT/UDEV: Fix Game Focus mode
+  * INPUT/UDEV/X11: Change udev driver for dual lightgun support in X11
+  * LOCALIZATION: Fetch translations from Crowdin
+  * LOCALIZATION: Fix Switchres menu texts
+  * MENU/OZONE: Ensure sidebar display status is updated correctly when performing rapid menu navigation
+  * MENU/XMB: Dynamic wallpaper fix
+  * MENU/XMB: Icon opacity fix
+  * MENU/QT/WIMP: Fix default core detection when playlist file name does not match 'db_name'
+  * PLAYLISTS: Optimise scanning of large rom sets
+  * SECURITY: Plug so-called high-risk vulnerability related to Powershell - avoid injection - don't send speech input as commandline argument
+  * X11: Fix threaded video segfault
+
+-------------------------------------------------------------------
 Fri Apr 30 10:16:56 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.9.1:
@@ -572,7 +602,7 @@ Tue May 21 11:07:53 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 -------------------------------------------------------------------
 Mon Oct 29 08:57:44 UTC 2018 - Ismail Dönmez <idonmez@suse.com>
 
-- Cleanup with spec-cleaner 
+- Cleanup with spec-cleaner
 
 -------------------------------------------------------------------
 Sun Oct 28 17:59:34 UTC 2018 - sean@suspend.net
