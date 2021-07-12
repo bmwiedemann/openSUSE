@@ -1,5 +1,5 @@
 #
-# spec file for package python-pyqt-builder
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -20,11 +20,11 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-%{mname}
-Version:        1.9.1
+Version:        1.10.3
 Release:        0
 Summary:        The PEP 517 compliant PyQt build system
 License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
-URL:            https://www.riverbankcomputing.com/software/pyqt
+URL:            https://www.riverbankcomputing.com/software/pyqt-builder
 Source0:        https://files.pythonhosted.org/packages/source/P/PyQt-builder/PyQt-builder-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -32,7 +32,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-sip-devel >= 5.5
 Requires:       python-wheel
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-PyQt-builder = %{version}-%{release}
 BuildArch:      noarch
 # SECTION Test Requirements
@@ -41,12 +41,12 @@ BuildRequires:  %{python_module sip-devel >= 5.5}
 %python_subpackages
 
 %description
-PyQt-builder is the PEP 517 compliant build system for PyQt and projects that 
-extend PyQt. It extends the sip build system and uses Qt’s qmake to perform the 
+PyQt-builder is the PEP 517 compliant build system for PyQt and projects that
+extend PyQt. It extends the sip build system and uses Qt’s qmake to perform the
 actual compilation and installation of extension modules.
 
-Projects that use PyQt-builder provide an appropriate pyproject.toml file and an 
-optional project.py script. Any PEP 517 compliant frontend, for example 
+Projects that use PyQt-builder provide an appropriate pyproject.toml file and an
+optional project.py script. Any PEP 517 compliant frontend, for example
 sip-install or pip can then be used to build and install the project.
 
 %prep
@@ -62,7 +62,7 @@ sip-install or pip can then be used to build and install the project.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%{python_expand # no real unit tests; check import and bundle entry point 
+%{python_expand # no real unit tests; check import and bundle entry point
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c 'import pyqtbuild'
 %{buildroot}%{_bindir}/pyqt-bundle-%{$python_bin_suffix} -V

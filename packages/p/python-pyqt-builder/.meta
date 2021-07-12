@@ -1,5 +1,5 @@
 <package name="python-pyqt-builder" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <devel project="KDE:Qt5" package="python-pyqt-builder"/>
+  <devel project="KDE:Qt:PyQt" package="python-pyqt-builder"/>
 </package>

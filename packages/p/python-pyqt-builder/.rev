@@ -39,4 +39,23 @@
     <comment></comment>
     <requestid>878416</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>06d8b31d78c035d5e905880fafec1d62</srcmd5>
+    <version>1.10.3</version>
+    <time>1626118785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.3
+  * minor bug fixes for Qt v6.1.2
+
+- Update to version 1.10.1
+  * The default sip module ABI version is now the minimum required
+    by current PyQt versions rather than the latest available from
+    SIP.
+
+- Update to version 1.10.0
+  * Added support for bundling Qt v6.1.
+  * Added support for PyQt6-Charts to pyqt-bundle.
+  * Added support for PyQt6-DataVisualization to pyqt-bundle.</comment>
+    <requestid>904275</requestid>
+  </revision>
 </revisionlist>

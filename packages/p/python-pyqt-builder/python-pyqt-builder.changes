@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jul  4 13:42:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.3
+  * minor bug fixes for Qt v6.1.2
+
+-------------------------------------------------------------------
+Tue Jun 15 13:03:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.1
+  * The default sip module ABI version is now the minimum required
+    by current PyQt versions rather than the latest available from
+    SIP.
+
+-------------------------------------------------------------------
+Thu May 13 18:20:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.10.0
+  * Added support for bundling Qt v6.1.
+  * Added support for PyQt6-Charts to pyqt-bundle.
+  * Added support for PyQt6-DataVisualization to pyqt-bundle.
+
+-------------------------------------------------------------------
 Thu Mar 11 19:48:31 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.9.1
