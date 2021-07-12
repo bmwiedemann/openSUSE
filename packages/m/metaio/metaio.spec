@@ -1,7 +1,7 @@
 #
 # spec file for package metaio
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,14 @@
 
 
 %define shlib libmetaio1
-# SECTION Adapt weird upstream versioning (8.5.0-v1) into something more RPM friendly
-%define ver 8.5.0
-%define rel 1
-# /SECTION
 Name:           metaio
-Version:        %{ver}.%{rel}
+Version:        8.5.1
 Release:        0
 Summary:        LIGO Light-Weight XML library
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Physics
-URL:            http://www.lsc-group.phys.uwm.edu/daswg/projects/metaio.html
-Source:         https://git.ligo.org/lscsoft/metaio/-/archive/release-%{ver}-v%{rel}/metaio-release-%{ver}-v%{rel}.tar.bz2
-BuildRequires:  libtool
+URL:            https://www.lsc-group.phys.uwm.edu/daswg/projects/metaio.html
+Source:         https://software.igwn.org/lscsoft/source/metaio-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(zlib)
 
@@ -62,31 +57,29 @@ Group:          Productivity/Scientific/Physics
 This package contains command-line utilities such as lwtprint to be used with libmetaio.
 
 %prep
-%setup -q -n metaio-release-%{ver}-v%{rel}
+%setup -q
 
 %build
-autoreconf -fvi
-%configure --without-matlab
-make %{?_smp_mflags}
+%configure --without-matlab --disable-static
+%make_build
 
 %install
 %make_install
 
-# REMOVE STATIC LIB AND LIBTOOL ARCHIVE
-find %{buildroot}%{_libdir}/ -name "*.a" -delete -print
+# REMOVE LIBTOOL ARCHIVE
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{shlib} -p /sbin/ldconfig
 %postun -n %{shlib} -p /sbin/ldconfig
 
 %files -n %{shlib}
-%{_libdir}/*.so.*
+%{_libdir}/libmetaio.so.*
 
 %files devel
 %doc AUTHORS README
 %license COPYING
-%{_libdir}/*.so
-%{_libdir}/pkgconfig/*.pc
+%{_libdir}/libmetaio.so
+%{_libdir}/pkgconfig/libmetaio.pc
 %{_includedir}/*
 
 %files utils

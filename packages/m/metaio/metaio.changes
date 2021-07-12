@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 10 15:50:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 8.5.1
+  * add missing header files to metaio.h header
+  * new base64 codec (public domain version)
+- Clean up SPEC file
+
+-------------------------------------------------------------------
 Thu Feb  7 14:32:42 UTC 2019 - badshah400@gmail.com
 
 - Add zlib-devel Requires to -devel pkg.
