@@ -1,7 +1,7 @@
 #
 # spec file for package icingaweb2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013-2017 Icinga Development Team | GPLv2+
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define revision 1
 
 Name:           icingaweb2
-Version:        2.8.2
+Version:        2.8.3
 Release:        %{revision}%{?dist}
 Summary:        Icinga Web 2
 License:        GPL-2.0-or-later AND MIT AND BSD-3-Clause
