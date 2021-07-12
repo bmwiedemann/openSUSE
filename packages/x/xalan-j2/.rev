@@ -207,4 +207,12 @@
     <comment>Add OSGi manifests</comment>
     <requestid>670538</requestid>
   </revision>
+  <revision rev="28" vrev="10">
+    <srcmd5>928ffd1d1ae2c0df4a6c2082f201a433</srcmd5>
+    <version>2.7.2</version>
+    <time>1626118786</time>
+    <user>dimstar_suse</user>
+    <comment>Remove parent reference from pom file</comment>
+    <requestid>904342</requestid>
+  </revision>
 </revisionlist>

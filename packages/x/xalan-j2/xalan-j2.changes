@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  6 07:31:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Remove parent from the pom files, since we are not building
+  with maven
+- Clean-up packaging
+
+-------------------------------------------------------------------
 Fri Feb  1 10:23:16 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Add xalan-j2-serializer-MANIFEST.MF and xalan-j2-MANIFEST.MF

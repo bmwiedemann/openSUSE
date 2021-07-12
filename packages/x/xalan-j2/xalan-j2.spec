@@ -1,7 +1,7 @@
 #
 # spec file for package xalan-j2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Java XSLT processor
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-Url:            http://xalan.apache.org/index.html
+URL:            https://xalan.apache.org/index.html
 Source0:        http://www.apache.org/dist/xalan/xalan-j/source/xalan-j_%{cvs_version}-src.tar.gz
 Source1:        http://repo1.maven.org/maven2/xalan/xalan/%{version}/xalan-%{version}.pom
 Source2:        http://repo1.maven.org/maven2/xalan/serializer/%{version}/serializer-%{version}.pom
@@ -45,14 +45,17 @@ BuildRequires:  javapackages-local
 BuildRequires:  jlex
 BuildRequires:  servletapi5
 BuildRequires:  xml-commons-apis-bootstrap
+#!BuildIgnore:  java-cup
+#!BuildIgnore:  xerces-j2
+#!BuildIgnore:  xml-commons
+#!BuildIgnore:  xml-commons-apis
+#!BuildIgnore:  xml-commons-jaxp-1.3-apis
+#!BuildIgnore:  xml-commons-resolver
 Requires:       jaxp_parser_impl
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       jaxp_transform_impl
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
-#!BuildIgnore:  xerces-j2 xml-commons xml-commons-resolver xml-commons-apis java-cup
-#!BuildIgnore:  xml-commons-jaxp-1.3-apis
 
 %description
 Xalan is an XSLT processor for transforming XML documents into HTML,
@@ -116,6 +119,12 @@ mv tools/xalan2jdoc.jar.no tools/xalan2jdoc.jar
 mv tools/xalan2jtaglet.jar.no tools/xalan2jtaglet.jar
 dos2unix KEYS LICENSE.txt NOTICE.txt xdocs/sources/xsltc/README.xsltc xdocs/sources/xsltc/README.xslt
 
+cp %{SOURCE1} xalan.pom
+cp %{SOURCE2} serializer.pom
+
+%pom_remove_parent xalan.pom
+%pom_remove_parent serializer.pom
+
 %build
 if [ ! -e "$JAVA_HOME" ] ; then export JAVA_HOME="%{java_home}" ; fi
 pushd lib
@@ -152,20 +161,20 @@ jar ufm build/xalan-interpretive.jar %{SOURCE5}
 # jars
 install -d -m 755 %{buildroot}%{_javadir}
 install -p -m 644 build/xalan-interpretive.jar \
-  %{buildroot}%{_javadir}/%{name}-%{version}.jar
+  %{buildroot}%{_javadir}/%{name}.jar
 install -p -m 644 build/xsltc.jar \
-  %{buildroot}%{_javadir}/xsltc-%{version}.jar
+  %{buildroot}%{_javadir}/xsltc.jar
 install -p -m 644 build/serializer.jar \
-  %{buildroot}%{_javadir}/%{name}-serializer-%{version}.jar
-(cd %{buildroot}%{_javadir} && for jar in *-%{version}.jar; do ln -sf ${jar} `echo $jar| sed "s|-%{version}||g"`; done)
+  %{buildroot}%{_javadir}/%{name}-serializer.jar
+
 # pom
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -p -m 644 %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}-%{version}.pom
-%add_maven_depmap %{name}-%{version}.pom %{name}-%{version}.jar
-install -p -m 644 %{SOURCE2} %{buildroot}%{_mavenpomdir}/%{name}-serializer-%{version}.pom
-%add_maven_depmap %{name}-serializer-%{version}.pom %{name}-serializer-%{version}.jar
-install -p -m 644 %{SOURCE3}  %{buildroot}%{_mavenpomdir}/xsltc-%{version}.pom
-%add_maven_depmap xsltc-%{version}.pom xsltc-%{version}.jar -f xsltc
+install -p -m 644 xalan.pom %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+install -p -m 644 serializer.pom %{buildroot}%{_mavenpomdir}/%{name}-serializer.pom
+%add_maven_depmap %{name}-serializer.pom %{name}-serializer.jar
+install -p -m 644 %{SOURCE3}  %{buildroot}%{_mavenpomdir}/xsltc.pom
+%add_maven_depmap xsltc.pom xsltc.jar -f xsltc
 
 # demo
 install -d -m 755 %{buildroot}%{_datadir}/%{name}
@@ -194,33 +203,15 @@ update-alternatives --install %{_javadir}/jaxp_transform_impl.jar \
   update-alternatives --remove jaxp_transform_impl %{_javadir}/%{name}.jar
 } >/dev/null 2>&1 || :
 
-%files
+%files -f .mfiles
 %defattr(0644,root,root,0755)
-%doc KEYS LICENSE.txt NOTICE.txt
-%{_javadir}/%{name}-%{version}.jar
-%{_javadir}/%{name}.jar
-%{_javadir}/%{name}-serializer-%{version}.jar
-%{_javadir}/%{name}-serializer.jar
+%license LICENSE.txt
+%doc KEYS NOTICE.txt
 %config %{_sysconfdir}/ant.d/serializer
 %ghost %{_sysconfdir}/alternatives/jaxp_transform_impl.jar
 %{_javadir}/jaxp_transform_impl.jar
-%{_mavenpomdir}/%{name}*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}
-%else
-%{_datadir}/maven-metadata/%{name}.xml*
-%endif
 
-%files xsltc
-%defattr(0644,root,root,0755)
-%{_javadir}/xsltc-%{version}.jar
-%{_javadir}/xsltc.jar
-%{_mavenpomdir}/xsltc*
-%if %{defined _maven_repository}
-%{_mavendepmapfragdir}/%{name}-xsltc
-%else
-%{_datadir}/maven-metadata/%{name}-xsltc.xml*
-%endif
+%files xsltc -f .mfiles-xsltc
 
 %files manual
 %defattr(0644,root,root,0755)
