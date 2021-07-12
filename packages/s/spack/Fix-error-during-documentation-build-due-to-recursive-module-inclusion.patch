@@ -2,39 +2,69 @@ From: Egbert Eich <eich@suse.com>
 Date: Thu Feb 4 09:17:55 2021 +0100
 Subject: Fix error during documentation build due to recursive module inclusion
 Patch-mainline: Not yet
-Git-commit: 7102b892cfc6e0697b658f35b7774a03bd1c42e9
+Git-commit: 0239763866f506f34357b30e9d882d1e8a87211e
 References: 
 
 Signed-off-by: Egbert Eich <eich@suse.com>
 ---
- lib/spack/spack/user_environment.py | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ lib/spack/spack/build_environment.py | 3 ++-
+ lib/spack/spack/environment.py       | 3 ++-
+ lib/spack/spack/main.py              | 3 ++-
+ lib/spack/spack/user_environment.py  | 3 ++-
+ 4 files changed, 8 insertions(+), 4 deletions(-)
+diff --git a/lib/spack/spack/build_environment.py b/lib/spack/spack/build_environment.py
+index 3cf02dc..afd34c0 100644
+--- a/lib/spack/spack/build_environment.py
++++ b/lib/spack/spack/build_environment.py
+@@ -51,7 +51,8 @@
+ import spack.build_systems.cmake
+ import spack.build_systems.meson
+ import spack.config
+-import spack.main
++if not ( "spack.main" in sys.modules ):
++    import spack.main
+ import spack.paths
+ import spack.package
+ import spack.repo
+diff --git a/lib/spack/spack/environment.py b/lib/spack/spack/environment.py
+index 7f7625f..e48929e 100644
+--- a/lib/spack/spack/environment.py
++++ b/lib/spack/spack/environment.py
+@@ -30,7 +30,8 @@
+ import spack.util.spack_json as sjson
+ import spack.util.spack_yaml as syaml
+ import spack.config
+-import spack.user_environment as uenv
++if not ( "spack.user_environment" in sys.modules ):
++    import spack.user_environment as uenv
+ from spack.filesystem_view import YamlFilesystemView
+ import spack.util.environment
+ import spack.architecture as architecture
+diff --git a/lib/spack/spack/main.py b/lib/spack/spack/main.py
+index f4265a5..494a9ce 100644
+--- a/lib/spack/spack/main.py
++++ b/lib/spack/spack/main.py
+@@ -31,7 +31,8 @@
+ import spack.architecture
+ import spack.config
+ import spack.cmd
+-import spack.environment as ev
++if not ( "spack.environment" in sys.modules ):
++    import spack.environment as ev
+ import spack.paths
+ import spack.repo
+ import spack.store
 diff --git a/lib/spack/spack/user_environment.py b/lib/spack/spack/user_environment.py
-index f08f21e..0da6c43 100644
+index f08f21e..8925246 100644
 --- a/lib/spack/spack/user_environment.py
 +++ b/lib/spack/spack/user_environment.py
-@@ -8,7 +8,7 @@
+@@ -8,7 +8,8 @@
  import spack.config
  import spack.util.prefix as prefix
  import spack.util.environment as environment
 -import spack.build_environment as build_env
-+import spack.build_environment
++if not ( "spack.build_environment" in sys.modules ):
++    import spack.build_environment as build_env
  
  #: Environment variable name Spack uses to track individually loaded packages
  spack_loaded_hashes_var = 'SPACK_LOADED_HASHES'
-@@ -85,13 +85,13 @@ def environment_modifications_for_spec(spec, view=None):
-     # Let the extendee/dependency modify their extensions/dependents
-     # before asking for package-specific modifications
-     env.extend(
--        build_env.modifications_from_dependencies(
-+        build_environment.modifications_from_dependencies(
-             spec, context='run'
-         )
-     )
- 
-     # Package specific modifications
--    build_env.set_module_variables_for_package(spec.package)
-+    build_environment.set_module_variables_for_package(spec.package)
-     spec.package.setup_run_environment(env)
- 
-     return env

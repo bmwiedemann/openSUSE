@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  6 21:45:21 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix patch
+  Fix-error-during-documentation-build-due-to-recursive-module-inclusion.patch
+  to actually work correctly.
+  The updated version makes sure modules are not called recursively even
+  if modules are loaded in an out-of-order fashion from python-Sphinx.
+- Remove duplicates in spec file.
+
+-------------------------------------------------------------------
 Wed Jun  2 14:04:26 UTC 2021 - Antoine Ginies <aginies@suse.com>
 
 - fix typo to export prefix in patch:

@@ -72,7 +72,6 @@ Requires:       libbz2-devel
 Requires:       lua-lmod
 Requires:       patch
 Requires:       polkit
-Requires:       spack-recipes
 Requires:       sudo
 Requires:       xz
 Recommends:     %spack_trigger_recommended
@@ -252,9 +251,6 @@ sed -i 's@\(\ssource_cache:\).*@\1 /var/tmp/$user/spack-cache@' %{buildroot}%{_s
 sed -i 's@\(\stcl:\).*@\1 ~/spack/modules@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 sed -i 's@\(\slmod:\).*@\1 ~/spack/lmod@' %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml
 cat >>  %{buildroot}%{_sysconfdir}/skel/.spack/config.yaml <<EOF
-# Timeout in seconds used for downloading sources etc. This only applies
-# to the connection phase and can be increased for slow connections or
-# servers. 0 means no timeout.
   binary_index_root: ~/.spack/indices
 EOF
 
