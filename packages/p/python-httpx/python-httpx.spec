@@ -20,17 +20,19 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-httpx
-Version:        0.18.0
+Version:        0.18.2
 Release:        0
 Summary:        Python HTTP client with async support
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/encode/httpx
 Source:         https://github.com/encode/httpx/archive/%{version}.tar.gz#/httpx-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM alarrosa@suse.com (gh#encode/httpx#1669)
+Patch0:         0001-Add-a-network-pytest-mark-for-tests-that-use-the-network.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Brotli >= 0.7.0
+Requires:       python-brotlicffi
 Requires:       python-certifi
 Requires:       python-chardet >= 3.0
 Requires:       python-h11 >= 0.8.0
@@ -42,8 +44,9 @@ Requires:       python-rfc3986 >= 1.3
 Requires:       python-sniffio
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Brotli >= 0.7.0}
+BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module async_generator}
+BuildRequires:  %{python_module brotlicffi}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module chardet >= 3.0}
 BuildRequires:  %{python_module h11 >= 0.8.0}
@@ -68,6 +71,7 @@ Python HTTP client with async support.
 
 %prep
 %setup -q -n httpx-%{version}
+%patch0 -p1
 rm setup.cfg
 
 %build
@@ -78,8 +82,7 @@ rm setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_start_tls_on_*_socket_stream and test_connect_timeout require network
-%pytest -k 'not (test_start_tls_on_tcp_socket_stream or test_start_tls_on_uds_socket_stream or test_connect_timeout or test_async_proxy_close or test_sync_proxy_close)'
+%pytest -k 'not network'
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
