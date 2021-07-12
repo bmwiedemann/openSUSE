@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Mon May  3 21:05:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.5.2
+  * Fix a buffer overflow by getting rid of all strcpy() calls
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Nov 24 18:35:34 UTC 2017 - opensuse-packaging@opensuse.org
+
+- Update to version 1.5.1:
+  * Update README.md
+  * Add NetBSD and pkgsrc.se link
+  * Fix typos
+  * added _DEFAULT_SOURCE to fix compilation warnings on gcc 5
+  * v1.5.1
+  * sb should be unsigned
+  * 1.5.0
+  * Adding support for the rxvt-256color terminal
+
+-------------------------------------------------------------------
+Fri Nov 24 18:29:09 UTC 2017 - erico.mendonca@suse.com
+
+- Initial OBS build.
+
