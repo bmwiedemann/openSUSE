@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jul  4 20:13:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.0:
+  * The ban_cutoff parameter now refers to the overall length of
+    the ban list, including completed bans, where before only
+    non-completed (“active”) bans were counted towards ban_cutoff.
+  * Body bytes accounting has been fixed to always represent the
+    number of body bytes moved on the wire, exclusive of
+    protocol-specific overhead like HTTP/1 chunked encoding or
+    HTTP/2 framing.
+  * The connection close reason has been fixed to properly report
+    SC_RESP_CLOSE where previously only SC_REQ_CLOSE was reported.
+  * Unless the new validate_headers feature is disabled, all newly
+    set headers are now validated to contain only characters
+    allowed by RFC7230.
+  * The filter_re, keep_re and get_re functions from the bundled
+    cookie vmod have been changed to take the VCL_REGEX type. This
+    implies that their regular expression arguments now need to be
+    literal, not e.g. string.
+  * The interface for private pointers in VMODs has been changed,
+    the VRT backend interface has been changed, many filter
+    (VDP/VFP) related signatures have been changed, and the
+    stevedore API has been changed. (Details thereto, see online
+    changelog.)
+
+-------------------------------------------------------------------
 Fri Oct  2 12:27:56 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.5.1

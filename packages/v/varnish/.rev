@@ -274,4 +274,12 @@
     <comment>- Update to release 6.5.1</comment>
     <requestid>839157</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>df31eb265df2f6583f6feec58cb8a80e</srcmd5>
+    <version>6.6.0</version>
+    <time>1626118828</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>905813</requestid>
+  </revision>
 </revisionlist>
