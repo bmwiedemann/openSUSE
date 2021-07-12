@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 10 16:09:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.3
+  * No changelog provided
+- Clean up SPEC file
+- Refresh meterbridge-gcc4-fix.diff and meterbridge-makefile-fix.diff
+- Add patches from Gentoo: meterbridge-0.9.3-asneeded.patch, and
+  meterbridge-0.9.3-setrgba.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 20:06:01 UTC 2015 - antoine.belvire@laposte.net
 
 - Fix build with GCC 5: add -fgnu89-inline to CFLAGS.

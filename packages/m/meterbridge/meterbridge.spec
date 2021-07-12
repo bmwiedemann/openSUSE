@@ -1,7 +1,7 @@
 #
 # spec file for package meterbridge
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,71 +12,54 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           meterbridge
+Version:        0.9.3
+Release:        0
+Summary:        A Meterbridge for the JACK Audio System
+License:        GPL-2.0-or-later
+Group:          Productivity/Multimedia/Sound/Visualization
+URL:            http://plugin.org.uk/meterbridge
+Source:         %{url}/meterbridge-%{version}.tar.gz
+Source1:        meterbridge.desktop
+Source2:        meterbridge.png
+Patch0:         meterbridge-gcc4-fix.diff
+Patch1:         meterbridge-makefile-fix.diff
+Patch2:         https://gitweb.gentoo.org/repo/gentoo.git/plain/media-sound/meterbridge/files/meterbridge-0.9.3-setrgba.patch
+Patch3:         https://gitweb.gentoo.org/repo/gentoo.git/plain/media-sound/meterbridge/files/meterbridge-0.9.3-asneeded.patch
 BuildRequires:  SDL_image-devel
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  jack-devel
 BuildRequires:  update-desktop-files
-Summary:        A Meterbridge for the JACK Audio System
-Version:        0.9.2
-Release:        0
-License:        GPL-2.0+
-Group:          Productivity/Multimedia/Sound/Visualization
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://plugin.org.uk/meterbridge/
-Source:         %{name}-%{version}.tar.bz2
-Source1:        meterbridge.desktop
-Source2:        meterbridge.png
-Patch:          meterbridge-gcc4-fix.diff
-Patch1:         meterbridge-makefile-fix.diff
 
 %description
 Meterbridge is a JACK (JACK Audio Connection Kit) client for
 visualizing audio signals.
 
-
-
-Authors:
---------
-    Steve Harris <steve@plugin.org.uk>
-
 %prep
-%setup -q
-%patch
-%patch1
+%autosetup -p1
 
 %build
-# This package failed when testing with -Wl,-as-needed being default.
-# So we disable it here, if you want to retest, just delete this comment and the line below.
-export SUSE_ASNEEDED=0
-%{?suse_update_config:%{suse_update_config -f}}
 autoreconf --force --install
-export CFLAGS="%optflags -fgnu89-inline"
 %configure
-make
+%make_build
 
 %install
-[ "$RPM_BUILD_ROOT" != "/" -a -d $RPM_BUILD_ROOT ] && rm -rf $RPM_BUILD_ROOT
-make DESTDIR=$RPM_BUILD_ROOT install
+%make_install
 %suse_update_desktop_file -i meterbridge AudioVideo Music
-mkdir -p $RPM_BUILD_ROOT%{_datadir}/pixmaps
-cp %{SOURCE2} $RPM_BUILD_ROOT%{_datadir}/pixmaps
-
-%clean
-[ "$RPM_BUILD_ROOT" != "/" -a -d $RPM_BUILD_ROOT ] && rm -rf $RPM_BUILD_ROOT
+mkdir -p %{buildroot}%{_datadir}/pixmaps
+cp %{SOURCE2} %{buildroot}%{_datadir}/pixmaps
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING ChangeLog NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog
 %{_bindir}/*
 %{_datadir}/%{name}
-%if %suse_version > 820
 %{_datadir}/applications/*.desktop
-%endif
 %{_datadir}/pixmaps/*.png
 
 %changelog

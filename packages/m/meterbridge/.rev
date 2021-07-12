@@ -119,4 +119,12 @@
     <comment>- Fix build with GCC 5: add -fgnu89-inline to CFLAGS. (forwarded request 313149 from 1Antoine1)</comment>
     <requestid>313150</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>70f141b63d6ee731cee6750c6a1912f2</srcmd5>
+    <version>0.9.3</version>
+    <time>1626118822</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905782</requestid>
+  </revision>
 </revisionlist>
