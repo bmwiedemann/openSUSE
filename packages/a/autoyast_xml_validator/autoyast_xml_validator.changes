@@ -1,0 +1,68 @@
+-------------------------------------------------------------------
+Fri Jul 09 18:22:10 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.6+git920f29b:
+  * Restructure paramters and add --cobbler-profile param
+
+-------------------------------------------------------------------
+Fri Jul 09 14:17:15 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.5+git86fc5a8:
+  * Put shebang on top, above Copyright and Author
+  * Add author and copyright
+  * Create LICENSE
+  * Introduce new --distro and --arch parameters for the new yast2-schemas collection package
+  * Make README.md better manpage compatible for go-md2man parsing
+  * Add example how to retrieve autoyast schema rng files
+  * Make code python prior version 3.6 compatible and better show validation errors
+  * Fix logic error
+  * Fix typo
+  * Always run both checks
+
+-------------------------------------------------------------------
+Wed Jul 07 06:39:43 UTC 2021 - trenn@suse.de
+
+- Update to version v1.0.5+git86fc5a8:
+  * Put shebang on top, above Copyright and Author
+
+-------------------------------------------------------------------
+Tue Jul 06 15:17:10 UTC 2021 - trenn@suse.de
+
+- Update to version v1.0.4+git32b3d32:
+  * Add author and copyright
+  * Create LICENSE
+  * Introduce new --distro and --arch parameters for the new yast2-schemas collection package
+  * Make README.md better manpage compatible for go-md2man parsing
+  * Add example how to retrieve autoyast schema rng files
+  * Make code python prior version 3.6 compatible and better show validation errors
+  * Fix logic error
+  * Fix typo
+  * Always run both checks
+  * Update readme with new parameters
+
+-------------------------------------------------------------------
+Tue Jul 06 14:51:04 UTC 2021 - trenn@suse.de
+
+- Update to version v1.0.4+git32b3d32:
+  * Add author and copyright
+  * Create LICENSE
+
+-------------------------------------------------------------------
+Tue Jul 06 14:37:47 UTC 2021 - trenn@suse.de
+
+- Update to version v1.0.2+git4a16e62:
+  * Introduce new --distro and --arch parameters for the new yast2-schemas collection package
+  * Make README.md better manpage compatible for go-md2man parsing
+  * Add example how to retrieve autoyast schema rng files
+  * Make code python prior version 3.6 compatible and better show validation errors
+  * Fix logic error
+  * Fix typo
+  * Always run both checks
+  * Update readme with new parameters
+  * second push of code
+  * Add readme
+
+-------------------------------------------------------------------
+Tue Jul  6 14:36:10 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Initial package checking

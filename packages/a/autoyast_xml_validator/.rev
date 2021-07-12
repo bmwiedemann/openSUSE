@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c4590df4f9bff5545923f2c1d3ea1f0a</srcmd5>
+    <version>1.0.6+git920f29b</version>
+    <time>1626118809</time>
+    <user>dimstar_suse</user>
+    <comment>Some updates, especially use yast2-schema-collection as Requires</comment>
+    <requestid>905341</requestid>
+  </revision>
+</revisionlist>

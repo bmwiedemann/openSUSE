@@ -1,0 +1,16 @@
+<services>
+  <service name="obs_scm" mode="localonly">
+    <param name="url">git@github.com:watologo1/autoyast_xml_validator.git</param>
+    <param name="scm">git</param>
+    <param name="version">HEAD</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@+git%h</param>
+  </service>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>
