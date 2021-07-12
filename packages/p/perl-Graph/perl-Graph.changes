@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  5 03:07:27 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9722
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9722 2021-07-04
+  - fix neighbours et al not returning count in scalar context - thanks @merkys for report
+
+-------------------------------------------------------------------
 Mon Apr 19 03:07:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9721
