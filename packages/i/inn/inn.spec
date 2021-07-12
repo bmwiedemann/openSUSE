@@ -1,7 +1,7 @@
 #
 # spec file for package inn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if "%{_libexecdir}"=="/usr/libexec"
 %define search usr\\/libexec
@@ -28,21 +29,24 @@ BuildRequires:  gdbm-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  postfix
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  zlib-devel
 BuildRequires:  perl(GD)
 BuildRequires:  perl(MIME::Parser)
 URL:            https://www.isc.org/othersoftware/#INN
 Summary:        InterNetNews
-License:        GPL-2.0-or-later AND BSD-4-Clause
+License:        BSD-4-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/News/Servers
 Provides:       inn_pkg
 Provides:       nntp_daemon
-Conflicts:      cnews nntpd mininews
-PreReq:         perl permissions
+Conflicts:      cnews
+Conflicts:      mininews
+Conflicts:      nntpd
+PreReq:         perl
+PreReq:         permissions
+PreReq:         group(news)
 PreReq:         group(uucp)
 PreReq:         user(news)
-PreReq:         group(news)
 Requires:       perl-MIME-tools
 Requires:       perl(GD)
 Requires:       perl(MIME::Parser)
@@ -87,16 +91,16 @@ Summary:        Inews - Post News from an NNTP Client
 Group:          Productivity/Networking/News/Utilities
 Provides:       nntp_daemon
 PreReq:         permissions
+PreReq:         group(news)
 PreReq:         group(uucp)
 PreReq:         user(news)
-PreReq:         group(news)
 
 %description -n mininews
 Rich Salz's InterNetNews news transport system.
 
 %prep
-%setup -n inn%{PatchVersion} 
-%setup -n inn%{PatchVersion} -D -T -a 1 
+%setup -n inn%{PatchVersion}
+%setup -n inn%{PatchVersion} -D -T -a 1
 %setup -n inn%{PatchVersion} -D -T -a 3
 sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i  %{SOURCE7} %{PATCH0}
 %patch0 -p1
@@ -163,7 +167,7 @@ ln %{buildroot}%{_libexecdir}/news/bin/ovdb_init %{buildroot}%{_libexecdir}/news
 ln %{buildroot}%{_libexecdir}/news/bin/ovdb_init %{buildroot}%{_libexecdir}/news/bin/ovdb_stat
 #
 #
-# 
+#
 %define installnews install -o news -g news -m
 %define installnews install -m
 %define installroot install -o root -g root -m
@@ -182,7 +186,7 @@ ln %{buildroot}%{_libexecdir}/news/bin/ovdb_init %{buildroot}%{_libexecdir}/news
 %{installnews} 0755 	-d		%{buildroot}%{_libexecdir}/news/include
 %{installnews} 0755 	-d		%{buildroot}%{_libexecdir}/news/include/inn
 #
-# 
+#
 #
 %{installnews} 0644	inn-emptydb/*	%{buildroot}/var/lib/news
 %{installnews} 0755 	-d		%{buildroot}/var/lib/news/backoff
@@ -198,8 +202,8 @@ ln -sf %{_libexecdir}/news/bin/rnews	%{buildroot}/usr/bin/rnews
 ln -sf ../innfeed.status	%{buildroot}/var/log/news/http/innfeed.status.txt
 ln -sf ../inn.status		%{buildroot}/var/log/news/http/inn.status.txt
 #
-# 
-# 
+#
+#
 %{installnews} 0755	-d		%{buildroot}/usr/lib/systemd/system
 %{installroot} 0644	%{SOURCE7}	%{buildroot}/usr/lib/systemd/system/inn.service
 %{installnews} 0755	-d		%{buildroot}/usr/sbin
@@ -222,7 +226,7 @@ echo "d /var/run/news 0750 news news -" > %{buildroot}/usr/lib/tmpfiles.d/inn.co
 
 #
 # build filelist
-# 
+#
 %define filelist %{name}-filelist
 find %{buildroot} -type d -printf "/%%P\n" | awk '
 ! /^\/(etc|%{search}|var\/lib|var\/log|var\/spool|var\/run)\/news/ { next }
@@ -265,8 +269,8 @@ $0 == "%{_libexecdir}/news/bin/innbind"         { pfx="%verify(not mode) %attr(4
 ' >> %{filelist}
 
 #
-# 
-# 
+#
+#
 
 %pre
 test -f var/log/news && mv var/log/news var/log/news.bak

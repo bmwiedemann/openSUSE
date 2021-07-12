@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 12 06:31:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch BuildRequires to python3-devel, to build using Python 3. 
+
+-------------------------------------------------------------------
 Sun Dec 20 17:07:57 UTC 2020 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
