@@ -1,13 +1,13 @@
-Index: awkward-1.0.0/setup.py
+Index: awkward-1.4.0/setup.py
 ===================================================================
---- awkward-1.0.0.orig/setup.py
-+++ awkward-1.0.0/setup.py
-@@ -59,7 +59,7 @@ class CMakeBuild(setuptools.command.buil
-         except AttributeError:
-             print("Not able to access compiler path, using CMake default")
+--- awkward-1.4.0.orig/setup.py
++++ awkward-1.4.0/setup.py
+@@ -85,7 +85,7 @@ class CMakeBuild(setuptools.command.buil
+         if not extdir.endswith(os.path.sep):
+             extdir += os.path.sep
  
 -        cfg = "Debug" if self.debug else "Release"
-+        cfg = "Debug" if self.debug else "RelWithDeInfo"
-         build_args += ["--config", cfg]
-         cmake_args += ["-DCMAKE_BUILD_TYPE=" + cfg]
++        cfg = "Debug" if self.debug else "RelWithDebInfo"
  
+         # CMake lets you override the generator - we need to check this.
+         # Can be set with Conda-Build, for example.

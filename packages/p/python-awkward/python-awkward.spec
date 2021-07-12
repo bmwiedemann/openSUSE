@@ -20,7 +20,7 @@
 %global modname awkward
 %global skip_python36 1
 Name:           python-awkward
-Version:        1.1.2
+Version:        1.4.0
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
@@ -37,9 +37,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.13.1
+Recommends:     python-cupy
 Recommends:     python-numba
 Recommends:     python-pandas
-Recommends:     python-cupy
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module numpy >= 1.13.1}
@@ -89,8 +89,8 @@ mkdir -p %{buildroot}%{_includedir}/awkward
 if [ "$python_" = "python3_" -o "%{$python_provides}" = "python3" ]; then
 mv %{buildroot}%{$python_sitearch}/%{modname}/include/* %{buildroot}%{_includedir}/awkward/
 # Create a symlink to shared library in _libdir for the C/C++ devel pkg
-ln -s %{$python_sitearch}/awkward/libawkward.so %{buildroot}%{_libdir}/
-ln -s %{$python_sitearch}/awkward/libawkward-cpu-kernels.so %{buildroot}%{_libdir}/
+ln -s %{$python_sitearch}/libawkward.so %{buildroot}%{_libdir}/
+ln -s %{$python_sitearch}/libawkward-cpu-kernels.so %{buildroot}%{_libdir}/
 else
 rm -fr %{buildroot}%{$python_sitearch}/%{modname}/include
 fi
@@ -100,11 +100,17 @@ fi
 
 %check
 # test-cuda: we don't have python-cupy yet
+# test_0914 uses float128, not available on i586
+%ifarch %ix86
+%pytest_arch --ignore tests-cuda/ -k 'not test_0914'
+%else
 %pytest_arch --ignore tests-cuda/
+%endif
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
+%{python_sitearch}/*.so
 %{python_sitearch}/%{modname}/
 %{python_sitearch}/%{modname}-%{version}*-info/
 
