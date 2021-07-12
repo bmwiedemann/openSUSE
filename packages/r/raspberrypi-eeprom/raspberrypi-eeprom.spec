@@ -21,7 +21,7 @@
 %endif
 
 Name:           raspberrypi-eeprom
-Version:        0.0~2020.09.03.75~g3129546
+Version:        2021.04.29
 Release:        0
 Summary:        Raspberry Pi 4 EEPROM firmware
 License:        SUSE-Firmware
@@ -33,8 +33,8 @@ Patch1:         dont-use-env.patch
 Patch2:         rpi-eeprom-update-Use-tr-instead-of-strings.patch
 Provides:       rpi-eeprom
 Supplements:    modalias(of:N*T*Cbrcm%2Cbcm2711*C*)
-Requires:       raspberrypi-firmware >= 2021.01.21
-Requires:       raspberrypi-firmware-dt >= 2020.12.07
+Requires:       raspberrypi-firmware >= 2021.03.03
+Requires:       raspberrypi-firmware-dt >= 2021.03.03
 Provides:       rpi-eeprom-config = %{version}
 Obsoletes:      rpi-eeprom-config < %{version}
 Requires:       pciutils

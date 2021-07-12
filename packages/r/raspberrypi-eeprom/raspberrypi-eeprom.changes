@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 30 12:19:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Use upstream version schema (year.month.day) instead of arbitrary 0.0
+- Update to version 2021.04.29
+  * Add support for NVMe to the bootloader with a new NVMe boot mode
+  * Add support for [cm4] and [pi400] config conditionals filters.
+  * TFTP - reply to duplicate ACKS
+  * Skip rendering of HDMI diagnostics display for the first 8 seconds
+    unless an error occurs.
+  * Add support for the BCM2711 XHCI controller - BOOT_ORDER 0x5
+  * XHCI protocol layer fixes for non-VLI controllers
+  * Avoid USB MSD timeout of there is only one device
+  * Fix recovery.bin error handler so that the LED error pattern
+    is still displayed even if HDMI or SDRAM fail.
+  * Fix GPIO expander reset issue on some Pi4B 1.1 to 1.3 boards
+  * Fix regression for GPIO expander reset change which caused PMIC
+     reset to get card out of 1V8 mode to be missed.
+  * Timeout USB MSD commands and move to the next boot mode if a device
+    stops responding.
+  * Add support for booting from the BCM2711 XHCI controller which is
+    the USB-C socket on Pi 4B / Pi 400 and the type A sockets on Compute
+    Module 4 IO board.
+  * Validate SDRAM in recovery mode.
+
+-------------------------------------------------------------------
 Fri Feb 19 10:07:06 UTC 2021 - Nicolas Patricio Saenz Julienne <nsaenzjulienne@suse.com>
 
 - Add 'pciutils' as a requirement. 'rpi-eeprom-update' uses lspci.
