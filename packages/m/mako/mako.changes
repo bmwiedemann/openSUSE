@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 12 07:10:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6:
+  * Modes allow to conditonally change options at runtime, and allow to
+    setup things like a "do not disturb" mode.
+  * Add support for synchronous hints, to easily replace an existing
+    notification from a script.
+  * Add an "exec" binding to execute a command
+  * Add "on-notify" bindings to trigger an action when a notification
+    is opened.
+  * Several small improvments and bugfixes:
+
+-------------------------------------------------------------------
 Mon May  3 19:26:47 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to 1.5:

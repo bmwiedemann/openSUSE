@@ -17,7 +17,7 @@
 
 
 Name:           mako
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        A Wayland notification daemon
 License:        MIT
