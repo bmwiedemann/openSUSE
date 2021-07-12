@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 11 11:16:07 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.5
+* Anonymization is applied recursively to nested tags
+* API version upgraded to 14
+* Added "Short", "Simplify" and/or "Full" options to control the format of DICOM tags in:
+  - POST /modalities/{id}/find-worklist
+  - POST /queries/{id}/answers/{index}/retrieve
+  - POST /queries/{id}/retrieve
+* Fix broken "Do lookup" button in Orthanc Explorer
+* Error code and description of jobs are now saved into the Orthanc database
+
+-------------------------------------------------------------------
 Thu Jun 24 12:42:18 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.4
