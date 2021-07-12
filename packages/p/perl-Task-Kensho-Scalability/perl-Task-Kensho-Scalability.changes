@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  4 03:17:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.41
+   see /usr/share/doc/packages/perl-Task-Kensho-Scalability/Changes
+
+  0.41      2021-07-03
+            - Async: added Future, Mojo::IOLoop, MCE, Parallel::ForkManager
+            - Dates: added Time::Piece; removed Date::Tiny, Time::Tiny, DateTime::Tiny
+            - ExcelCSV: replaced Spreadsheet::ParseExcel with Spreadsheet::Read,
+              added Excel::Writer::XLSX
+            - Hackery: added ojo
+            - Logging: added Log::Any
+            - Testing: added Test2::Suite
+            - WebCrawling: added Mojo::UserAgent
+            - WebDev: added Web::Simple
+
+-------------------------------------------------------------------
 Thu Dec  6 16:21:19 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.40
