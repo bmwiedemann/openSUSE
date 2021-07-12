@@ -1,7 +1,7 @@
 #
 # spec file for package claws-mail
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,20 +25,23 @@
 %if !%{gtk3_ready}
 %define favor_gtk2 1
 %endif
+
 %if 0%{?suse_version} >= 1330
 %bcond_without vcalendar
 %else
 %bcond_with    vcalendar
 %endif
+
 %if 0%{?suse_version} >= 1550
 %bcond_without litehtml
 %else
 %bcond_with    litehtml
 %endif
+
 %bcond_with    tnef
-%bcond_without oauth2
+
 Name:           claws-mail
-Version:        3.17.8
+Version:        3.18.0
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
@@ -46,9 +49,6 @@ Group:          Productivity/Networking/Email/Clients
 URL:            https://www.claws-mail.org/
 Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
 Patch0:         libcanberra-gtk3.patch
-# patch merged upstream but not part of a release
-Patch1:         claws-mail-Reworked-fixing-unsecure-command-line-invocation.patch
-Patch2:         claws-mail-oauth.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -59,15 +59,7 @@ BuildRequires:  gpgme-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  libcanberra-devel >= 0.6
 BuildRequires:  libcurl-devel
-%if %{with oauth2}
-BuildRequires:  automake
-BuildRequires:  autoconf
-BuildRequires:  libtool
-BuildRequires:  libetpan-devel >= 1.9.4 
-BuildRequires:  pkgconfig(json-c)
-%else
-BuildRequires:  libetpan-devel >= 0.57
-%endif
+BuildRequires:  libetpan-devel >= 1.9.4
 BuildRequires:  libexpat-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libgdata-devel >= 0.17.2
@@ -85,10 +77,10 @@ BuildRequires:  texlive-latex
 BuildRequires:  texlive-metafont-bin
 BuildRequires:  texlive-wasy
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(cairo) >= 1.12
 BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.60
-## FIXME ## - On next version bump please replace with pkgconfig(enchant-2)
-BuildRequires:  pkgconfig(enchant)
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gnutls) >= 2.2
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify)
@@ -172,18 +164,11 @@ This package contains header files for building plugins.
 %if ! 0%{?favor_gtk2}
 %patch0 -p1
 %endif
-%patch1 -p0
-%if %{with oauth2}
-%patch2 -p0
-%endif
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
 
 %build
-%if %{with oauth2}
-autoreconf -fi
-%endif
 %configure \
         --docdir=%{_datadir}/claws-mail \
         --disable-static \
@@ -197,9 +182,6 @@ autoreconf -fi
 %else
         --disable-jpilot \
 %endif
-        %if %{with oauth2}
-        --enable-oauth2 \
-        %endif
         --enable-acpi_notifier-plugin \
         --enable-address_keeper-plugin \
         --enable-archive-plugin \

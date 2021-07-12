@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Jul 12 12:50:23 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- bump buildrequires to follow version limits in the configure.ac
+
+-------------------------------------------------------------------
+Sat Jul 10 17:26:01 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 3.18.0
+  * Support for the OAuth2 authorisation protocol has been added for
+    IMAP, POP and SMTP using custom, user-generated client IDs.
+    OAuth2 preferences are found in the Account Preferences on the
+    Receive page (for POP: Authenticate before POP connection, for
+    IMAP: Authentication method); the Send page (SMTP authentication:
+    Authentication method); and on a dedicated OAuth2 page.
+  * The option 'Save (X-)Face in address book if possible' has been
+    added to the /Message View/Text Options preferences page.
+    Previously the (X-)Face would be saved automatically, therefore
+    this option is turned on by default.
+  * The Image Viewer has been reworked. New options have been added to
+    /Message View/Image Viewer: when resizing images, either fit the
+    image width or fit the image height to the available space.
+    Fitting the image height is the default. Regardless of this
+    setting, when displaying images inline they will fit the height.
+    When displaying an image, left-clicking the image will toggle
+    between full size and reduced size; right-clicking will toggle
+    between fitting the height and fitting the width.
+  * When re-editing a saved message, it is now possible to use
+    /Options/Remove References.
+  * It is now possible to attempt to retrieve a missing GPG key via
+    WKD.
+  * The man page has been updated.
+  * Updated translations: Brazilian Portuguese, British English,
+    Catalan, Czech, Danish, Dutch, French, Polish, Romanian, Russian,
+    Slovak, Spanish, Traditional Chinese, Turkish.
+  * bug fixes: claws#2411, claws#4326, claws#4394, claws#4431,
+               claws#4445, claws#4447, claws#4455, claws#4473
+    - stop WM's X button from causing GPG key fetch attempt
+    - Make fancy respect default font size for messageview
+    - harden link checker before accepting click
+    - non-display of (X-)Face when prefs_common.enable_avatars
+      is AVATARS_ENABLE_RENDER (2)
+    - debian bug #983778, 'Segfault on selecting empty 'X-Face'
+      custom header'
+- Drop claws-mail-oauth.patch, OAuth2 authorisation protocol is now 
+  included
+- Drop claws-mail-Reworked-fixing-unsecure-command-line-invocation.patch,
+  merged upstream
+
+-------------------------------------------------------------------
 Wed Jun  2 13:07:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - added claws-mail-oauth.patch:
