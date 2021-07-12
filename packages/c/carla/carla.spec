@@ -174,10 +174,10 @@ popd
 cp -v source/modules/lilv/serd-0.24.0/tests/TurtleTests/LICENSE LICENSE.TurtleTests
 
 # Cadence uses carla_util.py which also uses carla_backend.py so they need to be in pythonsitelib
-mkdir -p %{buildroot}/%{python_sitelib}
-pushd %{buildroot}/%{python_sitelib}
-ln -s ../../../../%{_datadir}/carla/carla_backend.py .
-ln -s ../../../../%{_datadir}/carla/carla_utils.py .
+mkdir -p %{buildroot}/%{python3_sitelib}
+pushd %{buildroot}/%{python3_sitelib}
+ln -rs %{buildroot}%{_datadir}/carla/carla_backend.py .
+ln -rs %{buildroot}%{_datadir}/carla/carla_utils.py .
 popd
 
 # SUSE specific
@@ -212,7 +212,7 @@ cp %{S:2} .
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/mime/packages/carla.xml
-%{python_sitelib}/carla*.py
+%{python3_sitelib}/carla*.py
 %{_localstatedir}/adm/update-messages/%{name}-warning
 
 %post

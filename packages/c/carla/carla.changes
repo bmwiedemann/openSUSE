@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 20:21:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix the Python script symlinks: in SLE/Leap, %python_sitelib is
+  empty if python2 is not installed. You want python3_sitelib.
+
+-------------------------------------------------------------------
 Mon May 31 02:53:51 UTC 2021 - Simon Lees <sflees@suse.de>
 
 - Use correct plugin paths for openSUSE (/usr/lib64/*)
