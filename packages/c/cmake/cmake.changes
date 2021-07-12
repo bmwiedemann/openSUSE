@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  5 15:41:15 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Increase the disk space needed in the _constraints file
+  from 9G to 10G.
+
+-------------------------------------------------------------------
 Mon Jun 21 20:18:44 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.20.5:
