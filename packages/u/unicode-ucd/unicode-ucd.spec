@@ -1,7 +1,7 @@
 #
 # spec file for package unicode-ucd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,20 @@
 # For other future directories from http://www.unicode.org/Public
 %global unicodedir %{_datadir}/unicode
 %global ucddir %{unicodedir}/ucd
-
 Name:           unicode-ucd
-Version:        12.0.0
+Version:        13.0.0
 Release:        0
 Summary:        Unicode Character Database
 # FIXME: use correct group, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
 License:        Unicode-TOU
 Group:          System/I18n
-URL:            http://www.unicode.org/ucd/
-Source0:        http://www.unicode.org/Public/zipped/%{version}/UCD.zip
+URL:            https://www.unicode.org/ucd/
+Source0:        https://www.unicode.org/Public/zipped/%{version}/UCD.zip
 # http://www.unicode.org/terms_of_use.html referenced in ReadMe.txt redirects to:
 Source1:        COPYING
-Source2:        http://www.unicode.org/Public/zipped/%{version}/Unihan.zip
-Source3:        http://www.unicode.org/Public/zipped/%{version}/ReadMe.txt
+Source2:        https://www.unicode.org/Public/zipped/%{version}/Unihan.zip
+Source3:        https://www.unicode.org/Public/zipped/%{version}/ReadMe.txt
 BuildRequires:  unzip
 BuildArch:      noarch
 

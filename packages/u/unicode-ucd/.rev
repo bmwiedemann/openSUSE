@@ -39,4 +39,12 @@
     <comment>- Update version to 12.0.0. Upstream did not provide changelog. (forwarded request 785287 from hillwood)</comment>
     <requestid>785288</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>53647dd10de6e1c52c8c2831d7688899</srcmd5>
+    <version>13.0.0</version>
+    <time>1626118788</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>904359</requestid>
+  </revision>
 </revisionlist>
