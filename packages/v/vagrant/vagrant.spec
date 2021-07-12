@@ -64,8 +64,16 @@ Patch10:        0010-Bump-listen-version-to-3.5.patch
 # merged -> drop on next upstream release
 Patch11:        0011-Mock-the-PowerShell.executable-method-in-more-tests.patch
 # https://github.com/hashicorp/vagrant/pull/12439
+# merged -> drop on next upstream release
 Patch12:        0012-Use-systemctl-poweroff-in-the-background-instead-of-.patch
-
+# adds an explicit require of rubygem(rexml)
+# already in main, drop on next upstream release
+Patch13:        0013-Include-rexml-dependency.patch
+# bumps the versions of childprocess & net-scp
+# already in main, drop on next upstream release
+Patch14:        0014-Bump-constraints-on-childprocess-and-net-scp.patch
+# https://github.com/hashicorp/vagrant/pull/12442
+Patch15:        0015-Remove-no-longer-required-gem-webmock.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
@@ -95,8 +103,9 @@ BuildRequires:  %{ruby:2 >= 2.5}
 BuildRequires:  %{rubygem bundler}
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
-#  s.add_dependency "childprocess", "~> 4.0.0"
-BuildRequires:  %{rubygem childprocess:4.0 }
+# PATCHED
+#  s.add_dependency "childprocess", "~> 4.1.0"
+BuildRequires:  %{rubygem childprocess:4.1 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
 BuildRequires:  %{rubygem ed25519:1.2 >= 1.2.4 }
 #  s.add_dependency "erubi"
@@ -117,10 +126,13 @@ BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
 BuildRequires:  %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 BuildRequires:  %{rubygem net-sftp:3 }
-#  s.add_dependency "net-scp", "~> 1.2.0"
-BuildRequires:  %{rubygem net-scp:1.2 }
+# PATCHED
+#  s.add_dependency "net-scp", "~> 3.0.0"
+BuildRequires:  %{rubygem net-scp:3.0 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
 BuildRequires:  %{rubygem rb-kqueue:0.2 }
+#  s.add_dependency "rexml", "~> 3.2"
+BuildRequires:  %{rubygem rexml:3 >= 3.2 }
 #  s.add_dependency "rubyzip", "~> 2.0"
 BuildRequires:  %{rubygem rubyzip:2}
 # Intentionally removed, wdm only works on Windows
@@ -141,8 +153,6 @@ BuildRequires:  %{rubygem rake:13 }
 BuildRequires:  %{rubygem rspec:3.5 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
-#  s.add_development_dependency "webmock", "~> 2.3.1"
-BuildRequires:  %{rubygem webmock:2.3 >= 2.3.1 }
 #  s.add_development_dependency "fake_ftp", "~> 0.1.1"
 BuildRequires:  %{rubygem fake_ftp:0.1 >= 0.1.1 }
 
@@ -182,8 +192,9 @@ BuildRequires:  fdupes
 
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
-#    s.add_dependency "childprocess", "~> 4.0.0"
-Requires:       %{rubygem childprocess:4.0}
+# PATCHED
+#    s.add_dependency "childprocess", "~> 4.1.0"
+Requires:       %{rubygem childprocess:4.1}
 #   s.add_dependency "ed25519", "~> 1.2.4"
 Requires:       %{rubygem ed25519:1.2 >= 1.2.4}
 #  s.add_dependency "erubi"
@@ -204,10 +215,13 @@ Requires:       %{rubygem mime-types:3 >= 3.3}
 Requires:       %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 Requires:       %{rubygem net-sftp:3 }
-#  s.add_dependency "net-scp", "~> 1.2.0"
-Requires:       %{rubygem net-scp:1.2 >= 1.2.0}
+# PATCHED
+#  s.add_dependency "net-scp", "~> 3.0.0"
+Requires:       %{rubygem net-scp:3.0 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
 Requires:       %{rubygem rb-kqueue:0.2}
+#  s.add_dependency "rexml", "~> 3.2"
+Requires:       %{rubygem rexml:3 >= 3.2 }
 #  s.add_dependency "rubyzip", "~> 2.0"
 Requires:       %{rubygem rubyzip:2}
 #   s.add_dependency "wdm", "~> 0.1.0"

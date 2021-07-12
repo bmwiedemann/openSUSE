@@ -1,7 +1,7 @@
 From 60f35e059f92cb47a65a03066d34c2492160835e Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Thu, 1 Jul 2021 09:31:50 +0200
-Subject: [PATCH 12/12] Use systemctl poweroff in the background instead of
+Subject: [PATCH 12/15] Use systemctl poweroff in the background instead of
  shutdown
 
 We have started seeing occasional shutdown failures on openSUSE Tumbleweed with

@@ -1,7 +1,7 @@
 From 9e4f4f017e58d7488de879037ee1564087c34008 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Fri, 16 Nov 2018 21:14:46 +0100
-Subject: [PATCH 06/12] do not abuse relative paths in docker plugin to make
+Subject: [PATCH 06/15] do not abuse relative paths in docker plugin to make
  docker work, added by tmkn@tmkn.uk on Thu Oct 26 19:42:46 UTC 2017
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
