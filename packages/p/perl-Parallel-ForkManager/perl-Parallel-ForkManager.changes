@@ -1,0 +1,129 @@
+-------------------------------------------------------------------
+Thu Nov  8 06:46:31 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 2.02
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  2.02 2018-10-08
+    - Promote to stable release.
+  
+  2.01 2018-08-23
+    [ ENHANCEMENTS ]
+      - add 'child_role' attribute for customization.
+  
+  2.00 2018-08-22 (TRIAL)
+    [ API CHANGES ]
+      - Change the guts to be Moo-based. (GH#24)
+
+-------------------------------------------------------------------
+Thu Jul 19 05:51:45 UTC 2018 - coolo@suse.com
+
+- updated to 1.20
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.20 2018-07-18
+    [ DOCUMENTATION ]
+      - Add section about rand() and forked processes. (GH#22)
+  
+    [ ENHANCEMENTS ]
+      - Expand abbreviations in error messages. (GH#14, Ricardo Signes)
+      - Rename variables and simplify `_waitpid` signature. (GH#14, Ricardo
+        Signes)
+  
+    [ STATISTICS ]
+      - code churn: 6 files changed, 80 insertions(+), 33 deletions(-)
+
+-------------------------------------------------------------------
+Mon Jul  4 13:03:56 UTC 2016 - coolo@suse.com
+
+- updated to 1.19
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.19 2016-06-28
+    [ DOCUMENTATION ]
+      - Typo fixes. (GH#10)
+      - Add short discussion on security about the information passing via
+        files between master/children processes.
+      - Document the problem between PerlIO::fzip and fork(). (GH#11) 
+  
+    [ ENHANCEMENTS ]
+      - New way to spawn workers via 'start_child'.
+  
+    [ STATISTICS ]
+      - code churn: 4 files changed, 114 insertions(+), 5 deletions(-)
+
+-------------------------------------------------------------------
+Mon Apr  4 10:11:17 UTC 2016 - coolo@suse.com
+
+- updated to 1.18
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.18 2016-03-29
+    [ BUG FIXES ]
+      - Storage file between child and parent could have the wrong name, 
+        because $$ was used instead of parent_pid. (GH#9, reported by Lucien
+        Coffe)
+  
+    [ STATISTICS ]
+      - code churn: 4 files changed, 37 insertions(+), 4 deletions(-)
+
+-------------------------------------------------------------------
+Sun Nov 29 10:06:08 UTC 2015 - coolo@suse.com
+
+- updated to 1.17
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.17 2015-11-28
+    - Up Test::More's dependency version to v0.94 (because of 'subtest'). 
+      (GH#8, mauke)
+  
+    [ STATISTICS ]
+      - code churn: 3 files changed, 88 insertions(+), 70 deletions(-)
+
+-------------------------------------------------------------------
+Sat Oct 10 09:16:10 UTC 2015 - coolo@suse.com
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+-------------------------------------------------------------------
+Sun Jul 12 08:51:06 UTC 2015 - coolo@suse.com
+
+- updated to 1.15
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.15 2015.07.08 
+      - test's watchdog actually exit if it's being hit. (RT#105747, Zefram)
+      - condition to catch children reaped by external forces
+          improved. (RT#105748, Zefram + Yanick)
+
+-------------------------------------------------------------------
+Mon May 18 08:34:04 UTC 2015 - coolo@suse.com
+
+- updated to 1.14
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.14 2015.05.17
+      - Add 'reap_finished_children', 'is_child' and 'is_parent'. (GH#6, Nine bit)
+
+-------------------------------------------------------------------
+Wed May 13 12:48:35 UTC 2015 - coolo@suse.com
+
+- updated to 1.13
+   see /usr/share/doc/packages/perl-Parallel-ForkManager/Changes
+
+  1.13 2015.05.11
+      - Use 'select' instead of sleep in _waitpid_blocking. (GH#5)
+
+-------------------------------------------------------------------
+Mon Mar 23 08:09:49 UTC 2015 - mpluskal@suse.com
+
+- Update to 1.12
+  * for full list of changes see attaced Changes
+
+-------------------------------------------------------------------
+Fri Apr 22 06:55:29 UTC 2011 - coolo@opensuse.org
+
+- initial package 0.7.9
+    * created by cpanspec 1.78.04
+
