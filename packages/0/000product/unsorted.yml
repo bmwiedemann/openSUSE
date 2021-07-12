@@ -1915,12 +1915,6 @@ unsorted:
   - ciano 
   - ciano-lang 
   - cifs-utils-devel 
-  - cilium: [x86_64] 
-  - cilium-cni: [x86_64] 
-  - cilium-devel: [x86_64] 
-  - cilium-docker: [x86_64] 
-  - cilium-k8s-yaml: [x86_64] 
-  - cilium-operator: [x86_64] 
   - cilium-proxy: [x86_64] 
   - cim-schema 
   - cinema 
@@ -9979,7 +9973,6 @@ unsorted:
   - libchm0-32bit: [x86_64] 
   - libchromaprint-devel 
   - libchromaprint1-32bit: [x86_64] 
-  - libcilium1: [x86_64] 
   - libcilkrts5 
   - libcilkrts5-32bit: [x86_64] 
   - libcimcClientXML0 
@@ -11548,7 +11541,7 @@ unsorted:
   - libkdecorations2private8-32bit: [x86_64] 
   - libkdegames-devel 
   - libkdepim-devel 
-  - libkdsoap-server1_9_0 
+  - libkdsoap-server2 
   - libkdstatemachineeditor_core1 
   - libkdstatemachineeditor_debuginterfaceclient1 
   - libkdstatemachineeditor_debuginterfacesource-static 
@@ -24224,7 +24217,6 @@ unsorted:
   - python36-zc.customdoctests 
   - python36-zc.lockfile 
   - python36-zdaemon 
-  - python36-zeep 
   - python36-zeroconf 
   - python36-zetup 
   - python36-zhon 
@@ -25550,10 +25542,12 @@ unsorted:
   - python38-http-ece 
   - python38-http-parser 
   - python38-httpbin 
+  - python38-httpcore 
   - python38-httplib2 
   - python38-httpretty 
   - python38-httpsig_cffi 
   - python38-httptools 
+  - python38-httpx 
   - python38-hug 
   - python38-humanfriendly 
   - python38-humanhash3 
@@ -26419,6 +26413,7 @@ unsorted:
   - python38-pytest-html 
   - python38-pytest-httpbin 
   - python38-pytest-httpserver 
+  - python38-pytest-httpx 
   - python38-pytest-instafail 
   - python38-pytest-isort 
   - python38-pytest-json-report 
@@ -28563,10 +28558,12 @@ unsorted:
   - python39-http-ece 
   - python39-http-parser 
   - python39-httpbin 
+  - python39-httpcore 
   - python39-httplib2 
   - python39-httpretty 
   - python39-httpsig_cffi 
   - python39-httptools 
+  - python39-httpx 
   - python39-hug 
   - python39-humanfriendly 
   - python39-humanhash3 
@@ -29490,6 +29487,7 @@ unsorted:
   - python39-pytest-html 
   - python39-pytest-httpbin 
   - python39-pytest-httpserver 
+  - python39-pytest-httpx 
   - python39-pytest-instafail 
   - python39-pytest-isort 
   - python39-pytest-json-report 
@@ -42504,6 +42502,7 @@ unsorted:
   - yast2-registration: [x86_64] 
   - yast2-rmt 
   - yast2-samba-provision 
+  - yast2-schema-collection 
   - yast2-slide-show 
   - yast2-support 
   - yast2-testsuite 
