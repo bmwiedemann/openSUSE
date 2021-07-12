@@ -417,6 +417,9 @@ myconf_gn+=" ffmpeg_branding=\"Chrome\""
 gn gen out/Release --args="import(\"//electron/build/args/release.gn\") ${myconf_gn}"
 ninja -v %{?_smp_mflags} -C out/Release electron
 
+# strip the debugging and symbol information
+electron/script/strip-binaries.py -d out/Release
+
 %install
 install -d -m 0755 %{buildroot}%{_bindir}
 install -d -m 0755 %{buildroot}%{_libdir}/electron

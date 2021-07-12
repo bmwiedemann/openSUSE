@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  9 20:42:43 UTC 2021 - thod_@gmx.de
+
+- Strip the debugging and symbol information
+
+-------------------------------------------------------------------
 Tue Jun 29 07:01:44 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix build on openSUSE 15.3
