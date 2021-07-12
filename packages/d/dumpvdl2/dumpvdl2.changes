@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 11 20:27:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.1
+  * Fixed wrong ZeroMQ version check, which incorrectly declared
+    ZMQ version 4.0.x as too old.
+
+-------------------------------------------------------------------
 Sat Nov  7 10:46:12 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0
