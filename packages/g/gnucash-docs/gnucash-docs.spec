@@ -1,7 +1,7 @@
 #
 # spec file for package gnucash-docs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gnucash-docs
-Version:        4.5
+Version:        4.6
 Release:        9.1
 Summary:        Documentation Module for GnuCash
 License:        GFDL-1.1-only AND GPL-2.0-or-later
