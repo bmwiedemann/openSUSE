@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jul 09 11:20:05 UTC 2021 - trenn@suse.de
+
+- Enable ppc64le build
+- Enhance _service magic
+- Update to version 0.6.7.4.gdda7d95:
+  * Add support for multi-arch builds
+  * rasdaemon.spec.in: don't install _sharedstatedir
+  * rasdaemon: Add Ice Lake and Sapphire Rapids MSCOD values
+  * rasdaemon: fix build error in register_ns_ev_decoder if the sqlite3 is not enabled
+  * rasdaemon: Modify confiure.ac for Hisilicon Kunpeng errors
+  * rasdaemon: ras-mc-ctl: Add support for HiSilicon Kunpeng9xx common errors
+  * rasdaemon: ras-mc-ctl: Add support for HiSilicon Kunpeng920 errors
+  * rasdaemon: ras-mc-ctl: Add support for the vendor-specific errors
+  * rasdaemon: ras-mc-ctl: Add memory failure events
+  * rasdaemon: ras-mc-ctl: Modify ARM processor error summary log
+  * rasdaemon: add support for memory_failure events
+  * ras-record: Create RASSTATEDIR at runtime instead of install time
+  * add labels for A2SDi-8C+-HLN4F
+  * Added label for ASUS PRIME X570-PRO
+  * Add code to decode Ampere specific error
+  * rasdaemon: fix memory leak in parse_ras_data
+  * Fix ras-mc-ctl script.
+  * add Supermicro X10SRA-F and H8DGU.
+  * ras-page-isolation: page which is PAGE_OFFLINE_FAILED can be offlined again
+  * ras-page-isolation: do_page_offline always considers page offline was successful
+  * Fix problem from make dist-rpm
+  * rasdaemon: Add 8 channel decoding for SMCA systems
+  * rasdaemon: Fix error print
+  * Create SYSCONFDEFDIR configure parameter
+  * rasdaemon: ras-mc-ctl: Add ARM processor error information
+  * rasdaemon: add support for hisilicon common section decoder
+  * rasdaemon: Add error decoding for new SMCA Load Store bank type
+  * rasdaemon: Fix "ignoring return value" build warning.
+  * Match rankX in ras-mc-ctl
+  * added label for A2SDi-8C-HLN4F
+  * ras-mc-ctl: PCIe AER: display PCIe dev name
+  * rasdaemon: add support for memory Corrected Error predictive failure analysis
+  * rasdaemon: add rbtree support for page record
+  * rasdaemon: fix the issue that non standard decoder can't work in pthread way
+  * rasdaemon: add support of l3tag and l3data in hip08 OEM format2
+
+-------------------------------------------------------------------
 Wed Apr 29 10:44:25 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Let squlite create devlink_event and other tables via configure option

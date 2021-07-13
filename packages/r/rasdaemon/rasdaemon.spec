@@ -1,7 +1,7 @@
 #
 # spec file for package rasdaemon
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.6.5+git20200205.3dca35f
+Version:        0.6.7.4.gdda7d95
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only
@@ -32,7 +32,7 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       perl-DBD-SQLite
 %{?systemd_requires}
-%ifnarch s390x ppc64le
+%ifnarch s390x
 Requires:       dmidecode
 %endif
 
