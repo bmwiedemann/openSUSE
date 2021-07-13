@@ -42,4 +42,27 @@
     <comment></comment>
     <requestid>875414</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>bd7bf18226987f9367985743d3cb4c91</srcmd5>
+    <version>0.5.2</version>
+    <time>1626208651</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.5.2:
+  - improve speed of unpack integers
+  - fix extra bytes detection (see PR #26)
+  - allows ipairs(mp.packers) (see PR #27)
+  - export unpack_cursor instead of unpackers (see issue #23)
+  - refactor without types_map indirection
+  - remove set_number'integer'
+  - better use of string.pack (Lua 5.3)
+  - fix pack float with Lua 5.3
+  - fix behaviour with LUA_32BITS
+  - fix float/integer detection
+  - refactor doc with Markdown and MkDocs
+  - handle long double
+  - handle NaN (like nil) as table index
+- Use both names in %lua_provides
+</comment>
+    <requestid>906157</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package lua-messagepack
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,19 +19,18 @@
 %define flavor @BUILD_FLAVOR@
 %define mod_name messagepack
 %define rname MessagePack
-Version:        0.3.3
+Version:        0.5.2
 Release:        0
 Summary:        MessagePack is an efficient binary serialization format
 License:        MIT
 Group:          Development/Libraries/Other
-URL:            http://fperrad.github.io/lua-MessagePack/
-Source:         https://github.com/fperrad/lua-MessagePack/archive/%{version}.tar.gz
+URL:            https://framagit.org/fperrad/lua-MessagePack
+Source:         https://framagit.org/fperrad/lua-MessagePack/raw/releases/lua-messagepack-%{version}.tar.gz
 BuildRequires:  %{flavor}-devel
 Requires:       %{flavor}
-Provides:       %{flavor}-MessagePack = %{version}-%{release}
-Obsoletes:      %{flavor}-MessagePack < %{version}-%{release}
 BuildArch:      noarch
 %lua_provides
+%lua_provides -n lua-MessagePack
 %if "%{flavor}" == ""
 Name:           lua-%{mod_name}
 ExclusiveArch:  do_not_build

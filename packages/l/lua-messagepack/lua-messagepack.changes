@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 13 12:54:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade to 0.5.2:
+  - improve speed of unpack integers
+  - fix extra bytes detection (see PR #26)
+  - allows ipairs(mp.packers) (see PR #27)
+  - export unpack_cursor instead of unpackers (see issue #23)
+  - refactor without types_map indirection
+  - remove set_number'integer'
+  - better use of string.pack (Lua 5.3)
+  - fix pack float with Lua 5.3
+  - fix behaviour with LUA_32BITS
+  - fix float/integer detection
+  - refactor doc with Markdown and MkDocs
+  - handle long double
+  - handle NaN (like nil) as table index
+
+-------------------------------------------------------------------
+Sun Jul 11 16:19:18 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use both names in %lua_provides
+
+-------------------------------------------------------------------
 Fri Feb 26 11:06:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix lua naming
