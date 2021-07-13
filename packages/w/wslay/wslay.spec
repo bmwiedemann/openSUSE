@@ -26,6 +26,10 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/tatsuhiro-t/wslay
 Source0:        https://github.com/tatsuhiro-t/wslay/archive/release-%{version}.tar.gz#/%{name}-release-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- NOTE: It can only be used on Leap >= 15.3 and Tumbleweed
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+Patch0:         0001-Fix-sphinx-3.3-errors.patch
+%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  cunit-devel
@@ -88,7 +92,7 @@ in HTTP.
 This package holds the development files.
 
 %prep
-%setup -q -n %{name}-release-%{version}
+%autosetup -p1 -n %{name}-release-%{version}
 
 %build
 export CFLAGS="%{optflags} -fpermissive"

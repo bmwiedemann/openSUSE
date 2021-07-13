@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 08:52:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add upstream patch to fix build with recent sphinx versions:
+  * 0001-Fix-sphinx-3.3-errors.patch
+
+-------------------------------------------------------------------
 Sun Jul 26 09:00:49 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to version 1.1.1
