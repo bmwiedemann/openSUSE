@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:36:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Fix build with gcc11:
+  Add vapoursynth-include.patch
+  See:
+  * https://github.com/vapoursynth/vapoursynth/issues/686
+  * https://github.com/vapoursynth/vapoursynth/issues/688
+  * and commits b5ed913f, a4c4eba7
+
+-------------------------------------------------------------------
 Thu Apr 29 07:25:25 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 53:

@@ -26,7 +26,9 @@ URL:            http://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
 # PATCH-FIX-OPENSUSE vapoursynth-version.patch -- makes sure that we have
 # some sort of version for othervise unversioned .so files
-Patch1:         vapoursynth-version.patch
+Patch0:         vapoursynth-version.patch
+# fix build with gcc11
+Patch1:         vapoursynth-include.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -177,6 +179,7 @@ Plugin with subtitles support for VapourSynth.
 
 %prep
 %setup -q -n %{name}-R%{version}
+%patch0 -p1
 %patch1 -p1
 
 %build

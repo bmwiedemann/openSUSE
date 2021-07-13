@@ -164,4 +164,17 @@
   * Bugfix release</comment>
     <requestid>889195</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>be0652444d778e20ec9f1cc2a80e5aaf</srcmd5>
+    <version>53</version>
+    <time>1626208660</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build with gcc11:
+  Add vapoursynth-include.patch
+  See:
+  * https://github.com/vapoursynth/vapoursynth/issues/686
+  * https://github.com/vapoursynth/vapoursynth/issues/688
+  * and commits b5ed913f, a4c4eba7</comment>
+    <requestid>906103</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,142 @@
+From ee4c1c4003b63b78a68349d69438196e23308a4b Mon Sep 17 00:00:00 2001
+From: sekrit-twc <noreply@example.com>
+Date: Mon, 10 May 2021 13:33:17 -0700
+Subject: [PATCH 1/4] Add missing include
+
+Fix #686
+---
+ src/core/genericfilters.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/core/genericfilters.cpp b/src/core/genericfilters.cpp
+index 0a00c6f07..a72bed32b 100644
+--- a/src/core/genericfilters.cpp
++++ b/src/core/genericfilters.cpp
+@@ -20,13 +20,14 @@
+ 
+ 
+ #include <algorithm>
++#include <array>
+ #include <cfloat>
+ #include <cmath>
+ #include <cstddef>
+ #include <cstdlib>
+-#include <string>
+-#include <array>
++#include <limits>
+ #include <memory>
++#include <string>
+ #include <vector>
+ #include <VapourSynth.h>
+ #include <VSHelper.h>
+
+From b5ed913f6c22a3f849752c5abe8c24aef933837e Mon Sep 17 00:00:00 2001
+From: sekrit-twc <noreply@example.com>
+Date: Mon, 10 May 2021 13:53:17 -0700
+Subject: [PATCH 2/4] Add more includes
+
+---
+ src/core/kernel/generic.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/kernel/generic.cpp b/src/core/kernel/generic.cpp
+index b4bcf50d9..c392acc5f 100644
+--- a/src/core/kernel/generic.cpp
++++ b/src/core/kernel/generic.cpp
+@@ -22,6 +22,7 @@
+ #include <array>
+ #include <cmath>
+ #include <cstdint>
++#include <limits>
+ #include <type_traits>
+ #include "generic.h"
+ 
+
+From e38b8953f94714f6374245f004d89e194ba0125f Mon Sep 17 00:00:00 2001
+From: sekrit-twc <noreply@example.com>
+Date: Sat, 15 May 2021 09:38:46 -0700
+Subject: [PATCH 3/4] Add even more includes
+
+Fix #688
+---
+ src/core/exprfilter.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/core/exprfilter.cpp b/src/core/exprfilter.cpp
+index 0d643162d..047ddff09 100644
+--- a/src/core/exprfilter.cpp
++++ b/src/core/exprfilter.cpp
+@@ -22,6 +22,7 @@
+ #include <cmath>
+ #include <functional>
+ #include <iostream>
++#include <limits>
+ #include <locale>
+ #include <map>
+ #include <memory>
+
+From a4c4eba7e5d93af25c92b5e35eee0d0efad8d28e Mon Sep 17 00:00:00 2001
+From: sekrit-twc <noreply@example.com>
+Date: Sat, 15 May 2021 11:15:23 -0700
+Subject: [PATCH 4/4] Yet more includes
+
+---
+ src/avisynth/avisynth_compat.cpp   | 1 +
+ src/filters/misc/miscfilters.cpp   | 1 +
+ src/filters/removegrain/clense.cpp | 5 +++--
+ 3 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/src/avisynth/avisynth_compat.cpp b/src/avisynth/avisynth_compat.cpp
+index ce0b6e800..2ef06abce 100644
+--- a/src/avisynth/avisynth_compat.cpp
++++ b/src/avisynth/avisynth_compat.cpp
+@@ -23,6 +23,7 @@
+ #include "avisynth_compat.h"
+ #include <algorithm>
+ #include <cstdarg>
++#include <limits>
+ #include "../common/vsutf16.h"
+ 
+ #define NOMINMAX
+diff --git a/src/filters/misc/miscfilters.cpp b/src/filters/misc/miscfilters.cpp
+index c1e147dc2..1faf48728 100644
+--- a/src/filters/misc/miscfilters.cpp
++++ b/src/filters/misc/miscfilters.cpp
+@@ -23,6 +23,7 @@
+ #include <cmath>
+ #include <cfloat>
+ #include <cstddef>
++#include <limits>
+ #include <memory>
+ #include <stdexcept>
+ #include <vector>
+diff --git a/src/filters/removegrain/clense.cpp b/src/filters/removegrain/clense.cpp
+index 5fdc6b2be..504c710a1 100644
+--- a/src/filters/removegrain/clense.cpp
++++ b/src/filters/removegrain/clense.cpp
+@@ -25,6 +25,7 @@ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+ OTHER DEALINGS IN THE SOFTWARE.
+ */
+ 
++#include <limits>
+ #include "shared.h"
+ 
+ #define CLENSE_RETERROR(x) do { vsapi->setError(out, (x)); vsapi->freeNode(d.cnode); vsapi->freeNode(d.pnode); vsapi->freeNode(d.nnode); return; } while (0)
+@@ -204,7 +205,7 @@ void VS_CC clenseCreate(const VSMap *in, VSMap *out, void *userData, VSCore *cor
+     for (i = 0; i < m; i++) {
+         o = int64ToIntS(vsapi->propGetInt(in, "planes", i, nullptr));
+ 
+-        if (o < 0 || o >= n) 
++        if (o < 0 || o >= n)
+             CLENSE_RETERROR("Clense: plane index out of range");
+ 
+         if (d.process[o])
+@@ -230,7 +231,7 @@ void VS_CC clenseCreate(const VSMap *in, VSMap *out, void *userData, VSCore *cor
+ 
+     if (!getFrameFunc)
+         CLENSE_RETERROR("Clense: only 8 and 16 bit integer input supported");
+-    
++
+     data = new ClenseData(d);
+ 
+     vsapi->createFilter(in, out, "Clense", clenseInit, getFrameFunc, clenseFree, fmParallel, 0, data, core);
