@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Jul 11 12:57:54 UTC 2021 - Tobias Klausmann <tobias.klausmann@freenet.de>
+
+- Update to version 2.4.107:
+  * amdgpu: update marketing names
+  * tests/amdgpu: Fix valgrind warning
+  * test/amdgpu: Add helper functions for hot unplug
+  * test/amdgpu/hotunplug: Add test suite for GPU unplug
+  * tests/amdgpu/hotunplug: Add unplug with cs test.
+  * tests/amdgpu/hotunplug: Add hotunplug with exported bo test
+  * tests/amdgpu/hotunplug: Add hotunplug with exported fence
+  * amdgpu: Add vamgr for capture/replay.
+  * include <sys/types.h> in xf86drmMode when the OS is FreeBSD
+  * _WANT_KERNEL_ERRNO must be defined in FreeBSD for ERESTART to be used
+  * Conditionally include <linux/limits.h> and <sys/params.h> on Linux, BSD
+  * Revert "tests/amdgpu: fix bo eviction test issue"
+  * xf86drm: Add a human readable representation for format modifiers
+  * xf86drm: Add a vendor function to decode the format modifier
+  * xf86drm: Add support for decoding Nvidia format modifiers
+  * xf86drm: Add support for decoding AMD format modifiers
+  * xf86drm: Add support for decoding AMLOGIC format modifiers
+  * README.rst: Include some notes about syncing uapi headers
+  * amdgpu: Added product name for E9390,E9560 and E9565 dgpu
+  * intel: Add support for ADLP
+
+-------------------------------------------------------------------
 Wed May 19 08:13:47 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.4.106:

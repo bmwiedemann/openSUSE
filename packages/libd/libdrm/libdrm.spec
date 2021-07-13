@@ -17,7 +17,7 @@
 
 
 Name:           libdrm
-Version:        2.4.106
+Version:        2.4.107
 Release:        0
 Summary:        Userspace Interface for Kernel DRM Services
 License:        MIT
