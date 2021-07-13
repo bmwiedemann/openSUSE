@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  7 09:37:54 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust firstboot_write_wsl.rb to changes in YaST
+
+-------------------------------------------------------------------
 Thu Jan 14 07:47:53 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - refresh patch after yast2-firstboot changes

@@ -23,4 +23,12 @@
     <comment>- refresh patch after yast2-firstboot changes (forwarded request 863262 from jfkw)</comment>
     <requestid>863399</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>409a5303fbc2f92d0bb1309c876da297</srcmd5>
+    <version>1</version>
+    <time>1626208629</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust firstboot_write_wsl.rb to changes in YaST (forwarded request 904559 from favogt)</comment>
+    <requestid>905907</requestid>
+  </revision>
 </revisionlist>

@@ -27,9 +27,9 @@ module Yast
 
       return :back if GetInstArgs.going_back
 
-      @users = UsersSimple.GetUsers()
-      unless @users.empty?
-        @uid = Etc.getpwnam(@users[0]['uid']).uid
+      user = Y2Firstboot::Clients::User.username
+      unless user.nil?
+        @uid = Etc.getpwnam(user).uid
         Yast::TargetFile.write("/run/wsl_firstboot_uid", @uid)
       end
 

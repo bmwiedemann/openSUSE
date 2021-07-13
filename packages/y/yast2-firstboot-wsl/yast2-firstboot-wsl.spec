@@ -29,7 +29,7 @@ Source10:       welcome.txt
 Patch0:         yast2-firstboot-wsl.diff
 URL:            https://build.opensuse.org/project/show/Virtualization:WSL
 BuildRequires:  xsltproc
-BuildRequires:  yast2-firstboot
+BuildRequires:  yast2-firstboot >= 4.4.2
 
 %description
 YaST2 firstboot settings for WSL images
