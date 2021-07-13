@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  9 11:59:31 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Remember plain passwords in order to provide a clean navigation
+  through the firstboot dialogs when going back and forward.
+- Skip client for root password when needed (bsc#1188068).
+- 4.4.3
+
+-------------------------------------------------------------------
 Thu Jun 17 07:43:12 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Adapt code to Y2Users (part of jsc#PM-2620).
