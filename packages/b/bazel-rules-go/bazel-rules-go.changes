@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  8 04:10:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update shebangs for Python scripts to be python3.
+- Update shebangs for /usr/bin/env bash to /bin/bash.
+
+-------------------------------------------------------------------
 Mon Jan 13 15:13:26 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Remove patch which is not needed anymore:

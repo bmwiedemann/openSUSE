@@ -66,4 +66,12 @@
   * Set RULES_GO_VERSION to 0.20.2 (forwarded request 765216 from mrostecki)</comment>
     <requestid>765217</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>f6c02fb504cf77a51d6615d096d530f5</srcmd5>
+    <version>0.20.3</version>
+    <time>1626208646</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906023</requestid>
+  </revision>
 </revisionlist>
