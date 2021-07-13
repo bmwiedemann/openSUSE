@@ -739,4 +739,12 @@ reviewed ok
     <comment></comment>
     <requestid>897428</requestid>
   </revision>
+  <revision rev="88" vrev="3">
+    <srcmd5>3cad3f6389618aa5df17963697faaab4</srcmd5>
+    <version>6.4.19</version>
+    <time>1626208624</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>905335</requestid>
+  </revision>
 </revisionlist>
