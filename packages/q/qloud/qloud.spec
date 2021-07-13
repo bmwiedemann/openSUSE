@@ -17,13 +17,13 @@
 
 
 Name:           qloud
-Version:        1.4
+Version:        1.4.1
 Release:        0
 Summary:        Tool to measure
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/molke-productions/qloud
-Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  libqt5-linguist
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Charts)
