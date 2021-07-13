@@ -169,4 +169,12 @@
     <comment>New upstream release 2.3.0 (forwarded request 785608 from dancermak)</comment>
     <requestid>785649</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d7c3ae3f29a48b288d60cab85c9e7e6b</srcmd5>
+    <version>2.3.2</version>
+    <time>1626208620</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905666</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 11 11:01:52 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.3.2
+
+  * A "dummy" release to warn about breaking changes coming in version 3.0.
+    This updated version uses the Gem `post_install_message` instead of
+    printing to `STDERR`.
+
+-------------------------------------------------------------------
 Mon Mar 16 12:06:26 UTC 2020 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 2.3.0
