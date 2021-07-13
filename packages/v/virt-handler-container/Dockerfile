@@ -25,7 +25,8 @@ RUN zypper -n install \
               kubevirt-virt-handler \
               libvirt-client \
               qemu-tools \
-              system-user-qemu && \
+              system-user-qemu \
+              util-linux-systemd && \
     zypper clean -a
 
 ENTRYPOINT [ "/usr/bin/virt-handler" ]
