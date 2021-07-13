@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 13 07:29:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.36
+  * Fix git tags in Makefile
+  * Add a helper-function: as_text_list(); improve performance of
+    .delete()
+  * Fix __int__() and __index__() on IPv4Obj() and IPv6Obj()
+  * Enhance ccp_util.CiscoRange() to parse a wider variety of
+    string inputs
+  * Remove slow code from ccp_util.CiscoRange()
+  * Make ccp_util.L4Object().__repr__() more friendly
+
+-------------------------------------------------------------------
 Sat Jan 23 18:32:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.5.25
