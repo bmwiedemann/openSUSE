@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  7 10:29:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.3.1
+  * Match old and new rsync version format
+  * Keep permissions of an existing mountpoint from being overridden
+  * Fix FileNotFoundError exception in mount.mounted
+  * Fix: 'TempPasswordThread' object has no attribute 'isAlive'
+  * Fix: YEAR missing in config
+  * Fix: SSH module didn't send identification string while checking if remote host is avilable (#1030)
+  * QT: Fix notifyplugin
+  * QT: Fix theming: Use link Color instead of hardcoded lightGray
+
+-------------------------------------------------------------------
 Thu Oct 17 14:19:06 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

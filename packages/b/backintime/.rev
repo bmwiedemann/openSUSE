@@ -177,4 +177,21 @@ Fix usage of deprecated unix-process polkit authorization subject opens a race c
     <comment></comment>
     <requestid>739884</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e632dff93ad9d3270c51503726fc3753</srcmd5>
+    <version>1.3.1</version>
+    <time>1626208627</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.1
+  * Match old and new rsync version format
+  * Keep permissions of an existing mountpoint from being overridden
+  * Fix FileNotFoundError exception in mount.mounted
+  * Fix: 'TempPasswordThread' object has no attribute 'isAlive'
+  * Fix: YEAR missing in config
+  * Fix: SSH module didn't send identification string while checking if remote host is avilable (#1030)
+  * QT: Fix notifyplugin
+  * QT: Fix theming: Use link Color instead of hardcoded lightGray
+</comment>
+    <requestid>905977</requestid>
+  </revision>
 </revisionlist>

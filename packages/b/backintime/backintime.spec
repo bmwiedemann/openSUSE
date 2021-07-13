@@ -1,7 +1,7 @@
 #
 # spec file for package backintime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           backintime
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        Backup tool for Linux inspired by the "flyback project"
 License:        GPL-2.0-or-later
-Url:            https://github.com/bit-team/backintime
-Source0:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/bit-team/backintime/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
+URL:            https://github.com/bit-team/backintime
+Source0:        https://github.com/bit-team/backintime/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/bit-team/backintime/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 # Public key mentioned in https://github.com/bit-team/backintime#archlinux
 Source2:        %{name}.keyring
 Source3:        %{name}.png
@@ -84,8 +84,7 @@ sed -i -e "s|/share/doc/|/share/doc/packages/|g" common/configure qt/configure
 sed -i -e "s|backintime-common|backintime|g" common/configure qt/configure
 
 # Fix icon name.
-sed -i 's/Icon=document-save/Icon=backintime/g' qt/backintime-qt.desktop
-sed -i 's/Icon=document-save/Icon=backintime/g' qt/backintime-qt-root.desktop
+sed -i 's/Icon=document-save/Icon=backintime/g' qt/backintime-qt.desktop qt/backintime-qt-root.desktop
 
 # Fix shebangs
 sed -i 's|/usr/bin/env python|#!/usr/bin/python|g' common/askpass.py
@@ -141,11 +140,6 @@ rm -f %{_sysconfdir}/udev/rules.d/99-backintime-*.rules
 %exclude %{_datadir}/%{name}/plugins
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
-%if 0%{?suse_version} < 1120
-%lang(jv) %dir %{_datadir}/locale/jv
-%lang(jv) %dir %{_datadir}/locale/jv/LC_MESSAGES
-%endif
 
 %files qt
 %defattr(-,root,root)
