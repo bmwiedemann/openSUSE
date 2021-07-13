@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 12 10:51:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.28.2
+  libout123:
+  * Complete the fix for bug 314, reopening the device after
+    format setup failure.
+
+-------------------------------------------------------------------
+Fri Jul  9 14:30:59 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.28.1
+   build:
+   * Explain --with-default-audio in configure help better.
+   * Fix build of arm_fpu (regression of configure reorg).
+   * Re-introduce AC_PROG_C_C99 macro for autoconf 2.69, it's
+     only obsolete after that.
+   * Un-break CMake build for botched move of CheckCPUArch.c.in.
+   libmpg123:
+   * Make mpg123.h.in usable again with MPG123_NO_CONFIGURE,
+   for external uses.
+   * Use predefined MPG123_API_VERSION in mpg123.h.in for the
+     same.
+   * Fix an integer constant definition for the most negative 32
+     bit number to avoid justified compiler complaints.
+   libsyn123:
+   * More support for MPG123_NO_CONFIGURE.
+   * Optionally use predefined SYN123_API_VERSION in syn123.h.in
+     for the same.
+   * Add a cast to silence integer sign warning for offset in
+     muloffdiv64().
+   libout123:
+   * Pulse module advertises wider format support now, not
+     just s16. This makes mpg123 -e s24 work with it, not just
+     out123.
+   * Optionally use predefined OUT123_API_VERSION in out123.h.in
+     for non-configure use.
+
+-------------------------------------------------------------------
 Sat Jun  5 17:59:09 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.28.0
