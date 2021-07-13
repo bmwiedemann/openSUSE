@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.41
+Version:        3.9.42
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
@@ -94,7 +94,6 @@ export LANG=en_US.UTF-8
 %if !%{with test}
 export LANG=en_US.UTF-8
 %python_install
-%python_expand rm -r %{buildroot}%{$python_sitelib}/app/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
