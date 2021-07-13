@@ -27,12 +27,12 @@ RUN zypper -n install \
               libvirt-client \
               libvirt-daemon-driver-storage-core \
               libvirt-daemon-qemu \
-              mkisofs \
               nftables \
               qemu-tools \
               qemu-x86 \
               socat \
-              vim && \
+              vim \
+              xorriso && \
     zypper clean -a && \
     mkdir -p /usr/share/kubevirt/virt-launcher
 
@@ -46,6 +46,5 @@ COPY augconf /augconf
 
 RUN augtool -f /augconf
 RUN cd /var && rm -rf run && ln -s ../run .
-RUN ln -s /usr/bin/mkisofs /usr/bin/genisoimage
 
 ENTRYPOINT [ "/usr/bin/virt-launcher" ]
