@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 10 21:30:44 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 12.0.1.
+  * This release contains bug-fixes for the LLVM 12.0.0 release.
+    This release is API and ABI compatible with 12.0.0.
+- Update README.packaging.
+
+-------------------------------------------------------------------
 Wed Apr 14 23:57:28 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 12.0.0.

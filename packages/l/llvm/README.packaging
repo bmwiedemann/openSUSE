@@ -12,7 +12,7 @@ patch-level updates to older LLVM versions, and major/minor
 version updates.
 
 LLVM version numbers come in three levels.  For version
-X.Y.Z, changes to the X level are major updates, changes to
+X.0.Z, changes to the X level are major updates, changes to
 the Y level are minor updates, and changes to the Z level
 are patch-level updates. Since LLVM 4, the minor version
 is always expected to be 0. [1]  Library .so numbers are
@@ -40,20 +40,19 @@ llvmX package need to be updated.
 
 1. llvmX package:
    1. Add the new sources to the package and delete the old
-      ones.  This will not include cfe-docs-X.Y.Z.src.tar.xz 
-      or llvm-docs-X.Y.Z.src.tar.xz (see next item).
-   2. Build cfe-docs-X.Y.Z.src.tar.xz and 
-      llvm-docs-X.Y.Z.src.tar.xz.  The instructions are in
-      the %install section of llvmX.spec.  The version
-      numbers in the instructions will need to be updated
-      first.  Add those sources as well and delete the old
-      ones.
-   3. Update the "Version" tag in llvmX.spec to match the
+      ones.  This will not include clang-docs-X.0.Z.src.tar.xz
+      or llvm-docs-X.0.Z.src.tar.xz (see next item).
+   2. Build clang-docs-X.0.Z.src.tar.xz and
+      llvm-docs-X.0.Z.src.tar.xz.  The instructions are in
+      the %install section of llvmX.spec.  The instructions
+      need RPM substitutions, for example via rpmspec -P.
+      Add those sources as well and delete the old ones.
+   3. Update the "_relver" tag in llvmX.spec to match the
       new sources.
    4. Update the version number in the patches to match the
       new sources.
-   5. Update the "_relver" tag in llvmX.spec to match
-      the "Version" tag.
+   5. Update the "_uaver" tag in llvmX.spec to match
+      the "_relver" tag.
    6. Confirm everything builds successfully and there are
       no new rpmlint issues.
    7. Update the llvmX.changes file.
@@ -72,19 +71,18 @@ needs to be updated.
 
 1. llvmX package:
    1. Add the new sources to the package and delete the old
-      ones.  This will not include cfe-docs-X.Y.Z.src.tar.xz 
-      or llvm-docs-X.Y.Z.src.tar.xz (see next item).
-   2. Build cfe-docs-X.Y.Z.src.tar.xz and 
-      llvm-docs-X.Y.Z.src.tar.xz.  The instructions are in
-      the %install section of llvmX.spec.  The version
-      numbers in the instructions will need to be updated
-      first.  Add those sources as well and delete the old
-      ones.
-   3. Update the "Version" tag in llvmX.spec to match the
+      ones.  This will not include clang-docs-X.0.Z.src.tar.xz
+      or llvm-docs-X.0.Z.src.tar.xz (see next item).
+   2. Build clang-docs-X.0.Z.src.tar.xz and
+      llvm-docs-X.0.Z.src.tar.xz.  The instructions are in
+      the %install section of llvmX.spec.  The instructions
+      need RPM substitutions, for example via rpmspec -P.
+      Add those sources as well and delete the old ones.
+   3. Update the "_relver" tag in llvmX.spec to match the
       new sources.
    4. Update the version number in the patches to match the
       new sources.
-   5. Update the "_relver" tag in llvmX.spec to match
+   5. Update the "_uaver" tag in llvmX.spec to match
       the "Version" tag.
    6. Confirm everything builds successfully and there are
       no new rpmlint issues.  Some patches may need to be 
@@ -92,8 +90,8 @@ needs to be updated.
    7. Update the llvmX.changes file.
 
 
-===============================
-MAJOR AND MINOR VERSION UPDATES
+=====================
+MAJOR VERSION UPDATES
 
 For updates that change the major or minor version number,
 this package (llvm) needs to be updated, a new llvmX
@@ -104,14 +102,13 @@ needs to be modified.
    1. Copy (do not link) the old llvmX to the new
       major/minor version number.
    2. Add the new sources to the package and delete the old
-      ones.  This will not include cfe-docs-X.Y.Z.src.tar.xz 
-      or llvm-docs-X.Y.Z.src.tar.xz (see next item).
-   3. Build cfe-docs-X.Y.Z.src.tar.xz and 
-      llvm-docs-X.Y.Z.src.tar.xz.  The instructions are in
-      the %install section of llvmX.spec.  The version
-      numbers in the instructions will need to be updated
-      first.  Add those sources as well and delete the old
-      ones.
+      ones.  This will not include clang-docs-X.0.Z.src.tar.xz
+      or llvm-docs-X.0.Z.src.tar.xz (see next item).
+   3. Build clang-docs-X.0.Z.src.tar.xz and
+      llvm-docs-X.0.Z.src.tar.xz.  The instructions are in
+      the %install section of llvmX.spec.  The instructions
+      need RPM substitutions, for example via rpmspec -P.
+      Add those sources as well and delete the old ones.
    4. Rename the .spec, .changes, and rpmlintrc files in the
       new llvmX package to the new major/minor version
       number
@@ -123,10 +120,9 @@ needs to be modified.
       the new major/minor versions.  It should be of the
       form "X.0".
    8. Change the "_uaver" tag in llvmX.spec to match the
-      new major/minor versions. It should be of the form "X00".
-   9. Update the "Version", and "_relver" tags and the
-      version numbers in the patches as described in
-      PATCH-LEVEL UPDATES above.
+      new major/minor versions. It should be of the form "X0Z".
+   9. Update the "_relver" tag and the version numbers in
+      the patches as described in PATCH-LEVEL UPDATES above.
   10. Confirm llvmX.spec builds successfully and there are
       no new rpmlint issues.
   11. Check whether the .so number of "libc++.so.W.V" has
