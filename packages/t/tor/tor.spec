@@ -20,7 +20,7 @@
 %define torgroup %{name}
 %define home_dir %{_localstatedir}/lib/empty
 Name:           tor
-Version:        0.4.6.5
+Version:        0.4.6.6
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
@@ -35,7 +35,6 @@ Source5:        defaults-torrc
 Source6:        tor-master.service
 Patch0:         tor-0.2.5.x-logrotate.patch
 Patch1:         fix-test.patch
-Patch2:         tor-0.4.6.5-gcc7.patch
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pwdutils
@@ -132,6 +131,7 @@ install -D -m 644 contrib/operator-tools/tor.logrotate %{buildroot}/%{_sysconfdi
 getent group %{torgroup} >/dev/null || groupadd -r %{torgroup}
 getent passwd %{toruser} >/dev/null || useradd -r -g %{torgroup} -d %{home_dir} -s /sbin/nologin -c "User for %{name}" %{toruser}
 %service_add_pre tor.service
+%service_add_pre tor-master.service
 
 %post
 %fillup_only

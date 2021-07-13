@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  6 07:13:19 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add missing service_add_pre tor-master.service
+
+-------------------------------------------------------------------
+Thu Jul  1 11:13:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- tor 0.4.6.6:
+  * Fix a compilation error with gcc 7, drop tor-0.4.6.5-gcc7.patch
+  * Enable the deterministic RNG for unit tests that covers the
+    address set bloomfilter-based API's
+
+-------------------------------------------------------------------
 Wed Jun 16 20:32:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - tor 0.4.6.5
