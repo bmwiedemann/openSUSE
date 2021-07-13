@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.13
-%define patchversion 5.13.0
+%define patchversion 5.13.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -72,9 +72,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0
 Group:          System/Kernel
-Version:        5.13.0
+Version:        5.13.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gaa40472
+Release:        <RELEASE>.g72aabc2
 %else
 Release:        0
 %endif
@@ -185,10 +185,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-aa40472d585ba618ec8180d4bd70a91f26eb790f
-Provides:       kernel-srchash-aa40472d585ba618ec8180d4bd70a91f26eb790f
+Provides:       kernel-%build_flavor-base-srchash-72aabc280320ed44ba5be658a4e67057167ed825
+Provides:       kernel-srchash-72aabc280320ed44ba5be658a4e67057167ed825
 # END COMMON DEPS
-Provides:       %name-srchash-aa40472d585ba618ec8180d4bd70a91f26eb790f
+Provides:       %name-srchash-72aabc280320ed44ba5be658a4e67057167ed825
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -682,6 +682,9 @@ add_vmlinux()
     mkdir -p %buildroot/usr/share/man/man9
     find man -name '*.9' -exec install -m 644 -D '{}' %buildroot/usr/share/man/man9/ ';'
 %endif
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+    objcopy -R .rodata.compressed arch/s390/boot/compressed/vmlinux %buildroot/boot/zdebug-%kernelrelease-%build_flavor
+%endif
 %endif
 %ifarch %arm
     add_vmlinux --compressed
@@ -963,9 +966,7 @@ if [ %CONFIG_MODULES = y ]; then
 
     # Recreate the generated Makefile with correct path
     #
-    # Linux 5.13 no longer has mkmakefile and the generated makefile only depends on
-    # relative location of source and binary directories which is preserved.
-    # No need to recreate.
+    # Linux 5.13 no longer has mkmakefile
     if [ -f ../scripts/mkmakefile ] ; then
         sh ../scripts/mkmakefile ../../../%{basename:%src_install_dir} \
             %rpm_install_dir/%cpu_arch_flavor \
@@ -999,6 +1000,10 @@ if [ -f %my_builddir/livepatch-files.no_dir ] ; then
     cat %my_builddir/livepatch-files.no_dir | add_dirs_to_filelist > %my_builddir/livepatch-files
 fi
 
+# does not exist for non-modularized kernels
+%if 0%{?usrmerged}
+        mkdir -p %{buildroot}%modules_dir
+%endif
 shopt -s nullglob dotglob
 > %my_builddir/kernel-devel.files
 for file in %buildroot/boot/symtypes* %buildroot/lib/modules/*/{build,source}; do
@@ -1061,7 +1066,10 @@ add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 } | sort -u | add_dirs_to_filelist >%my_builddir/kernel-base.files
 
 {
-    add_dirs_to_filelist %my_builddir/{kernel-base.files,main-modules}
+    add_dirs_to_filelist %my_builddir/kernel-base.files
+    if [ %CONFIG_MODULES = y ]; then
+        add_dirs_to_filelist %my_builddir/main-modules
+    fi
     if test -d %buildroot/lib/firmware/%kernelrelease-%build_flavor; then
 	echo "/lib/firmware/%kernelrelease-%build_flavor"
     fi

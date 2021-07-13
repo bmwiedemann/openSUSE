@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Jul 12 08:10:50 CEST 2021 - jslaby@suse.cz
+
+- Revert "UsrMerge the kernel (boo#1184804)"
+  This reverts commit 6f5ed044f52ae3de78db9492d404f9c88d29b938 as it:
+  1) breaks installation in Leap/SLE -- no initrd is generated.
+  2) breaks installation-images -- expecting kernel in /boot and modules
+   in /lib.
+- commit b6ab3de
+
+-------------------------------------------------------------------
+Sun Jul 11 18:12:30 CEST 2021 - schwab@suse.de
+
+- config: riscv64: enable DRM_I2C_NXP_TDA998X
+  This also selects SND_SOC_HDMI_CODEC, SND_PCM_ELD, SND_PCM_IEC958.
+- commit d56d022
+
+-------------------------------------------------------------------
+Sun Jul 11 18:08:39 CEST 2021 - schwab@suse.de
+
+- config: riscv64: enable MFD_TPS65086
+  Also enable the related drivers GPIO_TPS65086 and REGULATOR_TPS65086.
+- commit ce26f32
+
+-------------------------------------------------------------------
+Fri Jul  9 13:07:01 CEST 2021 - msuchanek@suse.de
+
+- rpm/kernel-binary.spec.in: Remove zdebug define used only once.
+- commit 85a9fc2
+
+-------------------------------------------------------------------
+Thu Jul  8 20:28:04 CEST 2021 - msuchanek@suse.de
+
+- Update config files (boo#1187824).
+  CRYPTO_FIPS=y
+  CRYPTO_MANAGER_DISABLE_TESTS=n
+- commit c81d16b
+
+-------------------------------------------------------------------
+Thu Jul  8 20:04:55 CEST 2021 - msuchanek@suse.de
+
+- kernel-binary.spec: Exctract s390 decompression code (jsc#SLE-17042).
+- commit 7f97df2
+
+-------------------------------------------------------------------
+Thu Jul  8 11:17:05 CEST 2021 - msuchanek@suse.de
+
+- kernel-binary.spec: Fix up usrmerge for non-modular kernels.
+- commit d718cd9
+
+-------------------------------------------------------------------
+Thu Jul  8 07:02:35 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.13.1 (bsc#1012628).
+- Revert "KVM: x86/mmu: Drop kvm_mmu_extended_role.cr4_la57 hack"
+  (bsc#1012628).
+- commit bfd7864
+
+-------------------------------------------------------------------
+Wed Jul  7 12:35:52 CEST 2021 - schwab@suse.de
+
+- config: riscv64: enable MFD_DA9063
+  Also enable the related drivers DA9063_WATCHDOG, REGULATOR_DA9063,
+  RTC_DRV_DA9063.
+- commit 40fb687
+
+-------------------------------------------------------------------
+Mon Jul  5 18:08:41 CEST 2021 - mkubecek@suse.cz
+
+- update upstream references
+- update upstream references of patches added in 5.14 merge window:
+  - patches.suse/pinctrl-bcm2835-accept-fewer-than-expected-irqs.patch
+  - patches.suse/proc-Avoid-mixing-integer-types-in-mem_rw.patch
+- commit 9510801
+
+-------------------------------------------------------------------
+Thu Jul  1 21:12:15 CEST 2021 - msuchanek@suse.de
+
+- kernel-binary.spec: Remove obsolete and wrong comment
+  mkmakefile is repleced by echo on newer kernel
+- commit d9209e7
+
+-------------------------------------------------------------------
+Thu Jul  1 18:44:34 CEST 2021 - mkubecek@suse.cz
+
+- update upstream references
+- update upstream references of patches added in 5.14 merge window:
+  - patches.suse/ACPI-PM-s2idle-Add-missing-LPS0-functions-for-AMD.patch
+  - patches.suse/ACPI-processor-idle-Fix-up-C-state-latency-if-not-or.patch
+  - patches.suse/Bluetooth-btqca-Don-t-modify-firmware-contents-in-pl.patch
+  - patches.suse/brcmfmac-Add-clm_blob-firmware-files-to-modinfo.patch
+  - patches.suse/brcmfmac-Delete-second-brcm-folder-hierarchy.patch
+  - patches.suse/crypto-ccp-Annotate-SEV-Firmware-file-names.patch
+- commit f094788
+
+-------------------------------------------------------------------
 Thu Jul  1 16:20:28 CEST 2021 - ptesarik@suse.cz
 
 - Set CONFIG_SCSI_SNIC_DEBUG_FS=y (bsc#1158776 comment 19).
@@ -526,6 +621,22 @@ Fri Jun 18 13:07:21 CEST 2021 - jslaby@suse.cz
   (bsc#1012628).
 - net: ieee802154: fix null deref in parse dev addr (bsc#1012628).
 - commit 0e46a2c
+
+-------------------------------------------------------------------
+Thu Jun 17 13:31:32 CEST 2021 - ludwig.nussel@suse.de
+
+- UsrMerge the kernel (boo#1184804)
+- Move files in /boot to modules dir
+  The file names in /boot are included as %ghost links. The %post script
+  creates symlinks for the kernel, sysctl.conf and System.map in
+  /boot for compatibility. Some tools require adjustments before we
+  can drop those links. If boot is a separate partition, a copy is
+  used instead of a link.
+  The logic for /boot/vmlinuz and /boot/initrd doesn't change with
+  this patch.
+- Use /usr/lib/modules as module dir when usermerge is active in the
+  target distro.
+- commit 6f5ed04
 
 -------------------------------------------------------------------
 Wed Jun 16 13:55:58 CEST 2021 - mbrugger@suse.com
@@ -22380,6 +22491,13 @@ Fri Aug 14 09:17:24 CEST 2020 - jslaby@suse.cz
 - commit d6761b2
 
 -------------------------------------------------------------------
+Wed Aug 12 10:07:31 CEST 2020 - duwe@suse.de
+
+- rpm/modules.fips:
+  * add ecdh_generic (boo#1173813)
+- commit 42f38df
+
+-------------------------------------------------------------------
 Wed Aug 12 09:46:06 CEST 2020 - jslaby@suse.cz
 
 - Update config files (bsc#1174058).
@@ -26222,6 +26340,14 @@ Wed Jun 17 18:44:23 CEST 2020 - jslaby@suse.cz
 - serial: amba-pl011: Make sure we initialize the port.lock
   spinlock (bnc#1012628).
 - commit af36e48
+
+-------------------------------------------------------------------
+Wed Jun 17 15:48:09 CEST 2020 - duwe@suse.de
+
+- rpm/modules.fips:
+   * add aes-ce-ccm and des3_ede-x86_64 (boo#173030)
+   * add aes_ti and aes_neon_bs (boo#1172956)
+- commit 08a1655
 
 -------------------------------------------------------------------
 Tue Jun 16 09:25:57 CEST 2020 - jslaby@suse.cz
@@ -33294,6 +33420,12 @@ Wed Feb  5 07:21:12 CET 2020 - jslaby@suse.cz
 - commit c2619d7
 
 -------------------------------------------------------------------
+Tue Feb  4 12:07:31 CET 2020 - duwe@suse.de
+
+- rpm/modules.fips: add keywrap (bsc#1160561)
+- commit 719d9e1
+
+-------------------------------------------------------------------
 Tue Feb  4 07:41:15 CET 2020 - jslaby@suse.cz
 
 - btrfs: do not zero f_bavail if we have available space
@@ -37653,6 +37785,13 @@ Sun Nov 24 21:41:27 CET 2019 - mkubecek@suse.cz
   is a consensus but for now the proper action is to revert this accidental
   change which only affected some architectures anyway.
 - commit 5c1d459
+
+-------------------------------------------------------------------
+Thu Nov 21 08:46:18 CET 2019 - lpechacek@suse.com
+
+- Add crypto modules required by tcrypt (FIPS)
+  References: bsc#1153192
+- commit 0bc5cd1
 
 -------------------------------------------------------------------
 Thu Nov 21 08:21:20 CET 2019 - jslaby@suse.cz
