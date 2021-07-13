@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul  5 20:35:20 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.0.14.
+  * Ensure that sources cannot create files outside the build
+    directory.
+  * If --sandbox is enabled, ensure sources can't real files
+    outside the manifest directory.
+- Update for version 1.0.13.
+  * Fix a bug where git submodules were bundled even when disabled
+    (whereas in the previous release this issue was fixed for the
+    extraction phase)
+  * For bundled extensions, use the specified version as the branch
+    rather than using the branch of the parent app
+
+-------------------------------------------------------------------
 Wed Mar  3 16:31:08 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.0.12.

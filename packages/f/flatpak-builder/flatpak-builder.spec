@@ -17,14 +17,13 @@
 
 
 Name:           flatpak-builder
-Version:        1.0.12
+Version:        1.0.14
 Release:        0
 Summary:        Tool to build flatpaks from source
 License:        LGPL-2.1-or-later
 Group:          Development/Tools/Building
 URL:            http://flatpak.org/
 Source0:        https://github.com/flatpak/flatpak-builder/releases/download/%{version}/%{name}-%{version}.tar.xz
-
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gettext
 BuildRequires:  gtk-doc

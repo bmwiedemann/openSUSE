@@ -189,4 +189,22 @@
   * Don't try to extract git submodules if they were disabled. (forwarded request 876586 from andythe_great)</comment>
     <requestid>879955</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5278b5a88b209a3db24254ef948a6e71</srcmd5>
+    <version>1.0.14</version>
+    <time>1626208649</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.14.
+  * Ensure that sources cannot create files outside the build
+    directory.
+  * If --sandbox is enabled, ensure sources can't real files
+    outside the manifest directory.
+- Update for version 1.0.13.
+  * Fix a bug where git submodules were bundled even when disabled
+    (whereas in the previous release this issue was fixed for the
+    extraction phase)
+  * For bundled extensions, use the specified version as the branch
+    rather than using the branch of the parent app (forwarded request 904280 from andythe_great)</comment>
+    <requestid>906034</requestid>
+  </revision>
 </revisionlist>
