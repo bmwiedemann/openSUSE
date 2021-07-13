@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 12 07:26:51 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
+
+- Elixir 1.12.2
+
+ * Bug fixes
+   Elixir
+   [Kernel] Ensure deprecated macros emit warnings
+
+   Mix
+   [mix deps] Ensure unconstrained rebar deps generate valid mix specifications
+
+ * Enhancements
+   Elixir
+   [elixirc] Change the output of `--profile time` to make it easier to detect outliers
+   [Application] Do not add compile time deps on args to `Application.compile_env/2` and `Application.compile_env!/2`
+   [Enum] Optimize `Enum.into/3` and `Map.new/2`
+
+   Mix
+   [mix compile] Compile most recently changed files first
+   [mix compile, mix run, mix test] Speed up the time taken to load dependencies. This should make the usage of Mix inside projects quite more responsive
+
+-------------------------------------------------------------------
 Mon Jun 14 19:39:42 UTC 2021 - Sven Marquardt <dev@mail.smarquardt.space>
 
 - Elixir 1.12.1

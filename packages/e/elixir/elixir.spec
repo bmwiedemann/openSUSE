@@ -17,7 +17,7 @@
 
 
 Name:           elixir
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        Functional meta-programming aware language built atop Erlang
 License:        Apache-2.0
