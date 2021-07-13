@@ -16,13 +16,13 @@
 #
 
 
-%define _relver 12.0.0
+%define _relver 12.0.1
 %define _version %_relver%{?_rc:rc%_rc}
 %define _tagver %_relver%{?_rc:-rc%_rc}
 %define _minor  12.0
 %define _sonum  12
 # Integer version used by update-alternatives
-%define _uaver  1200
+%define _uaver  1201
 %define _socxx  1
 
 %ifarch x86_64 aarch64 %arm
@@ -130,13 +130,8 @@ Patch26:        lld-default-sha1.patch
 # PATCH-FIX-OPENSUSE llvm-exegesis-link-dylib.patch -- Don't waste space for llvm-exegesis.
 # It's crippled anyway because of missing deps and not relevant for users. Eventually we should drop it.
 Patch27:        llvm-exegesis-link-dylib.patch
-# Proposed fix https://reviews.llvm.org/D100624 for https://bugs.llvm.org/show_bug.cgi?id=49915.
-Patch28:        lld-no-version-on-undefined-weak-lazy-symbols.patch
-Patch29:        clangd-cmake-non-standard-layout.patch
 # Fix lookup of targets in installed CMake files. (boo#1180748, https://reviews.llvm.org/D96670)
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
-# Fix build with linux-glibc-devel 5.13. (https://reviews.llvm.org/D102059)
-Patch34:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -580,16 +575,10 @@ popd
 
 pushd clang-tools-extra-%{_version}.src
 %patch10 -p2
-%patch29 -p2
-popd
-
-pushd compiler-rt-%{_version}.src
-%patch34 -p2
 popd
 
 pushd lld-%{_version}.src
 %patch26 -p1
-%patch28 -p2
 # lld got a compile-time dependency on libunwind that we don't want. (https://reviews.llvm.org/D86805)
 mkdir include/mach-o
 cp %{SOURCE10} include/mach-o

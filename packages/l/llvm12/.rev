@@ -24,4 +24,19 @@
   Fix build with linux-glibc-devel 5.13.</comment>
     <requestid>903788</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>976add896ea3ed9c708dbe97b744a247</srcmd5>
+    <version>12.0.1</version>
+    <time>1626208618</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.0.1.
+  * This release contains bug-fixes for the LLVM 12.0.0 release.
+    This release is API and ABI compatible with 12.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete patches:
+  * clangd-cmake-non-standard-layout.patch
+  * compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
+  * lld-no-version-on-undefined-weak-lazy-symbols.patch</comment>
+    <requestid>905657</requestid>
+  </revision>
 </revisionlist>

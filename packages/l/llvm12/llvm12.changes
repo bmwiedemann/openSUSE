@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 10 21:30:44 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 12.0.1.
+  * This release contains bug-fixes for the LLVM 12.0.0 release.
+    This release is API and ABI compatible with 12.0.0.
+- Rebase llvm-do-not-install-static-libraries.patch.
+- Drop obsolete patches:
+  * clangd-cmake-non-standard-layout.patch
+  * compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
+  * lld-no-version-on-undefined-weak-lazy-symbols.patch
+
+-------------------------------------------------------------------
 Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
