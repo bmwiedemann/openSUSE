@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul  9 09:44:26 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.18.0
+  * Bugfixes:
+
+    #7708: irreversible Local Additions after re-adding the same folder as Receive Only
+    #7731: Scan due to watcher can not found local change while modify file to empty
+    #7733: TypeError: Cannot read property ‘urAccepted’ of undefined
+    #7741: Out-of-sync state of zero-byte files is not reflected on peers
+
+  * Enhancements:
+    #7700: Add rest endpoint(s) to dismiss pending folder/device invitations
+    #7705: Accepting a receive encrypted folder share should prompt the user to input a password
+    #7722: Database GC can block for a long time
+    #7724: Ensure encryption to untrusted on new, trusted device on an existing folder
+    #7742: Use defaults for missing fields on the config rest API
+    #7743: Show discovery and listener status when not failed
+
+-------------------------------------------------------------------
 Tue Jun  1 14:26:19 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.17.0

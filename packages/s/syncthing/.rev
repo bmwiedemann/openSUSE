@@ -882,4 +882,25 @@
 </comment>
     <requestid>896718</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>5dd6cbf898355a25e828afe93ac75c37</srcmd5>
+    <version>1.18.0</version>
+    <time>1626208628</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.0
+  * Bugfixes:
+    #7708: irreversible Local Additions after re-adding the same folder as Receive Only
+    #7731: Scan due to watcher can not found local change while modify file to empty
+    #7733: TypeError: Cannot read property ‘urAccepted’ of undefined
+    #7741: Out-of-sync state of zero-byte files is not reflected on peers
+  * Enhancements:
+    #7700: Add rest endpoint(s) to dismiss pending folder/device invitations
+    #7705: Accepting a receive encrypted folder share should prompt the user to input a password
+    #7722: Database GC can block for a long time
+    #7724: Ensure encryption to untrusted on new, trusted device on an existing folder
+    #7742: Use defaults for missing fields on the config rest API
+    #7743: Show discovery and listener status when not failed
+</comment>
+    <requestid>905903</requestid>
+  </revision>
 </revisionlist>
