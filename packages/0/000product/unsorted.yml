@@ -961,6 +961,7 @@ unsorted:
   - autossh 
   - autotrace-devel 
   - autotrash 
+  - autoyast_xml_validator 
   - avahi-autoipd 
   - avahi-compat-howl-devel 
   - avahi-compat-mDNSResponder-devel 
@@ -7436,7 +7437,6 @@ unsorted:
   - jgroups-repolib 
   - jhighlight 
   - jhighlight-javadoc 
-  - jigdo 
   - jigit 
   - jikes 
   - jimtcl 
@@ -11763,9 +11763,6 @@ unsorted:
   - liblogg4_4-32bit: [x86_64] 
   - liblogging-devel 
   - liblognorm-devel 
-  - libloki-devel 
-  - libloki-doc 
-  - libloki0_1_7 
   - libloudmouth-1-0 
   - liblouis-devel 
   - liblouis-doc 
@@ -12934,7 +12931,6 @@ unsorted:
   - libqsastime0 
   - libqscintilla2_qt5-15 
   - libqscintilla2_qt6-15 
-  - libqscintilla_qt5-devel 
   - libqt5-creator 
   - libqt5-creator-plugin-devel 
   - libqt5-dwaylandplugin 
@@ -16830,19 +16826,19 @@ unsorted:
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
-  - netcdf-fortran-gnu-hpc 
+  - netcdf-fortran-gnu-hpc: [i586] 
   - netcdf-fortran-gnu-hpc-devel 
-  - netcdf-fortran-gnu-mpich-hpc 
+  - netcdf-fortran-gnu-mpich-hpc: [i586] 
   - netcdf-fortran-gnu-mpich-hpc-devel 
-  - netcdf-fortran-gnu-mvapich2-hpc 
+  - netcdf-fortran-gnu-mvapich2-hpc: [i586] 
   - netcdf-fortran-gnu-mvapich2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi1-hpc 
+  - netcdf-fortran-gnu-openmpi1-hpc: [i586] 
   - netcdf-fortran-gnu-openmpi1-hpc-devel 
-  - netcdf-fortran-gnu-openmpi2-hpc 
+  - netcdf-fortran-gnu-openmpi2-hpc: [i586] 
   - netcdf-fortran-gnu-openmpi2-hpc-devel 
-  - netcdf-fortran-gnu-openmpi3-hpc 
+  - netcdf-fortran-gnu-openmpi3-hpc: [i586] 
   - netcdf-fortran-gnu-openmpi3-hpc-devel 
-  - netcdf-fortran-gnu-openmpi4-hpc 
+  - netcdf-fortran-gnu-openmpi4-hpc: [i586] 
   - netcdf-fortran-gnu-openmpi4-hpc-devel 
   - netcdf-fortran_4_5_2-gnu-hpc: [i586] 
   - netcdf-fortran_4_5_2-gnu-hpc-devel: [i586] 
@@ -16858,19 +16854,12 @@ unsorted:
   - netcdf-fortran_4_5_2-gnu-openmpi3-hpc-devel: [i586] 
   - netcdf-fortran_4_5_2-gnu-openmpi4-hpc: [i586] 
   - netcdf-fortran_4_5_2-gnu-openmpi4-hpc-devel: [i586] 
-  - netcdf-fortran_4_5_3-gnu-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-hpc-devel: [x86_64] 
-  - netcdf-fortran_4_5_3-gnu-mpich-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-mpich-hpc-devel: [x86_64] 
-  - netcdf-fortran_4_5_3-gnu-mvapich2-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-mvapich2-hpc-devel: [x86_64] 
-  - netcdf-fortran_4_5_3-gnu-openmpi1-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-openmpi1-hpc-devel: [x86_64] 
-  - netcdf-fortran_4_5_3-gnu-openmpi2-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-openmpi2-hpc-devel: [x86_64] 
-  - netcdf-fortran_4_5_3-gnu-openmpi3-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-openmpi3-hpc-devel: [x86_64] 
-  - netcdf-fortran_4_5_3-gnu-openmpi4-hpc: [x86_64] 
   - netcdf-fortran_4_5_3-gnu-openmpi4-hpc-devel: [x86_64] 
   - netcdf-gnu-hpc 
   - netcdf-gnu-hpc-devel 
@@ -17025,9 +17014,6 @@ unsorted:
   - nodejs-electron: [x86_64] 
   - nodejs-packaging 
   - nodejs-underscore 
-  - nodejs10 
-  - nodejs10-devel 
-  - nodejs10-docs 
   - nodejs14 
   - nodejs14-devel 
   - nodejs14-docs 
@@ -17277,7 +17263,6 @@ unsorted:
   - nping 
   - npkg 
   - npm-default 
-  - npm10 
   - npm14 
   - npth-devel 
   - nqp 
@@ -17338,6 +17323,7 @@ unsorted:
   - nvptx-tools: [x86_64] 
   - nwg-launchers 
   - nxtvepg 
+  - nyancat 
   - o2locktop 
   - o2scl-devel 
   - o2scl-doc 
@@ -19495,6 +19481,7 @@ unsorted:
   - perl-Package-Variant 
   - perl-PadWalker 
   - perl-Pango 
+  - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
   - perl-Params-Util: [i586] 
@@ -23658,7 +23645,6 @@ unsorted:
   - python36-qet_tb_generator 
   - python36-qrcode 
   - python36-qscintilla-qt5 
-  - python36-qscintilla-qt5-sip 
   - python36-qstylizer 
   - python36-qt3d-qt5 
   - python36-qt3d-qt5-api 
@@ -26576,7 +26562,6 @@ unsorted:
   - python38-qgrid 
   - python38-qrcode 
   - python38-qscintilla-qt5 
-  - python38-qscintilla-qt5-sip 
   - python38-qstylizer 
   - python38-qsymm 
   - python38-qt3d-qt5 
@@ -29657,7 +29642,6 @@ unsorted:
   - python39-qgrid 
   - python39-qrcode 
   - python39-qscintilla-qt5 
-  - python39-qscintilla-qt5-sip 
   - python39-qstylizer 
   - python39-qsymm 
   - python39-qt3d-qt5 
@@ -30446,7 +30430,6 @@ unsorted:
   - qscintilla-qt5-devel 
   - qscintilla-qt6 
   - qscintilla-qt6-devel 
-  - qscintilla2_qt5 
   - qsyncthingtray 
   - qsynergy 
   - qsynth 
@@ -31126,7 +31109,6 @@ unsorted:
   - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-libyui-rake 
-  - ruby2.7-rubygem-listen-doc-3_1 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby_dep-doc 
   - ruby2.7-rubygem-unicorn-doc 
@@ -31379,7 +31361,6 @@ unsorted:
   - ruby3.0-rubygem-red-datasets 
   - ruby3.0-rubygem-regexp_parser 
   - ruby3.0-rubygem-responders 
-  - ruby3.0-rubygem-rest-client 
   - ruby3.0-rubygem-reverse_markdown 
   - ruby3.0-rubygem-rice 
   - ruby3.0-rubygem-ronn 
