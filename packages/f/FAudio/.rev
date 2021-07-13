@@ -131,4 +131,13 @@
     <comment></comment>
     <requestid>891074</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cfa7b25f78c905b88360f7a2f4cc55f8</srcmd5>
+    <version>21.07</version>
+    <time>1626208655</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.07:
+ *  Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND. (forwarded request 906046 from ukbeast89)</comment>
+    <requestid>906062</requestid>
+  </revision>
 </revisionlist>
