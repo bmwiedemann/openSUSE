@@ -178,6 +178,7 @@ cd nompi
   -DGMX_GPU=OpenCL \
 %endif
   -DGMX_OPENMP=ON \
+  -DGMX_INSTALL_LEGACY_API=ON \
 %ifnarch i586 %arm # regressiontest are not support on 32-bit archs: http://redmine.gromacs.org/issues/2584#note-35
   -DREGRESSIONTEST_PATH="$PWD/../../regressiontests-%{uversion}" \
 %endif
@@ -203,6 +204,7 @@ cd %{mpiver}
   -DGMX_GPU=OpenCL \
 %endif
   -DGMX_OPENMP=ON \
+  -DGMX_INSTALL_LEGACY_API=ON \
   ../../
 %cmake_build
 
@@ -260,6 +262,7 @@ cp %{S:1} %{buildroot}%{_datadir}/gromacs
 %{_bindir}/*_mpi
 
 %files devel
+%{_datadir}/gromacs/template
 %{_datadir}/cmake
 %{_includedir}/gromacs/
 %{_includedir}/gmxapi/
