@@ -1,5 +1,5 @@
 #
-# spec file for package python-isort-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-isort%{psuffix}
-Version:        5.8.0
+Version:        5.9.2
 Release:        0
 Summary:        A Python utility / library to sort Python imports
 License:        MIT
@@ -53,6 +53,7 @@ BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module hypothesis-auto}
 BuildRequires:  %{python_module hypothesmith}
 BuildRequires:  %{python_module libcst}
+BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module pip-api}
 BuildRequires:  %{python_module pipreqs}
 BuildRequires:  %{python_module poetry}
@@ -62,6 +63,7 @@ BuildRequires:  %{python_module pytest-mock}
 # requirementslib not ready for python 3.9 yet -- gh#sarugaku/requirementslib#288
 BuildRequires:  %{python_module requirementslib >= 1.5 if %python-base < 3.9}
 BuildRequires:  git
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 %python_subpackages
 
@@ -93,6 +95,8 @@ chmod -x LICENSE
 %check
 # test_projects_using_isort.py: these tests try to clone from online git repositories.
 ignoretests="--ignore tests/integration/test_projects_using_isort.py"
+# don't run benchmarks
+ignoretests+=" --ignore tests/benchmark"
 # test_setting_combinations.py::test_isort_is_idempotent
 # is flaky https://github.com/PyCQA/isort/issues/1466
 donttest="(test_setting_combinations and test_isort_is_idempotent)"
@@ -107,7 +111,11 @@ export PATH="$(pwd)/isort-test-%{$python_bin_suffix}/usr/bin:$ORIGPATH"
 export PYTHONPATH="$(pwd)/isort-test-%{$python_bin_suffix}%{$python_sitelib}"
 export PYTHONDONTWRITEBYTECODE=1
 
-for proj in build/isort-%{version}-py3-none-any.whl ./example_shared_isort_profile ./example_isort_formatting_plugin; do
+for proj in build/isort-%{version}-py3-none-any.whl \
+            ./example_shared_isort_profile \
+            ./example_isort_formatting_plugin \
+            ./example_isort_sorting_plugin
+do
   $python -m pip install --verbose \
                          --no-index \
                          --root $(pwd)/isort-test-%{$python_bin_suffix} \
