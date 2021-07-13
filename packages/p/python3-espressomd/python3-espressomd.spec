@@ -44,6 +44,8 @@ URL:            http://espressomd.org
 Source:         https://github.com/%{modname}/%{pkgname}/releases/download/%{version}/%{pkgname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM boost-1.74.patch gh#espressomd/espresso#3864
 Patch0:         boost-1.74.patch
+# PATCH-FIX-OPENSUSE missing_size_t.patch gh#espressomd/espresso#4274
+Patch1:         missing_size_t.patch
 BuildRequires:  cmake
 BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
@@ -82,6 +84,7 @@ systems, for example DNA and lipid membranes.
 %prep
 %setup -q -n %{pkgname}
 %patch0 -p1
+%patch1 -p1
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
