@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Jul 11 08:40:39 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.10:
+  * S3M: Honor the Stereo flag not being set. This improves the
+    sound of some tunes like Turbulence by Purple Motion.
+  * S3M: Detect MPT 1.0 alpha versions which didn’t set the Stereo
+    flag. In this case, the unset Stereo flag is also ignored
+    because MPT 1.0 alpha used the default S3M channel panning
+    anyway.
+  * S3M: Only for OPL instruments the high sample rate bits should
+    be ignored; for PCM instruments they are clamped to 65535 Hz.
+  * MOD: Do not apply ProTracker loop length quirk to MODs that
+    could have been made with Scream Tracker (fixes Soul-O-Matic
+    by Purple Motion).
+  * AMF (DSMI): Format revisions 1 and 9, as well as early
+    (technically malformed) revision 10 files, are now supported.
+    Surround panning commands and instrument number without note
+    are now converted correctly.
+  * AMF (DSMI): Patterns and samples were not read correctly in
+    some files (e.g. AVOID.AMF).
+  * GDM: Correctly import extra-fine portamentos.
+
+-------------------------------------------------------------------
+Wed Jun 23 17:53:40 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.9:
+  * The retrigger effect didn’t work correctly for OPL instruments
+    in some cases depending on the chosen output sample rate.
+  * S3M: Emulate IT short sample retrigger quirk in S3M files saved
+    with Impulse Tracker and Schism Tracker.
+  * ProTracker 3.6 doesn’t support sample swapping. It is now
+    disabled when loading a ProTracker 3.6 IFF module.
+  * Some files with “hidden” garbage patterns were not played
+    correctly since libopenmpt 0.5.3.
+  * MOD: E9x retrigger now works the same way as in ProTracker 2.
+  * MDL: Improve auto-vibrato accuracy.
+  * 669: Reject files that contain any pattern tempo higher than
+    15.
+  * Reduce memory consumption of malformed XPK-compressed files.
+
+-------------------------------------------------------------------
+Tue Apr 20 02:32:33 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.5.8:
+  * [Sec] Possible null-pointer dereference read caused by a
+    sequence of openmpt::module::read,
+    openmpt::module::set_position_order_row pointing to an invalid
+    pattern, and another openmpt::module::read call. To trigger the
+    crash, pattern 0 must not exist in the file and the tick speed
+    before the position jump must be lower than the initial speed
+    of the module.
+  * [Bug] libopenmpt 0.5.7 broke seeking in some subsongs.
+  * The built-in LFO plugin did not load the correct initial LFO
+    frequency.
+  * IT command S7x (instrument control) is now supported when
+    seeking with sample sync enabled.
+  * libopenmpt_ext play_note was cutting of channels even when
+    there were plenty of free channels to use.
+
+-------------------------------------------------------------------
 Sat Mar 20 20:15:48 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.5.7:
