@@ -1,7 +1,7 @@
 #
 # spec file for package xfs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -52,7 +52,7 @@ System display servers.
 %setup -q
 
 %build
-%configure --with-default-config-file=%{_sysconfdir}/X11/fs/config,%{_distconfdir}/X11/fs/config
+%configure --with-default-config-file=%{_sysconfdir}/X11/fs/config,%{_distconfdir}/X11/fs/config CFLAGS="$RPM_OPT_FLAGS -Wno-error=array-bounds"
 make %{?_smp_mflags}
 
 %install

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 13 09:19:42 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build against latest gcc check changes
+
+-------------------------------------------------------------------
 Tue Nov  3 15:17:06 UTC 2020 - Franck Bui <fbui@suse.com>
 
 - Drop '-f' option with %service_del_preun/%service_del_postun
