@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul  9 07:40:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.14.6:
+  General:
+  * Update references to point to our current websites. 
+  * Add a donate link to the help menu. 
+  Finch:
+  * Check pkg-config for ncurses before looking for it manually. 
+  Pidgin:
+  * Replace newlines in topics with spaces. 
+  libpurple:
+  * Added support for the no_proxy environment variable. 
+  * Added infrastructure for fuzzing as well as some initial fuzzers.
+  * Fix an out of bounds write in purple_markup_linkify.
+  XMPP:
+  * Enable session management after binding a resource.
+  Zephyr:
+  * Fix a clang logical-not-parentheses warning. 
+- Drop pidgin-add-no_proxy-support.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 06:24:45 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add pidgin-add-no_proxy-support.patch: add support of no_proxy

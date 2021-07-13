@@ -18,7 +18,7 @@
 
 %define _name   Pidgin
 Name:           pidgin
-Version:        2.14.5
+Version:        2.14.6
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
@@ -38,8 +38,6 @@ Patch2:         pidgin-fix-perl-build.patch
 Patch3:         pidgin-use-default-alsa.patch
 # PATCH-FIX-OPENSUSE pidgin-always-enable-intltool.patch mgorse@suse.com -- always enable intltool, needed for autoconf 2.71.
 Patch4:         pidgin-always-enable-intltool.patch
-# PATCH-FEATURE-UPSTREAM pidgin-add-no_proxy-support.patch jsc#SLE-17111 pidgin.im#17518 alynx.zhou@suse.com -- add support for no_proxy env.
-Patch5:         pidgin-add-no_proxy-support.patch
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -224,7 +222,6 @@ translation-update-upstream
 %patch3 -p1
 %endif
 %patch4 -p1
-%patch5 -p1
 
 cp -f %{SOURCE3} %{name}-prefs.xml
 
