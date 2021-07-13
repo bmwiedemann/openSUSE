@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 24 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.027
+   see /usr/share/doc/packages/perl-Config-INI/Changes
+
+  0.027     2021-06-22 22:27:53-04:00 America/New_York
+          - require Mixin::Linewise v0.110 to cope with new error message
+
+  0.026     2021-06-20 17:14:32-04:00 America/New_York
+          - update author contact info
+
+-------------------------------------------------------------------
 Thu Apr 16 17:27:26 UTC 2015 - coolo@suse.com
 
 - updated to 0.025
