@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 12 14:42:38 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 1.36.0
+  Release notes https://github.com/kubevirt/containerized-data-importer/releases/tag/v1.36.0
+
+-------------------------------------------------------------------
 Wed Jun 30 05:36:37 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Generate meta info for containers during rpm build
