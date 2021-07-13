@@ -103,7 +103,7 @@
 %endif
 
 Name:           darktable
-Version:        3.4.1
+Version:        3.6.0
 Release:        0
 %define pkg_name darktable
 %define pkg_version %{version}
@@ -112,10 +112,7 @@ Source0:        https://github.com/darktable-org/darktable/releases/download/rel
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz.asc
 Source2:        %{pkg_name}-rpmlintrc
 #
-Source10:       https://github.com/darktable-org/darktable/releases/download/release-3.4.0/darktable-usermanual.pdf
-Source11:       https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-de.pdf
-Source12:       https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-it.pdf
-Source13:       https://github.com/darktable-org/darktable/releases/download/release-3.0.0/darktable-usermanual-fr.pdf
+Source10:       https://darktable-org.github.io/dtdocs/darktable_user_manual.pdf
 # This is not online yet?
 Source14:       darktable-lua-api.pdf
 #
@@ -278,7 +275,6 @@ This package provides the user manual in PDF format.
 %prep
 %autosetup -p1 -n %{pkg_name}-%{version}
 
-cp %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} .
 cp %{SOURCE99} .
 
 # Remove bundled OpenCL headers.
@@ -362,8 +358,8 @@ make %{_smp_mflags} VERBOSE=1
 
 %find_lang darktable
 
-cp -av %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} doc/TODO \
-  %{buildroot}%{_defaultdocdir}/%{pkg_name}
+cp -av %{SOURCE10} %{SOURCE14} \
+   %{buildroot}%{_defaultdocdir}/%{pkg_name}
 rm %{buildroot}%{_defaultdocdir}/%{pkg_name}/LICENSE
 
 %fdupes %{buildroot}/%{_prefix}
@@ -401,8 +397,8 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor >/dev/null 2>/dev/null || :
 %{_datadir}/applications/darktable.desktop
 %{_datadir}/darktable
 %exclude %{_datadir}/%{pkg_name}/tools/basecurve/
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/darktable.appdata.xml
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/darktable.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/darktable*
 %{_mandir}/man1/darktable*.1*
 %if %{with translated_manpages}
