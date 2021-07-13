@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 27 22:33:21 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.7.0.13:
+  * polynomial system solver optimizations (rational univariate
+    representation computation and real root isolation).
+- Changes from version 1.7.0:
+  * Javascript interpreter added: QuickJS.
+- Changes from version 1.6.17:
+  * Compatibility with calculators (KhiCAS sessions for Numworks,
+    TI nspire CX).
+  * Inclusion of a MicroPython interpreter (with builtin modules
+    for teaching), you can switch interpreter by typing python or
+    xcas in an empty commandline.
+- Changes from version 1.6.0:
+  * Improved FFT over finite field, half-GCD implementation.
+- Enforce '-std=c++14' for openSUSE >= 1550 to build with gcc 11,
+  as giac codebase isn't C++17 ready.
+- Fix a few more script-without-shebang issues.
+- Drop install_info post scriptlets and associated BuildRequires;
+  these have been managed by file triggers for a while now.
+
+-------------------------------------------------------------------
 Fri Sep 25 10:57:20 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize RPM constructs. Remove %post(un) logic that expands

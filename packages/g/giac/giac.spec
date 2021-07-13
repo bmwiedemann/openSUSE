@@ -1,7 +1,7 @@
 #
 # spec file for package giac
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,8 @@
 
 %bcond_with cocoa
 Name:           giac
-%define tarver  1.5.0-85
-Version:        %( echo %{tarver} | sed 's/-/./' ) 
+%define tarver  1.7.0-13
+Version:        %( echo %{tarver} | sed 's/-/./' )
 %define mainver %( echo %{tarver} | sed 's/-.*//' )
 %define soname  0
 Release:        0
@@ -29,10 +29,10 @@ Group:          Productivity/Scientific/Math
 URL:            http://www-fourier.ujf-grenoble.fr/~parisse/giac.html
 Source:         http://www-fourier.ujf-grenoble.fr/~parisse/debian/dists/stable/main/source/giac_%{tarver}.tar.gz
 BuildRequires:  bison
-BuildRequires:  byacc
-BuildRequires:  flex
 BuildRequires:  blas-devel
+BuildRequires:  byacc
 BuildRequires:  fdupes
+BuildRequires:  flex
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
@@ -66,8 +66,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xinerama)
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
 %if !%{with cocoa}
 BuildRequires:  pkgconfig(ao)
 %endif
@@ -129,6 +127,9 @@ usage of giac, a computer algebra system.
 find . -type f -iname '.*' -delete
 
 %build
+%if 0%{?suse_version} >= 1550
+export CXXFLAGS+=' -std=c++14'
+%endif
 %configure \
     --enable-gui \
     --enable-static=no
@@ -155,6 +156,7 @@ chmod a+x %{buildroot}%{_datadir}/%{name}/doc/pari/gphtml
 # fix script-without-shebang
 chmod a-x %{buildroot}%{_datadir}/%{name}/examples/Exemples/*/*.xws
 chmod a-x %{buildroot}%{_datadir}/%{name}/examples/geo/*.cas
+chmod a-x %{buildroot}%{_datadir}/%{name}/examples/groebner/*
 chmod a-x %{buildroot}%{_datadir}/%{name}/examples/lewisw/fermat_gcd_1var
 chmod a-x %{buildroot}%{_datadir}/%{name}/examples/lewisw/fermat_gcd_mod_1var
 # fix spurious-executable-perm
@@ -170,16 +172,6 @@ rm %{buildroot}%{_docdir}/giac/Makefile.am
 %find_lang %{name}
 
 %fdupes -s %{buildroot}%{_datadir}
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}_es.info%{ext_info}
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}_us.info%{ext_info}
-
-%preun
-if [ $1 -eq 0 ]; then
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}_es.info%{ext_info}
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}_us.info%{ext_info}
-fi
 
 %post   -n lib%{name}%{soname} -p /sbin/ldconfig
 %postun -n lib%{name}%{soname} -p /sbin/ldconfig
@@ -220,6 +212,7 @@ fi
 %{_datadir}/icons/hicolor/*/mimetypes/*xcas.png
 %{_datadir}/pixmaps/xcas.xpm
 %{_datadir}/applications/xcas.desktop
+%{_datadir}/metainfo/*.xml
 
 %files -n lib%{name}%{soname}
 %license COPYING
