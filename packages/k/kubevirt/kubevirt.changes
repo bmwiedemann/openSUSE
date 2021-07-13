@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 12 14:47:36 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Drop upstreamed patch 0002-Don-t-use-Bazel-in-build-manifests.sh.patch
+- Install node-labeller.sh in %{_bindir}
+- Update to version 0.43.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.43.0
+
+-------------------------------------------------------------------
 Wed Jun 30 05:17:29 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Generate meta info for containers during rpm build

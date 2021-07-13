@@ -17,7 +17,7 @@
 
 
 Name:           kubevirt
-Version:        0.42.1
+Version:        0.43.0
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -28,7 +28,6 @@ Source1:        kubevirt-psp-caasp.yaml
 Source2:        kubevirt_containers_meta
 Source3:        kubevirt_containers_meta.service
 Source100:      %{name}-rpmlintrc
-Patch0:         0002-Don-t-use-Bazel-in-build-manifests.sh.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
@@ -190,7 +189,7 @@ build_tests="true" \
 	cmd/virt-operator \
 	%{nil}
 
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} ./hack/build-manifests.sh
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} GO_BUILD=true ./hack/build-manifests.sh
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -204,10 +203,7 @@ install -p -m 0755 _out/cmd/virt-handler/virt-handler %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-launcher/virt-launcher %{buildroot}%{_bindir}/
 install -p -m 0755 _out/cmd/virt-operator/virt-operator %{buildroot}%{_bindir}/
 install -p -m 0755 _out/tests/tests.test %{buildroot}%{_bindir}/virt-tests
-
-# node-labeller needs to be installed in /bin
-mkdir -p %{buildroot}/bin
-install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}/bin/
+install -p -m 0755 cmd/virt-launcher/node-labeller/node-labeller.sh %{buildroot}%{_bindir}/
 
 # virt-launcher SELinux policy needs to land in virt-handler container
 install -p -m 0644 cmd/virt-handler/virt_launcher.cil %{buildroot}/
@@ -259,7 +255,7 @@ install -m 0644 %{S:3} %{buildroot}%{_prefix}/lib/obs/service
 %license LICENSE
 %doc README.md
 %{_bindir}/virt-launcher
-/bin/node-labeller.sh
+%{_bindir}/node-labeller.sh
 
 %files virt-operator
 %license LICENSE
