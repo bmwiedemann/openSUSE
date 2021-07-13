@@ -414,4 +414,13 @@
   * Improved wlr/taskbar icon search. #1006</comment>
     <requestid>886684</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e104ada6efa1c0422d6847d31fba51d7</srcmd5>
+    <version>0.9.7</version>
+    <time>1626208656</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1188200 - waybar undefined symbol:
+  Add waybar-0.9.7-fmt-compat.patch</comment>
+    <requestid>906064</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 13 09:50:00 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1188200 - waybar undefined symbol:
+  Add waybar-0.9.7-fmt-compat.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 12:01:41 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.7:
