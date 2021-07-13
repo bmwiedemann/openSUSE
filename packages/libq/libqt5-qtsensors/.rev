@@ -376,4 +376,12 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902334</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>5db217dadb80c9a49af695287d2b62f4</srcmd5>
+    <version>5.15.2+kde2</version>
+    <time>1626208609</time>
+    <user>dimstar_suse</user>
+    <comment>- Make sure iio-sensor-proxy is available (boo#1188098)</comment>
+    <requestid>904842</requestid>
+  </revision>
 </revisionlist>

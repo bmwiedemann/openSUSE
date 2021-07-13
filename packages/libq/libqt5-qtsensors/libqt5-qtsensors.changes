@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 11:07:17 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Make sure iio-sensor-proxy is available (boo#1188098)
+
+-------------------------------------------------------------------
 Tue Jun 22 19:34:02 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch

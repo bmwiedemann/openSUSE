@@ -62,6 +62,9 @@ Summary:        Qt 5 Sensors library
 License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later)
 Group:          System/Libraries
 %requires_ge    libQt5Core5
+# Make sure that on "non-container" systems the daemon for the iio-sensor-proxy
+# plugin is installed.
+Requires:       (iio-sensor-proxy if systemd)
 
 %description -n %{libname}
 The Qt Sensors API provides access to sensor hardware via QML and C++
