@@ -1,0 +1,5 @@
+<package name="suseconnect-ng" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="systemsmanagement:SCC" package="suseconnect-ng"/>
+</package>

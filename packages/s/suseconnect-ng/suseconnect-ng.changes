@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Mon Jul 12 21:43:19 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.1~git0.a5f168a:
+  * Add JSONError and cleanup error handling
+
+-------------------------------------------------------------------
+Fri Jul 09 14:06:07 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.0~git.c45760f:
+  * Add Conflicts:SUSEConnect due to same file name
+  * Document advantage of suseconnect-ng
+  * Make UpdateSystem() message text bold
+  * Add no_zypper_refs config file option
+  * Complete Register() and AnnounceSystem()
+  * Add registerProductTree()
+  * Add activateProduct() and registerProduct()
+  * Rename source modules to executable names
+  * Remove unnecessary content from package.
+  * Add proxy auth support
+  * Change order of usage help options to match the Ruby version
+  * Make requirement for go 1.16 explicit.
+  * Fix instance data file path
+  * Add zypper service commands needed for registration
+  * S390: set cpus, sockets, hypervisor and uuid hwinfo fields
+  * Implement the system update part of registration
+  * Add helper to build hwinfo struct
+  * Add functions to call and parse s390 read_values
+  * Add function to get the hostname
+  * Add function to get private IP address
+  * Add arch, hypervisor and uuid functions
+  * Add function to find cloud provider from dmidecode
+  * Add function to parse lscpu output
+  * Add announceSystem() api call
+  * Add deregistration functionality
+  * Add deactivateProduct() API call
+  * obs: use an in between branch
+
+-------------------------------------------------------------------
+Fri Jul 02 12:24:46 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.0~git.a083a1f:
+  * Add Product.IsEmpty()
+  * Add unit test for token auth
+  * Add obs workflow to be able to use it as CI
+  * add files to build rpm
+  * Add more zypper operations
+  * Unexport api functions
+  * Add --cleanup CLI action
+  * Add listing of installed services via zypper
+  * Change zypperRun args to take a slice of strings
+  * Fix printInformation() outputs
+
+-------------------------------------------------------------------
+Fri Jun 25 17:45:10 UTC 2021 - Jan Zerebecki <jzerebecki@suse.com>
+
+- Initial package of suseconnect-ng

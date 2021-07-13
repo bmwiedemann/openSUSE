@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5f648df17b93bcd93560cb2d065c2f08</srcmd5>
+    <version>0.0.1~git0.a5f168a</version>
+    <time>1626208637</time>
+    <user>dimstar_suse</user>
+    <comment>suseconnect-ng reduces the size of its runtime dependencies compared to the replaced SUSEConnect.</comment>
+    <requestid>905951</requestid>
+  </revision>
+</revisionlist>
