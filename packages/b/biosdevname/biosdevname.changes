@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul  9 07:38:43 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Enhance _service file
+- Update to version 0.7.3:
+  * Add SMBIOS 3.x support
+  * Read DMI entries from /sys/firmware/dmi/tables/DMI
+  * Add buffer read helper using read explicitly
+  * man: fix all_ethN indentation
+  * Netronome biosdevname support (#8)
+  * Prevent infinite recursion in dmidecode.c::smbios_setslot by (#7)
+  * Add support for ExaNIC network cards (#5)
+
+This are now all mainline and got reverted:
+D    biosdevname-Add-buffer-read-helper-using-read-explicitly.patch
+D    biosdevname-Add-SMBIOS-3.x-support.patch
+D    biosdevname-Read-DMI-entries-from-sys-firmware-dmi-tables-DMI.patch
+D    dmidecode-prevent-infinite-recursion.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 09:39:44 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - install to /usr (boo#1029961)

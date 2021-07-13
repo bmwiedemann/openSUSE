@@ -18,7 +18,7 @@
 
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 Name:           biosdevname
-Version:        0.7.3
+Version:        0.7.3.7.g495ab76
 Release:        0
 Summary:        Udev helper for naming devices per BIOS names
 License:        GPL-2.0-only
@@ -30,10 +30,6 @@ Patch2:         whitelist-dell
 Patch3:         udev-rule-path.patch
 Patch4:         biosdevname-pic.patch
 Patch5:         biosdevname-dom0.patch
-Patch6:         dmidecode-prevent-infinite-recursion.patch
-Patch7:         biosdevname-Add-buffer-read-helper-using-read-explicitly.patch
-Patch8:         biosdevname-Read-DMI-entries-from-sys-firmware-dmi-tables-DMI.patch
-Patch9:         biosdevname-Add-SMBIOS-3.x-support.patch
 BuildRequires:  automake
 BuildRequires:  pciutils-devel
 BuildRequires:  pkg-config
@@ -44,7 +40,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(udev)
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 # for ownership of /usr/lib/udev/rules.d
 Requires:       udev
 BuildRequires:  pkgconfig(udev)
