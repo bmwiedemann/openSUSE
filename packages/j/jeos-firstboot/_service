@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="disabled">
     <param name="url">git://github.com/openSUSE/jeos-firstboot.git</param>
     <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">jeos-internal@suse.de</param>

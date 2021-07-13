@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 09 10:01:30 UTC 2021 - jeos-internal@suse.de
+
+- Update to version 1.0.2.0:
+  * Skip the lo interface when probing for DHCP
+- Use @TAG_OFFSET@ in version to make it unambiguous
+
+-------------------------------------------------------------------
 Thu May 06 20:15:13 UTC 2021 - jeos-internal@suse.de
 
 - Update to version 1.0.1:

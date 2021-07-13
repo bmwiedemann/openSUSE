@@ -17,7 +17,7 @@
 
 
 Name:           jeos-firstboot
-Version:        1.0.1
+Version:        1.0.2.0
 Release:        0
 Summary:        Simple text based JeOS first boot wizard
 License:        MIT
