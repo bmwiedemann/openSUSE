@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  5 15:14:47 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.6:
+  * modprobe.d: Remove dma=none setting for parport_pc
+    (bsc#1177695)
+
+-------------------------------------------------------------------
 Thu Jul  1 21:03:49 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.5

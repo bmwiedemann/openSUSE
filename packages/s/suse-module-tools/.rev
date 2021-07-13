@@ -427,4 +427,14 @@ source service setup which messed up my spec file.
   * modprobe.conf cleanup</comment>
     <requestid>903663</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>e9c264e71ef497e4d64fbd3f40c99ccc</srcmd5>
+    <version>16.0.6</version>
+    <time>1626208607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.6:
+  * modprobe.d: Remove dma=none setting for parport_pc
+    (bsc#1177695) (forwarded request 904234 from mwilck)</comment>
+    <requestid>904235</requestid>
+  </revision>
 </revisionlist>
