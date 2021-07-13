@@ -61,4 +61,14 @@
 </comment>
     <requestid>903399</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>7b849c2c0ed16cdc355dcaffdc6bf061</srcmd5>
+    <version>0.5.6</version>
+    <time>1626208645</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix_test_fixture_33.patch to fix testing fixture
+  (gh#wireservice/agate-sql#33).
+</comment>
+    <requestid>906050</requestid>
+  </revision>
 </revisionlist>

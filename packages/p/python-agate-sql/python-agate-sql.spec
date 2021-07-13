@@ -28,6 +28,8 @@ URL:            http://agate-sql.readthedocs.org/
 Source:         https://github.com/wireservice/agate-sql/archive/%{version}.tar.gz
 # we do not have crate dialect
 Patch0:         python-agate-sql-no-crate.patch
+# PATCH-FIX-UPSTREAM fix_test_fixture_33.patch gh#wireservice/agate-sql#33 mcepl@suse.com
+Patch1:         fix_test_fixture_33.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -46,8 +48,8 @@ BuildRequires:  %{python_module pytest}
 Agate-sql adds SQL read/write support to agate.
 
 %prep
-%setup -q -n agate-sql-%{version}
-%patch0 -p1
+%autosetup -p1 -n agate-sql-%{version}
+
 sed -i -e '/^#!\//, 1d' agatesql/*.py
 
 %build
@@ -58,8 +60,7 @@ sed -i -e '/^#!\//, 1d' agatesql/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# exclusion gh#wireservice/agate-sql#33
-%pytest -k 'not test_to_sql_create_statement_with_schema'
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst CHANGELOG.rst

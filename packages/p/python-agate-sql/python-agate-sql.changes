@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 13 08:47:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_test_fixture_33.patch to fix testing fixture
+  (gh#wireservice/agate-sql#33).
+
+-------------------------------------------------------------------
 Thu Jul  1 12:13:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Some test_to_sql_create_statement_with_schema test again
