@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-dns-lexicon
 Version:        3.5.3
 Release:        0
@@ -63,7 +64,7 @@ Requires:       python-requests
 Requires:       python-tldextract
 Requires:       python-vcrpy
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-PyNamecheap
 Recommends:     python-boto3
 Recommends:     python-localzone

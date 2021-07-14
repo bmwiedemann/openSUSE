@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 10:45:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer build for python 3.6: not all dependencies are
+  available (e.g zeep).
+
+-------------------------------------------------------------------
 Thu Jan 28 01:09:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to Version 3.5.3
