@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 13 16:07:01 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.2.3:
+  * This is a minor update that includes some minimal new functionality and addresses some bugs.
+  * Fix two different security bugs (secadv_20210317 and secadv_20210426)
+- Run spec-cleaner
+- Change library soname from 9 to 10
+- Change lite library soname from 8 to 10
+
+-------------------------------------------------------------------
 Tue Dec  1 13:27:30 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 3.1.0

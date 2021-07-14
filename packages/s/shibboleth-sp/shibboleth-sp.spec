@@ -1,7 +1,7 @@
 #
 # spec file for package shibboleth-sp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%define libvers 9
-%define libvers_lite 8
+%define libvers 10
+%define libvers_lite 10
 %define runuser shibd
 %define realname shibboleth
 %define pkgdocdir %{_docdir}/%{realname}
 Name:           shibboleth-sp
-Version:        3.1.0
+Version:        3.2.3
 Release:        0
 Summary:        System for attribute-based Web Single Sign On
 License:        Apache-2.0
 Group:          Productivity/Networking/Security
-URL:            http://shibboleth.net/
+URL:            https://shibboleth.net/
 Source0:        http://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2
 Source1:        http://shibboleth.net/downloads/service-provider/%{version}/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
@@ -39,6 +39,7 @@ BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel
+BuildRequires:  libboost_headers-devel
 BuildRequires:  liblog4shib-devel >= 2
 BuildRequires:  libmemcached-devel
 BuildRequires:  libsaml-devel >= 3.1.0
@@ -52,16 +53,11 @@ BuildRequires:  unixODBC-devel
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       openssl
-PreReq:         opensaml-schemas >= 3.1.0
-PreReq:         xmltooling-schemas >= 3.1.0
+Requires(pre):  opensaml-schemas >= 3.1.0
+Requires(pre):  xmltooling-schemas >= 3.1.0
 Requires(pre):  shadow
 Obsoletes:      shibboleth-sp = 2.5.0
 %{?systemd_requires}
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.32.0
-%endif
 
 %description
 Shibboleth is a Web Single Sign-On implementations based on OpenSAML
@@ -121,7 +117,7 @@ This package includes files needed for development with Shibboleth.
 export CXXFLAGS="%{optflags} --std=c++11"
 autoreconf -f -i
 %configure --with-gssapi --enable-systemd --with-memcached
-make %{?_smp_mflags} pkgdocdir=%{pkgdocdir}
+%make_build pkgdocdir=%{pkgdocdir}
 
 %install
 %make_install NOKEYGEN=1 pkgdocdir=%{pkgdocdir}
@@ -129,8 +125,11 @@ make %{?_smp_mflags} pkgdocdir=%{pkgdocdir}
 install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/shibd.service
 ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcshibd
 
-sed -i "s/\/var\/log\/httpd/\/var\/log\/apache2/g" \
+sed -i "s|/var/log/httpd|/var/log/apache2|g" \
 		%{buildroot}%{_sysconfdir}/%{realname}/native.logger
+
+sed -i "s|%{_bindir}/env bash|%{_bindir}/bash|" \
+		%{buildroot}%{_sysconfdir}/%{realname}/metagen.sh
 
 # Delete unnecessary files
 pushd %{buildroot}/%{_sysconfdir}/%{realname}
@@ -166,7 +165,7 @@ d /run/%{realname} 755 %{runuser} %{runuser} -
 EOF
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %pre
 getent group %{runuser} >/dev/null || groupadd -r %{runuser}
@@ -177,6 +176,7 @@ exit 0
 
 %post -n libshibsp%{libvers} -p /sbin/ldconfig
 %post -n libshibsp-lite%{libvers_lite} -p /sbin/ldconfig
+
 %post
 
 # Generate two keys on new installs.
@@ -200,6 +200,7 @@ exit 0
 
 %postun -n libshibsp%{libvers} -p /sbin/ldconfig
 %postun -n libshibsp-lite%{libvers_lite} -p /sbin/ldconfig
+
 %postun
 %service_del_postun shibd.service
 %restart_on_update apache2
