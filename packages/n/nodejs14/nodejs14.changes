@@ -26,6 +26,11 @@ Fri Jun  4 22:12:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * UUID support in the crypto module
   * update ICU to 68.1 
   * upgrade to libuv 1.41.0
+  * deps: npm update to 6.14.13
+    ssri Regular Expression Denial of Service and hosted-git-info
+    Regular Expression Denial of Service
+    (bsc#1187976, bsc#1187977, CVE-2021-27290, CVE-2021-23362)
+
 - add Fix-build-with-icu-69.patch: fix build with icu 69
 
 -------------------------------------------------------------------

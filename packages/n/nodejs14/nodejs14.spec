@@ -778,6 +778,12 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
+%if %{node_version_number} <= 10
+rm -r deps/npm/*
+tar zxf %{SOURCE9} -C deps/npm --strip-components=1
+tar Jxf %{SOURCE90} -C deps/npm
+%endif
+
 %if %{node_version_number} >= 10
 tar Jxf %{SOURCE11}
 %endif
