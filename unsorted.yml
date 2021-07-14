@@ -500,8 +500,6 @@ unsorted:
   - angelscript-devel 
   - anjuta 
   - anjuta-devel 
-  - anjuta-extras 
-  - anjuta-extras-lang 
   - anjuta-lang 
   - anki 
   - ansible 
@@ -5619,8 +5617,6 @@ unsorted:
   - glmark2 
   - global 
   - glog-devel 
-  - glom 
-  - glom-lang 
   - gloox-devel 
   - glorytun 
   - glpk 
@@ -10869,8 +10865,6 @@ unsorted:
   - libglibmm-2_68-1 
   - libglibmm-2_68-1-32bit: [x86_64] 
   - libglog0 
-  - libglom-1_32-0 
-  - libglom-devel 
   - libgloox18 
   - libgloox18-32bit: [x86_64] 
   - libglpk40 
@@ -12088,7 +12082,6 @@ unsorted:
   - libmuparserx4_0_8 
   - libmusicbrainz-devel 
   - libmusicbrainz5-1-32bit: [x86_64] 
-  - libmusicbrainz5-devel 
   - libmwaw-devel 
   - libmwaw-devel-doc 
   - libmwaw-tools 
@@ -15232,6 +15225,7 @@ unsorted:
   - lua54-slaxml 
   - lua54-zlib 
   - luabind-devel 
+  - luacheck 
   - luaposix-doc 
   - lucene++-devel 
   - lucene-analyzers-common 
@@ -21181,7 +21175,6 @@ unsorted:
   - python3-gensio 
   - python3-gexiv2 
   - python3-glanceclient 
-  - python3-glom 
   - python3-glucat 
   - python3-gluster 
   - python3-gmconfig 
@@ -22361,7 +22354,6 @@ unsorted:
   - python36-django-oauth-toolkit 
   - python36-django-oidc-provider 
   - python36-django-oscar 
-  - python36-django-parler 
   - python36-django-perf-rec 
   - python36-django-pglocks 
   - python36-django-phonenumber-field 
@@ -22390,7 +22382,6 @@ unsorted:
   - python36-django-storages 
   - python36-django-tagging 
   - python36-django-tastypie 
-  - python36-django-threadedcomments 
   - python36-django-timezone-field 
   - python36-django-treebeard 
   - python36-django-user-agents 
@@ -25194,7 +25185,6 @@ unsorted:
   - python38-django-oidc-provider 
   - python38-django-oscar 
   - python38-django-pandas 
-  - python38-django-parler 
   - python38-django-perf-rec 
   - python38-django-pglocks 
   - python38-django-phonenumber-field 
@@ -25224,7 +25214,6 @@ unsorted:
   - python38-django-tables2 
   - python38-django-tagging 
   - python38-django-tastypie 
-  - python38-django-threadedcomments 
   - python38-django-timezone-field 
   - python38-django-treebeard 
   - python38-django-user-agents 
@@ -28192,7 +28181,6 @@ unsorted:
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
   - python39-django-pandas 
-  - python39-django-parler 
   - python39-django-perf-rec 
   - python39-django-pglocks 
   - python39-django-phonenumber-field 
@@ -28221,7 +28209,6 @@ unsorted:
   - python39-django-tables2 
   - python39-django-tagging 
   - python39-django-tastypie 
-  - python39-django-threadedcomments 
   - python39-django-timezone-field 
   - python39-django-treebeard 
   - python39-django-user-agents 
@@ -31241,8 +31228,6 @@ unsorted:
   - ruby3.0-rubygem-hoe 
   - ruby3.0-rubygem-hpricot 
   - ruby3.0-rubygem-html2haml 
-  - ruby3.0-rubygem-http-accept-1.7 
-  - ruby3.0-rubygem-http-cookie 
   - ruby3.0-rubygem-http_parser.rb 
   - ruby3.0-rubygem-httpclient 
   - ruby3.0-rubygem-ice_nine 
@@ -31441,7 +31426,6 @@ unsorted:
   - ruby3.0-rubygem-virtus 
   - ruby3.0-rubygem-warden 
   - ruby3.0-rubygem-webfinger 
-  - ruby3.0-rubygem-webmock-2_3 
   - ruby3.0-rubygem-webpacker 
   - ruby3.0-rubygem-websocket 
   - ruby3.0-rubygem-websocket-driver 
@@ -32331,6 +32315,7 @@ unsorted:
   - suse-prime 
   - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
+  - suseconnect-ng 
   - suseprime-appindicator 
   - svg-schema 
   - svg-schema-doc 
