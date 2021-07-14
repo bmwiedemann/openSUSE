@@ -1,7 +1,7 @@
 #
 # spec file for package opensaml
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define libvers 11
+%define libvers 12
 %define pkgdocdir %{_docdir}/%{name}
 Name:           opensaml
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Security Assertion Markup Language library
 License:        Apache-2.0
@@ -31,16 +31,12 @@ Source2:        %{name}.keyring
 Patch0:         opensaml-2.5.5-doxygen_timestamp.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
+BuildRequires:  libboost_headers-devel
 BuildRequires:  liblog4shib-devel >= 1.0.4
 BuildRequires:  libxerces-c-devel >= 3.2
 BuildRequires:  libxml-security-c-devel >= 2.0.0
 BuildRequires:  libxmltooling-devel >= 3.1.0
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel >= 1.32.0
-%endif
 
 %description
 OpenSAML is an open source implementation of the OASIS Security Assertion
@@ -105,6 +101,10 @@ This package includes XML schemas and related files.
 %patch0 -p1
 
 %build
+# The default C++ standard used in GCC-11 is C++17,
+# which does not support opensaml codebase.
+CXXFLAGS="-std=c++11 %{optflags}"
+export CXXFLAGS
 %configure
 %make_build
 

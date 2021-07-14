@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 13 14:26:52 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.2.0:
+  * [CPPOST-117] - SAML2PolicyTest testSAML2Policy: Test failed: Policy should have tripped on InResponseTo correlation
+  * [CPPOST-118] - Metadata filter for adding UIInfo extensions
+  * [CPPOST-119] - Discovery filter for inline logos
+  * [CPPOST-121] - Deprecate and replace sensitive terms in APIs and components
+- Update library version to 12
+
+-------------------------------------------------------------------
 Tue Dec  1 13:18:40 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Update to 3.1.0
