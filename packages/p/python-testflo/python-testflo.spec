@@ -1,7 +1,7 @@
 #
 # spec file for package python-testflo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-testflo
 Version:        1.4.2
 Release:        0
@@ -32,7 +33,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 Recommends:     python-coverage
 Recommends:     python-mpi4py
 Recommends:     python-psutil
