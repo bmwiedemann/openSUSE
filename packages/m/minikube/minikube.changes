@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Jul 13 12:44:02 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 1.22.0:
+  Features:
+  * minikube version: add --components flag to list all included
+    software #11843
+
+  Minor Improvements:
+  *  auto-pause: add support for other container runtimes #11834
+  *  windows: support renaming binary to kubectl.exe and running as
+     kubectl #11819
+
+  Bugs:
+  *  Fix "kubelet Default-Start contains no runlevels" error #11815
+
+  Version Upgrades:
+  * bump default kubernetes version to v1.21.2 & newest kubernetes
+    version to v1.22.0-beta.0 #11901
+
+-------------------------------------------------------------------
+Tue Jul  6 13:38:14 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 1.21.0:
+  Features:
+  * Support setting addons from environmental variables #11469
+  * Add "resume" as an alias for "unpause" #11431
+  * Implement target node option for cp command #11304
+  * add more polish translations #11587
+
+  Bugs:
+  * Fix delete command for paused kic driver with containerd/crio runtime #11504
+  * kicbase: try image without sha before failing #11559
+  * bug: return error on invalid function name in extract.TranslatableStrings #11454
+  * Prevent downloading duplicate binaries already present in preload #11461
+  * gcp-auth addon: do not reapply gcp-auth yamls on minikube restart #11486
+  * Disable Non-Active Containers Runtimes #11516
+  * Persist custom addon image/registry settings. #11432
+  * Fix auto-pause on VMs (detect right control-plane IP) #11438
+            
+  Version Upgrades:
+  * bump default k8s version to v1.20.7 and newest to v1.22.0-alpha.2 #11525
+  * containerd: upgrade io.containerd.runtime.v1.linux to io.containerd.runc.v2 (suppot cgroup v2) #11325
+  * metallb-addon: Update metallb from 0.8.2 to 0.9.6 #11410
+  * Modify MetricsServer to use v1 api version (instead of v1beta1). #11584
+
+-------------------------------------------------------------------
 Fri May  7 11:25:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.20.0:

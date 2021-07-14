@@ -332,4 +332,12 @@
   * Update newest supported Kubernetes version to v1.22.0-alpha.1 #11287</comment>
     <requestid>891277</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cf2fabf0ea58370b1eb4fc84e3bc2c5d</srcmd5>
+    <version>1.22.0</version>
+    <time>1626299920</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906177</requestid>
+  </revision>
 </revisionlist>
