@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 10:40:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer build for python 3.6: not all dependencies are
+  supported (e.g autobahn).
+
+-------------------------------------------------------------------
 Mon Mar 22 23:12:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add missing BR on %{pythons}

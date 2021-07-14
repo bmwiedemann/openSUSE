@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() %{!?skip_python2:python-%{**}} %{!?skip_python3:python3-%{**}}}
 %define modname magic-wormhole
+%define skip_python36 1
 Name:           python-magic-wormhole
 Version:        0.12.0
 Release:        0
