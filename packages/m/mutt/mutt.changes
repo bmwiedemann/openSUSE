@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 14 11:07:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add mutt_oauth2.py ported to python 3.6 
+- If required the package will include a backport to support
+  fromisoformat of the python class datetime
+
+-------------------------------------------------------------------
+Tue Jul 13 14:37:42 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Correct gpg usage of skeleton muttrc
+- Append the gpg usage to system wide Muttrc (boo#1188235) 
+
+-------------------------------------------------------------------
 Fri May  7 07:09:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Update to mutt 2.0.7

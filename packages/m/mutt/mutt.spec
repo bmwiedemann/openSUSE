@@ -34,6 +34,9 @@ Source2:        README.alternates
 Source3:        mutt.png
 Source4:        mutt.desktop
 Source5:        skel.muttrc
+Source6:        mutt_oauth2.py-3.6
+Source7:        mutt_oauth2.py.README
+Source8:        backports-datetime-fromisoformat-1.0.0.tar.gz
 Source9:        mutt.mailcap
 Patch0:         %{name}-1.13.3.dif
 # http://www.spinnaker.de/mutt/compressed/
@@ -70,6 +73,11 @@ BuildRequires:  w3m
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libsasl2)
+%if 0%{suse_version} >= 1500
+BuildRequires:  python3-base
+BuildRequires:  python3-devel
+BuildRequires:  python3-setuptools
+%endif
 Requires(post): %{_bindir}/cat
 Requires(post): %{_bindir}/mkdir
 Requires(postun):%{_bindir}/rm
@@ -274,8 +282,22 @@ install -D -m 644 %{SOURCE9} %{buildroot}%{_datadir}/%{name}/mailcap
 rm -vf %{buildroot}%{_docdir}/%{name}/manual.txt
 install -D -m 644 doc/manual.txt.gz %{buildroot}%{_docdir}/%{name}/
 
+sed -rn '/Command formats for gpg/,$p' %{SOURCE5} >> %{buildroot}%{_sysconfdir}/Muttrc
+
 %if 0%{?suse_version}
 %suse_update_desktop_file mutt
+%endif
+
+%if 0%{suse_version} >= 1500
+mkdir -p %{buildroot}%{_docdir}/%{name}
+install -m 755 %{SOURCE6} %{buildroot}%{_docdir}/%{name}/mutt_oauth2.py
+install -m 644 %{SOURCE7} %{buildroot}%{_docdir}/%{name}/mutt_oauth2.py.README
+%if %{?pkg_vcmp:%{pkg_vcmp python3-base < 3.7.0}}%{!?pkg_vcmp:0}
+tar xf %{SOURCE8}
+pushd backports-datetime-fromisoformat-1.0.0
+    python3 setup.py install --root %{buildroot}
+popd
+%endif
 %endif
 
 %pre
@@ -326,6 +348,14 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %{_datadir}/mutt/mailcap
 %dir %doc %{_docdir}/%{name}/
 %doc %{_docdir}/%{name}/manual.txt.gz
+%if 0%{suse_version} >= 1500
+%{_docdir}/%{name}/mutt_oauth2.py
+%{_docdir}/%{name}/mutt_oauth2.py.README
+%if %{?pkg_vcmp:%{pkg_vcmp python3-base < 3.7.0}}%{!?pkg_vcmp:0}
+%{python3_sitearch}/backports
+%{python3_sitearch}/backports_datetime_fromisoformat-1.0.0-py3.6.egg-info
+%endif
+%endif
 
 %files doc
 %doc %{_docdir}/%{name}/COPYRIGHT

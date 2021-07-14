@@ -1217,4 +1217,17 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
 - Fix offset of patch mutt-1.5.21-mailcap.diff</comment>
     <requestid>891208</requestid>
   </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>1b90401a1907be7f9bb12e44c00de71c</srcmd5>
+    <version>2.0.7</version>
+    <time>1626299917</time>
+    <user>dimstar_suse</user>
+    <comment>- Add mutt_oauth2.py ported to python 3.6 
+- If required the package will include a backport to support
+  fromisoformat of the python class datetime
+
+- Correct gpg usage of skeleton muttrc
+- Append the gpg usage to system wide Muttrc (boo#1188235)</comment>
+    <requestid>906282</requestid>
+  </revision>
 </revisionlist>
