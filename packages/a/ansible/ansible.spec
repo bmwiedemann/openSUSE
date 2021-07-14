@@ -300,6 +300,12 @@ find contrib/ -type f -exec chmod 644 {} +
 find ./ -type f -exec \
     sed -i '1s|^#!%{_bindir}/env |#!%{_bindir}/|' {} \;
 
+# Run test fragments under Python 3, if that is our configured Python.
+%if %{with python3}
+  find test -name '*.py' -exec \
+    sed -i '1s|^\(#!%{_bindir}/python\)$|\13|' {} \;
+%endif
+
 %build
 %{python} setup.py build
 %if 0%{?with_docs}
