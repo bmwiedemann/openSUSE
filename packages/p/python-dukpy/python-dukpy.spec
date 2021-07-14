@@ -1,7 +1,7 @@
 #
 # spec file for package python-dukpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-dukpy
-Version:        0.2.2
+Version:        0.2.3
 Release:        0
 Summary:        JavaScript interpreter for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/amol-/dukpy
 Source:         https://github.com/amol-/dukpy/archive/%{version}.tar.gz
-Patch0:         pytest.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -34,7 +33,7 @@ BuildRequires:  %{python_module webassets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-webassets
 %python_subpackages
 
@@ -51,7 +50,6 @@ It comes with a bunch of common transpilers built-in for convenience:
 
 %prep
 %setup -q -n dukpy-%{version}
-%patch0 -p1
 chmod a-x dukpy/jsmodules/react/react-dom-server.js
 # remove test that relies on bunch of node binaries
 rm tests/test_webassets_filter.py

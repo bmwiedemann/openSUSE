@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 13 00:05:40 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 0.2.3
+  * Support for Python 3.8
+  * Testuite now based on pytest instead of nose
+  * Deprecated support for Python 2.6 and 3.4
+  * Updated included babel version to 6.26.0
+- Drop pytest.patch, upstream has integrated those changes.
+
+-------------------------------------------------------------------
 Tue May 26 07:22:47 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
