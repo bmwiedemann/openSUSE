@@ -84,4 +84,12 @@
   * Further favicon discovery improvements: now detects all types of Apple Touch Icons, MS Tile Images and Safari Mask Icons Fixes #440 (forwarded request 891616 from fusionfuture)</comment>
     <requestid>893948</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9003ec2b6a532fd2c15cc6c92fea686b</srcmd5>
+    <version>1.13.6</version>
+    <time>1626299930</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix missing python3-gobject-Gdk runtime dependency (boo#1187936) (forwarded request 906090 from tux93)</comment>
+    <requestid>906287</requestid>
+  </revision>
 </revisionlist>
