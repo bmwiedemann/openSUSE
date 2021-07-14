@@ -382,4 +382,41 @@
   * Add profanity-0.10.0-theme-typo.patch</comment>
     <requestid>864029</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>cd06d0cf74fb8732b09fa19d452c8409</srcmd5>
+    <version>0.11.0</version>
+    <time>1626299933</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.0:
+- Fix 'headache' and 'whiteness' themes (#1471)
+  * Fix help text for `/logging` (#1470)
+  * Fix theme loading with -t parameter when a disconnect happens (#1472)
+  * Add `/mam` command (MAM is still experimental) (#660)
+  * Improve MAM support: load multiple pages with RSM (#660)
+  * Fix titlebar MUC name display when no name is set (#1481)
+  * Improved window title output (#1493)
+  * Show offline members in occupants panel (#1495)
+    `/occupants default show|hide [jid|offline]`
+    `/occupants show|hide [jid|offline]`
+  * Support handling `file://` prefix in patchs (#1498)
+  * Update HTTP Upload XEP-0363 to 1.0.0 (#1499, #1500)
+  * New `/changepassword` command to change users password (XEP-0077) (#1501)
+  * Add ability to request 'voice' in MUCs (XEP-0045) (#1211, #1504)
+    `/affiliation request`
+  * Add ability to approve MUC voice requests (XEP-0045) (#1507, #1508)
+  * Improve `/bookmark` help (#1511)
+  * Add ability to register a nickname with a MUC (XEP-0045) (#1510, #1210)
+    `/affiliation register`
+  * Fix segfault on `/sendfile` using OMEMO on Raspberry Pi (#1512)
+  * Use shorter IDs (#1520)
+  * Add abbility to launch external editor to write (multiline) messages (#1485, #1546)
+    `/editor`
+  * Introdcue OMEMO trustmode (#1506)
+    `/omemo trustmode manual|firstusage|blind`
+  * Fix random string generation (8e588d6)
+  * Separate settings to configure printing of typing information in console and titlebar (#1516, #1532)
+    `/intype on|of` -&gt; `/intype titlebar|console on|off`
+  * Use direct messages instead of MUC-PMs for non-anonymous MUCs (#1534)</comment>
+    <requestid>906302</requestid>
+  </revision>
 </revisionlist>

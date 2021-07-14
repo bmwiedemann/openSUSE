@@ -17,7 +17,7 @@
 
 
 Name:           profanity
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        Console-based XMPP client
 License:        SUSE-GPL-3.0+-with-openssl-exception
@@ -25,8 +25,6 @@ Group:          Productivity/Networking/Instant Messenger
 URL:            https://profanity-im.github.io
 Source:         https://github.com/profanity-im/profanity/releases/download/%{version}/profanity-%{version}.tar.gz
 Source1:        profanity-rpmlintrc
-# FIX-UPSTREAM - mvetter@suse.com - boo#1180739
-Patch0:         profanity-0.10.0-theme-typo.patch
 BuildRequires:  glib2-devel >= 2.62
 BuildRequires:  gtk2-devel
 BuildRequires:  libcurl-devel
@@ -83,7 +81,6 @@ Including:
 
 %prep
 %setup -q
-%patch0 -p1
 sed -i -e "s/python-config/python3-config/g" configure
 
 %build
