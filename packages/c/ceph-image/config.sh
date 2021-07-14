@@ -32,19 +32,9 @@ echo "Configure image: [$kiwi_iname]..."
 suseSetupProduct
 
 #======================================
-# SuSEconfig
-#--------------------------------------
-suseConfig
-
-#======================================
 # Import repositories' keys
 #--------------------------------------
 suseImportBuildKey
-
-#======================================
-# Umount kernel filesystems
-#--------------------------------------
-baseCleanMount
 
 #======================================
 # Disable recommends
