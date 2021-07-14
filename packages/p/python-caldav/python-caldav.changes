@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 12 23:22:46 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 0.8.0
+  * Support for WebDAV sync-tokens
+  * Work on support for RFC6635, scheduling/RVSP (partially done)
+  * Improved support for iCloud, Google
+  * Calendar API improvements
+  * Improvement of the documentation, examples and inline
+    docstrings and comments
+  * Bugfixes
+- Use fdupes to remove duplicate files.
+- Remove shebangs from various non-executable Python files.
+
+-------------------------------------------------------------------
 Mon Jun 15 06:29:32 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.7.1:
