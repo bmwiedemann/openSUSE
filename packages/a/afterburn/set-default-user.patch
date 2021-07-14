@@ -1,0 +1,11 @@
+--- Makefile.orig
++++ Makefile
+@@ -1,7 +1,7 @@
+ DESTDIR ?=
+ PREFIX ?= /usr
+ RELEASE ?= 1
+-DEFAULT_INSTANCE ?= core
++DEFAULT_INSTANCE ?= suse
+ 
+ ifeq ($(RELEASE),1)
+         PROFILE ?= release

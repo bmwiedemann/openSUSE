@@ -29,6 +29,9 @@ URL:            https://coreos.github.io/afterburn/
 Source0:        https://github.com/coreos/afterburn/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/coreos/afterburn/releases/download/v%{version}/afterburn-%{version}-vendor.tar.gz
 Source2:        cargo_config
+Patch1:         fix-authorized-keys-location.patch
+Patch2:         set-default-user.patch
+Patch3:         no-network-args.patch
 
 ExcludeArch:    %ix86 s390x ppc64le armhfp armv7hl
 
@@ -50,7 +53,11 @@ Dracut module that enables afterburn and corresponding services
 to run in the initramfs on boot.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -N -a1
+%patch1 -p0
+%patch2 -p0
+%patch3 -p0
+
 mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Remove exec bits to prevent an issue in fedora shebang checking
@@ -63,16 +70,19 @@ cargo build --offline --release
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -D -d -m 0755 %{buildroot}%{_unitdir}
+install -D -d -m 0755 %{buildroot}%{_sysconfdir}/cmdline.d
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
 install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}.service %{buildroot}%{_unitdir}/%{name}.service 
 install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-checkin.service %{buildroot}%{_unitdir}/%{name}-checkin.service 
-install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-firstboot-checkin.service %{buildroot}%{_unitdir}/%{name}-firstboot-checkin.service 
-sed -e 's,@DEFAULT_INSTANCE@,'core',' < systemd/%{name}-sshkeys@.service.in > systemd/%{name}-sshkeys@.service.tmp
+install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-firstboot-checkin.service %{buildroot}%{_unitdir}/%{name}-firstboot-checkin.service
+install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys.target %{buildroot}%{_unitdir}/%{name}-sshkeys.target
+sed -e 's,@DEFAULT_INSTANCE@,'suse',' < systemd/%{name}-sshkeys@.service.in > systemd/%{name}-sshkeys@.service.tmp
 mv systemd/%{name}-sshkeys@.service.tmp systemd/%{name}-sshkeys@.service
 install -m 0644 %{_builddir}/%{name}-%{version}/systemd/%{name}-sshkeys@.service %{buildroot}%{_unitdir}/%{name}-sshkeys@.service 
 mkdir -p %{buildroot}%{dracutmodulesdir}
 cp -a dracut/* %{buildroot}%{dracutmodulesdir}
+rm %{buildroot}%{dracutmodulesdir}/30afterburn/afterburn-network-kargs.service
 
 %pre
 %service_add_pre %{name}.service %{name}-checkin.service %{name}-firstboot-checkin.service %{name}-sshkeys@.service 
@@ -94,8 +104,10 @@ cp -a dracut/* %{buildroot}%{dracutmodulesdir}
 %{_unitdir}/afterburn-checkin.service
 %{_unitdir}/afterburn-firstboot-checkin.service
 %{_unitdir}/afterburn-sshkeys@.service
+%{_unitdir}/%{name}-sshkeys.target
 
 %files dracut
+%dir %{_sysconfdir}/cmdline.d
 %{dracutmodulesdir}/30afterburn/
 
 %changelog

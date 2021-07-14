@@ -24,4 +24,20 @@
 </comment>
     <requestid>899507</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>e368cebe21f70eb61df711ed89a000a3</srcmd5>
+    <version>5.0.0</version>
+    <time>1626299916</time>
+    <user>dimstar_suse</user>
+    <comment>- Forward port fix-authorized-keys-location.patch
+- Add set-default-user.patch
+  + Set the default user to suse
+- Add fix-authorized-keys-location.patch
+  + Write the ssh keys to the standard location
+- Add no-network-args.patch
+  + Networks arguments on the kernel command line are set during image build
+    there is no need for another place for a hard coded list.
+- Create target dir for afterburn to write configuration file to</comment>
+    <requestid>906250</requestid>
+  </revision>
 </revisionlist>

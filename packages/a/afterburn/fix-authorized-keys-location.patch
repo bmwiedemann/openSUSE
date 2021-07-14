@@ -1,0 +1,13 @@
+--- src/providers/mod.rs.orig
++++ src/providers/mod.rs
+@@ -87,8 +87,8 @@ fn write_ssh_keys(user: User, ssh_keys:
+         .context("failed to switch user/group")?;
+ 
+     // get paths
+-    let dir_path = user.home_dir().join(".ssh").join("authorized_keys.d");
+-    let file_name = "afterburn";
++    let dir_path = user.home_dir().join(".ssh");
++    let file_name = "authorized_keys";
+     let file_path = &dir_path.join(file_name);
+ 
+     if !ssh_keys.is_empty() {

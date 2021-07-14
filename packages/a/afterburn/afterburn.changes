@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 13 18:39:31 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Forward port fix-authorized-keys-location.patch
+
+-------------------------------------------------------------------
+Mon Jul 12 20:00:43 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Add set-default-user.patch
+  + Set the default user to suse
+- Add fix-authorized-keys-location.patch
+  + Write the ssh keys to the standard location
+- Add no-network-args.patch
+  + Networks arguments on the kernel command line are set during image build
+    there is no need for another place for a hard coded list.
+- Create target dir for afterburn to write configuration file to
+
+-------------------------------------------------------------------
 Fri Jun 11 14:02:00 UTC 2021 - Sayali Lunkad <sayali.lunkad@suse.com>
 
 - Add dracut modules for afterburn 
