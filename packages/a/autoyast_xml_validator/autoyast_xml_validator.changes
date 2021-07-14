@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 14 09:17:08 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.9+gite8164d1:
+  * Fix line shift in -l/--list Parameter
+
+-------------------------------------------------------------------
+Wed Jul 14 09:04:40 UTC 2021 - trenn@suse.de
+
+- Update to version 1.0.8+git5cfc5e4:
+  * Adopt README.md (and by that the manpage) to the lastest parmater and name changes
+  * Rename validate-autoyastxml.py -> autoyast-xml-validate.py
+  * Restructure paramters and add --cobbler-profile param
+
+-------------------------------------------------------------------
 Fri Jul 09 18:22:10 UTC 2021 - trenn@suse.de
 
 - Update to version 1.0.6+git920f29b:

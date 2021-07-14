@@ -17,7 +17,7 @@
 
 
 Name:           autoyast_xml_validator
-Version:        1.0.6+git920f29b
+Version:        1.0.9+gite8164d1
 Release:        0
 Summary:        Cross distribution and cross architecture autoyast XML syntax checker
 License:        GPL-2.0-or-later
@@ -44,17 +44,16 @@ before even starting an auto-installation.
 %setup -q
 
 %build
-go-md2man -in README.md |gzip  >validate-autoyastxml.1.gz
+go-md2man -in README.md |gzip  >autoyast-xml-validate.1.gz
 
 %install
-install -m 0755 -D validate-autoyastxml.py %{buildroot}%{_bindir}/validate-autoyastxml
-install -m 0644 -D validate-autoyastxml.1.gz %{buildroot}%{_mandir}/man1/validate-autoyastxml.1.gz
-
+install -m 0755 -D autoyast-xml-validate.py %{buildroot}%{_bindir}/autoyast-xml-validate
+install -m 0644 -D autoyast-xml-validate.1.gz %{buildroot}%{_mandir}/man1/autoyast-xml-validate.1.gz
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/validate-autoyastxml
-%{_mandir}/man1/validate-autoyastxml*
+%{_bindir}/autoyast-xml-validate
+%{_mandir}/man1/autoyast-xml-validate*
 
 %changelog

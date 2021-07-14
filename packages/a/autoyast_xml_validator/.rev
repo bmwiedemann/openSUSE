@@ -7,4 +7,18 @@
     <comment>Some updates, especially use yast2-schema-collection as Requires</comment>
     <requestid>905341</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60ae8858013eafe7f53a14b19da86fa5</srcmd5>
+    <version>1.0.9+gite8164d1</version>
+    <time>1626299928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.9+gite8164d1:
+  * Fix line shift in -l/--list Parameter
+
+- Update to version 1.0.8+git5cfc5e4:
+  * Adopt README.md (and by that the manpage) to the lastest parmater and name changes
+  * Rename validate-autoyastxml.py -&gt; autoyast-xml-validate.py
+  * Restructure paramters and add --cobbler-profile param</comment>
+    <requestid>906260</requestid>
+  </revision>
 </revisionlist>
