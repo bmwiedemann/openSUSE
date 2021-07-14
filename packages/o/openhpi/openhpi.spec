@@ -30,6 +30,7 @@ Patch0:         unlink-pidfile-on-error.patch
 Patch2:         openhpi-3.4.0-systemd.patch
 Patch3:         fix_openipmi_typedef_selector_change.patch
 Patch4:         fix_implicit_declarations.patch
+Patch5:         Use-run-instead-of-var-run.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-toys
