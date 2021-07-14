@@ -83,4 +83,12 @@
   * Don't :reload in tests unless connecting to an nrepl.</comment>
     <requestid>886680</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a5b4abadcdd4ba0d3e9c30c4403ff7aa</srcmd5>
+    <version>2.9.6</version>
+    <time>1626299932</time>
+    <user>dimstar_suse</user>
+    <comment>- Own java dir</comment>
+    <requestid>906294</requestid>
+  </revision>
 </revisionlist>

@@ -62,6 +62,7 @@ install -m 0644 -D %{SOURCE4} %{buildroot}%{_mandir}/man1/lein.1
 %{_mandir}/man1/lein*
 %{_datadir}/bash-completion/completions/lein
 %{_sysconfdir}/zsh_completion.d
+%dir %{_datadir}/java
 %{_datadir}/java/leiningen-%{version}-standalone.jar
 
 %changelog
