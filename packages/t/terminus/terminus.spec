@@ -1,7 +1,7 @@
 #
 # spec file for package terminus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           terminus
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        An X terminal written in Vala
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
 URL:            https://www.rastersoft.com/programas/terminus.html
-Source:         https://gitlab.com/rastersoft/terminus/-/archive/%{version}/%{name}-%{version}.tar.gz
+Source:         https://gitlab.com/rastersoft/terminus/-/archive/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.40.0

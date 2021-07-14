@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  1 13:46:09 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.13.0
+  * Fixed guake mode gets the focus under X11 in gnome shell
+  * If there is already a terminus instance when the extension is
+    launched, it only shows the notification once
+  * Fixed several warnings
+
+-------------------------------------------------------------------
 Wed May 13 07:58:29 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.12.0:
