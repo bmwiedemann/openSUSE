@@ -1,7 +1,7 @@
 #
 # spec file for package kupfer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,8 +29,8 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gettext
 BuildRequires:  intltool
-BuildRequires:  python >= 3.4
 BuildRequires:  python-base
+BuildRequires:  python3 >= 3.4
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
@@ -54,9 +54,9 @@ Requires:       typelib-1_0-Wnck-3_0
 Requires(post): hicolor-icon-theme
 Requires(post): shared-mime-info
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): shared-mime-info
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):shared-mime-info
+Requires(postun):update-desktop-files
 BuildArch:      noarch
 
 %description

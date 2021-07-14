@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 10:20:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire python3 instead of python: this package moved to
+  py3 long ago and the 'python' symbol is python2.
+
+-------------------------------------------------------------------
 Tue Feb 25 01:32:02 UTC 2020 - wnereiz@member.fsf.org
 
 - Add dependency packages python-base to satisfy waf env setting 
