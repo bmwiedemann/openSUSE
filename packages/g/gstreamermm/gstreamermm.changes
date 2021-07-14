@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:33:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add gstreamermm-non-volatile.patch: Fix build with glib 2.68.
+
+-------------------------------------------------------------------
 Fri Feb 28 20:37:27 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace libxml++-devel, gtkmm3-devel, gstreamer-devel and

@@ -1,7 +1,7 @@
 #
 # spec file for package gstreamermm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,8 @@ Patch0:         gstreamermm-copy_metadata_vfunc.patch
 Patch1:         gstreamermm-copy_metadata_vfunc2.patch
 # PATCH-FIX-UPSTREAM gstreamermm-copy_metadata_vfunc.patch -- Fix bug tied to copy_metadata_vfunc
 Patch2:         gstreamermm-copy_metadata_vfunc3.patch
+# PATCH-FIX-UPSTREAM gstreamermm-non-volatile.patch dimstar@opensuse,org -- Fix build with glib 2.68
+Patch3:         gstreamermm-non-volatile.patch
 
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  doxygen
