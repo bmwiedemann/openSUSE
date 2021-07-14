@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  1 15:36:35 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Move ncxx4-config to the netcdf-cxx4.
+  * Remove the *-tools package (bsc1187910).
+
+-------------------------------------------------------------------
 Wed Apr  7 20:05:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - do not own the includedir - it comes from the filesystem package 

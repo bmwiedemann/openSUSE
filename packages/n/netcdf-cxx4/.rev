@@ -132,4 +132,13 @@
     <comment></comment>
     <requestid>887853</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>52c3d4a9baa886acdfdd3b0cf6006e43</srcmd5>
+    <version>4.3.1</version>
+    <time>1626299914</time>
+    <user>dimstar_suse</user>
+    <comment>- Move ncxx4-config to the netcdf-cxx4.
+  * Remove the *-tools package (bsc1187910).</comment>
+    <requestid>906201</requestid>
+  </revision>
 </revisionlist>

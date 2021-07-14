@@ -112,21 +112,6 @@ of array-oriented scientific data.
 
 This package provides the C++ API.
 
-%package tools
-Summary:        Tools for working with the netcdf4 C++ library
-Group:          Productivity/Scientific/Other
-%{?with_hpc:Requires: %{libname -s %{sover} -l %_ver}}
-BuildArch:      noarch
-
-%description tools
-NetCDF4 (network Common Data Form) is a set of software libraries and
-machine-independent data formats that support the creation, access, and sharing
-of array-oriented scientific data.
-
-This package provides tools for working with the C++ API.
-
-%{?with_hpc:%{hpc_master_package tools}}
-
 %package -n %{libname -s %{sover} -l %_ver}
 Summary:        C++ library for the Unidata network Common Data Form version 4
 Group:          System/Libraries
@@ -156,11 +141,13 @@ Provides:       libnetcdf-devel:%{_libdir}/libnetcdf_c++.so
 %endif
 Requires:       %{libname -s %{sover} -l %_ver} = %{version}
 %{?with_hpc:%hpc_requires_devel}
+Obsoletes:      %{name}-tools <= %{version}
+Provides:       %{name}-tools = %{version}
 
 %description -n %{libname -l %_ver}-devel
 This package contains the netcdf_c++4 header files and shared devel libs.
 
-%{?with_hpc:%{hpc_master_package -l devel}}
+%{?with_hpc:%{hpc_master_package -l devel -O netcdf-cxx4%{hpc_package_name_tail}-tools}}
 
 %package -n %{libname -l %_ver}-devel-static
 Summary:        Static development files for netcdf_c++
@@ -285,12 +272,6 @@ make check || {
 /sbin/ldconfig
 %{?with_hpc:%hpc_module_delete_if_default}
 
-%files tools
-%license COPYRIGHT
-%doc README.md RELEASE_NOTES.md
-%{?with_hpc:%dir %{p_bindir}}
-%{p_bindir}/ncxx4-config
-
 %files -n %{libname -s %{sover} -l %_ver}
 %license COPYRIGHT
 %doc README.md RELEASE_NOTES.md
@@ -306,6 +287,8 @@ make check || {
 %{p_includedir}/nc*.h
 %{p_includedir}/netcdf
 %{?with_hpc:%dir %{hpc_pkgconfigdir}}
+%{?with_hpc:%dir %{p_bindir}}
+%{p_bindir}/ncxx4-config
 %{p_libdir}/pkgconfig/netcdf-cxx4.pc
 %{p_libdir}/libnetcdf_c++4.so
 # Do not add plugins for now
