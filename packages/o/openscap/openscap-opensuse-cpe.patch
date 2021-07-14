@@ -2,7 +2,7 @@ Index: openscap-1.3.5/cpe/openscap-cpe-dict.xml
 ===================================================================
 --- openscap-1.3.5.orig/cpe/openscap-cpe-dict.xml
 +++ openscap-1.3.5/cpe/openscap-cpe-dict.xml
-@@ -53,4 +53,16 @@
+@@ -53,4 +53,20 @@
              <title xml:lang="en-us">Fedora 35</title>
              <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.fedora:def:35</check>
        </cpe-item>
@@ -18,12 +18,16 @@ Index: openscap-1.3.5/cpe/openscap-cpe-dict.xml
 +            <title xml:lang="en-us">openSUSE Leap 15.3</title>
 +            <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.opensuse:def:153</check>
 +      </cpe-item>
++      <cpe-item name="cpe:/o:opensuse:tumbleweed">
++            <title xml:lang="en-us">openSUSE Tumbleweed</title>
++            <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5" href="openscap-cpe-oval.xml">oval:org.open-scap.cpe.opensuse:def:9999</check>
++      </cpe-item>
  </cpe-list>
 Index: openscap-1.3.5/cpe/openscap-cpe-oval.xml
 ===================================================================
 --- openscap-1.3.5.orig/cpe/openscap-cpe-oval.xml
 +++ openscap-1.3.5/cpe/openscap-cpe-oval.xml
-@@ -690,6 +690,45 @@
+@@ -690,6 +690,58 @@
                          <criterion comment="openSUSE Leap 15.0 is installed" test_ref="oval:org.open-scap.cpe.opensuse:tst:150"/>
                    </criteria>
              </definition>
@@ -66,10 +70,23 @@ Index: openscap-1.3.5/cpe/openscap-cpe-oval.xml
 +                        <criterion comment="openSUSE Leap 15.3 is installed" test_ref="oval:org.open-scap.cpe.opensuse:tst:153"/>
 +                  </criteria>
 +            </definition>
++            <definition class="inventory" id="oval:org.open-scap.cpe.opensuse:def:9999" version="1">
++                  <metadata>
++                        <title>openSUSE Tumbleweed</title>
++                        <affected family="unix">
++                            <platform>openSUSE Tumbleweed</platform>
++                        </affected>
++                        <reference ref_id="cpe:/o:opensuse:tumbleweed" source="CPE"/>
++                        <description>The operating system installed on the system is openSUSE Tumbleweed</description>
++                  </metadata>
++                  <criteria>
++                        <criterion comment="openSUSE Tumbleweed is installed" test_ref="oval:org.open-scap.cpe.opensuse:tst:9999"/>
++                  </criteria>
++            </definition>
              <definition class="inventory" id="oval:org.open-scap.cpe.wrlinux:def:1" version="1" >
                    <metadata>
                          <title>Wind River Linux</title>
-@@ -1087,6 +1126,21 @@
+@@ -1087,6 +1139,26 @@
                    <object object_ref="oval:org.open-scap.cpe.openSUSE-release:obj:1"/>
                    <state state_ref="oval:org.open-scap.cpe.opensuse:ste:150"/>
              </rpminfo_test>
@@ -88,10 +105,15 @@ Index: openscap-1.3.5/cpe/openscap-cpe-oval.xml
 +                  <object object_ref="oval:org.open-scap.cpe.openSUSE-release:obj:1"/>
 +                  <state state_ref="oval:org.open-scap.cpe.opensuse:ste:153"/>
 +            </rpminfo_test>
++            <rpminfo_test check_existence="at_least_one_exists" id="oval:org.open-scap.cpe.opensuse:tst:9999" version="2" check="at least one" comment="openSUSE-release is openSUSE Tumbleweed"
++                  xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
++                  <object object_ref="oval:org.open-scap.cpe.openSUSE-release:obj:1"/>
++                  <state state_ref="oval:org.open-scap.cpe.opensuse:ste:9999"/>
++            </rpminfo_test>
              <family_test check_existence="at_least_one_exists" id="oval:org.open-scap.cpe.wrlinux:tst:1" version="1" check="only one"
                    comment="Installed operating system is part of the Unix family."
                    xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent">
-@@ -1415,6 +1469,15 @@
+@@ -1415,6 +1487,19 @@
              <rpminfo_state id="oval:org.open-scap.cpe.opensuse:ste:150" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
                    <version operation="pattern match">^15.0$</version>
              </rpminfo_state>
@@ -103,6 +125,10 @@ Index: openscap-1.3.5/cpe/openscap-cpe-oval.xml
 +            </rpminfo_state>
 +            <rpminfo_state id="oval:org.open-scap.cpe.opensuse:ste:153" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
 +                  <version operation="pattern match">^15.3$</version>
++            </rpminfo_state>
++            <rpminfo_state id="oval:org.open-scap.cpe.opensuse:ste:9999" version="1" xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux">
++              <!-- matching for timestamp -->
++              <version operation="pattern match">^\d{8}$</version>
 +            </rpminfo_state>
              <textfilecontent54_state
                              id="oval:org.open-scap.cpe.wrlinux-release:ste:8"

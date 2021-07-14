@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 14 13:58:45 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Add definition for tumbleweed to openscap-opensuse-cpe.patch (boo#1186735)
+
+-------------------------------------------------------------------
 Wed Jun  2 15:11:14 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - add old patches - slightly renamed; cpe are needed (boo#1186735)
