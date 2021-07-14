@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 13 11:40:52 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to 4.5.0
+  * With version 4.5.0, support for platforms with a time_t type smaller
+    than 64 bits is dropped.
+  * The ‘zone cache’, which allows PowerDNS to keep a list of zones in
+    memory, updated periodically.
+  * Priority ordering in the AXFR queue in PowerDNS running as a secondary.
+  * Small improvements and fixes.
+
+-------------------------------------------------------------------
 Mon Feb  8 11:14:53 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.4.1
