@@ -1,7 +1,7 @@
 #
 # spec file for package python-vatnumber
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python36 1
 Name:           python-vatnumber
 Version:        1.2
 Release:        0
@@ -25,9 +26,9 @@ License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://code.google.com/p/vatnumber/
 Source:         https://files.pythonhosted.org/packages/source/v/vatnumber/vatnumber-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module modernize}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zeep}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

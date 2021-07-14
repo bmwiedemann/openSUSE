@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 10:30:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip build for python 3.6: the required dependency 'zeep' does
+  not built for 3.6.
+
+-------------------------------------------------------------------
 Sun Jun  7 08:33:48 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Use python-modernize for Python 3 fixes, and activate test suite.
