@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 13 21:54:22 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Undo last change, since the change in KF5Plasma that required
+  this has been reverted in Tumbleweed.
+
+-------------------------------------------------------------------
 Sat Jul 10 21:23:36 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Fix build with KF5Plasma 5.84.

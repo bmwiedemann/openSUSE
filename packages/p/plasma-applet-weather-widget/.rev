@@ -16,4 +16,13 @@
 - Spec cleanup</comment>
     <requestid>905651</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>21e17003dac0db831f07893899ddfdba</srcmd5>
+    <version>1.6.10</version>
+    <time>1626299920</time>
+    <user>dimstar_suse</user>
+    <comment>- Undo last change, since the change in KF5Plasma that required
+  this has been reverted in Tumbleweed.</comment>
+    <requestid>906190</requestid>
+  </revision>
 </revisionlist>
