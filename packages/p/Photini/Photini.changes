@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 12 10:54:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.7.0
+  * Added a tab for 'ownership' and copyright details.
+  * Added 'tooltip' hints to some text fields.
+  * Try to ensure only one instance of Photini runs at a time.
+  * Added menu option to make thumbnails for all images that
+    have none.
+  * Other minor improvements and bug fixes.
+
+-------------------------------------------------------------------
 Wed Jun 16 12:52:57 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2021.6.0
