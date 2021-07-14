@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 10:38:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- No longer build for python 3.6, as needed dependencies are not
+  available (matplotlib, seaborn).
+
+-------------------------------------------------------------------
 Tue Dec  3 21:31:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
 
 - initial version
