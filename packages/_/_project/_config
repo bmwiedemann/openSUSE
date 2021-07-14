@@ -27,7 +27,7 @@ BuildFlags: vmfsoptions:nodirindex
 #Prefer: -liblsan0-gcc7 -libmpx2-gcc7
 
 # Help with the switch to the gcc9 provided libs:
-Prefer: libasan5 libasan5-32bit libasan6 libasan6-32bit libubsan1 libubsan1-32bit libgfortran5
+Prefer: libasan6 libasan6-32bit libubsan1 libubsan1-32bit libgfortran5
 
 Patterntype: rpm-md ymp
 %if "%_repository" == "images"
@@ -88,7 +88,6 @@ Substitute: kiwi-image:tbz    python3-kiwi
 Substitute: kiwi-image:iso    kiwi-systemdeps-iso-media qemu-tools
 Substitute: kiwi-image:oem    kiwi-systemdeps-disk-images xorriso
 Substitute: kiwi-image:appx   wsl-appx appx-util
-Prefer: -fb-util-for-appx
 Prefer: kiwi-systemdeps-filesystems
 Prefer: kiwi-systemdeps-disk-images
 Prefer: kiwi-systemdeps-iso-media
@@ -477,7 +476,7 @@ Prefer: syslogd
 Prefer: notification-daemon
 
 # We have multiple nodejs versions in the repo - prefer version -default (from meta package)
-Prefer: nodejs-default nodejs-devel-default npm-default -nodejs10
+Prefer: nodejs-default nodejs-devel-default npm-default
 
 # have choice for libpulse.so.0 needed by wine-32bit: apulse-32bit libpulse0-32bit - prefering the 'original'
 Prefer: libpulse0-32bit libsane1-32bit -pipewire-pulseaudio
@@ -531,7 +530,6 @@ Prefer: -cblas-devel-32bit
 Prefer: -chmlib-devel-32bit                           
 Prefer: -clang10-devel-32bit                          
 Prefer: -clang7-devel-32bit                           
-Prefer: -clang8-devel-32bit                           
 Prefer: -clang9-devel-32bit                           
 Prefer: -cppunit-devel-32bit                          
 Prefer: -cracklib-devel-32bit                         
@@ -840,8 +838,6 @@ Prefer: -llvm10-LTO-devel-32bit
 Prefer: -llvm10-devel-32bit                           
 Prefer: -llvm7-LTO-devel-32bit                        
 Prefer: -llvm7-devel-32bit                            
-Prefer: -llvm8-LTO-devel-32bit                        
-Prefer: -llvm8-devel-32bit                            
 Prefer: -llvm9-LTO-devel-32bit                        
 Prefer: -llvm9-devel-32bit                            
 Prefer: -lzo-devel-32bit                              
@@ -968,7 +964,7 @@ Prefer: mx4j:log4j12-mini
 Prefer: maven-doxia-module-fo:log4j12-mini
 
 Prefer: rpcbind
-Prefer: boo tog-pegasus
+Prefer: boo
 Prefer: wicked-service
 Prefer: ant:xerces-j2
 Prefer: dhcp-client:dhcp
@@ -993,7 +989,6 @@ Prefer: -glib2-devel-32bit -typelib-1_0-Gst-1_0-32bit
 Prefer: postgresql postgresql-server postgresql-devel postgresql-server-devel
 Prefer: postgresql13-devel-mini
 # only needed to bootstrap 11, but leave it - 12 will come at some point :)
-Prefer: -postgresql95 -postgresql95-server
 Prefer: -unzip-rcc
 Prefer: -primus -primus-32bit
 Prefer: -staging-build-key
@@ -1007,7 +1002,7 @@ Prefer: oxygen5-icon-theme
 Prefer: kernel-default-devel
 
 Prefer: -wxWidgets-3_0-devel wxWidgets-3_2-devel
-Prefer: -libwx_baseu-suse-nostl4_0_0 -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
+Prefer: -libwx_baseu-suse-nostl3_0_5 -libwx_baseu-suse3_0_5
 Prefer: libopenssl-devel
 
 Prefer: -xaw3dd -amanda
@@ -1022,7 +1017,7 @@ Prefer: libusb-0_1-4
 Prefer: libreoffice:xerces-j2
 Prefer: glibc-devel
 Prefer: netcdf-devel
-Prefer: libnetcdf19 libnetcdf18
+Prefer: libnetcdf19
 Prefer: NetworkManager:dhcp-client
 Prefer: pcre-tools
 Prefer: libpopt0 makeinfo
@@ -1600,7 +1595,6 @@ Macros:
 
 # UsrMerge - 2021-05-25
 %define usrmerged 1
-Prefer: -glibc-usrmerge-bootstrap-helper
 Macros:
 %usrmerged 1
 :Macros
