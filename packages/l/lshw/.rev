@@ -228,4 +228,12 @@ factory)</comment>
   * Fix typos in translatable messages</comment>
     <requestid>901640</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>09e68e6fa1de12773848ccb16cf8ba18</srcmd5>
+    <version>B.02.19+git.20210619</version>
+    <time>1626299931</time>
+    <user>dimstar_suse</user>
+    <comment>- jsc#SLE-19399</comment>
+    <requestid>906236</requestid>
+  </revision>
 </revisionlist>
