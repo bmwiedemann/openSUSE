@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 15 10:46:45 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.12.5
+  Version 2.12.5 fixes two security vulnerabilities that may lead
+  to privilege escalation for authenticated API users.
+  Other improvements include several bugfixes related to downtimes,
+  downtime notifications, and more reliable connection handling.
+  * Security
+    - Don't expose the PKI ticket salt via the API. This may lead
+      to privilege escalation for authenticated API users by them
+      being able to request certificates for other identities
+      (CVE-2021-32739)
+    - Don't expose IdoMysqlConnection, IdoPgsqlConnection, and
+      ElasticsearchWriter passwords via the API
+      (CVE-2021-32743)
+    - Windows: Update bundled OpenSSL to version 1.1.1k #8888
+    Depending on your setup, manual intervention beyond installing
+    the new versions may be required, so please read the more
+    detailed information in the release blog post carefully.
+  * Bugfixes
+    - Don't send downtime end notification if downtime hasn't
+      started #8878
+    - Don't let a failed downtime creation block the others #8871
+    - Support downtimes and comments for checkables with long names
+      #8870
+    - Trigger fixed downtimes immediately if the current time
+      matches (instead of waiting for the timer) #8891
+    - Add configurable timeout for full connection handshake #8872
+  * Enhancements
+    - Replace existing downtimes on ScheduledDowntime change #8880
+    - Improve crashlog #8869
+
+-------------------------------------------------------------------
 Thu May 27 12:35:22 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.12.4
