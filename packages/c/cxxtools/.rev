@@ -41,4 +41,13 @@
     <comment></comment>
     <requestid>867899</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e05abe1cd275daa87848ac33a35460af</srcmd5>
+    <version>3.0</version>
+    <time>1626386440</time>
+    <user>dimstar_suse</user>
+    <comment>- add gcc11.patch: backport from https://github.com/maekitalo/cxxtools/commit/b773c01fc13d2ae67abc0839888e383be23562fd 
+- run tests</comment>
+    <requestid>906438</requestid>
+  </revision>
 </revisionlist>

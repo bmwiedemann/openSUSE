@@ -27,10 +27,12 @@ Group:          Development/Libraries/C and C++
 URL:            http://www.tntnet.org/cxxtools.html
 Source0:        https://github.com/maekitalo/cxxtools/archive/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       cxxtools-rpmlintrc
+Patch1:         gcc11.patch
 BuildRequires:  autoconf
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  timezone
 BuildRequires:  pkgconfig(openssl)
 
 %description
@@ -152,7 +154,7 @@ It includes classes for:
 - wrappers for atomic operations
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -fiv
@@ -168,6 +170,9 @@ autoreconf -fiv
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
+
+%check
+test/alltests
 
 mkdir -p %{buildroot}/%{_datadir}/%{name}/
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 15 09:25:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add gcc11.patch: backport from https://github.com/maekitalo/cxxtools/commit/b773c01fc13d2ae67abc0839888e383be23562fd 
+- run tests
+
+-------------------------------------------------------------------
 Sat Jan 23 13:52:33 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.0 (see
