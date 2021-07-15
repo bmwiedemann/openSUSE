@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 15 16:23:48 UTC 2021 - msuchanek@suse.com
+
+- Update to version 2.2.3 (jsc#SLE-18193):
+  * ServiceReport v2.2.3 release
+  * [Daemon] check active status along with enabled
+  * Run-on supported architectures only
+  * Take crashkernel recommendation from kdump-lib.sh scripts
+
+-------------------------------------------------------------------
 Wed Feb 03 10:33:36 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 2.2.2+git10.1caca0630e36 (bsc#1181729 ltc#191203):
