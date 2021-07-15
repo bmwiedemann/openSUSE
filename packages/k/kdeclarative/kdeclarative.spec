@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Declarative5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdeclarative
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -153,23 +153,15 @@ Development files.
 %{_kf5_libdir}/libKF5Declarative.so.*
 
 %files -n libKF5QuickAddons5
-%license LICENSES/*
-%doc README*
 %{_kf5_libdir}/libKF5QuickAddons.so.*
 
 %files -n libKF5CalendarEvents5
-%license LICENSES/*
-%doc README*
 %{_kf5_libdir}/libKF5CalendarEvents.so.*
 
 %files components
-%license LICENSES/*
-%doc README*
 %{_kf5_libdir}/qt5/qml/
 
 %files tools
-%license LICENSES/*
-%doc README*
 %{_kf5_bindir}/kpackagelauncherqml
 
 %files devel
