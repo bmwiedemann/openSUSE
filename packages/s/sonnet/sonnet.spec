@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           sonnet
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        KDE spell checking library
 License:        LGPL-2.1-or-later
@@ -136,7 +136,6 @@ to the Sonnet spell checking framework.
 %endif
 
 %files
-%license LICENSES/*
 %doc README*
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/sonnet
@@ -149,11 +148,9 @@ to the Sonnet spell checking framework.
 %{_kf5_libdir}/libKF5SonnetCore.so.*
 
 %files -n libKF5SonnetUi%{sonum}
-%license LICENSES/*
 %{_kf5_libdir}/libKF5SonnetUi.so.*
 
 %files devel
-%license LICENSES/*
 %dir %{_kf5_plugindir}/designer
 %{_kf5_bindir}/gentrigrams
 %{_kf5_bindir}/parsetrigrams
@@ -165,7 +162,6 @@ to the Sonnet spell checking framework.
 %{_kf5_plugindir}/designer/sonnetui5widgets.so
 
 %files voikko
-%license LICENSES/*
 %{_kf5_plugindir}/kf5/sonnet/sonnet_voikko.so
 
 %changelog
