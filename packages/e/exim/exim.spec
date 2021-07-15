@@ -1,7 +1,7 @@
 #
 # spec file for package exim
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,9 @@ BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xmu)
 BuildRequires:  pkgconfig(xt)
 URL:            http://www.exim.org/
-Conflicts:      sendmail sendmail-tls postfix
+Conflicts:      postfix
+Conflicts:      sendmail
+Conflicts:      sendmail-tls
 Provides:       smtp_daemon
 %if %{?suse_version:%suse_version}%{?!suse_version:0} > 800
 Requires:       logrotate
@@ -73,7 +75,7 @@ Requires(pre):  group(mail)
 Requires(pre):  fileutils textutils
 %endif
 Version:        4.94.2
-Release:        2
+Release:        0
 %if %{with_mysql}
 BuildRequires:  mysql-devel
 %endif

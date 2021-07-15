@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 import os, os.path, glob
 
@@ -16,7 +16,7 @@ def main():
 
         if os.path.exists(outdir):
             continue
-        print 'processing', daystr
+        print('processing', daystr)
         os.mkdir(outdir)
 
         if ext == '.gz':

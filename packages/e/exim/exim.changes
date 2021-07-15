@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 06:08:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update eximstats-html-update.py to run under Python 3. 
+
+-------------------------------------------------------------------
 Mon May 17 15:03:24 CEST 2021 - wullinger@rz.uni-kiel.de
 
 - add exim-4.94.2+fixes and taintwarn patches (taintwarn.patch)
