@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Download missing LicenseRef-KDE-Accepted-LGPL license
+  * Fix loading help documentation for KPluginMetaData KCMs
+  * Make KPluginMetaData accessible from KCModuleProxy class
+  * Allow loading of KCModules using KPluginMetaData
+  * WIP: KSettings::Dialog: port away from Dispatcher
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
