@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 14 02:39:38 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210714.57de51d5:
+  * Fix: parse: Should still be able to show the empty property if it already exists(bsc#1188290)
+
+-------------------------------------------------------------------
+Mon Jul 05 08:15:01 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210705.b2ba54f9:
+  * Dev: unittest: Adjust unit test code for qdevice.py
+  * Dev: qdevice: Split class QDevice into qdevice.py from corosync.py
+
+-------------------------------------------------------------------
 Fri Jul 02 02:08:01 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210702.314a7eb4:
