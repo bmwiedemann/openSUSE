@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 12 23:51:55 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.6 (released 2021-07-12) includes a security fix to the
+  crypto/tls package, as well as bug fixes to the compiler, and the
+  net and net/http packages.
+  CVE-2021-34558
+  Refs boo#1182345 go1.16 release tracking
+  * boo#1188229 go#47143 CVE-2021-34558
+  * go#47145 security: fix CVE-2021-34558
+  * go#46999 net: LookupMX behaviour broken
+  * go#46981 net: TestCVE202133195 fails if /etc/resolv.conf specifies ndots larger than 3
+  * go#46769 syscall: TestGroupCleanupUserNamespace test failure on Fedora
+  * go#46657 runtime: deeply nested struct initialized with non-zero values
+  * go#44984 net/http: server not setting Content-Length in certain cases
+
+-------------------------------------------------------------------
 Thu Jun 10 17:31:11 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Fix extraneous trailing percent character %endif% in spec file.
