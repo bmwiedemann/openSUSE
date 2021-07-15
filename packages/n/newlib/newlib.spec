@@ -1,5 +1,5 @@
 #
-# spec file for package newlib
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -23,7 +23,6 @@
 %define cross_arch %{flavor}
 %define pname cross-%{cross_arch}-newlib-devel
 %endif
-
 %if "%{flavor}" == "riscv64"
 %define gcc_cross_arch %{cross_arch}-elf
 %define target %{cross_arch}-elf
@@ -31,7 +30,6 @@
 %define gcc_cross_arch %{cross_arch}
 %define target %{cross_arch}
 %endif
-
 %if "%{cross_arch}" == "epiphany" || "%{cross_arch}" == "riscv32" || "%{cross_arch}" == "rl78" || "%{cross_arch}" == "rx"
 %define target %{cross_arch}-elf
 %endif
@@ -39,11 +37,12 @@
 %define target %{cross_arch}-eabi
 %endif
 %if "%{cross_arch}" == "spu"
-%define sysroot /usr/spu
+%define sysroot %{_prefix}/spu
 %else
 %define sysroot %{_prefix}/%{target}/sys-root
 %endif
-
+# In the staging/ring projects, we don't want to build the unneeded packages
+%bcond_with ringdisabled
 Name:           %{pname}
 Version:        4.1.0
 Release:        0
@@ -53,12 +52,14 @@ Group:          Development/Libraries/Cross
 URL:            https://sourceware.org/newlib/
 Source0:        ftp://sourceware.org/pub/newlib/newlib-%{version}.tar.gz
 Patch1:         epiphany-fixes.diff
-
 %if "%{flavor}" == ""
 BuildArch:      noarch
 %else
 BuildRequires:  cross-%{gcc_cross_arch}-gcc%{gcc_version}-bootstrap
 BuildRequires:  fdupes
+%if "%{cross_arch}" != "arm-none" && "%{cross_arch}" != "arm" && %{with ringdisabled}
+ExclusiveArch:  do-not-build
+%endif
 %endif
 
 %description
@@ -80,7 +81,7 @@ cd build-dir
 	--prefix=%{_prefix} --libdir=%{_libdir} --mandir=%{_mandir} --infodir=%{_infodir} \
 	--target=%{target} \
 	--with-build-sysroot=%{sysroot}
-%ifarch %ix86
+%ifarch %{ix86}
 %if 0
 	--with-newlib \
 %endif
@@ -101,7 +102,7 @@ export NO_DEBUGINFO_STRIP_DEBUG=true
 : >debugsources.list
 
 cd build-dir
-make install DESTDIR=%{buildroot}
+%make_install
 %fdupes %{buildroot}
 %endif
 
