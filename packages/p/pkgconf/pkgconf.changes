@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 30 15:33:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 1.7.4
+  + Add PKG_CONFIG_DONT_DEFINE_PREFIX environment variable
+  + Handle platforms where realpath(3) requires a pre-allocated
+    buffer
+  + Fix null-dereference crash when pulling a malformed
+    'uninstalled' .pc file into a dependency tree.
+
+-------------------------------------------------------------------
 Wed Apr  7 16:19:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - do not own directories provided by filesystem 
