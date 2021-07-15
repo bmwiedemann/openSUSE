@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  8 15:00:26 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fix: W: name-repeated-in-summary C FreeIPMI
+- Fix: freeipmi-bmc-watchdog.x86_64:
+  W: non-etc-or-var-file-marked-as-conffile /usr/share/fillup-templates/sysconfig.bmc-watchdog
+  Declaring fillup files as conffile is not needed
+- freeipmi 1.6.8
+
+-------------------------------------------------------------------
 Sun Feb 14 16:58:10 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeipmi 1.6.7:

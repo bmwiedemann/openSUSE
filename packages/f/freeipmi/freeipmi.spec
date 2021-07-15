@@ -37,13 +37,11 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.7
+Version:        1.6.8
 Release:        %{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
-Source4:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
-Source5:        %{name}.keyring
-Summary:        FreeIPMI
+Summary:        IPMI Service Processor, BMC management tool
 License:        GPL-3.0-or-later
 Group:          System/Management
 BuildRequires:  fdupes
@@ -60,7 +58,7 @@ Obsoletes:      freeipmi-ipmimonitoring < %{version}
 Provides:       freeipmi-ipmimonitoring = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 # Necessary as only those archs implement iopl and friends (#368541)
 ExclusiveArch:  %{ix86} x86_64 ia64 alpha aarch64
 
@@ -92,7 +90,7 @@ Requires(pre):  %fillup_prereq
 Requires:       freeipmi = %{version}
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 Requires(post): chkconfig
-Requires(preun): chkconfig
+Requires(preun):chkconfig
 %endif
 Requires:       logrotate
 
@@ -105,7 +103,7 @@ Group:          System/Management
 Requires:       freeipmi = %{version}
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 Requires(post): chkconfig
-Requires(preun): chkconfig
+Requires(preun):chkconfig
 %endif
 %{?systemd_requires}
 
@@ -119,7 +117,7 @@ Requires:       freeipmi = %{version}
 Provides:       freeipmi:/usr/sbin/ipmiseld
 %if 0%{?fedora_version} || 0%{?centos_version} || 0%{?rhel_version} || 0%{?fedora} || 0%{?rhel}
 Requires(post): chkconfig
-Requires(preun): chkconfig
+Requires(preun):chkconfig
 %endif
 %{?systemd_requires}
 
@@ -285,19 +283,25 @@ fi
 %{fillup_only}
 %endif
 %service_add_post bmc-watchdog.service
+
 %pre bmc-watchdog
 %service_add_pre bmc-watchdog.service
+
 %postun bmc-watchdog
 %service_del_postun bmc-watchdog.service
+
 %preun bmc-watchdog
 %service_del_preun bmc-watchdog.service
 
 %post ipmidetectd
 %service_add_post ipmidetectd.service
+
 %pre ipmidetectd
 %service_add_pre ipmidetectd.service
+
 %postun ipmidetectd
 %service_del_postun ipmidetectd.service
+
 %preun ipmidetectd
 %service_del_preun ipmidetectd.service
 
@@ -510,7 +514,7 @@ rm -rf %{_localstatedir}/cache/ipmiseld/*
 %license %{_docdir}/freeipmi-bmc-watchdog/DISCLAIMER.bmc-watchdog.UC
 %{_unitdir}/bmc-watchdog.service
 %if 0%{?suse_version}
-%attr(0444,root,root) %config(noreplace) %{_fillupdir}/sysconfig.bmc-watchdog
+%attr(0444,root,root) %{_fillupdir}/sysconfig.bmc-watchdog
 %else
 %attr(0444,root,root) %config(noreplace) %{_sysconfdir}/sysconfig/bmc-watchdog
 %endif
