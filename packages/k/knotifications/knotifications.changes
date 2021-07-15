@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Fix syntax error in SPDX statement
+  * Let SNI users be activated using xdg_activation_v1
+  * notifybysnore: add inline notifications support to Windows backend
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
