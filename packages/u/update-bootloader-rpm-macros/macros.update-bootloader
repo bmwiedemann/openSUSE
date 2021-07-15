@@ -42,6 +42,9 @@ done \
 if test -x /sbin/update-bootloader; then \
   if test -f %{_rundir}/update-bootloader/reinit; then \
     rm -f %{_rundir}/update-bootloader/{reinit,refresh} \
+    if test -x %{_libexecdir}/grub2-instdev-fixup.pl; then \
+      %{_libexecdir}/grub2-instdev-fixup.pl || : \
+    fi \
     /sbin/update-bootloader --reinit || : \
   elif test -f %{_rundir}/update-bootloader/refresh; then \
     rm -f %{_rundir}/update-bootloader/refresh \

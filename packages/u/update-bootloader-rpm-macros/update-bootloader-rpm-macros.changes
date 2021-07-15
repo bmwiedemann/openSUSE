@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 13 06:16:06 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Use grub2-instdev-fixup.pl if available for correting
+  /etc/default/grub_installdevice to use disk device if grub has been
+  installed on it
+
+-------------------------------------------------------------------
 Tue Jun 29 07:07:07 UTC 2021 - olaf@aepfle.de
 
 - Make sure _rpmmacrodir is defined to restore compatibility with SLE12

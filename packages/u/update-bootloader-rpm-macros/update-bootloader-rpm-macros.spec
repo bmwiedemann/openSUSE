@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if %{undefined _rpmmacrodir}
   %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
