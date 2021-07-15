@@ -10780,8 +10780,6 @@ unsorted:
   - libgda-ui-6_0-tools 
   - libgda-xslt-6_0-6_0_0 
   - libgdal29 
-  - libgdamm-5_0-13 
-  - libgdamm-devel 
   - libgdata-devel 
   - libgdata22-32bit: [x86_64] 
   - libgdbm6-32bit: [x86_64] 
@@ -13422,7 +13420,7 @@ unsorted:
   - libsamba-util-devel 
   - libsamdb-devel 
   - libsaml-devel 
-  - libsaml11 
+  - libsaml12 
   - libsamplerate-devel 
   - libsamplerate0-32bit: [x86_64] 
   - libsane1-32bit: [x86_64] 
@@ -13541,8 +13539,8 @@ unsorted:
   - libshadowsocks-libev2 
   - libsharp-devel 
   - libsharp0 
-  - libshibsp-lite8 
-  - libshibsp9 
+  - libshibsp-lite10 
+  - libshibsp10 
   - libshine-devel 
   - libshine3 
   - libshout-devel 
@@ -14661,8 +14659,8 @@ unsorted:
   - libxmlsec1-gcrypt1 
   - libxmlsec1-gnutls1 
   - libxmltooling-devel 
-  - libxmltooling-lite9 
-  - libxmltooling9 
+  - libxmltooling-lite10 
+  - libxmltooling10 
   - libxmp-devel 
   - libxmp4 
   - libxosd2 
@@ -16814,9 +16812,6 @@ unsorted:
   - netbeans-svnclientadapter 
   - netcalc 
   - netcdf 
-  - netcdf-cxx4-gnu-hpc-tools 
-  - netcdf-cxx4-tools 
-  - netcdf-cxx4_4_3_1-gnu-hpc-tools 
   - netcdf-devel 
   - netcdf-devel-data 
   - netcdf-devel-static 
@@ -17016,13 +17011,9 @@ unsorted:
   - noisetorch 
   - nomacs 
   - nomacs-lang 
-  - non-mixer 
   - non-ntk 
   - non-ntk-devel 
   - non-ntk-fluid 
-  - non-sequencer 
-  - non-session-manager 
-  - non-timeline 
   - noping 
   - normaliz 
   - normaliz-devel 
@@ -22395,7 +22386,6 @@ unsorted:
   - python36-djet 
   - python36-djvulibre 
   - python36-dkimpy 
-  - python36-dns-lexicon 
   - python36-dnslib 
   - python36-dnspython 
   - python36-doc 
@@ -22912,8 +22902,6 @@ unsorted:
   - python36-m2r 
   - python36-macholib 
   - python36-magic 
-  - python36-magic-wormhole 
-  - python36-magic-wormhole-mailbox-server 
   - python36-magic-wormhole-transit-relay 
   - python36-magicalimport 
   - python36-mailman3-fedmsg-plugin 
@@ -23810,7 +23798,6 @@ unsorted:
   - python36-sh 
   - python36-shaptools 
   - python36-shellingham 
-  - python36-shinyutils 
   - python36-shodan 
   - python36-shortuuid 
   - python36-sidecar 
@@ -23958,7 +23945,6 @@ unsorted:
   - python36-tesserocr 
   - python36-test-server 
   - python36-testfixtures 
-  - python36-testflo 
   - python36-testpath 
   - python36-testrepository 
   - python36-testresources 
@@ -24080,7 +24066,6 @@ unsorted:
   - python36-validators 
   - python36-varint 
   - python36-varlink 
-  - python36-vatnumber 
   - python36-vcrpy 
   - python36-vcver 
   - python36-vcversioner 
@@ -29826,6 +29811,7 @@ unsorted:
   - python39-shellingham 
   - python39-sherpa: [x86_64] 
   - python39-shijian 
+  - python39-shinyutils 
   - python39-shodan 
   - python39-shortuuid 
   - python39-sidecar 
@@ -29991,6 +29977,7 @@ unsorted:
   - python39-tesserocr 
   - python39-test-server 
   - python39-testfixtures 
+  - python39-testflo 
   - python39-testpath 
   - python39-testrepository 
   - python39-testresources 
@@ -31285,7 +31272,6 @@ unsorted:
   - ruby3.0-rubygem-mysql2 
   - ruby3.0-rubygem-net-ldap 
   - ruby3.0-rubygem-net-scp 
-  - ruby3.0-rubygem-net-scp-1_2 
   - ruby3.0-rubygem-net-sftp 
   - ruby3.0-rubygem-net-ssh 
   - ruby3.0-rubygem-net-ssh-6.1 
