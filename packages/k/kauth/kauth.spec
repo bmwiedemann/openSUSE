@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Auth5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kauth
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Framework which lets applications perform actions as a privileged user
 License:        LGPL-2.1-or-later
@@ -106,7 +106,6 @@ Development files.
 %endif
 
 %files -n %{lname}
-%license LICENSES/*
 %dir %{_kf5_libdir}/libexec
 %{_kf5_dbuspolicydir}/org.kde.kf5auth.conf
 %{_kf5_debugdir}/kauth.categories
@@ -121,7 +120,6 @@ Development files.
 %{_kf5_libdir}/libKF5AuthCore.so.*
 
 %files devel
-%license LICENSES/*
 %dir %{_kf5_includedir}/*/
 %{_kf5_datadir}/kauth/
 %{_kf5_includedir}/*.h
