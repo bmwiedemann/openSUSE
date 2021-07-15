@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 15 07:30:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- go back to golang 1.15 to fix the build for now 
+
+-------------------------------------------------------------------
 Mon Oct 12 08:28:38 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add 0004-Make-ipfilteredby-not-required.patch

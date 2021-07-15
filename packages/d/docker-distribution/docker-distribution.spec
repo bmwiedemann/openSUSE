@@ -1,7 +1,7 @@
 #
 # spec file for package docker-distribution
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,9 +39,9 @@ Patch1:         0002-Relax-filesystem-driver-folder-permissions-to-0777-cont.pat
 Patch2:         0003-Support-external-redis-sentinel-cluster.patch
 # PATCH-FIX-UPSTREAM https://github.com/docker/distribution/pull/3088
 Patch3:         0004-Make-ipfilteredby-not-required.patch
-BuildRequires:  go >= 1.13
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) = 1.15
 ExclusiveArch:  x86_64 s390x aarch64 %arm ppc64le
 
 %description

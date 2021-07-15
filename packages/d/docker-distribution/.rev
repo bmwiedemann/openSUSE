@@ -192,4 +192,12 @@ of the provided Makefile</comment>
     <comment></comment>
     <requestid>841628</requestid>
   </revision>
+  <revision rev="23" vrev="7">
+    <srcmd5>d1136f19244b2046380602c6813b40f3</srcmd5>
+    <version>2.7.1</version>
+    <time>1626386432</time>
+    <user>dimstar_suse</user>
+    <comment>- go back to golang 1.15 to fix the build for now</comment>
+    <requestid>906410</requestid>
+  </revision>
 </revisionlist>
