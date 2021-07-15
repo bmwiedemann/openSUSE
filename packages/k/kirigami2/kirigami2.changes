@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Improve Page documentation generation
+  * Improve documentation for the OverlaySheet component
+  * Allow static link without sources
+  * Bundle plugins on Android
+  * Only emit sync signal if we have finished construction (kde#438682)
+  * Port CardsListView to use reuseItems instead of the DelegateRecycler
+  * Expose Labels of BasicListItem for greater end-user control
+  * [OverlaySheet] Add side margins when trying to span window width
+  * Respect an Action's visible property in GlobalDrawer even when collapsed (kde#438365)
+  * Add documentation for IconPropertiesGroup
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
