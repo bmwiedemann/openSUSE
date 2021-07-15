@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Pump minimum Bison version to 3.0
+  * Workaround flatpak having fixed modify date for all files
+  * Instantiate a single TimestampChecker in KSycocaPrivate::needsRebuild
+  * Remove unused includes
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
