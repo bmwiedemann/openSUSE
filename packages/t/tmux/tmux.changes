@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 26 08:40:36 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.2a:
+  * Add an "always" value for the "extended-keys" option; if set
+    then tmux will forward extended keys to applications even if
+    they do not request them.
+  * Add a "mouse" terminal feature so tmux can enable the mouse on
+    terminals where it is known to be supported even if
+    terminfo(5) says otherwise.
+  * Do not expand the filename given to -f so it can contain
+    colons.
+  * Fixes for problems with extended keys and modifiers, scroll
+    region, source-file, crosscompiling, format modifiers and other
+    minor issues.
+
+-------------------------------------------------------------------
 Sat May  8 08:48:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - refresh tmux-socket-path.patch: 
