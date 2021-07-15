@@ -1,7 +1,7 @@
 #
 # spec file for package python-agate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,15 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
+%define modname agate
 Name:           python-agate
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        Data analysis library optimized for humans instead of machines
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/wireservice/agate
-Source:         https://github.com/wireservice/agate/archive/%{version}.tar.gz
+Source:         https://github.com/wireservice/agate/archive/refs/tags/%{version}.tar.gz#/agate-%{version}.tar.gz
 BuildRequires:  %{python_module Babel >= 2.0}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module isodate >= 0.5.4}
@@ -73,7 +74,7 @@ find agate -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
 
 %check
 export LANG=en_US.UTF-8
-%pytest -k 'not test_join and not test_sniffer'
+%pytest -k 'not test_join'
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

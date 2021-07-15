@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 15 05:36:41 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fixed URL of the tarball, and the tarball refreshed.
+
+-------------------------------------------------------------------
+Wed Jul 14 09:38:14 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.6.2 - March 10, 2021
+  * feat: :meth:`.Date.__init__` and :meth:`.DateTime.__init__`
+    accepts a locale keyword argument (e.g. en_US) for parsing
+    formatted dates. (#730)
+  * feat: :meth:`.Number.cast` casts True to 1 and False to 0.
+    (#733)
+  * fix: :meth:`.utils.max_precision` ignores infinity when
+    calculating precision. (#726)
+  * fix: :meth:`.Date.cast` catches OverflowError when type
+    testing. (#720)
+  * Included examples in Python package. (#716)
+- Enable test_sniffer test again
+
+-------------------------------------------------------------------
 Thu Sep 24 00:58:20 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Disable another failing test: test_sniffer

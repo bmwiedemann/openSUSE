@@ -66,4 +66,25 @@
     <comment></comment>
     <requestid>864996</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c9a54764c1d8caebf363f7d6563af0bb</srcmd5>
+    <version>1.6.2</version>
+    <time>1626386427</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed URL of the tarball, and the tarball refreshed.
+- Update to 1.6.2 - March 10, 2021
+  * feat: :meth:`.Date.__init__` and :meth:`.DateTime.__init__`
+    accepts a locale keyword argument (e.g. en_US) for parsing
+    formatted dates. (#730)
+  * feat: :meth:`.Number.cast` casts True to 1 and False to 0.
+    (#733)
+  * fix: :meth:`.utils.max_precision` ignores infinity when
+    calculating precision. (#726)
+  * fix: :meth:`.Date.cast` catches OverflowError when type
+    testing. (#720)
+  * Included examples in Python package. (#716)
+- Enable test_sniffer test again
+</comment>
+    <requestid>906365</requestid>
+  </revision>
 </revisionlist>
