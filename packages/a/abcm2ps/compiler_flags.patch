@@ -1,23 +1,23 @@
-diff -urEbw abcm2ps-8.14.7/configure abcm2ps-8.14.7.new/configure
---- abcm2ps-8.14.7/configure	2020-02-19 14:00:51.000000000 +0100
-+++ abcm2ps-8.14.7.new/configure	2020-02-19 14:37:35.365351023 +0100
+diff -urEbw abcm2ps-8.14.12/configure abcm2ps-8.14.12.new/configure
+--- abcm2ps-8.14.12/configure	2021-07-14 16:15:45.000000000 +0200
++++ abcm2ps-8.14.12.new/configure	2021-07-15 08:26:38.120364301 +0200
 @@ -6,7 +6,7 @@
  
- CC=gcc
- PKG_CONFIG=pkg-config
--CFLAGS="-g -O2 -Wall -pipe"
+ : "${CC:=gcc}"
+ : "${PKG_CONFIG:=pkg-config}"
+-CFLAGS="-g -O2 -Wall -pipe $CFLAGS"
 +CFLAGS="$RPM_OPT_FLAGS -pipe"
  
  srcdir=.
- prefix=/usr/local
-@@ -61,8 +61,8 @@
- if which $PKG_CONFIG > /dev/null ; then
- 	if $PKG_CONFIG --exists freetype2 ; then
- 		if $PKG_CONFIG --exists pangocairo ; then
--			CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `$PKG_CONFIG pango cairo freetype2 --cflags`"
--			LDLIBS="$LDLIBS `$PKG_CONFIG pangocairo pangoft2 freetype2 --libs`"
-+			CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `pkg-config pango cairo gobject-2.0 freetype2 --cflags`"
-+			LDLIBS="$LDLIBS `pkg-config pangocairo pangoft2 gobject-2.0 freetype2 --libs`"
- 		else
- 			echo "pangocairo not found - no pango support"
- 		fi
+ : "${prefix=/usr/local}"
+@@ -63,8 +63,8 @@
+ elif ! $PKG_CONFIG --exists pangocairo ; then
+ 	echo "pangocairo not found - no pango support"
+ else
+-	CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `$PKG_CONFIG pango cairo freetype2 --cflags`"
+-	LDLIBS="`$PKG_CONFIG pangocairo pangoft2 freetype2 --libs` $LDLIBS"
++	CPPFLAGS="$CPPFLAGS -DHAVE_PANGO=1 `pkg-config pango cairo gobject-2.0 freetype2 --cflags`"
++	LDLIBS="$LDLIBS `pkg-config pangocairo pangoft2 gobject-2.0 freetype2 --libs`"
+ fi
+ 
+ CPPFLAGS="$CPPFLAGS -I."

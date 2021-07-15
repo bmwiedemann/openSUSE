@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 15 06:20:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.14.12:
+  Fixes:
+  * crash when "%%break 1" and no measure bar in the tune
+  * crash when duplicated voice ending on %%staves with repeat variant
+  * crash when voice duplication with symbols without width
+  * crash or bad output when null value in %%scale
+  * problem when only bars in 2 voices followed %%staves of the second voice only
+  * crash when tuplet error in grace note sequence
+  * crash when grace note with empty tuplet
+  * crash when many broken rhythms after a single grace note
+  * access outside the deco array when error in U:
+  * crash when !xstem! with no note in the previous voice
+  * crash on tuplet without any note/rest
+  * crash when grace notes at end of line and voice overlay
+  * crash when !trem2! at start of a grace note sequence
+  * crash when wrong duration in 2 voice overlays and bad ties
+  * crash when accidental without a note at start of line after K:
+  * array overflow when wrong duration in voice overlay
+  * loss of left margin after first page since previous commit
+  * no respect of %%leftmargin with -E or -g
+  * bad placement of chord symbols when in a music line with only invisible rests
+  Syntax:
+  * Accept and remove one or two '%'s at start of all %%beginxxx lines
+  Generation:
+  * Move the CSS from XHTML to SVG
+  Build:
+  * configure: respect environment variable
+- Refresh compiler_flags.patch
+
+-------------------------------------------------------------------
 Mon Dec  7 08:57:29 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.14.11:

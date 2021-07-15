@@ -193,4 +193,39 @@
   * fix: error &quot;'staffwidth' too small&quot; when generating sample3.abc</comment>
     <requestid>853528</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>287fe73a062acfcd471a0140a8271b0f</srcmd5>
+    <version>8.14.12</version>
+    <time>1626386428</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.14.12:
+  Fixes:
+  * crash when &quot;%%break 1&quot; and no measure bar in the tune
+  * crash when duplicated voice ending on %%staves with repeat variant
+  * crash when voice duplication with symbols without width
+  * crash or bad output when null value in %%scale
+  * problem when only bars in 2 voices followed %%staves of the second voice only
+  * crash when tuplet error in grace note sequence
+  * crash when grace note with empty tuplet
+  * crash when many broken rhythms after a single grace note
+  * access outside the deco array when error in U:
+  * crash when !xstem! with no note in the previous voice
+  * crash on tuplet without any note/rest
+  * crash when grace notes at end of line and voice overlay
+  * crash when !trem2! at start of a grace note sequence
+  * crash when wrong duration in 2 voice overlays and bad ties
+  * crash when accidental without a note at start of line after K:
+  * array overflow when wrong duration in voice overlay
+  * loss of left margin after first page since previous commit
+  * no respect of %%leftmargin with -E or -g
+  * bad placement of chord symbols when in a music line with only invisible rests
+  Syntax:
+  * Accept and remove one or two '%'s at start of all %%beginxxx lines
+  Generation:
+  * Move the CSS from XHTML to SVG
+  Build:
+  * configure: respect environment variable
+- Refresh compiler_flags.patch</comment>
+    <requestid>906396</requestid>
+  </revision>
 </revisionlist>
