@@ -80,4 +80,22 @@
     <comment>submit new version 0.1.20</comment>
     <requestid>796438</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2b10fbb66a5ee2040a7d7190ddf005ae</srcmd5>
+    <version>0.1.23</version>
+    <time>1626386448</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated OBS build targets
+  - Added &quot;sle15sp3&quot; target (bsc#1184225)
+  - Added future &quot;sle15sp4&quot; target
+  - Update &quot;sle_latest&quot; to point to &quot;sle15sp4&quot;
+- 0.1.23
+
+- Fixed packaging_rake_tasks dependency (related to bsc#1183957)
+- 0.1.22
+
+- Added so_version tasks (related to bsc#1181653).
+- 0.1.21</comment>
+    <requestid>906514</requestid>
+  </revision>
 </revisionlist>
