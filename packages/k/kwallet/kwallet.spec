@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5Wallet5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwallet
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Safe desktop-wide storage for passwords
 License:        LGPL-2.1-or-later
@@ -36,8 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/kwallet-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Use-Qt-logging-instead-of-printf.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -162,7 +160,6 @@ Development files.
 %endif
 
 %files -n kwalletd5
-%license LICENSES/*
 %{_kf5_bindir}/kwalletd5
 %{_kf5_servicesdir}/kwalletd5.desktop
 %{_kf5_notifydir}/
@@ -175,7 +172,6 @@ Development files.
 %{_kf5_debugdir}/*.renamecategories
 
 %files -n libkwalletbackend5-5
-%license LICENSES/*
 %{_kf5_libdir}/libkwalletbackend5.so.*
 
 %files tools

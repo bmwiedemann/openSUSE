@@ -780,4 +780,12 @@
     <comment></comment>
     <requestid>900461</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>fc65da17ac2bef517ace27f74bfe05a3</srcmd5>
+    <version>5.84.0</version>
+    <time>1626386403</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.84.0 (forwarded request 905463 from cgiboudeaux)</comment>
+    <requestid>905529</requestid>
+  </revision>
 </revisionlist>
