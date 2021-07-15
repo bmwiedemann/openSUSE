@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Too many changes since 5.83.0, only listing bugfixes:
+  * WIP: Take into account wordCompletionRemoveTail in
+    completionRange() default implementation (kde#436170)
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
