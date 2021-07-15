@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 11 16:59:05 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- update akonadi-apparmor-opensuse.diff: add openSUSE Postgresql
+  path in AppArmor profiles (and make it a variable to keep the
+  profiles readable) and some more rules for Postgresql
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
