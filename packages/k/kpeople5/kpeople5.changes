@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Add find_dependency for QtWidgets
+  * KF5PeopleWidgets: use ki18n_wrap_ui for UI files, as needed by ki18n usage
+  * Fix ci build
+  * Move licensing stuff to a .license file
+  * Move KPeople documentation from docs.plasmamobile.org
+  * persondata: use QUrl::scheme() instead of 'left of ://'
+  * Remove defunct akonadidatasource plugin
+  * Move EmailDetailsWidget class out of plugins dir
+  * Remove dead code
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
