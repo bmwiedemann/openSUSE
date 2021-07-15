@@ -17,14 +17,14 @@
 
 
 %define sonum   5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kjs
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        KDE Javascript engine
 License:        LGPL-2.1-or-later
@@ -119,8 +119,6 @@ Microsoft's JScript. Development files.
 %{_kf5_libdir}/libKF5JS.so.*
 
 %files -n libKF5JSApi%{sonum}
-%license COPYING*
-%doc README*
 %{_kf5_libdir}/libKF5JSApi.so.*
 
 %files devel
