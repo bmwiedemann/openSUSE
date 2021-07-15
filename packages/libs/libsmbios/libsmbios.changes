@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 09 12:52:41 UTC 2021 - trenn@suse.de
+
+- Add _service magic
+- Update to version 2.4.3.3.gf01a217:
+  * Don't rely on support for indirect expansion in the shell
+  * Fix configure.ac bashism
+  * Fix smbios-upflag-ctl --help results
+
+-------------------------------------------------------------------
 Sun Aug 16 01:10:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.4.3

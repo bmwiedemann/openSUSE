@@ -1,7 +1,7 @@
 #
 # spec file for package libsmbios
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define libname libsmbios_c2
 Name:           libsmbios
-Version:        2.4.3
+Version:        2.4.3.3.gf01a217
 Release:        0
 Summary:        SMBIOS table library and utilities
 License:        GPL-2.0-or-later OR OSL-2.1
 Group:          Hardware/Other
 URL:            https://github.com/dell/libsmbios
-Source:         https://github.com/dell/libsmbios/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake

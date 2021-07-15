@@ -330,4 +330,12 @@ SPDX format (http://www.spdx.org/licenses) (forwarded request 116746 from babelw
   * Fixes for some segfaults and error handling</comment>
     <requestid>826926</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>9c902ceb4a68ce66971eb2a06bf65b21</srcmd5>
+    <version>2.4.3.3.gf01a217</version>
+    <time>1626386330</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905975</requestid>
+  </revision>
 </revisionlist>
