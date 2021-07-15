@@ -1,7 +1,7 @@
 #
 # spec file for package thermald
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           thermald
-Version:        2.3
+Version:        2.4.6
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later
@@ -36,17 +35,10 @@ Source10:       thermal-monitor.desktop
 Source11:       thermal-monitor.png
 Patch0:         fix-systemd-service.patch
 Patch1:         fix-man-thermald_8.patch
-# PATCH-FEATURE-UPSTREAM fix-32bit-build.patch https://github.com/intel/thermal_daemon/pull/264
-Patch2:         fix-32bit-build.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
-BuildRequires:  dbus-1-devel
-BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
-BuildRequires:  gtk-doc
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
@@ -55,8 +47,13 @@ BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dbus-glib-1)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(upower-glib)
 Requires(post): %fillup_prereq

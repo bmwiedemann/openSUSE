@@ -92,4 +92,12 @@ A fix_long_int_i586_issue.patch
     <comment></comment>
     <requestid>843564</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0f25d65d8e8c0fc7d1934c119e49f696</srcmd5>
+    <version>2.4.6</version>
+    <time>1626386438</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906420</requestid>
+  </revision>
 </revisionlist>

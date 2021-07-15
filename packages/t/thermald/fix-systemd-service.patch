@@ -1,17 +1,15 @@
---- a/data/thermald.service.in
-+++ b/data/thermald.service.in
-@@ -4,9 +4,13 @@
- 
- [Service]
+--- a/data/thermald.service.in.orig	2021-07-15 09:25:50.933468593 +0200
++++ b/data/thermald.service.in	2021-07-15 09:26:52.193713129 +0200
+@@ -6,7 +6,11 @@
  Type=dbus
+ SuccessExitStatus=2
+ BusName=org.freedesktop.thermald
+-ExecStart=@sbindir@/thermald --systemd --dbus-enable --adaptive
 +Environment=THERMALD_CONFIG="/etc/thermald/thermal-conf.xml"
 +Environment=THERMALD_POLL="4"
 +Environment=THERMALD_OPTS="--disable-active-power"
 +EnvironmentFile=-/etc/sysconfig/thermald
- SuccessExitStatus=1
- BusName=org.freedesktop.thermald
--ExecStart=@sbindir@/thermald --systemd --dbus-enable --adaptive
 +ExecStart=@sbindir@/thermald --systemd --dbus-enable --adaptive --config-file ${THERMALD_CONFIG} --poll-interval $THERMALD_POLL $THERMALD_OPTS
+ Restart=on-failure
  
  [Install]
- WantedBy=multi-user.target

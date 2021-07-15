@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 15 07:31:17 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.4.6:
+  * Support for Rocket Lake and Commet Lake CPU model
+  * Tiger Lake DPTF tables support
+  * CPU stuck at low frequency on two models (issue 280)
+  * Changes related to PID and exit codes
+  * Minor change for Dell XPS 13 with Tiger Lake.
+  * Issue with Dell Latitude 7400. 
+  * Allow --ingore-cpuid-check to use with --adaptive option
+  * Address low performance with Dell Latitude 5420 with the latest BIOS
+  * Fix for Ubuntu bug 1930422
+- Rebase fix-man-thermald_8.patch
+- Rebase fix-systemd-service.patch
+- Drop fix-32bit-build.patch
+
+-------------------------------------------------------------------
 Wed Oct 21 09:43:37 UTC 2020 - Libor Pechacek <lpechacek@gmx.com>
 
 - Update to "Release 2.3"

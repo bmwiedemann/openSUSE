@@ -1,6 +1,6 @@
---- a/man/thermald.8
-+++ b/man/thermald.8
-@@ -100,8 +100,10 @@
+--- a/man/thermald.8.orig	2021-07-15 09:28:22.630074123 +0200
++++ b/man/thermald.8	2021-07-15 09:29:23.394315527 +0200
+@@ -100,10 +100,13 @@
  .TP
  .B \-\-ignore-default-control
  Ignore default CPU temperature control. Strictly follow thermal-conf.xml or thermal-conf.xml.auto.
@@ -10,4 +10,7 @@
 +.TP
  .B \-\-disable-active-power
  Disable active power management. This will not set active power limits.
++.TP
+ .B \-\-adaptive
+ Use DPTF adaptive tables when present. This will ignore thermald config via xml files.
  
