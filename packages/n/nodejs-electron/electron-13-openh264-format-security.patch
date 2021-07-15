@@ -1,0 +1,13 @@
+Index: electron-13.1.6/third_party/openh264/BUILD.gn
+===================================================================
+--- electron-13.1.6.orig/third_party/openh264/BUILD.gn	2021-07-09 09:23:47.767202563 +0200
++++ electron-13.1.6/third_party/openh264/BUILD.gn	2021-07-12 08:06:11.340219647 +0200
+@@ -24,8 +24,6 @@ config("config") {
+   # GCC and clang flags. MSVS (is_win && !is_clang) does not use cflags.
+   if (!is_win || is_clang) {
+     cflags += [
+-      "-Wno-format",
+-      "-Wno-format-security",
+       "-Wno-header-hygiene",
+       "-Wno-unused-function",
+       "-Wno-unused-value",

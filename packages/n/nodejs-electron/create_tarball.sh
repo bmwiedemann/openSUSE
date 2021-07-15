@@ -210,6 +210,7 @@ keeplibs=(
     third_party/emoji-segmenter
     third_party/farmhash
     third_party/fdlibm
+    third_party/ffmpeg
     third_party/fft2d
     third_party/flatbuffers
     third_party/fusejs/dist

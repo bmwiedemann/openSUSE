@@ -44,7 +44,7 @@
 %bcond_with system_vpx
 %bcond_with clang
 Name:           nodejs-electron
-Version:        13.1.4
+Version:        13.1.6
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -87,6 +87,8 @@ Patch22:        electron-13-fix-base-check-nomerge.patch
 Patch23:        electron-13-gcc-fix-v8-nodiscard.patch
 # Fix blink nodestructor
 Patch24:        electron-13-blink-gcc-ambiguous-nodestructor.patch
+# Remove -Wno-format-security from openh264
+Patch25:        electron-13-openh264-format-security.patch
 BuildRequires:  SDL-devel
 BuildRequires:  binutils-gold
 BuildRequires:  bison
@@ -112,16 +114,25 @@ BuildRequires:  memory-constraints
 BuildRequires:  nasm
 BuildRequires:  ncurses-devel
 %if 0%{?suse_version}
+# Required for /usr/bin/clang-format
+BuildRequires:  clang >= 8.0.0
 BuildRequires:  ninja >= 1.7.2
-%else
+%endif
+%if 0%{?fedora_version}
+# Required for /usr/bin/clang-format
+BuildRequires:  clang-tools-extra
+BuildRequires:  libatomic
 BuildRequires:  ninja-build >= 1.7.2
 %endif
 BuildRequires:  nodejs >= 8.0
 BuildRequires:  npm
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python2
+%if 0%{?fedora_version}
+BuildRequires:  python2-devel
+%endif
 %if 0%{?suse_version}
+BuildRequires:  python2
 BuildRequires:  python2-xml
 %endif
 BuildRequires:  rsync
@@ -178,7 +189,11 @@ BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.5
 BuildRequires:  pkgconfig(libxslt)
+%if 0%{?fedora_version}
+BuildRequires:  minizip-compat-devel
+%else
 BuildRequires:  pkgconfig(minizip)
+%endif
 BuildRequires:  pkgconfig(nspr) >= 4.9.5
 BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(ogg)
@@ -226,8 +241,6 @@ BuildRequires:  libjpeg-turbo-devel
 %if %{with system_vpx}
 BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
-# Always required for clang-format
-BuildRequires:  clang >= 8.0.0
 %if %{without clang}
 %if 0%{?suse_version} >= 1550 || 0%{?fedora_version}
 BuildRequires:  gcc >= 10
@@ -270,6 +283,11 @@ sed -i 's/OFFICIAL_BUILD/GOOGLE_CHROME_BUILD/' \
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 
+# Make sure python is python2
+install -d -m 0755 python2-path
+ln -sf %{_bindir}/python2 "$(pwd)/python2-path/python"
+export PATH="$(pwd)/python2-path:${PATH}"
+
 # for wayland
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
 
@@ -284,6 +302,11 @@ export CXX=clang++
 
 # REDUCE DEBUG as it gets TOO large
 ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
+%if 0%{?fedora_version}
+# Fix base/allocator/allocator_shim.cc:408:2: error: #error This code cannot be
+# used when exceptions are turned on.
+ARCH_FLAGS="`echo $ARCH_FLAGS | sed -e 's/ -fexceptions / /g'`"
+%endif
 
 export CXXFLAGS="${CXXFLAGS} ${ARCH_FLAGS} -Wno-return-type"
 # extra flags to reduce warnings that aren't very useful
@@ -320,7 +343,6 @@ export RANLIB=ranlib
 %limit_build -m 2600
 
 gn_system_libraries=(
-    ffmpeg
     flac
     fontconfig
     freetype
@@ -339,6 +361,10 @@ gn_system_libraries=(
     snappy
     zlib
 )
+
+%if 0%{?suse_version}
+gn_system_libraries+=( ffmpeg )
+%endif
 
 %if %{with system_vpx}
 gn_system_libraries+=( libvpx )
@@ -436,6 +462,10 @@ desktop-file-install --dir %{buildroot}%{_datadir}/applications/ %{SOURCE11}
 
 pushd out/Release
 rsync -av *.bin *.pak *.so resources %{buildroot}%{_libdir}/electron/
+
+%if 0%{?fedora_version}
+rm -f %{buildroot}%{_libdir}/electron/libffmpeg*
+%endif
 
 rsync -av --exclude '*.pak.info' locales %{buildroot}%{_libdir}/electron/
 

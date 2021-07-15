@@ -1,7 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 12 06:20:09 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix build on Fedora
+  * Added electron-13-openh264-format-security.patch
+
+-------------------------------------------------------------------
 Fri Jul  9 20:42:43 UTC 2021 - thod_@gmx.de
 
 - Strip the debugging and symbol information
+
+-------------------------------------------------------------------
+Fri Jul  9 08:55:57 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 13.1.6
+  * https://github.com/electron/electron/releases/tag/v13.1.6
+  * https://github.com/electron/electron/releases/tag/v13.1.5
 
 -------------------------------------------------------------------
 Tue Jun 29 07:01:44 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
