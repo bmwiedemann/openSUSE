@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later and LGPL-3.0-or-later
@@ -506,13 +506,6 @@ fi
 %_unitdir/sssd-sudo.service
 %_bindir/sss_ssh_*
 %_sbindir/sssd
-#%_sbindir/rcsssd
-#%_sbindir/rcsssd-autofs
-#%_sbindir/rcsssd-nss
-#%_sbindir/rcsssd-pac
-#%_sbindir/rcsssd-pam
-#%_sbindir/rcsssd-ssh
-#%_sbindir/rcsssd-sudo
 %dir %_mandir/??/
 %dir %_mandir/??/man[158]/
 %_mandir/??/man1/sss_ssh_*
@@ -601,6 +594,7 @@ fi
 %_mandir/man8/pam_sss.8*
 %_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
+%_mandir/uk/man8/pam_sss_gss.8*
 # cifs idmap plugin
 %dir %_sysconfdir/cifs-utils
 %cifs_idmap_plugin
@@ -630,7 +624,6 @@ fi
 %dir %_mandir/??/man5/
 %_mandir/??/man5/sssd-ifp.5*
 %_unitdir/sssd-ifp.service
-#%_sbindir/rcsssd-ifp
 %config %_sysconfdir/dbus-1/system.d/org.freedesktop.sssd.infopipe.conf
 %_datadir/dbus-1/system-services/org.freedesktop.sssd.infopipe.service
 
