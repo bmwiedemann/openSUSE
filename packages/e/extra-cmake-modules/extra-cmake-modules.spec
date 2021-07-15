@@ -16,7 +16,7 @@
 #
 
 
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           extra-cmake-modules
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        CMake modules
 License:        BSD-3-Clause

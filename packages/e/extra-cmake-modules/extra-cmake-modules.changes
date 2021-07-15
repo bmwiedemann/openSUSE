@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Number screenshots in the same way the fastlane tool does this
+  * Make pre-commit hook executable
+  * KDECompilerSettings: revert setting CMAKE_C(XX)_EXTENSIONS
+  * [fastlane] Add mapping for serbian
+  * cmake: Explicetely disable c/c++ compiler extensions
+  * Set the C++17 standard starting from 5.84
+  * Bump the C++ standard we compile with to 17
+  * Update IRC network name in the README
+  * Override atime and ctime in tar PaxHeaders
+  * Add prefix.sh.fish file for fish shell
+  * modules/ECMGenerateHeaders.cmake - init originalprefix
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
