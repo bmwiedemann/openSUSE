@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -181,25 +181,14 @@ Development files.
 %{_kf5_plugindir}/kf5/kio/http.so
 %{_kf5_plugindir}/kf5/kio/trash.so
 %{_kf5_plugindir}/kf5/kiod/kssld.so
-%{_kf5_servicesdir}/data.protocol
 %{_kf5_servicesdir}/http_cache_cleaner.desktop
 %{_kf5_servicesdir}/kcmtrash.desktop
-%{_kf5_servicesdir}/mailto.protocol
-%{_kf5_servicesdir}/mms.protocol
-%{_kf5_servicesdir}/mmst.protocol
-%{_kf5_servicesdir}/mmsu.protocol
-%{_kf5_servicesdir}/pnm.protocol
-%{_kf5_servicesdir}/rtsp.protocol
-%{_kf5_servicesdir}/rtspt.protocol
-%{_kf5_servicesdir}/rtspu.protocol
 %{_kf5_sharedir}/dbus-1/services/org.kde.kiod5.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.kioexecd.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.kssld5.service
 %{_kf5_sharedir}/kconf_update/filepicker.upd
 
 %files
-%doc README*
-%license LICENSES/*
 %dir %{_kf5_htmldir}
 %dir %{_kf5_htmldir}/en
 %dir %{_kf5_plugindir}/kf5/kded
