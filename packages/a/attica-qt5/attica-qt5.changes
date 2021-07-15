@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Longer timeout for the provider test
+  * State library license in yaml file
+  * Generate license compliance test
+  * Do the documentation thing, with @since and whatnot
+  * Constness fix
+  * Add http headers to Metadata (and set it from BaseJob)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
