@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 12 17:14:08 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.8.gbd5aaf5:
+  * Fix comma typo in ui.c
+  * drop NoNewPrivs from irqbalance service
+  * remove no existing irq in banned_irqs
+  * Fix compile issue with none AARCH64 builds
+  * Fix irqbalance cannot obtain the full name of irq
+- Enhance _service magic and add git hashtag to version
+
+-------------------------------------------------------------------
 Tue Apr 13 13:56:00 UTC 2021 - trenn@suse.de
 
 - Add _service file pointing to github sources
