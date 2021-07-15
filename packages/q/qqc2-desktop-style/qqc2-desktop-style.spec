@@ -16,11 +16,11 @@
 #
 
 
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           qqc2-desktop-style
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        A Qt Quick Controls 2 Style for Desktop UIs
 License:        GPL-2.0-or-later
@@ -92,7 +92,6 @@ Usually not needed as it is only a runtime dependency.
 %{_kf5_qmldir}/org/kde/qqc2desktopstyle/
 
 %files devel
-%license LICENSES/*
 %{_kf5_libdir}/cmake/KF5QQC2DesktopStyle/
 # Legacy alias with typo...
 %{_kf5_libdir}/cmake/KF5QQC2DeskopStyle/

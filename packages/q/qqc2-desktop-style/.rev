@@ -376,4 +376,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.83.0</comment>
     <requestid>899778</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8819ed7c52ed19a4f738db9ece43bd28</srcmd5>
+    <version>5.84.0</version>
+    <time>1626386413</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.84.0 (forwarded request 905463 from cgiboudeaux)</comment>
+    <requestid>905541</requestid>
+  </revision>
 </revisionlist>
