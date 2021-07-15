@@ -1,7 +1,7 @@
 #
 # spec file for package maim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           maim
-Version:        5.6.3
+Version:        5.7.4
 Release:        0
 Summary:        Flexible screenshotting utility
 License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/naelstrof/maim
-Source0:        https://github.com/naelstrof/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.7
 BuildRequires:  gcc-c++
 BuildRequires:  gengetopt
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
@@ -50,7 +51,7 @@ utility and performs better in several ways.
 
 %build
 %cmake
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install

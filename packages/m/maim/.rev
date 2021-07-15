@@ -42,4 +42,12 @@
  * Add support for the slop nodrag option (forwarded request 829611 from mimi_vx)</comment>
     <requestid>829612</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0220dd5972b0968515377e9b4e068cb3</srcmd5>
+    <version>5.7.4</version>
+    <time>1626386341</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906139</requestid>
+  </revision>
 </revisionlist>
