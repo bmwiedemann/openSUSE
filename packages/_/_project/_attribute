@@ -394,8 +394,8 @@
   poo#94225: '20210618'
   poo#94973: '20210713'
   poo#95120: '20210713'
-  poo#95326: '20210712'
-  poo#95329: '20210712'
+  poo#95326: '20210713'
+  poo#95329: '20210713'
   poo#95467: '20210713'
 </value>
   </attribute>
@@ -766,10 +766,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210713'
-published: '20210712'
-publishing: '20210712'
-testing: '20210713'
+    <value>failed: ''
+published: '20210713'
+publishing: '20210713'
+testing: '20210714'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
