@@ -48,6 +48,7 @@ Requires:       python-configargparse
 Requires:       python-future
 Requires:       python-numpy
 Requires:       python-six
+ExcludeArch:    %ix86
 %python_subpackages
 
 %description

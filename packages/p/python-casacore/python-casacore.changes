@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 15 09:01:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Sync ExcludeArch with casacore: casacore is not built for %ix86.
+
+-------------------------------------------------------------------
 Sun May  2 14:07:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.4.0
