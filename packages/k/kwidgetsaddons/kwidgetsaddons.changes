@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * KPasswordDialog: add access to revealPasswordAvailable of password lineedit
+  * Port traditional license header leftovers
+  * Fix SPDX syntax error
+  * Add two-finger gesture
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
