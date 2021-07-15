@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:23:39 UTC 2021 - Stefan Schubert <schubi@suse.com
+
+- Added /usr/local/libexec/health-checker for user defined plugins.
+
+-------------------------------------------------------------------
 Wed Aug 19 14:39:29 UTC 2020 - Ignaz Forster <iforster@suse.com>
 
 - Update to version 1.4
