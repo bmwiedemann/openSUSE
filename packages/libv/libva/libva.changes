@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 13 12:17:31 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 2.12.0:
+  * add: Report the capability of vaCopy support
+  * add: Report the capability of sub device
+  * add: Add config attributes to advertise HEVC/H.265 encoder features
+  * add: Video processing HVS Denoise: Added 4 modes
+  * add: Introduce VASurfaceAttribDRMFormatModifiers
+  * add: Add 3DLUT Filter in Video Processing.
+  * doc: Update log2_tile_column description for vp9enc
+  * trace: Correct av1 film grain trace information
+  * ci: Fix freebsd build by switching to vmactions/freebsd-vm@v0.1.3
+    
+-------------------------------------------------------------------
 Wed Mar 24 09:30:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.11.0:
