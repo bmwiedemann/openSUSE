@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5MediaPlayer5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kmediaplayer
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Interface for media player KParts
 License:        LGPL-2.1-or-later
@@ -101,6 +101,7 @@ KParts that can play media files. Development files.
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files -n %{lname}
+%license LICENSE
 %{_kf5_libdir}/libKF5MediaPlayer.so.*
 %dir %{_kf5_servicetypesdir}
 %{_kf5_servicetypesdir}/kmediaplayer-engine.desktop
