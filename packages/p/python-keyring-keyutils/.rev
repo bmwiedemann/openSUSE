@@ -1,0 +1,21 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51738f09878f1b21c9991ba597cf2e46</srcmd5>
+    <version>0.1.1</version>
+    <time>1626386439</time>
+    <user>dimstar_suse</user>
+    <comment>Hi,
+I would like to maintain the python-keyring-keyutils [1] package in factory.
+
+Very brief summary of the package (high-level POV):
+- a python-keyring backend for the kernel keyring
+- a special python-keyring backend that can be used by osc (so that osc
+  stores the user's credentials in the kernel keyring)
+
+A more detailed announcement can be found on the factory ml [2].
+
+[1] https://github.com/marcus-h/python-keyring-keyutils
+[2] https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/4HMZ5GUZ5W34NCSQAO2T22J6HKNDE7RL/</comment>
+    <requestid>906437</requestid>
+  </revision>
+</revisionlist>
