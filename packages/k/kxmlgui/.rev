@@ -760,4 +760,12 @@
   issue with konsole got fixed (kde#437791)</comment>
     <requestid>903349</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>c199684f8585074b8a55e661d5dc054c</srcmd5>
+    <version>5.84.0</version>
+    <time>1626386407</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.84.0 (forwarded request 905463 from cgiboudeaux)</comment>
+    <requestid>905533</requestid>
+  </revision>
 </revisionlist>

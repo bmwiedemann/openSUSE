@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Too many changes since 5.83.0, only listing bugfixes:
+  * Hide tooltip instantly before showing whatsthis (kde#438580)
+
+-------------------------------------------------------------------
 Wed Jun 30 18:15:45 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Drop 0001-Revert-Fix-initial-window-size-calculations.patch,
