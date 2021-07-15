@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Icons for stickers
+  * Update IRC network name in the README
+  * add network icons from plasma-framework/src/desktoptheme/breeze/icons/network.svg
+  * Add Icons for advanced trimming tools in kdenlive
+  * Add Qt Resource mime icon
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
