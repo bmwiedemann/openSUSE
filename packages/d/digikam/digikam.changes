@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Jul 12 19:16:48 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 7.3.0
+  * https://www.digikam.org/news/2021-07-12-7.3.0_release_announcement/
+- New features (from NEWS):
+General : Add new metadata viewer based on ExifTool.
+General : Better support of astrophoto FITS image format (Flexible
+          Image Transport System) including metadata extraction
+          support to populate the database.
+General : Better support of MPO image format (Multiple Picture
+          Object) including metadata extraction support to populate
+          the database.
+General : Digital Scanner plugin is now available under Windows.
+General : Use last Exiv2 0.27.4 in all bundles with Base Media File
+          metadata read and write support (HEIF, AVIF).
+General : Use last KF5 framework 5.80 in all bundles.
+General : Update internal Libpgf to 7.21.7 (18-02-2021).
+General : Update internal Libraw from snapshot 20210622.
+General : Update internal DNG SDK to last 1.5 and XMP SDK to last
+          5.7.0.
+General : DNGWriter now use ExifTool to post-process metadata.
+General : Internal Libraw use DNG SDK 1.5 to handle 8 bits DNG
+          files.
+Searches: Find duplicates items is now process in parallel using
+          multi-cores.
+Plugins : New tool to export items to iNaturalist web service
+          (https://www.inaturalist.org/).
+Plugins : SlideShow and Presentation tools now allow to move items
+          to the trash.
+Plugins : New tool to convert RAW to DNG in batch for Showfoto.
+- 373 bugs fixed
+- Drop no longer needed upstream patch:
+  * Fix-build-after-Qt-commit-f8ad329f.patch
+- Refresh patch:
+  * 0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+
+-------------------------------------------------------------------
 Mon Jul 12 13:49:32 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Don't package ChangeLog, it is massive

@@ -20,7 +20,7 @@
 %bcond_without lang
 %bcond_with    apidocs
 Name:           digikam
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ URL:            https://www.digikam.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         Fix-build-after-Qt-commit-f8ad329f.patch
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -183,7 +181,6 @@ The main digikam libraries that are being shared between showfoto and digikam
 # Leap 15 only has exiv2 0.26
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 %cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON %{?qwebengine}
