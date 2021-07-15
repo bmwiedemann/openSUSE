@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 17:22:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.2.1:
+  - Fix compatibliity with newer versions of Dulwich.
+
+-------------------------------------------------------------------
 Thu May  6 15:27:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.2.0.

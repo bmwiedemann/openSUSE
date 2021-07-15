@@ -49,4 +49,12 @@ This requires https://build.opensuse.org/request/show/790036 to build (already a
     <comment></comment>
     <requestid>891934</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5e5c9c762a9b4a56c032e04dda92d309</srcmd5>
+    <version>3.2.1</version>
+    <time>1626386437</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906421</requestid>
+  </revision>
 </revisionlist>

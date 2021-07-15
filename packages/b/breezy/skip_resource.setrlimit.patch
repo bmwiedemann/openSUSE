@@ -1,3 +1,7 @@
+---
+ breezy/tests/blackbox/test_big_file.py |    7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
 --- a/breezy/tests/blackbox/test_big_file.py
 +++ b/breezy/tests/blackbox/test_big_file.py
 @@ -67,10 +67,11 @@ class TestAdd(tests.TestCaseWithTranspor
