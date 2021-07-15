@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 12 10:31:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to revert an upstream change:
+  * 0001-Revert-KF5PlasmaMacros-Only-try-to-install-desktop-f.patch
+
+-------------------------------------------------------------------
+Sun Jul  4 07:45:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Too many changes since 5.83.0, only listing bugfixes:
+  * Add compatibility code when GLVND is not available (kde#438444)
+  * [Calendar] Store plugin manager as QPointer (kde#385011)
+  * Connect to global shortcut changes (kde#438662)
+  * fix graphics of tooltips (kde#438121)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Thu Jun 17 14:48:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - BuildRequire pkgconfig(gl) everywhere to work around oddity in

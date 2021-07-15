@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Plasma5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           plasma-framework
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF5 and Qt5
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -36,6 +36,9 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-OPENSUSE -- revert upstream change instead of adding conditions in the KDE:Extra package
+# affected by this change
+Patch4:         0001-Revert-KF5PlasmaMacros-Only-try-to-install-desktop-f.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
@@ -174,7 +177,6 @@ fi
 %{_kf5_debugdir}/*.renamecategories
 
 %files
-%license LICENSES/*
 %{_kf5_bindir}/*
 %{_kf5_plugindir}/
 %{_kf5_plasmadir}/
@@ -183,11 +185,9 @@ fi
 %{_kf5_mandir}/man1/plasmapkg*.*
 
 %files components
-%license LICENSES/*
 %{_kf5_qmldir}/
 
 %files devel
-%license LICENSES/*
 %{_kf5_includedir}/Plasma/
 %{_kf5_includedir}/PlasmaQuick/
 %{_kf5_includedir}/plasma/

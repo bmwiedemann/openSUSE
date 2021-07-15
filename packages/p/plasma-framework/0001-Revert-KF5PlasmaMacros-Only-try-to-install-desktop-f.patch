@@ -1,0 +1,44 @@
+From c3a310388745005e2049a56d4d36beecdf9fe731 Mon Sep 17 00:00:00 2001
+From: Christophe Giboudeaux <christophe@krop.fr>
+Date: Mon, 12 Jul 2021 12:25:42 +0200
+Subject: [PATCH] Revert "KF5PlasmaMacros: Only try to install desktop files if
+ they exist"
+
+A lot of packages have installation issues because of this change.
+
+This reverts commit 6e53dcc2d25089f35988eacbbfe6e3e189690db4.
+---
+ KF5PlasmaMacros.cmake | 10 ++--------
+ 1 file changed, 2 insertions(+), 8 deletions(-)
+
+diff --git a/KF5PlasmaMacros.cmake b/KF5PlasmaMacros.cmake
+index ae19a1b14..6b3173daf 100644
+--- a/KF5PlasmaMacros.cmake
++++ b/KF5PlasmaMacros.cmake
+@@ -35,10 +35,7 @@ macro(plasma_install_package dir component)
+ 
+    kpackage_install_package(${dir} ${component} ${root} ${PLASMA_RELATIVE_DATA_INSTALL_DIR} NO_DEPRECATED_WARNING)
+ 
+-   # TODO KF6 Remove
+-   if (EXISTS ${dir}/metadata.desktop)
+-      install(FILES ${dir}/metadata.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR} RENAME plasma-${type}-${component}.desktop)
+-   endif()
++   install(FILES ${dir}/metadata.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR} RENAME plasma-${type}-${component}.desktop)
+ endmacro()
+ 
+ 
+@@ -70,10 +67,7 @@ macro(plasma_install_bundled_package dir component)
+ 
+    kpackage_install_bundled_package(${dir} ${component} ${root} ${PLASMA_RELATIVE_DATA_INSTALL_DIR})
+ 
+-   # TODO KF6 Remove
+-   if (EXISTS ${dir}/metadata.desktop)
+-      install(FILES ${dir}/metadata.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR} RENAME plasma-${type}-${component}.desktop)
+-   endif()
++   install(FILES ${dir}/metadata.desktop DESTINATION ${KDE_INSTALL_KSERVICES5DIR} RENAME plasma-${type}-${component}.desktop)
+ endmacro()
+ 
+ 
+-- 
+2.32.0
+
