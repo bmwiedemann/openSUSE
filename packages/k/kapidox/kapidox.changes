@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Update IRC network name in HTML templates
+  * Change sorting of product in frontpage to always include frameworks first and pim second.
+  * Add link to hig in header to be consistent with develop.kde.org header
+  * Minor tweaks in the layout
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
