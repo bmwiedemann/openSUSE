@@ -19,7 +19,7 @@
 %define sonum   5
 %define rname prison
 %define _libname KF5Prison
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -27,7 +27,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           prison-qt5
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Barcode abstraction layer library
 License:        MIT
@@ -104,8 +104,6 @@ uniform access to generation of barcodes with data.
 %{_libqt5_libdir}/lib%{_libname}*.so.*
 
 %files imports
-%license LICENSES/*
-%doc README*
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %dir %{_kf5_qmldir}/org/kde/prison/
@@ -113,7 +111,6 @@ uniform access to generation of barcodes with data.
 %{_kf5_qmldir}/org/kde/prison/qmldir
 
 %files -n prison-qt5-devel
-%license LICENSES/*
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5Prison/
 %{_kf5_mkspecsdir}/qt_Prison.pri
