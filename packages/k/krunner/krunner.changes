@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Unify how d-pointer is created
+  * Remove obsolete K_EXPORT_PLUGIN_VERSION usages
+  * Remve defunct X-Plasma-Args from service type file
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
