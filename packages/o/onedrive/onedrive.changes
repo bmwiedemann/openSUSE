@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 15 06:40:36 UTC 2021 - egotthold@suse.com
+
+- Update to version 2.4.13:
+  https://github.com/abraunegg/onedrive/releases/tag/v2.4.13
+- Removed: dmd-20970-support.patch
+  Patch was included upstream and thus removed
+
+-------------------------------------------------------------------
 Sun Jun 27 11:06:32 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - add patch for new dmd (from master merged patch)
