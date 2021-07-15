@@ -17,9 +17,9 @@
 
 
 %define         _peazipinstalldir %{_libdir}/peazip
-%define         _helpver 7.9.0
+%define         _helpver 8.0.0
 Name:           peazip
-Version:        7.9.0
+Version:        8.0.0
 Release:        0
 Summary:        Graphical file archiver
 License:        LGPL-3.0-only
@@ -81,7 +81,7 @@ Group:          Productivity/Archiving/Compression
 Requires:       peazip
 %if 0%{?suse_version} < 1500
 Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
+Requires(postun):update-desktop-files
 %endif
 BuildArch:      noarch
 

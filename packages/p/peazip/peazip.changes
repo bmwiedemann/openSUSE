@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Jul 15 08:45:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 8.0.0
+  * BACKEND
+    * Pea 1.01:
+      + Added exit codes to functions for easier integration with
+        third party software and scripts
+      + Running PEA in batch_report and hidden_report mode automatically
+        saves task log without further user interaction
+      + Fixed: hidden and hidden_report modes do not flash the GUI
+        before hiding it
+      + Updated online documentation at https://peazip.github.io/pea_help.pdf
+  * FILE MANAGER
+    * Added support for .xappx, and various Open Packaging Conventions
+      filetypes (.3mf, .vsdx, .mmzx, .aasx, .slx, .scdoc) files,
+      218 file extensions supported
+    * Added text completion for search field
+    * Checksum/hash files can now be set to perform a single
+      algorithm (faster), by default SHA256
+    * Dragging a single archive file on file manager screen, the archive
+      is now opened without requiring further interaction
+    * Improved preview and open with functions
+    * Improved random password generator in main menu,
+      Tools > Create random password / keyfile
+    * Improved smart sorting of file names
+    * Improved status bar
+    * Improved support for non-canonical archive types
+      (containers, disk images, installers...) with new options in
+      main menu, Options > Settings > Archive manager
+    * Improved theming: can now optionally display grids with
+      alternate color for better readability
+  * EXTRACTION and ARCHIVING
+    * Added "Force typing passwords interactively" option in password
+      screen that forces to always type password in the native
+      backend interface
+    * Can now edit existing 7Z-compressed sfx archives
+    * Improved "TAR before" option, which saves multiple input to
+      TAR archive before compression step
+    * It is now possible to customize the default action to perform
+      when a file type associated with PeaZip is double-clicked on
+      the system (or any time a single file is sent as input to PeaZip)
+
+-------------------------------------------------------------------
 Tue May 18 23:57:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 7.9.0
