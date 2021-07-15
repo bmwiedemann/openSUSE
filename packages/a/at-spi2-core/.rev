@@ -1538,4 +1538,13 @@
     <comment>New version (forwarded request 897882 from iznogood)</comment>
     <requestid>898029</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>5f2934a4966bf5a803daf8f699068e10</srcmd5>
+    <version>2.40.3</version>
+    <time>1626386335</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.40.3
+  + Bugfix: Use abstract sockets if libdbus is older than 1.12.0 (forwarded request 905352 from susnux)</comment>
+    <requestid>906036</requestid>
+  </revision>
 </revisionlist>
