@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5Activities5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           kactivities5
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        KDE Plasma Activities support
 License:        GPL-2.0-or-later
@@ -114,11 +114,9 @@ Development files.
 %{_kf5_debugdir}/kactivities.renamecategories
 
 %files imports
-%license LICENSES/*
 %{_kf5_qmldir}/
 
 %files devel
-%license LICENSES/*
 %{_kf5_libdir}/libKF5Activities.so
 %{_kf5_libdir}/cmake/KF5Activities/
 %dir %{_kf5_includedir}/*/
