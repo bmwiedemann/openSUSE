@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  8 07:54:56 UTC 2021 - danilo.spinella@suse.com
+
+- Improve config detection for storeBackup-run-all script
+- Remove storeBackup-3.5.diff
+
+-------------------------------------------------------------------
+Wed Jul  7 15:34:13 UTC 2021 - danilo.spinella@suse.com
+
+- Migrate from cron to systemd timers (bsc#1115457)
+  * Add a simple script to replace cron-storeBackup
+
+-------------------------------------------------------------------
 Sat Feb 22 15:12:54 UTC 2020 - Thomas Wagner <wagner-thomas@gmx.at>
 
 - add missing requirement to `which`

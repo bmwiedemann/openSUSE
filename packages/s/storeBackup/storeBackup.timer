@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily backup
+Documentation=man:storeBackup(1)
+
+[Timer]
+OnCalendar=daily
+AccuracySec=12h
+Persistent=True
+
+[Install]
+WantedBy=timers.target

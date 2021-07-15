@@ -1,0 +1,8 @@
+[Unit]
+Description=Backup tool
+Documentation=man:storeBackup(1)
+ConditionPathExists=/etc/storebackup.d
+
+[Service]
+Type=oneshot
+ExecStart=/usr/lib/storeBackup/storeBackup-run-all
