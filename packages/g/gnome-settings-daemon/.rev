@@ -1349,4 +1349,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Update to 40.0.1 (forwarded request 885662 from dimstar)</comment>
     <requestid>887472</requestid>
   </revision>
+  <revision rev="172" vrev="2">
+    <srcmd5>ed2be93557c948b62c81851da1ba9275</srcmd5>
+    <version>40.0.1</version>
+    <time>1626386334</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebase gnome-settings-daemon-notify-idle-resumed.patch. (forwarded request 904575 from yfjiang)</comment>
+    <requestid>906035</requestid>
+  </revision>
 </revisionlist>
