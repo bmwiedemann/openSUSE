@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Add a minimum version to find_package(BISON)
+  * Add missing include
+  * Find the base mount point of a partition that has bind mounts (kde#349617)
+  * UDisks backend: improve the description of volume and storage devices (kde#410891)
+  * cmake: drop unused UDEV_HAVE_GET_SYSATTR_LIST_ENTRY cmakedefine01
+  * cmake: drop unused EXPERIMENTAL_BSDISKS cmakedefine01
+
+-------------------------------------------------------------------
 Wed Jun 16 05:47:34 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Enable imobiledevice backend on Leap as well
