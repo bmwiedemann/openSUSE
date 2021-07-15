@@ -17,7 +17,7 @@
 
 
 %define lname   libKF5ThreadWeaver5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           threadweaver
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        KDE Helper for multithreaded programming
 License:        LGPL-2.1-or-later
@@ -102,7 +102,6 @@ threads within a set of resource limits. Development files.
 %{_kf5_libdir}/libKF5ThreadWeaver.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_includedir}/
 %{_kf5_libdir}/cmake/KF5ThreadWeaver/
 %{_kf5_libdir}/libKF5ThreadWeaver.so
