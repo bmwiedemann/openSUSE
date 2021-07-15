@@ -1,7 +1,7 @@
 #
 # spec file for package libservicelog
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libservicelog
 %define lname	libservicelog-1_1-1
-Version:        1.1.18
+Version:        1.1.19
 Release:        0
 Summary:        Servicelog Database and Library
-License:        LGPL-2.0+
+License:        LGPL-2.0-or-later
 Group:          System/Libraries
-Url:            http://linux-diag.sourceforge.net/servicelog/
+URL:            https://github.com/power-ras/libservicelog/
 
-#Git-Clone:	git://git.code.sf.net/p/linux-diag/libservicelog
-#Git-Web:	http://sourceforge.net/p/linux-diag/libservicelog/
-Source0:        http://downloads.sourceforge.net/linux-diag/%{name}-%{version}.tar.gz
+#Git-Clone:	https://github.com/power-ras/libservicelog.git
+#Git-Web:	https://github.com/power-ras/libservicelog/
+Source0:        https://github.com/power-ras/libservicelog/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        libservicelog-rpmlintrc
 PreReq:         %{_sbindir}/groupadd

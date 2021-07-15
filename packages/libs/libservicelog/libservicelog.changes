@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 15 15:54:56 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.1.19 (jsc#SLE-18189)
+  - Fix segfault on servicelog_open() failure 
+  - New project location
+
+-------------------------------------------------------------------
 Mon Aug 28 08:53:47 UTC 2017 - jloeser@suse.com
 
 - version update to 1.1.18 (fate#322223, fate#326427)
