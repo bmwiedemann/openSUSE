@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 09 13:29:25 UTC 2021 - trenn@suse.de
+
+- Update to version 177:
+  * mcelog: Update MSCOD error bit descriptions to match SDM
+  * mcelog: Fix issues with "yellow" cache offlining
+  * Add reference to Linux::MCELog
+  * test: avoid the pfa test hang
+- Add _service git magic
+
+-------------------------------------------------------------------
 Thu Apr  1 16:25:59 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
 
 - Remove deprecated "StandardOutput=syslog" option from the systemd 
-  unit file to remove a warning from systemd.
+  unit file to remove a warning from systemd. (bsc#1185151)
 
 -------------------------------------------------------------------
 Tue Jan 26 17:43:06 UTC 2021 - trenn@suse.de

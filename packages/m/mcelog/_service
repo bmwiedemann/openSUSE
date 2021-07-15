@@ -1,14 +1,15 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="obs_scm" mode="localonly">
     <param name="scm">git</param>
     <param name="url">git://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git</param>
     <param name="changesgenerate">enable</param>
-    <param name="revision">v175</param>
-    <param name="versionformat">175</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionformat">@PARENT_TAG@</param>
   </service>
-  <service name="recompress" mode="disabled">
-    <param name="file">mcelog*.tar</param>
+  <service name="set_version" mode="localonly"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
     <param name="compression">gz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
 </services>

@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           mcelog
-Version:        175
+Version:        177
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://mcelog.org/
-Source:         https://git.kernel.org/pub/scm/utils/cpu/mce/mcelog.git/snapshot/mcelog-%{version}.tar.gz
+Source:         mcelog-%{version}.tar.gz
 Source2:        mcelog.sysconfig
 Source3:        mcelog.systemd
 Source5:        mcelog.tmpfiles
