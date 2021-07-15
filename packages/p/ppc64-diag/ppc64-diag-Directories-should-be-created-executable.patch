@@ -1,0 +1,27 @@
+From ef983afeff4a7679209c92b496e6ad8a3606f9f3 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Thu, 15 Jul 2021 20:34:19 +0200
+Subject: [PATCH] Directories should be created executable.
+
+Fixes: 0e06db4bedfc ("Fix build warning")
+Signed-off-by: Michal Suchanek <msuchanek@suse.de>
+---
+ ela/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ela/Makefile.am b/ela/Makefile.am
+index da759af6f1b2..9dcb81c2f389 100644
+--- a/ela/Makefile.am
++++ b/ela/Makefile.am
+@@ -62,7 +62,7 @@ clean-local-ela:
+ CLEAN_LOCALS += clean-local-ela
+ 
+ install-exec-hook-ela:
+-	install -d --mode=655 $(DESTDIR)/etc/ppc64-diag/message_catalog/with_regex/
++	install -d --mode=755 $(DESTDIR)/etc/ppc64-diag/message_catalog/with_regex/
+ 	install -D --mode=644 $(CATALOG) $(DESTDIR)/etc/ppc64-diag/message_catalog/
+ 	install -D --mode=644 $(CATALOG_REGEX) \
+ 		$(DESTDIR)/etc/ppc64-diag/message_catalog/with_regex/
+-- 
+2.26.2
+

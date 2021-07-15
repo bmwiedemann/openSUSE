@@ -401,4 +401,12 @@ SPDX format (http://www.spdx.org/licenses) (forwarded request 124928 from babelw
     <comment></comment>
     <requestid>880692</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>58b622b33b1092f4da13a6b173f8b031</srcmd5>
+    <version>2.7.7</version>
+    <time>1626386451</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906529</requestid>
+  </revision>
 </revisionlist>

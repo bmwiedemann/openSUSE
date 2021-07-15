@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 15 16:07:50 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 2.7.7 (jsc#SLE-18191).
+  - Man page for "rtas_errd"
+  - rtas_errd: Don't run the service in LXC
+  - New project location
+  - Remove upstreamed patch
+    - ppc64-diag-Drop-obsolete-logging-options-from-systemd-service-f.patch
+  - Fix installation
+    + ppc64-diag-Directories-should-be-created-executable.patch
+  - Run tests
+
+-------------------------------------------------------------------
 Tue Mar 23 10:26:05 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix systemd warning about obsolete logging options (bsc#1183700 ltc#192095).

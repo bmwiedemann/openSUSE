@@ -17,17 +17,17 @@
 
 
 Name:           ppc64-diag
-Version:        2.7.6
+Version:        2.7.7
 Release:        0
 Summary:        Linux for Power Platform Diagnostics
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://sourceforge.net/projects/linux-diag/files/ppc64-diag
-Source0:        http://downloads.sourceforge.net/project/linux-diag/ppc64-diag/v%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/power-ras/ppc64-diag
+Source0:        https://github.com/power-ras/ppc64-diag/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 #PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
 Patch1:         ppc64-diag.varunused.patch
-#PATCH-FIX-UPSTREAM - ppc64-diag-Drop-obsolete-logging-options-from-systemd-service-f.patch - fix systemd warning
-Patch2:         ppc64-diag-Drop-obsolete-logging-options-from-systemd-service-f.patch
+#PATCH-FIX-OPENSUSE - ppc64-diag.varunused.patch - fix unused variables
+Patch2:         ppc64-diag-Directories-should-be-created-executable.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -88,26 +88,25 @@ ln -s service %{buildroot}%{_sbindir}/rcopal_errd
 rm %{buildroot}%{_prefix}/libexec/%{name}/opal_errd
 rm %{buildroot}%{_prefix}/libexec/%{name}/rtas_errd
 rm %{buildroot}%{_datadir}/doc/%{name}/COPYING
-rm %{buildroot}%{_datadir}/doc/%{name}/README
+rm %{buildroot}%{_datadir}/doc/%{name}/README.md
+
+%check
+%make_build check
+
+for i in opal_errd common diags/test ; do
+    pushd $i
+    ./run_tests
+    popd
+done
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_sbindir}/*
 %dir %{_sysconfdir}/ppc64-diag
 %config %{_sysconfdir}/ppc64-diag/*
 %config %{_sysconfdir}/rc.powerfail
-%{_mandir}/man8/explain_syslog.8%{?ext_man}
-%{_mandir}/man8/syslog_to_svclog.8%{?ext_man}
-%{_mandir}/man8/diag_encl.8%{?ext_man}
-%{_mandir}/man8/encl_led.8%{?ext_man}
-%{_mandir}/man8/lp_diag.8%{?ext_man}
-%{_mandir}/man8/usysattn.8%{?ext_man}
-%{_mandir}/man8/usysfault.8%{?ext_man}
-%{_mandir}/man8/usysident.8%{?ext_man}
-%{_mandir}/man8/opal-dump-parse.8%{?ext_man}
-%{_mandir}/man8/opal-elog-parse.8%{?ext_man}
-%{_mandir}/man8/opal_errd.8%{?ext_man}
+%{_mandir}/man8/*.8%{?ext_man}
 %attr(755,root,root) %{_sysconfdir}/cron.daily/run_diag_encl
 %{_unitdir}/rtas_errd.service
 %{_unitdir}/opal_errd.service
