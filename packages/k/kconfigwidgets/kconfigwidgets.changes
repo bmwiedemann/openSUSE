@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Expose model of KColorSchemeManager
+  * Mark a couple redundant functions deprecated
+  * Update API docs with respect to KXMLGuiFactor::showConfigureShortcutsDilaog()
+  * Deprecate KStatefulBrush::brush(const QWidget*)
+  * Fix tiny black rectangles with rounded corners
+  * ElideRight instead of left
+  * Fix filtering in KCommandBar
+  * KRecentFilesAction: document that local file URLs in the temp dir are ignored (kde#423302)
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
