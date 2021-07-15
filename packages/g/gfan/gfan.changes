@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 13 09:09:06 UTC 2021 - Alois Wohlschlager <alois1@gmx-topmail.de>
+
+- Add gfan-odr.patch: A patch to fix ODR violations, which were
+  causing segfaults in the respective programs with LTO enabled.
+
+-------------------------------------------------------------------
 Sat Sep 19 10:05:47 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Add cddlib.patch

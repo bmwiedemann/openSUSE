@@ -76,4 +76,13 @@
     <comment>- Add cddlib.patch</comment>
     <requestid>835562</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>b7e1e088ceb4a0b85b161279f4fc23b9</srcmd5>
+    <version>0.6.2</version>
+    <time>1626386426</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gfan-odr.patch: A patch to fix ODR violations, which were
+  causing segfaults in the respective programs with LTO enabled.</comment>
+    <requestid>906357</requestid>
+  </revision>
 </revisionlist>

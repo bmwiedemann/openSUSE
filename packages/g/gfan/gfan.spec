@@ -1,7 +1,7 @@
 #
 # spec file for package gfan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ Source:         http://home.imf.au.dk/jensen/software/gfan/%name%version.tar.gz
 Patch1:         gfan-automake.diff
 Patch2:         gfan-warnings.diff
 Patch3:         cddlib.patch
+Patch4:         gfan-odr.patch
 BuildRequires:  automake
 BuildRequires:  cddlib-devel
 BuildRequires:  gcc-c++

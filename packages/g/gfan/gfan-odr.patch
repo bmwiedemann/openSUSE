@@ -1,0 +1,85 @@
+From a75e670e0e228e0a738eb65c7128a01446b4135c Mon Sep 17 00:00:00 2001
+From: Alois Wohlschlager <alois1@gmx-topmail.de>
+Date: Sat, 3 Jul 2021 11:07:23 +0200
+Subject: [PATCH] Fix ODR violations
+Upstream: not reachable
+
+Various traversal code reused class names (Boundary, pathStepRidge,
+pathStepFacet) in violation of the one definition rule. Put the
+respective classes into anonymous namespaces to comply with ODR.
+---
+ src/gfanlib_traversal.cpp  | 4 ++++
+ src/symmetrictraversal.cpp | 4 ++++
+ src/tropicaltraverse.cpp   | 5 +++++
+ 3 files changed, 13 insertions(+)
+
+diff --git a/src/gfanlib_traversal.cpp b/src/gfanlib_traversal.cpp
+index dce38c1..3e9a746 100644
+--- a/src/gfanlib_traversal.cpp
++++ b/src/gfanlib_traversal.cpp
+@@ -62,6 +62,8 @@ bool FanBuilder::process(FanTraverser &traverser)
+     in the computation is made these edges will be deleted.
+  */
+ 
++namespace
++{
+ 
+ class Boundary
+ {
+@@ -185,6 +187,8 @@ struct pathStepFacet
+ 	list<ZVector> ridgesRayUniqueVector;//stores the ray of the link that we came from
+ };
+ 
++}
++
+ /**
+   We need to simulate two mutually recursive functions. An actual
+   implementation of these two functions would probably not work since
+diff --git a/src/symmetrictraversal.cpp b/src/symmetrictraversal.cpp
+index 8cf6f40..4fe66e0 100644
+--- a/src/symmetrictraversal.cpp
++++ b/src/symmetrictraversal.cpp
+@@ -103,6 +103,8 @@ bool SymmetricTargetVertexSetBuilder::process(ConeTraverser &traverser)
+     in the computation is made these edges will be deleted.
+  */
+ 
++namespace
++{
+ 
+ class Boundary
+ {
+@@ -258,6 +260,8 @@ struct pathStepFacet
+   IntegerVectorList ridgesRayUniqueVector;//stores the ray of the link that we came from
+ };
+ 
++}
++
+ /**
+   We need to simulate two mutually recursive functions. An actual
+   implementation of these two functions would probably not work since
+diff --git a/src/tropicaltraverse.cpp b/src/tropicaltraverse.cpp
+index 05e9747..c01a69f 100644
+--- a/src/tropicaltraverse.cpp
++++ b/src/tropicaltraverse.cpp
+@@ -104,6 +104,9 @@ public:
+   }
+ };
+ 
++namespace
++{
++
+ /**
+    Rewrite these comments.
+ 
+@@ -130,6 +133,8 @@ struct pathStepFacet
+   IntegerVectorList ridges;
+ };
+ 
++}
++
+ /**
+   We need to simulate two mutually recursive functions. An actual
+   implementation of these two functions would propably not work since
+-- 
+2.32.0
+
