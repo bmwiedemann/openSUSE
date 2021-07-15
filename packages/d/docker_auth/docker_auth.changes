@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 15 07:27:02 UTC 2021 - kukuk@suse.com
+
+- Update to version 1.7.1+git20210707.946490c:
+  * fix: segmentation fault on arm64 image (#311)
+  * Allow initial LDAP bind with user credentials (#246) (#309)
+  * deprecate v1beta1/Ingress in chart (#306)
+  * document change in tags
+  * Updated helm repository
+  * Update helm chart to 1.7.0 (#305)
+  * update url
+  * have edge build
+  * build on git tag
+  * build docker image on git tag (#304)
+  * periodic go vendor update (#303)
+  * cross-compile docker image to arm
+  * Remove Python and go-bindata (#302)
+  * build with go1.16 (#301)
+  * Support the Casbin authorization method. (#182)
+  * Connect to relational databases using xorm.io (#277)
+  * specify v1.15.x when running build (#297)
+  * Install go-binddata as a global binary (#295)
+  * Create Github action for docker nightlies (#291)
+  * Helm2 to 3 (#292)
+  * Upgrade go deps (#293)
+  * rm compiled binary in repo
+  * Add Github actions for go tests
+  * Move to Python3
+  * Fix go vet failures
+  * Fix Docker Hub link in README.md (#282)
+  * Fix scope parsing (#274)
+  * Returning the "token"-field (#273)
+  * Add a Redis-based token storage implementation (#220)
+  * Send the scope class as part of the token
+
+-------------------------------------------------------------------
 Wed Jan 22 12:06:42 UTC 2020 - kukuk@suse.com
 
 - Update to version 1.5.0+git20191208.df57cca:

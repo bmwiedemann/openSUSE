@@ -1,7 +1,7 @@
 #
 # spec file for package docker_auth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           docker_auth
-Version:        1.5.0+git20191208.df57cca
+Version:        1.7.1+git20210707.946490c
 Release:        0
 Summary:        Authenticaton for container registry with tokens
 License:        Apache-2.0
 URL:            https://github.com/cesanta/docker_auth
 Source:         docker_auth-%{version}.tar.xz
-BuildRequires:  go1.13
-BuildRequires:  golang(API) = 1.13
+BuildRequires:  golang(API) >= 1.16
 %ifarch %arm aarch64
 BuildRequires:  binutils-gold
 %endif
@@ -37,11 +36,12 @@ control list for every user.
 %prep
 %setup -q
 rm chart/docker-auth/.helmignore
+chmod 644 chart/docker-auth/templates/*.*
 
 %build
 cd auth_server
 # Make the go command working in OBS and on all architectures:
-sed -i -e 's|CGO_ENABLED=0 go build -v --ldflags=--s|go build -mod vendor -buildmode=pie -v|g' Makefile
+sed -i -e 's|CGO_ENABLED=0 go build -v --ldflags=--s|go build -mod vendor -buildmode=pie -v|g' -e "s|-extldflags '-static' |-extldflags '-pie' |g" Makefile
 make
 
 %install
