@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * kdirwatch_stat_unittest: Increase timeout for slow systems
+  * Add new KAboutComponent for third party libs, data, etc.
+  * Fix incorrect HAVE_SYS_INOTIFY_H check
+  * kfuzzymatcher: Add matchedRanges to get ranges where matches occurred
+  * KPluginMetaData: Remove ServiceTypes from JSON code sample
+  * KPluginMetaData: Create findPluginById method which prefers file name
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
