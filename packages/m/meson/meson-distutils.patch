@@ -1,9 +1,9 @@
-Index: meson-0.52.0/setup.py
+Index: meson-0.57.2/setup.py
 ===================================================================
---- meson-0.52.0.orig/setup.py
-+++ meson-0.52.0/setup.py
-@@ -21,7 +21,7 @@ if sys.version_info < (3, 5, 2):
-                      '\nMeson requires Python 3.5.2 or greater'.format(sys.version))
+--- meson-0.57.2.orig/setup.py
++++ meson-0.57.2/setup.py
+@@ -21,7 +21,7 @@ if sys.version_info < (3, 6):
+                      '\nMeson requires Python 3.6.0 or greater'.format(sys.version))
  
  from mesonbuild.coredata import version
 -from setuptools import setup

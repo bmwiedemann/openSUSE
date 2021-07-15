@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 12 13:42:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to from version 0.57.2:
+  + Support for reading files at configuration time with the fs
+    module.
+  + Experimental support for C++ modules in Visual Studio.
+  + Qt6 module.
+  + Minimum required Python version updated to 3.6.
+  + New logging format for meson test.
+  + Support added for LLVM's thinLTO.
+- Drop 0200340a.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Fri May  7 07:18:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 0200340a.patch: gnome: Drop use of volatile in GLib type

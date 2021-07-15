@@ -590,4 +590,20 @@
     <comment>Revert to Factory version 0.56.2 - together with patch to address GCC11 / GNOME build issues (0.57.2 is stored in a branch of mine) (forwarded request 891206 from dimstar)</comment>
     <requestid>891207</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>748d5e976aac2e858e4ffd23b1dff88f</srcmd5>
+    <version>0.57.2</version>
+    <time>1626386336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to from version 0.57.2:
+  + Support for reading files at configuration time with the fs
+    module.
+  + Experimental support for C++ modules in Visual Studio.
+  + Qt6 module.
+  + Minimum required Python version updated to 3.6.
+  + New logging format for meson test.
+  + Support added for LLVM's thinLTO.
+- Drop 0200340a.patch: fixed upstream. (forwarded request 906043 from dimstar)</comment>
+    <requestid>906044</requestid>
+  </revision>
 </revisionlist>

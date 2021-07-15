@@ -1,5 +1,5 @@
 #
-# spec file for package meson-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_with     setuptools
 Name:           meson%{name_ext}
-Version:        0.56.2
+Version:        0.57.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -37,8 +37,6 @@ URL:            http://mesonbuild.com/
 Source:         https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz
 Source1:        https://github.com/%{_name}/meson/releases/download/%{version}/meson-%{version}.tar.gz.asc
 Source2:        meson.keyring
-# PATCH-FIX-UPSTREAM 0200340a.patch boo#1185720 dimstar@opensuse.org -- gnome: Drop use of volatile in GLib type functions
-Patch0:         https://github.com/mesonbuild/meson/commit/0200340a.patch
 # PATCH-FIX-OPENSUSE meson-test-installed-bin.patch dimstar@opensuse.org -- We want the test suite to run against /usr/bin/meson coming from our meson package.
 Patch1:         meson-test-installed-bin.patch
 # PATCH-FEATURE-OPENSUSE meson-distutils.patch tchvatal@suse.com -- build and install using distutils instead of full setuptools
@@ -159,7 +157,6 @@ This package provides support for meson.build files in Vim.
 
 %prep
 %setup -q -n meson-%{version}
-%patch0 -p1
 %patch1 -p1
 %if !%{with setuptools}
 %patch2 -p1
@@ -222,10 +219,6 @@ cp -r meson.egg-info %{buildroot}%{python3_sitelib}/meson-%{version}-py%{python3
 
 %if %{with test}
 %check
-%ifarch aarch64
-# Test not supported on aarch64 yet
-rm -r "test cases/common/122 llvm ir and assembly"
-%endif
 export LANG=C.UTF-8
 export MESON_EXE=%{_bindir}/meson
 python3 run_tests.py --failfast
