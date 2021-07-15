@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Fix build
+  * Use method that is exposed in Qt6
+  * Relicense files away from LGPL-2.0-only
+  * Relicense file to LGPL-2.0-or-later
+  * Add information about utilities provided by KGuiAddons
+  * UrlHandler: fix url concatenation when using docs.kde.org
+  * Support static builds
+
+-------------------------------------------------------------------
 Sat Jun  5 11:58:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
