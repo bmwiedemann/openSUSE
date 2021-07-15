@@ -1,0 +1,68 @@
+diff -ur PyQt6-6.1.1/sip/QtOpenGL/qopengldebug.sip PyQt6-6.2.0.dev2107140930/sip/QtOpenGL/qopengldebug.sip
+--- PyQt6-6.1.1/sip/QtOpenGL/qopengldebug.sip	2021-06-13 12:57:21.368647000 +0200
++++ PyQt6-6.2.0.dev2107140930/sip/QtOpenGL/qopengldebug.sip	2021-07-14 15:52:42.250498000 +0200
+@@ -99,8 +99,16 @@
+         {sipName_QOpenGLDebugLogger, &sipType_QOpenGLDebugLogger, -1, 1},
+         {sipName_QOpenGLShader, &sipType_QOpenGLShader, -1, 2},
+         {sipName_QOpenGLShaderProgram, &sipType_QOpenGLShaderProgram, -1, 3},
++    #if !defined(SIP_FEATURE_PyQt_OpenGL_ES2)
+         {sipName_QOpenGLTimeMonitor, &sipType_QOpenGLTimeMonitor, -1, 4},
++    #else
++        {0, 0, -1, 4},
++    #endif
++    #if !defined(SIP_FEATURE_PyQt_OpenGL_ES2)
+         {sipName_QOpenGLTimerQuery, &sipType_QOpenGLTimerQuery, -1, 5},
++    #else
++        {0, 0, -1, 5},
++    #endif
+         {sipName_QOpenGLVertexArrayObject, &sipType_QOpenGLVertexArrayObject, -1, 6},
+         {sipName_QOpenGLWindow, &sipType_QOpenGLWindow, -1, -1},
+     };
+diff -ur PyQt6-6.1.1/sip/QtOpenGL/qopengltimerquery.sip PyQt6-6.2.0.dev2107140930/sip/QtOpenGL/qopengltimerquery.sip
+--- PyQt6-6.1.1/sip/QtOpenGL/qopengltimerquery.sip	2021-06-13 12:57:21.280266000 +0200
++++ PyQt6-6.2.0.dev2107140930/sip/QtOpenGL/qopengltimerquery.sip	2021-07-14 15:52:42.211065000 +0200
+@@ -20,6 +20,8 @@
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ 
++%If (!PyQt_OpenGL_ES2)
++
+ class QOpenGLTimerQuery : QObject
+ {
+ %TypeHeaderCode
+@@ -41,6 +43,9 @@
+     GLuint64 waitForResult() const /ReleaseGIL/;
+ };
+ 
++%End
++%If (!PyQt_OpenGL_ES2)
++
+ class QOpenGLTimeMonitor : QObject
+ {
+ %TypeHeaderCode
+@@ -62,3 +67,5 @@
+     QList<GLuint64> waitForIntervals() const /ReleaseGIL/;
+     void reset();
+ };
++
++%End
+diff -ur PyQt6-6.1.1/sip/QtOpenGL/qpyopengl_qlist.sip PyQt6-6.2.0.dev2107140930/sip/QtOpenGL/qpyopengl_qlist.sip
+--- PyQt6-6.1.1/sip/QtOpenGL/qpyopengl_qlist.sip	2021-06-13 12:57:21.266533000 +0200
++++ PyQt6-6.2.0.dev2107140930/sip/QtOpenGL/qpyopengl_qlist.sip	2021-07-14 15:52:42.202424000 +0200
+@@ -19,6 +19,9 @@
+ // WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+ 
+ 
++%If (!PyQt_OpenGL_ES2)
++
++
+ %MappedType QList<GLuint64>
+         /TypeHintIn="Iterable[int]", TypeHintOut="List[int]",
+         TypeHintValue="[]"/
+@@ -121,3 +124,6 @@
+     return sipGetState(sipTransferObj);
+ %End
+ };
++
++
++%End

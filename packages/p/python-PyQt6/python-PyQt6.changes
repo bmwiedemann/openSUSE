@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 14 22:42:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add PyQt6-6.1.1-OpenGL_ES2.patch for building ARM with OpenGL ES2
+  https://www.riverbankcomputing.com/pipermail/pyqt/2021-July/044117.html
+- first obs service cleaned specfile commit
+
+-------------------------------------------------------------------
 Tue Jul  6 11:52:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove the noop %requires_ge libqt6-x11

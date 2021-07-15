@@ -7,4 +7,12 @@
     <comment>remove noop requires_ge</comment>
     <requestid>904375</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>440f505828323fc2a78678575281906e</srcmd5>
+    <version>6.1.1</version>
+    <time>1626386441</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906444</requestid>
+  </revision>
 </revisionlist>
