@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5KDELibs4Support5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdelibs4support
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Code and utilities to ease the transition to KDE Frameworks 5
 License:        LGPL-2.1-or-later
@@ -216,8 +216,6 @@ KDEDIRS environment variable correctly. Development files.
 %endif
 
 %files
-%license COPYING*
-%doc README*
 %{_kf5_bindir}/kdebugdialog5
 %{_kf5_bindir}/kf5-config
 %{_kf5_configdir}/colors/
@@ -241,8 +239,6 @@ KDEDIRS environment variable correctly. Development files.
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 
 %files -n kssl
-%license COPYING*
-%doc README*
 %{_kf5_configdir}/ksslcalist
 %{_kf5_plugindir}/kcm_ssl.so
 %{_kf5_servicesdir}/kcm_ssl.desktop
