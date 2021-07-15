@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  8 16:28:33 UTC 2021 - danilo.spinella@suse.com
+
+- Update to 4.94.0:
+  * Fix various bugs
+  * Display more information for eventfd and other objects
+- Remove lsof-glibc-linux-5.0.patch as it has been fixed upstream
+- Remove lsof_4.81-include.patch as it is not needed anymore
+- Remove lsof_4.81-perl.patch as this change is now done inside the spec file
+- Remove lsof_4.81-fmt.patch as it is not needed anymore
+
+
+-------------------------------------------------------------------
 Fri Sep 11 20:40:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.93.2:

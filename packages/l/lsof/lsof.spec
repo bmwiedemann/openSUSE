@@ -17,21 +17,14 @@
 
 
 Name:           lsof
-Version:        4.93.2
+Version:        4.94.0
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
 Group:          System/Monitoring
 URL:            https://github.com/lsof-org/lsof
-# From https://github.com/lsof-org/lsof/archive/%{version}.tar.gz
-# Always repack the source to remove legally problematic files - bnc#705143
-# dialects/uw/uw7/sys/fs/{fifonode.h,namenode.h,README}
-Source:         lsof-%{version}_repacked.tar.gz
-Patch0:         lsof_4.81-include.patch
-Patch1:         lsof_4.81-fmt.patch
-Patch2:         lsof-no-build-date-etc.patch
-Patch3:         lsof_4.81-perl.patch
-Patch4:         lsof-glibc-linux-5.0.patch
+Source:         lsof_%{version}.linux.tar.bz2
+Patch0:         lsof-no-build-date-etc.patch
 BuildRequires:  libselinux-devel
 BuildRequires:  xz
 
@@ -44,26 +37,22 @@ specific  file or all the files in a file system may be selected by
 path.
 
 %prep
-%setup -q
+%setup -qn %{name}_%{version}.linux
 %patch0
-%patch1
-%patch2
-%patch3
-%patch4 -p1
 
 %build
 ./Configure -n linux
-make %{?_smp_mflags} DEBUG="%{optflags} -Wall -Wno-unused"
+%make_build DEBUG="%{optflags} -Wall -Wno-unused"
 
 %install
 install -m755 -d %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man8
 install -m755 lsof %{buildroot}%{_bindir}
-install -m644 Lsof.8 %{buildroot}%{_mandir}/man8/lsof.8
+install -m644 lsof.8 %{buildroot}%{_mandir}/man8/lsof.8
 mkdir SUSE_docs
 for s in 00* ; do
 	mv $s SUSE_docs/${s#00}
 done
-sed -i -e "s|%{_prefix}/local/bin/perl|%{_bindir}/perl|g" scripts/*
+sed -i -e "s|%{_prefix}/local/bin/perl4\?|%{_bindir}/perl|g" scripts/*
 mv scripts/00MANIFEST scripts/MANIFEST
 mv scripts/00README scripts/README
 
@@ -71,11 +60,11 @@ mv scripts/00README scripts/README
 cd tests
 chmod u+w TestDB
 ./Add2TestDB
-make %{?_smp_mflags} DEBUG="%{optflags} -Wall -Wno-unused"
+%make_build DEBUG="-Wall -Wno-unused"
 
 %files
 %doc SUSE_docs/* scripts
-%{_mandir}/man8/lsof.8%{ext_man}
+%{_mandir}/man8/lsof.8%{?ext_man}
 %{_bindir}/lsof
 
 %changelog

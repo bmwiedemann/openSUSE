@@ -284,4 +284,18 @@ lsof license is most similar to Zlib (also use SPDX format) (forwarded request 1
     <comment></comment>
     <requestid>868366</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>418bf9cbf5ef1784c276caae14a69276</srcmd5>
+    <version>4.94.0</version>
+    <time>1626386344</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.94.0:
+  * Fix various bugs
+  * Display more information for eventfd and other objects
+- Remove lsof-glibc-linux-5.0.patch as it has been fixed upstream
+- Remove lsof_4.81-include.patch as it is not needed anymore
+- Remove lsof_4.81-perl.patch as this change is now done inside the spec file
+- Remove lsof_4.81-fmt.patch as it is not needed anymore</comment>
+    <requestid>906149</requestid>
+  </revision>
 </revisionlist>
