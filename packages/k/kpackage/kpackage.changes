@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul  4 07:45:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.84.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.84.0
+- Changes since 5.83.0:
+  * Simplify plugin loading
+  * KF5PackageMacros: Only include ECM manually if config vars are missing
+  * Remove unused includes
+  * Deprecate kpackage/version.h header
+  * Prefer K_PLUGIN_CLASS_WITH_JSON macro in README code snippet
+  * PackageStructure: Remove unneeded version export
+  * KF5PackageMacros: Install JSON metadata file if it exists in source
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sat Jun  5 11:59:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.83.0
