@@ -40,7 +40,7 @@ BuildRequires:  libicu-devel >= 4.8.1.1
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  sqlite3-devel >= 3.15.0
+BuildRequires:  sqlite3-devel >= 3.35.2
 BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.18.0
 BuildRequires:  zlib-devel

@@ -1180,4 +1180,14 @@
     <comment> (forwarded request 899592 from iznogood)</comment>
     <requestid>899639</requestid>
   </revision>
+  <revision rev="141" vrev="2">
+    <srcmd5>e57e1cedaddd75979bfb7691645db7f5</srcmd5>
+    <version>3.1.2</version>
+    <time>1626386336</time>
+    <user>dimstar_suse</user>
+    <comment>- Update BuildRequires of sqlite3 to version 3.35.2 and above,
+  because the build filters out certain sqlite3 versions:
+  https://gitlab.gnome.org/GNOME/tracker/-/blob/tracker-3.1/meson.build#L324 (forwarded request 905794 from yfjiang)</comment>
+    <requestid>906037</requestid>
+  </revision>
 </revisionlist>
