@@ -23,4 +23,15 @@
 </comment>
     <requestid>905077</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>366c9dd1a111c05a38fd4051ee847252</srcmd5>
+    <version>1.0.2</version>
+    <time>1626386429</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.0.2
+* MyGNUHealth does not display global menu on MATE
+* Update link from GNU Savannah 
+</comment>
+    <requestid>906398</requestid>
+  </revision>
 </revisionlist>
