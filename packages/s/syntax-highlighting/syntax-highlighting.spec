@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5SyntaxHighlighting5
-%define _tar_path 5.83
+%define _tar_path 5.84
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           syntax-highlighting
-Version:        5.83.0
+Version:        5.84.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0
@@ -102,8 +102,6 @@ It's not tied to a particular output format or editor engine.
 %endif
 
 %files
-%license LICENSES/*
-%doc README*
 %{_kf5_debugdir}/ksyntaxhighlighting.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_bindir}/kate-syntax-highlighter
