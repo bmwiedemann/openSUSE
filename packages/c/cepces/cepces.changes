@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 12 16:24:51 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- v0.3.4: Allow overriding of parameters from the command line
+ - Removed upstreamed patch 0001-Added-Kerberos-delegation.patch
+ - Removed upstreamed patch 0001-Allow-overriding-of-server-auth-from-the-command-lin.patch
+ - Removed upstreamed patch 0001-add-SELinux-permissions-for-RHEL-6.patch
+
+-------------------------------------------------------------------
 Tue Jun 29 16:31:16 UTC 2021 - David Mulder <dmulder@suse.com>
 
 - v0.3.3: Initial submission of sources; (jsc#SLE-18457).

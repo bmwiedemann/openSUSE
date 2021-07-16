@@ -7,4 +7,16 @@
     <comment>This is a dependency of Samba's Certificate Auto Enrollment. It extends certmonger to support auto enrollment to a Microsoft CA.</comment>
     <requestid>905116</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f625623ce976db4611b726d276473b8</srcmd5>
+    <version>0.3.4</version>
+    <time>1626466372</time>
+    <user>dimstar_suse</user>
+    <comment>- v0.3.4: Allow overriding of parameters from the command line
+ - Removed upstreamed patch 0001-Added-Kerberos-delegation.patch
+ - Removed upstreamed patch 0001-Allow-overriding-of-server-auth-from-the-command-lin.patch
+ - Removed upstreamed patch 0001-add-SELinux-permissions-for-RHEL-6.patch
+</comment>
+    <requestid>906537</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file for package cepces
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -15,26 +15,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global app_name cepces
 %global selinux_variants targeted
 %global logdir %{_localstatedir}/log/%{app_name}
 
 Name:           %{app_name}
-Version:        0.3.3
-Release:        2%{?dist}
+Version:        0.3.4
+Release:        0%{?dist}
 Summary:        Certificate Enrollment through CEP/CES
 
 License:        GPL-3.0-or-later
 URL:            https://github.com/ufven/%{app_name}
 Source0:        %{name}-%{version}.tar.bz2
-Patch0:         0001-Allow-overriding-of-server-auth-from-the-command-lin.patch
-Patch1:         0001-add-SELinux-permissions-for-RHEL-6.patch
-Patch2:         0001-Added-Kerberos-delegation.patch
 BuildArch:      noarch
 
-Requires:       python3-%{app_name} == %{version}
 Requires:       %{app_name}-certmonger == %{version}
 Requires:       %{app_name}-selinux == %{version}
+Requires:       python3-%{app_name} == %{version}
 
 %description
 %{app_name} is an application for enrolling certificates through CEP and CES.
@@ -43,11 +41,11 @@ It currently only operates through certmonger.
 %package -n python3-%{app_name}
 Summary:        Python part of %{app_name}
 
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
 BuildRequires:  python3-cryptography >= 1.2
+BuildRequires:  python3-devel
 BuildRequires:  python3-requests
 BuildRequires:  python3-requests-kerberos >= 0.9
+BuildRequires:  python3-setuptools
 
 Requires:       python3-cryptography >= 1.2
 Requires:       python3-requests
@@ -79,9 +77,6 @@ SELinux support for %{app_name}
 
 %prep
 %setup -q -n %{app_name}-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %py3_build
