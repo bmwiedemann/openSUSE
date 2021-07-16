@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without test
 Name:           python-geoip2
 Version:        4.2.0
 Release:        0
@@ -26,8 +25,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/maxmind/GeoIP2-python
 Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE 0001-Removing-unused-urllib3-dependency-loosening-request.patch -- Removing unused urllib3 dependency loosening requests version based on https://github.com/maxmind/GeoIP2-python/pull/104.patch
+Patch0:         0001-Removing-unused-urllib3-dependency-loosening-request.patch
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module urllib3 >= 1.25.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
@@ -35,12 +35,11 @@ BuildRequires:  %{python_module aiohttp >= 3.6.2}
 BuildRequires:  %{python_module maxminddb >= 2.0.0}
 BuildRequires:  %{python_module mocket >= 3.8.9}
 BuildRequires:  %{python_module python-magic >= 0.4.18}
-BuildRequires:  %{python_module requests >= 2.24.0}
+BuildRequires:  %{python_module requests >= 2.14.0}
 # /SECTION
-Requires:       python-aiohttp >= 3.6.2
+Recommends:     python-aiohttp >= 3.6.2
 Requires:       python-maxminddb >= 2.0.0
-Requires:       python-requests >= 2.24.0
-Requires:       python-urllib3 >= 1.25.2
+Requires:       python-requests >= 2.14.0
 BuildArch:      noarch
 %ifpython2
 Recommends:     python2-ipaddress
@@ -53,6 +52,7 @@ The API also works with MaxMind's free GeoLite2 databases.
 
 %prep
 %setup -q -n geoip2-%{version}
+%patch0 -p1
 
 %build
 %python_build

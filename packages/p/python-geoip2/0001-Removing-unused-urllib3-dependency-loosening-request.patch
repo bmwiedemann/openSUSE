@@ -1,0 +1,135 @@
+From a3152e9e77850aa741976e7e492ab98b672be536 Mon Sep 17 00:00:00 2001
+From: "Dishy.Dev" <dishy@dev>
+Date: Sun, 8 Nov 2020 08:15:57 +0000
+Subject: [PATCH] Removing unused urllib3 dependency, loosening requests
+ version requirement and making aiohttp and requests optional installs
+
+---
+ .github/workflows/lint.yml |  2 +-
+ README.rst                 |  3 +++
+ geoip2/webservice.py       | 46 +++++++++++++++++++++++++++++---------
+ requirements.txt           |  3 ---
+ setup.cfg                  |  2 ++
+ setup.py                   |  5 +++++
+ 6 files changed, 46 insertions(+), 15 deletions(-)
+
+diff --git a/README.rst b/README.rst
+index a17082e..8969781 100644
+--- a/README.rst
++++ b/README.rst
+@@ -19,6 +19,9 @@ To install the ``geoip2`` module, type:
+ .. code-block:: bash
+ 
+     $ pip install geoip2
++    $ pip install geoip2[aiohttp]
++    $ pip install geoip2[requests] 
++    $ pip install geoip2[all] # Install both requests and aiohttp support
+ 
+ If you are not able to use pip, you may also use easy_install from the
+ source directory:
+diff --git a/geoip2/webservice.py b/geoip2/webservice.py
+index 4b1fc15..6ab0e84 100644
+--- a/geoip2/webservice.py
++++ b/geoip2/webservice.py
+@@ -27,12 +27,21 @@
+ 
+ import ipaddress
+ import json
++import sys
+ from typing import Any, Dict, cast, List, Optional, Type, Union
+ 
+-import aiohttp
+-import aiohttp.http
+-import requests
+-import requests.utils
++try:
++    import aiohttp
++    import aiohttp.http
++except ImportError:
++    pass
++
++try:
++    import requests
++    import requests.utils
++except ImportError:
++    pass
++
+ 
+ import geoip2
+ import geoip2.models
+@@ -48,13 +57,28 @@
+ from geoip2.models import City, Country, Insights
+ from geoip2.types import IPAddress
+ 
+-_AIOHTTP_UA = (
+-    f"GeoIP2-Python-Client/{geoip2.__version__} {aiohttp.http.SERVER_SOFTWARE}"
+-)
+-
+-_REQUEST_UA = (
+-    f"GeoIP2-Python-Client/{geoip2.__version__} {requests.utils.default_user_agent()}"
+-)
++# If neither requests or aiohttp is installed then inform user how to
++# install them
++if "aiohttp" not in sys.modules and "requests" not in sys.modules:
++    raise ImportError(
++        """To enable geoip2.webservice,
++    install aiohttp or requests support.
++        pip install geoip2[aiohttp]
++        pip install geoip2[requests]
++        pip install geoip2[all]"""
++    )
++
++
++if "aiohttp" in sys.modules:
++    _AIOHTTP_UA = (
++        f"GeoIP2-Python-Client/{geoip2.__version__} {aiohttp.http.SERVER_SOFTWARE}"
++    )
++
++if "requests" in sys.modules:
++    _REQUEST_UA = (
++        f"GeoIP2-Python-Client/{geoip2.__version__}"
++        f" {requests.utils.default_user_agent()}"
++    )
+ 
+ 
+ class BaseClient:  # pylint: disable=missing-class-docstring, too-few-public-methods
+diff --git a/requirements.txt b/requirements.txt
+index af2c6ff..9c772e4 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -1,4 +1 @@
+-aiohttp>=3.6.2,<4.0.0
+ maxminddb>=2.0.0,<3.0.0
+-requests>=2.24.0,<3.0.0
+-urllib3>=1.25.2,<2.0.0
+diff --git a/setup.cfg b/setup.cfg
+index 9d48adc..c77568d 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -22,8 +22,9 @@
+ 	pytest
+ 	mocket
+ commands = pytest tests
++usedevelop = true
++extras = aiohttp, requests
+ 
+ [egg_info]
+ tag_build = 
+ tag_date = 0
+-
+diff --git a/setup.py b/setup.py
+index 2194e8f..14b6d99 100644
+--- a/setup.py
++++ b/setup.py
+@@ -26,6 +26,11 @@
+     include_package_data=True,
+     python_requires=">=3.6",
+     install_requires=requirements,
++    extras_require={
++        "all": ["requests>=2.14.0,<3.0.0", "aiohttp>=3.6.2,<4.0.0"],
++        "requests": "requests>=2.14.0,<3.0.0",
++        "aiohttp": "aiohttp>=3.6.2,<4.0.0",
++    },
+     tests_require=["mocket>=3.8.9"],
+     test_suite="tests",
+     license=geoip2.__license__,
