@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 15 18:39:16 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 2.0.2:
+  * Unicode characters are properly displayed in the sidebar's
+    Outline.
+  * Chinese and other languages with unicode characters now display
+    properly in the HTML preview.
+
+-------------------------------------------------------------------
 Mon May 31 08:10:39 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix source url

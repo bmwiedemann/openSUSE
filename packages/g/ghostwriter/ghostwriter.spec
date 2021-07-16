@@ -17,7 +17,7 @@
 
 
 Name:           ghostwriter
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
@@ -35,8 +35,6 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Svg)
-#BuildRequires:  pkgconfig(Qt5WebKit)
-#BuildRequires:  pkgconfig(Qt5WebKitWidgets)
 BuildRequires:  pkgconfig(Qt5WebEngineCore)
 BuildRequires:  pkgconfig(hunspell)
 Recommends:     %{name}-lang
