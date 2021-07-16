@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  8 22:21:32 UTC 2021 - Michal Kubecek <mkubecek@suse.cz>
+
+- update to new upstream release 5.13
+  * Feature: netlink handler for FEC (--show-fec and --set-fec)
+  * Feature: FEC stats support (--show-fec)
+  * Feature: standard based stats support (-S)
+  * Feature: netlink handler for module EEPROM dump (-m)
+  * Feature: page, bank and i2c selection in module dump (-m)
+
+-------------------------------------------------------------------
 Sun May  2 21:58:47 UTC 2021 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to new upstream release 5.12
