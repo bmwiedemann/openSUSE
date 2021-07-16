@@ -431,4 +431,12 @@
     <comment>Fix boo#1185941 and correct shebang of python(3) scripts</comment>
     <requestid>904197</requestid>
   </revision>
+  <revision rev="43" vrev="46">
+    <srcmd5>c8b868334fb6fafb980b1577b7980141</srcmd5>
+    <version>unknown</version>
+    <time>1626466342</time>
+    <user>dimstar_suse</user>
+    <comment>Add patches for better python3 support</comment>
+    <requestid>905084</requestid>
+  </revision>
 </revisionlist>
