@@ -1,5 +1,5 @@
 #
-# spec file for package python-urllib3-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-urllib3%{psuffix}
-Version:        1.26.4
+Version:        1.26.6
 Release:        0
 Summary:        HTTP library with thread-safe connection pooling, file post, and more
 License:        MIT
@@ -147,7 +147,7 @@ skiplist+=" or test_recent_date"
 %if ! %{with test}
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGES.rst CONTRIBUTORS.txt README.rst
+%doc CHANGES.rst README.rst
 %{python_sitelib}/urllib3
 %{python_sitelib}/urllib3-%{version}-py*.egg-info
 %endif
