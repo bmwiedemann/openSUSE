@@ -40,7 +40,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        1.20.11
+Version:        1.20.12
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,7 +49,7 @@ Summary:        X
 # Source URL: http://xorg.freedesktop.org/archive/individual/xserver/
 License:        MIT
 Group:          System/X11/Servers/XF86_4
-Source0:        xorg-server-%{version}.tar.bz2
+Source0:        xorg-server-%{version}.tar.xz
 Source1:        sysconfig.displaymanager.template
 Source2:        README.updates
 Source3:        xorgcfg.tar.bz2
