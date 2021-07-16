@@ -20,7 +20,7 @@
 %global modname zope.interface
 %define oldpython python
 Name:           python-zope.interface
-Version:        5.2.0
+Version:        5.4.0
 Release:        0
 Summary:        Interfaces for Python
 License:        ZPL-2.1

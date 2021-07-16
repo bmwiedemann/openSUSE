@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  9 22:37:08 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 5.4.0
+  * many changes, see CHANGES.rst
+
+-------------------------------------------------------------------
 Mon Feb  8 07:50:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't switch off python36 build, half of python-* packages depend on it.
