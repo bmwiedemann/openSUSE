@@ -1,4 +1,381 @@
 -------------------------------------------------------------------
+Sun Jul 11 18:42:34 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- update to version 1.4.20:
+  * orm
+    + [orm] [bug] [regression] Fixed regression in ORM regarding
+      an internal reconstitution step for the with_polymorphic()
+      construct, when the user-facing object is garbage collected
+      as the query is processed. The reconstitution was not
+      ensuring the sub-entities for the “polymorphic” case were
+      handled, leading to an AttributeError.
+      References: #6680
+    + [orm] [bug] [regression] Adjusted Query.union() and similar
+      set operations to be correctly compatible with the new
+      capabilities just added in #6661, with SQLAlchemy 1.4.19,
+      such that the SELECT statements rendered as elements of the
+      UNION or other set operation will include directly mapped
+      columns that are mapped as deferred; this both fixes a
+      regression involving unions with multiple levels of nesting
+      that would produce a column mismatch, and also allows the
+      undefer() option to be used at the top level of such a Query
+      without having to apply the option to each of the elements
+      within the UNION.
+      References: #6678
+    + [orm] [bug] Adjusted the check in the mapper for a callable
+      object that is used as a @validates validator function or a
+      @reconstructor reconstruction function, to check for
+      “callable” more liberally such as to accommodate objects
+      based on fundamental attributes like __func__ and __call___,
+      rather than testing for MethodType / FunctionType, allowing
+      things like cython functions to work properly. Pull request
+      courtesy Miłosz Stypiński.
+      References: #6538
+ * engine
+    + [engine] [bug] Fixed an issue in the C extension for the Row
+      class which could lead to a memory leak in the unlikely case
+      of a Row object which referred to an ORM object that then was
+      mutated to refer back to the Row itself, creating a cycle.
+      The Python C APIs for tracking GC cycles has been added to
+      the native Row implementation to accommodate for this case.
+      References: #5348
+    + [engine] [bug] Fixed old issue where a select() made against
+      the token “*”, which then yielded exactly one column, would
+      fail to correctly organize the cursor.description column name
+      into the keys of the result object.
+      References: #6665
+  * sql
+    + [sql] [usecase] Add a impl parameter to PickleType
+      constructor, allowing any arbitary type to be used in place
+      of the default implementation of LargeBinary. Pull request
+      courtesy jason3gb. References: #6646
+    + [sql] [bug] [orm] Fixed the class hierarchy for the Sequence
+      and the more general DefaultGenerator base, as these are
+      “executable” as statements they need to include Executable
+      in their hierarchy, not just StatementRole as was applied
+      arbitrarily to Sequence previously. The fix allows Sequence
+      to work in all .execute() methods including with
+      Session.execute() which was not working in the case that a
+      SessionEvents.do_orm_execute() handler was also established.
+      References: #6668
+  * schema
+    + [schema] [bug] Fixed issue where passing None for the value
+      of Table.prefixes would not store an empty list, but rather
+      the constant None, which may be unexpected by third party
+      dialects. The issue is revealed by a usage in recent versions
+      of Alembic that are passing None for this value. Pull request
+      courtesy Kai Mueller. References: #6685
+  * mysql
+    + [mysql] [usecase] Made a small adjustment in the table
+      reflection feature of the MySQL dialect to accommodate for
+      alternate MySQL-oriented databases such as TiDB which include
+      their own “comment” directives at the end of a constraint
+      directive within “CREATE TABLE” where the format doesn’t have
+      the additional space character after the comment, in this
+      case the TiDB “clustered index” feature. Pull request
+      courtesy Daniël van Eeden.  References: #6659
+  * misc
+    + [bug] [ext] [regression] Fixed regression in
+      sqlalchemy.ext.automap extension such that the use case of
+      creating an explicit mapped class to a table that is also the
+      relationship.secondary element of a relationship() that
+      automap will be generating would emit the “overlaps” warnings
+      introduced in 1.4 and discussed at relationship X will copy
+      column Q to column P, which conflicts with relationship(s):
+      ‘Y’. While generating this case from automap is still subject
+      to the same caveats that the “overlaps” warning refers
+      towards, as automap is intended for more ad-hoc use cases,
+      the condition which produces the warning is disabled when a
+      many-to-many relationship with this particular pattern is
+      generated.  References: #6679
+
+- changes from version 1.4.19:
+  * orm
+    + [orm] [bug] [regression] Fixed further regressions in the
+      same area as that of #6052 where loader options as well as
+      invocations of methods like Query.join() would fail if the
+      left side of the statement for which the option/join depends
+      upon were replaced by using the Query.with_entities() method,
+      or when using 2.0 style queries when using the
+      Select.with_only_columns() method. A new set of state has
+      been added to the objects which tracks the “left” entities
+      that the options / join were made against which is memoized
+      when the lead entities are changed.  References: #6253, #6503
+    + [orm] [bug] Refined the behavior of ORM subquery rendering
+      with regards to deferred columns and column properties to be
+      more compatible with that of 1.3 while also providing for
+      1.4’s newer features. As a subquery in 1.4 does not make use
+      of loader options, including undefer(), a subquery that is
+      against an ORM entity with deferred attributes will now
+      render those deferred attributes that refer directly to
+      mapped table columns, as these are needed in the outer SELECT
+      if that outer SELECT makes use of these columns; however a
+      deferred attribute that refers to a composed SQL expression
+      as we normally do with column_property() will not be part of
+      the subquery, as these can be selected explicitly if needed
+      in the subquery. If the entity is being SELECTed from this
+      subquery, the column expression can still render on “the
+      outside” in terms of the derived subquery columns. This
+      produces essentially the same behavior as when working with
+      1.3. However in this case the fix has to also make sure that
+      the .selected_columns collection of an ORM-enabled select()
+      also follows these rules, which in particular allows
+      recursive CTEs to render correctly in this scenario, which
+      were previously failing to render correctly due to this
+      issue.  References: #6661
+  * sql
+    + [sql] [bug] Fixed issue in CTE constructs mostly relevant to
+      ORM use cases where a recursive CTE against “anonymous”
+      labels such as those seen in ORM column_property() mappings
+      would render in the WITH RECURSIVE xyz(...) section as their
+      raw internal label and not a cleanly anonymized name.
+      References: #6663
+  * mypy
+    + [mypy] [bug] Fixed issue in mypy plugin where class info for
+      a custom declarative base would not be handled correctly on a
+      cached mypy pass, leading to an AssertionError being raised.
+      References: #6476
+  * asyncio
+    + [asyncio] [usecase] Implemented async_scoped_session to
+      address some asyncio-related incompatibilities between
+      scoped_session and AsyncSession, in which some methods
+      (notably the async_scoped_session.remove() method) should
+      be used with the await keyword.  References: #6583
+    + [asyncio] [bug] [postgresql] Fixed bug in asyncio
+      implementation where the greenlet adaptation system failed
+      to propagate BaseException subclasses, most notably including
+      asyncio.CancelledError, to the exception handling logic used
+      by the engine to invalidate and clean up the connection, thus
+      preventing connections from being correctly disposed when a
+      task was cancelled. References: #6652
+  * postgresql
+    + [postgresql] [bug] [oracle] Fixed issue where the INTERVAL
+      datatype on PostgreSQL and Oracle would produce an
+      AttributeError when used in the context of a comparison
+      operation against a timedelta() object. Pull request courtesy
+      MajorDallas. References: #6649
+    + [postgresql] [bug] Fixed issue where the pool “pre ping”
+      feature would implicitly start a transaction, which would
+      then interfere with custom transactional flags such as
+      PostgreSQL’s “read only” mode when used with the psycopg2
+      driver.  References: #6621
+  * mysql
+    + [mysql] [usecase] Added new construct match, which provides
+      for the full range of MySQL’s MATCH operator including
+      multiple column support and modifiers. Pull request courtesy
+      Anton Kovalevich. References: #6132
+  * mssql
+    + [mssql] [change] Made improvements to the server version
+      regexp used by the pymssql dialect to prevent a regexp
+      overflow in case of an invalid version string.
+      References: #6253, #6503
+    + [mssql] [bug] Fixed bug where the “schema_translate_map”
+      feature would fail to function correctly in conjunction with
+      an INSERT into a table that has an IDENTITY column, where the
+      value of the IDENTITY column were specified in the values of
+      the INSERT thus triggering SQLAlchemy’s feature of setting
+      IDENTITY INSERT to “on”; it’s in this directive where the
+      schema translate map would fail to be honored.
+      References: #6658
+
+- changes from version 1.4.18:
+  * orm
+    + [orm] [performance] [bug] [regression] Fixed regression
+      involving how the ORM would resolve a given mapped column to
+      a result row, where under cases such as joined eager loading,
+      a slightly more expensive “fallback” could take place to set
+      up this resolution due to some logic that was removed since
+      1.3. The issue could also cause deprecation warnings
+      involving column resolution to be emitted when using a 1.4
+      style query with joined eager loading.  References: #6596
+    + [orm] [bug] Clarified the current purpose of the
+      relationship.bake_queries flag, which in 1.4 is to enable or
+      disable “lambda caching” of statements within the “lazyload”
+      and “selectinload” loader strategies; this is separate from
+      the more foundational SQL query cache that is used for most
+      statements. Additionally, the lazy loader no longer uses its
+      own cache for many-to-one SQL queries, which was an
+      implementation quirk that doesn’t exist for any other loader
+      scenario. Finally, the “lru cache” warning that the
+      lazyloader and selectinloader strategies could emit when
+      handling a wide array of class/relationship combinations has
+      been removed; based on analysis of some end-user cases, this
+      warning doesn’t suggest any significant issue. While setting
+      bake_queries=False for such a relationship will remove this
+      cache from being used, there’s no particular performance gain
+      in this case as using no caching vs. using a cache that needs
+      to refresh often likely still wins out on the caching being
+      used side. References: #6072, #6487
+    + [orm] [bug] [regression] Adjusted the means by which classes
+      such as scoped_session and AsyncSession are generated from
+      the base Session class, such that custom Session subclasses
+      such as that used by Flask-SQLAlchemy don’t need to implement
+      positional arguments when they call into the superclass
+      method, and can continue using the same argument styles as in
+      previous releases. References: #6285
+    + [orm] [bug] [regression] Fixed issue where query production
+      for joinedload against a complex left hand side involving
+      joined-table inheritance could fail to produce a correct
+      query, due to a clause adaption issue.  References: #6595
+    + [orm] [bug] Fixed issue in experimental “select ORM objects
+      from INSERT/UPDATE” use case where an error was raised if
+      the statement were against a single-table-inheritance
+      subclass.  References: #6591
+    + [orm] [bug] The warning that’s emitted for relationship()
+      when multiple relationships would overlap with each other as
+      far as foreign key attributes written towards, now includes
+      the specific “overlaps” argument to use for each warning in
+      order to silence the warning without changing the mapping.
+      References: #6400
+  * asyncio
+    + [asyncio] [usecase] Implemented a new registry architecture
+      that allows the Async version of an object, like
+      AsyncSession, AsyncConnection, etc., to be locatable given
+      the proxied “sync” object, i.e. Session, Connection.
+      Previously, to the degree such lookup functions were used,
+      an Async object would be re-created each time, which was
+      less than ideal as the identity and state of the “async”
+      object would not be preserved across calls.
+      From there, new helper functions async_object_session(),
+      async_session() as well as a new InstanceState attribute
+      InstanceState.async_session have been added, which are used
+      to retrieve the original AsyncSession associated with an ORM
+      mapped object, a Session associated with an AsyncSession,
+      and an AsyncSession associated with an InstanceState,
+      respectively. This patch also implements new methods
+      AsyncSession.in_nested_transaction(),
+      AsyncSession.get_transaction(),
+      AsyncSession.get_nested_transaction(). References: #6319
+    + [asyncio] [bug] Fixed an issue that presented itself when
+      using the NullPool or the StaticPool with an async engine.
+      This mostly affected the aiosqlite dialect.
+      References: #6575
+    + [asyncio] [bug] Added asyncio.exceptions.TimeoutError,
+      asyncio.exceptions.CancelledError as so-called “exit
+      exceptions”, a class of exceptions that include things
+      like GreenletExit and KeyboardInterrupt, which are
+      considered to be events that warrant considering a DBAPI
+      connection to be in an unusable state where it should be
+      recycled. References: #6592
+  * postgresql
+    + [postgresql] [bug] [regression] Fixed regression where using
+      the PostgreSQL “INSERT..ON CONFLICT” structure would fail to
+      work with the psycopg2 driver if it were used in an
+      “executemany” context along with bound parameters in the
+      “SET” clause, due to the implicit use of the psycopg2 fast
+      execution helpers which are not appropriate for this style of
+      INSERT statement; as these helpers are the default in 1.4
+      this is effectively a regression. Additional checks to
+      exclude this kind of statement from that particular extension
+      have been added. References: #6581
+  * sqlite
+    + [sqlite] [bug] Add note regarding encryption-related pragmas
+      for pysqlcipher passed in the url. This change is also
+      backported to: 1.3.25. References: #6589
+    + [sqlite] [bug] [regression] The fix for pysqlcipher released
+      in version 1.4.3 #5848 was unfortunately non-working, in that
+      the new on_connect_url hook was erroneously not receiving a
+      URL object under normal usage of create_engine() and instead
+      received a string that was unhandled; the test suite failed
+      to fully set up the actual conditions under which this hook
+      is called. This has been fixed. References: #6586
+
+- changes from version 1.4.17:
+  * orm
+    + [orm] [bug] [regression] Fixed regression caused by
+      just-released performance fix mentioned in #6550 where a
+      query.join() to a relationship could produce an
+      AttributeError if the query were made against non-ORM
+      structures only, a fairly unusual calling pattern.
+      References: #6558
+
+- changes from version 1.4.16:
+  * general
+    + [general] [bug] Resolved various deprecation warnings which
+      were appearing as of Python version 3.10.0b1.
+      References: #6540, #6543
+  * orm
+    + [orm] [bug] Fixed issue when using
+      relationship.cascade_backrefs parameter set to False, which
+      per cascade_backrefs behavior deprecated for removal in 2.0
+      is set to become the standard behavior in SQLAlchemy 2.0,
+      where adding the item to a collection that uniquifies, such
+      as set or dict would fail to fire a cascade event if the
+      object were already associated in that collection via the
+      backref. This fix represents a fundamental change in the
+      collection mechanics by introducing a new event state which
+      can fire off for a collection mutation even if there is no
+      net change on the collection; the action is now suited using
+      a new event hook AttributeEvents.append_wo_mutation().
+      References: #6471
+    + [orm] [bug] [regression] Fixed regression involving clause
+      adaption of labeled ORM compound elements, such as
+      single-table inheritance discriminator expressions with
+      conditionals or CASE expressions, which could cause aliased
+      expressions such as those used in ORM join / joinedload
+      operations to not be adapted correctly, such as referring
+      to the wrong table in the ON clause in a join.
+      This change also improves a performance bump that was located
+      within the process of invoking Select.join() given an ORM
+      attribute as a target.  References: #6550
+    + [orm] [bug] [regression] Fixed regression where the full
+      combination of joined inheritance, global with_polymorphic,
+      self-referential relationship and joined loading would fail
+      to be able to produce a query with the scope of lazy loads
+      and object refresh operations that also attempted to render
+      the joined loader.  References: #6495
+    + [orm] [bug] Enhanced the bind resolution rules for
+      Session.execute() so that when a non-ORM statement such as
+      an insert() construct nonetheless is built against ORM
+      objects, to the greatest degree possible the ORM entity will
+      be used to resolve the bind, such as for a Session that has
+      a bind map set up on a common superclass without specific
+      mappers or tables named in the map. References: #6484
+  * engine
+    + [engine] [bug] Fixed issue where an @ sign in the database
+      portion of a URL would not be interpreted correctly if the
+      URL also had a username:password section. References: #6482
+    + [engine] [bug] Fixed a long-standing issue with URL where
+      query parameters following the question mark would not be
+      parsed correctly if the URL did not contain a database
+      portion with a backslash. References: #6329
+  * sql
+    + [sql] [bug] [regression] Fixed regression in dynamic loader
+      strategy and relationship() overall where the
+      relationship.order_by parameter were stored as a mutable
+      list, which could then be mutated when combined with
+      additional “order_by” methods used against the dynamic
+      query object, causing the ORDER BY criteria to continue
+      to grow repetitively. References: #6549
+  * mssql
+    + [mssql] [usecase] Implemented support for a CTE construct to
+      be used directly as the target of a delete() construct, i.e.
+      “WITH … AS cte DELETE FROM cte”. This appears to be a useful
+      feature of SQL Server.  References: #6464
+  * misc
+    + [bug] [ext] Fixed a deprecation warning that was emitted
+      when using automap_base() without passing an existing Base.
+      References: #6529
+    + [bug] [pep484] Remove pep484 types from the code. Current
+      effort is around the stub package, and having typing in two
+      places makes thing worse, since the types in the SQLAlchemy
+      source were usually outdated compared to the version in the
+      stubs.  References: #6461
+    + [bug] [ext] [regression] Fixed regression in the
+      sqlalchemy.ext.instrumentation extension that prevented
+      instrumentation disposal from working completely. This fix
+      includes both a 1.4 regression fix as well as a fix for a
+      related issue that existed in 1.3 also. As part of this
+      change, the
+      sqlalchemy.ext.instrumentation.InstrumentationManager class
+      now has a new method unregister(), which replaces the
+      previous method dispose(), which was not called as of
+      version 1.4. References: #6390
+
+- Drop patch:
+  * tests_overcome_bpo42967.patch
+
+-------------------------------------------------------------------
 Fri May 14 01:05:31 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - updated line numbers in patch

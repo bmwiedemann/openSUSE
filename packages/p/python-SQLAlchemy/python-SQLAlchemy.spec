@@ -20,17 +20,13 @@
 %define skip_python2 1
 %define oldpython python
 Name:           python-SQLAlchemy
-Version:        1.4.15
+Version:        1.4.20
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT
 URL:            https://www.sqlalchemy.org
 Source:         https://files.pythonhosted.org/packages/source/S/SQLAlchemy/SQLAlchemy-%{version}.tar.gz
 Source1:        SQLAlchemy.keyring
-# PATCH-FIX-UPSTREAM tests_overcome_bpo42967.patch gh#sqlalchemy/sqlalchemy#5969 mcepl@suse.com
-# over effects of bpo#42967, which forbade mixing amps and
-# semicolons in query strings as separators.
-Patch0:         tests_overcome_bpo42967.patch
 # devel is needed for optional C extensions cprocessors.so, cresultproxy.so and cutils.so
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
