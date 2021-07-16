@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 13 06:56:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add sphinx41.patch to fix build with Sphinx 4.1.0
+
+-------------------------------------------------------------------
 Tue Apr 20 09:50:10 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - remove python-docutils from Requires

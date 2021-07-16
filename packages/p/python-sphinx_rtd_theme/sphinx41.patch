@@ -1,0 +1,17 @@
+Index: sphinx_rtd_theme-0.5.2/tests/test_builders.py
+===================================================================
+--- sphinx_rtd_theme-0.5.2.orig/tests/test_builders.py
++++ sphinx_rtd_theme-0.5.2/tests/test_builders.py
+@@ -3,7 +3,11 @@ import os
+ import pytest
+ import sphinx
+ from sphinx import addnodes
+-from sphinx.builders.html import SingleFileHTMLBuilder, DirectoryHTMLBuilder
++try:
++    from sphinx.builders.html import SingleFileHTMLBuilder, DirectoryHTMLBuilder
++except ImportError:
++    from sphinx.builders.singlehtml import SingleFileHTMLBuilder
++    from sphinx.builders.dirhtml import DirectoryHTMLBuilder
+ 
+ from .util import build_all
+ 
