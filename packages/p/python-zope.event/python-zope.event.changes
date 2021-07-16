@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  9 22:27:07 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 4.5.0
+  * Add support for Python 3.8 and 3.9.
+  * Remove support for Python 3.4.
+
+-------------------------------------------------------------------
 Wed Apr  8 12:08:15 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Do not pull in py2 package on doc subpkg

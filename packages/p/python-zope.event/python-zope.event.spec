@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.event
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global modname zope.event
 %define oldpython python
 Name:           python-zope.event
-Version:        4.4
+Version:        4.5.0
 Release:        0
 Summary:        Very basic event publishing system
 License:        ZPL-2.1
