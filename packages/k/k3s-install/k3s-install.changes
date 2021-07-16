@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Jul 16 10:57:22 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.21.2+k3s1:
+  * Update to v1.21.2 (#3479)
+  * Renamed client-cloud-controller crt and key (#3472)
+  * Send systemd notifications for both server and agent (#3430) (#3460)
+  * Changed iptables version check for fail if version is between 1.8.0 and 1.8.3 and using nf_tables mode (#3454)
+  * Add kubernetes.default.svc to serving certs
+  * Fix RBAC cloud-controller-manager name 3308 (#3388) (#3408)
+  * Add a path for wireguard's privatekey
+  * Update flannel version
+  * move object channel defer close to goroutine
+  * add retention default and wire in s3 prune
+  * add etcd snapshot save subcommand
+
+-------------------------------------------------------------------
+Fri Jul 16 10:55:07 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Initial Package 
