@@ -1,7 +1,7 @@
 #
 # spec file for package python-twine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-twine
-Version:        3.2.0
+Version:        3.4.1
 Release:        0
 Summary:        Collection of utilities for interacting with PyPI
 License:        Apache-2.0
 URL:            https://github.com/pypa/twine
 Source:         https://files.pythonhosted.org/packages/source/t/twine/twine-%{version}.tar.gz
+Patch1:         0001-remove-disable-socket-pytest-opt.patch
 BuildRequires:  %{python_module colorama >= 0.4.3}
 BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module jaraco.envs}
@@ -54,7 +55,7 @@ Requires:       python-rfc3986 >= 1.4.0
 Requires:       python-setuptools >= 0.7.0
 Requires:       python-tqdm >= 4.14
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -65,6 +66,7 @@ checking, if descriptions will render correctly.
 
 %prep
 %setup -q -n twine-%{version}
+%patch1 -p1
 
 sed -i '1s/^#!.*//' twine/__main__.py
 sed -i 's/--cov.*$//' pytest.ini

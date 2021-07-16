@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jul 11 17:40:20 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added 0001-remove-disable-socket-pytest-opt.patch
+- update to 3.4.1
+  * 3.4.1 (2021-03-16)
+    Bugfixes
+    - Fix a regression that was causing some namespace packages with dots in them fail to upload to PyPI. (#745)
+  * 3.4.0 (2021-03-15)
+    Features
+    - Prefer importlib.metadata for entry point handling. (#728)
+    - Rely on importlib_metadata 3.6 for nicer entry point processing. (#732)
+    - Eliminate dependency on setuptools/pkg_resources and replace with packaging and importlib_metadata. (#736)
+  * 3.3.0 (2020-12-23)
+    Features
+    - Print files to be uploaded using ``upload --verbose`` (#670)
+    - Print configuration file location when using ``upload --verbose`` (#675)
+    - Print source and values of credentials when using ``upload --verbose`` (#685)
+    - Add support for Python 3.9 (#708)
+    - Turn warnings into errors when using ``check --strict`` (#715)
+    Bugfixes
+    - Make password optional when using ``upload --client-cert`` (#678)
+    - Support more Nexus versions with ``upload --skip-existing`` (#693)
+    - Support Gitlab Enterprise with ``upload --skip-existing`` (#698)
+    - Show a better error message for malformed files (#714)
+    Improved Documentation
+    - Adopt PSF code of conduct (#680)
+    - Adopt towncrier for the changleog (#718)
+
+-------------------------------------------------------------------
 Thu Jul 23 12:22:51 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.2.0
