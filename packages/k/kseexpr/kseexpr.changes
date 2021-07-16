@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:27:16 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.0.3.0
+  * Update the UI parser to enable string variables (kde#439292)
+  * Comment parsing: fix skipping the first character after #\s+
+  * ExprEditor: disconnect the correct signal
+  * Fix typo in LLVM support
+  * Insert new variables at the start of the current line
+    (kde#439260)
+  * Fix mixed up translations (kde#439257)
+  * Complete removal of float_t and double_t from function
+    signatures (kde#431436)
+  * VectorControl: fix valueChanged connect signature
+  * ExprCurve, ExprColorCurve: add missing label on interpolation
+    type (kde#439263)
+  * ExprAddDialog: fix alignment of Default label for String
+    variables
+  * Insert new variables above the current line (kde#439260)
+  * Insert variable name assignment with string types (kde#439259)
+  * Interpolate Image Editor root via Qt's native path handling
+  * Docstrings typo fixes (kde#439257)
+  * Do not use float/double_t types for C++17 utils (kde#431436)
+  * Fix SOVERSION (kde#429320)
+  * i18n: load translations for ki18n's fallback languages
+    (kde#438836)
+  * Add support for LLVM 12
+  * Add compatibility with VFX 2019
+- Drop Fix-possible-compiler-error.patch, fixed upstream
+
+-------------------------------------------------------------------
 Thu Jun 10 05:42:30 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 4.0.2.0
