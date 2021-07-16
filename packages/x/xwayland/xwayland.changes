@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 15 18:24:01 UTC 2021 - Macie McKitrick <macie.mckitrick@protonmail.com>
+
+- xwayland pc is required for S390x and S390
+
+-------------------------------------------------------------------
+Fri Jul  9 11:19:50 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.1.2
+  * The only change compared to the release candidate is a fix for
+    a long standing issue where Xwayland wouldn't send events to
+    notify clients of RandR configuration changes in some cases.
+
+-------------------------------------------------------------------
 Thu Jul  1 10:16:22 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 21.1.1.901 (21.1.2 RC1)

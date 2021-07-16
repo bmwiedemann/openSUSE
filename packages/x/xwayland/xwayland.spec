@@ -24,7 +24,7 @@
 %endif
 
 Name:           xwayland
-Version:        21.1.1.901
+Version:        21.1.2
 Release:        0
 URL:            http://xorg.freedesktop.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -260,9 +260,7 @@ rm -f %{buildroot}%{_libdir}/xorg/protocol.txt
 
 %files devel
 %defattr(-,root,root)
-%ifnarch s390 s390x
 %{_libdir}/pkgconfig/*.pc
-%endif
 %dir %{_libdir}/xorg
 %{_mandir}/man1/Xwayland.1.gz
 
