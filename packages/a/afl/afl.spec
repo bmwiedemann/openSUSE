@@ -82,11 +82,11 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-64.o
 %endif
 %endif
-%ifarch %ix86 %{arm}
+%ifarch %ix86 %{arm} s390x
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
 %{_libexecdir}/%{name}/afl-llvm-rt-32.o
 %endif
-%ifarch %ix86 aarch64
+%ifarch %ix86 aarch64 s390x
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-32.o
 %endif
 %{_libexecdir}/%{name}/afl-compiler-rt.o

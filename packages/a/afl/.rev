@@ -966,4 +966,12 @@
     <comment>- Fix filelist for riscv64 (forwarded request 898298 from Andreas_Schwab)</comment>
     <requestid>898301</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>8ee2a64f71f5a6844b462de7b1f4ccb8</srcmd5>
+    <version>3.13c</version>
+    <time>1626466373</time>
+    <user>dimstar_suse</user>
+    <comment>- s390x added to the compiler files (forwarded request 906530 from peace)</comment>
+    <requestid>906608</requestid>
+  </revision>
 </revisionlist>
