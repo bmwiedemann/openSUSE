@@ -17,7 +17,7 @@
 
 
 Name:           ipmitool
-Version:        1.8.18+git20200916.1245aaa387dc
+Version:        1.8.18.237.g11c7605
 Release:        0
 Summary:        Utility for IPMI Control
 License:        BSD-3-Clause
@@ -33,10 +33,6 @@ Patch3:         0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
 Patch4:         0004-Adjust-SUSE-paths.patch
 Patch5:         0005-HPM-x-compatibility-message-is-DEBUG-only.patch
 Patch6:         0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
-Patch7:         0007-bsc#1175328-check-for-correct-fd.patch
-Patch8:         0008-bsc#1181063-dont-parametrize-pidfile-name.patch
-Patch9:         lanplus-don-t-retry-pre-session-Get-cipher-suites.patch
-Patch10:        Use-run-instead-of-var-run.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
@@ -154,7 +150,7 @@ ln -sf service %{buildroot}%{_sbindir}/rcbmc-snmp-proxy
 %files bmc-snmp-proxy
 %attr(755,root,root) %{_sbindir}/bmc-snmp-proxy
 %{_sbindir}/rcbmc-snmp-proxy
-%config(noreplace) %{_sysconfdir}/bmc-snmp-proxy
+%attr(644,root,root) %config(noreplace) %{_sysconfdir}/bmc-snmp-proxy
 %{_unitdir}/bmc-snmp-proxy.service
 
 %changelog

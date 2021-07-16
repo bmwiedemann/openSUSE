@@ -11,11 +11,11 @@ Signed-off-by: Thomas Renninger <trenn@suse.de>
  lib/ipmi_picmg.c      | 4 ++--
  2 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/lib/ipmi_ekanalyzer.c b/lib/ipmi_ekanalyzer.c
-index be6b671ac6aa..73472e74d760 100644
---- a/lib/ipmi_ekanalyzer.c
-+++ b/lib/ipmi_ekanalyzer.c
-@@ -4017,7 +4017,7 @@ ipmi_ek_display_clock_config_record(struct ipmi_ek_multi_header *record)
+Index: ipmitool-1.8.18+git20210622.11c7605/lib/ipmi_ekanalyzer.c
+===================================================================
+--- ipmitool-1.8.18+git20210622.11c7605.orig/lib/ipmi_ekanalyzer.c
++++ ipmitool-1.8.18+git20210622.11c7605/lib/ipmi_ekanalyzer.c
+@@ -4055,7 +4055,7 @@ ipmi_ek_display_clock_config_record(stru
  					(feature & 1) ? "Source" : "Receiver");
  			printf("\tFamily:  0x%02x    - AccLVL: 0x%02x\n",
  					family, accuracy);
@@ -24,11 +24,11 @@ index be6b671ac6aa..73472e74d760 100644
  					freq, min_freq, max_freq);
  		}
  		printf("\n");
-diff --git a/lib/ipmi_picmg.c b/lib/ipmi_picmg.c
-index 8becc7883922..a7e32f626894 100644
---- a/lib/ipmi_picmg.c
-+++ b/lib/ipmi_picmg.c
-@@ -949,7 +949,7 @@ ipmi_picmg_portstate_get(struct ipmi_intf * intf, int32_t interface,
+Index: ipmitool-1.8.18+git20210622.11c7605/lib/ipmi_picmg.c
+===================================================================
+--- ipmitool-1.8.18+git20210622.11c7605.orig/lib/ipmi_picmg.c
++++ ipmitool-1.8.18+git20210622.11c7605/lib/ipmi_picmg.c
+@@ -949,7 +949,7 @@ ipmi_picmg_portstate_get(struct ipmi_int
  					}
  					else if (d->type >= 0x06 && d->type <= 0xef)
  					{
@@ -37,7 +37,7 @@ index 8becc7883922..a7e32f626894 100644
  					}
  					else if (d->type >= 0xf0 && d->type <= 0xfe)
  					{
-@@ -1805,7 +1805,7 @@ ipmi_picmg_clk_get(struct ipmi_intf * intf, uint8_t clk_id, int8_t clk_res,
+@@ -1805,7 +1805,7 @@ ipmi_picmg_clk_get(struct ipmi_intf * in
  						oemval2str( rsp->data[3], rsp->data[4],
  											picmg_clk_accuracy_vals));
  		
@@ -46,6 +46,3 @@ index 8becc7883922..a7e32f626894 100644
  		   }
  		}
  	}
--- 
-2.26.0
-

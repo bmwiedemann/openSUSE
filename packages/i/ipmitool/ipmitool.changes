@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 08 15:10:12 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.18+git20210622.11c7605:
+  * Fix codefactor-io / CodeFactor warnings
+  * Use /run instead of /var/run
+  * oem: Update product IDs for YADRO
+  * lan: Add processing of get/set specific CCs
+  * lan: Refactor pointer style
+  * doc: update lanplus doc to reflect default cipher suite change
+  * ekanalyzer: Fix internal use area off-by-one bug
+  * ekanalyzer frushow: Fix internal area size calc
+  * sel: Fix "power supply inactive" flag offset
+  * free: Fix implicit function declarations
+  * Convert line endings to LF
+
+- Update source file:
+M    enterprise-numbers
+- Adopt to latest sources:
+M    0003-Cleanup-and-compiler-issues-only-no-functional-chang.patch
+- Remove mainline patches:
+D    0007-bsc#1175328-check-for-correct-fd.patch
+D    0008-bsc#1181063-dont-parametrize-pidfile-name.patch
+D    Use-run-instead-of-var-run.patch
+D    lanplus-don-t-retry-pre-session-Get-cipher-suites.patch
+
+- Config file in /etc must not be executable
+  /etc/bmc-snmp-proxy
+
+- Enhance _service file to always get latest sources and get the
+  version correctly parsed
+
+-------------------------------------------------------------------
 Tue May 25 17:59:48 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Correct /etc/ipmievd config file to point to the new pidfile in /run
