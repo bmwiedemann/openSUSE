@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(GConf\\)|typelib\\(Unity\\)
 %define pythons python3
 Name:           soundconverter
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Sound Converter Application for the GNOME Desktop
 License:        GPL-3.0-or-later
@@ -88,7 +88,7 @@ rm -rf %{buildroot}/usr/share/doc/soundconverter
 
 %files
 %license COPYING
-%doc CHANGELOG README.md NEWS
+%doc README.md NEWS
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_datadir}/applications/%{name}.desktop

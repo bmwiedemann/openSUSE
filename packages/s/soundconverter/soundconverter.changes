@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 15 07:16:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.0.1:
+  * Fix events leakage crash during big conversions.
+  * Fix UI issue when an encoder is missing, the settings were not working.
+  * Fix DATA_PATH from flatpak.
+  * Fix a few issues with appstream data
+  * Remove empty line in glade, remove warning log.
+
+-------------------------------------------------------------------
 Sat Mar 20 15:52:38 UTC 2021 - antoine.belvire@opensuse.org
 
 - Reduce build set to default python3 flavour: Fix build on
