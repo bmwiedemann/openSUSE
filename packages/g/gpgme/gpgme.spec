@@ -30,10 +30,10 @@
 %endif
 %{!?python_module:%define python_module() python-%{**} python3-{**}}
 Name:           gpgme%{psuffix}
-Version:        1.15.1
+Version:        1.16.0
 Release:        0
 Summary:        Programmatic library interface to GnuPG
-License:        LGPL-2.1-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://www.gnupg.org/related_software/gpgme/
 Source:         ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-%{version}.tar.bz2
@@ -43,6 +43,8 @@ Source2:        baselibs.conf
 Source3:        gpgme.keyring
 # used to have a fixed timestamp
 Source99:       gpgme.changes
+Patch0:         gpgme-1.16.0-Use-after-free-in-t-edit-sign-test.patch
+Patch1:         gpgme-1.16.0-t-various-testSignKeyWithExpiration-32-bit.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -147,6 +149,7 @@ management.
 This package contains the bindings to use the library from Python %{python_version} applications.
 
 %else
+
 %package -n python2-gpg
 Summary:        Python 2 bindings for GPGME, a library for accessing GnuPG
 Group:          Development/Languages/Python
@@ -204,10 +207,8 @@ This package contains the bindings to use the library in Qt C++ applications.
 
 %prep
 %setup -q -n gpgme-%{version}
-
-%ifarch %{ix86}
-sed -i -e '/t-callbacks.py/d' lang/python/tests/Makefile.{am,in}
-%endif
+%patch0 -p1
+%patch1 -p1
 
 %build
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
@@ -263,7 +264,7 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 
 %if !%{with qt}
 %files
-%license COPYING COPYING.LESSER
+%license COPYING COPYING.LESSER LICENSES
 %doc AUTHORS ChangeLog ChangeLog-2011 README NEWS THANKS TODO VERSION
 %{_bindir}/gpgme-tool
 %{_bindir}/gpgme-json
@@ -272,9 +273,11 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %{_infodir}/gpgme*
 
 %files -n libgpgme11
+%license COPYING COPYING.LESSER LICENSES
 %{_libdir}/libgpgme.so.*
 
 %files -n libgpgme-devel
+%license COPYING COPYING.LESSER LICENSES
 %{_libdir}/libgpgme.so
 %{_bindir}/gpgme-config
 %{_datadir}/aclocal/gpgme.m4
@@ -283,9 +286,11 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 %{_libdir}/pkgconfig/gpgme-glib.pc
 
 %files -n libgpgmepp6
+%license COPYING COPYING.LESSER LICENSES
 %{_libdir}/libgpgmepp.so.*
 
 %files -n libgpgmepp-devel
+%license COPYING COPYING.LESSER LICENSES
 %{_libdir}/libgpgmepp.so
 %{_includedir}/gpgme++
 %dir %{_libdir}/cmake
@@ -295,19 +300,23 @@ rm -r %{buildroot}%{_libdir}/pkgconfig/gpgme*
 
 %if %{with python2} && ! 0%{?python_subpackage_only}
 %files -n python2-gpg
+%license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg*
 %endif
 
 %if %{with python3} || ( 0%{?python_subpackage_only} && %{with python2} )
 %files %{python_files gpg}
+%license COPYING COPYING.LESSER LICENSES
 %{python_sitearch}/gpg*
 %endif
 
 %if %{with qt}
 %files -n libqgpgme7
+%license COPYING COPYING.LESSER LICENSES
 %{_libdir}/libqgpgme.so.*
 
 %files -n libqgpgme-devel
+%license COPYING COPYING.LESSER LICENSES
 %{_includedir}/qgpgme/
 %{_includedir}/QGpgME/
 %dir %{_libdir}/cmake

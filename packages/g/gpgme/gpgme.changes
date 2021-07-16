@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  7 18:19:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- gpgme 1.16.0:
+  * New context flag "cert-expire"
+  * New data flags "io-buffer-size" and "sensitive"
+  * cpp,qt: Add support for trust signatures
+  * qt: Add support for flags in LDAP server options
+  * qt: Fix too high memory consumption due to QProcess
+  * qt: Do not set empty base DN as query of keyserver URL
+  * qt: Extend SignKeyJob to create signatures with expiration date
+  * python: New optional parameter filter_signatures for decrypt
+- run all tests again
+- add patches to fix tests:
+  * gpgme-1.16.0-Use-after-free-in-t-edit-sign-test.patch
+  * gpgme-1.16.0-t-various-testSignKeyWithExpiration-32-bit.patch
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.
