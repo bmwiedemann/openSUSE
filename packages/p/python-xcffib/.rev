@@ -75,4 +75,19 @@
     <comment></comment>
     <requestid>844109</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a2bdbd765b9e4321f2c2225f40ac1046</srcmd5>
+    <version>0.11.1</version>
+    <time>1626466366</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace use of nose2 by pytest. There is no need to do anything
+  else.
+- Update to 0.11.1
+  * connection: don't automatically disconnect() on connection error
+  * drop support for python 3.5
+  * tests: switch to nose2
+  * travis: test python 3.9
+</comment>
+    <requestid>906657</requestid>
+  </revision>
 </revisionlist>
