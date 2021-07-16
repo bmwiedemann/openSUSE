@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:53:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.26.6
+  * Deprecated the urllib3.contrib.ntlmpool module.
+  * Changed HTTPConnection.request_chunked() to not erroneously emit multiple 
+    Transfer-Encoding headers in the case that one is already specified.
+  * Fixed typo in deprecation message to recommend Retry.DEFAULT_ALLOWED_METHODS.
+
+-------------------------------------------------------------------
+Sun Jun  6 12:02:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.26.5 (bsc#1187045, CVE-2021-33503):
+  * Fixed deprecation warnings emitted in Python 3.10.
+  * Updated vendored ``six`` library to 1.16.0.
+  * Improved performance of URL parser when splitting
+    the authority component.
+
+-------------------------------------------------------------------
 Tue Mar 16 21:09:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.26.4:
