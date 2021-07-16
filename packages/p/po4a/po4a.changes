@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 10 00:41:40 UTC 2021 - Pau Garcia Quiles <pau.garcia@suse.com>
+
+- debbuild does not understand patterns like man[1357] so desaggregating
+  into man1, man3, etc for Ubuntu and Debian packages
+
+-------------------------------------------------------------------
 Thu Jun 24 19:31:03 UTC 2021 - Pau Garcia Quiles <pau.garcia@suse.com>
 
 - Make po4a buildable on Debian and Ubuntu. This is required for GitHub Actions,

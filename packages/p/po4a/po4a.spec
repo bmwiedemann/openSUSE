@@ -130,7 +130,9 @@ rm -rf t/fmt-tex.t t/fmt/tex
 %attr(755,root,root) %{_bindir}/*
 %dir %{perl_vendorlib}/Locale/
 %{perl_vendorlib}/Locale/Po4a
-%{_mandir}/man[1357]/*
+%{_mandir}/man1/*
+%{_mandir}/man3/*
+%{_mandir}/man7/*
 
 %files lang -f %{name}.lang
 %defattr(-,root,root)
