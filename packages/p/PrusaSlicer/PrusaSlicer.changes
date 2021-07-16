@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 16 15:22:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.3.3
+  * fix a bug in handling FDM multi-material project and
+    configuration files.
+
+-------------------------------------------------------------------
 Fri Jul  9 16:08:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.3.2

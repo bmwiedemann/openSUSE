@@ -121,4 +121,14 @@ Resubmitting in the hope that all bots and maintainers pick it up this time. The
     <comment></comment>
     <requestid>905330</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a9efb77220b715923b7cd97011388d47</srcmd5>
+    <version>2.3.3</version>
+    <time>1626466384</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v2.3.3
+  * fix a bug in handling FDM multi-material project and
+    configuration files. (forwarded request 906709 from bnavigator)</comment>
+    <requestid>906710</requestid>
+  </revision>
 </revisionlist>
