@@ -65,4 +65,22 @@ source URL fixed</comment>
     <comment>- Add python-38-support.patch to support Python 3.8</comment>
     <requestid>750654</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ee3918cc2bbdd227743743665f299be</srcmd5>
+    <version>3.6.0</version>
+    <time>1626466354</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.0
+  * Added support for Python 3.8, 3.9 and 3.10. This primarily
+    involves avoiding the new-in-3.8 validation of the format
+    string when using the ‘safe-template’ format style, since
+    that’s not supported in the Python standard library.
+  * Added ZConfig.pygments module containing a lexer compatible
+    with the pygments library. Made discoverable via an entry
+    point; use zconfig as the highlight language for code-block
+    directives in Sphinx documents.
+- Drop patch python-38-support.patch that was integrated upstream.
+</comment>
+    <requestid>905798</requestid>
+  </revision>
 </revisionlist>

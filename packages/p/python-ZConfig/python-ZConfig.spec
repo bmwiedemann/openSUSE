@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZConfig
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-ZConfig
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Structured Configuration Library
 License:        ZPL-2.1
 Group:          Development/Libraries/Python
 URL:            https://github.com/zopefoundation/ZConfig
 Source:         https://files.pythonhosted.org/packages/source/Z/ZConfig/ZConfig-%{version}.tar.gz
-# UPSTREAM PATCH (partial): gh#zopefoundation/ZConfig#70
-Patch0:         python-38-support.patch
 # Testing requirements:
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module manuel}
@@ -36,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -66,7 +64,6 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ZConfig-%{version}
-%autopatch -p1
 rm -rf ZConfig.egg-info
 rm doc/make.bat
 # test works only in git repo

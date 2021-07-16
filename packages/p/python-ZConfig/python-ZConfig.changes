@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 11 19:18:44 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 3.6.0
+  * Added support for Python 3.8, 3.9 and 3.10. This primarily
+    involves avoiding the new-in-3.8 validation of the format
+    string when using the ‘safe-template’ format style, since
+    that’s not supported in the Python standard library.
+  * Added ZConfig.pygments module containing a lexer compatible
+    with the pygments library. Made discoverable via an entry
+    point; use zconfig as the highlight language for code-block
+    directives in Sphinx documents.
+- Drop patch python-38-support.patch that was integrated upstream.
+
+-------------------------------------------------------------------
 Mon Nov 25 01:54:32 UTC 2019 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add python-38-support.patch to support Python 3.8
