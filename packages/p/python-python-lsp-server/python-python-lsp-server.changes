@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Jul 13 12:36:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 1.1.0
+  * Community maintained replacement for 
+    python-python-language-server (abandoned by upstream).
+  * Required by spyder
