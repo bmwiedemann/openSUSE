@@ -22070,7 +22070,6 @@ unsorted:
   - python36-cangjie 
   - python36-canonicaljson 
   - python36-capturer 
-  - python36-casacore: [i586] 
   - python36-case 
   - python36-cassandra-driver 
   - python36-cassowary 
@@ -22821,6 +22820,7 @@ unsorted:
   - python36-keyczar 
   - python36-keylime 
   - python36-keyring 
+  - python36-keyring-keyutils 
   - python36-keyrings.alt 
   - python36-kismet-rest 
   - python36-kismetdb 
@@ -24878,7 +24878,6 @@ unsorted:
   - python38-cangjie 
   - python38-canonicaljson 
   - python38-capturer 
-  - python38-casacore: [i586] 
   - python38-case 
   - python38-cassandra-driver 
   - python38-cassowary 
@@ -25673,6 +25672,7 @@ unsorted:
   - python38-keyczar 
   - python38-keylime: [i586] 
   - python38-keyring 
+  - python38-keyring-keyutils 
   - python38-keyrings.alt 
   - python38-kismet-rest 
   - python38-kismetdb 
@@ -27862,7 +27862,6 @@ unsorted:
   - python39-cangjie 
   - python39-canonicaljson 
   - python39-capturer 
-  - python39-casacore: [i586] 
   - python39-case 
   - python39-cassandra-driver 
   - python39-cassowary 
@@ -28694,6 +28693,7 @@ unsorted:
   - python39-keyczar 
   - python39-keylime 
   - python39-keyring 
+  - python39-keyring-keyutils 
   - python39-keyrings.alt 
   - python39-kismet-rest 
   - python39-kismetdb 
@@ -31082,7 +31082,6 @@ unsorted:
   - ruby2.7-doc-ri 
   - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-jekyll 
-  - ruby2.7-rubygem-libyui-rake 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby_dep-doc 
   - ruby2.7-rubygem-unicorn-doc 
