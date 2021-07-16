@@ -1,0 +1,74 @@
+---
+ doc/fonts/punknova/tools/build.py |   16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+--- texmf-dist/doc/fonts/punknova/tools/build.py
++++ texmf-dist/doc/fonts/punknova/tools/build.py	2021-06-30 05:06:28.890568484 +0000
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ 
+ import os
+ import sys
+@@ -22,7 +22,7 @@ def run_mpost(file, tempdir):
+             )
+ 
+ def import_glyphs(font, instance, tempdir):
+-    print "Importing glyph variants set '%s'" % instance
++    print("Importing glyph variants set '%s'" % instance)
+ 
+     glyph_files = glob.glob(os.path.join(tempdir, "*.eps"))
+ 
+@@ -67,7 +67,7 @@ def get_alt(code, name):
+     return alt
+ 
+ def add_gsub(font, instances):
+-    print "Adding glyph substitution rules..."
++    print("Adding glyph substitution rules...")
+ 
+     font.addLookup(
+             "Randomize lookup",
+@@ -90,7 +90,7 @@ def add_gsub(font, instances):
+                         get_alt(glyph.unicode, glyph.glyphname))
+ 
+ def greek_caps(font, instances):
+-    print "Adding missing Greek capitals..."
++    print("Adding missing Greek capitals...")
+ 
+     caps = {
+             "Alpha"  : "A",
+@@ -117,7 +117,7 @@ def greek_caps(font, instances):
+                 get_alt(font.createMappedChar(name).unicode, name))
+ 
+ def autowidth(font):
+-    print "Auto spacing..."
++    print("Auto spacing...")
+ 
+     font.selection.all()
+     if font.fullname.find("Slanted"):
+@@ -131,7 +131,7 @@ def autowidth(font):
+     font.autoHint()
+ 
+ def autokern(font, instances):
+-    print "Auto kerning..."
++    print("Auto kerning...")
+ 
+     font.addLookup(
+             "Kern lookup",
+@@ -166,7 +166,7 @@ def finalise(font):
+     space.width   = 400
+ 
+ def usage():
+-    print "Usage: %s INFILE.mp OUTFILE.otf VERSION" % sys.argv[0]
++    print("Usage: %s INFILE.mp OUTFILE.otf VERSION" % sys.argv[0])
+ 
+ if __name__ == "__main__":
+     if len(sys.argv) < 3:
+@@ -216,6 +216,6 @@ if __name__ == "__main__":
+ 
+     sh.rmtree   (tempdir)
+ 
+-    print "Saving file '%s'..." % outfile
++    print("Saving file '%s'..." % outfile)
+ #   font.save()
+     font.generate(outfile)
