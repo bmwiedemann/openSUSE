@@ -1114,4 +1114,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Add support for riscv64</comment>
     <requestid>904555</requestid>
   </revision>
+  <revision rev="154" vrev="152">
+    <srcmd5>0def0274c3cd241786eedae9399b0698</srcmd5>
+    <version>unknown</version>
+    <time>1626466365</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906439</requestid>
+  </revision>
 </revisionlist>

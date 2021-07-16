@@ -220,7 +220,8 @@ LOGO="distributor-logo"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
-echo "Have a lot of fun..." > %{buildroot}%{_sysconfdir}/motd
+mkdir -p %{buildroot}%{_prefix}/lib/motd.d/
+echo "Have a lot of fun..." > %{buildroot}%{_prefix}/lib/motd.d/welcome
 # Bug 404141 - /etc/YaST/control.xml should be owned by some package
 mkdir -p %{buildroot}%{_sysconfdir}/YaST2/
 echo %{buildroot}
@@ -263,7 +264,7 @@ fi
 # Bug 404141 - /etc/YaST/control.xml should be owned by some package
 %dir %{_sysconfdir}/YaST2/
 %config %{_sysconfdir}/YaST2/control.xml
-%config(noreplace) %{_sysconfdir}/motd
+%{_prefix}/lib/motd.d/welcome
 %dir %{_prefix}/lib/issue.d/
 %{_prefix}/lib/issue.d/10-openSUSE.conf
 %{_prefix}/lib/issue.d/90-openSUSE.conf
