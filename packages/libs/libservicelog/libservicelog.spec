@@ -22,7 +22,7 @@ Version:        1.1.19
 Release:        0
 Summary:        Servicelog Database and Library
 License:        LGPL-2.0-or-later
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 URL:            https://github.com/power-ras/libservicelog/
 
 #Git-Clone:	https://github.com/power-ras/libservicelog.git
@@ -30,14 +30,13 @@ URL:            https://github.com/power-ras/libservicelog/
 Source0:        https://github.com/power-ras/libservicelog/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        libservicelog-rpmlintrc
-PreReq:         %{_sbindir}/groupadd
+Requires(pre):  %{_sbindir}/groupadd
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  librtas-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  sqlite3-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64 ppc64le
 
 %description
@@ -61,44 +60,42 @@ system.
 
 %package        devel
 Summary:        Development files for libservicelog
-Group:          Development/Libraries/Other
+Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 Requires:       glibc-devel
 Requires:       sqlite3-devel
 
 %description    devel
-Contains header files for building with libservicelog.
+Header files for building with libservicelog.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fiv
-%configure --with-pic --disable-static
+%configure --disable-static
 make %{?_smp_mflags}
 
 %install
 %make_install
-%__rm -f %{buildroot}%{_libdir}/*.la
+rm -f %{buildroot}/%{_libdir}/*.la
 
 %pre
-/usr/sbin/groupadd -r service || echo groupadd service failed
+getent group service >/dev/null || %{_sbindir}/groupadd -r service
 
 %post    -n %lname -p /sbin/ldconfig
 %postun  -n %lname -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc COPYING AUTHORS
+%license COPYING
+%doc AUTHORS
 %attr( 754, root, service ) %dir /var/lib/servicelog
 %attr( 644, root, service ) /var/lib/servicelog/servicelog.db
 
 %files -n %lname
-%defattr(-,root,root,-)
 %{_libdir}/lib*.so.*
 
 %files devel
-%defattr(-,root,root,-)
 %{_includedir}/servicelog-1
 %{_libdir}/pkgconfig/servicelog-1.pc
 %{_libdir}/*.so
