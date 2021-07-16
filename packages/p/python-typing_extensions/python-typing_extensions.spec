@@ -1,5 +1,5 @@
 #
-# spec file for package python-typing_extensions
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-typing_extensions%{psuffix}
-Version:        3.7.4.3
+Version:        3.10.0.0
 Release:        0
 Summary:        Backported and Experimental Type Hints for Python 35+
 License:        Python-2.0

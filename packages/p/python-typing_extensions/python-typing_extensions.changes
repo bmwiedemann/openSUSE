@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 12 13:11:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.10.0.0
+  * Implement TypeGuard (PEP 649)
+  * backport ParamSpecArgs/Kwargs
+  * Fixed required/optional keys with old-style TypedDict
+  * Bring in protocol’s __init__ behaviour same like in python > 3.8
+  * Support PEP 612 in typing_extensions (Python 3)
+  * Add OrderedDict to typing_extensions
+
+-------------------------------------------------------------------
 Tue Jan 12 16:06:44 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Test in separate multibuild flavor to break depcycles with full
