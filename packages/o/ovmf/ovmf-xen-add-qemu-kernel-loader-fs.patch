@@ -1,0 +1,46 @@
+From f4b2b93645b4025741cee54d7b6ee547cfa76e0e Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 9 Jul 2021 11:13:38 +0800
+Subject: [PATCH] OvmfPkg/OvmfXen: add QemuKernelLoaderFsDxe
+
+Without QemuKernelLoaderFsDxe, QemuLoadKernelImage() couldn't download
+the kernel, initrd, and kernel command line from QEMU's fw_cfg.
+
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: Julien Grall <julien@xen.org>
+Cc: Jim Fehlig <jfehlig@suse.com>
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ OvmfPkg/OvmfXen.dsc | 1 +
+ OvmfPkg/OvmfXen.fdf | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/OvmfPkg/OvmfXen.dsc b/OvmfPkg/OvmfXen.dsc
+index 3c1ca6bfd493..1a9c06c164a8 100644
+--- a/OvmfPkg/OvmfXen.dsc
++++ b/OvmfPkg/OvmfXen.dsc
+@@ -587,6 +587,7 @@ [Components]
+       NULL|OvmfPkg/Csm/LegacyBootMaintUiLib/LegacyBootMaintUiLib.inf
+ !endif
+   }
++  OvmfPkg/QemuKernelLoaderFsDxe/QemuKernelLoaderFsDxe.inf
+   OvmfPkg/XenIoPvhDxe/XenIoPvhDxe.inf
+   OvmfPkg/XenIoPciDxe/XenIoPciDxe.inf
+   OvmfPkg/XenBusDxe/XenBusDxe.inf
+diff --git a/OvmfPkg/OvmfXen.fdf b/OvmfPkg/OvmfXen.fdf
+index aeb9336fd5b7..8b5823555937 100644
+--- a/OvmfPkg/OvmfXen.fdf
++++ b/OvmfPkg/OvmfXen.fdf
+@@ -324,6 +324,7 @@ [FV.DXEFV]
+ INF  MdeModulePkg/Universal/DriverHealthManagerDxe/DriverHealthManagerDxe.inf
+ INF  MdeModulePkg/Universal/BdsDxe/BdsDxe.inf
+ INF  MdeModulePkg/Application/UiApp/UiApp.inf
++INF  OvmfPkg/QemuKernelLoaderFsDxe/QemuKernelLoaderFsDxe.inf
+ INF  MdeModulePkg/Universal/DevicePathDxe/DevicePathDxe.inf
+ INF  MdeModulePkg/Universal/PrintDxe/PrintDxe.inf
+ INF  MdeModulePkg/Universal/Disk/DiskIoDxe/DiskIoDxe.inf
+-- 
+2.31.1
+

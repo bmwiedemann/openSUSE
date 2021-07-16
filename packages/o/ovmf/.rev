@@ -518,4 +518,12 @@
 - Correct the path to copy the Xen flavor</comment>
     <requestid>898914</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>4bfe49cb90e74282b1ae6cc3d09f3d5e</srcmd5>
+    <version>202105</version>
+    <time>1626466347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>905214</requestid>
+  </revision>
 </revisionlist>

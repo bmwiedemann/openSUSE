@@ -52,6 +52,9 @@ Patch4:         %{name}-disable-ia32-firmware-piepic.patch
 Patch5:         %{name}-set-fixed-enroll-time.patch
 Patch6:         %{name}-disable-brotli.patch
 Patch7:         %{name}-bsc1186151-fix-iscsi-overflows.patch
+Patch8:         %{name}-xen-relocate-shared_info_page-map.patch
+Patch9:         %{name}-fix-xen-s3-detection.patch
+Patch10:        %{name}-xen-add-qemu-kernel-loader-fs.patch
 BuildRequires:  bc
 BuildRequires:  cross-arm-binutils
 BuildRequires:  cross-arm-gcc%{gcc_version}
@@ -170,6 +173,9 @@ rm -rf $PKG_TO_REMOVE
 %patch5 -p1
 %patch6 -p1
 %patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 # add openssl
 pushd CryptoPkg/Library/OpensslLib/openssl

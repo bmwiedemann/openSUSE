@@ -1,0 +1,92 @@
+From 16ec4f4618e0129c51d0e31dddfb01dc667bd273 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Wed, 7 Jul 2021 15:50:54 +0800
+Subject: [RFC PATCH] OvmfPkg/OvmfXen: set PcdAcpiS3Enable at initialization
+
+There are several functions in OvmfPkg/Library using
+QemuFwCfgS3Enabled() to detect the S3 support status. However, in
+MdeModulePkg, PcdAcpiS3Enable is used to check S3 support. Since
+InitializeXenPlatform() didn't set PcdAcpiS3Enable as
+InitializePlatform() did, this made the inconsistency between
+drivers/functions.
+
+For example, S3SaveStateDxe checked PcdAcpiS3Enable and skipped
+S3BootScript because the default value is FALSE. On the other hand,
+PlatformBootManagerBeforeConsole() from OvmfPkg/Library called
+QemuFwCfgS3Enabled() and found it returned TRUE, so it invoked
+SaveS3BootScript(). However, S3SaveStateDxe skipped S3BootScript, so
+SaveS3BootScript() asserted due to EFI_NOT_FOUND.
+
+Setting PcdAcpiS3Enable at InitializeXenPlatform() "fixes" the crash
+reported by my colleague. The other possible direction is to replace
+QemuFwCfgS3Enabled() with PcdAcpiS3Enable. I'm not sure which one is
+the right fix.
+
+Cc: Laszlo Ersek <lersek@redhat.com>
+Cc: Ard Biesheuvel <ardb+tianocore@kernel.org>
+Cc: Jordan Justen <jordan.l.justen@intel.com>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: Julien Grall <julien@xen.org>
+Cc: Jim Fehlig <jfehlig@suse.com>
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ OvmfPkg/XenPlatformPei/Platform.c         | 10 ++++++++++
+ OvmfPkg/XenPlatformPei/XenPlatformPei.inf |  3 +++
+ 2 files changed, 13 insertions(+)
+
+Index: edk2-edk2-stable202105/OvmfPkg/XenPlatformPei/Platform.c
+===================================================================
+--- edk2-edk2-stable202105.orig/OvmfPkg/XenPlatformPei/Platform.c
++++ edk2-edk2-stable202105/OvmfPkg/XenPlatformPei/Platform.c
+@@ -26,6 +26,8 @@
+ #include <Library/PciLib.h>
+ #include <Library/PeimEntryPoint.h>
+ #include <Library/PeiServicesLib.h>
++#include <Library/QemuFwCfgLib.h>
++#include <Library/QemuFwCfgS3Lib.h>
+ #include <Library/ResourcePublicationLib.h>
+ #include <Guid/MemoryTypeInformation.h>
+ #include <Ppi/MasterBootMode.h>
+@@ -423,6 +425,8 @@ InitializeXenPlatform (
+   IN CONST EFI_PEI_SERVICES     **PeiServices
+   )
+ {
++  EFI_STATUS    Status;
++
+   DEBUG ((DEBUG_INFO, "Platform PEIM Loaded\n"));
+ 
+   DebugDumpCmos ();
+@@ -433,6 +437,12 @@ InitializeXenPlatform (
+     CpuDeadLoop ();
+   }
+ 
++  if (QemuFwCfgS3Enabled ()) {
++    DEBUG ((DEBUG_INFO, "S3 support was detected on QEMU\n"));
++    Status = PcdSetBoolS (PcdAcpiS3Enable, TRUE);
++    ASSERT_EFI_ERROR (Status);
++  }
++
+   XenConnect ();
+ 
+   BootModeInitialization ();
+Index: edk2-edk2-stable202105/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+===================================================================
+--- edk2-edk2-stable202105.orig/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
++++ edk2-edk2-stable202105/OvmfPkg/XenPlatformPei/XenPlatformPei.inf
+@@ -57,6 +57,8 @@
+   ResourcePublicationLib
+   PeiServicesLib
+   PeimEntryPoint
++  QemuFwCfgLib
++  QemuFwCfgS3Lib
+   MtrrLib
+   MemEncryptSevLib
+   PcdLib
+@@ -79,6 +81,7 @@
+   gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Base
+   gUefiOvmfPkgTokenSpaceGuid.PcdPciMmio64Size
+   gUefiOvmfPkgTokenSpaceGuid.PcdQ35TsegMbytes
++  gEfiMdeModulePkgTokenSpaceGuid.PcdAcpiS3Enable
+   gEfiMdeModulePkgTokenSpaceGuid.PcdFlashNvStorageFtwSpareSize
+   gEfiMdeModulePkgTokenSpaceGuid.PcdEmuVariableNvStoreReserved
+   gEfiMdeModulePkgTokenSpaceGuid.PcdPciDisableBusEnumeration

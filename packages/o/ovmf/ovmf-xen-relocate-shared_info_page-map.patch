@@ -1,0 +1,42 @@
+From b37cfdd2807181aed2fee1e17bd7ec1190db266a Mon Sep 17 00:00:00 2001
+From: Anthony PERARD <anthony.perard@citrix.com>
+Date: Mon, 28 Jun 2021 14:23:37 +0100
+Subject: [PATCH 1/1] OvmfPkg/XenPlatformPei: Relocate shared_info page mapping
+
+Unfortunately, Xen isn't ready to deal with mapping at the top of the
+physical address space, so we relocate the mapping after the LAPIC
+location.
+
+See this thread about the issue with the mapping:
+- https://lore.kernel.org/xen-devel/f8c4151a-6dac-d87c-ef46-eb35ada07bd9@suse.com/
+
+The PhysicalAddressIdentityMapping() call isn't going to do anything
+anymore since everything under 4GB is already mapped, but there is no
+need to remove the call.
+
+Cc: Jan Beulich <JBeulich@suse.com>
+Cc: Andrew Cooper <andrew.cooper3@citrix.com>
+Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
+Message-Id: <20210628132337.46345-1-anthony.perard@citrix.com>
+Acked-by: Laszlo Ersek <lersek@redhat.com>
+[lersek@redhat.com: replace "CC:" with "Cc:", to pacify PatchCheck.py]
+---
+ OvmfPkg/XenPlatformPei/Xen.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/OvmfPkg/XenPlatformPei/Xen.c b/OvmfPkg/XenPlatformPei/Xen.c
+index a4e82b356936..9c6641895970 100644
+--- a/OvmfPkg/XenPlatformPei/Xen.c
++++ b/OvmfPkg/XenPlatformPei/Xen.c
+@@ -569,7 +569,7 @@ CalibrateLapicTimer (
+   EFI_STATUS            Status;
+ 
+ 
+-  SharedInfo = (VOID*)((1ULL << mPhysMemAddressWidth) - EFI_PAGE_SIZE);
++  SharedInfo = (VOID*)((UINTN)PcdGet32 (PcdCpuLocalApicBaseAddress) + SIZE_1MB);
+   Status = PhysicalAddressIdentityMapping ((EFI_PHYSICAL_ADDRESS)SharedInfo);
+   if (EFI_ERROR (Status)) {
+     DEBUG ((DEBUG_ERROR,
+-- 
+2.31.1
+

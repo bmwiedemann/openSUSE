@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  9 05:48:26 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-fix-xen-s3-detection.patch to fix the S3 detection in
+  ovmf-xen
+- Add ovmf-xen-add-qemu-kernel-loader-fs.patch to add
+  QemuKernelLoaderFsDxe to ovmf-xen to load kernel from qemu fw_cfg
+
+-------------------------------------------------------------------
+Fri Jul  2 01:27:35 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Add ovmf-xen-relocate-shared_info_page-map.patch to fix the
+  save/restore/migrate in ovmf-xen
+
+-------------------------------------------------------------------
 Wed Jun  9 01:47:49 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add ovmf-bsc1186151-fix-iscsi-overflows.patch to fix the possible
