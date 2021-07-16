@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 16 16:54:27 CEST 2021 - tiwai@suse.de
+
+- Add gtk3 port (partly borrowed from Fedora package):
+  kasumi-2.5-gtk3.patch
+  kasumi-2.5-configure-gtk3.patch
+- Fix build with the recent gcc:
+  kasumi-2.5-c++14.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Nov 13 09:11:50 UTC 2011 - coolo@suse.com
 
 - add libtool as explicit buildrequire to avoid implicit dependency from prjconf

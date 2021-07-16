@@ -1,7 +1,7 @@
 #
 # spec file for package kasumi
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,56 +12,53 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
-# norootforbuild
 
 
 Name:           kasumi
-BuildRequires:  anthy-devel gcc-c++ gtk2-devel libtool update-desktop-files
-License:        GPL-2.0+
-Group:          System/I18n/Japanese
-AutoReqProv:    on
-Provides:       locale(anthy:ja)
 Version:        2.5
-Release:        1
-Url:            http://kasumi.sourceforge.jp/
-Source0:        kasumi-%{version}.tar.bz2
-Patch:          desktop.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Release:        0
 Summary:        Dictionary Tool for Anthy
+License:        GPL-2.0-or-later
+Group:          System/I18n/Japanese
+URL:            http://kasumi.sourceforge.jp/
+Source0:        kasumi-%{version}.tar.bz2
+Patch1:         desktop.patch
+Patch2:         kasumi-2.5-gtk3.patch
+Patch3:         kasumi-2.5-configure-gtk3.patch
+Patch4:         kasumi-2.5-c++14.patch
+BuildRequires:  anthy-devel
+BuildRequires:  gcc-c++
+BuildRequires:  gtk3-devel
+BuildRequires:  libtool
+BuildRequires:  update-desktop-files
+Provides:       locale(anthy:ja)
 
 %description
 A graphical tool to edit the personal dictionary for Anthy.
 
-
-
-Authors:
---------
-    Takashi Nakamoto <bluedwarf@openoffice.org>
-
 %prep
 %setup -q
-%patch -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
 
 %build
 libtoolize --force
 autoreconf --force --install
 %configure
-make  %{?jobs:-j %jobs}
+%make_build
 
 %install
-%makeinstall
-%suse_update_desktop_file -i %name System SystemSetup
+%make_install
+%suse_update_desktop_file -i %{name} System SystemSetup
 %find_lang kasumi
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %files -f kasumi.lang
-%defattr(-, root, root)
-%doc AUTHORS COPYING ChangeLog INSTALL NEWS README
+%license COPYING
+%doc AUTHORS ChangeLog INSTALL NEWS README
 %{_bindir}/*
 %{_datadir}/pixmaps/kasumi.png
 %{_datadir}/applications/kasumi.desktop
