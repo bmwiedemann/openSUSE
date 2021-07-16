@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 15 07:02:57 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.210a5
+
+- Update to version 5.2b10a5:
+  - Fixed the bug where db.extension.inlines and db.extension.blocks were
+    accidentally omitted from a4.
+  - Made the name attribute on meta optional.
+  - Fixed duplicate patterns in db.synopsis.blocks.
+  - Improved the consistency of synopsisinfo by making it available in
+    fieldsynopsis, constructorsynopsis, and destructorsynopsis.
+
+- Spec file
+  - Correct XML catalog entry and replaced wrong and old 5.210a2
+    version with current version
+  - Remove %lastschemaversion variable, consolidate to %version
+
+-------------------------------------------------------------------
+Thu Jul  9 08:15:00 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2b10a4
+
+- Update to version 5.2b10a4:
+  - Adding transclusion attributes as common attributes (#187)
+  - Implementing legalsection as a class attribute (#186)
+  - Add a type attribute to formal and informal objects (#185)
+  - Add pubwork/otherpubwork to biblioentry/bibliomixed (#184)
+  - Add a DocBook ITS + XInclude schema (#183)
+  - Proposed fix for issues related to the new synopsis elements (#173)
+  - Convert @name on s:pattern to s:title in ISO Schematron (#2)
+
+- Update to version 5.2b10a3:
+  - Add a general meta element (#176)
+  - Fix XInclude issues on empty href, fragid (#175)
+  - Add Schematron rules for productionset and callout (#174, #151, #162)
+
+-------------------------------------------------------------------
 Mon Aug 31 13:45:10 UTC 2020 - Thomas Schraitle <thomas.schraitle@suse.com> - 5.2b10a2
 
 - Spec improvements:
