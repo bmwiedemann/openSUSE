@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  9 20:45:19 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 6.1.0
+  * Fix IField.required to not be required by default.
+- Changes from 6.0.1
+  * Bring branch coverage to 100%.
+  * Add support for Python 3.9.
+  * Fix FieldUpdateEvent implementation by having an object attribute
+    as the IFieldUpdatedEvent interfaces claims there should be.
+
+-------------------------------------------------------------------
 Tue Mar 24 14:30:23 UTC 2020 - pgajdos@suse.com
 
 - version update to 6.0.0

@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.schema
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.schema%{psuffix}
-Version:        6.0.0
+Version:        6.1.0
 Release:        0
 Summary:        Zope interface extension for defining data schemas
 License:        ZPL-2.1
