@@ -1,7 +1,7 @@
 #
-# spec file for package python-zope.component
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zope.component%{psuffix}
-Version:        4.6.2
+Version:        5.0.1
 Release:        0
 
 Summary:        Zope Component Architecture
@@ -38,11 +38,9 @@ Source:         https://files.pythonhosted.org/packages/source/z/zope.component/
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-zope.deferredimport >= 4.2.1
-Requires:       python-zope.deprecation >= 4.3.0
 Requires:       python-zope.event
 Requires:       python-zope.hookable >= 4.2.0
-Requires:       python-zope.interface >= 4.1.0
+Requires:       python-zope.interface >= 5.3.0a1
 #test requirements
 %if %{with test}
 BuildRequires:  %{python_module persistent}
@@ -89,7 +87,8 @@ rm -rf src/zope.component.egg-info
 %if !%{with test}
 %files %{python_files}
 %defattr(-,root,root)
-%doc CHANGES.rst COPYRIGHT.txt LICENSE.txt README.rst
+%license LICENSE.txt COPYRIGHT.txt
+%doc CHANGES.rst README.rst
 %{python_sitelib}/*
 %endif
 

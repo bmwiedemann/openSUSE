@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 10 00:31:03 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Update to 5.0.1
+  * Add support for Python 3.9.
+  * Many other changes, see CHANGES.rst
+- Update requirements as changed in setup.py.
+- Mark LICENSE.txt, COPYRIGHT.txt with %license.
+
+-------------------------------------------------------------------
 Tue Jul 21 09:07:11 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to version 4.6.2
