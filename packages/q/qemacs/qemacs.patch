@@ -28,18 +28,6 @@ diff -Nru qemacs-0.3.1.orig/Makefile qemacs-0.3.1/Makefile
  TAGS: force
  	etags *.[ch]
 diff -Nru qemacs-0.3.1.orig/configure qemacs-0.3.1/configure
---- qemacs-0.3.1.orig/configure	2003-04-30 18:20:45.000000000 +0200
-+++ qemacs-0.3.1/configure	2003-04-30 21:22:07.000000000 +0200
-@@ -311,7 +311,7 @@
- head $source_path/VERSION >>config.mak
- echo "" >>config.mak
- echo -n "#define QE_VERSION \"" >> $TMPH
--head $source_path/VERSION >> $TMPH
-+head $source_path/VERSION | tr --delete '\n' >> $TMPH
- echo "\"" >> $TMPH
- if test "$network" = "yes" ; then
-   echo "#define CONFIG_NETWORK 1" >> $TMPH
-diff -Nru qemacs-0.3.1.orig/qemacs.1 qemacs-0.3.1/qemacs.1
 --- qemacs-0.3.1.orig/qemacs.1	1970-01-01 01:00:00.000000000 +0100
 +++ qemacs-0.3.1/qemacs.1	2003-04-30 21:22:27.000000000 +0200
 @@ -0,0 +1 @@

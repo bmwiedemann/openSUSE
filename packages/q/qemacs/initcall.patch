@@ -30,4 +30,4 @@
 +#define __exit_call	__attribute__ ((used,__section__ (".exitcall.exit")))
  
  #define qe_module_init(fn) \
- 	static int (*__initcall_##fn)(void) __init_call = fn
+ 	int (*__initcall_##fn)(void) __init_call = fn

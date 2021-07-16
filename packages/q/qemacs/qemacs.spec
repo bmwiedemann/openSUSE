@@ -1,7 +1,7 @@
 #
 # spec file for package qemacs
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           qemacs
+Version:        0.3.3
+Release:        0
+Summary:        An editor similar to Emacs
+License:        LGPL-2.1-or-later
+Group:          Productivity/Editors/Other
+URL:            https://bellard.org/qemacs/
+Source0:        https://bellard.org/qemacs/qemacs-%{version}.tar.gz
+Patch0:         qemacs.patch
+Patch1:         qemacs-lib64.patch
+Patch2:         initcall.patch
+Patch3:         qemacs-libpng.patch
+# PATCH-FIX-UPSTREAM pngtoico-libpng15.patch -- pgajdos@suse.com; build with libpng15; sent today to fabrice.bellard@free.fr
+# build against libpng14 should not be affected, otherwise please let me know
+Patch4:         qemacs-libpng15.patch
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xv)
-Version:        0.3.1
-Release:        0
-Url:            http://fabrice.bellard.free.fr/qemacs/
-Source0:        http://fabrice.bellard.free.fr/qemacs/qemacs-0.3.1.tar.bz2
-Patch0:         qemacs.patch
-Patch1:         qemacs-lib64.patch
-Patch2:         gcc4.patch
-Patch3:         includes.patch
-Patch4:         initcall.patch
-Patch5:         qemacs-libpng.patch
-# PATCH-FIX-UPSTREAM pngtoico-libpng15.patch -- pgajdos@suse.com; build with libpng15; sent today to fabrice.bellard@free.fr
-# build against libpng14 should not be affected, otherwise please let me know
-Patch6:         qemacs-libpng15.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Summary:        An editor similar to Emacs
-License:        LGPL-2.1-or-later
-Group:          Productivity/Editors/Other
 
 %description
 Full screen editor with an Emacs look and feel with common Emacs features
@@ -72,11 +70,9 @@ completion and history. Additional features:
 %setup -q
 %patch0 -p1
 %patch1 -p1 -b .lib64
-%patch2 -p1
+%patch2
 %patch3
-%patch4
-%patch5
-%patch6 -p1
+%patch4 -p1
 
 %build
 export CFLAGS="%{optflags}"
@@ -91,11 +87,11 @@ make STRIP=:
 chmod 644 %{buildroot}/%{_mandir}/man1/*
 
 %files
-%defattr(-,root,root)
-%doc COPYING Changelog README TODO qe-doc.html config.eg
+%license COPYING
+%doc Changelog README TODO qe-doc.html config.eg
 %doc tests/
-/usr/bin/*
-/usr/share/qe/
-%doc %{_mandir}/man1/*
+%{_bindir}/*
+%{_datadir}/qe/
+%{_mandir}/man1/*
 
 %changelog
