@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  9 06:11:11 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fixed squared artefacts on image when converting to AVIF
+  * Added f553646d70fba8e265d436103a73520eb7adec8c.patch
+
+-------------------------------------------------------------------
+Wed Jun  2 07:19:00 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix service for cargo vendor creation
+
+-------------------------------------------------------------------
 Wed Apr  7 21:40:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - avoid packaging the pkgconfig dir - it comes from filesystem

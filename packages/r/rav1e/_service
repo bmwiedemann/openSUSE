@@ -1,5 +1,5 @@
 <services>
   <service name="cargo_vendor" mode="disabled">
-    <param name="srcdir">rav1e</param>
+    <param name="srcdir">rav1e-0.4.1</param>
   </service>
 </services>

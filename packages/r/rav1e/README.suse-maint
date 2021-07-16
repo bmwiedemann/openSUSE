@@ -1,0 +1,25 @@
+# How to update the rav1e package
+
+## Prerequisites:
+You need the download_files and cargo_vendor obs services installed:
+  zypper in obs-service-download_files obs-service-cargo_vendor
+
+## Updating to a new version from upstream
+
+Edit the spec file and update the version variable.
+
+Download the new source file by running:
+  osc service ra download_files
+
+Uncompress the rav1e-%{version}.tar.gz file:
+  tar xf rav1e-*.tar.gz
+
+This will create a rav1e-%{version} directory
+
+Edit the _service file and set the srcdir param
+to the extracted directory.
+
+Run the cargo_vendor service with:
+  osc service disabledrun
+
+Update the changelog file with the upstream release notes.

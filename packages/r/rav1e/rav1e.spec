@@ -28,8 +28,14 @@ URL:            https://github.com/xiph/rav1e
 #
 Source0:        https://github.com/xiph/rav1e/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
+Source98:       README.suse-maint
 Source99:       baselibs.conf
 #
+# Fix squared artefacts on image when converting to AVIF
+Patch0:         https://github.com/xiph/rav1e/commit/f553646d70fba8e265d436103a73520eb7adec8c.patch
+#
+BuildRequires:  cargo
 BuildRequires:  cargo-c
 BuildRequires:  nasm
 BuildRequires:  rust-packaging
@@ -89,8 +95,6 @@ directory = './vendor'
 rustc = "%{__rustc}"
 rustdoc = "%{__rustdoc}"
 rustflags = %{__global_rustflags_toml}
-[install]
-root = '%{buildroot}%{_prefix}'
 [term]
 verbose = true
 EOF
@@ -101,21 +105,22 @@ sed -i 's/"rav1e_js", //' Cargo.toml
 
 %build
 export RUSTFLAGS=%{rustflags}
-%{cargo_build}
-CFLAGS="%{optflags}" %{__cargo} cbuild
+cargo build --offline --release
+CFLAGS="%{optflags}" cargo cbuild
 
 %install
 export RUSTFLAGS=%{rustflags}
-%{cargo_install}
+cargo install --offline --root=%{buildroot}%{_prefix} --path .
 rm -rf %{buildroot}%{_datadir}/cargo
 
-%{__cargo} cinstall \
+cargo cinstall \
     --destdir=%{buildroot} \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
     --includedir=%{_includedir} \
     --pkgconfigdir=%{_libdir}/pkgconfig
 rm -f %{buildroot}%{_libdir}/librav1e.a
+rm -f %{buildroot}%{_prefix}/.crates*
 
 %post   -n librav1e0 -p /sbin/ldconfig
 %postun -n librav1e0 -p /sbin/ldconfig

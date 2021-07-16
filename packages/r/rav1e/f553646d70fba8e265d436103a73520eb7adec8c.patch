@@ -1,0 +1,42 @@
+From f553646d70fba8e265d436103a73520eb7adec8c Mon Sep 17 00:00:00 2001
+From: David Michael Barr <b@rr-dav.id.au>
+Date: Thu, 8 Jul 2021 13:39:59 +0900
+Subject: [PATCH] Initialise residual when less than the transform width is
+ visible
+
+The input stride for forward transforms did not match the output
+stride of residual computation in this case. Extend the residual
+stride to the transform width and zero the non-visible portion.
+Fixes #2662. Fixes #2757.
+---
+ src/encoder.rs | 14 +++++++++++---
+ 1 file changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/encoder.rs b/src/encoder.rs
+index 564d78d7e..1ccf8c831 100644
+--- a/src/encoder.rs
++++ b/src/encoder.rs
+@@ -1209,12 +1209,20 @@ pub fn encode_tx_block<T: Pixel, W: Writer>(
+       residual,
+       &ts.input_tile.planes[p].subregion(area),
+       &rec.subregion(area),
+-      visible_tx_w,
++      tx_size.width(),
+       visible_tx_h,
+     );
++    if visible_tx_w < tx_size.width() {
++      for row in residual.chunks_mut(tx_size.width()).take(visible_tx_h) {
++        for a in &mut row[visible_tx_w..] {
++          *a = 0;
++        }
++      }
++    }
+   }
+-  let visible_area = visible_tx_w * visible_tx_h;
+-  for a in residual[visible_area..].iter_mut() {
++  let initialized_area =
++    if visible_tx_w == 0 { 0 } else { tx_size.width() * visible_tx_h };
++  for a in residual[initialized_area..].iter_mut() {
+     *a = 0;
+   }
+ 

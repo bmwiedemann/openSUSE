@@ -79,4 +79,15 @@ Note: I've updated the source tarball as upstream updated the tag.</comment>
 </comment>
     <requestid>883753</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>10e7df0f3573936da195ea482d5d4a12</srcmd5>
+    <version>0.4.1</version>
+    <time>1626466350</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed squared artefacts on image when converting to AVIF
+  * Added f553646d70fba8e265d436103a73520eb7adec8c.patch
+- Fix service for cargo vendor creation
+</comment>
+    <requestid>905264</requestid>
+  </revision>
 </revisionlist>
