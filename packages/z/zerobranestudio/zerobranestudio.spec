@@ -37,6 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  lua%{lua_version_nodots}-devel
+BuildRequires:  lua%{lua_version_nodots}-bit32
 BuildRequires:  lua%{lua_version_nodots}-copas
 BuildRequires:  lua%{lua_version_nodots}-lpeg
 BuildRequires:  lua%{lua_version_nodots}-luafilesystem
@@ -50,6 +51,7 @@ BuildRequires:  wxlua-devel
 Requires:       libwxlua
 Requires:       lua%{lua_version_nodots}-copas
 Requires:       lua%{lua_version_nodots}-lpeg
+BuildRequires:  lua%{lua_version_nodots}-bit32
 Requires:       lua%{lua_version_nodots}-luafilesystem
 Requires:       lua%{lua_version_nodots}-luasec
 %if 0%{suse_version} < 1550

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 11 16:14:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Re-add accidentally removed dependency
+
+-------------------------------------------------------------------
 Sun Apr 18 15:48:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use Lua default on TW and 5.1 on anything else
