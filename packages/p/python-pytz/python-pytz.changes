@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 17:16:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add %pyunittest shim for platforms where it is missing.
+
+-------------------------------------------------------------------
 Thu Jun 24 21:46:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove real directory of %{python_sitelib}/pytz/zoneinfo when

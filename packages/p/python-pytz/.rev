@@ -357,4 +357,13 @@
 </comment>
     <requestid>902223</requestid>
   </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>f41fcb09b8b435e101896a2dc3fbb8b2</srcmd5>
+    <version>2021.1</version>
+    <time>1626466345</time>
+    <user>dimstar_suse</user>
+    <comment>- Add %pyunittest shim for platforms where it is missing.
+</comment>
+    <requestid>905114</requestid>
+  </revision>
 </revisionlist>

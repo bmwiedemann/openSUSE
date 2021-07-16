@@ -21,6 +21,13 @@
 %define tzdata_version 2021a
 %define oldpython python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!pyunittest:%define pyunittest(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \\\
+    %{lua: local args = rpm.expand("%**");
+           local broot = rpm.expand("%buildroot");
+           local intro = "%{python_expand PYTHONPATH=${PYTHONPATH:+$PYTHONPATH:}" .. broot .. "%{$python_sitelib} PYTHONDONTWRITEBYTECODE=1 $python -m unittest ";
+           print(rpm.expand(intro .. args .. "}"))
+    } }
+
 Name:           python-pytz
 Version:        2021.1
 Release:        0
