@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  7 11:13:26 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.13.0
+  - Fix behavior of fi_param_get parsing an invalid boolean value
+  - Add new APIs to open, export, and import specialized fid's
+  - Define ability to import a monitor into the registration cache
+  - Add API support for INT128/UINT128 atomics
+  - Fix incorrect check for provider name in getinfo filtering path
+  - Allow core providers to return default attributes which are lower then
+    maximum supported attributes in getinfo call
+  - Add option prefer external providers (in order discovered) over internal
+    providers, regardless of provider version
+  - Separate Ze (level-0) and DRM dependencies
+  - Always maintain a list of all discovered providers
+  - Fix incorrect CUDA warnings
+  - Fix bug in cuda init/cleanup checking for gdrcopy support
+  - Shift order providers are called from in fi_getinfo, move psm2 ahead of
+    psm3 and efa ahead of psmX
+  - See NEWS.md for changelog
+
+-------------------------------------------------------------------
 Fri Apr  2 07:30:34 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.12.1
