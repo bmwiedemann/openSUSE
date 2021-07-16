@@ -939,6 +939,7 @@ unsorted:
   - authbind 
   - authselect 
   - authselect-compat 
+  - authselect-profiles 
   - auto 
   - auto-common 
   - auto-javadoc 
@@ -2100,6 +2101,7 @@ unsorted:
   - collectd-plugin-lua 
   - collectd-plugin-mcelog 
   - collectd-plugin-memcachec 
+  - collectd-plugin-modbus 
   - collectd-plugin-mqtt 
   - collectd-plugin-mysql 
   - collectd-plugin-notify-desktop 
@@ -6798,6 +6800,7 @@ unsorted:
   - ibus-table-ipa-x-sampa 
   - ibus-table-latex 
   - ibus-table-mathwriter 
+  - ibus-table-mongol-bichig 
   - ibus-table-others 
   - ibus-table-rusle 
   - ibus-table-telex 
@@ -7390,6 +7393,7 @@ unsorted:
   - jetty-start 
   - jetty-toolchain 
   - jetty-unixsocket 
+  - jetty-unixsocket-javadoc 
   - jetty-util 
   - jetty-util-ajax 
   - jetty-version-maven-plugin 
@@ -9545,7 +9549,7 @@ unsorted:
   - libaugeas0-32bit: [x86_64] 
   - libauparse0-32bit: [x86_64] 
   - libauthselect-devel 
-  - libauthselect1 
+  - libauthselect3 
   - libav-tools 
   - libavahi-devel 
   - libavahi-glib-devel 
@@ -12370,10 +12374,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_14-gnu-hpc 
-  - libopenblas-pthreads_0_3_14-gnu-hpc-devel 
-  - libopenblas_0_3_14-gnu-hpc 
-  - libopenblas_0_3_14-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_16-gnu-hpc 
+  - libopenblas-pthreads_0_3_16-gnu-hpc-devel 
+  - libopenblas_0_3_16-gnu-hpc 
+  - libopenblas_0_3_16-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -13374,6 +13378,7 @@ unsorted:
   - librlog5 
   - librlog5-doc 
   - librmt-devel-doc 
+  - librnnoise0 
   - librnp0 
   - librocsgraphtheory0 
   - librpma0: [x86_64] 
@@ -13688,6 +13693,8 @@ unsorted:
   - libsrtp1-32bit: [x86_64] 
   - libsrtp2-1-32bit: [x86_64] 
   - libsrtp2-devel 
+  - libsrtp2-linphone-devel 
+  - libsrtp2-linphone1 
   - libssh-devel 
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
@@ -17824,8 +17831,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_14-gnu-hpc-devel-static 
-  - openblas_0_3_14-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_16-gnu-hpc-devel-static 
+  - openblas_0_3_16-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
@@ -30967,6 +30974,7 @@ unsorted:
   - rmt-server-pubcloud: [x86_64] 
   - rmw 
   - rmw-lang 
+  - rnnoise-devel 
   - rnp 
   - rnp-devel 
   - robin-map-devel 
