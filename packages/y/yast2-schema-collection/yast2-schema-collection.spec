@@ -38,14 +38,14 @@ Those are needed to be able to validate autoyast XML files you might want to use
 %build
 
 %install
-mkdir -p %{buildroot}%{yast_schemadir}/autoyast/distros
-cp -a * %{buildroot}%{yast_schemadir}/autoyast/distros
+mkdir -p %{buildroot}%{yast_schemadir}/autoyast/products
+cp -a * %{buildroot}%{yast_schemadir}/autoyast/products
 %fdupes %{buildroot}
 
 %files
 %dir %{yast_schemadir}
 %dir %{yast_schemadir}/autoyast/
-%dir %{yast_schemadir}/autoyast/distros
-%{yast_schemadir}/autoyast/distros/*
+%dir %{yast_schemadir}/autoyast/products
+%{yast_schemadir}/autoyast/products/*
 
 %changelog
