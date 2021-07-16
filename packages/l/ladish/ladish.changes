@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 12 06:40:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on aarch64:
+  * ladish-add-aarch64.patch
+
+-------------------------------------------------------------------
 Sat Apr 17 21:56:04 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Configure with correct %{_libdir}

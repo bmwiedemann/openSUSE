@@ -26,6 +26,7 @@ Group:          Productivity/Multimedia/Sound/Utilities
 URL:            http://ladish.org/
 Source:         %{name}-%{version}.tar.xz
 Patch0:         ladish-version.patch
+Patch1:         ladish-add-aarch64.patch
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
