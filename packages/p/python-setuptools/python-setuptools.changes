@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jul  5 09:22:44 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to remove a dependency cycle between
+  python-more-itertools and python-setuptools (which requires the
+  former just for one simple function):
+  * remove-more-itertools-dependency-cycle.patch
+
+-------------------------------------------------------------------
+Fri Jun 25 12:46:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 57.0.0
+  * big changelog since 44.1, see CHANGES.rst.
+- No python2 support anymore.
+- Refresh sort-for-reproducibility.patch and remove_mock.patch.
+- Drop importlib.patch, fixed upstream.
+- Remove testdata.tar.gz, packaged upstream.
+- Update requirements.
+  * New Ring-1 dep: python-jaraco.path <-- python-singledispatch
+
+-------------------------------------------------------------------
+Thu Jun 17 17:03:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add python dist provides for setuptools, pkg_resources and
+  easy_install: work around boo#1186870
+- Dont create a package for -test flavor
+
+-------------------------------------------------------------------
 Fri Jan 22 19:05:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - We cannot remove vendored packages when generating setuptools

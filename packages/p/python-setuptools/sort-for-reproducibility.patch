@@ -1,6 +1,8 @@
---- a/setuptools/command/easy_install.py
-+++ b/setuptools/command/easy_install.py
-@@ -423,7 +423,7 @@ class easy_install(Command):
+Index: setuptools-57.0.0/setuptools/command/easy_install.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/command/easy_install.py
++++ setuptools-57.0.0/setuptools/command/easy_install.py
+@@ -407,7 +407,7 @@ class easy_install(Command):
              for spec in self.args:
                  self.easy_install(spec, not self.no_deps)
              if self.record:
@@ -9,20 +11,24 @@
                  if self.root:  # strip any package prefix
                      root_len = len(self.root)
                      for counter in range(len(outputs)):
---- a/setuptools/command/egg_info.py
-+++ b/setuptools/command/egg_info.py
-@@ -638,7 +638,7 @@ def warn_depends_obsolete(cmd, basename,
- def _write_requirements(stream, reqs):
-     lines = yield_lines(reqs or ())
-     append_cr = lambda line: line + '\n'
+Index: setuptools-57.0.0/setuptools/command/egg_info.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/command/egg_info.py
++++ setuptools-57.0.0/setuptools/command/egg_info.py
+@@ -654,7 +654,7 @@ def _write_requirements(stream, reqs):
+ 
+     def append_cr(line):
+         return line + '\n'
 -    lines = map(append_cr, lines)
 +    lines = map(append_cr, sorted(lines))
      stream.writelines(lines)
  
  
---- a/setuptools/dist.py
-+++ b/setuptools/dist.py
-@@ -195,7 +195,7 @@ def write_pkg_file(self, file):
+Index: setuptools-57.0.0/setuptools/dist.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/dist.py
++++ setuptools-57.0.0/setuptools/dist.py
+@@ -214,7 +214,7 @@ def write_pkg_file(self, file):  # noqa:
              self.long_description_content_type
          )
      if self.provides_extras:
@@ -30,10 +36,12 @@
 +        for extra in sorted(self.provides_extras):
              write_field('Provides-Extra', extra)
  
- 
---- a/setuptools/tests/test_egg_info.py
-+++ b/setuptools/tests/test_egg_info.py
-@@ -291,8 +291,8 @@ class TestEggInfo:
+     self._write_list(file, 'License-File', self.license_files or [])
+Index: setuptools-57.0.0/setuptools/tests/test_egg_info.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_egg_info.py
++++ setuptools-57.0.0/setuptools/tests/test_egg_info.py
+@@ -297,8 +297,8 @@ class TestEggInfo:
              wheel>=0.5
              pytest
  

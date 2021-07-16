@@ -11,17 +11,21 @@
  setuptools/tests/test_upload.py           |    5 +----
  10 files changed, 13 insertions(+), 18 deletions(-)
 
---- a/pkg_resources/tests/test_markers.py
-+++ b/pkg_resources/tests/test_markers.py
+Index: setuptools-57.0.0/pkg_resources/tests/test_markers.py
+===================================================================
+--- setuptools-57.0.0.orig/pkg_resources/tests/test_markers.py
++++ setuptools-57.0.0/pkg_resources/tests/test_markers.py
 @@ -1,4 +1,4 @@
 -import mock
 +from . import mock
  
  from pkg_resources import evaluate_marker
  
---- a/pkg_resources/tests/test_pkg_resources.py
-+++ b/pkg_resources/tests/test_pkg_resources.py
-@@ -12,10 +12,7 @@ import stat
+Index: setuptools-57.0.0/pkg_resources/tests/test_pkg_resources.py
+===================================================================
+--- setuptools-57.0.0.orig/pkg_resources/tests/test_pkg_resources.py
++++ setuptools-57.0.0/pkg_resources/tests/test_pkg_resources.py
+@@ -9,10 +9,7 @@ import stat
  import distutils.dist
  import distutils.command.install_egg_info
  
@@ -31,23 +35,27 @@
 -    import mock
 +from . import mock
  
- from pkg_resources import DistInfoDistribution, Distribution, EggInfoDistribution
- from setuptools.extern import six
---- a/setuptools/tests/__init__.py
-+++ b/setuptools/tests/__init__.py
-@@ -4,6 +4,10 @@ import pytest
+ from pkg_resources import (
+     DistInfoDistribution, Distribution, EggInfoDistribution,
+Index: setuptools-57.0.0/setuptools/tests/__init__.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/__init__.py
++++ setuptools-57.0.0/setuptools/tests/__init__.py
+@@ -5,6 +5,10 @@ import pytest
  
- from setuptools.extern.six import PY2, PY3
+ __all__ = ['fail_on_ascii', 'ack_2to3']
  
 +try:
 +    import mock
 +except ImportError:
 +    from unittest import mock
  
- __all__ = [
-   'fail_on_ascii', 'py2_only', 'py3_only'
---- a/setuptools/tests/test_build_clib.py
-+++ b/setuptools/tests/test_build_clib.py
+ is_ascii = locale.getpreferredencoding() == 'ANSI_X3.4-1968'
+ fail_on_ascii = pytest.mark.xfail(is_ascii, reason="Test fails in this locale")
+Index: setuptools-57.0.0/setuptools/tests/test_build_clib.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_build_clib.py
++++ setuptools-57.0.0/setuptools/tests/test_build_clib.py
 @@ -1,6 +1,6 @@
  import pytest
  
@@ -56,19 +64,23 @@
  from distutils.errors import DistutilsSetupError
  from setuptools.command.build_clib import build_clib
  from setuptools.dist import Distribution
---- a/setuptools/tests/test_easy_install.py
-+++ b/setuptools/tests/test_easy_install.py
-@@ -14,7 +14,7 @@ import itertools
+Index: setuptools-57.0.0/setuptools/tests/test_easy_install.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_easy_install.py
++++ setuptools-57.0.0/setuptools/tests/test_easy_install.py
+@@ -12,7 +12,7 @@ import itertools
  import distutils.errors
  import io
  import zipfile
 -import mock
 +from . import mock
  import time
- 
- from setuptools.extern import six
---- a/setuptools/tests/test_msvc.py
-+++ b/setuptools/tests/test_msvc.py
+ import re
+ import subprocess
+Index: setuptools-57.0.0/setuptools/tests/test_msvc.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_msvc.py
++++ setuptools-57.0.0/setuptools/tests/test_msvc.py
 @@ -5,7 +5,7 @@ Tests for msvc support module.
  import os
  import contextlib
@@ -78,19 +90,23 @@
  
  import pytest
  
---- a/setuptools/tests/test_packageindex.py
-+++ b/setuptools/tests/test_packageindex.py
-@@ -6,7 +6,7 @@ import distutils.errors
+Index: setuptools-57.0.0/setuptools/tests/test_packageindex.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_packageindex.py
++++ setuptools-57.0.0/setuptools/tests/test_packageindex.py
+@@ -6,7 +6,7 @@ import urllib.request
+ import urllib.error
+ import http.client
  
- from setuptools.extern import six
- from setuptools.extern.six.moves import urllib, http_client
 -import mock
 +from . import mock
  import pytest
  
- import pkg_resources
---- a/setuptools/tests/test_register.py
-+++ b/setuptools/tests/test_register.py
+ import setuptools.package_index
+Index: setuptools-57.0.0/setuptools/tests/test_register.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_register.py
++++ setuptools-57.0.0/setuptools/tests/test_register.py
 @@ -2,10 +2,7 @@ from setuptools.command.register import
  from setuptools.dist import Distribution
  from setuptools.errors import RemovedCommandError
@@ -103,19 +119,20 @@
  
  import pytest
  
---- a/setuptools/tests/test_test.py
-+++ b/setuptools/tests/test_test.py
-@@ -2,7 +2,7 @@
- 
- from __future__ import unicode_literals
- 
+Index: setuptools-57.0.0/setuptools/tests/test_test.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_test.py
++++ setuptools-57.0.0/setuptools/tests/test_test.py
+@@ -1,4 +1,4 @@
 -import mock
 +from . import mock
  from distutils import log
  import os
  
---- a/setuptools/tests/test_upload.py
-+++ b/setuptools/tests/test_upload.py
+Index: setuptools-57.0.0/setuptools/tests/test_upload.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_upload.py
++++ setuptools-57.0.0/setuptools/tests/test_upload.py
 @@ -2,10 +2,7 @@ from setuptools.command.upload import up
  from setuptools.dist import Distribution
  from setuptools.errors import RemovedCommandError
@@ -128,9 +145,11 @@
  
  import pytest
  
---- a/setuptools/tests/test_config.py
-+++ b/setuptools/tests/test_config.py
-@@ -5,7 +5,7 @@ import contextlib
+Index: setuptools-57.0.0/setuptools/tests/test_config.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/tests/test_config.py
++++ setuptools-57.0.0/setuptools/tests/test_config.py
+@@ -7,7 +7,7 @@ import configparser
  import pytest
  
  from distutils.errors import DistutilsOptionError, DistutilsFileError
@@ -138,18 +157,20 @@
 +from setuptools.tests import mock
  from setuptools.dist import Distribution, _Distribution
  from setuptools.config import ConfigHandler, read_configuration
- from setuptools.extern.six.moves import configparser
-@@ -880,7 +880,7 @@ class TestExternalSetters:
+ from distutils.core import Command
+@@ -974,7 +974,7 @@ class TestExternalSetters:
          })
          return None
  
 -    @patch.object(_Distribution, '__init__', autospec=True)
 +    @mock.patch.object(_Distribution, '__init__', autospec=True)
-     def test_external_setters(self,  mock_parent_init, tmpdir):
+     def test_external_setters(self, mock_parent_init, tmpdir):
          mock_parent_init.side_effect = self._fake_distribution_init
  
+Index: setuptools-57.0.0/pkg_resources/tests/__init__.py
+===================================================================
 --- /dev/null
-+++ b/pkg_resources/tests/__init__.py
++++ setuptools-57.0.0/pkg_resources/tests/__init__.py
 @@ -0,0 +1,4 @@
 +try:
 +    import mock

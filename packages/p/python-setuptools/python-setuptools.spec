@@ -1,5 +1,5 @@
 #
-# spec file for package python-setuptools
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,8 +16,8 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define oldpython python
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -33,64 +33,66 @@
 %bcond_with wheel
 %endif
 %endif
-%bcond_without python2
+# in order to avoid rewriting for subpackage generator
+%define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        44.1.1
+Version:        57.0.0
 Release:        0
-Summary:        Enhancements to distutils for building and distributing Python packages
+Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        MIT
 URL:            https://github.com/pypa/setuptools
-Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.zip
-Source3:        testdata.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setuptools-%{version}.tar.gz
 Patch0:         sort-for-reproducibility.patch
-Patch1:         importlib.patch
-# PATCH-FIX-UPSTREAM remove_mock.patch bsc#[0-9]+ mcepl@suse.com
-# we don't need stinking mock
-Patch2:         remove_mock.patch
-BuildRequires:  %{python_module appdirs}
-BuildRequires:  %{python_module ordered-set}
-BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pyparsing >= 2.0.2}
-BuildRequires:  %{python_module six}
+# PATCH-FIX-OPENSUSE remove_mock.patch mcepl@suse.com
+Patch1:         remove_mock.patch
+# PATCH-FIX-OPENSUSE remove-more-itertools-dependency-cycle.patch alarrosa@suse.com
+Patch2:         remove-more-itertools-dependency-cycle.patch
+BuildRequires:  %{python_module appdirs >= 1.4.3}
+BuildRequires:  %{python_module ordered-set >= 3.1.1}
+BuildRequires:  %{python_module packaging >= 20.4}
+BuildRequires:  %{python_module pyparsing >= 2.2.1}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-appdirs
-Requires:       python-base
-Requires:       python-ordered-set
-Requires:       python-packaging
-Requires:       python-six
+Requires:       python-appdirs >= 1.4.3
+Requires:       python-base >= 3.6
+Requires:       python-ordered-set >= 3.1.1
+Requires:       python-packaging >= 20.4
+Requires:       python-pyparsing >= 2.2.1
 Requires:       python-xml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-# The dependency download feature may require SSL, which is in python3-base and python(2)
-%ifpython2
-Requires:       python
-%endif
 %if %{with test}
 BuildRequires:  %{python_module Paver}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module jaraco.envs}
+BuildRequires:  %{python_module jaraco.path >= 3.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-fixture-config}
 BuildRequires:  %{python_module pytest-virtualenv}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools >= %{version}}
+BuildRequires:  %{python_module virtualenv >= 13.0.0}
 BuildRequires:  %{python_module wheel}
-%if %{with python2}
-BuildRequires:  python-futures
-%endif
 %endif
 %if 0%{?suse_version} || 0%{?fedora_version} >= 24
 Recommends:     ca-certificates-mozilla
 %endif
-%ifpython2
-Provides:       %{oldpython}-distribute = %{version}
-Obsoletes:      %{oldpython}-distribute < %{version}
-%endif
 %if %{with wheel}
 BuildRequires:  %{python_module wheel}
+%endif
+%if !%{with test} && !%{with wheel}
+# work around boo#1186870
+Provides:       %{mypython}%{python_version}dist(setuptools) = %{version}
+Provides:       %{mypython}%{python_version}dist(pkg_resources) = %{version}
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Provides:       %{mypython}3dist(pkg_resources) = %{version}
+Provides:       %{mypython}3dist(setuptools) = %{version}
+%endif
 %endif
 %python_subpackages
 
@@ -100,15 +102,7 @@ allow you to build and distribute Python packages,
 especially ones that have dependencies on other packages.
 
 %prep
-%setup -q -n setuptools-%{version}
-
-tar -xzvf %{SOURCE3}
-%autopatch -p1
-
-find . -type f -name "*.orig" -delete
-
-# fix rpmlint spurious-executable-perm
-chmod -x README.rst
+%autosetup -p1 -n setuptools-%{version}
 
 # strip shebangs to fix rpmlint warnings
 # "explain the sed":
@@ -116,7 +110,7 @@ chmod -x README.rst
 # s@...@...@ = same as s/.../.../ except with @ instead of /
 # ^ = start; #!/ = shebang leading characters; .* = rest of line; $ = end
 # replace with nothing
-sed -r -i '1s@^#!/.*$@@' setuptools/command/easy_install.py
+sed -r -i '1s@^#!/.*$@@' pkg_resources/_vendor/appdirs.py
 
 %if ! %{with wheel}
 # replace the bundled stuff
@@ -145,8 +139,6 @@ find ./ -type f -name \*.py -exec sed -i  \
 %install
 %if !%{with test} && !%{with wheel}
 %python_install
-%prepare_alternative easy_install
-
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -158,36 +150,32 @@ find ./ -type f -name \*.py -exec sed -i  \
 %if %{with test}
 # the 4 skipped test rely on the bundled packages but they are
 # not available on virtualenv; this is expected behaviour
+donttest="test_clean_env_install or test_pip_upgrade_from_source or test_test_command_install_requirements or test_no_missing_dependencies"
+# these 3 tests try to download the wheel wheel from PyPI
+donttest="$donttest or (test_distutils_adoption and (distutils_stdlib or distutils_local))"
 export LANG=en_US.UTF-8
 # tests need imports local source dir
 export PYTHONPATH=$(pwd)
-%pytest -k 'not (test_clean_env_install or test_pip_upgrade_from_source or test_test_command_install_requirements or test_no_missing_dependencies)'
+%pytest -rfE -n auto -k "not ($donttest)"
 %endif
 
-%if !%{with test} && !%{with wheel}
-%post
-%python_install_alternative easy_install
-
-%postun
-%python_uninstall_alternative easy_install
-%endif
-
+%if !%{with test}
 %files %{python_files}
-%if !%{with test} && !%{with wheel}
+%if !%{with wheel}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%python_alternative %{_bindir}/easy_install
 %{python_sitelib}/setuptools
 %{python_sitelib}/setuptools-%{version}-py%{python_version}.egg-info
-%{python_sitelib}/easy_install.py*
-%pycache_only %{python_sitelib}/__pycache__/easy_install.*
 %dir %{python_sitelib}/pkg_resources
 %{python_sitelib}/pkg_resources/*
+%{python_sitelib}/_distutils_hack
+%{python_sitelib}/distutils-precedence.pth
 %endif
 
 %if %{with wheel}
 %dir %{python_sitelib}/../wheels
 %{python_sitelib}/../wheels/*
+%endif
 %endif
 
 %changelog

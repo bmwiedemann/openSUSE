@@ -1,0 +1,108 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Remove dependency on more_itertools which generates a dependency cycle
+
+setuptools buildrequires more_itertools just for one simple function
+(unique_everseen) and more_itertools buildrequires setuptools, so
+in order to remove the cycle, the unique_everseen function is copied
+here so that it can be used without buildrequiring the external package.
+
+Index: setuptools-57.0.0/setuptools/extern/__init__.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/extern/__init__.py
++++ setuptools-57.0.0/setuptools/extern/__init__.py
+@@ -69,5 +69,5 @@ class VendorImporter:
+             sys.meta_path.append(self)
+ 
+ 
+-names = 'packaging', 'pyparsing', 'ordered_set', 'more_itertools',
++names = 'packaging', 'pyparsing', 'ordered_set'
+ VendorImporter(__name__, names, 'setuptools._vendor').install()
+Index: setuptools-57.0.0/setuptools/dist.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/dist.py
++++ setuptools-57.0.0/setuptools/dist.py
+@@ -29,7 +29,7 @@ from distutils.version import StrictVers
+ 
+ from setuptools.extern import packaging
+ from setuptools.extern import ordered_set
+-from setuptools.extern.more_itertools import unique_everseen
++from setuptools.more_itertools import unique_everseen
+ 
+ from . import SetuptoolsDeprecationWarning
+ 
+Index: setuptools-57.0.0/setuptools/more_itertools.py
+===================================================================
+--- /dev/null
++++ setuptools-57.0.0/setuptools/more_itertools.py
+@@ -0,0 +1,19 @@
++def unique_everseen(iterable, key=None):
++    """Yield unique elements, preserving order."""
++
++    seenset = set()
++    seenset_add = seenset.add
++    seenlist = []
++    seenlist_add = seenlist.append
++    use_key = key is not None
++
++    for element in iterable:
++        k = key(element) if use_key else element
++        try:
++            if k not in seenset:
++                seenset_add(k)
++                yield element
++        except TypeError:
++            if k not in seenlist:
++                seenlist_add(k)
++                yield element
+Index: setuptools-57.0.0/setuptools/command/build_py.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/command/build_py.py
++++ setuptools-57.0.0/setuptools/command/build_py.py
+@@ -8,7 +8,7 @@ import io
+ import distutils.errors
+ import itertools
+ import stat
+-from setuptools.extern.more_itertools import unique_everseen
++from setuptools.more_itertools import unique_everseen
+ 
+ try:
+     from setuptools.lib2to3_ex import Mixin2to3
+Index: setuptools-57.0.0/setuptools/msvc.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/msvc.py
++++ setuptools-57.0.0/setuptools/msvc.py
+@@ -30,7 +30,7 @@ import itertools
+ import subprocess
+ import distutils.errors
+ from setuptools.extern.packaging.version import LegacyVersion
+-from setuptools.extern.more_itertools import unique_everseen
++from setuptools.more_itertools import unique_everseen
+ 
+ from .monkey import get_unpatched
+ 
+Index: setuptools-57.0.0/setuptools/package_index.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/package_index.py
++++ setuptools-57.0.0/setuptools/package_index.py
+@@ -28,7 +28,7 @@ from distutils import log
+ from distutils.errors import DistutilsError
+ from fnmatch import translate
+ from setuptools.wheel import Wheel
+-from setuptools.extern.more_itertools import unique_everseen
++from setuptools.more_itertools import unique_everseen
+ 
+ 
+ EGG_FRAGMENT = re.compile(r'^egg=([-A-Za-z0-9_.+!]+)$')
+Index: setuptools-57.0.0/setuptools/command/test.py
+===================================================================
+--- setuptools-57.0.0.orig/setuptools/command/test.py
++++ setuptools-57.0.0/setuptools/command/test.py
+@@ -12,7 +12,7 @@ from pkg_resources import (resource_list
+                            working_set, _namespace_packages, evaluate_marker,
+                            add_activation_listener, require, EntryPoint)
+ from setuptools import Command
+-from setuptools.extern.more_itertools import unique_everseen
++from setuptools.more_itertools import unique_everseen
+ 
+ 
+ class ScanningLoader(TestLoader):
