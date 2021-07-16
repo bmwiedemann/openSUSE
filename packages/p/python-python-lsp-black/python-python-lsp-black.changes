@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Jul 13 12:59:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Initial specfile for version 1.0.0
+  * The python-lsp-server version for python-pyls-black, which was
+    for the python-python-language-server abandoned by upstream.
+  * required by spyder.
