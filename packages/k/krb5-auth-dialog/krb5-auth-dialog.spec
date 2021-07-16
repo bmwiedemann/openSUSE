@@ -1,7 +1,7 @@
 #
 # spec file for package krb5-auth-dialog
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -74,6 +74,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/appdata/krb5-auth-dialog.appdata.xml
 %{_datadir}/applications/*.desktop
 %{_datadir}/dbus-1/services/org.gnome.KrbAuthDialog.service
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/org.gnome.KrbAuthDialog.convert
 %{_datadir}/glib-2.0/schemas/org.gnome.KrbAuthDialog.gschema.xml
 %{_datadir}/icons/hicolor/*/status/krb*.*
