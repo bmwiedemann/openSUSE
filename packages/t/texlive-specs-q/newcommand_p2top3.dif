@@ -1,0 +1,189 @@
+---
+ doc/latex/newcommand/newcommand.py |   51 +++++++++++++++----------------------
+ 1 file changed, 22 insertions(+), 29 deletions(-)
+
+--- texmf-dist/doc/latex/newcommand/newcommand.py
++++ texmf-dist/doc/latex/newcommand/newcommand.py	2021-06-30 04:58:32.014877683 +0000
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/env python3
+ 
+ # -----------------------------------------------------------------------
+ # Convert a macro prototype to a LaTeX \newcommand
+@@ -137,8 +137,7 @@ class CmdParser(GenericParser):
+         GenericParser.__init__(self, start)
+ 
+     def error(self, token):
+-        raise ParseError, \
+-            ("Syntax error", 1+token.charOffset)
++        raise ParseError("Syntax error", 1+token.charOffset)
+ 
+     def p_optarg(self, args):
+         ' optarg ::= argtype delim defvals delim '
+@@ -196,8 +195,7 @@ class CmdParser(GenericParser):
+     def p_arg_3(self, args):
+         ' arg ::= rawtext '
+         if args[0].attr != "*":
+-            raise ParseError, \
+-                ('Literal text must be quoted between "{" and "}"',
++            raise ParseError('Literal text must be quoted between "{" and "}"',
+                  args[0].charOffset + 1)
+         return AST(type='arg',
+                    charOffset=args[0].charOffset,
+@@ -264,8 +262,7 @@ def flattenAST(ast):
+                 node.argList = node.argList + node.kids[0].argList
+ 
+         def default(self, node):
+-            raise ParseError, \
+-                ('Internal error -- node type "%s" was unexpected' % node.type,
++            raise ParseError('Internal error -- node type "%s" was unexpected' % node.type,
+                  1+node.charOffset)
+ 
+     return FlattenAST(ast).argList
+@@ -293,8 +290,7 @@ def checkArgList(argList):
+     prevformal = 0
+     for form, pos in formals:
+         if form != prevformal + 1:
+-            raise ParseError, \
+-                ("Expected parameter %d but saw parameter %d" % (prevformal+1, form), 1+pos)
++            raise ParseError("Expected parameter %d but saw parameter %d" % (prevformal+1, form), 1+pos)
+         prevformal = form
+ 
+     # Ensure that "*" appears at most once at the top level.
+@@ -302,8 +298,7 @@ def checkArgList(argList):
+     for arg in argList:
+         if arg[0] == "rawtext" and arg[1] == "*":
+             if seenStar:
+-                raise ParseError, \
+-                    ("Only one star parameter is allowed", arg[2])
++                raise ParseError("Only one star parameter is allowed", arg[2])
+             seenStar = True
+ 
+     # Ensure that no optional argument contains more than nine formals.
+@@ -314,8 +309,7 @@ def checkArgList(argList):
+                 if oarg[0][0] == "#":
+                     optFormals += 1
+                     if optFormals > 9:
+-                        raise ParseError, \
+-                            ("An optional argument can contain at most nine formals",
++                        raise ParseError("An optional argument can contain at most nine formals",
+                              oarg[2])
+ 
+     # Ensure that "#" is used only where it's allowed.
+@@ -325,8 +319,7 @@ def checkArgList(argList):
+             if hashidx == 0 or (hashidx > 0 and arg[1][hashidx-1] != "\\"):
+                 if arg[0] == "quoted":
+                     hashidx += 1
+-                raise ParseError, \
+-                    ('The "#" character cannot be used as a literal character unless escaped with "\\"',
++                raise ParseError('The "#" character cannot be used as a literal character unless escaped with "\\"',
+                      arg[2] + hashidx)
+         elif arg[0] == "optarg":
+             for oarg in arg[2:]:
+@@ -335,8 +328,7 @@ def checkArgList(argList):
+                     if hashidx == 0 or (hashidx > 0 and oarg[1][hashidx-1] != "\\"):
+                         if oarg[0] == "quoted":
+                             hashidx += 1
+-                        raise ParseError, \
+-                            ('The "#" character cannot be used as a literal character unless escaped with "\\"',
++                        raise ParseError('The "#" character cannot be used as a literal character unless escaped with "\\"',
+                              oarg[2] + hashidx)
+ 
+ 
+@@ -369,7 +361,7 @@ class LaTeXgenerator():
+                    ("i",     1)]
+         romanStr = ""
+         if num > 4000:
+-            raise ParseError, ("Too many arguments", 0)
++            raise ParseError("Too many arguments", 0)
+         for rom, dec in dec2rom:
+             while num >= dec:
+                 romanStr += rom
+@@ -448,7 +440,7 @@ class LaTeXgenerator():
+             argSubtract is subtracted from each argument number.
+         '''
+         if mode not in ["define", "call", "calldefault"]:
+-            raise ParseError, ('Internal error (mode="%s")' % mode, argList[0][2])
++            raise ParseError('Internal error (mode="%s")' % mode, argList[0][2])
+         argStr = ""
+         findArgRE = re.compile('#(\d+)')
+         for arg in argList:
+@@ -480,11 +472,11 @@ class LaTeXgenerator():
+                     elif oarg[0] == "rawtext":
+                         argStr += oarg[1]
+                     else:
+-                        raise ParseError, ('Internal error ("%s")' % oarg[0],
++                        raise ParseError('Internal error ("%s")' % oarg[0],
+                                            oarg[2])
+                 argStr += arg[1][1]
+             else:
+-                raise ParseError, ('Internal error ("%s")' % arg[0], arg[2])
++                raise ParseError('Internal error ("%s")' % arg[0], arg[2])
+         return argStr
+ 
+     def callMacro(self, macroNum):
+@@ -634,7 +626,7 @@ class LaTeXgenerator():
+                 if arg[0] == "argument":
+                     formalsSoFar += 1
+                 elif arg[0] == "optarg":
+-                    formalsSoFar += len(filter(lambda o: o[0][0] == "#", arg[2:]))
++                    formalsSoFar += len([o for o in arg[2:] if o[0][0] == "#"])
+ 
+     def generate(self, argList):
+         "Generate LaTeX code from an argument list."
+@@ -642,7 +634,7 @@ class LaTeXgenerator():
+         self.argList = argList
+         self.partitionArgList()
+         self.haveAt = len(self.argGroups) > 1
+-        self.haveStar = filter(lambda arg: arg[0]=="rawtext" and arg[1]=="*", self.argList) != []
++        self.haveStar = [arg for arg in self.argList if arg[0]=="rawtext" and arg[1]=="*"] != []
+         self.topLevelName = self.argList[0][1]
+         for arg in self.argList:
+             if arg[0] == "argument":
+@@ -662,7 +654,7 @@ class LaTeXgenerator():
+         if self.haveAt:
+             self.codeList.append("\\makeatother")
+         for codeLine in self.codeList:
+-            print codeLine
++            print(codeLine)
+ 
+ 
+ # The buck starts here.
+@@ -679,7 +671,7 @@ if __name__ == '__main__':
+             if oneLine=="" or oneLine[0]=="%":
+                 return
+             if not isStdin:
+-                print prompt, oneLine
++                print(prompt, oneLine)
+             scanner = CmdScanner()
+             parser = CmdParser()
+             tokens = scanner.tokenize(oneLine)
+@@ -688,23 +680,24 @@ if __name__ == '__main__':
+             checkArgList(argList)
+             gen = LaTeXgenerator()
+             gen.generate(argList)
+-        except ParseError,(message, pos):
++        except ParseError as xxx_todo_changeme:
++            (message, pos) = xxx_todo_changeme.args
+             sys.stderr.write((" "*(len(prompt)+pos)) + "^\n")
+             sys.stderr.write("%s: %s.\n" % (sys.argv[0], message))
+         if isStdin:
+-            print ""
++            print("")
+ 
+     sys.setrecursionlimit(5000)
+     prompt = "% Prototype:"
+     if len(sys.argv) <= 1:
+         isStdin = 1
+-        print prompt + " ",
++        print(prompt + " ", end=' ')
+         while 1:
+             oneLine = sys.stdin.readline()
+             if not oneLine:
+                 break
+             processLine()
+-            print prompt + " ",
++            print(prompt + " ", end=' ')
+     else:
+         isStdin = 0
+         oneLine = string.join(sys.argv[1:])
