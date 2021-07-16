@@ -69,61 +69,22 @@ Requires:       libvirt-daemon-qemu
 Requires:       mtools
 # gnome-boxes requires org.freedesktop.Tracker.FTS schema to be available (bnc#785356).
 Requires:       tracker
+# Eliminate sub-packages with libraries in private space (no provides, nothing was supposed to use the pkgname)
+Obsoletes:      libgovf-0_1 <= 40.2
+Obsoletes:      libgtk-frdp-0_1 <= 40.2
+Obsoletes:      typelib-1_0-Govf-0_1 <= 40.2
+Obsoletes:      typelib-1_0-GtkFrdp-0_1 <= 40.2
 
 %description
 Boxes is an application to create, setup, access, and use: remote
 machines, remote and local virtual machines, and, when technology permits,
 applications on local virtual machines.
 
-%package -n libgovf-%{govf_libver}
-Summary:        Shared library for libovf-glib, a virtual machine image library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n libgovf-%{govf_libver}
-Libgovf is a library for reading and writing virtual machine images
-in the Open Virtualization Format.
-
-This package provides the shared library for libovf-glib.
-
-%package -n libgtk-frdp-%{gfrdp_libver}
-Summary:        Shared library for gtk-frdp, an RDP Viewer Widget for Gtk+
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-Obsoletes:      gtk-frdp < 3.29.4
-
-%description -n libgtk-frdp-%{gfrdp_libver}
-gtk-frdp is an RDP viewer widget for the GNOME Desktop Environment.
-
-This package provides the shared library for libgtk-frdp.
-
-%package -n typelib-1_0-Govf-%{govf_libver}
-Summary:        Introspection Bindings for libovf-glib, a virtual machine image library
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n typelib-1_0-Govf-%{govf_libver}
-Libgovf is a library for reading and writing virtual machine images
-in the Open Virtualization Format.
-
-This package provides the GObject Introspection bindings for libovf-glib.
-
-%package -n typelib-1_0-GtkFrdp-%{gfrdp_libver}
-Summary:        Introspection Bindings for gtk-frdp, an RDP Viewer Widget for Gtk+
-License:        GPL-3.0-or-later
-Group:          System/Libraries
-
-%description -n typelib-1_0-GtkFrdp-%{gfrdp_libver}
-gtk-frdp is an RDP viewer widget for the GNOME Desktop Environment.
-
-This package provides the GObject Introspection bindings for libgtk-frdp.
-
 %package -n libovf-glib-devel
 Summary:        Development Files for gtk-frdp, a virtual machine image library
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       libgovf-%{govf_libver} = %{version}
-Requires:       typelib-1_0-Govf-%{govf_libver} = %{version}
+Requires:       %{name} = %{version}
 
 %description -n libovf-glib-devel
 Libgovf is a library for reading and writing virtual machine images
@@ -136,8 +97,7 @@ libovf-glib.
 Summary:        Development Files for gtk-frdp, an RDP Viewer Widget for Gtk+
 License:        GPL-3.0-or-later
 Group:          Development/Languages/C and C++
-Requires:       libgtk-frdp-%{gfrdp_libver} = %{version}
-Requires:       typelib-1_0-GtkFrdp-%{gfrdp_libver} = %{version}
+Requires:       %{name} = %{version}
 
 %description -n gtk-frdp-devel
 gtk-frdp is an RDP viewer widget for the GNOME Desktop Environment.
@@ -180,12 +140,6 @@ translation-update-upstream
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}%{_datadir}
 
-%post   -n libgovf-%{govf_libver} -p /sbin/ldconfig
-%post   -n libgtk-frdp-%{gfrdp_libver} -p /sbin/ldconfig
-
-%postun -n libgovf-%{govf_libver} -p /sbin/ldconfig
-%postun -n libgtk-frdp-%{gfrdp_libver} -p /sbin/ldconfig
-
 %files
 %license COPYING
 %doc AUTHORS NEWS HACKING README.md README.logos
@@ -202,22 +156,12 @@ translation-update-upstream
 %{_datadir}/gnome-boxes/sources/QEMU_Session
 %{_datadir}/gnome-boxes/unattended/disk.img
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Boxes*
-
-%files -n libgovf-%{govf_libver}
 %dir %{_libdir}/gnome-boxes/
-%{_libdir}/gnome-boxes/libgovf-%{govf_sover}.so
-
-%files -n libgtk-frdp-%{gfrdp_libver}
-%dir %{_libdir}/gnome-boxes/
-%{_libdir}/gnome-boxes/libgtk-frdp-%{gfrdp_sover}.so
-
-%files -n typelib-1_0-Govf-%{govf_libver}
 %dir %{_libdir}/gnome-boxes/girepository-1.0
 %{_libdir}/gnome-boxes/girepository-1.0/Govf-%{govf_sover}.typelib
-
-%files -n typelib-1_0-GtkFrdp-%{gfrdp_libver}
-%dir %{_libdir}/gnome-boxes/girepository-1.0
 %{_libdir}/gnome-boxes/girepository-1.0/GtkFrdp-%{gfrdp_sover}.typelib
+%{_libdir}/gnome-boxes/libgovf-%{govf_sover}.so
+%{_libdir}/gnome-boxes/libgtk-frdp-%{gfrdp_sover}.so
 
 %files -n libovf-glib-devel
 %dir %{_datadir}/gnome-boxes/
