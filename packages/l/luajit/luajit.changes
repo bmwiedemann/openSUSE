@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Jul 12 17:15:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Clean up SPEC. We don't need update-alternatives after all.
+
+-------------------------------------------------------------------
+Tue Jun 29 17:17:36 UTC 2021 - munix9@googlemail.com
+
+- Update to version 2.1.0~beta3+git294.e9577376:
+  * Disable unreliable assertion for external frame unwinding.
+  * Flush and close output file after profiling run.
+  * Avoid conflict between 64 bit lightuserdata and ITERN key.
+
+-------------------------------------------------------------------
+Thu Jun 24 10:15:35 UTC 2021 - munix9@googlemail.com
+
+- Update to version 2.1.0~beta3+git291.3f9389ed:
+  * Throw any errors before stack changes in trace stitching.
+  * DynASM/x86: Add missing escape in pattern.
+  * Fix HTML.
+  * String buffers, part 2e: add serialization string dictionary.
+  * DynASM/ARM64: Fix LSL/BFI* encoding with variable shifts.
+  * Fix MinGW static build.
+  * Fix dependencies.
+  * Fix IR_BUFHDR assembly.
+

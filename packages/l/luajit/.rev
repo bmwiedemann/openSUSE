@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7faf214908261c79ebfa535c556a7d6b</srcmd5>
+    <version>2.1.0~beta3+git.1624618403.e9577376</version>
+    <time>1626466380</time>
+    <user>dimstar_suse</user>
+    <comment>LuaJIT seems to be more maintained than MoonJIT at the moment.</comment>
+    <requestid>906669</requestid>
+  </revision>
+</revisionlist>
