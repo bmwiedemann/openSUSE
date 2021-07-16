@@ -389,4 +389,29 @@ A    latex2html-share-dir.diff</comment>
   * &quot;References&quot; by default, &quot;Bibliography&quot; for book (forwarded request 878730 from dirkmueller)</comment>
     <requestid>879087</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>28e351491e48353b7036dbc2062ce6ab</srcmd5>
+    <version>2021.2</version>
+    <time>1626466347</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2021.2:
+  * latex2html -long_titles   fix duplicate file names
+  * latex2html -long_titles 5 -title &quot;Title&quot;
+  * correct link from index.html
+  * pnmquant -norandom    for reproducible builds
+  * treat cygwin as unix
+  * $WORDS_IN_INDEX configurable
+  * fix image size for multline, subequations
+  * remove extra &lt;SPAN&gt; after subequations
+  * equation numbering for multline
+  * close bold, etc, at end of environment
+  * implement memoir document class
+  * fix scanning of latex comments
+  * fix subequation numbering
+  * babel should not set character encoding of input file
+  * package nomencl.sty
+  * package nameref.sty
+  * options -cut_ref_num -add_ref_name (forwarded request 903986 from dirkmueller)</comment>
+    <requestid>905216</requestid>
+  </revision>
 </revisionlist>
