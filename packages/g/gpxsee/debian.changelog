@@ -1,3 +1,11 @@
+gpxsee (9.3) stable; urgency=medium
+
+  * Fixed crash with certaim Mapsforge styles.
+  * Removed the artificial POI zoom level limits in IMG maps.
+  * Added initial open file paths configuration.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sat, 17 Jul 2021 15:09:11 +0200
+
 gpxsee (9.2) stable; urgency=low
 
   * Added support for World-File georeferenced images.
