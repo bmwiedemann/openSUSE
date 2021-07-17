@@ -1974,4 +1974,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>904452</requestid>
   </revision>
+  <revision rev="204" vrev="4">
+    <srcmd5>8d7562929c3ecdd20e2de43e3669aa2e</srcmd5>
+    <version>3.6.1</version>
+    <time>1626557782</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906315</requestid>
+  </revision>
 </revisionlist>

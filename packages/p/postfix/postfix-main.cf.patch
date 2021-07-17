@@ -50,7 +50,7 @@ Index: conf/main.cf
  
  # PARALLEL DELIVERY TO THE SAME DESTINATION
  #
-@@ -673,4 +674,141 @@ sample_directory =
+@@ -673,4 +674,148 @@ sample_directory =
  # readme_directory: The location of the Postfix README files.
  #
  readme_directory =
@@ -150,6 +150,13 @@ Index: conf/main.cf
 +smtpd_tls_ask_ccert = no
 +smtpd_tls_exclude_ciphers = RC4
 +smtpd_tls_received_header = no
++############################################################
++# OpenDKIM
++############################################################
++#smtpd_milters = unix:/run/opendkim/opendkim.sock
++#non_smtpd_milters = $smtpd_milters
++#milter_default_action = accept
++#milter_protocol = 2
 +############################################################
 +# Start MySQL from postfixwiki.org
 +############################################################
