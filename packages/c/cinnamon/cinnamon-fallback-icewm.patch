@@ -1,9 +1,9 @@
 diff -ruN a/files/usr/bin/cinnamon-launcher b/files/usr/bin/cinnamon-launcher
---- a/files/usr/bin/cinnamon-launcher	2021-06-01 20:12:27.000000000 +0700
-+++ b/files/usr/bin/cinnamon-launcher	2021-06-04 03:44:28.539582150 +0700
+--- a/files/usr/bin/cinnamon-launcher	2021-07-02 22:19:14.000000000 +0700
++++ b/files/usr/bin/cinnamon-launcher	2021-07-10 03:22:22.044467954 +0700
 @@ -14,22 +14,13 @@
  gi.require_version('Gtk', '3.0')  # noqa
- from gi.repository import Gtk, GObject, Gio
+ from gi.repository import Gtk, GLib, Gio
  
 -FALLBACK_COMMAND = "metacity"
 +FALLBACK_COMMAND = "icewm"

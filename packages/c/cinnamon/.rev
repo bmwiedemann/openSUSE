@@ -720,4 +720,12 @@
 </comment>
     <requestid>897760</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7b614ffd3902e35d20e89a295abf4f19</srcmd5>
+    <version>5.0.4</version>
+    <time>1626557800</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906743</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %define _version 5.0.0
 Name:           cinnamon
-Version:        5.0.2
+Version:        5.0.4
 Release:        0
 Summary:        GNU/Linux Desktop featuring a traditional layout
 License:        GPL-2.0-or-later AND LGPL-2.1-only
@@ -277,9 +277,7 @@ fi
 %{_libdir}/%{name}/
 %{_mandir}/man1/cinnamon*%{?ext_man}
 %{_mandir}/man1/gnome-session-cinnamon*%{?ext_man}
-%dir %{_prefix}/lib/python3
-%dir %{_prefix}/lib/python3/dist-packages
-%{_prefix}/lib/python3/dist-packages/cinnamon
+%{_prefix}/lib/python%{python_version}/site-packages/%{name}/
 
 %files gschemas
 %{_datadir}/glib-2.0/schemas/org.cinnamon.gschema.xml
