@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 14 14:18:32 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Show warning when reading system settings (e.g., login.defs)
+  fails (bsc#1177183).
+- 4.4.3
+
+-------------------------------------------------------------------
 Fri Jun 25 14:25:25 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Rely on useradd, groupadd and other shadow tools when creating

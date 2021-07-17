@@ -17,7 +17,7 @@
 
 
 Name:           yast2-users
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        YaST2 - User and Group Configuration
 License:        GPL-2.0-only
@@ -49,7 +49,8 @@ Requires:       yast2-country
 # CFA::Nsswitch
 Requires:       yast2-pam >= 4.3.0
 
-Requires:       yast2-security
+# Security::SafeRead
+Requires:       yast2-security >= 4.4.1
 
 # y2usernote, y2useritem
 Requires:       yast2-perl-bindings >= 2.18.0
