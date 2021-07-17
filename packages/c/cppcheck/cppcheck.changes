@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 17 13:10:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5:
+  * checked that all features in c++11, c++14, c++17 are supported
+  * c++20 support is improved but not complete yet
+  * improved library files, better knowledge about APIs
+  * improved checks to detect more bugs
+  * fixed checks to avoid unwanted warnings
+  * suspicious container/iterator assignment in condition
+  * rethrow without current handled exception
+- drop 0002-Another-gcc11-fix-3179.patch, 0001-Fix-gcc11-build-errors.patch: upstream
+
+-------------------------------------------------------------------
 Tue Jun  1 09:00:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC compatibility fixes:

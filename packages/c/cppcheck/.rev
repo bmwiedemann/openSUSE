@@ -165,4 +165,20 @@
     <comment></comment>
     <requestid>896668</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9fb30153b1bc56078520c5c32a277304</srcmd5>
+    <version>2.5</version>
+    <time>1626557808</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.5:
+  * checked that all features in c++11, c++14, c++17 are supported
+  * c++20 support is improved but not complete yet
+  * improved library files, better knowledge about APIs
+  * improved checks to detect more bugs
+  * fixed checks to avoid unwanted warnings
+  * suspicious container/iterator assignment in condition
+  * rethrow without current handled exception
+- drop 0002-Another-gcc11-fix-3179.patch, 0001-Fix-gcc11-build-errors.patch: upstream</comment>
+    <requestid>906819</requestid>
+  </revision>
 </revisionlist>
