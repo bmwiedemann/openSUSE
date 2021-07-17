@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.24.2
+Version:        2.25.0
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -68,15 +68,15 @@ Requires:       python3-azure-loganalytics >= 0.1.0
 Requires:       python3-azure-mgmt-advisor >= 2.0.1
 Requires:       python3-azure-mgmt-apimanagement >= 0.2.0
 Requires:       python3-azure-mgmt-appconfiguration >= 1.0.1
-Requires:       python3-azure-mgmt-applicationinsights >= 0.1.1
+Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       python3-azure-mgmt-authorization >= 0.61.0
-Requires:       python3-azure-mgmt-batch >= 9.0.0
+Requires:       python3-azure-mgmt-batch >= 15.0.0
 Requires:       python3-azure-mgmt-batchai >= 2.0
 Requires:       python3-azure-mgmt-billing >= 1.0.0
 Requires:       python3-azure-mgmt-botservice >= 0.3.0
 Requires:       python3-azure-mgmt-cdn >= 11.0.0
 Requires:       python3-azure-mgmt-cognitiveservices >= 6.3.0
-Requires:       python3-azure-mgmt-compute >= 20.0.0
+Requires:       python3-azure-mgmt-compute >= 21.0.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 1.4
 Requires:       python3-azure-mgmt-containerregistry >= 3.0.0rc17
@@ -89,9 +89,10 @@ Requires:       python3-azure-mgmt-datamigration >= 4.1.0
 Requires:       python3-azure-mgmt-deploymentmanager >= 0.2.0
 Requires:       python3-azure-mgmt-devtestlabs >= 2.2
 Requires:       python3-azure-mgmt-dns >= 8.0.0
-Requires:       python3-azure-mgmt-eventgrid >= 3.0.0rc9
+Requires:       python3-azure-mgmt-eventgrid >= 9.0.0
 Requires:       python3-azure-mgmt-eventhub >= 4.1.0
-Requires:       python3-azure-mgmt-hdinsight >= 2.2.0
+Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
+Requires:       python3-azure-mgmt-hdinsight >= 7.0.0
 Requires:       python3-azure-mgmt-imagebuilder >= 0.4.0
 Requires:       python3-azure-mgmt-iotcentral >= 4.1.0
 Requires:       python3-azure-mgmt-iothub >= 2.0.0
@@ -106,12 +107,12 @@ Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
 Requires:       python3-azure-mgmt-media >= 3.0.0
 Requires:       python3-azure-mgmt-monitor >= 2.0.0
 Requires:       python3-azure-mgmt-msi >= 0.2
-Requires:       python3-azure-mgmt-netapp >= 2.0.0
+Requires:       python3-azure-mgmt-netapp >= 3.0.0
 Requires:       python3-azure-mgmt-network >= 19.0.0
 Requires:       python3-azure-mgmt-policyinsights >= 0.5.0
 Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 8.1.0b4
-Requires:       python3-azure-mgmt-recoveryservices >= 0.4.0
+Requires:       python3-azure-mgmt-recoveryservices >= 1.0.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 0.11.0
 Requires:       python3-azure-mgmt-redhatopenshift >= 0.1.0
 Requires:       python3-azure-mgmt-redis >= 7.0.0rc1
@@ -123,11 +124,11 @@ Requires:       python3-azure-mgmt-security >= 0.6.0
 Requires:       python3-azure-mgmt-servicebus >= 6.0.0
 Requires:       python3-azure-mgmt-servicefabric >= 0.5.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
-Requires:       python3-azure-mgmt-signalr >= 0.4.0
+Requires:       python3-azure-mgmt-signalr >= 1.0.0b2
 Requires:       python3-azure-mgmt-sql >= 0.26.0
 Requires:       python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
 Requires:       python3-azure-mgmt-storage >= 18.0.0
-Requires:       python3-azure-mgmt-synapse >= 0.6.0
+Requires:       python3-azure-mgmt-synapse >= 2.0.0
 Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
 Requires:       python3-azure-mgmt-web >= 2.0.0
 Requires:       python3-azure-multiapi-storage >= 0.6.2
@@ -146,7 +147,6 @@ Requires:       python3-pytz >= 2019.1
 Requires:       python3-scp >= 0.13.2
 Requires:       python3-semver >= 2.13.0
 Requires:       python3-sshtunnel >= 0.1.4
-Requires:       python3-urllib3 >= 1.25.9
 Requires:       python3-vsts-cd-manager >= 1.0.2
 Requires:       python3-websocket-client >= 0.56.0
 Requires:       python3-xmltodict >= 0.12
