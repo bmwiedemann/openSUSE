@@ -292,4 +292,20 @@
     <comment>submit new version 0.2.39</comment>
     <requestid>816585</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ccf7122369e42df3d962c29c539c1940</srcmd5>
+    <version>0.2.41</version>
+    <time>1626557786</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the &quot;sle_latest&quot; build target to SLE15-SP4 (bsc#1187677)
+- Added &quot;sle15sp4&quot; and future &quot;sle15sp5&quot; build targets
+- 0.2.41
+
+- Added new rake tasks for running the GitHub Actions locally
+  (bsc#1184033)
+- 0.2.40
+
+- Fix URL in .spec file</comment>
+    <requestid>906424</requestid>
+  </revision>
 </revisionlist>

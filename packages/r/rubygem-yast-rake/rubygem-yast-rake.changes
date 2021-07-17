@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 24 11:44:52 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Move the "sle_latest" build target to SLE15-SP4 (bsc#1187677)
+- Added "sle15sp4" and future "sle15sp5" build targets
+- 0.2.41
+
+-------------------------------------------------------------------
+Fri Mar 26 12:38:22 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added new rake tasks for running the GitHub Actions locally
+  (bsc#1184033)
+- 0.2.40
+
+-------------------------------------------------------------------
+Tue Oct 20 11:59:11 UTC 2020 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix URL in .spec file
+
+-------------------------------------------------------------------
 Tue Jun 23 11:47:03 UTC 2020 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - :sle_latest is SLE15-SP3 now (bsc#1173266).
