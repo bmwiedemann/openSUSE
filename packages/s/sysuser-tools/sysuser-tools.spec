@@ -31,6 +31,7 @@ BuildArch:      noarch
 Requires:       sysuser-shadow
 #!BuildIgnore:  sysuser-shadow
 #!BuildIgnore:  sysuser-tools
+BuildRequires:  diffutils
 
 %description
 Generate auto provides for system users.
@@ -64,6 +65,30 @@ install -D -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/rpm/fileattrs/sysusers.a
 install -D -m 755 %{SOURCE2} %{buildroot}%{_prefix}/lib/rpm/sysusers-generate-pre
 install -D -m 644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.sysusers
 install -D -m 755 %{SOURCE4} %{buildroot}%{_sbindir}/sysusers2shadow
+
+%check
+mkdir -p subdir
+cat <<EOF > subdir/me.conf
+# Type Name       ID     GECOS           [HOME]    Shell
+  u   me   -     "myself" /dev/null
+m   me  nogroup
+# foobar
+  g   asdf
+ z     welp invalid
+EOF
+
+cat <<EOFF > expected-account-pre
+/usr/sbin/sysusers2shadow me.conf <<"EOF" || [ -f /.buildenv ]
+u   me   -     "myself" /dev/null
+m   me  nogroup
+g   asdf
+EOF
+EOFF
+
+# copy pasta from macros.sysusers because the script sysusers-generate-pre is not in /usr/lib/rpm yet
+sh %{SOURCE2} $(pwd)/subdir/me.conf me.conf > account.pre
+
+diff account.pre expected-account-pre
 
 %files
 %defattr(-,root,root)

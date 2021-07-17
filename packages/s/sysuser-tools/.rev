@@ -153,4 +153,15 @@
 - macros.sysusers: fix typo</comment>
     <requestid>901701</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>f1838b3a7be46c059c8da4bdaa5cf421</srcmd5>
+    <version>3.1</version>
+    <time>1626557781</time>
+    <user>dimstar_suse</user>
+    <comment>- Use /bin/bash for sysusers-generate-pre
+
+- Remove usage of grep from sysusers-generate-pre
+- Add a simple test of sysusers-generate-pre to %check</comment>
+    <requestid>906399</requestid>
+  </revision>
 </revisionlist>

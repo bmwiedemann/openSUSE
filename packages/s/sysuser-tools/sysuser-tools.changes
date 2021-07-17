@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 15 06:45:15 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Use /bin/bash for sysusers-generate-pre
+
+-------------------------------------------------------------------
+Tue Jun 29 13:08:44 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Remove usage of grep from sysusers-generate-pre
+- Add a simple test of sysusers-generate-pre to %check
+
+-------------------------------------------------------------------
 Mon Jun 21 09:56:17 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Bump version up to 3.1. The --replace parameter only appeared in
