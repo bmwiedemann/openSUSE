@@ -5526,4 +5526,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.13.1 (nested kvm fix only) &amp; config changes (RISC 5, FIPS, ...) &amp; NO (reverted) UsrMerge for kernel (/boot -&gt; /usr move)</comment>
     <requestid>905770</requestid>
   </revision>
+  <revision rev="596" vrev="1">
+    <srcmd5>6b98ee0564c6987929a0ed4dad793c9d</srcmd5>
+    <version>5.13.2</version>
+    <time>1626557791</time>
+    <user>dimstar_suse</user>
+    <comment>5.13.2</comment>
+    <requestid>906362</requestid>
+  </revision>
 </revisionlist>
