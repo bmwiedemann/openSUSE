@@ -21,13 +21,13 @@
 # tests suite disabled by default. See below.
 %bcond_with     tests
 Name:           python-bokeh
-Version:        2.3.0
+Version:        2.4.0.dev1
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
 Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
-BuildRequires:  %{python_module Jinja2 >= 2.7}
+BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module devel}
@@ -35,20 +35,20 @@ BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.1}
-BuildRequires:  %{python_module typing_extensions >= 3.7.4}
+BuildRequires:  %{python_module typing_extensions >= 3.10.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
-Requires:       python-Jinja2 >= 2.7
+Requires:       python-Jinja2 >= 2.9
 Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
 Requires:       python-numpy >= 1.11.3
 Requires:       python-packaging >= 16.8
-Requires:       python-python-dateutil >= 2.1
 Requires:       python-tornado >= 5.1
-Requires:       python-typing_extensions >= 3.7.4
+Requires:       python-typing_extensions >= 3.10.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Recommends:     python-python-dateutil
 BuildArch:      noarch
 # SECTION test requirements
 %if %{with tests}
@@ -59,7 +59,7 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil >= 2.1}
+BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module selenium}
 %endif

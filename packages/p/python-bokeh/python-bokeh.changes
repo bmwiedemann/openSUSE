@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 12 13:17:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 2.4.0.dev1
+  in 2.3.3:
+  * JupyterLab 3 dynamic extension loading
+  * Deprecate broken HSL objects
+  * Simplify rendering of Line and MultiLine glyphs
+  * Replace jinja2.Markup deprecated with Jinja 3.1
+  * Upgrade to Chrome 91 and fix failing examples' tests
+  * Fix data access layout SpatialIndex.bounds()
+  * Restore support for relative font size units
+  just in dev1:
+  * Unify {Figure,Toolbar}.active_* properties
+  * Update to isort 5.8
+  * Add support for polar coordinates
+
+-------------------------------------------------------------------
 Sat Jun  5 12:55:54 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Test suite complete useless.
