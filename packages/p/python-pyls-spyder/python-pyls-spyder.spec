@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyls-spyder
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Spyder extensions for the python-language-server
 License:        MIT
@@ -31,15 +31,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-language-server}
+BuildRequires:  %{python_module python-lsp-server >= 1.0.1}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-python-language-server
+Requires:       python-python-lsp-server >= 1.0.1
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Spyder extensions for the python-language-server
+Spyder extensions for the python-lsp-server
 
 %prep
 %setup -q -n pyls-spyder-%{version}

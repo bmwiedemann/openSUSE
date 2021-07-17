@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 13 12:53:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.4.0
+  * Use python-lsp-server instead of python-language-server
+
+-------------------------------------------------------------------
 Mon Feb 22 20:20:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.3.2
