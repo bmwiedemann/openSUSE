@@ -124,4 +124,14 @@
 </comment>
     <requestid>899698</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e8030874fbd1a8f1e26ddf4578a525cc</srcmd5>
+    <version>13.0.0</version>
+    <time>1626557800</time>
+    <user>dimstar_suse</user>
+    <comment>- Build with rust flags
+- Add obs service file
+</comment>
+    <requestid>906739</requestid>
+  </revision>
 </revisionlist>

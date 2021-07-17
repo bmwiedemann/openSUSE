@@ -16,6 +16,8 @@
 #
 
 
+%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
+
 Name:           ripgrep
 Version:        13.0.0
 Release:        0
@@ -23,8 +25,10 @@ Summary:        A search tool that combines ag with grep
 License:        MIT AND Unlicense
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/BurntSushi/ripgrep
-Source:         https://github.com/BurntSushi/ripgrep/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Source2:        cargo_config
+Source999:      README.suse-maint.md
 BuildRequires:  cargo
 BuildRequires:  rust >= 1.31
 BuildRequires:  rubygem(asciidoctor)
@@ -64,28 +68,21 @@ BuildArch:      noarch
 The official fish completion script for ripgrep, generated during the build.
 
 %prep
-%setup -q
-%setup -q -D -T -a 1
-mkdir cargo-home
-cat >cargo-home/config <<EOF
-[source.crates-io]
-registry = 'https://github.com/rust-lang/crates.io-index'
-replace-with = 'vendored-sources'
-[source.vendored-sources]
-directory = './vendor'
-EOF
+%autosetup -p1 -a1
+
+install -d -m 0755 .cargo
+cp %{SOURCE2} .cargo/config
 
 %build
-export CARGO_HOME=$PWD/cargo-home
+export RUSTFLAGS=%{rustflags}
 cargo build --release %{?_smp_mflags}
 
 %install
-export CARGO_HOME=$PWD/cargo-home
+export RUSTFLAGS=%{rustflags}
 cargo install --path . --root=%{buildroot}%{_prefix}
 
 # remove residue crate file
-rm %{buildroot}%{_prefix}/.crates.toml
-rm -f %{buildroot}%{_prefix}/.crates2.json
+rm -f %{buildroot}%{_prefix}/.crates*
 
 install -Dm 644 target/release/build/ripgrep-*/out/rg.1 %{buildroot}%{_mandir}/man1/rg.1
 install -Dm 644 target/release/build/ripgrep-*/out/rg.bash %{buildroot}%{_datadir}/bash-completion/completions/rg
