@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 14:37:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Install tzdata.zi (bsc#1188127)
+
+-------------------------------------------------------------------
 Mon Jan 25 07:59:56 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - timezone update 2021a (bsc#1177460)

@@ -49,8 +49,6 @@ BuildArch:      noarch
 These are configuration files that describe available time zones - this
 package is intended for Java Virtual Machine based on OpenJDK.
 
-
-
 %prep
 %setup -c  -a 1
 # COMMON-PREP-BEGIN

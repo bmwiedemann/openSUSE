@@ -44,8 +44,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 These are configuration files that describe available time zones. You
 can select an appropriate time zone for your system with YaST.
 
-
-
 %prep
 %setup -q -c -a 1
 # COMMON-PREP-BEGIN
@@ -87,6 +85,7 @@ ln -sf /etc/localtime      %{buildroot}%{_prefix}/share/zoneinfo/posixrules
 install -m 644 iso3166.tab %{buildroot}%{_prefix}/share/zoneinfo/iso3166.tab
 install -m 644 zone.tab    %{buildroot}%{_prefix}/share/zoneinfo/zone.tab
 install -m 644 zone1970.tab %{buildroot}%{_prefix}/share/zoneinfo/zone1970.tab
+install -m 644 tzdata.zi %{buildroot}%{_prefix}/share/zoneinfo/tzdata.zi
 install -D -m 755 tzselect %{buildroot}%{_bindir}/tzselect
 install -D -m 755 zdump    %{buildroot}%{_sbindir}/zdump
 install -D -m 755 zic      %{buildroot}%{_sbindir}/zic

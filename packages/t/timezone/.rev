@@ -1316,4 +1316,13 @@ bsc#1024677</comment>
   * South Sudan changes from +03 to +02 on 2021-02-01 at 00:00.</comment>
     <requestid>866493</requestid>
   </revision>
+  <revision rev="134" vrev="2">
+    <srcmd5>a0f19c6a2ce04b8b0e12c85799be857a</srcmd5>
+    <version>2021a</version>
+    <time>1626557779</time>
+    <user>dimstar_suse</user>
+    <comment>- Install tzdata.zi (bsc#1188127)
+</comment>
+    <requestid>905208</requestid>
+  </revision>
 </revisionlist>
