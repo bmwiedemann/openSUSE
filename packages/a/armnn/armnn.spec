@@ -67,6 +67,7 @@
 %define version_minor 05
 %define version_lib 25
 %define version_lib_tfliteparser 24
+%define version_lib_onnxparser 24
 # Do not package ArmnnConverter, by default
 %bcond_with armnn_tools
 Name:           armnn%{?package_suffix}
@@ -148,7 +149,7 @@ Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}
 Requires:       libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_onnx}
-Requires:       libarmnnOnnxParser%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix} = %{version}
 %endif
 # Make sure we do not install both openCL and non-openCL (CPU only) versions.
 %if "%{target}" == "opencl"
@@ -184,7 +185,7 @@ Requires:       libarmnnSerializer%{version_lib}%{?package_suffix} = %{version}
 Requires:       libarmnnTfLiteParser%{version_lib_tfliteparser}%{?package_suffix} = %{version}
 %endif
 %if %{with armnn_onnx}
-Requires:       libarmnnOnnxParser%{version_lib}%{?package_suffix} = %{version}
+Requires:       libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix} = %{version}
 %endif
 
 %description devel
@@ -330,16 +331,16 @@ This package contains the libarmnnTfLiteParser library from armnn.
 %endif
 
 %if %{with armnn_onnx}
-%package -n libarmnnOnnxParser%{version_lib}%{?package_suffix}
+%package -n libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix}
 Summary:        libarmnnOnnxParser from armnn
 Group:          Development/Libraries/C and C++
 %if "%{target}" == "opencl"
-Conflicts:      libarmnnOnnxParser%{version_lib}
+Conflicts:      libarmnnOnnxParser%{version_lib_onnxparser}
 %else
-Conflicts:      libarmnnOnnxParser%{version_lib}-opencl
+Conflicts:      libarmnnOnnxParser%{version_lib_onnxparser}-opencl
 %endif
 
-%description -n libarmnnOnnxParser%{version_lib}%{?package_suffix}
+%description -n libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix}
 Arm NN is an inference engine for CPUs, GPUs and NPUs.
 It bridges the gap between existing NN frameworks and the underlying IP.
 It enables efficient translation of existing neural network frameworks,
@@ -376,7 +377,7 @@ PROTO=$(find %{_libdir} -name onnx.proto)
 protoc $PROTO --proto_path=. --proto_path=%{_includedir} --proto_path=$(dirname $(find %{_libdir} -name onnx)) --cpp_out=./onnx_deps
 %endif
 %if 0%{?suse_version} > 1500
-export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=deprecated-copy -Wno-error=deprecated-declarations"
+export CXX_ADDITIONAL_FLAGS="$CXX_ADDITIONAL_FLAGS -Wno-error=stringop-overread -Wno-error=uninitialized -Wno-error=array-bounds -Wno-error=deprecated-copy -Wno-error=deprecated-declarations"
 %endif
 %cmake \
   -DCMAKE_SKIP_RPATH=True \
@@ -505,8 +506,8 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %endif
 
 %if %{with armnn_onnx}
-%post -n libarmnnOnnxParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
-%postun -n libarmnnOnnxParser%{version_lib}%{?package_suffix} -p /sbin/ldconfig
+%post -n libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix} -p /sbin/ldconfig
+%postun -n libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix} -p /sbin/ldconfig
 %endif
 
 %files
@@ -555,7 +556,7 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %endif
 
 %if %{with armnn_onnx}
-%files -n libarmnnOnnxParser%{version_lib}%{?package_suffix}
+%files -n libarmnnOnnxParser%{version_lib_onnxparser}%{?package_suffix}
 %{_libdir}/libarmnnOnnxParser.so.*
 %endif
 

@@ -135,4 +135,17 @@
     <comment></comment>
     <requestid>894803</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>da5b6aa1cbe2469adc983eee477f14bd</srcmd5>
+    <version>21.05</version>
+    <time>1626557796</time>
+    <user>dimstar_suse</user>
+    <comment>- Add '-Wno-error=stringop-overread' to workaround build error
+  with GCC11 with openCL enabled
+- Add '-Wno-error=uninitialized -Wno-error=array-bounds' to
+  workaround build issues with GCC11 - https://github.com/ARM-software/armnn/issues/548
+- Fix libarmnnOnnxParser version
+</comment>
+    <requestid>906631</requestid>
+  </revision>
 </revisionlist>

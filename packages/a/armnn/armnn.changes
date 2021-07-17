@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 16 08:23:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-Wno-error=stringop-overread' to workaround build error
+  with GCC11 with openCL enabled
+
+-------------------------------------------------------------------
+Tue Jul 13 08:07:14 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add '-Wno-error=uninitialized -Wno-error=array-bounds' to
+  workaround build issues with GCC11 - https://github.com/ARM-software/armnn/issues/548
+
+-------------------------------------------------------------------
+Tue May 25 06:49:01 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix libarmnnOnnxParser version
+
+-------------------------------------------------------------------
 Fri May 21 06:55:48 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 21.05:
