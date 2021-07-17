@@ -70,4 +70,16 @@
   - Add support for Python 3.8.</comment>
     <requestid>798858</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d515702dd5660a58fcda55ddf1a18786</srcmd5>
+    <version>0.17</version>
+    <time>1626557806</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.17:
+  - Add support for Python 3.9.
+  - Drop support for python 3.5.
+  - Include program output and current working directory in the warning
+    logged when a program returns an unexpected return code</comment>
+    <requestid>906820</requestid>
+  </revision>
 </revisionlist>
