@@ -32,9 +32,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          89
-%define mainver        %major.0.2
-%define orig_version   89.0.2
+%define major          90
+%define mainver        %major.0
+%define orig_version   90.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -110,8 +110,8 @@ BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.30
-BuildRequires:  mozilla-nss-devel >= 3.64
+BuildRequires:  mozilla-nspr-devel >= 4.31
+BuildRequires:  mozilla-nss-devel >= 3.66
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -142,9 +142,7 @@ BuildRequires:  clang-devel >= 5
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
-BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpulse)
@@ -439,6 +437,7 @@ mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
 mk_add_options MOZ_OBJDIR=@TOPSRCDIR@/../obj
 . \$topsrcdir/browser/config/mozconfig
+ac_add_options --disable-bootstrap
 ac_add_options --prefix=%{_prefix}
 ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
@@ -733,8 +732,6 @@ exit 0
 %dir %{progdir}/distribution/
 %{progdir}/distribution/extensions/
 %{progdir}/defaults/
-%dir %{progdir}/gtk2
-%{progdir}/gtk2/libmozgtk.so
 %{progdir}/gmp-clearkey/
 %attr(755,root,root) %{progdir}/%{progname}.sh
 %{progdir}/%{progname}

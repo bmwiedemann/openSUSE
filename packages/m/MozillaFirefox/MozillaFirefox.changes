@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Jul 11 08:53:02 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 90.0
+  MFSA 2021-28 (bsc#1188275)
+  * CVE-2021-29970 (bmo#1709976)
+    Use-after-free in accessibility features of a document
+  * CVE-2021-29971 (bmo#1713638)
+    Granted permissions only compared host; omitting scheme and
+    port on Android
+  * CVE-2021-30547 (bmo#1715766)
+    Out of bounds write in ANGLE
+  * CVE-2021-29972 (bmo#1696816)
+    Use of out-of-date library included use-after-free
+    vulnerability
+  * CVE-2021-29973 (bmo#1701932)
+    Password autofill on HTTP websites was enabled without user
+    interaction on Android
+  * CVE-2021-29974 (bmo#1704843)
+    HSTS errors could be overridden when network partitioning was
+    enabled
+  * CVE-2021-29975 (bmo#1713259)
+    Text message could be overlaid on top of another website
+  * CVE-2021-29976 (bmo#1700895, bmo#1703334, bmo#1706910,
+    bmo#1711576, bmo#1714391)
+    Memory safety bugs fixed in Firefox 90 and Firefox ESR 78.12
+  * CVE-2021-29977 (bmo#1665836, bmo#1686138, bmo#1704316,
+    bmo#1706314, bmo#1709931, bmo#1712084, bmo#1712357,
+    bmo#1714066)
+    Memory safety bugs fixed in Firefox 90
+- requires
+  NSPR 4.31
+  NSS 3.66
+- Gtk2 support removed (was only for Flash plugin before)
+
+-------------------------------------------------------------------
 Wed Jun 23 16:54:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 89.0.2 (boo#1187648):

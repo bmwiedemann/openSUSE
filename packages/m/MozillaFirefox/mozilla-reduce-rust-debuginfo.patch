@@ -3,16 +3,16 @@
 # Date 1560754926 -7200
 #      Mon Jun 17 09:02:06 2019 +0200
 # Node ID 428161c3b9599083e1b8710eda1760f1f707ab11
-# Parent  2a004fe4d56123f6e73a9436d1a290bbfc5e0b6b
+# Parent  d55730171edb1935dec80234eba336787ff0e4e8
 #Description: reduce the rust debuginfo level on selected architectures where
 # compiling with debuginfo=2 causes the OOM killer to interrupt the build on
 # launchpad builders. Initially this was only on 32 bit architectures, but with
 # firefox 63 it started happening frequently on arm64 and ppc64el too.
 
-diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolchain.configure
---- a/build/moz.configure/toolchain.configure
-+++ b/build/moz.configure/toolchain.configure
-@@ -2145,18 +2145,19 @@ def rustc_opt_level(opt_level_option, mo
+diff --git a/build/moz.configure/rust.configure b/build/moz.configure/rust.configure
+--- a/build/moz.configure/rust.configure
++++ b/build/moz.configure/rust.configure
+@@ -603,18 +603,19 @@ set_config("CARGO_PROFILE_DEV_OPT_LEVEL"
  
  
  @depends(
@@ -33,7 +33,7 @@ diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolc
      # optimization level. Since Cargo only supports 2 profiles, we're in
      # a bit of a bind.
      #
-@@ -2169,16 +2170,18 @@ def rust_compile_flags(opt_level, debug_
+@@ -627,16 +628,18 @@ def rust_compile_flags(opt_level, debug_
  
      # opt-level=0 implies -C debug-assertions, which may not be desired
      # unless Rust debugging is enabled.
@@ -47,8 +47,8 @@ diff --git a/build/moz.configure/toolchain.configure b/build/moz.configure/toolc
  
      opts = []
  
-     if opt_level is not None:
-         opts.append("opt-level=%s" % opt_level)
      if debug_assertions is not None:
          opts.append("debug-assertions=%s" % ("yes" if debug_assertions else "no"))
      if debug_info is not None:
+         opts.append("debuginfo=%s" % debug_info)
+     if frame_pointers:
