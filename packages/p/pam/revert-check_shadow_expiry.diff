@@ -1,0 +1,31 @@
+pam_unix: do not use crypt_checksalt when checking for password expiration
+
+According to Zack Weinberg, the intended meaning of
+CRYPT_SALT_METHOD_LEGACY is "passwd(1) should not use this hashing
+method", it is not supposed to mean "force a password change on next
+login for any user with an existing stored hash using this method".
+
+This reverts commit 4da9feb.
+
+* modules/pam_unix/passverify.c (check_shadow_expiry)
+[CRYPT_CHECKSALT_AVAILABLE]: Remove.
+
+
+diff --git a/modules/pam_unix/passverify.c b/modules/pam_unix/passverify.c
+index f6132f805..5a19ed856 100644
+--- a/modules/pam_unix/passverify.c
++++ b/modules/pam_unix/passverify.c
+@@ -289,13 +289,7 @@ PAMH_ARG_DECL(int check_shadow_expiry,
+ 		D(("account expired"));
+ 		return PAM_ACCT_EXPIRED;
+ 	}
+-#if defined(CRYPT_CHECKSALT_AVAILABLE) && CRYPT_CHECKSALT_AVAILABLE
+-	if (spent->sp_lstchg == 0 ||
+-	    crypt_checksalt(spent->sp_pwdp) == CRYPT_SALT_METHOD_LEGACY ||
+-	    crypt_checksalt(spent->sp_pwdp) == CRYPT_SALT_TOO_CHEAP) {
+-#else
+ 	if (spent->sp_lstchg == 0) {
+-#endif
+ 		D(("need a new password"));
+ 		*daysleft = 0;
+ 		return PAM_NEW_AUTHTOK_REQD;

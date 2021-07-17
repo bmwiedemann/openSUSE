@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 13 13:40:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- revert-check_shadow_expiry.diff: revert wrong
+  CRYPT_SALT_METHOD_LEGACY check.
+
+-------------------------------------------------------------------
 Fri Jun 25 08:07:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Create /run/motd.d
+
+-------------------------------------------------------------------
+Wed Jun  9 14:01:19 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Remove legacy pre-usrmerge compat code (removed pam-usrmerge.diff)
+- Backport patch to not install /usr/etc/securetty (boo#1033626) ie
+  no distro defaults and don't complain about it missing
+  (pam_securetty-don-t-complain-about-missing-config.patch)
+- add debug bcond to be able to build pam with debug output easily
+- add macros file to allow other packages to stop hardcoding
+  directory names. Compatible with Fedora.
 
 -------------------------------------------------------------------
 Mon May 10 14:22:01 UTC 2021 - Josef Möllers <josef.moellers@suse.com>

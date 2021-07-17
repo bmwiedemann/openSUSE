@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 13 13:40:54 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- revert-check_shadow_expiry.diff: revert wrong
+  CRYPT_SALT_METHOD_LEGACY check.
+
+-------------------------------------------------------------------
+Wed Jun  9 14:02:02 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Remove usrmerged conditional as it's now the default
+
+-------------------------------------------------------------------
 Thu Feb 18 22:16:58 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add missing conflicts for pam_unix 

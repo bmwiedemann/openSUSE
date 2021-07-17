@@ -15,19 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if !0%{?usrmerged}
-%define libdir /%{_lib}
-%define sbindir /sbin
-%define pamdir /%{_lib}/security
-%else
-%define libdir %{_libdir}
-%define sbindir %{_sbindir}
-# moving this to /usr needs fixing
-# several packages short of
-# https://github.com/linux-pam/linux-pam/issues/256
-%define pamdir %{_libdir}/security
-%endif
+%bcond_with debug
 
 #
 %define enable_selinux 1
@@ -38,6 +26,9 @@
   %define _distconfdir %{_sysconfdir}
   %define config_noreplace 1
 %endif
+#
+%{load:%{_sourcedir}/macros.pam}
+#
 Name:           pam
 #
 Version:        1.5.1
@@ -48,12 +39,12 @@ Group:          System/Libraries
 URL:            http://www.linux-pam.org/
 Source:         Linux-PAM-%{version}.tar.xz
 Source1:        Linux-PAM-%{version}-docs.tar.xz
+Source2:        macros.pam
 Source3:        other.pamd
 Source4:        common-auth.pamd
 Source5:        common-account.pamd
 Source6:        common-password.pamd
 Source7:        common-session.pamd
-Source8:        securetty
 Source9:        baselibs.conf
 Source10:       unix2_chkpwd.c
 Source11:       unix2_chkpwd.8
@@ -68,15 +59,15 @@ Patch8:         pam-bsc1177858-dont-free-environment-string.patch
 Patch9:         pam-pam_cracklib-add-usersubstr.patch
 Patch10:        pam-bsc1181443-make-nofile-unlimited-mean-nr_open.patch
 Patch11:        bsc1184358-prevent-LOCAL-from-being-resolved.patch
+# https://github.com/linux-pam/linux-pam/commit/e842a5fc075002f46672ebcd8e896624f1ec8068
+Patch100:       pam_securetty-don-t-complain-about-missing-config.patch
+Patch101:       revert-check_shadow_expiry.diff
 BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  cracklib-devel
 BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  xz
-# this is only needed in the transition phase to make sure modules
-# are also loaded from /lib/security as fallback
-Patch99:         pam-usrmerge.diff
 Requires(post): permissions
 # All login.defs variables require support from shadow side.
 # Upgrade this symbol version only if new variables appear!
@@ -181,73 +172,59 @@ cp -a %{SOURCE12} .
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
-%if 0%{?usrmerged}
-%patch99 -p1
-%endif
+%patch100 -p1
+%patch101 -p1
 
 %build
 bash ./pam-login_defs-check.sh
-export CFLAGS="%{optflags} -DNDEBUG"
+export CFLAGS="%{optflags}"
+%if !%{with debug}
+CFLAGS="$CFLAGS -DNDEBUG"
+%endif
 %configure \
 	--includedir=%{_includedir}/security \
 	--docdir=%{_docdir}/pam \
 	--htmldir=%{_docdir}/pam/html \
 	--pdfdir=%{_docdir}/pam/pdf \
-%if !0%{?usrmerged}
-	--sbindir=/sbin \
-	--libdir=/%{_lib} \
-%endif
-	--enable-isadir=../..%{pamdir} \
-	--enable-securedir=%{pamdir} \
+	--enable-isadir=../..%{_pam_moduledir} \
+	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_distconfdir} \
+%if %{with debug}
+	--enable-debug \
+%endif
 	--enable-tally2 --enable-cracklib
-make %{?_smp_mflags}
+%make_build
 gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/libpam/.libs -lpam
 
 %check
 %make_build check
 
 %install
-mkdir -p %{buildroot}%{_sysconfdir}/pam.d
-mkdir -p %{buildroot}%{_distconfdir}/pam.d
+mkdir -p %{buildroot}%{_pam_confdir}
+mkdir -p %{buildroot}%{_pam_vendordir}
 mkdir -p %{buildroot}%{_includedir}/security
-mkdir -p %{buildroot}%{pamdir}
+mkdir -p %{buildroot}%{_pam_moduledir}
 mkdir -p %{buildroot}/sbin
 mkdir -p -m 755 %{buildroot}%{_libdir}
 %make_install
 /sbin/ldconfig -n %{buildroot}%{libdir}
 # Install documentation
 %make_install -C doc
-# install securetty
-install -m 644 %{SOURCE8} %{buildroot}%{_distconfdir}
-%ifarch s390 s390x
-for i in ttyS0 ttyS1 hvc0 hvc1 hvc2 hvc3 hvc4 hvc5 hvc6 hvc7 sclp_line0 ttysclp0; do
-	echo "$i" >>%{buildroot}/%{_distconfdir}/securetty
-done
-%endif
 # install /etc/security/namespace.d used by pam_namespace.so for namespace.conf iscript
-install -d %{buildroot}%{_sysconfdir}/security/namespace.d
+install -d %{buildroot}%{_pam_secconfdir}/namespace.d
 # install other.pamd and common-*.pamd
-install -m 644 %{SOURCE3} %{buildroot}%{_distconfdir}/pam.d/other
-install -m 644 %{SOURCE4} %{buildroot}%{_distconfdir}/pam.d/common-auth
-install -m 644 %{SOURCE5} %{buildroot}%{_distconfdir}/pam.d/common-account
-install -m 644 %{SOURCE6} %{buildroot}%{_distconfdir}/pam.d/common-password
-install -m 644 %{SOURCE7} %{buildroot}%{_distconfdir}/pam.d/common-session
-%if !0%{?usrmerged}
-rm %{buildroot}/%{_lib}/libpam.so
-ln -sf ../../%{_lib}/libpam.so.%{libpam_so_version} %{buildroot}%{_libdir}/libpam.so
-rm %{buildroot}/%{_lib}/libpamc.so
-ln -sf ../../%{_lib}/libpamc.so.%{libpamc_so_version} %{buildroot}%{_libdir}/libpamc.so
-rm %{buildroot}/%{_lib}/libpam_misc.so
-ln -sf ../../%{_lib}/libpam_misc.so.%{libpam_misc_so_version} %{buildroot}%{_libdir}/libpam_misc.so
-%endif
+install -m 644 %{SOURCE3} %{buildroot}%{_pam_vendordir}/other
+install -m 644 %{SOURCE4} %{buildroot}%{_pam_vendordir}/common-auth
+install -m 644 %{SOURCE5} %{buildroot}%{_pam_vendordir}/common-account
+install -m 644 %{SOURCE6} %{buildroot}%{_pam_vendordir}/common-password
+install -m 644 %{SOURCE7} %{buildroot}%{_pam_vendordir}/common-session
 mkdir -p %{buildroot}%{_prefix}/lib/motd.d
 #
 # Remove crap
 #
 find %{buildroot} -type f -name "*.la" -delete -print
 for x in pam_unix_auth pam_unix_acct pam_unix_passwd pam_unix_session; do
-  ln -f %{buildroot}%{pamdir}/pam_unix.so %{buildroot}%{pamdir}/$x.so
+  ln -f %{buildroot}%{_pam_moduledir}/pam_unix.so %{buildroot}%{_pam_moduledir}/$x.so
 done
 #
 # Install READMEs of PAM modules
@@ -260,24 +237,23 @@ for i in pam_*/README; do
 done
 popd
 # Install unix2_chkpwd
-install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}%{sbindir}
+install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}%{_sbindir}
 install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
 # rpm macros
-mkdir -p %{buildroot}/usr/lib/rpm/macros.d
-echo "%%_pamdir %pamdir" > %{buildroot}%{_prefix}/lib/rpm/macros.d/macros.pam
+install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
 install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/motd.conf
 # Create filelist with translations
 %find_lang Linux-PAM
 
 %verifyscript
-%verify_permissions -e %{sbindir}/unix_chkpwd
-%verify_permissions -e %{sbindir}/unix2_chkpwd
+%verify_permissions -e %{_sbindir}/unix_chkpwd
+%verify_permissions -e %{_sbindir}/unix2_chkpwd
 
 %post
 /sbin/ldconfig
-%set_permissions %{sbindir}/unix_chkpwd
-%set_permissions %{sbindir}/unix2_chkpwd
+%set_permissions %{_sbindir}/unix_chkpwd
+%set_permissions %{_sbindir}/unix2_chkpwd
 %tmpfiles_create %{_tmpfilesdir}/motd.conf
 
 %postun -p /sbin/ldconfig
@@ -294,34 +270,32 @@ done
 
 %files -f Linux-PAM.lang
 %exclude %{_defaultdocdir}/pam
-%dir %{_sysconfdir}/pam.d
-%dir %{_distconfdir}/pam.d
-%dir %{_sysconfdir}/security
-%dir %{_sysconfdir}/security/limits.d
+%dir %{_pam_confdir}
+%dir %{_pam_vendordir}
+%dir %{_pam_secconfdir}
+%dir %{_pam_secconfdir}/limits.d
 %dir %{_prefix}/lib/motd.d
 %ghost %dir %{_rundir}/motd.d
 %if %{defined config_noreplace}
-%config(noreplace) %{_sysconfdir}/pam.d/other
-%config(noreplace) %{_sysconfdir}/pam.d/common-*
-%config(noreplace) %{_sysconfdir}/securetty
+%config(noreplace) %{_pam_confdir}/other
+%config(noreplace) %{_pam_confdir}/common-*
 %else
-%{_distconfdir}/pam.d/other
-%{_distconfdir}/pam.d/common-*
-%{_distconfdir}/securetty
+%{_pam_vendordir}/other
+%{_pam_vendordir}/common-*
 %endif
 %config(noreplace) %{_sysconfdir}/environment
-%config(noreplace) %{_sysconfdir}/security/access.conf
-%config(noreplace) %{_sysconfdir}/security/group.conf
-%config(noreplace) %{_sysconfdir}/security/faillock.conf
-%config(noreplace) %{_sysconfdir}/security/limits.conf
-%config(noreplace) %{_sysconfdir}/security/pam_env.conf
+%config(noreplace) %{_pam_secconfdir}/access.conf
+%config(noreplace) %{_pam_secconfdir}/group.conf
+%config(noreplace) %{_pam_secconfdir}/faillock.conf
+%config(noreplace) %{_pam_secconfdir}/limits.conf
+%config(noreplace) %{_pam_secconfdir}/pam_env.conf
 %if %{enable_selinux}
-%config(noreplace) %{_sysconfdir}/security/sepermit.conf
+%config(noreplace) %{_pam_secconfdir}/sepermit.conf
 %endif
-%config(noreplace) %{_sysconfdir}/security/time.conf
-%config(noreplace) %{_sysconfdir}/security/namespace.conf
-%config(noreplace) %{_sysconfdir}/security/namespace.init
-%dir %{_sysconfdir}/security/namespace.d
+%config(noreplace) %{_pam_secconfdir}/time.conf
+%config(noreplace) %{_pam_secconfdir}/namespace.conf
+%config(noreplace) %{_pam_secconfdir}/namespace.init
+%dir %{_pam_secconfdir}/namespace.d
 %doc NEWS
 %license COPYING
 %{_mandir}/man5/environment.5%{?ext_man}
@@ -380,88 +354,88 @@ done
 %{_mandir}/man8/unix2_chkpwd.8%{?ext_man}
 %{_mandir}/man8/unix_chkpwd.8%{?ext_man}
 %{_mandir}/man8/unix_update.8%{?ext_man}
-%{libdir}/libpam.so.0
-%{libdir}/libpam.so.%{libpam_so_version}
-%{libdir}/libpamc.so.0
-%{libdir}/libpamc.so.%{libpamc_so_version}
-%{libdir}/libpam_misc.so.0
-%{libdir}/libpam_misc.so.%{libpam_misc_so_version}
-%dir %{pamdir}
-%{pamdir}/pam_access.so
-%{pamdir}/pam_debug.so
-%{pamdir}/pam_deny.so
-%{pamdir}/pam_echo.so
-%{pamdir}/pam_env.so
-%{pamdir}/pam_exec.so
-%{pamdir}/pam_faildelay.so
-%{pamdir}/pam_faillock.so
-%{pamdir}/pam_filter.so
-%dir %{pamdir}/pam_filter
-%{pamdir}//pam_filter/upperLOWER
-%{pamdir}/pam_ftp.so
-%{pamdir}/pam_group.so
-%{pamdir}/pam_issue.so
-%{pamdir}/pam_keyinit.so
-%{pamdir}/pam_lastlog.so
-%{pamdir}/pam_limits.so
-%{pamdir}/pam_listfile.so
-%{pamdir}/pam_localuser.so
-%{pamdir}/pam_loginuid.so
-%{pamdir}/pam_mail.so
-%{pamdir}/pam_mkhomedir.so
-%{pamdir}/pam_motd.so
-%{pamdir}/pam_namespace.so
-%{pamdir}/pam_nologin.so
-%{pamdir}/pam_permit.so
-%{pamdir}/pam_pwhistory.so
-%{pamdir}/pam_rhosts.so
-%{pamdir}/pam_rootok.so
-%{pamdir}/pam_securetty.so
+%{_libdir}/libpam.so.0
+%{_libdir}/libpam.so.%{libpam_so_version}
+%{_libdir}/libpamc.so.0
+%{_libdir}/libpamc.so.%{libpamc_so_version}
+%{_libdir}/libpam_misc.so.0
+%{_libdir}/libpam_misc.so.%{libpam_misc_so_version}
+%dir %{_pam_moduledir}
+%{_pam_moduledir}/pam_access.so
+%{_pam_moduledir}/pam_debug.so
+%{_pam_moduledir}/pam_deny.so
+%{_pam_moduledir}/pam_echo.so
+%{_pam_moduledir}/pam_env.so
+%{_pam_moduledir}/pam_exec.so
+%{_pam_moduledir}/pam_faildelay.so
+%{_pam_moduledir}/pam_faillock.so
+%{_pam_moduledir}/pam_filter.so
+%dir %{_pam_moduledir}/pam_filter
+%{_pam_moduledir}//pam_filter/upperLOWER
+%{_pam_moduledir}/pam_ftp.so
+%{_pam_moduledir}/pam_group.so
+%{_pam_moduledir}/pam_issue.so
+%{_pam_moduledir}/pam_keyinit.so
+%{_pam_moduledir}/pam_lastlog.so
+%{_pam_moduledir}/pam_limits.so
+%{_pam_moduledir}/pam_listfile.so
+%{_pam_moduledir}/pam_localuser.so
+%{_pam_moduledir}/pam_loginuid.so
+%{_pam_moduledir}/pam_mail.so
+%{_pam_moduledir}/pam_mkhomedir.so
+%{_pam_moduledir}/pam_motd.so
+%{_pam_moduledir}/pam_namespace.so
+%{_pam_moduledir}/pam_nologin.so
+%{_pam_moduledir}/pam_permit.so
+%{_pam_moduledir}/pam_pwhistory.so
+%{_pam_moduledir}/pam_rhosts.so
+%{_pam_moduledir}/pam_rootok.so
+%{_pam_moduledir}/pam_securetty.so
 %if %{enable_selinux}
-%{pamdir}/pam_selinux.so
-%{pamdir}/pam_sepermit.so
+%{_pam_moduledir}/pam_selinux.so
+%{_pam_moduledir}/pam_sepermit.so
 %endif
-%{pamdir}/pam_setquota.so
-%{pamdir}/pam_shells.so
-%{pamdir}/pam_stress.so
-%{pamdir}/pam_succeed_if.so
-%{pamdir}/pam_time.so
-%{pamdir}/pam_timestamp.so
-%{pamdir}/pam_tty_audit.so
-%{pamdir}/pam_umask.so
-%{pamdir}/pam_usertype.so
-%{pamdir}/pam_warn.so
-%{pamdir}/pam_wheel.so
-%{pamdir}/pam_xauth.so
-%{sbindir}/faillock
-%{sbindir}/mkhomedir_helper
-%{sbindir}/pam_namespace_helper
-%{sbindir}/pam_timestamp_check
-%{sbindir}/pwhistory_helper
-%verify(not mode) %attr(4755,root,shadow) %{sbindir}/unix_chkpwd
-%verify(not mode) %attr(4755,root,shadow) %{sbindir}/unix2_chkpwd
-%attr(0700,root,root) %{sbindir}/unix_update
+%{_pam_moduledir}/pam_setquota.so
+%{_pam_moduledir}/pam_shells.so
+%{_pam_moduledir}/pam_stress.so
+%{_pam_moduledir}/pam_succeed_if.so
+%{_pam_moduledir}/pam_time.so
+%{_pam_moduledir}/pam_timestamp.so
+%{_pam_moduledir}/pam_tty_audit.so
+%{_pam_moduledir}/pam_umask.so
+%{_pam_moduledir}/pam_usertype.so
+%{_pam_moduledir}/pam_warn.so
+%{_pam_moduledir}/pam_wheel.so
+%{_pam_moduledir}/pam_xauth.so
+%{_sbindir}/faillock
+%{_sbindir}/mkhomedir_helper
+%{_sbindir}/pam_namespace_helper
+%{_sbindir}/pam_timestamp_check
+%{_sbindir}/pwhistory_helper
+%verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix_chkpwd
+%verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix2_chkpwd
+%attr(0700,root,root) %{_sbindir}/unix_update
 %{_unitdir}/pam_namespace.service
 %{_tmpfilesdir}/motd.conf
 
 %files -n pam_unix
 %defattr(-,root,root,755)
-%{pamdir}/pam_unix.so
-%{pamdir}/pam_unix_acct.so
-%{pamdir}/pam_unix_auth.so
-%{pamdir}/pam_unix_passwd.so
-%{pamdir}/pam_unix_session.so
+%{_pam_moduledir}/pam_unix.so
+%{_pam_moduledir}/pam_unix_acct.so
+%{_pam_moduledir}/pam_unix_auth.so
+%{_pam_moduledir}/pam_unix_passwd.so
+%{_pam_moduledir}/pam_unix_session.so
 
 %files extra
 %defattr(-,root,root,755)
-%{pamdir}/pam_userdb.so
+%{_pam_moduledir}/pam_userdb.so
 %{_mandir}/man8/pam_userdb.8%{?ext_man}
 
 %files deprecated
 %defattr(-,root,root,755)
-%{pamdir}/pam_cracklib.so
-%{pamdir}/pam_tally2.so
-%{sbindir}/pam_tally2
+%{_pam_moduledir}/pam_cracklib.so
+%{_pam_moduledir}/pam_tally2.so
+%{_sbindir}/pam_tally2
 
 %files doc
 %defattr(644,root,root,755)
@@ -480,6 +454,6 @@ done
 %{_libdir}/libpam.so
 %{_libdir}/libpamc.so
 %{_libdir}/libpam_misc.so
-%{_prefix}/lib/rpm/macros.d/macros.pam
+%{_rpmmacrodir}/macros.pam
 
 %changelog

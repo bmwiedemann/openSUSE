@@ -1,0 +1,40 @@
+From e842a5fc075002f46672ebcd8e896624f1ec8068 Mon Sep 17 00:00:00 2001
+From: Ludwig Nussel <ludwig.nussel@suse.de>
+Date: Tue, 26 Jan 2021 13:07:20 +0100
+Subject: [PATCH] pam_securetty: don't complain about missing config
+
+Not shipping a config file should be perfectly valid for distros while
+still having eg login pre-configured to honor securetty when present.
+PAM itself doesn't ship any template either. So avoid spamming the log
+file if /etc/securetty wasn't found.
+---
+ modules/pam_securetty/pam_securetty.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/modules/pam_securetty/pam_securetty.c b/modules/pam_securetty/pam_securetty.c
+index b4d71751..47a5cd9f 100644
+--- a/modules/pam_securetty/pam_securetty.c
++++ b/modules/pam_securetty/pam_securetty.c
+@@ -111,7 +111,8 @@ securetty_perform_check (pam_handle_t *pamh, int ctrl,
+ #ifdef VENDORDIR
+       if (errno == ENOENT) {
+ 	if (stat(SECURETTY2_FILE, &ttyfileinfo)) {
+-	  pam_syslog(pamh, LOG_NOTICE,
++	  if (ctrl & PAM_DEBUG_ARG)
++	    pam_syslog(pamh, LOG_DEBUG,
+ 		     "Couldn't open %s: %m", SECURETTY2_FILE);
+ 	  return PAM_SUCCESS; /* for compatibility with old securetty handling,
+ 				 this needs to succeed.  But we still log the
+@@ -120,7 +121,8 @@ securetty_perform_check (pam_handle_t *pamh, int ctrl,
+ 	securettyfile = SECURETTY2_FILE;
+       } else {
+ #endif
+-	pam_syslog(pamh, LOG_NOTICE, "Couldn't open %s: %m", SECURETTY_FILE);
++	if (ctrl & PAM_DEBUG_ARG)
++	  pam_syslog(pamh, LOG_DEBUG, "Couldn't open %s: %m", SECURETTY_FILE);
+ 	return PAM_SUCCESS; /* for compatibility with old securetty handling,
+ 			       this needs to succeed.  But we still log the
+ 			       error. */
+-- 
+2.26.2
+

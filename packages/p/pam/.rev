@@ -980,4 +980,12 @@
     <comment>- Create /run/motd.d (forwarded request 902295 from gmbr3)</comment>
     <requestid>902310</requestid>
   </revision>
+  <revision rev="114" vrev="7">
+    <srcmd5>4d25cfc2c5b30fe5759ffd97c1de4529</srcmd5>
+    <version>1.5.1</version>
+    <time>1626557780</time>
+    <user>dimstar_suse</user>
+    <comment>Requested by dimstar</comment>
+    <requestid>906153</requestid>
+  </revision>
 </revisionlist>

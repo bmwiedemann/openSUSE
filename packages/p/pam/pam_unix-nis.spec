@@ -16,19 +16,6 @@
 #
 
 
-%if !0%{?usrmerged}
-%define libdir /%{_lib}
-%define sbindir /sbin
-%define pamdir /%{_lib}/security
-%else
-%define libdir %{_libdir}
-%define sbindir %{_sbindir}
-# moving this to /usr needs fixing
-# several packages short of
-# https://github.com/linux-pam/linux-pam/issues/256
-%define pamdir %{_libdir}/security
-%endif
-
 #
 %define enable_selinux 1
 %define libpam_so_version 0.85.1
@@ -49,6 +36,7 @@ URL:            http://www.linux-pam.org/
 Source:         Linux-PAM-%{version}.tar.xz
 Source9:        baselibs.conf
 Patch:          Makefile-pam_unix-nis.diff
+Patch1:         revert-check_shadow_expiry.diff
 BuildRequires:  pam-devel
 %if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
@@ -70,6 +58,7 @@ module has NIS support.
 %prep
 %setup -q -n Linux-PAM-%{version}
 %patch -p1
+%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -DNDEBUG"
@@ -78,29 +67,25 @@ export CFLAGS="%{optflags} -DNDEBUG"
 	--docdir=%{_docdir}/pam \
 	--htmldir=%{_docdir}/pam/html \
 	--pdfdir=%{_docdir}/pam/pdf \
-%if !0%{?usrmerged}
-	--sbindir=/sbin \
-	--libdir=/%{_lib} \
-%endif
-	--enable-isadir=../..%{pamdir} \
-	--enable-securedir=%{pamdir} \
+	--enable-isadir=../..%{_pam_moduledir} \
+	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_distconfdir} \
 	--enable-tally2 --enable-cracklib
 make -C modules/pam_unix
 
 %install
-mkdir -p %{buildroot}%{pamdir}
-install -m 755 modules/pam_unix/.libs/pam_unix.so %{buildroot}%{pamdir}/
+mkdir -p %{buildroot}%{_pam_moduledir}
+install -m 755 modules/pam_unix/.libs/pam_unix.so %{buildroot}%{_pam_moduledir}/
 for x in pam_unix_auth pam_unix_acct pam_unix_passwd pam_unix_session; do
-  ln -f %{buildroot}%{pamdir}/pam_unix.so %{buildroot}%{pamdir}/$x.so
+  ln -f %{buildroot}%{_pam_moduledir}/pam_unix.so %{buildroot}%{_pam_moduledir}/$x.so
 done
 
 %files
 %license COPYING
-%{pamdir}/pam_unix.so
-%{pamdir}/pam_unix_acct.so
-%{pamdir}/pam_unix_auth.so
-%{pamdir}/pam_unix_passwd.so
-%{pamdir}/pam_unix_session.so
+%{_pam_moduledir}/pam_unix.so
+%{_pam_moduledir}/pam_unix_acct.so
+%{_pam_moduledir}/pam_unix_auth.so
+%{_pam_moduledir}/pam_unix_passwd.so
+%{_pam_moduledir}/pam_unix_session.so
 
 %changelog
