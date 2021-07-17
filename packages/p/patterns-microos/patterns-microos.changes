@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 15:06:35 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Requires CFSSL for the verifier pattern
+
+-------------------------------------------------------------------
 Mon Jun 21 11:47:55 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add remote attestation patterns
