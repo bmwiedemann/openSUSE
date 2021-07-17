@@ -265,8 +265,6 @@ mkdir -p %{buildroot}%{_prefix}/lib/issue.d
 echo -e "\nWelcome to openSUSE MicroOS (%{_target_cpu}) - Kernel \\\r (\\\l).\n" > %{buildroot}%{_prefix}/lib/issue.d/10-OS
 echo -e "\n" > %{buildroot}%{_prefix}/lib/issue.d/90-OS
 
-touch %{buildroot}%{_sysconfdir}/motd
-
 # Put EULA into correct place
 mkdir -p %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
 cd %{buildroot}/%{_sysconfdir}/YaST2/licenses/base
@@ -389,7 +387,6 @@ fi
 %dir %{_sysconfdir}/products.d
 %{_sysconfdir}/products.d/*
 %dir %{_sysconfdir}/YaST2/
-%config(noreplace) %{_sysconfdir}/motd
 %dir %{_sysconfdir}/YaST2/licenses/
 %dir %{_sysconfdir}/YaST2/licenses/base/
 # no %doc here, or we will not install them
