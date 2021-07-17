@@ -25,4 +25,13 @@
     <comment></comment>
     <requestid>823192</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0035d243aa89c26ec7751c5587cc0d6a</srcmd5>
+    <version>1.1.1</version>
+    <time>1626557807</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.1:
+  * Use errno symbols from standard library</comment>
+    <requestid>906821</requestid>
+  </revision>
 </revisionlist>
