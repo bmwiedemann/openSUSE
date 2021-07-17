@@ -4497,4 +4497,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fourth bugfix release</comment>
     <requestid>903375</requestid>
   </revision>
+  <revision rev="410" vrev="282">
+    <srcmd5>0d1eec40dd0315ea22b8f05d3629902a</srcmd5>
+    <version>unknown</version>
+    <time>1626557785</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.1.5
+  * fith bugfix release</comment>
+    <requestid>906422</requestid>
+  </revision>
 </revisionlist>
