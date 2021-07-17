@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 14 13:51:18 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Add Security#SafeRead to allow detecting read errors when calling
+  it from perl modules (related to bsc#1177183).
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
