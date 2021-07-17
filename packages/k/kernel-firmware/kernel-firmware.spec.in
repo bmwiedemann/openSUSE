@@ -67,6 +67,10 @@ BuildArch:      noarch
 @@ALLPROVS@@
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
@@ -100,6 +104,10 @@ Obsoletes:      kernel-firmware <= %{version}
 Conflicts:      kernel < 5.3
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 @@SUBPKGLIST@@
 
 %description all

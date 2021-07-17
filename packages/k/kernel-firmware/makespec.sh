@@ -17,6 +17,10 @@ define_subpackage () {
     echo "Requires(postun): /usr/bin/mkdir /usr/bin/touch"
     echo "Requires(post): dracut >= 049"
     echo "Conflicts:      kernel < 5.3"
+    echo "%if 0%{?suse_version} >= 1550"
+    echo "# make sure we have post-usrmerge filesystem package on TW"
+    echo "Conflicts:      filesystem < 84"
+    echo "%endif"
     grep "^${topic}:" topicprovs | sed -e's/^[^ \t]*:[[:space:]]*//g'
     sh ./get_supplements.sh $topic
     echo

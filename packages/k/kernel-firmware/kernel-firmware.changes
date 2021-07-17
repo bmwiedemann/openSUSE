@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 16 13:17:23 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210716 (git commit b7c134f0d349):
+  * linux-firmware: update NXP 8897/8997 firmware images
+  * rtlwifi: de-dupe rtl8723b WiFi firmware
+  * rtlwifi: de-dupe rtl8192e WiFi firmware
+  * linux-firmware: update frimware for mediatek bluetooth chip (MT7921)
+  * cxgb4: Update firmware to revision 1.26.0.0
+  * firmware/i915/guc: Add HuC v7.9.3 for TGL & DG1
+  * firmware/i915/guc: Add GuC v62.0.3 for ADL-P
+  * firmware/i915/guc: Add GuC v62.0.0 for all platforms
+- Make TW packages only installable on post-UsrMerge systems;
+  the packages for Leap are found in OBS Kernel:stable:Backport repo,
+  instead
+- Update aliases from 5.14-rc1
+
+-------------------------------------------------------------------
 Wed Jul 07 09:13:42 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210629 (git commit d79c26779d45):

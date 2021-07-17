@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20210629
+%define version_unconverted 20210716
 
 Name:           kernel-firmware
-Version:        20210629
+Version:        20210716
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
@@ -93,6 +93,10 @@ Provides:       qlogic-firmware
 Obsoletes:      qlogic-firmware
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 
 # Force bzip2 instead of lzma compression (bsc#1176981)
 %define _binary_payload w9.bzdio
@@ -126,6 +130,10 @@ Obsoletes:      kernel-firmware <= %{version}
 Conflicts:      kernel < 5.3
 Provides:       compat-wireless-firmware = 4.4
 Obsoletes:      compat-wireless-firmware < 4.4
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Requires:       %{name}-amdgpu = %{version}
 Requires:       %{name}-ath10k = %{version}
 Requires:       %{name}-ath11k = %{version}
@@ -170,6 +178,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001305sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001306sv*sd*bc*sc*i*)
@@ -402,10 +414,12 @@ Supplements:    modalias(pci:v00001002d000073DFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073E0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073E1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073E2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073FFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007408sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000740Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000740Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d00007410sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009830sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009831sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00009832sv*sd*bc*sc*i*)
@@ -456,6 +470,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Provides:       ath3k-firmware
 Obsoletes:      ath3k-firmware
 Supplements:    modalias(ar9170usb)
@@ -656,6 +674,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifi)
 Supplements:    modalias(of:N*T*Cqcom,ipq4019-wifiC*)
 Supplements:    modalias(pci:v00000777d000011ACsv*sd*bc*sc*i*)
@@ -682,7 +704,13 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v000017CBd00001101sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000017CBd00001103sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000017CBd00001104sv*sd*bc*sc*i*)
 
 %description ath11k
 This package contains compressed kernel firmware files for
@@ -695,6 +723,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(of:N*T*Cusb1286,204e)
 Supplements:    modalias(of:N*T*Cusb1286,204eC*)
 Supplements:    modalias(of:N*T*Cusb4ca,301a)
@@ -745,6 +777,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00001077d000016A1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d000016A4sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d000016ADsv*sd*bc*sc*i*)
@@ -792,6 +828,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Provides:       bcm43xx-firmware:/lib/firmware/brcm/brcmfmac43430-sdio.bin
 Supplements:    modalias(bcma:m04BFid0812rev11cl*)
 Supplements:    modalias(bcma:m04BFid0812rev17cl*)
@@ -858,6 +898,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Provides:       cxgb3-firmware
 Obsoletes:      cxgb3-firmware
 Supplements:    modalias(pci:v00001425d00000020sv*sd*bc*sc*i*)
@@ -1245,6 +1289,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 
 %description dpaa2
 This package contains compressed kernel firmware files for
@@ -1257,6 +1305,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00008086d00000042sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000046sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00000102sv*sd*bc03sc*i*)
@@ -1451,14 +1503,34 @@ Supplements:    modalias(pci:v00008086d00004551sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004555sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004557sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004571sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004626sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004628sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d0000462Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004680sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004681sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004682sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004683sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004688sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d00004689sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004690sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004691sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004692sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004693sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046A0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046A1sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046A2sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046A3sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046A6sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046A8sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046AAsv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046B0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046B1sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046B2sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046B3sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046C0sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046C1sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046C2sv*sd*bc03sc*i*)
+Supplements:    modalias(pci:v00008086d000046C3sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004C80sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004C8Asv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00004C8Bsv*sd*bc03sc*i*)
@@ -1570,6 +1642,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00008086d00000435sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00001919sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000019E2sv*sd*bc*sc*i*)
@@ -1612,6 +1688,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Provides:       iwl1000-ucode
 Obsoletes:      iwl1000-ucode
 Provides:       iwl3945-ucode
@@ -2548,6 +2628,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v0000177Dd00000091sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000177Dd00000092sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v0000177Dd00009702sv*sd*bc*sc*i*)
@@ -2563,6 +2647,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v000011ABd00002A0Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011ABd00002A0Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011ABd00002A24sv*sd*bc*sc*i*)
@@ -2601,6 +2689,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(i2c:cx25840)
 Supplements:    modalias(of:N*T*Camlogic,g12a-vdec)
 Supplements:    modalias(of:N*T*Camlogic,g12a-vdecC*)
@@ -2786,6 +2878,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Provides:       ralink-firmware
 Obsoletes:      ralink-firmware
 Supplements:    modalias(of:N*T*Cmediatek,mt7622-bluetooth)
@@ -2854,6 +2950,7 @@ Supplements:    modalias(usb:v2717p4106d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v293Cp5702d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2955p0001d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2955p1001d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v2955p1003d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2A5Fp1000d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v2C4Ep0103d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v7392p7710d*dc*dsc*dp*ic*isc*ip*in*)
@@ -2872,6 +2969,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v000015B3d0000CB84sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000015B3d0000CF6Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000015B3d0000CF70sv*sd*bc*sc*i*)
@@ -2887,6 +2988,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v000011ABd00002B30sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011ABd00002B38sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011ABd00002B42sv*sd*bc*sc*i*)
@@ -2929,6 +3034,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00001011d0000001Asv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v0000106Bd00001645sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008020sv*sd*bc02sc00i00*)
@@ -3151,6 +3260,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v000019EEd00004000sv000019EEsd*bc*sc*i*)
 Supplements:    modalias(pci:v000019EEd00005000sv000019EEsd*bc*sc*i*)
 Supplements:    modalias(pci:v000019EEd00006000sv000019EEsd*bc*sc*i*)
@@ -3167,6 +3280,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(of:N*T*Cnvidia,gk20a)
 Supplements:    modalias(of:N*T*Cnvidia,gk20aC*)
 Supplements:    modalias(of:N*T*Cnvidia,gm20b)
@@ -3271,6 +3388,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(acpi*:AMDI0C00:*)
 Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)
@@ -3645,6 +3766,7 @@ Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa9999AB35pb00B2E941pc4B0D829Epd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa99BCAFE9pbAA25BCABpc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa9AA79DC3pb60E5BC0Epc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa9D7CD6F5pb5CB8BF41pc*pd*)
+Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa9D7CD6F5pbB23844AApc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*pa9FE55D3Dpb85601198pc3FF7175Bpd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paA2CD8E6Dpb42DA662Apc*pd*)
 Supplements:    modalias(pcmcia:m*c*f*fn*pfn*paA3A3062Cpb5A00CE95pc*pd*)
@@ -3743,6 +3865,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 
 %description prestera
 This package contains compressed kernel firmware files for
@@ -3755,6 +3881,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(of:N*T*Cqcom,mdp4)
 Supplements:    modalias(of:N*T*Cqcom,mdp4C*)
 Supplements:    modalias(of:N*T*Cqcom,mdp5)
@@ -3855,6 +3985,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Provides:       qlogic-firmware
 Obsoletes:      qlogic-firmware
 Supplements:    modalias(fs-ipathfs)
@@ -3914,6 +4048,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00001002d00001304sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001305sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00001306sv*sd*bc*sc*i*)
@@ -4493,10 +4631,12 @@ Supplements:    modalias(pci:v00001002d000073DFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073E0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073E1sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073E2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000073E3sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000073FFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007408sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000740Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000740Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d00007410sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007834sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00007835sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000791Esv*sd*bc*sc*i*)
@@ -4750,6 +4890,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v00000001d00008168sv*sd00002410bc*sc*i*)
 Supplements:    modalias(pci:v000007AAd00000044sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000007AAd00000047sv*sd*bc*sc*i*)
@@ -5454,6 +5598,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(pci:v000011FEd00000040sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011FEd00000041sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000011FEd00000042sv*sd*bc*sc*i*)
@@ -5623,6 +5771,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(acpi*:80860F28:*)
 Supplements:    modalias(acpi*:808622A8:*)
 Supplements:    modalias(acpi*:CSC0000:*)
@@ -5675,6 +5827,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(platform:wl12xx)
 Supplements:    modalias(platform:wl18xx)
 
@@ -5689,6 +5845,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(usb:v05CCp3350d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05CCp3351d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v05CCp3352d*dc*dsc*dp*ic*isc*ip*in*)
@@ -5735,6 +5895,10 @@ Requires(post): /usr/bin/mkdir /usr/bin/touch
 Requires(postun): /usr/bin/mkdir /usr/bin/touch
 Requires(post): dracut >= 049
 Conflicts:      kernel < 5.3
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 Supplements:    modalias(sdio:c*v041Bd9116*)
 Supplements:    modalias(sdio:c*v041Bd9330*)
 Supplements:    modalias(usb:v03E8p0008d*dc*dsc*dp*ic*isc*ip*in*)
