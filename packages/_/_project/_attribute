@@ -175,6 +175,7 @@
   boo#1187424: '20210618'
   boo#1187971: '20210706'
   boo#1187987: '20210703'
+  boo#1188068: '20210715'
   boo#1188089: '20210711'
   boo#1188105: '20210715'
   boo#1188194: '20210715'
@@ -390,7 +391,7 @@
   poo#93847: '20210621'
   poo#93850: '20210620'
   poo#93865: '20210609'
-  poo#94009: '20210714'
+  poo#94009: '20210715'
   poo#94108: '20210615'
   poo#94225: '20210618'
   poo#94973: '20210715'
@@ -398,6 +399,7 @@
   poo#95326: '20210713'
   poo#95329: '20210715'
   poo#95467: '20210713'
+  poo#95548: '20210715'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -421,7 +423,7 @@ pkglistgen-scopes = target rings
 # subpackages of ring packages with unacceptable requires (don't abuse)
 repo_checker-binary-whitelist-ring = patterns-media-rest_dvd patterns-media-rest_cd_x11 patterns-devel-base-devel_web patterns-base-update_test monitoring-plugins-metadata codec2-examples libreoffice-l10n-fi java-1_8_0-openjdk-accessibility hplip-scan-utils
 
-repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,cracklib,crypto-policies,dejagnu,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc10,gcc11,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,lua54,m4,make,makedepend,meson,mpc,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,pcre2,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python38:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcpd,tcl,tclap,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,
+repo_checker-allowed-in-cycles = acl,attr,audit,autoconf,automake,bc,binutils,bison,bzip2,compat-usrmerge,cpio,cracklib,crypto-policies,dejagnu,diffutils,dwz,e2fsprogs,ed,elfutils,expat,expect,fdupes,file,findutils,fipscheck,flex,gawk,gcc,gcc10,gcc11,gdbm,gettext-runtime-mini,glibc,glibc:i686,gmp,gpm,gzip,help2man,isl,keyutils,krb5-mini,libcap,libcap-ng,libdb-4_8,libeconf,libedit,libffi,libgcrypt,libgpg-error,libnsl,libnss_usrfiles,libseccomp,libselinux,libsemanage,libsepol,libtirpc,libtool,libustr,libverto,libxcrypt,libzio,linux-glibc-devel,lua-macros,lua53,lua54,m4,make,makedepend,meson,mpc,mpfr,ncurses,netcfg,ninja,openssl,openssl-1_1,pam,patch,pcre,perl,perl-Text-Unidecode,perl-gettext,pcre2,permissions,pkg-config,pkgconf,popt,python-rpm-macros,python38:base,readline,rpm,screen,shadow,system-user-root,system-users,systemd-rpm-macros,systemtap-headers,sysuser-tools,tcpd,tcl,tclap,texinfo,timezone,update-alternatives,utempter,util-linux,which,xz,zlib,zstd,
 
 staging-required-checks-adi = installcheck
 repo_checker-project-skip = True
@@ -767,9 +769,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210715'
-published: '20210714'
-publishing: '20210714'
+    <value>failed: ''
+published: '20210715'
+publishing: '20210715'
 testing: '20210715'
 </value>
   </attribute>
