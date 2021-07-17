@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 15 00:31:08 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add file "fix_random_stack_failure.patch" to fix CONFIG_RANDOMIZE_KSTACK_OFFSET_DEFAULT
+  problem with kernel 5.13 as shown in boo#118105. 
+
+-------------------------------------------------------------------
+Wed Jul 14 04:03:16 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add file "fixes_for_5.14.patch" to fix builds on kernel 5.14. 
+
+-------------------------------------------------------------------
 Mon May 17 15:59:52 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Disable the build of kmp vboxvideo, at least temporarily. 
