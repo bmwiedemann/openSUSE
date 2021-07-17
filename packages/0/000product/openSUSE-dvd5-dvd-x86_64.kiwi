@@ -4122,13 +4122,10 @@
       <repopackage name="python38-zipp"/>
       <repopackage name="python38-zope.component"/>
       <repopackage name="python38-zope.configuration"/>
-      <repopackage name="python38-zope.deferredimport"/>
-      <repopackage name="python38-zope.deprecation"/>
       <repopackage name="python38-zope.event"/>
       <repopackage name="python38-zope.hookable"/>
       <repopackage name="python38-zope.i18nmessageid"/>
       <repopackage name="python38-zope.interface"/>
-      <repopackage name="python38-zope.proxy"/>
       <repopackage name="python38-zope.schema"/>
       <repopackage name="python38-zypp-plugin"/>
       <repopackage name="qalculate-data"/>
