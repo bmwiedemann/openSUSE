@@ -160,4 +160,12 @@
     <comment>- Update to version 2.21</comment>
     <requestid>823905</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>349f95652c06b20334b00c04e25f0861</srcmd5>
+    <version>2.22</version>
+    <time>1626557806</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.22</comment>
+    <requestid>906793</requestid>
+  </revision>
 </revisionlist>

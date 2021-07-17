@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 10 08:03:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.22
+  * Build system updates only; no user-related changes.
+- Drop arping-setgroups.diff (merged)
+
+-------------------------------------------------------------------
 Thu Jul 30 21:02:18 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 
 - Update to version 2.21 
