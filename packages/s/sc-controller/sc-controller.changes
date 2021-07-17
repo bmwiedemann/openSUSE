@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 16 22:07:40 UTC 2021 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 0.4.8.5
+  * Fixed AttributeError problems in sccdaemon.py. Contribution by Alastor27
+  * Fixed using two Steam Controllers in daemon. Contribution by berarma
+  * Added toggled handler for 'Minimize to tray on start' checkbox 
+    in Settings. Contribution by Alastor27
+  * Fixed 'Edit Bindings' and 'Autoswitcher Options' OSD options. 
+    Contribution by Supreeeme
+  * Fixed importing VDFs from Steam. Contribution by Supreeeme
+  * Changes to adjust mouse cursor movement based on gamepad poll rate. 
+    Allows more uniform mouse cursor movement between wired and 
+    wireless Steam Controllers
+  * Now clear mouse cursor distance remainders when changing directions
+
+-------------------------------------------------------------------
 Wed Apr 28 16:23:03 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 0.4.8.4
