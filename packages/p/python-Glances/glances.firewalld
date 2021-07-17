@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<service>
+  <short>glances</short>
+  <description>Glances system monitor web service</description>
+  <port protocol="tcp" port="61208"/>
+</service>
+

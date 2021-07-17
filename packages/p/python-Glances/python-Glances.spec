@@ -19,27 +19,31 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-Glances
-Version:        3.1.6.2
+Version:        3.2.1
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
 URL:            https://github.com/nicolargo/glances
 Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
+Source2:        glances.service
+Source3:        glances.firewalld
 Patch0:         adjust-data-files.patch
 Patch1:         remove-shebang.patch
 Patch2:         skip-online-tests.patch
 Patch3:         fix-tests.patch
 Patch4:         unitest-wait-for-server.patch
 BuildRequires:  %{python_module bottle}
+BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module future}
-BuildRequires:  %{python_module psutil >= 5.6.3}
+BuildRequires:  %{python_module psutil >= 5.3.0}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-bottle
+Requires:       python-defusedxml
 Requires:       python-future
-Requires:       python-psutil >= 5.6.3
+Requires:       python-psutil >= 5.3.0
 Requires:       python-requests
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
@@ -56,6 +60,19 @@ large amount of monitoring information through a curses or Web
 based interface. The information dynamically adapts depending on the
 size of the user interface.
 
+%package -n glances-common
+Summary:        Service and firewalld files for glances
+Requires:       glances
+
+%description -n glances-common
+Glances is a cross-platform monitoring tool which presents a
+large amount of monitoring information through a curses or Web
+based interface. The information dynamically adapts depending on the
+size of the user interface.
+
+This packages contains the service file to start a glances server
+from systemd and a firewalld file to open the default port.
+
 %prep
 %setup -q -n glances-%{version}
 %autopatch -p1
@@ -69,6 +86,14 @@ size of the user interface.
 %python_clone -a %{buildroot}%{_bindir}/glances
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+mkdir -p %{buildroot}%{_sbindir}
+ln -sf service %{buildroot}%{_sbindir}/rcglances
+mkdir -p %{buildroot}%{_unitdir}
+install -D -m 644 %{SOURCE2} %{buildroot}%{_unitdir}/
+
+mkdir -p %{buildroot}%{_prefix}/lib/firewalld/services
+install -D -m 644 %{SOURCE3} %{buildroot}%{_prefix}/lib/firewalld/services/glances.xml
+
 %check
 export LANG=en_US.UTF-8
 %python_exec unitest.py
@@ -81,11 +106,30 @@ export LANG=en_US.UTF-8
 %postun
 %python_uninstall_alternative glances
 
+%pre -n glances-common
+%service_add_pre glances.service
+
+%post -n glances-common
+%service_add_post glances.service
+
+%preun -n glances-common
+%service_del_preun glances.service
+
+%postun -n glances-common
+%service_del_postun glances.service
+
 %files %{python_files}
 %license COPYING
 %doc NEWS.rst README.rst
 %python_alternative %{_bindir}/glances
 %python_alternative %{_mandir}/man1/glances.1%{?ext_man}
 %{python_sitelib}/*
+
+%files -n glances-common
+%dir %{_prefix}/lib/firewalld
+%dir %{_prefix}/lib/firewalld/services
+%{_prefix}/lib/firewalld/services/glances.xml
+%{_unitdir}/glances.service
+%{_sbindir}/rcglances
 
 %changelog
