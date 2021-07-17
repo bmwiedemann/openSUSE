@@ -396,7 +396,7 @@
   poo#94973: '20210715'
   poo#95120: '20210715'
   poo#95326: '20210713'
-  poo#95329: '20210714'
+  poo#95329: '20210715'
   poo#95467: '20210713'
 </value>
   </attribute>
@@ -441,7 +441,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210715</value>
+    <value>20210716</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
