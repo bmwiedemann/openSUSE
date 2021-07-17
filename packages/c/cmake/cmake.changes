@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 14 19:32:35 UTC 2021 - Christoph G <foss@grueninger.de>
+
+- update to 3.21
+  * The Makefile Generators and the “Ninja” generator learned to add
+    linker launcher tools along with the linker for “C”, “CXX”,
+    “OBJC”, and “OBJCXX” languages.
+  * “cmake(1)” gained the “–toolchain <path/to/file>” command-line
+    option to specify a toolchain file.
+  * Messages printed to a terminal now may be colored by message
+    type.
+  * The “add_custom_command(TARGET)” command (for Build Events)
+    gained support for resolving target-dependent generator
+    expressions.
+  * The “install(TARGETS)” command gained new “RUNTIME_DEPENDENCIES”
+  and “RUNTIME_DEPENDENCY_SET” arguments, which can be used to
+  install runtime dependencies using “file(GET_RUNTIME_DEPENDENCIES)”.
+
+-------------------------------------------------------------------
 Mon Jul  5 15:41:15 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Increase the disk space needed in the _constraints file
