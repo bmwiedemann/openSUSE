@@ -17,7 +17,7 @@
 
 
 Name:           tpm2-0-tss
-Version:        3.0.3
+Version:        3.1.0
 Release:        0
 Summary:        Intel's TCG Software Stack access libraries for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -27,12 +27,14 @@ Source0:        https://github.com/tpm2-software/tpm2-tss/releases/download/%{ve
 Source2:        baselibs.conf
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
-BuildRequires:  libcurl-devel
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  libgcrypt-devel
-BuildRequires:  libjson-c-devel
-BuildRequires:  libopenssl-devel
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(udev)
+BuildRequires:  /usr/sbin/groupadd
+BuildRequires:  acl
 # The same user is employed by trousers (and was employed by the old
 # resourcemgr shipped with the tpm2-0-tss package):
 #
@@ -48,8 +50,7 @@ BuildRequires:  pkgconfig(udev)
 # the packages ATM. Trousers is keeping state there, but the directory is
 # owned by root and files are opened before dropping privileges. The passwd
 # entry seems not to be evaluated.
-Requires:       user(tss)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(pre):  user(tss)
 
 %description
 The tpm2-0-tss package provides a TPM 2.0 TSS implementation. This
@@ -70,6 +71,7 @@ Requires:       libtss2-tcti-cmd0 = %{version}
 Requires:       libtss2-tcti-device0 = %{version}
 Requires:       libtss2-tcti-mssim0 = %{version}
 Requires:       libtss2-tcti-swtpm0 = %{version}
+Requires:       libtss2-tcti-pcap0 = %{version}
 Requires:       libtss2-tctildr0 = %{version}
 Requires:       tpm2-0-tss = %{version}
 
@@ -170,10 +172,21 @@ A TCTI for interaction with the TPM2 software simulator. It abstracts the
 details of direct communication with the interface and protocol exposed by the
 daemon hosting the TPM2 reference implementation.
 
+%package -n     libtss2-tcti-pcap0
+Summary:        TCTI pcap interface library
+Group:          System/Libraries
+
+%description -n libtss2-tcti-pcap0
+A TCTI which prints TPM commands and responses to a file in pcap-ng format. It abstracts the
+details of direct communication with the interface and protocol exposed by the
+daemon hosting the TPM2 reference implementation.
+
 %prep
-%setup -q -n tpm2-tss-%{version}
+%autosetup -n tpm2-tss-%{version}
 
 %build
+# configure looks for groupadd on PATH
+export PATH="$PATH:%{_sbindir}"
 %configure --disable-static \
     --with-udevrulesdir=%{_udevrulesdir} \
     --with-runstatedir=%{_rundir} \
@@ -187,6 +200,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 # rename the rules file to have a numbered prefix as all others have, too
 %define udev_rule_file 90-tpm.rules
 mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{udev_rule_file}
+# Conflicts with system-users
+rm %{buildroot}%{_sysusersdir}/tpm2-tss.conf
 
 %post
 %_bindir/udevadm trigger -s tpm -s tpmrm || :
@@ -213,57 +228,49 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 %postun -n libtss2-tcti-cmd0 -p /sbin/ldconfig
 %post -n libtss2-tcti-swtpm0 -p /sbin/ldconfig
 %postun -n libtss2-tcti-swtpm0 -p /sbin/ldconfig
+%post -n libtss2-tcti-pcap0 -p /sbin/ldconfig
+%postun -n libtss2-tcti-pcap0 -p /sbin/ldconfig
+
 
 %files
-%defattr(-,root,root)
 %doc *.md
 %license LICENSE
 %{_mandir}/man3/*
 %{_mandir}/man5/*
 %{_mandir}/man7/tss2-*
 %{_udevrulesdir}/%{udev_rule_file}
-%{_sysusersdir}/tpm2-tss.conf
 %dir /etc/tpm2-tss/
 %config /etc/tpm2-tss/fapi-config.json
 %dir /etc/tpm2-tss/fapi-profiles
 %config /etc/tpm2-tss/fapi-profiles/*.json
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/tss2
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files -n libtss2-esys0
-%defattr(-,root,root)
 %{_libdir}/libtss2-esys.so.*
 
 %files -n libtss2-sys1
-%defattr(-,root,root)
 %{_libdir}/libtss2-sys.so.*
 
 %files -n libtss2-mu0
-%defattr(-,root,root)
 %{_libdir}/libtss2-mu.so.*
 
 %files -n libtss2-rc0
-%defattr(-,root,root)
 %{_libdir}/libtss2-rc.so.*
 
 %files -n libtss2-tctildr0
-%defattr(-,root,root)
 %{_libdir}/libtss2-tctildr.so.*
 
 %files -n libtss2-tcti-device0
-%defattr(-,root,root)
 %{_libdir}/libtss2-tcti-device.so.*
 
 %files -n libtss2-tcti-mssim0
-%defattr(-,root,root)
 %{_libdir}/libtss2-tcti-mssim.so.*
 
 %files -n libtss2-fapi1
-%defattr(-,root,root)
 %{_libdir}/libtss2-fapi.so.*
 %{_tmpfilesdir}/tpm2-tss-fapi.conf
 # this would fix "tmpfile-not-in-filelist" warnings but when adding these
@@ -280,11 +287,12 @@ mv %{buildroot}%{_udevrulesdir}/tpm-udev.rules %{buildroot}%{_udevrulesdir}/%{ud
 # %%ghost %%{_rundir}/%%{name}/eventlog
 
 %files -n libtss2-tcti-cmd0
-%defattr(-,root,root)
 %{_libdir}/libtss2-tcti-cmd.so.*
 
 %files -n libtss2-tcti-swtpm0
-%defattr(-,root,root)
 %{_libdir}/libtss2-tcti-swtpm.so.*
+
+%files -n libtss2-tcti-pcap0
+%{_libdir}/libtss2-tcti-pcap.so.*
 
 %changelog

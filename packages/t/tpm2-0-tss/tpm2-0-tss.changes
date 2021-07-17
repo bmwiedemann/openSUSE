@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 15 15:51:04 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove conflicting sysusers.d file
+
+-------------------------------------------------------------------
+Wed Jul 14 15:11:55 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Clean spec file
+- Add new library libtss2-tcti-pcap0
+- Update to 3.1.0:
+  * Fix FAPI PolicyPCR not instatiating correctly (CVE-2020-24455)
+  * Fixed possible access outside the array in ifapi_calculate_tree
+  * Added pcap TCTI
+  * Added GlobalSign TPM Root CA certs to FAPI cert store
+  * Changed EncryptDecrypt mode type to align with TPM2.0 spec 1.59
+  * Added two new TPM commands TPM2_CC_CertifyX509,
+    and TPM2_CC_ACT_SetTimeout
+
+-------------------------------------------------------------------
 Mon Jun 28 06:52:53 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - small services fixes and comments
