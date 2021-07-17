@@ -3683,4 +3683,23 @@ I cannot test locally unfortunately.
   * CVE-2021-29957 (boo#1186198, bmo#1673241)</comment>
     <requestid>897289</requestid>
   </revision>
+  <revision rev="257" vrev="1">
+    <srcmd5>8575886d2601e7a94cf6a870d683b5e5</srcmd5>
+    <version>78.12.0</version>
+    <time>1626557784</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 78.12.0
+  MFSA 2021-30 (bsc#1188275)
+  * CVE-2021-29969 (bmo#1682370)
+    IMAP server responses sent by a MITM prior to STARTTLS could be
+    processed
+  * CVE-2021-29970 (bmo#1709976)
+    Use-after-free in accessibility features of a document
+  * CVE-2021-30547 (bmo#1715766)
+    Out of bounds write in ANGLE
+  * CVE-2021-29976 (bmo#1700895, bmo#1703334, bmo#1706910,
+    bmo#1711576, bmo#1714391)
+    Memory safety bugs fixed in Firefox 90 and Firefox ESR 78.12</comment>
+    <requestid>906332</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 14 06:34:13 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.12.0
+  MFSA 2021-30 (bsc#1188275)
+  * CVE-2021-29969 (bmo#1682370)
+    IMAP server responses sent by a MITM prior to STARTTLS could be
+    processed
+  * CVE-2021-29970 (bmo#1709976)
+    Use-after-free in accessibility features of a document
+  * CVE-2021-30547 (bmo#1715766)
+    Out of bounds write in ANGLE
+  * CVE-2021-29976 (bmo#1700895, bmo#1703334, bmo#1706910,
+    bmo#1711576, bmo#1714391)
+    Memory safety bugs fixed in Firefox 90 and Firefox ESR 78.12
+
+-------------------------------------------------------------------
 Sat May 29 08:14:38 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.11.0
