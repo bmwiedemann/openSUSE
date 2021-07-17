@@ -1914,7 +1914,6 @@ unsorted:
   - ciano 
   - ciano-lang 
   - cifs-utils-devel 
-  - cilium-proxy: [x86_64] 
   - cim-schema 
   - cinema 
   - cinema-lang 
@@ -7646,6 +7645,7 @@ unsorted:
   - jzlib-javadoc 
   - k3b-devel 
   - k3s 
+  - k3s-install 
   - k3sup 
   - k8s-sidecar 
   - kColorPicker-devel 
@@ -8786,7 +8786,7 @@ unsorted:
   - libKPropertyWidgets3-4 
   - libKPublicTransport1 
   - libKReport3-4 
-  - libKSeExpr4_0_2_0 
+  - libKSeExpr4 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_3_0 
@@ -9937,9 +9937,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -10931,7 +10931,6 @@ unsorted:
   - libgoocanvasmm-2_0-6 
   - libgoocanvasmm-devel 
   - libgooglepinyin-devel 
-  - libgovf-0_1 
   - libgovirt-devel 
   - libgovirt-lang 
   - libgovirt2 
@@ -11036,7 +11035,6 @@ unsorted:
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
   - libgtk-4-1-32bit: [x86_64] 
-  - libgtk-frdp-0_1 
   - libgtk-layer-shell0 
   - libgtkd-3-0 
   - libgtkdatabox-0_9_3-1 
@@ -13113,8 +13111,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13137,7 +13135,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13366,7 +13364,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -15224,6 +15222,8 @@ unsorted:
   - lua54-zlib 
   - luabind-devel 
   - luacheck 
+  - luajit 
+  - luajit-devel 
   - luaposix-doc 
   - lucene++-devel 
   - lucene-analyzers-common 
@@ -17804,6 +17804,7 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
+  - openSUSE-software 
   - openSUSEway 
   - openafs-authlibs 
   - openafs-authlibs-devel 
@@ -17817,8 +17818,6 @@ unsorted:
   - openal-soft-tools 
   - openamp-devel 
   - openamp-examples 
-  - openarena: [x86_64] 
-  - openarena-data 
   - openbabel 
   - openbabel-devel 
   - openblas-devel 
@@ -23551,6 +23550,9 @@ unsorted:
   - python36-python-jsonrpc-server 
   - python36-python-jsonschema-objects 
   - python36-python-language-server 
+  - python36-python-lsp-black 
+  - python36-python-lsp-jsonrpc 
+  - python36-python-lsp-server 
   - python36-python-lzo 
   - python36-python-magic 
   - python36-python-memcached 
@@ -23789,7 +23791,6 @@ unsorted:
   - python36-setuptools 
   - python36-setuptools-declarative-requirements 
   - python36-setuptools-git 
-  - python36-setuptools-test 
   - python36-setuptools-version-command 
   - python36-setuptools-wheel 
   - python36-setuptools_scm 
@@ -26463,6 +26464,9 @@ unsorted:
   - python38-python-jsonschema-objects 
   - python38-python-language-server 
   - python38-python-louvain 
+  - python38-python-lsp-black 
+  - python38-python-lsp-jsonrpc 
+  - python38-python-lsp-server 
   - python38-python-lzo 
   - python38-python-magic 
   - python38-python-mpd2 
@@ -26706,7 +26710,6 @@ unsorted:
   - python38-setupmeta 
   - python38-setuptools-declarative-requirements 
   - python38-setuptools-git 
-  - python38-setuptools-test 
   - python38-setuptools-version-command 
   - python38-setuptools-wheel 
   - python38-setuptools_scm 
@@ -27150,8 +27153,11 @@ unsorted:
   - python38-zodbpickle 
   - python38-zope.cachedescriptors 
   - python38-zope.copy 
+  - python38-zope.deferredimport 
+  - python38-zope.deprecation 
   - python38-zope.exceptions 
   - python38-zope.location 
+  - python38-zope.proxy 
   - python38-zope.proxy-devel 
   - python38-zope.security 
   - python38-zope.testbrowser 
@@ -29535,6 +29541,9 @@ unsorted:
   - python39-python-jsonschema-objects 
   - python39-python-language-server 
   - python39-python-louvain 
+  - python39-python-lsp-black 
+  - python39-python-lsp-jsonrpc 
+  - python39-python-lsp-server 
   - python39-python-lzo 
   - python39-python-magic 
   - python39-python-memcached 
@@ -29797,7 +29806,6 @@ unsorted:
   - python39-setuptools 
   - python39-setuptools-declarative-requirements 
   - python39-setuptools-git 
-  - python39-setuptools-test 
   - python39-setuptools-version-command 
   - python39-setuptools-wheel 
   - python39-setuptools_scm 
@@ -30748,7 +30756,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -41142,7 +41150,6 @@ unsorted:
   - typelib-1_0-Gom-1_0 
   - typelib-1_0-GooCanvas-2_0 
   - typelib-1_0-GooCanvas-3_0 
-  - typelib-1_0-Govf-0_1 
   - typelib-1_0-Granite-1_0 
   - typelib-1_0-GrlNet-0_3 
   - typelib-1_0-GrlPls-0_3 
@@ -41169,7 +41176,6 @@ unsorted:
   - typelib-1_0-GstVulkanXCB-1_0 
   - typelib-1_0-GstWebRTC-1_0 
   - typelib-1_0-Gtk-2_0 
-  - typelib-1_0-GtkFrdp-0_1 
   - typelib-1_0-GtkLayerShell-0_1 
   - typelib-1_0-GtkSource-3_0 
   - typelib-1_0-GtkSpell-3_0 
