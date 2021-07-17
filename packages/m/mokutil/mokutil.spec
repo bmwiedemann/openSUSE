@@ -17,7 +17,7 @@
 
 
 Name:           mokutil
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Tools for manipulating machine owner keys
 License:        GPL-3.0-only
@@ -25,13 +25,10 @@ Group:          Productivity/Security
 URL:            https://github.com/lcp/mokutil
 Source:         https://github.com/lcp/%{name}/archive/%{version}.tar.gz
 Source1:        modhash
-# PATCH-FIX-UPSTREAM mokutil-remove-shebang-from-bash-completion-file.patch glin@suse.com -- Remove shebang from bash-completion/mokutil
-Patch1:         mokutil-remove-shebang-from-bash-completion-file.patch
-# PATCH-FIX-UPSTREAM mokutil-bsc1173115-add-ca-and-keyring-checks.patch bsc#1173115 glin@suse.com -- Add options for CA and kernel keyring checks
-Patch2:         mokutil-bsc1173115-add-ca-and-keyring-checks.patch
 # PATCH-FIX-SUSE mokutil-remove-libkeyutils-check.patch glin@suse.com -- Disable the check of libkeyutils version
-Patch3:         mokutil-remove-libkeyutils-check.patch
-Patch100:       mokutil-support-revoke-builtin-cert.patch
+Patch1:         mokutil-remove-libkeyutils-check.patch
+# PATCH-FIX-UPSTREAM mokutil-fix-missing-header.patch glin@suse.com -- Fix the compilation error due to the missing header
+Patch2:         mokutil-fix-missing-header.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  efivar-devel >= 0.12
@@ -47,10 +44,10 @@ keys (MOK) stored in the database of shim.
 
 %prep
 %setup -q
+%if 0%{?suse_version} <= 1500
 %patch1 -p1
+%endif
 %patch2 -p1
-%patch3 -p1
-%patch100 -p1
 
 %build
 ./autogen.sh

@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Jul 15 06:39:26 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.5.0
+  + mokutil: delete key/hash from the reverse request
+  + efi_x509: fix an error handling in is_immediate_ca()
+  + efi_x509: fix certificates fingerprint calculation
+  + efi_x509: use EVP_Digest()* functions instead of the deprecated
+    SHA1_*()
+  + src/util.c: fix NULL pointer dereference in mok_get_variable
+  + mokutil: Read the SbatLevelRT variable to get the SBAT entries
+  + mokutil: add mok-variables parsing support
+  + mokutil: Add option to print the UEFI SBAT variable content
+  + mokutil: only check for Secure Boot support in options that
+    need it
+  + efi_x509: add the function to fetch SKID
+  + keyring: add the function to check kernel keyring
+  + mokutil: initialize data for efi_get_variable()
+  + mokutil: correct the data for efi_set_variable() in
+    set_password()
+  + mokutil: improve the readability of issue_mok_request()
+  + mokutil: drop the checks for PK and KEK
+  + mokutil: check the blocklists before enrolling a key
+  + mokutil: adjust the command bits
+  + mokutil: remove "--simple-hash"
+  + make CA check non-fatal
+  + mokutil: close file in the error path
+  + mokutil: do the CA check
+  + efi_x509: add the function to check immediate CA
+  + efi_x509: use d2i_X509() to create X509 handling
+  + mokutil: rename hash_file as pw_hash_file
+  + password-crypt: update the function names
+  + password-crypt: fix the types of several functions
+  + mokutil: fix the error message in sb_state()
+  + mokutil: move x509 functions to efi_x509.c
+  + mokutil: move the hash functions to efi_hash.c
+  + util: add functions for db_var_name and db_friendly_name
+  + Remove the SHA1 code from identify_hash_type()
+  + Map the UEFI variable names with a function
+  + Fix -Wcast-align warnings
+  + Fix 32 bit build
+  + Add --timeout to manpage and other corrections.
+  + mokutil.c: fix typo enrollement -> enrollment
+  + Avoid taking pointer to packed struct
+  + Fix name of --enable-validation in the description
+  + Remove shebang from bash-completion/mokutil
+- Add mokutil-fix-missing-header.patch to fix the compilation error
+  due to the missing header
+- Refresh mokutil-remove-libkeyutils-check.patch and only apply
+  it to openSUSE Leap 15.*
+- Drop upstreamed patches:
+  + mokutil-remove-shebang-from-bash-completion-file.patch
+  + mokutil-bsc1173115-add-ca-and-keyring-checks.patch
+- Drop mokutil-support-revoke-builtin-cert.patch since we don't use
+  the builtin cert prompt patch in shim anymore.
+
+-------------------------------------------------------------------
 Tue May  4 06:52:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec file cleanup 

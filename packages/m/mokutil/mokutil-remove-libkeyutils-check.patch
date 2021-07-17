@@ -11,10 +11,10 @@ Signed-off-by: Gary Lin <glin@suse.com>
  src/Makefile.am | 3 +--
  2 files changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/configure.ac b/configure.ac
-index b0b0376..d74fd21 100644
---- a/configure.ac
-+++ b/configure.ac
+Index: mokutil-0.5.0/configure.ac
+===================================================================
+--- mokutil-0.5.0.orig/configure.ac
++++ mokutil-0.5.0/configure.ac
 @@ -85,7 +85,6 @@ AC_CHECK_FUNCS([memset])
  
  PKG_CHECK_MODULES(OPENSSL, [openssl >= 0.9.8])
@@ -23,16 +23,17 @@ index b0b0376..d74fd21 100644
  
  AC_ARG_WITH([bash-completion-dir],
      AS_HELP_STRING([--with-bash-completion-dir[=PATH]],
-diff --git a/src/Makefile.am b/src/Makefile.am
-index f616b90..664b80a 100644
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -2,12 +2,11 @@ bin_PROGRAMS    = mokutil
+Index: mokutil-0.5.0/src/Makefile.am
+===================================================================
+--- mokutil-0.5.0.orig/src/Makefile.am
++++ mokutil-0.5.0/src/Makefile.am
+@@ -2,13 +2,12 @@ bin_PROGRAMS    = mokutil
  
  mokutil_CFLAGS  = $(OPENSSL_CFLAGS)	\
  		  $(EFIVAR_CFLAGS)	\
 -		  $(LIBKEYUTILS_CFLAGS)	\
- 		  $(WARNINGFLAGS_C)
+ 		  $(WARNINGFLAGS_C)	\
+ 		  -DVERSION="\"$(VERSION)\""
  
  mokutil_LDADD   = $(OPENSSL_LIBS)	\
  		  $(EFIVAR_LIBS)	\
@@ -41,6 +42,3 @@ index f616b90..664b80a 100644
  		  -lcrypt
  
  mokutil_SOURCES = signature.h \
--- 
-2.28.0
-

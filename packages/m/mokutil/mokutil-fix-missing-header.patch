@@ -1,0 +1,28 @@
+From b15e7c4d7a99f82edb68de1177198b17972682da Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Thu, 15 Jul 2021 14:41:56 +0800
+Subject: [PATCH] util: add the missing stdio.h
+
+The header, stdio.h, was missing when moving functions to util.c and
+some compiler would complain implicit declaration.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ src/util.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/util.c b/src/util.c
+index d875144..621869f 100644
+--- a/src/util.c
++++ b/src/util.c
+@@ -29,6 +29,7 @@
+  * files in the program, then also delete it here.
+  */
+ 
++#include <stdio.h>
+ #include <stdlib.h>
+ #include <termios.h>
+ 
+-- 
+2.31.1
+
