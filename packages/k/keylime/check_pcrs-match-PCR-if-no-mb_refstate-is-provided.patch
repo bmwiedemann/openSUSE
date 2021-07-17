@@ -1,0 +1,32 @@
+From 1c3dc5928866741426acabbe653c51d5ec2b9813 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 8 Jul 2021 16:16:32 +0200
+Subject: [PATCH] check_pcrs: match PCR if no mb_refstate is provided
+
+If the values for mb_refstate are empty, the PCRs that are present in
+the tpm_policy and belong to the measured boot process are ignored.
+
+This patch check that the PCRs form the policy matches the ones that
+comes from the quote when there is no measured boot data.
+
+Fix #694
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ keylime/tpm/tpm_abstract.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: keylime-6.1.0/keylime/tpm/tpm_abstract.py
+===================================================================
+--- keylime-6.1.0.orig/keylime/tpm/tpm_abstract.py
++++ keylime-6.1.0/keylime/tpm/tpm_abstract.py
+@@ -316,6 +316,9 @@ class AbstractTPM(metaclass=ABCMeta):
+                     if val_from_log_hex_stripped != pcrval_stripped:
+                         logger.error("For PCR %d and hash SHA256 the boot event log has value %r but the agent returned %r", pcrnum, val_from_log_hex, pcrval)
+                         return False
++                elif pcrnum in pcr_allowlist and pcrval not in pcr_allowlist[pcrnum] and not config.STUB_TPM:
++                    logger.error("%sPCR #%s: %s from quote does not match expected value %s", ("", "v")[virtual], pcrnum, pcrval, pcr_allowlist[pcrnum])
++                    return False
+                 pcrsInQuote.add(pcrnum)
+                 continue
+ 

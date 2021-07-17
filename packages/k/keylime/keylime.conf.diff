@@ -2,7 +2,7 @@ Index: keylime-6.1.0/keylime.conf
 ===================================================================
 --- keylime-6.1.0.orig/keylime.conf
 +++ keylime-6.1.0/keylime.conf
-@@ -16,7 +16,8 @@
+@@ -16,7 +16,8 @@ ca_implementation = openssl
  
  # Revocation IP & Port used by either the cloud_agent or keylime_ca to receive
  # revocation events from the verifier.
@@ -12,7 +12,7 @@ Index: keylime-6.1.0/keylime.conf
  receive_revocation_port = 8992
  
  #=============================================================================
-@@ -24,11 +25,13 @@
+@@ -24,11 +25,13 @@ receive_revocation_port = 8992
  #=============================================================================
  
  # The binding address and port for the agent server
@@ -28,7 +28,7 @@ Index: keylime-6.1.0/keylime.conf
  registrar_port = 8890
  
  # The name of the RSA key that Keylime should use for protecting shares of U/V.
-@@ -68,7 +71,8 @@
+@@ -68,7 +71,8 @@ extract_payload_zip = True
  # 'dmidecode -s system-uuid'.
  # If you set this to "hostname", Keylime will use the full qualified domain
  # name of current host as the agent id.
@@ -38,7 +38,7 @@ Index: keylime-6.1.0/keylime.conf
  
  # Whether to listen for revocation notifications from the verifier or not.
  listen_notfications = True
-@@ -129,7 +133,8 @@
+@@ -129,7 +133,8 @@ ek_handle = generate
  #=============================================================================
  
  # The IP address and port of verifier server binds to
@@ -48,7 +48,17 @@ Index: keylime-6.1.0/keylime.conf
  cloudverifier_port = 8881
  
  # The address and port of registrar server that verifier communicates with
-@@ -406,7 +411,8 @@
+@@ -380,7 +385,8 @@ max_retries = 10
+ # might provide a signed list of EK public key hashes.  Then you could write
+ # an ek_check_script that checks the signature of the allowlist and then
+ # compares the hash of the given EK with the allowlist.
+-require_ek_cert = True
++# require_ek_cert = True
++require_ek_cert = False
+ 
+ # Optional script to execute to check the EK and/or EK certificate against a
+ # allowlist or any other additional EK processing you want to do. Runs in
+@@ -406,7 +412,8 @@ ek_check_script=
  
  # The registrar's IP address and port used to communicate with other services
  # as well as the bind address for the registrar server.

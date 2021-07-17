@@ -29,10 +29,14 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        keylime.xml
 # PATCH-FIX-OPENSUSE version.diff
 Patch1:         version.diff
-# PATCH-FIX-UPSTREAM webapp-fix-tls-certs-paths.patch gh#keylime/keylime!659
-Patch2:         webapp-fix-tls-certs-paths.patch
 # PATCH-FIX-OPENSUSE keylime.conf.diff
-Patch3:         keylime.conf.diff
+Patch2:         keylime.conf.diff
+# PATCH-FIX-OPENSUSE config-libefivars.diff
+Patch3:         config-libefivars.diff
+# PATCH-FIX-UPSTREAM webapp-fix-tls-certs-paths.patch gh#keylime/keylime!659
+Patch4:         webapp-fix-tls-certs-paths.patch
+# PATCH-FIX-UPSTREAM check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch gh#keylime/keylime!695
+Patch5:         check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
@@ -54,7 +58,7 @@ Requires:       tpm2-0-tss
 Requires:       tpm2.0-abrmd
 Requires:       tpm2.0-tools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -101,6 +105,7 @@ Requires:       %{name}-config = %{version}
 Requires:       %{name}-tpm_cert_store = %{version}
 Requires:       python3-%{name} = %{version}
 Recommends:     %{name}-firewalld = %{version}
+Recommends:     cfssl
 
 %description -n %{name}-registrar
 Subpackage of %{name} for registrar service.
