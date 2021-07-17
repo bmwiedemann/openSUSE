@@ -10,10 +10,11 @@ From 2a162c34b7aad7399f33069cd9930fd92714861c Mon Sep 17 00:00:00 2001
  nss/lib/softoken/pkcs11c.c | 5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
---- a/lib/softoken/pkcs11c.c
-+++ b/lib/softoken/pkcs11c.c
-@@ -4730,8 +4730,8 @@
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -4822,8 +4822,8 @@ loser:
      return crv;
  }
  
@@ -24,7 +25,7 @@ diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
  
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
-@@ -5591,6 +5591,7 @@
+@@ -5771,6 +5771,7 @@ NSC_GenerateKeyPair(CK_SESSION_HANDLE hS
                              (PRUint32)crv);
                  sftk_LogAuditMessage(NSS_AUDIT_ERROR, NSS_AUDIT_SELF_TEST, msg);
              }

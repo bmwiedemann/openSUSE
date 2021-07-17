@@ -10,10 +10,11 @@ From 41dd171b242b0cb550d12760da110db7e2c21daf Mon Sep 17 00:00:00 2001
  nss/lib/freebl/gcm.c | 16 ++++++++++++++++
  1 file changed, 16 insertions(+)
 
-diff -r f5cf5d16deb6 -r 5396ffb26887 lib/freebl/gcm.c
---- a/lib/freebl/gcm.c	Wed Nov 20 08:23:35 2019 +0100
-+++ b/lib/freebl/gcm.c	Wed Nov 20 08:25:39 2019 +0100
-@@ -532,8 +532,14 @@
+Index: nss/lib/freebl/gcm.c
+===================================================================
+--- nss.orig/lib/freebl/gcm.c
++++ nss/lib/freebl/gcm.c
+@@ -532,8 +532,14 @@ struct GCMContextStr {
      unsigned char tagKey[MAX_BLOCK_SIZE];
      PRBool ctr_context_init;
      gcmIVContext gcm_iv;
@@ -28,7 +29,7 @@ diff -r f5cf5d16deb6 -r 5396ffb26887 lib/freebl/gcm.c
  SECStatus gcm_InitCounter(GCMContext *gcm, const unsigned char *iv,
                            unsigned int ivLen, unsigned int tagBits,
                            const unsigned char *aad, unsigned int aadLen);
-@@ -669,6 +675,8 @@
+@@ -673,6 +679,8 @@ gcm_InitCounter(GCMContext *gcm, const u
          goto loser;
      }
  
@@ -37,7 +38,7 @@ diff -r f5cf5d16deb6 -r 5396ffb26887 lib/freebl/gcm.c
      /* finally mix in the AAD data */
      rv = gcmHash_Reset(ghash, aad, aadLen);
      if (rv != SECSuccess) {
-@@ -766,6 +774,13 @@
+@@ -774,6 +782,13 @@ GCM_EncryptUpdate(GCMContext *gcm, unsig
          return SECFailure;
      }
  
@@ -51,7 +52,7 @@ diff -r f5cf5d16deb6 -r 5396ffb26887 lib/freebl/gcm.c
      tagBytes = (gcm->tagBits + (PR_BITS_PER_BYTE - 1)) / PR_BITS_PER_BYTE;
      if (UINT_MAX - inlen < tagBytes) {
          PORT_SetError(SEC_ERROR_INPUT_LEN);
-@@ -794,6 +809,7 @@
+@@ -802,6 +817,7 @@ GCM_EncryptUpdate(GCMContext *gcm, unsig
          *outlen = 0;
          return SECFailure;
      };

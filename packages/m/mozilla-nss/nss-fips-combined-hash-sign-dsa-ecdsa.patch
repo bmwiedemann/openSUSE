@@ -12,10 +12,10 @@ power-on self tests.
  lib/softoken/softoken.h |  10 ++
  4 files changed, 169 insertions(+), 70 deletions(-)
 
-diff --git a/cmd/lib/pk11table.c b/cmd/lib/pk11table.c
-index f7a45fa..d302436 100644
---- a/cmd/lib/pk11table.c
-+++ b/cmd/lib/pk11table.c
+Index: nss/cmd/lib/pk11table.c
+===================================================================
+--- nss.orig/cmd/lib/pk11table.c
++++ nss/cmd/lib/pk11table.c
 @@ -273,6 +273,10 @@ const Constant _consts[] = {
      mkEntry(CKM_DSA_KEY_PAIR_GEN, Mechanism),
      mkEntry(CKM_DSA, Mechanism),
@@ -38,11 +38,11 @@ index f7a45fa..d302436 100644
      mkEntry(CKM_ECDH1_DERIVE, Mechanism),
      mkEntry(CKM_ECDH1_COFACTOR_DERIVE, Mechanism),
      mkEntry(CKM_ECMQV_DERIVE, Mechanism),
-diff --git a/lib/pk11wrap/pk11mech.c b/lib/pk11wrap/pk11mech.c
-index d94d59a..ac280f0 100644
---- a/lib/pk11wrap/pk11mech.c
-+++ b/lib/pk11wrap/pk11mech.c
-@@ -376,6 +376,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type, unsigned long len)
+Index: nss/lib/pk11wrap/pk11mech.c
+===================================================================
+--- nss.orig/lib/pk11wrap/pk11mech.c
++++ nss/lib/pk11wrap/pk11mech.c
+@@ -376,6 +376,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
              return CKK_RSA;
          case CKM_DSA:
          case CKM_DSA_SHA1:
@@ -53,7 +53,7 @@ index d94d59a..ac280f0 100644
          case CKM_DSA_KEY_PAIR_GEN:
              return CKK_DSA;
          case CKM_DH_PKCS_DERIVE:
-@@ -386,6 +390,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type, unsigned long len)
+@@ -386,6 +390,10 @@ PK11_GetKeyType(CK_MECHANISM_TYPE type,
              return CKK_KEA;
          case CKM_ECDSA:
          case CKM_ECDSA_SHA1:
@@ -64,11 +64,11 @@ index d94d59a..ac280f0 100644
          case CKM_EC_KEY_PAIR_GEN: /* aka CKM_ECDSA_KEY_PAIR_GEN */
          case CKM_ECDH1_DERIVE:
              return CKK_EC; /* CKK_ECDSA is deprecated */
-diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
-index 08f94bc..ec6b205 100644
---- a/lib/softoken/pkcs11c.c
-+++ b/lib/softoken/pkcs11c.c
-@@ -2606,7 +2606,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sigBuf, unsigned int sigLen,
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -2675,7 +2675,7 @@ nsc_DSA_Verify_Stub(void *ctx, void *sig
  static SECStatus
  nsc_DSA_Sign_Stub(void *ctx, void *sigBuf,
                    unsigned int *sigLen, unsigned int maxSigLen,
@@ -77,7 +77,7 @@ index 08f94bc..ec6b205 100644
  {
      SECItem signature, digest;
      SECStatus rv;
-@@ -2624,6 +2624,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBuf,
+@@ -2693,6 +2693,22 @@ nsc_DSA_Sign_Stub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -100,7 +100,7 @@ index 08f94bc..ec6b205 100644
  static SECStatus
  nsc_ECDSAVerifyStub(void *ctx, void *sigBuf, unsigned int sigLen,
                      void *dataBuf, unsigned int dataLen)
-@@ -2641,7 +2657,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sigBuf, unsigned int sigLen,
+@@ -2710,7 +2726,7 @@ nsc_ECDSAVerifyStub(void *ctx, void *sig
  static SECStatus
  nsc_ECDSASignStub(void *ctx, void *sigBuf,
                    unsigned int *sigLen, unsigned int maxSigLen,
@@ -109,7 +109,7 @@ index 08f94bc..ec6b205 100644
  {
      SECItem signature, digest;
      SECStatus rv;
-@@ -2659,6 +2675,22 @@ nsc_ECDSASignStub(void *ctx, void *sigBuf,
+@@ -2728,6 +2744,22 @@ nsc_ECDSASignStub(void *ctx, void *sigBu
      return rv;
  }
  
@@ -132,7 +132,7 @@ index 08f94bc..ec6b205 100644
  /* NSC_SignInit setups up the signing operations. There are three basic
   * types of signing:
   *      (1) the tradition single part, where "Raw RSA" or "Raw DSA" is applied
-@@ -3511,6 +3543,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSession,
+@@ -3597,6 +3629,22 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSessio
          info->hashOid = SEC_OID_##mmm;                    \
          goto finish_rsa;
  
@@ -155,51 +155,7 @@ index 08f94bc..ec6b205 100644
      switch (pMechanism->mechanism) {
          INIT_RSA_VFY_MECH(MD5)
          INIT_RSA_VFY_MECH(MD2)
-@@ -3575,13 +3623,15 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSession,
-             context->destroy = (SFTKDestroy)sftk_Space;
-             context->verify = (SFTKVerify)sftk_RSACheckSignPSS;
-             break;
--        case CKM_DSA_SHA1:
--            context->multi = PR_TRUE;
--            crv = sftk_doSubSHA1(context);
--            if (crv != CKR_OK)
--                break;
--        /* fall through */
-+
-+        INIT_DSA_VFY_MECH(SHA1)
-+        INIT_DSA_VFY_MECH(SHA224)
-+        INIT_DSA_VFY_MECH(SHA256)
-+        INIT_DSA_VFY_MECH(SHA384)
-+        INIT_DSA_VFY_MECH(SHA512)
-+
-         case CKM_DSA:
-+        finish_dsa:
-             if (key_type != CKK_DSA) {
-                 crv = CKR_KEY_TYPE_INCONSISTENT;
-                 break;
-@@ -3594,13 +3644,15 @@ NSC_VerifyInit(CK_SESSION_HANDLE hSession,
-             context->verify = (SFTKVerify)nsc_DSA_Verify_Stub;
-             context->destroy = sftk_Null;
-             break;
--        case CKM_ECDSA_SHA1:
--            context->multi = PR_TRUE;
--            crv = sftk_doSubSHA1(context);
--            if (crv != CKR_OK)
--                break;
--        /* fall through */
-+
-+        INIT_ECDSA_VFY_MECH(SHA1)
-+        INIT_ECDSA_VFY_MECH(SHA224)
-+        INIT_ECDSA_VFY_MECH(SHA256)
-+        INIT_ECDSA_VFY_MECH(SHA384)
-+        INIT_ECDSA_VFY_MECH(SHA512)
-+
-         case CKM_ECDSA:
-+        finish_ecdsa:
-             if (key_type != CKK_EC) {
-                 crv = CKR_KEY_TYPE_INCONSISTENT;
-                 break;
-@@ -4733,6 +4785,73 @@ loser:
+@@ -4825,6 +4873,73 @@ loser:
  #define PAIRWISE_DIGEST_LENGTH SHA224_LENGTH /* 224-bits */
  #define PAIRWISE_MESSAGE_LENGTH 20           /* 160-bits */
  
@@ -273,7 +229,7 @@ index 08f94bc..ec6b205 100644
  /*
   * FIPS 140-2 pairwise consistency check utilized to validate key pair.
   *
-@@ -4780,8 +4899,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION_HANDLE hSession,
+@@ -4878,8 +4993,6 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
  
      /* Variables used for Signature/Verification functions. */
      /* Must be at least 256 bits for DSA2 digest */
@@ -282,7 +238,7 @@ index 08f94bc..ec6b205 100644
      CK_ULONG signature_length;
  
      if (keyType == CKK_RSA) {
-@@ -4935,76 +5052,32 @@ sftk_PairwiseConsistencyCheck(CK_SESSION_HANDLE hSession,
+@@ -5033,76 +5146,32 @@ sftk_PairwiseConsistencyCheck(CK_SESSION
          }
      }
  
@@ -369,11 +325,11 @@ index 08f94bc..ec6b205 100644
          if (crv != CKR_OK) {
              return crv;
          }
-diff --git a/lib/softoken/softoken.h b/lib/softoken/softoken.h
-index 30586fc..d5aaffa 100644
---- a/lib/softoken/softoken.h
-+++ b/lib/softoken/softoken.h
-@@ -35,6 +35,16 @@ RSA_HashCheckSign(SECOidTag hashOid, NSSLOWKEYPublicKey *key,
+Index: nss/lib/softoken/softoken.h
+===================================================================
+--- nss.orig/lib/softoken/softoken.h
++++ nss/lib/softoken/softoken.h
+@@ -35,6 +35,16 @@ RSA_HashCheckSign(SECOidTag hashOid, NSS
                    const unsigned char *sig, unsigned int sigLen,
                    const unsigned char *hash, unsigned int hashLen);
  
@@ -390,6 +346,3 @@ index 30586fc..d5aaffa 100644
  /*
  ** Prepare a buffer for padded CBC encryption, growing to the appropriate
  ** boundary, filling with the appropriate padding.
--- 
-2.26.2
-

@@ -14,10 +14,11 @@ From 76da775313bd40a1353a9d2f6cc43ebe1a287574 Mon Sep 17 00:00:00 2001
  nss/lib/freebl/gcm.c        | 45 +++++++++++++++++++++++++++++++++----
  5 files changed, 58 insertions(+), 12 deletions(-)
 
-diff --git a/lib/freebl/aeskeywrap.c b/lib/freebl/aeskeywrap.c
---- a/lib/freebl/aeskeywrap.c
-+++ b/lib/freebl/aeskeywrap.c
-@@ -102,6 +102,7 @@
+Index: nss/lib/freebl/aeskeywrap.c
+===================================================================
+--- nss.orig/lib/freebl/aeskeywrap.c
++++ nss/lib/freebl/aeskeywrap.c
+@@ -102,6 +102,7 @@ AESKeyWrap_DestroyContext(AESKeyWrapCont
  {
      if (cx) {
          AES_DestroyContext(&cx->aescx, PR_FALSE);
@@ -25,10 +26,11 @@ diff --git a/lib/freebl/aeskeywrap.c b/lib/freebl/aeskeywrap.c
          /*  memset(cx, 0, sizeof *cx); */
          if (freeit) {
              PORT_Free(cx->mem);
-diff --git a/lib/freebl/cts.c b/lib/freebl/cts.c
---- a/lib/freebl/cts.c
-+++ b/lib/freebl/cts.c
-@@ -37,6 +37,7 @@
+Index: nss/lib/freebl/cts.c
+===================================================================
+--- nss.orig/lib/freebl/cts.c
++++ nss/lib/freebl/cts.c
+@@ -37,6 +37,7 @@ CTS_CreateContext(void *context, freeblC
  void
  CTS_DestroyContext(CTSContext *cts, PRBool freeit)
  {
@@ -36,7 +38,7 @@ diff --git a/lib/freebl/cts.c b/lib/freebl/cts.c
      if (freeit) {
          PORT_Free(cts);
      }
-@@ -135,7 +136,7 @@
+@@ -135,7 +136,7 @@ CTS_EncryptUpdate(CTSContext *cts, unsig
      PORT_Memset(lastBlock + inlen, 0, blocksize - inlen);
      rv = (*cts->cipher)(cts->context, outbuf, &tmp, maxout, lastBlock,
                          blocksize, blocksize);
@@ -45,7 +47,7 @@ diff --git a/lib/freebl/cts.c b/lib/freebl/cts.c
      if (rv == SECSuccess) {
          *outlen = written + blocksize;
      } else {
-@@ -230,13 +231,15 @@
+@@ -230,13 +231,15 @@ CTS_DecryptUpdate(CTSContext *cts, unsig
      rv = (*cts->cipher)(cts->context, outbuf, outlen, maxout, inbuf,
                          fullblocks, blocksize);
      if (rv != SECSuccess) {
@@ -63,7 +65,7 @@ diff --git a/lib/freebl/cts.c b/lib/freebl/cts.c
      }
      outbuf += fullblocks;
  
-@@ -280,9 +283,9 @@
+@@ -280,9 +283,9 @@ CTS_DecryptUpdate(CTSContext *cts, unsig
      rv = (*cts->cipher)(cts->context, Pn, &tmpLen, blocksize, lastBlock,
                          blocksize, blocksize);
      if (rv != SECSuccess) {
@@ -75,7 +77,7 @@ diff --git a/lib/freebl/cts.c b/lib/freebl/cts.c
      }
      /* make up for the out of order CBC decryption */
      XOR_BLOCK(Pn, Cn_2, blocksize);
-@@ -297,7 +300,8 @@
+@@ -297,7 +300,8 @@ CTS_DecryptUpdate(CTSContext *cts, unsig
      /* clear last block. At this point last block contains Pn xor Cn_1 xor
       * Cn_2, both of with an attacker would know, so we need to clear this
       * buffer out */
@@ -86,10 +88,11 @@ diff --git a/lib/freebl/cts.c b/lib/freebl/cts.c
 -    return SECSuccess;
 +    return rv;
  }
-diff --git a/lib/freebl/dh.c b/lib/freebl/dh.c
---- a/lib/freebl/dh.c
-+++ b/lib/freebl/dh.c
-@@ -192,6 +192,10 @@
+Index: nss/lib/freebl/dh.c
+===================================================================
+--- nss.orig/lib/freebl/dh.c
++++ nss/lib/freebl/dh.c
+@@ -193,6 +193,10 @@ cleanup:
          rv = SECFailure;
      }
      if (rv) {
@@ -100,10 +103,11 @@ diff --git a/lib/freebl/dh.c b/lib/freebl/dh.c
          *privKey = NULL;
          PORT_FreeArena(arena, PR_TRUE);
      }
-diff --git a/lib/freebl/ec.c b/lib/freebl/ec.c
---- a/lib/freebl/ec.c
-+++ b/lib/freebl/ec.c
-@@ -958,7 +958,7 @@
+Index: nss/lib/freebl/ec.c
+===================================================================
+--- nss.orig/lib/freebl/ec.c
++++ nss/lib/freebl/ec.c
+@@ -943,7 +943,7 @@ ECDSA_VerifyDigest(ECPublicKey *key, con
      ECParams *ecParams = NULL;
      SECItem pointC = { siBuffer, NULL, 0 };
      int slen;       /* length in bytes of a half signature (r or s) */
@@ -112,10 +116,11 @@ diff --git a/lib/freebl/ec.c b/lib/freebl/ec.c
      unsigned olen;  /* length in bytes of the base point order */
      unsigned obits; /* length in bits  of the base point order */
  
-diff --git a/lib/freebl/gcm.c b/lib/freebl/gcm.c
---- a/lib/freebl/gcm.c
-+++ b/lib/freebl/gcm.c
-@@ -162,6 +162,9 @@
+Index: nss/lib/freebl/gcm.c
+===================================================================
+--- nss.orig/lib/freebl/gcm.c
++++ nss/lib/freebl/gcm.c
+@@ -162,6 +162,9 @@ bmul(uint64_t x, uint64_t y, uint64_t *r
  
      *r_high = (uint64_t)(r >> 64);
      *r_low = (uint64_t)r;
@@ -125,7 +130,7 @@ diff --git a/lib/freebl/gcm.c b/lib/freebl/gcm.c
  }
  
  SECStatus
-@@ -200,6 +203,12 @@
+@@ -200,6 +203,12 @@ gcm_HashMult_sftw(gcmHashContext *ghash,
      }
      ghash->x_low = ci_low;
      ghash->x_high = ci_high;
@@ -138,7 +143,7 @@ diff --git a/lib/freebl/gcm.c b/lib/freebl/gcm.c
      return SECSuccess;
  }
  #else
-@@ -239,6 +248,10 @@
+@@ -239,6 +248,10 @@ bmul32(uint32_t x, uint32_t y, uint32_t
      z = z0 | z1 | z2 | z3;
      *r_high = (uint32_t)(z >> 32);
      *r_low = (uint32_t)z;
@@ -149,7 +154,7 @@ diff --git a/lib/freebl/gcm.c b/lib/freebl/gcm.c
  }
  
  SECStatus
-@@ -324,6 +337,20 @@
+@@ -324,6 +337,20 @@ gcm_HashMult_sftw32(gcmHashContext *ghas
          ghash->x_high = z_high_h;
          ghash->x_low = z_high_l;
      }
@@ -170,7 +175,7 @@ diff --git a/lib/freebl/gcm.c b/lib/freebl/gcm.c
      return SECSuccess;
  }
  #endif /* HAVE_INT128_SUPPORT */
-@@ -859,11 +886,13 @@
+@@ -867,11 +894,13 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
      /* verify the block */
      rv = gcmHash_Update(gcm->ghash_context, inbuf, inlen);
      if (rv != SECSuccess) {
@@ -186,7 +191,7 @@ diff --git a/lib/freebl/gcm.c b/lib/freebl/gcm.c
      }
      /* Don't decrypt if we can't authenticate the encrypted data!
       * This assumes that if tagBits is not a multiple of 8, intag will
-@@ -871,10 +900,18 @@
+@@ -879,10 +908,18 @@ GCM_DecryptUpdate(GCMContext *gcm, unsig
      if (NSS_SecureMemcmp(tag, intag, tagBytes) != 0) {
          /* force a CKR_ENCRYPTED_DATA_INVALID error at in softoken */
          PORT_SetError(SEC_ERROR_BAD_DATA);

@@ -1,8 +1,8 @@
-diff --git a/coreconf/Linux.mk b/coreconf/Linux.mk
-index 956f0e4..b3a352a 100644
---- a/coreconf/Linux.mk
-+++ b/coreconf/Linux.mk
-@@ -108,11 +108,7 @@ LIBC_TAG		= _glibc
+Index: nss/coreconf/Linux.mk
+===================================================================
+--- nss.orig/coreconf/Linux.mk
++++ nss/coreconf/Linux.mk
+@@ -113,11 +113,7 @@ LIBC_TAG		= _glibc
  endif
  
  ifdef BUILD_OPT

@@ -13,10 +13,11 @@ From ca3b695ac461eccf4ed97e1b3fe0a311c80a792f Mon Sep 17 00:00:00 2001
  nss/lib/softoken/pkcs11c.c |  4 +--
  4 files changed, 90 insertions(+), 23 deletions(-)
 
-diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
---- a/lib/freebl/md5.c
-+++ b/lib/freebl/md5.c
-@@ -217,13 +217,11 @@
+Index: nss/lib/freebl/md5.c
+===================================================================
+--- nss.orig/lib/freebl/md5.c
++++ nss/lib/freebl/md5.c
+@@ -217,13 +217,11 @@ MD5_HashBuf(unsigned char *dest, const u
  }
  
  MD5Context *
@@ -31,7 +32,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      cx = (MD5Context *)PORT_Alloc(sizeof(MD5Context));
      if (cx == NULL) {
          PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
-@@ -232,6 +230,13 @@
+@@ -232,6 +230,13 @@ MD5_NewContext(void)
      return cx;
  }
  
@@ -45,7 +46,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
  void
  MD5_DestroyContext(MD5Context *cx, PRBool freeit)
  {
-@@ -243,10 +248,8 @@
+@@ -243,10 +248,8 @@ MD5_DestroyContext(MD5Context *cx, PRBoo
  }
  
  void
@@ -57,7 +58,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      cx->lsbInput = 0;
      cx->msbInput = 0;
      /*  memset(cx->inBuf, 0, sizeof(cx->inBuf)); */
-@@ -256,6 +259,13 @@
+@@ -256,6 +259,13 @@ MD5_Begin(MD5Context *cx)
      cx->cv[3] = CV0_4;
  }
  
@@ -71,7 +72,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
  #define cls(i32, s) (tmp = i32, tmp << s | tmp >> (32 - s))
  
  #if defined(SOLARIS) || defined(HPUX)
-@@ -431,14 +441,12 @@
+@@ -431,14 +441,12 @@ md5_compress(MD5Context *cx, const PRUin
  }
  
  void
@@ -87,7 +88,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      /* Add the number of input bytes to the 64-bit input counter. */
      addto64(cx->msbInput, cx->lsbInput, inputLen);
      if (inBufIndex) {
-@@ -487,6 +495,13 @@
+@@ -487,6 +495,13 @@ MD5_Update(MD5Context *cx, const unsigne
          memcpy(cx->inBuf, input, inputLen);
  }
  
@@ -101,7 +102,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
  static const unsigned char padbytes[] = {
      0x80, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
      0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-@@ -503,8 +518,8 @@
+@@ -503,8 +518,8 @@ static const unsigned char padbytes[] =
  };
  
  void
@@ -112,7 +113,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
  {
  #ifndef IS_LITTLE_ENDIAN
      PRUint32 tmp;
-@@ -512,8 +527,6 @@
+@@ -512,8 +527,6 @@ MD5_End(MD5Context *cx, unsigned char *d
      PRUint32 lowInput, highInput;
      PRUint32 inBufIndex = cx->lsbInput & 63;
  
@@ -121,7 +122,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      if (maxDigestLen < MD5_HASH_LEN) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return;
-@@ -525,10 +538,10 @@
+@@ -525,10 +538,10 @@ MD5_End(MD5Context *cx, unsigned char *d
      lowInput <<= 3;
  
      if (inBufIndex < MD5_END_BUFFER) {
@@ -135,7 +136,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      }
  
      /* Store the number of bytes input (before padding) in final 64 bits. */
-@@ -554,16 +567,22 @@
+@@ -554,16 +567,22 @@ MD5_End(MD5Context *cx, unsigned char *d
  }
  
  void
@@ -162,7 +163,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      if (maxDigestLen < MD5_HASH_LEN) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return;
-@@ -581,6 +600,14 @@
+@@ -581,6 +600,14 @@ MD5_EndRaw(MD5Context *cx, unsigned char
          *digestLen = MD5_HASH_LEN;
  }
  
@@ -177,10 +178,11 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
  unsigned int
  MD5_FlattenSize(MD5Context *cx)
  {
-diff --git a/lib/freebl/rawhash.c b/lib/freebl/rawhash.c
---- a/lib/freebl/rawhash.c
-+++ b/lib/freebl/rawhash.c
-@@ -154,3 +154,40 @@
+Index: nss/lib/freebl/rawhash.c
+===================================================================
+--- nss.orig/lib/freebl/rawhash.c
++++ nss/lib/freebl/rawhash.c
+@@ -154,3 +154,40 @@ HASH_GetRawHashObject(HASH_HashType hash
      }
      return &SECRawHashObjects[hashType];
  }
@@ -221,9 +223,10 @@ diff --git a/lib/freebl/rawhash.c b/lib/freebl/rawhash.c
 +
 +    return &SECRawHashObjects[hashType];
 +}
-diff --git a/lib/freebl/tlsprfalg.c b/lib/freebl/tlsprfalg.c
---- a/lib/freebl/tlsprfalg.c
-+++ b/lib/freebl/tlsprfalg.c
+Index: nss/lib/freebl/tlsprfalg.c
+===================================================================
+--- nss.orig/lib/freebl/tlsprfalg.c
++++ nss/lib/freebl/tlsprfalg.c
 @@ -12,6 +12,9 @@
  #include "hasht.h"
  #include "alghmac.h"
@@ -234,7 +237,7 @@ diff --git a/lib/freebl/tlsprfalg.c b/lib/freebl/tlsprfalg.c
  #define PHASH_STATE_MAX_LEN HASH_LENGTH_MAX
  
  /* TLS P_hash function */
-@@ -27,7 +30,7 @@
+@@ -27,7 +30,7 @@ TLS_P_hash(HASH_HashType hashType, const
      SECStatus status;
      HMACContext *cx;
      SECStatus rv = SECFailure;
@@ -243,10 +246,11 @@ diff --git a/lib/freebl/tlsprfalg.c b/lib/freebl/tlsprfalg.c
  
      PORT_Assert((secret != NULL) && (secret->data != NULL || !secret->len));
      PORT_Assert((seed != NULL) && (seed->data != NULL));
-diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
---- a/lib/softoken/pkcs11c.c
-+++ b/lib/softoken/pkcs11c.c
-@@ -6953,7 +6953,7 @@
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -7158,7 +7158,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
      SFTKAttribute *att2 = NULL;
      unsigned char *buf;
      SHA1Context *sha;
@@ -255,7 +259,7 @@ diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
      MD2Context *md2;
      CK_ULONG macSize;
      CK_ULONG tmpKeySize;
-@@ -7484,7 +7484,7 @@
+@@ -7698,7 +7698,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              }
              sftk_FreeAttribute(att2);
              md5 = MD5_NewContext();

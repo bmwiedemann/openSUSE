@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 10 08:50:18 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.66
+  * no releasenotes available yet
+    https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NSS/NSS_3.66_release_notes
+- update to NSS 3.65
+  * bmo#1709654 - Update for NetBSD configuration.
+  * bmo#1709750 - Disable HPKE test when fuzzing.
+  * bmo#1566124 - Optimize AES-GCM for ppc64le.
+  * bmo#1699021 - Add AES-256-GCM to HPKE.
+  * bmo#1698419 - ECH -10 updates.
+  * bmo#1692930 - Update HPKE to final version.
+  * bmo#1707130 - NSS should use modern algorithms in PKCS#12 files by default.
+  * bmo#1703936 - New coverity/cpp scanner errors.
+  * bmo#1697303 - NSS needs to update it's csp clearing to FIPS 180-3 standards.
+  * bmo#1702663 - Need to support RSA PSS with Hashing PKCS #11 Mechanisms.
+  * bmo#1705119 - Deadlock when using GCM and non-thread safe tokens.
+- refreshed patches
+- Firefox 90.0 requires NSS 3.66
+
+-------------------------------------------------------------------
 Thu May 27 17:24:41 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to NSS 3.64

@@ -11,10 +11,11 @@ From b88701933a284ba8640df66b954c04d36ee592c9 Mon Sep 17 00:00:00 2001
  nss/lib/freebl/fipsfreebl.c | 143 +++++++++++++++++++++++++++-----------------
  2 files changed, 90 insertions(+), 55 deletions(-)
 
-diff --git a/lib/freebl/dsa.c b/lib/freebl/dsa.c
---- a/lib/freebl/dsa.c
-+++ b/lib/freebl/dsa.c
-@@ -533,7 +533,7 @@
+Index: nss/lib/freebl/dsa.c
+===================================================================
+--- nss.orig/lib/freebl/dsa.c
++++ nss/lib/freebl/dsa.c
+@@ -536,7 +536,7 @@ DSA_SignDigest(DSAPrivateKey *key, SECIt
      return rv;
  }
  
@@ -23,10 +24,11 @@ diff --git a/lib/freebl/dsa.c b/lib/freebl/dsa.c
  SECStatus
  DSA_SignDigestWithSeed(DSAPrivateKey *key,
                         SECItem *signature,
-diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
---- a/lib/freebl/fipsfreebl.c
-+++ b/lib/freebl/fipsfreebl.c
-@@ -124,11 +124,11 @@
+Index: nss/lib/freebl/fipsfreebl.c
+===================================================================
+--- nss.orig/lib/freebl/fipsfreebl.c
++++ nss/lib/freebl/fipsfreebl.c
+@@ -126,11 +126,11 @@ BOOL WINAPI DllMain(
  
  /* FIPS preprocessor directives for DSA.                        */
  #define FIPS_DSA_TYPE siBuffer
@@ -43,7 +45,7 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
  
  /* FIPS preprocessor directives for RNG.                        */
  #define FIPS_RNG_XKEY_LENGTH 32 /* 256-bits */
-@@ -1445,70 +1445,105 @@
+@@ -1669,70 +1669,105 @@ freebl_fips_EC_PowerUpSelfTest()
  static SECStatus
  freebl_fips_DSA_PowerUpSelfTest(void)
  {
@@ -197,7 +199,7 @@ diff --git a/lib/freebl/fipsfreebl.c b/lib/freebl/fipsfreebl.c
      };
  
      /* DSA variables. */
-@@ -1550,7 +1585,7 @@
+@@ -1774,7 +1809,7 @@ freebl_fips_DSA_PowerUpSelfTest(void)
      dsa_signature_item.len = sizeof dsa_computed_signature;
  
      dsa_digest_item.data = (unsigned char *)dsa_known_digest;

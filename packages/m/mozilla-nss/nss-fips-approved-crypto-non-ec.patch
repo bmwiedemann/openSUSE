@@ -6,9 +6,10 @@
 # Parent  3f4d682c9a1e8b3d939c744ee249e23179db5191
 imported patch nss-fips-approved-crypto-non-ec.patch
 
-diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
---- a/lib/freebl/deprecated/alg2268.c
-+++ b/lib/freebl/deprecated/alg2268.c
+Index: nss/lib/freebl/deprecated/alg2268.c
+===================================================================
+--- nss.orig/lib/freebl/deprecated/alg2268.c
++++ nss/lib/freebl/deprecated/alg2268.c
 @@ -16,6 +16,8 @@
  #include <stddef.h> /* for ptrdiff_t */
  #endif
@@ -18,7 +19,7 @@ diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
  /*
  ** RC2 symmetric block cypher
  */
-@@ -119,6 +121,7 @@
+@@ -119,6 +121,7 @@ static const PRUint8 S[256] = {
  RC2Context *
  RC2_AllocateContext(void)
  {
@@ -26,7 +27,7 @@ diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
      return PORT_ZNew(RC2Context);
  }
  SECStatus
-@@ -133,6 +136,8 @@
+@@ -133,6 +136,8 @@ RC2_InitContext(RC2Context *cx, const un
  #endif
      PRUint8 tmpB;
  
@@ -35,7 +36,7 @@ diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
      if (!key || !cx || !len || len > (sizeof cx->B) ||
          efLen8 > (sizeof cx->B)) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
-@@ -204,7 +209,11 @@
+@@ -204,7 +209,11 @@ RC2Context *
  RC2_CreateContext(const unsigned char *key, unsigned int len,
                    const unsigned char *iv, int mode, unsigned efLen8)
  {
@@ -48,7 +49,7 @@ diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
      if (cx) {
          SECStatus rv = RC2_InitContext(cx, key, len, iv, mode, efLen8, 0);
          if (rv != SECSuccess) {
-@@ -456,7 +465,11 @@
+@@ -456,7 +465,11 @@ RC2_Encrypt(RC2Context *cx, unsigned cha
              unsigned int *outputLen, unsigned int maxOutputLen,
              const unsigned char *input, unsigned int inputLen)
  {
@@ -61,7 +62,7 @@ diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
      if (inputLen) {
          if (inputLen % RC2_BLOCK_SIZE) {
              PORT_SetError(SEC_ERROR_INPUT_LEN);
-@@ -490,7 +503,11 @@
+@@ -490,7 +503,11 @@ RC2_Decrypt(RC2Context *cx, unsigned cha
              unsigned int *outputLen, unsigned int maxOutputLen,
              const unsigned char *input, unsigned int inputLen)
  {
@@ -74,9 +75,10 @@ diff --git a/lib/freebl/deprecated/alg2268.c b/lib/freebl/deprecated/alg2268.c
      if (inputLen) {
          if (inputLen % RC2_BLOCK_SIZE) {
              PORT_SetError(SEC_ERROR_INPUT_LEN);
-diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
---- a/lib/freebl/arcfour.c
-+++ b/lib/freebl/arcfour.c
+Index: nss/lib/freebl/arcfour.c
+===================================================================
+--- nss.orig/lib/freebl/arcfour.c
++++ nss/lib/freebl/arcfour.c
 @@ -13,6 +13,7 @@
  
  #include "prtypes.h"
@@ -85,7 +87,7 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
  
  /* Architecture-dependent defines */
  
-@@ -108,6 +109,7 @@
+@@ -108,6 +109,7 @@ static const Stype Kinit[256] = {
  RC4Context *
  RC4_AllocateContext(void)
  {
@@ -93,7 +95,7 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
      return PORT_ZNew(RC4Context);
  }
  
-@@ -121,6 +123,8 @@
+@@ -121,6 +123,8 @@ RC4_InitContext(RC4Context *cx, const un
      PRUint8 K[256];
      PRUint8 *L;
  
@@ -102,7 +104,7 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
      /* verify the key length. */
      PORT_Assert(len > 0 && len < ARCFOUR_STATE_SIZE);
      if (len == 0 || len >= ARCFOUR_STATE_SIZE) {
-@@ -162,7 +166,11 @@
+@@ -162,7 +166,11 @@ RC4_InitContext(RC4Context *cx, const un
  RC4Context *
  RC4_CreateContext(const unsigned char *key, int len)
  {
@@ -115,7 +117,7 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
      if (cx) {
          SECStatus rv = RC4_InitContext(cx, key, len, NULL, 0, 0, 0);
          if (rv != SECSuccess) {
-@@ -176,6 +184,7 @@
+@@ -176,6 +184,7 @@ RC4_CreateContext(const unsigned char *k
  void
  RC4_DestroyContext(RC4Context *cx, PRBool freeit)
  {
@@ -123,7 +125,7 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
      if (freeit)
          PORT_ZFree(cx, sizeof(*cx));
  }
-@@ -548,6 +557,8 @@
+@@ -548,6 +557,8 @@ RC4_Encrypt(RC4Context *cx, unsigned cha
              unsigned int *outputLen, unsigned int maxOutputLen,
              const unsigned char *input, unsigned int inputLen)
  {
@@ -132,7 +134,7 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
      PORT_Assert(maxOutputLen >= inputLen);
      if (maxOutputLen < inputLen) {
          PORT_SetError(SEC_ERROR_OUTPUT_LEN);
-@@ -571,6 +582,8 @@
+@@ -571,6 +582,8 @@ RC4_Decrypt(RC4Context *cx, unsigned cha
              unsigned int *outputLen, unsigned int maxOutputLen,
              const unsigned char *input, unsigned int inputLen)
  {
@@ -141,9 +143,10 @@ diff --git a/lib/freebl/arcfour.c b/lib/freebl/arcfour.c
      PORT_Assert(maxOutputLen >= inputLen);
      if (maxOutputLen < inputLen) {
          PORT_SetError(SEC_ERROR_OUTPUT_LEN);
-diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
---- a/lib/freebl/deprecated/seed.c
-+++ b/lib/freebl/deprecated/seed.c
+Index: nss/lib/freebl/deprecated/seed.c
+===================================================================
+--- nss.orig/lib/freebl/deprecated/seed.c
++++ nss/lib/freebl/deprecated/seed.c
 @@ -17,6 +17,8 @@
  #include "seed.h"
  #include "secerr.h"
@@ -153,7 +156,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
  static const seed_word SS[4][256] = {
      { 0x2989a1a8, 0x05858184, 0x16c6d2d4, 0x13c3d3d0,
        0x14445054, 0x1d0d111c, 0x2c8ca0ac, 0x25052124,
-@@ -301,6 +303,8 @@
+@@ -301,6 +303,8 @@ SEED_set_key(const unsigned char rawkey[
      seed_word K0, K1, K2, K3;
      seed_word t0, t1;
  
@@ -162,7 +165,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      char2word(rawkey, K0);
      char2word(rawkey + 4, K1);
      char2word(rawkey + 8, K2);
-@@ -349,6 +353,8 @@
+@@ -349,6 +353,8 @@ SEED_encrypt(const unsigned char s[SEED_
      seed_word L0, L1, R0, R1;
      seed_word t0, t1;
  
@@ -171,7 +174,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      char2word(s, L0);
      char2word(s + 4, L1);
      char2word(s + 8, R0);
-@@ -385,6 +391,8 @@
+@@ -385,6 +391,8 @@ SEED_decrypt(const unsigned char s[SEED_
      seed_word L0, L1, R0, R1;
      seed_word t0, t1;
  
@@ -180,7 +183,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      char2word(s, L0);
      char2word(s + 4, L1);
      char2word(s + 8, R0);
-@@ -419,6 +427,8 @@
+@@ -419,6 +427,8 @@ SEED_ecb_encrypt(const unsigned char *in
                   size_t inLen,
                   const SEED_KEY_SCHEDULE *ks, int enc)
  {
@@ -189,7 +192,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      if (enc) {
          while (inLen > 0) {
              SEED_encrypt(in, out, ks);
-@@ -445,6 +455,8 @@
+@@ -445,6 +455,8 @@ SEED_cbc_encrypt(const unsigned char *in
      unsigned char tmp[SEED_BLOCK_SIZE];
      const unsigned char *iv = ivec;
  
@@ -198,7 +201,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      if (enc) {
          while (len >= SEED_BLOCK_SIZE) {
              for (n = 0; n < SEED_BLOCK_SIZE; ++n) {
-@@ -528,6 +540,7 @@
+@@ -528,6 +540,7 @@ SEED_cbc_encrypt(const unsigned char *in
  SEEDContext *
  SEED_AllocateContext(void)
  {
@@ -206,7 +209,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      return PORT_ZNew(SEEDContext);
  }
  
-@@ -536,6 +549,8 @@
+@@ -536,6 +549,8 @@ SEED_InitContext(SEEDContext *cx, const
                   unsigned int keylen, const unsigned char *iv,
                   int mode, unsigned int encrypt, unsigned int unused)
  {
@@ -215,7 +218,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      if (!cx) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return SECFailure;
-@@ -567,10 +582,14 @@
+@@ -567,10 +582,14 @@ SEEDContext *
  SEED_CreateContext(const unsigned char *key, const unsigned char *iv,
                     int mode, PRBool encrypt)
  {
@@ -224,16 +227,16 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
 -                                    encrypt, 0);
 +    SEEDContext *cx;
 +    SECStatus rv;
- 
-+    IN_FIPS_RETURN(NULL);
 +
++    IN_FIPS_RETURN(NULL);
+ 
 +    cx = PORT_ZNew(SEEDContext);
 +    rv = SEED_InitContext(cx, key, SEED_KEY_LENGTH, iv, mode,
 +                          encrypt, 0);
      if (rv != SECSuccess) {
          PORT_ZFree(cx, sizeof *cx);
          cx = NULL;
-@@ -595,6 +614,8 @@
+@@ -595,6 +614,8 @@ SEED_Encrypt(SEEDContext *cx, unsigned c
               unsigned int maxOutLen, const unsigned char *in,
               unsigned int inLen)
  {
@@ -242,7 +245,7 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      if (!cx) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return SECFailure;
-@@ -635,6 +656,8 @@
+@@ -635,6 +656,8 @@ SEED_Decrypt(SEEDContext *cx, unsigned c
               unsigned int maxOutLen, const unsigned char *in,
               unsigned int inLen)
  {
@@ -251,9 +254,10 @@ diff --git a/lib/freebl/deprecated/seed.c b/lib/freebl/deprecated/seed.c
      if (!cx) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return SECFailure;
-diff --git a/lib/freebl/fips.h b/lib/freebl/fips.h
---- a/lib/freebl/fips.h
-+++ b/lib/freebl/fips.h
+Index: nss/lib/freebl/fips.h
+===================================================================
+--- nss.orig/lib/freebl/fips.h
++++ nss/lib/freebl/fips.h
 @@ -8,8 +8,20 @@
  #ifndef FIPS_H
  #define FIPS_H
@@ -275,9 +279,10 @@ diff --git a/lib/freebl/fips.h b/lib/freebl/fips.h
  
  #endif
  
-diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
---- a/lib/freebl/md2.c
-+++ b/lib/freebl/md2.c
+Index: nss/lib/freebl/md2.c
+===================================================================
+--- nss.orig/lib/freebl/md2.c
++++ nss/lib/freebl/md2.c
 @@ -13,6 +13,8 @@
  
  #include "blapi.h"
@@ -287,7 +292,7 @@ diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
  #define MD2_DIGEST_LEN 16
  #define MD2_BUFSIZE 16
  #define MD2_X_SIZE 48  /* The X array, [CV | INPUT | TMP VARS] */
-@@ -66,7 +68,11 @@
+@@ -66,7 +68,11 @@ SECStatus
  MD2_Hash(unsigned char *dest, const char *src)
  {
      unsigned int len;
@@ -300,7 +305,7 @@ diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
      if (!cx) {
          PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
          return SECFailure;
-@@ -81,7 +87,11 @@
+@@ -81,7 +87,11 @@ MD2_Hash(unsigned char *dest, const char
  MD2Context *
  MD2_NewContext(void)
  {
@@ -313,7 +318,7 @@ diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
      if (cx == NULL) {
          PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
          return NULL;
-@@ -99,6 +109,8 @@
+@@ -99,6 +109,8 @@ MD2_DestroyContext(MD2Context *cx, PRBoo
  void
  MD2_Begin(MD2Context *cx)
  {
@@ -322,7 +327,7 @@ diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
      memset(cx, 0, sizeof(*cx));
      cx->unusedBuffer = MD2_BUFSIZE;
  }
-@@ -196,6 +208,8 @@
+@@ -196,6 +208,8 @@ MD2_Update(MD2Context *cx, const unsigne
  {
      PRUint32 bytesToConsume;
  
@@ -331,7 +336,7 @@ diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
      /* Fill the remaining input buffer. */
      if (cx->unusedBuffer != MD2_BUFSIZE) {
          bytesToConsume = PR_MIN(inputLen, cx->unusedBuffer);
-@@ -226,6 +240,9 @@
+@@ -226,6 +240,9 @@ MD2_End(MD2Context *cx, unsigned char *d
          unsigned int *digestLen, unsigned int maxDigestLen)
  {
      PRUint8 padStart;
@@ -341,9 +346,10 @@ diff --git a/lib/freebl/md2.c b/lib/freebl/md2.c
      if (maxDigestLen < MD2_BUFSIZE) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return;
-diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
---- a/lib/freebl/md5.c
-+++ b/lib/freebl/md5.c
+Index: nss/lib/freebl/md5.c
+===================================================================
+--- nss.orig/lib/freebl/md5.c
++++ nss/lib/freebl/md5.c
 @@ -15,6 +15,8 @@
  #include "blapi.h"
  #include "blapii.h"
@@ -353,7 +359,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
  #define MD5_HASH_LEN 16
  #define MD5_BUFFER_SIZE 64
  #define MD5_END_BUFFER (MD5_BUFFER_SIZE - 8)
-@@ -195,6 +197,7 @@
+@@ -195,6 +197,7 @@ struct MD5ContextStr {
  SECStatus
  MD5_Hash(unsigned char *dest, const char *src)
  {
@@ -361,7 +367,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      return MD5_HashBuf(dest, (const unsigned char *)src, PORT_Strlen(src));
  }
  
-@@ -204,6 +207,8 @@
+@@ -204,6 +207,8 @@ MD5_HashBuf(unsigned char *dest, const u
      unsigned int len;
      MD5Context cx;
  
@@ -370,7 +376,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      MD5_Begin(&cx);
      MD5_Update(&cx, src, src_length);
      MD5_End(&cx, dest, &len, MD5_HASH_LEN);
-@@ -215,7 +220,11 @@
+@@ -215,7 +220,11 @@ MD5Context *
  MD5_NewContext(void)
  {
      /* no need to ZAlloc, MD5_Begin will init the context */
@@ -383,7 +389,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      if (cx == NULL) {
          PORT_SetError(PR_OUT_OF_MEMORY_ERROR);
          return NULL;
-@@ -226,7 +235,8 @@
+@@ -226,7 +235,8 @@ MD5_NewContext(void)
  void
  MD5_DestroyContext(MD5Context *cx, PRBool freeit)
  {
@@ -393,7 +399,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      if (freeit) {
          PORT_Free(cx);
      }
-@@ -235,6 +245,8 @@
+@@ -235,6 +245,8 @@ MD5_DestroyContext(MD5Context *cx, PRBoo
  void
  MD5_Begin(MD5Context *cx)
  {
@@ -402,7 +408,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      cx->lsbInput = 0;
      cx->msbInput = 0;
      /*  memset(cx->inBuf, 0, sizeof(cx->inBuf)); */
-@@ -425,6 +437,8 @@
+@@ -425,6 +437,8 @@ MD5_Update(MD5Context *cx, const unsigne
      PRUint32 inBufIndex = cx->lsbInput & 63;
      const PRUint32 *wBuf;
  
@@ -411,7 +417,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      /* Add the number of input bytes to the 64-bit input counter. */
      addto64(cx->msbInput, cx->lsbInput, inputLen);
      if (inBufIndex) {
-@@ -498,6 +512,8 @@
+@@ -498,6 +512,8 @@ MD5_End(MD5Context *cx, unsigned char *d
      PRUint32 lowInput, highInput;
      PRUint32 inBufIndex = cx->lsbInput & 63;
  
@@ -420,7 +426,7 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      if (maxDigestLen < MD5_HASH_LEN) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return;
-@@ -546,6 +562,8 @@
+@@ -546,6 +562,8 @@ MD5_EndRaw(MD5Context *cx, unsigned char
  #endif
      PRUint32 cv[4];
  
@@ -429,9 +435,10 @@ diff --git a/lib/freebl/md5.c b/lib/freebl/md5.c
      if (maxDigestLen < MD5_HASH_LEN) {
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return;
-diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
---- a/lib/freebl/nsslowhash.c
-+++ b/lib/freebl/nsslowhash.c
+Index: nss/lib/freebl/nsslowhash.c
+===================================================================
+--- nss.orig/lib/freebl/nsslowhash.c
++++ nss/lib/freebl/nsslowhash.c
 @@ -12,6 +12,7 @@
  #include "plhash.h"
  #include "nsslowhash.h"
@@ -440,7 +447,7 @@ diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
  
  struct NSSLOWInitContextStr {
      int count;
-@@ -92,6 +93,12 @@
+@@ -92,6 +93,12 @@ NSSLOWHASH_NewContext(NSSLOWInitContext
  {
      NSSLOWHASHContext *context;
  
@@ -453,9 +460,10 @@ diff --git a/lib/freebl/nsslowhash.c b/lib/freebl/nsslowhash.c
      if (post_failed) {
          PORT_SetError(SEC_ERROR_PKCS11_DEVICE_ERROR);
          return NULL;
-diff --git a/lib/freebl/rawhash.c b/lib/freebl/rawhash.c
---- a/lib/freebl/rawhash.c
-+++ b/lib/freebl/rawhash.c
+Index: nss/lib/freebl/rawhash.c
+===================================================================
+--- nss.orig/lib/freebl/rawhash.c
++++ nss/lib/freebl/rawhash.c
 @@ -10,6 +10,7 @@
  #include "hasht.h"
  #include "blapi.h" /* below the line */
@@ -464,7 +472,7 @@ diff --git a/lib/freebl/rawhash.c b/lib/freebl/rawhash.c
  
  static void *
  null_hash_new_context(void)
-@@ -146,7 +147,8 @@
+@@ -146,7 +147,8 @@ const SECHashObject SECRawHashObjects[]
  const SECHashObject *
  HASH_GetRawHashObject(HASH_HashType hashType)
  {
@@ -474,15 +482,16 @@ diff --git a/lib/freebl/rawhash.c b/lib/freebl/rawhash.c
          PORT_SetError(SEC_ERROR_INVALID_ARGS);
          return NULL;
      }
-diff --git a/lib/softoken/pkcs11c.c b/lib/softoken/pkcs11c.c
---- a/lib/softoken/pkcs11c.c
-+++ b/lib/softoken/pkcs11c.c
-@@ -7282,7 +7282,7 @@
+Index: nss/lib/softoken/pkcs11c.c
+===================================================================
+--- nss.orig/lib/softoken/pkcs11c.c
++++ nss/lib/softoken/pkcs11c.c
+@@ -7491,7 +7491,7 @@ NSC_DeriveKey(CK_SESSION_HANDLE hSession
              } else {
                  /* now allocate the hash contexts */
                  md5 = MD5_NewContext();
 -                if (md5 == NULL) {
 +                if (md5 == NULL && !isTLS) {
+                     PORT_Memset(crsrdata, 0, sizeof crsrdata);
                      crv = CKR_HOST_MEMORY;
                      break;
-                 }

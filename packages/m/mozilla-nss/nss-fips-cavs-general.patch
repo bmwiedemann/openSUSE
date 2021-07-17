@@ -6,9 +6,10 @@
 # Parent  60c5e5d73ce1177fa66d8fd6cf49d9b371ca9be4
 imported patch nss-fips-cavs-general.patch
 
-diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
---- a/cmd/fipstest/fipstest.c
-+++ b/cmd/fipstest/fipstest.c
+Index: nss/cmd/fipstest/fipstest.c
+===================================================================
+--- nss.orig/cmd/fipstest/fipstest.c
++++ nss/cmd/fipstest/fipstest.c
 @@ -5,6 +5,7 @@
  #include <stdio.h>
  #include <stdlib.h>
@@ -27,7 +28,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  #define __PASTE(x, y) x##y
  #undef CK_PKCS11_FUNCTION_INFO
  #undef CK_NEED_ARG_LIST
-@@ -55,6 +59,10 @@
+@@ -55,6 +59,10 @@ EC_CopyParams(PLArenaPool *arena, ECPara
  #define RSA_MAX_TEST_EXPONENT_BYTES 8
  #define PQG_TEST_SEED_BYTES 20
  
@@ -38,7 +39,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  SECStatus
  hex_to_byteval(const char *c2, unsigned char *byteval)
  {
-@@ -168,6 +176,62 @@
+@@ -168,6 +176,62 @@ from_hex_str(unsigned char *buf, unsigne
      return PR_TRUE;
  }
  
@@ -101,7 +102,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  SECStatus
  tdea_encrypt_buf(
      int mode,
-@@ -8930,41 +8994,6 @@
+@@ -8930,41 +8994,6 @@ out:
      }
  }
  
@@ -143,7 +144,7 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
  void
  kas_ffc_test(char *reqfn, int do_validity)
  {
-@@ -9387,12 +9416,34 @@
+@@ -9387,12 +9416,34 @@ out:
      free_param_specs (pspecs);
  }
  
@@ -178,9 +179,10 @@ diff --git a/cmd/fipstest/fipstest.c b/cmd/fipstest/fipstest.c
      RNG_RNGInit();
      SECOID_Init();
  
-diff --git a/lib/freebl/freebl.def b/lib/freebl/freebl.def
---- a/lib/freebl/freebl.def
-+++ b/lib/freebl/freebl.def
+Index: nss/lib/freebl/freebl.def
+===================================================================
+--- nss.orig/lib/freebl/freebl.def
++++ nss/lib/freebl/freebl.def
 @@ -21,6 +21,7 @@
  LIBRARY freebl3 ;-
  EXPORTS	;-
@@ -189,9 +191,10 @@ diff --git a/lib/freebl/freebl.def b/lib/freebl/freebl.def
  ;+    local:
  ;+       *;
  ;+};
-diff --git a/lib/freebl/freebl_hash.def b/lib/freebl/freebl_hash.def
---- a/lib/freebl/freebl_hash.def
-+++ b/lib/freebl/freebl_hash.def
+Index: nss/lib/freebl/freebl_hash.def
+===================================================================
+--- nss.orig/lib/freebl/freebl_hash.def
++++ nss/lib/freebl/freebl_hash.def
 @@ -21,6 +21,7 @@
  LIBRARY freebl3 ;-
  EXPORTS	;-
@@ -200,9 +203,10 @@ diff --git a/lib/freebl/freebl_hash.def b/lib/freebl/freebl_hash.def
  ;+    local:
  ;+       *;
  ;+};
-diff --git a/lib/freebl/freebl_hash_vector.def b/lib/freebl/freebl_hash_vector.def
---- a/lib/freebl/freebl_hash_vector.def
-+++ b/lib/freebl/freebl_hash_vector.def
+Index: nss/lib/freebl/freebl_hash_vector.def
+===================================================================
+--- nss.orig/lib/freebl/freebl_hash_vector.def
++++ nss/lib/freebl/freebl_hash_vector.def
 @@ -21,6 +21,7 @@
  LIBRARY freebl3 ;-
  EXPORTS	;-
@@ -211,10 +215,11 @@ diff --git a/lib/freebl/freebl_hash_vector.def b/lib/freebl/freebl_hash_vector.d
  ;+    local:
  ;+       *;
  ;+};
-diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
---- a/lib/freebl/pqg.c
-+++ b/lib/freebl/pqg.c
-@@ -1231,7 +1231,8 @@
+Index: nss/lib/freebl/pqg.c
+===================================================================
+--- nss.orig/lib/freebl/pqg.c
++++ nss/lib/freebl/pqg.c
+@@ -1242,7 +1242,8 @@ cleanup:
  **/
  static SECStatus
  pqg_ParamGen(unsigned int L, unsigned int N, pqgGenType type,
@@ -224,7 +229,7 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
  {
      unsigned int n;       /* Per FIPS 186, app 2.2. 186-3 app A.1.1.2 */
      unsigned int seedlen; /* Per FIPS 186-3 app A.1.1.2  (was 'g' 186-1)*/
-@@ -1239,7 +1240,6 @@
+@@ -1250,7 +1251,6 @@ pqg_ParamGen(unsigned int L, unsigned in
      unsigned int offset;  /* Per FIPS 186, app 2.2. 186-3 app A.1.1.2 */
      unsigned int outlen;  /* Per FIPS 186-3, appendix A.1.1.2. */
      unsigned int maxCount;
@@ -232,7 +237,7 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
      SECItem *seed; /* Per FIPS 186, app 2.2. 186-3 app A.1.1.2 */
      PLArenaPool *arena = NULL;
      PQGParams *params = NULL;
-@@ -1290,7 +1290,8 @@
+@@ -1301,7 +1301,8 @@ pqg_ParamGen(unsigned int L, unsigned in
          /* fill in P Q,  */
          SECITEM_TO_MPINT((*pParams)->prime, &P);
          SECITEM_TO_MPINT((*pParams)->subPrime, &Q);
@@ -242,7 +247,7 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
          CHECK_SEC_OK(makeGfromIndex(hashtype, &P, &Q, &(*pVfy)->seed,
                                      (*pVfy)->h.data[0], &G));
          MPINT_TO_SECITEM(&G, &(*pParams)->base, (*pParams)->arena);
-@@ -1330,7 +1331,8 @@
+@@ -1341,7 +1342,8 @@ pqg_ParamGen(unsigned int L, unsigned in
      /* Select Hash and Compute lengths. */
      /* getFirstHash gives us the smallest acceptable hash for this key
       * strength */
@@ -252,7 +257,7 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
      outlen = HASH_ResultLen(hashtype) * PR_BITS_PER_BYTE;
  
      /* Step 3: n = Ceil(L/outlen)-1; (same as n = Floor((L-1)/outlen)) */
-@@ -1532,6 +1534,10 @@
+@@ -1543,6 +1545,10 @@ generate_G:
      verify->counter = counter;
      *pParams = params;
      *pVfy = verify;
@@ -262,8 +267,8 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
 +
  cleanup:
      if (pseed.data) {
-         PORT_Free(pseed.data);
-@@ -1576,7 +1582,7 @@
+         SECITEM_ZfreeItem(&pseed, PR_FALSE);
+@@ -1587,7 +1593,7 @@ PQG_ParamGen(unsigned int j, PQGParams *
      L = 512 + (j * 64); /* bits in P */
      seedBytes = L / 8;
      return pqg_ParamGen(L, DSA1_Q_BITS, FIPS186_1_TYPE, seedBytes,
@@ -272,7 +277,7 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
  }
  
  SECStatus
-@@ -1591,7 +1597,7 @@
+@@ -1602,7 +1608,7 @@ PQG_ParamGenSeedLen(unsigned int j, unsi
      }
      L = 512 + (j * 64); /* bits in P */
      return pqg_ParamGen(L, DSA1_Q_BITS, FIPS186_1_TYPE, seedBytes,
@@ -281,7 +286,7 @@ diff --git a/lib/freebl/pqg.c b/lib/freebl/pqg.c
  }
  
  SECStatus
-@@ -1609,7 +1615,26 @@
+@@ -1620,7 +1626,26 @@ PQG_ParamGenV2(unsigned int L, unsigned
          /* error code already set */
          return SECFailure;
      }
