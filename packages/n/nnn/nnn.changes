@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 16 20:14:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  - fix segfault on session save (#1041)
+  - remove redundant `_Atomic` usage
+  - move [`patches`](../tree/master/patches) directory to top-level
+  - fix and cleanup gitstatus patch
+  - plugin `imgview` improvements (#1049)
+  - restore source-code packing on CircleCI
+  - add Makefile target to compile with musl
+
+-------------------------------------------------------------------
 Wed Jun  2 06:49:21 UTC 2021 - Dilawar Singh <dilawar.s.rajput@gmail.com>
 
 - Update to version 4.1 (Sake)
