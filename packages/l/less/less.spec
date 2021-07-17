@@ -16,6 +16,11 @@
 #
 
 
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%else
+%define use_usretc 1
+%endif
 Name:           less
 Version:        590
 Release:        0

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  6 12:58:32 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Fix build on Leap:
+    Account for distinction in confdir after UsrMerge.
+
+-------------------------------------------------------------------
 Thu Jun 17 20:26:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 590:
