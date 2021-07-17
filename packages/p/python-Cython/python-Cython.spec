@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         oldpython python
 Name:           python-Cython
-Version:        0.29.23
+Version:        0.29.24
 Release:        0
 Summary:        The Cython compiler for writing C extensions for the Python language
 License:        Apache-2.0
 URL:            http://www.cython.org
 Source:         https://files.pythonhosted.org/packages/source/C/Cython/Cython-%{version}.tar.gz
 Source1:        python-Cython-rpmlintrc
-# PATCH-FIX-UPSTREAM  -- cython_use_imgmath.patch -- Don't use removed pngmath Sphinx extension -- gh#cython/cython#2818
-Patch0:         cython_use_imgmath.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -55,7 +53,6 @@ allows the compiler to generate very efficient C code from Cython code.
 
 %prep
 %setup -q -n Cython-%{version}
-%patch0 -p1
 # Fix non-executable scripts
 sed -i "s|^#!.*||" Cython/Debugger/{libpython,Cygdb}.py cython.py
 

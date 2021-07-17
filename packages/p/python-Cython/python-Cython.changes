@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 14 08:28:08 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.29.24:
+  * Inline functions in pxd files that used memory views could lead to invalid
+    C code if the module that imported from them does not use memory views.
+  * Several declarations in ``libcpp.string`` were added and corrected.
+  * Pickling unbound Cython compiled methods failed.
+  * The tracing code was adapted to work with CPython 3.10.
+  * The optimised ``in`` operator failed on unicode strings in Py3.9 and later
+    that were constructed from an external ``wchar_t`` source.
+    Also, related C compiler warnings about deprecated C-API usage were resolved.
+  * Some compiler crashes were resolved.
+  * An incorrect warning about 'unused' generator expressions was removed.
+  * The attributes ``gen.gi_frame`` and ``coro.cr_frame`` of Cython compiled
+    generators and coroutines now return an actual frame object for introspection,
+    instead of ``None``.
+- Drop cython_use_imgmath.patch 
+
+-------------------------------------------------------------------
 Wed Apr 21 21:19:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.29.23:
