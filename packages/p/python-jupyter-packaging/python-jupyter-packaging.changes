@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jun 25 18:53:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.10.3
+  * Some fixes for issues discovered during packaging #96
+    (@frenzymadness)
+  * Disallow deprecated function return incorrect results for
+    Python 3.10 #97 (@frenzymadness)
+  * Fix handling of module metadata in tests #92 (@blink1073)
+- Release 0.10.2
+  * Fix Handling of npm Parameter #90 (@jtpio)
+- Release 0.10.1
+  * Fix Handling of Skip If Exists #86 (@jtpio)
+- Release 0.10.0
+  * Add more options to Build #84 (@jtpio)
+- Release 0.9.2
+  * Clean up handling of version info #82 (@jtpio)
+
+-------------------------------------------------------------------
+Fri Apr 16 09:44:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.9.1
+  * Do not run ensure_targets in develop mode #79 (@jtpio)
+- Release 0.9.0
+  * Add ability to ensure targets #77 (@jtpio)
+  * Add version info helper function #76 (@afshin)
+- Release 0.8.3
+  * Fixes handling of backend #75 (@jtpio)
+- Release 0.8.2
+  * Fix invalid command build #72 (@xmnlab)
+- Release 0.8.1
+  * Fix Usage of install_npm #71 (@afshin)
+- Release 0.8.0
+  * Proposal: Improved integration with setuptools #69 (@afshin)
+  * Update changelog #68 (@blink1073)
+
+-------------------------------------------------------------------
 Mon Mar  1 10:12:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.12

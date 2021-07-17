@@ -16,22 +16,35 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 Name:           python-jupyter-packaging
-Version:        0.7.12
+Version:        0.10.3
 Release:        0
 Summary:        Jupyter Packaging Utilities
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter/jupyter-packaging
-Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter-packaging-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jupyter-packaging/jupyter_packaging-%{version}.tar.gz
+BuildRequires:  %{python_module deprecation}
 BuildRequires:  %{python_module packaging}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 46.4.0}
+BuildRequires:  %{python_module tomlkit}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-deprecation
 Requires:       python-packaging
+Requires:       python-setuptools >= 46.4.0
+Requires:       python-tomlkit
+Requires:       python-wheel
+Provides:       python-jupyter_packaging = %{version}-%{release}
+# SECTON test requirements
+BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+#/SECTION
 %python_subpackages
 
 %description
@@ -39,7 +52,7 @@ This package contains utilities for making Python packages
 with and without accompanying JavaScript packages
 
 %prep
-%setup -q -n jupyter-packaging-%{version}
+%setup -q -n jupyter_packaging-%{version}
 sed -i 's/\r$//' README.md
 sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
 
@@ -51,12 +64,19 @@ sed -i -e '/^#!\//, 1d' jupyter_packaging/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_install and test_datafiles_install call pip which wants to check the online cache
-%pytest -k "not (test_install or test_datafiles_install)"
+# tests call pip which wants to check the online cache
+donttest="test_install or test_datafiles_install"
+donttest+=" or test_build_api and (test_build_package or test_deprecated_metadata)"
+# want to write into system sitelib
+donttest+=" or test_create_cmdclass"
+# calls python (=python2)
+donttest+=" or test_run"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/*
+%{python_sitelib}/jupyter_packaging
+%{python_sitelib}/jupyter_packaging-%{version}*-info
 
 %changelog
