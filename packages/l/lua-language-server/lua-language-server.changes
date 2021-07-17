@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Fri Jul 16 18:15:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add fix_i586_test.patch to switch off testing architecture in bee.lua
+
+-------------------------------------------------------------------
+Fri Jul 16 12:26:44 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.3.0
+  - https://github.com/sumneko/lua-language-server/blob/2.3.0/changelog.md
+- Use obs_scm in _service file (tar_scm is deprecated)
+
+-------------------------------------------------------------------
+Thu Jul 15 14:33:21 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Initial package
