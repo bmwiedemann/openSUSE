@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:42:13 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.1.17 (2021-07-12):
+  Compatibility notes:
+   * When upgrading from borg 1.0.x to 1.1.x, please note:
+   * read all the compatibility notes for 1.1.0*, starting from
+     1.1.0b1.
+   * borg upgrade: you do not need to and you also should not run
+     it.
+   * borg might ask some security-related questions once after
+     upgrading. You can answer them either manually or via
+     environment variable. One known case is if you use unencrypted
+     repositories, then it will ask about a unknown unencrypted
+     repository one time.
+   * your first backup with 1.1.x might be significantly slower (it
+     might completely read, chunk, hash a lot files) - this is due
+     to the –files-cache mode change (and happens every time you
+     change mode). You can avoid the one-time slowdown by using the
+     pre-1.1.0rc4-compatible mode (but that is less safe for
+     detecting changed files than the default). See the –files-
+     cache docs for details.
+   * 1.1.11 removes WSL autodetection (Windows 10 Subsystem for
+     Linux). If WSL still has a problem with sync_file_range, you
+     need to set BORG_WORKAROUNDS=basesyncfile in the borg process
+     environment to work around the WSL issue.
+   * 1.1.14 changes return codes due to a bug fix: In case you have
+     scripts expecting rc == 2 for a signal exit, you need to
+     update them to check for >= 128 (as documented since long).
+   * 1.1.15 drops python 3.4 support, minimum requirement is 3.5
+     now.
+   * 1.1.17 install_requires the “packaging” pypi package now.
+  Fixes:
+   * pyinstaller dir-mode: fix pyi detection / LIBPATH treatment,
+     #5897
+   * handle crash due to kill stale lock race, #5828
+   * fix BORG_CACHE_DIR crashing borg if empty, #5216
+   * create –dry-run: fix display of kept tagfile, #5834
+   * fix missing parameter in “did not consistently fail” msg,
+     #5822
+   * missing / healed chunks: always tell chunk ID, #5704
+   * benchmark: make sure cleanup happens even on exceptions, #5630
+  New features:
+   * implement BORG_SELFTEST env variable, #5871. this can be used
+     to accelerate borg startup a bit. not recommended for normal
+     usage, but borg mass hosters with a lot of borg invocations
+     can save some resources with this. on my laptop, this saved
+     ~100ms cpu time (sys+user) per borg command invocation.
+   * implement BORG_LIBC env variable to give the libc filename,
+     #5870. you can use this if a borg does not find your libc.
+   * check: add progress indicator for archive check.
+   * allow –files-cache=size (not recommended, make sure you know
+     what you do)
+  Other changes:
+   * Python 3.10 now officially supported! we test on py310-dev on
+     github CI since a while and now also on the vagrant machines,
+     so it should work ok.
+   * github CI: test on py310 (again)
+   * get rid of distutils, use packaging and setuptools. distutils
+     is deprecated and gives warnings on py 3.10.
+   * setup.py: rename “clean” to “clean2” to avoid shadowing the
+     “clean” command.
+   * remove libc filename fallback for the BSDs (there is no
+     “usual” name)
+   * cleanup flake8 checks, fix some pep8 violations.
+   * docs building: replace deprecated function “.add_stylesheet()”
+     for Sphinx 4 compatibility
+   * docs:
+   * add a hint on sleeping computer and ssh connections, #5301
+   * update the documentation on hacked backup client, #5480
+   * improve docs/FAQ about append-only remote repos, #5497
+   * complement the documentation for pattern files and exclude
+     files, #5520
+   * “filename with spaces” example added to exclude file, #5236
+     note: no whitespace escaping needed, processed by borg.
+   * add info on renaming repositories, #5240
+   * clarify borg check –verify-data, #5808
+   * add notice about defective hardware to check documentation,
+     #5753
+   * add paragraph added in #5855 to utility documentation source
+   * add missing leading slashes in help patterns, #5857
+   * clarify “you will need key and passphrase” borg init warning,
+     #4622
+   * pull mode: add some warnings, #5827
+   * mention tar –compare (compare archive to fs files), #5880
+   * fix typos, backport of #5597
+   * vagrant:
+   * add py3.7.11 for binary build, also add 3.10-dev.
+   * use latest Cython 0.29.23 for py310 compat fixes.
+   * more RAM for openindiana upgrade plan resolver, it just hangs
+     (swaps?) if there is too little RAM.
+   * fix install_pyenv to adapt to recent changes in pyenv (same as
+     in master now).
+   * use generic/netbsd9 box, copied from master branch.
+- Reformatted Paolos last changelog
+- Revert logic of borgbackup-1.1.16-fix-sphinx-api.patch: 
+  borgbackup-1.1.17-old-sphinx-api.patch
+- Allow to use old version of xxhash library (might crash on ARM),
+  but an update is in enqueued
+
+-------------------------------------------------------------------
 Fri Jul  2 10:55:47 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix documentation generation with
@@ -21,21 +121,35 @@ Sun Mar 28 08:29:53 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.1.16:
   Fixes:
-    * setup.py: add special openssl prefix for Apple M1 compatibility
-    * do not recurse into duplicate roots, #5603
-    * remove empty shadowed_segments lists, #5275, #5614
-    * fix libpython load error when borg fat binary / dir-based binary is invoked via a symlink by upgrading pyinstaller to v4.2, #5688
-    * config: accept non-int value (like 500M or 100G) for max_segment_size or storage_quota, #5639. please note: when setting a non-int value for this in a repo config, using the repo will require borg >= 1.1.16.
+  * setup.py: add special openssl prefix for Apple M1
+    compatibility
+  * do not recurse into duplicate roots, #5603
+  * remove empty shadowed_segments lists, #5275, #5614
+  * fix libpython load error when borg fat binary / dir-based
+    binary is invoked via a symlink by upgrading pyinstaller to
+    v4.2, #5688
+  * config: accept non-int value (like 500M or 100G) for
+    max_segment_size or storage_quota, #5639. please note: when
+    setting a non-int value for this in a repo config, using the
+    repo will require borg >= 1.1.16.
   New features:
-    * bundled msgpack: drop support for old buffer protocol to support Python 3.10
-    * verbose files cache logging via --debug-topic=files_cache, #5659. Use this if you suspect that borg does not detect unmodified files as expected.
-    * create/extract: add --noxattrs and --noacls option, #3955. when given with borg create, borg will not get xattrs / ACLs from input files (and thus, it will not archive xattrs / ACLs). when given with borg extract, borg will not read xattrs / ACLs from archive and will not set xattrs / ACLs on extracted files.
-    * diff: add --json-lines option, #3765
+  * bundled msgpack: drop support for old buffer protocol to
+    support Python 3.10
+  * verbose files cache logging via --debug-topic=files_cache,
+    #5659. Use this if you suspect that borg does not detect
+    unmodified files as expected.
+  * create/extract: add --noxattrs and --noacls option, #3955.
+    when given with borg create, borg will not get xattrs / ACLs
+    from input files (and thus, it will not archive xattrs / ACLs).
+    when given with borg extract, borg will not read xattrs / ACLs
+    from archive and will not set xattrs / ACLs on extracted files.
+  * diff: add --json-lines option, #3765
   Other changes:
-    * Tab completion support for additional archives for 'borg delete'
-    * repository: deduplicate code of put and delete, no functional change
+  * Tab completion support for additional archives for 'borg
+    delete'
+  * repository: deduplicate code of put and delete, no functional
+    change
   Docs updates
-
 -------------------------------------------------------------------
 Tue Feb  9 15:05:39 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 

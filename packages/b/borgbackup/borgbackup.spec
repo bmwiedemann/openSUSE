@@ -37,15 +37,15 @@
 %bcond_with     borg_sysblake2
 %endif
 
-# new sphinx api, available since Leap 15.3
+# old sphinx api, necessary before Leap 15.3
 %if ( 0%{?sle_version} >= 150300 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
-%bcond_without  borg_new_sphinx_api
+%bcond_with     borg_old_sphinx_api
 %else
-%bcond_with     borg_new_sphinx_api
+%bcond_without  borg_old_sphinx_api
 %endif
 
 Name:           borgbackup
-Version:        1.1.16
+Version:        1.1.17
 Release:        0
 Summary:        Deduplicating backup program with compression and authenticated encryption
 License:        BSD-3-Clause
@@ -58,7 +58,7 @@ Source2:        %{name}.keyring
 # python3-guzzle_sphinx_theme isn't available everywhere,
 # fall back to Sphinx default theme for older distributions
 Patch0:         borgbackup-1.1.4-sphinx-default-theme.patch
-Patch1:         borgbackup-1.1.16-fix-sphinx-api.patch
+Patch1:         borgbackup-1.1.17-old-sphinx-api.patch
 
 # build dependencies
 BuildRequires:  bash
@@ -83,7 +83,11 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-setuptools_scm
 BuildRequires:  python3-sphinx_rtd_theme
 BuildRequires:  zsh
+%if ( 0%{?sle_version} >= 150300 && 0%{?is_opensuse} ) || ( 0%{?suse_version} > 1500 )
 BuildRequires:  pkgconfig(libxxhash)
+%else
+BuildRequires:  xxhash-devel
+%endif
 
 # docs requirements
 BuildRequires:  python3-Sphinx
@@ -179,7 +183,7 @@ This package contains the fish completion script for borgbackup.
 %if ! %{with borg_guzzle}
 %patch0 -p1
 %endif
-%if %{with borg_new_sphinx_api}
+%if %{with borg_old_sphinx_api}
 %patch1 -p1
 %endif
 # remove bundled libraries, that we don't want to be included
