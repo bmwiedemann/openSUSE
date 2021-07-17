@@ -15,17 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} > 1500
-%bcond_with python_gtk
-%else
-%bcond_without python_gtk
-%endif
-
-%define gtk3_ready 0
-%if !%{gtk3_ready}
-%define favor_gtk2 1
-%endif
-
 %if 0%{?suse_version} >= 1330
 %bcond_without vcalendar
 %else
@@ -41,14 +30,13 @@
 %bcond_with    tnef
 
 Name:           claws-mail
-Version:        3.18.0
+Version:        4.0.0
 Release:        0
 Summary:        A configurable email client
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Email/Clients
 URL:            https://www.claws-mail.org/
 Source:         https://www.claws-mail.org/download.php?file=releases/%{name}-%{version}.tar.xz
-Patch0:         libcanberra-gtk3.patch
 BuildRequires:  compface-devel
 BuildRequires:  db-devel
 BuildRequires:  docbook-utils
@@ -67,9 +55,6 @@ BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg-devel >= 2.40.5
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
-%if %{with python_gtk}
-BuildRequires:  python-gtk-devel
-%endif
 BuildRequires:  startup-notification-devel
 BuildRequires:  texlive-dvips
 BuildRequires:  texlive-jadetex
@@ -82,11 +67,17 @@ BuildRequires:  pkgconfig(dbus-1) >= 0.60
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.60
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(gnutls) >= 2.2
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libnm)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libsoup-2.4)
+BuildRequires:  pkgconfig(pygobject-3.0)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
-Requires:       pinentry-gtk2
+#
+Requires:       pinentry-dialog
+Suggests:       pinentry-gtk2
+Requires:       python3-gobject
 Recommends:     %{name}-lang
 Provides:       sylpheed-claws = %{version}
 Obsoletes:      sylpheed-claws < %{version}
@@ -97,13 +88,8 @@ Provides:       claws-mail-extra-plugins = %{version}
 Obsoletes:      claws-mail-extra-plugins-lang < %{version}
 Provides:       claws-mail-extra-plugins-lang = %{version}
 %{?libperl_requires}
-%if 0%{?favor_gtk2}
-BuildRequires:  gtk2-devel
-BuildRequires:  libcanberra-gtk-devel >= 0.6
-%else
 BuildRequires:  gtk3-devel
 BuildRequires:  libcanberra-gtk3-devel >= 0.6
-%endif
 %if %{with vcalendar}
 BuildRequires:  libical-devel >= 2.0.0
 %endif
@@ -142,7 +128,8 @@ Requires:       enchant-devel
 Requires:       glib2-devel >= 2.28
 Requires:       gnutls-devel
 Requires:       gpgme-devel
-Requires:       gtk2-devel >= 2.24
+Requires:       gtk3-devel
+Requires:       libcanberra-gtk3-devel
 Requires:       libetpan-devel
 Requires:       openldap2-devel
 Provides:       claws-mail:%{_includedir}/claws-mail/main.h
@@ -161,9 +148,6 @@ This package contains header files for building plugins.
 
 %prep
 %setup -q
-%if ! 0%{?favor_gtk2}
-%patch0 -p1
-%endif
 sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python/' tools/*.py
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/*.sh
 sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
@@ -172,9 +156,6 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
 %configure \
         --docdir=%{_datadir}/claws-mail \
         --disable-static \
-%if !(0%{?favor_gtk2})
-        --enable-gtk3 \
-%endif
         --enable-ldap \
         --enable-ipv6 \
 %if 0%{?is_opensuse}
@@ -182,6 +163,7 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
 %else
         --disable-jpilot \
 %endif
+        --enable-alternate-addressbook \
         --enable-acpi_notifier-plugin \
         --enable-address_keeper-plugin \
         --enable-archive-plugin \
@@ -197,9 +179,7 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --enable-notification-plugin \
         --enable-pdf_viewer-plugin \
         --enable-perl-plugin \
-        %if %{with python_gtk}
         --enable-python-plugin \
-        %endif
         --enable-pgpcore-plugin \
         --enable-pgpmime-plugin \
         --enable-pgpinline-plugin \

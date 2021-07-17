@@ -871,4 +871,24 @@ No changes entry, as it's just a correction of the last changes entry.</comment>
     <comment>- Update to 3.18.0</comment>
     <requestid>905841</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>730c24bc9e06712bc6fb1704fc803d3b</srcmd5>
+    <version>4.0.0</version>
+    <time>1626557802</time>
+    <user>dimstar_suse</user>
+    <comment>- instead of forcing a certain pinentry tool require the generic
+  provides and only recommends the gtk2 version. There is no gtk3
+  version to prefer.
+- make sure we have python3-gobject so we can load the gtk/gdk/gio
+  libraries
+
+- Update to 4.0.0
+  Featurewise it is the same as 3.18.0 with 1 major difference:
+  GTK 3 support!
+  With this comes pygobject based python plugins.
+- enable alternative addressbook as well
+- drop all support for gtk2 in the spec file
+- drop libcanberra-gtk3.patch: no longer needed</comment>
+    <requestid>906750</requestid>
+  </revision>
 </revisionlist>

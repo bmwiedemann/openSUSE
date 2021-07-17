@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 17 04:10:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- instead of forcing a certain pinentry tool require the generic
+  provides and only recommends the gtk2 version. There is no gtk3
+  version to prefer.
+- make sure we have python3-gobject so we can load the gtk/gdk/gio
+  libraries
+
+-------------------------------------------------------------------
+Mon Jul 12 13:31:08 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.0
+  Featurewise it is the same as 3.18.0 with 1 major difference:
+
+  GTK 3 support!
+  With this comes pygobject based python plugins.
+- enable alternative addressbook as well
+- drop all support for gtk2 in the spec file
+- drop libcanberra-gtk3.patch: no longer needed 
+
+-------------------------------------------------------------------
 Mon Jul 12 12:50:23 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - bump buildrequires to follow version limits in the configure.ac
