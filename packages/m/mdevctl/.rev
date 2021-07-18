@@ -27,4 +27,12 @@ in virtual machines.</comment>
   jsc#SLE-15861, bsc#1179770</comment>
     <requestid>854165</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bf8b2b79ab974a811308eca49a93fc8d</srcmd5>
+    <version>0.81</version>
+    <time>1626644686</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906516</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">mdevctl</param>
-    <param name="revision">e029640033d399a73b3e04e1e91f59479cdbadd9</param>
+    <param name="revision">c077ee72b286b117861dd77b710c58f63be33070</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/mdevctl/mdevctl</param>
