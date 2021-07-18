@@ -1,7 +1,7 @@
 #
 # spec file for package bcmatroska2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,13 @@
 
 %define sover   0
 Name:           bcmatroska2
-Version:        0.23
+Version:        0.23~git.20210209
 Release:        0
 Summary:        C Library to Deal with Matroska Files
 License:        BSD-3-Clause AND Zlib AND GPL-2.0-or-later
-URL:            https://linphone.org/
-Source:         https://linphone.org/releases/sources/%{name}/%{name}-%{version}.tar.gz
+URL:            https://gitlab.linphone.org/BC/public/bcmatroska2
+Source:         bcmatroska2-%{version}.tar.xz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE bcmatroska2-include-subdir.patch sor.alexei@meowr.ru -- Resolve a conflict with libebml and libmatroska.
 Patch0:         bcmatroska2-include-subdir.patch
 BuildRequires:  cmake
 
@@ -41,6 +40,9 @@ Bcmatroska2 is a C library to parse Matroska files (.mkv and .mka).
 %package devel
 Summary:        Development files for bcmatroska2
 Requires:       lib%{name}-%{sover} = %{version}
+# Needed by mediastreamer2. This is a fake minor version because upstream didn't release
+# a '.1', therefore we've gotta use this workaround.
+Provides:       %{name}-devel = 0.23.1
 
 %description devel
 This package includes the files necessary for compiling and linking
@@ -66,9 +68,16 @@ applications which will use libbcmatroska2.
 %{_libdir}/lib%{name}.so.%{sover}*
 
 %files devel
-%{_includedir}/%{name}/
-%{_libdir}/lib%{name}.so
-%dir %{_datadir}/bcmatroska2/
-%{_datadir}/bcmatroska2/cmake/
+%dir %{_includedir}/%{name}
+%dir %{_includedir}/%{name}/corec
+%dir %{_includedir}/%{name}/ebml
+%dir %{_includedir}/%{name}/matroska
+%{_includedir}/%{name}/corec/*
+%{_includedir}/%{name}/ebml/*
+%{_includedir}/%{name}/matroska/*
+%{_libdir}/libbcmatroska2.so
+%dir %{_datadir}/bcmatroska2
+%dir %{_datadir}/bcmatroska2/cmake
+%{_datadir}/bcmatroska2/cmake/*
 
 %changelog

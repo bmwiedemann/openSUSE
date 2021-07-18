@@ -1,16 +1,18 @@
---- a/BcMatroska2Config.cmake.in
-+++ b/BcMatroska2Config.cmake.in
-@@ -34,6 +34,6 @@ if(@ENABLE_SHARED@)
- else()
- 	get_target_property(BCMATROSKA2_LIBRARIES bcmatroska2-static LOCATION)
+diff -ru a/BcMatroska2Config.cmake.in b/BcMatroska2Config.cmake.in
+--- a/BcMatroska2Config.cmake.in	2021-07-14 11:19:44.426789310 +0200
++++ b/BcMatroska2Config.cmake.in	2021-07-14 11:21:50.035321221 +0200
+@@ -39,6 +39,6 @@
+ 	get_target_property(BCMATROSKA2_LIBRARIES ${BCMATROSKA2_TARGETNAME} LOCATION)
  endif()
+ 
 -set(BCMATROSKA2_INCLUDE_DIRS "@CMAKE_INSTALL_FULL_INCLUDEDIR@")
 +set(BCMATROSKA2_INCLUDE_DIRS "@CMAKE_INSTALL_FULL_INCLUDEDIR@/bcmatroska2")
  
  set(BCMATROSKA2_FOUND 1)
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -73,7 +73,7 @@ add_subdirectory(libebml2)
+diff -ru a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2021-07-14 11:19:44.426789310 +0200
++++ b/CMakeLists.txt	2021-07-14 11:21:14.463170591 +0200
+@@ -73,7 +73,7 @@
  add_subdirectory(libmatroska2)
  
  install(FILES ${CMAKE_BINARY_DIR}/config.h
@@ -19,9 +21,10 @@
  )
  
  include(CMakePackageConfigHelpers)
---- a/corec/corec/CMakeLists.txt
-+++ b/corec/corec/CMakeLists.txt
-@@ -97,18 +97,18 @@ install(FILES
+diff -ru a/corec/corec/CMakeLists.txt b/corec/corec/CMakeLists.txt
+--- a/corec/corec/CMakeLists.txt	2021-07-14 11:19:44.426789310 +0200
++++ b/corec/corec/CMakeLists.txt	2021-07-14 11:22:56.323601950 +0200
+@@ -101,18 +101,18 @@
  	memalloc.h
  	memheap.h
  	portab.h
@@ -46,7 +49,7 @@
  install(FILES
  	helpers/parser/buffer.h
  	helpers/parser/dataheap.h
-@@ -118,16 +118,16 @@ install(FILES
+@@ -122,16 +122,16 @@
  	helpers/parser/strtab.h
  	helpers/parser/strtypes.h
  	helpers/parser/urlpart.h
@@ -68,18 +71,21 @@
  )
 -install(FILES str/str.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/corec/str)
 +install(FILES str/str.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bcmatroska2/corec/str)
---- a/libebml2/CMakeLists.txt
-+++ b/libebml2/CMakeLists.txt
-@@ -34,5 +34,5 @@ add_library(ebml2-objects OBJECT
+Binary files a/.git/index and b/.git/index differ
+diff -ru a/libebml2/CMakeLists.txt b/libebml2/CMakeLists.txt
+--- a/libebml2/CMakeLists.txt	2021-07-14 11:19:44.442789377 +0200
++++ b/libebml2/CMakeLists.txt	2021-07-14 11:20:29.858981710 +0200
+@@ -34,5 +34,5 @@
  set_target_properties(ebml2-objects PROPERTIES POSITION_INDEPENDENT_CODE TRUE)
  
  install(DIRECTORY ebml
 -	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
 +	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/bcmatroska2
  )
---- a/libmatroska2/CMakeLists.txt
-+++ b/libmatroska2/CMakeLists.txt
-@@ -76,5 +76,5 @@ if(ENABLE_SHARED)
+diff -ru a/libmatroska2/CMakeLists.txt b/libmatroska2/CMakeLists.txt
+--- a/libmatroska2/CMakeLists.txt	2021-07-14 11:19:44.442789377 +0200
++++ b/libmatroska2/CMakeLists.txt	2021-07-14 11:20:08.898892951 +0200
+@@ -76,5 +76,5 @@
  endif()
  
  install(DIRECTORY matroska
