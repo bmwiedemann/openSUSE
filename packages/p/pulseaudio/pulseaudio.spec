@@ -44,6 +44,7 @@ Source6:        disable_flat_volumes.conf
 Source7:        pulseaudio.tmpfiles
 Source8:        pulseaudio-gdm-hooks.tmpfiles
 Source9:        client-system.conf
+Source10:       system-user-pulse.conf
 Source98:       pulseaudio-rpmlintrc
 Source99:       baselibs.conf
 Patch0:         disabled-start.diff
@@ -87,6 +88,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  speexdsp-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  translation-update-upstream
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(dbus-1) >= 1.4.12
 BuildRequires:  pkgconfig(gconf-2.0)
@@ -112,6 +114,7 @@ Requires:       udev >= 146
 Requires(post): %fillup_prereq
 Requires(pre):  group(audio)
 Requires(pre):  shadow
+%sysusers_requires
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
 Conflicts:      kernel < 2.6.31
@@ -147,7 +150,7 @@ of ESOUND.
 Summary:        LIRC module for PulseAudio
 Group:          System/Sound Daemons
 Requires:       %{name} = %{version}
-Supplements:	packageand(pulseaudio:lirc-core)
+Supplements:	(pulseaudio and lirc-core)
 
 %description module-lirc
 pulseaudio is a networked sound server for Linux and other Unix like
@@ -174,7 +177,7 @@ the PulseAudio sound server on X11 startup.
 Summary:        Zeroconf module for PulseAudio
 Group:          System/Sound Daemons
 Requires:       %{name} = %{version}
-Supplements:	packageand(pulseaudio:avahi)
+Supplements:	(pulseaudio and avahi)
 
 %description module-zeroconf
 pulseaudio is a networked sound server for Linux and other Unix like
@@ -218,7 +221,7 @@ Summary:        Bluetooth support for the PulseAudio sound server
 Group:          System/Sound Daemons
 Requires:       %{name} = %{version}
 Requires:       bluez >= 5
-Supplements:	packageand(pulseaudio:bluez)
+Supplements:	(pulseaudio and bluez)
 
 %description module-bluetooth
 pulseaudio is a networked sound server for Linux and other Unix like
@@ -321,7 +324,7 @@ Group:          Productivity/Multimedia/Other
 #!BuildIgnore:  gdm
 Requires:       %{name} = %{version}
 Requires:       gdm >= 2.22
-Supplements:    packageand(pulseaudio:gdm)
+Supplements:    (pulseaudio and gdm)
 #for the gdm user
 Requires(pre):  gdm
 
@@ -337,7 +340,7 @@ Summary:        PulseAudio Bash completion
 Group:          System/Shells
 Requires:       %{name}-utils = %{version}
 Requires:       bash-completion
-Supplements:    packageand(pulseaudio:bash-completion)
+Supplements:    (pulseaudio and bash-completion)
 
 %description bash-completion
 Optional dependency offering bash completion for various PulseAudio utilities
@@ -347,7 +350,7 @@ Summary:        PulseAudio zsh completion
 Group:          System/Shells
 Requires:       %{name}-utils = %{version}
 Requires:       zsh
-Supplements:    packageand(pulseaudio:zsh)
+Supplements:    (pulseaudio and zsh)
 
 %description zsh-completion
 Optional dependency offering zsh completion for various PulseAudio utilities
@@ -405,6 +408,7 @@ export CFLAGS="%{optflags} -fPIE"
 	%{nil}
 %make_build
 %make_build doxygen
+%sysusers_generate_pre %{SOURCE10} pulseaudio system-user-pulse.conf
 
 %install
 %make_install
@@ -424,7 +428,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # some HW may get undetected without this (check pulseaudio 6.0RC1 announce)
 ln -s default.conf %{buildroot}%{_datadir}/pulseaudio/alsa-mixer/profile-sets/extra-hdmi.conf
 
-%find_lang %{name}
 install %{SOURCE2} %{buildroot}%{_bindir}
 chmod 755 %{buildroot}%{_bindir}/setup-pulseaudio
 install -d %{buildroot}%{_fillupdir}
@@ -444,14 +447,12 @@ install -m 0644 %{SOURCE9} %{buildroot}%{_sysconfdir}/pulse/client.conf.d/50-sys
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d
 # Install disable_flat_volumes.conf
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d/60-disable_flat_volumes.conf
+# user
+install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
+%find_lang %{name}
 %fdupes doxygen/html
 
-%pre
-getent group pulse >/dev/null || groupadd -r pulse
-getent passwd pulse >/dev/null || useradd -r -g pulse -d %{_localstatedir}/lib/pulseaudio -s /sbin/nologin -c "PulseAudio daemon" pulse
-getent group pulse-access >/dev/null || groupadd -r pulse-access
-getent group audio | grep pulse >/dev/null || usermod -a -G audio pulse
-exit 0
+%pre -f pulseaudio.pre
 
 %post
 /sbin/ldconfig
@@ -615,6 +616,7 @@ exit 0
 %{_userunitdir}/%{name}.service
 %{_userunitdir}/%{name}.socket
 %{_prefix}/lib/tmpfiles.d/pulseaudio.conf
+%{_sysusersdir}/system-user-pulse.conf
 %ghost %dir %{_localstatedir}/lib/pulseaudio
 
 # created by setup-pulseaudio script

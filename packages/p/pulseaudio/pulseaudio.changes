@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 26 17:16:27 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+- Remove old SUSE RPM constructs
+
+-------------------------------------------------------------------
 Mon Apr 19 18:45:11 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Really fix recording OGG with parecord (bsc#1183546)
