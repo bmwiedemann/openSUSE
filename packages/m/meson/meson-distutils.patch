@@ -1,13 +1,28 @@
-Index: meson-0.57.2/setup.py
+Index: meson-0.58.1/setup.py
 ===================================================================
---- meson-0.57.2.orig/setup.py
-+++ meson-0.57.2/setup.py
-@@ -21,7 +21,7 @@ if sys.version_info < (3, 6):
+--- meson-0.58.1.orig/setup.py
++++ meson-0.58.1/setup.py
+@@ -20,7 +20,7 @@ if sys.version_info < (3, 6):
+     raise SystemExit('ERROR: Tried to install Meson with an unsupported Python version: \n{}'
                       '\nMeson requires Python 3.6.0 or greater'.format(sys.version))
  
- from mesonbuild.coredata import version
 -from setuptools import setup
 +from distutils.core import setup
  
- # On windows, will create Scripts/meson.exe and Scripts/meson-script.py
- # Other platforms will create bin/meson
+ data_files = []
+ if sys.platform != 'win32':
+@@ -28,4 +28,12 @@ if sys.platform != 'win32':
+     data_files = [('share/man/man1', ['man/meson.1']),
+                   ('share/polkit-1/actions', ['data/com.mesonbuild.install.policy'])]
+ 
+-setup(data_files=data_files,)
++# Since distutils does not understand the find: directive in setup.cfg, and
++# therefore doesn't expand it, we need to do it directly
++import os
++packages=[
++    root.replace('/', '.')
++    for root, dirs, files in os.walk('mesonbuild')
++    if '__init__.py' in files]
++
++setup(packages=packages, data_files=data_files,)
+

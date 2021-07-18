@@ -1,8 +1,8 @@
-Index: meson-0.57.2/run_tests.py
+Index: meson-0.58.0/run_tests.py
 ===================================================================
---- meson-0.57.2.orig/run_tests.py
-+++ meson-0.57.2/run_tests.py
-@@ -154,18 +154,10 @@ def get_meson_script():
+--- meson-0.58.0.orig/run_tests.py
++++ meson-0.58.0/run_tests.py
+@@ -158,18 +158,10 @@ def get_meson_script():
      Also used by run_unittests.py to determine what meson to run when not
      running in-process (which is the default).
      '''
@@ -18,12 +18,12 @@ Index: meson-0.57.2/run_tests.py
 -    if meson_cmd:
 +    if meson_cmd and os.path.isfile(meson_cmd):
          return meson_cmd
--    raise RuntimeError('Could not find {!r} or a meson in PATH'.format(meson_script))
-+    raise RuntimeError('Could not find meson in PATH')
+-    raise RuntimeError(f'Could not find {meson_script!r} or a meson in PATH')
++    raise RuntimeError(f'Could not find meson in PATH')
  
  def get_backend_args_for_dir(backend, builddir):
      '''
-@@ -353,12 +345,12 @@ def main():
+@@ -359,12 +351,12 @@ def main():
              else:
                  env['PYTHONPATH'] = temp_dir
          if not options.cross:

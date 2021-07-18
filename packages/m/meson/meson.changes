@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 14 08:04:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.58.1:
+  + New meson.global_build_root() and meson.global_source_root()
+    methods.
+  + meson.add_dist_script() allowd in subprojects.
+  + Do not add custom target dir to header path if
+    implicit_include_directories is false.
+  + Multiple append() and prepend() in environment() object.
+  + clang-format include and ignore lists.
+  + Introducing format strings to the Meson language.
+  + Skip subprojects installation.
+- Rebase meson-distutils.patch (work done by StevenK).
+
+-------------------------------------------------------------------
 Mon Jul 12 13:42:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Update to from version 0.57.2:
+- Update to version 0.57.2:
   + Support for reading files at configuration time with the fs
     module.
   + Experimental support for C++ modules in Visual Studio.

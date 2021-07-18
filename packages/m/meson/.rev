@@ -606,4 +606,12 @@
 - Drop 0200340a.patch: fixed upstream. (forwarded request 906043 from dimstar)</comment>
     <requestid>906044</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>449f5335fdb29818515b29bb06b953fc</srcmd5>
+    <version>0.58.1</version>
+    <time>1626644683</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906611</requestid>
+  </revision>
 </revisionlist>
