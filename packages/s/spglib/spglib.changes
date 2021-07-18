@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 17 09:13:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.16.1:
+  * Bug fix of fortran wrapper.
+  * Minor update. Symmetry operations in spg_database.c for
+    Hall numbers 212, 213, 214 are re-ordered to start by identity
+    operation.
+- drop 0001-Fix-CMakeLists.txt.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Feb 28 22:47:09 UTC 2020 - andy great <andythe_great@pm.me>
 
 - Fix "env-script-interpreter" rpmlint warning

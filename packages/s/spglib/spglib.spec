@@ -1,7 +1,7 @@
 #
 # spec file for package spglib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define shlib libsymspg1
 Name:           spglib
-Version:        1.14.1
+Version:        1.16.1
 Release:        0
 Summary:        Find and handle crystal symmetries
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Physics
 URL:            https://atztogo.github.io/spglib/
 Source0:        https://github.com/atztogo/spglib/archive/v%{version}.tar.gz#/spglib-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-CMakeLists.txt.patch
 BuildRequires:  cmake
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
@@ -68,7 +66,6 @@ Spglib is a C library to find and handle crystal symmetries.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 pushd .
@@ -102,7 +99,7 @@ popd
 
 %files devel
 %doc ChangeLog example ruby
-%{_includedir}/spglib
+%{_includedir}/spglib.h
 %{_libdir}/libsymspg.so
 
 %files -n python3-spglib
