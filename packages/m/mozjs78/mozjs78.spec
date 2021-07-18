@@ -82,7 +82,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  python3-six
 BuildRequires:  readline-devel
 BuildRequires:  rust
-BuildRequires:  pkgconfig(icu-i18n) >= 63.1
+BuildRequires:  pkgconfig(icu-i18n) >= 67.1
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?big_endian}
