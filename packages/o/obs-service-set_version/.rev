@@ -314,4 +314,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>870317</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>9ba28c2c6bb5c1d81e19987014a0820f</srcmd5>
+    <version>0.5.14</version>
+    <time>1626644699</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.14:
+  * changed debugging output to logging module
+  * Explicitely specifying --fromfile should win over .obsinfo
+  * Add new switch --fromfile
+  * Add zst to recognized suffixes (zstd support)
+</comment>
+    <requestid>906285</requestid>
+  </revision>
 </revisionlist>

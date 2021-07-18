@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 14 09:32:33 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.5.14:
+  * changed debugging output to logging module
+  * Explicitely specifying --fromfile should win over .obsinfo
+  * Add new switch --fromfile
+  * Add zst to recognized suffixes (zstd support)
+
+-------------------------------------------------------------------
 Mon Feb 01 15:00:27 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.5.13:

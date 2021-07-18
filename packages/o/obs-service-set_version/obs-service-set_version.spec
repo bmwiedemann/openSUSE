@@ -1,5 +1,5 @@
 #
-# spec file for package obs-service-set_version
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -23,14 +23,14 @@
 %endif
 %define service set_version
 
-%if 0%{?suse_version} > 1315  || 0%{?fedora_version}  || 0%{?centos_version} >= 800
+%if 0%{?suse_version} > 1315  || 0%{?fedora_version}  || 0%{?centos_version} >= 800 || 0%{?almalinux} >= 8
 %define use_python python3
 %else
 %define use_python python
 %endif
 
 Name:           obs-service-%{service}
-Version:        0.5.13
+Version:        0.5.14
 Release:        0
 Summary:        An OBS source service: Update spec file version
 License:        GPL-2.0-or-later
