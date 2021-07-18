@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jul 18 16:45:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- firejail 0.9.66:
+  * deprecated --audit options, relpaced by jailcheck utility
+  * deprecated follow-symlink-as-user from firejail.config
+  * new firejail.config settings: private-bin, private-etc
+  * new firejail.config settings: private-opt, private-srv
+  * new firejail.config settings: whitelist-disable-topdir
+  * new firejail.config settings: seccomp-filter-add
+  * removed kcmp syscall from seccomp default filter
+  * rename --noautopulse to keep-config-pulse
+  * filtering environment variables
+  * zsh completion
+  * command line: --mkdir, --mkfile
+  * --protocol now accumulates
+  * jailtest utility for testing running sandboxes
+  * faccessat2 syscall support
+  * --private-dev keeps /dev/input
+  * added --noinput to disable /dev/input
+  * add support for subdirs in --private-etc
+  * subdirs support in private-etc
+  * input devices support in private-dev, --no-input
+  * support trailing comments on profile lines
+  * many new profiles
+- split shell completion into standard subpackages
+
+-------------------------------------------------------------------
 Sun Feb  7 23:09:58 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Update to 0.9.64.4:

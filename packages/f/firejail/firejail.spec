@@ -17,7 +17,7 @@
 
 
 Name:           firejail
-Version:        0.9.64.4
+Version:        0.9.66
 Release:        0
 Summary:        Linux namepaces sandbox program
 License:        GPL-2.0-only
@@ -25,11 +25,13 @@ Group:          Productivity/Security
 URL:            https://firejail.wordpress.com
 Source0:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/netblue30/%{name}/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
+# https://firejail.wordpress.com/download-2/
+Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
+Requires(post): permissions
 Requires(pre):  shadow
-PreReq:         permissions
 
 %description
 Firejail is a SUID sandbox program that reduces the risk of security
@@ -40,6 +42,26 @@ many existing applications like Iceweasel/Mozilla Firefox and Chromium.
 Firejail also expands the restricted shell facility found in bash by adding
 Linux namespace support. It supports sandboxing specific users upon login.
 
+%package bash-completion
+Summary:        Firejail Bash completion
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+Optional dependency offering bash completion for firejail
+
+%package zsh-completion
+Summary:        Firejail zsh completion
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+Optional dependency offering zsh completion for firejail
+
 %prep
 %setup -q
 sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjclip.py contrib/fjdisplay.py contrib/fjresize.py contrib/sort.py contrib/fix_private-bin.py contrib/jail_prober.py
@@ -47,7 +69,7 @@ sed -i '1s/^#!\/usr\/bin\/env /#!\/usr\/bin\//' contrib/fj-mkdeb.py contrib/fjcl
 %build
 %configure --docdir=%{_docdir}/%{name} \
 	   --enable-apparmor
-make %{?_smp_mflags} VERBOSE=1
+%make_build
 
 %pre
 getent group firejail >/dev/null || groupadd -r firejail
@@ -55,6 +77,7 @@ exit 0
 
 %install
 %make_install
+rm %{buildroot}%{_docdir}/firejail/COPYING
 %fdupes -s %{buildroot}
 
 %post
@@ -68,7 +91,7 @@ exit 0
 %attr(4750,root,firejail) %verify(not user group mode) %{_bindir}/firejail
 %{_bindir}/firecfg
 %{_bindir}/firemon
-%{_datadir}/bash-completion
+%{_bindir}/jailcheck
 %{_libdir}/%{name}
 %doc %{_docdir}/%{name}
 %{_mandir}/man1/*
@@ -85,5 +108,17 @@ exit 0
 %dir %{_datadir}/vim/vimfiles/syntax
 %{_datadir}/vim/vimfiles/ftdetect/firejail.vim
 %{_datadir}/vim/vimfiles/syntax/firejail.vim
+
+%files bash-completion
+%license COPYING
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/*
+
+%files zsh-completion
+%license COPYING
+%dir %{_datarootdir}/zsh
+%dir %{_datarootdir}/zsh/site-functions/
+%{_datadir}/zsh/site-functions/_firejail
 
 %changelog

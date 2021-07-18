@@ -211,4 +211,12 @@
   * fixed launch firefox for open url in telegram-desktop.profile</comment>
     <requestid>870339</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2e149640fa06eaafc5698727a83a294f</srcmd5>
+    <version>0.9.66</version>
+    <time>1626644705</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906960</requestid>
+  </revision>
 </revisionlist>
