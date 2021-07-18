@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 11 17:21:21 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
+
+- Update to 2.2.2
+  * The MIDI router now handles out-of-range parameters in a smarter manner
+  * Keep pedaling effective when the same note is played more than once
+  * Select soundfont samples by frequency instead of midi note numbers
+  * Fix the sequencer's event ordering for NoteOn vel=0 events
+  * libfluidsynth's import library was broken for MinGW builds
+  * fluidsynth.exe short option `-Q` not working
+  * Precompiled Android binaries didn't work
+  * Fix openMP detection for XCode 12.5
+  * Make `audio.jack.autoconnect` connect all available ports
+  * Prevent MIDI Player from continuously suppressing notes
+  * `fluidsynth.pc` now includes private libraries for static linking
+  * Fix typos in code and documentation
+
+-------------------------------------------------------------------
 Sat May  8 19:58:48 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.2.1
