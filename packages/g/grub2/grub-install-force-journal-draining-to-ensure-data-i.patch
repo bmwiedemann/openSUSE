@@ -29,6 +29,10 @@ desired as reportedly having negative side effect. With this patch
 applied, the boot falilure can no longer be reproduced with above
 procedure.
 
+v2:
+Fix boot failure after kdump due to the content of grub.cfg is not
+completed with pending modificaton in xfs journal (bsc#1186975)
+
 Signed-off-by: Michael Chang <mchang@suse.com>
 ---
  Makefile.util.def                    |  1 +
@@ -196,3 +200,31 @@ Index: grub-2.06/util/grub-install.c
    /*
     * Either there are no platform specific code, or it didn't raise
     * ponr. Raise it here, because usually this is already past point
+Index: grub-2.06/util/grub-mkconfig.in
+===================================================================
+--- grub-2.06.orig/util/grub-mkconfig.in
++++ grub-2.06/util/grub-mkconfig.in
+@@ -328,6 +328,15 @@ for i in "${grub_mkconfig_dir}"/* ; do
+   esac
+ done
+ 
++sync_fs_journal () {
++  if test "x$GRUB_DEVICE" = "x$GRUB_DEVICE_BOOT" &&
++     test "x$GRUB_FS" = "xxfs" -o "x$GRUB_FS" = "xext2" &&
++     test "x${grub_cfg}" != "x" -a "x`make_system_path_relative_to_its_root $grub_cfg`" = "x/boot/grub2/grub.cfg" &&
++     test -x /usr/sbin/fsfreeze; then
++    /usr/sbin/fsfreeze --freeze / && /usr/sbin/fsfreeze --unfreeze /
++  fi
++} >&2
++
+ if test "x${grub_cfg}" != "x" ; then
+   if ! ${grub_script_check} ${grub_cfg}.new; then
+     # TRANSLATORS: %s is replaced by filename
+@@ -341,6 +350,7 @@ and /etc/grub.d/* files or please file a
+     # none of the children aborted with error, install the new grub.cfg
+     cat ${grub_cfg}.new > ${grub_cfg}
+     rm -f ${grub_cfg}.new
++    sync_fs_journal || true
+   fi
+ fi
+ 

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 28 10:14:26 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix error not a btrfs filesystem on s390x (bsc#1187645)
+  * 80_suse_btrfs_snapshot
+
+-------------------------------------------------------------------
+Wed Jun 23 07:41:57 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix error gfxterm isn't found with multiple terminals (bsc#1187565)
+  * grub2-fix-error-terminal-gfxterm-isn-t-found.patch
+
+-------------------------------------------------------------------
+Mon Jun 21 10:45:40 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Fix boot failure after kdump due to the content of grub.cfg is not
+  completed with pending modificaton in xfs journal (bsc#1186975)
+  * grub-install-force-journal-draining-to-ensure-data-i.patch
+- Patch refreshed
+  * grub2-mkconfig-default-entry-correction.patch
+
+-------------------------------------------------------------------
 Thu Jun  3 11:17:49 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Version bump to 2.06

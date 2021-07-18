@@ -1,8 +1,8 @@
-Index: grub-2.06~rc1/util/grub-mkconfig.in
+Index: grub-2.06/util/grub-mkconfig.in
 ===================================================================
---- grub-2.06~rc1.orig/util/grub-mkconfig.in
-+++ grub-2.06~rc1/util/grub-mkconfig.in
-@@ -347,6 +347,11 @@ and /etc/grub.d/* files or please file a
+--- grub-2.06.orig/util/grub-mkconfig.in
++++ grub-2.06/util/grub-mkconfig.in
+@@ -356,6 +356,11 @@ and /etc/grub.d/* files or please file a
      # none of the children aborted with error, install the new grub.cfg
      cat ${grub_cfg}.new > ${grub_cfg}
      rm -f ${grub_cfg}.new
@@ -11,6 +11,6 @@ Index: grub-2.06~rc1/util/grub-mkconfig.in
 +    if test -x /usr/sbin/grub2-check-default; then
 +       /usr/sbin/grub2-check-default >&2
 +    fi
+     sync_fs_journal || true
    fi
  fi
- 
