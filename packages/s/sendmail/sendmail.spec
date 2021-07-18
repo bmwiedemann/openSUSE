@@ -48,7 +48,8 @@ BuildRequires:  pkgconfig(libsystemd)
 %else
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  libicu-devel
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-1_1-devel
+#!BuildIgnore:  libopenssl-devel
 %endif
 BuildRequires:  db-devel
 BuildRequires:  groff

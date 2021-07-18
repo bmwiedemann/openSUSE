@@ -1049,4 +1049,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
   * New ruleset check_other which is called for all unknown SMTP</comment>
     <requestid>903383</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>4a1ba22600457d5a49cf33c5d97541c3</srcmd5>
+    <version>8.17.0.3</version>
+    <time>1626644697</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906268</requestid>
+  </revision>
 </revisionlist>

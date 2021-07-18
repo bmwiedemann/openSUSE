@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  6 14:47:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Require libopenssl-1_1-devel on older SLE-11 
+
+-------------------------------------------------------------------
 Thu Jul  1 10:59:08 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Re-add 'sysvinit(network)' build dependency 
@@ -11,7 +16,7 @@ Tue Jun 29 09:36:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Fri Jun 25 09:44:58 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Update to pre version sendmail 8.17.1 (8.17.0.3)
+- Update to pre version sendmail 8.17.1 (8.17.0.3) (boo#1187688)
   * Deprecation notice: due to compatibility problems with some
     third party code, we plan to finally switch from K&R
     to ANSI C. If you are using sendmail on a system
