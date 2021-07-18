@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 14 09:21:11 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.27.1626072657.0fb7a03:
+  * [ci] enhanced github actions for multiple python versions
+  * Create main.yml
+  * Change date format from short to %Y%m%d.
+
+-------------------------------------------------------------------
 Mon Jun 21 07:01:03 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.26.1624258505.aed4969:
