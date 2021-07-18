@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 17 09:57:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 90903917.patch: Fix build with meson >= 0.58.0rc1
+
+-------------------------------------------------------------------
 Sat May  8 17:56:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- don't own appdata dir - comes from filesystem rpm 
+- don't own appdata dir - comes from filesystem rpm
 
 -------------------------------------------------------------------
 Tue Mar 30 08:59:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>

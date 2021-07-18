@@ -31,6 +31,8 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
+# PATCH-FIX-UPSTREAM 90903917.patch dimstar@opensuse.org -- Fix build when Meson >= 0.58.0rc1
+Patch0:         https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/commit/90903917.patch
 # PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
 Patch3:         gstreamer-plugins-base-gl-deps.patch
 Patch4:         add_wayland_dep_to_tests.patch
