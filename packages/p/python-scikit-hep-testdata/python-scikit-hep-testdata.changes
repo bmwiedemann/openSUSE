@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 16 17:33:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Package the test data. We need it on obs.
+  * Add scikit-hep-testdata-datadir.patch for putting the data into
+    a common subpackage in order to avoid multiple mostly identical
+    300MB python flavored packages.
+- Fix build and runtime requirements
+
+-------------------------------------------------------------------
 Sat Jul  3 00:53:03 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.4:

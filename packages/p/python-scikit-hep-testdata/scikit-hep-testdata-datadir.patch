@@ -1,0 +1,32 @@
+diff -ur scikit-hep-testdata-0.4.4.orig/src/skhep_testdata/local_files.py scikit-hep-testdata-0.4.4/src/skhep_testdata/local_files.py
+--- scikit-hep-testdata-0.4.4.orig/src/skhep_testdata/local_files.py	2021-07-16 20:25:58.664206704 +0200
++++ scikit-hep-testdata-0.4.4/src/skhep_testdata/local_files.py	2021-07-16 20:36:55.863591123 +0200
+@@ -1,6 +1,7 @@
+ # -*- coding: utf-8 -*-
+ from __future__ import absolute_import
+ 
++import os
+ import sys
+ import tempfile
+ import typing
+@@ -24,7 +25,7 @@
+ __all__ = ("data_path", "download_all", "known_files")
+ 
+ 
+-DIR = Path(__file__).parent.resolve()
++DIR = Path(os.environ.get("SKHEP_DATA_DIR", "/usr/share/scikit-hep-testdata/"))
+ 
+ baseurl = "https://raw.githubusercontent.com/scikit-hep/scikit-hep-testdata/main/src/skhep_testdata/data/"
+ zipurl = "https://github.com/scikit-hep/scikit-hep-testdata/zipball/main"
+diff -ur scikit-hep-testdata-0.4.4.orig/tests/test_local_files.py scikit-hep-testdata-0.4.4/tests/test_local_files.py
+--- scikit-hep-testdata-0.4.4.orig/tests/test_local_files.py	2021-07-16 20:25:58.664206704 +0200
++++ scikit-hep-testdata-0.4.4/tests/test_local_files.py	2021-07-16 20:42:21.434980038 +0200
+@@ -5,7 +5,7 @@
+ 
+ import skhep_testdata as skhtd
+ 
+-data_dir = os.path.dirname(skhtd.__file__)
++data_dir = str(skhtd.local_files.DIR)
+ data_dir = os.path.join(data_dir, "data")
+ 
+ 
