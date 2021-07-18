@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 26 14:27:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.9.0
+  * enable a way to run a task when an io_loop is created
+  * adds GatewayClient.auth_scheme configurable
+  * [Notebook port 4835] Add UNIX socket support to notebook server
+- Release 1.8.0
+  * Expose a public property to sort extensions deterministically.
+- Release 1.7.0
+  * Make nbconvert root handler asynchronous
+  * Refactor gateway kernel management to achieve a degree of
+    consistency
+- Release 1.6.2
+  * Use Jupyter Packaging #477
+
+-------------------------------------------------------------------
 Fri Apr 16 09:33:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Release 1.6.1:

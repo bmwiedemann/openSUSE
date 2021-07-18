@@ -16,39 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        1.6.1
+Version:        1.9.0
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-URL:            https://github.com/jupyter/jupyter_server
-Source:         https://github.com/jupyter/jupyter_server/archive/%{version}.tar.gz#/jupyter_server-%{version}.tar.gz
+URL:            https://github.com/jupyter-server/jupyter_server
+Source:         https://github.com/jupyter-server/jupyter_server/releases/download/v%{version}/jupyter_server-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Send2Trash}
-BuildRequires:  %{python_module anyio >= 2.0.2}
+BuildRequires:  %{python_module anyio >= 3.1.0}
 BuildRequires:  %{python_module argon2-cffi}
 BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client >= 6.1.1}
 BuildRequires:  %{python_module jupyter-core >= 4.4.0}
-BuildRequires:  %{python_module nbclient}
+BuildRequires:  %{python_module jupyter_packaging}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
 BuildRequires:  %{python_module prometheus_client}
 BuildRequires:  %{python_module pyzmq >= 17}
+BuildRequires:  %{python_module requests-unixsocket}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module terminado >= 0.8.3}
 BuildRequires:  %{python_module tornado >= 6.1}
 BuildRequires:  %{python_module traitlets >= 4.2.1}
+BuildRequires:  %{python_module websocket-client}
 # We need the full stdlib
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-Send2Trash
-Requires:       python-anyio
+Requires:       python-anyio >= 3.1.0
 Requires:       python-argon2-cffi
 Requires:       python-ipython_genutils
 Requires:       python-jupyter-client >= 6.1.1
@@ -57,9 +59,11 @@ Requires:       python-nbconvert
 Requires:       python-nbformat
 Requires:       python-prometheus_client
 Requires:       python-pyzmq >= 17
+Requires:       python-requests-unixsocket
 Requires:       python-terminado >= 0.8.3
 Requires:       python-tornado >= 6.1
 Requires:       python-traitlets >= 4.2.1
+Requires:       python-websocket-client
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Provides:       python-jupyter_server = %{version}-%{release}
@@ -67,6 +71,7 @@ Obsoletes:      python-jupyter_server < %{version}-%{release}
 # SECTION extras_require test
 BuildRequires:  %{python_module ipykernel}
 BuildRequires:  %{python_module pytest-console-scripts}
+BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
@@ -96,7 +101,6 @@ languages, sharing, and interactive widgets.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-
 %{python_expand # provide u-a entrypoints in the correct flavor version -- installed packages and jupyter-server
 mkdir build/testbin
 for bin in %{_bindir}/*-%{$python_bin_suffix} %{buildroot}%{_bindir}/*-%{$python_bin_suffix} ; do
