@@ -507,4 +507,12 @@ s etc.
 - Drop %check section, tests weren't built, so that was a noop (forwarded request 902778 from favogt)</comment>
     <requestid>902783</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>b3c4d2d3da68e42336e9e1d916a38d35</srcmd5>
+    <version>5.1.1</version>
+    <time>1626644687</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906620</requestid>
+  </revision>
 </revisionlist>

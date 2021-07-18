@@ -50,6 +50,14 @@ BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  tpm2-0-tss-devel
 BuildRequires:  tpm2.0-abrmd-devel
+# requirements for unit test suite (configure --enable-unit)
+BuildRequires:  expect
+BuildRequires:  ibmswtpm2
+BuildRequires:  libcmocka-devel
+BuildRequires:  python38-pyaml
+BuildRequires:  tpm2.0-abrmd
+# for xxd, which is also required by the tests
+BuildRequires:  vim
 Recommends:     tpm2.0-abrmd
 
 %description
@@ -63,7 +71,9 @@ associated interfaces.
 %autosetup -p1 -n tpm2-tools-%{version}
 
 %build
-%configure --disable-static
+# help configure find required executables for testing
+export PATH=$PATH:/usr/sbin:/usr/libexec/ibmtss
+%configure --disable-static --enable-unit
 make %{?_smp_mflags}
 
 %install
@@ -81,5 +91,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/bash-completion
 %dir %{_datadir}/bash-completion/completions
 %{_datadir}/bash-completion/completions/*
+
+# the test suite does not currently work, because it conflicts with our LTO
+# linking (see bsc#1188085).
+#%%check
+#make check
 
 %changelog

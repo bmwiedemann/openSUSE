@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  8 09:07:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- prepare running the test suite via %check, but leave it commented out,
+  because it is broken due to LTO linking.
+
+-------------------------------------------------------------------
 Mon Jun 28 09:09:46 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - update to version 5.1.1:
