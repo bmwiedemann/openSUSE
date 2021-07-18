@@ -45796,4 +45796,18 @@ Provides: weakremover(devilutionx)
 %endif
 %ifarch x86_64
 Provides: weakremover(devilutionx-32bit)
+Provides: weakremover(libASICamera2-1)
+Provides: weakremover(libASICamera2-1-devel)
+Provides: weakremover(libEAFFocuser1)
+Provides: weakremover(libEAFFocuser1-devel)
+Provides: weakremover(libEFWFilter1)
+Provides: weakremover(libEFWFilter1-devel)
+Provides: weakremover(libUSB2ST4Conv1)
+Provides: weakremover(libUSB2ST4Conv1-devel)
+Provides: weakremover(libasi)
+Provides: weakremover(libqhyccd)
+Provides: weakremover(libqhyccd-devel)
+Provides: weakremover(libqhyccd20)
+Provides: weakremover(libtoupcam)
+Provides: weakremover(libtoupcam-devel)
 %endif
