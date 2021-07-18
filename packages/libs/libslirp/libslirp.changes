@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 16 08:51:33 UTC 2021 - novell@tower-net.de
+
+- Update to version 4.6.0:
+  * build-sys: forgot to bump version to 4.6.0
+  * changelog: post-release
+  * Release v4.6.0
+  * udp: check upd_input buffer size
+  * tftp: introduce a header structure
+  * tftp: check tftp_input buffer size
+  * upd6: check udp6_input buffer size
+  * bootp: check bootp_input buffer size
+  * bootp: limit vendor-specific area to input packet memory buffer
+  * Revert "Set macOS deployment target to macOS 10.4"
+
+-------------------------------------------------------------------
 Fri Jan 08 13:15:17 UTC 2021 - rbrown@suse.com
 
 - Update to version 4.4.0:

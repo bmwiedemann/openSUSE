@@ -3,8 +3,8 @@
     <param name="url">https://gitlab.freedesktop.org/slirp/libslirp.git</param>
     <param name="scm">git</param>
     <param name="filename">libslirp</param>
-    <param name="versionformat">4.4.0</param>
-    <param name="revision">v4.4.0</param>
+    <param name="versionformat">4.6.0</param>
+    <param name="revision">v4.6.0</param>
     <param name="package-meta">yes</param>
     <param name="changesgenerate">enable</param>
   </service>
