@@ -268,4 +268,15 @@
     <comment>- Skipp two tests because of gh#andymccurdy/redis-py#1459.</comment>
     <requestid>878169</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>141164c24a1fb99cdaa1948938758f8f</srcmd5>
+    <version>3.5.3</version>
+    <time>1626644689</time>
+    <user>dimstar_suse</user>
+    <comment>- Add account-defaults-redis.patch which fixes failing tests by
+  taking into consideration redis defaults, not overwriting them
+  (gh#andymccurdy/redis-py#1499).
+</comment>
+    <requestid>906638</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 16 09:15:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add account-defaults-redis.patch which fixes failing tests by
+  taking into consideration redis defaults, not overwriting them
+  (gh#andymccurdy/redis-py#1499).
+
+-------------------------------------------------------------------
 Wed Mar 10 12:41:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skipp two tests because of gh#andymccurdy/redis-py#1459.

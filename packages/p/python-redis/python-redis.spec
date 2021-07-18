@@ -25,6 +25,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/andymccurdy/redis-py
 Source:         https://files.pythonhosted.org/packages/source/r/redis/redis-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM account-defaults-redis.patch gh#andymccurdy/redis-py#1499 mcepl@suse.com
+# changing unit tests to account for defaults in redis
+Patch0:         account-defaults-redis.patch
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest >= 2.7.0}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +44,7 @@ BuildArch:      noarch
 The Python interface to the Redis key-value store.
 
 %prep
-%setup -q -n redis-%{version}
+%autosetup -p1 -n redis-%{version}
 
 %build
 %python_build
@@ -52,8 +55,7 @@ The Python interface to the Redis key-value store.
 
 %check
 %{_sbindir}/redis-server --port 6379 &
-# Skipped tests because of gh#andymccurdy/redis-py#1459
-%pytest -k 'not (test_acl_getuser_setuser or test_acl_list)'
+%pytest
 
 killall redis-server
 
