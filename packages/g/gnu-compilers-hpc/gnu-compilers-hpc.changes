@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 15 10:22:42 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Improve setting of standard binaries (c, c++) for non-base
+  versions.
+- Improve environment settings: only set CC, CXX etc when
+  compilers are installed. Thus, if only gnu<X>-compiler-hpc
+  is installed, they will not be set.
+
+-------------------------------------------------------------------
 Wed Jun 23 06:52:49 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add build support for gcc11 to HPC build (jsc#SLE-18780,

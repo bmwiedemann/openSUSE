@@ -108,4 +108,16 @@
   jsc#SLE-18781, jsc#SLE-18782). (forwarded request 903935 from eeich)</comment>
     <requestid>903936</requestid>
   </revision>
+  <revision rev="12" vrev="6">
+    <srcmd5>4d69932255b92f80f3ab30ddcb62c10f</srcmd5>
+    <version>1.4</version>
+    <time>1626644686</time>
+    <user>dimstar_suse</user>
+    <comment>- Improve setting of standard binaries (c, c++) for non-base
+  versions.
+- Improve environment settings: only set CC, CXX etc when
+  compilers are installed. Thus, if only gnu&amp;lt;X&amp;gt;-compiler-hpc
+  is installed, they will not be set. (forwarded request 906500 from eeich)</comment>
+    <requestid>906501</requestid>
+  </revision>
 </revisionlist>

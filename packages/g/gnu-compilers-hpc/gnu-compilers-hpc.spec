@@ -183,11 +183,13 @@ set     version                     %{hpc_cf_dep_version}
 prepend-path    MODULEPATH          %{hpc_modulepath}
 prepend-path    PATH    %{hpc_cf_install_path}/bin
 %if 0%{?c_f_ver:1} > 0
+if {[file isfile  %{_bindir}/gcc%{hpc_gnu_bin_version}]} {
 prepend-path    MANPATH %{hpc_cf_install_path}/man
 setenv		CC      gcc%{hpc_gnu_bin_version}
 setenv		CXX     g++%{hpc_gnu_bin_version}
 setenv		FC      gfortran%{hpc_gnu_bin_version}
 setenv		F77     gfortran%{hpc_gnu_bin_version}
+}
 %else
 # nothing to do since gcc is in the default path
 %endif
@@ -233,15 +235,19 @@ do
             ;;
     esac
 done
+for i in cc,gcc c++,g++; do
+    test -e %{hpc_cf_install_path}/bin/${i##*,}%{hpc_gnu_bin_version} \
+	&& ln -s %{hpc_cf_install_path}/bin/${i%%%%,*} ${i##*,}%{hpc_gnu_bin_version}
+fi
 %else
 # for the base compiler version link to the 'default' binary:
 localbindir=%_bindir/
-%endif
 for i in cc cpp c++
 do
     test -e %{hpc_cf_install_path}/bin/${i} || ln -sf ${localbindir}${i}%{hpc_gnu_bin_version} %{hpc_cf_install_path}/bin/${i}
 done
 test -e %{hpc_cf_install_path}/bin/fortran || ln -sf ${localbindir}gfortran%{hpc_gnu_bin_version} %{hpc_cf_install_path}/bin/fc
+%endif
 
 %files
 %defattr(-,root,root,-)
