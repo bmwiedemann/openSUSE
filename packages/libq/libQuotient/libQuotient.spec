@@ -17,26 +17,25 @@
 
 
 %define soversion 0_6
+%define sonum 0.6
 %bcond_with e2ee
 Name:           libQuotient
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Library for Qt Matrix Clients
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/quotient-im/libQuotient
-Source0:        https://github.com/quotient-im/%{name}/archive/%{version}.tar.gz
+Source0:        https://github.com/quotient-im/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  unzip
-BuildRequires:  pkgconfig(Qt5Core) >= 5.6
+BuildRequires:  pkgconfig(Qt5Core) >= 5.9
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 %if %{with e2ee}
 BuildRequires:  cmake(Olm)
-BuildRequires:  pkgconfig(QtOlm)
 %endif
 
 %description
@@ -61,19 +60,23 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%autosetup -p1
 
 %build
+%cmake \
+    -DQuotient_INSTALL_TESTS=OFF \
 %if %{with e2ee}
-%cmake -DQuotient_ENABLE_E2EE=ON
+    -DQuotient_ENABLE_E2EE=ON
 %else
-%cmake -DQuotient_ENABLE_E2EE=OFF
+    -DQuotient_ENABLE_E2EE=OFF
 %endif
 
 %cmake_build
 
 %install
 %cmake_install
+# Not useful
+rm -r %{buildroot}%{_datadir}/ndk-modules/
 
 %post  -n %{name}%{soversion} -p /sbin/ldconfig
 %postun -n %{name}%{soversion} -p /sbin/ldconfig
@@ -81,7 +84,8 @@ developing applications that use %{name}.
 %files -n %{name}%{soversion}
 %doc README.md
 %license COPYING
-%{_libdir}/libQuotient.so.*
+%{_libdir}/libQuotient.so.%{version}
+%{_libdir}/libQuotient.so.%{sonum}
 
 %files devel
 %doc README.md
@@ -89,26 +93,6 @@ developing applications that use %{name}.
 %{_libdir}/pkgconfig/Quotient.pc
 %{_libdir}/libQuotient.so
 %{_libdir}/cmake/Quotient/
-%dir %{_includedir}/Quotient
-%dir %{_includedir}/Quotient/csapi
-%dir %{_includedir}/Quotient/csapi/definitions
-%dir %{_includedir}/Quotient/csapi/definitions/wellknown
-%dir %{_includedir}/Quotient/application-service
-%dir %{_includedir}/Quotient/application-service/definitions
-%dir %{_includedir}/Quotient/identity
-%dir %{_includedir}/Quotient/identity/definitions
-%dir %{_includedir}/Quotient/jobs
-%dir %{_includedir}/Quotient/events
-%dir %{_datadir}/ndk-modules
-%{_includedir}/Quotient/*.h
-%{_includedir}/Quotient/application-service/definitions/*.h
-%{_includedir}/Quotient/csapi/*.h
-%{_includedir}/Quotient/csapi/definitions/*h
-%{_includedir}/Quotient/csapi/definitions/wellknown/*h
-%{_includedir}/Quotient/events/*.h
-%{_includedir}/Quotient/identity/definitions/*.h
-%{_includedir}/Quotient/jobs/*.h
-%{_bindir}/quotest
-%{_datadir}/ndk-modules/Android.mk
+%{_includedir}/Quotient/
 
 %changelog
