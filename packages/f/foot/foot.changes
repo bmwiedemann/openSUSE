@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 18 16:56:41 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 1.8.2:
+  * New foot.ini options:
+    * locked-title option to disable dynamic changes to the window title.
+    * tweak.overflowing-glyps option to fix rendering issues with glyphs of
+      any width that appear cut-off. This supersedes
+      the tweak.allow-overflowing-double-width-glyphs and
+      tweak.pua-double-width options, which have been removed.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.8.2 for more details.
+
+-------------------------------------------------------------------
 Thu Jul  1 21:28:28 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Delete 01-fix-xkbcommon-missing-dep.7edda924.patch since it is in upstream

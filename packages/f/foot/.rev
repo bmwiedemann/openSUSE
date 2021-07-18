@@ -23,4 +23,19 @@
     <comment>- Update to 1.8.1</comment>
     <requestid>903588</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>908d11308cd264a16bce7fd8d6202df9</srcmd5>
+    <version>1.8.2</version>
+    <time>1626644707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * New foot.ini options:
+    * locked-title option to disable dynamic changes to the window title.
+    * tweak.overflowing-glyps option to fix rendering issues with glyphs of
+      any width that appear cut-off. This supersedes
+      the tweak.allow-overflowing-double-width-glyphs and
+      tweak.pua-double-width options, which have been removed.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.8.2 for more details.</comment>
+    <requestid>906959</requestid>
+  </revision>
 </revisionlist>
