@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 13 13:36:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Replace python-python-language-server with python-lsp-server
+  * spyder-pr15657-python-lsp-server.patch
+  * gh#spyder-ide/spyder#15657
+- Support pytest-qt >= 4
+  * spyder-pr16011-pytest-qt-4.patch
+  * gh#spyder-ide/spyder#16011
+
+-------------------------------------------------------------------
 Thu Jun 24 10:54:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.0.5

@@ -26,6 +26,10 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
+# PATCH-FIX-UPSTREAM spyder-pr15657-python-lsp-server.patch -- gh#spyder-ide/spyder#15657
+Patch0:         spyder-pr15657-python-lsp-server.patch
+# PATCH-FIX-UPSTREAM spyder-pr16011-pytest-qt-4.patch -- gh#spyder-ide/spyder#16011
+Patch1:         spyder-pr16011-pytest-qt-4.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools >= 39.0.0
@@ -60,9 +64,9 @@ Requires:       python3-pycodestyle >= 2.6.0
 Requires:       python3-pydocstyle >= 2.0.0
 Requires:       python3-pyflakes >= 2.2.0
 Requires:       python3-pylint >= 2.5.0
-Requires:       python3-pyls-black >= 0.4.6
-Requires:       python3-pyls-spyder >= 0.3.2
-Requires:       python3-python-language-server >= 0.36.2
+Requires:       python3-pyls-spyder >= 0.4.0
+Requires:       python3-python-lsp-black >= 1.0.0
+Requires:       python3-python-lsp-server >= 1.0.0
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qstylizer >= 0.1.10
@@ -143,15 +147,15 @@ BuildRequires:  python3-pycodestyle >= 2.6.0
 BuildRequires:  python3-pydocstyle >= 2.0.0
 BuildRequires:  python3-pyflakes >= 2.2.0
 BuildRequires:  python3-pylint >= 2.5.0
-BuildRequires:  python3-pyls-black >= 0.4.6
-BuildRequires:  python3-pyls-spyder >= 0.3.0
+BuildRequires:  python3-pyls-spyder >= 0.4.0
 BuildRequires:  python3-pytest >= 5.0
 BuildRequires:  python3-pytest-lazy-fixture
 BuildRequires:  python3-pytest-mock
 BuildRequires:  python3-pytest-order
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
-BuildRequires:  python3-python-language-server >= 0.36.2
+BuildRequires:  python3-python-lsp-black >= 1.0.0
+BuildRequires:  python3-python-lsp-server >= 1.0.0
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qstylizer >= 0.1.10

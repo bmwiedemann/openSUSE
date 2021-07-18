@@ -337,4 +337,12 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>901722</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>3d32a681a1792a07d157b8c8fa35c30f</srcmd5>
+    <version>5.0.5</version>
+    <time>1626644703</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906167</requestid>
+  </revision>
 </revisionlist>

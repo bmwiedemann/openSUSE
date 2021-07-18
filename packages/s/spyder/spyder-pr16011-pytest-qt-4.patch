@@ -1,0 +1,139 @@
+Index: spyder-5.0.5/binder/environment.yml
+===================================================================
+--- spyder-5.0.5.orig/binder/environment.yml
++++ spyder-5.0.5/binder/environment.yml
+@@ -66,7 +66,7 @@ dependencies:
+ - pytest-lazy-fixture
+ - pytest-mock
+ - pytest-order
+-- pytest-qt <4.0
++- pytest-qt
+ - pytest-xvfb
+ - pyyaml
+ - scipy
+Index: spyder-5.0.5/requirements/tests.txt
+===================================================================
+--- spyder-5.0.5.orig/requirements/tests.txt
++++ spyder-5.0.5/requirements/tests.txt
+@@ -13,7 +13,7 @@ pytest-cov
+ pytest-lazy-fixture
+ pytest-mock
+ pytest-order
+-pytest-qt <4.0
++pytest-qt
+ pyyaml
+ scipy
+ sympy
+Index: spyder-5.0.5/spyder/plugins/findinfiles/tests/test_plugin.py
+===================================================================
+--- spyder-5.0.5.orig/spyder/plugins/findinfiles/tests/test_plugin.py
++++ spyder-5.0.5/spyder/plugins/findinfiles/tests/test_plugin.py
+@@ -32,7 +32,7 @@ def findinfiles(qtbot):
+ 
+     # qtbot wants to close the widget
+     findinfiles_plugin.close = lambda: True
+-    qtbot.addWidget(findinfiles_plugin)
++    qtbot.addWidget(findinfiles_plugin.get_widget())
+ 
+     return findinfiles_plugin
+ 
+Index: spyder-5.0.5/spyder/plugins/history/tests/test_plugin.py
+===================================================================
+--- spyder-5.0.5.orig/spyder/plugins/history/tests/test_plugin.py
++++ spyder-5.0.5/spyder/plugins/history/tests/test_plugin.py
+@@ -39,7 +39,7 @@ def historylog(qtbot, monkeypatch):
+     """
+     historylog = history.HistoryLog(None, configuration=CONF)
+     historylog.close = lambda: True
+-    qtbot.addWidget(historylog)
++    qtbot.addWidget(historylog.get_widget())
+     historylog.get_widget().show()
+     yield historylog
+     historylog.on_close()
+Index: spyder-5.0.5/spyder/plugins/workingdirectory/tests/test_workingdirectory.py
+===================================================================
+--- spyder-5.0.5.orig/spyder/plugins/workingdirectory/tests/test_workingdirectory.py
++++ spyder-5.0.5/spyder/plugins/workingdirectory/tests/test_workingdirectory.py
+@@ -19,7 +19,7 @@ NEW_DIR = 'new_workingdir'
+ 
+ 
+ @pytest.fixture
+-def setup_workingdirectory(qtbot, request):
++def setup_workingdirectory(request):
+     """Setup working directory plugin."""
+     CONF.reset_to_defaults()
+     use_startup_wdir = request.node.get_closest_marker('use_startup_wdir')
+@@ -36,14 +36,13 @@ def setup_workingdirectory(qtbot, reques
+ 
+     workingdirectory = WorkingDirectory(None, configuration=CONF)
+     workingdirectory.close = lambda: True
+-    qtbot.addWidget(workingdirectory)
+ 
+-    return workingdirectory, qtbot
++    return workingdirectory
+ 
+ 
+ def test_basic_initialization(setup_workingdirectory):
+     """Test Working Directory plugin initialization."""
+-    workingdirectory, qtbot = setup_workingdirectory
++    workingdirectory = setup_workingdirectory
+ 
+     # Assert that workingdirectory exists
+     assert workingdirectory is not None
+@@ -51,7 +50,7 @@ def test_basic_initialization(setup_work
+ 
+ def test_get_workingdir(setup_workingdirectory):
+     """Test the method that defines the working directory at home."""
+-    workingdirectory, qtbot = setup_workingdirectory
++    workingdirectory = setup_workingdirectory
+     # Start the working directory on the home directory
+     act_wdir = workingdirectory.get_workdir()
+     assert act_wdir == get_home_dir()
+@@ -60,7 +59,7 @@ def test_get_workingdir(setup_workingdir
+ @pytest.mark.use_startup_wdir
+ def test_get_workingdir_startup(setup_workingdirectory):
+     """Test the method that defines the working directory at home."""
+-    workingdirectory, qtbot = setup_workingdirectory
++    workingdirectory = setup_workingdirectory
+     # Start the working directory on the home directory
+     act_wdir = workingdirectory.get_workdir()
+     folders = osp.split(act_wdir)
+Index: spyder-5.0.5/setup.py
+===================================================================
+--- spyder-5.0.5.orig/setup.py
++++ spyder-5.0.5/setup.py
+@@ -258,7 +258,7 @@ extras_require = {
+         'pytest-lazy-fixture',
+         'pytest-mock',
+         'pytest-order',
+-        'pytest-qt<4.0',
++        'pytest-qt',
+         'pyyaml',
+         'scipy',
+         'sympy',
+Index: spyder-5.0.5/spyder/plugins/completion/providers/fallback/tests/conftest.py
+===================================================================
+--- spyder-5.0.5.orig/spyder/plugins/completion/providers/fallback/tests/conftest.py
++++ spyder-5.0.5/spyder/plugins/completion/providers/fallback/tests/conftest.py
+@@ -25,8 +25,6 @@ class CompletionManagerMock(QObject):
+ def fallback_completions(qtbot_module, request):
+     fallback = FallbackProvider(None, {})
+     completions = CompletionManagerMock(None)
+-    qtbot_module.addWidget(fallback)
+-    qtbot_module.addWidget(completions)
+ 
+     with qtbot_module.waitSignal(fallback.sig_provider_ready, timeout=30000):
+         fallback.start()
+Index: spyder-5.0.5/spyder/plugins/completion/providers/snippets/tests/conftest.py
+===================================================================
+--- spyder-5.0.5.orig/spyder/plugins/completion/providers/snippets/tests/conftest.py
++++ spyder-5.0.5/spyder/plugins/completion/providers/snippets/tests/conftest.py
+@@ -31,8 +31,6 @@ def snippets_completions(qtbot_module, r
+ 
+     snippets = SnippetsProvider(None, dict(SnippetsProvider.CONF_DEFAULTS))
+     completions = CompletionManagerMock(None)
+-    qtbot_module.addWidget(snippets)
+-    qtbot_module.addWidget(completions)
+ 
+     with qtbot_module.waitSignal(snippets.sig_provider_ready, timeout=30000):
+         snippets.start()
