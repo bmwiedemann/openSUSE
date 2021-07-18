@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        1550+20210708.6401347
+Version:        1550+20210715.b7d5b97
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -44,6 +44,9 @@ PreReq:         %fillup_prereq
 Predefined polkit profiles for different usage scenarios like desktop and
 server. These profiles define the kind of authentication required for various
 polkit actions used across applications.
+
+
+
 
 
 
