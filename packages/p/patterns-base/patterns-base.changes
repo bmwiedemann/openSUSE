@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 13 15:22:30 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Suggest libjack-devel so it's preferred to
+  pipewire-libjack-0_3-devel since both provide pkgconfig(jack).
+
+-------------------------------------------------------------------
 Fri Jun 25 14:16:47 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Favor libz1 when in doubt and asked for libz.so.1.

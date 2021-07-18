@@ -659,4 +659,12 @@
     <user>dimstar_suse</user>
     <comment>- Favor libz1 when in doubt and asked for libz.so.1.</comment>
   </revision>
+  <revision rev="76" vrev="22">
+    <srcmd5>1baec828dbf60e1198af3a55e92ef79f</srcmd5>
+    <version>20200505</version>
+    <time>1626644694</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906200</requestid>
+  </revision>
 </revisionlist>

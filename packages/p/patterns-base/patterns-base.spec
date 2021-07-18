@@ -178,6 +178,8 @@ Suggests:       postfix
 Suggests:       kernel-default
 # we have two providers for 'pulseaudio' - prefer the real one for the time being
 Suggests:       pulseaudio
+# we have two providers for 'pkgconfig(jack)' - prefer the real one to the one from pipewire
+Suggests:       libjack-devel
 # There are multiple providers for /usr/bin/openssl and openssl(cli); defaulting to openssl
 Suggests:       openssl
 # In line with above: the default openssl version is 1.1 for now; at the moment, the meta package does not provide all symbols needed
