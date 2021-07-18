@@ -142,8 +142,8 @@
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210519'
-  boo#1183082: '20210715'
-  boo#1183454: '20210715'
+  boo#1183082: '20210716'
+  boo#1183454: '20210716'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -168,19 +168,19 @@
   boo#1186775: '20210615'
   boo#1186890: '20210603'
   boo#1187019: '20210706'
-  boo#1187164: '20210715'
+  boo#1187164: '20210716'
   boo#1187204: '20210611'
   boo#1187371: '20210616'
   boo#1187423: '20210618'
   boo#1187424: '20210618'
   boo#1187971: '20210706'
   boo#1187987: '20210703'
-  boo#1188068: '20210715'
+  boo#1188068: '20210716'
   boo#1188089: '20210711'
-  boo#1188105: '20210715'
-  boo#1188194: '20210715'
+  boo#1188105: '20210716'
+  boo#1188194: '20210716'
   boo#1188295: '20210715'
-  boo#1188296: '20210715'
+  boo#1188296: '20210716'
   bsc#1158994: '20200323'
   bsc#1159185: '20200103'
   bsc#1170555: '20200427'
@@ -193,7 +193,7 @@
   bsc#1179417: '20201129'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
-  gh#OSInside/kiwi#1867: '20210715'
+  gh#OSInside/kiwi#1867: '20210716'
   gh#containers/podman#10685: '20210628'
   gh#os-autoinst/os-autoinst-distri-opensuse#10856: '20200825'
   gh#os-autoinst/os-autoinst-distri-opensuse#10982: '20200910'
@@ -326,7 +326,7 @@
   poo#78538: '20210410'
   poo#80082: '20201201'
   poo#80102: '20201127'
-  poo#80628: '20210715'
+  poo#80628: '20210716'
   poo#80966: '20210408'
   poo#81036: '20201217'
   poo#81256: '20210118'
@@ -369,7 +369,7 @@
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
-  poo#91830: '20210715'
+  poo#91830: '20210716'
   poo#92004: '20210711'
   poo#92080: '20210520'
   poo#92401: '20210527'
@@ -394,12 +394,12 @@
   poo#94009: '20210715'
   poo#94108: '20210615'
   poo#94225: '20210618'
-  poo#94973: '20210715'
-  poo#95120: '20210715'
+  poo#94973: '20210716'
+  poo#95120: '20210716'
   poo#95326: '20210713'
   poo#95329: '20210715'
   poo#95467: '20210713'
-  poo#95548: '20210715'
+  poo#95548: '20210716'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -443,7 +443,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210716</value>
+    <value>20210717</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -769,10 +769,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210716'
 published: '20210715'
 publishing: '20210715'
-testing: '20210715'
+testing: '20210716'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
