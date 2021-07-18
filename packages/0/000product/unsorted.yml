@@ -1856,7 +1856,7 @@ unsorted:
   - cfitsio-devel-doc 
   - cfityk 
   - cflow 
-  - cfssl 
+  - cfssl: [i586] 
   - cgal-demo-examples-devel 
   - cgal-devel 
   - cgal-doc 
@@ -5525,6 +5525,7 @@ unsorted:
   - glade-catalog-vte 
   - glade-lang 
   - glade-sharp2 
+  - glances-common 
   - glassfish-annotation-api 
   - glassfish-annotation-api-javadoc 
   - glassfish-dtd-parser 
@@ -14025,6 +14026,7 @@ unsorted:
   - libtss2-tcti-device0-32bit: [x86_64] 
   - libtss2-tcti-mssim0 
   - libtss2-tcti-mssim0-32bit: [x86_64] 
+  - libtss2-tcti-pcap0 
   - libtss2-tcti-swtpm0 
   - libtss2-tcti-swtpm0-32bit: [x86_64] 
   - libtss2-tcti-tabrmd0: [i586] 
@@ -15053,6 +15055,7 @@ unsorted:
   - lttng-ust-doc 
   - lua-Hamliblua 
   - lua-genders 
+  - lua-language-server 
   - lua-libguestfs: [x86_64] 
   - lua-libprelude 
   - lua-lmod 
