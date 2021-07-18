@@ -30,4 +30,17 @@
     while another was resizing the cache.</comment>
     <requestid>904655</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>47d75a59e5b6847bda5f59fc4af8300f</srcmd5>
+    <version>2.4.3</version>
+    <time>1626644707</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.3: 
+  * Fixed bitmap/aliased font glyphs being mirrored on
+    big-endian architectures.
+  * Fixed color font glyphs having wrong colors on big-endian architectures.
+  * Fixed crash when destroying a font that failed to load
+    (typically happens when there are no fonts available at all).</comment>
+    <requestid>906958</requestid>
+  </revision>
 </revisionlist>

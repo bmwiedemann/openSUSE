@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 18 16:55:32 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.3: 
+  * Fixed bitmap/aliased font glyphs being mirrored on
+    big-endian architectures.
+  * Fixed color font glyphs having wrong colors on big-endian architectures.
+  * Fixed crash when destroying a font that failed to load
+    (typically happens when there are no fonts available at all).
+
+-------------------------------------------------------------------
 Thu Jul  8 02:17:09 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.2:
