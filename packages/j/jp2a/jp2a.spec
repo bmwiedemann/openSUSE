@@ -1,7 +1,7 @@
 #
 # spec file for package jp2a
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,38 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{!?license: %global license %doc}
 Name:           jp2a
-Version:        1.0.6
+Version:        1.1.0
 Release:        0
 Summary:        Converts JPEG images to ASCII
 License:        GPL-2.0-only
 Group:          Amusements/Toys/Graphics
-Url:            https://github.com/cslarsen/jp2a
-Source:         https://github.com/cslarsen/jp2a/archive/a72958075f3fb414a5a55d0a02da6789cb972f7b.zip#/%{name}-%{version}.zip
-#Source:         https://github.com/cslarsen/jp2a/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+URL:            https://github.com/Talinx/jp2a
+Source:         https://github.com/Talinx/jp2a/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg8-devel
+BuildRequires:  libpng-devel
 BuildRequires:  unzip
 
 %description
 jp2a is a JPEG to ASCII converter.
 
 %prep
-%setup -q -n %{name}-a72958075f3fb414a5a55d0a02da6789cb972f7b
+%setup -q
 
 %build
 autoreconf -vi
 %configure --enable-curl
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
+mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
+mv %{buildroot}%{_sysconfdir}/bash_completion.d/jp2a %{buildroot}%{_datadir}/bash-completion/completions/
 
 %check
 pushd tests
@@ -55,5 +58,6 @@ popd
 %license COPYING
 %{_bindir}/jp2a
 %{_mandir}/man1/jp2a.1%{?ext_man}
+%{_datadir}/bash-completion/completions/jp2a
 
 %changelog
