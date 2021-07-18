@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 16 08:00:34 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.4.7: 
+  * CVE-2021-22235: Fix DNP dissector crash (boo#1188375, wnpa-sec-2021-06)
+  * Fix TCP dissector - Erroneous DSACK reporting
+  * Fix No wlan_radio.duration calculated for PHY type: 802.11ac (VHT)
+  * Fix NAN Dissector has wrong minimum length for availability attribute
+
+-------------------------------------------------------------------
 Thu Jun  3 08:17:22 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Wireshark 3.4.6:
