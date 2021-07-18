@@ -1,5 +1,17 @@
 -------------------------------------------------------------------
-Tue Jun 8 03:00:00 UTC 2021 - heming.zhao@suse.com
+Tue Jul 13 11:35:00 UTC 2021 - heming.zhao@suse.com
+
+- lvm2: double free or corruption with invalid LVM_SYSTEM_DIR breaks guestfs-tools (bsc#1188141)
+  + bug-1188141_toolcontext-fix-double-free-core-dumped-issue.patch
+
+- replace exist patch with bug fixed patches
+  - (remove) fate-31841_fsadm-add-support-for-btrfs.patch
+  + (add) fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
+  + (add) fate-31841-02_man-add-support-for-btrfs.patch
+  + (add) fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
+
+-------------------------------------------------------------------
+Tue Jun  8 03:00:00 UTC 2021 - heming.zhao@suse.com
 
 - update lvm2 from LVM2.03.10 to LVM2.2.03.12 (bsc#1187010)
 

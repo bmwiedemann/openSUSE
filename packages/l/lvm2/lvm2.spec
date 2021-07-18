@@ -103,16 +103,19 @@ Patch0038:      0038-backup-automatically-store-data-on-vg_unlock.patch
 Patch0039:      0039-archive-avoid-abuse-of-internal-flag.patch
 Patch0040:      0040-pvck-add-lock_global-before-clean_hint_file.patch
 Patch0041:      0041-lvmdevices-add-deviceidtype-option.patch
+Patch0042:      bug-1188141_toolcontext-fix-double-free-core-dumped-issue.patch
 
 # SUSE patches: 1000+ for LVM
 # Never upstream
 Patch1001:      cmirrord_remove_date_time_from_compilation.patch
 Patch1002:      fate-309425_display-dm-name-for-lv-name.patch
-Patch1003:      fate-31841_fsadm-add-support-for-btrfs.patch
-Patch1004:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
-Patch1005:      bug-998893_make_pvscan_service_after_multipathd.patch
-Patch1006:      bug-1179691_config-set-external_device_info_source-none.patch
-Patch1007:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+Patch1003:      bug-935623_dmeventd-fix-dso-name-wrong-compare.patch
+Patch1004:      bug-998893_make_pvscan_service_after_multipathd.patch
+Patch1005:      bug-1179691_config-set-external_device_info_source-none.patch
+Patch1006:      bug-1184687_Add-nolvm-for-kernel-cmdline.patch
+Patch1007:      fate-31841-01_fsadm-add-support-to-resize-check-btrfs-filesystem.patch
+Patch1008:      fate-31841-02_man-add-support-for-btrfs.patch
+Patch1009:      fate-31841-03_tests-new-test-suite-of-fsadm-for-btrfs.patch
 # SUSE patches 2000+ for device mapper, udev rules
 Patch2001:      bug-1012973_simplify-special-case-for-md-in-69-dm-lvm-metadata.patch
 # SUSE patches 3000+ for test code
@@ -203,6 +206,7 @@ Volume Manager.
 %patch0039 -p1
 %patch0040 -p1
 %patch0041 -p1
+%patch0042 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1
@@ -210,6 +214,8 @@ Volume Manager.
 %patch1005 -p1
 %patch1006 -p1
 %patch1007 -p1
+%patch1008 -p1
+%patch1009 -p1
 %patch2001 -p1
 %patch3001 -p1
 
