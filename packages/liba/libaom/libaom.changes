@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  2 18:39:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.1.1
+  * Fix vmaf model initialization error when not set to tune=vmaf
+  * Fix consistent crash on near-static screen content, keyframe
+    related
+  * Fix tune=butteraugli mode
+- Disable NEON on arm where not available.
+
+-------------------------------------------------------------------
 Mon May 10 14:00:23 UTC 2021 - daniel.molkentin@suse.com
 
 - Update to version 3.1.0 (bsc#1185843):

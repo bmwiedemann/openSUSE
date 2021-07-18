@@ -20,7 +20,7 @@
 %define __builder ninja
 %define __builddir _build
 Name:           libaom
-Version:        3.1.0
+Version:        3.1.1
 Release:        0
 Summary:        AV1 codec library
 License:        BSD-2-Clause
@@ -30,7 +30,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
 BuildRequires:  c++_compiler
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.6
 BuildRequires:  doxygen
 BuildRequires:  graphviz
 BuildRequires:  ninja
@@ -90,6 +90,9 @@ the AOMedia Video 1 (AV1) video coding format.
 %endif
 %ifarch %{arm}
 	-DAOM_TARGET_CPU=arm \
+%ifarch armv3l armv4b armv4l armv4tl armv5tl armv5tel armv5tejl armv6l armv6hl armv7l armv7hl armv7hnl
+	-DENABLE_NEON=OFF \
+%endif
 %endif
 %ifarch aarch64
 	-DAOM_TARGET_CPU=arm64 \
