@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 14 08:32:33 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.0:
+  * Tester API: add API to set maximum number of failed tests.
+  * Few bugfixes
+
+-------------------------------------------------------------------
 Tue Jun 22 11:59:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.5.20

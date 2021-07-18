@@ -200,4 +200,15 @@
 </comment>
     <requestid>901323</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>efb110fd139ccd6f3a2e5bb113e28638</srcmd5>
+    <version>5.0.0</version>
+    <time>1626644696</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0:
+  * Tester API: add API to set maximum number of failed tests.
+  * Few bugfixes
+</comment>
+    <requestid>906257</requestid>
+  </revision>
 </revisionlist>
