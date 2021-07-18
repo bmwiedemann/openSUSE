@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 06 21:22:54 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.6.2:
+  * Fix the url being set by WithURL on the getters
+  * Adding test for user/pass without repo on Helm install
+
+-------------------------------------------------------------------
 Fri Jun 18 06:40:44 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 3.6.1:

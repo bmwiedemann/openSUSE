@@ -231,4 +231,12 @@ See changelog in:
     <comment></comment>
     <requestid>900707</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0a2b6d4d5b6d80bb8046178d083bb1cd</srcmd5>
+    <version>3.6.2</version>
+    <time>1626644693</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>906191</requestid>
+  </revision>
 </revisionlist>

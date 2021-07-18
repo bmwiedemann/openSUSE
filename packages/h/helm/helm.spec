@@ -17,11 +17,11 @@
 
 
 %define goipath helm.sh/helm/v3
-%define git_commit c4e74854886b2efe3321e185578e6db9be0a6e29
+%define git_commit ee407bdf364942bcb8e8c665f82e15aa28009b71
 %define git_dirty clean
 
 Name:           helm
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
