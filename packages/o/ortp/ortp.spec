@@ -20,7 +20,7 @@
 %define soname  libortp
 %define sover   15
 Name:           ortp
-Version:        4.5.20
+Version:        5.0.0
 Release:        0
 Summary:        Real-time Transport Protocol Stack
 License:        GPL-2.0-or-later
@@ -72,7 +72,7 @@ develop programs using the oRTP library.
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
 # manually keeping the version here because upstream doesn't (usually) update the patch version
-mv -T %{buildroot}%{_datadir}/doc/%{name}-4.5.0/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-5.0.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 mv %{buildroot}%{_datadir}/doc/%{name}-./LICENSE.txt %{buildroot}%{_docdir}/%{name}/

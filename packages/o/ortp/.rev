@@ -230,4 +230,14 @@
 </comment>
     <requestid>901325</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>6814b6ea112d9a01227f23e9f5df6966</srcmd5>
+    <version>5.0.0</version>
+    <time>1626644697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0:
+  * small memory leak around TMMBR receiving.
+</comment>
+    <requestid>906259</requestid>
+  </revision>
 </revisionlist>
