@@ -1,0 +1,20 @@
+#!/bin/sh
+pkgs=$(cd in ; echo *)
+for p in $pkgs ; do
+  f=$(echo $p |cut -c1 | tr 'A-Z' 'a-z')
+  if ! test -d packages/$f*/$p ; then
+     echo "missing pkg $p"
+     continue
+  fi
+  if ! test -d packages/$f*/$p/.git ; then
+     echo "missing git $p"
+     if [ -n $FIX ] ; then
+        ( cd /data/openSUSE-test && git fetch prod && git reset --hard prod/master && scripts/splitone2 $p )
+     fi
+     continue
+  fi
+  if ! ( cd packages/$f*/$p && [[ $(git rev-list HEAD --count 2>/dev/null) -ge 1 ]] ) ; then
+     echo "no commits in $p"
+     continue
+  fi
+done
