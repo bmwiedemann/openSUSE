@@ -3605,6 +3605,8 @@ unsorted:
   - firehol 
   - firehol-doc 
   - firejail 
+  - firejail-bash-completion 
+  - firejail-zsh-completion 
   - firetools 
   - firewall-applet 
   - firewall-config 
@@ -11467,12 +11469,9 @@ unsorted:
   - libixion-devel 
   - libixion-tools 
   - libixml11-32bit: [x86_64] 
-  - libjack-devel 
   - libjack-devel-32bit: [x86_64] 
   - libjack0-32bit: [x86_64] 
-  - libjacknet0 
   - libjacknet0-32bit: [x86_64] 
-  - libjackserver0 
   - libjackserver0-32bit: [x86_64] 
   - libjansson-devel 
   - libjasper-devel 
@@ -31644,6 +31643,7 @@ unsorted:
   - schroedinger-doc 
   - scidavis 
   - scidavis-lang 
+  - scikit-hep-testdata-files 
   - scim-32bit: [x86_64] 
   - scim-anthy 
   - scim-canna 
