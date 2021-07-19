@@ -128,7 +128,7 @@
   boo#1180312: '20210329'
   boo#1180316: '20210408'
   boo#1180317: '20210103'
-  boo#1180358: '20210704'
+  boo#1180358: '20210717'
   boo#1180740: '20210115'
   boo#1180754: '20210418'
   boo#1180853: '20210111'
@@ -164,7 +164,7 @@
   boo#1185933: '20210514'
   boo#1186083: '20210713'
   boo#1186363: '20210605'
-  boo#1186735: '20210713'
+  boo#1186735: '20210717'
   boo#1186775: '20210615'
   boo#1186890: '20210603'
   boo#1187019: '20210706'
@@ -398,7 +398,7 @@
   poo#94973: '20210717'
   poo#95120: '20210717'
   poo#95326: '20210713'
-  poo#95329: '20210716'
+  poo#95329: '20210717'
   poo#95467: '20210713'
   poo#95548: '20210717'
   poo#95605: '20210717'
@@ -445,7 +445,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210717</value>
+    <value>20210718</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
