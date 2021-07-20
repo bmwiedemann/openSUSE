@@ -16,7 +16,7 @@
 #
 
 
-%bcond_with tests
+%bcond_without tests
 
 # QML imports created and used by examples
 %global __requires_exclude qmlimport\\((Charts|TextBalloonPlugin)
@@ -25,7 +25,7 @@
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 Name:           python3-pyside2
-Version:        5.15.1
+Version:        5.15.2
 Release:        0
 Summary:        Python bindings for Qt
 # Legal:
@@ -99,6 +99,10 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-idna
 BuildRequires:  python3-urllib3
 BuildRequires:  python3-wheel
+%if %{with tests}
+BuildRequires:  xvfb-run
+BuildRequires:  Mesa-dri
+%endif
 
 %description
 The PySide2 project provides Python bindings for the Qt
@@ -130,6 +134,14 @@ Examples and Tutorials for the PySide2 bindings for Qt.
 %patch3 -p1
 %if "%{_lib}" == "lib64"
 %patch0 -p1
+%endif
+
+# Test expects depth of 32
+printf '[QtGui::qdatastream_gui_operators_test]\n  linux\n' >> build_history/blacklist.txt
+
+# bug_307 fails on armv7l only
+%ifarch %{arm}
+printf '[QtWidgets::bug_307]\n  linux\n' >> build_history/blacklist.txt
 %endif
 
 %build
@@ -177,10 +189,12 @@ rm %{buildroot}%{_bindir}/*_tool.py
 rm -Rf %{buildroot}%{_datadir}/PySide2/typesystems/typesystem_*_win.xml
 
 %fdupes %{buildroot}%{_datadir}/PySide2/examples/
+%fdupes %{buildroot}%{_libdir}/cmake/
+%fdupes %{buildroot}%{python_sitearch}/shiboken2/
 
 %check
 %if %{with tests}
-%{mypython} testrunner.py test
+xvfb-run -s "-screen 0 1600x1200x16 -ac +extension GLX +render -noreset" %{mypython} testrunner.py test
 %endif
 
 %post -p /sbin/ldconfig
