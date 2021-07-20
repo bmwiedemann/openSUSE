@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jul 14 09:58:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- First release in OBS
+- Add change-name.patch to change the name from libsrtp2 to libsrtp2-linphone,
+  as this would otherwise conflict with libsrtp2 from Cisco.
