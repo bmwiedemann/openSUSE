@@ -1,4 +1,4 @@
-From fbdf20d59d1c63cd2b8fd78efb3125478a2ea07c Mon Sep 17 00:00:00 2001
+From a756e5f3fcdb7deefb035826b97cd97189df68a6 Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Wed, 21 Aug 2019 16:32:03 +0200
 Subject: [PATCH] Redesign Xauth handling
@@ -17,22 +17,22 @@ processEnvironment() to set XAUTHORITY to the generated path are not effective,
 so configure the process to inherit the environment instead and use qputenv.
 ---
  CMakeLists.txt                   |  3 ++
- data/man/sddm.conf.rst.in        |  8 ----
+ data/man/sddm.conf.rst.in        |  8 ---
  src/auth/Auth.cpp                |  6 +--
  src/auth/Auth.h                  |  6 +--
  src/common/Configuration.h       |  2 -
- src/common/XauthUtils.cpp        | 82 ++++++++++++++++++++++++++++++++
- src/common/XauthUtils.h          | 16 +++++++
+ src/common/XauthUtils.cpp        | 87 ++++++++++++++++++++++++++++++++
+ src/common/XauthUtils.h          | 16 ++++++
  src/daemon/CMakeLists.txt        |  3 ++
- src/daemon/XorgDisplayServer.cpp | 45 ++----------------
+ src/daemon/XorgDisplayServer.cpp | 45 ++---------------
  src/daemon/XorgDisplayServer.h   |  4 +-
  src/helper/Backend.cpp           |  7 ---
- src/helper/CMakeLists.txt        |  8 +++-
+ src/helper/CMakeLists.txt        |  8 ++-
  src/helper/HelperApp.cpp         |  4 +-
  src/helper/HelperApp.h           |  4 +-
- src/helper/UserSession.cpp       | 53 +++++++++++----------
+ src/helper/UserSession.cpp       | 53 ++++++++++---------
  src/helper/UserSession.h         |  9 ++++
- 16 files changed, 165 insertions(+), 95 deletions(-)
+ 16 files changed, 170 insertions(+), 95 deletions(-)
  create mode 100644 src/common/XauthUtils.cpp
  create mode 100644 src/common/XauthUtils.h
 
@@ -156,10 +156,10 @@ index cf44a62..a7e0585 100644
              Entry(MinimumVT,           int,         MINIMUM_VT,                                 _S("The lowest virtual terminal number that will be used."));
 diff --git a/src/common/XauthUtils.cpp b/src/common/XauthUtils.cpp
 new file mode 100644
-index 0000000..da1c691
+index 0000000..61adf6e
 --- /dev/null
 +++ b/src/common/XauthUtils.cpp
-@@ -0,0 +1,82 @@
+@@ -0,0 +1,87 @@
 +/****************************************************************************
 + * SPDX-FileCopyrightText: 2020 Fabian Vogt <fvogt@suse.de>
 + *
@@ -168,6 +168,7 @@ index 0000000..da1c691
 +
 +#include <limits.h>
 +#include <unistd.h>
++#include <sys/stat.h>
 +#include <X11/Xauth.h>
 +
 +#include <random>
@@ -197,8 +198,12 @@ index 0000000..da1c691
 +        if(display.size() < 2 || display[0] != QLatin1Char(':') || cookie.count() != 16)
 +            return false;
 +
++        // The file needs 0600 permissions
++        int oldumask = umask(077);
++
 +        // Truncate the file. We don't support merging like the xauth tool does.
 +        FILE * const authFp = fopen(qPrintable(filename), "wb");
++        umask(oldumask);
 +        if (authFp == nullptr)
 +            return false;
 +
@@ -615,5 +620,5 @@ index 7069084..23776f4 100644
  }
  
 -- 
-2.25.1
+2.32.0
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 17 15:20:33 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update patch to include security fix from upstream PR:
+  * 0001-Redesign-Xauth-handling.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 20:42:52 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to systemd-sysusers

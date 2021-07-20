@@ -57,6 +57,7 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 # Autodetect UID_MIN and UID_MAX from /etc/login.defs
 BuildRequires:  shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(Qt5Core) >= 5.6.0
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Network)
@@ -65,7 +66,6 @@ BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(xcb-xkb)
-BuildRequires:  sysuser-tools
 %systemd_requires
 %sysusers_requires
 Requires(post): diffutils
@@ -167,7 +167,7 @@ fi
 
   install -d %{buildroot}%{_sbindir}
   ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcsddm
-  
+
   install -Dm 0644 %{SOURCE5} %{buildroot}%{_sysusersdir}/system-user-sddm.conf
 
   %fdupes %{buildroot}%{_datadir}/sddm

@@ -651,4 +651,13 @@ https://github.com/sddm/sddm/commit/1bc813d08b8130e458a6550ec47fb2bfbe6de080 (fo
     <comment></comment>
     <requestid>900289</requestid>
   </revision>
+  <revision rev="56" vrev="4">
+    <srcmd5>8739daf301c0d58f37643cd96d18802e</srcmd5>
+    <version>0.19.0</version>
+    <time>1626788328</time>
+    <user>dimstar_suse</user>
+    <comment>- Update patch to include security fix from upstream PR:
+  * 0001-Redesign-Xauth-handling.patch (forwarded request 907087 from Vogtinator)</comment>
+    <requestid>907088</requestid>
+  </revision>
 </revisionlist>
