@@ -17,7 +17,7 @@
 
 
 Name:           nwg-launchers
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        GTK launchers and menu for sway and i3
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ URL:            https://github.com/nwg-piotr/nwg-launchers
 Source:         %{url}/archive/v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  gtkmm3-devel
 BuildRequires:  meson
 BuildRequires:  nlohmann_json-devel
