@@ -1,5 +1,0 @@
-<package name="vim-bootstrap" project="openSUSE:Factory">
-  <title>Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim</title>
-  <description>Vim Bootstrap is generator provides a simple method of generating a .vimrc configuration for vim, NeoVim, NeoVim-Qt, MacVim and GVim.</description>
-  <devel project="devel:tools" package="vim-bootstrap"/>
-</package>
