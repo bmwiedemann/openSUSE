@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -227,7 +227,6 @@ Requires:       %{name} = %{version}
 %description snmp
 This package provides SNMP support for syslog-ng
 
-
 %prep
 %setup -q -n syslog-ng-%{version}
 # fill out placeholders in the config,
@@ -248,7 +247,7 @@ done
 %endif
 
 # fix python
-sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python|' lib/merge-grammar.py
+sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python3|' lib/merge-grammar.py
 touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build

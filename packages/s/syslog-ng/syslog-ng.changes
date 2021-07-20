@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 16 02:29:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Set shebang for merge-grammar.py to be /usr/bin/python3. 
+
+-------------------------------------------------------------------
 Tue Dec  8 10:31:37 UTC 2020 - peter czanik <peter@czanik.hu> 3.30.1-0
 
 - update to 3.30.1
