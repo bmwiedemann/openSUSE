@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 27 21:27:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Replace the QtWebKit build dependency with QtWebEngine.
+
+-------------------------------------------------------------------
 Tue Apr 27 23:14:50 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 0.19.2:

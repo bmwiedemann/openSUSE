@@ -333,4 +333,13 @@ Build in science fails due to incompatible VTK 9.0, which is not yet in Tumblewe
     <comment></comment>
     <requestid>888893</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>730e7902236a795efc4dea90b1a77c95</srcmd5>
+    <version>0.19.2</version>
+    <time>1626788332</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace the QtWebKit build dependency with QtWebEngine.
+</comment>
+    <requestid>906975</requestid>
+  </revision>
 </revisionlist>
