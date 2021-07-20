@@ -57,4 +57,13 @@
     <comment></comment>
     <requestid>857158</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b876d415f915c2a110c1d96b959aa89d</srcmd5>
+    <version>1.1.2</version>
+    <time>1626788333</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.2:
+  * String handling fix for Windows platforms</comment>
+    <requestid>907021</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 06:41:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.2:
+  * String handling fix for Windows platforms
+
+-------------------------------------------------------------------
 Sun Dec 20 10:50:25 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Remove Conflicts: python-texttable because it should fixed since 
