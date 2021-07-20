@@ -25,9 +25,9 @@ Summary:        Sphinx domain for HTTP APIs
 License:        BSD-2-Clause
 URL:            https://github.com/sphinx-contrib/httpdomain
 Source:         https://github.com/sphinx-contrib/httpdomain/archive/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM missing_force_decode.patch gh#sphinx-contrib/httpdomain#46 mcepl@suse.com
-# Add missing force_decode function in case it is missing in the actual Sphinx
-Patch0:         missing_force_decode.patch
+# PATCH-FIX-UPSTREAM 49-remove_force_decode.patch gh#sphinx-contrib/httpdomain#49 mcepl@suse.com
+# Finally remove use of force_decode function (removed from Sphinx).
+Patch0:         49-remove_force_decode.patch
 BuildRequires:  %{python_module Flask >= 0.11}
 BuildRequires:  %{python_module Sphinx >= 1.5}
 BuildRequires:  %{python_module bottle >= 0.11.0}

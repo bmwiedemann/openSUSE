@@ -189,4 +189,14 @@
 </comment>
     <requestid>905350</requestid>
   </revision>
+  <revision rev="23" vrev="10">
+    <srcmd5>ff212e5138327ab930896f352600e24c</srcmd5>
+    <version>1.7.0</version>
+    <time>1626788364</time>
+    <user>dimstar_suse</user>
+    <comment>- Replace missing_force_decode.patch with
+  49-remove_force_decode.patch (gh#sphinx-contrib/httpdomain#49).
+</comment>
+    <requestid>907156</requestid>
+  </revision>
 </revisionlist>

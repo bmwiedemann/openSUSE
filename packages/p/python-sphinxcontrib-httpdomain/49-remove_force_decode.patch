@@ -1,0 +1,99 @@
+From f120ce8d1c3089f23c8bfee41e59a4f84044c0c4 Mon Sep 17 00:00:00 2001
+From: Florian Masy <florian@ezdev.fr>
+Date: Thu, 24 Jun 2021 21:39:16 +0200
+Subject: [PATCH] Remove imports and calls to depracated function force_decode
+ who was removed starting with sphinx 4.0
+
+---
+ sphinxcontrib/autohttp/bottle.py     | 6 ++----
+ sphinxcontrib/autohttp/flask.py      | 1 -
+ sphinxcontrib/autohttp/flask_base.py | 4 ----
+ sphinxcontrib/autohttp/tornado.py    | 6 ++----
+ 4 files changed, 4 insertions(+), 13 deletions(-)
+
+diff --git a/sphinxcontrib/autohttp/bottle.py b/sphinxcontrib/autohttp/bottle.py
+index d249b30..1e8d709 100644
+--- a/sphinxcontrib/autohttp/bottle.py
++++ b/sphinxcontrib/autohttp/bottle.py
+@@ -17,7 +17,6 @@
+ from docutils.parsers.rst import directives, Directive
+ from docutils.statemachine import ViewList
+ 
+-from sphinx.util import force_decode
+ from sphinx.util.nodes import nested_parse_with_titles
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+@@ -89,11 +88,10 @@ def make_rst(self):
+                 continue
+             view = target.callback
+             docstring = view.__doc__ or ''
+-            if not isinstance(docstring, six.text_type):
+-                analyzer = ModuleAnalyzer.for_module(view.__module__)
+-                docstring = force_decode(docstring, analyzer.encoding)
++            
+             if not docstring and 'include-empty-docstring' not in self.options:
+                 continue
++            
+             docstring = prepare_docstring(docstring)
+             for line in http_directive(method, path, docstring):
+                 yield line
+diff --git a/sphinxcontrib/autohttp/flask.py b/sphinxcontrib/autohttp/flask.py
+index de60c55..761efec 100644
+--- a/sphinxcontrib/autohttp/flask.py
++++ b/sphinxcontrib/autohttp/flask.py
+@@ -19,7 +19,6 @@
+ from docutils.parsers.rst import directives, Directive
+ from docutils.statemachine import ViewList
+ 
+-from sphinx.util import force_decode
+ from sphinx.util.nodes import nested_parse_with_titles
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+diff --git a/sphinxcontrib/autohttp/flask_base.py b/sphinxcontrib/autohttp/flask_base.py
+index 782a95d..ba3e7ef 100644
+--- a/sphinxcontrib/autohttp/flask_base.py
++++ b/sphinxcontrib/autohttp/flask_base.py
+@@ -17,7 +17,6 @@
+ 
+ from docutils.parsers.rst import directives, Directive
+ 
+-from sphinx.util import force_decode
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+ 
+@@ -236,9 +235,6 @@ def inspect_routes(self, app):
+             if view_func and view_func.__doc__:
+                 view_doc = view_func.__doc__
+ 
+-            if not isinstance(view_doc, six.text_type):
+-                analyzer = ModuleAnalyzer.for_module(view.__module__)
+-                view_doc = force_decode(view_doc, analyzer.encoding)
+ 
+             if not view_doc and 'include-empty-docstring' not in self.options:
+                 continue
+diff --git a/sphinxcontrib/autohttp/tornado.py b/sphinxcontrib/autohttp/tornado.py
+index 9a38b10..1e529ef 100644
+--- a/sphinxcontrib/autohttp/tornado.py
++++ b/sphinxcontrib/autohttp/tornado.py
+@@ -18,7 +18,6 @@
+ from docutils.parsers.rst import directives, Directive
+ from docutils.statemachine import ViewList
+ 
+-from sphinx.util import force_decode
+ from sphinx.util.nodes import nested_parse_with_titles
+ from sphinx.util.docstrings import prepare_docstring
+ from sphinx.pycode import ModuleAnalyzer
+@@ -129,11 +128,10 @@ def make_rst(self):
+                 continue
+ 
+             docstring = getattr(handler, method).__doc__ or ''
+-            #if not isinstance(docstring, unicode):
+-            #    analyzer = ModuleAnalyzer.for_module(view.__module__)
+-            #    docstring = force_decode(docstring, analyzer.encoding)
++            
+             if not docstring and 'include-empty-docstring' not in self.options:
+                 continue
++            
+             docstring = prepare_docstring(docstring)
+             for line in http_directive(method, normalize_path(path), docstring):
+                 yield line
