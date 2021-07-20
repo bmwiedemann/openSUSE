@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 20 09:30:30 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to containerd v1.4.8, to fix CVE-2021-32760. bsc#1188282
+- Remove upstreamed patches:
+  - bsc1188282-use-chmod-path-for-checking-symlink.patch
+
+-------------------------------------------------------------------
+Wed Jul 14 10:23:38 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+[ This patch was only released in SLES and Leap. ]
+
+- Add patch for GHSA-c72p-9xmj-rx3w. CVE-2021-32760 bsc#1188282
+  + bsc1188282-use-chmod-path-for-checking-symlink.patch
+
+-------------------------------------------------------------------
 Fri Apr 16 05:25:40 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Drop long-since upstreamed patch, originally needed to fix i386 builds on
