@@ -54,6 +54,8 @@ Requires:       slirp4netns
 %if 0%{?with_libostree}
 BuildRequires:  libostree-devel
 %endif
+# Not supported by libseccomp-golang
+ExcludeArch:    ppc64
 
 %description
 Buildah provides a command line tool which can be used to:
@@ -81,7 +83,7 @@ cp -avr * $HOME/go/src/%{project}
 cd $HOME/go/src/%{project}
 
 # Build buildah
-make %{?_smp_mflags} GIT_COMMIT=unknown EXTRA_LDFLAGS=-buildmode=pie
+GOFLAGS=-buildmode=pie make %{?_smp_mflags} GIT_COMMIT=unknown
 
 %check
 # Too many tests fail due to the restricted permissions in the build enviroment.

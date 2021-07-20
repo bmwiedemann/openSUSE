@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:09:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Set -buildmode=pie properly using GOFLAGS instead of just LDFLAGS
+- Exclude building on ppc64, not supported
+
+-------------------------------------------------------------------
 Mon May 24 13:59:14 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.0:
