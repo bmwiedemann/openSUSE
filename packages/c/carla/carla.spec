@@ -29,7 +29,7 @@ Name:           carla
 #NOTE: to update this package please change these two version fields in "_service" <param name="revision">v2.1.1</param> and
 #<param name="versionformat">2.1.1</param> to the version that you want and execute "osc service runall"
 # It will even fill in the .changes file. Please don't touch the Version: in the spec file, it will be filled automaticaly.
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        An audio plugin host
 License:        BSD-2-Clause AND GPL-2.0-or-later AND BSD-3-Clause
@@ -46,8 +46,6 @@ Patch0:         carla-systemlibs.patch
 Patch1:         carla-remove-pkgconf-rpath.patch
 # PATCH-FIX-OPENSUSE -- Use the correct plugin paths for openSUSE sflees@suse.de
 Patch2:         use-correct-plugin-paths.patch
-# PATCH-FIX-UPSTREAM -- https://github.com/falkTX/Carla/commit/545304f5cfa484d4037b845a4df4abd530f82669
-Patch3:         fix-build-with-gcc11.patch
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 BuildRequires:  hicolor-icon-theme

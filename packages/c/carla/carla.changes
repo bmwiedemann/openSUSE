@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Mon Jul 19 09:53:02 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.3.1:
+  * Add dmg files to gitignore
+  * Also specify NSLocalNetworkUsageDescription
+  * Set NSMicrophoneUsageDescription in Carla.plist
+  * Bump version to 2.3.1
+  * Fix build
+  * Fix race condition around postponed rt event data pool
+  * No wine stuff for now
+  * Create macos-latest.yml
+  * Tweak GH dependencies
+  * Create GH action
+  * Rename a variable
+  * Handle LV2 UI size on windows without extensions, also resize
+  * Do not refresh canvas except on error, fixing on quit crash
+  * Finish updating juce deprecated API stuff
+  * Fix loading state via juce of vst2 plugins without chunk
+  * Update plugin juce code to new APIs, hook into vst2 for parity
+  * Cleanup macOS plugin UI setup code, still fails at resizing :(
+  * Fix build with JACKBRIDGE_DIRECT=true
+  * Use tick_double on jack transport
+  * Fix windows build
+  * Fix wine build
+  * Really fix split/join
+  * Fix strict build
+  * Make some macOS dialogs modal, hack around edit dialog on top
+  * Improve countDecimalPoints
+  * midipattern: always kill all notes on reposition
+  * Fix default rack "skin" for a few plugins
+  * Remove a useless variable
+  * Fix bridged plugin UIs appearing behind main carla window on macOS
+  * Use posix_spawn to launch macOS bridges
+  * Strip macOS binaries
+  * Use posix_spawn for macOS bridge mode scanning
+  * Do not use 64bit int or long double for midi plugin playback
+  * Remove favorite plugins from list when they fail to load
+  * Fix canvas split/join action
+  * splitted is not a word
+  * Fix Qt version checks, allow canvas eyecandy for >= qt5.12
+  * Fix initial size for LV2 macOS UIs with no UI resize extension
+  * Fix a compiler warning
+  * CI tweaks
+  * More CI tweaks
+  * Try fixing CI
+  * Implement parameter groups for VST2 plugins (carla implementation)
+  * Use our metadata thread-safe mutex for the new check, seems to work
+  * Not so smart handling for now, jack2 meta-data is finicky..
+  * One more fix
+  * Alternative approach to deal with jack postponed events Might fix pipewire for real now, needs testing
+  * Revert "React to jack callbacks as fast as possible, fixing pipewire usage"
+  * Carla-VST: Ignore hosts calling effOpen twice, dont print error
+  * Fix carla-vst-wine symbol visibility
+  * Fix strict build
+  * Listen to X11 plugin UI resize events automatically
+  * Give keyboard focus to X11 plugin UIs
+  * Do not set jack latency callbacks, we do nothing with them
+  * Use _M_ARM64 macro to set win64 mode
+  * One more assertion ignored for jack metadata/uuid
+  * React to jack callbacks as fast as possible, fixing pipewire usage Closes #1348
+  * Fix build with GCC11 Closes #1396
+- Rebase patches.
+- Drop fix-build-with-gcc11.patch, because now in upstream.
+
+-------------------------------------------------------------------
 Fri Jul  9 20:21:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix the Python script symlinks: in SLE/Leap, %python_sitelib is
