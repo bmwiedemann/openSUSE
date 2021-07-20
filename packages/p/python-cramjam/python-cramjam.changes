@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 19 19:37:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.3.2
+  * no core library code changes
+- Update filelist due to updated setuptools: not a single .so but
+  a full module directory now.
+- run cargo crate service: update vendored rust crates
+- re-activate cargo audit service
+  * gh#openSUSE/obs-service-cargo_audit#1 is fixed
+
+-------------------------------------------------------------------
 Tue May 18 14:12:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for 2.3.1

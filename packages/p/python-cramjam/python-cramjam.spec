@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-cramjam
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Thin Python bindings to de/compression algorithms in Rust
 License:        MIT
@@ -29,9 +29,9 @@ URL:            https://github.com/milesgranger/pyrus-cramjam
 Source:         pyrus-cramjam-%{version}.tar.xz
 Source1:        vendor.tar.xz
 Source2:        cargo_config
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 BuildRequires:  rust-packaging
 # SECTION test dependencies
 BuildRequires:  %{python_module numpy}
@@ -60,7 +60,7 @@ cp %{SOURCE2} .cargo/config
 
 %files %{python_files}
 %license LICENSE
-%{python_sitearch}/cramjam*.so
+%{python_sitearch}/cramjam
 %{python_sitearch}/cramjam-%{version}*-info
 
 %changelog

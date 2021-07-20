@@ -13,10 +13,9 @@
     <param name="compression">xz</param>
   </service>
   <service mode="disabled" name="set_version"/>
-  <!-- no cargo.lock, wrong parameters (https://github.com/openSUSE/obs-service-cargo_audit/issues/1)
-  service name="cargo_audit" mode="disabled">
+  <service name="cargo_audit" mode="disabled">
      <param name="srcdir">pyrus-cramjam</param>
-  </service -->
+  </service>
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">pyrus-cramjam</param>
      <param name="compression">xz</param>
