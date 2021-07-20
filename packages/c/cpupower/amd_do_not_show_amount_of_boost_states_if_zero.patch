@@ -4,7 +4,7 @@
 
 --- a/utils/cpufreq-info.c
 +++ b/utils/cpufreq-info.c
-@@ -191,7 +191,9 @@
+@@ -190,7 +190,9 @@
  		if (ret)
  			return ret;
  

@@ -437,4 +437,17 @@ M rapl_monitor.patch</comment>
 Needed for SLE people as reference</comment>
     <requestid>852864</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>369242d30c964e210dd3a3ec52245dc2</srcmd5>
+    <version>5.14</version>
+    <time>1626788362</time>
+    <user>dimstar_suse</user>
+    <comment>- Update (jsc#SLE-18392, jsc#SLE-18906, jsc#SLE-18393, jsc#SLE-18410):
+ * turbostat          to    21.05.04
+ * intel speed select to    1.10
+ * cpupower           to    5.14-rcX (kernel sources state)
+- Already upstream and included in the update:
+D intel-speed-select_remove_DATE_TIME.patch</comment>
+    <requestid>907255</requestid>
+  </revision>
 </revisionlist>

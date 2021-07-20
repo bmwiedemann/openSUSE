@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Author: Thomas Renninger <trenn@suse.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,14 +20,14 @@
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%{VERSION}' kernel-source)
 
-%define tsversion      20.09.30
+%define tsversion      21.05.04
 %define pbversion      17.05.11
-%define ssversion      1.6
+%define ssversion      1.10
 
 Name:           cpupower
 # Use this as version when things are in mainline kernel
 %define version %(rpm -q --qf '%VERSION' kernel-source)
-Version:        5.10
+Version:        5.14
 Release:        0
 Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
@@ -51,9 +51,6 @@ Patch23:        remove_bits_h.patch
 # x86_energy_perf patches
 # Fixes bsc#1048546:
 Patch30:        x86_perf_makefile_fix_asm_header.patch
-
-# intel-speed-select patches
-Patch50:        intel-speed-select_remove_DATE_TIME.patch
 
 BuildRequires:  gettext-tools
 BuildRequires:  libcap-devel
@@ -104,11 +101,11 @@ cd ../turbostat-%{tsversion}
 %patch23 -p1
 
 cd ../x86_energy_perf_policy-%{pbversion}
+%patch23 -p1
 %patch30 -p1
 
 cd ../intel-speed-select-%{ssversion}
 cp %{SOURCE5} Makefile
-%patch50 -p1
 
 %build
 CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true VERSION=%{version}"
@@ -117,7 +114,7 @@ make $CONF %{?_smp_mflags}
 
 %ifarch ix86 x86_64
 cd ../turbostat-%{tsversion}
-export CFLAGS="%{optflags} -fcommon -I ."
+export CFLAGS="%{optflags} -fcommon -I ../turbostat-%{tsversion}/include"
 make %{?_smp_mflags}
 cd ../x86_energy_perf_policy-%{pbversion}
 make %{?_smp_mflags}

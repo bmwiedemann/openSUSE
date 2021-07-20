@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:17:54 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Update (jsc#SLE-18392, jsc#SLE-18906, jsc#SLE-18393, jsc#SLE-18410):
+ * turbostat          to    21.05.04
+ * intel speed select to    1.10
+ * cpupower           to    5.14-rcX (kernel sources state)
+- Already upstream and included in the update:
+D intel-speed-select_remove_DATE_TIME.patch
+
+-------------------------------------------------------------------
 Thu Nov 12 22:01:00 UTC 2020 - Thomas Renninger <trenn@suse.de>
 
 - Add AMD Fam 19h support (bsc#1177394)
