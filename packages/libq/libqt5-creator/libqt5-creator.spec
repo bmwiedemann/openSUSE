@@ -33,9 +33,9 @@
 
 %define major_ver 4.15
 %define qt5_version 5.14.0
-%define tar_version 4.15.1
+%define tar_version 4.15.2
 Name:           libqt5-creator
-Version:        4.15.1
+Version:        4.15.2
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only

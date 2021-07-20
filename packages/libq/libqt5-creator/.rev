@@ -872,4 +872,13 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>899380</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>621157782c959c9311f6d8aa7594aca8</srcmd5>
+    <version>4.15.2</version>
+    <time>1626788374</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.15.2
+  * https://code.qt.io/cgit/qt-creator/qt-creator.git/tree/dist/changes-4.15.2.md (forwarded request 907243 from cgiboudeaux)</comment>
+    <requestid>907246</requestid>
+  </revision>
 </revisionlist>
