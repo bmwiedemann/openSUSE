@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  8 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34
+   see /usr/share/doc/packages/perl-DateTime-Format-Flexible/Changes
+
+  0.34
+    - support timezones in parenthesis
+    - Add support for YYYY-MM-DD HH:MM P.M. format
+      - thanks Michael Schout for the patch!
+
+-------------------------------------------------------------------
 Fri May 28 03:06:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.33

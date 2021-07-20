@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime-Format-Flexible
 Name:           perl-DateTime-Format-Flexible
-Version:        0.33
+Version:        0.34
 Release:        0
 Summary:        DateTime::Format::Flexible - Flexibly parse strings and turn them into D[cut]
 License:        Artistic-1.0 OR GPL-1.0-or-later
