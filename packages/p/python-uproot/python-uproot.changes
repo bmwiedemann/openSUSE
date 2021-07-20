@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 16 16:20:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v4.0.11
+  * see https://uproot.readthedocs.io/en/latest/changelog.html
+- Update runtime and builtime requirements:
+   * Add awkward as recommendation (upstream: "highly recommended")
+   * Add other optional package as suggestions
+   * BuildRequire what is available and used for offline tests
+- Skip some pandas tests which test for 64bit types on 32bit builds
+- use the pytest network mark in order to skip network tests on obs
+- add a network mark to test_0220 -- gh#scikit-hep/uproot4#396
+
+-------------------------------------------------------------------
 Wed Apr 21 09:15:39 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable builds for python 3.6: no numpy.

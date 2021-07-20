@@ -1,7 +1,7 @@
 #
 # spec file for package python-uproot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 # No numpy for py3.6
 %define skip_python36 1
 %global modname uproot
 Name:           python-uproot
-Version:        4.0.0
+Version:        4.0.11
 Release:        0
 Summary:        ROOT I/O in pure Python and Numpy
 License:        BSD-3-Clause
@@ -32,16 +33,26 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy >= 1.13.1
+Recommends:     python-awkward
+Suggests:       python-lz4
+Suggests:       python-zstandard
+Suggests:       python-xrootd
+Suggests:       python-pandas
+Suggests:       python-cupy
+Suggests:       python-boost-histogram
+Suggests:       python-hist
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module awkward}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module importlib-resources}
 BuildRequires:  %{python_module lz4}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module numpy >= 1.13.1}
+BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scikit-hep-testdata}
 BuildRequires:  %{python_module xxhash}
+BuildRequires:  %{python_module boost-histogram >= 0.13 if (%python-base without python2-base)}
 # /SECTION
 %python_subpackages
 
@@ -55,6 +66,8 @@ arrays.
 %prep
 %autosetup -p1 -n %{modname}-%{version}
 %setup -q -D -T -a 1 -n %{modname}-%{version}
+# gh#scikit-hep/uproot4#396
+sed -i '/def test/ i @pytest.mark.network' tests/test_0220-contiguous-byte-ranges-in-http.py
 
 %build
 %python_build
@@ -64,8 +77,11 @@ arrays.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Skip tests requiring network
-%pytest -k 'not (test_http or test_fallback or test_no_multipart or test_0066 or test_0088 or test_0220)'
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+# pandas tests assume 64bit types
+skiptests32=("-k" "not (test_jagged_pandas or test_pandas_vector_TLorentzVector or test_iterate_pandas_2 or test_function_iterate_pandas_2)")
+fi
+%pytest -rfEs -m "not network" "${skiptests32[@]}"
 
 %files %{python_files}
 %doc README.md
