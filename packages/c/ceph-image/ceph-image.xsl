@@ -56,8 +56,6 @@
             <label name="org.opencontainers.image.version" value="%PKG_VERSION%.%RELEASE%"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
-            <label name="io.ceph.version" value="%PKG_VERSION%"/>
-            <label name="ceph" value="True"/>
 
             <label name="org.opencontainers.image.url">
               <xsl:attribute name="value">
@@ -74,6 +72,9 @@
             </label>
 
           </suse_label_helper:add_prefix>
+
+          <label name="io.ceph.version" value="%PKG_VERSION%"/>
+          <label name="ceph" value="True"/>
 
           <xsl:for-each select="param/labels/label">
             <label>
