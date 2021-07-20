@@ -620,4 +620,18 @@ Lets break everything :)
   * Let symlinks from /lib/modules to /usr/src be absolute (boo#1186710)</comment>
     <requestid>898090</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>6ab62738c3798ef5f5b735b43848df29</srcmd5>
+    <version>84.87+git20210706.41c04c1</version>
+    <time>1626788321</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210706.41c04c1:
+  * Fix /etc/alternatives being white listed
+
+- Update to version 84.87+git20210622.18841ca:
+  * Extend symlinks in buildroot (and test them)
+  * Move the exception handling of absolute links to C++
+  * Revert &quot;brp-25-symlink: Follow deeper symlinks to avoid false positives&quot;</comment>
+    <requestid>904422</requestid>
+  </revision>
 </revisionlist>

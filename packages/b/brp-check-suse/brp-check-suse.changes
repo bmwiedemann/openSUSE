@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 06 18:21:27 UTC 2021 - coolo@suse.com
+
+- Update to version 84.87+git20210706.41c04c1:
+  * Fix /etc/alternatives being white listed
+
+-------------------------------------------------------------------
+Tue Jun 22 11:08:42 UTC 2021 - coolo@suse.com
+
+- Update to version 84.87+git20210622.18841ca:
+  * Extend symlinks in buildroot (and test them)
+  * Move the exception handling of absolute links to C++
+  * Revert "brp-25-symlink: Follow deeper symlinks to avoid false positives"
+
+-------------------------------------------------------------------
 Mon Jun 07 07:42:18 UTC 2021 - lnussel@suse.de
 
 - Update to version 84.87+git20210607.252083e:
