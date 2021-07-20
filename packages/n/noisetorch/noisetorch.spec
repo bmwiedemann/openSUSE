@@ -26,6 +26,9 @@ URL:            https://github.com/lawl/NoiseTorch
 Source0:        NoiseTorch-%{version}.tar.gz
 # osc service disabledrun
 Source1:        vendor.tar.gz
+
+Patch0:         noisetorch-fix-ladspa-linking.patch
+
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core
@@ -40,15 +43,16 @@ NoiseTorch Virtual Microphone as input to torch the sound of your mechanical
 keyboard, computer fans, trains and the likes.
 
 %prep
-%setup -q -n NoiseTorch-%{version} -a1
+%autosetup -p1 -n NoiseTorch-%{version} -a1
 
 %build
 pushd c/ladspa
 %make_build
+ldd rnnoise_ladspa.so
 popd
 go generate
 # -tags release would enable the auto-updater (update.go)
-CGO_ENABLED=0 GOOS=linux go build -buildmode=pie -a -ldflags '-s -w -extldflags "-static"' .
+CGO_ENABLED=0 GOOS=linux go build -buildmode=pie -a -ldflags '-s -w -extldflags "-static" -X main.version=%{version} -X main.distribution=rpm' .
 
 %install
 install -D -m 644 assets/icon/noisetorch.png %{buildroot}/%{_datadir}/icons/hicolor/256x256/apps/noisetorch.png

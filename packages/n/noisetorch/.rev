@@ -50,4 +50,15 @@
     <comment></comment>
     <requestid>895405</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>e51c3700d3d274251ec79e555c99d8be</srcmd5>
+    <version>0.11.2</version>
+    <time>1626788336</time>
+    <user>dimstar_suse</user>
+    <comment>- Include the version and packaging information in the about screen 
+
+- Fix linking of librnnoise.so
+  adds noisetorch-fix-ladspa-linking.patch</comment>
+    <requestid>907017</requestid>
+  </revision>
 </revisionlist>

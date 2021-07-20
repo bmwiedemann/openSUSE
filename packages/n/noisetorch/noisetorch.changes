@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 15 10:55:04 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Include the version and packaging information in the about screen 
+
+-------------------------------------------------------------------
+Wed May 26 08:12:05 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Fix linking of librnnoise.so
+  adds noisetorch-fix-ladspa-linking.patch
+
+-------------------------------------------------------------------
 Tue May 25 09:50:27 UTC 2021 - asn@cryptomilk.org
 
 - Update to version 0.11.2:
