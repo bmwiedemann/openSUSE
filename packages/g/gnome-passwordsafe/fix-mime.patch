@@ -1,0 +1,27 @@
+From ff8a7e3e64b0f477e643be4cbf1d3b03f9b32f16 Mon Sep 17 00:00:00 2001
+From: henry-nicolas <nicolas@babsetnico.net>
+Date: Sun, 7 Feb 2021 21:40:34 +0000
+Subject: [PATCH] mimetype install dir fix
+
+share/mime/applications is for mime type cache
+share/mime/packages is for software to state which mime type they can handle
+Lintian was complaining about this
+---
+ data/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/data/meson.build b/data/meson.build
+index 98d80eb96..46f637353 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -25,7 +25,7 @@ install_data(
+ # Install mimetype file
+ install_data(
+   project_id + '.xml',
+-  install_dir: 'share/mime/application'
++  install_dir: 'share/mime/packages'
+ )
+ 
+ desktop_conf = configuration_data()
+-- 
+GitLab

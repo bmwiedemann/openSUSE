@@ -51,4 +51,33 @@
   * improved settings dialog (forwarded request 858366 from polslinux)</comment>
     <requestid>859194</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ef48f5bb4aef2d9cf80981502bf60bb5</srcmd5>
+    <version>5.0</version>
+    <time>1626788341</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0:
+  * New Features:
+    * Copy username button with an associated Ctrl-Shift-B
+      shortcut
+    * Mnemonics support
+    * Menu to create new entries and groups
+    * Customization: 10 new icons and one more color to customize
+      entries
+  * Improvements:
+    * Notifications are no longer system-wide
+    * General system stability improvements to enhance the user's
+      experience
+  * Fixes:
+    * Fixes crash when creating new Safe in password compare
+      function
+    * Fixes crash when opening file on remote filesystem
+    * When keyfile is moved or removed, application now won't
+      corrupt database and instead won't save.
+- Add fix-mime.patch: this patch is based on upstream commit
+  ff8a7e3e64 and fixes an issue with the mimetype install dir.
+  It changes the path from 'share/mime/application' to
+  'share/mime/packages'. (forwarded request 907018 from polslinux)</comment>
+    <requestid>907065</requestid>
+  </revision>
 </revisionlist>

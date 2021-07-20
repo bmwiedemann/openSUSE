@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-passwordsafe
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,16 +19,18 @@
 %define appname PasswordSafe
 %define appid   org.gnome.PasswordSafe
 Name:           gnome-passwordsafe
-Version:        4.0
+Version:        5.0
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Security
 URL:            https://gitlab.gnome.org/World/%{appname}
 Source:         %{url}/-/archive/%{version}/%{appname}-%{version}.tar.bz2
+# PATCH-FIX-UPSTREAM fix-mime.patch -- based on commit ff8a7e3e64
+Patch0:         fix-mime.patch
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-base
+BuildRequires:  python3-base >= 3.7.0
 BuildRequires:  python3-construct
 BuildRequires:  python3-pykeepass >= 3.2.1
 BuildRequires:  update-desktop-files
@@ -52,6 +54,7 @@ It integrates with the GNOME desktop and provides an interface for the managemen
 
 %prep
 %setup -q -n %{appname}-%{version}
+%patch0 -p1
 
 %build
 %meson
@@ -73,8 +76,8 @@ It integrates with the GNOME desktop and provides an interface for the managemen
 %{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
 %{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
 %{_datadir}/icons/hicolor/scalable/apps/%{appid}.svg
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/mime/packages/%{appid}.xml
 
 %files lang -f passwordsafe.lang
 
