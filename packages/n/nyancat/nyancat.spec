@@ -19,7 +19,7 @@
 Name:           nyancat
 Version:        1.5.2
 Release:        0
-Summary:        The flying rainbow cat rendered in your terminal
+Summary:        The flying rainbow cat rendered in a terminal
 License:        NCSA
 Group:          Amusements/Toys/Other
 URL:            https://github.com/klange/nyancat
@@ -27,7 +27,8 @@ Source:         %{URL}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.t
 Patch0:         add_destdir.patch
 
 %description
-Nyancat in your terminal, rendered through ANSI escape sequences. Includes a telnet server.
+nyancat is an animated ANSI/xterm-88 color text program that renders a loop of
+the classic Nyan Cat animation. It includes a telnet server.
 
 %prep
 %autosetup -p0
