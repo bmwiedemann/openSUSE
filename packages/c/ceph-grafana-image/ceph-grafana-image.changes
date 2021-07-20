@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 13 12:18:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Clean-up config.sh:
+  * Drop obsolete suseConfig and baseCleanMount
+  * Drop lvm2 part
+
+-------------------------------------------------------------------
 Wed Jul  8 15:09:17 UTC 2020 - Patrick Seidensal <pseidensal@suse.com>
 
 - Remove openSUSE-release-ftp package from SLE distributions
