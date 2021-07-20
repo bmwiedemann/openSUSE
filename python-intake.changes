@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:31:26 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.2
+  * no changelog
+- Drop intake-pr560-fix-category-ordering.patch merged upstream
+- Add intake-pr601-dask-array.patch for dask API change
+  gh#intake/intake#601
+
+-------------------------------------------------------------------
 Sat Feb 13 11:03:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.0

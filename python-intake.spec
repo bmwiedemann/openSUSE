@@ -21,7 +21,7 @@
 # NEP 29: packages in the dependency tree which droped Python 3.6 support in TW
 %define         skip_python36 1
 Name:           python-intake
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        Data loading and cataloging system
 License:        BSD-2-Clause
@@ -31,8 +31,8 @@ Source0:        https://files.pythonhosted.org/packages/source/i/intake/intake-%
 Source1:        https://raw.githubusercontent.com/intake/intake/%{version}/intake/source/tests/data.zarr/.zarray#/tests-data.zarr.zarray
 Source2:        https://raw.githubusercontent.com/intake/intake/%{version}/intake/source/tests/data.zarr/0#/tests-data.zarr.0
 Source3:        https://raw.githubusercontent.com/intake/intake/%{version}/intake/source/tests/calvert_uk_filter.tar.gz
-# PATCH-FIX-UPSTREAM intake-pr560-fix-category-ordering.patch gh#intake/intake#560
-Patch0:         intake-pr560-fix-category-ordering.patch
+# PATCH-FIX-UPSTREAM intake-pr601-dask-array.patch -- gh#intake/intake#601
+Patch1:         https://github.com/intake/intake/pull/601/commits/1ff83ef1f6e0df329328619517292c69df846920.patch#/intake-pr601-dask-array.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -44,14 +44,14 @@ Requires:       python-entrypoints
 Requires:       python-fsspec >= 0.7.4
 Requires:       python-python-snappy
 Requires:       python-tornado
-Recommends:     python-hvplot
-Recommends:     python-panel >= 0.7.0
 Recommends:     python-bokeh
 Recommends:     python-dask-dataframe
+Recommends:     python-hvplot
 Recommends:     python-msgpack-numpy
+Recommends:     python-panel >= 0.7.0
 Recommends:     python-pyarrow
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
@@ -85,8 +85,8 @@ sed -i -e '/^#!\//, 1d' intake/container/tests/__init__.py
 sed -i -e '/^#!\//, 1d' intake/container/tests/test_generics.py
 sed -i -e "/import os/ a import sys" -e "s/cmd = \['python'/cmd = \[sys.executable/" intake/conftest.py
 mkdir -p intake/source/tests/data.zarr
-cp %{SOURCE1} intake/source/tests/data.zarr/.zarray 
-cp %{SOURCE2} intake/source/tests/data.zarr/0 
+cp %{SOURCE1} intake/source/tests/data.zarr/.zarray
+cp %{SOURCE2} intake/source/tests/data.zarr/0
 cp %{SOURCE3} intake/source/tests/calvert_uk_filter.tar.gz
 
 %build
@@ -111,6 +111,10 @@ donttest+=" or test_which"
 # test_discover_cli overrides the PYTHONPATH and thus doesn't find the package in buildroot
 # test_discover does not find its own config because the registration does not work in our test env
 donttest+=" or test_discover"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+  # the test looks for the wrong dtype on 32-bit (int64 vs int)
+  donttest+=" or test_zarr_minimal"
+fi
 %pytest -ra -k "not (${donttest:4})"
 
 %post

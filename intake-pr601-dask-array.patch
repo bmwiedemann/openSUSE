@@ -1,0 +1,24 @@
+From 1ff83ef1f6e0df329328619517292c69df846920 Mon Sep 17 00:00:00 2001
+From: Martin Durant <martin.durant@utoronto.ca>
+Date: Fri, 2 Jul 2021 13:17:36 -0400
+Subject: [PATCH] Update call to dask.array.Array to use kwargs
+
+(positional arguments changed)
+---
+ intake/container/ndarray.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/intake/container/ndarray.py b/intake/container/ndarray.py
+index 4d9e8eb50..fd000fbf1 100644
+--- a/intake/container/ndarray.py
++++ b/intake/container/ndarray.py
+@@ -41,7 +41,8 @@ def _load_metadata(self):
+ 
+                 for part in itertools.product(*nparts)
+             }
+-            self.arr = da.Array(dask, name, self.chunks, self.dtype, self.shape)
++            self.arr = da.Array(dask, name=name, chunks=self.chunks,
++                                dtype=self.dtype, shape=self.shape)
+ 
+         return self._schema
+ 
