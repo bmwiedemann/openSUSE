@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-CChecker
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-ExtUtils-CChecker
-Version:        0.10
-Release:        0
 %define cpan_name ExtUtils-CChecker
-Summary:        Configure-Time Utilities for Using C Headers,
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/ExtUtils-CChecker/
-Source0:        http://www.cpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-ExtUtils-CChecker
+Version:        0.11
+Release:        0
+Summary:        Configure-time utilities for using C headers,
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/P/PE/PEVANS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(Module::Build)
+BuildRequires:  perl(Module::Build) >= 0.400400
 BuildRequires:  perl(Test::Fatal)
+BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(ExtUtils::CBuilder)
 %{perl_requires}
 
@@ -42,19 +41,19 @@ headers, libraries, or to use OS-specific features. It is useful in the
 _Build.PL_ or _Makefile.PL_ file to check for the existance of these
 requirements before attempting to actually build the module.
 
-Objects in this class provide an extension around the ExtUtils::CBuilder
-manpage to simplify the creation of a _.c_ file, compiling, linking and
-running it, to test if a certain feature is present.
+Objects in this class provide an extension around ExtUtils::CBuilder to
+simplify the creation of a _.c_ file, compiling, linking and running it, to
+test if a certain feature is present.
 
 It may also be necessary to search for the correct library to link against,
 or for the right include directories to find header files in. This class
 also provides assistance here.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Build.PL installdirs=vendor
+perl Build.PL installdirs=vendor
 ./Build build flags=%{?_smp_mflags}
 
 %check
@@ -65,7 +64,7 @@ also provides assistance here.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog
