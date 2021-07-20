@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 12:46:56 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Fix links in /etc/alternatives not to point to itself
+
+-------------------------------------------------------------------
 Tue Apr 13 11:30:03 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to ruby 3.0.1 (boo#1184644)

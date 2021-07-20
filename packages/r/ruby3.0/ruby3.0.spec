@@ -352,10 +352,10 @@ for bin in %{ua_binaries}; do
   # dummy
   mv %{buildroot}%_bindir/${bin}%{rb_binary_suffix} %{buildroot}%_bindir/$bin.ruby%{rb_binary_suffix}
   #
-  ln -s $bin                      %{buildroot}%{_sysconfdir}/alternatives/$bin
+  ln -s %_bindir/$bin.ruby%{rb_binary_suffix} %{buildroot}%{_sysconfdir}/alternatives/$bin
   ln -s %{_sysconfdir}/alternatives/$bin %{buildroot}%_bindir/$bin
   #
-  ln -s ${bin}%{rb_binary_suffix} %{buildroot}%{_sysconfdir}/alternatives//$bin%{rb_binary_suffix}
+  ln -s %_bindir/${bin}%{rb_binary_suffix} %{buildroot}%{_sysconfdir}/alternatives//$bin%{rb_binary_suffix}
   ln -s %{_sysconfdir}/alternatives/$bin%{rb_binary_suffix} %{buildroot}%_bindir/$bin%{rb_binary_suffix}
 done
 install -dD %{buildroot}%{rb_extdir} %{buildroot}%{rb_extarchdir} %{buildroot}%{rb_extversionedarchdir} %{buildroot}%{rb_extarchdocdir}

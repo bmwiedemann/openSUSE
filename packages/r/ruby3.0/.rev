@@ -30,4 +30,12 @@
   included in update</comment>
     <requestid>884952</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>89768a5b8256ee90937bb9adbf97dbef</srcmd5>
+    <version>3.0.1</version>
+    <time>1626788323</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix links in /etc/alternatives not to point to itself</comment>
+    <requestid>904939</requestid>
+  </revision>
 </revisionlist>
