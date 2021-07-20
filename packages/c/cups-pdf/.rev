@@ -23,4 +23,14 @@
     <comment>1</comment>
     <requestid>480739</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>105f641d92d527ba6deddf29eb9e3ccd</srcmd5>
+    <version>3.0.1</version>
+    <time>1626788380</time>
+    <user>dimstar_suse</user>
+    <comment>- Add cups-pdf_gs-options.patch to remove .setpdfwrite ghostscript option
+  (not present any more from gs 9.54). Fixes boo#1187353.
+</comment>
+    <requestid>907278</requestid>
+  </revision>
 </revisionlist>

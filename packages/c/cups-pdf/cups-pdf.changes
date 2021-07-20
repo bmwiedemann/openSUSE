@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  8 20:34:52 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Add cups-pdf_gs-options.patch to remove .setpdfwrite ghostscript option
+  (not present any more from gs 9.54). Fixes boo#1187353.
+
+-------------------------------------------------------------------
 Thu Mar 16 21:48:51 UTC 2017 - joerg.lorenzen@ki.tng.de
 
 - Version update to 3.0.1 which includes:

@@ -1,7 +1,7 @@
 #
 # spec file for package cups-pdf
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,14 @@ Name:           cups-pdf
 Version:        3.0.1
 Release:        0
 Summary:        Virtual PDF printer for CUPS
-License:        GPL-2.0
+License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/PDF
-Url:            http://www.cups-pdf.de/
+URL:            https://www.cups-pdf.de/
 Source0:        http://www.cups-pdf.de/src/cups-pdf_%{version}.tar.gz
+#PATCH-FIX-OPENSUSE cups-pdf_gs-options.patch needed for ghostscript > 9.50
+Patch0:         cups-pdf_gs-options.patch
 BuildRequires:  cups-devel
 Requires:       cups-client
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 CUPS-PDF is a PDF writer backend for CUPS.
@@ -38,6 +39,7 @@ and http://en.opensuse.org/SDB:Printing_to_PDF
 
 %prep
 %setup -q
+%patch0
 
 %build
 cd src
@@ -77,8 +79,8 @@ fi
 exit 0
 
 %files
-%defattr(-,root,root)
-%doc COPYING ChangeLog README
+%license COPYING
+%doc ChangeLog README
 %config(noreplace) %{_sysconfdir}/cups/cups-pdf.conf
 %dir %{_prefix}/lib/cups
 %dir %{_prefix}/lib/cups/backend
