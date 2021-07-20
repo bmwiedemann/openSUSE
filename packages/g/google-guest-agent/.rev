@@ -49,4 +49,15 @@
   * (no functional changes) (forwarded request 901475 from glaubitz)</comment>
     <requestid>901480</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>370549812042aba671d0d415cf3c8f69</srcmd5>
+    <version>20210707.00</version>
+    <time>1626788361</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210707.00
+  * Use IP address for calling the metadata server. (#116)
+- from version 20210629.00
+  * use IP for MDS (#115) (forwarded request 907124 from glaubitz)</comment>
+    <requestid>907142</requestid>
+  </revision>
 </revisionlist>

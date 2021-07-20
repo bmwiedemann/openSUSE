@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:15:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210707.00
+  * Use IP address for calling the metadata server. (#116)
+- from version 20210629.00
+  * use IP for MDS (#115)
+
+-------------------------------------------------------------------
 Wed Jun 23 11:25:59 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210603.00
