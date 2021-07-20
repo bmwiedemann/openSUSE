@@ -157,7 +157,9 @@ if [[ "$1" == "0" ]]; then
 fi
 
 %check
-%{__python3} setup.py test
+pushd tests
+%{__python3} ./runner.py
+popd
 
 %files
 %doc LICENSE

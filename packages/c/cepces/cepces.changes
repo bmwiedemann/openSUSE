@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 14:32:34 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Fix configuration missing global section.
+- Add a test runner for executing unittests, and github CI.
+
+-------------------------------------------------------------------
 Mon Jul 12 16:24:51 UTC 2021 - David Mulder <dmulder@suse.com>
 
 - v0.3.4: Allow overriding of parameters from the command line

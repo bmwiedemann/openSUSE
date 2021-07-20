@@ -19,4 +19,14 @@
 </comment>
     <requestid>906537</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>b6132131129875e93d3f359c0abb33ab</srcmd5>
+    <version>0.3.4</version>
+    <time>1626788365</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix configuration missing global section.
+- Add a test runner for executing unittests, and github CI.
+</comment>
+    <requestid>907158</requestid>
+  </revision>
 </revisionlist>
