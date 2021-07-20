@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 10 03:09:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20210709
+   see /usr/share/doc/packages/perl-Test-PerlTidy/Changes
+
+  20210709        2021-07-09
+
+              * Fix the tests when TEST_AUTHOR=1
+                  - Remove t/critic.t
+                  - https://github.com/shlomif/Test-PerlTidy/issues/6
+
+-------------------------------------------------------------------
 Sun Oct  4 03:26:23 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20200930
