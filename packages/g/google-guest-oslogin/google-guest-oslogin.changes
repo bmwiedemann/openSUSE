@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:28:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210707.00
+  * throw exceptions in cache_refresh (#64)
+- from version 20210702.00
+  * Use IP address for calling the metadata server. (#63)
+
+-------------------------------------------------------------------
 Wed Jun 23 11:34:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210618.00

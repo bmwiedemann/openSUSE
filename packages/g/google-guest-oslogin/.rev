@@ -67,4 +67,15 @@
   * flush each group member write (#62) (forwarded request 901479 from glaubitz)</comment>
     <requestid>901484</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3517053f55060cf0968c874dac608f8a</srcmd5>
+    <version>20210707.00</version>
+    <time>1626788359</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210707.00
+  * throw exceptions in cache_refresh (#64)
+- from version 20210702.00
+  * Use IP address for calling the metadata server. (#63) (forwarded request 907130 from glaubitz)</comment>
+    <requestid>907139</requestid>
+  </revision>
 </revisionlist>
