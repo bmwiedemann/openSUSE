@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 19 16:39:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.8.1
+  * Fix bug that corrupts ndarray views when a new block is added
+    to an existing file in absence of a block index.
+- Release 2.8.0
+  * New plugin APIs for block compressors, extensions, and schemas.
+  * New global configuration mechanism (asdf.get_config()).
+  * Support for the asdf:// URI scheme.
+  * Drop support for Python 3.5.
+  * Support for ASDF Standard 1.6.0, which is available via the
+    version argument to AsdfFile.__init__ but not yet the
+    default.
+  * Values that match defaults defined in schemas are no longer
+    automatically removed from the ASDF tree.
+  * None values are no longer removed from the tree on write.
+  * Remove the asdf.test method and asdf.__githash__ attribute.
+  * And more, see CHANGES.rst for details.
+- Update build and runtime requirements
+
+-------------------------------------------------------------------
 Sat Apr 17 14:21:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.7.3

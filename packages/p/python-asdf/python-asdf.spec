@@ -21,36 +21,43 @@
 # current astropy in TW requires python >= 3.7
 %define         skip_python36 1
 Name:           python-asdf
-Version:        2.7.3
+Version:        2.8.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
 URL:            https://github.com/asdf-format/asdf
 Source0:        https://files.pythonhosted.org/packages/source/a/asdf/asdf-%{version}.tar.gz
+BuildRequires:  %{python_module PyYAML >= 3.10}
+BuildRequires:  %{python_module importlib-resources >= 3 if %python-base < 3.9}
+BuildRequires:  %{python_module jmespath >= 0.6.2}
+BuildRequires:  %{python_module jsonschema >= 3.0.2}
+BuildRequires:  %{python_module numpy >= 1.10}
+BuildRequires:  %{python_module packaging >= 16.0}
+BuildRequires:  %{python_module semantic_version >= 2.8}
 BuildRequires:  %{python_module setuptools >= 30.3.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 3.10
-Requires:       python-astropy >= 3.0
-Requires:       python-astropy-helpers
+Requires:       python-jmespath >= 0.6.2
 Requires:       python-jsonschema >= 3.0.2
 Requires:       python-numpy >= 1.10
+Requires:       python-packaging >= 16.0
 Requires:       python-semantic_version >= 2.8
+%if %python_version_nodots < 39
+Requires:       python-importlib-resources >= 3
+%endif
 Recommends:     python-lz4 >= 0.10
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module astropy >= 3.0}
-BuildRequires:  %{python_module astropy-helpers}
-BuildRequires:  %{python_module jsonschema >= 3.0.2}
-BuildRequires:  %{python_module numpy >= 1.10}
-BuildRequires:  %{python_module pytest-astropy}
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module gwcs}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest < 6}
+BuildRequires:  %{python_module pytest-doctestplus}
 BuildRequires:  %{python_module pytest-openfiles >= 0.3.1}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module semantic_version >= 2.8}
 # /SECTION
 %python_subpackages
 
@@ -79,9 +86,14 @@ sed -i -e 's|^#!/usr/bin/env python|#!%{__$python}|' %{buildroot}%{$python_sitel
 
 %check
 export LANG=en_US.UTF-8
+%{python_expand # the tests assume the existence of a `python` command
+mkdir -p build/bin
+ln -s %{__$python} build/bin/python
+}
+export PATH="$(pwd)/build/bin:$PATH"
 # import everything from the source directory because of collection conflicts with buildroot
 export PYTHONPATH=":x"
-%pytest
+%pytest --import-mode=append
 
 %post
 %python_install_alternative asdftool
@@ -91,7 +103,7 @@ export PYTHONPATH=":x"
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
-%license licenses/*
+%license LICENSE
 %python_alternative %{_bindir}/asdftool
 %{python_sitelib}/asdf
 %{python_sitelib}/asdf-%{version}*-info
