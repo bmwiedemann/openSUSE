@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jul 13 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999823
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999823 2021-07-12
+   * Improve the handling of the backend libraries. Provide more useful warnings
+     and error messages. Update the documentation.
+  1.999822 2021-07-09
+    * Make the from_hex(), from_oct(), and from_bin() methods consistent with
+    CORE::oct(), which does not require a leading "0" before the letter ("x",
+     "o", or "b").
+   * Make the from_oct() and new() methods accept octal numbers with prefix
+     "0o", "0O", "o" (lowercase letter o), and "O" (capital letter O).
+   * Make the from_bin() and new() methods accept binary numbers with
+     prefix "0b", "0B", "b", and "B".
+   * Make the from_hex() and new() methods accept hexadecimal numbers with
+     prefix "0x", "0X", "x", and "X".
+   * Update test files to match with the above.
+  1.999821 2021-07-06
+   * Make new() and from_hex() accept the "0X" prefix, not just the "0x" prefix,
+     but not accept just "X" or "x". Now, "0XFF" returns 255, not NaN.
+   * Make new() and from_bin() accept the "0B" prefix, not just the "0b" prefix, but
+     not accept just "B" or "b". Now, "0B1111" returns 255, not NaN.
+   * Make new() and from_oct() accept the "0o" and "0O" prefixes, but not accept
+     just "O" (capital letter O) or "o" (lowercase letter o). Now, "0o377" and
+     "0O377" return 255, not NaN. Also intepret floating point numbers with a
+     leading zero and a binary exponent as an octal number, so that "01.4p0"
+     returns 1.5, not NaN. There is still no ambiguety, since decimal floating
+     point numbers use "e" or "E" before the exponent, and binary and hexadecimal
+     floating point numbers use a "0b"/"0B" or "0x"/"0x" prefix, respectively.
+  1.999820 2021-07-06
+   * Fix bug and improve error messages in Math::BigInt::import().
+  1.999819 2021-07-02
+   * Add method btfac() (triple factorial) and bmfac() (multi-factorial),
+     including tests and documentation.
+   * Add missing and correct erroneous documentation for bfac() (factorial)
+     and bdfac() (double factorial). Also correct handling of special cases
+     and add tests for these cases.
+   * Fix error in bsin() and bcos() causing them to hang indefinitely if the
+     invocand is +/-inf.
+   * Make it possible for the end user to specify the base length used internally
+     in Math::BigInt::Calc.
+
+-------------------------------------------------------------------
 Tue Oct 22 17:06:52 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 1.999818
