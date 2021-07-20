@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 19 16:11:38 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210712.1
+  * Skip getting patch info when no patches are found. (#369)
+- from version 20210712.00
+  * Add Terraform scripts for multi-project deployments (#367)
+- from version 20210709.00
+  * Add examples/Terraform directory. (#366)
+- from version 20210707.00
+  * Fix bug in printing packages to update,
+    return error for zypper patch (#365)
+- from version 20210629.00
+  * Add CloudOps examples for CentOS (#364)
+
+-------------------------------------------------------------------
 Wed Jun 23 11:39:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210621.00
