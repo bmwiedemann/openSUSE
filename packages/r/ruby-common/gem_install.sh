@@ -246,13 +246,14 @@ if options.symlinkbinaries && File.exists?(bindir)
       unversioned = map_executable(options, unversioned)
       File.rename(default_path, full_versioned)
       patchfile(full_versioned,  />= 0(\.a)?/, "= #{options.gemversion}")
+      link_target = File.join(Gem.bindir, full_versioned)
       # unversioned
       [unversioned, ruby_versioned, gem_versioned].each do |linkname|
         full_path = File.join(br_ua_dir, linkname)
         ua_path   = File.join(options.ua_dir, linkname)
-        GILogger.info "Linking '#{linkname}' to '#{full_path}'"
-        File.symlink(linkname, full_path) unless File.symlink? full_path
-        GILogger.info "Linking '#{ua_path}' to '#{linkname}'"
+        GILogger.info "Symlinking '#{full_path} -> '#{linkname}'"
+        File.symlink(link_target, full_path) unless File.symlink? full_path
+        GILogger.info "Symlinking '#{linkname}' -> '#{ua_path}'"
         File.symlink(ua_path, linkname) unless File.symlink? linkname
       end
     end

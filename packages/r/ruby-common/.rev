@@ -173,4 +173,14 @@
 - support --no-document option</comment>
     <requestid>866992</requestid>
   </revision>
+  <revision rev="18" vrev="5">
+    <srcmd5>8d93e5b6d296e6b831fe8ad495480582</srcmd5>
+    <version>2.6</version>
+    <time>1626788323</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the links in /etc/alternatives not to point to themselves
+
+For staging:n</comment>
+    <requestid>904758</requestid>
+  </revision>
 </revisionlist>

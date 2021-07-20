@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  8 12:10:25 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Fix the links in /etc/alternatives not to point to themselves
+
+-------------------------------------------------------------------
 Tue Jan 26 01:46:30 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - cleanup the .gem.* dirs that rubygems creates on 3.0
