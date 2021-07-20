@@ -17,16 +17,13 @@
 
 
 Name:           gnome-initial-setup
-Version:        40.1
+Version:        40.3
 Release:        0
 Summary:        GNOME Initial Setup Assistant
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/OS/InitialSetup
 Source0:        https://download.gnome.org/sources/gnome-initial-setup/40/%{name}-%{version}.tar.xz
-# PATCH-FEATURE-SLE gnome-initial-setup-smarter.patch FATE#325763 FATE#321126 boo#1067288 bnc#1029083 qzhao@suse.com -- Investigate gnome-initial-setup, and make a Smarter gnome initial configuration.
-Patch0:         gnome-initial-setup-smarter.patch
-
 BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
@@ -71,9 +68,6 @@ Initial assistant, helping you to get the system up and running.
 
 %prep
 %setup -q
-%if 0%{?sle_version} >= 150200
-%patch0 -p1
-%endif
 
 %build
 %meson \
