@@ -17,7 +17,7 @@
 
 
 Name:           qatlib
-Version:        20.10.20201116T163433.0257eb1
+Version:        21.05.0
 Release:        0
 Summary:        Intel QuickAssist Technology Library
 License:        BSD-3-clause

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul  3 19:39:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 21.05.0:
+  * Added support for AES-CCM 192/265
+  * Added support for SHA3-224/384/512 (no partials support)
+  * Added support for ChaCha20-Poly1305
+  * Added support for PKE 8K (RSA, DH, ModExp, ModInv)
+  * Fixed device enumeration on different nodes
+  * Fixed pci_vfio_set_command for 32 bit builds
+
+-------------------------------------------------------------------
 Mon Feb  8 09:02:36 UTC 2021 - Torsten Duwe <duwe@suse.com>
 
 - re-add _service file, but "disabled".
