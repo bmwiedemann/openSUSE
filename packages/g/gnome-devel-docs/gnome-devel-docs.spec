@@ -17,7 +17,7 @@
 
 
 Name:           gnome-devel-docs
-Version:        40.0
+Version:        40.3
 Release:        0
 Summary:        GNOME Platform Documentation
 License:        CC-BY-SA-4.0 AND GFDL-1.1-only
