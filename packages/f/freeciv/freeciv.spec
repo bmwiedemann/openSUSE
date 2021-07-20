@@ -17,7 +17,7 @@
 
 
 Name:           freeciv
-Version:        2.6.4
+Version:        2.6.5
 Release:        0
 Summary:        Free Civilization Clone
 License:        GPL-2.0-or-later
@@ -123,6 +123,7 @@ rm %{buildroot}%{_docdir}/freeciv/COPYING
 %exclude %{_docdir}/freeciv/INSTALL*
 %exclude %{_libdir}/*.a
 %exclude %{_libdir}/*.la
+%{_mandir}/man6/freeciv.6%{?ext_man}
 %{_mandir}/man6/freeciv-*.6%{?ext_man}
 %dir %{_sysconfdir}/%{name}
 %config %{_sysconfdir}/%{name}/database.lua
