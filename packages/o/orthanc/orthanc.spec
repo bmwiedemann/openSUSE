@@ -174,6 +174,8 @@ mkdir -p -m 755 %{buildroot}%{_docdir}/%{name}
 mkdir -p -m 755 %{buildroot}/usr/src/%{name}
 # Copy sources
 tar --strip-components 1 -xzf %{S:0} -C %{buildroot}/usr/src/%{name}/
+# Do not mark Python scripts as executable
+find %{buildroot}/usr/src/%{name} -name '*.py' -exec chmod a-x "{}" +
 #...and delete dot files
 rm %{buildroot}/usr/src/%{name}/.hg*
 rm %{buildroot}/usr/src/%{name}/.travis*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 06:00:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove executable bits from Python scripts when creating the source
+  tree for the -source package to stop it requiring /usr/bin/python 
+
+-------------------------------------------------------------------
 Sun Jul 11 11:16:07 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.5
