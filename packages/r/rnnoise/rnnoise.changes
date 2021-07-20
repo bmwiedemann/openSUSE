@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Wed Jul 07 12:27:30 UTC 2021 - dead_mozay@opensuse.org
+
+- Update to version 0.git20210122.1cbdbcf:
+  * Drop unused arguments from README (#103)
+  * docs: fix simple typo, delares -> declares
+  * rename TRAINING -> TRAINING-README for case insensitive file system
+  * Access files in binary mode
+
+-------------------------------------------------------------------
+Fri Sep  4 01:38:12 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
+
+- initial package

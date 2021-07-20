@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="filename">rnnoise</param>
+    <param name="url">https://github.com/xiph/rnnoise.git</param>
+    <param name="scm">git</param>
+    <param name="version">git-master</param>
+    <param name="versionformat">0.git%cd.%h</param>
+    <param name="revision">master</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">dead_mozay@opensuse.org</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
