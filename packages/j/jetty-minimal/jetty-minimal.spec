@@ -1,5 +1,5 @@
 #
-# spec file for package jetty-minimal
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
@@ -18,10 +18,10 @@
 
 
 %global base_name jetty
-%global addver  .v20210604
+%global addver  .v20210629
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
 Name:           %{base_name}-minimal
-Version:        9.4.42
+Version:        9.4.43
 Release:        0
 Summary:        Java Webserver and Servlet Container
 License:        Apache-2.0 OR EPL-1.0
@@ -30,17 +30,17 @@ URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.github.jnr:jnr-unixsocket)
 BuildRequires:  mvn(javax.annotation:javax.annotation-api)
 BuildRequires:  mvn(javax.servlet:javax.servlet-api)
 BuildRequires:  mvn(javax.transaction:javax.transaction-api)
+BuildRequires:  mvn(org.apache.ant:ant)
+BuildRequires:  mvn(org.apache.ant:ant-launcher)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
 BuildRequires:  mvn(org.apache.tomcat:tomcat-jasper)
-BuildRequires:  mvn(org.apache.tomcat:tomcat-util-scan)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+BuildRequires:  mvn(org.eclipse.jetty.orbit:javax.mail.glassfish)
 BuildRequires:  mvn(org.eclipse.jetty.toolchain:jetty-schemas)
 BuildRequires:  mvn(org.ow2.asm:asm)
 BuildRequires:  mvn(org.ow2.asm:asm-commons)
@@ -207,7 +207,8 @@ Group:          Productivity/Networking/Web/Servers
 
 %package        -n %{base_name}-server
 Summary:        The server module for Jetty
-Group:          Productivity/Networking/Web/Servers
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+Group:          Productivity/Neorg.apache.maven.plugins:maven-dependency-plugintworking/Web/Servers
 
 %description    -n %{base_name}-server
 %{extdesc} %{summary}.
@@ -231,13 +232,6 @@ Summary:        The start module for Jetty
 Group:          Productivity/Networking/Web/Servers
 
 %description    -n %{base_name}-start
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-unixsocket
-Summary:        The unixsocket module for Jetty
-Group:          Productivity/Networking/Web/Servers
-
-%description    -n %{base_name}-unixsocket
 %{extdesc} %{summary}.
 
 %package        -n %{base_name}-util
@@ -373,7 +367,7 @@ rm -fr examples/embedded/src/main/java/org/eclipse/jetty/embedded/ManyConnectors
 
 # the default location is not allowed by SELinux
 sed -i '/<SystemProperty name="jetty.state"/d' \
-    jetty-home/src/main/resources/etc/jetty-started.xml
+    jetty-home/src/main/resources%{_sysconfdir}/jetty-started.xml
 
 # remote-resources only copies about.html
 %pom_remove_plugin :maven-remote-resources-plugin
@@ -394,7 +388,7 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module examples
 %pom_disable_module jetty-distribution
 %pom_disable_module jetty-runner
-#%%pom_disable_module jetty-http-spi
+%pom_disable_module jetty-unixsocket
 %pom_disable_module jetty-alpn
 %pom_disable_module jetty-home
 
@@ -502,8 +496,6 @@ ln -s %{_javadir}/%{base_name}/%{base_name}-ant.jar %{buildroot}%{_datadir}/ant/
 %files -n %{base_name}-security -f .mfiles-jetty-security
 
 %files -n %{base_name}-servlets -f .mfiles-jetty-servlets
-
-%files -n %{base_name}-unixsocket -f .mfiles-jetty-unixsocket
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE.txt

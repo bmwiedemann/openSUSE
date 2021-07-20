@@ -79,4 +79,12 @@
     <comment>Distribute some more modules</comment>
     <requestid>902968</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>487c558a5762cb6d6ba71fda1d4c614b</srcmd5>
+    <version>9.4.43</version>
+    <time>1626788354</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1188438, CVE-2021-34429</comment>
+    <requestid>907107</requestid>
+  </revision>
 </revisionlist>

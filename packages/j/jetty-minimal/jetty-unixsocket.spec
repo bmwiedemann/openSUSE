@@ -20,35 +20,24 @@
 %global base_name jetty
 %global addver  .v20210629
 %define src_name %{base_name}.project-%{base_name}-%{version}%{addver}
-Name:           %{base_name}-websocket
+Name:           %{base_name}-unixsocket
 Version:        9.4.43
 Release:        0
-Summary:        The websocket modules for Jetty
+Summary:        The unixsocket modules for Jetty
 License:        Apache-2.0 OR EPL-1.0
 URL:            https://www.eclipse.org/jetty/
 Source0:        https://github.com/eclipse/%{base_name}.project/archive/%{base_name}-%{version}%{addver}.tar.gz#/%{src_name}.tar.gz
 BuildRequires:  fdupes
-# Multiple providers, chose the 1.0 one over 1.1, since
-# the relevant artifacts assume the API version 1.0
-BuildRequires:  jboss-websocket-1.0-api
 BuildRequires:  maven-local
-BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(javax.websocket:javax.websocket-api)
-BuildRequires:  mvn(javax.websocket:javax.websocket-client-api)
+BuildRequires:  mvn(com.github.jnr:jnr-unixsocket)
+BuildRequires:  mvn(org.apache.ant:ant)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-shade-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-dependency-plugin)
 BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-annotations) >= %{version}
 BuildRequires:  mvn(org.eclipse.jetty:jetty-client) >= %{version}
-BuildRequires:  mvn(org.eclipse.jetty:jetty-http) >= %{version}
-BuildRequires:  mvn(org.eclipse.jetty:jetty-io) >= %{version}
 BuildRequires:  mvn(org.eclipse.jetty:jetty-server) >= %{version}
-BuildRequires:  mvn(org.eclipse.jetty:jetty-servlet) >= %{version}
-BuildRequires:  mvn(org.eclipse.jetty:jetty-util) >= %{version}
-BuildRequires:  mvn(org.eclipse.jetty:jetty-xml) >= %{version}
-Requires:       jboss-websocket-1.0-api
 BuildArch:      noarch
-# jp_minimal doesn't have main package
 
 %description
 Jetty is a 100% Java HTTP Server and Servlet Container. This means that you\
@@ -61,49 +50,7 @@ and complications. Furthermore, as a pure java component, Jetty can be simply\
 included in your application for demonstration, distribution or deployment.\
 Jetty is available on all Java supported platforms.
 
-This package contains the websocket modules for Jetty
-
-%package        -n %{base_name}-websocket-api
-Summary:        The websocket-api module for Jetty
-
-%description    -n %{base_name}-websocket-api
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-websocket-client
-Summary:        The The websocket-client module for Jetty
-
-%description    -n %{base_name}-websocket-client
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-websocket-common
-Summary:        The websocket-common module for Jetty
-
-%description    -n %{base_name}-websocket-common
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-websocket-server
-Summary:        The websocket-server module for Jetty
-
-%description    -n %{base_name}-websocket-server
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-websocket-servlet
-Summary:        The websocket-servlet module for Jetty
-
-%description    -n %{base_name}-websocket-servlet
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-javax-websocket-client-impl
-Summary:        The javax-websocket-client-impl module for Jetty
-
-%description    -n %{base_name}-javax-websocket-client-impl
-%{extdesc} %{summary}.
-
-%package        -n %{base_name}-javax-websocket-server-impl
-Summary:        The javax-websocket-server-impl module for Jetty
-
-%description    -n %{base_name}-javax-websocket-server-impl
-%{extdesc} %{summary}.
+This package contains the unixsocket module for Jetty
 
 %package        javadoc
 Summary:        Javadoc for %{name}
@@ -218,7 +165,7 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 # only useful when tests are enabled (copies test deps)
 %pom_remove_plugin :maven-dependency-plugin jetty-client
 
-# all modules besides the current jetty-websocket
+# all modules besides the current jetty-unixsocket
 %pom_disable_module jetty-ant
 %pom_disable_module jetty-http2
 %pom_disable_module jetty-fcgi
@@ -233,7 +180,6 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-jaspi
 %pom_disable_module jetty-rewrite
 %pom_disable_module jetty-nosql
-%pom_disable_module jetty-unixsocket
 %pom_disable_module tests
 %pom_disable_module examples
 %pom_disable_module jetty-quickstart
@@ -242,6 +188,7 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %pom_disable_module jetty-http-spi
 %pom_disable_module jetty-alpn
 %pom_disable_module jetty-home
+%pom_disable_module jetty-websocket
 
 # minimal modules built in jetty-minimal package
 %pom_disable_module jetty-annotations
@@ -288,35 +235,13 @@ sed -i '/<SystemProperty name="jetty.state"/d' \
 %{mvn_package} :jetty-runner __noinstall
 %{mvn_package} :build-resources __noinstall
 
-%{mvn_package} org.eclipse.jetty.cdi: jetty-cdi
-
-%{mvn_package} ':jetty-alpn*-client' jetty-alpn-client
-%{mvn_package} ':jetty-alpn*-server' jetty-alpn-server
-
-%{mvn_package} :apache-jsp jetty-jsp
-%{mvn_alias} :apache-jsp :jetty-jsp
-
-# we don't have all necessary dependencies to run tests
-# missing test dep: org.eclipse.jetty.toolchain:jetty-perf-helper
-%{mvn_build} -f -s
+%{mvn_build} -f
 
 %install
 %mvn_install
 %fdupes -s %{buildroot}%{_javadocdir}
 
-%files -n %{base_name}-websocket-api -f .mfiles-websocket-api
-
-%files -n %{base_name}-websocket-client -f .mfiles-websocket-client
-
-%files -n %{base_name}-websocket-common -f .mfiles-websocket-common
-
-%files -n %{base_name}-websocket-server -f .mfiles-websocket-server
-
-%files -n %{base_name}-websocket-servlet -f .mfiles-websocket-servlet
-
-%files -n %{base_name}-javax-websocket-client-impl -f .mfiles-javax-websocket-client-impl
-
-%files -n %{base_name}-javax-websocket-server-impl -f .mfiles-javax-websocket-server-impl
+%files -f .mfiles
 
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE.txt
