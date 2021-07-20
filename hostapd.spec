@@ -21,7 +21,7 @@ Name:           hostapd
 Version:        2.9
 Release:        0
 Summary:        Daemon for running a WPA capable Access Point
-License:        GPL-2.0-only OR BSD-3-Clause
+License:        BSD-3-Clause OR GPL-2.0-only
 Group:          Hardware/Wifi
 URL:            https://w1.fi/
 Source:         https://w1.fi/releases/hostapd-%{version}.tar.gz
