@@ -80,4 +80,18 @@
   * Update bundled zstd library to 1.4.8 release</comment>
     <requestid>868481</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1ba6a3085e804da4509d5fc461240022</srcmd5>
+    <version>1.5.0.2</version>
+    <time>1626788335</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.0.2:
+  * simplify tests
+  * add new function for them: ZSTD_external(): 0/1
+  * fix build - missing new file: zstd_errors.h
+  * Removed old function which generated custom block header
+  * Updated zstd to new upstream version 1.5.0
+- drop test-once.patch: not needed</comment>
+    <requestid>907022</requestid>
+  </revision>
 </revisionlist>

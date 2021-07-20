@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zstd
-Version:        1.4.8.1
+Version:        1.5.0.2
 Release:        0
 Summary:        ZSTD Bindings for Python
 License:        BSD-2-Clause
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/sergey-dryabzhinsky/python-zstd
 Source:         https://files.pythonhosted.org/packages/source/z/zstd/zstd-%{version}.tar.gz
 Patch0:         test-external.patch
-Patch1:         test-once.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -42,7 +41,6 @@ ZSTD Bindings for Python.
 %prep
 %setup -q -n zstd-%{version}
 %patch0 -p1
-%patch1 -p1
 rm -rf zstd/
 # do not test the version matching, we don't really need exact version of
 # zstd here
@@ -51,7 +49,7 @@ sed -i -e '/test_version/d' tests/__init__.py
 
 %build
 export CFLAGS="%{optflags}"
-%python_build --legacy --pyzstd-legacy --external
+%python_build --legacy --external
 
 %install
 %python_install
