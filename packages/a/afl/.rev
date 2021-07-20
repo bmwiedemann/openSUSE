@@ -974,4 +974,41 @@
     <comment>- s390x added to the compiler files (forwarded request 906530 from peace)</comment>
     <requestid>906608</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>ecdd86a5e8e1f50de1c87dfa829ca6e0</srcmd5>
+    <version>3.14c</version>
+    <time>1626788377</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.14c
+  - afl-fuzz:                                                                                                                                                                                
+    - fix -F when a '/' was part of the parameter                                                                                                                                            
+    - fixed a crash for cmplog for very slow inputs                                                                                                                                          
+    - fix for AFLfast schedule counting                                                                                                                                                      
+    - removed implied -D determinstic from -M main                                                                                                                                           
+    - if the target becomes unavailable check out out/default/error.txt                                                                                                                      
+      for an indicator why                                                                                                                                                                   
+    - AFL_CAL_FAST was a dead env, now does the same as AFL_FAST_CAL                                                                                                                         
+    - reverse read the queue on resumes (more effective)                                                                                                                                     
+    - fix custom mutator trimming                                                                                                                                                            
+  - afl-cc:                                                                                                                                                                                  
+    - Update to COMPCOV/laf-intel that speeds up the instrumentation                                                                                                                         
+      process a lot - thanks to Michael Rodler/f0rki for the PR!                                                                                                                             
+    - Fix for failures for some sized string instrumentations                                                                                                                                
+    - Fix to instrument global namespace functions in c++                                                                                                                                    
+    - Fix for llvm 13                                                                                                                                                                        
+    - support partial linking                                                                                                                                                                
+    - do honor AFL_LLVM_{ALLOW/DENY}LIST for LTO autodictionary and DICT2FILE                                                                                                                
+    - We do support llvm versions from 3.8 to 5.0 again                                                                                                                                      
+  - frida_mode:                                                                                                                                                                              
+    - several fixes for cmplog                                                                                                                                                               
+    - remove need for AFL_FRIDA_PERSISTENT_RETADDR_OFFSET                                                                                                                                    
+    - less coverage collision                                                                                                                                                                
+    - feature parity of aarch64 with intel now (persistent, cmplog,                                                                                                                          
+      in-memory testcases, asan)                                                                                                                                                             
+  - afl-cmin and afl-showmap -i do now descend into subdirectories                                                                                                                           
+    (like afl-fuzz does) - note that afl-cmin.bash does not!                                                                                                                                 
+  - afl_analyze:                                                                                                                                                                             
+    - fix timeout handling (forwarded request 907257 from msmeissn)</comment>
+    <requestid>907258</requestid>
+  </revision>
 </revisionlist>

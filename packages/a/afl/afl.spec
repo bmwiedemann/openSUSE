@@ -17,7 +17,7 @@
 
 
 Name:           afl
-Version:        3.13c
+Version:        3.14c
 Release:        0
 Summary:        American fuzzy lop is a security-oriented fuzzer
 License:        Apache-2.0
@@ -82,11 +82,11 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-64.o
 %endif
 %endif
-%ifarch %ix86 %{arm} s390x
+%ifarch %ix86 %{arm} s390x ppc64le
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
 %{_libexecdir}/%{name}/afl-llvm-rt-32.o
 %endif
-%ifarch %ix86 aarch64 s390x
+%ifarch %ix86 aarch64 s390x ppc64le
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-32.o
 %endif
 %{_libexecdir}/%{name}/afl-compiler-rt.o
@@ -96,6 +96,7 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %endif
 %{_libexecdir}/%{name}/dynamic_list.txt
 %{_libexecdir}/%{name}/*.so
+%{_libexecdir}/%{name}/*.a
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/testcases
 %{_datadir}/%{name}/testcases/*
