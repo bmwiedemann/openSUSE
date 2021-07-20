@@ -18,16 +18,16 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           sqlmap
-Version:        1.5
+Version:        1.5.7
 Release:        0
 Summary:        Automatic SQL injection and database takeover tool
 License:        GPL-2.0-or-later
 URL:            https://github.com/sqlmapproject/sqlmap
-Source:         sqlmap-1.5.tar.gz
+Source:         https://github.com/sqlmapproject/sqlmap/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix_shebang.patch
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 %description
@@ -39,7 +39,6 @@ ultimate penetration tester, and a broad range of switches including database
 fingerprinting, over data fetching from the database, accessing the underlying
 file system, and executing commands on the operating system via out-of-band
 connections.
-
 
 %prep
 %setup -q -n sqlmap-%{version}
@@ -57,14 +56,14 @@ chmod ugo-x thirdparty/identywaf/identYwaf.py
 %build
 
 %install
-mkdir -p %{buildroot}/usr/share/sqlmap
-cp -a * %{buildroot}/usr/share/sqlmap
+mkdir -p %{buildroot}%{_datadir}/sqlmap
+cp -a * %{buildroot}%{_datadir}/sqlmap
 
-%python_expand %fdupes %{buildroot}/usr/share/sqlmap
+%python_expand %fdupes %{buildroot}%{_datadir}/sqlmap
 
 %post
-%{__ln_s} -f  /usr/share/sqlmap/sqlmap.py %{_bindir}
-%{__ln_s} -f  /usr/share/sqlmap/sqlmapapi.py %{_bindir}
+ln -s -f  %{_datadir}/sqlmap/sqlmap.py %{_bindir}
+ln -s -f  %{_datadir}/sqlmap/sqlmapapi.py %{_bindir}
 
 %postun
 case "$1" in
@@ -75,9 +74,9 @@ case "$1" in
 esac
 
 %files
-/usr/share/sqlmap
+%{_datadir}/sqlmap
 
-%license /usr/share/sqlmap/LICENSE
-%doc /usr/share/sqlmap/README.md
+%license %{_datadir}/sqlmap/LICENSE
+%doc %{_datadir}/sqlmap/README.md
 
 %changelog

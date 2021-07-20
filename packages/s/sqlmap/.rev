@@ -7,4 +7,12 @@
     <comment>This can help security researchers to adopt openSUSE as technical distro for their daytime job.</comment>
     <requestid>903660</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c229a40e1d16cb4fbd3e5955581908ef</srcmd5>
+    <version>1.5.7</version>
+    <time>1626788343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907069</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 15 07:21:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.7:
+  * Fixed #4728 (https://github.com/sqlmapproject/sqlmap/issues/4728)
+  * Fixed #4664 (https://github.com/sqlmapproject/sqlmap/issues/4664)
+  * Fixed #4625 (https://github.com/sqlmapproject/sqlmap/issues/4625)
+  * Speedup of caching for char encoding (non-Unicode chars in page)
+  * Fixing HTTP chunking for Python2.6
+
+-------------------------------------------------------------------
 Thu Jul  1 15:38:57 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
 
 - First import from upstream
