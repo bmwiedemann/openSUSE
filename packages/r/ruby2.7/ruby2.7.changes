@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  9 13:16:57 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Expand the %ghost globs - otherwise they are not packaged correctly
+
+-------------------------------------------------------------------
+Thu Jul  8 12:48:39 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Remove links in /etc/alternatives, they are %ghosts
+
+-------------------------------------------------------------------
 Tue Apr 13 12:33:41 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.7.3 (boo#1184644) 

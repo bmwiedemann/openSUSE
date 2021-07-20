@@ -56,4 +56,14 @@
   Complete list of changes at https://github.com/ruby/ruby/compare/v2_7_2...v2_7_3</comment>
     <requestid>884953</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d14893889706f126db4df919d4f811f4</srcmd5>
+    <version>2.7.3</version>
+    <time>1626788324</time>
+    <user>dimstar_suse</user>
+    <comment>- Expand the %ghost globs - otherwise they are not packaged correctly
+
+- Remove links in /etc/alternatives, they are %ghosts</comment>
+    <requestid>905294</requestid>
+  </revision>
 </revisionlist>
