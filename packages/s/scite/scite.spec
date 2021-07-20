@@ -21,10 +21,10 @@
 %define _lto_cflags %{nil}
 %endif
 
-%define tar_ver 503
+%define tar_ver 510
 
 Name:           scite
-Version:        5.0.3
+Version:        5.1.0
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
