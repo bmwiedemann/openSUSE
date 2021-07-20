@@ -109,6 +109,7 @@ BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libmodbus)
 BuildRequires:  pkgconfig(libmosquitto)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
@@ -293,6 +294,14 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-memcachec
 Optional %{name} plugin to sample memcached statistics.
+
+%package plugin-modbus
+Summary:        TCP Modbus Plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-modbus
+Optional %{name} plugin to communicate with TCP Modbus devices.
 
 %package plugin-mqtt
 Summary:        MQTT Plugin for %{name}
@@ -805,6 +814,10 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %files plugin-memcachec
 %{_libdir}/collectd/memcachec.so
 %{_libdir}/collectd/memcachec.la
+
+%files plugin-modbus
+%{_libdir}/collectd/modbus.so
+%{_libdir}/collectd/modbus.la
 
 %files plugin-mqtt
 %{_libdir}/collectd/mqtt.so
