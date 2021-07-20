@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 15 10:11:26 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.12.2:
+  * add support for opencl-enabled tesseract.
+    (gscan2pdf needs help parsing output from
+    opencl-enabled tesseract).
+  * Fixed page numbering when reordering pages.
+    (Inconsistent handling of page numbers
+    when reordering PDF pages)
+  * Update to Hungarian translation
+  * Update to Spanish translation 
+  * Update to Ukrainian translation 
+
+-------------------------------------------------------------------
 Sat May  8 02:08:51 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add dependency for perl module Locale::Language. (bsc#1185787)
