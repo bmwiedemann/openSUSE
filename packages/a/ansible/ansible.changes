@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 03:53:36 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.9.24
+  maintenance release containing numerous bugfixes
+
+-------------------------------------------------------------------
 Mon Jul 12 04:59:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - If building with Python 3, change the shebang of the test scripts
