@@ -40,7 +40,11 @@ Source8:        %{name}.systemd
 Patch2:         %{name}-1.95-examples.patch
 Patch3:         %{name}-text2wave-manpage.patch
 Patch4:         %{name}-1.95-libdir.patch
+%if 0%{?suse_version} > 1500
+Patch7:         %{name}-1.95-audsp-libexec.patch
+%else
 Patch7:         %{name}-1.95-audsp.patch
+%endif
 Patch8:         %{name}-1.96-chroot.patch
 # PATCH-FIX-UPSTREAM festival-no-LD_LIBRARY_PATH-extension.patch bnc#642507 vuntz@opensuse.org -- Do not change LD_LIBRARY_PATH in binaries, to avoid any risks
 Patch9:         %{name}-no-LD_LIBRARY_PATH-extension.patch

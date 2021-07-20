@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 19 02:30:53 UTC 2021 - Yasuhiko Kamata <belphegor@belbel.or.jp>
+
+- Added festival-1.95-audsp-libexec.patch to support new directory
+  structure in Tumbleweed (/usr/libexec should be used for internal
+  binary) (boo#1188227).
+
+-------------------------------------------------------------------
 Fri Sep  4 04:57:39 UTC 2020 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Removed "rcfestival" and added almost equivalent functionality
