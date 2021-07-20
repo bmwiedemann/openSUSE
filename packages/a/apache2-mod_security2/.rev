@@ -253,4 +253,12 @@ Many of the files in the rules/ subdirectory are GPL-2.0 licensed (forwarded req
  * Code cosmetics: checks if actionset is not null before use it</comment>
     <requestid>874491</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>962dbb8c55dcdbf4c475a8dfe28d5e49</srcmd5>
+    <version>2.9.4</version>
+    <time>1626788381</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907289</requestid>
+  </revision>
 </revisionlist>

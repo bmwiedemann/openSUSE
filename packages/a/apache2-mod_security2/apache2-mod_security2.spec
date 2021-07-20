@@ -20,13 +20,13 @@
 %define tarballname   modsecurity-%{version}
 %define usrsharedir %{_datadir}/%{name}
 Name:           apache2-mod_security2
-Version:        2.9.3
+Version:        2.9.4
 Release:        0
 Summary:        Web Application Firewall for apache httpd
 License:        Apache-2.0
 Group:          Productivity/Networking/Web/Servers
-URL:            http://www.modsecurity.org/
-Source:         https://www.modsecurity.org/tarball/%{version}/%{tarballname}.tar.gz
+URL:            https://www.modsecurity.org/
+Source:         https://github.com/SpiderLabs/ModSecurity/releases/download/v%{version}/modsecurity-%{version}.tar.gz
 Source1:        https://github.com/SpiderLabs/owasp-modsecurity-crs/tarball/master//SpiderLabs-owasp-modsecurity-crs-2.2.9-5-gebe8790.tar.gz
 Source2:        mod_security2.conf
 Source6:        README-SUSE-mod_security2.txt
@@ -52,9 +52,6 @@ BuildRequires:  pkgconfig
 Requires:       %{apache_mmn}
 Requires:       %{apache_suse_maintenance_mmn}
 Requires:       apache2
-%if 0%{suse_version} == 1110
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%endif
 
 %description
 ModSecurity is an intrusion detection and prevention
@@ -73,13 +70,7 @@ mv -v SpiderLabs* rules
 %patch3 -p1
 
 %build
-# aclocal only works with newer distributions
-%if 0%{?suse_version} >= 1310
 aclocal
-# on older versions only autoconf is called
-%else
-autoreconf -fi
-%endif
 automake
 %configure --with-apxs=%{apache_apxs} --enable-request-early --enable-htaccess-config --disable-mlogc
 CFLAGS="%{optflags}" make %{?_smp_mflags}
@@ -114,16 +105,14 @@ mv %{buildroot}/%{usrsharedir}/rules/modsecurity_crs_10_setup.conf.example \
 #make test-regression
 
 %files
-%if %{suse_version} == 1110
-%defattr (-,root,root)
-%endif
 %{apache_libexecdir}/%{modname}.so
 %config(noreplace) %{apache_sysconfdir}/conf.d/%{modname}.conf
 %dir %{apache_sysconfdir}/mod_security2.d
 %{apache_sysconfdir}/mod_security2.d/README-SUSE-mod_security2.txt
 %{apache_sysconfdir}/mod_security2.d/empty.conf
 %{usrsharedir}
-%doc README.md CHANGES LICENSE NOTICE authors.txt
+%license LICENSE
+%doc README.md CHANGES NOTICE authors.txt
 %doc doc/README.txt
 %doc doc/README-SUSE-mod_security2.txt
 %doc rules/util/regression-tests

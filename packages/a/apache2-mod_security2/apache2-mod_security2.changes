@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 19 09:37:45 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.9.4:
+  * Add microsec timestamp resolution to the formatted log timestamp
+  * Added missing Geo Countries
+  * Store temporaries in the request pool for regexes compiled per-request.
+  * Fix other usage of the global pool for request temporaries in re_operators.c
+  * Adds a sanity check before use ctl:ruleRemoveTargetById and ctl:ruleRemoveTargetByMsg.
+  * Fix the order of error_msg validation
+  * When the input filter finishes, check whether we returned data
+  * fix: care non-null terminated chunk data
+  * Fix for apr_global_mutex_create() crashes with mod_security
+  * Fix inet addr handling on 64 bit big endian systems
+- Run spec-cleaner
+- Remove if/else for older version of SUSE distribution
+
+-------------------------------------------------------------------
 Tue Feb 23 07:49:57 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.9.3
