@@ -470,4 +470,20 @@
     <comment></comment>
     <requestid>879910</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d661a5e66933059785cee23c40dbfeb3</srcmd5>
+    <version>0.3.16</version>
+    <time>1626788325</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.16
+  Please see https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.15
+  and https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.16
+  for the complete list of changes. A complete changelog is
+  also available in the installed Changelog.txt .
+
+- Do not create dummy symlinks on $self in /etc/alternatives: those
+  files are packages as %ghost and any real file existance only
+  confuses brp-checks, as it detects circular symlinks.</comment>
+    <requestid>906105</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 13 11:03:36 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 0.3.16
+  Please see https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.15
+  and https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.16
+  for the complete list of changes. A complete changelog is
+  also available in the installed Changelog.txt .
+
+-------------------------------------------------------------------
+Thu Jul  8 12:35:35 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not create dummy symlinks on $self in /etc/alternatives: those
+  files are packages as %ghost and any real file existance only
+  confuses brp-checks, as it detects circular symlinks.
+
+-------------------------------------------------------------------
 Thu Mar 18 12:22:57 UTC 2021 - Michel Normand <normand@linux.vnet.ibm.com>
 
 - Update openblas-ppc64be_up2_p8.patch trimed by previous sr

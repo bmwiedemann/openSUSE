@@ -1,5 +1,5 @@
 #
-# spec file for package openblas
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_14
-%define vers 0.3.14
+%define _vers 0_3_16
+%define vers 0.3.16
 %define pname openblas
 
 %bcond_with ringdisabled
@@ -390,13 +390,9 @@ rm -fr %{buildroot}%{p_libdir}/pkgconfig/
 # Dummy target for update-alternatives
 install -d %{buildroot}/%{_sysconfdir}/alternatives
 ln -s lib%{libname}.so.0 %{buildroot}/%{p_libdir}/lib%{pname}.so.0
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/lib%{pname}.so.0
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libblas.so.3
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/libcblas.so.3
 ln -s lib%{pname}.so.0 %{buildroot}/%{p_libdir}/liblapack.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/libblas.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/libcblas.so.3
-ln -s lib%{pname}.so.0 %{buildroot}/%{_sysconfdir}/alternatives/liblapack.so.3
 
 # Fix symlinks
 pushd %{buildroot}%{p_libdir}
