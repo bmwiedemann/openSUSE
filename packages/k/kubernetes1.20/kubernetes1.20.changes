@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Fri Jul 16 13:08:59 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.9:
+  * Bump to golang 1.15.14 in build/**
+  * Bump to golang 1.15.14 in cluster/** and staging/**
+  * Bump to golang 1.15.14 in test/**
+  * Update debian-iptables image to buster-v1.6.5
+  * Update debian-base image to buster-v1.8.0
+  * Bump SMD to v4.1.2 to pick up #102749 fix
+  * generate scheduler merge patches on the pod status instead of the full pod
+  * p&f e2e test: log response header for better troubleshooting
+  * Loadbalancer IngressIP policy should be configured as non-DSR to enable routing mesh by default
+  * Do not throw error when we can't get canonical path
+  * Fix Node Resources plugins score when there are pods with no requests
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.8
+  * Remove error wrap from logs
+  * staging/publishing: Set default go version to go1.15.13
+  * build: Update to k/repo-infra@v0.1.8 (supports go1.15.13)
+  * Use go-runner:v2.3.1-go1.15.13-buster.0 image (built on go1.15.13)
+  * Update to go1.15.13
+  * feat: remove ephemeral-storage etcd requirement
+  * endpointslicemirroring controller mirror address status
+  * sched: fix a bug that a preemptor pod exists as a phantom
+  * Revert "Cleanup portforward streams after their usage"
+  * Remove unnecessary snapshot ability check
+  * serviceOwnsFrontendIP shouldn't report error when the public IP doesn't match
+  * Fix VolumeAttachment garbage collection for migrated PVs
+  * Return UnschedulableAndUnresolvable when looking up volume-related resources returns NotFound error
+  * Return UnschedulableAndUnresolvable instead of Error when failing to lookup pvc or storageclass in VolumeZone plugin
+  * Ignore transient errors when gather stats
+  * Speed up PV provisioning for vsphere driver
+  * fix error of setting negative value for containerLogMaxSize
+  * Upgrade konnectivity-client for GRPC connection fixes
+  * Update etcd image revision
+  * Update debian-base to buster-v1.7.0
+  * Update debian-iptables to buster-v1.6.1
+  * Respect annotation size limit for SSA last-applied.
+  * Remove unnecessary quotes from get-kube scripts
+  * Fix expired unit test certs
+  * fix: delete non existing disk issue
+  * Azure: avoid setting cached Sku when updating VMSS and VMSS instances
+  * Update cos-gpu-installer image
+  * Ref counting is only applicable to Remote endpoints
+  * Make watch order conformance test reliable
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.7
+  * fix removing pods from podTopologyHints mapping
+  * fix: avoid nil-pointer panic when checking the frontend IP configuration
+  * Use CSI driver to determine unique name for migrated in-tree plugins
+  * Add jitter to lease controller
+  * Avoid caching the VMSS instances whose network profile is nil
+  * chunk target operatation for aws targetGroup
+  * Fix watchForLockfileContention memory leak
+  * Fix cleanupMountpoint issue for Windows
+  * Fixed the Dockerfile for the build-image to build from KUBE_BASE_IMAGE_REGISTRY
+
+-------------------------------------------------------------------
 Tue May 18 09:35:39 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.20.7:
