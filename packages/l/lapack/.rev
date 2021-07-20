@@ -420,4 +420,15 @@ An alternative would be to use the older manpages or to pre-generate them.
     <comment></comment>
     <requestid>892381</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>ce520e31c1b191f16df44b360cfb4f24</srcmd5>
+    <version>3.9.0</version>
+    <time>1626788326</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename conflicting MIN.3 and MAX.3 manpages into lapack-{MAX,MIN}.3
+
+- Do not create the dummy files in /etc/alternatives during
+  %install: managed by update-alternatives and packaged as ghost.</comment>
+    <requestid>907083</requestid>
+  </revision>
 </revisionlist>

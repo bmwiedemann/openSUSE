@@ -48,6 +48,12 @@ make man %{?_smp_mflags}
 rm -f DOCS/man/man3/_*_.3
 rm -f DOCS/man/man3/{BLAS_,}SRC_xerbla{_array,}.f.3
 
+# rename conflicting man pages
+pushd DOCS/man/man3
+mv MAX.3 lapack-MAX.3
+mv MIN.3 lapack-MIN.3
+popd
+
 %install
 install -d %{buildroot}%{_mandir}/man3
 install -m 0644 DOCS/man/man3/*.3 %{buildroot}%{_mandir}/man3/

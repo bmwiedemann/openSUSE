@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 19 08:24:18 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Rename conflicting MIN.3 and MAX.3 manpages into lapack-{MAX,MIN}.3
+
+-------------------------------------------------------------------
+Wed Jul 14 11:12:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not create the dummy files in /etc/alternatives during
+  %install: managed by update-alternatives and packaged as ghost.
+
+-------------------------------------------------------------------
 Mon May 10 14:25:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop owning directories provided by filesystem (bsc#1184786)

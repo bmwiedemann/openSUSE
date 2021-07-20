@@ -289,7 +289,6 @@ ln -s libblas.so.%{version} %{buildroot}/%{_libdir}/blas/libblas.so.3
 ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so
 # dummy target for update-alternatives
 ln -s blas/libblas.so.%{version} %{buildroot}/%{_libdir}/libblas.so.3
-ln -s libblas.so.%{version} %{buildroot}/%{_sysconfdir}/alternatives/libblas.so.3
 ## CBLAS
 install -m 644 CBLAS/include/*.h %{buildroot}/%{_includedir}
 install -m 644 libcblas.a %{buildroot}/%{_libdir}
@@ -298,7 +297,6 @@ ln -s libcblas.so.%{version} %{buildroot}/%{_libdir}/blas/libcblas.so.3
 ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so
 # dummy target for update-alternatives
 ln -s blas/libcblas.so.%{version} %{buildroot}/%{_libdir}/libcblas.so.3
-ln -s libcblas.so.%{version} %{buildroot}/%{_sysconfdir}/alternatives/libcblas.so.3
 ## LAPACK
 install -d %{buildroot}/%{_libdir}/lapack
 install -m 644 liblapack.a %{buildroot}/%{_libdir}
@@ -307,7 +305,6 @@ ln -s liblapack.so.%{version} %{buildroot}/%{_libdir}/lapack/liblapack.so.3
 ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so
 # dummy target for update-alternatives
 ln -s lapack/liblapack.so.%{version} %{buildroot}/%{_libdir}/liblapack.so.3
-ln -s liblapack.so.%{version} %{buildroot}/%{_sysconfdir}/alternatives/liblapack.so.3
 ## LAPACKE
 cd LAPACKE
 install -m 644 include/*.h %{buildroot}/%{_includedir}
