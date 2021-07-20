@@ -192,4 +192,18 @@ A model Open Source game.</comment>
     <comment></comment>
     <requestid>896623</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>23564ad4ea3a40ca244e7cec5b25c65f</srcmd5>
+    <version>1.15.14</version>
+    <time>1626788379</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.15.14:
+  * The Battle for Wesnoth team is proud to announce that 1.15.14 is the first
+    beta for 1.16!
+  * Full changes:
+    https://github.com/wesnoth/wesnoth/blob/1.15.14/changelog.md
+- remove fix-widgets.patch (upstream) 
+</comment>
+    <requestid>907263</requestid>
+  </revision>
 </revisionlist>

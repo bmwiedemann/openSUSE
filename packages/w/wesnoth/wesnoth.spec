@@ -18,15 +18,13 @@
 
 %define boost_min_version 1.56
 Name:           wesnoth
-Version:        1.15.13
+Version:        1.15.14
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
 Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
 Source:         https://github.com/wesnoth/wesnoth/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-widgets.patch -- https://github.com/wesnoth/wesnoth/issues/5823
-Patch0:         fix-widgets.patch
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  dejavu
 BuildRequires:  fdupes
@@ -111,7 +109,6 @@ This package solely contains the basic file structure in order to have it owned 
 
 %prep
 %setup -q
-%patch0 -p1
 # Fix rpmlint's "E: env-script-interpreter".
 sed -i "s:/usr/bin/env python:/usr/bin/python:g" $(find data/tools -type f)
 

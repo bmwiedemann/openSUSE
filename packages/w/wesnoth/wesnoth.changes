@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 16 20:45:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.14:
+  * The Battle for Wesnoth team is proud to announce that 1.15.14 is the first
+    beta for 1.16!
+  * Full changes:
+    https://github.com/wesnoth/wesnoth/blob/1.15.14/changelog.md
+- remove fix-widgets.patch (upstream) 
+
+-------------------------------------------------------------------
 Mon May 31 13:34:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.15.13
