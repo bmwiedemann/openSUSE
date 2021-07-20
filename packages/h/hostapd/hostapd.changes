@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 14 08:41:42 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- fixed AppArmor profile
+
+-------------------------------------------------------------------
 Tue Apr  6 14:51:18 UTC 2021 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Add CVE-2021-30004.patch -- forging attacks may occur because

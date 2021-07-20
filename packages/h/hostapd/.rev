@@ -401,4 +401,12 @@ ChangeLog for hostapd since 2.4:
     <comment></comment>
     <requestid>883455</requestid>
   </revision>
+  <revision rev="42" vrev="6">
+    <srcmd5>21c78f67fc13a1dcdee2b59110ae72ce</srcmd5>
+    <version>2.9</version>
+    <time>1626788355</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907127</requestid>
+  </revision>
 </revisionlist>

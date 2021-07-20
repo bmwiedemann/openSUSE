@@ -20,7 +20,9 @@ profile hostapd /usr/sbin/hostapd {
 
   /etc/libnl/classid r,
 
-  #/proc/*/net/psched r,
+  @{PROC}/sys/net/ipv*/conf/*/arp_accept w,
+  /sys/devices/platform/**/net/**/proxyarp_wifi w,
+  /sys/devices/platform/**/net/**/hairpin_mode w,
 
   # grant access to RFKILL control device
   /dev/rfkill rw,
