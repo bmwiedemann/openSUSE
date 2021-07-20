@@ -36,12 +36,18 @@ BuildRequires:  %{python_module pytest-runner}
 # /SECTION
 BuildRequires:  unzip
 BuildRequires:  fdupes
+%if 0%{?sle_version} == 150200 || 0%{?sle_version} == 150300
+BuildRequires:  python2-xml
+%endif
 Requires:       python-colorclass
 Requires:       python-easygui
 Requires:       python-msoffcrypto-tool
 Requires:       python-olefile >= 0.46
 Recommends:     python-pcodedmp >= 1.2.5
 Requires:       python-pyparsing >= 2.1.0
+%if "%{python_flavor}" == "python2"
+Requires:       python2-xml
+%endif
 BuildArch:      noarch
 %python_subpackages
 
