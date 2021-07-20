@@ -1,5 +1,0 @@
-<package name="python-django-action-framework" project="openSUSE:Factory">
-  <title></title>
-  <description>Easily create actions and various interfaces around them</description>
-  <devel project="devel:languages:python:django" package="python-django-action-framework"/>
-</package>
