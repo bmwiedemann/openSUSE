@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jul 17 11:52:03 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Move the scriptlet dependencies to the profiles subpackage
+- Tighten the dependencies between library and profiles subpackage
+- Fix upgrade path for package split
+
+-------------------------------------------------------------------
+Fri Jul  9 21:55:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Split profiles package for Shared Library Packaging policy 
+
+-------------------------------------------------------------------
+Thu Jun  3 16:18:40 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.2.3
+  * Profiles: minimal: non-pasword authentication is now explicitly
+    disabled in dconf
+  * Profiles: fingerprint-auth stack now retains error code
+    reported from fprintd
+  * Profiles: systemd-resolved is now enabled by default in nis and
+    minimal profiles
+  * Profiles: pam_u2f configuration got new feature
+    without-pam-u2f-nouserok
+  * creating a new profile which is based on existing profile no
+    longer creates broken symbolic links to non-existing files
+  * cli: command names and descriptions shows translated text
+    correctly now
+  * cli: got new undocumented command uninstall which can be used
+    by distributions when removing authselect package to remove
+    authselect configuration from the system
+  * lib: umask is now used with correct bits
+
+-------------------------------------------------------------------
 Sun Apr 12 14:56:53 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Initial package based on Fedora package

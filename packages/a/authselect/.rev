@@ -7,4 +7,33 @@
     <comment>Initial packaging for openSUSE</comment>
     <requestid>794618</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c855774cd1ddd4d7d455d1dc3eef88a2</srcmd5>
+    <version>1.2.3</version>
+    <time>1626788329</time>
+    <user>dimstar_suse</user>
+    <comment>- Move the scriptlet dependencies to the profiles subpackage
+- Tighten the dependencies between library and profiles subpackage
+- Fix upgrade path for package split
+- Split profiles package for Shared Library Packaging policy 
+- Update to version 1.2.3
+  * Profiles: minimal: non-pasword authentication is now explicitly
+    disabled in dconf
+  * Profiles: fingerprint-auth stack now retains error code
+    reported from fprintd
+  * Profiles: systemd-resolved is now enabled by default in nis and
+    minimal profiles
+  * Profiles: pam_u2f configuration got new feature
+    without-pam-u2f-nouserok
+  * creating a new profile which is based on existing profile no
+    longer creates broken symbolic links to non-existing files
+  * cli: command names and descriptions shows translated text
+    correctly now
+  * cli: got new undocumented command uninstall which can be used
+    by distributions when removing authselect package to remove
+    authselect configuration from the system
+  * lib: umask is now used with correct bits
+</comment>
+    <requestid>906817</requestid>
+  </revision>
 </revisionlist>

@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2017-2020 Red Hat, Inc.
 # Copyright (c) 2020 Neal Gompa <ngompa13@gmail.com>.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +18,12 @@
 #
 
 # Shared library package names
-%global somajor 1
+%global somajor 3
 %global libname lib%{name}%{somajor}
 %global devname lib%{name}-devel
 
 Name:           authselect
-Version:        1.2
+Version:        1.2.3
 Release:        0
 Summary:        Configures authentication and identity sources from supported profiles
 License:        GPL-3.0-or-later
@@ -59,6 +60,18 @@ supported by authselect.
 
 %package -n %{libname}
 Summary:        Utility library used by the authselect tool
+Requires:       %{name}-profiles = %{version}-%{release}
+# Package split
+Conflicts:      libauthselect1 < %{version}-%{release}
+Obsoletes:      libauthselect1 < %{version}-%{release}
+
+%description -n %{libname}
+Common library files for authselect. This package is used by the authselect
+command line tool and any other potential front-ends.
+
+%package profiles
+Summary:        Authentication configuration profiles
+BuildArch:      noarch
 # Required by scriptlets
 Requires(pre):  coreutils
 Requires(posttrans): coreutils
@@ -68,10 +81,13 @@ Requires(posttrans): grep
 Requires(posttrans): pam >= 1.3.1-23
 Requires(posttrans): sed
 Requires(posttrans): systemd
+# Package split
+Conflicts:      libauthselect1 < %{version}-%{release}
+Obsoletes:      libauthselect1 < %{version}-%{release}
 
-%description -n %{libname}
-Common library files for authselect. This package is used by the authselect
-command line tool and any other potential front-ends.
+%description profiles
+This package contains the configuration profiles offered by authselect to
+allow users to configure authentication on the system.
 
 %package compat
 Summary:        Tool to provide minimum backwards compatibility with authconfig
@@ -135,7 +151,11 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files -n %{libname} -f %{name}.lang
+%files -n %{libname}
+%license COPYING
+%{_libdir}/libauthselect.so.%{somajor}{,.*}
+
+%files profiles
 %dir %{_sysconfdir}/authselect
 %dir %{_sysconfdir}/authselect/custom
 %dir %{_localstatedir}/lib/authselect
@@ -156,6 +176,8 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %dir %{_datadir}/authselect/default/nis/
 %dir %{_datadir}/authselect/default/sssd/
 %dir %{_datadir}/authselect/default/winbind/
+%{_datadir}/authselect/default/minimal/dconf-db
+%{_datadir}/authselect/default/minimal/dconf-locks
 %{_datadir}/authselect/default/minimal/nsswitch.conf
 %{_datadir}/authselect/default/minimal/password-auth
 %{_datadir}/authselect/default/minimal/postlogin
@@ -190,21 +212,19 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 %{_datadir}/authselect/default/winbind/README
 %{_datadir}/authselect/default/winbind/REQUIREMENTS
 %{_datadir}/authselect/default/winbind/system-auth
-%{_libdir}/libauthselect.so.%{somajor}{,.*}
 %{_mandir}/man5/authselect-profiles.5*
-%license COPYING
-%doc README.md
 
 %files compat
 %{_sbindir}/authconfig
 %{python3_sitelib}/authselect/
 
 %files -n %{devname}
+%doc README.md
 %{_includedir}/authselect.h
 %{_libdir}/libauthselect.so
 %{_libdir}/pkgconfig/authselect.pc
 
-%files -f %{name}.8.lang
+%files -f %{name}.lang -f %{name}.8.lang
 %{_bindir}/authselect
 %{_mandir}/man8/authselect.8*
 %{_mandir}/man7/authselect-migration.7*
@@ -212,7 +232,7 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/authselect-completion.sh %{build
 
 %global validfile %{_localstatedir}/lib/rpm-state/%{name}.config-valid
 
-%pre -n %{libname}
+%pre profiles
 # If authselect isn't installed and used, skip
 if [ ! -x %{_bindir}/authselect ]; then
     exit 0
@@ -231,7 +251,7 @@ fi
 
 exit 0
 
-%posttrans -n %{libname}
+%posttrans profiles
 # If authselect isn't installed and used, skip
 if [ ! -x %{_bindir}/authselect ]; then
     exit 0
