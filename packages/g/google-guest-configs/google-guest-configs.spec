@@ -17,7 +17,7 @@
 
 
 Name:           google-guest-configs
-Version:        20210317.00
+Version:        20210702.00
 Release:        0
 Summary:        Google Cloud Guest Configs
 License:        Apache-2.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:03:26 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20210702.00
+  * use grep for hostname check (#23)
+- from version 20210629.00
+  * address set_hostname vuln (#22)
+- from version 20210324.00
+  * dracut.conf wants spaces around values (#19)
+
+-------------------------------------------------------------------
 Wed Mar 31 12:55:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210317.00 (bsc#1183414, bsc#1183415)

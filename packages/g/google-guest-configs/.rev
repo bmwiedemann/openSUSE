@@ -23,4 +23,17 @@
     <comment></comment>
     <requestid>882393</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd3b8f856288e82c5b233aaa60bcc950</srcmd5>
+    <version>20210702.00</version>
+    <time>1626788356</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210702.00
+  * use grep for hostname check (#23)
+- from version 20210629.00
+  * address set_hostname vuln (#22)
+- from version 20210324.00
+  * dracut.conf wants spaces around values (#19) (forwarded request 907120 from glaubitz)</comment>
+    <requestid>907123</requestid>
+  </revision>
 </revisionlist>
