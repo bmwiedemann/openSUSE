@@ -1,5 +1,5 @@
 #
-# spec file for package kubernetes1.19
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -22,7 +22,7 @@
 %define baseversionminus1 1.18
 
 Name:           kubernetes%{baseversion}
-Version:        1.19.10
+Version:        1.19.13
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -51,8 +51,8 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.19.3 requires at least go 1.15.2 (see changelog)
-BuildRequires:  go >= 1.15.2
+# Kubernetes 1.19.13 requires at least go 1.15.14 (see changelog)
+BuildRequires:  go >= 1.15.14
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
@@ -70,6 +70,7 @@ for management and discovery.
 
 
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management

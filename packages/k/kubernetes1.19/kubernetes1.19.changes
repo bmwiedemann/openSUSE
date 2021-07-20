@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Fri Jul 16 13:08:49 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.13:
+  * Bump to golang 1.15.14 in build/**
+  * Bump to golang 1.15.14 in cluster/** and staging/**
+  * Bump to golang 1.15.14 in test/**
+  * Update debian-iptables image to buster-v1.6.5
+  * Update debian-base image to buster-v1.8.0
+  * Bump SMD to v4.1.2 to pick up #102749 fix
+  * generate scheduler merge patches on the pod status instead of the full pod
+  * Handle int -> float conversion in FromUnstructured
+  * Fix Node Resources plugins score when there are pods with no requests
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.12
+  * Remove error wrap from logs
+  * staging/publishing: Set default go version to go1.15.13
+  * build: Update to k/repo-infra@v0.1.8 (supports go1.15.13)
+  * Use go-runner:v2.3.1-go1.15.13-buster.0 image (built on go1.15.13)
+  * Update to go1.15.13
+  * Return UnschedulableAndUnresolvable when looking up volume-related resources returns NotFound error
+  * Return UnschedulableAndUnresolvable instead of Error when failing to lookup pvc or storageclass in VolumeZone plugin
+  * sched: fix a bug that a preemptor pod exists as a phantom
+  * Revert "Cleanup portforward streams after their usage"
+  * Fix VolumeAttachment garbage collection for migrated PVs
+  * Ignore transient errors when gather stats
+  * Speed up PV provisioning for vsphere driver
+  * dependencies: update debian-base/debian-iptables regex
+  * Update etcd image revision
+  * Update debian-base to buster-v1.7.0
+  * Update debian-iptables to buster-v1.6.1
+  * Respect annotation size limit for SSA last-applied.
+  * Fix expired unit test certs
+  * fix: delete non existing disk issue
+  * Azure: avoid setting cached Sku when updating VMSS and VMSS instances
+  * Update cos-gpu-installer image
+  * Ref counting is only applicable to Remote endpoints
+  * Make watch order conformance test reliable
+  * actually retry if we failed to reconcile some objects
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.11
+  * chunk target operatation for aws targetGroup
+  * Use CSI driver to determine unique name for migrated in-tree plugins
+  * staging/publishing: Set default go version to go1.15.12
+  * build: Update to k/repo-infra@v0.1.7 (supports go1.15.12)
+  * Use go-runner:v2.3.1-go1.15.12-buster.0 image (built on go1.15.12)
+  * Update to go1.15.12
+  * Avoid caching the VMSS instances whose network profile is nil
+  * Fix watchForLockfileContention memory leak
+  * Updating EndpointSlice controllers to avoid duplicate creations
+  * Backport SIG Node approvers to 1.19
+  * Update pkg/volume/azure_file/azure_provision.go
+  * Normalize share name to not include capital letters
+  * Extend pod start timeout to 5min for storage subpath configmap test
+  * no watch endpointslice in userpace mode
+  * Ensure service deleted when the Azure resource group has been deleted
+  * Updating EndpointSlice validation to match Endpoints validation
+  * Make parallel build memory threshold configurable
+  * fix: azure file namespace issue in csi translation
+  * pkg/kubelet: improve the node informer sync check
+  * Additional CVE-2021-3121 fix
+  * Fix startupProbe behaviour changed
+  * Fix test
+  * staging/publishing: Set default go version to go1.15.10
+  * build: Update to k/repo-infra@v0.1.6 (supports go1.15.11)
+  * Use go-runner:v2.3.1-go1.15.11-buster.0 image (built on go1.15.11)
+  * Update to go1.15.11
+  * add duration encoder to structured logger
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.10
+  * apf: exempt probes /healthz /livez /readyz
+  * list pod list once to avoid timeout
+  * Cleanup portforward streams after their usage
+  * Fixed the Dockerfile for the build-image to build from KUBE_BASE_IMAGE_REGISTRY
+
+-------------------------------------------------------------------
 Thu Apr 15 07:59:11 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.19.10:
