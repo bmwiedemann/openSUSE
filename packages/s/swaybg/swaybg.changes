@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 20 07:48:35 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1:
+  * This release contains performance improvements: swaybg should use less
+    memory and load faster.
+
+-------------------------------------------------------------------
 Thu May  7 05:50:36 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Remove dependency on wlc. It is long deprecated and actually                                                                                                                           

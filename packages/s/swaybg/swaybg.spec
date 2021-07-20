@@ -1,7 +1,7 @@
 #
 # spec file for package swaybg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           swaybg
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Wallpaper tool for Wayland compositors
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swaybg
-Source0:        https://github.com/swaywm/swaybg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/swaywm/swaybg/releases/download/v%{version}/swaybg-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig

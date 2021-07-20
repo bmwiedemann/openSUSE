@@ -16,4 +16,14 @@
   wlroots is used.</comment>
     <requestid>800873</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a5aa92b8d7a628fb76e2fc95db3767f</srcmd5>
+    <version>1.1</version>
+    <time>1626788375</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1:
+  * This release contains performance improvements: swaybg should use less
+    memory and load faster.</comment>
+    <requestid>907254</requestid>
+  </revision>
 </revisionlist>
