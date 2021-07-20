@@ -22,7 +22,7 @@
 %define baseversionminus1 1.20
 
 Name:           kubernetes%{baseversion}
-Version:        1.21.1
+Version:        1.21.3
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -47,14 +47,14 @@ Patch2:         kubeadm-opensuse-registry.patch
 Patch3:         opensuse-version-checks.patch
 # Patch to change the default flexvolume path in kubeadm to match that used by our kubelet, else kubeadm tries to write to /usr when kubelet is already looking at a path on /var thanks to the fix to bsc#1084766
 Patch4:         kubeadm-opensuse-flexvolume.patch
-# Patch to change coredns image name so it doesn't require a specific coredns namespace inside the kubic namespace
-Patch5:         kubeadm-opensuse-corednsimage.patch
+# Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
+Patch5:         revert-coredns-image-renaming.patch
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.21.1 requires at least go 1.16.4 (see changelog)
-BuildRequires:  go >= 1.16.4
+# Kubernetes 1.21.3 requires at least go 1.16.6 (see changelog)
+BuildRequires:  go >= 1.16.6
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
@@ -73,7 +73,10 @@ for management and discovery.
 
 
 
+
+
 # packages to build containerized control plane
+
 %package apiserver
 Summary:        Kubernetes apiserver for container image
 Group:          System/Management
