@@ -18,15 +18,15 @@
 
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version 12644e614e25b05da6fd08a38ffa0cfe1903fdec
+%define git_version 4144b63817ebcc5b358fc2c8ef95f7cddd709aa7
 
 # Package-wide golang version
 %define go_version 1.13
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.0.0
-%define _version 1.0.0
+Version:        1.0.1
+%define _version 1.0.1
 Release:        0
 Summary:        Tool for spawning and running OCI containers
 License:        Apache-2.0
@@ -36,8 +36,6 @@ Source0:        https://github.com/opencontainers/runc/releases/download/v%{_ver
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{_version}/runc.tar.xz.asc#/runc-%{_version}.tar.xz.asc
 Source2:        runc.keyring
 Source3:        runc-rpmlintrc
-# FIX-UPSTREAM: Backport of <https://github.com/opencontainers/runc/pull/3055>. boo#1187704
-Patch1:         boo1187704-0001-cgroupv2-ebpf-ignore-inaccessible-existing-programs.patch
 BuildRequires:  fdupes
 BuildRequires:  go-go-md2man
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
@@ -49,17 +47,12 @@ Recommends:     criu
 # There used to be a docker-runc package which was specifically for Docker.
 # Since Docker now tracks upstream more consistently, we use the same package
 # but we need to obsolete the old one. bsc#1181677
-# NOTE: We can't use the package version here because docker-runc used a
-#       different versioning scheme by accident (1.0.0rc92 vs 1.0.0~rc92 -- and
-#       GNU sort considers the former to be newer than the latter, in fact
-#       1.0.0rc92 is newer than 1.0.0 according to GNU sort). So we invent a
-#       fake 1.0.0.1 version.
-Obsoletes:      docker-runc < 1.0.0.1
-Provides:       docker-runc = 1.0.0.1.%{version}
+Obsoletes:      docker-runc < %{version}
+Provides:       docker-runc = %{version}
 # KUBIC-SPECIFIC: There used to be a kubic-specific docker-runc package, but
 #                 now it's been merged into the one package. bsc#1181677
-Obsoletes:      docker-runc-kubic < 1.0.0.1
-Provides:       docker-runc-kubic = 1.0.0.1.%{version}
+Obsoletes:      docker-runc-kubic < %{version}
+Provides:       docker-runc-kubic = %{version}
 Obsoletes:      docker-runc = 0.1.1+gitr2819_50a19c6
 Obsoletes:      docker-runc_50a19c6
 
@@ -71,8 +64,6 @@ and has grown to become a separate project entirely.
 
 %prep
 %setup -q -n %{name}-%{_version}
-# boo#1187704
-%patch1 -p1
 
 %build
 # build runc

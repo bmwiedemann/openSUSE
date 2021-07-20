@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jul 18 02:40:16 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.1. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.1
+
+  * Fixed occasional runc exec/run failure ("interrupted system call") on an
+    Azure volume.
+  * Fixed "unable to find groups ... token too long" error with /etc/group
+    containing lines longer than 64K characters.
+  * cgroup/systemd/v1: fix leaving cgroup frozen after Set if a parent cgroup is
+    frozen. This is a regression in 1.0.0, not affecting runc itself but some
+    of libcontainer users (e.g Kubernetes).
+  * cgroupv2: bpf: Ignore inaccessible existing programs in case of
+    permission error when handling replacement of existing bpf cgroup
+    programs. This fixes a regression in 1.0.0, where some SELinux
+    policies would block runc from being able to run entirely.
+  * cgroup/systemd/v2: don't freeze cgroup on Set.
+  * cgroup/systemd/v1: avoid unnecessary freeze on Set.
+
+- Remove upstreamed patches:
+  + boo1187704-0001-cgroupv2-ebpf-ignore-inaccessible-existing-programs.patch
+
+-------------------------------------------------------------------
 Thu Jul  1 03:39:56 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Backport <https://github.com/opencontainers/runc/pull/3055> to fix issues
