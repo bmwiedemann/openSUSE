@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 13:22:18 MDT 2021 - carnold@suse.com
+
+- bsc#1185531 - virt-viewer 10.0 second display handling
+  0005-Fix-creation-of-window-when-using-single-QXL-card-with-2-heads.patch
+
+-------------------------------------------------------------------
 Tue May 11 15:25:09 MDT 2021 - carnold@suse.com
 
 - libgovirt doesn't exist on SLE so enable only for Tumbleweed

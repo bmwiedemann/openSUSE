@@ -36,6 +36,7 @@ Patch1:         0001-src-initialize-keymaps-variable.patch
 Patch2:         0002-rpm-explicitly-tell-meson-to-disable-spice-ovirt.patch
 Patch3:         0003-config.h-avoid-extra-hyphen-in-build-ID-value.patch
 Patch4:         0004-config.h-conditionally-define-REMOTE_VIEWER_OS_ID.patch
+Patch5:         0005-Fix-creation-of-window-when-using-single-QXL-card-with-2-heads.patch
 Patch50:        netcat.patch
 Patch51:        virtview-desktop.patch
 Patch52:        virtview-dont-show-Domain-0.patch

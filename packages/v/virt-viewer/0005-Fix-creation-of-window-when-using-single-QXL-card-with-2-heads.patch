@@ -1,0 +1,36 @@
+Subject: Fix creation of window when using single QXL card with 2 heads
+From: Daniel P. Berrangé berrange@redhat.com Mon Jun 28 18:45:25 2021 +0100
+Date: Mon Jun 28 18:47:02 2021 +0100:
+Git: 70fe65f1881d4ecaa3bab563485f5239ea24da24
+
+With a single QXL card with > 1 head, initially only the first head
+is active. As a result virt-viewer will not create the windows when
+it first connects. They have to be created explicitly when user
+requests to activate the window.
+
+Fixes: https://gitlab.com/virt-viewer/virt-viewer/-/issues/46
+Fixes: https://gitlab.com/virt-viewer/virt-viewer/-/issues/37
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+diff --git a/src/virt-viewer-app.c b/src/virt-viewer-app.c
+index c01fe76..06c4497 100644
+--- a/src/virt-viewer-app.c
++++ b/src/virt-viewer-app.c
+@@ -2368,6 +2368,7 @@ virt_viewer_app_action_monitor(GSimpleAction *act,
+ {
+     VirtViewerApp *self;
+     VirtViewerWindow *win;
++    VirtViewerDisplay *display;
+     VirtViewerAppPrivate *priv;
+     int nth;
+ 
+@@ -2379,7 +2380,8 @@ virt_viewer_app_action_monitor(GSimpleAction *act,
+         return;
+ 
+     nth = GPOINTER_TO_INT(g_object_get_data(G_OBJECT(act), "nth"));
+-    win = virt_viewer_app_get_nth_window(self, nth);
++    display = VIRT_VIEWER_DISPLAY(g_hash_table_lookup(priv->displays, GINT_TO_POINTER(nth)));
++    win = ensure_window_for_display(self, display);
+ 
+     virt_viewer_app_action_window(self, win, act, state);
+ }
