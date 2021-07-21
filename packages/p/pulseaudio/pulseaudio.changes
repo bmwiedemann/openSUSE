@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 18 11:37:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Remove unneeded shadow dependency, no longer required due to
+  systemd-sysusers
+
+-------------------------------------------------------------------
 Sat Jun 26 17:16:27 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

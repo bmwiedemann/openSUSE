@@ -113,7 +113,6 @@ Requires:       udev >= 146
 %requires_eq    liborc-0_4-0
 Requires(post): %fillup_prereq
 Requires(pre):  group(audio)
-Requires(pre):  shadow
 %sysusers_requires
 Recommends:     alsa-plugins-pulse
 Suggests:       libsoxr0 >= 0.1.1
