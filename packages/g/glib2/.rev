@@ -1874,4 +1874,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment> (forwarded request 899659 from dimstar)</comment>
     <requestid>900138</requestid>
   </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>106462030d953f31e035e4830969b3a8</srcmd5>
+    <version>2.68.3</version>
+    <time>1626887159</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906591 from dimstar)</comment>
+    <requestid>907047</requestid>
+  </revision>
 </revisionlist>

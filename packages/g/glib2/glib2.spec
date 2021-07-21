@@ -353,7 +353,7 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 %{ldconfig}
 for ENV in gnome xfce lxde
 do mimeapps="%{_localstatedir}/cache/gio-2.0/$ENV-mimeapps.list" &&
-	<"${mimeapps}" || cat >"${mimeapps}" <<EOF
+	2>/dev/null <"${mimeapps}" || cat >"${mimeapps}" <<EOF
 # Dummy file. Install desktop-file-utils to get better defaults.
 [Default Applications]
 EOF
