@@ -966,4 +966,1194 @@
     <comment> (forwarded request 899660 from dimstar)</comment>
     <requestid>900139</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>6cc950a05824dfe8508c660a0a3aeecb</srcmd5>
+    <version>40.3</version>
+    <time>1626887172</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.3:
+  + drive-menu: Improve detection of network mounts.
+  + Misc. bug fixes.
+- Rebase gse-sle-classic-ext.patch.
+- Update to version 40.2:
+  + window-list: Extend reactive area of minimap to screen edges.
+  + Misc. bug fixes.
+  + Updated translations.
+- Update to version 40.1:
+  + Disable welcome dialog in classic session.
+  + windowsNavigator: Adjust to a late gnome-shell change.
+- Have gnome-shell-classic obsolete gnome-shell-classic-session,
+  since gnome-shell-classic-session is no longer used.
+- Remove gnome-shell-classic-session package: From the upstream
+  commit 9a78c7e4, the gnome-classic.session was not used anymore,
+  we can remove gnome-shell-classic-session package now
+  (bsc#1184933).
+- Adapt sle-classic to version 40.0
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic@suse.com.tar.gz
+- Update to version 40.0:
+  + Updated translations.
+- Move user-theme schema file to user-theme package.
+- Update to version 40.rc:
+  + native-window-placement: Adjust to gnome-shell changes.
+  + windows-navigator: Adjust to gnome-shell changes.
+  + window-list, workspace-indicator: Only show previews for up to
+    six workspaces.
+  + window-list, workspace-indicator: Improve workspace preview
+    appearance.
+  + Updated translations.
+- Update to version 40.beta:
+  + Add tooltips to workspace thumbnails.
+  + Drop arrows from top bar menus.
+  + drive-menu: Mark mounts that can be unmounted as removable.
+  + Remove horizontal-workspaces extension.
+  + Adjust to shell overview changes.
+  + Fix crashes.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Update to version 40.alpha.1:
+  + Don't depend on sassc when building from tarball.
+  + Port extensions preferences to GTK4.
+  + Misc. bug fixes and cleanups.
+- Update to version 3.38.2:
+  + window-list: Honor changes in skip-taskbar property.
+  + window-list, workspace-indicator:
+    - Improve previews in workspace thumbs.
+    - Adjust to 3.38 changes.
+  + auto-move: Improve behavior on multi-monitor setups.
+  + windowNavigator: Adjust to 3.38 changes.
+  + Misc. bug fixes.
+- Update file sle-classic.desktop according to the upstream commit
+  9a78c7e4.
+- Update to version 3.38.1:
+  + Updated translations.
+- Update to version 3.38.0:
+  + Updated translations.
+- Update to version 3.36.7:
+  + Update sass submodule.
+- Move branding image file to branding-SLE package
+  (jsc#SLE-11720 bsc#1176304).
+  + Remove sle-classic-lock-screen-background.patch
+  + Remove SLE-theme.tar.gz
+- Update to version 3.37.92:
+  + Updated translations.
+- Update to version 3.37.91:
+  + Updated translations.
+- Changes from version 3.37.90:
+  + Misc. bug fixes and cleanups.
+- Changes from version 3.37.3:
+  + window-list, native-window-placement: Adjust to shell changes.
+- Changes from version 3.37.2:
+  + window-list, auto-move: Modernize preference dialogs.
+  + Adjust to gnome-shell changes.
+- Changes from version 3.37.1:
+  + drive-menu: Emphasize eject buttons.
+  + user-theme: Add preference dialog&gt;
+  + window-list: Fix inconsistent state in preference dialog.
+  + workspace-indicator: Overhaul preference dialog.
+  + user-theme: Support session mode styles.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop gnome-classic-s390-not-require-g-s-d_wacom.patch and
+  gnome-shell-extensions-remove-gsd-XSettings.patch: no longer
+  applicable.
+- Update to version 3.36.3:
+  + Updated translations.
+- Update gnome-shell-extensions.spec: Replace is_opensuse with
+  sle_version (jsc#SLE-11720).
+- Update gnome-classic-s390-not-require-g-s-d_wacom.patch: Solve
+  conflict with gnome-shell-extensions-remove-gsd-XSettings.patch
+  (bsc#1171485).
+- Update to version 3.36.2:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Update gnome-shell-add-app-to-desktop.patch: Remove error in
+  journal log(bsc#1170761).
+- Update to version 3.36.1:
+  + Updated translations.
+- Update to version 3.36.0:
+  + Update sass submodule.
+  + build: Switch to js68 for tests.
+- Adapt sle-classic to 3.35.92:
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic@suse.com.tar.gz
+- Update to version 3.35.92:
+  + Update sass submodule.
+- Build extension-user-theme as noarch: there is nothing arch
+  dependant in this package.
+- Update to version 3.35.91:
+  + Updated translations.
+- Update to version 3.35.90:
+  + Adjust to gnome-shell changes.
+  + Force single-line window titles in window list.
+  + Misc. bug fixes and cleanup.
+- Changes from version 3.35.2:
+  + Adjust to gnome-shell changes.
+  + window-list, workspace-indicator: Exclude DESKTOP windows from
+    previews.
+  + screenshot-window-sizer: Fix cycling through all valid sizes.
+  + Updated translations.
+- Add gnome-shell-extensions-remove-gsd-XSettings.patch: Remove
+  org.gnome.SettingsDaemon.XSettings from file gnome-classic.session
+  (bsc#1163262 glgo#GNOME/gnome-session#51)
+- Update to version 3.34.2:
+  + window-list, workspace-indicator: Exclude DESKTOP windows
+    from previews.
+  + screenshot-window-sizer: Fix cycling through all valid sizes.
+- Enable packaging of user-theme extension: Despite its name, this
+  extension is also used to enable 'system themes' in GMOME Tweaks.
+  And since we have multiple themes in the repository, we should
+  also provide the needed extension to enable them.
+- No longer obsolete gnome-shell-extension-user-theme.
+- No longer recommend -lang: supplements are in use
+- Update gse-sle-classic-ext.patch: Adapt version 3.34.1
+  (bsc#1158496).
+- Remove file sle-classic-xorg.desktop: now sle-classic only works
+  on X, we don't need this file anymore.
+- Rebase patch gnome-classic-s390-not-require-g-s-d_wacom.patch.
+- Update gse-sle-classic-ext.patch: Change panel background color
+  to transparent on lock screen and unlock screen.
+- Update to version 3.34.1:
+  + Adjust to gnome-settings-daemon plugin removals.
+  + Updated translations.
+- Add requires gnome-shell-extension-desktop-icons for package
+  gnome-shell-classic, when start sle-classic session, enable
+  extension desktop-icons automatically (bsc#1148036).
+- Update gse-sle-classic-ext.patch: Missing the solution for
+  boo#1094148, add it back.
+- Update to version 3.34.0:
+  + Updated translations.
+- Update to version 3.33.92:
+  + Translators: Марко Костић [sr], Tim Sabsch [de],
+    Rūdolfs Mazurs [lv], Matej Urbančič [sl], Balázs Úr [hu],
+    Claude Paroz [fr], Fran Dieguez [gl], Changwoo Ryu [ko],
+    Ryuta Fujii [ja], Fabio Tomat [fur], Goran Vidović [hr].
+- Adapt sle-classic to 3.33.92
+  + Update file sle-classic.json
+  + Update sle-classic@suse.com.tar.gz
+  + Update gse-sle-classic-ext.patch
+- Drop gnome-shell-favorites-menu-at-end.patch:
+  Merge this function to gse-sle-classic-ext.patch.
+- Update to version 3.33.91:
+  + window-list: Support showing windows from all workspaces.
+  + Misc. bug fixes and cleanups.
+  + Make GNOME Classic more classic:
+    - Disable GNOME 3 overview.
+    - Add window picker button to window list.
+    - Style improvements and fixes.
+    - Support horizontal workspace layout in window list.
+    - Add draggable previews to window list workspace switcher.
+    - Arrange workspaces horizontally.
+  + workspace-indicator: Support horizontal workspace layout.
+  + workspace-indicator: Add draggable previews.
+- Drop gse-apps-menu-Add_missing_chain-up.patch: Fixed upstream.
+- Rebase gnome-shell-add-app-to-desktop.patch
+- Rebase gnome-shell-favorites-menu-at-end.patch
+- Rebase gse-sle-classic-ext.patch
+- Rebase sle-classic-lock-screen-background.patch
+- Add gse-apps-menu-Add_missing_chain-up.patch: PanelMenu.Button is
+  a bit weird in that it also &quot;contains&quot; its parent actor. That
+  container is supposed to be destroyed with the button, but as we
+  currently don't chain up to the parent class' _onDestroy(), we
+  leave behind an empty container every time the extension is
+  disabled. Fix this by adding the missing chain-up.
+- Update gse-sle-classic-ext.patch: Drop Convenience library since it
+  is now a gnome-shell built-in module (boo#1139990).
+- Split the architecture dependent session file to a new package
+  gnome-shell-classic-session required by gnome-shell-classic.
+- Move BuildArch: noarch to subpackages to enable %ifarch macro
+  (bsc#1129412).
+- Update to version 3.32.1:
+  + Fix windowsNavigator extension after ES6 port.
+  + screenshot-window-sizer: Add phone screenshot sizes.
+  + Misc. bug fixes and cleanups
+- Rebase sle-classic@suse.com.tar.gz to version 3.32.0:
+  + Drop Lang.bind().
+  + Drop Convenience library.
+  + Stop using Shell.GenericContainer.
+- Update gse-sle-classic-ext.patch:
+  + Rename WorkspaceIndicator to WorkspaceIndicatorWList(bsc#1130478).
+- Add gnome-classic-s390-not-require-g-s-d_wacom.patch: Remove the
+  gnome session runtime requirement of g-s-d Wacom plugin because
+  it is not build on s390 (bsc#1129412).
+- Rebase: the following patches are rebased to version 3.32.0
+  + gnome-shell-add-app-to-desktop.patch
+  + gnome-shell-favorites-menu-at-end.patch
+  + gse-sle-classic-ext.patch
+- Update to version 3.32.0:
+  + Updated translations.
+- Disable sle-classic-favorites-menu-at-end.patch: Needs rebase.
+- Update to version 3.31.91:
+  + apps-menu: Remove outdated legacy-tray handling.
+  + user-theme: Allow using XDG user data dir.
+  + Misc. bug fixes and cleanups.
+- Update to version 3.31.90:
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Rebase gnome-shell-favorites-menu-at-end.patch via
+  refresh_patches service.
+- Disable gnome-shell-add-app-to-desktop.patch and
+  gse-sle-classic-ext.patch, needs rebase.
+- Update to version 3.31.2:
+  + Remove obsolete alternate-tab extension.
+  + Adjust to gnome-shell changes.
+- Update to version 3.30.1:
+  + apps-menu: Fix height on HiDPI systems
+    (glgo#GNOME/gnome-shell-extensions#102).
+  + window-list: Only switch between windows on active workspace
+    when scrolling (glgo#GNOME/gnome-shell-extensions#78).
+- Update sle-classic to adapte version 3.30.0
+  + Add 00_org.gnome.shell.extensions.sle-classic.gschema.override
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic-xorg.desktop
+  + Update sle-classic.desktop
+  + Update sle-classic@suse.com.tar.gz
+- Update to version 3.30.0:
+  + No visible changes.
+- Changes frome version 3.29.91:
+  + Misc. bug fixes: glgo#GNOME/gnome-shell-extensions#90.
+- Update to version 3.29.90:
+  + Misc. bug fixes: bgo#786496.
+- Update gse-sle-classic-ext.patch CSS files are generated by Sass
+  sources in 3.28, the default margin-bottom of popup-menu.panel-menu
+  is 1.75em which creates an ugly gap between menu and its source 
+  actor when the PanelMenu's source actor is at the bottom
+  (boo#1094148).
+- Help translation-update-upstream finding the right gettext domain
+  name: pass &quot;po %{name}&quot; to the call.
+- Update sle-classic@suse.com.tar.gz. After sle-classic extension
+  is disabled, can't show clone window in overview mode
+  (bsc#1095325).
+- Update to version 3.29.2:
+  + Misc. bug fix: glgo#GNOME/gnome-shell-extensions#69.
+- Drop source-service use: the situation has been normalized.
+- Update sle-classic@suse.com.tar.gz. Don't allow user to enable
+  sle-classic extension in tweak tool (bsc#1095325).
+- Update to version 3.28.1+20180413.6746061:
+  + cleanup: Use Array.includes() to check for element existence.
+  + window-list: Handle no overrides settings.
+  + apps-menu: Duplicate destroy actor.
+  + Updated translations.
+- Switch back to using git-checkout via source-service, upstream
+  seems unable to produce tarballs.
+- Update sle-classic-xorg.desktop translations (bsc#1077156).
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+- Update to version 3.28.0:
+  + Updated translations.
+- Conditionalyze the use of translation-update-upstream and
+  gnome-patch-translation: these are a SLE-only requirements.
+- Add fdupes BuildRequires and its macro for replacement of
+  duplicates with links under the data directory.
+- Drop:
+  + intltool BuildRequires as upstream migrated to Gettext long
+    ago.
+  + pkgconfig(gio-2.0) BuildRequires: this is no longer used/needed
+    anymore.
+  + gnome-common BuildRequires: there is no patches touching the
+    build system.
+- Update to version 3.27.92:
+  + Updated translations.
+- Drop gse-build-fixes.patch: fixed upstream.
+- Rebase gse-sle-classic-ext.patch (bsc#1082345).
+- Modernize spec-file by calling spec-cleaner
+- Rebase gnome-shell-add-app-to-desktop.patch (bsc#1082345).
+- Rebase gnome-shell-favorites-menu-at-end.patch
+- Drop gnome-shell-extensions-window-list-app-icon-not-shown.patch:
+  fixed upstream.
+- Update to version 3.27.91:
+  + places-menu: Support unmounting ejectable places.
+  + apps-menu: Support separators and custom sort order.
+  + Port to meson.
+  + window-list: Fix missing icons on wayland.
+  + places-menu: Fix terminating gnome-shell with recent gjs.
+  + auto-move: Make it work with wayland windows.
+  + Classic theme fixes.
+  + Require sassc for classic styling.
+  + Misc. bug fixes: bgo#772211,
+    glgo#GNOME/gnome-shell-extensions#32,
+    glgo#GNOME/gnome-shell-extensions#30.
+  + Updated translations.
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install with
+    meson/meson_build/meson_install macros.
+- Add sassc BuildRequires: new dependency.
+- Add gse-build-fixes.patch: Fix installation of classic desktop
+  session files.
+- Disable SLE-classic patches that need rebase:
+  gse-sle-classic-ext.patch, gnome-shell-add-app-to-desktop.patch,
+  gnome-shell-favorites-menu-at-end.patch and
+  gnome-shell-extensions-window-list-app-icon-not-shown.patch.
+- Update sle-classic-xorg.desktop translations (bsc#1077156).
+- Own {_datadir}/gnome-shell/extensions, needed after changes in
+  gnome-shell package.
+- Fix in SLE-Classic session application title bar doesn't show
+  application menu (bsc#1070090 bgo#746592).
+  + Update sle-classic@suse.com.tar.gz
+  + Update sle-classic.desktop
+  + Update sle-classic-xorg.desktop
+- Update to version 3.27.1:
+  + Updated translations.
+- Rebase gnome-shell-add-app-to-desktop.patch.
+- Lower update-alternative priority of sle-classic desktop to 20,
+  resulting in GNOME session becoming the default session
+  (fate#324384).
+- Add gnome-shell-extensions-window-list-app-icon-not-shown.patch:
+  Fix window-list doesn't show app icon on taskbar when working in
+  wayland (bgo#745064).
+- Apply SLE-Classic session on Tumbleweed (bsc#1051772).
+  + Rename sle-classic-favorites-menu-at-end.patch to
+    gnome-shell-favorites-menu-at-end.patch
+- Move SLE-Classic function in gnome-shell to
+  gnome-shell-extensions (bsc#1065611).
+  + Update gnome-shell-add-app-to-desktop.patch
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic-favorites-menu-at-end.patch
+  + Update sle-classic-xorg.desktop
+  + Update sle-classic.desktop
+  + Add sle-classic.json
+  + Add sle-classic@suse.com.tar.gz
+- Update to version 3.26.2:
+  + Updated translations.
+- Update Url to
+  https://wiki.gnome.org/Projects/GnomeShell/Extensions: current
+  GNOME Shell Extensions project web page.
+- Apply gnome-shell-add-app-to-desktop.patch on openSUSE
+  (bsc#1061742).
+- Update gse-sle-classic-ext.patch, make the bottom panel
+  background of SLE-Classic &quot;black&quot; in the Overview mode
+  (bsc#1064377).
+- Add sle-classic-xorg.desktop file.
+  Allow user to open X session or wayland session (bsc#1062909).
+- Add default.desktop file in '{_datadir}/wayland-sessions/'
+  Make default.desktop session working on wayland (bsc#1062196).
+- Update gnome-shell-add-app-to-desktop.patch, allow app
+  shortcut added to desktop could be executed with default
+  attribute &quot;trusted&quot; (bsc#1055240).
+- Update gse-sle-classic-ext.patch to version 3.26.1
+- Update to version 3.26.1:
+  + native-window-placement: Adjust to gnome-shell changes.
+  + Updated translations.
+- Enable SLE-Classic session working on Wayland.
+  Add sle-classic.desktop in folder '{_datadir}/wayland-sessions/'
+  (bsc#1058797)
+- Register SLE-Classic with u-a handler for default.desktop
+  implementation, which obsoletes the change in
+  /etc/sysconfig/windowmanager to pick the 'default window manager'
+  (boo#1039756).
+- Update patch gse-sle-classic-ext.patch.
+  Fix 'this._pureWinList is null', error involved in bsc#1046570
+  fix(bsc#1046570).
+- Update sle-classic patches to version 3.26.0:
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic-favorites-menu-at-end.patch
+  + Update sle-classic-lock-screen-background.patch
+- Update to version 3.26.0:
+  + Updated translations.
+- Update package summaries. Replace historic tar option specs.
+- Update patch gse-sle-classic-ext.patch. Fix only half panel shown
+  on bottom of desktop when scaling-factor equals 2(Require patched
+  gnome-shell)(bsc#1046570).
+- Update to version 3.25.91:
+  + Updated translations.
+- Update to version 3.25.90:
+  + Updated translations.
+- Update to version 3.25.4:
+  + screenshot-window-sizer: Fix backward cycling.
+  + Updated translations.
+- Update to version 3.25.3:
+  + places-menu: Use mount operation if necessary.
+  + window-list: Respect MWM hints.
+  + Updated translations.
+- Drop glib2_gsettings_schema handling in post(un), file-triggers
+  takes care of this for us now.
+- Update to version 3.25.2:
+  + places-menu: Make URI launching asynchronous.
+  + Updated translations.
+- Update to version 3.25.1:
+  + apps-menu: Mark copied launchers as trusted.
+  + places-menu: Make icon lookup asynchronous.
+- Update sle-classic patches to version 3.24.3:
+  + Update gnome-shell-add-app-to-desktop.patch
+  + Update gse-sle-classic-ext.patch
+  + Update sle-classic-favorites-menu-at-end.patch
+  + Update sle-classic-lock-screen-background.patch
+- Update to version 3.24.3:
+  + screenshot-window-sizer: Fix backward cycling.
+  + Updated translations.
+- Update to version 3.24.2:
+  + apps-menu: Mark copied launchers as trusted.
+  + places-menu: Make icon lookup asynchronous.
+  + Updated translations.
+- Update to version 3.24.1:
+  + apps-menu: Allow creating desktop launchers via DND.
+  + Updated translations.
+- Update to version 3.24.0:
+  + Updated translations.
+- Update to version 3.23.92:
+  + update classic theme.
+  + Updated translations.
+- Update to version 3.23.91:
+  + Updated translations.
+- Update to version 3.23.90:
+  + window-list:
+    - Improve styling.
+    - Hide workspace indicator when there's a single (static)
+      workspace.
+  + Updated translations.
+- Update to version 3.23.2:
+  + alternateTab: Don't take over 'switch-group' shortcut.
+  + Updated translations.
+- Update to version 3.22.2:
+  + Updated translations.
+- Add SUSE logo on lock screen when auth is requested (bsc#1007468)
+  + sle-classic-lock-screen-background.patch
+  + SLE-theme.tar.gz
+- Update to version 3.22.1:
+  + window-list: Update icon on app changes.
+- Enable SLE-Classic for Leap 42.2 (bnc#999655)
+  + add workspace indicator back for LEAP 42.2
+- Enable SLE-Classic for Leap 42.2 (bnc#999655)
+  + modify SPEC to re-enable SLE-Classic for Leap 42.2
+- Update to version 3.22.0:
+  + Updated translations.
+- Update to version 3.21.92:
+  + Update style.
+  + Updated translations.
+- Update to version 3.21.91:
+  + Updated translations.
+- Add global Requires exclude for the now private typelib(Meta)
+  from mutter.
+- Update to version 3.21.90:
+  + Updated translations.
+- Drop gnome-common BuildRequires: No longer needed as we are not
+  using a git tarball anymore.
+- Drop intltool BuildRequires: No longer used by upstream.
+- Add pkgconfig(gio-2.0) BuildRequires: previously pulled in by
+  gnome-common.
+- Update to version 3.21.4:
+  + apps-menu: Fix entries from non-standard AppDir directories.
+- Update to version 3.21.3:
+  + adjust to gnome-shell changes.
+  + Updated translations.
+- Changes from version 3.21.2:
+  + version bump only.
+- Update to GNOME 3.20.2 fate#318572
+  + gse-sle-classic-ext.patch updated.
+- Update to version 3.20.1:
+  + Update classic style.
+  + Updated translations.
+- SLE Classic (REBASING DONE)
+  + DROPPED places-menu-use-nautilus-for-links.patch (Invalid)
+  + Add workspace-indicator to the build
+  + Fix the gap between bottom menu and its button.
+  + Fix windows auto-grouping.
+  + Hide window list in Overview
+  + Clean up spec file.
+- Rebasing SLE Classic (basic) (Fate#318572)
+- Add source sle-classic.desktop: xsession file
+- Add patch gse-sle-classic-ext.patch: add sle classic support
+- DROPPED: Invalid
+  + gnome-classic-exts-arrow-fix.patch
+  + gnome-sle-classic-ext-build.patch
+  + sle-classic.tar.bz2
+- Patches(none-SLE-classic) reviewing for SP2 GNOME 3.20
+- REBASED:
+  + gnome-shell-add-app-to-desktop.patch
+- DROPPED: Upstreamed
+  + gnome-shell-use-env-var-for-mode.patch
+  + place-menu-handle-special-user-dirs-update.patch
+  + 0001-window-list-import-gettext-for-the-right-domain.patch
+  + gnome-shell-extensions-bnc872820-wm-button-layout.patch
+  + bnc947381-Application-menu-selections-stop-working.patch
+- DROPPED: Invalid
+  + gnome-classic-move-notification-widget-above.patch
+- Update to GNOME 3.20 -- Fate#318572.
+- Temporarily disable SLE patches and theming. It will be
+  re-enabled in a later update.
+- Update to version 3.20.0:
+  + version bump, nothing to see here.
+- Update to version 3.19.92:
+  + version bump, nothing to see here.
+- Update to version 3.19.91:
+  + Updated translations.
+- Update to version 3.19.90:
+  + Version bump only, no changes.
+- Update to version 3.19.4:
+  + screenshot-window-sizer: HiDPI support.
+  + Fix gnome-shell component in classic session.
+  + Updated translations.
+- Update to version 3.19.3:
+  + native-window-placement: Don't let border overlap title.
+  + apps-menu: Fix handling of .desktop files in subdirectories.
+  + Updated translations.
+- Update to version 3.19.2:
+  + Updated translations.
+- Update to version 3.19.1:
+  + Fix some theme issues.
+- Update to version 3.18.3:
+  + apps-menu: Fix .desktop entries in subdirectories.
+- Add bnc947381-Application-menu-selections-stop-working.patch:
+  Fix application menu open issue. Upstream has this fixed but no
+  related bug report (bnc947381).
+- Update to version 3.18.2:
+  + Fix classic style issues.
+- Fix skewed icons in SLE Classic (bnc#948793)
+  + There was a mismatch between the available space and declared
+    icon size.
+  + SPECFILE: a minor fix to avoid double unpacking the first
+    source tarball.
+- Update to version 3.18.1:
+  + window-list: Fix accessibility of window buttons.
+  + apps-menu: Fix unreliable highlight.
+  + Updated translations.
+- Update to version 3.18.0:
+  + Bump version.
+- Update to version 3.17.92:
+  + places: Include DESKTOP when desktop icons are enabled.
+  + Updated translations.
+- Drop gnome-shell-reload-specials-when-xdg-user-dirs-changes.patch:
+  Upstream reworked the directory monitoring.
+- Update to version 3.17.91:
+  + Updated translations.
+- Update to version 3.17.90:
+  + window-list: Improve application ordering.
+  + workspace-indicator: Use consistent workspace numbering.
+- Fix multiple issues related to windows grouping (bnc#933183) in
+  SLE Classic
+  + The old code contains multiple bugs for windows grouping
+    display.
+  + Fix missing AppButton for applications without desktop file
+    in SLE Classic.
+- Update to version 3.17.4:
+  + Updated translations.
+- Update to version 3.17.3:
+  + window-list: Adjust with text-scaling-factor.
+  + classic style updates.
+  + Updated translations.
+- Update to version 3.17.2:
+  + Updated translations.
+- Update to version 3.17.1:
+  + Style updates.
+  + Updated translations.
+- Update to version 3.16.2:
+  + classic: Update theme.
+  + Updated translations.
+- Fix click event &quot;missing&quot; for window buttons in SLE Classic (bnc#913204)
+  + No separate patch file, changes are in sle-classic.tar.bz2
+  + &quot;clicked&quot; event in St.Button is not compatible with Clutter's event model.
+    Though an upstream bug, but the exact cause is still unknown yet. Resort back
+    to Clutter's native &quot;button-press-event&quot; to fix this for SLE Classic.
+- Update to version 3.16.1:
+  + window-list: Fix workspace indicators popup menu position.
+  + apps-menu: Fix taking over panel-main-menu shortcut.
+  + Updated translations.
+- Update to version 3.16.0:
+  + Updated translations.
+- Add gnome-shell-reload-specials-when-xdg-user-dirs-changes.patch.
+  Let places menu handle changes of special user directories
+  properly (bnc#885490, bgo#746338).
+- Update to version 3.15.92:
+  + classic: Update theme.
+  + update for mutter API changes.
+  + Updated translations.
+- Update to version 3.15.91:
+  + Classic: Update theme.
+  + systemMonitor extension was removed, as the message tray where
+    it put its indicator no longer exists.
+  + window-list: Adjust for gnome-shell changes.
+- Update to version 3.15.90:
+  + classic: Visual refresh based on new shell theme.
+  + window-list: Adjust for gnome-shell changes.
+  + Updated translations.
+- Add a Recommends on gnome-shell-extensions-common-lang in
+  gnome-shell-classic.
+- Update to version 3.15.4:
+  + window-list: Improve interaction with system modal dialogs.
+  + Updated translations.
+- Update to version 3.15.3.1:
+  + Adjust to gnome-shell change.
+- Update to version 3.15.3:
+  + classic-mode:
+    - Add high-contrast theme variant.
+    - Drop .desktop file.
+  + places-menu: Fix error when XDG user directories are not set
+    up.
+  + window-list: Add option to show on all monitors.
+  + Updated translations.
+- Update to version 3.15.2:
+  + removable-drive, user-theme, window-list: Update for
+    gnome-shell changes.
+  + apps-menu: Fix some visual glitches.
+  + Fix classic mode style.
+  + Updated translations.
+- Fix build failure by having the package own the directory
+  /usr/share/gnome-shell/theme.
+- Update to version 3.15.1:
+  + Updated translations.
+- Update to version 3.14.3:
+  + apps-menu: Fix some visual glitches.
+  + places-menu: Fix error when XDG user directories are not set
+    up.
+  + window-list: Update for gnome-shell changes.
+- Fix gnome-shell-add-app-to-desktop.patch
+  + (bnc#899923). A dangled open menu would grab the focus and
+    leave the system in a useless state. Close any open menus
+    before any other action.
+- Update to version 3.14.2:
+  + drive-menu: Update for nautilus/gnome-shell changes.
+- Update to versoin 3.14.1:
+  + alternateTab: Fix dismissing popup with Escape.
+  + Some improvements to the window-list (spacing in app buttons,
+    no flash when closing windows with auto-grouping).
+  + Updated translations.
+- Added gnome-shell-extensions-bnc872820-wm-button-layout.patch for
+  bnc872820.  This lets us have the correct defaults for the window
+  manager's button layout, for the classic session mode.
+- Update to version 3.14.0:
+  + Updated translations.
+- Fine-tune window button style, particularly the hovering effect.
+  + (bnc#862615) Thanks Marcus Moeller (m.moeller@opensuse.org)
+    for offering highlighting patch.
+  + Highlight buttons when hovering (lighter color and darker text)
+  + Add extra box shadow to make buttons more visible.
+- Update to version 3.13.92:
+  + New extension: screenshot-window-sizer.
+  + window-list: Don't add sticky windows more than once.
+  + Updated translations.
+- Add places-menu-use-nautilus-for-links.patch
+  + (bnc#891919) Use Nautilus for all links in places menu and
+    such avoids all unnecessary issues.
+- Force a monitors update to avoid background failure (bnc#893979)
+- Update to version 3.13.91:
+  + window-list: restore fitts'ability of workspace button.
+  + Updated for gnome-shell changes.
+  + Updated translations.
+- Add gnome-classic-move-notification-widget-above.patch
+  + (bnc#877898) move notifications above the panel such that it
+    doesn't cover part of the main panel.
+- SLE Classic multiple fixes
+  + Add callbacks for overview, fullscreen, monitor change event,
+    such that the positioning&amp;visibility of on-screen keyboard,
+    message tray&amp;widgets and panels are adapted accordingly
+    (bnc#891560).
+  + Offer a hack for restoring of xsettings.overrides. The
+    counterpart is installed in Main._sessionLoaded (bnc#894048).
+  + Hide the bottom panel so that the overview hiding animation
+    works smoothly now. At least before we figure out why it
+    doesn't work with the bottom panel. (improvement)
+  + Adjust the positioning of LookingGlass. (improvement)
+  + Other small changes.
+- Add 0001-window-list-import-gettext-for-the-right-domain.patch:
+  properly define gettext domain for window-list extension
+  (bnc#893598).
+- Add place-menu-handle-special-user-dirs-update.patch:
+  Let place menu handles changes of special user directories
+  properly (bnc#885490).
+- Update to version 3.13.90:
+  + Updated translations.
+- Add sle-classic-favorites-menu-at-end.patch:
+  put the favorites at the end of the app catogories for
+  accessibility reason (bnc#890989).
+- Update to version 3.13.4:
+  + Updated for gnome-shell changes.
+  + Updated translations.
+- Update gnome-shell-add-app-to-desktop.patch to use system libs.
+  (bnc#882421)
+- Update to version 3.13.3:
+  + Tweak preference UIs some more.
+  + Fix classic mode schema overrides.
+- Changes from version 3.13.2:
+  + Fix sorting of grouped buttons in window list.
+  + Tweak preference UIs.
+- Changes from version 3.13.1:
+  + Add DesktopNames key to the classic session file.
+  + window-list: don't shift message tray on other monitors.
+  + Updated translations.
+- Remove Avatar symbol from system indicators (bnc#886569)
+  + No separate patch file, changes are in sle-classic.tar.bz2
+  + It's not considered a good indication for log out
+- Fix typo in gnome-shell-add-app-to-desktop.patch.
+- Add Logout symbol into system indicators, using 'sle-avatar' in SLE theme.
+  (bnc#862615)
+  + No separate patch file, changes are in sle-classic.tar.bz2
+- Update gnome-shell-add-app-to-desktop.patch:
+  add translate-update-upstream (bnc#882421).
+- Update to version 3.12.2:
+  + Classic theme: remove rounded corners from tile previews.
+  + Several fixes and improvements to the window-list. (Keep button
+    order stable, don't shift message tray on other monitors).
+  + auto-move-windows: several fixes and updates for api changes.
+  + launch-new-instances: updates for api changes.
+  + Updated translations.
+-  Bring back the official style for workspace indicator
+   A continued improvement on (bnc#862615)
+- Add gnome-shell-add-app-to-desktop.patch:
+  Add 'open' 'Add to Favoriate' 'Add to Desktop' menu item to the
+  app-menu (bnc#870580).
+- Implement SLE Classic Mode (bnc#862615)
+  + Split changes for SLE Classic out of 'window-list' extension
+  + SLE Classic is now implemented as a separate extension +
+    session mode files.
+    A fork of 'window-list' extension combined with other SLE
+    specific tweaks.
+  + &quot;SLE Classic&quot; is now a option for choice in Login.
+    TODO translation for this part is unfinished.
+  + GNOME Classic is now in vanilla state and can be selected in
+    Login.
+  + Various changes
+    Conditional arrow patch, code refactoring.
+  + NOTE: this depends on SLE Classic extension patch for GNOME
+    Shell, see (request#35065).
+  + add gnome-classic-exts-arrow-fix.patch
+  + add patch gnome-sle-classic-ext-build.patch
+  + add sle-classic.tar.bz2
+  + add suse-gnome-classic.patch
+- Update to version 3.12.0:
+  + Updated translations.
+- Update to version 3.11.92:
+  + Nothing to see here, move on.
+- Replace openSUSE by SUSE Linux Enterprise in README.SUSE
+- Add a Recommends on gnome-shell-extensions-common-lang in
+  gnome-shell-classic.
+- Update to version 3.11.91:
+  + Updated translations.
+- Add gnome-shell-use-env-var-for-mode.patch:
+  use environment variable instead of command line to specify
+  mode so that the session saving can work as expected (bnc#863709,
+  bgo#720894).
+- Various fixes and some minor tweaks. (bnc#865977, bnc#862615)
+  + improve indicators consistency in lock screen.
+  + see comment 13 of the second bug
+- Various fixes (#862615)
+  + This commit only some of all issues listed there.
+  Plus some enhancements in window list style.
+- Update to version 3.11.90:
+  + Several fixes and improvements to the window-list (can be
+    scrolled, works correctly with the OSD keyboard, filters
+    skip-taskbar windows, does not force all notifications to
+    bold).
+  + Drive-menu fixed not to show shadowed mounts.
+  + Updates for gnome-shell changes (launch-new-instance,
+    auto-move-windows, places-menu).
+  + Build system fixes for systems without /bin/bash.
+  + Updated translations.
+- Update to version 3.11.5:
+  + window-list: update for gnome-shell changes.
+  + Updated translations.
+- Feature: Implement SUSE Classic GNOME style
+  + This is a preview for review purpose mainly.
+  + Only one panel that resides in the bottom.
+  + Application menus, workspace&amp;message indicators, window list
+    switcher are all integrated on this panel.
+- Update to version 3.11.4:
+  + Classic mode now supports session saving.
+  + Updates for gnome-shell changes.
+  + Updated translations.
+- Update to version 3.11.3:
+  + workspace-indicator is vertically aligned now.
+  + Updated translations.
+- Update to version 3.11.2:
+  + Updated translations.
+- Changes from version 3.11.1:
+  + Ignore shadowed mounts in drive-menu extension.
+  + Updates for gnome-shell/gjs changes.
+  + Updated translations.
+- Update to version 3.10.1:
+  + Updated translations.
+- Update to version 3.10.0:
+  + Updated translations.
+- Update to version 3.9.92:
+  + more updates and fixes for gnome-shell master changes and
+    regressions (systemMonitor, window-list, apps-menu).
+  + Updated translations.
+- Update to version 3.9.91:
+  + Update the classic mode session and theme to work with the new
+    system menu.
+  + The usual round of updates and fixes for gnome-shell API
+    changes.
+  + Updated translations.
+- Update to version 3.9.90:
+  + xrandr-indicator was removed, as the implementation was
+    incompatible with the new DisplayConfig mutter API.
+  + Various extensions were updated for the 3.9.90 gnome-shell API.
+  + Updated translations.
+- Update to version 3.9.5:
+  + alternative-status-menu was removed entirely, as it does not
+    fit in the designs of the new unified status menu.
+  + Updated translations.
+- Drop gnome-shell-extension-alternative-status-menu subpackage:
+  the alternative status menu has been dropped.
+- Remove alternative-status-menu.gschema.override source: as the
+  alternative status menu no longer exists, there is no need to
+  provide a configuration for it.
+- Update to version 3.9.4:
+  + apps-menu: fixed handling of hot corner in case of screen
+    reconfiguration.
+  + alternative-status-menu now correctly honors polkit for
+    hibernation.
+  + user-menu now loads themes from $XDG_DATA_HOME too.
+  + Updated translations.
+- Update to version 3.9.3:
+  + Classic mode mini extensions were replaced with a GSettings
+    override specified in the .json file.
+  + Styling of classic mode improved.
+  + Native-window-placement is back working on 3.9.
+  + Misc bug fixes.
+  + Updated translations.
+- Update to version 3.9.2:
+  + apps-menu: appearance of the scrollbars was improved.
+  + window-list is a little taller in classic mode (to account for
+    the workspace switcher).
+  + alternative-status-menu honors again the dconf configuration.
+  + Updated translations.
+- Update to version 3.9.1:
+  + Updates to window-list, xrandr-indicator, orkspace-indicator
+    and windowsNavigator for gnome-shell changes.
+  + Updated translations.
+- Update to version 3.8.1:
+  + Many improvements to window-list:
+    - Windows are activated by DND over them
+    - Window buttons now have the right size, even if the text is
+      smaller or larger than the ideal
+    - Window buttons can be grouped automatically when the panel
+      becomes crowded
+    - Added a workspace switcher menu
+  + Added keyboard navigation to apps-menu.
+  + Small tweaks to classic-mode theme, in particular for menus.
+  + Updated translations.
+- Change gnome-classic.desktop to invoke 'gnome' instead of
+  'gnome-session'. We use a wrapper script to start gnome.
+- Fix scriptlets: move the glib2_gsettings_schema_post/postun to
+  the sub-package gnome-shell-extension-alternative-status-menu:
+  the .gschema.xml lives in this subpackage as well (bnc#811203).
+- Add glib2_gsettings_schema_post/postun scriptlets for
+  gnome-shell-classic subpackage.
+- Update to version 3.8.0:
+  + Updated translations.
+- Update to version 3.7.92:
+  + Misc bug fixes to app-menu and window-list.
+  + Updated translations.
+- Update to version 3.7.91:
+  + Various updates for shell changes.
+  + Update window-list to always use application icons
+  + Update apps-menu to not load subdirectories as separate
+    categories
+  + Updated translations.
+- Update to version 3.7.90:
+  + Various fixes to make places-menu behave more like Nautilus,
+    including showing the machine name in place of File System.
+  + Various updates for shell changes.
+  + alternative-status-menu no longer supports ConsoleKit systems,
+    you need to install logind to have suspend or hibernate,
+- Create a gnome-shell-classic subpackage:
+  + Pass --enable-classic-mode to configure
+  + Extract CLASSIC_EXTENSIONS from configure and build those along
+    the alternative-status-menu (just passing classic does not
+    allow to add more extensions).
+- Update to version 3.7.5.1:
+  + New extension forgotten in previous NEWS entry: windows-list.
+  + Also forgotten previously: classic mode got a new GNOME2 style.
+  + Build fixes.
+- Changes from version 3.7.5:
+  + places-menu is back in the classic extensions, with a new old
+    GNOME-2 look.
+  + classic mode moved the date menu to right, where we all know it
+    rightly belongs.
+  + apps-menu received a face-lift, with the inclusion of a reduced
+    form of AxeMenu.
+  + new extension in the classic set: launch-new-instance, which
+    modifies the behavior of clicking in the dash and app launcher.
+  + alternate-tab, native-window-placement and windowsNavigator
+    updated for gnome-shell changes.
+  + Updated translations.
+- Drop g-s-e-power-off-elipsis.patch: mostly fixed upstream.
+- Update to version 3.7.4:
+  + A separate configure switch has been added to enable classic
+    mode session definitions
+  + places-menu is no longer part of the classic-mode extension set
+- Changes from version 3.7.3:
+  + new extensions: default-min-max, static-workspaces
+  + alternate-tab now uses the built-in window switcher and just
+    takes over the switch-application keybinding
+  + workspace-indicator: is no longer part of classic-mode
+  + we now install classic-mode data files for gdm, gnome-session
+    and gnome-shell, so if you enable classic-mode you get a new
+    session option in GDM
+- Changes from version 3.7.2:
+  + fixed crashes with places-menu, windowsNavigator, alternate-tab
+    and native-window-placement
+  + alternate-tab now hides attached modal dialogs
+  + places-menu has restored support for Nautilus 3.4
+  + the default for hibernate is now to show in
+    alternative-status-menu
+  + some extensions are now tagged as &quot;classic&quot;, and can be chosen
+    with --enable-extensions=classic-mode
+  + dock and gajim were removed at the beginning of the 3.7.1 cycle,
+    as they were buggy and unmaintained
+  + Updated translations.
+- Add g-s-e-power-off-elipsis.patch: &quot;Power Off...&quot; was changed to
+  &quot;Power Off&quot;, but a bunch of translations missed that yet.
+- Add alternative-status-menu.gschema.override: Enable hibernate by
+  default for users of the packaged version of the
+  alternative-status-menu extension.
+- Update to version 3.6.2:
+  + Ignore missing local bookmarks.
+  + Support historical location for bookmarks file.
+  + Don't fail for GIO errors getting the file name.
+  + native-window-placement: fix disabling the extension.
+- Changes from version 3.6.1:
+  + Fixed alternative-status-menu for the new lock screen
+  + Squashed some alternate-tab warnings
+  + drive-menu now works with 3.6 again
+- Changes from version 3.6.0:
+  + major rework in places menu, to make it work without
+    removed supporting code in the shell and to make it look like
+    the nautilus sidebar
+- Changes from version 3.5.91:
+  + Various crashers were fixed in alternative-tab
+  + auto-move-windows now can be made to work with static
+    workspaces
+  + place-menu is now on the left and uses symbolic icons like
+    Files
+  + StIconType usage was removed from all extensions, after it was
+    removed in core
+  + systemMonitor, xrandr-indicator, apps-menu, places-menu,
+    alternative-status-menu were updated for the newer shell
+- Changes from version 3.5.90:
+  + alternate-tab has been reworked again, the old mode switch
+    was removed and the all&amp;thumbnails code extended to handle
+    icons and filtering to the workspace
+  + alternate-tab thumbnails now reflect the aspect ratio of the
+    windows
+  + systemMonitor now shows a tooltip above the indicator
+  + native-window-placement, systemMonitor and windowsNavigator
+    have been updated for the newer shell
+- Changes from version 3.5.5:
+  + convenience module has been relicensed to BSD, for
+    compatibility with GPLv3 extensions
+  + alternate-tab has been refactored and seen various
+    improvements to all&amp;thumbnails mode, including a new
+    overlaid application icon
+- Changes from version 3.5.4:
+  + Updated translations.
+- Changes from version 3.5.2:
+  + removable-drive-menu is now a11y friendly
+  + the dock can now be placed on any monitor, not just the
+    primary
+  + dock is now clipped to its monitor
+  + alternative-status-menu now exposes GSettings for Suspend
+    and Hibernate visibility - no UI yet
+  + more gnome-shell API changes (places-menu,
+    removable-drive-menu, alternative-status-menu)
+  + miscellaneous bug fixes (native-window-placement, gajim,
+    auto-move-windows)
+  + Updated translations.
+- Add glib2_gsettings_schema macros to post/postun.
+- Update to version 3.4.0:
+  + Build system improvements.
+  + Updated translations.
+- Changes from version 3.3.92:
+  + Various updates for gnome-shell API changes (dock,
+    native-window-placement).
+  + local-install is now a make rule, not a shell script.
+  + Updated translations.
+- Changes from version 3.3.90:
+  + System wide installation via &quot;make install&quot; is possible again.
+  + alternate-tab: can now pre-activate the selected window.
+  + auto-move-windows, workspace-indicator and example gained new
+    preference dialogs.
+  + workspace-indicator: fixed a bug wrt focus stealing prevention.
+  + Updated translations.
+- Changes from version 3.3.5:
+  + Improvements to the build system and convenience module, making
+    it easier for other extensions to use, and bringing it up to
+    date with gnome-shell changes.
+  + All extensions were ported to the Lang.Class framework (except
+    xrandr-indicator, which is pending GDBus merge).
+  + alternate-tab and dock were slightly refactored to clean up
+    some old code.
+- Changes from version 3.3.4:
+  + native-window-placement: fixed native-window-placement with
+    custom button layout.
+  + windowsNavigator:
+    - improved styling of tooltips.
+    - fixed when used with the numeric keypad.
+  + Updated translations.
+- Changes from version 3.3.3:
+  + alternative-status-menu no longer conflicts with other
+    extensions in the user menu.
+  + dock:
+    - the default value of hide-effect is now move.
+    - if autohide is disabled, now it pushes maximized windows
+      aside.
+    - updated to match current core shell styling.
+  + drive-menu: changed to use media-eject icon instead of
+    media-optical.
+  + native-window-placement: position stategy setting was removed.
+  + windowsNavigator: fixed to work with azerty keyboards.
+  + Various other minor bug fixes.
+  + Updated translations.
+- Changes from version 3.3.2:
+  + All extensions are now self-contained, including l10n and
+    settings.
+  + Introduce a convenience module that can be shared among all
+    extensions.
+  + You can know build an installable zip file with make zip-file.
+  + alternative-status-menu, alternate-tab: fix for master shell.
+  + apps-menu: no longer shows NoDisplay apps
+- Changes from version 3.2.1:
+  + alternate-tab: both modes now work with gnome-shell 3.2.
+  + dock: added &quot;move&quot; hide effect.
+  + systemMonitor:
+    - now it enables/disables properly.
+    - improved styling.
+  + Various other bug fixes.
+  + Updated translations.
+- Add gnome-common BuildRequires and call to ./autogen.sh in %setup
+  as the tarball we have is generated with &quot;git archive&quot; (no
+  tarball is published anymore upstream).
+- Drop gnome-shell-extensions-fix-popup-menus.patch and
+  gnome-shell-extensions-make-dock-extension-work.patch: fixed
+  upstream.
+- Rename gnome-shell-extension-alt-status-menu subpackage to
+  gnome-shell-extension-alternative-status-menu, following upstream
+  name change of the extension. Add appropriate Provides/Obsoletes
+  for smooth upgrades.
+- Only package the alternative-status-menu extension, as we want to
+  avoid packaging extensions we don't ship by default. Users can
+  get other extensions from https://extensions.gnome.org instead:
+  + Remove subpackages for other extensions:
+    gnome-shell-extension-alternate-tab,
+    gnome-shell-extension-apps-menu,
+    gnome-shell-extension-auto-move-windows,
+    gnome-shell-extension-dock, gnome-shell-extension-drive-menu,
+    gnome-shell-extension-gajim,
+    gnome-shell-extension-native-window-placement,
+    gnome-shell-extension-places-menu,
+    gnome-shell-extension-systemMonitor,
+    gnome-shell-extension-user-theme,
+    gnome-shell-extension-windows-navigator,
+    gnome-shell-extension-workspace-indicator,
+    gnome-shell-extension-xrandr-indicator.
+  + Add Obsoletes for all those dropped subpackages to
+    gnome-shell-extensions-common, to help have smooth upgrades.
+  + Remove main subpackage, as it makes no sense anymore since we
+    don't build all the extensions anymore. Move README.SUSE to the
+    gnome-shell-extensions-common subpackage instead.
+  + Update README.SUSE to mention that other extensions are
+    available on https://extensions.gnome.org.
+  + Remove pkgconfig(gnome-desktop-3.0) and pkgconfig(libgtop-2.0)
+    BuildRequires as they were only needed for other extensions.
+  + Pass --enable-extensions=alternative-status-menu instead of
+    --enable-extensions=all to only build the
+    alternative-status-menu extension.
+- Make it easier to install individual extensions without
+  installing all of them:
+  + This was happening because of the lang subpackage Recommends
+    that was bringing the main subpackage, which in term was
+    bringing all extensions through Recommends.
+  + Create a gnome-shell-extensions-common subpackage and use it
+    as a basis for the translations, by renaming the lang
+    subpackage to gnome-shell-extensions-common-lang.
+  + Replace gnome-shell Requires and lang Recommends in all
+    extensions subpackages with a Requires on
+    gnome-shell-extensions-common which leads to the same result.
+- Add gnome-shell-extensions-fix-popup-menus.patch: the dock
+  popup menus weren't working because a signal had been renamed
+  ('popup' -&gt; 'open-state-changed') (bgo#661484).
+- Add gnome-shell-extensions-make-dock-extension-work.patch:
+  without this patch, dock is invisible, but reacts on mouse
+  clicks.
+- Update to version 3.2.0:
+  + Various updates for gnome-shell API changes.
+- Changes from version 3.1.91:
+  + Update for gnome-shell API changes in gajim.
+- Changes from version 3.1.90:
+  + All extensions have been ported to the new extension
+    system (including live enable/disable).
+  + xrandr-indicator no longer requires a specific gjs version.
+  + windowsNavigator fixed for more than 2 workspaces.
+  + Updated translations.
+- Drop
+  gnome-shell-extensions-fix-zero-length-warning-for-stylesheets.patch:
+  fixed upstream.
+- Drop gnome-common BuildRequires and call to autogen.sh: we're not
+  using a git checkout anymore.
+- Add intltool BuildRequires: it was implicitly brought in by
+  gnome-common before.
+- Update to version 3.1.4:
+  + New: A menu for changing workspace (workspace-indicator)
+  + systemMonitor: lower the requirement on libgtop
+  + auto-move-windows: open overview when last window on last
+    workspace is closed
+  + dock: implement autohiding, with various configurable effects
+  + alternate-tab: more configurable implementations available
+  + native-window-placement: don't rearrange the windows when the
+    workspace switcher is shown/hidden
+  + update for gnome-shell 3.1.4 API changes.
+- Re-enable the systemMonitor extension, as the requirements were
+  lowered. Remove build_systemMonitor define as the issue has been
+  resolved.
+- Add new recommended sub-package for workspace-indicator.
+- Add pkgconfig(libgtop-2.0) BuildRequires for systemMonitor.
+- Add gobject-introspection BuildRequires in order to get typelib()
+  Requires for the packages.
+- Remove bogus libgtop Requires from the systemMonitor package.
+- Fix various typos and other small issues in summaries and
+  descriptions.
+- Update to version 3.1.3:
+  + New extensions added:
+    - drive-menu: A menu for removable drives.
+    - apps-menu: A GNOME 2 like menu for apps.
+    - places-menu: A GNOME 2 like menu for places.
+    - native-window-placement: Additional configurability for the
+      window layout in the overview, including a mechanism similar
+      to KDE4.
+    - systemMonitor: A message tray indicator for CPU and memory
+      usage (uses libgtop).
+  + user-theme: Fixed resetting theme and support themes installed
+    in /usr/share/themes.
+  + alternative-status-menu: ported to gnome-shell master.
+  + dock: ported to gnome-shell master, make position configurable
+    (can be left or right).
+  + Updated translations.
+- Disable systemMonitor for now, with a %build_systemMonitor
+  macro. It requires libgtop &gt;= 2.28.4 which is not available.
+- Add schema requirements to dock extension.
+- Change License field from GPLv2+ to GPL-2.0+ to conform with
+  spdx.org identifier.
+- Dropped %build_drive_menu macro as it is now part of the 3.1.x
+  tarball.
+- Add gnome-shell-extensions-fix-zero-length-warning-for-
+  stylesheets.patch, reported upstream as bgo#654274.
+- Update to version 3.0.2:
+  + bgo#647386: reverting of user-theme to default
+  + bgo#647599: support globally installed themes
+  + Added license and README
+  + Updated translations.
+- Disable drive menu extension for now, with a %build_drive_menu
+  macro. It was in git, but is not part of the 3.0.x tarballs.
+- Update based on git commit f016b95 (which is nearly 3.0.1):
+  + Add drive-menu extension.
+- Remove fdupes BuildRequires and call to %fdupes as we package
+  each extension in its own subpackage.
+- Update based on git commit b223396 (which is nearly 3.0.1):
+  + Add Alternative Status Menu extension
+  + Add Gajim extension
+  + Add user-theme extension
+  + AlternateTab: make it work with the mouse
+  + AutoMoveWindows: modify workspace management to only remove
+    empty workspaces at end.
+  + Dock: lower the actor to the bottom.
+  + windowsNavigator:
+    - support current gnome-shell
+    - correct restore focus
+- Split out extensions into subpackages, with
+  gnome-shell-extensions having a Recommends for each of them.
+- Initial package, based on git commit b289b0f. (forwarded request 906850 from iznogood)</comment>
+    <requestid>907064</requestid>
+  </revision>
 </revisionlist>

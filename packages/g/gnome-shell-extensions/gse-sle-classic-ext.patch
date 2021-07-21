@@ -1,7 +1,7 @@
-Index: gnome-shell-extensions-40.0/extensions/window-list/extension.js
+Index: gnome-shell-extensions-40.3/extensions/window-list/extension.js
 ===================================================================
---- gnome-shell-extensions-40.0.orig/extensions/window-list/extension.js
-+++ gnome-shell-extensions-40.0/extensions/window-list/extension.js
+--- gnome-shell-extensions-40.3.orig/extensions/window-list/extension.js
++++ gnome-shell-extensions-40.3/extensions/window-list/extension.js
 @@ -23,6 +23,9 @@ const GroupingMode = {
      ALWAYS: 2,
  };
@@ -60,15 +60,15 @@ Index: gnome-shell-extensions-40.0/extensions/window-list/extension.js
  
          Main.ctrlAltTabManager.removeGroup(this);
  
-@@ -1107,6 +1117,7 @@ class Extension {
-     constructor() {
+@@ -1109,6 +1119,7 @@ class Extension {
+ 
          this._windowLists = null;
          this._hideOverviewOrig = Main.overview.hide;
 +        this._isSLEClassic = isSLEClassicMode();
      }
  
      enable() {
-@@ -1126,19 +1137,47 @@ class Extension {
+@@ -1128,19 +1139,47 @@ class Extension {
              this._hideOverviewOrig.call(Main.overview);
          };
  
@@ -120,7 +120,7 @@ Index: gnome-shell-extensions-40.0/extensions/window-list/extension.js
      }
  
      disable() {
-@@ -1152,6 +1191,11 @@ class Extension {
+@@ -1154,6 +1193,11 @@ class Extension {
          this._monitorsChangedId = 0;
  
          this._windowLists.forEach(windowList => {
@@ -132,7 +132,7 @@ Index: gnome-shell-extensions-40.0/extensions/window-list/extension.js
              windowList.hide();
              windowList.destroy();
          });
-@@ -1160,6 +1204,11 @@ class Extension {
+@@ -1162,6 +1206,11 @@ class Extension {
          Main.windowPicker.destroy();
          delete Main.windowPicker;
  
@@ -144,10 +144,10 @@ Index: gnome-shell-extensions-40.0/extensions/window-list/extension.js
          Main.overview.hide = this._hideOverviewOrig;
      }
  
-Index: gnome-shell-extensions-40.0/extensions/window-list/sle-classic.css
+Index: gnome-shell-extensions-40.3/extensions/window-list/sle-classic.css
 ===================================================================
 --- /dev/null
-+++ gnome-shell-extensions-40.0/extensions/window-list/sle-classic.css
++++ gnome-shell-extensions-40.3/extensions/window-list/sle-classic.css
 @@ -0,0 +1,46 @@
 +@import url("stylesheet.css");
 +
@@ -195,10 +195,10 @@ Index: gnome-shell-extensions-40.0/extensions/window-list/sle-classic.css
 +    color: #888;
 +    box-shadow: inset -1px -1px 1px rgba(0,0,0,0.5);
 +  }
-Index: gnome-shell-extensions-40.0/extensions/places-menu/extension.js
+Index: gnome-shell-extensions-40.3/extensions/places-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-40.0.orig/extensions/places-menu/extension.js
-+++ gnome-shell-extensions-40.0/extensions/places-menu/extension.js
+--- gnome-shell-extensions-40.3.orig/extensions/places-menu/extension.js
++++ gnome-shell-extensions-40.3/extensions/places-menu/extension.js
 @@ -139,13 +139,21 @@ function init() {
  
  let _indicator;
@@ -222,10 +222,10 @@ Index: gnome-shell-extensions-40.0/extensions/places-menu/extension.js
  }
  
  function disable() {
-Index: gnome-shell-extensions-40.0/extensions/apps-menu/extension.js
+Index: gnome-shell-extensions-40.3/extensions/apps-menu/extension.js
 ===================================================================
---- gnome-shell-extensions-40.0.orig/extensions/apps-menu/extension.js
-+++ gnome-shell-extensions-40.0/extensions/apps-menu/extension.js
+--- gnome-shell-extensions-40.3.orig/extensions/apps-menu/extension.js
++++ gnome-shell-extensions-40.3/extensions/apps-menu/extension.js
 @@ -27,6 +27,10 @@ const NAVIGATION_REGION_OVERSHOOT = 50;
  Gio._promisify(Gio._LocalFilePrototype, 'query_info_async', 'query_info_finish');
  Gio._promisify(Gio._LocalFilePrototype, 'set_attributes_async', 'set_attributes_finish');
@@ -276,11 +276,11 @@ Index: gnome-shell-extensions-40.0/extensions/apps-menu/extension.js
  }
  
  function disable() {
-Index: gnome-shell-extensions-40.0/data/gnome-classic.css
+Index: gnome-shell-extensions-40.3/data/gnome-classic.css
 ===================================================================
---- gnome-shell-extensions-40.0.orig/data/gnome-classic.css
-+++ gnome-shell-extensions-40.0/data/gnome-classic.css
-@@ -2257,9 +2257,9 @@ StScrollBar {
+--- gnome-shell-extensions-40.3.orig/data/gnome-classic.css
++++ gnome-shell-extensions-40.3/data/gnome-classic.css
+@@ -2259,9 +2259,9 @@ StScrollBar {
    #panel.solid .panel-corner:focus {
      -panel-corner-radius: 0; }
    #panel.lock-screen, #panel.unlock-screen, #panel.login-screen, #panel.solid.lock-screen, #panel.solid.unlock-screen, #panel.solid.login-screen {
@@ -293,17 +293,17 @@ Index: gnome-shell-extensions-40.0/data/gnome-classic.css
      border-bottom: none; }
      #panel.lock-screen .panel-button, #panel.unlock-screen .panel-button, #panel.login-screen .panel-button, #panel.solid.lock-screen .panel-button, #panel.solid.unlock-screen .panel-button, #panel.solid.login-screen .panel-button {
        color: #eeeeec; }
-@@ -2286,3 +2286,6 @@ StScrollBar {
+@@ -2288,3 +2288,6 @@ StScrollBar {
  
  .calendar-day-with-events {
    background-image: url("calendar-today.svg"); }
 +
 +.popup-menu.panel-menu {
 +    margin-bottom: 0em; }
-Index: gnome-shell-extensions-40.0/extensions/workspace-indicator/extension.js
+Index: gnome-shell-extensions-40.3/extensions/workspace-indicator/extension.js
 ===================================================================
---- gnome-shell-extensions-40.0.orig/extensions/workspace-indicator/extension.js
-+++ gnome-shell-extensions-40.0/extensions/workspace-indicator/extension.js
+--- gnome-shell-extensions-40.3.orig/extensions/workspace-indicator/extension.js
++++ gnome-shell-extensions-40.3/extensions/workspace-indicator/extension.js
 @@ -322,7 +322,8 @@ class WorkspaceIndicator extends PanelMe
      _updateThumbnailVisibility() {
          const { workspaceManager } = global;
@@ -314,10 +314,10 @@ Index: gnome-shell-extensions-40.0/extensions/workspace-indicator/extension.js
              vertical || workspaceManager.n_workspaces > MAX_THUMBNAILS;
          this.reactive = useMenu;
  
-Index: gnome-shell-extensions-40.0/extensions/workspace-indicator/stylesheet.css
+Index: gnome-shell-extensions-40.3/extensions/workspace-indicator/stylesheet.css
 ===================================================================
---- gnome-shell-extensions-40.0.orig/extensions/workspace-indicator/stylesheet.css
-+++ gnome-shell-extensions-40.0/extensions/workspace-indicator/stylesheet.css
+--- gnome-shell-extensions-40.3.orig/extensions/workspace-indicator/stylesheet.css
++++ gnome-shell-extensions-40.3/extensions/workspace-indicator/stylesheet.css
 @@ -1,5 +1,7 @@
  .panel-workspace-indicator {
    padding: 0 8px;
