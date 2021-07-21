@@ -93,7 +93,7 @@ BuildRequires:  pkgconfig(mm-glib) >= 0.7
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.103
 BuildRequires:  pkgconfig(pwquality) >= 1.2.2
 BuildRequires:  pkgconfig(smbclient)
-BuildRequires:  pkgconfig(udisks2)
+BuildRequires:  pkgconfig(udisks2) >= 2.8.2
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.6
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcursor)

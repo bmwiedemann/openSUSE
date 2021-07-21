@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 08:31:29 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add versioned BuildRequires to pkgconfig(udisks2):
+  * https://gitlab.gnome.org/GNOME/gnome-control-center/-/blob/gnome-40/panels/info-overview/meson.build#L44
+
+-------------------------------------------------------------------
 Mon Apr 26 01:54:13 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Rebased gnome-control-center-info-never-use-gnome-software.patch,
