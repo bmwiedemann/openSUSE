@@ -17,14 +17,13 @@
 
 
 Name:           harfbuzz
-Version:        2.8.0
+Version:        2.8.2
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
 URL:            https://www.freedesktop.org/wiki/Software/HarfBuzz
 Source0:        https://github.com/harfbuzz/harfbuzz/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
 BuildRequires:  c++_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.28
@@ -34,7 +33,7 @@ BuildRequires:  pkgconfig(freetype2) >= 12.0.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.19.1
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(graphite2)
+BuildRequires:  pkgconfig(graphite2) >= 1.2.0
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(icu-uc)
 Conflicts:      cantarell-fonts < 0.0.23
@@ -103,6 +102,7 @@ This package contains the development files.
 %meson \
 	-Ddocs=disabled \
 	-Dgraphite=enabled \
+        -Dchafa=disabled \
 	%{nil}
 %meson_build
 
