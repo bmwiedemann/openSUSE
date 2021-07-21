@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jul 13 00:00:00 CEST 2021 - dsterba@suse.cz
+
+- Update to 5.13
+  * restore: remove loop checks for extent count and directory scan
+  * inspect dump-tree: new options to print node (--csum-headers) and data
+    checksums (--csum-items)
+  * fi usage:
+    * print stripe count for striped profiles
+    * print zoned information: size, total unusable
+  * mkfs: print note about sha256 accelerated module loading issue
+  * check: ability to reset dev_item::bytes_used
+  * fixes
+    * detect zoned kernel support at run time too
+    * exclusive op running check return value
+  * fi resize: support cancel (kernel 5.14)
+  * device remove: support cancel (kernel 5.14)
+  * documentation about general topics
+    * compression
+    * zoned mode
+    * storage model
+    * hardware considerations
+  * other
+    * libbtrfsutil API overview
+    * help text fixes and updates
+    * hash speedtest measure time, cycles using perf and print throughput
+
+-------------------------------------------------------------------
 Wed Jun 16 17:02:36 UTC 2021 - Cameron Rapp <camspam@redhyena.net>
 
 - Add --disable-zoned for leap

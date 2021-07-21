@@ -1066,4 +1066,12 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment></comment>
     <requestid>903749</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>509f9dd1a872c0047011c12ae492d993</srcmd5>
+    <version>5.13</version>
+    <time>1626887178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.13 (forwarded request 906175 from dsterba)</comment>
+    <requestid>907113</requestid>
+  </revision>
 </revisionlist>
