@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 17 06:43:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.31.0:
+  - Add 'BLANK_LINES_BETWEEN_TOP_LEVEL_IMPORTS_AND_VARIABLES' to support setting
+  a custom number of blank lines between top-level imports and variable
+  definitions.
+  - Ignore end of line `# copybara:` directives when checking line length.
+  - Do not scan exlcuded directories. Prior versions would scan an exluded
+  folder then exclude its contents on a file by file basis. Preventing the
+  folder being scanned is faster.
+
+-------------------------------------------------------------------
 Fri May 29 09:31:01 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.30.0

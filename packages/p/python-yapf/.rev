@@ -77,4 +77,19 @@
     <comment></comment>
     <requestid>810185</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e21a10d5b5bd1ae8538814ae55bab4aa</srcmd5>
+    <version>0.31.0</version>
+    <time>1626887131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.31.0:
+  - Add 'BLANK_LINES_BETWEEN_TOP_LEVEL_IMPORTS_AND_VARIABLES' to support setting
+  a custom number of blank lines between top-level imports and variable
+  definitions.
+  - Ignore end of line `# copybara:` directives when checking line length.
+  - Do not scan exlcuded directories. Prior versions would scan an exluded
+  folder then exclude its contents on a file by file basis. Preventing the
+  folder being scanned is faster.</comment>
+    <requestid>906775</requestid>
+  </revision>
 </revisionlist>
