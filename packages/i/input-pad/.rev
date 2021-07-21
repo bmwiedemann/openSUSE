@@ -76,4 +76,12 @@
   * Disable return-type check for tumbleweed. (forwarded request 734331 from hillwood)</comment>
     <requestid>734332</requestid>
   </revision>
+  <revision rev="10" vrev="5">
+    <srcmd5>a5d2ce7798ad46f0826b53da892ca452</srcmd5>
+    <version>1.0.99.20140916</version>
+    <time>1626887198</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907466</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package input-pad
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ Release:        0
 Summary:        On-screen Input Pad to Send Characters with Mouse
 License:        LGPL-2.0-or-later
 Group:          System/GUI/Other
-Url:            https://github.com/fujiwarat/input-pad
+URL:            https://github.com/fujiwarat/input-pad
 Source0:        %{name}-%{version}.tar.gz
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,7 +49,6 @@ BuildRequires:  libXtst-devel
 %endif
 BuildRequires:  eekboard-devel
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  python-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.37
 Requires:       python3-gobject
