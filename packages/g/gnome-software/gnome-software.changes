@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 10 15:28:52 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.3:
+  + Fix a bug where app sources appeared in the header of the
+    Updates tab.
+  + Automatically install application updates, depending on the
+    type of application and user config.
+  + Avoid extra vertical space in the featured apps carousel.
+  + Include apps from disabled repos in Shell Overview search
+    results.
+  + Distinguish between download size and installed size for
+    PackageKit apps.
+  + Properly update the "Last checked" timestamp on the Updates
+    tab.
+  + Fix a crash that sometimes happens when clicking on the Website
+    button on a details page.
+  + Fix a bug where the list of sources for an application was
+    sometimes incomplete.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Jun  4 09:47:37 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.2:

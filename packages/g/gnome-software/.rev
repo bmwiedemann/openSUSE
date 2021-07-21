@@ -740,4 +740,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment> (forwarded request 897402 from iznogood)</comment>
     <requestid>897538</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>0f687eea70b9d43719eed26529e085c8</srcmd5>
+    <version>40.3</version>
+    <time>1626887165</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906599 from dimstar)</comment>
+    <requestid>907054</requestid>
+  </revision>
 </revisionlist>
