@@ -17,7 +17,7 @@
 
 
 Name:           dwarves
-Version:        1.21
+Version:        1.21+git175.1ef87b2
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -25,15 +25,16 @@ Group:          Development/Tools/Debuggers
 URL:            https://acmel.wordpress.com/
 #Git-Clone:	git://git.kernel.org/pub/scm/devel/pahole/pahole
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
-Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
-Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
+Source:         %{name}-%{version}.tar.xz
+#Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
+#Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
-Patch0:         remove-ftrace-filter.patch
-Patch1:         btf_encoder-fix-and-complete-filtering-out-zero-sized-per-CPU-variables.patch
+Patch0:         dwarves-Prep-1.22.patch
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libbpf)
 BuildRequires:  pkgconfig(zlib)
 # Also known by its most prominent tool
 Provides:       pahole = %version-%release
@@ -90,7 +91,8 @@ for processing DWARF, a debugging data format for ELF files.
 
 %build
 sv="$PWD/lib.v"
-echo "DWARVES_%version { global: *; };" >"$sv"
+ver=$(echo %version | cut -d+ -f1)
+echo "DWARVES_$ver{ global: *; };" >"$sv"
 %cmake -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv"
 %cmake_build
 

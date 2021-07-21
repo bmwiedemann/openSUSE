@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul 15 20:04:36 UTC 2021 - msuchanek@suse.com
+
+- Update to version 1.21+git175.1ef87b2 (jsc#SLE-17288):
+  * libbpf: bump dependency to >= 0.4.0
+  * CMakeLists.txt: Enable SHARED and STATIC lib creation
+  * libbpf: Allow to use packaged version
+  * btfdiff: Support diffing DWARF vs detached BTF
+  * pahole: Allow encoding BTF into a detached file
+  * pahole: Add --kabi_prefix flag
+  * btf_encoder: fix and complete filtering out zero-sized per-CPU variables
+  * btf: Remove ftrace filter
+  * pahole: Introduce --with_flexible_array option to show just types ending in a flexible array
+  * Many updates to btf_encoder and bug fixes
+- Remove upstreamed patches
+  - btf_encoder-fix-and-complete-filtering-out-zero-sized-per-CPU-variables.patch
+  - remove-ftrace-filter.patch
+- Pretend version 1.22 to make kernel happy
+  + dwarves-Prep-1.22.patch
+
+-------------------------------------------------------------------
 Wed Jun  2 14:05:24 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - use https for url (and more beautification changes from spec-cleaner)
