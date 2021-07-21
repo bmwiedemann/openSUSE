@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:13:40 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.6.2:
+  * Add changelog for v1.6.2
+  * Merge pull request #3928 from zubron/customize-velero-image-at-build-time
+  * Update k8s libraries to latest patch version (#3953)
+
+-------------------------------------------------------------------
 Thu Jun 24 00:21:58 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.6.1:
