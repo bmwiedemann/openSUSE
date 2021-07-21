@@ -660,4 +660,12 @@
     <comment>- Update to version 40.1 (forwarded request 889870 from mgorse)</comment>
     <requestid>890093</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>e4add7f56bf9f86772c4185a7324ebea</srcmd5>
+    <version>40.3</version>
+    <time>1626887168</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906601 from dimstar)</comment>
+    <requestid>907056</requestid>
+  </revision>
 </revisionlist>
