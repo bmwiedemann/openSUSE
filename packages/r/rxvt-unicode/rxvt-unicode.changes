@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 21 14:30:22 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- added handle-new-tic-and-dont-install-terminfo.patch:
+  This fixes the build failure on TW. We actually do not care about
+  the generated terminfo file it comes from a different package
+  anyway
+
+-------------------------------------------------------------------
 Tue May 25 07:56:46 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Backport patch from upstream: perl-avoiding-recursive-loading.patch

@@ -338,4 +338,15 @@ adds .desktop files</comment>
     <comment></comment>
     <requestid>895314</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>d15d539b07290135dd8d11f87e19170a</srcmd5>
+    <version>9.26</version>
+    <time>1626887211</time>
+    <user>dimstar_suse</user>
+    <comment>- added handle-new-tic-and-dont-install-terminfo.patch:
+  This fixes the build failure on TW. We actually do not care about
+  the generated terminfo file it comes from a different package
+  anyway</comment>
+    <requestid>907539</requestid>
+  </revision>
 </revisionlist>

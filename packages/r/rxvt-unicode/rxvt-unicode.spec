@@ -41,6 +41,7 @@ Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
 Patch4:         rxvt-unicode-hardening.patch
 Patch5:         rxvt-unicode-secondarywheel.patch
 Patch6:         perl-avoiding-recursive-loading.patch
+Patch7:         handle-new-tic-and-dont-install-terminfo.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
@@ -133,7 +134,7 @@ install -Dm644 %{SOURCE3} %{buildroot}%{_datadir}/applications/%{name}-256color.
 install -Dm644 %{SOURCE4} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %suse_update_desktop_file %{name}-256color
 %suse_update_desktop_file %{name}
-rm %{buildroot}/%{_terminfo}/r/%{name}
+rm -f %{buildroot}/%{_terminfo}/r/%{name}
 
 %files
 %license COPYING
