@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 20 13:56:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove URL for rebased patch
+  bokeh-pr11218-figure-toolbar-active-properties.patch
+
+-------------------------------------------------------------------
+Mon Jul 19 08:35:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Revert to version 2.3.3
+  * stay on a stable version. 2.4.0.dev1 broke distributed
+- Add bokeh-pr11218-figure-toolbar-active-properties.patch
+  * fix for gh#spotify/chartify/issues/128
+  * is a rebased version of gh#bokeh/bokeh#11218
+  * tested with all packages with an active %check from 
+    `osc whatdependson openSUSE:Factory python-bokeh standard x86_64`
+
+-------------------------------------------------------------------
 Mon Jul 12 13:17:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 2.4.0.dev1

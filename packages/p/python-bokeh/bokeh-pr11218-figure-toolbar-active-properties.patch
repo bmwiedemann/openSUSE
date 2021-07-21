@@ -1,0 +1,386 @@
+From 61026198bbfd7bc056b6b255ce0dd3d0dd0dc4f2 Mon Sep 17 00:00:00 2001
+From: Mateusz Paprocki <mattpap@gmail.com>
+Date: Wed, 28 Apr 2021 12:02:01 +0200
+Subject: [PATCH 1/2] Unify {Figure,Toolbar}.active_* properties
+
+---
+ bokeh/models/tools.py                   |  2 +-
+ bokeh/plotting/_tools.py                | 35 ++++++++++++++++---------
+ bokeh/plotting/figure.py                | 16 +++++++----
+ bokeh/plotting/gmap.py                  |  4 +--
+ bokehjs/src/lib/models/tools/toolbar.ts | 18 ++++++-------
+ 5 files changed, 46 insertions(+), 29 deletions(-)
+
+Index: bokeh-2.3.3/bokeh/models/tools.py
+===================================================================
+--- bokeh-2.3.3.orig/bokeh/models/tools.py
++++ bokeh-2.3.3/bokeh/models/tools.py
+@@ -305,7 +305,7 @@ class Toolbar(ToolbarBase):
+     Specify a tap/click tool to be active when the plot is displayed.
+     """)
+ 
+-    active_multi: tp.Union[Literal["auto"], GestureTool, None] = Nullable(Instance(GestureTool), help="""
++    active_multi: tp.Union[Literal["auto"], GestureTool, None] = Either(Null, Auto, Instance(GestureTool), default="auto", help="""
+     Specify an active multi-gesture tool, for instance an edit tool or a range
+     tool.
+ 
+Index: bokeh-2.3.3/bokeh/plotting/_tools.py
+===================================================================
+--- bokeh-2.3.3.orig/bokeh/plotting/_tools.py
++++ bokeh-2.3.3/bokeh/plotting/_tools.py
+@@ -37,7 +37,7 @@ from typing_extensions import Literal
+ 
+ # Bokeh imports
+ from ..models import HoverTool, Plot, Tool, Toolbar
+-from ..models.tools import Drag, InspectTool, Scroll, Tap
++from ..models.tools import Drag, GestureTool, InspectTool, Scroll, Tap
+ 
+ #-----------------------------------------------------------------------------
+ # Globals and constants
+@@ -62,18 +62,21 @@ ActiveDrag = Union[Drag, Auto, str, None
+ ActiveInspect = Union[List[InspectTool], InspectTool, Auto, str, None]
+ ActiveScroll = Union[Scroll, Auto, str, None]
+ ActiveTap = Union[Tap, Auto, str, None]
++ActiveMulti = Union[GestureTool, Auto, str, None]
+ 
+ def process_active_tools(toolbar: Toolbar, tool_map: Dict[str, Tool],
+-        active_drag: ActiveDrag, active_inspect: ActiveInspect, active_scroll: ActiveScroll, active_tap: ActiveTap) -> None:
++        active_drag: ActiveDrag, active_inspect: ActiveInspect, active_scroll: ActiveScroll,
++        active_tap: ActiveTap, active_multi: ActiveMulti) -> None:
+     """ Adds tools to the plot object
+ 
+     Args:
+         toolbar (Toolbar): instance of a Toolbar object
+         tools_map (dict[str]): tool_map from _process_tools_arg
+-        active_drag (str or Tool): the tool to set active for drag
+-        active_inspect (str or Tool): the tool to set active for inspect
+-        active_scroll (str or Tool): the tool to set active for scroll
+-        active_tap (str or Tool): the tool to set active for tap
++        active_drag (str, None, "auto" or Tool): the tool to set active for drag
++        active_inspect (str, None, "auto", Tool or Tool[]): the tool to set active for inspect
++        active_scroll (str, None, "auto" or Tool): the tool to set active for scroll
++        active_tap (str, None, "auto" or Tool): the tool to set active for tap
++        active_multi (str, None, "auto" or Tool): the tool to set active for tap
+ 
+     Returns:
+         None
+@@ -81,12 +84,12 @@ def process_active_tools(toolbar: Toolba
+     Note:
+         This function sets properties on Toolbar
+     """
+-    if active_drag in ['auto', None] or isinstance(active_drag, Tool):
++    if active_drag in ["auto", None] or isinstance(active_drag, Tool):
+         toolbar.active_drag = cast(Any, active_drag)
+     elif active_drag in tool_map:
+         toolbar.active_drag = cast(Any, tool_map[active_drag])
+     else:
+-        raise ValueError("Got unknown %r for 'active_drag', which was not a string supplied in 'tools' argument" % active_drag)
++        raise ValueError(f"Got unknown {active_drag!r} for 'active_drag', which was not a string supplied in 'tools' argument")
+ 
+     if active_inspect in ["auto", None] or isinstance(active_inspect, Tool) or \
+             (isinstance(active_inspect, list) and all(isinstance(t, Tool) for t in active_inspect)):
+@@ -94,21 +97,28 @@ def process_active_tools(toolbar: Toolba
+     elif isinstance(active_inspect, str) and active_inspect in tool_map:
+         toolbar.active_inspect = cast(Any, tool_map[active_inspect])
+     else:
+-        raise ValueError("Got unknown %r for 'active_inspect', which was not a string supplied in 'tools' argument" % active_scroll)
++        raise ValueError(f"Got unknown {active_inspect!r} for 'active_inspect', which was not a string supplied in 'tools' argument")
+ 
+-    if active_scroll in ['auto', None] or isinstance(active_scroll, Tool):
++    if active_scroll in ["auto", None] or isinstance(active_scroll, Tool):
+         toolbar.active_scroll = cast(Any, active_scroll)
+     elif active_scroll in tool_map:
+         toolbar.active_scroll = cast(Any, tool_map[active_scroll])
+     else:
+-        raise ValueError("Got unknown %r for 'active_scroll', which was not a string supplied in 'tools' argument" % active_scroll)
++        raise ValueError(f"Got unknown {active_scroll!r} for 'active_scroll', which was not a string supplied in 'tools' argument")
+ 
+-    if active_tap in ['auto', None] or isinstance(active_tap, Tool):
++    if active_tap in ["auto", None] or isinstance(active_tap, Tool):
+         toolbar.active_tap = cast(Any, active_tap)
+     elif active_tap in tool_map:
+         toolbar.active_tap = cast(Any, tool_map[active_tap])
+     else:
+-        raise ValueError("Got unknown %r for 'active_tap', which was not a string supplied in 'tools' argument" % active_tap)
++        raise ValueError(f"Got unknown {active_tap!r} for 'active_tap', which was not a string supplied in 'tools' argument")
++
++    if active_multi in ["auto", None] or isinstance(active_multi, Tool):
++        toolbar.active_multi = cast(Any, active_multi)
++    elif active_multi in tool_map:
++        toolbar.active_multi = cast(Any, tool_map[active_multi])
++    else:
++        raise ValueError(f"Got unknown {active_multi!r} for 'active_multi', which was not a string supplied in 'tools' argument")
+ 
+ def process_tools_arg(plot: Plot, tools: Union[str, Sequence[Union[Tool, str]]],
+         tooltips: Optional[Union[str, Tuple[str, str]]] = None) -> Tuple[List[Tool], Dict[str, Tool]]:
+Index: bokeh-2.3.3/bokeh/plotting/figure.py
+===================================================================
+--- bokeh-2.3.3.orig/bokeh/plotting/figure.py
++++ bokeh-2.3.3/bokeh/plotting/figure.py
+@@ -32,7 +32,7 @@ from ..core.properties import (
+     Tuple,
+ )
+ from ..models import ColumnDataSource, GraphRenderer, Plot, Title, Tool, glyphs
+-from ..models.tools import Drag, InspectTool, Scroll, Tap
++from ..models.tools import Drag, GestureTool, InspectTool, Scroll, Tap
+ from ..transform import linear_cmap
+ from ..util.options import Options
+ from ._decorators import glyph_method, marker_method
+@@ -175,7 +175,15 @@ class Figure(Plot):
+ 
+         tool_objs, tool_map = process_tools_arg(self, opts.tools, opts.tooltips)
+         self.add_tools(*tool_objs)
+-        process_active_tools(self.toolbar, tool_map, opts.active_drag, opts.active_inspect, opts.active_scroll, opts.active_tap)
++        process_active_tools(
++            self.toolbar,
++            tool_map,
++            opts.active_drag,
++            opts.active_inspect,
++            opts.active_scroll,
++            opts.active_tap,
++            opts.active_multi,
++        )
+ 
+     @glyph_method(glyphs.AnnularWedge)
+     def annular_wedge(self, **kwargs):
+@@ -1599,20 +1607,12 @@ def markers():
+ 
+ # This class itself is intentionally undocumented (it is used to generate
+ # documentation elsewhere)
+-class FigureOptions(Options):
++class BaseFigureOptions(Options):
+ 
+     tools = Either(String, Seq(Either(String, Instance(Tool))), default=DEFAULT_TOOLS, help="""
+     Tools the plot should start with.
+     """)
+ 
+-    x_range = Any(help="""
+-    Customize the x-range of the plot.
+-    """)
+-
+-    y_range = Any(help="""
+-    Customize the y-range of the plot.
+-    """)
+-
+     x_minor_ticks = Either(Auto, Int, default="auto", help="""
+     Number of minor ticks between adjacent x-axis major ticks.
+     """)
+@@ -1637,28 +1637,24 @@ class FigureOptions(Options):
+     A label for the y-axis.
+     """)
+ 
+-    active_drag = Either(Auto, String, Instance(Drag), default="auto", help="""
++    active_drag = Either(Null, Auto, String, Instance(Drag), default="auto", help="""
+     Which drag tool should initially be active.
+     """)
+ 
+-    active_inspect = Either(Auto, String, Instance(InspectTool), Seq(Instance(InspectTool)), default="auto", help="""
++    active_inspect = Either(Null, Auto, String, Instance(InspectTool), Seq(Instance(InspectTool)), default="auto", help="""
+     Which drag tool should initially be active.
+     """)
+ 
+-    active_scroll = Either(Auto, String, Instance(Scroll), default="auto", help="""
++    active_scroll = Either(Null, Auto, String, Instance(Scroll), default="auto", help="""
+     Which scroll tool should initially be active.
+     """)
+ 
+-    active_tap = Either(Auto, String, Instance(Tap), default="auto", help="""
++    active_tap = Either(Null, Auto, String, Instance(Tap), default="auto", help="""
+     Which tap tool should initially be active.
+     """)
+ 
+-    x_axis_type = Either(Null, Auto, Enum("linear", "log", "datetime", "mercator"), default="auto", help="""
+-    The type of the x-axis.
+-    """)
+-
+-    y_axis_type = Either(Null, Auto, Enum("linear", "log", "datetime", "mercator"), default="auto", help="""
+-    The type of the y-axis.
++    active_multi = Either(Null, Auto, String, Instance(GestureTool), default="auto", help="""
++    Specify an active multi-gesture tool, for instance an edit tool or a range tool.
+     """)
+ 
+     tooltips = Either(Null, String, List(Tuple(String, String)), help="""
+@@ -1670,6 +1666,24 @@ class FigureOptions(Options):
+     and added.
+     """)
+ 
++class FigureOptions(BaseFigureOptions):
++
++    x_range = Any(help="""
++    Customize the x-range of the plot.
++    """)
++
++    y_range = Any(help="""
++    Customize the y-range of the plot.
++    """)
++
++    x_axis_type = Either(Null, Auto, Enum("linear", "log", "datetime", "mercator"), default="auto", help="""
++    The type of the x-axis.
++    """)
++
++    y_axis_type = Either(Null, Auto, Enum("linear", "log", "datetime", "mercator"), default="auto", help="""
++    The type of the y-axis.
++    """)
++
+ #-----------------------------------------------------------------------------
+ # Private API
+ #-----------------------------------------------------------------------------
+Index: bokeh-2.3.3/bokeh/plotting/gmap.py
+===================================================================
+--- bokeh-2.3.3.orig/bokeh/plotting/gmap.py
++++ bokeh-2.3.3/bokeh/plotting/gmap.py
+@@ -16,8 +16,6 @@ log = logging.getLogger(__name__)
+ #-----------------------------------------------------------------------------
+ 
+ # Bokeh imports
+-from ..core.enums import HorizontalLocation, VerticalLocation
+-from ..core.properties import Auto, Either, Enum, Instance, Int, Seq, String
+ from ..models import (
+     GMapPlot,
+     LinearAxis,
+@@ -25,12 +23,10 @@ from ..models import (
+     MercatorTickFormatter,
+     Range1d,
+     Title,
+-    Tool,
+ )
+-from ..models.tools import Drag, InspectTool, Scroll, Tap
+-from ..util.options import Options
++from ._plot import _get_num_minor_ticks
+ from ._tools import process_active_tools, process_tools_arg
+-from .figure import Figure
++from .figure import BaseFigureOptions, Figure
+ 
+ #-----------------------------------------------------------------------------
+ # Globals and constants
+@@ -92,18 +88,29 @@ class GMap(GMapPlot):
+ 
+         super().__init__(x_range=Range1d(), y_range=Range1d(), **kw)
+ 
+-        xf = MercatorTickFormatter(dimension="lon")
+-        xt = MercatorTicker(dimension="lon")
+-        self.add_layout(LinearAxis(formatter=xf, ticker=xt), 'below')
+-
+-        yf = MercatorTickFormatter(dimension="lat")
+-        yt = MercatorTicker(dimension="lat")
+-        self.add_layout(LinearAxis(formatter=yf, ticker=yt), 'left')
++        if opts.x_axis_location is not None:
++            xf = MercatorTickFormatter(dimension="lon")
++            xt = MercatorTicker(dimension="lon")
++            xt.num_minor_ticks = _get_num_minor_ticks(LinearAxis, opts.x_minor_ticks)
++            self.add_layout(LinearAxis(formatter=xf, ticker=xt, axis_label=opts.x_axis_label), opts.x_axis_location)
++
++        if opts.y_axis_location is not None:
++            yf = MercatorTickFormatter(dimension="lat")
++            yt = MercatorTicker(dimension="lat")
++            yt.num_minor_ticks = _get_num_minor_ticks(LinearAxis, opts.y_minor_ticks)
++            self.add_layout(LinearAxis(formatter=yf, ticker=yt, axis_label=opts.y_axis_label), opts.y_axis_location)
+ 
+-        tool_objs, tool_map = process_tools_arg(self, opts.tools)
++        tool_objs, tool_map = process_tools_arg(self, opts.tools, opts.tooltips)
+         self.add_tools(*tool_objs)
+-        process_active_tools(self.toolbar, tool_map, opts.active_drag, opts.active_inspect, opts.active_scroll, opts.active_tap)
+-
++        process_active_tools(
++            self.toolbar,
++            tool_map,
++            opts.active_drag,
++            opts.active_inspect,
++            opts.active_scroll,
++            opts.active_tap,
++            opts.active_multi,
++        )
+ 
+     annular_wedge = Figure.annular_wedge
+ 
+@@ -242,51 +249,8 @@ def gmap(google_api_key, map_options, **
+ # Dev API
+ #-----------------------------------------------------------------------------
+ 
+-class GMapFigureOptions(Options):
+-
+-    tools = Either(String, Seq(Either(String, Instance(Tool))), default=DEFAULT_TOOLS, help="""
+-    Tools the plot should start with.
+-    """)
+-
+-    x_minor_ticks = Either(Auto, Int, default="auto", help="""
+-    Number of minor ticks between adjacent x-axis major ticks.
+-    """)
+-
+-    y_minor_ticks = Either(Auto, Int, default="auto", help="""
+-    Number of minor ticks between adjacent y-axis major ticks.
+-    """)
+-
+-    x_axis_location = Enum(VerticalLocation, default="below", help="""
+-    Where the x-axis should be located.
+-    """)
+-
+-    y_axis_location = Enum(HorizontalLocation, default="left", help="""
+-    Where the y-axis should be located.
+-    """)
+-
+-    x_axis_label = String(default="", help="""
+-    A label for the x-axis.
+-    """)
+-
+-    y_axis_label = String(default="", help="""
+-    A label for the y-axis.
+-    """)
+-
+-    active_drag = Either(Auto, String, Instance(Drag), default="auto", help="""
+-    Which drag tool should initially be active.
+-    """)
+-
+-    active_inspect = Either(Auto, String, Instance(InspectTool), Seq(Instance(InspectTool)), default="auto", help="""
+-    Which drag tool should initially be active.
+-    """)
+-
+-    active_scroll = Either(Auto, String, Instance(Scroll), default="auto", help="""
+-    Which scroll tool should initially be active.
+-    """)
+-
+-    active_tap = Either(Auto, String, Instance(Tap), default="auto", help="""
+-    Which tap tool should initially be active.
+-    """)
++class GMapFigureOptions(BaseFigureOptions):
++    pass
+ 
+ #-----------------------------------------------------------------------------
+ # Private API
+Index: bokeh-2.3.3/bokeh/server/static/js/lib/models/tools/toolbar.js
+===================================================================
+--- bokeh-2.3.3.orig/bokeh/server/static/js/lib/models/tools/toolbar.js
++++ bokeh-2.3.3/bokeh/server/static/js/lib/models/tools/toolbar.js
+@@ -9,7 +9,7 @@ export const Drag = Tool;
+ export const Inspection = Tool;
+ export const Scroll = Tool;
+ export const Tap = Tool;
+-const _get_active_attr = (et) => {
++function _get_active_attr(et) {
+     switch (et) {
+         case 'tap': return 'active_tap';
+         case 'pan': return 'active_drag';
+@@ -19,7 +19,7 @@ const _get_active_attr = (et) => {
+     }
+     return null;
+ };
+-const _supports_auto = (et) => {
++function _supports_auto(et): boolean {
+     return et == 'tap' || et == 'pan';
+ };
+ export class Toolbar extends ToolbarBase {
+@@ -28,12 +28,12 @@ export class Toolbar extends ToolbarBase
+     }
+     static init_Toolbar() {
+         this.prototype.default_view = ToolbarBaseView;
+-        this.define(({ Or, Ref, Auto, Null, Nullable }) => ({
++        this.define(({ Or, Ref, Auto, Null }) => ({
+             active_drag: [Or(Ref(Drag), Auto, Null), "auto"],
+             active_inspect: [Or(Ref(Inspection), Auto, Null), "auto"],
+             active_scroll: [Or(Ref(Scroll), Auto, Null), "auto"],
+             active_tap: [Or(Ref(Tap), Auto, Null), "auto"],
+-            active_multi: [Nullable(Ref(GestureTool)), null],
++            active_multi: [Or(Ref(GestureTool), Auto, Null), "auto"],
+         }));
+     }
+     connect_signals() {

@@ -21,21 +21,23 @@
 # tests suite disabled by default. See below.
 %bcond_with     tests
 Name:           python-bokeh
-Version:        2.4.0.dev1
+Version:        2.3.3
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
 Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
+Patch0:         bokeh-pr11218-figure-toolbar-active-properties.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module packaging >= 16.8}
+BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module tornado >= 5.1}
-BuildRequires:  %{python_module typing_extensions >= 3.10.0}
+BuildRequires:  %{python_module typing_extensions >= 3.7.4}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildConflicts: python-buildservice-tweak
@@ -44,8 +46,9 @@ Requires:       python-Pillow >= 7.1.0
 Requires:       python-PyYAML >= 3.10
 Requires:       python-numpy >= 1.11.3
 Requires:       python-packaging >= 16.8
+Requires:       python-python-dateutil >= 2.1
 Requires:       python-tornado >= 5.1
-Requires:       python-typing_extensions >= 3.10.0
+Requires:       python-typing_extensions >= 3.7.4
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-python-dateutil
@@ -59,7 +62,6 @@ BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module selenium}
 %endif
@@ -73,7 +75,7 @@ graphics in the style of D3.js, and favors delivering this capability
 with interactivity over large or streaming datasets.
 
 %prep
-%setup -q -n bokeh-%{version}
+%autosetup -p1 -n bokeh-%{version}
 
 %build
 %python_build
