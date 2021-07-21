@@ -1,0 +1,15 @@
+Index: sqlalchemy-migrate-0.13.0/doc/source/conf.py
+===================================================================
+--- sqlalchemy-migrate-0.13.0.orig/doc/source/conf.py
++++ sqlalchemy-migrate-0.13.0/doc/source/conf.py
+@@ -182,8 +182,8 @@ htmlhelp_basename = 'SQLAlchemyMigratedo
+ # Grouping the document tree into LaTeX files. List of tuples
+ # (source start file, target name, title, author, document class [howto/manual]).
+ latex_documents = [
+-  ('index', 'SQLAlchemyMigrate.tex', ur'SQLAlchemy Migrate Documentation',
+-   ur'Evan Rosson, Jan Dittberner, Domen Kožar', 'manual'),
++  ('index', 'SQLAlchemyMigrate.tex', 'SQLAlchemy Migrate Documentation',
++   'Evan Rosson, Jan Dittberner, Domen Kožar', 'manual'),
+ ]
+ 
+ # The name of an image file (relative to this directory) to place at the top of

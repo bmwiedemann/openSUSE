@@ -25,6 +25,7 @@ License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/sqlalchemy-migrate
 Source:         https://files.pythonhosted.org/packages/source/s/sqlalchemy-migrate/sqlalchemy-migrate-%{version}.tar.gz
+Patch0:         support-sphinx-4.patch
 # Test requirements:
 #BuildRequires:  python-ScriptTest >= 1.0
 BuildRequires:  %{python_module Tempita >= 0.4}
@@ -35,8 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation requirements:
 BuildRequires:  python3-SQLAlchemy >= 0.9.6
-# Temporarily use Sphinx2 lp#1934504
-BuildRequires:  python3-Sphinx2 >= 1.1.2
+BuildRequires:  python3-Sphinx
 Requires:       python-SQLAlchemy >= 0.7.8
 Requires:       python-Tempita >= 0.4
 Requires:       python-decorator
@@ -72,6 +72,7 @@ This package contains the documentation.
 
 %prep
 %setup -q -n sqlalchemy-migrate-%{version}
+%autopatch -p1
 find . -type f -name "*.py" -o -name "*.py_tmpl" | xargs sed -i "/#!/d" # Remove shebang from non-executable scripts
 sed -i "s/, 'sphinxcontrib.issuetracker'//g" doc/source/conf.py # No internet access please
 
