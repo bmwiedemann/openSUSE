@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:27:06 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-sanitizer-cyclades.patch to remove cyclades.h use from
+  libsanitizer fixing builds with recent kernels.
+
+-------------------------------------------------------------------
 Wed Feb  3 09:31:02 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Remove include-fixed/pthread.h
