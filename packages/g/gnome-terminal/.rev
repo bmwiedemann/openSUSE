@@ -2267,4 +2267,12 @@
   + Updated translations. (forwarded request 898206 from iznogood)</comment>
     <requestid>898491</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>b4bcd3a9d9f1146ae650e3c94209eeb3</srcmd5>
+    <version>3.40.3</version>
+    <time>1626887166</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906600 from dimstar)</comment>
+    <requestid>907055</requestid>
+  </revision>
 </revisionlist>
