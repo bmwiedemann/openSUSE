@@ -17,7 +17,7 @@
 
 
 Name:           whois
-Version:        5.5.9
+Version:        5.5.10
 Release:        0
 Summary:        Intelligent WHOIS client
 License:        GPL-2.0-or-later

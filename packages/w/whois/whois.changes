@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  5 07:44:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.5.10:
+  * Updated the .lb TLD server.
+  * Removed 5 new gTLDs which are no longer active.
+  * Updated the charset for whois.lacnic.net, whois.ax, whois.cira.ca
+    and whois.dns.pt.
+  * Fixed reporting an older version number when using --version.
+ 
+-------------------------------------------------------------------
 Fri Apr 02 06:36:03 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - update to 5.5.9:
