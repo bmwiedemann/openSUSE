@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jul 12 17:14:08 UTC 2021 - trenn@suse.de
 
-- Update to version 1.8.0.8.gbd5aaf5:
+- Update to version 1.8.0.8.gbd5aaf5 (jsc#SLE-17697):
   * Fix comma typo in ui.c
   * drop NoNewPrivs from irqbalance service
   * remove no existing irq in banned_irqs
