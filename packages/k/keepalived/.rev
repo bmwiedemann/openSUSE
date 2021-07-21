@@ -319,4 +319,12 @@
     <comment></comment>
     <requestid>893347</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>b4c6d1e1a12806bc8cbae32c6598ebec</srcmd5>
+    <version>2.2.2</version>
+    <time>1626887208</time>
+    <user>dimstar_suse</user>
+    <comment>- add 1915.patch to fix build on tumbleweed</comment>
+    <requestid>907505</requestid>
+  </revision>
 </revisionlist>

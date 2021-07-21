@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 21 12:03:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 1915.patch to fix build on tumbleweed
+
+-------------------------------------------------------------------
 Mon Mar  8 17:44:29 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - drop linux-4.15.patch: No longer needed as it was a backport from
