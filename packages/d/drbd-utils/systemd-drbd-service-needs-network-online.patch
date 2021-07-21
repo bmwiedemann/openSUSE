@@ -1,0 +1,56 @@
+From b360f7680429326ba30ac94a71deec1d6ff5c6e5 Mon Sep 17 00:00:00 2001
+From: Lars Ellenberg <lars.ellenberg@linbit.com>
+Date: Fri, 16 Jul 2021 15:23:55 +0200
+Subject: [PATCH 1/2] systemd: drbd@.service needs to pull in
+ network-online.target
+
+Otherwise during early boot it may be asked to configure the IP before it is available.
+---
+ documentation/v9/drbd@.service.adoc |  6 ++++++
+ scripts/drbd@.service               | 13 +++++++++++++
+ 2 files changed, 19 insertions(+)
+
+diff --git a/documentation/v9/drbd@.service.adoc b/documentation/v9/drbd@.service.adoc
+index 0358591b..d0d18b16 100644
+--- a/documentation/v9/drbd@.service.adoc
++++ b/documentation/v9/drbd@.service.adoc
+@@ -17,6 +17,12 @@ This service unit is part of **drbd@**__RESNAME__**.target**,
+ and used to configure/reconfigure/unconfigure the DRBD __RESNAME__
+ on start/reload/stop.
+ 
++Since we want the network to be online before configuring DRBD,
++you may need to enable one of these:
++
++`systemctl enable systemd-networkd-wait-online.service` or
++`systemctl enable NetworkManager-wait-online.service`.
++
+ See Also
+ --------
+ linkgit:drbd@.target[7],
+diff --git a/scripts/drbd@.service b/scripts/drbd@.service
+index 70832e37..5f47d4cf 100644
+--- a/scripts/drbd@.service
++++ b/scripts/drbd@.service
+@@ -3,6 +3,19 @@ Description= (Re)configure DRBD resource %I
+ 
+ PartOf=drbd@%i.target
+ 
++# We really want the network to be online.
++# You may need to do one of
++# systemctl enable NetworkManager-wait-online.service
++# systemctl enable systemd-networkd-wait-online.service
++Wants=network-online.target sshd.service
++After=network-online.target nss-lookup.target sshd.service
++# If drbd-proxy is used, we want it to be running already.
++After=drbdproxy.service
++
++# This is not intended to be combined with pacemaker,
++# but if combined, it should be ordered before pacemaker.
++Before=pacemaker.service
++
+ #
+ # in an instantiation of this service,
+ # you may want to add "BindsTo=/dev/vg/lv" and "After=" for all backing devices
+-- 
+2.16.4
+

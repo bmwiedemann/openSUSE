@@ -27,7 +27,7 @@
 # Only need po4a to build man from git source code
 %bcond_without prebuiltman
 Name:           drbd-utils
-Version:        9.14.0
+Version:        9.18.0
 Release:        0
 Summary:        Distributed Replicated Block Device
 License:        GPL-2.0-or-later
@@ -41,6 +41,8 @@ Patch3:         fence-after-pacemaker-down.patch
 Patch4:         0001-Disable-quorum-in-default-configuration-bsc-1032142.patch
 Patch5:         move_fencing_from_disk_to_net_in_example.patch
 Patch6:         pie-fix.patch
+# In Upstream 9.18.0~9.19
+Patch7:         systemd-drbd-service-needs-network-online.patch
 
 Provides:       drbd-bash-completion = %{version}
 Provides:       drbd-pacemaker = %{version}
@@ -91,6 +93,7 @@ raid 1. It is a building block for setting up clusters.
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %build
 export WANT_DRBD_REPRODUCIBLE_BUILD=1
@@ -133,9 +136,25 @@ rm -rf %{buildroot}%{_sysconfdir}/xen
 
 %pre
 %service_add_pre drbd.service
+%service_add_pre drbd-lvchange@.service
+%service_add_pre drbd-promote@.service
+%service_add_pre drbd-reconfigure-suspend-or-error@.service
+%service_add_pre drbd-services@.target
+%service_add_pre drbd-wait-promotable@.service
+%service_add_pre drbd@.service
+%service_add_pre drbd@.target
+%service_add_pre ocf.ra@.service
 
 %post
 %service_add_post drbd.service
+%service_add_post drbd-lvchange@.service
+%service_add_post drbd-promote@.service
+%service_add_post drbd-reconfigure-suspend-or-error@.service
+%service_add_post drbd-services@.target
+%service_add_post drbd-wait-promotable@.service
+%service_add_post drbd@.service
+%service_add_post drbd@.target
+%service_add_post ocf.ra@.service
 
 #May also overlap the $MAN_LINK in documentation/v9/Makefile.in
 for f in drbd drbdadm drbdmeta drbdsetup; do
@@ -151,22 +170,38 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 
 %preun
 %service_del_preun drbd.service
+%service_del_preun drbd-lvchange@.service
+%service_del_preun drbd-promote@.service
+%service_del_preun drbd-reconfigure-suspend-or-error@.service
+%service_del_preun drbd-services@.target
+%service_del_preun drbd-wait-promotable@.service
+%service_del_preun drbd@.service
+%service_del_preun drbd@.target
+%service_del_preun ocf.ra@.service
 
 %postun
 %service_del_postun drbd.service
+%service_del_postun drbd-lvchange@.service
+%service_del_postun drbd-promote@.service
+%service_del_postun drbd-reconfigure-suspend-or-error@.service
+%service_del_postun drbd-services@.target
+%service_del_postun drbd-wait-promotable@.service
+%service_del_postun drbd@.service
+%service_del_postun drbd@.target
+%service_del_postun ocf.ra@.service
 
 %files -n drbd-utils
-%defattr(-, root, root)
 %config(noreplace) %{_sysconfdir}/drbd.conf
 %config %{_sysconfdir}/bash_completion.d/drbdadm.sh
 %config(noreplace) %{_sysconfdir}/drbd.d/global_common.conf
 %config(noreplace) %{_sysconfdir}/multipath/conf.d/drbd.conf
 %{_tmpfilesdir}/drbd.conf
-%doc %{_mandir}/man5/drbd.*
-%doc %{_mandir}/man8/drbd*
-%doc %{_mandir}/man7/ocf_linbit_drbd.*
-%doc %{_mandir}/ja/man5/drbd.*
-%doc %{_mandir}/ja/man8/drbd*
+%{_mandir}/man5/drbd.*
+%{_mandir}/man8/drbd*
+%{_mandir}/man7/ocf*
+%{_mandir}/man7/drbd*
+%{_mandir}/ja/man5/drbd.*
+%{_mandir}/ja/man8/drbd*
 %license COPYING
 %doc README.md
 %doc ChangeLog
@@ -186,17 +221,24 @@ ln -sf drbdmon-9.0.8.gz %{_mandir}/ja/man8/drbdmon.8.gz
 %attr(755,root,root) %{_sysconfdir}/xen/scripts/block-drbd
 %endif
 %{_prefix}/lib/ocf/resource.d/linbit/drbd
+%{_prefix}/lib/ocf/resource.d/linbit/drbd-attr
 %{_prefix}/lib/ocf/resource.d/linbit/drbd.shellfuncs.sh
 %{_udevrulesdir}/65-drbd.rules
 %{_unitdir}/drbd.service
-%{_prefix}/lib/systemd/system/drbd.service
-%defattr(-, root, root)
+%{_unitdir}/drbd-lvchange@.service
+%{_unitdir}/drbd-promote@.service
+%{_unitdir}/drbd-reconfigure-suspend-or-error@.service
+%{_unitdir}/drbd-services@.target
+%{_unitdir}/drbd-wait-promotable@.service
+%{_unitdir}/drbd@.service
+%{_unitdir}/drbd@.target
+%{_unitdir}/ocf.ra@.service
 %{_localstatedir}/lib/drbd
 %{_prefix}/lib/drbd
 /lib/drbd
-/lib/drbd/drbd*
 %dir %{_prefix}/lib/ocf
 %dir %{_prefix}/lib/ocf/resource.d
 %dir %{_prefix}/lib/ocf/resource.d/linbit
+%ghost %{_rundir}/drbd
 
 %changelog
