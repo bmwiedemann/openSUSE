@@ -15,4 +15,27 @@
     <comment></comment>
     <requestid>876395</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f808747e360bd56091085b3fbe98a6ef</srcmd5>
+    <version>1.9.0</version>
+    <time>1626887207</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9.0
+  Use different payload data patterns for Active -&gt; Passive and Passive -&gt; Active directions.
+  Added note on SCTP usage with 192.168.122.1 interface.
+  Added test script for Wireshark dissector tests.
+  Enable 30s SCTP Heartbeats on control connection, to ensure PAT/NAT will keep the connection alive.
+  Updated Wireshark color filter example.
+  Bugfix: Make sure to deregister all flows belonging to a closed control connection.
+  Improved DCCP detection.
+  Commented out LK-SCTP bug work-around. It is hopefully not needed any more.
+  Bugfix: fixed possibilities for race conditions reported by Helgrind.
+  Bugfix: fixed UDP flow identification.
+  Improved vector output.
+  Bugfix: fixed improper deletion. Access to deallocated memory was possible.
+  Bugfix: make sure to clear address space (Valgrind reported access to uninitialised memory).
+  Bugfix: fixed handling of new flows on active side (variable was uninitialised).
+  Also write time stamps into scalars.</comment>
+    <requestid>907520</requestid>
+  </revision>
 </revisionlist>

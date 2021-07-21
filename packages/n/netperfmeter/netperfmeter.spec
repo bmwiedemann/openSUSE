@@ -17,7 +17,7 @@
 
 
 Name:           netperfmeter
-Version:        1.8.7
+Version:        1.9.0
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
