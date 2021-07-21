@@ -1,7 +1,7 @@
 #
 # spec file for package dump
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dump
-Version:        0.4b46
+Version:        0.4b47
 Release:        0
 Summary:        Programs for backing up and restoring ext2/3/4 filesystems
 License:        BSD-3-Clause
@@ -32,12 +32,6 @@ Patch0:         %{name}-0.4b46-pathnames.patch
 # ermt build, change its locations to _bindir
 Patch1:         %{name}-0.4b46-rmt-ermt.patch
 Patch3:         %{name}-0.4b43-include.patch
-Patch4:         %{name}-0.4b43-fix-bashisms.patch
-# PATCH-FIX-UPSTREAM dump-0.4b46-lzo-no-return.patch svalx@svalx.net -- fixing rpmlint
-# no-return-in-nonvoid-function error in dump
-Patch5:         %{name}-0.4b46-lzo-no-return.patch
-# PATCH-FIX-SUSE dump-0.4b46-pathnames.patch daniel.molkentin@suse.com -- openssl 1.1 support
-Patch6:         %{name}-0.4b46-openssl-1.1.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
@@ -63,7 +57,7 @@ restore a full backup of a file system.
 Summary:        Provides certain programs with access to remote tape devices
 Group:          Productivity/Archiving/Backup
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       rmt
 
 %description	rmt
@@ -77,9 +71,6 @@ cp %{SOURCE1} rmt/
 %patch0 -p1
 %patch1 -p1
 %patch3
-%patch4 -p1
-%patch5 -p1
-%patch6 -p1
 
 %build
 autoreconf -fiv
@@ -90,7 +81,7 @@ export CFLAGS="%{optflags} -fcommon"
   --enable-ermt \
   --enable-rmt=no \
   --with-rmtpath=%{_bindir}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -111,20 +102,19 @@ if [ ! -f %{_bindir}/ermt ] ; then
 fi
 
 %files
-%defattr(-, root, root)
 %{_sbindir}/dump
 %{_sbindir}/restore
-%{_mandir}/man8/dump.8%{ext_man}
-%{_mandir}/man8/restore.8%{ext_man}
-%doc NEWS COPYING KNOWNBUGS MAINTAINERS README REPORTING-BUGS
+%{_mandir}/man8/dump.8%{?ext_man}
+%{_mandir}/man8/restore.8%{?ext_man}
+%license COPYING
+%doc NEWS KNOWNBUGS MAINTAINERS README REPORTING-BUGS
 %doc AUTHORS TODO dump.lsm examples
 
 %files rmt
-%defattr(-,root,root)
 %ghost %{_bindir}/rmt
 %{_bindir}/ermt
 %ghost %{_mandir}/man1/rmt.1%{ext_man}
-%{_mandir}/man1/ermt.1%{ext_man}
+%{_mandir}/man1/ermt.1%{?ext_man}
 %ghost %{_sysconfdir}/alternatives/rmt
 %ghost %{_sysconfdir}/alternatives/rmt.1%{ext_man}
 %doc encrypted_rmt/README

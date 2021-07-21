@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 16 15:28:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.4b47:
+  * Fix missing lzo return (Alexey Svistunov).
+  * Fix building with OpenSSL 1.1 (Daniel Molkentin).
+  * Fix bashisms in examples (Oleksandr Chumachenko).
+  * Use xattrs funcs from the C library (Vaclav Dolezal).
+  * Fix date mangling in man pages (Mike Frysinger).
+  * Force -fcommon when building (Mike Frysinger).
+  * Add error checking to SSL init transformation (Mike Frysinger).
+  * Fix restore -C calls with ftruncate (Alexander Zangerl).
+  * Restore symlink timestamps (Alexander Zangerl).
+- Remove upstreamed patches:
+  * dump-0.4b43-fix-bashisms.patch
+  * dump-0.4b46-lzo-no-return.patch
+  * dump-0.4b46-openssl-1.1.patch
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Sun Mar 29 21:05:53 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - starting with GCC 10, the default of '-fcommon' option will
