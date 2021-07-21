@@ -765,4 +765,15 @@
     <comment></comment>
     <requestid>905850</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>e5b1524a99928bcff1be88c2e034a8f9</srcmd5>
+    <version>4.1.1</version>
+    <time>1626887133</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.1:
+  * sphinxcontrib-htmlhelp-2.0.0 or above
+  * sphinxcontrib-serializinghtml-1.1.5 or above
+  * html: HTML logo or Favicon specified as file not being found on output</comment>
+    <requestid>906826</requestid>
+  </revision>
 </revisionlist>

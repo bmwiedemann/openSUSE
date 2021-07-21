@@ -28,7 +28,7 @@
 %endif
 %define skip_python2 1
 Name:           python-Sphinx%{psuffix}
-Version:        4.1.0
+Version:        4.1.1
 Release:        0
 Summary:        Python documentation generator
 License:        BSD-2-Clause
@@ -58,10 +58,10 @@ Requires:       python-snowballstemmer >= 1.1
 Requires:       python-sphinx_rtd_theme
 Requires:       python-sphinxcontrib-applehelp
 Requires:       python-sphinxcontrib-devhelp
-Requires:       python-sphinxcontrib-htmlhelp
+Requires:       python-sphinxcontrib-htmlhelp >= 2.0.0
 Requires:       python-sphinxcontrib-jsmath
 Requires:       python-sphinxcontrib-qthelp
-Requires:       python-sphinxcontrib-serializinghtml
+Requires:       python-sphinxcontrib-serializinghtml >= 1.1.5
 Requires:       python-sphinxcontrib-websupport
 Requires(post): update-alternatives
 Requires(postun):update-alternatives

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 17 13:23:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.1:
+  * sphinxcontrib-htmlhelp-2.0.0 or above
+  * sphinxcontrib-serializinghtml-1.1.5 or above
+  * html: HTML logo or Favicon specified as file not being found on output 
+
+-------------------------------------------------------------------
 Mon Jul 12 10:14:42 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Bump to 4.1.0:
