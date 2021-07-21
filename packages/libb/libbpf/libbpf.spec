@@ -1,7 +1,7 @@
 #
 # spec file for package libbpf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,17 @@
 %define sover_major 0
 %define libname libbpf%{sover_major}
 Name:           libbpf
-%define version %(rpm -q --qf '%%{VERSION}' kernel-source)
-Version:        %{version}
+Version:        0.4.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
-URL:            http://www.kernel.org/
-BuildRequires:  kernel-source
+URL:            https://github.com/libbpf/libbpf
+Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/issues/337
+Patch:          libdir.patch
 BuildRequires:  libelf-devel
 BuildRequires:  python3
+BuildRequires:  zlib-devel
 
 %description
 libbpf is a C library which provides API for managing eBPF programs and maps.
@@ -46,27 +48,15 @@ Requires:       %{libname} = %{version}
 libbpf is a C library which provides API for managing eBPF programs and maps.
 
 %prep
-(cd /usr/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} kernel/bpf lib) | tar -xf -
-cp /usr/src/linux/LICENSES/preferred/GPL-2.0 .
-sed -i -e 's/CFLAGS += -O2/CFLAGS = $(RPM_OPT_FLAGS)/' Makefile
+%setup -q
 
 %build
-cd tools/lib/bpf
-%if %{__isa_bits} == 64
-%make_build CFLAGS="%{optflags}" LP64=1
-%else
-%make_build CFLAGS="%{optflags}"
-%endif
+cd src
+%make_build V=1 CFLAGS="%{optflags} -fno-lto"
 
 %install
-cd tools/lib/bpf
-%if %{__isa_bits} == 64
-%make_install prefix=/usr LP64=1
-%else
-%make_install prefix=/usr
-%endif
-make install_headers prefix=%{buildroot}/usr
-
+cd src
+%make_install V=1 LIBDIR=%{_libdir}
 rm -f %{buildroot}%{_libdir}/%{name}.a
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -76,6 +66,8 @@ rm -f %{buildroot}%{_libdir}/%{name}.a
 %{_libdir}/%{name}.so.%{sover_major}*
 
 %files devel
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
+%doc README.md
 %{_includedir}/bpf
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc

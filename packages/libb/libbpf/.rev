@@ -15,4 +15,12 @@
     <comment>- Add python3 as a build dependency. (forwarded request 812755 from mrostecki)</comment>
     <requestid>812756</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7a00dfc61948d7fd1bf4127aa4feccf2</srcmd5>
+    <version>0.4.0</version>
+    <time>1626887142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907038</requestid>
+  </revision>
 </revisionlist>

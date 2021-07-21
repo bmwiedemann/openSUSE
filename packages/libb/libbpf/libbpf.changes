@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 17 15:38:52 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- libbpf is now a separate project, stop building from the kernel
+  (bsc#1188419 jsc#SLE-17288 jsc#SLE-18805).
+- Fix LIBSUBDIR
+  + libdir.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 23:52:39 UTC 2020 - Michał Rostecki <mrostecki@suse.com>
 
 - Add python3 as a build dependency.
