@@ -562,4 +562,24 @@
 - sysmacros.patch: Include &lt;sys/sysmacros.h&gt; for major/minor (bsc#1181571) (bsc#1183796)</comment>
     <requestid>883901</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>e0669010bd76b2f47eaf95a3bc438832</srcmd5>
+    <version>2.0.14.17.g498385e</version>
+    <time>1626887178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.14.17.g498385e:
+  * numactl.c: fix use after free
+  * sysfs.c: prevent mem leak in sysfs_node_read()
+  * sysfs.c: don't leak fd if fail in sysfs_read()
+  * shm.c: fix memleak in verify_shm()
+  * shm.c: fix memleak in dump_shm()
+  * fix description for numa_node_size64 in man as well
+  * fix numa_node_size definition in manpage numa.3
+  * link with -latomic if needed
+  * libnuma: make numa_police_memory() free of race
+  * numademo: Use first two nodes instead of node 0 and 1
+- Enhance _service magic
+- Enable automake</comment>
+    <requestid>907136</requestid>
+  </revision>
 </revisionlist>

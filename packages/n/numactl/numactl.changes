@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:46:42 UTC 2021 - trenn@suse.de
+
+- Update to version 2.0.14.17.g498385e:
+  * numactl.c: fix use after free
+  * sysfs.c: prevent mem leak in sysfs_node_read()
+  * sysfs.c: don't leak fd if fail in sysfs_read()
+  * shm.c: fix memleak in verify_shm()
+  * shm.c: fix memleak in dump_shm()
+  * fix description for numa_node_size64 in man as well
+  * fix numa_node_size definition in manpage numa.3
+  * link with -latomic if needed
+  * libnuma: make numa_police_memory() free of race
+  * numademo: Use first two nodes instead of node 0 and 1
+- Enhance _service magic
+- Enable automake
+
+-------------------------------------------------------------------
 Tue Dec 15 11:17:35 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO (boo#1133098) as it works now.

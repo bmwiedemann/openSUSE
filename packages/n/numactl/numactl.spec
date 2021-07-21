@@ -17,17 +17,20 @@
 
 
 Name:           numactl
-Version:        2.0.14
+Version:        2.0.14.17.g498385e
 Release:        0
 Summary:        NUMA Policy Control
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/numactl/numactl/releases
-Source0:        https://github.com/numactl/numactl/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE -- Avoid segfault when no node can be found in sysfs
 Patch1:         0001-Fixed-segfault-when-no-node-could-be-found-in-sysfs-.patch
 Patch2:         numactl-clearcache-pie.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 
 %description
 Control NUMA policy for individual processes. Offer libnuma for
@@ -58,6 +61,7 @@ individual NUMA policy in applications.
 %patch2 -p1
 
 %build
+./autogen.sh
 %configure \
   --disable-static
 make %{?_smp_mflags} CFLAGS="%{optflags}" V=1
