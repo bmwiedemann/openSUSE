@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon May 31 16:46:32 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.332
+  * slrasslt: Fix stage 3 crashes the emulator.
+  * itaten: Fix incorrect default difficulty setting
+  * luckywld, luckywldj: Lucky and Wild aren't talkitive + some
+    missing sound effects
+  * mslug, mslugx, garou: lower volume on parts of music
+  * sgunner2, sgunner2j: Machine gun samples do not seem to play
+    ingame
+  * suzuka8h, suzuk8h2, finallap, finalap2, finalap3, fourtrax:
+    Fixed buzz/humming sound in background
+  * UI: Fixed File Manager crashes MAME in spectacular ways
+  * offensiv: Loses sound after stage 1 and is not possible to
+    complete because of bar at stage 5
+  * arabianm: Just before round 1 starts, there's a vertical line
+    in the black screen that disappears when you enter the game
+  * timelimt: Sound broken after game over
+  * See https://mametesters.org/changelog_page.php for all changes
+
+-------------------------------------------------------------------
+Tue May 25 06:54:44 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update _constraints to use workers with 'asimdrdm' CPU flag to
+  avoid endless builds on aarch64
+
+-------------------------------------------------------------------
 Fri Mar 26 17:33:11 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 0.229

@@ -39,10 +39,15 @@ ExclusiveArch:  do_not_build
 %define pkgsuffix -%{flavor}
 %endif
 
-%define fver    229
+%define fver    232
 
-# Build mame-mess by default, and use system libraries
-%bcond_without  systemlibs
+# Build mame-mess by default
+# ASIO: https://github.com/mamedev/mame/issues/5721
+%if 0%{?suse_version} >= 1550
+%bcond_with     system_asio
+%else
+%bcond_without  system_asio
+%endif
 
 Name:           mame%{?pkgsuffix}
 Version:        0.%fver
@@ -57,7 +62,7 @@ License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Emulators/Other
 %endif
 URL:            https://mamedev.org/
-Source0:        https://github.com/mamedev/mame/archive/mame0%{fver}.tar.gz
+Source0:        https://github.com/mamedev/mame/archive/mame0%{fver}.tar.gz#/mame-mame0%{fver}.tar.gz
 Source1:        https://github.com/mamedev/mame/releases/download/mame0%{fver}/whatsnew_0%{fver}.txt
 Source2:        mame.png
 Source3:        mess.png
@@ -65,10 +70,10 @@ Source100:      mame-rpmlintrc
 Source101:      mame.ini.in
 Source102:      mame.appdata.xml
 Source104:      mame-mess.appdata.xml
-# PATCH-FIX-OPENSUSE -- use thin archives for static libraries
-Patch2:         use_thin_archives.patch
-# details: https://github.com/mamedev/mame/issues/3157
-Patch3:         fix-922619.patch
+# PATCH-FIX-OPENSUSE use_thin_archives.patch -- use thin archives for static libraries
+Patch0:         use_thin_archives.patch
+# PATCH-FIX-UPSTREAM fix-922619.patch -- https://github.com/mamedev/mame/issues/3157
+Patch1:         fix-922619.patch
 BuildRequires:  binutils-gold
 BuildRequires:  fdupes
 BuildRequires:  memory-constraints
@@ -88,8 +93,6 @@ BuildRequires:  pkgconfig(xinerama)
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 BuildRequires:  gcc-c++
-%if %{with systemlibs}
-BuildRequires:  asio-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg8-devel
 BuildRequires:  lua53-devel
@@ -99,9 +102,12 @@ BuildRequires:  pkgconfig(RapidJSON)
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(portaudio-2.0)
+BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
+%if %{with system_asio}
+BuildRequires:  asio-devel
 %endif
 Requires:       mame-data = %{version}-%{release}
 Suggests:       mame-tools = %{version}
@@ -165,8 +171,8 @@ This package contains all data files needed by the MAME binaries:
 
 %prep
 %setup -q -n mame-mame0%{fver}
-%patch2
-%patch3 -p1
+%patch0
+%patch1 -p1
 
 cp %{SOURCE1} whatsnew-%{version}.txt
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
@@ -213,8 +219,6 @@ COMMON_FLAGS="\
     OPTIMIZE=3 \
     PYTHON=python3 \
     PYTHON_EXECUTABLE=python3 \
-    %if %{with systemlibs}
-    USE_SYSTEM_LIB_ASIO=1 \
     USE_SYSTEM_LIB_EXPAT=1 \
     USE_SYSTEM_LIB_ZLIB=1 \
     USE_SYSTEM_LIB_JPEG=1 \
@@ -227,6 +231,8 @@ COMMON_FLAGS="\
     USE_SYSTEM_LIB_GLM=1 \
     USE_SYSTEM_LIB_RAPIDJSON=1 \
     USE_SYSTEM_LIB_PUGIXML=1 \
+    %if %{with system_asio}
+    USE_SYSTEM_LIB_ASIO=1 \
     %endif
     "
 # Bootstrap genie, scripts file has been patched
