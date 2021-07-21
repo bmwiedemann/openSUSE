@@ -1,0 +1,125 @@
+From be09bb6ba4d27fbd1f667d34bb2f11cccb446d65 Mon Sep 17 00:00:00 2001
+From: Gregory Lee <grlee77@gmail.com>
+Date: Thu, 24 Jun 2021 08:37:01 -0400
+Subject: [PATCH 1/4] BUG: protect against access an attribute of a NULL
+ pointer
+
+Have PyArray_GetCastSafety return -1 if from is NULL
+---
+ numpy/core/src/multiarray/convert_datatype.c | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/numpy/core/src/multiarray/convert_datatype.c b/numpy/core/src/multiarray/convert_datatype.c
+index d197a4bea31..716e5dd3d11 100644
+--- a/numpy/core/src/multiarray/convert_datatype.c
++++ b/numpy/core/src/multiarray/convert_datatype.c
+@@ -417,6 +417,9 @@ PyArray_GetCastSafety(
+     if (to != NULL) {
+         to_dtype = NPY_DTYPE(to);
+     }
++    if (from == NULL) {
++        return -1;
++    }
+     PyObject *meth = PyArray_GetCastingImpl(NPY_DTYPE(from), to_dtype);
+     if (meth == NULL) {
+         return -1;
+@@ -3293,8 +3296,10 @@ void_to_void_resolve_descriptors(
+                 casting = NPY_NO_CASTING | _NPY_CAST_IS_VIEW;
+             }
+         }
+-        NPY_CASTING field_casting = PyArray_GetCastSafety(
+-                given_descrs[0]->subarray->base, given_descrs[1]->subarray->base, NULL);
++
++        PyArray_Descr *from_base = (from_sub == NULL) ? NULL : from_sub->base;
++        PyArray_Descr *to_base = (to_sub == NULL) ? NULL : to_sub->base;
++        NPY_CASTING field_casting = PyArray_GetCastSafety(from_base, to_base, NULL);
+         if (field_casting < 0) {
+             return -1;
+         }
+
+From 3c901b49bd8715c93824c27682d81434d869498a Mon Sep 17 00:00:00 2001
+From: Gregory Lee <grlee77@gmail.com>
+Date: Thu, 24 Jun 2021 11:16:22 -0400
+Subject: [PATCH 2/4] pass descriptor rather than null
+
+---
+ numpy/core/src/multiarray/convert_datatype.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
+
+diff --git a/numpy/core/src/multiarray/convert_datatype.c b/numpy/core/src/multiarray/convert_datatype.c
+index 716e5dd3d11..1bba276d2d1 100644
+--- a/numpy/core/src/multiarray/convert_datatype.c
++++ b/numpy/core/src/multiarray/convert_datatype.c
+@@ -417,9 +417,6 @@ PyArray_GetCastSafety(
+     if (to != NULL) {
+         to_dtype = NPY_DTYPE(to);
+     }
+-    if (from == NULL) {
+-        return -1;
+-    }
+     PyObject *meth = PyArray_GetCastingImpl(NPY_DTYPE(from), to_dtype);
+     if (meth == NULL) {
+         return -1;
+@@ -3297,8 +3294,8 @@ void_to_void_resolve_descriptors(
+             }
+         }
+ 
+-        PyArray_Descr *from_base = (from_sub == NULL) ? NULL : from_sub->base;
+-        PyArray_Descr *to_base = (to_sub == NULL) ? NULL : to_sub->base;
++        PyArray_Descr *from_base = (from_sub == NULL) ? given_descrs[0] : from_sub->base;
++        PyArray_Descr *to_base = (to_sub == NULL) ? given_descrs[1] : to_sub->base;
+         NPY_CASTING field_casting = PyArray_GetCastSafety(from_base, to_base, NULL);
+         if (field_casting < 0) {
+             return -1;
+
+From 8925fec4721b3a89e94d59b6149884d07fc581f4 Mon Sep 17 00:00:00 2001
+From: Gregory Lee <grlee77@gmail.com>
+Date: Thu, 24 Jun 2021 11:44:37 -0400
+Subject: [PATCH 3/4] TST: test can_cast when only one argument has a subarray
+
+---
+ numpy/core/tests/test_casting_unittests.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/numpy/core/tests/test_casting_unittests.py b/numpy/core/tests/test_casting_unittests.py
+index 2cec1acd349..34f316d5ddc 100644
+--- a/numpy/core/tests/test_casting_unittests.py
++++ b/numpy/core/tests/test_casting_unittests.py
+@@ -646,3 +646,9 @@ def test_object_to_parametric_internal_error(self):
+         with pytest.raises(TypeError,
+                     match="casting from object to the parametric DType"):
+             cast._resolve_descriptors((np.dtype("O"), None))
++
++    def test_void_to_structured_with_subarray(self):
++        # test case corresponding to gh-19325
++        dtype = np.dtype([("foo", "<f4", (3, 2))])
++        assert np.can_cast("V4", dtype, casting="unsafe")
++        assert not np.can_cast("V4", dtype, casting="no")
+
+From 9bf60f5f8c5d0dde78b737932e61dec61b960d53 Mon Sep 17 00:00:00 2001
+From: Gregory Lee <grlee77@gmail.com>
+Date: Thu, 24 Jun 2021 13:41:03 -0400
+Subject: [PATCH 4/4] TST: test both argument orders
+
+---
+ numpy/core/tests/test_casting_unittests.py | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/numpy/core/tests/test_casting_unittests.py b/numpy/core/tests/test_casting_unittests.py
+index 34f316d5ddc..d1924c1fda1 100644
+--- a/numpy/core/tests/test_casting_unittests.py
++++ b/numpy/core/tests/test_casting_unittests.py
+@@ -647,8 +647,10 @@ def test_object_to_parametric_internal_error(self):
+                     match="casting from object to the parametric DType"):
+             cast._resolve_descriptors((np.dtype("O"), None))
+ 
+-    def test_void_to_structured_with_subarray(self):
++    @pytest.mark.parametrize("casting", ["no", "unsafe"])
++    def test_void_and_structured_with_subarray(self, casting):
+         # test case corresponding to gh-19325
+         dtype = np.dtype([("foo", "<f4", (3, 2))])
+-        assert np.can_cast("V4", dtype, casting="unsafe")
+-        assert not np.can_cast("V4", dtype, casting="no")
++        expected = casting == "unsafe"
++        assert np.can_cast("V4", dtype, casting=casting) == expected
++        assert np.can_cast(dtype, "V4", casting=casting) == expected

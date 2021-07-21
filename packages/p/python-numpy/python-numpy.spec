@@ -79,6 +79,8 @@ Patch0:         numpy-buildfix.patch
 Patch1:         numpy-1.9.0-remove-__declspec.patch
 # PATCH-FIX-UPSTREAM 0001-BUG-Fix-infinite-loop-on-gcc11.patch
 Patch2:         0001-BUG-Fix-infinite-loop-on-gcc11.patch
+# PATCH-FIX-UPSTREAM numpy-pr19326-fix-subarray-segfault.patch -- gh#numpy/numpy#19326
+Patch3:         https://github.com/numpy/numpy/pull/19326.patch#/numpy-pr19326-fix-subarray-segfault.patch
 BuildRequires:  %{python_module Cython >= 0.29.23}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
@@ -159,10 +161,7 @@ This package contains files for developing applications using numpy.
 %{?with_hpc:%{hpc_python_master_package devel -a }}
 
 %prep
-%setup -q -n numpy-%{version}
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1 -n numpy-%{version}
 # Fix non-executable scripts
 sed -i '1s/^#!.*$//' numpy/{compat/setup,random/_examples/cython/setup,distutils/{conv_template,cpuinfo,exec_command,from_template,setup,system_info},f2py/{__init__,auxfuncs,capi_maps,cb_rules,cfuncs,common_rules,crackfortran,diagnose,f2py2e,f90mod_rules,func2subr,rules,setup,use_rules},ma/{setup,bench},matrixlib/setup,setup,testing/{print_coercion_tables,setup}}.py
 sed -i '1s/^#!.*$//' numpy/random/_examples/cython/*.pyx

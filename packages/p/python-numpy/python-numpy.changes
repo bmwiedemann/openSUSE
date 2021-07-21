@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 16 15:14:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix segfault with subarray access
+  * Add numpy-pr19326-fix-subarray-segfault.patch
+  * Fixes python-zarr segfault
+  * gh#numpy/numpy#19326
+
+-------------------------------------------------------------------
 Wed Jul  7 08:24:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 1.21.0:

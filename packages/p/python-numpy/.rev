@@ -936,4 +936,12 @@ All packages broken by this update should be fixed now</comment>
     <comment></comment>
     <requestid>904588</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>20a880a43abbae17e7d4bda3c780ba22</srcmd5>
+    <version>1.21.0</version>
+    <time>1626887129</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906772</requestid>
+  </revision>
 </revisionlist>
