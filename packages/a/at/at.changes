@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 16 09:09:26 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 3.2.2:
+  * Add script batch-job
+- Refresh patch at-3.1.14.patch into at-3.2.2.patch
+- Convert at-3.1.14-parse-suse-sysconfig.patch to UTF-8
+
+-------------------------------------------------------------------
 Thu Jun  3 11:39:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

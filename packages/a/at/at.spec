@@ -1,7 +1,7 @@
 #
 # spec file for package at
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
-
 Name:           at
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        A Job Manager
 License:        GPL-2.0-or-later
@@ -32,7 +31,7 @@ Source2:        atd.pamd
 Source3:        sysconfig.atd
 Source5:        atd.service
 Source6:        system-user-at.conf
-Patch0:         at-3.1.14.patch
+Patch0:         at-3.2.2.patch
 Patch4:         at-3.1.14-joblist.patch
 Patch10:        at-3.1.13-massive_batch.patch
 Patch11:        at-3.1.13-documentation-dir.patch
@@ -66,9 +65,9 @@ BuildRequires:  flex
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libHX)
 BuildRequires:  pkgconfig(libselinux)
-BuildRequires:  sysuser-tools
 Requires(post): %fillup_prereq
 Requires(pre):  permissions
 %sysusers_requires
@@ -151,5 +150,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_sysusersdir}/
 %{_fillupdir}/sysconfig.atd
 %{_unitdir}/atd.service
 %{_sysusersdir}/system-user-at.conf
+%dir %{_datadir}/at
+%{_datadir}/at/batch-job
 
 %changelog
