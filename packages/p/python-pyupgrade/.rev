@@ -96,4 +96,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>902589</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0e8362394f2d918e3dbc5c586152bf36</srcmd5>
+    <version>2.20.0</version>
+    <time>1626887200</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.20.0:
+ - stricter mypy settings
+ - remove unused type ignore
+ - fix six.with_metaclass and trailing commas
+ - rewrite cElementTree to ElementTree
+</comment>
+    <requestid>907474</requestid>
+  </revision>
 </revisionlist>
