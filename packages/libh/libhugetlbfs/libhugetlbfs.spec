@@ -18,19 +18,18 @@
 
 %define my_make_flags V=1 CFLAGS="%{optflags} -fPIC" LDFLAGS="-pie" BUILDTYPE=NATIVEONLY PREFIX=%{_prefix} LIBDIR32=%{_libdir} DESTDIR=%{buildroot}
 Name:           libhugetlbfs
-Version:        2.22
+Version:        2.23.0.g6b126a4
 Release:        0
 Summary:        Helper library for the Huge Translation Lookaside Buffer Filesystem
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://github.com/libhugetlbfs/libhugetlbfs
-Source0:        https://github.com/libhugetlbfs/libhugetlbfs/releases/download/%{version}/libhugetlbfs-%{version}.tar.gz
+Source0:        libhugetlbfs-%{version}.tar.gz
 Source1:        baselibs.conf
-Patch2:         libhugetlbfs.s390.patch
-Patch4:         libhugetlbfs.tests-malloc.patch
-Patch7:         libhugetlbfs_ia64_fix_missing_test.patch
-Patch14:        disable-rw-on-non-ldscripts.diff
-Patch15:        zero_filesize_segment.patch
+Patch0:         libhugetlbfs.tests-malloc.patch
+Patch1:         libhugetlbfs_ia64_fix_missing_test.patch
+Patch2:         disable-rw-on-non-ldscripts.diff
+Patch3:         zero_filesize_segment.patch
 BuildRequires:  doxygen
 BuildRequires:  glibc-devel-static
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -60,12 +59,7 @@ The testsuite for libhugetlbfs. Binaries can be found in
 %{_libdir}/libhugetlbfs/tests.
 
 %prep
-%setup -q
-%patch2 -p1
-%patch4 -p1
-%patch7 -p1
-%patch14
-%patch15 -p1
+%autosetup -p1
 
 %build
 echo %{version} > version

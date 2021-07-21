@@ -1,7 +1,7 @@
 Index: tests/Makefile
 ===================================================================
---- tests/Makefile.orig
-+++ tests/Makefile
+--- a/tests/Makefile.orig
++++ b/tests/Makefile
 @@ -48,7 +48,7 @@ ifeq ($(CUSTOM_LDSCRIPTS),yes)
  TESTS += $(LDSCRIPT_TESTS) $(HUGELINK_TESTS) $(HUGELINK_TESTS:%=xB.%) \
  	$(HUGELINK_TESTS:%=xBDT.%) $(HUGELINK_RW_TESTS)

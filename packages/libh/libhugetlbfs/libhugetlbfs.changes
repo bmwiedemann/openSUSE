@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 16 21:21:31 UTC 2021 - trenn@suse.de
+
+- Update to version 2.23.0.g6b126a4:
+  * Update NEWS for 2.23 release
+  * Wait child with os.wait()
+  * Makefile: add MANDIR variable
+  * Makefile: skip LIB resolve check if NATIVEONLY
+  * Introduce basic riscv64 support
+  * ld.hugetlbfs: fix -Ttext-segment argument on AArch64
+  * tests: add explicit permissions to open() call
+  * Update NEWS for 2.22 release
+  * Convert setup script to python3
+  * Clean up error checking in dump_proc_pid_maps()
+
+-------------------------------------------------------------------
+Fri Jul 09 13:18:00 UTC 2021 - trenn@suse.de
+
+- Enhance _service magic
+- Update to version 2.23.0.g6b126a4:
+  * Wait child with os.wait()
+  * Makefile: add MANDIR variable
+  * Makefile: skip LIB resolve check if NATIVEONLY
+  * Introduce basic riscv64 support
+  * ld.hugetlbfs: fix -Ttext-segment argument on AArch64
+- Remove unsupported arch patch (does not patch clean anymore):
+D libhugetlbfs.s390.patch
+
+-------------------------------------------------------------------
 Wed Apr 21 12:36:14 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Hardening: Link as PIE (bsc#1184123).
