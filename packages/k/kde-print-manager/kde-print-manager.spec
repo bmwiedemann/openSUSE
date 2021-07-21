@@ -114,7 +114,9 @@ kde-print-manager provides tools for managing print jobs and printers.
 %{_kf5_plugindir}/kf5/kded/printmanager.so
 %{_kf5_qmldir}/org/kde/plasma/printmanager/
 %{_kf5_servicesdir}/kcm_printer_manager.desktop
+%if %{pkg_vcmp plasma-framework-devel < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.printmanager.desktop
+%endif
 
 %if %{with lang}
 %files lang -f %{name}.lang

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 18 08:33:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
