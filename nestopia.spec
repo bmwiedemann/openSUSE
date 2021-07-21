@@ -1,8 +1,8 @@
 #
 # spec file for package nestopia
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           nestopia
-Version:        1.50
+Version:        1.51.0
 Release:        0
 Summary:        Nintendo Entertainment System/Famicom emulator
 License:        GPL-2.0-or-later
@@ -29,12 +29,12 @@ Source:         https://github.com/0ldsk00l/%{name}/archive/%{version}.tar.gz#/%
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(epoxy)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)
@@ -68,7 +68,7 @@ make %{?_smp_mflags}
 %endif
 
 %files
-%doc AUTHORS ChangeLog readme.html README.md
+%doc ChangeLog readme.html README.md
 %license COPYING
 %{_docdir}/%{name}
 %{_bindir}/%{name}

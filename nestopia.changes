@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jul 17 08:56:05 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.51
+  Changes:
+  * Merged the win32 sources back into the main codebase
+  * Switch from GTK to FLTK for Linux/BSD port
+  * Use Legacy OpenGL (Compatibility Profile)
+  Additions:
+  * Mappers 306, 307, 312
+  * Convert many UNIF boards to NES 2.0 mappers
+  Changes:
+  * Use Nestopia core from jgemu
+  Fixes:
+  * Timing and other accuracy fixes for CPU/APU
+  * Revert changes that caused regressions
+  * Fix Camerica mapper for Dooly Bravo Land
+  * Improve MMC5 emulation for Sim City
+  * Fix 8K PRG NROM games such as Galaxian
+  * Full implementation of mapper 156
+  * Fix SOROM saving/loading
+  * Fix FDS IRQ behaviour
+  * Improve RAMBO-1 timing
+  * Fix support for Korean Igo (Korea) (Unl)
+  * Implement mirroring for UNL-KOF97
+  * Rewrite NAMCOT-175 and NAMCOT-340
+  * Assign UNL-CC-21 to mapper 27 and fix CHR bank swapping
+
+-------------------------------------------------------------------
 Sun Jan  5 19:34:45 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.50
