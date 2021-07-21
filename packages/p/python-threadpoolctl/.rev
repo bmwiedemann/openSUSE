@@ -15,4 +15,19 @@
     <comment></comment>
     <requestid>822657</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ba41871f05089820c317b0a9f7892232</srcmd5>
+    <version>2.2.0</version>
+    <time>1626887144</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0:
+  - Report the architecture of the CPU cores detected by OpenBLAS
+    (`openblas_get_corename`) in `threadpool_info()` and BLIS
+    (`bli_arch_query_id` and `bli_arch_string`).
+  - Fixed a bug when the version of MKL was not found. The
+    &quot;version&quot; field is now set to None in that case.
+    https://github.com/joblib/threadpoolctl/pull/82
+- drop python_executable.patch (upstream)</comment>
+    <requestid>907015</requestid>
+  </revision>
 </revisionlist>
