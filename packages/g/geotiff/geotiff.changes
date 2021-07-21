@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 17 08:53:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.0:
+  * Add CoordinateEpochGeoKey = 5120 of type DOUBLE to store coordinate epoch of
+    tie points / geotransform matrix for dynamic CRS.
+  * geo_normalize.h/c: rename variables to please codespell
+  * GTIFGetGCSInfoEx(): use proj_crs_get_datum_forced() for PROJ >= 8 to avoid
+    issues with datum ensembles
+  * GTIFGetGCSInfoEx(): remove dead code
+  * geo_normalize.c: follow-up to e06625c4e5bcce9f9217d1d5a43dc6af73156283 to
+    avoid look up of user-defined GeogGeodeticDatumGeoKey that cause PROJ warnings
+   
+-------------------------------------------------------------------
 Tue Aug 25 12:07:37 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.6.0:

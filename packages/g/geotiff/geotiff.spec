@@ -1,7 +1,7 @@
 #
 # spec file for package geotiff
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   5
 %define libname lib%{name}%{sover}
 Name:           geotiff
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Library to handle georeferenced TIFF
 License:        MIT AND SUSE-Public-Domain
