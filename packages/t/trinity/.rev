@@ -661,4 +661,13 @@
     <comment></comment>
     <requestid>883816</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8dd657bf9d1a8ae38a1f6fd77bb1eb44</srcmd5>
+    <version>1.9+git.20210717</version>
+    <time>1626887192</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20210717:
+  * net/proto-ip-raw.c: fix build with kernel &gt;= 5.13</comment>
+    <requestid>907420</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:55:09 UTC 2021 - jslaby@suse.cz
+
+- Update to version 1.9+git.20210717:
+  * net/proto-ip-raw.c: fix build with kernel >= 5.13
+
+-------------------------------------------------------------------
 Thu Apr  8 08:34:23 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9+git.20210330:
