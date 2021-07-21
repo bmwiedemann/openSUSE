@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 16 11:20:20 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Copy the files to the right location when a <file_location>
+  is given (bsc#1188357).
+- 4.4.14
+
+-------------------------------------------------------------------
+Fri Jul  9 13:46:05 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Recognize the 'dialog' section as a legal element of rules.xml
+  files (bsc#1188153).
+- Do not export the general/storage section when it is empty
+  (related to bsc#1171356 and bsc#1187916).
+
+-------------------------------------------------------------------
 Tue Jul  6 08:57:22 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Add run-erb option to check-profile command.
