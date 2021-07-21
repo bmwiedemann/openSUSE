@@ -27,7 +27,7 @@
 %define __builder ninja
 
 Name:           xrootd
-Version:        4.12.7
+Version:        4.12.8
 Release:        0
 %define plugver 4
 Summary:        An eXtended Root Daemon
@@ -36,8 +36,6 @@ Group:          System/Daemons
 URL:            http://xrootd.org/
 Source0:        https://github.com/xrootd/xrootd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      xrootd-rpmlintrc
-# PATCH-FIX-UPSTREAM xrootd-build-with-glibc2.33.patch gh#xrootd/xrootd#1315 badshah400@gmail.com -- Fix build with glibc 2.33; patch taken from upstream commit
-Patch0:         xrootd-build-with-glibc2.33.patch
 BuildRequires:  cmake >= 2.8
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -90,7 +88,6 @@ which can serve natively any kind of data, organized as a
 hierarchical filesystem-like namespace, based on the concept
 of a directory.
 
-
 %package        ceph
 Summary:        Ceph back-end plug-in for XRootD
 Group:          System/Filesystems
@@ -102,7 +99,6 @@ The typical usage is to give access to file-based ones.
 
 This package contains Ceph storage back-end plug-in for the
 XRootD server.
-
 
 %package        ceph-devel
 Summary:        Ceph back-end plug-in for XRootD
@@ -116,7 +112,6 @@ The typical usage is to give access to file-based ones.
 
 This package contains header files and development libraries
 for XRootD Ceph storage back-end plug-in development.
-
 
 %package        client
 Summary:        XRootD command line client tools
@@ -133,7 +128,6 @@ The typical usage is to give access to file-based ones.
 This package contains the command line tools used to
 communicate with XRootD servers.
 
-
 %package        client-libs
 Summary:        Libraries used by XRootD clients
 Group:          System/Libraries
@@ -144,7 +138,6 @@ The XROOTD project gives access to data repositories.
 The typical usage is to give access to file-based ones.
 
 This package contains libraries used by XRootD clients.
-
 
 %package        client-devel
 Summary:        Development files for XRootD clients
@@ -162,7 +155,6 @@ The typical usage is to give access to file-based ones.
 This package contains header files and development libraries
 for XRootD client development
 
-
 %package        doc
 Summary:        Developer documentation for the XRootD libraries
 Group:          Documentation/Other
@@ -174,7 +166,6 @@ The typical usage is to give access to file-based ones.
 
 This package contains the API documentation of the XRootD
 libraries.
-
 
 %package        fuse
 Summary:        FUSE-based XRootD filesystem mount
@@ -190,7 +181,6 @@ The typical usage is to give access to file-based ones.
 This package contains the FUSE (file system in user space)
 XRootD mount tool.
 
-
 %package        libs
 Summary:        XRootD core libraries
 Group:          System/Libraries
@@ -205,7 +195,6 @@ The typical usage is to give access to file-based ones.
 This package contains libraries used by the XRootD servers and
 clients.
 
-
 %package        libs-devel
 Summary:        Development files for XRootD core libraries
 Group:          Development/Libraries/C and C++
@@ -217,7 +206,6 @@ The typical usage is to give access to file-based ones.
 
 This package contains header files and development libraries
 for XRootD development.
-
 
 %package        private-devel
 Summary:        Private XRootD development files
@@ -233,7 +221,6 @@ libraries. The use of these fikles is strongly discouraged.
 Backwards compatibility between versions is not guaranteed for
 them.
 
-
 %package        server
 Summary:        XRootD (eXtended Root Daemon) server
 Group:          System/Daemons
@@ -248,7 +235,6 @@ The typical usage is to give access to file-based ones.
 
 The XRootD (eXtended Root Daemon) server binaries.
 
-
 %package        server-libs
 Summary:        Libraries used by XRootD servers
 Group:          System/Daemons
@@ -256,10 +242,10 @@ Requires:       %{name}-client-libs = %{version}
 Requires:       %{name}-libs = %{version}
 Requires:       logrotate
 Requires:       systemd
-Requires(pre):    systemd
-Requires(preun):  systemd
-Requires(post):   systemd
-Requires(postun): systemd
+Requires(pre):  systemd
+Requires(preun):systemd
+Requires(post): systemd
+Requires(postun):systemd
 
 %description    server-libs
 The XROOTD project gives access to data repositories.
@@ -282,7 +268,6 @@ The typical usage is to give access to file-based ones.
 This package contains header files and development libraries
 for XRootD server development.
 
-
 %package     -n python3-%{name}
 Summary:        Python 3 bindings for XRootD
 Group:          Development/Libraries/Python
@@ -293,7 +278,6 @@ The XROOTD project gives access to data repositories.
 The typical usage is to give access to file-based ones.
 
 This package provides the python 3 bindings for XRootD.
-
 
 %prep
 %autosetup -p1

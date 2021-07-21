@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  2 00:31:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 4.12.8:
+  * [XrdTpc] Buffer starting at the right offset.
+  * [XrdHttp] Store a new header in the headers map before
+    mangling it, fixes gh#xrootd/xrootd#1399.
+  * [XrdHttp] Fix chunked transfer with 100-continue.
+- Drop xrootd-build-with-glibc2.33.patch: integrated upstream.
+
+-------------------------------------------------------------------
 Mon Feb 22 21:49:32 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.12.7:
