@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul 14 13:31:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.60:
+  * Bump output format version (should have been done for 0.58).
+  * snap: Add missing staging packages.
+  * autoconf: Fix AppArmor and SELinux detection
+    Bug fix that necessitated a new release: previously, the security
+    context displayed with --misc could show as "unknown" due to a
+    bug in configure.ac's detection code.
+  * docs: Add snap details to README.
+
+-------------------------------------------------------------------
+Wed Jul 14 13:30:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.59:
+  * doc improvements (README and man page).
+  * snap: Add snapcraft config file
+  * --sysconf:
+    + Display output in order.
+    + Removed duplicate entry for _SC_EXPR_NEST_MAX.
+    + Added new entries for:
+      - _SC_2_PBS_CHECKPOINT
+      - _SC_SS_REPL_MAX
+      - _SC_STREAMS
+      - _SC_TRACE_EVENT_NAME_MAX
+      - _SC_TRACE_NAME_MAX
+      - _SC_TRACE_SYS_MAX
+      - _SC_TRACE_USER_EVENT_MAX
+      - _SC_XOPEN_STREAMS
+  * --misc: BUG fix: Check for PR_GET_UNALIGN prctl, not PR_GET_UNALIGNED.
+  * --namespaces: BUG fix: Don't fully resolve namespace links to handle new
+  pid_for_children and time_for_children namespaces.
+
+-------------------------------------------------------------------
 Mon Jun 28 06:59:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.58:

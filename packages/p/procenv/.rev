@@ -76,4 +76,12 @@
   * docs: Remove TOC.</comment>
     <requestid>902713</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f434fbe1a3abe6ffe93f12a06bb33d13</srcmd5>
+    <version>0.60</version>
+    <time>1626887210</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>907528</requestid>
+  </revision>
 </revisionlist>
