@@ -26,6 +26,7 @@ URL:            https://www.freedesktop.org/wiki/Software/polkit/
 Source0:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz
 Source1:        https://www.freedesktop.org/software/polkit/releases/%{name}-%{version}.tar.gz.sign
 Source2:        %{name}.keyring
+Source3:        system-user-polkitd.conf
 Source99:       baselibs.conf
 
 # PATCH-FIX-OPENSUSE polkit-no-wheel-group.patch vuntz@opensuse.org -- In openSUSE, there's no special meaning for the wheel group, so we shouldn't allow it to be admin
@@ -49,6 +50,7 @@ BuildRequires:  libexpat-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.2
@@ -59,7 +61,7 @@ BuildRequires:  pkgconfig(systemd)
 #!BuildIgnore:  ruby
 Requires:       dbus-1
 Requires:       libpolkit0 = %{version}-%{release}
-Requires(pre):  shadow
+%sysusers_requires
 Requires(post): permissions
 %systemd_ordering
 
@@ -128,13 +130,13 @@ export SUID_LDFLAGS="-z now -pie"
 %configure \
 	--with-os-type=suse \
 	--enable-gtk-doc \
-	--with-pic \
 	--disable-static \
 	--enable-introspection \
 	--enable-examples \
 	--enable-libsystemd-login \
 	%{nil}
 %make_build libprivdir=%{_libexecdir}/polkit-1
+%sysusers_generate_pre %{SOURCE3} polkit system-user-polkitd.conf
 
 %install
 # install explicitly into libexec. upstream has some unflexible logic for
@@ -151,12 +153,12 @@ mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
 mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/* %{buildroot}%{_datadir}/dbus-1/system.d/
 mkdir -p %{buildroot}%{_distconfdir}/pam.d
 mv %{buildroot}%{_sysconfdir}/pam.d/* %{buildroot}%{_distconfdir}/pam.d/
+mv %{buildroot}%{_sysconfdir}/polkit-1/rules.d/50-default.rules %{buildroot}%{_datadir}/polkit-1/rules.d/50-default.rules
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/
 
-%pre
-getent group polkitd > /dev/null || groupadd -r polkitd
-getent passwd polkitd > /dev/null || useradd -r -g polkitd -d %{_localstatedir}/lib/polkit -s /sbin/nologin -c "User for polkitd" polkitd
+%pre -f polkit.pre
 %service_add_pre polkit.service
-exit 0
 
 %preun
 %service_del_preun polkit.service
@@ -202,10 +204,10 @@ exit 0
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/org.freedesktop.policykit.policy
 %attr(0700,polkitd,root) %dir %{_datadir}/polkit-1/rules.d
+%attr(0700,polkitd,root) %{_datadir}/polkit-1/rules.d/50-default.rules
 %{_distconfdir}/pam.d/polkit-1
 %dir %{_sysconfdir}/polkit-1
 %attr(0700,polkitd,root) %dir %{_sysconfdir}/polkit-1/rules.d
-%config %{_sysconfdir}/polkit-1/rules.d/50-default.rules
 %{_bindir}/pkaction
 %{_bindir}/pkcheck
 %verify(not mode) %attr(4755,root,root) %{_bindir}/pkexec
@@ -215,6 +217,7 @@ exit 0
 %verify(not mode) %attr(4755,root,root) %{_libexecdir}/polkit-1/polkit-agent-helper-1
 # $HOME for polkit user
 %dir %{_localstatedir}/lib/polkit
+%{_sysusersdir}/system-user-polkitd.conf
 %{_unitdir}/polkit.service
 
 %files devel

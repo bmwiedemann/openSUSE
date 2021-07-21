@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 18 12:16:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+- Remove unneeded shadow dependency, no longer required due to
+  systemd-sysusers
+- Fix 50-default.rules file-parent-ownership-mismatch warning
+- Remove --with-pic, no effect with --disable-static
+
+-------------------------------------------------------------------
+Wed Jul  7 08:15:04 UTC 2021 - Stefan Schubert <schubi@suse.com
+
+- Move /etc/polkit-1/rules.d/50-default.rules to
+  /usr/share/polkit-1/rules.d/50-default.rules. The first location
+  is only for admin changes.
+
+-------------------------------------------------------------------
 Wed Jun  9 07:09:16 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix verifyscript: the path to the binary was wrongly defined as

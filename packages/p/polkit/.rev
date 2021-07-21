@@ -661,4 +661,20 @@ Fix for CVE-2013-4288 (forwarded request 199675 from sumski)</comment>
   CVE-2021-3560.patch</comment>
     <requestid>899432</requestid>
   </revision>
+  <revision rev="77" vrev="7">
+    <srcmd5>34af918529d30997b381314f2c501cd1</srcmd5>
+    <version>0.118</version>
+    <time>1626887147</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to using systemd-sysusers
+- Remove unneeded shadow dependency, no longer required due to
+  systemd-sysusers
+- Fix 50-default.rules file-parent-ownership-mismatch warning
+- Remove --with-pic, no effect with --disable-static
+
+- Move /etc/polkit-1/rules.d/50-default.rules to
+  /usr/share/polkit-1/rules.d/50-default.rules. The first location
+  is only for admin changes.</comment>
+    <requestid>907023</requestid>
+  </revision>
 </revisionlist>
