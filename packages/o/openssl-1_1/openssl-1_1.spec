@@ -91,6 +91,7 @@ Patch52:        openssl-1.1.1-system-cipherlist.patch
 Patch53:        openssl-1_1-seclevel.patch
 Patch54:        openssl-1_1-use-seclevel2-in-tests.patch
 Patch55:        openssl-1_1-disable-test_srp-sslapi.patch
+Patch56:        openssl-add_rfc3526_rfc7919.patch
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} && ! 0%{?sle_version}
 Requires:       crypto-policies

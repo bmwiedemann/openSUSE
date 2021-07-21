@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon May 17 14:28:52 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Added openssl-add_rfc3526_rfc7919.patch
+  * Genpkey: "-pkeyopt dh_param:" can now choose modp_* (rfc3526)
+    and ffdhe* (rfc7919) groups. Example:
+    $ openssl genpkey -genparam -algorithm DH -pkeyopt dh_param:ffdhe4096
+  * DH_new_by_nid(), DH_get_nid(), and EVP_PKEY_CTX_set_dh_nid():
+    NID_modp_* groups are now available, similar to NID_ffdhe*.
+  * Fixes bsc#1180995 - openssl s_server fails when FIPS is enabled
+
+-------------------------------------------------------------------
 Thu Mar 25 23:51:47 UTC 2021 - Jason Sikes <jsikes@suse.com>
 
 - Update to 1.1.1k
