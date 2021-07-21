@@ -3713,4 +3713,21 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
 </comment>
     <requestid>904064</requestid>
   </revision>
+  <revision rev="299" vrev="1">
+    <srcmd5>2b2db13faf23a09f699ee4831a50a736</srcmd5>
+    <version>91.0.4472.164</version>
+    <time>1626887136</time>
+    <user>dimstar_suse</user>
+    <comment>- chromium 91.0.4472.164 (boo#1188373)
+  * CVE-2021-30559: Out of bounds write in ANGLE
+  * CVE-2021-30541: Use after free in V8
+  * CVE-2021-30560: Use after free in Blink XSLT
+  * CVE-2021-30561: Type Confusion in V8
+  * CVE-2021-30562: Use after free in WebSerial
+  * CVE-2021-30563: Type Confusion in V8
+  * CVE-2021-30564: Heap buffer overflow in WebXR
+  * Various fixes from internal audits, fuzzing and other initiatives
+</comment>
+    <requestid>906869</requestid>
+  </revision>
 </revisionlist>

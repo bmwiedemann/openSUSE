@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 17 18:17:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- chromium 91.0.4472.164 (boo#1188373)
+  * CVE-2021-30559: Out of bounds write in ANGLE
+  * CVE-2021-30541: Use after free in V8
+  * CVE-2021-30560: Use after free in Blink XSLT
+  * CVE-2021-30561: Type Confusion in V8
+  * CVE-2021-30562: Use after free in WebSerial
+  * CVE-2021-30563: Type Confusion in V8
+  * CVE-2021-30564: Heap buffer overflow in WebXR
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
 Mon Jul  5 09:03:02 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add chromium-91-sql-standard-layout-type.patch: to fix SQL being
