@@ -322,4 +322,13 @@
   * Source fix for old gcc versions</comment>
     <requestid>871527</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>c9c8df77af5ef765b95b8d41936c5d91</srcmd5>
+    <version>1.14.6</version>
+    <time>1626887126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.14.6:
+  * Revert &quot;grovel: detect :float and :double in the :auto type&quot;</comment>
+    <requestid>906722</requestid>
+  </revision>
 </revisionlist>
