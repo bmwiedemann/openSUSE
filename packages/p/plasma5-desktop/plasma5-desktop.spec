@@ -329,7 +329,6 @@ sed -i"" "s/Name=Desktop/Name=Desktop Containment/g" containments/desktop/packag
 %{_kf5_appstreamdir}/
 %{_kf5_libdir}/libexec/kimpanel-ibus-panel
 %{_kf5_qmldir}/org/kde/plasma/private/kimpanel/
-%{_kf5_servicesdir}/*kimpanel*
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.kimpanel/
 %if !%{have_ibus_dict_emoji_pkg}
 %exclude %{_kf5_plasmadir}/ibus-emoji-dicts/
