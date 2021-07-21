@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 06:28:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add vips-vipsprofile-python3-shebang.patch:
+  * Change shebang of vipsprofile to be /usr/bin/python3
+
+-------------------------------------------------------------------
 Sat Apr 24 12:46:43 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 8.10.6

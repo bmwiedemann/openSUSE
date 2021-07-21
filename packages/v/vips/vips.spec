@@ -34,6 +34,8 @@ Source0:        https://github.com/libvips/libvips/releases/download/v%{version}
 Patch1:         vips-8.4.2_libexif-header.patch
 # PATCH-FIX-OPENSUSE vips-8.9.2-implicit-fortify-decl.patch -- avoid implicit declarations
 Patch2:         vips-8.9.2-implicit-fortify-decl.patch
+# PATCH-FIX-OPENSUSE vips-vipsprofile-python3-shebang.patch -- set shebang to python3
+Patch3:         vips-vipsprofile-python3-shebang.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
