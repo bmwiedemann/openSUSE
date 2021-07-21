@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:45:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the dmgbuild binary until it's ported to python 3.
+- Only install the license files once.
+- Drop fix-env-script-interpreter.patch. No longer needed.
+
+-------------------------------------------------------------------
 Sat Jul  3 19:50:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.19.1

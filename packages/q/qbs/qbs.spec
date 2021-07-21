@@ -31,8 +31,6 @@ License:        LGPL-3.0-only OR (GPL-2.0-only OR GPL-3.0-or-later) AND (LGPL-2.
 Group:          Development/Tools/Building
 URL:            https://wiki.qt.io/Qbs
 Source:         https://download.qt.io/official_releases/%{name}/%{version}/%{name}-src-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE fix-env-script-interpreter.patch -- Avoid the "env-script-interpreter" warning when building
-Patch0:         fix-env-script-interpreter.patch
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Use-qmake-qt5-for-openSUSE.patch
 BuildRequires:  fdupes
@@ -95,8 +93,9 @@ makeopts=""
 %install
 %qmake5_install
 
-# Cleanup, until the code is ported to python3 completely
-rm -fr %{buildroot}%{_datadir}/%{name}/python
+# Cleanup, until the code is ported to python3
+rm %{buildroot}%{_libexecdir}/%{name}/dmgbuild
+rm -r %{buildroot}%{_datadir}/%{name}/python
 
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config.1.gz
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config-ui.1.gz
@@ -139,11 +138,9 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %{_libdir}/%{name}/plugins/libvisualstudiogenerator.so
 %{_libdir}/lib%{name}*.so.*
 %{_libexecdir}/%{name}/%{name}_processlauncher
-%{_libexecdir}/%{name}/dmgbuild
 %{_mandir}/man1/qbs*%{ext_man}
 
 %files devel
-%license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
 %doc %{_datadir}/%{name}/examples/
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}*.prl

@@ -131,4 +131,14 @@ Initial import of qbs 1.10.1
     <comment></comment>
     <requestid>904338</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>bbceb9dfe3afacb7aa14d35020f2a13f</srcmd5>
+    <version>1.19.1</version>
+    <time>1626887191</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the dmgbuild binary until it's ported to python 3.
+- Only install the license files once.
+- Drop fix-env-script-interpreter.patch. No longer needed.</comment>
+    <requestid>907419</requestid>
+  </revision>
 </revisionlist>
