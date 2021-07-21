@@ -1,7 +1,7 @@
 #
 # spec file for package log4shib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -67,6 +67,9 @@ The static libraries and header files needed for development with log4shib.
 %patch0 -p1
 
 %build
+# The default C++ standard used in GCC-11 is C++17,
+# which does not support log4shib codebase.
+export CXXFLAGS="-std=c++11 %{optflags}"
 %configure \
   --disable-static \
   --enable-doxygen
@@ -84,6 +87,7 @@ config/install-sh -m 644 -c AUTHORS COPYING NEWS README THANKS ChangeLog %{build
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n liblog4shib%{libvers} -p /sbin/ldconfig
+
 %post -n liblog4shib-devel
 if test "x$RPM_INSTALL_PREFIX0" != "x" ; then
     perl -pi -e"s|^prefix=\"[^\"]*\"|prefix=\"$RPM_INSTALL_PREFIX0\"|" $RPM_INSTALL_PREFIX0/bin/log4shib-config

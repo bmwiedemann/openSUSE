@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 21 09:56:01 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix build on GCC-11.
+
+-------------------------------------------------------------------
 Thu Dec  3 11:22:14 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - run spec-cleaner, especially to fix SUSE header
