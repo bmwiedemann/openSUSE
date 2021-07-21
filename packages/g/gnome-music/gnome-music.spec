@@ -17,7 +17,7 @@
 
 
 Name:           gnome-music
-Version:        40.1
+Version:        40.1.1
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
@@ -25,8 +25,6 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
 Source0:        https://download.gnome.org/sources/gnome-music/40/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
-# PATCH-FIX-UPSTREAM gnome-music-fix-40.1-release.patch
-Patch0:         gnome-music-fix-40.1-release.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
