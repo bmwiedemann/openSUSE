@@ -17,7 +17,7 @@
 
 
 Name:           yelp
-Version:        40.2
+Version:        40.3
 Release:        0
 Summary:        Help Browser for the GNOME Desktop
 License:        GPL-2.0-or-later
