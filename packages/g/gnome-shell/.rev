@@ -1780,4 +1780,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Fix screen blanking on idle. (forwarded request 900123 from dimstar)</comment>
     <requestid>900142</requestid>
   </revision>
+  <revision rev="201" vrev="1">
+    <srcmd5>c8fc84bde1ae725551b02ac6da362dbb</srcmd5>
+    <version>40.3</version>
+    <time>1626887163</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906597 from dimstar)</comment>
+    <requestid>907053</requestid>
+  </revision>
 </revisionlist>

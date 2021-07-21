@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:55:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.3:
+  + Fix glitch in app grid → session transition.
+  + Fix IM popup visibility when in fullscreen.
+  + magnifier: Fix view jumps when using caret tracking.
+  + Fix shadow rendering glitches.
+  + Fix vertical scrollbars in RTL locales.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+- Drop gnome-shell-session-launch-timeout.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Tue Jun 15 09:11:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update gnome-shell-session-launch-timeout.patch: Use the version
