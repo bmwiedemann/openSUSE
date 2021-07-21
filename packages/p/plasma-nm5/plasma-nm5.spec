@@ -290,7 +290,6 @@ wireless connectivity on Plasma Mobile.
 %{_kf5_plugindir}/kf5/kded/networkmanagement.so
 %{_kf5_qmldir}/
 %{_kf5_notifydir}/
-%{_kf5_servicesdir}/plasma-applet*.desktop
 %{_kf5_servicetypesdir}/
 %{_kf5_sharedir}/plasma/
 %dir %{_kf5_appstreamdir}
