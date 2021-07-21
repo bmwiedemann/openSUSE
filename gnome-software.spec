@@ -19,7 +19,7 @@
 %define gs_plugin_api 16
 %define _version 40_0
 Name:           gnome-software
-Version:        40.2
+Version:        40.3
 Release:        0
 Summary:        GNOME Software Store
 License:        GPL-2.0-or-later
