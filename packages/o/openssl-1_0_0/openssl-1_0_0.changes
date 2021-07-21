@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 12 12:38:20 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Add safe primes to DH parameter generation
+  * RFC7919 and RFC3526
+  * bsc#1180995
+  * Added openssl-add_rfc3526_rfc7919.patch
+  * Added openssl-DH.patch
+  * Genpkey: "-pkeyopt dh_param:" can now choose modp_* (rfc3526) and
+    ffdhe* (rfc7919) groups. Example:
+    $ openssl genpkey -genparam -algorithm DH -pkeyopt dh_param:ffdhe4096
+
+-------------------------------------------------------------------
+Sat Jun 26 03:30:08 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- link binaries as position independent executables
+  * added openssl-1.0.0-pic-pie.patch
+  * bsc#1186495
+
+-------------------------------------------------------------------
 Wed Mar  3 17:04:01 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fixes:

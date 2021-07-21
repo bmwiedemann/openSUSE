@@ -1,0 +1,279 @@
+diff --git a/crypto/dh/dh.h b/crypto/dh/dh.h
+index 2ff8f56..8e82976 100644
+--- a/crypto/dh/dh.h
++++ b/crypto/dh/dh.h
+@@ -261,6 +261,21 @@ DH *DH_get_1024_160(void);
+ DH *DH_get_2048_224(void);
+ DH *DH_get_2048_256(void);
+ 
++/* RFC 3526 parameters */
++DH *DH_rfc3526_get_1536(void);
++DH *DH_rfc3526_get_2048(void);
++DH *DH_rfc3526_get_3072(void);
++DH *DH_rfc3526_get_4096(void);
++DH *DH_rfc3526_get_6144(void);
++DH *DH_rfc3526_get_8192(void);
++
++/* RFC 7919 parameters */
++DH *DH_rfc7919_get_2048(void);
++DH *DH_rfc7919_get_3072(void);
++DH *DH_rfc7919_get_4096(void);
++DH *DH_rfc7919_get_6144(void);
++DH *DH_rfc7919_get_8192(void);
++
+ # ifndef OPENSSL_NO_CMS
+ /* RFC2631 KDF */
+ int DH_KDF_X9_42(unsigned char *out, size_t outlen,
+@@ -293,6 +308,11 @@ int DH_KDF_X9_42(unsigned char *out, size_t outlen,
+         EVP_PKEY_CTX_ctrl(ctx, EVP_PKEY_DHX, EVP_PKEY_OP_PARAMGEN, \
+                         EVP_PKEY_CTRL_DH_RFC5114, gen, NULL)
+ 
++# define EVP_PKEY_CTX_set_dh_nid(ctx, nid) \
++        EVP_PKEY_CTX_ctrl(ctx, EVP_PKEY_DH, \
++                        EVP_PKEY_OP_PARAMGEN | EVP_PKEY_OP_KEYGEN, \
++                        EVP_PKEY_CTRL_DH_NID, nid, NULL)
++
+ # define EVP_PKEY_CTX_set_dh_kdf_type(ctx, kdf) \
+         EVP_PKEY_CTX_ctrl(ctx, EVP_PKEY_DHX, \
+                                 EVP_PKEY_OP_DERIVE, \
+@@ -357,6 +377,7 @@ int DH_KDF_X9_42(unsigned char *out, size_t outlen,
+ # define EVP_PKEY_CTRL_GET_DH_KDF_UKM            (EVP_PKEY_ALG_CTRL + 12)
+ # define EVP_PKEY_CTRL_DH_KDF_OID                (EVP_PKEY_ALG_CTRL + 13)
+ # define EVP_PKEY_CTRL_GET_DH_KDF_OID            (EVP_PKEY_ALG_CTRL + 14)
++# define EVP_PKEY_CTRL_DH_NID                    (EVP_PKEY_ALG_CTRL + 15)
+ 
+ /* KDF types */
+ # define EVP_PKEY_DH_KDF_NONE                            1
+diff --git a/crypto/dh/dh_pmeth.c b/crypto/dh/dh_pmeth.c
+index 924a5ae..05de353 100644
+--- a/crypto/dh/dh_pmeth.c
++++ b/crypto/dh/dh_pmeth.c
+@@ -80,6 +80,7 @@ typedef struct {
+     /* message digest used for parameter generation */
+     const EVP_MD *md;
+     int rfc5114_param;
++    int param_nid;
+     /* Keygen callback info */
+     int gentmp[2];
+     /* KDF (if any) to use for DH */
+@@ -107,6 +108,7 @@ static int pkey_dh_init(EVP_PKEY_CTX *ctx)
+     dctx->use_dsa = 0;
+     dctx->md = NULL;
+     dctx->rfc5114_param = 0;
++    dctx->param_nid = NID_undef;
+ 
+     dctx->kdf_type = EVP_PKEY_DH_KDF_NONE;
+     dctx->kdf_oid = NULL;
+@@ -135,6 +137,7 @@ static int pkey_dh_copy(EVP_PKEY_CTX *dst, EVP_PKEY_CTX *src)
+     dctx->use_dsa = sctx->use_dsa;
+     dctx->md = sctx->md;
+     dctx->rfc5114_param = sctx->rfc5114_param;
++    dctx->param_nid = sctx->param_nid;
+ 
+     dctx->kdf_type = sctx->kdf_type;
+     dctx->kdf_oid = OBJ_dup(sctx->kdf_oid);
+@@ -195,11 +198,17 @@ static int pkey_dh_ctrl(EVP_PKEY_CTX *ctx, int type, int p1, void *p2)
+         return 1;
+ 
+     case EVP_PKEY_CTRL_DH_RFC5114:
+-        if (p1 < 1 || p1 > 3)
++        if (p1 < 1 || p1 > 3 || dctx->param_nid != NID_undef)
+             return -2;
+         dctx->rfc5114_param = p1;
+         return 1;
+ 
++    case EVP_PKEY_CTRL_DH_NID:
++        if (p1 <= 0 || dctx->rfc5114_param != 0)
++            return -2;
++        dctx->param_nid = p1;
++        return 1;
++
+     case EVP_PKEY_CTRL_PEER_KEY:
+         /* Default behaviour is OK */
+         return 1;
+@@ -281,6 +290,16 @@ static int pkey_dh_ctrl_str(EVP_PKEY_CTX *ctx,
+         dctx->rfc5114_param = len;
+         return 1;
+     }
++    if (strcmp(type, "dh_param") == 0) {
++        DH_PKEY_CTX *dctx = ctx->data;
++        int nid = OBJ_sn2nid(value);
++
++        if (nid == NID_undef) {
++            return -2;
++        }
++        dctx->param_nid = nid;
++        return 1;
++    }
+     if (!strcmp(type, "dh_paramgen_generator")) {
+         int len;
+         len = atoi(value);
+@@ -380,6 +399,52 @@ static int pkey_dh_paramgen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
+         return 1;
+     }
+ 
++     /*
++     * Look for a safe prime group for key establishment. Which uses
++     * either RFC_3526 (modp_XXXX) or RFC_7919 (ffdheXXXX).
++     */
++    if (dctx->param_nid != 0) {
++      switch (dctx->param_nid) {
++      case NID_ffdhe2048:
++        dh = DH_rfc7919_get_2048();
++	break;
++      case NID_ffdhe3072:
++        dh = DH_rfc7919_get_3072();
++	break;
++      case NID_ffdhe4096:
++        dh = DH_rfc7919_get_4096();
++	break;
++      case NID_ffdhe6144:
++        dh = DH_rfc7919_get_6144();
++	break;
++      case NID_ffdhe8192:
++        dh = DH_rfc7919_get_8192();
++	break;
++      case NID_modp_2048:
++        dh = DH_rfc3526_get_2048();
++	break;
++      case NID_modp_3072:
++        dh = DH_rfc3526_get_3072();
++	break;
++      case NID_modp_4096:
++        dh = DH_rfc3526_get_4096();
++	break;
++      case NID_modp_6144:
++        dh = DH_rfc3526_get_6144();
++	break;
++      case NID_modp_8192:
++        dh = DH_rfc3526_get_8192();
++	break;
++      case NID_modp_1536:
++        dh = DH_rfc3526_get_1536();
++	break;
++      default:
++        return NULL;
++      }
++        EVP_PKEY_assign(pkey, EVP_PKEY_DH, dh);
++        return 1;
++    }
++
+     if (ctx->pkey_gencb) {
+         pcb = &cb;
+         evp_pkey_set_cb_translate(pcb, ctx);
+@@ -415,16 +480,22 @@ static int pkey_dh_paramgen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
+ static int pkey_dh_keygen(EVP_PKEY_CTX *ctx, EVP_PKEY *pkey)
+ {
+     DH *dh = NULL;
+-    if (ctx->pkey == NULL) {
++    DH_PKEY_CTX *dctx = ctx->data;
++
++    if (ctx->pkey == NULL && dctx->param_nid == 0) {
+         DHerr(DH_F_PKEY_DH_KEYGEN, DH_R_NO_PARAMETERS_SET);
+         return 0;
+     }
+-    dh = DH_new();
++    if (dctx->param_nid != 0)
++        dh = DH_new_by_nid(dctx->param_nid);
++    else
++        dh = DH_new();
++
+     if (!dh)
+         return 0;
+     EVP_PKEY_assign(pkey, ctx->pmeth->pkey_id, dh);
+     /* Note: if error return, pkey is freed by parent routine */
+-    if (!EVP_PKEY_copy_parameters(pkey, ctx->pkey))
++    if (ctx->pkey != NULL && !EVP_PKEY_copy_parameters(pkey, ctx->pkey))
+         return 0;
+     return DH_generate_key(pkey->pkey.dh);
+ }
+diff --git a/crypto/dh/dh_rfc5114.c b/crypto/dh/dh_rfc5114.c
+index 3f05bb0..75d8fb8 100644
+--- a/crypto/dh/dh_rfc5114.c
++++ b/crypto/dh/dh_rfc5114.c
+@@ -1098,6 +1098,65 @@ const BIGNUM _bignum_const_2 = {
+     (BN_ULONG *)&value_2, 1, 1, 0, BN_FLG_STATIC_DATA
+ };
+ 
++
++/* Similar macro to make a DH structure for rfc3526 */
++
++#define make_rfc3526_dh(x) \
++DH * DH_rfc3526_get_##x(void) \
++        { \
++        DH *dh; \
++        make_dh_bn(modp_##x##_p); \
++        make_dh_bn(modp_##x##_q); \
++        dh = DH_new(); \
++        if (!dh) \
++                return NULL; \
++        dh->p = BN_dup(&_bignum_modp_##x##_p); \
++        dh->q = BN_dup(&_bignum_modp_##x##_q); \
++        dh->g = BN_dup(&_bignum_const_2); \
++        if (!dh->p || !dh->q || !dh->g) \
++                { \
++                DH_free(dh); \
++                return NULL; \
++                } \
++        return dh; \
++        }
++
++make_rfc3526_dh(1536) /* 1 */
++make_rfc3526_dh(2048) /* 2 */
++make_rfc3526_dh(3072) /* 3 */
++make_rfc3526_dh(4096) /* 4 */
++make_rfc3526_dh(6144) /* 5 */
++make_rfc3526_dh(8192) /* 6 */
++
++
++/* Similar macro to make a DH structure for rfc7919 */
++
++#define make_rfc7919_dh(x) \
++DH * DH_rfc7919_get_##x(void) \
++        { \
++        DH *dh; \
++        make_dh_bn(ffdhe##x##_p); \
++        make_dh_bn(ffdhe##x##_q); \
++        dh = DH_new(); \
++        if (!dh) \
++                return NULL; \
++        dh->p = BN_dup(&_bignum_ffdhe##x##_p); \
++        dh->q = BN_dup(&_bignum_ffdhe##x##_q); \
++        dh->g = BN_dup(&_bignum_const_2); \
++        if (!dh->p || !dh->q || !dh->g) \
++                { \
++                DH_free(dh); \
++                return NULL; \
++                } \
++        return dh; \
++        }
++
++make_rfc7919_dh(2048) /* 1 */
++make_rfc7919_dh(3072) /* 2 */
++make_rfc7919_dh(4096) /* 3 */
++make_rfc7919_dh(6144) /* 4 */
++make_rfc7919_dh(8192) /* 5 */
++
+ make_dh_bn(dh1024_160_p)
+ make_dh_bn(dh1024_160_q)
+ make_dh_bn(dh1024_160_g)
+diff --git a/doc/apps/genpkey.pod b/doc/apps/genpkey.pod
+index 2a86c68..710d9c9 100644
+--- a/doc/apps/genpkey.pod
++++ b/doc/apps/genpkey.pod
+@@ -190,6 +190,15 @@ The value to use for the generator B<g>. The default is 2.
+ The type of DH parameters to generate. Use 0 for PKCS#3 DH and 1 for X9.42 DH.
+ The default is 0.
+ 
++=item B<dh_param>:I<name>
++
++Use a named DH group to select constant values for the DH parameters.
++All other options will be ignored if this value is set.
++
++Valid values are:
++"ffdhe2048", "ffdhe3072", "ffdhe4096", "ffdhe6144", "ffdhe8192",
++"modp_1536", "modp_2048", "modp_3072", "modp_4096", "modp_6144", "modp_8192".
++
+ =item B<dh_rfc5114:num>
+ 
+ If this option is set, then the appropriate RFC5114 parameters are used

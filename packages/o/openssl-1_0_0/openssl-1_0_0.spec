@@ -94,6 +94,9 @@ Patch80:        openssl-One_and_Done.patch
 # OpenSSL Security Advisory [16 February 2021] [bsc#1182333,CVE-2021-23840] [bsc#1182331,CVE-2021-23841]
 Patch81:        openssl-CVE-2021-23840.patch
 Patch82:        openssl-CVE-2021-23841.patch
+Patch83:        openssl-1.0.0-pic-pie.patch
+Patch84:        openssl-DH.patch
+Patch85:        openssl-add_rfc3526_rfc7919.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -253,6 +256,9 @@ testing framework and utilities.
 %patch80 -p1
 %patch81 -p1
 %patch82 -p1
+%patch83 -p1
+%patch84 -p1
+%patch85 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
