@@ -1044,4 +1044,13 @@
     <comment>KDE Frameworks 5.84.0</comment>
     <requestid>905822</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>da5cd3aad02cfcd90ddda1dc523d91fe</srcmd5>
+    <version>5.84.0</version>
+    <time>1626887137</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop patch:
+  * 0001-Revert-KF5PlasmaMacros-Only-try-to-install-desktop-f.patch</comment>
+    <requestid>906903</requestid>
+  </revision>
 </revisionlist>

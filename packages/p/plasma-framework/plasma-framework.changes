@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 18 07:04:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop patch:
+  * 0001-Revert-KF5PlasmaMacros-Only-try-to-install-desktop-f.patch
+
+-------------------------------------------------------------------
 Mon Jul 12 10:31:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to revert an upstream change:

@@ -36,9 +36,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-OPENSUSE -- revert upstream change instead of adding conditions in the KDE:Extra package
-# affected by this change
-Patch4:         0001-Revert-KF5PlasmaMacros-Only-try-to-install-desktop-f.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
