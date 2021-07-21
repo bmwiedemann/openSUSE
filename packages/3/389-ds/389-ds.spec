@@ -121,7 +121,6 @@ Recommends:     cyrus-sasl-gssapi
 Recommends:     cyrus-sasl-digestmd5
 
 Requires(post): fillup
-Requires(pre):  shadow
 Requires(post): permissions
 Obsoletes:      389-ds-base < %{version}-%{release}
 Provides:       389-ds-base = %{version}-%{release}
