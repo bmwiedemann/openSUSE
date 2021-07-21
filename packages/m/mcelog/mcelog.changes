@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
-Fri Jul 09 13:29:25 UTC 2021 - trenn@suse.de
+Mon Jul 19 13:44:53 UTC 2021 - trenn@suse.de
 
 - Update to version 177:
+  * README: Mark up filename as code/monospace
+  * README: Correct filename of `.os_version`
+
+-------------------------------------------------------------------
+Fri Jul 09 13:29:25 UTC 2021 - trenn@suse.de
+
+- Update to version 177 (jsc#SLE-18903):
   * mcelog: Update MSCOD error bit descriptions to match SDM
   * mcelog: Fix issues with "yellow" cache offlining
   * Add reference to Linux::MCELog

@@ -692,4 +692,12 @@ M email.patch
     <comment></comment>
     <requestid>906016</requestid>
   </revision>
+  <revision rev="59" vrev="2">
+    <srcmd5>d1db8a0a7cf0caf26d7185158e752dd0</srcmd5>
+    <version>177</version>
+    <time>1626887179</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907150</requestid>
+  </revision>
 </revisionlist>
