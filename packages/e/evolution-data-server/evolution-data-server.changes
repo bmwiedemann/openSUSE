@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  9 08:35:11 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.40.3:
+  + tests: Workaround libphonenumber behavior change.
+  + test-book-client-write-write: Fix occasional test failure.
+  + IMAPx: Change how Junk and NotJunk flags are handled.
+  + ECalBackendFile: Free interval tree only when being allocated.
+  + Bugs fixed: glgo#GNOME/evolution-data-server#336.
+
+-------------------------------------------------------------------
 Fri Jun  4 10:02:56 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.40.2:

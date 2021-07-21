@@ -1925,4 +1925,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment> (forwarded request 897404 from iznogood)</comment>
     <requestid>897540</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>e22fb7314bb50071ef2cac43cbd30492</srcmd5>
+    <version>3.40.3</version>
+    <time>1626887156</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906589 from dimstar)</comment>
+    <requestid>907045</requestid>
+  </revision>
 </revisionlist>
