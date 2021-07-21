@@ -22,9 +22,9 @@ License:        MIT
 Group:          System/Monitoring
 Version:        7.5.5
 Release:        0
-URL:            http://www.logwatch.org
+URL:            https://sourceforge.net/projects/logwatch/
 BuildArch:      noarch
-Source0:        http://sourceforge.net/projects/logwatch/files/%{name}-%{version}/%{name}-%{version}.tar.gz
+Source0:        https://sourceforge.net/projects/logwatch/files/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 Source2:        Logwatch_Dmeventd_Setup_Files.tar.xz
 Source3:        ChangeLog
