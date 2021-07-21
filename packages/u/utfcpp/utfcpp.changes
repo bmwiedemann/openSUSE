@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 10 12:00:26 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 3.2.1
+  * Fix the inclusion of both cpp11 and cpp17 headers on C++17
+    compilation. Also some additional tests for using string
+    literals and string objects with modern compilers.
+  version 3.2:
+  * Optional support for C++ 17 std::string_view.
+- Drop utfcpp-use_system_gtest.patch (merged upstream)
+- Switch to _service to make up for incomplete upstream tarball
+
+-------------------------------------------------------------------
 Thu Nov 26 18:56:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.1.2:

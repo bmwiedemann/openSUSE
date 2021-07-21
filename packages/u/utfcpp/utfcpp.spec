@@ -1,7 +1,7 @@
 #
 # spec file for package utfcpp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,14 @@
 
 
 Name:           utfcpp
-Version:        3.1.2
+Version:        3.2.1
 Release:        0
 Summary:        A library for handling UTF-8 encoded strings
 License:        BSL-1.0
 URL:            https://github.com/nemtrif/utfcpp
-Source:         https://github.com/nemtrif/utfcpp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE utfcpp-use_system_gtest.patch aloisio@gmx.com -- use system-supplied googletest
-Patch0:         utfcpp-use_system_gtest.patch
-BuildRequires:  cmake
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  cmake >= 3.8
 BuildRequires:  gcc-c++
-BuildRequires:  googletest-devel
 
 %description
 A C++ library for handling UTF-8 encoded strings.
@@ -59,6 +56,7 @@ make -C build test
 %{_includedir}/utf8cpp/utf8/checked.h
 %{_includedir}/utf8cpp/utf8/core.h
 %{_includedir}/utf8cpp/utf8/cpp11.h
+%{_includedir}/utf8cpp/utf8/cpp17.h
 %{_includedir}/utf8cpp/utf8/unchecked.h
 %dir %{_libdir}/cmake/utf8cpp
 %{_libdir}/cmake/utf8cpp/utf8cppConfig.cmake
