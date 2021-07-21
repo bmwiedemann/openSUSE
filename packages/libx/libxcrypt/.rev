@@ -105,4 +105,26 @@
   * Force update of existing symlinks during installation (forwarded request 885092 from polslinux)</comment>
     <requestid>885113</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>517eb1fac6f7f0221ea3c41f19213a7a</srcmd5>
+    <version>4.4.23</version>
+    <time>1626887123</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.23
+  * Fix output calculation for gensalt_yescrypt_rn().
+  * Fix -Werror=conversion in lib/crypt-des-obsolete.c,
+    test/des-obsolete.c, and test/des-obsolete_r.c.
+  * The crypt_checksalt() function has been fixed to correctly return
+    with 'CRYPT_SALT_INVALID', in case the setting, that is passed
+    to be checked, represents an empty passphrase or an uncomputed
+    setting for descrypt without any salt characters.
+  * The crypt_checksalt() function will now return the value
+    'CRYPT_SALT_METHOD_LEGACY' in case the setting, that is passed
+    to be checked, uses a hashing method, which is considered to be
+    too weak for use with new passphrases.
+  * Fix build when the CFLAGS variable, that is passed into the
+    configure script, has a leading whitespace character in it
+    (issue #123). (forwarded request 901651 from polslinux)</comment>
+    <requestid>901705</requestid>
+  </revision>
 </revisionlist>

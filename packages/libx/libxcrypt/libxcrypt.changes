@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 24 08:48:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 4.4.23
+  * Fix output calculation for gensalt_yescrypt_rn().
+  * Fix -Werror=conversion in lib/crypt-des-obsolete.c,
+    test/des-obsolete.c, and test/des-obsolete_r.c.
+  * The crypt_checksalt() function has been fixed to correctly return
+    with 'CRYPT_SALT_INVALID', in case the setting, that is passed
+    to be checked, represents an empty passphrase or an uncomputed
+    setting for descrypt without any salt characters.
+  * The crypt_checksalt() function will now return the value
+    'CRYPT_SALT_METHOD_LEGACY' in case the setting, that is passed
+    to be checked, uses a hashing method, which is considered to be
+    too weak for use with new passphrases.
+  * Fix build when the CFLAGS variable, that is passed into the
+    configure script, has a leading whitespace character in it
+    (issue #123).
+
+-------------------------------------------------------------------
 Tue Apr 13 14:59:57 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.19 
