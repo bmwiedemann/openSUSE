@@ -118,4 +118,13 @@
   - Restored Python 2 support removed in v3.0.2</comment>
     <requestid>868445</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>59856735ffb25d2975c77c7a87b60a66</srcmd5>
+    <version>4.0.0</version>
+    <time>1626887147</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.0:
+  * drop python 2 support</comment>
+    <requestid>907024</requestid>
+  </revision>
 </revisionlist>
