@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:23:09 UTC 2021 - nick wang <nwang@suse.com>
+
+- Update to 9.0.30~1
+ * fix a crash when drbd-9 node gets connected to a drbd-8.4 node, the
+   regression was introduced between 9.0.25 and 9.0.26
+ * A improved approach to serialize rsyncs from multiple sources; the previous
+   one could cause wrong accounting for online verify
+ * fix a race condition that could cause resync operations to stall when the
+   completion of one resync allows another one to proceed
+ * fix a race condition that could cause an online verify operation to not
+   terminate under specific conditions (corking enabled no other IO)
+ * fix locking of drbd_devices idr that caused (very rarely) create/remove
+   minor to fail
+- Remove patch compat_genl_maxattr_in_ops.patch
+- Delete _servicedata file since not used
+
+-------------------------------------------------------------------
 Fri Jun 11 15:28:19 UTC 2021 - nick wang <nwang@suse.com>
 
 - Correct the real version 9.0.29~1
@@ -22,7 +39,7 @@ Fri Jun 04 13:27:15 UTC 2021 - varkoly@suse.com
 -------------------------------------------------------------------
 Fri May  7 05:53:20 UTC 2021 - nick wang <nwang@suse.com>
 
-- Update to 9.0.29 
+- Update to 9.0.29
  * fix data corruption when DRBD's backing disk is a degraded Linux software
    raid (MD)
  * add correct thawing of IO requests after IO was frozen due to loss of quorum

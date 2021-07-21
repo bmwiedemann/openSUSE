@@ -24,7 +24,7 @@
 %endif
 %endif
 Name:           drbd
-Version:        9.0.29~1+git.cc622880
+Version:        9.0.30~1+git.10bee2d5
 Release:        0
 Summary:        Linux driver for the "Distributed Replicated Block Device"
 License:        GPL-2.0-or-later
@@ -35,7 +35,6 @@ Source1:        preamble
 Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
-Patch2:         compat_genl_maxattr_in_ops.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -70,7 +69,6 @@ installed kernel.
 %prep
 %setup -q -n drbd-%{version}
 %patch1 -p1
-%patch2 -p1
 %patch99 -p1
 
 mkdir source

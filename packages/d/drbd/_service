@@ -3,9 +3,8 @@
     <param name="url">git@github.com:LINBIT/drbd-9.0.git</param>
     <param name="scm">git</param>
     <param name="filename">drbd</param>
-    <param name="versionformat">9.0.29~1+git.%h</param>
+    <param name="versionformat">9.0.30~1+git.%h</param>
     <param name="revision">drbd-9.0</param>
-    <param name="changesgenerate">disable</param>
   </service>
 
   <service name="recompress" mode="disabled">
