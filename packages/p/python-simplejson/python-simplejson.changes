@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 16 19:39:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.3:
+  * Replaced Travis-CI and AppVeyor with Github Actions,
+    adding wheels for Python 3.9. 
+
+-------------------------------------------------------------------
 Wed Jul 29 06:51:43 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 3.17.2

@@ -365,4 +365,14 @@
 - use pytest as testrunner</comment>
     <requestid>823314</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>5ef82fc690d3e398257cbabd9cdb8baf</srcmd5>
+    <version>3.17.3</version>
+    <time>1626887126</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.17.3:
+  * Replaced Travis-CI and AppVeyor with Github Actions,
+    adding wheels for Python 3.9.</comment>
+    <requestid>906723</requestid>
+  </revision>
 </revisionlist>
