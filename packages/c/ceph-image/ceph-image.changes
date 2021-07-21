@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 21 07:26:49 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
+
+- Kiwi: Add "zabbix-agent" package as dependency for every distribution which
+  provides that package. This is a requirement to be able to use the "zabbix"
+  mgr module from this container image. (bsc#1186348)
+- Kiwi: Add leap15_3.xml to be able to build ceph-image on Leap 15 SP3.
+
+-------------------------------------------------------------------
+Tue Jul 20 10:53:06 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
+
+- Add ses7_pacific.xml
+
+-------------------------------------------------------------------
 Mon Jul 19 11:57:34 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
 
 - config.sh: Remove "suseConfig" and "baseCleanMount" functions from config.sh,

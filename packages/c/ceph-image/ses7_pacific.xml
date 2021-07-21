@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <param>
-  <image>obsrepositories:/suse/sle15#15.2</image>
-  <tags>sle15.2.octopus</tags>
+  <image>obsrepositories:/suse/sle15#15.3</image>
+  <tags>sle15.3.pacific</tags>
   <name>ses/7/ceph/ceph</name>
   <prefix>com.suse.ses</prefix>
   <title>SUSE Enterprise Storage 7.0</title>
