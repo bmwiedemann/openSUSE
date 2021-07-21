@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 16 19:57:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.2:
+  * Added the following accessor methods for cmd2-specific attributes to the `argparse.Action` class
+      * `get_choices_callable()`
+      * `set_choices_provider()`
+      * `set_completer()`
+      * `get_descriptive_header()`
+      * `set_descriptive_header()`
+      * `get_nargs_range()`
+      * `set_nargs_range()`
+      * `get_suppress_tab_hint()`
+      * `set_suppress_tab_hint()`
+  * Now that `set_choices_provider()` and `set_completer()` have been added as methods to the
+    `argparse.Action` class, the standalone functions of the same name will be removed in version
+    2.2.0. To update to the new convention, do the following:
+      * Change `set_choices_provider(action, provider)` to `action.set_choices_provider(provider)`
+      * Change `set_completer(action, completer)` to `action.set_completer(completer)`
+  * Fixed handling of argparse's default options group name which was changed in Python 3.10
+  * Restored `plugins` and `tests_isolated` directories to tarball published to PyPI for `cmd2` release
+
+-------------------------------------------------------------------
 Mon Jun 14 15:58:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 2.1.0
