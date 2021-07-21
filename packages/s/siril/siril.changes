@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  6 11:30:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.99.10.1:
+  * Fixed star detection with resolution < 1.0
+  * Fixed interpolation issue in global registration
+  * Fixed timestamp issue with glib < 2.66
+  * New MAD clipping algorithm
+
+-------------------------------------------------------------------
 Tue Jun 15 05:33:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.99.10:
