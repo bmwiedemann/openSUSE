@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 21 11:24:45 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.4.0:
+  - PI: Only update author link (AKA authorUrl) in Calibre if
+    changed.
+  - Collect 'fandoms' for adapter_scribblehubcom.
+  - Change defaults.ini to correctly show default values for
+    remove_spoil…
+  - XF: Take datePublished from first post and fix date reading.
+  - Browser Cache Chome Simple Cache -- Skip with warning on bad
+    file par…
+  - Browser Cache Firefox Cache2 -- Skip with warning on bad file
+    parse i…
+  - Add link to wiki/BrowserCacheFeature in Cloudflare
+    error. #708
+  - Treat img url contains '.svg?' same as
+    endswith('.svg')--Calibre imag…
+  - adapter_ficbooknet remove double / from author URL.
+  - ficbook.net doesn't use www. anymore.
+  - Implement use_browser_cache for ficbook.net.
+  - nsapa_proxy: detect&log proxy connection error
+  - adapter_wwwnovelallcom - Updates for site changes.
+    'translator' no lo…
+  - New Site: worldofx.de (German language X-files eFiction)
+  - Also save error column on new books because chapter errors
+    now making…
+  - Pre-v5 Calibre fix for nsapa_proxy.
+  - Fix for XF2 stories using author img as cover when absolute URL.
+  - XF: data-url or data-src for lazyload images. Closes #713
+  - adapter_royalroadcom: Collect numWords. #712
+  - Add estimatedWords for XF2 sites that provide it (SB/SV
+    mainly).
+  - Add http_proxy and https_proxy setting, remove
+    fix_broken_https_proxy…
+  - Conceal some debug output for proxies.
+
+-------------------------------------------------------------------
 Tue Jun  1 09:20:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.3.0:
