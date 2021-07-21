@@ -1,7 +1,7 @@
 #
 # spec file for package libogg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 %define _SO_nr 0
-
 Name:           libogg
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Ogg Bitstream Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            http://www.vorbis.com/
+URL:            https://xiph.org/vorbis/
 Source:         https://downloads.xiph.org/releases/ogg/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Patch1:         lib64.dif
 Patch2:         m4.diff
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  xz
 
 %description
@@ -72,18 +71,17 @@ fi
 sed -i s,-O20,-O3,g configure
 
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install docdir="%{_docdir}/%{name}-devel"
 # remove unneeded files
-rm -f %{buildroot}%{_libdir}/*.la
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-make check
+%make_build check
 
 %post -n libogg%{_SO_nr} -p /sbin/ldconfig
-
 %postun -n libogg%{_SO_nr} -p /sbin/ldconfig
 
 %files -n libogg%{_SO_nr}
