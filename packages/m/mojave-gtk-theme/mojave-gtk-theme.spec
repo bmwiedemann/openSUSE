@@ -17,9 +17,9 @@
 
 
 %define         _name Mojave-gtk-theme
-%define         _version 2021-06-23
+%define         _version 2021-07-20
 Name:           mojave-gtk-theme
-Version:        20210623
+Version:        20210720
 Release:        0
 Summary:        MacOS Mojave like theme for GTK 3, Gnome-Shell and others
 License:        GPL-3.0-only

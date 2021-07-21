@@ -87,4 +87,13 @@
   * Full gnome 40 support</comment>
     <requestid>902829</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>fd1535b4f3d95ff4ddd125f834d00e82</srcmd5>
+    <version>20210720</version>
+    <time>1626887191</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20210720:
+  * Fix gnome-shell 40.3 issues</comment>
+    <requestid>907428</requestid>
+  </revision>
 </revisionlist>
