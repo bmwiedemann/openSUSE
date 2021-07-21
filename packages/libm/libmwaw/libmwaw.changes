@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 16 20:05:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.19:
+  - add a parser for Canvas 7/8 files (Mac)
+  - add a parser for Canvas Image files (Mac 5-8, Windows 5-6)
+  - add a parser for Canvas 6 (Mac and Windows)
+  - remove many coverity warnings
+  - add a parser for Canvas 5 ( Mac and Windows )
+  - add basic support for hatch
+  - add basic support for drop cap
+
+-------------------------------------------------------------------
 Wed May 19 14:57:41 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define conditionally make_build to fix build on systems that do
