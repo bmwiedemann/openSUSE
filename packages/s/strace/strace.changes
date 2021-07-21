@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 19 07:25:15 UTC 2021 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 5.13
+  * Improvements
+    * Print netlink data in a more structured way.
+    * Implemented decoding of NT_PRSTATUS and NT_FPREGSET regsets
+      of PTRACE_GETREGSET and PTRACE_SETREGSET requests.
+    * Implemented decoding of regs argument of PTRACE_GETREGS, PTRACE_GETREGS64,
+      PTRACE_SETREGS, PTRACE_SETREGS64, PTRACE_GETFPREGS, and PTRACE_SETFPREGS
+      requests.
+    * Implemented powerpc System Call Vectored ABI support.
+    * Implemented decoding of landlock_add_rule, landlock_create_ruleset,
+      and landlock_restrict_self syscalls introduced in Linux 5.13.
+    * Enhanced decoding of perf_event_open syscall.
+    * Updated lists of BPF_*, IORING_*, KEXEC_*, KEY_*, KVM_*, NT_*, PR_*,
+      PTRACE_*, RTM_*, RTPROT_*, TRAP_*, UFFD_*, UFFDIO_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.13.
+
+-------------------------------------------------------------------
 Mon Apr 26 14:48:54 UTC 2021 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 5.12

@@ -1227,4 +1227,26 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
 - strace-readelf-debug-dump-info-wide-output-changes-in-2.36.patch: removed (forwarded request 888553 from AndreasSchwab)</comment>
     <requestid>888554</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>f2d8bf0624c17c575e354ba30dfe9d1e</srcmd5>
+    <version>5.13</version>
+    <time>1626887173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.13
+  * Improvements
+    * Print netlink data in a more structured way.
+    * Implemented decoding of NT_PRSTATUS and NT_FPREGSET regsets
+      of PTRACE_GETREGSET and PTRACE_SETREGSET requests.
+    * Implemented decoding of regs argument of PTRACE_GETREGS, PTRACE_GETREGS64,
+      PTRACE_SETREGS, PTRACE_SETREGS64, PTRACE_GETFPREGS, and PTRACE_SETFPREGS
+      requests.
+    * Implemented powerpc System Call Vectored ABI support.
+    * Implemented decoding of landlock_add_rule, landlock_create_ruleset,
+      and landlock_restrict_self syscalls introduced in Linux 5.13.
+    * Enhanced decoding of perf_event_open syscall.
+    * Updated lists of BPF_*, IORING_*, KEXEC_*, KEY_*, KVM_*, NT_*, PR_*,
+      PTRACE_*, RTM_*, RTPROT_*, TRAP_*, UFFD_*, UFFDIO_*, and V4L2_* constants.
+    * Updated lists of ioctl commands from Linux 5.13. (forwarded request 907067 from AndreasSchwab)</comment>
+    <requestid>907068</requestid>
+  </revision>
 </revisionlist>
