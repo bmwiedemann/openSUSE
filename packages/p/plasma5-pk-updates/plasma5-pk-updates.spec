@@ -75,7 +75,7 @@ Plasma applet for software updates using PackageKit.
 
 %build
   %cmake_kf5 -d build
-  %make_jobs
+  %cmake_build
 
 %install
   %kf5_makeinstall -C build
@@ -88,7 +88,6 @@ Plasma applet for software updates using PackageKit.
 %license LICENSE
 %{_kf5_qmldir}/
 %{_kf5_plasmadir}/
-%{_kf5_servicesdir}/
 %{_kf5_appstreamdir}/
 %{_kf5_notifydir}/
 

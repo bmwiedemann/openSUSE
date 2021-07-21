@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 18 08:07:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
+Fri Jun 11 07:33:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use %cmake_build instead of %make_jobs.
+
+-------------------------------------------------------------------
 Thu Apr 23 09:58:43 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Fix 0001-Limit-to-one-automatic-check-each-10-minutes.patch
