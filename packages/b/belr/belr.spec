@@ -19,10 +19,11 @@
 %define soname  libbelr
 %define sover   1
 Name:           belr
-Version:        4.5.3
+Version:        4.5.20
 Release:        0
 Summary:        Language recognition library
 License:        GPL-3.0-or-later
+Group:          Development/Tools/Other
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/belr/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
@@ -32,6 +33,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  libudev-devel
 
 %description
 Belr parses input formatted according to a language defined by an
@@ -46,6 +48,7 @@ ABNF grammar, such as the protocols standardised at IETF.
 
 %package devel
 Summary:        Headers and libraries for the belr library
+Group:          Development/Tools/Other
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
