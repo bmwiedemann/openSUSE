@@ -7,4 +7,12 @@
     <comment>I would like to be able to use this as a dependency of openQA packages</comment>
     <requestid>874893</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>967915e7869c98004acfc46905f9d0ac</srcmd5>
+    <version>0.04</version>
+    <time>1626887200</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907468</requestid>
+  </revision>
 </revisionlist>

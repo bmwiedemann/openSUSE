@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-Cover-Report-Codecovbash
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-Name:           perl-Devel-Cover-Report-Codecovbash
-Version:        0.03
-Release:        0
 %define cpan_name Devel-Cover-Report-Codecovbash
+Name:           perl-Devel-Cover-Report-Codecovbash
+Version:        0.04
+Release:        0
 Summary:        Generate a JSON file to be uploaded with the codecov bash script
 License:        MIT
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(JSON::MaybeXS)
@@ -49,11 +48,11 @@ Mizune's at https://metacpan.org/release/Devel-Cover-Report-Codecov
 distribution.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -64,7 +63,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
 %license LICENSE
 

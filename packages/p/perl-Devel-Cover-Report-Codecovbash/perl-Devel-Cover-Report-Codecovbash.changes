@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 21 03:06:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.04
+   see /usr/share/doc/packages/perl-Devel-Cover-Report-Codecovbash/Changes
+
+  0.04     2021-07-20
+
+  - Fix report for uncoverable lines
+
+-------------------------------------------------------------------
 Sun Dec 13 16:08:15 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Initial package version based on upstream 0.03
