@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-httpcore
-Version:        0.13.3
+Version:        0.13.6
 Release:        0
 Summary:        Minimal low-level Python HTTP client
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ Source:         https://github.com/encode/httpcore/archive/%{version}.tar.gz#/ht
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-anyio >= 3.1.0
 Requires:       python-certifi
 Requires:       python-chardet >= 3.0
 Requires:       python-h11 >= 0.11.0
@@ -37,18 +38,17 @@ Requires:       python-h2 >= 3.0
 Requires:       python-idna >= 2.0
 Requires:       python-rfc3986 >= 1.0
 Requires:       python-sniffio >= 1.0
-Recommends:     python-anyio >= 3.0.1
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module anyio >= 3.0.1}
+BuildRequires:  %{python_module anyio >= 3.1.0}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module chardet >= 3.0}
 BuildRequires:  %{python_module h11 >= 0.11.0}
 BuildRequires:  %{python_module h2 >= 3.0}
 BuildRequires:  %{python_module idna >= 2.0}
 BuildRequires:  %{python_module mitmproxy}
-BuildRequires:  %{python_module pproxy >= 2.7.7}
-BuildRequires:  %{python_module pytest >= 6.2.3}
+BuildRequires:  %{python_module pproxy >= 2.7.8}
+BuildRequires:  %{python_module pytest >= 6.2.4}
 BuildRequires:  %{python_module pytest-asyncio >= 0.15.1}
 BuildRequires:  %{python_module pytest-curio}
 BuildRequires:  %{python_module pytest-tornasync}

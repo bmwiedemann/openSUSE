@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 13 13:42:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- anyio is actually required (at least for some tests in other
+  packages).
+
+-------------------------------------------------------------------
+Thu Jul  8 08:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to v0.13.6
+  * Fixed
+    - Close sockets when read or write timeouts occur. (Pull #365)
+
+- Update to v0.13.5
+  * Fixed
+    - Resolved niggles with AnyIO EOF behaviours. (Pull #358, #362)
+
+- Update to v0.13.4
+  * Added
+    - Improved error messaging when URL scheme is missing, or
+      a non HTTP(S) scheme is used. (Pull #354)
+  * Fixed
+    - Switched to anyio as the default backend implementation when
+      running with asyncio. Resolves some awkward TLS timeout
+      issues.
+
+-------------------------------------------------------------------
 Thu Jun  3 09:10:31 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to v0.13.3

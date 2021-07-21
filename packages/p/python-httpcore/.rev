@@ -7,4 +7,12 @@
     <comment>New package python-httpcore</comment>
     <requestid>897237</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>72aa21d3ac585797d9ff7aded2449593</srcmd5>
+    <version>0.13.6</version>
+    <time>1626887184</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>907330</requestid>
+  </revision>
 </revisionlist>
