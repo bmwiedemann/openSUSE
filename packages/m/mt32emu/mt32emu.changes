@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:57:24 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 2.5.2.
+  * Fixed compilation of client programs written in C when the
+    automatic runtime version check is enabled with the preprocessor
+    macro MT32EMU_RUNTIME_VERSION_CHECK 2.
+
+-------------------------------------------------------------------
 Sun Jun  6 17:47:49 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
-- Fixed incorrect delete statement in ROMImage dtor, affects memory
-  deallocations of full ROMImages created by merging partial ones.
+- Updated to 2.5.1.
+  * Fixed incorrect delete statement in ROMImage dtor, affects memory
+    deallocations of full ROMImages created by merging partial ones.
 
 -------------------------------------------------------------------
 Mon Apr  5 17:44:44 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
