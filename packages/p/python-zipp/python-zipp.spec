@@ -1,5 +1,5 @@
 #
-# spec file for package python-zipp
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-zipp%{psuffix}
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        Pathlib-compatible object wrapper for zip files
 License:        MIT
