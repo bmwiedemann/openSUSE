@@ -90,4 +90,20 @@
     <comment></comment>
     <requestid>862896</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5a44510bf04db5f944fd81eb857fb82d</srcmd5>
+    <version>0.8.9</version>
+    <time>1626887127</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.9:
+  * Bug fix. Revert support of decimal separators.
+  * Python 3.9 support, 3.10 ready.
+  * New formats: ``unsafehtml``, ``latex_longtable``, ``fancy_outline``.
+  * Support lists of UserDicts as input.
+  * Support hyperlinks in terminal output.
+  * Improve testing on systems with proxies.
+  * Migrate to pytest.
+  * Various bug fixes and improvements.</comment>
+    <requestid>906725</requestid>
+  </revision>
 </revisionlist>

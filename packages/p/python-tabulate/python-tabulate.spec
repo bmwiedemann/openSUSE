@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-tabulate
-Version:        0.8.7
+Version:        0.8.9
 Release:        0
 Summary:        Pretty-printer for tabular data in Python
 License:        MIT
@@ -33,7 +33,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-wcwidth
 Suggests:       python-pandas
 BuildArch:      noarch
