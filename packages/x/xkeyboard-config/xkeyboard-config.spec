@@ -17,13 +17,13 @@
 
 
 Name:           xkeyboard-config
-Version:        2.32
+Version:        2.33
 Release:        0
 Summary:        The X Keyboard Extension
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT AND CDDL-1.0
+License:        CDDL-1.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/X11/Utilities
-URL:            http://www.freedesktop.org/Software/XKeyboardConfig
-Source:         http://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.bz2
+URL:            https://www.freedesktop.org/Software/XKeyboardConfig
+Source:         https://xorg.freedesktop.org/archive/individual/data/%{name}/%{name}-%{version}.tar.bz2
 Patch100:       n_suse-ctrl-alt-bksp-terminate.patch
 # PATCH-FIX-OPENSUSE disable-2xalt_2xctrl-toggle.diff fdo#4927 -- This is just a workaround until fdo#4927 is fixed
 Patch109:       n_disable-2xalt_2xctrl-toggle.diff
@@ -36,7 +36,6 @@ BuildRequires:  xsltproc
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
 Requires(post): coreutils
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -62,10 +61,10 @@ make keyboards more accessible to people with physical impairments.
             --with-xkb-base=%{_datadir}/X11/xkb \
             --enable-compat_rules \
             --disable-runtime-deps
-make %{?_smp_mflags}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb
 # Bug 335553
 mkdir -p %{buildroot}%{_localstatedir}/lib/xkb/compiled/
@@ -77,8 +76,8 @@ ln -snf %{_localstatedir}/lib/xkb/compiled/ %{buildroot}%{_datadir}/X11/xkb/comp
 rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 
 %files
-%defattr(-,root,root)
-%doc AUTHORS COPYING README docs/HOWTO.* docs/README.*
+%license COPYING
+%doc AUTHORS README docs/HOWTO.* docs/README.*
 %dir %{_localstatedir}/lib/xkb
 %dir %{_localstatedir}/lib/xkb/compiled
 %dir %{_datadir}/X11
@@ -87,6 +86,5 @@ rm -rf %{_localstatedir}/lib/xkb/compiled/server*.xkm
 %{_mandir}/man7/*
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog

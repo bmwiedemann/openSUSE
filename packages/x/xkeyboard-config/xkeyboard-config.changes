@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 17 15:34:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to version 2.33
+  * translation updates
+  * Replaced division slash with fraction slash on Neo2 (de) layout
+  * rules: correct Indic IPA to use iso639 code "eng" 
+  * rules: remove two non-existing ISO639 codes
+  * rules: change ISO639 language codes to 639-2/T only 
+  * rules: the xkb.dtd file is not an XML document 
+  * symbols/nl: Add a "Dutch (US)" variant 
+  * Simplify gb(basic) so that Shift+Right Alt behaves the same as Right Alt+Shift.
+
+-------------------------------------------------------------------
 Tue Feb 16 09:27:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.32

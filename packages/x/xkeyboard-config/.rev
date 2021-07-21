@@ -801,4 +801,12 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   * latest bugfix release</comment>
     <requestid>872753</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>41957dc7f8913fbced11190aceb44e9a</srcmd5>
+    <version>2.33</version>
+    <time>1626887136</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>906860</requestid>
+  </revision>
 </revisionlist>
