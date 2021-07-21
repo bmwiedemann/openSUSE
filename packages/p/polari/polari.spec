@@ -18,7 +18,7 @@
 
 
 Name:           polari
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        An IRC Client for GNOME
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

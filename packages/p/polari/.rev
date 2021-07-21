@@ -372,4 +372,12 @@
 - Obsolete the old package name to ease upgrades. (forwarded request 902850 from dimstar)</comment>
     <requestid>902861</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>50049bc0ca1c8961e23cb6541441a0e7</srcmd5>
+    <version>40.1</version>
+    <time>1626887170</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906605 from dimstar)</comment>
+    <requestid>907060</requestid>
+  </revision>
 </revisionlist>

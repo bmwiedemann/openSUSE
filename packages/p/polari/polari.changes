@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 13 13:51:41 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + Update GNOME server list.
+  + Misc. bug fixes.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun 28 14:05:24 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fold typelib-1_0-Polari-1_0 into the main package: the .typelib
