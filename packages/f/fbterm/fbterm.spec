@@ -1,7 +1,7 @@
 #
 # spec file for package fbterm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/sfzhi/fbterm
 
 Source:         https://github.com/sfzhi/fbterm/archive/%version.tar.gz
 Patch1:         fbterm-gcc6-fixes.patch
+Patch2:         fbterm-skip-terminfo-install.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++

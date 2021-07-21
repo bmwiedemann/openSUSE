@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 21 12:34:36 CEST 2021 - tiwai@suse.de
+
+- Don't try to install terminfo (resulting in a build failure):
+  fbterm-skip-terminfo-install.patch
+
+-------------------------------------------------------------------
 Fri Oct  2 23:03:35 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8
