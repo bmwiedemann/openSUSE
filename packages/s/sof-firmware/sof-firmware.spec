@@ -16,7 +16,7 @@
 #
 
 
-%define package_version	1.7
+%define package_version	1.8
 
 %if 0%{?suse_version} < 1550
 %define _firmwaredir /lib/firmware
@@ -26,13 +26,11 @@ Name:           sof-firmware
 Summary:        Firmware Data Files for SOF Drivers
 License:        BSD-3-Clause
 Group:          Hardware/Other
-Version:        1.7
+Version:        1.8
 Release:        0
 URL:            https://github.com/thesofproject/sof-bin
 BuildRequires:  fdupes
-Source:         https://github.com/thesofproject/sof-bin/archive/v%{package_version}.tar.gz#/sof-bin-%{package_version}.tar.gz
-# fix up bad directory setup in v1.7 tarball
-Patch1:         sof-bin-go-install-fix.patch
+Source:         https://github.com/thesofproject/sof-bin/releases/download/v%{package_version}/sof-bin-v%{package_version}.tar.gz
 BuildArch:      noarch
 # Merrifield
 Supplements:    modalias(pci:v00008086d0000119Asv*sd*bc*sc*i*)
@@ -63,26 +61,32 @@ Supplements:    modalias(pci:v00008086d00004B55sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00004B58sv*sd*bc*sc*i*)
 # Alderlake
 Supplements:    modalias(pci:v00008086d00007AD0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051C8sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d000051CCsv*sd*bc*sc*i*)
 # Broadwell
 Supplements:    modalias(acpi*:INT3438:*)
 # Baytrail
 Supplements:    modalias(acpi*:80860F28:*)
 Supplements:    modalias(acpi*:808622A8:*)
+%if 0%{?suse_version} >= 1550
+# make sure we have post-usrmerge filesystem package on TW
+Conflicts:      filesystem < 84
+%endif
 
 %description
 Various firmware data files for SOF drivers.
 
 %prep
-%setup -q -n sof-bin-%{package_version}
-%patch1 -p1
+%setup -q -n sof-bin-v%{package_version}
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_firmwaredir}
-fwdir=%{_firmwaredir}/intel
-fwdir=${fwdir#/}
-ROOT=%{buildroot} INTEL_PATH="$fwdir" SOF_VERSION=v%{version} sh ./go.sh
+mkdir -p %{buildroot}%{_firmwaredir}/intel
+# due to the upgrade problem, we can't sof-v* -> sof symlink
+cp -a sof-v%{package_version} %{buildroot}%{_firmwaredir}/intel/sof
+cp -a sof-tplg-v%{package_version} %{buildroot}%{_firmwaredir}/intel/
+ln -s sof-tplg-v%{package_version} %{buildroot}%{_firmwaredir}/intel/sof-tplg
 %fdupes -s %{buildroot}
 
 %files

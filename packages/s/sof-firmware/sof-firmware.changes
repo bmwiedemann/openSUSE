@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 19 10:00:11 CEST 2021 - tiwai@suse.de
+
+- Update to version 1.8:
+  * Improved support for Intel Tigerlake based devices.
+  * Bluetooth support.
+  * Support for Inteligo noise reduction technology.
+  * Support for further Cadence library codecs.
+  * Further performance improvements to audio processing library.
+  * Power optimizations for Intel Tigerlake and Alderlake.
+  * Usual bug fixes and stability improvements.
+  * Pipeline level multi-core support
+  * LL scheduler refinement for multi-core support
+  * Zephyr integration continues with more native features being used.
+  * Some known xrun issues with multi-core are fixed
+
+  Note that, due to yet more conflict, we cannot use the file layout
+  of the original tarball (the symlink sof-v1.8 -> sof would fail at
+  updating a package), install to the flat layout instead manually;
+  the script wouldn't work with the destination prefix, in anyway
+- Update module aliases
+- Drop obsoleted patch sof-bin-go-install-fix.patch
+- Add conflicts with the non-usrmerge systems for TW package;
+  just for avoiding pitfalls of non-working systems
+- Fix download URL
+
+-------------------------------------------------------------------
 Wed Jun  2 10:13:30 CEST 2021 - tiwai@suse.de
 
 - Fix the build on TW after UsrMerge
