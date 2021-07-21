@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 17 06:33:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.51:
+  * Fix capsh installation
+  * Add an autoauth module flag to pam_cap.so
+  * Unified libcap/cap (Go) and libcap (C) default generation of external format binary data
+  * API enhancement cap_fill() and (*cap.Set).Fill() - to permit copying one
+    capability flag to another.
+  * --explain=cap_foo: describe what cap_foo does
+  * --suggest=phrase: search all the cap descriptions and describe those that match the phrase
+  * Add "keepcaps" module argument support to pam_cap.so (reported by Zoltan Fridrich. Bug 212945)
+  * extend libcap to include cap_prctl() and cap_prctlw() functions to regain
+    feature parity with Go "cap" package. These are only needed when linking
+    against -lpsx for keepcaps POSIX semantics.
+  * this likely requires substantial application changes to make Ambient
+    capability support usable in general, but doing our part for the admin.
+  * Add a test case for recent kernel fix
+  * Go pragma fix for convenience functions in "cap" module
+
+-------------------------------------------------------------------
 Wed Jun  2 09:29:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix a broken symlink. libcap-devel installs libpsx.so but

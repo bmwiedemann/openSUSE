@@ -372,4 +372,27 @@
     <comment></comment>
     <requestid>896907</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>2b4665ded2be921ea1a5f3b92a70ce29</srcmd5>
+    <version>2.51</version>
+    <time>1626887129</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.51:
+  * Fix capsh installation
+  * Add an autoauth module flag to pam_cap.so
+  * Unified libcap/cap (Go) and libcap (C) default generation of external format binary data
+  * API enhancement cap_fill() and (*cap.Set).Fill() - to permit copying one
+    capability flag to another.
+  * --explain=cap_foo: describe what cap_foo does
+  * --suggest=phrase: search all the cap descriptions and describe those that match the phrase
+  * Add &quot;keepcaps&quot; module argument support to pam_cap.so (reported by Zoltan Fridrich. Bug 212945)
+  * extend libcap to include cap_prctl() and cap_prctlw() functions to regain
+    feature parity with Go &quot;cap&quot; package. These are only needed when linking
+    against -lpsx for keepcaps POSIX semantics.
+  * this likely requires substantial application changes to make Ambient
+    capability support usable in general, but doing our part for the admin.
+  * Add a test case for recent kernel fix
+  * Go pragma fix for convenience functions in &quot;cap&quot; module</comment>
+    <requestid>906773</requestid>
+  </revision>
 </revisionlist>
