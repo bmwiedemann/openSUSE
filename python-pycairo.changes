@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 17 07:00:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.20.1
+  * setup.py: Respect the PKG_CONFIG environment variable
+  * Make import_cairo inline in addition to static
+  * docs: Fix example in Pattern.set_filter() docs _pr_`221`
+  * docs: Fix build with newer sphinx
+  * docs: Fix NumPy width, height-conventions in examples
+  * docs: Last parameter of rel_curve_to should be dy3, not dy4
+  * mypy: Fixes for mypy 0.800+
+  * mypy: Don't run mypy via pytest
+
+-------------------------------------------------------------------
 Thu Dec  3 10:46:14 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.20.0
