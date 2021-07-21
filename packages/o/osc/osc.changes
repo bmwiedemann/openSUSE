@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 21 08:51:23 UTC 2021 - Marcus Hüwe <suse-tux@gmx.de>
+
+- 0.174.0:
+  * fix password deletion via "osc config -d <apiurl> pass"
+  * support changing the password store via "osc config <apiurl>
+    --select-password-store")
+  * support slash syntax in osc browse ("osc browse prj/pkg" is equivalent to
+    "osc browse prj pkg")
+  * fix the commit of a frozen package wc
+  * fix local product builds using obsrepositories:/ directives
+  * print a meaningful message when trying to a commit a non-existent package
+
+-------------------------------------------------------------------
 Fri Jun 18 21:35:50 UTC 2021 - Atilla ÖNTAŞ <tarakbumba@gmail.com>
 
 - force Mageia >= 8 builds to python3; python2 is deprecated in Mageia 8 and up.

@@ -1490,4 +1490,20 @@ Now with compat code so it does not break on SLE12 (forwarded request 892030 fro
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>904279</requestid>
   </revision>
+  <revision rev="157" vrev="1">
+    <srcmd5>a91603ac1b66fb6bf8b59ffe0fccc164</srcmd5>
+    <version>0.174.0</version>
+    <time>1626887196</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.174.0:
+  * fix password deletion via &quot;osc config -d &lt;apiurl&gt; pass&quot;
+  * support changing the password store via &quot;osc config &lt;apiurl&gt;
+    --select-password-store&quot;)
+  * support slash syntax in osc browse (&quot;osc browse prj/pkg&quot; is equivalent to
+    &quot;osc browse prj pkg&quot;)
+  * fix the commit of a frozen package wc
+  * fix local product builds using obsrepositories:/ directives
+  * print a meaningful message when trying to a commit a non-existent package</comment>
+    <requestid>907452</requestid>
+  </revision>
 </revisionlist>
