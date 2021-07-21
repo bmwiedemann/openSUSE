@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jul 13 10:48:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.3:
+  + Fix area screencasts when window is unredirected.
+  + Fix mapping tablet to monitor.
+  + Fixed crash.
+  + Misc. bug fixes.
+  + Updated translations.
+- Drop mutter-Gracefully-handle-page-flipping.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
+Tue Jul  6 16:51:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Build wayland eglstream support: Pass wayland_eglstream=true to
+  meson and add pkgconfig(wayland-eglstream) BuildRequires.
+  Gnome-shell Wayland session with nvidia binary driver is now
+  possible when enabled manually, users must first comment out the
+  disabling of Wayland when using the proprietary nvidia driver in
+  /usr/lib/udev/rules.d/61-gdm.rules, then boot with passing
+  nvidia-drm.modeset=1 to the kernel. We do NOT recommend that
+  users try this, as it buggy and unstable at the moment.
+- Add mutter-Gracefully-handle-page-flipping.patch kms: Gracefully
+  handle page flipping direct scanouts failing. Fix a crash.
+
+-------------------------------------------------------------------
+Thu Jun 17 12:55:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Rebase mutter-disable-cvt-s390x.patch and
+  mutter-Lower-HIDPI_LIMIT-to-144.patch, and enable
+  mutter-disable-cvt-s390x.patch again now that it is rebased.
+
+-------------------------------------------------------------------
 Wed Jun 16 12:31:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.2.1:
