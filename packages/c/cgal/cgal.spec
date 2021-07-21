@@ -38,7 +38,7 @@
 %bcond_without qt5
 %endif
 Name:           cgal
-Version:        5.2.1
+Version:        5.2.2
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -139,9 +139,9 @@ hull algorithms, shape analysis, AABB and KD trees.
 Summary:        Development files and tools for CGAL applications
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND BSL-1.0
 Group:          Development/Libraries/C and C++
-Requires:       %{_libname} = %{version}
 Requires:       %{_libname _Core} = %{version}
 Requires:       %{_libname _ImageIO} = %{version}
+Requires:       %{_libname} = %{version}
 Requires:       blas
 Requires:       cmake
 Requires:       gmp-devel
