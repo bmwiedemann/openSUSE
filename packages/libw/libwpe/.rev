@@ -42,4 +42,13 @@
   - build system improvements (forwarded request 891577 from dirkmueller)</comment>
     <requestid>892065</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3c0d9c209cef84a9482d8a9d0ab7e630</srcmd5>
+    <version>1.10.1</version>
+    <time>1626887171</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.10.1:
+  - Fix the build with versions of Python older than 3.6 (forwarded request 906779 from dirkmueller)</comment>
+    <requestid>907063</requestid>
+  </revision>
 </revisionlist>

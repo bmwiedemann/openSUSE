@@ -21,7 +21,7 @@
 %define sover 1_0-1
 
 Name:           libwpe
-Version:        1.10.0
+Version:        1.10.1
 Release:        0
 Summary:        General-purpose library for the WPE-flavored port of WebKit
 License:        BSD-2-Clause
