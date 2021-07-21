@@ -18,13 +18,12 @@
 
 %define sover 1
 Name:           paho-mqtt-c
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        MQTT C Client
-License:        EPL-1.0 AND BSD-3-Clause
+License:        BSD-3-Clause AND EPL-1.0
 URL:            https://eclipse.org/paho/clients/c/
 Source:         https://github.com/eclipse/paho.mqtt.c/archive/v%{version}.tar.gz#/paho.mqtt.c-%{version}.tar.gz
-Patch1:         cmake-libdir.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -50,7 +49,6 @@ Development files for the the Paho MQTT C Client.
 
 %prep
 %setup -q -n paho.mqtt.c-%{version}
-%patch1 -p1
 
 %build
 %cmake -DPAHO_WITH_SSL=TRUE -DPAHO_BUILD_DOCUMENTATION=FALSE -DPAHO_BUILD_SAMPLES=FALSE -DPAHO_ENABLE_TESTING=FALSE -DPAHO_ENABLE_CPACK=FALSE ..
