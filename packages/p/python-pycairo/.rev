@@ -41,4 +41,20 @@
     <comment></comment>
     <requestid>852941</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>61c65805755c7cec167960bdf5fe29cf</srcmd5>
+    <version>1.20.1</version>
+    <time>1626887131</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.20.1
+  * setup.py: Respect the PKG_CONFIG environment variable
+  * Make import_cairo inline in addition to static
+  * docs: Fix example in Pattern.set_filter() docs _pr_`221`
+  * docs: Fix build with newer sphinx
+  * docs: Fix NumPy width, height-conventions in examples
+  * docs: Last parameter of rel_curve_to should be dy3, not dy4
+  * mypy: Fixes for mypy 0.800+
+  * mypy: Don't run mypy via pytest</comment>
+    <requestid>906780</requestid>
+  </revision>
 </revisionlist>
