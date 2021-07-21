@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 10 10:12:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8
+  Changes
+  * Add automatic IP multicast group to MAC multicast address
+    translation
+  * Improved usability for composing IGMPv3 reports:
+    + Default to 224.0.0.2 for IGMPv3 report type
+    + Add -n NUM to control number of group records
+  Fixes
+  * Fix IGMP v2 join example in README
+  * Fix logic for printing DNS protocol: TCP/UDP
+  * Fix #12: allow 0.0.0.0 as RIP address
+  * Fix #13: multiple definitions of variables
+
+-------------------------------------------------------------------
 Wed Jun 10 10:47:13 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7

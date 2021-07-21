@@ -1,8 +1,8 @@
 #
 # spec file for package nemesis
 #
-# Copyright (c) 2020 SUSE LLC
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           nemesis
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        TCP/IP Packet Injection Suite
 License:        BSD-4-Clause
