@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 16 13:13:26 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Use a more reliable way of knowing if a user is being
+  edited (related to bsc#1188068).
+- 4.4.4
+
+-------------------------------------------------------------------
 Wed Jul 14 14:18:32 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Show warning when reading system settings (e.g., login.defs)
