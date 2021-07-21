@@ -758,4 +758,12 @@
   powerpc64 and powerpc64le: accept those strings as 64bit archs. (forwarded request 898450 from dimstar)</comment>
     <requestid>898497</requestid>
   </revision>
+  <revision rev="95" vrev="3">
+    <srcmd5>3bf3e1bf58261ab4ddcbf89e44a07f48</srcmd5>
+    <version>1.68.0</version>
+    <time>1626887169</time>
+    <user>dimstar_suse</user>
+    <comment>GNOME 40.3 (forwarded request 906602 from dimstar)</comment>
+    <requestid>907057</requestid>
+  </revision>
 </revisionlist>

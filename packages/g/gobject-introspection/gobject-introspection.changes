@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 28 08:58:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Revert back o HOSTTYPE: RPM_ARCH is not available to the dep
+  scanners.
+
+-------------------------------------------------------------------
+Tue Jun  8 20:10:13 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- gi-find-deps.sh: Don't use HOSTTYPE, use RPM_ARCH.
+- ia64 never used ()(64bit) markers, do drop that from gi-find-deps.
+
+-------------------------------------------------------------------
 Tue Jun  8 13:38:11 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - gi-find-deps.sh: on Tumbleweed, HOSTTYPE on ppc64/ppc64le reports

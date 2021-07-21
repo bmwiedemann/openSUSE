@@ -233,7 +233,8 @@ function inList() {
   return 1
 }
 
-x64bitarch="x86_64 ppc64 powerpc64 ppc64le powerpc64le s390x ia64 aarch64 riscv64"
+# Confer with /usr/lib/rpm/platforms
+x64bitarch="aarch64 mips64 mips64el mips64r6 mips64r6el ppc64 ppc64le riscv64 s390x sparc64 x86_64"
 
 for path in \
 	$(for tlpath in \
