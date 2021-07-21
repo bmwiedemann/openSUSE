@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.48.5
+Version:        1.48.7
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -26,6 +26,8 @@ URL:            https://pango.gnome.org/
 Source0:        %{name}-%{version}.tar.xz
 Source2:        macros.pango
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM 3ff6365.patch dimstar@opensuse.org -- Revert upstream commit, introduces runtime dep on X
+Patch0:         https://gitlab.gnome.org/GNOME/pango/-/commit/3ff6365.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -117,7 +119,8 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %prep
-%autosetup -p1
+%setup
+%patch0 -p1 -R
 
 %build
 %meson \
@@ -154,6 +157,7 @@ cp %{SOURCE2} %{buildroot}%_rpmmacrodir
 
 %files tools
 %{_bindir}/pango-list
+%{_bindir}/pango-segmentation
 %{_bindir}/pango-view
 %{_mandir}/man1/pango-view.1%{ext_man}
 

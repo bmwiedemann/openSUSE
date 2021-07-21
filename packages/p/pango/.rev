@@ -1029,4 +1029,13 @@
     <comment>- Update to version 1.48.5 (forwarded request 894180 from mgorse)</comment>
     <requestid>894779</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>3fe60bb57176a9d3f1edf3af39a25e24</srcmd5>
+    <version>1.48.7</version>
+    <time>1626887149</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 3ff6365.patch, reverse applied: fix build of e.g. g-c-c. This
+  commit introduced a requirement to run X. (forwarded request 906179 from dimstar)</comment>
+    <requestid>907040</requestid>
+  </revision>
 </revisionlist>
