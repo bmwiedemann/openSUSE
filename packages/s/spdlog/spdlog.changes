@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:42:27 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.9.0
+  What's new:
+  * Support for {fmt} lib version 8.x.
+  * New MongoDB sink.
+  * New QTextEdit and QPlainTextEdit sinks.
+  Fixes and Improvements:
+  * Made mutex member variable mutable.
+  * Changed c-style casts to reinterpret casts in tcp_client.
+  * Rethrnow non std exceptions.
+  * Small code improvement (std::find).
+  * Added support for CMake policy CMP0077.
+  * Allow compilation with nvc++ (and possibly PGI).
+  * Fixed C++20 build resulting in deprecated implicit copy
+    assignment operator warning.
+  * Use std::function for the global error handler.
+  * Fixed dup sink compile warnings in older compilers with
+    back_inserter.
+  * Added a color-terminal type to the color terminals list - to
+    show colors in in RISC-V64 machines.
+- Drop spdlog-1.8.5-fmt8.patch and spdlog-1.8.5-fmt8_tests.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Thu Jun 24 16:26:12 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add spdlog-1.8.5-fmt8.patch and spdlog-1.8.5-fmt8_tests.patch

@@ -18,16 +18,12 @@
 
 %define _sover  1
 Name:           spdlog
-Version:        1.8.5
+Version:        1.9.0
 Release:        0
 Summary:        C++ logging library
 License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM spdlog-1.8.5-fmt8.patch
-Patch0:         spdlog-1.8.5-fmt8.patch
-# PATCH-FIX-UPSTREAM spdlog-1.8.5-fmt8_tests.patch
-Patch1:         spdlog-1.8.5-fmt8_tests.patch
 BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
