@@ -1051,4 +1051,12 @@
     <comment>- Update to version 2.32.1 (forwarded request 894185 from mgorse)</comment>
     <requestid>894780</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>e5a3a48a4be9751e00fe1be2e6003ea6</srcmd5>
+    <version>2.32.2</version>
+    <time>1626986584</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.32.2 (forwarded request 907348 from mgorse)</comment>
+    <requestid>907575</requestid>
+  </revision>
 </revisionlist>
