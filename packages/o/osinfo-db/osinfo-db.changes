@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 19 14:27:46 MDT 2021 - carnold@suse.com
+
+- bsc#1188336 - openSUSE Tumbleweed unattended installation in
+  libvirt fails due to invalid autoyast.xml
+  Drop fix-autoyast-validation.patch
+
+-------------------------------------------------------------------
 Mon Jun 21 09:42:36 MDT 2021 - carnold@suse.com
 
 - Update to database version 20210621

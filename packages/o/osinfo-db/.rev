@@ -376,4 +376,12 @@
     <comment>Update database to version 20210621</comment>
     <requestid>901211</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>f383e18c2ea6e012c4063bd6d619b761</srcmd5>
+    <version>20210621</version>
+    <time>1626986554</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for bsc#1188336 - openSUSE Tumbleweed unattended installation in libvirt fails due to invalid autoyast.xml</comment>
+    <requestid>907198</requestid>
+  </revision>
 </revisionlist>
