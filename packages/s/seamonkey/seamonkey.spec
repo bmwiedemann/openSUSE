@@ -65,9 +65,9 @@ BuildRequires:  git
 BuildRequires:  nasm >= 2.13
 Provides:       web_browser
 Provides:       browser(npapi)
-Version:        2.53.8
+Version:        2.53.8.1
 Release:        0
-%define releasedate 20210630000000
+%define releasedate 20210722000000
 Summary:        An integrated web browser, composer, mail/news client, and IRC client
 License:        MPL-2.0
 Group:          Productivity/Networking/Web/Browsers

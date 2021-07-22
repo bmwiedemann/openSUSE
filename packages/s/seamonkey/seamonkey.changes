@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul 22 08:55:51 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.8.1
+  * Archive message action does not work bug 1718839.
+  * Do not preserve offlineMsgSize parameter when moving/copying
+    emails between folders bug 1720202 and bug 1430480.
+  * Move thread code to threadPane.js and remove messengerdnd.js bug
+    515675.
+  * SeaMonkey 2.53.8.1 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.8.1 shares most parts of the mail and news code
+    with Thunderbird. Please read the Thunderbird 60.0 release notes
+    for specific changes and security fixes in this release.
+  * Additional important security fixes up to Current Firefox 78.12
+    ESR and a few enhancements have been backported. We will continue
+    to enhance SeaMonkey security in subsequent 2.53.x beta and
+    release versions as fast as we are able to.
+- requested inclusion in Leap 15.3 and Leap 15.2:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1188614
+
+-------------------------------------------------------------------
+Thu Jul 08 06:50:25 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- requested inclusion in Leap 15.3 and Leap 15.2:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1188100
+
+-------------------------------------------------------------------
 Wed Jul 07 13:50:05 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.8
