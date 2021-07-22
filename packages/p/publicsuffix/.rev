@@ -912,4 +912,14 @@ Now with build cycle removed.</comment>
   * Update public_suffix_list.dat (#1273)</comment>
     <requestid>901424</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>68eca190f6b71b1a4215c5752346577f</srcmd5>
+    <version>20210707</version>
+    <time>1626986560</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210707:
+  * util: gTLD data autopull updates for 2021-07-07T15:17:15 UTC (#1369)
+  * util: gTLD data autopull updates for 2021-06-26T15:13:32 UTC (#1362)</comment>
+    <requestid>907248</requestid>
+  </revision>
 </revisionlist>
