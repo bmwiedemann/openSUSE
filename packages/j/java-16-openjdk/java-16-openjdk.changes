@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Thu Jul 22 10:41:57 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-16.0.2+7 (July 2021 CPU)
+  * Security fixes
+    + JDK-8256157: Improve bytecode assembly
+    + JDK-8262380: Enhance XML processing passes
+    + JDK-8264460: Improve NTLM support
+    + JDK-8264079: Improve abstractions
+    + JDK-8264066, CVE-2021-2388, bsc#1188566: Enhance compiler
+      validation
+    + JDK-8262967: Improve Zip file support
+    + JDK-8262477: Enhance String Conclusions
+    + JDK-8262410: Enhanced rules for zones
+    + JDK-8262403: Enhanced data transfers
+    + JDK-8260967, CVE-2021-2369, bsc#1188565: Better jar file
+      validation
+    + JDK-8260960: Signs of jarsigner signing
+    + JDK-8260453: Improve Font Bounding
+    + JDK-8258432, CVE-2021-2341, bsc#1188564: Improve file
+      transfers
+    + JDK-8256491: Better HTTP transport
+  * Other changes
+    + JDK-8023980: JCE doesn't provide any class to handle RSA
+      private key in PKCS#1
+    + JDK-8196415: Disable SHA-1 Signed JARs
+    + JDK-8211227: Inconsistent TLS protocol version in debug output
+    + JDK-8225081: Remove Telia Company CA certificate expiring in
+      April 2021
+    + JDK-8241248: NullPointerException in
+      sun.security.ssl.HKDF.extract(HKDF.java:93)
+    + JDK-8257001: Improve HTTP client support
+    + JDK-8258414: OldObjectSample events too expensive
+    + JDK-8258457: testlibrary_tests/ctw/JarDirTest.java fails with
+      InvalidPathException on windows
+    + JDK-8258753: StartTlsResponse.close() hangs due to
+      synchronization issues
+    + JDK-8259627: Potential memory leaks in JVMTI after JDK-8227745
+    + JDK-8259662: Don't wrap SocketExceptions into SSLExceptions
+      in SSLSocketImpl
+    + JDK-8260204: Update the release version and release date
+      after forking April CPU21_04
+    + JDK-8260236: better init AnnotationCollector _contended_group
+    + JDK-8260308: Update LogCompilation junit to 4.13.1
+    + JDK-8260401: StackOverflowError on open WindowsPreferences
+    + JDK-8261183: Follow on to Make lists of normal filenames
+    + JDK-8261262: Kitchensink24HStress.java crashed with
+      EXCEPTION_ACCESS_VIOLATION
+    + JDK-8261354: SIGSEGV at MethodIteratorHost
+    + JDK-8261355: No data buffering in SunPKCS11 Cipher encryption
+      when the underlying mechanism has no padding
+    + JDK-8261505: Test test/hotspot/jtreg/gc/parallel/
+      /TestDynShrinkHeap.java killed by Linux OOM Killer
+    + JDK-8261779: JCK test api/javax_crypto/
+      /EncryptedPrivateKeyInfo/Ctor4.html is failing with assertion
+      error when assertions enabled
+    + JDK-8261914: IfNode::fold_compares_helper faces
+      non-canonicalized bool when running JRuby JSON workload
+    + JDK-8261916: gtest/GTestWrapper.java
+      vmErrorTest.unimplemented1_vm_assert failed
+    + JDK-8262110: DST starts from incorrect time in 2038 8073446:
+      TimeZone getOffset API does not  return a dst offset between
+      years 2038-2137
+    + JDK-8262295: C2: Out-of-Bounds Array Load from Clone Source
+    + JDK-8262446: DragAndDrop hangs on Windows
+    + JDK-8262829: Native crash in
+      Win32PrintServiceLookup.getAllPrinterNames()
+    + JDK-8262844: (fs) FileStore.supportsFileAttributeView might
+      return false negative in case of ext3
+    + JDK-8262899: TestRedirectLinks fails
+    + JDK-8263030: Remove Shenandoah leftovers from
+      ReferenceProcessor
+    + JDK-8263069: Exclude some failing tests from
+      security/infra/java/security/cert/CertPathValidator
+    + JDK-8263136: C4530 was reported from VS 2019 at access bridge
+    + JDK-8263311: Watch registry changes for remote printers
+      update instead of polling
+    + JDK-8263430: Uninitialized Method* variables after JDK-8233913
+    + JDK-8263557: Possible NULL dereference in
+      Arena::destruct_contents()
+    + JDK-8263558: Possible NULL dereference in fast path arena
+      free if ZapResourceArea is true
+    + JDK-8263564: Consolidate POSIX code for runtime exit support:
+      os::shutdown, os::abort and os::die
+    + JDK-8263587: C2: JVMS not cloned when needs_clone_jvms() is
+      true
+    + JDK-8263968: CDS: java/lang/ModuleLayer.EMPTY_LAYER should be
+      singleton
+    + JDK-8264047: Duplicate global variable 'jvm' in libjavajpeg
+      and libawt
+    + JDK-8264374: Shenandoah: Remove leftover parallel reference
+      processing argument
+    + JDK-8264786: [macos] All Swing/AWT apps cause Allow
+      Notifications prompt to appear when app is launched
+    + JDK-8265201: JarFile.getInputStream not validating invalid
+      signed jars
+    + JDK-8265204: Update the milestone for JDK16.0.2
+    + JDK-8265239: Shenandoah: Shenandoah heap region count could
+      be off by 1
+    + JDK-8265531: doc/building.md should mention homebrew install
+      freetype
+    + JDK-8265666: Enable AIX build platform to make external debug
+      symbols
+    + JDK-8266205: Update milestone to fcs for jdk16.0.2+4
+    + JDK-8266288: assert root method not found in
+      witnessed_reabstraction_in_supers is too strong
+    + JDK-8266802: Shenandoah: Round up region size to page size
+      unconditionally
+    + JDK-8267100: [BACKOUT] JDK-8196415 Disable SHA-1 Signed JARs
+    + JDK-8267117: sun/hotspot/whitebox/CPUInfoTest.java fails on
+      Ice Lake
+    + JDK-8267235: [macos_aarch64]
+      InterpreterRuntime::throw_pending_exception messing up LR
+      results in crash
+    + JDK-8267345: VM crashes during dumping classlist with
+      -Xshare:dump option
+    + JDK-8267773: PhaseStringOpts::int_stringSize doesn't handle
+      min_jint correctly
+    + JDK-8267842: SIGSEGV in get_current_contended_monitor
+    + JDK-8268173: Wrong GA date in JDK 11.0.12 and 16.0.2 versions
+
+-------------------------------------------------------------------
 Thu Apr 22 05:21:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-16.0.1+9 (April 2021 CPU)

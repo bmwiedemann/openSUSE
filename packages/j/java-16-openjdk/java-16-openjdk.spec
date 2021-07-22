@@ -1,5 +1,5 @@
 #
-# spec file for package java-16-openjdk
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      16
 %global interimver      0
-%global updatever       1
+%global updatever       2
 %global patchver        0
-%global datever         2021-04-20
-%global buildver        9
+%global datever         2021-07-20
+%global buildver        7
 %global openjdk_repo    jdk16u
-%global openjdk_tag     jdk-16.0.1+9
-%global openjdk_dir     jdk16u-jdk-16.0.1-9
+%global openjdk_tag     jdk-16.0.2+7
+%global openjdk_dir     jdk16u-jdk-16.0.2-7
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -612,12 +612,10 @@ bash ../configure \
     --with-pcsclite=system \
 %endif
     --with-stdc++lib=dynamic \
-%ifarch s390
-    --with-boot-jdk-jvmargs="-Xms256M -Xmx768M" \
-%endif
     --with-extra-cxxflags="$EXTRA_CPP_FLAGS" \
     --with-extra-cflags="$EXTRA_CFLAGS" \
-    --disable-javac-server
+    --disable-javac-server \
+    --disable-warnings-as-errors
 
 # The combination of FULL_DEBUG_SYMBOLS=0 and ALT_OBJCOPY=/does_not_exist
 # disables FDS for all build configs and reverts to pre-FDS make %{?_smp_mflags} logic.
@@ -625,10 +623,7 @@ bash ../configure \
 # ignore all the other logic about which debug options and just do '-g'.
 
 make --no-print-directory \
-    JAVAC_FLAGS=-g \
     LOG=trace \
-    WARNINGS_ARE_ERRORS="-Wno-error" \
-    CFLAGS_WARNINGS_ARE_ERRORS="-Wno-error" \
     %{imagestarget}
 
 # remove redundant *diz and *debuginfo files

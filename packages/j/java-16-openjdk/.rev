@@ -63,4 +63,12 @@
     <comment>Oracle April 2021 CPU fixes</comment>
     <requestid>887800</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>df4533340fe0c25bc3d10d8929648448</srcmd5>
+    <version>16.0.2.0</version>
+    <time>1626986612</time>
+    <user>dimstar_suse</user>
+    <comment>July 2021 CPU</comment>
+    <requestid>907709</requestid>
+  </revision>
 </revisionlist>
