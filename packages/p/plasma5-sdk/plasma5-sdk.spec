@@ -124,7 +124,6 @@ test Plasma data engines without writing a Plasma applet.
 %{_kf5_bindir}/lookandfeelexplorer
 %{_kf5_sharedir}/plasma/
 %{_kf5_sharedir}/kpackage/
-%{_kf5_servicesdir}/
 %{_kf5_plugindir}/
 %{_kf5_applicationsdir}/org.kde.plasma.themeexplorer.desktop
 %{_kf5_applicationsdir}/org.kde.plasma.lookandfeelexplorer.desktop
