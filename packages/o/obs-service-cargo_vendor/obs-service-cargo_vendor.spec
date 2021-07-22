@@ -1,5 +1,5 @@
 #
-# spec file for package obs-service-cargo_vendor
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -22,7 +22,7 @@ Summary:        An OBS source service: Download, verify and vendor Rust crates (
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/obs-service-%{service}
-Version:        0.4.0~git0.d4f314f
+Version:        0.4.2~git0.c597055
 Release:        0
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  python3

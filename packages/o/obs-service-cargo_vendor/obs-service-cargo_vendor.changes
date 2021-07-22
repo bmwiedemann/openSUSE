@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 21 04:09:22 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.4.2~git0.c597055:
+  * Make cargo vendor quieter
+
+-------------------------------------------------------------------
+Wed Jul 21 03:39:52 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.4.1~git0.43d1ddd:
+  * Update README
+  * Allow cargo update to run before vendoring (#15)
+  * Cleanup vendor folder after compression (#13)
+
+-------------------------------------------------------------------
 Wed Feb 24 11:06:55 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - add missing dependency to cargo
