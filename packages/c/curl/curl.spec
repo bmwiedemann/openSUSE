@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.77.0
+Version:        7.78.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -44,7 +44,8 @@ BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libidn2)
-BuildRequires:  pkgconfig(libmetalink)
+# Disable metalink [bsc#1188218, CVE-2021-22923][bsc#1188219, CVE-2021-22924]
+# BuildRequires:  pkgconfig(libmetalink)
 BuildRequires:  pkgconfig(libnghttp2)
 BuildRequires:  pkgconfig(libpsl)
 BuildRequires:  pkgconfig(libssh)
@@ -124,7 +125,6 @@ sed -i 's/\(link_all_deplibs=\)unknown/\1no/' configure
     --with-gssapi=$(krb5-config --prefix) \
     --with-libidn2 \
     --with-libssh \
-    --with-libmetalink \
     --enable-hidden-symbols \
     --disable-static \
     --enable-threaded-resolver

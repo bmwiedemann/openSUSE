@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jul 21 06:50:22 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.78.0:
+  [bsc#1188217, CVE-2021-22922][bsc#1188218, CVE-2021-22923]
+  [bsc#1188219, CVE-2021-22924][bsc#1188220, CVE-2021-22925]
+  * Changes:
+    - curl_url_set: reject spaces in URLs w/o CURLU_ALLOW_SPACE
+    - CURLE_SETOPT_OPTION_SYNTAX: new error name for wrong setopt syntax
+    - hostip: make 'localhost' return fixed values
+    - mbedtls: add support for cert and key blob options
+    - metalink: remove all support for it
+    - mqtt: add support for username and password
+  * Bugfixes:
+    - ares: always store IPv6 addresses first
+    - c-hyper: abort CONNECT response reading early on non 2xx responses
+    - c-hyper: add support for transfer-encoding in the request
+    - c-hyper: bail on too long response headers
+    - c-hyper: clear NTLM auth buffer when request is issued
+    - c-hyper: fix NTLM on closed connection tested with test159
+    - conncache: lowercase the hash key for better match
+    - curl_multibyte: Remove local encoding fallbacks
+    - Curl_ntlm_core_mk_nt_hash: fix OOM in error path
+    - Curl_ssl_getsessionid: fail if no session cache exists
+    - easy: during upkeep, attach Curl_easy to connections in the cache
+    - gnutls: set the preferred TLS versions in correct order
+    - hsts: ignore numberical IP address hosts
+    - HSTS: not experimental anymore
+    - http2: init recvbuf struct for pushed streams
+    - http: fix crash in rate-limited upload
+    - http: make the haproxy support work with unix domain sockets
+    - http_proxy: deal with non-200 CONNECT response with Hyper
+    - lib: don't compare fd to FD_SETSIZE when using poll
+    - lib: fix compiler warnings with CURL_DISABLE_NETRC
+    - lib: fix type of len passed to *printf's %*s
+    - lib: more %u for port and int for %*s fixes
+    - lib: use %u instead of %ld for port number printf
+    - libssh2: limit time a disconnect can take to 1 second
+    - mqtt: detect illegal and too large file size
+    - msnprintf: return number of printed characters excluding null byte
+    - multi: add scan-build-6 work-around in curl_multi_fdset
+    - multi: alter transfer timeout ordering
+    - multi: do not switch off connect_only flag when closing
+    - multi: fix crash in curl_multi_wait / curl_multi_poll
+    - ngtcp2: disable TLSv1.3 compatible mode when using GnuTLS
+    - openssl: avoid static variable for seed flag
+    - openssl: don't remove session id entry in disassociate
+    - socketpair: fix potential hangs
+    - socks4: scan for the IPv4 address in resolve results
+    - ssl: read pending close notify alert before closing the connection
+    - telnet: fix option parser to not send uninitialized contents
+    - TLS: prevent shutdown loops to get stuck
+    - vtls: exit addsessionid if no cache is inited
+    - vtls: fix connection reuse checks for issuer cert and case sensitivity
+
+-------------------------------------------------------------------
 Wed May 26 07:47:00 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.77.0: [bsc#1186114, CVE-2021-22898]
