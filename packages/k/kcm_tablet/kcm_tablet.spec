@@ -24,7 +24,7 @@ Release:        0
 Summary:        KDE Config Module for Wacom Tablets
 License:        GPL-2.0-or-later
 Group:          System/GUI/KDE
-URL:            https://cgit.kde.org/wacomtablet.git/
+URL:            https://invent.kde.org/system/wacomtablet
 Source:         https://download.kde.org/stable/%{rname}/%{version}/%{rname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Fix-build-with-Qt-5.15.patch
@@ -103,7 +103,9 @@ All tablets can be set up as long as they are found with the wacom kernel module
 %dir %{_kf5_plugindir}/plasma/dataengine
 %{_kf5_plugindir}/plasma/dataengine/plasma_engine_wacomtablet.so
 %{_kf5_servicesdir}/kcm_wacomtablet.desktop
+%if %{pkg_vcmp plasma-framework-devel < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.wacomtablet.desktop
+%endif
 %{_kf5_servicesdir}/plasma-dataengine-wacomtablet.desktop
 %{_kf5_sharedir}/wacomtablet
 

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 18 08:43:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the %files section. plasma-framework >= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.
+
+-------------------------------------------------------------------
+Thu Apr 22 08:18:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update URL
+
+-------------------------------------------------------------------
 Wed Aug 12 09:58:46 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Add patch to fix a possible crash in kde_wacom_tabletfinder
