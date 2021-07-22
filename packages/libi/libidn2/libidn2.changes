@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 15:56:57 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 2.3.2:
+  * Upgrade TR46 tables from Unicode 11 to Unicode 13.
+- Refresh libidn2.keyring
+
+-------------------------------------------------------------------
 Wed May 12 22:07:39 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libidn2 2.3.1:

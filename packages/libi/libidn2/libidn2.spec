@@ -19,7 +19,7 @@
 %define lname	libidn2-0
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           libidn2
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN) based on IDNA2008
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later
