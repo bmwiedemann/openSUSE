@@ -10324,6 +10324,7 @@ unsorted:
   - libdrm_nouveau2-32bit: [x86_64] 
   - libdrm_radeon1-32bit: [x86_64] 
   - libdrpm-devel 
+  - libdrpm0 
   - libdrumstick-alsa2 
   - libdrumstick-devel 
   - libdrumstick-doc 
@@ -12366,10 +12367,10 @@ unsorted:
   - libopenblas-gnu-hpc-devel 
   - libopenblas-pthreads-gnu-hpc 
   - libopenblas-pthreads-gnu-hpc-devel 
-  - libopenblas-pthreads_0_3_16-gnu-hpc 
-  - libopenblas-pthreads_0_3_16-gnu-hpc-devel 
-  - libopenblas_0_3_16-gnu-hpc 
-  - libopenblas_0_3_16-gnu-hpc-devel 
+  - libopenblas-pthreads_0_3_17-gnu-hpc 
+  - libopenblas-pthreads_0_3_17-gnu-hpc-devel 
+  - libopenblas_0_3_17-gnu-hpc 
+  - libopenblas_0_3_17-gnu-hpc-devel 
   - libopenblas_openmp-devel 
   - libopenblas_openmp0 
   - libopenblas_pthreads-devel 
@@ -17826,8 +17827,8 @@ unsorted:
   - openbabel-devel 
   - openblas-devel 
   - openblas-devel-headers 
-  - openblas-pthreads_0_3_16-gnu-hpc-devel-static 
-  - openblas_0_3_16-gnu-hpc-devel-static 
+  - openblas-pthreads_0_3_17-gnu-hpc-devel-static 
+  - openblas_0_3_17-gnu-hpc-devel-static 
   - openblas_openmp-devel-static 
   - openblas_pthreads-devel-static 
   - openblas_serial-devel-static 
