@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 18 14:05:45 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021.1
+  - format code with clang-12 and drop gmx2020 builds
+    ([gh#votca/csg#691])
+  - fix pos scaling (ang2nm) in lammps data reader
+    ([gh#votca/csg#697])
+
+-------------------------------------------------------------------
 Sat Mar 13 18:32:49 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2021

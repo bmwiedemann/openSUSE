@@ -18,7 +18,7 @@
 
 
 Name:           votca-csg
-Version:        2021
+Version:        2021.1
 Release:        0
 %define         uversion %version
 %define         sover 2021
@@ -31,7 +31,7 @@ Source1:        https://github.com/votca/csg-tutorials/archive/v%{uversion}.tar.
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
-BuildRequires:  cmake >= 2.8.4
+BuildRequires:  cmake >= 3.12
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gromacs-devel
