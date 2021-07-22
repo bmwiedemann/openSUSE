@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Thu Jul 22 05:53:45 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210722.a9b5d53a:
+  * Improvements in processes.md based on peer review
+  * Add processes.md
+
+-------------------------------------------------------------------
+Mon Jul 19 17:14:10 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210719.16822566:
+  * Fix typos
+  * Review of the tricks section while debugging the CI
+  * Extend docker-compose commands info when debugging the CI
+  * Add to README hints how to debug failures in CI
+
+-------------------------------------------------------------------
+Fri Jul 16 10:37:05 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210716.80f24854:
+  * gocd: update staging bot for Backports
+  * gocd: update rbeuild-trigger for Backports and Step
+
+-------------------------------------------------------------------
+Fri Jul 16 08:10:14 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210716.7b59f334:
+  * Properly handle required-source-maintainer when it is group
+  * Updates from code review
+  * Check for maintainers in the source project
+  * Add descriptions to check_source tests
+
+-------------------------------------------------------------------
+Wed Jul 14 08:12:05 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210714.bc466636:
+  * gocd: Drop openSUSE:Factory:WSL
+
+-------------------------------------------------------------------
+Wed Jul 14 08:10:16 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210714.5d5297cb:
+  * pkglistgen: initialize pkglistgen for Leap 15.4
+
+-------------------------------------------------------------------
+Tue Jul 13 12:03:19 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210713.677b3163:
+  * Make test CWD agnostic
+  * Use pytest instead of nosetests (fixes #2524)
+
+-------------------------------------------------------------------
+Tue Jul 13 07:32:38 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210713.f9ab72aa:
+  * Package: Fix rpm warning about unversioned obsoletes
+  * Package: Drop systemd services
+  * Add a check on the gocd config to github actions
+  * Transpose #2568 into the proper format
+  * Validate the yaml-config-plugin download
+
+-------------------------------------------------------------------
+Tue Jul 13 05:55:12 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210713.8e913573:
+  * Preparation for switch from nosetests to pytest
+
+-------------------------------------------------------------------
+Fri Jul 09 14:53:51 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210709.f461ce7b:
+  * gocd: fix path for script and use suse-repos.git
+
+-------------------------------------------------------------------
+Fri Jul 09 06:52:19 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210709.80bd9187:
+  * Run perl checks as part of flaker ci task
+  * fix perl warnings in check_source.pl
+
+-------------------------------------------------------------------
+Fri Jul 09 06:04:13 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210709.54eaaf82:
+  * Document how to create the osc alias for the local CI instance
+
+-------------------------------------------------------------------
+Thu Jul 08 14:25:54 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210708.ecafba4f:
+  * Test accepting a package from a devel project
+  * Initial testcase for check_source.py
+  * Small code reorganization in core.py
+
+-------------------------------------------------------------------
+Thu Jul 08 13:13:49 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210708.c80ddc2c:
+  * Rename DVD-Backports to DVD-Backports-Incidents
+
+-------------------------------------------------------------------
+Thu Jul 08 11:33:12 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210708.b73d663f:
+  * Add missing libraries to testenv image to run check_source.pl
+
+-------------------------------------------------------------------
+Wed Jul 07 14:52:34 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210707.82fd000a:
+  * osclib/conf.py: Don't use same config for openSUSE:Leap:15.3:ARM and :Images
+
+-------------------------------------------------------------------
+Mon Jul 05 09:43:21 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210705.8922fa23:
+  * Revert "Exclude .open-build-service/ from docker, flake8, and git."
+  * Update exclude section in .flake8
+
+-------------------------------------------------------------------
+Fri Jul 02 09:04:09 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210702.b265c66f:
+  * Staging: add 'rebase' as an alias to the 'freeze' command
+
+-------------------------------------------------------------------
+Fri Jul 02 08:47:40 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210702.d0f59b78:
+  * Explain how to run a single test
+  * Allow adjusting the exposed OBS port in Docker Compose
+  * Replace Coveralls badge with Codecov one
+  * Add some notes about CI
+  * [CI] Expose port 3000 of the api service
+
+-------------------------------------------------------------------
+Thu Jul 01 12:18:52 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210701.9c0e048a:
+  * paralelize running linter
+  * use proper badge for ci
+
+-------------------------------------------------------------------
+Wed Jun 30 11:03:34 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210630.2c4d242c:
+  * Use configparser from python3-base.rpm
+  * Make the usage message more helpful
+  * Add a meaningful one line description
+  * Improve instructions for Readme / Development
+
+-------------------------------------------------------------------
+Wed Jun 30 06:18:56 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210630.a3151f0b:
+  * update version of gh actions checkout action to speed up ci and codecov to be uptodate
+
+-------------------------------------------------------------------
+Fri Jun 25 05:33:37 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210625.f030cb17:
+  * Setup for SLE15 SP3 Quarterly Update
+
+-------------------------------------------------------------------
+Wed Jun 23 09:03:03 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210623.f07ad86d:
+  * check_source.py: Add the reason why a review was added (e.g. which whitelist warning was suppressed)
+
+-------------------------------------------------------------------
+Wed Jun 23 08:59:40 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210623.7899db11:
+  * pkglistgen opensuse gocd: remove 15.3 pkglsitgen and updaterepos
+
+-------------------------------------------------------------------
+Tue Jun 22 17:57:50 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210622.3d879f53:
+  * gocd: change how scripts are retrieved
+
+-------------------------------------------------------------------
+Tue Jun 22 11:08:17 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210622.b376746f:
+  * accept_command: use the value of attribute to set ProductVersion if always_set_productversion_to option presents
+
+-------------------------------------------------------------------
+Mon Jun 21 13:21:10 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210621.a11cc821:
+  * gocd/totestmanager.gocd.yaml: Update list of projects
+
+-------------------------------------------------------------------
+Mon Jun 21 06:59:19 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210621.f05d1f9e:
+  * Switch off abi checker as it keeps failing
+
+-------------------------------------------------------------------
+Fri Jun 18 14:41:13 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210618.8e162872:
+  * ttm/manager.py: Also find versions from plain tarballs
+  * ttm/publisher.py: If force is set, ignore QA and other checks
+
+-------------------------------------------------------------------
+Fri Jun 18 12:03:09 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210618.4c407e7a:
+  * Use codecov for coverage - easier GA integration
+  * Increase timeout to 40 minutes
+  * Remove travis CI
+  * pkglistgen: Automatically merge old update repos
+  * pkglistgen: Add a way to merge files from 000update-repos
+
+-------------------------------------------------------------------
+Fri Jun 18 09:47:30 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210618.9a8de07f:
+  * Create ci-test.yml
+
+-------------------------------------------------------------------
+Fri Jun 18 06:44:05 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210618.660e75bd:
+  * gocd: plug release in BCI pipeline
+
+-------------------------------------------------------------------
+Wed Jun 16 09:06:07 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210616.02b53c6b:
+  * Fix Leap:15.3:ARM which was broken when Leap:15.3:ARM:Images has been introduced
+
+-------------------------------------------------------------------
+Mon Jun 14 11:35:13 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210614.d271a1a3:
+  * Add 15-SP4 setup
+
+-------------------------------------------------------------------
+Mon Jun 07 13:44:55 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210607.ed56c252:
+  * add bot for ARM:Images
+  * Support Leap:15.3:ARM:Images as well
+
+-------------------------------------------------------------------
+Mon Jun 07 13:03:33 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210607.9b86fb95:
+  * Enable pkglistgen for openSUSE:Factory:ARM rings
+
+-------------------------------------------------------------------
 Fri May 28 12:23:02 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210528.983c167a:

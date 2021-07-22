@@ -2733,4 +2733,40 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>897438</requestid>
   </revision>
+  <revision rev="309" vrev="1">
+    <srcmd5>dc139c2aeec59e320ea6597da3f1dbdd</srcmd5>
+    <version>20210722.a9b5d53a</version>
+    <time>1626986611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210722.a9b5d53a:
+  * Improvements in processes.md based on peer review
+  * Add processes.md
+
+- Update to version 20210719.16822566:
+  * Fix typos
+  * Review of the tricks section while debugging the CI
+  * Extend docker-compose commands info when debugging the CI
+  * Add to README hints how to debug failures in CI
+
+- Update to version 20210716.80f24854:
+  * gocd: update staging bot for Backports
+  * gocd: update rbeuild-trigger for Backports and Step
+
+- Update to version 20210716.7b59f334:
+  * Properly handle required-source-maintainer when it is group
+  * Updates from code review
+  * Check for maintainers in the source project
+  * Add descriptions to check_source tests
+
+- Update to version 20210714.bc466636:
+  * gocd: Drop openSUSE:Factory:WSL
+
+- Update to version 20210714.5d5297cb:
+  * pkglistgen: initialize pkglistgen for Leap 15.4
+
+- Update to version 20210713.677b3163:
+  * Make test CWD agnostic
+  * Use pytest instead of nosetests (fixes #2524)</comment>
+    <requestid>907699</requestid>
+  </revision>
 </revisionlist>
