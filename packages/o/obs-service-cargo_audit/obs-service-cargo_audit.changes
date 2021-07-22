@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 21 03:35:56 UTC 2021 - wbrown@suse.de
+
+- Update to version 0.1.6~git0.d8133c2:
+  * Allow cargo audit to auto-unpack sources
+  * Add a default srcdir parameter to cargo_audit, and make do_scan able to unpack and scan sources
+  * Improve output and lockfile handling
+  * generate Cargo.lock from Cargo.toml if not present (#2)
+  * Update options for offline operation.
+
+-------------------------------------------------------------------
 Mon Jul 05 03:33:51 UTC 2021 - wbrown@suse.de
 
 - Update to version 0.1.5~git0.01fea16:
