@@ -16,11 +16,6 @@
 #
 
 
-# Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 # The hypervisor drivers that run in libvirtd
 %define with_qemu          0%{!?_without_qemu:1}
 %define with_lxc           0%{!?_without_lxc:1}
@@ -291,6 +286,7 @@ Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
 Patch0:         de1e0ae0-lockd-no-error-if-lockspace.patch
+Patch1:         f58349c9-qemu-storage-migration.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -304,19 +300,16 @@ Patch155:       0002-lxc-implement-connectGetAllDomainStats.patch
 Patch156:       0001-libxl-add-support-for-BlockResize-API.patch
 # Our patches
 Patch200:       suse-libvirtd-disable-tls.patch
-Patch201:       suse-libvirtd-sysconfig-settings.patch
-Patch202:       suse-libvirt-guests-service.patch
-Patch203:       suse-virtlockd-sysconfig-settings.patch
-Patch204:       suse-virtlogd-sysconfig-settings.patch
-Patch205:       suse-qemu-conf.patch
-Patch206:       suse-ovmf-paths.patch
-Patch207:       libxl-support-block-script.patch
-Patch208:       qemu-apparmor-screenshot.patch
-Patch209:       libvirt-suse-netcontrol.patch
-Patch210:       lxc-wait-after-eth-del.patch
-Patch211:       suse-libxl-disable-autoballoon.patch
-Patch212:       suse-xen-ovmf-loaders.patch
-Patch213:       virt-create-rootfs.patch
+Patch201:       suse-libvirt-guests-service.patch
+Patch202:       suse-qemu-conf.patch
+Patch203:       suse-ovmf-paths.patch
+Patch204:       libxl-support-block-script.patch
+Patch205:       qemu-apparmor-screenshot.patch
+Patch206:       libvirt-suse-netcontrol.patch
+Patch207:       lxc-wait-after-eth-del.patch
+Patch208:       suse-libxl-disable-autoballoon.patch
+Patch209:       suse-xen-ovmf-loaders.patch
+Patch210:       virt-create-rootfs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -369,6 +362,7 @@ Requires:       dbus-1
 Requires:       group(libvirt)
 # Needed by libvirt-guests init script.
 Requires:       gettext-runtime
+Requires:       bash-completion >= 2.0
 
 # A KVM or Xen libvirt stack really does need UEFI firmware these days
 %ifarch x86_64
@@ -754,6 +748,7 @@ Group:          System/Management
 Requires:       %{name}-libs = %{version}-%{release}
 # Needed by virt-pki-validate script.
 Requires:       cyrus-sasl
+Requires:       bash-completion >= 2.0
 Requires:       gnutls
 
 # Ensure smooth upgrades
@@ -1065,19 +1060,18 @@ rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirt_sanlock.aug
 %endif
 
 # init scripts
-mkdir -p %{buildroot}/%{_fillupdir}
 rm -f %{buildroot}/usr/lib/sysctl.d/60-libvirtd.conf
-mv %{buildroot}/%{_sysconfdir}/sysconfig/libvirtd %{buildroot}%{_fillupdir}/sysconfig.libvirtd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtproxyd %{buildroot}/%{_fillupdir}/sysconfig.virtproxyd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtlogd %{buildroot}/%{_fillupdir}/sysconfig.virtlogd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtlockd %{buildroot}/%{_fillupdir}/sysconfig.virtlockd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtinterfaced %{buildroot}/%{_fillupdir}/sysconfig.virtinterfaced
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtnetworkd %{buildroot}/%{_fillupdir}/sysconfig.virtnetworkd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtnodedevd %{buildroot}/%{_fillupdir}/sysconfig.virtnodedevd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtnwfilterd %{buildroot}/%{_fillupdir}/sysconfig.virtnwfilterd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtsecretd %{buildroot}/%{_fillupdir}/sysconfig.virtsecretd
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtstoraged %{buildroot}/%{_fillupdir}/sysconfig.virtstoraged
-mv %{buildroot}/%{_sysconfdir}/sysconfig/libvirt-guests %{buildroot}/%{_fillupdir}/sysconfig.libvirt-guests
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/libvirtd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtproxyd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtlogd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtlockd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtinterfaced
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtnetworkd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtnodedevd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtnwfilterd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtsecretd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtstoraged
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/libvirt-guests
 # Provide rc symlink backward compatibility
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirtd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtproxyd
@@ -1092,19 +1086,19 @@ ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtstoraged
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rclibvirt-guests
 
 %if %{with_qemu}
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtqemud %{buildroot}/%{_fillupdir}/sysconfig.virtqemud
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtqemud
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtqemud
 %endif
 %if %{with_lxc}
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtlxcd %{buildroot}/%{_fillupdir}/sysconfig.virtlxcd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtlxcd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtlxcd
 %endif
 %if %{with_libxl}
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtxend %{buildroot}/%{_fillupdir}/sysconfig.virtxend
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtxend
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtxend
 %endif
 %if %{with_vbox}
-mv %{buildroot}/%{_sysconfdir}/sysconfig/virtvboxd %{buildroot}/%{_fillupdir}/sysconfig.virtvboxd
+rm -f %{buildroot}/%{_sysconfdir}/sysconfig/virtvboxd
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rcvirtvboxd
 %endif
 
@@ -1140,20 +1134,6 @@ VIR_TEST_DEBUG=1 %meson_test -t 5 --no-suite syntax-check
 %apparmor_reload /etc/apparmor.d/usr.sbin.libvirtd
 %endif
 %service_add_post libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
-%{fillup_only -n libvirtd}
-%{fillup_only -n libvirt-guests}
-%{fillup_only -n virtlockd}
-%{fillup_only -n virtproxyd}
-%{fillup_only -n virtlogd}
-
-# The '--listen' option is incompatible with socket activation.
-# We need to forcibly remove it from /etc/sysconfig/libvirtd.
-# Also add the --timeout option to be consistent with upstream.
-# See boo#1156161 for details
-sed -i -e '/^\s*LIBVIRTD_ARGS=/s/--listen//g' %{_sysconfdir}/sysconfig/libvirtd
-if ! grep -q -E '^\s*LIBVIRTD_ARGS=.*--timeout' %{_sysconfdir}/sysconfig/libvirtd ; then
-    sed -i 's/^\s*LIBVIRTD_ARGS="\(.*\)"/LIBVIRTD_ARGS="\1 --timeout 120"/' %{_sysconfdir}/sysconfig/libvirtd
-fi
 
 %preun daemon
 %service_del_preun libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
@@ -1167,24 +1147,84 @@ fi
 %service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %posttrans daemon
-# virtlockd and virtlogd must not be restarted, particularly virtlockd since the
-# locks it uses to protect VM resources would be lost. Both are safe to re-exec.
-/usr/bin/systemctl reload-or-try-restart virtlockd.service >/dev/null 2>&1 || :
-/usr/bin/systemctl reload-or-try-restart virtlogd.service >/dev/null 2>&1 || :
+# The '--listen' option is incompatible with socket activation.
+# Check if the existing install uses --listen
+listen_mode=no
+if test -f %{_sysconfdir}/sysconfig/libvirtd; then
+    if grep -q -E '^LIBVIRTD_ARGS=.*--listen' %{_sysconfdir}/sysconfig/libvirtd; then
+        listen_mode=yes
+    fi
+    if test "$listen_mode" = yes; then
+        # Keep honouring --listen and *not* use systemd socket activation.
+        # Switching things might confuse management tools that expect the old
+        # style libvirtd
+        %{_bindir}/systemctl mask \
+                   libvirtd.socket \
+                   libvirtd-ro.socket \
+                   libvirtd-admin.socket >/dev/null 2>&1 || :
+    else
+        # A benefit of socket activation is libvirtd doesn't need to be running
+        # when unused. Set a timeout value if it doesn't already exist
+        awk -i inplace "
+        /^LIBVIRTD_ARGS=/ {
+            gsub(\"^LIBVIRTD_ARGS=\", \"\")
+            gsub(\"^['\\\"]\", \"\")
+            gsub(\"['\\\"]$\", \"\")
+            printf \"LIBVIRTD_ARGS='\"
+            num = split(\$0, values)
+            got_timeout = 0
+            for ( i = 1; i <= num ; i++) {
+              if (values[i] ~ /^--timeout=/)
+                got_timeout = 1
+              if (values[i] ~ /^--timeout$/) {
+                if (i < num) {
+                  got_timeout = 1
+                  printf \"%%s \",values[i]
+                  i++
+                } else {
+                  continue
+                }
+              }
+              printf \"%%s\",values[i]
+              if (i >= 1 && i < num)
+                printf \" \"
+            }
+            if (got_timeout == 0)
+              if (num == 0)
+                printf \"--timeout 120\"
+              else
+                printf \" --timeout 120\"
+              printf \"'\n\"
+              next
+        }
+        { print } " "%{_sysconfdir}/sysconfig/libvirtd" || :
+    fi
+fi
 # All connection drivers should be installed post transaction.
-# Time to restart libvirtd. With new socket activation we need to be a bit
-# smarter on update. Old libvirtd owns the sockets and will delete them on
-# shutdown. We can't use try-restart as libvirtd will own the sockets again
-# after restart. So we must instead shutdown libvirtd, start the sockets,
-# then start libvirtd.
-/usr/bin/systemctl is-active libvirtd.service >/dev/null 2>&1
-if test $? = 0 ; then
-    /usr/bin/systemctl stop libvirtd.service >/dev/null 2>&1 || :
+# Time to restart the daemon
+test -f %{_sysconfdir}/sysconfig/services -a \
+  -z "$DISABLE_RESTART_ON_UPDATE" && . %{_sysconfdir}/sysconfig/services
+if test "$DISABLE_RESTART_ON_UPDATE" != yes -a \
+  "$DISABLE_RESTART_ON_UPDATE" != 1; then
+    if test "$listen_mode" = yes; then
+        %{_bindir}/systemctl try-restart libvirtd.service >/dev/null 2>&1 || :
+    else
+        # Old libvirtd owns the sockets and will delete them on
+        # shutdown. Can't use a try-restart as libvirtd will simply
+        # own the sockets again when it comes back up. Thus we must
+        # do this particular ordering, so that we get libvirtd
+        # running with socket activation in use
+        if  %{_bindir}/systemctl -q is-active libvirtd.service; then
+             %{_bindir}/systemctl stop libvirtd.service >/dev/null 2>&1 || :
 
-    /usr/bin/systemctl try-restart libvirtd.socket >/dev/null 2>&1 || :
-    /usr/bin/systemctl try-restart libvirtd-ro.socket >/dev/null 2>&1 || :
+             %{_bindir}/systemctl try-restart \
+                    libvirtd.socket \
+                    libvirtd-ro.socket \
+		    libvirtd-admin.socket >/dev/null 2>&1 || :
 
-    /usr/bin/systemctl start libvirtd.service >/dev/null 2>&1 || :
+             %{_bindir}/systemctl start libvirtd.service >/dev/null 2>&1 || :
+        fi
+    fi
 fi
 
 %pre daemon-driver-network
@@ -1192,7 +1232,6 @@ fi
 
 %post daemon-driver-network
 %service_add_post virtnetworkd.service virtnetworkd.socket virtnetworkd-ro.socket virtnetworkd-admin.socket
-%{fillup_only -n virtnetworkd}
 %if %{with_firewalld_zone}
     %firewalld_reload
 %endif
@@ -1219,7 +1258,6 @@ fi
 
 %post daemon-driver-nwfilter
 %service_add_post virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
-%{fillup_only -n virtnwfilterd}
 
 %preun daemon-driver-nwfilter
 %service_del_preun virtnwfilterd.service virtnwfilterd.socket virtnwfilterd-ro.socket virtnwfilterd-admin.socket
@@ -1232,7 +1270,6 @@ fi
 
 %post daemon-driver-storage-core
 %service_add_post virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
-%{fillup_only -n virtstoraged}
 
 %preun daemon-driver-storage-core
 %service_del_preun virtstoraged.service virtstoraged.socket virtstoraged-ro.socket virtstoraged-admin.socket
@@ -1245,7 +1282,6 @@ fi
 
 %post daemon-driver-interface
 %service_add_post virtinterfaced.service virtinterfaced.socket virtinterfaced-ro.socket virtinterfaced-admin.socket
-%{fillup_only -n virtinterfaced}
 
 %preun daemon-driver-interface
 %service_del_preun virtinterfaced.service virtinterfaced.socket virtinterfaced-ro.socket virtinterfaced-admin.socket
@@ -1258,7 +1294,6 @@ fi
 
 %post daemon-driver-nodedev
 %service_add_post virtnodedevd.service virtnodedevd.socket virtnodedevd-ro.socket virtnodedevd-admin.socket
-%{fillup_only -n virtnodedevd}
 
 %preun daemon-driver-nodedev
 %service_del_preun virtnodedevd.service virtnodedevd.socket virtnodedevd-ro.socket virtnodedevd-admin.socket
@@ -1271,7 +1306,6 @@ fi
 
 %post daemon-driver-secret
 %service_add_post virtsecretd.service virtsecretd.socket virtsecretd-ro.socket virtsecretd-admin.socket
-%{fillup_only -n virtsecretd}
 
 %preun daemon-driver-secret
 %service_del_preun virtsecretd.service virtsecretd.socket virtsecretd-ro.socket virtsecretd-admin.socket
@@ -1284,7 +1318,6 @@ fi
 
 %post daemon-driver-qemu
 %service_add_post virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
-%{fillup_only -n virtqemud}
 
 %preun daemon-driver-qemu
 %service_del_preun virtqemud.service virtqemud.socket virtqemud-ro.socket virtqemud-admin.socket
@@ -1297,7 +1330,6 @@ fi
 
 %post daemon-driver-lxc
 %service_add_post virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
-%{fillup_only -n virtlxcd}
 
 %preun daemon-driver-lxc
 %service_del_preun virtlxcd.service virtlxcd.socket virtlxcd-ro.socket virtlxcd-admin.socket
@@ -1310,7 +1342,6 @@ fi
 
 %post daemon-driver-libxl
 %service_add_post virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
-%{fillup_only -n virtxend}
 
 %preun daemon-driver-libxl
 %service_del_preun virtxend.service virtxend.socket virtxend-ro.socket virtxend-admin.socket
@@ -1337,11 +1368,6 @@ fi
 %attr(0755, root, root) %{_libdir}/%{name}/libvirt-guests.sh
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/
 %dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
-%{_fillupdir}/sysconfig.libvirtd
-%{_fillupdir}/sysconfig.libvirt-guests
-%{_fillupdir}/sysconfig.virtproxyd
-%{_fillupdir}/sysconfig.virtlogd
-%{_fillupdir}/sysconfig.virtlockd
 %{_unitdir}/libvirtd.service
 %{_unitdir}/libvirtd.socket
 %{_unitdir}/libvirtd-ro.socket
@@ -1445,7 +1471,6 @@ fi
 %config %{_sysconfdir}/%{name}/nwfilter/*.xml
 
 %files daemon-driver-interface
-%{_fillupdir}/sysconfig.virtinterfaced
 %config(noreplace) %{_sysconfdir}/%{name}/virtinterfaced.conf
 %{_datadir}/augeas/lenses/virtinterfaced.aug
 %{_datadir}/augeas/lenses/tests/test_virtinterfaced.aug
@@ -1460,7 +1485,6 @@ fi
 %doc %{_mandir}/man8/virtinterfaced.8*
 
 %files daemon-driver-network
-%{_fillupdir}/sysconfig.virtnetworkd
 %config(noreplace) %{_sysconfdir}/%{name}/virtnetworkd.conf
 %{_datadir}/augeas/lenses/virtnetworkd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnetworkd.aug
@@ -1485,7 +1509,6 @@ fi
 %doc %{_mandir}/man8/virtnetworkd.8*
 
 %files daemon-driver-nodedev
-%{_fillupdir}/sysconfig.virtnodedevd
 %config(noreplace) %{_sysconfdir}/%{name}/virtnodedevd.conf
 %{_datadir}/augeas/lenses/virtnodedevd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnodedevd.aug
@@ -1500,7 +1523,6 @@ fi
 %doc %{_mandir}/man8/virtnodedevd.8*
 
 %files daemon-driver-nwfilter
-%{_fillupdir}/sysconfig.virtnwfilterd
 %config(noreplace) %{_sysconfdir}/%{name}/virtnwfilterd.conf
 %{_datadir}/augeas/lenses/virtnwfilterd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnwfilterd.aug
@@ -1516,7 +1538,6 @@ fi
 %doc %{_mandir}/man8/virtnwfilterd.8*
 
 %files daemon-driver-secret
-%{_fillupdir}/sysconfig.virtsecretd
 %config(noreplace) %{_sysconfdir}/%{name}/virtsecretd.conf
 %{_datadir}/augeas/lenses/virtsecretd.aug
 %{_datadir}/augeas/lenses/tests/test_virtsecretd.aug
@@ -1533,7 +1554,6 @@ fi
 %files daemon-driver-storage
 
 %files daemon-driver-storage-core
-%{_fillupdir}/sysconfig.virtstoraged
 %config(noreplace) %{_sysconfdir}/%{name}/virtstoraged.conf
 %{_datadir}/augeas/lenses/virtstoraged.aug
 %{_datadir}/augeas/lenses/tests/test_virtstoraged.aug
@@ -1591,7 +1611,6 @@ fi
 %if %{with_qemu}
 
 %files daemon-driver-qemu
-%{_fillupdir}/sysconfig.virtqemud
 %config(noreplace) %{_sysconfdir}/%{name}/virtqemud.conf
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
@@ -1623,7 +1642,6 @@ fi
 %if %{with_lxc}
 
 %files daemon-driver-lxc
-%{_fillupdir}/sysconfig.virtlxcd
 %config(noreplace) %{_sysconfdir}/%{name}/virtlxcd.conf
 %{_datadir}/augeas/lenses/virtlxcd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlxcd.aug
@@ -1650,7 +1668,6 @@ fi
 %if %{with_libxl}
 
 %files daemon-driver-libxl
-%{_fillupdir}/sysconfig.virtxend
 %config(noreplace) %{_sysconfdir}/%{name}/virtxend.conf
 %{_datadir}/augeas/lenses/virtxend.aug
 %{_datadir}/augeas/lenses/tests/test_virtxend.aug
@@ -1675,7 +1692,6 @@ fi
 %if %{with_vbox}
 
 %files daemon-driver-vbox
-%{_fillupdir}/sysconfig.virtvboxd
 %config(noreplace) %{_sysconfdir}/%{name}/virtvboxd.conf
 %{_datadir}/augeas/lenses/virtvboxd.aug
 %{_datadir}/augeas/lenses/tests/test_virtvboxd.aug

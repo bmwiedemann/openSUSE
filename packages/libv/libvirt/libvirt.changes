@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 16 23:05:03 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Don't forcibly remove '--listen' arg from
+  /etc/sysconfig/libvirtd. Add '--timeout 120' if '--listen' is
+  not specified.
+  bsc#1188232
+- spec: Remove the sysconfig fillup files for the various daemons
+  - Dropped patches:
+    suse-libvirtd-sysconfig-settings.patch,
+    suse-virtlockd-sysconfig-settings.patch,
+    suse-virtlogd-sysconfig-settings.patch
+
+-------------------------------------------------------------------
+Fri Jul 16 15:53:31 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add bash-completion dependency to libvirt-daemon and
+  libvirt-client. It was mistakenly dropped when
+  libvirt-bash-completion was merged into the daemon and client
+  subpackages
+
+-------------------------------------------------------------------
+Fri Jul 16 15:37:11 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Use correct flag constant for enabling storage migration
+  f58349c9-qemu-storage-migration.patch
+  bsc#1188171
+
+-------------------------------------------------------------------
 Wed Jul  7 15:54:59 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - virtlockd: Don't report error if lockspace exists
@@ -8,7 +36,7 @@ Wed Jul  7 15:54:59 UTC 2021 - James Fehlig <jfehlig@suse.com>
 -------------------------------------------------------------------
 Thu Jul  1 14:17:12 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
--  Update to libvirt 7.5.0
+- Update to libvirt 7.5.0
   - security: Fix insecure sVirt label generation - CVE-2021-3631
     bsc#1187871
   - apparmor: Permit new capabilities required by libvirtd

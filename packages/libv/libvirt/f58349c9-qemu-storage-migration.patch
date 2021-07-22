@@ -1,0 +1,31 @@
+commit f58349c9c6d26d98e7c8c195b1160d0c0cfff080
+Author: Peter Krempa <pkrempa@redhat.com>
+Date:   Fri Jul 2 14:17:57 2021 +0200
+
+    qemu: migration: Use correct flag constant for enabling storage migration
+    
+    The 'storageMigration' flag is supposed to be true if storage migration
+    is requested, which is based on VIR_MIGRATE_NON_SHARED_DISK or
+    VIR_MIGRATE_NON_SHARED_INC flags. The assignment to the variable used
+    QEMU_MONITOR_MIGRATE_NON_SHARED_INC (0x04) instead of
+    VIR_MIGRATE_NON_SHARED_INC (0x80), caused libvirtd to skip the actual
+    copy of data.
+    
+    Resolves: https://bugzilla.redhat.com/show_bug.cgi?id=1978526
+    Fixes: da69f4b2084bff140238e450e264d6036ebef898
+    Signed-off-by: Peter Krempa <pkrempa@redhat.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-7.5.0/src/qemu/qemu_migration.c
+===================================================================
+--- libvirt-7.5.0.orig/src/qemu/qemu_migration.c
++++ libvirt-7.5.0/src/qemu/qemu_migration.c
+@@ -4016,7 +4016,7 @@ qemuMigrationSrcRun(virQEMUDriver *drive
+     bool abort_on_error = !!(flags & VIR_MIGRATE_ABORT_ON_ERROR);
+     bool events = virQEMUCapsGet(priv->qemuCaps, QEMU_CAPS_MIGRATION_EVENT);
+     bool bwParam = virQEMUCapsGet(priv->qemuCaps, QEMU_CAPS_MIGRATION_PARAM_BANDWIDTH);
+-    bool storageMigration = flags & (VIR_MIGRATE_NON_SHARED_DISK | QEMU_MONITOR_MIGRATE_NON_SHARED_INC);
++    bool storageMigration = flags & (VIR_MIGRATE_NON_SHARED_DISK | VIR_MIGRATE_NON_SHARED_INC);
+     bool cancel = false;
+     unsigned int waitFlags;
+     g_autoptr(virDomainDef) persistDef = NULL;
