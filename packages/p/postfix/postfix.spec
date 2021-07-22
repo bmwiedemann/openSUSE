@@ -362,7 +362,7 @@ cp -a auxiliary %{buildroot}%{pf_docdir}
 rm %{buildroot}%{pf_docdir}/README_FILES/INSTALL
 # Fix build for Leap 42.3.
 rm -f %{buildroot}%{_sysconfdir}/%{name}/*.orig
-mkdir -p %{buildroot}%{_unitdir}
+mkdir -p %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/
 mkdir -p %{buildroot}%{pf_shlib_directory}/systemd
 install -m 0644 %{name}-SUSE/%{name}.service         %{buildroot}%{_unitdir}/%{name}.service
 install -m 0755 %{name}-SUSE/config_%{name}.systemd  %{buildroot}%{pf_shlib_directory}/systemd/config_%{name}
@@ -371,6 +371,7 @@ install -m 0755 %{name}-SUSE/update_postmaps.systemd %{buildroot}%{pf_shlib_dire
 install -m 0755 %{name}-SUSE/wait_qmgr.systemd       %{buildroot}%{pf_shlib_directory}/systemd/wait_qmgr
 install -m 0755 %{name}-SUSE/cond_slp.systemd        %{buildroot}%{pf_shlib_directory}/systemd/cond_slp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
+ln -sv %{_unitdir}/%{name}.service %{buildroot}%{_unitdir}/mail-transfer-agent.target.wants/%{name}.service
 %fdupes %{buildroot}%{pf_docdir}
 %fdupes %{buildroot}%{_mandir}
 for path in %{buildroot}%{pf_shlib_directory}/lib%{name}-*.so
@@ -513,6 +514,7 @@ fi
 %dir %{pf_shlib_directory}/systemd
 %attr(0755,root,root) %{pf_shlib_directory}/systemd/*
 %{_unitdir}/%{name}.service
+%{_unitdir}/mail-transfer-agent.target.wants
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postdrop
 %verify(not mode) %attr(2755,root,%{pf_setgid_group}) %{_sbindir}/postqueue
 %{_bindir}/mailq

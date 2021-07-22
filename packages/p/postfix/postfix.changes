@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 14 14:37:24 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- spamd wants to start before mail-transfer-agent.target, but that target doesn't exist
+  (bsc#1066854) 
+
+-------------------------------------------------------------------
 Tue Jul  6 22:23:17 UTC 2021 - Christian Wittmer <chris@computersalat.de>
 
 - postfix-SUSE

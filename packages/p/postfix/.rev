@@ -1982,4 +1982,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>906315</requestid>
   </revision>
+  <revision rev="205" vrev="5">
+    <srcmd5>3ea44e2e13bbcaed18283040596f0ca2</srcmd5>
+    <version>3.6.1</version>
+    <time>1626986552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907193</requestid>
+  </revision>
 </revisionlist>
