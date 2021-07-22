@@ -33,13 +33,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      11
 %global interimver      0
-%global updatever       11
+%global updatever       12
 %global patchver        0
-%global datever         2021-04-20
-%global buildver        9
+%global datever         2021-07-20
+%global buildver        7
 %global hg_project      jdk-updates
 %global hg_repository   jdk11u
-%global hg_revision     15862747ee15
+%global hg_revision     f412f2537f15
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -62,7 +62,11 @@
 %global jaxb_ri_repository jaxb-v2
 %global jaxb_ri_tag 2.3.1
 # priority must be 6 digits in total
+%if 0%{?suse_version} <= 1315
+%global priority        0
+%else
 %global priority        2105
+%endif
 %global javaver         %{featurever}
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
@@ -282,6 +286,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
 Requires(post): file
+%if 0%{?suse_version} > 1315
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -310,7 +315,8 @@ Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
 Obsoletes:      java-10-openjdk < %{version}-%{release}
-%if %{bootcycle}
+%endif
+%if %{bootcycle} && 0%{?suse_version} > 1315
 BuildRequires:  java-devel >= 10
 BuildConflicts: java-devel >= 12
 %else
@@ -357,6 +363,7 @@ Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
 Recommends:     tzdata-java8
+%if 0%{?suse_version} > 1315
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -378,6 +385,7 @@ Provides:       jndi-ldap = %{version}
 Provides:       jndi-rmi = %{version}
 Provides:       jsse = %{version}
 Obsoletes:      java-10-openjdk-headless < %{version}-%{release}
+%endif
 
 %description headless
 The OpenJDK %{featurever} runtime environment without audio and video support.
@@ -391,6 +399,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
+%if 0%{?suse_version} > 1315
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-10-openjdk-devel = %{version}-%{release}
@@ -401,6 +410,7 @@ Provides:       java-sdk-%{javaver} = %{version}
 Provides:       java-sdk-%{javaver}-openjdk = %{version}
 Provides:       java-sdk-openjdk = %{version}
 Obsoletes:      java-10-openjdk-devel < %{version}-%{release}
+%endif
 
 %description devel
 The OpenJDK %{featurever} development tools.
@@ -409,8 +419,10 @@ The OpenJDK %{featurever} development tools.
 Summary:        JMods for OpenJDK %{featurever}
 Group:          Development/Languages/Java
 Requires:       %{name}-devel = %{version}-%{release}
+%if 0%{?suse_version} > 1315
 Provides:       java-10-openjdk-jmods = %{version}-%{release}
 Obsoletes:      java-10-openjdk-jmods < %{version}-%{release}
+%endif
 
 %description jmods
 The JMods for OpenJDK %{featurever}.
@@ -419,8 +431,10 @@ The JMods for OpenJDK %{featurever}.
 Summary:        OpenJDK %{featurever} Demos
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
+%if 0%{?suse_version} > 1315
 Provides:       java-10-openjdk-demo = %{version}-%{release}
 Obsoletes:      java-10-openjdk-demo < %{version}-%{release}
+%endif
 
 %description demo
 The OpenJDK %{featurever} demos.
@@ -429,8 +443,10 @@ The OpenJDK %{featurever} demos.
 Summary:        OpenJDK %{featurever} Source Bundle
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
+%if 0%{?suse_version} > 1315
 Provides:       java-10-openjdk-src = %{version}-%{release}
 Obsoletes:      java-10-openjdk-src < %{version}-%{release}
+%endif
 
 %description src
 The OpenJDK %{featurever} source bundle.
@@ -443,11 +459,13 @@ Requires:       jpackage-utils
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
 Requires(postun):update-alternatives
+%if 0%{?suse_version} > 1315
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-10-openjdk-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
 Obsoletes:      java-10-openjdk-javadoc < %{version}-%{release}
+%endif
 BuildArch:      noarch
 
 %description javadoc
@@ -458,8 +476,10 @@ Summary:        OpenJDK %{featurever} accessibility connector
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
 Requires:       xprop
+%if 0%{?suse_version} > 1315
 Provides:       java-10-openjdk-accessibility = %{version}-%{release}
 Obsoletes:      java-10-openjdk-accessibility < %{version}-%{release}
+%endif
 
 %description accessibility
 Enables accessibility support in OpenJDK %{featurever} by using java-atk-wrapper. This allows

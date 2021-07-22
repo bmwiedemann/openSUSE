@@ -359,4 +359,12 @@
     <comment>Make the NSS provider the number 1 priority</comment>
     <requestid>894636</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>421d49ab5becc3819cdd24ab0f19a0ea</srcmd5>
+    <version>11.0.12.0</version>
+    <time>1626986581</time>
+    <user>dimstar_suse</user>
+    <comment>July 2021 CPU</comment>
+    <requestid>907534</requestid>
+  </revision>
 </revisionlist>
