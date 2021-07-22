@@ -1,0 +1,8 @@
+<package name="easyeffects" project="openSUSE:Factory">
+  <title>Audio effects for Pipewire and Pulseaudio applications</title>
+  <description>EasyEffects is a limiter, compressor, reverberation, stereo equalizer and auto volume
+effects for Pipewire and Pulseaudio applications.
+
+</description>
+  <devel project="multimedia:apps" package="easyeffects"/>
+</package>

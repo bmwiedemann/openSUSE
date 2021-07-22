@@ -1,0 +1,18 @@
+<services>
+<!-- <service name="download_files" mode="disabled"/> -->
+  <service name="tar_scm" mode="disabled">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/wwmm/easyeffects.git</param>
+    <param name="revision">v6.0.3</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@~git.%h</param>
+    <param name="versionrewrite-pattern">[a-z]*([0-9]*\.[0-9]*\.[0-9]*)\+(.*)</param>
+    <param name="versionrewrite-replacement">\1+\2</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version">
+    <param name="basename">easyeffects</param>
+  </service>
+</services>
