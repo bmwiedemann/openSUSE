@@ -17,7 +17,7 @@
 
 
 Name:           cargo-audit-advisory-db
-Version:        20210702
+Version:        20210721
 Release:        0
 Summary:        A database of known security issues for Rust depedencies
 License:        CC0-1.0

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 21 04:16:56 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210721:
+  * Assigned RUSTSEC-2021-0076 to libsecp256k1 (#964)
+  * Add advisory for libsecp256k1 (#963)
+  * Assigned RUSTSEC-2021-0075 to ark-r1cs-std (#962)
+  * `ark_r1cs_std::mul_by_inverse` generated unsound constraints in versions below `0.3.1` (#961)
+  * Revert "Hotfix #957 until we figure out what to do with it (#958)" (#960)
+  * Assigned RUSTSEC-2021-0074 to ammonia (#959)
+  * Add rust-ammonia/ammonia#142 (#956)
+  * Hotfix #957 until we figure out what to do with it (#958)
+  * Assigned RUSTSEC-2021-0073 to prost-types (#955)
+  * prost-types: Timestamp conversion overflow (#954)
+
+-------------------------------------------------------------------
 Fri Jul 02 01:00:10 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210702:
