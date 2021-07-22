@@ -1,7 +1,7 @@
 #
 # spec file for package python-zarr
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,12 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 # Requires numpy: NEP 29, NumPy 1.20 in TW dropped Python 3.6 support
 %define skip_python36 1
 Name:           python-zarr
-Version:        2.6.1
+Version:        2.8.3
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT

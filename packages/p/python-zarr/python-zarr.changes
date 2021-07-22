@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jul 16 15:07:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v2.8.3
+  * FSStore: default to normalize_keys=False
+- Release 2.8.2
+  * Add section on rechunking to tutorial
+  * Expand FSStore tests and fix implementation issues
+  * Updated ipytree warning for jlab3
+  * Update Python classifiers (Zarr is stable!)
+- Release 2.8.1
+ * raise an error if create_dataset’s dimension_separator is
+   inconsistent
+- Release 2.8.0
+  * V2 Specification Update
+  * Introduce optional dimension_separator .zarray key for nested
+    chunks.
+- Release 2.7.1
+  * Update Array to respect FSStore’s key_separator (#718)
+- Release 2.7.0
+  * Start stop for iterator (islice())
+  * Add capability to partially read and decompress chunks
+  * Make DirectoryStore __setitem__ resilient against antivirus
+    file locking
+  * Compare test data’s content generally
+  * Fix dtype usage in zarr/meta.py
+  * Fix FSStore key_seperator usage
+  * Simplify text handling in DB Store
+
+-------------------------------------------------------------------
 Wed Feb 17 21:08:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Requires numpy: NEP 29, NumPy 1.20 in TW dropped Python 3.6
