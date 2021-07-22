@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 13:46:59 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- amd64-linux-siginfo-include-order.patch: Adjust include order to avoid
+  gnulib error
+
+-------------------------------------------------------------------
 Wed Jun 23 11:52:54 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - gdb-support-dw-lle-start-end.patch: Support DW_LLE_start_end
