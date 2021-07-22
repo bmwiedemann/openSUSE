@@ -78,8 +78,6 @@ A minimal plasma shell package intended for embedded devices
 %dir %{_kf5_qmldir}/org/kde/plasma/
 %dir %{_kf5_qmldir}/org/kde/plasma/private/
 %{_kf5_qmldir}/org/kde/plasma/private/nanoshell/
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.nano.desktop
-%{_kf5_servicesdir}/plasma-package-org.kde.plasma.nano.desktoptoolbox.desktop
 %{_kf5_appstreamdir}/org.kde.plasma.nano.desktoptoolbox.appdata.xml
 %dir %{_kf5_plasmadir}/packages/
 %{_kf5_plasmadir}/packages/org.kde.plasma.nano.desktoptoolbox/
