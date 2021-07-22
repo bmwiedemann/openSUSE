@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 22 09:20:29 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.4:
+  * Fixed rendering of bitmap fonts with Freetype >= 2.11
+
+-------------------------------------------------------------------
 Sun Jul 18 16:55:32 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.3: 

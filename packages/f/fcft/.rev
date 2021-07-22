@@ -43,4 +43,13 @@
     (typically happens when there are no fonts available at all).</comment>
     <requestid>906958</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4a00b5cace644518e13b8864d8b4fc9d</srcmd5>
+    <version>2.4.4</version>
+    <time>1626986609</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.4.4:
+  * Fixed rendering of bitmap fonts with Freetype &gt;= 2.11</comment>
+    <requestid>907697</requestid>
+  </revision>
 </revisionlist>
