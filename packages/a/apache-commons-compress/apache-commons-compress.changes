@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul 20 07:17:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Updated to 1.21
+  * When reading a specially crafted 7Z archive, the construction of
+    the list of codecs that decompress an entry can result in an
+    infinite loop. This could be used to mount a denial of service
+    attack against services that use Compress' sevenz package.
+    (CVE-2021-35515, bsc#1188463)
+  * When reading a specially crafted 7Z archive, Compress can be
+    made to allocate large amounts of memory that finally leads to
+    an out of memory error even for very small inputs. This could
+    be used to mount a denial of service attack against services
+    that use Compress' sevenz package. (CVE-2021-35516, bsc#1188464)
+  * When reading a specially crafted TAR archive, Compress can be
+    made to allocate large amounts of memory that finally leads to
+    an out of memory error even for very small inputs. This could be
+    used to mount a denial of service attack against services that
+    use Compress' tar package. (CVE-2021-35517, bsc#1188465)
+  * When reading a specially crafted ZIP archive, Compress can be
+    made to allocate large amounts of memory that finally leads to
+    an out of memory error even for very small inputs. This could
+    be used to mount a denial of service attack against services
+    that use Compress' zip package. (CVE-2021-36090, bsc#1188466)
+- New dependency on asm3 for Pack200 compressor
+- Rebased patch fix_java_8_compatibility.patch to a new context and
+  added some new ocurrences
+
+-------------------------------------------------------------------
 Wed Aug 28 08:57:02 UTC 2019 - Pedro Monreal Gonzalez <pmonrealgonzalez@suse.com>
 
 - Updated to 1.19 [bsc#1148475, CVE-2019-12402]

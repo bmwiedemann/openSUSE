@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>726745</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>21344e6aa2d2ed7ce1246ac282892e6a</srcmd5>
+    <version>1.21</version>
+    <time>1626986567</time>
+    <user>dimstar_suse</user>
+    <comment>Security fixes</comment>
+    <requestid>907250</requestid>
+  </revision>
 </revisionlist>

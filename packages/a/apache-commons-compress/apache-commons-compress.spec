@@ -1,7 +1,7 @@
 #
-# spec file for package apache
+# spec file
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %global base_name       compress
 %global short_name      commons-%{base_name}
 Name:           apache-%{short_name}
-Version:        1.19
+Version:        1.21
 Release:        0
 Summary:        Java API for working with compressed files and archivers
 License:        Apache-2.0
 Group:          Development/Libraries/Java
-URL:            http://commons.apache.org/proper/commons-compress/
+URL:            https://commons.apache.org/proper/commons-compress/
 Source0:        http://archive.apache.org/dist/commons/compress/source/%{short_name}-%{version}-src.tar.gz
 Source1:        http://archive.apache.org/dist/commons/compress/source/%{short_name}-%{version}-src.tar.gz.asc
 Source2:        %{name}-build.xml
@@ -32,11 +32,11 @@ Patch0:         0001-Remove-Brotli-compressor.patch
 Patch1:         0002-Remove-ZSTD-compressor.patch
 Patch2:         fix_java_8_compatibility.patch
 BuildRequires:  ant
+BuildRequires:  asm3
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  xz-java
-Requires:       mvn(org.tukaani:xz)
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -47,7 +47,7 @@ BuildArch:      noarch
 The Apache Commons Compress library defines an API for working with
 ar, cpio, Unix dump, tar, zip, gzip, XZ, Pack200 and bzip2 files.
 In version 1.14 read-only support for Brotli decompression has been added,
-but it has been removed form this package.
+but it has been removed from this package.
 
 %package javadoc
 Summary:        API documentation for %{name}
@@ -74,13 +74,6 @@ rm src/test/java/org/apache/commons/compress/compressors/DetectCompressorTestCas
 # Restore Java 8 compatibility
 %patch2 -p1
 
-# remove osgi tests, we don't have deps for them
-%pom_remove_dep org.ops4j.pax.exam:::test
-%pom_remove_dep :org.apache.felix.framework::test
-%pom_remove_dep :javax.inject::test
-%pom_remove_dep :slf4j-api::test
-rm src/test/java/org/apache/commons/compress/OsgiITest.java
-
 # NPE with jdk10
 %pom_remove_plugin :maven-javadoc-plugin
 
@@ -91,7 +84,7 @@ rm src/test/java/org/apache/commons/compress/OsgiITest.java
 
 %build
 mkdir -p lib
-build-jar-repository -s lib xz-java
+build-jar-repository -s lib xz-java asm3
 %{ant} package javadoc
 
 %install
