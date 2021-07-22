@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 20 18:24:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.4:
+  + core:
+    - Remove stale entries from "seen-bssids" and "timestamp" files
+      in "/var/lib/NetworkManager".
+    - Add ipv[46].required-timeout option to wait for IP
+      configuration while activating.
+    - Send ARP announcements when there is carrier.
+    - Start DHCPv6 when a prefix delegation is needed for shared
+      mode.
+  + bond: support the peer_notif_delay option.
+  + firewall: fix nftables backend to create "ip" table for IPv4
+    only.
+  + initrd: set required-timeout of 20 seconds for default IPv4
+    configuration to opportunistically wait for IPv4.
+  + ifcfg:
+    - Log warning about invalid keys in ifcfg files.
+    - Reject non-UTF-8 from ifcfg files.
+  + nmcli: show DNS SEARCH field in device information.
+  + cloud-setup: add support for Aliyun cloud.
+
+-------------------------------------------------------------------
 Wed Jun 30 18:39:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.32.2 (CVE-2020-13529):

@@ -22,7 +22,7 @@
 %define with_cacert_patch 0
 %define _udevdir %(pkg-config --variable udevdir udev)
 Name:           NetworkManager
-Version:        1.32.2
+Version:        1.32.4
 Release:        0
 Summary:        Network Link Manager and user applications for it
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
