@@ -1588,4 +1588,12 @@
     <comment>- Enable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341)</comment>
     <requestid>899448</requestid>
   </revision>
+  <revision rev="158" vrev="5">
+    <srcmd5>848f51eb4a711f9a074367895daf53f8</srcmd5>
+    <version>27.2</version>
+    <time>1626986582</time>
+    <user>dimstar_suse</user>
+    <comment>- sigsegv-stack.patch: Port alternate signal stack to upcoming glibc 2.34 (forwarded request 907544 from Andreas_Schwab)</comment>
+    <requestid>907546</requestid>
+  </revision>
 </revisionlist>

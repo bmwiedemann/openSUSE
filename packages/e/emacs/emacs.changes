@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 21 09:22:45 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- sigsegv-stack.patch: Port alternate signal stack to upcoming glibc 2.34
+
+-------------------------------------------------------------------
 Fri Jun 11 10:24:47 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Enable workaround with XLIB_SKIP_ARGB_VISUALS set (boo#1186341) 
