@@ -118,13 +118,6 @@ Plasma shell and components targeted for phones.
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.panel/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.homescreen/
 %{_kf5_plasmadir}/plasmoids/org.kde.phone.taskpanel/
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.activities.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.krunner.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.panel.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.homescreen.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.phone.taskpanel.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phone.desktop
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.phoneshell.desktop
 %{_kf5_notifydir}/plasma_phone_components.notifyrc
 %dir %{_kf5_plugindir}/plasma/
 %dir %{_kf5_plugindir}/plasma/applets/

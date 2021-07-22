@@ -103,4 +103,13 @@
     <comment>Plasma 5.22.3 (forwarded request 904425 from Vogtinator)</comment>
     <requestid>904531</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>921f50b51a5efb80d4697608f7f3d951</srcmd5>
+    <version>5.22.3</version>
+    <time>1626986596</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the %files section. plasma-framework &gt;= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.</comment>
+    <requestid>906909</requestid>
+  </revision>
 </revisionlist>
