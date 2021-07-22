@@ -37,4 +37,13 @@
   * Fix build for Qt 5.12 and lower</comment>
     <requestid>879360</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>7216556f0766ae0a3a18f43c0b3cd77d</srcmd5>
+    <version>1.2.0</version>
+    <time>1626986600</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the %files section. plasma-framework &gt;= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.</comment>
+    <requestid>906923</requestid>
+  </revision>
 </revisionlist>

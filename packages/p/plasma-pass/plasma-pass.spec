@@ -81,7 +81,9 @@ generated and stored by the "pass" password manager.
 %{_kf5_plasmadir}/plasmoids/org.kde.plasma.pass/
 %{_kf5_qmldir}/org/kde/plasma/private/plasmapass/libplasmapassplugin.so
 %{_kf5_qmldir}/org/kde/plasma/private/plasmapass/qmldir
+%if %{pkg_vcmp cmake(KF5Plasma) < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.plasma.pass.desktop
+%endif
 
 %if %{with lang}
 %files lang -f %{name}.lang
