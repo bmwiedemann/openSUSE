@@ -1,7 +1,7 @@
 #
 # spec file for package cryptctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,8 @@ tar xf %{S:0}
 export GOPATH=$(pwd)
 cd %{SRCDIR}
 gzip ospackage/man/cryptctl.8
-go build
+go mod init
+go build -buildmode=pie
 
 %install
 cd %{SRCDIR}
@@ -81,6 +82,7 @@ install -D -m 0644 ospackage/svc/cryptctl-auto-unlock@.service %{buildroot}/%{_u
 install -D -m 0644 ospackage/svc/cryptctl-server.service %{buildroot}/%{_unitdir}/cryptctl-server.service
 install -D -m 0644 ospackage/svc/cryptctl-client.service %{buildroot}/%{_unitdir}/cryptctl-client.service
 ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rccryptctl-server
+ln -s %{_sbindir}/service %{buildroot}/%{_sbindir}/rccryptctl-client
 
 # One udev rule
 install -D -m 0644 ospackage/udev/99-cryptctl-auto-unlock.rules %{buildroot}/%{_udevrulesdir}/99-cryptctl-auto-unlock.rules
@@ -111,6 +113,7 @@ install -d -m 0700 %{buildroot}/%{_sysconfdir}/%{name}/servertls
 %dir %{_sysconfdir}/%{name}/servertls
 %{_sbindir}/%{name}
 %{_sbindir}/rccryptctl-server
+%{_sbindir}/rccryptctl-client
 %{_mandir}/man8/*
 %{_unitdir}/cryptctl-server.service
 %{_unitdir}/cryptctl-client.service

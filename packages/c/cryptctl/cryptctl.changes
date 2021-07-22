@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 16:02:08 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Fixed build errors adding a "go mod init"
+- Binaries are now compiled with PIE support
+- Also client service is symlinked so to avoid warnings
+
+-------------------------------------------------------------------
 Wed Aug 19 09:54:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %{_udevrulesdir} instead of abusing %{_libexecdir}.
@@ -153,4 +160,3 @@ Wed Jun  8 10:22:03 UTC 2016 - hguo@suse.com
 
 - First version, only to help with building ISOs.
   Implement fate#320367.
-

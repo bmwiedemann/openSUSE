@@ -100,4 +100,98 @@ Index: cryptctl.changes
     <comment></comment>
     <requestid>828243</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>b537a9e9f7e278a204b611d37ddcee51</srcmd5>
+    <version>2.3</version>
+    <time>1626986612</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed build errors adding a &quot;go mod init&quot;
+- Binaries are now compiled with PIE support
+- Also client service is symlinked so to avoid warnings
+- Use %{_udevrulesdir} instead of abusing %{_libexecdir}.
+- BuildRequire pkgconfig(systemd|udev) instead of systemd and udev:
+  Allow OBS to shortcut through -mini flavors.
+- Name the rpmlintrc file according the policy: cryptctl-rpmlintrc.
+- Replace references to /var/adm/fillup-templates with new
+  %_fillupdir macro (boo#1069468)
+- Add previously missing systemd service cryptctl-client.service
+  into RPM content, continue with bsc#1056082.
+- Upgrade to upstream release 2.3 that brings a new feature to allow
+  system administrators to issue mount/umount commands to client
+  computers via key server. (bsc#1056082)
+- Upgrade to upstream release 2.2 that brings important enhancements
+  in effort of implementing fate#322979:
+  * System administrator may now optionally turn off TLS certificate
+    verification on KMIP server. Note that, certificate verification
+    is enforced by default.
+  * Improve handling of boolean answers from interactive command line.
+  * Improve error handling in KMIP client.
+- Upgrade to upstream release 2.1 that brings important enhancements
+  in effort of implementing fate#322979:
+  * Improve KMIP compatibility with key prefix names and proper
+    serialisation of authentication header.
+  * Fail over KMIP connection using a server list.
+  * Destroy key on KMIP after its tracking record is erased from DB.
+- Upgrade to upstream release 2.0 that brings a protocol evolution
+  together with several new features:
+  * Optionally utilise an external KMIP-v1.3 compatible service to
+    store actual encryption key.
+  * Optionally verify client identity before serving its key requests.
+  * Password is hashed before transmitting over TLS-secured channel.
+  * Fix an issue that previously allowed a malicious administrator
+    to craft RPC request to overwrite files outside of key database.
+  Implemented accordint to fate#322979 and fate#322293.
+- Upgrade to 1.99pre that introduces a library for decoding, encoding,
+  and serialisation operations of KMIP v1.3 for fate#322979.
+- Upgrade to 1.2.6 for accumulated bug fixes (bsc#1006219):
+  * Prevent user from attempting to encrypt a disk with mounted
+    partitions, or an existing encrypted+opened disk.
+  * Ensure CA path input is an absolute path.
+  * Fix two mistakes in handling of timeout input.
+  * Fix minor formatting issue in manual page.
+  * Suppress consecutive failure messages in the journal of
+    ReportAlive and AutoOnlineUnlockFS routines.
+- Implement mandatory enhancements:
+  * Do not allow encrypting a remote file system.
+  * Implement command for erasing an encrypted file system.
+- Bump version to 1.2.5 for fate#320367.
+- Implement mandatory enhancements:
+  * Make workflow across all sub-commands consistent in invocation
+    style.
+  * Implement auto-unlocking of encrypted disks.
+  * Show key record usage and details on demand.
+- Bump version to 1.2.4 for fate#320367.
+- Implement mandatory enhancements:
+  * Remove necessity for a backup directory to be involved for
+    encryption routine.
+  * Optimise certificate generation prompts.
+  * Remove unused error messages and fix several of their typos.
+  * Remove unnecessary safety checks.
+  * Make the encryption routine work with btrfs and LVM.
+- Bump version to 1.2.3 fate#320367.
+- Upon request, generate a self-signed TLS certificate for
+  experimental purposes.
+- Bump version to 1.2.2 fate#320367.
+- Implement mandatory features:
+  * Encrypt empty directory skips backup steps.
+  * Explain key revocation and TLS mechanisms in manual page.
+- Bump version to 1.2.1 fate#320367.
+- Implement mandatory features:
+  * List and edit key records
+  * Unlock file system via key record file
+  * Use custom options to mount unlocked file system
+  Enhance usability:
+  * Make encryption procedure's pre-check more thorough
+  * Improve overall command prompts
+- Bump version to 1.2 fate#320367.
+- A preview version with most of the desired functions implemented:
+  * Key database
+  * Key RPC server
+  * Client encryption and decryption routines
+  Bump version to 1.1
+  fate#320367.
+- First version, only to help with building ISOs.
+  Implement fate#320367. (forwarded request 907570 from pperego)</comment>
+    <requestid>907695</requestid>
+  </revision>
 </revisionlist>
