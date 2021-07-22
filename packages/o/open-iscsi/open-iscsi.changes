@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 01:26:15 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Merge latest upstream, which includeds:
+  * Support the "qede" CMA-card driver. (bsc#1188579)
+  * iscsistart: fix null pointer deref before exit
+
+-------------------------------------------------------------------
 Wed May 12 16:20:38 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Merge latest upstream, which added fix (bsc#1185930):
