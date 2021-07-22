@@ -4065,4 +4065,18 @@
 - update staging to 6.12 release</comment>
     <requestid>904226</requestid>
   </revision>
+  <revision rev="348" vrev="1">
+    <srcmd5>d1a5ea331ab8c53ea4074b876f434dde</srcmd5>
+    <version>6.13</version>
+    <time>1626986608</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.13 development release
+  - Proper scrollbar theming.
+  - More work towards WinSock PE conversion.
+  - Preparation work for the GDI syscall interface.
+  - Some progress on the IPHLPAPI PE conversion.
+  - Various bug fixes.
+- update staging to 6.13 release</comment>
+    <requestid>907704</requestid>
+  </revision>
 </revisionlist>

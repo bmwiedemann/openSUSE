@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 21 09:31:59 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.13 development release
+  - Proper scrollbar theming.
+  - More work towards WinSock PE conversion.
+  - Preparation work for the GDI syscall interface.
+  - Some progress on the IPHLPAPI PE conversion.
+  - Various bug fixes.
+- update staging to 6.13 release
+
+-------------------------------------------------------------------
 Sat Jul  3 08:43:24 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.12 development release
