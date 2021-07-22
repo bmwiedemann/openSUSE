@@ -1,5 +1,5 @@
 #
-# spec file for package gdb-testresults
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 RedHat
@@ -321,6 +321,7 @@ Patch2020:      gdb-breakpoint-fix-assert-in-jit_event_handler.patch
 Patch2021:      gdb-save-restore-file-offset-while-reading-notes-in-core-file.patch
 Patch2022:      gdb-symtab-fix-infinite-recursion-in-dwarf2_cu-get_builder-again.patch
 Patch2023:      gdb-support-dw-lle-start-end.patch
+Patch2024:      amd64-linux-siginfo-include-order.patch
 
 # Testsuite patches
 
@@ -758,6 +759,7 @@ find -name "*.info*"|xargs rm -f
 %patch2021 -p1
 %patch2022 -p1
 %patch2023 -p1
+%patch2024 -p1
 
 %patch2500 -p1
 %if 0%{?suse_version} > 1500
