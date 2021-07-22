@@ -69,7 +69,9 @@ support Plasma panels.
 %{_kf5_qmldir}/org/kde/appletdecoration
 %dir %{_kf5_plasmadir}/plasmoids
 %{_kf5_plasmadir}/plasmoids/org.kde.windowbuttons
+%if %{pkg_vcmp plasma-framework-devel < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.windowbuttons.desktop
+%endif
 %{_kf5_appstreamdir}/org.kde.windowbuttons.appdata.xml
 
 %changelog

@@ -113,4 +113,13 @@
 _ Remove fix-build-plasma-5.21.patch (part of release now)</comment>
     <requestid>892286</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>29617645dc711576f90b9172f6d2fbae</srcmd5>
+    <version>0.9.0</version>
+    <time>1626986597</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the %files section. plasma-framework &gt;= 5.84 doesn't install
+  desktop files in %_kf5_servicesdir anymore.</comment>
+    <requestid>906913</requestid>
+  </revision>
 </revisionlist>
