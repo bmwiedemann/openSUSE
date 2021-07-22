@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 21 14:17:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add tenant-do_cvdelete-wait-until-404.patch to fix the update command
+
+-------------------------------------------------------------------
+Mon Jul 19 14:57:45 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Adjust the default revocation notifier binding IP
+- Default to CFSSL in keylime.conf
+
+-------------------------------------------------------------------
 Wed Jul 14 12:12:23 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add config-libefivars.diff to adjust the path of the library

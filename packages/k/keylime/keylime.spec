@@ -37,6 +37,8 @@ Patch3:         config-libefivars.diff
 Patch4:         webapp-fix-tls-certs-paths.patch
 # PATCH-FIX-UPSTREAM check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch gh#keylime/keylime!695
 Patch5:         check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch
+# PATCH-FIX-UPSTREAM tenant-do_cvdelete-wait-until-404.patch gh#keylime/keylime!711
+Patch6:         tenant-do_cvdelete-wait-until-404.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros

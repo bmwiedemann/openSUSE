@@ -1,0 +1,36 @@
+From 4773bae9c755dd50b3f7a38f4a9d4dacf3948809 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Wed, 21 Jul 2021 16:06:51 +0200
+Subject: [PATCH] tenant: do_cvdelete wait until 404
+
+do_cvdelete sends a delete request, and if received a 202 response
+(accepted), actively iterate until the next get receives a 200 or 404.
+
+The issue is that a get of 200 imply that the object is still available,
+that causes the "update" operation to fail a bit later (update is a
+delete followed of an add, and this last action will fail if the object
+is still present)
+
+This patch change the active polling to consider the agent deleted only
+when a 404 is received.
+
+Fix #711
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ keylime/tenant.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/keylime/tenant.py b/keylime/tenant.py
+index 052674f8..7f9e1bb7 100755
+--- a/keylime/tenant.py
++++ b/keylime/tenant.py
+@@ -705,7 +705,7 @@ def do_cvdelete(self, verifier_check):
+                     verify=False
+                 )
+ 
+-                if response.status_code in (200, 404):
++                if response.status_code == 404:
+                     deleted = True
+                     break
+                 time.sleep(.4)
