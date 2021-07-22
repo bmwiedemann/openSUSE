@@ -128,7 +128,8 @@ Group:          System/Base
 Requires:       ncurses-utils >= %{version}
 
 %description -n ncurses-tests
-The ncurses based test programs
+The ncurses based test programs, that is a set of tools
+showing the features of the new curses libraries.
 
 %package -n terminfo-base
 Summary:        A terminal descriptions database
@@ -546,6 +547,7 @@ mv tack-* tack
 %endif
 	--enable-ext-mouse	\
 	--enable-widec		\
+	--enable-wattr-macros	\
 	--with-termlib=%{soname_tinfo}	\
 	--with-ticlib=ticw	\
 %if %{with symversion}
@@ -681,7 +683,7 @@ mv tack-* tack
 	CFLAGS="$CFLAGS -I%{root}%{_incdir}/ncursesw/ -I%{root}%{_incdir}/" \
 	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
 	LIBS="$LDFLAGS" \
-	./configure --with-ncursesw --with-screen=ncursesw --enable-widec --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
+	./configure --with-ncursesw --with-screen=ncursesw --enable-widec --enable-wattr-macros --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
 
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
 %if %{with usepcre2}
@@ -717,6 +719,7 @@ cp Makefile Makefile.back
 				    --disable-opaque-panel	\
 				    --disable-ext-mouse		\
 				    --disable-widec		\
+				    --disable-wattr-macros	\
 %if %{with usepcre2}
 				    --without-pcre2		\
 %endif
@@ -782,6 +785,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 				    --enable-opaque-panel	\
 				    --enable-ext-mouse		\
 				    --disable-widec		\
+				    --disable-wattr-macros	\
 				    --with-termlib=tinfo	\
 				    --with-ticlib=tic		\
 %if %{with symversion}
@@ -826,7 +830,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 	CFLAGS="$CFLAGS -I%{root}%{_incdir}ncurses/ -I%{root}%{_incdir}/" \
 	LDFLAGS="$LDFLAGS -Wl,-rpath-link=%{root}%{_libdir} -L%{root}%{_libdir}" \
 	LIBS="$LDFLAGS" \
-	./configure --with-ncurses --with-screen=ncurses --disable-widec --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
+	./configure --with-ncurses --with-screen=ncurses --disable-widec --disable-wattr-macros --prefix=%{_prefix} --bindir=%{_libexecdir}/ncurses --datadir=%{_datadir}/ncurses
 	LD_LIBRARY_PATH=%{root}%{_libdir} \
 %if %{with usepcre2}
 	make %{?_smp_mflags} TEST_ARGS='-lform -lmenu -lpanel -lncurses -ltic -ltinfo -Wl,--as-needed' TEST_LIBS='-lutil -lpthread -lpcre2-posix -lpcre2-8'
@@ -862,6 +866,7 @@ includedir5=%{_incdir}/ncurses5' "$pc"
 				    --disable-opaque-panel	\
 				    --disable-ext-mouse		\
 				    --enable-widec		\
+				    --enable-wattr-macros	\
 %if %{with usepcre2}
 				    --without-pcre2		\
 %endif

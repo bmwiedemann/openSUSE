@@ -3235,4 +3235,37 @@
   + Autoconf fixes (forwarded request 904134 from gmbr3)</comment>
     <requestid>904143</requestid>
   </revision>
+  <revision rev="192" vrev="23">
+    <srcmd5>9ab2e8decd050bc43f6fdf59600d1b7c</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1626986545</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20210718
+  + correct typo in &quot;vip&quot; comments (report by Nick Black), reviewed this
+    against Glink manual -TD
+  + fill in some missing pieces for pccons, to make it comparable to the
+    vt220 entry -TD
+  + modify mk-1st.awk to account for extra-suffix configure option
+    (report by Juergen Pfeifer).
+  + change default for --disable-wattr-macros option to help packagers
+    who reuse wide ncursesw header file with non-wide ncurses library.
+  + build-fix for test/test_opaque.c, for configurations without opaque
+    curses structs.
+
+- Add ncurses patch 20210710
+  + improve history section for tset manpage based on the 1BSD tarball,
+    which preceded BSD's SCCS checkins by more than three years.
+  + improve CF_XOPEN_CURSES macro used in test/configure (report by Urs
+    Jansen).
+  + further improvement of libtool configuration, adding a dependency of
+    the install.tic rule, etc., on the library in the build-tree.
+  + update config.sub
+
+- Add ncurses patch 20210703
+  + amend libtool configuration to add dependency for install.tic, etc.,
+    in ncurses/Makefile on the lower-level libraries.
+  + modify configure script to support &quot;.PHONY&quot; make program feature.
+- Correct offsets of patch ncurses-6.2.dif</comment>
+    <requestid>907106</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jul 19 06:09:29 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210718
+  + correct typo in "vip" comments (report by Nick Black), reviewed this
+    against Glink manual -TD
+  + fill in some missing pieces for pccons, to make it comparable to the
+    vt220 entry -TD
+  + modify mk-1st.awk to account for extra-suffix configure option
+    (report by Juergen Pfeifer).
+  + change default for --disable-wattr-macros option to help packagers
+    who reuse wide ncursesw header file with non-wide ncurses library.
+  + build-fix for test/test_opaque.c, for configurations without opaque
+    curses structs.
+
+-------------------------------------------------------------------
+Mon Jul 12 06:52:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210710
+  + improve history section for tset manpage based on the 1BSD tarball,
+    which preceded BSD's SCCS checkins by more than three years.
+  + improve CF_XOPEN_CURSES macro used in test/configure (report by Urs
+    Jansen).
+  + further improvement of libtool configuration, adding a dependency of
+    the install.tic rule, etc., on the library in the build-tree.
+  + update config.sub
+
+-------------------------------------------------------------------
+Mon Jul  5 12:39:43 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210703
+  + amend libtool configuration to add dependency for install.tic, etc.,
+    in ncurses/Makefile on the lower-level libraries.
+  + modify configure script to support ".PHONY" make program feature.
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Jul  5 09:58:53 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update tack to 1.09-20210619
