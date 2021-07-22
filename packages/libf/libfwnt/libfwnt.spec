@@ -18,20 +18,20 @@
 
 %define lname	libfwnt1
 Name:           libfwnt
-Version:        20210421
+Version:        20210717
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfwnt
-Source:         %name-%version.tar.xz
+Source:         https://github.com/libyal/libfwnt/archive/refs/tags/%version.tar.gz
 Source2:        Locale_identifier_LCID.pdf
 Patch1:         system-libs.patch
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
 BuildRequires:  libtool
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20200509
+BuildRequires:  pkgconfig(libcdata) >= 20210625
 BuildRequires:  pkgconfig(libcerror) >= 20201121
 BuildRequires:  pkgconfig(libcnotify) >= 20200913
 BuildRequires:  pkgconfig(libcthreads) >= 20200508
@@ -57,7 +57,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 
 %description devel
-Library to provide Windows NT data type support for the libyal family of libraries.  libyal is typically used in digital forensic tools.
+Library to provide Windows NT data type support for the libyal family
+of libraries. libyal is typically used in digital forensic tools.
 
 This subpackage contains libraries and header files for developing
 applications that want to make use of libfwnt.

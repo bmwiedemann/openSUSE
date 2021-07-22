@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 14:11:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210717
+  * Unspecified changes to security descriptor
+  * Added missing notify functions
+
+-------------------------------------------------------------------
 Wed May 12 22:33:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 20210421 (fa9d27e5)
