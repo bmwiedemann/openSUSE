@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 19 10:13:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix pooch cache dir for xarray tutorial data
+
+-------------------------------------------------------------------
 Sat Feb 13 10:37:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.7.0

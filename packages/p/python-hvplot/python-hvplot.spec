@@ -42,7 +42,7 @@ Requires:       python-holoviews >= 1.11.0
 Requires:       python-numpy >= 1.15
 Requires:       python-pandas
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-dask
 Recommends:     python-datashader >= 0.6.5
@@ -54,13 +54,13 @@ Recommends:     python-nbsite >= 0.5.1
 Recommends:     python-networkx
 Recommends:     python-notebook >= 5.4
 Recommends:     python-phantomjs
+Recommends:     python-python-snappy
 Recommends:     python-rasterio
 Recommends:     python-s3fs
+Recommends:     python-scikit-mage
 Recommends:     python-scipy
 Recommends:     python-selenium
 Recommends:     python-spatialpandas
-Recommends:     python-scikit-mage
-Recommends:     python-python-snappy
 Recommends:     python-streamz >= 0.3.0
 Recommends:     python-xarray
 BuildArch:      noarch
@@ -76,6 +76,7 @@ BuildRequires:  %{python_module numpy >= 1.15}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module param >= 1.6.1}
 BuildRequires:  %{python_module parameterized}
+BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module selenium}
@@ -92,8 +93,9 @@ individual PyData libraries if an extension mechanism for the native
 plot APIs is offered, or it can be used as a standalone component.
 
 %prep
-%setup -q -n hvplot-%{version}
-tar -x -f %{SOURCE1} -C ~/ --transform='s/xarray-data-master/.xarray_tutorial_data/'
+%setup -q -n hvplot-%{version} -a1
+mkdir cache
+mv xarray-data-master cache/xarray_tutorial_data
 
 %build
 %python_build
@@ -103,7 +105,9 @@ tar -x -f %{SOURCE1} -C ~/ --transform='s/xarray-data-master/.xarray_tutorial_da
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# These tests cannot cast to to 32-bit datatypes gh#holoviz/hvplot#560
+# set pooch cache dir
+export XDG_CACHE_HOME=$(pwd)/cache
+# These tests cannot cast to 32-bit datatypes gh#holoviz/hvplot#560
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_aspect_and_frame_height_with_datashade"
   donttest+=" or test_aspect_with_datashade"
