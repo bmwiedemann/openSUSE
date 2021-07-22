@@ -25,14 +25,14 @@
 %endif
 
 # Compatibility cruft
-# there is no separate -ltinfo until openSUSE 13.1
+# there is no separate -ltinfo until openSUSE 13.1 / SLE 12
 %if 0%{?suse_version} < 1310 && 0%{?sles_version} < 12
 %define ncurses_make_opts TINFOLIB=-lncurses
 %endif
 # End of compatibility cruft
 
 Name:           makedumpfile
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        Partial kernel dump
 License:        GPL-2.0-only
@@ -40,15 +40,9 @@ Group:          System/Kernel
 URL:            https://github.com/makedumpfile/makedumpfile
 Source:         https://github.com/makedumpfile/makedumpfile/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
-Patch1:         %{name}-override-libtinfo.patch
-Patch2:         %{name}-ppc64-VA-range-SUSE.patch
-Patch3:         %{name}-PN_XNUM.patch
-Patch4:         %{name}-printk-add-support-for-lockless-ringbuffer.patch
-Patch5:         %{name}-printk-use-committed-finalized-state-value.patch
-Patch6:         %{name}-use-uts_namespace.name-offset-VMCOREINFO.patch
-Patch7:         %{name}-1-3-Use-vmcoreinfo-note-in-proc-kcore-for-mem-.patch
-Patch8:         %{name}-2-3-arm64-Make-use-of-NUMBER-VA_BITS-in-vmcore.patch
-Patch9:         %{name}-3-3-arm64-support-flipped-VA-and-52-bit-kernel.patch
+Patch0:         %{name}-override-libtinfo.patch
+Patch1:         %{name}-ppc64-VA-range-SUSE.patch
+Patch2:         %{name}-PN_XNUM.patch
 BuildRequires:  libdw-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libeppic-devel
@@ -75,7 +69,9 @@ via gdb or crash utility.
 
 %prep
 %setup -q
-%autopatch -p1
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
@@ -97,7 +93,7 @@ install -d -m 0755 %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts
 install -m 0644 -t %{buildroot}%{_datadir}/%{name}-%{version}/eppic_scripts/ eppic_scripts/*
 
 # Compatibility cruft
-# there is no %license prior to SLE12
+# there is no %%license prior to SLE12
 %if %{undefined _defaultlicensedir}
 %define license %doc
 %else

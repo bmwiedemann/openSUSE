@@ -18,7 +18,7 @@ Signed-off-by: Petr Tesarik <ptesarik@suse.com>
  
 +TINFOLIB = -ltinfo
 +
- LIBS := -lpthread $(LIBS)
+ LIBS := $(LIBS) -lpthread
  
  try-run = $(shell set -e;		\
 @@ -101,7 +103,7 @@ makedumpfile: $(SRC_BASE) $(OBJ_PART) $(

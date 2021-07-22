@@ -1,1 +1,1 @@
-addFilter("devel-file-in-non-devel-package .*/usr/share/makedumpfile-1\.6\.3/eppic_scripts/.*\.c")
+addFilter("devel-file-in-non-devel-package .*/usr/share/makedumpfile-\d+\.\d+\.\d+/eppic_scripts/.*\.c")

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jul 10 13:15:50 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.6.9
+  * Add initial mips64 support
+  * Support newer kernels up to v5.12
+  * x86_64: fix a use-after-free bug in -e option
+  * arm64: support flipped VA and 52-bit kernel VA
+  * Add shorthand --show-stats option to show report stats
+  * Add --dry-run option to prevent writing the dumpfile
+  * printk: add support for lockless ringbuffer
+- Fix rpmlintrc to not be version agnostic
+- Refresh makedumpfile-override-libtinfo.patch
+- Drop upstream merged
+  * makedumpfile-printk-add-support-for-lockless-ringbuffer.patch
+  * makedumpfile-printk-use-committed-finalized-state-value.patch
+  * makedumpfile-use-uts_namespace.name-offset-VMCOREINFO.patch
+  * makedumpfile-1-3-Use-vmcoreinfo-note-in-proc-kcore-for-mem-.patch
+  * makedumpfile-2-3-arm64-Make-use-of-NUMBER-VA_BITS-in-vmcore.patch
+  * makedumpfile-3-3-arm64-support-flipped-VA-and-52-bit-kernel.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 10:35:31 UTC 2021 - Petr Tesařík <ptesarik@suse.com>
 
 - Update patch metadata.
