@@ -16,8 +16,12 @@
 #
 
 
-%define lua_suffix 5_1
-%define lib_suffix 2
+# These numbers are from readelf -a /usr/lib*/lib*.so* |grep soname (dots replaced by underscores)
+%define lib_version 5_1
+%define so_version 2
+# update-alternatives preferences for this package
+%define moonjit_pref 25
+
 Name:           moonjit
 Version:        2.2.0
 Release:        0
@@ -30,40 +34,40 @@ Source1:        baselibs.conf
 # fix string_gsub
 Patch0:         moonjit105-string_gsub.patch
 BuildRequires:  pkgconfig
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
+Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
 Conflicts:      luajit
-Provides:       lua51-luajit
-Provides:       luajit = 2.1.0
-Obsoletes:      lua51-luajit
 
 %description
 A Just-In-Time Compiler for Lua language
 
-%package -n libluajit-%{lua_suffix}-%{lib_suffix}
+%package -n libluajit-%{lib_version}-%{so_version}
 Summary:        Library for JIT Lua compiler
+Provides:       %{name}-%{lib_version}-%{so_version} = %{version}
 
-%description -n libluajit-%{lua_suffix}-%{lib_suffix}
+%description -n libluajit-%{lib_version}-%{so_version}
 Libraries to use JIT Lua compiler
 
 %package devel
-Summary:        Devel files for LuaJIT
+Summary:        Devel files for %{name}
 Requires:       %{name} = %{version}
-Requires:       libluajit-%{lua_suffix}-%{lib_suffix} = %{version}
+Requires:       %{name}-%{lib_version}-%{so_version} = %{version}
 Conflicts:      luajit-devel
-Provides:       luajit-devel = %{version}
+Provides:       libuajit-devel = %{version}
 
 %description devel
 Devel files for luajit package
 
 %prep
-%setup -q -n moonjit-%{version}
-%autopatch -p1
+%autosetup -p1
 
 # Fix variables
 sed -i "s,PREFIX= %{_prefix}/local,PREFIX= %{_prefix}," Makefile
 
 %build
 export CFLAGS="%{optflags} -DLUAJIT_ENABLE_LUA52COMPAT"
-make %{?_smp_mflags} \
+%make_build \
 	Q= \
 	DYNAMIC_CC="cc -fPIC" \
 	LDCONFIG="true" \
@@ -82,9 +86,19 @@ make DESTDIR=%{buildroot} install \
 # remove static lib, not needed
 rm %{buildroot}/%{_libdir}/*.a
 
-# Beta version make install does not do this
-ln -sf moonjit-%{version} %{buildroot}/%{_bindir}/moonjit
-ln -sf moonjit-%{version} %{buildroot}/%{_bindir}/luajit
+ln -sf %{_bindir}/moonjit-%{version} %{buildroot}%{_bindir}/moonjit
+mkdir -p %{buildroot}%{_sysconfdir}/alternatives/
+ln -sf %{_sysconfdir}/alternatives/luajit \
+    %{buildroot}%{_bindir}/luajit
+
+%post
+%{_sbindir}/update-alternatives --force \
+    --install %{_bindir}/luajit luajit %{_bindir}/moonjit-%{version} %{moonjit_pref}
+
+%postun
+if [ ! -f %{_bindir}/moonjit-%{version} ] ; then
+	%{_sbindir}/update-alternatives --remove luajit %{_bindir}/moonjit-%{version}
+fi
 
 %check
 %ifarch %arm ppc ppc64 ppc64le
@@ -93,8 +107,8 @@ make %{?_smp_mflags} check || { echo -e "WARNING: ignore check error for\narm*: 
 make %{?_smp_mflags} check
 %endif
 
-%post -n libluajit-%{lua_suffix}-%{lib_suffix} -p /sbin/ldconfig
-%postun -n libluajit-%{lua_suffix}-%{lib_suffix} -p /sbin/ldconfig
+%post -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
+%postun -n libluajit-%{lib_version}-%{so_version} -p /sbin/ldconfig
 
 %files
 %{_bindir}/luajit
@@ -103,7 +117,7 @@ make %{?_smp_mflags} check
 %{_mandir}/man1/luajit.1%{?ext_man}
 %{_datadir}/moonjit-%{version}/
 
-%files -n libluajit-%{lua_suffix}-%{lib_suffix}
+%files -n libluajit-%{lib_version}-%{so_version}
 %{_libdir}/libluajit-5.1.so.*
 
 %files devel

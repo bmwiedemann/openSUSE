@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 12 17:33:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite the packaging to acommodate a possibility of two LuaJIT
+  implementations in the distribution.
+
+-------------------------------------------------------------------
 Sat Jul  3 19:20:57 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix Provides ... we don't provide an equvalent of 2.2.0 LuaJIT
