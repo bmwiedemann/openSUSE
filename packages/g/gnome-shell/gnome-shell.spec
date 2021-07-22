@@ -52,8 +52,6 @@ Patch1002:      gnome-shell-domain.patch
 Patch1003:      gnome-shell-screen-disappear.patch
 # PATCH-FIX-SLE endSession-dialog-update-time-label-every-sec.patch bnc#886132 cxiong@suse.com -- update time label every second in end session dialog
 Patch1004:      endSession-dialog-update-time-label-every-sec.patch
-# PATCH-FIX-SLE gnome-shell-lock-bg-on-primay.patch bnc#894050 dliang@suse.com -- display background of lock dialog on the primary screen.
-Patch1006:      gnome-shell-lock-bg-on-primary.patch
 # PATCH-FIX-SLE gs-fate318433-prevent-same-account-multi-logins.patch fate#318433 cxiong@suse.com -- prevent multiple simultaneous login.
 Patch1007:      gs-fate318433-prevent-same-account-multi-logins.patch
 
@@ -190,7 +188,6 @@ translation-update-upstream
 %patch1002 -p1
 %patch1003 -p1
 %patch1004 -p1
-%patch1006 -p1
 %patch1007 -p1
 %endif
 

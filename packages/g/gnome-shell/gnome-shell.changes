@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 03:47:44 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Drop gnome-shell-lock-bg-on-primary.patch: the
+  gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch has been
+  removed, we don't need this patch now(bsc#1188533).
+
+-------------------------------------------------------------------
 Tue Jul 13 10:55:55 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.3:

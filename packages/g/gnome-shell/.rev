@@ -1788,4 +1788,14 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>GNOME 40.3 (forwarded request 906597 from dimstar)</comment>
     <requestid>907053</requestid>
   </revision>
+  <revision rev="202" vrev="2">
+    <srcmd5>af7113098537177e7b91778c4eb19625</srcmd5>
+    <version>40.3</version>
+    <time>1626986587</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop gnome-shell-lock-bg-on-primary.patch: the
+  gnome-shell-1007468-lock-screen-SUSE-logo-missing.patch has been
+  removed, we don't need this patch now(bsc#1188533). (forwarded request 907415 from xiaoguang_wang)</comment>
+    <requestid>907577</requestid>
+  </revision>
 </revisionlist>
