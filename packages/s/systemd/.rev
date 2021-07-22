@@ -5417,4 +5417,19 @@ handle manual pages that consist only of a .so directive such as
 - Enable TPM2 support</comment>
     <requestid>903365</requestid>
   </revision>
+  <revision rev="332" vrev="3">
+    <srcmd5>4c5d3311e04b7ff644130f41598139d0</srcmd5>
+    <version>248.3</version>
+    <time>1626986561</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patches to fix CVE-2021-33910 (bsc#1188063)
+  Added 1001-unit-name-generate-a-clear-error-code-when-convertin.patch
+  Added 1002-basic-unit-name-do-not-use-strdupa-on-a-path.patch
+  Added 1003-basic-unit-name-adjust-comments.patch
+  These patches will be moved to the git repo once the bug will become
+  public.
+
+- systemd-hwdb-update.service should be shipped by the udev package</comment>
+    <requestid>907311</requestid>
+  </revision>
 </revisionlist>

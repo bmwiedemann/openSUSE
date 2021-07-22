@@ -195,6 +195,12 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream.
 Patch100:       0001-Revert-core-prevent-excessive-proc-self-mountinfo-pa.patch
 
+# Patches for bsc#1188063/CVE-2021-33910. They will be moved to the
+# git repo once the bug will become public.
+Patch1001:      1001-unit-name-generate-a-clear-error-code-when-convertin.patch
+Patch1002:      1002-basic-unit-name-do-not-use-strdupa-on-a-path.patch
+Patch1003:      1003-basic-unit-name-adjust-comments.patch
+
 %description
 Systemd is a system and service manager, compatible with SysV and LSB
 init scripts for Linux. systemd provides aggressive parallelization
@@ -1207,7 +1213,9 @@ fi
 %endif
 %exclude %{_prefix}/lib/systemd/systemd-udevd
 %exclude %{_unitdir}/systemd-udev*.*
+%exclude %{_unitdir}/systemd-hwdb*.*
 %exclude %{_unitdir}/*.target.wants/systemd-udev*.*
+%exclude %{_unitdir}/*.target.wants/systemd-hwdb*.*
 %exclude %{_unitdir}/initrd-udevadm-cleanup-db.service
 %exclude %{_unitdir}/kmod-static-nodes.service
 %exclude %{_unitdir}/systemd-nspawn@.service
@@ -1560,11 +1568,13 @@ fi
 %{_unitdir}/kmod-static-nodes.service
 %{_unitdir}/systemd-udev*.service
 %{_unitdir}/systemd-udevd*.socket
+%{_unitdir}/systemd-hwdb*.*
 %{_unitdir}/initrd-udevadm-cleanup-db.service
 %dir %{_unitdir}/sysinit.target.wants
 %{_unitdir}/sysinit.target.wants/systemd-udev*.service
 %dir %{_unitdir}/sockets.target.wants
 %{_unitdir}/sockets.target.wants/systemd-udev*.socket
+%{_unitdir}/*.target.wants/systemd-hwdb*.*
 %{_prefix}/lib/systemd/network/99-default.link
 %{_datadir}/pkgconfig/udev.pc
 
