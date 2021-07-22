@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 22 09:07:31 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add _service file to ease future update of deps
+
+-------------------------------------------------------------------
+Thu Jul 22 08:26:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update sleef to fix build on aarch64
+
+-------------------------------------------------------------------
 Fri Apr 23 21:51:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Don't build python36-* package (missing pandas)

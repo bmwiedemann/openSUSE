@@ -31,6 +31,19 @@
 %bcond_without cuda
 %define cudaver 10-2
 %endif
+%define gloo_version 113bde13035594cafdca247be953610b53026553
+%define cpuinfo_version 0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7
+%define sleef_version e0a003ee838b75d11763aa9c3ef17bf71a725bff
+%define pybind11_version 25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17
+%define onnx_version 9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f
+%define pthreadpool_version d465747660ecf9ebbaddf8c3db37e4a13d0c9103
+%define FXdiv_version b742d1143724d646cd0f914646f1240eacf5bd73
+%define psimd_version 10b4ffc6ea9e2e11668f86969586f88bc82aaefa
+%define FP16_version febbb1c163726b5db24bed55cc9dc42529068997
+%define gemmlowp_version 3fb5c176c17c765a3492cd2f0321b0dab712f350
+%define foxi_version 97fe555430a857581b9b826ecd955e4f0a3653f0
+%define QNNPACK_version 7d2a4e9931a82adc3814275b6219a03e24e36b4c
+%define XNNPACK_version 7493bfb9d412e59529bcbced6a902d44cfa8ea1c
 
 Name:           python-torch
 Version:        1.5.1
@@ -42,31 +55,31 @@ URL:            https://pytorch.org
 Source0:        https://github.com/pytorch/pytorch/archive/v%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
 Source1:        releases.html
 #License10: BSD-3-Clause
-Source10:       https://github.com/facebookincubator/gloo/archive/113bde13035594cafdca247be953610b53026553.tar.gz#/gloo-113bde13035594cafdca247be953610b53026553.tar.gz
+Source10:       https://github.com/facebookincubator/gloo/archive/%{gloo_version}.tar.gz#/gloo-%{gloo_version}.tar.gz
 #License12: BSD-2-Clause
-Source12:       https://github.com/pytorch/cpuinfo/archive/0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7.tar.gz#/cpuinfo-0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7.tar.gz
+Source12:       https://github.com/pytorch/cpuinfo/archive/%{cpuinfo_version}.tar.gz#/cpuinfo-%{cpuinfo_version}.tar.gz
 #License13: BSL-1.0
-Source13:       https://github.com/zdevito/sleef/archive/7f523de651585fe25cade462efccca647dcc8d02.tar.gz#/sleef-7f523de651585fe25cade462efccca647dcc8d02.tar.gz
+Source13:       https://github.com/zdevito/sleef/archive/%{sleef_version}.tar.gz#/sleef-%{sleef_version}.tar.gz
 #License14: BSD-3-Clause
-Source14:       https://github.com/pybind/pybind11/archive/25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17.tar.gz#/pybind11-25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17.tar.gz
+Source14:       https://github.com/pybind/pybind11/archive/%{pybind11_version}.tar.gz#/pybind11-%{pybind11_version}.tar.gz
 # License15: MIT
-Source15:       https://github.com/onnx/onnx/archive/9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f.tar.gz#/onnx-9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f.tar.gz
+Source15:       https://github.com/onnx/onnx/archive/%{onnx_version}.tar.gz#/onnx-%{onnx_version}.tar.gz
 #License16: BSD-2-Clause
-Source16:       https://github.com/Maratyszcza/pthreadpool/archive/d465747660ecf9ebbaddf8c3db37e4a13d0c9103.tar.gz#/pthreadpool-d465747660ecf9ebbaddf8c3db37e4a13d0c9103.tar.gz
+Source16:       https://github.com/Maratyszcza/pthreadpool/archive/%{pthreadpool_version}.tar.gz#/pthreadpool-%{pthreadpool_version}.tar.gz
 # License17: MIT
-Source17:       https://github.com/Maratyszcza/FXdiv/archive/b742d1143724d646cd0f914646f1240eacf5bd73.tar.gz#/FXdiv-b742d1143724d646cd0f914646f1240eacf5bd73.tar.gz
+Source17:       https://github.com/Maratyszcza/FXdiv/archive/%{FXdiv_version}.tar.gz#/FXdiv-%{FXdiv_version}.tar.gz
 # License18: MIT
-Source18:       https://github.com/Maratyszcza/psimd/archive/10b4ffc6ea9e2e11668f86969586f88bc82aaefa.tar.gz#/psimd-10b4ffc6ea9e2e11668f86969586f88bc82aaefa.tar.gz
+Source18:       https://github.com/Maratyszcza/psimd/archive/%{psimd_version}.tar.gz#/psimd-%{psimd_version}.tar.gz
 # License19: MIT
-Source19:       https://github.com/Maratyszcza/FP16/archive/febbb1c163726b5db24bed55cc9dc42529068997.tar.gz#/FP16-febbb1c163726b5db24bed55cc9dc42529068997.tar.gz
+Source19:       https://github.com/Maratyszcza/FP16/archive/%{FP16_version}.tar.gz#/FP16-%{FP16_version}.tar.gz
 #License20: Apache-2.0
-Source20:       https://github.com/google/gemmlowp/archive/3fb5c176c17c765a3492cd2f0321b0dab712f350.tar.gz#/gemmlowp-3fb5c176c17c765a3492cd2f0321b0dab712f350.tar.gz
+Source20:       https://github.com/google/gemmlowp/archive/%{gemmlowp_version}.tar.gz#/gemmlowp-%{gemmlowp_version}.tar.gz
 #License21: MIT
-Source21:       https://github.com/houseroad/foxi/archive/97fe555430a857581b9b826ecd955e4f0a3653f0.tar.gz#/foxi-97fe555430a857581b9b826ecd955e4f0a3653f0.tar.gz
+Source21:       https://github.com/houseroad/foxi/archive/%{foxi_version}.tar.gz#/foxi-%{foxi_version}.tar.gz
 # License22: MIT
-Source22:       https://github.com/pytorch/QNNPACK/archive/7d2a4e9931a82adc3814275b6219a03e24e36b4c.tar.gz#/QNNPACK-7d2a4e9931a82adc3814275b6219a03e24e36b4c.tar.gz
+Source22:       https://github.com/pytorch/QNNPACK/archive/%{QNNPACK_version}.tar.gz#/QNNPACK-%{QNNPACK_version}.tar.gz
 # License: BSD-3-Clause
-Source23:       https://github.com/google/XNNPACK/archive/7493bfb9d412e59529bcbced6a902d44cfa8ea1c.tar.gz#/XNNPACK-7493bfb9d412e59529bcbced6a902d44cfa8ea1c.tar.gz
+Source23:       https://github.com/google/XNNPACK/archive/%{XNNPACK_version}.tar.gz#/XNNPACK-%{XNNPACK_version}.tar.gz
 
 Patch0:         removed-peachpy-depedency.patch
 Patch1:         skip-third-party-check.patch
@@ -123,14 +136,6 @@ BuildRequires:  gcc7-c++
 BuildRequires:  libcudnn7-devel
 BuildRequires:  libnccl-devel
 %endif
-%ifarch aarch64
-%if 0%{?suse_version} > 1500
-# Workaround for https://github.com/pytorch/pytorch/issues/45971
-BuildRequires:  gcc9
-BuildRequires:  gcc9-c++
-%endif
-%endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       python-future
 Requires:       python-leveldb
 Requires:       python-numpy
@@ -233,12 +238,6 @@ rmdir python-peachpy/
   %endif \
   %else \
   export USE_CUDNN=OFF \
-  %ifarch aarch64 \
-  %if 0%{?suse_version} > 1500 \
-  export CC=gcc-9 \
-  export CXX=g++-9 \
-  %endif \
-  %endif \
   %endif \
   export USE_TEST=OFF \
   export USE_LEVELDB=ON \

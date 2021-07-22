@@ -1,0 +1,157 @@
+<services>
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/pytorch/cpuinfo</param>
+    <param name="scm">git</param>
+    <param name="filename">cpuinfo</param>
+    <param name="versionformat">0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7</param>
+    <param name="revision">0e6bde92b343c5fbcfe34ecd41abf9515d54b4a7</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*cpuinfo*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/houseroad/foxi</param>
+    <param name="scm">git</param>
+    <param name="filename">foxi</param>
+    <param name="versionformat">97fe555430a857581b9b826ecd955e4f0a3653f0</param>
+    <param name="revision">97fe555430a857581b9b826ecd955e4f0a3653f0</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*foxi*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/Maratyszcza/FP16</param>
+    <param name="scm">git</param>
+    <param name="filename">FP16</param>
+    <param name="versionformat">febbb1c163726b5db24bed55cc9dc42529068997</param>
+    <param name="revision">febbb1c163726b5db24bed55cc9dc42529068997</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*FP16*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/Maratyszcza/FXdiv</param>
+    <param name="scm">git</param>
+    <param name="filename">FXdiv</param>
+    <param name="versionformat">b742d1143724d646cd0f914646f1240eacf5bd73</param>
+    <param name="revision">b742d1143724d646cd0f914646f1240eacf5bd73</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*FXdiv*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/google/gemmlowp</param>
+    <param name="scm">git</param>
+    <param name="filename">gemmlowp</param>
+    <param name="versionformat">3fb5c176c17c765a3492cd2f0321b0dab712f350</param>
+    <param name="revision">3fb5c176c17c765a3492cd2f0321b0dab712f350</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*gemmlowp*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/facebookincubator/gloo</param>
+    <param name="scm">git</param>
+    <param name="filename">gloo</param>
+    <param name="versionformat">113bde13035594cafdca247be953610b53026553</param>
+    <param name="revision">113bde13035594cafdca247be953610b53026553</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*gloo*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/onnx/onnx</param>
+    <param name="scm">git</param>
+    <param name="filename">onnx</param>
+    <param name="versionformat">9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f</param>
+    <param name="revision">9fdae4c68960a2d44cd1cc871c74a6a9d469fa1f</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*onnx*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/Maratyszcza/psimd</param>
+    <param name="scm">git</param>
+    <param name="filename">psimd</param>
+    <param name="versionformat">10b4ffc6ea9e2e11668f86969586f88bc82aaefa</param>
+    <param name="revision">10b4ffc6ea9e2e11668f86969586f88bc82aaefa</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*psimd*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/Maratyszcza/pthreadpool</param>
+    <param name="scm">git</param>
+    <param name="filename">pthreadpool</param>
+    <param name="versionformat">d465747660ecf9ebbaddf8c3db37e4a13d0c9103</param>
+    <param name="revision">d465747660ecf9ebbaddf8c3db37e4a13d0c9103</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*pthreadpool*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/pybind/pybind11</param>
+    <param name="scm">git</param>
+    <param name="filename">pybind11</param>
+    <param name="versionformat">25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17</param>
+    <param name="revision">25abf7efba0b2990f5a6dfb0a31bc65c0f2f4d17</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*pybind11*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/pytorch/QNNPACK</param>
+    <param name="scm">git</param>
+    <param name="filename">QNNPACK</param>
+    <param name="versionformat">7d2a4e9931a82adc3814275b6219a03e24e36b4c</param>
+    <param name="revision">7d2a4e9931a82adc3814275b6219a03e24e36b4c</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*QNNPACK*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/google/XNNPACK</param>
+    <param name="scm">git</param>
+    <param name="filename">XNNPACK</param>
+    <param name="versionformat">7493bfb9d412e59529bcbced6a902d44cfa8ea1c</param>
+    <param name="revision">7493bfb9d412e59529bcbced6a902d44cfa8ea1c</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*XNNPACK*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  
+  <service name="tar_scm" mode="disabled">
+    <param name="url">https://github.com/shibatch/sleef</param>
+    <param name="scm">git</param>
+    <param name="filename">sleef</param>
+    <param name="versionformat">e0a003ee838b75d11763aa9c3ef17bf71a725bff</param>
+    <param name="revision">e0a003ee838b75d11763aa9c3ef17bf71a725bff</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">*sleef*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
