@@ -3239,8 +3239,6 @@ unsorted:
   - entangle-plugin-shooter 
   - entr 
   - envoy-build-tools 
-  - envoy-proxy: [x86_64] 
-  - envoy-proxy-source: [x86_64] 
   - envy24control 
   - eog-devel 
   - eog-plugin-exif-display 
@@ -13922,6 +13920,8 @@ unsorted:
   - libtexluajit2 
   - libtextstyle-devel 
   - libtextstyle0-32bit: [x86_64] 
+  - libtfm1 
+  - libtfm1-32bit: [x86_64] 
   - libthai-devel 
   - libtheora-devel 
   - libtheora0-32bit: [x86_64] 
@@ -20895,8 +20895,6 @@ unsorted:
   - python-SpeechRecognition-common-en-US 
   - python-Sphinx-doc-html 
   - python-Sphinx-doc-man 
-  - python-Sphinx2-doc-html 
-  - python-Sphinx2-doc-man 
   - python-Twisted-doc 
   - python-WTForms-doc 
   - python-WebOb-doc 
@@ -21199,7 +21197,6 @@ unsorted:
   - python3-itk: [x86_64] 
   - python3-jenkins-job-builder 
   - python3-kea 
-  - python3-keras2onnx: [x86_64] 
   - python3-keystoneauth1 
   - python3-keystoneclient 
   - python3-keystonemiddleware 
@@ -21442,6 +21439,7 @@ unsorted:
   - python36-Cheetah3 
   - python36-CherryPy 
   - python36-CommonMark 
+  - python36-ConfigArgParse 
   - python36-Cycler 
   - python36-Cython 
   - python36-DataProperty 
@@ -21604,8 +21602,6 @@ unsorted:
   - python36-SpeechRecognition 
   - python36-Sphinx 
   - python36-Sphinx-latex 
-  - python36-Sphinx2 
-  - python36-Sphinx2-latex 
   - python36-TagStats 
   - python36-Telethon 
   - python36-Tempita 
@@ -22297,7 +22293,6 @@ unsorted:
   - python36-dj-database-url 
   - python36-django-allauth 
   - python36-django-appconf 
-  - python36-django-args 
   - python36-django-assets 
   - python36-django-attachments 
   - python36-django-auth-ldap 
@@ -24235,6 +24230,7 @@ unsorted:
   - python38-Cheetah3 
   - python38-CherryPy 
   - python38-CommonMark 
+  - python38-ConfigArgParse 
   - python38-Cython 
   - python38-DataProperty 
   - python38-DataShape 
@@ -24404,8 +24400,6 @@ unsorted:
   - python38-SpeechRecognition 
   - python38-Sphinx 
   - python38-Sphinx-latex 
-  - python38-Sphinx2 
-  - python38-Sphinx2-latex 
   - python38-TagStats 
   - python38-Telethon 
   - python38-Tempita 
@@ -25121,7 +25115,6 @@ unsorted:
   - python38-dj-database-url 
   - python38-django-allauth 
   - python38-django-appconf 
-  - python38-django-args 
   - python38-django-assets 
   - python38-django-attachments 
   - python38-django-auth-ldap 
@@ -27196,6 +27189,7 @@ unsorted:
   - python39-Cheetah3 
   - python39-CherryPy 
   - python39-CommonMark 
+  - python39-ConfigArgParse 
   - python39-Cycler 
   - python39-Cython 
   - python39-DataProperty 
@@ -28123,7 +28117,6 @@ unsorted:
   - python39-dj-database-url 
   - python39-django-allauth 
   - python39-django-appconf 
-  - python39-django-args 
   - python39-django-assets 
   - python39-django-attachments 
   - python39-django-auth-ldap 
@@ -40863,6 +40856,7 @@ unsorted:
   - tomoe-gtk-doc 
   - tomoe-gtk-lang 
   - tomoyo-tools 
+  - tomsfastmath-devel 
   - toolbox: [i586] 
   - tor 
   - torbrowser-apparmor-profile 
