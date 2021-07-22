@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 20 08:47:30 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when the aliases defined in the AutoYaST profile
+  are not defined as a map (bsc#1188344)
+- 4.4.21
+
+-------------------------------------------------------------------
 Thu Jul  1 08:47:20 UTC 2021 - Michal Filka <mfilka@suse.com>
 
 - bnc#1185936
