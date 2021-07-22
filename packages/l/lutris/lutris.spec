@@ -46,6 +46,7 @@ Requires:       python3-evdev
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
 Requires:       python3-lxml
+Requires:       python3-magic
 Requires:       python3-requests
 Requires:       xrandr
 Recommends:     python3-distro
