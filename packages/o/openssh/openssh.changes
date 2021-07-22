@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 19 14:51:08 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- The linux kernel has close_range(2) syscall which current glibc
+  uses to implement closefrom(3) which will be then used by openssh.
+  whitelist the new system call so closefrom does not fail or
+  fallback to iterating proc/self/fd (openssh-whitelist-syscalls.patch)
+
+-------------------------------------------------------------------
 Wed Jun 23 18:32:20 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
 - Don't move user-modified ssh_config and sshd_config files to
