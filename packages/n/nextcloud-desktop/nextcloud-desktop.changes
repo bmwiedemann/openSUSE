@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul  9 08:32:07 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.4
+  - desktop#3480 [stable-3.2] Bugfix. Crash when printing OpenSSL
+    decryption errors with no e2ee mnemonic,
+  - desktop#3484 [stable-3.2] Add building for Ubuntu Impish
+  - desktop#3485 [stable-3.2] Use the full GPG key ID for signing
+    Debian packages
+  - desktop#3514 [stable-3.2] avoid error when doing hydration when
+    data socket is closed too early
+
+-------------------------------------------------------------------
 Sun Jun 27 16:49:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded QtWebKit build dependency.
