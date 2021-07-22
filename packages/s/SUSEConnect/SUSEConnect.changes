@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 21 10:00:00 UTC 2021 - Natnael Getahun <ngetahun@suse.com>
+
+- Update to 0.3.31
+- Disallow registering via SUSEConnect if the system is managed by SUSE Manager.
+
+-------------------------------------------------------------------
+Sun Jun 20 13:07:06 UTC 2021 - Thomas Schmidt <tschmidt@suse.com>
+
+- Update to 0.3.30
+- send payload of GET requests as part of the url,
+  not in the body (see bsc#1185611)
+
+-------------------------------------------------------------------
 Tue Nov 17 09:36:24 UTC 2020 - Tamara Schmitz <tamara.schmitz@suse.com>
 
 - Update to 0.3.29

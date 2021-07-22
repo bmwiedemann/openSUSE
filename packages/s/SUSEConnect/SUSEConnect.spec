@@ -17,7 +17,7 @@
 
 
 Name:           SUSEConnect
-Version:        0.3.29
+Version:        0.3.31
 Release:        0
 %define mod_name suse-connect
 %define mod_full_name %{mod_name}-%{version}
@@ -129,8 +129,10 @@ mkdir -p %{buildroot}%_sysconfdir/zypp/credentials.d/
 touch %{buildroot}%_sysconfdir/zypp/credentials.d/SCCcredentials
 
 # replace /usr/bin/env with native ruby path
-sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{_sbindir}/%{name}
-sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{gem_base}/gems/%{mod_full_name}/bin/%{name}
+%if 0%{?suse_version}
+    sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{_sbindir}/%{name}
+    sed -i "1s/.*/#\!\/usr\/bin\/ruby\.%{ruby_version}/" %{buildroot}%{gem_base}/gems/%{mod_full_name}/bin/%{name}
+%endif
 
 %post
 if [ -s /etc/zypp/credentials.d/NCCcredentials ] && [ ! -e /etc/zypp/credentials.d/SCCcredentials ]; then
