@@ -9,7 +9,7 @@ Index: VirtualBox-6.1.22/src/VBox/Additions/linux/sharedfolders/regops.c
 +#if RTLNX_VER_MAX(5, 14,0)
      if (!(iter->type & ITER_KVEC)) {
 +#else
-+    if (iov_iter_type(iter) != ITER_KVEC) {
++    if (!iov_iter_is_kvec(iter)) {
 +#endif
          /*
           * Do we have a stashed page?
@@ -21,7 +21,7 @@ Index: VirtualBox-6.1.22/src/VBox/Additions/linux/sharedfolders/regops.c
 +# if RTLNX_VER_MAX(5, 14, 0)
      if (iter_is_iovec(iter) || (iter->type & ITER_KVEC)) {
 +#else
-+    if (iter_is_iovec(iter) || (iter_is_iovec(iter) == ITER_KVEC)) {
++    if (iter_is_iovec(iter) || iov_iter_is_kvec(iter)) {
 +#endif
  #endif
          const struct iovec *pCurIov    = iter->iov;
