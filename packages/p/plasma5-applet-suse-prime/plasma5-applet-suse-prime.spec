@@ -1,7 +1,7 @@
 #
 # spec file for package plasma5-applet-suse-prime
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,20 @@
 #
 
 
-Name:			plasma5-applet-suse-prime
-Version:		1.1
-Release:		0
-Summary:		Plasma 5 applet for controlling SUSE Prime
-License:		Unlicense
-Group:			System/GUI/KDE
-URL:			https://github.com/Appadeia/plasma5-applet-suse-prime
-Source0:		%{name}-%{version}.tar.gz
-BuildRequires:	extra-cmake-modules
-BuildRequires:	cmake(KF5Plasma)
-Requires:		libqt5-qdbus
-Requires:		kdialog
-Supplements:	(plasma5-workspace and suse-prime)
-BuildArch:		noarch
+Name:           plasma5-applet-suse-prime
+Version:        1.1
+Release:        0
+Summary:        Plasma 5 applet for controlling SUSE Prime
+License:        Unlicense
+Group:          System/GUI/KDE
+URL:            https://github.com/Appadeia/plasma5-applet-suse-prime
+Source0:        %{name}-%{version}.tar.gz
+BuildRequires:  extra-cmake-modules
+BuildRequires:  cmake(KF5Plasma)
+Requires:       kdialog
+Requires:       libqt5-qdbus
+Supplements:    (plasma5-workspace and suse-prime)
+BuildArch:      noarch
 
 %description
 A Plasma 5 applet for controlling SUSE Prime.
@@ -39,20 +39,19 @@ A Plasma 5 applet for controlling SUSE Prime.
 
 %build
 %cmake_kf5 -d build
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
 
 %files
 %license LICENSE
-%doc README.md
-
 %dir %{_kf5_plasmadir}/plasmoids
-
-%{_kf5_plasmadir}/plasmoids/org.kde.plasma.prime/
-%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.prime.desktop
+%doc README.md
 %{_kf5_appstreamdir}/org.kde.plasma.prime.appdata.xml
-
+%{_kf5_plasmadir}/plasmoids/org.kde.plasma.prime/
+%if %{pkg_vcmp plasma-framework-devel < 5.84}
+%{_kf5_servicesdir}/plasma-applet-org.kde.plasma.prime.desktop
+%endif
 
 %changelog
