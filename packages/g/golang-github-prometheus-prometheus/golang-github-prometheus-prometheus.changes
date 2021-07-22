@@ -16,7 +16,7 @@ Wed May 19 20:32:28 UTC 2021 - Daniel Molkentin <daniel.molkentin@suse.com>
 
 - Upgrade to upstream version 2.27.1 (jsc#SLE-18254)
   + Bugfix:
-   * SECURITY: Fix arbitrary redirects under the /new endpoint (CVE-2021-29622)
+   * SECURITY: Fix arbitrary redirects under the /new endpoint (CVE-2021-29622, bsc#1186242)
 
 - Upgrade to upstream version 2.27.0
   + Features:
