@@ -5073,4 +5073,19 @@
   NSS 3.66</comment>
     <requestid>906586</requestid>
   </revision>
+  <revision rev="340" vrev="1">
+    <srcmd5>5487b1e60a9b9ee60e4d6d46df6da3bd</srcmd5>
+    <version>90.0.1</version>
+    <time>1626986554</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 90.0.1 (boo#1188480):
+  * Fixed: Fixed busy looping processing some HTTP3 responses
+    (bmo#1720079)
+  * Fixed: Fixed transient errors authenticating with some smart
+    cards (bmo#1715325)
+  * Fixed: Fixed a rare crash on shutdown (bmo#1707057)
+  * Fixed: Fixed a race on startup that caused about:support to
+    end up empty after upgrade (bmo#1717894, boo#1188330)</comment>
+    <requestid>907201</requestid>
+  </revision>
 </revisionlist>
