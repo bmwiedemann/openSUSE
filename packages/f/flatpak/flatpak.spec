@@ -155,7 +155,7 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %endif
 	%{nil}
 %make_build
-%sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak
+%sysusers_generate_pre system-helper/flatpak.conf system-user-flatpak flatpak.conf
 
 %install
 %make_install
