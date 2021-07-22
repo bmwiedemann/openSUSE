@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 18 13:52:05 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- drop 6bb7e35ba7d1a31247eafb323be2777ec0439cfe.patch, merged
+  upsteam
+- Update to 2021.1
+  - fix build on F34 and openSUSE ([gh#votca/tools#361])
+  - add support for oneapi mkl ([gh#votca/tools#363],
+    [gh#votca/tools#369])
+
+-------------------------------------------------------------------
 Mon May  3 23:10:45 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - add 6bb7e35ba7d1a31247eafb323be2777ec0439cfe.patch to fix
