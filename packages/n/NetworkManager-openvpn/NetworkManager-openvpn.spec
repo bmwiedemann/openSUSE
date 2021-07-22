@@ -70,7 +70,7 @@ translation-update-upstream
 	--without-libnm-glib \
 	%{nil}
 %make_build
-%sysusers_generate_pre %{SOURCE1} NetworkManager-openvpn
+%sysusers_generate_pre %{SOURCE1} NetworkManager-openvpn system-user-nm-openvpn.conf
 
 %install
 %make_install

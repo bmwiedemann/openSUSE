@@ -6,6 +6,11 @@ Wed Jun 16 07:25:20 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
   (glgo#GNOME/NetworkManager-openvpn!38, bsc#1186091).
 
 -------------------------------------------------------------------
+Sun Jun 13 13:30:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+
+-------------------------------------------------------------------
 Thu Jun  3 11:02:09 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

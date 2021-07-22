@@ -679,4 +679,12 @@
   (glgo#GNOME/NetworkManager-openvpn!38, bsc#1186091). (forwarded request 900329 from JonathanKang)</comment>
     <requestid>900448</requestid>
   </revision>
+  <revision rev="86" vrev="4">
+    <srcmd5>bc7f78ff672a213caf4a13192871bab3</srcmd5>
+    <version>1.8.14</version>
+    <time>1626986587</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>907579</requestid>
+  </revision>
 </revisionlist>
