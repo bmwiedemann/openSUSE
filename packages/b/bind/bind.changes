@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 21 09:34:15 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Since BIND 9.9, it has been easier to use tsig-keygen and
+  ddns-confgen to generare TSIG keys. In 9.13, TSIG support was
+  removed from dnssec-keygen, so now it is just for DNSKEY (and KEY
+  for obscure cases). tsig-keygen is now used to generate DDNS keys.
+  [bsc#1187921, vendor-files.tar.bz2]
+
+-------------------------------------------------------------------
 Thu Jun 24 15:02:14 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add patch bind-fix-build-with-older-sphinx.patch and sed fix
