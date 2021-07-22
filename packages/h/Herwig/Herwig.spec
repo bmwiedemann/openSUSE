@@ -1,7 +1,7 @@
 #
 # spec file for package Herwig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _lto_cflags %{nil}
 %define so_name Herwig-libs
 Name:           Herwig
-Version:        7.2.1
+Version:        7.2.2
 Release:        0
 Summary:        Multi-purpose event generator for high-energy physics
 License:        GPL-2.0-only
@@ -109,10 +109,6 @@ with %{name}.
 %prep
 %autosetup -p1
 
-# REMOVE SPURIOUS BACKUP FILES
-rm Models/Feynrules/python/ufo2peg/converter.py.rej~
-rm Models/Feynrules/python/ufo2peg/vertices.py.orig
-
 # FIX ENV BASED HASHBANG
 sed -i "1{s|/usr/bin/env bash|/bin/bash|}" src/herwig-config.in
 
@@ -135,7 +131,7 @@ sed -i "1{/\/usr\/bin\/env/d;}" %{buildroot}%{_libdir}/%{name}/python/ufo2herwig
 
 # Fix hashbangs to directly point to python
 for exe in gosam2herwig herwig-mergegrids mg2herwig slha2herwig ufo2herwig
-do 
+do
  sed -i "1{s/\/usr\/bin\/env python/\/usr\/bin\/python3/;}" %{buildroot}%{_bindir}/${exe}
 done
 

@@ -1,11 +1,18 @@
-Index: Herwig-7.2.1/src/Makefile.am
+Index: Herwig-7.2.2/src/Makefile.am
 ===================================================================
---- Herwig-7.2.1.orig/src/Makefile.am
-+++ Herwig-7.2.1/src/Makefile.am
-@@ -177,11 +177,6 @@ THEPEGREPO=$(THEPEGLIBPATH)/ThePEGDefaul
+--- Herwig-7.2.2.orig/src/Makefile.am
++++ Herwig-7.2.2/src/Makefile.am
+@@ -176,17 +176,8 @@ SETUPTHEPEG=$(THEPEGPATH)/bin/setupThePE
+ THEPEGREPO=$(THEPEGLIBPATH)/ThePEGDefaults.rpo
  
  install-data-hook:
- 	@echo Creating repository
+-	@echo Creating repository
++	@echo Skip creating repository
+ 
+-	@if [ "$(PYTHON_PLATFORM)" = "darwin" ]; then\
+-				install_name_tool -add_rpath $(DESTDIR)$(libdir) $(DESTDIR)$(pkglibdir)/HwEvtGenInterface.so;\
+-	fi
+-
 -	@./Herwig init -L$(DESTDIR)$(pkglibdir) -i$(DESTDIR)$(pkgdatadir) -i$(DESTDIR)$(pkgdatadir)/snippets $(DESTDIR)$(defaultsdir)/HerwigDefaults.in --repo=$(DESTDIR)$(pkgdatadir)/HerwigDefaults.rpo
 -	@if test -n "$(DESTDIR)"; \
 -        then sed -i.bak -e "s@$(DESTDIR)@@g" $(DESTDIR)$(pkgdatadir)/HerwigDefaults.rpo; \
