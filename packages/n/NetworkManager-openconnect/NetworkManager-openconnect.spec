@@ -68,7 +68,7 @@ translation-update-upstream
         --without-libnm-glib \
         %{nil}
 %make_build
-%sysusers_generate_pre %{SOURCE1} NetworkManager-openconnect
+%sysusers_generate_pre %{SOURCE1} NetworkManager-openconnect system-user-nm-openconnect.conf
 
 %install
 %make_install

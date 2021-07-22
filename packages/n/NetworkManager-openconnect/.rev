@@ -227,4 +227,12 @@
     <comment>- Change to using systemd-sysusers (forwarded request 897179 from gmbr3)</comment>
     <requestid>897531</requestid>
   </revision>
+  <revision rev="29" vrev="5">
+    <srcmd5>c6aa29e30ecdeb4c81f58f7b302126e8</srcmd5>
+    <version>1.2.6</version>
+    <time>1626986587</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>907578</requestid>
+  </revision>
 </revisionlist>
