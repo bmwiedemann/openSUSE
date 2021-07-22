@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 15 23:02:25 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added apparmor-dovecot-stats-metrics.diff to allow Prometheus metrics end-point
+
+-------------------------------------------------------------------
 Mon Jun  7 19:30:20 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - move Requires: python3 back to the python3-apparmor subpackage -

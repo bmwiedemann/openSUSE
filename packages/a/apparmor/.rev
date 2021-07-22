@@ -2141,4 +2141,12 @@ libapparmor:
   only with python3 ones (fallout from bsc#1185588).</comment>
     <requestid>898187</requestid>
   </revision>
+  <revision rev="154" vrev="9">
+    <srcmd5>35e238d30611ffbd4624c16de60fb572</srcmd5>
+    <version>3.0.1</version>
+    <time>1626986553</time>
+    <user>dimstar_suse</user>
+    <comment>- added apparmor-dovecot-stats-metrics.diff to allow Prometheus metrics end-point</comment>
+    <requestid>907196</requestid>
+  </revision>
 </revisionlist>

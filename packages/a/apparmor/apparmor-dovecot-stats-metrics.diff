@@ -1,0 +1,14 @@
+diff -ur apparmor-3.0.1.orig/profiles/apparmor.d/usr.lib.dovecot.stats apparmor-3.0.1/profiles/apparmor.d/usr.lib.dovecot.stats
+--- apparmor-3.0.1.orig/profiles/apparmor.d/usr.lib.dovecot.stats	2020-12-02 12:01:37.000000000 +0100
++++ apparmor-3.0.1/profiles/apparmor.d/usr.lib.dovecot.stats	2021-07-16 01:00:53.266471947 +0200
+@@ -20,6 +20,10 @@
+   capability setuid,
+   capability sys_chroot,
+ 
++  # for metrics end-point (Prometheus)
++  network inet stream,
++  network inet6 stream,
++
+   /usr/lib/dovecot/stats mr,
+ 
+   # Site-specific additions and overrides. See local/README for details.

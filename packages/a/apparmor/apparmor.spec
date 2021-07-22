@@ -84,6 +84,9 @@ Patch7:         crypto-policies-mr720.diff
 # extend abstractions/php for PHP 8 (accepted upstream 2021-05-24 - https://gitlab.com/apparmor/apparmor/-/merge_requests/755)
 Patch8:         abstractions-php8.diff
 
+# allow Prometheus metrics end-point (submitted upstream 2021-07-19 - https://gitlab.com/apparmor/apparmor/-/merge_requests/776)
+Patch9:         apparmor-dovecot-stats-metrics.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -348,6 +351,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch5
 %patch7 -p1
 %patch8 -p1
+%patch9 -p1
 
 %build
 %define _lto_cflags %{nil}
