@@ -933,4 +933,12 @@
     <comment>Plasma 5.22.3 (forwarded request 904425 from Vogtinator)</comment>
     <requestid>904499</requestid>
   </revision>
+  <revision rev="117" vrev="2">
+    <srcmd5>74b73b1506fab52b3f0fd91f3b08431b</srcmd5>
+    <version>5.22.3</version>
+    <time>1626986555</time>
+    <user>dimstar_suse</user>
+    <comment>- BuildRequire gsettings-desktop-schemas explicitly (forwarded request 907244 from Vogtinator)</comment>
+    <requestid>907245</requestid>
+  </revision>
 </revisionlist>

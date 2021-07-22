@@ -21,7 +21,7 @@ Name:           kde-gtk-config5
 Version:        5.22.3
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
-License:        LGPL-3.0-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            http://projects.kde.org/kde-gtk-config
 Source:         https://download.kde.org/stable/plasma/%{version}/kde-gtk-config-%{version}.tar.xz
@@ -30,6 +30,7 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config
 Source2:        plasma.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= 0.0.9
+BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  kf5-filesystem
 BuildRequires:  sassc
 BuildRequires:  xz

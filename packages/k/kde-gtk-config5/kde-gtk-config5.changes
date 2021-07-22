@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 20 06:51:11 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- BuildRequire gsettings-desktop-schemas explicitly
+
+-------------------------------------------------------------------
 Tue Jul  6 12:01:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.3
