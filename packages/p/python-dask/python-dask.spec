@@ -1,5 +1,5 @@
 #
-# spec file for package python-dask-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -29,7 +29,7 @@
 %define         skip_python36 1
 Name:           python-dask%{psuffix}
 # Note: please always update together with python-distributed!
-Version:        2021.5.0
+Version:        2021.7.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause

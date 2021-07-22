@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Fri Jul 16 09:25:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.07.0
+  * Include fastparquet in upstream CI build
+  * Blockwise: handle non-string constant dependencies
+  * fastparquet now supports new time types, including ns precision
+  * Avoid ParquetDataset API when appending in ArrowDatasetEngine
+  * Add retry logic to test_shuffle_priority
+  * Use strict channel priority in CI
+  * Support nested dask.distributed imports
+  * Should check module name only, not the entire directory
+    filepath
+  * Updates due to https://github.com/dask/fastparquet/pull/623
+  * da.eye fix for chunks=-1
+  * Temporarily xfail test_daily_stock
+  * Set priority annotations in SimpleShuffleLayer
+  * Blockwise: stringify constant key inputs
+  * Allow mixing dask and numpy arrays in @guvectorize
+  * Don't sample dict result of a shuffle group when calculating
+    its size
+  * Fix scipy tests
+  * Deterministically tokenize datetime.date
+  * Add sample_rows to read_csv-like
+  * Fix typo in config.deserialize docstring
+  * Remove warning filter in test_dataframe_picklable
+  * Improvements to histogramdd
+  * Make PY_VERSION private
+- Release 2021.06.2
+  * layers.py compare parts_out with set(self.parts_out)
+  * Make check_meta understand pandas dtypes better
+  * Remove "Educational Resources" doc page
+  * - Release 2021.06.1
+  * Replace funding page with 'Supported By' section on dask.org
+  * Add initial deprecation utilities
+  * Enforce dtype conservation in ufuncs that explicitly use dtype=
+  * Add Coiled to list of paid support organizations
+  * Small tweaks to the HTML repr for Layer & HighLevelGraph
+  * Add dark mode support to HLG HTML repr
+  * Remove compatibility entries for old distributed
+  * Implementation of HTML repr for HighLevelGraph layers
+  * Update default blockwise token to avoid DataFrame column name
+    clash
+  * Use dispatch concat for merge_asof
+  * Fix upstream freq tests
+  * Use more context managers from the standard library
+  * Simplify skips in parquet tests
+  * Remove check for outdated bokeh
+  * More test coverage uploads
+  * Remove ImportError catching from dask/__init__.py
+  * Allow DataFrame.join() to take a list of DataFrames to merge
+    with
+  * Fix maximum recursion depth exception in dask.array.linspace
+  * Fix docs links
+  * Initial da.select() implementation and test
+  * Layers must implement get_output_keys method
+  * Don't include or expect freq in divisions
+  * A HighLevelGraph abstract layer for map_overlap
+  * Always include kwarg name in drop
+  * Only rechunk for median if needed
+  * Add add_(prefix|suffix) to DataFrame and Series
+  * Move read_hdf to Blockwise
+  * Make Layer.get_output_keys officially an abstract method
+  * Non-dask-arrays and broadcasting in ravel_multi_index
+  * Fix for paths ending with "/" in parquet overwrite
+  * Fixing calling .visualize() with filename=None
+  * Generate unique names for SubgraphCallable
+  * Pin fsspec to 2021.5.0 in CI
+  * Evaluate graph lazily if meta is provided in from_delayed
+  * Add meta support for DatetimeTZDtype
+  * Add dispatch label to automatic PR labeler
+  * Fix HDFS tests
+- Release 2021.06.0
+  * Remove abstract tokens from graph keys in rewrite_blockwise
+  * Ensure correct column order in csv project_columns
+  * Renamed inner loop variables to avoid duplication
+  * Do not return delayed object from to_zarr
+  * Array: correct number of outputs in apply_gufunc
+  * Rewrite da.fromfunction with da.blockwise
+  * Rename make_meta_util to make_meta
+  * Repartition before shuffle if the requested partitions are
+    less than input partitions
+  * Blockwise: handle constant key inputs
+  * Added raise to apply_gufunc
+  * Show failing tests summary in CI
+  * sizeof sets in Python 3.9
+  * Warn if using pandas datetimelike string in
+    dataframe.__getitem__
+  * Highlight the client.dashboard_link
+  * Easier link for subscribing to the Google calendar
+  * Automatically show graph visualization in Jupyter notebooks
+  * Add autofunction for unify_chunks in API docs
+- Release 2021.05.1
+  * Pandas compatibility
+  * Fix optimize_dataframe_getitem bug
+  * Update make_meta import in docs
+  * Implement da.searchsorted
+  * Fix format string in error message
+  * Fix read_sql_table returning wrong result for single column
+    loads
+  * Add slack join link in support.rst
+  * Remove unused alphabet variable
+  * Fix meta creation incase of object
+  * Add dispatch for union_categoricals
+  * Consolidate array Dispatch objects
+  * Move DataFrame dispatch.registers to their own file
+  * Fix delayed with dataclasses where init=False
+  * Allow a column to be named divisions
+  * Stack nd array with unknown chunks
+  * Promote the 2021 Dask User Survey
+  * Fix typo in DataFrame.set_index()
+  * Cleanup array API reference links
+  * Accept axis tuple for flip to be consistent with NumPy
+  * Bump pre-commit hook versions
+  * Cleanup to_zarr docstring
+  * Fix the docstring of read_orc
+  * Doc ipyparallel & mpi4py concurrent.futures
+  * Update tests to support CuPy 9
+  * Fix some HighLevelGraph documentation inaccuracies
+  * Fix spelling in Series getitem error message
+
+-------------------------------------------------------------------
 Tue May 18 10:12:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
  
 - update to version 2021.5.0
