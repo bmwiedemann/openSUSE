@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 22 04:21:02 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.3:
+  * Fixes key repeat rate in wayland
+  * Ctrl-c now exits bemenu in x11 and wayland
+  * Hidden files (dot files) are now ignored in bemenu-run
+
+-------------------------------------------------------------------
 Wed Jun  9 09:00:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.2:

@@ -145,4 +145,15 @@
   * Handle multiple seats (more) correctly</comment>
     <requestid>898693</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>53ca73bd862c360e7a7d65f33753348b</srcmd5>
+    <version>0.6.3</version>
+    <time>1626986606</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3:
+  * Fixes key repeat rate in wayland
+  * Ctrl-c now exits bemenu in x11 and wayland
+  * Hidden files (dot files) are now ignored in bemenu-run</comment>
+    <requestid>907620</requestid>
+  </revision>
 </revisionlist>
