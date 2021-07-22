@@ -72,7 +72,9 @@ latte-dock and standard Plasma panels.
 %{_kf5_plugindir}/plasma/applets/plasma_applet_windowappmenu.so
 %dir %{_kf5_plasmadir}/plasmoids
 %{_kf5_plasmadir}/plasmoids/org.kde.windowappmenu
+%if %{pkg_vcmp plasma-framework-devel < 5.84}
 %{_kf5_servicesdir}/plasma-applet-org.kde.windowappmenu.desktop
+%endif
 %{_kf5_appstreamdir}/org.kde.windowappmenu.appdata.xml
 
 %changelog
