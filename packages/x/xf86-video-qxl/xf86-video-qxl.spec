@@ -1,7 +1,7 @@
 #
 # spec file for package xf86-video-qxl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
 Patch0:         n_hardcode_libdrm_cflags.patch
 Patch1:         n_disable-surfaces-on-kms.patch
+Patch2:         Xspice-python3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -70,7 +71,6 @@ qxl is an Xorg driver for QXL virtual GPU as found in the spice project.
 Summary:        XSpice is an X server that can be accessed by a Spice client
 Group:          System/X11/Servers/XF86_4
 %x11_abi_videodrv_req
-Requires:       python >= 2.6
 BuildRequires:  pkgconfig(spice-server) >= 0.6.3
 
 %description -n xorg-x11-server-Xspice
@@ -81,6 +81,7 @@ XSpice is both an X and a Spice server that can be accessed by a Spice client.
 %setup -q
 %patch0 -p0
 %patch1 -p1
+%patch2 -p1
 
 %build
 autoreconf -fi

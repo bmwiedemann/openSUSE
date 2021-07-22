@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 16 04:56:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded Requires on python >= 2.6
+- Add Xspice-python3.patch:
+  * Add support for Python 3, and run it under Python 3. 
+
+-------------------------------------------------------------------
 Tue Jun 30 19:52:52 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer ship xorg.conf sample file in /etc/X11; it's available
