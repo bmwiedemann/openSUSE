@@ -1,7 +1,7 @@
 #
 # spec file for package libsass
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define libname libsass-3_6_4-1
+%define libname libsass-3_6_5-1
 Name:           libsass
-Version:        3.6.4
+Version:        3.6.5
 Release:        0
 Summary:        Compiler library for A CSS preprocessor language
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            https://github.com/sass/libsass
+URL:            https://github.com/sass/libsass
 Source:         https://github.com/sass/libsass/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         libsass-am.diff
 Patch2:         libsass-vers.diff

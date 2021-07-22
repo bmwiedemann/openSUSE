@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 17 06:53:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.5:
+  * Fix extend edge case going endlessly
+  * Fix source-maps and how we count unicode characters
+  * Fix seed generator if std::random_device fails
+  * Fix url() containing exclamation mark causing an error
+  * Fix Offset initialization when end was not given
+  * Fix obvious backporting error in pseudo extend
+  * Fix obvious identical subexpressions in op_color_number
+  * Fix edge case regarding unit-less number equality as object keys
+  * Revert compound re-ordering for non extended selectors
+  * Prevent compiler warning about unnecessary copy
+
+-------------------------------------------------------------------
 Thu Jul 23 15:37:29 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update version to 3.6.4
