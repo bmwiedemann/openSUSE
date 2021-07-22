@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 13 13:33:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do no longer BuildRequire libmodman-devel: libproxy 0.4.17 was
+  changed upstream to only support to internal version (no other
+  consumer of libmodman exists).
+- No longer pass -DFORCE_SYSTEM_LIBMODMAN=ON to cmake: not
+  understood anymore (boo#1188265).
+
+-------------------------------------------------------------------
 Tue Dec 29 11:35:09 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.4.17:

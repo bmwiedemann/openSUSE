@@ -1,7 +1,7 @@
 #
-# spec file for package libproxy
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,7 +49,6 @@ Source:         https://github.com/libproxy/libproxy/releases/download/%{version
 Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libmodman-devel
 # netcfg is needed for the test suite.
 BuildRequires:  netcfg
 BuildRequires:  pkgconfig
@@ -128,6 +127,7 @@ support. libproxy exists to abstract this issue and provides
 an answer how to reach a certain network resource.
 
 %else
+
 %package -n libproxy1-config-gnome3
 Summary:        Libproxy module for GNOME3 configuration
 Group:          System/Libraries
@@ -299,7 +299,6 @@ cmake \
 %if %{with mono}
   -DWITH_DOTNET=1 \
 %endif
-  -DFORCE_SYSTEM_LIBMODMAN=ON \
 %endif
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DBIN_INSTALL_DIR=%{_bindir} \

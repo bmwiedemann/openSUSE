@@ -662,4 +662,16 @@
     <comment></comment>
     <requestid>859209</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>8acf8bfdc09a639ff8a97a81c0b021ce</srcmd5>
+    <version>0.4.17</version>
+    <time>1626986555</time>
+    <user>dimstar_suse</user>
+    <comment>- Do no longer BuildRequire libmodman-devel: libproxy 0.4.17 was
+  changed upstream to only support to internal version (no other
+  consumer of libmodman exists).
+- No longer pass -DFORCE_SYSTEM_LIBMODMAN=ON to cmake: not
+  understood anymore (boo#1188265). (forwarded request 906141 from dimstar)</comment>
+    <requestid>907247</requestid>
+  </revision>
 </revisionlist>
