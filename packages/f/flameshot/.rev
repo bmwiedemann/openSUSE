@@ -165,4 +165,37 @@
 </comment>
     <requestid>879359</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d8d55aca895f83988eab1dba100dd2ef</srcmd5>
+    <version>0.10.0</version>
+    <time>1626986603</time>
+    <user>dimstar_suse</user>
+    <comment>Re-opening,  0.10.0 release was finally tagged 3 days ago
+
+- Update to version 0.10.0
+  * known issue: fractional scaling issues We are working with Qt
+    upstream on this issue.
+  * known issue: KDE Wayland requires modification to the Desktop file.
+  * change: close after capture removed due to lack of maintenance
+  * feat: automatically run on xcb. This improves compatibility with
+    Wayland, multimonitor setups and copy to clipboard
+  * feat: save clipboard as jpeg instead of a png. May reduce
+    bandwidth when pasting the image into chat or email clients.
+  * feat: global shortcut menu. All actions hotkeys are fully
+    customizable.
+  * feat: &quot;Symmetric&quot; selections by holding Shift when resizing
+  * feat: The rectangle tool will now round the corners of the
+    rectangles based on the current thickness.
+  * feat: All imgur uploads are now tracked in the &quot;Upload History&quot;
+    menu. This makes it much easier to delete of images off imgur
+    or find the upload link later.
+  * feat: New option for setting a &quot;fixed save path&quot;. When this is
+    enabled a user will no longer need to set the path for images
+    that are saved.
+  * fix: Under certain circumstance the circle count could get set to
+    the wrong number with large numbers of undo / redo. This has
+    been fixed.
+</comment>
+    <requestid>907605</requestid>
+  </revision>
 </revisionlist>

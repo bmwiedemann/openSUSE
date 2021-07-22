@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 16 20:22:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- refetch tarball (changed from source)
+- cleanup 0.10.0 release notes
+
+-------------------------------------------------------------------
+Thu Jul 15 07:55:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.0
+  * known issue: fractional scaling issues We are working with Qt
+    upstream on this issue.
+  * known issue: KDE Wayland requires modification to the Desktop file.
+  * change: close after capture removed due to lack of maintenance
+  * feat: automatically run on xcb. This improves compatibility with
+    Wayland, multimonitor setups and copy to clipboard
+  * feat: save clipboard as jpeg instead of a png. May reduce
+    bandwidth when pasting the image into chat or email clients.
+  * feat: global shortcut menu. All actions hotkeys are fully
+    customizable.
+  * feat: "Symmetric" selections by holding Shift when resizing
+  * feat: The rectangle tool will now round the corners of the
+    rectangles based on the current thickness.
+  * feat: All imgur uploads are now tracked in the "Upload History"
+    menu. This makes it much easier to delete of images off imgur
+    or find the upload link later.
+  * feat: New option for setting a "fixed save path". When this is
+    enabled a user will no longer need to set the path for images
+    that are saved.
+  * fix: Under certain circumstance the circle count could get set to
+    the wrong number with large numbers of undo / redo. This has
+    been fixed.
+
+-------------------------------------------------------------------
 Tue Mar 16 07:20:52 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update description with features and flameshot-org

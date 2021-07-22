@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
@@ -91,6 +91,7 @@ mv %{buildroot}%{_datadir}/zsh/site-functions/_flameshot %{buildroot}%{_sysconfd
 %{_datadir}/icons/hicolor/*/apps/*.png
 %{_datadir}/icons/hicolor/scalable/apps/*.svg
 %{_datadir}/metainfo/org.flameshot.Flameshot.metainfo.xml
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/%{name}
