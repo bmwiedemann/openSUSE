@@ -1,7 +1,7 @@
 #
-# spec file for package systemd-presets-branding-openSUSE
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,7 +44,7 @@ Requires(post): bash
 Default presets for systemd on openSUSE distribution.
 
 These are the openSUSE specific presets. The default
-presets needed for all SUSE based distributions can be 
+presets needed for all SUSE based distributions can be
 found in systemd-presets-common-SUSE.
 
 %prep

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 19 13:19:00 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Enable storeBackup (bsc#1115457).
+
+-------------------------------------------------------------------
 Sun Nov  8 19:10:14 UTC 2020 - Oliver Kurz <okurz@suse.com>
 
 - Fix package description mention of 'systemd-presets-common-SUSE'
