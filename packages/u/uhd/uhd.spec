@@ -17,7 +17,7 @@
 
 %define libname libuhd4_1_0
 Name:           uhd
-Version:        4.1.0.0
+Version:        4.1.0.1
 Release:        0
 Summary:        The driver for USRP SDR boards
 License:        GPL-3.0-or-later
@@ -25,8 +25,6 @@ Group:          Hardware/Other
 URL:            https://files.ettus.com/manual/
 Source0:        https://github.com/EttusResearch/uhd/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/EttusResearch/uhd/releases/download/v%{version}/uhd-images_%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- fix compilation with Boost 1.76
-Patch1:         uhd-add-includes-for-boost.patch
 BuildRequires:  cmake >= 2.6
 BuildRequires:  docutils
 BuildRequires:  doxygen

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 21 10:54:58 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.0.1
+  * cmake
+    + remove redundant include
+    + correctly set and unset any CMAKE_REQUIRED variables
+    + fix finding PkgConfig to work robustly (without CMake warnings)
+  * core
+    + remove boost::math in favor of std cmath
+  * docs
+    + x4xx: Update information on CPLD updating
+    + usrp_x4xx: improve filesystem update instructions
+  * mpm
+    + zbx: Fix revision compat check
+    + Update usrp_update_fs to support X410
+    * max10_cpld_flash_ctrl: improve programming log
+    + Skip DTS compatibility check if DTS is not being updated
+- Remove patch uhd-add-includes-for-boost.patch since boost::math
+  was replaced by std cmath
+
+-------------------------------------------------------------------
 Thu Jul  1 15:31:37 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.0.0
