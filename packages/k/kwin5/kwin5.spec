@@ -39,6 +39,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kwin-%{version
 Source1:        https://download.kde.org/stable/plasma/%{version}/kwin-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-platforms-drm-check-wl_eglstream-buffers-before-atta.patch
 # PATCH-FEATURE-OPENSUSE
 Patch101:       0001-Export-consistent-hostname-as-XAUTHLOCALHOSTNAME.patch
 # PATCH-FIX-OPENSUSE
@@ -149,7 +151,7 @@ Requires:       kitemmodels-imports
 Provides:       windowmanager
 # For post and verifyscript
 Requires(post): permissions
-Requires(verify): permissions
+Requires(verify):permissions
 %requires_ge Mesa-libEGL1
 %requires_ge libKF5WindowSystem5
 %requires_ge plasma-framework

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 07:03:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix issues with EGLStream clients:
+  * 0001-platforms-drm-check-wl_eglstream-buffers-before-atta.patch
+
+-------------------------------------------------------------------
 Tue Jul  6 12:01:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.3
