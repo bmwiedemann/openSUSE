@@ -1,5 +1,5 @@
 #
-# spec file for package gtk3-doc
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands
@@ -32,7 +32,7 @@
 %bcond_without  broadway
 %bcond_with     doc
 Name:           %{pname}
-Version:        3.24.29
+Version:        3.24.30
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -602,7 +602,6 @@ fi
 %{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-ipa.so
 %{_libdir}/gtk-3.0/%{gtk_binary_version}/immodules/im-wayland.so
 %dir %{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/
-%{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-cloudprint.so
 %{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-cups.so
 %{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-file.so
 %{_libdir}/gtk-3.0/%{gtk_binary_version}/printbackends/libprintbackend-lpr.so
