@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 21 14:33:48 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Ignore error return code if no virtualization environment
+  detected. [bsc#1188479]
+  This makes it possible to use Ignition also on bare metal (e.g.
+  when dumping images directly to disk) without adding a
+  ignition.platform.id parameter.
+
+-------------------------------------------------------------------
 Thu Jul  8 10:47:50 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - If a Combustion device was mounted, then unmount it in

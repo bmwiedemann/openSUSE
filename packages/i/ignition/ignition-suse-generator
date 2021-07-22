@@ -24,7 +24,7 @@ EOF
 fi
 
 if [ -z "${PLATFORM_ID}" ]; then
-    platform="$(systemd-detect-virt)"
+    platform="$(systemd-detect-virt || true)"
     case "${platform}" in
         *vmware*)     platform="vmware" ;;
         *oracle*)     platform="virtualbox" ;;

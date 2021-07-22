@@ -408,4 +408,13 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 </comment>
     <requestid>904751</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>53be699f0502415531ba9000ea4631b7</srcmd5>
+    <version>2.11.0</version>
+    <time>1626986601</time>
+    <user>dimstar_suse</user>
+    <comment>Ignore error return code if no virtualization environment detected. [bsc#1188479]
+This makes it possible to use Ignition also on bare metal (e.g. when dumping images directly to disk) without adding a ignition.platform.id parameter.</comment>
+    <requestid>907542</requestid>
+  </revision>
 </revisionlist>
