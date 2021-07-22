@@ -1,7 +1,7 @@
 #
 # spec file for package shim-leap
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
 
@@ -30,9 +30,8 @@ Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source:         shim-15.4-lp152.4.8.1.x86_64.rpm
+Source:         shim-15.4-lp152.4.17.1.x86_64.rpm
 Source1:        README
-Source2:        shim-install
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  x86_64
 
@@ -57,10 +56,6 @@ rpm2cpio %{SOURCE0} | cpio --extract --unconditional --preserve-modification-tim
 # purely repackaged
 cp -a * %{buildroot}
 cp %{S:1} .
-
-# install updated shim-install
-chmod +x %{S:2}
-cp %{S:2} %{buildroot}/%{_sbindir}/shim-install
 
 %post -n shim
 /sbin/update-bootloader --reinit || true

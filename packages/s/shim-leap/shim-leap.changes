@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 21 09:38:30 UTC 2021 - jlee@suse.com
+
+- Update to shim to 15.4-lp152.4.17.1 from openSUSE Leap 15.2
+  + Version: 15.4, "Thu Jul 15 2021"
+  + Updated openSUSE x86 signature
+  + Include the fixes for bsc#1187696, bsc#1185261, bsc#1185441,
+    bsc#1187071, bsc#1185621, bsc#1185261, bsc#1185232, bsc#1185261,
+    bsc#1187260, bsc#1185232. 
+- Remove shim-install because the shim-install is updated in Leap
+  15.2 RPM.
+
+-------------------------------------------------------------------
 Thu May 20 01:25:06 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - shim-install: instead of assuming "removable" for Azure, remove
