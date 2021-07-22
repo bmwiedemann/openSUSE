@@ -1547,4 +1547,12 @@
   + Bugfix: Use abstract sockets if libdbus is older than 1.12.0 (forwarded request 905352 from susnux)</comment>
     <requestid>906036</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>07b6589c9ccac89a3de8dc5a51f83165</srcmd5>
+    <version>2.40.3</version>
+    <time>1626986585</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Factory</comment>
+    <requestid>907581</requestid>
+  </revision>
 </revisionlist>
