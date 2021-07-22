@@ -1,0 +1,96 @@
+From 857f4de8a8fc14a0bce566baf07b0eedc1b6b5b5 Mon Sep 17 00:00:00 2001
+From: Lukasz Spintzyk <lukasz.spintzyk@synaptics.com>
+Date: Mon, 19 Jul 2021 08:17:09 +0200
+Subject: [PATCH xserver] present: get_crtc should not return crtc when its
+ screen does not have present extension
+
+Since crtc can belong to secondary output that may not have present
+extension enabled we should fallback to first enabled crtc or fake crtc.
+
+Fix for issue xorg/xserver#1195
+---
+ present/present.c | 11 ++++++++++-
+ randr/randr.c     | 27 +++++++++++++++++++++++++++
+ randr/randrstr.h  |  2 ++
+ 3 files changed, 39 insertions(+), 1 deletion(-)
+
+diff --git a/present/present.c b/present/present.c
+index 3eddb7434..66411212b 100644
+--- a/present/present.c
++++ b/present/present.c
+@@ -59,11 +59,20 @@ present_get_crtc(WindowPtr window)
+ {
+     ScreenPtr                   screen = window->drawable.pScreen;
+     present_screen_priv_ptr     screen_priv = present_screen_priv(screen);
++    RRCrtcPtr                   crtc = NULL;
++    RROutputPtr                 firstOutput = NULL;
+ 
+     if (!screen_priv)
+         return NULL;
+ 
+-    return screen_priv->get_crtc(screen_priv, window);
++    crtc = screen_priv->get_crtc(screen_priv, window);
++    if (crtc && !present_screen_priv(crtc->pScreen)) {
++        crtc = RRFirstEnabledCrtc(screen);
++    }
++    if (crtc && !present_screen_priv(crtc->pScreen)) {
++        crtc = NULL;
++    }
++    return crtc;
+ }
+ 
+ /*
+diff --git a/randr/randr.c b/randr/randr.c
+index 5db8b5ced..afc867ea9 100644
+--- a/randr/randr.c
++++ b/randr/randr.c
+@@ -693,6 +693,33 @@ RRFirstOutput(ScreenPtr pScreen)
+     return NULL;
+ }
+ 
++RRCrtcPtr
++RRFirstEnabledCrtc(ScreenPtr pScreen)
++{
++    rrScrPriv(pScreen);
++    RROutputPtr output;
++    int i, j;
++
++    if (!pScrPriv)
++        return NULL;
++
++    if (pScrPriv->primaryOutput && pScrPriv->primaryOutput->crtc &&
++        pScrPriv->primaryOutput->pScreen == pScreen)
++        return pScrPriv->primaryOutput->crtc;
++
++    for (i = 0; i < pScrPriv->numCrtcs; i++) {
++        RRCrtcPtr crtc = pScrPriv->crtcs[i];
++
++        for (j = 0; j < pScrPriv->numOutputs; j++) {
++            output = pScrPriv->outputs[j];
++            if (output->crtc == crtc && crtc->mode)
++                return crtc;
++        }
++    }
++    return NULL;
++}
++
++
+ CARD16
+ RRVerticalRefresh(xRRModeInfo * mode)
+ {
+diff --git a/randr/randrstr.h b/randr/randrstr.h
+index 0b95d6e25..28ba4ea91 100644
+--- a/randr/randrstr.h
++++ b/randr/randrstr.h
+@@ -593,6 +593,8 @@ extern _X_EXPORT Bool RRScreenInit(ScreenPtr pScreen);
+ 
+ extern _X_EXPORT RROutputPtr RRFirstOutput(ScreenPtr pScreen);
+ 
++extern _X_EXPORT RRCrtcPtr RRFirstEnabledCrtc(ScreenPtr pScreen);
++
+ extern _X_EXPORT Bool RROutputSetNonDesktop(RROutputPtr output, Bool non_desktop);
+ 
+ extern _X_EXPORT CARD16
+-- 
+2.30.2
+

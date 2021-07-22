@@ -3585,4 +3585,17 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * bugfix release</comment>
     <requestid>905221</requestid>
   </revision>
+  <revision rev="395" vrev="2">
+    <srcmd5>a799e60b14d394b116f5dfcc9ba7a023</srcmd5>
+    <version>1.20.12</version>
+    <time>1626986587</time>
+    <user>dimstar_suse</user>
+    <comment>- U_modesetting-unflip-not-possible-when-glamor-is-not-s.patch
+  * this should fixes crashes of xfce when running under qemu
+    (boo#1188559) 
+
+- add U_present-get_crtc-should-not-return-crtc-when-its-scr.patch (bsc#1188559)
+  https://gitlab.freedesktop.org/xorg/xserver/-/issues/1195</comment>
+    <requestid>907753</requestid>
+  </revision>
 </revisionlist>

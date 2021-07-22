@@ -252,6 +252,8 @@ Patch1801:      U_Fix-segfault-on-probing-a-non-PCI-platform-device-on.patch
 Patch1900:      u_no-lto-for-tests.patch
 
 Patch1910:      u_modesetting-Fix-dirty-updates-for-sw-rotation.patch
+Patch1911:      U_present-get_crtc-should-not-return-crtc-when-its-scr.patch
+Patch1912:      U_modesetting-unflip-not-possible-when-glamor-is-not-s.patch
 
 %description
 This package contains the X.Org Server.
@@ -403,6 +405,8 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch1801 -p1
 %patch1900 -p1
 %patch1910 -p1
+%patch1911 -p1
+%patch1912 -p1
 
 %build
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects

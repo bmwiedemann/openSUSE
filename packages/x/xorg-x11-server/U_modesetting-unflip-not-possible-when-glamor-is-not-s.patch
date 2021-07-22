@@ -1,0 +1,24 @@
+From 3793e12407b6b1511c8655a2665ec5ce41bc820d Mon Sep 17 00:00:00 2001
+From: Stefan Dirsch <sndirsch@suse.de>
+Date: Thu, 22 Jul 2021 14:31:35 +0200
+Subject: [PATCH] modesetting: unflip not possible when glamor is not set
+
+This is fixing crashes of xfce when running under qemu
+---
+ hw/xfree86/drivers/modesetting/present.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+Index: xorg-server-1.20.12/hw/xfree86/drivers/modesetting/present.c
+===================================================================
+--- xorg-server-1.20.12.orig/hw/xfree86/drivers/modesetting/present.c
++++ xorg-server-1.20.12/hw/xfree86/drivers/modesetting/present.c
+@@ -257,6 +257,9 @@ ms_present_check_unflip(RRCrtcPtr crtc,
+         pixmap->devKind != drmmode_bo_get_pitch(&ms->drmmode.front_bo))
+         return FALSE;
+ 
++    if (!ms->drmmode.glamor)
++        return FALSE;
++
+ #ifdef GBM_BO_WITH_MODIFIERS
+     /* Check if buffer format/modifier is supported by all active CRTCs */
+     gbm = glamor_gbm_bo_from_pixmap(screen, pixmap);
