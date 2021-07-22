@@ -25,4 +25,12 @@
   this has been reverted in Tumbleweed.</comment>
     <requestid>906190</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>62be75286eba8e996035ea2833b2078a</srcmd5>
+    <version>1.6.10</version>
+    <time>1626986599</time>
+    <user>dimstar_suse</user>
+    <comment>- Reapply the change. The plasma-framework workaround was removed.</comment>
+    <requestid>906921</requestid>
+  </revision>
 </revisionlist>

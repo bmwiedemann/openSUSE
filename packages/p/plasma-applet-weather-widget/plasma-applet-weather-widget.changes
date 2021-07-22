@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 18 09:06:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Reapply the change. The plasma-framework workaround was removed.
+
+-------------------------------------------------------------------
 Tue Jul 13 21:54:22 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Undo last change, since the change in KF5Plasma that required
