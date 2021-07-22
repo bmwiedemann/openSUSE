@@ -61,7 +61,7 @@ Patch11:        setup-switch-im.patch
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # PATCH-FIX-UPSTREAM ibus-socket-name-compatibility.patch bsc#1171442, gh#ibus/ibus#2195 qkzhu@suse
 # Compatibility workaround for ibus-use-wayland-display-for-socket-name.patch
-# Qt5 does not be update to the new version and patch for ibus on Leap 15, 
+# Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
 BuildRequires:  fdupes
@@ -290,6 +290,7 @@ dconf update
 
 %post -n libibus-1_0-5 -p /sbin/ldconfig
 %postun -n libibus-1_0-5 -p /sbin/ldconfig
+
 %post gtk3
 %{gtk3_immodule_post}
 
@@ -319,6 +320,8 @@ dconf update
 %{_datadir}/ibus/keymaps
 %{_datadir}/ibus/setup
 %{_datadir}/applications/org.freedesktop.IBus.Setup.desktop
+%dir %{_datadir}/GConf
+%dir %{_datadir}/GConf/gsettings
 %{_datadir}/GConf/gsettings/ibus.convert
 %{_datadir}/glib-2.0/schemas/org.freedesktop.ibus.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/ibus*.*

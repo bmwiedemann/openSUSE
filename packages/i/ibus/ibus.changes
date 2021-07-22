@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 20 06:28:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Own /usr/share/GConf and /usr/share/GConf/gsettings: the time
+  has come where the migration code is drying out and we can't
+  expect the deps to just be in the buildroot (but it still works).
+
+-------------------------------------------------------------------
 Wed Jun 30 05:36:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Rollback ibus-socket-name-compatibility.patch for Leap 15. Qt5 does 
