@@ -19,7 +19,7 @@
 %{go_nostrip}
 
 Name:           golang-github-vpenso-prometheus_slurm_exporter
-Version:        0.17
+Version:        0.19
 Release:        0
 Summary:        Prometheus exporter for Slurm metrics
 License:        GPL-3.0-or-later
@@ -50,7 +50,7 @@ resource scheduling system.
 
 %install
 %{goinstall}
-%{gosrc}
+# No %%{gosrc}
 install -D -m 0644 lib/systemd/prometheus-slurm-exporter.service %{buildroot}%{_unitdir}/prometheus-slurm_exporter.service
 mv %{buildroot}%{_bindir}/ %{buildroot}%{_sbindir}/
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcprometheus-slurm_exporter
