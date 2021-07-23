@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jul 23 05:50:52 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.7.0
+  * Bug Fixes
+    - Workaround to ensure the Saved Searches Controls editor
+      widget is movable on all platforms
+    - Make the External Xhtml Editor Button/Feature work with both
+      PageEdit and non-PageEdit editors again
+    - Fix Preview sync when CV transitions from xhtml to css and
+      back to xhtml
+    - Fix Preview sync when Find and Replace opens new tab with
+      search target
+    - Fix Preview sync when Validation error clicked on
+    - Fix Preview sync when mathml is being used
+      (compensate for mathjax changes)
+    - Fix mathml use when external MathJax directory is specified
+      in builds on Linux
+    - Prevent Sigil from loading any manifested mimetype file from
+      bad epubs, give load warning
+    - Make Spellcheck dialog use double-click to control search in
+      CV, to speed paging word list.
+    - Prevent duplicate translated semantic names
+    - Fix heading tool issues after self-closed BLOCK tags
+    - Prevent stack overflow crashes in pcre lib due to recursion
+      with some valid regex
+    - Fix second window opening on macOS when first launching app
+      with file
+    - Remove [other.] semantic indicators for epub2
+    - Fix crash in CSS Selectors Report when using Filters
+  * New Features:
+    - added Find Replace Regular Expression validator
+    - added SIGIL_DISABLE_VERSION_META environment variable to
+      control writing of Sigil Version
+    - enable JIT compiler for pcre library to improve regex look-up
+      performance
+    - update the pcre library to version 8.45 (Final EOL)
+
+-------------------------------------------------------------------
 Mon Jun 28 10:53:29 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Fix dependencies (Drop Qt5Webkit and Qt5WebKitWidgets).
