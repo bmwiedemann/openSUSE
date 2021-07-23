@@ -23,7 +23,7 @@
 %define baseversion 1.20
 
 Name:           k3s
-Version:        1.21.1+k3s1
+Version:        1.21.3+k3s1
 Release:        0
 Summary:        A container orchestration system based on a reduced Kubernetes feature set
 License:        Apache-2.0
@@ -38,7 +38,7 @@ BuildRequires:  c_compiler
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.16
 BuildRequires:  pkgconfig(sqlite3)
 %ifarch aarch64
 BuildRequires:  binutils-gold

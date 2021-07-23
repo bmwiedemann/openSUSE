@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jul 23 09:58:56 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.3+k3s1:
+  * Fix multiple bootstrap keys found
+  * Bump containerd to v1.4.8-k3s1
+  * Fix to allow prune to correctly cleanup custom named snapshots (#3649) (#3672)
+  * Upgrade k3s-root version
+  * Bump Kubernetes to v1.21.3 (#3652)
+  * Backport Fix storing bootstrap data with empty token string (#3514)
+  * Emit events for AddOn lifecycle
+  * Add comments, clean up imports and function names
+  * Tidy up function calls with many args
+  * Add nodename to UA string for deploy controller
+  * prevent snapshot save when snapshots are disabled (#3475) (#3610)
+  * Bump the packaged runc binary version
+  * Update etcd snapshot error message to be more informative when etcd database is not found (#3592)
+  * Dispatch to rancher/system-agent-installer-k3s when tagged
+  * Update embedded kube-router (#3557) (#3595)
+  * Fix spelling to satisfy codespell check
+  * Bump rancher/klipper-helm image in airgap image-list.txt
+  * Bump helm-controller to v0.10.1
+  * Changes local storage pods to have 700 permissions (#3537) (#3548)
+  * Move cloud-controller-manager into an embedded executor (#3530)
+  * fix possible race where bootstrap data might not save
+  * Renamed client-cloud-controller crt and key (#3472)
+  * Send systemd notifications for both server and agent (#3430) (#3460)
+  * Changed iptables version check for fail if version is between 1.8.0 and 1.8.3 and using nf_tables mode (#3454)
+  * Add kubernetes.default.svc to serving certs
+  * Fix RBAC cloud-controller-manager name 3308 (#3388) (#3408)
+  * Add a path for wireguard's privatekey
+  * Update flannel version
+  * move object channel defer close to goroutine
+  * add retention default and wire in s3 prune
+  * add etcd snapshot save subcommand
+- Update go to 1.16
+
+-------------------------------------------------------------------
 Mon Jun 21 10:52:40 UTC 2021 - Sayali Lunkad <sayali.lunkad@suse.com>
 
 - Add binutils-gold for aarch64 builds (bsc#1187497) 
