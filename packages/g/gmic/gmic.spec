@@ -27,7 +27,7 @@
 
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins
 Name:           gmic
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
 Summary:        GREYC's Magick for Image Computing (denoise and others)
 # gmic-qt is GPL-3.0-or-later, zart is CECILL-2.0, libgmic and cli program are
@@ -59,7 +59,7 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(zlib)
 # gmic first looks for opencv 4 and falls back to opencv 3 if not found.
 # opencv 4 in not available in leap <= 15.3
-%if 0%{?suse_version} <= 1500 
+%if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(opencv)
 %else
 # ppc64 doesn't have opencv4
@@ -118,17 +118,6 @@ Requires:       krita
 %description -n  krita-plugin-gmic
 This is a plugin for krita to provide gmic features.
 
-%package zart
-Summary:        GMIC GUI for video streams
-License:        CECILL-2.0
-Group:          Productivity/Graphics/Bitmap Editors
-
-%description zart
-ZArt is a computer program whose purpose is to demonstrate the possibilities of
-the G'MIC image processing language by offering the choice of several
-manipulations on a video stream acquired from a webcam. In other words, ZArt is
-a GUI for G'MIC real-time manipulations on the output of a webcam.
-
 %package bash-completion
 Summary:        Bash completion for gmic
 License:        CECILL-2.1
@@ -142,9 +131,6 @@ This package contain de bash completion command for gmic.
 %prep
 %autosetup -p1
 
-# Generated file that should not be there
-rm -f zart/.qmake.stash
-
 %build
 # Build gmic
 %cmake \
@@ -153,9 +139,6 @@ rm -f zart/.qmake.stash
 %cmake_build
 
 cd ..
-
-# Create link for zart dynamic linking
-ln -s ../build/libgmic.so src/libgmic.so
 
 # Build gmic{_gimp|_krita}_qt
 pushd gmic-qt
@@ -187,15 +170,6 @@ cd ..
 cd ..
 popd
 
-# Build zart
-pushd zart
-%qmake5 zart.pro \
-   CONFIG+=release \
-   GMIC_DYNAMIC_LINKING=on \
-   GMIC_PATH=%{_builddir}/%{name}-%{version}/src
-%make_jobs
-popd
-
 %install
 %cmake_install
 
@@ -219,11 +193,6 @@ install -d -m 0755 %{buildroot}%{_gimpplugindir}
 install -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
 popd
 
-# zart
-pushd zart
-install -m 0755 zart %{buildroot}%{_bindir}/zart
-popd
-
 %post -n libgmic1 -p /sbin/ldconfig
 %postun -n libgmic1 -p /sbin/ldconfig
 
@@ -235,9 +204,6 @@ popd
 %{_mandir}/man1/gmic.1%{?ext_man}
 %{_datadir}/applications/gmic_qt.desktop
 %{_datadir}/pixmaps/gmic_qt.png
-
-%files zart
-%{_bindir}/zart
 
 %files -n gimp-plugin-gmic
 %license COPYING
