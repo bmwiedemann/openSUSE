@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 23 07:48:29 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.140.0:
+  * d8247e6 (HEAD, tag: v0.140.0)
+    Update writing-helmfile.md: fix typos (#1892)
+
+-------------------------------------------------------------------
 Fri Jun 11 14:44:22 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.139.9:
@@ -573,6 +580,6 @@ Fri Jul 17 10:59:22 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 - Replace hard-coded version numbers with %{version}
 
 -------------------------------------------------------------------
-Fri Jul 17 09:20:51 - manfred.h@gmx.net
+Fri Jul 17 09:20:51 UTC 2020 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Initial revision of v0.121 from gitlab.
