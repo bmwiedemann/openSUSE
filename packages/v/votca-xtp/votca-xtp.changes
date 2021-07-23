@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 18 14:15:44 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021.1
+  - No changes since v2021
+
+-------------------------------------------------------------------
 Sun Mar 14 13:44:47 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - exclude 32-bit archs due to bug in libint2 see 

@@ -18,7 +18,7 @@
 
 
 Name:           votca-xtp
-Version:        2021
+Version:        2021.1
 Release:        0
 %define         uversion %version
 %define         sover 2021
