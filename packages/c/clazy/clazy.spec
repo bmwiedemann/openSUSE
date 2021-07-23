@@ -17,17 +17,17 @@
 
 
 Name:           clazy
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        Qt oriented code checker based on the Clang framework
 License:        LGPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://www.kdab.com/clazy-video/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Fix-build-with-Clang-12.patch
+Source1:        https://download.kde.org/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        clazy.keyring
 BuildRequires:  clang
-BuildRequires:  clang-devel >= 7.0
+BuildRequires:  clang-devel >= 8.0
 BuildRequires:  cmake >= 3.7
 %if 0%{?suse_version} == 1500
 # C++17 is required

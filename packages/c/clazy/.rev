@@ -143,4 +143,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>888964</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>dd95743d19badbc4bacb96e0151c3e34</srcmd5>
+    <version>1.10</version>
+    <time>1627076468</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.10
+  * Requires C++17
+  * Fixed a -Wclazy-lambda-in-connect false-positive
+  * Fixed crash in copyable-polymorphic when PCH was enabled
+- Drop 0001-Fix-build-with-Clang-12.patch. Fixed upstream.</comment>
+    <requestid>907878</requestid>
+  </revision>
 </revisionlist>

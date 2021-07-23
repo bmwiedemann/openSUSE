@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 23 06:27:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.10
+  * Requires C++17
+  * Fixed a -Wclazy-lambda-in-connect false-positive
+  * Fixed crash in copyable-polymorphic when PCH was enabled
+- Drop 0001-Fix-build-with-Clang-12.patch. Fixed upstream.
+
+-------------------------------------------------------------------
 Wed Apr 21 07:17:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Make sure C++17 support is available for Leap builds.
