@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jul  4 00:41:02 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * require importlib-metadata
+  * skip python 2
+
+- update to version 4.4.0:
+  * Replace safe_str_cmp with hmac.compare_digest to avoid a
+    deprecation warning from Werkzeug #126 (commit) (thanks Federico
+    Martinez!)
+  * Drop Python 2 support (commit)
+
+- changes from version 4.3.0 :
+  * Support token auth with custom header in MultiAuth class #125
+    (commit)
+  * Catch UnicodeDecodeError when passing malformed data in
+    authorization header #122 (commit) (thanks Bastian Raschke!)
+  * Fixes typo #116 (commit) (thanks Renato Oliveira!)
+  * Move builds to GitHub actions (commit)
+
+-------------------------------------------------------------------
 Thu Nov 26 17:46:21 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

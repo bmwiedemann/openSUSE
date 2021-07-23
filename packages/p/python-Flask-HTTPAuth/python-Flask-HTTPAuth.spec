@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-HTTPAuth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,8 +18,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 Name:           python-Flask-HTTPAuth
-Version:        4.2.0
+Version:        4.4.0
 Release:        0
 Summary:        Basic and Digest HTTP authentication for Flask routes
 License:        MIT
@@ -27,6 +28,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/miguelgrinberg/flask-httpauth/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-HTTPAuth/Flask-HTTPAuth-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
+BuildRequires:  %{python_module importlib-metadata}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
