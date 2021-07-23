@@ -17,7 +17,7 @@
 
 
 Name:           q5go
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        A Go board including an editor and analysis frontend
 License:        GPL-2.0-or-later

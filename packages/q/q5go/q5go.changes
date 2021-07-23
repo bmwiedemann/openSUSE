@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 23 06:20:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.1.2
+  * fix an issue when saving SGF files in locales where a comma
+    is used instead of a decimal point.
+
+-------------------------------------------------------------------
 Mon Apr 12 09:30:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 2.1.1

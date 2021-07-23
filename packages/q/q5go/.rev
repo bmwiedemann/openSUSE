@@ -119,4 +119,14 @@
   * Engine games now allow board sizes up to 52. (forwarded request 884604 from cgiboudeaux)</comment>
     <requestid>884605</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>24affdaba05a9933f61f7d4dac2096ce</srcmd5>
+    <version>2.1.2</version>
+    <time>1627076469</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.2
+  * fix an issue when saving SGF files in locales where a comma
+    is used instead of a decimal point. (forwarded request 907879 from cgiboudeaux)</comment>
+    <requestid>907880</requestid>
+  </revision>
 </revisionlist>
