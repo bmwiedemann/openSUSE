@@ -61,4 +61,28 @@
     <comment></comment>
     <requestid>903772</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>43ed66bc33b54e713bd04ec9d220538f</srcmd5>
+    <version>2.0.1</version>
+    <time>1627076463</time>
+    <user>dimstar_suse</user>
+    <comment>- provide/obsolete python-OpenColorIO
+- Retain the %{yamlrequires}
+- Use %cmake_build
+- Update to version 2.0.1:
+  Unfortunately, it's missing a changelog, check GH release notes:
+  https://github.com/AcademySoftwareFoundation/OpenColorIO/releases/tag/v2.0.1
+- Removed all patches:
+  * OpenColorIO-setuptools.patch
+  * 0003-Fix_Linux_compilation.patch
+  * 0004-Fix_build_with_GCC-8.patch
+  * 0005-Fix_build_with_yaml-cpp0.6.patch
+  None of them applied anymore
+- Remove tarball crippling, doesn't contain Pygments anymore
+- Update build dependencies
+- Fix 64bit library install location
+- cmake and python devel files disappeared
+</comment>
+    <requestid>907825</requestid>
+  </revision>
 </revisionlist>
