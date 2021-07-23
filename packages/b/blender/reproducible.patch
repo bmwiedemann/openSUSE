@@ -15,11 +15,11 @@ Date:   Sat Sep 7 06:19:50 2019 +0200
     
     Differential Revision: https://developer.blender.org/D5858
 
-Index: blender-2.91.0/source/blender/datatoc/datatoc_icon.c
+Index: b/source/blender/datatoc/datatoc_icon.c
 ===================================================================
---- blender-2.91.0.orig/source/blender/datatoc/datatoc_icon.c
-+++ blender-2.91.0/source/blender/datatoc/datatoc_icon.c
-@@ -308,7 +308,8 @@ static bool icon_merge(const char *file_
+--- a/source/blender/datatoc/datatoc_icon.c
++++ b/source/blender/datatoc/datatoc_icon.c
+@@ -404,7 +404,8 @@ static bool icon_merge(struct IconMergeC
  static bool icondir_to_png(const char *path_src, const char *file_dst)
  {
    /* Takes a path full of 'dat' files and writes out */
@@ -29,8 +29,8 @@ Index: blender-2.91.0/source/blender/datatoc/datatoc_icon.c
    const struct dirent *fname;
    char filepath[1024];
    char *filename;
-@@ -319,8 +320,8 @@ static bool icondir_to_png(const char *p
-   unsigned int canvas_w = 0, canvas_h = 0;
+@@ -419,8 +420,8 @@ static bool icondir_to_png(const char *p
+   icon_merge_context_init(&context);
  
    errno = 0;
 -  dir = opendir(path_src);
@@ -40,7 +40,7 @@ Index: blender-2.91.0/source/blender/datatoc/datatoc_icon.c
      printf(
          "%s: failed to dir '%s', (%s)\n", __func__, path_src, errno ? strerror(errno) : "unknown");
      return false;
-@@ -330,7 +331,8 @@ static bool icondir_to_png(const char *p
+@@ -430,7 +431,8 @@ static bool icondir_to_png(const char *p
    path_str_len = path_ensure_slash(filepath);
    filename = &filepath[path_str_len];
  
@@ -50,22 +50,24 @@ Index: blender-2.91.0/source/blender/datatoc/datatoc_icon.c
      if (path_test_extension(fname->d_name, ".dat")) {
  
        strcpy(filename, fname->d_name);
-@@ -342,9 +344,10 @@ static bool icondir_to_png(const char *p
+@@ -442,11 +444,12 @@ static bool icondir_to_png(const char *p
          fail++;
        }
      }
 +    free(fname);
    }
  
+   icon_merge_context_free(&context);
+ 
 -  closedir(dir);
 +  free(namelist);
  
    if (found == 0) {
      printf("%s: dir '%s' has no icons\n", __func__, path_src);
-Index: blender-2.91.0/source/blender/datatoc/datatoc_icon.py
+Index: b/source/blender/datatoc/datatoc_icon.py
 ===================================================================
---- blender-2.91.0.orig/source/blender/datatoc/datatoc_icon.py
-+++ blender-2.91.0/source/blender/datatoc/datatoc_icon.py
+--- a/source/blender/datatoc/datatoc_icon.py
++++ b/source/blender/datatoc/datatoc_icon.py
 @@ -113,7 +113,7 @@ def icondir_to_png(path_src, file_dst):
      import os
      import array

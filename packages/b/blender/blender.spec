@@ -39,10 +39,6 @@
 %bcond_with usd
 %bcond_with openxr
 
-%if 0%{?suse_version} < 1550
-%bcond_without python_36
-%endif
-
 %if 0%{?gcc_version} < 10
 #global force_gcc_version 9
 %bcond_without clang
@@ -59,7 +55,7 @@
 %define debugbuild 0
 
 # Find the version of python3 that blender is going to build against.
-%define py3version %(pkg-config python3 --modversion)
+%define py3version %(pkg-config python3.9 --modversion)
 
 # blender has versions like x.xxy which have x.xx (notice the missing
 # trailing y) in the directory path. This makes this additional variable
@@ -68,7 +64,7 @@
 %define _suffix %(echo %{_version} | tr -d '.')
 
 Name:           blender
-Version:        2.92.0
+Version:        2.93.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -86,12 +82,10 @@ Source8:        %{name}.appdata.xml
 Source9:        SUSE-NVIDIA-GPU-rendering.txt
 Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
-# PATCH-FIX-OPENSUSE Python 3.6 compatibility
-Patch0:         make_python_3.6_compatible.patch
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
-Patch1:         reproducible.patch
+Patch0:         reproducible.patch
 #!BuildIgnore:  libGLwM1
-BuildRequires:  OpenColorIO-devel
+BuildRequires:  OpenColorIO-devel >= 2.0
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
 BuildRequires:  OpenImageIO-devel
@@ -138,6 +132,7 @@ BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_wave-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
+BuildRequires:  libpulse-devel
 BuildRequires:  libspnav-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  llvm-devel
@@ -147,8 +142,8 @@ BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
 BuildRequires:  pkg-config
 BuildRequires:  potrace-devel
-BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-requests
+BuildRequires:  python39-numpy-devel
+BuildRequires:  python39-requests
 BuildRequires:  shared-mime-info
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
@@ -160,6 +155,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glw)
+BuildRequires:  pkgconfig(python-3.9)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(gmpxx)
 %else
@@ -173,11 +169,6 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
-%if %{with python_36}
-BuildRequires:  pkgconfig(python3) >= 3.6
-%else
-BuildRequires:  pkgconfig(python3) >= 3.7
-%endif
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
@@ -225,10 +216,9 @@ Requires:       audaspace-plugins
 %ifarch x86_64
 Requires:       %{name}-cycles-devel = %{version}
 %endif
-Requires:       python3-base >= %{py3version}
-Requires:       python3-numpy
-Requires:       python3-requests
-Requires:       python3-xml
+Requires:       python39-base
+Requires:       python39-numpy
+Requires:       python39-requests
 Requires(post): hicolor-icon-theme
 Requires(postun):hicolor-icon-theme
 Provides:       %{name}-%{_suffix} = %{version}
@@ -288,10 +278,7 @@ md5sum -c %{SOURCE1}
 popd
 
 %setup -q
-%if %{with python_36}
 %patch0 -p1
-%endif
-%patch1 -p1
 
 rm -rf extern/glew
 rm -rf extern/libopenjpeg
@@ -314,8 +301,8 @@ export CXX="g++-%{?force_gcc_version}"
 
 echo "optflags: " %{optflags}
 # Find python3 version and abiflags
-export psver=$(pkg-config python3 --modversion)
-export pver=$(pkg-config python3 --modversion)$(python3-config --abiflags)
+export psver=$(pkg-config python-3.9 --modversion)
+export pver=$(pkg-config python-3.9 --modversion)$(python3.9-config --abiflags)
 mkdir -p build && pushd build
 
 # lean against build_files/cmake/config/blender_release.cmake
@@ -424,8 +411,8 @@ cmake ../ \
       -DPYTHON_LIBRARY=python$pver \
       -DPYTHON_INCLUDE_DIRS=%{_includedir}/python$pver \
       -DWITH_PYTHON_INSTALL_NUMPY=OFF \
-      -DPYTHON_NUMPY_PATH:PATH=%{python3_sitearch} \
-      -DPYTHON_NUMPY_INCLUDE_DIRS:PATH=%{python3_sitearch}/numpy/core/include \
+      -DPYTHON_NUMPY_PATH:PATH=%{python39_sitearch} \
+      -DPYTHON_NUMPY_INCLUDE_DIRS:PATH=%{python39_sitearch}/numpy/core/include \
       -DWITH_QUADRIFLOW:BOOL=ON \
       -DWITH_SDL:BOOL=ON \
       -DWITH_TBB:BOOL=ON \
