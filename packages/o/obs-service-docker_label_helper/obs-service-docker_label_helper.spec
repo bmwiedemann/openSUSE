@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-docker_label_helper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,8 @@ BuildArch:      noarch
 BuildRequires:  diffutils
 
 %description
-This service can be used during buildtime to implement the
-PREFIXEDLABEL instruction useful for building containers.
+This service can be used during buildtime to expand LABEL
+instructions with mandatory openSUSE prefixes.
 
 %prep
 %setup -q -D -T -n .

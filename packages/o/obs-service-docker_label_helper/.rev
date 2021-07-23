@@ -7,4 +7,12 @@
     <comment>New service, needed for official Dockerfile builds.</comment>
     <requestid>835210</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1822334f0f5efd4bc3bc25be5eaedefc</srcmd5>
+    <version>0.0</version>
+    <time>1627076475</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907921</requestid>
+  </revision>
 </revisionlist>

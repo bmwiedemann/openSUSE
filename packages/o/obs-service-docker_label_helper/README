@@ -2,7 +2,44 @@ obs-service-docker_label_helper
 ===============================
 
 This service can be enabled to run during buildtime, when it will edit the
-Dockerfile to expand the PREFIXEDLABEL instruction.
+Dockerfile to expand the LABEL instruction.
+
+A new syntax using entry/exit flags has been introduced to provide
+compatibility with stock docker build command while allowing OBS
+to add its prefix to existing LABEL instructions values.
+
+Both new and old syntax are supported, but you should not mix both in the
+same Dockerfile.
+
+1 - New syntax using entry/exit flags
+
+Only LABEL between # labelprefix and # endlabelprefix will be considered
+
+Example:
+
+```
+FROM opensuse/tumbleweed
+# labelprefix=org.opensuse.nano
+LABEL org.opencontainers.image.title="Example container"
+LABEL org.opencontainers.image.description="This contains nano"
+# endlabelprefix
+LABEL not.expanded.label="example
+```
+
+expands to
+
+```
+FROM opensuse/tumbleweed
+LABEL org.opensuse.nano.title="Example container"
+LABEL org.opencontainers.image.title="Example container"
+LABEL org.opensuse.nano.description="This contains nano"
+LABEL org.opencontainers.image.description="This contains nano"
+LABEL not.expanded.label="example"
+```
+
+2 - Old syntax
+
+Expand the PREFIXEDLABEL instruction.
 
 Example:
 
