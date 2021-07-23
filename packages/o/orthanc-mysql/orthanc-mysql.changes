@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 22 19:42:56 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.3
+* Fix issue 200 (fields messed up in /changes route)
+* Added missing calls to OrthancPluginDatabaseSignalDeletedResource()
+* Fix serialization of large jobs
+
+-------------------------------------------------------------------
 Sun May  9 10:08:30 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 4.0 (no changelog)
