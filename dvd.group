@@ -2252,7 +2252,7 @@
     <package name="libmediaart-2_0-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmediacheck5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libmemcached11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
-    <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libmetalink3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libmetis5" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libmikmod3" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="libmilter1_0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->

@@ -3057,6 +3057,9 @@ unsorted:
   - eaglemode 
   - earlyoom 
   - easy-rsa 
+  - easyeffects 
+  - easyeffects-doc 
+  - easyeffects-lang 
   - easyloggingpp-devel 
   - easymock 
   - easymock-javadoc 
@@ -7195,14 +7198,6 @@ unsorted:
   - java-11-openjdk-javadoc 
   - java-11-openjdk-jmods 
   - java-11-openjdk-src 
-  - java-14-openjdk 
-  - java-14-openjdk-accessibility 
-  - java-14-openjdk-demo 
-  - java-14-openjdk-devel 
-  - java-14-openjdk-headless 
-  - java-14-openjdk-javadoc 
-  - java-14-openjdk-jmods 
-  - java-14-openjdk-src 
   - java-15-openjdk 
   - java-15-openjdk-accessibility 
   - java-15-openjdk-demo 
@@ -13426,7 +13421,7 @@ unsorted:
   - libsamplerate0-32bit: [x86_64] 
   - libsane1-32bit: [x86_64] 
   - libsanlock1 
-  - libsass-3_6_4-1 
+  - libsass-3_6_5-1 
   - libsass-devel 
   - libsbc1-32bit: [x86_64] 
   - libsblim-cmpiutil1 
@@ -22315,7 +22310,6 @@ unsorted:
   - python36-django-debreach 
   - python36-django-debug-toolbar 
   - python36-django-dj-inmemorystorage 
-  - python36-django-dynamic-fixture 
   - python36-django-environ 
   - python36-django-eremaea2 
   - python36-django-extensions 
@@ -22982,6 +22976,7 @@ unsorted:
   - python36-mypy 
   - python36-mypy_extensions 
   - python36-mysql-connector-python 
+  - python36-mysql-to-sqlite3 
   - python36-mysqlclient 
   - python36-napalm 
   - python36-napalm-arubaos-switch 
@@ -25137,7 +25132,6 @@ unsorted:
   - python38-django-debreach 
   - python38-django-debug-toolbar 
   - python38-django-dj-inmemorystorage 
-  - python38-django-dynamic-fixture 
   - python38-django-environ 
   - python38-django-eremaea2 
   - python38-django-extensions 
@@ -25860,6 +25854,7 @@ unsorted:
   - python38-mypy 
   - python38-mypy_extensions 
   - python38-mysql-connector-python 
+  - python38-mysql-to-sqlite3 
   - python38-nagiosplugin 
   - python38-napalm 
   - python38-napalm-arubaos-switch 
@@ -28139,7 +28134,6 @@ unsorted:
   - python39-django-debreach 
   - python39-django-debug-toolbar 
   - python39-django-dj-inmemorystorage 
-  - python39-django-dynamic-fixture 
   - python39-django-environ 
   - python39-django-eremaea2 
   - python39-django-extensions 
@@ -28900,6 +28894,7 @@ unsorted:
   - python39-mypy 
   - python39-mypy_extensions 
   - python39-mysql-connector-python 
+  - python39-mysql-to-sqlite3 
   - python39-mysqlclient 
   - python39-nagiosplugin 
   - python39-napalm 

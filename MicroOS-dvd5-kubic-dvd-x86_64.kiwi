@@ -386,7 +386,7 @@
       <repopackage name="liblzo2-2"/>
       <repopackage name="libmagic1"/>
       <repopackage name="libmbim-glib4" arch="x86_64"/>
-      <repopackage name="libmetalink3"/>
+      <repopackage name="libmetalink3" arch="x86_64"/>
       <repopackage name="libmlx4-1" arch="x86_64"/>
       <repopackage name="libmlx5-1" arch="x86_64"/>
       <repopackage name="libmm-glib0" arch="x86_64"/>
@@ -446,7 +446,6 @@
       <repopackage name="libref_array1" arch="x86_64"/>
       <repopackage name="libreiserfscore0" arch="x86_64"/>
       <repopackage name="librepo0" arch="x86_64"/>
-      <repopackage name="librest-0_7-0" arch="x86_64"/>
       <repopackage name="librgw2" arch="x86_64"/>
       <repopackage name="librpmbuild9" arch="x86_64"/>
       <repopackage name="librsvg-2-2" arch="x86_64"/>
