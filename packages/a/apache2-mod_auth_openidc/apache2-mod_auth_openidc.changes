@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Jul 23 07:46:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Update to version 2.4.9
+  * Security
+    - use redisvCommand to avoid crash with crafted key when using Redis 
+      without encryption; thanks @thomas-chauchefoin-sonarsource
+    - replace potentially harmful backslashes with forward slashes when 
+      validating redirection URLs; thanks @thomas-chauchefoin-sonarsource
+    - avoid XSS vulnerability when using OIDCPreservePost On and supplying 
+      URLs that contain single quotes; thanks @oss-aimoto
+    - return OK in the content handler for calls to the redirect URI and when 
+      preserving POST data; prevent (intermittent) disclosure of content 
+      hosted at a (non-vanity) redirect URI location
+    - use encrypted JWTs for storing encrypted cache contents and
+      avoid using static AAD/IV; thanks @niebardzo
+  * Bugfixes
+    - verify that alg is not none in logout_token explicitly
+    - don't clear POST params authn on token revocation; thanks @iainh
+    - fix a problem where the host and port are calculated incorrectly when using literal ipv6 address.
+  * Other
+    - make session not found on backchannel logout produce a log warning instead of error
+    - handle discovery in the content handler
+    - strip A256GCM JWT header from encrypted JWTs used for state cookies, 
+      cache encryption and by-value session cookies resulting in smaller 
+      cookies and reduced cache content size
+- Fix CVE-2021-32785 format string bug via hiredis
+  (CVE-2021-32785, bsc#1188638)
+- Fix CVE-2021-32786 open redirect in logout functionality
+  (CVE-2021-32786, bsc#1188639)
+
+-------------------------------------------------------------------
+Wed Jun  2 19:04:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- Use autogen.sh to generate missing configure script
+- Update to version 2.4.8.4
+  * Bugfixes
+    - do not send state timeout HTML document when OIDCDefaultURL is set;
+      this can be overridden by using e.g.:
+      SetEnvIfExpr true OIDC_NO_DEFAULT_URL_ON_STATE_TIMEOUT=true
+    - avoid Apache 2.4 appending 400/302(200/404) HTML document text to 
+      state timeout HTML info page see also f5959d7 and #484; at least Debian 
+      Buster was affected
+  * Other
+    - make error "session corrupted: no issuer found in session" a warning 
+      only so a logout call for a non-existing session no longer produces 
+      error messages
+
+-------------------------------------------------------------------
 Tue May 18 15:51:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.8.2
