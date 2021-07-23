@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 22 19:40:30 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.4 
+* Prevent transcoding of 1bpp DICOM images, as this might crash GDCM
+
+-------------------------------------------------------------------
 Sat Jun 19 13:46:53 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.3
