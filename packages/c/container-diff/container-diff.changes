@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 22 14:34:45 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 0.17.0:
+  * Resolve symlink issue. #355
+  * Remove global variable #349
+  * Code improvement in function readErrorsFromChannel() #347
+- Drop _service, plain URL is sufficient
+- Drop docker recommendation, not really useful
+- Drop %go_nostip, unnecessary
+
+-------------------------------------------------------------------
 Mon Jan 11 09:47:20 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
 
 - Update to 0.16.0

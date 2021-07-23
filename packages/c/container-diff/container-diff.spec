@@ -18,18 +18,15 @@
 
 %define project github.com/GoogleContainerTools/container-diff
 Name:           container-diff
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Tool to analyze and compare container images
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/GoogleCloudPlatform/container-diff
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/GoogleCloudPlatform/container-diff/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) >= 1.7
-Recommends:     docker
-# disable stripping of binaries
-%{go_nostrip}
 
 %description
 container-diff is a tool for analyzing and comparing container images.
