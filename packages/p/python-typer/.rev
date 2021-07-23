@@ -7,4 +7,15 @@
     <comment>new package</comment>
     <requestid>885596</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>dd01fdf77030377d1afa000e4f00518e</srcmd5>
+    <version>0.3.2</version>
+    <time>1627076484</time>
+    <user>dimstar_suse</user>
+    <comment>- Resolve Typer no longer working since Click got bumped to version
+  8.
+  * This removes support for autocompletion.
+- Add basic-click8-compat.patch</comment>
+    <requestid>908022</requestid>
+  </revision>
 </revisionlist>

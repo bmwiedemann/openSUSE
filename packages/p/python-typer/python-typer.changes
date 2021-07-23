@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 23 18:56:14 UTC 2021 - Matthias Bach <marix@marix.org>
+
+- Resolve Typer no longer working since Click got bumped to version
+  8.
+  * This removes support for autocompletion.
+- Add basic-click8-compat.patch
+
+-------------------------------------------------------------------
 Wed Apr 14 16:06:14 UTC 2021 - Matthias Bach <marix@marix.org>
 
 - Properly specify package group.

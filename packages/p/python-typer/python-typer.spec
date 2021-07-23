@@ -16,28 +16,29 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define skip_python2 1
 
+%define skip_python2 1
 Name:           python-typer
 Version:        0.3.2
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
+Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Group:          Development/Languages/Python
-BuildRequires:  python-rpm-macros
+Patch1:         basic-click8-compat.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module shellingham}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module shellingham}
 BuildRequires:  fdupes
-BuildArch:      noarch
+BuildRequires:  python-rpm-macros
 Requires:       python-click >= 7.1
 Recommends:     python-colorama
 Recommends:     python-shellingham
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -48,9 +49,9 @@ With automatic help and completion, Typer makes CLIs easy to use for users.
 
 This package provides the Typer Python package required to build and run Typer-based CLI applications.
 
-
 %prep
 %setup -q -n typer-%{version}
+%patch1 -p1
 
 %build
 %python_build
