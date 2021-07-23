@@ -2769,4 +2769,12 @@ The toolset consists of a variety of stand-alone scripts, review bots, osc plugi
   * Use pytest instead of nosetests (fixes #2524)</comment>
     <requestid>907699</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>dfa7d0ebae394247c136eebec53d6af6</srcmd5>
+    <version>20210722.9d1e9c24</version>
+    <time>1627076468</time>
+    <user>dimstar_suse</user>
+    <comment>automatic update</comment>
+    <requestid>907873</requestid>
+  </revision>
 </revisionlist>
