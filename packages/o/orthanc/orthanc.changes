@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 22 13:34:16 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.9.6 
+* In lookup and query/retrieve, possibility to provide a specific study date
+* Clicking on "Send to remote modality" displays the job information to monitor progress
+* Fix orphaned attachments if bad revision number is provided
+
+-------------------------------------------------------------------
 Mon Jul 19 06:00:06 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove executable bits from Python scripts when creating the source
