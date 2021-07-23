@@ -17,12 +17,12 @@
 
 
 Name:           goverlay
-Version:        0.5.1
+Version:        0.6
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
 URL:            https://github.com/benjamimgois/goverlay
-Source0:        https://github.com/benjamimgois/goverlay/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE goverlay-enable-debuginfo-generation.patch andythe_great@pm.me -- Enable generate debuginfo
 Patch0:         goverlay-enable-debuginfo-generation.patch
 BuildRequires:  appstream-glib

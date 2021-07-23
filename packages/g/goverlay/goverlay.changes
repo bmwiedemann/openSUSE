@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 22 22:33:35 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.6.0.
+  * New: Mangohud - Included core_load_change in load_change CPU
+    option
+  * New: Mangohud - include Gamemode status
+  * New: Mangohud - include vkbasalt status
+  * New: Mangohud - include max fps limit
+  * New: Mangohud - include Session Type (x11 or wayland)
+  * New: Mangohud - include Current resolution
+  * New: Mangohud - include battery status
+  * New: Mangohud - include Distribution info
+    (Distro name, version and kernel)
+  * New: Mangohud - Added new fps limits
+    (60 / 30 , 120 / 60, 240 , 360, 420)
+  * New: vkbasalt - Added option to launch steam, lutris or heroic
+    with vkbasalt enabled
+  * fix: vkbasalt - Removed glxgears from vkbasalt test button
+  * New: ReplaySorcery - Added new video encoders from 0.6 release
+    (x265, hevc, vaapi_h264, vaapi_hevc)
+  * fix: Tweaks in Global enablement for Mangohud and vkbasalt
+  * fix: fix showing red dot when MangoHud is the only missing
+    dependency
+
+-------------------------------------------------------------------
 Sat Jun  5 08:17:05 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.5.1.
