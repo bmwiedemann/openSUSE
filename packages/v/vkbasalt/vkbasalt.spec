@@ -1,7 +1,7 @@
 #
 # spec file for package vkbasalt
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define __builder ninja
 Name:           vkbasalt
-Version:        0.3.2.3
+Version:        0.3.2.4
 Release:        0
 Summary:        Vulkan post processing layer
 License:        Zlib
@@ -30,6 +30,9 @@ BuildRequires:  glslang-devel
 BuildRequires:  libX11-devel
 BuildRequires:  meson
 BuildRequires:  ninja
+BuildRequires:  spirv-headers
+BuildRequires:  spirv-tools
+BuildRequires:  vulkan-headers
 
 %description
 vkBasalt is a Vulkan post processing layer to enhance the visual graphics of games.
@@ -44,6 +47,9 @@ vkBasalt is a Vulkan post processing layer to enhance the visual graphics of gam
 %install
 %meson_install
 
+# Configuration file
+install -Dpm0644 config/vkBasalt.conf -t %{buildroot}%{_sysconfdir}/
+
 %files
 %license LICENSE
 %doc README.md
@@ -51,5 +57,6 @@ vkBasalt is a Vulkan post processing layer to enhance the visual graphics of gam
 %dir %{_datadir}/vulkan
 %dir %{_datadir}/vulkan/implicit_layer.d
 %{_datadir}/vulkan/implicit_layer.d/vkBasalt.json
+%config(noreplace) %{_sysconfdir}/vkBasalt.conf
 
 %changelog

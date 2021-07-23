@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>850913</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73f2023e240f799ad3ef2aa56d1338f2</srcmd5>
+    <version>0.3.2.4</version>
+    <time>1627076474</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.2.4.
+  * Fixed more issues where incorrect engine name would be shown
+  * ToGL detection
+  * middle-left and middle-right are now options in the position param
+  * Fixed issue where vulkan driver version would be incorrect
+</comment>
+    <requestid>907917</requestid>
+  </revision>
 </revisionlist>
