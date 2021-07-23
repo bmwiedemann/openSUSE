@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 16 09:45:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.18
+  * A number of fixes for other platforms like Android
+
+-------------------------------------------------------------------
 Thu Jan 21 08:34:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - pwdutils was dropped long time ago

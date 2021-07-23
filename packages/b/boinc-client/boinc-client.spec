@@ -35,8 +35,8 @@
 
 Name:           boinc-client
 %define rel_name        %{name}_release
-%define minor_version   7.16
-Version:        %{minor_version}.14
+%define minor_version   7.18
+Version:        %{minor_version}.0
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -203,6 +203,8 @@ for i in locale; do
   popd
 done
 
+rm -f "%{buildroot}/etc/init.d/boinc-client"
+
 # Creates default folders
 install -dm0755 %{buildroot}%{boinc_dir}
 install -dm0755 %{buildroot}%{_mandir}/man1
@@ -283,7 +285,7 @@ install -dm0755 %{buildroot}%{_var}/lib/boinc
 %if %{with manager}
 %find_lang BOINC-Manager
 %else
-find %{buildroot}/%{_datadir}/locale/ -name "BOINC-Manager.mo" -exec rm -f \{\} \;
+find %{buildroot}/%{_datadir}/locale/ -name "BOINC-Manager.mo" -delete
 %endif
 
 %fdupes -s %{buildroot}
@@ -326,7 +328,6 @@ if [ -x %{_bindir}/gtk-update-icon-cache ]; then
 fi
 
 %post -n libboinc%{sonum} -p /sbin/ldconfig
-
 %postun -n libboinc%{sonum} -p /sbin/ldconfig
 
 %files
@@ -354,6 +355,7 @@ fi
 %{_bindir}/boincmgr
 %{_bindir}/boincmanager
 %{_bindir}/boincscr
+%{_datadir}/applications/boinc.desktop
 %{_datadir}/applications/boinc-gui.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 %{_mandir}/man1/boincmgr.1.gz
