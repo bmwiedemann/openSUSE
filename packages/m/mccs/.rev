@@ -9,4 +9,12 @@
 It will be used as an external solver of the opam package.</comment>
     <requestid>686473</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>405351981fa68c6daa9d1a97e2995326</srcmd5>
+    <version>1.1</version>
+    <time>1627076480</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907958</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 12 23:17:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add mccs-gcc11-fix.patch to fix compilation with GCC 11.
+
+-------------------------------------------------------------------
 Tue Mar 19 10:31:25 UTC 2019 - andy@onthewings.net
 
 - Initial packaging.
