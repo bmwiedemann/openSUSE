@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul  8 06:25:47 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.5.4:
+  * clear texture cache before reloading the deeps sky, cache not found
+  * Set correct frame information for DSLR
+  * Fix twilight calculation
+  * don't show catalog identifier
+  * Better dso search
+  * fix descriptions due to wikipedia API update
+  * fix the thumbnails in what's interesting
+  * bring back the moon (and other solar system textures)
+  * Implement inline images for DSO, organize thumbnail downloads into separate directory
+  * Add filter synonyms for Analyze
+  * make the label density for catalogs cleverer
+  * Dso overhaul
+  * Increase sensitivity of pixel scale difference by an order of magnitude to detect small variations in focal length
+  * Add temperature regulation dialog box
+  * Magnifying glass for fitsviewer.
+  * Small update to the Scheduler docbook for the Mosaic Tool.
+  * Improve Mosaic Tool state
+  * Sync setting when temperature source changes
+  * Set calibration mode (previously preview_mode) whenever calibration is started...
+  * Make user select explicit temperature source for focus instead of assuming which source to use
+  * Refactor artificial horizon constraints. Add ceiling constraint. Add unit tests. Use Great circle.
+  * Bugfix meridian flip for lower culmination
+  * Lots of others small fixes
+- Add hotfix-twilight.patch: this patch fixes an issue with the
+  twilight calculation. This fix is part of the 3.5.5-dev, and it
+  seems that no new release will be made for 3.5.4 (e.g. 3.5.4.1)
+
+-------------------------------------------------------------------
 Tue May 11 08:42:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix crash, when using EKOS, caused by a missing runtime 

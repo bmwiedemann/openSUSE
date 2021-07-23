@@ -20,7 +20,7 @@
 %global __requires_exclude qmlimport\\((KStarsLiteEnums|TelescopeLiteEnums).*
 %bcond_without lang
 Name:           kstars
-Version:        3.5.3
+Version:        3.5.4
 Release:        0
 Summary:        Desktop Planetarium
 # Note for legal: the Apache licensed files in the tarball are for the
@@ -31,6 +31,8 @@ License:        GPL-2.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Scientific/Astronomy
 URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM 563c5f336ed4ed6a931b914fc4e836276dccfb70 -- this patch fixes an issue with the twilight calculation
+Patch0:         hotfix-twilight.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -82,6 +84,9 @@ simulation of the night sky, for any time and location on Earth.
 
 %prep
 %autosetup -p1
+
+# kde#439627
+rm po/de/docs/kstars/index.docbook
 
 %build
 %ifarch ppc ppc64
