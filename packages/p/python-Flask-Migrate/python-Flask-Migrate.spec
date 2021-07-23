@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Migrate
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-Flask-Migrate
-Version:        2.5.3
+Version:        3.0.1
 Release:        0
 Summary:        SQLAlchemy database migrations for Flask applications using Alembic
 License:        MIT
@@ -27,7 +27,6 @@ URL:            https://github.com/miguelgrinberg/flask-migrate/
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Migrate/Flask-Migrate-%{version}.tar.gz
 BuildRequires:  %{python_module Flask >= 0.9}
 BuildRequires:  %{python_module Flask-SQLAlchemy >= 1.0}
-BuildRequires:  %{python_module Flask-Script >= 0.6}
 BuildRequires:  %{python_module alembic >= 0.7}
 BuildRequires:  %{python_module setuptools}
 %if %{with python2}
@@ -37,7 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Flask >= 0.9
 Requires:       python-Flask-SQLAlchemy >= 1.0
-Requires:       python-Flask-Script >= 0.6
 Requires:       python-alembic >= 0.7
 BuildArch:      noarch
 %python_subpackages

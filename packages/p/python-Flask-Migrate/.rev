@@ -55,4 +55,12 @@
 - Remove merged patch pr_290.patch</comment>
     <requestid>787381</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ae98886556b304883c6fe7f060c80d3</srcmd5>
+    <version>3.0.1</version>
+    <time>1627076473</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907916</requestid>
+  </revision>
 </revisionlist>

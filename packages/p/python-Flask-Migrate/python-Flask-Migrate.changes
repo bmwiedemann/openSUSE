@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 21 07:13:43 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 3.0.1:
+  * Add support for Alchemical in addition to Flask-SQLAlchemy
+  * Remove Flask-Script references from the documentation
+
+- Changes from 3.0.0:
+  * Remove support for Flask-Script
+  * Use unittest testrunner
+  * Remove dependency on six package
+  * Added sphinx build files to .gitignore file
+  * Fix Sphinx warning
+
+- Changes from 2.7.0:
+  * Reuse engine from Flask-SQLAlchemy
+  * Update logging configuration to include Flask-Migrate's logger
+
+- Changes from 2.6.0:
+  * Removed deprecated --head-only option
+  * Initialize logger with a name
+  * Move import to the top in env.py file to avoid linter warnings
+  * Add a note to the documentation regarding logging
+  * Move builds to GitHub actions
+
+-------------------------------------------------------------------
 Mon Mar 23 09:15:41 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.5.3:
