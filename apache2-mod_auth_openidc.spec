@@ -17,7 +17,7 @@
 
 
 Name:           apache2-mod_auth_openidc
-Version:        2.4.8.2
+Version:        2.4.9
 Release:        0
 Summary:        Apache2.x module for an OpenID Connect enabled Identity Provider
 License:        Apache-2.0
@@ -26,6 +26,8 @@ URL:            https://github.com/zmartzone/mod_auth_openidc/
 Source:         https://github.com/zmartzone/mod_auth_openidc/releases/download/v%{version}/mod_auth_openidc-%{version}.tar.gz
 BuildRequires:  apache-rpm-macros
 BuildRequires:  apache2-devel
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cjose) >= 0.5.1
 BuildRequires:  pkgconfig(jansson) >= 2.0
@@ -45,6 +47,7 @@ This module enables an Apache 2.x web server to operate as an OpenID Connect Rel
 %setup -q -n mod_auth_openidc-%{version}
 
 %build
+./autogen.sh
 %configure \
 %if 0%{?is_opensuse} > 0
   %{?_with_hiredis}    \
