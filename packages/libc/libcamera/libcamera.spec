@@ -17,8 +17,8 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse4
-Version:        0~2532.093b71b2
+%define lname   libcamera-suse5
+Version:        0~2809.e0704e97
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -104,14 +104,19 @@ export CXXFLAGS="$CFLAGS"
   -Ddocumentation=disabled \
   -Dqcam=enabled \
   -Dv4l2=false -Dtracing=disabled \
-  -Dpipelines=ipu3,raspberrypi,rkisp1,simple,uvcvideo,vimc
+  -Dpipelines=ipu3,raspberrypi,rkisp1,simple,uvcvideo,vimc \
+  -Dlc-compliance=disabled
 %meson_build
 
 %install
 %meson_install
-# Together with patch1, this makes for the "-release" feature from libtool
+# libtool's -release would be so much more direct, but alas, meson...
 mv "%buildroot/%_libdir/libcamera-suse.so" "%buildroot/%_libdir/libcamera.so"
-perl -i -pe 's{-lcamera-suse}{-lcamera}' "%buildroot/%_libdir/pkgconfig"/*.pc
+mv "%buildroot/%_libdir/libcamera-base-suse.so" "%buildroot/%_libdir/libcamera-base.so"
+mv "%buildroot/%_libdir/pkgconfig/libcamera-suse.pc" "%buildroot/%_libdir/pkgconfig/libcamera.pc"
+mv "%buildroot/%_libdir/pkgconfig/libcamera-base-suse.pc" "%buildroot/%_libdir/pkgconfig/libcamera-base.pc"
+perl -i -pe 's{camera-suse}{camera}' "%buildroot/%_libdir/pkgconfig"/*.pc
+perl -i -pe 's{camera-base-suse}{camera-base}' "%buildroot/%_libdir/pkgconfig"/*.pc
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
@@ -122,12 +127,12 @@ perl -i -pe 's{-lcamera-suse}{-lcamera}' "%buildroot/%_libdir/pkgconfig"/*.pc
 %files devel
 %license LICENSES/*GPL*
 %_includedir/libcamera/
+%_libdir/libcamera-base.so
 %_libdir/libcamera.so
 %_libdir/pkgconfig/*.pc
 
 %files tools
 %_bindir/cam
-%_bindir/lc-compliance
 %_bindir/qcam
 %_libexecdir/libcamera/
 %_libdir/libcamera/

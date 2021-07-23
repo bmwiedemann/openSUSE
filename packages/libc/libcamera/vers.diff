@@ -3,21 +3,38 @@ Date: 2018-12-06 12:28:42.992186963 +0100
 
 I get it is still in development. But unversioned libraries suck nevertheless.
 ---
- src/libcamera/meson.build |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ src/libcamera/base/meson.build |    3 ++-
+ src/libcamera/meson.build      |    3 ++-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
 
-Index: libcamera-0~2532.093b71b2/src/libcamera/meson.build
+Index: libcamera-0~2809.e0704e97/src/libcamera/base/meson.build
 ===================================================================
---- libcamera-0~2532.093b71b2.orig/src/libcamera/meson.build
-+++ libcamera-0~2532.093b71b2/src/libcamera/meson.build
-@@ -144,8 +144,9 @@ endif
+--- libcamera-0~2809.e0704e97.orig/src/libcamera/base/meson.build
++++ libcamera-0~2809.e0704e97/src/libcamera/base/meson.build
+@@ -25,9 +25,10 @@ libcamera_base_deps = [
+ # the use of headers which must not be exposed to the libcamera public api.
+ libcamera_base_args = [ '-DLIBCAMERA_BASE_PRIVATE' ]
+ 
+-libcamera_base_lib = shared_library('libcamera-base',
++libcamera_base_lib = shared_library('libcamera-base-suse',
+                                     [libcamera_base_sources, libcamera_base_headers],
+                                     name_prefix : '',
++                                    soversion : '5',
+                                     install : true,
+                                     cpp_args : libcamera_base_args,
+                                     include_directories : libcamera_includes,
+Index: libcamera-0~2809.e0704e97/src/libcamera/meson.build
+===================================================================
+--- libcamera-0~2809.e0704e97.orig/src/libcamera/meson.build
++++ libcamera-0~2809.e0704e97/src/libcamera/meson.build
+@@ -124,8 +124,9 @@ libcamera_deps = [
  # runtime if the library is running from an installed location by checking
  # for the presence or abscence of the dynamic tag.
  
--libcamera = shared_library('camera',
-+libcamera = shared_library('camera-suse',
+-libcamera = shared_library('libcamera',
++libcamera = shared_library('libcamera-suse',
                             libcamera_sources,
-+                           soversion : '4',
++                           soversion : '5',
+                            name_prefix : '',
                             install : true,
-                            link_with : libcamera_link_with,
-                            cpp_args : libcamera_cpp_args,
+                            include_directories : includes,

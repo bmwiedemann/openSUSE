@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 23 16:39:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0~2809 (e0704e97) [boo#1188650]
+  * cam: support using multiple cameras concurrently
+
+-------------------------------------------------------------------
 Wed May  5 07:01:02 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0~2532 (093b71b2)
