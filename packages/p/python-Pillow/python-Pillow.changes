@@ -794,6 +794,7 @@ Mon Jul  2 00:59:10 UTC 2018 - arun@gmx.de
 Sat Apr  7 19:14:10 UTC 2018 - arun@gmx.de
 
 - removed freetype-2.9.patch, included upstream
+- removed freetype-2.9-and-2.10.patch, included upstream
 - removed pillow-non-iterable.patch, included upstream
 
 - update to version 5.1.0:

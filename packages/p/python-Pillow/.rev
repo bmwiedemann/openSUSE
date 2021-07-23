@@ -470,4 +470,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment></comment>
     <requestid>904590</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>9355f41f87a33ca0fe0c38bf58b10d8e</srcmd5>
+    <version>8.3.1</version>
+    <time>1627076473</time>
+    <user>dimstar_suse</user>
+    <comment>- removed freetype-2.9-and-2.10.patch, included upstream</comment>
+    <requestid>907720</requestid>
+  </revision>
 </revisionlist>
