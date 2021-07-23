@@ -67,4 +67,27 @@
   upstream.</comment>
     <requestid>906658</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>bf162079b796e36a7ab219540af8d661</srcmd5>
+    <version>1.11.0</version>
+    <time>1627076467</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.0:
+  - #261 Allow duplicate named attributes, controlled by a new
+    setting
+  - #268 Make the redirect scheme matcher case-insensitive
+  - #256 Improve signature validation process. Add an option to
+    use query string for validation
+  - #259 Add get metadata timeout
+  - #246 Add the ability to change the ProtocolBinding in the
+    authn request.
+  - #248 Move storing the response data into its own method in
+    the Auth class
+  - Remove the dependency on defusedxml
+  - #241 Improve AttributeConsumingService support
+  - Update expired dates from test responses
+- The test suite is still ignored.
+</comment>
+    <requestid>907875</requestid>
+  </revision>
 </revisionlist>

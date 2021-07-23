@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 23 07:12:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.11.0:
+  - #261 Allow duplicate named attributes, controlled by a new
+    setting
+  - #268 Make the redirect scheme matcher case-insensitive
+  - #256 Improve signature validation process. Add an option to
+    use query string for validation
+  - #259 Add get metadata timeout
+  - #246 Add the ability to change the ProtocolBinding in the
+    authn request.
+  - #248 Move storing the response data into its own method in
+    the Auth class
+  - Remove the dependency on defusedxml
+  - #241 Improve AttributeConsumingService support
+  - Update expired dates from test responses
+- The test suite is still ignored.
+
+-------------------------------------------------------------------
 Fri Jul 16 09:31:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - The test suite is a complete disaster right now, switching it

@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-python3-saml
-Version:        1.10.1
+Version:        1.11.0
 Release:        0
 Summary:        Python SAML support
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/onelogin/python3-saml
 Source:         https://github.com/onelogin/python3-saml/archive/v%{version}.tar.gz#/python3-saml-%{version}.tar.gz
-BuildRequires:  %{python_module defusedxml >= 0.5.0}
 BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module isodate >= 0.5.0}
 BuildRequires:  %{python_module lxml >= 3.3.5}
@@ -38,7 +37,6 @@ BuildRequires:  python-rpm-macros
 # Select the libxmlsec backend known to work
 # pkgconfig doesnt auto-require it.
 Requires:       libxmlsec1-openssl1
-Requires:       python-defusedxml >= 0.5.0
 Requires:       python-isodate >= 0.5.0
 Requires:       python-xmlsec >= 1.0.5
 BuildArch:      noarch
