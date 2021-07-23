@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 22 01:46:11 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update copyright year
+  * include setuptools_scm, importlib-metadata
+  * updated %files section
+
+- update to version 1.10.1:
+  * no changelog available at the moment
+
+- changes from version 1.10.0 :
+  * Automate the release process with GitHub Actions
+  * Use setuptools_scm to manage package versions
+  * The layout is now an actual package rather than a single module
+  * Clean up unused files
+
+-------------------------------------------------------------------
 Thu Nov 26 17:45:07 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

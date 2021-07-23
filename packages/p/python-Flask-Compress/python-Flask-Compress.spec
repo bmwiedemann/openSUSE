@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Compress
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Flask-Compress
-Version:        1.8.0
+Version:        1.10.1
 Release:        0
 Summary:        Compress responses in Flask apps with gzip
 License:        MIT
@@ -27,6 +27,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/colour-science/flask-compress
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-Compress/Flask-Compress-%{version}.tar.gz
 BuildRequires:  %{python_module Brotli}
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,8 +64,8 @@ Flask-Compress can solve the problem.
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%{python_sitelib}/flask_compress.py*
+%{python_sitelib}/flask_compress
 %{python_sitelib}/Flask_Compress-%{version}-py*.egg-info
-%pycache_only %{python_sitelib}/__pycache__
+%pycache_only %{python_sitelib}/flask_compress/__pycache__
 
 %changelog
