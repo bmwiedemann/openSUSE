@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Thu Jul 22 07:36:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-15.0.4+5 (July 2021 CPU)
+  * Security fixes
+    + JDK-8256157: Improve bytecode assembly
+    + JDK-8262380: Enhance XML processing passes
+    + JDK-8264460: Improve NTLM support
+    + JDK-8264079: Improve abstractions
+    + JDK-8264066, CVE-2021-2388, bsc#1188566: Enhance compiler
+      validation
+    + JDK-8262967: Improve Zip file support
+    + JDK-8262477: Enhance String Conclusions
+    + JDK-8262410: Enhanced rules for zones
+    + JDK-8262403: Enhanced data transfers
+    + JDK-8260967, CVE-2021-2369, bsc#1188565: Better jar file
+      validation
+    + JDK-8260960: Signs of jarsigner signing
+    + JDK-8260453: Improve Font Bounding
+    + JDK-8258432, CVE-2021-2341, bsc#1188564: Improve file
+      transfers
+    + JDK-8256491: Better HTTP transport
+  * Other changes
+    + JDK-8225081: Remove Telia Company CA certificate expiring in
+      April 2021
+    + JDK-8256421: Add 2 HARICA roots to cacerts truststore
+    + JDK-8259312: VerifyCACerts.java fails as soneraclass2ca cert
+      will expire in 90 days
+    + JDK-8225072: Add LuxTrust certificate that is expiring in
+      March 2021 to list of allowed but expired certs
+    + JDK-8258630: Add expiry exception for QuoVadis root
+      certificate
+    + JDK-8258414: OldObjectSample events too expensive
+    + JDK-8257621: JFR StringPool misses cached items across
+      consecutive recordings
+    + JDK-8255992: JFR EventWriter does not use first string from
+      StringPool with id 0
+    + JDK-8253299: Manifest bytes are read twice when verifying a
+      signed JAR
+    + JDK-8263361: Incorrect arraycopy stub selected by C2 for SATB
+      collectors
+    + JDK-8252883: AccessDeniedException caused by delayed file
+      deletion on Windows
+    + JDK-8251456: [TESTBUG] compiler/vectorization/
+      /TestVectorsNotSavedAtSafepoint.java failed OutOfMemoryError
+    + JDK-8267235: [macos_aarch64]
+      InterpreterRuntime::throw_pending_exception messing up LR
+      results in crash
+    + JDK-8261395: C1 crash "cannot make java calls from the native
+      compiler"
+    + JDK-8244154: Update SunPKCS11 provider with PKCS11 v3.0
+      header files
+    + JDK-8261022: Fix incorrect result of Math.abs() with char type
+    + JDK-8262829: Native crash in
+      Win32PrintServiceLookup.getAllPrinterNames()
+    + JDK-8256809: Annotation processing causes NPE during flow
+      analysis
+    + JDK-8251257: NMT: jcmd VM.native_memory scale=1 crashes
+      target VM
+    + JDK-8255908: ExceptionInInitializerError due to
+      UncheckedIOException while initializing cgroupv1 subsystem
+    + JDK-8249608: Vector register used by C2 compiled method
+      corrupted at safepoint
+    + JDK-8249215: JFrame::setVisible crashed with
+      -Dfile.encoding=UTF-8 on Japanese Windows.
+    + JDK-8257746: Regression introduced with JDK-8250984 - memory
+      might be null in some machines
+    + JDK-8247432: Update IANA Language Subtag Registry to Version
+      2020-09-29
+    + JDK-8250984: Memory Docker tests fail on some Linux kernels
+      w/o cgroupv1 swap limit capabilities
+    + JDK-8264821: DirectIOTest fails on a system with large block
+      size
+    + JDK-8255880: UI of Swing components is not redrawn after
+      their internal state changed
+    + JDK-8253476: TestUseContainerSupport.java fails on some Linux
+      kernels w/o swap limit capabilities
+    + JDK-8241248: NullPointerException in
+      sun.security.ssl.HKDF.extract(HKDF.java:93)
+    + JDK-8244500: jtreg test error in test/hotspot/
+      /jtreg/containers/docker/TestMemoryAwareness.java
+    + JDK-8250627: Use -XX:+/-UseContainerSupport for
+      enabling/disabling Java container metrics
+    + JDK-8260349: Cannot programmatically retrieve Metaspace max
+      set via JAVA_TOOL_OPTIONS
+    + JDK-8244088: [Regression] Switch of Gnome theme ends up in
+      deadlocked UI
+    + JDK-8260380: Upgrade to LittleCMS 2.12
+    + JDK-8264786: [macos] All Swing/AWT apps cause Allow
+      Notifications prompt to appear when app is launched
+    + JDK-8255845: Memory leak in imageFile.cpp
+    + JDK-8261170: Upgrade to FreeType 2.10.4
+    + JDK-8256633: Fix product build on Windows+Arm64
+    + JDK-8257633: Missing -mmacosx-version-min=X flag when linking
+      libjvm
+    + JDK-8257547: Handle multiple prereqs on the same line in deps
+      files
+    + JDK-8256810: Incremental rebuild broken on Macosx
+    + JDK-8256751: Incremental rebuild with precompiled header
+      fails when touching a header file
+    + JDK-8248532: Every time I change keyboard language at my
+      MacBook, Java crashes
+    + JDK-8257242: [macOS] Java app crashes while switching input
+      methods
+    + JDK-8265860: Update version .jcheck/conf in jdk15u to be
+      15.0.4
+    + JDK-8264823: Update building.html document for Git in jdk15u
+    + JDK-8252090: JFR: StreamWriterHost::write_unbuffered() stucks
+      in an infinite loop OpenJDK (build 13.0.1+9)
+    + JDK-8258396: SIGILL in
+      jdk.jfr.internal.PlatformRecorder.rotateDisk()
+    + JDK-8263846: Bad JNI lookup getFocusOwner in accessibility
+      code on Mac OS X
+    + JDK-8247753: UIManager.getSytemLookAndFeelClassName() returns
+      wrong value on Fedora 32
+    + JDK-8261198: [macOS] Incorrect JNI parameters in number
+      conversion in A11Y code
+    + JDK-8259585: [macos] Bad JNI lookup error : Accessible
+      actions do not work on macOS
+    + JDK-8259232: Bad JNI lookup during printing
+    + JDK-8262110: DST starts from incorrect time in 2038
+    + JDK-8073446: TimeZone getOffset API does not  return a dst
+      offset between years 2038-2137
+    + JDK-8259319: Illegal package access when SunPKCS11 requires
+      SunJCE's classes
+    + JDK-8257414: Drag n Drop target area is wrong on high DPI
+      systems
+    + JDK-8248552: C2 crashes with SIGFPE due to division by zero
+    + JDK-8251549: Update docs on building for Git
+    + JDK-8255086: Update the root locale display names
+    + JDK-8262446: DragAndDrop hangs on Windows
+    + JDK-8261231: Windows IME was disabled after DnD operation
+    + JDK-8257988: Remove JNF dependency from
+      libsaproc/MacosxDebuggerLocal.m
+    + JDK-8260616: Removing remaining JNF dependencies in the
+      java.desktop module
+    + JDK-8259869: [macOS] Remove desktop module dependencies on
+      JNF Reference APIs
+    + JDK-8259651: [macOS] Replace JNF_COCOA_ENTER/EXIT macros
+    + JDK-8259343: [macOS] Update JNI error handling in Cocoa code.
+    + JDK-8257853: Remove dependencies on JNF's JNI utility
+      functions in AWT and 2D code
+    + JDK-8240487: Cleanup whitespace in .cc, .hh, .m, and .mm files
+    + JDK-8257858: [macOS]: Remove JNF dependency from
+      libosxsecurity/KeystoreImpl.m
+    + JDK-8257860: [macOS]: Remove JNF dependency from
+      libosxkrb5/SCDynamicStoreConfig.m
+    + JDK-8256501: libTestMainKeyWindow fails to build with Xcode
+      12.2
+    + JDK-8257707: Fix incorrect format string in Http1HeaderParser
+    + JDK-7146776: deadlock between URLStreamHandler.getHostAddress
+      and file.Handler.openconnection
+    + JDK-8261397: Try Catch Method Failing to Work When Dividing
+      An Integer By 0
+
+-------------------------------------------------------------------
 Wed Apr 21 15:07:38 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-15.0.3+3 (April 2021 CPU)

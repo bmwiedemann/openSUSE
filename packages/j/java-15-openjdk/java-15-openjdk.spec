@@ -1,5 +1,5 @@
 #
-# spec file for package java-15-openjdk
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -32,13 +32,13 @@
 # Standard JPackage naming and versioning defines.
 %global featurever      15
 %global interimver      0
-%global updatever       3
+%global updatever       4
 %global patchver        0
-%global datever         2021-04-20
-%global buildver        3
-%global hg_project      jdk-updates
-%global hg_repository   jdk15u
-%global hg_revision     1bb2833119c5
+%global datever         2021-07-20
+%global buildver        5
+%global openjdk_repo    jdk15u
+%global openjdk_tag     jdk-15.0.4+5
+%global openjdk_dir     jdk15u-jdk-15.0.4-5
 %global icedtea_sound_version 1.0.1
 # JavaEE modules
 %global java_atk_wrapper_version 0.33.2
@@ -151,7 +151,7 @@ License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only 
 Group:          Development/Languages/Java
 URL:            https://openjdk.java.net/
 # Sources from upstream OpenJDK project.
-Source0:        http://hg.openjdk.java.net/%{hg_project}/%{hg_repository}/archive/%{hg_revision}.tar.bz2
+Source0:        https://github.com/openjdk/%{openjdk_repo}/archive/%{openjdk_tag}.tar.gz
 # Accessibility support
 Source8:        https://download.gnome.org/sources/java-atk-wrapper/0.33/java-atk-wrapper-%{java_atk_wrapper_version}.tar.xz
 # Pulseaudio support
@@ -444,18 +444,18 @@ with accessibility on, so please do not install this package unless you really
 need to.
 
 %prep
-%setup -q -n %{hg_repository}-%{hg_revision}
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 8
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 9
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 20
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 21
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 22
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 23
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 24
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 25
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 26
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 27
-%setup -q -D -n %{hg_repository}-%{hg_revision} -T -a 28
+%setup -q -n %{openjdk_dir}
+%setup -q -D -n %{openjdk_dir} -T -a 8
+%setup -q -D -n %{openjdk_dir} -T -a 9
+%setup -q -D -n %{openjdk_dir} -T -a 20
+%setup -q -D -n %{openjdk_dir} -T -a 21
+%setup -q -D -n %{openjdk_dir} -T -a 22
+%setup -q -D -n %{openjdk_dir} -T -a 23
+%setup -q -D -n %{openjdk_dir} -T -a 24
+%setup -q -D -n %{openjdk_dir} -T -a 25
+%setup -q -D -n %{openjdk_dir} -T -a 26
+%setup -q -D -n %{openjdk_dir} -T -a 27
+%setup -q -D -n %{openjdk_dir} -T -a 28
 
 # Replace config.sub and config.guess with fresh versions
 cp %{SOURCE100} make/autoconf/build-aux/
