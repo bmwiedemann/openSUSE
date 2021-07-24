@@ -46,6 +46,7 @@ Patch04:        add-command-line-switch-c-to-csv.patch
 Patch05:        add-command-line-switch-z-skip-zero-records.patch
 Patch06:        add-command-line-switch-L-to-log-file.patch
 Patch07:        add-sample-systemd-unit.patch
+Patch08:        add-restart-delay.patch
 
 %define XXX This package provides a userspace tool "kvm_stat", which displays KVM vm exit \
 information as a means of monitoring vm behavior. The data is taken from the\
@@ -82,6 +83,7 @@ There is no reason to install this package.
 %patch05 -p1
 %patch06 -p1
 %patch07 -p1
+%patch08 -p1
 %endif
 
 %build
