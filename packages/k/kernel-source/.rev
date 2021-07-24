@@ -5534,4 +5534,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.13.2</comment>
     <requestid>906362</requestid>
   </revision>
+  <revision rev="597" vrev="1">
+    <srcmd5>a02dc6eabf07c7811763b7bbd8251ea8</srcmd5>
+    <version>5.13.4</version>
+    <time>1627151940</time>
+    <user>dimstar_suse</user>
+    <comment>5.13.4 &amp; 5.13.3 &amp; armv6hl/v7hl boot crash fix &amp; other fixes</comment>
+    <requestid>907843</requestid>
+  </revision>
 </revisionlist>
