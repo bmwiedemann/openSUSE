@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 23 07:29:40 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210723.7e5bacec:
+  * Fix README.md reference to docs/processes.md
+  * Fix a few gocd links
+  * Update more tools status
+  * Update some tools status
+  * Add some info about obsolete tools
+  * Update gocd links
+  * Mark sync-rebuild as obsolete
+  * Extend container_cleanup description
+  * Apply suggestions from the review to the inventory
+  * Apply suggestions from the review to the inventory
+  * Fix a few typos
+  * Make clear that systemd units are not used by bots anymore
+  * Fix a few typos
+  * Add a document describing the contents of the repository
+
+-------------------------------------------------------------------
 Thu Jul 22 10:04:52 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210722.9d1e9c24:
