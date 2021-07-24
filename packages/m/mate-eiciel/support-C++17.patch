@@ -1,0 +1,158 @@
+diff -Nur mate-eiciel-1.20.1/src/acl_manager.cpp mate-eiciel-1.20.1-new/src/acl_manager.cpp
+--- mate-eiciel-1.20.1/src/acl_manager.cpp	2018-12-26 22:17:44.000000000 +0800
++++ mate-eiciel-1.20.1-new/src/acl_manager.cpp	2021-07-24 16:56:59.726790110 +0800
+@@ -19,7 +19,7 @@
+ #include "acl_manager.hpp"
+ 
+ 
+-ACLManager::ACLManager(const string& filename) throw (ACLManagerException)
++ACLManager::ACLManager(const string& filename)
+     : _filename(filename) 
+ {
+     // Get first UGO permissions and info about the file
+diff -Nur mate-eiciel-1.20.1/src/acl_manager.hpp mate-eiciel-1.20.1-new/src/acl_manager.hpp
+--- mate-eiciel-1.20.1/src/acl_manager.hpp	2018-12-26 22:17:44.000000000 +0800
++++ mate-eiciel-1.20.1-new/src/acl_manager.hpp	2021-07-24 16:56:33.818885519 +0800
+@@ -169,7 +169,7 @@
+         const static int PERM_WRITE = 1;
+         const static int PERM_EXEC = 2;
+ 
+-        ACLManager(const string& filename) throw (ACLManagerException);
++        ACLManager(const string& filename);
+         
+         string get_acl_access() const { return _text_acl_access; }
+         string get_acl_default() const { return _text_acl_default; }
+diff -Nur mate-eiciel-1.20.1/src/eiciel_xattr_controller.cpp mate-eiciel-1.20.1-new/src/eiciel_xattr_controller.cpp
+--- mate-eiciel-1.20.1/src/eiciel_xattr_controller.cpp	2018-12-26 22:17:44.000000000 +0800
++++ mate-eiciel-1.20.1-new/src/eiciel_xattr_controller.cpp	2021-07-24 17:06:14.564772565 +0800
+@@ -24,7 +24,7 @@
+ {
+ }
+ 
+-void EicielXAttrController::open_file(const Glib::ustring& filename) throw (XAttrManagerException)
++void EicielXAttrController::open_file(const Glib::ustring& filename)
+ {
+     if (_xattr_manager != NULL)
+     {
+@@ -52,22 +52,22 @@
+     }
+ }
+ 
+-void EicielXAttrController::remove_attribute(const Glib::ustring& nomAtrib)  throw (XAttrManagerException)
++void EicielXAttrController::remove_attribute(const Glib::ustring& nomAtrib)
+ {
+     _xattr_manager->remove_attribute(nomAtrib);
+ }
+ 
+-void EicielXAttrController::add_attribute(const Glib::ustring& nomAtrib, const Glib::ustring& valorAtrib) throw (XAttrManagerException)
++void EicielXAttrController::add_attribute(const Glib::ustring& nomAtrib, const Glib::ustring& valorAtrib)
+ {
+     _xattr_manager->add_attribute(nomAtrib, valorAtrib);
+ }
+ 
+-void EicielXAttrController::update_attribute_value(const Glib::ustring& nomAtrib, const Glib::ustring& valorNouAtrib) throw (XAttrManagerException) 
++void EicielXAttrController::update_attribute_value(const Glib::ustring& nomAtrib, const Glib::ustring& valorNouAtrib)
+ {
+     _xattr_manager->add_attribute(nomAtrib, valorNouAtrib);
+ }
+ 
+-void EicielXAttrController::update_attribute_name(const Glib::ustring& nomAnticAtribut, const Glib::ustring& nomNouAtribut) throw (XAttrManagerException)
++void EicielXAttrController::update_attribute_name(const Glib::ustring& nomAnticAtribut, const Glib::ustring& nomNouAtribut)
+ {
+     _xattr_manager->change_attribute_name(nomAnticAtribut, nomNouAtribut);
+ }
+diff -Nur mate-eiciel-1.20.1/src/eiciel_xattr_controller.hpp mate-eiciel-1.20.1-new/src/eiciel_xattr_controller.hpp
+--- mate-eiciel-1.20.1/src/eiciel_xattr_controller.hpp	2018-12-26 22:17:44.000000000 +0800
++++ mate-eiciel-1.20.1-new/src/eiciel_xattr_controller.hpp	2021-07-24 16:58:14.654516821 +0800
+@@ -32,21 +32,21 @@
+         EicielXAttrWindow* _window;
+         bool _opened_file;
+ 
+-        void remove_attribute(const Glib::ustring& attrib_name) throw (XAttrManagerException);
++        void remove_attribute(const Glib::ustring& attrib_name);
+ 
+         void add_attribute(const Glib::ustring& attrib_name, 
+-                const Glib::ustring& attrib_value) throw (XAttrManagerException);
++                const Glib::ustring& attrib_value);
+         void update_attribute_value(const Glib::ustring& attrib_name, 
+-                const Glib::ustring& attrib_new_value) throw (XAttrManagerException) ;
++                const Glib::ustring& attrib_new_value);
+         void update_attribute_name(const Glib::ustring& old_attribute_name, 
+-                const Glib::ustring& new_attribute_name) throw (XAttrManagerException);
++                const Glib::ustring& new_attribute_name);
+ 
+         void check_editable();
+     public:
+         EicielXAttrController();
+         bool opened_file() { return _opened_file; };
+ 
+-        void open_file(const Glib::ustring& filename) throw (XAttrManagerException);
++        void open_file(const Glib::ustring& filename);
+ 
+         friend class EicielXAttrWindow;
+ }
+diff -Nur mate-eiciel-1.20.1/src/xattr_manager.cpp mate-eiciel-1.20.1-new/src/xattr_manager.cpp
+--- mate-eiciel-1.20.1/src/xattr_manager.cpp	2018-12-26 22:17:44.000000000 +0800
++++ mate-eiciel-1.20.1-new/src/xattr_manager.cpp	2021-07-24 16:56:07.298983175 +0800
+@@ -18,7 +18,7 @@
+ */
+ #include "xattr_manager.hpp"
+ 
+-XAttrManager::XAttrManager(const Glib::ustring& filename) throw (XAttrManagerException)
++XAttrManager::XAttrManager(const Glib::ustring& filename)
+     : _filename(filename)
+ {
+     // Check it is an ordinary file or a directory
+@@ -41,7 +41,7 @@
+ }
+ 
+ // We should find better ways to test xattr support
+-void XAttrManager::read_test() throw (XAttrManagerException)
++void XAttrManager::read_test()
+ {
+     Glib::ustring qualified_attr_name = "user.test";
+     int buffer_length;
+@@ -62,7 +62,7 @@
+     delete[] buffer;
+ }
+ 
+-std::vector<std::string> XAttrManager::get_xattr_list() throw (XAttrManagerException)
++std::vector<std::string> XAttrManager::get_xattr_list()
+ {
+     std::vector<std::string> result;
+ 
+@@ -133,7 +133,7 @@
+     return result;
+ }
+ 
+-std::string XAttrManager::get_attribute_value(const std::string& attr_name) throw (XAttrManagerException)
++std::string XAttrManager::get_attribute_value(const std::string& attr_name)
+ {
+     int size = 30;
+     char* buffer = new char[size];
+diff -Nur mate-eiciel-1.20.1/src/xattr_manager.hpp mate-eiciel-1.20.1-new/src/xattr_manager.hpp
+--- mate-eiciel-1.20.1/src/xattr_manager.hpp	2018-12-26 22:17:44.000000000 +0800
++++ mate-eiciel-1.20.1-new/src/xattr_manager.hpp	2021-07-24 16:55:11.287189433 +0800
+@@ -60,7 +60,7 @@
+     public:
+         typedef std::map<std::string, std::string> attributes_t;
+ 
+-        XAttrManager(const Glib::ustring& filename) throw (XAttrManagerException);
++        XAttrManager(const Glib::ustring& filename);
+ 
+         attributes_t get_attributes_list();
+         void remove_attribute(std::string attr_name);
+@@ -74,10 +74,10 @@
+         }
+ 
+     private:
+-        std::vector<std::string> get_xattr_list() throw (XAttrManagerException);
+-        std::string get_attribute_value(const std::string& attr_name) throw (XAttrManagerException);
++        std::vector<std::string> get_xattr_list();
++        std::string get_attribute_value(const std::string& attr_name);
+ 
+-        void read_test() throw (XAttrManagerException);
++        void read_test();
+ 
+         Glib::ustring _filename;
+ 

@@ -1,7 +1,7 @@
 #
 # spec file for package mate-eiciel
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/darkshram/mate-eiciel
 Source:         https://github.com/darkshram/mate-eiciel/releases/download/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE mate-eiciel-gtk-3.20.patch -- Restore GLib 2.48 and GTK+ 3.20 support.
 Patch0:         mate-eiciel-gtk-3.20.patch
+# PATCH-FIX-UPSTREAM support-C++17.patch hillwood@opensuse.org - Use ISO C++17
+Patch1:         support-C++17.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -55,8 +57,7 @@ A Caja extension that allows viewing and editing ACL permissions.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 NOCONFIGURE=1 mate-autogen

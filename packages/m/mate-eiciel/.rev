@@ -15,4 +15,12 @@
     <comment>- Update to version 1.20.1.</comment>
     <requestid>682540</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>ebf0c1f68b36263a5d19f3356433cf76</srcmd5>
+    <version>1.20.1</version>
+    <time>1627151948</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-C++17.patch, use ISO C++17 (forwarded request 908073 from hillwood)</comment>
+    <requestid>908074</requestid>
+  </revision>
 </revisionlist>
