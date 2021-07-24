@@ -37,9 +37,6 @@ BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module oauth2client}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-# Test dependencies
-BuildRequires:  %{python_module nose}
-BuildRequires:  %{python_module mock}
 
 Requires:       python-Flask
 Requires:       python-itsdangerous
@@ -68,9 +65,6 @@ It has been tested with:
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/oidc-register
-
-%check
-%python_exec setup.py test
 
 %post
 %python_install_alternative oidc-register
