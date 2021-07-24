@@ -5644,7 +5644,6 @@ unsorted:
   - gmetrics-javadoc 
   - gmic 
   - gmic-bash-completion 
-  - gmic-zart 
   - gmime-devel 
   - gmmlib-devel: [x86_64] 
   - gmock 
@@ -8851,7 +8850,7 @@ unsorted:
   - libOpenCOLLADAFramework0_3 
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
-  - libOpenColorIO1 
+  - libOpenColorIO2_0 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
   - libOpenImageIO2_2 
@@ -9867,7 +9866,7 @@ unsorted:
   - libcalcium0 
   - libcamd-doc 
   - libcamera-devel 
-  - libcamera-suse4 
+  - libcamera-suse5 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -12869,6 +12868,7 @@ unsorted:
   - libpurple-plugin-pack-extras 
   - libpwquality-devel 
   - libpwquality-tools: [i586] 
+  - libpystring0_0 
   - libpythia8 
   - libpythia8lhapdf6 
   - libpython2_7-1_0-32bit: [x86_64] 
@@ -20877,14 +20877,13 @@ unsorted:
   - pyliblo-tools 
   - pymilter-common 
   - pyradio 
+  - pystring-devel 
   - pythia-devel 
   - pythia-doc 
   - python-32bit: [x86_64] 
   - python-Genshi-doc 
   - python-Kivy-doc 
   - python-M2Crypto-doc 
-  - python-OpenColorIO 
-  - python-OpenColorIO-devel 
   - python-SQLAlchemy-doc 
   - python-Scrapy-doc 
   - python-SpeechRecognition-common-en-US 
@@ -21077,6 +21076,7 @@ unsorted:
   - python3-HyperKitty 
   - python3-Keras-Preprocessing: [x86_64] 
   - python3-MapProxy 
+  - python3-OpenColorIO 
   - python3-OpenImageIO 
   - python3-PyCBC 
   - python3-Rivet 
@@ -22153,7 +22153,6 @@ unsorted:
   - python36-compileall2 
   - python36-compizconfig 
   - python36-concurrentloghandler 
-  - python36-configargparse 
   - python36-configobj 
   - python36-configshell-fb 
   - python36-confluent-kafka 
@@ -24523,7 +24522,6 @@ unsorted:
   - python38-astral 
   - python38-astroid 
   - python38-astropy 
-  - python38-astropy-helpers 
   - python38-asttokens 
   - python38-astunparse 
   - python38-asv 
@@ -24966,7 +24964,6 @@ unsorted:
   - python38-compileall2 
   - python38-compizconfig 
   - python38-concurrentloghandler 
-  - python38-configargparse 
   - python38-configshell-fb 
   - python38-confluent-kafka 
   - python38-confpy 
@@ -27501,7 +27498,6 @@ unsorted:
   - python39-astral 
   - python39-astroid 
   - python39-astropy 
-  - python39-astropy-helpers 
   - python39-asttokens 
   - python39-astunparse 
   - python39-asv 
@@ -27959,7 +27955,6 @@ unsorted:
   - python39-compileall2 
   - python39-compizconfig 
   - python39-concurrentloghandler 
-  - python39-configargparse 
   - python39-configobj 
   - python39-configshell-fb 
   - python39-confluent-kafka 
