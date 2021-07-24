@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 24 01:52:54 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Update to v3.2
+  * Django 3.2 support added
+
+-------------------------------------------------------------------
 Fri Apr 16 07:48:17 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 3.1.2 (bsc#1184427, CVE-2021-21416)

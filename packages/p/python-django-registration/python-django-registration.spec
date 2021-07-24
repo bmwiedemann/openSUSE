@@ -18,7 +18,7 @@
 
 %define skip_python2 1
 Name:           python-django-registration
-Version:        3.1.2
+Version:        3.2
 Release:        0
 Summary:        An extensible user-registration application for Django
 License:        BSD-3-Clause
