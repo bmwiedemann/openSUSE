@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-extra-views
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Extra class-based views for Django
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/AndrewIngram/django-extra-views
 Source:         https://github.com/AndrewIngram/django-extra-views/archive/%{version}.tar.gz#/django-extra-views-%{version}.tar.gz
+Patch0:         https://patch-diff.githubusercontent.com/raw/AndrewIngram/django-extra-views/pull/233.patch#/merged_pr_233.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -43,6 +45,7 @@ Extra class-based views for Django.
 
 %prep
 %setup -q -n django-extra-views-%{version}
+%patch0 -p1
 
 %build
 %python_build

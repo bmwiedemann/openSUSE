@@ -1,0 +1,222 @@
+From 4a2bf63352b3fb58c5e932a67e9763a68a012702 Mon Sep 17 00:00:00 2001
+From: sdolemelipone <mark.gensler@protonmail.com>
+Date: Fri, 18 Jun 2021 16:04:21 +0100
+Subject: [PATCH 1/3] Added Django 3.2 and Python 3.9 and fixed management form
+ test.
+
+---
+ extra_views_tests/tests.py | 21 ++++++++++++++++++---
+ tox.ini                    |  8 +++++---
+ 2 files changed, 23 insertions(+), 6 deletions(-)
+
+diff --git a/extra_views_tests/tests.py b/extra_views_tests/tests.py
+index 013bdd7..758779c 100644
+--- a/extra_views_tests/tests.py
++++ b/extra_views_tests/tests.py
+@@ -2,6 +2,7 @@
+ from decimal import Decimal as D
+ from unittest import expectedFailure
+ 
++import django
+ from django.contrib.messages import get_messages
+ from django.core.exceptions import ImproperlyConfigured
+ from django.forms import ValidationError
+@@ -32,9 +33,23 @@ def test_formset_named(self):
+         self.assertEqual(res.status_code, 200)
+         self.assertEqual(res.context["formset"], res.context["AddressFormset"])
+ 
+-    def test_missing_management(self):
+-        with self.assertRaises(ValidationError):
+-            self.client.post("/formset/simple/", {})
++    def test_missing_management_form(self):
++        # Django >=3.2 and does not raise an exception, but returns an error.
++        if django.__version__ >= "3.2.0":
++            res = self.client.post("/formset/simple/", {})
++            self.assertEqual(200, res.status_code)
++            formset = res.context["formset"]
++            self.assertFalse(formset.is_valid())
++            self.assertIn(
++                "ManagementForm data is missing or has been tampered with",
++                formset.non_form_errors()[0],
++            )
++        else:
++            with self.assertRaisesRegex(
++                ValidationError,
++                "ManagementForm data is missing or has been tampered with",
++            ):
++                self.client.post("/formset/simple/", {})
+ 
+     def test_success(self):
+         res = self.client.post("/formset/simple/", self.management_data, follow=True)
+diff --git a/tox.ini b/tox.ini
+index 908caeb..26d386c 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,8 +1,9 @@
+ [tox]
+ envlist = py35-django{21,22}
+-          py36-django{21,22,30,31,master}
+-          py37-django{21,22,30,31,master}
+-          py38-django{22,30,31,master}
++          py36-django{21,22,30,31,32,master}
++          py37-django{21,22,30,31,32,master}
++          py38-django{22,30,31,32,master}
++          py39-django{22,30,31,32,master}
+           docs
+ 
+ [testenv]
+@@ -19,6 +20,7 @@ deps =
+     django22: Django>=2.2,<2.3
+     django30: Django>=3.0a1,<3.1
+     django31: Django>=3.1,<3.2
++    django32: Django>=3.2,<3.3
+     djangomaster: https://github.com/django/django/archive/main.tar.gz
+     pytest-django
+     pytest-cov
+
+From 41048f5a22e0117e0474b93f11087cf9da3aeb49 Mon Sep 17 00:00:00 2001
+From: sdolemelipone <mark.gensler@protonmail.com>
+Date: Fri, 18 Jun 2021 16:37:32 +0100
+Subject: [PATCH 2/3] Updated extra_views_tests.urls to use django.urls.path
+ and djangomaster envs
+
+---
+ extra_views_tests/urls.py | 54 +++++++++++++++++++--------------------
+ tox.ini                   |  4 +--
+ 2 files changed, 29 insertions(+), 29 deletions(-)
+
+diff --git a/extra_views_tests/urls.py b/extra_views_tests/urls.py
+index 08147a8..bb71c36 100644
+--- a/extra_views_tests/urls.py
++++ b/extra_views_tests/urls.py
+@@ -1,4 +1,4 @@
+-from django.conf.urls import url
++from django.urls import path
+ from django.views.generic import TemplateView
+ 
+ from .formsets import AddressFormSet
+@@ -21,37 +21,37 @@
+ )
+ 
+ urlpatterns = [
+-    url(r"^formset/simple/$", AddressFormSetView.as_view()),
+-    url(r"^formset/simple/named/$", AddressFormSetViewNamed.as_view()),
+-    url(r"^formset/simple/kwargs/$", AddressFormSetViewKwargs.as_view()),
+-    url(
+-        r"^formset/simple_redirect/$",
++    path("formset/simple/", AddressFormSetView.as_view()),
++    path("formset/simple/named/", AddressFormSetViewNamed.as_view()),
++    path("formset/simple/kwargs/", AddressFormSetViewKwargs.as_view()),
++    path(
++        "formset/simple_redirect/",
+         AddressFormSetView.as_view(success_url="/formset/simple_redirect/valid/"),
+     ),
+-    url(
+-        r"^formset/simple_redirect/valid/$",
++    path(
++        "formset/simple_redirect/valid/",
+         TemplateView.as_view(template_name="extra_views/success.html"),
+     ),
+-    url(r"^formset/custom/$", AddressFormSetView.as_view(formset_class=AddressFormSet)),
+-    url(r"^modelformset/simple/$", ItemModelFormSetView.as_view()),
+-    url(r"^modelformset/exclude/$", ItemModelFormSetExcludeView.as_view()),
+-    url(r"^modelformset/custom/$", FormAndFormSetOverrideView.as_view()),
+-    url(r"^modelformset/paged/$", PagedModelFormSetView.as_view()),
+-    url(r"^inlineformset/(?P<pk>\d+)/$", OrderItemFormSetView.as_view()),
+-    url(r"^inlines/(\d+)/new/$", OrderCreateView.as_view()),
+-    url(r"^inlines/new/$", OrderCreateView.as_view()),
+-    url(r"^inlines/new/named/$", OrderCreateNamedView.as_view()),
+-    url(r"^inlines/(?P<pk>\d+)/$", OrderUpdateView.as_view()),
+-    url(r"^genericinlineformset/(?P<pk>\d+)/$", OrderTagsView.as_view()),
+-    url(r"^sortable/(?P<flag>\w+)/$", SortableItemListView.as_view()),
+-    url(r"^events/(?P<year>\d{4})/(?P<month>\w+)/$", EventCalendarView.as_view()),
+-    url(r"^searchable/$", SearchableItemListView.as_view()),
+-    url(
+-        r"^searchable/predefined_query/$",
++    path("formset/custom/", AddressFormSetView.as_view(formset_class=AddressFormSet)),
++    path("modelformset/simple/", ItemModelFormSetView.as_view()),
++    path("modelformset/exclude/", ItemModelFormSetExcludeView.as_view()),
++    path("modelformset/custom/", FormAndFormSetOverrideView.as_view()),
++    path("modelformset/paged/", PagedModelFormSetView.as_view()),
++    path("inlineformset/<int:pk>/", OrderItemFormSetView.as_view()),
++    path("inlines/<int:pk>/new/", OrderCreateView.as_view()),
++    path("inlines/new/", OrderCreateView.as_view()),
++    path("inlines/new/named/", OrderCreateNamedView.as_view()),
++    path("inlines/<int:pk>/", OrderUpdateView.as_view()),
++    path("genericinlineformset/<int:pk>/", OrderTagsView.as_view()),
++    path("sortable/<str:flag>/", SortableItemListView.as_view()),
++    path("events/<int:year>/<str:month>/", EventCalendarView.as_view()),
++    path("searchable/", SearchableItemListView.as_view()),
++    path(
++        "searchable/predefined_query/",
+         SearchableItemListView.as_view(define_query=True),
+     ),
+-    url(r"^searchable/exact_query/$", SearchableItemListView.as_view(exact_query=True)),
+-    url(
+-        r"^searchable/wrong_lookup/$", SearchableItemListView.as_view(wrong_lookup=True)
++    path("searchable/exact_query/", SearchableItemListView.as_view(exact_query=True)),
++    path(
++        "searchable/wrong_lookup/", SearchableItemListView.as_view(wrong_lookup=True)
+     ),
+ ]
+diff --git a/tox.ini b/tox.ini
+index 26d386c..82bc66e 100644
+--- a/tox.ini
++++ b/tox.ini
+@@ -1,7 +1,7 @@
+ [tox]
+ envlist = py35-django{21,22}
+-          py36-django{21,22,30,31,32,master}
+-          py37-django{21,22,30,31,32,master}
++          py36-django{21,22,30,31,32}
++          py37-django{21,22,30,31,32}
+           py38-django{22,30,31,32,master}
+           py39-django{22,30,31,32,master}
+           docs
+
+From bf394e92aaa2ecbc8f0a8526df8a9ae90f6f6f2a Mon Sep 17 00:00:00 2001
+From: sdolemelipone <mark.gensler@protonmail.com>
+Date: Fri, 18 Jun 2021 16:51:44 +0100
+Subject: [PATCH 3/3] Updated travis.
+
+---
+ .travis.yml | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+diff --git a/.travis.yml b/.travis.yml
+index c14ba85..74afc83 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -6,12 +6,14 @@ python:
+   - "3.6"
+   - "3.7"
+   - "3.8"
++  - "3.9"
+ 
+ env:
+   - DJANGO=django21
+   - DJANGO=django22
+   - DJANGO=django30
+   - DJANGO=django31
++  - DJANGO=django32
+   - DJANGO=djangomaster
+ 
+ matrix:
+@@ -21,9 +23,17 @@ matrix:
+     - python: "3.5"
+       env: DJANGO=django31
+     - python: "3.5"
++      env: DJANGO=django32
++    - python: "3.5"
++      env: DJANGO=djangomaster
++    - python: "3.6"
++      env: DJANGO=djangomaster
++    - python: "3.7"
+       env: DJANGO=djangomaster
+     - python: "3.8"
+       env: DJANGO=django21
++    - python: "3.9"
++      env: DJANGO=django21
+   allow_failures:
+     - env: DJANGO=djangomaster
+ 
