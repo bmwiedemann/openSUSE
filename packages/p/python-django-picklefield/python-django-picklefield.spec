@@ -44,6 +44,7 @@ by Oliver Beattie.
 
 %prep
 %setup -q -n django-picklefield-%{version}
+echo 'DEFAULT_AUTO_FIELD="django.db.models.AutoField"' >> tests/settings.py
 
 %build
 %python_build
