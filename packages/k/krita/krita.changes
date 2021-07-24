@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 24 07:35:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the OpenColorIO build dependency for openSUSE Tumbleweed.
+  krita doesn't support OCIO 2.0 yet (kde#435474)
+
+-------------------------------------------------------------------
 Thu Jun 10 07:25:33 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 4.4.5:

@@ -32,8 +32,11 @@ Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
 %ifnarch %{arm} aarch64
-# causes build failure on ARM currently
+# Causes build failure on ARM currently
+# 2021-07-24: Disabled for Tumbleweed (kde#435474)
+%if 0%{?suse_version} < 1550
 BuildRequires:  OpenColorIO-devel
+%endif
 %endif
 BuildRequires:  OpenEXR-devel
 BuildRequires:  extra-cmake-modules
