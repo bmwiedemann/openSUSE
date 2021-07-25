@@ -1,7 +1,7 @@
 #
 # spec file for package python-contextlib2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,22 +20,22 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-contextlib2
-Version:        0.6.0
+Version:        21.6.0
 Release:        0
 Summary:        Backports and enhancements for the contextlib module
-License:        Python-2.0
+License:        Apache-2.0 AND Python-2.0
 Group:          Development/Languages/Python
-URL:            http://contextlib2.readthedocs.org
+URL:            https://contextlib2.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/c/contextlib2/contextlib2-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 # SECTION test requirements
 %if %{with python2}
 BuildRequires:  python-unittest2
 %endif
 # /SECTION
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -56,7 +56,7 @@ to the standard library version.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python test_contextlib2.py
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt

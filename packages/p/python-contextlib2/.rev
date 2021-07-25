@@ -46,4 +46,41 @@
     <comment></comment>
     <requestid>810600</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b515dbde7aca55cabfebd515a17db0fc</srcmd5>
+    <version>21.6.0</version>
+    <time>1627236547</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.6.0:
+  - License update: due to the inclusion of type hints from the
+    typeshed project, the contextlib2 project is now under a
+    combination of the Python Software License (existing license)
+    and the Apache License 2.0 (typeshed license)
+  - Switched to calendar based versioning using a
+    “year”-“month”-“serial” scheme, rather than
+    continuing with pre-1.0 semantic versioning
+  - Due to the inclusion of asynchronous features from Python
+    3.7+, the minimum supported Python version is now Python 3.6
+    (#29)
+  - Synchronised with the Python 3.10 version of contextlib
+    (#12), making the following new features available on Python
+    3.6+:
+      - asyncontextmanager (added in Python 3.7, enhanced in Python 3.10)
+      - aclosing (added in Python 3.10)
+      - AbstractAsyncContextManager (added in Python 3.7)
+      - AsyncContextDecorator (added in Python 3.10)
+      - AsyncExitStack (added in Python 3.7)
+      - async support in nullcontext (Python 3.10)
+  - contextlib2 now includes an adapted copy of the contextlib
+    type hints from typeshed (the adaptation removes the Python
+    version dependencies from the API definition) (#33)
+  - to incorporate the type hints stub file and the py.typed
+    marker file, contextlib2 is now installed as a package rather
+    than as a module
+  - Updates to the default compatibility testing matrix:
+      - Added: CPython 3.9, CPython 3.10
+      - Dropped: CPython 2.7, CPython 3.5, PyPy2
+</comment>
+    <requestid>907707</requestid>
+  </revision>
 </revisionlist>
