@@ -20,7 +20,7 @@
 %define qt5_version 5.9
 
 Name:           applet-window-appmenu
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Plasma 5 applet to show the window appmenu
 License:        GPL-2.0-or-later
