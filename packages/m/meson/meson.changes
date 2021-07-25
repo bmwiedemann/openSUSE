@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 09:07:44 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.58.2:
+  + gnome: Always pass absolute -L paths to g-ir-scanner.
+
+-------------------------------------------------------------------
 Wed Jul 14 08:04:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.58.1:
