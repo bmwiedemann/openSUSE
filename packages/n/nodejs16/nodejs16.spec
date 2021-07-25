@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.4.1
+Version:        16.5.0
 Release:        0
 
 # Double DWZ memory limits
@@ -149,6 +149,7 @@ Patch102:       node-gyp-addon-gypi.patch
 # instead of /usr
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
+Patch110:       legacy_python.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -316,17 +317,13 @@ ExclusiveArch:  not_buildable
 Provides:       bundled(brotli) = 1.0.9
 Provides:       bundled(libuv) = 1.41.0
 Provides:       bundled(uvwasi) = 0.0.11
-Provides:       bundled(v8) = 9.1.269.36
+Provides:       bundled(v8) = 9.1.269.38
 
 Provides:       bundled(llhttp) = 6.0.2
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
 
-Provides:       bundled(node-acorn) = 8.0.4
-Provides:       bundled(node-acorn-class-fields) = 0.3.1
-Provides:       bundled(node-acorn-private-class-elements) = 0.2.0
-Provides:       bundled(node-acorn-private-methods) = 0.3.0
-Provides:       bundled(node-acorn-static-class-features) = 0.2.0
-Provides:       bundled(node-acorn-walk) = 8.0.0
+Provides:       bundled(node-acorn) = 8.4.1
+Provides:       bundled(node-acorn-walk) = 8.1.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.1
 
 %description
@@ -357,27 +354,13 @@ Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 7.18.1
+Provides:       npm(npm) = 7.19.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
 Requires:       user(nobody)
 %endif
 %endif
-Provides:       bundled(node-@npmcli/arborist) = 2.6.3
-Provides:       bundled(node-@npmcli/ci-detect) = 1.3.0
-Provides:       bundled(node-@npmcli/config) = 2.2.0
-Provides:       bundled(node-@npmcli/disparity-colors) = 1.0.1
-Provides:       bundled(node-@npmcli/git) = 2.0.9
-Provides:       bundled(node-@npmcli/installed-package-contents) = 1.0.7
-Provides:       bundled(node-@npmcli/map-workspaces) = 1.0.3
-Provides:       bundled(node-@npmcli/metavuln-calculator) = 1.1.1
-Provides:       bundled(node-@npmcli/move-file) = 1.1.2
-Provides:       bundled(node-@npmcli/name-from-folder) = 1.0.1
-Provides:       bundled(node-@npmcli/node-gyp) = 1.0.2
-Provides:       bundled(node-@npmcli/promise-spawn) = 1.3.2
-Provides:       bundled(node-@npmcli/run-script) = 1.8.5
-Provides:       bundled(node-@tootallnate/once) = 1.1.2
 Provides:       bundled(node-abbrev) = 1.1.1
 Provides:       bundled(node-agent-base) = 6.0.2
 Provides:       bundled(node-agentkeepalive) = 4.1.4
@@ -531,7 +514,6 @@ Provides:       bundled(node-nopt) = 5.0.0
 Provides:       bundled(node-normalize-package-data) = 3.0.2
 Provides:       bundled(node-npm-audit-report) = 2.1.5
 Provides:       bundled(node-npm-bundled) = 1.1.2
-Provides:       bundled(node-npm-init) = 0.0.0
 Provides:       bundled(node-npm-install-checks) = 4.0.0
 Provides:       bundled(node-npm-normalize-package-bin) = 1.0.1
 Provides:       bundled(node-npm-package-arg) = 8.1.5
@@ -643,6 +625,12 @@ echo "`grep node-v%{version}.tar.xz %{S:1} | head -n1 | cut -c1-64`  %{S:0}" | s
 %setup -q -n node-%{version}
 %endif
 
+%if %{node_version_number} <= 10
+rm -r deps/npm/*
+tar zxf %{SOURCE9} -C deps/npm --strip-components=1
+tar Jxf %{SOURCE90} -C deps/npm
+%endif
+
 %if %{node_version_number} >= 10
 tar Jxf %{SOURCE11}
 %endif
@@ -667,6 +655,7 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %patch106 -p1
 %if 0%{?suse_version} >= 1550
 %endif
+%patch110 -p1
 %patch120 -p1
 %patch200 -p1
 

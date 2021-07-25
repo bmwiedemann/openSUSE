@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 22 12:18:32 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- legacy_python.patch: fix building with python 3.4 in SLE-12
+
+-------------------------------------------------------------------
+Wed Jul 21 21:57:54 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 16.5.0:
+  * deps: upgrade npm to 7.19.1
+  * fs: allow empty string for temp directory prefix
+  * Node.js now exposes an experimental implementation of the
+    Web Streams API
+
+-------------------------------------------------------------------
 Fri Jul  2 15:17:09 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 16.4.1:

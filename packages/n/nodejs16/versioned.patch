@@ -8,10 +8,10 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-git.16151bec08/Makefile
+Index: node-v16.5.0/Makefile
 ===================================================================
---- node-git.16151bec08.orig/Makefile
-+++ node-git.16151bec08/Makefile
+--- node-v16.5.0.orig/Makefile
++++ node-v16.5.0/Makefile
 @@ -52,7 +52,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
@@ -21,10 +21,10 @@ Index: node-git.16151bec08/Makefile
  NODE ?= ./$(NODE_EXE)
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
-Index: node-git.16151bec08/tools/install.py
+Index: node-v16.5.0/tools/install.py
 ===================================================================
---- node-git.16151bec08.orig/tools/install.py
-+++ node-git.16151bec08/tools/install.py
+--- node-v16.5.0.orig/tools/install.py
++++ node-v16.5.0/tools/install.py
 @@ -81,34 +81,34 @@ def uninstall(paths, dst):
      try_remove(path, dst)
  
@@ -100,7 +100,7 @@ Index: node-git.16151bec08/tools/install.py
  
    if 'true' == variables.get('node_install_npm'): npm_files(action)
  
-@@ -182,28 +182,28 @@ def headers(action):
+@@ -185,28 +185,28 @@ def headers(action):
      'src/node_buffer.h',
      'src/node_object_wrap.h',
      'src/node_version.h',
@@ -137,10 +137,10 @@ Index: node-git.16151bec08/tools/install.py
  
  def run(args):
    global node_prefix, install_path, target_defaults, variables
-Index: node-git.16151bec08/doc/node.1
+Index: node-v16.5.0/doc/node.1
 ===================================================================
---- node-git.16151bec08.orig/doc/node.1
-+++ node-git.16151bec08/doc/node.1
+--- node-v16.5.0.orig/doc/node.1
++++ node-v16.5.0/doc/node.1
 @@ -30,24 +30,24 @@
  .Dt NODE 1
  .
@@ -170,10 +170,10 @@ Index: node-git.16151bec08/doc/node.1
  .Op Fl -v8-options
  .
  .\"======================================================================
-Index: node-git.16151bec08/src/node.stp
+Index: node-v16.5.0/src/node.stp
 ===================================================================
---- node-git.16151bec08.orig/src/node.stp
-+++ node-git.16151bec08/src/node.stp
+--- node-v16.5.0.orig/src/node.stp
++++ node-v16.5.0/src/node.stp
 @@ -19,7 +19,7 @@
  // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  // USE OR OTHER DEALINGS IN THE SOFTWARE.
@@ -246,12 +246,12 @@ Index: node-git.16151bec08/src/node.stp
  {
    scavenge = 1 << 0;
    compact = 1 << 1;
-Index: node-git.16151bec08/deps/npm/man/man1/npm.1
+Index: node-v16.5.0/deps/npm/man/man1/npm.1
 ===================================================================
---- node-git.16151bec08.orig/deps/npm/man/man1/npm.1
-+++ node-git.16151bec08/deps/npm/man/man1/npm.1
+--- node-v16.5.0.orig/deps/npm/man/man1/npm.1
++++ node-v16.5.0/deps/npm/man/man1/npm.1
 @@ -1,6 +1,6 @@
- .TH "NPM" "1" "June 2021" "" ""
+ .TH "NPM" "1" "July 2021" "" ""
  .SH "NAME"
 -\fBnpm\fR \- javascript package manager
 +\fBnpm16\fR \- javascript package manager
@@ -321,10 +321,10 @@ Index: node-git.16151bec08/deps/npm/man/man1/npm.1
 +npm16 help publish
  
  .RE
-Index: node-git.16151bec08/src/node_main.cc
+Index: node-v16.5.0/src/node_main.cc
 ===================================================================
---- node-git.16151bec08.orig/src/node_main.cc
-+++ node-git.16151bec08/src/node_main.cc
+--- node-v16.5.0.orig/src/node_main.cc
++++ node-v16.5.0/src/node_main.cc
 @@ -122,6 +122,7 @@ int main(int argc, char* argv[]) {
  #endif
    // Disable stdio buffering, it interacts poorly with printf()
@@ -333,11 +333,11 @@ Index: node-git.16151bec08/src/node_main.cc
    setvbuf(stdout, nullptr, _IONBF, 0);
    setvbuf(stderr, nullptr, _IONBF, 0);
    return node::Start(argc, argv);
-Index: node-git.16151bec08/tools/test.py
+Index: node-v16.5.0/tools/test.py
 ===================================================================
---- node-git.16151bec08.orig/tools/test.py
-+++ node-git.16151bec08/tools/test.py
-@@ -936,7 +936,7 @@ class Context(object):
+--- node-v16.5.0.orig/tools/test.py
++++ node-v16.5.0/tools/test.py
+@@ -935,7 +935,7 @@ class Context(object):
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -346,10 +346,10 @@ Index: node-git.16151bec08/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-git.16151bec08/node.gyp
+Index: node-v16.5.0/node.gyp
 ===================================================================
---- node-git.16151bec08.orig/node.gyp
-+++ node-git.16151bec08/node.gyp
+--- node-v16.5.0.orig/node.gyp
++++ node-v16.5.0/node.gyp
 @@ -23,8 +23,8 @@
      'node_use_openssl%': 'true',
      'node_shared_openssl%': 'false',
@@ -360,11 +360,11 @@ Index: node-git.16151bec08/node.gyp
 +    'node_lib_target_name%': 'libnode16',
      'node_intermediate_lib_type%': 'static_library',
      'node_builtin_modules_path%': '',
-     'library_files': [
-Index: node-git.16151bec08/deps/npm/man/man1/npx.1
+     # We list the deps/ files out instead of globbing them in js2c.py since we
+Index: node-v16.5.0/deps/npm/man/man1/npx.1
 ===================================================================
---- node-git.16151bec08.orig/deps/npm/man/man1/npx.1
-+++ node-git.16151bec08/deps/npm/man/man1/npx.1
+--- node-v16.5.0.orig/deps/npm/man/man1/npx.1
++++ node-v16.5.0/deps/npm/man/man1/npx.1
 @@ -5,15 +5,15 @@
  .P
  .RS 2
