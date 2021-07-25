@@ -1,7 +1,7 @@
 #
 # spec file for package diffutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,9 @@ Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Patch0:         gnulib-test-avoid-FP-perror-strerror.patch
+Patch1:         gnulib-c-stack.patch
 Requires(pre):  %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Provides:       diff = %{version}
 Obsoletes:      diff < %{version}
 

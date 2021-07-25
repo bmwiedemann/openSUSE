@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:50:49 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- gnulib-c-stack.patch: c-stack: stop using SIGSTKSZ
+
+-------------------------------------------------------------------
 Mon Aug 31 10:02:12 UTC 2020 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - gnulib-test-avoid-FP-perror-strerror.patch: avoid false-positive

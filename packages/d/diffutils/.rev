@@ -326,4 +326,12 @@
   visible on armv7l.</comment>
     <requestid>830967</requestid>
   </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>9cfbe633b354458cbca41c0d74aba928</srcmd5>
+    <version>3.7</version>
+    <time>1627236552</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907264</requestid>
+  </revision>
 </revisionlist>
