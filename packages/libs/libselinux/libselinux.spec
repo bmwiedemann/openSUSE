@@ -55,6 +55,7 @@ Security.)
 %package -n selinux-tools
 Summary:        SELinux command-line utilities
 Group:          System/Base
+Provides:       libselinux-utils = %{version}-%{release}
 
 %description -n selinux-tools
 Security-enhanced Linux is a feature of the kernel and some
