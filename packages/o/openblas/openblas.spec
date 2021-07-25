@@ -18,8 +18,8 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define _vers 0_3_16
-%define vers 0.3.16
+%define _vers 0_3_17
+%define vers 0.3.17
 %define pname openblas
 
 %bcond_with ringdisabled

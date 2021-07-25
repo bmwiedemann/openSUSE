@@ -486,4 +486,15 @@
   confuses brp-checks, as it detects circular symlinks.</comment>
     <requestid>906105</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>2cbdd5c2fa2b08f77eebe90a32ad6c05</srcmd5>
+    <version>0.3.17</version>
+    <time>1627236544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.17
+  - Fixes regressions introduced in 0.3.16
+    See https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.17 for
+    the complete changelog.</comment>
+    <requestid>907672</requestid>
+  </revision>
 </revisionlist>

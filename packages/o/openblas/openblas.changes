@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 22 08:11:06 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 0.3.17
+  - Fixes regressions introduced in 0.3.16
+    See https://github.com/xianyi/OpenBLAS/releases/tag/v0.3.17 for
+    the complete changelog.
+
+-------------------------------------------------------------------
 Tue Jul 13 11:03:36 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 0.3.16
