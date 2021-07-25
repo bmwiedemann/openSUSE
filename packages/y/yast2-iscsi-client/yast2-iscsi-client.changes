@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 22 08:30:10 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Add iscsi support for qedi/qede offload cards
+  (bsc#1188139, bsc#1187958).
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which
