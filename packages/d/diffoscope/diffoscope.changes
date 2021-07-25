@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Sun Jul 18 08:41:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 178:
+ - Don't traceback on an broken symlink in a directory.
+   (Closes: reproducible-builds/diffoscope#269)
+ - Rewrite the calculation of a file's "fuzzy hash" to make the control
+   flow cleaner.
+ - Support .deb package members compressed with the Zstandard algorithm.
+   (LP: #1923845)
+ - Overhaul the Mach-O executable file comparator.
+ - Implement tests for the Mach-O comparator.
+ - Switch to new argument format for the LLVM compiler.
+ - Fix test_libmix_differences in testsuite for the ELF format.
+ - Improve macOS compatibility for the Mach-O comparator.
+ - Add llvm-readobj and llvm-objdump to the internal EXTERNAL_TOOLS data
+   structure.
+ - Invoke gzip(1) with the short option variants to support Busybox's gzip.
+
+-------------------------------------------------------------------
 Tue Jun  8 10:29:34 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
-- Update to version 177
+- Update to version 177:
   * Improve support for Apple "provisioning profiles".
 
 -------------------------------------------------------------------
