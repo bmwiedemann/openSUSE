@@ -707,4 +707,12 @@ Bugfixes
     <comment>Update podman to 3.2.2 and libraries and configurations up to date as of 2021-06-26 (forwarded request 902628 from iDesmI)</comment>
     <requestid>902960</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>c001bb182b6804f05fd6cea32a0e6369</srcmd5>
+    <version>3.2.3</version>
+    <time>1627236548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907716</requestid>
+  </revision>
 </revisionlist>
