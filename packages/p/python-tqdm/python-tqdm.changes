@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 22 01:29:29 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.61.2:
+  * install colorama on Windows (#1139, #454)
+  * add telegram support for leave=False (#1189)
+  * support pandas==1.3.0 (#1199)
+  * fix keras potential AttributeError (#1184 <- #1183)
+  * fix py3.10 asyncio tests (#1176)
+  * flush stdout/err before first render (#1177)
+  * misc minor build & test framework updates (#1180)
+
+-------------------------------------------------------------------
 Sun Jul  4 00:17:33 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.61.1:

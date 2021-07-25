@@ -375,4 +375,12 @@ See https://build.opensuse.org/package/live_build_log/openSUSE:Factory:Staging:N
     <comment></comment>
     <requestid>904549</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>135232c6ede44c05daec59099c0d7aa7</srcmd5>
+    <version>4.61.2</version>
+    <time>1627236547</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907710</requestid>
+  </revision>
 </revisionlist>
