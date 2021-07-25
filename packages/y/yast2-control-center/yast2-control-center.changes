@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 21 14:43:12 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Run clients with nohup to avoid signal error messages when the
+  control center is closed before than the client window
+  (bsc#1154854).
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
