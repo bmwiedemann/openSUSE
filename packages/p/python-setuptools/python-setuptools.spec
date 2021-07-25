@@ -36,7 +36,7 @@
 # in order to avoid rewriting for subpackage generator
 %define mypython python
 Name:           python-setuptools%{psuffix}
-Version:        57.0.0
+Version:        57.4.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        MIT

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul 22 01:33:08 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 57.4.0:
+  * Changes
+    + #2722: Added support for SETUPTOOLS_EXT_SUFFIX environment
+       variable to override the suffix normally detected from the
+       sysconfig module.
+
+- changes from version 57.3.0:
+  * Changes
+    + #2465: Documentation is now published using the Furo theme.
+
+- changes from version 57.2.0:
+  * Changes
+    + #2724: Added detection of Windows ARM64 build environments using
+       the VSCMD_ARG_TGT_ARCH environment variable.
+
+- changes from version 57.1.0:
+  * Changes
+    + #2692: Globs are now sorted in 'license_files' restoring
+       reproducibility by eliminating variance from disk order.
+    + #2714: Update to distutils at pypa/distutils@e2627b7.
+    + #2715: Removed reliance on deprecated ssl.match_hostname by
+       removing the ssl support. Now any index operations rely on the
+       native SSL implementation.
+  * Documentation changes
+    + #2604: Revamped the backward/cross tool compatibility section to
+       remove some confusion. Add some examples and the version since
+       when entry_points are supported in declarative
+       configuration. Tried to make the reading flow a bit leaner,
+       gather some informations that were a bit dispersed.
+
+-------------------------------------------------------------------
 Mon Jul  5 09:22:44 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to remove a dependency cycle between
