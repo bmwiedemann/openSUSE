@@ -1,7 +1,7 @@
 #
 # spec file for package m4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,10 @@ Source0:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/pub/gnu/m4/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=m4&download=1#/%{name}.keyring
 Patch1:         gnulib-libio.patch
+Patch2:         gnulib-c-stack.patch
 BuildRequires:  xz
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 Provides:       base:%{_bindir}/m4
 
 %description
@@ -38,6 +39,7 @@ GNU m4 is an implementation of the traditional Unix macro processor.
 %prep
 %setup -q
 %patch1 -p1
+%patch2 -p1
 
 %build
 %configure \

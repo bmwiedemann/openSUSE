@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 19 12:48:42 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- gnulib-c-stack.patch: c-stack: stop using SIGSTKSZ
+
+-------------------------------------------------------------------
 Thu Jan 23 09:25:12 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Enable PGO during build 
