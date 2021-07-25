@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul 22 13:44:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- redis 6.2.5:
+  * CVE-2021-32761: Fix integer overflow in BITFIELD on 32-bit
+    boo#1188598
+  * Change reply type for ZPOPMAX/MIN with count in RESP3 to nested 
+    array
+  * Was using a flat array like in RESP2 instead of a nested array
+    like ZRANGE does.
+  * Fix reply type for HRANDFIELD and ZRANDMEMBER when key is
+    missing
+  * Was using a null array instead of an empty array
+  * Fix reply type for ZRANGESTORE when source key is missing
+  * Was using an empty array like ZRANGE instead of 0 (used in the
+    STORE variant)
+  * redis-cli cluster import command may issue wrong MIGRATE command,
+    sending COPY instead of REPLACE (#8945)
+  * redis-cli --rdb fixes when using "-" to write to stdout
+  * redis-cli support for RESP3 set type in CSV and RAW output
+  * ad Module API for getting current command name
+  * Fix RM_StringTruncate when newlen is 0
+  * Fix CLIENT UNBLOCK crashing modules without timeout callback
+  * Further developer visible bug fixes
+
+-------------------------------------------------------------------
 Wed Jun  2 07:57:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - redis 6.2.4:
