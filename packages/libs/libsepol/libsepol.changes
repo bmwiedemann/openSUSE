@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 21 13:16:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Fix heap-based buffer over-read in ebitmap_match_any (CVE-2021-36087, 1187928.
+  Added CVE-2021-36087.patch
+
+-------------------------------------------------------------------
 Mon Jul  5 11:31:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Fix use-after-free in __cil_verify_classperms (CVE-2021-36085, 1187965).
