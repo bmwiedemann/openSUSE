@@ -1,0 +1,13 @@
+<constraints>
+  <overwrite>
+    <conditions>
+      <arch>s390x</arch>
+    </conditions>   
+  <hardware>
+    <memory>
+      <size unit="G">12</size>
+    </memory>
+  </hardware>
+ </overwrite>
+</constraints>
+

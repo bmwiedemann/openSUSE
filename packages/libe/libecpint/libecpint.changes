@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 21 17:22:55 UTC 2021 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Add constraints file for workaround because of "Out of memory" on 
+  s390x (boo#1188441)
+
+-------------------------------------------------------------------
 Wed Mar 24 15:33:32 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 1.0.6:
