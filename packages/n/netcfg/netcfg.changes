@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 13:59:22 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add localhost.localdomain fallback hostname used by NetworkManager
+  (bsc#1177835).
+
+-------------------------------------------------------------------
 Thu Feb 18 07:40:58 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - services-create.pl: Switch to https (bsc#1182395)

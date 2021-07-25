@@ -10,6 +10,8 @@
 #
 
 127.0.0.1	localhost
+# fallback hostname used by NetworkManager
+127.0.0.1	localhost.localdomain
 
 # special IPv6 addresses
 ::1             localhost ipv6-localhost ipv6-loopback
