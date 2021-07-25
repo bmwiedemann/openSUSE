@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 15:09:28 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Do not rewrite authorized_keys unless it is needed (bsc#1188361).
+- 4.4.5
+
+-------------------------------------------------------------------
 Fri Jul 16 13:13:26 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Use a more reliable way of knowing if a user is being
