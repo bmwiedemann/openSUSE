@@ -1,7 +1,7 @@
 #
 # spec file for package mysql-connector-java
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,29 @@
 
 
 Name:           mysql-connector-java
-Version:        5.1.49
+Version:        8.0.25
 Release:        0
 Summary:        Official JDBC Driver for MySQL
 License:        GPL-2.0-or-later
 URL:            https://dev.mysql.com/downloads/connector/j/
 Source0:        %{name}-%{version}-suse.tar.xz
+Group:          Development/Languages/Java
 # Script to repack upstream tarball
 # ./generate-tarball.sh VERSION
 Source99:       generate-tarball.sh
 Patch0:         javac-check.patch
-Patch1:         hibernate-check.patch
-Patch2:         mysql-connector-java-jdbc-4.1.patch
-Patch3:         disable-testsuite.patch
-Patch4:         compile-jdk7.patch
-Patch5:         mysql-connector-java-sourcetarget.patch
 BuildRequires:  ant
 BuildRequires:  ant-contrib
 BuildRequires:  apache-commons-logging
 BuildRequires:  geronimo-jta-1_1-api
+BuildRequires:  git
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools
+BuildRequires:  javapackages-tools >= 5.3.1
+BuildRequires:  javassist >= 3.23.1
 BuildRequires:  junit
 BuildRequires:  log4j12-mini
+BuildRequires:  protobuf-java >= 3.9.2
 BuildRequires:  slf4j
 BuildRequires:  xz
 Requires:       jta >= 1.0
@@ -65,33 +64,16 @@ set that supports the capabilities of MySQL.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
-%patch5 -p1
-
-# dup
-rm -f README
-# wrong end of line encoding
-sed -i -e 's/.$//' README.txt
 
 # extra libs
 mkdir -p lib
 mkdir -p src/lib
 ln -f -s %{_datadir}/java/ant/ant-contrib.jar lib/ant-contrib.jar
 ln -f -s %{_datadir}/java/slf4j/api.jar lib/slf4j-api.jar
+ln -s %{_datadir}/java/javassist.jar lib/javassist.jar
+ln -s %{_datadir}/java/protobuf.jar lib/protobuf.jar
 
 %build
-# disable jboss integration
-rm -rf src/com/mysql/jdbc/integration/jboss
-rm src/testsuite/regression/ConnectionRegressionTest.java
-rm src/testsuite/regression/DataSourceRegressionTest.java
-rm src/testsuite/simple/ReadOnlyCallableStatementTest.java
-rm src/testsuite/simple/jdbc4/StatementsTest.java
-# disable hibernate4 integration
-rm -rf src/com/mysql/fabric/hibernate
-rm -rf src/demo
 
 export CLASSPATH=$(build-classpath \
     ant-contrib \
@@ -100,34 +82,56 @@ export CLASSPATH=$(build-classpath \
     jdbc-stdext\
     jta \
     junit \
-    log4j12/log4j-12)
+    log4j12/log4j-12 \
+    protobuf)
 %{ant} \
-    -Dcom.mysql.jdbc.jdk5.javac=%javac \
-    -Dcom.mysql.jdbc.jdk8.javac=%javac \
     -Dsnapshot.version= \
     -Dcom.mysql.jdbc.extra.libs=lib \
-    -Dant.java.version=1.6 \
-    -Dant.build.javac.source=1.6 \
-    -Dant.build.javac.target=1.6 \
+    -Dant.java.version=1.8 \
+    -Dant.build.javac.source=1.8 \
+    -Dant.build.javac.target=1.8 \
+    -Dcom.mysql.cj.build.jdk=%{java_home} \
+    -Dcom.mysql.cj.build.jdk.javac=%{javac} \
+    -Dcom.mysql.cj.build.jdk.java=%{java} \
     dist
 
 %install
 install -d -m 755 %{buildroot}%{_javadir}
 
-install ./build/%{name}-%{version}/%{name}-%{version}-bin.jar \
-        %{buildroot}%{_javadir}/%{name}.jar
+install build/%{name}-%{version}-SNAPSHOT/%{name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar
 
 rm -rf %{buildroot}%{name}-%{version}/docs/release-test-output
 
 # Install the Maven build information
 install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 src/doc/sources/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-sed -i 's/>@.*</>%{version}</' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+install -pm 644 build/%{name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
 
 %add_maven_depmap JPP-%{name}.pom %{name}.jar
 
 %files -f .mfiles
-%license COPYING
-%doc CHANGES README.txt
+%license LICENSE
+%doc CHANGES README
+
+#    -Dcom.mysql.cj.build.jdk.javac=/usr/lib64/jvm/java-1.8.0/bin/javac \
+#    -Dcom.mysql.cj.build.jdk.java=/usr/lib64/jvm/java-1.8.0/bin/java \
+    dist
+
+install -d -m 755 %{buildroot}%{_javadir}
+
+install build/%{name}-%{version}-SNAPSHOT/%{name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar
+
+rm -rf %{buildroot}%{name}-%{version}/docs/release-test-output
+
+# Install the Maven build information
+install -d -m 755 %{buildroot}%{_mavenpomdir}
+install -pm 644 build/%{name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
+
+%add_maven_depmap JPP-%{name}.pom %{name}.jar
+
+%files -f .mfiles
+%license LICENSE
+%doc CHANGES README
 
 %changelog
