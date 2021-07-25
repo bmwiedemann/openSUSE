@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 24 21:29:09 CEST 2021 - nine@detonation.org
+
+- update to version 2021.07
+  * Implement support for moar::hllincludes config variable
+  * Fix reproducible build regression
+  * Wrap QAST::Regex from qbuildsub in QAST::Stmts
+
+-------------------------------------------------------------------
 Sat Jul 10 15:49:27 CEST 2021 - nine@detonation.org
 
 - update to version 2021.06
