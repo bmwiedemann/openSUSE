@@ -240,4 +240,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>905573</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>635b1fac0663b02b34c40996284d65b5</srcmd5>
+    <version>2021.07</version>
+    <time>1627236557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908137</requestid>
+  </revision>
 </revisionlist>

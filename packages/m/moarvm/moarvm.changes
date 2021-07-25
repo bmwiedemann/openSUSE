@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 24 21:25:38 CEST 2021 - nine@detonation.org
+
+- update to version 2021.07
+
++ Fix "Collectable in a gen2 freelist accessed" when deserializing a method cache
++ Fix possible acces to a freed SC during deserialization
++ Convert more realloc+memset(0) to recalloc
++ Fix some bugs in the various `hash_fsck` functions
++ Fix read buffer overflow in bytecode dumper
++ Fix overflows on slight reallocations of fixed size alloced buffers
++ Fix error handling of mkdir
++ Assign the result of a socket(2) call immediately
++ Fix memory corruption by accessing freed spesh stats
++ Fix ShiftJIS decoder bug where a replacement is used
+  and a decoding error is encountered after '\r' character
+
+-------------------------------------------------------------------
 Sat Jul 10 15:45:40 CEST 2021 - nine@detonation.org
 
 - update to version 2021.06
