@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Pygments
 # DO NOT UPGRADE UNTIL PELICAN IS COMPATIBLE!
-Version:        2.7.4
+Version:        2.9.0
 Release:        0
 Summary:        A syntax highlighting package written in Python
 License:        BSD-2-Clause
@@ -57,11 +57,8 @@ source code. Highlights are:
 %prep
 %setup -q -n Pygments-%{version}
 
-# Remove non-oss licensed files, see bnc# 760344
-rm tests/examplefiles/firefox.mak tests/examplefiles/example.webidl
-
 # Remove unnecessary shebang
-sed -i '1 { /^#!/ d }' pygments/lexers/_usd_builtins.py
+# sed -i '1 { /^#!/ d }' pygments/lexers/_usd_builtins.py
 
 %build
 %python_build
