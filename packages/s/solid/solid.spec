@@ -32,6 +32,8 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Use-qstrcmp-instead-of-strcmp.patch
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
@@ -45,6 +47,7 @@ BuildRequires:  cmake(Qt5Qml) >= 5.15.0
 BuildRequires:  cmake(Qt5Test) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 BuildRequires:  pkgconfig(libimobiledevice-1.0)
+BuildRequires:  pkgconfig(mount)
 %if %{?suse_version} >= 1550
 BuildRequires:  pkgconfig(libplist-2.0)
 %else

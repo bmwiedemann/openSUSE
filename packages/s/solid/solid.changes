@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 22 12:10:30 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Add libmount to BuildRequires to enable support for bind mounts
+- Add upstream patch 0001-Use-qstrcmp-instead-of-strcmp.patch
+  to fix potential crashes in dolphin and plasmashell with
+  libmount support enabled in Solid
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
