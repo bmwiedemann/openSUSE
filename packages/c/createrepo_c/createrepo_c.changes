@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 30 15:35:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 0.17.3
+  + Remove distutils which are deprecated in python3.10
+  + Fix segmentation fault when taking str() of closed file
+  + Use pkg-config for rpm libraries instead of custom code
+  + Drop Python 2 support
+  + Never leave behind .repodata lock on exit
+
+-------------------------------------------------------------------
 Fri Feb 26 07:16:58 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 - removed %is_opensuse (CtLG)
