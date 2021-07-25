@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 22 11:39:54 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.6.1+7:
+  * Haiku: proper path to resolv.conf for DNS server
+  * Fix for Haiku
+  * dhcp: Always send DHCP_OPT_LEN bytes in options
+- Commit _servicedata to fix changelogs
+- Don't include .git in source archive, not needed
+- Run set_version together with obs_scm
+
+-------------------------------------------------------------------
+Wed Jul 21 12:22:59 UTC 2021 - mrostecki@suse.com
+
+- Update to version 4.6.1:
+  * Release v4.6.1
+  * Fix "DHCP broken in libslirp v4.6.0"
+
+-------------------------------------------------------------------
 Fri Jul 16 08:51:33 UTC 2021 - novell@tower-net.de
 
 - Update to version 4.6.0:

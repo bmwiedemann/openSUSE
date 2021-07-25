@@ -19,7 +19,7 @@
 %define libname libslirp0
 
 Name:           libslirp
-Version:        4.6.0
+Version:        4.6.1+7
 Release:        0
 Summary:        A general purpose TCP-IP emulator
 License:        MIT
@@ -40,7 +40,7 @@ Summary:        A networking Library
 Group:          System/Libraries
 
 %description -n %{libname}
-A user-mode networking library used by virtual machines, containers 
+A user-mode networking library used by virtual machines, containers
 or various tools.
 
 %package        devel
@@ -51,7 +51,6 @@ Requires:       %{libname} = %{version}
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
-
 
 %prep
 %autosetup -n %{name}-%{version}

@@ -3,15 +3,13 @@
     <param name="url">https://gitlab.freedesktop.org/slirp/libslirp.git</param>
     <param name="scm">git</param>
     <param name="filename">libslirp</param>
-    <param name="versionformat">4.6.0</param>
-    <param name="revision">v4.6.0</param>
-    <param name="package-meta">yes</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service name="set_version" mode="buildtime"/>
-  <service name="tar" mode="buildtime">
-    <param name="package-meta">yes</param>
-  </service>
+  <service name="set_version" mode="disabled"/>
+  <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
