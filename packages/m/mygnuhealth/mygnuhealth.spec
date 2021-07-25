@@ -24,7 +24,7 @@
 %global __requires_exclude qmlimport\\((BloodPressure|FedLogin|GHBio|GHBol|GHPsycho|Glucose|LocalAccountManager|MoodEnergy|NetworkSettings|Osat|ProfileSettings|Weight|PoL|GHLifestyle|GHPhysicalActivity|GHNutrition|GHSleep|GHAbout)
 
 Name:           mygnuhealth
-Version:        %{majorver}.0.2
+Version:        %{majorver}.0.3
 Release:        0
 Summary:        The personal health record for the GNU Health system
 License:        GPL-3.0-only
