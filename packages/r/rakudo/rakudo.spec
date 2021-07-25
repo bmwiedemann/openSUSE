@@ -17,7 +17,7 @@
 
 
 Name:           rakudo
-Version:        2021.06
+Version:        2021.07
 Release:        2.1
 Summary:        Raku (formerly Perl 6) implemenation that runs on MoarVM
 License:        Artistic-2.0
@@ -26,12 +26,12 @@ URL:            http://rakudo.org/
 Source0:        rakudo-%{version}.tar.gz
 Patch0:         rakudo-test-log.diff
 BuildRequires:  fdupes
-BuildRequires:  moarvm-devel >= 2021.06
-BuildRequires:  nqp >= 2021.06
+BuildRequires:  moarvm-devel >= 2021.07
+BuildRequires:  nqp >= 2021.07
 BuildRequires:  perl(YAML::Tiny)
 Provides:       perl6 = %{version}-%{release}
-Requires:       moarvm >= 2021.06
-Requires:       nqp >= 2021.06
+Requires:       moarvm >= 2021.07
+Requires:       nqp >= 2021.07
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description

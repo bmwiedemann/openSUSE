@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 24 21:31:25 CEST 2021 - nine@detonation.org
+
+- update to version 2021.07
+  + Make cmp routine work properly on Iterator, Seq, Uni, native arrays and empty Lists
+  + Add the ACCEPTS(Uni) method on Uni candidate
+  + Implement last and next with a value for 6.e language revision
+  + Properly support nearly all HTML5 entities in Pod E<> formatting code
+  + Allow Ctrl-C to stop entry in REPL
+  + Add ⩶ and ⩵ as Unicode synonyms for === and ==
+  + Deprecate the status method on Proc in place of exitcode and signal methods
+  + Allow add method on IO::Path to take multiple values (e.g. "foo".IO.add(<bar baz>))
+  + Optimize calls to map
+  + Optimize loops without phasers for one and two arguments case
+  + Make for / map with 2+ arguments up to 2x as fast
+  + Make List cmp List about 25% faster
+  + Reduce overhead of loops with phasers by at least 5%
+  + Make the grep(Callable) method about 3% faster
+  + Clean up sockets created by IO::Socket::INET.new on error
+  + Fix freezes caused by concurrently produced iterators
+  + Fix unimatch for non-base properties
+
+-------------------------------------------------------------------
 Sat Jul 10 15:56:02 CEST 2021 - nine@detonation.org
 
 - update to version 2021.06
