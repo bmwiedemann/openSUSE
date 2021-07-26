@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 26 10:05:33 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Use "pkgconfig(systemd)" for the BR to allow hacksaw systemd-mini
+  package to satisfy dependencies in the openSUSE Build Service.
+
+-------------------------------------------------------------------
+Mon Jul 26 03:48:04 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Add buildrequires on systemd which is required for correct installation
+  of the .service file.
+
+-------------------------------------------------------------------
+Sun Feb 28 12:28:48 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Update to 0.79.13
+
+-------------------------------------------------------------------
 Mon Aug 31 10:30:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.79.11:

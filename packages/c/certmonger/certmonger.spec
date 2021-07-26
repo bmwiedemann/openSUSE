@@ -1,7 +1,7 @@
 #
 # spec file for package certmonger
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020 Stasiek Michalski <stasiek@michalski.cc>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           certmonger
-Version:        0.79.11
+Version:        0.79.13
 Release:        0
 Summary:        Certificate status monitor and PKI enrollment client
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ BuildRequires:  krb5-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libfreebl3-hmac
 BuildRequires:  libidn2-devel
+BuildRequires:  libjansson-devel
 BuildRequires:  libsoftokn3-hmac
 BuildRequires:  libtalloc-devel
 BuildRequires:  libtevent-devel
@@ -54,13 +55,19 @@ BuildRequires:  openssl
 BuildRequires:  openssl-devel
 BuildRequires:  popt-devel
 BuildRequires:  python3-dbus-python
+# Note - this is required for /usr/share/pkgconfig/systemd.pc, which is used by
+# --enable-systemd to discover the unitfile location. There is no way to inject
+# this location via the configure call either.
+## Note: using pkgconfig(systemd) BR to allow hacksaw systemd-mini package to
+## satisfy in the openSUSE Build Service
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  which
 BuildRequires:  xmlrpc-c-devel
 
 Requires:       dbus-1
 Requires(post): dbus-1
-Requires(preun): dbus-1
-Requires(preun): sed
+Requires(preun):dbus-1
+Requires(preun):sed
 
 BuildRequires:  systemd-rpm-macros
 %{?systemd_requires}
@@ -118,6 +125,7 @@ fi
 %{_mandir}/man*/*
 %{_libexecdir}/%{name}
 %{_localstatedir}/lib/certmonger
+%{_unitdir}/certmonger.service
 %{_tmpfilesdir}/certmonger.conf
 %{_datadir}/dbus-1/system-services/*
 

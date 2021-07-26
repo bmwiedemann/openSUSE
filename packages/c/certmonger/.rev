@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>830794</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>345d4e197b736eefb46c026bc54faf49</srcmd5>
+    <version>0.79.13</version>
+    <time>1627313897</time>
+    <user>dimstar_suse</user>
+    <comment>- Use &quot;pkgconfig(systemd)&quot; for the BR to allow hacksaw systemd-mini
+  package to satisfy dependencies in the openSUSE Build Service.
+
+- Add buildrequires on systemd which is required for correct installation
+  of the .service file.
+
+- Update to 0.79.13</comment>
+    <requestid>908392</requestid>
+  </revision>
 </revisionlist>
