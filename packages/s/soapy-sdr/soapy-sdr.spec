@@ -1,6 +1,7 @@
 #
 # spec file for package soapy-sdr
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
@@ -17,9 +18,9 @@
 #
 
 
-%define sover 0_7
+%define sover 0_8
 Name:           soapy-sdr
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Vendor and platform neutral SDR support library
 License:        BSL-1.0
@@ -106,6 +107,8 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %{_datadir}/cmake/SoapySDR/SoapySDRConfig.cmake
 %{_datadir}/cmake/SoapySDR/SoapySDRConfigVersion.cmake
 %{_datadir}/cmake/SoapySDR/SoapySDRUtil.cmake
+%{_datadir}/cmake/SoapySDR/SoapySDRExport-relwithdebinfo.cmake
+%{_datadir}/cmake/SoapySDR/SoapySDRExport.cmake
 %{_mandir}/man1/SoapySDRUtil.1%{ext_man}
 
 %changelog

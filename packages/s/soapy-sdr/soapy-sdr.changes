@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 12 07:52:44 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 0.8.0
+  * Build:
+    + Update to CMake 3.0 style and project config generation
+    + Increase the CMake build requirement to version 3.1.0
+ * API:
+    + Added API calls for configuring an external reference clock rate
+    + Constants for boolean setting strings SOAPY_SDR_TRUE/FALSE
+    + Templated read/writeSetting()/readSensor() for SoapySDR::Device
+    + Added Templated StringToSetting() and SettingToString() helpers
+    + Python bindings duck typing for read/writeSetting()/readSensor()
+    + Changed SoapySDRDevice_setupStream() to return the stream pointer
+    + Added unloadModules() API call to manually cleanup modules on exit
+    + Device: added parallel make() function with string arguments
+    + Added ABI check to Python module
+
+-------------------------------------------------------------------
 Sun Jan 12 20:24:59 UTC 2020 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 0.7.2
