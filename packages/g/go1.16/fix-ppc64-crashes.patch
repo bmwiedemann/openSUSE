@@ -1,0 +1,227 @@
+From 7cb7ce3cfae172ff7b128592c3ca9ac591b0f7cb Mon Sep 17 00:00:00 2001
+From: Derek Parker <parkerderek86@gmail.com>
+Date: Thu, 17 Jun 2021 20:22:40 +0000
+Subject: [PATCH] [release-branch.go1.16] runtime: fix crash during VDSO calls on PowerPC
+
+This patch reinstates a fix for PowerPC with regard to making VDSO calls
+while receiving a signal, and subsequently crashing. The crash happens
+because certain VDSO calls can modify the r30 register, which is where g
+is stored. This change was reverted for PowerPC because r30 is supposed
+to be a non-volatile register. This is true, but that only makes a
+guarantee across function calls, but not "within" a function call. This
+patch was seemingly fine before because the Linux kernel still had hand
+rolled assembly VDSO function calls, however with a recent change to C
+function calls it seems the compiler used can generate instructions
+which temporarily clobber r30. This means that when we receive a signal
+during one of these calls the value of r30 will not be the g as the
+runtime expects, causing a segfault.
+
+You can see from this assembly dump how the register is clobbered during
+the call:
+
+(the following is from a 5.13rc2 kernel)
+
+```
+Dump of assembler code for function __cvdso_clock_gettime_data:
+   0x00007ffff7ff0700 <+0>:     cmplwi  r4,15
+   0x00007ffff7ff0704 <+4>:     bgt     0x7ffff7ff07f0 <__cvdso_clock_gettime_data+240>
+   0x00007ffff7ff0708 <+8>:     li      r9,1
+   0x00007ffff7ff070c <+12>:    slw     r9,r9,r4
+   0x00007ffff7ff0710 <+16>:    andi.   r10,r9,2179
+   0x00007ffff7ff0714 <+20>:    beq     0x7ffff7ff0810 <__cvdso_clock_gettime_data+272>
+   0x00007ffff7ff0718 <+24>:    rldicr  r10,r4,4,59
+   0x00007ffff7ff071c <+28>:    lis     r9,32767
+   0x00007ffff7ff0720 <+32>:    std     r30,-16(r1)
+   0x00007ffff7ff0724 <+36>:    std     r31,-8(r1)
+   0x00007ffff7ff0728 <+40>:    add     r6,r3,r10
+   0x00007ffff7ff072c <+44>:    ori     r4,r9,65535
+   0x00007ffff7ff0730 <+48>:    lwz     r8,0(r3)
+   0x00007ffff7ff0734 <+52>:    andi.   r9,r8,1
+   0x00007ffff7ff0738 <+56>:    bne     0x7ffff7ff07d0 <__cvdso_clock_gettime_data+208>
+   0x00007ffff7ff073c <+60>:    lwsync
+   0x00007ffff7ff0740 <+64>:    mftb    r30      <---- RIGHT HERE
+=> 0x00007ffff7ff0744 <+68>:    ld      r12,40(r6)
+```
+
+What I believe is happening is that the kernel changed the PowerPC VDSO
+calls to use standard C calls instead of using hand rolled assembly. The
+hand rolled assembly calls never touched r30, so this change was safe to
+roll back. That does not seem to be the case anymore as on the 5.13rc2
+kernel the compiler *is* generating assembly which modifies r30, making
+this change again unsafe and causing a crash when the program receives a
+signal during these calls (which will happen often due to async
+preempt). This change happened here:
+https://lwn.net/ml/linux-kernel/235e5571959cfa89ced081d7e838ed5ff38447d2.1601365870.git.christophe.leroy@csgroup.eu/.
+
+I realize this was reverted due to unexplained hangs in PowerPC
+builders, but I think we should reinstate this change and investigate
+those issues separately:
+https://github.com/golang/go/commit/f4ca3c1e0a2066ca4f7bd6203866d282ed34acf2
+
+Fixes #46858
+
+Change-Id: Ib18d7bbfc80a1a9cb558f0098878d41081324b52
+GitHub-Last-Rev: c3002bcfca3ef58b27485e31328e6297b7a9dfe7
+GitHub-Pull-Request: golang/go#46767
+Reviewed-on: https://go-review.googlesource.com/c/go/+/328110
+Run-TryBot: Lynn Boger <laboger@linux.vnet.ibm.com>
+TryBot-Result: Go Bot <gobot@golang.org>
+Reviewed-by: Cherry Mui <cherryyz@google.com>
+Trust: Lynn Boger <laboger@linux.vnet.ibm.com>
+(cherry picked from commit 16e82be454cbf41299e6a055d54d489ca4612ee0)
+---
+
+diff --git a/src/runtime/signal_unix.go b/src/runtime/signal_unix.go
+index 3f70707..89f936e 100644
+--- a/src/runtime/signal_unix.go
++++ b/src/runtime/signal_unix.go
+@@ -381,7 +381,7 @@
+ //go:nosplit
+ func sigFetchG(c *sigctxt) *g {
+ 	switch GOARCH {
+-	case "arm", "arm64":
++	case "arm", "arm64", "ppc64", "ppc64le":
+ 		if !iscgo && inVDSOPage(c.sigpc()) {
+ 			// When using cgo, we save the g on TLS and load it from there
+ 			// in sigtramp. Just use that.
+diff --git a/src/runtime/sys_linux_ppc64x.s b/src/runtime/sys_linux_ppc64x.s
+index fd69ee7..7be8c4c 100644
+--- a/src/runtime/sys_linux_ppc64x.s
++++ b/src/runtime/sys_linux_ppc64x.s
+@@ -215,15 +215,45 @@
+ 	MOVD	(g_sched+gobuf_sp)(R7), R1	// Set SP to g0 stack
+ 
+ noswitch:
+-	SUB	$16, R1			// Space for results
+-	RLDICR	$0, R1, $59, R1		// Align for C code
++	SUB	$16, R1                 // Space for results
++	RLDICR	$0, R1, $59, R1         // Align for C code
+ 	MOVD	R12, CTR
+ 	MOVD	R1, R4
+-	BL	(CTR)			// Call from VDSO
+-	MOVD	$0, R0			// Restore R0
+-	MOVD	0(R1), R3		// sec
+-	MOVD	8(R1), R5		// nsec
+-	MOVD	R15, R1			// Restore SP
++
++	// Store g on gsignal's stack, so if we receive a signal
++	// during VDSO code we can find the g.
++	// If we don't have a signal stack, we won't receive signal,
++	// so don't bother saving g.
++	// When using cgo, we already saved g on TLS, also don't save
++	// g here.
++	// Also don't save g if we are already on the signal stack.
++	// We won't get a nested signal.
++	MOVBZ	runtime·iscgo(SB), R22
++	CMP	R22, $0
++	BNE	nosaveg
++	MOVD	m_gsignal(R21), R22	// g.m.gsignal
++	CMP	R22, $0
++	BEQ	nosaveg
++
++	CMP	g, R22
++	BEQ	nosaveg
++	MOVD	(g_stack+stack_lo)(R22), R22 // g.m.gsignal.stack.lo
++	MOVD	g, (R22)
++
++	BL	(CTR)	// Call from VDSO
++
++	MOVD	$0, (R22)	// clear g slot, R22 is unchanged by C code
++
++	JMP	finish
++
++nosaveg:
++	BL	(CTR)	// Call from VDSO
++
++finish:
++	MOVD	$0, R0		// Restore R0
++	MOVD	0(R1), R3	// sec
++	MOVD	8(R1), R5	// nsec
++	MOVD	R15, R1		// Restore SP
+ 
+ 	// Restore vdsoPC, vdsoSP
+ 	// We don't worry about being signaled between the two stores.
+@@ -235,7 +265,7 @@
+ 	MOVD	32(R1), R6
+ 	MOVD	R6, m_vdsoPC(R21)
+ 
+-finish:
++return:
+ 	MOVD	R3, sec+0(FP)
+ 	MOVW	R5, nsec+8(FP)
+ 	RET
+@@ -246,7 +276,7 @@
+ 	SYSCALL $SYS_clock_gettime
+ 	MOVD	32(R1), R3
+ 	MOVD	40(R1), R5
+-	JMP	finish
++	JMP	return
+ 
+ TEXT runtime·nanotime1(SB),NOSPLIT,$16-8
+ 	MOVD	$1, R3		// CLOCK_MONOTONIC
+@@ -282,7 +312,37 @@
+ 	RLDICR	$0, R1, $59, R1		// Align for C code
+ 	MOVD	R12, CTR
+ 	MOVD	R1, R4
+-	BL	(CTR)			// Call from VDSO
++
++	// Store g on gsignal's stack, so if we receive a signal
++	// during VDSO code we can find the g.
++	// If we don't have a signal stack, we won't receive signal,
++	// so don't bother saving g.
++	// When using cgo, we already saved g on TLS, also don't save
++	// g here.
++	// Also don't save g if we are already on the signal stack.
++	// We won't get a nested signal.
++	MOVBZ	runtime·iscgo(SB), R22
++	CMP	R22, $0
++	BNE	nosaveg
++	MOVD	m_gsignal(R21), R22	// g.m.gsignal
++	CMP	R22, $0
++	BEQ	nosaveg
++
++	CMP	g, R22
++	BEQ	nosaveg
++	MOVD	(g_stack+stack_lo)(R22), R22 // g.m.gsignal.stack.lo
++	MOVD	g, (R22)
++
++	BL	(CTR)	// Call from VDSO
++
++	MOVD	$0, (R22)	// clear g slot, R22 is unchanged by C code
++
++	JMP	finish
++
++nosaveg:
++	BL	(CTR)	// Call from VDSO
++
++finish:
+ 	MOVD	$0, R0			// Restore R0
+ 	MOVD	0(R1), R3		// sec
+ 	MOVD	8(R1), R5		// nsec
+@@ -298,7 +358,7 @@
+ 	MOVD	32(R1), R6
+ 	MOVD	R6, m_vdsoPC(R21)
+ 
+-finish:
++return:
+ 	// sec is in R3, nsec in R5
+ 	// return nsec in R3
+ 	MOVD	$1000000000, R4
+@@ -313,7 +373,7 @@
+ 	SYSCALL $SYS_clock_gettime
+ 	MOVD	32(R1), R3
+ 	MOVD	40(R1), R5
+-	JMP	finish
++	JMP	return
+ 
+ TEXT runtime·rtsigprocmask(SB),NOSPLIT|NOFRAME,$0-28
+ 	MOVW	how+0(FP), R3
+@@ -366,7 +426,7 @@
+ 	// this might be called in external code context,
+ 	// where g is not set.
+ 	MOVBZ	runtime·iscgo(SB), R6
+-	CMP 	R6, $0
++	CMP	R6, $0
+ 	BEQ	2(PC)
+ 	BL	runtime·load_g(SB)
+ 

@@ -137,4 +137,13 @@
   * go#44984 net/http: server not setting Content-Length in certain cases (forwarded request 905962 from jfkw)</comment>
     <requestid>905965</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>212a734a7c6800ad59aee21615f9b52a</srcmd5>
+    <version>1.16.6</version>
+    <time>1627313872</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix crashes on PowerPC with kernel &gt;= 5.13:
+  * fix-ppc64-crashes.patch (forwarded request 907144 from favogt)</comment>
+    <requestid>907807</requestid>
+  </revision>
 </revisionlist>
