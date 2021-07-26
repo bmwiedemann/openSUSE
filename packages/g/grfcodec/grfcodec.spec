@@ -17,22 +17,23 @@
 
 
 Name:           grfcodec
-Version:        6.0.6
+Version:        6.0.6+39
 Release:        0
 Summary:        A suite of programs to modify Transport Tycoon Deluxe's GRF files
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/OpenTTD/grfcodec
-Source:         https://github.com/OpenTTD/grfcodec/archive/%{version}.tar.gz
-Patch0:         https://github.com/OpenTTD/grfcodec/commit/bb692b2c723c5e87cc8f89f445928e97594d5b8f.patch
+Source:         %{name}-%{version}.tar.xz
+Patch0:         grfcodec-cmake-install.patch
 %if 0%{?suse_version} > 1325
 BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel >= 1.36
 %endif
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  git
 BuildRequires:  libpng-devel
-BuildRequires:  xz
 Provides:       nforenum = %{version}
 Obsoletes:      nforenum < %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -49,10 +50,11 @@ or PNG files are encoded to form GRF files.
 %autosetup -p1
 
 %build
-CXXFLAGS="%{optflags}" make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-make install DESTDIR=%{buildroot} prefix=%{_prefix}
+%cmake_install
 
 %files
 %defattr(-,root,root,-)
@@ -60,12 +62,5 @@ make install DESTDIR=%{buildroot} prefix=%{_prefix}
 %{_bindir}/grfid
 %{_bindir}/grfstrip
 %{_bindir}/nforenum
-%dir %{_datadir}/doc/grfcodec
-%doc %{_datadir}/doc/grfcodec/*.txt
-%doc %{_datadir}/doc/grfcodec/COPYING
-%{_mandir}/man1/grfcodec.1*
-%{_mandir}/man1/grfid.1*
-%{_mandir}/man1/grfstrip.1*
-%{_mandir}/man1/nforenum.1*
 
 %changelog

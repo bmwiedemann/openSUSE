@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 19 09:43:38 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to git master, 6.0.6+39: Fix build with GCC 11
+- Drop bb692b2c723c5e87cc8f89f445928e97594d5b8f.patch: included in
+  the update.
+- Add grfcodec-cmake-install.patch: enable make install.
+- This now only installs the bare minimum, but the package seems
+  only used by openttd anyway, so good enough.
+
+-------------------------------------------------------------------
 Tue Feb 16 09:56:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add bb692b2c723c5e87cc8f89f445928e97594d5b8f.patch: Do not use
