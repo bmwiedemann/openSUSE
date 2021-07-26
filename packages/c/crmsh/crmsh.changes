@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 26 04:08:51 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210726.3de6f304:
+  * Dev: testcases: adjust some testcases expected output due to previous change
+  * Dev: ui_context: Add info when spell-corrections happen
+
+-------------------------------------------------------------------
+Mon Jul 19 09:41:22 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210719.c45a9f5d:
+  * Dev: unittest: adjust unit test for previous changes
+  * Dev: ocfs2: set no-quorum-policy as freeze when configuring OCFS2
+
+-------------------------------------------------------------------
 Wed Jul 14 02:39:38 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210714.57de51d5:
