@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 18 22:20:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.76
+  * New option to abandon an SSH connection if the server allows
+    you to authenticate in a trivial manner.
+  * Bug fix: server colour-palette reconfigurations were
+    sometimes lost.
+
+-------------------------------------------------------------------
 Mon May 10 12:02:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.75

@@ -211,4 +211,12 @@
     <comment>- Update to release 0.75</comment>
     <requestid>892037</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>299ff987184cde4f2066c1b69eff8c19</srcmd5>
+    <version>0.76</version>
+    <time>1627313887</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908168</requestid>
+  </revision>
 </revisionlist>
