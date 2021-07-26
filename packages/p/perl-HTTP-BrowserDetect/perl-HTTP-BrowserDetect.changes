@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 22 03:07:08 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.33
+   see /usr/share/doc/packages/perl-HTTP-BrowserDetect/Changes
+
+  3.33      2021-07-21 14:38:49Z
+      - Yahoo iOS App as not a robot (GH#188) (Yasuharu Iida)
+
+  3.32      2021-07-20 21:13:13Z
+      - add headlesschrome as robot (GH#187) (Ilya Rassadin)
+      - Tidy imports (GH#184) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Jul 30 03:10:35 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.31

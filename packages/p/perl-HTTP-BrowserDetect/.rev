@@ -7,4 +7,12 @@
     <comment>Required by https://build.opensuse.org/request/show/845927</comment>
     <requestid>846173</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d6c1c74946b63b248dc8102d79d4e562</srcmd5>
+    <version>3.33</version>
+    <time>1627313892</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908189</requestid>
+  </revision>
 </revisionlist>
