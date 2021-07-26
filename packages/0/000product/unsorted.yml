@@ -1877,7 +1877,6 @@ unsorted:
   - charliecloud 
   - charliecloud-doc 
   - charliecloud-examples 
-  - chartmuseum 
   - chasen 
   - chasen-devel 
   - chck-devel 
@@ -3346,7 +3345,6 @@ unsorted:
   - exec-maven-plugin-javadoc 
   - execstack 
   - exempi-tools 
-  - exercism 
   - exfat-utils 
   - exfatprogs 
   - exif 
@@ -5907,12 +5905,9 @@ unsorted:
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
   - golang-github-czerwonk-ping_exporter 
-  - golang-github-exercism-cli 
-  - golang-github-golang-glog 
   - golang-github-golang-protobuf 
   - golang-github-jteeuwen-go-bindata 
   - golang-github-kr-pty 
-  - golang-github-kr-text 
   - golang-github-linuxdeepin-dde-api 
   - golang-github-linuxdeepin-deepin-daemon 
   - golang-github-linuxdeepin-deepin-desktop-schemas 
@@ -5923,18 +5918,14 @@ unsorted:
   - golang-github-linuxdeepin-go-x11-client 
   - golang-github-linuxdeepin-startdde 
   - golang-github-lusitaniae-apache_exporter 
-  - golang-github-naoina-go-stringutil 
   - golang-github-nsf-gocode 
   - golang-github-prometheus-alertmanager 
   - golang-github-prometheus-node_exporter 
   - golang-github-prometheus-prometheus 
   - golang-github-prometheus-promu 
-  - golang-github-rogpeppe-godef 
   - golang-github-shadowsocks-v2ray-plugin 
-  - golang-github-shurcool-sanitized_anchor_name 
   - golang-github-v2fly-v2ray-core 
   - golang-github-vpenso-prometheus_slurm_exporter 
-  - golang-github-wrouesnel-postgres_exporter 
   - golang-gopkgin-check 
   - golang-org-x-net-context 
   - golang-org-x-net-html 
@@ -9875,6 +9866,7 @@ unsorted:
   - libcamd-doc 
   - libcamera-devel 
   - libcamera-suse5 
+  - libcamera-suse5-32bit: [x86_64] 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -16166,8 +16158,6 @@ unsorted:
   - mono-zeroconf-doc 
   - mono-zeroconf-provider-avahi 
   - monodoc-core 
-  - moonjit 
-  - moonjit-devel 
   - mopac7 
   - moreutils 
   - moreutils-parallel 
@@ -22092,14 +22082,8 @@ unsorted:
   - python36-certbot 
   - python36-certbot-apache 
   - python36-certbot-dns-cloudflare 
-  - python36-certbot-dns-cloudxns 
   - python36-certbot-dns-digitalocean 
-  - python36-certbot-dns-dnsimple 
-  - python36-certbot-dns-dnsmadeeasy 
   - python36-certbot-dns-google 
-  - python36-certbot-dns-linode 
-  - python36-certbot-dns-luadns 
-  - python36-certbot-dns-nsone 
   - python36-certbot-dns-rfc2136 
   - python36-certbot-dns-route53 
   - python36-certbot-nginx 
@@ -25063,6 +25047,7 @@ unsorted:
   - python38-ddt 
   - python38-deap 
   - python38-debian 
+  - python38-debugpy 
   - python38-deepdiff 
   - python38-deepmerge 
   - python38-defcon 
@@ -28061,6 +28046,7 @@ unsorted:
   - python39-ddt 
   - python39-deap 
   - python39-debian 
+  - python39-debugpy 
   - python39-decorator 
   - python39-deepdiff 
   - python39-deepmerge 
@@ -30839,7 +30825,6 @@ unsorted:
   - redfish-finder 
   - redfishtool 
   - redis++-devel 
-  - redis-operator 
   - redland 
   - redland-storage-postgresql 
   - redminecli 
@@ -31990,17 +31975,17 @@ unsorted:
   - soapy-osmo-devel 
   - soapy-sdr 
   - soapy-sdr-devel 
-  - soapysdr0.7-module-airspy 
-  - soapysdr0.7-module-bladerf 
-  - soapysdr0.7-module-freesrp 
-  - soapysdr0.7-module-hackrf 
-  - soapysdr0.7-module-lms7 
-  - soapysdr0.7-module-mirisdr 
-  - soapysdr0.7-module-osmosdr 
   - soapysdr0.7-module-remote 
-  - soapysdr0.7-module-rtlsdr 
   - soapysdr0.7-module-uhd 
-  - soapysdr0.7-module-xtrx 
+  - soapysdr0.8-module-airspy 
+  - soapysdr0.8-module-bladerf 
+  - soapysdr0.8-module-freesrp 
+  - soapysdr0.8-module-hackrf 
+  - soapysdr0.8-module-lms7 
+  - soapysdr0.8-module-mirisdr 
+  - soapysdr0.8-module-osmosdr 
+  - soapysdr0.8-module-rtlsdr 
+  - soapysdr0.8-module-xtrx 
   - sobby 
   - socat: [i586] 
   - soci-devel 
