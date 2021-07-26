@@ -23,7 +23,7 @@
 %endif
 
 Name:           polkit-default-privs
-Version:        1550+20210715.b7d5b97
+Version:        1550+20210722.ae1891d
 Release:        0
 Summary:        SUSE PolicyKit default permissions
 License:        GPL-2.0-or-later
@@ -45,17 +45,8 @@ Predefined polkit profiles for different usage scenarios like desktop and
 server. These profiles define the kind of authentication required for various
 polkit actions used across applications.
 
-
-
-
-
-
-
-
-
-
 # use a separate package for the static whitelist (i.e. the one that isn't
-# part of the different profile selectable during runtime). This whitelist is
+# part of the different profiles selectable during runtime). This whitelist is
 # of no use for users and only needed during rpmlint time.
 %package -n polkit-whitelisting
 Summary:        Static polkit whitelists for processing by rpmlint-checks
@@ -75,19 +66,28 @@ valid rule file installations by other packages.
 make install DESTDIR=$RPM_BUILD_ROOT fillupdir="%{_fillupdir}"
 mkdir -p $RPM_BUILD_ROOT/etc/polkit-1/rules.d/
 > $RPM_BUILD_ROOT/etc/polkit-1/rules.d/90-default-privs.rules
+# TODO: this is a backward compatibility entry for the rpmlint-mini check for
+# polkit priv whitelistings. When rpmlint2 is fully in production we shouldn't
+# need this any more (apart from adjusting the rpmlint checker in rpmlint2
+# on the opensuse upstream branch).
+ln -s /usr/etc/polkit-default-privs/profiles/standard $RPM_BUILD_ROOT/etc/polkit-default-privs.standard
 
 %post
 %{fillup_only -ns security polkit_default_privs}
 /sbin/set_polkit_default_privs >/dev/null
 
 %files
+%define basedir %{_distconfdir}/polkit-default-privs
+%define profiledir %{basedir}/profiles
 %doc README.md
-%defattr(-,root,root,-)
 %ghost %attr(0644,root,root) /etc/polkit-1/rules.d/90-default-privs.rules
-%config /etc/polkit-default-privs.easy
-%config /etc/polkit-default-privs.standard
-%config /etc/polkit-default-privs.restrictive
-%config(noreplace) /etc/polkit-default-privs.local
+%dir %{basedir}
+%dir %{profiledir}
+%{profiledir}/easy
+%{profiledir}/standard
+%{profiledir}/restrictive
+%{basedir}/local.template
+%{_sysconfdir}/polkit-default-privs.standard
 /sbin/chkstat-polkit
 /sbin/set_polkit_default_privs
 %_mandir/man*/*

@@ -1863,4 +1863,12 @@ for 12.3</comment>
   See also: https://build.opensuse.org/request/show/905083</comment>
     <requestid>906457</requestid>
   </revision>
+  <revision rev="202" vrev="1">
+    <srcmd5>b919f2fb392cd5933a2308c12274bc1e</srcmd5>
+    <version>1550+20210722.ae1891d</version>
+    <time>1627313873</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>907891</requestid>
+  </revision>
 </revisionlist>
