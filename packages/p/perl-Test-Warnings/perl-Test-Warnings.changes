@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 14 03:06:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.031
+   see /usr/share/doc/packages/perl-Test-Warnings/Changes
+
+  0.031     2021-07-13 22:13:48Z
+            - remove unneeded develop prereqs that caused metacpan to unduly
+              raise the river position of some dependent modules
+
+-------------------------------------------------------------------
 Sun Mar 22 03:11:38 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 0.030
