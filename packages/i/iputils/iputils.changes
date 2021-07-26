@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 22 16:18:11 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 20210722
+  https://github.com/iputils/iputils/releases/tag/20210722
+- Use rarpd.service from upstream (removes PrivateUsers=yes, which fixes broken
+  start of the service, adds DynamicUser=yes for more security)
+- Add BuildRequires:  iproute2 (required for running tests)
+
+-------------------------------------------------------------------
 Tue Mar 16 22:21:46 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Binaries were found to be not optimized or built
