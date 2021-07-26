@@ -19,7 +19,7 @@
 
 %define sover 20_10-1
 %define libname libLimeSuite%{sover}
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 Name:           limesuite
 Version:        20.10.0
 Release:        0
