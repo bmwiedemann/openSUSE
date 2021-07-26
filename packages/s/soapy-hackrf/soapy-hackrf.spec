@@ -1,6 +1,7 @@
 #
 # spec file for package soapy-hackrf
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
@@ -17,7 +18,7 @@
 #
 
 
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 %define soapy_modname soapysdr%{soapy_modver}-module-hackrf
 Name:           soapy-hackrf
 Version:        0.3.3
