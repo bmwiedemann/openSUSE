@@ -16,7 +16,7 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 %define soapy_modname soapysdr%{soapy_modver}-module-rtlsdr
 
 Name:           soapy-rtlsdr
