@@ -18,10 +18,10 @@
 
 %define cpan_name PDF-Builder
 Name:           perl-PDF-Builder
-Version:        3.022
+Version:        3.023
 Release:        0
 Summary:        Facilitates the creation and modification of PDF files
-License:        SUSE-Public-Domain
+License:        LGPL-2.1-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PM/PMPERRY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Compress::Zlib) >= 1
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.66
 BuildRequires:  perl(Font::TTF) >= 1.04
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Memory::Cycle) >= 1
