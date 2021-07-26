@@ -3,7 +3,7 @@
     <param name="url">git://github.com/matanui159/ReplaySorcery.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">2b3eb35</param>
+    <param name="revision">04938df</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service mode="buildtime" name="tar" />

@@ -17,7 +17,7 @@
 
 
 Name:           replay-sorcery
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Instant replay solution for Linux
 License:        GPL-3.0-only
@@ -54,14 +54,22 @@ the last 30 seconds.
 %install
 %cmake_install
 
+# fix RPMLINT W: suse-missing-rclink
+mkdir -p %{buildroot}%{_sbindir}
+pushd %{buildroot}%{_sbindir}
+ln -s service rcreplay-sorcery-kms
+popd
+
 %verifyscript
 %verify_permissions -e %{_bindir}/%{name}
 
 %pre
 %service_add_pre %{name}.service
+%service_add_pre %{name}-kms.service
 
 %post
 %service_add_post %{name}.service
+%service_add_post %{name}-kms.service
 %if 0%{?set_permissions:1}
     %set_permissions %{_bindir}/%{name}
 %else
@@ -70,9 +78,11 @@ the last 30 seconds.
 
 %preun
 %service_del_preun %{name}.service
+%service_del_preun %{name}-kms.service
 
 %postun
 %service_del_postun %{name}.service
+%service_del_postun %{name}-kms.service
 
 %files
 %license COPYING
@@ -80,5 +90,7 @@ the last 30 seconds.
 %{_bindir}/%{name}
 %{_prefix}%{_sysconfdir}/%{name}.conf
 %{_prefix}/lib/systemd/user/%{name}.service
+%{_prefix}/lib/systemd/system/%{name}-kms.service
+%{_sbindir}/rcreplay-sorcery-kms
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 10 19:45:29 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.6.0.
+  * Features
+    * Experimental KMS service as a much more secure way to handle
+      hardware acceleration
+      * The old method (SETUID) is still supported but will be
+        removed before 1.0
+      * SETUID is already disabled by default but can be reenabled
+      * See the new documentation for details
+    * "Command" controller that lets you run a command to save a
+      video (useful for wayland)
+  * Fixes
+    * Much lower CPU usage when using PulseAudio
+  * Other
+    * Updated documentation
+    * libbacktrace updates
+    * Updated to latest FFmpeg version (removing deprecated function)
+
+-------------------------------------------------------------------
 Wed Jan 27 15:13:43 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.5.0.
