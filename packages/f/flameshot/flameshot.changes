@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 26 11:56:47 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.10.1
+   * The ability to upload to imgur via a hotkey has been removed.
+     - Many users accidentally hit the hotkey and uploaded sensitive data
+     - Users could accidentally upload the entire desktop by hitting the
+       upload key before a region was selection
+   * Fixed segfault when parsing invalid config file
+
+-------------------------------------------------------------------
 Fri Jul 16 20:22:09 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - refetch tarball (changed from source)
