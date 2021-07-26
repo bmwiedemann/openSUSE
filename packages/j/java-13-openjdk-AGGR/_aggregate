@@ -1,6 +1,0 @@
-<aggregatelist>
-  <aggregate project="Java:Factory">
-    <package>java-13-openjdk</package>
-    <repository target="standard" source="openSUSE_Tumbleweed" />
-  </aggregate>
-</aggregatelist>
