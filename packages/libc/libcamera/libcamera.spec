@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            http://libcamera.org/
 
 Source:         %name-%version.tar.xz
+Source1:        baselibs.conf
 Patch1:         vers.diff
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler

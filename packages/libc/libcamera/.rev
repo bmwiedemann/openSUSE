@@ -48,4 +48,12 @@
   * cam: support using multiple cameras concurrently</comment>
     <requestid>908014</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c94efb22da51dfabf6e46e27dfe840af</srcmd5>
+    <version>0~2809.e0704e97</version>
+    <time>1627313898</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908420</requestid>
+  </revision>
 </revisionlist>

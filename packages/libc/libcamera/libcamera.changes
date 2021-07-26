@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 23 17:38:10 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- pipewire has baselibs, so we should have them here as well 
+
+-------------------------------------------------------------------
 Fri Jul 23 16:39:41 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0~2809 (e0704e97) [boo#1188650]
