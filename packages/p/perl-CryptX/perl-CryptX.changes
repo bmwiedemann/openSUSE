@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 19 03:06:20 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.073
+   see /usr/share/doc/packages/perl-CryptX/Changes
+
+  0.073   2021-07-18
+          - fix #73 CPAN testers failure with Math::BigInt 1.99982
+          - fix #70 remove lto related hacks from Makefile.PL
+          - fix #72 drop optional prereqs JSON::XS + Cpanel::JSON::XS, use optionally only JSON
+
+-------------------------------------------------------------------
 Fri Apr 30 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.072
