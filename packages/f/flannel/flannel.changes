@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:54:45 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update to 0.14.0:
+  * Add tencent cloud VPC network support
+  * moving go modules to flannel-io/flannel and updating to go 1.16
+  * fix(windows): nil pointer panic
+  * Preserve environment for extension backend
+  * Fix flannel hang if lease expired
+  * Documentation for the Flannel upgrade/downgrade procedure
+  * Move from glog to klog
+  * fix(host-gw): failed to restart if gateway hnsep existed
+  * ipsec: use well known paths of charon daemon
+  * upgrade client-go to 1.19.4
+  * move from juju/errors to pkg/errors
+  * subnets: move forward the cursor to skip illegal subnet
+  * Fix Expired URL to Deploying Flannel with kubeadm
+  * Modify kube-flannel.yaml to use rbac.authorization.k8s.io/v1
+  * preserve AccessKey & AccessKeySecret environment on sudo fix some typo in doc.
+  * iptables: handle errors that prevent rule deletes
+- Sync kube-flannel.yaml manifest
+- Change project URL to github.com/flannel-io/flannel
+
+-------------------------------------------------------------------
 Wed Apr 28 13:20:33 UTC 2021 - Ralf Haferkamp <ralf@h4kamp.de>
 
 - Sync manifest with upstream (0.13.0 release). Includes the

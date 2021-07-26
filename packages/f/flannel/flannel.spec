@@ -24,13 +24,13 @@
 %define flannel_container_path registry.opensuse.org/kubic/flannel
 
 Name:           flannel
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        An etcd backed network fabric for containers
 License:        Apache-2.0
 Group:          System/Management
-Url:            https://github.com/coreos/flannel
-Source:         https://github.com/coreos/flannel/archive/v%{version}.tar.gz
+Url:            https://github.com/flannel-io/flannel
+Source:         https://github.com/flannel-io/flannel/archive/v%{version}.tar.gz
 Source1:        kube-flannel.yaml
 Requires:       iproute2
 # arp is used:
@@ -74,7 +74,7 @@ reduces the complexity of doing port mapping.
 
 %build
 gofmt -w -r "x -> \"%{version}\"" version/version.go
-%{goprep} github.com/coreos/flannel
+%{goprep} github.com/flannel-io/flannel
 # go1.16+ default is GO111MODULE=on set to auto temporarily
 # until using an upstream version with go.mod
 export GO111MODULE=auto
