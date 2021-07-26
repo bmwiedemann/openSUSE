@@ -1,6 +1,7 @@
 #
 # spec file for package soapy-osmo
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
 # Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
 #
@@ -18,7 +19,7 @@
 
 
 %define sover 0
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 Name:           soapy-osmo
 Version:        0.2.5
 Release:        0
