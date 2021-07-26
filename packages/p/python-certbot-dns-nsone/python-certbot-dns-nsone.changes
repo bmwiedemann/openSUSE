@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 15 08:58:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip building for python 3.6: not all deps are available anymore
+  (e.g dns-lexicon).
+
+-------------------------------------------------------------------
 Thu Jun 24 09:29:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.16.0
