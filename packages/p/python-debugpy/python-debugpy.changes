@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Jun 29 13:04:38 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.3.0
+  * no release notes.
+- new requirement for ipykernel 6
+- enable testsuite (multibuild) 
+- defer debundling pydevd
+- add pydevd-openSUSE-attach-autoarch.patch for support of
+  non-intel architectures when injecting the debug library
+- skip python36 in order to save resources
+
+-------------------------------------------------------------------
+Fri Dec  4 14:41:13 UTC 2020 - Matej Cepl <mcepl@suse.com>
+
+- Initial packaging of debugpy 1.2.0
