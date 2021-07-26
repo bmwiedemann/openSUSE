@@ -1,5 +1,0 @@
-<package name="chartmuseum" project="openSUSE:Factory">
-  <title>chartmuseum</title>
-  <description>Helm Chart Repository with support for Amazon S3 and Google Cloud Storage</description>
-  <devel project="devel:CaaSP:Head:ControllerNode" package="chartmuseum"/>
-</package>
