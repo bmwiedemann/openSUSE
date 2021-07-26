@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 24 13:31:51 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 2.26.1
+  * Correction: import not working with woob bank 3.0 (kde#436006)
+  * Correction: Help text needs to be escaped (kde#436081)
+  * Correction: there's no word "reconciliate" in English, should
+    be reconcile (kde#436328)
+  * Correction: Downloading currency using skrooge-yahoodl.py fails
+    with UnicodeDecodeError (kde#439494)
+  * Correction: Small fix for FEC monthly report
+  * Correction: Migration on new exchangeratesapi.io APIs. Need a
+    API key now
+  * Correction: Fix deprecated knsrc file location
+  * Feature: Add confirmation message when an import is triggered
+    by a double click on an imported file
+
+-------------------------------------------------------------------
 Sun Apr 18 20:00:15 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 2.25.0

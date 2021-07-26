@@ -24,7 +24,7 @@
 %bcond_with qtwebengine
 %endif
 Name:           skrooge
-Version:        2.25.0
+Version:        2.26.1
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only
@@ -155,6 +155,7 @@ sed -i 's#env python3#python3#' %{buildroot}%{_kf5_sharedir}/skrooge/*.py
 %{_kf5_libdir}/libskgbasemodeler.so.%{version}
 %{_kf5_libdir}/libskgbasemodeler.so.2
 %{_kf5_notifydir}/%{name}.notifyrc
+%{_kf5_knsrcfilesdir}/skrooge_monthly.knsrc
 %{_kf5_plugindir}/%{name}_*.so
 %{_kf5_plugindir}/designer/libskgbankguidesigner.so
 %{_kf5_plugindir}/designer/libskgbaseguidesigner.so

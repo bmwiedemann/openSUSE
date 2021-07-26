@@ -101,4 +101,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     filter on the selected period</comment>
     <requestid>886634</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>388534144b2e3b5a2769a8895877696a</srcmd5>
+    <version>2.26.1</version>
+    <time>1627313893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908347</requestid>
+  </revision>
 </revisionlist>
