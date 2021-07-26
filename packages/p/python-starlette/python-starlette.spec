@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-starlette
-Version:        0.14.2
+Version:        0.16.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -28,10 +28,10 @@ URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
-BuildRequires:  (python36-aiocontextvars if python36-base)
 BuildRequires:  %{python_module aiofiles}
 BuildRequires:  %{python_module aiosqlite}
+BuildRequires:  %{python_module anyio}
+BuildRequires:  %{python_module contextlib2}
 BuildRequires:  %{python_module databases}
 BuildRequires:  %{python_module flake8}
 BuildRequires:  %{python_module graphene}
@@ -42,8 +42,11 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module trio}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  (python3-aiocontextvars if python3-base < 3.7)
+BuildRequires:  (python36-aiocontextvars if python36-base)
 BuildArch:      noarch
 %python_subpackages
 
@@ -52,7 +55,7 @@ Starlette is a lightweight ASGI framework/toolkit, which is ideal for
 building high performance asyncio services.
 
 %prep
-%setup -q -n starlette-%{version}
+%autosetup -p1 -n starlette-%{version}
 
 %build
 %python_build
