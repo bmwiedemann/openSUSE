@@ -7,4 +7,12 @@
     <comment>required for perl-Daemon-Generic adi:16</comment>
     <requestid>531212</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>380a38ac9d6d34679bcb687c2d8ea8d8</srcmd5>
+    <version>0.35</version>
+    <time>1627313889</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908180</requestid>
+  </revision>
 </revisionlist>
