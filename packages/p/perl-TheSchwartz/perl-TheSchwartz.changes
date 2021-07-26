@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 17 03:09:34 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.16
+   see /usr/share/doc/packages/perl-TheSchwartz/Changes
+
+  1.16 2021-07-16T07:49:43Z
+
+      - Add ability to disable job randomization GH#9 (@jamadam++)
+
+-------------------------------------------------------------------
 Wed Jan 29 03:21:08 UTC 2020 -  <timueller+perl@suse.de>
 
 - updated to 1.15
