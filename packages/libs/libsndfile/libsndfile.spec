@@ -29,6 +29,7 @@ Source1:        https://github.com/libsndfile/libsndfile/releases/download/%{ver
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Patch34:        sndfile-deinterlace-channels-check.patch
+Patch35:        ms_adpcm-Fix-and-extend-size-checks.patch
 # PATCH-FIX-OPENSUSE
 Patch100:       sndfile-ocloexec.patch
 BuildRequires:  cmake

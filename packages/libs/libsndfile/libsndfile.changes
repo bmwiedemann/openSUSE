@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 23 12:59:11 CEST 2021 - tiwai@suse.de
+
+- Fix heap buffer overflow vulnerability in msadpcm_decode_block
+  (CVE-2021-3246, bsc#1188540):
+  ms_adpcm-Fix-and-extend-size-checks.patch
+
+-------------------------------------------------------------------
 Wed Mar 17 08:09:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire python3-base instead of the full python3 package:
