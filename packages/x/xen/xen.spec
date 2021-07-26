@@ -517,7 +517,7 @@ configure_flags="${configure_flags} --disable-qemu-traditional"
 	--enable-systemd \
 	--with-systemd=%{_unitdir} \
 	--with-systemd-modules-load=%{with_systemd_modules_load} \
-	--with-system-ovmf=%{_datadir}/qemu/ovmf-x86_64-ms.bin \
+	--with-system-ovmf=%{_datadir}/qemu/ovmf-x86_64-xen-4m.bin \
 	--with-system-seabios=%{_datadir}/qemu/bios-256k.bin \
         ${configure_flags}
 make -C tools/include/xen-foreign %{?_smp_mflags}

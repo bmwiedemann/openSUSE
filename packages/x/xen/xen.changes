@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 22 22:33:51 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Change the '--with-system-ovmf' configure option to use
+  the new Xen-specific ovmf firmware. The traditional, unified
+  firmwares will no longer support multi-VMM. For more information
+
+  https://bugzilla.tianocore.org/show_bug.cgi?id=1689
+  https://bugzilla.tianocore.org/show_bug.cgi?id=2122
+
+-------------------------------------------------------------------
 Tue May  4 14:14:14 UTC 2021 - ohering@suse.de
 
 - Add xen.sysconfig-fillup.patch to make sure xencommons is in a
