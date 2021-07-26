@@ -1,7 +1,7 @@
 #
 # spec file for package libxtrx
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020-2021 SUSE LLC
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %define sover   0
 %define libname libxtrx%{sover}
-%define soapy_modver 0.7
+%define soapy_modver 0.8
 %define soapy_modname soapysdr%{soapy_modver}-module-xtrx
 
 Name:           libxtrx
@@ -31,8 +31,6 @@ Group:          Development/Libraries/C and C++
 URL:            http://xtrx.io
 #Git-Clone:     https://github.com/xtrx-sdr/libxtrx.git
 Source:         %{name}-%{version}.tar.xz
-# We are still using SoapySDR ABI 0.7 (revert change for ABI 0.8 comapatibility)
-Patch0:         0001-Fix-test_xtrx_soapy-build-issue.patch
 Patch1:         0001-Fix-CMake-FindQCustomPlot.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -47,14 +45,14 @@ BuildRequires:  pkgconfig(libxtrxdsp)
 BuildRequires:  pkgconfig(libxtrxll)
 
 %description
-High level XTRX API.
+High level API for XTRX software defined radio frontends.
 
 %package -n %{libname}
 Summary:        High level XTRX API
 Group:          System/Libraries
 
 %description -n %{libname}
-High level XTRX API.
+High level API for XTRX software defined radio frontends.
 
 %package devel
 Summary:        Development files for libxtrx
@@ -85,7 +83,6 @@ A Soapy module that supports XTRX devices within the Soapy API.
 
 %prep
 %setup -q
-%patch0 -p1 -R
 %patch1 -p1
 
 %build
@@ -104,7 +101,7 @@ A Soapy module that supports XTRX devices within the Soapy API.
 %install
 %cmake_install
 install -d %{buildroot}/%{_bindir}
-#install -m 0755 build/examples/xtrx_fft/mainwindow %{buildroot}/%{_bindir}/xtrx_fft
+#install -m 0755 build/examples/xtrx_fft/mainwindow %%{buildroot}/%%{_bindir}/xtrx_fft
 mv %{buildroot}/%{_libdir}/xtrx/xtrx_fft %{buildroot}/%{_bindir}/xtrx_fft
 mv %{buildroot}/%{_libdir}/xtrx/test_xtrx %{buildroot}/%{_bindir}/test_xtrx
 mv build/soapy/test_xtrx_soapy %{buildroot}/%{_bindir}/test_xtrx_soapy

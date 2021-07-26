@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 15 15:21:28 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Builds with SoapySDR 0.8
+- Patch 0001-Fix-test_xtrx_soapy-build-issue.patch removed (not 
+  needed for build now)
+
+-------------------------------------------------------------------
 Thu Dec 10 16:21:44 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.0.0+git.20201202:
