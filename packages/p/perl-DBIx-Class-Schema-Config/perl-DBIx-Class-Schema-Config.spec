@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBIx-Class-Schema-Config
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,30 +16,33 @@
 #
 
 
-Name:           perl-DBIx-Class-Schema-Config
-Version:        0.001013
-Release:        0
 %define cpan_name DBIx-Class-Schema-Config
+Name:           perl-DBIx-Class-Schema-Config
+Version:        0.001014
+Release:        0
 Summary:        Credential Management for DBIx::Class
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SY/SYMKAT/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Config::Any) >= 0.23
 BuildRequires:  perl(DBD::SQLite)
 BuildRequires:  perl(DBIx::Class) >= 0.08100
+BuildRequires:  perl(DBIx::Class::Schema)
 BuildRequires:  perl(File::HomeDir)
 BuildRequires:  perl(Hash::Merge)
+BuildRequires:  perl(URI)
 BuildRequires:  perl(namespace::clean)
 Requires:       perl(Config::Any) >= 0.23
+Requires:       perl(DBD::SQLite)
 Requires:       perl(DBIx::Class) >= 0.08100
+Requires:       perl(DBIx::Class::Schema)
 Requires:       perl(File::HomeDir)
 Requires:       perl(Hash::Merge)
+Requires:       perl(URI)
 Requires:       perl(namespace::clean)
 %{perl_requires}
 
@@ -56,14 +59,14 @@ credentials can be found at
 http://www.symkat.com/credential-management-in-dbix-class
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 # MANUAL BEGIN
 sed -i -e 's/use inc::Module::Install;/use lib q[.];\nuse inc::Module::Install;/' Makefile.PL
 # MANUAL END
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -74,7 +77,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes
+%doc Changes README
 
 %changelog
