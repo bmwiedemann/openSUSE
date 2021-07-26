@@ -322,4 +322,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 890073 from dimstar)</comment>
     <requestid>890134</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>faa8d133556a6ae0d345960aff389dcc</srcmd5>
+    <version>40.2</version>
+    <time>1627313893</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 908090 from iznogood)</comment>
+    <requestid>908367</requestid>
+  </revision>
 </revisionlist>
