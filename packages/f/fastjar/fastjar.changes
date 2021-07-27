@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 26 16:37:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Little fixes to be able to build on CentOS
+
+-------------------------------------------------------------------
+Fri Jul 23 07:12:47 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Add reference for CVE-2010-2322 [bsc#1188517, CVE-2010-2322]
+  * Directory traversal vulnerabilities
+  * Rename jartool.diff to fastjar-CVE-2010-2322.patch
+
+-------------------------------------------------------------------
+Fri Jul 23 07:09:56 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update spec file with spec-cleaner
+
+-------------------------------------------------------------------
 Fri May 19 14:14:56 UTC 2017 - tchvatal@suse.com
 
 - Apply patches from debian to be up-par:

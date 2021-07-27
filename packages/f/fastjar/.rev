@@ -149,4 +149,12 @@
   * Merged in jartool.diff</comment>
     <requestid>496810</requestid>
   </revision>
+  <revision rev="21" vrev="25">
+    <srcmd5>7b4e0b01154c8fdf1ccfb7d67ca3f353</srcmd5>
+    <version>0.98</version>
+    <time>1627389128</time>
+    <user>dimstar_suse</user>
+    <comment>security fixes</comment>
+    <requestid>908510</requestid>
+  </revision>
 </revisionlist>

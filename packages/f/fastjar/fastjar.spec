@@ -1,7 +1,7 @@
 #
 # spec file for package fastjar
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,19 +20,21 @@ Name:           fastjar
 Version:        0.98
 Release:        0
 Summary:        Java package archiver
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Languages/Java
-Url:            http://savannah.nongnu.org/projects/fastjar/
+URL:            https://savannah.nongnu.org/projects/fastjar/
 Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
 # Current signing key has expired
 #Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
 #Source2:        http://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 Patch2:         fix-update-mode.diff
-Patch3:         jartool.diff
+# PATCH-FIX-UPSTREAM bsc#1188517 CVE-2010-2322 directory traversal vulnerabilities
+Patch3:         fastjar-CVE-2010-2322.patch
 BuildRequires:  zlib-devel
+%if 0%{?suse_version}
 Requires(post): %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires(preun):%{install_info_prereq}
+%endif
 
 %description
 Fastjar is an implementation of Sun's jar utility that comes with the
@@ -45,7 +47,7 @@ being 100% feature compatible.
 
 %build
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -57,12 +59,14 @@ make %{?_smp_mflags}
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
-%defattr(-,root,root)
 %doc AUTHORS README NEWS ChangeLog
-%{_mandir}/man1/fastjar.1%{ext_man}
-%{_mandir}/man1/grepjar.1%{ext_man}
-%{_infodir}/fastjar.info%{ext_info}
+%{_mandir}/man1/fastjar.1%{?ext_man}
+%{_mandir}/man1/grepjar.1%{?ext_man}
+%{_infodir}/fastjar.info%{?ext_info}
 %{_bindir}/fastjar
 %{_bindir}/grepjar
+%if ! 0%{?suse_version}
+%exclude %{_infodir}/dir
+%endif
 
 %changelog
