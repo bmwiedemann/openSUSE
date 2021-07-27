@@ -478,15 +478,15 @@ ln -sf gcc-%{gcc_suffix} $RPM_BUILD_ROOT%{_prefix}/bin/cc
 ln -sf g++-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/c++.1.gz
 ln -sf gcc-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/cc.1.gz
 # Install the LTO linker plugin so it is auto-loaded by BFD
-mkdir -p $RPM_BUILD_ROOT%{_prefix}/lib/bfd-plugins
-ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_prefix}/lib/bfd-plugins/liblto_plugin.so
+mkdir -p $RPM_BUILD_ROOT%{_libdir}/bfd-plugins
+ln -s `gcc-%{gcc_suffix} -print-file-name=liblto_plugin.so` $RPM_BUILD_ROOT%{_libdir}/bfd-plugins/liblto_plugin.so
 
 dir=`gcc-%{gcc_suffix} -print-prog-name=cc1`
 dir=${dir%/cc1}
 mkdir -p $RPM_BUILD_ROOT/$dir
 cat > $RPM_BUILD_ROOT/$dir/defaults.spec <<EOF
 *default_spec:
-%%{pie|fpic|fPIC|fpie|fPIE|no-pie|fno-pic|fno-PIC|fno-pie|fno-PIE|shared|static|nostdlib|nodefaultlibs|nostartfiles:;:-fPIE -pie}
+%%{pie|fpic|fPIC|fpie|fPIE|no-pie|fno-pic|fno-PIC|fno-pie|fno-PIE|shared|static|nostdlib|nodefaultlibs|nostartfiles:;:-fPIE}%%{fno-pic|fno-PIC|fno-pie|fno-PIE|pie|no-pie|shared|static|nostdlib|nodefaultlibs|nostartfiles:;: -pie}
 EOF
 
 %post -n gcc-go
@@ -513,8 +513,8 @@ fi
 %{_prefix}/bin/gcc-ar
 %{_prefix}/bin/gcc-nm
 %{_prefix}/bin/gcc-ranlib
-%dir %{_prefix}/lib/bfd-plugins
-%{_prefix}/lib/bfd-plugins/liblto_plugin.so
+%dir %{_libdir}/bfd-plugins
+%{_libdir}/bfd-plugins/liblto_plugin.so
 %doc %{_mandir}/man1/gcc.1.gz
 %doc %{_mandir}/man1/cc.1.gz
 %doc %{_mandir}/man1/gcov.1.gz

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul  9 07:41:14 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- With gcc-PIE add -pie even when -fPIC is specified but we are
+  not linking a shared library.  [boo#1185348]
+
+-------------------------------------------------------------------
+Wed May  5 12:48:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change bfd-plugins to be installed in %_libdir
+
+-------------------------------------------------------------------
 Thu Apr 29 08:45:13 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Switch gcc to default 11.

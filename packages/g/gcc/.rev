@@ -558,4 +558,15 @@ from GCC 6).
 - Adjust liblto_plugin.so naming for GCC 11.</comment>
     <requestid>889462</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>a5fe122c3ec0aee10426c0a75d201aab</srcmd5>
+    <version>11</version>
+    <time>1627389110</time>
+    <user>dimstar_suse</user>
+    <comment>- With gcc-PIE add -pie even when -fPIC is specified but we are
+  not linking a shared library.  [boo#1185348]
+
+- Change bfd-plugins to be installed in %_libdir</comment>
+    <requestid>905187</requestid>
+  </revision>
 </revisionlist>
