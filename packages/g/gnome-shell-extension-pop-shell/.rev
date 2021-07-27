@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>880165</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>886d0215d0c26689f28b9b2ec3e0a814</srcmd5>
+    <version>1.2.0</version>
+    <time>1627389121</time>
+    <user>dimstar_suse</user>
+    <comment>- backport 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
+  Fix prefs dialog crashing on Gnome 40
+- drop allow-gnome-40.patch:
+  included in 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch (forwarded request 908410 from darix)</comment>
+    <requestid>908413</requestid>
+  </revision>
 </revisionlist>

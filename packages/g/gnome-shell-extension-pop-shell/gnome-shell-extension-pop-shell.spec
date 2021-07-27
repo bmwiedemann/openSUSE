@@ -28,7 +28,7 @@ License:        GPL-3.0-only
 URL:            https://github.com/pop-os/shell
 Source:         https://github.com/pop-os/shell/archive/%{version}.tar.gz#/%{upstream_name}-%{version}.tar.gz
 Source1:        series
-Patch:          allow-gnome-40.patch
+Patch0:         0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch
 BuildRequires:  gnome-shell >= 3.36
 BuildRequires:  gobject-introspection
 BuildRequires:  typescript >= 3.8
@@ -55,7 +55,7 @@ i3-like tiling window management with the GNOME desktop for the best of both
 worlds.
 
 %prep
-%autosetup -n %{upstream_name}-%{version}
+%autosetup -p1 -n %{upstream_name}-%{version}
 
 %build
 %make_build

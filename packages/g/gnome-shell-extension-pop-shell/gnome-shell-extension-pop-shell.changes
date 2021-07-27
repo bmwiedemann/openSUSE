@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 26 12:31:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
+  Fix prefs dialog crashing on Gnome 40
+- drop allow-gnome-40.patch:
+  included in 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch
+
+-------------------------------------------------------------------
 Fri Mar 19 19:05:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add allow-gnome-40.patch:
