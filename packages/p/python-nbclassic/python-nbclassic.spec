@@ -16,22 +16,24 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 Name:           python-nbclassic
-Version:        0.2.6
+Version:        0.3.1
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/nbclassic
 # The github archive has the tests
 Source:         https://github.com/jupyterlab/nbclassic/archive/%{version}.tar.gz#/nbclassic-%{version}-gh.tar.gz
-BuildRequires:  %{python_module jupyter_server >= 1.1}
+BuildRequires:  %{python_module jupyter_server >= 1.8}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-nbclassic = %{version}
-Requires:       python-jupyter_server >= 1.1
+Requires:       python-jupyter_server >= 1.8
 Requires:       python-notebook
 # SECTION test requirements
 BuildRequires:  %{python_module pytest-console-scripts}

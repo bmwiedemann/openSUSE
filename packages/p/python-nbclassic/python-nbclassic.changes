@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:15:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.3.1
+  * bump jupyter_server dependency to 1.8 #58 (@Zsailer)
+- Release 0.3.0
+  * Support creating terminal with a given name. #52 (@cailiang9)
+  * BUG fix: correct redirection to {base_url}/edit/*. #55
+    (@cailiang9)
+  * patch server's sorted_extensions to prioritize nbclassic #56
+    (@Zsailer)
+- Release 0.2.8
+ * Remove forced sorting of extensions #49 (@minrk)
+ * Add Changelog #48 (@blink1073)
+- Release 0.2.7
+  * Fix deprecation warning when importing
+    jupyter_server.transutils._ #47 (@martinRenou)
+  * Add a redirect handler to open non-notebook files from the cli
+    #45 (@jtpio)
+  * Add default_url trait to NotebookApp #42 (@afshin)
+  * Fix GitHub Actions badge #40 (@jtpio)
+  * Run jupyter nbclassic -h on CI #29 (@jtpio)
+- Skip python2 and python36 (no ipykernel 6 on python36)
+
+-------------------------------------------------------------------
 Tue Feb  2 21:09:01 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - initial specfile for 0.2.6
