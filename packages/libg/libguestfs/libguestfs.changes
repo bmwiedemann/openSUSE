@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 19 01:01:01 UTC 2021 - ohering@suse.de
+
+- Remove obsolete yajl
+- Add conditional to ocaml_preserve_bytecode
+- Remove traces of python2 code
+- Use pkgconfig(python3) to refer to variants of python3
+- Remove obsolete 0004-python-include-dirs.patch and related
+  workaround in spec file
+- Use autosetup
+- Use _udevrulesdir
+- Remove BuildRoot and defattr
+- Remove Group tags
+
+-------------------------------------------------------------------
 Fri May 28 10:20:30 UTC 2021 - ohering@suse.de
 
 - For unknown reasons the appliance build fails randomly

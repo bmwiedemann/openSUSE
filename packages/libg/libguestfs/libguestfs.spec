@@ -20,7 +20,7 @@
 
 Version:        1.44.1
 Release:        0
-%{ocaml_preserve_bytecode}
+%{?ocaml_preserve_bytecode}
 
 %bcond_without ocaml_bindings
 %bcond_without lua_bindings
@@ -43,7 +43,6 @@ Release:        0
 %define _configure_python --disable-python
 %define _configure_ruby --disable-ruby
 
-%define udevrulesdir /usr/lib/udev/rules.d
 #
 # use 'env LIBGUESTFS_HV=/path/to/kvm libguestfs-test-tool' to verify
 %define kvm_binary /bin/false
@@ -102,12 +101,11 @@ BuildRequires:  dhcp-client
 BuildRequires:  libjansson-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  qemu-tools
 BuildRequires:  readline-devel
 BuildRequires:  supermin >= 5.1.6
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(yajl) >= 2.0.4
 # Required to build tools, its independent from bindings
 BuildRequires:  glib2-devel
 BuildRequires:  ocaml >= 4.01
@@ -139,17 +137,14 @@ BuildRequires:  gtk2-devel
 %endif
 #
 URL:            http://libguestfs.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Compatibility package for guestfs-tools
 # Upstream patches
 License:        GPL-2.0-only
-Group:          System/Filesystems
 
 # Pending upstram review
 Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
 Patch51:        0002-common-extract-UTF-8-conversion-function.patch
 Patch52:        0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
-Patch53:        0004-python-include-dirs.patch
 # Our patches
 Patch100:       appliance.patch
 Patch101:       netconfig.patch
@@ -181,7 +176,6 @@ performing partial backups, cloning VMs, and much else besides.
 %package -n guestfs-tools
 Summary:        Tools for accessing and modifying virtual machine disk images
 License:        GPL-2.0-only
-Group:          System/Filesystems
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 Requires:       libguestfs0 = %{version}
@@ -234,7 +228,6 @@ virtual machines.
 %package -n guestfsd
 Summary:        Daemon for the libguestfs appliance
 License:        GPL-2.0-only
-Group:          System/Filesystems
 Conflicts:      libaugeas0 < 1.0.0
 
 %description -n guestfsd
@@ -248,7 +241,6 @@ This package is only required for building the appliance.
 Summary:        OCaml bindings for libguestfs
 #
 License:        GPL-2.0-only
-Group:          Development/Languages/OCaml
 
 %description -n ocaml-libguestfs
 Allows OCaml scripts to directly use libguestfs.
@@ -256,7 +248,6 @@ Allows OCaml scripts to directly use libguestfs.
 %package -n ocaml-libguestfs-devel
 Summary:        Development files for libguesfs OCaml bindings
 License:        GPL-2.0-only
-Group:          Development/Languages/OCaml
 
 %description -n ocaml-libguestfs-devel
 Allows OCaml scripts to directly use libguestfs.
@@ -266,7 +257,6 @@ Allows OCaml scripts to directly use libguestfs.
 %package -n perl-Sys-Guestfs
 Summary:        Perl bindings for libguestfs
 License:        GPL-2.0-only
-Group:          Development/Languages/Perl
 BuildRequires:  perl
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Getopt::Long)
@@ -294,7 +284,6 @@ Allows Perl scripts to directly use libguestfs.
 %package -n lua-libguestfs
 Summary:        Lua bindings for libguestfs
 License:        GPL-2.0-only
-Group:          Development/Languages/Lua
 BuildRequires:  lua-devel
 %define _configure_lua --enable-lua
 #
@@ -309,9 +298,7 @@ Allows lua scripts to directly use libguestfs.
 %package -n python3-libguestfs
 Summary:        Python 3 bindings for libguestfs
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
-BuildRequires:  python3
-BuildRequires:  python3-devel
+BuildRequires:  pkgconfig(python3)
 %define _configure_python --enable-python
 #
 Obsoletes:      libguestfs-python < %{version}
@@ -326,7 +313,6 @@ Allows Python 3 scripts to directly use libguestfs.
 %package -n rubygem-libguestfs
 Summary:        Ruby bindings for libguestfs
 License:        GPL-2.0-only
-Group:          Development/Languages/Ruby
 BuildRequires:  ruby
 BuildRequires:  ruby-devel
 BuildRequires:  rubygem(rake)
@@ -340,7 +326,6 @@ Allows Ruby scripts to directly use libguestfs.
 %package test
 Summary:        Testcases for libguestfs
 License:        GPL-2.0-only
-Group:          Development/Tools/Other
 Requires:       %{name}
 
 %description test
@@ -444,7 +429,6 @@ Recommends:     guestfs-winsupport
 
 Summary:        Virtual machine needed for libguestfs
 License:        GPL-2.0-only
-Group:          System/Filesystems
 Provides:       libguestfs-data = %{version}
 Obsoletes:      libguestfs-data < %{version}
 
@@ -455,7 +439,6 @@ This package provides such an image, an initrd and a kernel.
 %package -n guestfs-winsupport
 Summary:        Windows guest support in libguestfs
 License:        GPL-2.0-or-later
-Group:          System/Filesystems
 Requires:       libguestfs >= 1.32
 BuildRequires:  ntfs-3g
 BuildRequires:  ntfsprogs
@@ -467,7 +450,6 @@ Provides the needed pieces for libguestfs to handle Windows guests.
 %package devel
 Summary:        Development files for libguestfs
 License:        GPL-2.0-only
-Group:          Development/Libraries/C and C++
 Requires:       libguestfs0 = %{version}
 
 %description devel
@@ -481,7 +463,6 @@ performing partial backups, cloning VMs, and much else besides.
 %package -n libguestfs0
 Summary:        Runtime library of libguestfs
 License:        LGPL-2.1-only
-Group:          System/Libraries
 Requires:       %{kvm_binary}
 Requires:       db48-utils
 Requires:       guestfs-data >= %{version}
@@ -511,7 +492,6 @@ virtual machines.
 %package -n virt-v2v
 Summary:        Convert a virtual machine to run on KVM
 License:        GPL-2.0-only
-Group:          System/Management
 Requires:       libguestfs0 = %{version}
 Requires:       qemu-block-ssh
 # Conflicts with the old perl version
@@ -526,7 +506,6 @@ from libvirt-managed hosts.
 %package -n virt-p2v
 Summary:        Convert a physical machine to run on KVM
 License:        GPL-2.0-only
-Group:          System/Management
 Requires:       gawk
 Requires:       virt-v2v = %{version}
 
@@ -537,15 +516,7 @@ It can import a variety of guest operating systems from libvirt-managed hosts.
 
 %prep
 : _ignore_exclusive_arch '%{?_ignore_exclusive_arch}'
-%setup -q -a 789653
-#%setup -q -a 1 -a 2 -a 789653
-%patch50 -p1
-%patch51 -p1
-%patch52 -p1
-%patch53 -p1
-%patch100 -p1
-%patch101 -p1
-%patch102 -p1
+%autosetup -p1 -a 789653
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -568,13 +539,6 @@ autoreconf -fi
 #
 %configure \
 	--help || :
-
-if python --version && ! pkg-config python
-then
-	export PYTHON_LIBS="-lpython`python -c 'import distutils.sysconfig; print (distutils.sysconfig.get_python_version ());'`"
-	export PYTHON_CFLAGS="-I`python -c 'import distutils.sysconfig; print (distutils.sysconfig.get_python_inc ());'`"
-	export PYTHON_EXT_SUFFIX=.so
-fi
 
 # Defines these if using --with-distro=SUSE with configure
 export HAVE_RPM_TRUE=
@@ -620,7 +584,7 @@ build_it %{?_smp_mflags} || build_it
 %install
 %makeinstall \
 	INSTALLDIRS=vendor \
-	udevrulesdir=%{udevrulesdir}
+	udevrulesdir=%{_udevrulesdir}
 find %{buildroot} -ls
 mkdir -p %{buildroot}/%{_datadir}/guestfs
 cp -avLt %{buildroot}/%{_datadir}/guestfs \
@@ -649,18 +613,6 @@ find %{buildroot}/ -name "*.bs" -size 0c -print -delete
 # the macro above packages everything, here only the perl files are desrired
 grep "%perl_vendorarch/" %{name}.files | tee t
 mv t %{name}.files
-%endif
-
-%if %{with python_bindings}
-pushd python
-sed -i -e "s:libraries=:library_dirs=['%{buildroot}/%{_libdir}'], libraries=:" setup.py
-make stamp-extra-files
-
-# HACKY! Change config.h for python3
-sed 's/\(#define HAVE_PYSTRING_ASSTRING 1\)/\/* \1 *\//' -i config.h
-%python3_build
-%python3_install
-popd
 %endif
 
 # Don't package the test harness (yet)
@@ -709,11 +661,9 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %postun -n libguestfs0 -p /sbin/ldconfig
 
 %files test
-%defattr(-,root,root)
 %{_datadir}/guestfs
 
 %files -n guestfs-data
-%defattr(-,root,root)
 %dir %{_libdir}/guestfs
 %dir %{_libdir}/guestfs/supermin.d
 %{_libdir}/guestfs/supermin.d/base.tar.gz
@@ -726,12 +676,10 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %{_libdir}/guestfs/supermin.d/zz-scripts.tar.gz
 
 %files -n guestfs-winsupport
-%defattr(-,root,root)
 %{_libdir}/guestfs/supermin.d/zz-*winsupport*
 
 %if %{with ocaml_bindings}
 %files -n ocaml-libguestfs
-%defattr(-,root,root)
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/guestfs
 %{_libdir}/ocaml/guestfs/META
@@ -740,7 +688,6 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %{_libdir}/ocaml/stublibs
 
 %files -n ocaml-libguestfs-devel
-%defattr(-,root,root)
 %dir %{_libdir}/ocaml
 %dir %{_libdir}/ocaml/guestfs
 %{_libdir}/ocaml/guestfs/*.a
@@ -751,7 +698,6 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 #
 %if %{with lua_bindings}
 %files -n lua-libguestfs
-%defattr(-,root,root)
 %{_libdir}/lua
 %endif
 #
@@ -761,29 +707,24 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %postun -n perl-Sys-Guestfs -p /sbin/ldconfig
 
 %files -n perl-Sys-Guestfs -f %{name}.files
-%defattr(-,root,root)
 %endif
 #
 %if %{with python_bindings}
 
 %files -n python3-libguestfs
-%defattr(-,root,root)
 %{python3_sitearch}/*
 %endif
 #
 %if %{with ruby_bindings}
 %files -n rubygem-libguestfs
-%defattr(-,root,root)
 %{_libdir}/ruby
 %endif
 
 %files -n libguestfs0
-%defattr(-,root,root)
 %license COPYING.LIB
 %{_libdir}/*.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*
 %{_includedir}/guestfs.h
@@ -792,13 +733,11 @@ rm %{buildroot}/%{_datadir}/virt-p2v/p2v.ks.in
 %{_mandir}/man3/*
 
 %files -n guestfsd
-%defattr(-,root,root)
-%{udevrulesdir}
+%{_udevrulesdir}
 %{_sbindir}/guestfsd
 %{_mandir}/man8/*
 
 %files -n guestfs-tools -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %{_sbindir}/libguestfs-make-fixed-appliance
 %{_bindir}/*

@@ -894,4 +894,12 @@
   Workaround it by retrying the build once</comment>
     <requestid>895958</requestid>
   </revision>
+  <revision rev="76" vrev="3">
+    <srcmd5>c64a7dacfd22a5eafde385720990781b</srcmd5>
+    <version>1.44.1</version>
+    <time>1627389126</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908444</requestid>
+  </revision>
 </revisionlist>
