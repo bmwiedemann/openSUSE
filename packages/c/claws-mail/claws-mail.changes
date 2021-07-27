@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 11:32:35 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Disable pilot-link on Tumbleweed as we are dropping the library,
+  this keeps pilot link support around only for Leap 15.x
+
+-------------------------------------------------------------------
 Sat Jul 17 04:10:54 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - instead of forcing a certain pinentry tool require the generic

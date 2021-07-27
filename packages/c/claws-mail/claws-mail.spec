@@ -28,6 +28,15 @@
 %endif
 
 %bcond_with    tnef
+%if 0%{?suse_version} >= 1550
+%bcond_with     claws_pilot_link
+%else
+%if 0%{?is_opensuse}
+%bcond_without  claws_pilot_link
+%else
+%bcond_with     claws_pilot_link
+%endif
+%endif
 
 Name:           claws-mail
 Version:        4.0.0
@@ -93,7 +102,7 @@ BuildRequires:  libcanberra-gtk3-devel >= 0.6
 %if %{with vcalendar}
 BuildRequires:  libical-devel >= 2.0.0
 %endif
-%if 0%{?is_opensuse}
+%if %{with claws_pilot_link}
 BuildRequires:  pilot-link-devel
 %endif
 %if %{with tnef}
@@ -158,7 +167,7 @@ sed -i 's/#!\/usr\/bin\/env bash/#!\/bin\/bash/' tools/kdeservicemenu/install.sh
         --disable-static \
         --enable-ldap \
         --enable-ipv6 \
-%if 0%{?is_opensuse}
+%if %{with claws_pilot_link}
         --enable-jpilot \
 %else
         --disable-jpilot \
