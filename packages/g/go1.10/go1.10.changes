@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 12 07:29:15 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE. 
+
+-------------------------------------------------------------------
 Fri May  7 06:47:42 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Use gcc-go for Factory

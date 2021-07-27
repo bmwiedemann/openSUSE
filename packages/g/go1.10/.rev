@@ -1043,4 +1043,12 @@ go#29903 crypto/elliptic: CPU DoS vulnerability affecting P-521 and P-384 (forwa
   [boo#1182618] (forwarded request 891217 from rguenther)</comment>
     <requestid>891381</requestid>
   </revision>
+  <revision rev="13" vrev="8">
+    <srcmd5>8d914b6755606c67a126ea7fd328cd3e</srcmd5>
+    <version>1.10.8</version>
+    <time>1627389116</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE. (forwarded request 905778 from rguenther)</comment>
+    <requestid>908534</requestid>
+  </revision>
 </revisionlist>
