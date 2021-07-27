@@ -66,7 +66,7 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lxc) >= 3.0.0
 # Due to a limitation in openSUSE's Go packaging we cannot have a BuildRequires
 # for 'golang(API) >= 1.14' here, so just require 1.14 exactly. bsc#1172608
-BuildRequires:  golang(API) = 1.14
+BuildRequires:  golang(API) = 1.15
 # Needed to build dqlite and raft.
 BuildRequires:  autoconf
 BuildRequires:  libtool
