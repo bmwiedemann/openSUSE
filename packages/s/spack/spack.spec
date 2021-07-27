@@ -45,6 +45,7 @@ Source0:        https://github.com/spack/spack/archive/v%{version}.tar.gz#/spack
 Source1:        README.SUSE
 Source2:        spack-rpmlintrc
 Source3:        run-find-external.sh
+Source4:        https://en.opensuse.org/index.php?title=Spack&action=raw&ref=157522#/README-oo-wiki
 Patch0:         Make-spack-paths-compliant-to-distro-installation.patch
 Patch1:         fix-tumbleweed-naming.patch
 Patch2:         Adapt-shell-scripts-that-set-up-the-environment-for-different-shells.patch
@@ -195,7 +196,8 @@ gzip _build/texinfo/Spack.info _build/man/spack.1
 %endif
 
 %install
-
+# combine READMEs
+cat %{S:4} >> %{S:1}
 %if %{without doc}
 cp %{S:1} .
 # Fix some rpmlint warnings

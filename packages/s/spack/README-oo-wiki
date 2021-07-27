@@ -1,0 +1,116 @@
+spack ([https://github.com/spack/spack https://github.com/spack/spack]) is a tool to compile HPC software and its dependencies.
+The compiled software is available as environment [[modules]], so that several versions an application can coexist.
+Most relevant CPU architectures are detected and the compiled software is automatically optimized to it.
+
+For openSUSE Leap, Tumbelweed and SLES a [https://build.opensuse.org/package/show/network:cluster/spack system package] is available which has the advantage that it installs all necessary dependencies and makes core tools available for ''spack''. Other system packages which are also relevant for ''spack'' will also be added to the ''spack'' configuration after installation.
+
+Additionally ''spack'' behaves differently when called as ''root'' as when its called as normal user. All the packages which are build as ''root'' user are available for all users of the system, whereas the packages build as normal user, are only available for this user.
+
+== Quick Start ==
+''spack'' can be installed with
+
+  sudo zypper install spack
+
+In order to load all relevant environment variables one should relogin and source the ''spack'' environment with
+
+  source /usr/share/spack/setup-env.sh
+
+The installation can be checked with the command
+
+  spack spec netcdf-c
+
+which shows all the packages which will be installed in order to compile ''netccdf-c'' from its sources. The circumeflex '^' in the output indicates the dependency on a specific package and can be changed on the command line. For example 
+
+  spack spec netcdf-c^mpich
+
+will display all the packages which are needed to build ''netcdf-c'' not with ''openmpi'' which is the default, but with ''mpich''.
+
+The installation of the package can now be done with 
+
+  spack install netcdf-c^mpich
+
+which builds and installs the package with all its needed dependencies.
+The resulting package can be used/loaded with the command
+
+  spack load netcdf-c@4.7.4
+
+or by using environment modules with
+
+  module load netcdf-c-4.7.4-gcc-11.1.1-tlfohef
+
+where the exact name of the module can be displayed with
+
+   module av
+
+== SUSE package ==
+There are a few differences between the SUSE package and the standard installation.
+# When a user can write to ''/usr/lib/spack'', the packages and generated modules are stored under that location. This holds true if the user is ''root'' or in the ''spack'' group. The generated modules are installed under ''/usr/share/spack/modules/linux-<distribution>-<arch>''
+# external packages, like ''M4'' or ''autoconf'' are detected at installtion time of ''spack'', but also when a relevant package is installed, like a new ''gcc'' version
+== Package search and information==
+The installed packages installed with ''spack'' can be displayed with
+  
+  spack find
+
+and '''all''' available packages with the command
+
+  spack list [regexp]
+
+Detailed information about a package can be obtained with the command
+
+  spack info <packagename>
+
+which will print all versions and options for building the package.
+
+== Package building ==
+
+Package compilation and installation is done with the 'install' command. But its advisable to list all the dependency of package with command 'spec' beforehand. So the command
+
+  spack install/spec <package-name>
+
+will install/list all the packages needed for <package-name>.
+The package version can be set with '@'
+
+  spack install/spec <package-name>@<version>
+
+and the compile can be set with '%'
+
+  spack install/spec <package-name>@<version>%gcc@7.5.0
+
+will build the package with 'gcc7'.
+Binary build and install options for a package are enabled with '+' and disabled with '~'. 
+The build dependencies are set with '^'.
+
+=== Examples ===
+      hdf5                          hdf5 configuration, when used as depdency
+      hdf5 @1.10.1                  hdf5 version 1.10.1
+      hdf5 @1.8:                    hdf5 1.8 or higher
+      hdf5 @1.8: %gcc               hdf5 1.8 or higher built with gcc
+      hdf5 +mpi                     hdf5 with mpi enabled
+      hdf5 ~mpi                     hdf5 with mpi disabled
+      hdf5 +mpi ^mpich              hdf5 with mpi, using mpich
+      hdf5 +mpi ^openmpi@1.7        hdf5 with mpi, using openmpi 1.7
+      boxlib dim=2                  boxlib built for 2 dimensions
+      libdwarf %intel ^libelf%gcc
+          libdwarf, built with intel compiler, linked to libelf built with gcc
+      mvapich2 %gcc fabrics=psm,mrail,sock
+          mvapich2, built with gcc compiler, with support for multiple fabrics, default version
+
+== Compiler ==
+
+Compilers are not treated as normal dependency, so that one must enforce the use a specific compiler with '%' and not with '^' like a normal dependency.
+The compilers which can be use by 'spack' can be listed with
+  
+  spack compiler list
+
+When a new compiler is installed or compiled with spack it has to be made known to ''spack'' with the command
+
+  spack compiler find
+
+Please not that the compiler must be within ''$PATH'', so when the compiler was build with ''spack'', the module has to be loaded before the ''find'' command
+
+== External programms ==
+External programs like ''autoconf'', ''cmake'' can be found by ''spack'' with the command
+   
+  spack external find
+
+The external find is executed by ''rpm'' when ''spack'' is installed or a new relevant package is installed.
