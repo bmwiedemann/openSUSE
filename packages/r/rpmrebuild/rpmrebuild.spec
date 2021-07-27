@@ -1,7 +1,7 @@
 #
 # spec file for package rpmrebuild
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           rpmrebuild
-Version:        2.15
+Version:        2.16
 Release:        0
 Summary:        A tool to build a rpm file from the rpm database
 License:        GPL-2.0-or-later
 Group:          System/Packages
-URL:            http://rpmrebuild.sourceforge.net
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Source1:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz.sig
-Source2:        %{name}.keyring
+URL:            https://rpmrebuild.sourceforge.net
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch1:         gpl-license.patch
 Patch2:         gpl-COPYRIGHT-address.patch
 Patch3:         rpmrebuild-fix-bashisms.patch

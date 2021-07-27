@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 25 15:08:13 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 2.16
+  + fix bug if more than 10 args (thanks Dmitry V. Levin)
+  + add signal trapping to clean directory
+  + fix warnings from shellcheck
+  + fix problem when rebuild filesystem package (builroot not a directory)
+  + fix installation test for kernel and multi-arch packages
+- Packaging:
+  + run spec-cleaner -m
+  + remove expired keyring and sig
+
+-------------------------------------------------------------------
 Mon Sep  7 10:49:51 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)
