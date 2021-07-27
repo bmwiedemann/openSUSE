@@ -1,5 +1,0 @@
-<package name="protoc-gen-go" project="openSUSE:Factory">
-  <title>protoc-gen-go</title>
-  <description>Go support for Google's protocol buffers</description>
-  <devel project="devel:languages:go" package="protoc-gen-go"/>
-</package>
