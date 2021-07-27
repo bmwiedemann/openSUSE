@@ -60,4 +60,12 @@
   * use IP for MDS (#115) (forwarded request 907124 from glaubitz)</comment>
     <requestid>907142</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>5ef82ca955435d19a41c7946d18cc40b</srcmd5>
+    <version>20210707.00</version>
+    <time>1627389137</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908560</requestid>
+  </revision>
 </revisionlist>

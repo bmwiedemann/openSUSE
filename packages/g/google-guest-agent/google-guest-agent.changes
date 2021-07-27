@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 10:00:06 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Build with go1.15 for reproducible build results (boo#1102408)
+
+-------------------------------------------------------------------
 Mon Jul 19 12:15:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210707.00
