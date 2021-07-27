@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 26 14:41:33 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- leveldb-atomic.patch: Enable use of <cstdatomic> on modern platforms
+
+-------------------------------------------------------------------
 Wed Apr 15 13:32:57 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.201
