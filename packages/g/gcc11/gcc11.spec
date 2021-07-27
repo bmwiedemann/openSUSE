@@ -188,7 +188,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.1.1+git400
+Version:        11.1.1+git536
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -257,6 +257,7 @@ BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
 %if %{build_go}
+BuildRequires:  netcfg
 BuildRequires:  procps
 %endif
 %if %{build_nvptx}
@@ -502,7 +503,7 @@ This package contains the GNU compiler for C++.
 
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel
 Requires:       libstdc++%{libstdcxx_sover} >= %{version}-%{release}
@@ -519,7 +520,7 @@ This package contains all the headers and libraries of the standard C++
 library. It is needed for compiling C++ code.
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-32bit
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel-32bit
 Requires:       libstdc++%{libstdcxx_sover}-32bit >= %{version}-%{release}
@@ -536,7 +537,7 @@ This package contains all the headers and libraries of the standard C++
 library. It is needed for compiling C++ code.
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}-64bit
 Summary:        Include Files and Libraries mandatory for Development
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/C and C++
 Requires:       glibc-devel-64bit
 Requires:       libstdc++%{libstdcxx_sover}-64bit >= %{version}-%{release}
@@ -610,7 +611,7 @@ from GDB.
 
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}
 Summary:        C compiler runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Base
 Provides:       libgcc_s%{libgcc_s} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -625,7 +626,7 @@ Libgcc is needed for dynamically linked C programs.
 %postun -n libgcc_s%{libgcc_s}%{libgcc_s_suffix} -p /sbin/ldconfig
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit
 Summary:        C compiler runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Base
 Provides:       libgcc_s%{libgcc_s}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -640,7 +641,7 @@ Libgcc is needed for dynamically linked C programs.
 %postun -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-32bit -p /sbin/ldconfig
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}-64bit
 Summary:        C compiler runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Base
 Provides:       libgcc_s%{libgcc_s}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -656,7 +657,7 @@ Libgcc is needed for dynamically linked C programs.
 
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}
 Summary:        The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Base
 Provides:       libgomp%{libgomp_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -675,7 +676,7 @@ option.
 %postun -n libgomp%{libgomp_sover}%{libgomp_suffix} -p /sbin/ldconfig
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit
 Summary:        The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Base
 Provides:       libgomp%{libgomp_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -694,7 +695,7 @@ option.
 %postun -n libgomp%{libgomp_sover}%{libgomp_suffix}-32bit -p /sbin/ldconfig
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}-64bit
 Summary:        The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Base
 Provides:       libgomp%{libgomp_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -714,7 +715,7 @@ option.
 
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}
 Summary:        The standard C++ shared library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover} = %{version}-%{release}
@@ -731,7 +732,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 %postun -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix} -p /sbin/ldconfig
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit
 Summary:        The standard C++ shared library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover}-32bit = %{version}-%{release}
@@ -748,7 +749,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 %postun -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-32bit -p /sbin/ldconfig
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-64bit
 Summary:        The standard C++ shared library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Suggests:       libstdc++%{libstdcxx_sover}-locale
 Provides:       libstdc++%{libstdcxx_sover}-64bit = %{version}-%{release}
@@ -766,7 +767,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-locale
 Summary:        Standard C++ Library Locales
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libstdc++%{libstdcxx_sover}-locale = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -830,7 +831,7 @@ Nextstep OS. The source code is available in the gcc package.
 
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}
 Summary:        Library for the GNU Objective C Compiler
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -845,7 +846,7 @@ The library for the GNU Objective C compiler.
 %postun -n libobjc%{libobjc_sover}%{libobjc_suffix} -p /sbin/ldconfig
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit
 Summary:        Library for the GNU Objective C Compiler
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -860,7 +861,7 @@ The library for the GNU Objective C compiler.
 %postun -n libobjc%{libobjc_sover}%{libobjc_suffix}-32bit -p /sbin/ldconfig
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}-64bit
 Summary:        Library for the GNU Objective C Compiler
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Libraries/Other
 Provides:       libobjc%{libobjc_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -958,7 +959,7 @@ tools based on the GNU GCC technology.
 
 %package -n libada11
 Summary:        GNU Ada Runtime Libraries
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11 = %{version}-%{release}
 # FIXME: remove %{after} service-format_spec_file is fixed
@@ -980,7 +981,7 @@ implementation of Distributed Systems Programming (GLADE) and the Posix
 %postun -n libada11 -p /sbin/ldconfig
 %package -n libada11-32bit
 Summary:        GNU Ada Runtime Libraries
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11-32bit = %{version}-%{release}
 # FIXME: remove %{after} service-format_spec_file is fixed
@@ -1002,7 +1003,7 @@ implementation of Distributed Systems Programming (GLADE) and the Posix
 %postun -n libada11-32bit -p /sbin/ldconfig
 %package -n libada11-64bit
 Summary:        GNU Ada Runtime Libraries
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          System/Libraries
 Provides:       libgnarl-11-64bit = %{version}-%{release}
 # FIXME: remove %{after} service-format_spec_file is fixed
@@ -1065,7 +1066,7 @@ This is the Fortran compiler of the GNU Compiler Collection (GCC).
 
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}
 Summary:        The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires:       libquadmath%{libquadmath_sover} >= %{version}-%{release}
@@ -1084,7 +1085,7 @@ of the GNU Compiler Collection (GCC).
 %postun -n libgfortran%{libgfortran_sover}%{libgfortran_suffix} -p /sbin/ldconfig
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit
 Summary:        The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires:       libquadmath%{libquadmath_sover}-32bit >= %{version}-%{release}
@@ -1103,7 +1104,7 @@ of the GNU Compiler Collection (GCC).
 %postun -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-32bit -p /sbin/ldconfig
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}-64bit
 Summary:        The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires:       libquadmath%{libquadmath_sover}-64bit >= %{version}-%{release}
@@ -1371,7 +1372,7 @@ The runtime library needed to run programs compiled with the
 
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}
 Summary:        The GNU Compiler Atomic Operations Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover} = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -1386,7 +1387,7 @@ The runtime library for atomic operations of the GNU Compiler Collection (GCC).
 %postun -n libatomic%{libatomic_sover}%{libatomic_suffix} -p /sbin/ldconfig
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit
 Summary:        The GNU Compiler Atomic Operations Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover}-32bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -1401,7 +1402,7 @@ The runtime library for atomic operations of the GNU Compiler Collection (GCC).
 %postun -n libatomic%{libatomic_sover}%{libatomic_suffix}-32bit -p /sbin/ldconfig
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}-64bit
 Summary:        The GNU Compiler Atomic Operations Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:          Development/Languages/C and C++
 Provides:       libatomic%{libatomic_sover}-64bit = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -2082,7 +2083,11 @@ amdgcn-amdhsa,\
 %endif
 	--with-bugurl="https://bugs.opensuse.org/" \
 	--with-pkgversion="SUSE Linux" \
+%if 0%{?sysroot:1}
+	--with-slibdir=%{sysroot}/%{_lib} \
+%else
 	--with-slibdir=/%{_lib} \
+%endif
 	--with-system-zlib \
 	--enable-libstdcxx-allocator=new \
 	--disable-libstdcxx-pch \
@@ -2138,7 +2143,14 @@ amdgcn-amdhsa,\
 %if 0%{?gcc_target_newlib}
 	--with-newlib \
 %if 0%{?gcc_libc_bootstrap:1}
-	--without-headers \
+	--disable-gcov \
+%endif
+%else
+%if 0%{?gcc_libc_bootstrap:1}
+	--disable-gcov --disable-threads --disable-shared \
+	--disable-libmudflap --disable-libssp --disable-libgomp \
+	--disable-libquadmath --disable-libatomic \
+	--without-headers --with-newlib \
 %endif
 %endif
 %if "%{TARGET_ARCH}" == "spu"
@@ -2577,6 +2589,7 @@ rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/a.out.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/vt.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/asm-generic/socket.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/mathdef.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/unistd_ext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/pthread.h

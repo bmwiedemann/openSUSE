@@ -136,4 +136,24 @@ The compiler is NOT used by default.</comment>
   * Fixes issue with legacy Fortran code.  [gcc#101123, boo#1187273]</comment>
     <requestid>903215</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>66ce764e8c9e00d58c8450799ccf72cc</srcmd5>
+    <version>11.1.1+git536</version>
+    <time>1627389111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to gcc-11 branch head (076930b9690ac3564638636f6b), git536
+  * Includes GCC 11.2 RC1.
+- Refresh gcc10-foffload-default.patch
+
+- Properly adjust GPL-3.0 WITH GCC-exception-3.1 to
+  GPL-3.0-or-later WITH GCC-exception-3.1
+
+- Remove bits/unistd_ext.h from include-fixed
+
+- Add BuildRequires on netcfg for the testsuite when testing Go.
+
+- Provide a libc-bootstrap cross compiler for aarch64 and riscv64
+- More preparation for a full glibc cross compiler (not yet active)</comment>
+    <requestid>907486</requestid>
+  </revision>
 </revisionlist>

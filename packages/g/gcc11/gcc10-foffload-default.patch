@@ -1,8 +1,8 @@
-diff --git a/gcc/gcc.c b/gcc/gcc.c
-index 10bc9881aed..3082a91f9dc 100644
---- a/gcc/gcc.c
-+++ b/gcc/gcc.c
-@@ -319,6 +319,10 @@ static const char *spec_host_machine = DEFAULT_REAL_TARGET_MACHINE;
+Index: gcc-11.1.1+git536/gcc/gcc.c
+===================================================================
+--- gcc-11.1.1+git536.orig/gcc/gcc.c
++++ gcc-11.1.1+git536/gcc/gcc.c
+@@ -319,6 +319,10 @@ static const char *spec_host_machine = D
  
  static char *offload_targets = NULL;
  
@@ -13,7 +13,7 @@ index 10bc9881aed..3082a91f9dc 100644
  /* Nonzero if cross-compiling.
     When -b is used, the value comes from the `specs' file.  */
  
-@@ -4711,7 +4715,10 @@ process_command (unsigned int decoded_options_count,
+@@ -4830,7 +4834,10 @@ process_command (unsigned int decoded_op
    /* If the user didn't specify any, default to all configured offload
       targets.  */
    if (ENABLE_OFFLOADING && offload_targets == NULL)
@@ -23,9 +23,9 @@ index 10bc9881aed..3082a91f9dc 100644
 +      offload_targets_default = true;
 +    }
  
-   if (output_file
-       && strcmp (output_file, "-") != 0
-@@ -8367,6 +8374,8 @@ driver::maybe_putenv_OFFLOAD_TARGETS () const
+   /* Handle -gtoggle as it would later in toplev.c:process_options to
+      make the debug-level-gt spec function work as expected.  */
+@@ -8498,6 +8505,8 @@ driver::maybe_putenv_OFFLOAD_TARGETS ()
        obstack_grow (&collect_obstack, offload_targets,
  		    strlen (offload_targets) + 1);
        xputenv (XOBFINISH (&collect_obstack, char *));
@@ -34,11 +34,11 @@ index 10bc9881aed..3082a91f9dc 100644
      }
  
    free (offload_targets);
-diff --git a/gcc/lto-wrapper.c b/gcc/lto-wrapper.c
-index 82cfa6bd67e..f5185f9c69f 100644
---- a/gcc/lto-wrapper.c
-+++ b/gcc/lto-wrapper.c
-@@ -52,6 +52,7 @@ along with GCC; see the file COPYING3.  If not see
+Index: gcc-11.1.1+git536/gcc/lto-wrapper.c
+===================================================================
+--- gcc-11.1.1+git536.orig/gcc/lto-wrapper.c
++++ gcc-11.1.1+git536/gcc/lto-wrapper.c
+@@ -52,6 +52,7 @@ along with GCC; see the file COPYING3.
  /* Environment variable, used for passing the names of offload targets from GCC
     driver to lto-wrapper.  */
  #define OFFLOAD_TARGET_NAMES_ENV	"OFFLOAD_TARGET_NAMES"
@@ -46,7 +46,7 @@ index 82cfa6bd67e..f5185f9c69f 100644
  
  /* By default there is no special suffix for target executables.  */
  #ifdef TARGET_EXECUTABLE_SUFFIX
-@@ -906,6 +907,12 @@ compile_offload_image (const char *target, const char *compiler_path,
+@@ -907,6 +908,12 @@ compile_offload_image (const char *targe
  	break;
        }
  
@@ -59,7 +59,7 @@ index 82cfa6bd67e..f5185f9c69f 100644
    if (!compiler)
      fatal_error (input_location,
  		 "could not find %s in %s (consider using %<-B%>)",
-@@ -990,8 +997,13 @@ compile_images_for_offload_targets (unsigned in_argc, char *in_argv[],
+@@ -991,8 +998,13 @@ compile_images_for_offload_targets (unsi
  				 compiler_opts, compiler_opt_count,
  				 linker_opts, linker_opt_count);
        if (!offload_names[i])
@@ -75,11 +75,11 @@ index 82cfa6bd67e..f5185f9c69f 100644
      }
  
   out:
-diff --git a/libgomp/target.c b/libgomp/target.c
-index 3e292eb8c62..060758bb826 100644
---- a/libgomp/target.c
-+++ b/libgomp/target.c
-@@ -3015,7 +3015,7 @@ gomp_load_plugin_for_device (struct gomp_device_descr *device,
+Index: gcc-11.1.1+git536/libgomp/target.c
+===================================================================
+--- gcc-11.1.1+git536.orig/libgomp/target.c
++++ gcc-11.1.1+git536/libgomp/target.c
+@@ -3173,7 +3173,7 @@ gomp_load_plugin_for_device (struct gomp
  
    void *plugin_handle = dlopen (plugin_name, RTLD_LAZY);
    if (!plugin_handle)

@@ -190,7 +190,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:          https://gcc.gnu.org/
-Version: 11.1.1+git400
+Version: 11.1.1+git536
 Release:      1
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -261,6 +261,7 @@ BuildRequires: expect
 BuildRequires: gdb
 %if %{build_go}
 BuildRequires: procps
+BuildRequires: netcfg
 %endif
 %if %{build_nvptx}
 BuildRequires: cross-nvptx-gcc@base_ver@
@@ -373,8 +374,8 @@ Patch61:	gcc44-rename-info-files.patch
 Patch100:	newlib-4.1.0-aligned_alloc.patch
 
 # GCC-TESTSUITE-DELETE-BEGIN
-License:        GPL-3.0-or-later
 # SRC-COMMON-END
+License:        GPL-3.0-or-later
 Summary:	The GNU C Compiler and Support Files
 
 %description
@@ -488,7 +489,7 @@ This package contains the GNU compiler for C++.
 # PACKAGE-BEGIN
 %package -n libstdc++%{libstdcxx_sover}-devel%{libdevel_suffix}@variant@
 Summary:      Include Files and Libraries mandatory for Development
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        Development/Languages/C and C++
 Requires: libstdc++%{libstdcxx_sover}@variant@ >= %{version}-%{release}
 Requires: glibc-devel@variant@
@@ -530,7 +531,7 @@ from GDB.
 # PACKAGE-BEGIN
 %package -n libgcc_s%{libgcc_s}%{libgcc_s_suffix}@variant@
 Summary:      C compiler runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        System/Base
 Provides:	libgcc_s%{libgcc_s}@variant@ = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -548,7 +549,7 @@ Libgcc is needed for dynamically linked C programs.
 # PACKAGE-BEGIN
 %package -n libgomp%{libgomp_sover}%{libgomp_suffix}@variant@
 Summary:      The GNU compiler collection OpenMP runtime library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        System/Base
 Provides:	libgomp%{libgomp_sover}@variant@ = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -570,7 +571,7 @@ option.
 # PACKAGE-BEGIN
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}@variant@
 Summary:      The standard C++ shared library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        System/Libraries
 Suggests:	libstdc++%{libstdcxx_sover}-locale
 Provides:	libstdc++%{libstdcxx_sover}@variant@ = %{version}-%{release}
@@ -589,7 +590,7 @@ The standard C++ library, needed for dynamically linked C++ programs.
 
 %package -n libstdc++%{libstdcxx_sover}%{libstdcxx_suffix}-locale
 Summary:	Standard C++ Library Locales
-License:	GPL-3.0 WITH GCC-exception-3.1
+License:	GPL-3.0-or-later WITH GCC-exception-3.1
 Group:		System/Libraries
 Provides:	libstdc++%{libstdcxx_sover}-locale = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -632,7 +633,7 @@ Nextstep OS. The source code is available in the gcc package.
 # PACKAGE-BEGIN
 %package -n libobjc%{libobjc_sover}%{libobjc_suffix}@variant@
 Summary:      Library for the GNU Objective C Compiler
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        Development/Libraries/Other
 Provides:	libobjc%{libobjc_sover}@variant@ = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -690,7 +691,7 @@ tools based on the GNU GCC technology.
 # PACKAGE-BEGIN
 %package -n libada@base_ver@@variant@
 Summary:      GNU Ada Runtime Libraries
-License:      GPL-3.0 WITH GCC-exception-3.1
+License:      GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        System/Libraries
 Provides: libgnarl-@base_ver@@variant@ = %{version}-%{release}
 # FIXME: remove %{after} service-format_spec_file is fixed
@@ -731,7 +732,7 @@ This is the Fortran compiler of the GNU Compiler Collection (GCC).
 # PACKAGE-BEGIN
 %package -n libgfortran%{libgfortran_sover}%{libgfortran_suffix}@variant@
 Summary:      The GNU Fortran Compiler Runtime Library
-License:        GPL-3.0 WITH GCC-exception-3.1
+License:        GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        Development/Languages/Fortran
 %ifarch %quadmath_arch
 Requires: libquadmath%{libquadmath_sover}@variant@ >= %{version}-%{release}
@@ -850,7 +851,7 @@ The runtime library needed to run programs compiled with the
 # PACKAGE-BEGIN
 %package -n libatomic%{libatomic_sover}%{libatomic_suffix}@variant@
 Summary:      The GNU Compiler Atomic Operations Runtime Library
-License:      GPL-3.0 WITH GCC-exception-3.1
+License:      GPL-3.0-or-later WITH GCC-exception-3.1
 Group:        Development/Languages/C and C++
 Provides:	libatomic%{libatomic_sover}@variant@ = %{version}-%{release}
 # Only one package may provide this - allows multiple gcc versions
@@ -1323,7 +1324,11 @@ amdgcn-amdhsa,\
 %endif
 	--with-bugurl="https://bugs.opensuse.org/" \
 	--with-pkgversion="SUSE Linux" \
+%if 0%{?sysroot:1}
+	--with-slibdir=%{sysroot}/%{_lib} \
+%else
 	--with-slibdir=/%{_lib} \
+%endif
 	--with-system-zlib \
 	--enable-libstdcxx-allocator=new \
 	--disable-libstdcxx-pch \
@@ -1379,7 +1384,14 @@ amdgcn-amdhsa,\
 %if 0%{?gcc_target_newlib}
 	--with-newlib \
 %if 0%{?gcc_libc_bootstrap:1}
-	--without-headers \
+	--disable-gcov \
+%endif
+%else
+%if 0%{?gcc_libc_bootstrap:1}
+	--disable-gcov --disable-threads --disable-shared \
+	--disable-libmudflap --disable-libssp --disable-libgomp \
+	--disable-libquadmath --disable-libatomic \
+	--without-headers --with-newlib \
 %endif
 %endif
 %if "%{TARGET_ARCH}" == "spu"
@@ -1823,6 +1835,7 @@ rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/a.out.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/linux/vt.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/asm-generic/socket.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/mathdef.h
+rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/unistd_ext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/sys/ucontext.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/bits/statx.h
 rm -f %{buildroot}/%{libsubdir}/include-fixed/pthread.h

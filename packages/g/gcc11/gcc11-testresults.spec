@@ -206,7 +206,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.1.1+git400
+Version:        11.1.1+git536
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -275,6 +275,7 @@ BuildRequires:  dejagnu
 BuildRequires:  expect
 BuildRequires:  gdb
 %if %{build_go}
+BuildRequires:  netcfg
 BuildRequires:  procps
 %endif
 %if %{build_nvptx}
@@ -663,7 +664,11 @@ amdgcn-amdhsa,\
 %endif
 	--with-bugurl="https://bugs.opensuse.org/" \
 	--with-pkgversion="SUSE Linux" \
+%if 0%{?sysroot:1}
+	--with-slibdir=%{sysroot}/%{_lib} \
+%else
 	--with-slibdir=/%{_lib} \
+%endif
 	--with-system-zlib \
 	--enable-libstdcxx-allocator=new \
 	--disable-libstdcxx-pch \
@@ -719,7 +724,14 @@ amdgcn-amdhsa,\
 %if 0%{?gcc_target_newlib}
 	--with-newlib \
 %if 0%{?gcc_libc_bootstrap:1}
-	--without-headers \
+	--disable-gcov \
+%endif
+%else
+%if 0%{?gcc_libc_bootstrap:1}
+	--disable-gcov --disable-threads --disable-shared \
+	--disable-libmudflap --disable-libssp --disable-libgomp \
+	--disable-libquadmath --disable-libatomic \
+	--without-headers --with-newlib \
 %endif
 %endif
 %if "%{TARGET_ARCH}" == "spu"

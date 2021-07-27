@@ -32,6 +32,9 @@ ExclusiveArch:  do-not-build
 %endif
 
 %define build_cp 0%{!?gcc_accel:1}
+%if 0%{?gcc_libc_bootstrap:1}
+%define build_cp 0
+%endif
 %define build_ada 0
 %define build_libjava 0
 %define build_java 0
@@ -107,7 +110,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        11.1.1+git400
+Version:        11.1.1+git536
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -211,14 +214,17 @@ BuildRequires:  isl-devel
 BuildRequires:  libunwind-devel
 %endif
 %if 0%{!?gcc_icecream:1}
-%if 0%{?gcc_target_newlib:1} && 0%{!?gcc_libc_bootstrap:1}
+%if 0%{!?gcc_libc_bootstrap:1}
+%if 0%{?gcc_target_newlib:1}
 BuildRequires:  cross-%cross_arch-newlib-devel
 %endif
-%if 0%{!?gcc_libc_bootstrap:1} && "%{cross_arch}" == "avr"
+%if "%{cross_arch}" == "avr"
 BuildRequires:  avr-libc
 %endif
 %if 0%{?gcc_target_glibc:1}
 BuildRequires:  cross-%cross_arch-glibc-devel
+Requires:       cross-%cross_arch-glibc-devel
+%endif
 %endif
 %if "%{cross_arch}" == "nvptx"
 BuildRequires:  nvptx-tools
@@ -267,6 +273,13 @@ Conflicts:      %selfconflict %{gcc_target_arch}-gcc
 Conflicts:      cross-%{cross_arch}-gcc11
 %endif
 #!BuildIgnore: gcc-PIE
+%if 0%{build_cp:1}
+# The cross compiler only packages the arch specific c++ headers, so
+# we need to depend on the host libstdc++ devel headers (we wouldn't need
+# the libs, though)
+Requires:       libstdc++6-devel-gcc11
+%endif
+AutoReqProv:    off
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
@@ -462,7 +475,11 @@ amdgcn-amdhsa,\
 %endif
 	--with-bugurl="https://bugs.opensuse.org/" \
 	--with-pkgversion="SUSE Linux" \
+%if 0%{?sysroot:1}
+	--with-slibdir=%{sysroot}/%{_lib} \
+%else
 	--with-slibdir=/%{_lib} \
+%endif
 	--with-system-zlib \
 	--enable-libstdcxx-allocator=new \
 	--disable-libstdcxx-pch \
@@ -518,7 +535,14 @@ amdgcn-amdhsa,\
 %if 0%{?gcc_target_newlib}
 	--with-newlib \
 %if 0%{?gcc_libc_bootstrap:1}
-	--without-headers \
+	--disable-gcov \
+%endif
+%else
+%if 0%{?gcc_libc_bootstrap:1}
+	--disable-gcov --disable-threads --disable-shared \
+	--disable-libmudflap --disable-libssp --disable-libgomp \
+	--disable-libquadmath --disable-libatomic \
+	--without-headers --with-newlib \
 %endif
 %endif
 %if "%{TARGET_ARCH}" == "spu"
@@ -671,7 +695,7 @@ amdgcn-amdhsa,\
 	--build=%{GCCDIST} \
 	--host=%{GCCDIST}
 
-%if 0%{!?gcc_icecream:1} && 0%{!?gcc_libc_bootstrap:1}
+%if 0%{!?gcc_icecream:1}
 make %{?_smp_mflags}
 %else
 make %{?_smp_mflags} all-host
@@ -729,7 +753,6 @@ rm -f $RPM_BUILD_ROOT%{_libdir}/libiberty.a
 %if 0%{?gcc_icecream:1}
 # so expect the sysroot to be populated from natively built binaries
 %else
-%if 0%{!?gcc_libc_bootstrap:1}
 # We want shared libraries to reside in the sysroot but the .so symlinks
 # on the host.  Once we have a cross target that has shared libs we need
 # to manually fix up things here like we do for non-cross compilers
@@ -745,7 +768,6 @@ find $RPM_BUILD_ROOT/%_prefix/include/c++/%{gcc_dir_version} -mindepth 1 -maxdep
 find $RPM_BUILD_ROOT/%_prefix/include/c++/%{gcc_dir_version} -maxdepth 1 -type f | xargs -r rm
 # And also remove installed pretty printers which conflict in similar ways
 rm -rf $RPM_BUILD_ROOT/%{_datadir}/gcc%{binsuffix}
-%endif
 %endif
 %endif
 
@@ -839,7 +861,11 @@ for ex in gcc cpp \
 %if %{build_cp}
           c++ g++ \
 %endif
-          gcc-ar gcc-nm gcc-ranlib lto-dump gcov gcov-dump gcov-tool; do
+          gcc-ar gcc-nm gcc-ranlib lto-dump \
+%if 0%{!?gcc_libc_bootstrap:1}
+          gcov gcov-dump gcov-tool \
+%endif
+	  ; do
   ln -s %{_sysconfdir}/alternatives/%{gcc_target_arch}-$ex \
 	%{buildroot}%{_bindir}/%{gcc_target_arch}-$ex
 done
@@ -856,9 +882,11 @@ done
   --slave %{_bindir}/%{gcc_target_arch}-gcc-nm %{gcc_target_arch}-gcc-nm %{_bindir}/%{gcc_target_arch}-gcc-nm%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-lto-dump %{gcc_target_arch}-lto-dump %{_bindir}/%{gcc_target_arch}-lto-dump%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcc-ranlib %{gcc_target_arch}-gcc-ranlib %{_bindir}/%{gcc_target_arch}-gcc-ranlib%{binsuffix} \
+%if 0%{!?gcc_libc_bootstrap:1}
   --slave %{_bindir}/%{gcc_target_arch}-gcov %{gcc_target_arch}-gcov %{_bindir}/%{gcc_target_arch}-gcov%{binsuffix} \
   --slave %{_bindir}/%{gcc_target_arch}-gcov-dump %{gcc_target_arch}-gcov-dump %{_bindir}/%{gcc_target_arch}-gcov-dump%{binsuffix} \
-  --slave %{_bindir}/%{gcc_target_arch}-gcov-tool %{gcc_target_arch}-gcov-tool %{_bindir}/%{gcc_target_arch}-gcov-tool%{binsuffix}
+  --slave %{_bindir}/%{gcc_target_arch}-gcov-tool %{gcc_target_arch}-gcov-tool %{_bindir}/%{gcc_target_arch}-gcov-tool%{binsuffix} \
+%endif
 
 %postun
 if [ ! -f %{_bindir}/%{gcc_target_arch}-gcc ] ; then
@@ -880,27 +908,31 @@ fi
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump%{binsuffix}
+%if 0%{!?gcc_libc_bootstrap:1}
 %{_prefix}/bin/%{gcc_target_arch}-gcov%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-dump%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-gcov-tool%{binsuffix}
+%{_prefix}/bin/%{gcc_target_arch}-gcov
+%{_prefix}/bin/%{gcc_target_arch}-gcov-dump
+%{_prefix}/bin/%{gcc_target_arch}-gcov-tool
+%endif
 %{_prefix}/bin/%{gcc_target_arch}-gcc
 %{_prefix}/bin/%{gcc_target_arch}-cpp
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ar
 %{_prefix}/bin/%{gcc_target_arch}-gcc-nm
 %{_prefix}/bin/%{gcc_target_arch}-gcc-ranlib
 %{_prefix}/bin/%{gcc_target_arch}-lto-dump
-%{_prefix}/bin/%{gcc_target_arch}-gcov
-%{_prefix}/bin/%{gcc_target_arch}-gcov-dump
-%{_prefix}/bin/%{gcc_target_arch}-gcov-tool
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-cpp
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ar
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-nm
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcc-ranlib
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-lto-dump
+%if 0%{!?gcc_libc_bootstrap:1}
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-dump
 %ghost %{_sysconfdir}/alternatives/%{gcc_target_arch}-gcov-tool
+%endif
 %if %{build_cp}
 %{_prefix}/bin/%{gcc_target_arch}-c++%{binsuffix}
 %{_prefix}/bin/%{gcc_target_arch}-g++%{binsuffix}

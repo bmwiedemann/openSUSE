@@ -1,5 +1,5 @@
 #
-# spec file for package cross-riscv64-elf-gcc11
+# spec file for package cross-riscv64-gcc11-bootstrap
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,10 +16,10 @@
 #
 
 
-%define pkgname cross-riscv64-elf-gcc11
+%define pkgname cross-riscv64-gcc11-bootstrap
 %define cross_arch riscv64
-%define gcc_target_arch riscv64-elf
-%define gcc_target_newlib 1
+%define gcc_target_arch riscv64-suse-linux
+%define gcc_libc_bootstrap 1
 # nospeccleaner
 
 # In the staging/ring projects, we don't want to build the unneeded

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul 21 09:08:04 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (076930b9690ac3564638636f6b), git536
+  * Includes GCC 11.2 RC1.
+- Refresh gcc10-foffload-default.patch
+
+-------------------------------------------------------------------
+Wed Jul 21 09:06:11 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Properly adjust GPL-3.0 WITH GCC-exception-3.1 to
+  GPL-3.0-or-later WITH GCC-exception-3.1
+
+-------------------------------------------------------------------
+Mon Jul 19 14:49:07 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Remove bits/unistd_ext.h from include-fixed
+
+-------------------------------------------------------------------
+Fri Jul  9 07:34:24 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add BuildRequires on netcfg for the testsuite when testing Go.
+
+-------------------------------------------------------------------
+Tue Jul  6 15:51:37 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Provide a libc-bootstrap cross compiler for aarch64 and riscv64
+- More preparation for a full glibc cross compiler (not yet active)
+
+-------------------------------------------------------------------
 Fri Jun 25 11:23:02 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-11 branch head (62bbb113ae68a7e724255e1714), git400
