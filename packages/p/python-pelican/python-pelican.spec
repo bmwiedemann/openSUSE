@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pelican
-Version:        4.5.4+git.1610713159.8bb5f1b7
+Version:        4.6.0+git.1626161722.332be6e5
 Release:        0
 Summary:        A tool to generate a static blog from reStructuredText or Markdown input files
 License:        AGPL-3.0-only
@@ -31,20 +31,33 @@ Source:         pelican-%{version}.tar.xz
 BuildRequires:  %{python_module Jinja2 >= 2.11}
 BuildRequires:  %{python_module Markdown >= 3.1.1}
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module Unidecode}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module blinker}
-BuildRequires:  %{python_module docutils >= 0.15}
+BuildRequires:  %{python_module black}
+BuildRequires:  %{python_module blinker >= 1.4}
+BuildRequires:  %{python_module docutils >= 0.16}
 BuildRequires:  %{python_module feedgenerator >= 1.9}
+BuildRequires:  %{python_module flake8-import-order}
+BuildRequires:  %{python_module flake8}
+BuildRequires:  %{python_module invoke}
+BuildRequires:  %{python_module isort}
+BuildRequires:  %{python_module livereload}
 BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-pythonpath}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz >= 0a}
+BuildRequires:  %{python_module rich >= 10.1}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  %{python_module typogrify}
 BuildRequires:  fdupes
 BuildRequires:  git-core
+BuildRequires:  pandoc
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.11
 Requires:       python-Pygments
@@ -54,6 +67,7 @@ Requires:       python-docutils >= 0.15
 Requires:       python-feedgenerator >= 1.9
 Requires:       python-python-dateutil
 Requires:       python-pytz >= 0a
+Requires:       python-rich >= 10.1
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Suggests:       asciidoc
@@ -109,7 +123,8 @@ done
 
 %check
 export LC_ALL=C.utf8
-%pytest
+# gh#getpelican/pelican#2846
+%pytest -k 'not (test_basic_generation_works or test_custom_generation_works or test_custom_locale_generation_works)'
 
 %post
 %python_install_alternative pelican pelican-import pelican-plugins pelican-quickstart pelican-themes
