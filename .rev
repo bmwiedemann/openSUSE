@@ -282,4 +282,41 @@
 </comment>
     <requestid>867804</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>46ad54a65596e92f58d9b1b4e32e7e98</srcmd5>
+    <version>4.6.0+git.1626161722.332be6e5</version>
+    <time>1627389122</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.0+git.1626161722.332be6e5:
+  * Support date format codes G, V, and u (used by ISO dates) (#2902)
+  * Document how to add a new writer
+  * Fix formatting of Jinja example code. Fixes #2884 (#2886)
+  * typo fix
+  * Update links to Jinja docs. Fixes #2883 (#2885)
+  * Allow easy subclassing of Writer
+  * Fix failing tests on Jinja 3+
+  * Fix FILENAME_METADATA doc to render correctly
+  * Add support for hidden articles
+  * Add period_num var for period_archives template
+  * Add progress spinner animation during generation
+  * Update Pelican feature documentation
+  * Update contributing docs and Poetry repository URL
+  * Update to v2 of `cache` GitHub Action
+  * Automatically open browser when Invoke task starts web server (#2764)
+  * Strip HTML tags from `notmyidea` page template's title
+  * Update tasks.py
+  * Release Pelican 4.6.0
+  * Prepare release
+  * Make Tox &amp; GitHub CI jobs' Python versions match
+  * Relax dependency minimum versions
+  * [Docs] Fix link to More Categories plugin
+  * Clarify ARTICLE_ORDER_BY documentation
+  * Improve consistency between Makefile targets &amp; help
+  * Update functional test output for Pygments 2.8
+  * Update Pygments dev dependency to v2.8
+  * Add .yaml file extension to EditorConfig
+  * Change FAQ entry to new Tag Cloud plugin repo
+  * Make PKG_PATH var in Invoke tasks.py more DRY</comment>
+    <requestid>906364</requestid>
+  </revision>
 </revisionlist>
