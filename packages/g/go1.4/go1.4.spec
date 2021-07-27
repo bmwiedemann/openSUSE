@@ -1,7 +1,7 @@
 #
 # spec file for package go1.4
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -75,6 +75,7 @@ Patch12:        cmd-go-reject-update-of-VCS-inside-VCS.patch
 # PATCH-FIX-UPSTREAM (compiler-rt): Fix sanitizer build against latest glibc
 Patch100:       fix-sanitizer-build-against-latest-glibc.patch
 Patch101:       gcc9-rsp-clobber.patch
+Patch102:       compiler-rt-fix-tsan-build.patch
 BuildRequires:  rpm
 # for go1.4.gdbinit, directory ownership
 BuildRequires:  gdb
@@ -144,6 +145,7 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %setup -q -T -b 100 -n compiler-rt-r%{tsan_commit}
 %patch100 -p1
 %patch101 -p1
+%patch102 -p1
 %endif
 # go
 %setup -q -n go

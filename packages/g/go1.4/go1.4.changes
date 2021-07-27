@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 12 07:28:37 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE.
+
+-------------------------------------------------------------------
 Mon Jun  8 08:22:07 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Ensure ARM arch is set properly - boo#1169832
