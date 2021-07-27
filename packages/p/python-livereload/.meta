@@ -1,0 +1,6 @@
+<package name="python-livereload" project="openSUSE:Factory">
+  <title></title>
+  <description>livereload server in python
+</description>
+  <devel project="devel:languages:python" package="python-livereload"/>
+</package>
