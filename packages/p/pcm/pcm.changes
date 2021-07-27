@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 25 17:15:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
+
+- Update to 202107:
+* support systems with > 1024 logical cores
+* support Rocket Lake
+* pcm-pcie: fix HIT metrics calculation on Broadwell/Haswell server platforms
+* pcm: add several additional columns to the socket and core sections in csv output
+* pcm-iio: fix multiplier value for outbound events on Snowridge and Icelake server platforms
+* implement workaround for Linux watchdog not clearing its event programming
+* move Icelake top-down events to a separate group to fix counting through Linux perf API
+* added pcm-mmio utility to rpm
+
+-------------------------------------------------------------------
 Tue May 25 10:04:00 UTC 2021 - Roman Dementiev <roman.dementiev@intel.com>
 
 - Update to 202105:

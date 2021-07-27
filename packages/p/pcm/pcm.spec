@@ -17,7 +17,7 @@
 
 
 Name:           pcm
-Version:        202105
+Version:        202107
 Release:        0
 Summary:        Processor Counter Monitor
 License:        BSD-3-Clause
@@ -59,6 +59,7 @@ export CXXFLAGS="%{optflags} -fPIC"
 %{_sbindir}/pcm-lspci
 %{_sbindir}/pcm-memory
 %{_sbindir}/pcm-msr
+%{_sbindir}/pcm-mmio
 %{_sbindir}/pcm-numa
 %{_sbindir}/pcm-pcicfg
 %{_sbindir}/pcm-pcie
