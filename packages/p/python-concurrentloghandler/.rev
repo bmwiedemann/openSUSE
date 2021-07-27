@@ -168,4 +168,14 @@
 </comment>
     <requestid>879753</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c18e7f44a2a3a3896d2b07c168bcc085</srcmd5>
+    <version>0.9.19</version>
+    <time>1627389130</time>
+    <user>dimstar_suse</user>
+    <comment>- Stupid me: it should be rm -rf test_output, not just rm -rf
+  test (gh#Preston-Landers/concurrent-log-handler#38).
+</comment>
+    <requestid>908506</requestid>
+  </revision>
 </revisionlist>

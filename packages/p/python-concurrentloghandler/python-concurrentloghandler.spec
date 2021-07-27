@@ -58,10 +58,9 @@ rm -rf %{buildroot}%{_usr}/{docs,tests}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Tests fail with Python 3.8, gh#Preston-Landers/concurrent-log-handler#38
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-rm -rf test
-$python stresstest.py || /bin/true
+rm -rf test_output
+$python stresstest.py
 }
 
 %files %{python_files}

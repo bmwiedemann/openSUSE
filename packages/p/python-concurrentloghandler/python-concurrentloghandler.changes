@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 05:42:46 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Stupid me: it should be rm -rf test_output, not just rm -rf
+  test (gh#Preston-Landers/concurrent-log-handler#38).
+
+-------------------------------------------------------------------
 Wed Mar 17 17:45:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 Update to 0.9.19:
