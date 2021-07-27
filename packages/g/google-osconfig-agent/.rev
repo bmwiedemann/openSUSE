@@ -101,4 +101,12 @@
   * Add CloudOps examples for CentOS (#364) (forwarded request 907173 from glaubitz)</comment>
     <requestid>907174</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>27ef4cececb3ad35403775e6baca8292</srcmd5>
+    <version>20210712.1</version>
+    <time>1627389138</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908562</requestid>
+  </revision>
 </revisionlist>
