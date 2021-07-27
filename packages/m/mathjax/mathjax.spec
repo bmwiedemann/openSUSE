@@ -1,7 +1,7 @@
 #
-# spec file for package spec
+# spec file for package mathjax
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,24 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%{!?_fontsdir:%global _fontsdir %{_datadir}/fonts}
 Name:           mathjax
 Version:        2.6.0
 Release:        0
 Summary:        JavaScript library to render math in the browser
 Group:          Development/Libraries/Java
 License:        Apache-2.0
-Url:            http://mathjax.org
+URL:            http://mathjax.org
 Source0:        https://github.com/mathjax/MathJax/archive/%{version}.tar.gz
 BuildRequires:  fontpackages-devel
 Requires:       %{name}-ams-fonts
 Requires:       %{name}-caligraphic-fonts
-Requires:       %{name}-fraktur-fonts %{name}-main-fonts
+Requires:       %{name}-fraktur-fonts
+Requires:       %{name}-main-fonts
 Requires:       %{name}-math-fonts
 Requires:       %{name}-sansserif-fonts
 Requires:       %{name}-script-fonts

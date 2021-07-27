@@ -15,4 +15,12 @@
     <comment>1</comment>
     <requestid>406100</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>c42c3b4f3843819d22c4681d4cd701e5</srcmd5>
+    <version>2.6.0</version>
+    <time>1627389129</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on systems that have no %%_fontsdir macro</comment>
+    <requestid>908511</requestid>
+  </revision>
 </revisionlist>

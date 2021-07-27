@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 26 16:50:13 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define _fontsdir for building on systems that don't have it
+  defined
+
+-------------------------------------------------------------------
 Fri Jul  1 17:05:15 UTC 2016 - toddrme2178@gmail.com
 
 - Make Group tag consistent with other font packages.
