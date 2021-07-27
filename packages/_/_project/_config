@@ -327,6 +327,7 @@ Prefer: libdebuginfod1 debuginfod-client
 Prefer: libudev-mini-devel libudev-mini1 udev-debuginfo libudev1-debuginfo
 Prefer: libuna-mini-devel libuna1-mini
 Prefer: libunbound-devel-mini
+Prefer: tomcat:log4j12
 Prefer: log4j12-mini
 Prefer: systemd-mini systemd-mini-devel libsystemd0-mini
 Prefer: systemd-mini-devel:systemd-mini
