@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 21 08:57:33 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Properly adjust GPL-3.0 WITH GCC-exception-3.1 to
+  GPL-3.0-or-later WITH GCC-exception-3.1
+
+-------------------------------------------------------------------
+Mon Jul 19 17:21:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Remove bits/unistd_ext.h from include-fixed
+
+-------------------------------------------------------------------
 Wed Jul  7 10:28:45 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-10 branch head (048117e16c77f82598fca9af5), git1893

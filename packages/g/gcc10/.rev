@@ -238,4 +238,15 @@
   * Removes cyclades header use from libsanitizer.  [boo#1188076]</comment>
     <requestid>904605</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>4c3293dace36b57f1ef186b03131e208</srcmd5>
+    <version>10.3.1+git1893</version>
+    <time>1627389110</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly adjust GPL-3.0 WITH GCC-exception-3.1 to
+  GPL-3.0-or-later WITH GCC-exception-3.1
+
+- Remove bits/unistd_ext.h from include-fixed</comment>
+    <requestid>907449</requestid>
+  </revision>
 </revisionlist>
