@@ -25,4 +25,14 @@
     <comment>- Use python_sitelib, rather than python3_sitelib when installing files.</comment>
     <requestid>864190</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>df9a78cb002370b1492ba2fb65359515</srcmd5>
+    <version>0.7.1</version>
+    <time>1627389135</time>
+    <user>dimstar_suse</user>
+    <comment>- version 0.7.1 
+  * no upstream changelog
+</comment>
+    <requestid>908545</requestid>
+  </revision>
 </revisionlist>

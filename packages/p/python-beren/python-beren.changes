@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 22 19:46:12 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.7.1 
+  * no upstream changelog
+
+-------------------------------------------------------------------
 Tue Jan 19 04:37:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use python_sitelib, rather than python3_sitelib when installing files. 

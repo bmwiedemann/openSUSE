@@ -1,8 +1,8 @@
 #
-# spec file for package python-beren
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019 Dr. Axel Braun <DocB@opensuse.org>
+# Copyright (c) 2019-2021 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 
 %define modname beren
 Name:           python-%{modname}
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        Provides a REST client targeted at Orthanc REST API endpoints
 License:        GPL-3.0-or-later
