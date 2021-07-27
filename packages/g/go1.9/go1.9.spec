@@ -90,6 +90,7 @@ Patch11:        gccgo1.16.patch
 # PATCH-FIX-UPSTREAM (compiler-rt): Fix sanitizer build against latest glibc
 Patch100:       fix-sanitizer-build-against-latest-glibc.patch
 Patch101:       gcc9-rsp-clobber.patch
+Patch102:       compiler-rt-fix-tsan-build.patch
 BuildRequires:  fdupes
 #BNC#818502 debug edit tool of rpm fails on i586 builds
 BuildRequires:  rpm >= 4.11.1
@@ -178,6 +179,7 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %setup -q -T -b 100 -n compiler-rt-g%{tsan_commit}
 %patch100 -p1
 %patch101 -p1
+%patch102 -p1
 %endif
 # go
 %setup -q -n go

@@ -131,4 +131,12 @@
   [boo#1182618] (forwarded request 891218 from rguenther)</comment>
     <requestid>891380</requestid>
   </revision>
+  <revision rev="15" vrev="11">
+    <srcmd5>7516be41a50778b3824ee243568e29ba</srcmd5>
+    <version>1.9.7</version>
+    <time>1627389114</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-fix-tsan-build.patch to fix build with gcc-PIE. (forwarded request 905777 from rguenther)</comment>
+    <requestid>908533</requestid>
+  </revision>
 </revisionlist>
