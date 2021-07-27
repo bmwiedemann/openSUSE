@@ -1,6 +1,6 @@
---- rt-11.0.6+2/buildSrc/linux.gradle
-+++ rt-11.0.6+2/buildSrc/linux.gradle
-@@ -54,7 +54,7 @@
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -58,7 +58,7 @@ if (IS_STATIC_BUILD) {
  def cppFlags = [
          commonFlags, "-I$JDK_HOME/include", "-I$JDK_HOME/include/linux", "-c",
          "-ffunction-sections", "-fdata-sections",
@@ -9,4 +9,3 @@
  
  def cFlags = [cppFlags, "-Werror=implicit-function-declaration"].flatten()
  
-

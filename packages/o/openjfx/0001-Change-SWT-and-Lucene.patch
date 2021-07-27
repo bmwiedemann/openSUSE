@@ -1,6 +1,6 @@
---- rt-11.0.6+2/build.gradle
-+++ rt-11.0.6+2/build.gradle
-@@ -2494,7 +2494,7 @@
+--- a/build.gradle
++++ b/build.gradle
+@@ -2548,7 +2548,7 @@ project(":swt") {
      commonModuleSetup(project, [ 'base', 'graphics' ])
  
      dependencies {
@@ -9,7 +9,7 @@
      }
  
      classes {
-@@ -4613,35 +4613,35 @@
+@@ -4680,35 +4680,35 @@ compileTargets { t ->
  project(":apps") {
      // The apps build is Ant based, we will exec ant from gradle.
  
@@ -71,7 +71,7 @@
  
      compileTargets { t ->
          List<String> params = []
-@@ -4656,7 +4656,7 @@
+@@ -4723,7 +4723,7 @@ project(":apps") {
          params << "-Drun.patch=@${rootProject.buildDir}/${RUNARGSFILE}"
  
          def appsJar = project.task("appsJar${t.capital}") {

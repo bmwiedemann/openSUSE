@@ -1,6 +1,6 @@
---- rt-11.0.6+2/buildSrc/linux.gradle	2018-12-10 17:30:22.000000000 +0100
-+++ rt-11.0.6+2/buildSrc/linux.gradle	2019-11-20 22:23:57.289718124 +0100
-@@ -44,7 +44,7 @@
+--- a/buildSrc/linux.gradle
++++ b/buildSrc/linux.gradle
+@@ -44,7 +44,7 @@ LINUX.library = { name -> return (IS_STATIC_BUILD ? "lib${name}.a" : "lib${name}
  def commonFlags = [
          "-fno-strict-aliasing", "-fPIC", "-fno-omit-frame-pointer", // optimization flags
          "-fstack-protector",
@@ -9,7 +9,7 @@
  
  if (!IS_64) {
      commonFlags += "-m32"
-@@ -226,7 +226,7 @@
+@@ -226,7 +226,7 @@ FileTree ft_gtk = fileTree("${project(":graphics").projectDir}/src/main/native-g
  LINUX.glass.glass = [:]
  LINUX.glass.glass.nativeSource = ft_gtk_launcher.getFiles()
  LINUX.glass.glass.compiler = compiler
@@ -18,7 +18,7 @@
  LINUX.glass.glass.linker = linker
  LINUX.glass.glass.linkFlags = IS_STATIC_BUILD? linkFlags : [linkFlags, "-lX11", "-ldl"].flatten()
  LINUX.glass.glass.lib = "glass"
-@@ -236,7 +236,7 @@
+@@ -236,7 +236,7 @@ LINUX.glass.glassgtk2.nativeSource =  ft_gtk.getFiles()
  LINUX.glass.glassgtk2.compiler = compiler
  LINUX.glass.glassgtk2.ccFlags = IS_STATIC_BUILD ?
          ["-fno-threadsafe-statics", cppFlags, gtk2CCFlags].flatten() :
@@ -27,7 +27,7 @@
  LINUX.glass.glassgtk2.linker = linker
  LINUX.glass.glassgtk2.linkFlags = IS_STATIC_BUILD ? linkFlags : [linkFlags, gtk2LinkFlags].flatten()
  LINUX.glass.glassgtk2.lib = "glassgtk2"
-@@ -246,7 +246,7 @@
+@@ -246,7 +246,7 @@ LINUX.glass.glassgtk3.nativeSource =  ft_gtk.getFiles()
  LINUX.glass.glassgtk3.compiler = compiler
  LINUX.glass.glassgtk3.ccFlags = IS_STATIC_BUILD ?
          ["-fno-threadsafe-statics", cppFlags, gtk3CCFlags].flatten() :

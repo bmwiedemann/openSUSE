@@ -81,4 +81,12 @@
 </comment>
     <requestid>888513</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4d868aff90a0c7187ebde15737e90688</srcmd5>
+    <version>11.0.12</version>
+    <time>1627389133</time>
+    <user>dimstar_suse</user>
+    <comment>11.0.12+4 (April and July 2021 CPUs)</comment>
+    <requestid>908528</requestid>
+  </revision>
 </revisionlist>

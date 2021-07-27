@@ -17,14 +17,15 @@
 
 
 %global priority        2105
-%global build_number 1
+%global build_number 4
+%global jfx_repo jfx11u
 Name:           openjfx
-Version:        11.0.10
+Version:        11.0.12
 Release:        0
 Summary:        Rich client application platform for Java
 License:        BSD-3-Clause AND GPL-2.0-only WITH Classpath-exception-2.0
 URL:            https://openjdk.java.net/projects/openjfx/
-Source0:        http://hg.openjdk.java.net/openjfx/11-dev/rt/archive/%{version}+%{build_number}.tar.bz2
+Source0:        https://github.com/openjdk/%{jfx_repo}/archive/refs/tags/%{version}+%{build_number}.tar.gz
 Patch0:         0000-Fix-wait-call-in-PosixPlatform.patch
 Patch1:         0001-Change-SWT-and-Lucene.patch
 Patch2:         0002-Allow-build-to-work-on-newer-gradles.patch
@@ -89,7 +90,7 @@ BuildArch:      noarch
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n rt-%{version}+%{build_number}
+%setup -q -n %{jfx_repo}-%{version}-%{build_number}
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
@@ -161,15 +162,15 @@ for i in base controls fxml graphics media swing web; do
 done
 
 %files -f .mfiles
-%license LICENSE
-%doc README
+%license LICENSE ADDITIONAL_LICENSE_INFO ASSEMBLY_EXCEPTION
+%doc README.md
 
 %files devel
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/lib
 %{_libdir}/%{name}
-%license LICENSE
-%doc README
+%license LICENSE ADDITIONAL_LICENSE_INFO ASSEMBLY_EXCEPTION
+%doc README.md
 
 %files src
 %dir %{_datadir}/%{name}
@@ -181,6 +182,6 @@ done
 
 %files javadoc
 %{_javadocdir}/%{name}
-%license LICENSE
+%license LICENSE ADDITIONAL_LICENSE_INFO ASSEMBLY_EXCEPTION
 
 %changelog

@@ -1,6 +1,6 @@
---- rt-11.0.6+2/modules/jdk.packager/src/main/java/com/oracle/tools/packager/linux/LinuxAppBundler.java
-+++ rt-11.0.6+2/modules/jdk.packager/src/main/java/com/oracle/tools/packager/linux/LinuxAppBundler.java
-@@ -116,8 +116,8 @@
+--- a/modules/jdk.packager/src/main/java/com/oracle/tools/packager/linux/LinuxAppBundler.java
++++ b/modules/jdk.packager/src/main/java/com/oracle/tools/packager/linux/LinuxAppBundler.java
+@@ -120,8 +120,8 @@ public class LinuxAppBundler extends AbstractImageBundler {
              BundleParams.PARAM_RUNTIME,
              RelativeFileSet.class,
              params -> JreUtils.extractJreAsRelativeFileSet(System.getProperty("java.home"),
@@ -11,4 +11,3 @@
      );
  
      @Override
-

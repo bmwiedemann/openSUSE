@@ -1,6 +1,6 @@
---- rt-11.0.6+2/build.gradle
-+++ rt-11.0.6+2/build.gradle
-@@ -1968,7 +1968,7 @@
+--- a/build.gradle
++++ b/build.gradle
+@@ -2008,7 +2008,7 @@ project(":graphics") {
      dependencies {
          stubCompile group: "junit", name: "junit", version: "4.8.2"
  

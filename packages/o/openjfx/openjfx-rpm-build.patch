@@ -1,6 +1,6 @@
---- a/build.gradle	Wed Jan 15 16:07:02 2020 +0100
-+++ b/build.gradle	Wed Jan 22 11:08:21 2020 +0100
-@@ -336,7 +336,7 @@
+--- a/build.gradle
++++ b/build.gradle
+@@ -336,7 +336,7 @@ defineProperty("JAVA", cygpathExe("$JDK_HOME/bin/java"))
  defineProperty("JAVAC", cygpathExe("$JDK_HOME/bin/javac"))
  defineProperty("JAVADOC", cygpathExe("$JDK_HOME/bin/javadoc"))
  defineProperty("JMOD", cygpathExe("$JDK_HOME/bin/jmod"))
@@ -9,7 +9,7 @@
  defineProperty("JDK_JMODS", cygpath(System.getenv("JDK_JMODS")) ?: cygpath(System.getenv("JDK_HOME") + "/jmods"))
  
  defineProperty("javaRuntimeVersion", System.getProperty("java.runtime.version"))
-@@ -503,10 +503,10 @@
+@@ -516,10 +516,10 @@ if (IS_MAC) {
  //
  
  // The following properties should be left alone by developers and set only from Hudson.
@@ -22,7 +22,7 @@
  ext.IS_MILESTONE_FCS = Boolean.parseBoolean(MILESTONE_FCS)
  
  // The following properties define the product name for Oracle JDK and OpenJDK
-@@ -541,8 +541,10 @@
+@@ -554,8 +554,10 @@ if (jfxReleasePatchVersion == "0") {
  defineProperty("RELEASE_VERSION", relVer)
  defineProperty("RELEASE_VERSION_PADDED", "${jfxReleaseMajorVersion}.${jfxReleaseMinorVersion}.${jfxReleaseSecurityVersion}.${jfxReleasePatchVersion}")
  
@@ -35,7 +35,7 @@
  defineProperty("BUILD_TIMESTAMP", buildTimestamp)
  def relSuffix = ""
  def relOpt = ""
-@@ -555,7 +557,7 @@
+@@ -568,7 +570,7 @@ if (HUDSON_JOB_NAME == "not_hudson") {
  defineProperty("RELEASE_SUFFIX", relSuffix)
  defineProperty("RELEASE_VERSION_SHORT", "${RELEASE_VERSION}${RELEASE_SUFFIX}")
  defineProperty("RELEASE_VERSION_LONG", "${RELEASE_VERSION_SHORT}+${PROMOTED_BUILD_NUMBER}${relOpt}")
