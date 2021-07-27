@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 20 10:51:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use pkgconfig(openssl); package builds with libressl too.
+
+-------------------------------------------------------------------
 Wed Jul 14 09:58:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - First release in OBS

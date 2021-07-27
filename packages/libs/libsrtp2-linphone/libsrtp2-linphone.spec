@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.xz
 Patch0:         change-name.patch
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
-BuildRequires:  libopenssl-devel
+BuildRequires:  pkgconfig(openssl)
 
 %description
 libsrtp is an implementation of the Secure Real-time Transport
