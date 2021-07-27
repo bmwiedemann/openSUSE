@@ -50,8 +50,12 @@
 
 %define services %{name}.service %{name}@.service %{?ixfrdist_services}
 
+%ifarch %ix86 %arm
+ExclusiveArch:  no-32bit-build
+%endif
+
 Name:           pdns
-Version:        4.5.0
+Version:        4.5.1
 Release:        0
 Summary:        Authoritative-only nameserver
 License:        GPL-2.0-only

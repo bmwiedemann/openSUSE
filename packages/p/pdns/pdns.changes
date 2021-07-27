@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 26 12:52:56 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 4.5.1
+  * Fixes a remote DoS when server receives query with QTYPE 65535
+    (bsc#1188495, CVE-2021-36754)
+- update keyring file
+- no longer builds on 32-bit arches (since 4.5.0 release)
+
+-------------------------------------------------------------------
 Tue Jul 13 11:40:52 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 4.5.0
