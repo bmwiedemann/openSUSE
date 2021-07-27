@@ -1,7 +1,7 @@
 #
 # spec file for package python-openpyxl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,17 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-openpyxl
-Version:        3.0.3
+Version:        3.0.7
 Release:        0
 Summary:        A Python library to read/write Excel 2010 xlsx/xlsm files
 License:        MIT AND Python-2.0
-URL:            https://bitbucket.org/openpyxl/openpyxl/
+URL:            https://foss.heptapod.net/openpyxl/openpyxl
 Source:         https://files.pythonhosted.org/packages/source/o/openpyxl/openpyxl-%{version}.tar.gz
 BuildRequires:  %{python_module et_xmlfile}
-BuildRequires:  %{python_module jdcal}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-et_xmlfile
-Requires:       python-jdcal
 # for embedded image support
 Recommends:     python-Pillow
 BuildArch:      noarch

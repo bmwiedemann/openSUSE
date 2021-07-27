@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:55:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.7:
+  * https://foss.heptapod.net/openpyxl/openpyxl/-/issues/1588
+  * Exception raised when merging cells which do not have borders all the way
+    round.
+  * Fix Python 2.x specific statement in documentation
+  * Borders in differential styles are incorrect
+  * Error when opening some pivot tables
+  * Resave breaks the border format in conditional formatting rules
+  * Read-only workbook not closed properly if generator interrupted
+  * Pandas.Multiindex.labels deprecated
+  * Pandas.Multiinex not expanded correctly
+  * Cannot read rows with exponents
+  * numpy.float is deprecated
+  * Cells without coordinate attributes not always correctly handled
+  * Incorrectly consider currency format as datetime
+  * Cannot copy worksheets with merged cells
+  * Empty worksheets do not return generators when looping.
+  * Hyperlinks duplicated on multiple saves
+  * Incorrectly literal format as datetime
+  * Links set to range of cells not preserved
+  * Exception when opening workbook with chartsheets and tables
+  * Find tables by name
+  * Worksheet protection missing in existing files
+  * Exception when reading files with external images
+  * Reading lots of merged cells is very slow.
+  * Read support for Bubble Charts.
+  * Preserve any indexed colours
+  * Reading many thousand of merged cells is really slow.
+  * Adding tables in write-only mode raises an exception. 
+
+-------------------------------------------------------------------
 Thu Jan 30 15:02:50 UTC 2020 - Todd R <toddrme2178@gmail.com>
 
 - Update to 3.0.3:
