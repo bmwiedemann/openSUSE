@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 26 17:40:46 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- %%jpackage_script needs javapackages-tools
+
+-------------------------------------------------------------------
 Wed Sep 20 07:25:39 UTC 2017 - fstrba@suse.com
 
 - Fix build with jdk9: specify java source and target level 1.6

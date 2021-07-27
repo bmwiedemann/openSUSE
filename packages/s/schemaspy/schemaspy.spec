@@ -1,7 +1,7 @@
 #
 # spec file for package schemaspy
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Archie L. Cobbs.
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,20 +21,21 @@ Name:           schemaspy
 Version:        5.0.0
 Release:        0
 Summary:        Tool for analyzing and graphing database schemas
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          Productivity/Databases/Tools
-Url:            http://schemaspy.sourceforge.net/
+URL:            http://schemaspy.sourceforge.net/
 Source0:        schemaSpy_%{version}.source.jar
 Source1:        schemaspy.1
 # PATCH-FIX-OPENSUSE driver-location.patch
 Patch0:         driver-location.patch
-BuildRequires:  java-devel >= 1.5.0
+BuildRequires:  java-devel >= 1.6
+BuildRequires:  javapackages-tools
 BuildRequires:  unzip
 Requires:       graphviz
 Requires:       graphviz-gd
-Requires:       java >= 1.5.0
+Requires:       java >= 1.6
+Requires:       javapackages-tools
 Suggests:       mysql-connector-java
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -77,7 +78,6 @@ install %{_sourcedir}/%{name}.1 %{buildroot}%{_mandir}/man1
 %jpackage_script net.sourceforge.schemaspy.Main "" "" %{name} %{name}
 
 %files
-%defattr(-,root,root)
 %attr(0755,root,root) %{_bindir}/%{name}
 %defattr(0644,root,root,0755)
 %{_javadir}/*

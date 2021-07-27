@@ -30,4 +30,12 @@
     <comment>Fix build with jdk9</comment>
     <requestid>527467</requestid>
   </revision>
+  <revision rev="5" vrev="6">
+    <srcmd5>c1c17fddaf8a8360418e45578fde9b03</srcmd5>
+    <version>5.0.0</version>
+    <time>1627389129</time>
+    <user>dimstar_suse</user>
+    <comment>javapackages-tools are needed for %%jpackage_script macro</comment>
+    <requestid>908512</requestid>
+  </revision>
 </revisionlist>
