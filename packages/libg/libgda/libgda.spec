@@ -15,8 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %bcond_with fbclient
-# BDB: Currently broken. 
+# BDB: Currently broken.
 %bcond_with bdb
 %define _name libgda
 Name:           libgda
@@ -30,12 +31,14 @@ URL:            https://www.gnome-db.org/
 Source:         https://download.gnome.org/sources/libgda/6.0/%{_name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM libgda-javadetection-biarch.patch bgo#673560 -- Prepare getsp to be sed'ed for biarch
 Patch1:         libgda-javadetection-biarch.patch
+# PATCH-FIX-UPSTREAM overflow-undefined-behavior.patch -- undefined behavior due to overflow
+Patch2:         overflow-undefined-behavior.patch
 
-BuildRequires:  meson
 BuildRequires:  db-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.40.6
 BuildRequires:  itstool
 BuildRequires:  java-devel >= 1.8
@@ -43,6 +46,7 @@ BuildRequires:  libgcrypt-devel
 BuildRequires:  libopenssl-1_1-devel
 BuildRequires:  libtool
 BuildRequires:  mdbtools-devel
+BuildRequires:  meson
 BuildRequires:  mysql
 BuildRequires:  mysql-devel
 BuildRequires:  ncurses-devel
@@ -51,14 +55,14 @@ BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
 BuildRequires:  unixODBC-devel
+BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.26.0
 BuildRequires:  yelp-tools
-BuildRequires:  gtk-doc
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(sqlcipher)
 %if %{with fbclient}
 BuildRequires:  pkgconfig(fbclient)
 %endif
+BuildRequires:  pkgconfig(gladeui-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(goocanvas-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
@@ -66,13 +70,12 @@ BuildRequires:  pkgconfig(gtksourceview-3.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgvc)
+BuildRequires:  pkgconfig(libmariadb)
 BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(sqlite3)
-BuildRequires:  pkgconfig(gladeui-2.0)
-BuildRequires:  pkgconfig(libmariadb)
 #!BuildIgnore:  openssl
 
 %description
@@ -517,6 +520,5 @@ sed -e 's-#!/usr/bin/env python3-#!/usr/bin/python3-g' -i %{buildroot}%{_bindir}
 %files 6_0-sqlite
 # NOTE: Files don't conflict with previous version => Use versioned package name
 %{_libdir}/libgda-6.0/providers/libgda-sqlite-6.0.so
-
 
 %changelog

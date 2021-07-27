@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 26 16:18:01 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- overflow-undefined-behavior.patch: Fix undefined behavior due to signed
+  integer overflow
+
+-------------------------------------------------------------------
 Fri May 21 14:03:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix incorrect Requires tag in glade catalog

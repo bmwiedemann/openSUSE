@@ -712,4 +712,13 @@ file is not available on the system.
     <comment></comment>
     <requestid>894835</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>b51fceeefb52afec9cbe95c91e02c406</srcmd5>
+    <version>6.0.0</version>
+    <time>1627389136</time>
+    <user>dimstar_suse</user>
+    <comment>- overflow-undefined-behavior.patch: Fix undefined behavior due to signed
+  integer overflow (forwarded request 908448 from Andreas_Schwab)</comment>
+    <requestid>908550</requestid>
+  </revision>
 </revisionlist>
