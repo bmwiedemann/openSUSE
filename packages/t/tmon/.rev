@@ -37,4 +37,12 @@
   [bsc#1075156, prevent-cur_thermal_record_race.patch]</comment>
     <requestid>597356</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1586c57660d9741ea0f70fb882347f25</srcmd5>
+    <version>1.0.gb61442df748f06e9</version>
+    <time>1627389120</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908395</requestid>
+  </revision>
 </revisionlist>

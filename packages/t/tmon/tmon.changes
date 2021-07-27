@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 26 10:23:46 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Update to latest git version (kernel git hash #gb61442df748f06e9)
+  Delete already integrated patches:
+D    prevent-cur_thermal_record_race.patch
+D    tmon_pkg_config_ncurses_missing.patch
+and adjust build env:
+A    remove_external_includes
+
+-------------------------------------------------------------------
 Tue Apr 17 08:19:00 UTC 2018 - tchvatal@suse.com
 
 - Format with spec-cleaner

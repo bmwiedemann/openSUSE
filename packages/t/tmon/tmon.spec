@@ -1,7 +1,7 @@
 #
 # spec file for package tmon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           tmon
 # Use this as version when things are in mainline kernel
-Version:        1.0
+Version:        1.0.gb61442df748f06e9
 Release:        0
 Summary:        A Monitoring and Testing Tool for Linux kernel thermal subsystem
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/tools/thermal/tmon
-Source:         %{name}-%{version}.tar.bz2
-Patch1:         tmon_pkg_config_ncurses_missing.patch
-Patch2:         prevent-cur_thermal_record_race.patch
+Source:         %{name}-%{version}.tar.xz
+Patch0:         remove_external_includes
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 
@@ -35,9 +34,7 @@ This tool is conceived as a tool to help visualize, tune, and test the
 complex thermal subsystem.
 
 %prep
-%setup -q
-%patch1 -p1
-%patch2 -p1
+%autosetup
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags}
