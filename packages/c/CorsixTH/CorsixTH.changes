@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 25 05:13:53 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.65.1
+  * Fixes a bug where the game would crash if you got the All Cured
+    trophy at the end of year awards, when loading a save from 0.64
+    or earlier.
+
+-------------------------------------------------------------------
 Sat Jul 10 12:04:06 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use default lua otherwise the Requires will be incorrect

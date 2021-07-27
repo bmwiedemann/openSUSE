@@ -17,7 +17,7 @@
 
 
 Name:           CorsixTH
-Version:        0.65
+Version:        0.65.1
 Release:        0
 Summary:        Theme Hospital clone
 License:        MIT
