@@ -16,14 +16,15 @@
 #
 
 
-%define libpk   libpackagekitqt5-1
+%define pkqt   packagekitqt5
+%define major 1
 Name:           PackageKit-Qt
 Version:        1.0.2
 Release:        0
 Summary:        Simple software installation management software
 License:        LGPL-2.1-or-later
 Group:          System/Daemons
-URL:            http://packagekit.org/
+URL:            https://github.com/hughsie/PackageKit-Qt
 Source:         https://github.com/hughsie/PackageKit-Qt/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM boo#1103678
 Patch4:         0001-Fix-PackageKit-not-emitting-network-state-changed-signal.patch
@@ -41,27 +42,29 @@ all the software graphical tools used in different distributions, and
 use some of the latest technology like PolicyKit to make the process
 suck less.
 
-%package -n %{libpk}
+%package -n lib%{pkqt}-%{major}
 Summary:        Simple software installation management software
 Group:          System/Libraries
 
-%description -n %{libpk}
+%description -n lib%{pkqt}-%{major}
 PackageKit is a system designed to make installing and updating
 software on your computer easier.  The primary design goal is to unify
 all the software graphical tools used in different distributions, and
 use some of the latest technology like PolicyKit to make the process
 suck less.
 
-%package devel
+%package -n %{pkqt}-devel
 Summary:        Simple software installation management software
 Group:          Development/Libraries/C and C++
-Requires:       %{libpk} = %{version}
+Requires:       lib%{pkqt}-%{major} = %{version}
 # PackageKit-Qt used to be Qt4 based until 0.9.6; then it turned into a Qt5 package (no more Qt4 support)
 # For this reason, we now have to obsolete the former 2nd spec file names
-Provides:       PackageKit-Qt5-devel = %{version}
-Obsoletes:      PackageKit-Qt5-devel < %{version}
+Provides:       %{name}-devel = %{version}
+Obsoletes:      %{name}-devel < %{version}
+Provides:       %{name}5-devel = %{version}
+Obsoletes:      %{name}5-devel < %{version}
 
-%description devel
+%description -n %{pkqt}-devel
 PackageKit is a system designed to make installing and updating
 software on your computer easier.  The primary design goal is to unify
 all the software graphical tools used in different distributions, and
@@ -85,15 +88,15 @@ cmake \
 cd build
 %make_install
 
-%post -n %{libpk} -p /sbin/ldconfig
-%postun -n %{libpk} -p /sbin/ldconfig
+%post -n lib%{pkqt}-%{major} -p /sbin/ldconfig
+%postun -n lib%{pkqt}-%{major} -p /sbin/ldconfig
 
-%files -n %{libpk}
+%files -n lib%{pkqt}-%{major}
 %license COPYING
-%doc NEWS AUTHORS
+%doc NEWS AUTHORS README.md
 %{_libdir}/libpackagekitqt5.so.*
 
-%files devel
+%files -n %{pkqt}-devel
 %doc TODO MAINTAINERS
 %{_libdir}/libpackagekitqt5.so
 %{_libdir}/cmake/packagekitqt5/

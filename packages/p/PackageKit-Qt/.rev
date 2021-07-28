@@ -183,4 +183,14 @@ Comment: something is rotten with the license. I don't believe it's
   0003-Make-sure-the-build-is-done-as-c-11.patch: upstream (forwarded request 827411 from dirkmueller)</comment>
     <requestid>828184</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>c5699fe3cb301052374f2ebb18b7a91b</srcmd5>
+    <version>1.0.2</version>
+    <time>1627492774</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix package URL
+- Package README.md
+- Rename devel to %{pkqt}-devel (forwarded request 908402 from yecril71pl)</comment>
+    <requestid>908597</requestid>
+  </revision>
 </revisionlist>

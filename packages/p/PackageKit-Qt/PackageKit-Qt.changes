@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 17 21:59:24 UTC 2021 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
+
+- Fix package URL
+- Package README.md
+- Rename devel to %{pkqt}-devel
+
+-------------------------------------------------------------------
 Mon Aug 17 19:06:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.0.2:
