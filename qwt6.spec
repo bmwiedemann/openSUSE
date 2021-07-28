@@ -16,9 +16,9 @@
 #
 
 
-%define sover   6
+%define sover   6_2
 Name:           qwt6
-Version:        6.1.6
+Version:        6.2.0
 Release:        0
 Summary:        Qt5 Widgets for Technical Applications
 License:        SUSE-QWT-1.0
@@ -28,10 +28,8 @@ Source:         https://sourceforge.net/projects/qwt/files/qwt/%{version}/qwt-%{
 # PATCH-FIX-OPENSUSE to prevent 'ERROR: RPATH "/usr/local/qwt-6.1.0/lib" on
 # /usr/lib(64)/qt(4,5)/plugins/designer/libqwt_designer_plugin.so is not allowed'.
 Patch0:         qwt-6.1.3-rpath.patch
-# PATCH-FIX-OPENSUSE pkgconfig.patch -- Create and install pc files for pkg-config
-Patch2:         qwt-6.1.3-pkgconfig.patch
 # PATCH-FIX-OPENSUSE mkspecs.patch -- Use established settings for the .pc files
-Patch3:         qwt-6.1.4-mkspecs.patch
+Patch2:         qwt-6.1.4-mkspecs.patch
 BuildRequires:  fdupes
 BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
@@ -87,6 +85,7 @@ in order to create Qt applications using the Qwt(Qt5) widgets.
 
 %package examples
 Summary:        Example programs using Qwt(Qt5)
+License:        SUSE-QWT-1.0 or BSD-3-Clause
 Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Provides:       %{name}-qt5-examples = %{version}
@@ -120,10 +119,7 @@ This package contains the development documentation of the Qwt(Qt5) widgets
 as is it created by doxygen.
 
 %prep
-%setup -q -n qwt-%{version}
-%patch0 -p1
-%patch2 -p1
-%patch3 -p1
+%autosetup -p1 -n qwt-%{version}
 
 %build
 mkdir build
@@ -136,6 +132,8 @@ popd
 pushd build
 %qmake5_install
 popd
+# nothing references this
+rm -f "%{buildroot}/%{_libqt5_libdir}/libqwt.so.6"
 
 # Qwt base examples
 mkdir -p %{buildroot}%{%_libqt5_docdir}/qwt6
@@ -158,7 +156,7 @@ mv %{buildroot}%{_libqt5_docdir}/qwt6/man/man3 \
 %else
 %doc COPYING
 %endif
-%{_libqt5_libdir}/libqwt.so.*
+%{_libqt5_libdir}/libqwt.so.6.2*
 
 %files designer
 %dir %{_libqt5_plugindir}/designer/
@@ -170,7 +168,7 @@ mv %{buildroot}%{_libqt5_docdir}/qwt6/man/man3 \
 %{_libqt5_libdir}/pkgconfig/Qt5Qwt6.pc
 %{_libqt5_archdatadir}/mkspecs/features/
 %dir %{_libqt5_includedir}/qwt6
-%{_libqt5_includedir}/qwt6/*.h
+%{_libqt5_includedir}/qwt6/*
 %{_mandir}/man?/*.3%{ext_info}
 
 %files examples
