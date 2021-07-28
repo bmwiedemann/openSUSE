@@ -20,7 +20,7 @@
 # expand separate from Provides/Obsoletes tags, because these are later duplicated by the python_subpackages macro
 %define python_add_provides %{python_provides}
 Name:           python-dbus-python
-Version:        1.2.16
+Version:        1.2.18
 Release:        0
 Summary:        Python bindings for D-Bus
 License:        MIT

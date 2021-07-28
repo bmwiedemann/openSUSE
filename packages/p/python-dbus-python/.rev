@@ -82,4 +82,30 @@
     <comment></comment>
     <requestid>899902</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1b3687acc23261c5e31d458ee16497e2</srcmd5>
+    <version>1.2.18</version>
+    <time>1627492767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.18:
+  * dbus-python will be built for python3
+  * Python 2 reached end-of-life on 2020-01-01. A future version of
+    dbus-python is likely to remove Python 2 support.
+  * Move from collections.Sequence to collections.abc.Sequence on
+    Python ≥ 3.3, for Python 3.10 compatibility
+  * Avoid another deprecation warning for inspect.getargspec().
+    This is similar to the one fixed in 1.2.4, but for dbus.decorators.signal
+    rather than dbus.decorators.method. (dbus-python!8; Martin Stumpf)
+  * Fix an unlikely fd leak if memory allocation fails for UnixFd
+  * Fix memory and fd leak if UnixFd is given an invalid negative
+    variant_level
+  * Avoid more deprecation warnings
+  * Disable -Wdeclaration-after-statement. Python 3.9 relies on intermixed
+    declarations and statements in its headers, so we can no longer
+    enforce this. (Simon McVittie)
+  * Convert examples to Python 3 (Simon McVittie)
+  * Use the same Python executable for build and dist/distcheck by default
+  * CI fixes</comment>
+    <requestid>908517</requestid>
+  </revision>
 </revisionlist>
