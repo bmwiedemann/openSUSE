@@ -1709,4 +1709,20 @@ boundary checks.
     <comment></comment>
     <requestid>898805</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>6a4fd0297d173b896f4ddd914c00ff53</srcmd5>
+    <version>2021.07</version>
+    <time>1627492773</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop qemu-riscv64spl flavor
+- Use generic opensbi for sifiveunleashed
+- Rename sifivefu540 to sifiveunleashed to follow upstream
+- Update to 2021.07
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.07
+* Patches dropped:
+  0014-fs-btrfs-fix-the-false-alert-of-dec.patch
+  0015-arm64-dts-meson-odroidc2-readd-PHY-.patch
+</comment>
+    <requestid>908586</requestid>
+  </revision>
 </revisionlist>

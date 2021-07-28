@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 26 10:50:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Drop qemu-riscv64spl flavor
+- Use generic opensbi for sifiveunleashed
+
+-------------------------------------------------------------------
+Mon Jul 26 09:15:36 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Rename sifivefu540 to sifiveunleashed to follow upstream
+
+-------------------------------------------------------------------
+Mon Jul 26 06:58:16 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2021.07
+- Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.07
+* Patches dropped:
+  0014-fs-btrfs-fix-the-false-alert-of-dec.patch
+  0015-arm64-dts-meson-odroidc2-readd-PHY-.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 10:41:11 UTC 2021 - Matthias Brugger <mbrugger@suse.com>
 
 Fix Ethernet PHY initialization on OdroidC2 (boo#1187095)

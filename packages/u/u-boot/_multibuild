@@ -71,7 +71,6 @@
   <flavor>qemu-ppce500</flavor>
   <flavor>qemu-riscv64</flavor>
   <flavor>qemu-riscv64smode</flavor>
-  <flavor>qemu-riscv64spl</flavor>
   <flavor>rock-pi-4-rk3399</flavor>
   <flavor>rock-pi-n10-rk3399pro</flavor>
   <flavor>rock64-rk3328</flavor>
@@ -82,7 +81,7 @@
   <flavor>rpi3</flavor>
   <flavor>rpi4</flavor>
   <flavor>rpiarm64</flavor>
-  <flavor>sifivefu540</flavor>
+  <flavor>sifiveunleashed</flavor>
   <flavor>snow</flavor>
   <flavor>socfpgade0nanosoc</flavor>
   <flavor>spring</flavor>

@@ -1,4 +1,4 @@
-From 71eae7038a475626427e1aeaa3ba8251ea3fbfa4 Mon Sep 17 00:00:00 2001
+From 47ef0cfeb241574a8473b6458ca3f9d615669a46 Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Mon, 28 Sep 2020 23:02:02 +0200
 Subject: [PATCH] sunxi: Enable SPI support on Orange Pi Zero
@@ -12,11 +12,11 @@ Signed-off-by: Matthias Brugger <mbrugger@suse.com>
  1 file changed, 8 insertions(+)
 
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
-index 998c95d151..1087baece1 100644
+index 332cd4739e..1317a48ae6 100644
 --- a/configs/orangepi_zero_defconfig
 +++ b/configs/orangepi_zero_defconfig
-@@ -8,6 +8,14 @@ CONFIG_SPL_SPI_SUNXI=y
- CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-orangepi-zero"
+@@ -8,6 +8,14 @@ CONFIG_DRAM_CLK=624
+ CONFIG_SPL_SPI_SUNXI=y
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
  CONFIG_CONSOLE_MUX=y
 +CONFIG_CMD_SF_TEST=y

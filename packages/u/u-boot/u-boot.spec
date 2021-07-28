@@ -162,9 +162,9 @@
 %define is_armv7 1
 %define binext .img
 %endif
-%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "qemu-riscv64spl" || "%target" == "sifivefu540"
+%if "%target" == "qemu-riscv64" || "%target" == "qemu-riscv64smode" || "%target" == "sifiveunleashed"
 %define is_riscv64 1
-%if "%target" == "qemu-riscv64spl" || "%target" == "sifivefu540"
+%if "%target" == "sifiveunleashed"
 %define binext .itb
 %endif
 %endif
@@ -172,7 +172,7 @@
 %define is_ppc 1
 %endif
 # archive_version differs from version for RC version only
-%define archive_version 2021.04
+%define archive_version 2021.07
 %if "%{target}" == ""
 ExclusiveArch:  do_not_build
 %else
@@ -208,7 +208,7 @@ ExclusiveArch:  do_not_build
 %else
 %bcond_with uboot_atf
 %endif
-Version:        2021.04
+Version:        2021.07
 Release:        0
 Summary:        The U-Boot firmware for the %target platform
 License:        GPL-2.0-only
@@ -233,8 +233,6 @@ Patch0010:      0010-sunxi-Enable-SPI-support-on-Orange-.patch
 Patch0011:      0011-Disable-CONFIG_CMD_BTRFS-in-xilinx_.patch
 Patch0012:      0012-smbios-Fix-table-when-no-string-is-.patch
 Patch0013:      0013-configs-rpi-Enable-SMBIOS-sysinfo-d.patch
-Patch0014:      0014-fs-btrfs-fix-the-false-alert-of-dec.patch
-Patch0015:      0015-arm64-dts-meson-odroidc2-readd-PHY-.patch
 # Patches: end
 BuildRequires:  bc
 BuildRequires:  bison
@@ -311,11 +309,8 @@ BuildRequires:  zynqmp-dts
 # For mountpoint
 Requires(post): util-linux
 %endif
-%if "%{name}" == "u-boot-qemu-riscv64spl"
-BuildRequires:  opensbi >= 0.7
-%endif
-%if "%{name}" == "u-boot-sifivefu540"
-BuildRequires:  opensbi-sifivefu540 >= 0.7
+%if "%{name}" == "u-boot-sifiveunleashed"
+BuildRequires:  opensbi >= 0.9
 %endif
 %if %x_loader == 1
 Obsoletes:      x-loader-%target
@@ -342,6 +337,10 @@ Provides:       u-boot-rpi4 = %{version}
 %if "%{name}" == "u-boot-xilinxzynqmpvirt"
 Obsoletes:      u-boot-xilinxzynqmpgeneric < %{version}
 Provides:       u-boot-xilinxzynqmpgeneric = %{version}
+%endif
+%if "%{name}" == "u-boot-sifiveunleashed"
+Obsoletes:      u-boot-sifivefu540 < %{version}
+Provides:       u-boot-sifivefu540 = %{version}
 %endif
 
 %description
@@ -394,11 +393,8 @@ export BL31=%{_datadir}/arm-trusted-firmware-sun50i_h6/bl31.bin
 %endif
 export SCP=/dev/null
 %endif
-%if "%{name}" == "u-boot-qemu-riscv64spl"
+%if "%{name}" == "u-boot-sifiveunleashed"
 export OPENSBI=%{_datadir}/opensbi/opensbi.bin
-%endif
-%if "%{name}" == "u-boot-sifivefu540"
-export OPENSBI=%{_datadir}/opensbi/opensbi-sifive-fu540.bin
 %endif
 
 %if %{with uboot_atf}
@@ -550,7 +546,7 @@ echo -e "\nkernel_address=0x11000000" >> %{buildroot}%{uboot_dir}/ubootconfig.tx
 %if "%{name}" == "u-boot-rpi4" || "%{name}" == "u-boot-rpiarm64"
 echo -e "# Boot in AArch64 mode\narm_64bit=1" > %{buildroot}%{uboot_dir}/ubootconfig.txt
 %endif
-%if "%{name}" == "u-boot-qemu-riscv64spl" || "%{name}" == "u-boot-sifivefu540"
+%if "%{name}" == "u-boot-sifiveunleashed"
 install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %endif
 
