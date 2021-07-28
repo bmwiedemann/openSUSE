@@ -18,14 +18,14 @@
 
 %define lname	libidn12
 Name:           libidn
-Version:        1.37
+Version:        1.38
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN)
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND Apache-2.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.gnu.org/software/libidn/
-Source0:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
-Source1:        http://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
+Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.gz.sig
 Source2:        https://josefsson.org/54265e8c.txt#/%{name}.keyring
 Source3:        baselibs.conf
 BuildRequires:  pkgconfig
