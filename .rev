@@ -1033,4 +1033,12 @@ Fri Aug  16 11:07:26 UTC 2019 - tmuntaner@suse.com
 This references bsc#1186798</comment>
     <requestid>897523</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9053c4ed331e9feaa25b9f6ad1457bab</srcmd5>
+    <version>2.6.11</version>
+    <time>1627492906</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908906</requestid>
+  </revision>
 </revisionlist>
