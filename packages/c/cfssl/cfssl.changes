@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 26 18:23:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change to using systemd-sysusers
+- Remove unnecessary systemd build dep
+- Remove deprecated disabled from service
+
+-------------------------------------------------------------------
 Fri Jul  2 11:05:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Do not ignore error from useradd/groupadd.

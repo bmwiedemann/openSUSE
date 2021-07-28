@@ -7,4 +7,14 @@
     <comment>cfssl is both a command line tool and an HTTP API server for signing, verifying, and bundling TLS certificates. Eventually will be required / recommeded by keylime, for certificate revocation.</comment>
     <requestid>903734</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>b7fd869cec9c58b61028803390565ad6</srcmd5>
+    <version>1.6.0</version>
+    <time>1627492768</time>
+    <user>dimstar_suse</user>
+    <comment>- Change to using systemd-sysusers
+- Remove unnecessary systemd build dep
+- Remove deprecated disabled from service (forwarded request 908449 from gmbr3)</comment>
+    <requestid>908527</requestid>
+  </revision>
 </revisionlist>

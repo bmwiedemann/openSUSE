@@ -26,20 +26,22 @@ Summary:        CloudFlare's PKI/TLS toolkit
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Security
 URL:            https://cfssl.org/
-Source:         %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-serve.service
 Source2:        %{name}-ocspserve.service
 Source3:        %{name}.sysconfig
 Source4:        %{name}-serve
 Source5:        %{name}-ocspserve
 Source6:        configs.tar.xz
+Source7:        system-user-cfssl.conf
 BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  sysuser-tools
 # There is a collision in /usr/bin/mkbundle
 Conflicts:      mono-devel
 Requires(pre):  %fillup_prereq
+%sysusers_requires
 %systemd_ordering
 %{go_nostrip}
 
@@ -66,6 +68,7 @@ sed --in-place "s/VERSION := .*/VERSION := %{version}/" Makefile
 sed --in-place --regexp-extended 's/LDFLAGS := "(.*)"/LDFLAGS := "\1 -buildmode=pie"/' Makefile
 %endif
 make
+%sysusers_generate_pre %{SOURCE7} %{name} system-user-cfssl.conf
 
 %install
 for bin in %{name} %{name}-bundle %{name}-certinfo %{name}-newkey %{name}-scan %{name}json mkbundle multirootca; do
@@ -84,13 +87,15 @@ install -m 0750 -d \
   %{buildroot}%{configdir}/certs/intermediates \
   %{buildroot}%{_sbindir} \
   %{buildroot}%{_unitdir} \
-  %{buildroot}%{_fillupdir}
+  %{buildroot}%{_fillupdir} \
+  %{buildroot}%{_sysusersdir}
 
 install -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}-serve.service
 install -m 0644 %{SOURCE2} %{buildroot}%{_unitdir}/%{name}-ocspserve.service
 install -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 install -m 0755 %{SOURCE4} %{buildroot}%{_sbindir}/%{name}-serve
 install -m 0755 %{SOURCE5} %{buildroot}%{_sbindir}/%{name}-ocspserve
+install -m 0644 %{SOURCE7} %{buildroot}%{_sysusersdir}/system-user-cfssl.conf
 
 cp -av configs/* %{buildroot}%{configdir}/
 chmod -R u=rwX,g=rX,o= %{buildroot}%{configdir}/
@@ -100,12 +105,7 @@ ln -sf /sbin/service %{buildroot}%{_sbindir}/rc%{name}-serve
 
 rm -rv certdb/testdb/
 
-%pre
-getent group %{name} >/dev/null || \
-	%{_sbindir}/groupadd -r %{name}
-getent passwd %{name} >/dev/null || \
-	%{_sbindir}/useradd -g %{name} -s /bin/false -r \
-	-c "CloudFlare PKI/TLS toolkit" -d %{datadir} %{name}
+%pre -f %{name}.pre
 %service_add_pre %{services}
 
 %post
@@ -132,5 +132,6 @@ getent passwd %{name} >/dev/null || \
 %{_unitdir}/%{name}*.service
 %{_sbindir}/rc%{name}*
 %{_sbindir}/%{name}*
+%{_sysusersdir}/system-user-cfssl.conf
 
 %changelog
