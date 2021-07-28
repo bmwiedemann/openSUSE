@@ -2335,6 +2335,7 @@ unsorted:
   - cross-aarch64-gcc10: [x86_64] 
   - cross-aarch64-gcc10-icecream-backend: [x86_64] 
   - cross-aarch64-gcc11: [x86_64] 
+  - cross-aarch64-gcc11-bootstrap 
   - cross-aarch64-gcc11-icecream-backend: [x86_64] 
   - cross-aarch64-gcc7: [x86_64] 
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
@@ -2437,6 +2438,7 @@ unsorted:
   - cross-riscv64-gcc10: [x86_64] 
   - cross-riscv64-gcc10-icecream-backend: [x86_64] 
   - cross-riscv64-gcc11: [x86_64] 
+  - cross-riscv64-gcc11-bootstrap 
   - cross-riscv64-gcc11-icecream-backend: [x86_64] 
   - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
@@ -5993,8 +5995,6 @@ unsorted:
   - goss 
   - gource 
   - goverlay 
-  - govpn 
-  - govpn-server 
   - goxel 
   - gp2c 
   - gpa 
@@ -9936,9 +9936,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -13109,8 +13109,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13133,7 +13133,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13336,7 +13336,6 @@ unsorted:
   - libretro-database 
   - libretro-desmume 
   - libretro-dolphin: [x86_64] 
-  - libretro-dosbox 
   - libretro-easyrpg 
   - libretro-fceumm 
   - libretro-ffmpeg 
@@ -13362,7 +13361,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -18628,16 +18627,16 @@ unsorted:
   - pdfmixtool 
   - pdfquirk 
   - pdftk 
-  - pdns 
-  - pdns-backend-geoip 
-  - pdns-backend-godbc 
-  - pdns-backend-ldap 
-  - pdns-backend-lmdb 
-  - pdns-backend-lua 
-  - pdns-backend-mysql 
-  - pdns-backend-postgresql 
-  - pdns-backend-remote 
-  - pdns-backend-sqlite3 
+  - pdns: [x86_64] 
+  - pdns-backend-geoip: [x86_64] 
+  - pdns-backend-godbc: [x86_64] 
+  - pdns-backend-ldap: [x86_64] 
+  - pdns-backend-lmdb: [x86_64] 
+  - pdns-backend-lua: [x86_64] 
+  - pdns-backend-mysql: [x86_64] 
+  - pdns-backend-postgresql: [x86_64] 
+  - pdns-backend-remote: [x86_64] 
+  - pdns-backend-sqlite3: [x86_64] 
   - pdns-common 
   - pdns-recursor: [x86_64] 
   - pdnsd 
@@ -21396,6 +21395,7 @@ unsorted:
   - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
+  - python3-virt-tuner 
   - python3-virtualbox: [x86_64] 
   - python3-virtualenvwrapper 
   - python3-vtk 
@@ -22496,7 +22496,6 @@ unsorted:
   - python36-flasgger 
   - python36-flask-jwt-extended 
   - python36-flask-oidc 
-  - python36-flask-peewee 
   - python36-flask-restplus 
   - python36-flask-restx 
   - python36-flatbuffers 
@@ -22705,6 +22704,7 @@ unsorted:
   - python36-ipy 
   - python36-ipyevents 
   - python36-ipykernel 
+  - python36-ipykernel5 
   - python36-ipyleaflet 
   - python36-ipyparallel 
   - python36-ipython715 
@@ -22870,6 +22870,7 @@ unsorted:
   - python36-linstor-client 
   - python36-linux-procfs 
   - python36-lit 
+  - python36-livereload 
   - python36-llfuse 
   - python36-llvmlite 
   - python36-lmdb 
@@ -22977,7 +22978,6 @@ unsorted:
   - python36-natsort 
   - python36-nautilus 
   - python36-nautilus-devel 
-  - python36-nbclassic 
   - python36-nbclient 
   - python36-nbconvert 
   - python36-nbdime 
@@ -23343,7 +23343,6 @@ unsorted:
   - python36-pylint 
   - python36-pylons-sphinx-themes 
   - python36-pylru 
-  - python36-pyls-black 
   - python36-pyls-spyder 
   - python36-pylsqpack 
   - python36-pylzma 
@@ -25325,7 +25324,6 @@ unsorted:
   - python38-flasgger 
   - python38-flask-jwt-extended 
   - python38-flask-oidc 
-  - python38-flask-peewee 
   - python38-flask-restplus 
   - python38-flask-restx 
   - python38-flatbuffers 
@@ -25728,6 +25726,7 @@ unsorted:
   - python38-linstor 
   - python38-linstor-client 
   - python38-lit 
+  - python38-livereload 
   - python38-llfuse 
   - python38-llvmlite 
   - python38-lmdb 
@@ -26240,7 +26239,6 @@ unsorted:
   - python38-pylint 
   - python38-pylons-sphinx-themes 
   - python38-pylru 
-  - python38-pyls-black 
   - python38-pyls-spyder 
   - python38-pylsqpack 
   - python38-pylzma 
@@ -28326,7 +28324,6 @@ unsorted:
   - python39-flasgger 
   - python39-flask-jwt-extended 
   - python39-flask-oidc 
-  - python39-flask-peewee 
   - python39-flask-restplus 
   - python39-flask-restx 
   - python39-flatbuffers 
@@ -28761,6 +28758,7 @@ unsorted:
   - python39-linstor-client 
   - python39-linux-procfs 
   - python39-lit 
+  - python39-livereload 
   - python39-llfuse 
   - python39-llvmlite 
   - python39-lmdb 
@@ -29312,7 +29310,6 @@ unsorted:
   - python39-pylint 
   - python39-pylons-sphinx-themes 
   - python39-pylru 
-  - python39-pyls-black 
   - python39-pyls-spyder 
   - python39-pylsqpack 
   - python39-pylzma 
@@ -30740,7 +30737,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
