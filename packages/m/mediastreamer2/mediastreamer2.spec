@@ -19,7 +19,7 @@
 %define sobase  libmediastreamer
 %define sover   11
 Name:           mediastreamer2
-Version:        4.5.20
+Version:        5.0.0
 Release:        0
 Summary:        Audio/Video real-time streaming
 License:        GPL-2.0-or-later
@@ -30,7 +30,8 @@ Source99:       baselibs.conf
 Patch0:         mediastreamer2-fix-pkgconfig.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-GCC-11.patch
-BuildRequires:  bcmatroska2-devel
+Patch2:         fix-srtp2-linphone.patch
+BuildRequires:  bcmatroska2-devel >= 0.23.1
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gawk
@@ -40,6 +41,7 @@ BuildRequires:  libgsm-devel
 BuildRequires:  libjpeg-turbo >= 2.0.0
 BuildRequires:  libpcap-devel
 BuildRequires:  libsrtp-devel
+BuildRequires:  libsrtp2-linphone-devel
 BuildRequires:  libv4l-devel
 BuildRequires:  libvpx-devel
 BuildRequires:  libxml2-devel
@@ -126,7 +128,7 @@ export CXXFLAGS="$CFLAGS"
 %cmake_install
 
 mkdir -p %{buildroot}%{_docdir}/%{name}/
-mv -T %{buildroot}%{_datadir}/doc/%{name}-4.5.0/ \
+mv -T %{buildroot}%{_datadir}/doc/%{name}-5.0.0/ \
   %{buildroot}%{_docdir}/%{name}/
 
 %post -n %{sobase}%{sover} -p /sbin/ldconfig
@@ -149,7 +151,26 @@ mv -T %{buildroot}%{_datadir}/doc/%{name}-4.5.0/ \
 %{_datadir}/images/nowebcamCIF.jpg
 
 %files devel
+%dir %{_includedir}/OpenGL
+%dir %{_includedir}/OpenGL/EGL
+%dir %{_includedir}/OpenGL/GLES2
+%dir %{_includedir}/OpenGL/GLES3
+%dir %{_includedir}/OpenGL/KHR
 %{_includedir}/mediastreamer2/
+%{_includedir}/OpenGL/EGL/egl.h
+%{_includedir}/OpenGL/EGL/eglext.h
+%{_includedir}/OpenGL/EGL/eglplatform.h
+%{_includedir}/OpenGL/GLES2/gl2.h
+%{_includedir}/OpenGL/GLES2/gl2ext.h
+%{_includedir}/OpenGL/GLES2/gl2platform.h
+%{_includedir}/OpenGL/GLES3/gl3.h
+%{_includedir}/OpenGL/GLES3/gl31.h
+%{_includedir}/OpenGL/GLES3/gl32.h
+%{_includedir}/OpenGL/GLES3/gl3platform.h
+%{_includedir}/OpenGL/KHR/khrplatform.h
+%{_includedir}/OpenGL/LICENSE
+%{_includedir}/OpenGL/README.md
+%{_includedir}/OpenGL/angle_windowsstore.h
 %{_bindir}/mediastreamer2_tester
 %{_libdir}/libmediastreamer.so
 %{_datadir}/mediastreamer2_tester/

@@ -1,0 +1,24 @@
+diff -ru a/cmake/FindSRTP.cmake b/cmake/FindSRTP.cmake
+--- a/cmake/FindSRTP.cmake	2021-07-14 14:31:46.031361567 +0200
++++ b/cmake/FindSRTP.cmake	2021-07-14 14:32:38.611583565 +0200
+@@ -31,7 +31,7 @@
+ )
+ 
+ find_path(SRTP2_INCLUDE_DIRS
+-	NAMES srtp2/srtp.h
++	NAMES srtp2-linphone/srtp.h
+ 	HINTS _SRTP_ROOT_PATHS
+ 	PATH_SUFFIXES include
+ )
+diff -ru a/src/utils/srtp_prefix.h b/src/utils/srtp_prefix.h
+--- a/src/utils/srtp_prefix.h	2021-07-14 14:31:46.047361634 +0200
++++ b/src/utils/srtp_prefix.h	2021-07-14 14:32:24.935525820 +0200
+@@ -29,7 +29,7 @@
+ #elif SRTP_VERSION==1
+ #include <srtp/srtp.h>
+ #else
+-#include <srtp2/srtp.h>
++#include <srtp2-linphone/srtp.h>
+ #define err_status_t srtp_err_status_t
+ #define err_status_ok srtp_err_status_ok
+ #define crypto_policy_t srtp_crypto_policy_t

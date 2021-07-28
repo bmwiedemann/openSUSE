@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 14 08:34:37 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.0:
+  * added API to change media encryption in the fly
+  * refactoring and simplifications for the MSOgl filter
+    (video OpenGL rendering)
+  * fixed absence of dummy stun packets when DTLS is used with
+    "encryption_mandatory" preventing DTLS handshare to take place
+- Add dependency on bcmatroska2 >= 0.23.1 since this release introduces
+  a new method required by mediastreamer 5.0
+- Add fix-srtp2-linphone.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 23:00:01 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - We actually don't need python2 BR at all, it seems.
