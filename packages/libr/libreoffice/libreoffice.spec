@@ -46,7 +46,7 @@
 %endif
 %bcond_with firebird
 Name:           libreoffice
-Version:        7.1.4.2
+Version:        7.1.5.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -103,10 +103,6 @@ Patch3:         mediawiki-no-broken-help.diff
 Patch4:         use-comphelper.patch
 # PATCH-FIX-OPENSUSE boo#1186110 fix GCC 11 error
 Patch6:         gcc11-fix-error.patch
-# bsc#1185505 - LO-L3: Text highlight "bleeds" when saving as PPTX
-Patch7:         bsc1185505.patch
-# bsc#1185797 Searching in PPTX document makes LibreOffice crash
-Patch8:         bsc1185797.patch
 # bsc#1182969 Multi column textbox in editengine
 Patch9:         bsc1182969.patch
 # tdf#142839 Fix a regression caused by "Multi column textbox in editengine"
@@ -987,8 +983,6 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch3
 %patch4 -p1
 %patch6 -p1
-%patch7 -p1
-%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  8 13:22:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.1.5.2
+  * 7.1.5 final release
+- Dropped patches:
+  * bsc1185505.patch
+  * bsc1185797.patch
+
+-------------------------------------------------------------------
 Mon Jun 28 08:00:24 UTC 2021 - Andras Timar <andras.timar@collabora.com>
 
 - Fix bsc#1187173 and bsc#1186871: fix component handling for ucpdav1 when --with-webdav=serf
