@@ -1,7 +1,7 @@
 #
-# spec file for package python-python-dateutil
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,10 @@
 %bcond_with test
 %endif
 Name:           python-python-dateutil%{psuffix}
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        A Python Datetime Library
-License:        BSD-3-Clause OR Apache-2.0
+License:        Apache-2.0 OR BSD-3-Clause
 URL:            https://dateutil.readthedocs.org/en/latest/
 Source0:        https://files.pythonhosted.org/packages/source/p/python-dateutil/python-dateutil-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 24.3}

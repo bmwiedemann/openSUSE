@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 26 21:41:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.2:
+  - Updated tzdata version to 2021a. (gh pr #1128)
+  - Fixed a bug in the parser where non-``ValueError`` exceptions would be raised
+  during exception handling; this would happen, for example, if an
+  ``IllegalMonthError`` was raised in ``dateutil`` code. Fixed by Mark Bailey.
+  (gh issue #981, pr #987).
+  - Fixed the custom ``repr`` for ``dateutil.parser.ParserError``, which was not
+  defined due to an indentation error. (gh issue #991, gh pr #993)
+  - Fixed a bug that caused ``b'`` prefixes to appear in parse_isodate exception
+  messages. Reported and fixed by Paul Brown (@pawl) (gh pr #1122)
+  - Make ``isoparse`` raise when trying to parse times with inconsistent use of
+  `:` separator. Reported and fixed by @mariocj89 (gh pr #1125).
+  - Fixed ``tz.gettz()`` not returning local time when passed an empty string.
+  Reported by @labrys (gh issues #925, #926). Fixed by @ffe4 (gh pr #1024)
+  * Documentation changes
+  * Simplified handling of bytes and bytearray in ``_parser._timelex``.
+
+-------------------------------------------------------------------
 Thu Jan 16 08:42:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 2.8.1:
