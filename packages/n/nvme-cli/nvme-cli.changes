@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 23 10:43:15 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update copyright date
+- Move bash-completion into subpackage to avoid zypper
+  recommanding bash-completion everytime.
+
+-------------------------------------------------------------------
 Fri Jul  2 13:37:07 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
 
 - install bash-completion file in correct directory

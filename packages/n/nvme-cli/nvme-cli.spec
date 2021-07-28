@@ -1,7 +1,7 @@
 #
 # spec file for package nvme-cli
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,12 @@ BuildRequires:  libhugetlbfs-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  pkgconfig
 BuildRequires:  xmlto
+BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  rubygem(asciidoctor)
 %ifarch x86_64 aarch64 i586
 Requires(post): dmidecode
 %endif
-Recommends:     bash-completion
 
 %description
 NVM Express (NVMe) is a direct attached storage interface. The
@@ -51,6 +51,16 @@ Requires:       nvme-cli
 %description -n nvme-cli-regress-script
 A small shell script to test the nvme binary for regressions. It requires an
 NVMe device for testing purposes. Do NOT use in a production environment.
+
+%package bash-completion
+Summary:        NVM Express user space tools bash completion
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (nvme-cli and bash-completion)
+
+%description bash-completion
+Optional dependency offering bash completion for NVM Express user space tools
 
 %prep
 %setup -q
@@ -110,7 +120,6 @@ fi
 %{_sbindir}/nvme-gen-hostnqn
 %endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
-%{_datadir}/bash-completion/completions/nvme
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
 %{_udevrulesdir}/71-nvmf-iopolicy-netapp.rules
 %{_unitdir}/nvmf-autoconnect.service
@@ -123,5 +132,10 @@ fi
 
 %files -n nvme-cli-regress-script
 %{_sbindir}/nvme-regress
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/nvme
 
 %changelog
