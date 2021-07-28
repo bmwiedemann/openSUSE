@@ -101,7 +101,7 @@ Substitute: kiwi-packagemanager:instsource product-builder-plugin-Tumbleweed
 Substitute: system-packages:kiwi-product product-builder
 
 # allow builds using docker tool
-Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
+Substitute: build-packages:docker !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !postgresql13-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
 
 # Podman based image building
 Substitute: build-packages:kiwi !cmake-mini !dummy-release !gettext-runtime-mini !gettext-tools-mini !ghostscript-mini !gio-branding-upstream !krb5-mini !krb5-mini-devel !libsystemd0-mini !libudev-mini-devel !libudev-mini1 !libuna-mini-devel !libuna1-mini !libunbound-devel-mini !log4j12-mini !postgresql13-devel-mini !systemd-mini !systemd-mini-devel !systemd-mini-sysvinit !udev-mini
@@ -423,6 +423,7 @@ Prefer: -kubernetes1.18-kubelet-common -kubernetes1.19-kubelet-common -kubernete
 Prefer: python36-tornado -python36-tornado5 
 Prefer: python38-tornado -python38-tornado5
 Prefer: python39-tornado -python39-tornado5
+Prefer: -python36-ipykernel5 -python38-ipykernel5 python39-ipykernel5
 
 # There are multiple PK backends available. Favor the openSUSE own zypp backend
 Prefer: PackageKit-backend-zypp
