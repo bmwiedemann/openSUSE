@@ -59,7 +59,7 @@ copy_file () {
     test -f "$dest/$f$cext" && return
     make_dirs "$f"
     install -c -m 0644 "$f" $(dirname "$dest/$f")
-    test -n "$do_compress" && xz -f -C crc32 "$dest/$f"
+    test -n "$do_compress" && xz -f -C crc32 --lzma2=dict=2MiB "$dest/$f"
     echo "\"$fwdir/$f$cext\"" >> files-$topic
     $verbose "Copy: $f$cext for topic $topic"
 }

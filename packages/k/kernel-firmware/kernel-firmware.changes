@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 23 16:49:03 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210719 (git commit 5de082d4d0f2):
+  * iwlwifi: add ty firmware from Core63-43
+- Reduce the LZMA2 dictionary size (bsc#1188662)
+
+-------------------------------------------------------------------
 Fri Jul 16 13:17:23 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210716 (git commit b7c134f0d349):
