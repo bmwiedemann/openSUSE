@@ -1,5 +1,5 @@
 #
-# spec file for package python-scipy
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,7 +24,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if "%{flavor}" == "standard"
  %bcond_with hpc
- %ifarch armv6l s390 s390x m68k riscv64
+ %ifarch armv6l s390 s390x m68k
   %bcond_with openblas
  %else
     %if 0%{?sle_version} == 120200
@@ -70,7 +70,7 @@
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
 %endif
- %ifarch armv6l s390 s390x m68k riscv64 i586
+ %ifarch armv6l s390 s390x m68k i586
 ExclusiveArch:  do_not_build
  %endif
 %{hpc_modules_init openblas}
