@@ -1,5 +1,5 @@
 #
-# spec file for package poppler%{?psuffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -22,10 +22,6 @@
 %else
 %global psuffix -%{flavor}
 %endif
-# Don't build poppler-qt6 on Leap <= 15.3
-%if "%{flavor}" == "qt6" && (0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300)
-ExclusiveArch:  do_not_build
-%endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.10
 %define poppler_sover 111
@@ -36,7 +32,7 @@ ExclusiveArch:  do_not_build
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        21.06.1
+Version:        21.07.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -46,16 +42,11 @@ Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  gtk-doc
 BuildRequires:  libboost_headers-devel >= 1.58
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(cairo-ft) >= 1.10.0
 BuildRequires:  pkgconfig(cairo-pdf)
@@ -63,13 +54,22 @@ BuildRequires:  pkgconfig(cairo-ps)
 BuildRequires:  pkgconfig(cairo-svg)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.41
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(poppler-data)
+BuildRequires:  pkgconfig(zlib)
+# Don't build poppler-qt6 on Leap <= 15.3
+%if "%{flavor}" == "qt6" && (0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300)
+ExclusiveArch:  do_not_build
+%endif
 %if "%{flavor}" == "qt5"
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -281,6 +281,7 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %{_libdir}/pkgconfig/poppler-qt6.pc
 
 %else
+
 %files -n libpoppler%{poppler_sover}
 %license COPYING COPYING3
 %doc NEWS README.md README-XPDF

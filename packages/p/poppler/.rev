@@ -1752,4 +1752,12 @@ New upstream release</comment>
     <comment></comment>
     <requestid>901628</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>39af23f82ef4e20f1c0e25e7dc4b5dbd</srcmd5>
+    <version>21.07.0</version>
+    <time>1627492770</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908552</requestid>
+  </revision>
 </revisionlist>
