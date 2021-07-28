@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:37:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Use -release only when building with java >= 9
+
+-------------------------------------------------------------------
 Thu Jul  8 13:08:02 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update with v2.2.4

@@ -1,7 +1,7 @@
 #
 # spec file for package velero-plugin-for-gcp
 #
-# Copyright (c) 2019,2020 SUSE LLC, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,16 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define goipath github.com/vmware-tanzu/velero-plugin-for-gcp
 
 Name:           velero-plugin-for-gcp
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Velero plugin for GCP
 License:        Apache-2.0
 Group:          Productivity/Archiving/Backup
 URL:            https://velero.io
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/vmware-tanzu/velero-plugin-for-gcp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
 
@@ -32,12 +34,12 @@ BuildRequires:  golang(API) = 1.14
 Plugins to support Velero on Google Cloud Platform (GCP)
 
 %prep
-%setup -q
+%setup -q -a1
 
 %build
 %goprep %{goipath}
 export CGO_ENABLED=0
-%gobuild -installsuffix "static" %{name}
+%gobuild -mod vendor -installsuffix "static" %{name}
 
 %install
 %goinstall

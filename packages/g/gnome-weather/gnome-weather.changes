@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 24 20:54:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add patches to fix multiple issues:
+  + gnome-weather-wrong-min-temperature.patch: Fix daily forecast
+    showing incorrect daily low temperature
+    (glgo#GNOME/gnome-weather#190).
+  + gnome-weather-welcome-screen-when-saved-locations.patch: Do
+    not show the initial welcome/search screen when loading the
+    previously saved locations (glgo#GNOME/gnome-weather#169).
+  + gnome-weather-fix-forever-loading.patch Fix loading forever
+    with error message "TypeError: location.get_timezone(...) is
+    null" when automatic location is turned off
+    (glgo#GNOME/gnome-weather#127).
+
+-------------------------------------------------------------------
 Sun Mar 21 08:01:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:

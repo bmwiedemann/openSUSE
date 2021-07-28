@@ -26,6 +26,7 @@ URL:            https://github.com/typesafehub/config
 Source0:        %{URL}/archive/v%{version}.tar.gz#/config-%{version}.tar.gz
 Source1:        https://repo1.maven.org/maven2/com/typesafe/config/%{version}/config-%{version}.pom
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildArch:      noarch
 

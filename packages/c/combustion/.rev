@@ -86,4 +86,12 @@
     <comment>- Set the exit status explicitly (forwarded request 901093 from favogt)</comment>
     <requestid>901094</requestid>
   </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>2a995e1201ec821f6f5e2e97b04969fd</srcmd5>
+    <version>0.2</version>
+    <time>1627492904</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908901</requestid>
+  </revision>
 </revisionlist>

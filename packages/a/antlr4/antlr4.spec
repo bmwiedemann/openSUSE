@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libver 4_9_2
 %define runtime_cpp_lib libantlr4-runtime
 %define runtime_cpp_libver %{runtime_cpp_lib}%{libver}
@@ -32,7 +33,13 @@ Patch0:         unicodedata.patch
 Patch1:         utf8cpp-from-system.patch
 BuildRequires:  cmake >= 3.3.0
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+%if 0%{?suse_version} >= 1500
+BuildRequires:  gcc >= 5
+BuildRequires:  gcc-c++ >= 5
+%else
+BuildRequires:  gcc5
+BuildRequires:  gcc5-c++
+%endif
 BuildRequires:  libstdc++-devel
 BuildRequires:  maven-local
 BuildRequires:  pkgconfig
@@ -158,6 +165,13 @@ perl -pi -e 's#\\>#>#g' tool/resources/org/antlr/v4/tool/templates/unicodedata.s
 %{mvn_build} -s -f -- -Dsource=7
 
 pushd runtime/Cpp
+%if 0%{?suse_version} < 1500
+RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/-fstack-clash-protection//g'`
+RPM_OPT_FLAGS=`echo $RPM_OPT_FLAGS|sed -e 's/  / /g'`
+export CXX=g++-5
+export CFLAGS="$RPM_OPT_FLAGS"
+export CXXFLAGS="$RPM_OPT_FLAGS"
+%endif
 %cmake -DWITH_DEMO=False
 %make_build
 popd

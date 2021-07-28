@@ -47,4 +47,12 @@
     <comment>fix build with maven-resolver 1.6.2 and maven 3.8.1</comment>
     <requestid>888689</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>3f4d3742364f3f5243316df5931c64a3</srcmd5>
+    <version>0.13.18</version>
+    <time>1627492812</time>
+    <user>dimstar_suse</user>
+    <comment>Require python3 for build</comment>
+    <requestid>908825</requestid>
+  </revision>
 </revisionlist>

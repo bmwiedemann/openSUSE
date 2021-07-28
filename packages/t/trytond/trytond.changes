@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 14:04:30 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- fix_werkzeug_2.x.patch added for python-Werkzeug 2.x compatibility 
+
+-------------------------------------------------------------------
 Fri Jun 18 15:48:52 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Version 5.0.36 - Bugfix Release

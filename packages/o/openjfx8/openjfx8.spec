@@ -214,7 +214,7 @@ ant -f build.xml
 cp -a %{_sourcedir}/build-sources.xml .
 
 %build
-%{mvn_build} -f -- -Dbuild.java.arch=%{archinstall}
+%{mvn_build} -f -- -Dbuild.java.arch=%{archinstall} -Dproject.build.sourceEncoding=UTF-8
 
 ant -f build-sources.xml
 

@@ -15,4 +15,12 @@
     <comment>2.2.4</comment>
     <requestid>905166</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>9d96711205d2e60036f57ca8391d488f</srcmd5>
+    <version>2.2.4</version>
+    <time>1627492803</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with java 8</comment>
+    <requestid>908798</requestid>
+  </revision>
 </revisionlist>

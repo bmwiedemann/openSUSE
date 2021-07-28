@@ -129,4 +129,13 @@ changes incompatibly.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>859595</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b8df7213248a40d1009a0d550cf11236</srcmd5>
+    <version>0.6</version>
+    <time>1627492796</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6:
+  * Adds missing SVGs and device IDs for multiple devices.</comment>
+    <requestid>908652</requestid>
+  </revision>
 </revisionlist>

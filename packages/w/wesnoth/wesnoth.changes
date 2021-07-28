@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:39:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.15:
+  * Updated translations
+  * Added a prompt to allow migrating settings and redownloading add-ons used
+    in a previous version of Wesnoth when starting a new versions for the first
+    time
+  * Fixed: keyboard input during the loading screen intermittently caused a crash
+  * AI: fixed custom synced commands not changing the game state
+
+-------------------------------------------------------------------
 Fri Jul 16 20:45:21 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15.14:

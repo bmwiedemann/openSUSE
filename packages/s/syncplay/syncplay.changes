@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 24 13:05:51 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 1.6.8:
+  * Improve playlist advancement for mpv and VLC.
+  * Fix VLC connection issues.
+  * Update mpv vendor code.
+  * Add more MPC-HC paths.
+  * Fix issues with per-player arguments.
+  * Add some input characters for mpv, some of which might work.
+  * (Hopefully) ignore benign AA_EnableHighDpiScaling error.
+  * Add manpages.
+  * Update translations.
+- Remove the broken and unnecessary "python" requirement.
+- Remove the Qt requirement from the server package.
+- Use a ready tarball instead of generating it from git.
+
+-------------------------------------------------------------------
 Fri Dec 18 09:19:09 UTC 2020 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Cleanup .spec file

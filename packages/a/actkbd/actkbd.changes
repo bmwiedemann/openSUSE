@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 14:21:13 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * actkbd.service
+
+-------------------------------------------------------------------
 Sun Mar 17 13:24:28 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Reduce strong requirement on systemd.

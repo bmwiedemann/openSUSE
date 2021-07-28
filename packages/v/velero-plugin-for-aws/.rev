@@ -7,4 +7,12 @@
     <comment>AWS plugin for Velero</comment>
     <requestid>841589</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>722dcd7e4b4fea59f4c910ed33782c9b</srcmd5>
+    <version>1.2.1</version>
+    <time>1627492814</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908827</requestid>
+  </revision>
 </revisionlist>

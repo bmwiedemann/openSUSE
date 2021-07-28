@@ -156,4 +156,12 @@
     <comment>fix tabs vs. spaces in changes</comment>
     <requestid>868928</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>3852b9c43f9f204e4ce4f28e86d2be53</srcmd5>
+    <version>1.2.4</version>
+    <time>1627492800</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908783</requestid>
+  </revision>
 </revisionlist>

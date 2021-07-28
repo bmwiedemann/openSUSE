@@ -1,7 +1,7 @@
 #
 # spec file for package maven-native
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -105,15 +105,6 @@ sed -i "s|edu.emory.mathcs.backport.java.util.concurrent|java.util.concurrent|" 
 
 %build
 
-#  junit.framework.AssertionFailedError: Failed to create plexus container.
-# native-maven-plugin with maven3 test failures:
-# Caused by: java.lang.ClassNotFoundException: org.apache.maven.artifact.repository.Authentication
-#  java.lang.VerifyError: (class: org/apache/maven/project/MavenProject,
-# method: getSnapshotArtifactRepository signature: ()Lorg/apache/maven/artifact/repository/ArtifactRepository;)
-# Incompatible argument to function
-# force org.codehaus.plexus plexus-container-default 1.5.5 apis
-# test skipped cause: [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:2.15:test (default-test) on project native-maven-plugin: Execution default-test of goal org.apache.maven.plugins:maven-surefire-plugin:2.15:test failed: There was an error in the forked process
-# [ERROR] java.lang.NoClassDefFoundError: org/sonatype/aether/RepositorySystemSession
 %{mvn_build} -f -s -- -Dmojo.java.target=1.7 -Dmaven.test.failure.ignore=true -Dsource=7
 
 %install

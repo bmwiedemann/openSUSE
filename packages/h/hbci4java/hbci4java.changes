@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:34:26 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define %%make_build for systems that don't have it defined in
+  rpm macros
+
+-------------------------------------------------------------------
 Mon May  3 17:58:08 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - update to version 3.1.55

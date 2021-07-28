@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 27 17:18:09 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.8.4
+  - This release only contains a single fix for flattened custom
+    variables. #4439
+
+-------------------------------------------------------------------
 Mon Jul 12 12:45:35 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8.3

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul 27 08:07:52 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Rollback previous changes.
+- Moved *.so.? & *.so.?.? to the devel subpackage.
+- Added BSD-3-Clause for examples subpackage (6.2.0 changes).
+
+-------------------------------------------------------------------
+Wed Jul 21 08:06:44 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Obsolete previous library version
+
+-------------------------------------------------------------------
+Tue Jul 20 07:16:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 6.2.0 (boo#1187996)
+  * MathML text renderer removed
+  * Class Includes added
+  * BSD License for examples
+  * Spline interpolation
+  * New plot items
+- Check the installed CHANGES-6.2 file for the complete list
+  of changes.
+- Drop qwt-6.1.3-pkgconfig.patch. No longer needed
+- Rebase qwt-6.1.4-mkspecs.patch
+
+-------------------------------------------------------------------
 Tue Apr 13 07:44:53 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 6.1.6

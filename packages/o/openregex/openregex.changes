@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:50:32 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Require a modular java for build
+
+-------------------------------------------------------------------
 Tue May 11 17:52:15 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy version of guava any more

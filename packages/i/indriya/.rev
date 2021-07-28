@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>782609</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2bfbbd05603385eb7e55180513144db4</srcmd5>
+    <version>1.3</version>
+    <time>1627492803</time>
+    <user>dimstar_suse</user>
+    <comment>Allow building with java 8</comment>
+    <requestid>908794</requestid>
+  </revision>
 </revisionlist>

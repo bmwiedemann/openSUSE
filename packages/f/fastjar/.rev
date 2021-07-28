@@ -157,4 +157,12 @@
     <comment>security fixes</comment>
     <requestid>908510</requestid>
   </revision>
+  <revision rev="22" vrev="26">
+    <srcmd5>4b6796498944373f5538cdcb30b9e42c</srcmd5>
+    <version>0.98</version>
+    <time>1627492800</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908787</requestid>
+  </revision>
 </revisionlist>

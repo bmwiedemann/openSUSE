@@ -18,7 +18,7 @@
 
 %define _fwdefdir %{_prefix}/lib/firewalld/services
 Name:           yast2-drbd
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        YaST2 - DRBD Configuration
 License:        GPL-2.0-or-later
@@ -36,7 +36,7 @@ Requires:       drbd >= 9.0
 Requires:       yast2 >= 4.0.39
 Requires:       yast2-ruby-bindings >= 1.0.0
 Supplements:    autoyast(drbd)
-BuildArch:      noarch
+ExcludeArch:    i586 s390
 
 %description
 YaST2 - Configuration of Distributed Replicated Block Devices. With

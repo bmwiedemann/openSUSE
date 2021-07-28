@@ -12,7 +12,7 @@ diff --git a/src/main/scala/com/typesafe/zinc/Setup.scala b/src/main/scala/com/t
 index e6c12e2..aa3ec01 100644
 --- a/src/main/scala/com/typesafe/zinc/Setup.scala
 +++ b/src/main/scala/com/typesafe/zinc/Setup.scala
-@@ -221,7 +221,7 @@ object Setup {
+@@ -238,7 +238,7 @@
    def prop(name: String) = Command + "." + name
  
    def allLibs(homeDir: Option[File]): Seq[File] = {

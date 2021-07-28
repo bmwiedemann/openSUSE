@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:48:55 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * 0003-fix-cast-between-incompatible-function-types.patch
+    + avoid warning-errors with unused variables
+
+-------------------------------------------------------------------
 Wed Jun  9 06:52:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - The modules media and web are included in the shaded jfxrt.jar

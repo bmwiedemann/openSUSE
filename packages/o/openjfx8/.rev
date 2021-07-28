@@ -32,4 +32,12 @@
     <comment>Description is not correct</comment>
     <requestid>898642</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8d5bb382d8d28ebc5516b4caeb0345ec</srcmd5>
+    <version>8.0.202</version>
+    <time>1627492806</time>
+    <user>dimstar_suse</user>
+    <comment>Fix warnings-errors about unused variables</comment>
+    <requestid>908812</requestid>
+  </revision>
 </revisionlist>

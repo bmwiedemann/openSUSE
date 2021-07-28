@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:47:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix 64bit library install location for aarch64 and ppc64* as
+  well, not only for x86_64
+
+-------------------------------------------------------------------
 Thu Jul 22 10:38:41 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - provide/obsolete python-OpenColorIO

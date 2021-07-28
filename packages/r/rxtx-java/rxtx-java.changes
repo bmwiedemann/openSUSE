@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 13:11:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define %%make_build for systems that don't have it defined in
+  rpm macros
+
+-------------------------------------------------------------------
 Thu Mar 26 10:02:18 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Do not distribute the sources.

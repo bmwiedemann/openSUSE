@@ -55,4 +55,12 @@
     <comment>Update to version 0.8.0 (forwarded request 903881 from susnux)</comment>
     <requestid>904178</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>ba5f8aeb2e077dca1a5a6279ee6dc396</srcmd5>
+    <version>0.8.0</version>
+    <time>1627492790</time>
+    <user>dimstar_suse</user>
+    <comment>- Add the missing gsettings-desktop-schemas build requirement. (forwarded request 908561 from cgiboudeaux)</comment>
+    <requestid>908598</requestid>
+  </revision>
 </revisionlist>

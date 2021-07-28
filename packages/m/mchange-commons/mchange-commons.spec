@@ -21,14 +21,14 @@ Name:           mchange-commons
 Version:        0.2.20
 Release:        0
 Summary:        A collection of general purpose utilities for c3p0
-License:        LGPL-2.0-only OR EPL-1.0
+License:        EPL-1.0 OR LGPL-2.0-only
 Group:          Development/Libraries/Java
 URL:            https://github.com/swaldman/mchange-commons-java
 Source0:        %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{git_tag}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-local
-BuildRequires:  log4j
+BuildRequires:  log4j >= 2.0
 BuildRequires:  slf4j
 BuildRequires:  typesafe-config >= 1.3.0
 BuildArch:      noarch
@@ -62,8 +62,7 @@ jar cf target/%{git_tag}.jar -C target/classes .
 jar uf target/%{git_tag}.jar -C src/main/resources .
 mkdir -p target/api
 javadoc -d target/api -source 7 \
-  -cp  "$CLASS_PATH" \
-  -Xdoclint:none \
+  -classpath "$CLASS_PATH" \
   -notimestamp \
   $(find src/main/java -name \*.java | xargs)
 

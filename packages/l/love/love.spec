@@ -25,7 +25,6 @@ License:        Zlib
 Group:          Development/Languages/Other
 URL:            http://love2d.org/
 Source:         https://github.com/love2d/love/releases/download/%{version}/love-%{version}-linux-src.tar.gz
-Patch1:         remove-duplicate-typedef.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -56,9 +55,6 @@ LÖVE is a framework for making 2D games in Lua.
 
 %prep
 %setup -q
-%if %{__isa_bits} == 32
-%patch1 -p1
-%endif
 sed -i 's/\r$//' *.txt
 
 %build

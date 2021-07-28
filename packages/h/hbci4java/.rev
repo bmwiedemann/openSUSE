@@ -69,4 +69,12 @@
     <comment>to match hibiscus</comment>
     <requestid>903842</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>78ea21c96b1d8838781178d9a05be4cc</srcmd5>
+    <version>3.1.55</version>
+    <time>1627492802</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908792</requestid>
+  </revision>
 </revisionlist>

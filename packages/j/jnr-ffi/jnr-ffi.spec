@@ -1,5 +1,5 @@
 #
-# spec file for package jnr-ffi
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -64,7 +64,11 @@ find -name '*.jar' -delete
 %pom_remove_plugin :maven-javadoc-plugin
 
 %build
-%{mvn_build} -f -- -Dmaven.compiler.release=8
+%{mvn_build} -f -- \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
+   -Dmaven.compiler.release=8 \
+%endif
+   -Dsource=8
 
 %install
 %mvn_install

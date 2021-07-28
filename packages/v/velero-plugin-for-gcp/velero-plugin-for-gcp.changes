@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 28 00:30:26 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.2.1:
+  * Add changelog for v1.2.1 (#65)
+  * Fix typo
+  * Update Velero dependency to v1.6.2 (#63)
+  * Update dependencies (#61)
+  * Update reviewers (#62)
+  * remove ashish-amarnath from maintainers
+  * Update auto assign of reviewers
+  * Only publish the container image from the root repo
+
+-------------------------------------------------------------------
+Thu Apr 08 02:39:26 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.2.0:
+  * Update changelog for v1.2.0
+  * Update docs to reference Velero v1.6 (#55)
+  * Use credentials file passed through config (#52)
+  * adding check if disk description is empty related to issue #45 (#46)
+  * Add jenting as reviewer
+  * added missing quotes for IAM binding
+  * Update support matrix and redirect new issues (#51)
+  * Add Tilt setup (#47)
+
+-------------------------------------------------------------------
 Wed Jul 29 07:35:55 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Bump version v1.1.0

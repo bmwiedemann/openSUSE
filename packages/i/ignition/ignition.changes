@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 09:16:19 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Include vfat and nls kernel modules into initrd so that we can
+  read the ignition configuration from USB drives [bsc#1184202]
+
+-------------------------------------------------------------------
 Wed Jul 21 14:33:48 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Ignore error return code if no virtualization environment

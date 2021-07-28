@@ -1,5 +1,5 @@
 #
-# spec file for package apache-commons-daemon
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define short_name commons-daemon
 Name:           apache-%{short_name}
 Version:        1.2.4

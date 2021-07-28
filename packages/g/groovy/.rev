@@ -39,4 +39,12 @@
     <comment>bsc#1179729, CVE-2020-17521</comment>
     <requestid>853666</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>96116919769c7d965e1b890e75562967</srcmd5>
+    <version>2.4.21</version>
+    <time>1627492802</time>
+    <user>dimstar_suse</user>
+    <comment>Rpmlint errors</comment>
+    <requestid>908789</requestid>
+  </revision>
 </revisionlist>

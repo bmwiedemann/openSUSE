@@ -1,5 +1,5 @@
 #
-# spec file for package dpdk
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -338,6 +338,7 @@ ln -s %{_bindir}/dpdk-procinfo %{buildroot}%{_bindir}/dpdk_proc_info
 ln -s %{_sbindir}/dpdk-devbind %{buildroot}%{_sbindir}/dpdk_nic_bind
 
 # Fix interpreter
+find %{buildroot} -name "*.py" -exec sed -i 's|python$|python3|' \{\} +
 find %{buildroot} -name "*.py" -exec sed -i 's|env python|python|' \{\} +
 
 # Remove duplicates

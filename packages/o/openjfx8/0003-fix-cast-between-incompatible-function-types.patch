@@ -17,7 +17,7 @@ index f85b1dae..3b9225f7 100644
  }
  
 -static gboolean dnd_finish_callback() {
-+static gboolean dnd_finish_callback(gpointer data) {
++static gboolean dnd_finish_callback(gpointer) {
      if (dnd_window) {
          dnd_set_performed_action(
                  translate_gdk_action_to_glass(
@@ -25,7 +25,7 @@ index f85b1dae..3b9225f7 100644
      return offset_set;
  }
  
-+static void on_pixbuf_destroy_notify(guchar *pixels, gpointer data) {
++static void on_pixbuf_destroy_notify(guchar *pixels, gpointer) {
 +	g_free(pixels);
 +}
 +

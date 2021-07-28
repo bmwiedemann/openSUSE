@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 28 00:30:15 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.2.1:
+  * Add changelog for v1.2.1 (#105)
+  * Fix typo
+  * Update Velero dependency to v1.6.2 (#103)
+  * Update dependencies (#101)
+  * Update reviewers (#102)
+  * remove ashish-amarnath from maintainers
+  * Update auto assign of reviewers
+  * Only publish the container image from the root repo
+
+-------------------------------------------------------------------
+Thu Apr 08 02:41:27 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.2.0:
+  * Update changelog for v1.2.0
+  * Update docs to reference Velero v1.6 (#93)
+  * Use credentials file passed through config (#90)
+  * Add documentation around minimum required permissions (#85)
+  * Add jenting as reviewer
+  * Description Security measures (#88)
+  * Add changelogs for v1.1.2 (#89)
+  * fix: missing results in ListObjects/CommonPrefixes
+  * Update README with new issue filing process (#86)
+
+-------------------------------------------------------------------
 Wed Jul 29 07:36:49 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Bump version v1.1.0

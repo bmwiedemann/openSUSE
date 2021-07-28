@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 27 21:16:23 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.6
+  - New regular patterns (2)
+    + sle12sp4/cronlimit-000020338.py: crontab - More than 1000 entries in crontab file, can't install (bsc#1187508)
+    + sle12sp5/cronlimit-000020338.py: crontab - More than 1000 entries in crontab file, can't install (bsc#1187508)
+  - Updated patterns (1)
+    + sle12all/scc-expired.py: Identify if SCC registrations have expired
+
+-------------------------------------------------------------------
 Fri Jul  2 21:04:33 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.6

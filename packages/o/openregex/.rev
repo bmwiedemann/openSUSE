@@ -18,4 +18,12 @@
 </comment>
     <requestid>892426</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>514af8d11ab683c182cff1a011377f15</srcmd5>
+    <version>1.1.1</version>
+    <time>1627492809</time>
+    <user>dimstar_suse</user>
+    <comment>Require modular java for build</comment>
+    <requestid>908813</requestid>
+  </revision>
 </revisionlist>

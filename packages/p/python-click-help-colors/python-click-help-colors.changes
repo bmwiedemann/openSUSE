@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 28 09:51:35 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.9.1
+  * Add support for Click 8
+  * Drop support for Python 2 and 3.5.
+
+-------------------------------------------------------------------
 Tue Mar 31 12:18:10 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 0.8

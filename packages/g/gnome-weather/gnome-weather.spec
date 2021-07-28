@@ -25,6 +25,12 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Other
 URL:            https://live.gnome.org/Design/Apps/Weather
 Source0:        https://download.gnome.org/sources/gnome-weather/40/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM gnome-weather-wrong-min-temperature.patch glgo#GNOME/gnome-weather#190 badshah400@gmail.com -- Fix daily forecast showing incorrect daily low temperature
+Patch0:         gnome-weather-wrong-min-temperature.patch
+# PATCH-FIX-UPSTREAM gnome-weather-fix-forever-loading.patch glgo#GNOME/gnome-weather#127 badshah400@gmail.com -- Fix loading forever with error message "TypeError: location.get_timezone(...) is null" when automatic location is turned off
+Patch1:         gnome-weather-fix-forever-loading.patch
+# PATCH-FIX-UPSTREAM gnome-weather-welcome-screen-when-saved-locations.patch glgo#GNOME/gnome-weather#169 badshah400@gmail.com -- Do not show the initial welcome/search screen when loading the previously saved locations
+Patch2:         gnome-weather-welcome-screen-when-saved-locations.patch
 BuildRequires:  intltool >= 0.26
 BuildRequires:  meson
 BuildRequires:  pkgconfig

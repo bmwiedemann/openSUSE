@@ -85,4 +85,14 @@
 </comment>
     <requestid>907825</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>64317433413410ab10ad92af5c006876</srcmd5>
+    <version>2.0.1</version>
+    <time>1627492794</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix 64bit library install location for aarch64 and ppc64* as
+  well, not only for x86_64
+</comment>
+    <requestid>908649</requestid>
+  </revision>
 </revisionlist>

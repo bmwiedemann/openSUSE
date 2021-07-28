@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 24 11:30:53 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 1.13.2
+  * Hotfix: Fixup demo service (#528).
+- Release 1.31.1
+  * Improvement: Support cookie management for HTTP sources.  
+  * Security fix for local file disclosure (#526).
+- Packaging:
+  * add skip failing test_geotiff_tags
+
+-------------------------------------------------------------------
 Mon Apr 26 19:36:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.13.0

@@ -1,7 +1,7 @@
 #
 # spec file for package zinc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -59,7 +59,7 @@ scalac \
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 	-nobootcp \
 %endif
-	-cp $(build-classpath sbt nailgun) src/main/scala/com/typesafe/zinc/*
+	-cp $(build-classpath sbt nailgun) $(find src/main/scala/com/typesafe/zinc/ -name \*.scala -o -name \*.java | xargs)
 jar cf zinc.jar com
 %{mvn_artifact} pom.xml zinc.jar
 

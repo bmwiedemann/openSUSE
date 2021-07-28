@@ -24,7 +24,7 @@ License:        LGPL-3.0-only
 URL:            https://github.com/knowitall/%{name}
 Source0:        https://github.com/knowitall/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.google.code.findbugs:jsr305)
 BuildRequires:  mvn(com.google.guava:guava)

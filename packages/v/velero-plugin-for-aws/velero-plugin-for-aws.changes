@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul 28 00:21:29 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.2.1:
+  * Add changelog for v1.2.1 (#85)
+  * Fix typo
+  * Update to Velero dependency to v1.6.2 (#83)
+  * Update dependencies (#80)
+  * Update reviewers (#81)
+  * remove ashish-amarnath from maintainers
+  * Update auto assign of reviewers (#77)
+  * Only publish the container image from the root repo (#73)
+
+-------------------------------------------------------------------
+Thu Apr 08 02:33:16 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.2.0:
+  * Update changelog for v1.2.0
+  * Update docs to reference Velero v1.6
+  * Use credentials file passed through config (#69)
+  * Add jenting as reviewer
+  * Update README with new issue filing process. (#68)
+  * Add Tilt setup (#66)
+  * update compatibility table
+  * With the right number
+  * Update to latest covenant coc
+
+-------------------------------------------------------------------
 Wed Jul 29 07:33:22 UTC 2020 - jenting hsiao <jenting.hsiao@suse.com>
 
 - Bump version v1.1.0

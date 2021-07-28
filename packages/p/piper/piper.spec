@@ -1,7 +1,7 @@
 #
 # spec file for package piper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Matthias Bach <marix@marix.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           piper
-Version:        0.5.1
+Version:        0.6
 Release:        0
 Summary:        Configuration UI for gaming mice
 License:        GPL-2.0-only
@@ -31,8 +31,10 @@ BuildRequires:  meson
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-cairo
 BuildRequires:  python3-evdev
+BuildRequires:  python3-flake8
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-lxml
+BuildRequires:  ratbagd
 BuildRequires:  update-desktop-files
 Requires:       python3-cairo
 Requires:       python3-evdev
@@ -51,7 +53,7 @@ devices.
 %autosetup -p1
 
 %build
-%meson
+PATH="${PATH}:%{_sbindir}" %meson
 %meson_build
 
 %check
@@ -68,6 +70,7 @@ devices.
 %{_bindir}/piper
 %{_datadir}/applications/org.freedesktop.Piper.desktop
 %{_datadir}/icons/hicolor/scalable/apps/org.freedesktop.Piper.svg
+%{_datadir}/icons/hicolor/symbolic/apps/org.freedesktop.Piper-symbolic.svg
 %{_datadir}/metainfo/org.freedesktop.Piper.appdata.xml
 %{_datadir}/piper
 %{python3_sitelib}/*

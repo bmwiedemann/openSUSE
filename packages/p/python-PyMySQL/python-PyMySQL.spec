@@ -1,7 +1,7 @@
 #
 # spec file for package python-PyMySQL
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,16 @@
 
 
 # mariadb-rpm-macros is either not available or not sufficient for Leaps
-%if 0%{?suse_version} > 1500 
+%if 0%{?suse_version} > 1500
 %bcond_without tests
 %else
 %bcond_with tests
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-PyMySQL
-Version:        0.10.1
+Version:        1.0.2
 Release:        0
 Summary:        Pure Python MySQL Driver
 License:        MIT
@@ -86,8 +87,8 @@ cconf=abuild-myclient.cnf
 #
 cat << EOF > pymysql/tests/databases.json
 [{"host":"localhost","user":"$dbuser","passwd":"$dbuserpw",
-   "db":"$dbname1", "use_unicode": true, "local_infile": true},
- {"host":"localhost","user":"$dbuser","passwd":"$dbuserpw","db":"$dbname2"}]
+   "database":"$dbname1", "use_unicode": true, "local_infile": true},
+ {"host":"localhost","user":"$dbuser","passwd":"$dbuserpw","database":"$dbname2"}]
 EOF
 #
 # running the test

@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -108,6 +108,7 @@ find . -type f "(" -name "*.c" -o -name "*.h" -o -name "*.js.orig" ")" -delete
 # env-script-interpreter
 find . -type f -exec sed -i -e 's|\/usr\/bin\/env php|\/usr\/bin\/php|g' {} +
 find . -type f -name "*.sh" -exec sed -i -e 's|\/usr\/bin\/env bash|\/bin\/bash|g' {} +
+sed -i 's|python$|python3|' misc/log-analytics/import_logs.py
 
 #
 # disable the auto updater, it can't work properly with the new, more secure permissions and is a bad idea on a RPM based setup anyways.

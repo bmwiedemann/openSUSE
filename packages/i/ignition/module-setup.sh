@@ -23,5 +23,6 @@ install() {
 }
 
 installkernel() {
-    hostonly='' instmods iso9660
+    # Make sure we can read configuration from ISO image and vfat formated USB drives
+    hostonly='' instmods iso9660 vfat =fs/nls
 }

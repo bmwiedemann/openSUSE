@@ -79,6 +79,15 @@ cleanup() {
 
 	# umount and remount so that the new default subvol is used
 	umount -R /sysroot
+	# Manual umount confuses systemd sometimes because it's async and the
+	# .mount unit might still be active when the "start" is queued, making
+	# it a noop, which ultimately leaves /sysroot unmounted
+	# (https://github.com/systemd/systemd/issues/20329). To avoid that,
+	# wait until systemd processed the umount events. In a chroot (or with
+	# SYSTEMD_OFFLINE=1) systemctl always succeeds, so avoid an infinite loop.
+	if ! systemctl is-active does-not-exist.mount; then
+		while systemctl is-active sysroot.mount; do sleep 0.5; done
+	fi
 	systemctl start sysroot.mount
 }
 
@@ -95,6 +104,9 @@ if ! [ -d "${config_mount}/combustion" ]; then
 	echo "No config found - doing nothing."
 	exit 0
 fi
+
+# Make sure /sysroot is mounted
+systemctl start sysroot.mount
 
 # Copy config
 mkdir "${exchangedir}"

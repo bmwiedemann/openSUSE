@@ -181,4 +181,29 @@
   * Fix auth switch request handling. (#890)</comment>
     <requestid>850935</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>1e8240ce9ec2f069074e1cd11d1f2e36</srcmd5>
+    <version>1.0.2</version>
+    <time>1627492904</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix databases.json used for tests.
+- update to 1.0.2:
+  * Fix `user`, `password`, `host`, `database` are still positional arguments.
+    All arguments of `connect()` are now keyword-only. (#941)
+  * Stop emitting DeprecationWarning for use of ``db`` and ``passwd``.
+    Note that they are still deprecated. (#939)
+  * Add ``python_requires=&quot;&gt;=3.6&quot;`` to setup.py. (#936)
+  * Python 2.7 and 3.5 are not supported.
+  * ``connect()`` uses keyword-only arguments. User must use keyword argument.
+  * ``connect()`` kwargs ``db`` and ``passwd`` are now deprecated; Use ``database`` and ``password`` instead.
+  * old_password authentication method (used by MySQL older than 4.1) is not supported.
+  * MySQL 5.5 and MariaDB 5.5 are not officially supported, although it may still works.
+  * Removed ``escape_dict``, ``escape_sequence``, and ``escape_string`` from ``pymysql``
+    module. They are still in ``pymysql.converters``.
+  * Connection supports context manager API. ``__exit__`` closes the connection. (#886)
+  * Add MySQL Connector/Python compatible TLS options (#903)
+  * Major code cleanup; PyMySQL now uses black and flake8.
+</comment>
+    <requestid>908898</requestid>
+  </revision>
 </revisionlist>

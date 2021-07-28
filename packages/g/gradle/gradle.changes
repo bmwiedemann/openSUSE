@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:31:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Remove build requires that are not strictly needed
+
+-------------------------------------------------------------------
 Wed May 12 08:13:34 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build against the legacy guava20 package any more

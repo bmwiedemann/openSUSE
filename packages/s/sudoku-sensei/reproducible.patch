@@ -1,0 +1,48 @@
+Author: Bernhard M. Wiedemann
+Date: 2021-07-20
+
+drop duplicate actionInit_Tutorial to avoid non-determinism from
+ASLR via Qt uic https://bugreports.qt.io/browse/QTBUG-83186
+
+See also
+https://github.com/bmwiedemann/theunreproduciblepackage/tree/master/aslr
+
+This patch was done while working on reproducible builds for openSUSE.
+
+Index: SudokuSenseiSources/Dmainwindow.ui
+===================================================================
+--- SudokuSenseiSources.orig/Dmainwindow.ui
++++ SudokuSenseiSources/Dmainwindow.ui
+@@ -276,17 +276,6 @@
+     <string/>
+    </property>
+   </action>
+-  <action name="actionInit_Tutorial" >
+-   <property name="text" >
+-    <string>&amp;Start Tutorial</string>
+-   </property>
+-   <property name="iconText" >
+-    <string>Start Tutorial</string>
+-   </property>
+-   <property name="toolTip" >
+-    <string>Start Tutorial</string>
+-   </property>
+-  </action>
+   <action name="actionNo_Help" >
+    <property name="checkable" >
+     <bool>true</bool>
+@@ -482,7 +471,13 @@
+   </action>
+   <action name="actionInit_Tutorial" >
+    <property name="text" >
+-    <string>Tutorial</string>
++    <string>&amp;Start Tutorial</string>
++   </property>
++   <property name="iconText" >
++    <string>Start Tutorial</string>
++   </property>
++   <property name="toolTip" >
++    <string>Start Tutorial</string>
+    </property>
+   </action>
+  </widget>

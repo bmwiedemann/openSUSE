@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:37:56 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Drop explicit dependency on sysroot.mount. Instead, handle starting and
+  stopping of the unit explicitly to avoid conflicts.
+- Add workaround for gh#systemd/systemd#20329
+
+-------------------------------------------------------------------
 Mon Jun 21 07:07:23 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Set the exit status explicitly

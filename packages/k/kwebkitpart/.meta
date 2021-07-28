@@ -1,5 +1,0 @@
-<package name="kwebkitpart" project="openSUSE:Factory">
-  <title>KDE Webkit web browser component</title>
-  <description>A webkit web browser component for KDE (KPart).</description>
-  <devel project="KDE:Applications" package="kwebkitpart"/>
-</package>

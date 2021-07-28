@@ -67,9 +67,6 @@ BuildRequires:  xmvn-subst
 
 # Generic build dependencies
 BuildRequires:  desktop-file-utils
-BuildRequires:  glibc-locale-base
-BuildRequires:  hostname
-BuildRequires:  procps
 BuildRequires:  unzip
 
 # Not to have to own the directories
@@ -213,7 +210,6 @@ Obsoletes:      %{name}-bootstrap
 
 # Artifacts required for Gradle build which don't have Maven metadata
 # and thus no mvn provides.
-BuildRequires:  lato-fonts
 BuildRequires:  liberation-fonts
 
 # Generic runtime dependencies.

@@ -20,7 +20,7 @@
 
 %global __requires_exclude ^typelib\\(Unity\\).*$
 Name:           rapid-photo-downloader
-Version:        0.9.26
+Version:        0.9.27a1
 Release:        0
 Summary:        Parallel downloader for camera and smartphone photos
 License:        GPL-3.0-or-later
@@ -36,7 +36,8 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
-BuildRequires:  python3-devel >= 3.5
+BuildRequires:  python3-devel >= 3.6
+Requires:       python3 >= 3.6
 BuildRequires:  python3-setuptools
 BuildRequires:  update-desktop-files
 Requires:       exiftool
@@ -98,6 +99,10 @@ Requires:       python3-typing
 # For heif support. we can not package the libraries in the distro but if e.g. packman provides the package we should pull it.
 Recommends:     python3-pyheif
 Recommends:     python3-Pillow >= 5.1.0
+# iphone support. new in 0.9.27a1
+Requires:       fuse
+Requires:       ifuse
+Requires:       imobiledevice-tools
 
 %description
 Rapid Photo Downloader downloads images in parallel from multiple devices,
@@ -131,7 +136,7 @@ python3 setup.py install \
 %fdupes -s %{buildroot}
 
 %files
-%doc README.rst CHANGES.rst
+%doc README.md CHANGES.md
 %{_bindir}/analyze-pv-structure
 %{_bindir}/%{name}
 %{_datadir}/metainfo/net.damonlynch.rapid_photo_downloader.metainfo.xml

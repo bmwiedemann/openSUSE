@@ -31,4 +31,12 @@
     <comment>Require directly sbt to avoid choice with sbt-bootstrap</comment>
     <requestid>782004</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>2b1cc0999ff56b689a74c3b05a23fbf2</srcmd5>
+    <version>0.3.15</version>
+    <time>1627492811</time>
+    <user>dimstar_suse</user>
+    <comment>Rediff patch + avoid building *.orig files</comment>
+    <requestid>908818</requestid>
+  </revision>
 </revisionlist>

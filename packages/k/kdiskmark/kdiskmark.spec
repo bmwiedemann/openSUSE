@@ -18,7 +18,7 @@
 
 
 Name:           kdiskmark
-Version:        2.2.0
+Version:        2.2.1
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only

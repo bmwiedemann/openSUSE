@@ -31,6 +31,8 @@ Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+# QGnomePlatform relies on glib's pkgconfig file to find gsettings files
+BuildRequires:  gsettings-desktop-schemas
 BuildRequires:  libQt5Core-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-private-headers-devel

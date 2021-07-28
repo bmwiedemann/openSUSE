@@ -1,7 +1,7 @@
 #
 # spec file for package groovy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -113,123 +113,123 @@ Obsoletes:      %{name}-bootstrap
 This package contains Groovy JAR artifact.
 
 %package ant
-Summary:        ant module for %{name}
+Summary:        The ant module for %{name}
 Group:          Development/Libraries/Java
 
 %description ant
-ant module for %{name}.
+The ant module for %{name}.
 
 %package bsf
-Summary:        bsf module for %{name}
+Summary:        The bsf module for %{name}
 Group:          Development/Libraries/Java
 
 %description bsf
-bsf module for %{name}.
+The bsf module for %{name}.
 
 %package console
-Summary:        console module for %{name}
+Summary:        The console module for %{name}
 Group:          Development/Libraries/Java
 
 %description console
-console module for %{name}.
+The console module for %{name}.
 
 %package docgenerator
-Summary:        docgenerator module for %{name}
+Summary:        The docgenerator module for %{name}
 Group:          Development/Libraries/Java
 
 %description docgenerator
-docgenerator module for %{name}.
+The docgenerator module for %{name}.
 
 %package groovydoc
-Summary:        groovydoc module for %{name}
+Summary:        The groovydoc module for %{name}
 Group:          Development/Libraries/Java
 
 %description groovydoc
-groovydoc module for %{name}.
+The groovydoc module for %{name}.
 
 %package groovysh
-Summary:        groovysh module for %{name}
+Summary:        The groovysh module for %{name}
 Group:          Development/Libraries/Java
 
 %description groovysh
-groovysh module for %{name}.
+The groovysh module for %{name}.
 
 %package jmx
-Summary:        jmx module for %{name}
+Summary:        The jmx module for %{name}
 Group:          Development/Libraries/Java
 
 %description jmx
-jmx module for %{name}.
+The jmx module for %{name}.
 
 %package json
-Summary:        json module for %{name}
+Summary:        The json module for %{name}
 Group:          Development/Libraries/Java
 
 %description json
-json module for %{name}.
+The json module for %{name}.
 
 %package jsr223
-Summary:        jsr223 module for %{name}
+Summary:        The jsr223 module for %{name}
 Group:          Development/Libraries/Java
 
 %description jsr223
-jsr223 module for %{name}.
+The jsr223 module for %{name}.
 
 %package nio
-Summary:        nio module for %{name}
+Summary:        The nio module for %{name}
 Group:          Development/Libraries/Java
 
 %description nio
-nio module for %{name}.
+The nio module for %{name}.
 
 %package servlet
-Summary:        servlet module for %{name}
+Summary:        The servlet module for %{name}
 Group:          Development/Libraries/Java
 
 %description servlet
-servlet module for %{name}.
+The servlet module for %{name}.
 
 %package sql
-Summary:        sql module for %{name}
+Summary:        The sql module for %{name}
 Group:          Development/Libraries/Java
 
 %description sql
-sql module for %{name}.
+The sql module for %{name}.
 
 %package swing
-Summary:        swing module for %{name}
+Summary:        The swing module for %{name}
 Group:          Development/Libraries/Java
 
 %description swing
-swing module for %{name}.
+The swing module for %{name}.
 
 %package templates
-Summary:        templates module for %{name}
+Summary:        The templates module for %{name}
 Group:          Development/Libraries/Java
 
 %description templates
-templates module for %{name}.
+The templates module for %{name}.
 
 %package test
-Summary:        test module for %{name}
+Summary:        The test module for %{name}
 Group:          Development/Libraries/Java
 
 %description test
-test module for %{name}.
+The test module for %{name}.
 
 %package testng
-Summary:        testng module for %{name}
+Summary:        The testng module for %{name}
 Group:          Development/Libraries/Java
 
 %description testng
-testng module for %{name}.
+The testng module for %{name}.
 
 %package xml
-Summary:        xml module for %{name}
+Summary:        The xml module for %{name}
 Group:          Development/Libraries/Java
 
 %description xml
-xml module for %{name}.
+The xml module for %{name}.
 
 %prep
 %setup -q
@@ -253,7 +253,7 @@ find \( -name *.jar -o -name *.class \) -delete
 %{mvn_package} ':groovy-{*}' @1
 %{mvn_package} ':groovy-{*}::indy:' @1
 
-sed -i 's#organization\ =#organization#g' gradle/pomconfigurer.gradle 
+sed -i 's#organization\ =#organization#g' gradle/pomconfigurer.gradle
 
 %build
 %{gradle_build} -f -G jarAll -- -x javadoc -Pindy=true

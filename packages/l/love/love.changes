@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:09:23 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Drop remove-duplicate-typedef.patch as it causes build failure for i586 now
+
+-------------------------------------------------------------------
 Mon Aug 24 20:12:35 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 11.3:

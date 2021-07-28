@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:35:11 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.4:
+  * Bump to v1.21.4
+  * tests: make it easer to override the location of the copy helper
+  * Add and use a "copy" helper instead of podman load/save
+  * vendor containers/common@v0.38.16
+  * Bump to v1.21.3
+  * chroot: fix environment value leakage to intermediate processes
+  * [release-1.21] Bump to Buildah v1.21.2
+  * vendor common@v0.38.12 and storage@v1.31.3
+  * Bump to v1.21.1
+  * Fix handling of auth.json file while in a user namespace
+
+-------------------------------------------------------------------
 Mon Jul 19 12:09:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Set -buildmode=pie properly using GOFLAGS instead of just LDFLAGS

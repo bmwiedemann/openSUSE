@@ -5,8 +5,10 @@ DefaultDependencies=false
 ConditionKernelCommandLine=|ignition.firstboot
 ConditionKernelCommandLine=|combustion.firstboot
 
-Requires=sysroot.mount
-After=sysroot.mount
+# /sysroot needs to be available, but it's temporarily stopped
+# for remounting so a direct requirement is not possible
+Requires=initrd-root-device.target
+After=initrd-root-device.target
 
 # combustion-prepare sets up network, if required
 Requires=combustion-prepare.service

@@ -501,4 +501,12 @@
     <comment>bugfix release</comment>
     <requestid>900908</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>0937740406f1499763db20a712ffc8c2</srcmd5>
+    <version>5.0.36</version>
+    <time>1627492792</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908627</requestid>
+  </revision>
 </revisionlist>

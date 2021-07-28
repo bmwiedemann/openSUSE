@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/vmware-tanzu/velero-plugin-for-aws</param>
+              <param name="changesrevision">f08abee8dd177d27601ad50ac774b3fc76e7bf62</param></service></servicedata>

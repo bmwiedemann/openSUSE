@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 28 15:57:03 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.12.1
+- Starting a compose sequence while a candidate is selected should
+  append to the selection
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/175)
+- Translation update from Weblate (de, nl, pl, tr, uk all updated to 100%)
+- Fix typo in translatable message (Thanks to Yuri Chornoivan)
+- Add a few more combining chars for dead keys to the list (Thanks to Matthias Clasen)
+- Reduce grid row spacing from 10 to 5 in the setup tool
+
+-------------------------------------------------------------------
+Tue Jul 27 16:45:52 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.12.0
+- Use the dead keys added recently to ibus as soon as they become available
+  by an ibus update
+  (see: https://github.com/ibus/ibus/commit/3e2609e68c9107ce7c65e2d5876bfdc9f0f8c854)
+- Make Compose preedit less intrusive, show compose key only in
+  the middle of the sequence or when it is the only key so far
+- Use · U+00B7 MIDDLE DOT instead of ⎄ U+2384 COMPOSITION SYMBOL to display
+  Multi_key in pre-edit.
+- Add an option to play a sound on error (for example invalid compose sequence)
+- Do not include the system compose files unconditionally if a user compose file exists
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/170)
+- Add option to choose whether to start up in direct input mode
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/169)
+- Change default input methods for Indian locales to inscript2
+
+-------------------------------------------------------------------
 Thu Jul 08 10:49:50 UTC 2021 - maiku.fabian@gmail.com
 
 - Resolves: rhbz#1978361

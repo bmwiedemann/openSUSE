@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 13:49:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Build with java-devel >= 1.8 since source/target levels 8 are
+  requested
+
+-------------------------------------------------------------------
 Mon Apr 19 17:56:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.4.1:

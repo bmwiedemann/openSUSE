@@ -108,4 +108,12 @@
 </comment>
     <requestid>892404</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>6d68b39f0455b4f6b82ddfe4409c49c3</srcmd5>
+    <version>4.4.1</version>
+    <time>1627492801</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908788</requestid>
+  </revision>
 </revisionlist>

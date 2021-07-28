@@ -1,5 +1,5 @@
 #
-# spec file for package sbt-bootstrap
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -35,7 +35,7 @@
 %global sbt_short_version %{sbt_major}.%{sbt_minor}
 %global sbt_version %{sbt_major}.%{sbt_minor}.%{sbt_patch}
 %global sbt_full_version %{sbt_version}%{sbt_build}
-%global typesafe_repo https://dl.bintray.com/typesafe/ivy-releases
+%global typesafe_repo https://repo.typesafe.com/typesafe/ivy-releases
 %global ivy_local_dir ivy-local
 %global installed_ivy_local %{_datadir}/%{short_name}/%{ivy_local_dir}
 %global generic_ivy_artifact() %{1}/%{2}/%{3}/%{4}/jars/%{5}.jar#/%{5}-%{4}.jar
@@ -93,7 +93,7 @@ Source17:       https://raw.github.com/willb/rpm-packaging/master/sbt-packaging/
 # https://raw.github.com/willb/rpm-packaging/master/sbt-packaging/sbt
 # modified to correspond to openSUSE jline versions
 Source21:       sbt
-Source34:       http://dl.bintray.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/%{sbt_bootstrap_version}/srcs/compiler-interface-sources.jar#/compiler-interface-%{sbt_bootstrap_version}-sources.jar
+Source34:       https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/compiler-interface/%{sbt_bootstrap_version}/srcs/compiler-interface-sources.jar#/compiler-interface-%{sbt_bootstrap_version}-sources.jar
 Source71:       %{sbt_ivy_artifact sbt}
 Source134:      %{sbt_ivy_descriptor compiler-interface}
 Source171:      %{sbt_ivy_descriptor sbt}
@@ -112,7 +112,7 @@ BuildRequires:  json4s-core
 BuildRequires:  junit
 BuildRequires:  maven-lib
 BuildRequires:  proguard
-BuildRequires:  python
+BuildRequires:  python3
 BuildRequires:  sbinary
 BuildRequires:  sbt-launcher
 BuildRequires:  sbt-launcher-interface

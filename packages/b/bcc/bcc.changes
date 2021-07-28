@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jul 27 14:08:16 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update source URL for bcc and libbpf
+
+-------------------------------------------------------------------
+Tue Jul 27 10:56:43 UTC 2021 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Update to 0.20.0
+  + Support for kernel up to 5.12
+  + Some basic support for MIPS
+  + added bpf_map_lookup_batch and bpf_map_delete_batch support
+  + tools/funclatency.py support nested or recursive functions
+  + tools/biolatency.py can optionally print out average/total value
+  + fix possible marco HAVE_BUILTIN_BSWAP redefine warning for kernel >= 5.10.
+  + new tools: virtiostat
+  + new libbpf-tools: ext4dist
+  + doc update and bug fixes
+- Update libbpf to 0.4
+  + BPF static linker APIs;
+  + subprogram address relocation support (e.e., for use with bpf_for_each_map_elem());
+  + support for extern kernel functions (a.k.a. BPF unstable helpers);
+  + TC-BPF APIs;
+  + ksym externs support for kernel modules;
+  + BTF_KIND_FLOAT support;
+  + various AF_XDP (xsk.{c, h}) improvements and fixes;
+  + btf__add_type() API to copy/append BTF types generically;
+  + bpf_object__set_kernel_version() setter;
+  + bpf_map__inner_map() getter;
+  + __hidden attribute for global sub-program forces static BPF verifier verification;
+  + static BPF maps and entry-point BPF programs are explicitly rejected.
+  + libbpf will ignore non-function pointer members in struct_ops;
+  + Makefile fixes for install target;
+  + use SOCK_CLOEXEC for netlink sockets;
+  + btf_dump fixes for pointer to array of struct;
+  + fixes for some of xxx_opts structs to work better with debug compilation modes;
+  + ringbuf APIs fixes and improvements for extreme cases of never ending consumption of records;
+  + BPF_CORE_READ_BITFIELD() macro fixes.
+
+
+
+-------------------------------------------------------------------
 Mon Mar 29 03:36:43 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.19.0

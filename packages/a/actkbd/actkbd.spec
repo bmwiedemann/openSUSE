@@ -1,7 +1,7 @@
 #
 # spec file for package actkbd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Release:        0
 Summary:        A keyboard shortcut daemon
 License:        GPL-2.0-only
 Group:          System/Console
-Url:            http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/
+URL:            http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/
 Source0:        http://users.softlab.ece.ntua.gr/~thkala/projects/actkbd/files/actkbd-%{version}.tar.bz2
 Source1:        actkbd.service
 Source2:        actkbd.conf

@@ -26,17 +26,17 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.3
+%define libbpf_version 0.4
 
 Name:           bcc
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
-Source:         https://github.com/iovisor/bcc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        https://github.com/libbpf/libbpf/archive/v%{libbpf_version}.tar.gz#/libbpf-%{libbpf_version}.tar.gz
+Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/libbpf/libbpf/archive/refs/tags/v%{libbpf_version}.0.tar.gz#/libbpf-%{libbpf_version}.tar.gz
 ExcludeArch:    ppc s390
 BuildRequires:  bison
 BuildRequires:  cmake >= 2.8.7
@@ -103,9 +103,9 @@ Summary:        Examples from the BPF Compiler Collection
 Group:          Documentation/Other
 Requires:       python3-bcc = %{version}
 Requires:       python3-future
-Recommends:     python3-pyroute2
-Recommends:     python3-netaddr
 Recommends:     netperf
+Recommends:     python3-netaddr
+Recommends:     python3-pyroute2
 
 %description examples
 Python and C examples from the BPF Compiler Collection.

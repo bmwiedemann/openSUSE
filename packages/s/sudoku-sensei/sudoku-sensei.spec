@@ -31,6 +31,7 @@ Source2:        %{name}.png
 Source3:        %{name}.desktop
 # PATCH-FIX-OPENSUSE 0001-Basic-port-to-Qt5.patch
 Patch0:         0001-Basic-port-to-Qt5.patch
+Patch1:         reproducible.patch
 BuildRequires:  dos2unix
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Core)
@@ -51,6 +52,7 @@ that people use with paper and pen.
 %prep
 %setup -q -n %{oname}Sources
 %patch0 -p1
+%patch1 -p1
 
 # Convert to unix line end
 find -name "*.txt" -print0 -or -name "*.h" -print0 -or -name "*.cpp" -print0 -or -name "*.html" -print0 | xargs -0 dos2unix

@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           fastjar
 Version:        0.98
 Release:        0
@@ -24,9 +25,6 @@ License:        GPL-2.0-or-later
 Group:          Development/Languages/Java
 URL:            https://savannah.nongnu.org/projects/fastjar/
 Source0:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz
-# Current signing key has expired
-#Source1:        http://download.savannah.gnu.org/releases/%{name}/%{name}-%{version}.tar.gz.sig
-#Source2:        http://savannah.nongnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
 Patch2:         fix-update-mode.diff
 # PATCH-FIX-UPSTREAM bsc#1188517 CVE-2010-2322 directory traversal vulnerabilities
 Patch3:         fastjar-CVE-2010-2322.patch

@@ -46,4 +46,12 @@
     <comment></comment>
     <requestid>882851</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>621d4244035c272e30ee67008356d8b9</srcmd5>
+    <version>4.9.2</version>
+    <time>1627492799</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908782</requestid>
+  </revision>
 </revisionlist>

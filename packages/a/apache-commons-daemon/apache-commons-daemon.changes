@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 14:12:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define %%make_build for systems where it is not defined in
+  rpm macros
+
+-------------------------------------------------------------------
 Wed Feb  3 07:53:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.2.4

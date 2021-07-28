@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-threading
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-click-threading
-Version:        0.4.4
+Version:        0.5.0
 Release:        0
 Summary:        Multithreaded Click apps made easy
 License:        MIT

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 09:32:20 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.5.0
+  * Fix monkey-patching of functions with annotations
+
+-------------------------------------------------------------------
 Thu Apr 23 11:16:18 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2

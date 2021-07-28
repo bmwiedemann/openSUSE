@@ -104,10 +104,8 @@ This package contains python bindings for OpenColorIO.
 %prep
 %setup -q
 
-# Fix 64bit library install location
-%ifarch x86_64
+# Fix library install location
 sed -i 's|DESTINATION lib|DESTINATION %_lib|' src/OpenColorIO/CMakeLists.txt
-%endif
 
 %build
 %cmake \

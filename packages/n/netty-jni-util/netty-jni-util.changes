@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:47:47 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define %%make_build for systems that don't have it defined in
+  rpm macros
+
+-------------------------------------------------------------------
 Thu Feb 11 16:50:14 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Initial packaging of netty-jni-util helper functions

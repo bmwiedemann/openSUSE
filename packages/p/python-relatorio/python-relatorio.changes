@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 27 09:37:08 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.9.3 
+  * Support empty image in opendocument
+  * Add support for Python 3.9
+
+-------------------------------------------------------------------
 Mon Jan  4 15:14:05 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.9.2

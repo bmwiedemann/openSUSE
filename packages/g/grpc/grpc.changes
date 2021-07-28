@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 28 11:09:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.39.0:
+  * Core
+    - Initialize tcp_posix for CFStream when needed
+      (gh#grpc/grpc#26530).
+    - Update boringssl submodule (gh#grpc/grpc#26520).
+    - Fix backup poller races (gh#grpc/grpc#26446).
+    - Use default port 443 in HTTP CONNECT request
+      (gh#grpc/grpc#26331).
+  * C++
+    - New iomgr implementation backed by the EventEngine API
+      (gh#grpc/grpc#26026).
+    - async_unary_call: add a Destroy method, called by
+      std::default_delete (gh#grpc/grpc#26389).
+    - De-experimentalize C++ callback API (gh#grpc/grpc#25728).
+  * PHP: stop reading composer.json file just to read the version
+    string (gh#grpc/grpc#26156).
+  * Ruby: Set XDS user agent in ruby via macros
+    (gh#grpc/grpc#26268).
+- Update so version in keeping with upstream (16 -> 18).
+
+-------------------------------------------------------------------
 Tue Jun 22 12:20:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.38.1

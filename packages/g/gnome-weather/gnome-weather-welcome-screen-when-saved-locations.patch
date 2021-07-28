@@ -1,0 +1,90 @@
+From b8d6fcd0c9566af9ce60d890670598bccc6d57c6 Mon Sep 17 00:00:00 2001
+From: Jessica Tallon <tsyesika@tsyesika.se>
+Date: Sun, 11 Apr 2021 11:14:37 +0200
+Subject: [PATCH] Fix problem where weather never used saved locations
+
+Everytime you opened the weather application it would always show
+the initial welcome/search screen even though it was loading the
+previously saved locations. This changes that so they are now used.
+---
+ src/app/main.js     |  3 ++-
+ src/app/world.js    | 13 +++++++------
+ src/shared/world.js |  1 +
+ 3 files changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/src/app/main.js b/src/app/main.js
+index b413ca9..8292215 100644
+--- a/src/app/main.js
++++ b/src/app/main.js
+@@ -96,8 +96,9 @@ const Application = GObject.registerClass(
+ 
+         this.world = GWeather.Location.get_world();
+         this.model = new World.WorldModel(this.world, true);
+-        this.model.load();
+         this.currentLocationController = new CurrentLocationController.CurrentLocationController(this.model);
++        this.model.load();
++
+ 
+         this.model.connect('notify::loading', () => {
+             if (this.model.loading)
+diff --git a/src/app/world.js b/src/app/world.js
+index 8e1d5ce..1815629 100644
+--- a/src/app/world.js
++++ b/src/app/world.js
+@@ -67,18 +67,18 @@ var WorldContentView = GObject.registerClass(
+ 
+         let autoLocStack = builder.get_object('auto-location-stack');
+         let autoLocSwitch = builder.get_object('auto-location-switch');
+-        let currentLocationController = application.currentLocationController;
++        this._currentLocationController = application.currentLocationController;
+ 
+-        if(currentLocationController.autoLocation == CurrentLocationController.AutoLocation.ENABLED) {
++        if(this._currentLocationController.autoLocation == CurrentLocationController.AutoLocation.ENABLED) {
+             autoLocStack.visible_child_name = 'locating-label';
+         } else {
+             autoLocStack.visible_child_name = 'auto-location-switch-grid';
+             autoLocSwitch.active = false;
+-            autoLocSwitch.sensitive = (currentLocationController.autoLocation != CurrentLocationController.AutoLocation.NOT_AVAILABLE);
++            autoLocSwitch.sensitive = (this._currentLocationController.autoLocation != CurrentLocationController.AutoLocation.NOT_AVAILABLE);
+         }
+ 
+         let handlerId = autoLocSwitch.connect('notify::active', () => {
+-            currentLocationController.setAutoLocation(autoLocSwitch.active);
++            this._currentLocationController.setAutoLocation(autoLocSwitch.active);
+ 
+             if (autoLocSwitch.active && !this.model.addedCurrentLocation)
+                 autoLocStack.visible_child_name = 'locating-label';
+@@ -95,8 +95,8 @@ var WorldContentView = GObject.registerClass(
+         this.model.connect('current-location-changed', (model, info) => {
+             autoLocStack.visible_child_name = 'auto-location-switch-grid';
+             GObject.signal_handler_block(autoLocSwitch, handlerId);
+-            autoLocSwitch.active = (currentLocationController.autoLocation == CurrentLocationController.AutoLocation.ENABLED);
+-            autoLocSwitch.sensitive = (currentLocationController.autoLocation != CurrentLocationController.AutoLocation.NOT_AVAILABLE);
++            autoLocSwitch.active = (this._currentLocationController.autoLocation == CurrentLocationController.AutoLocation.ENABLED);
++            autoLocSwitch.sensitive = (this._currentLocationController.autoLocation != CurrentLocationController.AutoLocation.NOT_AVAILABLE);
+             GObject.signal_handler_unblock(autoLocSwitch, handlerId);
+ 
+             this._window.showInfo(info, true);
+@@ -216,6 +216,7 @@ var WorldContentView = GObject.registerClass(
+         });
+ 
+         this._syncStackPopover();
++        this._currentLocationController.currentLocation = info
+     }
+ 
+     _onLocationRemoved(model, info) {
+diff --git a/src/shared/world.js b/src/shared/world.js
+index 6bc681d..081edf0 100644
+--- a/src/shared/world.js
++++ b/src/shared/world.js
+@@ -107,6 +107,7 @@ var WorldModel = GObject.registerClass({
+ 
+             info = this._addLocationInternal(location, false);
+         }
++        this._currentLocationInfo = info
+     }
+ 
+     _updateLoadingCount(delta) {
+-- 
+GitLab
+

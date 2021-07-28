@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 28 13:51:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Fix databases.json used for tests.
+
+-------------------------------------------------------------------
+Thu Apr 22 20:03:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.2:
+  * Fix `user`, `password`, `host`, `database` are still positional arguments.
+    All arguments of `connect()` are now keyword-only. (#941)
+  * Stop emitting DeprecationWarning for use of ``db`` and ``passwd``.
+    Note that they are still deprecated. (#939)
+  * Add ``python_requires=">=3.6"`` to setup.py. (#936)
+  * Python 2.7 and 3.5 are not supported.
+  * ``connect()`` uses keyword-only arguments. User must use keyword argument.
+  * ``connect()`` kwargs ``db`` and ``passwd`` are now deprecated; Use ``database`` and ``password`` instead.
+  * old_password authentication method (used by MySQL older than 4.1) is not supported.
+  * MySQL 5.5 and MariaDB 5.5 are not officially supported, although it may still works.
+  * Removed ``escape_dict``, ``escape_sequence``, and ``escape_string`` from ``pymysql``
+    module. They are still in ``pymysql.converters``.
+  * Connection supports context manager API. ``__exit__`` closes the connection. (#886)
+  * Add MySQL Connector/Python compatible TLS options (#903)
+  * Major code cleanup; PyMySQL now uses black and flake8.
+
+-------------------------------------------------------------------
 Thu Nov 26 09:10:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - udpate to 0.10.1:

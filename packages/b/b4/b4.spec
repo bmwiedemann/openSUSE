@@ -16,9 +16,9 @@
 #
 
 
-%define version_unconverted 0.7.2+0
+%define version_unconverted 0.7.2+3
 Name:           b4
-Version:        0.7.2+0
+Version:        0.7.2+3
 Release:        0
 Summary:        Helper scripts for kernel.org patches
 License:        GPL-2.0-or-later

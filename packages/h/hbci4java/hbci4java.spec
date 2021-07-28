@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           hbci4java
 Version:        3.1.55
 Release:        0

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri May 21 10:12:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not make package noarch: we require a dependency (drbd) that
+  is not available on all architectures (boo#1188857).
+- Sync the ExcludeArch statement from drbd (ExcludeArch: i586 s390)
+- 4.4.2
+
+-------------------------------------------------------------------
 Tue Apr 20 18:14:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop packaging docdir, it only contained the license which

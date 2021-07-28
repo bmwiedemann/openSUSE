@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %global _lto_cflags %{nil}
 %global namedreltag .Final
 %global namedversion %{version}%{?namedreltag}
@@ -49,7 +50,7 @@ This is for internal usage only, no guarantees about API is made.
 %setup -q -n %{name}-%{name}-%{namedversion}
 mkdir -p build
 
-%mvn_package :::sources: sources
+%{mvn_package} :::sources: sources
 
 %build
 %{mvn_build} -fj -- -Dsource=8

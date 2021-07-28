@@ -52,7 +52,7 @@
 %bcond_with	mongodb
 %bcond_with	amqp
 Name:           syslog-ng
-Version:        3.30.1
+Version:        3.33.2
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -71,6 +71,7 @@ BuildRequires:  libcap-devel
 BuildRequires:  libjson-devel
 BuildRequires:  libnet-devel
 BuildRequires:  libopenssl-devel
+BuildRequires:  libpaho-mqtt-devel
 BuildRequires:  libtool
 BuildRequires:  net-snmp-devel
 BuildRequires:  pcre-devel
@@ -79,7 +80,7 @@ BuildRequires:  python3
 BuildRequires:  tcpd-devel
 BuildRequires:  pkgconfig(libsystemd)
 #!BuildIgnore:  rsyslog
-Requires:       libevtlog-3_30-0
+Requires:       libevtlog-3_33-0
 Requires(pre):  %fillup_prereq
 Requires(pre):  syslog-service >= 2.0
 Conflicts:      syslog
@@ -133,11 +134,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-3_30-0
+%package -n libevtlog-3_33-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-3_30-0
+%description -n libevtlog-3_33-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -227,6 +228,15 @@ Requires:       %{name} = %{version}
 %description snmp
 This package provides SNMP support for syslog-ng
 
+%package mqtt
+Summary:        MQTT support for syslog-ng
+Group:          System/Daemons
+Requires:       %{name} = %{version}
+
+%description mqtt
+This package provides MQTT support for syslog-ng
+
+
 %prep
 %setup -q -n syslog-ng-%{version}
 # fill out placeholders in the config,
@@ -247,8 +257,8 @@ done
 %endif
 
 # fix python
-sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python3|' lib/merge-grammar.py
-touch -r lib/cfg-grammar.y lib/merge-grammar.py
+# sed -i 's|^#\s*!%{_bindir}/env python|#!%{_bindir}/python3|' lib/merge-grammar.py
+# touch -r lib/cfg-grammar.y lib/merge-grammar.py
 
 %build
 ##
@@ -274,6 +284,7 @@ export AM_YFLAGS=-d
 	--enable-ssl				\
         --enable-afsnmp                         \
 	--disable-native			\
+	--enable-mqtt				\
 %if %{with smtp}
         --with-libesmtp=%{_prefix}/lib                \
 %endif
@@ -442,8 +453,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-3_30-0 -p /sbin/ldconfig
-%postun -n libevtlog-3_30-0 -p /sbin/ldconfig
+%post -n libevtlog-3_33-0 -p /sbin/ldconfig
+%postun -n libevtlog-3_33-0 -p /sbin/ldconfig
 
 %files
 ##
@@ -513,6 +524,9 @@ chmod 640 "${additional_sockets#/}"
 %dir %{_datadir}/syslog-ng/include/scl/checkpoint/
 %dir %{_datadir}/syslog-ng/include/scl/paloalto/
 %dir %{_datadir}/syslog-ng/include/scl/sumologic/
+%dir %{_datadir}/syslog-ng/include/scl/cee/
+%dir %{_datadir}/syslog-ng/include/scl/discord/
+%dir %{_datadir}/syslog-ng/include/scl/fortigate/
 %dir %{_datadir}/syslog-ng/xsd
 %dir %{_sysconfdir}/syslog-ng
 %dir %{_sysconfdir}/syslog-ng/conf.d
@@ -607,9 +621,12 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/checkpoint/plugin.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/paloalto/panos.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl/sumologic/sumologic.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/cee/adapter.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/discord/discord.conf
+%attr(644,root,root) %{_datadir}/syslog-ng/include/scl/fortigate/fortigate.conf
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 
-%files -n libevtlog-3_30-0
+%files -n libevtlog-3_33-0
 %{_libdir}/libevtlog-*.so.*
 
 %files snmp
@@ -700,5 +717,10 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_libdir}/syslog-ng/libredis.so
 
 %endif
+
+%files mqtt
+%defattr(-,root,root)
+%dir %{_libdir}/syslog-ng
+%attr(755,root,root) %{_libdir}/syslog-ng/libmqtt.so
 
 %changelog

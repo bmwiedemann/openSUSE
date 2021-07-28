@@ -1,7 +1,7 @@
 #
 # spec file for package indriya
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/unitsofmeasurement/%{name}
 Source0:        https://github.com/unitsofmeasurement/%{name}/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 8
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
 BuildRequires:  mvn(javax.measure:unit-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)

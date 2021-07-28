@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:57:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Remove --disable-elf-hack when not available: aarch64 and ppc64*
+
+-------------------------------------------------------------------
 Thu Jul 22 08:55:51 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.8.1

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 13:06:24 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Define %%make_build for systems that don't have it defined in
+  rpm macros
+
+-------------------------------------------------------------------
 Mon Jul 26 16:37:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Little fixes to be able to build on CentOS

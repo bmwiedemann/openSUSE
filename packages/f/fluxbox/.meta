@@ -1,6 +1,0 @@
-<package name="fluxbox" project="openSUSE:Factory">
-  <title>fluxbox windowmanager </title>
-  <description>A lightweight and highly-configurable window manager with pwm-like tabs.
-</description>
-  <devel project="X11:windowmanagers" package="fluxbox"/>
-</package>

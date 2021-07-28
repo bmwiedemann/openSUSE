@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 22 06:00:37 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Normalize all Python script shebangs to use Python 3.
+
+-------------------------------------------------------------------
 Fri May 14 11:58:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update LTS version to maintenance release 19.11.8

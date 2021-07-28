@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:56:34 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Build only *.scala and *.java files
+- Modified patch:
+  * 0001-Fix-file-filtering.patch
+    + rediff to have correct line-numbers to patch
+
+-------------------------------------------------------------------
 Fri Mar  6 06:02:10 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Disambiguate the requirements. Require directly sbt non-bootstrap

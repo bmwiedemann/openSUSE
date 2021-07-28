@@ -33,6 +33,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module blinker}
+BuildRequires:  %{python_module importlib_metadata}
 # /SECTION
 %python_subpackages
 
@@ -53,7 +54,7 @@ sed -i "s/twill[^']*/setuptools/" setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest tests.suite
 
 %files %{python_files}
 %doc README

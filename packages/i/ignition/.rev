@@ -417,4 +417,12 @@ Allows mounting a device multiple times, e.g. to mount several subvolumes from a
 This makes it possible to use Ignition also on bare metal (e.g. when dumping images directly to disk) without adding a ignition.platform.id parameter.</comment>
     <requestid>907542</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>ad39c72f264327459e9d99b01439b3a5</srcmd5>
+    <version>2.11.0</version>
+    <time>1627492903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908899</requestid>
+  </revision>
 </revisionlist>
