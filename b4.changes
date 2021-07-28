@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 21 07:02:39 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.2+3:
+  * Allow '.git' to be a file for worktrees
+  * Don't append .git unnecessarily
+
+-------------------------------------------------------------------
 Thu Jun 10 04:19:44 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.7.2+0:
