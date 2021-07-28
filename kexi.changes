@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 09:49:43 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add Use-plain-Marble-package-instead-of-KexiMarble.patch to fix
+  build with marble 21.08
+
+-------------------------------------------------------------------
 Mon Jun 28 11:39:36 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - BuildRequire postgresql-server-devel also on Leap 15.2/15.3 to

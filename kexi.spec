@@ -30,6 +30,8 @@ Source0:        https://download.kde.org/stable/%{name}/src/%{name}-%{version}.t
 Patch0:         Fix-build-with-Qt-5_13.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Include-glib.h-outside-of-the-extern-block.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         Use-plain-Marble-package-instead-of-KexiMarble.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  glib2-devel
 BuildRequires:  kdb-devel
