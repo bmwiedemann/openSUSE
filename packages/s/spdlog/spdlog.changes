@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 27 13:31:38 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.9.1
+  * Support for {fmt}'s compile time validation of format strings.
+  * In C++14/17 - format string can be validated at compile time
+    using FMT_STRING.
+  * Fixed compilation error in Clang 13 with C++20.
+
+-------------------------------------------------------------------
 Wed Jul 21 06:42:27 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.9.0
