@@ -20,7 +20,7 @@ Index: scintilla/gtk/makefile
 +COMPLIB=$(basedir)/bin/libscintilla.la
  COMPONENT=$(basedir)/bin/libscintilla.$(SHAREDEXTENSION)
  
- vpath %.h $(srcdir) $(basedir)/src $(basedir)/include $(basedir)/lexlib
+ vpath %.h $(srcdir) $(basedir)/src $(basedir)/include
 @@ -82,12 +83,12 @@ DEFINES += -DNO_CXX11_REGEX
  endif
  
