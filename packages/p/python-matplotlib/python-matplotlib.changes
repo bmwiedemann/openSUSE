@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 12:09:25 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Fix tests with inkscape11.patch
+
+-------------------------------------------------------------------
 Wed Jul  7 10:02:08 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patches from upstream to fix an raised exception saying

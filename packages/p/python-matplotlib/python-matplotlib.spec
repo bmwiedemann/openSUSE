@@ -1,5 +1,5 @@
 #
-# spec file for package python-matplotlib
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -45,6 +45,8 @@ Source99:       https://downloads.sourceforge.net/project/freetype/freetype2/2.6
 Patch0:         0001-FIX-Pillow-asarray-bug.patch
 # PATCH-FIX-UPSTREAM 0002-Dont-modify-arrays-when-masking-values-for-log.patch - Fix from upstream for numpy 1.21.0
 Patch1:         0002-Dont-modify-arrays-when-masking-values-for-log.patch
+# PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/commit/73b7abf14c77014ab2436e7691e19cbee5864f4b Fix tests with Inkscape 1.1.
+Patch2:         inkscape11.patch
 BuildRequires:  %{python_module Cycler >= 0.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module kiwisolver >= 1.0.1}
@@ -251,6 +253,7 @@ for %{name} plotting package
 %setup -q -n matplotlib-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 #copy freetype to the right location, so that matplotlib will not try to download it
 mkdir -p ~/.cache/matplotlib/
 SHA=($(sha256sum %{SOURCE98}))

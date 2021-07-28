@@ -1,0 +1,25 @@
+From 093fdeccef7e8195a31dfabfd4a4b5f1b07c96d5 Mon Sep 17 00:00:00 2001
+From: Elliott Sales de Andrade <quantum.analyst@gmail.com>
+Date: Wed, 21 Jul 2021 22:18:54 -0400
+Subject: [PATCH] Fix tests with Inkscape 1.1.
+
+The change is imperceptible, so just increase the tolerance.
+
+Fixes #20617.
+---
+ lib/matplotlib/tests/test_axes.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/matplotlib/tests/test_axes.py b/lib/matplotlib/tests/test_axes.py
+index 2211962cdf01..a885afe70c91 100644
+--- a/lib/matplotlib/tests/test_axes.py
++++ b/lib/matplotlib/tests/test_axes.py
+@@ -1372,7 +1372,7 @@ def test_markevery_line():
+     ax.legend()
+ 
+ 
+-@image_comparison(['markevery_linear_scales'], remove_text=True)
++@image_comparison(['markevery_linear_scales'], remove_text=True, tol=0.001)
+ def test_markevery_linear_scales():
+     cases = [None,
+              8,
