@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:39:06 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.2:
+  * oci: be more precise about channels and routines
+  * oci: wait for runtime to write pidfile before starting timer
+  * oci: refactor fsnotify usage
+  * vendor: add notify package
+  * version: bump to v1.21.2
+  * server: use cnimgr to wait for cni plugin ready before creating a pod
+  * server: use cnimgr for runtime status
+  * config: add cnimgr
+  * Introduce cnimgr
+  * server: prevent segfault by not using a potentially nil sandbox
+  * network: pass pod UID to ocicni when performing network operations
+  * vendor: bump ocicni to 4ea5fb8752cfe
+  * Bump c/storage to v1.32.3
+  * oci: kill runtime process on exec if exec pid isn't written yet
+  * oci: don't pre-create pid file
+  * dbus: update retryondisconnect to handle eagain too
+  * simplify checking for dbus error
+  * utils: close dbus conn channel
+  * dbusmgr: protect against races in NewDbusConnManager
+  * cgmgr: reuse dbus connection
+  * cgmgr: create systemd manager constructor
+  * try again on EAGAIN from dbus
+  * test: fix cgroupfs workload tests
+  * Disable short name mode
+  * workloads: don't set conmon cpuset if systemd doesn't support AllowedCPUs
+  * test: add test for conmon in workloads
+  * workloads: setup on conmon cgroup
+  * Bump runc to get public RangeToBits function
+  * server: export InfraName and drop references to leaky
+  * storage: succeed in DeleteContainer if container is unknown
+  * bump to v1.21.1
+  * Fix CI
+  * oci: drop internal ExecSync structs
+  * oci: do not use conmon for exec sync
+  * bump c/storage to 1.31.1
+  * bump runc to 1.0.0-rc94
+  * Fix unit tests
+  * Add support to drop ALL and add back few capabilities
+  * server: call CNI del in separate routine in restore
+  * server: reduce log verbosity on restore
+  * reduce listen socket permissions to 0660
+  * test: adapt crio wipe tests to handle new behavior
+  * ignore storage.ErrNotAContainer
+  * move internal wipe to only wipe images
+  * server: properly remove sandbox network on failed restore
+  * runtimeVM: Use internal context to ensure goroutines are stopped
+  * Fix go.sum
+  * sandbox remove: unmount shm before removing infra container
+  * use more ContainerServer.StopContainer
+  * sandbox: fix race with cleanup
+  * server: don't unconditionally fail on sandbox cleanup
+  * server: group namespace cleanup with network stop
+  * resourcestore: run cleanup in parallel
+  * test: add test for delayed cleanup of network on restart
+  * InternalWipe: retry on failures
+  * server: get hooks after we've check if a sandbox is already stopped
+  * server: move newPodNetwork to a more logical place
+  * Add resource cleaner retry functionality
+  * test: add test for internal_wipe
+  * server: add support for internal_wipe
+  * crio wipe: add support for internal_wipe
+  * config: add InternalWipe
+  * server: breakup stop/remove all functions with internal helpers
+  * storage: remove RemovePodSandbox function
+  * server: reuse container removal code for infra
+  * Cleanup pod network on sandbox removal
+  * test: add test for absent_mount_sources_to_reject
+  * server: add support for absent_mount_sources_to_reject
+  * config: add absent_mount_sources_to_reject option
+  * server: use background context for network stop
+  * resource store: prevent segfault on cleanup step
+  * Pin gocapability to v0.0.0-20180916011248-d98352740cb2
+  * config: fix type of privileged_without_host_devices
+  * Fix podman name in README
+  * Fix RuntimeDefault seccomp behavior if disabled
+  * Add After=crio.service dependency to containers and conmon
+  * Use extra context for runtime VM
+  * workloads: move to more concrete type
+  * workloads: update how overrides are specified
+  * main: still rely on logrus (rather than using the internal log)
+  * container server: fix silly typo
+  * nsmgr: remove duplicate IsNSOrErr call
+  * nsmgr: fix some leaks with GetNamespace
+  * bump to containers/image 5.11.1
+  * Bug 1942608: do not list the image with error locating manifest
+  * runtimeVM: Calculate the WorkingSetBytes stats
+  * runtimeVM: Use containerd/cgroups for metrics
+  * runtimeVM: Move metricsToCtrStats() around
+  * runtimeVM: Vendor typeurl instead of maintain our own copy
+
+-------------------------------------------------------------------
 Thu Apr 15 16:39:03 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.0:
