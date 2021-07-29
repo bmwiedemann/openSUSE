@@ -19,7 +19,7 @@
 %global DBusName org.gnome.FontManager
 %global DBusName2 org.gnome.FontViewer
 Name:           font-manager
-Version:        0.8.6
+Version:        0.8.7
 Release:        0
 Summary:        A simple font management application for Gtk+ Desktop Environments
 License:        GPL-3.0-or-later

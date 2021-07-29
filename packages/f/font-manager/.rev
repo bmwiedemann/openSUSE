@@ -7,4 +7,22 @@
     <comment>new package</comment>
     <requestid>902372</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1d6e8e5c96e42e6392dde861af5fdb3f</srcmd5>
+    <version>0.8.7</version>
+    <time>1627587117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.7
+  * Fixes rendering issues with Pango &gt; 1.47 - Issue #213
+  * Fixes missing desktop settings with GNOME 40 - Issue #215
+  * Fixes missing substitution target family names - Issue #216
+  * Restore font list positions when switching filters and after drag and drop - Issue #220
+  * Adds a &quot;rename&quot; entry to collections context menu - Suggested in Issue #220
+  * Switches to using symbolic icons in sidebar for consistency
+  * Limits Waterfall preview to 48pt to improve application responsiveness with large font collections
+  * Adds a preference to allow setting maximum Waterfall preview point size
+  * Update vendor list
+  * Include latest translation updates</comment>
+    <requestid>909135</requestid>
+  </revision>
 </revisionlist>
