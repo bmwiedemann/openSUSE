@@ -35,7 +35,6 @@ BuildRequires:  geronimo-jta-1_1-api
 BuildRequires:  git
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  javapackages-tools >= 5.3.1
 BuildRequires:  javassist >= 3.23.1
 BuildRequires:  junit
 BuildRequires:  log4j12-mini
@@ -96,27 +95,6 @@ export CLASSPATH=$(build-classpath \
     dist
 
 %install
-install -d -m 755 %{buildroot}%{_javadir}
-
-install build/%{name}-%{version}-SNAPSHOT/%{name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar
-
-rm -rf %{buildroot}%{name}-%{version}/docs/release-test-output
-
-# Install the Maven build information
-install -d -m 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 build/%{name}-%{version}-SNAPSHOT/pom.xml %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-sed -i 's/-SNAPSHOT//' %{buildroot}%{_mavenpomdir}/JPP-%{name}.pom
-
-%add_maven_depmap JPP-%{name}.pom %{name}.jar
-
-%files -f .mfiles
-%license LICENSE
-%doc CHANGES README
-
-#    -Dcom.mysql.cj.build.jdk.javac=/usr/lib64/jvm/java-1.8.0/bin/javac \
-#    -Dcom.mysql.cj.build.jdk.java=/usr/lib64/jvm/java-1.8.0/bin/java \
-    dist
-
 install -d -m 755 %{buildroot}%{_javadir}
 
 install build/%{name}-%{version}-SNAPSHOT/%{name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar

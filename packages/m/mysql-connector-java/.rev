@@ -295,4 +295,12 @@
     <comment>8.0.25</comment>
     <requestid>907801</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>9fa82c8cbf9065362efa3286cc9abb4c</srcmd5>
+    <version>8.0.25</version>
+    <time>1627587073</time>
+    <user>dimstar_suse</user>
+    <comment>Duplicate section removal</comment>
+    <requestid>908676</requestid>
+  </revision>
 </revisionlist>
