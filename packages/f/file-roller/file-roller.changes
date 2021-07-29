@@ -22,6 +22,15 @@ Wed Apr 14 00:20:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   + Skip files with symlinks in parents. ( CVE-2020-36314 )
   + Fix use-after-free in error message reporting.
   + Updated translations
+- Drop 0001-Fix-use-after-free-in-error-message-reporting.patch:
+  fixed upstream.
+
+-------------------------------------------------------------------
+Wed Apr 13 08:00:14 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add 0001-Fix-use-after-free-in-error-message-reporting.patch:
+  Prevent segmentation fault while displaying error message from
+  libarchive. (glgo#GNOME/file-roller!48, bsc#1186435)
 
 -------------------------------------------------------------------
 Mon Sep 14 12:35:51 UTC 2020 - dimstar@opensuse.org

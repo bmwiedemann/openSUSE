@@ -1158,4 +1158,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment>- Update to version 3.40.0 (forwarded request 889880 from mgorse)</comment>
     <requestid>890097</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>5297e2d04fcaaaf8cbfac2c6830f8cea</srcmd5>
+    <version>3.40.0</version>
+    <time>1627587076</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909081 from yfjiang)</comment>
+    <requestid>909091</requestid>
+  </revision>
 </revisionlist>
