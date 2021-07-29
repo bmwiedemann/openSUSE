@@ -19,11 +19,12 @@
 %define soname  liblime
 %define sover   0
 Name:           lime
-Version:        4.5.7
+Version:        5.0.0
 Release:        0
 Summary:        Instant Message End-to-End Encryption Library
 License:        GPL-3.0-or-later
-URL:            https://linphone.org/technical-corner/lime/overview
+Group:          Productivity/Networking/Instant Messenger
+URL:            https://linphone.org/technical-corner/lime/
 Source:         https://gitlab.linphone.org/BC/public/lime/-/archive/%{version}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -66,6 +67,7 @@ LIME offers two major security benefits to instant messaging users:
 
 %package devel
 Summary:        Development files for lime
+Group:          Development/Languages/C and C++
 Requires:       %{soname}%{sover} = %{version}
 Requires:       soci-devel
 Requires:       soci-sqlite3-devel

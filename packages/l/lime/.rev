@@ -23,4 +23,16 @@
     <comment>- Update to version 4.5.7.</comment>
     <requestid>898808</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>887867f0d47bd33ca1800b97354844fe</srcmd5>
+    <version>5.0.0</version>
+    <time>1627587116</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0 (no changelog)
+- Update to version 4.5.20:
+  * No changes
+- fix several RPMLINT warning
+</comment>
+    <requestid>909075</requestid>
+  </revision>
 </revisionlist>
