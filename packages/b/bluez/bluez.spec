@@ -283,23 +283,6 @@ EOF
 touch -r %{SOURCE0} %{buildroot}%{_defaultdocdir}/%{name}/README-mesh.SUSE
 %endif
 
-%if %{with bluez_deprecated}
-mkdir -p %{buildroot}%{_localstatedir}/adm/update-messages
-UM=%{buildroot}%{_localstatedir}/adm/update-messages/bluez-deprecated-%{version}-%{release}-1
-cat >> $UM << EOF
-WARNING:
-The bluez-deprecated package contains tools that are considered obsolete by
-bluez upstream. They may contain serious issues, even unfixed security bugs.
-Use at your own risk.
-
-Note that this package will go away before end of 2020, so fix your code to
-use the modern tools instead!.
-
-Have a lot of fun...
-EOF
-touch -r %{SOURCE0} $UM
-%endif
-
 %check
 %if ! 0%{?qemu_user_space_build}
 ##make %%{?_smp_mflags} check
@@ -396,7 +379,6 @@ touch -r %{SOURCE0} $UM
 %{_mandir}/man1/sdptool.1%{?ext_man}
 %{_mandir}/man1/ciptool.1%{?ext_man}
 %{_mandir}/man1/rfcomm.1%{?ext_man}
-%{_localstatedir}/adm/update-messages/bluez-deprecated-%{version}-%{release}-1
 %endif
 
 %files devel

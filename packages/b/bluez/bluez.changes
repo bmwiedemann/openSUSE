@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 12 12:35:06 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- remove notification message from bluez-deprecated package.
+  I'm not going to remove it, and another maintainer can still
+  restart the removal process :-)
+  also boo#1188660
+
+-------------------------------------------------------------------
 Thu Jul  8 07:39:55 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update to 5.60:

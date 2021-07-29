@@ -1413,4 +1413,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>update to 5.60 (forwarded request 905315 from seife)</comment>
     <requestid>905316</requestid>
   </revision>
+  <revision rev="178" vrev="2">
+    <srcmd5>b252748bf1ba1a4e16d5d6e77619ab33</srcmd5>
+    <version>5.60</version>
+    <time>1627587063</time>
+    <user>dimstar_suse</user>
+    <comment>remove notification message from bluez-deprecated package (forwarded request 908360 from seife)</comment>
+    <requestid>908361</requestid>
+  </revision>
 </revisionlist>
