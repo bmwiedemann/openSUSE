@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 19 06:49:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.6:
+  * Python 3.9 support
+  * regenerated with cython 0.29.23
+  * Python 3.8 support
+
+-------------------------------------------------------------------
 Fri Mar 26 15:25:13 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.2.2
