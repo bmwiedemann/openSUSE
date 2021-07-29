@@ -34,7 +34,7 @@ BuildRequires:  cups154-devel
 BuildRequires:  cups
 BuildRequires:  cups-devel
 %endif
-Version:        1.7.8
+Version:        1.7.15
 Release:        0
 URL:            http://avasys.jp/english/linux_e/
 Summary:        Epson ESC/P-R Inkjet Printer Driver
