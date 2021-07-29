@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 26 08:20:32 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Use RISCV64_GENERIC for riscv64
+- Add -ffat-lto-objects to get proper static archives
+
+-------------------------------------------------------------------
 Thu Jul 22 08:11:06 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
 
 - Update to version 0.3.17

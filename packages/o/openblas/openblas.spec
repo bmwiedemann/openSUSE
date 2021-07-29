@@ -295,6 +295,9 @@ cp %{SOURCE2} .
 %endif
 
 %build
+%if "%{?_lto_cflags}" != ""
+%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%endif
 
 # disable lto for ppc64le, boo#1181733
 %ifarch ppc64le
@@ -326,6 +329,9 @@ cp %{SOURCE2} .
 %endif
 %ifarch ppc64
 %global openblas_target %openblas_target TARGET=POWER8
+%endif
+%ifarch riscv64
+%global openblas_target %openblas_target TARGET=RISCV64_GENERIC
 %endif
 # force -mvsx for ppc64 to avoid build failure:
 # ../kernel/power/sasum_microk_power8.c:41:3: error: '__vector' undeclared (first use in this function); did you mean '__cpow'?
