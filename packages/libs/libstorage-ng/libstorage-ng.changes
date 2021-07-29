@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Mon Jul 26 08:28:18 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#824
+- added notes
+- 4.4.30
+
+--------------------------------------------------------------------
+Fri Jul 23 14:23:22 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#823
+- extended spec file for Fedora
+- added documentation
+- avoid non standard parted commands where possible
+- coding style
+- 4.4.29
+
+--------------------------------------------------------------------
 Wed Jul 14 18:38:12 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Translated using Weblate (Czech) (bsc#1149754)

@@ -982,4 +982,12 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>906351</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>5b2c0af6a4a2feabbbb518005a601b03</srcmd5>
+    <version>4.4.30</version>
+    <time>1627587062</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>908358</requestid>
+  </revision>
 </revisionlist>

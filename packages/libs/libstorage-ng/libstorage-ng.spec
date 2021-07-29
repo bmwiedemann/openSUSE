@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.4.28
+Version:        4.4.30
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -49,9 +49,16 @@ BuildRequires:  ruby2.1-rubygem-test-unit
 %if 0%{?fedora}
 BuildRequires:  rubygem-test-unit
 %endif
-BuildRequires:  libjson-c-devel
 BuildRequires:  swig >= 3.0.3
 BuildRequires:  pkgconfig(libxml-2.0)
+%if 0%{?fedora}
+BuildRequires:  glibc-langpack-de
+BuildRequires:  glibc-langpack-en
+BuildRequires:  glibc-langpack-fr
+BuildRequires:  json-c-devel
+%else
+BuildRequires:  libjson-c-devel
+%endif
 BuildRequires:  pkgconfig(python3)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -153,8 +160,8 @@ export CFLAGS="%{optflags} -DNDEBUG"
 export CXXFLAGS="%{optflags} -DNDEBUG"
 
 autoreconf -fvi
-
 %configure \
+   --docdir="%{_docdir}/%{name}" \
    --disable-static \
    --disable-silent-rules
 make %{?_smp_mflags}
@@ -183,8 +190,9 @@ touch %{buildroot}/run/libstorage-ng/lock
 
 %files -n %{libname}
 %defattr(-,root,root)
-%doc AUTHORS
-%license LICENSE
+%doc %dir %{_docdir}/%{name}
+%doc %{_docdir}/%{name}/AUTHORS
+%license %{_docdir}/%{name}/LICENSE
 %{_libdir}/libstorage-ng.so.*
 %ghost /run/libstorage-ng
 
@@ -192,17 +200,25 @@ touch %{buildroot}/run/libstorage-ng/lock
 %defattr(-,root,root)
 %{_libdir}/libstorage-ng.so
 %{_includedir}/storage
-%dir %{_docdir}/%{name}/
-%doc %{_docdir}/%{name}/*
+%dir %{_docdir}/%{name}/autodocs
+%doc %{_docdir}/%{name}/autodocs/*
 
 %files python3
 %defattr(-,root,root)
 %{python3_sitelib}/storage.py*
 %attr(755,root,root) %{python3_sitearch}/_storage.so
+# Fedora has brp-python-bytecompile so apparently they want those packaged
+%if 0%{?fedora}
+%{python3_sitelib}/__pycache__/storage*.pyc
+%endif
 
 %files ruby
 %defattr(-,root,root)
-%{rb_vendorarch}/storage.so
+%if 0%{?fedora}
+%{ruby_vendorarchdir}/storage.so
+%else
+%{rb_vendorarchdir}/storage.so
+%endif
 
 %files utils
 %defattr(-,root,root)
