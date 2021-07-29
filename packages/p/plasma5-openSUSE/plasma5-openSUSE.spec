@@ -16,12 +16,12 @@
 #
 
 
-%define plasma_version 5.22.3
+%define plasma_version 5.22.4
 Name:           plasma5-openSUSE
 Version:        84.87~git20190606T185118~3d37a0c
 Release:        0
 Summary:        openSUSE KDE Extension
-License:        GPL-2.0-or-later AND CC-BY-SA-4.0
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://github.com/openSUSE/plasma-openSUSE
 # We use diffs to be as close to upstream as possible and get
