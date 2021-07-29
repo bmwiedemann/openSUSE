@@ -66,6 +66,7 @@ Recommends:     xz
 Suggests:       unrar
 Obsoletes:      ark-devel
 Recommends:     p7zip-full
+Recommends:     unar
 Recommends:     %{name}-lang
 
 %description
