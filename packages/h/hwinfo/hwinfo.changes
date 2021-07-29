@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Fri Jul 23 13:26:49 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#104
+- Fix timezone issue in SOURCE_DATE_EPOCH code
+- 21.76
+
+--------------------------------------------------------------------
 Fri Jul 2 08:19:13 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#100
