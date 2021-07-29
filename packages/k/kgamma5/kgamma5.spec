@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kgamma5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        Display gamma configuration
 License:        GPL-2.0-or-later
@@ -54,6 +54,7 @@ This package contains a KDE system settings module to configure display
 gamma.
 
 %lang_package
+
 %prep
 %setup -q -n %{name}-%{version}
 
