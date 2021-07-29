@@ -271,4 +271,12 @@
     yaml.composer.return_alias = lambda s: copy.deepcopy(s)</comment>
     <requestid>889864</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f56f2eed5519e2ef567227e9f3914e9e</srcmd5>
+    <version>0.17.10</version>
+    <time>1627587055</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908085</requestid>
+  </revision>
 </revisionlist>
