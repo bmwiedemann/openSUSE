@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 27 12:34:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- Changes since 5.22.3:
+  * wayland: Force decoration update
+  * scripting: Make QTimer constructible (kde#439630)
+  * platforms/drm: don't delete connectors in DrmGpu::removeOutput (kde#438789)
+  * platforms/drm: always populate atomic req with connector props
+  * platforms/drm: only show cursor on dpms on if not hidden
+
+-------------------------------------------------------------------
 Tue Jul 20 07:03:12 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix issues with EGLStream clients:
@@ -10,7 +24,7 @@ Tue Jul  6 12:01:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 - Update to 5.22.3
   * New bugfix release
   * For more details please see:
-  * https://kde.org/announcements/plasma/5/5.22.2
+  * https://kde.org/announcements/plasma/5/5.22.3
 - Changes since 5.22.2.1:
   * platforms/drm: Port away from gbm_format_get_name() (kde#439152)
   * xdgshellclient: fix moveresize with touch and CSD (kde#438283)
