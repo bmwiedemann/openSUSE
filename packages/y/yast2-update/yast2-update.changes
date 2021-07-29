@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:56:04 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Avoid to bind-mount /run twice (bsc#1181066).
+- 4.4.2
+
+-------------------------------------------------------------------
 Thu Jun 10 13:32:43 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Do not crash when an /etc/fstab file does not contain any
