@@ -22,7 +22,7 @@
 
 %bcond_without lang
 Name:           bluedevil5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        Bluetooth Manager for KDE Plasma
 License:        GPL-2.0-or-later
@@ -62,12 +62,13 @@ Recommends:     %{name}-lang
 Supplements:    packageand(bluez:plasma5-workspace)
 Conflicts:      bluedevil
 Requires(post): shared-mime-info
-Requires(postun): shared-mime-info
+Requires(postun):shared-mime-info
 
 %description
 Bluetooth daemon for KDE Plasma, handling connections.
 
 %lang_package
+
 %prep
 %setup -q -n bluedevil-%{version}
 
