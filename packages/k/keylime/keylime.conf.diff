@@ -1,7 +1,7 @@
-Index: keylime-6.1.0/keylime.conf
+Index: keylime-6.1.1/keylime.conf
 ===================================================================
---- keylime-6.1.0.orig/keylime.conf
-+++ keylime-6.1.0/keylime.conf
+--- keylime-6.1.1.orig/keylime.conf
++++ keylime-6.1.1/keylime.conf
 @@ -12,11 +12,13 @@ tls_check_hostnames = False
  # Valid values are "cfssl" or "openssl". For cfssl to work, you must have the
  # go binary installed in your path or in /usr/local/.
@@ -18,7 +18,7 @@ Index: keylime-6.1.0/keylime.conf
  receive_revocation_port = 8992
  
  #=============================================================================
-@@ -24,11 +26,13 @@ receive_revocation_port = 8992
+@@ -24,7 +26,8 @@ receive_revocation_port = 8992
  #=============================================================================
  
  # The binding address and port for the agent server
@@ -27,6 +27,10 @@ Index: keylime-6.1.0/keylime.conf
 +cloudagent_ip = 0.0.0.0
  cloudagent_port = 9002
  
+ # Address and port where the verifier and tenant can connect to reach the agent.
+@@ -33,7 +36,8 @@ agent_contact_ip = 127.0.0.1
+ agent_contact_port = 9002
+ 
  # The address and port of registrar server which agent communicate with
 -registrar_ip = 127.0.0.1
 +# registrar_ip = 127.0.0.1
@@ -34,7 +38,7 @@ Index: keylime-6.1.0/keylime.conf
  registrar_port = 8890
  
  # The name of the RSA key that Keylime should use for protecting shares of U/V.
-@@ -68,7 +72,8 @@ extract_payload_zip = True
+@@ -73,7 +77,8 @@ extract_payload_zip = True
  # 'dmidecode -s system-uuid'.
  # If you set this to "hostname", Keylime will use the full qualified domain
  # name of current host as the agent id.
@@ -44,8 +48,8 @@ Index: keylime-6.1.0/keylime.conf
  
  # Whether to listen for revocation notifications from the verifier or not.
  listen_notfications = True
-@@ -129,7 +134,8 @@ ek_handle = generate
- #=============================================================================
+@@ -137,7 +142,8 @@ ek_handle = generate
+ cloudverifier_id = default
  
  # The IP address and port of verifier server binds to
 -cloudverifier_ip = 127.0.0.1
@@ -54,7 +58,7 @@ Index: keylime-6.1.0/keylime.conf
  cloudverifier_port = 8881
  
  # The address and port of registrar server that verifier communicates with
-@@ -241,7 +247,8 @@ revocation_notifier = True
+@@ -250,7 +256,8 @@ revocation_notifier = True
  # The revocation notifier IP address and port used to start the revocation service.
  # If the 'revocation_notifier' option is set to "true", then the verifier
  # automatically starts the revocation service.
@@ -64,7 +68,7 @@ Index: keylime-6.1.0/keylime.conf
  revocation_notifier_port = 8992
  
  # The verifier limits the size of upload payloads (allowlists) which defaults to
-@@ -380,7 +387,8 @@ max_retries = 10
+@@ -389,7 +396,8 @@ max_retries = 10
  # might provide a signed list of EK public key hashes.  Then you could write
  # an ek_check_script that checks the signature of the allowlist and then
  # compares the hash of the given EK with the allowlist.
@@ -74,7 +78,7 @@ Index: keylime-6.1.0/keylime.conf
  
  # Optional script to execute to check the EK and/or EK certificate against a
  # allowlist or any other additional EK processing you want to do. Runs in
-@@ -406,7 +414,8 @@ ek_check_script=
+@@ -415,7 +423,8 @@ ek_check_script=
  
  # The registrar's IP address and port used to communicate with other services
  # as well as the bind address for the registrar server.

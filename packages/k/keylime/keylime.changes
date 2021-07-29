@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 26 09:31:01 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to Keylime 6.1.1
+  + keylime_tenant add crash with TypeError: Object of type 'bytes' is
+    not JSON serializable
+  + Whenever Keylime agent starts and cannot contact the registrar, it
+    fails and quits without flushing create EK handles
+  + keylime_tenant -c reglist now requires a "-t" parameter for no
+    reason
+  + Duplicated API calls to verifier in webapp backend
+  + Installer deletes tpm_cert_store files
+  + agent_uuid set to dmidecode crashes Keylime
+  + Copying of tpm_cert_store fails during installation
+  + If the PCR belong to a measured boot list, it is not validated
+  + keylime_tenant --c update fails with a race condition
+- Drop patches already present in the new version
+  + webapp-fix-tls-certs-paths.patch
+  + check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch
+  + tenant-do_cvdelete-wait-until-404.patch
+
+-------------------------------------------------------------------
 Wed Jul 21 14:17:10 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add tenant-do_cvdelete-wait-until-404.patch to fix the update command

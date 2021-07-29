@@ -1,8 +1,8 @@
-Index: keylime-6.1.0/setup.py
+Index: keylime-6.1.1/setup.py
 ===================================================================
---- keylime-6.1.0.orig/setup.py
-+++ keylime-6.1.0/setup.py
-@@ -32,6 +32,7 @@ setuptools.setup(
+--- keylime-6.1.1.orig/setup.py
++++ keylime-6.1.1/setup.py
+@@ -13,6 +13,7 @@ setuptools.setup(
      description=(
          'TPM-based key bootstrapping and system '
          'integrity measurement system for cloud'),

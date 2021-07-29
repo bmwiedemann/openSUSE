@@ -20,12 +20,12 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           keylime
-Version:        6.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Open source TPM software for Bootstrapping and Maintaining Trust
 License:        Apache-2.0 AND MIT
 URL:            https://github.com/keylime/keylime
-Source0:        %{name}-%{version}.tar.xz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        keylime.xml
 # PATCH-FIX-OPENSUSE version.diff
 Patch1:         version.diff
@@ -33,12 +33,6 @@ Patch1:         version.diff
 Patch2:         keylime.conf.diff
 # PATCH-FIX-OPENSUSE config-libefivars.diff
 Patch3:         config-libefivars.diff
-# PATCH-FIX-UPSTREAM webapp-fix-tls-certs-paths.patch gh#keylime/keylime!659
-Patch4:         webapp-fix-tls-certs-paths.patch
-# PATCH-FIX-UPSTREAM check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch gh#keylime/keylime!695
-Patch5:         check_pcrs-match-PCR-if-no-mb_refstate-is-provided.patch
-# PATCH-FIX-UPSTREAM tenant-do_cvdelete-wait-until-404.patch gh#keylime/keylime!711
-Patch6:         tenant-do_cvdelete-wait-until-404.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
