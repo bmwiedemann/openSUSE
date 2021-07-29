@@ -693,4 +693,12 @@
     <comment>New stable release (forwarded request 885790 from susnux)</comment>
     <requestid>886221</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>833e8cdab5a369761046e59741207e3a</srcmd5>
+    <version>2.42.6</version>
+    <time>1627587077</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909101 from yfjiang)</comment>
+    <requestid>909106</requestid>
+  </revision>
 </revisionlist>
