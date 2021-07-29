@@ -5088,4 +5088,12 @@
     end up empty after upgrade (bmo#1717894, boo#1188330)</comment>
     <requestid>907201</requestid>
   </revision>
+  <revision rev="341" vrev="1">
+    <srcmd5>b133976b0084847a5edb73a185168071</srcmd5>
+    <version>90.0.2</version>
+    <time>1627587054</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>908075</requestid>
+  </revision>
 </revisionlist>
