@@ -44,12 +44,12 @@
 %endif
 
 %ifarch ppc64
-%define build_skiboot_from_source 1
+%define build_skiboot_from_source 0
 %define build_slof_from_source 1
 %endif
 
 %ifarch ppc64le
-%define build_skiboot_from_source 1
+%define build_skiboot_from_source 0
 %define build_slof_from_source 1
 %endif
 
@@ -220,6 +220,9 @@ Patch00084:     tcg-Allocate-sufficient-storage-in-temp_.patch
 Patch00085:     hw-block-nvme-align-with-existing-style.patch
 Patch00086:     hw-nvme-fix-missing-check-for-PMR-capabi.patch
 Patch00087:     hw-nvme-fix-pin-based-interrupt-behavior.patch
+Patch00088:     hw-rdma-Fix-possible-mremap-overflow-in-.patch
+Patch00089:     pvrdma-Ensure-correct-input-on-ring-init.patch
+Patch00090:     pvrdma-Fix-the-ring-init-error-flow-CVE-.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1153,6 +1156,9 @@ This package records qemu testsuite results and represents successful testing.
 %patch00085 -p1
 %patch00086 -p1
 %patch00087 -p1
+%patch00088 -p1
+%patch00089 -p1
+%patch00090 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

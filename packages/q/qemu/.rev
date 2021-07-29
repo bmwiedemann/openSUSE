@@ -2736,4 +2736,22 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 - Use doc directive to build QEMU documentation</comment>
     <requestid>903796</requestid>
   </revision>
+  <revision rev="208" vrev="28">
+    <srcmd5>618d75f169b87f218c13adc325e4cb46</srcmd5>
+    <version>unknown</version>
+    <time>1627587053</time>
+    <user>dimstar_suse</user>
+    <comment>- Disabled skiboot building for PowerPC due to the following issue:
+  https://github.com/open-power/skiboot/issues/265
+- Fix possible mremap overflow in the pvrdma
+  (CVE-2021-3582, bsc#1187499)
+  hw-rdma-Fix-possible-mremap-overflow-in-.patch
+- Ensure correct input on ring init
+  (CVE-2021-3607, bsc#1187539)
+  pvrdma-Ensure-correct-input-on-ring-init.patch
+- Fix the ring init error flow
+  (CVE-2021-3608, bsc#1187538)
+  pvrdma-Fix-the-ring-init-error-flow-CVE-.patch</comment>
+    <requestid>908026</requestid>
+  </revision>
 </revisionlist>

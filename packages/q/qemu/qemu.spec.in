@@ -44,12 +44,12 @@
 %endif
 
 %ifarch ppc64
-%define build_skiboot_from_source 1
+%define build_skiboot_from_source 0
 %define build_slof_from_source 1
 %endif
 
 %ifarch ppc64le
-%define build_skiboot_from_source 1
+%define build_skiboot_from_source 0
 %define build_slof_from_source 1
 %endif
 

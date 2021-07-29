@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 23 19:43:33 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Disabled skiboot building for PowerPC due to the following issue:
+  https://github.com/open-power/skiboot/issues/265
+
+-------------------------------------------------------------------
+Fri Jul 23 19:22:24 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Fix possible mremap overflow in the pvrdma
+  (CVE-2021-3582, bsc#1187499)
+  hw-rdma-Fix-possible-mremap-overflow-in-.patch
+- Ensure correct input on ring init
+  (CVE-2021-3607, bsc#1187539)
+  pvrdma-Ensure-correct-input-on-ring-init.patch
+- Fix the ring init error flow
+  (CVE-2021-3608, bsc#1187538)
+  pvrdma-Fix-the-ring-init-error-flow-CVE-.patch
+
+-------------------------------------------------------------------
 Sat Jul  3 00:14:31 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Fix qemu-supportconfig network-manager verification
