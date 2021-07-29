@@ -1,0 +1,9 @@
+{
+  "list": [
+    {
+      "name": "packman",
+      "url": "http://ftp.gwdg.de/pub/linux/misc/packman/suse/",
+      "info": "Offers various additional packages for openSUSE, especially but not limited to multimedia related applications and libraries that are on the openSUSE Build Service application blacklist. It's the largest external repository of openSUSE packages. Packman is comprised of the following four repositories:\n\n* <a href=\"https://pmbs.links2linux.de/project/show/Essentials\">Essentials</a>: provides codecs and audio and video player applications, to fulfill the most essential needs\n* <a href=\"https://pmbs.links2linux.de/project/show/Multimedia\">Multimedia</a>: contains many more multimedia related applications\n* <a href=\"https://pmbs.links2linux.de/project/show/Extra\">Extra</a>: additional non multimedia related applications, mostly network related\n* <a href=\"https://pmbs.links2linux.de/project/show/Games\">Games</a>: obviously, games"
+    }
+  ]
+}
