@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 11:28:38 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
+
+- Re-enabled PipeWire support on openSUSE Leap 15.3+ as well as SLE15SP3+ because the required gcc and libpipewire versions are now avilable
+- Forced C and CXX compiler to GCC10 on openSUSE Leap 15.3+ as well as SLE15SP3+ to avoid a PipeWire modules compilation error with GCC7
+
+-------------------------------------------------------------------
 Mon Jun 14 00:39:11 UTC 2021 - Simon Vogl <simon.vogl@gmx.net>
 
 - Changed python dependency from "python > 3.0.0" to "python3" to avoid dependency errors

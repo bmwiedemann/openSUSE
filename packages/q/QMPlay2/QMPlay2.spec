@@ -29,6 +29,10 @@ Source:           https://github.com/zaps166/QMPlay2/releases/download/%{version
 Patch1:           0001-add-opensuse-customizations.patch
 BuildRequires:    cmake >= 3.16
 BuildRequires:    gcc-c++
+# Use gcc 10 for openSUSE Leap 15.3+ and SLE15SP3+
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150300
+BuildRequires:    gcc10-c++
+%endif
 BuildRequires:    ninja
 BuildRequires:    pkgconfig
 BuildRequires:    cmake(Qt5LinguistTools) >= 5.10.0
@@ -47,9 +51,9 @@ BuildRequires:    pkgconfig(libavutil) >= 56.14.100
 BuildRequires:    pkgconfig(libcddb)
 BuildRequires:    pkgconfig(libcdio)
 BuildRequires:    pkgconfig(libgme)
-# Enable PipeWire support on openSUSE Tumbleweed
-%if 0%{?suse_version} >= 1550
-BuildRequires:    pkgconfig(libpipewire-0.3) >= 0.3.22
+# Enable PipeWire support on openSUSE Leap 15.3+, SLE15SP3+ and openSUSE Tumbleweed
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+BuildRequires:    pkgconfig(libpipewire-0.3)
 %endif
 BuildRequires:    pkgconfig(libpulse)
 BuildRequires:    pkgconfig(libsidplayfp)
@@ -89,6 +93,10 @@ It's a development package for %{name}.
 # Build options
 %cmake \
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} >= 150300
+  -DCMAKE_C_COMPILER=gcc-10 \
+  -DCMAKE_CXX_COMPILER=g++-10 \
+%endif
   -DSOLID_ACTIONS_INSTALL_PATH="%{_datadir}/solid/actions" \
   -DUSE_LINK_TIME_OPTIMIZATION=ON \
   -DUSE_PCH=ON \
@@ -96,7 +104,7 @@ It's a development package for %{name}.
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
   -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
   -DUSE_GLSLC=OFF \
-%if 0%{?suse_version} >= 1550
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
   -DUSE_PIPEWIRE=ON \
 %else
   -DUSE_PIPEWIRE=OFF \
