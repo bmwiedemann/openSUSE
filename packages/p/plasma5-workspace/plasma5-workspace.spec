@@ -30,7 +30,7 @@ Name:           plasma5-workspace
 %{!?_plasma5_bugfix: %global _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.9.1 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
@@ -274,7 +274,7 @@ Requires:       polkit-kde-agent-5 >= %{_plasma5_bugfix}
 Requires:       powerdevil5 >= %{_plasma5_bugfix}
 Requires:       systemsettings5 >= %{_plasma5_bugfix}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Requires(pre):  %{_bindir}/cut
 Requires(pre):  %{_bindir}/grep
 Requires(pre):  %{_bindir}/sed
@@ -342,7 +342,7 @@ Plasma 5 session with Wayland from a display manager.
 
   %fdupes %{buildroot}/%{_prefix}
 
-%post 
+%post
 /sbin/ldconfig
 %{systemd_user_post plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
 	plasma-krunner.service plasma-ksmserver.service plasma-ksplash-ready.service plasma-plasmashell.service \
