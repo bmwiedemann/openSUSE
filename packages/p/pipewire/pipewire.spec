@@ -17,11 +17,6 @@
 #
 
 
-%define _use_internal_dependency_generator 0
-
-%global provfind sh -c "grep -v -e 'libjack.*\\.so' | %__find_provides"
-%global __find_provides %provfind
-
 %define apiver 0.3
 %define apiver_str 0_3
 %define spa_ver 0.2
@@ -34,6 +29,12 @@
 %define with_vulkan 0
 %endif
 
+%if 0%{?suse_version} >= 1550
+%define with_libcamera 1
+%else
+%define with_libcamera 0
+%endif
+
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %else
@@ -44,7 +45,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.31
+Version:        0.3.32
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,6 +54,8 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM pipewire-fix-libcamera-build.patch fcrozat@suse.com -- Fix build with latest libcamera
+Patch0:         pipewire-fix-libcamera-build.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -65,9 +68,12 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmltoman
-BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
+%if %{with_libcamera}
+BuildRequires:  pkgconfig(libcamera)
+%endif
 BuildRequires:  pkgconfig(dbus-1)
 %if %{with aac}
 BuildRequires:  pkgconfig(fdk-aac)
@@ -83,6 +89,7 @@ BuildRequires:  pkgconfig(gstreamer-audio-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(jack) >= 1.9.10
+BuildConflicts: pipewire-libjack-%{apiver_str}-devel
 %if %{with_ldacBT}
 BuildRequires:  pkgconfig(ldacBT-abr)
 BuildRequires:  pkgconfig(ldacBT-enc)
@@ -148,6 +155,10 @@ Summary:        PipeWire libjack replacement libraries
 Group:          Development/Libraries/C and C++
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
+Conflicts:      jack
+Conflicts:      libjack0
+Conflicts:      libjacknet0
+Conflicts:      libjackserver0
 
 %description libjack-%{apiver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
@@ -161,6 +172,26 @@ Some of its features include:
  * Sandboxed applications support.
 
 This package provides the PipeWire replacement libraries for libjack.
+
+%package libjack-%{apiver_str}-devel
+Summary:        Development files for %{name}-libjack-%{apiver_str}
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-libjack-%{apiver_str}
+Conflicts:      libjack-devel
+
+%description libjack-%{apiver_str}-devel
+PipeWire is a server and user space API to deal with multimedia pipelines.
+
+Some of its features include:
+
+ * Capture and playback of audio and video with minimal latency;
+ * Real-time Multimedia processing on audio and video;
+ * Multiprocess architecture to let applications share multimedia content;
+ * GStreamer plugins for easy use and integration in current applications;
+ * Sandboxed applications support.
+
+This package provides the PipeWire replacement development files
+for libjack.
 
 %package -n gstreamer-plugin-pipewire
 Summary:        Gstreamer Plugin for PipeWire
@@ -313,12 +344,19 @@ export CC=gcc-9
 %else
     -Dbluez5-codec-aptx=disabled \
 %endif
-    -Dlibcamera=disabled \
 %if %{with_ldacBT}
     -Dbluez5-codec-ldac=enabled \
 %else
     -Dbluez5-codec-ldac=disabled \
 %endif
+%if %{with_libcamera}
+    -Dlibcamera=enabled \
+%else
+    -Dlibcamera=disabled \
+%endif
+    -Dpipewire-jack=enabled \
+    -Djack=enabled \
+    -Djack-devel=enabled \
     %{nil}
 %meson_build
 
@@ -332,6 +370,9 @@ cp %{buildroot}%{_datadir}/alsa/alsa.conf.d/99-pipewire-default.conf \
 touch %{buildroot}%{_datadir}/pipewire/media-session.d/with-alsa
 mkdir -p %{buildroot}%{_udevrulesdir}
 mv -fv %{buildroot}/lib/udev/rules.d/90-pipewire-alsa.rules %{buildroot}%{_udevrulesdir}
+
+mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d/
+echo %{_libdir}/pipewire-%{apiver}/jack/ > %{buildroot}%{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
 
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 for wrapper in pw-jack ; do
@@ -482,7 +523,6 @@ fi
 %{_datadir}/pipewire/pipewire.conf
 %{_datadir}/pipewire/client.conf
 %{_datadir}/pipewire/client-rt.conf
-%{_datadir}/pipewire/jack.conf
 %{_datadir}/pipewire/pipewire-pulse.conf
 %ghost %dir %{_localstatedir}/lib/pipewire
 %ghost %{_localstatedir}/lib/pipewire/pipewire_post_workaround
@@ -496,9 +536,6 @@ fi
 %{_datadir}/pipewire/media-session.d/bluez-monitor.conf
 %{_datadir}/pipewire/media-session.d/media-session.conf
 %{_datadir}/pipewire/media-session.d/v4l2-monitor.conf
-%{_datadir}/pipewire/media-session.d/with-alsa
-%{_datadir}/pipewire/media-session.d/with-jack
-%{_datadir}/pipewire/media-session.d/with-pulseaudio
 
 %files -n %{libpipewire}
 %license LICENSE COPYING
@@ -508,15 +545,25 @@ fi
 
 %files libjack-%{apiver_str}
 %dir %{_libdir}/pipewire-%{apiver}/jack
-%{_libdir}/pipewire-%{apiver}/jack/libjack.so*
-%{_libdir}/pipewire-%{apiver}/jack/libjacknet.so*
-%{_libdir}/pipewire-%{apiver}/jack/libjackserver.so*
+%{_libdir}/pipewire-%{apiver}/jack/libjack.so.*
+%{_libdir}/pipewire-%{apiver}/jack/libjacknet.so.*
+%{_libdir}/pipewire-%{apiver}/jack/libjackserver.so.*
 %ghost %{_sysconfdir}/alternatives/pw-jack
 %ghost %{_sysconfdir}/alternatives/pw-jack.1%{ext_man}
 %{_bindir}/pw-jack-%{apiver}
 %{_bindir}/pw-jack
 %{_mandir}/man1/pw-jack-%{apiver}.1%{ext_man}
 %{_mandir}/man1/pw-jack.1%{ext_man}
+%{_datadir}/pipewire/jack.conf
+%config %{_sysconfdir}/ld.so.conf.d/pipewire-jack-%{_arch}.conf
+%{_datadir}/pipewire/media-session.d/with-jack
+
+%files libjack-%{apiver_str}-devel
+%{_includedir}/jack
+%{_libdir}/pipewire-%{apiver}/jack/libjack.so
+%{_libdir}/pipewire-%{apiver}/jack/libjacknet.so
+%{_libdir}/pipewire-%{apiver}/jack/libjackserver.so
+%{_libdir}/pkgconfig/jack.pc
 
 %files -n gstreamer-plugin-pipewire
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
@@ -596,6 +643,9 @@ fi
 %{_libdir}/spa-%{spa_ver}/control/libspa-control.so
 %{_libdir}/spa-%{spa_ver}/ffmpeg/libspa-ffmpeg.so
 %{_libdir}/spa-%{spa_ver}/jack/libspa-jack.so
+%if %{with_libcamera}
+%{_libdir}/spa-%{spa_ver}/libcamera/libspa-libcamera.so
+%endif
 %{_libdir}/spa-%{spa_ver}/support/libspa-dbus.so
 %{_libdir}/spa-%{spa_ver}/support/libspa-journal.so
 %{_libdir}/spa-%{spa_ver}/support/libspa-support.so
@@ -618,6 +668,9 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/volume
 %dir %{_libdir}/spa-%{spa_ver}/ffmpeg
 %dir %{_libdir}/spa-%{spa_ver}/jack
+%if %{with_libcamera}
+%dir %{_libdir}/spa-%{spa_ver}/libcamera
+%endif
 %dir %{_libdir}/spa-%{spa_ver}/support
 %dir %{_libdir}/spa-%{spa_ver}/v4l2
 %dir %{_libdir}/spa-%{spa_ver}/videoconvert
@@ -642,6 +695,7 @@ fi
 %files pulseaudio
 %{_bindir}/pipewire-pulse
 %{_userunitdir}/pipewire-pulse.*
+%{_datadir}/pipewire/media-session.d/with-pulseaudio
 %ghost %{_localstatedir}/lib/pipewire/pipewire-pulseaudio_post_workaround
 
 %files alsa
@@ -655,6 +709,7 @@ fi
 %dir %{_sysconfdir}/alsa/conf.d
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/50-pipewire.conf
 %config(noreplace) %{_sysconfdir}/alsa/conf.d/99-pipewire-default.conf
+%{_datadir}/pipewire/media-session.d/with-alsa
 
 %files lang -f %{name}.lang
 
