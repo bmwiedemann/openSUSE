@@ -29,8 +29,6 @@ BuildRequires:  libnuma-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 Conflicts:      hackbench
-# Only supported on intel architectures
-ExclusiveArch:  %{ix86} x86_64
 
 %description
 The Realtime Kernel Testsuite measures real-time attributes of the kernel,
