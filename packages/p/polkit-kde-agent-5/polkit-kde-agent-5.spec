@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           polkit-kde-agent-5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        PolicyKit authentication agent for KDE
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -51,6 +51,7 @@ Recommends:     %{name}-lang
 Provides Policy Kit Authentication Agent that nicely fits to KDE.
 
 %lang_package
+
 %prep
 %setup -q -n polkit-kde-agent-1-%{version}
 
