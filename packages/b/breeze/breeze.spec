@@ -22,7 +22,7 @@
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           breeze
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        Plasma Desktop artwork, styles and assets
 License:        GPL-2.0-or-later
@@ -60,8 +60,8 @@ BuildRequires:  pkgconfig(xcb)
 Requires:       breeze5-cursors >= %{version}
 Requires:       breeze5-icons >= %{version}
 Requires:       breeze5-style >= %{version}
-Recommends:     breeze5-wallpapers >= %{version}
 Recommends:     breeze5-decoration >= %{version}
+Recommends:     breeze5-wallpapers >= %{version}
 
 %description
 Artwork, styles and assets for the Breeze visual style for the Plasma Desktop.
