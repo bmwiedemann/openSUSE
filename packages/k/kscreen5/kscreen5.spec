@@ -20,7 +20,7 @@
 
 %bcond_without lang
 Name:           kscreen5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -71,6 +71,7 @@ Conflicts:      kscreen
 KScreen handles screen management for both X11 and Wayland sessions, including rotation, size, refresh rate, and scaling.
 
 %lang_package
+
 %prep
 %setup -q -n kscreen-%{version}
 
