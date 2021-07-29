@@ -422,4 +422,24 @@
   the job.</comment>
     <requestid>879949</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>943d2241586a1e8095167a83f8c60ac0</srcmd5>
+    <version>2+git20210723.27a0476</version>
+    <time>1627587050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20210723.27a0476:
+  * Don't trigger path unit on /usr/share
+  * Use flock to serialize calls (boo#1188500)
+  * Add --root &lt;directory&gt; option
+
+- Update to version 2+git20210609.a4969d7:
+  * Restore /etc/ssl/ca-bundle.pem if it doesn't exist
+  * Get rid of ls
+  * Fix indent inconsistencies
+  * Create /var/lib/ca-certificates if needed
+  * Install hooks with correct number
+  * Remove legacy files
+  * Remove find from update-ca-certificates</comment>
+    <requestid>907988</requestid>
+  </revision>
 </revisionlist>

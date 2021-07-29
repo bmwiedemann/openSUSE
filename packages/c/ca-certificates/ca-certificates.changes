@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 23 12:26:17 UTC 2021 - lnussel@suse.de
+
+- Update to version 2+git20210723.27a0476:
+  * Don't trigger path unit on /usr/share
+  * Use flock to serialize calls (boo#1188500)
+  * Add --root <directory> option
+
+-------------------------------------------------------------------
+Wed Jun 09 15:03:55 UTC 2021 - lnussel@suse.de
+
+- Update to version 2+git20210609.a4969d7:
+  * Restore /etc/ssl/ca-bundle.pem if it doesn't exist
+  * Get rid of ls
+  * Fix indent inconsistencies
+  * Create /var/lib/ca-certificates if needed
+  * Install hooks with correct number
+  * Remove legacy files
+  * Remove find from update-ca-certificates
+
+-------------------------------------------------------------------
 Thu Mar 18 17:22:38 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - openssl command line tools are no longer required, p11-kit does

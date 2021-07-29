@@ -28,21 +28,20 @@ Name:           ca-certificates
 %define ssletcdir %{_sysconfdir}/ssl
 %define cabundle  /var/lib/ca-certificates/ca-bundle.pem
 %define sslcerts  %{ssletcdir}/certs
-Version:        2+git20210309.8214505
+Version:        2+git20210723.27a0476
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Source0:        ca-certificates-%{version}.tar.xz
+Source0:        ca-certificates-%{version}.tar
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 URL:            https://github.com/openSUSE/ca-certificates
 #
 Requires:       /usr/bin/readlink
-Requires:       findutils
 Requires:       p11-kit
 Requires:       p11-kit-tools >= 0.23.1
 # needed for post
-Requires(post): p11-kit-tools findutils /usr/bin/readlink
+Requires(post): p11-kit-tools /usr/bin/readlink
 Recommends:     ca-certificates-mozilla
 # no need for a separate Java package anymore. The bundle is
 # created by C code.
@@ -76,17 +75,10 @@ install -d -m 555 %{buildroot}/var/lib/ca-certificates/openssl
 install -d -m 755 %{buildroot}/%{_prefix}/lib/systemd/system
 ln -s ../../var/lib/ca-certificates/pem %{buildroot}%{sslcerts}
 %if %{with cabundle}
-install -D -m 644 /dev/null %{buildroot}/%{cabundle}
+install -D -m 444 /dev/null %{buildroot}/%{cabundle}
 ln -s %{cabundle} %{buildroot}%{ssletcdir}/ca-bundle.pem
 %endif
-install -D -m 644 /dev/null %{buildroot}/var/lib/ca-certificates/java-cacerts
-
-# should be done in git.
-mv %{buildroot}/%{_prefix}/lib/ca-certificates/update.d/{,50}java.run
-mv %{buildroot}/%{_prefix}/lib/ca-certificates/update.d/{,70}openssl.run
-mv %{buildroot}/%{_prefix}/lib/ca-certificates/update.d/{,80}etc_ssl.run
-# certbundle.run must be run after etc_ssl.run as it uses a timestamp from it
-mv %{buildroot}/%{_prefix}/lib/ca-certificates/update.d/{,99}certbundle.run
+install -D -m 444 /dev/null %{buildroot}/var/lib/ca-certificates/java-cacerts
 
 %pre
 %service_add_pre ca-certificates.path ca-certificates.service
@@ -127,7 +119,7 @@ rm -rf %{buildroot}
 %dir /etc/ca-certificates/update.d
 %dir %{_prefix}/lib/ca-certificates
 %dir %{_prefix}/lib/ca-certificates/update.d
- %{_prefix}/lib/systemd/system/*
+%{_prefix}/lib/systemd/system/*
 %dir /var/lib/ca-certificates
 %dir /var/lib/ca-certificates/pem
 %dir /var/lib/ca-certificates/openssl
