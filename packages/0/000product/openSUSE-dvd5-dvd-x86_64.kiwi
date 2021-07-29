@@ -3456,6 +3456,7 @@
       <repopackage name="numad" arch="x86_64"/>
       <repopackage name="numlockx"/>
       <repopackage name="nvme-cli"/>
+      <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="ocfs2-tools"/>
       <repopackage name="ofl"/>
       <repopackage name="okteta"/>
