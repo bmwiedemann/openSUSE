@@ -1,0 +1,65 @@
+From ecd4a969939855350930511516ae20584bda7fa7 Fri Jun 11 18:53:18 2021 +0200
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Fri, Jun 11 18:53:18 2021 +0200
+
+dnf-backend: honor install_weak_deps=False if it is there
+
+Currently, even if we have "install_weak_deps=False" in
+/etc/dnf/dnf.conf, `pkcon install` still tries to install all
+the recommended packages.
+
+For avoiding that, we need to inform libdnf that we will
+solve the goal of the transaction ourselves (by means of the
+dnf_transaction_set_dont_solve_goal() API) and then explicitly
+set the flag for ignoring the weak dependencies.
+
+This fixes issue #486 and also solve
+https://bugzilla.redhat.com/show_bug.cgi?id=1955484
+
+diff -Nru PackageKit-1.2.2_patch/backends/dnf/pk-backend-dnf.c PackageKit-1.2.2_patch2/backends/dnf/pk-backend-dnf.c
+--- PackageKit-1.2.2_patch/backends/dnf/pk-backend-dnf.c	2021-06-10 17:55:04.016246418 +0200
++++ PackageKit-1.2.2_patch2/backends/dnf/pk-backend-dnf.c	2021-06-12 23:39:35.829973392 +0200
+@@ -932,6 +932,7 @@
+ 	gboolean ret;
+ 	DnfDb *db;
+ 	DnfState *state_local;
++	DnfGoalActions flags;
+ 	GPtrArray *installs = NULL;
+ 	GPtrArray *pkglist = NULL;
+ 	HyQuery query = NULL;
+@@ -1028,7 +1029,10 @@
+ 		} else {
+ 			hy_goal_upgrade_all (job_data->goal);
+ 		}
+-		ret = dnf_goal_depsolve (job_data->goal, DNF_ALLOW_UNINSTALL, &error);
++		flags = DNF_ALLOW_UNINSTALL;
++		if (!dnf_context_get_install_weak_deps())
++			flags |= DNF_IGNORE_WEAK_DEPS;
++		ret = dnf_goal_depsolve (job_data->goal, flags, &error);
+ 		if (!ret) {
+ 			pk_backend_job_error_code (job, error->code, "%s", error->message);
+ 			goto out;
+@@ -2541,6 +2545,7 @@
+ 			    GError **error)
+ {
+ 	DnfState *state_local;
++	DnfGoalActions dnf_flags = DNF_ALLOW_UNINSTALL;
+ 	PkBackendDnfJobData *job_data = pk_backend_job_get_user_data (job);
+ 	gboolean ret = TRUE;
+ 	/* allow downgrades for all transaction types */
+@@ -2569,6 +2574,15 @@
+ 	dnf_transaction_set_flags (job_data->transaction, flags);
+ 
+ 	state_local = dnf_state_get_child (state);
++
++	/* we solve the goal ourselves, so we can deal with flags */
++	dnf_transaction_set_dont_solve_goal(job_data->transaction, TRUE);
++	if (!dnf_context_get_install_weak_deps ())
++		dnf_flags |= DNF_IGNORE_WEAK_DEPS;
++	ret = dnf_goal_depsolve (job_data->goal, dnf_flags, error);
++	if (!ret)
++		return FALSE;
++
+ 	ret = dnf_transaction_depsolve (job_data->transaction,
+ 					job_data->goal,
+ 					state_local,
