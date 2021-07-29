@@ -406,4 +406,12 @@ Used &quot;osc vc&quot; for once to document changes (forwarded request 78484 fr
     <comment></comment>
     <requestid>831197</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>dd1c09aee6f143de8a32185a31e11a39</srcmd5>
+    <version>1.68</version>
+    <time>1627587057</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908309</requestid>
+  </revision>
 </revisionlist>

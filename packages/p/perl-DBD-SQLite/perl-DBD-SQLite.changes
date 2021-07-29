@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Jul 23 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.68
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+
+  1.68 2021-07-22
+      - Switched to a production version
+  1.67_07 2021-06-19
+      - Upgraded SQLite to 3.36.0
+  1.67_06 2021-06-14
+      - Experiment with another quadmath patch to see if it works
+        with an older version of FreeBSD
+  1.67_05 2021-06-13
+      - Made DBD_SQLITE_STRING_MODE constants exportable
+  1.67_04 2021-05-31
+      - Upgraded SQLite to 3.35.5
+      - Stop setting THREADSAFE=0 if perl has pthread (ie. 5.20+)
+        (Bjoern Hoehrmann++, GH#69, #72)
+      - Fixed a memory leak in ::VirtualTable
+      - Introduced "string_mode" handle attribute (Felipe Gasper++)
+        to fix long-standing issues of sqlite_unicode (GH#78, #68)
+      - Added a dependency from dbdimp.o to the *.inc files included
+        into dbdimp.c (Laurent Dami++, GH#74)
+      - Fixed an offset issue of VirtualTable (Laurent Dami++, GH#75)
+  1.67_03 2021-03-31
+      - Upgraded SQLite to 3.35.3
+      - Enabled math functions introduced in SQLite 3.35
+      - Fix quadmath issues (Tux++, leont++)
+  1.67_02 2020-12-06
+      - Upgraded SQLite to 3.34.0
+      - Added a few new constants
+      - Added sqlite_txn_state method to see internal state
+        of the backend
+  1.67_01 2020-11-24
+      - Switched to XSLoader (GH#63; toddr++)
+      - Use quadmath_snprintf if USE_QUADMATH is defined
+      - Use av_fetch instead of av_shift (norimy++)
+
+-------------------------------------------------------------------
 Mon Aug 31 03:07:40 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.66
