@@ -1,0 +1,112 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Mon, 26 Jul 2021 10:43:01 +0200
+Subject: perf: remove shebang from scripts/{perl,python}/*.{pl,py}
+Patch-mainline: submitted 2021/07/26 <20210726091434.5000-2-jslaby@suse.cz>
+References: fix x perm install
+
+The scripts cannot be executed on their own. The python ones were always
+installed without x permissions, the perl ones fail anyway:
+  BEGIN failed--compilation aborted at /usr/lib/perf-core/scripts/perl/rw-by-pid.pl line 18.
+so there is no point to have a shebang in them. This causes rpmlint to
+complain too:
+  W: non-executable-script /usr/lib/perf-core/scripts/perl/rw-by-file.pl 644 /usr/bin/perl -w
+
+Hence drop shebangs in them all and remove x permissions in the
+repository. If anyone wants some of them executable, they need to fix
+the install scripts first.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+Cc: Adrian Hunter <adrian.hunter@intel.com>
+Cc: Andi Kleen <ak@linux.intel.com>
+Cc: Ingo Molnar <mingo@redhat.com>
+Cc: Jiri Olsa <jolsa@redhat.com>
+Cc: Kan Liang <kan.liang@linux.intel.com>
+Cc: Leo Yan <leo.yan@linaro.org>
+Cc: Mark Rutland <mark.rutland@arm.com>
+Cc: Namhyung Kim <namhyung@kernel.org>
+Cc: Peter Zijlstra <peterz@infradead.org>
+Cc: Arnaldo Carvalho de Melo <acme@redhat.com>
+---
+ tools/perf/scripts/perl/rw-by-file.pl            | 1 -
+ tools/perf/scripts/perl/rw-by-pid.pl             | 1 -
+ tools/perf/scripts/perl/rwtop.pl                 | 1 -
+ tools/perf/scripts/perl/wakeup-latency.pl        | 1 -
+ tools/perf/scripts/python/exported-sql-viewer.py | 1 -
+ tools/perf/scripts/python/flamegraph.py          | 0
+ tools/perf/scripts/python/libxed.py              | 1 -
+ tools/perf/scripts/python/net_dropmonitor.py     | 0
+ tools/perf/scripts/python/stackcollapse.py       | 0
+ 9 files changed, 6 deletions(-)
+ mode change 100755 => 100644 tools/perf/scripts/python/exported-sql-viewer.py
+ mode change 100755 => 100644 tools/perf/scripts/python/flamegraph.py
+ mode change 100755 => 100644 tools/perf/scripts/python/net_dropmonitor.py
+ mode change 100755 => 100644 tools/perf/scripts/python/stackcollapse.py
+
+diff --git a/tools/perf/scripts/perl/rw-by-file.pl b/tools/perf/scripts/perl/rw-by-file.pl
+index 92a750b8552b..e0e4e23d5597 100644
+--- a/tools/perf/scripts/perl/rw-by-file.pl
++++ b/tools/perf/scripts/perl/rw-by-file.pl
+@@ -1,4 +1,3 @@
+-#!/usr/bin/perl -w
+ # SPDX-License-Identifier: GPL-2.0-only
+ # (c) 2009, Tom Zanussi <tzanussi@gmail.com>
+ 
+diff --git a/tools/perf/scripts/perl/rw-by-pid.pl b/tools/perf/scripts/perl/rw-by-pid.pl
+index d789fe39caab..43fcd4823f21 100644
+--- a/tools/perf/scripts/perl/rw-by-pid.pl
++++ b/tools/perf/scripts/perl/rw-by-pid.pl
+@@ -1,4 +1,3 @@
+-#!/usr/bin/perl -w
+ # SPDX-License-Identifier: GPL-2.0-only
+ # (c) 2009, Tom Zanussi <tzanussi@gmail.com>
+ 
+diff --git a/tools/perf/scripts/perl/rwtop.pl b/tools/perf/scripts/perl/rwtop.pl
+index eba4df67af6b..96ce72e53f8e 100644
+--- a/tools/perf/scripts/perl/rwtop.pl
++++ b/tools/perf/scripts/perl/rwtop.pl
+@@ -1,4 +1,3 @@
+-#!/usr/bin/perl -w
+ # SPDX-License-Identifier: GPL-2.0-only
+ # (c) 2010, Tom Zanussi <tzanussi@gmail.com>
+ 
+diff --git a/tools/perf/scripts/perl/wakeup-latency.pl b/tools/perf/scripts/perl/wakeup-latency.pl
+index 53444ff4ec7f..f8b59f0bd949 100644
+--- a/tools/perf/scripts/perl/wakeup-latency.pl
++++ b/tools/perf/scripts/perl/wakeup-latency.pl
+@@ -1,4 +1,3 @@
+-#!/usr/bin/perl -w
+ # SPDX-License-Identifier: GPL-2.0-only
+ # (c) 2009, Tom Zanussi <tzanussi@gmail.com>
+ 
+diff --git a/tools/perf/scripts/python/exported-sql-viewer.py b/tools/perf/scripts/python/exported-sql-viewer.py
+old mode 100755
+new mode 100644
+index 13f2d8a81610..358438a648a9
+--- a/tools/perf/scripts/python/exported-sql-viewer.py
++++ b/tools/perf/scripts/python/exported-sql-viewer.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # SPDX-License-Identifier: GPL-2.0
+ # exported-sql-viewer.py: view data from sql database
+ # Copyright (c) 2014-2018, Intel Corporation.
+diff --git a/tools/perf/scripts/python/flamegraph.py b/tools/perf/scripts/python/flamegraph.py
+old mode 100755
+new mode 100644
+diff --git a/tools/perf/scripts/python/libxed.py b/tools/perf/scripts/python/libxed.py
+index 2c70a5a7eb9c..3ea5bb8195c4 100644
+--- a/tools/perf/scripts/python/libxed.py
++++ b/tools/perf/scripts/python/libxed.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ # SPDX-License-Identifier: GPL-2.0
+ # libxed.py: Python wrapper for libxed.so
+ # Copyright (c) 2014-2021, Intel Corporation.
+diff --git a/tools/perf/scripts/python/net_dropmonitor.py b/tools/perf/scripts/python/net_dropmonitor.py
+old mode 100755
+new mode 100644
+diff --git a/tools/perf/scripts/python/stackcollapse.py b/tools/perf/scripts/python/stackcollapse.py
+old mode 100755
+new mode 100644
+-- 
+2.32.0
+

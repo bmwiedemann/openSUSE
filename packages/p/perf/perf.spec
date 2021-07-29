@@ -23,6 +23,10 @@
 # perf does not link with LTO
 %define _lto_cflags %{nil}
 %define version %(rpm -q --qf '%%{VERSION}' kernel-source)
+%define version_pure %(echo %{version}|sed 's@\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1\\2@')
+%if %{version_pure} >= 514
+%bcond_without devel
+%endif
 %ifarch s390x s390
 %define         _perf_unwind NO_LIBUNWIND=1
 %else
@@ -36,6 +40,8 @@ Summary:        Performance Monitoring Tools for Linux
 License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://perf.wiki.kernel.org/
+Patch0:         perf-5.14-don-t-install-headers-with-x-permissions.patch
+Patch1:         perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch
 BuildRequires:  OpenCSD-devel
 BuildRequires:  audit-devel
 %ifnarch %{arm}
@@ -43,6 +49,7 @@ BuildRequires:  babeltrace-devel
 %endif
 BuildRequires:  binutils-devel
 BuildRequires:  bison
+BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gtk2-devel
 BuildRequires:  kernel-source >= 2.6.31
@@ -71,6 +78,16 @@ which includes the Performance Counters for Linux (PCL) subsystem (>= 2.6.31).
 This subsystem utilizes the Performance Monitoring Unit (PMU) / hardware
 counters of the underlying cpu architecture (if supported).
 
+%if %{with devel}
+%package devel
+Summary:        Development headers for perf
+Group:          Development/Libraries/Other
+Requires:       %{name} = %{version}
+
+%description devel
+Development headers for perf. This is currently only dlfilter header.
+%endif
+
 %prep
 # copy necessary files from kernel-source since we need to modify them
 (cd %{_prefix}/src/linux ; tar -cf - COPYING CREDITS README tools include scripts Kbuild Makefile arch/*/{include,lib,Makefile} lib) | tar -xf -
@@ -79,7 +96,10 @@ chmod +x tools/perf/util/generate-cmdlist.sh
 # don't error out on deprecated definitions in gtk2.h
 sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdeprecated-declarations"@' tools/build/feature/test-gtk2.c
 
-%autopatch -p1
+%if %{version_pure} >= 514
+%patch0 -p1
+%patch1 -p1
+%endif
 
 %build
 cd tools/perf
@@ -120,6 +140,8 @@ mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bas
 # temp workaround as perf Makefile is still installing plugins even with LIBTRACEEVENT_DYNAMIC=1
 rm -rf %{buildroot}/%{_libdir}/traceevent
 
+%fdupes %{buildroot}/%{_prefix}/lib/%{name}-core
+
 %files
 %license COPYING
 %doc CREDITS README tools/perf/design.txt
@@ -136,5 +158,11 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %dir %{_docdir}/perf/examples
 %dir %{_docdir}/perf/examples/bpf
 %{_docdir}/perf/examples/bpf/*
+
+%if %{with devel}
+%files devel
+%dir %{_includedir}/perf/
+%{_includedir}/perf/*.h
+%endif
 
 %changelog

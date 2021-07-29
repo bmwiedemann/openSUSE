@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 26 07:05:21 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Fix for kernel 5.14
+  * add perf-5.14-don-t-install-headers-with-x-permissions.patch
+  * add perf-5.14-remove-shebang-from-scripts-perl-python-.-pl-py.patch
+
+-------------------------------------------------------------------
 Tue Jun 29 06:19:10 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - remove perf-tools-enable-libtraceevent-dynamic-linking.patch
