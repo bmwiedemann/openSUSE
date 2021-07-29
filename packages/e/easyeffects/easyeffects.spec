@@ -16,6 +16,12 @@
 #
 
 
+%ifarch riscv64
+%bcond_with gold
+%else
+%bcond_without gold
+%endif
+
 Name:           easyeffects
 Version:        6.0.3+0~git.35c27c34
 Release:        0
@@ -25,7 +31,9 @@ URL:            https://github.com/wwmm/easyeffects
 #Source0:        https://github.com/wwmm/easyeffects/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  appstream-glib
+%if %{with gold}
 BuildRequires:  binutils-gold
+%endif
 BuildRequires:  cmake
 BuildRequires:  gcc10-c++
 BuildRequires:  itstool
@@ -41,11 +49,11 @@ BuildRequires:  pkgconfig(libebur128)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(lilv-0)
+BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(rnnoise)
+BuildRequires:  pkgconfig(rubberband)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
-BuildRequires:  pkgconfig(rubberband)
-BuildRequires:  pkgconfig(nlohmann_json)
 Requires:       dconf
 Requires:       gstreamer-plugins-bad >= 1.12.5
 Requires:       gstreamer-plugins-good >= 1.12.5
@@ -60,7 +68,7 @@ PulseEffects is a limiter, compressor, reverberation, stereo equalizer and auto 
 effects for Pulseaudio applications.
 
 %package doc
-Summary: Documentation of Audio effects for Pulseaudio applications
+Summary:        Documentation of Audio effects for Pulseaudio applications
 
 %description doc
 This package contains documentation of Audio effects for Pulseaudio applications
@@ -73,11 +81,16 @@ This package contains documentation of Audio effects for Pulseaudio applications
 sed -i '/^meson.add_install_script/d' meson.build
 
 %build
+%if %{with gold}
 export LD=ld.gold
 alias ld=gold
+%endif
 export CC=gcc-10
 export CXX=g++-10
-export LDFLAGS="${LDFLAGS} -fuse-ld=gold -fPIC -Wl,--icf=safe -Wl,--gc-sections -Wl,-O1"
+export LDFLAGS="${LDFLAGS} -fPIC -Wl,--gc-sections -Wl,-O1"
+%if %{with gold}
+LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
+%endif
 %meson \
             -Db_ndebug=true \
             -Dc_args="${CFLAGS}" \
@@ -105,11 +118,9 @@ export LDFLAGS="${LDFLAGS} -fuse-ld=gold -fPIC -Wl,--icf=safe -Wl,--gc-sections 
 %{_datadir}/glib-2.0/schemas/com.github.wwmm.%{name}.*.xml
 %{_datadir}/metainfo/com.github.wwmm.%{name}.appdata.xml
 
-
 %files doc
 %license LICENSE.md
 %doc CHANGELOG.md README.md
 %{_datadir}/help/*/%{name}
-
 
 %changelog

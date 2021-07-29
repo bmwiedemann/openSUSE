@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 26 15:22:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Make use of gold optional and disable it on riscv64
+
+-------------------------------------------------------------------
 Wed Jul 21 23:50:29 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - removed Recommends handling for -lang package
