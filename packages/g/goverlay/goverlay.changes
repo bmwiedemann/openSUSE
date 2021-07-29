@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 29 09:56:57 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.6.1.
+  * fix: Distro info , Session and /home texts weren't displaying
+    correctly (Thanks to @devnull for the help)
+  * fix: HUD Title text doesn't apear as intended
+  * fix: Hints for Hud title and Custom command text boxes doesn't
+    apear.
+
+-------------------------------------------------------------------
 Thu Jul 22 22:33:35 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.6.0.
