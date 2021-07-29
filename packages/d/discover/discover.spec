@@ -21,7 +21,7 @@
 %global have_fwupd (0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300)
 
 Name:           discover
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        Software store for the KDE Plasma desktop
 License:        GPL-2.0-only AND GPL-3.0-only AND GPL-3.0-or-later
@@ -78,8 +78,8 @@ Requires:       kdeclarative-components
 Requires:       kirigami2
 Requires:       kuserfeedback-imports
 Requires:       libqt5-qtquickcontrols2
-Recommends:     %{name}-lang
 Recommends:     %{name}-backend-packagekit
+Recommends:     %{name}-lang
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150100
 Recommends:     %{name}-backend-flatpak
 %endif
@@ -173,7 +173,6 @@ user to install them using Discover.
 %{_kf5_bindir}/plasma-discover-update
 %{_kf5_debugdir}/discover.categories
 %{_kf5_iconsdir}/hicolor/*/apps/plasmadiscover.*
-%{_kf5_knsrcfilesdir}/discover_ktexteditor_codesnippets_core.knsrc
 %{_kf5_kxmlguidir}/plasmadiscover/
 %{_kf5_libdir}/plasma-discover/
 %{_kf5_libexecdir}/discover/
