@@ -2064,4 +2064,12 @@ Recommended for 12.3</comment>
     <comment>GNOME 40.3 (forwarded request 906588 from dimstar)</comment>
     <requestid>907044</requestid>
   </revision>
+  <revision rev="247" vrev="2">
+    <srcmd5>ca4f928866fd41756a06e3b4b466a3f5</srcmd5>
+    <version>3.40.3</version>
+    <time>1627587075</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909079 from yfjiang)</comment>
+    <requestid>909089</requestid>
+  </revision>
 </revisionlist>
