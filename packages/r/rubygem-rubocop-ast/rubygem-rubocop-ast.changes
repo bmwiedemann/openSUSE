@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 29 09:44:17 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.8.0
+
+  ### New features
+
+  * [#192](https://github.com/rubocop/rubocop-ast/pull/192): Add `branches` method for `AST::CaseMatchNode`. ([@koic][])
+
+  ### Changes
+
+  * Escape References in Documentation, partially addressing https://github.com/rubocop/rubocop/issues/9150. ([@wcmonty][])
+
+-------------------------------------------------------------------
 Tue Jun  1 03:42:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.7.0
