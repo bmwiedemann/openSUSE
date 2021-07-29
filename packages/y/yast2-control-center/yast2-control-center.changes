@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 26 14:27:27 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Use correct path for yast2 binary (related to bsc#1154854).
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Jul 21 14:43:12 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Run clients with nohup to avoid signal error messages when the
