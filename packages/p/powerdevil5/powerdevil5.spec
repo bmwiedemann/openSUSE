@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           powerdevil5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -74,6 +74,7 @@ KDE Power Management module. Provides kded daemon,
 DBus helper and KCM for configuring Power settings.
 
 %lang_package
+
 %prep
 %autosetup -p1 -n powerdevil-%{version}
 
@@ -90,7 +91,7 @@ DBus helper and KCM for configuring Power settings.
 
   rm -rfv %{buildroot}%{_kf5_libdir}/libpowerdevil{ui,core,configcommonprivate}.so
 
-%post 
+%post
 /sbin/ldconfig
 %{systemd_user_post plasma-powerdevil.service}
 
