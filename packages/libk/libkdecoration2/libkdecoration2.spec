@@ -22,7 +22,7 @@
 %define lname_private   libkdecorations2private%{private_sover}
 %bcond_without lang
 Name:           libkdecoration2
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        KDE's window decorations library
 License:        GPL-2.0-or-later
