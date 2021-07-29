@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 27 18:31:37 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.5-111-ga5b472dfcf8:
+  + (bsc#1188741) compression/snappy: use uint32_t to be compatible with 1.1.9 
+
+-------------------------------------------------------------------
+Thu Jul 22 10:57:24 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.5-110-gc5d9c915c46:
+  + rebased on top of upstream commit SHA1 7feddc9819ca05586f230accd67b4e26a328e618
+  + (bsc#1186348) mgr/zabbix: adapt zabbix_sender default path
+
+-------------------------------------------------------------------
 Thu Jul  8 19:37:59 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.5-29-g97c2c82c2f5:
