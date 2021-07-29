@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 29 10:49:18 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210729.455dc99c:
+  * Refactor code to split big method and improve doc
+  * Add test for inherit maintainer role
+  * Add note about explicit ignoring of inherited maintainership
+  * Avoid creation of duplicate add_role requests (fixes #2609)
+
+-------------------------------------------------------------------
 Fri Jul 23 07:29:40 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210723.7e5bacec:
