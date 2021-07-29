@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 28 19:58:40 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
+
+- new upstream v3.9.4 fixed some uninitialized values.
+- new since v3.9.3 implemented various functions related to
+  parse using AgsSolverMatrix, AgsSolverVector and
+  AgsSolverPolynomial as well arithmetic functions and elimination
+  procedure.
+- fixed SIGSEGV of AgsPitchSampler
+- added unit tests
+- incomplete refactoring of synth utility functions
+- new since v3.9.2 implemented ags_volume_util.c,
+  ags_envelope_util.c, ags_peak_util.c and ags_resample_util.c
+- many now deprecated utility functions, the replacement have got
+  a different function signature whereby only a pointer to a struct
+  is required containing all required parameters. Further the
+  replacement uses accelerated operations are inteded to run just
+  in time.
+
+-------------------------------------------------------------------
 Mon Jun 28 08:19:28 UTC 2021 - Joël Krähemann <jkraehemann@gmail.com>
 
 - new upstream v3.9.1 added empty structs with boxed type for
