@@ -19,7 +19,7 @@
 %define kf5_version 5.54.0
 %bcond_without lang
 Name:           kde-cli-tools5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 Summary:        Additional CLI tools for KDE applications
 License:        GPL-2.0-or-later
@@ -61,13 +61,14 @@ Requires:       kdbusaddons-tools
 %if %{with lang}
 Recommends:     %{name}-lang
 %endif
-Requires(post):     update-alternatives
-Requires(postun):   update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 
 %description
 Additional CLI tools for KDE applications and workspaces.
 
 %lang_package
+
 %prep
 %setup -q -n kde-cli-tools-%{version}
 %autopatch -p1
