@@ -22,6 +22,15 @@ After=named.service clamd.service
 Before=mail-transfer-agent.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
 Type=notify
 NotifyAccess=main
 KillMode=mixed
