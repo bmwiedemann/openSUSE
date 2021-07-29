@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:49:46 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * amavis.service
+
+-------------------------------------------------------------------
 Wed Feb 24 21:42:51 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - Package amavisd-milter in a separate package
