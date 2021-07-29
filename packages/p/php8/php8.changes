@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 16:42:04 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.9: This is a bug fix release. See
+  https://www.php.net/ChangeLog-8.php#8.0.9
+
+-------------------------------------------------------------------
 Thu Jul  1 16:42:55 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.8: This is a security release which also contains
