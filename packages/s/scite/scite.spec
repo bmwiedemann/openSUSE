@@ -16,23 +16,21 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-#FIXME upstream fixing needed so lto can be re-enabled.
-%if 0%{?suse_version} > 1500
-%define _lto_cflags %{nil}
-%endif
 
-%define tar_ver 510
+%define tar_ver 511
 
 Name:           scite
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
 URL:            https://www.scintilla.org/SciTE.html
 Source0:        http://download.sourceforge.net/scintilla/%{name}%{tar_ver}.tgz
-Source1:        %{name}.changes
+# PATCH-FEATURE-OPENSUSE scite-use-system-scintilla.patch badshah400@gmail.com -- Compile against system scintilla library
+Patch0:         scite-use-system-scintilla.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  libscintilla-devel >= %{version}
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gail-3.0)
 BuildRequires:  pkgconfig(gdk-3.0)
@@ -51,13 +49,12 @@ Scintilla, it has grown to be a generally useful editor with facilities for
 building and running programs.
 
 %prep
-%setup -q -c
+%autosetup -p1 -c
 
 %build
 export CXXFLAGS='%{optflags}'
 export CFLAGS='%{optflags}'
 %make_build GTK3=1 -C lexilla/src
-%make_build GTK3=1 -C scintilla/gtk
 %make_build GTK3=1 -C scite/gtk
 
 %install
@@ -80,7 +77,6 @@ export NO_BRP_CHECK_RPATH=true
 %{_datadir}/applications/SciTE.desktop
 %dir %{_prefix}/lib/scite
 %{_prefix}/lib/scite/liblexilla.so
-%{_prefix}/lib/scite/libscintilla.so
 %{_mandir}/man1/SciTE.1%{?ext_man}
 
 %changelog
