@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 26 09:21:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add libnm0 to baselibs.conf to be used by 64bit Steam
+
+-------------------------------------------------------------------
 Tue Jul 20 18:24:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.32.4:
@@ -101,6 +106,17 @@ Fri Apr  9 06:11:21 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
 - Add nm-dhcp-use-valid-lease-on-timeout.patch: Support valid lease
   file on dhcp timeout(glfd#NetworkManager/NetworkManager!811,
   bsc#1183202).
+- Drop nm-fix-dhcp-client-timeout.patch: Replace by the patch
+  immediately above.
+
+-------------------------------------------------------------------
+Fri Apr  9 06:11:21 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add nm-fix-dhcp-client-timeout.patch: Better handle dhclient's
+  timeout so that a recorded lease can be used when dhcp server
+  is down(glfo#NetworkManager/NetworkManager!811, bsc#1183202).
+- Modified NetworkManager.conf: Use dhclient as the default dhcp
+  client(glfo#NetworkManager/NetworkManager!811, bsc#1183202).
 
 -------------------------------------------------------------------
 Thu Mar 25 07:54:02 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
