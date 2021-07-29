@@ -28,7 +28,7 @@
 
 %bcond_without lang
 Name:           plasma5-desktop
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.9.3)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -160,8 +160,8 @@ Requires:       accountsservice
 Requires:       signon-plugin-oauth2
 %endif
 Conflicts:      kactivities5 < 5.20.0
-Recommends:     plasma5-addons
 Recommends:     %{name}-emojier
+Recommends:     plasma5-addons
 Provides:       kdebase4-workspace = 5.3.0
 Obsoletes:      kdebase4-workspace < 5.3.0
 Provides:       kcm-touchpad = %{version}

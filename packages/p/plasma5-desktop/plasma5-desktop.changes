@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 27 12:34:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.4
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.4
+- Changes since 5.22.3:
+  * [panel] When in adaptive transparency go transparent when in show desktop mode (kde#439209)
+  * kcms/keys: Use storageId instead of desktopEntryName (kde#438204)
+  * kcm/keys: Always try looking up services by storageId
+  * Fix shift-action modifier in context menu (kde#425997)
+  * [kcms/keyboard] Fix translations of OSD config (kde#439394)
+
+-------------------------------------------------------------------
 Sun Jul 18 08:31:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %files section. plasma-framework >= 5.84 doesn't install
@@ -10,7 +24,7 @@ Tue Jul  6 12:01:49 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 - Update to 5.22.3
   * New bugfix release
   * For more details please see:
-  * https://kde.org/announcements/plasma/5/5.22.2
+  * https://kde.org/announcements/plasma/5/5.22.3
 - Changes since 5.22.2.1:
   * Don't hide expanded representation if plasmoid is pinned (kde#439269)
   * [Task Manager] Load album art background asynchronously (kde#439512)
