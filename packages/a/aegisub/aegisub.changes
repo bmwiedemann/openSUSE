@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 29 14:18:57 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Disable 32 bit build, causes gcc bug.
+
+-------------------------------------------------------------------
 Tue Apr 13 19:13:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Upstream orphaned (or at least inactive), use active wangqr fork
