@@ -46,6 +46,13 @@ Tue Dec  8 08:24:53 UTC 2020 - dimstar@opensuse.org
   + Fix leak in the error path of the XPM loader.
   + Fix loading GIF without a GCE rendering color 0.
   + Fix invalid LZW codes in the GIF loader (CVE-2020-29385).
+- Drop gdk-pixbuf-bsc1180393-CVE-2020-29385.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Thu Dec  7 07:35:09 UTC 2020 - Jia Zhaocong <zcjia@suse.com>
+
+- Add gdk-pixbuf-bsc1180393-CVE-2020-29385.patch:
+  gif: Fix LZW decoder accepting invalid LZW code. (bsc#1180393)
 
 -------------------------------------------------------------------
 Mon Nov  9 15:52:50 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
