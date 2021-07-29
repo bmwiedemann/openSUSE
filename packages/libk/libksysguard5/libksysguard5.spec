@@ -19,7 +19,7 @@
 %bcond_without lang
 %global systemstatssover 1
 Name:           libksysguard5
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -73,8 +73,8 @@ BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xres)
 BuildRequires:  pkgconfig(zlib)
-Recommends:     %{name}-lang
 Recommends:     %{name}-imports
+Recommends:     %{name}-lang
 
 %description
 Task management and system monitoring library.
@@ -122,7 +122,7 @@ Obsoletes:      %{name}-helper <= %{version}
 Conflicts:      ksysguard5 < 5.21.80
 # For post and verifyscript
 Requires(post): permissions
-Requires(verify): permissions
+Requires(verify):permissions
 
 %description plugins
 Task management and system monitoring library. This package contains plugins.
@@ -133,7 +133,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description imports
-This package provides QtQuick bindings for libksysguard, allowing its use in 
+This package provides QtQuick bindings for libksysguard, allowing its use in
 QML applications.
 
 %lang_package
