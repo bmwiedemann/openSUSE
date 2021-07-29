@@ -3873,4 +3873,20 @@ StandardGroups in rpmlint package.
     <comment></comment>
     <requestid>907180</requestid>
   </revision>
+  <revision rev="335" vrev="4">
+    <srcmd5>9bf34d68cf6ff70d1ac9d5c238f18a9b</srcmd5>
+    <version>7.5.0</version>
+    <time>1627587072</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Re-exec'ing virt{lock,log}d in posttrans was mistakenly
+  dropped in a previous change. Add it back.
+
+- libxl: ovmf now provides only one firmware for Xen. The firmware
+  is named ovmf-x86_64-xen-4m.bin in the SUSE ovmf package. Adjust
+  the upstream default firmware path to match the SUSE name.
+- packaging: To improve maintainability, rename suse-ovmf-paths.patch
+  to suse-qemu-ovmf-paths.patch and suse-xen-ovmf-loaders.patch to
+  suse-xen-ovmf-paths.patch</comment>
+    <requestid>908661</requestid>
+  </revision>
 </revisionlist>

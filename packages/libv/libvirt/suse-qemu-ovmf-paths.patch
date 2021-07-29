@@ -1,5 +1,10 @@
 Adjust paths of OVMF firmwares on SUSE distros
 
+Note: SLE15 SP2 and newer support automatic firmware selection. Firmwares
+advertised and used by libvirt are automatically detected. Until upstream
+removes the old DEFAULT_LOADER_NVRAM approach and associated code, this
+patch will stay.
+
 Index: libvirt-7.5.0/src/qemu/qemu.conf
 ===================================================================
 --- libvirt-7.5.0.orig/src/qemu/qemu.conf

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 27 18:10:29 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- spec: Re-exec'ing virt{lock,log}d in posttrans was mistakenly
+  dropped in a previous change. Add it back.
+
+-------------------------------------------------------------------
+Thu Jul 22 22:19:47 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- libxl: ovmf now provides only one firmware for Xen. The firmware
+  is named ovmf-x86_64-xen-4m.bin in the SUSE ovmf package. Adjust
+  the upstream default firmware path to match the SUSE name.
+- packaging: To improve maintainability, rename suse-ovmf-paths.patch
+  to suse-qemu-ovmf-paths.patch and suse-xen-ovmf-loaders.patch to
+  suse-xen-ovmf-paths.patch
+
+-------------------------------------------------------------------
 Fri Jul 16 23:05:03 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - spec: Don't forcibly remove '--listen' arg from

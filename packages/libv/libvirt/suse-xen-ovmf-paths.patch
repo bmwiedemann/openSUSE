@@ -1,0 +1,20 @@
+libxl: Use the SUSE ovmf firmware path for Xen
+
+The libxl driver trivially supports firmware autoselection since as of
+June 2021 ovmf only supports one firmware for Xen. This patch adjusts
+the firmware path to match the one provided by the ovmf package.
+
+
+Index: libvirt-7.5.0/src/libxl/libxl_conf.c
+===================================================================
+--- libvirt-7.5.0.orig/src/libxl/libxl_conf.c
++++ libvirt-7.5.0/src/libxl/libxl_conf.c
+@@ -1813,7 +1813,7 @@ libxlDriverConfigNew(void)
+     cfg->firmwares = g_new0(virFirmware *, 1);
+     cfg->nfirmwares = 1;
+     cfg->firmwares[0] = g_new0(virFirmware, 1);
+-    cfg->firmwares[0]->name = g_strdup(LIBXL_FIRMWARE_DIR "/ovmf.bin");
++    cfg->firmwares[0]->name = g_strdup(DATADIR "/qemu/ovmf-x86_64-xen-4m.bin");
+ #endif
+ 
+     /* Always add hvmloader to firmwares */

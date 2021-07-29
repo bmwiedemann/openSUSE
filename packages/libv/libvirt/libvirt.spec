@@ -302,13 +302,13 @@ Patch156:       0001-libxl-add-support-for-BlockResize-API.patch
 Patch200:       suse-libvirtd-disable-tls.patch
 Patch201:       suse-libvirt-guests-service.patch
 Patch202:       suse-qemu-conf.patch
-Patch203:       suse-ovmf-paths.patch
+Patch203:       suse-qemu-ovmf-paths.patch
 Patch204:       libxl-support-block-script.patch
 Patch205:       qemu-apparmor-screenshot.patch
 Patch206:       libvirt-suse-netcontrol.patch
 Patch207:       lxc-wait-after-eth-del.patch
 Patch208:       suse-libxl-disable-autoballoon.patch
-Patch209:       suse-xen-ovmf-loaders.patch
+Patch209:       suse-xen-ovmf-paths.patch
 Patch210:       virt-create-rootfs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -1147,6 +1147,10 @@ fi
 %service_del_postun_without_restart libvirtd.service libvirtd.socket libvirtd-ro.socket libvirt-guests.service libvirtd-admin.socket libvirtd-tcp.socket libvirtd-tls.socket virtlockd.service virtlockd.socket virtlogd.service virtlogd.socket virtlockd-admin.socket virtlogd-admin.socket virtproxyd.service virtproxyd.socket virtproxyd-ro.socket virtproxyd-admin.socket virtproxyd-tcp.socket virtproxyd-tls.socket virt-guest-shutdown.target
 
 %posttrans daemon
+# virtlockd and virtlogd must not be restarted, particularly virtlockd since the
+# locks it uses to protect VM resources would be lost. Both are safe to re-exec.
+%{_bindir}/systemctl reload-or-try-restart virtlockd.service >/dev/null 2>&1 || :
+%{_bindir}/systemctl reload-or-try-restart virtlogd.service >/dev/null 2>&1 || :
 # The '--listen' option is incompatible with socket activation.
 # Check if the existing install uses --listen
 listen_mode=no
