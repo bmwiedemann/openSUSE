@@ -175,13 +175,11 @@ unsorted:
   - OpenShadingLanguage-doc 
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
-  - PackageKit-Qt-devel 
   - PackageKit-backend-dnf: [i586] 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
   - PgTcl 
   - Photini 
-  - Play 
   - PlayOnLinux 
   - Printrun 
   - Printrun-common 
@@ -1148,9 +1146,6 @@ unsorted:
   - bazel-workspaces 
   - bazel0.19: [x86_64] 
   - bazel0.24: [x86_64] 
-  - bazel0.29: [x86_64] 
-  - bazel1.2: [x86_64] 
-  - bazel2.0: [x86_64] 
   - bazel3.4: [x86_64] 
   - bazel3.7: [x86_64] 
   - bb 
@@ -2515,7 +2510,6 @@ unsorted:
   - cuishark 
   - culmus-ancient-semitic-fonts 
   - culmus-fonts 
-  - cuneiform 
   - cunit-devel 
   - cunit-doc 
   - cups-airprint 
@@ -3180,7 +3174,6 @@ unsorted:
   - elua 
   - emacs-auctex 
   - emacs-color-theme 
-  - emacs-completion-golang 
   - emacs-el 
   - emacs-gnuplot-mode 
   - emacs-gnuplot-mode-doc 
@@ -3670,8 +3663,6 @@ unsorted:
   - fluidsynth-devel 
   - fluidsynth-dssi 
   - flute-javadoc 
-  - fluxbox 
-  - fluxbox-styles-upstream 
   - flxmlrpc-devel 
   - fly 
   - fmit 
@@ -3907,7 +3898,6 @@ unsorted:
   - ganglia-gmond 
   - ganglia-gmond-modules-python 
   - ganglia-web 
-  - gangway 
   - garlic 
   - garlic-doc 
   - gaupol 
@@ -5857,7 +5847,6 @@ unsorted:
   - go-for-it-lang 
   - go-md2man 
   - go-race: [x86_64] 
-  - go-tools 
   - go1.10 
   - go1.10-doc 
   - go1.10-race: [x86_64] 
@@ -5891,7 +5880,6 @@ unsorted:
   - gobby-lang 
   - gobject-introspection 
   - gobject-introspection-devel 
-  - gocode 
   - gocr 
   - gocr-gui 
   - godot 
@@ -5920,7 +5908,6 @@ unsorted:
   - golang-github-linuxdeepin-go-x11-client 
   - golang-github-linuxdeepin-startdde 
   - golang-github-lusitaniae-apache_exporter 
-  - golang-github-nsf-gocode 
   - golang-github-prometheus-alertmanager 
   - golang-github-prometheus-node_exporter 
   - golang-github-prometheus-prometheus 
@@ -5930,14 +5917,9 @@ unsorted:
   - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
   - golang-org-x-net-context 
-  - golang-org-x-net-html 
-  - golang-org-x-net-websocket 
   - golang-org-x-sync 
   - golang-org-x-sys 
-  - golang-org-x-tools 
   - golang-packaging 
-  - goldendict 
-  - goldendict-lang 
   - gom-devel 
   - gomuks 
   - goobox 
@@ -6479,7 +6461,6 @@ unsorted:
   - hashcat-devel 
   - hashdeep 
   - haveged-devel 
-  - hawk-apiserver 
   - hawkey-man 
   - hawknl-devel 
   - hawknl-libs 
@@ -8264,7 +8245,6 @@ unsorted:
   - kupfer 
   - kured 
   - kured-k8s-yaml: [i586] 
-  - kurso-de-esperanto 
   - kuserfeedback-devel 
   - kuserfeedback-server 
   - kuserfeedback-tools 
@@ -8285,8 +8265,6 @@ unsorted:
   - kwayland-devel 
   - kwayland-devel-32bit: [x86_64] 
   - kwayland-server-devel 
-  - kwebkitpart 
-  - kwebkitpart-lang 
   - kwidgetsaddons-devel 
   - kwidgetsaddons-devel-32bit: [x86_64] 
   - kwin5-devel 
@@ -10165,8 +10143,6 @@ unsorted:
   - libcue-devel 
   - libcuefile-devel 
   - libcuefile0 
-  - libcuneiform-devel 
-  - libcuneiform1 
   - libcunit1 
   - libcupsimage2-32bit: [x86_64] 
   - libcurl-devel 
@@ -10458,7 +10434,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-3_30-0 
+  - libevtlog-3_33-0 
   - libevtlog-devel 
   - libevtlog0 
   - libevtx-devel 
@@ -10976,8 +10952,8 @@ unsorted:
   - libgrooveplayer-devel 
   - libgrooveplayer4 
   - libgrpc++1 
-  - libgrpc16 
-  - libgrpc_plugin_support1_38 
+  - libgrpc18 
+  - libgrpc_plugin_support1_39 
   - libgrss-devel 
   - libgrss0 
   - libgsasl-devel 
@@ -13094,7 +13070,7 @@ unsorted:
   - libquvi-scripts-devel 
   - libquvi-scripts-nsfw 
   - libqwt5-qt5-5 
-  - libqwt6 
+  - libqwt6_2 
   - libqwtplot3d-qt5-0 
   - libqxmledit0 
   - libqxmledit0-32bit: [x86_64] 
@@ -13351,7 +13327,6 @@ unsorted:
   - libretro-nestopia 
   - libretro-parallel-n64 
   - libretro-pcsx-rearmed 
-  - libretro-play 
   - libretro-ppsspp 
   - libretro-prosystem 
   - libretro-stella 
@@ -14111,7 +14086,7 @@ unsorted:
   - libunshield0 
   - libunwind-32bit: [x86_64] 
   - libunwind-devel 
-  - libupb16 
+  - libupb18 
   - libupm1 
   - libupnp-devel 
   - libupnp17-32bit: [x86_64] 
@@ -14978,7 +14953,6 @@ unsorted:
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
   - lmms-vst: [x86_64] 
-  - lnav 
   - lndir 
   - loadlin: [i586] 
   - local-npm-registry 
@@ -15808,7 +15782,6 @@ unsorted:
   - menu-cache-devel 
   - mercurial 
   - mercurial-lang 
-  - meshlab 
   - meslo-lg-fonts 
   - meson 
   - meson-test 
@@ -15882,6 +15855,7 @@ unsorted:
   - microdnf: [i586] 
   - microos-devel-tools 
   - microos-tools: [i586] 
+  - micropython: [x86_64] 
   - miller 
   - miltertest 
   - mimic 
@@ -17303,7 +17277,6 @@ unsorted:
   - nut-devel 
   - nut-drivers-net 
   - nvdock 
-  - nvidia-container-toolkit 
   - nvidia-texture-tools 
   - nvme-cli-regress-script 
   - nvmetcli 
@@ -17806,7 +17779,6 @@ unsorted:
   - openSUSE-release-usb-kde 
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
-  - openSUSE-software 
   - openSUSEway 
   - openafs-authlibs 
   - openafs-authlibs-devel 
@@ -18214,6 +18186,7 @@ unsorted:
   - packETH 
   - packETH-cli 
   - package-translations 
+  - packagekitqt5-devel 
   - packit 
   - paexec 
   - paexec-examples 
@@ -30701,8 +30674,6 @@ unsorted:
   - quilter 
   - quilter-lang 
   - quimup 
-  - quiterss 
-  - quiterss-lang 
   - quotatool 
   - qutebrowser 
   - quvi 
@@ -32371,6 +32342,7 @@ unsorted:
   - syslog-ng-devel 
   - syslog-ng-geoip 
   - syslog-ng-java 
+  - syslog-ng-mqtt 
   - syslog-ng-python 
   - syslog-ng-redis 
   - syslog-ng-smtp 
@@ -41552,7 +41524,6 @@ unsorted:
   - vifm-colors 
   - vigra-devel 
   - vilistextum 
-  - vim-completion-golang 
   - vim-fzf 
   - vim-icinga2 
   - vim-plugin-NERDcommenter 
@@ -42423,7 +42394,6 @@ unsorted:
   - yast2-devtools 
   - yast2-dns-manager 
   - yast2-docker: [x86_64] 
-  - yast2-drbd: [i586] # suggested by dvd:suggested:patterns-yast-yast2_server 
   - yast2-fcoe-client 
   - yast2-firstboot-wsl 
   - yast2-fonts 
