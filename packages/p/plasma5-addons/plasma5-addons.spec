@@ -18,14 +18,14 @@
 
 %bcond_without lang
 Name:           plasma5-addons
-Version:        5.22.3
+Version:        5.22.4
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
 # Latest ABI-stable Plasma (e.g. 5.8 in KF5, but 5.8.95 in KUF)
 %{!?_plasma5_version: %define _plasma5_version %(echo %{_plasma5_bugfix} | awk -F. '{print $1"."$2}')}
 Summary:        Additional Plasma5 Widgets
-License:        LGPL-2.1-only AND GPL-2.0-or-later AND GPL-3.0-only
+License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 Group:          System/GUI/KDE
 URL:            http://www.kde.org/
 Source:         https://download.kde.org/stable/plasma/%{version}/kdeplasma-addons-%{version}.tar.xz
@@ -86,7 +86,7 @@ Group:          Development/Libraries/KDE
 Requires:       %{name} = %{version}
 
 %description devel
-This package contains development files to develop additional widgets for 
+This package contains development files to develop additional widgets for
 the Plasma desktop.
 
 %prep
