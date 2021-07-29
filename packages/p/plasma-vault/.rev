@@ -630,4 +630,12 @@
   desktop files in %_kf5_servicesdir anymore.</comment>
     <requestid>906906</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a904439ce124c84c447772573e0eef7a</srcmd5>
+    <version>5.22.4</version>
+    <time>1627587107</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.4 (forwarded request 908666 from Vogtinator)</comment>
+    <requestid>908719</requestid>
+  </revision>
 </revisionlist>
