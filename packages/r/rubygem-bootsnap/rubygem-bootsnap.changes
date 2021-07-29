@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 29 08:40:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.7.6
+
+  * Fix reliance on `set` to be required.
+  * Fix `Encoding::UndefinedConversionError` error for Rails applications when precompiling cache. (#364)
+
+-------------------------------------------------------------------
 Fri May 14 16:00:26 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.7.5

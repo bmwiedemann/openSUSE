@@ -87,4 +87,12 @@
     <comment></comment>
     <requestid>893191</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3de8fb004b5f15c1b737d389e73f527c</srcmd5>
+    <version>1.7.6</version>
+    <time>1627587116</time>
+    <user>dimstar_suse</user>
+    <comment>update (forwarded request 909109 from mschnitzer)</comment>
+    <requestid>909125</requestid>
+  </revision>
 </revisionlist>
