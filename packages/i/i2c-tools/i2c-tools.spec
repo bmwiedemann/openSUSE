@@ -1,7 +1,7 @@
 #
 # spec file for package i2c-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %endif
 
 Name:           i2c-tools
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        A heterogeneous set of I2C tools for Linux
 License:        GPL-2.0-or-later

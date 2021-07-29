@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 27 13:30:03 UTC 2021 - Jean Delvare <jdelvare@suse.com>
+
+- Update to version 4.3:
+  * decode-dimms: Attempt to decode LPDDR3 modules
+  * i2cdetect: Sort the bus list by number
+  * i2cdump: Add range support to I2C block mode
+             Deprecate SMBus block mode
+  * i2cget: Add support for I2C block read
+            Add support for SMBus block read
+  * i2ctransfer: Reverted check for returned length from driver
+
+-------------------------------------------------------------------
 Tue Sep 22 08:40:11 UTC 2020 - Jean Delvare <jdelvare@suse.com>
 
 - Update to version 4.2:
