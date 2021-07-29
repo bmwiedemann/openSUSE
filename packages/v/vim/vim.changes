@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Fri Jul 23 15:44:04 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3204, fixes the following problems
+- enable test_recover on x86_64/i586/ppc64* - disable-unreliable-tests.patch
+- disable faulty tests on arm and s390x arch - disable-unreliable-tests-arch.patch
+  * Xxd always reports an old version string. (Åsmund Ervik)
+  * Vim9: using try in catch block causes a hang.
+  * Vim9: an error in a catch block is not reported.
+  * Vim9: profile test fails.
+  * Powershell core not supported by default.
+  * Recover test fails on 32bit systems. (Ondřej Súkup)
+  * Cannot catch errors in a channel command.
+  * A channel command "echoerr" does not show anything.
+  * Crash when passing null string to charclass().
+  * Vim9: builtin function argument types are not checked at compile time.
+  * JSONC files are not recognized.
+  * Vim9: breakpoint on "for" does not work.
+  * Gemtext files are not recognized.
+  * With 'virtualedit' set to "block" Visual highlight is wrong after using
+  "$".  (Marco Trosi)
+  * Garbage collection has useless code.
+  * With concealing enabled and indirectly closing a fold the cursor may be
+  somewhere in a folded line.
+  * Vim9: default argument expression cannot use previous argument
+  * Vim9: builtin function test fails without the +channel feature.
+  * tablabel_tooltip test fails with Athena. (Dominique Pellé)
+  * Test_popup_atcursor_pos() fails without the conceal feature.
+  * With 'virtualedit' set to "block" block selection is wrong after using
+  "$".  (Marco Trosi)
+  * Temp files remain after running tests.
+  * Crash when using "quit" at recovery prompt and autocommands are triggered.
+  * Popup window test is flaky on MS-Windows with GUI.
+  * Vim9: missing catch/finally not reported at script level.
+  * Vim9: no error when using type with unknown number of arguments.
+  * Missing function prototype for vim_round().
+  * Test for crash fix does not fail without the fix.
+  * Swap test may fail on some systems when jobs take longer to exit.
+  * Vim9: unspecified function type causes type error.
+  * Vim9: type of partial is wrong when it has arguments.
+  * Vim9: confusing line number reported for error.
+  * Vim9: error for arguments while type didn't specify arguments.
+  * Test for remote_foreground() fails. (Elimar Riesebieter)
+  * Check for $DISPLAY never fails.
+  * A pattern that matches the cursor position is bit complicated.
+  * Vim9: confusing error with extra whitespace before colon.
+  * With concealing enabled and indirectly closing a fold the cursor may be
+  somewhere in a folded line when it is not on the first line            of
+  the fold.
+  * No error when for loop variable shadows script variable.
+  * Amiga-like systems: build error using stat().
+  * Coverity complains about free_wininfo() use.
+  * Vim9: crash when debugging a function with line continuation.
+  * Vim9: type not properly checked in for loop.
+  * Vim9: "any" type not handled correctly in for loop.
+  * Compiler warning for unused argument.
+  * Crypt with sodium test fails on MS-Windows.
+  * 'listchars' "exceeds" character appears in foldcolumn. Window separator
+  is missing. (Leonid V.  Fedorenchik)
+  * With 'nowrap' cursor position is unexected in narrow window. (Leonid V.
+  Fedorenchik)
+  * Vim9: confusing error when using white space after option, before one of
+  "!&<".
+  * Vim9: no error for white space between option and "=9".
+  * Variables are set but not used.
+  * Vim9: for loop error reports wrong line number.
+  * Vim9: no error when adding number to list of string.
+  * Vim9: uninitialzed list does not get type checked.
+  * Vim9: imported uninitialized list does not get type checked.
+  * Vim9: import test fails.
+  * Compiler warns for size_t to colnr_T conversion. (Randall W. Morris)
+  * Vim9: memory leak when add() fails.
+  * Crash when using typename() on a function reference. (Naohiro Ono)
+  * Vim9: builtin function arguments not checked at compile time.
+  * No test for E187 and "No swap file".
+  * Vim9: no error when a line only has a variable name.
+  * Debugger test fails.
+  * Functions for string manipulation are spread out.
+  * No error when using :complete for :command without -nargs.
+  * Vim9: type check for has_key() argument is too strict.
+  * Vim9: A lambda may be compiled with the wrong context if it is called
+  from a profiled function.
+  * Vim9: no error when using an invalid value for a line number.
+  * Vim9: profile test fails without profile feature.
+  * Vim9: line number wrong for :execute argument.
+  * Vim9: profiling does not work with a nested function.
+  * Vim9: function arg type check does not handle base offset.
+  * Some plugins have a problem with the error check for using :command with
+  -complete but without -nargs.
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: profiling fails if nested function is also profiled.
+  * Vim9: accessing "s:" results in an error.
+  * URLs with a dash in the scheme are not recognized.
+  * Vim9: some type checks for builtin functions fail.
+  * Some option related code not covered by tests.
+  * Vim9: term_getansicolors() test fails without +termguicolors.
+  * Crypt test may fail on MS-Windows.
+  * Strange error message when using islocked() with a number. (Yegappan
+  Lakshmanan)
+  * Cursor displayed in wrong position after deleting line.
+  * 'breakindent' does not work well for bulleted and numbered lists.
+  * Vim9: no error when reltime() has invalid arguments.
+  * Vim9: argument types are not checked at compile time.
+  * Location list window may open a wrong file.
+  * Vim9: in a || expression the error line number may be wrong.
+  * Vim9: nested autoload call error overruled by "Unknown error".
+  * Get E12 in a job callback when searching for tags. (Andy Stewart)
+  * Vim9: type error for constant of type any.
+  * Vim9: cannot handle nested inline function.
+  * Illegal memory access in test.
+  * Another illegal memory access in test.
+  * MzScheme test fails. (Christian Brabandt)
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: "legacy undo" finds "undo" variable.
+  * Vim9: using illegal pointer with inline function inside a lambda.
+  * Vim9: no type error for comparing number with string.
+  * Vim9: can not use "for _ in expr" at script level.
+  * Vim9: the file name of an :import cannot be an expression.
+  * Vim9: cannot assign to an imported variable at script level.
+  * Vim9: memory leak when concatenating to an imported string.
+  * Vim9: builtin function test fails without channel feature.
+  * Vim9: crash when using removing items from a constant list. (Yegappan
+  Lakshmanan)
+  * Duplicate error numbers.
+  * Cannot add a digraph with a leading space.  It is not easy to list
+  existing digraphs.
+  * Vim9: start of inline function found in comment line.
+  * Vim9: not all failures for import tested
+  * Vim9: popup timer callback is not compiled.
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: error when using "try|".
+  * Error messages are spread out.
+  * Vim9: not enough code is tested.
+  * Build failure with small version (Tony Mechelynck).
+  * screenpos() is wrong when the last line is partially visible and 'display'
+  is "lastline".
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: unclear error when passing too many arguments to lambda.
+  * Vim9: bool expression with numbers only fails at runtime.
+  * Error messages are spread out.
+  * Cannot use 'formatlistpat' for breakindent.
+  * Vim9: execution speed can be improved.
+  * Vim9: hard to guess where a type error is given.
+  * Crash in test.
+  * Vim9: tests are only executed for legacy script.
+  * Vim9: compiled string expression causes type error. (Yegappan Lakshmanan)
+  * Display garbled when 'cursorline' is set and lines wrap. (Gabriel Dupras)
+
+-------------------------------------------------------------------
 Wed Jun 30 09:15:27 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - disabled test_recover because is broken on 32bit archs

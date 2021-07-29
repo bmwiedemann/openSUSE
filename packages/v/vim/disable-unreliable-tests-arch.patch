@@ -1,0 +1,42 @@
+Index: vim-8.2.3204/src/testdir/Make_all.mak
+===================================================================
+--- vim-8.2.3204.orig/src/testdir/Make_all.mak
++++ vim-8.2.3204/src/testdir/Make_all.mak
+@@ -30,21 +30,17 @@ SCRIPTS_TINY_OUT = \
+ 
+ # Tests for Vim9 script.
+ TEST_VIM9 = \
+-	test_vim9_assign \
+ 	test_vim9_builtin \
+ 	test_vim9_cmd \
+ 	test_vim9_disassemble \
+-	test_vim9_expr \
+ 	test_vim9_fails \
+ 	test_vim9_func \
+ 	test_vim9_script
+ 
+ TEST_VIM9_RES = \
+-	test_vim9_assign.res \
+ 	test_vim9_builtin.res \
+ 	test_vim9_cmd.res \
+ 	test_vim9_disassemble.res \
+-	test_vim9_expr.res \
+ 	test_vim9_fails.res \
+ 	test_vim9_func.res \
+ 	test_vim9_script.res
+@@ -221,7 +217,6 @@ NEW_TESTS = \
+ 	test_quickfix \
+ 	test_quotestar \
+ 	test_random \
+-	test_recover \
+ 	test_regex_char_classes \
+ 	test_regexp_latin \
+ 	test_regexp_utf8 \
+@@ -457,7 +452,6 @@ NEW_TESTS_RES = \
+ 	test_quickfix.res \
+ 	test_quotestar.res \
+ 	test_random.res \
+-	test_recover.res \
+ 	test_regex_char_classes.res \
+ 	test_registers.res \
+ 	test_rename.res \

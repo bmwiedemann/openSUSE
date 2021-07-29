@@ -18,14 +18,6 @@ Index: vim-8.2.3075/src/testdir/Make_all.mak
  	test_packadd \
  	test_partial \
  	test_paste \
-@@ -223,7 +221,6 @@ NEW_TESTS = \
- 	test_quickfix \
- 	test_quotestar \
- 	test_random \
--	test_recover \
- 	test_regex_char_classes \
- 	test_regexp_latin \
- 	test_regexp_utf8 \
 @@ -323,7 +320,6 @@ NEW_TESTS_RES = \
  	test_autocmd.res \
  	test_autoload.res \
@@ -34,14 +26,6 @@ Index: vim-8.2.3075/src/testdir/Make_all.mak
  	test_balloon_gui.res \
  	test_blob.res \
  	test_blockedit.res \
-@@ -460,7 +456,6 @@ NEW_TESTS_RES = \
- 	test_quickfix.res \
- 	test_quotestar.res \
- 	test_random.res \
--	test_recover.res \
- 	test_regex_char_classes.res \
- 	test_registers.res \
- 	test_rename.res \
 Index: vim-8.2.3075/src/testdir/Makefile
 ===================================================================
 --- vim-8.2.3075.orig/src/testdir/Makefile

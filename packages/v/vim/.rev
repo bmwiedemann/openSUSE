@@ -5257,4 +5257,41 @@ always built-in because vim has direct perl dependencies anyway.
   not set.</comment>
     <requestid>903208</requestid>
   </revision>
+  <revision rev="288" vrev="1">
+    <srcmd5>6e42dcfe8a2fe8ccdb83ea8e17db0e3c</srcmd5>
+    <version>8.2.3204</version>
+    <time>1627587052</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.3204, fixes the following problems
+- enable test_recover on x86_64/i586/ppc64* - disable-unreliable-tests.patch
+- disable faulty tests on arm and s390x arch - disable-unreliable-tests-arch.patch
+  * Xxd always reports an old version string. (Åsmund Ervik)
+  * Vim9: using try in catch block causes a hang.
+  * Vim9: an error in a catch block is not reported.
+  * Vim9: profile test fails.
+  * Powershell core not supported by default.
+  * Recover test fails on 32bit systems. (Ondřej Súkup)
+  * Cannot catch errors in a channel command.
+  * A channel command &quot;echoerr&quot; does not show anything.
+  * Crash when passing null string to charclass().
+  * Vim9: builtin function argument types are not checked at compile time.
+  * JSONC files are not recognized.
+  * Vim9: breakpoint on &quot;for&quot; does not work.
+  * Gemtext files are not recognized.
+  * With 'virtualedit' set to &quot;block&quot; Visual highlight is wrong after using
+  &quot;$&quot;.  (Marco Trosi)
+  * Garbage collection has useless code.
+  * With concealing enabled and indirectly closing a fold the cursor may be
+  somewhere in a folded line.
+  * Vim9: default argument expression cannot use previous argument
+  * Vim9: builtin function test fails without the +channel feature.
+  * tablabel_tooltip test fails with Athena. (Dominique Pellé)
+  * Test_popup_atcursor_pos() fails without the conceal feature.
+  * With 'virtualedit' set to &quot;block&quot; block selection is wrong after using
+  &quot;$&quot;.  (Marco Trosi)
+  * Temp files remain after running tests.
+  * Crash when using &quot;quit&quot; at recovery prompt and autocommands are triggered.
+  * Popup window test is flaky on MS-Windows with GUI.</comment>
+    <requestid>908011</requestid>
+  </revision>
 </revisionlist>

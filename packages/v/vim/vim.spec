@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 3075
+%define patchlevel 3204
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -66,6 +66,7 @@ Patch21:        %{name}-7.3-filetype_changes.patch
 Patch22:        %{name}-7.4-filetype_mine.patch
 Patch23:        vim-8.0-ttytype-test.patch
 Patch24:        disable-unreliable-tests.patch
+Patch25:        disable-unreliable-tests-arch.patch
 Patch100:       vim73-no-static-libpython.patch
 Patch101:       vim-8.0.1568-defaults.patch
 # https://github.com/vim/vim/issues/3348 - problem more probadly in buildenv than in test
@@ -188,6 +189,9 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
+%ifarch s390x %{arm} aarch64
+%patch25 -p1
+%endif
 %patch100 -p1
 %patch101 -p1
 %patch102 -p1
