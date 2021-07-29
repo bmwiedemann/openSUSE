@@ -384,4 +384,12 @@
     <comment>Fix for bsc#1188336 - openSUSE Tumbleweed unattended installation in libvirt fails due to invalid autoyast.xml</comment>
     <requestid>907198</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>dc84558486d3238ae8e3b46f576df38f</srcmd5>
+    <version>20210621</version>
+    <time>1627587071</time>
+    <user>dimstar_suse</user>
+    <comment>Fix language element in opensuse-autoyast-desktop.xml for bsc#1182144</comment>
+    <requestid>908654</requestid>
+  </revision>
 </revisionlist>

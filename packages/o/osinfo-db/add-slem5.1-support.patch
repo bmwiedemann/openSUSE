@@ -1,0 +1,165 @@
+--- /dev/null	2021-07-26 03:43:20.464161362 -0600
++++ osinfo-db-20210621/os/suse.com/slem-5.1.xml	2021-07-26 04:08:52.692197873 -0600
+@@ -0,0 +1,162 @@
++<?xml version="1.0"?>
++<libosinfo version="0.0.1">
++  <!-- Licensed under the GNU General Public License version 2 or later.
++     See http://www.gnu.org/licenses/ for a copy of the license text -->
++  <os id="http://suse.com/slem/5.1">
++    <short-id>slem5.1</short-id>
++    <name>SUSE Linux Enterprise Micro 5.1</name>
++    <name xml:lang="ko">&#xC218;&#xC138; &#xB9AC;&#xB205;&#xC2A4; &#xAE30;&#xC5C5;&#xC6A9; Micro 5.1</name>
++    <name xml:lang="uk">SUSE Linux Enterprise Micro 5.1</name>
++    <name xml:lang="tr">SUSE Linux Enterprise Micro 5.1</name>
++    <name xml:lang="pl">SUSE Linux Enterprise Micro 5.1</name>
++    <name xml:lang="it">SUSE Linux Enterprise Micro 5.1</name>
++    <version>5.1</version>
++    <vendor>SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="ko">&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">SUSE</vendor>
++    <vendor xml:lang="tr">SUSE</vendor>
++    <vendor xml:lang="pt_BR">SUSE</vendor>
++    <vendor xml:lang="pl">SUSE</vendor>
++    <vendor xml:lang="it">SUSE</vendor>
++    <vendor xml:lang="id">SUSE</vendor>
++    <vendor xml:lang="fr">SUSE</vendor>
++    <vendor xml:lang="es">SUSE</vendor>
++    <vendor xml:lang="ca">SUSE</vendor>
++    <family>linux</family>
++    <distro>slem</distro>
++    <derives-from id="http://suse.com/sle/15.3"/>
++    <release-date>2021-12-31</release-date>
++    <media arch="x86_64">
++      <iso>
++        <system-id>LINUX</system-id>
++        <volume-id>SUSE-MicroOS-5.1-DVD-x86_6489.4</volume-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <media arch="aarch64">
++      <iso>
++        <system-id>LINUX</system-id>
++        <volume-id>SUSE-MicroOS-5.1-DVD-aarch64.4</volume-id>
++      </iso>
++      <kernel>boot/aarch64/linux</kernel>
++      <initrd>boot/aarch64/initrd</initrd>
++    </media>
++    <media arch="ppc64le">
++      <iso>
++        <system-id>LINUX</system-id>
++        <volume-id>SUSE-MicroOS-5.1-DVD-ppc64le.4</volume-id>
++      </iso>
++      <kernel>boot/ppc64le/linux</kernel>
++      <initrd>boot/ppc64le/initrd</initrd>
++    </media>
++    <media arch="s390x">
++      <iso>
++        <system-id>LINUX</system-id>
++        <volume-id>SUSE-MicroOS-5.1-DVD-s390x.4</volume-id>
++      </iso>
++      <kernel>boot/s390x/linux</kernel>
++      <initrd>boot/s390x/initrd</initrd>
++    </media>
++    <resources arch="all">
++      <minimum>
++        <cpu>500000000</cpu>
++        <ram>1073741824</ram>
++        <storage>12884901888</storage>
++      </minimum>
++      <recommended>
++        <cpu>2400000000</cpu>
++        <ram>4294967296</ram>
++        <storage>64424509440</storage>
++      </recommended>
++    </resources>
++  </os>
++</libosinfo>

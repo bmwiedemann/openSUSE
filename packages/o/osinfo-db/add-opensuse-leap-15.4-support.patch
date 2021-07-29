@@ -1,0 +1,249 @@
+--- /dev/null	2021-07-26 03:43:20.464161362 -0600
++++ osinfo-db-20210621/os/opensuse.org/opensuse-15.4.xml	2021-07-26 04:03:28.136190139 -0600
+@@ -0,0 +1,246 @@
++<?xml version="1.0"?>
++<libosinfo version="0.0.1">
++  <!-- Licensed under the GNU General Public License version 2 or later.
++     See http://www.gnu.org/licenses/ for a copy of the license text -->
++  <os id="http://opensuse.org/opensuse/15.4">
++    <short-id>opensuse15.4</short-id>
++    <name>openSUSE Leap 15.4</name>
++    <name xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138; &#xB9BD; 15.4</name>
++    <name xml:lang="uk">openSUSE Leap 15.4</name>
++    <name xml:lang="tr">openSUSE Leap 15.4</name>
++    <name xml:lang="pt_BR">openSUSE Leap 15.4</name>
++    <name xml:lang="pl">openSUSE Leap 15.4</name>
++    <name xml:lang="it">openSUSE Leap 15.4</name>
++    <name xml:lang="id">openSUSE Leap 15.4</name>
++    <version>15.4</version>
++    <vendor>openSUSE</vendor>
++    <vendor xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138;</vendor>
++    <vendor xml:lang="uk">openSUSE</vendor>
++    <vendor xml:lang="tr">openSUSE</vendor>
++    <vendor xml:lang="pt_BR">openSUSE</vendor>
++    <vendor xml:lang="pl">openSUSE</vendor>
++    <vendor xml:lang="ja">openSUSE</vendor>
++    <vendor xml:lang="it">openSUSE</vendor>
++    <vendor xml:lang="id">openSUSE</vendor>
++    <vendor xml:lang="fr">openSUSE</vendor>
++    <vendor xml:lang="es">openSUSE</vendor>
++    <vendor xml:lang="de">openSUSE</vendor>
++    <vendor xml:lang="ca">openSUSE</vendor>
++    <family>linux</family>
++    <distro>opensuse</distro>
++    <upgrades id="http://opensuse.org/opensuse/15.2"/>
++    <derives-from id="http://opensuse.org/opensuse/15.2"/>
++    <release-date>2022-06-02</release-date>
++    <variant id="netinst">
++      <name>openSUSE Leap 15.4</name>
++      <name xml:lang="ko">&#xC624;&#xD508;&#xC218;&#xC138; &#xB9BD; 15.4</name>
++      <name xml:lang="uk">openSUSE Leap 15.4</name>
++      <name xml:lang="tr">openSUSE Leap 15.4</name>
++      <name xml:lang="pt_BR">openSUSE Leap 15.4</name>
++      <name xml:lang="pl">openSUSE Leap 15.4</name>
++      <name xml:lang="it">openSUSE Leap 15.4</name>
++      <name xml:lang="id">openSUSE Leap 15.4</name>
++    </variant>
++    <!-- DVD -->
++    <media arch="x86_64">
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-DVD-x86_64.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-DVD-x86_64*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="x86_64">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-NET-x86_64.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-NET-x86_64*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- DVD -->
++    <media arch="aarch64">
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-DVD-aarch64.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-DVD-aarch64*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="aarch64">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-NET-aarch64.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-NET-aarch64*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <!-- DVD -->
++    <media arch="ppc64le">
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-DVD-ppc64le.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-DVD-ppc64le*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/ppc64le/loader/linux</kernel>
++      <initrd>boot/ppc64le/loader/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="ppc64le">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-NET-ppc64le.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-NET-ppc64le*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/ppc64le/loader/linux</kernel>
++      <initrd>boot/ppc64le/loader/initrd</initrd>
++    </media>
++    <!-- DVD -->
++    <media arch="s390x">
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-DVD-s390x.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-DVD-s390x*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/s390x/loader/linux</kernel>
++      <initrd>boot/s390x/loader/initrd</initrd>
++    </media>
++    <!-- Network -->
++    <media arch="s390x">
++      <variant id="netinst"/>
++      <url>https://download.opensuse.org/distribution/leap/15.4/iso/openSUSE-Leap-15.4-NET-s390x.iso</url>
++      <iso>
++        <volume-id>openSUSE-Leap-15.4-NET-s390x*</volume-id>
++        <system-id>LINUX</system-id>
++        <publisher-id>SUSE LINUX GmbH</publisher-id>
++      </iso>
++      <kernel>boot/s390x/loader/linux</kernel>
++      <initrd>boot/s390x/loader/initrd</initrd>
++    </media>
++    <!-- Live GNOME -->
++    <media arch="x86_64" live="true" installer-script="false">
++      <url>https://download.opensuse.org/distribution/leap/15.4/live/openSUSE-Leap-15.4-GNOME-Live-x86_64-Media.iso</url>
++      <iso>
++        <volume-id>openSUSE_Leap_15.4_GNOME_Live</volume-id>
++        <publisher-id>SUSE LINUX GMBH</publisher-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- Live GNOME -->
++    <media arch="aarch64" live="true" installer-script="false">
++      <url>https://download.opensuse.org/distribution/leap/15.4/live/openSUSE-Leap-15.4-GNOME-Live-aarch64-Media.iso</url>
++      <iso>
++        <volume-id>openSUSE_Leap_15.4_GNOME_Live</volume-id>
++        <publisher-id>SUSE LINUX GMBH</publisher-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <!-- Live KDE -->
++    <media arch="x86_64" live="true" installer-script="false">
++      <url>https://download.opensuse.org/distribution/leap/15.4/live/openSUSE-Leap-15.4-KDE-Live-x86_64-Media.iso</url>
++      <iso>
++        <volume-id>openSUSE_Leap_15.4_KDE_Live</volume-id>
++        <publisher-id>SUSE LINUX GMBH</publisher-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- Live KDE -->
++    <media arch="aarch64" live="true" installer-script="false">
++      <url>https://download.opensuse.org/distribution/leap/15.4/live/openSUSE-Leap-15.4-KDE-Live-aarch64-Media.iso</url>
++      <iso>
++        <volume-id>openSUSE_Leap_15.4_KDE_Live</volume-id>
++        <publisher-id>SUSE LINUX GMBH</publisher-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <!-- Live Rescue CD -->
++    <media arch="x86_64" live="true" installer-script="false">
++      <url>https://download.opensuse.org/distribution/leap/15.4/live/openSUSE-Leap-15.4-Rescue-CD-x86_64-Media.iso</url>
++      <iso>
++        <volume-id>openSUSE_Leap_15.4_Rescue_CD</volume-id>
++        <publisher-id>SUSE LINUX GMBH</publisher-id>
++      </iso>
++      <kernel>boot/x86_64/loader/linux</kernel>
++      <initrd>boot/x86_64/loader/initrd</initrd>
++    </media>
++    <!-- Live Rescue CD -->
++    <media arch="aarch64" live="true" installer-script="false">
++      <url>https://download.opensuse.org/distribution/leap/15.4/live/openSUSE-Leap-15.4-Rescue-CD-aarch64-Media.iso</url>
++      <iso>
++        <volume-id>openSUSE_Leap_15.4_Rescue_CD</volume-id>
++        <publisher-id>SUSE LINUX GMBH</publisher-id>
++      </iso>
++      <kernel>boot/aarch64/loader/linux</kernel>
++      <initrd>boot/aarch64/loader/initrd</initrd>
++    </media>
++    <tree arch="x86_64">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/15.4/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>15.4</version>
++        <arch>x86_64</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="aarch64">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/15.4/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>15.4</version>
++        <arch>aarch64</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="ppc64le">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/15.4/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>15.4</version>
++        <arch>ppc64le</arch>
++      </treeinfo>
++    </tree>
++    <tree arch="s390x">
++      <url>https://download.opensuse.org/pub/opensuse/distribution/leap/15.4/repo/oss/</url>
++      <treeinfo>
++        <family>openSUSE Leap</family>
++        <version>15.4</version>
++        <arch>s390x</arch>
++      </treeinfo>
++    </tree>
++    <installer>
++      <script id="http://opensuse.org/opensuse/autoyast/jeos"/>
++      <script id="http://opensuse.org/opensuse/autoyast/desktop"/>
++    </installer>
++    <resources arch="all">
++      <minimum>
++        <cpu>1600000000</cpu>
++        <n-cpus>1</n-cpus>
++        <ram>1073741824</ram>
++        <storage>3221225472</storage>
++      </minimum>
++      <recommended>
++        <cpu>2400000000</cpu>
++        <ram>2147483648</ram>
++        <storage>17179869184</storage>
++      </recommended>
++    </resources>
++  </os>
++</libosinfo>

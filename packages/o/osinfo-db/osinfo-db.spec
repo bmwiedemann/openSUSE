@@ -29,6 +29,10 @@ Patch21:        add-oes-support.patch
 Patch22:        add-caasp40-support.patch
 Patch23:        add-win-2k19-media-info.patch
 Patch24:        fix-tumbleweed-order.patch
+Patch25:        add-opensuse-leap-15.4-support.patch
+Patch26:        add-sle15sp4-support.patch
+Patch27:        add-slem5.1-support.patch
+Patch28:        opensuse-autoyast-desktop.patch
 
 BuildRequires:  intltool
 BuildRequires:  osinfo-db-tools
@@ -44,6 +48,10 @@ provisioning of new virtual machines
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
+%patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
 
 %build
 cd %{_builddir}

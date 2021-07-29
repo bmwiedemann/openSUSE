@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jul 27 12:43:17 MDT 2021 - carnold@suse.com
+
+- bsc#1182144 - osinfo-db: autoinst.xml does not work with
+  Tumbleweed. Fixes nested language problem.
+  opensuse-autoyast-desktop.patch
+
+-------------------------------------------------------------------
+Mon Jul 26 04:09:46 MDT 2021 - carnold@suse.com
+
+- Add support for openSUSE Leap 15.4, SLE15-SP4, and SLEM 5.1
+  (bsc#1188692)
+  add-opensuse-leap-15.4-support.patch
+  add-sle15sp4-support.patch
+  add-slem5.1-support.patch
+
+-------------------------------------------------------------------
 Mon Jul 19 14:27:46 MDT 2021 - carnold@suse.com
 
 - bsc#1188336 - openSUSE Tumbleweed unattended installation in

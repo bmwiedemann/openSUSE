@@ -1,0 +1,13 @@
+--- osinfo-db-20210621/install-script/opensuse.org/opensuse-autoyast-desktop.xml.orig	2021-07-27 10:25:33.684570985 -0600
++++ osinfo-db-20210621/install-script/opensuse.org/opensuse-autoyast-desktop.xml	2021-07-27 10:25:42.212571350 -0600
+@@ -168,9 +168,7 @@
+               </keymap>
+             </keyboard>
+             <language>
+-              <language>
+-                <xsl:call-template name="l10n-language"/>
+-              </language>
++              <xsl:call-template name="l10n-language"/>
+             </language>
+             <networking>
+               <dns>
