@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 12:47:53 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop upstream merged patches on SLE and Leap 15.4:
+  + PackageKit-CVE-2020-16121.patch
+
+-------------------------------------------------------------------
 Thu Jun 10 17:36:23 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add PackageKit-dnf-ignore-weak-deps.patch
@@ -65,6 +71,13 @@ Tue Dec 29 09:30:52 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   calling pk_dbus_get_uid() before D-Bus is setup.
 
 -------------------------------------------------------------------
+Fri Dec  4 02:03:42 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-CVE-2020-16121.patch: Information disclosure in
+  InstallFiles, GetFilesLocal and GetDetailsLocal
+  (gh#hughsie/PackageKit/commit/d5e8c597, bsc#1176930).
+
+-------------------------------------------------------------------
 Wed Dec  2 07:24:08 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add PackageKit-zypp-cleanup-tmp-files.patch: Revert "Revert
@@ -96,14 +109,6 @@ Mon Nov  2 14:47:56 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
   + PackageKit-zypp-dont-refresh-repos-on-offline-update.patch
   + PackageKit-zypp-set-PATH.patch
   + PackageKit-bsc1169739.patch
-  + PackageKit-CVE-2020-16121.patch
-
--------------------------------------------------------------------
-Fri Nov  1 02:03:42 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
-
-- Add PackageKit-CVE-2020-16121.patch: Information disclosure in
-  InstallFiles, GetFilesLocal and GetDetailsLocal
-  (gh#hughsie/PackageKit/commit/d5e8c597, bsc#1176930).
 
 -------------------------------------------------------------------
 Fri Oct 30 03:12:47 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
