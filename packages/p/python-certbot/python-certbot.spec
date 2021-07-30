@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-certbot
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/certbot/certbot
 Source0:        https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/c/certbot/certbot-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-BuildRequires:  %{python_module acme >= 1.8.0}
+BuildRequires:  %{python_module acme >= %{version}}
 BuildRequires:  %{python_module configargparse >= 0.9.3}
 BuildRequires:  %{python_module configobj >= 5.0.6}
 BuildRequires:  %{python_module cryptography >= 2.1.4}
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module zope.component}
 BuildRequires:  %{python_module zope.interface}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-acme >= 1.8.0
+Requires:       python-acme >= %{version}
 Requires:       python-configargparse >= 0.9.3
 Requires:       python-configobj
 Requires:       python-cryptography >= 2.1.4
