@@ -158,6 +158,8 @@ Thu Feb 11 13:33:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
   glib2-fate300461-gettext-gkeyfile-suse.patch,
   glib2-dbus-socket-path.patch and
   glib2-gdbus-codegen-version.patch.
+- Drop glib2-fix-6-days-until-the-end-of-the-month.patch: fixed
+  upstream.
 
 -------------------------------------------------------------------
 Thu Feb 11 13:33:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -173,6 +175,8 @@ Thu Feb 11 13:33:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
     security-sensitive flags likely to be released in GLib 2.68.
   + Bugs fixed: glgo#GNOME/GLib!1933, glgo#GNOME/GLib!1943,
     glgo#GNOME/GLib!1944, glgo#GNOME/GLib!1945.
+- Drop glib2-CVE-2021-27218.patch: fixed upstream.
+- Drop glib2-CVE-2021-27219-add-g_memdup2.patch: fixed upstream.
 
 -------------------------------------------------------------------
 Thu Feb 11 11:06:17 UTC 2021 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
@@ -180,6 +184,23 @@ Thu Feb 11 11:06:17 UTC 2021 - Christopher Yeleighton <giecrilj@stegny.2a.pl>
 - disable irrelevant warnings
 - use macros in spec file
 - simplify trigger code
+
+-------------------------------------------------------------------
+Wed Feb 10 01:17:16 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add glib2-CVE-2021-27219-add-g_memdup2.patch: g_memdup takes a
+  guint as parameter and sometimes leads into an integer overflow,
+  so add a g_memdup2 function which uses gsize to replace it.
+  (bsc#1182362, glgo#GNOME/glib!1927, glgo#GNOME/glib!1933,
+  glgo#GNOME/glib!1943)
+
+-------------------------------------------------------------------
+Thu Feb  10 00:49:58 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add glib2-CVE-2021-27218.patch: g_byte_array_new_take takes a
+  gsize as length but stores in a guint, this patch will refuse if
+  the length is larger than guint. (bsc#1182328,
+  glgo#GNOME/glib!1944)
 
 -------------------------------------------------------------------
 Fri Feb  5 10:59:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -335,6 +356,8 @@ Mon Oct  5 02:55:02 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 - Rebase glib2-gdbus-codegen-version.patch.
 - Build without gtk-doc: it would require a not yet released
   version of gtk-doc.
+- Drop glib2-add-support-for-slim-timezone-format.patch: fixed
+  upstream.
 
 -------------------------------------------------------------------
 Sun Oct  4 11:01:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -345,6 +368,16 @@ Sun Oct  4 11:01:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
     glgo#GNOME/GLib!1656, glgo#GNOME/GLib!1659,
     glgo#GNOME/GLib!1666, glgo#GNOME/GLib!1672.
   + Updated translations.
+
+-------------------------------------------------------------------
+Fri Oct  4 07:12:20 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add patches to support for slim format of timezone (bsc#1178346):
+  + glib2-add-support-for-slim-timezone-format.patch: basic support
+    for slim format (glgo#GNOME/glib!1533).
+  + glib2-fix-6-days-until-the-end-of-the-month.patch: fix DST
+    incorrect end day when using slim format
+    (glgo#GNOME/glib!1683).
 
 -------------------------------------------------------------------
 Tue Aug 18 17:20:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
