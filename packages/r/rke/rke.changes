@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jul 29 19:12:41 UTC 2021 - kastl@b1-systems.de
+
+- Update to version 1.2.11:
+  * Bugfixes:
+    - changed the default kubernetes version to v1.20.9-rancher1-1, this was incorrectly set to an older version v1.20.8-rancher1-1
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+      - v1.20.9-rancher1-1
+      - v1.19.13-rancher1-1
+      - v1.18.20-rancher1-2
+      - v1.17.17-rancher2-3
+    - Updated Hyperkube Image based on k8s versions
+     - rancher/hyperkube:v1.20.9-rancher1
+     - rancher/hyperkube:v1.19.13-rancher1
+     - rancher/hyperkube:v1.18.20-rancher1
+
+-------------------------------------------------------------------
+Wed Jul 28 15:58:58 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.2.10:
+  * Enhancements
+    - Introduced new Kubernetes images v1.20.9-rancher1, and v1.19.13-rancher1.
+  * Known Major Issues
+    - In clusters where cloud_provider is configured, and either address or internal_address does not contain a valid IP address (e.g. hostname or FQDN), kube-proxy will fail to start. [#1725]
+  * Kubernetes Versions
+    - Each version of RKE has a specific list of supported Kubernetes versions. If you want to use a different version than listed below, you will need to update Kubernetes using the system images option in your cluster.yml.
+    - v1.20.9-rancher1
+    - v1.19.13-rancher1
+    - v1.18.20-rancher1-2
+    - v1.17.17-rancher2-3
+  * New Images in v1.20.9-rancher1, v1.19.13-rancher1
+    - Updated Hyperkube Image based on k8s versions
+    - rancher/hyperkube:v1.20.9-rancher1
+    - rancher/hyperkube:v1.19.13-rancher1
+    - rancher/hyperkube:v1.18.20-rancher1
+
+-------------------------------------------------------------------
 Sat May 15 12:26:39 UTC 2021 - kastl@b1-systems.de
 
 - Update to version 1.2.8:
