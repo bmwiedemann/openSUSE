@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 23 09:51:11 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.0.29:
+  * Reset OOM score back to 0 for container runtime
+  * call functions registered with atexit on SIGTERM
+  * conn_sock: fix potential segfault
+
+-------------------------------------------------------------------
 Tue Mar 30 08:47:10 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 2.0.27:
