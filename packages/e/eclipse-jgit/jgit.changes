@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 30 12:24:56 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 5.11.0
+  * fixes build against apache-sshd 2.7.0
+- Modified patches:
+  * 0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
+  * 0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
+  * jgit-shade.patch
+  * jgit-5.8.0-java8.patch -> jgit-5.11.0-java8.patch
+    + Rediff to changed context
+- Added patch:
+  * jgit-apache-sshd-2.7.0.patch
+    + Adapt to apache-sshd api changes between 2.6.0 and 2.7.0
+- Removed patch:
+  * 0003-Remove-requirement-on-assertj-core.patch
+    + Not needed anymore
+
+-------------------------------------------------------------------
 Thu Jul 16 21:23:15 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

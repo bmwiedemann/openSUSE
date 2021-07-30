@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-jgit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,16 @@
 #
 
 
-%global gittag 5.8.0.202006091008-r
+%global gittag 5.11.0.202103091610-r
 %define __provides_exclude osgi*
 Name:           eclipse-jgit
-Version:        5.8.0
+Version:        5.11.0
 Release:        0
 Summary:        Eclipse JGit
 License:        BSD-3-Clause
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/egit/
-# Use github mirror for now, see: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522144
-Source0:        https://github.com/eclipse/jgit/archive/v%{gittag}/jgit-%{gittag}.tar.gz
+Source0:        https://git.eclipse.org/c/jgit/jgit.git/snapshot/jgit-%{gittag}.tar.xz
 # Set the correct classpath for the command line tools
 Patch0:         0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
 # Switch to feature requirements for third-party bundles, also makes the following changes:
@@ -34,14 +33,13 @@ Patch0:         0001-Ensure-the-correct-classpath-is-set-for-the-jgit-com.patch
 #  org.slf4j.api -> slf4j.api
 #  org.slf4j.impl.log4j12 -> slf4j.simple
 Patch1:         0002-Don-t-embed-versions-of-third-party-libs-use-feature.patch
-# Remove req on assertj
-Patch2:         0003-Remove-requirement-on-assertj-core.patch
-Patch3:         jgit-shade.patch
-Patch4:         jgit-5.8.0-java8.patch
+Patch2:         jgit-shade.patch
+Patch3:         jgit-5.11.0-java8.patch
+Patch4:         jgit-apache-sshd-2.7.0.patch
 # For main build
 BuildRequires:  ant
 BuildRequires:  apache-commons-compress
-BuildRequires:  apache-sshd >= 2.4
+BuildRequires:  apache-sshd >= 2.7
 BuildRequires:  args4j
 BuildRequires:  bouncycastle
 BuildRequires:  bouncycastle-pg
@@ -65,7 +63,7 @@ BuildRequires:  xmvn-subst
 #!BuildIgnore:  tycho-bootstrap
 #!BuildRequires: eclipse-emf-core eclipse-ecf-core
 Requires:       apache-commons-compress
-Requires:       apache-sshd >= 2.4
+Requires:       apache-sshd >= 2.7
 Requires:       args4j
 Requires:       bouncycastle
 Requires:       bouncycastle-pg
@@ -104,9 +102,8 @@ for p in $(find org.eclipse.jgit.packaging -name pom.xml) ; do
 done
 
 # Disable "errorprone" compiler
-%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:executions/pom:execution[pom:id='compile-with-errorprone']" pom.xml
-%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:executions/pom:execution[pom:id='default-compile']/pom:configuration" pom.xml
-%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:dependencies" pom.xml
+%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:compilerArgs" pom.xml
+%pom_xpath_remove "pom:plugin[pom:artifactId='maven-compiler-plugin']/pom:configuration/pom:annotationProcessorPaths" pom.xml
 
 # Don't need target platform or repository modules with xmvn
 %pom_disable_module org.eclipse.jgit.target org.eclipse.jgit.packaging

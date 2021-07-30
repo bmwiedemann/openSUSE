@@ -1,5 +1,6 @@
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java	2020-07-01 15:56:03.808653270 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java	2020-07-16 22:36:08.290442860 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsBlock.java	2021-07-30 11:47:47.425624542 +0200
 @@ -13,6 +13,7 @@
  package org.eclipse.jgit.internal.storage.dfs;
  
@@ -17,8 +18,9 @@
  		return b;
  	}
  
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java	2020-07-01 15:56:03.808653270 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java	2020-07-16 22:33:28.081395320 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsPackFile.java	2021-07-30 11:47:47.425624542 +0200
 @@ -21,6 +21,7 @@
  import java.io.EOFException;
  import java.io.IOException;
@@ -36,8 +38,9 @@
  			int bufLen = read(rc, buf);
  			if (bufLen <= ptr) {
  				throw packfileIsTruncated();
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java	2020-07-01 15:56:03.808653270 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java	2020-07-16 22:34:32.497816502 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/dfs/DfsReftable.java	2021-07-30 11:47:47.425624542 +0200
 @@ -13,6 +13,7 @@
  import static org.eclipse.jgit.internal.storage.pack.PackExt.REFTABLE;
  
@@ -55,8 +58,9 @@
  			return buf;
  		}
  
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java	2020-07-01 15:56:03.808653270 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java	2020-07-16 22:49:51.215827431 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/file/ByteBufferWindow.java	2021-07-30 11:47:47.425624542 +0200
 @@ -13,6 +13,7 @@
  package org.eclipse.jgit.internal.storage.file;
  
@@ -92,8 +96,9 @@
  		final byte[] tmp = new byte[Math.min(s.remaining(), 512)];
  		s.get(tmp, 0, tmp.length);
  		inf.setInput(tmp, 0, tmp.length);
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java	2020-07-01 15:56:03.812653298 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java	2020-07-16 22:47:40.366971204 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/BlockReader.java	2021-07-30 11:47:47.425624542 +0200
 @@ -31,6 +31,7 @@
  import static org.eclipse.jgit.lib.Ref.Storage.PACKED;
  
@@ -111,8 +116,9 @@
  			b.get(buf);
  		}
  		endPosition = pos + bufLen;
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java	2020-07-01 15:56:03.816653326 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java	2020-07-16 22:46:22.670462804 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/internal/storage/reftable/ReftableReader.java	2021-07-30 11:47:47.425624542 +0200
 @@ -23,6 +23,7 @@
  import static org.eclipse.jgit.lib.Constants.OBJECT_ID_LENGTH;
  
@@ -139,17 +145,18 @@
  			tmp.get(buf);
  		}
  		if (pos == 0 && buf[FILE_HEADER_LEN] == FILE_BLOCK_TYPE) {
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java	2020-07-01 15:56:03.824653381 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java	2020-07-16 22:59:50.575747763 +0200
-@@ -15,6 +15,7 @@
- import static org.eclipse.jgit.transport.GitProtocolConstants.OPTION_SYMREF;
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/transport/RefAdvertiser.java	2021-07-30 11:47:47.425624542 +0200
+@@ -17,6 +17,7 @@
+ import static org.eclipse.jgit.transport.GitProtocolConstants.REF_ATTR_SYMREF_TARGET;
  
  import java.io.IOException;
 +import java.nio.Buffer;
  import java.nio.ByteBuffer;
  import java.nio.CharBuffer;
  import java.nio.charset.CharacterCodingException;
-@@ -65,7 +66,7 @@
+@@ -67,7 +68,7 @@
  				throws IOException {
  			id.copyTo(binArr, 0);
  			binArr[OBJECT_ID_STRING_LENGTH] = ' ';
@@ -158,7 +165,7 @@
  			append(refName);
  			if (first) {
  				first = false;
-@@ -88,7 +89,7 @@
+@@ -90,7 +91,7 @@
  				chBuf = CharBuffer.wrap(chArr);
  			}
  			str.getChars(0, n, chArr, 0);
@@ -167,7 +174,7 @@
  			utf8.reset();
  			for (;;) {
  				CoderResult cr = utf8.encode(chBuf, binBuf, true);
-@@ -115,7 +116,7 @@
+@@ -117,7 +118,7 @@
  			System.arraycopy(binArr, 0, tmp, 0, cnt);
  			binArr = tmp;
  			binBuf = ByteBuffer.wrap(binArr);
@@ -176,8 +183,9 @@
  		}
  
  		@Override
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java	2020-07-01 15:56:03.824653381 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java	2020-07-16 22:57:18.914756147 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit/src/org/eclipse/jgit/util/RawParseUtils.java	2021-07-30 11:47:47.425624542 +0200
 @@ -18,6 +18,7 @@
  import static org.eclipse.jgit.lib.ObjectChecker.encoding;
  import static org.eclipse.jgit.lib.ObjectChecker.tagger;
@@ -222,8 +230,9 @@
  			}
  		}
  
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java	2020-07-01 15:56:03.840653492 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java	2020-07-16 22:26:56.886837333 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectDownloadListener.java	2021-07-30 11:47:47.425624542 +0200
 @@ -10,6 +10,7 @@
  package org.eclipse.jgit.lfs.server.fs;
  
@@ -246,8 +255,9 @@
  				}
  			} catch (Throwable t) {
  				LOG.log(Level.SEVERE, t.getMessage(), t);
---- jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java	2020-07-01 15:56:03.840653492 +0200
-+++ jgit-5.8.0.202006091008-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java	2020-07-16 22:27:35.039086792 +0200
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.lfs.server/src/org/eclipse/jgit/lfs/server/fs/ObjectUploadListener.java	2021-07-30 11:47:47.425624542 +0200
 @@ -11,6 +11,7 @@
  
  import java.io.FileNotFoundException;

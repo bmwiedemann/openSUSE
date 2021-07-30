@@ -39,4 +39,12 @@
     <comment>fix provides</comment>
     <requestid>849424</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ceab114a96adb4969226a5fc053fb994</srcmd5>
+    <version>5.11.0</version>
+    <time>1627680145</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to 5.11.0 + fix build against apache-sshd 2.7.0</comment>
+    <requestid>909405</requestid>
+  </revision>
 </revisionlist>

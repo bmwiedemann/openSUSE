@@ -1,0 +1,260 @@
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.junit.ssh/META-INF/MANIFEST.MF jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.junit.ssh/META-INF/MANIFEST.MF
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.junit.ssh/META-INF/MANIFEST.MF	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.junit.ssh/META-INF/MANIFEST.MF	2021-07-30 12:03:35.087914326 +0200
+@@ -8,31 +8,31 @@
+ Bundle-Vendor: %Bundle-Vendor
+ Bundle-ActivationPolicy: lazy
+ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+-Import-Package: org.apache.sshd.common;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.config.keys;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.file.virtualfs;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.helpers;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.io;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.kex;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.keyprovider;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.session;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.signature;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.buffer;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.logging;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.security;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.threads;version="[2.6.0,2.7.0)",
+- org.apache.sshd.core;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.auth;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.auth.gss;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.auth.keyboard;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.auth.password;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.command;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.session;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.shell;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.subsystem;version="[2.6.0,2.7.0)",
+- org.apache.sshd.sftp;version="[2.6.0,2.7.0)",
+- org.apache.sshd.sftp.server;version="[2.6.0,2.7.0)",
++Import-Package: org.apache.sshd.common;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.config.keys;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.file.virtualfs;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.helpers;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.io;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.kex;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.keyprovider;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.session;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.signature;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.buffer;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.logging;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.security;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.threads;version="[2.7.0,2.8.0)",
++ org.apache.sshd.core;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.auth;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.auth.gss;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.auth.keyboard;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.auth.password;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.command;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.session;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.shell;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.subsystem;version="[2.7.0,2.8.0)",
++ org.apache.sshd.sftp;version="[2.7.0,2.8.0)",
++ org.apache.sshd.sftp.server;version="[2.7.0,2.8.0)",
+  org.eclipse.jgit.annotations;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.api;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.api.errors;version="[5.11.0,5.12.0)",
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.ssh.apache/META-INF/MANIFEST.MF jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.ssh.apache/META-INF/MANIFEST.MF
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.ssh.apache/META-INF/MANIFEST.MF	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.ssh.apache/META-INF/MANIFEST.MF	2021-07-30 12:03:35.087914326 +0200
+@@ -33,51 +33,51 @@
+    org.apache.sshd.client.session,
+    org.apache.sshd.client.keyverifier"
+ Import-Package: net.i2p.crypto.eddsa;version="[0.3.0,0.4.0)",
+- org.apache.sshd.agent;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.auth;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.auth.keyboard;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.auth.password;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.auth.pubkey;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.channel;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.config.hosts;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.config.keys;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.future;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.keyverifier;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.session;version="[2.6.0,2.7.0)",
+- org.apache.sshd.client.session.forward;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.auth;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.channel;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.compression;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.config.keys;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.config.keys.loader;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.config.keys.loader.openssh.kdf;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.digest;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.forward;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.future;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.helpers;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.io;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.kex;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.keyprovider;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.mac;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.random;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.session;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.session.helpers;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.signature;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.buffer;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.closeable;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.io;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.io.resource;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.logging;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.net;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.security;version="[2.6.0,2.7.0)",
+- org.apache.sshd.core;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.auth;version="[2.6.0,2.7.0)",
+- org.apache.sshd.sftp;version="[2.6.0,2.7.0)",
+- org.apache.sshd.sftp.client;version="[2.6.0,2.7.0)",
+- org.apache.sshd.sftp.common;version="[2.6.0,2.7.0)",
++ org.apache.sshd.agent;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.auth;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.auth.keyboard;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.auth.password;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.auth.pubkey;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.channel;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.config.hosts;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.config.keys;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.future;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.keyverifier;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.session;version="[2.7.0,2.8.0)",
++ org.apache.sshd.client.session.forward;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.auth;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.channel;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.compression;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.config.keys;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.config.keys.loader;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.config.keys.loader.openssh.kdf;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.digest;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.forward;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.future;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.helpers;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.io;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.kex;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.keyprovider;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.mac;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.random;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.session;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.session.helpers;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.signature;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.buffer;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.closeable;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.io;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.io.resource;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.logging;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.net;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.security;version="[2.7.0,2.8.0)",
++ org.apache.sshd.core;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.auth;version="[2.7.0,2.8.0)",
++ org.apache.sshd.sftp;version="[2.7.0,2.8.0)",
++ org.apache.sshd.sftp.client;version="[2.7.0,2.8.0)",
++ org.apache.sshd.sftp.common;version="[2.7.0,2.8.0)",
+  org.eclipse.jgit.annotations;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.errors;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.fnmatch;version="[5.11.0,5.12.0)",
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.ssh.apache/src/org/eclipse/jgit/internal/transport/sshd/JGitClientSession.java jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.ssh.apache/src/org/eclipse/jgit/internal/transport/sshd/JGitClientSession.java
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.ssh.apache/src/org/eclipse/jgit/internal/transport/sshd/JGitClientSession.java	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.ssh.apache/src/org/eclipse/jgit/internal/transport/sshd/JGitClientSession.java	2021-07-30 12:04:40.688349950 +0200
+@@ -133,8 +133,8 @@
+ 	}
+ 
+ 	@Override
+-	protected IoWriteFuture sendIdentification(String ident)
+-			throws IOException {
++	protected IoWriteFuture sendIdentification(String ident,
++			List<String> extraLines) throws Exception {
+ 		StatefulProxyConnector proxy = proxyHandler;
+ 		if (proxy != null) {
+ 			try {
+@@ -142,7 +142,8 @@
+ 				// from the peer only once the initial sendKexInit() following
+ 				// this call to sendIdentification() has returned!
+ 				proxy.runWhenDone(() -> {
+-					JGitClientSession.super.sendIdentification(ident);
++					JGitClientSession.super.sendIdentification(ident,
++							extraLines);
+ 					return null;
+ 				});
+ 				// Called only from the ClientSessionImpl constructor, where the
+@@ -154,12 +155,11 @@
+ 				throw new IOException(other.getLocalizedMessage(), other);
+ 			}
+ 		}
+-		return super.sendIdentification(ident);
++		return super.sendIdentification(ident, extraLines);
+ 	}
+ 
+ 	@Override
+-	protected byte[] sendKexInit()
+-			throws IOException, GeneralSecurityException {
++	protected byte[] sendKexInit() throws Exception {
+ 		StatefulProxyConnector proxy = proxyHandler;
+ 		if (proxy != null) {
+ 			try {
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.ssh.apache.test/META-INF/MANIFEST.MF jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.ssh.apache.test/META-INF/MANIFEST.MF
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.ssh.apache.test/META-INF/MANIFEST.MF	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.ssh.apache.test/META-INF/MANIFEST.MF	2021-07-30 12:03:35.087914326 +0200
+@@ -7,18 +7,18 @@
+ Bundle-Vendor: %Bundle-Vendor
+ Bundle-Localization: plugin
+ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+-Import-Package: org.apache.sshd.client.config.hosts;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.auth;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.config.keys;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.helpers;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.keyprovider;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.session;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.net;version="[2.6.0,2.7.0)",
+- org.apache.sshd.common.util.security;version="[2.6.0,2.7.0)",
+- org.apache.sshd.core;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server;version="[2.6.0,2.7.0)",
+- org.apache.sshd.server.forward;version="[2.6.0,2.7.0)",
++Import-Package: org.apache.sshd.client.config.hosts;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.auth;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.config.keys;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.helpers;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.keyprovider;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.session;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.net;version="[2.7.0,2.8.0)",
++ org.apache.sshd.common.util.security;version="[2.7.0,2.8.0)",
++ org.apache.sshd.core;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server;version="[2.7.0,2.8.0)",
++ org.apache.sshd.server.forward;version="[2.7.0,2.8.0)",
+  org.eclipse.jgit.api;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.api.errors;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.internal.transport.sshd.proxy;version="[5.11.0,5.12.0)",
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.test/META-INF/MANIFEST.MF jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.test/META-INF/MANIFEST.MF
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.test/META-INF/MANIFEST.MF	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.test/META-INF/MANIFEST.MF	2021-07-30 11:58:52.578038135 +0200
+@@ -15,7 +15,6 @@
+  org.apache.commons.compress.compressors.bzip2;version="[1.15.0,2.0)",
+  org.apache.commons.compress.compressors.gzip;version="[1.15.0,2.0)",
+  org.apache.commons.compress.compressors.xz;version="[1.15.0,2.0)",
+- org.assertj.core.api;version="[3.14.0,4.0.0)",
+  org.eclipse.jgit.annotations;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.api;version="[5.11.0,5.12.0)",
+  org.eclipse.jgit.api.errors;version="[5.11.0,5.12.0)",
+diff -urEbwB jgit-5.11.0.202103091610-r/org.eclipse.jgit.test/pom.xml jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.test/pom.xml
+--- jgit-5.11.0.202103091610-r/org.eclipse.jgit.test/pom.xml	2021-03-09 22:10:22.000000000 +0100
++++ jgit-5.11.0.202103091610-r.new/org.eclipse.jgit.test/pom.xml	2021-07-30 11:57:51.365631621 +0200
+@@ -66,11 +66,6 @@
+     </dependency>
+ 
+     <dependency>
+-      <groupId>org.assertj</groupId>
+-      <artifactId>assertj-core</artifactId>
+-    </dependency>
+-
+-    <dependency>
+       <groupId>org.mockito</groupId>
+       <artifactId>mockito-core</artifactId>
+       <version>2.23.0</version>
+Only in jgit-5.11.0.202103091610-r/org.eclipse.jgit.test/tst/org/eclipse/jgit/transport: RequestValidatorTestCase.java
