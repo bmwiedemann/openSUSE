@@ -142,6 +142,9 @@ BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
 BuildRequires:  mvn(org.jsoup:jsoup)
 BuildRequires:  mvn(oro:oro)
+BuildConflicts: java >= 9
+BuildConflicts: java-devel >= 9
+BuildConflicts: java-headless >= 9
 Requires:       apache-commons-lang3
 Requires:       apache-ivy
 Requires:       atinject
@@ -183,6 +186,7 @@ Requires:       sisu-plexus
 Requires:       slf4j
 Requires:       template-resolver
 Requires:       test-interface
+BuildArch:      noarch
 %if %{with bootstrap}
 Name:           %{short_name}-bootstrap
 %else

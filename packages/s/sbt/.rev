@@ -55,4 +55,12 @@
     <comment>Require python3 for build</comment>
     <requestid>908825</requestid>
   </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>06bb5533662fef1af973216b463db082</srcmd5>
+    <version>0.13.18</version>
+    <time>1627680143</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build on some architectures and build as noarch</comment>
+    <requestid>909399</requestid>
+  </revision>
 </revisionlist>

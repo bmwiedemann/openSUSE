@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 30 12:20:42 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Build package as noarch, since it does not have archfull
+  binaries
+- Build with java 8 to avoid weird build problems with recent
+  java 11 on i586 and armv7l
+
+-------------------------------------------------------------------
 Wed Jul 28 07:52:44 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Require python3 for build
