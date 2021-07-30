@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 28 15:56:11 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.18.20:
+  * Revert "Cleanup portforward streams after their usage"
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.19
+  * Updating EndpointSlice validation to match Endpoints validation
+  * Make parallel build memory threshold configurable
+  * pkg/kubelet: improve the node informer sync check
+  * Additional CVE-2021-3121 fix
+  * Fix startupProbe behaviour changed
+  * Fix test
+  * Pin sigs.k8s.io/structured-merged-diff/v3 at v3.0.1
+  * Update CHANGELOG/CHANGELOG-1.18.md for v1.18.18
+  * apf: exempt probes /healthz /livez /readyz
+  * Cleanup portforward streams after their usage
+
+-------------------------------------------------------------------
 Thu Apr 15 15:01:57 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.18.18:
