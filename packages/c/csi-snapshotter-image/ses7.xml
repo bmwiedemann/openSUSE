@@ -7,5 +7,5 @@
   <title>SES csi-snapshotter container</title>
   <url>https://www.suse.com/products/suse-enterprise-storage/</url>
   <referencelabel>com.suse.reference</referencelabel>
-  <reference>registry.suse.com/ses/7/cephcsi/csi-snapshotter:v%PKG_VERSION%</reference>
+  <reference>registry.suse.com/ses/7/cephcsi/csi-snapshotter:v%PKG_VERSION%-rev1-build%RELEASE%</reference>
 </param>
