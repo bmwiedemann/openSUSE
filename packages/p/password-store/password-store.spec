@@ -52,6 +52,7 @@ command line file management utilities.
 Summary:        A dmenu interface to the "pass" program
 Group:          Productivity/Other
 Requires:       dmenu
+Requires:       password-store
 Recommends:     xdotool
 BuildArch:      noarch
 
