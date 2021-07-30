@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul 28 15:46:39 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.12:
+  * Get Kubernetes server version early
+  * Don't remove ingress config on API call failure
+  * Ratelimiter: use correct ttlSeconds value, and always call Set
+  * Check if defaultcertificate is defined in store
+  * Disable ExternalName Services by default on Kubernetes providers
+  * Fix: malformed Kubernetes resource names and references in tests
+  * Disable Cross-Namespace by default for IngressRoute provider
+  * Accesslog: support multiple values for a given header
+  * Ignore http 1.0 request host missing errors
+  * Headers Middleware: support http.CloseNotifier interface
+  * Detect certificates content modifications
+  * Update go-acme/lego to v4.4.0
+  * Fix: ACME preferred chain.
+  * Remove error when HTTProutes is empty
+  * Fix incorrect behaviour with multi-port endpoint subsets
+  * Kubernetes ingress provider to search via all endpoints
+  * Fix plugin unzip call on windows
+  * Update Yaegi to v0.9.17
+  * Bump paerser to v0.1.4
+  * Create buffered signals channel
+  * Fix: use defaultEntryPoints when no entryPoint is defined in a TCPRouter
+  * Use a dynamic buffer to handle client Hello SNI detection
+  * Error span on 5xx only
+
+
+-------------------------------------------------------------------
 Wed May 19 09:06:54 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Allow to override build date with SOURCE_DATE_EPOCH

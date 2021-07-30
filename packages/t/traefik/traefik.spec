@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define project github.com/traefik/traefik
 
 Name:           traefik
-Version:        2.4.8
+Version:        2.4.12
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -29,9 +30,9 @@ Source1:        vendor.tar.gz
 Source2:        traefik.service
 Source3:        traefik.toml
 BuildRequires:  go-bindata
-BuildRequires:  golang(API) >= 1.16
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.16
 Recommends:     podman
 %{?systemd_requires}
 %{go_provides}
