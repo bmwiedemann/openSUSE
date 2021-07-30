@@ -1694,4 +1694,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment></comment>
     <requestid>907109</requestid>
   </revision>
+  <revision rev="200" vrev="4">
+    <srcmd5>e073d7a36df612b4ef9f00e502c90cff</srcmd5>
+    <version>40.0</version>
+    <time>1627680129</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909115 from yfjiang)</comment>
+    <requestid>909317</requestid>
+  </revision>
 </revisionlist>
