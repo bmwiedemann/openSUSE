@@ -27,6 +27,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/libyal/dtfabric
 Source:         https://files.pythonhosted.org/packages/source/d/%{modname}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tests-improved.patch gh#libyal/dtfabric#25 mcepl@suse.com
+# tests improved and hope more BigEndian safe
+Patch0:         tests-improved.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -40,7 +43,7 @@ Requires(postun):update-alternatives
 dtFabric, or data type fabric, is a project to manage data types and structures, as used in the libyal projects.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
