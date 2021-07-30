@@ -25,7 +25,7 @@
             <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/cephcsi/csi-provisioner:v%PKG_VERSION%"/>
             <label name="org.opencontainers.image.version" value="v%PKG_VERSION%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/csi-provisioner:v%PKG_VERSION%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/csi-provisioner:v%PKG_VERSION%-rev1-build%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
       </containerconfig>
