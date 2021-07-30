@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 22 08:17:58 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Update to 1.79:
+  * Add mount dependency (Closes: #934713)
+- Use download_files source service to download source files which is specified
+  in the spec file
+  * _service
+- Disable debug messages by default (bsc#1101735)
+  * os-prober-disable-debug.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 08:33:46 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - update to 1.78:

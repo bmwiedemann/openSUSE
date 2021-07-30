@@ -17,7 +17,7 @@
 
 
 Name:           os-prober
-Version:        1.78
+Version:        1.79
 Release:        0
 Summary:        Probes disks on the system for installed operating systems
 License:        GPL-2.0-or-later
@@ -75,6 +75,8 @@ Patch27:        os-prober-make-btrfsprogs-optional.patch
 Patch28:        os-prober-use-tmp-over-var-lib-for-transient-files.patch
 # PATCH-FIX-OPENSUSE: Two TW selections is shown in GRUB after installing system with multi-device Btrfs (bsc#1142858)
 Patch29:        os-prober-btrfs-multiple-device.patch
+# PATCH-FIX-OPENSUSE: 40grub2: debug messages (bsc#1101735)
+Patch30:        os-prober-disable-debug.patch
 Requires:       /bin/grep
 Requires:       /bin/sed
 Requires:       /sbin/modprobe
@@ -121,6 +123,7 @@ cp %{SOURCE1} .
 %patch27 -p1
 %patch28 -p1
 %patch29 -p1
+%patch30 -p1
 find . -name \*.orig -delete
 
 %build
