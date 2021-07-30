@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 29 22:53:35 UTC 2021 - Mike Latimer <mlatimer@suse.com>
+
+- Kiwi: Regenerate ceph-image.kiwi using pre-checkin script.
+
+-------------------------------------------------------------------
 Wed Jul 21 07:26:49 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
 
 - Kiwi: Add "zabbix-agent" package as dependency for every distribution which

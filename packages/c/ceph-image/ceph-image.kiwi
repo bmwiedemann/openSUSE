@@ -56,5 +56,6 @@
     <package name="glibc-locale-base"/>
     <package name="kubic-locale-archive"/>
     <package name="openSUSE-release-ftp"/>
+    <package name="zabbix-agent"/>
   </packages>
 </image>
