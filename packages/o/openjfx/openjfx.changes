@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 30 13:57:35 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openjfx-32bit-fix.patch
+    + Do not add -m32 on 32-bit architectures, since it breaks
+      build on arm and is not needed on x86
+
+-------------------------------------------------------------------
 Tue Jul 27 07:26:19 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 11.0.12, including April 2021 and

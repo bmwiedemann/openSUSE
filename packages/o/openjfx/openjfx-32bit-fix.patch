@@ -1,0 +1,14 @@
+diff -urEbwB jfx11u-11.0.12-4/buildSrc/linux.gradle jfx11u-11.0.12-4/buildSrc/linux.gradle
+--- jfx11u-11.0.12-4/buildSrc/linux.gradle	2021-07-30 15:42:47.952930659 +0200
++++ jfx11u-11.0.12-4/buildSrc/linux.gradle	2021-07-30 15:44:06.821462951 +0200
+@@ -46,10 +46,6 @@
+         "-fstack-protector",
+         "-Wextra", "-Wall", "-Wformat-security", "-Wno-unused", "-Wno-parentheses", "-Wtrampolines"] // warning flags
+ 
+-if (!IS_64) {
+-    commonFlags += "-m32"
+-}
+-
+ if (IS_STATIC_BUILD) {
+     commonFlags += "-DSTATIC_BUILD"
+ }

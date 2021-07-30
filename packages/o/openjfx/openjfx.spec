@@ -37,6 +37,7 @@ Patch102:       openjfx-nowerror.patch
 Patch103:       openjfx-pango.patch
 Patch104:       openjfx-architectures.patch
 Patch105:       openjfx-no-return-in-nonvoid-function.patch
+Patch106:       openjfx-32bit-fix.patch
 Patch200:       openjfx-rpm-build.patch
 BuildRequires:  eclipse-swt
 BuildRequires:  fdupes
@@ -103,6 +104,7 @@ This package contains javadoc for %{name}.
 %patch103 -p1
 %patch104 -p1
 %patch105 -p1
+%patch106 -p1
 
 %patch200 -p1
 
