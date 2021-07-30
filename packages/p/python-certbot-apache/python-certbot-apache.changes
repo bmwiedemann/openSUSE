@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 30 08:43:59 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.17.0
+  * Add Void Linux overrides for certbot-apache.
+  * The Apache authenticator now always configures virtual hosts which do not have
+    an explicit ServerName. This should make it work more reliably with the
+    default Apache configuration in Debian-based environments.
+
+-------------------------------------------------------------------
 Thu Jun 24 09:26:08 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.16.0
