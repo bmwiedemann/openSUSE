@@ -133,4 +133,15 @@
   packages. (forwarded request 890325 from bnavigator)</comment>
     <requestid>890490</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>c2ff85244de88f08e053d26000e5fef4</srcmd5>
+    <version>3.3.4</version>
+    <time>1627680115</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-click-8-0.patch:
+  * Lightly rebased from upstream to support click 8.0
+- Add support-sqlalchemy-1-4.patch:
+  * Support running with SQLAlchemy 1.4</comment>
+    <requestid>909272</requestid>
+  </revision>
 </revisionlist>

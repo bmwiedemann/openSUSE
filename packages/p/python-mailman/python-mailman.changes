@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 30 01:57:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add support-click-8-0.patch:
+  * Lightly rebased from upstream to support click 8.0
+- Add support-sqlalchemy-1-4.patch:
+  * Support running with SQLAlchemy 1.4
+
+-------------------------------------------------------------------
 Tue May  4 09:23:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Restrict build to primary python3 in order to avoid conflicting

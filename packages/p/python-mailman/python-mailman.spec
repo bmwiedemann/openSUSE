@@ -1,5 +1,5 @@
 #
-# spec file for package python-mailman-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -60,7 +60,10 @@ Source100:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/test
 Source101:      https://gitlab.com/mailman/mailman/-/raw/master/src/mailman/testing/ssl_test_key.key
 # whitespace fix
 Patch0:         python-mailman-test_interact_default_banner.patch
-# PATCH-FIX-UPSTREAM gl823_exclude_failing_tests.patch gl#mailman/mailman#823 mcepl@suse.com
+# Based on https://gitlab.com/mailman/mailman/-/commit/5d27492403f80c4b4ea1820b3d6f821bd8401ca8
+Patch1:         support-click-8-0.patch
+# Support SQLAlchemy 1.4 ... maybe backward compatible
+Patch2:         support-sqlalchemy-1-4.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
