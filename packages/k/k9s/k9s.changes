@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:43:53 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.24.14:
+  * Bug fixes
+- Drop Makefile.patch as new build variables were added to the Makefile
+
+-------------------------------------------------------------------
 Tue May 25 12:37:22 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.24.10:
