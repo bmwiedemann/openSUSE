@@ -1166,4 +1166,12 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909081 from yfjiang)</comment>
     <requestid>909091</requestid>
   </revision>
+  <revision rev="155" vrev="3">
+    <srcmd5>6e0af50e004c048f14b9743700710530</srcmd5>
+    <version>3.40.0</version>
+    <time>1627680133</time>
+    <user>dimstar_suse</user>
+    <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909273 from yfjiang)</comment>
+    <requestid>909322</requestid>
+  </revision>
 </revisionlist>
