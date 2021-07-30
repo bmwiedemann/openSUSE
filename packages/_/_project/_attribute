@@ -237,8 +237,8 @@ products:
     - x86_64
 #  - ceph-csi-image:
 #    - x86_64
-  - ceph-grafana-image:
-    - x86_64
+#  - ceph-grafana-image:
+#    - x86_64
   - ceph-image:
     - x86_64
 #  - csi-attacher-image:
