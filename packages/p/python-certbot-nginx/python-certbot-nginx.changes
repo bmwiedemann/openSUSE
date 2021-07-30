@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 30 08:46:18 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to version 1.17.0
+  * When we increased the logging level on our nginx "Could not parse file" message,
+    it caused a previously-existing inability to parse empty files to become more
+    visible. We have now added the ability to correctly parse empty files, so that
+    message should only show for more significant errors.
+
+-------------------------------------------------------------------
 Thu Jun 24 09:30:29 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.16.0
