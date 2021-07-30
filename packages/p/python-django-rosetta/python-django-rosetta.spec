@@ -17,16 +17,18 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 Name:           python-django-rosetta
-Version:        0.9.4
+Version:        0.9.6
 Release:        0
 Summary:        Django application that eases the translation of Django projects
 License:        MIT
 URL:            https://github.com/mbi/django-rosetta
-Source:         https://files.pythonhosted.org/packages/source/d/django-rosetta/django-rosetta-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/django-rosetta/django-rosetta-%{version}.zip
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 Requires:       python-Django >= 1.11
 Requires:       python-polib >= 1.1.0
 Requires:       python-requests >= 2.1.0
@@ -40,6 +42,7 @@ BuildRequires:  %{python_module python-memcached}
 BuildRequires:  %{python_module requests >= 2.1.0}
 BuildRequires:  %{python_module six >= 1.2.0}
 BuildRequires:  %{python_module vcrpy}
+BuildRequires:  %{python_module pymemcache}
 BuildRequires:  memcached
 # /SECTION
 %python_subpackages
@@ -62,7 +65,7 @@ sed -i 's/test_47_azure_ajax_translation/_test_47_azure_ajax_translation/' roset
 %check
 cd testproject
 %{_sbindir}/memcached &
-%python_exec -Wd manage.py test rosetta
+%python_exec -Wd manage.py test -v2 rosetta
 
 %files %{python_files}
 %doc README.rst
