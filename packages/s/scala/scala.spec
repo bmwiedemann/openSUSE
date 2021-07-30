@@ -1,7 +1,7 @@
 #
-# spec file for package scala
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,12 +35,11 @@ Release:        0
 Summary:        A hybrid functional/object-oriented language for the JVM
 License:        BSD-3-Clause AND CC0-1.0 AND SUSE-Public-Domain
 Group:          Development/Libraries/Java
-URL:            http://www.scala-lang.org/
+URL:            https://www.scala-lang.org/
 Source0:        %{base_name}-%{version}.tar.xz
 Source1:        scala-library-2.10.0-bnd.properties
 # git log --pretty=format:"%H%n%ci" v%{version} | head -n 2 | sed -e 's/\-//g' -e 's/\s\+.*//g'
 Source3:        scala.gitinfo
-Source4:        http://www.scala-lang.org/files/archive/%{base_name}-%{version}.tgz
 Source23:       scala-mime-info.xml
 Source24:       scala.ant.d
 # Change the default classpath (SCALA_HOME)
@@ -69,6 +68,9 @@ BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
 BuildRequires:  jline >= 2.10
 BuildRequires:  junit
+BuildConflicts: java >= 9
+BuildConflicts: java-devel >= 9
+BuildConflicts: java-headless >= 9
 Requires:       jansi
 Requires:       java-headless >= 1.7
 # Require full javapackages-tools since scripts use
@@ -76,6 +78,11 @@ Requires:       java-headless >= 1.7
 Requires:       javapackages-tools
 Requires:       jline >= 2.10
 BuildArch:      noarch
+%if %{with bootstrap}
+Source100:      scala-compiler.jar
+Source101:      scala-library.jar
+Source102:      scala-reflect.jar
+%endif
 %if %{with bootstrap}
 Name:           %{base_name}-bootstrap
 %else
@@ -95,9 +102,7 @@ is also interoperable with Java.
 %package apidoc
 Summary:        Documentation for the Scala programming language
 Group:          Documentation/HTML
-%if %{without bootstrap}
 Obsoletes:      %{base_name}-bootstrap-apidoc
-%endif
 
 %description apidoc
 Scala is a general purpose programming language for the JVM that blends
@@ -159,7 +164,6 @@ sed -i '/exec.*pull-binary-libs.sh/d' build.xml
 %if %{with bootstrap}
 %global do_bootstrap -DdoBootstrapBuild=yes
 %global docs_target %{nil}
-tar -xzvf %{SOURCE4} --strip-components=1 %{base_name}-%{version}/lib
 %else
 %global do_bootstrap %{nil}
 %global docs_target docs
@@ -173,6 +177,10 @@ pushd lib
     ln -s $(find-jar scala/scala-library) scala-library.jar
     rm -rf scala-reflect.jar
     ln -s $(find-jar scala/scala-reflect) scala-reflect.jar
+%else
+    cp %{SOURCE100} scala-compiler.jar
+   cp %{SOURCE101} scala-library.jar
+   cp %{SOURCE102} scala-reflect.jar
 %endif
   pushd ant
     rm -rf ant.jar
@@ -195,8 +203,8 @@ export ANT_OPTS="-Xms2048m -Xmx2048m %{do_bootstrap}"
 # Add the -verbose flag to scalac on zero architectures. The build
 # is slow, OBS thinks it is stuck and kills it before it has chance
 # to finish
-%ant \
-	build %{docs_target} || exit 1
+%{ant} \
+   build %{docs_target} || exit 1
 pushd build/pack/lib
 mv scala-library.jar scala-library.jar.no
 bnd wrap --properties %{SOURCE1} --output scala-library.jar \
