@@ -134,4 +134,12 @@
     <comment>disable FSAL_RGW build</comment>
     <requestid>869688</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>d128895dbe113d32d2787099bfc00ce8</srcmd5>
+    <version>3.3+git0.39e0cf712</version>
+    <time>1627680123</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909326</requestid>
+  </revision>
 </revisionlist>

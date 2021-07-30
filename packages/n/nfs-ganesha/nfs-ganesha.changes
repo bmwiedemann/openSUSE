@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 23 18:57:06 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
+
+- Enable FSAL_RGW again, as it turned out to be compatible with Ceph 16.x, but
+  needs patching from upstream. Backport upstream patch to fix version
+  comparison.
+
+    * Add fix-compilation--faulty-version-comparison.patch
+
+-------------------------------------------------------------------
 Fri Feb  5 08:42:46 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Disable FSAL_RGW which is incompatible with Ceph 16.1.0

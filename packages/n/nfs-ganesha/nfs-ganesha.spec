@@ -1,7 +1,7 @@
 #
 # spec file for package nfs-ganesha
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ BuildRequires:  distribution-release
 %bcond_without ceph
 %global use_fsal_ceph %{on_off_switch ceph}
 
-%bcond_with rgw
+%bcond_without rgw
 %global use_fsal_rgw %{on_off_switch rgw}
 
 %bcond_with gluster
@@ -100,7 +100,7 @@ BuildRequires:  distribution-release
 %global use_rpcbind %{on_off_switch rpcbind}
 
 %bcond_with mspac_support
-%global use_mspac_support %{on_off_switch mspac_support} 
+%global use_mspac_support %{on_off_switch mspac_support}
 
 %bcond_with sanitize_address
 %global use_sanitize_address %{on_off_switch sanitize_address}
@@ -113,11 +113,12 @@ Name:           nfs-ganesha
 Version:        3.3+git0.39e0cf712
 Release:        0
 Summary:        An NFS server running in user space
-License:        LGPL-3.0-or-later AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Networking/NFS
 URL:            https://github.com/nfs-ganesha/nfs-ganesha/wiki
 
 Source:         %{name}-%{version}.tar.bz2
+Patch0:         fix-compilation--faulty-version-comparison.patch
 
 %if 0%{?suse_version}
 %if 0%{?is_opensuse}
@@ -195,8 +196,8 @@ PreReq:         %fillup_prereq
 Requires(post): procps
 %else
 Requires(post): systemd
-Requires(preun): systemd
-Requires(postun): systemd
+Requires(preun):systemd
+Requires(postun):systemd
 BuildRequires:  systemd
 %endif
 
@@ -217,7 +218,7 @@ Summary:        NFS-Ganesha transport-independent RPC (TI-RPC) shared library
 Group:          System/Libraries
 
 %description -n libntirpc3_3
-This package contains a new implementation of the original libtirpc, 
+This package contains a new implementation of the original libtirpc,
 transport-independent RPC (TI-RPC) library for NFS-Ganesha. It has
 the following features not found in libtirpc:
  1. Bi-directional operation
@@ -492,6 +493,7 @@ be used with NFS-Ganesha to support Gluster
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 export LANGUAGE=en_US.UTF-8
