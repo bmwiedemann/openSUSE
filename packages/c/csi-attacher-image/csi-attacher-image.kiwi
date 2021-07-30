@@ -22,10 +22,10 @@
             <label name="org.opencontainers.image.title" value="csi-attacher container"/>
             <label name="org.opencontainers.image.created" value="%BUILDTIME%"/>
             <label name="org.opencontainers.image.vendor" value="SUSE LLC"/>
-            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/cephcsi/csi-attacher:v%PKG_VERSION%"/>
+            <label name="org.opencontainers.image.url" value="https://registry.opensuse.org/opensuse/cephcsi/csi-attacher:v%PKG_VERSION%-rev1-build%RELEASE%"/>
             <label name="org.opencontainers.image.version" value="v%PKG_VERSION%"/>
             <label name="org.openbuildservice.disturl" value="%DISTURL%"/>
-            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/csi-attacher:v%PKG_VERSION%"/>
+            <label name="org.opensuse.reference" value="registry.opensuse.org/opensuse/cephcsi/csi-attacher:v%PKG_VERSION%-rev1-build%RELEASE%"/>
           </suse_label_helper:add_prefix>
         </labels>
       </containerconfig>

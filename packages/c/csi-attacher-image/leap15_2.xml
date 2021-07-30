@@ -5,9 +5,9 @@
   <name>cephcsi/csi-attacher</name>
   <prefix>org.opensuse.cephcsi</prefix>
   <title>csi-attacher container</title>
-  <url>https://registry.opensuse.org/opensuse/cephcsi/csi-attacher:v%PKG_VERSION%</url>
+  <url>https://registry.opensuse.org/opensuse/cephcsi/csi-attacher:v%PKG_VERSION%-rev1-build%RELEASE%</url>
   <referencelabel>org.opensuse.reference</referencelabel>
-  <reference>registry.opensuse.org/cephcsi/csi-attacher:v%PKG_VERSION%</reference>
+  <reference>registry.opensuse.org/cephcsi/csi-attacher:v%PKG_VERSION%-rev1-build%RELEASE%</reference>
   <packages_boot>
     <package>
       <name>openSUSE-release-ftp</name>
