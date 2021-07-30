@@ -275,4 +275,12 @@
   * added and improved manual pages (forwarded request 896408 from susnux)</comment>
     <requestid>896581</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>e06b83d1c8cc1db976526ca869bdc413</srcmd5>
+    <version>20210515</version>
+    <time>1627680115</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove conflicting cdparanoia manpage (forwarded request 907448 from gmbr3)</comment>
+    <requestid>909419</requestid>
+  </revision>
 </revisionlist>

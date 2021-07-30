@@ -18,7 +18,7 @@
 
 Name:           man-pages-ja
 Version:        20210515
-Release:        0
+Release:        1.1
 Summary:        LDP Manual Pages (Japanese)
 License:        GPL-2.0-only AND BSD-3-Clause AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
 Group:          Documentation/Man
@@ -26,14 +26,13 @@ Summary(ja):    Linux 日本語マニュアルページ
 URL:            https://linuxjm.osdn.jp/download.html
 Source:         https://linuxjm.osdn.jp/man-pages-ja-%{version}.tar.gz
 # Some manpages are only shipped if the programs exist..
-BuildRequires:  cdparanoia
 BuildRequires:  fdupes
 Provides:       locale(man:ja)
 BuildArch:      noarch
 
 %description -l ja
 このパッケージは linux のための日本語のマニュアルページを提供するものです。
-現在はまだ alpha 配布なので、不十分な点が多々ありますがご了承ください。
+日本語訳は英文より古い場合が多々ありますがご了承ください。
 
 %description
 These are the Japanese man pages of the Linux Documentation Project.
@@ -70,6 +69,9 @@ mkdir -p %{buildroot}%{_mandir}/ja
 # prefer netkit over wu-ftpd
 # prefer ypbind over ypbind-mt
 for dir in \
+    shadow \
+    GNU_coreutils \
+    gnumaniak \
     GNU_bash \
     GNU_bc \
     GNU_binutils \
@@ -97,7 +99,9 @@ for dir in \
     GNU_texinfo \
     GNU_textutils \
     GNU_uucp \
+    LDP_man-pages \
     SysVinit \
+    acl \
     apmd \
     at \
     autofs \
@@ -107,15 +111,17 @@ for dir in \
     bsd-games-non-free \
     byacc \
     bzip2 \
-    cdparanoia \
     cdrecord \
     cron \
+    cups \
     cvsup \
     dhcp \
+    dhcp2 \
     dhcpcd \
+    dump \
+    ebtables \
     e2compr-ancillary \
     e2fsprogs \
-    efax \
     eject \
     expect \
     fdutils \
@@ -124,24 +130,31 @@ for dir in \
     flex \
     fort77 \
     glibc-linuxthreads \
+    hdparm \
     ipchains \
     ipchains-scripts \
     ipfwadm \
     iptables \
     ld.so \
     lilo \
+    lids \
     linux-man9 \
     lpr-linux \
     majordomo \
     man \
+    man-db \
+    microcode_ctl \
     mirrordir \
+    module-init-tools \
     modutils \
     mpg123 \
     ncftp \
     ncurses \
     net-tools \
     netatalk \
+    netkit \
     nfs-server \
+    nfs-utils \
     pciutils \
     pcmcia-cs \
     ppp \
@@ -152,27 +165,25 @@ for dir in \
     rdate \
     reiserfsprogs \
     rp-pppoe \
+    rpm \
+    rssh \
     sendmail \
     setserial \
-    shadow \
+    smartmontools \
     sudo \
     sysklogd \
     tcp_wrappers \
     tcpdump \
     tcsh \
     ucd-snmp \
+    util-linux \
     uudeview \
+    vsftpd \
     wu-ftpd \
     xinetd \
     yp-tools \
     ypbind-mt \
     ypserv \
-    LDP_man-pages \
-    gnumaniak \
-    man-db \
-    nfs-utils \
-    netkit \
-    util-linux \
     ypbind \
     zebedee
 do
