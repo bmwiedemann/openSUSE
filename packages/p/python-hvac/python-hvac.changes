@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 30 10:50:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.11.0
+  * This is intended to by the last hvac release supporting Python 2.7.
+  * Userpass: Add use_token param on login(), Accept passthrough **kwargs on create user.
+  * Support CA-related Environment Variables.
+  * Allow Omission of Password Argument on Userpass create_or_update_user().
+  * Add deprecation notices for some Client() methods.
+
+-------------------------------------------------------------------
 Thu Jun 17 21:17:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 0.10.14:

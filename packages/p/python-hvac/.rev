@@ -110,4 +110,12 @@
   * Add `delete_version_after` KvV2 Param - `configure()` / `update_metadata().</comment>
     <requestid>900662</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9b39cb55db6a67a004e0395dfa7a48fc</srcmd5>
+    <version>0.11.0</version>
+    <time>1627680142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909394</requestid>
+  </revision>
 </revisionlist>

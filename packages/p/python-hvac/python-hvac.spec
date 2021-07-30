@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-hvac
-Version:        0.10.14
+Version:        0.11.0
 Release:        0
 Summary:        HashiCorp Vault API client
 License:        BSD-3-Clause
