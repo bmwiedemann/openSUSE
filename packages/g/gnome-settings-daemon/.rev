@@ -1357,4 +1357,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>- Rebase gnome-settings-daemon-notify-idle-resumed.patch. (forwarded request 904575 from yfjiang)</comment>
     <requestid>906035</requestid>
   </revision>
+  <revision rev="173" vrev="3">
+    <srcmd5>19b245593ab8acdb6de2f5e50d958b8d</srcmd5>
+    <version>40.0.1</version>
+    <time>1627680130</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909124 from yfjiang)</comment>
+    <requestid>909318</requestid>
+  </revision>
 </revisionlist>
