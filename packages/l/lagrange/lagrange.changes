@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 30 10:02:45 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.1
+  - Fixed potential crash when inserting a line break in an input field.
+  - Fixed cursor positioning in fixed-length input fields.
+  - Fixed copying text in input fields (the wrong region was copied).
+  - Fixed URL input field contents not being selected after opening a new tab.
+  - Fixed Upload dialog not showing when reloading a Titan URL.
+  - Updated translations.
+
+-------------------------------------------------------------------
 Tue Jul 27 09:31:51 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.6.0
