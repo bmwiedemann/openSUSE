@@ -12,5 +12,5 @@
       <name>openSUSE-release-ftp</name>
     </package>
   </packages_boot>
-  <reference>registry.opensuse.org/opensuse/cephcsi/csi-node-driver-registrar:v%PKG_VERSION%</reference>
+  <reference>registry.opensuse.org/opensuse/cephcsi/csi-node-driver-registrar:v%PKG_VERSION%-rev1-build%RELEASE%</reference>
 </param>
