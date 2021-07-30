@@ -30,6 +30,15 @@ Fri Feb 12 17:19:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
   + Recognize MIME type aliases of extractable archives.
   + Add extraction support for password-protected archives.
   + CVE-2020-36241: Prevent extraction outside the destination dir.
+- Drop gnome-autoar-CVE-2020-36241.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Mon Feb 11 06:43:29 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-autoar-CVE-2020-36241.patch: Skip problematic files
+  that might be extracted outside of the destination dir to prevent
+  potential security threat. (bsc#1181930,
+  glgo#GNOME/gnome-autoar#7)
 
 -------------------------------------------------------------------
 Fri Dec 13 06:35:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>

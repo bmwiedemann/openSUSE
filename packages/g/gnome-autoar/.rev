@@ -75,4 +75,12 @@
     <comment> (forwarded request 897403 from iznogood)</comment>
     <requestid>897539</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>4d4d505d70d367d05522cd4361331911</srcmd5>
+    <version>0.3.3</version>
+    <time>1627680129</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909114 from yfjiang)</comment>
+    <requestid>909316</requestid>
+  </revision>
 </revisionlist>
