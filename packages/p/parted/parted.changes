@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 26 16:50:36 CEST 2021 - aschnell@suse.com
+
+- update to version 3.4:
+  * Add new partition type flags chromeos_kernel and bls_boot.
+  * Add support for the F2FS filesystem.
+  refreshed patches:
+  - dummy-bootcode-only-for-x86.patch
+  - parted-fix-resizepart-and-rm-command.patch
+  - parted-type.patch
+  - parted-wipeaix.patch
+  - tests-adapt-to-SUSE.patch
+  removed patches:
+  - parted-fix-end_input-usage.patch
+  - parted-resize-alias-to-resizepart.patch
+
+-------------------------------------------------------------------
 Fri Mar 19 13:51:01 UTC 2021 - jeffm@suse.com
 
 - Direct file system manipulation support was removed in 2011.
@@ -16,7 +32,7 @@ Tue Aug 25 18:24:26 CEST 2020 - ro@suse.de
 Wed Apr  8 17:37:47 UTC 2020 - Anna Maresova <anicka@suse.com>
 
 - print maximum number of partitions for yast
-  (bsc#1168756, bsc#1161783) 
+  (bsc#1168756, bsc#1161783)
  - add parted-print-max-partitions-for-yast.patch
 - make parted work with pmemXs devices (bsc#1164260)
  - add libparted-linux-pmem-path.patch
@@ -26,7 +42,7 @@ Fri Jan  3 14:46:27 UTC 2020 - Anna Maresova <anicka@suse.com>
 
 - fix crash in do_resizepart
   + parted-fix-end_input-usage.patch: Fix end_input usage in
-    do_resizepart 
+    do_resizepart
 
 -------------------------------------------------------------------
 Fri Nov 22 14:25:28 UTC 2019 - Anna Maresova <anicka@suse.com>
@@ -114,8 +130,8 @@ Mon Jul  1 14:14:36 UTC 2019 - Anna Maresova <anicka@suse.com>
 
 - port fixes for various bugs from upstream (bsc#1136245)
  - add: libparted-dasd-correct-the-offset-where-the-first-pa.patch
-   4126d02, correct the offset where the first partition begins. 
-   This patch implements libparted-dasd-do-not-use-first-tracks.patch 
+   4126d02, correct the offset where the first partition begins.
+   This patch implements libparted-dasd-do-not-use-first-tracks.patch
  - remove: libparted-dasd-do-not-use-first-tracks.patch
  - add: parted-fix-crash-due-to-improper-partition-number-in.patch
    149f009, fix crash due to improper partition number input,
@@ -123,14 +139,14 @@ Mon Jul  1 14:14:36 UTC 2019 - Anna Maresova <anicka@suse.com>
  - modify: parted-type.patch (removed ui.c part)
  - add: parted-check-the-name-of-partition-first-when-to-nam.patch
    d7a2ff1, check the name of partition first when to name a partition
- - add: libparted-dasd-add-test-cases-for-the-new-fdasd-func.patch 
+ - add: libparted-dasd-add-test-cases-for-the-new-fdasd-func.patch
    c11f5c0, 571e078, add test cases for the new fdasd functions
  - add: libparted-dasd-add-an-exception-for-changing-DASD-LD.patch
    ee2c0c2, add an exception for changing DASD-LDL partition table
  - add: libpartd-dasd-improve-flag-processing-for-DASD-LDL.patch
    1545d6d, improve flag processing for DASD-LDL
  - add: clean-the-disk-information-when-commands-fail-in-int.patch
-   5a61f15, clean the disk information when commands fail in 
+   5a61f15, clean the disk information when commands fail in
    interactive mode
  - add: parted-ui-remove-unneccesary-information-of-command.patch
    0b7946a, remove unneccesary information of command line
@@ -390,7 +406,7 @@ Fri Mar 11 11:20:12 UTC 2016 - puzel@suse.com
 Thu Sep 10 09:18:30 UTC 2015 - fvogt@suse.com
 
 - Update parted-gpt-mbr-sync.patch to fix bsc#945068
-  Basically just a copy of gpt_alloc with minor modifications now 
+  Basically just a copy of gpt_alloc with minor modifications now
 
 -------------------------------------------------------------------
 Tue May 26 11:21:37 UTC 2015 - puzel@suse.com
@@ -550,7 +566,7 @@ Tue May 20 10:27:17 UTC 2014 - puzel@suse.com
 Tue Apr 29 13:06:09 UTC 2014 - puzel@suse.com
 
 - Support setting boot flag in pMBR (bnc#872054):
-  - drop: revert-gpt-add-commands-to-manipulate-pMBR-boot-flag.patch 
+  - drop: revert-gpt-add-commands-to-manipulate-pMBR-boot-flag.patch
   - add: libparted-copy-pmbr_boot-when-duplicating-GPT-disk.patch
   - refresh patches
 
@@ -566,7 +582,7 @@ Mon Feb 17 13:32:19 UTC 2014 - puzel@suse.com
 -------------------------------------------------------------------
 Fri Feb 14 08:30:06 UTC 2014 - puzel@suse.com
 
-- Use BLKRRPART on DASD disks (instead of BLKPG_*) (bnc#862139) 
+- Use BLKRRPART on DASD disks (instead of BLKPG_*) (bnc#862139)
 - added patches:
   * revert-libparted-remove-now-worse-than-useless-_kern.patch
   * revert-linux-remove-DASD-restriction-on-_disk_sync_p.patch
@@ -589,7 +605,7 @@ Fri Jan 24 13:17:34 UTC 2014 - puzel@suse.com
 -------------------------------------------------------------------
 Wed Jan 22 16:15:13 UTC 2014 - puzel@suse.com
 
-- Do not fail when shrinking the partition in non-interactive mode.  
+- Do not fail when shrinking the partition in non-interactive mode.
 - modified patches:
   * parted-resize-command.patch
 
@@ -619,7 +635,7 @@ Wed Jan  8 15:32:34 UTC 2014 - puzel@suse.com
     - 'resize' command changed semantics:
       it no longer resizes the filesystem, but only moves end
       sector of the partition
-- libparted-devel contains libparted-fs-resize library 
+- libparted-devel contains libparted-fs-resize library
 - add ability to change size of the partition (ignoring contained
   filesystem) with 'resize' command; this command has different
   semantics than the former 'resize' command which upstream
@@ -653,14 +669,14 @@ Tue Sep 17 08:27:12 UTC 2013 - mlin@suse.com
 
 - Add parted-Add-Intel-Rapid-Start-Technology-partition.patch:
   * Add Intel Fast Flash(iFFS) partition type support for Intel Rapid
-    Start Technology. Added type 0x84 on MS-DOS and 
+    Start Technology. Added type 0x84 on MS-DOS and
     D3BFE2DE-3DAF-11DF-BA40-E3A556D89593 on GPT disk type.
 
 -------------------------------------------------------------------
 Mon Apr 22 15:06:02 UTC 2013 - puzel@suse.com
 
 - fix hybrid pMBR (gpt_sync_mbr) on BE systems (bnc#809205)
-  - parted-fix-gpt-sync-on-BE-systems.patch 
+  - parted-fix-gpt-sync-on-BE-systems.patch
 - detect btrfs filesystem (bnc#810779)
   - parted-btrfs-support.patch
 
@@ -682,7 +698,7 @@ Wed Nov 21 10:32:05 UTC 2012 - puzel@suse.com
 Thu Sep 27 13:40:56 UTC 2012 - puzel@suse.com
 
 - add parted-workaround-windows7-gpt-implementation.patch
-  (bnc#781688) 
+  (bnc#781688)
 
 -------------------------------------------------------------------
 Fri Jul 27 09:14:44 UTC 2012 - aj@suse.de
@@ -739,12 +755,12 @@ Wed Sep  7 15:05:08 UTC 2011 - puzel@suse.com
 -------------------------------------------------------------------
 Mon Sep  5 12:08:48 UTC 2011 - puzel@suse.com
 
-- add parted-use-ext-range.patch (bnc#715695) 
+- add parted-use-ext-range.patch (bnc#715695)
 
 -------------------------------------------------------------------
 Thu Aug 25 10:22:09 UTC 2011 - puzel@novell.com
 
-- add parted-gpt-sync-mbr-label.patch (bnc#710402) 
+- add parted-gpt-sync-mbr-label.patch (bnc#710402)
   - this patch implements support for special label 'gpt-sync-mbr'
 
 -------------------------------------------------------------------
@@ -756,13 +772,13 @@ Tue Aug 16 09:07:50 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Sun Jul 31 01:50:07 UTC 2011 - crrodriguez@opensuse.org
 
-- Use ncursesw6 instead of plain-old ncurses5 
+- Use ncursesw6 instead of plain-old ncurses5
 - Disable automake silent rules
 
 -------------------------------------------------------------------
 Thu May 19 13:05:08 UTC 2011 - puzel@novell.com
 
-- update to parted-2.4 
+- update to parted-2.4
  * Bug fixes
   - parted no longer allows the modification of certain in-use
     partitions.  In particular, before this fix, parted would
@@ -817,7 +833,7 @@ Thu May 19 13:05:08 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Thu Dec  9 09:44:33 UTC 2010 - puzel@novell.com
 
-- add more-reliable-informing-the-kernel.patch (bnc#657360) 
+- add more-reliable-informing-the-kernel.patch (bnc#657360)
 
 -------------------------------------------------------------------
 Tue Nov  9 12:16:04 UTC 2010 - puzel@novell.com
@@ -834,7 +850,7 @@ Fri Sep 17 14:47:04 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Fri Sep 17 13:47:05 UTC 2010 - puzel@novell.com
 
-- fix always-resize-part.dif (bnc#639579) 
+- fix always-resize-part.dif (bnc#639579)
 
 -------------------------------------------------------------------
 Wed Aug 11 08:45:56 UTC 2010 - puzel@novell.com
@@ -847,16 +863,16 @@ Thu Jul  8 11:43:17 UTC 2010 - puzel@novell.com
 - update to parted-2.3
   - parted now recognizes ATA over Ethernet (AoE) devices
   - parted now recognizes Linux Software RAID Arrays
-  - libparted has a new partition flag to check for diagnostic 
+  - libparted has a new partition flag to check for diagnostic
     (aka recovery or reserved) partitions: PED_PARTITION_DIAG
-  - When libparted deferenced a /dev/mapper/foo symlink, it would 
+  - When libparted deferenced a /dev/mapper/foo symlink, it would
     keep the resulting /dev/dm-N name and sometimes use it later,
-    even though it had since become stale and invalid. 
+    even though it had since become stale and invalid.
     It no longer stores the result of dereferencing a /dev/mapper
     symlink.
   - libparted's msdos_partition_is_flag_available function now
-    always reports that the "hidden" flag is not available for 
-    an extended partition. Similarly, 
+    always reports that the "hidden" flag is not available for
+    an extended partition. Similarly,
     msdos_partition_get_flag(p,PED_PARTITION_HIDDEN) always
     returns 0 for an extended partition.
   - libparted uses a more accurate heuristic to distinguish between
@@ -869,7 +885,7 @@ Thu Jul  8 11:43:17 UTC 2010 - puzel@novell.com
     invalid one when its size is 2TiB or larger.
 - drop etherd_support.diff (included upstream)
 - drop parted-remove-experimental-warning.patch (included upstream)
-- drop make-align-check-work-in-interactive-mode.patch 
+- drop make-align-check-work-in-interactive-mode.patch
   (included upstream)
 - drop parted-no-inttypes-include (not needed)
 - refresh all remaining patches
@@ -888,7 +904,7 @@ Mon Jun 28 06:38:35 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Thu May 27 15:36:51 UTC 2010 - puzel@novell.com
 
-- add make-align-check-work-in-interactive-mode.patch (bnc#608704) 
+- add make-align-check-work-in-interactive-mode.patch (bnc#608704)
 
 -------------------------------------------------------------------
 Fri Apr  2 08:41:02 UTC 2010 - puzel@novell.com
@@ -955,13 +971,13 @@ Mon Feb  1 13:34:10 UTC 2010 - puzel@novell.com
 - update to parted-2.1 (noteworthy changes)
  * New features
   - new --align=<align> commandline option which can have the
-    following values: 
-     - none: Use the minimum alignment allowed by the disk type 
-     - cylinder: Align partitions to cylinders (the default) 
+    following values:
+     - none: Use the minimum alignment allowed by the disk type
+     - cylinder: Align partitions to cylinders (the default)
      - minimal:  Use minimum alignment as given by the disk
-       topology information 
+       topology information
      - optimal:  Use optimum alignment as given by the disk
-       topology information 
+       topology information
     The minimal and optimal values will use layout information
     provided by the disk to align the logical partition table
     addresses to actual physical blocks on the disks. The minimal
@@ -973,13 +989,13 @@ Mon Feb  1 13:34:10 UTC 2010 - puzel@novell.com
     compiled with libblkid >= 2.17 and running on a kernel >=
     2.6.31, otherwise they will behave as the none --align value.
   - Parted now supports disks with sector size larger than 512 bytes.
-    Before this release, parted could operate only on disks with a 
-	sector size of 512 bytes. However, disk manufacturers are 
-	already making disks with an exposed hardware sector size of 
-	4096 bytes. Prior versions of parted cannot even read a 
-	partition table on such a device, not to mention create or 
-	manipulate existing partition tables. Due to internal design 
-	and time constraints, the following less-common partition 
+    Before this release, parted could operate only on disks with a
+	sector size of 512 bytes. However, disk manufacturers are
+	already making disks with an exposed hardware sector size of
+	4096 bytes. Prior versions of parted cannot even read a
+	partition table on such a device, not to mention create or
+	manipulate existing partition tables. Due to internal design
+	and time constraints, the following less-common partition
 	table types are currently disabled:
     - amiga, bsd, aix, pc98
   - new command "align-check TYPE N" to determine whether the
@@ -991,7 +1007,7 @@ Mon Feb  1 13:34:10 UTC 2010 - puzel@novell.com
   - improved >512-byte sector support
   - gpt tables are more rigorously checked
   - improved dasd disk support
-  - handle device nodes created by lvm built with udev 
+  - handle device nodes created by lvm built with udev
     synchronisation enabled properly.
   - when printing tables, parted no longer truncates flag names
   - Partitions in a GPT table are no longer assigned the
@@ -1003,13 +1019,13 @@ Mon Feb  1 13:34:10 UTC 2010 - puzel@novell.com
 	about changes of the partition table. The consequence of this
 	change is that parted alone can no longer inform the kernel
 	about changes to partition table on a disk where some of the
-	partitions are mounted.    
+	partitions are mounted.
 - build requires check-devel and pkg-config
 - drop parted-1.8.3.dif - fixed by adding pkg-config and check-devel
   to BuildRequires
 - drop parted.tty.patch, parted.no-O_DIRECT.patch,
   do-not-discard-bootcode-in-extended-partition.patch,
-  avoid-unnecessary-open-close.patch, 
+  avoid-unnecessary-open-close.patch,
   do-not-unnecessarily-open-part-dev.patch
   - fixed upstream
 - drop fix-tests.sh - make check disabled in specfile
@@ -1028,12 +1044,12 @@ Mon Feb  1 12:22:54 UTC 2010 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Jan 25 15:54:17 UTC 2010 - puzel@novell.com
 
-- use-ext-range.patch (bnc#567652) 
+- use-ext-range.patch (bnc#567652)
 
 -------------------------------------------------------------------
 Thu Dec  3 14:10:59 UTC 2009 - puzel@novell.com
 
-- avoid-unnecessary-open-close.patch, 
+- avoid-unnecessary-open-close.patch,
   do-not-unnecessarily-open-part-dev.patch,
   fix-race-call-udevadm-settle.patch,
   retry-blkpg-ioctl.patch (bnc#539521)
@@ -1041,7 +1057,7 @@ Thu Dec  3 14:10:59 UTC 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Wed Oct  7 14:12:15 UTC 2009 - puzel@novell.com
 
-- do-not-create-dm-nodes.patch (bnc#501773) 
+- do-not-create-dm-nodes.patch (bnc#501773)
 
 -------------------------------------------------------------------
 Fri Jul 31 10:20:05 CEST 2009 - puzel@novell.com
@@ -1071,7 +1087,7 @@ Fri Jul 31 10:20:05 CEST 2009 - puzel@novell.com
 	 make poor names, and v1 is the only format supported by
 	 current Linux kernels. Aliases for all previous names are
 	 available.
-- drop following patches as they were merged upstream/are no 
+- drop following patches as they were merged upstream/are no
   longer needed:
   * 2TB_size_overflow.diff
   * disable_FAT_check.diff
@@ -1097,45 +1113,45 @@ Fri Jul 31 10:20:05 CEST 2009 - puzel@novell.com
 -------------------------------------------------------------------
 Wed Jul  1 12:13:42 CEST 2009 - puzel@novell.com
 
-- add libsepol-devel to BR: (fix build) 
+- add libsepol-devel to BR: (fix build)
 
 -------------------------------------------------------------------
 Wed Jun 17 15:43:33 CEST 2009 - puzel@suse.cz
 
-- add fix-make-install-failure.patch (fix build) 
+- add fix-make-install-failure.patch (fix build)
 - add fix-array-overflow.patch (fixes warning)
 - split -lang subpackage
 
 -------------------------------------------------------------------
 Tue Apr  7 02:55:54 CEST 2009 - crrodriguez@suse.de
 
-- remove static libraries 
+- remove static libraries
 
 -------------------------------------------------------------------
 Tue Mar 10 12:12:02 CET 2009 - puzel@suse.cz
 
-- fix-multipath-part-name.patch replaced with 
+- fix-multipath-part-name.patch replaced with
   fix-dm-partition-name.patch (bnc#471440)
 
 -------------------------------------------------------------------
 Wed Feb 18 11:22:22 CET 2009 - puzel@suse.cz
 
-- do-not-automatically-correct-GPT.patch (bnc#436825) 
+- do-not-automatically-correct-GPT.patch (bnc#436825)
 
 -------------------------------------------------------------------
 Tue Feb 10 11:21:52 CET 2009 - puzel@suse.cz
 
-- dont-require-dvh-partition-name.patch (bnc#471703) 
+- dont-require-dvh-partition-name.patch (bnc#471703)
 
 -------------------------------------------------------------------
 Mon Feb  9 13:20:38 CET 2009 - puzel@suse.cz
 
-- parted-cmd-arg-fix.patch (bnc#473207) 
+- parted-cmd-arg-fix.patch (bnc#473207)
 
 -------------------------------------------------------------------
 Fri Jan 23 13:15:14 CET 2009 - puzel@suse.cz
 
-- do-not-discard-bootcode-in-extended-partition.patch (bnc#467576) 
+- do-not-discard-bootcode-in-extended-partition.patch (bnc#467576)
 
 -------------------------------------------------------------------
 Fri Jan 23 09:08:07 CET 2009 - puzel@suse.cz
@@ -1145,7 +1161,7 @@ Fri Jan 23 09:08:07 CET 2009 - puzel@suse.cz
 -------------------------------------------------------------------
 Thu Jan 22 12:53:26 CET 2009 - puzel@suse.cz
 
-- fix-multipath-part-name.patch (bnc#447591) 
+- fix-multipath-part-name.patch (bnc#447591)
 
 -------------------------------------------------------------------
 Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
@@ -1155,7 +1171,7 @@ Wed Jan  7 12:34:56 CET 2009 - olh@suse.de
 -------------------------------------------------------------------
 Wed Nov 26 13:59:06 CET 2008 - puzel@suse.cz
 
-- fix-dasd-probe.patch (bnc#438681) 
+- fix-dasd-probe.patch (bnc#438681)
 
 -------------------------------------------------------------------
 Fri Nov  7 21:58:52 CET 2008 - puzel@suse.cz
@@ -1166,12 +1182,12 @@ Fri Nov  7 21:58:52 CET 2008 - puzel@suse.cz
 -------------------------------------------------------------------
 Wed Nov  5 12:42:57 CET 2008 - puzel@suse.cz
 
-- disabled largest_partition_number.patch (bnc#440141) 
+- disabled largest_partition_number.patch (bnc#440141)
 
 -------------------------------------------------------------------
 Mon Oct 20 11:27:45 CEST 2008 - puzel@suse.cz
 
-- fix improper data conversion (bnc#435702) 
+- fix improper data conversion (bnc#435702)
 
 -------------------------------------------------------------------
 Tue Oct  7 10:55:11 CEST 2008 - puzel@suse.cz
@@ -1217,7 +1233,7 @@ Fri Jul 18 10:03:52 CEST 2008 - agraf@suse.de
 -------------------------------------------------------------------
 Tue Jul  8 12:08:30 CEST 2008 - puzel@suse.cz
 
-- added largest_partition_number.patch 
+- added largest_partition_number.patch
   * fixes computation of largest partition number (bnc#397210)
 
 -------------------------------------------------------------------
@@ -1234,7 +1250,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Mon Mar 24 09:37:13 CET 2008 - ro@suse.de
 
-- fix typo in specfile 
+- fix typo in specfile
 
 -------------------------------------------------------------------
 Thu Mar 20 15:46:12 CET 2008 - meissner@suse.de
@@ -1249,12 +1265,12 @@ Thu Mar 20 15:46:12 CET 2008 - meissner@suse.de
 -------------------------------------------------------------------
 Sun Mar 16 06:53:23 CET 2008 - crrodriguez@suse.de
 
-- fix file-not-in-lang rpmlint warnings 
+- fix file-not-in-lang rpmlint warnings
 
 -------------------------------------------------------------------
 Tue Jan 15 12:12:17 CET 2008  - fehr@suse.de
 
-- Add patch 2TB_size_overflow.diff developed by Jim Meyering 
+- Add patch 2TB_size_overflow.diff developed by Jim Meyering
   <meyering@redhat.com> to properly handle cases of overflow over
   2TB limit in msdos label (#352484)
 
@@ -1401,7 +1417,7 @@ Tue Dec  5 11:11:59 CET 2006 - fehr@suse.de
 -------------------------------------------------------------------
 Tue Nov  7 13:46:13 CET 2006 - ro@suse.de
 
-- fix manpage permissions 
+- fix manpage permissions
 
 -------------------------------------------------------------------
 Fri Jul 21 11:15:27 CEST 2006 - olh@suse.de
@@ -1470,7 +1486,7 @@ Tue Dec  6 14:47:16 CET 2005  - fehr@suse.de
 Wed Nov  9 17:51:06 CET 2005  - fehr@suse.de
 
 - update to new version 1.6.25
-- make parted correctly refuse to resize inconsistent fat 
+- make parted correctly refuse to resize inconsistent fat
   filesystems even if env var YAST_IS_RUNNING is set (#132967)
 
 -------------------------------------------------------------------
@@ -1530,7 +1546,7 @@ Tue Jan 11 15:55:35 CET 2005  - fehr@suse.de
 Mon Nov 29 12:52:46 CET 2004  - fehr@suse.de
 
 - update to new version 1.6.19
-- add reiserfs to needforbuild 
+- add reiserfs to needforbuild
 
 -------------------------------------------------------------------
 Mon Nov 22 13:04:06 CET 2004  - fehr@suse.de
@@ -1550,7 +1566,7 @@ Tue Oct 26 17:34:49 CEST 2004 - fehr@suse.de
 -------------------------------------------------------------------
 Wed Sep 29 12:49:24 CEST 2004 - fehr@suse.de
 
-- add support for ATA over ethernet 
+- add support for ATA over ethernet
 - add support for partitioning device-mapper devices (for dmraid)
 
 -------------------------------------------------------------------
@@ -1561,13 +1577,13 @@ Mon Sep 20 11:27:45 CEST 2004 - fehr@suse.de
 -------------------------------------------------------------------
 Thu Sep 16 14:39:40 CEST 2004 - fehr@suse.de
 
-- greatly simplify always-resize-part.dif by using 
+- greatly simplify always-resize-part.dif by using
   ped_constraint_exact
 
 -------------------------------------------------------------------
 Wed Sep 15 14:31:48 CEST 2004 - fehr@suse.de
 
-- prevent unwanted modifying of partition start and end due to 
+- prevent unwanted modifying of partition start and end due to
   alignment constraints during resize (#45013, #44699)
 
 -------------------------------------------------------------------
@@ -1604,18 +1620,18 @@ Sat Jan 10 15:37:29 CET 2004 - adrian@suse.de
 Mon Oct 20 17:02:46 CEST 2003 - fehr@suse.de
 
 - fix printing of partitions larger than 1TB in size (#32319)
-  
+
 -------------------------------------------------------------------
 Fri Sep 12 10:02:43 CEST 2003 - fehr@suse.de
 
 - extend parted to handle User-mode virtual block devices (#30375)
-  
+
 -------------------------------------------------------------------
 Mon Sep  8 15:56:38 CEST 2003 - fehr@suse.de
 
 - do not warning about too new GPT version if running under YaST2
   and too new version is 0x00010200 (#29563)
-  
+
 -------------------------------------------------------------------
 Mon Jul 28 11:20:02 CEST 2003 - fehr@suse.de
 
@@ -1644,7 +1660,7 @@ Thu Mar 20 16:21:20 CET 2003  - fehr@suse.de
 -------------------------------------------------------------------
 Mon Feb 24 10:27:08 CET 2003  - fehr@suse.de
 
-- update to new version 1.6.5 
+- update to new version 1.6.5
 
 -------------------------------------------------------------------
 Mon Feb 17 12:21:05 CET 2003  - fehr@suse.de
@@ -1660,9 +1676,9 @@ Fri Feb  7 15:19:46 CET 2003  - fehr@suse.de
 -------------------------------------------------------------------
 Mon Feb  3 14:35:20 CET 2003 - fehr@suse.de
 
-- disable check for string "FAT" in boot sector since it makes 
+- disable check for string "FAT" in boot sector since it makes
   parted fail on some IDE disks with TurboLinux installed (#19401)
-    
+
 -------------------------------------------------------------------
 Tue Dec 10 10:52:42 CET 2002 - fehr@suse.de
 
@@ -1684,12 +1700,12 @@ Mon Sep  2 15:44:17 CEST 2002 - fehr@suse.de
 
 - fix bug occuring sometimes when resizing reiserfs from YaST2
   (bug was in patch always-resize-part.dif)
-  
+
 -------------------------------------------------------------------
 Tue Aug 13 11:18:27 CEST 2002 - fehr@suse.de
 
 - update to parted 1.6.3
-  
+
 -------------------------------------------------------------------
 Thu Aug  8 08:42:34 CEST 2002 - fehr@suse.de
 
@@ -1711,7 +1727,7 @@ Thu Aug  1 11:57:35 CEST 2002 - fehr@suse.de
 -------------------------------------------------------------------
 Thu Jul 25 19:06:20 CEST 2002 - fehr@suse.de
 
-- add patch by Marcus Meissner to show and set partition id on dos 
+- add patch by Marcus Meissner to show and set partition id on dos
   label
 
 -------------------------------------------------------------------
@@ -1761,7 +1777,7 @@ Mon Sep  3 17:33:29 CEST 2001 - kkaempf@suse.de
 -------------------------------------------------------------------
 Thu May 10 17:55:18 CEST 2001 - freitag@suse.de
 
-- Added documentation to filelist, Bug# 6115 
+- Added documentation to filelist, Bug# 6115
 
 -------------------------------------------------------------------
 Thu May 10 01:02:44 CEST 2001 - mfabian@suse.de
@@ -1779,7 +1795,7 @@ Mon Apr 30 17:39:26 MEST 2001 - tom@suse.de
 -------------------------------------------------------------------
 Thu Apr 12 17:23:04 CEST 2001 - ro@suse.de
 
-- gettextize for new gettext 
+- gettextize for new gettext
 
 -------------------------------------------------------------------
 Wed Apr  4 16:19:29 CEST 2001 - kukuk@suse.de
@@ -1832,10 +1848,9 @@ Tue Nov 21 14:20:36 CET 2000 - tom@suse.de
 -------------------------------------------------------------------
 Thu Nov  9 09:58:25 CET 2000 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Tue Oct 10 15:56:16 MEST 2000 - tom@suse.de
 
 - initial version, GNU parted 1.2.9
-

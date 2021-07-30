@@ -65,18 +65,18 @@ Index: parted-3.3/parted/parted.c
 +        const int               end_idx = 2;
 +        const bool              danger_if_busy = false;
          int rc = 0;
- 
-         if (!disk) {
+         char*                   end_input = NULL;
+         char*                   end_size = NULL;
 @@ -1671,7 +1682,8 @@ do_resizepart (PedDevice** dev, PedDisk*
- 
-         if (!command_line_get_partition (_("Partition number?"), disk, &part))
-                 goto error;
+         }
+
+         /* If the partition is busy this may clear the command_line and prompt the user */
 -        if (!_partition_warn_busy (part))
 +	/* warn early if the partition end is not provided on cmdline */
 +        if (cmdline_words <= part_idx && !_partition_warn_busy (part, danger_if_busy))
                  goto error;
  
-         start = part->geom.start;
+         /* Push the End value back onto the command_line, if it exists */
 @@ -1681,19 +1693,32 @@ do_resizepart (PedDevice** dev, PedDisk*
                  goto error;
          _adjust_end_if_iec(&start, &end, range_end, end_input);

@@ -16,16 +16,16 @@ Index: parted-3.3/include/parted/disk.in.h
 ===================================================================
 --- parted-3.3.orig/include/parted/disk.in.h
 +++ parted-3.3/include/parted/disk.in.h
-@@ -75,10 +75,11 @@ enum _PedPartitionFlag {
-         PED_PARTITION_LEGACY_BOOT=15,
-         PED_PARTITION_MSFT_DATA=16,
+@@ -78,10 +78,11 @@
          PED_PARTITION_IRST=17,
--        PED_PARTITION_ESP=18
-+        PED_PARTITION_ESP=18,
-+        PED_PARTITION_TYPE=19
+         PED_PARTITION_ESP=18,
+         PED_PARTITION_CHROMEOS_KERNEL=19,
+-        PED_PARTITION_BLS_BOOT=20
++        PED_PARTITION_BLS_BOOT=20,
++        PED_PARTITION_TYPE=21
  };
  #define PED_PARTITION_FIRST_FLAG        PED_PARTITION_BOOT
--#define PED_PARTITION_LAST_FLAG         PED_PARTITION_ESP
+-#define PED_PARTITION_LAST_FLAG         PED_PARTITION_BLS_BOOT
 +#define PED_PARTITION_LAST_FLAG         PED_PARTITION_TYPE
  
  enum _PedDiskTypeFeature {

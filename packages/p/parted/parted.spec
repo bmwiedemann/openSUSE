@@ -17,7 +17,7 @@
 
 
 Name:           parted
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        GNU partitioner
 License:        GPL-3.0-or-later
@@ -43,8 +43,6 @@ Patch16:        parted-mac.patch
 Patch17:        libparted-use-BLKRRPART-for-DASD.patch.patch
 Patch18:        libparted-make-BLKRRPART-more-robust.patch
 Patch19:        libparted-dasd-implicit-partition-disk-flag.patch
-# Remove following compatibility patch once bnc#931765 is resolved
-Patch20:        parted-resize-alias-to-resizepart.patch
 Patch21:        libparted-avoid-libdevice-mapper-warnings.patch
 # Patch31 dropped for bsc#1058667
 Patch22:        libparted-open-the-device-RO-and-lazily-switch-to-RW.patch
@@ -62,7 +60,6 @@ Patch31:        parted-add-ignore-busy-option.patch
 Patch32:        parted-fix-resizepart-and-rm-command.patch
 Patch33:        libparted-use-BLKRRPART-only-when-needed.patch
 Patch34:        libparted-canonicalize-dev-md-paths.patch
-Patch35:        parted-fix-end_input-usage.patch 
 
 # bsc#1168756
 Patch36:        libparted-linux-pmem-path.patch
@@ -80,6 +77,7 @@ Patch157:       tests-add-dev-md-check-to-t6100.patch
 
 # SUSE tests patches
 Patch200:       tests-adapt-to-SUSE.patch
+
 BuildRequires:  check-devel
 BuildRequires:  device-mapper-devel >= 1.02.33
 BuildRequires:  libblkid-devel >= 2.17
@@ -124,6 +122,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %lang_package
+
 %prep
 %setup -a 4
 %patch1 -p1
@@ -137,7 +136,6 @@ to develop applications that require these.
 %patch17 -p1
 %patch18 -p1
 %patch19 -p1
-%patch20 -p1
 %patch21 -p1
 %patch22 -p1
 %patch23 -p1
@@ -152,7 +150,6 @@ to develop applications that require these.
 %patch32 -p1
 %patch33 -p1
 %patch34 -p1
-%patch35 -p1
 %patch36 -p1
 %patch37 -p1
 %patch64 -p1

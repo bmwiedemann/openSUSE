@@ -23,7 +23,7 @@ Index: parted-3.3/libparted/labels/dos.c
  	if ( (!table->boot_code[0]) ||
  			( table->boot_code[0] == (char) 0xc9 &&
 @@ -1297,6 +1303,7 @@ msdos_write (const PedDisk* disk)
- 		memset (table->boot_code, 0, 512);
+ 		memset (table, 0, 512);
  		memcpy (table->boot_code, MBR_BOOT_CODE, sizeof (MBR_BOOT_CODE));
  	}
 +#endif

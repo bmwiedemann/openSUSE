@@ -21,6 +21,6 @@ Index: parted-3.3/libparted/labels/dos.c
 +			  table->boot_code[2] == (char) 0xd4 &&
 +			  table->boot_code[3] == (char) 0xc1)
 +			) {
- 		memset (table->boot_code, 0, 512);
+ 		memset (table, 0, 512);
  		memcpy (table->boot_code, MBR_BOOT_CODE, sizeof (MBR_BOOT_CODE));
  	}
