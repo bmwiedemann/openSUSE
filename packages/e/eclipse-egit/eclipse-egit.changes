@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 30 12:34:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to eclipse-egit 5.11.0
+  * Needed because of change of eclipse-jgit to 5.11.0
+
+-------------------------------------------------------------------
 Fri Jul  3 09:41:59 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to eclipse-egit 5.8.0

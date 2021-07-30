@@ -1,7 +1,7 @@
 #
 # spec file for package eclipse-egit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,21 @@
 #
 
 
-%global gittag 5.8.0.202006091008-r
+%global gittag 5.11.0.202103091610-r
 Name:           eclipse-egit
-Version:        5.8.0
+Version:        5.11.0
 Release:        0
 Summary:        Eclipse Git Integration
 License:        EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/egit
 # Use github mirror for now, see: https://bugs.eclipse.org/bugs/show_bug.cgi?id=522144
-Source0:        https://github.com/eclipse/egit/archive/v%{gittag}/egit-v%{gittag}.tar.gz
+Source0:        https://git.eclipse.org/c/egit/egit.git/snapshot/egit-%{gittag}.tar.xz
 BuildRequires:  eclipse-jdt-bootstrap
 BuildRequires:  eclipse-jgit >= %{version}
 BuildRequires:  eclipse-license2
 BuildRequires:  eclipse-platform-bootstrap
+BuildRequires:  fdupes
 BuildRequires:  maven-antrun-plugin
 BuildRequires:  tycho
 #!BuildIgnore:  eclipse-jdt
@@ -85,6 +86,7 @@ sed -i -e '/jsch/a<import plugin="org.apache.sshd.osgi"/>' org.eclipse.egit-feat
 
 %install
 %mvn_install
+%fdupes -s %{buildroot}%{_datadir}/eclipse/droplets
 
 %files -f .mfiles-egit
 %license LICENSE
