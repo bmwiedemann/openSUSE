@@ -7,7 +7,7 @@
   <title>csi-livenessprobe container</title>
   <url>https://registry.opensuse.org/opensuse/cephcsi/csi-livenessprobe:v%PKG_VERSION%</url>
   <referencelabel>org.opensuse.reference</referencelabel>
-  <reference>registry.opensuse.org/opensuse/cephcsi/csi-livenessprobe:v%PKG_VERSION%</reference>
+  <reference>registry.opensuse.org/opensuse/cephcsi/csi-livenessprobe:v%PKG_VERSION%-rev1-build%RELEASE%</reference>
   <packages_boot>
     <package>
       <name>openSUSE-release-ftp</name>
