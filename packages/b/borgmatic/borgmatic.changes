@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 28 11:46:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.5.17
+  * Fix error when configuration file contains "umask" option.
+  * Remove test dependency on vim and /dev/urandom.
+
+- Update to 1.5.16
+  * Suppress console output in sample crontab and
+    systemd service files.
+  * Fix syslog logging on FreeBSD.
+  * Fix hang when restoring a PostgreSQL "tar" format database dump.
+  * Better error messages! Switch the library used
+    for validating configuration files
+  * Link borgmatic Ansible role from installation documentation:
+
+-------------------------------------------------------------------
 Wed Jun 30 16:45:16 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.5.15

@@ -17,7 +17,7 @@
 
 
 Name:           borgmatic
-Version:        1.5.15
+Version:        1.5.17
 Release:        0
 Summary:        Automation tool for borgbackup
 License:        GPL-3.0-only
@@ -40,6 +40,7 @@ BuildRequires:  python3-coverage
 BuildRequires:  python3-docopt
 BuildRequires:  python3-flake8
 BuildRequires:  python3-flexmock
+BuildRequires:  python3-jsonschema >= 3.2.0
 BuildRequires:  python3-mccabe
 BuildRequires:  python3-more-itertools
 BuildRequires:  python3-pluggy
@@ -58,6 +59,7 @@ BuildRequires:  python3-toml
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       borgbackup
 Requires:       python3-colorama
+Requires:       python3-jsonschema >= 3.2.0
 Requires:       python3-pykwalify
 Requires:       python3-requests
 Requires:       python3-ruamel.yaml

@@ -1,6 +1,6 @@
---- a/tests/integration/test_execute.py.orig	2021-03-31 12:12:42.743855551 +0200
-+++ b/tests/integration/test_execute.py	2021-03-31 12:13:45.048295215 +0200
-@@ -86,6 +86,7 @@
+--- a/tests/integration/test_execute.py.orig	2021-07-28 13:47:51.839769127 +0200
++++ b/tests/integration/test_execute.py	2021-07-28 13:48:37.963971510 +0200
+@@ -87,6 +87,7 @@
      assert not error.value.output
  
  
@@ -8,8 +8,8 @@
  def test_log_outputs_kills_other_processes_when_one_errors():
      flexmock(module.logger).should_receive('log')
      flexmock(module).should_receive('command_for_process').and_return('grep')
-@@ -123,6 +124,7 @@
-     assert error.value.output
+@@ -162,6 +163,7 @@
+     )
  
  
 +@pytest.mark.skip(reason="test is failing in our env")
