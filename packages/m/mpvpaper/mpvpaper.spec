@@ -1,7 +1,7 @@
 #
 # spec file for package mpvpaper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,7 @@ BuildRequires:  meson
 BuildRequires:  mpv-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  wayland-protocols-devel
 BuildRequires:  wlroots-devel
 Requires:       mpv
 

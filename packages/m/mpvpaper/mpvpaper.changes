@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 29 08:52:40 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Added missing dependency: wayland-protocols-devel
+
+-------------------------------------------------------------------
 Sat Dec  5 18:54:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1:
