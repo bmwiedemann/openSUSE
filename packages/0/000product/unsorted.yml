@@ -391,7 +391,7 @@ unsorted:
   - adriconf 
   - adriconf-lang 
   - ads 
-  - aegisub 
+  - aegisub: [x86_64] 
   - aelfred 
   - aelfred-javadoc 
   - aer-inject 
@@ -1144,7 +1144,6 @@ unsorted:
   - bazel-skylib-source 
   - bazel-toolchains-source 
   - bazel-workspaces 
-  - bazel0.19: [x86_64] 
   - bazel0.24: [x86_64] 
   - bazel3.4: [x86_64] 
   - bazel3.7: [x86_64] 
@@ -1654,7 +1653,6 @@ unsorted:
   - caja 
   - caja-devel 
   - caja-engrampa 
-  - caja-extension-actions 
   - caja-extension-atril 
   - caja-extension-dropbox 
   - caja-extension-eiciel 
@@ -3570,9 +3568,6 @@ unsorted:
   - filebench 
   - filelight 
   - filelight-lang 
-  - filemanager-actions 
-  - filemanager-actions-devel 
-  - filemanager-actions-lang 
   - filesystem-media 
   - filezilla 
   - filezilla-devel 
@@ -7409,6 +7404,7 @@ unsorted:
   - jgroups-javadoc 
   - jgroups-manual 
   - jgroups-repolib 
+  - jhead 
   - jhighlight 
   - jhighlight-javadoc 
   - jigit 
@@ -7685,7 +7681,6 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers: [x86_64] 
   - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
@@ -7762,8 +7757,6 @@ unsorted:
   - kdevelop5-plugin-python3 
   - kdevelop5-plugin-python3-lang 
   - kdevplatform-devel 
-  - kdewebkit-devel 
-  - kdewebkit-devel-32bit: [x86_64] 
   - kdgantt2 
   - kdgantt2-devel 
   - kdiagram-devel 
@@ -8742,8 +8735,6 @@ unsorted:
   - libKF5ThreadWeaver5-32bit: [x86_64] 
   - libKF5UnitConversion5-32bit: [x86_64] 
   - libKF5Wallet5-32bit: [x86_64] 
-  - libKF5WebKit5 
-  - libKF5WebKit5-32bit: [x86_64] 
   - libKF5WidgetsAddons5-32bit: [x86_64] 
   - libKF5WindowSystem5-32bit: [x86_64] 
   - libKF5XmlGui5-32bit: [x86_64] 
@@ -8785,6 +8776,7 @@ unsorted:
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
+  - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
@@ -9843,7 +9835,6 @@ unsorted:
   - libcalcium0 
   - libcamd-doc 
   - libcamera-devel 
-  - libcamera-suse5 
   - libcamera-suse5-32bit: [x86_64] 
   - libcamera-tools 
   - libcanberra-devel 
@@ -10537,6 +10528,7 @@ unsorted:
   - libfftw3_mpi3-32bit: [x86_64] 
   - libfftw3_omp3 
   - libfftw3_omp3-32bit: [x86_64] 
+  - libfftw3_threads3 
   - libfftw3_threads3-32bit: [x86_64] 
   - libfguid-devel 
   - libfguid1 
@@ -12215,6 +12207,7 @@ unsorted:
   - libnl3-devel 
   - libnl3-devel-32bit: [x86_64] 
   - libnlopt0 
+  - libnm0-32bit: [x86_64] 
   - libnma-devel 
   - libnormaliz3 
   - libnoson2 
@@ -12284,7 +12277,6 @@ unsorted:
   - libode8 
   - libodfgen-devel 
   - libodfgen-devel-doc 
-  - libodp-122_0_0: [x86_64] 
   - libodraw-devel 
   - libodraw-tools 
   - libodraw1 
@@ -12777,7 +12769,6 @@ unsorted:
   - libprimesieve9 
   - libprofiler0 
   - libproj19 
-  - libprometheus-cpp0 
   - libpromises-devel 
   - libpromises3 
   - libprotobuf-c-devel 
@@ -16679,7 +16670,6 @@ unsorted:
   - native-platform-javadoc 
   - nautilus-devel 
   - nautilus-eiciel 
-  - nautilus-extension-actions 
   - nautilus-extension-dropbox 
   - nautilus-extension-folder-color 
   - nautilus-extension-nextcloud 
@@ -16747,7 +16737,6 @@ unsorted:
   - nemiver-lang 
   - nemo 
   - nemo-devel 
-  - nemo-extension-actions 
   - nemo-extension-audio-tab 
   - nemo-extension-compare 
   - nemo-extension-dropbox 
@@ -17648,7 +17637,6 @@ unsorted:
   - oddjob 
   - oddjob-mkhomedir 
   - ode-devel 
-  - odp-devel: [x86_64] 
   - odt2txt 
   - officecodepro-fonts 
   - ofono 
@@ -19958,12 +19946,6 @@ unsorted:
   - petsc_3_14_5-gnu-openmpi3-hpc-saws 
   - petsc_3_14_5-gnu-openmpi4-hpc-devel 
   - petsc_3_14_5-gnu-openmpi4-hpc-saws 
-  - pfsglview 
-  - pfstools-devel 
-  - pfstools-exr 
-  - pfstools-imgmagick 
-  - pfstools-octave 
-  - pfsview 
   - pg_comparator 
   - pgaccess 
   - pgadmin4 
@@ -20175,9 +20157,9 @@ unsorted:
   - pipewire-alsa-32bit: [x86_64] 
   - pipewire-devel 
   - pipewire-doc 
-  - pipewire-lang 
   - pipewire-libjack-0_3 
   - pipewire-libjack-0_3-32bit: [x86_64] 
+  - pipewire-libjack-0_3-devel 
   - pipewire-modules-32bit: [x86_64] 
   - pipewire-spa-plugins-0_2-32bit: [x86_64] 
   - pipewire0_2-compat 
@@ -20678,7 +20660,6 @@ unsorted:
   - projectlibre 
   - prom2json 
   - prometheus-client-model-source 
-  - prometheus-cpp-devel 
   - prometheus-ha_cluster_exporter: [x86_64] 
   - prometheus-hanadb_exporter 
   - prometheus-sap_host_exporter: [x86_64] 
@@ -23510,7 +23491,6 @@ unsorted:
   - python36-python-json-logger 
   - python36-python-jsonrpc-server 
   - python36-python-jsonschema-objects 
-  - python36-python-language-server 
   - python36-python-lsp-black 
   - python36-python-lsp-jsonrpc 
   - python36-python-lsp-server 
@@ -24096,7 +24076,6 @@ unsorted:
   - python36-wsgi_intercept 
   - python36-wsproto 
   - python36-wstools 
-  - python36-wtf-peewee 
   - python36-wurlitzer 
   - python36-wxPython 
   - python36-wxPython-lang 
@@ -26418,7 +26397,6 @@ unsorted:
   - python38-python-json-logger 
   - python38-python-jsonrpc-server 
   - python38-python-jsonschema-objects 
-  - python38-python-language-server 
   - python38-python-louvain 
   - python38-python-lsp-black 
   - python38-python-lsp-jsonrpc 
@@ -27044,7 +27022,6 @@ unsorted:
   - python38-wsgi_intercept 
   - python38-wsproto 
   - python38-wstools 
-  - python38-wtf-peewee 
   - python38-wurlitzer 
   - python38-wxPython 
   - python38-wxPython-lang 
@@ -29493,7 +29470,6 @@ unsorted:
   - python39-python-json-logger 
   - python39-python-jsonrpc-server 
   - python39-python-jsonschema-objects 
-  - python39-python-language-server 
   - python39-python-louvain 
   - python39-python-lsp-black 
   - python39-python-lsp-jsonrpc 
@@ -30147,7 +30123,6 @@ unsorted:
   - python39-wsgi_intercept 
   - python39-wsproto 
   - python39-wstools 
-  - python39-wtf-peewee 
   - python39-wurlitzer 
   - python39-wxPython 
   - python39-wxPython-lang 
@@ -30280,7 +30255,6 @@ unsorted:
   - qgis-plugin-grass 
   - qgis-sample-data 
   - qgit 
-  - qgroundcontrol 
   - qhexedit2 
   - qhexedit2-devel 
   - qhexedit2-doc 
@@ -40911,7 +40885,6 @@ unsorted:
   - trilinos_13_0_1-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos_13_0_1-hpc-doc: [x86_64] 
   - trinity 
-  - tripwire 
   - trivy 
   - trng-devel 
   - trousers-devel 
@@ -42563,9 +42536,9 @@ unsorted:
   - zynaddsubfx-dssi 
   - zynaddsubfx-lv2 
   - zynaddsubfx-vst 
+  - zypp-gui 
   - zypper-aptitude 
   - zypper-changelog-plugin 
-  - zypper-docker: [x86_64] 
   - zypper-migration-plugin 
   - zziplib-devel 
   - zziplib-devel-32bit: [x86_64] 
