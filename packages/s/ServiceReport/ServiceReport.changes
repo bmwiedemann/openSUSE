@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 09:15:52 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added harden_servicereport.service.patch
+
+-------------------------------------------------------------------
 Thu Jul 15 16:23:48 UTC 2021 - msuchanek@suse.com
 
 - Update to version 2.2.3 (jsc#SLE-18193):

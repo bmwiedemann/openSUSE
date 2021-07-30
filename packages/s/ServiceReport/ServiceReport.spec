@@ -28,6 +28,7 @@ License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/linux-ras/ServiceReport
 Source:         https://github.com/linux-ras/ServiceReport/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          harden_servicereport.service.patch
 BuildRequires:  %{python}
 BuildRequires:  %{python}-setuptools
 BuildRequires:  systemd-rpm-macros

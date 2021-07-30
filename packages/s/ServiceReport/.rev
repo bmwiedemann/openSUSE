@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>906520</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cda6eece455a2a79dc193787e2170c62</srcmd5>
+    <version>2.2.3</version>
+    <time>1627680146</time>
+    <user>dimstar_suse</user>
+    <comment>- Added hardening to systemd service(s). Added harden_servicereport.service.patch</comment>
+    <requestid>909402</requestid>
+  </revision>
 </revisionlist>
