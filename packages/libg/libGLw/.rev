@@ -132,4 +132,13 @@ X11:XOrg/libGLw instead. Thanks.</comment>
 - always build with Motif support</comment>
     <requestid>579530</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>e8af8e8ffd140c55537ebecbd2635dcd</srcmd5>
+    <version>8.0.0</version>
+    <time>1627680116</time>
+    <user>dimstar_suse</user>
+    <comment>- includes everything needed for ECO to enable Motif support in
+  SLE12-SP5 (jira#SLE-15018)</comment>
+    <requestid>909242</requestid>
+  </revision>
 </revisionlist>

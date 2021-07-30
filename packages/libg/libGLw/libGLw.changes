@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 18:20:29 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- includes everything needed for ECO to enable Motif support in
+  SLE12-SP5 (jira#SLE-15018)
+
+-------------------------------------------------------------------
 Fri Feb 23 10:25:42 UTC 2018 - sndirsch@suse.com
 
 - n_Use-newly-introduced-GLAPIVAR-for-variables.patch
