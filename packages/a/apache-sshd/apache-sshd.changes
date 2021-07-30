@@ -1,4 +1,230 @@
 -------------------------------------------------------------------
+Fri Jul 30 08:13:19 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.7.0
+- Changes in version 2.5.0
+  * Major code re-factoring
+    + Reception of an SSH_MSG_UNIMPLEMENTED response to a
+      SSH_MSG_GLOBAL_REQUEST is translated internally into same code
+      flow as if an SSH_MSH_REQUEST_FAILURE has been received - see
+      SSHD-968.
+    + Server SFTP subsystem internal code dealing with the local
+      files has been delegated to the SftpFileSystemAccessor in
+      order to allow easier hooking into the SFTP subsystem.
+      - Resolving a local file path for an SFTP remote one
+      - Reading/Writing a file's attribute(s)
+      - Creating files links
+      - Copying / Renaming / Deleting files
+    + SftpVersionSelector is now consulted when client sends initial
+      command (as well as when session is re-negotiated)
+    + ScpCommandFactory is also a ShellFactory that can be used to
+      provide a minimalistic shell that is good enough for WinSCP.
+    + Rework SFTP streams so that the client asks and receives as
+      much data as possible - see SSHD-979.
+  * Minor code helpers
+    + Handling of debug/ignore/unimplemented messages has been split
+      into handleXXX and doInvokeXXXMsgHandler methods where the
+      former validate the messages and deal with the idle timeout,
+      and the latter execute the actual invcation.
+    + Added overloaded methods that accept a java.time.Duration
+      specifier for timeout value.
+    + The argument representing the SFTP subsystem in invocations to
+      SftpFileSystemAccessor has been enhanced to expose as much of
+      the available functionality as possible.
+  * Behavioral changes and enhancements
+    + SSHD-964 - Send SSH_MSG_CHANNEL_EOF when tunnel channel being
+      closed.
+    + SSHD-967 - Extra bytes written when
+      SftpRemotePathChannel#transferTo is used.
+    + SSHD-968 - Interpret SSH_MSG_UNIMPLEMENTED response to a
+      heartbeat request as a liveness indicator
+    + SSHD-970 - transferTo function of SftpRemotePathChannel will
+      loop if count parameter is greater than file size
+    + SSHD-972 - Add support for peers using OpenSSH "security key"
+      key types
+    + SSHD-977 - Apply consistent logging policy to caught
+      exceptions
+    + SSHD-660 - Added support for server-side signed certificate
+      keys
+    + SSHD-984 - Utility method to export KeyPair in OpenSSH format
+    + SSHD-992 - Provide more hooks into the SFTP server subsystem
+      via SftpFileSystemAccessor
+    + SSHD-997 - Fixed OpenSSH private key decoders for RSA and
+      Ed25519
+    + SSHD-998 - Take into account SFTP version preference when
+      establishing initial channel
+    + SSHD-989 - Read correctly ECDSA key pair from PKCS8 encoded
+      data
+    + SSHD-1009 - Provide a minimalistic shell for supporting WinSCP
+      SCP mode.
+- Changes in version 2.5.1
+  * Behavioral changes and enhancements
+    + SSHD-1022 NPE in SftpOutputStreamAsync#flush() if no data
+      written in between.
+- Changes in version 2.6.0
+  * Major code re-factoring
+    + SshServerMain uses by default an ECDSA key instead of an RSA
+      one. This can be overridden either by -key-type / -key-size or
+      -key-file command line option.
+    + SSHD-1034 Rename org.apache.sshd.common.ForwardingFilter to
+      Forwarder.
+    + SSHD-1035 Move property definitions to common locations.
+    + SSHD-1038 Refactor packages from a module into a cleaner
+      hierarchy.
+    + SSHD-1080 Rework the PacketWriter to split according to the
+      various semantics
+    + SSHD-1084 Revert the usage of asynchronous streams when
+      forwarding ports.
+  * Minor code helpers
+    + SSHD-1004 Using a more constant time MAC validation to
+      minimize timing side channel information leak.
+    + SSHD-1030 Added a NoneFileSystemFactory implementation
+    + SSHD-1042 Added more callbacks to SftpEventListener
+    + SSHD-1040 Make server key available after KEX completed.
+    + SSHD-1060 Do not store logger level in fields.
+    + SSHD-1064 Fixed ClientSession#executeRemoteCommand handling
+      of STDERR in case of exception to behave according to its
+      documentation
+    + SSHD-1076 Break down ClientUserAuthService#auth method into
+      several to allow for flexible override
+    + SSHD-1077 Added command line option to request specific SFTP
+      version in SftpCommandMain
+    + SSHD-1079 Experimental async mode on the local port forwarder
+    + SSHD-1086 Added SFTP aware directory scanning helper classes
+    + SSHD-1089 Added wrappers for one-time single session usage of
+      SFTP/SCP clients
+    + Propagate SCP file transfer ACK data to ScpTransferListener
+      before validating it.
+  * Behavioral changes and enhancements
+    + SSHD-506 Added support for AES-GCM ciphers.
+    + SSHD-954 Improve validation of DH public key values.
+    + SSHD-1004 Deprecate DES, RC4 and Blowfish ciphers from default
+      setup.
+    + SSHD-1004 Deprecate SHA-1 based key exchanges and signatures
+      from default setup.
+    + SSHD-1004 Deprecate MD5-based and truncated HMAC algorithms
+      from default setup.
+    + SSHD-1005 Added support for SCP remote-to-remote file transfer
+    + SSHD-1020 SSH connections getting closed abruptly with timeout
+      exceptions.
+    + SSHD-1026 Improve build reproductibility.
+    + SSHD-1028 Fix SSH_MSG_DISCONNECT: Too many concurrent
+      connections.
+    + SSHD-1032 Fix possible ArrayIndexOutOfBoundsException in
+      ChannelAsyncOutputStream.
+    + SSHD-1033 Fix simultaneous usage of dynamic and local port
+      forwarding.
+    + SSHD-1039 Fix support for some basic options in ssh/sshd cli.
+    + SSHD-1047 Support for SSH jumps.
+    + SSHD-1048 Wrap instead of rethrow IOException in Future.
+    + SSHD-1050 Fixed race condition in AuthFuture if exception
+      caught before authentication started.
+    + SSHD-1053 Fixed handling of certified keys authentication.
+    + SSHD-1056 Added support for SCP remote-to-remote directory
+      transfer - including '-3' option of SCP command CLI.
+    + SSHD-1057 Added capability to select a ShellFactory based on
+      the current session + use it for "WinSCP"
+    + SSHD-1058 Improve exception logging strategy.
+    + SSHD-1059 Do not send heartbeat if KEX state not DONE
+    + SSHD-1063 Fixed known-hosts file server key verifier matching
+      of same host with different ports
+    + SSHD-1066 Allow multiple binding to local port tunnel on
+      different addresses
+    + SSHD-1070 OutOfMemoryError when use async port forwarding
+    + SSHD-1100 Updated used moduli for DH group KEX
+    + SSHD-1102 Provide filter support for SftpDirectoryStream
+    + SSHD-1104 Take into account possible key type aliases when
+      using public key authentication
+    + SSHD-1107 Allow configuration of minimum DH group exchange key
+      size via property or programmatically
+    + SSHD-1108 Increased minimum default DH group exchange key size
+      to 2048 (but support 1024)
+- Changes in version 2.7.0
+  * Major code re-factoring
+    + SSHD-1133 Re-factored locations and names of ServerSession and
+      server-side ChannelSession related classes
+    + Moved some helper methods and classes to more natural
+      locations
+  * Minor code helpers
+    + SSHD-525 Added support for "posix-rename@openssh.com" SFTP
+      extension
+    + SSHD-1083 Relaxed required Nio2Connector/Acceptor required
+      constructor arguments
+    + SSHD-1085 Added CliLogger + more verbosity on SshClientMain
+    + SSHD-1109 Route tests JUL logging via SLF4JBridgeHandler
+    + SSHD-1109 Provide full slf4j logger capabilities to CliLogger
+      and use it in all CLI classes
+    + SSHD-1110 Replace Class#newInstance() calls with
+      Class#getDefaultConstructor().newInstance()
+    + SSHD-1111 Fixed SshClientCliSupport compression option
+      detection
+    + SSHD-1116 Provide SessionContext argument to
+      HostKeyIdentityProvider#loadHostKeys
+    + SSHD-1116 Provide SessionContext argument to
+      PasswordIdentityProvider#loadPasswords
+    + SSHD-1116 Provide SessionContext argument to
+      AuthenticationIdentitiesProvider#loadIdentities
+    + SSHD-1125 Added option to require immediate close of channel
+      in command ExitCallback invocation
+    + SSHD-1127 Consolidated SftpSubsystem support implementations
+      into SftpSubsystemConfigurator
+    + SSHD-1148 Generate a unique thread name for each SftpSubsystem
+      instance
+  * Behavioral changes and enhancements
+    + SSHD-1085 Added more notifications related to channel state
+      change for detecting channel closing or closed earlier.
+    + SSHD-1091 Renamed sshd-contrib top-level package in order to
+      align naming convention.
+    + SSHD-1097 Added more SessionListener callbacks related to the
+      initial version and key exchange
+    + SSHD-1097 Added more capability to send peer identification
+      via ReservedSessionMessagesHandler
+    + SSHD-1097 Implemented endless tarpit example in sshd-contrib
+    + SSHD-1109 Replace log4j with logback as the slf4j logger
+      implementation for tests
+    + SSHD-1114 Added callbacks for client-side password
+      authentication progress
+    + SSHD-1114 Added callbacks for client-side public key
+      authentication progress
+    + SSHD-1114 Added callbacks for client-side host-based
+      authentication progress
+    + SSHD-1114 Added capability for interactive password
+      authentication participation via UserInteraction
+    + SSHD-1114 Added capability for interactive key based
+      authentication participation via UserInteraction
+    + SSHD-1123 Add option to chunk data in ChannelAsyncOutputStream
+      if window size is smaller than packet size
+    + SSHD-1125 Added mechanism to throttle pending write requests
+      in BufferedIoOutputStream
+    + SSHD-1127 Added capability to register a custom receiver for
+      SFTP STDERR channel raw or stream data
+    + SSHD-1132 Added SFTP client-side support for
+      'filename-charset' extension
+    + SSHD-1132 Added SFTP client-side support for
+      'filename-translation-control' extension
+    + SSHD-1132 Added SFTP servder-side support for non-UTF8
+      encoding of returned file names
+    + SSHD-1133 Added capability to specify a custom charset for
+      parsing incoming commands to the ScpShell
+    + SSHD-1133 Added capability to specify a custom charset for
+      returning environment variables related data from the ScpShell
+    + SSHD-1133 Added capability to specify a custom charset for
+      handling the SCP protocol textual commands and responses
+    + SSHD-1136 Use configuration property to decide whether to
+      allow fallback to DH group exchange using SHA-1 if no suitable
+      primes found for SHA-256
+    + SSHD-1137 Added capability to override LinkOption(s) when
+      accessing a file/folder via SFTP
+    + SSHD-1147 SftpInputStreamAsync: get file size before SSH_FXP_OPEN
+- Modified patches:
+  * 0001-Avoid-optional-dependency-on-native-tomcat-APR-libra.patch
+  * apache-sshd-2.4.0-java8.patch -> apache-sshd-2.7.0-java8.patch
+    + rediff to changed context
+- Added patch:
+  * 0002-Fix-manifest-generation.patch
+    + do not import self
+
+-------------------------------------------------------------------
 Thu Jul 16 21:58:44 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

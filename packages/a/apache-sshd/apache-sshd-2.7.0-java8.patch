@@ -1,8 +1,8 @@
---- apache-sshd-2.4.0/sshd-core/src/main/java/org/apache/sshd/common/io/nio2/Nio2Session.java	2020-07-16 23:25:44.981904289 +0200
-+++ apache-sshd-2.4.0/sshd-core/src/main/java/org/apache/sshd/common/io/nio2/Nio2Session.java	2020-07-16 23:49:34.043250054 +0200
-@@ -362,13 +362,13 @@
-                 if (debugEnabled) {
-                     log.debug("handleReadCycleCompletion({}) read {} bytes", this, result);
+--- apache-sshd-2.7.0/sshd-core/src/main/java/org/apache/sshd/common/io/nio2/Nio2Session.java	2021-07-30 09:48:59.082251041 +0200
++++ apache-sshd-2.7.0/sshd-core/src/main/java/org/apache/sshd/common/io/nio2/Nio2Session.java	2021-07-30 09:54:40.568508196 +0200
+@@ -353,13 +353,13 @@
+                     log.trace("handleReadCycleCompletion({}) read {} bytes after {} nanos at cycle={}",
+                             this, result, System.nanoTime() - lastReadCycleStart.get(), readCyclesCounter);
                  }
 -                buffer.flip();
 +                ((java.nio.Buffer)buffer).flip();
@@ -16,37 +16,37 @@
                      doReadCycle(buffer, completionHandler);
                  } else {
                      if (debugEnabled) {
---- apache-sshd-2.4.0/sshd-sftp/src/main/java/org/apache/sshd/client/subsystem/sftp/SftpRemotePathChannel.java	2020-07-16 23:25:44.961904157 +0200
-+++ apache-sshd-2.4.0/sshd-sftp/src/main/java/org/apache/sshd/client/subsystem/sftp/SftpRemotePathChannel.java	2020-07-16 23:38:16.702818800 +0200
-@@ -20,6 +20,7 @@
- package org.apache.sshd.client.subsystem.sftp;
+--- apache-sshd-2.7.0/sshd-sftp/src/main/java/org/apache/sshd/sftp/client/impl/SftpRemotePathChannel.java	2021-07-30 09:48:59.150251491 +0200
++++ apache-sshd-2.7.0/sshd-sftp/src/main/java/org/apache/sshd/sftp/client/impl/SftpRemotePathChannel.java	2021-07-30 09:54:40.572508221 +0200
+@@ -21,6 +21,7 @@
  
  import java.io.IOException;
+ import java.io.StreamCorruptedException;
 +import java.nio.Buffer;
  import java.nio.ByteBuffer;
  import java.nio.MappedByteBuffer;
  import java.nio.channels.AsynchronousCloseException;
-@@ -123,7 +124,7 @@
-                         int read = sftp.read(handle, curPos, wrap.array(), wrap.arrayOffset() + wrap.position(), wrap.remaining());
+@@ -153,7 +154,7 @@
                          if (read > 0) {
+                             // reference equality on purpose
                              if (wrap == buffer) {
 -                                wrap.position(wrap.position() + read);
 +                                ((Buffer)wrap).position(wrap.position() + read);
                              } else {
                                  buffer.put(wrap.array(), wrap.arrayOffset(), read);
                              }
-@@ -191,7 +192,7 @@
-                         int written = wrap.remaining();
-                         sftp.write(handle, curPos, wrap.array(), wrap.arrayOffset() + wrap.position(), written);
+@@ -258,7 +259,7 @@
+                                 wrap.arrayOffset() + wrap.position(), written);
+                         // reference equality on purpose
                          if (wrap == buffer) {
 -                            wrap.position(wrap.position() + written);
 +                            ((Buffer)wrap).position(wrap.position() + written);
                          }
                          curPos += written;
                          totalWritten += written;
---- apache-sshd-2.4.0/sshd-sftp/src/main/java/org/apache/sshd/server/subsystem/sftp/AbstractSftpSubsystemHelper.java	2020-07-16 23:25:44.961904157 +0200
-+++ apache-sshd-2.4.0/sshd-sftp/src/main/java/org/apache/sshd/server/subsystem/sftp/AbstractSftpSubsystemHelper.java	2020-07-16 23:51:17.255925762 +0200
-@@ -980,7 +980,7 @@
+--- apache-sshd-2.7.0/sshd-sftp/src/main/java/org/apache/sshd/sftp/server/AbstractSftpSubsystemHelper.java	2021-07-30 09:48:59.150251491 +0200
++++ apache-sshd-2.7.0/sshd-sftp/src/main/java/org/apache/sshd/sftp/server/AbstractSftpSubsystemHelper.java	2021-07-30 09:55:19.804767492 +0200
+@@ -942,7 +942,7 @@
                      if (remainLen < digestBuf.length) {
                          bb = ByteBuffer.wrap(digestBuf, 0, remainLen);
                      }
@@ -55,7 +55,7 @@
  
                      int readLen = channel.read(bb);
                      if (readLen < 0) {
-@@ -1005,7 +1005,7 @@
+@@ -967,7 +967,7 @@
                      if (remainLen < digestBuf.length) {
                          bb = ByteBuffer.wrap(digestBuf, 0, remainLen);
                      }
@@ -64,7 +64,7 @@
  
                      int readLen = channel.read(bb);
                      if (readLen < 0) {
-@@ -1140,7 +1140,7 @@
+@@ -1101,7 +1101,7 @@
                      if (remainLen < digestBuf.length) {
                          bb = ByteBuffer.wrap(digestBuf, 0, remainLen);
                      }

@@ -14,7 +14,7 @@ diff --git a/pom.xml b/pom.xml
 index 867ca88..7c29678 100644
 --- a/pom.xml
 +++ b/pom.xml
-@@ -397,11 +397,6 @@
+@@ -406,11 +406,6 @@
                  <artifactId>mina-core</artifactId>
                  <version>2.0.21</version>
              </dependency>
@@ -30,19 +30,19 @@ diff --git a/sshd-core/pom.xml b/sshd-core/pom.xml
 index 6171c5c..73a43a7 100644
 --- a/sshd-core/pom.xml
 +++ b/sshd-core/pom.xml
-@@ -42,12 +42,6 @@
-             <version>${project.version}</version>
+@@ -43,12 +43,6 @@
          </dependency>
  
--        <dependency>
+         <dependency>
 -            <groupId>tomcat</groupId>
 -            <artifactId>tomcat-apr</artifactId>
 -            <optional>true</optional>
 -        </dependency>
 -
-         <dependency>
+-        <dependency>
              <groupId>org.bouncycastle</groupId>
              <artifactId>bcpg-jdk15on</artifactId>
+             <optional>true</optional>
 diff --git a/sshd-core/src/main/java/org/apache/sshd/agent/local/ProxyAgentFactory.java b/sshd-core/src/main/java/org/apache/sshd/agent/local/ProxyAgentFactory.java
 index ab19539..5757e68 100644
 --- a/sshd-core/src/main/java/org/apache/sshd/agent/local/ProxyAgentFactory.java
@@ -55,23 +55,23 @@ index ab19539..5757e68 100644
 -import org.apache.sshd.agent.unix.UnixAgentFactory;
  import org.apache.sshd.common.FactoryManager;
  import org.apache.sshd.common.PropertyResolver;
- import org.apache.sshd.common.PropertyResolverUtils;
-@@ -52,9 +50,7 @@ public class ProxyAgentFactory implements SshAgentFactory {
+ import org.apache.sshd.common.channel.ChannelFactory;
+@@ -51,9 +49,7 @@ public class ProxyAgentFactory implements SshAgentFactory {
  
      @Override
      public List<ChannelFactory> getChannelForwardingFactories(FactoryManager manager) {
 -        return isPreferredUnixAgent(manager)
--            ? UnixAgentFactory.DEFAULT_FORWARDING_CHANNELS
--            : LocalAgentFactory.DEFAULT_FORWARDING_CHANNELS;
+-                ? UnixAgentFactory.DEFAULT_FORWARDING_CHANNELS
+-                : LocalAgentFactory.DEFAULT_FORWARDING_CHANNELS;
 +        return LocalAgentFactory.DEFAULT_FORWARDING_CHANNELS;
      }
  
      @Override
-@@ -105,16 +101,6 @@ public class ProxyAgentFactory implements SshAgentFactory {
+@@ -104,16 +100,6 @@ public class ProxyAgentFactory implements SshAgentFactory {
      }
  
      public static boolean isPreferredUnixAgent(PropertyResolver resolver) {
--        if (PropertyResolverUtils.getBooleanProperty(resolver, PREFER_UNIX_AGENT, OsUtils.isUNIX())) {
+-        if (CoreModuleProperties.PREFER_UNIX_AGENT.getRequired(resolver)) {
 -            try {
 -                if (AprLibrary.getInstance() != null) {
 -                    return true;
