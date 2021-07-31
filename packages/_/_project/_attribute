@@ -21,7 +21,7 @@
   boo#1180312: '20210329'
   boo#1180316: '20210408'
   boo#1180317: '20210103'
-  boo#1180358: '20210729'
+  boo#1180358: '20210730'
   boo#1180740: '20210115'
   boo#1180754: '20210418'
   boo#1180853: '20210111'
@@ -35,8 +35,8 @@
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210519'
-  boo#1183082: '20210729'
-  boo#1183454: '20210729'
+  boo#1183082: '20210730'
+  boo#1183454: '20210730'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -61,7 +61,7 @@
   boo#1186775: '20210615'
   boo#1186890: '20210603'
   boo#1187019: '20210706'
-  boo#1187164: '20210729'
+  boo#1187164: '20210730'
   boo#1187204: '20210611'
   boo#1187371: '20210616'
   boo#1187423: '20210618'
@@ -73,7 +73,7 @@
   boo#1188105: '20210716'
   boo#1188194: '20210727'
   boo#1188295: '20210720'
-  boo#1188296: '20210729'
+  boo#1188296: '20210730'
   boo#1188426: '20210721'
   boo#1188902: '20210729'
   bsc#1179395: '20210308'
@@ -103,7 +103,7 @@
   poo#78007: '20210106'
   poo#78536: '20210302'
   poo#78538: '20210410'
-  poo#80628: '20210729'
+  poo#80628: '20210730'
   poo#80966: '20210408'
   poo#81256: '20210118'
   poo#81382: '20210208'
@@ -145,7 +145,7 @@
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
-  poo#91830: '20210729'
+  poo#91830: '20210730'
   poo#92004: '20210711'
   poo#92080: '20210520'
   poo#92401: '20210527'
@@ -167,20 +167,20 @@
   poo#93847: '20210621'
   poo#93850: '20210620'
   poo#93865: '20210609'
-  poo#94009: '20210729'
+  poo#94009: '20210730'
   poo#94108: '20210615'
   poo#94225: '20210618'
   poo#94904: '20210721'
   poo#94973: '20210725'
-  poo#95120: '20210729'
+  poo#95120: '20210730'
   poo#95326: '20210713'
-  poo#95329: '20210729'
+  poo#95329: '20210730'
   poo#95467: '20210713'
   poo#95548: '20210718'
   poo#95605: '20210717'
   poo#95789: '20210726'
-  poo#96302: '20210729'
-  poo#96389: '20210729'
+  poo#96302: '20210730'
+  poo#96389: '20210730'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -243,24 +243,24 @@ products:
 #    - x86_64
   - ceph-image:
     - x86_64
-#  - csi-attacher-image:
-#    - i586
-#    - x86_64
-#  - csi-livenessprobe-image:
-#    - i586
-#    - x86_64
-#  - csi-node-driver-registrar-image:
-#    - i586
-#    - x86_64
-#  - csi-provisioner-image:
-#    - i586
-#    - x86_64
-#  - csi-resizer-image:
-#    - i586
-#    - x86_64
-#  - csi-snapshotter-image:
-#    - i586
-#    - x86_64
+  - csi-attacher-image:
+    - i586
+    - x86_64
+  - csi-livenessprobe-image:
+    - i586
+    - x86_64
+  - csi-node-driver-registrar-image:
+    - i586
+    - x86_64
+  - csi-provisioner-image:
+    - i586
+    - x86_64
+  - csi-resizer-image:
+    - i586
+    - x86_64
+  - csi-snapshotter-image:
+    - i586
+    - x86_64
   - kubic-coredns-image:
     - x86_64
   - kubic-coredns-minus1-image:
@@ -547,10 +547,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210730'
 published: '20210729'
 publishing: '20210729'
-testing: '20210729'
+testing: '20210730'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
