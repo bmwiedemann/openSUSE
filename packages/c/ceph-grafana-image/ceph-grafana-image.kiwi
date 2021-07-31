@@ -48,6 +48,7 @@
   </repository>
   <packages type="bootstrap">
     <package name="openSUSE-release-ftp"/>
+    <package name="findutils"/>
     <package name="grafana"/>
     <package name="grafana-piechart-panel"/>
     <package name="grafana-status-panel"/>

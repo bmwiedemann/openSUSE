@@ -8,5 +8,6 @@
   <reference>registry.opensuse.org/opensuse/ceph/grafana:%PKG_VERSION%.%RELEASE%</reference>
   <bootstrap-packages>
     <package name="openSUSE-release-ftp"/>
+    <package name="findutils"/>
   </bootstrap-packages>
 </param>

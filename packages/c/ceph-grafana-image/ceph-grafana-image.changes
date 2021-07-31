@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 30 23:01:56 UTC 2021 - Mike Latimer <mlatimer@suse.com>
+
+- Add findutils package dependency for config.sh
+
+-------------------------------------------------------------------
+Thu Jul 29 22:59:30 UTC 2021 - Mike Latimer <mlatimer@suse.com>
+
+- Kiwi: Add leap15_3.xml to be able to build ceph-image on Leap 15 SP3.
+- Kiwi: Regenerate ceph-grafana-image.kiwi using pre-checkin script.
+
+-------------------------------------------------------------------
 Tue Jul 13 12:18:40 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Clean-up config.sh:

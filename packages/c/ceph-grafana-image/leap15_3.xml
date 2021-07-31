@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<param>
+  <image>obsrepositories:/opensuse/leap#15.3</image>
+  <tags>leap15.3.pacific</tags>
+  <name>ceph/grafana</name>
+  <prefix>org.opensuse.ceph</prefix>
+  <url>https://registry.opensuse.org/ceph/grafana:%PKG_VERSION%.%RELEASE%</url>
+  <bootstrap-packages>
+    <package name="openSUSE-release-ftp"/>
+    <package name="findutils"/>
+  </bootstrap-packages>
+</param>
