@@ -1,0 +1,46 @@
+Author: Reiner Herrmann <reiner@reiner-h.de>
+Description: enable reproducible building
+ - force UTF-8 locale while converting html to text
+ - use SOURCE_DATE_EPOCH for timestamp in manpage
+
+--- a/doc/txt/doc_makefile
++++ b/doc/txt/doc_makefile
+@@ -9,13 +9,13 @@
+ .PHONY: doc clean
+ 
+ intro.txt: ../html/index.html
+-	sed -e 's/<!--\(nodoc\|notext\)(-->/<!--/g' -e 's/<!--)\(nodoc\|notext\)-->/-->/g' ../html/index.html | $(HTML2TXT) | sed -e 's/[[:blank:]]\+$$//' > intro.txt
++	sed -e 's/<!--\(nodoc\|notext\)(-->/<!--/g' -e 's/<!--)\(nodoc\|notext\)-->/-->/g' ../html/index.html | LC_ALL=C.UTF-8 $(HTML2TXT) | sed -e 's/[[:blank:]]\+$$//' > intro.txt
+ 
+ manual.txt: ../html/doc.html
+-	sed -e 's/<!--\(nodoc\|notext\)(-->/<!--/g' -e 's/<!--)\(nodoc\|notext\)-->/-->/g' ../html/doc.html | $(HTML2TXT) | sed -e 's/[[:blank:]]\+$$//' > manual.txt
++	sed -e 's/<!--\(nodoc\|notext\)(-->/<!--/g' -e 's/<!--)\(nodoc\|notext\)-->/-->/g' ../html/doc.html | LC_ALL=C.UTF-8 $(HTML2TXT) | sed -e 's/[[:blank:]]\+$$//' > manual.txt
+ 
+ faq.txt: ../html/faq.html
+-	sed -e 's/<!--\(nodoc\|notext\)(-->/<!--/g' -e 's/<!--)\(nodoc\|notext\)-->/-->/g' ../html/faq.html | $(HTML2TXT) | sed -e 's/[[:blank:]]\+$$//' > faq.txt
++	sed -e 's/<!--\(nodoc\|notext\)(-->/<!--/g' -e 's/<!--)\(nodoc\|notext\)-->/-->/g' ../html/faq.html | LC_ALL=C.UTF-8 $(HTML2TXT) | sed -e 's/[[:blank:]]\+$$//' > faq.txt
+ 
+ clean:
+ 	@rm -fv intro.txt manual.txt faq.txt
+--- a/doc/html2confman.pl
++++ b/doc/html2confman.pl
+@@ -50,7 +50,7 @@
+ ENDOFHEADER
+ 
+ 
+-print ".TH PDNSD.CONF 5 \"",strftime("%b %Y",localtime),"\" \"pdnsd \@fullversion\@\"\n";
++print ".TH PDNSD.CONF 5 \"",strftime("%b %Y",gmtime($ENV{SOURCE_DATE_EPOCH} || time)),"\" \"pdnsd \@fullversion\@\"\n";
+ print <<ENDOFHEADER2;
+ .SH NAME
+ pdnsd.conf \\- The configuration file for pdnsd
+--- a/doc/doc_makefile
++++ b/doc/doc_makefile
+@@ -27,7 +27,7 @@
+ 	}
+ 
+ pdnsd.conf.5.in: html/doc.html html2confman.pl 
+-	perl html2confman.pl $< > $@
++	LC_ALL=C.UTF-8 perl html2confman.pl $< > $@
+ 
+ html txt:
+ 	@cd $@ && $(MAKE) -f doc_makefile

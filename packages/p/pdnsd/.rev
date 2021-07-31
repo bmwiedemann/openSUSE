@@ -45,4 +45,13 @@
     <comment></comment>
     <requestid>705881</requestid>
   </revision>
+  <revision rev="7" vrev="9">
+    <srcmd5>a4014e5c5543b4eb276ffc8d858eaefd</srcmd5>
+    <version>1.2.9a</version>
+    <time>1627750290</time>
+    <user>dimstar_suse</user>
+    <comment>* add pdnsd-net_if_h-vs-linux_if_h.patch to fix Factory build
+*  add a locally tested collection of patches (forwarded request 909082 from seife)</comment>
+    <requestid>909509</requestid>
+  </revision>
 </revisionlist>

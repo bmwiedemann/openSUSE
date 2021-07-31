@@ -1,0 +1,33 @@
+Subject: fix net/if.h vs linux/if.h include order conflicts
+From: Stefan Seyfried <seife+obs@b1-systems.com>
+
+Suddenly, probably after glibc or kernel-headers update, the build fails
+with this error (and following are more similar errors)
+
+| In file included from /usr/include/linux/icmp.h:24,
+|                  from icmp.c:44:
+| /usr/include/net/if.h:44:5: error: redeclaration of enumerator 'IFF_UP'
+|    44 |     IFF_UP = 0x1,               /* Interface is up.  */
+|       |     ^~~~~~
+| /usr/include/linux/if.h:83:9: note: previous definition of 'IFF_UP' with type 'enum net_device_flags'
+|    83 |         IFF_UP                          = 1<<0,  /* sysfs */
+|       |         ^~~~~~
+
+this is caused by something down the include chaing including first linux/if.h
+and something else including net/if.h later. net/if.h breaks if it is included
+after linux/if.h. linux/if.h has provisions for net/if.h being included first.
+So the fix is to include net/if.h explicitly before the others, to work around
+the issue and fix the build.
+
+Index: b/src/icmp.c
+===================================================================
+--- a/src/icmp.c
++++ b/src/icmp.c
+@@ -39,6 +39,7 @@
+ #include <string.h>
+ #include "ipvers.h"
+ #if (TARGET==TARGET_LINUX)
++# include <net/if.h>
+ # include <netinet/ip.h>
+ # include <linux/types.h>
+ # include <linux/icmp.h>

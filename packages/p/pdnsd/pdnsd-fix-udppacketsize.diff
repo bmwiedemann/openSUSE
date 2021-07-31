@@ -1,0 +1,43 @@
+From: Stefan Seyfried <stefan.seyfried@sap.com>
+Subject: fix invalid UDP packet in case of truncation
+
+The UDP response packet pdnsd sends is invalid in case of a truncated packet:
+The header fields ANCOUNT and NSCOUNT stil contains the "intended" number of
+records, but the payload is actually truncated to udpmaxrespsize.
+This might have worked if only additionals would overflow the packet size,
+but fails definitely when regular records already exceed it.
+Fix by always checking for space in the packet before actually adding any
+record, be it regular or additional.
+
+Index: b/src/dns_answer.c
+===================================================================
+--- a/src/dns_answer.c
++++ b/src/dns_answer.c
+@@ -392,10 +392,12 @@ static int add_rr(dns_msg_t **ans, size_
+ 		rdlen=dlen;
+ 		*sz+=dlen;
+ 	}
+-
+-	if (udp && *sz>*udp && section==S_ADDITIONAL) /* only add the record if we do not increase the length over 512 */
+-		*sz=osz;                              /* (or possibly more if the request used EDNS) in additionals for udp answer. */
+-	else {
++	/* not only S_ADDITIONAL, skip everything if it does not fit into the response, sz+10 because we add 10 bytes below */
++	if (udp && *sz+10>*udp /*&& section==S_ADDITIONAL*/) {
++				/* only add the record if we do not increase the length over 512 */
++		*sz=osz;	/* (or possibly more if the request used EDNS) in additionals for udp answer. */
++		*udp=0;		/* this signals that the response is too big for the udp packet */
++	} else {
+ 		PUTINT16(type,rrht);
+ 		PUTINT16(C_IN,rrht);
+ 		PUTINT32(ttl,rrht);
+@@ -1419,7 +1421,9 @@ static void *udp_answer_thread(void *dat
+ 	}
+ 	pthread_cleanup_push(free, resp);
+ 	if (rlen>udpmaxrespsize) {
+-		rlen=udpmaxrespsize;
++		/* udpmaxrespsize == 0 is the flag for "we did not have enough space for the response */
++		if (udpmaxrespsize)
++			rlen=udpmaxrespsize;
+ 		resp->hdr.tc=1; /*set truncated bit*/
+ 	}
+ 	DEBUG_MSG("Outbound msg len %li, tc=%u, rc=\"%s\"\n",(long)rlen,resp->hdr.tc,get_ename(rcode));

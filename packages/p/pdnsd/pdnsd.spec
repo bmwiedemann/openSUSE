@@ -1,7 +1,7 @@
 #
 # spec file for package pdnsd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,16 @@ Release:        0
 Summary:        A caching DNS proxy for small networks or dialin accounts
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Servers
-Url:            http://members.home.nl/p.a.rombouts/pdnsd.html
+URL:            http://members.home.nl/p.a.rombouts/pdnsd.html
 
 Source0:        http://members.home.nl/p.a.rombouts/pdnsd/releases/pdnsd-%{version}-par.tar.gz
 Source1:        pdnsd.service
+# PATCH-FIX-OPENSUSE -- fix UDP response packet for large responses being incorrectly truncated -- seife@novell.slipkontur.de
+Patch1:         pdnsd-fix-udppacketsize.diff
+# borrowed from debian's 1.2.9a-par-3 release
+Patch2:         pdnsd-06_reproducible_build.patch
+# PATCH-FIX-OPENSUSE -- compile fix with newer glibc(?)/kernel-headers(?) where ordering matters -- seife+obs@b1-systems.com
+Patch3:         pdnsd-net_if_h-vs-linux_if_h.patch
 Recommends:     %{name}-doc
 BuildRequires:  systemd-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -54,6 +60,7 @@ This package provides various text files for %{name}.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 %configure --with-cachedir="%{_localstatedir}/cache/%{name}" \
