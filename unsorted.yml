@@ -7595,7 +7595,6 @@ unsorted:
   - jupyter-pythreejs-jupyterlab 
   - jupyter-qgrid 
   - jupyter-qtconsole 
-  - jupyter-rise 
   - jupyter-server-mathjax 
   - jupyter-sidecar-jupyterlab 
   - jupyter-vispy 
@@ -7681,7 +7680,6 @@ unsorted:
   - karchive-devel 
   - karchive-devel-32bit: [x86_64] 
   - kasumi 
-  - katacontainers-image-initrd: [x86_64] 
   - kauth-devel 
   - kauth-devel-32bit: [x86_64] 
   - kawaii-player 
@@ -16921,6 +16919,7 @@ unsorted:
   - nfs-ganesha-proxy: [x86_64] 
   - nfs-ganesha-rados-grace: [x86_64] 
   - nfs-ganesha-rados-urls: [x86_64] 
+  - nfs-ganesha-rgw: [x86_64] 
   - nfs-ganesha-vfs: [x86_64] 
   - nfs-ganesha-xfs: [x86_64] 
   - nfs4-acl-tools 
@@ -23168,6 +23167,7 @@ unsorted:
   - python36-proselint 
   - python36-proto-plus 
   - python36-protobuf 
+  - python36-proton-client 
   - python36-pscript 
   - python36-psutil 
   - python36-psycopg2 
@@ -23489,7 +23489,6 @@ unsorted:
   - python36-python-jenkins 
   - python36-python-jose 
   - python36-python-json-logger 
-  - python36-python-jsonrpc-server 
   - python36-python-jsonschema-objects 
   - python36-python-lsp-black 
   - python36-python-lsp-jsonrpc 
@@ -23662,7 +23661,6 @@ unsorted:
   - python36-rfc3987 
   - python36-rfc6555 
   - python36-rich 
-  - python36-rise 
   - python36-rjsmin 
   - python36-rnginline 
   - python36-robot-detection 
@@ -26067,6 +26065,7 @@ unsorted:
   - python38-prompt_toolkit1 
   - python38-proselint 
   - python38-proto-plus 
+  - python38-proton-client 
   - python38-psautohint 
   - python38-pscript 
   - python38-psychtoolbox 
@@ -26395,7 +26394,6 @@ unsorted:
   - python38-python-jenkins 
   - python38-python-jose 
   - python38-python-json-logger 
-  - python38-python-jsonrpc-server 
   - python38-python-jsonschema-objects 
   - python38-python-louvain 
   - python38-python-lsp-black 
@@ -26568,7 +26566,6 @@ unsorted:
   - python38-rfc3987 
   - python38-rfc6555 
   - python38-rich 
-  - python38-rise 
   - python38-rjsmin 
   - python38-rnginline 
   - python38-robot-detection 
@@ -29119,6 +29116,7 @@ unsorted:
   - python39-proselint 
   - python39-proto-plus 
   - python39-protobuf 
+  - python39-proton-client 
   - python39-psautohint 
   - python39-pscript 
   - python39-psutil 
@@ -29468,7 +29466,6 @@ unsorted:
   - python39-python-jenkins 
   - python39-python-jose 
   - python39-python-json-logger 
-  - python39-python-jsonrpc-server 
   - python39-python-jsonschema-objects 
   - python39-python-louvain 
   - python39-python-lsp-black 
@@ -29652,7 +29649,6 @@ unsorted:
   - python39-rfc3987 
   - python39-rfc6555 
   - python39-rich 
-  - python39-rise 
   - python39-rjsmin 
   - python39-rnginline 
   - python39-robot-detection 
@@ -30879,6 +30875,7 @@ unsorted:
   - ripgrep-zsh-completion 
   - rk-devel 
   - rke 
+  - rke2 
   - rkhunter 
   - rkward 
   - rls: [x86_64] 
