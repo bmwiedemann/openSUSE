@@ -67,4 +67,12 @@
   * lib: use USB zero-copy transfers if possible</comment>
     <requestid>631915</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>2468ffb28519cafcf4dda3c99404749b</srcmd5>
+    <version>0.6.0</version>
+    <time>1627750287</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909511</requestid>
+  </revision>
 </revisionlist>

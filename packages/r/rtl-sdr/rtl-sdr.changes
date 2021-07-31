@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jul 22 09:07:26 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- patches:
+    rtl-sdr-0003-disable-zerocopy-by-default.patch
+    rtl-sdr-0007-allow-build-rtlsdr-as-subroject.patch
+    rtl-sdr-0008-add-CMP0075-policy.patch
+    rtl-sdr-0016-add-missing-rtlsdrConfig.patch
+    rtl-sdr-0017-add-rtl_biast-as-install-target.patch
+    rtl-sdr-0018-fix-for-older-cmake.patch
+  merged into rtl-sdr-0015-modernize-cmake-usage.patch
+- patch rtl-sdr-0005-add-rtlsdr_set_bias_tee_gpio.patch
+  merged into rtl-sdr-0006-add-rtl_biast.patch
+
+-------------------------------------------------------------------
+Tue Jul  6 10:55:44 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Added patches to upgrade to latest git head (only significant
+  changes), including:
+    + rtl-sdr-0001-mmap-bug-arm.patch
+    + rtl-sdr-0002-fix-rtlsdr_open-memory-leak.patch
+    + rtl-sdr-0003-disable-zerocopy-by-default.patch
+    + rtl-sdr-0004-fix-rtl_eeprom-warnings.patch
+    + rtl-sdr-0005-add-rtlsdr_set_bias_tee_gpio.patch
+    + rtl-sdr-0006-add-rtl_biast.patch
+    + rtl-sdr-0007-allow-build-rtlsdr-as-subroject.patch
+    + rtl-sdr-0008-add-CMP0075-policy.patch
+    + rtl-sdr-0009-fix-FC0013-UHF-reception.patch
+    + rtl-sdr-0010-improve-librtlsdr_pc.patch
+    + rtl-sdr-0011-improve-rtl_power--scanning-range-parsing.patch
+    + rtl-sdr-0012-use-udev-uaccess_rules.patch (not used)
+    + rtl-sdr-0013-add-IPV6-for-rtl_tcp.patch
+    + rtl-sdr-0014-initialize-listensocket_in-rtl_tcp.patch
+    + rtl-sdr-0015-modernize-cmake-usage.patch
+    + rtl-sdr-0016-add-missing-rtlsdrConfig.patch
+    + rtl-sdr-0017-add-rtl_biast-as-install-target.patch
+    + rtl-sdr-0018-fix-for-older-cmake.patch
+    + rtl-sdr-0019-fix-short-write-in-r82xx_read.patch
+    + rtl-sdr-0020-populate-pkgconfig-with-prefix.patch
+  * Full bias tee support for RTL-SDR v3 dongle
+  * Command line utility rtl_biast for controlling bias tee
+  * IPV-6 support for rtl_tcp
+  * Fixed some bugs and compile time issues
+
+-------------------------------------------------------------------
 Tue Aug 28 08:07:53 UTC 2018 - mpluskal@suse.com
 
 - Use more of cmake macros
