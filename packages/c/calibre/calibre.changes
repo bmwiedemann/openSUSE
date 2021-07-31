@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Fri Jul 30 10:34:27 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.24.0
+  * New Features
+    - Conversion: Insert metadata as jacket: Allow adding timestamp
+      and publisher fields. Also allow controlling the formatting
+      of date/time fields
+    - Cover browser: Add an option to view the central book by
+      double clicking instead of single clicking (Preferences->
+      Look & feel->Cover browser)
+    - Tag browser: Add actions to the configure menu to toggle the
+      display of counts and average rating
+    - Tag browser: Allow plugins to add entries to the context menu
+  * Bug Fixes
+    - fetch-ebook-metadata: Fix an error when using the --cover
+      option and no cover is found
+    - HTML Input: Fix the presence of BookDesigner markup causing
+      conversion to fail
+    - TXT Input: Dont fail if the txt file references a directory
+      as a resosource
+
+-------------------------------------------------------------------
+Fri Jul  9 08:34:12 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.23.0
+  * New Features
+    - Annotations browser: Show highlight color in the preview panel
+    - TXTZ format: Store type of text formatting in the metadata
+      and use it automatically when converting from TXTZ
+    - Edit metadata dialog: Allow holding Ctrl and clicking the
+      item editor buttons to instead open the manage dialog
+  * Bug Fixes
+    - Annotations browser: Fix searching for words in languages
+      such as Chinese that do not have word delimiters not working
+    - News download: Fix URLs with spaces in them not being
+      downloaded since calibre 5.0
+    - When searching for books by an author from the manage authors
+      dialog, use exact matches
+    - MOBI Output: Fix invalid color specification as plain numbers
+      causing conversion to fail
+    - MOBI Output: Fix invalid text indent specification causing
+      conversion to fail
+    - Linux: Drop the unmaintained dbus-python in favor of jeepney
+      for DBUS
+    - Edit book: Workaround for Qt bug that caused the panel sizes
+      in the editor to not be remembered across sessions
+
+-------------------------------------------------------------------
+Fri Jun 25 05:42:57 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.22.0
+  * New Features
+    - E-book viewer: Allow clicking links in popup footnotes
+    - Main book list: Scroll per pixel rather than per item by
+      default. Can be returned to previous behavior via 
+      Preferences->Tweaks->Control behavior of book list
+    - Linux: Drop support for the global menu bar
+   * Bug Fixes
+    - E-book viewer: Fix font sizes specified in absolute units not
+      being honored in locales where the decimal separator is not
+      the period
+    - E-book viewer: Fix searching for short strings in text with
+      lots of similar entries displaying incorrect matches
+    - MOBI Output: Fix using percentage units for margins resulting
+      in too large margins when using the tablet output profile
+    - E-book viewer: Fix back button not working after jumping to
+      a bookmark
+    - Content server: OPDS feed: Fix incorrect up URL in category
+      group feeds
+    - Content server: Fix a regression in the previous release that
+      broke editing of series metadata
+    - E-book viewer: Fix scrolling backwards by screen-fulls not
+      working with very large page margins.
+    - MOBI Input: Fix a regression in calibre 5 that broke
+      processing of Haodoo format files
+    - Conversion: Fix the smarten punctuation option not applying
+      to inserted jacket page
+
+-------------------------------------------------------------------
 Fri Jun 11 13:53:53 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.21.0

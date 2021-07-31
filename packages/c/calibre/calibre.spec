@@ -17,7 +17,7 @@
 
 
 Name:           calibre
-Version:        5.21.0
+Version:        5.24.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
@@ -51,7 +51,9 @@ BuildRequires:  update-desktop-files
 #   a Required package does not build
 # For those reasons put Requires also in the BuildRequires list below
 BuildRequires:  chmlib-devel >= 0.40
-BuildRequires:  dbus-1-python3 >= 1.2.0
+#BuildRequires:  dbus-1-python3 >= 1.2.0
+BuildRequires:  chmlib-devel >= 0.40
+BuildRequires:  freetype2-devel >= 2.10.2
 BuildRequires:  hyphen-devel >= 2.8.8
 BuildRequires:  libQt5Core-private-headers-devel >= 5.15.2
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.15.2
@@ -59,13 +61,15 @@ BuildRequires:  libQt5PlatformSupport-private-headers-devel >= 5.15.2
 BuildRequires:  liberation-fonts
 BuildRequires:  libicu-devel >= 4.4.0
 BuildRequires:  libmtp-devel >= 1.1.5
-BuildRequires:  libopenssl-devel
+BuildRequires:  libopenssl-devel >= 1.1.1g
 BuildRequires:  libpodofo-devel >= 0.8.2
 BuildRequires:  libpoppler-devel >= 0.20.2
+BuildRequires:  libstemmer-devel >= 2.1.0
 BuildRequires:  libwmf-devel >= 0.2.8
-BuildRequires:  optipng >= 0.7.5
+BuildRequires:  optipng >= 0.7.7
 BuildRequires:  podofo >= 0.8.2
 BuildRequires:  poppler-tools >= 0.20.2
+#BuildRequires:  python3-dbus-python
 BuildRequires:  xdg-utils >= 1.0.2
 BuildRequires:  pkgconfig(Qt5Core) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Gui) >= 5.15.2
@@ -73,8 +77,10 @@ BuildRequires:  pkgconfig(Qt5Network) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets) >= 5.15.2
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.15.2
 BuildRequires:  pkgconfig(espeak-ng)
+BuildRequires:  pkgconfig(fontconfig) >= 2.13.1
 BuildRequires:  pkgconfig(hunspell)
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(libpng16) >= 1.6.37
+BuildRequires:  pkgconfig(python3) >= 3.8
 BuildRequires:  pkgconfig(sqlite3)
 # calibre no longer depends on ImageMagick
 # but keept BuildRequires to convert icon to serveral sizes
@@ -83,110 +89,102 @@ BuildRequires:  pkgconfig(ImageMagick) >= 6.5.9
 BuildRequires:  jxrlib-devel >= 0.2.4
 BuildRequires:  libjpeg-turbo >= 2.0.5
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libwebp) >= 1.1.0
-# upstream use python-Pillow 6.0.0
-BuildRequires:  python3-Pillow >= 5.0.0
-# upstream use python-Pygments 2.3.1
-BuildRequires:  python3-Pygments >= 2.2.0
-# upstream use python-apsw 3.30.1-r1
-BuildRequires:  python3-apsw >= 3.9.2
-# upstream use python-beautifulsoup4 4.7.1
-BuildRequires:  python3-beautifulsoup4 >= 4.6.0
+BuildRequires:  python3-Markdown >= 3.2.2
+BuildRequires:  python3-Pillow >= 7.2.0
+BuildRequires:  python3-Pygments >= 2.6.1
+BuildRequires:  python3-apsw >= 3.35.4-r1
+BuildRequires:  python3-beautifulsoup4 >= 4.9.1
 BuildRequires:  python3-cchardet >= 2.1.7
 BuildRequires:  python3-chardet >= 3.0.4
 BuildRequires:  python3-css-parser >= 1.0.6
-# upstream use python-dateutil 2.8.0
-BuildRequires:  python3-dateutil >= 2.7.3
-# upstream use python-dnspython 0.16.0
-BuildRequires:  python3-dnspython >= 1.15.0
+BuildRequires:  python3-dateutil >= 2.8.1
+BuildRequires:  python3-dnspython >= 2.0.0
 BuildRequires:  python3-dukpy-kovidgoyal >= 0.3
-# upstream use python-html5-paser 0.4.9
-BuildRequires:  python3-html5-parser >= 0.4.6
-BuildRequires:  python3-html5lib >= 1.0.1
-# upstream use python-lxml 4.3.3
-BuildRequires:  python3-lxml >= 4.0.0
-# upstream use python-mechanize 0.4.3
-BuildRequires:  python3-mechanize >= 0.3.5
-# upstream use python-msgpack 0.6.1
-BuildRequires:  python3-msgpack >= 0.5.6
-# upstream use python-netifaces 0.10.9
-BuildRequires:  python3-netifaces >= 0.10.6
-BuildRequires:  python3-odfpy
-# upstream use python-psutil 5.6.2
-BuildRequires:  python3-psutil >= 5.4.8
-# upstream use python-ifaddr 0.1.6
-BuildRequires:  python3-ifaddr >= 0.1.4
-# upstream use python-regex 2019.04.14
-BuildRequires:  python3-Markdown >= 3.1
 BuildRequires:  python3-feedparser >= 5.2.1
-BuildRequires:  python3-html2text >= 2018.1.9
-BuildRequires:  python3-pychm
-BuildRequires:  python3-pycrypto >= 2.6.1
-BuildRequires:  python3-pyparsing
+BuildRequires:  python3-html2text >= 2020.1.16
+BuildRequires:  python3-html5-parser >= 0.4.9
+BuildRequires:  python3-html5lib >= 1.1
+BuildRequires:  python3-ifaddr >= 0.1.7
+BuildRequires:  python3-jeepney
+BuildRequires:  python3-lxml >= 4.5.2
+BuildRequires:  python3-mechanize >= 0.4.5
+BuildRequires:  python3-msgpack >= 1.0.0
+BuildRequires:  python3-netifaces >= 0.10.9
+BuildRequires:  python3-odfpy
+BuildRequires:  python3-packaging >= 20.4
+BuildRequires:  python3-psutil >= 5.7.2
+BuildRequires:  python3-pychm >= 0.8.6
+BuildRequires:  python3-pycryptodome >= 3.9.8
+BuildRequires:  python3-pyparsing >= 2.4.7
 BuildRequires:  python3-pyqt-builder >= 1.6.0
 BuildRequires:  python3-qt5-devel >= 5.15.2
-BuildRequires:  python3-regex >= 2017.07.28
-BuildRequires:  python3-setuptools >= 23.1.0
+BuildRequires:  python3-regex >= 2020.07.14
+BuildRequires:  python3-setuptools >= 49.6.0
 BuildRequires:  python3-sip-devel >= 5.5
-BuildRequires:  python3-toml
+BuildRequires:  python3-texttable >= 1.6.3
+BuildRequires:  python3-toml >= 0.10.1
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libwebp) >= 1.1.0
+BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.10
+BuildRequires:  pkgconfig(libxslt) >= 1.1.34
 # Need at buildtime too, to produce the bash completion
-# upstream use python3-qtwebengine-qt5 >= 5.15.2
-BuildRequires:  python3-qtwebengine-qt5 >= 5.15.1
-BuildRequires:  python3-six >= 1.10.0
-BuildRequires:  python3-soupsieve >= 1.9.1
+BuildRequires:  python3-qtwebengine-qt5 >= 5.15.2
+BuildRequires:  python3-six >= 1.15.0
+BuildRequires:  python3-soupsieve >= 2.0.1
 #BuildRequires:  python-unrardll >= 0.1.3
+BuildRequires:  python3-py7zr >= 0.11.1
 BuildRequires:  python3-speechd >= 0.10.1
 BuildRequires:  python3-webencodings >= 0.5.1
-# upstream use python-zeroconf 0.21.3
-BuildRequires:  python3-py7zr >= 0.11.1
-BuildRequires:  python3-zeroconf >= 0.19.1
+BuildRequires:  python3-zeroconf >= 0.28.1
 #
 Requires:       chmlib >= 0.40
-Requires:       dbus-1-python3 >= 1.2.0
+#Requires:       dbus-1-python3 >= 1.2.0
 Requires:       liberation-fonts
 Requires:       libmtp9 >= 1.1.5
+Requires:       libpng16-16 >= 1.6.37
 Requires:       libwmf >= 0.2.8
 Requires:       optipng >= 0.7.5
 Requires:       podofo >= 0.8.2
 Requires:       poppler-tools >= 0.20.2
-Requires:       python3
-Requires:       python3-Markdown >= 3.1
-Requires:       python3-Pillow >= 5.0.0
-Requires:       python3-Pygments >= 2.1.3
-Requires:       python3-apsw >= 3.9.2
-Requires:       python3-beautifulsoup4 >= 4.6.0
+Requires:       python3 >= 3.8
+Requires:       python3-Markdown >= 3.2.2
+Requires:       python3-Pillow >= 5.2.0
+Requires:       python3-Pygments >= 2.6.1
+Requires:       python3-apsw >= 3.35.4-r1
+Requires:       python3-beautifulsoup4 >= 4.9.1
 Requires:       python3-cchardet >= 2.1.7
 Requires:       python3-chardet >= 3.0.4
 Requires:       python3-css-parser >= 1.0.6
-Requires:       python3-dateutil >= 2.7.3
-Requires:       python3-dnspython >= 1.15.0
+Requires:       python3-dateutil >= 2.8.1
+#Requires:       python3-dbus-python
+Requires:       python3-dnspython >= 2.0.0
 Requires:       python3-dukpy-kovidgoyal >= 0.3
 Requires:       python3-feedparser >= 5.2.1
-Requires:       python3-html2text >= 2018.1.9
-Requires:       python3-html5-parser >= 0.4.6
-Requires:       python3-html5lib >= 1.0.1
-Requires:       python3-ifaddr >= 0.1.4
-Requires:       python3-lxml >= 4.0.0
-Requires:       python3-mechanize >= 0.3.5
-Requires:       python3-msgpack >= 0.5.6
-Requires:       python3-netifaces >= 0.10.7
+Requires:       python3-html2text >= 2020.1.16
+Requires:       python3-html5-parser >= 0.4.9
+Requires:       python3-html5lib >= 1.1
+Requires:       python3-ifaddr >= 0.1.7
+Requires:       python3-jeepney
+Requires:       python3-lxml >= 4.5.2
+Requires:       python3-mechanize >= 0.4.5
+Requires:       python3-msgpack >= 1.0.0
+Requires:       python3-netifaces >= 0.10.9
 Requires:       python3-odfpy
-Requires:       python3-psutil >= 5.4.8
-Requires:       python3-pychm
-Requires:       python3-pycrypto >= 2.6.1
+Requires:       python3-psutil >= 5.7.2
+Requires:       python3-pychm >= 0.8.6
+Requires:       python3-pycryptodome >= 3.9.8
 Requires:       python3-qt5 >= 5.15.2
-Requires:       python3-qt5-sip >= 5.5
-Requires:       python3-qtwebengine-qt5 >= 5.15.1
-Requires:       python3-regex >= 2017.07.28
-Requires:       python3-setuptools >= 23.1.0
-Requires:       python3-six >= 1.10.0
-Requires:       python3-soupsieve >= 1.9.1
+Requires:       python3-qt5-sip >= 12.8.1
+Requires:       python3-qtwebengine-qt5 >= 5.15.2
+Requires:       python3-regex >= 2020.07.14
+Requires:       python3-six >= 1.15.0
+Requires:       python3-soupsieve >= 2.0.1
+Requires:       python3-texttable >= 1.6.3
 #Requires:       python3-unrardll >= 0.1.3
 Requires:       python3-py7zr >= 0.11.1
 Requires:       python3-speechd >= 0.10.1
 Requires:       python3-webencodings >= 0.5.1
-Requires:       python3-zeroconf >= 0.19.1
+Requires:       python3-zeroconf >= 0.28.1
 #
 Requires:       sqlite3
 Requires:       xdg-utils >= 1.0.2
