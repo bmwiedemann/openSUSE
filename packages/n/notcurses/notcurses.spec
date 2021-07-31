@@ -24,7 +24,7 @@
 %bcond_without  pandoc
 %endif
 Name:           notcurses
-Version:        2.3.2
+Version:        2.3.12
 Release:        0
 Summary:        Character graphics and TUI library
 License:        Apache-2.0
@@ -32,6 +32,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://nick-black.com/dankwiki/index.php/Notcurses
 #Git-Clone:     https://github.com/dankamongmen/notcurses.git
 Source:         https://github.com/dankamongmen/notcurses/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# default openSUSE ffmpeg can't play the codec used in the xray demo
+Patch:          notcurses-2.3.12-skip-xray.diff
 BuildRequires:  QR-Code-generator-devel
 BuildRequires:  cmake
 BuildRequires:  doctest-devel >= 2.3.5
@@ -49,6 +51,7 @@ BuildRequires:  pkgconfig(libavutil) >= 56.0
 BuildRequires:  pkgconfig(libswscale) >= 5.0
 BuildRequires:  pkgconfig(readline) >= 8.0
 BuildRequires:  pkgconfig(tinfo) >= 6.1
+BuildRequires:  pkgconfig(zlib)
 %if %{with pandoc}
 BuildRequires:  python3-pypandoc
 %endif
@@ -173,11 +176,12 @@ This subpackage contains the python3 bindings for the notcurses
 library.
 
 %prep
-%setup -q
+%autosetup -p1
 #sed -e '/^#!\//, 1d' -i python/src/notcurses/notcurses.py
 
 %build
 %cmake -DUSE_DOCTEST=OFF -DUSE_STATIC=OFF \
+     -DDFSG_BUILD=ON \
 %if %{with pandoc}
      -DUSE_PANDOC=ON
 %else
@@ -221,13 +225,14 @@ cd build
 %{_bindir}/ncls
 %{_bindir}/ncneofetch
 %{_bindir}/notcurses-demo
+%{_bindir}/notcurses-info
 %{_bindir}/notcurses-input
 %{_bindir}/nctetris
 %{_bindir}/ncplayer
 %if %{with pandoc}
 %{_mandir}/man1/notcurses-demo.1%{?ext_man}
+%{_mandir}/man1/notcurses-info.1%{?ext_man}
 %{_mandir}/man1/notcurses-input.1%{?ext_man}
-%{_mandir}/man1/notcurses-tester.1%{?ext_man}
 %{_mandir}/man1/nctetris.1%{?ext_man}
 %{_mandir}/man1/ncplayer.1%{?ext_man}
 %{_mandir}/man1/ncls.1%{?ext_man}

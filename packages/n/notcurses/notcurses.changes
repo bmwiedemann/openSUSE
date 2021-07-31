@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 30 12:25:36 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 2.3.12
+  https://github.com/dankamongmen/notcurses/releases/tag/v2.3.12
+- disable xray demo (boo#1188860, notcurses-2.3.12-skip-xray.diff)
+- enable DFSG_BUILD to avoid nonfree material
+
+-------------------------------------------------------------------
 Sat Jun  5 13:21:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2
