@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 22 20:11:16 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- fixed build for s390x (no cpu_features)
+
+-------------------------------------------------------------------
 Sat Jun  5 12:00:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.0
