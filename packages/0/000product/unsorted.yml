@@ -1736,6 +1736,8 @@ unsorted:
   - cargo-c 
   - cargo1.53 
   - cargo1.53-doc: [x86_64] 
+  - cargo1.54 
+  - cargo1.54-doc: [x86_64] 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -23288,6 +23290,7 @@ unsorted:
   - python36-pykwalify 
   - python36-pylama 
   - python36-pylast 
+  - python36-pyleri 
   - python36-pylev 
   - python36-pylibacl 
   - python36-pyliblo 
@@ -26182,6 +26185,7 @@ unsorted:
   - python38-pykwalify 
   - python38-pylama 
   - python38-pylast 
+  - python38-pyleri 
   - python38-pylev 
   - python38-pylibacl 
   - python38-pyliblo 
@@ -29249,6 +29253,7 @@ unsorted:
   - python39-pykwalify 
   - python39-pylama 
   - python39-pylast 
+  - python39-pyleri 
   - python39-pylev 
   - python39-pylibacl 
   - python39-pyliblo 
@@ -30880,6 +30885,7 @@ unsorted:
   - rkward 
   - rls: [x86_64] 
   - rls1.53: [x86_64] 
+  - rls1.54: [x86_64] 
   - rlwrap 
   - rmail 
   - rmedigicontrol 
@@ -31375,6 +31381,11 @@ unsorted:
   - rust1.53-doc: [x86_64] 
   - rust1.53-gdb 
   - rust1.53-src 
+  - rust1.54 
+  - rust1.54-analysis: [x86_64] 
+  - rust1.54-doc: [x86_64] 
+  - rust1.54-gdb 
+  - rust1.54-src 
   - rustscan 
   - rxp 
   - rxtx-java 
