@@ -904,4 +904,12 @@ erlang 17.0 is ready for factory, now. See changes in .changes</comment>
     <comment></comment>
     <requestid>903976</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>d51d9b6d89aa67446a84e0920f4e9afc</srcmd5>
+    <version>24.0.3</version>
+    <time>1627750284</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909515</requestid>
+  </revision>
 </revisionlist>

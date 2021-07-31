@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Fri Jul 23 09:21:53 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix more directories not owned by the package (boo#1187546)
+
+-------------------------------------------------------------------
+Mon Jul 05 20:15:51 UTC 2021 - matwey.kornilov@gmail.com
+
+- Changes for 24.0.3:
+  * erts: A call to erlang:cancel_timer(_, [{info, false}]) could
+    cause the calling process to block forever in the call. Note
+    that only the synchronous version of the call (that is, the
+    async option is false) in combination with the info option set
+    to false was effected by this bug.
+  * erts: Microstate accounting (msacc) and os:perf_counter()
+    unintentionally used system time instead of monotonic time for
+    time measurements on a lot of systems. These systems were all
+    non x86/x86_64 systems or x86/x86_64 systems without a reliable
+    and constant rdtsc instruction. The lock counting (lcnt) built
+    runtime system also unintentionally used system time instead of
+    monotonic time for time measurements on all systems.
+  * erts: Simultaneous calls to
+    erlang:system_flag(schedulers_online, _) could cause callers to
+    end up in a suspended state forever.
+  * dialyzer: Do not expose line number 0 in messages if there are
+    other locations to use.
+  * dialyzer: In rare circumstances, Dialyzer could crash analyzing
+    code with a list comprehension whose value was ignored. (Thanks
+    to Ulf Wiger for reporting this bug.)
+  * ssh: Filter out sensitive data (passwords etc) from progress
+    reports and supervisor reports.
+  * inets: Improved user input handling in inets/mod_esi preventing
+    unnecessary atom creation.
+  * compiler: A compiler optimization pass could crash when given
+    odd but legal code using throw/1.
+- Changes for 24.0.2:
+  * kernel: Fix a race condition in Global.
+  * kernel: After a node restart with init:restart/0,1, the module
+    socket was not usable because supporting tables had been
+    cleared and not re-initialized. This has now been fixed.
+    Handling of the "." domain as a search domain was incorrect and
+    caused a crash in the DNS resolver inet_res, which has now been
+    fixed.
+  * kernel: Handling of combinations of the fd option and binding
+    to an address has been corrected, especially for the local
+    address family.
+  * kernel: Bug fixes and code cleanup for the new socket
+    implementation, such as: Assertions on the result of
+    demonitoring has been added in the NIF code, where appropriate.
+    Internal state handling for socket close in the NIF code has
+    been reviewed. Looping over close() for EINTR in the NIF code
+    has been removed, since it is strongly discouraged on Linux and
+    Posix is not clear about if it is allowed. The inet_backend
+    temporary socket option for legacy gen_tcp sockets has been
+    documented. The return value from net:getaddrinfo/2 has been
+    corrected: the protocol field is now an atom(), instead of,
+    incorrectly, list(atom()). The documentation has also been
+    corrected about this return type. Deferred close of a
+    socket:sendfile/* file was broken and has been corrected. Some
+    debug code, not enabled by default, in the socket NIF has been
+    corrected to not accidentally core dump for debug printouts of
+    more or less innocent events.
+  * stdlib: Fix a bug that could cause a loop when formatting terms
+    using the control sequences p or P and limiting the output with
+    the option chars_limit.
+  * erts: Not yet handled alias-message signals in the signal queue
+    at the time when a garbage collection was performed could cause
+    a memory corruption which in turn could result in a crash of
+    the runtime system. This bug was introduced in OTP 24.0.
+  * erts: Fixed bug when using external pids/ports in keys of big
+    maps (> 32). Could cause runtime crash. Bug exists since OTP
+    24.0.
+  * erts: After a node restart with init:restart/0,1, the module
+    socket was not usable because supporting tables had been
+    cleared and not re-initialized. This has now been fixed.
+    Handling of the "." domain as a search domain was incorrect and
+    caused a crash in the DNS resolver inet_res, which has now been
+    fixed.
+  * erts: A call to port_command() could cause a scheduler to end
+    up in an eternal loop if the port was busy and the calling
+    process had incoming signals at the time of the call. This bug
+    was introduced in OTP 23.3.2 (ERTS version 11.2.1), OTP
+    22.3.4.18 (ERTS version 10.7.2.10), and OTP 21.3.8.23 (ERTS
+    version 10.3.5.18).
+  * erts: Bug fixes and code cleanup for the new socket
+    implementation, such as: Assertions on the result of
+    demonitoring has been added in the NIF code, where appropriate.
+    Internal state handling for socket close in the NIF code has
+    been reviewed. Looping over close() for EINTR in the NIF code
+    has been removed, since it is strongly discouraged on Linux and
+    Posix is not clear about if it is allowed. The inet_backend
+    temporary socket option for legacy gen_tcp sockets has been
+    documented. The return value from net:getaddrinfo/2 has been
+    corrected: the protocol field is now an atom(), instead of,
+    incorrectly, list(atom()). The documentation has also been
+    corrected about this return type. Deferred close of a
+    socket:sendfile/* file was broken and has been corrected. Some
+    debug code, not enabled by default, in the socket NIF has been
+    corrected to not accidentally core dump for debug printouts of
+    more or less innocent events.
+  * erts: Dirty execution of a process in combination with an
+    unlink signal from a port to the process could cause the signal
+    queue of the process to enter into an inconsistent state. The
+    result of the inconsistency typically caused a crash of the
+    runtime system. This bug was introduced in OTP 23.3 (ERTS
+    version 11.2).
+  * erl_docgen: Fix links generated in specs to types in other
+    applications to point to the correct place. This bug was
+    introduced in Erlang/OTP 24.0.
+  * ssl: Fix cache invalidation problem for CA certs provided by
+    the cacertfile option.
+  * ssh: Avoid an extra blank line in the ssh known_hosts file
+  * compiler: Fixed a bug that could cause after blocks to be
+    ignored when erlang:raise/3 was used in a catch block.
+  * compiler: Fixed a bug in the validation pass that could cause
+    it to reject valid code.
+  * crypto: EC keys are now zero-padded to the expected length if
+    needed.
+
+-------------------------------------------------------------------
 Sat Jun 26 11:26:43 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Use sysusers-tools to provide epmd user

@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           erlang
-Version:        24.0.1
+Version:        24.0.3
 Release:        0
 Summary:        General-purpose programming language and runtime environment
 License:        Apache-2.0
@@ -374,39 +374,72 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_libdir}/erlang/erts-*/*
 %exclude %{_libdir}/erlang/erts-*/bin/dialyzer
 %exclude %{_libdir}/erlang/erts-*/bin/epmd
-%{_libdir}/erlang/lib/asn1-*/
-%{_libdir}/erlang/lib/common_test-*/
-%{_libdir}/erlang/lib/compiler-*/
-%{_libdir}/erlang/lib/crypto-*/
-%{_libdir}/erlang/lib/edoc-*/
-%{_libdir}/erlang/lib/eldap-*/
-%{_libdir}/erlang/lib/erl_docgen-*/
-%{_libdir}/erlang/lib/erl_interface-*/
-%{_libdir}/erlang/lib/erts-*/
-%{_libdir}/erlang/lib/eunit-*/
-%{_libdir}/erlang/lib/ftp-*/
-%{_libdir}/erlang/lib/inets-*/
-%{_libdir}/erlang/lib/kernel-*/
-%{_libdir}/erlang/lib/megaco-*/
-%{_libdir}/erlang/lib/mnesia-*/
-%{_libdir}/erlang/lib/odbc-*/
-%{_libdir}/erlang/lib/tftp-*/
-%{_libdir}/erlang/lib/os_mon-*/
-%{_libdir}/erlang/lib/parsetools-*/
-%{_libdir}/erlang/lib/public_key-*/
-%{_libdir}/erlang/lib/runtime_tools-*/
-%{_libdir}/erlang/lib/sasl-*/
-%{_libdir}/erlang/lib/snmp-*/
-%{_libdir}/erlang/lib/ssh-*/
-%{_libdir}/erlang/lib/ssl-*/
-%{_libdir}/erlang/lib/stdlib-*/
-%{_libdir}/erlang/lib/syntax_tools-*/
-%{_libdir}/erlang/lib/tools-*/
-%{_libdir}/erlang/lib/xmerl-*/
+%dir %{_libdir}/erlang/lib/asn1-*/
+%{_libdir}/erlang/lib/asn1-*/*
+%dir %{_libdir}/erlang/lib/common_test-*/
+%{_libdir}/erlang/lib/common_test-*/*
+%dir %{_libdir}/erlang/lib/compiler-*/
+%{_libdir}/erlang/lib/compiler-*/*
+%dir %{_libdir}/erlang/lib/crypto-*/
+%{_libdir}/erlang/lib/crypto-*/*
+%dir %{_libdir}/erlang/lib/edoc-*/
+%{_libdir}/erlang/lib/edoc-*/*
+%dir %{_libdir}/erlang/lib/eldap-*/
+%{_libdir}/erlang/lib/eldap-*/*
+%dir %{_libdir}/erlang/lib/erl_docgen-*/
+%{_libdir}/erlang/lib/erl_docgen-*/*
+%dir %{_libdir}/erlang/lib/erl_interface-*/
+%{_libdir}/erlang/lib/erl_interface-*/*
+%dir %{_libdir}/erlang/lib/erts-*/
+%{_libdir}/erlang/lib/erts-*/*
+%dir %{_libdir}/erlang/lib/eunit-*/
+%{_libdir}/erlang/lib/eunit-*/*
+%dir %{_libdir}/erlang/lib/ftp-*/
+%{_libdir}/erlang/lib/ftp-*/*
+%dir %{_libdir}/erlang/lib/inets-*/
+%{_libdir}/erlang/lib/inets-*/*
+%dir %{_libdir}/erlang/lib/kernel-*/
+%{_libdir}/erlang/lib/kernel-*/*
+%dir %{_libdir}/erlang/lib/megaco-*/
+%{_libdir}/erlang/lib/megaco-*/*
+%dir %{_libdir}/erlang/lib/mnesia-*/
+%{_libdir}/erlang/lib/mnesia-*/*
+%dir %{_libdir}/erlang/lib/odbc-*/
+%{_libdir}/erlang/lib/odbc-*/*
+%dir %{_libdir}/erlang/lib/tftp-*/
+%{_libdir}/erlang/lib/tftp-*/*
+%dir %{_libdir}/erlang/lib/os_mon-*/
+%{_libdir}/erlang/lib/os_mon-*/*
+%dir %{_libdir}/erlang/lib/parsetools-*/
+%{_libdir}/erlang/lib/parsetools-*/*
+%dir %{_libdir}/erlang/lib/public_key-*/
+%{_libdir}/erlang/lib/public_key-*/*
+%dir %{_libdir}/erlang/lib/runtime_tools-*/
+%{_libdir}/erlang/lib/runtime_tools-*/*
+%dir %{_libdir}/erlang/lib/sasl-*/
+%{_libdir}/erlang/lib/sasl-*/*
+%dir %{_libdir}/erlang/lib/snmp-*/
+%{_libdir}/erlang/lib/snmp-*/*
+%dir %{_libdir}/erlang/lib/ssh-*/
+%{_libdir}/erlang/lib/ssh-*/*
+%dir %{_libdir}/erlang/lib/ssl-*/
+%{_libdir}/erlang/lib/ssl-*/*
+%dir %{_libdir}/erlang/lib/stdlib-*/
+%{_libdir}/erlang/lib/stdlib-*/*
+%dir %{_libdir}/erlang/lib/syntax_tools-*/
+%{_libdir}/erlang/lib/syntax_tools-*/*
+%dir %{_libdir}/erlang/lib/tools-*/
+%{_libdir}/erlang/lib/tools-*/*
+%dir %{_libdir}/erlang/lib/xmerl-*/
+%{_libdir}/erlang/lib/xmerl-*/*
 %{_libdir}/erlang/man/
 %{_mandir}/man1/*.1%{?ext_man}
 %{_libdir}/erlang/releases/
-%{_libdir}/erlang/usr/
+%dir %{_libdir}/erlang/usr/
+%dir %{_libdir}/erlang/usr/include
+%{_libdir}/erlang/usr/include/*.h
+%dir %{_libdir}/erlang/usr/lib
+%{_libdir}/erlang/usr/lib/*.a
 %{_libdir}/erlang/Install
 %{_datadir}/emacs/site-lisp/erlang.el
 %{_rpmmacrodir}/macros.erlang
@@ -419,11 +452,13 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_bindir}/dialyzer
 %{_libdir}/erlang/bin/dialyzer
 %{_libdir}/erlang/erts-*/bin/dialyzer
-%{_libdir}/erlang/lib/dialyzer-*/
+%dir %{_libdir}/erlang/lib/dialyzer-*/
+%{_libdir}/erlang/lib/dialyzer-*/*
 %exclude %{_libdir}/erlang/lib/dialyzer-*/src
 
 %files diameter
-%{_libdir}/erlang/lib/diameter-*/
+%dir %{_libdir}/erlang/lib/diameter-*/
+%{_libdir}/erlang/lib/diameter-*/*
 %exclude %{_libdir}/erlang/lib/diameter-*/src
 
 %files doc
@@ -439,7 +474,8 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %exclude %{_libdir}/erlang/lib/wx-*/doc/chunks
 
 %files et
-%{_libdir}/erlang/lib/et-*/
+%dir %{_libdir}/erlang/lib/et-*/
+%{_libdir}/erlang/lib/et-*/*
 %exclude %{_libdir}/erlang/lib/et-*/src
 
 %files epmd
@@ -457,27 +493,34 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %{_sysusersdir}/epmd-user.conf
 
 %files jinterface
-%{_libdir}/erlang/lib/jinterface-*/
+%dir %{_libdir}/erlang/lib/jinterface-*/
+%{_libdir}/erlang/lib/jinterface-*/*
 %exclude %{_libdir}/erlang/lib/jinterface-*/java_src
 %{_javadir}/*
 
 %files reltool
-%{_libdir}/erlang/lib/reltool-*/
+%dir %{_libdir}/erlang/lib/reltool-*/
+%{_libdir}/erlang/lib/reltool-*/*
 %exclude %{_libdir}/erlang/lib/reltool-*/src
 
 %files observer
-%{_libdir}/erlang/lib/observer-*/
+%dir %{_libdir}/erlang/lib/observer-*/
+%{_libdir}/erlang/lib/observer-*/*
 %exclude %{_libdir}/erlang/lib/observer-*/src
 
 %files wx
-%{_libdir}/erlang/lib/wx-*/
+%dir %{_libdir}/erlang/lib/wx-*/
+%{_libdir}/erlang/lib/wx-*/*
 %exclude %{_libdir}/erlang/lib/wx-*/src
 
 %files src
 %exclude %{_libdir}/erlang/lib/erl_interface-*/src/INSTALL
-%{_libdir}/erlang/lib/*/src
-%{_libdir}/erlang/lib/*/c_src
-%{_libdir}/erlang/lib/*/java_src
+%dir %{_libdir}/erlang/lib/*/src
+%{_libdir}/erlang/lib/*/src/*
+%dir %{_libdir}/erlang/lib/*/c_src
+%{_libdir}/erlang/lib/*/c_src/*
+%dir %{_libdir}/erlang/lib/*/java_src
+%{_libdir}/erlang/lib/*/java_src/*
 %exclude %{_libdir}/erlang/lib/debugger-*/src
 %exclude %{_libdir}/erlang/lib/dialyzer-*/src
 %exclude %{_libdir}/erlang/lib/diameter-*/src
@@ -488,27 +531,35 @@ install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}
 %exclude %{_libdir}/erlang/lib/wx-*/src
 
 %files debugger-src
-%{_libdir}/erlang/lib/debugger-*/src
+%dir %{_libdir}/erlang/lib/debugger-*/src
+%{_libdir}/erlang/lib/debugger-*/src/*
 
 %files dialyzer-src
-%{_libdir}/erlang/lib/dialyzer-*/src
+%dir %{_libdir}/erlang/lib/dialyzer-*/src
+%{_libdir}/erlang/lib/dialyzer-*/src/*
 
 %files diameter-src
-%{_libdir}/erlang/lib/diameter-*/src
+%dir %{_libdir}/erlang/lib/diameter-*/src
+%{_libdir}/erlang/lib/diameter-*/src/*
 
 %files et-src
-%{_libdir}/erlang/lib/et-*/src
+%dir %{_libdir}/erlang/lib/et-*/src
+%{_libdir}/erlang/lib/et-*/src/*
 
 %files jinterface-src
-%{_libdir}/erlang/lib/jinterface-*/java_src
+%dir %{_libdir}/erlang/lib/jinterface-*/java_src
+%{_libdir}/erlang/lib/jinterface-*/java_src/*
 
 %files reltool-src
-%{_libdir}/erlang/lib/reltool-*/src
+%dir %{_libdir}/erlang/lib/reltool-*/src
+%{_libdir}/erlang/lib/reltool-*/src/*
 
 %files observer-src
-%{_libdir}/erlang/lib/observer-*/src
+%dir %{_libdir}/erlang/lib/observer-*/src
+%{_libdir}/erlang/lib/observer-*/src/*
 
 %files wx-src
-%{_libdir}/erlang/lib/wx-*/src
+%dir %{_libdir}/erlang/lib/wx-*/src
+%{_libdir}/erlang/lib/wx-*/src/*
 
 %changelog
