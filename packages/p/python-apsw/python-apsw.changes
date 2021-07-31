@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 25 06:20:00 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.35.4-r1:
+  - Updates for SQLite download url (the year is part of the urls).
+  - Added enable flag for built-in SQL math functions, and enable
+    it by default with –enable-all-extensions.
+  - Use the newer buffer API for Python 3
+    (old API removed in Python 3.10).
+- Fix loadable extensions are missing, 
+  so insert --enable-all-extensions and --enable=load_extension.
+  See: https://rogerbinns.github.io/apsw/build.html#building
+
+-------------------------------------------------------------------
 Tue Dec 29 13:46:03 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 3.34.0-r1:

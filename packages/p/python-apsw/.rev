@@ -97,4 +97,21 @@
   * Added constants: SQLITE_IOERR_CORRUPTFS</comment>
     <requestid>859232</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0b90c2165d7ea603075d84c705b7db24</srcmd5>
+    <version>3.35.4_r1</version>
+    <time>1627750280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.35.4-r1:
+  - Updates for SQLite download url (the year is part of the urls).
+  - Added enable flag for built-in SQL math functions, and enable
+    it by default with –enable-all-extensions.
+  - Use the newer buffer API for Python 3
+    (old API removed in Python 3.10).
+- Fix loadable extensions are missing, 
+  so insert --enable-all-extensions and --enable=load_extension.
+  See: https://rogerbinns.github.io/apsw/build.html#building
+</comment>
+    <requestid>909441</requestid>
+  </revision>
 </revisionlist>

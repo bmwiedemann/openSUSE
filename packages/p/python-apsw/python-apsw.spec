@@ -1,7 +1,7 @@
 #
 # spec file for package python-apsw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define tarver  3.34.0-r1
+%define tarver  3.35.4-r1
 Name:           python-apsw
-Version:        3.34.0_r1
+Version:        3.35.4_r1
 Release:        0
 Summary:        Another Python SQLite Wrapper
 License:        Zlib
@@ -44,12 +44,16 @@ complete SQLite API into Python.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"
-%python_build
+#%%python_build
+%{python_expand $python setup.py build --enable-all-extensions --enable=load_extension}
 
 %install
 %python_install
 
 %check
+# python setup.py test is in this case very complicated home-brewn,
+# and using unittest, so it shouldn't be affected by changes in
+# setuptools.
 export CFLAGS="%{optflags} -fno-strict-aliasing"
 %{python_expand $python setup.py build_ext --inplace
 $python setup.py test
