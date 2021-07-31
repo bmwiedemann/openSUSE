@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 31 04:33:50 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.16. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-16-has-been-released/11547
+  boo#1188946
+
+  + Cluster certificate update
+  + Copy/move of custom volumes between projects
+  + lxc monitor --pretty now works with all event types
+  + Easier revocation of cluster join tokens
+  + IP filtering on unmanaged bridges
+  + New warnings
+  + New lifecycle events
+
+- Remove upstreamed patches:
+  + boo1186786-0001-forkexec-handle-broken-close_range-backport-in-openS.patch
+
+-------------------------------------------------------------------
 Wed Jul  7 16:52:36 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Build with go1.15 for reproducible build results (boo#1102408)

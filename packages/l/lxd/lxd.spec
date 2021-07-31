@@ -34,7 +34,7 @@
 %endif
 
 Name:           lxd
-Version:        4.15
+Version:        4.16
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -51,8 +51,6 @@ Source101:      %{name}-config.yml
 # Additional runtime configuration.
 Source200:      %{name}.sysctl
 Source201:      %{name}.dnsmasq
-# UPSTREAM-FIX: Backport of <https://github.com/lxc/lxd/pull/8908>. boo#1186786
-Patch1:         boo1186786-0001-forkexec-handle-broken-close_range-backport-in-openS.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libacl-devel
@@ -124,8 +122,6 @@ Bash command line completion support for %{name}.
 
 %prep
 %setup -q
-# boo#1186786
-%patch1 -p1
 
 # Create fake "go mod"-like import paths. This is going to be really fun to
 # maintain but it's unfortunately necessary because openSUSE doesn't have nice
@@ -189,6 +185,9 @@ readarray -t mainpkgs \
 
 # _dist/src is effectively an old-school "vendor/" tree, so add it to GOPATH.
 export GOPATH="$GOPATH:$PKGDIR/_dist"
+
+# Needed because lxd and deps use funky #cgo LDFLAGS that Go blocks by default.
+export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
 
 # And now we can finally build LXD and all of the related binaries.
 mkdir bin
