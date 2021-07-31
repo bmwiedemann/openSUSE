@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 16 20:03:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.17.0
+  * make OpenSSL engines optional
+  * document and favor --pinentry over plain text password in
+    configuration file
+  * fix buffer overflow and other errors in URI espcaping for
+    --pinentry
+  * use different --pinentry hints for different hosts, usernames
+    and realms
+  * fix memory management errors related to --user-agent option
+
+-------------------------------------------------------------------
 Sun Feb 14 15:40:03 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.16.0

@@ -17,7 +17,7 @@
 
 
 Name:           openfortivpn
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        Client for PPP+SSL VPN tunnel services
 License:        GPL-3.0-or-later
@@ -42,7 +42,7 @@ It is compatible with Fortinet VPNs.
 %build
 autoreconf -fiv
 %configure \
-    --with-systemdsystemunitdir=%{_unitdir} 
+    --with-systemdsystemunitdir=%{_unitdir}
 make %{?_smp_mflags} V=1
 
 %install
