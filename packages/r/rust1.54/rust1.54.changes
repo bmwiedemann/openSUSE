@@ -1,0 +1,84 @@
+-------------------------------------------------------------------
+Fri Jul 30 03:37:01 UTC 2021 - William Brown <william.brown@suse.com>
+
+Version 1.54.0 (2021-07-29)
+============================
+
+Language
+-----------------------
+
+- [You can now use macros for values in built-in attribute macros.][83366]
+  While a seemingly minor addition on its own, this enables a lot of
+  powerful functionality when combined correctly. Most notably you can
+  now include external documentation in your crate by writing the following.
+  ```rust
+  #![doc = include_str!("README.md")]
+  ```
+  You can also use this to include auto-generated modules:
+  ```rust
+  #[path = concat!(env!("OUT_DIR"), "/generated.rs")]
+  mod generated;
+  ```
+
+- [You can now cast between unsized slice types (and types which contain
+  unsized slices) in `const fn`.][85078]
+- [You can now use multiple generic lifetimes with `impl Trait` where the
+   lifetimes don't explicitly outlive another.][84701] In code this means
+   that you can now have `impl Trait<'a, 'b>` where as before you could
+   only have `impl Trait<'a, 'b> where 'b: 'a`.
+
+Compiler
+-----------------------
+
+- [Rustc will now search for custom JSON targets in
+  `/lib/rustlib/<target-triple>/target.json` where `/` is the "sysroot"
+  directory.][83800] You can find your sysroot directory by running
+  `rustc --print sysroot`.
+- [Added `wasm` as a `target_family` for WebAssembly platforms.][84072]
+- [You can now use `#[target_feature]` on safe functions when targeting
+  WebAssembly platforms.][84988]
+- [Improved debugger output for enums on Windows MSVC platforms.][85292]
+- [Added tier 3\* support for `bpfel-unknown-none`
+   and `bpfeb-unknown-none`.][79608]
+
+\* Refer to Rust's [platform support page][platform-support-doc] for more
+   information on Rust's tiered platform support.
+
+Libraries
+-----------------------
+
+- [`panic::panic_any` will now `#[track_caller]`.][85745]
+- [Added `OutOfMemory` as a variant of `io::ErrorKind`.][84744]
+- [ `proc_macro::Literal` now implements `FromStr`.][84717]
+- [The implementations of vendor intrinsics in core::arch have been
+   significantly refactored.][83278] The main user-visible changes are
+   a 50% reduction in the size of libcore.rlib and stricter validation
+   of constant operands passed to intrinsics. The latter is technically
+   a breaking change, but allows Rust to more closely match the C vendor
+   intrinsics API.
+
+Stabilized APIs
+---------------
+
+- [`BTreeMap::into_keys`]
+- [`BTreeMap::into_values`]
+- [`HashMap::into_keys`]
+- [`HashMap::into_values`]
+- [`arch::wasm32`]
+- [`VecDeque::binary_search`]
+- [`VecDeque::binary_search_by`]
+- [`VecDeque::binary_search_by_key`]
+- [`VecDeque::partition_point`]
+
+Cargo
+-----
+
+- [Added the `--prune <spec>` option to `cargo-tree` to remove a package from
+  the dependency graph.][cargo/9520]
+- [Added the `--depth` option to `cargo-tree` to print only to a certain depth
+  in the tree ][cargo/9499]
+- [Added the `no-proc-macro` value to `cargo-tree --edges` to hide procedural
+  macro dependencies.][cargo/9488]
+- [A new environment variable named `CARGO_TARGET_TMPDIR` is available.][cargo/9375]
+  This variable points to a directory that integration tests and benches
+  can use as a "scratchpad" for testing filesystem operations.
