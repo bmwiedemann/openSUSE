@@ -16,4 +16,12 @@
   * Removed obsoleted file amavisd-milter.spec.</comment>
     <requestid>876603</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>378da61a9970ef99f15f659a864981cb</srcmd5>
+    <version>1.7.1</version>
+    <time>1627750302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909531</requestid>
+  </revision>
 </revisionlist>
