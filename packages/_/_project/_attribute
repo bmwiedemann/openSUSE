@@ -9,7 +9,7 @@
   boo#1172013: '20210104'
   boo#1172073: '20210712'
   boo#1174680: '20210208'
-  boo#1176553: '20210728'
+  boo#1176553: '20210729'
   boo#1177461: '20210626'
   boo#1177462: '20210227'
   boo#1177517: '20210304'
@@ -35,7 +35,7 @@
   boo#1182775: '20210308'
   boo#1182894: '20210308'
   boo#1182961: '20210519'
-  boo#1183082: '20210728'
+  boo#1183082: '20210729'
   boo#1183454: '20210729'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
@@ -73,9 +73,9 @@
   boo#1188105: '20210716'
   boo#1188194: '20210727'
   boo#1188295: '20210720'
-  boo#1188296: '20210728'
+  boo#1188296: '20210729'
   boo#1188426: '20210721'
-  boo#1188902: '20210728'
+  boo#1188902: '20210729'
   bsc#1179395: '20210308'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
@@ -145,7 +145,7 @@
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
-  poo#91830: '20210728'
+  poo#91830: '20210729'
   poo#92004: '20210711'
   poo#92080: '20210520'
   poo#92401: '20210527'
@@ -167,7 +167,7 @@
   poo#93847: '20210621'
   poo#93850: '20210620'
   poo#93865: '20210609'
-  poo#94009: '20210728'
+  poo#94009: '20210729'
   poo#94108: '20210615'
   poo#94225: '20210618'
   poo#94904: '20210721'
@@ -179,6 +179,8 @@
   poo#95548: '20210718'
   poo#95605: '20210717'
   poo#95789: '20210726'
+  poo#96302: '20210729'
+  poo#96389: '20210729'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -222,7 +224,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210729</value>
+    <value>20210730</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -545,9 +547,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210729'
-published: '20210728'
-publishing: '20210728'
+    <value>failed: ''
+published: '20210729'
+publishing: '20210729'
 testing: '20210729'
 </value>
   </attribute>
