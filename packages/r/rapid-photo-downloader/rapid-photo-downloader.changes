@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 31 22:34:13 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.9.27a2
+  - Fix bug #30: iPhone7 serial number format not recognized.
+  - Fix bug #1938341: Albanian translations not compiled.
+
+-------------------------------------------------------------------
 Wed Jul 28 16:13:57 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.9.27a1

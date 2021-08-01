@@ -639,4 +639,14 @@
 - new Requires imobiledevice-tools ifuse fuse</comment>
     <requestid>908941</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1455da36dbcfc8240f4ee66d662c8acc</srcmd5>
+    <version>0.9.27a2</version>
+    <time>1627847501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.27a2
+  - Fix bug #30: iPhone7 serial number format not recognized.
+  - Fix bug #1938341: Albanian translations not compiled.</comment>
+    <requestid>909545</requestid>
+  </revision>
 </revisionlist>
