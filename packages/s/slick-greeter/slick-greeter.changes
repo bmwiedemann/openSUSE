@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 28 10:49:48 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.5.4.
+  * l10n: Update translations
+- Updates for version 1.5.3.
+  * menubar: kill using Posix.Signal.TERM instead of Posix.SIGTERM
+  * shutdown-dialog: margin left/right -> margin_start_end
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Thu Jan 14 10:58:24 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 1.5.2.

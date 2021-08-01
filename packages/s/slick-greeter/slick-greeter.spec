@@ -18,10 +18,10 @@
 
 %define _name   lightdm-slick-greeter
 Name:           slick-greeter
-Version:        1.5.2
+Version:        1.5.4
 Release:        0
 Summary:        The slick-looking login screen application
-License:        GPL-3.0-only AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-3.0-only
 Group:          System/X11/Displaymanagers
 URL:            https://github.com/linuxmint/slick-greeter
 Source:         https://github.com/linuxmint/slick-greeter/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -54,7 +54,7 @@ Group:          System/X11/Displaymanagers
 Requires:       lightdm
 Requires:       numlockx
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{_name}-lang
 Provides:       lightdm-greeter
 %glib2_gsettings_schema_requires
