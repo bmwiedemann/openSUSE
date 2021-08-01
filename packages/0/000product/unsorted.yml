@@ -12875,7 +12875,7 @@ unsorted:
   - libqoauth2 
   - libqobs-devel 
   - libqobs2 
-  - libqore5 
+  - libqore6 
   - libqpid-proton-cpp12 
   - libqpid-proton-proactor1 
   - libqpid-proton10 
@@ -30293,6 +30293,8 @@ unsorted:
   - qore-doc 
   - qore-json-module 
   - qore-json-module-doc 
+  - qore-linenoise-module 
+  - qore-linenoise-module-doc 
   - qore-misc-tools 
   - qore-mysql-module 
   - qore-mysql-module-doc 
