@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug  1 09:41:33 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- update to version 3.2.3:
+ - Added
+  - Support excluding pages from a page range with ~
+  - Support TextLeading parameter in form field appearances
+ - Changed
+  - update_info adds a new Info dictionary if none is found
+ - Fixed
+  - Crash with non-conforming encrypted inputs
+  - Misleading URL in producer string
+  - Better detection of xref table in non-conforming inputs
+  - Better form detection (in particular forms created by pdftk cat)
+
+-------------------------------------------------------------------
 Sat Jan  9 14:46:13 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 3.2.2:
