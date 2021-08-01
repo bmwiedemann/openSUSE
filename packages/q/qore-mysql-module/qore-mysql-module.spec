@@ -1,7 +1,7 @@
 #
 # spec file for package qore-mysql-module
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,69 +12,64 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define qore_version 0.9.15
+%define src_name module-mysql-release-%{qore_version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
-%define module_dir %{_libdir}/qore-modules
 Name:           qore-mysql-module
-Version:        2.0.2.1
+Version:        2.0.2.1+qore%{qore_version}
 Release:        0
 Summary:        MySQL DBI module for Qore
 License:        LGPL-2.1-or-later OR GPL-2.0-or-later
 Group:          Development/Languages/Other
-Url:            http://qore.org
-Source:         https://github.com/qorelanguage/module-mysql/releases/download/v%{version}/%{name}-%{version}.tar.bz2
+Url:            https://qore.org
+Source:         https://github.com/qorelanguage/module-mysql/archive/release-%{qore_version}/%{src_name}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libmysqlclient-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel
+BuildRequires:  qore-devel >= 0.9
 Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
 MySQL DBI driver module for the Qore Programming Language. The MySQL driver is
 character set aware and supports multithreading, transaction management, and
 stored procedure execution.
 
-%prep
-%setup -q
-
-%build
-%ifarch x86_64 aarch64 ppc64 ppc64le s390x
-c64=--enable-64bit
-%endif
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug $c64
-make %{?_smp_mflags}
-
-%install
-mkdir -p %{buildroot}/%{module_dir}
-mkdir -p %{buildroot}%{_datadir}/doc/qore-mysql-module
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-find test -type f|xargs chmod 644
-%fdupes -s docs
-
-%files
-%defattr(-,root,root,-)
-%{module_dir}
-%doc README RELEASE-NOTES ChangeLog AUTHORS
-%license COPYING.GPL COPYING.LGPL
-
 %package doc
 Summary:        MySQL DBI module for Qore
 Group:          Development/Languages/Other
+BuildArch:      noarch
 
 %description doc
 MySQL module for the Qore Programming Language.
 
-This RPM provides API documentation, test and example programs
+This package provides API documentation, and example programs
+
+%prep
+%setup -q -n %{src_name}
+
+%build
+%cmake
+%cmake_build
+make %{?_smp_mflags} docs
+
+%install
+%cmake_install
+%fdupes -s %{__builddir}/html
+
+%files
+%license COPYING.GPL COPYING.LGPL
+%doc README RELEASE-NOTES AUTHORS
+%{_libdir}/qore-modules
 
 %files doc
-%defattr(-,root,root,-)
-%doc docs/mysql/html test/db-test.q test/sql-stmt.q
+%doc %{__builddir}/html
 
 %changelog

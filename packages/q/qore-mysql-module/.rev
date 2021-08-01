@@ -38,4 +38,14 @@
     <comment></comment>
     <requestid>857091</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>724c809756b57f8efb3bedb2a183075a</srcmd5>
+    <version>2.0.2.1+qore0.9.15</version>
+    <time>1627847496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.2.1 for qore 0.9.15
+ 
+Requires SR#908927</comment>
+    <requestid>908928</requestid>
+  </revision>
 </revisionlist>
