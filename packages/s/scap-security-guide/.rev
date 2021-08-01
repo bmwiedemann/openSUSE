@@ -95,4 +95,16 @@ Setting up scap-security-guide-redhat (0.1.56-30.1) ...
 Setting up scap-security-guide (0.1.56-30.1) ... (forwarded request 896944 from juliogonzalezgil)</comment>
     <requestid>897243</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>056d6daf491b5ca3f8c5838128a4b611</srcmd5>
+    <version>0.1.57</version>
+    <time>1627847510</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.1.57 release (jsc#ECO-3319)
+  - CIS profile for RHEL 7 is updated
+  - initial CIS profiles for Ubuntu 20.04
+  - Major improvement of RHEL 9 content
+  - new release process implemented using Github actions</comment>
+    <requestid>909618</requestid>
+  </revision>
 </revisionlist>

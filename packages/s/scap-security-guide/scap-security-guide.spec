@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.56
+Version:        0.1.57
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
