@@ -31,4 +31,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>863663</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d8861f0b63fcf58c8ba390554f7e103</srcmd5>
+    <version>3.2.3</version>
+    <time>1627847503</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 3.2.3:
+ - Added
+  - Support excluding pages from a page range with ~
+  - Support TextLeading parameter in form field appearances
+ - Changed
+  - update_info adds a new Info dictionary if none is found
+ - Fixed
+  - Crash with non-conforming encrypted inputs
+  - Misleading URL in producer string
+  - Better detection of xref table in non-conforming inputs
+  - Better form detection (in particular forms created by pdftk cat) (forwarded request 909595 from Kieltux)</comment>
+    <requestid>909603</requestid>
+  </revision>
 </revisionlist>
