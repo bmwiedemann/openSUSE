@@ -1,7 +1,7 @@
 #
 # spec file for package qore-xml-module
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,28 @@
 #
 
 
-%define module_api %(qore --latest-module-api 2>/dev/null)
-
+%define qore_version 0.9.15
+%define module_api   %(qore --latest-module-api 2>/dev/null)
+%define src_name     module-xml-release-%{qore_version}
 Name:           qore-xml-module
-Version:        1.4.1
+Version:        1.5.0+qore%{qore_version}
 Release:        0
 Summary:        XML module for Qore
 License:        LGPL-2.1-or-later OR GPL-2.0-or-later OR MIT
 Group:          Development/Languages/Other
 URL:            https://qore.org
-Source:         https://github.com/qorelanguage/module-xml/releases/download/v1.4.1/qore-xml-module-1.4.1.tar.bz2
+Source:         https://github.com/qorelanguage/module-xml/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+BuildRequires:  cmake
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  libxml2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.8.3
+BuildRequires:  qore-devel >= 0.9
 Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
 This package contains the xml module for the Qore Programming Language.
@@ -49,26 +52,18 @@ Group:          Development/Languages
 This package contains the HTML documentation and example programs for the Qore
 xml module.
 
-%files doc
-%defattr(-,root,root,-)
-%doc docs/xml docs/XmlRpcHandler test examples
-
 %prep
-%setup -q
+%setup -q -n %{src_name}
 
 %build
-%ifarch x86_64 ppc64 ppc64le s390x
-c64=--enable-64bit
-%endif
-CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug $c64
-make %{?_smp_mflags}
-find test -type f|xargs chmod 644
-find docs -type f|xargs chmod 644
+%cmake
+%cmake_build
+make %{?_smp_mflags} docs
 
 %install
-mkdir -p %{buildroot}%{_datadir}/doc/qore-xml-module
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-%fdupes -s docs
+%cmake_install
+%fdupes -s %{__builddir}/html
+ls -ahlp %__builddir/html
 
 %files
 %license COPYING.LGPL COPYING.MIT
@@ -76,5 +71,8 @@ make DESTDIR=%{buildroot} install %{?_smp_mflags}
 %{_bindir}/soaputil
 %{_datadir}/qore-modules
 %{_libdir}/qore-modules
+
+%files doc
+%doc %{__builddir}/html examples
 
 %changelog
