@@ -1,7 +1,7 @@
 #
 # spec file for package qore-uuid-module
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,27 @@
 #
 
 
-%define module_api %(qore --latest-module-api 2>/dev/null)
-%define module_dir %{_libdir}/qore-modules
-
+%define qore_version 0.9.15
+%define module_api   %(qore --latest-module-api 2>/dev/null)
+%define src_name     module-uuid-release-%{qore_version}
 Name:           qore-uuid-module
-Version:        1.3
+Version:        1.4.0+qore%{qore_version}
 Release:        0
 Summary:        UUID module for Qore
-License:         LGPL-2.1+ or MIT
+License:        LGPL-2.1+ or MIT
 Group:          Development/Languages
-Url:            http://qore.org
-Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.bz2
+URL:            https://qore.org
+Source:         https://github.com/qorelanguage/module-uuid/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  libuuid-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.8.5
+BuildRequires:  qore-devel >= 0.9
 Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
 This package contains the uuid module for the Qore Programming Language.
@@ -50,31 +51,24 @@ Group:          Development/Languages
 This package contains the HTML documentation and example programs for the Qore
 uuid module.
 
-%files doc
-%defattr(-,root,root,-)
-%doc docs/uuid test
-
 %prep
-%setup -q
-%ifarch %{arm} aarch64
-# Drop -m64/-m32 flags on Arm
-sed -i -e 's/ -m64//g' configure
-sed -i -e 's/ -m32//g' configure
-%endif
+%setup -q -n %{src_name}
 
 %build
-CFLAGS="$RPM_OPT_FLAGS" CXXFLAGS="$RPM_OPT_FLAGS" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug
-make %{?_smp_mflags}
+%cmake
+%cmake_build
+make %{?_smp_mflags} docs
 
 %install
-mkdir -p %{buildroot}/%{module_dir}
-mkdir -p %{buildroot}%{_datadir}/doc/qore-uuid-module
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-%fdupes -s docs
+%cmake_install
+%fdupes -s %{__builddir}/html
 
 %files
-%defattr(-,root,root,-)
-%{module_dir}
-%doc COPYING* README RELEASE-NOTES ChangeLog AUTHORS
+%license COPYING*
+%doc README RELEASE-NOTES AUTHORS
+%{_libdir}/qore-modules
+
+%files doc
+%doc %{__builddir}/html
 
 %changelog

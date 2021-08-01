@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 12 13:32:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.4 for qore version 0.9.5
+  * Use the new QoreValue API
+  * minor bugfixes
+
+-------------------------------------------------------------------
 Wed Apr 14 09:54:08 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Drop -m64/-m32 flags on Arm

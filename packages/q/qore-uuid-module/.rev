@@ -24,4 +24,15 @@ new module for Qore programming language as described in: http://lists.opensuse.
     <comment></comment>
     <requestid>885575</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ab9b6227db278c96c761068e06d12dc9</srcmd5>
+    <version>1.4.0+qore0.9.15</version>
+    <time>1627847498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4 for qore version 0.9.5
+
+Requires SR#908927
+</comment>
+    <requestid>908930</requestid>
+  </revision>
 </revisionlist>
