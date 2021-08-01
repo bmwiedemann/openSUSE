@@ -16,27 +16,22 @@
 #
 
 
-%define module_api %(qore --module-api 2>/dev/null)
-%define module_dir %{_libdir}/qore-modules
+%define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-sqlite3-module
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Sqlite3 DBI module for Qore
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Other
-URL:            http://www.qore.org
-Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.gz
-Patch1:         qore_sqlite3_module_add_ppc64le_to_config_guess.patch
-Patch2:         qore_sqlite3_module_add_aarch64_to_config_guess.patch
+URL:            https://www.qore.org
+Source:         %{name}-%{version}.tar.zst
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  openssl-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel
+BuildRequires:  qore-devel >= 0.7
 BuildRequires:  sqlite3-devel
-Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
-Requires:       sqlite3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  zstd
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
 Sqlite3 DBI driver module for the Qore Programming Language.
@@ -49,38 +44,22 @@ Group:          Development/Languages/Other
 This package contains the HTML documentation and example programs for the Qore
 xml module.
 
-%files doc
-%defattr(-,root,root,-)
-%doc test docs
-
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
-%ifarch %{arm} aarch64
-# Drop -m64/-m32 flags on Arm
-sed -i -e 's/ -m64//g' configure
-sed -i -e 's/ -m32//g' configure
-%endif
-%ifarch x86_64 aarch64 ppc64 ppc64le s390x
-c64=--enable-64bit
-%endif
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug $c64
-make %{?_smp_mflags}
-find test -type f|xargs chmod 644
-find docs -type f|xargs chmod 644
 
 %build
-make %{?_smp_mflags}
+%cmake
+%cmake_build
 
 %install
-mkdir -p %{buildroot}/%{module_dir}
-mkdir -p %{buildroot}%{_datadir}/doc/qore-pgsql-module
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%cmake_install
 
 %files
-%defattr(-,root,root,-)
-%{module_dir}
-%doc COPYING README RELEASE-NOTES ChangeLog AUTHORS
+%license COPYING
+%doc README RELEASE-NOTES AUTHORS
+%{_libdir}/qore-modules/*
+
+%files doc
+%doc test docs
 
 %changelog

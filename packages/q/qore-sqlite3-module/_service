@@ -1,0 +1,14 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/qorelanguage/module-sqlite3.git</param>
+		<param name="filename">qore-sqlite3-module</param>
+		<param name="version">1.0.2</param>
+		<param name="revision">2d3937bc85304b5466cf2c4b6134e74d82df9447</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">zstd</param>
+	</service>
+	<service name="setversion" mode="disabled" />
+</services>
