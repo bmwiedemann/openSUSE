@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed May 19 01:04:28 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.8 for Qore 0.9.15
+  * added support for new ConnectionProvider
+  * fixed parsing JSON numbers with exponents
+  * fixed output of noisy floating-point values
+  * fixed JsonRpcHandler related to Qore
+  * Support QoreValue API
+  * https://github.com/qorelanguage/module-json/compare/v1.7...release-0.9.15
+- Use cmake macros
+
+-------------------------------------------------------------------
 Sun Aug 16 21:00:48 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.7:

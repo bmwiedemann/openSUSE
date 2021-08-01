@@ -1,7 +1,7 @@
 #
 # spec file for package qore-json-module
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,49 +16,30 @@
 #
 
 
+%define qore_version 0.9.15
 %define module_api %(qore --latest-module-api 2>/dev/null)
+%define src_name module-json-release-%{qore_version}
 Name:           qore-json-module
-Version:        1.7
+Version:        1.8+qore%{qore_version}
 Release:        0
 Summary:        JSON module for Qore
 License:        LGPL-2.0-or-later OR GPL-2.0-or-later OR MIT
 URL:            https://qore.org
-Source:         https://github.com/qorelanguage/module-json/releases/download/v%{version}/qore-json-module-%{version}.tar.bz2
+Source:         https://github.com/qorelanguage/module-json/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  openssl-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.8.5
-Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
+BuildRequires:  qore-devel >= 0.9.5
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
 This package contains the json module for the Qore Programming Language.
 
 JSON is a concise human-readable data serialization format.
-
-%prep
-%setup -q
-
-%build
-# Remove -m32 and -m64 options except for x86* and ppc*
-%ifnarch %{ix86} x86_64 ppc64 ppc64le
-sed -i 's/-m32//g;s/-m64//g' configure
-%endif
-# FIXME: you should use the %%configure macro
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=%{_prefix} --disable-debug
-%make_build
-
-%install
-mkdir -p %{buildroot}%{_datadir}/doc/qore-json-module
-%make_install
-
-%files
-%{_datadir}/qore-modules
-%{_libdir}/qore-modules
-%license COPYING.LGPL COPYING.MIT
-%doc README RELEASE-NOTES
 
 %package doc
 Summary:        JSON module for Qore
@@ -67,7 +48,23 @@ Summary:        JSON module for Qore
 This package contains the HTML documentation and example programs for the Qore
 json module.
 
+%prep
+%setup -q -n %{src_name}
+
+%build
+%cmake
+%make_build docs
+
+%install
+%cmake_install
+
+%files
+%license COPYING.LGPL COPYING.MIT
+%{_datadir}/qore-modules/*
+%{_libdir}/qore-modules/*
+
 %files doc
-%doc docs/json/html docs/JsonRpcHandler/html examples/ test/
+%doc README RELEASE-NOTES
+%doc build/html/*
 
 %changelog
