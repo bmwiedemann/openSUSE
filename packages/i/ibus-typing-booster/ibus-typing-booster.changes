@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 31 17:48:15 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.13.0
+- Translation update from Weblate (de, tr, uk updated to 100%)
+- Use colour for the compose part of preedit
+  (Resolves: Use colour for the compose part of preedit)
+- When a compose sequence becomes invalid, don’t throw it away
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/180)
+- Cancelling a compose sequence should not beep
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/179)
+- Don’t spell check the preedit while a compose sequence is in progress
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/181)
+
+-------------------------------------------------------------------
 Wed Jul 28 15:57:03 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.12.1
