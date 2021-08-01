@@ -18,14 +18,13 @@
 
 
 Name:           qjackctl
-Version:        0.9.3
+Version:        0.9.4
 Release:        0
 Summary:        Graphical User Interface to Control JACK Servers
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
-URL:            http://qjackctl.sf.net
-Source:         http://prdownloads.sourceforge.net/qjackctl/qjackctl-%{version}.tar.gz
-BuildRequires:  automake
+URL:            https://qjackctl.sourceforge.io/
+Source:         https://download.sourceforge.net/qjackctl/qjackctl-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -42,7 +41,7 @@ BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(portaudio-2.0)
-Requires:       jack
+Requires:       (jack or pipewire-libjack-0_3)
 Recommends:     %{name}-lang
 
 %description
@@ -61,13 +60,11 @@ including a enhanced patchbay and connection control features.
 sed -i '/^X-SuSE-translate/d' src/%{name}.desktop
 
 %build
-./autogen.sh
-%configure
-%qmake5
-%make_jobs
+%cmake -DCONFIG_QT6=0
+%cmake_build
 
 %install
-%qmake5_install
+%cmake_install
 lrelease-qt5 src/translations/*
 install -dm 0755 %{buildroot}%{_datadir}/%{name}/translations
 install -Dm 0644 src/translations/*.qm %{buildroot}%{_datadir}/%{name}/translations/
@@ -86,11 +83,12 @@ install -Dm 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %{_datadir}/icons/hicolor/32x32/apps/%{name}.png
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/metainfo/%{name}.appdata.xml
-%doc %{_mandir}/man?/%{name}.*
+%{_mandir}/man?/%{name}.*
 
 %files lang
 %dir %{_datadir}/%{name}
 %dir %{_datadir}/%{name}/translations
 %{_datadir}/%{name}/translations/%{name}_*.qm
+%{_mandir}/fr/man?/%{name}.*
 
 %changelog
