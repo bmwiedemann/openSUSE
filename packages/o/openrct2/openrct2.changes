@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sun Aug  1 06:43:14 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.3.4.1
+  * Fix: Crash when placing large scenery.
+  * Fix: Crash when removing litter with cheats.
+  * Fix: Crash when using banner window.
+  * Fix: Crash when opening large scenery signs.
+  * Improved: Allow using RCT2 saves to mark RCT Classic
+    (.sea) parks as finished and vice versa.
+- Update to version 0.3.4
+  * Feature: Track List window now displays the path
+    to the design when debugging tools are on.
+  * Feature: “Vandals stopped” statistic for security
+    guards.
+  * Feature: Lighting effects for shops and stalls.
+  * Feature: Allow using early scenario completion
+    in multiplayer.
+  * Feature: [Plugin] Add property for getting current
+    plugin api version.
+  * Feature: [Plugin] Add properties related to guest
+    generation.
+  * Feature: [Plugin] Add properties related to climate
+    and weather.
+  * Feature: Opaque water (like in RCT1).
+  * Change: [Plugin] Rename Object to LoadedObject to fix
+    conflicts with Typescript's Object interface.
+  * Change: [Plugin] Rename ListView to ListViewWidget to
+    make it consistent with names of other widgets.
+  * Change: “No construction above tree height” limitation
+    now allows placing high trees.
+  * Change: Redesign the About window, including new
+    button to copy the current version info.
+  * Fix: Visual glitches and crashes when using RCT1 assets
+    from mismatched or corrupt CSG1.DAT and CSG1i.DAT files.
+  * Fix: Windows can appear off screen with small
+    screens or high scaling.
+  * Fix: Opening the Options menu causes a noticeable
+    drop in FPS.
+  * Fix: Block brakes do not animate.
+  * Fix: OpenGL: Track preview window, flip/rotate button
+    do not update the thumbnail.
+  * Fix: Crash when trying to rename Air Powered Vertical
+    Coaster in Korean.
+  * Fix: join_server uses default_port from config.
+  * Fix: Entrances/exits are removed when built on top of
+    each other.
+  * Fix: Surface smoothing at extra zoom levels not
+    working.
+  * Fix: Cannot close Options window on Android.
+  * Fix: [Plugin] isHidden only works for tile elements
+    up to the first element with a base height of over 32.
+  * Fix: Confusing message when joining server with
+    mismatched network version.
+  * Fix: American-style Steam Trains are not imported
+    correctly from RCT1 saves.
+  * Fix: The “About OpenRCT2” window cannot be themed.
+  * Fix: Crash when painting Swinging Ships with
+    invalid subtype.
+  * Fix: Crash when window is closed during text input.
+  * Fix: Ride/Track Design preview does not show if it
+    costs more money than available.
+  * Fix: Incorrect import of scenery research caused
+    all scenery to be unlocked.
+  * Fix: Incorrect function call in WallPlaceAction
+    plugin code.
+  * Fix: Crash when trying to place track when there
+    are no free tile elements.
+  * Fix: Unable to close changelog window when its
+    content fails to load.
+  * Fix: Incorrect drop height penalty on log flume ride.
+  * Fix: Unable to build in multiplayer as client with
+    "Build while paused" cheat enabled when the host is paused.
+  * Improved: “Unlock operating limits” cheat now also
+    unlocks all music.
+  * Improved: Improve startup times.
+  * Improved: Add Malgun Gothic and change Nanum Gothic
+    filename for Korean.
+- Update official objects to 1.2.1
+  * Fix grass ID and source games
+  * Split footpaths into footpaths and railings
+  
+-------------------------------------------------------------------
 Fri Mar 19 20:42:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.3
