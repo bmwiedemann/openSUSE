@@ -41,4 +41,12 @@
     <comment>1.5.4</comment>
     <requestid>821257</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>b5667fe2dcf3d250aece60166b1950bb</srcmd5>
+    <version>1.5.4</version>
+    <time>1627847506</time>
+    <user>dimstar_suse</user>
+    <comment>Fix arm6 build</comment>
+    <requestid>909611</requestid>
+  </revision>
 </revisionlist>

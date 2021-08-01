@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  1 14:05:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * tuxguitar-additional-arch.patch
+    + add armv6hl
+
+-------------------------------------------------------------------
 Wed Jul  8 10:09:21 UTC 2020 - Fridrich Strba <fstrba@suse.com>
 
 - Add viewer and tray to the built modules
@@ -23,12 +30,12 @@ Wed Jul  8 07:43:09 UTC 2020 - Fridrich Strba <fstrba@suse.com>
     + do not build the parts that need unavailable VST SDK
   * tuxguitar-additional-arch.patch
     + extend supported architectures to aarch64, ppc64, ppc64le,
-      and s390x 
+      and s390x
 
 -------------------------------------------------------------------
 Fri Oct  5 12:21:07 UTC 2018 - opensuse.lietuviu.kalba@gmail.com
 
-- Remove FluidSynth and fluid-soundfont-gm dependencies for 
+- Remove FluidSynth and fluid-soundfont-gm dependencies for
   openSUSE Leap 15 and newer versions.
 
 -------------------------------------------------------------------
@@ -64,12 +71,12 @@ Mon Nov 10 00:41:00 UTC 2014 - Led <ledest@gmail.com>
 -------------------------------------------------------------------
 Tue Jun 26 13:59:19 UTC 2012 - mvyskocil@suse.cz
 
-- build require java-devel >= 1.6.0 
+- build require java-devel >= 1.6.0
 
 -------------------------------------------------------------------
 Sun Oct  2 07:00:49 UTC 2011 - embar@users.berlios.de
 
-- added itext to requires section 
+- added itext to requires section
 
 -------------------------------------------------------------------
 Sun Sep  18 13:00:49 UTC 2011 - embar@users.berlios.de
@@ -89,7 +96,7 @@ Tue Dec  1 08:25:52 UTC 2009 - mseben@novell.com
 -------------------------------------------------------------------
 Thu Nov  5 08:20:50 UTC 2009 - mseben@novell.com
 
-- updated to version 1.2 
+- updated to version 1.2
   * Support measure range to loop
   * Transpose notes feature
   * Optionally transpose afected notes when change tuning

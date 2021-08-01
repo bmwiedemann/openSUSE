@@ -1,7 +1,7 @@
 #
 # spec file for package tuxguitar
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2008-2017 Orcan Ogetbil <oget[DOT]fedora[AT]gmail[DOT]com>
 # Copyright (c) 2008-2017 Fedora project
 #
@@ -24,6 +24,9 @@
 %endif
 %ifarch armv7hl
 %global bit armv7hl
+%endif
+%ifarch armv6hl
+%global bit armv6hl
 %endif
 %ifarch ppc64
 %global bit ppc64
