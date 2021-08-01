@@ -1,13 +1,56 @@
-Index: qore-0.8.13/configure.ac
-===================================================================
---- qore-0.8.13.orig/configure.ac
-+++ qore-0.8.13/configure.ac
-@@ -1932,7 +1932,7 @@ AC_DEFINE_UNQUOTED([QORE_LIB_CPPFLAGS],
- AC_DEFINE_UNQUOTED([QORE_LIB_CXXFLAGS], "$QORE_LIB_CXXFLAGS", [c++ compiler flags])
- AC_DEFINE_UNQUOTED([QORE_LIB_CFLAGS],   "$QORE_LIB_CFLAGS", [c++ compiler flags])
- AC_DEFINE_UNQUOTED([QORE_LIB_LDFLAGS],  "$QORE_LIB_LDFLAGS", [linker flags])
--AC_DEFINE_UNQUOTED([QORE_BUILD_HOST],   "`uname -a`", [Qore build host info])
-+AC_DEFINE_UNQUOTED([QORE_BUILD_HOST],   "`uname -smpo`", [Qore build host info])
+diff -Nur qore-release-0.9.13/CMakeLists.txt patched/CMakeLists.txt
+--- qore-release-0.9.13/CMakeLists.txt	2021-03-26 13:46:59.000000000 +0100
++++ patched/CMakeLists.txt	2021-04-14 22:55:06.281646906 +0200
+@@ -363,7 +363,7 @@
+ elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+ execute_process(COMMAND uname -smr OUTPUT_VARIABLE QORE_BUILD_HOST OUTPUT_STRIP_TRAILING_WHITESPACE)
+ else()
+-execute_process(COMMAND uname -a OUTPUT_VARIABLE QORE_BUILD_HOST OUTPUT_STRIP_TRAILING_WHITESPACE)
++execute_process(COMMAND uname -smpo OUTPUT_VARIABLE QORE_BUILD_HOST OUTPUT_STRIP_TRAILING_WHITESPACE)
+ endif()
  
- AC_CONFIG_FILES([Makefile lib/Makefile])
- AC_CONFIG_FILES([modules/astparser/Makefile modules/astparser/src/Makefile])
+ if("${CMAKE_SIZEOF_VOID_P}" EQUAL "8")
+diff -Nur qore-release-0.9.13/configure.ac patched/configure.ac
+--- qore-release-0.9.13/configure.ac	2021-03-26 13:46:59.000000000 +0100
++++ patched/configure.ac	2021-04-14 22:55:06.281646906 +0200
+@@ -124,7 +124,7 @@
+ 		AC_DEFINE(HPUX, 1, if compiling on HP-UX)
+ 		AC_DEFINE(NEED_ENVIRON_LOCK, 1, [if the environment operations need explicit locking])
+ 		hpux=yes
+-        QORE_BUILD_HOST=`uname -a`
++        QORE_BUILD_HOST=`uname -smpo`
+ 		;;
+      *cygwin*)
+         SHLIB_SUFFIX=dll
+@@ -132,7 +132,7 @@
+ 		windows=yes
+ 		# turn off signal handling for cygwin; cygwin supports it, but it's emulated/slow/non-native
+ 		no_sig_handling=yes
+-        QORE_BUILD_HOST=`uname -a`
++        QORE_BUILD_HOST=`uname -smpo`
+         ;;
+      *mingw32*)
+         SHLIB_SUFFIX=dll
+@@ -181,7 +181,7 @@
+ 		if test -z "$NATIVE_CXX"; then
+             NATIVE_CXX=$CXX
+ 		fi
+-        QORE_BUILD_HOST=`uname -a`
++        QORE_BUILD_HOST=`uname -smpo`
+ 		AC_SUBST(NATIVE_CXX)
+ 		AC_SUBST(NATIVE_CPPFLAGS)
+ 		AC_SUBST(NATIVE_LDDFLAGS)
+@@ -200,11 +200,11 @@
+             LEX=/usr/local/bin/flex
+         fi
+ 		AC_WARN([LDFLAGS=$LDFLAGS LEX=$LEX])
+-        QORE_BUILD_HOST=`uname -a`
++        QORE_BUILD_HOST=`uname -smpo`
+         ;;
+      *)
+         AC_WARN(Unknown platform ${host_os})
+-        QORE_BUILD_HOST=`uname -a`
++        QORE_BUILD_HOST=`uname -smpo`
+         ;;
+ esac
+ AC_SUBST(SHLIB_SUFFIX)

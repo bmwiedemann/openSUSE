@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sat Jun 12 08:48:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim marketing wording from description.
+
+-------------------------------------------------------------------
+Tue Jun  8 17:24:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.15
+  * DataProvider: Fixed a bug where the data type was not supported
+    correctly as a data provider type
+  * Fixed a potential crash when raising a large number of exceptions
+  * Fixed a potential deadlock loading user modules with complex
+    initialization code
+  * Fixed a bug where SSL errors were not properly cleared before
+    I/O operations in all cases
+  * Fixed a bug where empty binary values could not be deserialized
+  * Fixed handling Qore program destruction in a foreign thread in
+    a binary module that could cause a crash
+- Fixed abi Provides generation
+
+-------------------------------------------------------------------
+Wed May 19 00:31:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.14
+  * OracleSqlUtil module and SqlUtil module: fixed various SQL
+    generation issues
+  * Swagger module: fixed a bug where unknown string format types
+    were not ignored but instead caused an exception to be thrown
+  * Util module: fixed a bug in parse_memory_size()
+  * Full changes:
+    https://docs.qore.org/qore-0.9.14/lang/html/release_notes.html
+
+-------------------------------------------------------------------
+Wed Apr 14 18:01:39 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 0.9.13
+  * Fixes CVE-2020-13615
+  * Added saprest tool (a SAP rest client)
+  * Bug fixes and improvements for
+    * CsvUtil
+    * DataProvider
+    * FixedLengthUtil
+    * HttpServer nad HttpServerUtil
+    * ServiceNowRestDataProvider
+    * WebUtil
+  * RestClient: additional fixes to REST path handling with schema
+    validators with a base path
+  * New Modules in Qore:
+    * ServiceNowRestClient: provides APIs for communicating with
+      the ServiceNow REST API
+    * ServiceNowRestDataProvider: Provides a data provider API
+      for the ServiceNow REST API
+  * https://docs.qore.org/qore-0.9.13/lang/html/release_notes.html
+- ABI breaks with 0.9.0 update, removed outdated API and updated
+  qore-module.prov
+- Refreshed reproducible.patch
+- Drop unused qore-libtool-2.4.6.patch
+- Split -doc package, building the documentation requires the
+  yaml module, so this would create a dependency circle
+
+-------------------------------------------------------------------
 Mon Aug  5 19:25:11 UTC 2019 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Make the qore-module-api-* provides more fail prove: store the

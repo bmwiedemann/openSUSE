@@ -97,4 +97,14 @@ changes related to request: 238211
     <comment></comment>
     <requestid>722648</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>d588483c048cbdbc79d7469ed80cb8e9</srcmd5>
+    <version>0.9.15</version>
+    <time>1627847496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.9.15
+  * Fixes CVE-2020-13615
+- Split -doc package, building the documentation requires the yaml module, so this would create a dependency circle</comment>
+    <requestid>908927</requestid>
+  </revision>
 </revisionlist>
