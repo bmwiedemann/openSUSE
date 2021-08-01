@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul 20 19:09:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 0.13.0
+  Game
+  * Add weapon sprites
+  * Add molotov glass break sound
+  * Add AI waking to gunfire
+  * Add AI peripheral vision
+  * Add AI wake on seeing teammate under attack
+  * Fix feet colors for classic campaigns
+  * Fix sliding diagonally against map objects and getting stuck
+  * Fix player not getting poisoned
+  * Fix AI not waking when seeing player
+  * Fix co-op AI not shooting
+  * Fix missing bullet hole marks
+  * Fix minor typo in campaign
+  * Improve save file with saved weapons and ammo
+  * Improve save file, saves individual missions completed
+  * Improve gun dropping, limit gun drops after 2 are present
+  * Improve ammo dropped by enemies by halving amount
+  * Improve character previews by showing gun
+  * Improve weapon selection screen with character rotation
+  * Improve text particles by drawing above everything
+  * Improve pulse animation by doubling its frequency
+  Editor
+  * Add character deafness flag
+  * Add custom character item drops
+  * Add separate bullet flesh/object hit properties (bullets can
+    hit actors but not map objects)
+  * Fix loading classic campaigns via drag-drop
+  * Fix tooltip for immunity flag
+  * Improve character previews by showing gun
+- Remove patch:
+  * fix-multiple-definitions.patch
+
+-------------------------------------------------------------------
 Sat May 22 14:09:31 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.12.0
