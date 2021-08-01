@@ -17,7 +17,7 @@
 
 
 Name:           gnuchess
-Version:        6.2.8
+Version:        6.2.9
 Release:        0
 Summary:        GNU Chess Program
 License:        GPL-3.0-or-later
@@ -31,10 +31,6 @@ Source2:        book_1.02.pgn.bz2
 Source3:        genbook.sh
 Source4:        xgnuchess
 Source5:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=chess&download=1#/gnuchess.keyring
-# PATCH-FIX-UPSTREAM txtJ07eHdR0m6.patch CVE-2021-30184 mcepl@suse.com
-# https://lists.gnu.org/archive/html/bug-gnu-chess/2021-04/msg00000.html
-# Patch from https://src.fedoraproject.org/rpms/gnuchess/c/bb2dd55d0daf.patch
-Patch0:         txtJ07eHdR0m6.patch
 BuildRequires:  expect
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
