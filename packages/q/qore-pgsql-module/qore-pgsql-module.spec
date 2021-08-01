@@ -1,7 +1,7 @@
 #
 # spec file for package qore-pgsql-module
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,62 +12,41 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define module_api %(qore --latest-module-api 2>/dev/null)
-%define module_dir %{_libdir}/qore-modules
-
+%define qore_version 0.9.15
+%define module_api   %(qore --latest-module-api 2>/dev/null)
+%define src_name     module-pgsql-release-%{qore_version}
 Name:           qore-pgsql-module
-Version:        2.3
+Version:        3.1.0+qore%{qore_version}
 Release:        0
 Summary:        PostgreSQL DBI module for Qore
 License:        LGPL-2.0+ or GPL-2.0+ or MIT
 Group:          Development/Languages/Other
 Url:            http://qore.org
-Source:         http://prdownloads.sourceforge.net/qore/%{name}-%{version}.tar.bz2
-Patch0:         0001-Extend-64bit-architecure-list.patch
+Source:         https://github.com/qorelanguage/module-pgsql/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
 BuildRequires:  openssl-devel
+%if 0%{?sle_version} == 150300 || 0%{?sle_version} == 150200
+BuildRequires:  postgresql10-devel
+%else
 BuildRequires:  postgresql-devel
+%endif
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.8.5
+BuildRequires:  qore-devel >= 0.9
 Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
 
 %description
 PostgreSQL DBI driver module for the Qore Programming Language. The PostgreSQL
 driver is character set aware, supports multithreading, transaction management,
 stored prodedure and function execution, etc.
-
-%prep
-%setup -q
-%patch0 -p1
-find test -type f|xargs chmod 644
-%ifarch %{arm} aarch64
-# Drop -m64/-m32 flags on Arm
-sed -i -e 's/ -m64//g' configure
-sed -i -e 's/ -m32//g' configure
-%endif
-
-%build
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=/usr --disable-debug
-make %{?_smp_mflags}
-
-%install
-mkdir -p %{buildroot}/%{module_dir}
-mkdir -p %{buildroot}%{_datadir}/doc/qore-pgsql-module
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
-%fdupes -s docs
-
-%files
-%defattr(-,root,root,-)
-%{module_dir}
-%doc COPYING.LGPL COPYING.MIT README RELEASE-NOTES ChangeLog AUTHORS
 
 %package doc
 Summary:        PostgreSQL DBI module for Qore
@@ -76,10 +55,26 @@ Group:          Development/Languages
 %description doc
 PostgreSQL module for the Qore Programming Language.
 
-This RPM provides API documentation, test and example programs
+This package provides API documentation, test and example programs
+
+%prep
+%setup -q -n %{src_name}
+
+%build
+%cmake -Denable-scu=OFF
+%cmake_build
+make %{?_smp_mflags} docs
+
+%install
+%cmake_install
+%fdupes -s %{__builddir}/html
+
+%files
+%license COPYING.LGPL COPYING.MIT
+%doc README RELEASE-NOTES AUTHORS
+%{_libdir}/qore-modules
 
 %files doc
-%defattr(-,root,root,-)
-%doc docs/pgsql/html test/db-test.q test/sql-stmt.q
+%doc %{__builddir}/html
 
 %changelog

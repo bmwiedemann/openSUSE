@@ -30,4 +30,14 @@
     <comment></comment>
     <requestid>885574</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>940db74b864fe170a72671e6e73f0aa5</srcmd5>
+    <version>3.1.0+qore0.9.15</version>
+    <time>1627847497</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.1.0 for qore version 0.9.15
+
+Requires SR#908927</comment>
+    <requestid>908929</requestid>
+  </revision>
 </revisionlist>
