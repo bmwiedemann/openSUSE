@@ -1,7 +1,7 @@
 #
 # spec file for package qore-yaml-module
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,23 +15,30 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define qore_version 0.9.15
+%define src_name module-yaml-release-%{qore_version}
 %define module_api %(qore --latest-module-api 2>/dev/null)
 Name:           qore-yaml-module
-Version:        0.6
+# for version base see CMakeLists.txt, tags are done for each qore release
+Version:        0.7.0+qore%{qore_version}
 Release:        0
 Summary:        YAML module for Qore
 License:        LGPL-2.1-or-later OR GPL-2.0-or-later OR MIT
 Group:          Development/Languages/Misc
 URL:            https://www.qore.org/
-Source:         https://github.com/qorelanguage/module-yaml/releases/download/v%{version}/qore-yaml-module-%{version}.tar.bz2
+Source:         https://github.com/qorelanguage/module-yaml/archive/refs/tags/release-%{qore_version}.tar.gz#/%{src_name}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
+BuildRequires:  graphviz
+BuildRequires:  libtool
 BuildRequires:  libyaml-devel
 BuildRequires:  qore
-BuildRequires:  qore-devel >= 0.8.5
-Requires:       %{_bindir}/env
-Requires:       qore-module-api-%{module_api}
+BuildRequires:  qore-devel >= 0.9.0
+Requires:       qore-module(abi)%{?_isa} = %{module_api}
+Suggests:       %{name}-doc = %{version}
 
 %description
 This package contains the yaml module for the Qore Programming Language.
@@ -40,37 +47,42 @@ YAML is a flexible and concise human-readable data serialization format.
 
 %package doc
 Summary:        Documentation and examples for the Qore yaml module
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Development/Languages
+Group:          Development/Languages/Misc
+Requires:       %{name} = %{version}
 
 %description doc
 This package contains the HTML documentation and example programs for the Qore
 yaml module.
 
-%files doc
-%doc docs/yaml docs/YamlRpcClient docs/YamlRpcHandler test examples
-
 %prep
-%setup -q
+%setup -q -n %{src_name}
 find examples -type f|xargs chmod 644
 
 %build
+autoreconf -fi
+%configure \
 %ifarch x86_64 ppc64 ppc64le s390x
-c64=--enable-64bit
+  --enable-64bit \
 %endif
-# FIXME: you should use the %%configure macro
-CFLAGS="%{optflags}" CXXFLAGS="%{optflags}" ./configure RPM_OPT_FLAGS="%{optflags}" --prefix=%{_prefix} --disable-debug $c64
+  --disable-debug
 %make_build
 
 %install
 mkdir -p %{buildroot}%{_datadir}/doc/qore-yaml-module
 %make_install
-%fdupes -s docs
+# Documentation needs the new built modules
+export QORE_MODULE_DIR=%{buildroot}/%{_libdir}/qore-modules:%{buildroot}%{_datadir}/qore-modules
+make html-local
+%make_install install-html-local
+%fdupes %{buildroot}%{_datadir}/qore-yaml-module
 
 %files
-%{_libdir}/qore-modules
-%{_datadir}/qore-modules
 %license COPYING.LGPL COPYING.MIT
+%{_libdir}/qore-modules/*
+%{_datadir}/qore-modules/*
+
+%files doc
 %doc README RELEASE-NOTES
+%doc %{_datadir}/qore-yaml-module
 
 %changelog

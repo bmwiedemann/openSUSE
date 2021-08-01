@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  8 19:24:12 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Revert last changes, version is not the git tag!
+  Tag describes the qore version this module supports, base version
+  is set inside the CMakeLists.txt
+- Update to version 0.7.0 with qore release 0.9.15
+  * Fix: single quoted string
+  * allow connections to be created dynamically over the network
+  * Support QoreValue API
+  * Bug fixes
+  * https://github.com/qorelanguage/module-yaml/compare/v0.6...release-0.9.15
+
+-------------------------------------------------------------------
+Tue May 18 21:55:06 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.0.0
+  * https://github.com/qorelanguage/module-yaml/compare/v0.6...release-1.0.0
+
+-------------------------------------------------------------------
 Sat Dec 19 18:06:02 UTC 2020 - sarah.kriesch@opensuse.org
 
 - enable s390x as an architecture in spec file
