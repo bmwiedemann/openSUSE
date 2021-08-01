@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Aug  1 06:28:52 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.1.1
+  * General:
+    * Fix: Fix chat cursor position
+    * Fix: Respect Hold & Fire at will better
+    * Fix: Refresh order buttons on hotkey press
+    * Fix: Make other hotkeys override debug hotkeys by default
+  * Graphics:
+    * Fix: Fix structure limits screen lighting and hardcode sun
+      position and lighting for 3D buttons
+    * Change: Use faction models for UI buttons
+  * Campaign:
+    * Add: Add a small delay for allowing video skipping
+    * Change: Merge updates from camBalance to encompass mostly
+      Beta campaign tweaks
+    * Fix: Do not show transport button in objective achieved
+      screen
+  * Multiplayer:
+    * Fix: Fixed obsolescence of machine guns Technology
+  * Balance:
+    * Change: Make Heavy Plasma Launcher more useful with an
+      "all rounder" role and reduce price of Plasma Cannon
+      significantly
+    * Change: Tweak mortar research paths to decouple
+      Bombard/Pepperpot from damage/ROF upgrades and Incendiary
+      Mortar and reduce Pepperpot weight
+    * Change: Rebalance HVC and HVC Cyborg to have more ROF and
+      1 tile less range
+    * Change: Tweak accuracy and splash values on Sunburst and
+      Cyclone anti-air weapons
+  * Other:
+    * Add: Add weapon info into debug window
+    * Change: Replacing the abbreviation HPV for the Hyper
+      Velocity Cannon with HVC
+
+-------------------------------------------------------------------
 Sat Jul 10 16:13:13 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.1.0
