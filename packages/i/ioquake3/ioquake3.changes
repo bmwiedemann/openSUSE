@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug  1 10:14:37 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 1.36+git.20210720
+  * Add TOOLS_CFLAGS to build preamble
+  * Fix use of TOOLS_CC being reported as CC
+  * Use the correct compiler for tools when cross building under
+    cygwin
+  * Allow using pulseaudio for SDL audio capture
+  * Restore bots crushing unseen player on q3tourney6 in non-CTF
+  * Fix the number of weights in the IQM model calculation
+  * Fixes a crash when compiling the project on windows in
+    64 bit mode
+  * Allow unwinding of qvmcall64 call-stub for msvc/masm
+  * Add epsilon to avoid division by zero in CalcSpecular()
+  * Add r_parallaxMapOffset
+  * Fix line not removed in previous commit
+  * OpenGL2: Flip normals for backfacing triangles
+
+-------------------------------------------------------------------
 Sat Nov 28 09:06:52 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 1.36+git.20201117
