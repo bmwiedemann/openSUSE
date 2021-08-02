@@ -31,7 +31,11 @@ BuildRequires:  meson >= 0.52.0
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemtap-sdt-devel
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+BuildRequires:  xorg-x11-Xvfb
+%else
 BuildRequires:  xorg-x11-server-Xvfb
+%endif
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(cairo-gobject)
 BuildRequires:  pkgconfig(cairo-xlib)

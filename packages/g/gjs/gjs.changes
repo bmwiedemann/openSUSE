@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 09:36:22 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Adapt xorg-x11-Xvfb BuildRequires on SLE and Leap, whose X has
+  not updated to xorg-x11-server-Xvfb.
+
+-------------------------------------------------------------------
 Fri May 14 13:50:21 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.68.1:

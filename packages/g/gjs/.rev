@@ -1622,4 +1622,13 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>Scripted push from GNOME:Next (forwarded request 893927 from dimstar)</comment>
     <requestid>893954</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>fae66c2a2e71e4184a6587769bc08817</srcmd5>
+    <version>1.68.1</version>
+    <time>1627898684</time>
+    <user>dimstar_suse</user>
+    <comment>- Adapt xorg-x11-Xvfb BuildRequires on SLE and Leap, whose X has
+  not updated to xorg-x11-server-Xvfb. (forwarded request 908845 from yfjiang)</comment>
+    <requestid>908866</requestid>
+  </revision>
 </revisionlist>
