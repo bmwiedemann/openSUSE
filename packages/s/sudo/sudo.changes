@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 12 16:29:32 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
+
+- Fix LC_TIME incorrectly named LC_ATIME
+
+-------------------------------------------------------------------
 Wed May 12 15:22:11 UTC 2021 - Kristyna Streitova <kstreitova@suse.com>
 
 - update to 1.9.7
