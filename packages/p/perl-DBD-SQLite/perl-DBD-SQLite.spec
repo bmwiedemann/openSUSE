@@ -25,6 +25,7 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/I/IS/ISHIGAKI/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         silence_sqlite_unicode_deprecation_warning.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBI) >= 1.57
@@ -70,7 +71,7 @@ currently many statement attributes are not implemented or are limited by
 the typeless nature of the SQLite database.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

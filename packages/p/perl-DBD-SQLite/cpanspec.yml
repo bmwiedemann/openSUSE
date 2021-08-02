@@ -4,8 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  silence_sqlite_unicode_deprecation_warning.patch: -p1
 #  bar.patch:
 #preamble: |-
 # BuildRequires:  gcc-c++

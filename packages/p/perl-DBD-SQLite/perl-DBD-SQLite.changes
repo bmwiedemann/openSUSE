@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 30 07:51:14 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Add patch silence_sqlite_unicode_deprecation_warning.patch
+   See https://github.com/DBD-SQLite/DBD-SQLite/issues/87
+
+-------------------------------------------------------------------
 Fri Jul 23 03:06:56 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.68
