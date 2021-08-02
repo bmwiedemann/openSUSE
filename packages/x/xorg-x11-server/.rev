@@ -3598,4 +3598,15 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   https://gitlab.freedesktop.org/xorg/xserver/-/issues/1195</comment>
     <requestid>907753</requestid>
   </revision>
+  <revision rev="396" vrev="1">
+    <srcmd5>1921fb748cb9c92b9e1f3efa5bc6775a</srcmd5>
+    <version>1.20.13</version>
+    <time>1627898676</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.20.13
+  * bugfix release
+- supersedes U_present-get_crtc-should-not-return-crtc-when-its-scr.patch,
+  U_modesetting-unflip-not-possible-when-glamor-is-not-s.patch</comment>
+    <requestid>909450</requestid>
+  </revision>
 </revisionlist>
