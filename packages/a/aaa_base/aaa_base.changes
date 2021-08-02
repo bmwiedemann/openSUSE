@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 06:29:31 UTC 2021 - kukuk@suse.com
+
+- Update to version 84.87+git20210727.b447649:
+  * Move /etc/profile.d/* to /usr/etc/profile.d/
+
+-------------------------------------------------------------------
 Tue Jun 22 06:52:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Switch back to using tar_scm in _service file: with aaa_base

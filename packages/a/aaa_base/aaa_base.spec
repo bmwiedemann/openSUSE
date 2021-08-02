@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20210616.9cf42ff
+Version:        84.87+git20210727.b447649
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -187,23 +187,23 @@ mkdir -p %{buildroot}%{_fillupdir}
 %config /etc/inputrc.keys
 %config /etc/mime.types
 %config /etc/profile
-%config /etc/profile.d/alljava.csh
-%config /etc/profile.d/alljava.sh
-%config /etc/profile.d/csh.ssh
-%config /etc/profile.d/lang.csh
-%config /etc/profile.d/lang.sh
-%config /etc/profile.d/profile.csh
-%config /etc/profile.d/profile.sh
-%config /etc/profile.d/sh.ssh
-%config /etc/profile.d/xdg-environment.csh
-%config /etc/profile.d/xdg-environment.sh
-%config /etc/profile.d/complete.bash
-%config /etc/profile.d/alias.ash
-/etc/profile.d/alias.bash
-/etc/profile.d/alias.tcsh
-/etc/profile.d/ls.tcsh
-/etc/profile.d/ls.bash
-/etc/profile.d/ls.zsh
+/usr/etc/profile.d/alljava.csh
+/usr/etc/profile.d/alljava.sh
+/usr/etc/profile.d/csh.ssh
+/usr/etc/profile.d/lang.csh
+/usr/etc/profile.d/lang.sh
+/usr/etc/profile.d/profile.csh
+/usr/etc/profile.d/profile.sh
+/usr/etc/profile.d/sh.ssh
+/usr/etc/profile.d/xdg-environment.csh
+/usr/etc/profile.d/xdg-environment.sh
+/usr/etc/profile.d/complete.bash
+/usr/etc/profile.d/alias.ash
+/usr/etc/profile.d/alias.bash
+/usr/etc/profile.d/alias.tcsh
+/usr/etc/profile.d/ls.tcsh
+/usr/etc/profile.d/ls.bash
+/usr/etc/profile.d/ls.zsh
 %config /etc/shells
 %config /etc/ttytype
 %ghost %dir /etc/init.d
@@ -259,12 +259,12 @@ mkdir -p %{buildroot}%{_fillupdir}
 
 %files malloccheck
 %defattr(-,root,root)
-%config /etc/profile.d/malloc-debug.sh
-%config /etc/profile.d/malloc-debug.csh
+/usr/etc/profile.d/malloc-debug.sh
+/usr/etc/profile.d/malloc-debug.csh
 
 %files wsl
 %defattr(-,root,root)
-%config /etc/profile.d/wsl.csh
-%config /etc/profile.d/wsl.sh
+/usr/etc/profile.d/wsl.csh
+/usr/etc/profile.d/wsl.sh
 
 %changelog
