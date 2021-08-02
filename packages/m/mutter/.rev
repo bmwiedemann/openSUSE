@@ -1434,4 +1434,13 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>GNOME 40.3 (forwarded request 906604 from dimstar)</comment>
     <requestid>907059</requestid>
   </revision>
+  <revision rev="168" vrev="2">
+    <srcmd5>fb4d0fd3b9c283b8f9ddcafc454f4297</srcmd5>
+    <version>40.3</version>
+    <time>1627898693</time>
+    <user>dimstar_suse</user>
+    <comment>- Synchronize changelog between SLE, Leap and Factory.
+- Disable eglstream on Leap/SLE by now since it is under review. (forwarded request 909102 from yfjiang)</comment>
+    <requestid>909107</requestid>
+  </revision>
 </revisionlist>

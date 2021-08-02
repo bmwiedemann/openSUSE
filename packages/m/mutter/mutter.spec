@@ -69,7 +69,7 @@ BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.12.0
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.26
 BuildRequires:  pkgconfig(libdrm) >= 2.4.83
-BuildRequires:  pkgconfig(libinput)
+BuildRequires:  pkgconfig(libinput) >= 1.15.0
 BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libstartup-notification-1.0) >= 0.7
 BuildRequires:  pkgconfig(libsystemd)
@@ -83,7 +83,9 @@ BuildRequires:  pkgconfig(sysprof-capture-4) >= 3.37.3
 %endif
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(upower-glib) >= 0.99.0
+%if !0%{?sle_version}
 BuildRequires:  pkgconfig(wayland-eglstream)
+%endif
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.18
 BuildRequires:  pkgconfig(wayland-server) >= 1.13.0
 BuildRequires:  pkgconfig(x11)
@@ -149,7 +151,9 @@ translation-update-upstream po mutter
 %build
 %meson \
 	-Degl_device=true \
+%if !0%{?sle_version}
 	-Dwayland_eglstream=true \
+%endif
 	-Dcogl_tests=false \
 	-Dclutter_tests=false \
 	-Dtests=false \

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 29 02:04:20 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Synchronize changelog between SLE, Leap and Factory.
+
+-------------------------------------------------------------------
+Thu Jul 29 01:36:50 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Disable eglstream on Leap/SLE by now since it is under review.
+
+-------------------------------------------------------------------
+Wed Jul 28 03:34:42 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add versioned BuildRequires to pkgconfig(libinput):
+  https://gitlab.gnome.org/GNOME/mutter/-/blob/gnome-40/meson.build#L47
+
+-------------------------------------------------------------------
 Tue Jul 13 10:48:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.3:
@@ -320,6 +336,8 @@ Thu Oct  8 03:37:51 UTC 2020 - dimstar@opensuse.org
   + Updated translations.
 - Drop mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch:
   fixed upstream.
+- Drop mutter-fix-wine-copy-and-paste.patch:
+  fixed upstream.
 
 -------------------------------------------------------------------
 Wed Oct  7 18:56:51 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -349,6 +367,13 @@ Tue Sep  8 12:03:37 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Misc. bug fixes and cleanups.
 - Drop patch fixed upstream:
   + mutter-meson_options-Use-libGLESv2.so.2-for-COGL_DRIVER-gle.patch
+
+-------------------------------------------------------------------
+Fri Aug 21 08:40:27 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Added mutter-fix-wine-copy-and-paste.patch: sometimes copy and
+  paste will fail in wine applications, this upstream patch fixed
+  it (boo#1175532, glgo#GNOME/mutter!1369).
 
 -------------------------------------------------------------------
 Thu Aug 20 15:34:43 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
