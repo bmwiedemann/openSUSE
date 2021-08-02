@@ -103,4 +103,12 @@
     <comment></comment>
     <requestid>869105</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>fcbb3c517357a78310deb48777279956</srcmd5>
+    <version>1.15</version>
+    <time>1627898680</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908786</requestid>
+  </revision>
 </revisionlist>

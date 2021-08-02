@@ -16,6 +16,7 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define jpp_release 3
 Name:           byaccj
 Version:        1.15
