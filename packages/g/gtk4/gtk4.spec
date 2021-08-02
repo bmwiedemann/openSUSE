@@ -38,6 +38,9 @@ Source99:       baselibs.conf
 BuildRequires:  cups-devel >= 2.0
 # We do not support building against cups 2.3 betas
 BuildConflicts: (cups-devel > 2.3 with cups-devel < 2.3.0)
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+BuildRequires:  Mesa-libGLESv2-devel
+%endif
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 28 10:07:30 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add back Mesa-libGLESv2-devel BuildRequires for SLE and Leap.
+  The necessary header GLES2/gl2ext.h is still in the v2 package on
+  SLE/Leap.
+
+-------------------------------------------------------------------
 Fri Jun  4 17:33:54 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Move RPM macros to %_rpmmacrodir.
