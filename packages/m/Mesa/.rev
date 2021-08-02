@@ -4506,4 +4506,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * fith bugfix release</comment>
     <requestid>906422</requestid>
   </revision>
+  <revision rev="411" vrev="283">
+    <srcmd5>046994188bff84848760f2fac5caeddd</srcmd5>
+    <version>unknown</version>
+    <time>1627898697</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.1.6
+  * sixth bugfix release</comment>
+    <requestid>909133</requestid>
+  </revision>
 </revisionlist>
