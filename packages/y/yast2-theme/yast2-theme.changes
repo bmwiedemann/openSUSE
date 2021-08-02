@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 11:48:52 UTC 2021 - Sasi Olin <hel@lcp.world>
+
+- Fix the icons' style and minify them (gh#yast/yast-theme#138)
+- 4.4.2
+
+-------------------------------------------------------------------
 Wed Jun 16 12:53:58 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Added GPL-3.0 license to .spec for the new pattern-deepin.svg icon
