@@ -102,3 +102,73 @@ index 6aad5d253..6151f64d0 100644
  do
    -- yielding inside closing metamethods after an error
  
+diff --git a/testes/locals.lua b/testes/locals.lua
+index 6151f64d0..62a88df57 100644
+--- a/locals.lua
++++ b/locals.lua
+@@ -187,6 +187,8 @@ do   -- constants
+   checkro("y", "local x, y <const>, z = 10, 20, 30; x = 11; y = 12")
+   checkro("x", "local x <const>, y, z <const> = 10, 20, 30; x = 11")
+   checkro("z", "local x <const>, y, z <const> = 10, 20, 30; y = 10; z = 11")
++  checkro("foo", "local foo <const> = 10; function foo() end")
++  checkro("foo", "local foo <const> = {}; function foo() end")
+ 
+   checkro("z", [[
+     local a, z <const>, b = 10;
+diff --git a/testes/bitwise.lua b/testes/bitwise.lua
+index 59781f5df..9509f7f04 100644
+--- a/bitwise.lua
++++ b/bitwise.lua
+@@ -45,6 +45,11 @@ assert(-1 >> numbits == 0 and
+        -1 << numbits == 0 and
+        -1 << -numbits == 0)
+ 
++assert(1 >> math.mininteger == 0)
++assert(1 >> math.maxinteger == 0)
++assert(1 << math.mininteger == 0)
++assert(1 << math.maxinteger == 0)
++
+ assert((2^30 - 1) << 2^30 == 0)
+ assert((2^30 - 1) >> 2^30 == 0)
+ 
+diff --git a/testes/errors.lua b/testes/errors.lua
+index 825f37c29..a7dc479a2 100644
+--- a/errors.lua
++++ b/errors.lua
+@@ -228,6 +228,22 @@ do   -- named objects (field '__name')
+   checkmessage("return {} < XX", "table with My Type")
+   checkmessage("return XX < io.stdin", "My Type with FILE*")
+   _G.XX = nil
++
++  if T then   -- extra tests for 'luaL_tolstring'
++    -- bug in 5.4.3; 'luaL_tolstring' with negative indices
++    local x = setmetatable({}, {__name="TABLE"})
++    assert(T.testC("Ltolstring -1; return 1", x) == tostring(x))
++
++    local a, b = T.testC("pushint 10; Ltolstring -2; return 2", x)
++    assert(a == 10 and b == tostring(x))
++
++    setmetatable(x, {__tostring=function (o)
++      assert(o == x)
++      return "ABC"
++    end})
++    a, b, c = T.testC("pushint 10; Ltolstring -2; return 3", x)
++    assert(a == x and b == 10 and c == "ABC")
++  end
+ end
+ 
+ -- global functions
+diff --git a/ltests.c b/ltests.c
+index a50f78304..97834e380 100644
+--- a/ltests/ltests.c
++++ b/ltests/ltests.c
+@@ -1743,6 +1743,9 @@ static struct X { int x; } x;
+       (void)s1;  /* to avoid warnings */
+       lua_longassert((s == NULL && s1 == NULL) || strcmp(s, s1) == 0);
+     }
++    else if EQ("Ltolstring") {
++      luaL_tolstring(L1, getindex, NULL);
++    }
+     else if EQ("type") {
+       lua_pushstring(L1, luaL_typename(L1, getnum));
+     }

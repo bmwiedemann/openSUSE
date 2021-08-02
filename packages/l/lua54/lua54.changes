@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 16:31:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update upstream-bugs.patch and upstream-bugs-test.patch to fix
+  bugs 4,5,6 for build and tests respectively.
+
+-------------------------------------------------------------------
 Sat May 22 12:58:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix doc location (boo#1186233)

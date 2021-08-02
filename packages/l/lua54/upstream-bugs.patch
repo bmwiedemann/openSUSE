@@ -147,3 +147,74 @@ index 16e01d683..e4b1903e7 100644
            if (L->top < ci->top)
              L->top = ci->top;
            luaF_close(L, base, CLOSEKTOP, 1);
+From 6a0dace25a4b5b77f0fa6911de2ba26ef0fdff2c Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Sun, 20 Jun 2021 15:36:36 -0300
+Subject: [PATCH] Bug: 'local function' can assign to '<const>' variables
+
+---
+ lparser.c         | 1 +
+ testes/locals.lua | 2 ++
+ 2 files changed, 3 insertions(+)
+
+diff --git a/lparser.c b/lparser.c
+index df9473c27..3abe3d751 100644
+--- a/src/lparser.c
++++ b/src/lparser.c
+@@ -1785,6 +1785,7 @@ static void funcstat (LexState *ls, int line) {
+   luaX_next(ls);  /* skip FUNCTION */
+   ismethod = funcname(ls, &v);
+   body(ls, &b, ismethod, line);
++  check_readonly(ls, &v);
+   luaK_storevar(ls->fs, &v, &b);
+   luaK_fixline(ls->fs, line);  /* definition "happens" in the first line */
+ }
+From 62fb93442753cbfb828335cd172e71471dffd536 Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Thu, 22 Jul 2021 13:44:53 -0300
+Subject: [PATCH] Bug: Negation in 'luaV_shiftr' may overflow
+
+Negation of an unchecked lua_Integer overflows with mininteger.
+---
+ lvm.c              | 2 +-
+ testes/bitwise.lua | 5 +++++
+ 2 files changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/lvm.c b/lvm.c
+index ec83f4159..c84a665f5 100644
+--- a/src/lvm.c
++++ b/src/lvm.c
+@@ -766,7 +766,7 @@ lua_Number luaV_modf (lua_State *L, lua_Number m, lua_Number n) {
+ /*
+ ** Shift left operation. (Shift right just negates 'y'.)
+ */
+-#define luaV_shiftr(x,y)	luaV_shiftl(x,-(y))
++#define luaV_shiftr(x,y)	luaV_shiftl(x,intop(-, 0, y))
+ 
+ lua_Integer luaV_shiftl (lua_Integer x, lua_Integer y) {
+   if (y < 0) {  /* shift right? */
+From 439e45a2f69549b674d6a6e2023e8debfa00a2b8 Mon Sep 17 00:00:00 2001
+From: Roberto Ierusalimschy <roberto@inf.puc-rio.br>
+Date: Thu, 22 Jul 2021 13:48:43 -0300
+Subject: [PATCH] Bug: luaL_tolstring may get confused with negative index
+
+When object has a '__name' metafield, 'luaL_tolstring' used the
+received index after pushing a string on the stack.
+---
+ lauxlib.c         |  1 +
+ ltests.c          |  3 +++
+ testes/errors.lua | 16 ++++++++++++++++
+ 3 files changed, 20 insertions(+)
+
+diff --git a/lauxlib.c b/lauxlib.c
+index 94835ef93..8ed1da112 100644
+--- a/src/lauxlib.c
++++ b/src/lauxlib.c
+@@ -881,6 +881,7 @@ LUALIB_API lua_Integer luaL_len (lua_State *L, int idx) {
+ 
+ 
+ LUALIB_API const char *luaL_tolstring (lua_State *L, int idx, size_t *len) {
++  idx = lua_absindex(L,idx);
+   if (luaL_callmeta(L, idx, "__tostring")) {  /* metafield? */
+     if (!lua_isstring(L, -1))
+       luaL_error(L, "'__tostring' must return a string");
