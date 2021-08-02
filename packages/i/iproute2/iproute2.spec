@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           iproute2
-Version:        5.12
+Version:        5.13
 Release:        0
 Summary:        Linux network configuration utilities
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ URL:            https://wiki.linuxfoundation.org/networking/iproute2
 
 #DL-URL:	https://kernel.org/pub/linux/utils/net/iproute2/
 #Git-Clone: https://git.kernel.org/pub/scm/network/iproute2/iproute2.git/
-#Git-Mirror:    https://github.com/shemminger/iproute2
+#Git-Mirror:    https://github.com/shemminger/iproute2 ## not updated
 Source:         https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.xz
 Source2:        https://kernel.org/pub/linux/utils/net/iproute2/%name-%version.0.tar.sign
 Source9:        %name.keyring
