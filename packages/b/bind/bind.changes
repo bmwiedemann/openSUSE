@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jul 29 13:14:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 9.16.19
+  * A race condition could occur where two threads were
+    competing for the same set of key file locks, leading to
+    a deadlock. This has been fixed. [GL #2786]
+  * create_keydata() created an invalid placeholder keydata
+    record upon a refresh failure, which prevented the
+    database of managed keys from subsequently being read
+    back. This has been fixed. [GL #2686]
+  * KASP support was extended with the "check DS" feature.
+    Zones with "dnssec-policy" and "parental-agents"
+    configured now check for DS presence and can perform
+    automatic KSK rollovers. [GL #1126]
+  * Rescheduling a setnsec3param() task when a zone failed
+    to load on startup caused a hang on shutdown. This has
+    been fixed. [GL #2791]
+  * The configuration-checking code failed to account for
+    the inheritance rules of the "dnssec-policy" option.
+    This has been fixed. [GL #2780]
+  * If nsupdate sends an SOA request and receives a REFUSED
+    response, it now fails over to the next available
+    server. [GL #2758]
+  * For UDP messages larger than the path MTU, named now
+    sends an empty response with the TC (TrunCated) bit set.
+    In addition, setting the DF (Don't Fragment) flag on
+    outgoing UDP sockets was re-enabled. [GL #2790]
+  * Views with recursion disabled are now configured with a
+    default cache size of 2 MB unless "max-cache-size" is
+    explicitly set. This prevents cache RBT hash tables from
+    being needlessly preallocated for such views. [GL #2777]
+  * Change 5644 inadvertently introduced a deadlock: when
+    locking the key file mutex for each zone structure in a
+    different view, the "in-view" logic was not considered.
+    This has been fixed. [GL #2783]
+  * Increasing "max-cache-size" for a running named instance
+    (using "rndc reconfig") did not cause the hash tables
+    used by cache databases to be grown accordingly. This
+    has been fixed. [GL #2770]
+  * Signed, insecure delegation responses prepared by named
+    either lacked the necessary NSEC records or contained
+    duplicate NSEC records when both wildcard expansion and
+    CNAME chaining were required to prepare the response.
+    This has been fixed. [GL #2759]
+  * A bug that caused the NSEC3 salt to be changed on every
+    restart for zones using KASP has been fixed. [GL #2725]
+
+-------------------------------------------------------------------
 Wed Jul 21 09:34:15 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Since BIND 9.9, it has been easier to use tsig-keygen and
