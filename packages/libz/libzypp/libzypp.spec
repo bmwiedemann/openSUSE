@@ -30,8 +30,17 @@
 
 %bcond_without mediabackend_tests
 
+# older libsigc versions have a bug that causes a segfault
+# when clearing connections during signal emission
+# see https://bugzilla.gnome.org/show_bug.cgi?id=784550
+%if 0%{?sle_version} < 150200
+%bcond_without sigc_block_workaround
+%else
+%bcond_with sigc_block_workaround
+%endif
+
 Name:           libzypp
-Version:        17.27.0
+Version:        17.28.0
 Release:        0
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
@@ -58,8 +67,8 @@ Recommends:     logrotate
 Recommends:     lsof
 %endif
 BuildRequires:  cmake >= 3.1
-BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(openssl)
 %if 0%{?suse_version} >= 1330
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_program_options-devel
@@ -93,6 +102,7 @@ Requires:       libsolv-tools
 
 BuildRequires:  glib2-devel
 BuildRequires:  libsigc++2-devel
+BuildRequires:  protobuf-devel
 
 # required for testsuite
 %if %{with mediabackend_tests}
@@ -196,10 +206,10 @@ Requires:       libstdc++-devel
 Requires:       libudev-devel
 Requires:       libxml2-devel
 Requires:       libzypp = %{version}
-Requires:       openssl-devel
 Requires:       popt-devel
 Requires:       rpm-devel > 4.4
 Requires:       zlib-devel
+Requires:       pkgconfig(openssl)
 %if 0%{?suse_version}
 %if 0%{?suse_version} >= 1100
 # Code11+
@@ -247,8 +257,10 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       -DLIB=%{_lib} \
       -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SKIP_RPATH=1 \
+      -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
       %{?with_zchunk:-DENABLE_ZCHUNK_COMPRESSION=1} \
       %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=1} \
+      %{?with_sigc_block_workaround:-DENABLE_SIGC_BLOCK_WORKAROUND=1} \
       %{!?with_mediabackend_tests:-DDISABLE_MEDIABACKEND_TESTS=1} \
       ${EXTRA_CMAKE_OPTIONS} \
       ..
@@ -384,11 +396,15 @@ fi
 %config(noreplace) %{_sysconfdir}/zypp/systemCheck
 %config(noreplace) %{_sysconfdir}/logrotate.d/zypp-history.lr
 %dir               %{_var}/lib/zypp
+%if "%{_libexecdir}" != "%{_prefix}/lib"
+%dir               %{_libexecdir}/zypp
+%endif
 %dir %attr(750,root,root) %{_var}/log/zypp
 %dir               %{_var}/cache/zypp
 %{_prefix}/lib/zypp
 %{_datadir}/zypp
 %{_bindir}/*
+%{_libexecdir}/zypp/zypp-rpm
 %{_libdir}/libzypp*so.*
 %doc %{_mandir}/man1/*.1.*
 %doc %{_mandir}/man5/*.5.*
@@ -396,8 +412,9 @@ fi
 %files devel
 %defattr(-,root,root)
 %{_libdir}/libzypp.so
-%{_includedir}/zypp
 %{_datadir}/cmake/Modules/*
+%{_includedir}/zypp
+%{_includedir}/zypp-core
 %{_libdir}/pkgconfig/libzypp.pc
 
 %files devel-doc
