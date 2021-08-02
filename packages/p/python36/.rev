@@ -2978,4 +2978,13 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
   python2 currently.</comment>
     <requestid>898517</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>e10714ef597af9ac325e1cd4a4787c68</srcmd5>
+    <version>3.6.13</version>
+    <time>1627898682</time>
+    <user>dimstar_suse</user>
+    <comment>- Use versioned python-Sphinx to avoid dependency on other
+  version of Python (bsc#1183858).</comment>
+    <requestid>908799</requestid>
+  </revision>
 </revisionlist>

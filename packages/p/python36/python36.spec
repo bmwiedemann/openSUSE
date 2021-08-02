@@ -193,7 +193,7 @@ BuildRequires:  pkgconfig(libtirpc)
 %if %{with doc}
 # Here we just run sphinx and we can use generic one, we don't need
 # the flavor variant
-BuildRequires:  python3-Sphinx
+BuildRequires:  %{python_pkg_name}-Sphinx
 %endif
 %if %{with general}
 # required for idle3 (.desktop and .appdata.xml files)

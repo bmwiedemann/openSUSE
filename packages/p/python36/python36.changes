@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 20 15:45:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use versioned python-Sphinx to avoid dependency on other
+  version of Python (bsc#1183858).
+
+-------------------------------------------------------------------
 Tue Jun  8 12:41:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add 22198.patch to build with Sphinx 4 
