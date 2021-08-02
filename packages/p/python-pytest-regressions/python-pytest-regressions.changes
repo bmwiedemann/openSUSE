@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Wed Jul 28 19:42:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.2.0:
+  - #45: num_regression.check now accepts any object that can be coerced
+    to a 1d numpy array with numeric dtype (e.g. list, tuple, etc).
+  - #35: New dataframe_regression fixture to check pandas DataFrames
+    directly.
+  - #34: Fix data_regression bug that creates empty file on serializing
+    error.
+- Add np_num-deprecated.patch to avoid tests failing on using deprecated
+  data types (gh#ESSS/pytest-regressions#63).
+
+-------------------------------------------------------------------
+Thu Aug 20 06:26:22 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
+
+- Initial spec for v2.0.1
