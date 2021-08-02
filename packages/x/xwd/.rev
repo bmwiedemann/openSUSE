@@ -56,4 +56,14 @@
   * Fix a vs an typo in the man page.</comment>
     <requestid>593754</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c74f53a16091b2c39a050e6d16eaeb17</srcmd5>
+    <version>1.0.8</version>
+    <time>1627911664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.8
+  * It fixes bugs you didn't even know were there and cleans up
+    code you've never seen!</comment>
+    <requestid>909752</requestid>
+  </revision>
 </revisionlist>
