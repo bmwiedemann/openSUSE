@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 29 18:34:12 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Version bump to 6.1.26 (released July 28 2021 by Oracle)
+
+  This is a maintenance release. The following items were fixed and/or added:
+
+  VMSVGA: fixed VM screen artifacts after restoring from saved state (bug #20067)
+  Storage: Fixed audio endianness for certain CUE sheet CD/DVD images.
+  VBoxHeadless: Running VM will save its state on host shutdown
+  VBoxManage: Fix OS detection for Ubuntu 20.10 ISO with unattended install
+  Linux Additions: Fixed mouse pointer offsetting issue for VMSVGA graphics adapter in multi-monitor VM setup (6.1.24 regression)
+
+  File "fix_ordering_of_qt_includes.patch" added for Leap and SLR builds.
+-------------------------------------------------------------------
 Tue Jul 20 23:38:41 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.24 (released July 20 2021 by Oracle)
