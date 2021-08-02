@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 26 08:03:24 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use a get_version_number.sh script 
+
+-------------------------------------------------------------------
+Fri Jul 23 12:18:48 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Get patch lvl by running command to find it instead of hardcoding
+- Remove old SUSE RPM constructs
+- Clean spec file
+
+-------------------------------------------------------------------
 Fri May 28 13:53:55 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Use well defined HOSTTYPE, as well as OS, VENDOR, and MACHTYPE (boo#1186296)

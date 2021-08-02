@@ -16,13 +16,15 @@
 #
 
 
+%define         bextend %{nil}
+%define         bversion 5.1
+%define         bpatchlvl %(bash %{_sourcedir}/get_version_number.sh %{_sourcedir})
+%global         _incdir     %{_includedir}
+%global         _ldldir     %{_libdir}/bash
+%global         _minsh      0
 %bcond_with     import_function
 %bcond_with     sjis
-
 Name:           bash
-%define         bextend	 %nil
-%define         bversion 5.1
-%define         bpatchlvl 4
 Version:        %{bversion}.%{bpatchlvl}
 Release:        0
 Summary:        The GNU Bourne-Again Shell
@@ -31,12 +33,11 @@ Summary:        The GNU Bourne-Again Shell
 #Recommends:	bash-completion
 License:        GPL-3.0-or-later
 Group:          System/Shells
-Suggests:       command-not-found
-Suggests:       bash-doc = %version
-URL:            http://www.gnu.org/software/bash/bash.html
+URL:            https://www.gnu.org/software/bash/bash.html
 # Git:          http://git.savannah.gnu.org/cgit/bash.git
 Source0:        ftp://ftp.gnu.org/gnu/bash/bash-%{bversion}%{bextend}.tar.gz
 Source1:        bash-%{bversion}-patches.tar.bz2
+Source2:        get_version_number.sh
 Source4:        run-tests
 Source5:        dot.bashrc
 Source6:        dot.profile
@@ -72,27 +73,25 @@ Patch47:        bash-4.3-perl522.patch
 Patch48:        bash-4.3-extra-import-func.patch
 # PATCH-EXTEND-SUSE Allow root to clean file system if filled up
 Patch49:        bash-4.3-pathtemp.patch
-BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
-BuildRequires:  ncurses-devel
 BuildRequires:  patchutils
-BuildRequires:  pkg-config
-# This has to be always the same version as included in the bash its self
-BuildRequires:  readline-devel == 8.1
+BuildRequires:  pkgconfig
 BuildRequires:  screen
 BuildRequires:  sed
 BuildRequires:  update-alternatives
+BuildRequires:  pkgconfig(audit)
+BuildRequires:  pkgconfig(ncurses)
+# This has to be always the same version as included in the bash its self
+BuildRequires:  pkgconfig(readline) = 8.1
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
+Suggests:       bash-doc = %{version}
+Suggests:       command-not-found
 Provides:       /bin/bash
 Provides:       /bin/sh
-%global         _sysconfdir /etc
-%global         _incdir     %{_includedir}
-%global         _ldldir     %{_libdir}/bash
-%global         _minsh      0
 
 %description
 Bash is an sh-compatible command interpreter that executes commands
@@ -104,27 +103,15 @@ specification (IEEE Working Group 1003.2).
 %package doc
 Summary:        Documentation how to Use the GNU Bourne-Again Shell
 Group:          Documentation/HTML
+Supplements:    (bash and patterns-base-documentation)
 Provides:       bash:%{_infodir}/bash.info.gz
-Supplements:    packageand(bash:patterns-base-documentation)
 BuildArch:      noarch
 
 %description doc
 This package contains the documentation for using the bourne shell
 interpreter Bash.
 
-%if %{defined lang_package}
-%lang_package(bash)
-%else
-
-%package lang
-Summary:        Languages for package bash
-Group:          System/Localization
-Requires:       bash = %{version}
-Supplements:    bash
-
-%description lang
-Provides translations to the package bash
-%endif
+%lang_package
 
 %package devel
 Summary:        Include Files mandatory for Development of bash loadable builtins
@@ -227,34 +214,34 @@ for patch in ../bash-%{bversion}-patches/*; do
     patch -s -p$level < $patch
 done
 set -x
-%patch1  -p0 -b .manual
-%patch3  -p0 -b .2.4.4
-%patch4  -p0 -b .evalexp
-%patch5  -p0 -b .warnlc
-%patch7  -p0 -b .decl
-%patch9  -p0 -b .unistd
-%patch10 -p0 -b .printf
-%patch11 -p0 -b .plugins
-%patch12 -p0 -b .completion
-%patch13 -p0 -b .nscdunmap
-%patch14 -p0 -b .sigrestart
-%patch16 -p0 -b .setlocale
+%patch1   -b .manual
+%patch3   -b .2.4.4
+%patch4   -b .evalexp
+%patch5   -b .warnlc
+%patch7   -b .decl
+%patch9   -b .unistd
+%patch10  -b .printf
+%patch11  -b .plugins
+%patch12  -b .completion
+%patch13  -b .nscdunmap
+%patch14  -b .sigrestart
+%patch16  -b .setlocale
 #%patch18 -p0 -b .winch
-%patch40 -p0 -b .bashrc
+%patch40  -b .bashrc
 %if %{with sjis}
-%patch42 -p0 -b .sjis
+%patch42  -b .sjis
 %endif
-%patch46 -p0 -b .notimestamp
-%patch47 -p0 -b .perl522
+%patch46  -b .notimestamp
+%patch47  -b .perl522
 %if %{with import_function}
 %patch48 -b .eif
 %endif
-%patch49 -p0 -b .pthtmp
-%patch0  -p0 -b .0
+%patch49  -b .pthtmp
+%patch0   -b .0
 
 # This has to be always the same version as included in the bash its self
 rl1=($(sed -rn '/RL_READLINE_VERSION/p' lib/readline/readline.h))
-rl2=($(sed -rn '/RL_READLINE_VERSION/p' /usr/include/readline/readline.h))
+rl2=($(sed -rn '/RL_READLINE_VERSION/p' %{_includedir}/readline/readline.h))
 test ${rl1[2]} = ${rl2[2]} || exit 1
 
 %build
@@ -278,10 +265,11 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 	silence on
 	utf8 on
 	EOF
-  CPU=$(uname -m 2> /dev/null)
-  HOSTTYPE=${CPU}
-  MACHTYPE=${CPU}-suse-linux
-  export LANG LC_ALL HOSTTYPE MACHTYPE
+  HOSTTYPE=%{_target_cpu}
+  VENDOR=%{_target_vendor}
+  OSTYPE=%{_target_os}
+  MACHTYPE=${HOSTTYPE}-${VENDOR}-${OSTYPE}
+  export LANG LC_ALL HOSTTYPE VENDOR OSTYPE MACHTYPE
   cflags ()
   {
       local flag=$1; shift
@@ -309,7 +297,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
       set +o noclobber
   }
   LARGEFILE="$(getconf LFS_CFLAGS)"
-  CFLAGS="$RPM_OPT_FLAGS $LARGEFILE -D_GNU_SOURCE -DRECYCLES_PIDS -Wall -g"
+  CFLAGS="%{optflags} $LARGEFILE -D_GNU_SOURCE -DRECYCLES_PIDS -Wall -g"
   LDFLAGS=""
   #
   # Never ever put -DMUST_UNBLOCK_CHLD herein as this breaks bash
@@ -331,7 +319,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   # /proc is required for correct configuration
   test -d /dev/fd || { echo "/proc is not mounted!" >&2; exit 1; }
   CC=gcc
-%if %_minsh
+%if %{_minsh}
   cflags -Os CFLAGS
 # cflags -U_FORTIFY_SOURCE CFLAGS
 # cflags -funswitch-loops CFLAGS
@@ -361,7 +349,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
 	--with-installed-readline
   "
   bash support/mkconffiles -v
-%if %_minsh
+%if %{_minsh}
   ./configure --build=%{_target_cpu}-suse-linux	\
 	--prefix=%{_prefix}		\
 	--mandir=%{_mandir}		\
@@ -428,9 +416,9 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   sed -rn '/Configuration feature settings controllable by autoconf/,/End of configuration settings controllable by autoconf/p' <  config.h
   profilecflags=CFLAGS="$CFLAGS"
 %if 0%{?do_profiling}
-  profilecflags=CFLAGS="$CFLAGS %cflags_profile_generate"
+  profilecflags=CFLAGS="$CFLAGS %{cflags_profile_generate}"
 %endif
-  makeopts="Machine=%{_target_cpu} OS=linux VENDOR=suse MACHTYPE=%{_target_cpu}-suse-linux"
+  makeopts="Machine=${HOSTTYPE} OS=${OSTYPE} VENDOR=${VENDOR} MACHTYPE=${MACHTYPE}"
   make $makeopts "$profilecflags" \
 	all printenv recho zecho xcase
   TMPDIR=$(mktemp -d /tmp/bash.XXXXXXXXXX) || exit 1
@@ -442,7 +430,7 @@ test ${rl1[2]} = ${rl2[2]} || exit 1
   kill -TERM $pid
 %if 0%{?do_profiling}
   rm -f jobs.gcda
-  profilecflags=CFLAGS="$CFLAGS %cflags_profile_feedback -fprofile-correction"
+  profilecflags=CFLAGS="$CFLAGS %{cflags_profile_feedback} -fprofile-correction"
   clean=clean
 %endif
   make $makeopts "$profilecflags" $clean all
@@ -497,30 +485,24 @@ but disables multi byte handling.
 EOF
   # remove unpackaged files
   mkdir -p %{buildroot}%{_sysconfdir}/skel
-  install -m 644 %{S:5}    %{buildroot}%{_sysconfdir}/skel/.bashrc
-  install -m 644 %{S:6}    %{buildroot}%{_sysconfdir}/skel/.profile
+  install -m 644 %{SOURCE5}    %{buildroot}%{_sysconfdir}/skel/.bashrc
+  install -m 644 %{SOURCE6}    %{buildroot}%{_sysconfdir}/skel/.profile
   touch -t 199605181720.50 %{buildroot}%{_sysconfdir}/skel/.bash_history
   chmod 600                %{buildroot}%{_sysconfdir}/skel/.bash_history
   %find_lang bash
   %fdupes -s %{buildroot}%{_datadir}/bash/helpfiles
   sed -ri '1{ s@/bin/sh@/bin/bash@ }' %{buildroot}%{_bindir}/bashbug
 
-%post -p /usr/bin/bash
+%post -p %{_bindir}/bash
 %{_sbindir}/update-alternatives --quiet --force \
 	--install %{_bindir}/sh sh %{_bindir}/bash 10100
 
-%preun -p /usr/bin/bash
+%preun -p %{_bindir}/bash
 if test "$1" = 0; then
         %{_sbindir}/update-alternatives --quiet --remove sh %{_bindir}/bash
 fi
 
-%clean
-LD_LIBRARY_PATH=%{buildroot}/%{_libdir} \
-ldd -u -r %{buildroot}%{_bindir}/bash || true
-%{?buildroot: %__rm -rf %{buildroot}}
-
 %files
-%defattr(-,root,root)
 %license COPYING
 %config %attr(600,root,root) %{_sysconfdir}/skel/.bash_history
 %config %attr(644,root,root) %{_sysconfdir}/skel/.bashrc
@@ -538,21 +520,18 @@ ldd -u -r %{buildroot}%{_bindir}/bash || true
 %dir %{_datadir}/bash
 %dir %{_datadir}/bash/helpfiles
 %{_datadir}/bash/helpfiles/*
-%{_mandir}/man1/bash.1*
-%{_mandir}/man1/bashbuiltins.1*
-%{_mandir}/man1/bashbug.1*
-%{_mandir}/man1/rbash.1*
+%{_mandir}/man1/bash.1%{?ext_man}
+%{_mandir}/man1/bashbuiltins.1%{?ext_man}
+%{_mandir}/man1/bashbug.1%{?ext_man}
+%{_mandir}/man1/rbash.1%{?ext_man}
 
 %files lang -f bash.lang
-%defattr(-,root,root)
 
 %files doc
-%defattr(-,root,root)
-%doc %{_infodir}/bash.info*
+%{_infodir}/bash.info%{?ext_info}
 %doc %{_docdir}/%{name}
 
 %files devel
-%defattr(-,root,root)
 %dir %{_includedir}/bash/
 %dir %{_includedir}/bash/builtins/
 %dir %{_includedir}/bash/include/
@@ -563,7 +542,6 @@ ldd -u -r %{buildroot}%{_bindir}/bash || true
 %{_datadir}/bash/*.inc
 
 %files loadables
-%defattr(-,root,root)
 %{_ldldir}
 
 %if 0%{?usrmerged}
