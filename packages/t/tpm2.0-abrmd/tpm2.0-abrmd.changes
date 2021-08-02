@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 17 21:04:13 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move selinux devel file to devel subpackage
+
+-------------------------------------------------------------------
+Wed Jul 14 13:41:59 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 2.4.0:
+  - Service start depends on systemd device unit: dev-tpm0.device.
+  - Numerous memory leaks.
+  - udev settle service deprecation warnings.
+  - StandardOutput=syslog deprecation warnings.
+- Add selinux module files
+- Move dbus files out of /etc
+
+-------------------------------------------------------------------
 Wed Jun  9 09:37:38 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Requires libtss2-tcti-{device0,tabrmd0} (bsc#1187077).

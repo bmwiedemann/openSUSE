@@ -286,4 +286,12 @@ etc.
     <comment></comment>
     <requestid>899900</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4e18239be8391612b9f84ea6cbda39f8</srcmd5>
+    <version>2.4.0</version>
+    <time>1627898657</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>908096</requestid>
+  </revision>
 </revisionlist>

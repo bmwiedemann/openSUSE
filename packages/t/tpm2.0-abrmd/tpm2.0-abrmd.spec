@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global selinuxtype targeted
+%global modulename tabrmd
 Name:           tpm2.0-abrmd
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Intel's TCG Software Stack Access Broker & Resource Manager for TPM 2.0 chips
 License:        BSD-2-Clause
@@ -27,18 +28,25 @@ Source0:        https://github.com/tpm2-software/tpm2-abrmd/releases/download/%{
 Source1:        tpm2.0-abrmd.rpmlintrc
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  checkpolicy
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
+BuildRequires:  policycoreutils
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(tss2-sys)
-Requires(pre):  shadow
+BuildRequires:  selinux-policy-devel
+# due to %%selinux_requires
+BuildRequires:  pkgconfig(systemd)
+#
+BuildRequires:  selinux-policy-targeted
+Requires(pre):  user(tss)
 Requires:       libtss2-tcti-device0
 Requires:       libtss2-tcti-tabrmd0
 Requires:       tpm2-0-tss
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       (%{name}-selinux if selinux-policy-base)
 # the auto activation is not whitelisted for <= SLE12-SP3
 %if 0%{?sle_version} > 120300 || 0%{?is_opensuse}
 %define install_dbus_files 1
@@ -60,6 +68,16 @@ Requires:       tpm2.0-abrmd = %{version}
 This package provides the development files for the Access Broker & Resource
 Manager for coordinating access to TPM 2.0 chips.
 
+%package selinux
+Summary:        SELinux module for the Access Broker & Resource Manager for TPM 2.0 chips
+Group:          System/Management
+BuildArch:      noarch
+Requires:       tpm2.0-abrmd = %{version}
+%selinux_requires
+
+%description selinux
+This package provides the SELinux module for the Access Broker & Resource Manager for TPM 2.0 chips.
+
 %package -n libtss2-tcti-tabrmd0
 Summary:        Client interface library for tpm2-abrmd
 Group:          System/Libraries
@@ -72,15 +90,19 @@ use with the SAPI library (libtss2-sys) like any other TCTI.
 %postun -n libtss2-tcti-tabrmd0 -p /sbin/ldconfig
 
 %prep
-%setup -q -n tpm2-abrmd-%{version}
+%autosetup -n tpm2-abrmd-%{version}
 
 %build
-export CFLAGS="%optflags -fPIE"
-export LDFLAGS="-pie -fPIE"
-%configure --disable-static --with-systemdsystemunitdir=%{_unitdir}
+export CFLAGS="%{optflags} -fPIE"
+export LDFLAGS="$LDFLAGS -pie"
+%configure \
+  --disable-static \
+  --with-sepolicy=yes \
+  --with-systemdsystemunitdir=%{_unitdir} \
+  --with-dbuspolicydir=%{_datadir}/dbus-1/system.d
+  %{nil}
 make %{?_smp_mflags} PTHREAD_LDFLAGS=-pthread
 
-# TODO: add the tss user again
 %install
 %make_install
 # don't package libtool files as is best practice
@@ -93,6 +115,8 @@ rm %{buildroot}/usr/lib*/systemd/system-preset/tpm2-abrmd.preset
 rm %{buildroot}/%{_sysconfdir}/dbus-1/system.d/tpm2-abrmd.conf
 rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
 %endif
+mkdir %{buildroot}%{_datadir}/selinux/packages/targeted
+mv %{buildroot}%{_datadir}/selinux/packages/tab* %{buildroot}%{_datadir}/selinux/packages/targeted
 
 %pre
 %service_add_pre tpm2-abrmd.service
@@ -106,8 +130,21 @@ rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
 %preun
 %service_del_preun tpm2-abrmd.service
 
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename}.pp.bz2
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename}
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
+
 %files
-%defattr(-,root,root)
 %doc *.md
 %license LICENSE
 %{_mandir}/man7/tss2-*
@@ -117,19 +154,22 @@ rm %{buildroot}/%{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
 %{_unitdir}/tpm2-abrmd.service
 %if 0%{?install_dbus_files}
 # the auto activation is not whitelisted for <= SLE12-SP3
-%config %{_sysconfdir}/dbus-1/system.d/tpm2-abrmd.conf
+%{_datadir}/dbus-1/system.d/tpm2-abrmd.conf
 %{_datadir}/dbus-1/system-services/com.intel.tss2.Tabrmd.service
 %endif
 
+%files selinux
+%{_datadir}/selinux/packages/targeted/tabrmd.pp.bz2
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename}
+
 %files devel
-%defattr(-,root,root)
 %{_includedir}/tss2
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_mandir}/man3/Tss2*
+%{_datadir}/selinux/devel/include/contrib/tabrmd.if
 
 %files -n libtss2-tcti-tabrmd0
-%defattr(-,root,root)
 %{_libdir}/libtss2-tcti-tabrmd.so.*
 
 %changelog
