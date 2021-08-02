@@ -325,4 +325,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>843407</requestid>
   </revision>
+  <revision rev="43" vrev="24">
+    <srcmd5>3f160ddb49d1be07b85298c0d2a5f136</srcmd5>
+    <version>5.2</version>
+    <time>1627898690</time>
+    <user>dimstar_suse</user>
+    <comment>- correct source url to new location
+
+- Use systemd-sysusers external package</comment>
+    <requestid>908921</requestid>
+  </revision>
 </revisionlist>

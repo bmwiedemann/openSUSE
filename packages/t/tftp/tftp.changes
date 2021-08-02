@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 28 14:56:33 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- correct source url to new location
+
+-------------------------------------------------------------------
+Fri Jul  2 18:52:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use systemd-sysusers external package
+
+-------------------------------------------------------------------
 Tue Oct 13 11:00:10 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Do not suppress errors from useradd.

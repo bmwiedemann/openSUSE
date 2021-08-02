@@ -1,7 +1,7 @@
 #
 # spec file for package tftp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@ Summary:        Trivial File Transfer Protocol (TFTP)
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://www.kernel.org/pub/software/network/tftp/
-Source:         http://www.kernel.org/pub/software/network/tftp/tftp-hpa-%{version}.tar.bz2
+Source:         http://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-%{version}.tar.bz2
 Source3:        tftp.service
 Source4:        tftp.socket
 Source5:        tftp.sysconfig
@@ -46,7 +46,7 @@ BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  tcpd-devel
 Requires:       netcfg
-Requires(pre):  shadow
+Requires(pre):  user(tftp)
 Recommends:     inet-daemon
 Conflicts:      atftp
 Provides:       tftp(client)
@@ -81,15 +81,6 @@ install -D -m 0644 %{SOURCE5} %{buildroot}%{_fillupdir}/sysconfig.tftp
 ln -sv %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
 %pre
-# This group/user is shared with atftp, so please
-# keep this in sync with atftp.spec
-# add group
-getent group tftp >/dev/null || %{_sbindir}/groupadd -r tftp
-# add user
-getent passwd tftp >/dev/null || \
-	%{_sbindir}/useradd -c "TFTP account" -d /srv/tftpboot -G tftp \
-	-g tftp -r -s /bin/false tftp
-
 %service_add_pre %{name}.service %{name}.socket
 
 %post
