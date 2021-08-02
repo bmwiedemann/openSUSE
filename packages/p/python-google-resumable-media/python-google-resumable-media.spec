@@ -25,7 +25,6 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-resumable-media-python
 Source:         https://files.pythonhosted.org/packages/source/g/google-resumable-media/google-resumable-media-%{version}.tar.gz
-BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module crcmod}
 BuildRequires:  %{python_module google-auth}
 BuildRequires:  %{python_module google-crc32c}
@@ -36,8 +35,10 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-google-crc32c
 Requires:       python-google-filesystem
 Requires:       python-six
+Recommends:     python-aiohttp
 Recommends:     python-requests >= 2.18.0
 BuildArch:      noarch
 %python_subpackages

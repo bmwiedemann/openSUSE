@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  2 04:05:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add Requires on python-google-crc32c.
+- Remove aiohttp from BuildRequires, and add it to Recommends. 
+
+-------------------------------------------------------------------
 Tue Jun 22 06:36:43 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Be more specific about included filepaths in %files
