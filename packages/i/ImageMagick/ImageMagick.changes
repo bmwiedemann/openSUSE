@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 26 21:50:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.1.0.4:
+  * trim no longer returns an empty image on 1-pixel width input (reference
+    https://github.com/ImageMagick/ImageMagick/issues/3896).
+  * remove virtual canvas offset from difference image.
+  * Added option to set the pixel format option of ffmpeg when reading a
+    video file with -define video:pixel-format=<value>.
+  * system() is not supported under IOS.
+  * accelerate subimage-search with FFT's (contributed by Fred).
+  * malloc() corruption fix
+  * Added option to set the vsync option of ffmpeg when reading or writing a
+    video file with -define video:vsync=<value>.
+
+-------------------------------------------------------------------
 Mon Jun 21 11:08:38 UTC 2021 - pgajdos@suse.com
 
 - version update to 7.1.0.0 [bsc#1187501]
