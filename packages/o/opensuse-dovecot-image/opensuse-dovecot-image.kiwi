@@ -17,7 +17,7 @@
         tag="latest"
         additionaltags="%PKG_VERSION%,%PKG_VERSION%-%RELEASE%"
         maintainer="Thorsten Kukuk &lt;kukuk@suse.com&gt;">
-	<entrypoint execute="/entrypoint/entrypoint.sh"/>
+	<entrypoint execute="/entrypoint.sh"/>
         <subcommand execute="/usr/sbin/dovecot">
           <argument name="-F"/>
         </subcommand>
@@ -57,10 +57,9 @@
     <package name="mandoc"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
+    <package name="timezone"/>
     <package name="-busybox-adduser"/>
-    <package name="-busybox-findutils"/>
     <package name="-busybox-man"/>
-    <archive name="entrypoint.tar.gz"/>
     <archive name="common-scripts.tar.gz"/>
   </packages>
 </image>
