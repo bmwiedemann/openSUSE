@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:31:40 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Replace %{is_opensuse} tags with %{?is_opensuse} to remove
+  dependency on the project defined macro.
+
+-------------------------------------------------------------------
 Fri Mar 26 12:34:14 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Recommend gnome-extensions for installation by basis pattern.

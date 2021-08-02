@@ -320,14 +320,14 @@ Recommends:     yelp
 #
 # Low-level parts that we need
 #
-%if 0%{is_opensuse}
+%if 0%{?is_opensuse}
 # bnc#430161
 Recommends:     NetworkManager
 %endif
-%if 0%{is_opensuse}
+%if 0%{?is_opensuse}
 Recommends:     canberra-gtk-play
 %endif
-%if 0%{is_opensuse}
+%if 0%{?is_opensuse}
 Recommends:     MozillaFirefox
 Recommends:     avahi
 #
