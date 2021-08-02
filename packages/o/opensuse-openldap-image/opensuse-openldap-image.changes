@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 09:52:10 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Re-add busybox-findutils
+
+-------------------------------------------------------------------
 Mon Dec 21 13:33:21 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Install misc.schema by default (ldap mail alias)
