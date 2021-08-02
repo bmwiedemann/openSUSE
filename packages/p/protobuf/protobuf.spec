@@ -38,8 +38,6 @@ Source1:        manifest.txt.in
 Source2:        baselibs.conf
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module python-gflags}
-BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  autoconf
 BuildRequires:  automake
