@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 28 16:10:33 UTC 2021 - Martin Vidner <mvidner@suse.com>
+
+-  Add the AFNOR standardized French keyboard layout (NF Z71-300)
+   (bsc#1188867)
+-  4.4.2
+
+-------------------------------------------------------------------
 Tue Jun 15 09:17:24 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the Comment entry in the desktop file so the tooltip
