@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 02:29:40 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add BuildRequires pkgconfig(glproto) for SLE and Leap which have
+  not included the new packaging of the relevant headers.
+
+-------------------------------------------------------------------
 Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.32.3 (boo#1188697):

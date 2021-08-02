@@ -1067,4 +1067,13 @@
     <comment>- Update to version 2.32.3 (boo#1188697) (forwarded request 908456 from mgorse)</comment>
     <requestid>908551</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>21d637b2b8263cc141331ac1caca9087</srcmd5>
+    <version>2.32.3</version>
+    <time>1627898695</time>
+    <user>dimstar_suse</user>
+    <comment>- Add BuildRequires pkgconfig(glproto) for SLE and Leap which have
+  not included the new packaging of the relevant headers. (forwarded request 909027 from yfjiang)</comment>
+    <requestid>909085</requestid>
+  </revision>
 </revisionlist>

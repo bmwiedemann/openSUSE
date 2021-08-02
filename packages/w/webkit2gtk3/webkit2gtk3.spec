@@ -75,6 +75,9 @@ BuildRequires:  pkgconfig(fontconfig) >= 2.8.0
 BuildRequires:  pkgconfig(freetype2) >= 2.4.2
 BuildRequires:  pkgconfig(geoclue-2.0) >= 2.1.5
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
+%if 0%{?sle_version} && 0%{?sle_version} <= 150400
+BuildRequires:  pkgconfig(glproto)
+%endif
 BuildRequires:  pkgconfig(gnutls) >= 3.0.0
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.0
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
