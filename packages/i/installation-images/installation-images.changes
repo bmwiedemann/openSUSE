@@ -1,4 +1,19 @@
 --------------------------------------------------------------------
+Fri Jul 30 15:42:47 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#516
+- adobe-sourcesanspro-fonts have their font names changed
+  (bsc#1188927)
+- 17.10
+
+--------------------------------------------------------------------
+Fri Jul 30 12:32:03 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#488
+- Find kernel also outside boot (boo#1184804)
+- 17.9
+
+--------------------------------------------------------------------
 Mon Jul 5 08:10:19 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#515
