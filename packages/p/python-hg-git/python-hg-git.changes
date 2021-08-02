@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Sat Jul 31 17:13:13 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Do not run tests on Leap to fix build failures.
+
+-------------------------------------------------------------------
+Sat Jul 31 16:59:44 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to v0.10.2.
+  * Add support for Mercurial 5.9.
+  * Fix the git.authors configuration option, broken in Python 3.
+- Remove now unnecessary patch.
+
+-------------------------------------------------------------------
+Sun Jun 13 19:27:22 UTC 2021 - Müller <expeehaa@outlook.com>
+
+- Add python-hg-git-test-pull-after-rebase-fix.patch to fix failing test.
+
+-------------------------------------------------------------------
+Sun May 16 00:22:57 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to v0.10.1
+  + Add support for Mercurial 5.8.
+  + Fix some documentation issues.
+  + Don't overwrite annotated tags on push.
+  + Fix an issue where pushing a repository without any bookmarks would
+    push secret changesets.
+
+-------------------------------------------------------------------
+Sun Apr 18 00:05:26 UTC 2021 - Müller <expeehaa@outlook.com>
+
+- Create initial package using py2pack and hg-git v0.10.0.
