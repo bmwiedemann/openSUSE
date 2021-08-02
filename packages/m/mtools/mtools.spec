@@ -17,7 +17,7 @@
 
 
 Name:           mtools
-Version:        4.0.31
+Version:        4.0.34
 Release:        0
 Summary:        Tools to access MS-DOS filesystems without kernel drivers
 License:        GPL-3.0-or-later
@@ -28,13 +28,8 @@ Source1:        https://ftp.gnu.org/gnu/mtools/%{name}-%{version}.tar.bz2.sig
 # https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=mtools
 Source2:        %{name}.keyring
 Patch0:         %{name}-conf.diff
-Patch1:         %{name}-autoconf.diff
 Patch3:         %{name}-aliasing.diff
-Patch4:         %{name}-fat-bits.diff
 Patch5:         %{name}-prototypes.diff
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
 BuildRequires:  makeinfo
 BuildRequires:  texinfo
 Requires:       glibc-locale-base
@@ -59,13 +54,10 @@ mounting it. This subpackage contains the documentation for it.
 %prep
 %setup -q
 %patch0
-%patch1
 %patch3
-%patch4
 %patch5 -p1
 
 %build
-autoreconf -fi
 %configure \
 	--includedir=%{_prefix}/src/linux/include \
 	--disable-floppyd

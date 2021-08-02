@@ -473,4 +473,12 @@ mtools is GPL-3.0+ licensed, not GPL-2.0+ (forwarded request 126894 from babelwo
     <comment>mtools 4.0.31 (forwarded request 901041 from AndreasStieger)</comment>
     <requestid>901062</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>a85e440ca9d5bf21720f7e1f5bf4af7d</srcmd5>
+    <version>4.0.34</version>
+    <time>1627898674</time>
+    <user>dimstar_suse</user>
+    <comment>mtools 4.0.34 (forwarded request 908066 from AndreasStieger)</comment>
+    <requestid>909421</requestid>
+  </revision>
 </revisionlist>

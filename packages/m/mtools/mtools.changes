@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jul 24 06:49:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.34:
+  * Fix mcopy -s issue
+- includes changes from 4.0.33:
+  * Fix support for partitions
+  * Add support for image files on command line to mcat
+- includes changes from 4.0.32:
+  * Simplify algorithm that choses filesystem parameters for
+    format, and align it more closely with what Win7 does
+  * Fix mformatting XDF when XDF not explicitly specified on
+    mformat command line
+  * easier way to enter sizes on mformat command line
+    (mformat -C -T 1440K)
+  * For small sizes, mformat assumes floppy geometries
+    (heads 1 or 2, tracks 40 or 80)
+  * Handle attempts to mformat too small filesystems more
+    gracefully
+  * Enable minfo to print out additional mformat command line
+    parameters, if the present filesystem uses non-default
+    values for these
+  * minfo no longer prints bigsect if smallsect is set
+  * for remap filter, error when trying to write non-zero data
+    to unmapped sectors
+- drop mtools-autoconf.diff, no longer needed
+- drop mtools-fat-bits.diff, drop candidate for some time
+
+-------------------------------------------------------------------
 Sun Jun 20 16:20:58 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.31:

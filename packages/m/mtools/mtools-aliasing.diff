@@ -2,7 +2,7 @@ Index: file.c
 ===================================================================
 --- file.c.orig
 +++ file.c
-@@ -591,7 +591,7 @@ static Stream_t *_internalFileOpen(Strea
+@@ -655,7 +655,7 @@ static Stream_t *_internalFileOpen(Strea
  		Pattern.loopDetectRel = 0;
  		Pattern.loopDetectAbs = first;
  		if(!hash_lookup(filehash, (T_HashTableEl) &Pattern,
