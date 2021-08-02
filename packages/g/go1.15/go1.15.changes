@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 25 14:50:13 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix go#46803 boo#1188906, add fix-crash-on-ppc64le.patch 
+
+-------------------------------------------------------------------
 Mon Jul 12 23:51:55 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.15.14 (released 2021-07-12) includes a security fix to the

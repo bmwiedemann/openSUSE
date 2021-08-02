@@ -279,4 +279,12 @@
   * go#46656 runtime: deeply nested struct initialized with non-zero values (forwarded request 905963 from jfkw)</comment>
     <requestid>905964</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>2003d444f90875edc794d62ba6c1825f</srcmd5>
+    <version>1.15.14</version>
+    <time>1627898659</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix go#46803 boo#1188906, add fix-crash-on-ppc64le.patch (forwarded request 909269 from hillwood)</comment>
+    <requestid>909324</requestid>
+  </revision>
 </revisionlist>
