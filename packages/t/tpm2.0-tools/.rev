@@ -515,4 +515,13 @@ s etc.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>906620</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>5fb819cad497e5143f216b24d0e62c6e</srcmd5>
+    <version>5.1.1</version>
+    <time>1627898671</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-tpm2_eventlog-fix-buffer-offset-when-reading-the-eve.patch to
+fix the offset of the read buffer (forwarded request 909201 from aplanas)</comment>
+    <requestid>909338</requestid>
+  </revision>
 </revisionlist>

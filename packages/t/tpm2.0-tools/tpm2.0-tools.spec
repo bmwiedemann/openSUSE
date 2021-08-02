@@ -30,6 +30,7 @@ Source2:        tpm2-tools.keyring
 Patch0:         fix_bogus_warning.patch
 Patch2:         0001-tpm2_checkquote-fix-uninitialized-variable.patch
 Patch3:         0001-tpm2_eventlog-read-eventlog-file-in-chunks.patch
+Patch4:         0001-tpm2_eventlog-fix-buffer-offset-when-reading-the-eve.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libcurl-devel
 BuildRequires:  libopenssl-devel

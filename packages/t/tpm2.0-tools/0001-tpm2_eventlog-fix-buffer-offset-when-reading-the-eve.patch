@@ -1,0 +1,35 @@
+From 24e193412eac3985baea5e83e3245a4315c86ebe Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Thu, 29 Jul 2021 16:02:50 +0200
+Subject: [PATCH 1/1] tpm2_eventlog: fix buffer offset when reading the event
+ log
+
+The event log is read in chunks of CHUNK_SIZE blocks (16KB), always
+checking when the EOF is reached, so it is compatible with virtual files
+that lives in securityfs and we do not know the full size.  The current
+code is not taking care of adjusting the offset when the next chunk is
+read.
+
+This patch add "size" to the base buffer where the event log is stored
+in memory.
+
+Fix #2778
+
+Signed-off-by: Alberto Planas <aplanas@suse.com>
+---
+ tools/misc/tpm2_eventlog.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: tpm2-tools-5.1.1/tools/misc/tpm2_eventlog.c
+===================================================================
+--- tpm2-tools-5.1.1.orig/tools/misc/tpm2_eventlog.c
++++ tpm2-tools-5.1.1/tools/misc/tpm2_eventlog.c
+@@ -90,7 +90,7 @@ static tool_rc tpm2_tool_onrun(ESYS_CONT
+     }
+ 
+     unsigned long size = 0;
+-    while (files_read_bytes_chunk(fileptr, eventlog, CHUNK_SIZE, &size)) {
++    while (files_read_bytes_chunk(fileptr, eventlog + size, CHUNK_SIZE, &size)) {
+         UINT8 *eventlog_tmp = realloc(eventlog, size + CHUNK_SIZE);
+         if (eventlog_tmp == NULL){
+             LOG_ERR("failed to allocate %lu bytes: %s", size + CHUNK_SIZE, strerror(errno));

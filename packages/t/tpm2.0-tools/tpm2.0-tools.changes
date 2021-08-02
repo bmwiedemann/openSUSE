@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 14:15:11 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add 0001-tpm2_eventlog-fix-buffer-offset-when-reading-the-eve.patch to
+fix the offset of the read buffer
+
+-------------------------------------------------------------------
 Thu Jul  8 09:07:05 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - prepare running the test suite via %check, but leave it commented out,
