@@ -1,7 +1,7 @@
-Index: fedora-policy/policy/modules/system/unconfined.te
+Index: fedora-policy-20210628/policy/modules/system/unconfined.te
 ===================================================================
---- fedora-policy.orig/policy/modules/system/unconfined.te
-+++ fedora-policy/policy/modules/system/unconfined.te
+--- fedora-policy-20210628.orig/policy/modules/system/unconfined.te
++++ fedora-policy-20210628/policy/modules/system/unconfined.te
 @@ -1,5 +1,10 @@
  policy_module(unconfined, 3.5.0)
  
@@ -13,7 +13,7 @@ Index: fedora-policy/policy/modules/system/unconfined.te
  ########################################
  #
  # Declarations
-@@ -39,3 +44,6 @@ optional_policy(`
+@@ -41,3 +46,6 @@ optional_policy(`
  optional_policy(`
  	container_runtime_domtrans(unconfined_service_t)
  ')

@@ -327,10 +327,6 @@ optional_policy(`
 ')
 
 optional_policy(`
-	hal_write_log(wicked_t)
-')
-
-optional_policy(`
 	howl_signal(wicked_t)
 ')
 

@@ -1,7 +1,7 @@
-Index: fedora-policy-20210309/policy/modules/system/systemd.te
+Index: fedora-policy-20210628/policy/modules/system/systemd.te
 ===================================================================
---- fedora-policy-20210309.orig/policy/modules/system/systemd.te
-+++ fedora-policy-20210309/policy/modules/system/systemd.te
+--- fedora-policy-20210628.orig/policy/modules/system/systemd.te
++++ fedora-policy-20210628/policy/modules/system/systemd.te
 @@ -347,6 +347,10 @@ userdom_manage_user_tmp_chr_files(system
  xserver_dbus_chat(systemd_logind_t)
  
@@ -13,7 +13,7 @@ Index: fedora-policy-20210309/policy/modules/system/systemd.te
  	apache_read_tmp_files(systemd_logind_t)
  ')
  
-@@ -853,6 +857,10 @@ optional_policy(`
+@@ -854,6 +858,10 @@ optional_policy(`
  	udev_read_pid_files(systemd_hostnamed_t)
  ')
  

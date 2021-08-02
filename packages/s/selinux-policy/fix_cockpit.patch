@@ -9,11 +9,11 @@ cockpit.socket fails to start if kerberos_enabled=false
  policy/modules/contrib/cockpit.te | 2 ++
  1 file changed, 2 insertions(+)
 
-diff --git a/policy/modules/contrib/cockpit.te b/policy/modules/contrib/cockpit.te
-index a160ca6b6..5984711fa 100644
---- a/policy/modules/contrib/cockpit.te
-+++ b/policy/modules/contrib/cockpit.te
-@@ -52,7 +52,9 @@ can_exec(cockpit_ws_t,cockpit_session_exec_t)
+Index: fedora-policy-20210628/policy/modules/contrib/cockpit.te
+===================================================================
+--- fedora-policy-20210628.orig/policy/modules/contrib/cockpit.te
++++ fedora-policy-20210628/policy/modules/contrib/cockpit.te
+@@ -51,7 +51,9 @@ can_exec(cockpit_ws_t,cockpit_session_ex
  dev_read_urand(cockpit_ws_t) # for authkey
  dev_read_rand(cockpit_ws_t)  # for libssh
  
@@ -23,6 +23,3 @@ index a160ca6b6..5984711fa 100644
  
  # cockpit-ws can connect to other hosts via ssh
  corenet_tcp_connect_ssh_port(cockpit_ws_t)
--- 
-2.26.2
-

@@ -11,7 +11,7 @@ git clone --depth 1 https://github.com/containers/container-selinux.git
 
 mv selinux-policy fedora-policy-$date
 rm -rf fedora-policy-$date/.git*
-mv container-selinux/container.* fedora-policy-$date/policy/modules/contrib/
+mv container-selinux/container.* fedora-policy-$date/policy/modules/services/
 
 rm -f fedora-policy?$date.tar*
 tar cf fedora-policy-$date.tar fedora-policy-$date

@@ -33,7 +33,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20210419
+Version:        20210716
 Release:        0
 Source:         fedora-policy-%{version}.tar.bz2
 Source1:        selinux-policy-rpmlintrc
@@ -81,13 +81,9 @@ Source125:      rtorrent.fc
 Source126:      wicked.te
 Source127:      wicked.if
 Source128:      wicked.fc
-Source129:      tabrmd.te
-Source130:      tabrmd.if
-Source131:      tabrmd.fc
 
 Patch001:       fix_djbdns.patch
 Patch002:       fix_dbus.patch
-Patch003:       fix_gift.patch
 Patch004:       fix_java.patch
 Patch005:       fix_hadoop.patch
 Patch006:       fix_thunderbird.patch
@@ -424,7 +420,7 @@ for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15}
  cp $i selinux_config
 done
 
-for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128} %{SOURCE129} %{SOURCE130} %{SOURCE131}; do
+for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128}; do
  cp $i policy/modules/contrib
 done
 
@@ -475,6 +471,8 @@ install -m 644 doc/policy.* %{buildroot}%{_datadir}/selinux/devel/
 mkdir %{buildroot}%{_datadir}/selinux/devel/html
 mv %{buildroot}%{_datadir}/man/man8/*.html %{buildroot}%{_datadir}/selinux/devel/html
 mv %{buildroot}%{_datadir}/man/man8/style.css %{buildroot}%{_datadir}/selinux/devel/html
+rm %{buildroot}%{_mandir}/man8/container_selinux.8*
+rm %{buildroot}%{_datadir}/selinux/devel/include/services/container.if
 
 %post
 if [ ! -s %{_sysconfdir}/selinux/config ]; then

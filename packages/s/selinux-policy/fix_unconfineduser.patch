@@ -1,8 +1,8 @@
-Index: fedora-policy-20210419/policy/modules/roles/unconfineduser.te
+Index: fedora-policy-20210628/policy/modules/roles/unconfineduser.te
 ===================================================================
---- fedora-policy-20210419.orig/policy/modules/roles/unconfineduser.te
-+++ fedora-policy-20210419/policy/modules/roles/unconfineduser.te
-@@ -124,6 +124,11 @@ tunable_policy(`unconfined_dyntrans_all'
+--- fedora-policy-20210628.orig/policy/modules/roles/unconfineduser.te
++++ fedora-policy-20210628/policy/modules/roles/unconfineduser.te
+@@ -126,6 +126,11 @@ tunable_policy(`unconfined_dyntrans_all'
      domain_dyntrans(unconfined_t)
  ')
  
@@ -14,7 +14,7 @@ Index: fedora-policy-20210419/policy/modules/roles/unconfineduser.te
  optional_policy(`
  	gen_require(`
  		type unconfined_t;
-@@ -214,6 +219,10 @@ optional_policy(`
+@@ -212,6 +217,10 @@ optional_policy(`
  ')
  
  optional_policy(`
@@ -25,7 +25,7 @@ Index: fedora-policy-20210419/policy/modules/roles/unconfineduser.te
  	chrome_role_notrans(unconfined_r, unconfined_t)
  
  	tunable_policy(`unconfined_chrome_sandbox_transition',`
-@@ -248,6 +257,18 @@ optional_policy(`
+@@ -246,6 +255,18 @@ optional_policy(`
  	dbus_stub(unconfined_t)
  
  	optional_policy(`
@@ -44,7 +44,7 @@ Index: fedora-policy-20210419/policy/modules/roles/unconfineduser.te
  		bluetooth_dbus_chat(unconfined_t)
  	')
  
-@@ -311,6 +332,10 @@ optional_policy(`
+@@ -309,6 +330,10 @@ optional_policy(`
  ')
  
  optional_policy(`

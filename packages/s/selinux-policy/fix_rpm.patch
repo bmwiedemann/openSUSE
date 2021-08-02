@@ -1,7 +1,7 @@
-Index: fedora-policy-20210309/policy/modules/contrib/rpm.fc
+Index: fedora-policy-20210628/policy/modules/contrib/rpm.fc
 ===================================================================
---- fedora-policy-20210309.orig/policy/modules/contrib/rpm.fc
-+++ fedora-policy-20210309/policy/modules/contrib/rpm.fc
+--- fedora-policy-20210628.orig/policy/modules/contrib/rpm.fc
++++ fedora-policy-20210628/policy/modules/contrib/rpm.fc
 @@ -18,6 +18,10 @@
  /usr/bin/repoquery		--	gen_context(system_u:object_r:rpm_exec_t,s0)		
  /usr/bin/zif 			--	gen_context(system_u:object_r:rpm_exec_t,s0)
@@ -22,11 +22,11 @@ Index: fedora-policy-20210309/policy/modules/contrib/rpm.fc
  /var/lib/alternatives(/.*)?		gen_context(system_u:object_r:rpm_var_lib_t,s0)
  /var/lib/PackageKit(/.*)?		gen_context(system_u:object_r:rpm_var_lib_t,s0)
  /var/lib/rpm(/.*)?			gen_context(system_u:object_r:rpm_var_lib_t,s0)
-Index: fedora-policy-20210309/policy/modules/contrib/rpm.if
+Index: fedora-policy-20210628/policy/modules/contrib/rpm.if
 ===================================================================
---- fedora-policy-20210309.orig/policy/modules/contrib/rpm.if
-+++ fedora-policy-20210309/policy/modules/contrib/rpm.if
-@@ -476,8 +476,10 @@ interface(`rpm_named_filetrans',`
+--- fedora-policy-20210628.orig/policy/modules/contrib/rpm.if
++++ fedora-policy-20210628/policy/modules/contrib/rpm.if
+@@ -479,8 +479,10 @@ interface(`rpm_named_filetrans',`
  	logging_log_named_filetrans($1, rpm_log_t, file, "yum.log")
  	logging_log_named_filetrans($1, rpm_log_t, file, "hawkey.log")
  	logging_log_named_filetrans($1, rpm_log_t, file, "up2date")
@@ -37,10 +37,10 @@ Index: fedora-policy-20210309/policy/modules/contrib/rpm.if
  	files_var_lib_filetrans($1, rpm_var_lib_t, dir, "dnf")
  	files_var_lib_filetrans($1, rpm_var_lib_t, dir, "yum")
  	files_var_lib_filetrans($1, rpm_var_lib_t, dir, "rpm")
-Index: fedora-policy-20210309/policy/modules/kernel/files.fc
+Index: fedora-policy-20210628/policy/modules/kernel/files.fc
 ===================================================================
---- fedora-policy-20210309.orig/policy/modules/kernel/files.fc
-+++ fedora-policy-20210309/policy/modules/kernel/files.fc
+--- fedora-policy-20210628.orig/policy/modules/kernel/files.fc
++++ fedora-policy-20210628/policy/modules/kernel/files.fc
 @@ -67,6 +67,7 @@ ifdef(`distro_suse',`
  /etc/sysconfig/ipvsadm.*                --      gen_context(system_u:object_r:system_conf_t,s0)
  /etc/sysconfig/system-config-firewall.* --      gen_context(system_u:object_r:system_conf_t,s0)

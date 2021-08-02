@@ -1,9 +1,50 @@
 -------------------------------------------------------------------
+Fri Jul 16 07:11:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20210716
+- Remove interfaces for container module before building the package
+  (bsc#1188184)
+- Updated
+  * fix_init.patch
+  * fix_systemd_watch.patch
+  to adapt to upstream changes
+
+-------------------------------------------------------------------
+Thu Jul 15 15:45:57 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use tabrmd SELinux modules from tpm2.0-abrmd instead of storing
+  here
+
+-------------------------------------------------------------------
 Tue Jul  6 13:55:19 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add tabrmd SELinux modules from upstream (bsc#1187925)
   https://github.com/tpm2-software/tpm2-abrmd/tree/master/selinux
 - Automatic spec-cleaner to fix ordering and misaligned spaces
+
+-------------------------------------------------------------------
+Mon Jun 28 08:11:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 20210419
+- Dropped fix_gift.patch, module was removed
+- Updated wicked.te to removed dropped interface
+- Refreshed:
+  * fix_cockpit.patch
+  * fix_hadoop.patch
+  * fix_init.patch
+  * fix_logging.patch
+  * fix_logrotate.patch
+  * fix_networkmanager.patch
+  * fix_nscd.patch
+  * fix_rpm.patch
+  * fix_selinuxutil.patch
+  * fix_systemd.patch
+  * fix_systemd_watch.patch
+  * fix_thunderbird.patch
+  * fix_unconfined.patch
+  * fix_unconfineduser.patch
+  * fix_unprivuser.patch
+  * fix_xserver.patch
 
 -------------------------------------------------------------------
 Tue May 18 11:10:59 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
