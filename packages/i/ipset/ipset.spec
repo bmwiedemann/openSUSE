@@ -25,7 +25,7 @@
 %define ipset_build_kmp 0
 %endif
 Name:           ipset
-Version:        7.11
+Version:        7.14
 Release:        0
 Summary:        Netfilter ipset administration utility
 License:        GPL-2.0-only
@@ -123,7 +123,7 @@ done
 %endif
 %configure --disable-static --with-kmod=no \
 	--includedir="%_includedir/%name"
-make %{?_smp_mflags}
+make %{?_smp_mflags} V=1
 
 %install
 export PATH="$PATH:%_sbindir"
@@ -143,7 +143,7 @@ find "$b/%_libdir/" -type f -name "*.la" -delete -print
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%_sbindir/ipset
+%_sbindir/ipset*
 %_mandir/man*/*
 
 %files -n %lname

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 28 14:54:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.14
+  * Allow specifying protocols by number
+  * Limit the maximum range of consecutive elements to add/delete
+
+-------------------------------------------------------------------
 Fri Feb 19 21:23:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.11

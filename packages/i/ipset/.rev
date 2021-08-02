@@ -347,4 +347,12 @@
     <comment>- Update to release 7.11</comment>
     <requestid>873926</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>264af540d5923c1dbb9252152042b83c</srcmd5>
+    <version>7.14</version>
+    <time>1627898692</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.14</comment>
+    <requestid>908932</requestid>
+  </revision>
 </revisionlist>
