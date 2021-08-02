@@ -287,4 +287,12 @@
     <comment></comment>
     <requestid>881405</requestid>
   </revision>
+  <revision rev="28" vrev="6">
+    <srcmd5>8bfc1724b6df68538afbabbbeb8ada5a</srcmd5>
+    <version>5.3.1</version>
+    <time>1627898681</time>
+    <user>dimstar_suse</user>
+    <comment>fix build on sle12</comment>
+    <requestid>908796</requestid>
+  </revision>
 </revisionlist>

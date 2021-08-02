@@ -1,7 +1,7 @@
 #
-# spec file for package javapackages-tools
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,9 @@ Obsoletes:      %{name}-doc
 Obsoletes:      jpackage-utils < %{version}
 %if %{with python}
 BuildRequires:  %{python_module lxml}
+%if 0%{?suse_version} > 1320
 BuildRequires:  %{python_module pytest}
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  python-rpm-macros
@@ -101,7 +103,6 @@ Requires:       javapackages-tools = %{version}
 This package contains files needed by local mode for Gradle, which
 allows artifact resolution using XMvn resolver.
 
-
 %package -n javapackages-ivy
 Summary:        Local mode for Apache Ivy (files)
 Group:          Development/Languages/Java
@@ -124,6 +125,7 @@ Module for handling, querying and manipulating of various files for Java
 packaging in Linux distributions
 
 %else
+
 %package -n python3-javapackages
 Summary:        Module for handling various files for Java packaging
 Group:          Development/Languages/Java
@@ -216,6 +218,7 @@ rm -rf %{buildroot}%{_datadir}/fedora-review/
 
 %fdupes %{buildroot}/%{_prefix}
 
+%if 0%{?suse_version} > 1320
 %check
 # reference: ./check, but we don't want to check coverage and don't need old nose
 (
@@ -233,6 +236,7 @@ pushd ./test
 %pytest
 popd
 %endif
+%endif
 
 %if !%{with python}
 %files -f files-tools
@@ -241,6 +245,7 @@ popd
 %files -n javapackages-filesystem -f files-filesystem
 
 %else
+
 %files -n javapackages-local -f files-local
 %dir %{_datadir}/java-utils
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 13:39:39 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Do not run tests on SLE12, since python3-test is not accessible
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.
