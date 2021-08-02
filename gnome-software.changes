@@ -203,7 +203,7 @@ Thu Nov 19 07:11:42 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Added gnome-packagekit as recommended dependency:
   gnome-software-launch-gpk-update-viewer-for-updates.patch needs
-  gnome-packagekit to work (SLE only).
+  gnome-packagekit to work (SLE only) (bsc#1178768).
 
 -------------------------------------------------------------------
 Tue Oct 20 13:40:22 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
