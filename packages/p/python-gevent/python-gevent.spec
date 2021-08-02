@@ -40,6 +40,7 @@ Source100:      %{name}-rpmlintrc
 # usually, as long as no return value is used, this shouldn't be treated as an error
 # let's selectively disable the warning around the offending code
 Patch0:         fix-no-return-in-nonvoid-function.patch
+Patch1:         skip-tests-in-leap.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
@@ -105,6 +106,10 @@ Documentation and examples for %{name}.
 %setup -q -n gevent-%{modversion}
 %if 0%{?sle_version} <= 150100 && 0%{?is_opensuse}
 %patch0 -p1
+%endif
+
+%if 0%{?sle_version} <= 150300
+%patch1 -p1
 %endif
 sed -i -e '1s!bin/env python!bin/python!' examples/*.py
 

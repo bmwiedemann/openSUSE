@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  8 05:50:58 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Skip two tests that fail in SLE/Leap:
+  * skip-tests-in-leap.patch
+
+-------------------------------------------------------------------
 Fri Feb 12 10:18:37 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Relax the crypto policies for the test-suite
