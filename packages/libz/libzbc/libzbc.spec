@@ -17,8 +17,8 @@
 
 
 Name:           libzbc
-%define lname   libzbc-5_10_0
-Version:        5.10.0
+%define lname   libzbc5
+Version:        5.11.1
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later
@@ -108,7 +108,7 @@ find "%buildroot/%_libdir" -type f -name "*.la" -delete
 %_bindir/gz*
 
 %files -n %lname
-%_libdir/libzbc-*.so
+%_libdir/libzbc.so.5*
 %license COPYING.BSD
 
 %files devel

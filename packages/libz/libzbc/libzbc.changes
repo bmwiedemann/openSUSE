@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 28 11:27:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.11.1
+  * New versioning scheme and SONAME
+
+-------------------------------------------------------------------
+Wed Jul 28 07:22:17 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.11
+  * Increase of the default command timeout from 20s to 30s to be
+    in-line with the kernel default settings. Similarly to the
+    kernel, the timeout for device write cache flush commands is
+    also double the default value (60s).
+  * Improved handling of timeout errors. These errors are now
+    notified using the ETIMEDOUT error code instead of the generic
+    EIO.
+  * SCSI backend driver fixes and improvements: optimized SAT
+    correctness detection for ZAC devices and faster device
+    capacity detection.
+  * Block backend driver improvements: retreive the maximum
+    number of open zones from the device sysfs attributes if the
+    kernel exposes it.
+  * Improvement of the zbc_report_zones() function that avoids
+    multiple buffer allocation/free operations for large reports.
+
+-------------------------------------------------------------------
 Sat May 22 10:50:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.10
