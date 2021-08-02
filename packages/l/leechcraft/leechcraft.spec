@@ -27,7 +27,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-14522-g3ce98b2ddb
+%define LEECHCRAFT_VERSION 0.6.70-14675-g3f93af1b45
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -46,7 +46,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.14522.g3ce98b2ddb
+Version:        0.6.70+git.14675.g3f93af1b45
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -64,8 +64,7 @@ Patch2:         leechcraft-libtorrent-legacy.patch
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
-# gcc <=7 & 11 break build, gcc 8 - 10 may be OK.
-BuildRequires:  gcc10-c++
+BuildRequires:  gcc-c++ >= 8
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libQt5Gui-private-headers-devel >= 5.13
 BuildRequires:  libQt5Sql5-sqlite >= 5.13
@@ -101,13 +100,15 @@ BuildRequires:  pkgconfig(Qt5PrintSupport) >= 5.13
 BuildRequires:  pkgconfig(Qt5Qml) >= 5.13
 BuildRequires:  pkgconfig(Qt5Quick) >= 5.13
 BuildRequires:  pkgconfig(Qt5QuickWidgets) >= 5.13
-BuildRequires:  pkgconfig(Qt5Qwt6) >= 5.13
+BuildRequires:  pkgconfig(Qt5Qwt6) >= 6.2
 BuildRequires:  pkgconfig(Qt5Script) >= 5.13
 BuildRequires:  pkgconfig(Qt5Sensors) >= 5.13
 BuildRequires:  pkgconfig(Qt5Sql) >= 5.13
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.13
 BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.13
+%ifnarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.13
+%endif
 BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.13
@@ -195,6 +196,9 @@ Obsoletes:      %{name}-choroid
 Obsoletes:      %{name}-harbinger
 Obsoletes:      %{name}-nacheku
 Obsoletes:      %{name}-popishu
+%ifarch ppc ppc64 ppc64le s390 s390x
+Obsoletes:      %{name}-poshuku
+%endif
 Obsoletes:      %{name}-qrosp
 Obsoletes:      %{name}-syncer
 Obsoletes:      %{name}-vgrabber
@@ -1656,13 +1660,13 @@ This package provides a LeechCraft plugin to do a Google search
 with some selected text.
 
 
+%ifnarch ppc ppc64 ppc64le s390 s390x
 %package poshuku
 Summary:        LeechCraft Web Browser Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku-backend = %{version}
-Provides:       %{name}-webbrowser
 Recommends:     %{name}-imgaste = %{version}
 Recommends:     %{name}-intermutko = %{version}
 Obsoletes:      %{name}-poshuku-webkitview
@@ -1851,6 +1855,7 @@ Provides:       %{name}-poshuku-backend = %{version}
 
 %description poshuku-webengineview
 This package provides WebEngine-based backend for LeechCraft Poshuku browser.
+%endif
 
 
 %package rosenthal
@@ -2273,13 +2278,11 @@ cmake ../src \
         -DCMAKE_CXX_FLAGS="${tmpflags} -Doverride= $(pkg-config --cflags gstreamer-1.0)" \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-        -DCMAKE_C_COMPILER=/usr/bin/gcc-10 \
-        -DCMAKE_CXX_COMPILER=/usr/bin/g++-10 \
         -DSTRICT_LICENSING=True \
         -DWITH_DBUS_LOADERS=True \
         -DWITH_PCRE=True \
         -DWITH_QWT=True \
-        -DENABLE_UTIL_TESTS=True \
+        -DENABLE_UTIL_TESTS=False \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
                 -DENABLE_AGGREGATOR_BODYFETCH=True \
@@ -2400,6 +2403,7 @@ cmake ../src \
         -DENABLE_POGOOGLUE=True \
         -DENABLE_POLEEMERY=False \
         -DENABLE_POPISHU=False \
+%ifnarch ppc ppc64 ppc64le s390 s390x
         -DENABLE_POSHUKU=True \
                 -DENABLE_IDN=True \
                 -DENABLE_POSHUKU_AUTOSEARCH=True \
@@ -2423,6 +2427,9 @@ cmake ../src \
                 -DENABLE_POSHUKU_WEBENGINEVIEW=True \
                         -DENABLE_POSHUKU_WEBENGINEVIEW_TESTS=False \
                 -DENABLE_POSHUKU_WEBKITVIEW=False \
+%else
+        -DENABLE_POSHUKU=False \
+%endif
         -DENABLE_QROSP=False \
         -DENABLE_SB2=True \
         -DENABLE_SCROBLIBRE=True \
@@ -2447,7 +2454,7 @@ cmake ../src \
         -DENABLE_ZALIL=True \
         -DLEECHCRAFT_VERSION="%{LEECHCRAFT_VERSION}"
 
-make -k %{?_smp_mflags} VERBOSE=1
+%cmake_build -k
 
 %install
 %cmake_install
@@ -2460,8 +2467,7 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %fdupes -s %{buildroot}%{_datadir}/%{name}/themes
 
 %check
-cd build
-ctest --output-on-failure
+%ctest
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -3178,6 +3184,7 @@ ctest --output-on-failure
 %{plugin_dir}/*craft_pogooglue*
 %{translations_dir}/*craft_pogooglue*
 
+%ifnarch ppc ppc64 ppc64le s390 s390x
 %files poshuku
 %defattr(-,root,root)
 %{settings_dir}/poshukusettings.xml
@@ -3262,6 +3269,7 @@ ctest --output-on-failure
 %files poshuku-webengineview
 %defattr(-,root,root)
 %{plugin_dir}/*craft_poshuku_webengineview.so
+%endif
 
 %files rosenthal
 %defattr(-,root,root)
