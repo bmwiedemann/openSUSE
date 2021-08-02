@@ -772,4 +772,12 @@ Should be copied to 12.2 if possible (it actually makes the bt stack work) (forw
     <comment>GNOME 40 - here we come (forwarded request 880938 from dimstar)</comment>
     <requestid>881111</requestid>
   </revision>
+  <revision rev="100" vrev="2">
+    <srcmd5>a4354509e1bcdc10abf215abd67b6fbb</srcmd5>
+    <version>3.34.5</version>
+    <time>1627911661</time>
+    <user>dimstar_suse</user>
+    <comment>Resolve conflict changelog entry between Factory and SLE/Leap. (forwarded request 909694 from yfjiang)</comment>
+    <requestid>909741</requestid>
+  </revision>
 </revisionlist>

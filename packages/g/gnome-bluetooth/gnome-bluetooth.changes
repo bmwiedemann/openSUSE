@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Mar 24 09:45:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Update to version 3.34.5:
+- Update to version 3.34.5 (bsc#1186277):
   + Fix unwanted soname change.
 - Changes from version 3.34.4:
   + Use device alias instead of device name in Settings UI, and
