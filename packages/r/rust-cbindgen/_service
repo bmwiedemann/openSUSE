@@ -3,7 +3,7 @@
     <param name="url">https://github.com/eqrion/cbindgen.git</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v0.19.0</param>
+    <param name="revision">v0.20.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -19,6 +19,7 @@
   <service name="cargo_vendor" mode="disabled">
      <param name="srcdir">cbindgen</param>
      <param name="compression">xz</param>
+     <param name="update">true</param>
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">cbindgen</param>
