@@ -48,7 +48,6 @@
     <package name="bash"/>
     <package name="ca-certificates"/>
     <package name="ca-certificates-mozilla"/>
-    <package name="-busybox-findutils"/>
     <package name="timezone"/>
     <archive name="entrypoint.tar.gz"/>
     <package name="mandoc"/>
