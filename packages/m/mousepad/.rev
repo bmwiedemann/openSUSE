@@ -172,4 +172,66 @@
     <comment></comment>
     <requestid>893306</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e4819e4a371a68689b21df113d2b4472</srcmd5>
+    <version>0.5.6</version>
+    <time>1627898704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.6
+  * Add session backup and restore
+  * Remember windows and tabs (gxo#apps/mousepad#21,
+    gxo#apps/mousepad!108)
+  * Handle unsaved documents (gxo#apps/mousepad#32,
+    gxo#apps/mousepad!109)
+  * DE session support (gxo#apps/mousepad#3, gxo#apps/mousepad!110)
+  * Extend the use of recent history (gxo#apps/mousepad!107)
+  * Add use of `GtkSourceView:smart-backspace`
+    (gxo#apps/mousepad!101)
+  * Add a &quot;Move Words&quot; action (gxo#apps/mousepad!100)
+  * Add a setting to control tab expansion (gxo#apps/mousepad#100)
+  * Prefs dialog: Substitute CSD for status bar visibility
+  * Add a &quot;File&quot; tab to the prefs dialog (gxo#apps/mousepad!108)
+  * Make search input fields less flickery (gxo#apps/mousepad!104)
+  * Allow saving non-existent, empty but named file
+    (gxo#apps/mousepad#120, gxo#apps/mousepad!103)
+  * Enable &quot;Save&quot; action for read-only documents
+    (gxo#apps/mousepad#126, gxo#apps/mousepad!103)
+  * Make &quot;Find as you type&quot; an option (gxo#apps/mousepad!102)
+  * Reveal hidden setting &quot;indent-on-tab&quot; (gxo#apps/mousepad!101)
+  * A review of duplicated view-related actions
+    (gxo#apps/mousepad#127)
+  * Add a test plugin to monitor application state
+    (gxo#apps/mousepad!105)
+  * Add a test script for Mousepad (gxo#apps/mousepad!99)
+  * Filter notebook click events also on y-coordinate
+    (gxo#apps/mousepad#144)
+  * Allow to open files from the trash can (gxo#apps/mousepad#141,
+    gxo#apps/mousepad!112)
+  * Monitor file deletion (gxo#apps/mousepad#140,
+    gxo#apps/mousepad!111)
+  * Printing: Create config file if it does not exist
+  * Check all windows for the file to be opened
+  * Fix wrong externally modified document in some situations
+  * Plugin support: Properly handle plugin settings
+    (gxo#apps/mousepad#136)
+  * Direct monitoring of symlink targets
+  * Set the state of submenu actions
+  * print-dialog: Fix some memory leaks
+  * Fix a type inconsistency in the &quot;encoding-changed&quot; signal
+  * Always check if the user has explicitly set a filetype
+  * Fix monitoring events to listen to
+  * Ensure statefull actions exist until their state is recovered
+  * Fix GVariant-related memory leaks
+  * Do not warn if the plugin directory does not exist
+  * Add a sanity check on the window for &quot;Externally Modified&quot;
+  * Do not set the style scheme id as translatable
+  * Properly update recent menu in case of file deletion
+  * CSD: Set the decoration layout for all windows
+  * Add a sanity check on file location for monitoring
+  * Add &quot;preferences&quot; action to `mousepad.desktop`
+    (gxo#apps/mousepad#130)
+  * Translation Updates
+</comment>
+    <requestid>909637</requestid>
+  </revision>
 </revisionlist>
