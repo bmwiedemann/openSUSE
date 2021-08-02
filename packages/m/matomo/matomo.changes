@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  2 06:50:01 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 4.4.1
+  * matomo-org/matomo
+    - #17829 Testcookie causes warning in browser console
+    - #17835 Fix sorting of Geolocation providers
+    - #17838 More warnings about missing shell_exec() since Matomo 4.4.0
+    - #17831 make sure summary rows are serialized with their in-db
+      subtable ID and not in memory one
+    - #17832 Add command to generate a system check
+    - #17842 Revert “more private Referrer-Policy: use 
+      strict-origin-when-cross-origin ”
+  * matomo-org/device-detector
+    - #6811 Detect devices for existing brands: Lenovo, Xiaomi,
+      Samsung, Asus, ZTE, Vivo, Hyundai, Motorola, NYX Mobile,
+       OPPO, LG, Sharp, Realme
+- Fix integrity check for misc/log-analytics/import_logs.py.
+
+-------------------------------------------------------------------
 Wed Jul 28 10:55:31 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 4.4.0
