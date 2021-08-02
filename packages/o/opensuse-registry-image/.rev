@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>811768</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>413a5d468cd83d2188ce42c6ac6bc567</srcmd5>
+    <version>1.0.0</version>
+    <time>1627911667</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-add busybox-findutils
+</comment>
+    <requestid>909760</requestid>
+  </revision>
 </revisionlist>
