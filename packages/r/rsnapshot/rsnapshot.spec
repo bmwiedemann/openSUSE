@@ -1,7 +1,7 @@
 #
 # spec file for package rsnapshot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           rsnapshot
-Version:        1.4.3
+Version:        1.4.4
 Release:        0
 Summary:        Backup program using hardlinks
 License:        GPL-2.0-or-later
 Group:          Productivity/Archiving/Backup
-URL:            http://www.rsnapshot.org/
+URL:            https://rsnapshot.org/
 Source0:        https://github.com/rsnapshot/rsnapshot/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        rsnapshot.logrotate
 Patch1:         rsnapshot-config.patch
-Patch2:         skip-ssh-test.patch
 Patch3:         remove-dead-external-css-link.patch
 Patch4:         backup_pgsql.patch
 BuildRequires:  logrotate
