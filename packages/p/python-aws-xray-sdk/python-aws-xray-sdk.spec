@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aws-xray-sdk
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        The AWS X-Ray SDK for Python
 License:        Apache-2.0
