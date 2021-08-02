@@ -12,6 +12,7 @@ Wed Jul 21 06:23:09 UTC 2021 - nick wang <nwang@suse.com>
    terminate under specific conditions (corking enabled no other IO)
  * fix locking of drbd_devices idr that caused (very rarely) create/remove
    minor to fail
+- Add patch convert_to_blk_alloc_disk.patch (kernel b647ad024)
 - Remove patch compat_genl_maxattr_in_ops.patch
 - Delete _servicedata file since not used
 

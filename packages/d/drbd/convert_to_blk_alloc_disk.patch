@@ -1,0 +1,98 @@
+b647ad024841d02d67e78716f51f355d8d3e9656
+	Conver blk_alloc_queue to blk_alloc_disk
+
+diff -Naur drbd-9.0.30~1+git.10bee2d5.orig/drbd/drbd-kernel-compat/tests/have_blk_alloc_disk.c drbd-9.0.30~1+git.10bee2d5/drbd/drbd-kernel-compat/tests/have_blk_alloc_disk.c
+--- drbd-9.0.30~1+git.10bee2d5.orig/drbd/drbd-kernel-compat/tests/have_blk_alloc_disk.c	1970-01-01 08:00:00.000000000 +0800
++++ drbd-9.0.30~1+git.10bee2d5/drbd/drbd-kernel-compat/tests/have_blk_alloc_disk.c	2021-07-26 13:56:29.805439136 +0800
+@@ -0,0 +1,8 @@
++/* {"version":"v5.14-rc1", "commit": "f525464a8000f092c20b00eead3eaa9d849c599e", "comment": "block: add blk_alloc_disk and blk_cleanup_disk APIs, "author": "Christoph Hellwig <hch@lst.de>", "date": "Fri May 21 07:50:55 2021 +0200" } */
++/*{"version":"v5.14-rc1", "commit": "b647ad024841d02d67e78716f51f355d8d3e9656", "comment": "drbd: convert to blk_alloc_disk/blk_cleanup_disk", "author": "Christoph Hellwig <hch@lst.de>", "date": "Fri May 21 07:50:57 2021 +0200" }*/
++#include <linux/genhd.h>
++
++void dummy(void)
++{
++	blk_alloc_disk(0);
++}
+diff -Naur drbd-9.0.30~1+git.10bee2d5.orig/drbd/drbd_main.c drbd-9.0.30~1+git.10bee2d5/drbd/drbd_main.c
+--- drbd-9.0.30~1+git.10bee2d5.orig/drbd/drbd_main.c	2021-07-26 13:56:15.381311173 +0800
++++ drbd-9.0.30~1+git.10bee2d5/drbd/drbd_main.c	2021-07-26 13:58:19.070408470 +0800
+@@ -2934,8 +2934,12 @@
+ 		device->bitmap = NULL;
+ 	}
+ 
++#ifdef COMPAT_HAVE_BLK_ALLOC_DISK
++	blk_cleanup_disk(device->vdisk);
++#else
+ 	put_disk(device->vdisk);
+ 	blk_cleanup_queue(device->rq_queue);
++#endif
+ 
+ 	kfree(device);
+ 
+@@ -3654,7 +3658,9 @@
+ 	struct drbd_device *device;
+ 	struct drbd_peer_device *peer_device, *tmp_peer_device;
+ 	struct gendisk *disk;
++#ifndef COMPAT_HAVE_BLK_ALLOC_DISK
+ 	struct request_queue *q;
++#endif
+ 	LIST_HEAD(peer_devices);
+ 	LIST_HEAD(tmp);
+ 	int id;
+@@ -3719,25 +3725,39 @@
+ 
+ 	init_rwsem(&device->uuid_sem);
+ 
++#ifdef COMPAT_HAVE_BLK_ALLOC_DISK
++	disk = blk_alloc_disk(NUMA_NO_NODE);
++#else
+ 	q = blk_alloc_queue(NUMA_NO_NODE);
+ 	if (!q)
+ 		goto out_no_q;
+ 	device->rq_queue = q;
+ 
+ 	disk = alloc_disk(1);
++#endif
+ 	if (!disk)
+ 		goto out_no_disk;
+ 	device->vdisk = disk;
+-
++#ifdef COMPAT_HAVE_BLK_ALLOC_DISK
++	device->rq_queue = disk->queue;
++	disk->minors = 1;
++#else
+ 	disk->queue = q;
++#endif
++
+ 	disk->major = DRBD_MAJOR;
+ 	disk->first_minor = minor;
+ 	disk->fops = &drbd_ops;
+ 	sprintf(disk->disk_name, "drbd%d", minor);
+ 	disk->private_data = device;
+ 
++#ifdef COMPAT_HAVE_BLK_ALLOC_DISK
++	blk_queue_flag_set(QUEUE_FLAG_STABLE_WRITES, disk->queue);
++	blk_queue_write_cache(disk->queue, true, true);
++#else
+ 	blk_queue_flag_set(QUEUE_FLAG_STABLE_WRITES, q);
+ 	blk_queue_write_cache(q, true, true);
++#endif
+ 
+ 	device->md_io.page = alloc_page(GFP_KERNEL);
+ 	if (!device->md_io.page)
+@@ -3866,10 +3886,15 @@
+ out_no_bitmap:
+ 	__free_page(device->md_io.page);
+ out_no_io_page:
++#ifdef COMPAT_HAVE_BLK_ALLOC_DISK
++	blk_cleanup_disk(disk);
++out_no_disk:
++#else
+ 	put_disk(disk);
+ out_no_disk:
+ 	blk_cleanup_queue(q);
+ out_no_q:
++#endif
+ 	kref_put(&resource->kref, drbd_destroy_resource);
+ 	kref_debug_put(&resource->kref_debug, 4);
+ 		/* kref debugging wants an extra put, see has_refs() */

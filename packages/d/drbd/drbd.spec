@@ -35,6 +35,7 @@ Source1:        preamble
 Source2:        Module.supported
 Source3:        drbd_git_revision
 Patch1:         fix-resync-finished-with-syncs-have-bits-set.patch
+Patch2:         convert_to_blk_alloc_disk.patch
 Patch99:        suse-coccinelle.patch
 #https://github.com/openSUSE/rpmlint-checks/blob/master/KMPPolicyCheck.py
 BuildRequires:  coccinelle >= 1.0.8
@@ -69,6 +70,7 @@ installed kernel.
 %prep
 %setup -q -n drbd-%{version}
 %patch1 -p1
+%patch2 -p1
 %patch99 -p1
 
 mkdir source
