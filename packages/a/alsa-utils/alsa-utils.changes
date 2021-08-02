@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:46:26 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * sound-extra.service
+
+-------------------------------------------------------------------
 Mon Jun 14 15:04:57 CEST 2021 - tiwai@suse.de
 
 - Update to alsa-utils 1.2.5:

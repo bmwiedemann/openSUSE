@@ -4,5 +4,14 @@ After=alsa-restore.service
 ConditionPathExists=/proc/asound
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
 Type=oneshot
 ExecStart=/usr/lib/systemd/scripts/load-sound-modules.sh
