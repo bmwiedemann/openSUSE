@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jul 31 22:33:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.2
+  * Use standard icon name application-x-executable-symbolic
+    instead of applications-other-symbolic
+  * Fix install with rpm/pkgbuild/pip
+    (gxo#apps/catfish#58, gxo#apps/catfish#59)
+  * Added keyboard hotkeys for search entry, new open dialog
+  * Fix Thunar "Show in FM" bug, better FM support
+    (gxo#apps/catfish#43)
+  * Stops freezes with special files when zip search enabled
+  * Better and safer refreshing of selected results
+    (gxo#apps/catfish#48)
+  * Enable sidebar by default (gxo#apps/catfish#45)
+  * Enable installation using pip (local source)
+    (gxo#apps/catfish!20)
+  * Add support for searching compressed files (gxo#apps/catfish#29)
+  * Add persistent settings for searching file contents
+    (gxo#apps/catfish#10)
+  * Add persistent settings for thumbnail view (gxo#apps/catfish#14)
+  * Add message and troff mimetypes to fulltext search
+    (gxo#apps/catfish!22)
+  * Add PDF support to fulltext search (gxo#apps/catfish#37)
+  * Fix loading in Wayland (gxo#apps/catfish#50)
+  * Stop current search when new one starts (gxo#apps/catfish!28)
+  * Use local MIME database info (gxo#apps/catfish!21)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jan  8 13:46:46 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.0

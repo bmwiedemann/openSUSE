@@ -238,4 +238,12 @@
   * Correctly position custom filter popups above gear icon</comment>
     <requestid>861989</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dc2eba8fb2b1c73300b40eeb0f88cf8b</srcmd5>
+    <version>4.16.2</version>
+    <time>1627898704</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.2</comment>
+    <requestid>909638</requestid>
+  </revision>
 </revisionlist>
