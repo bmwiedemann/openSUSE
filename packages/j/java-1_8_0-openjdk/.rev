@@ -642,4 +642,12 @@
     <comment></comment>
     <requestid>895861</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>a65a4041a0759d07e0ac52db34ad07cd</srcmd5>
+    <version>1.8.0.302</version>
+    <time>1627898687</time>
+    <user>dimstar_suse</user>
+    <comment>July 2021 CPU</comment>
+    <requestid>908889</requestid>
+  </revision>
 </revisionlist>

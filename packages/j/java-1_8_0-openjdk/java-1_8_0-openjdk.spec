@@ -16,9 +16,10 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %{!?aarch64:%global aarch64 aarch64 arm64 armv8}
 %global jit_arches %{ix86} x86_64 ppc64 ppc64le %{aarch64} %{arm}
-%global icedtea_version 3.19.0
+%global icedtea_version 3.20.0
 %global icedtea_sound_version 1.0.1
 %global buildoutputdir openjdk.build/
 # Convert an absolute path to a relative path.  Each symbolic link is
@@ -32,8 +33,8 @@
 # priority must be 6 digits in total
 %global priority        1805
 %global javaver         1.8.0
-%global updatever       292
-%global buildver        10
+%global updatever       302
+%global buildver        08
 # Standard JPackage directories and symbolic links.
 %global sdklnk          java-%{javaver}-openjdk
 %global archname        %{sdklnk}
@@ -147,7 +148,7 @@
 %global with_systemtap 0
 %endif
 %if 0%{?suse_version} > 1500 && !0%{?sle_version}
-%global with_shanandoah 1
+%global with_shenandoah 1
 %else
 %global with_shenandoah 0
 %endif
@@ -169,19 +170,19 @@ Release:        0
 Summary:        OpenJDK 8 Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
 Group:          Development/Languages/Java
-URL:            http://openjdk.java.net/
-Source0:        http://icedtea.wildebeest.org/download/source/icedtea-%{icedtea_version}.tar.xz
-Source1:        http://icedtea.wildebeest.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
-Source2:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/openjdk.tar.xz
-Source3:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/corba.tar.xz
-Source4:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/jaxp.tar.xz
-Source5:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/jaxws.tar.xz
-Source6:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/jdk.tar.xz
-Source7:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/langtools.tar.xz
-Source8:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/hotspot.tar.xz
-Source9:        http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/aarch32.tar.xz
-Source10:       http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/shenandoah.tar.xz
-Source11:       http://icedtea.wildebeest.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
+URL:            https://openjdk.java.net/
+Source0:        https://icedtea.classpath.org/download/source/icedtea-%{icedtea_version}.tar.xz
+Source1:        https://icedtea.classpath.org/download/source/icedtea-sound-%{icedtea_sound_version}.tar.xz
+Source2:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/openjdk.tar.xz
+Source3:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/corba.tar.xz
+Source4:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxp.tar.xz
+Source5:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jaxws.tar.xz
+Source6:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/jdk.tar.xz
+Source7:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/langtools.tar.xz
+Source8:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/hotspot.tar.xz
+Source9:        https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/aarch32.tar.xz
+Source10:       https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/shenandoah.tar.xz
+Source11:       https://icedtea.classpath.org/download/drops/icedtea8/%{icedtea_version}/nashorn.tar.xz
 # RPM/distribution specific patches
 # RHBZ 1015432
 Patch2:         1015432.patch
@@ -196,14 +197,11 @@ Patch14:        zero-javadoc-verbose.patch
 #
 # Patch for PPC
 Patch103:       ppc-zero-hotspot.patch
-
 Patch1001:      java-1_8_0-openjdk-suse-desktop-files.patch
 Patch1002:      icedtea-3.8.0-s390.patch
 Patch2001:      disable-doclint-by-default.patch
 Patch2002:      JDK_1_8_0-8208602.patch
-
 Patch3000:      tls13extensions.patch
-
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -216,6 +214,7 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc-c++
 BuildRequires:  giflib-devel
 BuildRequires:  gtk2-devel
+BuildRequires:  javapackages-tools
 BuildRequires:  libjpeg-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpng-devel
@@ -312,6 +311,12 @@ Summary:        OpenJDK 8 Runtime Environment
 # Require jpackage-utils for ownership of /usr/lib/jvm/
 Group:          Development/Languages/Java
 Requires:       jpackage-utils
+# mozilla-nss has to be installed to prevent
+# java.security.ProviderException: Could not initialize NSS
+# ...
+# java.io.FileNotFoundException: /usr/lib64/libnss3.so
+#was bnc#634793
+Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
@@ -336,12 +341,6 @@ Provides:       jndi-dns = %{version}
 Provides:       jndi-ldap = %{version}
 Provides:       jndi-rmi = %{version}
 Provides:       jsse = %{version}
-# mozilla-nss has to be installed to prevent
-# java.security.ProviderException: Could not initialize NSS
-# ...
-# java.io.FileNotFoundException: /usr/lib64/libnss3.so
-#was bnc#634793
-Requires:       mozilla-nss
 
 %description headless
 The OpenJDK 8 runtime environment without audio and video support.
@@ -1072,7 +1071,7 @@ fi
 %dir %{_libdir}/jvm-private
 
 %doc %{buildoutputdir}images/j2sdk-image/jre/ASSEMBLY_EXCEPTION
-%doc %{buildoutputdir}images/j2sdk-image/jre/LICENSE
+%license %{buildoutputdir}images/j2sdk-image/jre/LICENSE
 %doc %{buildoutputdir}images/j2sdk-image/jre/THIRD_PARTY_README
 
 %dir %{_jvmdir}/%{sdkdir}
@@ -1087,17 +1086,17 @@ fi
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/blacklisted.certs
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/nss.cfg
-%{_mandir}/man1/java-%{sdklnk}.1*
-%{_mandir}/man1/jjs-%{sdklnk}.1*
-%{_mandir}/man1/keytool-%{sdklnk}.1*
-%{_mandir}/man1/orbd-%{sdklnk}.1*
-%{_mandir}/man1/pack200-%{sdklnk}.1*
-%{_mandir}/man1/policytool-%{sdklnk}.1*
-%{_mandir}/man1/rmid-%{sdklnk}.1*
-%{_mandir}/man1/rmiregistry-%{sdklnk}.1*
-%{_mandir}/man1/servertool-%{sdklnk}.1*
-%{_mandir}/man1/tnameserv-%{sdklnk}.1*
-%{_mandir}/man1/unpack200-%{sdklnk}.1*
+%{_mandir}/man1/java-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jjs-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/keytool-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/orbd-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/pack200-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/policytool-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/rmid-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/rmiregistry-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/servertool-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/tnameserv-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/unpack200-%{sdklnk}.1%{?ext_man}
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/US_export_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/limited/local_policy.jar
 %{_jvmdir}/%{jredir}/lib/security/policy/unlimited/US_export_policy.jar
@@ -1119,35 +1118,35 @@ fi
 %endif
 %{_jvmdir}/%{sdklnk}
 %{_jvmjardir}/%{sdklnk}
-%{_mandir}/man1/appletviewer-%{sdklnk}.1*
-%{_mandir}/man1/extcheck-%{sdklnk}.1*
-%{_mandir}/man1/idlj-%{sdklnk}.1*
-%{_mandir}/man1/jar-%{sdklnk}.1*
-%{_mandir}/man1/jarsigner-%{sdklnk}.1*
-%{_mandir}/man1/javac-%{sdklnk}.1*
-%{_mandir}/man1/javadoc-%{sdklnk}.1*
-%{_mandir}/man1/javah-%{sdklnk}.1*
-%{_mandir}/man1/javap-%{sdklnk}.1*
-%{_mandir}/man1/jconsole-%{sdklnk}.1*
-%{_mandir}/man1/jcmd-%{sdklnk}.1*
-%{_mandir}/man1/jdb-%{sdklnk}.1*
-%{_mandir}/man1/jdeps-%{sdklnk}.1*
-%{_mandir}/man1/jhat-%{sdklnk}.1*
-%{_mandir}/man1/jinfo-%{sdklnk}.1*
-%{_mandir}/man1/jmap-%{sdklnk}.1*
-%{_mandir}/man1/jps-%{sdklnk}.1*
-%{_mandir}/man1/jrunscript-%{sdklnk}.1*
-%{_mandir}/man1/jsadebugd-%{sdklnk}.1*
-%{_mandir}/man1/jstack-%{sdklnk}.1*
-%{_mandir}/man1/jstat-%{sdklnk}.1*
-%{_mandir}/man1/jstatd-%{sdklnk}.1*
-%{_mandir}/man1/native2ascii-%{sdklnk}.1*
-%{_mandir}/man1/rmic-%{sdklnk}.1*
-%{_mandir}/man1/schemagen-%{sdklnk}.1*
-%{_mandir}/man1/serialver-%{sdklnk}.1*
-%{_mandir}/man1/wsgen-%{sdklnk}.1*
-%{_mandir}/man1/wsimport-%{sdklnk}.1*
-%{_mandir}/man1/xjc-%{sdklnk}.1*
+%{_mandir}/man1/appletviewer-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/extcheck-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/idlj-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jar-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jarsigner-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/javac-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/javadoc-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/javah-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/javap-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jconsole-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jcmd-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jdb-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jdeps-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jhat-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jinfo-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jmap-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jps-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jrunscript-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jsadebugd-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jstack-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jstat-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/jstatd-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/native2ascii-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/rmic-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/schemagen-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/serialver-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/wsgen-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/wsimport-%{sdklnk}.1%{?ext_man}
+%{_mandir}/man1/xjc-%{sdklnk}.1%{?ext_man}
 
 %if %{with_systemtap}
 %{tapsetroot}
