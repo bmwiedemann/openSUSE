@@ -916,6 +916,7 @@
       <repopackage name="libportal0" arch="x86_64"/>
       <repopackage name="libportaudio2" arch="x86_64"/>
       <repopackage name="libprocps8" arch="x86_64"/>
+      <repopackage name="libprotobuf-lite28" arch="x86_64"/>
       <repopackage name="libprotobuf28" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5"/>
@@ -1517,6 +1518,7 @@
       <repopackage name="totem-pl-parser" arch="x86_64"/>
       <repopackage name="tpm2-0-tss" arch="x86_64"/>
       <repopackage name="tpm2.0-abrmd" arch="x86_64"/>
+      <repopackage name="tpm2.0-abrmd-selinux" arch="x86_64"/>
       <repopackage name="tpm2.0-tools" arch="x86_64"/>
       <repopackage name="tracker-data-files" arch="x86_64"/>
       <repopackage name="tracker-miner-files" arch="x86_64"/>
