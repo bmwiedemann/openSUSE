@@ -1026,7 +1026,11 @@ echo "HTML_TIMESTAMP = NO" >> odk/docs/idl/Doxyfile
 %define _lto_cflags %{nil}
 # do not eat all memory
 # make sure that JAVA_HOME is set correctly
-source %{_sysconfdir}/profile.d/alljava.sh
+if [ -f %{_sysconfdir}/profile.d/alljava.sh ]; then
+  . %{_sysconfdir}/profile.d/alljava.sh
+elif [ -f %{_distconfdir}/profile.d/alljava.sh ]; then
+  . %{_distconfdir}/profile.d/alljava.sh
+fi
 # use RPM_OPT_FLAGS, ...
 # remove big debugsymbols as we simply consume too much space
 %if %{with lto}
