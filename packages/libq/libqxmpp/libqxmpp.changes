@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  2 05:49:29 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- update to 1.4.0:
+  * Qt 6 port, including many undeprecations and some refactoring
+  * Add XEP-0224: Attention manager
+  * Implement MIX-MISC XEP-0407: Invitation message extension
+  * New SCRAM-SHA3-512 and SCRAM-SHA-512 SASL algorithms
+  * Client: Advertise stream management state
+  * RosterManager: Cache roster if stream can be resumed
+  * RosterManager: Enable MIX annotation for roster items
+  * Bind IQ errors are now handled properly
+  * Fix cached stream management packets are resent with the wrong account
+  * TransferManager: Fix undefined behaviour when parsing features
+  * OutgoingServer: Add missing 'to' and 'from' stream attributes
+
+-------------------------------------------------------------------
 Thu Sep 10 13:00:38 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Enable gstreamer
