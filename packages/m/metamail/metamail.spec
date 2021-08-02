@@ -1,7 +1,7 @@
 #
 # spec file for package metamail
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,12 +27,13 @@ Requires:       sharutils
 Version:        2.7.19
 Release:        0
 Summary:        MIME Mail Handler
-License:        MIT AND GPL-2.0-only
+License:        GPL-2.0-only AND MIT
 Group:          Productivity/Networking/Email/Utilities
 Source:         metamail-2.7-19.tar.gz
 Source1:        mimecheck
 Source2:        mimecheck.1
 Source3:        mimegrep-0.2.tar.xz
+Source4:        mimelang-0.2.tar.gz
 Patch0:         metamail-2.7-19-security.dif
 Patch1:         metamail-2.7-19.dif
 Patch2:         metamail-2.7-19-getline.dif
@@ -47,7 +48,8 @@ Metamail is required for reading multimedia mail messages (such as
 those using the Andrew toolkit) with elm.
 
 %prep
-%autosetup -p1 -n metamail-2.7-19 -b 3
+%setup -n metamail-2.7-19 -b 3 -b 4
+%autopatch -p1
 
 %build
     rm -f bin/mailserver
@@ -57,6 +59,9 @@ those using the Andrew toolkit) with elm.
     pushd ../mimegrep-0.2
 	./autogen.sh
 	%configure
+	make %{?_smp_mflags}
+    popd
+    pushd ../mimelang-0.2
 	make %{?_smp_mflags}
     popd
 
@@ -76,6 +81,9 @@ those using the Andrew toolkit) with elm.
     pushd ../mimegrep-0.2
 	make install DESTDIR=%{buildroot}
     popd
+    pushd ../mimelang-0.2
+	make install DESTDIR=%{buildroot}
+    popd
 
 %files
 %defattr(-,root,root)
@@ -91,6 +99,7 @@ those using the Andrew toolkit) with elm.
 %{_bindir}/mimeit
 %{_bindir}/mimencode
 %{_bindir}/mimecheck
+%{_bindir}/mimelang
 %{_bindir}/mimezip
 %{_bindir}/mimebzip
 %{_bindir}/mimegzip
@@ -125,6 +134,7 @@ those using the Andrew toolkit) with elm.
 %doc %{_mandir}/man1/mime.1.gz
 %doc %{_mandir}/man1/mimencode.1.gz
 %doc %{_mandir}/man1/mimecheck.1.gz
+%doc %{_mandir}/man1/mimelang.1.gz
 %doc %{_mandir}/man1/mmencode.1.gz
 %doc %{_mandir}/man1/patch-metamail.1.gz
 %doc %{_mandir}/man1/richtext.1.gz

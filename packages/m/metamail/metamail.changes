@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 13:18:14 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add simple mimelang tool to be able to check unicode block of
+  UTF-8 MIME encoded e-mail subjects
+
+-------------------------------------------------------------------
 Wed Jul 10 08:29:15 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Replace old mgrep script with new m(mime)grep written in hackweek
