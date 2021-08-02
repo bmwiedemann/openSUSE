@@ -1,5 +1,5 @@
 #
-# spec file for package apache-commons-logging
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2000-2007, JPackage Project
@@ -17,7 +17,6 @@
 #
 
 
-%{!?arm6:%global arm6 armv3l armv4b armv4l armv4tl armv5b armv5l armv5teb armv5tel armv5tejl armv6l armv6hl}
 %define base_name  logging
 %define short_name commons-%{base_name}
 Name:           apache-%{short_name}
@@ -35,11 +34,9 @@ Patch1:         commons-logging-1.2-sourcetarget.patch
 Patch2:         commons-logging-manifests.patch
 Patch3:         no-tests.patch
 BuildRequires:  ant
-BuildRequires:  ant-junit
 BuildRequires:  glassfish-servlet-api
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  junit
 BuildRequires:  log4j12-mini >= 1.2
 Requires:       java >= 1.8
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -64,10 +61,7 @@ logging implementation.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
-# Disable tests on arm6
-%ifarch %{arm6}
 %patch3 -p1
-%endif
 
 sed -i 's/\r//' RELEASE-NOTES.txt LICENSE.txt
 
@@ -82,7 +76,6 @@ mkdir -p $MAVEN_REPO_LOCAL
 
 export CLASSPATH=$(build-classpath \
                    plexus/ \
-                   junit \
                   ):target/classes:target/test-classes
 ant \
   -Dmaven.mode.offline=true -lib %{_javadir} \

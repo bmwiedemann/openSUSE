@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:28:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Disable tests everywhere, not only for arm6
+
+-------------------------------------------------------------------
 Wed Mar 24 09:22:40 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch
