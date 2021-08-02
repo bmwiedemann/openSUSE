@@ -17,7 +17,7 @@
 
 
 Name:           powerpc-utils
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        Utilities for PowerPC Hardware
 License:        GPL-2.0-or-later
@@ -28,25 +28,7 @@ Source1:        nvsetenv
 Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch4:         libvirt-service-dep.patch
-Patch5:         0001-HNV-fixes-for-qrydev-and-remove-lsdevinfo.patch
-Patch6:         0002-Disable-vnic-as-backup-vdevice-for-migratable-SR_IOV.patch
-Patch7:         0003-Clean-up-dead-network-config-interface-after-inactiv.patch
-Patch8:         powerpc-utils-sys_ident-Skip-length-field-from-search.patch
-Patch9:         0001-hcnmgr-Avoid-cleanup-of-bond-interface-at-boot-time-.patch
-Patch10:        0002-hcnmgr-Wait-for-sysfs-device-ready-when-looking-up-d.patch
-Patch11:        0003-hcnmgr-Avoid-using-ifcfg-file-for-checking-bonding-i.patch
-Patch12:        0004-hcnmgr-Avoid-using-xargs-to-process-NM-show-connecti.patch
-Patch13:        powerpc-utils-hcn-init-NM.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
-Patch15:        ofpathname-Use-NVMe-controller-physical-nsid.patch
-Patch16:        powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
-Patch17:        powerpc-utils-Update-ppc64-cpu-usage.patch
-Patch18:        0001-drmgr-don-t-open-sysfs-file-for-each-command.patch
-Patch19:        0002-drmgr-read-the-CPU-NUMA-topology.patch
-Patch20:        0003-drmgr-introduce-NUMA-based-LMB-removal.patch
-Patch21:        drmgr-fix-remove-by-index-operation.patch
-Patch22:        0005-hcnmgr-When-trying-to-detect-HNV-bond-list-all-conne.patch
-Patch23:        0006-hcnmgr-Set-autoconnect-slaves-on-HNV-connections.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libnuma-devel
@@ -63,10 +45,6 @@ Requires:       kmod-compat
 Requires:       systemd-sysvinit
 Requires:       udev
 Requires:       util-linux
-%if !0%{?sle_version} ||  0%{?sle_version} >= 150000
-# hcnmgr uses xxd from vim
-Requires:       (vim if NetworkManager)
-%endif
 Recommends:     powerpc-utils-python
 ExclusiveArch:  ppc ppc64 ppc64le
 %{?systemd_requires}

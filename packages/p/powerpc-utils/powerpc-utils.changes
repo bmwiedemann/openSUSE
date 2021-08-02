@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jul 30 07:39:59 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Update to version 1.3.9 (jsc#SLE-18645).
+  - Remove upstreamed patches
+    - 0001-HNV-fixes-for-qrydev-and-remove-lsdevinfo.patch
+    - 0002-Disable-vnic-as-backup-vdevice-for-migratable-SR_IOV.patch
+    - 0003-Clean-up-dead-network-config-interface-after-inactiv.patch
+    - powerpc-utils-sys_ident-Skip-length-field-from-search.patch
+    - 0001-hcnmgr-Avoid-cleanup-of-bond-interface-at-boot-time-.patch
+    - 0002-hcnmgr-Wait-for-sysfs-device-ready-when-looking-up-d.patch
+    - 0003-hcnmgr-Avoid-using-ifcfg-file-for-checking-bonding-i.patch
+    - 0004-hcnmgr-Avoid-using-xargs-to-process-NM-show-connecti.patch
+    - powerpc-utils-hcn-init-NM.patch
+    - ofpathname-Use-NVMe-controller-physical-nsid.patch
+    - powerpc-utils-Fix-ofpathname-race-with-udev-rename.patch
+    - powerpc-utils-Update-ppc64-cpu-usage.patch
+    - 0001-drmgr-don-t-open-sysfs-file-for-each-command.patch
+    - 0002-drmgr-read-the-CPU-NUMA-topology.patch
+    - 0003-drmgr-introduce-NUMA-based-LMB-removal.patch
+    - drmgr-fix-remove-by-index-operation.patch
+    - 0005-hcnmgr-When-trying-to-detect-HNV-bond-list-all-conne.patch
+    - 0006-hcnmgr-Set-autoconnect-slaves-on-HNV-connections.patch
+
+-------------------------------------------------------------------
 Tue Jun 22 09:22:25 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Bring up the members of HNV link together with the HNV link
