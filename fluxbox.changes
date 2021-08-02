@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jul  3 00:38:14 UTC 2021 - Fernando Mattioli <mattioli.fernando@gmail.com>
+
+- Add gcc11.patch: replaces ordered pointer comparison with equality comparison.
+
+-------------------------------------------------------------------
 Wed Jun  7 12:26:15 UTC 2017 - jengelh@inai.de
 
 - Replace filler wording by some factual description.

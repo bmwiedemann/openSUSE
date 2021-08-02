@@ -1,7 +1,7 @@
 #
 # spec file for package fluxbox
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,13 +22,14 @@ Release:        0
 Summary:        A window manager for X based on Blackbox 0.61.1
 License:        MIT
 Group:          System/GUI/Other
-Url:            http://www.fluxbox.org/
+URL:            http://www.fluxbox.org/
 Source0:        https://downloads.sourceforge.net/project/fluxbox/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source1:        fluxboxmenu
 Source2:        SUSE.tar.bz2
 Source3:        fluxbox.desktop
 # PATCH-FIX-OPENSUSE fluxbox-remove_build_timestamp.patch -- removes __DATE and __TIME from the resulting binary
 Patch1:         fluxbox-remove_build_timestamp.patch
+Patch2:         gcc11.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Recommends:     %{name}-styles-upstream
 Provides:       windowmanager
@@ -75,6 +76,7 @@ This package provides the upstream bundle of styles.
 %prep
 %setup -q -a 2
 %patch1
+%patch2 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"
