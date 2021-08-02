@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 02 09:34:54 UTC 2021 - kukuk@suse.com
+
+- Update to version 1627896609.eba1207:
+  * Include busybox-findutils, adjust entrypoint location
+
+-------------------------------------------------------------------
 Fri Dec 18 08:50:43 UTC 2020 - Thorsten Kukuk <kukuk@suse.com>
 
 - Initial version 
