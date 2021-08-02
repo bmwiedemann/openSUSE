@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 27 16:03:32 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Directory core/docs does not exist
+
+-------------------------------------------------------------------
 Tue May 25 11:39:46 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Add bouncycastle_getpoms.sh to get pom files from Maven repos

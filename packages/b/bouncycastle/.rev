@@ -272,4 +272,12 @@ view</comment>
     <comment>Get pom files by script</comment>
     <requestid>897997</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>53f548064f1abfc113069c9a4fd96ae0</srcmd5>
+    <version>1.68</version>
+    <time>1627898680</time>
+    <user>dimstar_suse</user>
+    <comment>Do not reference directory that does not exist</comment>
+    <requestid>908785</requestid>
+  </revision>
 </revisionlist>

@@ -198,7 +198,7 @@ fi
 
 %files -f .mfiles-bcprov
 %license build/artifacts/jdk1.5/bcprov-jdk15on-*/LICENSE.html
-%doc docs/ core/docs/ *.html
+%doc docs/ *.html
 %config(noreplace) %{_sysconfdir}/java/security/security.d/2000-%{classname}
 
 %files pkix -f .mfiles-bcpkix
