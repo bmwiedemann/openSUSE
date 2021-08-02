@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.30.ge9a23d9e06
+%define suse_version +suse.45.g73e9e6fb84
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -56,7 +56,7 @@
 
 Name:           systemd
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        248.3
+Version:        248.6
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -193,13 +193,6 @@ Patch12:        0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
 # upstream and need an urgent fix. Even in this case, the patches are
 # temporary and should be removed as soon as a fix is merged by
 # upstream.
-Patch100:       0001-Revert-core-prevent-excessive-proc-self-mountinfo-pa.patch
-
-# Patches for bsc#1188063/CVE-2021-33910. They will be moved to the
-# git repo once the bug will become public.
-Patch1001:      1001-unit-name-generate-a-clear-error-code-when-convertin.patch
-Patch1002:      1002-basic-unit-name-do-not-use-strdupa-on-a-path.patch
-Patch1003:      1003-basic-unit-name-adjust-comments.patch
 
 %description
 Systemd is a system and service manager, compatible with SysV and LSB

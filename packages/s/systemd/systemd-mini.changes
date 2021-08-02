@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Jul 26 10:54:10 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 73e9e6fb847513c6d62f2fb445778ef5bc0fe516 (merge of v248.6)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/cb29bcc5ef2c0ee659686c5d229646a6ba98ec50...73e9e6fb847513c6d62f2fb445778ef5bc0fe516
+
+-------------------------------------------------------------------
+Tue Jul 20 16:26:39 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Drop 0001-Revert-core-prevent-excessive-proc-self-mountinfo-pa.patch
+
+  Commit 81107b8419c39f726fd2805517a5b9faab204e59 fixes
+  https://github.com/systemd/systemd/issues/19464 which makes the
+  aforementioned patch not needed anymore.
+
+-------------------------------------------------------------------
+Tue Jul 20 16:22:46 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Drop 1003-basic-unit-name-adjust-comments.patch
+
+  It's been merged in SUSE/v248 branch
+
+-------------------------------------------------------------------
+Tue Jul 20 15:51:47 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit cb29bcc5ef2c0ee659686c5d229646a6ba98ec50 (merge of v248.5)
+
+  4a1c5f34bd basic/unit-name: do not use strdupa() on a path (bsc#1188063 CVE-2021-33910)
+  [...]
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/94efce2ee59fca15a48ff9c232c8dd7cf930c0a0...cb29bcc5ef2c0ee659686c5d229646a6ba98ec50
+
+- Drop 1002-basic-unit-name-do-not-use-strdupa-on-a-path.patch as it
+  was merged in v248.5.
+
+-------------------------------------------------------------------
+Tue Jul 20 15:25:38 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 94efce2ee59fca15a48ff9c232c8dd7cf930c0a0 (merge of v248.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/c0aecee593511e49638579cb2b9ac8aaf1f8e6c8...94efce2ee59fca15a48ff9c232c8dd7cf930c0a0
+
+- Drop 1001-unit-name-generate-a-clear-error-code-when-convertin.patch
+  as it was merged in v248.4.
+
+-------------------------------------------------------------------
+Tue Jul 20 15:10:41 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit c0aecee593511e49638579cb2b9ac8aaf1f8e6c8
+
+  42ec1d537a login: use a hwdb entry for tagging Parallels' fb devices with 'master-of-seat' tag
+  ecc7c7b462 login: use a hwdb entry for tagging HyperV's fb devices with 'master-of-seat' tag
+  a4cfd70476 login: XGI Z7/Z9 (XG20 core) graphic chip requires master-of-seat to be set (bsc#1187154)
+  ef553e0199 sd-dhcp-client: tentatively ignore FORCERENEW command (bsc#1185972 CVE-2020-13529)
+  aae6c575fc sd-dhcp-client: logs when dhcp client unexpectedly gains a new lease
+  258a3d2043 sd-dhcp-client: shorten code a bit
+  0a80303114 sd-dhcp-client: check error earlier and reduce indentation
+
+-------------------------------------------------------------------
 Thu Jul  8 18:04:31 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Added patches to fix CVE-2021-33910 (bsc#1188063)
