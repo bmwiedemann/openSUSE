@@ -29,4 +29,52 @@
 </comment>
     <requestid>862540</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d5fe8b4708df2f0ed2f86afcbd5d5dbc</srcmd5>
+    <version>1.4.1</version>
+    <time>1627898705</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.1
+  * Update hddtemp netcat support
+  * Check for libsensors if it is explicitly enabled
+  * Use a drawing area to display sensor data in text UI style
+  * Fix a use-after-free error when closing the main window
+  * Increase main window size from 400 to 800 pixels
+  * Fix a use-after-free error when disabling a tachometer
+  * Fix preliminary config memory leak
+  * Improved handling of denormal floating-point values
+  * Update automatic coloring of progress bars
+  * Update and sort the list of authors
+  * Corrections to the number of rows when displaying sensor data as text
+  * Remove support for lm-sensors 2.x (API &lt; 0x400)
+  * Center tachometers vertically
+  * Layout sensors when cover-all-rows is toggled
+  * Fix invalid &quot;size-changed&quot; callback function declaration
+  * Avoid interference of tachometer allocations with GtkBox child allocs
+  * configure: Remove nano version and update init arguments
+  * configure: Bump required glib to 2.50
+  * configure: Bump required Xfce libs to 4.14
+  * configure: Remove checks covered by C99
+  * configure: Remove UNIX variants check
+  * Ellipsize labels only when needed
+  * Remove support for libnotify 0.4
+  * Enable automatic switching of colors based on light or dark UI theme
+  * Move text inside the tachometer
+  * Remove unused options.dialog files
+  * Use capital letters when spelling NVIDIA
+  * Code cleanup: Shorten all variable names to speedup readability
+  * Use a single bit to store boolean values
+  * Prevent memset2() from compiling because of a double-increment bug
+  * Fix fgets() compiler warning
+  * Code cleanup: Remove all TRACE() lines
+  * Fix invalid order of widgets after changing panel orientation
+  * Fix accesses to destroyed widgets when changing the panel orientation
+  * Increase icon size in about dialog from 32 to 48 pixels
+  * Update copyright year in about dialog
+  * Fix invalid state flag
+  * Include X11 headers before NVCtrl headers
+  * Translation Updates
+</comment>
+    <requestid>909639</requestid>
+  </revision>
 </revisionlist>
