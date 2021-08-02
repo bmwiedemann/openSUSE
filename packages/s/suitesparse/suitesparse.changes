@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 26 14:34:36 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Enable openblas on riscv64
+
+-------------------------------------------------------------------
 Wed May 26 18:23:49 UTC 2021 - Christoph G <foss@grueninger.de>
 
 - Update to version 5.10.1

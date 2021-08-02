@@ -20,7 +20,7 @@
 %define _lto_cflags %{nil}
 %endif
 
-%ifarch m68k riscv64
+%ifarch m68k
 %bcond_with openblas
 %else
 %bcond_without openblas
