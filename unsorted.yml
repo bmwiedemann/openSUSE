@@ -3660,6 +3660,8 @@ unsorted:
   - fluidsynth-devel 
   - fluidsynth-dssi 
   - flute-javadoc 
+  - fluxbox 
+  - fluxbox-styles-upstream 
   - flxmlrpc-devel 
   - fly 
   - fmit 
@@ -14707,10 +14709,10 @@ unsorted:
   - libzbarqt-devel 
   - libzbarqt0 
   - libzbarqt0-32bit: [x86_64] 
-  - libzbc-5_10_0 
   - libzbc-devel 
   - libzbc-gui 
   - libzbc-tools 
+  - libzbc5 
   - libzck-devel 
   - libzeitgeist-1_0-1 
   - libzeitgeist-1_0-1-32bit: [x86_64] 
@@ -21133,6 +21135,7 @@ unsorted:
   - python3-gv 
   - python3-hawkey 
   - python3-heatclient 
+  - python3-hg-git 
   - python3-hivex 
   - python3-img-proof 
   - python3-img-proof-tests 
@@ -21420,7 +21423,6 @@ unsorted:
   - python36-Flask-RESTful 
   - python36-Flask-RSTPages 
   - python36-Flask-SQLAlchemy 
-  - python36-Flask-Script 
   - python36-Flask-Security-Too 
   - python36-Flask-SocketIO 
   - python36-Flask-Testing 
@@ -22882,6 +22884,7 @@ unsorted:
   - python36-mistune 
   - python36-moban 
   - python36-moban-ansible 
+  - python36-mobi 
   - python36-mock 
   - python36-mock-open 
   - python36-mocket 
@@ -24201,7 +24204,6 @@ unsorted:
   - python38-Flask-RESTful 
   - python38-Flask-RSTPages 
   - python38-Flask-SQLAlchemy 
-  - python38-Flask-Script 
   - python38-Flask-Security-Too 
   - python38-Flask-SocketIO 
   - python38-Flask-Testing 
@@ -25748,6 +25750,7 @@ unsorted:
   - python38-mizani 
   - python38-moban 
   - python38-moban-ansible 
+  - python38-mobi 
   - python38-mock 
   - python38-mock-open 
   - python38-mocket 
@@ -26335,6 +26338,7 @@ unsorted:
   - python38-pytest-qt 
   - python38-pytest-random-order 
   - python38-pytest-randomly 
+  - python38-pytest-regressions 
   - python38-pytest-relaxed 
   - python38-pytest-remotedata 
   - python38-pytest-reorder 
@@ -27157,7 +27161,6 @@ unsorted:
   - python39-Flask-RESTful 
   - python39-Flask-RSTPages 
   - python39-Flask-SQLAlchemy 
-  - python39-Flask-Script 
   - python39-Flask-Security-Too 
   - python39-Flask-SocketIO 
   - python39-Flask-Testing 
@@ -28783,6 +28786,7 @@ unsorted:
   - python39-mizani 
   - python39-moban 
   - python39-moban-ansible 
+  - python39-mobi 
   - python39-mock 
   - python39-mock-open 
   - python39-mocket 
@@ -29407,6 +29411,7 @@ unsorted:
   - python39-pytest-qt 
   - python39-pytest-random-order 
   - python39-pytest-randomly 
+  - python39-pytest-regressions 
   - python39-pytest-relaxed 
   - python39-pytest-remotedata 
   - python39-pytest-reorder 
@@ -40815,6 +40820,7 @@ unsorted:
   - tpm2-tss-engine-devel 
   - tpm2.0-abrmd: [i586] 
   - tpm2.0-abrmd-devel 
+  - tpm2.0-abrmd-selinux: [i586] 
   - tpm2.0-tools: [i586] 
   - trace-cmd 
   - tracker-devel 

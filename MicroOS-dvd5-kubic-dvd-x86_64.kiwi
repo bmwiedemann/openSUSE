@@ -433,6 +433,7 @@
       <repopackage name="libpolkit0" arch="x86_64"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libprocps8" arch="x86_64"/>
+      <repopackage name="libprotobuf-lite28" arch="x86_64"/>
       <repopackage name="libproxy1" arch="x86_64"/>
       <repopackage name="libpsl5"/>
       <repopackage name="libpwquality-tools" arch="x86_64"/>
@@ -760,6 +761,7 @@
       <repopackage name="toolbox" arch="x86_64"/>
       <repopackage name="tpm2-0-tss" arch="x86_64"/>
       <repopackage name="tpm2.0-abrmd" arch="x86_64"/>
+      <repopackage name="tpm2.0-abrmd-selinux" arch="x86_64"/>
       <repopackage name="tpm2.0-tools" arch="x86_64"/>
       <repopackage name="transactional-update" arch="x86_64"/>
       <repopackage name="transactional-update-zypp-config" arch="x86_64"/>
