@@ -4,8 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="filename">csi-external-snapshotter</param>
-    <param name="versionformat">3.0.2</param>
-    <param name="revision">v3.0.2</param>
+    <param name="versionformat">4.0.0</param>
+    <param name="revision">v4.0.0</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*.tar</param>

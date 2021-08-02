@@ -18,12 +18,12 @@
 
 %{go_nostrip}
 
-%define project github.com/kubernetes-csi/external-snapshotter/v3
+%define project github.com/kubernetes-csi/external-snapshotter/v4
 %define package csi-snapshotter
 %define source external-snapshotter
 
 Name:           csi-%{source}
-Version:        3.0.2
+Version:        4.0.0
 Release:        0
 Summary:        Triggers CreateSnapshot/DeleteSnapshot against a CSI endpoint
 License:        Apache-2.0
