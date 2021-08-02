@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 30 01:01:37 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-session-exit-when-lost-name-on-bus.patch: gnome-session
+  exit immediately when lost name on bus
+  (bsc#1175622 glgo!GNOME/gnome-session!60, bsc#1188882).
+
+-------------------------------------------------------------------
 Fri Apr 30 12:35:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.1.1:

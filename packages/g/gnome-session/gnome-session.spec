@@ -28,6 +28,8 @@ Source1:        gnome
 Source2:        gnome.desktop
 # PATCH-FIX-UPSTREAM gnome-session-better-handle-empty-xdg_session_type.patch bsc#1084756 bgo#794256 yfjiang@suse.com -- solution provided by msrb@suse.com using a more reasonable way to handle gpu acceleration check
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
+# PATCH-FIX-UPSTREAM gnome-session-exit-when-lost-name-on-bus.patch bsc#1175622 glgo!GNOME/gnome-session!60 xwang@suse.com -- gnome-session exit immediately when lost name on bus
+Patch1:         gnome-session-exit-when-lost-name-on-bus.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
