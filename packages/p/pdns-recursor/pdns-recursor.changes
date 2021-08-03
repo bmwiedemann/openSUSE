@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 30 10:36:38 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 4.5.5:
+  * Improvements
+    - Work around clueless servers sending AA=0 answers.
+      References: #10555, pull request 10564
+  * Bug Fixes
+    - Ancestor NSEC3s can only deny the existence of a DS.
+      References: #10587, pull request 10593
+    - Make really sure we did not miss a cut on validation failure.
+      References: #10570, pull request 10575
+    - Clear the current proxy protocol values each iteration.
+      References: #10515, pull request 10573
+
+-------------------------------------------------------------------
 Mon Jul  5 07:27:02 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to 4.5.4:
