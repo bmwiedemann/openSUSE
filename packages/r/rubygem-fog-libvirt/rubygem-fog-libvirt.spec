@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-fog-libvirt
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 %define mod_name fog-libvirt
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.0.0}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
