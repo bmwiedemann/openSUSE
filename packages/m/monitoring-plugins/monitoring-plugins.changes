@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 26 04:05:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-devel. 
+
+-------------------------------------------------------------------
 Thu Jul  1 08:34:54 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Call gettextize with --no-changelog to make package build

@@ -104,7 +104,6 @@ BuildRequires:  perl-Net-SNMP
 BuildRequires:  postfix
 BuildRequires:  postgresql-devel
 BuildRequires:  procps
-BuildRequires:  python-devel
 BuildRequires:  samba-client
 %if 0%{?suse_version}
 %if 0%{?suse_version} > 1020
@@ -1290,7 +1289,7 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ 
+%doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ
 %doc NEWS README REQUIREMENTS SUPPORT README.SUSE
 %if 0%{?suse_version} >= 1500
 %license COPYING
@@ -1329,7 +1328,7 @@ fi
 
 %files common -f %{name}.lang
 %defattr(-,root,root)
-%doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ 
+%doc ABOUT-NLS ACKNOWLEDGEMENTS AUTHORS ChangeLog CODING FAQ
 %doc NEWS README REQUIREMENTS SUPPORT README.SUSE
 %if 0%{?suse_version} >= 1500
 %license COPYING
