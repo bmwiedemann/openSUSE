@@ -45,6 +45,7 @@ Source11:       languages.man
 Source12:       mingw64-cmake.prov
 Source13:       mingw64-cmake.attr
 Source14:       macros.mingw64-cmake
+Provides:       mingw64(bcrypt.dll)
 Provides:       mingw64(dbghelp.dll)
 Provides:       mingw64(mpr.dll)
 Provides:       mingw64(odbccp32.dll)

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 28 06:04:17 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+
+-  Add provides for bcrypt.dll required by mingw64-gdb 10.2
+
+-------------------------------------------------------------------
 Mon Jul 12 14:30:26 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Add provides for ncrypt.dll required by mingw64-gnutls clients
