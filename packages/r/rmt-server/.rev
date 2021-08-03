@@ -1041,4 +1041,13 @@ This references bsc#1186798</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908906</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>dab46f2e323bbe5bfc058c4f495674cc</srcmd5>
+    <version>2.6.11</version>
+    <time>1628023747</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix: Don't create suma and repo symlinks at install stage, instead
+  only link them at the post stage if they don't exist (bsc#1188043)</comment>
+    <requestid>909990</requestid>
+  </revision>
 </revisionlist>
