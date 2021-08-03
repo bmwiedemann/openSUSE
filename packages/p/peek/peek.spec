@@ -45,6 +45,7 @@ Currently, only X11 window system is supported.
 %prep
 %setup -q
 
+sed -i 's#python#python3#' po/meson.build
 %build
 %meson
 %meson_build

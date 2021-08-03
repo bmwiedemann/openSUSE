@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 07:32:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Use Python3 instead of Python 2 when running meson.
+
+-------------------------------------------------------------------
 Tue Feb 25 12:36:48 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.5.1:
