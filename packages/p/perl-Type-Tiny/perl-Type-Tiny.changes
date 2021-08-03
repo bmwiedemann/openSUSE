@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug  1 03:09:04 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.012004
+   see /usr/share/doc/packages/perl-Type-Tiny/Changes
+
+  1.012004	2021-07-29
+
+   [ Documentation ]
+   - Fixed typo in Types::Standard documentation where StrMatch regexp
+     parameter didn't use qr// properly.
+     Lucas Tiago de Moraes++
+
+-------------------------------------------------------------------
 Mon May 10 03:08:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.012003
