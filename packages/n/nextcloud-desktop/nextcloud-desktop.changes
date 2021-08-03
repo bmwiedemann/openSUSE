@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Tue Aug  3 10:02:29 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.0
+  - desktop#3333 Check if first is not empty
+  - desktop#3337 L10n: Spelling unification
+  - desktop#3339 Takes ECMCoverageOption from ECM to enable code coverage analysis
+  - desktop#3341 Automate removal of needs info labels when the issue is commented
+  - desktop#3345 Ci/test appveyor
+  - desktop#3352 Bugfix. Crash when printing OpenSSL decryption errors with no e2ee mnemonic,
+  - desktop#3368 Improve error message
+  - desktop#3369 Prevent crash in dialog that warns user about vfs and e2ee
+  - desktop#3370 Fix/files fixes for windows and logs
+  - desktop#3380 Document --background
+  - desktop#3386 Fix needs info label remover action by providing github token
+  - desktop#3388 Bugfix/qml warnings
+  - desktop#3390 VFS freeze fix. Treat .sync-exclude.lst as a non-virtual file always.
+  - desktop#3393 Added unit tests for Utility::isPathWindowsDrivePartitionRoot.
+  - desktop#3394 Really fix the actions to remove needsinfo when someone comment
+  - desktop#3395 Generate png icons with inkscape
+  - desktop#3397 Enable clazy in drone
+  - desktop#3401 Added config parameter that allows to bypass checksum validation failure
+  - desktop#3404 Start macOS app bundle name with uppercase letter
+  - desktop#3410 Check compiler against CMAKE_CXX_COMPILER_ID
+  - desktop#3420 Cfapi: Make sure no data is transfered after cancellation
+  - desktop#3425 VFS wipe moved folder when conflict
+  - desktop#3432 Set pin state correct after rename
+  - desktop#3437 Bring back dynamic load of VFS plugins
+  - desktop#3445 Remove unused function declaration
+  - desktop#3449 Fix VFS crash and false conflict on local new.
+  - desktop#3460 Add unit test for move custom remote root
+  - desktop#3464 Add building for Ubuntu Impish
+  - desktop#3468 Show main dialog as normal window if tray icons not available
+  - desktop#3471 Build optional without QWebEngine
+  - desktop#3472 Directly send the icon url for activities to the qml component
+  - desktop#3475 Use the full GPG key ID for signing Debian packages
+  - desktop#3486 Improve error message in case of trailing space in directory name
+  - desktop#3488 Remove unused pushNotifications variable
+  - desktop#3489 Design call improvements
+  - desktop#3490 Update documentation and replace old screenshots
+  - desktop#3492 Update command-rebase.yml from template
+  - desktop#3494 Download server public key and check user certificate against it
+  - desktop#3497 Run legacy uninstall exe in a secure way
+  - desktop#3498 Fix QML Warnings and create custom component for the activity list
+  - desktop#3501 Avoid error when doing hydration when data socket is closed too early
+  - desktop#3502 Fix all usage of _com_error(cfExecuteresult).ErrorMessage()
+  - desktop#3511 Improve the error message returned by updateMetadata
+  - desktop#3523 Avoid being stuck trying to create placeholder for existing file
+  - desktop#3536 Remove unnecessary png files
+  - desktop#3537 Only compile xattr virtual files backend for linux platform (not unices)
+  - desktop#3540 Position main dialog on at tray icon if not a regular window
+  - desktop#3541 Use dav instead of webdav
+  - desktop#3542 Enforce https in flow2 for https connections
+  - desktop#3547 Windows. Nextcloud Overlay Identifiers. Set 16 spaces before each identifier's name.
+  - desktop#3548 Update screenshot in README.md
+  - desktop#3552 Remove request to config for userVisibleURL.
+  - desktop#3554 Bump version to 3.3.0-rc1
+  - desktop#3557 Fix size of the Label with user status
+  - desktop#3558 Bugfix/user status too long account menu
+  - desktop#3565 Do not block account menu: availability checking can be slow
+  - desktop#3566 Create QMessageBox on heap and continue running the app when update is ready.
+  - desktop#3569 Print the real permissions string instead of its address
+  - desktop#3574 Open main dialog gnome always
+  - desktop#3579 L10n: Change to uppercase
+  - desktop#3581 Bump version to 3.3.0-rc2
+  - desktop#3582 Make main dialog normal window when displayed as regular window
+  - desktop#3586 Fix crash in Folder::isSyncRunning()
+  - desktop#3592 In wizard always use the correct way to get dav path
+  - desktop#3594 Revert: Added config parameter that allows to bypass checksum validation failure.
+  - desktop#3595 Do not build for Groovy
+  - desktop#3596 Don't constrain size of hover background
+  - desktop#3599 Update improvements and news in the documentation
+  - desktop#3602 Prevent crash in Accont::davPath without credentials
+  - desktop#3607 Bump version 3.3.0
+
+-------------------------------------------------------------------
 Fri Jul  9 08:32:07 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.2.4

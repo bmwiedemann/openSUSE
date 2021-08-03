@@ -19,7 +19,7 @@
 %define soname  libnextcloudsync
 %define sover   0
 Name:           nextcloud-desktop
-Version:        3.2.4
+Version:        3.3.0
 Release:        0
 Summary:        Nextcloud desktop synchronisation client
 License:        GPL-2.0-or-later AND LGPL-3.0-or-later
@@ -37,7 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  inkscape
+BuildRequires:  inkscape >= 1.0
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libqt5-linguist-devel
 BuildRequires:  pkgconfig
@@ -59,6 +59,7 @@ BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
 BuildRequires:  pkgconfig(Qt5WebSockets)
 BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(cloudproviders)
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(openssl) >= 1.1
 BuildRequires:  pkgconfig(sqlite3)
@@ -249,6 +250,7 @@ done
 %{_includedir}/nextcloudsync/
 %{_libdir}/%{soname}.so
 %{_libdir}/libnextcloud_csync.so
+%{_libdir}/nextcloudsync_vfs_*.so
 
 %files -n nautilus-extension-nextcloud
 %dir %{_datadir}/nautilus-python/
