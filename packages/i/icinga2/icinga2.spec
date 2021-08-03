@@ -99,10 +99,10 @@ Group:          System/Monitoring
 %else
 %endif
 Name:           icinga2
-Version:        2.12.5
+Version:        2.13.0
 Release:        %{revision}%{?dist}
 URL:            https://www.icinga.com/
-Source:         https://github.com/Icinga/%{name}/archive/v%{version}.tar.gz
+Source:         https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 Source1:        icinga2-rpmlintrc
 %if "%{_vendor}" == "suse"
