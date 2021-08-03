@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug  3 11:40:01 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.1.7
+  * incompatible change: on certain platforms (currently just x86-64),
+    dynamic-extent arrays specialized on character and numeric types and
+    created without either :INITIAL-ELEMENT or :INITIAL-CONTENTS will reflect
+    previous contents of the stack instead of #\null (or 0) in all elements.
+  * minor incompatible change: SB-SPROF:START-PROFILING no longer silently
+    does nothing if the clock is already running. It instead stop and restarts
+    with the newly provided options, and warns.
+  * minor incompatible change: the system attempts to refer to the supplied
+    pathname in compiler diagnostics, if relevant, rather than the truename.
+  * enhancement: new contrib module sb-graph producing graphical
+    visualizations of Intermediate Representations of SBCL compilation data
+    structures.
+  * platform support:
+    ** improved code generation for unary minus in modular contexts on arm64.
+    ** make the disassembler annotations slightly more robust on arm64.
+    ** release space back to the Operating System on Windows.
+    ** improve the test for whether pages need to be committed on Windows.
+    ** fix a bug in the use of the VPCMPEQD opcode on x86-64.  (lp#1928516,
+       thanks to Marco Heisig)
+  * optimization: the type of (LOOP ... COLLECT ...), and the type of COLLECT
+    INTO variables, is derived as LIST.  (lp#1934577, reported by SATO
+    shinichi)
+
+-------------------------------------------------------------------
+Wed Jul 28 05:47:05 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add sbcl-use-SOURCE_DATE_EPOCH-for-build-id.patch: Use
+  SOURCE_DATE_EPOCH for build-id instead of hostname+build-date to
+  avoid rebuilds of dependencies purely due to build-id
+  differences (boo#1188873).
+
+-------------------------------------------------------------------
 Tue Jun 29 08:44:12 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.1.6

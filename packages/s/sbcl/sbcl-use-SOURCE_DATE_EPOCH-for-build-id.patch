@@ -1,0 +1,14 @@
+Index: sbcl-2.1.6/make-config.sh
+===================================================================
+--- sbcl-2.1.6.orig/make-config.sh
++++ sbcl-2.1.6/make-config.sh
+@@ -723,7 +723,8 @@ if [ `uname` = "SunOS" ] ; then
+   # use /usr/xpg4/bin/id instead of /usr/bin/id
+   PATH=/usr/xpg4/bin:$PATH
+ fi
+-echo '"'`hostname`-`id -un`-`date +%Y-%m-%d-%H-%M-%S`'"' > output/build-id.inc
++SBCL_BUILD_ID=${SOURCE_DATE_EPOCH:=`hostname`-`id -un`-`date +%Y-%m-%d-%H-%M-%S`}
++echo '"'${SBCL_BUILD_ID}'"' > output/build-id.inc
+ 
+ if [ -n "$SBCL_HOST_LOCATION" ]; then
+     echo //setting up host configuration

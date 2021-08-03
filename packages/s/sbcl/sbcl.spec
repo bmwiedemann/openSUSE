@@ -21,7 +21,7 @@
 
 Name:           sbcl
 #!BuildIgnore:  gcc-PIE
-Version:        2.1.6
+Version:        2.1.7
 Release:        0
 Summary:        Steel Bank Common Lisp
 License:        BSD-3-Clause AND SUSE-Public-Domain
@@ -101,6 +101,8 @@ BuildRequires:  texlive-ec
 Patch0:         sbcl-1.1.2-install.patch
 # PATCH-FIX-OPENSUSE  strip -armv5 from CFLAGS
 Patch1:         strip-arm-CFLAGS.patch
+# PATCH-FEATURE-OPENSUSE sbcl-use-SOURCE_DATE_EPOCH-for-build-id.patch badshah400@gmail.com -- Use SOURCE_DATE_EPOCH for build-id instead of hostname+build-date to avoid rebuilds of dependencies purely due to build-id differences
+Patch2:         sbcl-use-SOURCE_DATE_EPOCH-for-build-id.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390x
 
@@ -121,6 +123,7 @@ ln -s "$(basename -- %{S:%{sbcl_bootstrap_src}} -binary.tar.bz2)" BOOTSTRAP
 %setup -q
 %patch0 -p1 -b install
 %patch1 -p1
+%patch2 -p1
 
 cp %{S:1} .
 cp %{S:2} .
