@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  3 08:39:38 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.4.4
+  * Add support for NaN and infinity representations
+  * Optional keys in mappings and set value to None
+  * Support underscores in int and decimal
+  * NullNone - parse 'null' as None like YAML 1.2 does.
+  * Bundle last propertly working ruamel.yaml version in with strictyaml.
+
+-------------------------------------------------------------------
 Tue Mar 17 12:35:33 UTC 2020 - pgajdos@suse.com
 
 - version update to 1.0.6
