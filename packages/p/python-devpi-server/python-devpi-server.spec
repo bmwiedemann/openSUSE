@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-server
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define commands export fsck gen-config import init passwd server
+%define commands export fsck gen-config import init passwd server gen-secret
 %define skip_python2 1
 Name:           python-devpi-server
-Version:        5.4.1
+Version:        6.1.0
 Release:        0
 Summary:        Private PyPI caching server
 License:        MIT
@@ -32,19 +32,22 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs
 Requires:       python-argon2-cffi >= 16.2
+Requires:       python-attrs
+Requires:       python-defusedxml
 Requires:       python-devpi-common >= 3.3.0
 Requires:       python-execnet >= 1.2
 Requires:       python-itsdangerous >= 0.24
+Requires:       python-lazy
 Requires:       python-passlib
 Requires:       python-pluggy >= 0.6.0
 Requires:       python-py >= 1.4.23
-Requires:       python-pyramid >= 1.8
+Requires:       python-pyramid >= 2
 Requires:       python-repoze.lru >= 0.6
 Requires:       python-ruamel.yaml >= 0.15.94
 Requires:       python-strictyaml
 Requires:       python-waitress >= 1.0.1
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # nginx tests failing when not skipped, likely due to rpmbuild environment
 Suggests:       nginx
 Suggests:       python-WebTest
@@ -56,17 +59,21 @@ BuildArch:      noarch
 BuildRequires:  %{python_module WebTest}
 BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module argon2-cffi >= 16.2}
+BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module defusedxml}
 BuildRequires:  %{python_module devpi-common >= 3.3.0}
 BuildRequires:  %{python_module execnet >= 1.2}
 BuildRequires:  %{python_module itsdangerous >= 0.24}
+BuildRequires:  %{python_module lazy}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module passlib}
 BuildRequires:  %{python_module pluggy >= 0.6.0}
 BuildRequires:  %{python_module py >= 1.4.23}
-BuildRequires:  %{python_module pyramid >= 1.8}
+BuildRequires:  %{python_module pyramid >= 2}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module repoze.lru >= 0.6}
+BuildRequires:  %{python_module ruamel.yaml >= 0.15.94}
 BuildRequires:  %{python_module strictyaml}
 BuildRequires:  %{python_module waitress >= 1.0.1}
 # /SECTION
@@ -123,6 +130,7 @@ done
 %python_alternative %{_bindir}/devpi-init
 %python_alternative %{_bindir}/devpi-passwd
 %python_alternative %{_bindir}/devpi-server
+%python_alternative %{_bindir}/devpi-gen-secret
 %{python_sitelib}/*
 
 %changelog

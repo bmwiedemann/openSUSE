@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  3 09:11:58 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.1.0
+  * Proxy requests from replica to master are now streamed if possible.
+  * Dropped support for Python 2.7, 3.4 and 3.5. Python 3.x versions 
+    will be supported until their EOL.
+  * Remove deprecated command line options which were replaced by 
+    separate scripts.
+  * The user creation and modification time is now stored.
+  * add explicit ruamel.yaml dependency declaration after strictyaml 
+    vendored it
+  * Allow user and index URLs to work with a trailing slash.
+
+-------------------------------------------------------------------
 Tue May 26 07:22:39 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
