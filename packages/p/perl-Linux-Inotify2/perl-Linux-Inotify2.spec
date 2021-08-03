@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Linux-Inotify2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
+%define cpan_name Linux-Inotify2
 Name:           perl-Linux-Inotify2
-Version:        2.2
+Version:        2.3
 Release:        0
 #Upstream: CHECK(Artistic-1.0 or GPL-1.0-or-later)
-%define cpan_name Linux-Inotify2
 Summary:        Scalable directory/file change notification
 License:        GPL-1.0-or-later OR Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/ML/MLEHMANN/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(common::sense)
@@ -51,12 +49,12 @@ unreliable API. For a good overview of the challenges you might run into,
 see this LWN article: https://lwn.net/Articles/605128/.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -67,7 +65,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 %license COPYING
 

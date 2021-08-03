@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  1 03:07:57 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.3
+   see /usr/share/doc/packages/perl-Linux-Inotify2/Changes
+
+  2.3 Sat Jul 31 13:45:51 CEST 2021
+          - store a filehandle internally so it gets perl's CLOEXEC flag as needed. also
+            gets rid of the destructor and the internal close function for added space
+            savings (reported by Eric Wong).
+  	- add new ->fh accessor.
+
+-------------------------------------------------------------------
 Tue Dec 10 03:12:26 UTC 2019 -  <timueller+perl@suse.de>
 
 - updated to 2.2
