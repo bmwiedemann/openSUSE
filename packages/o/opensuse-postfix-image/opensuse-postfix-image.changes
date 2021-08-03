@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 10:07:36 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Re-add busybox-findutils
+
+-------------------------------------------------------------------
 Fri Jan 22 12:34:54 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Make sure LMDB is used for /etc/aliases by newaliases

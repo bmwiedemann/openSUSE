@@ -72,4 +72,12 @@
     <comment>- Make sure LMDB is used for /etc/aliases by newaliases (forwarded request 865994 from kukuk)</comment>
     <requestid>865995</requestid>
   </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>c393e27487b6efb2b78bef734adfaf89</srcmd5>
+    <version>1.0.0</version>
+    <time>1628023713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909723</requestid>
+  </revision>
 </revisionlist>
