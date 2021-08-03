@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  2 13:07:55 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.38:
+  * Fix compilation failure with some compilers, including AIX's
+    because _XOPEN_SOURCE_EXTENDED was defined with null value.
+
+-------------------------------------------------------------------
 Wed Jun  9 11:29:42 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Build and link against ncurses version 5 to fix missing exported

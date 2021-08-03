@@ -16,13 +16,13 @@
 #
 
 
+%define cpan_name Curses
 Name:           perl-Curses
-Version:        1.37
+Version:        1.38
 Release:        0
 %define cpan_name Curses
 Summary:        Terminal screen handling and optimization
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GI/GIRAFFED/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
@@ -42,7 +42,7 @@ document describes the interface itself, and assumes that you already know
 how your system's curses(3) library works.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 # Fix perl script interpreters
@@ -54,7 +54,7 @@ sed -i '1s| /usr/bin/perl|%{__perl}|' demo* gdc
 export CURSES_CFLAGS="-I/usr/include/ncurses5/ncursesw"
 export CURSES_LDFLAGS="-L%{_libdir}/ncurses5 -lncursesw"
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}" PANELS MENUS FORMS
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -66,7 +66,7 @@ make test
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc demo* gdc gen.tar HISTORY list.syms MAINTENANCE README testcurses test.syms
+%doc demo demo2 demo.form demo.menu demo.panel gdc gen.tar HISTORY list.syms MAINTENANCE README testcurses test.syms
 %license Artistic Copying
 
 %changelog
