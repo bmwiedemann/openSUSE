@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Aug  1 09:20:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.16:
+  - Regression Fix: --with-valgrind-debug build broken since 4.15
+  - Bug 5129 pt1: remove Lock use from HttpRequestMethod
+  - Bug 5128: Translation: Fix '% i' typo in es/ERR_FORWARDING_DENIED
+  - Bug 4528: ICAP transactions quit on async DNS lookups 
+
+-------------------------------------------------------------------
 Tue May 18 09:43:49 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - fix building with SLE12

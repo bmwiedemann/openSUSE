@@ -948,4 +948,12 @@ from the squid 3.x changelog</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>895417</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>94cf853dd3cfd633e773f302371890ab</srcmd5>
+    <version>4.16</version>
+    <time>1628023725</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909881</requestid>
+  </revision>
 </revisionlist>
