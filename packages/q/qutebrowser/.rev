@@ -1704,4 +1704,24 @@ Fixed
     and the config directory).</comment>
     <requestid>902869</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ed8abcfef5ce044a01b7b6f734e4c695</srcmd5>
+    <version>2.3.1</version>
+    <time>1628023719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.1
+Fixed
+  * Updated the workaround for Google Account log in claiming that
+    this browser isn't secure. For an equivalent workaround on
+    older versions, run: :set -u https://accounts.google.com/*
+    content.headers.user_agent &quot;Mozilla/5.0 ({os_info}; rv:90.0)
+    Gecko/20100101 Firefox/90.0&quot;
+  * Corrupt cache file exceptions with adblock 0.5.0+ are now
+    handled properly.
+  * Crash when entering unicode surrogates into the filename
+    prompt.
+  * UnboundLocalError in qute-keepass when the database couldn't be
+    opened.</comment>
+    <requestid>909841</requestid>
+  </revision>
 </revisionlist>
