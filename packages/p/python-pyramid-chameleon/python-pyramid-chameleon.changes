@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  3 10:38:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add pyramid2.patch for the compatibility with the new pyramid.
+
+-------------------------------------------------------------------
 Sun Aug 16 21:29:52 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Replace nose with pytest

@@ -1,0 +1,69 @@
+Index: pyramid_chameleon-0.3/pyramid_chameleon/tests/test_text.py
+===================================================================
+--- pyramid_chameleon-0.3.orig/pyramid_chameleon/tests/test_text.py
++++ pyramid_chameleon-0.3/pyramid_chameleon/tests/test_text.py
+@@ -1,7 +1,6 @@
+ import sys
+ import unittest
+ 
+-from pyramid.compat import binary_type
+ from pyramid import testing
+ 
+ class Base(object):
+@@ -97,7 +96,7 @@ class TextTemplateRendererTests(Base, un
+         lookup = DummyLookup()
+         instance = self._makeOne(minimal, lookup)
+         result = instance({}, {})
+-        self.assertTrue(isinstance(result, binary_type))
++        self.assertTrue(isinstance(result, bytes))
+         self.assertEqual(result, b'Hello.\n')
+ 
+     def test_call_with_nondict_value(self):
+@@ -111,7 +110,7 @@ class TextTemplateRendererTests(Base, un
+         lookup = DummyLookup()
+         instance = self._makeOne(nonminimal, lookup)
+         result = instance({'name':'Chris'}, {})
+-        self.assertTrue(isinstance(result, binary_type))
++        self.assertTrue(isinstance(result, bytes))
+         self.assertEqual(result, b'Hello, Chris!\n')
+ 
+     def test_implementation(self):
+@@ -119,7 +118,7 @@ class TextTemplateRendererTests(Base, un
+         lookup = DummyLookup()
+         instance = self._makeOne(minimal, lookup)
+         result = instance.implementation()()
+-        self.assertTrue(isinstance(result, binary_type))
++        self.assertTrue(isinstance(result, bytes))
+         self.assertEqual(result, b'Hello.\n')
+ 
+ class DummyLookup(object):
+Index: pyramid_chameleon-0.3/pyramid_chameleon/tests/test_zpt.py
+===================================================================
+--- pyramid_chameleon-0.3.orig/pyramid_chameleon/tests/test_zpt.py
++++ pyramid_chameleon-0.3/pyramid_chameleon/tests/test_zpt.py
+@@ -2,7 +2,6 @@ import sys
+ import unittest
+ 
+ from pyramid import testing
+-from pyramid.compat import text_type
+ 
+ class Base(object):
+     def setUp(self):
+@@ -54,7 +53,7 @@ class ZPTTemplateRendererTests(Base, uni
+         lookup = DummyLookup()
+         instance = self._makeOne(minimal, lookup)
+         result = instance({}, {})
+-        self.assertTrue(isinstance(result, text_type))
++        self.assertTrue(isinstance(result, str))
+         self.assertEqual(result.rstrip('\n'),
+                      '<div xmlns="http://www.w3.org/1999/xhtml">\n</div>')
+ 
+@@ -121,7 +120,7 @@ class ZPTTemplateRendererTests(Base, uni
+         lookup = DummyLookup()
+         instance = self._makeOne(minimal, lookup)
+         result = instance.implementation()()
+-        self.assertTrue(isinstance(result, text_type))
++        self.assertTrue(isinstance(result, str))
+         self.assertEqual(result.rstrip('\n'),
+                      '<div xmlns="http://www.w3.org/1999/xhtml">\n</div>')
+ 

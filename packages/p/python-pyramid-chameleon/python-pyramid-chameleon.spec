@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-chameleon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,7 @@ Summary:        Pyramid Chameleon integration
 License:        BSD-3-Clause AND ZPL-2.1 AND MIT
 URL:            https://github.com/Pylons/pyramid_chameleon
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_chameleon/pyramid_chameleon-%{version}.tar.gz
+Patch0:         pyramid2.patch
 BuildRequires:  %{python_module Chameleon}
 BuildRequires:  %{python_module hupper}
 BuildRequires:  %{python_module plaster-pastedeploy}
@@ -46,6 +47,7 @@ These are bindings for the `Chameleon templating system
 
 %prep
 %setup -q -n pyramid_chameleon-%{version}
+%autopatch -p1
 # Remove CC-SA-NC licensed stuff
 rm -rf docs/
 
