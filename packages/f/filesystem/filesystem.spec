@@ -30,10 +30,8 @@ Version:        84.87
 Release:        0
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?usrmerged}
 # XXX libsolv never sees the rpmlib provides fulfilled
 Requires(pre):  (compat-usrmerge-tools or rpmlib(X-CheckUnifiedSystemdir))
-%endif
 Requires:       group(root)
 Requires:       user(root)
 URL:            https://build.opensuse.org/package/show/openSUSE:Factory/filesystem
@@ -43,6 +41,7 @@ Source2:        languages
 Source3:        ghost.list
 Source4:        languages.man
 Source64:       directory.list64
+Source65:       ghost.list64
 Source99:       LICENSE.txt
 
 %description
@@ -53,8 +52,79 @@ the home directories of system users.
 %setup -c -n filesystem -T
 cp %{SOURCE0} .
 cp %{SOURCE1} .
+cp %{SOURCE3} .
+%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+cat %{SOURCE65} >> ghost.list
+%endif
 
 %build
+cat > pretrans.lua <<'EOF'
+os.remove ("/usr/include/X11")
+os.remove ("/usr/lib/X11")
+if not posix.readlink("/var/run") then
+   os.rename("/var/run","/var/run.rpmsave.tmpx")
+end
+if not posix.readlink("/var/lock") then
+   os.rename("/var/lock","/var/lock.rpmsave.tmpx")
+end
+if not posix.stat("/var/run") then
+  posix.symlink("/run","/var/run")
+end
+if not posix.stat("/var/lock") then
+  posix.symlink("/run/lock","/var/lock")
+end
+if posix.stat("/var/run.rpmsave.tmpx") then
+  os.execute("mv /var/run.rpmsave.tmpx/* /var/run")
+  os.remove("/var/run.rpmsave.tmpx")
+end
+if posix.stat("/var/lock.rpmsave.tmpx") then
+  os.execute("mv /var/lock.rpmsave.tmpx/* /var/lock")
+  os.remove("/var/lock.rpmsave.tmpx")
+end
+
+local ghosts = {
+EOF
+#
+while read MOD OWN GRP NAME ; do
+	[ "$OWN" = root -a "$GRP" = root ]
+	echo "[\"$NAME\"] = $MOD,"
+done < ghost.list >> pretrans.lua 
+cat >> pretrans.lua <<'EOF'
+}
+function mkdir_p(path)
+    d = ''
+    for p in string.gmatch(path, "([^/]+)") do
+	d = d.."/"..p
+	posix.mkdir(d)
+    end
+end
+for i in pairs(ghosts) do
+  mkdir_p(i)
+  posix.chmod(i, ghosts[i])
+end
+EOF
+#
+#
+cat > pre.lua <<'EOF'
+needmigrate = false
+local dirs = {"/bin",
+  "/sbin",
+%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
+  "/lib64",
+%endif
+  "/lib" }
+for i in pairs(dirs) do
+  local t = posix.stat(dirs[i], "type")
+  if t == nil then
+    posix.symlink("usr"..dirs[i], dirs[i])
+  elseif t == "directory" then
+    needmigrate = true
+  end
+end
+if needmigrate then
+    assert(os.execute("/usr/libexec/convertfs"))
+end
+EOF
 
 %install
 function create_dir () {
@@ -90,7 +160,6 @@ echo "%%defattr(-,root,root)" > filesystem.list
 %ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
 cat %{SOURCE64} >> directory.list
 %endif
-%if 0%{?usrmerged}
 cat >> filesystem.links << EOF
 usr/bin   /bin
 usr/sbin  /sbin
@@ -99,25 +168,15 @@ usr/lib   /lib
 usr/lib64 /lib64
 %endif
 EOF
-%else
-cat >> directory.list << EOF
-0555 root root /bin
-0555 root root /lib
-0555 root root /sbin
-%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
-0555 root root /lib64
-%endif
-EOF
-%endif
 cat >> directory.list <<EOF
-0755 root root %{?usrmerged:/usr}/lib/modules
+0755 root root /usr/lib/modules
 0755 root root %{_firmwaredir}
 EOF
 while read MOD OWN GRP NAME ; do
     create_dir $MOD $OWN $GRP $NAME
 done < directory.list
 # ghost files next
-cat %{SOURCE3} | while read MOD OWN GRP NAME ; do
+cat ghost.list | while read MOD OWN GRP NAME ; do
     create_dir $MOD $OWN $GRP $NAME "%%ghost "
 done
 # arch specific leftovers
@@ -244,53 +303,8 @@ install -m 0644  fs-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-tmp.conf
 install -m 0644  fs-var.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var.conf
 install -m 0644  fs-var-tmp.conf $RPM_BUILD_ROOT/usr/lib/tmpfiles.d/fs-var-tmp.conf
 
-%pretrans -p <lua>
-os.remove ("/usr/include/X11")
-os.remove ("/usr/lib/X11")
-if not posix.readlink("/var/run") then
-   os.rename("/var/run","/var/run.rpmsave.tmpx")
-end
-if not posix.readlink("/var/lock") then
-   os.rename("/var/lock","/var/lock.rpmsave.tmpx")
-end
-if not posix.stat("/var/run") then
-  posix.symlink("/run","/var/run")
-end
-if not posix.stat("/var/lock") then
-  posix.symlink("/run/lock","/var/lock")
-end
-if posix.stat("/var/run.rpmsave.tmpx") then
-  os.execute("mv /var/run.rpmsave.tmpx/* /var/run")
-  os.remove("/var/run.rpmsave.tmpx")
-end
-if posix.stat("/var/lock.rpmsave.tmpx") then
-  os.execute("mv /var/lock.rpmsave.tmpx/* /var/lock")
-  os.remove("/var/lock.rpmsave.tmpx")
-end
-%if 0%{?usrmerged}
-needmigrate = false
-local dirs = {"/bin",
-  "/sbin",
-%ifarch s390x %sparc x86_64 ppc64 ppc aarch64 ppc64le riscv64
-  "/lib64",
-%endif
-  "/lib" }
-for i in pairs(dirs) do
-  local t = posix.stat(dirs[i], "type")
-  if t == nil then
-    posix.symlink("usr"..dirs[i], dirs[i])
-  elseif t == "directory" then
-    needmigrate = true
-  end
-end
-if needmigrate then
-    assert(os.execute("/usr/libexec/convertfs"))
-end
-%endif
-posix.mkdir("/proc")
-posix.chmod("/proc", 0555)
-posix.mkdir("/sys")
-posix.chmod("/sys", 0555)
+%pretrans -p <lua> -f pretrans.lua
+%pre -p <lua> -f pre.lua
 
 %files -f filesystem.list
 /usr/lib/tmpfiles.d/fs-tmp.conf

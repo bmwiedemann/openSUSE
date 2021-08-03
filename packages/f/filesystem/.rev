@@ -1228,4 +1228,22 @@
     <comment></comment>
     <requestid>898639</requestid>
   </revision>
+  <revision rev="159" vrev="2">
+    <srcmd5>ebdddf6bcc094d7884f11f894ddd6694</srcmd5>
+    <version>84.87</version>
+    <time>1628023711</time>
+    <user>dimstar_suse</user>
+    <comment>- Leave subdirectories of /srv mode 755 as the apache openqa test relies on it
+  atm. Only set /srv itself to 555
+
+- implement mkdir_p for ghost files as components may not exist
+- move usrmerge conversion to %pre instead of %pretrans (boo#1188847)
+- get rid of usrmerged macro usage, usrmerge is on in Factory always
+
+- Mark /boot, /home, /mnt, /opt, /srv and /usr/local as
+  %ghost and create from lua in case mounted eg from a read-only fs
+  such as NFS. Except for the latter also mark them as 0555 while we
+  are at it (boo#1186894)</comment>
+    <requestid>909691</requestid>
+  </revision>
 </revisionlist>
