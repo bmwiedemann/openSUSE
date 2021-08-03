@@ -90,4 +90,21 @@
 </comment>
     <requestid>905643</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>88305f0b015ec615552478c15c1f27c4</srcmd5>
+    <version>0.11.2</version>
+    <time>1628023726</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.11.2
+  * Use UTF-8 encoding when reading `pyproject.toml`
+    gh#PyO3/maturin#588
+  * Use Cargo's `repository` field as `Source Code` in project URL
+    gh#PyO3/maturin#590
+  * Fold long header fields in Python metadata
+    gh#PyO3/maturin#594
+  * Fix `maturin develop` for PyPy on Unix
+    gh#PyO3/maturin#596
+</comment>
+    <requestid>909889</requestid>
+  </revision>
 </revisionlist>

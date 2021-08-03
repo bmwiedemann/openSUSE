@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  3 00:40:29 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.11.2
+  * Use UTF-8 encoding when reading `pyproject.toml`
+    gh#PyO3/maturin#588
+  * Use Cargo's `repository` field as `Source Code` in project URL
+    gh#PyO3/maturin#590
+  * Fold long header fields in Python metadata
+    gh#PyO3/maturin#594
+  * Fix `maturin develop` for PyPy on Unix
+    gh#PyO3/maturin#596
+
+-------------------------------------------------------------------
 Sun Jul 11 06:06:50 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to 0.11.1
