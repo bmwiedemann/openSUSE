@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug  2 11:21:49 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.0
+  * Add Python 3.8 and 3.9
+  * Drop Python 2.7, 3.4 and 3.5
+  * The authentication and authorization policies of Pyramid 1.x have been 
+    merged into a single security policy in Pyramid 2.0. New security APIs 
+    have been added.
+  * It is now possible to control whether a route pattern contains 
+    a trailing slash.
+  * pcreate and the builtin scaffolds have been removed in favor of
+    using the cookiecutter tool and the pyramid-cookiecutter-starter
+    cookiecutter.
+  * Deprecated the authentication and authorization interfaces and 
+    principal-based support. 
+  * Deprecated several ACL-related aspects of pyramid.security. Equivalent 
+    objects should now be imported from the pyramid.authorization module.
+
+-------------------------------------------------------------------
 Tue Aug 31 10:02:12 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove conditionaling of bcond with_python2 as it ain't needed

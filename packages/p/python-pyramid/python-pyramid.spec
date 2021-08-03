@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014-2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-pyramid
-Version:        1.10.4
+Version:        2.0
 Release:        0
 Summary:        The Pyramid web application development framework
 License:        BSD-4-Clause AND ZPL-2.1 AND MIT
@@ -52,7 +52,7 @@ Requires:       python-venusian >= 1.0
 Requires:       python-zope.deprecation >= 3.5.0
 Requires:       python-zope.interface >= 3.8.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-repoze.lru >= 0.4
@@ -80,7 +80,7 @@ It was previously known as repoze.bfg (http://bfg.repoze.org).
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-for p in pcreate pdistreport prequest proutes pserve pshell ptweens pviews; do
+for p in pdistreport prequest proutes pserve pshell ptweens pviews; do
     %python_clone -a %{buildroot}%{_bindir}/$p
 done
 
@@ -89,15 +89,14 @@ export LANG=en_US.UTF-8
 %pytest tests/
 
 %post
-%python_install_alternative pcreate pdistreport prequest proutes pserve pshell ptweens pviews
+%python_install_alternative pdistreport prequest proutes pserve pshell ptweens pviews
 
 %postun
-%python_uninstall_alternative pcreate
+%python_uninstall_alternative pdistreport
 
 %files %{python_files}
 %license LICENSE.txt
 %doc *.rst
-%python_alternative %{_bindir}/pcreate
 %python_alternative %{_bindir}/pdistreport
 %python_alternative %{_bindir}/prequest
 %python_alternative %{_bindir}/proutes
