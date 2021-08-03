@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.20.0
+Version:        3.20.1
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -35,6 +35,10 @@ Source1:        https://qgis.org/downloads/qgis-%{version}.tar.bz2.sha256
 Source2:        %{name}.rpmlintrc
 Source3:        qgis_sample_data.zip
 Patch1:         fix-fastcgi-include.patch
+# PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/commit/6f9cbde7c782274ebe5875da7dbac98d68e9827
+Patch2:         qgis-fix-missing-qwt-inc.patch
+# PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/commit/581cb40603dd3daca2916b564a4cd2630d005556
+Patch3:         qgis-fix-missing-qwt-inc-part2.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
@@ -70,7 +74,8 @@ BuildRequires:  python3-qt5-devel
 # The package can build with sip v4 or sip v5 but needs to use the same module
 # as PyQt5 (python-sip vs python-qt5-sip).The correct sip.so is pulled in by
 # python-qt5, do not explicitly depend on it.
-BuildRequires:  python3-sip-devel
+# qgis is not compatible with sip6 yet - https://github.com/qgis/QGIS/issues/38911
+BuildRequires:  python3-sip5-devel
 BuildRequires:  python3-six
 BuildRequires:  python3-termcolor
 BuildRequires:  qwt6-devel
@@ -108,13 +113,13 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(expat) >= 1.95
 # Requires at least gdal 3.1 for GeoTIFF and Proj >= 6 - https://github.com/qgis/QGIS/issues/36699#issuecomment-633539864
 BuildRequires:  pkgconfig(gdal) >= 3.1
+BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(proj) >= 6.3.1
 BuildRequires:  pkgconfig(python3) >= 3.7
 BuildRequires:  pkgconfig(qca2-qt5)
-BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
 # Force requires of those 3 main component.
 Requires:       libQt5Sql5-mysql
@@ -142,7 +147,7 @@ Conflicts:      qgis
 Conflicts:      qgis-ltr
 %endif
 Conflicts:      qgis-master
-Obsoletes:      qgis2
+Obsoletes:      qgis2 < %{version}
 %if %{with grass}
 BuildRequires:  grass-devel >= 7.2
 %endif
