@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 27 11:59:58 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.6:
+  * Avoid capturing the selection box when drag and drop quickly.
+  * Fixed the capture when a window is hidden behind another.
+  * Fixed the capture of the edge of the focused window.
+  * Fixed issue when selection reaches the end of screen.
+  * Fixed Control Flow Integrity complain in HardenedBSD.
+  * Improvement: selection option, capture the mouse cursor when
+    the delay option is used.
+  * New feature: resize the selection with the arrow keys.
+  * New feature: support script Imlib2 commands.
+  * New feature: added WM_CLASS to exclude selection mode edge from
+    some composite window managers.
+  * New feature: change the cursor pointer according to the
+    movement of the selection.
+  * Removed forced compiler options: -g -O3
+  * Removed dependence on giblib library.
+  * Several improvements over the source code.
+
+-------------------------------------------------------------------
 Fri Feb 12 13:27:59 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5:

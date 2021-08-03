@@ -17,7 +17,7 @@
 
 
 Name:           scrot
-Version:        1.5
+Version:        1.6
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
@@ -55,7 +55,7 @@ mkdir -p %{buildroot}/%{_datadir}/pixmaps/
 rm -rf %{buildroot}/%{_datadir}/doc/scrot
 
 %files
-%doc AUTHORS ChangeLog README.md TODO CONTRIBUTING.md 
+%doc AUTHORS ChangeLog README.md TODO CONTRIBUTING.md
 %license COPYING
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
