@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs14
-Version:        14.17.2
+Version:        14.17.4
 Release:        0
 
 # Double DWZ memory limits
@@ -127,6 +127,7 @@ Source20:       bash_output_helper.bash
 
 ## Patches not distribution specific
 Patch3:         fix_ci_tests.patch
+Patch4:         PR39011.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
 Patch13:        openssl_binary_detection.patch
@@ -144,7 +145,6 @@ Patch102:       node-gyp-addon-gypi.patch
 # instead of /usr
 Patch104:       npm_search_paths.patch
 Patch106:       skip_no_console.patch
-Patch107:       old_icu.patch
 
 Patch120:       flaky_test_rerun.patch
 
@@ -323,7 +323,6 @@ Provides:       bundled(node-acorn-private-methods) = 0.3.0
 Provides:       bundled(node-acorn-static-class-features) = 0.2.0
 Provides:       bundled(node-acorn-walk) = 8.0.0
 Provides:       bundled(node-cjs-module-lexer) = 1.2.1
-Provides:       bundled(node-node-inspect) = 2.0.0
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
@@ -353,7 +352,7 @@ Requires:       nodejs14 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 6.14.13
+Provides:       npm(npm) = 6.14.14
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -591,7 +590,6 @@ Provides:       bundled(node-normalize-package-data) = 2.5.0
 Provides:       bundled(node-npm-audit-report) = 1.3.3
 Provides:       bundled(node-npm-bundled) = 1.1.1
 Provides:       bundled(node-npm-cache-filename) = 1.0.2
-Provides:       bundled(node-npm-init) = 0.0.0
 Provides:       bundled(node-npm-install-checks) = 3.0.2
 Provides:       bundled(node-npm-lifecycle) = 3.1.5
 Provides:       bundled(node-npm-logical-tree) = 1.2.1
@@ -710,7 +708,7 @@ Provides:       bundled(node-strip-ansi) = 5.2.0
 Provides:       bundled(node-strip-eof) = 1.0.0
 Provides:       bundled(node-strip-json-comments) = 2.0.1
 Provides:       bundled(node-supports-color) = 5.4.0
-Provides:       bundled(node-tar) = 4.4.13
+Provides:       bundled(node-tar) = 4.4.15
 Provides:       bundled(node-term-size) = 1.2.0
 Provides:       bundled(node-text-table) = 0.2.0
 Provides:       bundled(node-through) = 2.3.8
@@ -793,6 +791,7 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 
 %patch3 -p1
+%patch4 -p1
 %patch5 -p1
 %patch7 -p1
 %if 0%{with valgrind_tests}
@@ -806,7 +805,6 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 %patch104 -p1
 %patch106 -p1
-%patch107 -p1
 %if 0%{?suse_version} >= 1550
 %endif
 %patch120 -p1

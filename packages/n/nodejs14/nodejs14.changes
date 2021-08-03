@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  2 12:15:43 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 14.17.4:
+  http2: fixes use after free on close http2 on stream canceling
+  (bsc#1188917, CVE-2021-22930)
+
+- old_icu.patch: merged, removed
+- versioned.patch: updated
+- node_modules.tar.xz: refreshed
+- PR39011.patch: use localhost instead of remote for unit test
+
+-------------------------------------------------------------------
 Fri Jul  2 15:27:59 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 14.17.2:

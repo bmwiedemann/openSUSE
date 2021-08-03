@@ -39,4 +39,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>906241</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe8f6c94847b0d543afee5a28169f967</srcmd5>
+    <version>14.17.4</version>
+    <time>1628023718</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 14.17.4:
+  http2: fixes use after free on close http2 on stream canceling
+  (bsc#1188917, CVE-2021-22930)
+- old_icu.patch: merged, removed
+- versioned.patch: updated
+- node_modules.tar.xz: refreshed
+- PR39011.patch: use localhost instead of remote for unit test</comment>
+    <requestid>909826</requestid>
+  </revision>
 </revisionlist>
