@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-cloud-core
-Version:        1.6.0
+Version:        1.7.2
 Release:        0
 Summary:        Google Cloud API client core library
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/python-cloud-core
 Source:         https://files.pythonhosted.org/packages/source/g/google-cloud-core/google-cloud-core-%{version}.tar.gz
 BuildRequires:  %{python_module google-api-core >= 1.21.0}
@@ -64,7 +63,7 @@ common helpers (e.g. base ``Client`` classes) used by all of the
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE

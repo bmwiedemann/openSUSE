@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  3 00:43:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.2:
+  * pass kwargs through in 'from_service_account_json' (#109) (efc4bbf)
+  * add 'Client.close' (#100) (7387fc8)
+  * add 'Client.from_service_account_info' factory (#54) (7e59360) 
+- Actually use %pytest macro for testing
+
+-------------------------------------------------------------------
 Tue Apr  6 07:45:12 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.0:

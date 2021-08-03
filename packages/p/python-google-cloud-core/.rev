@@ -66,4 +66,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>884874</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b62fe2fbfd2123b4edda679eab0466cd</srcmd5>
+    <version>1.7.2</version>
+    <time>1628023719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.7.2:
+  * pass kwargs through in 'from_service_account_json' (#109) (efc4bbf)
+  * add 'Client.close' (#100) (7387fc8)
+  * add 'Client.from_service_account_info' factory (#54) (7e59360) 
+- Actually use %pytest macro for testing</comment>
+    <requestid>909842</requestid>
+  </revision>
 </revisionlist>
