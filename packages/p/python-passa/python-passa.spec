@@ -1,7 +1,7 @@
 #
 # spec file for package python-passa
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python39 1
 Name:           python-passa
 Version:        0.3.0
 Release:        0
 Summary:        A resolver implementation for Pipenv-compatible Lockfiles
 License:        ISC
-Group:          Development/Languages/Python
 URL:            https://github.com/sarugaku/passa
 Source:         https://github.com/sarugaku/passa/archive/%{version}.tar.gz#/passa-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 36.2.2}
@@ -39,7 +39,7 @@ Requires:       python-resolvelib >= 0.2.1
 Requires:       python-six
 Requires:       python-vistir >= 0.1.4
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module appdirs}

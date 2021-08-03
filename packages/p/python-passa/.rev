@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>807647</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>1459fb57f4ed616a38a1d54df9b31aae</srcmd5>
+    <version>0.3.0</version>
+    <time>1628023734</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't build on python39 due to unavailability of requirementslib.</comment>
+    <requestid>909927</requestid>
+  </revision>
 </revisionlist>
