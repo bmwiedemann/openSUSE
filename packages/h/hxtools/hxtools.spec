@@ -17,7 +17,7 @@
 
 
 Name:           hxtools
-Version:        20201116
+Version:        20210803
 Release:        0
 Summary:        Collection of day-to-day tools (binaries)
 License:        GPL-2.0+ and WTFPL

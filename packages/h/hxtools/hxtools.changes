@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug  3 19:51:22 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20210803
+  * vfontas: read support for BDF
+  * kbd: cp437x.uni learned a few Unicode codepoints for checkmarks
+    (This is a Unicode glyph map for use with all cp437 fonts)
+
+-------------------------------------------------------------------
 Mon Nov 16 00:09:21 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20201116
