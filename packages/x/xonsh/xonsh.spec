@@ -17,7 +17,7 @@
 
 
 Name:           xonsh
-Version:        0.9.27
+Version:        0.10.1
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-3-Clause AND BSD-2-Clause
@@ -56,8 +56,7 @@ HTML documentation on the API and examples for %name.
 
 %prep
 %setup -q -n xonsh-%{version}
-sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py xonsh/ply/example/classcalc/calc.py xonsh/ply/example/newclasscalc/calc.py xonsh/ply/example/yply/yply.py
-sed -i '1s/^#!.*/#!\/usr\/bin\/python/' xonsh/ply/example/yply/yply.py
+sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py
 
 %build
 python3 setup.py build
@@ -80,7 +79,6 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %{_bindir}/xon.sh
 %doc README.rst logo.txt CHANGELOG.rst
 %doc xontrib
-%doc xonsh/ply/example xonsh/ply/doc/*.html xonsh/ply/README.md xonsh/ply/CHANGES
 %license license
 
 %files -n %{name}-doc
