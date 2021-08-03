@@ -1,7 +1,7 @@
 #
 # spec file for package python-devpi-common
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-devpi-common
-Version:        3.4.0
+Version:        3.6.0
 Release:        0
 Summary:        Utilities jointly used by devpi-server and devpi-client
 License:        MIT
@@ -33,6 +33,7 @@ Requires:       python-requests >= 2.3.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module py >= 1.4.20}
+BuildRequires:  %{python_module lazy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.3.0}
 # /SECTION
