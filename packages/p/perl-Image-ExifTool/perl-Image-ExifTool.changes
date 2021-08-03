@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Aug  3 10:09:12 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 12.29:
+* Added a few new Nikon and Olympus lenses (thanks LibRaw)
+* Improved a QuickTime "File format error" message to be more
+  meaningful, and made it a minor error
+* Changed PNG writer to add EXIF before IDAT
+* Some changes the way JUMBF metadata is handled
+* Patched to read timed GPS from a different type of INSV videos
+* Patched a security issue
+* Fixed problem where ExifTool could hang when processing mebx
+  timed metadata
+* Added read support for Leica Image File (LIF) images
+* Added a new Olympus LensType (thanks LibRaw)
+* Decode another Panasonic tag (thanks LibRaw)
+* Decode more timed metadata from Sony MP4 videos
+* Attempt to shorten tag names for metadata in CZI files
+* Allow full QuickTime Keys tag ID's in UserDefined tags
+* Patched to handle special characters in Torrent tag values
+* Added two new Nikon LensID values (thanks Daniel)
+* Added a new Pentax RawDevelopmentProcess value
+* Added a few new Sony LensType values (thanks Jos Roost)
+* Added warning if IPTCDigest is not current
+* Decode a couple more Pentax tags (thanks LibRaw)
+* Decode streaming GPS from Novatek INNOVV MP4 and TS videos
+* Improved tag names in confi_files/covert_regions.config 
+* Changed MIME types for MS Office macro-enabled formats
+  to add the .12
+* Patched Canon LensID logic to properly identify the
+  Canon RF 24-105mm F4 L IS USM lens
+* Patched decoding of camm6 GPSDateTime to use a flexible epoch
+  because other apps don't seem to use a consistent time zero
+* Fixed family 7 group names for QuickTime Keys tags
+* Fixed problem reading BeatsPerMinute from some MP4 files
+* Fixed hemisphere problem when extracting GPS from 70mai
+  dashcam videos
+* Added support for JPEG Stereo (JPS) images
+* Added a new Sony LensType (thanks LibRaw)
+* Added a new PentaxModelID (thanks LibRaw)
+* Changed ExifTool namespace URI to use exiftool.org
+  instead of exiftool.ca in the -X option output (exiftool.ca
+  is still recognized when reading XML)
+* Improved handling of large-array warnings in -htmldump output
+* Changed handling of escaped characters in #[CSTR] lines
+  of -@ argfile
+* Patched security vulnerability in argument of -lang option
+* Fixed problem which could cause a "Wide character" warning
+  and generate a corrupted output file when writing
+  some illegal values
+
+-------------------------------------------------------------------
 Mon May  3 06:01:58 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 12.25 fixes (boo#1185547)
