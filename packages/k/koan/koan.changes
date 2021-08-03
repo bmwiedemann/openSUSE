@@ -1,0 +1,806 @@
+-------------------------------------------------------------------
+Tue Jul 27 11:54:15 UTC 2021 - Enno Gotthold <egotthold@suse.com>
+
+- Updated to Koan 3.0.1
+- The xend functionallity is not expected to work since this the underying tool
+  was removed: https://github.com/cobbler/koan/issues/73
+- Python 2 compability was fully removed
+- Add support for EFI reinstallation of a client (bsc#1170823)
+- Removed patches (all named are being part of upstream or redundant):
+  - add-missing-Koan-default-members.diff
+  - decode-subprocess_get_response-results.diff
+  - fix-exception.dif
+  - fix-grub2-entry-paths.diff
+  - fix-imports-in-qcreate.diff
+  - fix-koan-missing-args-and-location.patch
+  - koan-detect-os_version.dif
+  - koan-no-xend.dif
+  - koan-use-kvm-acceleration-if-available.dif
+  - koan_old_cobbler_compat.diff
+  - sles15.patch
+  - support-cobbler-2.X-kickstart-profile-data.diff
+  - use_grub2_on_suse.diff
+  - virt-install-without-generic26.patch
+  - virt-setup-suse.diff
+
+-------------------------------------------------------------------
+Tue Apr 28 09:00:39 UTC 2020 - Michael Calmer <mc@suse.com>
+
+- calculate relative path for kernel and inited when generating
+  grub entry (bsc#1170231)
+  Added: fix-grub2-entry-paths.diff
+- fix os-release version detection for SUSE
+  Modified: sles15.patch
+
+-------------------------------------------------------------------
+Thu Nov  7 17:14:38 UTC 2019 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Fix auto installing VMs (bsc#1156211)
+  Added patches:
+    fix-imports-in-qcreate.diff
+    decode-subprocess_get_response-results.diff
+    add-missing-Koan-default-members.diff
+    virt-setup-suse.diff
+    support-cobbler-2.X-kickstart-profile-data.diff
+
+-------------------------------------------------------------------
+Mon May 20 14:27:40 UTC 2019 - Julio González Gil <jgonzalez@suse.com>
+
+- Require virt-install only for RHEL6/7. Other distributions
+  accepting Recommends must use it as virt-install is not available
+  sometimes (for example SLED)
+
+-------------------------------------------------------------------
+Wed Apr 24 12:19:23 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Change virt-install from Reccommends to Require because this
+  fixes RHEL 6 & 7 
+
+-------------------------------------------------------------------
+Wed Apr 24 11:13:32 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Fix regex error in the files section 
+
+-------------------------------------------------------------------
+Wed Apr 24 11:09:49 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Remove Recursion in python_sitelib and remove non relevant parts
+  of the specfile 
+
+-------------------------------------------------------------------
+Wed Apr 24 09:35:53 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Replace python2_sitelib macro with python_sitelib to fix build on
+  older distros. 
+
+-------------------------------------------------------------------
+Wed Apr 24 09:28:41 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Remove duplicate file section entrys 
+
+-------------------------------------------------------------------
+Wed Apr 24 07:50:57 UTC 2019 - Enno Gotthold <egotthold@suse.com>
+
+- Adjust Group Tag to Development/Libraries/Python to satisfy linter
+
+-------------------------------------------------------------------
+Tue Mar 13 14:34:38 CET 2018 - mantel@suse.de
+
+- SLES15 is using /etc/os-release instead of /etc/SuSE-release, use
+  this one for checking also (bsc#1083294)
+  Add:
+  * sles15.patch
+
+-------------------------------------------------------------------
+Mon Oct 30 11:14:43 UTC 2017 - mc@suse.com
+
+- remove useless macros from spec
+
+-------------------------------------------------------------------
+Mon Oct 23 15:08:39 UTC 2017 - mc@suse.com
+
+- recommend virt-install as koan can also be used only to modify
+  grub for re-installing the machine
+
+-------------------------------------------------------------------
+Thu Oct 19 11:22:22 UTC 2017 - mc@suse.com
+
+- version 2.9.0
+- koan source splitted into a seperate git
+- build with python3
+- Remove patches (upstream):
+  * fix-koan-port-guessing.dif
+  * koan-virt-setup-suse.dif
+  * 0001-1398-koan-incompatible-with-F21-virt-install.patch
+  * koan-improve-virt-install-error-reports.patch
+  * cobbler-2.4.2-reprovision-rhel-on-suse-bnc883487.patch
+  * fix-restart-paravirt-xen.dif
+  * looking_for_cobbler_order_changed.diff
+
+-------------------------------------------------------------------
+Wed Aug  9 08:32:22 UTC 2017 - mseidl@suse.de
+
+- missed applying last patch in spec
+
+-------------------------------------------------------------------
+Wed Aug  9 08:19:37 UTC 2017 - mseidl@suse.de
+
+- (bsc#1048183) fix missing args and location for xen
+
+-------------------------------------------------------------------
+Wed Jun  7 14:54:33 UTC 2017 - mihai.dinca@suse.com
+
+- fix script endpoint security bug CVE-2016-9605 (bsc#1030582)
+  Add:
+  * fix-script-endpoint-security-bug-1030582.patch
+
+-------------------------------------------------------------------
+Tue Apr  4 09:57:13 CEST 2017 - mc@suse.de
+
+- support UEFI boot with cobbler generated tftp tree (bsc#1020376)
+
+-------------------------------------------------------------------
+Tue Mar 21 15:38:15 CET 2017 - mantel@suse.de
+
+- remove fix-nameserver-search.fix; bug is invalid (bsc#1029276)
+
+-------------------------------------------------------------------
+Wed Mar 15 10:44:25 CET 2017 - mantel@suse.de
+
+- refresh patch for fuzzless appliance
+
+-------------------------------------------------------------------
+Wed Mar 15 10:22:38 CET 2017 - mantel@suse.de
+
+- some more occurrences of same problem fixed (bsc#1029276)
+
+-------------------------------------------------------------------
+Tue Mar 14 13:12:51 CET 2017 - mantel@suse.de
+
+- name_servers needs the same fix (bsc#1029276)
+
+-------------------------------------------------------------------
+Tue Mar 14 11:24:59 CET 2017 - mantel@suse.de
+
+- fix handling of name_servers_search in networking.xml bsc#1029276
+
+-------------------------------------------------------------------
+Thu Nov 24 12:05:28 UTC 2016 - pablo.suarezhernandez@suse.com
+
+- Using "chain.c32" instead of "LOCALBOOT -1" for the local boot
+  entry in pxe menu (bsc#988889)
+  Add:
+  * localboot-fix-using-chain-c32.patch
+
+-------------------------------------------------------------------
+Thu Sep  1 11:24:51 UTC 2016 - pablo.suarezhernandez@suse.com
+
+- Enabling PXE grub2 support for PowerPC (bsc#986978)
+  Add:
+  * adding-grub2-support-for-ppc.patch 
+
+-------------------------------------------------------------------
+Fri Jun 17 14:41:33 CEST 2016 - mc@suse.de
+
+- convert bootoption "text" into "textmode=1" for SUSE systems
+  (bsc#984998)
+  Add:
+  * fix-textmode-for-SUSE.dif
+
+-------------------------------------------------------------------
+Tue May 17 16:13:18 CEST 2016 - mc@suse.de
+
+- remove grubby-compat because perl-Bootloader gets dropped
+  Remove:
+  * grubby-compat.diff
+  * do_not_use_grubby_compat_when_grub2_is_in_use.diff
+  Add:
+  * use_grub2_on_suse.diff
+
+-------------------------------------------------------------------
+Fri May 13 14:44:02 UTC 2016 - pablo.suarezhernandez@suse.com
+
+- Disabling 'get-loaders' command and 'check' fixed. bsc#973418
+  Added:
+  * cobbler-check-and-get-loaders-fix.patch
+
+-------------------------------------------------------------------
+Fri Apr 22 13:43:09 CEST 2016 - mc@suse.de
+
+- add logrotate file for cobbler (bsc#976826)
+
+-------------------------------------------------------------------
+Thu Mar 31 11:46:37 CEST 2016 - mc@suse.de
+
+- handle list value for kernel options correctly (bsc#973413)
+
+-------------------------------------------------------------------
+Wed Mar 16 12:39:12 CET 2016 - mc@suse.de
+
+- add ppc64le to archs
+  * 0001-cobbler-add-little-endian-powerpc-support.patch
+
+-------------------------------------------------------------------
+Mon Mar  7 11:29:38 CET 2016 - mc@suse.de
+
+- fix error message in cobblerd status when cobbler-web is
+  not installed (bsc#966841)
+
+-------------------------------------------------------------------
+Fri Mar  4 13:19:20 CET 2016 - mc@suse.de
+
+- fix format error while provisioning of a virtual machine
+  (bsc#969541)
+  Update: koan-improve-virt-install-error-reports.patch
+
+-------------------------------------------------------------------
+Wed Mar  2 14:58:32 CET 2016 - mc@suse.de
+
+- support modprobe.d on RHEL6
+  * cobbler-modprobe-d.patch
+- fix cobbler yaboot handling (bsc#968406, bsc#966622)
+  * fix-cobbler-yaboot-handling.patch
+
+-------------------------------------------------------------------
+Wed Feb 24 15:51:48 CET 2016 - mc@suse.de
+
+- improve error reporting of failed virt-install commands
+  Add: koan-improve-virt-install-error-reports.patch
+
+-------------------------------------------------------------------
+Tue Feb 23 09:10:47 CET 2016 - mc@suse.de
+
+- fallback to osinfo-query for new virt-install (bsc#967523)
+  * 0001-1398-koan-incompatible-with-F21-virt-install.patch
+- fix for virt-install without os version generic26 (bsc#967523)
+  * virt-install-without-generic26.patch
+
+-------------------------------------------------------------------
+Mon Nov  9 16:01:55 CET 2015 - mc@suse.de
+
+- cleanup spec file. The cobbler main package should see a
+  SUSE system as systemd only (bsc#952844)
+
+-------------------------------------------------------------------
+Thu Mar 26 17:45:22 CET 2015 - mc@suse.de
+
+- koan: fix virt-install version detection (bsc#924118)
+- koan: fix parsing install_tree for SUSE (bsc#924118)
+- koan: do not require obsoleted xend (bsc#924118)
+- koan: fix boot configuration for XEN directly after VM creation.
+        This prevent endless installation loop (bsc#924118)
+- koan: improve os-variant detection for SLES 
+- koan: use KVM acceleration if available
+
+------------------------------------------------------------------
+Mon Feb 16 13:58:48 UTC 2015 - mseidl@suse.de
+
+- Renamed generic suse breed "suse" 
+
+-------------------------------------------------------------------
+Mon Feb 16 12:50:35 UTC 2015 - mseidl@suse.de
+
+- Added generic os under breed suse 
+
+-------------------------------------------------------------------
+Fri Feb 13 08:21:57 UTC 2015 - mseidl@suse.de
+
+- fixed supported arches
+- added generic sles11, sles10 and sles12 signatures 
+
+-------------------------------------------------------------------
+Wed Feb 11 14:07:08 UTC 2015 - mseidl@suse.de
+
+- Removed directory check for kickstart files 
+
+-------------------------------------------------------------------
+Wed Feb 11 10:31:32 UTC 2015 - dmacvicar@suse.de
+
+- Do not manually install cobbler.conf
+  setup.py does it and replaces variables in the process
+
+-------------------------------------------------------------------
+Thu Jan 15 09:36:07 UTC 2015 - fcastelli@suse.com
+
+- Added 'fix_test_create_systems.diff': fixes the "create_systens" unit test
+
+-------------------------------------------------------------------
+Tue Jan 13 09:37:53 UTC 2015 - fcastelli@suse.com
+
+- Fix runtime dependency: ensure the yaml module is available.
+
+-------------------------------------------------------------------
+Tue Jan 13 08:51:03 UTC 2015 - fcastelli@suse.com
+
+- Install the right cobblerd.service file
+
+-------------------------------------------------------------------
+Mon Jan 12 17:07:27 UTC 2015 - fcastelli@suse.com
+
+- Do not ship cobbler_web.conf inside of the cobbler package, get rid
+  of part of our patches to setup.py,
+
+-------------------------------------------------------------------
+Fri Dec 19 17:48:20 UTC 2014 - fcastelli@suse.com
+
+- Added new patch required to fix the broken unit tests:
+  * fix-broken-tests.diff
+
+-------------------------------------------------------------------
+Thu Dec 18 14:59:08 UTC 2014 - fcastelli@suse.com
+
+- Removed another no longer needed patch:
+  * fix-textmode-for-SUSE.dif
+
+-------------------------------------------------------------------
+Thu Dec 18 14:51:32 UTC 2014 - fcastelli@suse.com
+
+- Update to latest stable version of cobbler (2.6.6)
+- Removed no longer needed patches
+  * bnc_877009.patch
+  * cobbler-2.4.2-Fix-koan-s-get_insert_script.patch
+  * fix-broken-tests.diff
+  * suse_config.diff
+- Fixed old patches to apply against the new code:
+  * catch_cheetah_exception.patch
+  * grubby-compat.diff
+  * setup_py.diff
+
+-------------------------------------------------------------------
+Mon Dec 15 10:20:53 UTC 2014 - fcastelli@suse.com
+
+- Fix the broken unit tests
+
+-------------------------------------------------------------------
+Thu Dec 11 16:34:35 UTC 2014 - mseidl@suse.de
+
+- Created sub package for unit tests 
+
+-------------------------------------------------------------------
+Tue Dec  9 15:35:25 CET 2014 - mc@suse.de
+
+- use fdupes only on SUSE
+
+-------------------------------------------------------------------
+Mon Dec  8 09:27:33 UTC 2014 - dmacvicar@suse.de
+
+- Fix for re-installation of machines on SLE with static
+  network configuration (bnc#883487)
+- Added patches:
+  * cobbler-2.4.2-Fix-koan-s-get_insert_script.patch
+  * cobbler-2.4.2-reprovision-rhel-on-suse-bnc883487.patch
+
+-------------------------------------------------------------------
+Thu Nov 27 10:01:30 CET 2014 - mc@suse.de
+
+- fix port guessing in koan (bsc#855389)
+  * fix-koan-port-guessing.dif
+- add "copy-default" option to grubby-compat (bsc#855389)
+- handle elilo in SUSE (bsc#855389)
+
+-------------------------------------------------------------------
+Wed Nov 26 13:46:30 CET 2014 - mc@suse.de
+
+- fix wrong option "text" in SUSE environment (bsc#901058)
+  * fix-textmode-for-SUSE.dif
+
+-------------------------------------------------------------------
+Thu Sep  4 09:43:01 UTC 2014 - fcastelli@suse.com
+
+- Added do_not_use_grubby_compat_when_grub2_is_in_use.diff: prevents
+  usage of grubby-compat when grub2 is active. Use grub2 features
+  do modify the boot loader.
+
+-------------------------------------------------------------------
+Tue Sep  2 15:11:24 UTC 2014 - fcastelli@suse.com
+
+- Moved grubby-compat inside of the koan sub-package. The scrit was accidentally
+  moved into the cobbler package.
+
+-------------------------------------------------------------------
+Fri Jul 25 15:45:55 UTC 2014 - fcastelli@suse.com
+
+- Added fix_sle_detection.patch: ensures SLE12 is properly detected.
+
+-------------------------------------------------------------------
+Fri Jul 25 10:11:58 UTC 2014 - fcastelli@suse.com
+
+- Fixed and error 'grubby-compat.diff' patch which broke koan tool
+- Added bnc_877009.patch, fixes CVE-2014-3225: cobbler: Local files
+  inclusion (bnc#877009)
+
+-------------------------------------------------------------------
+Fri Jul 11 12:45:56 CEST 2014 - mc@suse.de
+
+- Remove patch which automatically escapes cobbler templates.
+  (bnc#869371)
+- require syslinux-x86_64 on s390x (bnc#884051)
+
+-------------------------------------------------------------------
+Wed Jul  9 17:31:09 CEST 2014 - mc@suse.de
+
+- mod_python is not needed anymore for cobbler
+  remove module from apache configuration
+
+-------------------------------------------------------------------
+Thu Jul  3 13:12:47 UTC 2014 - mseidl@suse.de
+
+- modified to work with aftpd 
+
+-------------------------------------------------------------------
+Fri Feb 14 11:47:04 CET 2014 - mc@suse.de
+
+- update to version 2.4.2
+  + Adding support for gPXE
+  + Adding support for ESXi5
+  + fix install=... kernel parameter when importing a SUSE distro
+  + koan: Port xen creation to virt-install
+  + koan: Port qcreate to virt-install
+  + Port koan from virtinst to virt-install command (v2)
+  + add qcow2 driver type
+  + Adding ability to use https for API calls (cobbler CLI)
+  + Use ip instead of ifconfig for network snippets
+  + minor modifications to templar to show template rendering errors
+  + bugfixes and refactoring
+  obsolete patches (available upstream):
+  * cobbler-man-fix.dif
+  * fix-initscript.dif
+  * fix-setting-system-to-image.dif
+  * fix-snippet.dif
+  * fix_suse_import.diff
+  * fix_version_format.diff
+  * fix-xen-fullvirt-install.dif
+  * koan_distro_files_fix.diff
+  * security_fix_xmlrpc_command_injection.diff
+  * fix-http-check-on-SUSE-platform.patch
+  * users_patch.diff
+
+-------------------------------------------------------------------
+Wed Dec 11 16:31:23 UTC 2013 - cdenicolo@suse.com
+
+- license update: GPL-2.0+
+  SPDX name
+
+-------------------------------------------------------------------
+Wed Nov 13 17:04:50 UTC 2013 - fcastelli@suse.com
+
+- Fix man page inconsistencies.
+
+-------------------------------------------------------------------
+Fri Nov  8 11:23:34 CET 2013 - mc@suse.de
+
+- fix evaluation of power status calls
+
+-------------------------------------------------------------------
+Mon Nov  4 17:33:40 CET 2013 - mc@suse.de
+
+- fix wrong options in the man page (bnc#846580)
+
+-------------------------------------------------------------------
+Thu Oct 31 15:27:16 UTC 2013 - mc@suse.com
+
+- fix adding image to system
+
+-------------------------------------------------------------------
+Wed Oct 30 15:15:05 CET 2013 - mc@suse.de
+
+- add fence_ipmitool script for power management
+- require ipmitool
+
+-------------------------------------------------------------------
+Thu Oct 17 17:57:46 CEST 2013 - mc@suse.de
+
+- fix networking.xml snippet and use the correct key for getting
+  the netmask (bnc#842699)
+
+-------------------------------------------------------------------
+Wed Jul 10 07:45:25 UTC 2013 - fcastelli@suse.com
+
+- Fix cobbler checks on SUSE (bnc#828453)
+
+-------------------------------------------------------------------
+Wed Apr  3 15:59:18 CEST 2013 - mc@suse.de
+
+- koan requires python-urlgrabber (bnc#812948)
+
+-------------------------------------------------------------------
+Wed Mar 27 15:27:03 CET 2013 - mc@suse.de
+
+- fix XEN fullvirt installation
+
+-------------------------------------------------------------------
+Tue Mar 26 15:52:26 CET 2013 - mc@suse.de
+
+- fix restart of new created paravirt XEN systems (bnc#811025)
+
+-------------------------------------------------------------------
+Fri Jan  4 16:38:42 CET 2013 - mc@suse.de
+
+- fix autoescaping to not strip empty lines. This keep GPG keys
+  in a kickstart profile working (bnc#796773)
+
+-------------------------------------------------------------------
+Wed Nov 21 15:31:50 CET 2012 - mc@suse.de
+
+- do not auto escape snippets (bnc#790545)
+
+-------------------------------------------------------------------
+Fri Nov 16 13:58:38 UTC 2012 - bo@suse.de
+
+- Templates don't need to be dollar sign escaped any longer.
+  (bnc#790545)
+
+-------------------------------------------------------------------
+Mon Nov 12 15:15:40 CET 2012 - mc@suse.de
+
+- forward cheetah exception as 500 SERVER ERROR (bnc#787879)
+
+-------------------------------------------------------------------
+Thu Aug 23 17:47:35 CEST 2012 - mc@suse.de
+
+- install grubby-compat to /sbin (bnc#783671)
+
+-------------------------------------------------------------------
+Thu May 24 10:20:16 CEST 2012 - ug@suse.de
+
+- VUL-0: cobbler: remote code execution flaw
+  bnc#763610
+
+-------------------------------------------------------------------
+Tue May 22 15:44:08 CEST 2012 - ug@suse.de
+
+- changed the order to look for cobbler. Try https first
+  to avoid exception
+
+-------------------------------------------------------------------
+Tue May 22 15:22:02 CEST 2012 - ug@suse.de
+
+- requires fixed in spec file
+
+-------------------------------------------------------------------
+Wed May 16 11:34:44 CEST 2012 - ug@suse.de
+
+- added compatibility code for koan 2.2.2 to cobbler 2.0.10
+
+-------------------------------------------------------------------
+Tue May 15 14:03:26 CEST 2012 - ug@suse.de
+
+- added grubby-compat patch again
+- some spec file fixes
+
+-------------------------------------------------------------------
+Wed May  9 14:53:08 CEST 2012 - ug@suse.de
+
+- build on RHEL6 fixed
+
+-------------------------------------------------------------------
+Wed May  9 13:15:02 CEST 2012 - ug@suse.de
+
+- build on RHEL fixed
+
+-------------------------------------------------------------------
+Wed May  9 10:40:23 CEST 2012 - ug@suse.de
+
+- build on SLES10 fixed
+
+-------------------------------------------------------------------
+Thu May  3 10:34:12 CEST 2012 - ug@suse.de
+
+- requires syslinux only on x86 architecture
+
+-------------------------------------------------------------------
+Fri Apr 20 14:43:31 CEST 2012 - ug@suse.de
+
+- changed the XMLRPC API call version() to return a float
+  instead of a string
+
+-------------------------------------------------------------------
+Wed Apr 18 15:44:48 CEST 2012 - ug@suse.de
+
+- don't overwrite existing kernel/initrd when reinstalling
+  a machine (bnc#722443)
+
+-------------------------------------------------------------------
+Mon Apr 16 12:51:59 CEST 2012 - ug@suse.de
+
+- VUL-0: CVE-2011-4953
+  cobbler: privilege escalation flaw / local root
+    (bnc#757062)
+
+-------------------------------------------------------------------
+Tue Mar 27 10:50:05 UTC 2012 - chris@computersalat.de
+
+- update to 2.2.2
+  * please see CHANGELOG for more info
+- remove obsolete virt-auto-boot patch
+- rebase patches
+
+-------------------------------------------------------------------
+Mon Feb 13 17:52:57 CET 2012 - ug@suse.de
+
+- fixed return value of rccobblerd status
+
+-------------------------------------------------------------------
+Mon Feb 13 10:45:06 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Thu Dec 22 13:23:01 CET 2011 - ug@suse.de
+
+- fix install=... kernel option when you import a SUSE distro
+
+-------------------------------------------------------------------
+Wed Oct 26 14:15:24 CEST 2011 - ug@suse.de
+
+- virtual machines autostart on boot fixed
+
+-------------------------------------------------------------------
+Wed Oct 19 15:29:28 CEST 2011 - ug@suse.de
+
+- quotes fixed for the kernel parameters in menu.lst (bnc#722445)
+- Virtual systems don't get restarted on restart of host
+  (bnc#695955)
+- allowed length of the kernel options line changed 
+  from 256 to 2048 characters
+
+-------------------------------------------------------------------
+Tue Sep 27 17:23:52 CEST 2011 - ug@suse.de
+
+- koan requires python-urlgrabber
+
+-------------------------------------------------------------------
+Fri Sep 23 12:17:58 CEST 2011 - ug@suse.de
+
+- build on RES fixed
+
+-------------------------------------------------------------------
+Thu Sep 22 11:51:18 CEST 2011 - ug@suse.de
+
+- Require in spec-file fixed
+
+-------------------------------------------------------------------
+Fri Sep 16 11:46:42 CEST 2011 - ug@suse.de
+
+- added grubby-compat patch (bnc#672471)
+
+-------------------------------------------------------------------
+Mon Sep 12 14:21:31 CEST 2011 - mc@suse.de
+
+- no python-virtinst on Code10
+
+-------------------------------------------------------------------
+Wed Jun  8 14:19:04 CEST 2011 - ug@suse.de
+
+- koan reads the architecture for virtual machines from cobbler
+  (fate#312397 and bnc#682665)
+- ISO build parameters for a SUSE system fixed
+- cheetah rendering before XML parsing now, to avoid problems
+  with the XML parser and cheetah instructions
+- Add possibility to interrupt zPXE and to enter CMS
+- changed defaults for s390 to be more SUSE like (bnc#687891)
+
+-------------------------------------------------------------------
+Wed Apr 27 15:08:42 CEST 2011 - ug@suse.de
+
+- fixed a broken timezone setting in cobbler-web
+
+-------------------------------------------------------------------
+Wed Apr 27 14:40:39 CEST 2011 - ug@suse.de
+
+- building for SLE10 fixed
+
+-------------------------------------------------------------------
+Wed Mar 23 16:45:20 CET 2011 - ug@suse.de
+
+- VUL-0: cobbler: logrotate: 
+  issues with service owned directories
+  bnc#678433
+
+-------------------------------------------------------------------
+Fri Feb 18 15:45:27 CET 2011 - ug@suse.de
+
+- removed python-devel in requirement
+
+-------------------------------------------------------------------
+Thu Feb 17 15:11:39 UTC 2011 - kkaempf@novell.com
+
+- Fix build on RHEL
+
+-------------------------------------------------------------------
+Thu Feb 17 10:27:41 CET 2011 - ug@suse.de
+
+- added missing rc-script link (bnc#671212)
+
+-------------------------------------------------------------------
+Wed Feb 16 13:00:05 CET 2011 - ug@suse.de
+
+- cheetah_class_fix.diff added to fix a cheetah version check
+
+-------------------------------------------------------------------
+Fri Feb 11 17:46:49 CET 2011 - mc@suse.de
+
+- cobbler_wsgi.conf will not be packaged 
+
+-------------------------------------------------------------------
+Wed Feb  9 18:36:53 CET 2011 - ro@suse.de
+
+- require syslinux only on x86 and x86_64
+
+-------------------------------------------------------------------
+Wed Feb  9 02:05:58 CET 2011 - ro@suse.de
+
+- fix config file location on RH 
+
+-------------------------------------------------------------------
+Tue Feb  8 13:45:41 UTC 2011 - ma@novell.com
+
+- fix specfile
+
+-------------------------------------------------------------------
+Tue Feb  8 12:50:41 CET 2011 - mc@suse.de
+
+- require python-virtinst in SUSE 
+
+-------------------------------------------------------------------
+Thu Feb  3 16:34:23 CET 2011 - ug@suse.de
+
+- packaged the cobbler.conf file instead of the cobbler_wsgi.conf
+  file again (bnc#668968)
+
+-------------------------------------------------------------------
+Wed Feb  2 17:45:04 CET 2011 - mc@suse.de
+
+- require python-virtinst only for RHEL >= 5 
+
+-------------------------------------------------------------------
+Wed Feb  2 16:46:27 CET 2011 - mc@suse.de
+
+- require grubby only on SUSE 
+
+-------------------------------------------------------------------
+Wed Feb  2 13:27:01 CET 2011 - mc@suse.de
+
+- fix suse_version check in spec file 
+- fix build on RH
+
+-------------------------------------------------------------------
+Fri Jan 28 11:00:08 CET 2011 - ug@suse.de
+
+- fixed the apache config
+
+-------------------------------------------------------------------
+Wed Jan 19 16:20:08 CET 2011 - ug@suse.de
+
+- firewall settings added
+
+-------------------------------------------------------------------
+Fri Jan 14 15:47:00 CET 2011 - ug@suse.de
+
+- debug switch in specfile removed to make it build again
+
+-------------------------------------------------------------------
+Thu Jan 13 14:29:12 CET 2011 - ug@suse.de
+
+- version update to 2.0.10 because of many bugs ins 2.0.8
+
+-------------------------------------------------------------------
+Wed Jan 12 12:01:14 CET 2011 - ug@suse.de
+
+- some template files were not packed since 2.0.8
+
+-------------------------------------------------------------------
+Tue Jan 11 16:15:41 CET 2011 - ug@suse.de
+
+- version update to 2.0.8 (bnc#660126)
+
+-------------------------------------------------------------------
+Tue Dec 21 14:46:09 CET 2010 - ug@suse.de
+
+- fixed spec file 
+
+-------------------------------------------------------------------
+Thu Sep  9 07:56:13 UTC 2010 - kkaempf@novell.com
+
+- remove 'xinetd' from Required-Start
+

@@ -1,0 +1,19 @@
+<services>
+  <service mode="disabled" name="obs_scm">
+    <param name="url">git://github.com/cobbler/koan.git</param>
+    <param name="scm">git</param>
+<!--
+    <param name="revision">master</param>
+-->
+    <param name="extract">koan.spec</param>
+    <param name="exclude">tests*</param>
+    <param name="versionformat">3.0.1+git%cd.%h</param>
+    <param name="versionformat">3.0.1</param>
+  </service>
+  <service mode="disabled" name="set_version"/>
+  <service mode="buildtime" name="tar"/>
+  <service mode="buildtime" name="recompress">
+    <param name="compression">gz</param>
+    <param name="file">*.tar</param>
+  </service>
+</services>
