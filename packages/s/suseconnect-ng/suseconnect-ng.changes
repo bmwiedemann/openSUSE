@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jul 27 09:02:36 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.3~git0.dacdd3b:
+  * Add gofmt target to Makefile
+  * Fix gofmt errors
+  * Add Requires that weren't explicit (bsc#1188646)
+  * Use custom UnmarshalJSON() for the Product struct
+
+-------------------------------------------------------------------
+Fri Jul 23 10:53:35 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.2~git0.ebef3b7:
+  * Add --version
+  * Fix list-extensions printing "Not available" when using SCC
+  * Change --deregister to --de-register
+
+-------------------------------------------------------------------
+Thu Jul 22 08:23:30 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.1~git33.b531281:
+  * Run integration tests
+  * Try to use localized error from server response
+  * Write usage help to stdout like the Ruby version
+  * Simplify list-extensions template
+  * Fix call to create UUID on s390
+  * Provides and Obsoletes SUSEConnect
+  * Add extensions list tests
+  * Fix calls to s390 read_values
+  * Add build-s390 target to Makefile
+  * hwinfo: don't fail if dmidecode is missing
+
+-------------------------------------------------------------------
+Mon Jul 19 10:01:54 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.1~git16.8a5d48c:
+  * Add extensions hints for readonly root fs
+  * Make the connect package an internal package
+  * Document debug output destination difference
+  * Add status value constants
+  * Add rollback CLI option
+  * Fix callHTTP() so connections are reused
+  * Fix list-extensions format
+  * Fix error from zypper refresh
+
+-------------------------------------------------------------------
 Mon Jul 12 21:43:19 UTC 2021 - jzerebecki@suse.com
 
 - Update to version 0.0.1~git0.a5f168a:

@@ -15,11 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global provider_prefix github.com/SUSE/connect-ng
 %global import_path     %{provider_prefix}
 
 Name:           suseconnect-ng
-Version:        0.0.1~git0.a5f168a
+Version:        0.0.3~git0.dacdd3b
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-2.1-or-later
@@ -27,9 +28,31 @@ Summary:        Utility to register a system with the SUSE Customer Center
 Group:          System/Management
 Source:         connect-ng-%{version}.tar.xz
 Source1:        %name-rpmlintrc
-BuildRequires:  golang-packaging
 BuildRequires:  go >= 1.16
+BuildRequires:  golang-packaging
 Conflicts:      SUSEConnect
+Obsoletes:      SUSEConnect
+Provides:       SUSEConnect
+%if 0%{?fedora} || 0%{?rhel} || 0%{?centos_version}
+Requires:       ca-certificates
+%else
+Requires:       ca-certificates-mozilla
+%endif
+Requires:       coreutils
+# ExclusiveArch from this package
+%ifarch %ix86 ia64 x86_64 %arm aarch64
+Requires:       dmidecode
+%endif
+# ExclusiveArch from this package
+%ifarch s390x
+Requires:       s390-tools
+%endif
+Requires:       systemd
+Requires:       zypper
+# lscpu is only used on those
+%ifarch x86_64 aarch64
+Requires:       util-linux
+%endif
 
 %description
 This package provides a command line tool for connecting a
@@ -47,6 +70,7 @@ replaced SUSEConnect.
 
 %build
 find %_builddir/..
+echo %{version} > internal/connect/version.txt
 %goprep %{import_path}
 find %_builddir/..
 go list all
@@ -71,7 +95,7 @@ find %_builddir/..
 rm -rf %buildroot/usr/share/go
 
 %check
-%gotest github.com/SUSE/connect-ng/connect
+%gotest github.com/SUSE/connect-ng/internal/connect
 
 %files
 %license LICENSE LICENSE.LGPL
@@ -80,3 +104,4 @@ rm -rf %buildroot/usr/share/go
 %_bindir/SUSEConnect
 %_sbindir/SUSEConnect
 
+%changelog
