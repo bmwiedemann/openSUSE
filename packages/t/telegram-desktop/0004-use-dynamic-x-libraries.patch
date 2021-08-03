@@ -1,0 +1,11 @@
+--- a/cmake/external/webrtc/CMakeLists.txt
++++ b/cmake/external/webrtc/CMakeLists.txt
+@@ -105,7 +105,7 @@
+         )
+     else()
+         # Required for desktop_capture
+-        target_link_static_libraries(external_webrtc
++        target_link_libraries(external_webrtc
+         INTERFACE
+             Xcomposite
+             Xdamage

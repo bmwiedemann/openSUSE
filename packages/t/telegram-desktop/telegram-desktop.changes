@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  2 03:04:38 UTC 2021 - Xu Zhao <i@xuzhao.net>
+
+- Update to 2.9.0
+  * Enable auto-delete in your chats to remove messages.
+  * Quickly find all GIFs from a chat using the new GIF section.
+  * Reset your Two-Step Verification password even if you forgot.
+  * Enjoy a new app icon and default background.
+- Update tg_owt
+- Update 0001-use-bundled-ranged-exptected-gsl.patch
+  * Use bundled rlottie
+- Add 0004-use-dynamic-x-libraries.patch
+- Add 0005-add-wayland-include-path.patch
+
+-------------------------------------------------------------------
 Sat Jun  5 03:02:08 UTC 2021 - Xu Zhao <i@xuzhao.net>
 
 - Add 0003-prioritize-gtk2.patch and enable GTK integration.

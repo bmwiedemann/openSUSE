@@ -656,4 +656,21 @@
   Fixes boo#1149986 regression.</comment>
     <requestid>897722</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>fc058c5ae3b6e5b36f408e0391610365</srcmd5>
+    <version>2.9.0</version>
+    <time>1628023712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.0
+  * Enable auto-delete in your chats to remove messages.
+  * Quickly find all GIFs from a chat using the new GIF section.
+  * Reset your Two-Step Verification password even if you forgot.
+  * Enjoy a new app icon and default background.
+- Update tg_owt
+- Update 0001-use-bundled-ranged-exptected-gsl.patch
+  * Use bundled rlottie
+- Add 0004-use-dynamic-x-libraries.patch
+- Add 0005-add-wayland-include-path.patch (forwarded request 909652 from nuklly)</comment>
+    <requestid>909700</requestid>
+  </revision>
 </revisionlist>

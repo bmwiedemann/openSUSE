@@ -30,7 +30,7 @@
 %define _dwz_max_die_limit     200000000
 
 Name:           telegram-desktop
-Version:        2.7.5
+Version:        2.9.0
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -45,6 +45,10 @@ Patch1:         0001-use-bundled-ranged-exptected-gsl.patch
 Patch2:         0002-tg_owt-fix-name-confliction.patch
 # PATCH-FIX-OPENSUSE boo#1149986
 Patch3:         0003-prioritize-gtk2.patch
+# PATCH-FIX-OPENSUSE
+Patch4:         0004-use-dynamic-x-libraries.patch
+# PATCH-FIX-OPENSUSE
+Patch5:         0005-add-wayland-include-path.patch
 # There is an (incomplete) patch available for part of the source:
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
@@ -74,6 +78,7 @@ BuildRequires:  libwebrtc_audio_processing-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
+BuildRequires:  wayland-devel
 BuildRequires:  webkit2gtk3-devel
 BuildRequires:  xorg-x11-devel
 BuildRequires:  xxhash-devel
@@ -95,6 +100,7 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(jemalloc)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavfilter)
@@ -124,6 +130,7 @@ BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(opusurl)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(portaudiocpp)
+BuildRequires:  pkgconfig(rnnoise)
 BuildRequires:  pkgconfig(tslib)
 BuildRequires:  pkgconfig(vdpau)
 BuildRequires:  pkgconfig(xcb-ewmh)
@@ -155,8 +162,10 @@ The service also provides APIs to independent developers.
 
 %prep
 %setup -q -n tdesktop-%{version}-full
-%patch1 -p2
+%patch1 -p1
 %patch3 -p1
+%patch4 -p1
+%patch5 -p1
 
 cd ../
 unzip -q %{S:1}
