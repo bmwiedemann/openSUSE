@@ -1,7 +1,7 @@
 #
 # spec file for package libgnomecanvas
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        An Add-On for the GNOME User Interface Libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/Archive/libgnomecanvas
-Source:         ftp://ftp.gnome.org/pub/GNOME/sources/libgnomecanvas/2.20/%{name}-%{version}.tar.bz2
+Source:         https://download.gnome.org/sources/%{name}/2.30/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 
 BuildRequires:  pkgconfig

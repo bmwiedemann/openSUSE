@@ -280,4 +280,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767191 from dimstar)</comment>
     <requestid>767453</requestid>
   </revision>
+  <revision rev="41" vrev="20">
+    <srcmd5>249b219a608c0bd47a99c15bd67b541a</srcmd5>
+    <version>2.30.3</version>
+    <time>1628023712</time>
+    <user>dimstar_suse</user>
+    <comment>- Update a valid URL of the Source field in spec. (forwarded request 909647 from yfjiang)</comment>
+    <requestid>909736</requestid>
+  </revision>
 </revisionlist>
