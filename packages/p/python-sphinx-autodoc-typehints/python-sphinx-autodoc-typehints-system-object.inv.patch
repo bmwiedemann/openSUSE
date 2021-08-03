@@ -1,16 +1,10 @@
 ---
- tests/conftest.py |   13 ++-----------
- 1 file changed, 2 insertions(+), 11 deletions(-)
+ tests/conftest.py |   12 ++----------
+ 1 file changed, 2 insertions(+), 10 deletions(-)
 
 --- a/tests/conftest.py
 +++ b/tests/conftest.py
-@@ -1,5 +1,4 @@
- import os
--import sys
- import pathlib
- import shutil
- 
-@@ -13,16 +12,8 @@ collect_ignore = ['roots']
+@@ -14,16 +14,8 @@ collect_ignore = ['roots']
  
  @pytest.fixture(scope='session')
  def inv(pytestconfig):

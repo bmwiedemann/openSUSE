@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  3 09:42:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.12.0:
+  - Dropped Python 3.5 support
+  - Added the simplify_optional_unions config option
+  - Fixed indentation of multiline strings
+  - Changed formatting of None to point to the Python stdlib docs
+  - Updated special dataclass handling
+
+-------------------------------------------------------------------
 Sat Apr 24 14:11:17 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove no-net-tests.patch as adding the fixed
