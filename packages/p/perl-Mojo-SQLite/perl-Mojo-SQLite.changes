@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  2 03:08:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.007
+   see /usr/share/doc/packages/perl-Mojo-SQLite/Changes
+
+  3.007     2021-08-01 20:17:42 EDT
+    - Increase DBD::SQLite dependency to 1.68 to support and use sqlite_string_mode over sqlite_unicode (#22, Adam Williamson)
+    - The default options now set sqlite_string_mode to DBD_SQLITE_STRING_MODE_UNICODE_FALLBACK,
+      unless sqlite_unicode is specified explicitly in from_string or from_filename. This is equivalent
+      to the previous behavior but ensures that DBD::SQLite will not return malformed strings.
+    - Support wal_mode option to enable WAL journaling mode, which is still currently the default,
+      but may not be set by default in a future release.
+
+-------------------------------------------------------------------
 Thu Jun 17 03:07:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.006
