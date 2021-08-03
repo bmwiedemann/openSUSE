@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 29 07:57:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 6.4.20: [bsc#1188875, CVE-2021-36386]
+  * CVE-2021-36386: DoS or information disclosure in some configurations.
+    When a log message exceeds c. 2 kByte in size, for instance,
+    with very long header contents, and depending on verbosity
+    option, fetchmail can crash or misreport each first log message
+    that requires a buffer reallocation. fetchmail then reallocates
+    memory and re-runs vsnprintf() without another call to va_start(),
+    so it reads garbage. The exact impact depends on many factors
+    around the compiler and operating system configurations used and
+    the implementation details of the stdarg.h interfaces of the two
+    functions mentioned before.
+
+-------------------------------------------------------------------
 Thu May 13 16:57:09 UTC 2021 - Jeff Mahoney <jeffm@suse.com>
 
 - Backported support for OAUTH2 authentication from Fetchmail 7.0.
