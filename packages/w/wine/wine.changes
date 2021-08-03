@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug  1 13:49:49 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.14 development release
+  - Mono engine updated to version 6.3.0, with upstream updates.
+  - 32->64-bit thunks implemented in WOW64 dll.
+  - More preparation work for the GDI syscall interface.
+  - Various bug fixes.
+- update staging to 6.14 release
+
+-------------------------------------------------------------------
 Wed Jul 21 09:31:59 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.13 development release

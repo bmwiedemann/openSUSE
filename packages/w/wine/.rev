@@ -4079,4 +4079,17 @@
 - update staging to 6.13 release</comment>
     <requestid>907704</requestid>
   </revision>
+  <revision rev="349" vrev="1">
+    <srcmd5>9ee0f4291ff3cd613d66b0be0c806c09</srcmd5>
+    <version>6.14</version>
+    <time>1628023738</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.14 development release
+  - Mono engine updated to version 6.3.0, with upstream updates.
+  - 32-&gt;64-bit thunks implemented in WOW64 dll.
+  - More preparation work for the GDI syscall interface.
+  - Various bug fixes.
+- update staging to 6.14 release</comment>
+    <requestid>909960</requestid>
+  </revision>
 </revisionlist>
