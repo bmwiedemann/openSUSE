@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 02 02:47:18 UTC 2021 - wbrown@suse.de
+
+- Update to version 20210802:
+  * Assigned RUSTSEC-2021-0077 to better-macro (#969)
+  * better-macro has deliberate RCE in proc-macro (#966)
+  * Assigned RUSTSEC-2021-0076 to libsecp256k1 (#964)
+  * Add advisory for libsecp256k1 (#963)
+  * Assigned RUSTSEC-2021-0075 to ark-r1cs-std (#962)
+  * `ark_r1cs_std::mul_by_inverse` generated unsound constraints in versions below `0.3.1` (#961)
+  * Revert "Hotfix #957 until we figure out what to do with it (#958)" (#960)
+  * Assigned RUSTSEC-2021-0074 to ammonia (#959)
+  * Add rust-ammonia/ammonia#142 (#956)
+  * Hotfix #957 until we figure out what to do with it (#958)
+
+-------------------------------------------------------------------
 Wed Jul 21 04:16:56 UTC 2021 - wbrown@suse.de
 
 - Update to version 20210721:
