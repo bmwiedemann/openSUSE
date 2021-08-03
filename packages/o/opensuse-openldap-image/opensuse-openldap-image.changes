@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 02 13:31:30 UTC 2021 - kukuk@suse.com
+
+- Update to version 1627911062.7e4f725:
+  * Re-add entrypoint directory
+
+-------------------------------------------------------------------
+Mon Aug 02 13:27:36 UTC 2021 - kukuk@suse.com
+
+- Build changes file from git
+- Update to version 1627910174.bbff2ac:
+  * Include busybox-findutils, adjust entrypoint location
+
+-------------------------------------------------------------------
 Mon Aug  2 09:52:10 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Re-add busybox-findutils
