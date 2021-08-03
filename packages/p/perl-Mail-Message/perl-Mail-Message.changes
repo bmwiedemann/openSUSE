@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 28 03:08:01 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.011
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 3.011: Tue 27 Jul 13:30:38 CEST 2021
+
+  	Improvements:
+  	- textAlternativeForHtml can now be configured to actually change
+  	  left- and rightmargin [Tristan Miller]
+
+-------------------------------------------------------------------
 Mon Nov 23 17:01:26 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - Boiled down %description to relevant infos 
