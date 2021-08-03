@@ -106,4 +106,12 @@ Switched to tar_scm to pass auto review.</comment>
   * Include number alongside the title in issue/pr view #3741</comment>
     <requestid>901490</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>63557ba3e2b4182a762b996d03c7aa87</srcmd5>
+    <version>1.13.1</version>
+    <time>1628023724</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909877</requestid>
+  </revision>
 </revisionlist>

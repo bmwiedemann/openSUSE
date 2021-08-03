@@ -18,7 +18,7 @@
 
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 Name:           gh
-Version:        1.11.0
+Version:        1.13.1
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT
@@ -29,8 +29,8 @@ Source1:        vendor.tar.gz
 BuildRequires:  fish
 # Test requirement
 BuildRequires:  git-core
-BuildRequires:  golang(API) >= 1.13
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.13
 Requires:       git
 
 %description

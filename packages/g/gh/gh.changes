@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:17:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.13.1
+  * Release fixes pre-built binaries, changes aren't applicable to this package
+- Changes from 1.13.0
+  * issue/pr view: output label names in their own color #3912
+  * Add gh browse --no-browser to only print the URL #3943
+  * repo create: respect privacy setting when using license/gitignore templates #3972
+  * repo create: respect repository description when creating from template repository #3972
+  * repo create --confirm: avoid license/gitignore template prompt #3995
+  * pr merge --auto: merge immediately if the PR is already mergeable #3706
+  * pr merge: suggest using --auto when merging is blocked #3706
+  * Allow using cursor keys in interactive text inputs #3980
+  * gh run watch --exit-status: correct exit status for completed runs #3982
+  * Skip auto-migrate of config files when GH_CONFIG_DIR is set #4017
+  * alias set: add note about double-quoting arguments for Command Prompt users #4013
+  * Clean up GH_CONFIG_DIR docs #4020
+- Changes from 1.12.1
+  * Fix bug where branchProtectionRule doesn't exist in enterprise 2.22 #3922
+  * Fix repo create in org with license/ignore #3924
+- Changes from 1.12.0
+  * Added gh browse command
+  * Add .gitignore and LICENSE when creating repositories from scratch
+  * A new config value http_unix_socket can be configured to a local path to push all traffic over a socket
+  * Print help even if logged out #3850
+  * Add shell completion for the --state flag #3877
+  * Allow explicitly empty body in issue/pr create #3787
+  * Increase GH_PAGER precedence #3789
+  * Fix showing Checks information in pr status #3804
+  * Update "Accept" header for github.com requests #3803
+  * Fix setting environment secrets #3832
+  * Fix gh run download fails on large artifacts due to uint32 limitation #3890
+  * repo fork: check that --org is not the empty string #3807
+  * Document installing via Conda package manager #3792
+  * Fix description for gh secret set --env option #3784
+  * Add a long command description for secrets remove #3786
+  * Update documentation for gist create command with default of secret #3871
+  * fork tests cleanup #3809
+  * Remove unused method from httpmock package #3834
+  * Factory cleanup #3841
+  * Improvements to build script on Windows #3846
+  * Ensure that tests for command factory never read from user's config #3856
+
+-------------------------------------------------------------------
 Wed Jun 23 12:15:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.11.0:
