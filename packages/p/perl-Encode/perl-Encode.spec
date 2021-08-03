@@ -18,7 +18,7 @@
 
 %define cpan_name Encode
 Name:           perl-Encode
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        Character encodings in Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
