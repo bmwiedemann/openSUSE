@@ -7,4 +7,14 @@
     <comment>Seems like an useful and still developing platform for embedded platforms.</comment>
     <requestid>908624</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9a8f762e6b2c8a034456b439c309e6c2</srcmd5>
+    <version>1.16</version>
+    <time>1628023718</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-uasyncio_heaplock-test.patchto fix uasyncio_heaplock
+  test (originally from gh#micropython/micropython#7449)
+</comment>
+    <requestid>909831</requestid>
+  </revision>
 </revisionlist>

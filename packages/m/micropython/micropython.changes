@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  2 15:11:39 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add fix-uasyncio_heaplock-test.patchto fix uasyncio_heaplock
+  test (originally from gh#micropython/micropython#7449)
+
+-------------------------------------------------------------------
 Tue Jul 27 14:51:40 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary dependency on python2

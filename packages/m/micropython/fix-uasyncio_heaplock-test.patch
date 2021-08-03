@@ -1,0 +1,47 @@
+From 180c54d6cc4e744082f7f76f484646db47d25adb Mon Sep 17 00:00:00 2001
+From: Damien George <damien@micropython.org>
+Date: Fri, 25 Jun 2021 11:09:31 +1000
+Subject: [PATCH] tests/extmod: Make uasyncio_heaplock test more deterministic.
+
+This helps the test pass on systems with an inaccurate sleep time.
+
+Signed-off-by: Damien George <damien@micropython.org>
+---
+ tests/extmod/uasyncio_heaplock.py     | 6 +++---
+ tests/extmod/uasyncio_heaplock.py.exp | 2 --
+ 2 files changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/tests/extmod/uasyncio_heaplock.py b/tests/extmod/uasyncio_heaplock.py
+index 771d3f0d97a..3a92d36c9f5 100644
+--- a/tests/extmod/uasyncio_heaplock.py
++++ b/tests/extmod/uasyncio_heaplock.py
+@@ -29,15 +29,15 @@ async def task(id, n, t):
+ 
+ 
+ async def main():
+-    t1 = asyncio.create_task(task(1, 4, 10))
+-    t2 = asyncio.create_task(task(2, 4, 25))
++    t1 = asyncio.create_task(task(1, 4, 20))
++    t2 = asyncio.create_task(task(2, 2, 50))
+ 
+     micropython.heap_lock()
+ 
+     print("start")
+     await asyncio.sleep_ms(1)
+     print("sleep")
+-    await asyncio.sleep_ms(100)
++    await asyncio.sleep_ms(70)
+     print("finish")
+ 
+     micropython.heap_unlock()
+diff --git a/tests/extmod/uasyncio_heaplock.py.exp b/tests/extmod/uasyncio_heaplock.py.exp
+index a967cc31971..68c6366c6f1 100644
+--- a/tests/extmod/uasyncio_heaplock.py.exp
++++ b/tests/extmod/uasyncio_heaplock.py.exp
+@@ -6,6 +6,4 @@ sleep
+ 1 2
+ 2 1
+ 1 3
+-2 2
+-2 3
+ finish

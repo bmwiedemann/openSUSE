@@ -24,6 +24,9 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://micropython.org/
 Source:         https://micropython.org/resources/source/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM fix-uasyncio_heaplock-test.patch gh#micropython/micropython#7449 mcepl@suse.com
+# Make uasyncio_heaplock test more deterministic.
+Patch0:         fix-uasyncio_heaplock-test.patch
 BuildRequires:  openssl
 BuildRequires:  python3
 BuildRequires:  readline-devel
@@ -35,7 +38,8 @@ ExcludeArch:    %{ix86} %{arm} ppc64 ppc64le
 A lean and efficient Python implementation for microcontrollers and constrained systems
 
 %prep
-%setup -q
+%autosetup -p1
+
 sed -i -e "s:/usr/lib/micropython:%{_prefix}/lib/micropython:g" "ports/unix/main.c"
 
 %define make_flags V=1 MICROPY_PY_BTREE=0 MICROPY_PY_USSL=0
