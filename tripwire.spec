@@ -49,7 +49,7 @@ autoreconf -f -i
 
 %build
 %configure
-make CFLAGS="%{optflags}" CPPFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}" CPPFLAGS="%{optflags} -std=c++14"
 
 %install
 mkdir -p %{buildroot}/etc/tripwire
