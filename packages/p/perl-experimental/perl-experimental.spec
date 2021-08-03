@@ -18,7 +18,7 @@
 
 %define cpan_name experimental
 Name:           perl-experimental
-Version:        0.024
+Version:        0.025
 Release:        0
 Summary:        Experimental features made easy
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -125,6 +125,10 @@ incompatibilities between 5.10.0 and 5.10.1.
 * * 'switch' - allow the use of '~~', given, and when
 
 This was added in perl 5.10.0.
+
+* * 'try' - allow the use of 'try' and 'catch'
+
+This was added in perl 5.34.0
 
 * * 'win32_perlio' - allows the use of the :win32 IO layer.
 
