@@ -51,7 +51,7 @@ BuildRequires:  sysuser-tools
 BuildRequires:  xz
 BuildRequires:  pkgconfig(check)
 Requires(pre):  %fillup_prereq
-Requires(pre):  shadow
+%sysusers_requires
 %if 0%{?suse_version} >= 1330
 Requires(pre):  group(daemon)
 %endif
@@ -73,7 +73,7 @@ autoreconf -fiv
 	--with-pidfile=%{_rundir}/radvd/radvd.pid
 make %{?_smp_mflags}
 #
-%sysusers_generate_pre %{SOURCE3} radvd
+%sysusers_generate_pre %{SOURCE3} radvd system-user-radvd.conf
 
 %install
 make DESTDIR=%{buildroot} install %{?_smp_mflags}
