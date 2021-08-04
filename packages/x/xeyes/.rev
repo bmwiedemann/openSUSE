@@ -59,4 +59,15 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>593587</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3c746a22138de21869752f9c7de5bda1</srcmd5>
+    <version>1.2.0</version>
+    <time>1628108916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  * This release of xeyes adds support for using the Present and
+    Xinput2 extensions so that your X server is even smoother when
+    making eyes at you.</comment>
+    <requestid>909749</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  2 10:52:05 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.0
+  * This release of xeyes adds support for using the Present and
+    Xinput2 extensions so that your X server is even smoother when
+    making eyes at you.
+
+-------------------------------------------------------------------
 Wed Apr  4 15:57:12 UTC 2018 - sndirsch@suse.com
 
 - Update to version 1.1.2
