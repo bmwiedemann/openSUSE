@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 30 15:01:29 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.5-113-g8b5bda7684e:
+  + (bsc#1188741) compression/snappy: use uint32_t to be compatible with 1.1.9 
+    improved version of patch that did not work as intended
+
+-------------------------------------------------------------------
 Tue Jul 27 18:31:37 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.5-111-ga5b472dfcf8:
