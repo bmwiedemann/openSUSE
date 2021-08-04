@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Wed Aug  4 09:02:40 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Add git as BuildRequires, which is needed for testing
+- Update to version 0.8.3
+  * This release fixes a security vulnerability (CVE-2021-36376) 
+    on Windows. Please update if you are using Windows.
+
+- Update to version 0.8.2
+  * This is a bug fix release: the bug occurs when using delta to 
+    diff files whose names contain spaces. It does not affect use of 
+    delta as git's pager.
+  * closed bug: argument parsing error with delta fileA fileB 
+    when filenames contain spaces
+
+- Update to version 0.8.1
+  * This is mainly a bug fix release: filenames containing spaces 
+    were causing crashes due to a regression in 0.8.0. It also includes 
+    a fix for the delta file_a file_b "diff mode" usage style, and 
+    an improvement for the diff-highlight / diff-so-fancy emulation modes.
+  * closed bug: Panic with filename "01g - Text"
+  * closed bug: side-by-side option only works in diff mode when piping
+  * closed bug: commit-style raw for diff-so-fancy / diff-highlight
+
+- Update to version 0.8.0
+  * New option: relative-paths causes all file paths to be printed 
+   relative to the current directory so that they can be easily opened 
+   in a text editor or used in a shell command. Using 
+   `hunk-header-style = file line-number` syntax will emit the line 
+   number with the file path and thus should allow your editor to 
+   open at the correct line. For example, in the VS Code integrated 
+   terminal this means that with no further configuration every file 
+   path in git output can be opened with ctrl-click/cmd-click, and 
+   opening at a specific line works. Use diff-stat-align-width to 
+   control horizontal alignment of diff stat sections, 
+   although this may be replaced by a better solution in the future.
+  * New option: commit-regex allows delta to work nicely with custom 
+    git log formats
+  * Support git -c delta.foo=bar ... in latest git version
+  * Support custom hyperlink hash formats
+  * Allow custom themes to be defined as light themes
+  * Transform file paths to be relative to current directory
+  * delta file_A file_B now invokes git diff, instead of diff -u
+  * Fixed bug the --24-bit-color option is unusable from .gitconfig: 
+    24-bit-color is deprecated; use true-color instead.
+  * Fixed bug Fix less version parsing
+  * Fixed bug No output for chmod file mode change
+
+- Update to version 0.7.1
+  * This release brings two improvements due to delta contributors:
+    @cben proposed a new way for delta to seed less with the regexp 
+    that is used to implement navigation, which is implemented in 
+    this release. This makes it possible to keep navigate=true in 
+    delta config all the time, without the ill effects that it had before
+  * a new option delta --show-themes, which demos the delta color 
+    themes that are available locally. n and N step forwards and 
+    backwards through the themes.
+  * new themes
+  * Fix bug Setting $PAGER to use delta results in an infinite loop
+  * Fix bug --navigate breaks git log --oneline and empty git diff
+
+-------------------------------------------------------------------
 Thu Feb 18 20:52:58 UTC 2021 - Gordon Schulz <gordon@gordonschulz.de>
 
 - Update to version 0.6.0

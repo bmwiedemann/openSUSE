@@ -17,7 +17,7 @@
 
 
 Name:           git-delta
-Version:        0.6.0
+Version:        0.8.3
 Release:        0
 Summary:        A syntax-highlighter for git and diff output
 License:        MIT
@@ -25,6 +25,7 @@ URL:            https://github.com/dandavison/delta
 Source0:        https://github.com/dandavison/delta/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 BuildRequires:  clang-devel
+BuildRequires:  git
 BuildRequires:  rust-packaging
 Conflicts:      sccs
 
