@@ -1,5 +1,5 @@
 #
-# spec file for package python-lazy-object-proxy
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %bcond_with test
 %endif
 Name:           python-lazy-object-proxy%{psuffix}
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause

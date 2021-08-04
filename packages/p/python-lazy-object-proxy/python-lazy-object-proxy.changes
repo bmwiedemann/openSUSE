@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 31 15:58:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Added support for async special methods (``__aiter__``, ``__anext__``,
+    ``__await__``, ``__aenter__``, ``__aexit__``).
+    These are used in the ``async for``, ``await` and ``async with`` statements.
+
+    Note that ``__await__`` returns a wrapper that tries to emulate the crazy
+    stuff going on in the ceval loop, so there will be a small performance overhead.
+  * Added the ``__resolved__`` property. You can use it to check if the factory has
+    been called.
+
+-------------------------------------------------------------------
 Fri Feb 26 08:46:31 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Drop broken %ifpython3 macro

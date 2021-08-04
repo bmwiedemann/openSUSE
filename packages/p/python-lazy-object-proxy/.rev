@@ -79,4 +79,19 @@
     <comment></comment>
     <requestid>875445</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>314751518ea56695466d0b5c47816573</srcmd5>
+    <version>1.6.0</version>
+    <time>1628108900</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.6.0:
+  * Added support for async special methods (``__aiter__``, ``__anext__``,
+    ``__await__``, ``__aenter__``, ``__aexit__``).
+    These are used in the ``async for``, ``await` and ``async with`` statements.
+    Note that ``__await__`` returns a wrapper that tries to emulate the crazy
+    stuff going on in the ceval loop, so there will be a small performance overhead.
+  * Added the ``__resolved__`` property. You can use it to check if the factory has
+    been called.</comment>
+    <requestid>909535</requestid>
+  </revision>
 </revisionlist>
