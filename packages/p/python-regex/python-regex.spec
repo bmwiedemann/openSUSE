@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-regex
-Version:        2021.4.4
+Version:        2021.7.6
 Release:        0
 Summary:        Alternative regular expression module for Python
 License:        Apache-2.0

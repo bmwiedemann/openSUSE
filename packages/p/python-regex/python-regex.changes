@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  1 09:30:05 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2021.7.6:
+  * drop-in replacement for python re
+  * fix fuzzy character restrictions not applying to insertions 
+
+-------------------------------------------------------------------
 Sun May  9 14:40:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.4.4:
