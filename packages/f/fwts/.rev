@@ -703,4 +703,30 @@
   * klog.json: check IRQ requests on irqchip</comment>
     <requestid>901331</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>949a6a3577102e869d091ee0a7780d6e</srcmd5>
+    <version>21.07.00</version>
+    <time>1628108929</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.07.00:
+  * ACPICA: Update to version 20210730
+  * uefirttime: Fix incorrect error messages for invalid time test
+  * fwts-test: sync up with updates in fwts_wmi_known_guids
+  * acpi/wmi: update WMI known GUIDs from Linux kernel 5.14-rc1
+  * sbbr: remove pm_file test (not required in BBR 1.0)
+  * lib: fwts_version.h - update to V21.07.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: remove groovy
+  * uefirttime: add advice for the timezone 2047 failure (LP: #1933503)
+  * fwts-test: sync up with DBG2 changes from BSA updates
+  * fwts_acpi_tables: skip FACS warning for reduced hardware
+  * acpi: method: Make _AEI test optional for SBBR
+  * acpi: dbg2: Allow 16550 compatible serial port in DBG2
+  * acpi: method: Make method_test_ADR() optional
+  * sbbr: adjust signature name for MADT
+  * sbbr: remove SSDT from mandatory list
+  * sbbr: acpitables: add new recommended tables
+  * acpi: acpitables: add advices for table revision tests</comment>
+    <requestid>910088</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug  4 08:02:44 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 21.07.00:
+  * ACPICA: Update to version 20210730
+  * uefirttime: Fix incorrect error messages for invalid time test
+  * fwts-test: sync up with updates in fwts_wmi_known_guids
+  * acpi/wmi: update WMI known GUIDs from Linux kernel 5.14-rc1
+  * sbbr: remove pm_file test (not required in BBR 1.0)
+  * lib: fwts_version.h - update to V21.07.00
+  * debian: update changelog
+  * auto-packager: mkpackage.sh: remove groovy
+  * uefirttime: add advice for the timezone 2047 failure (LP: #1933503)
+  * fwts-test: sync up with DBG2 changes from BSA updates
+  * fwts_acpi_tables: skip FACS warning for reduced hardware
+  * acpi: method: Make _AEI test optional for SBBR
+  * acpi: dbg2: Allow 16550 compatible serial port in DBG2
+  * acpi: method: Make method_test_ADR() optional
+  * sbbr: adjust signature name for MADT
+  * sbbr: remove SSDT from mandatory list
+  * sbbr: acpitables: add new recommended tables
+  * acpi: acpitables: add advices for table revision tests
+
+-------------------------------------------------------------------
 Tue Jun 22 12:14:21 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 21.06.00:
