@@ -1,5 +1,5 @@
 #
-# spec file for package libsrtp-linphone
+# spec file for package libsrtp2-linphone
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -25,6 +25,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.linphone.org/BC/public/external/srtp
 Source:         %{name}-%{version}.tar.xz
+Source99:       baselibs.conf
 Patch0:         change-name.patch
 BuildRequires:  gcc
 BuildRequires:  pkgconfig
@@ -83,7 +84,7 @@ This subpackage contains the development headers.
 
 %files devel
 %license LICENSE
-%doc CHANGES 
+%doc CHANGES
 %{_libdir}/%{name}.so
 %dir %{_includedir}/srtp2-linphone
 %{_includedir}/srtp2-linphone/auth.h
@@ -91,6 +92,5 @@ This subpackage contains the development headers.
 %{_includedir}/srtp2-linphone/crypto_types.h
 %{_includedir}/srtp2-linphone/srtp.h
 %{_libdir}/pkgconfig/libsrtp2-linphone.pc
-
 
 %changelog

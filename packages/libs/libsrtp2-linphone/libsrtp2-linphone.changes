@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug  1 18:53:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Create libsrtp2-linphone1-32bit needed by mediastreamer2
+
+-------------------------------------------------------------------
 Tue Jul 20 10:51:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Use pkgconfig(openssl); package builds with libressl too.
