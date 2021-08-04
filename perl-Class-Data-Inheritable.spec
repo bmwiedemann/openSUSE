@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-Data-Inheritable
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,33 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
-
-Name:           perl-Class-Data-Inheritable
 %define cpan_name Class-Data-Inheritable
+Name:           perl-Class-Data-Inheritable
+Version:        0.09
+Release:        0
 Summary:        Inheritable, overridable class data
-Version:        0.08
-Release:        59
-License:        GPL-1.0+ or Artistic-1.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Class-Data-Inheritable/
-#Source:         http://www.cpan.org/authors/id/T/TM/TMTM/Class-Data-Inheritable-0.08.tar.gz
-Source:         %{cpan_name}-%{version}.tar.gz
+License:        Artistic-1.0 OR GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSHERER/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{perl_requires}
 BuildRequires:  perl
 BuildRequires:  perl-macros
+%{perl_requires}
 
 %description
 Class::Data::Inheritable is for creating accessor/mutators to class data.
 That is, if you want to store something about your class as a whole
 (instead of about a single object). This data is then inherited by your
-subclasses and can be overriden.
+subclasses and can be overridden.
 
 For example:
 
@@ -70,54 +66,34 @@ inherit further changes:
   Pere::Ubu->Suitcase('Blue');
 
 However, should Raygun decide to set its own Suitcase() it has now
-"overridden" Pere::Ubu and is on its own, just like if it had overriden a
+"overridden" Pere::Ubu and is on its own, just like if it had overridden a
 method:
 
   # Raygun has an orange suitcase, Pere::Ubu's is still Blue.
   Raygun->Suitcase('Orange');
 
-Now that Raygun has overridden Pere::Ubu futher changes by Pere::Ubu no
+Now that Raygun has overridden Pere::Ubu further changes by Pere::Ubu no
 longer effect Raygun.
 
   # Raygun still has an orange suitcase, but Pere::Ubu is using Samsonite.
   Pere::Ubu->Suitcase('Samsonite');
 
-Authors:
---------
-     Original code by Damian Conway.
-     Maintained by Michael G Schwern until September 2005.
-     Now maintained by Tony Bowden.
-
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
-### since 11.4 perl_process_packlist
-### removes .packlist, perllocal.pod files
-%if 0%{?suse_version} > 1130
 %perl_process_packlist
-%else
-# do not perl_process_packlist
-# remove .packlist file
-%{__rm} -rf $RPM_BUILD_ROOT%perl_vendorarch
-# remove perllocal.pod file
-%{__rm} -f $RPM_BUILD_ROOT%perl_archlib/perllocal.pod
-%endif
 %perl_gen_filelist
 
-%clean
-%{__rm} -rf $RPM_BUILD_ROOT
-
 %files -f %{name}.files
-%defattr(-,root,root,-)
-%doc Changes README
+%doc Changes doc README
 
 %changelog
