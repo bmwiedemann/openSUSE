@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  3 12:36:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add pyramid2.patch for the compatibility with the new pyramid.
+- Require pyramid 2 and skip python2 because of it.
+
+-------------------------------------------------------------------
 Thu Jun  3 11:30:48 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro
