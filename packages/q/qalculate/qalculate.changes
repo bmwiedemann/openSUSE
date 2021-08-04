@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 29 11:46:39 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.20.1:
+  * Save answer to dot and temperature questions in non-interactive
+    mode and do not show the questions in non-interactive terse mode
+  * Fix saving of sub functions with default values
+  * Add support for function creation in save() function and with
+    associated operator (e.g. func1():=x*y^2)
+  * Add operators (.', .*, ./, .^) and functions (replace multiply(),
+    divide(), and pow()) for transpose and element-wise multiplication,
+    division, and power
+  * Fix norm() and magnitude(), and add second argument, p,
+    to norm() function
+  * New text operators: dot, cross, comb, and perm
+  * Add support for ^^ as XOR operator
+  * Fixes and improvements in multisolve() function
+  * Always return exact result in base() function, in exact mode
+  * Improve parsing of functions without parentheses
+  * Do not try to load data objects from global definitions dir
+    if data set is local
+  * Interpret "±" at end of expression as "±0"
+  * Convert Celsius to Fahrenheit if no calculation was performed
+  * Add support for QALCULATE_USER_DIR environment variable and always
+    check for "user" directory on Windows
+  * Output both original and factorized integer, and output abs(x) as |x|
+  * Improved HTML output of mathematical expressions in libqalculate
+  * Minor bug fixes and feature improvements
+
+-------------------------------------------------------------------
 Sat Jul  3 19:30:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.19.0:

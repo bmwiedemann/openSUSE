@@ -16,10 +16,10 @@
 #
 
 
-%define major   21
+%define major   22
 %define libname libqalculate
 Name:           qalculate
-Version:        3.19.0
+Version:        3.20.1
 Release:        0
 Summary:        Multi-purpose desktop calculator application
 License:        GPL-2.0-or-later
