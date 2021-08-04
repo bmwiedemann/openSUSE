@@ -15,7 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if "%{?suse_version}" >= "1550"
+%define clang_version %{nil}
+%endif
+%if "%{?sle_version}" >= "150300"
+%define clang_version 11
+%endif
+%if "%{?sle_version}" == "150200"
+%define clang_version 9
+%endif
 %define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
@@ -38,18 +46,10 @@
 %else
 %bcond_without swiftshader
 %endif
-%ifarch x86_64
-%if %{?suse_version} > 1500
-%bcond_without lto
-%else
 %bcond_with lto
-%endif
-%else
-%bcond_with lto
-%endif
-%bcond_with clang
+%bcond_without clang
 Name:           chromium
-Version:        91.0.4472.164
+Version:        92.0.4515.107
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -84,27 +84,26 @@ Patch11:        chromium-lp151-old-drm.patch
 # gentoo/fedora/arch patchset
 Patch12:        chromium-78-protobuf-RepeatedPtrField-export.patch
 Patch13:        chromium-80-QuicStreamSendBuffer-deleted-move-constructor.patch
-Patch15:        chromium-90-compiler.patch
-Patch16:        chromium-86-ConsumeDurationNumber-constexpr.patch
+Patch15:        chromium-91-compiler.patch
 Patch17:        chromium-86-ImageMemoryBarrierData-init.patch
 Patch18:        chromium-86-nearby-explicit.patch
 Patch19:        chromium-86-nearby-include.patch
 Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
-Patch22:        chromium-lp152-missing-includes.patch
 Patch23:        chromium-glibc-2.33.patch
 Patch25:        chromium-90-fseal.patch
-Patch29:        chromium-89-EnumTable-crash.patch
+Patch29:        chromium-92-EnumTable-crash.patch
 Patch30:        chromium-shim_headers.patch
 Patch31:        chromium-89-missing-cstring-header.patch
 Patch33:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 Patch36:        chromium-90-ruy-include.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
-Patch41:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
-Patch42:        chromium-91-system-icu.patch
 Patch44:        chromium-91-libyuv-aarch64.patch
-Patch45:        chromium-91-1190561-boo1186948.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
+Patch47:        chromium-92-v8-constexpr.patch
+Patch48:        chromium-92-GetUsableSize-nullptr.patch
+Patch49:        chromium-freetype-2.11.patch
+Patch50:        chromium-clang-nomerge.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -115,7 +114,6 @@ Patch101:       chromium-86-fix-vaapi-on-intel.patch
 # PATCH-FIX-SUSE: allow prop codecs to be set with chromium branding
 Patch102:       chromium-prop-codecs.patch
 BuildRequires:  SDL-devel
-BuildRequires:  binutils-gold
 BuildRequires:  bison
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
@@ -181,7 +179,6 @@ BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libssl)
-BuildRequires:  pkgconfig(libtcmalloc)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(libva)
@@ -231,17 +228,17 @@ Conflicts:      chromium-browser
 Provides:       chromium-based-browser = %{version}
 Provides:       chromium-browser = %{version}
 Provides:       web_browser
+Provides:       %{name}-suid-helper = %{version}
 Obsoletes:      %{name}-suid-helper < %{version}
 Obsoletes:      chromium-browser < %{version}
-Provides:       %{name}-suid-helper = %{version}
-Obsoletes:      chromium-beta-desktop-gnome
-Obsoletes:      chromium-beta-desktop-kde
-Obsoletes:      chromium-desktop-gnome
-Obsoletes:      chromium-desktop-kde
-Obsoletes:      chromium-dev-desktop-gnome
-Obsoletes:      chromium-dev-desktop-kde
-Obsoletes:      chromium-ffmpeg
-Obsoletes:      chromium-ffmpegsumo
+Obsoletes:      chromium-beta-desktop-gnome < %{version}
+Obsoletes:      chromium-beta-desktop-kde < %{version}
+Obsoletes:      chromium-desktop-gnome < %{version}
+Obsoletes:      chromium-desktop-kde < %{version}
+Obsoletes:      chromium-dev-desktop-gnome < %{version}
+Obsoletes:      chromium-dev-desktop-kde < %{version}
+Obsoletes:      chromium-ffmpeg < %{version}
+Obsoletes:      chromium-ffmpegsumo < %{version}
 # no 32bit supported and it takes ages to build
 ExcludeArch:    %{ix86} %{arm} ppc ppc64 ppc64le s390 s390x
 %if 0%{?suse_version} <= 1500
@@ -261,8 +258,11 @@ BuildRequires:  pkgconfig(icu-i18n) >= 67.0
 BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{with clang}
-BuildRequires:  clang >= 5.0.0
+BuildRequires:  clang%{clang_version}
+BuildRequires:  lld%{clang_version}
+BuildRequires:  llvm%{clang_version}
 %else
+BuildRequires:  binutils-gold
 %if %{?suse_version} > 1500
 BuildRequires:  gcc >= 10
 BuildRequires:  gcc-c++ >= 10
@@ -314,6 +314,7 @@ keeplibs=(
     buildtools/third_party/libc++
     buildtools/third_party/libc++abi
     buildtools/third_party/libunwind
+    buildtools/third_party/eu-strip
     chrome/third_party/mozilla_security_manager
     courgette/third_party
     net/third_party/mozilla_security_manager
@@ -369,7 +370,7 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/axe-core
     third_party/devtools-frontend/src/front_end/third_party/chromium
     third_party/devtools-frontend/src/front_end/third_party/codemirror
-    third_party/devtools-frontend/src/front_end/third_party/fabricjs
+    third_party/devtools-frontend/src/front_end/third_party/diff
     third_party/devtools-frontend/src/front_end/third_party/i18n
     third_party/devtools-frontend/src/front_end/third_party/intl-messageformat
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
@@ -441,7 +442,6 @@ keeplibs=(
     third_party/node/node_modules/polymer-bundler/lib/third_party/UglifyJS2
     third_party/one_euro_filter
     third_party/opencv
-    third_party/openh264
     third_party/openscreen
     third_party/openscreen/src/third_party/mozilla
     third_party/openscreen/src/third_party/tinycbor/src/src
@@ -487,7 +487,6 @@ keeplibs=(
     third_party/swiftshader/third_party/marl
     third_party/swiftshader/third_party/SPIRV-Headers/include/spirv/unified1
     third_party/swiftshader/third_party/subzero
-    third_party/tcmalloc
     third_party/tensorflow-text
     third_party/tflite
     third_party/tflite/src/third_party/eigen3
@@ -552,29 +551,9 @@ build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 %if %{with clang}
 export CC=clang
 export CXX=clang++
+export AR=llvm-ar
+export NM=llvm-nm
 %else
-# REDUCE DEBUG as it gets TOO large
-ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
-export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
-# extra flags to reduce warnings that aren't very useful
-export CXXFLAGS="${CXXFLAGS} -Wno-pedantic -Wno-unused-result -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-deprecated-declarations"
-# ignore warnings for minor mistakes that are too common
-export CXXFLAGS="${CXXFLAGS} -Wno-return-type -Wno-parentheses -Wno-misleading-indentation"
-# ignore warnings that are not supported well until gcc 8
-export CXXFLAGS="${CXXFLAGS} -Wno-attributes"
-# ignore warnings due to gcc bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84055)
-export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
-# ingore new gcc 8 warnings that aren't yet handled upstream
-export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else -Wno-packed-not-aligned"
-# for wayland
-export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
-%ifarch aarch64
-export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
-%endif
-export CFLAGS="${CXXFLAGS}"
-export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess -Wno-invalid-offsetof -fpermissive"
-export CC=gcc
-export CXX=g++
 export AR=ar
 export NM=nm
 %if 0%{?suse_version} <= 1500
@@ -585,11 +564,48 @@ export CXX=g++-10
 ln -sfn %{_bindir}/$CC $HOME/bin/gcc
 ln -sfn %{_bindir}/$CXX $HOME/bin/g++
 export PATH="$HOME/bin/:$PATH"
+%else
+export CC=gcc
+export CXX=g++
 %endif
 %endif
+# REDUCE DEBUG as it gets TOO large
+ARCH_FLAGS="`echo %{optflags} | sed -e 's/^-g / /g' -e 's/ -g / /g' -e 's/ -g$//g'`"
+export CXXFLAGS="${ARCH_FLAGS} -Wno-return-type"
+# extra flags to reduce warnings that aren't very useful
+export CXXFLAGS="${CXXFLAGS} -Wno-pedantic -Wno-unused-result -Wno-unused-function -Wno-unused-variable -Wno-deprecated-declarations"
+# ignore warnings for minor mistakes that are too common
+export CXXFLAGS="${CXXFLAGS} -Wno-return-type -Wno-parentheses -Wno-misleading-indentation"
+# ignore warnings that are not supported well until gcc 8
+export CXXFLAGS="${CXXFLAGS} -Wno-attributes"
+# ignore warnings due to gcc bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=84055)
+export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
+# ingore new gcc 8 warnings that aren't yet handled upstream
+export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else"
+# for wayland
+export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+%ifarch aarch64
+%if %{without clang}
+export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
+%else
+%if "%{?sle_version}" == "150200"
+export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
+%else
+export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions=all"
+%endif
+%endif
+%endif
+%if %{without clang}
+export CXXFLAGS="${CXXFLAGS} -Wno-unused-but-set-variable -Wno-packed-not-aligned"
+%endif
+export CFLAGS="${CXXFLAGS}"
+%if %{without clang}
+export CXXFLAGS="${CXXFLAGS} -Wno-subobject-linkage -Wno-class-memaccess"
+%endif
+export CXXFLAGS="${CXXFLAGS} -Wno-invalid-offsetof -fpermissive"
 # do not eat all memory
 %limit_build -m 2600
-%if %{with lto}
+%if %{with lto} && %{without clang}
 # reduce the threads for linking even more due to LTO eating ton of memory
 _link_threads=$(((%{jobs} - 2)))
 test "$_link_threads" -le 0 && _link_threads=1
@@ -634,6 +650,10 @@ myconf_gn=""
 myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
+%ifarch x86_64
+myconf_gn+=" target_cpu=\"x64\""
+%endif
+myconf_gn+=" target_os=\"linux\""
 myconf_gn+=" is_debug=false"
 myconf_gn+=" enable_nacl=false"
 %if %{with swiftshader}
@@ -642,7 +662,6 @@ myconf_gn+=" use_swiftshader_with_subzero=true"
 myconf_gn+=" is_component_ffmpeg=true"
 myconf_gn+=" use_cups=true"
 myconf_gn+=" use_aura=true"
-myconf_gn+=" concurrent_links=1"
 myconf_gn+=" symbol_level=1"
 myconf_gn+=" blink_symbol_level=0"
 myconf_gn+=" use_kerberos=true"
@@ -653,18 +672,19 @@ myconf_gn+=" use_pulseaudio=true link_pulseaudio=true"
 myconf_gn+=" is_component_build=false"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" fatal_linker_warnings=false"
-# Current tcmalloc does not support AArch64
-myconf_gn+=" use_allocator=\"tcmalloc\""
+myconf_gn+=" use_allocator=\"partition\""
+myconf_gn+=" use_allocator_shim=true"
+myconf_gn+=" use_partition_alloc=true"
 myconf_gn+=" fieldtrial_testing_like_official_build=true"
-myconf_gn+=" use_gold=true"
 myconf_gn+=" use_gnome_keyring=false"
 myconf_gn+=" use_unofficial_version_number=false"
-myconf_gn+=" use_lld=false"
 myconf_gn+=" use_vaapi=true"
 myconf_gn+=" use_sysroot=false"
 myconf_gn+=" treat_warnings_as_errors=false"
 myconf_gn+=" enable_widevine=true"
 myconf_gn+=" use_dbus=true"
+myconf_gn+=" media_use_openh264=false"
+myconf_gn+=" rtc_use_h264=false"
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
@@ -678,8 +698,13 @@ myconf_gn+=" rtc_pipewire_version=\"0.3\""
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
+%if "%{?suse_version}" >= "1550" || "%{?sle_version}" >= "150300"
+myconf_gn+=" use_thin_lto=true"
+%endif
+myconf_gn+=" use_lld=true"
 %else
 myconf_gn+=" is_clang=false"
+myconf_gn+=" use_gold=true"
 %endif
 %if %{with lto}
 myconf_gn+=" gcc_lto=true"
@@ -796,7 +821,7 @@ cp -a %{SOURCE102} %{buildroot}%{_datadir}/gnome-control-center/default-apps/
 # link to browser plugin path.  Plugin patch doesn't work. Why?
 mkdir -p %{buildroot}%{_libdir}/browser-plugins
 pushd %{buildroot}%{_libdir}/chromium
-ln -s ../browser-plugins plugins
+ln -s %{_libdir}/browser-plugins %{buildroot}%{_libdir}/chromium/plugins
 popd
 
 # Install the master_preferences file
@@ -809,7 +834,7 @@ cp -a chrome/app/resources/manpage.1.in %{buildroot}%{_mandir}/man1/chromium.1
 sed -i "s|@@PACKAGE@@|chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 
-%fdupes %{buildroot}
+%fdupes -s %{buildroot}
 
 %files
 %license LICENSE
@@ -818,17 +843,11 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %config(noreplace) %{_sysconfdir}/default/chromium
 %dir %{_datadir}/gnome-control-center
 %dir %{_datadir}/gnome-control-center/default-apps
-%{_libdir}/chromium/
-%if %{with swiftshader}
-%dir %{_libdir}/chromium/swiftshader/
-%{_libdir}/chromium/swiftshader/*.so
-%endif
-%{_libdir}/chromium/*.so
-%{_datadir}/applications/*.desktop
-%dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/chromium-browser.appdata.xml
 %{_datadir}/gnome-control-center/default-apps/chromium-browser.xml
-%{_datadir}/icons/hicolor/
+%{_libdir}/chromium
+%{_datadir}/applications/*.desktop
+%{_datadir}/metainfo/chromium-browser.appdata.xml
+%{_datadir}/icons/hicolor
 %exclude %{_libdir}/chromium/chromedriver
 %{_bindir}/chromium
 %{_mandir}/man1/chromium.1%{?ext_man}

@@ -21,7 +21,7 @@ index af957d7..7fe82ae 100644
  
  struct ImageMemoryBarrierData
  {
--    char name[40];
+-    char name[44];
 +    const char *name;
  
      // The Vk layout corresponding to the ImageLayout key.

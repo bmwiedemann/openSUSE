@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug  1 11:14:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 92.0.4515.107 (boo#1188590)
+  * CVE-2021-30565: Out of bounds write in Tab Groups
+  * CVE-2021-30566: Stack buffer overflow in Printing
+  * CVE-2021-30567: Use after free in DevTools
+  * CVE-2021-30568: Heap buffer overflow in WebGL
+  * CVE-2021-30569: Use after free in sqlite
+  * CVE-2021-30571: Insufficient policy enforcement in DevTools
+  * CVE-2021-30572: Use after free in Autofill
+  * CVE-2021-30573: Use after free in GPU
+  * CVE-2021-30574: Use after free in protocol handling
+  * CVE-2021-30575: Out of bounds read in Autofill
+  * CVE-2021-30576: Use after free in DevTools
+  * CVE-2021-30577: Insufficient policy enforcement in Installer
+  * CVE-2021-30578: Uninitialized Use in Media
+  * CVE-2021-30579: Use after free in UI framework
+  * CVE-2021-30581: Use after free in DevTools
+  * CVE-2021-30582: Inappropriate implementation in Animation
+  * CVE-2021-30584: Incorrect security UI in Downloads
+  * CVE-2021-30585: Use after free in sensor handling
+  * CVE-2021-30588: Type Confusion in V8
+  * CVE-2021-30589: Insufficient validation of untrusted input in Sharing
+- Switched from GCC+LTO to Clang+ThinLTO due to errors
+- Removed patches:
+  * chromium-90-compiler.patch
+  * chromium-89-EnumTable-crash.patch
+  * chromium-86-ConsumeDurationNumber-constexpr.patch
+  * chromium-lp152-missing-includes.patch
+  * chromium-91-GCC_fix_vector_types_in_pcscan.patch
+  * chromium-91-system-icu.patch
+  * chromium-91-1190561-boo1186948.patch
+- Added patches:
+  * chromium-91-compiler.patch
+  * chromium-92-EnumTable-crash.patch
+  * chromium-92-v8-constexpr.patch
+  * chromium-92-GetUsableSize-nullptr.patch
+  * chromium-freetype-2.11.patch
+  * chromium-clang-nomerge.patch
+
+-------------------------------------------------------------------
 Sat Jul 17 18:17:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - chromium 91.0.4472.164 (boo#1188373)

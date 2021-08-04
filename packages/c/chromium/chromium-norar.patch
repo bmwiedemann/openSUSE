@@ -84,10 +84,10 @@ Index: chromium-86.0.4240.75/chrome/services/file_util/BUILD.gn
 --- chromium-86.0.4240.75.orig/chrome/services/file_util/BUILD.gn
 +++ chromium-86.0.4240.75/chrome/services/file_util/BUILD.gn
 @@ -15,7 +15,6 @@ source_set("file_util") {
-     "//build:chromeos_buildflags",
-     "//chrome/common/safe_browsing",
-     "//chrome/common/safe_browsing:archive_analyzer_results",
--    "//chrome/common/safe_browsing:rar_analyzer",
-     "//components/safe_browsing:buildflags",
-     "//mojo/public/cpp/bindings",
-   ]
+     deps += [
+       "//chrome/common/safe_browsing",
+       "//chrome/common/safe_browsing:archive_analyzer_results",
+-      "//chrome/common/safe_browsing:rar_analyzer",
+     ]
+   }
+ 
