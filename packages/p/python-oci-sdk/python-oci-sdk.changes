@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Tue Aug  3 12:24:45 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.43.1
+  * Support for filtering by tag on capacity planning and SQL warehouse
+    list operations in the Operations Insights service
+  * Support for creating cross-region autonomous data guards in the Database service
+  * Support for the customer contacts feature on cloud exadata infrastructure
+    in the Database service
+  * Support for cost analysis custom tables in the Usage service
+- from version 2.43.0
+  * Support for schedules, schedule tasks, REST tasks, operators, S3, and Fusion Apps
+    in the Data Integration service
+  * Support for getting available updates and update histories for VM clusters
+    in the Database service
+  * Support for downloading network validation reports for Exadata network
+    resources in the Database service
+  * Support for patch and upgrade of Grid Infrastructure (GI), and update of
+    DomU OS software for VM clusters in the Database service
+  * Support for updating data guard associations in the Database service
+  * Changed Expect HTTP header to support only Object Storage and Log Analytics services,
+    to mitigate performance degradation issues in the OCI Python SDK v2.38.4 and above.
+    For more information, please see https://github.com/oracle/oci-python-sdk/issues/367
+  * Data Type for param `type` changed from `str` to `object` in model `ShapeField`
+    in the Data Integration Service
+  * Data Type for param `type` changed from `oci.data_integration.models.BaseType` to
+    `object` in model `Parameter` in the Data Integration Service
+  * Data Type for param `type` changed from `str` to `object` in model `NativeShapeField`
+    in the Data Integration Service
+  * Base class for model `OracleWriteAttributes` changed from `object` to
+    `oci.data_integration.models.AbstractWriteAttribute` in the Data Integration Service
+  * Base class for model `OracleReadAttributes` changed from `object` to
+    `oci.data_integration.models.AbstractReadAttribute` in the Data Integration Service
+  * Base class for model `OracleAdwcWriteAttributes` changed from `object` to
+    `oci.data_integration.models.AbstractWriteAttribute` in the Data Integration Service
+  * Base class for model `OracleAtpWriteAttributes` changed from `object` to
+    `oci.data_integration.models.AbstractWriteAttribute` in the Data Integration Service
+  * Param `bucket_name` was removed from model `OracleAtpWriteAttributes` in the Data Integration Service
+  * Param `bucket_name` was removed from model `OracleAdwcWriteAttributes` in the Data Integration Service
+  * Param `bucket_name` was removed from model `OracleAdwcWriteAttributes` in the Data Integration Service
+  * Param `is_file_pattern` was removed from model `CsvFormatAttribute` in the Data Integration Service
+  * Constant `MODEL_TYPE_REST_OPERATOR` was removed from model `Operator` in the Data Integration Service
+- from version 2.42.0
+  * Support for the AI Anomaly Detection service
+  * Support for retrieving a DNS zone as a zone file in the DNS service
+  * Support for querying manual adjustments in the Usage service
+  * Support for searching Marketplace listings in the Marketplace service
+  * Support for new cluster type 'ODH' in the Big Data service
+  * Support for availability domain as an optional parameter when creating VLANs in the Networking service
+  * Support for search domain type on DHCP options, to support multi-level domain search in the Networking service
+  * Model `TSIG` was removed from the DNS service
+  * Param `tsig` was removed from model `ExternalMaster` in the DNS service
+  * Models `CreateCustomTableDetails`, `CreateScheduleReportDetails`, `CustomTable`, `CustomTableCollection`,
+    `CustomTableSummary`, `SavedScheduleReport`, `ScheduleReport`, `ScheduleReportCollection`,
+    `ScheduleReportSummary`, `UpdateCustomTableDetails`, `UpdateScheduleReportDetails` were removed from
+    Usage API service
+- from version 2.41.1
+  * Support for order activation in the Organizations service
+  * Support for resource principal authorization on Enterprise Manager bridge resources
+    in the Operations Insights service
+  * Support for the starter edition license type in the Content and Experience service
+  * Support for the Generic Artifacts service's new domain name
+- from version 2.41.0
+  * Support for the DevOps service
+  * Support for configuring network security groups for node pools in the Container Engine for Kubernetes service
+  * Support for optionally specifying CPU core count and data storage size when creating autonomous
+    databases in the Database service
+  * Support for metastore and initial data asset import/export in the Data Catalog service
+  * Support for associating domain names to emails and managing email domain names / DKIM in the Email Delivery service
+  * Support for email domain names on senders and suppressions in the Email Delivery service
+  * Support for signing request bodies for PUT/POST/PATCH requests where it is expected by the service.
+    For more information, please see https://docs.oracle.com/en-us/iaas/tools/python/latest/sdk_behaviors/index.html
+  * The property `cpu_core_count` was made optional in model CreateAutonomousDatabaseBase in the Database service
+  * `DISPLAYNAME` was removed as allowed value for the SortBy property in method `list_job_executions`
+    under the Data Catalog service
+  * Util function `should_record_body_position_for_retry` was moved from src/oci/retry/retry_utils.py to src/oci/util.py
+  * Util function `record_body_position_for_retry` was renamed to `record_body_position_for_rewind`
+    and was moved from src/oci/retry/retry_utils.py to src/oci/util.py
+  * Util function `rewind_body_for_retry` was renamed to `rewind_body` and was moved from
+    src/oci/retry/retry_utils.py to src/oci/util.py
+
+-------------------------------------------------------------------
 Mon Jun 28 13:44:55 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.40.1
