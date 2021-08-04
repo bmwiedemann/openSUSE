@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  2 10:36:53 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.7
+  * This is a minor update to resolve a compatibility issue with
+    GNU binutils 2.36.
+- supersedes u_ar-clq-Imake.tmpl-binutils_2.36.patch 
+- refreshed u_riscv.patch, u_xorg-cf-files-D_DEFAULT_SOURCE.patch
+
+-------------------------------------------------------------------
 Wed Mar  3 17:27:07 UTC 2021 - Marguerite Su <i@marguerite.su>
 
 - u_ar-clq-Imake.tmpl-binutils_2.36.patch

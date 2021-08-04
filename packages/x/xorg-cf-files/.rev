@@ -111,4 +111,16 @@
     <comment></comment>
     <requestid>878075</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cd218d1f7ca98c6eb55669d7d7594e44</srcmd5>
+    <version>1.0.7</version>
+    <time>1628108916</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.7
+  * This is a minor update to resolve a compatibility issue with
+    GNU binutils 2.36.
+- supersedes u_ar-clq-Imake.tmpl-binutils_2.36.patch 
+- refreshed u_riscv.patch, u_xorg-cf-files-D_DEFAULT_SOURCE.patch</comment>
+    <requestid>909747</requestid>
+  </revision>
 </revisionlist>
