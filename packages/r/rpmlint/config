@@ -816,6 +816,8 @@ setOption("DBUSServices.WhiteList", (
     "org.fedoraproject.SetroubleshootFixit.conf",
     "org.fedoraproject.SetroubleshootPrivileged.conf",
     "org.fedoraproject.Setroubleshootd.conf",
+    # oddjob-gpupdate (bsc#1188680)
+    "oddjob-gpupdate.conf"
 ))
 
 setOption("PAMModules.WhiteList", (
@@ -963,7 +965,9 @@ setOption("PAMModules.WhiteList", (
     # pam (bsc#1171562)
     "pam_faillock.so",
     # sssd gssapi extension (bsc#1182509)
-    "pam_sss_gss.so"
+    "pam_sss_gss.so",
+    # oddjob-gpupdate (bsc#1188680)
+    "pam_oddjob_gpupdate.so",
 ))
 
 # Output filters

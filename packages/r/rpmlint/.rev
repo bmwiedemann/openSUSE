@@ -3155,4 +3155,15 @@ will self heal once rpmlint-mini is rebuild
     <comment></comment>
     <requestid>895788</requestid>
   </revision>
+  <revision rev="355" vrev="44">
+    <srcmd5>3d4c8ffb75b8a45a70edc03c45d296e0</srcmd5>
+    <version>1.11</version>
+    <time>1628064640</time>
+    <user>dimstar_suse</user>
+    <comment>- whitelist oddjob-gpupdate PAM and D-Bus (bsc#1188680)
+
+(we need this in rpmlint1 already so that the package maintainer of
+oddjob-gpupdate isn't blocked)</comment>
+    <requestid>910085</requestid>
+  </revision>
 </revisionlist>

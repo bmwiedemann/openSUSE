@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  4 07:49:04 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- whitelist oddjob-gpupdate PAM and D-Bus (bsc#1188680)
+
+-------------------------------------------------------------------
 Fri May 21 14:08:38 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - whitelist setroubleshoot (boo#1186344)
