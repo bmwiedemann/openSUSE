@@ -1,0 +1,235 @@
+-------------------------------------------------------------------
+Wed Aug  4 10:47:05 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Fix Supplements: supplement against bash-completion, not bash. otherwise
+  bash-completion is now pulled in for everybody. Reported by dimstar.
+
+-------------------------------------------------------------------
+Tue Jul 20 11:40:01 UTC 2021 - munix9@googlemail.com
+
+- Update to version 31.0.2 [boo#1185883]
+  * adb
+    - Support forwarding to vsock on linux.
+    - Fix bug in adb track-devices where devices over wireless
+      debugging wouldn't immediately receive updates.
+    - Implement preliminary support for mDNS device discovery
+      without a separately installed mDNS service. This is
+      currently disabled by default, and can be enabled by
+      setting the environment variable ADB_MDNS_OPENSCREEN to 1
+      when starting the adb server.
+  * fastboot
+    - Don't fail when unable to get boot partition size.
+    - Derive device locked state from property instead of parsing
+      the kernel command line.
+
+- Switch source to https://github.com/nmeum/android-tools
+- Add fix-add-e2fsprogs-contrib.patch
+- Add fix-install-completion.patch
+- Add fix-install-python-tools.patch
+- Add fix-pie-build.patch
+- Add vendor.tar.gz ("go_modules" service)
+- Remove adb.bash and fastboot.bash (now included in archive)
+- Remove fix_build_core.patch
+- Remove fix_build_e2fsprogs.patch
+- Remove fix-include-limits.patch
+- Remove generate_build.rb
+- Clean up/rework spec file
+
+-------------------------------------------------------------------
+Tue Jun  1 17:24:21 UTC 2021 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r68
+- Add fix-include-limits.patch
+
+-------------------------------------------------------------------
+Mon Apr 26 12:33:30 UTC 2021 - munix9@googlemail.com
+
+- Fix build for Leap (use pcre2-devel instead of
+  pkgconfig(libpcre))
+
+-------------------------------------------------------------------
+Thu Apr  8 19:33:04 UTC 2021 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r67
+- Add man pages (via help2man) and bash completion for
+  adb and fastboot
+- Clean up spec file
+
+-------------------------------------------------------------------
+Tue Mar  2 06:37:50 UTC 2021 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r66
+
+-------------------------------------------------------------------
+Fri Feb  5 05:39:09 UTC 2021 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r65
+
+-------------------------------------------------------------------
+Tue Jan  5 20:09:49 UTC 2021 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r64
+
+-------------------------------------------------------------------
+Tue Dec  8 14:05:37 UTC 2020 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r63
+
+-------------------------------------------------------------------
+Thu Nov 26 12:38:22 UTC 2020 - munix9@googlemail.com
+
+- Update to android-security-9.0.0_r62
+
+-------------------------------------------------------------------
+Sat Oct 10 04:04:37 UTC 2020 - munix9@googlemail.com
+
+- Update to android-9.0.0_r61
+
+-------------------------------------------------------------------
+Fri Sep 18 09:37:07 UTC 2020 - munix9@googlemail.com
+
+- Update to android-9.0.0_r60
+
+-------------------------------------------------------------------
+Tue Jul 21 04:41:18 UTC 2020 - munix9@googlemail.com
+
+- Update to android-9.0.0_r58
+
+-------------------------------------------------------------------
+Sun Jan 19 09:05:53 UTC 2020 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r52
+
+-------------------------------------------------------------------
+Fri Nov  8 16:08:25 UTC 2019 - munix9@googlemail.com
+
+- moved udev-rules into new package 'android-udev-rules'
+- some spec clean up
+
+-------------------------------------------------------------------
+Fri Oct 25 16:42:52 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r49
+
+-------------------------------------------------------------------
+Wed Oct  2 22:49:12 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r48
+- added hack: fix for glibc >= 2.30 [by Paolo Panto (munix9)]
+
+-------------------------------------------------------------------
+Sun Aug 25 01:23:54 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r47
+
+-------------------------------------------------------------------
+Mon Jul 15 21:46:35 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r45
+- Add "%define _lto_cflags %{nil}" line by Paolo Panto (munix9)
+  to specfile.
+
+-------------------------------------------------------------------
+Thu Jun 20 22:24:10 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r42
+- Put udev rules in _service as well
+
+-------------------------------------------------------------------
+Thu May 30 14:26:44 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Use Python3 for avbtool and mkbootimg.
+
+-------------------------------------------------------------------
+Mon May 13 21:38:08 UTC 2019 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-9.0.0_r39
+
+-------------------------------------------------------------------
+Mon Apr 22 16:16:42 UTC 2019 - Aleksa Sarai <asarai@suse.com>
+
+- Update to android-9.0.0_r30
+- Switch to ninja for builds with massive packaging rework.
+- Update android-udev-rules.
+
+-------------------------------------------------------------------
+Thu Jan  3 10:44:51 UTC 2019 - olaf@aepfle.de
+
+- Detect path to g++ with C++14 support and pass it as variable
+  to generated build.sh
+
+-------------------------------------------------------------------
+Mon Dec 24 09:57:14 UTC 2018 - ecsos@opensuse.org
+
+- Update to android-8.0.0_36
+
+-------------------------------------------------------------------
+Wed Apr 18 11:34:17 UTC 2018 - Markus S <kamikazow@opensuse.org>
+
+- Update to android-8.0.0_17
+
+-------------------------------------------------------------------
+Mon Feb 15 13:40:59 UTC 2016 - dmitry_r@opensuse.org
+
+- Fix systemd-udevd warning [boo#965512]
+
+-------------------------------------------------------------------
+Mon Oct 26 13:53:33 UTC 2015 - dmitry_r@opensuse.org
+
+- Split udev rules to android-tools-udev package. Use rules from
+  libmtp-udev by default. [boo#938659]
+
+-------------------------------------------------------------------
+Tue Jul 14 07:18:53 UTC 2015 - dmitry_r@opensuse.org
+
+- Update to version 5.1.1_r8
+  * No changelog available
+- Drop obsolete fix-overflow-in-adb_client.patch
+- Drop obsolete android-tools-ppc64-types.patch
+- Fix implicit definition
+  * f2fs-tools-implicit-definitions.patch
+
+-------------------------------------------------------------------
+Tue Jun 23 22:21:16 UTC 2015 - crrodriguez@opensuse.org
+
+- 51-android.rules: Use TAG+="uaccess" instead of using
+  group/mode access control.
+
+-------------------------------------------------------------------
+Fri Sep 19 04:58:19 UTC 2014 - crrodriguez@opensuse.org
+
+- Use udevrulesdir and call udev_rules_update when appropiate
+
+-------------------------------------------------------------------
+Fri May  2 20:12:27 UTC 2014 - dmitry_r@opensuse.org
+
+- Fix overflow in adb CVE-2014-1909 [bnc#863074]
+  * fix-overflow-in-adb_client.patch
+
+-------------------------------------------------------------------
+Thu Feb 14 19:39:22 UTC 2013 - dmitry_r@opensuse.org
+
+- Update to version 4.2.2_r2
+  * no changelog available
+- Remove provide section from package
+
+-------------------------------------------------------------------
+Mon Jan 28 00:18:10 UTC 2013 - dvaleev@suse.com
+
+- fix wrong types for ppc64 (android-tools-ppc64-types.patch)
+
+-------------------------------------------------------------------
+Wed Jan 16 13:36:36 UTC 2013 - dmitry_r@opensuse.org
+
+- Move udev rules to correct place
+
+-------------------------------------------------------------------
+Wed Jan 16 12:23:33 UTC 2013 - dmitry_r@opensuse.org
+
+- Fix udev rules
+
+-------------------------------------------------------------------
+Fri Dec  7 16:02:37 UTC 2012 - dmitry_r@opensuse.org
+
+- Initial package
+- Version 4.2.1_r1

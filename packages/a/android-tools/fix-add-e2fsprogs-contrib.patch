@@ -1,0 +1,41 @@
+diff -ruN a/vendor/CMakeLists.mke2fs.txt b/vendor/CMakeLists.mke2fs.txt
+--- a/vendor/CMakeLists.mke2fs.txt
++++ b/vendor/CMakeLists.mke2fs.txt
+@@ -115,3 +115,25 @@
+ 	libext2fs libsparse libbase libzip liblog libutil pthread z)
+ target_include_directories("${ANDROID_MKE2FS_NAME}" PRIVATE
+ 	e2fsprogs/lib)
++
++add_executable(e2fsdroid
++	e2fsprogs/contrib/android/e2fsdroid.c
++	e2fsprogs/contrib/android/basefs_allocator.c
++	e2fsprogs/contrib/android/block_range.c
++	e2fsprogs/contrib/android/base_fs.c
++	e2fsprogs/contrib/android/fsmap.c
++	e2fsprogs/contrib/android/block_list.c
++	e2fsprogs/contrib/android/perms.c)
++
++target_link_libraries(e2fsdroid
++	libext2fs libsparse libzip libcutils liblog libutil libbase libselinux libsepol z pcre2-8 pthread)
++target_include_directories(e2fsdroid PRIVATE
++	e2fsprogs/lib e2fsprogs/lib/ext2fs selinux/libselinux/include core/libcutils/include e2fsprogs/misc)
++
++add_executable(ext2simg
++	e2fsprogs/contrib/android/ext2simg.c)
++
++target_link_libraries(ext2simg
++	libext2fs libsparse libbase libzip liblog libutil z pthread)
++target_include_directories(ext2simg PRIVATE
++	e2fsprogs/lib core/libsparse/include)
+diff -ruN a/vendor/CMakeLists.txt b/vendor/CMakeLists.txt
+--- a/vendor/CMakeLists.txt
++++ b/vendor/CMakeLists.txt
+@@ -66,7 +66,7 @@
+ 
+ # Targets which should be installed by `make install`.
+ install(TARGETS adb fastboot "${ANDROID_MKE2FS_NAME}"
+-	simg2img img2simg append2simg DESTINATION bin)
++	simg2img img2simg append2simg e2fsdroid ext2simg DESTINATION bin)
+ 
+ # Install common completion files.
+ install(FILES adb/adb.bash RENAME adb DESTINATION "${COMPLETION_COMMON_DIR}")
