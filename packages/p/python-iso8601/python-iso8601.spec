@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-iso8601
-Version:        0.1.14
+Version:        0.1.16
 Release:        0
 Summary:        Python module to parse ISO 8601 dates
 License:        MIT

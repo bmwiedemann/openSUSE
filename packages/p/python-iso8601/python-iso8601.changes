@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  1 09:32:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.16:
+  * Include `docs/` into sdist tarball
+  * Include .pyi files in built wheels and source tarballs
+
+-------------------------------------------------------------------
 Thu Feb 18 21:45:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.1.14:
