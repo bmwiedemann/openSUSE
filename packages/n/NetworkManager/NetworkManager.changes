@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 28 17:13:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.6:
+  + core:
+    - Fix adding stale local routes when address changes.
+    - Introduce "allowed-connections" option to disallow profiles
+      on a device. This allows to filter out profiles that
+      originate from initrd.
+    - Introduce "keep-configuration" device option to forcefully
+      activate a profile on start.
+  + initrd:
+    - Tag generated profiles with origin in user data.
+    - Add "ib.pkey=" command line option.
+  + dhcp: Handle filename/bootfile_name DHCP option and write it to
+    device state file for initrd/kickstart.
+
+-------------------------------------------------------------------
 Mon Jul 26 09:21:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add libnm0 to baselibs.conf to be used by 64bit Steam

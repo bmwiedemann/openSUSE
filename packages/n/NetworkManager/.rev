@@ -1879,4 +1879,24 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
     <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909037 from yfjiang)</comment>
     <requestid>909086</requestid>
   </revision>
+  <revision rev="229" vrev="1">
+    <srcmd5>fb518e6a9f84bc2137e717e469287c4a</srcmd5>
+    <version>1.32.6</version>
+    <time>1628108907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.32.6:
+  + core:
+    - Fix adding stale local routes when address changes.
+    - Introduce &quot;allowed-connections&quot; option to disallow profiles
+      on a device. This allows to filter out profiles that
+      originate from initrd.
+    - Introduce &quot;keep-configuration&quot; device option to forcefully
+      activate a profile on start.
+  + initrd:
+    - Tag generated profiles with origin in user data.
+    - Add &quot;ib.pkey=&quot; command line option.
+  + dhcp: Handle filename/bootfile_name DHCP option and write it to
+    device state file for initrd/kickstart. (forwarded request 909146 from dimstar)</comment>
+    <requestid>909724</requestid>
+  </revision>
 </revisionlist>
