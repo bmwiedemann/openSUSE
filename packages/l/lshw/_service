@@ -3,7 +3,7 @@
     <param name="url">https://github.com/lyonel/lshw.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="versionformat">@PARENT_TAG@+git.%cd</param>
+    <param name="versionformat">B.02.19.2+git.%cd</param>
   </service>
   <service mode="disabled" name="set_version"/>
   <service name="tar" mode="buildtime"/>

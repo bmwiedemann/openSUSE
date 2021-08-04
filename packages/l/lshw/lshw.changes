@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  4 08:21:46 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update versioning to to allow easy transition on SLE
+- Disable parallel build to avoid random failures
+
+-------------------------------------------------------------------
 Thu Jun 24 08:15:40 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version B.02.19+git.20210619:

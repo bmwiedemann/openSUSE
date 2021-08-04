@@ -18,7 +18,7 @@
 
 
 Name:           lshw
-Version:        B.02.19+git.20210619
+Version:        B.02.19.2+git.20210619
 Release:        0
 Summary:        HardWare LiSter
 License:        GPL-2.0-only
@@ -83,7 +83,8 @@ http://www.ezix.org/software/lshw.html
   RPM_OPT_FLAGS="%{optflags} -fno-strict-aliasing" \
   STRIP=touch \
   VERSION="%{version}" \
-  all gui
+  all gui \
+  --jobs=1
 
 %install
 %make_install install-gui VERSION="%{version}"

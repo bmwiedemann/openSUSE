@@ -236,4 +236,13 @@ factory)</comment>
     <comment>- jsc#SLE-19399</comment>
     <requestid>906236</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>f1f6969bfce25cd3ac1b97343f739b88</srcmd5>
+    <version>B.02.19.2+git.20210619</version>
+    <time>1628108930</time>
+    <user>dimstar_suse</user>
+    <comment>- Update versioning to to allow easy transition on SLE
+- Disable parallel build to avoid random failures</comment>
+    <requestid>910092</requestid>
+  </revision>
 </revisionlist>
