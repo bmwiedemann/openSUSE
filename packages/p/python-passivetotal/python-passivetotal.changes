@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jul 28 10:11:21 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.5.3:
+ - Enhancements:
+  - Better support for unit tests in client libraries with ability to set a 
+    session to override default request methods.
+  - Add flexibility to library class instantiation to prefer keyword parameters
+    over config file keys. 
+  - Support for new `create_date` Articles API data field and query parameter. Enables
+    searching for most recent articles instead of returning all of them at once, and
+    provides visiblity to situations where an article published in the past was recently
+    added to the Articles collection. 
+ - Breaking Changes:
+  - Previously, calls to `analyzer.AllArticles()` would return all articles without a date
+    limit. Now, it will return only articles created after the starting date set with
+    `analyzer.set_date_range()`. The current module-level default for all date-bounded queries
+    is 90 days back, so now this function will return all articles created in the last 90 days.
+  - `age` property of an Article analyzer object is now based on `create_date` instead of publish
+    date.
+- update to version 2.5.2:
+ - Enhancements:
+  - Send new request headers for metrics and troubleshooting with the `set_context`
+    method on the `analyzer` module and within the core API request libs.
+  - Abstract package version into a distinct file to consolidate updates and ensure
+    consistency across docs and pypi. Add `get_version` method to `analyzer` module
+    for easy access to the current version number.
+
+-------------------------------------------------------------------
 Sat Jul  3 13:52:24 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.5.1:
