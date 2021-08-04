@@ -18,7 +18,7 @@
 
 
 Name:           qbittorrent
-Version:        4.3.6
+Version:        4.3.7
 Release:        0
 Summary:        A BitTorrent client in Qt
 License:        GPL-2.0-or-later
@@ -26,10 +26,10 @@ URL:            https://qbittorrent.org
 Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://downloads.sf.net/%{name}/%{name}-%{version}.tar.xz.asc
 Source2:        https://raw.githubusercontent.com/qbittorrent/qBittorrent/release-%{version}/5B7CC9A2.asc#/%{name}.keyring
-BuildRequires:  cmake >= 3.9
+BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_system-devel
+BuildRequires:  libboost_system-devel >= 1.65
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Core) >= 5.11
@@ -40,8 +40,9 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(openssl) >= 1.1.1
 BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(zlib) >= 1.2.11
 # For search engines.
 Recommends:     python3
 %if 0%{?suse_version} > 1500

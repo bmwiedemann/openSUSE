@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  4 07:35:41 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.7
+  Bug fixes:
+  * Don't forget to start Watched folders timer
+  * Don't close tags menu when toggling items
+  * Don't overwrite tracker message
+  * Bump file pool size
+  * Properly create "clean path" for watched folder
+  Web UI:
+  * Disconnect comment links
+
+-------------------------------------------------------------------
 Sun Jun 27 11:49:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.6
