@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Tue Aug 03 15:11:55 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Hardening to protect against malicous usernames; (bsc#1188680).
+
+-------------------------------------------------------------------
+Thu Jul 01 20:49:37 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Modify oddjob-gpupdate to use samba-gpupdate; (jsc#SLE-18457).
+
+-------------------------------------------------------------------
+Thu Jan 30 2020 - Evgeny Sinelnikov <sin@altlinux.org>
+
+- Add support gpupdate_computer method
+
+-------------------------------------------------------------------
+Sat Nov 23 2019 - Evgeny Sinelnikov <sin@altlinux.org>
+
+- Initial build for Sisyphus
+

@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>31d49b848f35c4ec92c981ce747a9910</srcmd5>
+    <version>0.2.0+git.3.85c13a8</version>
+    <time>1628108924</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency of jsc#SLE-18457
+A bug is open to make an exception for the pam and dbus changes: https://bugzilla.suse.com/show_bug.cgi?id=1188680
+
+This includes a patch from 1188680.</comment>
+    <requestid>910027</requestid>
+  </revision>
+</revisionlist>
