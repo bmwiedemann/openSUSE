@@ -44,4 +44,18 @@
 - tag COPYING as license</comment>
     <requestid>731350</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>2dd623b5564ecd7634947ba0b1361395</srcmd5>
+    <version>2.0.5</version>
+    <time>1628108914</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.5
+  * README: Remove mention of libXfont 1.5
+  * Fix out-of-bounds read in FontFileMakeDir()
+  * configure: define HAVE_LIBBSD when libbsd was found
+  * Fix Win32 build since c4ed2e06 &quot;Add some unit testing utilities&quot;
+  * Fix crash when font server connection lost
+  * Fix use after free when font server connection lost</comment>
+    <requestid>909739</requestid>
+  </revision>
 </revisionlist>

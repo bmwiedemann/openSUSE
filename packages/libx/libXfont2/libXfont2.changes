@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  2 09:57:36 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.0.5
+  * README: Remove mention of libXfont 1.5
+  * Fix out-of-bounds read in FontFileMakeDir()
+  * configure: define HAVE_LIBBSD when libbsd was found
+  * Fix Win32 build since c4ed2e06 "Add some unit testing utilities"
+  * Fix crash when font server connection lost
+  * Fix use after free when font server connection lost
+
+-------------------------------------------------------------------
 Mon Sep 16 17:41:07 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.0.4
