@@ -95,4 +95,16 @@ providing the results. (forwarded request 695023 from mcepl)</comment>
     <comment></comment>
     <requestid>824526</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ccef9457a7d898b55870bc65678bd2cf</srcmd5>
+    <version>0.4.7</version>
+    <time>1628108901</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.4.7:
+  * Added support for no passphrase during key generation.
+  * Improved permission-denied test. 
+  * Updated logging to only show partial results.
+  * Allowed a passphrase to be passed to import_keys().</comment>
+    <requestid>909590</requestid>
+  </revision>
 </revisionlist>
