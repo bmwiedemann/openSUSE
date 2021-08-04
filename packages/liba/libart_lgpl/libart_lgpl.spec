@@ -1,7 +1,7 @@
 #
 # spec file for package libart_lgpl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Libart Components Licensed under the LGPL
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
-Source:         ftp://ftp.gnome.org/pub/gnome/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
+Source:         https://download.gnome.org/sources/%{name}/2.3/%{name}-%{version}.tar.bz2
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
 

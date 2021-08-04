@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 01:32:01 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Update a valid URL of the Source field in spec.
+
+-------------------------------------------------------------------
 Thu Apr 18 18:15:24 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic which is useless with --disable-static.

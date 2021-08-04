@@ -199,4 +199,12 @@
     <comment></comment>
     <requestid>696529</requestid>
   </revision>
+  <revision rev="30" vrev="24">
+    <srcmd5>f836ff8eb374b35d83b4498602fcc158</srcmd5>
+    <version>2.3.21</version>
+    <time>1628108908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update a valid URL of the Source field in spec. (forwarded request 909646 from yfjiang)</comment>
+    <requestid>909735</requestid>
+  </revision>
 </revisionlist>
