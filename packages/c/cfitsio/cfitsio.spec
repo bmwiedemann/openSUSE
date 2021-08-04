@@ -1,7 +1,7 @@
 #
 # spec file for package cfitsio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,14 @@
 #
 
 
-%define tar_ver 3.49
 %define so_ver 9
 Name:           cfitsio
-Version:        3.490
+Version:        4.0.0
 Release:        0
 Summary:        Library for manipulating FITS data files
 License:        ISC
 URL:            https://heasarc.gsfc.nasa.gov/fitsio/
-Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{tar_ver}.tar.gz
-# PATCH-FIX-OPENSUSE cfitsio-zlib.patch asterios.dramis@gmail.com -- Use system zlib, link programs to shared libcfitsio (based on patches from Fedora and Debian)
-Patch0:         cfitsio-zlib.patch
+Source0:        https://heasarc.gsfc.nasa.gov/FTP/software/fitsio/c/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-fortran
 BuildRequires:  libcurl-devel
 BuildRequires:  pkgconfig
@@ -78,15 +75,7 @@ provides many advanced features for manipulating and filtering the information
 in FITS files.
 
 %prep
-%setup -q -n %{name}-%{tar_ver}
-%patch0 -p1
-
-# Remove bundled zlib
-pushd zlib
-rm -f adler32.c crc32.c crc32.h deflate.c deflate.h infback.c inffast.c \
- inffast.h inffixed.h inflate.c inflate.h inftrees.c inftrees.h trees.c trees.h \
- uncompr.c zconf.h zlib.h zutil.c zutil.h
-popd
+%setup -q
 
 %build
 # lines bellow contain fixes for pkgconfig file bnc#546004, some of them are already fixed by upstream
@@ -96,13 +85,13 @@ sed -i 's|Cflags: -I${includedir}|Cflags: -D_REENTRANT -I${includedir} -I${inclu
 sed -i 's|Libs.private: -lm @LIBS@|Libs.private: -lz -lm @LIBS@|' cfitsio.pc.in
 
 %configure --enable-reentrant
-make shared %{?_smp_mflags}
-make fpack %{?_smp_mflags}
-make funpack %{?_smp_mflags}
+%make_build shared
+%make_build fpack
+%make_build funpack
 
 %check
 # testsuite
-make testprog %{?_smp_mflags}
+%make_build testprog
 LD_LIBRARY_PATH=. ./testprog > testprog.lis
 diff testprog.lis testprog.out
 cmp testprog.fit testprog.std ; echo $?
