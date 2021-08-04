@@ -1,0 +1,20 @@
+---
+ docs/conf.py                 |    4 ++--
+ src/platformdirs/__init__.py |    1 +
+ src/platformdirs/api.py      |    2 ++
+ 3 files changed, 5 insertions(+), 2 deletions(-)
+
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -11,9 +11,9 @@ extensions = [
+     "sphinx.ext.autosectionlabel",
+     "sphinx.ext.viewcode",
+     "sphinx.ext.intersphinx",
+-    # "sphinx_autodoc_typehints",
++    "sphinx_autodoc_typehints",
+ ]
+-html_theme = "furo"
++html_theme = "alabaster"
+ 
+ autodoc_default_options = {
+     "member-order": "bysource",

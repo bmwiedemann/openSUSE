@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Tue Aug  3 09:35:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial package for platformdirs 2.2.0.
+- Add no-furo.patch to avoid using furo Sphinx theme
+  (https://github.com/pradyunsg/furo/discussions/148#discussioncomment-1125486)
