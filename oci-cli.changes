@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Tue Aug  3 15:33:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.26.4
+  * Support for filtering by tag on capacity planning and SQL warehouse
+    list operations in the Operations Insights service
+    * Parameters ``defined-tag-equals``, ``freeform-tag-equals``, ``defined-tag-exists``,
+      ``freeform-tag-exists`` are added for some commands under ``oci opsi database-insights``
+  * Support for creating cross-region autonomous data guards in the Database service
+    * ``oci db autonomous-database create-cross-region-data-guard``
+    * ``oci db autonomous-database fail-over --peer-db-id``
+    * ``oci db autonomous-database switchover --peer-db-id``
+    * ``oci db autonomous-database update --peer-db-id``
+  * Support for the customer contacts feature on cloud exadata infrastructure
+    in the Database service
+    * ``oci db cloud-exa-infra create --customer-contacts``
+    * ``oci db cloud-exa-infra update --customer-contacts``
+  * Support for cost analysis custom tables in the Usage service
+    * ``oci usage-api custom-table``
+  * Support non-default config file locations for ``oci session validate``
+    and ``oci session terminate``
+  * Support to add passphrase for session authentication (``oci session authenticate``)
+- from version 2.26.3
+  * Support for empty and dry-run options while deleting buckets in Object Storage service  
+    * ``oci os bucket delete --empty  --dry-run``
+    * ``oci os bucket delete --empty``
+  * Support for schedules and tasks in Data Integration service
+    * ``oci data-integration schedule``
+    * ``oci data-integration task``
+  * Database service
+    * Support for getting available updates and updating histories for a VM cluster
+      * ``oci db vm-cluster get-update --update-id <Update OCID> --vm-cluster-id <VM Cluster OCID>``
+      * ``oci db vm-cluster list-updates --vm-cluster-id <VM Cluster OCID>
+        --update-type <GI_PATCH/GI_UPGRADE/OS_UPDATE>``
+      * ``oci db vm-cluster get-update-history --update-history-entry-id <UpdateHistory OCID>
+        --vm-cluster-id <VM Cluster OCID>``
+      * ``oci db vm-cluster list-update-histories --vm-cluster-id <VM Cluster OCID>
+        --update-type <GI_PATCH/GI_UPGRADE/OS_UPDATE>``
+    * Support for updating dataguard
+      * ``oci db data-guard-association update``
+    * Support for downloading network validation report file for VM Cluster Networks
+      * ``oci db vm-cluster-network download-validation-report --exadata-infrastructure-id,
+        --file, --vm-cluster-network-id``
+  * Support patch and upgrade of Grid Infrastructure (GI) and update of
+    DomU OS software for a VM cluster  
+    * ``oci db vm-cluster update --update-id <Update OCID>
+      --update-action <PRECHECK/ROLLING_APPLY/ROLLBACK>``  
+- from version 2.26.2
+  * Support for AI Anomaly Detection service
+    * ``oci anomaly-detection``
+  * Support for retrieving a DNS zone as a zone file in DNS service
+    * ``oci dns zone get-zone-content --file``
+  * Support for Search domain type for DHCP options to support multi-level
+    search domain in Network Service.
+    * ``oci network dhcp-options create --domain-name-type``
+    * ``oci network dhcp-options update --domain-name-type``
+  * Support for searching Marketplace Listings
+    * ``oci marketplace listing-summary search-listings``
+    * ``oci marketplace listing-summary search-listings-free-text``
+    * ``oci marketplace listing-summary search-listings-structured``
+  * Parameter --availability-domain is now optional in create VLAN in Network service.  
+    * ``oci network vlan create--availability-domain``  
+- from version 2.26.1
+  * Support for Order Activation features in the Organizations Service
+    * oci organizations order activate
+    * oci organizations order get
+  * Support new OCE instance license type - Starter Edition in the OCE service.
+    The new license type is: STARTER
+    * ``oci oce oce-instance create --instance-license-type STARTER``
+    * ``oci oce oce-instance update --instance-license-type STARTER``
+  * Expanded DRG functionality in the Networking Service
+    * More than one VCN can be attached to a DRG
+    * Flexible routing inside DRG enables packet flow between any two attachments
+    * Routing policy to customize dynamic import/export of routes
+  * Operations Insights
+    * Support for resource principal authorization for enterprise manager bridge resource
+    * New lifecycle state "NEEDS_ATTENTION" to indicate issues with the bridge resource,
+      and new field "objectStorageBucketStatusDetails" to provide detail
+      * ``oci opsi host-insights list --lifecycle-state NEEDS_ATTENTION``
+      * ``oci opsi enterprise-manager-bridges list --lifecycle-state NEEDS_ATTENTION``
+      * ``oci opsi database-insights list --lifecycle-state NEEDS_ATTENTION``
+  * Changed ``oci setup autocomplete`` to create a symlink pointing to current
+    CLI version oci_autocomplete.sh script
+  * Issue with environment based config throwing ``FileNotFoundError:`` for a non-required config
+- from version  2.26.0 - 2021-06-29
+  * Support for passing in private key content as a environment variable. A private key file
+    is not required if this variable is set
+    * Export ``OCI_CLI_KEY_CONTENT`` with the private key content enclosed with single quotes
+  * Support for the DevOps service
+    * ``oci devops``
+  * Support for configuring network security groups for node pools in the container
+    engine for Kubernetes service
+    * ``oci ce node-pool create --nsg-ids``
+    * ``oci ce node-pool update --nsg-ids``
+  * Support for optionally specifying CPU core count and data storage size when creating
+    autonomous databases in the Database service
+    * ``oci db autonomous-database create --data-storage-size-in-gbs``
+  *  Support for metastore and initial data asset import/export in the Data Catalog service
+    * ``oci data-catalog metastore``
+    * ``oci data-catalog data-asset import``
+    * ``oci data-catalog data-asset synchronous-export``
+    * [Breaking] ``DISPLAYNAME`` removed from --sort-by option
+  * Support for Email Domain in the Email Delivery service
+    * ``oci email domain change-compartment --compartment-id --email-domain-id``
+    * ``oci email domain create --compartment-id --name``
+    * ``oci email domain delete --email-domain-id``
+    * ``oci email domain get --email-domain-id``
+    * ``oci email domain list --compartment-id``
+    * ``oci email domain update --email-domain-id``
+  * Support for Domain Key Identified Mail in the Email Delivery service
+    * ``oci email dkim create --email-domain-id``
+    * ``oci email dkim delete --dkim-id``
+    * ``oci email dkim get --dkim-id``
+    * ``oci email dkim list --email-domain-id``
+    * ``oci email dkim update --dkim-id``
+  * Support for new API to list work requests for Email Domain and DKIM
+    in the Email Delivery service
+    * ``oci email work-request get --work-request-id``
+    * ``oci email work-request list --compartment-id``
+    * ``oci email work-request-error-collection list --work-request-id``
+    * ``oci email work-request-log list --work-request-id``
+  * Support for ``--domain`` field in the response for ``oci email sender``
+    in the Email Delivery service
+  * Support for changing the number of retries for a CLI command (``--max-retries``)
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Jun 29 10:38:35 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.25.4

@@ -1,5 +1,5 @@
 #
-# spec file for package oci-cli
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           oci-cli%{psuffix}
-Version:        2.25.4
+Version:        2.26.4
 Release:        0
 Summary:        Oracle Cloud Infrastructure CLI
 License:        Apache-2.0
@@ -47,11 +47,10 @@ BuildRequires:  python3-click >= 6.7
 BuildRequires:  python3-cryptography >= 3.2.1
 BuildRequires:  python3-devel
 BuildRequires:  python3-jmespath >= 0.9.4
-BuildRequires:  python3-oci-sdk >= 2.40.1
+BuildRequires:  python3-oci-sdk >= 2.43.1
 BuildRequires:  python3-pyOpenSSL >= 18.0.0
 BuildRequires:  python3-python-dateutil >= 2.5.3
 BuildRequires:  python3-pytz >= 2016.10
-BuildRequires:  python3-retrying >= 1.3.3
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-six >= 1.14.0
 BuildRequires:  python3-terminaltables >= 3.1.0
@@ -85,11 +84,10 @@ Requires:       python3-certifi
 Requires:       python3-click >= 6.7
 Requires:       python3-cryptography >= 3.2.1
 Requires:       python3-jmespath >= 0.10.0
-Requires:       python3-oci-sdk >= 2.40.1
+Requires:       python3-oci-sdk >= 2.43.1
 Requires:       python3-pyOpenSSL >= 18.0.0
 Requires:       python3-python-dateutil >= 2.5.3
 Requires:       python3-pytz >= 2016.10
-Requires:       python3-retrying >= 1.3.3
 Requires:       python3-six >= 1.14.0
 Requires:       python3-terminaltables >= 3.1.0
 
