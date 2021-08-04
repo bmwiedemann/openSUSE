@@ -1050,6 +1050,7 @@ Build fastcgi \
 %if "%{flavor}" == "fpm"
 Build fpm \
     --with-fpm-systemd \
+    --with-fpm-apparmor \
     --enable-fpm \
     --with-fpm-user=%{apache_user} \
     --with-fpm-group=%{apache_group} \

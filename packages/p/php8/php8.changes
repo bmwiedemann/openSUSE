@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  4 01:36:39 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix apparmor support: seems it requires a configure flag now. 
+
+-------------------------------------------------------------------
 Thu Jul 29 16:42:04 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.9: This is a bug fix release. See
