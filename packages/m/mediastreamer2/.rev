@@ -364,4 +364,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908564</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>d9a14a6078b2f8bc402f88f28d8a297f</srcmd5>
+    <version>5.0.3</version>
+    <time>1628108898</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.3:
+  * no changelog
+- SRTP_LIBRARIES not found during build, fixing fix-srtp2-linphone.patch
+</comment>
+    <requestid>909329</requestid>
+  </revision>
 </revisionlist>

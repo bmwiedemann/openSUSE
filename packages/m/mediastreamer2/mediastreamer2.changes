@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 30 07:39:29 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.0.3:
+  * no changelog
+
+-------------------------------------------------------------------
+Thu Jul 29 18:11:50 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.0
+
+- SRTP_LIBRARIES not found during build, fixing fix-srtp2-linphone.patch
+
+-------------------------------------------------------------------
 Wed Jul 14 08:34:37 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.0:

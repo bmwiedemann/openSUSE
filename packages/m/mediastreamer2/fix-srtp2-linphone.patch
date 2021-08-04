@@ -10,6 +10,15 @@ diff -ru a/cmake/FindSRTP.cmake b/cmake/FindSRTP.cmake
  	HINTS _SRTP_ROOT_PATHS
  	PATH_SUFFIXES include
  )
+@@ -41,7 +41,7 @@
+ 	set(SRTP_INCLUDE_DIRS ${SRTP2_INCLUDE_DIRS})
+ 	set(SRTP_VERSION 2)
+ 	find_library(SRTP_LIBRARIES
+-		NAMES srtp2
++		NAMES srtp2-linphone
+ 		HINTS ${_SRTP_ROOT_PATHS}
+ 		PATH_SUFFIXES bin lib
+ 	)
 diff -ru a/src/utils/srtp_prefix.h b/src/utils/srtp_prefix.h
 --- a/src/utils/srtp_prefix.h	2021-07-14 14:31:46.047361634 +0200
 +++ b/src/utils/srtp_prefix.h	2021-07-14 14:32:24.935525820 +0200
