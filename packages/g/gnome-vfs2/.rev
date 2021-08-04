@@ -496,4 +496,12 @@
     <comment>Eliminate the -lang recommends (forwarded request 767159 from dimstar)</comment>
     <requestid>767424</requestid>
   </revision>
+  <revision rev="72" vrev="32">
+    <srcmd5>6f80d04a833d2f0839af369308a506ef</srcmd5>
+    <version>2.24.4</version>
+    <time>1628108908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update a valid URL of the Source field in spec. (forwarded request 909645 from yfjiang)</comment>
+    <requestid>909733</requestid>
+  </revision>
 </revisionlist>
