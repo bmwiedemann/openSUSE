@@ -21,17 +21,17 @@
 %define pci_ids_dir %{_sysconfdir}/X11/xorg_pci_ids
 %endif
 Name:           xf86-video-amdgpu
-Version:        19.1.0
+Version:        21.0.0
 Release:        0
 Summary:        AMDGPU video driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
 Source:         https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+### Alex Deucher's GPG key currently unknown; for now verified sha512sum manually
+#Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Source3:        amdgpu.ids
-Patch0:         u_fno-common.patch
 Patch1:         N_amdgpu-present-Check-tiling-for-newer-versions-too.patch
 BuildRequires:  autoconf >= 2.6.0
 BuildRequires:  automake
@@ -65,7 +65,6 @@ Its autodetects whether your hardware has a CI or newer AMD Graphics Card
 
 %prep
 %setup -q
-%patch0 -p1
 %patch1 -p1
 
 %build

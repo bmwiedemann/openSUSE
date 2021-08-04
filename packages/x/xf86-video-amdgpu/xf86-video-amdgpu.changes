@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 31 08:57:12 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.0.0
+  * bugfixes and minor improvements
+- supersedes u_fno-common.patch
+
+-------------------------------------------------------------------
 Sat Apr 17 16:45:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - modernize spec file (move license to licensedir) 

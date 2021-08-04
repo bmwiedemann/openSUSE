@@ -325,4 +325,14 @@
     <comment></comment>
     <requestid>886356</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2ab708eda12632bddeba6e18415a3180</srcmd5>
+    <version>21.0.0</version>
+    <time>1628108899</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.0.0
+  * bugfixes and minor improvements
+- supersedes u_fno-common.patch</comment>
+    <requestid>909510</requestid>
+  </revision>
 </revisionlist>
