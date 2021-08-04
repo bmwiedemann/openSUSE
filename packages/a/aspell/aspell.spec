@@ -1,7 +1,7 @@
 #
 # spec file for package aspell
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,12 +31,14 @@ Source100:      baselibs.conf
 Patch0:         aspell-strict-aliasing.patch
 # PATCH-FIX-OPENSUSE aspell-quotes.patch lmichnovic@suse.cz -- Fix command execution in script "run-with-aspell"
 Patch1:         aspell-quotes.patch
+# CVE-2019-25051 [bsc#1188576], heap-buffer-overflow in acommon:ObjStack:dup_top
+Patch2:         aspell-CVE-2019-25051.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 Recommends:     aspell-en
 Suggests:       aspell-ispell
 Suggests:       aspell-spell
@@ -61,7 +63,7 @@ Requires:       glibc-devel
 Requires:       libaspell15 = %{version}
 Requires:       libpspell15 = %{version}
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 Provides:       pspell-devel = %{version}
 Obsoletes:      pspell-devel < %{version}
 
@@ -117,7 +119,7 @@ can be used as a library or as an independent spell checker.
 This package contains the pspell compatibility library.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
 autoreconf -fiv

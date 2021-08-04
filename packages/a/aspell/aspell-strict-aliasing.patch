@@ -1,5 +1,5 @@
---- modules/speller/default/writable.cpp
-+++ modules/speller/default/writable.cpp
+--- a/modules/speller/default/writable.cpp
++++ b/modules/speller/default/writable.cpp
 @@ -672,7 +672,7 @@
  
  static void repl_next(WordEntry * w)
@@ -9,8 +9,8 @@
    const Str *   end = (const Str *  )(w->intr[1]);
    set_word(*w, *i);
    ++i;
---- modules/speller/default/writable.cpp
-+++ modules/speller/default/writable.cpp
+--- a/modules/speller/default/writable.cpp
++++ b/modules/speller/default/writable.cpp
 @@ -246,7 +246,7 @@
  
  static void soundslike_next(WordEntry * w)

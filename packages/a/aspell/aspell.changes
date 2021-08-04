@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug  2 14:34:44 UTC 2021 - pgajdos@suse.com
+
+- security update
+- modified patches
+  % aspell-quotes.patch (p1)
+  % aspell-strict-aliasing.patch (p1)
+- added patches
+  fix CVE-2019-25051 [bsc#1188576], heap-buffer-overflow in acommon:ObjStack:dup_top
+  + aspell-CVE-2019-25051.patch
+
+-------------------------------------------------------------------
 Fri Oct  9 14:19:57 UTC 2020 - pgajdos@suse.com
 
 - recommend aspell-en also from the library [bsc#1177523]

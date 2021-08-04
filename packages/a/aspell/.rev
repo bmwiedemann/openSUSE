@@ -310,4 +310,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>842171</requestid>
   </revision>
+  <revision rev="40" vrev="4">
+    <srcmd5>2501a2f5b48f6020967ff9531260424a</srcmd5>
+    <version>0.60.8</version>
+    <time>1628108922</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- modified patches
+  % aspell-quotes.patch (p1)
+  % aspell-strict-aliasing.patch (p1)
+- added patches
+  fix CVE-2019-25051 [bsc#1188576], heap-buffer-overflow in acommon:ObjStack:dup_top
+  + aspell-CVE-2019-25051.patch</comment>
+    <requestid>909814</requestid>
+  </revision>
 </revisionlist>
