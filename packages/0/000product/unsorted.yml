@@ -8016,6 +8016,7 @@ unsorted:
   - knotifications-devel-32bit: [x86_64] 
   - knotifyconfig-devel 
   - knotifyconfig-devel-32bit: [x86_64] 
+  - koan 
   - kochmorse 
   - kohsuke-pom 
   - kokkos-devel: [x86_64] 
@@ -40901,6 +40902,7 @@ unsorted:
   - trilinos_13_0_1-gnu-openmpi4-hpc-devel: [x86_64] 
   - trilinos_13_0_1-hpc-doc: [x86_64] 
   - trinity 
+  - tripwire 
   - trivy 
   - trng-devel 
   - trousers-devel 
