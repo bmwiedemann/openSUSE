@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 23 07:12:47 UTC 2021 - Ismail Dönmez <ismail@i10z.com>
+
+- Update to version 2.11.0
+  * A new demo program `ftsdf` is available to display Signed Distance
+    Fields of glyphs.
+  * The `ftlint` demo program has been  extended to do more testing of
+    its input.
+  * The `ttdebug` demo program didn't show changed point coordinates
+    (bug introduced in version 2.10.3).
+  * It is now possible to adjust the axis increment for variable fonts
+    in the `ftmulti` demo program.
+  * It is now possible to change the hinting engine in the `ftstring`
+    demo program.
+  * The graphical demo programs work better now in native color depth
+    on win32 and x11.
+
+-------------------------------------------------------------------
 Tue Oct 20 09:40:04 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
 
 - Update to version 2.10.4

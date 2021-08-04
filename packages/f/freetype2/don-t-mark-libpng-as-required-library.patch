@@ -1,8 +1,8 @@
-Index: freetype-2.10.4/builds/unix/configure
+Index: freetype-2.11.0/builds/unix/configure
 ===================================================================
---- freetype-2.10.4.orig/builds/unix/configure
-+++ freetype-2.10.4/builds/unix/configure
-@@ -15014,7 +15014,6 @@ fi
+--- freetype-2.11.0.orig/builds/unix/configure
++++ freetype-2.11.0/builds/unix/configure
+@@ -15672,7 +15672,6 @@ fi
  # entries in Requires.private are separated by commas
  REQUIRES_PRIVATE="$zlib_reqpriv,     \
                    $bzip2_reqpriv,    \
@@ -10,7 +10,7 @@ Index: freetype-2.10.4/builds/unix/configure
                    $harfbuzz_reqpriv, \
                    $brotli_reqpriv"
  # beautify
-@@ -15029,7 +15028,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
+@@ -15687,7 +15686,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
  
  LIBS_PRIVATE="$zlib_libspriv     \
                $bzip2_libspriv    \
@@ -18,7 +18,7 @@ Index: freetype-2.10.4/builds/unix/configure
                $harfbuzz_libspriv \
                $brotli_libspriv   \
                $ft2_extra_libs"
-@@ -15042,7 +15040,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
+@@ -15700,7 +15698,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
  LIBSSTATIC_CONFIG="-lfreetype               \
                     $zlib_libsstaticconf     \
                     $bzip2_libsstaticconf    \
@@ -26,11 +26,11 @@ Index: freetype-2.10.4/builds/unix/configure
                     $harfbuzz_libsstaticconf \
                     $brotli_libsstaticconf   \
                     $ft2_extra_libs"
-Index: freetype-2.10.4/builds/unix/configure.raw
+Index: freetype-2.11.0/builds/unix/configure.raw
 ===================================================================
---- freetype-2.10.4.orig/builds/unix/configure.raw
-+++ freetype-2.10.4/builds/unix/configure.raw
-@@ -1039,7 +1039,6 @@ fi
+--- freetype-2.11.0.orig/builds/unix/configure.raw
++++ freetype-2.11.0/builds/unix/configure.raw
+@@ -1036,7 +1036,6 @@ fi
  # entries in Requires.private are separated by commas
  REQUIRES_PRIVATE="$zlib_reqpriv,     \
                    $bzip2_reqpriv,    \
@@ -38,7 +38,7 @@ Index: freetype-2.10.4/builds/unix/configure.raw
                    $harfbuzz_reqpriv, \
                    $brotli_reqpriv"
  # beautify
-@@ -1054,7 +1053,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
+@@ -1051,7 +1050,6 @@ REQUIRES_PRIVATE=`echo "$REQUIRES_PRIVAT
  
  LIBS_PRIVATE="$zlib_libspriv     \
                $bzip2_libspriv    \
@@ -46,7 +46,7 @@ Index: freetype-2.10.4/builds/unix/configure.raw
                $harfbuzz_libspriv \
                $brotli_libspriv   \
                $ft2_extra_libs"
-@@ -1067,7 +1065,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
+@@ -1064,7 +1062,6 @@ LIBS_PRIVATE=`echo "$LIBS_PRIVATE"  \
  LIBSSTATIC_CONFIG="-lfreetype               \
                     $zlib_libsstaticconf     \
                     $bzip2_libsstaticconf    \

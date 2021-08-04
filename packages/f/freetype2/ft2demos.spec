@@ -1,7 +1,7 @@
 #
 # spec file for package ft2demos
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define freetype_version 2.10.4
+%define freetype_version 2.11.0
 Name:           ft2demos
-Version:        2.10.4
+Version:        2.11.0
 Release:        0
 Summary:        Freetype2 Utilities and Demo Programs
 License:        GPL-2.0-or-later
@@ -140,6 +140,15 @@ Conflicts:      %{name} < %{version}-%{release}
 Multiple masters font viewer
 This tool is part of the FreeType project
 
+%package -n ftsdf
+Summary:        Signed Distance Fields viewer
+Group:          Productivity/Publishing/Other
+Conflicts:      %{name} < %{version}-%{release}
+
+%description -n ftsdf
+Signed Distance Fields viewer
+This tool is part of the FreeType project
+
 %package -n ftstring
 Summary:        String viewer
 Group:          Productivity/Publishing/Other
@@ -184,7 +193,7 @@ export CFLAGS="%{optflags} -std=gnu99 -D_GNU_SOURCE $(getconf LFS_CFLAGS)"
 
 make %{?_smp_mflags}
 pushd ..
-    ln -s freetype-%{freetype_version} freetype2
+    ln -s freetype-%{freetype_version} freetype
     cd ft2demos-%{version}
     make %{?_smp_mflags}
 
@@ -243,6 +252,10 @@ popd
 %files -n ftmulti
 %defattr(-,root,root)
 %{_bindir}/ftmulti
+
+%files -n ftsdf
+%defattr(-,root,root)
+%{_bindir}/ftsdf
 
 %files -n ftstring
 %defattr(-,root,root)
