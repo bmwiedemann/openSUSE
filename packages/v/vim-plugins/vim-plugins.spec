@@ -26,7 +26,7 @@
 %define diffchanges_version	0.6.346dae2
 %define editorconfig_version	0.3.3
 %define file_line_version	1.0+20161020
-%define fugitive_version	3.2
+%define fugitive_version	3.3
 %define gitdiff_version		2
 %define gnupg_version		2.7.1
 %define latex_version		1.10.0+20210323
@@ -104,6 +104,7 @@ Source1000:     https://raw.githubusercontent.com/openSUSE/pack-tools/master/con
 Patch1:         locateopen-1.3-locate-support.patch
 Patch2:         showmarks-signs.patch
 Patch3:         file-line-Fix-other-plugins-loading.patch
+Patch4:         vim-fugitive-Remove-unnecessary-complete-on-command-with-no-argum.patch
 BuildRequires:  vim
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -640,6 +641,9 @@ pushd vimplugin-showmarks-%showmarks_version
 popd
 pushd file-line-%file_line_version
 %patch3 -p1
+popd
+pushd vim-fugitive-%fugitive_version
+%patch4 -p1
 popd
 
 %build

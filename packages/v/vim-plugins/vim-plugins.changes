@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  3 11:22:05 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update vim-fugitive to 3.3
+- add vim-fugitive-Remove-unnecessary-complete-on-command-with-no-argum.patch
+
+-------------------------------------------------------------------
 Mon Apr 26 07:09:59 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Fix bufexplorer's source link.
