@@ -974,17 +974,21 @@ rm -f /etc/udev/rules.d/{20,55,65}-cdrom.rules
 
 %postun -n udev%{?mini}
 %regenerate_initrd_post
-systemctl daemon-reload || :
-# On package update, restarting the socket units will probably fail as
-# udevd is most likely running. Therefore systemctl will refuse to
-# start them again once stopped. It's not an issue since we are mostly
-# interested to make PID1 use the updated unit files once the socket
-# units wil be started again. And that will happen when systemd-udevd
-# itself will be restarted.
-if [ $1 -ge 1 ]; then
-	systemctl try-restart systemd-udevd-{control,kernel}.socket 2>/dev/null || :
-	systemctl try-restart systemd-udevd.service || :
-fi
+
+# The order of the units being restarted is important here because there's currently no
+# way to queue multiple jobs into a single transaction atomically. Therefore systemctl
+# will create 3 restart jobs that can be handled by PID1 separately and if the jobs for
+# the sockets are being handled first then starting them again will fail as the service
+# is still active hence the sockets held by udevd. However if the restart job for udevd
+# is handled first, there should be enough time to queue the socket jobs before the stop
+# job for udevd is processed. Hence PID1 will automatically sort the restart jobs
+# correctly by stopping the service then the sockets and then by starting the sockets and
+# the unit.
+#
+# Note that when systemd-udevd is restarted, there will always be a short time
+# frame where no socket will be listening to the events sent by the kernel, no
+# matter if the socket unit is restarted in first or not.
+%service_del_postun_with_restart systemd-udevd.service systemd-udevd-{control,kernel}.socket
 
 %posttrans -n udev%{?mini}
 %regenerate_initrd_posttrans

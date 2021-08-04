@@ -5469,4 +5469,13 @@ handle manual pages that consist only of a .so directive such as
   a4cfd70476 login: XGI Z7/Z9 (XG20 core) graphic chip requires master-of-seat to be set (bsc#1187154)</comment>
     <requestid>908417</requestid>
   </revision>
+  <revision rev="334" vrev="2">
+    <srcmd5>fd3b465ce5428749c384dc77288201c3</srcmd5>
+    <version>248.6</version>
+    <time>1628108906</time>
+    <user>dimstar_suse</user>
+    <comment>- Avoid the error message when udev is updated due to udev being
+  already active when the sockets are started again (bsc#1188291)</comment>
+    <requestid>909721</requestid>
+  </revision>
 </revisionlist>

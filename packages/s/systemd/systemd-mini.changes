@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 29 13:12:48 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Avoid the error message when udev is updated due to udev being
+  already active when the sockets are started again (bsc#1188291)
+
+-------------------------------------------------------------------
 Mon Jul 26 10:54:10 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Import commit 73e9e6fb847513c6d62f2fb445778ef5bc0fe516 (merge of v248.6)
