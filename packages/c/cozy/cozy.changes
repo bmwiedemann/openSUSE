@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 28 16:30:21 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.0.4
+  * Chapters in the book detail view will now be loaded lazily (thanks chris-kobrzak!)
+  * Books with a single chapter don't display a chapter number anymore (thanks chris-kobrzak!)
+  * Fix: Locals in What's new in Cozy screen (thanks alyssais!)
+  * Fix: Catch an error that could occur when a book stops
+  * Small performance improvements
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Fri Jun  4 17:21:10 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 1.0.3
