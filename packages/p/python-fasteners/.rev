@@ -79,4 +79,13 @@
   * Remove eventlet dependency and use threading.current_thread instead</comment>
     <requestid>897848</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f653bf64129026f8064878c07841bf72</srcmd5>
+    <version>0.16.3</version>
+    <time>1628108902</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.16.3:
+  * Move from travis and appveyor to github actions</comment>
+    <requestid>909594</requestid>
+  </revision>
 </revisionlist>

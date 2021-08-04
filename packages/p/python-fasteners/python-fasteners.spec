@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-fasteners
-Version:        0.16.1
+Version:        0.16.3
 Release:        0
 Summary:        A python package that provides useful locks
 License:        Apache-2.0

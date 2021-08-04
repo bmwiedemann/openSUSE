@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  1 09:35:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.3:
+  * Move from travis and appveyor to github actions
+
+-------------------------------------------------------------------
 Sun Jun  6 12:26:54 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.16.1:
