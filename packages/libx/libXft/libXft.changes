@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  2 10:18:11 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 2.3.4 
+  * This release handles the deprecation of the 
+    FcNameRegisterObjectTypes API by fontconfig, and provides
+    minor cleanups for compiler warnings and man pages.
+
+-------------------------------------------------------------------
 Thu Mar 21 15:19:16 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.3.3

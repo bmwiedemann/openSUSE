@@ -106,4 +106,15 @@
     when available (Render version 0.10 or later).</comment>
     <requestid>687383</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>181504b2535b36214b41afd9dba8c435</srcmd5>
+    <version>2.3.4</version>
+    <time>1628108915</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.3.4 
+  * This release handles the deprecation of the 
+    FcNameRegisterObjectTypes API by fontconfig, and provides
+    minor cleanups for compiler warnings and man pages.</comment>
+    <requestid>909746</requestid>
+  </revision>
 </revisionlist>
