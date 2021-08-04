@@ -1072,4 +1072,13 @@
   (boo#1184846 CVE-2021-3502). (forwarded request 903764 from mgorse)</comment>
     <requestid>904185</requestid>
   </revision>
+  <revision rev="141" vrev="7">
+    <srcmd5>f5e885745ed192666eef599605cfc19d</srcmd5>
+    <version>0.8</version>
+    <time>1628108915</time>
+    <user>dimstar_suse</user>
+    <comment>- Obsolete the same version of mDNSResponder-lib and mDNSResponder
+  in baselib.conf and spec. (forwarded request 909699 from yfjiang)</comment>
+    <requestid>909744</requestid>
+  </revision>
 </revisionlist>

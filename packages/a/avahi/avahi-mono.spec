@@ -410,6 +410,7 @@ DNS specifications for Zeroconf Computing.
 
 
 # This is the avahi-discover command, only provided for the primary python3 flavor
+
 %package -n python3-avahi-gtk
 Summary:        A set of Avahi utilities written in Python Using python-gtk
 Group:          Development/Languages/Python
