@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 13:51:13 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add shadow as BuildRequires
+
+-------------------------------------------------------------------
 Thu Jul  1 13:07:07 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Add util-linux-systemd as BuildRequires

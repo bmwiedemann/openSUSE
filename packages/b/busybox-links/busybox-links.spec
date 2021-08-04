@@ -54,6 +54,7 @@ BuildRequires:  psmisc
 BuildRequires:  sed
 BuildRequires:  selinux-tools
 BuildRequires:  sendmail
+BuildRequires:  shadow
 BuildRequires:  sharutils
 BuildRequires:  sysvinit-tools
 BuildRequires:  tar

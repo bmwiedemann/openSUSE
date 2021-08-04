@@ -149,4 +149,12 @@
     <comment>- Add util-linux-systemd as BuildRequires</comment>
     <requestid>903435</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>6821beec79e980978d3097e149416c90</srcmd5>
+    <version>MACRO</version>
+    <time>1628108919</time>
+    <user>dimstar_suse</user>
+    <comment>- Add shadow as BuildRequires (forwarded request 909802 from kukuk)</comment>
+    <requestid>909803</requestid>
+  </revision>
 </revisionlist>
