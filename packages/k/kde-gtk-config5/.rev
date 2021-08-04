@@ -949,4 +949,15 @@
     <comment>Plasma 5.22.4 (forwarded request 908666 from Vogtinator)</comment>
     <requestid>908697</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>bfd4a91b1bdb325e3b7f533fa850f40e</srcmd5>
+    <version>5.22.4</version>
+    <time>1628108919</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to drop gtk-2.0 dependency and adjust BuildRequires:
+  * 0001-Drop-unused-dependency-on-gtk-2.0.patch
+- Add patch to fix setting the default GTK theme on first login:
+  * 0001-Make-sure-to-actually-commit-GSettings-changes.patch (forwarded request 909757 from Vogtinator)</comment>
+    <requestid>909801</requestid>
+  </revision>
 </revisionlist>
