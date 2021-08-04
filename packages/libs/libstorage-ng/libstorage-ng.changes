@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Aug 4 16:14:17 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#826
+- allow to attach userdata to pools
+- 4.4.32
+
+--------------------------------------------------------------------
+Fri Jul 30 17:18:45 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#825
+- run blkdiscard when creating/removing partition tables and partitions
+- 4.4.31
+
+--------------------------------------------------------------------
 Mon Jul 26 08:28:18 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#824
