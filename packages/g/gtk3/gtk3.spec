@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package gtk3-doc
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands

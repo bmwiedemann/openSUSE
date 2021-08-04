@@ -1494,4 +1494,12 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>GNOME 40.3 (forwarded request 906603 from dimstar)</comment>
     <requestid>907058</requestid>
   </revision>
+  <revision rev="169" vrev="2">
+    <srcmd5>dab4ec6c2ecdf58176bfc28cdd9d8e81</srcmd5>
+    <version>3.24.30</version>
+    <time>1628108907</time>
+    <user>dimstar_suse</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909643 from yfjiang)</comment>
+    <requestid>909731</requestid>
+  </revision>
 </revisionlist>
