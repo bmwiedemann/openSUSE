@@ -1,7 +1,7 @@
 #
 # spec file for package snappy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,23 @@
 
 %define libname libsnappy1
 Name:           snappy
-Version:        1.1.8
+Version:        1.1.9
 Release:        0
 Summary:        A compressor/decompressor library favoring time
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/google/snappy/
 Source0:        https://github.com/google/snappy/archive/%{version}.tar.gz
+Source1:        snappy.pc
 Source99:       baselibs.conf
+Patch0:         use-system-test-libs.patch
+Patch1:         fix-always-inline.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(benchmark)
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -66,17 +71,18 @@ aims for high speeds and reasonable compression.
 This package holds the development files for snappy.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%cmake
-make %{?_smp_mflags}
+%cmake -DSNAPPY_USE_BUNDLED_GTEST=OFF -DSNAPPY_USE_BUNDLED_BENCHMARK_LIB=OFF
+%make_build
 
 %install
 %cmake_install
+install -d -m 755 %{buildroot}%{_libdir}/pkgconfig
+install -m 644 %{SOURCE1} %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %check
-export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 %ctest
 
 %post   -n %{libname} -p /sbin/ldconfig
@@ -91,5 +97,6 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}${LD_LIBRARY_PATH:+:${LD_LIBRARY_PA
 %{_libdir}/libsnappy.so
 %dir %{_libdir}/cmake/Snappy/
 %{_libdir}/cmake/Snappy/*
+%{_libdir}/pkgconfig/%{name}.pc
 
 %changelog

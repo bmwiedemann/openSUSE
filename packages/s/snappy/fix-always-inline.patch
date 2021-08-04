@@ -1,0 +1,29 @@
+From 0c716d435abe65250100c2caea0e5126ac4e14bd Mon Sep 17 00:00:00 2001
+From: "Georgi D. Sotirov" <gdsotirov@gmail.com>
+Date: Wed, 5 May 2021 14:16:46 +0300
+Subject: [PATCH] Add inline with SNAPPY_ATTRIBUTE_ALWAYS_INLINE
+Upstream: https://github.com/google/snappy/pull/128
+
+Add inline with SNAPPY_ATTRIBUTE_ALWAYS_INLINE on AdvanceToNextTag to
+fix compilation errors and a warning with GCC.
+
+Just like with other functions using SNAPPY_ATTRIBUTE_ALWAYS_INLINE
+macro (i.e. __attribute__((always_inline)) ) it is necessary to use C++
+inline specifier.
+---
+ snappy.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/snappy.cc b/snappy.cc
+index 79dc0e8d..51157be2 100644
+--- a/snappy.cc
++++ b/snappy.cc
+@@ -1014,7 +1014,7 @@ void MemMove(ptrdiff_t dst, const void* src, size_t size) {
+ }
+ 
+ SNAPPY_ATTRIBUTE_ALWAYS_INLINE
+-size_t AdvanceToNextTag(const uint8_t** ip_p, size_t* tag) {
++inline size_t AdvanceToNextTag(const uint8_t** ip_p, size_t* tag) {
+   const uint8_t*& ip = *ip_p;
+   // This section is crucial for the throughput of the decompression loop.
+   // The latency of an iteration is fundamentally constrained by the

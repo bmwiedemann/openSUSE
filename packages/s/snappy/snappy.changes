@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 13 16:38:54 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.1.9:
+  * Performance improvements
+- Add fix-always-inline.patch
+- Add use-system-test-libs.patch
+- Add a hardcoded snappy.pc file
+
+-------------------------------------------------------------------
 Tue Aug 25 13:06:16 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.8:

@@ -71,4 +71,12 @@
 - remove snappy-pcfile.patch (never went upstream)</comment>
     <requestid>829564</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8771434ad495c79ba32e8061a2f52d5b</srcmd5>
+    <version>1.1.9</version>
+    <time>1628108897</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>907347</requestid>
+  </revision>
 </revisionlist>
