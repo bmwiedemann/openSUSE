@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 31 14:04:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.07.29
+  * Bourne Shell: "cd -" now prints the new directory,
+    required by POSIX.
+  * star: A single Linux xattr entry with a zero length value did
+    disable all Linux xattrs for the related file. This is now
+    handled correctly.
+  * ved: ved maxll=79 now checks whether the cursor is > column 79
+    before entering a new line character.
+  * ved: ved now aborts the startup if it turns out to be connected to
+    a hardcopy terminal.
+
+-------------------------------------------------------------------
 Tue Jun  8 07:57:50 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.06.07
