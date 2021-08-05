@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  3 07:37:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.350 (bsc#1189005):
+  + Updated pci, usb and vendor ids.
+
+-------------------------------------------------------------------
 Thu Jul  8 07:35:35 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 0.349 (bsc#1187948:
+- Update to version 0.349 (bsc#1187948):
   + Updated pci, usb and vendor ids.
 
 -------------------------------------------------------------------
