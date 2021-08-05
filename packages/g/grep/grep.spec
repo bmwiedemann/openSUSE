@@ -1,7 +1,7 @@
 #
 # spec file for package grep
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=gr
 Source4:        profile.sh
 Source5:        %{name}-rpmlintrc
 Patch0:         werror-return-type.patch
+Patch1:         gnulib-c-stack.patch
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
@@ -42,6 +43,8 @@ match to a specified pattern.  By default, grep prints the matching lines.
 
 %prep
 %autosetup -p1
+
+touch aclocal.m4 configure Makefile.in config.hin
 
 %build
 %configure \

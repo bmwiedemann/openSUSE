@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  3 12:17:24 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- gnulib-c-stack.patch: Fix AC_SYS_XSI_STACK_OVERFLOW_HEURISTIC configure
+  check
+
+-------------------------------------------------------------------
 Sat Nov 28 09:48:12 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove deprecated texinfo macros

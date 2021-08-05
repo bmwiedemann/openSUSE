@@ -648,4 +648,13 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
     <comment></comment>
     <requestid>852358</requestid>
   </revision>
+  <revision rev="78" vrev="3">
+    <srcmd5>a8b9f7cb6d5e39dbb6513e3941f8b4dd</srcmd5>
+    <version>3.6</version>
+    <time>1628189258</time>
+    <user>dimstar_suse</user>
+    <comment>- gnulib-c-stack.patch: Fix AC_SYS_XSI_STACK_OVERFLOW_HEURISTIC configure
+  check (forwarded request 909987 from Andreas_Schwab)</comment>
+    <requestid>909988</requestid>
+  </revision>
 </revisionlist>
