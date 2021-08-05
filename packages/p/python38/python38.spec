@@ -175,12 +175,10 @@ BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
 %if %{with doc}
-# Here we just run sphinx and we can use generic one, we don't need
-# the flavor variant
-BuildRequires:  python3-Sphinx
 %if 0%{?suse_version} > 1500
-BuildRequires:  python3-python-docs-theme
-BuildRequires:  python3-sphinxcontrib-qthelp >= 1.0.2
+BuildRequires:  %{python_pkg_name}-Sphinx
+BuildRequires:  %{python_pkg_name}-python-docs-theme
+BuildRequires:  %{python_pkg_name}-sphinxcontrib-qthelp >= 1.0.2
 %endif
 %endif
 %if %{with general}
