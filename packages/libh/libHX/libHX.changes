@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug  3 22:23:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.26
+  * io: cure a potential infinite loop on EOF with HXio_fullread()
+  * io: HXio_fullread() now returns actual bytes read rather than
+    bytes requested
+  * time: rectified HX_timeval_sub producing wrong results
+
+-------------------------------------------------------------------
 Thu May 14 11:10:45 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.25
