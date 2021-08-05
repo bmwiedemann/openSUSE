@@ -1,7 +1,7 @@
 #
 # spec file for package zathura
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,32 @@
 
 
 Name:           zathura
-Version:        0.4.7
+Version:        0.4.8
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
 URL:            https://pwmt.org/projects/zathura/
 Source:         https://git.pwmt.org/pwmt/zathura/-/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  appstream-glib
+BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  file-devel
 BuildRequires:  fish
-BuildRequires:  libseccomp-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
+BuildRequires:  rsvg-convert
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(check)
-BuildRequires:  pkgconfig(girara-gtk3) >= 0.3.2
+BuildRequires:  pkgconfig(girara-gtk3) >= 0.3.6
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(sqlite3)
 Recommends:     %{name}-lang
 Recommends:     zathura-pdf-poppler-plugin
 Suggests:       zathura-cb-plugin
 Suggests:       zathura-djvu-plugin
 Suggests:       zathura-ps-plugin
-BuildRequires:  rsvg-convert
-%if 0%{suse_version} >= 1550
+%if 0%{?suse_version} >= 1550
 BuildRequires:  pkgconfig(synctex) >= 1.19
 %endif
 
@@ -90,7 +91,7 @@ Optional dependency offering fish completion for zathura
 
 %build
 export CFLAGS="%{optflags}"
-%if 0%{suse_version} < 1550
+%if 0%{?suse_version} < 1550
 %meson -Dsynctex=disabled
 %else
 %meson
