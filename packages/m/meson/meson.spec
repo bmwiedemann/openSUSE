@@ -128,7 +128,9 @@ BuildRequires:  wxWidgets-devel
 %endif
 %endif
 # meson makes use of macros that were only defined with rpm 4.15
+%if (0%{?suse_version} < 1550 && 0%{?sle_version} < 150400)
 Conflicts:      rpm-build < 4.15
+%endif
 
 %description
 Meson is a build system designed to optimise programmer productivity.
