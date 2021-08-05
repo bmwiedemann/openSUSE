@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72d075258b08f8d35664d3f79540a8e6</srcmd5>
+    <version>1.7.0</version>
+    <time>1628189285</time>
+    <user>dimstar_suse</user>
+    <comment>Webrick is a dependency of vagrant and is no longer part of ruby, thus we need this as a separate gem</comment>
+    <requestid>910259</requestid>
+  </revision>
+</revisionlist>
