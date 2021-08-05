@@ -19,7 +19,7 @@
 %define libname libgirara-gtk3
 %define so_ver  3
 Name:           girara
-Version:        0.3.5
+Version:        0.3.6
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
@@ -86,6 +86,7 @@ export CFLAGS="%{optflags}"
 find %{buildroot} -name '*.*a' -delete -print
 
 %post -n %{libname}-%{so_ver} -p /sbin/ldconfig
+
 %postun	-n %{libname}-%{so_ver} -p /sbin/ldconfig
 
 %files -n %{libname}-%{so_ver} -f %{libname}-%{so_ver}.lang
