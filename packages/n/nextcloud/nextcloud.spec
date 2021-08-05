@@ -47,7 +47,7 @@
 %endif
 
 Name:           nextcloud
-Version:        22.0.0
+Version:        22.1.0
 Release:        0
 Summary:        File hosting service
 License:        AGPL-3.0-only
@@ -233,9 +233,9 @@ if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
 fi
 
 if [ $1 -eq 1 ]; then
-    echo "o %{name} pre-install: First install starting"
+  echo "o %{name} pre-install: First install starting"
 else
-    echo "o %{name} pre-install: Upgrade starting ..."
+  echo "o %{name} pre-install: Upgrade starting ..."
 fi
 # https://github.com/nextcloud
 if [ -x %{ocphp_bin}/php -a -f %{nc_dir}/occ ]; then
@@ -270,28 +270,28 @@ if [ -s %{statedir}/apache_stopped_during_nextcloud_install ]; then
 fi
 
 if [ -s %{statedir}/occ_maintenance_mode_during_nextcloud_install ]; then
-echo "o %{name} post-install: occ maintenance:repair (fix possible errors)"
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
-echo "o %{name} post-install: occ db:add-missing-* (add missing db things)"
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mimetype:update-db" || true
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-columns" || true
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-indices" || true
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-primary-keys" || true
-echo "o %{name} post-install: occ update apps"
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
-echo "o %{name} post-install: occ upgrade"
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
-echo "o %{name} post-install: occ maintenance:mode --off"
-su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --off" || true
+  echo "o %{name} post-install: occ maintenance:repair (fix possible errors)"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:repair" || true
+  echo "o %{name} post-install: occ db:add-missing-* (add missing db things)"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mimetype:update-db" || true
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-columns" || true
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-indices" || true
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ db:add-missing-primary-keys" || true
+  echo "o %{name} post-install: occ update apps"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ app:update --all" || true
+  echo "o %{name} post-install: occ upgrade"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ upgrade" || true
+  echo "o %{name} post-install: occ maintenance:mode --off"
+  su %{nc_user} -s /bin/sh -c "cd %{nc_dir}; PATH=%{ocphp_bin}:$PATH php ./occ maintenance:mode --off" || true
 fi
 
 rm -f %{statedir}/apache_stopped_during_nextcloud_install
 rm -f %{statedir}/occ_maintenance_mode_during_nextcloud_install
 
 if [ $1 -eq 1 ]; then
-    echo "o %{name} post-install: First install complete"
+  echo "o %{name} post-install: First install complete"
 else
-    echo "o %{name} post-install: Upgrade complete"
+  echo "o %{name} post-install: Upgrade complete"
 fi
 
 %preun
