@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug  3 12:41:41 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.5.1
+  - t-u: Disable status file generation by default
+    The new experimental `status` command requires the availability of
+    /etc/YaST2/control.xml, which is not present on all systems. Hide the
+    creation of the corresponding status file behind a new EXPERIMENTAL_STATUS
+    option to try out this functionality.
+  - Increase library version
+
+-------------------------------------------------------------------
+Tue Aug  3 07:37:36 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Add tukit.conf to spec file
+
+-------------------------------------------------------------------
+Mon Aug  2 15:58:09 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.5.0
+  - Add alias setDiscardIfUnchanged for setDiscard. The old method name
+    wasn't really clear and will be removed if we should have an API break
+    in the future
+  - Replace mkinitrd with direct dracut call [boo#1186213]
+  - tukit: Add configuration file support (/etc/tukit.conf)
+  - Allow users to configure additional bind mounts (see /usr/etc/tukit.conf
+    for an example and limitations) [bsc#1188322]
+  - Add 'transactional-update status' call. This is a POC for obtaining a
+    hash of a system to verify its integrity. The functionality is still
+    experimental!
+  - Internal bugfixes / optimizations
+
+-------------------------------------------------------------------
 Sun Jun 13 23:18:28 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.4.0

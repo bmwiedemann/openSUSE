@@ -26,7 +26,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           transactional-update
-Version:        3.4.0
+Version:        3.5.1
 Release:        0
 Summary:        Transactional Updates with btrfs and snapshots
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -212,6 +212,7 @@ rm -rf %{buildroot}%{_docdir}/%{name}/*.html
 %dir %{_distconfdir}
 %endif
 %{_distconfdir}/transactional-update.conf
+%{_distconfdir}/tukit.conf
 %{_mandir}/man5/transactional-update.conf.5*
 %{_mandir}/man8/transactional-update.8*
 %{_mandir}/man8/transactional-update.timer.8*
