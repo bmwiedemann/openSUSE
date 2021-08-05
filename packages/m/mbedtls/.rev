@@ -326,4 +326,12 @@
     <comment>-  Workaround for building with gcc-11 boo#1181876</comment>
     <requestid>885737</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>91eedb3d43e68b06cefc3951578e1a61</srcmd5>
+    <version>2.27.0</version>
+    <time>1628189272</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909961</requestid>
+  </revision>
 </revisionlist>
