@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 27 03:10:29 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302186
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302186  2021-07-26 10:37:46-07:00 America/Los_Angeles
+
+      - Add start/stop timestamps to subtests
+
+-------------------------------------------------------------------
 Thu May 20 03:06:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302185
