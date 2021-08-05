@@ -703,4 +703,14 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
     <comment>Update to 3.40.1 (forwarded request 886224 from dimstar)</comment>
     <requestid>887476</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>4dba8c8b8c3a6b77b24acccc81484d24</srcmd5>
+    <version>3.40.1</version>
+    <time>1628189276</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust BuildRequires for python_module cairo to python-module
+  pycairo: the module was renamed 2 years ago.
+- Skip build for python2: not supported anymore since 3.38.0. (forwarded request 910099 from yfjiang)</comment>
+    <requestid>910106</requestid>
+  </revision>
 </revisionlist>

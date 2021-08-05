@@ -17,6 +17,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 # Define these before the call of python_subpackages
 %define introspection_real_package  %(rpm -q --qf '%%{NAME}' -f $(readlink %{_libdir}/libgirepository-1.0.so -f))
 %define cairo_real_package %(rpm -q --qf '%%{NAME}' --whatprovides cairo)
@@ -36,9 +37,9 @@ Group:          Development/Languages/Python
 URL:            https://wiki.gnome.org/Projects/PyGObject/
 Source0:        https://download.gnome.org/sources/pygobject/3.40/%{_name}-%{version}.tar.xz
 
-BuildRequires:  %{python_module cairo >= 1.16.0}
-BuildRequires:  %{python_module cairo-devel}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pycairo >= 1.16.0}
+BuildRequires:  %{python_module pycairo-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
