@@ -18,14 +18,14 @@
 
 
 Name:           byacc
-Version:        20210328
+Version:        20210619
 Release:        0
 Summary:        LALR(1) parser generator
 License:        SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 URL:            https://invisible-island.net/byacc/byacc.html
-Source0:        ftp://ftp.invisible-island.net/byacc/byacc-%{version}.tgz
-Source1:        ftp://ftp.invisible-island.net/byacc/byacc-%{version}.tgz.asc
+Source0:        https://invisible-mirror.net/archives/byacc/byacc-%{version}.tgz
+Source1:        https://invisible-mirror.net/archives/byacc/byacc-%{version}.tgz.asc
 Source2:        %{name}.keyring
 
 %description

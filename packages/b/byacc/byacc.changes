@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:23:59 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 20210619:
+  * btyaccpar.skel, yaccpar.skel: cancel unused assignments
+  * output.c: fix gcc warning
+  * test/run_test.sh, test/run_lint.sh, test/run_make.sh:
+    shellcheck-warnings
+  * test/run_test.sh: changes suggested at
+    https://github.com/jannick0/byacc-snapshots/tree/YYINT-fix-20210520
+  * autotools update
+
+-------------------------------------------------------------------
 Sat May  8 20:19:26 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 20210328:
