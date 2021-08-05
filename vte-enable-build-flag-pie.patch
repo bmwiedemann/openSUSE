@@ -1,0 +1,12 @@
+Index: vte/meson.build
+===================================================================
+--- vte.orig/meson.build
++++ vte/meson.build
+@@ -25,6 +25,7 @@ project(
+     'cpp_std=gnu++17',
+     'warning_level=0',
+     'b_ndebug=false',
++    'b_pie=true',
+   ],
+   meson_version: '>= 0.50.0',
+ )

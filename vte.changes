@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 28 08:22:35 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add vte-enable-build-flag-pie.patch: enable PIE flag to be
+  compatible with gcc default linking option. Otherwise build will
+  be failed with current SLE-15-SP4 project setup.
+
+-------------------------------------------------------------------
 Mon Jun 07 20:27:11 UTC 2021 - bjorn.lie@gmail.com
 
 - Update to version 0.64.2:

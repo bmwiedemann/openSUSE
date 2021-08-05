@@ -1026,4 +1026,14 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
     <comment> (forwarded request 898205 from iznogood)</comment>
     <requestid>898489</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>5bded5c8baf1b54399f66524b08ab6a5</srcmd5>
+    <version>0.64.2</version>
+    <time>1628189271</time>
+    <user>dimstar_suse</user>
+    <comment>- Add vte-enable-build-flag-pie.patch: enable PIE flag to be
+  compatible with gcc default linking option. Otherwise build will
+  be failed with current SLE-15-SP4 project setup. (forwarded request 909844 from yfjiang)</comment>
+    <requestid>909941</requestid>
+  </revision>
 </revisionlist>
