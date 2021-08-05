@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug  2 13:06:28 UTC 2021 - Tina Müller <tina.mueller@suse.com>
+
+- Remove silence_sqlite_unicode_deprecation_warning.patch (upstream fix)
+
+-------------------------------------------------------------------
+Mon Aug  2 03:07:06 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.70
+   see /usr/share/doc/packages/perl-DBD-SQLite/Changes
+
+  1.70 2021-08-01
+      - Switched to a production version
+
+  1.69_02 2021-07-30
+      - Fix doc to use the correct attribute with sqlite_ (GH#86, eekboek++)
+      - Modify the fix to silence the sqlite_unicode warning not to check
+        the attribute twice
+      - Fix an encoding issue of naive (GH#83, HaraldJoerg++)
+
+  1.69_01 2021-07-30
+      - Typo (GH#85, grr++)
+      - Silenced deprecation warning of sqlite_unicode not to break
+        tests of existing applications
+
+-------------------------------------------------------------------
 Fri Jul 30 07:51:14 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Add patch silence_sqlite_unicode_deprecation_warning.patch
