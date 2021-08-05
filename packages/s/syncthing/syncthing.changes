@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  5 08:37:17 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.18.1
+  * Bugfixes:
+    #7704: Changing folder type from receive encrypted to a different type corrupts the database
+    #7706: Delete Unexpected Items in receive encrypted folder is unable to delete ".stfolder.removed-*"
+    #7740: Incorrect local state when using negated patterns inside ignored parent folder on both sides
+    #7809: Syncthing attemps IPv4 addresses for quic6:// peers
+    #7839: Not exposed string for translation
+    #7845: Strings unavailable for translation
+
+-------------------------------------------------------------------
 Fri Jul  9 09:44:26 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.18.0
