@@ -494,6 +494,9 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
+  - android-tools 
+  - android-tools-bash-completion 
+  - android-tools-python3 
   - android-udev-rules 
   - angelscript-devel 
   - anjuta 
@@ -3835,6 +3838,7 @@ unsorted:
   - ftmulti 
   - ftop 
   - ftp 
+  - ftsdf 
   - ftsteutates-sensors 
   - ftstring 
   - ftvalid 
@@ -11929,9 +11933,6 @@ unsorted:
   - libmodi-devel 
   - libmodi-tools 
   - libmodi1 
-  - libmodman-devel 
-  - libmodman1 
-  - libmodman1-32bit: [x86_64] 
   - libmodplug-devel 
   - libmodplug1-32bit: [x86_64] 
   - libmodsecurity3 
@@ -13657,6 +13658,7 @@ unsorted:
   - libsrtp2-devel 
   - libsrtp2-linphone-devel 
   - libsrtp2-linphone1 
+  - libsrtp2-linphone1-32bit: [x86_64] 
   - libssh-devel 
   - libssh2-1-32bit: [x86_64] 
   - libssh2-devel 
@@ -17639,6 +17641,7 @@ unsorted:
   - octave-nlopt_optimize 
   - octave-openEMS 
   - oddjob 
+  - oddjob-gpupdate 
   - oddjob-mkhomedir 
   - ode-devel 
   - odt2txt 
@@ -20966,6 +20969,7 @@ unsorted:
   - python-paramiko-doc 
   - python-peppercorn-doc 
   - python-pisock 
+  - python-platformdirs-doc 
   - python-ply-doc 
   - python-polib-doc 
   - python-praatio-doc 
@@ -23121,6 +23125,7 @@ unsorted:
   - python36-pkgutil-resolve-name 
   - python36-plaster 
   - python36-plaster-pastedeploy 
+  - python36-platformdirs 
   - python36-platformio 
   - python36-plette 
   - python36-plotly 
@@ -26020,6 +26025,7 @@ unsorted:
   - python38-pkgutil-resolve-name 
   - python38-plaster 
   - python38-plaster-pastedeploy 
+  - python38-platformdirs 
   - python38-platformio 
   - python38-plette 
   - python38-plotly 
@@ -29071,6 +29077,7 @@ unsorted:
   - python39-pkgutil-resolve-name 
   - python39-plaster 
   - python39-plaster-pastedeploy 
+  - python39-platformdirs 
   - python39-platformio 
   - python39-plette 
   - python39-plotly 
