@@ -136,7 +136,7 @@
 
 Name:           libvirt
 URL:            http://libvirt.org/
-Version:        7.5.0
+Version:        7.6.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -275,8 +275,8 @@ BuildRequires:  libssh-devel >= 0.7.0
 BuildRequires:  firewall-macros
 %endif
 
-Source0:        %{name}-%{version}.tar.xz
-Source1:        %{name}-%{version}.tar.xz.asc
+Source0:        https://libvirt.org/sources/%{name}-%{version}.tar.xz
+Source1:        https://libvirt.org/sources/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 Source3:        libvirtd-relocation-server.fw
 Source4:        libvirt-supportconfig
@@ -285,8 +285,6 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
-Patch0:         de1e0ae0-lockd-no-error-if-lockspace.patch
-Patch1:         f58349c9-qemu-storage-migration.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch
@@ -1037,19 +1035,21 @@ cp %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml \
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/default.xml
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu/networks/autostart/default.xml
 %if ! %{with_lxc}
-rm -rf %{buildroot}/%{_sysconfdir}/%{name}/lxc.conf
+rm -f %{buildroot}/%{_sysconfdir}/%{name}/lxc.conf
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_lxc.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_lxc.aug
-rm -rf %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.lxc
+rm -f %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.lxc
 %endif
 %if ! %{with_qemu}
-rm -rf %{buildroot}/%{_sysconfdir}/%{name}/qemu.conf
+rm -f %{buildroot}/%{_sysconfdir}/%{name}/qemu.conf
+rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_qemu.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_qemu.aug
-rm -rf %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.qemu
+rm -f %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.qemu
 %endif
 %if ! %{with_libxl}
 rm -f %{buildroot}/%{_sysconfdir}/%{name}/libxl.conf
+rm -f %{buildroot}/%{_sysconfdir}/apparmor.d/usr.sbin.virtxend
 rm -f %{buildroot}/%{_sysconfdir}/logrotate.d/libvirtd.libxl
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/libvirtd_libxl.aug
 rm -f %{buildroot}/%{_datadir}/augeas/lenses/tests/test_libvirtd_libxl.aug
@@ -1616,6 +1616,7 @@ fi
 
 %files daemon-driver-qemu
 %config(noreplace) %{_sysconfdir}/%{name}/virtqemud.conf
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtqemud
 %{_datadir}/augeas/lenses/virtqemud.aug
 %{_datadir}/augeas/lenses/tests/test_virtqemud.aug
 %{_unitdir}/virtqemud.service
@@ -1673,6 +1674,7 @@ fi
 
 %files daemon-driver-libxl
 %config(noreplace) %{_sysconfdir}/%{name}/virtxend.conf
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.sbin.virtxend
 %{_datadir}/augeas/lenses/virtxend.aug
 %{_datadir}/augeas/lenses/tests/test_virtxend.aug
 %{_unitdir}/virtxend.service

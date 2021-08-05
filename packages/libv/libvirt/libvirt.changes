@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug  2 20:44:29 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.6.0
+  - storage_driver: Unlock object on ACL fail in storagePoolLookupByTargetPath
+    CVE-2021-3667
+    bsc#1188843
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+  - Dropped patches:
+    de1e0ae0-lockd-no-error-if-lockspace.patch,
+    f58349c9-qemu-storage-migration.patch
+
+-------------------------------------------------------------------
 Tue Jul 27 18:10:29 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - spec: Re-exec'ing virt{lock,log}d in posttrans was mistakenly
