@@ -17,7 +17,7 @@
 
 
 Name:           pcre
-Version:        8.44
+Version:        8.45
 Release:        0
 Summary:        A library for Perl-compatible regular expressions
 License:        BSD-3-Clause
