@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  2 13:02:58 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- Update to 16.6.0:
+  http2: fixes use after free on close http2 on stream canceling
+  (bsc#1188917, CVE-2021-22930)
+
+-------------------------------------------------------------------
 Thu Jul 22 12:18:32 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - legacy_python.patch: fix building with python 3.4 in SLE-12

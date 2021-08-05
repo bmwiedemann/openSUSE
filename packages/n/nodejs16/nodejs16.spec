@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.5.0
+Version:        16.6.0
 Release:        0
 
 # Double DWZ memory limits
@@ -317,14 +317,14 @@ ExclusiveArch:  not_buildable
 Provides:       bundled(brotli) = 1.0.9
 Provides:       bundled(libuv) = 1.41.0
 Provides:       bundled(uvwasi) = 0.0.11
-Provides:       bundled(v8) = 9.1.269.38
+Provides:       bundled(v8) = 9.2.230.21
 
 Provides:       bundled(llhttp) = 6.0.2
 Provides:       bundled(ngtcp2) = 0.1.0-DEV
 
 Provides:       bundled(node-acorn) = 8.4.1
 Provides:       bundled(node-acorn-walk) = 8.1.0
-Provides:       bundled(node-cjs-module-lexer) = 1.2.1
+Provides:       bundled(node-cjs-module-lexer) = 1.2.2
 
 %description
 Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js
