@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 15:27:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer require libXfont(1)
+
+-------------------------------------------------------------------
 Thu Apr 22 11:03:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 2.99.917.916_g31486f40
