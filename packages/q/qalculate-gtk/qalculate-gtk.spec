@@ -17,13 +17,13 @@
 
 
 Name:           qalculate-gtk
-Version:        3.19.0
+Version:        3.20.1
 Release:        0
 Summary:        Multi-purpose cross-platform desktop calculator
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://qalculate.github.io
-Source0:        https://github.com/Qalculate/qalculate-gtk/releases/download/v%{version}/qalculate-gtk-%{version}a.tar.gz
+Source0:        https://github.com/Qalculate/qalculate-gtk/releases/download/v%{version}/qalculate-gtk-%{version}.tar.gz
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  intltool

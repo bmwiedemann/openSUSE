@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 29 11:46:40 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.20.1:
+  * Fix segfault when Gnuplot is not installed
+  * Updated insert function dialog layout 
+  * Add description field to variables and units dialogs
+  * Add customizable keyboard shortcut for insert result 
+  * Add language option to configuration file 
+  * Fix background color of expression entry in inactive window
+  * Add translator credits to about dialog
+    
+-------------------------------------------------------------------
 Sat Jul  3 19:35:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.19.0:
