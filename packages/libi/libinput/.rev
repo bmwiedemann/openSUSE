@@ -882,4 +882,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.18</comment>
     <requestid>896872</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>1efa7cdc24c16d72eeb900ce9dc8df33</srcmd5>
+    <version>1.18.1</version>
+    <time>1628189270</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.18.1</comment>
+    <requestid>909940</requestid>
+  </revision>
 </revisionlist>
