@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  3 22:32:14 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
+
+- update to openafs version 1.8.8 
+- remove linux-kmp.patch. Not required at the minute.
+
+-------------------------------------------------------------------
 Thu Apr 29 07:01:26 UTC 2021 - Christof Hanke <christof.hanke@mpcdf.mpg.de>
 
 - add patches for kernel 5.12 to linux-kmp.patch 
