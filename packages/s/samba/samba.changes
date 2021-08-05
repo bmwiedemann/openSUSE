@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 23 16:05:05 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Update to 4.14.6
+   * s3: lib: Fix talloc heirarcy error in parent_smb_fname(); (bso#14722).
+   * smbd: Fix pathref unlinking in create_file_unixpath(); (bso#14732).
+   * s3: VFS: default: Add proc_fd's fallback for vfswrap_fchown(); (bso#14734).
+   * s3: smbd: Remove erroneous TALLOC_FREE(smb_fname_parent) in
+     change_file_owner_to_parent() error path; (bso#14736).
+   * NT_STATUS_FILE_IS_A_DIRECTORY error messages when using
+     glusterfs VFS module; (bso#14730).
+   * s3/modules: fchmod: Fallback to path based chmod if pathref; (bso#14734).
+   * Spotlight RPC service doesn't work with vfs_glusterfs; (bso#14740).
+   * gensec_krb5: Restore ipv6 support for kpasswd; (bso#14750).
+   * smbXsrv_{open,session,tcon}: protect
+     smbXsrv_{open,session,tcon}_global_traverse_fn against invalid records;
+     (bso#14752).
+   * samba-tool domain backup offline doesn't work against bind DLZ
+     backend; (bso#14027).
+   * netcmd: Use next_free_rid() function to calculate a SID for
+     restoring a backup; (bso#14669).
+
+-------------------------------------------------------------------
 Tue Jun  1 08:38:12 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 4.14.5
