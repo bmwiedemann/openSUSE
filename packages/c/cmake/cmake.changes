@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:18:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.21.1:
+  * The Visual Studio 17 2022 generator is now based on "Visual Studio 2022
+    Preview 2". Previously it was based on "Preview 1.1".
+
+-------------------------------------------------------------------
 Wed Jul 14 19:32:35 UTC 2021 - Christoph G <foss@grueninger.de>
 
-- update to 3.21
+- update to 3.21.0
   * The Makefile Generators and the “Ninja” generator learned to add
     linker launcher tools along with the linker for “C”, “CXX”,
     “OBJC”, and “OBJCXX” languages.
