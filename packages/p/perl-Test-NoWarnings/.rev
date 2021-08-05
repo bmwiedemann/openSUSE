@@ -174,4 +174,12 @@
     <comment>- regenerate using cpanspec.yml</comment>
     <requestid>304115</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3d0d6523025c02dab26c5f43208a2fb5</srcmd5>
+    <version>1.06</version>
+    <time>1628189269</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909908</requestid>
+  </revision>
 </revisionlist>

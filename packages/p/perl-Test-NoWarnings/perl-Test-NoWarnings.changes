@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 28 03:10:36 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.06
+   see /usr/share/doc/packages/perl-Test-NoWarnings/Changes
+
+  1.06 - 2021-07-27
+      - released as stable
+
+  1.05_01 - 2021-07-15
+      - clarify docs around tests without a plan
+      - documentation cleanups and typo fixes
+      - minor code cleanups
+      - use warnings in tests
+      - skip fork test if perl can't fork
+      - note conflicts with Carp::Always in documentation
+      - Made had_no_warnings turn off the checking at END time for use with
+        done_testing based tests with no test count. Also added docs.
+
+-------------------------------------------------------------------
 Mon Apr 27 04:57:38 UTC 2015 - coolo@suse.com
 
 - regenerate using cpanspec.yml
