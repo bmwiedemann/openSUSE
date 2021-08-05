@@ -58,6 +58,8 @@ rm man3/{getifaddrs.3,freeifaddrs.3,crypt.3,crypt_r.3}
 rm man3/explicit_bzero.3
 # already in bpftool package
 rm man7/bpf-helpers.7
+# bsc#1188724
+rm man5/motd.5
 # conflicts with mandoc
 mkdir man7mp
 mv man7/man.7 man7mp/man.7mp
