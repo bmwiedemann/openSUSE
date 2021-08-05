@@ -1,6 +1,6 @@
-# ---
+---
 # ## used by gem2rpm
-:summary: meta-gem that depends on the other components
+:summary: Meta-gem that depends on the other components
 # ## used by gem2rpm
 # :description: |-
 #   this is a custom description
@@ -26,7 +26,6 @@
 #   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
 :sources:
-- rspec-3.9.0.gem.sha256
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'

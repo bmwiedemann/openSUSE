@@ -16,30 +16,27 @@
 #
 
 
+%define mod_name rspec
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-rspec
 Version:        3.10.0
 Release:        0
-%define mod_name rspec
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Summary:        Meta-gem that depends on the other components
+License:        MIT
+Group:          Development/Languages/Ruby
+URL:            https://github.com/rspec
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/rspec
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        rspec-3.9.0.gem.sha256
-Source2:        gem2rpm.yml
-Summary:        meta-gem that depends on the other components
-License:        MIT
-Group:          Development/Languages/Ruby
 
 %description
 BDD for Ruby.
