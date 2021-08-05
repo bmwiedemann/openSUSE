@@ -72,4 +72,12 @@
     the old version of libXfont from the world.</comment>
     <requestid>540273</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>61cacb6d281530c6fd1e159c2d70b5ef</srcmd5>
+    <version>1.1</version>
+    <time>1628189263</time>
+    <user>dimstar_suse</user>
+    <comment>- switch to libXfont2</comment>
+    <requestid>909821</requestid>
+  </revision>
 </revisionlist>
