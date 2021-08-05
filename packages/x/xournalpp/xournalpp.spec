@@ -17,32 +17,36 @@
 
 
 Name:           xournalpp
-Version:        1.0.20
+Version:        1.1.0
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/xournalpp/xournalpp
 Source0:        https://github.com/xournalpp/xournalpp/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM xournalpp-fix-desktop-categories.patch badshah400@gmail.com -- Fix desktop categories with additional keywords to prevent "No sufficient Category definition" error from brp-desktop.
-Patch0:         xournalpp-fix-desktop-categories.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  texlive-latex-bin
+BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkgconfig(lua) >= 5.3
+BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(portaudiocpp)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     tex(standalone.tex)
+%if 0%{?suse_version} < 1550
+BuildRequires:  gcc9-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 
 %description
 Xournal++ is a hand note taking software.
@@ -51,18 +55,18 @@ It supports pen input, e.g. Wacom tablets.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
-%cmake
+%cmake -DENABLE_MATHTEX=ON \
+%if 0%{?suse_version} < 1550
+       -DCMAKE_CXX_COMPILER="%{_bindir}/g++-9" \
+%endif
+       %{nil}
+%cmake_build
 
 %install
 %cmake_install
-
-# REMOVE UNNECESSARY SCRIPTS update-icon-cache IS TAKEN CARE OF BY RPM FILE TRIGGERS
-rm %{buildroot}%{_datadir}/%{name}/ui/*/hicolor/update-icon-cache.sh
-
 %find_lang xournalpp %{no_lang_C}
 
 %fdupes %{buildroot}%{_datadir}
@@ -70,20 +74,19 @@ rm %{buildroot}%{_datadir}/%{name}/ui/*/hicolor/update-icon-cache.sh
 %files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/xournal-thumbnailer
+%{_bindir}/xournalpp-thumbnailer
 %{_bindir}/xournalpp
-%{_datadir}/applications/*.xournalpp.desktop
+%{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/scalable/mimetypes/*.svg
-%{_datadir}/mime/packages/*.xml
-%dir %{_datadir}/metainfo
+%{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/metainfo/*.appdata.xml
+%{_datadir}/mime/packages/*.xml
 %dir %{_datadir}/mimelnk
 %dir %{_datadir}/mimelnk/application
 %{_datadir}/mimelnk/application/*.desktop
-%{_datadir}/xournalpp/
-%{_datadir}/icons/hicolor/*/apps/*
 %dir %{_datadir}/thumbnailers
 %{_datadir}/thumbnailers/*.thumbnailer
+%{_datadir}/xournalpp/
 
 %files lang -f xournalpp.lang
 

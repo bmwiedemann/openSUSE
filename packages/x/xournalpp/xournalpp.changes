@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug  4 09:13:48 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.1.0:
+  * Major release with many changes, see
+    https://github.com/xournalpp/xournalpp/blob/1.1.0/CHANGELOG.md
+- Drop xournalpp-fix-desktop-categories.patch: No longer needed.
+- Force GCC 9 as the compiler for openSUSE Leap 15.x as builds
+  require that as a minimum for proper c++17 support.
+- Drop update-icon-cache.sh removal, no longer installed by
+  upstream.
+- Update BuildRequires with upstream.
+
+-------------------------------------------------------------------
 Tue Feb 16 21:22:12 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add BuildRequires(lua) to enable building plugins.
