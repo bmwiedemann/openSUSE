@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 26 06:46:16 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210724
+  + add workaround for Windows Terminal's problems with CR/LF mapping to
+    ms-terminal (patch by Juergen Pfeifer).
+  + review/update current Windows Terminal vs ms-terminal -TD
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Jul 19 06:09:29 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210718
