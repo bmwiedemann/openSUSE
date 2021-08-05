@@ -1,7 +1,7 @@
 #
 # spec file for package linssid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,13 +29,11 @@ Source0:        https://sourceforge.net/projects/linssid/files/LinSSID_%{version
 Patch0:         linssid-icons.patch
 # PATCH-FIX-OPENSUSE linssid-icons.patch linssid-use-shared-qwt-qt5.patch -- uses shared qwt6 as packaged on openSUSE
 Patch1:         linssid-use-shared-qwt-qt5.patch
+# PATCH-FIX-UPSTREAM linssid-qwt620.patch
+Patch2:         linssid-qwt620.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-%if 0%{?suse_version} > 1315
 BuildRequires:  libboost_regex-devel
-%else
-BuildRequires:  boost-devel
-%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2
@@ -52,13 +50,11 @@ Microsoft Windows).
 It is written in C++ using Linux wireless tools and Qt5.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 
 %build
 %qmake5
-make %{?_smp_mflags}
+%make_build
 
 %install
 %qmake5_install
@@ -71,15 +67,7 @@ PATH=$PATH:%{_sbindir}
 %{_bindir}/xdg-su -c %{_sbindir}/linssid
 PATH=$TMP_PATH
 EOF
-%fdupes -s %{buildroot}
-
-%if 0%{?suse_version} <= 1315
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_post
-%endif
+%fdupes %{buildroot}
 
 %files
 %license linssid-app/license.txt

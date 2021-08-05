@@ -77,4 +77,12 @@
     <comment></comment>
     <requestid>726585</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>92bc43f3a25b7b79746a55c8c1c228fd</srcmd5>
+    <version>3.6</version>
+    <time>1628189286</time>
+    <user>dimstar_suse</user>
+    <comment>Fix Factory build</comment>
+    <requestid>910297</requestid>
+  </revision>
 </revisionlist>
