@@ -501,4 +501,16 @@ fix a jira reference in the changelog.
   - Add all new APIs and constants in libvirt 7.5.0</comment>
     <requestid>903568</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>3a336cbf38bccfcdf5f8084a9e9adce3</srcmd5>
+    <version>7.6.0</version>
+    <time>1628189278</time>
+    <user>dimstar_suse</user>
+    <comment>Updated python bindings for libvirt 7.6.0.
+
+- Update to 7.6.0
+  - Add all new APIs and constants in libvirt 7.6.0
+  - jsc#SLE-18354</comment>
+    <requestid>910190</requestid>
+  </revision>
 </revisionlist>
