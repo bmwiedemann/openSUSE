@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 05 10:57:53 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210805.5b68d530:
+  * OBSLocal: top-level classes documentation to clarify the scope
+  * Point to osc.core to compare the APIs
+  * More improvements in the OBSLocal.py documentation
+  * In OBSLocal.StagingWorkflow.submit_package, package may not be None
+  * Some convenience extensions to OBSLocal
+  * OBSLocal: improved management of meta
+  * Tiny fix in check_source_test.py
+  * Improvements in the OBSLocal.py documentation
+  * Convert OBSLocal documentation to reStructured Text
+  * document OBSLocal.py
+
+-------------------------------------------------------------------
 Thu Jul 29 10:49:18 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210729.455dc99c:
