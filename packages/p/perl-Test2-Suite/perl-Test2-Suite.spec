@@ -18,7 +18,7 @@
 
 %define cpan_name Test2-Suite
 Name:           perl-Test2-Suite
-Version:        0.000140
+Version:        0.000141
 Release:        0
 Summary:        Distribution with a rich set of tools built upon the Test2
 License:        Artistic-1.0 OR GPL-1.0-or-later
