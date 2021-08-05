@@ -49,7 +49,7 @@ bindkey    "\2333~"		delete-char
 bindkey    "\2334~"		end-of-line
 bindkey    "\2335~"		history-search-backward
 bindkey    "\2336~"		history-search-forward
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	bindkey    "^[[2;2~"	yank
 	bindkey    "^[[3;2~"	delete-char
 	bindkey    "^[[5;2~"	history-search-backward
@@ -122,7 +122,7 @@ bindkey    "^C^M[A"		up-history
 bindkey    "^C^M[B"		down-history
 bindkey    "^C^[[D"		backward-char
 #
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	bindkey -c "^[[E"	"source /etc/csh.cshrc"
 	bindkey -c "^[[1;2E"	"source /etc/csh.cshrc"
 	bindkey -c "^[[1;3E"	"source /etc/csh.cshrc"
@@ -218,7 +218,7 @@ endif
 #
 bindkey    "^?"		backward-delete-char
 bindkey    "^H"		backward-delete-char
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	#
 	# XTerm in UTF-8 mode
 	#
@@ -228,7 +228,7 @@ endif
 #
 # Home and End
 #
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	#
 	# Normal keypad and cursor of xterm
 	#
@@ -276,7 +276,7 @@ if ( "$TERM" == "xterm" ) then
 	bindkey    "^[O5H"	beginning-of-line
 	bindkey    "^[O5F"	end-of-line
 else
-if ( "$TERM" == "kvt" ) then
+if ( "$TERM" =~ kvt* ) then
 	bindkey    "^[[1~"	history-search-backward
 	bindkey    "^[[4~"	set-mark-command
 	bindkey    "^[OH"	beginning-of-line
@@ -291,7 +291,7 @@ endif
 #
 # Application keypad and cursor of xterm
 #
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	bindkey    "^[OD"	backward-char
 	bindkey    "^[OC"	forward-char
 	bindkey    "^[OA"	up-history
@@ -388,7 +388,7 @@ if ( "$TERM" == "xterm" ) then
 	bindkey    "^[O1;8R"	undefined-key
 	bindkey    "^[O1;8S"	kill-line
 endif
-if ( "$TERM" == "gnome" ) then
+if ( "$TERM" =~ gnome* ) then
 	# or gnome terminal F1 - F4
 	bindkey -s "^[OP"	"^["
 	bindkey    "^[OQ"	vi-undo
@@ -398,7 +398,7 @@ endif
 #
 # Function keys F1 - F12
 #
-if ( "$TERM" == "linux" ) then
+if ( "$TERM" =~ linux* ) then
 	#
 	# On console the first five function keys
 	#
@@ -453,7 +453,7 @@ bindkey    "\23333~"		undefined-key
 bindkey    "\23334~"		undefined-key
 bindkey    "\23335~"		undefined-key
 bindkey    "\23336~"		undefined-key
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	bindkey    "^[[1;2P"	undefined-key
 	bindkey    "^[[1;2Q"	undefined-key
 	bindkey    "^[[1;2R"	undefined-key
@@ -540,7 +540,7 @@ if ( "$TERM" == "xterm" ) then
 	bindkey    "^[[24;8~"	undefined-key
 endif
 #
-if ( "$TERM" == "xterm" ) then
+if ( "$TERM" =~ xterm* ) then
 	#
 	# Application keypad and cursor of xterm
 	# with NumLock ON
@@ -596,11 +596,11 @@ if ( "$TERM" == "xterm" ) then
 	bindkey    "^[9"	history-search-backward
 endif
 #
-if ( "$TERM" == "kterm" ) then
+if ( "$TERM" =~ kterm* ) then
 	bindkey    "^[[\000"	undefined-key
 endif
 #
-if ( "$TERM" == "mlterm" ) then
+if ( "$TERM" =~ mlterm* ) then
 	bindkey -c "^[[E"	"source /etc/csh.cshrc"
 	bindkey    "^[OH"	beginning-of-line
 	bindkey    "^[OF"	end-of-line
@@ -731,7 +731,7 @@ if ( "$TERM" == "mlterm" ) then
 	bindkey    "^[9"	history-search-backward
 endif
 #
-if ( "$TERM" == "rxvt-unicode" || $TERM == "rxvt-unicode-256color" ) then
+if ( "$TERM" =~ rxvt-unicode* ) then
 	bindkey    '^[[23$'	undefined-key
 	bindkey    '^[[24$'	undefined-key
 	bindkey    "^[[11\^"	undefined-key
@@ -825,7 +825,7 @@ if ( "$CSHEDIT" == "emacs" ) then
 	#
 	# ... xterm application cursor
 	#
-    	if ( "$TERM" == "xterm" ) then
+    	if ( "$TERM" =~ xterm* ) then
 	     bindkey    "^[^[OD"	backward-word
 	     bindkey    "^[^[OC"	forward-word
 	     bindkey    "^[^[OA"	up-history
@@ -850,7 +850,7 @@ endif
 #
 # Screen
 #
-if ( "$TERM" == "screen" ) then
+if ( "$TERM" =~ screen* ) then
 	bindkey    "\e[1;2D"	backward-word
 	bindkey    "\e[1;2C"	forward-word
 	bindkey    "\e[1;2A"	up-history

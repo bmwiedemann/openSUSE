@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  4 12:24:25 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Key-binding: support also other variants of terminals like xterm-256color
+
+-------------------------------------------------------------------
 Fri May 28 08:59:28 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Even on PowerPC the vendor is suse 

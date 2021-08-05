@@ -822,4 +822,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>897378</requestid>
   </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>e771256b5505a8115f3332217306d2cc</srcmd5>
+    <version>6.22.04</version>
+    <time>1628189277</time>
+    <user>dimstar_suse</user>
+    <comment>- Key-binding: support also other variants of terminals like xterm-256color</comment>
+    <requestid>910148</requestid>
+  </revision>
 </revisionlist>
