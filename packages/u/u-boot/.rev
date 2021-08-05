@@ -1725,4 +1725,12 @@ boundary checks.
 </comment>
     <requestid>908586</requestid>
   </revision>
+  <revision rev="152" vrev="2">
+    <srcmd5>69c427ff5f1b087ecc29700bf74bb4e8</srcmd5>
+    <version>2021.07</version>
+    <time>1628189267</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>909899</requestid>
+  </revision>
 </revisionlist>

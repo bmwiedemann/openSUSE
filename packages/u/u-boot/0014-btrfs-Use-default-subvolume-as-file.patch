@@ -1,0 +1,91 @@
+From 6d31a7a47e0a3f66304fb033a9e8c9a78e1bc661 Mon Sep 17 00:00:00 2001
+From: "Matwey V. Kornilov" <matwey.kornilov@gmail.com>
+Date: Sun, 1 Aug 2021 23:52:16 +0300
+Subject: [PATCH] btrfs: Use default subvolume as filesystem root
+
+BTRFS volume consists of a number of subvolumes which can be mounted separately
+from each other. The top-level subvolume always exists even if no subvolumes
+were created manually. A subvolume can be denoted as the default subvolume i.e.
+the subvolume which is mounted by default.
+
+The default "default subvolume" is the top-level one, but this is far from the
+common practices used in the wild. For instance, openSUSE provides an OS
+snapshot/rollback feature based on BTRFS. To achieve this, the actual OS root
+filesystem is located into a separate subvolume which is "default" but not
+"top-level". That means that the /boot/dtb/ directory is also located inside
+this default subvolume instead of top-level one.
+
+However, the existing btrfs u-boot driver always uses the top-level subvolume
+as the filesystem root. This behaviour 1) is inconsistent with
+
+    mount /dev/sda1 /target
+
+command, which mount the default subvolume 2) leads to the issues when
+/boot/dtb cannot be found properly (see the reference).
+
+This patch uses the default subvolume as the filesystem root to overcome
+mentioned issues.
+
+Reference: https://bugzilla.suse.com/show_bug.cgi?id=1185656
+Signed-off-by: Matwey V. Kornilov <matwey.kornilov@gmail.com>
+Reviewed-by: Qu Wenruo <wqu@suse.com>
+---
+ fs/btrfs/disk-io.c | 38 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 35 insertions(+), 3 deletions(-)
+
+diff --git a/fs/btrfs/disk-io.c b/fs/btrfs/disk-io.c
+index 349411c3cc..12f9579fcf 100644
+--- a/fs/btrfs/disk-io.c
++++ b/fs/btrfs/disk-io.c
+@@ -804,6 +804,30 @@ static int setup_root_or_create_block(struct btrfs_fs_info *fs_info,
+ 	return 0;
+ }
+ 
++static int get_default_subvolume(struct btrfs_fs_info *fs_info,
++				 struct btrfs_key *key_ret)
++{
++	struct btrfs_root *root = fs_info->tree_root;
++	struct btrfs_dir_item *dir_item;
++	struct btrfs_path path;
++	int ret = 0;
++
++	btrfs_init_path(&path);
++
++	dir_item = btrfs_lookup_dir_item(NULL, root, &path,
++					 BTRFS_ROOT_TREE_DIR_OBJECTID,
++					 "default", 7, 0);
++	if (IS_ERR(dir_item)) {
++		ret = PTR_ERR(dir_item);
++		goto out;
++	}
++
++	btrfs_dir_item_key_to_cpu(path.nodes[0], dir_item, key_ret);
++out:
++	btrfs_release_path(&path);
++	return ret;
++}
++
+ int btrfs_setup_all_roots(struct btrfs_fs_info *fs_info)
+ {
+ 	struct btrfs_super_block *sb = fs_info->super_copy;
+@@ -833,9 +857,17 @@ int btrfs_setup_all_roots(struct btrfs_fs_info *fs_info)
+ 
+ 	fs_info->last_trans_committed = generation;
+ 
+-	key.objectid = BTRFS_FS_TREE_OBJECTID;
+-	key.type = BTRFS_ROOT_ITEM_KEY;
+-	key.offset = (u64)-1;
++	ret = get_default_subvolume(fs_info, &key);
++	if (ret) {
++		/*
++		 * The default dir item isn't there. Linux kernel behaviour is
++		 * to silently use the top-level subvolume in this case.
++		 */
++		key.objectid = BTRFS_FS_TREE_OBJECTID;
++		key.type = BTRFS_ROOT_ITEM_KEY;
++		key.offset = (u64)-1;
++	}
++
+ 	fs_info->fs_root = btrfs_read_fs_root(fs_info, &key);
+ 
+ 	if (IS_ERR(fs_info->fs_root))

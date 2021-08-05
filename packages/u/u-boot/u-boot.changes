@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  3 08:18:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.07
+* Patches added:
+  0014-btrfs-Use-default-subvolume-as-file.patch - boo#1185656
+
+-------------------------------------------------------------------
 Mon Jul 26 10:50:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Drop qemu-riscv64spl flavor
