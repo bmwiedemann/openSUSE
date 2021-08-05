@@ -169,9 +169,9 @@ BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
 %if %{with doc}
-BuildRequires:  python3-Sphinx
+BuildRequires:  %{python_pkg_name}-Sphinx
 %if 0%{?suse_version} >= 1500
-BuildRequires:  python3-python-docs-theme
+BuildRequires:  %{python_pkg_name}-python-docs-theme
 %endif
 %endif
 %if %{with general}

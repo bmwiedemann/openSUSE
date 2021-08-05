@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  2 12:36:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use versioned python-Sphinx to avoid dependency on other
+  version of Python (bsc#1183858).
+
+-------------------------------------------------------------------
 Sat Jun 19 00:12:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add bpo44426-complex-keyword-sphinx.patch allowing generating

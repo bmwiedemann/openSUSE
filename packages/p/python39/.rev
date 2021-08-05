@@ -272,4 +272,14 @@
 </comment>
     <requestid>900835</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>a485d0060687a2ed170cebdb1d687a1e</srcmd5>
+    <version>3.9.5</version>
+    <time>1628189256</time>
+    <user>dimstar_suse</user>
+    <comment>- Use versioned python-Sphinx to avoid dependency on other
+  version of Python (bsc#1183858).
+</comment>
+    <requestid>909796</requestid>
+  </revision>
 </revisionlist>
