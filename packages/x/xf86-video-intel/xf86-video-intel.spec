@@ -68,11 +68,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xextproto)
 BuildRequires:  pkgconfig(xf86driproto)
 BuildRequires:  pkgconfig(xfixes)
-### TODO: Remove xfont after XServer 1.19 is available
-BuildRequires:  pkgconfig(xfont)
-%if 0%{?suse_version} > 1315 || 0%{?is_opensuse}
 BuildRequires:  pkgconfig(xfont2)
-%endif
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xorg-server) >= 1.0.99.901
