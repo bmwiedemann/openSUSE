@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 24 12:54:11 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add /etc/keys/ and /usr/etc/keys/ directory (bsc#1187654)
+
+-------------------------------------------------------------------
 Wed Jan  6 10:27:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - the license of the library and -devel package is LGPL only, the

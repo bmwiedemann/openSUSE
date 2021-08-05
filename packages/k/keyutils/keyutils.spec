@@ -16,6 +16,12 @@
 #
 
 
+%if ! %{defined _distconfdir}
+%define _distconfdir %{_sysconfdir}
+%else
+%define use_usretc 1
+%endif
+
 %define lname	libkeyutils1
 Name:           keyutils
 Version:        1.6.3
@@ -80,6 +86,12 @@ ln -s /%{_sbindir}/key.dns_resolver %{buildroot}/sbin
 ln -s /%{_sbindir}/request-key %{buildroot}/sbin
 %endif
 
+install -m 0750 -d \
+	%{buildroot}%{_sysconfdir}/keys \
+	%{buildroot}%{_sysconfdir}/keys/ima \
+	%{buildroot}%{_distconfdir}/keys \
+	%{buildroot}%{_distconfdir}/keys/ima
+
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
 
@@ -96,6 +108,12 @@ ln -s /%{_sbindir}/request-key %{buildroot}/sbin
 %{_mandir}/*/*
 %config(noreplace) %{_sysconfdir}/request-key.conf
 %dir %{_sysconfdir}/request-key.d/
+%dir %{_sysconfdir}/keys/
+%dir %{_sysconfdir}/keys/ima/
+%if %{defined use_usretc}
+%dir %{_distconfdir}/keys/
+%dir %{_distconfdir}/keys/ima/
+%endif
 
 %files -n %{lname}
 %license LICENCE.LGPL
