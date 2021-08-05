@@ -740,4 +740,12 @@
     <comment></comment>
     <requestid>901338</requestid>
   </revision>
+  <revision rev="79" vrev="14">
+    <srcmd5>6583f6070b60fa018f282780c6538b68</srcmd5>
+    <version>1.10.1</version>
+    <time>1628189264</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer require libXfont(1)</comment>
+    <requestid>909822</requestid>
+  </revision>
 </revisionlist>

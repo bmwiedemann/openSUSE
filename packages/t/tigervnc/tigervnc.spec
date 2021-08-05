@@ -100,7 +100,6 @@ BuildRequires:  pkgconfig(xcmiscproto) >= 1.2.0
 BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xextproto) >= 7.0.99.3
 BuildRequires:  pkgconfig(xf86driproto) >= 2.1.1
-BuildRequires:  pkgconfig(xfont) >= 1.4.2
 BuildRequires:  pkgconfig(xfont2)
 BuildRequires:  pkgconfig(xineramaproto)
 BuildRequires:  pkgconfig(xkbfile)
