@@ -7,4 +7,31 @@
     <comment>Simple and lightweight UPnP media server</comment>
     <requestid>904339</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>efd01b770e71f15255d0371fc218efbe</srcmd5>
+    <version>1.9.0</version>
+    <time>1628189283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * New or Improved features:
+    + Many more things have been added to configuration (order of
+      resources for album art, DLNA profiles, upnp properties).
+      Please consult https://docs.gerbera.io/en/stable/config-overview.html
+      for the exact usage
+    + Gerbera now can display dynamic containers, i.e. its contents
+      are calculated as you click. This may show you recently add
+      or changed media
+    + Gerbera now supports client specific transcoding, i.e. video
+      is only transcode for your older devices, newer can stream it
+      as it is
+    + The compatibility with Samsung TV sets was increase again
+    + Minor media and upnp additions in search allow you to make
+      the most out of your files
+  * Refactoring of Code in Database Layer: this means that after
+    the upgrade to 1.9.0 it's not possible to downgrade
+  * Lots of small bug fixed
+    (https://github.com/gerbera/gerbera/releases/tag/v1.9.0)
+</comment>
+    <requestid>910244</requestid>
+  </revision>
 </revisionlist>

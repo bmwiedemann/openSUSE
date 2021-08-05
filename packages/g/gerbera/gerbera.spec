@@ -17,7 +17,7 @@
 
 
 Name:           gerbera
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -26,7 +26,7 @@ URL:            https://gerbera.io
 Source0:        https://github.com/gerbera/gerbera/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source3:        gerbera.tmpfile.in
 Source4:        gerbera.sysusers.in
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.13
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 %if 0%{?suse_version} <= 1550
@@ -79,6 +79,9 @@ for _file in %{SOURCE3} %{SOURCE4}; do
 done
 
 %build
+export CFLAGS="${CFLAGS} -fPIE"
+export CXXFLAGS="${CXXFLAGS} -fPIE"
+export LDFLAGS="${LDFLAGS} -pie"
 %cmake \
   -DWITH_AVCODEC=1 \
   -DWITH_EXIF=0 \
@@ -88,6 +91,7 @@ done
   -DCMAKE_C_COMPILER=gcc-10 \
 %endif
   -DWITH_FFMPEGTHUMBNAILER=1 \
+  -DWITH_TESTS=1 \
   -Wno-dev
 %cmake_build
 
