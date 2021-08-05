@@ -611,4 +611,21 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   Fixed regression in Imath::succf() and Imath::predf() when negative values are given</comment>
     <requestid>900381</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2716623c380489cd65544f0663b1a60e</srcmd5>
+    <version>2.5.7</version>
+    <time>1628189272</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.5.7
+  Patch release of 2.5 with security and build fixes:
+  * OSS-fuzz 28051 Heap-buffer-overflow in Imf_2_5::copyIntoFrameBuffer
+  * OSS-fuzz 28155 Crash in Imf_2_5::PtrIStream::read
+  * Fix broken symlink and pkg-config lib suffix for cmake debug builds
+- modified patches
+  % 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch (refreshed)
+- deleted patches
+  - openexr-CVE-2021-3598.patch (upstreamed)
+  - openexr-CVE-2021-3605.patch (upstreamed)</comment>
+    <requestid>909953</requestid>
+  </revision>
 </revisionlist>

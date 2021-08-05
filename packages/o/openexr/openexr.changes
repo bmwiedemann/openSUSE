@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug  3 10:46:19 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.5.7
+  Patch release of 2.5 with security and build fixes:
+  * OSS-fuzz 28051 Heap-buffer-overflow in Imf_2_5::copyIntoFrameBuffer
+  * OSS-fuzz 28155 Crash in Imf_2_5::PtrIStream::read
+  * Fix broken symlink and pkg-config lib suffix for cmake debug builds
+- modified patches
+  % 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch (refreshed)
+- deleted patches
+  - openexr-CVE-2021-3598.patch (upstreamed)
+  - openexr-CVE-2021-3605.patch (upstreamed)
+
+-------------------------------------------------------------------
 Wed Jun 16 12:28:02 UTC 2021 - pgajdos@suse.com
 
 - security update
