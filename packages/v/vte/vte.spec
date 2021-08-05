@@ -30,6 +30,8 @@ License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/vte
 Source:         %{_name}-%{version}.tar.xz
+# PATCH-FIX-OPENSUSE vte-enable-build-flag-pie.patch yfjiang@suse.com -- enable PIE flag to be compatible with gcc default linking option
+Patch0:         vte-enable-build-flag-pie.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
