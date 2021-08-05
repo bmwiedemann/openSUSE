@@ -137,7 +137,6 @@ License:        GPL-3.0-or-later
 Group:          System/GUI/Other
 Requires:       meld
 Requires:       nemo >= %{_version}
-Requires:       python-gtk
 Recommends:     %{name}-lang
 # nemo-compare was last used in openSUSE 13.2.
 Provides:       nemo-compare = %{version}
