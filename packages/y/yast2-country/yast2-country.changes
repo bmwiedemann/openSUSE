@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug  5 10:21:22 UTC 2021 - Martin Vidner <mvidner@suse.com>
+
+- Offer the fr-afnor keyboard only if it is defined (bsc#1188867)
+  It is not part of SLE15 so far.
+- 4.4.4
+
+-------------------------------------------------------------------
+Tue Aug  3 16:38:40 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- AutoYaST: allow empty /profile/timezone/timezone setting,
+  meaning to keep the UTC default (bsc#1188406).
+- 4.4.3
+
+-------------------------------------------------------------------
 Wed Jul 28 16:10:33 UTC 2021 - Martin Vidner <mvidner@suse.com>
 
 -  Add the AFNOR standardized French keyboard layout (NF Z71-300)
