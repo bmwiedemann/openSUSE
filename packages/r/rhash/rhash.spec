@@ -18,7 +18,7 @@
 
 %define major   0
 Name:           rhash
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Recursive Hasher
 License:        0BSD
