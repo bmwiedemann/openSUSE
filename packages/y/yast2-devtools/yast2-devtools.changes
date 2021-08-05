@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  4 09:54:08 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Move YaST macros to %{_rpmmacrodir} instead of %{_sysconfdir}
+  (bsc#1189044).
+- 4.4.1
+
+-------------------------------------------------------------------
 Wed Apr  7 19:37:37 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - stop installing COPYING as documentation - it is already installed

@@ -17,7 +17,7 @@
 
 
 Name:           yast2-devtools
-Version:        4.4.0
+Version:        4.4.1
 Release:        0
 Summary:        YaST2 - Development Tools
 License:        GPL-2.0-or-later
@@ -135,7 +135,7 @@ EOF
 %{_datadir}/YaST2/control/control_to_glade.xsl
 
 %files -n yast2-buildtools
-%{_sysconfdir}/rpm/macros.yast
+%{_rpmmacrodir}/macros.yast
 %{_bindir}/y2tool
 %{_datadir}/aclocal/*.m4
 %{_datadir}/pkgconfig/yast2-devtools.pc
