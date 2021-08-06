@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  5 12:19:04 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Improve detection of devices that contain an installation
+  repository (bsc#1185694).
+- 4.4.7
+
+-------------------------------------------------------------------
 Tue Jun 15 10:21:16 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Fix the Comment entry in the desktop file so the tooltip
