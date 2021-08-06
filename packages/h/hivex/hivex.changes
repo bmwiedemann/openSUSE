@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug  6 11:24:54 MDT 2021 - carnold@suse.com
+
+- bsc#1189060 - VUL-0: CVE-2021-3622: hivex: hivex: stack overflow
+  due to recursive call of _get_children. Update to version 1.3.21
+  hivex-1.3.21.tar.gz
+  hivex-1.3.21.tar.gz.sig
+
+-------------------------------------------------------------------
 Tue May  4 13:09:42 MDT 2021 - carnold@suse.com
 
 - Update to version 1.3.20
