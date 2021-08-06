@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Aug  5 20:03:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.1.1
+ * Fix loading internal plugins, which prevents a crash at startup
+   in Python 3.8+ and issues with completion and linting in other
+   versions.
+ * Make functionality related to Jedi work in our Windows
+   installer again.
+- Release of version 5.1.0
+  * New logo, splash screen and design for the "About Spyder"
+    dialog.
+  * Support Rich and Colorama in the IPython console.
+  * Pasting code in the Editor and IPython console preserves
+    indentation.
+  * Add a new registration mechanism for plugins that allow
+    bidirectional dependencies among them. See this page for
+    instructions on how to migrate to it.
+  * Fix several critical bugs in the Outline pane.
+  * Restore ability to ignore linting messages with inline
+    comments in the Editor. Supported comments include # noqa and
+    # analysis:ignore.
+  * Improve code completion performance in the Editor.
+  * Fix Code analysis pane in the Windows and macOS installers.
+  * Decrease startup time.
+  * Support Jedi 0.18 and Parso 0.8
+- Drop patches merged upstream
+  * spyder-pr15657-python-lsp-server.patch
+  * spyder-pr16011-pytest-qt-4.patch
+- Make use of CI environment variable due to new conftest.py logic
+
+-------------------------------------------------------------------
 Tue Jul 13 13:36:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Replace python-python-language-server with python-lsp-server

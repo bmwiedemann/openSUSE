@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.0.5
+Version:        5.1.1
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -26,13 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://www.spyder-ide.org/
 Source:         https://github.com/spyder-ide/spyder/archive/v%{version}.tar.gz#/spyder-%{version}.tar.gz
 Source1:        spyder-rpmlintrc
-# PATCH-FIX-UPSTREAM spyder-pr15657-python-lsp-server.patch -- gh#spyder-ide/spyder#15657
-Patch0:         spyder-pr15657-python-lsp-server.patch
-# PATCH-FIX-UPSTREAM spyder-pr16011-pytest-qt-4.patch -- gh#spyder-ide/spyder#16011
-Patch1:         spyder-pr16011-pytest-qt-4.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools >= 39.0.0
+BuildRequires:  python3-setuptools >= 49.6.0
 BuildRequires:  update-desktop-files
 Requires:       %{name}-lang
 Requires:       cookiecutter >= 1.6.0
@@ -66,7 +62,7 @@ Requires:       python3-pyflakes >= 2.2.0
 Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-python-lsp-black >= 1.0.0
-Requires:       python3-python-lsp-server >= 1.0.0
+Requires:       python3-python-lsp-server >= 1.2.1
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qstylizer >= 0.1.10
@@ -75,7 +71,7 @@ Requires:       python3-qtconsole >= 5.1.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.0.4
+Requires:       python3-spyder-kernels >= 2.1.0
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -155,7 +151,7 @@ BuildRequires:  python3-pytest-order
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-python-lsp-black >= 1.0.0
-BuildRequires:  python3-python-lsp-server >= 1.0.0
+BuildRequires:  python3-python-lsp-server >= 1.2.1
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qstylizer >= 0.1.10
@@ -164,7 +160,7 @@ BuildRequires:  python3-qtconsole >= 5.1.0
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 2.0.2
+BuildRequires:  python3-spyder-kernels >= 2.1.0
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
@@ -262,31 +258,15 @@ rm spyder/utils/check-git.sh
 # windows script
 rm spyder/plugins/ipythonconsole/scripts/conda-activate.bat
 
-# remove pinned dependencies where OpenSUSE already has newer versions
-# that triggers an annoying warning on startup
-# note: before you add any unpin here, check that it works with the new version.
-# gh#spyder-ide/spyder#11975
-# parso was pinned because of JEDI (PR#11476 and PR#11809)
-# watchdog: boo#1186327, https://github.com/spyder-ide/spyder/issues/14803
-sed -e "/JEDI_REQVER =/ s/'=/'>=/" \
-    -e "/PARSO_REQVER =/ s/'=/'>=/" \
-    -e "/WATCHDOG_REQVER =/ s/;<[^']*//" \
-    -i spyder/dependencies.py
-
 # remove egg package pins read at runtime startup and for the test suite dependency sync checks
 sed -r \
-    -e 's/(jedi\s*)=*/\1>=/' \
-    -e 's/(parso\s*)=*/\1>=/' \
     -e 's/(pyqt[5 ])<5.13/\1/' \
     -e 's/(pyqtwebengine.*)<5.13/\1/' \
-    -e "/watchdog/ s/,<[^']*//" \
     -i setup.py requirements/conda.txt binder/environment.yml
 
 # Upstream brings its fixed versions for pyls, qdarksstyle and spyder-kernels for its
 # test environment, but we want to test against installed packages.
 rm -r external-deps/*
-# disable pyls local install from bundled directory
-sed -i '/Install PyLS locally/,/^if os.name/ c if False:' conftest.py
 
 %build
 %python3_build
@@ -315,24 +295,19 @@ find %{buildroot}%{python3_sitelib}/spyder/locale -name '*.pot' -delete
 
 %if %{with test}
 %check
+export CI=1
+sed -i 's/if CI:/if False:/' runtests.py
 export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 mkdir -p /tmp/spyder-abuild
 
 # Upstream splits the tests into slow and fast ones.
 # Add all tests which must be skipped into $donttest.
-# - Tests marked with (* no CI) are skipped on upstreams CI too with given reason
-#   "It fails on CIs".
 # - Test marked with (* tested live) are skipped after making sure the tested
 #   functionality still works in a real desktop environment
 
-# (* no CI) the click/tab press is not sent by the bot
-donttest+=" or test_tab_copies_find_to_replace"
 # requires internet connection
 donttest+=" or test_github_backend"
-# (* no CI) fails on last assert
-donttest+=" or test_connection_dialog_remembers_input_with_ssh_passphrase"
-donttest+=" or test_connection_dialog_remembers_input_with_password"
 %if 0%{?suse_version} == 1500
 # fails on Leap
 donttest+=" or (test_objectexplorer_collection_types and params0)"
@@ -341,10 +316,13 @@ donttest+=" or (test_objectexplorer_collection_types and params0)"
 donttest+=" or (test_objectexplorer_collection_types and params5)"
 # qtbot timeouts or too slow in OBS
 donttest+=" or test_run_python_script_in_terminal"
-# (* no CI)
-donttest+=" or test_range_indicator_visible_on_hover_only"
 # we are not on conda env
 donttest+=" or test_status_bar_conda_interpreter_status"
+# "Only for CIS, but we are not on conda as upstream's CI
+donttest+=" or test_conda"
+donttest+=" or test_is_valid_interpreter"
+# "Only for CIs", but we are not on pyenv as upstream's CI
+donttest+=" or test_pyenv"
 # too flaky for OBS
 donttest+=" or test_update_decorations_when_scrolling"
 # occational fail
@@ -389,6 +367,10 @@ donttest+=" or test_hide_widget_completion"
 # ultimate rationale: skip whole mainwindow as these tests are leaking file descriptors
 # https://github.com/spyder-ide/spyder/issues/13483
 donttest+=" or test_mainwindow"
+# no config for appearance.css_path without mainwindow
+donttest+=" or test_ipython_config_dialog"
+# fails on server but not locally
+donttest+=" or (test_formatting and document and autopep8)"
 
 export PYTHONPATH=%{buildroot}%{python3_sitelib}
 # Can't use pytest-xvfb because the tests leave widgets open and trigger https://github.com/The-Compiler/pytest-xvfb/issues/11
