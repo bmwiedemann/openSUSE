@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  4 19:23:18 UTC 2021 - Matthias Bach <marix@marix.org> - 1.4.2
+
+- Update to 1.4.2
+  * Added support for German naming of emojis.
+  * Added support for French naming of emojis.
+  * Added new function `replace_emoji` which strips emojis from
+    output.
+- Add patch `fix-python2.patch`: Fixes unicode emoji names on Python
+  2.
+
+-------------------------------------------------------------------
 Wed Jan 27 19:45:51 UTC 2021 - Matthias Bach <marix@marix.org> - 1.2.0
 
 - Update to 1.2.0

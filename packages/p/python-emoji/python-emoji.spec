@@ -18,14 +18,14 @@
 
 
 Name:           python-emoji
-Version:        1.2.0
+Version:        1.4.2
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/carpedm20/emoji/
 Source:         https://files.pythonhosted.org/packages/source/e/emoji/emoji-%{version}.tar.gz
-# https://github.com/carpedm20/emoji/pull/118
+Patch1:         fix-python2.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -47,7 +47,7 @@ Python is 👍
 By default, the language is English (``language='en'``) but Spanish (``'es'``), Portuguese (``'pt'``) and Italian (``'it'``) are also supported.
 
 %prep
-%setup -q -n emoji-%{version}
+%autosetup -n emoji-%{version} -p1
 
 %build
 %python_build
