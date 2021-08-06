@@ -26,6 +26,9 @@ URL:            https://gitlab.gnome.org/World/ShellExtensions/desktop-icons
 Source:         https://gitlab.gnome.org/World/ShellExtensions/desktop-icons/uploads/5e2d0748cf79d255d7c23df6a6e6901b/desktop-icons-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM desktop-icon-gnome-40.patch dimstar@opensuse.org -- Make extension compatible with GNOME 40
 Patch0:         desktop-icon-gnome-40.patch
+# PATCH-FIX-UPSTREAM desktop-icons-show-iso-file-icon.patch bsc#1183504 glgo#GNOME/World/ShellExtensions/desktop-icons!196 xwang@suse.com -- Show ISO file icon.
+Patch1:         desktop-icons-show-iso-file-icon.patch
+
 BuildRequires:  gnome-patch-translation
 # Needed for directory ownership
 BuildRequires:  gnome-shell >= 3.30

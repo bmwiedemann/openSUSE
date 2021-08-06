@@ -41,4 +41,19 @@
     <comment>GNOME 40 - here we come (forwarded request 880967 from dimstar)</comment>
     <requestid>881138</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>c1ca360e99304c39bbe2235ff5cd11d5</srcmd5>
+    <version>20.10.0</version>
+    <time>1628282667</time>
+    <user>dimstar_suse</user>
+    <comment>- Add desktop-icons-show-iso-file-icon.patch: Show ISO file icon as
+  default icon.
+  (bsc#1183504 glgo#GNOME/World/ShellExtensions/desktop-icons!196)
+
+- Drop desktop-icons-fix-version-match.patch: Replaced by
+  desktop-icon-gnome-40.patch.
+- Add desktop-icons-fix-version-match.patch: Match shell version
+  under strict version checking (bsc#1176911). (forwarded request 910260 from xiaoguang_wang)</comment>
+    <requestid>910287</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug  5 07:19:44 UTC 2021 - xiaoguang wang <xiaoguang.wang@suse.com>
+
+- Add desktop-icons-show-iso-file-icon.patch: Show ISO file icon as
+  default icon.
+  (bsc#1183504 glgo#GNOME/World/ShellExtensions/desktop-icons!196)
+
+-------------------------------------------------------------------
 Fri Mar 19 19:05:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add desktop-icon-gnome-40.patch: Declare compatible to GNOME 40.
+- Drop desktop-icons-fix-version-match.patch: Replaced by
+  desktop-icon-gnome-40.patch.
 
 -------------------------------------------------------------------
 Thu Mar 18 01:55:54 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
@@ -21,6 +30,12 @@ Thu Mar 18 01:55:54 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 - Drop
   gnome-shell-extension-desktop-icons-add-mount-disk-icon.patch:
   Fixed upstream.
+
+-------------------------------------------------------------------
+Fri Nov 20 01:39:25 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add desktop-icons-fix-version-match.patch: Match shell version
+  under strict version checking (bsc#1176911).
 
 -------------------------------------------------------------------
 Mon Apr 27 02:56:44 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
