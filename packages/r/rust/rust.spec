@@ -17,18 +17,20 @@
 #
 
 
-%global version_suffix 1.53
-%global version_current 1.53.0
+%global version_suffix 1.54
+%global version_current 1.54.0
 
-# Dev tools - these are needed for developers, vs building, so
-# we don't always enable them. Some platforms have issues
-# building these (IE RLS requires 64-bit atomics).
-# As a result, we limit this to platforms that are likely used on
-# desktop arches
+# === rust arch support tiers ===
+# https://doc.rust-lang.org/nightly/rustc/platform-support.html
+# tl;dr only aarch64, x86_64 and i686 are guaranteed to work.
+#
+# armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
+# but may not always work.
+#
 %ifarch x86_64 aarch64
-%bcond_without devtools
+%bcond_without tier1
 %else
-%bcond_with devtools
+%bcond_with tier1
 %endif
 
 # Rpm specs have a limitation that if the parent package is noarch, all child packages must
@@ -87,7 +89,8 @@ invoking gdb on rust binaries.
 
 
 
-# As this is masked by devtools, this is arch specific even if it has no content.
+
+# As this is masked by tier1, this is arch specific even if it has no content.
 %package -n rls
 Summary:        Language server for Rust lang
 License:        Apache-2.0 OR MIT
@@ -126,7 +129,7 @@ Cargo downloads dependencies of Rust projects and compiles it.
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rust/README
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rust-gdb/README
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/cargo/README
-%if %{with devtools}
+%if %{with tier1}
 install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rls/README
 %endif
 
@@ -138,7 +141,7 @@ install -D -m 0644 %{S:0} %{buildroot}/usr/share/doc/packages/rls/README
 %defattr(-,root,root,-)
 %doc /usr/share/doc/packages/rust-gdb
 
-%if %{with devtools}
+%if %{with tier1}
 %files -n rls
 %defattr(-,root,root,-)
 %doc /usr/share/doc/packages/rls

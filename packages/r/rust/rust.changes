@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 30 03:40:08 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update to version 1.54
+
+-------------------------------------------------------------------
 Tue Jul  6 10:40:26 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Only install rls/README when building devtools, as otherwise this
