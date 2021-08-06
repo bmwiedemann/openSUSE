@@ -922,4 +922,31 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2021-06-26T15:13:32 UTC (#1362)</comment>
     <requestid>907248</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>1ee6f5f6590e0f42bc765d4f3427edd7</srcmd5>
+    <version>20210804</version>
+    <time>1628282666</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210804 (bsc#1189124):
+  * Add elementor.cloud and elementor.cool (#1386)
+  * add eero ddns domains (#1359)
+  * add Adobe Project Helix domains to the list (#1378)
+  * util: gTLD data autopull updates for 2021-07-24T15:13:29 UTC (#1384)
+  * Add Spreadshop hosting domains: myspreadshop.com plus country-specific (#1368)
+  * Add Supabase domains (#1363)
+  * Add YunoHost DynDns domains: ynh.fr (#1380)
+  * Update public_suffix_list.dat (#1376)
+  * add new domains for thingdust AG (#1361)
+  * Update public_suffix_list.dat (#1381)
+  * Adding sellfy.store pages which render user generated content (#1379)
+  * Add itcouldbewor.se to public suffix list (#1375)
+  * Adding bitbucket.io pages which render user generated content (#1374)
+  * Add rs.ba suffix (#1367)
+  * Add tuleap-partners.com (#1360)
+  * Add drr.ac and ju.mp (#1355)
+  * Add cdn.prod.atlassian-dev.net (#1357)
+  * Remove uwu.nu (#1377)
+  * util: gTLD data autopull updates for 2021-07-22T15:14:11 UTC (#1382)</comment>
+    <requestid>910265</requestid>
+  </revision>
 </revisionlist>
