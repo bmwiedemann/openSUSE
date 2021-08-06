@@ -21,7 +21,7 @@
 # Astropy, SciPy, NumPy require python >= 3.7
 %define         skip_python36 1
 Name:           python-sunpy
-Version:        2.1.4
+Version:        3.0.1
 Release:        0
 Summary:        SunPy: Python for Solar Physics
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -29,7 +29,7 @@ URL:            https://github.com/sunpy/sunpy
 Source0:        https://files.pythonhosted.org/packages/source/s/sunpy/sunpy-%{version}.tar.gz
 Source100:      python-sunpy-rpmlintrc
 BuildRequires:  %{python_module aioftp}
-BuildRequires:  %{python_module asdf}
+BuildRequires:  %{python_module asdf >= 2.6}
 BuildRequires:  %{python_module astropy >= 4.1}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module numpy-devel > 1.16.0}
@@ -46,13 +46,13 @@ Requires:       python-parfive >= 1.2.0
 Requires:       python-importlib_metadata
 %endif
 # SECTION extras_require:asdf
-Recommends:     python-asdf
+Recommends:     python-asdf >= 2.6
 # /SECTION
 # SECTION extras_require:dask
-Suggests:       python-dask-array
+Suggests:       python-dask-array >= 2.0
 # /SECTION
 # SECTION extras_require:database
-Recommends:     python-SQLAlchemy
+Recommends:     python-SQLAlchemy >= 1.3.4
 # /SECTION
 # SECTION extras_require:instr
 Recommends:     python-matplotlib >= 3.1.0
@@ -64,43 +64,47 @@ Recommends:     python-scikit-image
 #               scipy
 # /SECTION
 # SECTION extras_require:jpeg2000
-Recommends:     python-Glymur
+Recommends:     python-Glymur >= 0.8.18
 # /SECTION
 # SECTION extras_require:map
 #               matlotlib, scipy
 # /SECTION
 # SECTION extras_require:net
-Recommends:     python-beautifulsoup4
-Recommends:     python-drms
-Recommends:     python-python-dateutil
-Recommends:     python-tqdm
-Recommends:     python-zeep
+Recommends:     python-beautifulsoup4 >= 4.0.0
+Recommends:     python-drms >= 0.6.1
+Recommends:     python-python-dateutil >= 2.8.0
+Recommends:     python-tqdm >= 4.32.1
+Recommends:     python-zeep >= 3.4.0
 # /SECTION
 # SECTION extras_require:timeseries
 Recommends:     python-h5netcdf
 #               matlotlib, pandas
 # /SECTION
 # SECTION test requirements (and extras)
-BuildRequires:  %{python_module Glymur}
-BuildRequires:  %{python_module SQLAlchemy}
-BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module dask-array}
-BuildRequires:  %{python_module drms}
+# even although we do not use tox and doctestplus, there are tests in the suite checking their existence.
+BuildRequires:  %{python_module Glymur >= 0.8.18}
+BuildRequires:  %{python_module SQLAlchemy >= 1.3.4}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.0.0}
+BuildRequires:  %{python_module dask-array >= 2.0}
+BuildRequires:  %{python_module drms >= 0.6.1}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module h5netcdf}
-BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module hypothesis >= 6.0.0}
 BuildRequires:  %{python_module importlib_metadata}
+BuildRequires:  %{python_module jplephem}
 BuildRequires:  %{python_module matplotlib >= 3.1.0}
 BuildRequires:  %{python_module pandas >= 0.24.0}
 BuildRequires:  %{python_module pytest-astropy >= 0.8}
+BuildRequires:  %{python_module pytest-doctestplus >= 0.5}
 BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest-mpl}
+BuildRequires:  %{python_module pytest-mpl >= 0.12}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module scikit-image}
+BuildRequires:  %{python_module scikit-image >= 0.16.0}
 BuildRequires:  %{python_module scipy >= 1.3.0}
-BuildRequires:  %{python_module zeep}
+BuildRequires:  %{python_module tox}
+BuildRequires:  %{python_module zeep >= 3.4.0}
 # /SECTION
 %python_subpackages
 
@@ -120,6 +124,7 @@ export CFLAGS="%{optflags}"
 %python_install
 %{python_expand #
 find  %{buildroot}%{$python_sitearch} -name '*.h' -delete -print
+rm -r %{buildroot}%{$python_sitearch}/benchmarks
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
