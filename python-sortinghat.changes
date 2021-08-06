@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug  5 15:20:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add no_decl_class_registry.patch to make the package compatible
+  with SQLAlchemy 1.4 (gh#chaoss/grimoirelab-sortinghat#579).
+
+-------------------------------------------------------------------
+Thu May 27 12:39:34 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Upgrade 0.7.15
+- Remove upstreamed python-sortinghat-gh-121-workaround.patch
+
+-------------------------------------------------------------------
+Fri Apr 23 21:42:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Don't build python36-* package (missing pandas)
+
+-------------------------------------------------------------------
 Thu Jun  4 07:19:33 UTC 2020 - pgajdos@suse.com
 
 - specify database name trough %mysql_testserver_start parameter

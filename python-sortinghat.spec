@@ -1,7 +1,7 @@
 #
 # spec file for package python-sortinghat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,19 +20,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-sortinghat
-Version:        0.7.7
+Version:        0.7.15
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/grimoirelab/sortinghat
 Source0:        https://files.pythonhosted.org/packages/source/s/sortinghat/sortinghat-%{version}.tar.gz
-# workaround for https://github.com/chaoss/grimoirelab-sortinghat/issues/121
-# reverting https://github.com/chaoss/grimoirelab-sortinghat/commit/5f69ed899c94584de17d47b37152098f64012e10
-# plus, test_is_top_domain_invalid_type and test_is_bot_invalid_type tests exception thrown from
-# CoerceToBool(), thus disabling
-Patch0:         python-sortinghat-gh-121-workaround.patch
+# PATCH-FIX-UPSTREAM no_decl_class_registry.patch gh#chaoss/grimoirelab-sortinghat#579 mcepl@suse.com
+# make the package compatible with SQLAlchemy 1.4.*
+Patch0:         no_decl_class_registry.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,7 +44,7 @@ Requires:       python-python-dateutil >= 2.6.0
 Requires:       python-requests >= 2.9
 Requires:       python-urllib3 >= 1.22
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -88,8 +87,8 @@ to store the identities obtained into its database, and later merge them
 into unique identities (and maybe affiliate them).
 
 %prep
-%setup -q -n sortinghat-%{version}
-%patch0 -p1
+%autosetup -p1 -n sortinghat-%{version}
+
 sed -i -e "s/\('pandoc'\|'wheel',\)//" -e 's/==/>=/' setup.py
 
 %build
@@ -127,7 +126,7 @@ password=$pass
 create=False
 EOF
 sed -i -e "s/'3306'/self.kwargs['port']/" tests/test_cmd_init.py
-%{python_expand $python setup.py test || exit_code=1}
+%pyunittest discover -b -v || exit_code=1
 #
 # stopping mariadb
 #
