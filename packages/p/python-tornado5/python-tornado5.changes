@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 12:45:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Dedup and remove exec bits from demos: fix boo#1189066
+- Add python-tornado5-rpmlintrc for empty JS resource in demo
+
+-------------------------------------------------------------------
 Sun Dec  6 18:04:33 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Fix Python 2 tests for Leap

@@ -1,7 +1,7 @@
 #
 # spec file for package python-tornado5
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Summary:        Open source version of scalable, non-blocking web server that po
 License:        Apache-2.0
 URL:            http://www.tornadoweb.org
 Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
+Source99:       python-tornado5-rpmlintrc
 Patch1:         tornado-testsuite_timeout.patch
 Patch2:         openssl-cert-size.patch
 Patch3:         skip-failing-tests.patch
@@ -115,9 +116,15 @@ fi
 
 %install
 %python_install
-%fdupes demos/
-%python_expand rm -r %{buildroot}%{$python_sitearch}/tornado/test
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
+%{python_expand #
+rm -r %{buildroot}%{$python_sitearch}/tornado/test
+%fdupes %{buildroot}%{$python_sitearch}
+pdocdir=%{buildroot}%{_docdir}/%{$python_prefix}-tornado5
+mkdir -p ${pdocdir}
+cp -r demos ${pdocdir}/
+find ${pdocdir} -type f -exec chmod a-x '{}' ';'
+%fdupes ${pdocdir}
+}
 
 %check
 export ASYNC_TEST_TIMEOUT=30
@@ -134,7 +141,7 @@ popd
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%doc demos/
+%doc %{_docdir}/%{python_prefix}-tornado5/demos/
 %{python_sitearch}/tornado/
 %{python_sitearch}/tornado-%{version}-py*.egg-info
 
