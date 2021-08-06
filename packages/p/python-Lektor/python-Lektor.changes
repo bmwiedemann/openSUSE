@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Aug  5 16:27:30 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.2.0:
+  - Fix off-by-one error in pagination's iter_pages in the
+    interpretation of the right_current argument, and adding an
+    appropriate trailing None for some uses.
+  - Add support for setting an output_path in the project file.
+  - Replaced the slugify backend to handle unicode more effectively.
+    This should mean greater language support, but it may produce
+    slightly different results in some cases.
+  - Several modernization and performance improvements to the admin UI
+  - Improved speed of source info updates.
+  - Set colorspace to sRGB for thumbnails.
+  - Now stripping profiles and comments from thumbnails.
+  - Added support for deleting and excluding files for the rsync
+    deployment publisher.
+  - Improved speed of flow rendering in the admin UI.
+  - Bugfix to correctly calculate relative urls from slugs that contain
+    dots.
+  - Bugfix to allow negative integers in integer fields in the admin UI.
+  - Improved image-heavy build speeds by reducing the amount of data
+    extracted from EXIFs.
+  - Added the ability to collapse flow elements in the admin UI.
+  - Now extra_flags is passed to all plugin events.
+  - Extra flags can now be passed to the clean and dev shell CLI
+    commands.
+  - Bugfix where lektor plugins reinstall triggered on_setup_env instead
+    of just reinstalling plugins.
+  - Added the ability to generate video thumbnails with ffmpeg.
+  - Added mode and upscale thumbnail arguments, changing the preferred
+    crop method to using mode. mode can be crop, fit, or stretch.
+    upscale=False can now prevent upscaling.
+  - Added a new CLI command lektor dev new-theme.
+  - Made admin use full UTF-8 version of RobotoSlab. Fixes missing
+    glyphs for some languages
+  - Bumped minimum Jinja2 version to 2.11
+  - Bumped filetype dependency to 1.0.7 because of API changes
+  - Relative urls are now as short as possible.
+  - Automatically include setup.cfg configured for universal wheels when
+    creating plugins
+- Add two patches to make Lektor work with the modern werkzeug:
+  - more_recent_werkzeug.patch
+  - werkzeug_rename.patch
+
+-------------------------------------------------------------------
 Mon May 25 06:50:35 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
