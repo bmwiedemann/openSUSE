@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:55:53 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Add libkrun-dlopen.patch: use soname when dlopening libkrun.
+
+-------------------------------------------------------------------
+Wed Jul 28 11:56:01 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.21
+  - honor memory swappiness set to 0
+  - status: add fields for owner and created timestamp
+  - cgroup: lookup pids controller as well when the memory controller
+    is not available
+  - when compiled with krun, automatically use it if the current
+    executable file is called "krun".
+  - container: ignore error when resetting the SELinux label for the
+    keyring.
+  - container: call prestart hooks before rootfs is RO.
+  - cgroup: added support cleaning custom controllers on cgroupv1.
+  - spec: add support for --bundle.
+  - exec: add --no-new-privs.
+  - exec: add --process-label and --apparmor to change SELinux and
+    AppArmor labels.
+  - cgroup: kill procs in cgroup on EBUSY.
+  - cgroup: ignore devices errors when running in a user namespace.
+  - seccomp: drop SECCOMP_FILTER_FLAG_LOG by default.
+  - seccomp: report correct action in error message.
+  - apply SELinux label to keyring.
+  - add custom annotation run.oci.delegate-cgroup.
+  - close_range fallbacks to close on EPERM.
+  - report error if the cgroup path was set and the cgroup could not be
+    joined.
+  - on exec, honor additional_gids from the process spec, not the
+    container definition.
+  - spec: add cgroup ns if on cgroup v2.
+  - systemd: support array of strings for cgroup annotation.
+  - join all the cgroup v1 controllers.
+  - raise a warning when newuidmap/newgidmap fail.
+  - handle eBPF access(dev_name, F_OK) call correctly.
+  - fix some memory leaks on errors when libcrun is used by a long
+    running process.
+  - fix the SELinux label for masked directories.
+  - support default seccomp errno value.
+  - fail if no default seccomp action specified.
+  - support OCI seccomp notify listener.
+  - improve OOM error messages.
+  - ignore unknown capabilities and raise a warning.
+  - always remount bind mounts to drop not requested mount flags.
+
+-------------------------------------------------------------------
 Tue Mar 23 17:52:10 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - Add a mention to crun-rpmlintrc in the spec file

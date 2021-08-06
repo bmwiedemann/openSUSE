@@ -15,41 +15,44 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Summary:	OCI runtime written in C
-Name:		crun
-Version:	0.18
-Release:	0
-Source0:	https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:	crun-rpmlintrc
-License:	GPL-2.0-or-later
-URL:		https://github.com/containers/crun
-ExclusiveArch:	x86_64 aarch64
+
+Summary:        OCI runtime written in C
+License:        GPL-2.0-or-later
+Name:           crun
+Version:        0.21
+Release:        0
+Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        crun-rpmlintrc
+# PATCH-FIX-OPENSUSE libkrun-dlopen.patch fcrozat@suse.com -- use soname when dlopening libkrun
+Patch0:         libkrun-dlopen.patch
+URL:            https://github.com/containers/crun
+ExclusiveArch:  x86_64 aarch64
 # We always run autogen.sh
-BuildRequires:	autoconf
-BuildRequires:	automake
-BuildRequires:	gcc
-BuildRequires:	python
-BuildRequires:	git-core
-BuildRequires:	libcap-devel
-BuildRequires:	systemd-devel
-BuildRequires:	libyajl-devel
-BuildRequires:	libseccomp-devel
-BuildRequires:	libselinux-devel
-BuildRequires:	python3-libmount
-BuildRequires:	libtool
-BuildRequires:	go-md2man
-BuildRequires:	glibc-devel-static
-BuildRequires:	libkrun-devel >= 0.1.4	
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  gcc
+BuildRequires:  git-core
+BuildRequires:  glibc-devel-static
+BuildRequires:  go-md2man
+BuildRequires:  libcap-devel
+BuildRequires:  libkrun-devel >= 0.1.4
+BuildRequires:  libseccomp-devel
+BuildRequires:  libselinux-devel
+BuildRequires:  libtool
+BuildRequires:  libyajl-devel
+BuildRequires:  python
+BuildRequires:  python3-libmount
+BuildRequires:  systemd-devel
 %ifnarch %ix86
-BuildRequires:	criu-devel >= 3.15
+BuildRequires:  criu-devel >= 3.15
 %endif
-Requires:	libkrun0 >= 0.1.4
+Requires:       libkrun0 >= 0.1.4
 
 %description
 crun is a runtime for running OCI containers. It is built with libkrun support
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 ./autogen.sh
@@ -59,6 +62,8 @@ crun is a runtime for running OCI containers. It is built with libkrun support
 %install
 %make_install
 rm -rf %{buildroot}/%{_libdir}/lib*
+# allow easy krun usage with podman
+ln -s %{_bindir}/crun %{buildroot}%{_bindir}/krun
 
 %files
 %defattr(-,root,root)
@@ -66,6 +71,7 @@ rm -rf %{buildroot}/%{_libdir}/lib*
 %doc README.md
 %doc SECURITY.md
 %{_bindir}/%{name}
+%{_bindir}/krun
 %{_mandir}/man1/*
 
 %changelog
