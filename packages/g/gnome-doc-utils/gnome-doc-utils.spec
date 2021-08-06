@@ -55,7 +55,11 @@ the DocBook XSLT stylesheets that were once distributed with Yelp.
 Summary:        Tool to extract translatable content from XML documents
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
-Requires:       python3-libxml2
+%if %suse_version > 1500
+BuildRequires:  python3-libxml2
+%else
+BuildRequires:  python3-libxml2-python
+%endif
 
 %description -n xml2po
 xml2po is a Python program which extracts translatable content from

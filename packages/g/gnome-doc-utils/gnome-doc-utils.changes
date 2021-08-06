@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  4 14:36:49 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Adapt BuildRequires for SLE15 / Leap 15.x on xml2po.
+
+-------------------------------------------------------------------
 Fri Feb 19 16:34:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update gnome-doc-utils-port-python3.patch based on the patch used
