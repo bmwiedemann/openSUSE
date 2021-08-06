@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 22 16:43:20 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Replace grub2-use-stat-instead-of-udevadm-for-partition-lookup.patch and
+  fix-grub2-use-stat-instead-of-udevadm-for-partition-lookup-with-new-glibc.patch
+  with upstream backport:
+  0001-osdep-Introduce-include-grub-osdep-major.h-and-use-i.patch and
+  0002-osdep-linux-hostdisk-Use-stat-instead-of-udevadm-for.patch.
+
+-------------------------------------------------------------------
 Mon Jun 28 10:14:26 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix error not a btrfs filesystem on s390x (bsc#1187645)

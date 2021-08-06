@@ -257,8 +257,8 @@ Patch212:       grub2-install-remove-useless-check-PReP-partition-is-empty.patch
 Patch213:       grub2-Fix-incorrect-netmask-on-ppc64.patch
 Patch215:       grub2-ppc64-cas-new-scope.patch
 Patch218:       grub2-ppc64-cas-fix-double-free.patch
-Patch233:       grub2-use-stat-instead-of-udevadm-for-partition-lookup.patch
-Patch234:       fix-grub2-use-stat-instead-of-udevadm-for-partition-lookup-with-new-glibc.patch
+Patch233:       0001-osdep-Introduce-include-grub-osdep-major.h-and-use-i.patch
+Patch234:       0002-osdep-linux-hostdisk-Use-stat-instead-of-udevadm-for.patch
 Patch236:       grub2-efi_gop-avoid-low-resolution.patch
 # Support HTTP Boot IPv4 and IPv6 (fate#320129)
 Patch281:       0002-net-read-bracketed-ipv6-addrs-and-port-numbers.patch
