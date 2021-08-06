@@ -19,6 +19,7 @@ set /files/etc/libvirt/qemu.conf/remember_owner 0
 
 # Workaround libvirt bug in /dev/ handling
 set /files/etc/libvirt/qemu.conf/namespaces
+set /files/etc/libvirt/qemu.conf/cgroup_controllers
 
 # Have virtlogd log to stderr
 set /files/etc/libvirt/virtlogd.conf/log_outputs 2:stderr

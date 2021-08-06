@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  3 08:23:50 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Reset cgroup_controllers in /etc/libvirt/qemu.conf
+
+-------------------------------------------------------------------
 Mon Jul 12 14:40:33 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Install xorriso instead of mkisofs
