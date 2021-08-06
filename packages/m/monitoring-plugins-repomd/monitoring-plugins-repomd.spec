@@ -1,7 +1,7 @@
 #
 # spec file for package monitoring-plugins-repomd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ License:        BSD-3-Clause
 Group:          System/Monitoring
 Version:        2.1
 Release:        0
-Url:            http://en.opensuse.org/%{name}
+URL:            http://en.opensuse.org/%{name}
 Source0:        check_repomd
 Source1:        usr.lib.nagios.plugins.check_repomd
 Requires:       bash
@@ -46,7 +46,6 @@ This plugin checks the up-to date state of repomd.xml.
 Important options:
  -u <url_to_repomd.xml> : please enter the full URL to the repomd.xml file
  -o <days>              : days unless a repomd.xml file is handled as outdated (default: 30)
- 
 
 %prep
 
@@ -64,7 +63,7 @@ sed -i "s|/bin/grep|%{_bindir}/grep|; \
 %clean
 rm -rf %buildroot
 
-%files 
+%files
 %defattr(-,root,root)
 %dir %{_sysconfdir}/apparmor.d
 %{nagios_plugindir}/check_repomd

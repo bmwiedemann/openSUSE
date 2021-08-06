@@ -104,7 +104,7 @@ trap 'cleanup_and_exit "$STATE_UNKNOWN" "UNKOWN: received SIGTRAP, SIGBUS, SIGKI
 
 RESULTFILE=$($MKTEMP /tmp/check_repomd-XXXXXX)
 
-$CURL -s $URL -o "$RESULTFILE" 2>&1
+$CURL -L -s $URL -o "$RESULTFILE" 2>&1
 CURL_EXIT="$?"
 
 if [ x"$CURL_EXIT" != "x0" ]; then

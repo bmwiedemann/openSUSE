@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 30 17:48:42 CEST 2021 - ro@suse.de
+
+- use "-L" option for curl to follow redirects 
+
+-------------------------------------------------------------------
 Sun Apr 28 15:27:58 UTC 2019 - lars@linux-schulserver.de - 2.1
 
 - update to 2.1:
