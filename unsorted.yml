@@ -3895,11 +3895,6 @@ unsorted:
   - gammu-devel 
   - gammu-doc 
   - gammu-smsd 
-  - ganglia-devel 
-  - ganglia-gmetad 
-  - ganglia-gmetad-skip-bcheck 
-  - ganglia-gmond 
-  - ganglia-gmond-modules-python 
   - ganglia-web 
   - garlic 
   - garlic-doc 
@@ -7545,7 +7540,6 @@ unsorted:
   - jupyter-cadabra2-kernel 
   - jupyter-calysto 
   - jupyter-doc 
-  - jupyter-hide-code 
   - jupyter-imatlab 
   - jupyter-ipydatawidgets 
   - jupyter-ipydatawidgets-jupyterlab 
@@ -10711,7 +10705,6 @@ unsorted:
   - libgaminggearwidget0 
   - libganesha_nfsd-devel: [x86_64] 
   - libganesha_nfsd3_3: [x86_64] 
-  - libganglia0 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
@@ -11823,8 +11816,8 @@ unsorted:
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
   - libmaxminddb0-32bit: [x86_64] 
-  - libmbedcrypto6 
-  - libmbedcrypto6-32bit: [x86_64] 
+  - libmbedcrypto7 
+  - libmbedcrypto7-32bit: [x86_64] 
   - libmbedtls13 
   - libmbedtls13-32bit: [x86_64] 
   - libmbedx509-1 
@@ -12651,10 +12644,6 @@ unsorted:
   - libpipeline-devel 
   - libpipewire-0_2-1 
   - libpipewire-0_3-0-32bit: [x86_64] 
-  - libpisock-devel 
-  - libpisock9 
-  - libpisync-devel 
-  - libpisync1 
   - libpixman-1-0-devel: [i586] # devel package of dvd:libpixman-1-0 
   - libpkcs11-helper1-32bit: [x86_64] 
   - libpkgconf-devel 
@@ -19417,7 +19406,6 @@ unsorted:
   - perl-PCP-LogSummary 
   - perl-PCP-MMV 
   - perl-PCP-PMDA 
-  - perl-PDA-Pilot 
   - perl-PDF-API2 
   - perl-PDF-Builder 
   - perl-PHP-Serialization 
@@ -20145,7 +20133,6 @@ unsorted:
   - piglit: [x86_64] 
   - pijul 
   - pilot 
-  - pilot-link 
   - pimcommon-devel 
   - pin 
   - pinentry-efl 
@@ -20180,7 +20167,6 @@ unsorted:
   - pkTriggerCord 
   - pkcs11-helper-devel 
   - pkgdiff 
-  - pkipplib 
   - plank 
   - plank-devel 
   - plank-docklets 
@@ -20968,7 +20954,6 @@ unsorted:
   - python-ovsdbapp-doc 
   - python-paramiko-doc 
   - python-peppercorn-doc 
-  - python-pisock 
   - python-platformdirs-doc 
   - python-ply-doc 
   - python-polib-doc 
@@ -22408,6 +22393,7 @@ unsorted:
   - python36-executing 
   - python36-exiv2 
   - python36-expects 
+  - python36-expiringdict 
   - python36-exrex 
   - python36-extension-helpers 
   - python36-extras 
@@ -22595,7 +22581,6 @@ unsorted:
   - python36-hetzner 
   - python36-hetznercloud 
   - python36-hexdump 
-  - python36-hide-code 
   - python36-hijri-converter 
   - python36-hiredis 
   - python36-hkdf 
@@ -25230,6 +25215,7 @@ unsorted:
   - python38-executing 
   - python38-exiv2 
   - python38-expects 
+  - python38-expiringdict 
   - python38-exrex 
   - python38-extension-helpers 
   - python38-extras 
@@ -25428,7 +25414,6 @@ unsorted:
   - python38-hetzner 
   - python38-hetznercloud 
   - python38-hexdump: [i586] 
-  - python38-hide-code 
   - python38-hijri-converter 
   - python38-hkdf 
   - python38-hl7apy 
@@ -28231,6 +28216,7 @@ unsorted:
   - python39-executing 
   - python39-exiv2 
   - python39-expects 
+  - python39-expiringdict 
   - python39-exrex 
   - python39-extension-helpers 
   - python39-extras 
@@ -28442,7 +28428,6 @@ unsorted:
   - python39-hetzner 
   - python39-hetznercloud 
   - python39-hexdump 
-  - python39-hide-code 
   - python39-hijri-converter 
   - python39-hiredis 
   - python39-hkdf 
@@ -31364,6 +31349,7 @@ unsorted:
   - ruby3.0-rubygem-warden 
   - ruby3.0-rubygem-webfinger 
   - ruby3.0-rubygem-webpacker 
+  - ruby3.0-rubygem-webrick 
   - ruby3.0-rubygem-websocket 
   - ruby3.0-rubygem-websocket-driver 
   - ruby3.0-rubygem-websocket-extensions 

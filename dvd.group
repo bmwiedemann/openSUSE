@@ -4217,6 +4217,7 @@
     <package name="ruby2.7-rubygem-webfinger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webpacker" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-webpacker-4.0" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-webrick" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket-driver" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-websocket-extensions" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
