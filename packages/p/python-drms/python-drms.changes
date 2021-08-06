@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  5 18:39:53 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.6.2
+  * Python 2 support has been dropped, only Python 3.7 or higher is
+    supported.
+  * Client.get() has been removed, use `drms.client.Client.query()`
+    instead.
+  * `drms.client.Client.export` now accepts a process keyword
+    argument. This allows users to specify additional server-side
+    processing options such as image cutouts. See the "Processing"
+    section of the JSOC Data Export page for more information.
+
+-------------------------------------------------------------------
 Wed Apr 21 06:57:44 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 

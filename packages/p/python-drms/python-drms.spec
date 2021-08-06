@@ -17,26 +17,30 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %define         skip_python36 1
 Name:           python-drms
-Version:        0.5.7
+Version:        0.6.2
 Release:        0
 Summary:        Tool to access HMI, AIA and MDI data with Python
 License:        MIT
 URL:            https://github.com/sunpy/drms
-Source:         https://github.com/sunpy/drms/archive/v%{version}.tar.gz#/drms-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/d/drms/drms-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.9.0
-Requires:       python-pandas >= 0.15.0
-Requires:       python-six >= 1.8.0
+Requires:       python-numpy
+Requires:       python-pandas
+Requires(postun):update-alternatives
+Requires(post): update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module numpy >= 1.9.0}
-BuildRequires:  %{python_module pandas >= 0.15.0}
+BuildRequires:  %{python_module astropy}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six >= 1.8.0}
 # /SECTION
 %python_subpackages
 
@@ -53,14 +57,23 @@ default, but can also be used with local NetDRMS sites.
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/drms
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m drms.tests
+%pytest
+
+%post
+%python_install_alternative drms
+
+%postun
+%python_uninstall_alternative drms
 
 %files %{python_files}
-%doc AUTHORS.txt README.rst
-%license LICENSE.txt
-%{python_sitelib}/*
+%doc CITATION.rst README.rst
+%license LICENSE.rst
+%python_alternative %{_bindir}/drms
+%{python_sitelib}/drms
+%{python_sitelib}/drms-%{version}*-info
 
 %changelog
