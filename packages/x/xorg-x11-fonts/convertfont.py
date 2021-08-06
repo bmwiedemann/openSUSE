@@ -33,10 +33,7 @@ def getfullname(fontname):
             result[key.strip()] = value.strip()
 
     familyname, stylename = result['family'], result['style']
-    if stylename == 'Regular':
-        return familyname
-    else:
-        return familyname + ' ' + stylename
+    return familyname + ' ' + stylename
 
 
 def generate_fonts():

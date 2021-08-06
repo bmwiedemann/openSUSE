@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  3 13:43:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Convert the helv*.otb and cour*.otb files in a different way,
+  generating all available font sizes as fonts files named
+  *-75-dpi-converted and *-100dpi-converted and having the same
+  font name for 75 and 100 dpi converted fonts (fixes boo#1174895).
+- As part of the above fix, don't remove the "Regular" suffix from
+  the full name of fonts in convertfont.py
+
+-------------------------------------------------------------------
 Sun Aug 23 18:16:59 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - font-alias 1.0.4 and font-misc-ethiopic 1.0.4

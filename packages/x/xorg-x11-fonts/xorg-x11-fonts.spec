@@ -1,7 +1,7 @@
 #
 # spec file for package xorg-x11-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -78,8 +78,8 @@ BuildRequires:  ftdump
 BuildRequires:  ttf-converter >= 1.0.6
 BuildRequires:  xorg-x11-fonts-legacy
 Requires(post): fonts-config
-Requires(posttrans): fonts-config
-Requires(postun): fonts-config
+Requires(posttrans):fonts-config
+Requires(postun):fonts-config
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150200
 # In TW and SLE 15 SP2/Leap 15.2 we have pango >= 1.44.0 which
 # doesn't support Type1 fonts (boo#1169444)
@@ -144,6 +144,8 @@ rm -rf $RPM_BUILD_DIR/*
 for i in $RPM_SOURCE_DIR/*.tar.bz2; do tar xjf $i; done
 %else
 cp %{SOURCE100} .
+tar xjf %{SOURCE0}
+tar xjf %{SOURCE1}
 %endif
 
 %build
@@ -195,6 +197,31 @@ ttf-converter --bitmap-fonts --subfamily Regular --shift-unicode-values 0,300,15
 #ttf-converter --bitmap-fonts --shift-unicode-values 0xff01,0xff5d,-65248  /usr/share/fonts/misc/hanglg16.pcf.gz --output-dir generated/
 #ttf-converter --bitmap-fonts --shift-unicode-values 0xff01,0xff5d,-65248 --replace-unicode-values 0xffe0,0xa2 --replace-unicode-values 0xffe2,0xac --replace-unicode-values 0xffe1,0xa3 --replace-unicode-values 0xffe5,0xa5 /usr/share/fonts/misc/hanglm24.pcf.gz /usr/share/fonts/misc/hanglm16.pcf.gz --output-dir generated/
 #ttf-converter --bitmap-fonts --shift-unicode-values 0xff01,0xff5d,-65248 /usr/share/fonts/misc/gb16fs.pcf.gz --output-dir generated/
+sed -i -e 's/FAMILY_NAME "\(.*\)"/FAMILY_NAME "\1-converted"/' font-adobe*75dpi*/cour*[012][0248].bdf \
+    font-adobe*75dpi*/helv*[012][0248].bdf
+sed -i -e 's/FAMILY_NAME "\(.*\)"/FAMILY_NAME "\1-converted"/' font-adobe*100dpi*/cour*[012][0248].bdf \
+    font-adobe*100dpi*/helv*[012][0248].bdf
+
+for name in font-adobe*/cour*.bdf font-adobe*/helv*.bdf; do
+    fonttosfnt -b -c -g 2 -m 2 -o "${name%.bdf}.otb" "$name"
+done
+
+rm font-adobe*100*/cour*10.otb font-adobe*100*/helv*10.otb
+for p in font-adobe*/cour*.otb font-adobe*/helv*.otb ; do
+    realsize=`ftdump -p "$p" | grep size.*y_ppem | sed -e "s/.*size \([0-9]*\)\..*/\1/"`
+    realsize=`printf %02d $realsize`
+    dpi=`echo "$p" | sed -e "s/.*-\([0-9]*dpi\).*/\1/"`
+    newname=`echo $p | sed -e "s/..\.otb$/-$dpi-$realsize.otb/"`
+    if [ "$p" != "$newname" ]; then
+        mv "$p" "$newname"
+    fi
+done
+# Remove fonts of size 11 that are actually the same size as fonts of size 10
+rm font-adobe*100*/cour*11.otb font-adobe*100*/helv*11.otb
+# Remove fonts of size 20 that are actually the same size as fonts of size 18
+rm font-adobe*100*/cour*20.otb font-adobe*100*/helv*20.otb
+# Remove fonts of size 25 that are actually the same size as fonts of size 24
+rm font-adobe*100*/cour*25.otb font-adobe*100*/helv*25.otb
 
 cd generated
 
@@ -241,9 +268,7 @@ cd generated
 mkdir -p %{buildroot}/%{_datadir}/fonts/truetype
 cp *.ttf %{buildroot}/%{_datadir}/fonts/truetype
 
-for filename in Adobe-Courier*.otb \
-   Adobe-Helvetica*.otb \
-   Adobe-New-Century-Schoolbook*.otb \
+for filename in Adobe-New-Century-Schoolbook*.otb \
    Adobe-Symbol-Regular.otb \
    Adobe-Times*.otb \
    Adobe-Utopia*.otb \
@@ -270,6 +295,8 @@ for filename in Adobe-Courier*.otb \
    ; do
     cp "$filename"  %{buildroot}/%{_datadir}/fonts/truetype
 done
+cd ..
+cp font-adobe*/*.otb %{buildroot}/%{_datadir}/fonts/truetype/
 
 %endif
 
@@ -346,6 +373,7 @@ rm -rf "$RPM_BUILD_ROOT"
 /usr/share/fonts/Type1/*.pfb
 
 %else
+
 # "%%{flavor}" == "converted"
 %files
 %defattr(-,root,root)
@@ -357,8 +385,6 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_datadir}/fonts/truetype/Courier.ttf
 %{_datadir}/fonts/truetype/Utopia-*.ttf
 %{_datadir}/fonts/truetype/B&H-LucidaTypewriter*.otb
-%{_datadir}/fonts/truetype/Adobe-Courier*.otb
-%{_datadir}/fonts/truetype/Adobe-Helvetica*.otb
 %{_datadir}/fonts/truetype/Adobe-New-Century-Schoolbook*.otb
 %{_datadir}/fonts/truetype/Adobe-Symbol-Regular.otb
 %{_datadir}/fonts/truetype/Adobe-Times*.otb
@@ -383,6 +409,8 @@ rm -rf "$RPM_BUILD_ROOT"
 %{_datadir}/fonts/truetype/Daewoo-Gothic-Wide-Regular.otb
 %{_datadir}/fonts/truetype/Daewoo-Mincho-Wide-Regular.otb
 %{_datadir}/fonts/truetype/JIS-Fixed-Wide-Regular.otb
+%{_datadir}/fonts/truetype/cour*.otb
+%{_datadir}/fonts/truetype/helv*.otb
 %endif
 
 %changelog
