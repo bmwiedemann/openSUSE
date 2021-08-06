@@ -7,4 +7,12 @@
     <comment>Submit new package rust1.53 (parallel versioned capable)</comment>
     <requestid>902902</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>0976d063c4d8cbbed75ee935d59ed7b1</srcmd5>
+    <version>1.53.0</version>
+    <time>1628282664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910201</requestid>
+  </revision>
 </revisionlist>

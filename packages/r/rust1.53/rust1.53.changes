@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug  3 23:46:40 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Change rust dependency specifier to work with versioned rust.
+
+-------------------------------------------------------------------
 Fri Jun 25 04:58:04 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Resolve issue in constraints to select aarch64 builders in OBS that

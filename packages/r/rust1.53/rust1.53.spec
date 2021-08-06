@@ -1,5 +1,5 @@
 #
-# spec file for package rust
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Luke Jones, luke@ljones.dev
@@ -14,14 +14,6 @@
 # published by the Open Source Initiative.
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
-# === rust arch support tiers ===
-# https://doc.rust-lang.org/nightly/rustc/platform-support.html
-# tl;dr only aarch64, x86_64 and i686 are guaranteed to work.
-#
-# armv6/7, s390x, ppc[64[le]], riscv are all "guaranteed to build" only
-# but may not always work.
 #
 
 
@@ -187,8 +179,8 @@ BuildRequires:  ccache
 %endif
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(libssh2) >= 1.6.0
 BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  pkgconfig(libssh2) >= 1.6.0
 # Real LLVM minimum version should be 9.x, but rust has a fallback mode
 %if !%with bundled_llvm
 BuildRequires:  llvm-devel >= 10.0
@@ -196,18 +188,12 @@ BuildRequires:  llvm-devel >= 10.0
 BuildRequires:  ninja
 %endif
 %if !%with rust_bootstrap
-# We will now package cargo using the version number of rustc since it
-# is being built from rust sources. Old cargo packages have a 0.x
-# number
-BuildRequires:  cargo <= %{version_current}
-BuildRequires:  cargo >= %{version_previous}
-BuildRequires:  rust <= %{version_current}
-BuildRequires:  rust >= %{version_previous}
+BuildRequires:  (rust+cargo >= %{version_previous} with rust+cargo <= %{version_current})
 %endif
 Recommends:     cargo
 
-Conflicts:      rustc-bootstrap
 Conflicts:      rust+rustc < %{version}
+Conflicts:      rustc-bootstrap
 Obsoletes:      rust+rustc < %{version}
 Provides:       rust+rustc = %{version}
 Conflicts:      rust-std < %{version}
