@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  5 20:11:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.1.0
+  * Add support for the Rich and Colorama libraries.
+  * Load big modules (e.g. Numpy, Pandas and Scipy) only until it's
+    really necessary.
+
+-------------------------------------------------------------------
 Mon Jun 14 14:48:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.0.4
