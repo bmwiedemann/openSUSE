@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-iotcentral
-Version:        4.1.0
+Version:        9.0.0b1
 Release:        0
 Summary:        Microsoft Azure IoTCentral Management Client Library
 License:        MIT
@@ -37,9 +37,9 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-common < 2.0.0
 Requires:       python-azure-common >= 1.1
-Requires:       python-msrest >= 0.5.0
-Requires:       python-msrestazure < 2.0.0
-Requires:       python-msrestazure >= 0.4.32
+Requires:       python-azure-mgmt-core < 2.0.0
+Requires:       python-azure-mgmt-core >= 1.2.0
+Requires:       python-msrest >= 0.6.21
 Conflicts:      python-azure-sdk <= 2.0.0
 
 BuildArch:      noarch
