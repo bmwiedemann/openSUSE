@@ -15,4 +15,12 @@
     <comment>- Add Requires to e-antic-devel so that all headers can be used.</comment>
     <requestid>903781</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1104e69787dbe9725a5cc4141c4abf1f</srcmd5>
+    <version>1.0.2</version>
+    <time>1628282709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.0.2</comment>
+    <requestid>910520</requestid>
+  </revision>
 </revisionlist>

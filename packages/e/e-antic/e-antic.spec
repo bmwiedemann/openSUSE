@@ -18,7 +18,7 @@
 
 %define lname	libeantic1
 Name:           e-antic
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
