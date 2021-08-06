@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 31 21:16:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build with EGL support now that wxWidgets does so (since version
+  3.1.5), otherwise wxWidgets 3.1.x widgets that make use of glew
+  crash (see for example, boo#1188519); add BuildRequires:
+  pkgconfig(egl) as well as the same Requires for devel package.
+
+-------------------------------------------------------------------
 Mon Apr 27 17:15:03 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.2.0

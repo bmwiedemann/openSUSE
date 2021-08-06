@@ -1,7 +1,7 @@
 #
 # spec file for package glew
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
 Source1:        baselibs.conf
 Source2:        %{name}.rpmlintrc
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
@@ -58,6 +59,7 @@ functionality is exposed in a single header file.
 Summary:        Development files for glew
 Group:          Development/Libraries/C and C++
 Requires:       libGLEW%{so_ver} = %{version}
+Requires:       pkgconfig(egl)
 Requires:       pkgconfig(x11)
 Requires:       pkgconfig(xproto)
 # Don't require GLU, because there is GLEW_NO_GLU option
@@ -74,10 +76,10 @@ functionality is exposed in a single header file.
 %autosetup
 
 %build
-%make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} LDFLAGS.EXTRA= STRIP=
+%make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} SYSTEM=linux-egl LDFLAGS.EXTRA= STRIP=
 
 %install
-make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
+make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} SYSTEM=linux-egl LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
 chmod +x %{buildroot}%{_libdir}/*.so.*
 rm %{buildroot}%{_libdir}/*.a
 
