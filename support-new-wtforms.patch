@@ -1,0 +1,77 @@
+Index: Flask-Admin-1.5.8/flask_admin/contrib/fileadmin/__init__.py
+===================================================================
+--- Flask-Admin-1.5.8.orig/flask_admin/contrib/fileadmin/__init__.py
++++ Flask-Admin-1.5.8/flask_admin/contrib/fileadmin/__init__.py
+@@ -388,7 +388,7 @@ class BaseFileAdmin(BaseView, ActionsMix
+         """
+         class EditForm(self.form_base_class):
+             content = fields.TextAreaField(lazy_gettext('Content'),
+-                                           (validators.required(),))
++                                           (validators.InputRequired(),))
+ 
+         return EditForm
+ 
+@@ -410,7 +410,7 @@ class BaseFileAdmin(BaseView, ActionsMix
+                 Validates if provided name is valid for *nix and Windows systems.
+             """
+             name = fields.StringField(lazy_gettext('Name'),
+-                                      validators=[validators.Required(),
++                                      validators=[validators.InputRequired(),
+                                                   validate_name])
+             path = fields.HiddenField()
+ 
+@@ -423,7 +423,7 @@ class BaseFileAdmin(BaseView, ActionsMix
+             Override to implement customized behavior.
+         """
+         class DeleteForm(self.form_base_class):
+-            path = fields.HiddenField(validators=[validators.Required()])
++            path = fields.HiddenField(validators=[validators.InputRequired()])
+ 
+         return DeleteForm
+ 
+Index: Flask-Admin-1.5.8/flask_admin/contrib/sqla/form.py
+===================================================================
+--- Flask-Admin-1.5.8.orig/flask_admin/contrib/sqla/form.py
++++ Flask-Admin-1.5.8/flask_admin/contrib/sqla/form.py
+@@ -304,7 +304,7 @@ class AdminModelConverter(ModelConverter
+             available_choices = [(f.value, f.name) for f in column.type.choices]
+         else:
+             available_choices = column.type.choices
+-        accepted_values = [key for key, val in available_choices]
++        accepted_values = [key for key in available_choices]
+ 
+         if column.nullable:
+             field_args['allow_blank'] = column.nullable
+Index: Flask-Admin-1.5.8/flask_admin/model/fields.py
+===================================================================
+--- Flask-Admin-1.5.8.orig/flask_admin/model/fields.py
++++ Flask-Admin-1.5.8/flask_admin/model/fields.py
+@@ -40,7 +40,7 @@ class InlineFieldList(FieldList):
+     def display_row_controls(self, field):
+         return True
+ 
+-    def process(self, formdata, data=unset_value):
++    def process(self, formdata, data=unset_value, extra_filters=None):
+         res = super(InlineFieldList, self).process(formdata, data)
+ 
+         # Postprocess - contribute flag
+Index: Flask-Admin-1.5.8/flask_admin/form/fields.py
+===================================================================
+--- Flask-Admin-1.5.8.orig/flask_admin/form/fields.py
++++ Flask-Admin-1.5.8/flask_admin/form/fields.py
+@@ -121,8 +121,13 @@ class Select2Field(fields.SelectField):
+         if self.allow_blank:
+             yield (u'__None', self.blank_text, self.data is None)
+ 
+-        for value, label in self.choices:
+-            yield (value, label, self.coerce(value) == self.data)
++        if isinstance(self.choices[0], tuple):
++            for value, label in self.choices:
++                yield (value, label, self.coerce(value) == self.data)
++        else:
++            # EnumChoices in the test suite, why do you have to make life hard?
++            for value in self.choices:
++                yield (value.value, value.name, self.coerce(value.value) == self.data)
+ 
+     def process_data(self, value):
+         if value is None:
