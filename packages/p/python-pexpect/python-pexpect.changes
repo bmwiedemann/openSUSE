@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  5 12:42:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Remove executable flag from examples/*.py: since we already patch
+  out the shebangs, they are not directly startable anyway
+  (boo#1189065).
+
+-------------------------------------------------------------------
 Thu Mar 12 11:32:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to build without python2:
@@ -9,7 +16,7 @@ Fri Feb 14 12:44:51 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 4.8.0
  * Returned behavior of searchwindowsize to that in 4.3 and earlier
- * Fixed a bug truncating before attribute after a timeout 
+ * Fixed a bug truncating before attribute after a timeout
  * Fixed a bug where a search could be less than searchwindowsize
     if it was increased between calls
  * Minor test cleanups to improve portability

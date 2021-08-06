@@ -288,4 +288,12 @@
   * no-python-binary.patch</comment>
     <requestid>784290</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>da52e2bfa7b22795571c662e70ebd5f8</srcmd5>
+    <version>4.8.0</version>
+    <time>1628282671</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910353</requestid>
+  </revision>
 </revisionlist>

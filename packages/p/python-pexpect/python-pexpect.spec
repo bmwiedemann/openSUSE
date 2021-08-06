@@ -1,7 +1,7 @@
 #
 # spec file for package python-pexpect
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,6 +51,8 @@ controlling them; and responding to expected patterns in their output.
 # Fix wrong-script-interpreter
 find examples -type f -name "*.py" -exec sed -i "s|#!%{_bindir}/env python||" {} \;
 find examples -type f -name "*.cgi" -exec sed -i "s|##!%{_bindir}/env python|##!%{_bindir}/python|" {} \;
+# Mark example *.py as non-executable (we already patch the shebang out, so they can't be started anyway)
+find examples -type f -name "*.py" -exec chmod 644 {} \;
 
 %build
 %python_build
