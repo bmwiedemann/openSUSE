@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  5 20:18:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.2.1
+  * Implement completion item resolve requests for faster
+    completions.
+  * Initialize workspaces from the initialize request.
+  * Catch errors when getting docstrings on _resolve_completion
+
+-------------------------------------------------------------------
 Tue Jul 13 12:36:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Initial specfile for version 1.1.0

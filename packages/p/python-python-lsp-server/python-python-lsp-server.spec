@@ -19,30 +19,30 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.1.0
+Version:        1.2.1
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools >= 39.0.0}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jedi >= 0.17.2}
-BuildRequires:  %{python_module pluggy}
-BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
-BuildRequires:  %{python_module ujson >= 3.0.0}
-BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module PyQt5}
 BuildRequires:  %{python_module autopep8}
 BuildRequires:  %{python_module flake8 >= 3.8.0}
+BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module mccabe >= 0.6.0}
+BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pycodestyle >= 2.7.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
 BuildRequires:  %{python_module pyflakes >= 2.3.0}
 BuildRequires:  %{python_module pylint >= 2.5.0}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 0.10.5}
+BuildRequires:  %{python_module ujson >= 3.0.0}
 BuildRequires:  %{python_module yapf}
 BuildRequires:  %{python_module matplotlib  if (%python-base without python36-base)}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
@@ -119,6 +119,5 @@ python36_donttest=" or test_numpy or test_pandas or test_matplotlib"
 %python_alternative %{_bindir}/pylsp
 %{python_sitelib}/pylsp
 %{python_sitelib}/python_lsp_server-%{version}*-info
-
 
 %changelog
