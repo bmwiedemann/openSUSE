@@ -27,6 +27,8 @@ License:        GPL-3.0-only
 URL:            https://github.com/sherpa/sherpa/
 Source:         https://github.com/sherpa/sherpa/archive/%{version}.tar.gz#/sherpa-%{version}.tar.gz
 Patch1:         reproducible.patch
+# PATCH-FIX-UPSTREAM sherpa-pr1227-astropy43.patch -- gh#sherpa/sherpa#1227
+Patch2:         https://github.com/sherpa/sherpa/pull/1227.patch#/sherpa-pr1227-astropy43.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 19:36:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add sherpa-pr1227-astropy43.patch in order to fix test failure
+  gh#sherpa/sherpa#1227
+
+-------------------------------------------------------------------
 Fri Jun 11 09:52:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 4.13.1:
