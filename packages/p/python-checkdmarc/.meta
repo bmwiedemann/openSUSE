@@ -1,0 +1,8 @@
+<package name="python-checkdmarc" project="openSUSE:Factory">
+  <title>A Python module and command line parser for SPF and DMARC records</title>
+  <description>A Python module and command line parser for SPF and DMARC records.
+
+</description>
+  <devel project="devel:languages:python" package="python-checkdmarc"/>
+  <url>https://domainaware.github.io/checkdmarc</url>
+</package>
