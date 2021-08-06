@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Fri Jul 30 11:01:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.48 → 9.23.49
+
+-------------------------------------------------------------------
+Thu Jul 29 17:23:57 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed fstab entry for swap on LVM
+
+  If an LVM setup is used together with a swapspace the
+  swap is created as a volume in the volume group. The
+  required fstab entry to activate swap was not using
+  the LVM exposed device but the UUID of the low level
+  block layer. This low level device is not created
+  by udev because LVM takes over precedence in this
+  case.
+
+-------------------------------------------------------------------
+Sat Jul 24 17:34:29 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.47 → 9.23.48
+
+-------------------------------------------------------------------
+Sat Jul 24 16:40:30 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed LVM get_volumes
+
+  Due to the change on the temporary directory yet another
+  error in the volume manager classes for LVM got exposed.
+
+-------------------------------------------------------------------
+Sat Jul 24 11:08:41 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.46 → 9.23.47
+
+-------------------------------------------------------------------
+Sat Jul 24 11:04:45 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed LVM/btrfs volume based image builds
+
+  Due to the change on the temporary directory an error
+  in the volume manager classes for LVM and btrfs was
+  exposed. There was code which uses a sub-part of the
+  volume mount point directory which is a tempdir based
+  directory name. The sub-part was choosen by an index
+  based path split which worked for /tmp but no longer for
+  /var/tmp. With tempdir now being also a commandline
+  option this code has to become more robust.
+
+-------------------------------------------------------------------
+Fri Jul 23 18:01:46 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.45 → 9.23.46
+
+-------------------------------------------------------------------
+Thu Jul 22 15:49:55 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Do not expose the delete feature in Temporary
+
+  We do not want to expose the ability to create temporary
+  data that doesn't get auto deleted at the end of its
+  scope
+
+-------------------------------------------------------------------
+Thu Jul 22 15:47:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Refactor recovery archive creation
+
+  The creation of the recovery archive was based on a tempfile
+  which then gets moved to the final target file. This is bad
+  because if causes the tempfile cleanup to raise an exception
+  unless you specify delete=False. Creating a tempfile with
+  delete=False however, negates the reason for creating self
+  managed temporary data. Thus this code was refactored to
+  create the recovery archive file at its final destination
+  from the beginning on
+
+-------------------------------------------------------------------
+Wed Jul 21 12:41:12 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Moving temp data handling to its own namespace
+
+  Moving use of mkdtemp, NamedTemporaryFile and TemporaryDirectory
+  into its own class called Temporary: By default all temporary
+  data is created below /var/tmp but can be changed via the
+  global commandline option --temp-dir. This Fixes #1870
+
+-------------------------------------------------------------------
+Wed Jul 21 10:12:49 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.44 → 9.23.45
+
+-------------------------------------------------------------------
+Tue Jul 20 15:27:55 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Handle UnicodeDecode errors more gracefully
+
+  If the Codec.decode() method cannot encode the given data to utf-8
+  an Encoding exception is raised which causes kiwi to raise a
+  KiwiDecodingError. That way to handle the error causes an image
+  build to fail. However, this sort of error for example happens if
+  the .changes file of a package contains invalid characters. From
+  a user perspective this cannot be fixed and you cannot build the
+  image because of a stupid character error in a .changes file
+  outside your control. Because of this reason this commit handles
+  the decode error case differently and applies the 'replace'
+  strategy on error. The characters in questions gets replaced and
+  the rest of the data which can be decoded is returned.
+
+-------------------------------------------------------------------
+Mon Jul 19 11:49:39 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Install mypy library stubs for mock
+
+-------------------------------------------------------------------
+Wed Jul 14 18:17:06 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added documentation for oem-skip-verify element
+
+-------------------------------------------------------------------
+Wed Jul 14 12:26:24 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Increase size of efi fat image
+
+  For ISO images an embedded efi fat image is needed to boot.
+  As consequence of adding the mok manager it can happen that
+  the size of the efi fat image is too small. With this commit
+  the size is increased to prevent an out of space issue
+
+-------------------------------------------------------------------
+Wed Jul 14 10:42:07 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.43 → 9.23.44
+
+-------------------------------------------------------------------
+Wed Jul 07 14:35:20 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Add tests for baseVagrantSetup
+
+-------------------------------------------------------------------
+Wed Jul 07 14:13:36 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Set the directory permissions of /home/vagrant/.ssh to 0700 in baseVagrantSetup
+
+-------------------------------------------------------------------
+Wed Jul 07 14:08:04 CEST 2021 - Dan Čermák <dcermak@suse.com>
+
+- Don't modify main sshd_config file via baseVagrantSetup
+
+  In Tumbleweed we switched from shipping sshd's config file in /etc to /usr/etc,
+  but baseVagrantSetup was not respecting that.
+
+  So instead of modifying the main config file, we instead create a custom file in
+  /etc/ssh/sshd_config.d/ with our custom setting which is much more robust
+  accross distributions. However, if /etc/ssh/sshd_config.d/ does not exist, then
+  we fall back to adding our settings to /etc/ssh/sshd_config.
+
+-------------------------------------------------------------------
+Tue Jul 06 14:42:19 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed LUKS keyfile permission bits
+
+  LUKS keyfile should use 0600 file permission flags
+
+-------------------------------------------------------------------
+Tue Jul 06 12:10:38 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed secure boot fallback setup
+
+  Make sure MokManager gets copied. The name and location of
+  the mok manager is distribution specific in the same way as
+  the shim loader. Thus we need to apply a similar concept
+  for looking it up. This Fixes bsc#1187515
+
+-------------------------------------------------------------------
+Tue Jul 06 10:52:21 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Improve live image integration test
+
+  Build one live image for Standard EFI+BIOS boot and
+  another variant that support SecureBoot+BIOS boot
+
+-------------------------------------------------------------------
+Mon Jul 05 16:07:27 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed grub cmdline setup with custom root
+
+  If the kiwi kernelcmdline attribute contains root=... information
+  it is extracted from being written to GRUB_CMDLINE_LINUX_DEFAULT.
+  However, the regexp to extract the root=... information was broken
+  and deleted more elements of the cmdline information than just
+  the root device information. This commit fixes the regexp to only
+  delete the root=... information taking into account that every
+  kernel parameter is delimited by '\s'
+  This Fixes #1875
+
+-------------------------------------------------------------------
 Mon Jul 05 14:58:02 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.42 → 9.23.43

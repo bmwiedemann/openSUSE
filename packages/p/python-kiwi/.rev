@@ -1820,4 +1820,41 @@
   by default too small to be used for the installation. Thus</comment>
     <requestid>905081</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9027feb31aef69850e433bc1a6f3cba4</srcmd5>
+    <version>9.23.49</version>
+    <time>1628282667</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.48 → 9.23.49
+
+- Fixed fstab entry for swap on LVM
+  If an LVM setup is used together with a swapspace the
+  swap is created as a volume in the volume group. The
+  required fstab entry to activate swap was not using
+  the LVM exposed device but the UUID of the low level
+  block layer. This low level device is not created
+  by udev because LVM takes over precedence in this
+  case.
+
+- Bump version: 9.23.47 → 9.23.48
+
+- Fixed LVM get_volumes
+  Due to the change on the temporary directory yet another
+  error in the volume manager classes for LVM got exposed.
+
+- Bump version: 9.23.46 → 9.23.47
+
+- Fixed LVM/btrfs volume based image builds
+  Due to the change on the temporary directory an error
+  in the volume manager classes for LVM and btrfs was
+  exposed. There was code which uses a sub-part of the
+  volume mount point directory which is a tempdir based
+  directory name. The sub-part was choosen by an index
+  based path split which worked for /tmp but no longer for
+  /var/tmp. With tempdir now being also a commandline
+  option this code has to become more robust.
+
+- Bump version: 9.23.45 → 9.23.46</comment>
+    <requestid>910293</requestid>
+  </revision>
 </revisionlist>
