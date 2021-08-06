@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 04 12:35:19 UTC 2021 - lnussel@suse.de
+
+- Update to version 10.2+git20210804.ff18da1:
+  * brp-99-pesign: fix that the signature of shim be broken
+
+-------------------------------------------------------------------
+Fri Jul 30 11:56:23 UTC 2021 - lnussel@suse.de
+
+- Update to version 10.2+git20210730.0cb100c:
+  * Sign kernel also in module dir (boo#1184804)
+    (replaces pesign-kernel-in-lib.diff)
+- switch package to obs_scm to avoid recompression
+
+-------------------------------------------------------------------
+Fri Jul 23 09:11:28 UTC 2021 - dmueller@suse.com
+
+- Update to version git master (10.2):
+  * Add support for GZIP and ZSTD module compression
+  * Always pad the EFI image when calculating the hash
+  * Version bump to 10.2
+  * approach issue#22 false noarch subpackage
+- drop pesign-obs-integration-bsc1183747-always-pad-efi-images.patch
+  pesign-obs-integration-support-gzip-zstd-compression.patch (merged)
+
+-------------------------------------------------------------------
 Mon Jun 21 03:23:54 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add pesign-obs-integration-support-gzip-zstd-compression.patch
