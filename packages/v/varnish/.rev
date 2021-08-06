@@ -282,4 +282,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>905813</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f76ae0dbfe0b7af8333b68ee28e679e6</srcmd5>
+    <version>6.6.1</version>
+    <time>1628282702</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 6.6.1
+  * Fix an HTTP/2.0 request smuggling vulnerability. [bnc#1188470]</comment>
+    <requestid>910486</requestid>
+  </revision>
 </revisionlist>

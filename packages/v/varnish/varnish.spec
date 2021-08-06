@@ -1,7 +1,7 @@
 #
 # spec file for package varnish
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if !0%{?_fillupdir:1}
-%define _fillupdir /var/adm/fillup-templates
-%endif
 
 %define library_name libvarnishapi2
 %define pkg_home     %_localstatedir/lib/%name
 %define pkg_logdir   %_localstatedir/log/%name
 %define pkg_cachedir %_localstatedir/cache/%name
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if !0%{?_fillupdir:1}
+%define _fillupdir %_localstatedir/adm/fillup-templates
+%endif
 Name:           varnish
-Version:        6.6.0
+Version:        6.6.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
 Group:          Productivity/Networking/Web/Proxy
-URL:            http://varnish-cache.org/
+URL:            https://varnish-cache.org/
 #Git-Web:	https://github.com/varnishcache/varnish-cache
 Source:         https://varnish-cache.org/_downloads/%name-%version.tgz
 Source3:        varnish.sysconfig
@@ -40,17 +39,18 @@ Source7:        varnish.service
 Source8:        varnishlog.service
 Patch1:         varnish-5.1.2-add-fallthrough-comments.patch
 Patch2:         uninit.patch
-BuildRequires:  python3-docutils
-BuildRequires:  python3-Sphinx
 BuildRequires:  libxslt
 BuildRequires:  ncurses-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-docutils
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires:       c_compiler
-Requires(pre):	%_sbindir/useradd %_sbindir/groupadd
+Requires(pre):  %_sbindir/groupadd
+Requires(pre):  %_sbindir/useradd
 Recommends:     logrotate
 
 %description
@@ -113,12 +113,12 @@ mv "$b/%_bindir"/* "$b/%_sbindir/"
 #
 ##missing directories
 install -dm 0755 "$b"/{%pkg_logdir,%pkg_home}
-install -Dpm 0644 "%{S:5}" "$b/%_sysconfdir/logrotate.d/varnish"
+install -Dpm 0644 "%SOURCE5" "$b/%_sysconfdir/logrotate.d/varnish"
 #
 ##init scripts
-install -Dpm 0644 "%{S:3}" "$b/%_fillupdir/sysconfig.%name"
-install -Dpm 0644 "%{S:7}" "$b/%_unitdir/varnish.service"
-install -Dpm 0644 "%{S:8}" "$b/%_unitdir/varnishlog.service"
+install -Dpm 0644 "%SOURCE3" "$b/%_fillupdir/sysconfig.%name"
+install -Dpm 0644 "%SOURCE7" "$b/%_unitdir/varnish.service"
+install -Dpm 0644 "%SOURCE8" "$b/%_unitdir/varnishlog.service"
 mkdir -p "$b/%_sbindir"
 ln -s service "$b/%_sbindir/rcvarnish"
 ln -s service "$b/%_sbindir/rcvarnishlog"
@@ -133,7 +133,7 @@ mkdir -p "$b/%_docdir/%name"
 cp -a doc/changes.rst LICENSE README.rst "$b/%_docdir/%name/"
 
 perl -i -pe 's{^#!/usr/bin/env python}{#!/usr/bin/python}g' \
-	"$b/usr/share/varnish/vmodtool.py" "$b/usr/share/varnish/vsctool.py"
+	"$b/%_datadir/varnish/vmodtool.py" "$b/%_datadir/varnish/vsctool.py"
 
 %check
 if ! %make_build check; then
