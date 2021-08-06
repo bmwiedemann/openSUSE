@@ -59,4 +59,16 @@
   * python 3.9 support</comment>
     <requestid>887885</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8f3d99ce1f5ec725e0cce6e1398d78bf</srcmd5>
+    <version>0.15</version>
+    <time>1628282664</time>
+    <user>dimstar_suse</user>
+    <comment>- Upstream fixed problems with 32bit systems
+  (gh#MagicStack/immutables#69) so we have removed
+  skip_32bit_tests.patch and added new solution which actually fixes the
+  issue: test_none_collisions-32-bit.patch.
+</comment>
+    <requestid>910245</requestid>
+  </revision>
 </revisionlist>

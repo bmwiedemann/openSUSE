@@ -25,9 +25,9 @@ Summary:        Immutable collections for Python
 License:        Apache-2.0
 URL:            https://github.com/MagicStack/immutables
 Source:         https://files.pythonhosted.org/packages/source/i/immutables/immutables-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM skip_32bit_tests.patch gh#MagicStack/immutables#53 mcepl@suse.com
-# skip failing tests on 32bit architectures
-Patch0:         skip_32bit_tests.patch
+# PATCH-FIX-UPSTREAM test_none_collisions-32-bit.patch gh#MagicStack/immutables#69 mcepl@suse.com
+# Fix test_none_collisions on 32-bit systems
+Patch0:         test_none_collisions-32-bit.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
