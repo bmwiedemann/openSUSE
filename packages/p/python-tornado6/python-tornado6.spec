@@ -25,6 +25,7 @@ Summary:        Open source version of scalable, non-blocking web server that po
 License:        Apache-2.0
 URL:            https://www.tornadoweb.org
 Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado-%{version}.tar.gz
+Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
 BuildRequires:  %{python_module base >= 3.5}
@@ -84,10 +85,12 @@ rm -r %{buildroot}%{$python_sitearch}/tornado/test
 # deduplicate files in python platlibdir
 %fdupes %{buildroot}%{$python_sitearch}
 # install demos into docdir and deduplicate
-mkdir -p %{buildroot}%{_docdir}/$python-tornado6/
-cp -r demos %{buildroot}%{_docdir}/$python-tornado6/
-find %{buildroot}%{_docdir}/$python-tornado6 -name "*.py" -exec sed -i "1{s|^#!.*$|%{_bindir}/$python|}" {} \;
-%fdupes %{buildroot}%{_docdir}/$python-tornado6
+pdocdir=%{buildroot}%{_docdir}/$python-tornado6
+mkdir -p ${pdocdir}
+cp -r demos ${pdocdir}/
+find ${pdocdir} -name "*.py" -exec sed -i "1{s|^#!.*$|%{_bindir}/$python|}" {} \;
+find ${pdocdir} -type f -exec chmod a-x {} \;
+%fdupes ${pdocdir}
 }
 
 %check

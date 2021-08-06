@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 12:51:05 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Remove exec bits from demos: fix boo#1189066
+- Add python-tornado6-rpmlintrc for empty JS resource in demo
+
+-------------------------------------------------------------------
 Mon Feb  8 20:46:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - back to version 6.1. Tornado pin in distributed is removed.
