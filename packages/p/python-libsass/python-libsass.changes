@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  3 13:10:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.21.0
+  * Follow up the libsass upstream: 3.6.5
+
+-------------------------------------------------------------------
 Wed Jul 22 13:42:32 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.20.0, linking against libsass 3.6.4 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-libsass
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _name   libsass-python
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-libsass
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Python binding for libsass
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Both are providing sassc binary with different parameters
 Conflicts:      sassc
 # SECTION test requirements
