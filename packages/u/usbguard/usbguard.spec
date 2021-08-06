@@ -33,6 +33,7 @@ Source2:        usbguard.keyring
 Source3:        usbguard-daemon.conf
 Source4:        usbguard-rpmlintrc
 Patch0:         usbguard-pthread.patch
+Patch10:        usbguard.service.in.patch
 BuildRequires:  asciidoc
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
@@ -92,6 +93,7 @@ software framework.
 %prep
 %setup -q -n usbguard-%{version}
 %patch0 -p1
+%patch10 -p1
 
 %build
 mkdir -p ./m4

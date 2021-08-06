@@ -1,0 +1,13 @@
+Index: usbguard-1.0.0/usbguard.service.in
+===================================================================
+--- usbguard-1.0.0.orig/usbguard.service.in
++++ usbguard-1.0.0/usbguard.service.in
+@@ -12,7 +12,7 @@ IPAddressDeny=any
+ LockPersonality=yes
+ MemoryDenyWriteExecute=yes
+ NoNewPrivileges=yes
+-PIDFile=/var/run/usbguard.pid
++PIDFile=/run/usbguard.pid
+ PrivateDevices=yes
+ PrivateTmp=yes
+ ProtectControlGroups=yes

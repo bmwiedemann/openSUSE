@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 15:26:54 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- move usbguard.pid from /var/run to /run 
+  added usbguard.service.in.patch
+
+-------------------------------------------------------------------
 Wed Jan 13 16:05:00 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - update to 1.0.0
