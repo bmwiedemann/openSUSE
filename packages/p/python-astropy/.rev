@@ -1172,4 +1172,15 @@
     <comment></comment>
     <requestid>903960</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>309f319d6324ea369d964d253c90a5da</srcmd5>
+    <version>4.3.post1</version>
+    <time>1628282688</time>
+    <user>dimstar_suse</user>
+    <comment>- Add astropy-pr12006-cfitsio4.patch for cfitsio 4
+  gh#astropy/astropy#12006
+- Revert the use of bundled cfitsio for non x86 architectures.
+  Those just had cfitsio earlier in the repositories than x86. (forwarded request 910385 from bnavigator)</comment>
+    <requestid>910386</requestid>
+  </revision>
 </revisionlist>

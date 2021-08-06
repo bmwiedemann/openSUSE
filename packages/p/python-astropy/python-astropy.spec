@@ -27,45 +27,56 @@
 
 %define binaries fitsdiff fitsheader fitscheck fitsinfo fits2bitmap samp_hub showtable volint wcslint
 
-%if 0%{suse_version} <= 1500
-# Use the bundled libraries for Leap 15.X, because the versions in the repos are too old
-%bcond_with systemlibs
-%else
+# backwards compatibility for --without systemlibs
 %bcond_without systemlibs
+
+%if 0%{suse_version} <= 1500 || ! %{with systemlibs}
+# Use the bundled libraries for Leap 15.X, because the versions in the repos are too old
+%bcond_with system_cfitsio
+%bcond_with system_expat
+%bcond_with system_wcslib
+%else
+%bcond_without system_cfitsio
+%bcond_without system_expat
+%bcond_without system_wcslib
 %endif
-%if %{with systemlibs}
-%define unbundle_libs export ASTROPY_USE_SYSTEM_CFITSIO=1 \
-                      export ASTROPY_USE_SYSTEM_EXPAT=1 \
-                      export ASTROPY_USE_SYSTEM_WCSLIB=1
+
+%if %{with system_cfitsio}
+%define unbundle_cfitsio export ASTROPY_USE_SYSTEM_CFITSIO=1
 %endif
+%if %{with system_expat}
+%define unbundle_expat   export ASTROPY_USE_SYSTEM_EXPAT=1
+%endif
+%if %{with system_wcslib}
+%define unbundle_wcs     export ASTROPY_USE_SYSTEM_WCSLIB=1
+%endif
+%define unbundle_libs %{?unbundle_cfitsio} \
+                      %{?unbundle_expat} \
+                      %{?unbundle_wcs}
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 # upcoming python3 multiflavor: minimum supported python is 3.7
 %define         skip_python36 1
 Name:           python-astropy%{psuffix}
-Version:        4.2.1
+Version:        4.3.post1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
 URL:            https://astropy.org
 Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy-%{version}.tar.gz
-# belongs to Patch1 --  gh/astropy/astropy#11260
-Source1:        https://github.com/dhomeier/astropy/raw/wcs-distortion-headers/astropy/wcs/tests/data/dss.14.29.56-62.41.05.fits.gz
-# belongs to Patch1 --  gh/astropy/astropy#11549
-Source2:        https://github.com/mcara/astropy/raw/wcslib7p6/astropy/wcs/tests/data/tab-time-last-axis.fits
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# PATCH-FIX-UPSTREAM astropy-pr11260+pr11549-wcs76.patch -- gh/astropy/astropy#11260 + gh/astropy/astropy#11549
-Patch1:         astropy-pr11260+pr11549-wcs76.patch
-# https://docs.astropy.org/en/v4.1/install.html#requirements
-BuildRequires:  %{python_module Cython >= 0.21}
+# https://docs.astropy.org/en/v4.3post1/install.html#requirements
+# PATCH-FIX-UPSTREAM astropy-pr12006-cfitsio4.patch  gh#astropy/astropy#12006
+Patch1:         https://github.com/astropy/astropy/pull/12006.patch#/astropy-pr12006-cfitsio4.patch
+BuildRequires:  %{python_module Cython >= 0.29.22}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
-BuildRequires:  %{python_module pyerfa}
+BuildRequires:  %{python_module pyerfa >= 1.7.3}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -74,7 +85,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-dbm
 Requires:       python-numpy >= 1.17
-Requires:       python-pyerfa
+Requires:       python-pyerfa >= 1.7.3
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     libxml2-tools
@@ -93,9 +104,13 @@ Recommends:     python-scipy >= 1.1
 Recommends:     python-setuptools
 Recommends:     python-sortedcontainers
 Conflicts:      perl-Data-ShowTable
-%if %{with systemlibs}
+%if %{with system_cfitsio}
 BuildRequires:  pkgconfig(cfitsio)
+%endif
+%if %{with system_expat}
 BuildRequires:  pkgconfig(expat)
+%endif
+%if %{with system_wcslib}
 BuildRequires:  pkgconfig(wcslib) >= 7
 %endif
 %if %{with test}
@@ -118,8 +133,9 @@ BuildRequires:  libxml2-tools
 # SECTION test requirements
 # We need the compiled package for testing
 BuildRequires:  %{python_module astropy = %{version}}
-BuildRequires:  %{python_module ipython}
+BuildRequires:  %{python_module ipython >= 4.2}
 BuildRequires:  %{python_module objgraph}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest-astropy}
 BuildRequires:  %{python_module pytest-mpl}
 BuildRequires:  %{python_module pytest-xdist}
@@ -139,14 +155,16 @@ managing them.
 %prep
 %autosetup -p1 -n astropy-%{version}
 
-cp %{SOURCE1} %{SOURCE2} astropy/wcs/tests/data/
-
-%if %{with systemlibs}
 # Make sure bundled libs are not used
+%if %{with system_cfitsio}
 rm -rf cextern/cfitsio
+%endif
+%if %{with system_expat}
 rm -rf cextern/expat
-rm -rf cextern/wcslib
 rm licenses/EXPAT_LICENSE.rst
+%endif
+%if %{with system_wcslib}
+rm -rf cextern/wcslib
 rm licenses/WCSLIB_LICENSE.rst
 %endif
 
@@ -155,7 +173,7 @@ sed -i "/enable_deprecations_as_exceptions(/,/)/ d" astropy/conftest.py
 # increase test deadline for slow obs executions (e.g. on s390x)
 echo "
 import hypothesis
-hypothesis.settings.register_profile('obs', deadline=2000)
+hypothesis.settings.register_profile('obs', deadline=5000)
 " >> astropy/conftest.py
 
 %build
@@ -177,6 +195,10 @@ done
 %ifarch aarch64
 # doctest failure because of precision errors
   donttest+=" or bayesian_info_criterion_lsq"
+%endif
+%ifarch %arm32
+  # gh#astropy/astropy#12017
+  donttest+=" or test_stats"
 %endif
 testselect_expr="${donttest:+-k \"not (${donttest# or })\"}"
 # http://docs.astropy.org/en/latest/development/testguide.html#running-tests

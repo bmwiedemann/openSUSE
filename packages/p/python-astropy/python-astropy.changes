@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug  5 23:57:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add astropy-pr12006-cfitsio4.patch for cfitsio 4
+  gh#astropy/astropy#12006
+- Revert the use of bundled cfitsio for non x86 architectures.
+  Those just had cfitsio earlier in the repositories than x86.
+
+-------------------------------------------------------------------
+Thu Aug  5 14:04:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 4.3.post1
+  Astropy 4.3 is a major release that adds significant new
+  functionality since the 4.2.x series of releases.
+  * Transformations to AltAz are now much more precise (and faster)
+  * Improvements in making Astropy thread-safe
+  * Performance improvements to sigma clipping
+  * Changes in the Time and IERS leap second handling
+  * Support for multidimensional and object columns in ECSV
+  * Support for reading and writing tables to QDP format
+  * Append table to existing FITS file
+  * General masked class for Quantity and other ndarray subclasses
+  * Configuration file improvements
+  * Support for different solvers and bracket option in z_at_value
+  * Full changelog:
+    https://docs.astropy.org/en/stable/changelog.html
+- Drop patch and files merged upstream:
+  * astropy-pr11260+pr11549-wcs76.patch
+  * dss.14.29.56-62.41.05.fits.gz
+  * tab-time-last-axis.fits
+- Use bundled cfitsio for s390x, Power and ARM
+- Increase Hypothesis test deadline to 5s
+
+-------------------------------------------------------------------
 Sun Jul  4 13:26:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Replace astropy-pr11260-wcsfailures.patch with
