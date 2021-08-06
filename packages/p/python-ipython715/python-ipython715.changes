@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 11:18:16 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Get rid of ipykernel dependency (requires new ipython)
+- Add patch skiptests.patch to skip tests failing without ipykernel
+
+-------------------------------------------------------------------
 Sat Feb 13 23:12:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Don't require python36-numpy for iptest and don't install

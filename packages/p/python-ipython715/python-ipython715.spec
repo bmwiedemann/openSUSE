@@ -1,5 +1,5 @@
 #
-# spec file for package python-ipython715
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -40,6 +40,7 @@ Source:         https://files.pythonhosted.org/packages/source/i/ipython/ipython
 Source1:        https://raw.githubusercontent.com/jupyter/qtconsole/4.0.0/qtconsole/resources/icon/JupyterConsole.svg
 # PATCH-FEATURE-UPSTREAM ipython-jedi018.patch -- gh#ipython/ipython#12793 Support Jedi 0.18 for this legacy release
 Patch1:         ipython-jedi018.patch
+Patch2:         skiptests.patch
 BuildRequires:  %{python_module backcall}
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module setuptools >= 18.5}
@@ -81,14 +82,14 @@ BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module ipython-iptest = %{version}}
 # python36-matplotlib is not in Tumbleweed anymore because NumPy 1.20 dropped Python 3.6 (NEP 29)
-BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)} 
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
 %endif
 %if !%{with test}
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %if %{with ico}
 BuildRequires:  icoutils
 %endif
@@ -132,7 +133,6 @@ Summary:        Tools for testing packages that rely on %{name}
 Group:          Development/Languages/Python
 Requires:       %{name} = %{version}
 Requires:       python-Pygments
-Requires:       python-ipykernel
 Requires:       python-nbformat
 Requires:       python-nose >= 0.10.1
 %if "%{python_flavor}" != "python36"
