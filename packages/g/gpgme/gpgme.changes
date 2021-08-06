@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug  5 10:29:27 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with glibc 2.34: [bsc#1189089]
+  * Use glibc's closefrom.
+  * Add gpgme-use-glibc-closefrom.patch
+
+-------------------------------------------------------------------
 Wed Jul  7 18:19:43 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - gpgme 1.16.0:

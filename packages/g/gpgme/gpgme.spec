@@ -1,5 +1,5 @@
 #
-# spec file for package gpgme
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -45,6 +45,8 @@ Source3:        gpgme.keyring
 Source99:       gpgme.changes
 Patch0:         gpgme-1.16.0-Use-after-free-in-t-edit-sign-test.patch
 Patch1:         gpgme-1.16.0-t-various-testSignKeyWithExpiration-32-bit.patch
+# PATCH-FIX-UPSTREAM bsc#1189089 Use glibc's closefrom
+Patch2:         gpgme-use-glibc-closefrom.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gpg2 >= 2.0.10
 BuildRequires:  libassuan-devel >= 2.4.2
@@ -209,6 +211,7 @@ This package contains the bindings to use the library in Qt C++ applications.
 %setup -q -n gpgme-%{version}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 build_timestamp=$(date -u +%{Y}-%{m}-%{dT}%{H}:%{M}+0000 -r %{SOURCE99})
