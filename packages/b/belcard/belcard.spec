@@ -19,10 +19,11 @@
 %define soname  libbelcard
 %define sover   1
 Name:           belcard
-Version:        4.5.3
+Version:        4.5.20
 Release:        0
 Summary:        C++ library to manipulate vCard standard format files
 License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
 URL:            https://linphone.org/
 Source:         https://gitlab.linphone.org/BC/public/belcard/-/archive/%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
@@ -33,6 +34,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
 BuildRequires:  pkgconfig(belr) >= 4.5.0
+BuildRequires:  libudev-devel
 
 %description
 Belcard is a C++ library to manipulate the vCard standard format files.
@@ -56,6 +58,7 @@ This package contains data files such as belr grammar.
 
 %package devel
 Summary:        Headers and libraries for the belcard library
+Group:          Development/Languages/C and C++
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
