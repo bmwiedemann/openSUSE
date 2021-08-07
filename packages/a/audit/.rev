@@ -795,4 +795,32 @@ Fix bz#1160384</comment>
     <comment></comment>
     <requestid>900607</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>96abb6a26ef7e0b0b0aa6cac0e9e2921</srcmd5>
+    <version>3.0.3</version>
+    <time>1628351828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3:
+  * Dont interpret audit netlink groups unless AUDIT_NLGRP_MAX is defined
+  * Add support for AUDIT_RESP_ORIGIN_UNBLOCK_TIMED to ids
+  * Change auparse_feed_has_data in auparse to include incomplete events
+  * Auditd, stop linking against -lrt
+  * Add ProtectHome and RestrictRealtime to auditd.service
+  * In auditd, read up to 3 netlink packets in a row
+  * In auditd, do not validate path to plugin unless active
+  * In auparse, only emit config errors when AUPARSE_DEBUG env variable exists
+- use https source urls
+
+- Update to version 3.0.3:
+  * Dont interpret audit netlink groups unless AUDIT_NLGRP_MAX is defined
+  * Add support for AUDIT_RESP_ORIGIN_UNBLOCK_TIMED to ids
+  * Change auparse_feed_has_data in auparse to include incomplete events
+  * Auditd, stop linking against -lrt
+  * Add ProtectHome and RestrictRealtime to auditd.service
+  * In auditd, read up to 3 netlink packets in a row
+  * In auditd, do not validate path to plugin unless active
+  * In auparse, only emit config errors when AUPARSE_DEBUG env variable exists
+- use https source urls</comment>
+    <requestid>910030</requestid>
+  </revision>
 </revisionlist>

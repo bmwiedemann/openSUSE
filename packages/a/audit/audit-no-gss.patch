@@ -18,5 +18,5 @@ but need manual removal here.
 -krb5_principal = auditd
 -##krb5_key_file = /etc/audit/audit.key
  distribute_network = no
- q_depth = 400
+ q_depth = 1200
  overflow_action = SYSLOG

@@ -17,13 +17,13 @@
 
 
 Name:           audit
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://people.redhat.com/sgrubb/audit/
-Source0:        http://people.redhat.com/sgrubb/audit/%{name}-%{version}.tar.gz
+URL:            https://people.redhat.com/sgrubb/audit/
+Source0:        https://people.redhat.com/sgrubb/audit/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 Source2:        README-BEFORE-ADDING-PATCHES
 Patch0:         change-default-log_group.patch

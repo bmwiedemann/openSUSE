@@ -22,13 +22,13 @@
 # The seperation is required to minimize unnecessary build cycles.
 %define 	_name audit
 Name:           audit-secondary
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Linux kernel audit subsystem utilities
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-URL:            http://people.redhat.com/sgrubb/audit/
-Source0:        http://people.redhat.com/sgrubb/audit/%{_name}-%{version}.tar.gz
+URL:            https://people.redhat.com/sgrubb/audit/
+Source0:        https://people.redhat.com/sgrubb/audit/%{_name}-%{version}.tar.gz
 Source1:        system-group-audit.conf
 Patch1:         audit-plugins-path.patch
 Patch2:         audit-no-gss.patch
