@@ -21832,6 +21832,8 @@ unsorted:
   - python36-azure-mgmt-dns 
   - python36-azure-mgmt-documentdb 
   - python36-azure-mgmt-edgegateway 
+  - python36-azure-mgmt-edgeorder 
+  - python36-azure-mgmt-elastic 
   - python36-azure-mgmt-eventgrid 
   - python36-azure-mgmt-eventhub 
   - python36-azure-mgmt-extendedlocation 
@@ -21841,6 +21843,7 @@ unsorted:
   - python36-azure-mgmt-healthcareapis 
   - python36-azure-mgmt-hybridcompute 
   - python36-azure-mgmt-hybridkubernetes 
+  - python36-azure-mgmt-hybridnetwork 
   - python36-azure-mgmt-imagebuilder 
   - python36-azure-mgmt-iotcentral 
   - python36-azure-mgmt-iothub 
@@ -21874,6 +21877,7 @@ unsorted:
   - python36-azure-mgmt-powerbidedicated 
   - python36-azure-mgmt-powerbiembedded 
   - python36-azure-mgmt-privatedns 
+  - python36-azure-mgmt-quantum 
   - python36-azure-mgmt-rdbms 
   - python36-azure-mgmt-recoveryservices 
   - python36-azure-mgmt-recoveryservicesbackup 
@@ -22047,6 +22051,7 @@ unsorted:
   - python36-charset-normalizer 
   - python36-chart-studio 
   - python36-check-manifest 
+  - python36-checkdmarc 
   - python36-cheroot 
   - python36-ciscoconfparse 
   - python36-cl 
@@ -23064,7 +23069,6 @@ unsorted:
   - python36-pbr 
   - python36-pcodedmp 
   - python36-pdd 
-  - python36-pdfkit 
   - python36-pdfminer.six 
   - python36-pdfrw 
   - python36-pecan 
@@ -24625,6 +24629,8 @@ unsorted:
   - python38-azure-mgmt-dns 
   - python38-azure-mgmt-documentdb 
   - python38-azure-mgmt-edgegateway 
+  - python38-azure-mgmt-edgeorder 
+  - python38-azure-mgmt-elastic 
   - python38-azure-mgmt-eventgrid 
   - python38-azure-mgmt-eventhub 
   - python38-azure-mgmt-extendedlocation 
@@ -24634,6 +24640,7 @@ unsorted:
   - python38-azure-mgmt-healthcareapis 
   - python38-azure-mgmt-hybridcompute 
   - python38-azure-mgmt-hybridkubernetes 
+  - python38-azure-mgmt-hybridnetwork 
   - python38-azure-mgmt-imagebuilder 
   - python38-azure-mgmt-iotcentral 
   - python38-azure-mgmt-iothub 
@@ -24667,6 +24674,7 @@ unsorted:
   - python38-azure-mgmt-powerbidedicated 
   - python38-azure-mgmt-powerbiembedded 
   - python38-azure-mgmt-privatedns 
+  - python38-azure-mgmt-quantum 
   - python38-azure-mgmt-rdbms 
   - python38-azure-mgmt-recoveryservices 
   - python38-azure-mgmt-recoveryservicesbackup 
@@ -24851,6 +24859,7 @@ unsorted:
   - python38-chart-studio 
   - python38-chartify 
   - python38-check-manifest 
+  - python38-checkdmarc 
   - python38-cheroot 
   - python38-chest 
   - python38-cirq: [x86_64] 
@@ -25963,7 +25972,6 @@ unsorted:
   - python38-pbr 
   - python38-pcodedmp 
   - python38-pdd 
-  - python38-pdfkit 
   - python38-pdfminer.six 
   - python38-pdfrw 
   - python38-pecan 
@@ -26699,6 +26707,7 @@ unsorted:
   - python38-softlayer 
   - python38-sorl-thumbnail 
   - python38-sortedcollections 
+  - python38-sortinghat 
   - python38-sounddevice 
   - python38-soupsieve 
   - python38-sox 
@@ -27607,6 +27616,8 @@ unsorted:
   - python39-azure-mgmt-dns 
   - python39-azure-mgmt-documentdb 
   - python39-azure-mgmt-edgegateway 
+  - python39-azure-mgmt-edgeorder 
+  - python39-azure-mgmt-elastic 
   - python39-azure-mgmt-eventgrid 
   - python39-azure-mgmt-eventhub 
   - python39-azure-mgmt-extendedlocation 
@@ -27616,6 +27627,7 @@ unsorted:
   - python39-azure-mgmt-healthcareapis 
   - python39-azure-mgmt-hybridcompute 
   - python39-azure-mgmt-hybridkubernetes 
+  - python39-azure-mgmt-hybridnetwork 
   - python39-azure-mgmt-imagebuilder 
   - python39-azure-mgmt-iotcentral 
   - python39-azure-mgmt-iothub 
@@ -27649,6 +27661,7 @@ unsorted:
   - python39-azure-mgmt-powerbidedicated 
   - python39-azure-mgmt-powerbiembedded 
   - python39-azure-mgmt-privatedns 
+  - python39-azure-mgmt-quantum 
   - python39-azure-mgmt-rdbms 
   - python39-azure-mgmt-recoveryservices 
   - python39-azure-mgmt-recoveryservicesbackup 
@@ -27840,6 +27853,7 @@ unsorted:
   - python39-chart-studio 
   - python39-chartify 
   - python39-check-manifest 
+  - python39-checkdmarc 
   - python39-cheroot 
   - python39-chest 
   - python39-cirq: [x86_64] 
@@ -29013,7 +29027,6 @@ unsorted:
   - python39-pbr 
   - python39-pcodedmp 
   - python39-pdd 
-  - python39-pdfkit 
   - python39-pdfminer.six 
   - python39-pdfrw 
   - python39-pecan 
@@ -29799,6 +29812,7 @@ unsorted:
   - python39-sorl-thumbnail 
   - python39-sortedcollections 
   - python39-sortedcontainers 
+  - python39-sortinghat 
   - python39-sounddevice 
   - python39-soupsieve 
   - python39-sox 
