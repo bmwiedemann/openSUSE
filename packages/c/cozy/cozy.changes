@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug  7 08:08:20 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.1.0
+  * Redesigned library
+  * Redesigned start screen
+  * Redesigned book detail screen
+  * Responsive design for the main window
+  * Introducing a welcome screen for new installations
+  * Fix: a rare bug where Cozy's volume was muted at first start
+  * Fix: long book names or author names will be truncated properly
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Wed Jul 28 16:30:21 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 1.0.4

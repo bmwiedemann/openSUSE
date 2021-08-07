@@ -17,7 +17,7 @@
 
 
 Name:           cozy
-Version:        1.0.4
+Version:        1.1.0
 Release:        0
 Summary:        Audio Book Player
 License:        GPL-3.0-only
@@ -45,6 +45,7 @@ Requires:       python3-peewee >= 3.9.6
 Requires:       python3-apsw
 Requires:       python3-pytaglib
 Requires:       libhandy-1-0
+Requires:       pkgconfig(libdazzle-1.0)
 Requires:       granite
 Requires:	python3-pytz
 Requires:	python3-requests
@@ -67,6 +68,7 @@ BuildRequires:  python3-distro
 BuildRequires:  python3-apsw
 BuildRequires:  python3-packaging
 BuildRequires:  libhandy-1-0
+BuildRequires:  pkgconfig(libdazzle-1.0)
 # /SECTION
 
 %description
