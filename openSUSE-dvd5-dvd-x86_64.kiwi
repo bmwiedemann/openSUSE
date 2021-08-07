@@ -313,6 +313,7 @@
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
+      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -409,12 +410,14 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
+      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
+      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -1316,7 +1319,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client" arch="x86_64"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -3462,6 +3465,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -4782,6 +4788,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
+      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>
@@ -5061,6 +5068,9 @@
       <repopackage name="virt-manager-common"/>
       <repopackage name="virt-sandbox" arch="x86_64"/>
       <repopackage name="virt-what"/>
+      <repopackage name="virtualbox-guest-tools" arch="x86_64"/>
+      <repopackage name="virtualbox-guest-x11" arch="x86_64"/>
+      <repopackage name="virtualbox-kmp-default" arch="x86_64"/>
       <repopackage name="vlan"/>
       <repopackage name="vlc"/>
       <repopackage name="vlc-codec-gstreamer"/>
