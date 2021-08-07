@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  4 09:58:45 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.39.0:
+  * Python AIO: Match continuation typing on Interceptors
+    (gh#grpc/grpc#26500).
+  * Workaround #26279 by publishing manylinux_2_24 wheels instead
+    of manylinux2014 on aarch64 (gh#grpc/grpc#26430).
+  * Fix zlib unistd.h import problem (gh#grpc/grpc#26374).
+  * Handle gevent exception in gevent poller (gh#grpc/grpc#26058).
+
+-------------------------------------------------------------------
 Wed Jun 30 19:55:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.38.1:
