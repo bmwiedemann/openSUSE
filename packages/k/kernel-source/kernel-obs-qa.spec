@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 5.13.6
+%define patchversion 5.13.8
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -34,11 +34,11 @@ ExclusiveArch:  aarch64 armv6hl armv7hl ppc64 ppc64le riscv64 s390x x86_64
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %endif
 Summary:        Basic QA tests for the kernel
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          SLES
-Version:        5.13.6
+Version:        5.13.8
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g2d7b44d
+Release:        <RELEASE>.g967c6a8
 %else
 Release:        0
 %endif
