@@ -66,7 +66,7 @@ Conflicts:      libcom_err2-mini
 Conflicts:      libcom_err-mini-devel
 %endif
 #
-Version:        1.46.2
+Version:        1.46.3
 Release:        0
 Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only

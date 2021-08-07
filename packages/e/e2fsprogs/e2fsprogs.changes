@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug  2 20:47:09 UTC 2021 - Jan Kara <jack@suse.cz>
+
+- Update to 1.46.3:
+  * Add -V and -VV options to filefrag
+  * Fix fs corruption cause by resize2fs on filesystems with MMP blocks
+  * Fast commit portability fixes
+  * Fix direct IO support in Unix IO manager
+  * Avoid calling EXT2_IOC_[GS]ETFLAGS for block devices
+  * Fix mke2fs to not discard blocks beyond end of filesystem
+  * Make e2fsck set filetype of '.' and '..' entries
+  * Fix QCOW image generation in e2image for very large filesystems
+  * Update translations
+
+-------------------------------------------------------------------
 Wed Jun  2 08:31:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %doc files. RELEASE-NOTES is a symlink to
