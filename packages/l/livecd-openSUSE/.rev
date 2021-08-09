@@ -1239,4 +1239,12 @@
 - config.sh: Drop some more firmware (forwarded request 901289 from favogt)</comment>
     <requestid>901290</requestid>
   </revision>
+  <revision rev="154" vrev="154">
+    <srcmd5>0de617ac34ea81b81f7eb38c33d770d9</srcmd5>
+    <version>unknown</version>
+    <time>1628509671</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910820</requestid>
+  </revision>
 </revisionlist>

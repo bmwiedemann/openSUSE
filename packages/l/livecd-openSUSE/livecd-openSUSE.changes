@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  9 09:36:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: On x11, drop Mesa-gallium and udev hwdb
+
+-------------------------------------------------------------------
 Tue Jun 22 07:39:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - list-common: Ignore providers of smtp_daemon

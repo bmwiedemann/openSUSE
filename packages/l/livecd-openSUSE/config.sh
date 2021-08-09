@@ -60,6 +60,12 @@ if [ "$desktop" = "x11" ]; then
 
 	# Work around https://github.com/OSInside/kiwi/issues/1751
 	sed -i '/omit_dracutmodules=/d' /usr/bin/dracut
+
+	# Only used for X11 acceleration on vmwgfx, saves ~47MiB
+	rpm -e --nodeps Mesa-gallium
+
+	# Generated on boot if missing
+	rm /etc/udev/hwdb.bin
 fi
 
 cd /
