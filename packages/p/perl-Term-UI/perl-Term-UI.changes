@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Aug  7 03:08:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.50
+   see /usr/share/doc/packages/perl-Term-UI/CHANGES
+
+  0.50 Fri  6 Aug 17:52:26 BST 2021
+  * Fix number of tests to skip
+    (Michal Josef Špaček)
+  * Fix selecting the last choice
+    (Valery Kalesnik)
+
+  0.48 Tue  3 Aug 19:13:22 BST 2021
+  * Allow to specify the preput argument for the Term::ReadLine::Gnu
+    (Constantin Kulikov)
+  * RT#134899 Regex metacharacters in the choices can cause breakage
+    (Valery Kalesnik)
+  * Better width for choice number field
+    (Valery Kalesnik)
+  * RT#68198 Better processing of 'default' holding numbers
+    (Valery Kalesnik)
+  * Modernisation of distribution and coding
+    (Valery Kalesnik)
+
+-------------------------------------------------------------------
 Sun Jun  7 09:05:01 UTC 2015 - coolo@suse.com
 
 - updated to 0.46
