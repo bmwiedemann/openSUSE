@@ -82,6 +82,7 @@ cp %{SOURCE1} %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE6} %{SOURCE7} 
 
 # allow some float error for all platforms -- gh#skyfielders/python-skyfield#582
 sed -i 's/if IS_32_BIT/if True/' skyfield/tests/test_planetarylib.py
+sed -i 's/assert abs(distance.au - 1) < 1e-16/assert abs(distance.au - 1) < 1e-15/' skyfield/tests/test_positions.py
 
 %build
 %python_build
