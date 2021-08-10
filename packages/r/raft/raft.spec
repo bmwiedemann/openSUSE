@@ -17,7 +17,7 @@
 
 
 Name:           raft
-Version:        0.11.1
+Version:        0.11.2
 Release:        0
 Summary:        Fully asynchronous C implementation of the Raft consensus protocol
 License:        LGPL-3.0-only WITH LGPL-3.0-linking-exception
