@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 30 08:53:05 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop gnome-autoar-CVE-2020-36241.patch on SLE and Leap 15.4:
+  fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jun  4 09:58:28 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.3:
@@ -24,21 +30,20 @@ Wed Apr 14 00:40:44 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
   + Add back RAR support
 
 -------------------------------------------------------------------
+Mon Feb 22 06:43:29 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gnome-autoar-CVE-2020-36241.patch: Skip problematic files
+  that might be extracted outside of the destination dir to prevent
+  potential security threat. (bsc#1181930,
+  glgo#GNOME/gnome-autoar#7)
+
+-------------------------------------------------------------------
 Fri Feb 12 17:19:47 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.3.0:
   + Recognize MIME type aliases of extractable archives.
   + Add extraction support for password-protected archives.
   + CVE-2020-36241: Prevent extraction outside the destination dir.
-- Drop gnome-autoar-CVE-2020-36241.patch: fixed upstream.
-
--------------------------------------------------------------------
-Mon Feb 11 06:43:29 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
-
-- Add gnome-autoar-CVE-2020-36241.patch: Skip problematic files
-  that might be extracted outside of the destination dir to prevent
-  potential security threat. (bsc#1181930,
-  glgo#GNOME/gnome-autoar#7)
 
 -------------------------------------------------------------------
 Fri Dec 13 06:35:14 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -83,4 +83,12 @@
     <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909114 from yfjiang)</comment>
     <requestid>909316</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>8144bf0fe923eb9519d5903adda73808</srcmd5>
+    <version>0.3.3</version>
+    <time>1628584060</time>
+    <user>RBrownSUSE</user>
+    <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909348 from yfjiang)</comment>
+    <requestid>909726</requestid>
+  </revision>
 </revisionlist>
