@@ -2156,4 +2156,12 @@
 - Initial package, based on git commit b289b0f. (forwarded request 906850 from iznogood)</comment>
     <requestid>907064</requestid>
   </revision>
+  <revision rev="113" vrev="2">
+    <srcmd5>949e3579ff690d7baba4d867b0eda5bf</srcmd5>
+    <version>40.3</version>
+    <time>1628584066</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909696 from yfjiang)</comment>
+    <requestid>909742</requestid>
+  </revision>
 </revisionlist>

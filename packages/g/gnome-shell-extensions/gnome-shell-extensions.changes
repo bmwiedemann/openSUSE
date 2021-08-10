@@ -99,6 +99,12 @@ Thu Dec  3 20:58:59 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Misc. bug fixes.
 
 -------------------------------------------------------------------
+Fri Oct 30 01:26:33 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update sle-classic@suse.com.tar.gz: Change metadata shell-version
+  to 3.34 (bsc#1176911).
+
+-------------------------------------------------------------------
 Tue Oct 13 03:07:02 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Update file sle-classic.desktop according to the upstream commit
