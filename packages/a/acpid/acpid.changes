@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 27 14:19:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * acpid.service
+
+-------------------------------------------------------------------
 Mon Jan  4 13:11:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - spec-cleaner run 
