@@ -81,6 +81,7 @@ code, printing and editing of multiple documents in one window.
 
 %prep
 %autosetup -p1
+sed -i '1s/python$/python3/' plugins/externaltools/data/switch-c.tool.in
 
 %build
 NOCONFIGURE=1 mate-autogen

@@ -212,4 +212,12 @@
     <comment></comment>
     <requestid>889111</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>e3dbd6090da31d224d526e98b1d472d2</srcmd5>
+    <version>1.24.2</version>
+    <time>1628584070</time>
+    <user>RBrownSUSE</user>
+    <comment>- tools/switch-c: Switch shebang to /usr/bin/python3 (forwarded request 911138 from StevenK)</comment>
+    <requestid>911191</requestid>
+  </revision>
 </revisionlist>
