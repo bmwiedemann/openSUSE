@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  9 16:26:50 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.44.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.44.0
+
+-------------------------------------------------------------------
 Mon Jul 12 14:47:36 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Drop upstreamed patch 0002-Don-t-use-Bazel-in-build-manifests.sh.patch
