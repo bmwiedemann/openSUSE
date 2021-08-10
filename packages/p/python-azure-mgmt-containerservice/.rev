@@ -160,4 +160,15 @@
     <comment></comment>
     <requestid>904127</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3fda6a564976a19e9120d281f46ac57d</srcmd5>
+    <version>16.1.0</version>
+    <time>1628584059</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 16.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 911017 from glaubitz)</comment>
+    <requestid>911018</requestid>
+  </revision>
 </revisionlist>
