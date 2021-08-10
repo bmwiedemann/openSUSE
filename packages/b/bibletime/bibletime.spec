@@ -21,7 +21,7 @@
 %global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
-Version:        3.0
+Version:        3.0.1
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later
@@ -29,8 +29,6 @@ Group:          Productivity/Scientific/Other
 URL:            http://www.bibletime.info/
 Source0:        https://github.com/bibletime/bibletime/releases/download/v%{version}/bibletime-%{version}.tar.xz
 Source1:        bibletime-rpmlintrc
-# PATCH-FIX-UPSTREAM: Fix bug #260 Move DisplayView.qml to share/bibletime/qml
-Patch0:         displayview.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  fdupes
@@ -73,7 +71,6 @@ write own notes, save, print etc.).
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 %cmake \

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Aug  8 19:12:41 UTC 2021 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to 3.0.1:
+  * Improved tuning of scrolling speed.
+  * Improved handling of fonts to fix many bugs, including a switch to Qt's
+    native font chooser widget in settings dialog, because of many serious bugs
+    in our legacy implementation.
+  * Improved sample text in settings dialog.
+  * Improved behavior of the mag view to be more similar to pre-3.0 behavior.
+  * Increased maximum column count from 4 to 10.
+  * Removed the orphaned and broken tests for BibleTime.
+  * Updated translations, including a new user interface translations to
+    Japanese and Ukrainian, a new Handbook translation to Russian, and a new
+    Howto translation to Ukrainian.
+  * Fixed DisplayView.qml getting incorrectly installed under /usr/bin/ on some
+    platforms.
+  * Fixed some compatibility issues with different Qt versions.
+  * Fixed a crash when editing personal commentary.
+  * Fixed highlighting of selected text.
+  * Fixed dragging of links.
+  * Fixed modules rearranging themselves.
+  * Fixed logic related to clicking on verse numbers.
+  * Fixed custom font of first column being incorrectly applied to all columns.
+  * Fixed preview in settings dialog displaying text in red.
+  * Fixed lexicons not being displayed.
+  * Fixed drag and drop in mag view and search dialog.
+  * Fixed no text being displayed for some ThML modules.
+  * Fixed undefined behavior and crashes from opening menus to select works by
+    working around a broken QMenu interface (QTBUG-77273).
+  * Fixes to handling of languages, including a caching discrepancy which
+    caused some settings not being properly applied before restarting
+    BibleTime.
+  * Fixed saving of chapters not working properly.
+  * Fixed handling of nested tags for OSIS works.
+  * Fixes to handling of PageUp/PageDown keys when scrolling out of bounds.
+    Note that when BibleTime is compiled against Qt 5.9, one might still
+    experience a trivial glitch where only part of the module is displayed.
+    Pressing PageUp/PageDown again may help to work around this.
+- Remove displayview.patch
+
+-------------------------------------------------------------------
 Sun Jun 27 16:03:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded QtWebKit build dependency.
