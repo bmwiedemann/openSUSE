@@ -15,15 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%define major_ver 21.06
 Name:           rosegarden
-Version:        20.12
+Version:        %{major_ver}.1
 Release:        0
 Summary:        Midi, Audio And Notation Editor
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Midi
 URL:            https://www.rosegardenmusic.com/
-Source0:        https://sourceforge.net/projects/rosegarden/files/%{name}/%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://sourceforge.net/projects/rosegarden/files/%{name}/%{major_ver}/%{name}-%{version}.tar.bz2
 Source1:        %{name}.xpm
 Source2:        %{name}.1
 # PATCH-FIX-OPENSUSE davejplater@gmail.com This patch fixes the file search paths for examples, templates and midi driver libraries.

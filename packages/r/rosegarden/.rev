@@ -334,4 +334,12 @@ Fixes bnc#745619 (forwarded request 108469 from plater)</comment>
     <comment></comment>
     <requestid>905173</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>3f606e944f8a3073a033ae388100282a</srcmd5>
+    <version>21.06.1</version>
+    <time>1628584044</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910661</requestid>
+  </revision>
 </revisionlist>

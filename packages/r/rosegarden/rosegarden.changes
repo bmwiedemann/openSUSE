@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug  7 16:14:17 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 21.06.1:
+  * Fixed a crash when building with Qt 5.14 and above and
+    running with multiple monitors (Bug #1599).
+- Changes from version 21.06:
+  * New features:
+    - Clean Recent Files List in the preferences removes files
+      that aren't present on the filesystem from the recent files
+      list.
+    - Preferences: Add send BS/PC/CCs while looping.
+    - Added Segment label to Notation editor.
+    - Matrix editor now preserves zoom factor and rulers for each
+      Segment in the .rg file. Feature #486.
+    - Notation editor now preserves rulers for each Segment in the
+      .rg file. Feature #486.
+  * Many bug fixes, see
+    <https://rosegardenmusic.com/wiki/dev:21.06>.
+
+-------------------------------------------------------------------
 Fri Jul  9 05:52:38 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add scripts-sf2rg-python3.patch:
