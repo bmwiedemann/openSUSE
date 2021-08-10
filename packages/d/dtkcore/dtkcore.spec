@@ -17,11 +17,12 @@
 #
 
 
-%define libver 5
-%define apiver 5.5.0
+%define libver  5
+%define apiver  5.5.0
+%define pkg_ver 5.5
 
 Name:           dtkcore
-Version:        5.4.13
+Version:        5.5.17.1
 Release:        0
 Summary:        Deepin Tool Kit Core
 License:        LGPL-3.0-only
@@ -30,6 +31,8 @@ URL:            https://github.com/linuxdeepin/dtkcore
 Source0:        https://github.com/linuxdeepin/dtkcore/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTEAM Fix-library-link.patch hillwood@opensuse.org - Need link to dl
 Patch0:         Fix-library-link.patch
+# PATCH-FIX-UPSTEAM fix-return-type.patch hillwood@opensuse.org - fix return type error
+Patch1:         fix-return-type.patch
 BuildRequires:  dtkcommon
 BuildRequires:  fdupes
 BuildRequires:  gtest
@@ -73,8 +76,8 @@ You shoud firstly read the "Deepin Application Specification".
 %prep
 %autosetup -p1
 # sed -i 's/system(lrelease/system(lrelease-qt5/g' src/dtk_translation.prf
-sed -i 's|#!/usr/bin/env python|#!/usr/bin/python3|g' tools/script/dtk-license.py
-sed -i 's|#!env python|#!/usr/bin/python3|g' tools/script/dtk-translate.py
+sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|g' tools/script/dtk-license.py
+sed -i 's|#!/usr/bin/env python3|#!/usr/bin/python3|g' tools/script/dtk-translate.py
 
 %build
 %qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
@@ -87,6 +90,7 @@ sed -i 's|#!env python|#!/usr/bin/python3|g' tools/script/dtk-translate.py
 %qmake5_install
 # Remove useless files
 rm -rf %{buildroot}/usr/tests
+chmod +x %{buildroot}%{_libdir}/libdtk-5.5.0/DCore/bin/*.py
 
 %post -n lib%{name}%{libver} -p /sbin/ldconfig
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
@@ -95,6 +99,7 @@ rm -rf %{buildroot}/usr/tests
 %defattr(-,root,root,-)
 %doc README.md CHANGELOG.md
 %license LICENSE
+%{_bindir}/qdbusxml2cpp-fix
 %{_libdir}/libdtk-%{apiver}
 
 %files -n lib%{name}%{libver}
@@ -104,7 +109,7 @@ rm -rf %{buildroot}/usr/tests
 %files devel
 %defattr(-,root,root,-)
 %{_libdir}/lib%{name}.so
-%{_libdir}/pkgconfig/dtkcore.pc
+%{_libdir}/pkgconfig/*.pc
 %{_includedir}/libdtk-%{apiver}
 %dir %{_libdir}/qt5
 %dir %{_libdir}/qt5/mkspecs

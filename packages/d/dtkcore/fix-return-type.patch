@@ -1,0 +1,11 @@
+diff -Nur dtkcore-5.5.17.1/src/dsysinfo.cpp dtkcore-5.5.17.1-new/src/dsysinfo.cpp
+--- dtkcore-5.5.17.1/src/dsysinfo.cpp	2021-06-29 17:15:40.000000000 +0800
++++ dtkcore-5.5.17.1-new/src/dsysinfo.cpp	2021-07-25 15:24:38.963081577 +0800
+@@ -794,6 +794,7 @@
+         qWarning() << "Getting the SP version in this mode is not supported.";
+         return {};
+     }
++    return {};
+ }
+ 
+ /*!

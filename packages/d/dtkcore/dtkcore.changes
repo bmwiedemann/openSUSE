@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug  1 07:31:49 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update pkgconfig profile version to 5.5 
+
+-------------------------------------------------------------------
+Sun Jul 25 07:29:44 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.17.1
+  * Add qdbusxml2cpp-fix
+  * update abi json file 
+  * Renaming a nonexistent file will report an error
+  * Add global function to get dtk Version
+  * Export DObjectPrivate
+- Add fix-return-type.patch, fix return type error.
+
+-------------------------------------------------------------------
 Tue Jun  1 07:59:08 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Change Requires to Recommends for qt5integration, fix cycle dependence
