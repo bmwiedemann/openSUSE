@@ -1,0 +1,32 @@
+From b55e5483fac3ee47437f7b7d31343de8d6290e45 Mon Sep 17 00:00:00 2001
+From: Boris Samorodov <bsam@passap.ru>
+Date: Mon, 20 Mar 2017 19:59:03 +0100
+Subject: [PATCH] * [core]: fix for FreeBSD clang-4.0
+
+Thanks for the patch. Will close issue #5
+---
+ icc_profile_tags.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/icc_profile_tags.cpp b/icc_profile_tags.cpp
+index 2d63c06..4c00f74 100644
+--- a/icc_profile_tags.cpp
++++ b/icc_profile_tags.cpp
+@@ -349,12 +349,12 @@ ICCtag::getText                     (std::string text)
+ #   ifdef DEBUG_ICCTAG
+     DBG_NUM_S ((int)strchr(txt, 13))
+ #   endif
+-    while (strchr(txt, 13) > 0) { // \r 013 0x0d
++    while (strchr(txt, 13)) { // \r 013 0x0d
+       pos = strchr(txt, 13);
+ #     ifdef DEBUG_ICCTAG
+       //cout << (int)pos << " "; DBG
+ #     endif
+-      if (pos > 0) {
++      if (pos) {
+         if (*(pos+1) == '\n')
+           *pos = ' ';
+         else
+-- 
+2.32.0
+

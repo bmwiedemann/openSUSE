@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug  3 08:19:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with modern compilers:
+  * 0001-core-fix-for-FreeBSD-clang-4.0.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Dec  8 08:52:21 UTC 2019 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix factory build

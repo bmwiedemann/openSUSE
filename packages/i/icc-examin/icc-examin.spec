@@ -1,7 +1,7 @@
 #
 # spec file for package icc-examin
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://www.oyranos.org/icc-examin
 Source:         %{name}_%{version}.orig.tar.bz2
 Patch0:         icc-examin-gcc7.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-core-fix-for-FreeBSD-clang-4.0.patch
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  expat
@@ -79,8 +81,7 @@ visualisations (vrml), video card gamma tables (Xorg/XFree86/osX).
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 %cmake \
@@ -93,14 +94,6 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.ttf" -delete -print
 %suse_update_desktop_file -n  iccexamin # some openSUSE magic
 
-%if 0%{?suse_version} <1500
-%post
-%mime_database_post
-
-%postun
-%mime_database_postun
-%endif
-
 %files lang -f %{name}.lang
 
 %files
@@ -109,6 +102,6 @@ find %{buildroot} -type f -name "*.ttf" -delete -print
 %{_bindir}/iccexamin
 %{_datadir}/applications/iccexamin.desktop
 %{_datadir}/pixmaps/iccexamin.svg
-%{_mandir}/man1/iccexamin.1%{ext_man}
+%{_mandir}/man1/iccexamin.1%{?ext_man}
 
 %changelog
