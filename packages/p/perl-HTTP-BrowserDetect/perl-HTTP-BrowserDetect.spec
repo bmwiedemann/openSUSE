@@ -18,7 +18,7 @@
 
 %define cpan_name HTTP-BrowserDetect
 Name:           perl-HTTP-BrowserDetect
-Version:        3.33
+Version:        3.34
 Release:        0
 Summary:        Determine Web browser, version, and platform from an HTTP user agent string
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -33,8 +33,9 @@ BuildRequires:  perl(JSON::PP) >= 4.04
 BuildRequires:  perl(List::Util) >= 1.49
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Test::Differences)
-BuildRequires:  perl(Test::FailWarnings)
+BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings)
+BuildRequires:  perl(Test::Warnings)
 %{perl_requires}
 
 %description
