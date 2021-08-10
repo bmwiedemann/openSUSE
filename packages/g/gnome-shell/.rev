@@ -1798,4 +1798,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   removed, we don't need this patch now(bsc#1188533). (forwarded request 907415 from xiaoguang_wang)</comment>
     <requestid>907577</requestid>
   </revision>
+  <revision rev="203" vrev="3">
+    <srcmd5>2cbd55ea552c4b93465f3475ceddea63</srcmd5>
+    <version>40.3</version>
+    <time>1628584064</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909640 from yfjiang)</comment>
+    <requestid>909730</requestid>
+  </revision>
 </revisionlist>

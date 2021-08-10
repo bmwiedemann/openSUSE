@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  2 00:09:07 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop patches fixed upstream:
+  + gnome-shell-network-agent-not-pop-up.patch
+  + gnome-shell-jscSLE16518-update-subprojects-libgvc.patch
+  + gnome-shell-CVE-2020-17489.patch
+
+-------------------------------------------------------------------
 Wed Jul 21 03:47:44 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Drop gnome-shell-lock-bg-on-primary.patch: the
@@ -91,8 +99,7 @@ Tue Apr  6 06:26:21 UTC 2021 - QK ZHU <qkzhu@suse.com>
 -------------------------------------------------------------------
 Sun Mar 21 17:07:53 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
-- Update
-  gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
+- Update gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch:
   fix (boo#1183823).
 
 -------------------------------------------------------------------
@@ -304,6 +311,21 @@ Fri Oct 23 19:30:05 UTC 2020 - Marcus Rueckert <mrueckert@suse.de>
   https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/98234acd5b48a58c2d112b5edb3dddb85e04a643.patch
 
 -------------------------------------------------------------------
+Fri Oct 23 01:44:34 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-CVE-2020-17489.patch: reset auth prompt on vt
+  switch before fade in in loginDialog 
+  (bsc#1175155 glgo#GNOME/gnome-shell!1377 CVE-2020-17489).
+
+-------------------------------------------------------------------
+Mon Oct 12 09:24:09 UTC 2020 - QK ZHU <qkzhu@suse.com>
+
+- Add gnome-shell-jscSLE16518-update-subprojects-libgvc.patch:
+  Update libgvc to revision 7a621180. This update is necessary to 
+  add support for recent UCM related changes in ALSA and PulseAudio
+  (jsc#SLE-16518, glgo#GNOME/gnome-shell!1444).
+
+-------------------------------------------------------------------
 Thu Oct  8 03:38:01 UTC 2020 - dimstar@opensuse.org
 
 - Update to version 3.38.1:
@@ -487,6 +509,12 @@ Mon Jul 13 02:04:52 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
   (jsc#SLE-11720).
 
 -------------------------------------------------------------------
+Thu Jul  9 07:17:11 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-network-agent-not-pop-up.patch: Fix network agent
+  doesn't pop up (bsc#1171822).
+
+-------------------------------------------------------------------
 Wed Jul  8 07:35:34 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.4:
@@ -531,6 +559,12 @@ Thu Jun  4 09:49:43 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Misc. bug fixes and cleanups.
   + Updated translations.
 - Drop gnome-shell-panel-center-app-icon.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jun  3 02:11:21 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update gnome-shell-private-connection.patch: Remove JS error in
+  messages log when NetworkManager is not installed (bsc#1172424).
 
 -------------------------------------------------------------------
 Thu May  7 19:27:38 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
