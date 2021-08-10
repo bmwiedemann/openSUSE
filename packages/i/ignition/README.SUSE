@@ -10,13 +10,17 @@ Changes for openSUSE / SLE:
   For better usability in addition to Ignition's own mount / umount stage all
   files systems tagged for being mounted in the initrd ("x-initrd.mount" mount
   flag) will automatically be mounted / umounted.
-* ignition-setup-user-suse.sh / ignition-userconfig-timeout*.conf:
+* ignition-setup-user.service / ignition-setup-use.sh:
   The user configuration can be stored on a device with the label "ignition"
-  (e.g. by attaching a USB flash drive with that name) instead of putting the
-  file onto the root partition.
+  (e.g. by attaching a USB flash drive with that name) instead of using the
+  platform specific configuration storage mechanism.
+* ignition-userconfig-timeout*.conf:
+  Set timeout for Ignition device so boot will just continue if no physical
+  Ignition configuration device is attached (e.g. when using platform
+  specific configuration).
 * ignition-suse-generator:
   Supplements the upstream generator by adding dependencies to
-  ignition-setup-user-suse.sh and ignition-mount-initrd-fstab.service.
+  ignition-setup-user.service and ignition-mount-initrd-fstab.service.
   Additionally it will try to autodect the platform if it is not set on the
   kernel command line.
 * 02_ignition_firstboot:
@@ -28,8 +32,14 @@ Changes for openSUSE / SLE:
   Ignition run if a flag file does not exist (e.g. on first boot). To trigger
   an Ignition run manually just delete the file
   "/boot/writable/firstboot_happened".
-* change-ignition-firstboot-path.conf:
-  Overwrite CoreOS specific path.
+* ignition-firstboot-complete.service:
+  This file has been part of upstream ignition-dracut, but has since then been
+  moved to a static CoreOS specific configuration
+  (https://github.com/coreos/fedora-coreos-config/pull/1087); it is now used
+  in a simpified version adapted to SUSE's needs.
+  Sets the flag file "/boot/writable/firstboot_happened" to indicate a
+  successful first boot. This flag file is evaluated by the GRUB script
+  02_ignition_firstboot from above.
 * ignition-enable-network.service / ignition-enable-network.sh:
   Ignition supports detection whether the configuration requires networking
   to avoid having to boot with networking enabled even when it isn't

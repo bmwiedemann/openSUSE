@@ -1,0 +1,13 @@
+[Unit]
+Description=Mark boot complete
+Documentation=https://build.opensuse.org/package/view_file/devel:kubic:ignition/ignition/README.SUSE?expand=1
+ConditionKernelCommandLine=ignition.firstboot
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/bin/touch /boot/writable/firstboot_happened
+
+[Install]
+# Part of basic.target so this happens early on in firstboot
+WantedBy=basic.target

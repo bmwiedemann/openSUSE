@@ -6,6 +6,16 @@ depends() {
     echo ignition
 }
 
+install_ignition_unit() {
+    local unit="$1"; shift
+    local target="${1:-ignition-complete.target}"; shift
+    local instantiated="${1:-$unit}"; shift
+    inst_simple "$moddir/$unit" "$systemdsystemunitdir/$unit"
+    # note we `|| exit 1` here so we error out if e.g. the units are missing
+    # see https://github.com/coreos/fedora-coreos-config/issues/799
+    systemctl -q --root="$initdir" add-requires "$target" "$instantiated" || exit 1
+}
+
 install() {
     inst_simple "$moddir/ignition-enable-network.service" \
         "$systemdsystemunitdir/ignition-enable-network.service"
@@ -17,9 +27,10 @@ install() {
         "/etc/systemd/system-generators/ignition-generator"
     inst_script "$moddir/ignition-enable-network.sh" \
         "/usr/sbin/ignition-enable-network"
-    inst_script "$moddir/ignition-setup-user-suse.sh" \
-        "/usr/sbin/ignition-setup-user-suse"
+    inst_script "$moddir/ignition-setup-user.sh" \
+        "/usr/sbin/ignition-setup-user"
     inst_multiple awk systemd-detect-virt
+    install_ignition_unit ignition-setup-user.service
 }
 
 installkernel() {

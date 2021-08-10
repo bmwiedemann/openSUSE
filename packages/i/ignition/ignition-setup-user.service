@@ -1,0 +1,18 @@
+[Unit]
+Description=Ignition User Config Setup
+Documentation=https://build.opensuse.org/package/view_file/devel:kubic:ignition/ignition/README.SUSE?expand=1
+ConditionPathExists=/etc/initrd-release
+DefaultDependencies=false
+
+# We run before config fetch because we may copy in new/different configs
+# for Ignition to consume.
+Before=ignition-fetch-offline.service
+
+OnFailure=emergency.target
+OnFailureJobMode=isolate
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+MountFlags=slave
+ExecStart=/usr/sbin/ignition-setup-user

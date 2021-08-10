@@ -74,6 +74,6 @@ EOF
     echo "Clearing GRUB flag"
     chroot /sysroot grub2-editenv - set health_checker_flag=0 || true
 
-    reboot
+    systemctl reboot --force
 fi
 

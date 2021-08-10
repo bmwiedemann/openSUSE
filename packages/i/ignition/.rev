@@ -425,4 +425,65 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment></comment>
     <requestid>908899</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>3b373e03c317b12db80d4984715fa67a</srcmd5>
+    <version>2.12.0</version>
+    <time>1628584060</time>
+    <user>RBrownSUSE</user>
+    <comment>This is a major update, as it is removing several Dracut scripts and making them distribution specific.
+
+- Update to version 2.12.0:
+  * news: add notes for 2.12.0
+  * stages/files: add previousReport to result report
+  * tests: fix linter warning
+  * workflows: limit permissions to reading repo contents
+  * workflows: bump linter version
+  * go.mod: revendor
+  * Drop EOL Go versions
+  * internal/distro: drop DiskByIDDir
+  * providers/azure: add support for azure gen2 VMs
+  * stages/mount: correctly relabel the root of a fresh ext4 filesystem
+  * exec: fix permissions for mountpoints in home dirs
+  * tests: drop os.ModeDir requirement in mode of output directories
+  * examples: reboot with --force
+  * exec/util: add blkid API to query block devices based on FSTYPE
+  * stages/files: use IntToPtr() in createCrypttabEntries()
+  * stages/files: write result report to /var/lib/ignition
+  * engine: persist fetched config summaries in State
+  * stages/disks: use State to persist keyfiles for files stage
+  * *: add general mechanism for persisting state between stages
+  * main: drop -clear-cache flag
+  * engine: don't hardcode neednet path
+  * fetch-offline: return ErrNeedNet if we need net
+  * engine: switch Engine.logReport() to pointer receiver
+  * engine: fix incorrect error in log message
+  * dracut: drop ignition-setup-user.service
+  * dracut: drop reference to ignition-setup-base.service
+  * providers/gcp: access GCP metadata service by IP address
+  * Remove ignition-firstboot-complete.service
+  * OWNERS: remove
+  * internal/exec/util: drop device argument from cResultToErr()
+  * docs/config*: document storage.luks.clevis.threshold default
+  * ci: disable spec bump external test workaround
+  * docs: Add Ignition release / Spec version table
+  * templates: update example releng signing ticket
+  * templates: don't update %gotest lines
+* Provide ignition-firstboot-complete.service (removed by upstream
+  due to correctly being considered distro spcific), based on the
+  old upstream version; removed all non-SUSE specific stuff and
+  integrated our own changes
+* Removed change-ignition-firstboot-path.conf (changes are
+  integrated into ignition-firstboot-complete.service now).
+* Provide ignition-setup-user.service  (removed by upstream due
+  to correctly being considered distro spcific), based on the old
+  upstream version.
+* Renamed ignition-setup-user-suse.sh to ignition-setup-user.sh
+* Adapted ignition-generator-suse and module-setup.sh to use the
+  custom ignition-setup-user.service (no overriding of parts of the
+  service file necessary any more).
+* Synced ignition-kargs-helper script with upstream example
+* Raising minimum Go version to 1.15 as required by upstream
+</comment>
+    <requestid>911075</requestid>
+  </revision>
 </revisionlist>

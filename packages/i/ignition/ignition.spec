@@ -17,7 +17,7 @@
 
 
 Name:           ignition
-Version:        2.11.0
+Version:        2.12.0
 Release:        0
 Summary:        First boot installer and configuration tool
 License:        Apache-2.0
@@ -29,12 +29,13 @@ Source2:        ignition-rpmlintrc
 Source3:        ignition-suse-generator
 Source4:        module-setup.sh
 Source5:        02_ignition_firstboot
-Source6:        change-ignition-firstboot-path.conf
+Source6:        ignition-firstboot-complete.service
 Source7:        README.SUSE
-Source8:        ignition-setup-user-suse.sh
-Source9:        ignition-enable-network.service
-Source10:       ignition-enable-network.sh
-Source11:       ignition-kargs-helper
+Source8:        ignition-setup-user.sh
+Source9:        ignition-setup-user.service
+Source10:       ignition-enable-network.service
+Source11:       ignition-enable-network.sh
+Source12:       ignition-kargs-helper
 Source20:       ignition-userconfig-timeout.conf
 Source21:       ignition-userconfig-timeout-arm.conf
 Patch2:         0002-allow-multiple-mounts-of-same-device.patch
@@ -42,7 +43,7 @@ BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-bootloader-rpm-macros
-BuildRequires:  golang(API) >= 1.13
+BuildRequires:  golang(API) >= 1.15
 Requires:       %{name}-dracut-grub2
 Requires:       dracut
 Recommends:     %{_sbindir}/groupadd
@@ -86,8 +87,8 @@ which creates firstboot_happened after the first boot.
 %patch2 -p1
 
 mkdir dracut/30ignition-microos grub systemd_suse
-chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE11}
-cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} dracut/30ignition-microos/
+chmod +x %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE12}
+cp %{SOURCE1} %{SOURCE3} %{SOURCE4} %{SOURCE8} %{SOURCE9} %{SOURCE10} %{SOURCE11} dracut/30ignition-microos/
 %ifarch aarch64 %{arm}
 cp %{SOURCE21} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 %else
@@ -96,7 +97,7 @@ cp %{SOURCE20} dracut/30ignition-microos/ignition-userconfig-timeout.conf
 cp %{SOURCE5} grub/
 cp %{SOURCE6} systemd_suse/
 cp %{SOURCE7} .
-cp %{SOURCE11} dracut/30ignition/ignition-kargs-helper.sh
+cp %{SOURCE12} dracut/30ignition/ignition-kargs-helper.sh
 
 %build
 sed -i -e 's|go build -ldflags|go build -buildmode=pie -ldflags|g' build
@@ -106,9 +107,9 @@ env VERSION=%{version} GLDFLAGS='-X github.com/coreos/ignition/v2/internal/distr
 make -o all install DESTDIR=%{buildroot}
 
 install -d %{buildroot}%{_sysconfdir}/grub.d
-install -d %{buildroot}%{_prefix}/lib/systemd/system/ignition-firstboot-complete.service.d
+install -d %{buildroot}%{_prefix}/lib/systemd/system
 install -p -m 0755 grub/* %{buildroot}%{_sysconfdir}/grub.d/
-install -p -m 0644 systemd_suse/*.conf %{buildroot}%{_prefix}/lib/systemd/system/ignition-firstboot-complete.service.d/
+install -p -m 0644 systemd_suse/* %{buildroot}%{_prefix}/lib/systemd/system/
 
 %post
 %{?regenerate_initrd_post}
@@ -159,6 +160,5 @@ fi
 %doc README.SUSE
 %{_sysconfdir}/grub.d/02_ignition_firstboot
 %{_prefix}/lib/systemd/system/ignition-firstboot-complete.service
-%{_prefix}/lib/systemd/system/ignition-firstboot-complete.service.d/
 
 %changelog
