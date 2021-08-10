@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Aug  8 05:01:57 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.1.2
+  * General:
+    * Fix: Various crash / cleanup fixes
+    * Fix: Reduce log-spam
+    * Fix: Wrong names for HVC
+    * Fix: Don't deselect droids when pressing RMB over something
+    * Fix: Various memory leaks
+    * Fix: Do not play audio from assignments to commanders from
+      other players
+    * Fix: When editing keymappings, ESC should unhighlight
+      the selection
+    * Fix: Correct minimum OpenGL version check
+  * Graphics:
+    * Fix: Vulkan: Crash due to late release of graphics resources
+    * Fix: Statistics table overflow
+    * Fix: Various widget improvements
+  * Campaign:
+    * Fix: Add new Twin MG Tower to transitionTech.js, move
+      the second Cannon damage upgrade back to Alpha 04
+  * Multiplayer:
+    * Fix: Map request logic improvements
+  * Balance:
+    * Change: Additional editing of VTOL Rockets and Plasmite
+      Bomb parameters
+
+-------------------------------------------------------------------
 Sun Aug  1 06:28:52 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.1.1

@@ -24,7 +24,7 @@
 %bcond_with vulkan
 %endif
 Name:           warzone2100
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Innovative 3D real-time strategy
 License:        BSD-3-Clause AND CC-BY-SA-3.0 AND GPL-3.0-or-later AND CC0-1.0 AND LGPL-2.1-only
@@ -139,8 +139,10 @@ mv %{buildroot}%{_datadir}/icons/warzone2100.png %{buildroot}%{_datadir}/icons/h
 # remove redundant files
 rm %{buildroot}%{_datadir}/doc/%{name}/AUTHORS
 rm %{buildroot}%{_datadir}/doc/%{name}/ChangeLog
+rm %{buildroot}%{_datadir}/doc/%{name}/COPYING
 rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.NONGPL
 rm %{buildroot}%{_datadir}/doc/%{name}/COPYING.README
+rm %{buildroot}%{_datadir}/doc/%{name}/README.md
 
 # remove .portable file - removing or renaming this file will disable Portable mode
 rm %{buildroot}%{_bindir}/.portable
@@ -149,7 +151,7 @@ rm %{buildroot}%{_bindir}/.portable
 
 %files -f %{name}.lang
 %license COPYING COPYING.NONGPL COPYING.README
-%doc AUTHORS ChangeLog
+%doc AUTHORS ChangeLog README.md
 %{_bindir}/*
 %{_datadir}/applications/*
 %{_datadir}/appdata/warzone2100.appdata.xml
