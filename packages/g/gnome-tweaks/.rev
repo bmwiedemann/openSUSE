@@ -114,4 +114,12 @@
     <comment>Update to 40.0 (forwarded request 886228 from dimstar)</comment>
     <requestid>887479</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>d784352a6a2111418a782c5496a1e273</srcmd5>
+    <version>40.0</version>
+    <time>1628584066</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909698 from yfjiang)</comment>
+    <requestid>909743</requestid>
+  </revision>
 </revisionlist>

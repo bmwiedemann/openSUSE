@@ -59,11 +59,18 @@ Fri Nov 27 23:05:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 - Add gnome-tweaks-port-libhandy-1.patch: Port to using new handy.
 
 -------------------------------------------------------------------
+Wed Oct 28 08:10:19 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Updated gnome-tweaks-fix-titlebar-buttons-left.patch: Upstream
+  has new commit to fix titlebar layout when buttons are placed
+  left, so update the patch. (glgo#GNOME/gnome-tweaks!63)
+
+-------------------------------------------------------------------
 Thu Aug  6 01:42:46 UTC 2020 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Added gnome-tweaks-fix-titlebar-buttons-left.patch: GNOME Tweaks
   titlebar starts flickering when setting button placement to left,
-  this patch fixs it. (bsc#1162080, glgo#GNOME/gnome-tweaks#245)
+  this patch fixes it. (bsc#1162080, glgo#GNOME/gnome-tweaks#245)
 
 -------------------------------------------------------------------
 Fri Sep 27 11:52:41 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
