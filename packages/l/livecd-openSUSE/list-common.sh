@@ -243,7 +243,6 @@ install multipath-tools
 install ntfs-3g
 install ntfsprogs
 install nvme-cli
-install open-iscsi
 install quota
 install xfsdump
 install xfsprogs

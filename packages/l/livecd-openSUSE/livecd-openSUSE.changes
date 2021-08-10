@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  9 12:48:47 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- list-common: Drop open-iscsi, not that useful and introduces
+  dependency on network-online.target
+
+-------------------------------------------------------------------
 Mon Aug  9 09:36:59 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - config.sh: On x11, drop Mesa-gallium and udev hwdb
