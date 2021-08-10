@@ -1443,4 +1443,12 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
 - Disable eglstream on Leap/SLE by now since it is under review. (forwarded request 909102 from yfjiang)</comment>
     <requestid>909107</requestid>
   </revision>
+  <revision rev="169" vrev="3">
+    <srcmd5>aec2d3bc48f35e52acecfc3c9d247348</srcmd5>
+    <version>40.3</version>
+    <time>1628584063</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909374 from yfjiang)</comment>
+    <requestid>909729</requestid>
+  </revision>
 </revisionlist>
