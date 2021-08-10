@@ -540,4 +540,12 @@ Fix CVE-2021-33516 ( boo#1186590 ) (forwarded request 896477 from susnux)</comme
     <comment>New version (forwarded request 897880 from iznogood)</comment>
     <requestid>898027</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>1457b846301bbe056bc6d65c37b8bf5e</srcmd5>
+    <version>1.2.7</version>
+    <time>1628584064</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909644 from yfjiang)</comment>
+    <requestid>909732</requestid>
+  </revision>
 </revisionlist>
