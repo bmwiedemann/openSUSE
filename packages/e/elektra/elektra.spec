@@ -35,6 +35,8 @@ URL:            http://www.libelektra.org
 %define api     4
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source1:        elektra-rpmlintrc
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-kdb-add-missing-limits-include.patch
 Patch1:         fix-gtest-linkage.patch
 BuildRequires:  boost-devel
 BuildRequires:  byacc
@@ -189,8 +191,7 @@ This package contains development specific documentation.
 
 
 %prep
-%setup -q
-%patch1 -p1
+%autosetup -p1
 
 %build
 %define _lto_cflags %{nil}

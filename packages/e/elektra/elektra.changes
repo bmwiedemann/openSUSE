@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  2 07:48:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add GCC 11 include fix:
+  * 0001-kdb-add-missing-limits-include.patch
+
+-------------------------------------------------------------------
 Tue Nov 24 14:14:56 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Update to 0.8.26

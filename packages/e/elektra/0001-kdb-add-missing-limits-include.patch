@@ -1,0 +1,24 @@
+From 86aaae952843814b3a4733e03dddb97fc8927e59 Mon Sep 17 00:00:00 2001
+From: Mihael Pranjic <mpranj@limun.org>
+Date: Mon, 26 Apr 2021 14:53:21 +0200
+Subject: [PATCH] kdb: add missing <limits> include
+
+---
+ src/tools/kdb/cmdline.cpp | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/tools/kdb/cmdline.cpp b/src/tools/kdb/cmdline.cpp
+index 9fc88ef..ace29fe 100644
+--- a/src/tools/kdb/cmdline.cpp
++++ b/src/tools/kdb/cmdline.cpp
+@@ -16,6 +16,7 @@
+ 
+ #include <cstdio>
+ #include <iostream>
++#include <limits>
+ #include <set>
+ #include <vector>
+ 
+-- 
+2.32.0
+
