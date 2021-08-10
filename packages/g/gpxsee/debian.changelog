@@ -1,6 +1,14 @@
+gpxsee (9.4) stable; urgency=low
+
+  * Rotate JPEG thumbnails according to EXIF data.
+  * Fixed Mapsforge styles parsing/rendering.
+  * Improved IMG maps performance.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 08 Aug 2021 14:37:11 +0200
+
 gpxsee (9.3) stable; urgency=medium
 
-  * Fixed crash with certaim Mapsforge styles.
+  * Fixed crash with certain Mapsforge styles.
   * Removed the artificial POI zoom level limits in IMG maps.
   * Added initial open file paths configuration.
 

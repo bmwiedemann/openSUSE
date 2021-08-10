@@ -1,8 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug  8 14:33:15 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.4
+  * Rotate JPEG thumbnails according to EXIF data.
+  * Fixed Mapsforge styles parsing/rendering.
+  * Improved IMG maps performance.
+
+-------------------------------------------------------------------
 Sat Jul 17 15:05:22 CEST 2021 - tumic@cbox.cz
 
 - Update to version 9.3
-  * Fixed crash with certaim Mapsforge styles.
+  * Fixed crash with certain Mapsforge styles.
   * Removed the artificial POI zoom level limits in IMG maps.
   * Added initial open file paths configuration.
 
