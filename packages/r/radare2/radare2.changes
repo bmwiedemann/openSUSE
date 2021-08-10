@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug  3 22:29:17 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Add CVE-2021-3673.patch, fixing CVE-2021-3673 (boo#1189009):
+  resource exhaustion and DoS
+
+-------------------------------------------------------------------
 Sat Jul 10 12:52:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 5.3.1

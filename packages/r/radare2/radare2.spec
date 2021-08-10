@@ -1,7 +1,7 @@
 #
 # spec file for package radare2
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-3.0-only AND LGPL-3.0-only
 Group:          Development/Tools/Debuggers
 URL:            https://www.radare.org
 Source:         https://github.com/radareorg/radare2/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch:          https://github.com/radareorg/radare2/commit/d7ea20fb2e1433ebece9f004d87ad8f2377af23d.patch#/CVE-2021-3673.patch
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  file-devel
@@ -42,7 +43,7 @@ Opensource tools to disassemble, debug, analyze and manipulate binary files.
 
 %package devel
 Summary:        Devel files for radare2
-License:        LGPL-3.0
+License:        LGPL-3.0-only
 Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
 Requires:       file-devel
@@ -57,6 +58,7 @@ Development files for radare2
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch -p1
 
 %build
 export CFLAGS="%{optflags}"
