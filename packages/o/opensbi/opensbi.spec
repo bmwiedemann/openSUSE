@@ -31,6 +31,9 @@ Group:          System/Boot
 URL:            https://github.com/riscv/opensbi
 Source:         https://github.com/riscv/opensbi/archive/v%{version}.tar.gz#/opensbi-%{version}.tar.gz
 ExclusiveArch:  riscv64
+%if "%{target}" != ""
+BuildRequires:  u-boot-%{target}
+%endif
 
 %description
 The RISC-V Supervisor Binary Interface (SBI) is the recommended interface
@@ -68,18 +71,16 @@ This package provides the development files for %{name}.
 %build
 %if "%{target}" == ""
 %make_build PLATFORM=generic
-%endif
-%if "%{target}" == "sifivefu540"
-%make_build PLATFORM=sifive/fu540
+%else
+%make_build PLATFORM=generic FW_PAYLOAD_PATH=/boot/u-boot.bin FW_FDT_PATH=/boot/u-boot.dtb
 %endif
 
 %install
 %if "%{target}" == ""
 make install I=%{buildroot}%{_prefix} INSTALL_LIB_PATH=%{_lib}
 install -D -m 644 build/platform/generic/firmware/fw_dynamic.bin %{buildroot}%{_datadir}/opensbi/opensbi.bin
-%endif
-%if "%{target}" == "sifivefu540"
-install -D -m 644 build/platform/sifive/fu540/firmware/fw_dynamic.bin %{buildroot}%{_datadir}/opensbi/opensbi-sifive-fu540.bin
+%else
+install -D -m 644 build/platform/generic/firmware/fw_payload.bin %{buildroot}%{_datadir}/opensbi/opensbi-%{target}.bin
 %endif
 
 %files

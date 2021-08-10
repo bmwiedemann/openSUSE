@@ -58,4 +58,12 @@
   * More detailed boot-time prints (forwarded request 864141 from Andreas_Schwab)</comment>
     <requestid>864142</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>d66c99b66468d79a00fbd104df7a6c8b</srcmd5>
+    <version>0.9</version>
+    <time>1628584059</time>
+    <user>RBrownSUSE</user>
+    <comment>- Drop sifivefu540 flavor (forwarded request 911068 from Andreas_Schwab)</comment>
+    <requestid>911069</requestid>
+  </revision>
 </revisionlist>
