@@ -1702,4 +1702,12 @@ https://gitlab.gnome.org/GNOME/gnome-control-center/commit/3e82d5386033e8fbf3f5b
     <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909115 from yfjiang)</comment>
     <requestid>909317</requestid>
   </revision>
+  <revision rev="201" vrev="5">
+    <srcmd5>e01fa7789c8fec648eebc67b9158fb88</srcmd5>
+    <version>40.0</version>
+    <time>1628584061</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909372 from yfjiang)</comment>
+    <requestid>909727</requestid>
+  </revision>
 </revisionlist>

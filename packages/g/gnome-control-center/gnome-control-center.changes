@@ -206,6 +206,12 @@ Wed Jun  3 16:38:10 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Updated translations.
 
 -------------------------------------------------------------------
+Wed May 13 20:08:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.34.6: 
+  + Sound: fix translation of "System Sounds".
+
+-------------------------------------------------------------------
 Fri May  1 08:19:54 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.2:
@@ -314,7 +320,7 @@ Mon Mar 30 08:25:48 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 - Update to version 3.34.5:
   + Remove some dead code.
   + Display: Fix resolution options getting stuck in a low
-    resolution.
+    resolution (bsc#1160173 glgo#GNOME/Settings#903).
   + Network:
     - Print warning if failed to save to libsecret.
     - Handle security combo box being not selected correctly.
