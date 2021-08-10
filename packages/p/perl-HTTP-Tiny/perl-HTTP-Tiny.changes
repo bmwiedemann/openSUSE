@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Aug  3 03:06:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.078
+   see /usr/share/doc/packages/perl-HTTP-Tiny/Changes
+
+  0.078     2021-08-02 09:24:03-04:00 America/New_York
+      - No changes from 0.077-TRIAL.
+  0.077     2021-07-22 13:07:14-04:00 America/New_York (TRIAL RELEASE)
+      [ADDED]
+      - Added a `patch` helper method for the HTTP `PATCH` verb.
+      - If the REQUEST_METHOD environment variable is set, then CGI_HTTP_PROXY
+        replaces HTTP_PROXY.
+      [FIXED]
+      - Unsupported scheme errors early without giving an uninitialized value
+        warning first.
+      - Sends Content-Length: 0 on empty body PUT/POST.  This is not in the spec,
+        but some servers require this.
+      - Allows optional status line reason, as clarified in RFC 7230.
+      - Ignore SIGPIPE on reads as well as writes, as IO::Socket::SSL says that
+        SSL reads can also send writes as a side effect.
+      - Check if a server has closed a connection before preserving it for reuse.
+      [DOCS]
+      - Clarified that exceptions/errors result in 599 status codes.
+      [PREREQS]
+      - Optional IO::Socket::IP prereq must be at least version 0.32 to be used.
+        This ensures correct timeout support.
+
+-------------------------------------------------------------------
 Sat Aug 25 05:28:16 UTC 2018 - coolo@suse.com
 
 - updated to 0.076
