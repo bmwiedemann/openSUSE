@@ -20938,7 +20938,6 @@ unsorted:
   - python-oslo.concurrency-doc 
   - python-oslo.config-doc 
   - python-oslo.context-doc 
-  - python-oslo.db-doc 
   - python-oslo.i18n-doc 
   - python-oslo.log-doc 
   - python-oslo.policy-doc 
@@ -21262,7 +21261,6 @@ unsorted:
   - python3-oslo.concurrency 
   - python3-oslo.config 
   - python3-oslo.context 
-  - python3-oslo.db 
   - python3-oslo.i18n 
   - python3-oslo.log 
   - python3-oslo.messaging 
@@ -21713,6 +21711,8 @@ unsorted:
   - python36-azure-agrifood-nspkg 
   - python36-azure-ai-anomalydetector 
   - python36-azure-ai-formrecognizer 
+  - python36-azure-ai-language-nspkg 
+  - python36-azure-ai-language-questionanswering 
   - python36-azure-ai-metricsadvisor 
   - python36-azure-ai-nspkg 
   - python36-azure-ai-textanalytics 
@@ -21881,6 +21881,7 @@ unsorted:
   - python36-azure-mgmt-rdbms 
   - python36-azure-mgmt-recoveryservices 
   - python36-azure-mgmt-recoveryservicesbackup 
+  - python36-azure-mgmt-recoveryservicessiterecovery 
   - python36-azure-mgmt-redhatopenshift 
   - python36-azure-mgmt-redis 
   - python36-azure-mgmt-regionmove 
@@ -24511,6 +24512,8 @@ unsorted:
   - python38-azure-agrifood-nspkg 
   - python38-azure-ai-anomalydetector 
   - python38-azure-ai-formrecognizer 
+  - python38-azure-ai-language-nspkg 
+  - python38-azure-ai-language-questionanswering 
   - python38-azure-ai-metricsadvisor 
   - python38-azure-ai-nspkg 
   - python38-azure-ai-textanalytics 
@@ -24679,6 +24682,7 @@ unsorted:
   - python38-azure-mgmt-rdbms 
   - python38-azure-mgmt-recoveryservices 
   - python38-azure-mgmt-recoveryservicesbackup 
+  - python38-azure-mgmt-recoveryservicessiterecovery 
   - python38-azure-mgmt-redhatopenshift 
   - python38-azure-mgmt-redis 
   - python38-azure-mgmt-regionmove 
@@ -27499,6 +27503,8 @@ unsorted:
   - python39-azure-agrifood-nspkg 
   - python39-azure-ai-anomalydetector 
   - python39-azure-ai-formrecognizer 
+  - python39-azure-ai-language-nspkg 
+  - python39-azure-ai-language-questionanswering 
   - python39-azure-ai-metricsadvisor 
   - python39-azure-ai-nspkg 
   - python39-azure-ai-textanalytics 
@@ -27667,6 +27673,7 @@ unsorted:
   - python39-azure-mgmt-rdbms 
   - python39-azure-mgmt-recoveryservices 
   - python39-azure-mgmt-recoveryservicesbackup 
+  - python39-azure-mgmt-recoveryservicessiterecovery 
   - python39-azure-mgmt-redhatopenshift 
   - python39-azure-mgmt-redis 
   - python39-azure-mgmt-regionmove 
@@ -41738,6 +41745,7 @@ unsorted:
   - webkit2gtk3-minibrowser 
   - weblate: [x86_64] 
   - weblate-doc: [x86_64] 
+  - webp-pixbuf-loader 
   - websocketpp-devel 
   - weechat 
   - weechat-devel 
