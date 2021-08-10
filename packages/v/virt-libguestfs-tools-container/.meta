@@ -1,0 +1,5 @@
+<package name="virt-libguestfs-tools-container" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="Virtualization" package="virt-libguestfs-tools-container"/>
+</package>
