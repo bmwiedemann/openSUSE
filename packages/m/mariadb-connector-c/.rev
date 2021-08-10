@@ -290,4 +290,14 @@
     <comment></comment>
     <requestid>910254</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>4ae6e349c1b8f6c87313c9f7f78efa9c</srcmd5>
+    <version>3.1.13</version>
+    <time>1628586709</time>
+    <user>RBrownSUSE</user>
+    <comment>Revert to 3.1.13, there are serious issues with 3.2.3.
+
+boo#1189184, QTBUG-95071, QTBUG-95639</comment>
+    <requestid>911052</requestid>
+  </revision>
 </revisionlist>

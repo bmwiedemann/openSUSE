@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.2.3
+Version:        3.1.13
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
@@ -186,6 +186,5 @@ install -Dpm 0644 build/include/ma_config.h \
 %{_libdir}/libmariadb.so
 %{_libdir}/libmysqlclient.so
 %{_libdir}/libmysqlclient_r.so
-%{_mandir}/man3/*
 
 %changelog

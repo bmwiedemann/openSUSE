@@ -1,17 +1,4 @@
 -------------------------------------------------------------------
-Wed Aug  4 10:16:00 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
-
-- Update to 3.2.3:
-  * release notes and changelog:
-    https://mariadb.com/kb/en/library/mariadb-connector-c-323-release-notes
-    https://mariadb.com/kb/en/library/mariadb-connector-c-323-changelog
-    https://mariadb.com/kb/en/library/mariadb-connector-c-322-release-notes
-    https://mariadb.com/kb/en/library/mariadb-connector-c-322-changelog
-    https://mariadb.com/kb/en/library/mariadb-connector-c-320-release-notes
-    https://mariadb.com/kb/en/library/mariadb-connector-c-320-changelog
-- Refresh private_library.patch
-
--------------------------------------------------------------------
 Thu Jun 17 11:21:36 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - drop absolute_path_fix.patch: obsolete after previous change
