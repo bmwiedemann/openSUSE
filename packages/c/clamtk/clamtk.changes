@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  4 11:25:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 6.13:
+  * Fixes for appdata.xml 
+  * Partially work Github #129 (engine version, date of sigs, title)
+  * Update translations in clamtk.desktop
+
+-------------------------------------------------------------------
 Tue Apr 27 14:08:44 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 6.11: 

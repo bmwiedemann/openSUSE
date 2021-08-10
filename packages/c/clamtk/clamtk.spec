@@ -18,7 +18,7 @@
 
 
 Name:           clamtk
-Version:        6.11
+Version:        6.13
 Release:        0
 Summary:        GUI for the ClamAV Antivirus
 License:        Artistic-1.0 OR GPL-1.0-or-later
