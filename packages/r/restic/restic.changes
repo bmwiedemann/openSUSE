@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  6 21:52:10 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
+
+- Update to 0.12.1
+
+  Fixes:
+  * #2742: Improve error handling for rclone and REST backend over HTTP2
+  * #3111: Fix terminal output redirection for PowerShell
+  * #3214: Treat an empty password as a fatal error for repository init
+  * #3267: copy failed to copy snapshots in rare cases
+  * #3184: backup --quiet no longer prints status information
+  * #3296: Fix crash of check --read-data-subset=x% run for an empty repository
+  * #3302: Fix fdopendir: not a directory error for local backend
+  * #3334: Print created new cache message only on a terminal
+  * #3380: Fix crash of backup --exclude='**'
+  * #3305: Fix possibly missing backup summary of JSON output in case of error
+  * #3439: Correctly handle download errors during restore
+
+  Changes:
+  * #3247: Empty files now have size of 0 in ls --json output
+
+  Enhancements:
+  * #2780: Add release binaries for s390x architecture on Linux
+  * #3293: Add --repository-file2 option to init and copy command
+  * #3312: Add auto-completion support for fish
+  * #3336: SFTP backend now checks for disk space
+  * #3377: Add release binaries for Apple Silicon
+  * #3414: Add --keep-within-hourly option to restic forget
+  * #3456: Support filtering and specifying untagged snapshots
+  * #3167: Allow specifying limit of snapshots list
+  * #3426: Optimize read performance of mount command
+  * #3427: find --pack fallback to index if data file is missing
+
+-------------------------------------------------------------------
 Tue Feb 16 20:17:22 UTC 2021 - Herbert Graeber <herbert@graeber-clan.de>
 
 - Update to 0.12.0
