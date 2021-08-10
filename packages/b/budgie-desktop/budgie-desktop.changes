@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 08 11:19:09 UTC 2021 - gmbr3@opensuse.org
+
+- Update to version 10.5.3+5:
+  * Customizable Clock Applet
+  * fix: fixed inconsistent behavior of pinned apps depending
+    on how they were pinned (from popover or from drag and drop)
+  * fixed issue with user defined keybinding being override
+    when keybinding is defined in budgie gschema
+  * Update badge to point to Open Collective
+  * Update to Libera
+- Add override-syntax.patch: fix parsing issues
+
+-------------------------------------------------------------------
 Wed Apr 28 15:36:18 UTC 2021 - gmbr3@opensuse.org
 
 - Update to version 10.5.3+0:
