@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug  3 03:09:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.104001
+   see /usr/share/doc/packages/perl-Software-License/Changes
+
+  0.104001  2021-08-02 09:33:25-04:00 America/New_York
+          - add "program" and "Program" arguments; this allows text generation
+            like "CoolClient is license..." instead of "This software is..."
+            (thanks, Van de Bugger)
+
+  0.104000  2021-06-25 21:56:24-04:00 America/New_York (TRIAL RELEASE)
+          - documentation tweaks about non-core licenses and the use of
+            guess_license_from_pod
+
+  0.103015  2021-06-25 21:54:19-04:00 America/New_York (TRIAL RELEASE)
+          - update the text of Artistic License 1.0 to match upstream source
+          - when using Apache 2.0, replace year and copyright holder
+          - improve guessing at CC0
+          - update author contact info
+
+-------------------------------------------------------------------
 Thu Dec  6 16:17:00 UTC 2018 - Stephan Kulow <coolo@suse.com>
 
 - updated to 0.103014
