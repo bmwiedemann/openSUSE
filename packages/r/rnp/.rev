@@ -15,4 +15,12 @@
     <comment>rnp 0.15.1 CVE-2021-33589 boo#1187759</comment>
     <requestid>902886</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a165b6edf6ef1dcd11e3c63a0ff1ca18</srcmd5>
+    <version>0.15.2</version>
+    <time>1628584047</time>
+    <user>RBrownSUSE</user>
+    <comment>rnp 0.15.2</comment>
+    <requestid>911107</requestid>
+  </revision>
 </revisionlist>

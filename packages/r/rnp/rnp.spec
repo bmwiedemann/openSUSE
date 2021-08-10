@@ -19,7 +19,7 @@
 
 %define soname 0
 Name:           rnp
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        OpenPGP implementation fully compliant with RFC 4880
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause
@@ -27,6 +27,10 @@ URL:            https://www.rnpgp.com/
 Source:         https://github.com/rnpgp/rnp/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
+# https://github.com/rnpgp/rnp/issues/1579
+BuildRequires:  git
+BuildRequires:  gpg2 >= 2.2
+BuildRequires:  gtest
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(json-c) >= 0.11
 BuildRequires:  pkgconfig(botan-2) >= 2.14.0
@@ -59,12 +63,17 @@ This package contains the files needed to build against librnp.
 %build
 %cmake \
 	-DBUILD_SHARED_LIBS=on \
-	-DBUILD_TESTING=off \
+	-DBUILD_TESTING=on \
+	-DDOWNLOAD_GTEST=off \
+	-DDOWNLOAD_RUBYRNP=off \
 
 %cmake_build
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %post -n librnp%{soname} -p /sbin/ldconfig
 %postun -n librnp%{soname} -p /sbin/ldconfig
