@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Aug  9 06:50:04 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to version 0.9.0.
+  * pkg: Minimum Rust version has been bumped to 1.46.0
+  * feat: Support for ipfs/ipns URLs
+  * feat: Mode field for regex hint bindings
+  * fix: Regression in rendering performance with dense grids since 0.6.0
+  * fix: Crash/Freezes with partially visible fullwidth characters due to alt screen resize
+  * fix: Incorrect vi cursor position after invoking ScrollPage* action
+  * fix: Slow PTY read performance with extremely dense grids
+  * fix: Crash when resizing during vi mode
+  * fix: Unintentional text selection range change after leaving vi mode
+  * fix: Deadlock on Windows during high frequency output
+  * fix: Search without vi mode not starting at the correct location when scrolled into history
+  * fix: Crash when starting a vi mode search from the bottommost line
+  * fix: Original scroll position not restored after canceling search
+  * fix: Clipboard copy skipping non-empty cells when encountering an interrupted tab character
+  * fix: Vi mode cursor moving downward when scrolled in history with active output
+  * fix: Crash when moving fullwidth characters off the side of the terminal in insert mode
+  * fix: Broken bitmap font rendering with FreeType 2.11+
+  * fix: Crash with non-utf8 font paths on Linux
+  * fix: Newly installed fonts not rendering until Alacritty restart
+
+-------------------------------------------------------------------
 Thu May 20 00:35:35 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.8.0
@@ -123,20 +147,20 @@ Wed Nov 25 08:33:52 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
   * Secondary device attributes escape (CSI > 0 c)
   * Support for colon separated SGR 38/48
   * New Ctrl+C binding to cancel search and leave vi mode
-  * Escapes for double underlines (CSI 4 : 2 m) and underline reset 
+  * Escapes for double underlines (CSI 4 : 2 m) and underline reset
     (CSI 4 : 0 m)
   * Configuration file option for sourcing other files (import)
   * CLI parameter --option/-o to override any configuration field
-  * Escape sequences to report text area size in pixels (CSI 14 t) and in 
+  * Escape sequences to report text area size in pixels (CSI 14 t) and in
     characters (CSI 18 t)
   * Support for single line terminals dimensions
   * Right clicking on Wayland's client side decorations will show application menu
-  * Escape sequences to enable and disable window urgency hints 
+  * Escape sequences to enable and disable window urgency hints
     (CSI ? 1042 h, CSI ? 1042 l)
   Changed
-  * Cursors are now inverted when their fixed color is similar to the 
+  * Cursors are now inverted when their fixed color is similar to the
     cell's background
-  * Use the working directory of the terminal foreground process, 
+  * Use the working directory of the terminal foreground process,
     instead of the shell's working directory, for SpawnNewInstance action
   * Fallback to normal underline for unsupported underline types in CSI 4 : ? m escapes
   * The user's background color is now used as the foreground for the render timer
@@ -145,7 +169,7 @@ Wed Nov 25 08:33:52 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
   * Wayland's Client side decorations now use the search bar colors
   * Reduce memory usage by up to at least 30% with a full scrollback buffer
   * The number of zerowidth characters per cell is no longer limited to 5
-  * SpawnNewInstance is now using the working directory of the terminal 
+  * SpawnNewInstance is now using the working directory of the terminal
     foreground process on macOS
   Fixed
   * Incorrect window location with negative window.position config options
@@ -157,14 +181,14 @@ Wed Nov 25 08:33:52 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
   * Crash when copying/pasting with neither pointer nor keyboard focus on Wayland
   * Crash due to fd leak on Wayland
   * IME window position with fullwidth characters in the search bar
-  * Selection expanding over 2 characters when scrolled in history with fullwidth 
+  * Selection expanding over 2 characters when scrolled in history with fullwidth
     characters in use
   * Selection scrolling not starting when mouse is over the message bar
-  * Incorrect text width calculation in message bar when the message contains 
+  * Incorrect text width calculation in message bar when the message contains
     multibyte characters
   * Remapped caps lock to escape not triggering escape bindings on Wayland
   * Crash when setting overly long title on Wayland
-  * Switching in and out of various window states, like Fullscreen, not persisting 
+  * Switching in and out of various window states, like Fullscreen, not persisting
     window size on Wayland
   * Crash when providing 0 for XCURSOR_SIZE on Wayland
   * Gap between window and server side decorations on KWIN Wayland

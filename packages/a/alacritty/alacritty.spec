@@ -17,7 +17,7 @@
 
 
 Name:           alacritty
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A GPU-accelerated terminal emulator
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  freetype-devel
 BuildRequires:  libxcb-devel
+BuildRequires:  libxkbcommon-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust-packaging
 BuildRequires:  update-desktop-files
