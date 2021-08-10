@@ -134,4 +134,15 @@
     CHANGELOG.md file provided with this package (forwarded request 905225 from glaubitz)</comment>
     <requestid>905234</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>520b02a4f20cfc3098793bf442c5139e</srcmd5>
+    <version>1.17.0</version>
+    <time>1628584058</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 1.17.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 911015 from glaubitz)</comment>
+    <requestid>911016</requestid>
+  </revision>
 </revisionlist>
