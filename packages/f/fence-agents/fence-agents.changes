@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 29 05:53:12 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.10.0+git.1626946937.8ade08b4:
+  * fence_kdump: accept message from multiple addresses (useful for RRP clusters) (#374)
+  * fence_pve: Replace `nodename` with `pmx-node` in fence_pve.py (matching original intent) (#424)
+  * spec: add dependency to new split packages for Fedora 35+
+  * log exceptions to be more detailed when failing
+  * Mid: fence_sbd: A warning message is output when disable-timeout is enabled.
+  * spec: export PYTHON to avoid configure ignoring it
+  * build: expose delay-check to be able to skip the other tests when debugging
+  * fence-kubevirt: Add fence-kubevirt declaration for rpm creation
+  * fence_kubevirt: Fix accept header param to openshift client
+
+-------------------------------------------------------------------
 Fri Jun 25 15:51:21 UTC 2021 - trenn@suse.de
 
 - Update to version 4.9.0+git.1624631789.25ec70f0:
