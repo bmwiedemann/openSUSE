@@ -40,6 +40,17 @@ Tue Jun 23 19:24:36 UTC 2020 - bjorn.lie@gmail.com
 - Switch to using tarball release, drop usage of source service.
 
 -------------------------------------------------------------------
+Thu Jun  4 07:35:49 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Make libnma require mobile-broadband-provider-info(bsc#1172499).
+
+-------------------------------------------------------------------
+Mon May 11 08:06:53 UTC 2020 - Simon Lees <simonf.lees@suse.com>
+
+- Actually continue to build with appindicator support (needed for
+  the multiple openSUSE Desktops that still use nm-applet(jsc#SLE-11797).
+
+-------------------------------------------------------------------
 Thu May  7 08:53:09 UTC 2020 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Make NetworkManager-connection-editor require

@@ -313,4 +313,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 893926 from dimstar)</comment>
     <requestid>893953</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>bae736ca50b9d6be1de7be2c3c55efe0</srcmd5>
+    <version>1.22.0</version>
+    <time>1628584065</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909690 from yfjiang)</comment>
+    <requestid>909740</requestid>
+  </revision>
 </revisionlist>
