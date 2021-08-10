@@ -1,7 +1,7 @@
 #
 # spec file for package sil-andika-fonts
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           sil-andika-fonts
 License:        OFL-1.1
 Group:          System/X11/Fonts
 Summary:        Sans serif, Unicode-compliant Font For Literacy Use
-Version:        5.000
+Version:        6.001
 Release:        0
-URL:            http://scripts.sil.org/cms/scripts/page.php?site_id=nrsi&item_id=andika
-Source0:        Andika-%{version}.zip
-Source1:        AndikaNewBasic-5.500.zip
+URL:            https://software.sil.org/andika/
+Source0:        https://software.sil.org/downloads/r/andika/Andika-%{version}.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
@@ -41,31 +40,27 @@ teaching people to read. Its forms are simpler and less cluttered
 than those of most serif fonts.
 
 %prep
-%setup -T -c %{name} -n %{name}
-unzip -j %{SOURCE0}
-unzip -j -n %{SOURCE1}
-chmod 644 *.txt *.ttf
+%setup -q -n Andika-%{version}
+chmod 644 *.txt
 # Remove DOS line endings:
 for i in *.txt; do
  sed -i 's/.$//' $i
 done
 
-
 %build
 # --- Nothing to do ---
 
-
 %install
-mkdir -p %{buildroot}%{_ttfontsdir}/
+install -d %{buildroot}%{_ttfontsdir}
 install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
 
 %reconfigure_fonts_scriptlets
 
 %files
 %defattr(-, root,root)
-%doc *.odt *.pdf *.txt
+%license OFL.txt
+%doc FONTLOG.txt OFL-FAQ.txt README.txt
 %dir %{_ttfontsdir}/
 %{_ttfontsdir}/*
-
 
 %changelog
