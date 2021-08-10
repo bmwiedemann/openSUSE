@@ -180,7 +180,6 @@
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
       <repopackage name="awesfx"/>
-      <repopackage name="aws-cli"/>
       <repopackage name="b43-fwcutter"/>
       <repopackage name="babeltrace"/>
       <repopackage name="baloo5-file"/>
@@ -594,7 +593,6 @@
       <repopackage name="gdk-pixbuf-query-loaders"/>
       <repopackage name="gdk-pixbuf-query-loaders-32bit" arch="x86_64"/>
       <repopackage name="gdk-pixbuf-thumbnailer"/>
-      <repopackage name="gdl-lang"/>
       <repopackage name="gdm"/>
       <repopackage name="gdm-branding-openSUSE"/>
       <repopackage name="gdm-lang"/>
@@ -883,7 +881,6 @@
       <repopackage name="gtkiterm"/>
       <repopackage name="gtksourceview4-lang"/>
       <repopackage name="gtkspell-lang"/>
-      <repopackage name="gtkspell3-lang"/>
       <repopackage name="gucharmap"/>
       <repopackage name="gucharmap-lang"/>
       <repopackage name="guestfs-data" arch="x86_64"/>
@@ -1035,6 +1032,7 @@
       <repopackage name="javapackages-filesystem"/>
       <repopackage name="javapackages-tools"/>
       <repopackage name="jfsutils"/>
+      <repopackage name="jhead"/>
       <repopackage name="jmdict"/>
       <repopackage name="joe"/>
       <repopackage name="jq"/>
@@ -1398,6 +1396,7 @@
       <repopackage name="less"/>
       <repopackage name="lftp"/>
       <repopackage name="lhasa"/>
+      <repopackage name="lib2geom1_1_0"/>
       <repopackage name="lib389" arch="x86_64"/>
       <repopackage name="liba52-0"/>
       <repopackage name="libaa1"/>
@@ -1725,6 +1724,7 @@
       <repopackage name="libffi8"/>
       <repopackage name="libffi8-32bit" arch="x86_64"/>
       <repopackage name="libfftw3-3"/>
+      <repopackage name="libfftw3_threads3"/>
       <repopackage name="libfido2-1"/>
       <repopackage name="libfido2-udev"/>
       <repopackage name="libfile1_0"/>
@@ -1786,7 +1786,6 @@
       <repopackage name="libgdk_pixbuf-2_0-0"/>
       <repopackage name="libgdk_pixbuf-2_0-0-32bit" arch="x86_64"/>
       <repopackage name="libgdk_pixbuf_xlib-2_0-0"/>
-      <repopackage name="libgdl-3-5"/>
       <repopackage name="libgdm1"/>
       <repopackage name="libgee-0_8-2"/>
       <repopackage name="libgegl-0_4-0"/>
@@ -1862,8 +1861,11 @@
       <repopackage name="libgpod-lang"/>
       <repopackage name="libgpod-tools"/>
       <repopackage name="libgpod4"/>
-      <repopackage name="libgps28"/>
+      <repopackage name="libgps29"/>
       <repopackage name="libgraphene-1_0-0"/>
+      <repopackage name="libGraphicsMagick++-Q16-12"/>
+      <repopackage name="libGraphicsMagick-Q16-3"/>
+      <repopackage name="libGraphicsMagick3-config"/>
       <repopackage name="libgraphite2-3"/>
       <repopackage name="libgraphite2-3-32bit" arch="x86_64"/>
       <repopackage name="libgraphviz6"/>
@@ -1923,7 +1925,6 @@
       <repopackage name="libgtkmm-3_0-1"/>
       <repopackage name="libgtksourceview-4-0"/>
       <repopackage name="libgtkspell0"/>
-      <repopackage name="libgtkspell3-3-0"/>
       <repopackage name="libgtop-2_0-11"/>
       <repopackage name="libgtop-lang"/>
       <repopackage name="libgts-0_7-5"/>
@@ -2304,6 +2305,7 @@
       <repopackage name="libm17n0"/>
       <repopackage name="libmad0"/>
       <repopackage name="libmagic1"/>
+      <repopackage name="libMagick++-7_Q16HDRI5"/>
       <repopackage name="libMagickCore-7_Q16HDRI10"/>
       <repopackage name="libMagickWand-7_Q16HDRI10"/>
       <repopackage name="libmailutils5"/>
@@ -2478,6 +2480,7 @@
       <repopackage name="libpeas-gtk-1_0-0"/>
       <repopackage name="libpeas-lang"/>
       <repopackage name="libpeas-loader-python3"/>
+      <repopackage name="libpfs2"/>
       <repopackage name="libpgm-5_2-0"/>
       <repopackage name="libphodav-2_0-0"/>
       <repopackage name="libphonenumber8"/>
@@ -3764,6 +3767,9 @@
       <repopackage name="perl-XML-Writer"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
+      <repopackage name="pfscalibration"/>
+      <repopackage name="pfstmo"/>
+      <repopackage name="pfstools"/>
       <repopackage name="phalanx"/>
       <repopackage name="phonon4qt5-backend-gstreamer"/>
       <repopackage name="phonon4qt5-lang"/>
@@ -4002,7 +4008,6 @@
       <repopackage name="python38-chardet"/>
       <repopackage name="python38-click"/>
       <repopackage name="python38-cmdln"/>
-      <repopackage name="python38-colorama"/>
       <repopackage name="python38-configobj"/>
       <repopackage name="python38-constantly"/>
       <repopackage name="python38-cramjam"/>
@@ -4017,7 +4022,6 @@
       <repopackage name="python38-dkimpy"/>
       <repopackage name="python38-dnspython"/>
       <repopackage name="python38-doc" arch="x86_64"/>
-      <repopackage name="python38-docutils"/>
       <repopackage name="python38-ecdsa"/>
       <repopackage name="python38-et_xmlfile"/>
       <repopackage name="python38-evtx" arch="x86_64"/>
@@ -4152,9 +4156,8 @@
       <repopackage name="python38-requests"/>
       <repopackage name="python38-requests-oauthlib" arch="x86_64"/>
       <repopackage name="python38-requests-toolbelt"/>
-      <repopackage name="python38-roman"/>
       <repopackage name="python38-rpm"/>
-      <repopackage name="python38-rsa"/>
+      <repopackage name="python38-rsa" arch="x86_64"/>
       <repopackage name="python38-s3fs"/>
       <repopackage name="python38-s3transfer"/>
       <repopackage name="python38-scipy"/>
@@ -4653,7 +4656,6 @@
       <repopackage name="ruby2.7-rubygem-unicode-display_width-1"/>
       <repopackage name="ruby2.7-rubygem-unicorn"/>
       <repopackage name="ruby2.7-rubygem-vagrant-spec"/>
-      <repopackage name="ruby2.7-rubygem-vagrant_cloud"/>
       <repopackage name="ruby2.7-rubygem-validate_email"/>
       <repopackage name="ruby2.7-rubygem-validate_url"/>
       <repopackage name="ruby2.7-rubygem-virtus"/>
@@ -4929,7 +4931,6 @@
       <repopackage name="telepathy-idle"/>
       <repopackage name="telepathy-logger"/>
       <repopackage name="telepathy-mission-control"/>
-      <repopackage name="telepathy-mission-control-plugin-goa"/>
       <repopackage name="tepl-6-lang"/>
       <repopackage name="terminfo"/>
       <repopackage name="terminfo-base"/>
