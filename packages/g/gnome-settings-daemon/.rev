@@ -1365,4 +1365,12 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909124 from yfjiang)</comment>
     <requestid>909318</requestid>
   </revision>
+  <revision rev="174" vrev="4">
+    <srcmd5>7de7fcd3b71cfd6a0cbfdc3c82306c67</srcmd5>
+    <version>40.0.1</version>
+    <time>1628584062</time>
+    <user>RBrownSUSE</user>
+    <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909373 from yfjiang)</comment>
+    <requestid>909728</requestid>
+  </revision>
 </revisionlist>

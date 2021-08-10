@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 30 09:26:17 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop patches fixed upstream on SLE and Leap 15.4:
+  + gnome-settings-daemon-jscSLE16518-update-subprojects-libgvc.patch
+  + gnome-settings-daemon-media-keys-warnings-cleanup-for-gvc-update.patch
+  + gnome-settings-daemon-not-warn-about-starting-stopping-services.patch
+
+-------------------------------------------------------------------
 Wed Jul  7 10:43:26 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Rebase gnome-settings-daemon-notify-idle-resumed.patch.
@@ -67,8 +75,6 @@ Tue Jan 12 10:45:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
     - Use mouse drag-threshold/double-click from
       gsettings-desktop-schemas.
   + Updated translations.
-- Drop gnome-settings-daemon-media-keys-warnings-cleanup-for-gvc-update.patch:
-  fixed upstream.
 
 -------------------------------------------------------------------
 Thu Nov 26 10:46:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -81,19 +87,7 @@ Thu Nov 26 10:46:24 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
   reasons is not in libexecdir/gnome-settings-daemon-3.0.
 
 -------------------------------------------------------------------
-Fri Oct  9 09:19:24 UTC 2020 - dimstar@opensuse.org
-
-- Update to version 3.38.1:
-  + Sound: Update g-v-c dependency. Necessary to support related
-    UCM changes in ALSA and Pulseaudio.
-  + Media-keys: Don't throw unnecessary warnings.
-  + Print-notification: Disable plugin if CUPS is diabled.
-  + Updated translations.
-- Drop gnome-settings-daemon-jscSLE16518-update-subprojects-libgvc.patch:
-  fixed upstream.
-
--------------------------------------------------------------------
-Tue Oct 8 02:29:11 UTC 2020 - QK ZHU <qkzhu@suse.com>
+Tue Oct 13 02:29:11 UTC 2020 - QK ZHU <qkzhu@suse.com>
 
 - Add gnome-settings-daemon-jscSLE16518-update-subprojects-libgvc.patch: 
   Update libgvc to revision 7a621180. This update is necessary to 
@@ -102,6 +96,16 @@ Tue Oct 8 02:29:11 UTC 2020 - QK ZHU <qkzhu@suse.com>
   Don't throw warnings when we can't find a default source or sink 
   and the PulseAudio daemon is restarting (jsc#SLE-16518,
   glgo#GNOME/gnome-settings-daemon!203).
+
+-------------------------------------------------------------------
+Fri Oct  9 09:19:24 UTC 2020 - dimstar@opensuse.org
+
+- Update to version 3.38.1:
+  + Sound: Update g-v-c dependency. Necessary to support related
+    UCM changes in ALSA and Pulseaudio.
+  + Media-keys: Don't throw unnecessary warnings.
+  + Print-notification: Disable plugin if CUPS is diabled.
+  + Updated translations.
 
 -------------------------------------------------------------------
 Tue Sep 22 03:38:00 UTC 2020 - dimstar@opensuse.org
@@ -143,6 +147,13 @@ Fri Sep 18 01:31:34 CEST 2020 - ro@suse.de
 - fix build on s390x (wacom=false but wayland=true)
 
 -------------------------------------------------------------------
+Wed Jun 10 03:21:16 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-settings-daemon-not-warn-about-starting-stopping-services.patch:
+  Don’t warn about starting/stopping services which don’t exist,
+  backport upstream commit 523ffa14 (bsc#1172760).
+
+-------------------------------------------------------------------
 Thu Apr 30 05:28:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.36.1:
@@ -152,15 +163,6 @@ Thu Apr 30 05:28:07 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Sharing: Do not warn after starting/stopping nonexistent
     services.
   + Updated translations.
-- Drop gnome-settings-daemon-not-warn-about-starting-stopping-services.patch:
-  fixed upstream.
-
--------------------------------------------------------------------
-Wed Apr 29 03:21:16 UTC 2020 - Xiaoguang Wang <xiaoguang.wang@suse.com>
-
-- Add gnome-settings-daemon-not-warn-about-starting-stopping-services.patch:
-  Don’t warn about starting/stopping services which don’t exist,
-  backport upstream commit 523ffa14 (bsc#1172760).
 
 -------------------------------------------------------------------
 Wed Apr 29 03:15:16 UTC 2020 - Yifan Jiang <yfjiang@suse.com>
