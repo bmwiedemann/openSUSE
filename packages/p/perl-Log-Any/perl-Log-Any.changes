@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug  3 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.710
+   see /usr/share/doc/packages/perl-Log-Any/Changes
+
+  1.710     2021-08-02 10:11:33-05:00 America/Chicago
+
+      [Other]
+
+      - Removed explicit declaration of core dependencies to improve user
+        experience
+
+-------------------------------------------------------------------
 Thu Feb 18 03:07:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.709
