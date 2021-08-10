@@ -1076,4 +1076,12 @@
   not included the new packaging of the relevant headers. (forwarded request 909027 from yfjiang)</comment>
     <requestid>909085</requestid>
   </revision>
+  <revision rev="122" vrev="3">
+    <srcmd5>0312f140d0f3c60386b7af69d430847f</srcmd5>
+    <version>2.32.3</version>
+    <time>1628584068</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap. (forwarded request 910277 from yfjiang)</comment>
+    <requestid>910288</requestid>
+  </revision>
 </revisionlist>
