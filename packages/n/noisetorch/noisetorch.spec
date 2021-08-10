@@ -52,7 +52,7 @@ ldd rnnoise_ladspa.so
 popd
 go generate
 # -tags release would enable the auto-updater (update.go)
-CGO_ENABLED=0 GOOS=linux go build -buildmode=pie -a -ldflags '-s -w -extldflags "-static" -X main.version=%{version} -X main.distribution=rpm' .
+CGO_ENABLED=0 GOOS=linux go build -buildmode=pie -a -ldflags '-w -X main.version=%{version} -X main.distribution=rpm' .
 
 %install
 install -D -m 644 assets/icon/noisetorch.png %{buildroot}/%{_datadir}/icons/hicolor/256x256/apps/noisetorch.png

@@ -61,4 +61,12 @@
   adds noisetorch-fix-ladspa-linking.patch</comment>
     <requestid>907017</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>dc09bc08f844f7ab9b6ee0088ed32805</srcmd5>
+    <version>0.11.2</version>
+    <time>1628584049</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910803</requestid>
+  </revision>
 </revisionlist>
