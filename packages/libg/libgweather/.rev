@@ -809,4 +809,12 @@
     <comment>Update to 40.0 (forwarded request 886247 from dimstar)</comment>
     <requestid>887484</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>fab62e48eb365d75eb16a3ac499e0604</srcmd5>
+    <version>40.0</version>
+    <time>1628584067</time>
+    <user>RBrownSUSE</user>
+    <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909712 from yfjiang)</comment>
+    <requestid>909745</requestid>
+  </revision>
 </revisionlist>

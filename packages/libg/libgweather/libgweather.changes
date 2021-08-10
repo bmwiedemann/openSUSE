@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  2 02:28:18 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Drop patches merged upstream on SLE and Leap 15.4:
+  + libgweather-use-after-free-libsoup.patch
+  + libgweather-yrno-xml-parser-leak.patch
+  + libgweather-forecast-attribution-leak.patch
+  + libgweather-metno-api.patch
+
+-------------------------------------------------------------------
+Fri Jun  4 20:27:08 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add libgweather-use-after-free-libsoup.patch: fix a possible use
+  after free (glgo#GNOME/libgweather#34).
+- Add libgweather-yrno-xml-parser-leak.patch and
+  libgweather-forecast-attribution-leak.patch: fix memory leaks,
+  taken from upstream gnome-3-34 branch.
+- Add libgweather-metno-api.patch: use new metno API (bsc#1185651
+  glgo#GNOME/libgweather#82).
+
+-------------------------------------------------------------------
 Sat Apr 17 09:16:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
