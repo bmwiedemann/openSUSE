@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Aug  8 19:23:58 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.23.3:
+ - can't splat async generators
+ - cannot unpack async generators
+ - add extra test for pep584
+- update to version 2.23.2:
+ - correctly compute indent for typeddict after dedent
+- update to version 2.23.1:
+ - fix bug in merge dicts: look for comma backwards
+- update to version 2.23.0:
+ - rewrite type of primitive
+- update to version 2.22.0:
+ - rewrite six.moves.range
+ - rewrite lru_cache with maxsize=None and typed=False
+   Co-authored-by: Max Rozentsveyg <maxr@outlook.com>
+- update to version 2.21.2:
+ - dont do generator rewrite if list comp contains await
+- update to version 2.21.1:
+ - fix breakage from async generator
+ - Fix etree heading, non-breaking space to space
+- update to version 2.21.0:
+ - remove redunant encoding even for f-strings
+- update to version 2.20.1:
+ - dont rewrite fstring if await in py3
+
+-------------------------------------------------------------------
 Sat Jul  3 20:31:13 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 2.20.0:
