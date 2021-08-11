@@ -18,32 +18,29 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
+%define         skip_python36 1
 Name:           python-networkx
-Version:        2.5.1
+Version:        2.6.1
 Release:        0
 Summary:        Python package for the study of complex networks
 License:        BSD-3-Clause
 URL:            https://networkx.github.io/
 Source:         https://files.pythonhosted.org/packages/source/n/networkx/networkx-%{version}.tar.gz
-Patch0:         0001-Replace-hash-function-for-test-of-weighted-astar.patch
-# PATCH-FIX-UPSTREAM https://github.com/networkx/networkx/commit/a6dd458a12ad8db161271e2271644803d4f29a96 fixes Github Actions failures
-Patch1:         yaml-loader.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
-Requires:       python-decorator >= 3.4.0
 Recommends:     python-PyYAML
 Recommends:     python-pydot
 Recommends:     python-pygraphviz
 Recommends:     python-pyparsing
-Suggests:       python-matplotlib >= 3.1
-Suggests:       python-pandas
-Suggests:       python-scipy
+Requires:       python-matplotlib >= 3.1
+Requires:       python-numpy
+Requires:       python-pandas
+Requires:       python-scipy
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module decorator >= 3.4.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pydot}
 BuildRequires:  %{python_module pygraphviz}

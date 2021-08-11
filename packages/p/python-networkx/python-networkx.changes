@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Aug  2 07:28:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- require pandas 
+
+-------------------------------------------------------------------
+Wed Jul 28 23:30:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.6.2:
+  * This release is the result of 11 months of work with over 363 pull requests by
+    91 contributors. Highlights include:
+
+  * Dropped support for Python 3.6.
+  * NumPy, SciPy, Matplotlib, and pandas are now default requirements.
+  * NetworkX no longer depends on the library "decorator".
+  * Improved example gallery
+  * Removed code for supporting Jython/IronPython
+  * The __str__ method for graph objects is more informative and concise.
+  * Improved import time
+  * Improved test coverage
+  * New documentation theme
+  * Add functionality for drawing self-loop edges
+  * Add approximation algorithms for Traveling Salesman Problem
+- drop 0001-Replace-hash-function-for-test-of-weighted-astar.patch,
+  yaml-loader.patch (merged upstream)
+
+-------------------------------------------------------------------
 Tue May 18 21:51:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:

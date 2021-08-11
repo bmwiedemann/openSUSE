@@ -276,4 +276,29 @@
   * pin requirements</comment>
     <requestid>894172</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>813aa54ce696cd4af330dd38ce7554e5</srcmd5>
+    <version>2.6.1</version>
+    <time>1628675219</time>
+    <user>RBrownSUSE</user>
+    <comment>- require pandas 
+
+- update to 2.6.2:
+  * This release is the result of 11 months of work with over 363 pull requests by
+    91 contributors. Highlights include:
+  * Dropped support for Python 3.6.
+  * NumPy, SciPy, Matplotlib, and pandas are now default requirements.
+  * NetworkX no longer depends on the library &quot;decorator&quot;.
+  * Improved example gallery
+  * Removed code for supporting Jython/IronPython
+  * The __str__ method for graph objects is more informative and concise.
+  * Improved import time
+  * Improved test coverage
+  * New documentation theme
+  * Add functionality for drawing self-loop edges
+  * Add approximation algorithms for Traveling Salesman Problem
+- drop 0001-Replace-hash-function-for-test-of-weighted-astar.patch,
+  yaml-loader.patch (merged upstream)</comment>
+    <requestid>909685</requestid>
+  </revision>
 </revisionlist>
