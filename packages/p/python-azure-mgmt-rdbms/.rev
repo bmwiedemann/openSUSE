@@ -145,4 +145,15 @@
     <comment></comment>
     <requestid>904126</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>62768a3b83da31a827324dd07deb0675</srcmd5>
+    <version>9.1.0b1</version>
+    <time>1628675247</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 9.1.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 910504 from glaubitz)</comment>
+    <requestid>911299</requestid>
+  </revision>
 </revisionlist>
