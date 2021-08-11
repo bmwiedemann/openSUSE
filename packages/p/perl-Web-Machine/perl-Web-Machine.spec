@@ -26,6 +26,7 @@ Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/Web-Machine/
 Source0:        http://www.cpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Patch0:         fix-tests-2036.patch
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
@@ -97,6 +98,7 @@ section.
 
 %prep
 %setup -q -n %{cpan_name}-%{version}
+%patch0 -p1
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -112,6 +114,7 @@ section.
 
 %files -f %{name}.files
 %defattr(-,root,root,755)
-%doc Changes CONTRIBUTING.md examples LICENSE README.md
+%doc Changes CONTRIBUTING.md examples README.md
+%license LICENSE
 
 %changelog

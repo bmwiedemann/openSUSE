@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 29 02:59:34 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add fix-tests-2036.patch to make tests pass after 2036 (boo#1102840)
+
+-------------------------------------------------------------------
 Fri Jun 24 06:47:48 UTC 2016 - coolo@suse.com
 
 - updated to 0.17
