@@ -17,7 +17,7 @@
 
 
 Name:           isync
-Version:        1.4.2
+Version:        1.4.3
 Release:        0
 Summary:        Utility to synchronize IMAP mailboxes with local maildir folders
 License:        GPL-2.0-only
