@@ -1,7 +1,7 @@
 #
-# spec file for package authlib
+# spec file for package python-Authlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,31 +17,29 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global modname Authlib
-Name:           python-%{modname}
-Version:        0.14.3
+Name:           python-Authlib
+Version:        0.15.3
 Release:        0
-Summary:        Python library in building OAuth and OpenID Connect servers
+Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://authlib.org/
-Source:         https://files.pythonhosted.org/packages/source/A/Authlib/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module tox}
-BuildRequires:  fdupes
+Source:         https://files.pythonhosted.org/packages/source/A/Authlib/Authlib-%{version}.tar.gz
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module cryptography}
+# /SECTION
+BuildRequires:  fdupes
 Requires:       python-cryptography
 Suggests:       python-requests
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Python library in building OAuth and OpenID Connect servers.
-JWS, JWK, JWA, JWT are included.
+A Python library for building OAuth and OpenID Connect servers.
 
 %prep
-%setup -q -n %{modname}-%{version}
+%setup -q -n Authlib-%{version}
 
 %build
 %python_build
