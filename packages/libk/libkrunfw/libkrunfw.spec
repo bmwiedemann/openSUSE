@@ -35,26 +35,14 @@ BuildRequires:  hmaccalc
 BuildRequires:  hostname
 BuildRequires:  libelf-devel
 BuildRequires:  net-tools
-BuildRequires:  patchelf
 BuildRequires:  python3-pyelftools
+Conflicts:      libkrunfw0 <= 0.7
+Conflicts:      libkrunfw-devel <= 0.7
 
 %description
-A dynamic library bundling a Linux kernel in a convenient storage format
-
-%package -n libkrunfw0
-Summary:        A dynamic library bundling a Linux kernel in a convenient storage format
-
-%description -n libkrunfw0
 libkrunfw is a library bundling a Linux kernel in a dynamic library in a way that can be easily consumed by libkrun.
 
 By having the kernel bundled in a dynamic library, libkrun can leave to the linker the work of mapping the sections into the process, and then directly inject those mappings into the guest without any kind of additional work nor processing.
-
-%package devel
-Summary:        Development library for libkrunfw
-Requires:       libkrunfw0
-
-%description devel
-This package includes the development files for libkrunfw
 
 %prep
 %autosetup -S git
@@ -75,20 +63,7 @@ source ./.kernel-binary.spec.buildenv
 source ./.kernel-binary.spec.buildenv
 %make_install PREFIX=%{_prefix}
 
-mv %{buildroot}%{_libdir}/libkrunfw.so %{buildroot}%{_libdir}/libkrunfw.so.0.0.0
-patchelf --set-soname libkrunfw.so.0 %{buildroot}%{_libdir}/libkrunfw.so.0.0.0
-
-ln -s %{_libdir}/libkrunfw.so.0.0.0 %{buildroot}%{_libdir}/libkrunfw.so.0
-ln -s %{_libdir}/libkrunfw.so.0.0.0 %{buildroot}%{_libdir}/libkrunfw.so
-
-%post -n libkrunfw0 -p /sbin/ldconfig
-%postun -n libkrunfw0 -p /sbin/ldconfig
-
-%files -n libkrunfw0
-%{_libdir}/libkrunfw.so.0.0.0
-%{_libdir}/libkrunfw.so.0
-
-%files devel
+%files
 %{_libdir}/libkrunfw.so
 
 %changelog

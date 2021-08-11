@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  6 13:28:37 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Don't try follow library policy, libkrunfw is a plugin.
+
+-------------------------------------------------------------------
 Fri Mar 19 02:12:53 UTC 2021 - Dario Faggioli <dfaggioli@suse.com>
 
 - different approach: let's enable only the arch-es we know are supported
