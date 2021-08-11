@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define libname acme
 Name:           python-%{libname}
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Python library for the ACME protocol
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module pyOpenSSL >= 17.3.0}
 BuildRequires:  %{python_module pyRFC3339}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module requests >= 2.6.0}
+BuildRequires:  %{python_module requests >= 2.14.2}
 BuildRequires:  %{python_module requests-toolbelt >= 0.3.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,7 +44,7 @@ Requires:       python-josepy >= 1.1.0
 Requires:       python-pyOpenSSL >= 17.3.0
 Requires:       python-pyRFC3339
 Requires:       python-pytz
-Requires:       python-requests >= 2.6.0
+Requires:       python-requests >= 2.14.2
 Requires:       python-requests-toolbelt >= 0.3.0
 BuildArch:      noarch
 %if %{?suse_version} < 1500

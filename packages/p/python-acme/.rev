@@ -589,4 +589,12 @@
   * sync with main certbot package</comment>
     <requestid>909363</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>405f187e4c66007ad4aeac9b00db78c1</srcmd5>
+    <version>1.18.0</version>
+    <time>1628675253</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911356</requestid>
+  </revision>
 </revisionlist>

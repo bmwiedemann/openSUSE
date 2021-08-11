@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 10 13:21:44 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- update to version 1.18.0
+  * sync with main certbot package
+  * the .client.Client and .client.BackwardsCompatibleClientV2 classes
+    are now deprecated in favor of .client.ClientV2
+
+-------------------------------------------------------------------
 Fri Jul 30 08:37:07 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to version 1.17.0
