@@ -22,7 +22,7 @@
 Name:           gdcm
 Version:        3.0.9
 Release:        0
-Summary:        Grassroots DiCoM is a C++ library to parse DICOM medical files
+Summary:        C++ library to parse DICOM medical files
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://gdcm.sourceforge.net/wiki/index.php/Main_Page
@@ -51,17 +51,17 @@ BuildRequires:  cmake(DCMTK)
 BuildRequires:  pkgconfig(libopenjp2)
 
 %description
-Grassroots DiCoM (GDCM) is a C++ library for DICOM medical files.
+Grassroots DiCoM (GDCM) is a C++ library for parsing DICOM medical files.
 It supports ACR-NEMA version 1 and 2 (huffman compression is not supported),
 RAW, JPEG, JPEG 2000, JPEG-LS, RLE and deflated transfer syntax.
-It comes with a super fast scanner implementation to quickly scan hundreds of
-DICOM files. It supports SCU network operations (C-ECHO, C-FIND, C-STORE,
+It comes with a scanner implementation to scan DICOM files.
+It supports SCU network operations (C-ECHO, C-FIND, C-STORE,
 C-MOVE). PS 3.3 & 3.6 are distributed as XML files.
 It also provides PS 3.15 certificates and password based mechanism to
 anonymize and de-identify DICOM datasets.
 
 %package        libgdcm%{soname}
-Summary:        Shared Object for applications that use %{name}
+Summary:        DICOM medical file parser library
 Group:          System/Libraries
 
 %description    libgdcm%{soname}
@@ -77,14 +77,13 @@ This package contains a shared library required by applications that
 are using %{name} for DICOM processing.
 
 %package        applications
-Summary:        Includes command line programs for GDCM
+Summary:        Command line programs for GDCM
 Group:          Productivity/Graphics/Other
 Requires:       %{name}-libgdcm%{soname}
 
 %description    applications
-You should install the gdcm-applications package if you would like to
-use command line programs part of GDCM. Includes tools to convert,
-anonymize, manipulate, concatenate, and view DICOM files.
+This package includes tools to convert, anonymize, manipulate,
+concatenate, and view DICOM files.
 
 %package        devel
 Summary:        Libraries and headers for GDCM
@@ -94,8 +93,8 @@ Requires:       %{name}-applications%{?_isa} = %{version}-%{release}
 Requires:       %{name}-libgdcm%{soname}
 
 %description    devel
-You should install the gdcm-devel package if you would like to
-compile applications based on gdcm
+Header files needed for developing applications that want to make use
+of GDCM.
 
 %package        examples
 Summary:        GDCM examples
@@ -103,17 +102,16 @@ Group:          Productivity/Graphics/Other
 Requires:       %{name}-libgdcm%{soname}
 
 %description    examples
-CSharp, C++, Java, PHP and Python example programs for GDCM
+CSharp, C++, Java, PHP and Python example programs for GDCM.
 
 %package -n     python3-gdcm
-Summary:        Python binding for GDCM
+Summary:        Python bindings for GDCM
 Group:          Productivity/Graphics/Other
 %{?python_provide:%python_provide python3-gdcm}
 Requires:       %{name}-libgdcm%{soname}
 
 %description -n python3-gdcm
-You should install the python3-gdcm package if you would like to
-used this library with python
+A Python module for interfacing with the GDCM library.
 
 %prep
 %autosetup -p1

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  9 22:28:18 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from some descriptions. Change the other
+  descriptions to describe the package, rather than give
+  instructions to the user.
+
+-------------------------------------------------------------------
 Tue Jul 27 09:21:10 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 3.0.9 (no changelog)
