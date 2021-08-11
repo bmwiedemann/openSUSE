@@ -30,33 +30,19 @@ ExclusiveArch:  x86_64 aarch64
 BuildRequires:  cargo >= 1.43.0
 BuildRequires:  gcc
 BuildRequires:  glibc-static
-BuildRequires:  libkrunfw-devel >= 0.6
-BuildRequires:  patchelf
+BuildRequires:  libkrunfw >= 0.6
 BuildRequires:  rust
 Requires:       libkrunfw >= 0.6
 %ifarch aarch64
 BuildRequires:  libfdt-devel >= 1.6.0
 %endif
+Conflicts:      libkrun0 <= 0.1.7
+Conflicts:      libkrun-devel <= 0.1.7
 
 %description
 libkrun is a dynamic library that allows programs to easily acquire the ability to run processes in a partially isolated environment using KVM Virtualization.
 
 It integrates a VMM (Virtual Machine Monitor, the userspace side of an Hypervisor) with the minimum amount of emulated devices required to its purpose, abstracting most of the complexity that comes from Virtual Machine management, offering users a simple C API.
-
-%package -n libkrun0
-Summary:        A dynamic library providing KVM-based process isolation capabilities
-
-%description -n libkrun0
-libkrun is a dynamic library that allows programs to easily acquire the ability to run processes in a partially isolated environment using KVM Virtualization.
-
-It integrates a VMM (Virtual Machine Monitor, the userspace side of an Hypervisor) with the minimum amount of emulated devices required to its purpose, abstracting most of the complexity that comes from Virtual Machine management, offering users a simple C API.
-
-%package devel
-Summary:        Development files for libkrun
-Requires:       libkrun0
-
-%description devel
-Development files for libkrun
 
 %prep
 %setup -qa1
@@ -71,22 +57,9 @@ export RUSTFLAGS=%{rustflags}
 export RUSTFLAGS=%{rustflags}
 %make_install PREFIX=%{_prefix}
 
-mv %{buildroot}%{_libdir}/libkrun.so %{buildroot}%{_libdir}/libkrun.so.0.0.0
-patchelf --set-soname libkrun.so.0 %{buildroot}%{_libdir}/libkrun.so.0.0.0
-
-ln -s %{_libdir}/libkrun.so.0.0.0 %{buildroot}%{_libdir}/libkrun.so.0
-ln -s %{_libdir}/libkrun.so.0.0.0 %{buildroot}%{_libdir}/libkrun.so
-
-%post -n libkrun0 -p /sbin/ldconfig
-%postun -n libkrun0 -p /sbin/ldconfig
-
-%files -n libkrun0
+%files
 %license LICENSE
 %doc README.md
-%{_libdir}/libkrun.so.0.0.0
-%{_libdir}/libkrun.so.0
-
-%files devel
 %{_libdir}/libkrun.so
 %{_includedir}/libkrun.h
 
