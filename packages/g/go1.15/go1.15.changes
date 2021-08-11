@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Aug  5 21:03:30 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.15.15 (released 2021-08-05) includes a security fix to the
+  net/http/httputil package, as well as bug fixes to the compiler,
+  the runtime, the go command, and the net/http package.
+  CVE-2021-36221
+  Refs boo#1175132 go1.15 release tracking
+  * boo#1189162 go#46866 CVE-2021-36221
+  * go#47473 net/http: panic due to racy read of persistConn after handler panic
+  * go#47347 cmd/go: "go list -f '{{.Stale}}'" stack overflow with cyclic imports
+  * go#47014 cmd/go: go mod vendor: open C:\Users\LICENSE: Access is denied.
+  * go#46927 cmd/compile: register conflict between external linker and duffzero on arm64
+  * go#46857 runtime: ppc64x binaries randomly segfault on linux 5.13rc6
+
+-------------------------------------------------------------------
+Thu Aug  5 20:51:24 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Drop patch to fix crashes on PowerPC with kernel >= 5.13, fixed
+  in next upstream release:
+  * drop fix-crash-on-ppc64le.patch
+
+-------------------------------------------------------------------
 Sun Jul 25 14:50:13 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix go#46803 boo#1188906, add fix-crash-on-ppc64le.patch 

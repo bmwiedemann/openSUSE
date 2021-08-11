@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.15
-Version:        1.15.14
+Version:        1.15.15
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -154,9 +154,6 @@ Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
 # PATCH-FIX-UPSTREAM prefer /etc/hosts over DNS when /etc/nsswitch.conf not present boo#1172868 gh#golang/go#35305
 Patch12:        go1.x-prefer-etc-hosts-over-dns.patch
-# PATCH-FIX-UPSTREAM  fix-crash-on-ppc64le.patch hillwood@opensuse.org - runtime: fix crash during VDSO calls on PowerPC
-# https://go-review.googlesource.com/c/go/+/328110/
-Patch13:        fix-crash-on-ppc64le.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 %if %{with gccgo}
@@ -243,7 +240,6 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %setup -q -n go
 %patch5 -p1
 %patch12 -p1
-%patch13 -p1
 %if %{with gccgo}
 %if 0%{?gcc_go_version} == 6
 %patch8 -p1
