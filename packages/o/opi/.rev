@@ -191,4 +191,15 @@
     <comment></comment>
     <requestid>904731</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bf130e6127bb73e3060db7767e43995f</srcmd5>
+    <version>2.1.1</version>
+    <time>1628675233</time>
+    <user>RBrownSUSE</user>
+    <comment>- Version 2.1.1
+  * Added
+    - Plugin for Brave Browser
+</comment>
+    <requestid>911223</requestid>
+  </revision>
 </revisionlist>
