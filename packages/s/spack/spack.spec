@@ -71,9 +71,11 @@ Requires:       gcc-fortran
 Requires:       gpg2
 Requires:       libbz2-devel
 Requires:       lua-lmod
+Requires:       make
 Requires:       patch
 Requires:       polkit
 Requires:       sudo
+Requires:       tar
 Requires:       xz
 Recommends:     %spack_trigger_recommended
 Recommends:     spack-recipes = %version
