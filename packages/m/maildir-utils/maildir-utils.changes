@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug  1 21:08:25 UTC 2021 - Miquel Sabate Sola <msabate@suse.com>
+
+- Update to 1.6.1
+
+-------------------------------------------------------------------
 Mon Jan 25 08:42:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.15:
@@ -31,7 +36,7 @@ Mon Jul 27 07:00:17 UTC 2020 - Michael Vetter <mvetter@suse.com>
 Wed Jun 10 07:44:05 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.10:
-  * mu4e-headers: require mule-util for truncate-string-ellipsis 
+  * mu4e-headers: require mule-util for truncate-string-ellipsis
 
 -------------------------------------------------------------------
 Mon Jun  8 07:50:12 UTC 2020 - Michael Vetter <mvetter@suse.com>
@@ -45,32 +50,32 @@ Mon Jun  1 05:47:08 UTC 2020 - Michael Vetter <mvetter@suse.com>
 - Update to 1.4.8:
   * Strip properties from mu4e-completing-read-function results
   * mu4e: remove easy-accounts / no-trash-providers for now
-  * Add missing space between signature verification and signers 
-  * mu4e-maildir-shortcuts: update for today's functionality 
-  * mu4e-maildir-shortcuts: update for today's functionality 
+  * Add missing space between signature verification and signers
+  * mu4e-maildir-shortcuts: update for today's functionality
+  * mu4e-maildir-shortcuts: update for today's functionality
 
 -------------------------------------------------------------------
 Sun May 17 18:24:09 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.6:
   * mu: always sort descending within threads
-  * mu-server: disable readline support for now 
-  * Fix make-mu4e-context-account 
-  * mu4e-compose: fix external use (`compose-mail') 
-  * mu4e: support 'no trash flag' for all mark-for-trash 
+  * mu-server: disable readline support for now
+  * Fix make-mu4e-context-account
+  * mu4e-compose: fix external use (`compose-mail')
+  * mu4e: support 'no trash flag' for all mark-for-trash
 
 -------------------------------------------------------------------
 Mon May 11 06:47:14 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.5:
-  * typo in mu-query manpage 
+  * typo in mu-query manpage
   * mu4e: use :hide-unread in doc
-  * mu4e: better error when mu4e-mu-binary is not set 
-  * mu: support --eval for server testing 
-  * mu: don't verify signatures when it's not needed 
-  * mu4e-bookmarks: improve documentation 
+  * mu4e: better error when mu4e-mu-binary is not set
+  * mu: support --eval for server testing
+  * mu: don't verify signatures when it's not needed
+  * mu4e-bookmarks: improve documentation
   * Make mu4e~view-message available to mu4e-view-mode-hook
-  * mu4e: change spacing in main view for info section 
+  * mu4e: change spacing in main view for info section
   * mu4e.texi: Add note about s/mime
 
 -------------------------------------------------------------------
@@ -92,7 +97,7 @@ Wed Apr 29 07:45:45 UTC 2020 - Michael Vetter <mvetter@suse.com>
   * mu4e: Don't use (mu4e-root-maildir) with easy-accounts
   * fix `mu4e-main-buffer-hide-personal-addresses'
   * mu4e-proc: ensure some booleans are nil
-  * mu4e: ask for context in mu4e~start 
+  * mu4e: ask for context in mu4e~start
 
 -------------------------------------------------------------------
 Mon Apr 20 07:05:10 UTC 2020 - Michael Vetter <mvetter@suse.com>
@@ -208,11 +213,11 @@ Tue Jan 23 10:43:22 UTC 2018 - dmacvicar@suse.de
 Mon Dec 18 11:05:36 UTC 2017 - mvetter@suse.com
 
 - Update to 1.0-alpha3:
-  * parser: promote single value to a range for range-fields 
-  * mu: support 'raw' query (internally) 
-  * mu: handle funny msgids 
-  * mu4e: improve msgid quoting 
-  * mu4e: fix typo in mu4e~docid-msgid-param 
+  * parser: promote single value to a range for range-fields
+  * mu: support 'raw' query (internally)
+  * mu: handle funny msgids
+  * mu4e: improve msgid quoting
+  * mu4e: fix typo in mu4e~docid-msgid-param
 
 -------------------------------------------------------------------
 Mon Nov 13 09:36:13 UTC 2017 - mvetter@suse.com
@@ -232,13 +237,13 @@ Sun Oct 29 17:43:47 UTC 2017 - mvetter@suse.com
   * mu4e: Fix outdated docstring for `mu4e-headers-actions'
   * Add some improvements in attachment actions
   * mu4e: killing instead of interrupting update process
-  * Use re-search-forward to find message signatures 
-  * mu4e: Add possibility to forward messages as attachments 
+  * Use re-search-forward to find message signatures
+  * mu4e: Add possibility to forward messages as attachments
   * mu: add 'tickle' command, for renaming messages
   * mu4e: allow for message body rewriting
   * mu4e: mu4e-message: allow for bodyless messages
   * mu4e: show inline text/plain as attachment
-  * mu4e: don't require user-agent string 
+  * mu4e: don't require user-agent string
   * mu4e: Added new mu4e-split-view mode: single-window
   * mu: include signers in signature report
   * mu4e: display signers in signature header

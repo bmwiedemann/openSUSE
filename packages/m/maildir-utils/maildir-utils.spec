@@ -17,7 +17,7 @@
 
 
 Name:           maildir-utils
-Version:        1.4.15
+Version:        1.6.1
 Release:        0
 Summary:        Maildir indexer and searcher
 License:        GPL-3.0-or-later
@@ -69,7 +69,7 @@ autoreconf -i
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/mu4e.info.gz
 
 %files
-%doc ChangeLog README
+%doc ChangeLog README.org
 %license COPYING
 %dir %{_datadir}/doc/mu
 %{_bindir}/mu
