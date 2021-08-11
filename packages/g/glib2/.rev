@@ -1890,4 +1890,13 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
     <comment>Synchronize the changelog with Leap and SLE. (forwarded request 909108 from yfjiang)</comment>
     <requestid>909315</requestid>
   </revision>
+  <revision rev="241" vrev="4">
+    <srcmd5>75bef83c629553a68c951e11704a71c7</srcmd5>
+    <version>2.68.3</version>
+    <time>1628675223</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add 63e7864.patch: Fix build with glibc 2.34: use 3 parameters
+  for close_range (boo#1189088). (forwarded request 910172 from dimstar)</comment>
+    <requestid>910437</requestid>
+  </revision>
 </revisionlist>
