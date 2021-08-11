@@ -44,7 +44,7 @@
 %bcond_with system_vpx
 %bcond_with clang
 Name:           nodejs-electron
-Version:        13.1.6
+Version:        13.1.8
 Release:        0
 Summary:        Build cross platform desktop apps with JavaScript, HTML, and CSS
 License:        MIT
@@ -55,7 +55,7 @@ Source1:        create_tarball.sh
 Source10:       electron-launcher.sh
 Source11:       electron.desktop
 Source12:       electron-logo-symbolic.svg
-Patch0:         chromium-90-compiler.patch
+Patch0:         chromium-91-compiler.patch
 %if 0%{?sle_version} < 150300 || 0%{?fedora_version} < 34
 # Fixed with ld.gold >= 2.36
 # https://sourceware.org/bugzilla/show_bug.cgi?id=26200
@@ -73,6 +73,7 @@ Patch11:        chromium-vaapi.patch
 Patch12:        chromium-86-fix-vaapi-on-intel.patch
 Patch13:        chromium-91-GCC_fix_vector_types_in_pcscan.patch
 Patch14:        chromium-gcc11.patch
+Patch15:        chromium-freetype-2.11.patch
 # Fix building sql recover_module
 Patch20:        electron-13-fix-sql-virtualcursor-type.patch
 # Always disable use_thin_lto which is an lld feature

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 10 12:18:01 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 13.1.8
+  * https://github.com/electron/electron/releases/tag/v13.1.8
+- Removed chromium-90-compiler.patch
+- Added chromium-91-compiler.patch
+- Added chromium-freetype-2.11.patch
+
+-------------------------------------------------------------------
+Mon Jul 26 04:49:50 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 13.1.7
+  * https://github.com/electron/electron/releases/tag/v13.1.7
+
+-------------------------------------------------------------------
 Mon Jul 12 06:20:09 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Fix build on Fedora
