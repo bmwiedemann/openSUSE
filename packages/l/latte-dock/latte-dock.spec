@@ -17,9 +17,11 @@
 #
 
 
-%define kf5_version 5.38.0
+%global __requires_exclude qmlimport\\(org\\.kde\\.latte\\.private\\.app
+
+%define kf5_version 5.48.0
 Name:           latte-dock
-Version:        0.9.12
+Version:        0.10.0
 Release:        0
 Summary:        Task manager
 License:        GPL-2.0-or-later
@@ -39,6 +41,8 @@ BuildRequires:  cmake(KF5GlobalAccel) >= %{kf5_version}
 BuildRequires:  cmake(KF5GuiAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
+BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
 BuildRequires:  cmake(KF5NewStuff) >= %{kf5_version}
 BuildRequires:  cmake(KF5Notifications) >= %{kf5_version}
 BuildRequires:  cmake(KF5Plasma) >= %{kf5_version}
@@ -70,13 +74,9 @@ contents by using parabolic zoom effect.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} <= 1315
-   %cmake_kf5 -d build -- -DENABLE_MAKE_UNIQUE=ON
-%else
-   %cmake_kf5 -d build
-%endif
+%cmake_kf5 -d build
 
-%make_jobs
+%cmake_build
 
 %install
 %kf5_makeinstall -C build
@@ -87,9 +87,7 @@ contents by using parabolic zoom effect.
 
 %files
 %doc README.md
-%license COPYING*
-%config %{_kf5_configdir}/latte-indicators.knsrc
-%config %{_kf5_configdir}/latte-layouts.knsrc
+%license LICENSES/*
 %{_kf5_bindir}/%{name}
 %{_kf5_plasmadir}/
 %{_kf5_qmldir}/
@@ -105,6 +103,8 @@ contents by using parabolic zoom effect.
 %{_kf5_plugindir}/plasma_containmentactions_lattecontextmenu.so
 %{_kf5_plugindir}/kpackage/packagestructure/latte_packagestructure_indicator.so
 %{_kf5_sharedir}/latte/
+%{_kf5_knsrcfilesdir}/latte-indicators.knsrc
+%{_kf5_knsrcfilesdir}/latte-layouts.knsrc
 
 %files lang -f %{name}.lang
 
