@@ -457,6 +457,7 @@
       <repopackage name="libbd_part2" arch="x86_64"/>
       <repopackage name="libbd_swap2" arch="x86_64"/>
       <repopackage name="libbd_utils2" arch="x86_64"/>
+      <repopackage name="libblas3" arch="x86_64"/>
       <repopackage name="libblkid1"/>
       <repopackage name="libblockdev" arch="x86_64"/>
       <repopackage name="libblockdev2" arch="x86_64"/>
@@ -483,6 +484,7 @@
       <repopackage name="libcap-ng0"/>
       <repopackage name="libcap2"/>
       <repopackage name="libcares2" arch="x86_64"/>
+      <repopackage name="libcblas3" arch="x86_64"/>
       <repopackage name="libcbor0_8"/>
       <repopackage name="libcdda_interface0" arch="x86_64"/>
       <repopackage name="libcdda_paranoia0" arch="x86_64"/>
@@ -601,6 +603,7 @@
       <repopackage name="libgdm1" arch="x86_64"/>
       <repopackage name="libgeocode-glib0" arch="x86_64"/>
       <repopackage name="libgexiv2-2" arch="x86_64"/>
+      <repopackage name="libgfortran5" arch="x86_64"/>
       <repopackage name="libgif7" arch="x86_64"/>
       <repopackage name="libgio-2_0-0" arch="x86_64"/>
       <repopackage name="libgiomm-2_4-1" arch="x86_64"/>
@@ -801,6 +804,7 @@
       <repopackage name="libKUserFeedbackWidgets1" arch="x86_64"/>
       <repopackage name="libkwalletbackend5-5" arch="x86_64"/>
       <repopackage name="libKWaylandServer5" arch="x86_64"/>
+      <repopackage name="liblapack3" arch="x86_64"/>
       <repopackage name="liblcms2-2" arch="x86_64"/>
       <repopackage name="libldac2" arch="x86_64"/>
       <repopackage name="libldap-2_4-2"/>
@@ -874,6 +878,7 @@
       <repopackage name="libofa0" arch="x86_64"/>
       <repopackage name="libogg0" arch="x86_64"/>
       <repopackage name="libopenal1" arch="x86_64"/>
+      <repopackage name="libopenblas_pthreads0" arch="x86_64"/>
       <repopackage name="libopeniscsiusr0_2_0" arch="x86_64"/>
       <repopackage name="libopenjp2-7" arch="x86_64"/>
       <repopackage name="libopenmpt0" arch="x86_64"/>
@@ -966,6 +971,7 @@
       <repopackage name="libQt5X11Extras5" arch="x86_64"/>
       <repopackage name="libQt5Xml5" arch="x86_64"/>
       <repopackage name="libQtQuick5" arch="x86_64"/>
+      <repopackage name="libquadmath0" arch="x86_64"/>
       <repopackage name="libraptor2-0" arch="x86_64"/>
       <repopackage name="librav1e0" arch="x86_64"/>
       <repopackage name="libraw1394-11" arch="x86_64"/>
@@ -1382,8 +1388,8 @@
       <repopackage name="python38-cmdln" arch="x86_64"/>
       <repopackage name="python38-configobj" arch="x86_64"/>
       <repopackage name="python38-cryptography" arch="x86_64"/>
+      <repopackage name="python38-Cycler" arch="x86_64"/>
       <repopackage name="python38-dbus-python" arch="x86_64"/>
-      <repopackage name="python38-decorator" arch="x86_64"/>
       <repopackage name="python38-gobject" arch="x86_64"/>
       <repopackage name="python38-gobject-cairo" arch="x86_64"/>
       <repopackage name="python38-gobject-Gdk" arch="x86_64"/>
@@ -1396,18 +1402,25 @@
       <repopackage name="python38-jsonpointer" arch="x86_64"/>
       <repopackage name="python38-jsonschema" arch="x86_64"/>
       <repopackage name="python38-keylime" arch="x86_64"/>
+      <repopackage name="python38-kiwisolver" arch="x86_64"/>
       <repopackage name="python38-M2Crypto" arch="x86_64"/>
       <repopackage name="python38-Mako" arch="x86_64"/>
       <repopackage name="python38-MarkupSafe" arch="x86_64"/>
+      <repopackage name="python38-matplotlib" arch="x86_64"/>
       <repopackage name="python38-more-itertools" arch="x86_64"/>
       <repopackage name="python38-networkx" arch="x86_64"/>
       <repopackage name="python38-notify2" arch="x86_64"/>
+      <repopackage name="python38-numpy" arch="x86_64"/>
       <repopackage name="python38-oauthlib" arch="x86_64"/>
+      <repopackage name="python38-olefile" arch="x86_64"/>
       <repopackage name="python38-ordered-set" arch="x86_64"/>
       <repopackage name="python38-packaging" arch="x86_64"/>
+      <repopackage name="python38-pandas" arch="x86_64"/>
+      <repopackage name="python38-Pillow" arch="x86_64"/>
       <repopackage name="python38-psutil" arch="x86_64"/>
       <repopackage name="python38-py" arch="x86_64"/>
       <repopackage name="python38-pyasn1" arch="x86_64"/>
+      <repopackage name="python38-pybind11" arch="x86_64"/>
       <repopackage name="python38-pycairo" arch="x86_64"/>
       <repopackage name="python38-pycparser" arch="x86_64"/>
       <repopackage name="python38-pycups" arch="x86_64"/>
@@ -1425,6 +1438,7 @@
       <repopackage name="python38-PyYAML" arch="x86_64"/>
       <repopackage name="python38-pyzmq" arch="x86_64"/>
       <repopackage name="python38-requests" arch="x86_64"/>
+      <repopackage name="python38-scipy" arch="x86_64"/>
       <repopackage name="python38-semanage" arch="x86_64"/>
       <repopackage name="python38-setools" arch="x86_64"/>
       <repopackage name="python38-setuptools" arch="x86_64"/>
