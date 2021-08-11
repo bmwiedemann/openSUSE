@@ -18,8 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 
+%define skip_python2 1
+
 Name:           python-jwcrypto
-Version:        0.9.1
+Version:        1.0
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
@@ -62,6 +64,6 @@ rm -rv %{buildroot}%{_datadir}/doc/jwcrypto
 %files %{python_files}
 %{python_sitelib}/*
 %license LICENSE
-%doc README.md
+%doc README.md SECURITY.md
 
 %changelog

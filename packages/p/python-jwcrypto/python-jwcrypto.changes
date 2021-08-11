@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug  5 19:05:35 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 1.0
+  * Create SECURITY.md
+  * Allow empty payloads in JWS tokens
+  * Add tests to check empty payload support
+  * Drop python2 compatibility
+  * Fix python3 pylint issues
+  * Add explicit support to check 'typ' in JWT
+  * Drop support for importing old MutableMapping
+  * Disable annoying pep8 naming checks
+
+-------------------------------------------------------------------
 Sat Jun 12 16:31:12 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - added Requires: python-Deprecated
