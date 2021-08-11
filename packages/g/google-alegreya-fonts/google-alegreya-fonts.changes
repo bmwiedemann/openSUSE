@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun May  9 15:02:13 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v2.008
+- Package *.otf files instead of *.ttf
+- Update summary and description
+
+-------------------------------------------------------------------
 Wed Jul  4 12:39:06 CEST 2012 - pgajdos@suse.cz
 
 - amend spec file to reflect new font packaging scheme
