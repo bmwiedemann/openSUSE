@@ -708,4 +708,17 @@ require it nevertheless
     <comment></comment>
     <requestid>895808</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>c7bf2f3c9b945bc758380471e7c1a8e3</srcmd5>
+    <version>4.32</version>
+    <time>1628675226</time>
+    <user>RBrownSUSE</user>
+    <comment>- added a ccache conditional
+
+- update to version 4.32
+  * implement new socket option PR_SockOpt_DontFrag
+  * support larger DNS records by increasing the default buffer
+    size for DNS queries</comment>
+    <requestid>910949</requestid>
+  </revision>
 </revisionlist>

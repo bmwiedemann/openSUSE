@@ -2,7 +2,7 @@
 # spec file for package mozilla-nspr
 #
 # Copyright (c) 2021 SUSE LLC
-#               2006-2020 Wolfgang Rosenauer
+#               2006-2021 Wolfgang Rosenauer
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,10 @@
 #
 
 
+%define useccache     1
+
 Name:           mozilla-nspr
-Version:        4.31
+Version:        4.32
 Release:        0
 Summary:        Netscape Portable Runtime
 License:        MPL-2.0
@@ -26,6 +28,9 @@ Group:          System/Libraries
 URL:            http://www.mozilla.org/projects/nspr/
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
+%if 0%{useccache} != 0
+BuildRequires:  ccache
+%endif
 # bug437293
 %ifarch ppc64
 Obsoletes:      mozilla-nspr-64bit
@@ -77,6 +82,9 @@ export CFLAGS="%{optflags}"
 %endif
 	    --libdir=%{_libdir} \
 	    --includedir=%{_includedir}/nspr4 \
+%if 0%{useccache} != 0
+	    --with-ccache \
+%endif
 	    --prefix=%{_prefix}
 make SH_DATE="$BUILD_STRING" SH_NOW="$BUILD_TIME" %{?_smp_mflags}
 popd
