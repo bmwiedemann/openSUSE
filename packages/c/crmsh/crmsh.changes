@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 11 07:15:15 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210811.4045e09d:
+  * Dev: unittest: Add unit test for previous changes
+  * Fix: bootstrap: Adjust corosync and sbd parameters according to the profile environment detected (bsc#1175896)
+  * Fix: sbd: adjust sbd systemd TimeoutStartSec together with SBD_DELAY_START
+  * Dev: Makefile: add etc/profiles.yml and move crm.conf.in into etc
+
+-------------------------------------------------------------------
+Thu Aug 05 08:37:03 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210805.18f9a8c1:
+  * Fix: doc: Note that resource tracing is only supported by OCF RAs(bsc#1188966)
+  * Dev: testcases: adjust expected output for previous changes
+  * Dev: ui_resource: Enhancement trace output
+
+-------------------------------------------------------------------
+Wed Jul 28 06:14:24 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210728.8029db25:
+  * Medium: ra: performance/usability improvement (avoid systemd)
+
+-------------------------------------------------------------------
 Mon Jul 26 04:08:51 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210726.3de6f304:
