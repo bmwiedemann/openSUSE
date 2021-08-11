@@ -105,4 +105,12 @@
     <comment>- python symbol is not provided by python 3, use proper python3</comment>
     <requestid>899911</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>2d6feda6dfb72903fafdefe958a71e6a</srcmd5>
+    <version>4.5.1</version>
+    <time>1628675236</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911254</requestid>
+  </revision>
 </revisionlist>

@@ -25,6 +25,7 @@ URL:            https://www.finnie.org/software/2ping/
 Source0:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz
 Source1:        https://www.finnie.org/software/2ping/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Patch0:         harden_2ping.service.patch
 BuildRequires:  fdupes
 BuildRequires:  python3-devel >= 3.6
 BuildRequires:  python3-distro

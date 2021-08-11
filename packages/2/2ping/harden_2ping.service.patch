@@ -1,0 +1,16 @@
+Index: 2ping-4.5.1/2ping.service
+===================================================================
+--- 2ping-4.5.1.orig/2ping.service
++++ 2ping-4.5.1/2ping.service
+@@ -30,6 +30,11 @@ RestrictAddressFamilies=AF_NETLINK AF_IN
+ RestrictNamespaces=yes
+ RestrictRealtime=yes
+ RestrictSUIDSGID=yes
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectClock=true
++# end of automatic additions 
+ User=nobody
+ 
+ [Install]

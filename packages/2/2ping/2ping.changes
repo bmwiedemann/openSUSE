@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 10 09:28:47 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_2ping.service.patch
+
+-------------------------------------------------------------------
 Mon Jun 14 09:56:20 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - python symbol is not provided by python 3, use proper python3
