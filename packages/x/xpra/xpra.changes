@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Aug 10 07:51:04 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.2
+  * don't build ffmpeg codecs on i386 (crashy)
+  * prevent crashes caused by svg conversion done in a thread
+  * always stop the 'new-stream' notification process
+  * prevent subprocesses from becoming zombies
+  * clean server on 'stop' or 'exit'
+  * fix application geometry issues
+  * show correct default values with "xpra --help"
+  * stop responding to 'info' requests when shutting down
+  network layer:
+  * honour the packet-encoding and compressors options
+  * rencode packet encoder is not thread safe!
+  * packet errors with bencoder and None values
+  * don't assume the packet encoders handle bytes and / or
+    strings
+  client issues:
+  * backwards compatibility with v3 servers for ssh start
+  * incorrect client exit code
+  subcommands:
+  * 'start-gui' invalid options shown
+  * 'sessions' and 'displays' subcommands do not need a display
+  * fix hidden 'wmname' utility subcommand
+  * many subcommands should send debug logging to stderr
+  menu loading:
+  * try harder to find valid menu entries to use
+  * skip entries that cannot be executed
+  * don't block the main thread when loading menus
+  xpra top:
+  * handle unicode window titles correctly
+  * fix screen corruption due to threading
+  * fix latency always showing as zero
+  audio:
+  * pipeline errors with aac encoder
+  * X11 warning when starting microphone forwarding from the
+    command line
+  minor / cosmetic fixes:
+  * cropped icons shown in html5 client connect page
+  * logging, error handling
+  * remove unused pulseaudio directories
+  * '1080p' resize-display string matching
+
+-------------------------------------------------------------------
 Sun Jul 11 05:16:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.2.1
