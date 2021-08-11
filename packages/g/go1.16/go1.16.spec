@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.16
-Version:        1.16.6
+Version:        1.16.7
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -147,8 +147,6 @@ Source4:        README.SUSE
 Source6:        go.gdbinit
 # We have to compile TSAN ourselves. boo#1052528
 Source100:      llvm-%{tsan_commit}.tar.xz
-# PATCH-FIX-UPSTREAM https://go-review.googlesource.com/c/go/+/334410/1
-Patch1:         fix-ppc64-crashes.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - find /usr/bin/go-5 when bootstrapping with gcc5-go
 Patch8:         gcc6-go.patch
 Patch9:         gcc7-go.patch
@@ -236,7 +234,6 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %endif
 # go
 %setup -q -n go
-%patch1 -p1
 %if %{with gccgo}
 %if 0%{?gcc_go_version} == 6
 %patch8 -p1

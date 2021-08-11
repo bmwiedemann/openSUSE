@@ -146,4 +146,26 @@
   * fix-ppc64-crashes.patch (forwarded request 907144 from favogt)</comment>
     <requestid>907807</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d45fca0e86b9aaecddff16bee1145a3b</srcmd5>
+    <version>1.16.7</version>
+    <time>1628675220</time>
+    <user>RBrownSUSE</user>
+    <comment>- go1.16.7 (released 2021-08-05) includes a security fix to the
+  net/http/httputil package, as well as bug fixes to the compiler,
+  the linker, the runtime, the go command, and the net/http
+  package.
+  CVE-2021-36221
+  Refs boo#1182345 go1.16 release tracking
+  * boo#1189162 go#46866 CVE-2021-36221
+  * go#47474 net/http: panic due to racy read of persistConn after handler panic
+  * go#47348 cmd/go: &quot;go list -f '{{.Stale}}'&quot; stack overflow with cyclic imports
+  * go#47332 time: Timer reset broken under heavy use since go1.16 timer optimizations added
+  * go#47289 cmd/link: build error with cgo in Windows, redefinition of go.map.zero
+  * go#47015 cmd/go: go mod vendor: open C:\Users\LICENSE: Access is denied.
+  * go#46928 cmd/compile: register conflict between external linker and duffzero on arm64
+  * go#46858 runtime: ppc64x binaries randomly segfault on linux 5.13rc6
+  * go#46551 cmd/go: unhelpful error message when running &quot;go install&quot; on a replaced-but-not-required package (forwarded request 910389 from jfkw)</comment>
+    <requestid>910391</requestid>
+  </revision>
 </revisionlist>
