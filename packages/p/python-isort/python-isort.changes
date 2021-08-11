@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 30 08:30:57 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 5.9.3:
+    - Improved text of skipped file message to mention gitignore feature.
+    - Made all exceptions pickleable.
+    - Fixed #1779: Pylama integration ignores pylama specific isort config overrides.
+    - Fixed #1781: `--from-first` CLI flag shouldn't take any arguments.
+    - Fixed #1792: Sorting literals sometimes ignored when placed on first few lines of file.
+    - Fixed #1777: extend_skip is not honored wit a git submodule when skip_gitignore=true.
+
+-------------------------------------------------------------------
 Thu Jul  8 13:48:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 -  update to version 5.9.2

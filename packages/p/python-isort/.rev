@@ -426,4 +426,12 @@ Let's see which package is missing in ringX for test flavor</comment>
     <comment></comment>
     <requestid>905345</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d6829ba7c73202254fdee766dbc75edf</srcmd5>
+    <version>5.9.3</version>
+    <time>1628675225</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>910472</requestid>
+  </revision>
 </revisionlist>
