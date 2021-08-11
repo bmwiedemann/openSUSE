@@ -111,7 +111,7 @@ cp interface/TiMidity-uj.ad $RPM_BUILD_ROOT%{_datadir}/X11/ja_JP.eucJP/app-defau
 ln -s ../../ja_JP.eucJP/app-defaults/TiMidity $RPM_BUILD_ROOT%{_datadir}/X11/ja_JP.ujis/app-defaults/TiMidity
 # copy documents
 mkdir -p $RPM_BUILD_ROOT%{_docdir}/%{name}
-cp AUTHORS COPYING ChangeLog* NEWS README TODO \
+cp AUTHORS ChangeLog* NEWS README TODO \
   $RPM_BUILD_ROOT%{_docdir}/%{name}
 cp %{SOURCE7} $RPM_BUILD_ROOT%{_docdir}/%{name}
 for i in *.ja; do
@@ -184,7 +184,8 @@ chmod 755 %{my_provides}
 
 %files
 %defattr(-,root,root)
-%{_docdir}
+%license COPYING
+%doc %{_docdir}/timidity
 %{_libdir}/timidity
 %{_datadir}/timidity
 %config(noreplace) %{_datadir}/timidity/timidity.cfg
@@ -192,7 +193,7 @@ chmod 755 %{my_provides}
 %{_datadir}/applications/*.desktop
 %{_datadir}/pixmaps/*.png
 %config /etc/timidity.cfg
-%doc %{_mandir}/man*/*
+%{_mandir}/man*/*
 %{_datadir}/X11/app-defaults/TiMidity
 %{_datadir}/X11/ja*
 %{_datadir}/emacs
