@@ -26,9 +26,9 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
-%define ghversion 2021.05.0
+%define ghversion 2021.07.0
 Name:           python-fsspec%{psuffix}
-Version:        2021.5.0
+Version:        2021.7.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
@@ -60,7 +60,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module cloudpickle}
 BuildRequires:  %{python_module fusepy}
-BuildRequires:  %{python_module gcsfs}
 BuildRequires:  %{python_module notebook}
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module pyftpdlib}
@@ -71,6 +70,7 @@ BuildRequires:  %{python_module s3fs}
 BuildRequires:  %{python_module smbprotocol}
 BuildRequires:  %{python_module zstandard}
 BuildRequires:  %{python_module distributed if (%python-base without python36-base)}
+BuildRequires:  %{python_module gcsfs if (%python-base without python36-base)}
 BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module panel if (%python-base without python36-base)}
 # cannot test git and http in the same installation (?)

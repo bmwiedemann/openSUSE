@@ -116,4 +116,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>894676</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f095e44af273cb46eb7d1447c7280e5b</srcmd5>
+    <version>2021.7.0</version>
+    <time>1628675227</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911012</requestid>
+  </revision>
 </revisionlist>

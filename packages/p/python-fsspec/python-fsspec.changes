@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Aug  8 15:32:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.07.0
+  * no release notes
+- Release 2021.06.1
+  * Introduce fsspec.asyn.fsspec_loop to temporarily switch to the
+    fsspec loop. (#671)
+  * support list for local rm (#678)
+  * error when local mkdir twice (#679)
+  * fix local info regression for pathlike (#667)
+  * link to wandbfs (#664)
+- Release 2021.06.0
+  * Better testing and folder handling for Memory (#654)
+  * Negative indexes for cat_file (#653)
+  * optimize local file listing (#647)
+  * FileNoteFound in http and range exception subclass (#649, 646)
+  * async timeouts (#643, 645)
+  * stringify path for pyarrow legacy (#630)
+  * The fsspec.asyn.get_loop() will always return a loop of a
+    selector policy (#658)
+  * add helper to construct Range headers for cat_file (#655)
+
+-------------------------------------------------------------------
 Thu May 20 13:22:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.05.0
