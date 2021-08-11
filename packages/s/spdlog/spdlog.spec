@@ -24,6 +24,8 @@ Summary:        C++ logging library
 License:        MIT
 URL:            https://github.com/gabime/spdlog
 Source0:        https://github.com/gabime/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE spdlog-1.9.1-use_system_catch2.patch use system catch2 to fix problem with glibc 2.3.4 -- aloisio@gmx.com
+Patch0:         spdlog-1.9.1-use_system_catch2.patch
 BuildRequires:  benchmark-devel >= 1.4.0
 BuildRequires:  cmake >= 3.10
 %if 0%{?suse_version} > 1500
@@ -33,6 +35,7 @@ BuildRequires:  gcc8-c++
 %endif
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(catch2) >= 2.13.4
 BuildRequires:  pkgconfig(fmt) >= 8.0.0
 BuildRequires:  pkgconfig(libsystemd)
 

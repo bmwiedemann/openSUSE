@@ -288,4 +288,13 @@
     <comment></comment>
     <requestid>908612</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>7d5b2fffe6c5072aa683ee8eda612670</srcmd5>
+    <version>1.9.1</version>
+    <time>1628675225</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add spdlog-1.9.1-use_system_catch2.patch (fixes boo#1189103)
+</comment>
+    <requestid>910461</requestid>
+  </revision>
 </revisionlist>

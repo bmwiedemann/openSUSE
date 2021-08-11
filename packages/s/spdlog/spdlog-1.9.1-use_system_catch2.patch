@@ -1,0 +1,41 @@
+Index: spdlog-1.9.1/tests/includes.h
+===================================================================
+--- spdlog-1.9.1.orig/tests/includes.h
++++ spdlog-1.9.1/tests/includes.h
+@@ -1,6 +1,6 @@
+ #pragma once
+ 
+-#include "catch.hpp"
++#include <catch2/catch.hpp>
+ #include "utils.h"
+ #include <chrono>
+ #include <cstdio>
+@@ -23,4 +23,4 @@
+ #include "spdlog/sinks/ostream_sink.h"
+ #include "spdlog/sinks/rotating_file_sink.h"
+ #include "spdlog/sinks/stdout_color_sinks.h"
+-#include "spdlog/pattern_formatter.h"
+\ No newline at end of file
++#include "spdlog/pattern_formatter.h"
+Index: spdlog-1.9.1/tests/main.cpp
+===================================================================
+--- spdlog-1.9.1.orig/tests/main.cpp
++++ spdlog-1.9.1/tests/main.cpp
+@@ -1,2 +1,2 @@
+ #define CATCH_CONFIG_MAIN
+-#include "catch.hpp"
+\ No newline at end of file
++#include <catch2/catch.hpp>
+Index: spdlog-1.9.1/tests/CMakeLists.txt
+===================================================================
+--- spdlog-1.9.1.orig/tests/CMakeLists.txt
++++ spdlog-1.9.1/tests/CMakeLists.txt
+@@ -10,7 +10,7 @@ include(../cmake/utils.cmake)
+ 
+ find_package(PkgConfig)
+ if(PkgConfig_FOUND)
+-    pkg_check_modules(systemd libsystemd)
++    pkg_check_modules(systemd libsystemd catch2>=2.13.4)
+ endif()
+ 
+ set(SPDLOG_UTESTS_SOURCES

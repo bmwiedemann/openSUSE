@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:32 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add spdlog-1.9.1-use_system_catch2.patch (fixes boo#1189103)
+
+-------------------------------------------------------------------
 Tue Jul 27 13:31:38 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.9.1
