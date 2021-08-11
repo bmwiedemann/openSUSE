@@ -150,4 +150,13 @@
     <comment></comment>
     <requestid>666138</requestid>
   </revision>
+  <revision rev="22" vrev="21">
+    <srcmd5>827bb2d3e345779763273d32a1494153</srcmd5>
+    <version>1.0.6</version>
+    <time>1628675224</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add libesmtp-fix-cve-2019-19977.patch: Fix stack-based buffer
+  over-read in ntlm/ntlmstruct.c (bsc#1160462 bsc#1189097). (forwarded request 910456 from yfjiang)</comment>
+    <requestid>910457</requestid>
+  </revision>
 </revisionlist>
