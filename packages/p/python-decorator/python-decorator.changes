@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug  5 15:25:53 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream patch kwsyntax.patch
+
+-------------------------------------------------------------------
+Tue Jul 27 06:15:15 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.9:
+  * Fixed a test breaking PyPy. Restored support for Sphinx.
+  * Made the decorator module more robust when decorating builtin functions
+    lacking dunder attributes, like `dict.__setitem__`.
+  * The decorator module was not passing correctly the defaults inside the
+    `*args` tuple, thanks to Dan Shult for the fix.
+  * The decorator module was not copying the __module__ attribute anymore.
+  * Dropped support for Python < 3.5 with a substantial simplification of
+    the code base (now building a decorator does not require calling "exec").
+    Added a way to mimic functools.wraps-generated decorators.
+
+-------------------------------------------------------------------
 Sat Mar 14 15:50:24 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.4.2:

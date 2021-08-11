@@ -1,7 +1,7 @@
 #
 # spec file for package python-decorator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,17 @@
 # Please submit bugfixes or comments via http://bugs.opensuse.org/
 #
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global skip_python2 1
 Name:           python-decorator
-Version:        4.4.2
+Version:        5.0.9
 Release:        0
 Summary:        Decorators for Humans
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/micheles/decorator
 Source:         https://files.pythonhosted.org/packages/source/d/decorator/decorator-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/micheles/decorator/commit/817d070db3c9cc5900d118837c533c039982b050 Fixed decorator.decorator not passing kwsyntax
+Patch0:         kwsyntax.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -45,6 +48,7 @@ redirecting_stdout, locked, etc. more accessible.
 
 %prep
 %setup -q -n decorator-%{version}
+%autopatch -p1
 
 %build
 %python_build

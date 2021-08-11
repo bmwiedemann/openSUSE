@@ -1,0 +1,36 @@
+From 817d070db3c9cc5900d118837c533c039982b050 Mon Sep 17 00:00:00 2001
+From: Michele Simionato <michele.simionato@gmail.com>
+Date: Fri, 28 May 2021 08:30:09 +0200
+Subject: [PATCH] Fixed decorator.decorator not passing kwsyntax
+
+---
+ CHANGES.md       | 2 ++
+ src/decorator.py | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/CHANGES.md b/CHANGES.md
+index 596559b..876df34 100644
+--- a/CHANGES.md
++++ b/CHANGES.md
+@@ -3,6 +3,8 @@ HISTORY
+ 
+ ## unreleased
+ 
++decorator.decorator was not passing the kwsyntax.
++
+ ## 5.0.9 (2021-05-16)
+ 
+ Fixed a test breaking PyPy. Restored support for Sphinx.
+diff --git a/src/decorator.py b/src/decorator.py
+index 438dff6..dab0d7c 100644
+--- a/src/decorator.py
++++ b/src/decorator.py
+@@ -265,7 +265,7 @@ def decorator(caller, _func=None, kwsyntax=False):
+     """
+     if _func is not None:  # return a decorated function
+         # this is obsolete behavior; you should use decorate instead
+-        return decorate(_func, caller)
++        return decorate(_func, caller, (), kwsyntax)
+     # else return a decorator function
+     sig = inspect.signature(caller)
+     dec_params = [p for p in sig.parameters.values() if p.kind is POS]
