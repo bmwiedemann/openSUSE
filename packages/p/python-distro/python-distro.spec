@@ -20,7 +20,7 @@
 %{!?license: %global license %doc}
 %bcond_without test
 Name:           python-distro
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Linux Distribution - a Linux OS platform information API
 License:        Apache-2.0

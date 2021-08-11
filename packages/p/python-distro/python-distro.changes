@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug  3 12:19:39 UTC 2021 - brejoc@gmail.com
+
+- Update to version 1.6.0
+  * Deprecated the distro.linux_distribution() function. Use distro.id(), distro.version() and distro.name() instead [#296]
+  * Deprecated Python 2.7, 3.4 and 3.5 support. Further releases will only support Python 3.6+
+  * Added type hints to distro module [#269]
+  * Added __version__ for checking distro version [#292]
+  * Added support for arbitrary rootfs via the root_dir parameter [#247]
+  * Added the --root-dir option to CLI [#161]
+  * Added fallback to /usr/lib/os-release when /etc/os-release isn't available [#262]
+  * Fixed subprocess.CalledProcessError when running lsb_release [#261]
+  * Ignore /etc/iredmail-release file while parsing distribution [#268]
+  * Use a binary file for /dev/null to avoid TextIOWrapper overhead [#271]
+
+-------------------------------------------------------------------
 Tue May 18 10:55:49 UTC 2021 - pgajdos@suse.com
 
 - use %pytest macro
