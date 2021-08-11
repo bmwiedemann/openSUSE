@@ -994,7 +994,6 @@ unsorted:
   - awf-gtk3 
   - awf-gtk4 
   - awkward-devel 
-  - aws-cli 
   - aws-efs-utils 
   - aws-sdk-java 
   - aws-sdk-java-acm 
@@ -8758,7 +8757,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_3_0 
-  - libLLVM10 
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
@@ -8860,29 +8858,17 @@ unsorted:
   - libQMatrixClient0_5_3 
   - libQgpsmm28 
   - libQt53DAnimation-devel 
-  - libQt53DAnimation5 
   - libQt53DCore-devel 
-  - libQt53DCore5 
   - libQt53DExtras-devel 
-  - libQt53DExtras5 
   - libQt53DInput-devel 
-  - libQt53DInput5 
   - libQt53DLogic-devel 
-  - libQt53DLogic5 
   - libQt53DQuick-devel 
-  - libQt53DQuick5 
   - libQt53DQuickAnimation-devel 
-  - libQt53DQuickAnimation5 
   - libQt53DQuickExtras-devel 
-  - libQt53DQuickExtras5 
   - libQt53DQuickInput-devel 
-  - libQt53DQuickInput5 
   - libQt53DQuickRender-devel 
-  - libQt53DQuickRender5 
   - libQt53DQuickScene2D-devel 
-  - libQt53DQuickScene2D5 
   - libQt53DRender-devel 
-  - libQt53DRender5 
   - libQt5Bluetooth5-32bit: [x86_64] 
   - libQt5Bodymovin-devel 
   - libQt5Bodymovin-private-headers-devel 
@@ -8903,7 +8889,6 @@ unsorted:
   - libQt5DBus-devel-32bit: [x86_64] 
   - libQt5DBus-private-headers-devel 
   - libQt5DBus5-32bit: [x86_64] 
-  - libQt5DataVisualization5 
   - libQt5DataVisualization5-devel 
   - libQt5Designer5-32bit: [x86_64] 
   - libQt5DesignerComponents5 
@@ -9467,7 +9452,6 @@ unsorted:
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
-  - libassimp5 
   - libassuan-devel 
   - libassuan0-32bit: [x86_64] 
   - libastro1 
@@ -9641,7 +9625,6 @@ unsorted:
   - libblkid-devel-32bit: [x86_64] 
   - libblkid-devel-static 
   - libblockdev-devel 
-  - libblosc1 
   - libbluetooth3-32bit: [x86_64] 
   - libbluray-bdj 
   - libbluray-devel 
@@ -11101,7 +11084,6 @@ unsorted:
   - libharminv3 
   - libharu-devel 
   - libhashcat6_2_1 
-  - libhdf5-103 
   - libhdf5-103-32bit: [x86_64] 
   - libhdf5-103-mvapich2 
   - libhdf5-103-mvapich2-32bit: [x86_64] 
@@ -11570,10 +11552,8 @@ unsorted:
   - libkomparediff2-devel 
   - libkonkretcmpi0 
   - libkpmcore7 
-  - libkrun-devel: [x86_64] 
-  - libkrun0: [x86_64] 
-  - libkrunfw-devel: [x86_64] 
-  - libkrunfw0: [x86_64] 
+  - libkrun: [x86_64] 
+  - libkrunfw: [x86_64] 
   - libksane-devel 
   - libksba-devel 
   - libkscreen2-devel 
@@ -12887,7 +12867,6 @@ unsorted:
   - libqt5-linguist-devel 
   - libqt5-qt3d-devel 
   - libqt5-qt3d-examples 
-  - libqt5-qt3d-imports 
   - libqt5-qt3d-private-headers-devel 
   - libqt5-qt3d-tools 
   - libqt5-qtbase-common-devel 
@@ -13826,7 +13805,6 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtasn1-tools 
-  - libtbb2 
   - libtbbmalloc2 
   - libtcmalloc4 
   - libtcmalloc_and_profiler4 
@@ -22950,7 +22928,6 @@ unsorted:
   - python36-netaddr 
   - python36-netifaces 
   - python36-netmiko 
-  - python36-networkx 
   - python36-nine 
   - python36-nltk 
   - python36-nocasedict 
@@ -23075,7 +23052,7 @@ unsorted:
   - python36-pecan 
   - python36-peewee 
   - python36-pefile 
-  - python36-pelican 
+  - python36-pelican: [x86_64] 
   - python36-pem 
   - python36-pendulum 
   - python36-pep517 
@@ -24208,7 +24185,6 @@ unsorted:
   - python38-Flask-doc 
   - python38-FontTools 
   - python38-FormEncode 
-  - python38-Genshi 
   - python38-GitPython 
   - python38-Glances 
   - python38-Gloo 
@@ -24279,7 +24255,6 @@ unsorted:
   - python38-PyMeta3 
   - python38-PyMsgBox 
   - python38-PyMuPDF 
-  - python38-PyMySQL 
   - python38-PyNamecheap 
   - python38-PyOgg 
   - python38-PyOpenAL 
@@ -24321,7 +24296,6 @@ unsorted:
   - python38-QR-Code-generator 
   - python38-Qt.py 
   - python38-QtAwesome 
-  - python38-QtPy 
   - python38-RegexOrder 
   - python38-Routes 
   - python38-Rtree 
@@ -24366,7 +24340,6 @@ unsorted:
   - python38-XStatic-objectpath 
   - python38-XStatic-term.js 
   - python38-XStatic-tv4 
-  - python38-XlsxWriter 
   - python38-Yapsy 
   - python38-ZConfig 
   - python38-ZConfig-doc 
@@ -24398,17 +24371,13 @@ unsorted:
   - python38-agate-sql 
   - python38-agate-stats 
   - python38-aina 
-  - python38-aiobotocore 
-  - python38-aiodns 
   - python38-aioeventlet 
   - python38-aiofiles 
   - python38-aioftp 
-  - python38-aiohttp 
   - python38-aiohttp-jinja2 
   - python38-aiohttp-socks 
   - python38-aiohttp-theme 
   - python38-aiohttp_cors 
-  - python38-aioitertools 
   - python38-aioquic 
   - python38-aioredis 
   - python38-aioresponses 
@@ -24468,7 +24437,6 @@ unsorted:
   - python38-asttokens 
   - python38-astunparse 
   - python38-asv 
-  - python38-async_timeout 
   - python38-asyncpg 
   - python38-asyncssh 
   - python38-atlassian-python-api 
@@ -24751,7 +24719,6 @@ unsorted:
   - python38-base58 
   - python38-bashate 
   - python38-basictracer 
-  - python38-beautifulsoup4 
   - python38-before-after 
   - python38-behave 
   - python38-bencode 
@@ -24791,8 +24758,6 @@ unsorted:
   - python38-booleanOperations 
   - python38-boost-histogram 
   - python38-boto 
-  - python38-boto3 
-  - python38-botocore 
   - python38-bottle 
   - python38-bowler 
   - python38-bpython 
@@ -24811,7 +24776,7 @@ unsorted:
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
-  - python38-cachetools 
+  - python38-cachetools: [i586] 
   - python38-cachey 
   - python38-cachy 
   - python38-cairocffi 
@@ -24900,7 +24865,6 @@ unsorted:
   - python38-codecov 
   - python38-cogapp 
   - python38-colander 
-  - python38-colorama 
   - python38-colorcet 
   - python38-colorclass 
   - python38-coloredlogs 
@@ -24945,7 +24909,6 @@ unsorted:
   - python38-cpplint 
   - python38-cppy 
   - python38-cracklib 
-  - python38-cramjam 
   - python38-crashtest 
   - python38-crayons 
   - python38-crcmod 
@@ -25165,7 +25128,6 @@ unsorted:
   - python38-dockerpty 
   - python38-docopt 
   - python38-docrepr 
-  - python38-docutils 
   - python38-docutils-ast-writer 
   - python38-dogslow 
   - python38-dominate 
@@ -25217,7 +25179,6 @@ unsorted:
   - python38-eradicate 
   - python38-espeak 
   - python38-esptool 
-  - python38-et_xmlfile 
   - python38-etcd: [x86_64] 
   - python38-ethtool 
   - python38-evdev 
@@ -25246,7 +25207,6 @@ unsorted:
   - python38-fasteners 
   - python38-fastimport 
   - python38-fastnumbers 
-  - python38-fastparquet 
   - python38-fastremap 
   - python38-fb-re2 
   - python38-fedmsg 
@@ -25314,7 +25274,6 @@ unsorted:
   - python38-fritzconnection 
   - python38-frozendict 
   - python38-fs 
-  - python38-fsspec 
   - python38-ftfy 
   - python38-ftputil 
   - python38-fudge 
@@ -25322,14 +25281,14 @@ unsorted:
   - python38-funcy 
   - python38-furl 
   - python38-fuse 
-  - python38-fusepy 
+  - python38-fusepy: [i586] 
   - python38-fuzzywuzzy 
   - python38-fysom 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
-  - python38-gcsfs 
-  - python38-gcsfs-fuse 
+  - python38-gcsfs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-gcsfs-fuse: [i586] 
   - python38-gear 
   - python38-ged4py 
   - python38-genfire 
@@ -25361,9 +25320,9 @@ unsorted:
   - python38-goobook 
   - python38-google-api-core 
   - python38-google-api-python-client 
-  - python38-google-auth 
+  - python38-google-auth: [i586] 
   - python38-google-auth-httplib2 
-  - python38-google-auth-oauthlib 
+  - python38-google-auth-oauthlib: [i586] 
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
@@ -25437,7 +25396,6 @@ unsorted:
   - python38-hstspreload 
   - python38-html2text 
   - python38-html5-parser 
-  - python38-html5lib 
   - python38-htmlmin 
   - python38-httmock 
   - python38-http-ece 
@@ -25543,7 +25501,6 @@ unsorted:
   - python38-javapackages 
   - python38-javaproperties 
   - python38-jdatetime 
-  - python38-jdcal 
   - python38-jedi 
   - python38-jedihttp 
   - python38-jeepney 
@@ -25556,7 +25513,6 @@ unsorted:
   - python38-jinja2-time 
   - python38-jira 
   - python38-jirafs 
-  - python38-jmespath 
   - python38-joblib 
   - python38-josepy 
   - python38-jplephem 
@@ -25688,7 +25644,6 @@ unsorted:
   - python38-lit 
   - python38-livereload 
   - python38-llfuse 
-  - python38-llvmlite 
   - python38-lmdb 
   - python38-lmfit 
   - python38-lml 
@@ -25791,7 +25746,6 @@ unsorted:
   - python38-mujson 
   - python38-mulpyplexer 
   - python38-multi_key_dict 
-  - python38-multidict 
   - python38-multipledispatch 
   - python38-munch 
   - python38-munkres 
@@ -25864,7 +25818,6 @@ unsorted:
   - python38-ntlm-auth 
   - python38-ntplib 
   - python38-num2words 
-  - python38-numba 
   - python38-numba-devel 
   - python38-numcodecs 
   - python38-numericalunits 
@@ -25909,7 +25862,6 @@ unsorted:
   - python38-opengl-accelerate 
   - python38-openidc-client 
   - python38-openmesh 
-  - python38-openpyxl 
   - python38-openqa_client 
   - python38-opentelemetry-api 
   - python38-opentracing 
@@ -25982,7 +25934,7 @@ unsorted:
   - python38-pecan 
   - python38-peewee 
   - python38-pefile 
-  - python38-pelican 
+  - python38-pelican: [x86_64] 
   - python38-pem 
   - python38-pendulum 
   - python38-pep517 
@@ -26081,7 +26033,6 @@ unsorted:
   - python38-psautohint 
   - python38-pscript 
   - python38-psychtoolbox 
-  - python38-psycopg2 
   - python38-psycopg2cffi 
   - python38-ptpython 
   - python38-ptpython-ptipython 
@@ -26252,7 +26203,6 @@ unsorted:
   - python38-pyramid-chameleon 
   - python38-pyramid-debugtoolbar 
   - python38-pyramid-mako 
-  - python38-pyreadstat 
   - python38-pyroma 
   - python38-pyroomacoustics 
   - python38-pyroute2 
@@ -26413,7 +26363,6 @@ unsorted:
   - python38-python-lsp-black 
   - python38-python-lsp-jsonrpc 
   - python38-python-lsp-server 
-  - python38-python-lzo 
   - python38-python-magic 
   - python38-python-mpd2 
   - python38-python-mpv 
@@ -26488,7 +26437,6 @@ unsorted:
   - python38-qscintilla-qt5 
   - python38-qstylizer 
   - python38-qsymm 
-  - python38-qt3d-qt5 
   - python38-qt3d-qt5-api 
   - python38-qt3d-qt5-doc 
   - python38-qt3d-qt5-sip 
@@ -26503,13 +26451,11 @@ unsorted:
   - python38-qtcharts-qt5-doc 
   - python38-qtcharts-qt5-sip 
   - python38-qtconsole 
-  - python38-qtdatavis3d-qt5 
   - python38-qtdatavis3d-qt5-api 
   - python38-qtdatavis3d-qt5-doc 
   - python38-qtdatavis3d-qt5-sip 
   - python38-qtnetworkauth-qt5 
   - python38-qtnetworkauth-qt5-devel 
-  - python38-qtwebengine-qt5 
   - python38-qtwebengine-qt5-api 
   - python38-qtwebengine-qt5-sip 
   - python38-quantities 
@@ -26557,7 +26503,7 @@ unsorted:
   - python38-requests-html 
   - python38-requests-kerberos 
   - python38-requests-mock 
-  - python38-requests-oauthlib 
+  - python38-requests-oauthlib: [i586] 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
@@ -26586,7 +26532,6 @@ unsorted:
   - python38-robotframework 
   - python38-roifile 
   - python38-rollbar 
-  - python38-roman 
   - python38-rope 
   - python38-rpcq 
   - python38-rply 
@@ -26595,7 +26540,6 @@ unsorted:
   - python38-rpy2 
   - python38-rpyc 
   - python38-rq 
-  - python38-rsa 
   - python38-rss2email 
   - python38-rst.linker 
   - python38-rstcheck 
@@ -26610,8 +26554,6 @@ unsorted:
   - python38-ruffus 
   - python38-runthis-sphinxext 
   - python38-rustcfg 
-  - python38-s3fs 
-  - python38-s3transfer 
   - python38-sadisplay 
   - python38-samplerate 
   - python38-sane 
@@ -26715,7 +26657,6 @@ unsorted:
   - python38-sortedcollections 
   - python38-sortinghat 
   - python38-sounddevice 
-  - python38-soupsieve 
   - python38-sox 
   - python38-spake2 
   - python38-spark_parser 
@@ -26806,15 +26747,12 @@ unsorted:
   - python38-systemd 
   - python38-tableauserverclient 
   - python38-tableprint 
-  - python38-tables 
   - python38-tablib 
   - python38-tabpy 
-  - python38-tabulate 
   - python38-tap.py 
   - python38-targetcli-fb 
   - python38-tasklib 
   - python38-taskw 
-  - python38-tbb 
   - python38-tblib 
   - python38-tcolorpy 
   - python38-technicolor 
@@ -26851,7 +26789,6 @@ unsorted:
   - python38-threadpoolctl 
   - python38-three-merge 
   - python38-threevis 
-  - python38-thrift 
   - python38-thriftpy2 
   - python38-tifffile 
   - python38-timeout-decorator 
@@ -27002,12 +26939,10 @@ unsorted:
   - python38-watchdog-doc 
   - python38-watchgod 
   - python38-watermark 
-  - python38-wcwidth 
   - python38-web.py 
   - python38-web_cache 
   - python38-webassets 
   - python38-webcolors 
-  - python38-webencodings 
   - python38-weblate-language-data 
   - python38-weblate-schemas 
   - python38-weblib 
@@ -27028,7 +26963,6 @@ unsorted:
   - python38-wmctrl 
   - python38-wolframalpha 
   - python38-wptools 
-  - python38-wrapt 
   - python38-ws4py 
   - python38-wsaccel 
   - python38-wsgi_intercept 
@@ -27040,7 +26974,6 @@ unsorted:
   - python38-xapian 
   - python38-xapian-haystack 
   - python38-xapp 
-  - python38-xarray 
   - python38-xattr 
   - python38-xcffib 
   - python38-xdg 
@@ -27050,7 +26983,6 @@ unsorted:
   - python38-xhtml2pdf 
   - python38-xkbgroup 
   - python38-xkcdpass 
-  - python38-xlrd 
   - python38-xlwt 
   - python38-xmldiff 
   - python38-xmlschema 
@@ -27075,7 +27007,6 @@ unsorted:
   - python38-yara 
   - python38-yarb 
   - python38-yarg 
-  - python38-yarl 
   - python38-yaspin 
   - python38-yaswfp 
   - python38-yg.lockfile 
@@ -29041,7 +28972,7 @@ unsorted:
   - python39-pecan 
   - python39-peewee 
   - python39-pefile 
-  - python39-pelican 
+  - python39-pelican: [x86_64] 
   - python39-pem 
   - python39-pendulum 
   - python39-pep517 
@@ -42308,7 +42239,6 @@ unsorted:
   - xscope 
   - xsd 
   - xsd-doc 
-  - xsel 
   - xselection 
   - xsession 
   - xsetmode 
