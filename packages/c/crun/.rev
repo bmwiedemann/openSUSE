@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>910492</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>112392971fdc21617ea3b57a9153a59d</srcmd5>
+    <version>0.21</version>
+    <time>1628675228</time>
+    <user>RBrownSUSE</user>
+    <comment>- Drop libkrun-dlopen.patch and adapt to libkrun new package name,
+  it is a plugin, not a regular shared library.
+</comment>
+    <requestid>911076</requestid>
+  </revision>
 </revisionlist>

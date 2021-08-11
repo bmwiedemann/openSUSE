@@ -23,8 +23,6 @@ Version:        0.21
 Release:        0
 Source0:        https://github.com/containers/crun/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        crun-rpmlintrc
-# PATCH-FIX-OPENSUSE libkrun-dlopen.patch fcrozat@suse.com -- use soname when dlopening libkrun
-Patch0:         libkrun-dlopen.patch
 URL:            https://github.com/containers/crun
 ExclusiveArch:  x86_64 aarch64
 # We always run autogen.sh
@@ -35,7 +33,7 @@ BuildRequires:  git-core
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-md2man
 BuildRequires:  libcap-devel
-BuildRequires:  libkrun-devel >= 0.1.4
+BuildRequires:  libkrun >= 0.1.4
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  libtool
@@ -46,7 +44,7 @@ BuildRequires:  systemd-devel
 %ifnarch %ix86
 BuildRequires:  criu-devel >= 3.15
 %endif
-Requires:       libkrun0 >= 0.1.4
+Requires:       libkrun >= 0.1.7
 
 %description
 crun is a runtime for running OCI containers. It is built with libkrun support

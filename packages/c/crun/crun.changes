@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  6 13:37:49 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Drop libkrun-dlopen.patch and adapt to libkrun new package name,
+  it is a plugin, not a regular shared library.
+
+-------------------------------------------------------------------
 Fri Aug  6 09:55:53 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add libkrun-dlopen.patch: use soname when dlopening libkrun.
