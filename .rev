@@ -319,4 +319,14 @@
   * Make PKG_PATH var in Invoke tasks.py more DRY</comment>
     <requestid>906364</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4fc7b0eefe5d1f2000d9c459835b1000</srcmd5>
+    <version>4.6.0+git.1626161722.332be6e5</version>
+    <time>1628675252</time>
+    <user>RBrownSUSE</user>
+    <comment>- Redisable failing tests (gh#getpelican/pelican#2846).
+- Exclude ix86 arch, as pandoc is not distributed for it.
+</comment>
+    <requestid>911325</requestid>
+  </revision>
 </revisionlist>

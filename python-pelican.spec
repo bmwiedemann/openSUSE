@@ -74,6 +74,7 @@ Suggests:       asciidoc
 Suggests:       python-Markdown >= 3.1.1
 Suggests:       python-typogrify
 BuildArch:      noarch
+ExcludeArch:    %{ix86}
 %python_subpackages
 
 %description

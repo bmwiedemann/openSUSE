@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 10 21:11:00 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Redisable failing tests (gh#getpelican/pelican#2846).
+
+-------------------------------------------------------------------
+Tue Aug 10 20:50:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Exclude ix86 arch, as pandoc is not distributed for it.
+
+-------------------------------------------------------------------
 Tue Jul 13 16:59:01 UTC 2021 - mcepl@suse.com
 
 - Update to version 4.6.0+git.1626161722.332be6e5:
