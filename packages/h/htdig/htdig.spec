@@ -1,7 +1,7 @@
 #
 # spec file for package htdig
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        WWW Index and Search System
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Web/Utilities
 URL:            http://www.htdig.org
-Source:         http://switch.dl.sourceforge.net/sourceforge/htdig/htdig-%{version}.tar.bz2
+Source:         https://phoenixnap.dl.sourceforge.net/project/%{name}/%{name}/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-README.SUSE
 Patch1:         %{name}-google-style.patch
 Patch2:         %{name}-rundig.patch
@@ -114,6 +114,7 @@ cp %{SOURCE1} README.SUSE
 %patch15
 %patch16 -p1
 %patch17 -p1
+
 %build
 %{?suse_update_config:%{suse_update_config -f db/dist}}
 pushd contrib 1>/dev/null
@@ -121,6 +122,7 @@ find . -type f | xargs -n 1 sed -i "s@%{_prefix}/local/bin/perl@%{_bindir}/perl@
 popd 1>/dev/null
 rm -f acconfig.h db/dist/acconfig.h aclocal.m4 configure db/dist/configure
 autoreconf --force --install
+export CXXFLAGS="%{optflags} -std=c++14"
 %configure \
    --with-config-dir=%{_sysconfdir}/htdig \
    --with-common-dir=%{apache_serverroot}/htdig/common \

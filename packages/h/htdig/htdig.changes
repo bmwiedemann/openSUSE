@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 10 11:59:19 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix download URL
+
+-------------------------------------------------------------------
+Wed Aug  4 11:01:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Force C++14 build as the code is not (and likely never will be)
+  ready for C++17.
+
+-------------------------------------------------------------------
 Tue Dec  1 16:48:41 UTC 2020 - pgajdos@suse.com
 
 - use system apche rpm macros
@@ -6,7 +17,7 @@ Tue Dec  1 16:48:41 UTC 2020 - pgajdos@suse.com
 -------------------------------------------------------------------
 Tue Apr  4 16:38:08 UTC 2017 - crrodriguez@opensuse.org
 
--  htdig-gcc7.patch: FIx build failure with gcc7 
+-  htdig-gcc7.patch: Fix build failure with gcc7
 
 -------------------------------------------------------------------
 Tue May 24 14:52:27 UTC 2016 - dimstar@opensuse.org
@@ -388,5 +399,3 @@ Tue Mar  3 13:58:08 MET 1998 - ray@suse.de
 
 - new packages 
 - htdig  Version 3.0.8b2
-
-
