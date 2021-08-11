@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 10 11:59:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 2.5.0
+  * Fix CVE-2021-29504: An improper error handling in HTTPS requests
+    management in WP-CLI since version 0.12.0, allowing remote
+    attackers able to intercept the communication to remotely disable
+    the certificate verification on WP-CLI side
+  * The security fix might break systems with invalid certificates,
+    for old behavior "--insecure" flag was added
+  * PHP 8 support
+  * Improved MySQL/MariaDB support
+  * Package Manager is now powered by Composer v2, speed improvements
+  * New commands for managing automatic updates
+  * New command for creating MO files
+  * New environment variable: WP_CLI_ALLOW_ROOT
+  * Support for third-party WP-CLI packages on GitLab
+  * Full release notes:
+    https://make.wordpress.org/cli/2021/05/19/wp-cli-v2-5-0-release-notes
+
+-------------------------------------------------------------------
 Mon Jan 13 09:10:49 UTC 2020 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Version 2.4.0
