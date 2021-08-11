@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug  9 23:17:52 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.6:
+  * Added uproot-issue-407.root for gh#scikit-hep/uproot4#407
+    (and a C function to generate it).
+
+-------------------------------------------------------------------
 Fri Jul 16 17:33:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Package the test data. We need it on obs.
