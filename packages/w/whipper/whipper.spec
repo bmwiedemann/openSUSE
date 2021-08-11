@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/CD/Grabbers
 URL:            https://github.com/whipper-team/whipper
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH_UPSTREAM
+Patch0:         e0942417a1c267781a8b676789730457dcb2e6fa.patch
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  libsndfile-devel
@@ -36,11 +38,11 @@ BuildRequires:  python3-setuptools_scm
 BuildRequires:  cd-paranoia >= 10.2
 BuildRequires:  cdrdao
 BuildRequires:  python3-Twisted
+BuildRequires:  python3-discid
 BuildRequires:  python3-musicbrainzngs
 BuildRequires:  python3-mutagen
 BuildRequires:  python3-pycdio
 BuildRequires:  python3-pytest
-BuildRequires:  python3-discid
 BuildRequires:  python3-ruamel.yaml
 BuildRequires:  sox
 # /SECTION
@@ -49,11 +51,11 @@ BuildRequires:  sox
 Requires:       cd-paranoia >= 10.2
 Requires:       cdrdao
 Requires:       flac
+Requires:       python3-discid
 Requires:       python3-gobject
 Requires:       python3-musicbrainzngs
 Requires:       python3-mutagen
 Requires:       python3-pycdio
-Requires:       python3-discid
 Requires:       python3-ruamel.yaml
 Requires:       sox
 Conflicts:      morituri
@@ -67,6 +69,7 @@ after Morituri development halted.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 echo "Version: %{version}" > PKG-INFO

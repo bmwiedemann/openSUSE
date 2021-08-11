@@ -57,4 +57,13 @@
     <comment></comment>
     <requestid>896375</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>519f57e693c306209ed6791edf471633</srcmd5>
+    <version>0.10.0</version>
+    <time>1628675230</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add upstream commit as patch e0942417a1c267781a8b676789730457dcb2e6fa.patch
+  * Use custom YAML subclass to be compatible with ruamel_yaml&gt;=0.17</comment>
+    <requestid>911189</requestid>
+  </revision>
 </revisionlist>

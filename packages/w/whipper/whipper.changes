@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 10 06:52:50 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream commit as patch e0942417a1c267781a8b676789730457dcb2e6fa.patch
+  * Use custom YAML subclass to be compatible with ruamel_yaml>=0.17
+
+-------------------------------------------------------------------
 Mon May 31 13:56:53 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.10.0
