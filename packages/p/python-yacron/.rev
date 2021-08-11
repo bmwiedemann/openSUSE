@@ -23,4 +23,24 @@
     <comment></comment>
     <requestid>805899</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>55521632aed86e3c5c6c5d97f3ef252f</srcmd5>
+    <version>0.13.0</version>
+    <time>1628675229</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.13.0:
+  - Add ability for one config file to include another one
+  - Add shell command reporting ability
+  - web: don't crash when receiving a web request without Accept header
+  - add env_file configuration option (Alessandro Romani, )
+  - email: add missing Date header
+  - Add back a self contained binary, this time based on PyInstaller
+  - Fix email reporting when multiple recipients given
+  - reporting: add a failure reason line at the top of sentry/email
+  - mail: new tls, startls, username, and password options
+  - allow jobs to run as a different user
+  - Support timezone schedule
+</comment>
+    <requestid>911188</requestid>
+  </revision>
 </revisionlist>

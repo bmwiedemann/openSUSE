@@ -1,7 +1,7 @@
 #
 # spec file for package python-yacron
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-yacron
-Version:        0.10.0
+Version:        0.13.0
 Release:        0
 Summary:        Docker-friendly Cron replacement
 License:        MIT
@@ -38,7 +38,7 @@ Requires:       python-sentry-sdk
 Requires:       python-setuptools
 Requires:       python-strictyaml >= 0.7.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
@@ -46,6 +46,7 @@ BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module aiosmtplib}
 BuildRequires:  %{python_module crontab}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module sentry-sdk}
 BuildRequires:  %{python_module strictyaml >= 0.7.2}
 # /SECTION
