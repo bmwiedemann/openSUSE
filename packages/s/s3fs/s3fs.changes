@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug  9 23:35:11 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
+
+- Update to version 1.90
+  + Don't ignore nomultipart when storage is low
+  + Fix POSIX compatibility issues found by pjdfstest
+  + Fail CheckBucket when S3 returns PermanentRedirect
+  + Do not create zero-byte object when creating file
+  + Allow arbitrary size AWS secret keys
+  + Fix race conditions
+  + Set explicit Content-Length: 0 when initiating MPU
+  + Set CURLOPT_UNRESTRICTED_AUTH when authenticating
+  + Add jitter to avoid thundering herd
+  + Loosen CheckBucket to check only the bucket
+  + Add support for AWS-style environment variables
+
+-------------------------------------------------------------------
 Wed Feb 24 20:06:54 UTC 2021 - Julio González Gil <julio@juliogonzalez.es>
 
 - Update to version 1.89
