@@ -59,4 +59,19 @@
     <comment>1</comment>
     <requestid>317209</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0fdc4039f1fe7626cf3467ceb0629bb5</srcmd5>
+    <version>6.001</version>
+    <time>1628675241</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 6.001:
+  * Major update with many small changes
+  * Graphite support has been removed
+- Gentium Basic families have been removed. All variants are now
+  supported by Gentium Plus
+- Add 31-sil-gentium.conf so that Gentium Basic name is still
+  recognized
+- Clean up spec file (forwarded request 910543 from cornelisbb)</comment>
+    <requestid>911279</requestid>
+  </revision>
 </revisionlist>

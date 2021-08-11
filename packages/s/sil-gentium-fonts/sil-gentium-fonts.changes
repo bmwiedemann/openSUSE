@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  6 21:42:48 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- update to 6.001:
+  * Major update with many small changes
+  * Graphite support has been removed
+- Gentium Basic families have been removed. All variants are now
+  supported by Gentium Plus
+- Add 31-sil-gentium.conf so that Gentium Basic name is still
+  recognized
+- Clean up spec file
+
+-------------------------------------------------------------------
 Thu Jul 16 19:36:57 UTC 2015 - cornelis@solcon.nl
 
 - Gentium Plus 5.000 (major update):
