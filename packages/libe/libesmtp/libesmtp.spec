@@ -32,6 +32,8 @@ Patch1:         libesmtp-1.0.4-bloat.patch
 # PATCH-FIX-UPSTREAM libesmtp-tlsv12.patch crrodriguez@opensuse.org -- All TLS clients must support and use the highest TLS version available
 Patch2:         libesmtp-tlsv12.patch
 Patch3:         libesmtp-openssl11.patch
+# PATCH-FIX-UPSTREAM libesmtp-fix-cve-2019-19977.patch yfjiang@suse.com bsc#1189097 bsc#1160462 - Fix stack-based buffer over-read in ntlm/ntlmstruct.c.
+Patch4:         libesmtp-fix-cve-2019-19977.patch
 BuildRequires:  openssl-devel
 BuildRequires:  libtool
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -71,6 +73,7 @@ This subpackage contains the API definition files.
 %patch1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 %build
 autoreconf -fiv
