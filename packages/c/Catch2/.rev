@@ -39,4 +39,21 @@
     <comment></comment>
     <requestid>890402</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>e325e838c6bc56125d2a2a9778c7ec92</srcmd5>
+    <version>2.13.7</version>
+    <time>1628675224</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.13.7
+  Fixes:
+  * Added missing `&lt;iterator&gt;` include in benchmarking.
+  * Fixed noexcept build with benchmarking enabled.
+  * Fixed build for compilers with C++17 support but without
+    C++17 library support.
+  * JUnit only uses 3 decimal places when reporting durations.
+  * `!mayfail` tagged tests are now marked as `skipped` in JUnit
+    reporter output.
+</comment>
+    <requestid>910458</requestid>
+  </revision>
 </revisionlist>
