@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  5 15:22:22 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add kwsyntax.patch to fix test failure with new decorator.
+
+-------------------------------------------------------------------
 Sat Jul  3 20:16:19 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 3.9.42:

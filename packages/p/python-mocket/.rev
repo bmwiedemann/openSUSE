@@ -112,4 +112,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>905609</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>68d3d1fc92f426c0bd71d1bb9e51b7a1</srcmd5>
+    <version>3.9.42</version>
+    <time>1628675220</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add kwsyntax.patch to fix test failure with new decorator.
+</comment>
+    <requestid>910434</requestid>
+  </revision>
 </revisionlist>
