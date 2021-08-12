@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  9 07:44:17 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.164.2
+  * Don't setup users for writing to pid_sockets
+  * Allow container engines to be started from the staff user.
+  * Allow spc_t domains to set bpf rules on any domain
+  * Add support for k3s
+
+-------------------------------------------------------------------
 Fri Apr 23 06:04:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Fix container runtime binary labels (bsc#1185030). You need to 

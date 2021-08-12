@@ -26,7 +26,7 @@
 # Version of SELinux we were using
 %define selinux_policyver %(rpm -q selinux-policy --qf '%%{version}')
 Name:           container-selinux
-Version:        2.160.1
+Version:        2.164.2
 Release:        0
 Summary:        SELinux policies for container runtimes
 License:        GPL-2.0-only
