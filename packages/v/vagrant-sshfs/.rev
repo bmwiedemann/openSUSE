@@ -107,4 +107,12 @@
     <comment></comment>
     <requestid>890523</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>55f08e55de1a5193b01376c43627bc63</srcmd5>
+    <version>1.3.6</version>
+    <time>1628758002</time>
+    <user>RBrownSUSE</user>
+    <comment>Switch to Ruby 3</comment>
+    <requestid>911058</requestid>
+  </revision>
 </revisionlist>
