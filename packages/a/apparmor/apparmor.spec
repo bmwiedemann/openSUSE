@@ -45,7 +45,7 @@
 %define JAR_FILE changeHatValve.jar
 
 Name:           apparmor
-Version:        3.0.1
+Version:        3.0.3
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -77,15 +77,6 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
-
-# allow reading crypto policies (submitted upstream 2021-03-08 - https://gitlab.com/apparmor/apparmor/-/merge_requests/720)
-Patch7:         crypto-policies-mr720.diff
-
-# extend abstractions/php for PHP 8 (accepted upstream 2021-05-24 - https://gitlab.com/apparmor/apparmor/-/merge_requests/755)
-Patch8:         abstractions-php8.diff
-
-# allow Prometheus metrics end-point (submitted upstream 2021-07-19 - https://gitlab.com/apparmor/apparmor/-/merge_requests/776)
-Patch9:         apparmor-dovecot-stats-metrics.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -349,9 +340,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch3 -p1
 %patch4
 %patch5
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
 
 %build
 %define _lto_cflags %{nil}

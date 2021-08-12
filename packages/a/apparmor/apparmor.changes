@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Aug  7 10:46:52 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.3
+  - fix a failure in the parser tests
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.3
+    for the detailed upstream changelog
+
+-------------------------------------------------------------------
+Fri Aug  6 10:20:01 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 3.0.2
+  - add missing permissions to several profiles and abstractions
+    (including boo#1188296)
+  - bugfixes in utils and parser (including boo#1180766 and boo#1184779)
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.2
+    for the detailed upstream changelog
+- remove upstreamed patches:
+  - apparmor-dovecot-stats-metrics.diff
+  - abstractions-php8.diff
+  - crypto-policies-mr720.diff
+
+-------------------------------------------------------------------
 Thu Jul 15 23:02:25 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - added apparmor-dovecot-stats-metrics.diff to allow Prometheus metrics end-point

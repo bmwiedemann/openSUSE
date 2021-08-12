@@ -2149,4 +2149,26 @@ libapparmor:
     <comment>- added apparmor-dovecot-stats-metrics.diff to allow Prometheus metrics end-point</comment>
     <requestid>907196</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>12ad9b8cc6728079c73ffeb36769ea27</srcmd5>
+    <version>3.0.3</version>
+    <time>1628751657</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to AppArmor 3.0.3
+  - fix a failure in the parser tests
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.3
+    for the detailed upstream changelog
+
+- update to AppArmor 3.0.2
+  - add missing permissions to several profiles and abstractions
+    (including boo#1188296)
+  - bugfixes in utils and parser (including boo#1180766 and boo#1184779)
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_3.0.2
+    for the detailed upstream changelog
+- remove upstreamed patches:
+  - apparmor-dovecot-stats-metrics.diff
+  - abstractions-php8.diff
+  - crypto-policies-mr720.diff (forwarded request 910590 from cboltz)</comment>
+    <requestid>910591</requestid>
+  </revision>
 </revisionlist>
