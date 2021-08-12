@@ -1036,4 +1036,12 @@ https://gitlab.gnome.org/GNOME/vte/commit/7566ad673a12d26293b0a74dd3cb3e5f3d22ed
   be failed with current SLE-15-SP4 project setup. (forwarded request 909844 from yfjiang)</comment>
     <requestid>909941</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>653e979a0b84cfe9fc80b5385353b1e7</srcmd5>
+    <version>0.64.2</version>
+    <time>1628751677</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911175</requestid>
+  </revision>
 </revisionlist>
