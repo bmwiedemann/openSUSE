@@ -25,7 +25,7 @@
 # of those fields
 #
 Name:           rubygem-vagrant-spec
-Version:        0.0.1.fe62938.git
+Version:        0.0.1.1627911869.200ed21.git
 Release:        0
 Summary:        Tool and library for testing Vagrant plugins
 License:        MPL-2.0

@@ -3,23 +3,10 @@
 # the gem must be rebuild manually on each update.
 #
 # Therefore, clone the upstream repository:
-# $ git clone https://github.com/hashicorp/vagrant-spec
+# $ git clone https://github.com/dcermak/vagrant-spec
+# $ git checkout opensuse_package
 #
-# apply the following patches:
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.patch}
-# diff --git a/lib/vagrant-spec/version.rb b/lib/vagrant-spec/version.rb
-# index 3625ab7..0e95cf3 100644
-# --- a/lib/vagrant-spec/version.rb
-# +++ b/lib/vagrant-spec/version.rb
-# @@ -1,5 +1,5 @@
-#  module Vagrant
-#    module Spec
-# -    VERSION = "0.0.1"
-# +    VERSION = "0.0.1." + `git log --pretty=format:'%h' -n 1 origin/master` + ".git"
-#    end
-#  end
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# and:
+# apply the following patche:
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~{.patch}
 # diff --git a/vagrant-spec.gemspec b/vagrant-spec.gemspec
 # index 33a2d86..d7bc46f 100644
@@ -40,7 +27,7 @@
 # $ gem build vagrant-spec.gemspec
 #
 # Then copy the gem into the project folder and optionally recreate the spec file:
-# $ gem2rpm --config gem2rpm.yml vagrant-spec-0.0.1.abfc344.git.gem > rubygem-vagrant-spec.spec
+# $ gem2rpm --config gem2rpm.yml vagrant-spec-0.0.1.*.gem > rubygem-vagrant-spec.spec
 #
 # If you recreated the spec file, then you **must** also override the Source
 # field in the spec file to not be an URL to rubygems.org, as that doesn't exist
