@@ -17,11 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
 %define skip_python2 1
-%endif
 Name:           python-botocore
-Version:        1.20.112
+Version:        1.21.7
 Release:        0
 Summary:        Python interface for AWS
 License:        Apache-2.0
@@ -45,10 +43,6 @@ Requires:       python-six
 Requires:       python-urllib3 < 1.27
 Requires:       python-urllib3 >= 1.25.4
 BuildArch:      noarch
-%if 0%{?suse_version} <= 1315
-# We need the ssl module, which is provided by python and not python-base
-BuildRequires:  python
-%endif
 # SECTION Testing requirements
 BuildRequires:  %{python_module mock >= 1.3.0}
 BuildRequires:  %{python_module nose >= 1.3.7}
