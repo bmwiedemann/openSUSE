@@ -1,7 +1,7 @@
 #
 # spec file for package lynx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define tarbase 2.8.9rel.1
+%define tarbase 2.9.0dev.9
 Name:           lynx
-Version:        2.8.9rel.1
+Version:        2.9.0~dev.9
 Release:        0
 Summary:        A Text-Based WWW Browser
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Web/Browsers
-Url:            http://lynx.invisible-island.net/
+URL:            http://lynx.invisible-island.net/
 Source:         http://invisible-mirror.net/archives/%{name}/tarballs/%{name}%{tarbase}.tar.bz2
 # changing default configuration
 Patch0:         lynx-charset.patch
@@ -36,8 +36,6 @@ BuildRequires:  openssl-devel
 BuildRequires:  postfix
 BuildRequires:  zlib-devel
 Requires:       xli
-# FIXME: use proper Requires(pre/post/preun/...)
-PreReq:         /bin/cp
 Provides:       web_browser
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 12 06:04:08 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.9.0~dev.9 [bsc#1189354]
+  * development version, see CHANGES for details
+  namely:
+  * strip user/password from ssl_host in HTLoadHTTP, incorrectly passed as
+    part of the server name indicator (Debian #991971) -TD
+
+-------------------------------------------------------------------
 Sat Oct 06 05:19:31 UTC 2018 - sean@suspend.net
 
 - update to 2.8.9rel1.1:
