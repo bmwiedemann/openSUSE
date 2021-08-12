@@ -7,4 +7,12 @@
     <comment>July 2021 CPU (this package is community supported and receives security and other fixes)</comment>
     <requestid>907703</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>381087d263688bb16666f178a6fb398c</srcmd5>
+    <version>13.0.8.0</version>
+    <time>1628751689</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911407</requestid>
+  </revision>
 </revisionlist>

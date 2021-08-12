@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  4 10:01:03 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-zero.patch: Add support for riscv64 (zero VM)
+
+-------------------------------------------------------------------
 Thu Jul 22 09:52:58 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-13.0.8+5 (July 2021 CPU)

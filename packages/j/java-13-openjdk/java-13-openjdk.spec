@@ -1,7 +1,7 @@
 #
-# spec file for package java-13-openjdk
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -229,6 +229,8 @@ Patch402:       jaw-nogtk.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
+#
+Patch600:       riscv64-zero.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -340,7 +342,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     tzdata-java8
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
@@ -373,7 +375,7 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -417,7 +419,7 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
@@ -513,6 +515,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch500
 %patch501
+
+%patch600 -p1
 
 # Extract systemtap tapsets
 
