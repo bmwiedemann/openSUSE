@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 06 10:37:35 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.22.0:
+  * Bump Kubernetes to v1.22.0
+  * Bump k8s.io/api from 0.21.3 to 0.22.0
+  * Bump k8s.io/cri-api from 0.21.3 to 0.22.0
+  * Bump k8s.io/kubectl from 0.21.3 to 0.22.0
+  * Bump k8s.io/apimachinery from 0.21.3 to 0.22.0
+  * Bump github.com/docker/docker
+  * Bump github.com/opencontainers/selinux from 1.8.2 to 1.8.3
+
+-------------------------------------------------------------------
+Fri Aug 06 10:35:29 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.21.0:
+  * Bump README versions to v1.21.0
+  * Update dependencies
+  * Add dependabot config file
+  * Simplify test image build process for user images
+  * Move from gcr.io/cri-tools to gcr.io/k8s-staging-cri-tools
+  * Fix UID/GID and username values for test images
+  * Bump gcb-docker-gcloud image to v20210331-c732583
+  * Fix CRI-O master installation in GitHub actions
+
+-------------------------------------------------------------------
 Mon Apr 12 07:32:53 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.0:
