@@ -1,4 +1,12 @@
 --------------------------------------------------------------------
+Mon Aug 9 06:47:35 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#827
+- added function to rename a pool
+- coding style
+- 4.4.33
+
+--------------------------------------------------------------------
 Wed Aug 4 16:14:17 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#826
