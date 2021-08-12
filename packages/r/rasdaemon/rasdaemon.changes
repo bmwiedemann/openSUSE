@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:20:51 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Use %{?systemd_ordering} instead of %{?systemd_requires}
+
+-------------------------------------------------------------------
 Fri Jul 09 11:20:05 UTC 2021 - trenn@suse.de
 
 - Enable ppc64le build

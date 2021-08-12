@@ -29,9 +29,8 @@ BuildRequires:  automake
 BuildRequires:  gettext-devel
 BuildRequires:  libtool
 BuildRequires:  sqlite3-devel
-BuildRequires:  systemd-rpm-macros
 Requires:       perl-DBD-SQLite
-%{?systemd_requires}
+%{?systemd_ordering}
 %ifnarch s390x
 Requires:       dmidecode
 %endif
