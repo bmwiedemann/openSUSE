@@ -22,7 +22,7 @@
 %endif
 
 Name:           nfs-utils
-Version:        2.5.3
+Version:        2.5.4
 Release:        0
 Summary:        Support Utilities for Kernel nfsd
 License:        GPL-2.0-or-later
@@ -42,13 +42,8 @@ Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-kernel-server.tmpfiles.conf
 Patch0:         nfs-utils-1.0.7-bind-syntax.patch
-Patch1:         nfs-utils-2-5-4-rc1.patch
-Patch2:         nfs-utils-2-5-4-rc2.patch
-Patch3:         nfs-utils-2-5-4-rc3.patch
-Patch4:         nfs-utils-2-5-4-rc4.patch
 
 BuildRequires:  e2fsprogs-devel
-BuildRequires:  fedfs-utils-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

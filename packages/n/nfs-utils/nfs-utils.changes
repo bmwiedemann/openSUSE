@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 10 05:08:18 UTC 2021 - Neil Brown <nfbrown@suse.com>
+
+- Remove dependency on fedfs-utils-devel.
+
+  fedfs-utils was only ever a "technology preview" and is now
+  considered "end of life".
+  nfs-utils is not even built to use it as --enable-junction
+  isn't being passed to confgure
+  and fedfs-utils doesn't build wth glibc 2.34.
+  So remove the unnecessary dependency on fedfs-utils.
+  (bsc#1189085)
+
+-------------------------------------------------------------------
+Tue Jul 13 06:32:47 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Update to version 2.5.4
+  https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/2.5.4/2.5.4-Changelog
+  Notable changes:
+  * Handle failures in gssd better
+  * handle 'sloppy' option to mount better
+  * minor documentation improvements
+
+- Drop 2.5.4-rc4 patches: nfs-utils-2-5-4-rc1.patch, nfs-utils-2-5-4-rc2.patch,
+  nfs-utils-2-5-4-rc3.patch, nfs-utils-2-5-4-rc4.patch.
+
+-------------------------------------------------------------------
 Mon May 24 14:34:19 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 2.5.4-rc4 to get all recent fixes:

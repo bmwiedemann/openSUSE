@@ -1540,4 +1540,28 @@
   - nfs-utils-2-5-4-rc1.patch (forwarded request 895268 from pevik)</comment>
     <requestid>895272</requestid>
   </revision>
+  <revision rev="164" vrev="25">
+    <srcmd5>6622f031cb256699fa300a664d492c58</srcmd5>
+    <version>unknown</version>
+    <time>1628751675</time>
+    <user>RBrownSUSE</user>
+    <comment>- Remove dependency on fedfs-utils-devel.
+  fedfs-utils was only ever a &quot;technology preview&quot; and is now
+  considered &quot;end of life&quot;.
+  nfs-utils is not even built to use it as --enable-junction
+  isn't being passed to confgure
+  and fedfs-utils doesn't build wth glibc 2.34.
+  So remove the unnecessary dependency on fedfs-utils.
+  (bsc#1189085)
+
+- Update to version 2.5.4
+  https://mirrors.edge.kernel.org/pub/linux/utils/nfs-utils/2.5.4/2.5.4-Changelog
+  Notable changes:
+  * Handle failures in gssd better
+  * handle 'sloppy' option to mount better
+  * minor documentation improvements
+- Drop 2.5.4-rc4 patches: nfs-utils-2-5-4-rc1.patch, nfs-utils-2-5-4-rc2.patch,
+  nfs-utils-2-5-4-rc3.patch, nfs-utils-2-5-4-rc4.patch.</comment>
+    <requestid>911141</requestid>
+  </revision>
 </revisionlist>
