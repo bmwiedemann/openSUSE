@@ -414,4 +414,12 @@ A    latex2html-share-dir.diff</comment>
   * options -cut_ref_num -add_ref_name (forwarded request 903986 from dirkmueller)</comment>
     <requestid>905216</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>a7462c8da82cd69ab0ee0ba80e4d71a3</srcmd5>
+    <version>2021.2</version>
+    <time>1628751678</time>
+    <user>RBrownSUSE</user>
+    <comment>- do not package test logs (WARNINGS in this case) [bsc#1188918]</comment>
+    <requestid>911187</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 10 07:08:56 UTC 2021 - pgajdos@suse.com
+
+- do not package test logs (WARNINGS in this case) [bsc#1188918]
+
+-------------------------------------------------------------------
 Sun Jul  4 19:42:52 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2021.2:

@@ -92,7 +92,7 @@ chmod 755 %{buildroot}%{_datadir}/%{name}/{cweb2html/makemake.pl,cweb2html/cweb2
 
 %check
 %make_build test
-find manual tests \( -name \*.log -o -name \*.aux \) -delete
+find manual tests \( -name \*.log -o -name \*.aux -o -name WARNINGS \) -delete
 
 %files
 %doc Changes FAQ README.md TODO dot.latex2html-init
