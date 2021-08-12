@@ -4,24 +4,23 @@ Date: Sun, 21 Feb 2021 11:54:25 +0000
 Subject: [PATCH 1/2] delegate to stdlib parse qs
 
 ---
- src/twisted/web/http.py                    | 27 +---------------------
- src/twisted/web/newsfragments/10096.bugfix |  1 +
- 2 files changed, 2 insertions(+), 26 deletions(-)
+ src/twisted/web/http.py                    |   26 +-------------------------
+ src/twisted/web/newsfragments/10096.bugfix |    1 +
+ src/twisted/web/server.py                  |    5 ++---
+ 3 files changed, 4 insertions(+), 28 deletions(-)
  create mode 100644 src/twisted/web/newsfragments/10096.bugfix
 
-Index: Twisted-21.2.0/src/twisted/web/http.py
-===================================================================
---- Twisted-21.2.0.orig/src/twisted/web/http.py
-+++ Twisted-21.2.0/src/twisted/web/http.py
-@@ -110,6 +110,7 @@ from urllib.parse import (
+--- a/src/twisted/web/http.py
++++ b/src/twisted/web/http.py
+@@ -112,6 +112,7 @@ from urllib.parse import (
      ParseResultBytes,
      urlparse as _urlparse,
      unquote_to_bytes as unquote,
 +    parse_qs,
  )
+ from typing import Callable
  
- from zope.interface import Attribute, Interface, implementer, provider
-@@ -261,31 +262,6 @@ def urlparse(url):
+@@ -263,31 +264,6 @@ def urlparse(url):
      return ParseResultBytes(scheme, netloc, path, params, query, fragment)
  
  
@@ -53,16 +52,12 @@ Index: Twisted-21.2.0/src/twisted/web/http.py
  def datetimeToString(msSinceEpoch=None):
      """
      Convert seconds since epoch to HTTP datetime string.
-Index: Twisted-21.2.0/src/twisted/web/newsfragments/10096.bugfix
-===================================================================
 --- /dev/null
-+++ Twisted-21.2.0/src/twisted/web/newsfragments/10096.bugfix
++++ b/src/twisted/web/newsfragments/10096.bugfix
 @@ -0,0 +1 @@
 +delegate to urllib.parse:parse_qs in twisted.web.http:parse_qs to avoid CVE-2021-23336 and the associated CI failures
-Index: Twisted-21.2.0/src/twisted/web/server.py
-===================================================================
---- Twisted-21.2.0.orig/src/twisted/web/server.py
-+++ Twisted-21.2.0/src/twisted/web/server.py
+--- a/src/twisted/web/server.py
++++ b/src/twisted/web/server.py
 @@ -19,7 +19,7 @@ import os
  import re
  from html import escape

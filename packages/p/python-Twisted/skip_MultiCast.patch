@@ -1,7 +1,9 @@
-Index: Twisted-21.2.0/src/twisted/test/test_udp.py
-===================================================================
---- Twisted-21.2.0.orig/src/twisted/test/test_udp.py
-+++ Twisted-21.2.0/src/twisted/test/test_udp.py
+---
+ src/twisted/test/test_udp.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/src/twisted/test/test_udp.py
++++ b/src/twisted/test/test_udp.py
 @@ -9,7 +9,7 @@ Tests for implementations of L{IReactorU
  
  import os

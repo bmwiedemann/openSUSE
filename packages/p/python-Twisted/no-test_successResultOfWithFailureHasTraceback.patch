@@ -1,11 +1,9 @@
 ---
- src/twisted/conch/test/test_keys.py |    4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ src/twisted/conch/test/test_keys.py |    3 +++
+ 1 file changed, 3 insertions(+)
 
-Index: Twisted-21.2.0/src/twisted/conch/test/test_keys.py
-===================================================================
---- Twisted-21.2.0.orig/src/twisted/conch/test/test_keys.py
-+++ Twisted-21.2.0/src/twisted/conch/test/test_keys.py
+--- a/src/twisted/conch/test/test_keys.py
++++ b/src/twisted/conch/test/test_keys.py
 @@ -15,6 +15,7 @@ from twisted.python import randbytes
  from twisted.python.filepath import FilePath
  from twisted.python.reflect import requireModule

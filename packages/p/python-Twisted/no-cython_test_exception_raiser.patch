@@ -1,13 +1,15 @@
-Index: Twisted-21.2.0/src/twisted/test/test_failure.py
-===================================================================
---- Twisted-21.2.0.orig/src/twisted/test/test_failure.py
-+++ Twisted-21.2.0/src/twisted/test/test_failure.py
+---
+ src/twisted/test/test_failure.py |    3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+--- a/src/twisted/test/test_failure.py
++++ b/src/twisted/test/test_failure.py
 @@ -22,7 +22,8 @@ from twisted.python import failure
  from twisted.trial.unittest import SynchronousTestCase
  
  
--from cython_test_exception_raiser import raiser
-+#from cython_test_exception_raiser import raiser
+-from cython_test_exception_raiser import raiser  # type: ignore[import]
++# from cython_test_exception_raiser import raiser  # type: ignore[import]
 +raiser = None
  
  

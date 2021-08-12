@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug  2 06:41:10 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- typing_extensions is now required
+
+-------------------------------------------------------------------
+Sat Jul 31 04:27:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 21.7.0:
+  - Python 3.10 beta is now a supported platform and should be ready for
+    the final 3.10 release.
+  - twisted.web.template.renderElement() now accepts any IRequest
+    implementer instead of only twisted.web.server.Request. Add type
+    hints to twisted.web.template. (#10184)
+  - Type hinting was added to twisted.internet.defer, making this the
+    first release  of Twisted where you might reasonably be able to use
+    mypy without your own custom stub files. (#10017)
+- Patch incremental-21.patch removed, because included in the
+  upstream tarball.
+
+-------------------------------------------------------------------
 Mon May 17 10:15:13 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add incremental-21.patch: support newer incremental versions 
@@ -8,33 +28,75 @@ Wed Mar 10 06:11:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 21.2.0:
   * Features
-    + The enableSessions argument to twisted.internet.ssl.CertificateOptions now
-    + actually enables/disables OpenSSL's session cache. Also, due to
-    + session-related bugs, it defaults to False. (#9583)
-    + twisted.internet.defer.inlineCallbacks and ensureDeferred will now associate a contextvars.Context with the coroutines they run, meaning that ContextVar objects will maintain their value within the same coroutine, similarly to asyncio Tasks. This functionality requires Python 3.7+, or the contextvars PyPI backport to be installed for Python 3.5-3.6. (#9719, #9826)
-    + twisted.internet.defer.Deferred.fromCoroutine has been added. This is similar to the existing ensureDeferred function, but is named more consistently inside Twisted and does not pass through Deferreds. (#9825)
-    + trial now allows the @unittest.skipIf decorator to specify that an entire test class should be skipped. (#9829)
-    + The twisted.python.deprecate.deprecatedKeywordParameter decorator can be used to mark a keyword paramater of a function or method as deprecated. (#9844)
-    + Projects using Twisted can now perform type checking against a Twisted
-    + installation, for example using mypy. (#9908)
-    + twisted.python.util.InsensitiveDict now fully implements MutableMapping. (#9919)
-    + Python 3.8 is now tested and supported. (#9955)
-    + Support a coroutine function in twisted.internet.task.react (#9974)
-    + PyPy 3.7 is now tested and supported. (#10093)
+    - The enableSessions argument to
+      twisted.internet.ssl.CertificateOptions now
+    - actually enables/disables OpenSSL's session cache. Also, due to
+    - session-related bugs, it defaults to False. (#9583)
+    - twisted.internet.defer.inlineCallbacks and ensureDeferred will now
+      associate a contextvars.Context with the coroutines they run,
+      meaning that ContextVar objects will maintain their value within
+      the same coroutine, similarly to asyncio Tasks. This functionality
+      requires Python 3.7+, or the contextvars PyPI backport to be
+      installed for Python 3.5-3.6. (#9719, #9826)
+    - twisted.internet.defer.Deferred.fromCoroutine has been added. This
+      is similar to the existing ensureDeferred function, but is named
+      more consistently inside Twisted and does not pass through
+      Deferreds. (#9825)
+    - trial now allows the @unittest.skipIf decorator to specify that an
+      entire test class should be skipped. (#9829)
+    - The twisted.python.deprecate.deprecatedKeywordParameter decorator
+      can be used to mark a keyword paramater of a function or method as
+      deprecated. (#9844)
+    - Projects using Twisted can now perform type checking against
+      a Twisted
+    - installation, for example using mypy. (#9908)
+    - twisted.python.util.InsensitiveDict now fully implements
+      MutableMapping. (#9919)
+    - Python 3.8 is now tested and supported. (#9955)
+    - Support a coroutine function in twisted.internet.task.react
+      (#9974)
+    - PyPy 3.7 is now tested and supported. (#10093)
   * Bugfixes
-    + twisted.web.twcgi.CGIProcessProtocol.processEnded(...) now handles an already-finished request, for example when request.connectionLost(...) was called previously. (#9468)
-    + Twisted's dependency on PyHamcrest has been moved from the base package to the new "test" extra. Consequently the test extra must be installed for Twisted's test suite to pass. (#9509)
-    + Fixed serialization of timedelta, date, and time objects in twisted.spread. (#9716)
-    + twisted.internet.asyncioreactor.AsyncioSelectorReactor now raises an exception if instantiated with an event loop which is not compatible with asyncio.SelectorEventLoop. This fixes the AsyncioSelectorReactor in Python 3.8+ on Windows, where in bp-34687 the default Windows asyncio event loop was changed to ProactorEventLoop. Applications that use AsyncioSelectorReactor on Windows with Python 3.8+ must call asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy()) before instantiating and running AsyncioSelectorReactor. (#9766)
-    + twisted.internet.process.registerReapProcessHandler and ._BaseProcess.reapProcess will no longer raise a TypeError when processing a None PID (#9775)
-    + INotify will close its file descriptor if a directory is automatically removed by twisted from the watchlist because it's deleted, avoiding orphaned filedescriptors. (#9777)
-    + DelayedCall.reset() is now working properly with asyncioreactor (#9780)
-    + AsyncioSelectorReactor.seconds() now correctly returns an epoch time. (#9787)
-    + The _connDone parameter has been removed from twisted.internet.abstract.FileDescriptor.loseConnection()'s signature in order to match the signature in the base class twisted.internet._newtls.ConnectionMixin loseConnection(). (#9849)
-    + The Gtk3 reactor now runs on Wayland-only sessions (#9904)
-    + Descriptive error messages from twisted.internet.error are now present when running with 'python -OO'. (#9918)
-    + Comparator methods such as eq() now always return NotImplemented for uncomparable types. (#9919)
-    + When installing Twisted it now requires a minimum Python 3.5.4 version to match the version used with automated testing. This is the minimum Python version that we know that Twisted works with. (#10098)
+    - twisted.web.twcgi.CGIProcessProtocol.processEnded(...) now handles
+      an already-finished request, for example when
+      request.connectionLost(...) was called previously. (#9468)
+    - Twisted's dependency on PyHamcrest has been moved from the base
+      package to the new "test" extra. Consequently the test extra must
+      be installed for Twisted's test suite to pass. (#9509)
+    - Fixed serialization of timedelta, date, and time objects in
+      twisted.spread. (#9716)
+    - twisted.internet.asyncioreactor.AsyncioSelectorReactor now raises
+      an exception if instantiated with an event loop which is not
+      compatible with asyncio.SelectorEventLoop. This fixes the
+      AsyncioSelectorReactor in Python 3.8+ on Windows, where in
+      bp-34687 the default Windows asyncio event loop was changed to
+      ProactorEventLoop. Applications that use AsyncioSelectorReactor on
+      Windows with Python 3.8+ must call
+      asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+      before instantiating and running AsyncioSelectorReactor. (#9766)
+    - twisted.internet.process.registerReapProcessHandler and
+      ._BaseProcess.reapProcess will no longer raise a TypeError when
+      processing a None PID (#9775)
+    - INotify will close its file descriptor if a directory is
+      automatically removed by twisted from the watchlist because it's
+      deleted, avoiding orphaned filedescriptors. (#9777)
+    - DelayedCall.reset() is now working properly with asyncioreactor
+      (#9780)
+    - AsyncioSelectorReactor.seconds() now correctly returns an epoch
+      time. (#9787)
+    - The _connDone parameter has been removed from
+      twisted.internet.abstract.FileDescriptor.loseConnection()'s
+      signature in order to match the signature in the base class
+      twisted.internet._newtls.ConnectionMixin loseConnection(). (#9849)
+    - The Gtk3 reactor now runs on Wayland-only sessions (#9904)
+    - Descriptive error messages from twisted.internet.error are now
+      present when running with 'python -OO'. (#9918)
+    - Comparator methods such as eq() now always return NotImplemented
+      for uncomparable types. (#9919)
+    - When installing Twisted it now requires a minimum Python 3.5.4
+      version to match the version used with automated testing. This is
+      the minimum Python version that we know that Twisted works with.
+      (#10098)
 - Drop patches no-pygtkcompat.patch, python-38-hmac-digestmod.patch,
   python-38-no-cgi-parseqs.patch, twisted-pr1369-remove-pyopenssl-npn.patch,
   twisted-pr1487-increase-ffdh-keysize.patch and

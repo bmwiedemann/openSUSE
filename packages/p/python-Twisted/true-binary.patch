@@ -1,7 +1,9 @@
-Index: Twisted-21.2.0/src/twisted/conch/test/test_ckeygen.py
-===================================================================
---- Twisted-21.2.0.orig/src/twisted/conch/test/test_ckeygen.py
-+++ Twisted-21.2.0/src/twisted/conch/test/test_ckeygen.py
+---
+ src/twisted/conch/test/test_ckeygen.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/src/twisted/conch/test/test_ckeygen.py
++++ b/src/twisted/conch/test/test_ckeygen.py
 @@ -73,7 +73,7 @@ class KeyGenTests(TestCase):
  
      def _testrun(self, keyType, keySize=None, privateKeySubtype=None):
