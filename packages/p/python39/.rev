@@ -282,4 +282,41 @@
 </comment>
     <requestid>909796</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4d4724fae8b5d9984b02505a008b7c45</srcmd5>
+    <version>3.9.6</version>
+    <time>1628751669</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 3.9.6:
+  * Security
+    - bpo-44022: mod:http.client now avoids infinitely reading
+      potential HTTP headers after a 100 Continue status response
+      from the server.
+  * Core and Builtins
+    - bpo-44168: Fix error message in the parser involving keyword
+      arguments with invalid expressions. Patch by Pablo Galindo
+    - bpo-44114: Fix incorrect dictkeys_reversed and
+      dictitems_reversed function signatures in C code, which broke
+      webassembly builds.
+    - bpo-44070: No longer eagerly makes import filenames absolute,
+      except for extension modules, which was introduced in 3.9.5.
+    - bpo-28146: Fix a confusing error message in str.format().
+    - bpo-11105: When compiling ast.AST objects with recursive
+      references through compile(), the interpreter doesn’t crash
+      anymore instead it raises a RecursionError.
+  * Library
+    - bpo-43972: When http.server.SimpleHTTPRequestHandler sends a
+      301 (Moved Permanently) for a directory path not ending with
+      /, add a Content-Length: 0 header. This improves the behavior
+      for certain clients.
+    - bpo-43776: When subprocess.Popen args are provided as a
+      string or as pathlib.Path, the Popen instance repr now shows
+      the right thing.
+    - bpo-43318: Fix a bug where pdb does not always echo cleared
+      breakpoints.
+    - bpo-43295: datetime.datetime.strptime() now raises ValueError
+      instead of IndexError when matching 'z' with the %z format
+      specifier.</comment>
+    <requestid>911061</requestid>
+  </revision>
 </revisionlist>

@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.9.5
+%define         folderversion 3.9.6
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -88,7 +88,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.5
+Version:        3.9.6
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -145,10 +145,6 @@ Patch33:        no-skipif-doctests.patch
 # PATCH-FIX-SLE skip-test_pyobject_freed_is_freed.patch mcepl@suse.com
 # skip a test failing on SLE-15
 Patch34:        skip-test_pyobject_freed_is_freed.patch
-# PATCH-FIX-UPSTREAM bpo44426-complex-keyword-sphinx.patch bpo#44426 mcepl@suse.com
-# Use of 'complex' as a C variable name confuses Sphinx; change it to 'num'
-# The same goes for 'default', which I had to change to 'def_size'
-Patch35:        bpo44426-complex-keyword-sphinx.patch
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -395,7 +391,6 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 %patch34 -p1
 %endif
-%patch35 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
