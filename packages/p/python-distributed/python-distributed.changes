@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Sun Aug  8 14:36:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.7.2
+  * Fix a deadlock connected to task stealing and task
+    deserialization
+  * Include maximum shard size in second to_frames method
+  * Minor dashboard style updates
+  * Cap maximum shard size at the size of an integer
+  * Document automatic MALLOC_TRIM_THRESHOLD_ environment variable
+  * Mark ucx-py tests for GPU
+  * Update individual profile plot sizing
+  * Handle NVMLError_Unknown in NVML diagnostics
+  * Unit tests to use a random port for the dashboard
+  * Ensure worker reconnect registers existing tasks properly
+  * Halve CI runtime!
+  * Add NannyPlugins
+  * Add WorkerNetworkBandwidth chart to dashboard
+  * Set nanny environment variables in config
+  * Read smaller frames to workaround OpenSSL bug
+  * Move UCX/RMM config variables to Distributed namespace
+  * Allow ws(s) messages greater than 10Mb
+  * Short-circuit root-ish check for many deps
+-Release 2021.07.1
+  * Remove experimental feature warning from actors docs
+  * Keep dependents in worker dependency if TS is still known
+  * Add Scheduler.set_restrictions
+  * Make Actor futures awaitable and work with as_completed
+  * Simplify test_secede_balances
+  * Computation class
+  * Some light dashboard cleanup
+  * Don't package tests
+  * Add pytest marker for GPU tests
+  * Actor: don't hold key references on workers
+  * Collapse nav to hamburger sooner
+  * Verify that actors survive pickling
+  * Reenable UCX-Py tests that used to segfault
+  * Better support ProcessPoolExecutors
+  * Simplify test_worker_heartbeat_after_cancel
+  * Avoid property validation in Bokeh
+  * Reduce default websocket frame size and make configurable
+  * Disable pytest-timeout SIGALARM on MacOS
+  * rebalance() resilience to computations
+  * Improve CI stability
+  * Ensure heartbeats after cancelation do not raise KeyError s
+  * Add more useful exception message on TLS cert mismatch
+  * Add bokeh mode parameter to performance reports
+- Use the GitHub tarball because the PyPI sdist does to provide the
+  tests anymore
+  * Remove extra conftest.py source
+- Drop distributed-pr5022-improve_ci.patch merged upstream
+
+-------------------------------------------------------------------
 Fri Jul 16 09:31:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.7.0

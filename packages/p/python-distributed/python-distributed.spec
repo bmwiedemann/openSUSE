@@ -36,20 +36,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
-%define ghversiontag 2021.07.0
+%define ghversiontag 2021.07.2
 Name:           python-distributed%{psuffix}
 # Note: please always update together with python-dask
-Version:        2021.7.0
+Version:        2021.7.2
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
 URL:            https://distributed.readthedocs.io/en/latest/
-Source:         https://files.pythonhosted.org/packages/source/d/distributed/distributed-%{version}.tar.gz
-# Missing in the PyPI package but needed for pytest fixtures. Note: One of the next releases will miss all of the tests. (gh#dask/distributed#5054)
-Source1:        https://github.com/dask/distributed/raw/%{ghversiontag}/conftest.py
+Source:         https://github.com/dask/distributed/archive/refs/tags//%{ghversiontag}.tar.gz#/distributed-%{ghversiontag}-gh.tar.gz
 Source99:       python-distributed-rpmlintrc
-# PATCH-FIX-UPSTREAM distributed-pr5022-improve_ci.patch -- gh#dask/distributed#5022
-Patch0:         distributed-pr5022-improve_ci.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -104,8 +100,7 @@ extends both the concurrent.futures and dask APIs to moderate sized
 clusters.
 
 %prep
-%autosetup -p1 -n distributed-%{version}
-cp %SOURCE1 .
+%autosetup -p1 -n distributed-%{ghversiontag}
 
 %build
 %if ! %{with test}
@@ -118,10 +113,7 @@ cp %SOURCE1 .
 %python_clone -a %{buildroot}%{_bindir}/dask-ssh
 %python_clone -a %{buildroot}%{_bindir}/dask-scheduler
 %python_clone -a %{buildroot}%{_bindir}/dask-worker
-%{python_expand #
-chmod -x %{buildroot}%{$python_sitearch}/distributed/tests/test_utils_test.py
-%fdupes %{buildroot}%{$python_sitearch}
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 %endif
 
 %if %{with test}
