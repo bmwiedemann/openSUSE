@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 11 09:13:35 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  https://github.com/ukoethe/vigra/issues/496
+  + vigra-openexr3.patch
+
+-------------------------------------------------------------------
 Tue Jan 23 14:40:13 UTC 2018 - tchvatal@suse.com
 
 - Remove python dependencies as we are not buliding the numpy code

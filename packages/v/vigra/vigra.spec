@@ -1,7 +1,7 @@
 #
 # spec file for package vigra
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,9 +23,11 @@ Release:        0
 Summary:        Computer vision Library
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://ukoethe.github.io/vigra/
+URL:            http://ukoethe.github.io/vigra/
 Source:         https://github.com/ukoethe/vigra/releases/download/Version-1-11-1/vigra-%{version}-src.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# https://github.com/ukoethe/vigra/issues/496
+Patch0:         vigra-openexr3.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
@@ -89,6 +91,7 @@ execution speed.
 
 %prep
 %setup -q
+%patch0 -p1
 sed -i -e "1s|#!.*|#!/usr/bin/python3|" config/vigra-config.in
 
 %build
