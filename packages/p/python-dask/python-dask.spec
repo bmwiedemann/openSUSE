@@ -29,19 +29,21 @@
 %define         skip_python36 1
 Name:           python-dask%{psuffix}
 # Note: please always update together with python-distributed!
-Version:        2021.7.0
+Version:        2021.7.2
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-cloudpickle >= 1.1.1
 Requires:       python-fsspec >= 0.6.0
+Requires:       python-packaging
 Requires:       python-partd >= 0.3.10
 Requires:       python-toolz >= 0.8.2
 Recommends:     %{name}-array = %{version}
@@ -331,6 +333,8 @@ donttest+="or (test_distributed and test_local_get_with_distributed_active)"
 donttest+="or (test_distributed and test_serializable_groupby_agg)"
 donttest+="or (test_distributed and test_await)"
 donttest+="or (test_threaded and test_interrupt)"
+# requires otherwise optional pyarrow (not available on TW)
+donttest+="or (test_parquet and test_chunksize and fastparquet)"
 %pytest --pyargs dask -rfEs -m "not network" -k "not ($donttest)" -n auto
 %endif
 

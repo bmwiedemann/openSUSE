@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Aug  8 14:42:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.7.2
+  * This is the last release with support for NumPy 1.17 and pandas
+    0.25. Beginning with the next release, NumPy 1.18 and pandas
+    1.0 will be the minimum supported versions.
+  * Add dask.array SVG to the HTML Repr
+  * Avoid use of Delayed in to_parquet
+  * Temporarily pin pyarrow<5 in CI
+  * Add deprecation warning for top-level ucx and rmm config values
+  * Remove skips from doctests (4 of 6)
+  * Remove skips from doctests (5 of 6)
+  * Adds missing prepend/append functionality to da.diff
+  * Change graphviz font family to sans
+  * Fix read-csv name - when path is different, use different name
+    for task
+  * Update configuration reference for ucx and rmm changes
+  * Add meta support to __setitem__
+  * NEP-35 support for slice_with_int_dask_array
+  * Unpin fastparquet in CI
+  * Remove skips from doctests (3 of 6)
+- Release 2021.7.1
+  * Make array assert_eq check dtype
+  * Remove skips from doctests (6 of 6)
+  * Remove experimental feature warning from actors docs
+  * Remove skips from doctests (2 of 6)
+  * Separate out Array and Bag API
+  * Implement lazy Array.__iter__
+  * Clean up places where we inadvertently iterate over arrays
+  * Add numeric_only kwarg to DataFrame reductions
+  * Add pytest marker for GPU tests
+  * Add support for histogram2d in dask.array
+  * Remove skips from doctests (1 of 6)
+  * Add node size scaling to the Graphviz output for the high
+    level graphs
+  * Update old Bokeh links
+  * Temporarily pin fastparquet in CI
+  * Add dask.array import to progress bar docs
+  * Use separate files for each DataFrame API function and method
+  * Fix pyarrow-dataset ordering bug
+  * Generalize unique aggregate
+  * Raise NotImplementedError when using pd.Grouper
+  * Add aggregate_files argument to enable multi-file partitions in
+    read_parquet
+  * Un-xfail test_daily_stock
+  * Update access configuration docs
+  * Use packaging for version comparisons
+  * Handle infinite loops in merge_asof
+
+-------------------------------------------------------------------
 Fri Jul 16 09:25:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.07.0
