@@ -1,0 +1,56 @@
+diff --git a/src/fileformat/pfsinimgmagick.cpp b/src/fileformat/pfsinimgmagick.cpp
+index 5dab440..f4358ce 100644
+--- a/src/fileformat/pfsinimgmagick.cpp
++++ b/src/fileformat/pfsinimgmagick.cpp
+@@ -35,6 +35,7 @@
+ 
+ #define PROG_NAME "pfsinimgmagick"
+ 
++using namespace Magick;
+ 
+ class QuietException 
+ {
+@@ -114,7 +115,11 @@ void readFrames( int argc, char* argv[] )
+     Magick::Image imImage( ff.fileName );
+ 
+     VERBOSE_STR << "input image gamma:  " << imImage.gamma() << std::endl;
++#if MagickLibVersion >= 0x700
++    bool hasAlpha = imImage.alpha();
++#else
+     bool hasAlpha = imImage.matte();
++#endif
+     if( hasAlpha )
+       VERBOSE_STR << "alpha channel found" << std::endl;    
+     
+@@ -129,17 +134,30 @@ void readFrames( int argc, char* argv[] )
+     
+     // Copy line by line to pfs::Frame
+     int pixInd = 0;
+-    const float maxValue = (float)(1<<QuantumDepth) - 1;
++    const float maxValue = (float)QuantumRange;
+     for( int r = 0; r < imImage.rows(); r++ ) {
++#if MagickLibVersion >= 0x700
++      const Magick::Quantum *pixels =
++#else
+       const Magick::PixelPacket *pixels =
++#endif
+         imImage.getConstPixels( 0, r, imImage.columns(), 1 );
+ 
+       for( int c = 0; c < imImage.columns(); c++ ) {
++#if MagickLibVersion >= 0x700
++        (*X)(pixInd) = (float)MagickCore::GetPixelRed(imImage.image(), pixels) / maxValue;
++        (*Y)(pixInd) = (float)MagickCore::GetPixelGreen(imImage.image(), pixels) / maxValue;
++        (*Z)(pixInd) = (float)MagickCore::GetPixelBlue(imImage.image(), pixels) / maxValue;
++        if( alpha != NULL )
++          (*alpha)(pixInd) = (float)MagickCore::GetPixelAlpha(imImage.image(), pixels) / maxValue;
++	pixels += MagickCore::GetPixelChannels(imImage.image());
++#else
+         (*X)(pixInd) = (float)pixels[c].red / maxValue;
+         (*Y)(pixInd) = (float)pixels[c].green / maxValue;
+         (*Z)(pixInd) = (float)pixels[c].blue / maxValue;
+         if( alpha != NULL )
+           (*alpha)(pixInd) = (float)pixels[c].opacity / maxValue;
++#endif
+         pixInd++;
+       } 
+     }    
