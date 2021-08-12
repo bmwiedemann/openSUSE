@@ -43,6 +43,7 @@ BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
+BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
