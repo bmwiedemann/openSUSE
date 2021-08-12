@@ -17,10 +17,10 @@
 
 
 %define goipath github.com/vmware-tanzu/octant
-%define commit 3c7e6079df558774f573beba39d31527685b6001
+%define commit fbe2be3b687b3e2199ea32753281c9de1f334171
 
 Name:           octant
-Version:        0.21.0
+Version:        0.23.0
 Release:        0
 Summary:        A platform to better understand the complexity of Kubernetes clusters
 License:        Apache-2.0
