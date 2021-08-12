@@ -20,14 +20,15 @@
 # python-cppy, python-bytecode is python3 only (at least)
 %define skip_python2 1
 Name:           python-enaml
-Version:        0.13.0
+Version:        0.13.0+git.1627388100.6864e8bc
 Release:        0
 # Source code is under BSD but images are under different licenses
 # and details are inside image_LICENSE.txt
 Summary:        Declarative DSL for building rich user interfaces in Python
 License:        BSD-3-Clause AND LGPL-2.1-only
 URL:            https://github.com/nucleic/enaml
-Source:         https://github.com/nucleic/enaml/archive/%{version}.tar.gz#/enaml-%{version}.tar.gz
+# Source:         https://github.com/nucleic/enaml/archive/%%{version}.tar.gz#/enaml-%%{version}.tar.gz
+Source:         enaml-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -93,6 +94,7 @@ export CFLAGS="%{optflags}"
 export PYTHONPATH=$PWD/build/testlib
 # not sure why these two are failing
 donttest="test_focus_tracking or test_focus_traversal"
+# Switching off temporarily the tests gh#nucleic/enaml#449
 %pytest_arch tests -k "not ($donttest)"
 
 %post
@@ -107,6 +109,6 @@ donttest="test_focus_tracking or test_focus_traversal"
 %python_alternative %{_bindir}/enaml-compileall
 %python_alternative %{_bindir}/enaml-run
 %{python_sitearch}/enaml
-%{python_sitearch}/enaml-%{version}*-info
+%{python_sitearch}/enaml-*-info
 
 %changelog

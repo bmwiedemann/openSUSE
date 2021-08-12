@@ -47,4 +47,24 @@
     <comment></comment>
     <requestid>889121</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6baad1b1d4c3ca5f3181c0ffa06b3259</srcmd5>
+    <version>0.13.0+git.1627388100.6864e8bc</version>
+    <time>1628751696</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.13.0+git.1627388100.6864e8bc (so as to make
+  the test suite pass with pytest-qt &gt; 3):
+  * Add release notes entry
+  * Flow Layout sort fix for stretch or ortho_stretch &gt; 0
+  * cis: test on python 3.10.b.4
+  * tests: fix missing imports
+  * cis: do not run with -W error due to ipykernel and add missed skip for focus
+  * cis: skip focus tests on linux (ci) and run extended tests on 3.9 rather than 3.8
+  * cis: bump to python 3.10 beta 3 and skip linux for the time being
+  * tests: fix warnings and try another window manager
+
+- Switching off temporarily the test suite
+  (gh#nucleic/enaml#449).</comment>
+    <requestid>911483</requestid>
+  </revision>
 </revisionlist>
