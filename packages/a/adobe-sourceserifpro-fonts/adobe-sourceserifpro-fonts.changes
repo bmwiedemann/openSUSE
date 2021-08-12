@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug  4 15:35:17 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add 31-adobe-sourceserifpro.conf so that old name still works
+
+-------------------------------------------------------------------
+Thu Jul 29 14:28:15 CEST 2021 - tiwai@suse.de
+
+- Fix download URL again; we take the full source zip instead of
+  each split release zip
+
+-------------------------------------------------------------------
+Thu Jul 29 11:05:35 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update description to reflect name change Source Sans
+
+-------------------------------------------------------------------
+Thu Jul 29 10:24:51 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 4.004:
+  Major update with the following highlights:
+  * Source Serif now has six weights across five optical sizes
+  * Shift text master in design space
+  * Change the family name from Source Serif Pro to Source Serif 4
+
+-------------------------------------------------------------------
 Sat Jun 15 10:41:18 UTC 2019 - Cor Blom <cornelis@solcon.nl>
 
 - Update to 3.000 (Roman and Italic have now the same version):

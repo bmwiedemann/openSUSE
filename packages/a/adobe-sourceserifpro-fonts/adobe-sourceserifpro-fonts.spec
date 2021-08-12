@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourceserifpro-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,26 @@
 #
 
 
-%define _name sourceserifpro
 Name:           adobe-sourceserifpro-fonts
-Version:        3.000
+Version:        4.004
 Release:        0
 Summary:        A set of OpenType fonts designed for user interfaces
 License:        OFL-1.1
 Group:          System/X11/Fonts
-URL:            https://github.com/adobe-fonts/source-serif-pro/
-Source:         https://github.com/adobe-fonts/source-serif-pro/releases/download/%{version}R/source-serif-pro-%{version}R.zip
+URL:            https://github.com/adobe-fonts/source-serif/
+Source0:        https://github.com/adobe-fonts/source-serif/archive/refs/tags/%{version}R.zip#/source-serif-%{version}R.zip
+Source1:        31-adobe-sourceserifpro.conf
+BuildRequires:  fontconfig
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-A set of serif OpenType fonts designed to complement Source Sans Pro
+A set of serif OpenType fonts designed to complement Source Sans
 
 %prep
-%setup -q -c -n source-serif-pro-%{version}R
+%setup -q -n source-serif-%{version}R
 # Fix line endings
 sed -i 's/\r$//g' LICENSE.md
 
@@ -44,6 +45,7 @@ sed -i 's/\r$//g' LICENSE.md
 install -d %{buildroot}%{_ttfontsdir}
 # by default install command uses 755 umask
 install -m 644 OTF/*.otf %{buildroot}%{_ttfontsdir}
+%install_fontsconf %{SOURCE1}
 
 %reconfigure_fonts_scriptlets
 
@@ -52,5 +54,7 @@ install -m 644 OTF/*.otf %{buildroot}%{_ttfontsdir}
 %doc README.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/*
+%files_fontsconf_availdir
+%files_fontsconf_file -l 31-adobe-sourceserifpro.conf
 
 %changelog
