@@ -17,16 +17,13 @@
 
 
 Name:           lsvpd
-Version:        1.7.11
+Version:        1.7.12
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
 URL:            https://github.com/power-ras/lsvpd
 Source:         https://github.com/power-ras/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         lsvpd-sysvpd-Add-UUID-property.patch
-Patch2:         lsvpd-nvme-Populate-NVMe-firmware-version.patch
-Patch3:         lsvpd-sysfs-Fix-PCI-device-manufacturer-parsing-logic.patch
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  librtas-devel

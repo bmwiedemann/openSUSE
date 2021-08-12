@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:42:31 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.7.12 (jsc#SLE-18188).
+  - Drop upstreamed patches
+    - lsvpd-nvme-Populate-NVMe-firmware-version.patch
+    - lsvpd-sysvpd-Add-UUID-property.patch
+    - lsvpd-sysfs-Fix-PCI-device-manufacturer-parsing-logic.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 19:39:54 UTC 2021 - Thomas Abraham <tabraham@suse.com>
 
 - hwdata does not provide usb.ids in /usr/share so the solution
