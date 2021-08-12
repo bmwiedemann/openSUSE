@@ -63,8 +63,6 @@ autoreconf -fiv
 export  CFLAGS="%{optflags} -fpie"
 export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 %configure \
-	    --bindir=/bin \
-	    --sbindir=/sbin \
 	    --enable-libwrap \
 	    --enable-warmstarts \
 	    --enable-debug \
@@ -74,7 +72,7 @@ export LDFLAGS="-pie -Wl,-z,relro,-z,now"
 	    --with-nss-modules="files usrfiles"
 
 make %{?_smp_mflags}
-%sysusers_generate_pre %{SOURCE5} rpc
+%sysusers_generate_pre %{SOURCE5} rpc rpc-user.conf
 
 %install
 %make_install
@@ -86,8 +84,15 @@ mkdir -p %{buildroot}%{_sysusersdir}
 install -m 644 %{SOURCE5} %{buildroot}%{_sysusersdir}/
 # create symlink for rcrpcbind
 mkdir -p %{buildroot}/%{_sbindir}
-ln -s service %{buildroot}/%{_sbindir}/rc%{name}
-ln -s /bin/rpcinfo %{buildroot}/sbin/rpcinfo
+ln -s service %{buildroot}%{_sbindir}/rc%{name}
+ln -s %{_bindir}/rpcinfo %{buildroot}%{_sbindir}/rpcinfo
+%if !0%{?usrmerged}
+mkdir %{buildroot}/sbin
+mkdir %{buildroot}/bin
+ln -s %{_bindir}/rpcinfo %{buildroot}/sbin/rpcinfo
+ln -s %{_bindir}/rpcinfo %{buildroot}/bin/rpcinfo
+ln -s %{_sbindir}/%{name} %{buildroot}/sbin/%{name}
+%endif
 
 %pre -f rpc.pre
 %service_add_pre %{name}.service %{name}.socket
@@ -105,9 +110,14 @@ ln -s /bin/rpcinfo %{buildroot}/sbin/rpcinfo
 %files
 %license COPYING
 %doc AUTHORS README
+%if !0%{?usrmerged}
 /sbin/%{name}
 /bin/rpcinfo
 /sbin/rpcinfo
+%endif
+%{_sbindir}/%{name}
+%{_bindir}/rpcinfo
+%{_sbindir}/rpcinfo
 %{_sbindir}/rc%{name}
 %{_mandir}/*/*
 %{_fillupdir}/sysconfig.%{name}

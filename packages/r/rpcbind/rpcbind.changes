@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 21 15:44:17 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add now working CONFIG parameter to sysusers generator
+- UsrMerge changes
+
+-------------------------------------------------------------------
 Mon May 17 07:06:12 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to rpcbind 1.2.6
