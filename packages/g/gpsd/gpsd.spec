@@ -16,23 +16,23 @@
 #
 
 
-%define         sover 28
+%define         sover 29
 %define         libgps libgps%{sover}
 %define         libQgps libQgpsmm%{sover}
 %define         _udevdir %(pkg-config --variable udevdir udev)
 %bcond_without python2
 Name:           gpsd
-Version:        3.22
+Version:        3.23
 Release:        0
 Summary:        Service daemon for mediating access to a GPS
 License:        BSD-3-Clause
 Group:          Hardware/Other
 URL:            https://gpsd.gitlab.io/gpsd/
-Source0:        https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz
+Source0:        https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.xz
 Source1:        rules.gpsd
 Source2:        udev.gpsd
 Source3:        sysconfig.gpsd
-Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.gz.sig
+Source98:       https://download-mirror.savannah.gnu.org/releases/gpsd/%{name}-%{version}.tar.xz.sig
 Source99:       %{name}.keyring
 BuildRequires:  chrpath
 BuildRequires:  fdupes
@@ -323,6 +323,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %doc %{name}-%{version}/python3/%{name}-%{version}/TODO
 %{_mandir}/man1/gpscat.1%{?ext_man}
 %{_mandir}/man1/gpsfake.1%{?ext_man}
+%{_mandir}/man1/gpsdebuginfo.1%{?ext_man}
 %{_mandir}/man1/gpsdecode.1%{?ext_man}
 %{_mandir}/man1/gpsprof.1%{?ext_man}
 %{_mandir}/man3/libgps.3%{?ext_man}
@@ -331,6 +332,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_mandir}/man5/gpsd_json.5%{?ext_man}
 %{_bindir}/gpsfake
 %{_bindir}/gpscat
+%{_bindir}/gpsdebuginfo
 %{_bindir}/gpsdecode
 %{_bindir}/gpsprof
 %{_includedir}/gps.h
@@ -362,6 +364,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_mandir}/man1/gpspipe.1%{?ext_man}
 %{_mandir}/man1/gpsplot.1%{?ext_man}
 %{_mandir}/man1/gpsrinex.1%{?ext_man}
+%{_mandir}/man1/gpssnmp.1%{?ext_man}
 %{_mandir}/man1/gpssubframe.1%{?ext_man}
 %{_mandir}/man1/gpxlogger.1%{?ext_man}
 %{_mandir}/man1/lcdgps.1%{?ext_man}
@@ -388,6 +391,7 @@ sed -i -e 's#Icon=.*/\([^/]\+\)\(\..\+\)#Icon=\1#' %{buildroot}%{_datadir}/appli
 %{_bindir}/gpscsv
 %{_bindir}/gpsplot
 %{_bindir}/gpssubframe
+%{_bindir}/gpssnmp
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*
 
