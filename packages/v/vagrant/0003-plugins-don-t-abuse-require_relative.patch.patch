@@ -1,7 +1,7 @@
-From 5d0d5df6dcb54c5b423cbfa60c7e5eaccce380c9 Mon Sep 17 00:00:00 2001
+From 188198d9cd7dad997a02e26f06cdb8e1fcf49483 Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Wed, 17 May 2017 09:09:57 +0200
-Subject: [PATCH 03/15] plugins-don-t-abuse-require_relative.patch
+Subject: [PATCH 03/10] plugins-don-t-abuse-require_relative.patch
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -32,7 +32,7 @@ index 79f14213a..d8966b171 100644
  module VagrantPlugins
    module GuestArch
 diff --git a/plugins/guests/debian/cap/configure_networks.rb b/plugins/guests/debian/cap/configure_networks.rb
-index dfec32ccb..6b56e280a 100644
+index bb1ff69f9..1e29d57ab 100644
 --- a/plugins/guests/debian/cap/configure_networks.rb
 +++ b/plugins/guests/debian/cap/configure_networks.rb
 @@ -1,6 +1,6 @@

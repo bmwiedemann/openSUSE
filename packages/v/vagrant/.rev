@@ -279,4 +279,12 @@
     <comment></comment>
     <requestid>904482</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>3aaa0df5dbf094fc3832d4e840fe6925</srcmd5>
+    <version>2.2.18</version>
+    <time>1628751652</time>
+    <user>RBrownSUSE</user>
+    <comment>Update to 2.2.18, switch to Ruby 3</comment>
+    <requestid>911060</requestid>
+  </revision>
 </revisionlist>

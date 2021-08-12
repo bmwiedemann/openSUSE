@@ -1,7 +1,7 @@
-From 14c959018fc2e7d9fe6d5d396971a115efbdc71e Mon Sep 17 00:00:00 2001
+From 61b69d39695fe17aad4ac750e7b15fde4d52d24a Mon Sep 17 00:00:00 2001
 From: Antonio Terceiro <terceiro@debian.org>
 Date: Wed, 22 Oct 2014 09:40:14 -0200
-Subject: [PATCH 02/15] Use a private temporary dir
+Subject: [PATCH 02/10] Use a private temporary dir
 
 Without this vagrant will clutter $TMPDIR with dozens of even hundreds
 of temporary files (~4 per vagrant invocation).
@@ -36,12 +36,12 @@ index 41b63b292..b2d4c6a05 100644
  
        url = @metadata_url
 diff --git a/lib/vagrant/util.rb b/lib/vagrant/util.rb
-index b7f297169..95e7850a3 100644
+index c135dacc2..2d14897a1 100644
 --- a/lib/vagrant/util.rb
 +++ b/lib/vagrant/util.rb
-@@ -17,6 +17,8 @@ module Vagrant
-     autoload :SafeExec,                  'vagrant/util/safe_exec'
+@@ -46,6 +46,8 @@ module Vagrant
      autoload :SilenceWarnings,           'vagrant/util/silence_warnings'
+     autoload :SSH,                       'vagrant/util/ssh'
      autoload :StackedProcRunner,         'vagrant/util/stacked_proc_runner'
 +    autoload :Tempfile,                  'vagrant/util/tempfile'
 +    autoload :TemplateRenderer,          'vagrant/util/template_renderer'

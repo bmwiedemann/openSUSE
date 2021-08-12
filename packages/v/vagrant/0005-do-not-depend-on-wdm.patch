@@ -1,7 +1,7 @@
-From c596dcd5e7bb3ab6bbdcbc9d21b640d828aa0925 Mon Sep 17 00:00:00 2001
+From 9d896403984a8673e10f3da47052e4250e9ba98b Mon Sep 17 00:00:00 2001
 From: Johannes Kastl <kastl@b1-systems.de>
 Date: Mon, 4 Jun 2018 09:18:23 +0200
-Subject: [PATCH 05/15] do not depend on wdm
+Subject: [PATCH 05/10] do not depend on wdm
 
 Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
 ---
@@ -9,13 +9,13 @@ Signed-off-by: Johannes Kastl <kastl@b1-systems.de>
  1 file changed, 1 deletion(-)
 
 diff --git a/vagrant.gemspec b/vagrant.gemspec
-index 99ed2083c..4a4a25e6d 100644
+index e8cee0b5e..cfe589cca 100644
 --- a/vagrant.gemspec
 +++ b/vagrant.gemspec
-@@ -30,7 +30,6 @@ Gem::Specification.new do |s|
-   s.add_dependency "rb-kqueue", "~> 0.2.0"
+@@ -31,7 +31,6 @@ Gem::Specification.new do |s|
+   s.add_dependency "rexml", "~> 3.2"
    s.add_dependency "rubyzip", "~> 2.0"
-   s.add_dependency "vagrant_cloud", "~> 3.0.4"
+   s.add_dependency "vagrant_cloud", "~> 3.0.5"
 -  s.add_dependency "wdm", "~> 0.1.0"
    s.add_dependency "winrm", ">= 2.3.4", "< 3.0"
    s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"

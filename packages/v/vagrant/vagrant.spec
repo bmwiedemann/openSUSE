@@ -26,7 +26,7 @@
 
 
 Name:           vagrant
-Version:        2.2.16
+Version:        2.2.18
 Release:        0
 Summary:        Tool for building and distributing virtualized development environments
 License:        MIT
@@ -57,31 +57,21 @@ Patch6:         0006-do-not-abuse-relative-paths-in-docker-plugin-to-make.patch
 Patch7:         0007-Don-t-abuse-relative-paths-in-plugins.patch
 Patch8:         0008-Skip-failing-tests.patch
 Patch9:         0009-Disable-Subprocess-unit-test.patch
-# https://github.com/hashicorp/vagrant/pull/12329
-# merged -> drop on next upstream release
-Patch10:        0010-Bump-listen-version-to-3.5.patch
-# https://github.com/hashicorp/vagrant/pull/12339
-# merged -> drop on next upstream release
-Patch11:        0011-Mock-the-PowerShell.executable-method-in-more-tests.patch
-# https://github.com/hashicorp/vagrant/pull/12439
-# merged -> drop on next upstream release
-Patch12:        0012-Use-systemctl-poweroff-in-the-background-instead-of-.patch
-# adds an explicit require of rubygem(rexml)
-# already in main, drop on next upstream release
-Patch13:        0013-Include-rexml-dependency.patch
-# bumps the versions of childprocess & net-scp
-# already in main, drop on next upstream release
-Patch14:        0014-Bump-constraints-on-childprocess-and-net-scp.patch
-# https://github.com/hashicorp/vagrant/pull/12442
-Patch15:        0015-Remove-no-longer-required-gem-webmock.patch
+Patch10:        0010-Bump-listen-version-to-3.6.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 # force only one ruby version
 # CAUTION: if you change this, then you *must* also change the sed calls which
 #          fix these values in macros.vagrant
+%if 0%{?suse_version} > 1500
+%global rb_build_versions ruby30
+%global rb_build_abi ruby:3.0.0
+%global rb_ruby_suffix ruby3.0
+%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
 %global rb_ruby_suffix %rb_default_ruby_suffix
+%endif
 
 # we use the rpm macros in this spec
 # need to load them *after* defining the rb_* macros
@@ -94,16 +84,18 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Build dependencies
 #===============================================================================
 
-#  s.required_ruby_version     = "~> 2.5", "< 2.8"
-BuildRequires:  %{ruby:2 < 2.8}
+#  s.required_ruby_version     = ">= 2.5", "< 3.1"
+%if 0%{?suse_version} > 1500
+BuildRequires:  %{ruby:3 < 3.1}
+%else
 BuildRequires:  %{ruby:2 >= 2.5}
+%endif
 #
 #
 #
 BuildRequires:  %{rubygem bundler}
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 BuildRequires:  %{rubygem bcrypt_pbkdf:1 >= 1.1 }
-# PATCHED
 #  s.add_dependency "childprocess", "~> 4.1.0"
 BuildRequires:  %{rubygem childprocess:4.1 }
 #  s.add_dependency "ed25519", "~> 1.2.4"
@@ -113,8 +105,8 @@ BuildRequires:  %{rubygem erubi }
 #  s.add_dependency "i18n", "~> 1.8"
 BuildRequires:  %{rubygem i18n:1 >= 1.8 }
 # PATCHED
-#  s.add_dependency "listen", "~> 3.5"
-BuildRequires:  %{rubygem listen:3 >= 3.5 }
+#  s.add_dependency "listen", "~> 3.6"
+BuildRequires:  %{rubygem listen:3 >= 3.6 }
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 BuildRequires:  %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5 }
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
@@ -126,7 +118,6 @@ BuildRequires:  %{rubygem mime-types:3 >= 3.3 }
 BuildRequires:  %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 BuildRequires:  %{rubygem net-sftp:3 }
-# PATCHED
 #  s.add_dependency "net-scp", "~> 3.0.0"
 BuildRequires:  %{rubygem net-scp:3.0 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
@@ -143,21 +134,21 @@ BuildRequires:  %{rubygem winrm:2 >= 2.3.4 }
 BuildRequires:  %{rubygem winrm-fs:1 >= 1.3.4 }
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 BuildRequires:  %{rubygem winrm-elevated:1 >= 1.2.1 }
-#  s.add_dependency "vagrant_cloud", "~> 3.0.4"
-BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.4 }
+#  s.add_dependency "vagrant_cloud", "~> 3.0.5"
+BuildRequires:  %{rubygem vagrant_cloud:3.0 >= 3.0.5 }
 
 # devel dependencies:
 #  s.add_development_dependency "rake", "~> 13.0"
 BuildRequires:  %{rubygem rake:13 }
-#  s.add_development_dependency "rspec", "~> 3.5.0"
-BuildRequires:  %{rubygem rspec:3.5 }
+#  s.add_development_dependency "rspec", "~> 3.10.0"
+BuildRequires:  %{rubygem rspec:3.10 }
 #  s.add_development_dependency "rspec-its", "~> 1.3.0"
 BuildRequires:  %{rubygem rspec-its:1.3 }
 #  s.add_development_dependency "fake_ftp", "~> 0.1.1"
 BuildRequires:  %{rubygem fake_ftp:0.1 >= 0.1.1 }
+#  s.add_development_dependency "webrick", "~> 1.7.0"
+BuildRequires:  %{rubygem webrick:1.7 }
 
-# Prevent have choice for rubygem(ruby:2.7.0:listen:3) >= 3.1
-BuildRequires:  %{rubygem listen:3.5}
 # Prevent have choice for rubygem(ruby:2.6.0:mime-types) >= 2
 BuildRequires:  %{rubygem mime-types:3 }
 # Prevent have choice for rubygem(ruby:2.6.0:builder) >= 2.1.2
@@ -192,7 +183,6 @@ BuildRequires:  fdupes
 
 #  s.add_dependency "bcrypt_pbkdf", "~> 1.1"
 Requires:       %{rubygem bcrypt_pbkdf:1 >= 1.1 }
-# PATCHED
 #    s.add_dependency "childprocess", "~> 4.1.0"
 Requires:       %{rubygem childprocess:4.1}
 #   s.add_dependency "ed25519", "~> 1.2.4"
@@ -202,8 +192,8 @@ Requires:       %{rubygem erubi}
 #  s.add_dependency "i18n", "~> 1.8"
 Requires:       %{rubygem i18n:1 >= 1.8}
 # PATCHED
-#  s.add_dependency "listen", "~> 3.5"
-Requires:       %{rubygem listen:3 >= 3.5}
+#  s.add_dependency "listen", "~> 3.6"
+Requires:       %{rubygem listen:3 >= 3.6}
 #  s.add_dependency "hashicorp-checkpoint", "~> 0.1.5"
 Requires:       %{rubygem hashicorp-checkpoint:0.1 >= 0.1.5}
 #  s.add_dependency "log4r", "~> 1.1.9", "< 1.1.11"
@@ -215,7 +205,6 @@ Requires:       %{rubygem mime-types:3 >= 3.3}
 Requires:       %{rubygem net-ssh:6.1 >= 6.1.0 }
 #  s.add_dependency "net-sftp", "~> 3.0"
 Requires:       %{rubygem net-sftp:3 }
-# PATCHED
 #  s.add_dependency "net-scp", "~> 3.0.0"
 Requires:       %{rubygem net-scp:3.0 }
 #  s.add_dependency "rb-kqueue", "~> 0.2.0"
@@ -232,8 +221,8 @@ Requires:       %{rubygem winrm:2 >= 2.3.4}
 Requires:       %{rubygem winrm-fs:1 >= 1.3.4}
 #  s.add_dependency "winrm-elevated", ">= 1.2.1", "< 2.0"
 Requires:       %{rubygem winrm-elevated:1 >= 1.2.1}
-#  s.add_dependency "vagrant_cloud", "~> 3.0.4"
-Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.4}
+#  s.add_dependency "vagrant_cloud", "~> 3.0.5"
+Requires:       %{rubygem vagrant_cloud:3.0 >= 3.0.5}
 
 
 Requires:       bsdtar
