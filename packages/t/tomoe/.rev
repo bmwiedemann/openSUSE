@@ -127,4 +127,12 @@
     <comment></comment>
     <requestid>864082</requestid>
   </revision>
+  <revision rev="20" vrev="50">
+    <srcmd5>ef850cd1d2bcee8eb033c0813fc1f0bb</srcmd5>
+    <version>0.6.0</version>
+    <time>1628755253</time>
+    <user>RBrownSUSE</user>
+    <comment>- Drop the download URL from Source to allow submission to FACTORY (forwarded request 911471 from tiwai)</comment>
+    <requestid>911472</requestid>
+  </revision>
 </revisionlist>

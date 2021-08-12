@@ -23,7 +23,7 @@ Summary:        Japanese handwriting recognition engine
 License:        LGPL-2.1-or-later
 Group:          System/I18n/Japanese
 URL:            https://sourceforge.net/projects/tomoe/
-Source:         http://dfn.dl.sourceforge.net/sourceforge/tomoe/tomoe-0.6.0.tar.bz2
+Source:         tomoe-0.6.0.tar.bz2
 
 Patch0:         glib-include-fixes.diff
 Patch1:         tomoe-0.6.0-fixes-set-parse-error.patch
@@ -41,18 +41,17 @@ Japanese handwriting recognition engine (Tegaki Online MOji-ninshiki
 Engine)
 
 %package devel
-Summary:        Include Files and Libraries mandatory for Development
+Summary:        Header files for the Tomoe handwriting recognition engine
 Group:          System/I18n/Japanese
 Requires:       %{name} = %{version}
 Requires:       glib2-devel
 
 %description devel
-Include Files and Libraries mandatory for Development
+Header files for the Tomoe handwriting recognition engine.
 
 %package doc
-Summary:        Japanese handwriting recognition engine
-Group:          System/I18n/Japanese
-Requires:       %{name} = %{version}
+Summary:        Documentation for the Tomoe handwriting recognition engine
+Group:          Documentation/HTML
 
 %description doc
 Japanese handwriting recognition engine (Tegaki Online MOji-ninshiki
@@ -66,7 +65,6 @@ touch INSTALL README ; autoreconf --force --install
 export CFLAGS="%{optflags}"
 %configure \
 	--disable-static \
-	--with-pic \
 	%{nil}
 %make_build
 
@@ -82,7 +80,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc AUTHORS ChangeLog NEWS TODO
 %{_datadir}/tomoe
-%{_libdir}/*.so
+# This is currently not packaged per Shared Library guideline because
+# it could not rule out that libtomoe.so.0 may be requiring its data
+# files and plugins.
 %{_libdir}/*.so.*
 %dir %{_libdir}/tomoe
 %dir %{_libdir}/tomoe/module/
@@ -94,6 +94,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %{_includedir}/tomoe
+%{_libdir}/*.so
 %{_libdir}/pkgconfig/tomoe.pc
 
 %files doc

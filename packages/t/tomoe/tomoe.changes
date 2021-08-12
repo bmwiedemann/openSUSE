@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 11 17:48:26 CEST 2021 - tiwai@suse.de
+
+- Drop the download URL from Source to allow submission to FACTORY
+
+-------------------------------------------------------------------
+Mon Jun 14 11:14:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic (no effect with --disable-static)
+- Replace boilerplate template description
+
+-------------------------------------------------------------------
 Thu Jan 14 19:24:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add tomoe-0.6.0-fixes-set-parse-error.patch and
