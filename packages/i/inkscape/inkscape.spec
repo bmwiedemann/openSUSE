@@ -16,9 +16,9 @@
 #
 
 
-%define _version 1.0.2_2021-01-15_e86c870879
+%define _version 1.1_2021-05-24_c4e8f9ed74
 Name:           inkscape
-Version:        1.0.2
+Version:        1.1
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -27,14 +27,17 @@ Source:         https://media.inkscape.org/dl/resources/file/%{name}-%{version}.
 # openSUSE palette file
 Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
-# PATCH-FIX-UPSTREAM 2790.patch dimstar@opensuse.org -- Fix build against glib 2.67.3
-Patch0:         https://gitlab.com/inkscape/inkscape/-/merge_requests/2790.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 BuildRequires:  gc-devel
+%if 0%{suse_version} < 1550
+BuildRequires:  gcc10-c++
+%else
 BuildRequires:  gcc-c++
+%endif
 BuildRequires:  intltool
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  liblcms2-devel
 BuildRequires:  libpoppler-glib-devel
@@ -47,12 +50,17 @@ BuildRequires:  potrace-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-xml
+BuildRequires:  readline-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Magick++)
+BuildRequires:  pkgconfig(2geom)
+BuildRequires:  pkgconfig(GraphicsMagick++)
+BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gdl-3.0)
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(gspell-1)
 BuildRequires:  pkgconfig(gtkmm-3.0)
-BuildRequires:  pkgconfig(gtkspell3-3.0)
+BuildRequires:  pkgconfig(libcdr-0.1)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
@@ -138,10 +146,15 @@ Inkscape is a vector graphics editor.
 %ifarch %{arm}
 export LDFLAGS+="-Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 %endif
+%if 0%{suse_version} < 1550
+export CXX=g++-10
+%endif
 %cmake \
   -GNinja \
   -DINKSCAPE_INSTALL_LIBDIR=%{_libdir} \
-  -DWITH_MANPAGE_COMPRESSION=OFF
+  -DWITH_MANPAGE_COMPRESSION=OFF \
+  -DWITH_DBUS=ON \
+  %{nil}
 %ninja_build
 
 %install
@@ -149,16 +162,14 @@ export LDFLAGS+="-Wl,--no-keep-memory -Wl,--reduce-memory-overheads"
 
 # Only useful for translators.
 rm %{buildroot}%{_datadir}/inkscape/extensions/genpofiles.sh
-# Only required on Windows.
-rm %{buildroot}%{_datadir}/inkscape/extensions/print_win32_vector.*
 # Packaging/distribution info.
-rm %{buildroot}%{_datadir}/inkscape/extensions/{LICENSE.txt,MANIFEST.in,README.md,STYLEGUIDE.md}
+rm %{buildroot}%{_datadir}/inkscape/extensions/{LICENSE.txt,MANIFEST.in,README.md,STYLEGUIDE.md,TESTING.md}
 # Test framework.
 rm %{buildroot}%{_datadir}/inkscape/extensions/setup.{cfg,py} \
    %{buildroot}%{_datadir}/inkscape/extensions/tox.ini        \
    %{buildroot}%{_datadir}/inkscape/extensions/.pylintrc      \
    %{buildroot}%{_datadir}/inkscape/extensions/doxygen-main.dox
-rm -r %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
+rm -rf %{buildroot}%{_datadir}/inkscape/extensions/.pytest_cache
 
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_datadir}/inkscape/palettes/
 
@@ -177,9 +188,12 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 
 %files -f inkscape.lst
 %{_bindir}/*
-%{_libdir}/lib%{name}_base.so
+%dir %{_libdir}/inkscape
+%{_libdir}/inkscape/lib%{name}_base.so
 %{_datadir}/applications/*Inkscape.desktop
 %{_datadir}/icons/hicolor/*/apps/*Inkscape.png
+%{_datadir}/icons/hicolor/*/apps/*Inkscape.svg
+%{_datadir}/icons/hicolor/*/apps/*Inkscape-symbolic.svg
 %{_datadir}/metainfo/*Inkscape.appdata.xml
 %dir %{_datadir}/inkscape/
 %{_datadir}/inkscape/[cdf-z]*
@@ -199,6 +213,7 @@ python3 %{SOURCE2} %{buildroot}%{_datadir}/inkscape/extensions "%%{_datadir}/ink
 %{_datadir}/inkscape/extensions/fontfix.conf
 %{_datadir}/inkscape/extensions/inkscape.extension.rng
 %{_datadir}/inkscape/extensions/seamless_pattern.svg
+%{_datadir}/inkscape/extensions/raster_output_jpg.svg
 %{_datadir}/inkscape/attributes/
 %{_datadir}/inkscape/branding/
 %dir %{_datadir}/bash-completion/

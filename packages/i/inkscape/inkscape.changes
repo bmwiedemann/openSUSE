@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jun 17 16:41:27 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Use gcc10-c++ to build in Leap. gcc7 is too old.
+
+-------------------------------------------------------------------
+Mon Jun 14 16:40:47 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 1.1
+  * A Welcome dialog, where the look of Inkscape can be selected,
+    and some choices for the new document's size or file to open
+    are available
+  * A Command palette that opens when the ? key is pressed and
+    that allows to search and use many functions without having to
+    use a keyboard shortcut or going through the menus
+  * It is now possible to copy, cut and paste parts of paths with
+    the Node tool
+  * The dialog docking system has been rewritten, which resolves
+    many issues with Inkscape's docked dialogs and allows you to
+    dock dialogs on either side of the screen
+  * New Outline Overlay mode that displays object outlines while
+    also showing their real colors
+  * Preferences options are now easier to find by using the new
+    search field
+  * It is no longer necessary to remember to click on 'Export' in
+    the PNG Export dialog, as the exporting will already happen
+    after the click on 'Save' in the file selection dialog.
+  * Export as JPG, TIFF, optimized PNG and WebP directly from
+    Inkscape
+  * When pasting a copied object, Inkscape now pastes it directly
+    on top of the currently selected object by default
+  * An extension for updating extensions and installing additional
+    extensions, called the Extension Manager (currently in beta
+    stage)
+  * To learn more, see the full release notes for Inkscape 1.1 at
+    https://media.inkscape.org/media/doc/release_notes/1.1/Inkscape_1.1.html
+- Move dependencies from gtkspell to gspell and from Magic++
+  (which was not used since inkscape requires an old version of
+  ImageMagick if that library is used) to GraphicsMagic++, also
+  add BuildRequires for dbus, readline, libcdr and
+  libboost_filesystem-devel
+- Drop patch which is already included by upstream:
+  * 2790.patch
+
+-------------------------------------------------------------------
 Fri Mar 26 08:27:20 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 2790.patch: fix build against glib 2.67.3.
