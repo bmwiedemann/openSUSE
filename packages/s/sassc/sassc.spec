@@ -1,7 +1,7 @@
 #
 # spec file for package sassc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           sassc
-Version:        3.6.1
+Version:        3.6.2
 Release:        0
 Summary:        Libsass command line driver
 License:        MIT
 Group:          Development/Tools/Other
-Url:            https://github.com/sass/sassc/
+URL:            https://github.com/sass/sassc/
 Source:         https://github.com/sass/sassc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -44,14 +44,14 @@ cleaner stylesheets and makes collaboration on your CSS a breeze.
 %build
 autoreconf -fiv
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root)
-%doc LICENSE Readme.md
+%license LICENSE
+%doc Readme.md
 %{_bindir}/%{name}
 
 %changelog

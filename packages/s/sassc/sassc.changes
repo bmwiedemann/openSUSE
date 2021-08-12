@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 27 06:37:55 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.2:
+  * matches libsass 3.6.2 release, see
+    https://github.com/sass/libsass/releases/tag/3.6.5 
+
+-------------------------------------------------------------------
 Tue Nov 26 17:21:50 UTC 2019 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 3.6.1 to match our libsass package
