@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 10 17:47:42 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 5.5.3:
+ * new: added 4 report color themes: quicken2017, mint,
+   material, nord
+ * change: added 6 more colors to ynab report color theme
+ * wish: #1930395 ability to copy certain amounts (sum, avg, balance)
+ * bugfix: fixed some minor memory leak in post scheduled
+ * bugfix: adding tags from manage tags dialog don't enable save
+ * bugfix: #1936806 after editing a txn from detail list of report,
+   the list is empty
+ * bugfix: #1934739 today button text is not translated in date picker
+ * bugfix: #1932301 main windows New and Save tooltip text remains
+   in english
+ * bugfix: #1931816 changing a date from 'show all transaction'
+   don't sort by date
+ * bugfix: #1930924 import back a csv reads categories as tags
+ * bugfix: #1928147 account column don't sort in scheduled dialog
+ * bugfix: #1919936 document what the account maximum balance limit
+   does in practice
+
+-------------------------------------------------------------------
 Sun May  9 12:03:33 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 5.5.2:
