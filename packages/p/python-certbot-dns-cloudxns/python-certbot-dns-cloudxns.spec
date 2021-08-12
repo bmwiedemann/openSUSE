@@ -20,14 +20,14 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-certbot-dns-cloudxns
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        CloudXNS Authenticator plugin for Certbot
 License:        Apache-2.0
 URL:            https://github.com/certbot/certbot
 Source:         https://files.pythonhosted.org/packages/source/c/certbot-dns-cloudxns/certbot-dns-cloudxns-%{version}.tar.gz
 BuildRequires:  %{python_module certbot >= %{version}}
-BuildRequires:  %{python_module dns-lexicon >= 3.1.0}
+BuildRequires:  %{python_module dns-lexicon >= 3.2.1}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -36,7 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-acme >= %{version}
 Requires:       python-certbot >= %{version}
-Requires:       python-dns-lexicon >= 3.1.0
+Requires:       python-dns-lexicon >= 3.2.1
 Requires:       python-zope.interface
 BuildArch:      noarch
 %python_subpackages
