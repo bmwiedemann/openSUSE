@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  6 16:51:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Chromium 92.0.4515.131 (boo#1189006)
+  * CVE-2021-30590: Heap buffer overflow in Bookmarks
+  * CVE-2021-30591: Use after free in File System API
+  * CVE-2021-30592: Out of bounds write in Tab Groups
+  * CVE-2021-30593: Out of bounds read in Tab Strip
+  * CVE-2021-30594: Use after free in Page Info UI
+  * CVE-2021-30596: Incorrect security UI in Navigation
+  * CVE-2021-30597: Use after free in Browser UI
+- Removed patches:
+  * chromium-92-GetUsableSize-nullptr.patch
+- Added patches:
+  * chromium-no-writeprotection.patch
+  * chromium-glibc-2.34.patch
+
+-------------------------------------------------------------------
 Sun Aug  1 11:14:20 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 92.0.4515.107 (boo#1188590)

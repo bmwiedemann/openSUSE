@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if "%{?suse_version}" >= "1550"
 %define clang_version %{nil}
 %endif
@@ -49,7 +50,7 @@
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        92.0.4515.107
+Version:        92.0.4515.131
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -101,9 +102,10 @@ Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch44:        chromium-91-libyuv-aarch64.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
 Patch47:        chromium-92-v8-constexpr.patch
-Patch48:        chromium-92-GetUsableSize-nullptr.patch
 Patch49:        chromium-freetype-2.11.patch
 Patch50:        chromium-clang-nomerge.patch
+Patch51:        chromium-glibc-2.34.patch
+Patch52:        chromium-no-writeprotection.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -117,6 +119,7 @@ BuildRequires:  SDL-devel
 BuildRequires:  bison
 BuildRequires:  cups-devel
 BuildRequires:  desktop-file-utils
+BuildRequires:  elfutils
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gn >= 0.1807
@@ -225,14 +228,14 @@ Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
 Conflicts:      chromium-browser
+Provides:       %{name}-suid-helper = %{version}
 Provides:       chromium-based-browser = %{version}
 Provides:       chromium-browser = %{version}
 Provides:       web_browser
-Provides:       %{name}-suid-helper = %{version}
 Obsoletes:      %{name}-suid-helper < %{version}
-Obsoletes:      chromium-browser < %{version}
 Obsoletes:      chromium-beta-desktop-gnome < %{version}
 Obsoletes:      chromium-beta-desktop-kde < %{version}
+Obsoletes:      chromium-browser < %{version}
 Obsoletes:      chromium-desktop-gnome < %{version}
 Obsoletes:      chromium-desktop-kde < %{version}
 Obsoletes:      chromium-dev-desktop-gnome < %{version}
@@ -240,7 +243,7 @@ Obsoletes:      chromium-dev-desktop-kde < %{version}
 Obsoletes:      chromium-ffmpeg < %{version}
 Obsoletes:      chromium-ffmpegsumo < %{version}
 # no 32bit supported and it takes ages to build
-ExcludeArch:    %{ix86} %{arm} ppc ppc64 ppc64le s390 s390x
+ExclusiveArch:  x86_64 aarch64 riscv64
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -298,6 +301,9 @@ mv ../highway-0.12.2/* third_party/highway/src
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
 ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
+
+rm buildtools/third_party/eu-strip/bin/eu-strip
+ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
 # Remove bundled libs
 keeplibs=(
@@ -584,6 +590,9 @@ export CXXFLAGS="${CXXFLAGS} -Wno-ignored-attributes"
 export CXXFLAGS="${CXXFLAGS} -Wno-address -Wno-dangling-else"
 # for wayland
 export CXXFLAGS="${CXXFLAGS} -I/usr/include/wayland -I/usr/include/libxkbcommon"
+%if %{with clang}
+export LDFLAGS="${LDFLAGS} -Wl,--build-id=sha1"
+%endif
 %ifarch aarch64
 %if %{without clang}
 export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
@@ -652,6 +661,9 @@ myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
 %ifarch x86_64
 myconf_gn+=" target_cpu=\"x64\""
+%endif
+%ifarch riscv64
+myconf_gn+=" target_cpu=\"riscv64\""
 %endif
 myconf_gn+=" target_os=\"linux\""
 myconf_gn+=" is_debug=false"
@@ -796,7 +808,7 @@ cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
 %endif
 
 # chromedriver
-cp -a chromedriver %{buildroot}%{_libdir}/chromium/
+cp -a chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
 
 cp -a resources.pak %{buildroot}%{_libdir}/chromium/

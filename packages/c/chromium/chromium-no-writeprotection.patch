@@ -1,0 +1,19 @@
+--- a/base/allocator/partition_allocator/partition_alloc_config.h
++++ b/base/allocator/partition_allocator/partition_alloc_config.h
+@@ -9,6 +9,7 @@
+ #include "base/dcheck_is_on.h"
+ #include "base/partition_alloc_buildflags.h"
+ #include "build/build_config.h"
++#include <linux/version.h>
+
+ // ARCH_CPU_64_BITS implies 64-bit instruction set, but not necessarily 64-bit
+ // address space. The only known case where address space is 32-bit is NaCl, so
+@@ -35,7 +36,7 @@
+ #endif
+
+ #if defined(PA_HAS_64_BITS_POINTERS) && \
+-    (defined(OS_LINUX) || defined(OS_ANDROID))
++    (defined(OS_LINUX) || defined(OS_ANDROID)) && LINUX_VERSION_CODE >= KERNEL_VERSION(5,7,0)
+ // TODO(bikineev): Enable for ChromeOS.
+ #define PA_STARSCAN_UFFD_WRITE_PROTECTOR_SUPPORTED
+ #endif
