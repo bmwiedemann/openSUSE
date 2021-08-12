@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug  8 20:07:55 UTC 2021 - Luca Beltrame <lbeltrame@kde.org>
+
+- Update to version 0.14.4
+ * qt: Expose setter and getter for pool cache location
+ * utils: Use GLib's gstring_replace if available
+ * its: Allow to mark release descriptions as non-translatable
+ * compose: Point people at the specification if metadata license is invalid
+ * docs: Clarify which metadata licenses are permitted
+ * docs: Fix a typo on the icon cache page
+ * spec: Add a paragraph about which license to put in <project_license>
+ * Add documentation for YAML release type and urgency
+ * Add documentation for YAML provides
+ * component: Don't strip ";" from keywords before translating them
+ * utils: Don't strip modifiers when stripping encoding
+ * compose: Check optipng is there before we use it
+ * Improve text line wrapping, especially if many newlines are present
+ * Make word-wrap function unicode-aware
+ * Make license_is_metadata_license parse more complex expressions
+ * Improve cache refresh code, don't flag cache as updated if update failed
+ * Use system cache even if we had to drop some invalid metadata
+ * Assign more string class members safely
+ * Fix flashed firmware generating incorrect XML
+ * Fix YAML having wrong names for the firmware data
+
+-------------------------------------------------------------------
 Tue Apr 13 22:35:29 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.14.3
@@ -154,7 +179,7 @@ Thu Jul  2 16:50:16 UTC 2020 - Fabian Vogt <fabian@ritter-vogt.de>
    * Make AsContext getter for AsComponent public API
    * qt: Add support for name_variant_suffix
    * Make component sort-score API public API
-   * Implement a YAML representation of release artifact information  
+   * Implement a YAML representation of release artifact information
   Specification:
    * Build specification and docs with DAPS
    * docs: Add (HTML) anchors for requires/recommends items
@@ -425,7 +450,7 @@ Tue Oct 16 07:50:17 UTC 2018 - Fabian Vogt <fabian@ritter-vogt.de>
 Wed May 23 15:25:48 UTC 2018 - kbabioch@suse.com
 
 - Use OpenPGP signature provided upstream
-- Added AppStream.keyring, which contains the key from the author 
+- Added AppStream.keyring, which contains the key from the author
 - Use %license macro for license files
 
 -------------------------------------------------------------------
@@ -439,7 +464,7 @@ Mon Jan 29 15:38:08 UTC 2018 - alarrosa@suse.com
 - Now the appstream cache is refreshed in %post. The update to 0.11.8
   plus the refresh fixes kde#389531.
 
-- Headers are now installed to /usr/include/appstream instead of 
+- Headers are now installed to /usr/include/appstream instead of
   /usr/inlude/AppStream
 
 - New package AppStream-doc with the html documentation for AppStream
@@ -472,19 +497,19 @@ Mon Jan 29 15:38:08 UTC 2018 - alarrosa@suse.com
      If you don't want this behavior, pass "--nonet" to appstreamcli. There might also
      be false positives (one is known with the KDE bugtracker) that need to be investigated,
      so feedback on this new feature is welcome.
-  
+
   Features:
    * validator: Check all urls for validity (Matthias Klumpp)
    * validator: Check web-application components for missing tags (Matthias Klumpp)
    * Add API to retrieve the AppStream library version (Matthias Klumpp)
    * apt: Allow fetching 128x128@2 HiDPI icons (Rico Tzschichholz)
-  
+
   Specification:
    * Add the "url" launchable type (Dimitrios Christidis)
    * spec: Clarify some icon details in the collection data (Marius Vollmer)
    * spec: Allow <icon> tags in generic components (Marius Vollmer)
    * spec: Specify the web-application component type (Matthias Klumpp)
-  
+
   Bugfixes:
    * Fix endless loop when validating screenshots (Matthias Klumpp)
    * ascli: Show a list of component-types when --help is passed to new-template (Matthias Klumpp)
@@ -496,7 +521,7 @@ Mon Jan 29 15:38:08 UTC 2018 - alarrosa@suse.com
   Features:
    * Improve screenshot validation (Matthias Klumpp)
    * Allow to disable introspection (Matthias Klumpp)
-  
+
   Bugfixes:
    * Revert back to the old build option names (Matthias Klumpp)
    * Apply maintainer flags equally to C++ and C (Matthias Klumpp)
@@ -505,22 +530,22 @@ Mon Jan 29 15:38:08 UTC 2018 - alarrosa@suse.com
    * xml: Correctly write screenshots tag again (Matthias Klumpp)
    * Do not cache a screenshot that doesn't have images (Matthias Klumpp)
    * xml: Support legacy screenshot tags again (Matthias Klumpp)
-  
+
 - Update to version 0.11.5:
 
   Features:
    * Restructure build feature flags (Matthias Klumpp)
    * Allow disabling API documentation build (Matthias Klumpp)
-  
+
   Bugfixes:
    * qt: Don't check bitness when finding AppStreamQt (Matthias Klumpp)
-  
+
 - Update to version 0.11.4:
 
   Notes:
    * This release switches the build system from CMake to Meson. You will need
      Meson (>= 0.42) in order to build AppStream. Please test for any regressions.
-  
+
   Features:
    * Implement Meson support (Matthias Klumpp)
    * meson: Make build with sanitizers (partially) work again (Matthias Klumpp)
@@ -531,20 +556,20 @@ Mon Jan 29 15:38:08 UTC 2018 - alarrosa@suse.com
    * validator: Actually validate the type property of "launchable" tags (Matthias Klumpp)
    * Allow to search the pool for components that provide a launchable (Matthias Klumpp)
    * qt: Add new function to search components by launchable (Matthias Klumpp)
-  
+
   Specification:
    * spec: New "cockpit-manifest" launchable type (Marius Vollmer)
-  
+
   Bugfixes:
    * validator: Complain if a component has no ID (Matthias Klumpp)
-  
+
 - Update to version 0.11.3:
 
   Bugfixes:
    * qt: Don't crash when an error is found and no error string is passed (Aleix Pol)
    * Propagate document context to the context object for XML files (Matthias Klumpp)
    * validator: Correctly recognize "launchable" as valid tag (Matthias Klumpp)
-  
+
 - Update to version 0.11.2:
 
   Features:
@@ -552,10 +577,10 @@ Mon Jan 29 15:38:08 UTC 2018 - alarrosa@suse.com
    * Deduplicate origin/locale/arch with AsContext (Matthias Klumpp)
    * Get rid of a couple of internal helper methods (Matthias Klumpp)
    * cli: When using convert, always assume collection style for YAML (Matthias Klumpp)
-  
+
   Specification:
    * Adjust docs to clearly state that licenses are SPDX expressions (Harald Sitter)
-  
+
   Bugfixes:
    * qt: Improve Icon QDebug information (Aleix Pol)
    * Resolve crash when serializing lots of XML documents (Matthias Klumpp)
@@ -574,7 +599,7 @@ Wed Jul  5 09:09:42 UTC 2017 - fabian@ritter-vogt.de
   Notes:
    * This release contains refactoring of the XML/YAML parsers and some other changes that are more invasive
      than usual.
-  
+
   Features:
    * qt: Add new getters/setters and classes to be on par with the GObject library (Jan Grulich)
    * qt: Add AS::Metadata class used for parsing desktop and appstream metadata files (Jan Grulich)
@@ -584,12 +609,12 @@ Wed Jul  5 09:09:42 UTC 2017 - fabian@ritter-vogt.de
    * Improve speed of metainfo description parsing slightly (Matthias Klumpp)
    * test: Add additional testcase for reading metainfo description tags (Matthias Klumpp)
    * test: Test metainfo descriptions starting with enumerations (Matthias Klumpp)
-  
+
   Specification:
    * doc: Add Distro Packaging page (Jeremy Bicha)
    * doc: Add "service" components and their launchables (Marius Vollmer)
    * Allow components to provide other components (provides -> id) (Matthias Klumpp)
-  
+
   Bugfixes:
    * doc: Uncomment line in middle of paragraph (Jeremy Bicha)
    * doc: A releases tag is not essential for components, but summary is (Matthias Klumpp)
@@ -610,13 +635,13 @@ Wed Jul  5 09:09:42 UTC 2017 - fabian@ritter-vogt.de
    * Fully implement the launchable tag (Matthias Klumpp)
    * Recognize scaling factor for HiDPI icons (Matthias Klumpp)
    * apt: Allow fetching HiDPI icons (Matthias Klumpp)
-  
+
   Specification:
    * spec: Don't give wrong information about the <font/> tag (Matthias Klumpp)
    * spec: Specify content_rating tag for content age ratings (Matthias Klumpp)
    * spec: Specify the new launchable tag and apply its effects (Matthias Klumpp)
    * spec: Add note on where to place icons with a scaling factor (Matthias Klumpp)
-  
+
   Bugfixes:
    * Add missing word in string (Anders Jonsson)
    * yaml: Fix crash when serializing component with a dbus:user provided item (Matthias Klumpp)
@@ -645,7 +670,7 @@ Wed Jul  5 09:09:42 UTC 2017 - fabian@ritter-vogt.de
   * validator: Adjust priorities of missing modalias/font tags in driver/font components (Matthias Klumpp)
   * Skip loading desktop-entries if we know their component already (Matthias Klumpp)
   * Be lazier, only parse what is necessary in the data pool (Matthias Klumpp)
-  
+
   Specification:
   * spec: Clarify that name/summary are now always required for metainfo files (Matthias Klumpp)
   * spec: Clarify desktop vs. desktop-application (Matthias Klumpp)
@@ -653,7 +678,7 @@ Wed Jul  5 09:09:42 UTC 2017 - fabian@ritter-vogt.de
   * spec: Make it clear <categories/> can be used in metainfo files too (Matthias Klumpp)
   * spec: Make clear that update_contact's value is case-insensitive (Matthias Klumpp)
   * docs: Make sure all examples follow the reverse-DNS scheme (Matthias Klumpp)
-  
+
   Bugfixes:
   * Don't hardcode share dir but use CMAKE_INSTALL.. (Heiko Becker)
   * validator: Don't enforce .desktop suffix on desktop-app component IDs (Matthias Klumpp)
@@ -784,7 +809,7 @@ Thu Jan 12 21:35:52 UTC 2017 - fabian@ritter-vogt.de
 -------------------------------------------------------------------
 Wed Sep 21 19:17:57 UTC 2016 - fabian@ritter-vogt.de
 
-- Use a define for the so version and fix -devel requiring the old libappstream3 
+- Use a define for the so version and fix -devel requiring the old libappstream3
 
 -------------------------------------------------------------------
 Fri Sep 16 07:45:43 UTC 2016 - alarrosa@suse.com
@@ -941,7 +966,7 @@ Bugfixes:
 -------------------------------------------------------------------
 Wed May 18 08:34:41 UTC 2016 - tittiatcoke@gmail.com
 
-- Drop the separate Vala package and include the files into the 
+- Drop the separate Vala package and include the files into the
   devel package
 
 -------------------------------------------------------------------
@@ -1054,7 +1079,7 @@ Features:
  * qt: Improve usage of Qt containers (Aleix Pol)
  * qt: Implement Component::extends on the Qt front-end (Aleix Pol)
  * qt: Also call reserve for bundles on the Qt frontend (Aleix Pol)
- * validator: strstrip values when reading XML/YAML and validate 
+ * validator: strstrip values when reading XML/YAML and validate
               linebreaks in summaries (Matthias Klumpp)
  * validator: Check if a description is present (Matthias Klumpp)
  * Always build with YAML support (Matthias Klumpp)
