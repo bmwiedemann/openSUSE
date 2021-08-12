@@ -512,4 +512,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908880</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c5226d351cb68d74b81c33dbd8fa1cb9</srcmd5>
+    <version>1.18.7</version>
+    <time>1628751670</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1.18.7
+  * api-change:``s3control``: [``botocore``] S3 Access Point aliases can be used
+    anywhere you use S3 bucket names to access data in S3
+  * api-change:``textract``: [``botocore``] Adds support for AnalyzeExpense, a new
+    API to extract relevant data such as contact information, items purchased, and
+    vendor name, from almost any invoice or receipt without the need for any templates
+    or configuration.
+  * api-change:``proton``: [``botocore``] Documentation-only update links
+  * api-change:``identitystore``: [``botocore``] Documentation updates for SSO API Ref.
+  * api-change:``cloudwatch``: [``botocore``] Update cloudwatch client to latest version
+  * api-change:``synthetics``: [``botocore``] CloudWatch Synthetics now supports visual
+    testing in its canaries.
+- from version 1.18.6
+  * api-change:``securityhub``: [``botocore``] Added product name, company name, and Region
+    fields for security findings. Added details objects for RDS event subscriptions and AWS
+    ECS services. Added fields to the details for AWS Elasticsearch domains.
+  * api-change:``imagebuilder``: [``botocore``] Update to documentation to reapply missing
+    change to SSM uninstall switch default value and improve description.
+  * api-change:``s3outposts``: [``botocore``] Add on-premise access type support for endpoints
+- from version 1.18.5
+  * api-change:``medialive``: [``botocore``] MediaLive now supports passing through style data
+    on WebVTT caption outputs.
+  * api-change:``databrew``: [``botocore``] This SDK release adds two new features: 1) Output
+    to Native JDBC destinations and 2) Adding configurations to profile jobs
+  * api-change:``elbv2``: [``botocore``] Update elbv2 client to latest version
+  * api-change:``s3control``: [``botocore``] Documentation updates for Amazon S3-control
+  * api-change:``ec2``: [``botocore``] This release allows customers to assign prefixes to their
+    elastic network interface and to reserve IP blocks in their subnet CIDRs. These reserved blocks
+    can be used to assign prefixes to elastic network interfaces or be excluded from auto-assignment.
+  * api-change:``qldb``: [``botocore``] Amazon QLDB now supports ledgers encrypted with customer</comment>
+    <requestid>911065</requestid>
+  </revision>
 </revisionlist>
