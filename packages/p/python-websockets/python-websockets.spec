@@ -27,6 +27,7 @@ Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +43,7 @@ it provides an API based on coroutines, making it easy to write highly
 concurrent applications.
 
 %prep
-%setup -q -n websockets-%{version}
+%autosetup -p1 -n websockets-%{version}
 
 %build
 export CFLAGS="%{optflags}"
@@ -54,10 +55,10 @@ export CFLAGS="%{optflags}"
 
 %check
 # Test execution speed depends on BS load and architecture, relax
-export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=5
+export WEBSOCKETS_TESTS_TIMEOUT_FACTOR=10
 # https://github.com/aaugustin/websockets/issues/855 is an intermittent failure
 # for test_keepalive_ping_does_not_crash_when_connection_lost on s390x
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m unittest
+%pyunittest_arch -v
 
 %files %{python_files}
 %license LICENSE

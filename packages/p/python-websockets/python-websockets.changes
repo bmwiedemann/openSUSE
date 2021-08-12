@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 11 09:17:13 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 10 to make
+  test_keepalive_ping_with_no_ping_timeout pass again.
+- Remove skip-test_keepalive_ping_with_no_ping_timeout.patch, of course.
+
+-------------------------------------------------------------------
+Tue Aug 10 07:18:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use %pyunittest macro instead of doing it on our own.
+- Add skip-test_keepalive_ping_with_no_ping_timeout.patch for
+  gh#aaugustin/websockets#1026.
+
+-------------------------------------------------------------------
 Sun Jun  6 12:00:22 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.1:

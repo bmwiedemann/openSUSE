@@ -128,4 +128,18 @@
   * Raised an error when passing a :class:`dict` to</comment>
     <requestid>897837</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>edc0d93cfe1fd321920a252ab08ec1c2</srcmd5>
+    <version>9.1</version>
+    <time>1628751686</time>
+    <user>RBrownSUSE</user>
+    <comment>- Increase WEBSOCKETS_TESTS_TIMEOUT_FACTOR to 10 to make
+  test_keepalive_ping_with_no_ping_timeout pass again.
+- Remove skip-test_keepalive_ping_with_no_ping_timeout.patch, of course.
+- Use %pyunittest macro instead of doing it on our own.
+- Add skip-test_keepalive_ping_with_no_ping_timeout.patch for
+  gh#aaugustin/websockets#1026.
+</comment>
+    <requestid>911402</requestid>
+  </revision>
 </revisionlist>
