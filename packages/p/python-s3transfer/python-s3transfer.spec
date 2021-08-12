@@ -17,11 +17,9 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
 %define skip_python2 1
-%endif
 Name:           python-s3transfer
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        Python S3 transfer manager
 License:        Apache-2.0
@@ -36,22 +34,12 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module urllib3}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} < 1500
-BuildRequires:  %{python_module scandir}
-BuildRequires:  python
-%endif
-%if %{with python2}
-BuildRequires:  python2-futures >= 2.2.0
-%endif
 Requires:       python-botocore <= 2.0.0
 Requires:       python-botocore >= 1.12.36
 Requires:       python-requests
 Requires:       python-urllib3
 BuildArch:      noarch
-%ifpython2
-Requires:       python-futures <= 4.0.0
-Requires:       python-futures >= 2.2.0
-%endif
+
 %python_subpackages
 
 %description

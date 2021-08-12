@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 27 09:40:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update 0.5.0:
+  * feature:Python: Dropped support for Python 2.7
+- Disable Python2 builds for all SUSE distributions
+- Remove Python2 build dependencies from spec file
+
+-------------------------------------------------------------------
 Wed May 19 16:27:18 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 0.4.2:
