@@ -45,7 +45,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        0.3.32
+Version:        0.3.33
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -54,8 +54,6 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM pipewire-fix-libcamera-build.patch fcrozat@suse.com -- Fix build with latest libcamera
-Patch0:         pipewire-fix-libcamera-build.patch
 
 BuildRequires:  doxygen
 BuildRequires:  fdupes
