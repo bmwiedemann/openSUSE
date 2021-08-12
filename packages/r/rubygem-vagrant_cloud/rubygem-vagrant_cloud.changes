@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 26 06:09:55 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 3.0.5
+  * Updates for Ruby 3 compatibility [GH-76](https://github.com/hashicorp/vagrant_cloud/pull/76)
+
+- drop Ruby 2.7 subpackage for Tumbleweed
+
+-------------------------------------------------------------------
 Thu Apr  1 08:45:05 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 3.0.4

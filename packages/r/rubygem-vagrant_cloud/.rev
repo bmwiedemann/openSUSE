@@ -74,4 +74,12 @@ _NOTE_: This release includes breaking changes and is not backwards compatible
     <comment></comment>
     <requestid>882513</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5de76c1000f69c9db83fd5660f32aa65</srcmd5>
+    <version>3.0.5</version>
+    <time>1628751650</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910162</requestid>
+  </revision>
 </revisionlist>

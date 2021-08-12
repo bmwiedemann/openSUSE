@@ -15,7 +15,11 @@
 # ## used by gem2rpm
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
-# :preamble: |-
+:preamble: |-
+  %if 0%{?suse_version} > 1500
+  %define rb_build_versions ruby30
+  %define rb_build_ruby_abi ruby:3.0.0
+  %endif
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm
