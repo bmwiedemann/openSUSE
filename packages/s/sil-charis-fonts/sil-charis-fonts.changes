@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  8 11:25:24 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Use different method to remove dos line ending and remove
+  dos2unix from BuildRequires
+
+-------------------------------------------------------------------
+Sat Aug  7 19:56:47 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 6.001:
+  * Major feature release with many changes. This release has
+    removed the graphite support.
+- Clean up spec and remove old bits
+
+-------------------------------------------------------------------
 Wed Apr 14 23:19:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed URL in spec

@@ -83,4 +83,12 @@
     <comment>- Fixed URL in spec (forwarded request 885486 from susnux)</comment>
     <requestid>885501</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>278dacd118bd80b648505a7c3d67544c</srcmd5>
+    <version>6.001</version>
+    <time>1628751679</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911207</requestid>
+  </revision>
 </revisionlist>

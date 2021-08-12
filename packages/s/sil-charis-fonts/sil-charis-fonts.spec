@@ -1,7 +1,7 @@
 #
 # spec file for package sil-charis-fonts
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           sil-charis-fonts
-Version:        5.000
+Version:        6.001
 Release:        0
 Summary:        Smart Unicode Font for Latin and Cyrillic Scripts
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            https://software.sil.org/charis/
-Source0:        CharisSIL-%{version}.zip
-BuildRequires:  dos2unix
+URL:            https://software.sil.org/charis/
+Source0:        https://software.sil.org/downloads/r/charis/CharisSIL-%{version}.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 %reconfigure_fonts_prereq
 Provides:       locale(vi;ru;bg)
-Obsoletes:      sil-charis < %{version}
-Provides:       sil-charis = %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -54,33 +50,22 @@ glyphs and diacritics optimally.
 
 %prep
 %setup -q -n CharisSIL-%{version}
-rm -f documentation/DOCUMENTATION.txt
-find . -name \*.txt -print0 | xargs chmod 644
-# Fix rpmlint warnings:
-find . -name \*.txt -print0 | xargs -0 dos2unix
+chmod 644 *.txt
+# Remove DOS line endings:
+perl -i -pe 's{\r}{}g' *.txt
 
 %build
 
 %install
-mkdir -p %{buildroot}%{_ttfontsdir}/
+install -d %{buildroot}%{_ttfontsdir}
 install -c -m 644 *.ttf %{buildroot}%{_ttfontsdir}
-
-#
-# This is unfortunately necessary to support old
-# filename naming
-# The following expression removes any "-" characters
-# in the filename:
-cd %{buildroot}%{_ttfontsdir}
-for font in *.ttf; do
-  ln -s "$font" "${font/-}"
-done
-cd -
 
 %reconfigure_fonts_scriptlets
 
 %files
 %defattr(-, root,root)
-%doc *.txt
+%license OFL.txt
+%doc FONTLOG.txt OFL-FAQ.txt README.txt
 %{_ttfontsdir}
 
 %changelog
