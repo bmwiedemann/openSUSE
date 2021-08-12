@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sun Aug  8 15:13:55 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.7.1
+  * Back compile for older versions of numpy
+  * Make pandas nullable types opt-out. The old behaviour (casting
+    to float) is still available with ParquetFile(...,
+    pandas_nulls=False).
+  * Fix time field regression: IsAdjustedToUTC will be False when
+    there is no timezone
+  * Micro improvements to the speed of ParquetFile creation by
+    using simple simple string ops instead of regex and
+    regularising filenames once at the start. Effects datasets with
+    many files.
+- Release 0.7.0
+  * This version institutes major, breaking changes, listed here,
+    and incremental fixes and additions.
+  * Reading a directory without a _metadata summary file now works
+    by providing only the directory, instead of a list of
+    constituent files. This change also makes direct of use of
+    fsspec filesystems, if given, to be able to load the footer
+    metadata areas of the files concurrently, if the storage
+    backend supports it, and not directly instantiating
+    intermediate ParquetFile instances
+  * row-level filtering of the data. Whereas previously, only full 
+    row-groups could be excluded on the basis of their parquet 
+    metadata statistics (if present), filtering can now be done 
+    within row-groups too. The syntax is the same as before, 
+    allowing for multiple column expressions to be combined with 
+    AND|OR, depending on the list structure. This mechanism 
+    requires two passes: one to load the columns needed to create 
+    the boolean mask, and another to load the columns actually 
+    needed in the output. This will not be faster, and may be 
+    slower, but in some cases can save significant memory 
+    footprint, if a small fraction of rows are considered good and 
+    the columns for the filter expression are not in the output. 
+    Not currently supported for reading with DataPageV2.
+  * DELTA integer encoding (read-only): experimentally working, 
+    but we only have one test file to verify against, since it is 
+    not trivial to persuade Spark to produce files encoded this 
+    way. DELTA can be extremely compact a representation for 
+    slowly varying and/or monotonically increasing integers.
+  * nanosecond resolution times: the new extended "logical" types 
+    system supports nanoseconds alongside the previous millis and 
+    micros. We now emit these for the default pandas time type, 
+    and produce full parquet schema including both "converted" and 
+    "logical" type information. Note that all output has 
+    isAdjustedToUTC=True, i.e., these are timestamps rather than 
+    local time. The time-zone is stored in the metadata, as 
+    before, and will be successfully recreated only in fastparquet 
+    and (py)arrow. Otherwise, the times will appear to be UTC. For 
+    compatibility with Spark, you may still want to use 
+    times="int96" when writing.
+  * DataPageV2 writing: now we support both reading and writing. 
+    For writing, can be enabled with the environment variable 
+    FASTPARQUET_DATAPAGE_V2, or module global fastparquet.writer.
+    DATAPAGE_VERSION and is off by default. It will become on by 
+    default in the future. In many cases, V2 will result in better 
+    read performance, because the data and page headers are 
+    encoded separately, so data can be directly read into the 
+    output without addition allocation/copies. This feature is 
+    considered experimental, but we believe it working well for 
+    most use cases (i.e., our test suite) and should be readable 
+    by all modern parquet frameworks including arrow and spark.
+  * pandas nullable types: pandas supports "masked" extension 
+    arrays for types that previously could not support NULL at 
+    all: ints and bools. Fastparquet used to cast such columns to 
+    float, so that we could represent NULLs as NaN; now we use the 
+    new(er) masked types by default. This means faster reading of 
+    such columns, as there is no conversion. If the metadata 
+    guarantees that there are no nulls, we still use the 
+    non-nullable variant unless the data was written with 
+    fastparquet/pyarrow, and the metadata indicates that the 
+    original datatype was nullable. We already handled writing of 
+    nullable columns.
+
+-------------------------------------------------------------------
 Tue May 18 14:41:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.6.3

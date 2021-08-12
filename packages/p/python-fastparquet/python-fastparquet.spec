@@ -21,7 +21,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-fastparquet
-Version:        0.6.3
+Version:        0.7.1
 Release:        0
 Summary:        Python support for Parquet file format
 License:        Apache-2.0
@@ -29,8 +29,9 @@ URL:            https://github.com/dask/fastparquet/
 Source:         https://github.com/dask/fastparquet/archive/%{version}.tar.gz#/fastparquet-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module cramjam >= 2.3.0}
-BuildRequires:  %{python_module fsspec}
-BuildRequires:  %{python_module numpy-devel >= 1.11}
+# version requirement not declared for runtime, but necessary for tests.
+BuildRequires:  %{python_module fsspec >= 2021.6.0}
+BuildRequires:  %{python_module numpy-devel >= 1.18}
 BuildRequires:  %{python_module pandas >= 1.1.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lzo}
@@ -40,7 +41,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cramjam >= 2.3.0
 Requires:       python-fsspec
-Requires:       python-numpy >= 1.11
+Requires:       python-numpy >= 1.18
 Requires:       python-pandas >= 1.1.0
 Requires:       python-thrift >= 0.11.0
 Recommends:     python-python-lzo
@@ -54,6 +55,8 @@ for integrating it into python-based Big Data workflows.
 %setup -q -n fastparquet-%{version}
 # remove pytest-runner from setup_requires
 sed -i "s/'pytest-runner',//" setup.py
+# this is not meant for setup.py
+sed -i "s/oldest-supported-numpy/numpy/" setup.py
 # the tests import the fastparquet.test module and we need to import from sitearch, so install it.
 sed -i -e "s/^\s*packages=\[/&'fastparquet.test', /" -e "/exclude_package_data/ d" setup.py
 
