@@ -7,4 +7,14 @@
     <comment> </comment>
     <requestid>828877</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>6319098486076b5ad873f43d520c539d</srcmd5>
+    <version>1.2.2</version>
+    <time>1628751691</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add compatibility-click-8.patch to fix compatiblity with
+  click 8 (gh#click-contrib/click-default-group#18).
+</comment>
+    <requestid>911425</requestid>
+  </revision>
 </revisionlist>

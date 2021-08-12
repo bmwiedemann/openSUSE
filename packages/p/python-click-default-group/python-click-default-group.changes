@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:57:36 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add compatibility-click-8.patch to fix compatiblity with
+  click 8 (gh#click-contrib/click-default-group#18).
+
+-------------------------------------------------------------------
 Sun Aug 23 17:02:56 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Activated test suite
