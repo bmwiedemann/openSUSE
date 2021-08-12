@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  8 10:24:13 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build with GCC11/C++17, add
+  0001-Remove-using-namespace-std-from-global-namespace.patch
+
+-------------------------------------------------------------------
 Thu Mar 25 10:40:34 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Fix build with Octave 6 https://sourceforge.net/p/pfstools/bugs/49/

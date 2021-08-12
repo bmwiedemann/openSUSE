@@ -36,6 +36,8 @@ Patch6:         pfstools-Fix-build-with-Octave-6.patch
 # patch derived from https://github.com/pld-linux/pfstools/commit/67bd2304e516545f2b203f975ac5dd30d2b479b3
 # I guess it could go upstream as is; sent email to mantiuk at gmail
 Patch7:         pfstools-ImageMagick7.patch
+# PATCH-FIX-UPSTREAM - https://sourceforge.net/p/pfstools/bugs/50/
+Patch8:         0001-Remove-using-namespace-std-from-global-namespace.patch
 BuildRequires:  Mesa
 BuildRequires:  blas
 # previous versions of cmake don't support ImageMagick 7
@@ -179,7 +181,7 @@ chmod -x ChangeLog
 
 %build
 %cmake
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 cd build
