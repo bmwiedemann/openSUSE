@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-yast
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,8 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-yast
-
-Version:        20201210
+Version:        20210809
 Release:        0
 Summary:        Patterns for Installation (YaST)
 License:        MIT
@@ -230,6 +229,7 @@ Provides:       pattern() = x11_yast
 Provides:       pattern-extends() = yast2_basis
 Provides:       pattern-icon() = pattern-generic
 Provides:       pattern-order() = 1320
+Provides:       pattern-visible()
 # from data/X11-YaST
 Recommends:     libyui-qt-pkg
 Recommends:     yast2-control-center-qt

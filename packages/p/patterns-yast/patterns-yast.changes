@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  9 11:56:10 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- 20210809
+
+-------------------------------------------------------------------
+Tue May 25 08:40:22 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Make x11_yast pattern visible (bsc#1186343)
+
+-------------------------------------------------------------------
 Thu Dec 10 22:23:40 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Do not recomment yast2-fonts (bsc#1179866).
