@@ -16,9 +16,15 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%global rb_build_versions ruby30
+%global rb_build_abi ruby:3.0.0
+%global rb_ruby_suffix ruby3.0
+%else
 %global rb_build_versions %rb_default_ruby
 %global rb_build_abi %rb_default_ruby_abi
 %global rb_ruby_suffix %rb_default_ruby_suffix
+%endif
 
 Name:           vagrant-libvirt
 Version:        0.5.3
@@ -40,7 +46,11 @@ Requires:       vagrant
 Recommends:     guestfs-tools
 BuildRequires:  vagrant
 
-BuildRequires:  %{ruby}
+%if 0%{?suse_version} > 1500
+BuildRequires:  %{ruby:3 < 3.1}
+%else
+BuildRequires:  %{ruby:2 >= 2.5}
+%endif
 BuildRequires:  ruby-macros >= 5
 
 # for tests:
@@ -51,12 +61,12 @@ BuildRequires:  %{rubygem vagrant-spec}
 BuildRequires:  %{rubygem fog-core:2 >= 2.1}
 BuildRequires:  %{rubygem fog-libvirt >= 0.3.}
 
-# s.add_development_dependency "rspec-core", "~> 3.5.0"
-BuildRequires:  %{rubygem rspec-core:3.5}
-# s.add_development_dependency "rspec-expectations", "~> 3.5.0"
-BuildRequires:  %{rubygem rspec-expectations:3.5}
-# s.add_development_dependency "rspec-mocks", "~> 3.5.0"
-BuildRequires:  %{rubygem rspec-mocks:3.5}
+# s.add_development_dependency "rspec-core", ">= 3.5"
+BuildRequires:  %{rubygem rspec-core >= 3.5}
+# s.add_development_dependency "rspec-expectations", ">= 3.5"
+BuildRequires:  %{rubygem rspec-expectations >= 3.5}
+# s.add_development_dependency "rspec-mocks", ">= 3.5"
+BuildRequires:  %{rubygem rspec-mocks >= 3.5}
 # s.add_development_dependency 'rake'
 BuildRequires:  %{rubygem rake}
 
@@ -99,6 +109,10 @@ This package contains the documentation for the Libvirt provider to Vagrant.
 %gem_unpack
 # remove dropped or unneeded dependencies
 sed -i '/simplecov/d' %{mod_full_name}.gemspec
+
+# this is essentially https://github.com/vagrant-libvirt/vagrant-libvirt/pull/1330
+# FIXME: drop this on the next upstream release
+sed -i 's/\["~> 3.5.0"\]/\[">= 3.5"\]/' %{mod_full_name}.gemspec
 %autopatch -p1
 
 %build

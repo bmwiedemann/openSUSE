@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  4 08:22:57 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Unrestrict rspec-* versions
+
+  Rebase patch:
+  * 0001-Remove-simplecov-from-tests.patch
+
+-------------------------------------------------------------------
 Sat Jun 12 09:53:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.3
