@@ -1,0 +1,19 @@
+---
+ sortinghat/db/database.py |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/sortinghat/db/database.py
++++ b/sortinghat/db/database.py
+@@ -258,7 +258,7 @@ def reflect_table(engine, klass):
+ def find_model_by_table_name(name):
+     """Find a model reference by its table name"""
+ 
+-    for model in ModelBase._decl_class_registry.values():
+-        if hasattr(model, '__table__') and model.__table__.fullname == name:
+-            return model
+-    return None
+\ No newline at end of file
++    for value in ModelBase.registry._class_registry.values():
++        if getattr(value, '__tablename__', None) == name:
++            return value
++    return None
