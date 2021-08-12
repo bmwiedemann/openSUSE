@@ -264,4 +264,13 @@
     <comment></comment>
     <requestid>889984</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>2053ce39ac12ba77279b8587e8c9ae1c</srcmd5>
+    <version>2.2.7</version>
+    <time>1628751672</time>
+    <user>RBrownSUSE</user>
+    <comment>- add 0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch:
+  compat with sphinx 4.x</comment>
+    <requestid>911095</requestid>
+  </revision>
 </revisionlist>

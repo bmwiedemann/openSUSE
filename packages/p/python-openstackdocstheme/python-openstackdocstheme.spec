@@ -24,6 +24,7 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/openstackdocstheme
 Source0:        https://files.pythonhosted.org/packages/source/o/openstackdocstheme/openstackdocstheme-2.2.7.tar.gz
+Patch1:         0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-dulwich >= 0.15.0

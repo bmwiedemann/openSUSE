@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug  9 19:03:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- add 0001-sphinx-4.0-Fix-sphinx.ext.extlinks.make_link_role-ca.patch:
+  compat with sphinx 4.x
+
+-------------------------------------------------------------------
 Sun May  2 17:14:41 UTC 2021 - cloud-devel@suse.de
 
 - update to version 2.2.7
