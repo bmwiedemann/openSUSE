@@ -189,7 +189,7 @@ sed -i "/SystemdService=.*/d" obexd/src/org.bluez.obex.service
 # END FIXME
 
 # for auto-enable subpackage
-echo AutoEnable=true >> src/main.conf
+sed -i '/^#AutoEnable=false/aAutoEnable=true' src/main.conf
 
 # 2to3 does not fix the #! line
 sed -i '1s#/usr/bin/python$#/usr/bin/python3#' test/*

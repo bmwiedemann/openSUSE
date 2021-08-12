@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug  2 18:27:38 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- fix bluez-auto-enable-devices subpackage (boo#1177845)
+
+-------------------------------------------------------------------
 Mon Jul 12 12:35:06 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - remove notification message from bluez-deprecated package.

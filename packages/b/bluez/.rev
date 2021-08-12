@@ -1421,4 +1421,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>remove notification message from bluez-deprecated package (forwarded request 908360 from seife)</comment>
     <requestid>908361</requestid>
   </revision>
+  <revision rev="179" vrev="3">
+    <srcmd5>db08a193240784001b62f740c2a6ea60</srcmd5>
+    <version>5.60</version>
+    <time>1628751679</time>
+    <user>RBrownSUSE</user>
+    <comment>fix bluez-auto-enable-devices subpackage (boo#1177845)</comment>
+    <requestid>911193</requestid>
+  </revision>
 </revisionlist>
