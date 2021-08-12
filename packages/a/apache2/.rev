@@ -1911,4 +1911,12 @@ In apache2-vhost.template, we recommend users to create custom logs like `/var/l
      - ap_ssl_add_fallback_cert_files() to enable other modules like mod_md to</comment>
     <requestid>896869</requestid>
   </revision>
+  <revision rev="184" vrev="2">
+    <srcmd5>c92f1a4c35ee9a9a8441926293d68600</srcmd5>
+    <version>2.4.48</version>
+    <time>1628751671</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911090</requestid>
+  </revision>
 </revisionlist>

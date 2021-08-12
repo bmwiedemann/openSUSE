@@ -141,6 +141,10 @@ fi
 if [ -n "$APACHE_SERVERTOKENS" ]; then
     echo "ServerTokens $APACHE_SERVERTOKENS" >> ${sysconfd_dir}/global.conf
 fi
+# APACHE_TACEENABLE -> global.conf
+if [ -n "$APACHE_TRACEENABLE" ]; then
+    echo "TraceEnable $APACHE_TRACEENABLE" >> ${sysconfd_dir}/global.conf
+fi
 # APACHE_EXTENDED_STATUS -> global.conf
 if [ -n "$APACHE_EXTENDED_STATUS" ]; then
     if [ "$APACHE_EXTENDED_STATUS" == "lua" ]; then

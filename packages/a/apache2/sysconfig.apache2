@@ -241,6 +241,14 @@ APACHE_USE_CANONICAL_NAME="off"
 #
 APACHE_SERVERTOKENS="ProductOnly"
 
+## Type:	list(on,off)
+## Default:	"off"
+## ServiceReload: apache2
+#
+# Enable or disable TRACE method.
+#
+APACHE_TRACEENABLE="off"
+
 ## Type:	list(on,off,lua)
 ## Default:	"off"
 ## ServiceReload: apache2

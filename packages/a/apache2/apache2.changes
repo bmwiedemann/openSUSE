@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug  2 17:32:18 UTC 2021 - pgajdos@suse.com
+
+- introduce APACHE_TACEENABLE sysconfig variable, which translates
+  to /etc/apache2/sysconfig.d/global.conf:TraceEnable on/off
+- modified sources
+  % apache2-global.conf
+  % apache2-start_apache2
+  % sysconfig.apache2
+
+-------------------------------------------------------------------
 Wed Jun  2 07:31:14 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.4.48

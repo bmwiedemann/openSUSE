@@ -1,5 +1,5 @@
 #
-# spec file for package apache2%{psuffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
