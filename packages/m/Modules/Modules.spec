@@ -23,7 +23,7 @@ BuildRequires:  less
 BuildRequires:  procps
 BuildRequires:  tcl-devel
 URL:            http://modules.sourceforge.net/
-Version:        4.7.1
+Version:        4.8.0
 Release:        0
 Summary:        Change environment at runtime
 License:        GPL-2.0-or-later
