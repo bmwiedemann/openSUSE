@@ -33,14 +33,15 @@ Source1:        vendor.tar.gz
 Source11:       %{name}.conf
 Source12:       %{name}.service
 Source15:       README.security
+Source16:       system-user-etcd.conf
 BuildRequires:  golang(API) = 1.14
 BuildRequires:  golang-packaging
-BuildRequires:  shadow
+BuildRequires:  sysuser-tools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xz
 Requires(post): %fillup_prereq
 ExcludeArch:    s390 %ix86
-%{?systemd_requires}
+%sysusers_requires
 %{go_provides}
 # Make sure that the binary is not getting stripped.
 %{go_nostrip}
@@ -74,6 +75,8 @@ mkdir -p ./bin
 go build -v -buildmode=pie -mod=vendor -o ./bin/etcd
 go build -v -buildmode=pie -mod=vendor -o ./bin/etcdctl ./etcdctl
 
+%sysusers_generate_pre %{SOURCE16} %{name} system-user-etcd.conf
+
 %install
 install -d %{buildroot}/%{_sbindir}
 install -D -m 0755 ./bin/etcd %{buildroot}/%{_sbindir}/etcd
@@ -95,9 +98,9 @@ echo -e "\n#Enable arm64\nETCD_UNSUPPORTED_ARCH=arm64\n" >> %{buildroot}%{_fillu
 # Additional
 install -d -m 750 %{buildroot}%{_localstatedir}/lib/%{name}
 
-%pre
-getent group %{name} >/dev/null || %{_sbindir}/groupadd -r %{name}
-getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_localstatedir}/lib/%{name} -s /bin/false -c "etcd daemon" %{name}
+install -Dm0644 %{SOURCE16} %{buildroot}%{_sysusersdir}/system-user-etcd.conf
+
+%pre -f %{name}.pre
 %service_add_pre %{name}.service
 
 %post
@@ -114,6 +117,7 @@ getent passwd %{name} >/dev/null || %{_sbindir}/useradd -r -g %{name} -d %{_loca
 %license LICENSE
 %doc CONTRIBUTING.md README.md DCO NOTICE README.security
 %{_sbindir}/%{name}
+%{_sysusersdir}/system-user-etcd.conf
 
 # Service
 %{_unitdir}/%{name}.service

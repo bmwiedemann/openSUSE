@@ -235,4 +235,14 @@
     <comment></comment>
     <requestid>893672</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>974be764ab390b9222456f7dd0efce09</srcmd5>
+    <version>3.4.16</version>
+    <time>1628751669</time>
+    <user>RBrownSUSE</user>
+    <comment>- Don't require systemd (works without, too)
+
+- Change to sysuser-tools to create system user</comment>
+    <requestid>911064</requestid>
+  </revision>
 </revisionlist>
