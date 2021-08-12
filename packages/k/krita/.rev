@@ -596,4 +596,28 @@
   krita doesn't support OCIO 2.0 yet (kde#435474)</comment>
     <requestid>908070</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>36bb50ef9c140a8802fa2540dbf7f4a3</srcmd5>
+    <version>4.4.7</version>
+    <time>1628751693</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add patch to allow building krita with OpenEXR 3 (boo#1189327):
+  * 0001-Support-building-with-OpenEXR-3.patch
+
+- Update to 4.4.7:
+  * See https://krita.org/en/item/krita-4-4-7-released/
+  * Fix for a performance regression in Krita 4.4.5
+  * Fix a crash on exit with certain versions of Qt and PyQt
+  * Fix moving selection with the magnetic selection tool
+    (kde#433633)
+  * Fix crashes in the magnetic selection tool when deleting nodes
+    (kde#439896)
+  * Fix an assert when converting the image color space from Python
+    (kde#437980)
+  * Fix a crash when closing a gamut mask document (kde#438914)
+  * Fix drag and drop of clone layers between images (kde#414699)
+  * Fix crash when saving the image with trimming enabled
+    (kde#437626)</comment>
+    <requestid>911458</requestid>
+  </revision>
 </revisionlist>

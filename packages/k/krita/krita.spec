@@ -24,13 +24,15 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.4.5
+Version:        4.4.7
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
 Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://www.krita.org/
 Source0:        https://download.kde.org/stable/krita/%{version}/krita-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Support-building-with-OpenEXR-3.patch
 %ifnarch %{arm} aarch64
 # Causes build failure on ARM currently
 # 2021-07-24: Disabled for Tumbleweed (kde#435474)
@@ -141,7 +143,10 @@ export CXXFLAGS="%{optflags} -DHAS_ONLY_OPENGL_ES"
 %kf5_find_lang %{name}
 %endif
 
-chmod -x %{buildroot}/%{_kf5_applicationsdir}/*.desktop
+chmod -x %{buildroot}%{_kf5_applicationsdir}/*.desktop
+
+# remove shebang to avoid rpmlint warning, that file is not supposed to be run directly anyway
+sed -i "/#!\/usr\/bin\/env/d" %{buildroot}%{_kf5_libdir}/krita-python-libs/krita/sceditor/highlighter.py
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
