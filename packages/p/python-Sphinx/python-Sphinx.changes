@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  1 09:22:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * linkcheck: Disable checking automatically generated anchors on
+    github.com (ex. anchors in reST/Markdown documents)
+  * autodoc: Custom types using ``typing.NewType`` are not displayed well
+    with the HEAD of 3.10
+  * autodoc: Some objects under ``typing`` module are not displayed well
+    with the HEAD of 3.10
+  * autodoc: crashed if ``autodoc_class_signature = "separated"``
+  * html search: html_copy_source can't control the search summaries
+  * linkcheck: Failed to check anchors in github.com
+
+-------------------------------------------------------------------
 Sat Jul 17 13:23:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:

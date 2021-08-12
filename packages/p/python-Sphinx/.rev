@@ -776,4 +776,12 @@
   * html: HTML logo or Favicon specified as file not being found on output</comment>
     <requestid>906826</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>008540fc906e68df8a9f9f3e0c4fd819</srcmd5>
+    <version>4.1.2</version>
+    <time>1628751658</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>910701</requestid>
+  </revision>
 </revisionlist>
