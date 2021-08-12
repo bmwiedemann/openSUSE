@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug  7 15:00:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.8.4:
+  * Reset too large size indicators in TPM2B to avoid access
+    beyond buffer
+  * Restore original value in buffer if unmarshalled one was
+    illegal
+
+-------------------------------------------------------------------
 Mon Apr 19 07:18:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to version 0.8.2

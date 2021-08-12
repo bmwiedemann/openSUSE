@@ -99,4 +99,12 @@
     (bsc#1184939 CVE-2021-3505) (forwarded request 886589 from gary_lin)</comment>
     <requestid>886707</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67374b83b93413d61d4c9b739a195bf8</srcmd5>
+    <version>0.8.4</version>
+    <time>1628751662</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910800</requestid>
+  </revision>
 </revisionlist>

@@ -18,15 +18,16 @@
 
 %define lname libtpms0
 Name:           libtpms
-Version:        0.8.2
+Version:        0.8.4
 Release:        0
 Summary:        Library providing Trusted Platform Module (TPM) functionality
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/stefanberger/libtpms
-Source0:        https://github.com/stefanberger/libtpms/archive/v%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  mozilla-nspr-devel
@@ -56,26 +57,24 @@ Requires:       mozilla-nspr-devel
 Libtpms header files and documentation.
 
 %prep
-%setup -q -n libtpms-%{version}
+%autosetup
 
 %build
-./bootstrap.sh
+autoreconf -fiv
 %configure \
 	--with-tpm2 \
 	--with-openssl	\
         --disable-static
 
-make %{?_smp_mflags}
-
-%check
-make %{?_smp_mflags} check
+%make_build
 
 %install
-install -d -m 0755 %{buildroot}%{_libdir}
-install -d -m 0755 %{buildroot}%{_includedir}/libtpms
-install -d -m 0755 %{buildroot}%{_mandir}/man3
-
 %make_install
+find %{buildroot} -type f -name "*.la" -delete -print
+%fdupes -s %{buildroot}
+
+%check
+%make_build check
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -83,15 +82,12 @@ install -d -m 0755 %{buildroot}%{_mandir}/man3
 %files -n %{lname}
 %doc README CHANGES
 %license LICENSE
-%{_libdir}/%{name}.so.%{version}
-%{_libdir}/%{name}.so.0
+%{_libdir}/%{name}.so.*
 
 %files devel
 %{_libdir}/%{name}.so
-%{_libdir}/%{name}.la
-%dir %{_includedir}/%{name}
-%attr(644, root, root) %{_libdir}/pkgconfig/*.pc
-%attr(644, root, root) %{_includedir}/%{name}/*.h
-%attr(644, root, root) %{_mandir}/man3/*
+%{_includedir}/%{name}
+%{_libdir}/pkgconfig/*.pc
+%{_mandir}/man3/*%{?ext_man}
 
 %changelog
