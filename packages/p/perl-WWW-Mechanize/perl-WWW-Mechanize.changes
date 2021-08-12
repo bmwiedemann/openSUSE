@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug  7 03:08:46 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.04
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.04      2021-08-06 12:28:31Z
+      [ENHANCEMENTS]
+      - Add a head() method to allow relative URLs (GH#321) (Julien Fiegehenn)
+
+      [DOCUMENTATION]
+      - Document that form_id() accepts an id, not a name (GH#319) (Olaf Alders)
+
+-------------------------------------------------------------------
 Wed Nov 11 03:09:56 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.03

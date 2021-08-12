@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-Mechanize
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
-Name:           perl-WWW-Mechanize
-Version:        2.03
-Release:        0
 %define cpan_name WWW-Mechanize
+Name:           perl-WWW-Mechanize
+Version:        2.04
+Release:        0
 Summary:        Handy web browsing in a Perl object
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CGI) >= 4.32
@@ -53,6 +51,7 @@ BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::NoWarnings) >= 1.04
 BuildRequires:  perl(Test::Output)
 BuildRequires:  perl(Test::Taint) >= 1.08
+BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(Test::Warnings)
 BuildRequires:  perl(URI)
 BuildRequires:  perl(URI::Escape)
@@ -68,6 +67,7 @@ Requires:       perl(HTTP::Request::Common)
 Requires:       perl(LWP::UserAgent) >= 6.45
 Requires:       perl(URI::URL)
 Requires:       perl(URI::file)
+Recommends:     perl(Compress::Zlib)
 %{perl_requires}
 
 %description
@@ -91,12 +91,12 @@ the Test::*, like Test::HTML::Lint modules, you can check the fetched
 content and use that as input to a test call.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -107,7 +107,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTORS README.md
 %license LICENSE
 
