@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Mar 15 16:26:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim unspecific claims and metadata repetitions from description.
+
+-------------------------------------------------------------------
 Mon Mar 15 13:41:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix Summary to make rpmlint happy. That’s all we care about, isn’t it,

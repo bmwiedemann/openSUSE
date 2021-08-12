@@ -34,21 +34,17 @@ BuildRequires:  python-rpm-macros
 %python_subpackages
 
 %description
-**pyahocorasick** is a fast and memory efficient library for exact or
-approximate multi-pattern string search meaning that you can find
+pyahocorasick is a library for exact or approximate
+multi-pattern string search, meaning that one can find
 multiple key strings occurrences at once in some input text.  The
 library provides an `ahocorasick` Python module that you can use as
 a plain dict-like Trie or convert a Trie to an automaton for efficient
 Aho-Corasick search.
 
-It is implemented in C and tested on Python 2.7 and 3.4+. It works on
-Linux, Mac and Windows.
-
-The license is BSD-3-clause. Some utilities, such as tests and the pure
-Python automaton are dedicated to the Public Domain.
+It is implemented in C.
 
 %prep
-%setup -q -n pyahocorasick-%{version}
+%autosetup -p1 -n pyahocorasick-%{version}
 
 %build
 %python_build
