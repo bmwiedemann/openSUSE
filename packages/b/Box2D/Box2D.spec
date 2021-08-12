@@ -61,12 +61,7 @@ Box2D is an open source C++ engine for simulating rigid bodies in 2D.
 
 %build
 %cmake \
-    -DBOX2D_INSTALL=ON \
-    -DBOX2D_INSTALL_DOC=ON \
-    -DBOX2D_BUILD_SHARED=ON \
-    -DBOX2D_BUILD_STATIC=OFF \
-    -DBOX2D_BUILD_EXAMPLES=OFF \
-    -DCMAKE_BUILD_TYPE=RelWithDebInfo
+       -DBOX2D_BUILD_UNIT_TESTS=OFF
 %make_build
 
 %install

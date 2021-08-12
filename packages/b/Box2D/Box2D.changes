@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 10:37:18 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Disabled tests because of boo#1189082
+- Removed useless cmake options
+
+-------------------------------------------------------------------
 Thu Feb 11 16:05:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Fix the source URL
