@@ -17,20 +17,17 @@
 
 
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
-%bcond_without email_notifs
-%bcond_without postgres
-%bcond_with    oidc
-%bcond_without saml
-%bcond_without url_preview
-%bcond_without jwt
-%bcond_without cache_memory
-%bcond_with    redis
 # missing deps
-%bcond_with    opentracing
+%if 0%{?suse_version} >= 1550
+%bcond_without synapse_oidc
+%else
+%bcond_with    synapse_oidc
+%endif
+%bcond_with    synapse_redis
+%bcond_with    synapse_opentracing
+%bcond_with    synapse_sentry
 # matrix-synapse-ldap isn't packaged on openSUSE.
-%bcond_with    ldap
-# sentry-sdk isn't packaged on openSUSE.
-%bcond_with    sentry
+%bcond_with    synapse_ldap
 
 ## Package updates
 #
@@ -50,7 +47,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.37.1
+Version:        1.40.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -144,50 +141,40 @@ BuildRequires:  %{use_python}-unpaddedbase64 >= 1.1.0
 %requires_eq    %{use_python}-unpaddedbase64
 # Specify all CONDITIONAL_REQUIREMENTS (we Require them to avoid no-recommends
 # breaking very commonly-used bits of matrix-synapse such as postgresql).
-%if %{with ldap}
+%if %{with synapse_ldap}
 BuildRequires:  %{use_python}-matrix-synapse-ldap3 >= 0.1
 %requires_eq    %{use_python}-matrix-synapse-ldap3
 %endif
-%if %{with postgres}
 BuildRequires:  %{use_python}-psycopg2 >= 2.8
 %requires_eq    %{use_python}-psycopg2
-%endif
-%if %{with saml}
 BuildRequires:  %{use_python}-pysaml2 >= 4.5.0
 %requires_eq    %{use_python}-pysaml2
+%if %{with synapse_oidc}
+BuildRequires:  %{use_python}-Authlib >= 0.15.1
+%requires_eq    %{use_python}-Authlib
 %endif
-%if %{with oidc}
-BuildRequires:  %{use_python}-authlib >= 0.15.1
-%requires_eq    %{use_python}-authlib
-%endif
-%if %{with url_preview}
 BuildRequires:  %{use_python}-lxml >= 3.5.0
 %requires_eq    %{use_python}-lxml
-%endif
-%if %{with sentry}
+%if %{with synapse_sentry}
 BuildRequires:  %{use_python}-sentry-sdk >= 0.7.2
 %requires_eq    %{use_python}-sentry-sdk
 %endif
-%if %{with jwt}
 BuildRequires:  %{use_python}-PyJWT >= 1.6.4
 %requires_eq    %{use_python}-PyJWT
-%endif
-%if %{with opentracing}
+%if %{with synapse_opentracing}
 BuildRequires:  %{use_python}-jaeger-client >= 4.0.0
 %requires_eq    %{use_python}-jaeger-client
 BuildRequires:  %{use_python}-opentracing   >= 2.2.0
 %requires_eq    %{use_python}-opentracing
 %endif
-%if %{with redis}
-BuildRequires:  %{use_python}-txredisapi >= 1.4.7
-%requires_eq    %{use_python}-txredisapi
+%if %{with synapse_redis}
 BuildRequires:  %{use_python}-hiredis
-%requires_eq    %{use_python}-hiredis
+BuildRequires:  %{use_python}-txredisapi >= 1.4.7
+Requires:       %{use_python}-hiredis
+Requires:       %{use_python}-txredisapi
 %endif
-%if %{with cache_memory}
 BuildRequires:  %{use_python}-Pympler
 %requires_eq    %{use_python}-Pympler
-%endif
 BuildArch:      noarch
 # We only provide/obsolete python2 to ensure that users upgrade.
 Obsoletes:      python2-matrix-synapse < %{version}-%{release}
