@@ -1,7 +1,7 @@
 #
 # spec file for package caja-terminal
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Summary:        Caja extension to enable an embedded terminal
 License:        GPL-3.0-or-later
 URL:            https://github.com/yselkowitz/caja-terminal
 Source:         https://github.com/yselkowitz/caja-terminal/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         python3-support.patch
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  python3
@@ -55,6 +56,7 @@ active directory in Caja.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 # Nothing to build.

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 12 01:26:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add python3-support.patch:
+  * Use correct imports for Python 3, and change shebang. 
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update requirements for MATE 1.24+.

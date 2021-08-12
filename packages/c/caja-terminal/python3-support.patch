@@ -1,0 +1,45 @@
+Index: caja-terminal-0.10/code/caja-terminal.py
+===================================================================
+--- caja-terminal-0.10.orig/code/caja-terminal.py
++++ caja-terminal-0.10/code/caja-terminal.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # -*- coding: UTF-8 -*-
+ 
+   #########################################################################
+@@ -48,11 +48,15 @@ __appname__ = "caja-terminal"
+ import os
+ import signal
+ import re
+-import urllib
+ import gettext
+ gettext.install(__appname__)
+ from xdg import BaseDirectory
+ 
++try:
++    from urllib.request import url2pathname
++except ImportError:
++    from urllib import url2pathname
++
+ import gi
+ gi.require_version('Caja', '2.0')
+ from gi.repository import Caja
+@@ -697,7 +701,7 @@ class CajaTerminal(GObject.GObject, Caja
+             window.nt_termhidden = CONF['general_starthidden']
+         #If it's not a local folder, directory = $HOME
+         if uri[:7] == "file://":
+-            path = urllib.url2pathname(uri[7:])
++            path = url2pathname(uri[7:])
+         else:
+             path = os.environ.get("HOME")
+         #Disable for desktop folder
+@@ -958,7 +962,7 @@ class CajaTerminal(GObject.GObject, Caja
+        uri_list = selection.data.strip('\r\n\x00').split()
+        for uri in uri_list:
+            if uri[:7] == "file://": #local file
+-               path = urllib.url2pathname(uri[7:]).replace("'", "'\"'\"'")
++               path = url2pathname(uri[7:]).replace("'", "'\"'\"'")
+                widget.feed_child(" '%s' " % path)
+ 
+     def on_evResize_enter_notify_event(self, widget, event, rwidget):

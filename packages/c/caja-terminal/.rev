@@ -16,4 +16,13 @@
     <comment>- Update requirements for MATE 1.24.</comment>
     <requestid>780549</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>41f29438a0206ba49077310a9861ef95</srcmd5>
+    <version>0.10</version>
+    <time>1628755409</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add python3-support.patch:
+  * Use correct imports for Python 3, and change shebang. (forwarded request 911503 from StevenK)</comment>
+    <requestid>911536</requestid>
+  </revision>
 </revisionlist>
