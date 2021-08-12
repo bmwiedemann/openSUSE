@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 10 09:38:39 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2021-38114.patch: Backport from upstream to fix
+  the return value of the init_vlc function is not checked
+  (bsc#1189142).
+
+-------------------------------------------------------------------
 Sat Jul 10 10:11:32 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Remove second hunk of ffmpeg-CVE-2020-22046.patch, that contains 
