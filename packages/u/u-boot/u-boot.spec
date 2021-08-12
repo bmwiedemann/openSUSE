@@ -501,6 +501,7 @@ mv %{buildroot}%{uboot_dir}/u-boot%{binext} %{buildroot}%{uboot_dir}/u-boot.e500
 %endif
 %if %x_loader == 1
 install -D -m 0644 MLO %{buildroot}%{uboot_dir}/MLO
+install -D -m 0644 spl/u-boot-spl.bin %{buildroot}%{uboot_dir}/u-boot-spl.bin
 %endif
 %if %origen_spl == 1
 install -D -m 0644 spl/origen-spl.bin %{buildroot}%{uboot_dir}/origen-spl.bin

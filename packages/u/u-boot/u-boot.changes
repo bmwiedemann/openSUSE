@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:58:41 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- u-boot-bin.spl is used for UART or USB boot. Lets package it
+  for convinience.
+
+-------------------------------------------------------------------
 Tue Aug  3 08:18:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 Patch queue updated from https://github.com/openSUSE/u-boot.git tumbleweed-2021.07
