@@ -27,10 +27,14 @@ URL:            http://jwilk.net/software/python-djvulibre
 Source0:        https://files.pythonhosted.org/packages/source/p/python-djvulibre/%{name}-%{version}.tar.gz
 Source1:        https://files.pythonhosted.org/packages/source/p/python-djvulibre/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+Patch1:         remove-all-dependencies-on-nose-in-the-code.patch
+Patch2:         remove-nose-in-documentation.patch
+# PATCH-FIX-UPSTREAM sphinx_4_compatibility.patch gh#sphinx-doc/sphinx#7747 mcepl@suse.com
+# Sphinx doesn't stable API
+Patch3:         sphinx_4_compatibility.patch
 BuildRequires:  %{python_module Cython >= 0.19.1}
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  djvulibre
 BuildRequires:  fdupes
@@ -59,7 +63,8 @@ an open source implementation of DjVu.
 This package contains technical documentation.
 
 %prep
-%setup -q
+%autosetup -p1
+
 chmod -x examples/*
 
 %build
@@ -74,8 +79,7 @@ rm build/sphinx/html/.buildinfo build/sphinx/html/objects.inv
 
 %check
 cd tests/
-PYTHONPATH=%{buildroot}%{$python_sitearch}
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -m nose --exclude='^test_export_ps$' --verbose
+%pyunittest_arch -v
 
 %files %{python_files}
 %license doc/COPYING

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 26 09:25:12 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Port testing of the package to unittest, adding these patches:
+  * remove-all-dependencies-on-nose-in-the-code.patch
+  * remove-nose-in-documentation.patch
+  * sphinx_4_compatibility.patch
+
+-------------------------------------------------------------------
 Mon Mar  8 13:48:17 UTC 2021 - Kyrill Detinov <lazy.kent@opensuse.org>
 
 - Update to 0.8.6.

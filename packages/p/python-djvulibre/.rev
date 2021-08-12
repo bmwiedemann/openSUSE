@@ -172,4 +172,16 @@
     <comment></comment>
     <requestid>877753</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>efc225f89f36a26aaee07ce360656e52</srcmd5>
+    <version>0.8.6</version>
+    <time>1628751699</time>
+    <user>RBrownSUSE</user>
+    <comment>- Port testing of the package to unittest, adding these patches:
+  * remove-all-dependencies-on-nose-in-the-code.patch
+  * remove-nose-in-documentation.patch
+  * sphinx_4_compatibility.patch
+</comment>
+    <requestid>911491</requestid>
+  </revision>
 </revisionlist>
