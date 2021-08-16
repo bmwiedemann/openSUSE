@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Aug 12 13:59:07 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 1.17.2:
+  Security:
+  * When building c-ares with CMake, the RANDOM_FILE would not be set
+    and therefore downgrade to the less secure random number generator
+  * If ares_getaddrinfo() was terminated by an ares_destroy(),
+    it would cause a crash
+  * Crash in sortaddrinfo() if the list size equals 0 due to
+    an unexpected DNS response
+  * Expand number of escaped characters in DNS replies as per
+    RFC1035 5.1 to prevent spoofing follow-up
+    (bsc#1188881, CVE-2021-3672)
+  * Perform validation on hostnames to prevent possible XSS
+    due to applications not performing valiation themselves 
+
+  Changes:
+  * ares_malloc(0) is now defined behavior (returns NULL) rather than system-specific to catch edge cases 
+
+  Bug fixes:
+  * Building tests should not force building of static libraries except on Windows
+  * Relative headers must use double quotes to prevent pulling in a system library
+
+for details see,
+https://c-ares.haxx.se/changelog.html#1_17_2
+
+-------------------------------------------------------------------
 Sat Jan 16 15:05:28 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.17.1:

@@ -41,7 +41,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{pname}
-Version:        1.17.1
+Version:        1.17.2
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
@@ -131,7 +131,7 @@ cp %{S:7} include
 %check
 pushd build
 %cmake_build -C test
-./bin/arestest
+LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
 %endif
 
 %if !%{with tests}
