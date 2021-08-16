@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamera
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Digital camera support for KDE applications
 License:        LGPL-2.1-or-later
@@ -85,14 +85,14 @@ This package contains a KIO slave to access digital cameras.
 %doc %lang(en) %{_kf5_htmldir}/en/kcontrol/kamera/
 %{_kf5_appstreamdir}/org.kde.kamera.metainfo.xml
 %{_kf5_plugindir}/kcm_kamera.so
-%{_kf5_plugindir}/kio_kamera.so
-%{_kf5_servicesdir}/camera.protocol
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/kio
+%{_kf5_plugindir}/kf5/kio/kio_kamera.so
 %{_kf5_servicesdir}/kamera.desktop
 %{_kf5_sharedir}/solid/actions/solid_camera.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
