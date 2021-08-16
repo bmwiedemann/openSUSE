@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  4 09:37:44 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to release 7.15
+  * netfilter: ipset: Fix maximal range check in
+    hash_ipportnet4_uadt()
+
+-------------------------------------------------------------------
 Wed Jul 28 14:54:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.14

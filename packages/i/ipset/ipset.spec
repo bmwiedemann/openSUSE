@@ -25,13 +25,12 @@
 %define ipset_build_kmp 0
 %endif
 Name:           ipset
-Version:        7.14
+Version:        7.15
 Release:        0
 Summary:        Netfilter ipset administration utility
 License:        GPL-2.0-only
 Group:          Productivity/Networking/Security
-URL:            http://ipset.netfilter.org/
-
+URL:            https://ipset.netfilter.org/
 #Git-Clone:	git://git.netfilter.org/ipset
 #Git-Web:	http://git.netfilter.org/
 Source:         http://ipset.netfilter.org/%name-%version.tar.bz2
@@ -46,8 +45,8 @@ BuildRequires:  pkgconfig(libmnl) >= 1
 %if 0%{?ipset_build_kmp}
 BuildRequires:  %kernel_module_package_buildreqs
 BuildRequires:  kernel-devel >= 2.6.39
-%kernel_module_package -p %name-preamble
 BuildRequires:  kmod-compat
+%kernel_module_package -p %name-preamble
 %endif
 
 %description
@@ -117,13 +116,13 @@ for flavor in %flavors_to_build; do
 		--with-kbuild="%_prefix/src/linux-obj/%_target_cpu/$flavor" \
 		--with-ksource="%_prefix/src/linux" \
 		--includedir="%_includedir/%name"
-	make %{?_smp_mflags} all modules
+	%make_build all modules
 	popd
 done
 %endif
 %configure --disable-static --with-kmod=no \
 	--includedir="%_includedir/%name"
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 export PATH="$PATH:%_sbindir"
@@ -137,7 +136,7 @@ for flavor in %flavors_to_build; do
 done
 %endif
 %make_install
-find "$b/%_libdir/" -type f -name "*.la" -delete -print
+find "$b/%_libdir" -type f -name "*.la" -delete -print
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

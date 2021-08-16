@@ -355,4 +355,12 @@
     <comment>- Update to release 7.14</comment>
     <requestid>908932</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>b7871f7a167ac2c896d2990821f88007</srcmd5>
+    <version>7.15</version>
+    <time>1629101328</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911409</requestid>
+  </revision>
 </revisionlist>
