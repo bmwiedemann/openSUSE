@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail-account-wizard
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Account wizard for KMail
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -65,7 +65,6 @@ Obsoletes:      akonadi_resources
 Obsoletes:      kdepim
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 An application which assists you with the configuration of accounts in KMail.
@@ -99,7 +98,6 @@ An application which assists you with the configuration of accounts in KMail.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
