@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:12:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Fix syntax errors in holiday_kz_kk and holiday_kz_ru
+  * Update holiday_kz_kk
+  * Update holiday_kz_ru
+  * holidays/plan2/holiday_mx_es - fix syntax errors
+  * Update Mexican holidays
+  * Create mu_fr_catholic
+  * Update mu_en, mu_en_islamic
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
