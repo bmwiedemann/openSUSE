@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:38:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Fix build with poppler 21.8.0
+  * Fix number to string deserialization for large integer numbers
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * The isspace/isctrl/etc functions require unsigned char as input
+  * Remove unneeded MSVC utf-8 definition
+  * Add event reservation extractor for ticketmaster.de
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Handle SNCF TER booking confirmations (kde#439055)
+  * Fix handling of asymmetric SNCF OUI retour tickets (kde#439061)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
