@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kopete
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Instant Messenger
 License:        GPL-2.0-or-later
@@ -74,7 +74,6 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 BuildRequires:  pkgconfig(libsrtp)
-Recommends:     %{name}-lang
 %if 0%{?is_opensuse} || !0%{?sle_version}
 BuildRequires:  mediastreamer2-devel
 %endif
@@ -104,7 +103,7 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 
 %install
 %kf5_makeinstall -C build
-%suse_update_desktop_file org.kde.kopete          Network  InstantMessaging
+%suse_update_desktop_file org.kde.kopete Network InstantMessaging
 %if %{with lang}
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
@@ -147,8 +146,6 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 %{_kf5_sharedir}/sounds/*.ogg
 
 %files devel
-%license COPYING COPYING.DOC
-%doc README
 %{_includedir}/kopete/
 %{_kf5_libdir}/libkopete.so
 %{_kf5_libdir}/libkopete*.so
@@ -156,7 +153,6 @@ Kopete is the KDE instant messenger and supports multiple protocols.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
