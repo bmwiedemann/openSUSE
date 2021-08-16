@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Aug 12 07:07:57 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.2.17.0
+  Release 2.2.17 (1 Aug 2021) -- compared to 2.2.16
+  + Output to DPX files now supports IOProxy. (Input already did.) #3013
+  + typedesc.h: TypeDesc can now describe 2D and 3D bounding boxes, as arrays
+    of 2 VEC2 aggregates (for 2D) or VEC3 aggregates (for 3D) with "BOX"
+    semantic. The shorthand for these are TypeBox2, TypeBox3 (for float),
+    and TypeBox2i and TypeBox3i for integer or pixel coordinte
+    boxes. #3008
+  + Build: Fixes for building against fmt 8.0.0. #3007
+  + Build: Finding boost is more flexible when desiring static libraries. #3031
+  Release 2.2.16 (1 Jul 2021) -- compared to 2.2.15
+  + New UDIM texture name patterns recognized: %(UDIM)d is the Houdini
+    convention, and _u##v## is for Animal Logic's internal renderer. #3006
+    (2.2.16)
+  + When doing color space transforms on images with > 4 channels -- the
+    additional channels are now copied unaltered, rather than leaving them
+    black. #2987 (2.2.16)
+  + FFMpeg: fix some encodings that didn't correctly recognize that they were
+    more than 8 bits, or had alpha. #2989 (2.2.16)
+    farmhash.h: Clean up all non-namespaced preprocessor symbols that are set
+    by this header and may pollute the caller's symbols. #3002 (2.2.16)
+  + Fix crashes on M1 (ARM) based Mac. #2990 (2.2.16)
+  + Bug fix: avoid divide-by-0 error computing chunk size for invalid image
+    sizes. #2983 (2.2.16)
+  + make_texture (and maketx and oiiotool -otex) no longer crash if you
+    try to make a texture out of a "deep" image; instead it will return an
+    error message. #2991 (2.2.16)
+  + filesystem.h: Improve exception safety in Filesystem directory iteration.
+    #2998 (2.2.16)
+  + Build: Improve finding of OpenJPEG. #2979 (2.2.16)
+  + Build: Support for building OIIO with gcc 11. #2995 (2.2.16)
+  + Build: Fixes to accommodate Imath 3.1 upcoming changes. #2996 (2.2.16)
+  + Build: Finding FFMpeg now correctly detects the version. #2994 (2.2.16)
+  + Build: clang + C++17 + LibRaw < 0.20 are mutually incompatible. Detect
+    this combination and warn / disable libraw under those conditions. #3003
+    (2.2.16)
+  + Build: Fix CMake behavior for REQUIRED_DEPS due to a typo. #3011 (2.2.16)
+  + Build: Fixes for detecting and using Ptex, among other things got the
+    version wrong. #3001 (2.2.16)
+  + Testing: If a feature is disabled, skip its tests rather than reporting
+    them as broken. #2988 (2.2.16)
+  + CI: Test the combination of clang and C++17. #3003 (2.2.16)
+  Release 2.2.15 (1 Jun 2021) -- compared to 2.2.14
+  + BMP improvements: now support reading rle-compressed BMP files; writing
+    single channel grayscale images now save as 8bpp palette images intead of
+    24bpp; and reading 8bpp where all palette entries have R==G==B looks like
+    a 1-channel grayscale instead of 3-channel RGB. #2976
+  + Bug: IBA::render_text did not properly account for alpha of the draw
+    color. #2981
+  + Bug: Fix runaway parsing time for pathological XMP metadata. #2968
+  + Bug: Fixed a crash is ImageCacheFile::read_unmipped when sampling
+  + Fix exported cmake config files, which could fail if Imath and OpenEXR
+    weren't the at the same version number. #2975
+  + Build: Modernize cmake to use targets for PNG and ZLIB. #2957
+  + Build: Fix to accommodate upcoming OpenColorIO 2.1 deprecation of
+    parseColorSpaceFromString. #2961
+  + Build: Changes to make it build against TBB 2021. #2985
+  + Dev: Add Strutil functions: find, rfind, ifind, irfind. #2960
+    non-zero-base channels. (#2962)
+  Release 2.2.14 (1 May 2021) -- compared to 2.2.13
+  + JPEG: Improve reading of files with mildly corrupted headers. #2927
+  + TIFF: Support IOProxy for input. #2921
+  + BMP: Improve performance by eliminating wasteful per-scanline allocation
+    and needless data copying. #2934
+  + Build/CI: Fix all the build_*.bash scripts to not use cmake --config flag,
+    which was harmlessly ignored but is flagged as an error for CMake 3.20.
+    #2931
+  + Build: More fixes related to supporting a wide range of OpenEXR versions,
+    and making our exported cmake configs correctly transmit dependencies on
+  + OpenEXR include paths. #2935 #2941 #2942 #2947
+  + ImageBufAlgo::fillholes_pushpull: added logic to correctly set the spec's
+    alpha_channel field when generating sub-images. #2939
+  + Python: MakeTxBumpWithSlopes enum value had been inadvertently omitted
+    from the Python bindings. #2951
+
+-------------------------------------------------------------------
 Tue Apr 27 18:08:54 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Use OpenCV4 on Tumbleweed instead of old OpenCV3.

@@ -34,7 +34,7 @@
 %define so_ver 2_2
 %define major_minor_ver 2.2
 Name:           OpenImageIO
-Version:        2.2.13.1
+Version:        2.2.17.0
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        BSD-3-Clause
@@ -216,7 +216,7 @@ ln -s ../../src/fonts/Droid_Serif/DroidSerif.ttf build/fonts/DroidSerif.ttf
 ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 # Exclude known broken tests
 %ifarch x86_64
-%ctest '-E' 'broken|texture-icwrite|unit_timer|unit_simd|heif'
+%ctest '-E' 'broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer'
 %ctest '-R' 'texture-icwrite' || true
 %ctest '-j1' '-R' 'unit_timer'
 %else
