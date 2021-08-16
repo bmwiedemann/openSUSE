@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Take into account that some languages use different
+    plural rules for n > 4
+  * Add "Open Containing Folder" action
+  * Add a user-defined literal to grab themed icons and port to use it.
+  * lyrics: Disable lyrics requests as the site seems to be down.
+  * playlistsplitter: Use compile-time signal/slot connections.
+  * Add a user-defined literal for our action collection.
+  * playlistsplitter: Minor cleanups again.
+  * playlist: Ensure playing track is visible when it changes. (kde#356224)
+  * playqueue: Use an appropriate icon for rebadged "remove playlist" action. (kde#336250)
+  * JuK: More minor cleanups.
+  * playermanager: Cleanup before I work on some bugs in track playback.
+  * mediafiles: Make Playlist Save As file type message translatable. (kde#413065)
+  * playlist: Modernization and cleanup of playlist code.
+  * playlist: Modernize signal/slot connections here too.
+  * playlistbox: Remove most string-based signal/slot connections.
+  * playlistbox: Use QVector instead of QList for list of playlists.
+  * playlistbox: Modernize code a bit.
+  * playlistcollection: Minor cleanups, rename object().
+  * ui: Focus the playlist search line edit on startup.
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

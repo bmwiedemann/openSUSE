@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           juk
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Jukebox
 License:        GPL-2.0-or-later
@@ -62,7 +62,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 Jukebox and music manager by KDE
@@ -82,7 +81,7 @@ Jukebox and music manager by KDE
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  %suse_update_desktop_file org.kde.juk            AudioVideo Player
+  %suse_update_desktop_file org.kde.juk AudioVideo Player
 
 %files
 %license COPYING
@@ -100,7 +99,6 @@ Jukebox and music manager by KDE
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
