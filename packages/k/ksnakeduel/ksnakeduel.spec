@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksnakeduel
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Simple snake duel game
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      ksnakeduel5 < %{version}
 Provides:       ksnakeduel5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KSnakeDuel is a simple snake duel game
@@ -86,7 +85,6 @@ KSnakeDuel is a simple snake duel game
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
