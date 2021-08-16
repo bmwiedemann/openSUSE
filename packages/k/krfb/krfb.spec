@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krfb
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Screen sharing using the VNC/RFB protocol
 License:        GPL-2.0-or-later
@@ -54,11 +54,11 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(xdamage)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-Recommends:     %{name}-lang
 
 %description
 VNC-compatible server to share KDE desktops.
@@ -83,7 +83,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
   %{kf5_find_htmldocs}
 %endif
 
-%suse_update_desktop_file -r org.kde.krfb         System   RemoteAccess
+%suse_update_desktop_file -r org.kde.krfb System RemoteAccess
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -105,7 +105,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
