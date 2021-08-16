@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:16:57 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.14.ga7f8148:
+  * irqbalance: Check validity of numa_node
+  * configure.ac: use pkg-config to find numa
+  * Disable the communication socket when UI is disabled
+- Use %{?systemd_ordering} instead of %{?systemd_requires}
+
+-------------------------------------------------------------------
 Mon Jul 12 17:14:08 UTC 2021 - trenn@suse.de
 
 - Update to version 1.8.0.8.gbd5aaf5 (jsc#SLE-17697):

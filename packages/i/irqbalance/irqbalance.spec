@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           irqbalance
-Version:        1.8.0.8.gbd5aaf5
+Version:        1.8.0.14.ga7f8148
 Release:        0
 Summary:        Daemon to balance IRQs on SMP machines
 License:        GPL-2.0-or-later
@@ -35,12 +35,11 @@ BuildRequires:  libcap-ng-devel
 BuildRequires:  libtool
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(glib-2.0)
 Requires(pre):  %fillup_prereq
 Recommends:     %{name}-ui
 ExcludeArch:    s390 s390x
-%{?systemd_requires}
+%{?systemd_ordering}
 %ifnarch %{arm}
 BuildRequires:  libnuma-devel
 %endif
