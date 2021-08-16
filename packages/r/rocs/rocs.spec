@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           rocs
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Graph Theory IDE
 License:        GPL-2.0-or-later
@@ -60,7 +60,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Rocs is a Graph Theory IDE for helping professors to show the results
@@ -116,7 +115,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %postun -n librocsgraphtheory0 -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc ChangeLog README.md
 %doc %lang(en) %{_kf5_htmldir}/en/rocs/
 %{_kf5_applicationsdir}/org.kde.rocs.desktop
@@ -129,18 +128,15 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_sharedir}/rocs/
 
 %files devel
-%license COPYING*
 %doc TESTING.md
 %{_kf5_prefix}/include/rocs/
 %{_kf5_libdir}/librocsgraphtheory.so
 
 %files -n librocsgraphtheory0
-%license COPYING*
 %{_kf5_libdir}/librocsgraphtheory.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
