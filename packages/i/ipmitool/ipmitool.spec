@@ -17,7 +17,7 @@
 
 
 Name:           ipmitool
-Version:        1.8.18.237.g11c7605
+Version:        1.8.18.238.gb7adc1d
 Release:        0
 Summary:        Utility for IPMI Control
 License:        BSD-3-Clause
@@ -36,13 +36,12 @@ Patch6:         0006-Make-IANA-PEN-download-configurable-fix-uninitalized.patch
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  readline-devel
-BuildRequires:  systemd-rpm-macros
 # Taken over from freeipmi.spec:
 # Necessary as only those archs implement iopl and friends (#368541)
 %ifarch %{ix86} x86_64 ia64 alpha aarch64
 BuildRequires:  freeipmi-devel
 %endif
-%{?systemd_requires}
+%{?systemd_odering}
 
 %description
 This package contains a utility for interfacing with devices that

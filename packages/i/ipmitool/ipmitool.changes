@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:10:52 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.18.238.gb7adc1d:
+  * ipmi_mc: Fix the IPM_DEV_FWREV1_MAJOR_MASK
+- Use %{?systemd_ordering} instead of %{?systemd_requires}
+
+-------------------------------------------------------------------
 Thu Jul 08 15:10:12 UTC 2021 - trenn@suse.de
 
 - Update to version 1.8.18+git20210622.11c7605:
