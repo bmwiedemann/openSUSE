@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:40:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08/
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Migrate to new REUSE CI check
+  * Also show tracks and paths
+  * Use the newly supported layer selectors to untangle roads and tramways
+  * Add layer selector support to the scene graph
+  * Implement layer selector support in MapCSS union selectors
+  * Prepare MapCSS selector matching to support layer selectors
+  * Prepare MapCSSResult for carrying results for multiple layer selectors
+  * Handle default layer selector
+  * Use unique string keys for class and layer selectors
+  * Factor out the  unique string key pool from OSM::DataSet
+  * Expand MapCSS grammar for supporting layer selectors
+  * Handle another way of tagging inaccessible elevators
+  * Add i18n context for "socket"
+  * Add information icons from OSM carto
+  * Increase the minimum Qt version to 5.15 here too
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
