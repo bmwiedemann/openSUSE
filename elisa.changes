@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Make desktop config window able to scroll (kde#440491)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * make KIO optional on Android and required everywhere else
+  * avoid fetching lyrics twice for tracks not in database from playlist
+  * remove hard dependency on DBus for powermanagement code
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * generate qml plugin types file
+  * Remove unused licenses from LICENSES/ directory
+  * Fix comment grammar, sent->send
+  * Improve header label's mouse area
+  * Make partyMode list scroll to the playing track
+  * Move all hardcoded color in HeaderBar to one place
+  * Remove progress background of playlist entries on desktop
+  * Add F11 hotkey for toggling Party Mode
+  * Port GaussianBlur to FastBlur for better performance
+  * Move playlist's section sizer to BaseTheme
+  * Use Kirigami.PlaceholderMessage's explanation: property in playlist
+  * Bump frameworks version to 5.80 and use Q_EMIT consistently
+  * use enum for columns in album queries
+  * use an enum to select the column returned when querying radios
+  * use an enum to select the column returned when querying tracks
+  * Clean unneeded code
+  * Add flathub badge
+  * [autotest] Add test for PlayListEntry's play button
+  * Relayout PlayListEntry's label when state changes
+  * Allow resuming when clicking on Playlist's play button
+  * Fix binding loop in ContextView when resizing
+  * Two related fixes for FooterBar to snap to bounds
+  * Improve Playlist's album header
+  * Pass desktop entry name to power management inhibition
+  * Improve Player Control
+  * Cleanup whitespace in CMakeLists.txt
+  * Fix Repeat button's tooltip on mobile
+  * Make Shuffle/Repeat modes more clear (kde#436217)
+  * Polish Now playing page
+  * Only display secondary Text in grid delegate if there is secondry text
+  * Use ternaries in GridBrowserView instead of nested if/else statements
+  * Add mobile screenshot to metadata
+  * keep the UI activity running in background to keep playing music
+  * gets more accurate metadata for tracks and improve reliability
+  * use QtAndroid::requestPermissionsSync instead of custom code
+  * Fix spacing of playing sidebar header and footer and mobile
+  * ensure that reuse is happy with our Android resources
+  * improve Android integration
+  * improve logging info for QtMultimedia player code
+  * add missing icons
+  * never use dbus on Android
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

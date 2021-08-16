@@ -20,7 +20,7 @@
 %define kf5_version 5.64.0
 %bcond_without lang
 Name:           elisa
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
@@ -64,7 +64,6 @@ Requires:       kdeclarative-components >= %{kf5_version}
 Requires:       kirigami2 >= %{kf5_version}
 Requires:       libqt5-qtquickcontrols >= %{qt5_version}
 Requires:       libqt5-qtquickcontrols2 >= %{qt5_version}
-Recommends:     %{name}-lang
 
 %description
 Elisa is a music player with a library where music can be browsed by
