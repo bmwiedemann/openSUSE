@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:36:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Add content rating
+  * Documentation: Renew the screenshots
+  * Doc: Fix date format
+  * A fix to my last commit "GUI l10n improves"
+  * GUI l10n improves
+  * Documentation updates
+  * use existing game timer instead of own timer for ghost blinking
+  * pause prey and bonus timers if game is paused
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

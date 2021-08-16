@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kapman
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Pac-Man-like game by KDE
 License:        GPL-2.0-or-later
@@ -55,7 +55,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Kapman is a clone of the well known game Pac-Man. You must go through the levels
@@ -81,7 +80,7 @@ have lost all your lives.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kapman          Game ArcadeGame
+  %suse_update_desktop_file -r org.kde.kapman Game ArcadeGame
 
 %files
 %license LICENSES/*
@@ -95,7 +94,6 @@ have lost all your lives.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
