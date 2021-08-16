@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kolourpaint
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Paint Program
 # See boo#717722 for license details
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF5Sane)
 Requires:       kdelibs4support
 Provides:       kolourpaint5 = %{version}
 Obsoletes:      kolourpaint5 < %{version}
-Recommends:     %{name}-lang
 
 %description
 Paint program by KDE
@@ -65,7 +64,7 @@ Paint program by KDE
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.kolourpaint       RasterGraphics
+  %suse_update_desktop_file org.kde.kolourpaint RasterGraphics
   %fdupes -s %{buildroot}%{_datadir}
 
 %post -p /sbin/ldconfig
@@ -85,7 +84,6 @@ Paint program by KDE
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
