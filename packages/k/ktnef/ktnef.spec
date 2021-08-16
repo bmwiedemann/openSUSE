@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktnef
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: TNEF support
 License:        LGPL-2.1-or-later
@@ -38,7 +38,6 @@ BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(Qt5Test)
-Recommends:     %{name}-lang
 
 %description
 This package contains additional libraries for KDE PIM applications.
@@ -85,7 +84,6 @@ to develop KDE PIM applications.
 %{_kf5_debugdir}/*.renamecategories
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5Tnef/
 %{_kf5_includedir}/KTNEF/
 %{_kf5_includedir}/ktnef_version.h
@@ -94,7 +92,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
