@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knetwalk
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Puzzle game
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Turn the board pieces to get all computers connected.
@@ -82,7 +81,6 @@ Turn the board pieces to get all computers connected.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
