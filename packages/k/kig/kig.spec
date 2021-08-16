@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kig
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Interactive Geometry
 License:        GPL-2.0-or-later
@@ -53,7 +53,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5XmlPatterns)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Kig is an application for Interactive Geometry. It's intended to serve
@@ -78,15 +77,17 @@ drawing mathematical figures and including them in other documents.
   %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_applicationsdir}/org.kde.kig.desktop
 %{_kf5_appstreamdir}/org.kde.kig.appdata.xml
 %{_kf5_bindir}/kig
 %{_kf5_bindir}/pykig.py
 %{_kf5_iconsdir}/hicolor/*/*/*kig.*
 %{_kf5_mandir}/man?/*
-%{_kf5_plugindir}/kigpart.so
+%{_kf5_plugindir}/kf5/parts/kigpart.so
 %{_kf5_servicesdir}/kig_part.desktop
 %{_kf5_sharedir}/katepart5/
 %{_kf5_sharedir}/kig/
@@ -94,7 +95,6 @@ drawing mathematical figures and including them in other documents.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
