@@ -1,7 +1,7 @@
 #
 # spec file for package skanlite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,29 +15,31 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+# Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
+%{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
+%bcond_without lang
 Name:           skanlite
-Version:        2.2.0
+Version:        21.08.0
 Release:        0
 Summary:        Image Scanner Application
 License:        LGPL-2.1-or-later
 Group:          Hardware/Scanner
-URL:            https://apps.kde.org/skanlite
-Source0:        https://download.kde.org/stable/%{name}/2.2/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix-compilation-with-Qt-before-5.14.patch
-BuildRequires:  extra-cmake-modules
+URL:            https://www.kde.org/applications/graphics/skanlite/
+Source:         https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+%if %{with lang}
+Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
+Source2:        applications.keyring
+%endif
 BuildRequires:  libpng-devel
 BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
-BuildRequires:  cmake(KF5Sane) >= 5.55.0
+BuildRequires:  cmake(KF5Sane)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang = %{version}
 Obsoletes:      %{name}-doc < %{version}
 
 %description
@@ -55,8 +57,10 @@ Skanlite is an image scanner application by KDE.
 %install
 %kf5_makeinstall -C build
 
+%if %{with lang}
 %find_lang %{name} --all-name
 %{kf5_find_htmldocs}
+%endif
 
 # Fix rpmlint warning "script-without-shebang"
 chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
@@ -64,11 +68,13 @@ chmod 644 %{buildroot}%{_kf5_applicationsdir}/org.kde.skanlite.desktop
 %files
 %license src/COPYING
 %doc src/TODO
-%doc %lang(en) %{_kf5_htmldir}/en/skanlite
+%doc %lang(en) %{_kf5_htmldir}/en/skanlite/
 %{_kf5_applicationsdir}/org.kde.skanlite.desktop
 %{_kf5_appstreamdir}/org.kde.skanlite.appdata.xml
 %{_kf5_bindir}/skanlite
 
+%if %{with lang}
 %files lang -f %{name}.lang
+%endif
 
 %changelog
