@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Aug 12 11:41:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.11.0
+  * Add ``nic_handle``. Thanks @pishchalnikov.
+- from version 8.10.3
+  * Remove potentially offensive surname in ``it_IT``. Thanks @lordgordon.
+- from version 8.10.2
+  * Return list instead of tuple in ``choices_distribution``. Thanks @svisser.
+- from version 8.10.1
+  * enable faker instances to be unpickled (#1480). Thanks @fcurella.
+- from version 8.10.0
+  * Add ``ar_AE`` (UAE) phone numbers. Thanks @sshishov.
+- from version 8.9.1
+  * Skip UnsupportedFeature's on the command line. Thanks @therefromhere.
+- from version 8.9.0
+  * Add RIPE ID. Thanks @pishchalnikov.
+- from version 8.8.2
+  * Avoid collision for ``date`` in ``datetime`` provider. Thanks @mattshin.
+- from version 8.8.1
+  * Fix ``left_digits`` ignored if ``min_value`` is given. Thanks @OJFord.q
+- from version 8.8.0
+  * Add ``iana_id``, IANA Registrar ID. Thanks @pishchalnikov.
+- from version 8.7.0
+  * Add tlds for ``th_TH`` internet provider. Thanks @bact.
+- from version 8.6.0
+  * Add ``aba()`` method to generate ABA routing numbers. Thanks @mstellon.
+- from version 8.5.1
+  * Fix deepcopy for Faker instances.
+- from version 8.5.0
+  * Add ``image`` provider. Thanks @n1ngu.
+- from version 8.4.0
+  * Add license plates and language names for ``he_IL`` locale. Thanks @AndreyRub.
+- from version 8.3.0
+  * Add colors for ``he_IL``. Thanks @AndreyRub.
+- from version 8.2.1
+  * Add few more names in ``en_IN`` person provider. Thanks @Felix-Raj.
+- from version 8.2.0
+  * Add ``city_name()`` and cities to ``support .city()`` for ``th_TH``. Thanks @bact.
+
+-------------------------------------------------------------------
 Sun May 16 12:06:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 8.1.4:
