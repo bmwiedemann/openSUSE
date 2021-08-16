@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkgapi
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Extension for accessing Google data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -194,15 +194,12 @@ to develop KDE PIM applications.
 %postun -n libKPimGAPITasks5 -p /sbin/ldconfig
 
 %files -n libKPimGAPIBlogger5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPIBlogger.so.*
 
 %files -n libKPimGAPICalendar5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPICalendar.so.*
 
 %files -n libKPimGAPIContacts5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPIContacts.so.*
 
 %files -n libKPimGAPICore5
@@ -211,28 +208,22 @@ to develop KDE PIM applications.
 %{_kf5_libdir}/libKPimGAPICore.so.*
 
 %files -n libKPimGAPIDrive5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPIDrive.so.*
 
 %files -n libKPimGAPILatitude5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPILatitude.so.*
 
 %files -n libKPimGAPIMaps5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPIMaps.so.*
 
 %files -n libKPimGAPITasks5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimGAPITasks.so.*
 
 %files -n sasl2-kdexoauth2
-%license LICENSES/*
 %dir %{_kf5_libdir}/sasl2/
 %{_kf5_libdir}/sasl2/libkdexoauth2.so*
 
 %files devel
-%license LICENSES/*
 %{_includedir}/KPim/
 %{_kf5_cmakedir}/KPimGAPI/
 %{_kf5_libdir}/libKPimGAPIBlogger.so
@@ -254,7 +245,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
