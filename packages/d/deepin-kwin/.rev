@@ -20,4 +20,15 @@
 - Drop deepin-kwin-unload-blur.patch, merged by upstream</comment>
     <requestid>891657</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8688ae4852458456aa970a7a7063ad7</srcmd5>
+    <version>5.3.9</version>
+    <time>1629101358</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.3.9
+  * Fix bugs
+  * Support kwin 5.21+, drop support-kwin-5_21+.patch
+- Drop fix-crash-bug.patch, fixed by upstream (forwarded request 910696 from hillwood)</comment>
+    <requestid>910913</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 15 04:07:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.3.9
+  * Fix bugs
+  * Support kwin 5.21+, drop support-kwin-5_21+.patch
+- Drop fix-crash-bug.patch, fixed by upstream
+
+-------------------------------------------------------------------
 Tue May  4 11:46:16 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.3.7
