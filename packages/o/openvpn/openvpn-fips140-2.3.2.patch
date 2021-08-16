@@ -13,11 +13,9 @@ Signed-off-by: Nirmoy Das <ndas@suse.de>
  src/openvpn/ssl.c            | 4 ++--
  6 files changed, 15 insertions(+), 6 deletions(-)
 
-diff --git a/src/openvpn/crypto.c b/src/openvpn/crypto.c
-index 5f482d0..ff0f9a7 100644
---- a/src/openvpn/crypto.c
-+++ b/src/openvpn/crypto.c
-@@ -876,7 +876,7 @@ init_key_ctx(struct key_ctx *ctx, struct key *key,
+--- src/openvpn/crypto.c.orig
++++ src/openvpn/crypto.c
+@@ -849,7 +849,7 @@ init_key_ctx(struct key_ctx *ctx, const
      if (kt->digest && kt->hmac_length > 0)
      {
          ctx->hmac = hmac_ctx_new();
@@ -26,11 +24,9 @@ index 5f482d0..ff0f9a7 100644
  
          msg(D_HANDSHAKE,
              "%s: Using %d bit message hash '%s' for HMAC authentication",
-diff --git a/src/openvpn/crypto_backend.h b/src/openvpn/crypto_backend.h
-index b7f519b..2911248 100644
---- a/src/openvpn/crypto_backend.h
-+++ b/src/openvpn/crypto_backend.h
-@@ -604,10 +604,11 @@ void hmac_ctx_free(hmac_ctx_t *ctx);
+--- src/openvpn/crypto_backend.h.orig
++++ src/openvpn/crypto_backend.h
+@@ -634,10 +634,11 @@ void hmac_ctx_free(hmac_ctx_t *ctx);
   * @param key           The key to use for the HMAC
   * @param key_len       The key length to use
   * @param kt            Static message digest parameters
@@ -43,11 +39,9 @@ index b7f519b..2911248 100644
  
  /*
   * Free the given HMAC context.
-diff --git a/src/openvpn/crypto_openssl.c b/src/openvpn/crypto_openssl.c
-index a55e65c..79f5530 100644
---- a/src/openvpn/crypto_openssl.c
-+++ b/src/openvpn/crypto_openssl.c
-@@ -926,11 +926,15 @@
+--- src/openvpn/crypto_openssl.c.orig
++++ src/openvpn/crypto_openssl.c
+@@ -1008,11 +1008,15 @@ hmac_ctx_free(HMAC_CTX *ctx)
  
  void
  hmac_ctx_init(HMAC_CTX *ctx, const uint8_t *key, int key_len,
@@ -64,11 +58,9 @@ index a55e65c..79f5530 100644
      HMAC_Init_ex(ctx, key, key_len, kt, NULL);
  
      /* make sure we used a big enough key */
-diff --git a/src/openvpn/ntlm.c b/src/openvpn/ntlm.c
-index 0b1163e..93283bc 100644
---- a/src/openvpn/ntlm.c
-+++ b/src/openvpn/ntlm.c
-@@ -88,7 +88,7 @@
+--- src/openvpn/ntlm.c.orig
++++ src/openvpn/ntlm.c
+@@ -88,7 +88,7 @@ gen_hmac_md5(const uint8_t *data, int da
      const md_kt_t *md5_kt = md_kt_get("MD5");
      hmac_ctx_t *hmac_ctx = hmac_ctx_new();
  
@@ -77,28 +69,50 @@ index 0b1163e..93283bc 100644
      hmac_ctx_update(hmac_ctx, data, data_len);
      hmac_ctx_final(hmac_ctx, result);
      hmac_ctx_cleanup(hmac_ctx);
-diff --git a/src/openvpn/options.c b/src/openvpn/options.c
-index fef5e90..33b6976 100644
---- a/src/openvpn/options.c
-+++ b/src/openvpn/options.c
-@@ -850,6 +850,10 @@ init_options(struct options *o, const bool init_gc)
- #endif
- #ifdef ENABLE_CRYPTO
-     o->ciphername = "BF-CBC";
+--- src/openvpn/options.c.orig
++++ src/openvpn/options.c
+@@ -850,6 +850,10 @@ init_options(struct options *o, const bo
+     o->tcp_queue_limit = 64;
+     o->max_clients = 1024;
+     o->max_routes_per_client = 256;
 +#ifdef OPENSSL_FIPS
 +	if(FIPS_mode())
 +		o->ciphername = "AES-256-CBC";
 +#endif
- #ifdef HAVE_AEAD_CIPHER_MODES /* IV_NCP=2 requires GCM support */
-     o->ncp_enabled = true;
- #else
-diff --git a/src/openvpn/ssl.c b/src/openvpn/ssl.c
-index 15cd94a..21f50f1 100644
---- a/src/openvpn/ssl.c
-+++ b/src/openvpn/ssl.c
-@@ -1635,8 +1635,8 @@ tls1_P_hash(const md_kt_t *md_kt,
-     chunk = md_kt_size(md_kt);
-     A1_len = md_kt_size(md_kt);
+     o->stale_routes_check_interval = 0;
+     o->ifconfig_pool_persist_refresh_freq = 600;
+ #if P2MP
+@@ -3087,6 +3091,12 @@ options_postprocess_cipher(struct option
+         if (!o->ciphername)
+         {
+             o->ciphername = "BF-CBC";
++#ifdef OPENSSL_FIPS
++	    if (FIPS_mode())
++	    {
++	       o->ciphername = "AES-256-CBC";
++	    }
++#endif
+         }
+         return;
+     }
+@@ -3109,6 +3119,12 @@ options_postprocess_cipher(struct option
+         /* We still need to set the ciphername to BF-CBC since various other
+          * parts of OpenVPN assert that the ciphername is set */
+         o->ciphername = "BF-CBC";
++#ifdef OPENSSL_FIPS
++	if (FIPS_mode())
++	{
++	   o->ciphername = "AES-256-CBC";
++	}
++#endif
+     }
+     else if (!o->enable_ncp_fallback
+              && !tls_item_in_cipher_list(o->ciphername, o->ncp_ciphers))
+--- src/openvpn/ssl.c.orig
++++ src/openvpn/ssl.c
+@@ -1661,8 +1661,8 @@ tls1_P_hash(const md_kt_t *md_kt,
+     int chunk = md_kt_size(md_kt);
+     unsigned int A1_len = md_kt_size(md_kt);
  
 -    hmac_ctx_init(ctx, sec, sec_len, md_kt);
 -    hmac_ctx_init(ctx_tmp, sec, sec_len, md_kt);
@@ -107,6 +121,3 @@ index 15cd94a..21f50f1 100644
  
      hmac_ctx_update(ctx,seed,seed_len);
      hmac_ctx_final(ctx, A1);
--- 
-2.13.1
-

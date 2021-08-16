@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug  5 14:07:14 UTC 2021 - Reinhard Max <max@suse.com>
+
+- Update to 2.5.3:
+
+  * Removal of BF-CBC support in default configuration
+    *** POSSIBLE INCOMPATIBILITY ***
+    See section "DATA CHANNEL CIPHER NEGOTIATION" in openvpn(8).
+
+  * Connections setup is now much faster
+  * Support ChaCha20-Poly1305 cipher in the OpenVPN data channel
+  * Improved TLS 1.3 support when using OpenSSL 1.1.1 or newer
+  * Client-specific tls-crypt keys (--tls-crypt-v2)
+  * Improved Data channel cipher negotiation
+  * HMAC based auth-token support for seamless reconnects to
+    standalone servers or a group of servers
+  * Asynchronous (deferred) authentication support for auth-pam
+    plugin
+  * Asynchronous (deferred) support for client-connect scripts and
+    plugins
+  * Support IPv4 configs with /31 netmasks
+  * 802.1q VLAN support on TAP servers
+  * Support IPv6-only tunnels
+  * New option --block-ipv6 to reject all IPv6 packets (ICMPv6)
+  * Support Virtual Routing and Forwarding (VRF)
+  * Netlink integration (OpenVPN no longer needs to execute
+    ifconfig/route or ip commands)
+  * Obsoletes openvpn-2.3.9-Fix-heap-overflow-on-getaddrinfo-result.patch
+
+- bsc#1062157: The fix for bsc#934237 causes problems with the
+  crypto self-test of newer openvpn versions.
+  Remove openvpn-2.3.x-fixed-multiple-low-severity-issues.patch .
+
+-------------------------------------------------------------------
 Mon May 31 15:29:08 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.11 (bsc#1185279):

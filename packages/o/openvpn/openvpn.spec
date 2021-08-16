@@ -24,7 +24,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           openvpn
-Version:        2.4.11
+Version:        2.5.3
 Release:        0
 Summary:        Full-featured SSL VPN solution using a TUN/TAP Interface
 License:        LGPL-2.1-only AND SUSE-GPL-2.0-with-openssl-exception
@@ -42,8 +42,6 @@ Source10:       %{name}-tmpfile.conf
 Source11:       rc%{name}
 Patch1:         %{name}-2.3-plugin-man.dif
 Patch6:         %{name}-fips140-2.3.2.patch
-Patch7:         openvpn-2.3.9-Fix-heap-overflow-on-getaddrinfo-result.patch
-Patch8:         openvpn-2.3.x-fixed-multiple-low-severity-issues.patch
 Patch9:         0001-preform-deferred-authentication-in-the-background.patch
 BuildRequires:  iproute2
 BuildRequires:  libselinux-devel
@@ -127,10 +125,8 @@ This package provides the header file to build external plugins.
 %prep
 %setup -q
 %patch1
-%patch6 -p1
-%patch7 -p1
-%patch8 -p1
-%patch9 -p1
+%patch6
+%patch9
 
 sed -e "s|\" __DATE__|$(date '+%%b %%e %%Y' -r version.m4)\"|g" \
     -i src/openvpn/options.c

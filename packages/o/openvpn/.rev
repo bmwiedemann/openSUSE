@@ -811,4 +811,12 @@ behaviour fixing bsc#941569</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>899936</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>6334ec3ad10a116cb632b438eab9b8d0</srcmd5>
+    <version>2.5.3</version>
+    <time>1629101340</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911848</requestid>
+  </revision>
 </revisionlist>
