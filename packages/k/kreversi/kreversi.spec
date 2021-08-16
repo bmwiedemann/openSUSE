@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kreversi
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Reversi board game
 License:        GPL-2.0-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KDEGames)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5WidgetsAddons)
@@ -58,7 +57,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      kreversi5 < %{version}
 Provides:       kreversi5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KReversi is a board game game where two players have to gain the
@@ -80,7 +78,7 @@ ones pieces to turn over the opponents pieces.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kreversi          Game BoardGame
+  %suse_update_desktop_file -r org.kde.kreversi Game BoardGame
 
 %files
 %license LICENSES/*
@@ -94,7 +92,6 @@ ones pieces to turn over the opponents pieces.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
