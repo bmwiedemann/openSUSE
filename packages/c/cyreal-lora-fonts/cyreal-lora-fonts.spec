@@ -1,7 +1,7 @@
 #
 # spec file for package cyreal-lora-fonts
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,52 +12,49 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cyreal-lora-fonts
-Version:        1.014
+Version:        2.202
 Release:        0
-Summary:        Lora Fonts
+Summary:        Serif family for text. Variable Open Source Font
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://cyreal.org/archives/803
-#Source0:       wget http://www.google.com/webfonts/download?kit=iwrHM7FQEcKgsUvDuXxrPg -O cyreal-lora-fonts.zip
-Source0:        cyreal-lora-fonts.zip
+URL:            http://www.cyreal.org/2012/07/lora/
+Source:         https://github.com/cyrealtype/Lora-Cyrillic/archive/v%{version}.tar.gz#/Lora-Cyrillic-%{version}.tar.gz
 BuildRequires:  fontpackages-devel
-BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-Lora is a well-balanced contemporary serif with roots in calligraphy. It
-is a text typeface with moderate contrast well suited for body text.
+Lora is a well-balanced contemporary serif with roots in calligraphy. It is
+a text typeface with moderate contrast well suited for body text. A paragraph
+set in Lora will make a memorable appearance because of its brushed curves
+in contrast with driving serifs. The overall typographic voice of Lora perfectly
+conveys the mood of a modern-day story, or an art essay.
 
-A paragraph set in Lora will make a memorable appearance because of its
-brushed curves in contrast with driving serifs. The overall typographic
-voice of Lora perfectly conveys the mood of a modern-day story, or an
-art essay.
-Technically Lora is optimised for screen appearance, and works equally
-well in print.
+Technically Lora is optimised for screen appearance, and works equally well in
+print.
+
+Designed by Olga Karpushina, and Alexei Vanyashin for Cyreal.
 
 %prep
-%setup -cqn %{name}-%{version}
-sed -i 's/\r$//g' OFL.txt
+%setup -q -n Lora-Cyrillic-%{version}
 
 %build
 
 %install
-install -dm 0755 %{buildroot}%{_ttfontsdir}
-install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
-
+install -dm0755 %{buildroot}%{_ttfontsdir}
+install -m0644 fonts/OTF/*.otf %{buildroot}%{_ttfontsdir}
 %reconfigure_fonts_scriptlets
 
 %files
-%defattr(-,root,root,-)
-%doc OFL.txt
 %dir %{_ttfontsdir}
-%{_ttfontsdir}/*.ttf
+%{_ttfontsdir}/*.otf
+%defattr(0644,root,root)
+%doc README.md {AUTHORS,CONTRIBUTORS,FONTLOG,TRADEMARKS}.txt sources/sample*.png
+%license OFL.txt
 
 %changelog

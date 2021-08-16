@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 13 23:33:20 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v2.202
+  * Package OTF files instead of TTF
+  * Update URL, summary, description
+  * Package documentation
+  * Use spec-cleaner
+
+-------------------------------------------------------------------
 Tue Jul  1 09:28:44 UTC 2014 - lazy.kent@opensuse.org
 
 - Update to 1.014.
