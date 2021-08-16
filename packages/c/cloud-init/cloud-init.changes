@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 12 02:16:08 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add cloud-init-update-test-characters-in-substitution-unit-test.patch
+  to fix unit test fail in TestGetPackageMirrorInfo::test_substitution.
+
+-------------------------------------------------------------------
 Fri Jul  9 10:45:23 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to remove python2 compatibility so

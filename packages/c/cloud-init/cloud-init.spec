@@ -52,6 +52,8 @@ Patch73:        cloud-init-no-pwd-in-log.patch
 Patch74:        cloud-init-purge-cache-py-ver-change.patch
 # PATCH-FIX-UPSTREAM https://github.com/canonical/cloud-init/commit/f23a4c4262ac11cd75c99fcbfbfe453f4e115f18
 Patch75:        0001-templater-drop-Jinja-Python-2-compatibility-shim.patch
+# PATCH-FIX-UPSTREAM https://github.com/canonical/cloud-init/commit/899bfaa9d6bfab1db0df99257628ca1f6febff60
+Patch76:        cloud-init-update-test-characters-in-substitution-unit-test.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -161,6 +163,7 @@ Documentation and examples for cloud-init tools
 %if 0%{?suse_version} >= 1550
 %patch75 -p1
 %endif
+%patch76 -p1
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
 [ -n "$version_pys" ] ||
