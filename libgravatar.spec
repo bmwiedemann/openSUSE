@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libgravatar
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Library to download and display gravatars
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -43,26 +43,9 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 This package contains the debug categories for the libgravatar library.
-
-%lang_package
-
-%prep
-%autosetup -p1
-
-%build
-%cmake_kf5 -d build
-
-%cmake_build
-
-%install
-%kf5_makeinstall -C build
-%if %{with lang}
-  %find_lang %{name} --with-man --all-name
-%endif
 
 %package -n libKF5Gravatar5
 Summary:        Libgravatar library for KDE PIM applications
@@ -86,17 +69,23 @@ Requires:       libKF5Gravatar5 = %{version}
 %description devel
 The development package for the libgravatar library.
 
-%files devel
-%license LICENSES/*
-%{_kf5_cmakedir}/KF5Gravatar/
-%{_kf5_includedir}/Gravatar/
-%{_kf5_includedir}/gravatar/
-%{_kf5_includedir}/gravatar_version.h
-%{_kf5_libdir}/libKF5Gravatar.so
-%{_kf5_mkspecsdir}/qt_Gravatar.pri
+%lang_package
+
+%prep
+%autosetup -p1
+
+%build
+%cmake_kf5 -d build
+
+%cmake_build
+
+%install
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+%endif
 
 %files
-%license LICENSES/*
 %{_kf5_debugdir}/libgravatar.categories
 %{_kf5_debugdir}/libgravatar.renamecategories
 
@@ -104,9 +93,16 @@ The development package for the libgravatar library.
 %license LICENSES/*
 %{_libdir}/libKF5Gravatar.so.*
 
+%files devel
+%{_kf5_cmakedir}/KF5Gravatar/
+%{_kf5_includedir}/Gravatar/
+%{_kf5_includedir}/gravatar/
+%{_kf5_includedir}/gravatar_version.h
+%{_kf5_libdir}/libKF5Gravatar.so
+%{_kf5_mkspecsdir}/qt_Gravatar.pri
+
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
