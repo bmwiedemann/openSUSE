@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           palapeli
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Jigsaw puzzle game
 License:        GPL-2.0-or-later
@@ -53,7 +53,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       palapeli-data = %{version}
-Recommends:     %{name}-lang
 
 %description
 Palapeli is a jigsaw puzzle game. Unlike other games in that genre, you are not
@@ -95,7 +94,7 @@ This package contains the development files for Palapeli.
   %{kf5_find_htmldocs}
 %endif
 
-%suse_update_desktop_file -r org.kde.palapeli          Game BoardGame
+%suse_update_desktop_file -r org.kde.palapeli Game BoardGame
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -133,19 +132,16 @@ This package contains the development files for Palapeli.
 %{_kf5_sharedir}/mime/packages/palapeli-mimetypes.xml
 
 %files data
-%license LICENSES/*
 %{_kf5_appsdir}/palapeli/
 %config %{_kf5_configdir}/palapeli-collectionrc
 
 %files devel
-%license LICENSES/*
 %{_includedir}/Pala
 %{_kf5_libdir}/libpala.so
 %{_kf5_cmakedir}/Pala/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
