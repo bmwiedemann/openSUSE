@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           gwenview5
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
@@ -45,6 +45,7 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Activities)
 BuildRequires:  cmake(KF5Baloo)
 BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5ItemModels)
@@ -66,7 +67,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(libtiff-4)
-Recommends:     %{name}-lang
 Provides:       gwenview = %{version}
 Obsoletes:      gwenview < %{version}
 
@@ -90,7 +90,7 @@ list window, providing navigation of file hierarchies.
   %{kf5_find_htmldocs}
 %endif
 
-%suse_update_desktop_file -r org.kde.gwenview       Graphics RasterGraphics Viewer KDE
+%suse_update_desktop_file -r org.kde.gwenview Graphics RasterGraphics Viewer KDE
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -121,7 +121,6 @@ list window, providing navigation of file hierarchies.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

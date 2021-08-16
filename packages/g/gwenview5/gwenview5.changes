@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Add catalog definition for Dolphin context menu items (kde#439931)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Don't correct zoom level for hidpi, instead correct target rectangle (kde#438125)
+  * Add tooltip for "save all" button after editing image (kde#433387)
+  * Add "Copy" items to context menus (kde#437264)
+  * Use a simple QGraphicsItem subclass for drawing raster images (kde#271671)
+  * InfoContextManagerItem: use indent not contentMargins for indenting, change
+    text and position of "More...", adjust margins, change title (kde#431627)
+  * Prefer mime type from content over file name when loading (kde#329140)
+  * Set status bar size constraint to fixed size (kde#434786)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
