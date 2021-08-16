@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kipi-plugins
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Plug-Ins for Image Manipulation
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
-Recommends:     %{name}-lang
 Obsoletes:      kipi-plugins-acquireimage < %{version}
 Obsoletes:      kipi-plugins-geolocation < %{version}
 Obsoletes:      kipi-plugins5 < %{version}
@@ -70,7 +69,7 @@ FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/g" common/libkipiplugins/tools/kpversion.h.cmake.in
 
 # Workaround for kde#369517 - vkontakte installs translations even if not built
-rm -f po/*/kipiplugin_vkontakte.po
+rm po/*/kipiplugin_vkontakte.po
 
 %build
 %cmake_kf5 -d build
@@ -85,7 +84,7 @@ rm -f %{buildroot}%{_kf5_libdir}/libKF5kipiplugins.so
 %if %{with lang}
 %find_lang kipiplugins %{name}.lang
 
-for i in dropbox facebook flashexport flickr googleservices imageshack imgur jalbum kmlexport mediawiki piwigo printimages rajce remotestorage sendimages smug yandexfotki
+for i in dropbox facebook flickr googleservices imageshack imgur jalbum kmlexport mediawiki piwigo printimages rajce remotestorage sendimages smug yandexfotki
 do
   %find_lang kipiplugin_$i %{name}.lang
 done
