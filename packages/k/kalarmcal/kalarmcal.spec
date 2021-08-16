@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarmcal
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Library for handling kalarm calendar data
 License:        LGPL-2.1-or-later
@@ -43,7 +43,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Test)
-Recommends:     %{name}-lang
 
 %description
 This library provides access to and handling of kalarm calendar data.
@@ -97,8 +96,6 @@ applications wanting to use kalarmcal.
 %postun -n libKF5AlarmCalendar5 -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
-%doc README DESIGN.html
 %{_kf5_debugdir}/kalarmcal.categories
 %{_kf5_debugdir}/kalarmcal.renamecategories
 
@@ -115,7 +112,6 @@ applications wanting to use kalarmcal.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_kalarm.desktop
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5AlarmCalendar/
 %{_kf5_includedir}/KAlarmCal/
 %{_kf5_includedir}/kalarmcal_version.h
@@ -124,7 +120,6 @@ applications wanting to use kalarmcal.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:35:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Fix auto tests
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix deletion of events with reminders after the main event (kde#440200)
+  * Fix events with reminder alarms not triggering (kde#440200)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Fix clazy warning
+  * Use QStringView here
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
