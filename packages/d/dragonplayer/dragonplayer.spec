@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dragonplayer
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Multimedia Player
 License:        GPL-2.0-or-later
@@ -76,7 +76,7 @@ Dragon Player is a simple video player.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.dragonplayer   Video
+  %suse_update_desktop_file org.kde.dragonplayer Video
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -105,7 +105,6 @@ Dragon Player is a simple video player.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
