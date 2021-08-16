@@ -58,6 +58,8 @@ Requires:       cairo-devel
 Provides:       %{python_module cairo-common-devel = %{version}}
 Provides:       %{python_module pycairo-common-devel = %{version}}
 Obsoletes:      %{python_module cairo-common-devel < %{version}}
+Provides:       %{python_module cairo-devel = %{version}}
+Obsoletes:      %{python_module cairo-devel < %{version}}
 Provides:       python-cairo-common-devel = %{version}
 Obsoletes:      python-cairo-common-devel < %{version}
 
