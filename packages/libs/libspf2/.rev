@@ -31,4 +31,28 @@
 is true, which is the case when using GCC5.</comment>
     <requestid>312850</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>885e1d005580f9f98a31dc2a17bd8cbc</srcmd5>
+    <version>unknown</version>
+    <time>1629101487</time>
+    <user>RBrownSUSE</user>
+    <comment>- 0001-spf_compile.c-Correct-size-of-ds_avail.patch: Fixed a remote stack
+  overflow (CVE-2021-20314 bsc#1189104)
+- reworked version for openSUSE, based on Fedora version
+  * libspf2-1.2.10-format.patch
+  * libspf2-1.2.10-libreplace.patch
+- Use -std=gnu89, logging macros are broken when __STDC_VERSION__ &gt;= 199901L
+  is true, which is the case when using GCC5.
+- Rename spf2 to libspf2-tools (like we do for e.g. libwmf-tools)
+- Move README file to tools subpackage. Trim description of SRPM
+  a bit.
+- Package LICENSES file as doc.
+- Rename the spfquery binary to spf_query to avoid a conflict with the
+  perl-Mail-SPF package.
+- Exclude static binaries and shift the remaining into the spf2 package.
+- Add -n libspf2-2 as arguments to post and postun.
+- initial package (version 1.2.10)
+</comment>
+    <requestid>911940</requestid>
+  </revision>
 </revisionlist>
