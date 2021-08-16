@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 10 14:14:01 UTC 2021 - pgajdos@suse.com
+
+- fix build with openexr3: remove redundant BuildRequires (pkgconfig(IlmBase))
+
+-------------------------------------------------------------------
 Sat Jun 19 00:11:55 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build on TW with asio 1.18.x, add
