@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-desktop-applets
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Telepathy presence applet
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Qml)
 Requires:       ktp-common-internals
-Recommends:     %{name}-lang
 Provides:       ktp-presence-applet = 0.5.3
 Obsoletes:      ktp-presence-applet < 0.5.3
 Provides:       ktp-contact-applet = 0.5.3
@@ -77,7 +76,6 @@ This package provides a Plasma applet to launch your Telepathy contacts list.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
