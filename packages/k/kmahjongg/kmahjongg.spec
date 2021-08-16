@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmahjongg
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Mahjongg game
 License:        GPL-2.0-or-later
@@ -50,7 +50,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 Obsoletes:      kmahjongg5 < %{version}
 Provides:       kmahjongg5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KMahjongg is a clone of the well known tile based patience game of the
@@ -72,7 +71,7 @@ by removing pieces of the same type.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kmahjongg          Game BoardGame
+  %suse_update_desktop_file -r org.kde.kmahjongg Game BoardGame
 
 %files
 %license LICENSES/*
@@ -87,7 +86,6 @@ by removing pieces of the same type.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
