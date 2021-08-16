@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 25 12:45:20 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.47
+  * Fix bugs
+  * Use DBus to provide timezoon
+- Add fix-qDBusRegisterMetaType-error.patch.
+ 
+-------------------------------------------------------------------
 Thu Apr 15 08:39:18 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add deepin-control-center-no-user-experience.patch: Disable User

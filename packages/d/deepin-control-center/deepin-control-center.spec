@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-control-center
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define _name dde-control-center
 %if 0%{?is_opensuse}
@@ -23,10 +24,10 @@
 %endif
 
 Name:           deepin-control-center
-Version:        5.4.17
+Version:        5.4.47
 Release:        0
 Summary:        New control center for Linux Deepin
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 URL:            https://github.com/linuxdeepin/dde-control-center
 Source0:        https://github.com/linuxdeepin/dde-control-center/archive/%{version}/%{_name}-%{version}.tar.gz
 # PATCH-FOR-OPENSUSE deepin-control-center-no-user-experience.patch hillwood@opensuse.org
@@ -34,44 +35,46 @@ Source0:        https://github.com/linuxdeepin/dde-control-center/archive/%{vers
 Patch0:         %{name}-no-user-experience.patch
 # PATCH-FOR-OPENSUSE systeminfo-deepin-icon.patch hillwood@opensuse.org - Use deepin icons instead of UOS
 Patch1:         systeminfo-deepin-icon.patch
+# PATCH-FOR-UPSTEAM fix-qDBusRegisterMetaType-error.patch hillwood@opensuse.org
+Patch2:         fix-qDBusRegisterMetaType-error.patch
 Group:          System/GUI/Other
-BuildRequires:  fdupes
 BuildRequires:  cmake
-BuildRequires:  gtest
-BuildRequires:  dtkcore
-BuildRequires:  update-desktop-files
-BuildRequires:  desktop-file-utils
-BuildRequires:  deepin-dock-devel
 BuildRequires:  deepin-desktop-base
+BuildRequires:  deepin-dock-devel
 BuildRequires:  deepin-pw-check-devel
-BuildRequires:  cmake(KF5NetworkManagerQt)
-BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
-BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
-BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
-BuildRequires:  pkgconfig(dde-network-utils)
-BuildRequires:  pkgconfig(gsettings-qt)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Xml)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(xcb-ewmh)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(udisks2-qt5)
-BuildRequires:  cmake(PolkitQt5-1)
+BuildRequires:  desktop-file-utils
+BuildRequires:  dtkcore
+BuildRequires:  fdupes
+BuildRequires:  gtest
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libqt5-linguist
+BuildRequires:  update-desktop-files
+BuildRequires:  cmake(KF5NetworkManagerQt)
+BuildRequires:  cmake(PolkitQt5-1)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Multimedia)
+BuildRequires:  pkgconfig(Qt5Sql)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(dde-network-utils)
+BuildRequires:  pkgconfig(dframeworkdbus) >= 2.0
+BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
+BuildRequires:  pkgconfig(gsettings-qt)
+BuildRequires:  pkgconfig(udisks2-qt5)
+BuildRequires:  pkgconfig(xcb-ewmh)
+BuildRequires:  pkgconfig(xext)
 Requires:       deepin-account-faces
 Requires:       deepin-api
 Requires:       deepin-daemon
-Requires:       qt5integration
 Requires:       deepin-start
-Requires:       redshift
 Requires:       libqt5-qdbus
+Requires:       qt5integration
+Requires:       redshift
 Recommends:     %{name}-data
 Recommends:     %{name}-lang
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build

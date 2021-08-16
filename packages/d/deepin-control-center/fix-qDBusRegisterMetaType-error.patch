@@ -1,0 +1,41 @@
+From 77de2c237cf56acaf70e47b8ee6e88053db1ceeb Mon Sep 17 00:00:00 2001
+From: Felix Yan <felixonmars@archlinux.org>
+Date: Tue, 6 Jul 2021 00:35:02 +0800
+Subject: [PATCH] fix: build failure due to missing include on QDBusMetaType
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Fixes the following build failure:
+
+```
+/build/deepin-control-center/src/dde-control-center-5.4.47/src/frame/window/modules/network/connectioneditpage.cpp: In member function ‘void dccV20::network::ConnectionEditPage::prepareConnection()’:
+/build/deepin-control-center/src/dde-control-center-5.4.47/src/frame/window/modules/network/connectioneditpage.cpp:354:9: error: ‘qDBusRegisterMetaType’ was not declared in this scope; did you mean ‘qRegisterMetaType’?
+  354 |         qDBusRegisterMetaType<QByteArrayList>();
+      |         ^~~~~~~~~~~~~~~~~~~~~
+      |         qRegisterMetaType
+/build/deepin-control-center/src/dde-control-center-5.4.47/src/frame/window/modules/network/connectioneditpage.cpp:354:45: error: expected primary-expression before ‘>’ token
+  354 |         qDBusRegisterMetaType<QByteArrayList>();
+      |                                             ^
+/build/deepin-control-center/src/dde-control-center-5.4.47/src/frame/window/modules/network/connectioneditpage.cpp:354:47: error: expected primary-expression before ‘)’ token
+  354 |         qDBusRegisterMetaType<QByteArrayList>();
+      |                                               ^
+```
+
+Log:
+---
+ src/frame/window/modules/network/connectioneditpage.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/src/frame/window/modules/network/connectioneditpage.h b/src/frame/window/modules/network/connectioneditpage.h
+index 41020b663..f9ddd4fe0 100644
+--- a/src/frame/window/modules/network/connectioneditpage.h
++++ b/src/frame/window/modules/network/connectioneditpage.h
+@@ -29,6 +29,7 @@
+ #include "interface/moduleinterface.h"
+ #include "interface/namespace.h"
+ 
++#include <QDBusMetaType>
+ #include <QPointer>
+ #include <QPushButton>
+ #include <QVBoxLayout>
