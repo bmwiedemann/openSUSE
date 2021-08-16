@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           lokalize
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Translation Editor
 License:        GPL-2.0-or-later
@@ -49,12 +49,10 @@ BuildRequires:  cmake(KF5Sonnet)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
-BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 This package contains lokalize, an editor for translations
@@ -79,7 +77,7 @@ export CFLAGS="%{optflags} -fPIC"
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.lokalize      Development Translation
+  %suse_update_desktop_file -r org.kde.lokalize Development Translation
   %fdupes -s %{buildroot}%{_kf5_sharedir}/lokalize
 
 %files
@@ -97,7 +95,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
