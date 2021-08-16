@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           klettres
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Alphabet Learning Game
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -74,7 +73,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.%{name}       Education Languages
+  %suse_update_desktop_file org.kde.%{name} Education Languages
 
 %files
 %license COPYING
@@ -92,7 +91,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
