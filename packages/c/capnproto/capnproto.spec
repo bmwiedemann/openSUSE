@@ -16,9 +16,9 @@
 #
 
 
-%define _libver 0_8
+%define _libver 0_9
 Name:           capnproto
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        A Data Serialization Format
 License:        MIT
@@ -85,6 +85,7 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_libdir}/libcapnp-rpc-%{version}.so
 %{_libdir}/libcapnpc-%{version}.so
 %{_libdir}/libcapnp-json-%{version}.so
+%{_libdir}/libcapnp-websocket-%{version}.so
 %{_libdir}/libkj-test-%{version}.so
 %{_libdir}/libkj-%{version}.so
 %{_libdir}/libkj-async-%{version}.so
@@ -97,6 +98,7 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_libdir}/libcapnp.so
 %{_libdir}/libcapnpc.so
 %{_libdir}/libcapnp-json.so
+%{_libdir}/libcapnp-websocket.so
 %{_libdir}/libkj-test.so
 %{_libdir}/libkj-async.so
 %{_libdir}/libkj-http.so
@@ -107,8 +109,10 @@ find %{buildroot}%{_libdir} -type f \( -name "*.a" -o -name "*.la" \) -delete -p
 %{_libdir}/cmake/CapnProto/CapnProtoMacros.cmake
 %{_libdir}/cmake/CapnProto/CapnProtoTargets.cmake
 %{_libdir}/pkgconfig/capnp.pc
+%{_libdir}/pkgconfig/capnpc.pc
 %{_libdir}/pkgconfig/capnp-json.pc
 %{_libdir}/pkgconfig/capnp-rpc.pc
+%{_libdir}/pkgconfig/capnp-websocket.pc
 %{_libdir}/pkgconfig/kj-async.pc
 %{_libdir}/pkgconfig/kj-gzip.pc
 %{_libdir}/pkgconfig/kj-http.pc
