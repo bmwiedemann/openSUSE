@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:39:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Honor KDE Kiosk setting lineedit_reveal_password
+  * Remove this line too
+  * Not necessary to search in each sub folder
+  * Remove code about duplicate plugins
+  * Use more target centric code
+  * Remove ServiceTypes
+  * Modernize code
+  * Use forward declaration (scripted)
+  * Drop bogus KF5Service dependency
+  * Migration code will be removed in kf6
+  * Use ON vs TRUE
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

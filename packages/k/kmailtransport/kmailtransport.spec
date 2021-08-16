@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmailtransport
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailtransport layer
 License:        LGPL-2.1-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KPimGAPI)
 BuildRequires:  cmake(KPimSMTP)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Test)
-Recommends:     %{name}-lang
 
 %description
 This package contains library to provide mailtransport functionality for
@@ -106,7 +105,6 @@ to develop KDE PIM applications.
 %postun -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %{_kf5_configkcfgdir}/mailtransport.kcfg
 %{_kf5_debugdir}/kmailtransport.categories
 %{_kf5_debugdir}/kmailtransport.renamecategories
@@ -119,11 +117,9 @@ to develop KDE PIM applications.
 %{_kf5_libdir}/libKF5MailTransport.so.5*
 
 %files -n libKF5MailTransportAkonadi5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5MailTransportAkonadi.so.5*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5MailTransport/
 %{_kf5_includedir}/MailTransport/
 %{_kf5_includedir}/MailTransportAkonadi/
@@ -139,7 +135,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
