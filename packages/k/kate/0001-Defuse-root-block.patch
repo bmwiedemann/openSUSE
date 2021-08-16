@@ -1,4 +1,4 @@
-From 5cec675834a722a6cb55858074eb7a2d13ec685e Mon Sep 17 00:00:00 2001
+From bfe1b2dd63d410c8365b2197a313193ab29ebe5e Mon Sep 17 00:00:00 2001
 From: Fabian Vogt <fabian@ritter-vogt.de>
 Date: Sat, 18 Feb 2017 13:49:14 +0100
 Subject: [PATCH] Defuse root block
@@ -13,11 +13,11 @@ That way it's only an impact on usability.
  2 files changed, 4 insertions(+), 26 deletions(-)
 
 diff --git a/kate/main.cpp b/kate/main.cpp
-index cea01d6..37d418f 100644
+index 5cdaa6c4d..042c0cfc8 100644
 --- a/kate/main.cpp
 +++ b/kate/main.cpp
 @@ -48,19 +48,8 @@ int main(int argc, char **argv)
- #ifndef Q_OS_WIN
+ #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
      // Prohibit using sudo or kdesu (but allow using the root user directly)
      if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
@@ -33,17 +33,17 @@ index cea01d6..37d418f 100644
 -                      << std::endl;
 -            return EXIT_FAILURE;
 -        }
-+        std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
-+        std::cout << "SUDO_EDITOR=kate sudoedit <file>" << std::endl;
++    std::cout << "THIS IS POTENTIALLY INSECURE!\nTo edit files as root please use:" << std::endl;
++    std::cout << "SUDO_EDITOR=kwrite sudoedit <file>" << std::endl;
      }
  #endif
      /**
 diff --git a/kwrite/main.cpp b/kwrite/main.cpp
-index 87cac6f..4f0bad2 100644
+index 4daa7c3a2..d3b83686c 100644
 --- a/kwrite/main.cpp
 +++ b/kwrite/main.cpp
 @@ -40,19 +40,8 @@ extern "C" Q_DECL_EXPORT int main(int argc, char **argv)
- #ifndef Q_OS_WIN
+ #if !defined(Q_OS_WIN) && !defined(Q_OS_HAIKU)
      // Prohibit using sudo or kdesu (but allow using the root user directly)
      if (getuid() == 0) {
 -        if (!qEnvironmentVariableIsEmpty("SUDO_USER")) {
@@ -65,5 +65,5 @@ index 87cac6f..4f0bad2 100644
  #endif
  
 -- 
-2.30.2
+2.32.0
 

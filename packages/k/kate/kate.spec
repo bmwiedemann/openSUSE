@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kate
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Advanced Text Editor
 License:        GPL-3.0-or-later
@@ -65,7 +65,6 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       %{name}-plugins = %{version}
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -109,7 +108,6 @@ plugins and data files for Kate and KWrite editors.
   %endif
 
 %files
-%license LICENSES/*
 %doc README*
 %dir %{_kf5_iconsdir}/hicolor/150x150/
 %dir %{_kf5_iconsdir}/hicolor/150x150/apps
@@ -130,7 +128,6 @@ plugins and data files for Kate and KWrite editors.
 %{_kf5_iconsdir}/hicolor/*/apps/kate.*
 
 %files -n kwrite
-%license LICENSES/*
 %doc README*
 %doc %lang(en) %{_kf5_htmldir}/en/kwrite/
 %{_kf5_applicationsdir}/org.kde.kwrite.desktop
@@ -152,7 +149,6 @@ plugins and data files for Kate and KWrite editors.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

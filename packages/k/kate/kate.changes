@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:36:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * improve kate on haiku os
+  * avoid double branch name computation
+- Rebase 0001-Defuse-root-block.patch
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * LocHistory: When limiting size, also rewind currentLocation
+  * Location history improvements
+  * handle nullptr return of screenAt() (kde#439804)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * ensure we unify line endings (kde#436753)
+  * add missing name for hot new stuff (kde#438018)
+  * lspclient: bypass shutdown delay if not needed and cleanup defunct code (kde#438790)
+  * ensure to not crash on missing context menu (kde#426939)
+  * lspclient: add action to request and apply quick fix code action (kde#437746)
+  * Work around conflicting shortcuts in preview plugin (kde#386265)
+  * S&R: Fix matching ^ and $ in multi-line expressions (kde#318232)
+  * Prevent storing diff files in recent files history (kde#436906)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
