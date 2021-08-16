@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcharselect
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Character Selector
 License:        GPL-2.0-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KCharSelect is the KDE character selector tool.
