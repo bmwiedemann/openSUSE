@@ -44,6 +44,7 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
+Patch1:         fix-lto.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -263,7 +264,6 @@ A small test browswer from webkit, useful for testing features.
 %autosetup -p1 -n webkitgtk-%{version}
 
 %build
-%define _lto_cflags %{nil}
 # Here we must muzzle our dog so it doesn't eat all the memory
 max_link_jobs="%{?jobs:%{jobs}}"
 max_compile_jobs="%{?jobs:%{jobs}}"

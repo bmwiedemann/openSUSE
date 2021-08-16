@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 10 12:10:02 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Enable LTO by using upstream patch fix-lto.patch.
+
+-------------------------------------------------------------------
 Thu Aug  5 08:27:25 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop unneeded patch on Leap and SLE by now:
