@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:39:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Drop X-KDE-Keywords entries from kcm desktop files
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Provide metadata in kontact plugin for settings dialog rewrite
+  * Install summary KCM in pim/kcms/summary
+  * Make it build with KCMUtils <= 5.83
+  * Use same name for pluginId and library name
+  * Use KPluginMetaData to load KCMs in KCMultiDialog
+  * Correct loading wrong metadata file
+  * Update it for adding build support
+  * Use directly K_PLUGIN_CLASS_WITH_JSON
+  * Port KNotesSummary away from KCM create function
+  * Port away from create functions
+  * Modernize code
+  * Use forward declaration here
+  * Make doctools optional
+  * Migration code will be remove in new release
+  * In kf6 migration method will be removed
+  * Use openStateConfig for storing window size
+  * Fix copyPaste error
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

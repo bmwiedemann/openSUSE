@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotes
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Popup Notes
 License:        GPL-2.0-or-later
@@ -69,7 +69,7 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
@@ -78,7 +78,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Obsoletes:      knotes5 < %{version}
 Provides:       knotes5 = %{version}
 # It can only build on the same platforms as Qt Webengine
@@ -102,7 +101,7 @@ KNotes is a note taking application by KDE.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-%suse_update_desktop_file org.kde.knotes          Utility  DesktopUtility
+%suse_update_desktop_file org.kde.knotes Utility DesktopUtility
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -129,20 +128,36 @@ KNotes is a note taking application by KDE.
 %{_kf5_knsrcfilesdir}/knotes_printing_theme.knsrc
 %{_kf5_kxmlguidir}/knotes/
 %{_kf5_notifydir}/akonadi_notes_agent.notifyrc
-%{_kf5_plugindir}/kcm_knote.so
-%{_kf5_plugindir}/kcm_knotessummary.so
+%dir %{_kf5_plugindir}/pim
+%dir %{_kf5_plugindir}/pim/kcms
+%dir %{_kf5_plugindir}/pim/kcms/knotes
+%dir %{_kf5_plugindir}/pim/kcms/summary
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_action.so
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_collection.so
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_display.so
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_editor.so
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_misc.so
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_network.so
+%{_kf5_plugindir}/pim/kcms/knotes/kcm_knote_print.so
+%{_kf5_plugindir}/kontact5/kontact_knotesplugin.so
+%{_kf5_plugindir}/pim/kcms/summary/kcmknotessummary.so
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_plugindir}/kontact5/kontact_knotesplugin.so
 %{_kf5_servicesdir}/kcmknotessummary.desktop
-%{_kf5_servicesdir}/knote_*.desktop
 %{_kf5_servicesdir}/kontact/
+%{_kf5_servicesdir}/kcm_knote_action.desktop
+%{_kf5_servicesdir}/kcm_knote_collection.desktop
+%{_kf5_servicesdir}/kcm_knote_display.desktop
+%{_kf5_servicesdir}/kcm_knote_editor.desktop
+%{_kf5_servicesdir}/kcm_knote_misc.desktop
+%{_kf5_servicesdir}/kcm_knote_network.desktop
+%{_kf5_servicesdir}/kcm_knote_print.desktop
 %{_kf5_sharedir}/knotes/
 %{_libdir}/libknotesprivate.so.*
 %{_libdir}/libnotesharedprivate.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
