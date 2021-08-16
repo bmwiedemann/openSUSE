@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkmahjongg
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        General Data for KDE Games
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 Obsoletes:      %{name}-kf5 < %{version}
 Provides:       %{name}-kf5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 This package contains data which is required by KDE games.
@@ -92,7 +91,6 @@ develop games that uses Mahjongg tiles.
 %postun -n libKF5KMahjongglib5 -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %doc README
 %{_kf5_debugdir}/libkmahjongg.categories
 %{_kf5_sharedir}/kmahjongglib/
@@ -103,15 +101,13 @@ develop games that uses Mahjongg tiles.
 %{_kf5_libdir}/libKF5KMahjongglib.so.*
 
 %files devel
-%license LICENSES/*
 %doc README
 %{_kf5_cmakedir}/KF5KMahjongglib
-%{_kf5_includedir}/KF5KMahjongg/
+%{_kf5_includedir}/KMahjongg/
 %{_kf5_libdir}/libKF5KMahjongglib.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
