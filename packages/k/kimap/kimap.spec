@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kimap
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: IMAP library
 License:        LGPL-2.1-or-later
@@ -99,7 +99,6 @@ applications.
 %{_kf5_libdir}/libKF5IMAP.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5IMAP/
 %{_kf5_includedir}/KIMAP/
 %{_kf5_includedir}/kimap_version.h
@@ -110,7 +109,6 @@ applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
