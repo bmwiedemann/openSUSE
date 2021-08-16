@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcolorchooser
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Color Chooser
 License:        MIT
@@ -41,7 +41,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 This is an color chooser application by KDE.
@@ -60,7 +59,7 @@ This is an color chooser application by KDE.
   %if %{with lang}
     %find_lang %{name} --with-man --all-name
   %endif
-  %suse_update_desktop_file -r org.kde.kcolorchooser  Utility DesktopUtility
+  %suse_update_desktop_file -r org.kde.kcolorchooser Utility DesktopUtility
 
 %files
 %license COPYING*
@@ -71,7 +70,6 @@ This is an color chooser application by KDE.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
