@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           eventviews
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Eventviews Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -50,11 +50,34 @@ BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 This internal library implements a GUI framework for viewing various
 calendar events in agenda, list, month view or timeline fashion.
+
+%package -n libKF5EventViews5
+Summary:        Eventviews Library
+License:        LGPL-2.1-or-later
+Group:          System/Libraries
+Requires:       %{name}
+
+%description -n libKF5EventViews5
+This internal library implements a GUI framework for viewing various
+calendar events in agenda, list, month view or timeline fashion.
+
+%package devel
+Summary:        Library for messages
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+Requires:       libKF5EventViews5 = %{version}
+Requires:       cmake(KF5Akonadi)
+Requires:       cmake(KF5AkonadiCalendar)
+Requires:       cmake(KF5CalendarCore)
+Requires:       cmake(KF5CalendarSupport)
+Requires:       cmake(KF5CalendarUtils)
+
+%description devel
+The development package for the eventviews libraries
 
 %lang_package
 
@@ -72,32 +95,8 @@ calendar events in agenda, list, month view or timeline fashion.
   %find_lang %{name} --with-man --all-name
 %endif
 
-%package -n libKF5EventViews5
-Summary:        Eventviews Library
-License:        LGPL-2.1-or-later
-Group:          System/Libraries
-Requires:       %{name}
-
-%description -n libKF5EventViews5
-This internal library implements a GUI framework for viewing various
-calendar events in agenda, list, month view or timeline fashion.
-
 %post  -n libKF5EventViews5 -p /sbin/ldconfig
 %postun -n libKF5EventViews5 -p /sbin/ldconfig
-
-%package devel
-Summary:        Library for messages
-License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
-Requires:       libKF5EventViews5 = %{version}
-Requires:       cmake(KF5Akonadi)
-Requires:       cmake(KF5AkonadiCalendar)
-Requires:       cmake(KF5CalendarCore)
-Requires:       cmake(KF5CalendarSupport)
-Requires:       cmake(KF5CalendarUtils)
-
-%description devel
-The development package for the eventviews libraries
 
 %files
 %license LICENSES/*
@@ -106,7 +105,6 @@ The development package for the eventviews libraries
 %{_kf5_servicetypesdir}/calendardecoration.desktop
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5EventViews/
 %{_kf5_includedir}/EventViews/
 %{_kf5_includedir}/eventviews/
@@ -119,7 +117,6 @@ The development package for the eventviews libraries
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

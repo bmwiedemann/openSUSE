@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Simplify sorting the Todo List view
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Shorten holiday names to fit the Agenda view's header (kde#225498)
+  * Fix clazy warning
+  * Modernize code
+  * Use forward declaration (scripted)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
