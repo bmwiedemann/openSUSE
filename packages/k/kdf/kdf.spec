@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdf
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Disk Usage Viewer
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 KDE free disk space utility
@@ -104,7 +103,6 @@ This utility allows you to manage removable media.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
