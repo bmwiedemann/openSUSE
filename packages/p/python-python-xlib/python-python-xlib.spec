@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-xlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%if !0%{?sle_version} || 0%{?sle_version} > 150300
+%define skip_python2 1
+%else
 %define         oldpython python
+%endif
 Name:           python-python-xlib
 Version:        0.29
 Release:        0
@@ -35,6 +39,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six >= 1.10.0}
 %if 0%{suse_version} < 1550
 BuildRequires:  python-mock
+BuildRequires:  xauth
 %endif
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -43,7 +48,7 @@ Requires:       python-six >= 1.10.0
 BuildArch:      noarch
 Provides:       python-xlib = %{version}
 Obsoletes:      python-xlib < %{version}
-%ifpython2
+%if 0%{?sle_version} && 0%{?sle_version} <= 150300 && "%{python_flavor}" == "python2"
 Provides:       %{oldpython}-xlib = %{version}
 Obsoletes:      %{oldpython}-xlib < %{version}
 %endif

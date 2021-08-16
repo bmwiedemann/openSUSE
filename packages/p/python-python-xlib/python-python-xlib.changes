@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 12 11:29:05 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Completely remove python2 build for TW, Leap 15.4 and SLE 15 SP4.
+
+-------------------------------------------------------------------
+Thu Aug 12 11:26:42 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add buildrequires xauth to successfully build on SLE.
+
+-------------------------------------------------------------------
 Fri Dec 11 23:39:19 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to version 0.29
