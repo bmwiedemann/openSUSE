@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:43:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:06:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * It compiles fine without deprecated method
+  * Use qt cmake compat macro
+  * Time to increase version
+  * Add cmake preset support
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
