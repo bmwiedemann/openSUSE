@@ -2171,4 +2171,13 @@ libapparmor:
   - crypto-policies-mr720.diff (forwarded request 910590 from cboltz)</comment>
     <requestid>910591</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>09291c9600b6c938b4c024a3c0dee530</srcmd5>
+    <version>3.0.3</version>
+    <time>1629101336</time>
+    <user>RBrownSUSE</user>
+    <comment>- add profiles-python-3.10-mr783.diff: update abstractions/python and
+  profiles for python 3.10 (forwarded request 911594 from cboltz)</comment>
+    <requestid>911600</requestid>
+  </revision>
 </revisionlist>

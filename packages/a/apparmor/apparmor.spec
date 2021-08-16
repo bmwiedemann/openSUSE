@@ -78,6 +78,9 @@ Patch5:         apparmor-lessopen-nfs-workaround.diff
 # make <apache2.d> include in apache extra profile optional to make openQA happy (boo#1178527)
 Patch6:         apache-extra-profile-include-if-exists.diff
 
+# update abstractions/python and profiles for python 3.10 (submitted upstream 2021-08-11 https://gitlab.com/apparmor/apparmor/-/merge_requests/783)
+Patch7:         profiles-python-3.10-mr783.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define apparmor_bin_prefix %{?usrmerged:/usr}/lib/apparmor
@@ -340,6 +343,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch3 -p1
 %patch4
 %patch5
+%patch7 -p1
 
 %build
 %define _lto_cflags %{nil}

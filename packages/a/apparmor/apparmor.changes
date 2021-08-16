@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 11 19:44:15 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- add profiles-python-3.10-mr783.diff: update abstractions/python and
+  profiles for python 3.10
+
+-------------------------------------------------------------------
 Sat Aug  7 10:46:52 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - update to AppArmor 3.0.3
