@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenetwork-filesharing
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Network Libraries
 License:        GPL-2.0-or-later
@@ -43,7 +43,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Enhances:       dolphin
 # The package was named kdenetwork4-filesharing, although being a KF5 plugin
 Provides:       kdenetwork4-filesharing = %{version}
@@ -89,7 +88,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
