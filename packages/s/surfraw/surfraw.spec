@@ -1,7 +1,7 @@
 #
 # spec file for package surfraw
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ Source:         https://gitlab.com/surfraw/Surfraw/uploads/2de827b2786ef2fe43b6f
 Patch0:         test-show-failing-url.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         reproducible.patch
-BuildRequires:  htdig
 BuildRequires:  make
 BuildRequires:  perl-HTML-Parser
 BuildRequires:  perl-LWP-Protocol-https
@@ -66,18 +65,6 @@ Requires:       perl-libwww-perl
 %description opensearch
 Surfraw OpenSearch provides opensearch support.
 %endif
-
-%package woffle
-Summary:        Surfraw woffle
-Group:          Productivity/Networking/Web/Browsers
-Requires:       %{name} = %{version}
-Requires:       htdig
-Requires:       wget
-
-%description woffle
-Surfraw elvi woffle.
-
-Uses htdig to create an index that needs to be served via a webserver.
 
 %prep
 %setup -q
@@ -136,9 +123,5 @@ export PATH=${PWD}/%{buildroot}/%{_libexecdir}/%{name}:$PATH
 %{_bindir}/opensearch*
 %{_mandir}/man1/opensearch-* 
 %endif
-
-%files woffle
-%license COPYING
-%{_libexecdir}/%{name}/woffle
 
 %changelog
