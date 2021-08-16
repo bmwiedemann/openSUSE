@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kamoso
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Application to take pictures and videos using a webcam
 License:        GPL-2.0-or-later
@@ -55,7 +55,6 @@ Requires:       gstreamer-plugins-bad
 Requires:       gstreamer-plugins-base
 Requires:       gstreamer-plugins-good
 Requires:       kirigami2
-Recommends:     %{name}-lang
 
 %description
 Kamoso is an application to take pictures and videos using a webcam.
@@ -81,7 +80,7 @@ YouTube.
 %endif
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS
 %doc %lang(en) %{_kf5_htmldir}/en/kamoso/
 %{_kf5_applicationsdir}/org.kde.kamoso.desktop
@@ -95,7 +94,6 @@ YouTube.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
