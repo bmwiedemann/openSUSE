@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kapptemplate
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Template for KDE Application Development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -47,7 +47,6 @@ BuildRequires:  cmake(Qt5Test)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 Obsoletes:      kapptemplate5 < %{version}
-Recommends:     %{name}-lang
 
 %description
 This package contains templates to start the development of a new KDE
@@ -69,7 +68,7 @@ sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file    org.kde.kapptemplate
+  %suse_update_desktop_file org.kde.kapptemplate
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -87,7 +86,6 @@ sed -i 's|Categories=Qt;KDE;Development;|Categories=Qt;KDE;Development;IDE;X-KDE
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
