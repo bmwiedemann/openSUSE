@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 28 12:31:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.02.26
+  * Clean up some Coverity static analysis pedantic warnings
+  * Use strlcpy instead of strncpy for safe string handling
+  * Fix recv error when resources are low
+
+-------------------------------------------------------------------
 Mon Mar  1 08:30:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.02.25
