@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmousetool
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Automatic Mouse Click
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
-Recommends:     %{name}-lang
 Provides:       kmousetool5 = %{version}
 Obsoletes:      kmousetool5 < %{version}
 
@@ -71,7 +70,7 @@ Clicks the mouse for you, reducing hand strain.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.kmousetool   Utility Accessibility
+  %suse_update_desktop_file org.kde.kmousetool Utility Accessibility
 
 %files
 %license COPYING COPYING.DOC
@@ -85,7 +84,6 @@ Clicks the mouse for you, reducing hand strain.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
