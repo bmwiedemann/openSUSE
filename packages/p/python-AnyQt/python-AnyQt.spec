@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-AnyQt
-Version:        0.0.11
+Version:        0.0.13
 Release:        0
 Summary:        PyQt4/PyQt5 compatibility layer
 License:        GPL-3.0-only

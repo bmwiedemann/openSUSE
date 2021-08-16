@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 13 13:34:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.0.13
+  * Raise deprecation warning on getContentsMargins
+  * Add missing QPdfWriter.setPageSize(QPageSize) overload for PyQt5
+  * QtWidgets: Raise a DeprecationWarning on use of QApplication.desktop
+  * Raise a DeprecationWarning on use of QFontMetrics(F).width
+  * QtGui: Add QFontMetrics.horizontalAdvance when not present
+  * QtWidgets: Add QWidget.screen when not present
+  * QtGui: Add QGuiApplication.screenAt when not present
+- from version 0.0.12
+  * QtCore: Add a QT_VERSION_INFO tuple with parsed qVersion
+  * Add AnyQt.sip stub
+  * QTest: Add qWaitFor where not available
+
+-------------------------------------------------------------------
 Mon Jan 25 16:38:19 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.0.11
