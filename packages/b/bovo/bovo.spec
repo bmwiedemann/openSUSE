@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           bovo
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Five-in-a-row Board Game
 License:        GPL-2.0-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by KDE.
@@ -77,7 +76,6 @@ Bovo is a Gomoku (Connect Five, Five in a row, X and O, etc) game by KDE.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
