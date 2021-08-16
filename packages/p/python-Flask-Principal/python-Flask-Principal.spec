@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Principal
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,15 +22,17 @@ Version:        0.4.0
 Release:        0
 License:        MIT
 Summary:        Identity management for flask
-Url:            http://packages.python.org/Flask-Principal/
+URL:            http://packages.python.org/Flask-Principal/
 Group:          Development/Languages/Python
 # Pypi sources don't include tests
 #Source:         https://files.pythonhosted.org/packages/source/F/Flask-Principal/Flask-Principal-%%{version}.tar.gz
 Source:         https://github.com/mattupstate/flask-principal/archive/%{version}.tar.gz
 Source99:       https://raw.githubusercontent.com/mattupstate/flask-principal/master/LICENSE
-BuildRequires:  python-rpm-macros
+BuildRequires:  %{python_module importlib-metadata}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module Flask}
@@ -45,7 +48,6 @@ BuildArch:      noarch
 Flask-Principal provides a very loose framework to tie in providers of
 two types of services, often located in different parts of a web application:
 Authentication providers and User information providers.
-
 
 %prep
 %setup -q -n flask-principal-%{version}

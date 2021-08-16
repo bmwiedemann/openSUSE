@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 14 02:54:59 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Require pip and importlib-metadata to fix build.
+
+-------------------------------------------------------------------
 Wed Oct 10 14:59:54 UTC 2018 - Antonio Larrosa <alarrosa@suse.com> - 0.4.0
 
 - Use sources from github instead of pypi, so we can run tests
