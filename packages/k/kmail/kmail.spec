@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmail
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Mail Client
 License:        GPL-2.0-only
@@ -101,7 +101,6 @@ Requires:       %{name}-application-icons
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Requires:       kmail-account-wizard
-Recommends:     %{name}-lang
 Recommends:     akonadi-import-wizard
 Recommends:     akonadi-search
 Recommends:     kleopatra
@@ -192,9 +191,18 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_libdir}/libkmailprivate.so.*
 %{_kf5_notifydir}/akonadi_*_agent.notifyrc
 %{_kf5_notifydir}/kmail2.notifyrc
-%{_kf5_plugindir}/kcm_kmail.so
-%{_kf5_plugindir}/kcm_kmailsummary.so
-%{_kf5_plugindir}/kcm_kontactsummary.so
+%dir %{_kf5_plugindir}/pim
+%dir %{_kf5_plugindir}/pim/kcms
+%dir %{_kf5_plugindir}/pim/kcms/kmail
+%dir %{_kf5_plugindir}/pim/kcms/summary
+%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_accounts.so
+%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_appearance.so
+%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_composer.so
+%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_misc.so
+%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_plugins.so
+%{_kf5_plugindir}/pim/kcms/kmail/kcm_kmail_security.so
+%{_kf5_plugindir}/pim/kcms/summary/kcmkmailsummary.so
+%{_kf5_plugindir}/pim/kcms/summary/kcmkontactsummary.so
 %{_kf5_plugindir}/kmailpart.so
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_plugindir}/kontact5/kontact_kmailplugin.so
@@ -213,7 +221,6 @@ KTNEF is a viewer for email attachments in the TNEF format.
 %{_kf5_sharedir}/kontact/
 
 %files application-icons
-%license LICENSES/*
 %dir %{_kf5_iconsdir}/hicolor/16x16/emblems
 %dir %{_kf5_iconsdir}/hicolor/22x22/emblems
 %dir %{_kf5_iconsdir}/hicolor/8x8
@@ -232,7 +239,6 @@ KTNEF is a viewer for email attachments in the TNEF format.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:39:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Drop X-KDE-Keywords entries from kcm desktop files
+  * Const'ify pointer
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Add parent to menu
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Make the Copy/Move actions in the message reader
+    window work consistently (kde#435410)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
