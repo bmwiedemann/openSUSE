@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akregator
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        RSS Feed Reader
 License:        GPL-2.0-or-later
@@ -53,24 +53,23 @@ BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Syndication)
-BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
-BuildRequires:  cmake(Qt5Concurrent) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
+BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
 BuildRequires:  cmake(Qt5PrintSupport)
-BuildRequires:  cmake(Qt5Qml) >= 5.14.0
-BuildRequires:  cmake(Qt5Quick) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5WebEngine) >= 5.14.0
-BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Qml) >= 5.15.0
+BuildRequires:  cmake(Qt5Quick) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5WebEngine) >= 5.15.0
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 Provides:       akregator5 = %{version}
 Obsoletes:      akregator5 < %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 Akregator is a news feed reader. It enables you to follow news sites,
@@ -95,8 +94,8 @@ browser for news reading.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-rm %{buildroot}%{_kf5_libdir}/*.so
-%suse_update_desktop_file -r org.kde.akregator       Network  RSS-News
+
+%suse_update_desktop_file -r org.kde.akregator Network RSS-News
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -105,6 +104,9 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %license LICENSES/*
 %doc README
 %doc %lang(en) %{_kf5_htmldir}/en/akregator/
+%dir %{_kf5_plugindir}/kontact5
+%dir %{_kf5_plugindir}/pim
+%dir %{_kf5_plugindir}/pim/kcms
 %{_kf5_applicationsdir}/org.kde.akregator.desktop
 %{_kf5_appstreamdir}/org.kde.akregator.appdata.xml
 %{_kf5_bindir}/akregator*
@@ -114,14 +116,13 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_debugdir}/akregator.renamecategories
 %{_kf5_iconsdir}/hicolor/*/apps/akregator*.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/akregator.svg
-%{_kf5_libdir}/libakregatorinterfaces.so*
+%{_kf5_libdir}/libakregatorinterfaces.so.*
 %{_kf5_libdir}/libakregatorprivate.so.*
 %{_kf5_notifydir}/akregator.notifyrc
 %{_kf5_plugindir}/akregator*.so
-%dir %{_kf5_plugindir}/kontact5/
 %{_kf5_plugindir}/kontact5/kontact_akregatorplugin.so
+%{_kf5_plugindir}/pim/kcms/akregator
 %{_kf5_servicesdir}/akregator_*.desktop
-%{_kf5_servicesdir}/feed.protocol
 %{_kf5_servicesdir}/kontact/
 %{_kf5_servicetypesdir}/akregator_plugin.desktop
 %{_kf5_sharedir}/akregator/
@@ -130,7 +131,6 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
