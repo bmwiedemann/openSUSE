@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:51:40 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Updated to release 2.4.0
+  Noteworthy changes:
+  * Backported multithreaded progressive decoder (#7036)
+  * Backported clipboard fixes (#6924)
+  * Fixed remote file read (#7185)
+
+  Fixed issues:
+  * #gh:FreeRDP/FreeRDP#6938: RAILS clipboard remote -> local
+  * #gh:FreeRDP/FreeRDP#6985: Support newer FFMPEG builds
+  * #gh:FreeRDP/FreeRDP#6989: Use OpenSSL default certificate store settings
+  * #gh:FreeRDP/FreeRDP#7073: Planar alignment fixes
+
+-------------------------------------------------------------------
 Mon Mar 15 13:51:17 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to release 2.3.2

@@ -451,4 +451,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>879584</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ccd6ecc39ad107a15e82d6e4f07a92a9</srcmd5>
+    <version>2.4.0</version>
+    <time>1629101332</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911432</requestid>
+  </revision>
 </revisionlist>
