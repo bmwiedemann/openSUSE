@@ -16,4 +16,16 @@
   golang 1.16+ (forwarded request 894949 from hillwood)</comment>
     <requestid>894964</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4c293e21fab02bcba8fc965aa4691fc9</srcmd5>
+    <version>1.9.17</version>
+    <time>1629101358</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 1.9.17
+  * Add com.deepin.system.InputDevices 
+  * Fix wrong XML formatting
+  * Update gesture method(SetInputDevice)
+  * Fix bugs (forwarded request 910695 from hillwood)</comment>
+    <requestid>910912</requestid>
+  </revision>
 </revisionlist>

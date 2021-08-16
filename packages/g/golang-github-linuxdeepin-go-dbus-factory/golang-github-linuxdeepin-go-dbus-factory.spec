@@ -22,7 +22,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           golang-%{provider}-%{project}-%{repo}
-Version:        1.9.3
+Version:        1.9.17
 Release:        0
 Summary:        Golang DBus factory
 License:        GPL-3.0+
