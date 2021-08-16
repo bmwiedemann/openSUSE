@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcron
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Cron job configuration tool
 License:        GPL-2.0-or-later
@@ -35,7 +35,6 @@ Source2:        applications.keyring
 BuildRequires:  extra-cmake-modules
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
@@ -43,7 +42,6 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KCron allows you to change your cron jobs setup.
@@ -78,7 +76,6 @@ KCron allows you to change your cron jobs setup.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
