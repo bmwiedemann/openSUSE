@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-notes
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Library to implement management of notes in Akonadi
 License:        LGPL-2.1-or-later
@@ -37,8 +37,8 @@ BuildRequires:  kf5-filesystem
 BuildRequires:  cmake(KF5Akonadi)
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5Mime)
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Xml) >= 5.14.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 
 %description
 Akonadi Notes is a library that bridges the type-agnostic API of
@@ -91,7 +91,6 @@ library in other applications.
 %{_kf5_libdir}/libKF5AkonadiNotes.so.*
 
 %files devel
-%license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
 %{_kf5_cmakedir}/KF5AkonadiNotes/
@@ -103,7 +102,6 @@ library in other applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
