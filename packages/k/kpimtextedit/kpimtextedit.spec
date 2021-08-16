@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpimtextedit
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Text edit functionality
 License:        LGPL-2.1-or-later
@@ -52,7 +52,6 @@ BuildRequires:  cmake(Qt5Designer)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 This package contains the basic packages for KDE PIM applications, in
@@ -103,7 +102,6 @@ to develop KDE PIM applications.
 %{_kf5_libdir}/libKF5PimTextEdit.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5PimTextEdit/
 %{_kf5_includedir}/KPIMTextEdit/
 %{_kf5_includedir}/kpimtextedit_version.h
@@ -113,7 +111,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

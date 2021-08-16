@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:40:23 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Port away from KStatefulBrush::brush(const QWidget*)
+  * Use std::chrono_literals
+  * Use auto + const'ify
+  * [grantleebuilder/plaintextmarkupbuilder] Fix for Qt older than 5.15.2
+  * Use QStringView here
+  * Use forward declaration here
+  * Allow to store window size
+  * Clean up
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
