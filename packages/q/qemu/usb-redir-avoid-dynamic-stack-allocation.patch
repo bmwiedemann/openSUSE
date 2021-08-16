@@ -6,7 +6,7 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 
 Git-commit: 7ec54f9eb62b5d177e30eb8b1cad795a5f8d8986
-References: CVE-2021-3527
+References: bsc#1186012, CVE-2021-3527
 
 Use autofree heap allocation instead.
 
@@ -21,7 +21,7 @@ Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
  1 file changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
-index 17f06f34179a257e3fd2b354164e..6a75b0dc4ab295a70b4c507c9821 100644
+index af1721a391139818ec9007c16f55..e6474dc543faa707de4d6b2ab03f 100644
 --- a/hw/usb/redirect.c
 +++ b/hw/usb/redirect.c
 @@ -620,7 +620,7 @@ static void usbredir_handle_iso_data(USBRedirDevice *dev, USBPacket *p,

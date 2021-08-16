@@ -2754,4 +2754,26 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
   pvrdma-Fix-the-ring-init-error-flow-CVE-.patch</comment>
     <requestid>908026</requestid>
   </revision>
+  <revision rev="209" vrev="29">
+    <srcmd5>a95278bbe24287bf60be99ea77cd5b8d</srcmd5>
+    <version>unknown</version>
+    <time>1629101322</time>
+    <user>RBrownSUSE</user>
+    <comment>- usb: unbounded stack allocation in usbredir
+  (bsc#1186012, CVE-2021-3527)
+  hw-usb-Do-not-build-USB-subsystem-if-not.patch
+  hw-usb-host-stub-Remove-unused-header.patch
+  usb-hid-avoid-dynamic-stack-allocation.patch
+  usb-limit-combined-packets-to-1-MiB-CVE-.patch
+  usb-mtp-avoid-dynamic-stack-allocation.patch
+- usbredir: free call on invalid pointer in bufp_alloc
+  (bsc#1189145, CVE-2021-3682)
+  usbredir-fix-free-call.patch
+- Add stable patches from upstream:
+  block-nvme-Fix-VFIO_MAP_DMA-failed-No-sp.patch
+  hw-net-can-sja1000-fix-buff2frame_bas-an.patch
+  hw-pci-host-q35-Ignore-write-of-reserved.patch
+</comment>
+    <requestid>911328</requestid>
+  </revision>
 </revisionlist>

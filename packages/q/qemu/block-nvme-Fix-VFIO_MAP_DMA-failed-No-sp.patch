@@ -1,0 +1,92 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@redhat.com>
+Date: Fri, 23 Jul 2021 21:58:43 +0200
+Subject: block/nvme: Fix VFIO_MAP_DMA failed: No space left on device
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 15a730e7a3aaac180df72cd5730e0617bcf44a5a
+
+When the NVMe block driver was introduced (see commit bdd6a90a9e5,
+January 2018), Linux VFIO_IOMMU_MAP_DMA ioctl was only returning
+-ENOMEM in case of error. The driver was correctly handling the
+error path to recycle its volatile IOVA mappings.
+
+To fix CVE-2019-3882, Linux commit 492855939bdb ("vfio/type1: Limit
+DMA mappings per container", April 2019) added the -ENOSPC error to
+signal the user exhausted the DMA mappings available for a container.
+
+The block driver started to mis-behave:
+
+  qemu-system-x86_64: VFIO_MAP_DMA failed: No space left on device
+  (qemu)
+  (qemu) info status
+  VM status: paused (io-error)
+  (qemu) c
+  VFIO_MAP_DMA failed: No space left on device
+  (qemu) c
+  VFIO_MAP_DMA failed: No space left on device
+
+(The VM is not resumable from here, hence stuck.)
+
+Fix by handling the new -ENOSPC error (when DMA mappings are
+exhausted) without any distinction to the current -ENOMEM error,
+so we don't change the behavior on old kernels where the CVE-2019-3882
+fix is not present.
+
+An easy way to reproduce this bug is to restrict the DMA mapping
+limit (65535 by default) when loading the VFIO IOMMU module:
+
+  # modprobe vfio_iommu_type1 dma_entry_limit=666
+
+Cc: qemu-stable@nongnu.org
+Cc: Fam Zheng <fam@euphon.net>
+Cc: Maxim Levitsky <mlevitsk@redhat.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Reported-by: Michal Prívozník <mprivozn@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-id: 20210723195843.1032825-1-philmd@redhat.com
+Fixes: bdd6a90a9e5 ("block: Add VFIO based NVMe driver")
+Buglink: https://bugs.launchpad.net/qemu/+bug/1863333
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/65
+Signed-off-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ block/nvme.c | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/block/nvme.c b/block/nvme.c
+index 2b5421e7aa6e0a3bfaf403203c9b..e8dbbc23177d8e89d67349fc15a8 100644
+--- a/block/nvme.c
++++ b/block/nvme.c
+@@ -1030,7 +1030,29 @@ try_map:
+         r = qemu_vfio_dma_map(s->vfio,
+                               qiov->iov[i].iov_base,
+                               len, true, &iova);
++        if (r == -ENOSPC) {
++            /*
++             * In addition to the -ENOMEM error, the VFIO_IOMMU_MAP_DMA
++             * ioctl returns -ENOSPC to signal the user exhausted the DMA
++             * mappings available for a container since Linux kernel commit
++             * 492855939bdb ("vfio/type1: Limit DMA mappings per container",
++             * April 2019, see CVE-2019-3882).
++             *
++             * This block driver already handles this error path by checking
++             * for the -ENOMEM error, so we directly replace -ENOSPC by
++             * -ENOMEM. Beside, -ENOSPC has a specific meaning for blockdev
++             * coroutines: it triggers BLOCKDEV_ON_ERROR_ENOSPC and
++             * BLOCK_ERROR_ACTION_STOP which stops the VM, asking the operator
++             * to add more storage to the blockdev. Not something we can do
++             * easily with an IOMMU :)
++             */
++            r = -ENOMEM;
++        }
+         if (r == -ENOMEM && retry) {
++            /*
++             * We exhausted the DMA mappings available for our container:
++             * recycle the volatile IOVA mappings.
++             */
+             retry = false;
+             trace_nvme_dma_flush_queue_wait(s);
+             if (s->dma_map_count) {

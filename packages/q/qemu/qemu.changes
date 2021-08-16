@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 10 19:32:50 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- usb: unbounded stack allocation in usbredir
+  (bsc#1186012, CVE-2021-3527)
+  hw-usb-Do-not-build-USB-subsystem-if-not.patch
+  hw-usb-host-stub-Remove-unused-header.patch
+  usb-hid-avoid-dynamic-stack-allocation.patch
+  usb-limit-combined-packets-to-1-MiB-CVE-.patch
+  usb-mtp-avoid-dynamic-stack-allocation.patch
+
+-------------------------------------------------------------------
+Fri Aug  6 17:49:56 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- usbredir: free call on invalid pointer in bufp_alloc
+  (bsc#1189145, CVE-2021-3682)
+  usbredir-fix-free-call.patch
+
+-------------------------------------------------------------------
+Tue Aug  3 20:39:25 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Add stable patches from upstream:
+  block-nvme-Fix-VFIO_MAP_DMA-failed-No-sp.patch
+  hw-net-can-sja1000-fix-buff2frame_bas-an.patch
+  hw-pci-host-q35-Ignore-write-of-reserved.patch
+
+-------------------------------------------------------------------
 Fri Jul 23 19:43:33 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Disabled skiboot building for PowerPC due to the following issue:

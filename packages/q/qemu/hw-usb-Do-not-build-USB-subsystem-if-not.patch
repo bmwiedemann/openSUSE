@@ -1,0 +1,107 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Sun, 25 Apr 2021 00:41:10 +0200
+Subject: hw/usb: Do not build USB subsystem if not required
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 9c3c834bdda5ca6d58c0e61508737683d12968b5
+References: bsc#1186012, CVE-2021-3527
+
+If the Kconfig 'USB' value is not selected, it is pointless to
+build the USB core components. Add a stub for the HMP commands
+and usbdevice_create() which is called by usb_device_add in
+softmmu/vl.c.
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20210424224110.3442424-3-f4bug@amsat.org>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ MAINTAINERS          |  1 +
+ hw/usb/meson.build   |  9 +++------
+ stubs/meson.build    |  1 +
+ stubs/usb-dev-stub.c | 25 +++++++++++++++++++++++++
+ 4 files changed, 30 insertions(+), 6 deletions(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 36055f14c594947b5ee9f2c3ff19..cd63d3efd8b1c8c7532c4f778f29 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1804,6 +1804,7 @@ USB
+ M: Gerd Hoffmann <kraxel@redhat.com>
+ S: Maintained
+ F: hw/usb/*
++F: stubs/usb-dev-stub.c
+ F: tests/qtest/usb-*-test.c
+ F: docs/usb2.txt
+ F: docs/usb-storage.txt
+diff --git a/hw/usb/meson.build b/hw/usb/meson.build
+index fb7a74e73ae843480fc121e07816..f357270d0b6bf5d810a5e49681a5 100644
+--- a/hw/usb/meson.build
++++ b/hw/usb/meson.build
+@@ -1,17 +1,14 @@
+ hw_usb_modules = {}
+ 
+ # usb subsystem core
+-softmmu_ss.add(files(
++softmmu_ss.add(when: 'CONFIG_USB', if_true: files(
+   'bus.c',
+   'combined-packet.c',
+   'core.c',
+-  'pcap.c',
+-  'libhw.c'
+-))
+-
+-softmmu_ss.add(when: 'CONFIG_USB', if_true: files(
+   'desc.c',
+   'desc-msos.c',
++  'libhw.c',
++  'pcap.c',
+ ))
+ 
+ # usb host adapters
+diff --git a/stubs/meson.build b/stubs/meson.build
+index 5555b69103baba363483e047af06..f3f979c3fe828984f045fc572d21 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -51,6 +51,7 @@ if have_block
+ endif
+ if have_system
+   stub_ss.add(files('semihost.c'))
++  stub_ss.add(files('usb-dev-stub.c'))
+   stub_ss.add(files('xen-hw-stub.c'))
+ else
+   stub_ss.add(files('qdev.c'))
+diff --git a/stubs/usb-dev-stub.c b/stubs/usb-dev-stub.c
+new file mode 100644
+index 0000000000000000000000000000000000000000..b1adeeb4548d2aa4f4c8c9eae967578c5da18efc
+--- /dev/null
++++ b/stubs/usb-dev-stub.c
+@@ -0,0 +1,25 @@
++/*
++ * QEMU USB device emulation stubs
++ *
++ * Copyright (C) 2021 Philippe Mathieu-Daudé <f4bug@amsat.org>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "sysemu/sysemu.h"
++#include "monitor/monitor.h"
++#include "hw/usb.h"
++
++USBDevice *usbdevice_create(const char *driver)
++{
++    error_report("Support for USB devices not built-in");
++
++    return NULL;
++}
++
++void hmp_info_usb(Monitor *mon, const QDict *qdict)
++{
++    monitor_printf(mon, "Support for USB devices not built-in\n");
++}

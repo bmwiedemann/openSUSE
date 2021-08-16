@@ -1,0 +1,35 @@
+From: Gerd Hoffmann <kraxel@redhat.com>
+Date: Mon, 3 May 2021 15:29:13 +0200
+Subject: usb/mtp: avoid dynamic stack allocation
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 06aa50c06c6392084244f8169d34b8e2d9c43ef2
+References: bsc#1186012, CVE-2021-3527
+
+Use autofree heap allocation instead.
+
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Tested-by: Philippe Mathieu-Daudé <philmd@redhat.com>
+Message-Id: <20210503132915.2335822-4-kraxel@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/usb/dev-mtp.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/usb/dev-mtp.c b/hw/usb/dev-mtp.c
+index bbb827434482d3b191df857d6fa0..2a895a73b083315d617e73a12cbd 100644
+--- a/hw/usb/dev-mtp.c
++++ b/hw/usb/dev-mtp.c
+@@ -907,7 +907,8 @@ static MTPData *usb_mtp_get_object_handles(MTPState *s, MTPControl *c,
+                                            MTPObject *o)
+ {
+     MTPData *d = usb_mtp_data_alloc(c);
+-    uint32_t i = 0, handles[o->nchildren];
++    uint32_t i = 0;
++    g_autofree uint32_t *handles = g_new(uint32_t, o->nchildren);
+     MTPObject *iter;
+ 
+     trace_usb_mtp_op_get_object_handles(s->dev.addr, o->handle, o->path);

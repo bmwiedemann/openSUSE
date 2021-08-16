@@ -1,0 +1,31 @@
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>
+Date: Sun, 25 Apr 2021 00:41:09 +0200
+Subject: hw/usb/host-stub: Remove unused header
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 1081607bfab94a0b6149c4a2195737107aed265f
+References: bsc#1186012, CVE-2021-3527
+
+Signed-off-by: Philippe Mathieu-Daudé <f4bug@amsat.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Message-Id: <20210424224110.3442424-2-f4bug@amsat.org>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Signed-off-by: Jose R. Ziviani <jziviani@suse.de>
+---
+ hw/usb/host-stub.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/usb/host-stub.c b/hw/usb/host-stub.c
+index 538ed29684cb7d3ed15df7a7b298..80809ceba54221818bd937ff01b6 100644
+--- a/hw/usb/host-stub.c
++++ b/hw/usb/host-stub.c
+@@ -31,7 +31,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "ui/console.h"
+ #include "hw/usb.h"
+ #include "monitor/monitor.h"
+ 
