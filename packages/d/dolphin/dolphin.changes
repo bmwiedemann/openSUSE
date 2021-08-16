@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Revert "Show hidden files and folders last"
+  * Fix how --select treats files (kde#436584)
+  * Fix width issues when un-maximizing Dolphin (kde#430521)
+  * Revert "Don't session-restore invalid paths" (kde#439864)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Add break; to KItemListRoleEditor::keyPressEvent cases
+  * [PlacesPanel] Remove horizontal scrollbar (kde#301758)
+  * Fix placeholder label text within an empty folder in Trash (kde#439952)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:04:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Ensure stable sort order when sorting by size (kde#433247)
+  * Use SmallMedium icon size in the Places panel as default (kde#437345)
+  * [src/settings/contextmenu/contextmenusettingspage] Fix Crash because of nullptr (kde#437539)
+  * Add action to places panel context menu trash entry to open trash settings (kde#367583)
+  * Fix primary view changing folder for the closing animation (kde#437080)
+  * DolphinContextMenu: Allow disabling "Open Terminal" action (kde#436323)
+  * Show hidden files and folders last (kde#241227)
+  * search: Add action to clear tag selection (kde#432719)
+  * InformationPanel: Allow to refresh the panel when its displayed content changes (kde#430095)
+  * When renaming files, move to next file using tab key or up/down (kde#334533)
+  * PlacesPanel: activating a place does not select its previously selected children (kde#421347)
+- Remove upstream patch:
+  * 0002-Revert-places-padding-backport-21.08.patch
+- Rebase 0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch 
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

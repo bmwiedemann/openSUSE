@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -36,8 +36,6 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
-# PATCH-FIX-UPSTREAM
-Patch2:         0002-Revert-places-padding-backport-21.08.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
@@ -54,7 +52,6 @@ BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
@@ -135,7 +132,7 @@ Provides translations for the "%{name}" package.
   %endif
 
   install -D -m 0644 %{SOURCE3} %{buildroot}%{_kf5_applicationsdir}/org.kde.dolphinsu.desktop
-  %suse_update_desktop_file org.kde.dolphin          System FileManager
+  %suse_update_desktop_file org.kde.dolphin System FileManager
 
 %post part -p /sbin/ldconfig
 %postun part -p /sbin/ldconfig
@@ -155,14 +152,11 @@ Provides translations for the "%{name}" package.
 %{_kf5_bindir}/dolphin
 %{_kf5_bindir}/servicemenuinstaller
 %{_kf5_dbusinterfacesdir}/org.freedesktop.FileManager1.xml
-%{_kf5_libdir}/libkdeinit5_dolphin.so
 %{_kf5_sharedir}/dbus-1/services/org.kde.dolphin.FileManager1.service
 %{_kf5_sharedir}/kglobalaccel/org.kde.dolphin.desktop
 %{_userunitdir}/plasma-dolphin.service
 
 %files part
-%license COPYING*
-%doc README.md
 %{_kf5_configkcfgdir}/dolphin_*.kcfg
 %{_kf5_debugdir}/dolphin.categories
 %{_kf5_knsrcfilesdir}/servicemenu.knsrc
@@ -178,13 +172,9 @@ Provides translations for the "%{name}" package.
 %{_kf5_servicetypesdir}/fileviewversioncontrolplugin.desktop
 
 %files -n libdolphinvcs5
-%license COPYING*
-%doc README.md
 %{_kf5_libdir}/libdolphinvcs.so.*
 
 %files devel
-%license COPYING*
-%doc README.md
 %{_includedir}/dolphinvcs_export.h
 %{_kf5_cmakedir}/DolphinVcs/
 %{_kf5_libdir}/libdolphinvcs.so
@@ -193,7 +183,6 @@ Provides translations for the "%{name}" package.
 
 %if %{with lang}
 %files part-lang -f %{name}.lang
-%license COPYING*
 %dir %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/
 %lang(fi) %{_kf5_sharedir}/locale/fi/LC_SCRIPTS/dolphin/
 %endif

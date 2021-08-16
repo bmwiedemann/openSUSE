@@ -10,11 +10,11 @@ desktop. So this patch is absolutely pointless for us.
  src/main.cpp | 13 -------------
  1 file changed, 13 deletions(-)
 
-Index: dolphin-19.03.60git.20201029T150039~bf11c835e/src/main.cpp
+Index: dolphin-19.11.70git.20210328T171136~9e8e58147/src/main.cpp
 ===================================================================
---- dolphin-19.03.60git.20201029T150039~bf11c835e.orig/src/main.cpp	2020-10-29 22:00:39.000000000 +0100
-+++ dolphin-19.03.60git.20201029T150039~bf11c835e/src/main.cpp	2020-10-31 09:57:30.827192500 +0100
-@@ -28,25 +28,8 @@
+--- dolphin-19.11.70git.20210328T171136~9e8e58147.orig/src/main.cpp	2021-03-30 06:58:11.172787035 +0200
++++ dolphin-19.11.70git.20210328T171136~9e8e58147/src/main.cpp	2021-03-30 06:59:29.060316063 +0200
+@@ -32,26 +32,8 @@
  #include <QDBusConnectionInterface>
  #include <QSessionManager>
  
@@ -23,7 +23,7 @@ Index: dolphin-19.03.60git.20201029T150039~bf11c835e/src/main.cpp
 -#endif
 -#include <iostream>
 -
- extern "C" Q_DECL_EXPORT int kdemain(int argc, char **argv)
+ int main(int argc, char **argv)
  {
 -#ifndef Q_OS_WIN
 -    // Prohibit using sudo or kdesu (but allow using the root user directly)
@@ -37,6 +37,7 @@ Index: dolphin-19.03.60git.20201029T150039~bf11c835e/src/main.cpp
 -        }
 -    }
 -#endif
- 
+-
      /**
       * enable high dpi support
+      */
