@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-server
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -205,7 +205,6 @@ This package contains AppArmor profiles for Akonadi.
 %apparmor_reload %{_sysconfdir}/apparmor.d/mariadbd_akonadi %{_sysconfdir}/apparmor.d/mysqld_akonadi %{_sysconfdir}/apparmor.d/postgresql_akonadi %{_sysconfdir}/apparmor.d/usr.bin.akonadiserver
 
 %files
-%license LICENSES/*
 %doc AUTHORS
 %config %{_kf5_sysconfdir}/xdg/akonadi/mysql-global-mobile.conf
 %config %{_kf5_sysconfdir}/xdg/akonadi/mysql-global.conf
@@ -230,7 +229,6 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_sharedir}/mime/packages/akonadi-mime.xml
 
 %files -n libKF5AkonadiAgentBase5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiAgentBase.so.*
 
 %files -n libKF5AkonadiCore5
@@ -238,23 +236,18 @@ This package contains AppArmor profiles for Akonadi.
 %{_kf5_libdir}/libKF5AkonadiCore.so.*
 
 %files -n libKF5AkonadiWidgets5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiWidgets.so.*
 
 %files -n libKF5AkonadiPrivate5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiPrivate.so.*
 
 %files -n libKF5AkonadiXml5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiXml.so.*
 
 %files sqlite
-%license LICENSES/*
 %{_kf5_plugindir}/sqldrivers/
 
 %files devel
-%license LICENSES/*
 %{_kf5_bindir}/akonadi2xml
 %{_kf5_cmakedir}/KF5Akonadi
 %{_kf5_dbusinterfacesdir}/org.freedesktop.Akonadi.*.xml
@@ -285,7 +278,6 @@ This package contains AppArmor profiles for Akonadi.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

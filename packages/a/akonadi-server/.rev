@@ -693,4 +693,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment></comment>
     <requestid>905728</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c1e0794f21a1e61bef443102ee32bf73</srcmd5>
+    <version>21.08.0</version>
+    <time>1629101161</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Gear 21.08.0</comment>
+    <requestid>911591</requestid>
+  </revision>
 </revisionlist>
