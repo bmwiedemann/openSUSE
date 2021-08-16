@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 12 23:19:10 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.20.1
+
+  - Blacklisted QQuickWidget with window dragging.
+  - Made the workaround for bad hard-coded styles of line-edits less strict.
+
+-------------------------------------------------------------------
 Mon May 31 23:04:34 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.20.0
