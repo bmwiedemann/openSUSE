@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 12 10:13:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- remove the ringdisabled conditional: ipykernel5 will be in Ring1
+
+-------------------------------------------------------------------
+Wed Aug 11 09:38:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Disable testing the kernelmanager in the python36 flavor in
+  lettered staging so that we don't need python-ipykernel5 in Ring1
+- Work around conflict for jupyter-ipykernel due to dangling
+  python36-ipykernel package until it gets removed from Factory
+
+-------------------------------------------------------------------
 Mon Jun 28 10:11:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 6.1.12

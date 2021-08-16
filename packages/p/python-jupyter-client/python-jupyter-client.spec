@@ -58,6 +58,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets}
 # flaky is not an upstream dep, but for obs flakyness of parallel kernel test
 BuildRequires:  %{python_module flaky}
+# Workaround until python-ipykernel 6 lands in Factory and openSUSE:Tumbleweed/dod, removing python36-ipykernel
+# (see https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/742CEMJ57YWNVESAPWJ6HHZBZZ4RMJFP )
+#!BuildIgnore:  python36-ipykernel:jupyter-ipykernel
 %endif
 %python_subpackages
 
@@ -107,7 +110,7 @@ sed -i -E 's/(^\s+)break/\1time.sleep(1)\n\1break/' \
 %if %{with test}
 %check
 pushd jupyter_client/tests
-%pytest --force-flaky --max-runs=2 --no-success-flaky-report
+%pytest --force-flaky --max-runs=3 --no-success-flaky-report
 popd
 %endif
 
