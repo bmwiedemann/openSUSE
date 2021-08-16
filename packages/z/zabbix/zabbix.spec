@@ -23,7 +23,7 @@
 %define agent_group  zabbix
 %define SUSEfirewall_services_dir %{_sysconfdir}/sysconfig/SuSEfirewall2.d/services
 Name:           zabbix
-Version:        4.0.31
+Version:        4.0.32
 Release:        0
 Summary:        Distributed monitoring system
 License:        GPL-2.0-or-later
@@ -159,7 +159,7 @@ Group:          System/Monitoring
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       mariadb
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      zabbix-server-mysql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_server_binary = %{version}-%{release}
@@ -173,7 +173,7 @@ Group:          System/Monitoring
 Requires:       %{name}-server = %{version}-%{release}
 Requires:       postgresql
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      zabbix-server-postgresql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_server_binary = %{version}-%{release}
@@ -187,7 +187,7 @@ Group:          System/Monitoring
 Requires:       %{name}-proxy = %{version}-%{release}
 Requires:       mariadb
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      zabbix-proxy-mysql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_proxy_binary = %{version}-%{release}
@@ -201,7 +201,7 @@ Group:          System/Monitoring
 Requires:       %{name}-proxy = %{version}-%{release}
 Requires:       postgresql
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      zabbix-proxy-postgresql
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_proxy_binary = %{version}-%{release}
@@ -214,7 +214,7 @@ Summary:        Zabbix proxy with SQLite support
 Group:          System/Monitoring
 Requires:       %{name}-proxy = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      zabbix-proxy-sqlite
 Provides:       %{name} = %{version}-%{release}
 Provides:       zabbix_proxy_binary = %{version}-%{release}

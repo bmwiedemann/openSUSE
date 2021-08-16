@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 13 19:53:27 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 4.0.32
+- New Features and Improvements
+  + ZBXNEXT-6662 Increased field size to 2000 characters in web scenario variables
+    and web scenario step variables and post fields
+- Bug Fixes
+  + ZBX-19558 Fixed creating of dependent item prototypes
+  + ZBX-18695 Fixed file_put_contents() runtime error if web server has
+    no write permissions for zabbix.conf.php
+  + ZBX-19424 Fixed trigger handling failing if host name looks like a number
+  + ZBX-19318 Added sorting by itemids for trends flush to avoid deadlock
+  + ZBX-18879 Fixed update vmware info about vCenter fullname and version
+  + ZBX-19447 Implemented item type validation by API
+  + ZBX-19388 Fixed inherited graph and graph prototype update if user has
+    no permissions to child host or template
+  + ZBX-19358 Fixed memory leak in case of duplicate vmware hv uuid
+  + ZBX-19248 Fixed retrieving of all data from separate database tables inside of
+    API methods when empty value for filter is passed
+  + ZBX-19300 Updated jquery version
+  + ZBX-19139 Fixed memory errors in cmdline parsing on freebsd
+  + ZBX-19359 Fixed error in logsource function due to empty source
+  + ZBX-8999 Fixed exporting of images separately from other objects 
+
+-------------------------------------------------------------------
 Thu Jun 24 09:46:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.0.31
