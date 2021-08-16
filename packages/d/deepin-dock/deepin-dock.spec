@@ -20,7 +20,7 @@
 %define _name dde-dock
 
 Name:           deepin-dock
-Version:        5.4.7
+Version:        5.4.28
 Release:        0
 Summary:        Deepin dock
 License:        GPL-3.0-or-later
@@ -83,7 +83,7 @@ sed -i '/TARGETS/s|lib|%{_lib}|' plugins/*/CMakeLists.txt \
                                  plugins/plugin-guide/plugins-developer-guide.md
 
 sed -i 's|/usr/lib|%{_libdir}|' frame/controller/dockpluginscontroller.cpp \
-                          frame/panel/mainpanelcontrol.cpp \
+                          frame/window/mainpanelcontrol.cpp \
                           plugins/tray/system-trays/systemtrayscontroller.cpp
 
 sed -i 's|libdir.*|libdir=%{_libdir}|' dde-dock.pc.in

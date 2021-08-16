@@ -26,4 +26,15 @@
     <comment>- Remove the unneeded QtWebKit build dependency. (forwarded request 902647 from cgiboudeaux)</comment>
     <requestid>902903</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a5f7245eb22e2d3b3f101dc4a03430f8</srcmd5>
+    <version>5.4.28</version>
+    <time>1629101351</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.4.28
+  * New feature: scan wifi on pannel
+  * Optimize code
+  * Fix bugs (forwarded request 910688 from hillwood)</comment>
+    <requestid>910904</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 25 13:29:20 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.28
+  * New feature: scan wifi on pannel
+  * Optimize code
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Sun Jun 27 16:46:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the unneeded QtWebKit build dependency.
