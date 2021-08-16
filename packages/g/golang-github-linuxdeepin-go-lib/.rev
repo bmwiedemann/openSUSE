@@ -16,4 +16,16 @@
   golang 1.16+ (forwarded request 894948 from hillwood)</comment>
     <requestid>894963</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>55ce4ff64fc85174b7de680dd80a6edb</srcmd5>
+    <version>5.7.10</version>
+    <time>1629101356</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.7.10
+  * Fix proxy environment variable
+  * Add mock support
+  * Fix DBus test
+  * Update test modules (forwarded request 910694 from hillwood)</comment>
+    <requestid>910911</requestid>
+  </revision>
 </revisionlist>

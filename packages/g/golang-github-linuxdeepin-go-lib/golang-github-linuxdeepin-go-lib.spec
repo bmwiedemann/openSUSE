@@ -20,15 +20,15 @@
 %define   import_path     pkg.deepin.io/lib
 
 Name:           golang-github-linuxdeepin-go-lib
-Version:        5.7.0
+Version:        5.7.10
 Release:        0
 Summary:        Go bindings for Deepin Desktop Environment development
 License:        GPL-3.0-or-later
+Group:          Development/Languages/Golang
 URL:            https://github.com/linuxdeepin/go-lib
 Source0:        https://github.com/linuxdeepin/go-lib/archive/%{version}/%{_name}-%{version}.tar.gz
 # The development package of golang is named *-source, please skip this rpmlint elibX11-1rror.
 Source1:        golang-github-linuxdeepin-go-lib-rpmlintrc
-Group:          Development/Languages/Golang
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  libpulse0
