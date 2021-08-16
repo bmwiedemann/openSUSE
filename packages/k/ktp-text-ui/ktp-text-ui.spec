@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-text-ui
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Telepathy chat handler by KDE
 License:        GPL-2.0-or-later
@@ -61,7 +61,6 @@ BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5WebEngine)
 # Explicitely require logger, otherwise the ui would crash
 Requires:       telepathy-logger
-Recommends:     %{name}-lang
 Obsoletes:      %{name}-devel
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
@@ -110,7 +109,6 @@ a chat plasmoid, and a chat log viewer application.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
