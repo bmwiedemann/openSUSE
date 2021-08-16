@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 12 13:07:10 UTC 2021 - lnussel@suse.de
+
+- Update to version 055+suse.115.gf65e559b:
+  * fix(suse-initrd): find links of usrmerged kernels (boo#1184804)
+  * fix(tpm2-tss): typo in depends()
+  * fix(suse-initrd): inform on usage of obsolete -f parameter (bsc#1187470)
+- use manual mode in _service file
+
+-------------------------------------------------------------------
 Mon Jun 28 08:38:01 UTC 2021 - thomas.blume@suse.com
 
 - Update to version 055+suse.110.gbe35f166:
