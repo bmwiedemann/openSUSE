@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 13 17:36:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 78.13.0esr.
+  MFSA 2021-34 (bsc#1188891)
+  * CVE-2021-29984 (bmo#1720031)
+    Incorrect instruction reordering during JIT optimization
+
+-------------------------------------------------------------------
 Mon Jul 12 08:16:11 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Update the icu-i18n BuildRequires to version 67.1.

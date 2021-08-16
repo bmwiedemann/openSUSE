@@ -63,4 +63,15 @@
     <comment></comment>
     <requestid>906237</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>17c549eab25ac84e227e32de4f2b93f1</srcmd5>
+    <version>78.13.0</version>
+    <time>1629101346</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 78.13.0esr.
+  MFSA 2021-34 (bsc#1188891)
+  * CVE-2021-29984 (bmo#1720031)
+    Incorrect instruction reordering during JIT optimization</comment>
+    <requestid>912037</requestid>
+  </revision>
 </revisionlist>

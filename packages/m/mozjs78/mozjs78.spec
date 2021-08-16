@@ -1,5 +1,5 @@
 #
-# spec file for package mozjs78
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -39,7 +39,7 @@ BuildArch:      i686
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        78.11.0
+Version:        78.13.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
