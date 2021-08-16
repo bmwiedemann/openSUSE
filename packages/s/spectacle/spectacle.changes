@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:43:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:06:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Update IRC network name in the manpage
+  * Load translations for kImageAnnotator
+  * Add global shortcut to open Spectacle in 'Window Under Cursor' mode (kde#435083)
+  * Fix some clazy warning
+  * X11: Use correct width and height for region selection window
+    and its contents when scaling is enabled (kde#400921)
+  * Sync docs with the current interface
+  * Adjust settings window's proportions a bit
+  * Take font size into consideration for settings window size
+  * Set default window sizes properly using sizeHint()
+  * fix: improve the explanatory text for doNothing Radio button,
+    after-screenshot clipboard action
+  * feat: add support to copy image and copy file path from the command
+    line in background mode
+  * feat: add support to copy the location to clipboard after screenshot
+    even when auto save is not enabled
+  * feat: add new kcfg settings for after screenshot clipboard preferences
+  * feat: use radio buttons for after screenshot clipboard actions
+  * Fix typo
+  * Correct homepage URLs
+  * Fix SVG image
+  * Add clipboard icon to copy to clipboard toolbutton
+  * Sync docs with the current interface
+  * Add missing Qt5Concurrent
+  * feat: add support for copying saved screenshot file path to clipboard
+  * Add support for screen geometry with negative coordinates
+  * feat: group 'copy to *' options together and move 'autosave' option to the top
+  * Simplify QuickEditor
+  * Update manual
+  * Cleanup QuickEditor code
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           spectacle
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Screen Capture Program
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later
@@ -68,7 +68,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(kColorPicker)
 BuildRequires:  cmake(kImageAnnotator)
-Recommends:     %{name}-lang
 Obsoletes:      kscreengenie < %{version}
 Provides:       kscreengenie = %{version}
 # Upstream changed name twice (kscreengenie - kapture - spectacle)
@@ -104,7 +103,7 @@ screenshot capture program by KDE.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.spectacle     Utility DesktopUtility
+  %suse_update_desktop_file -r org.kde.spectacle Utility DesktopUtility
 
 %post
 %systemd_user_post
@@ -116,6 +115,7 @@ screenshot capture program by KDE.
 %systemd_user_postun
 
 %files
+%license LICENSES/*
 %dir %{_kf5_libdir}/kconf_update_bin
 %dir %{_kf5_sharedir}/kconf_update
 %dir %{_kf5_sharedir}/kglobalaccel
@@ -131,18 +131,18 @@ screenshot capture program by KDE.
 %{_kf5_sharedir}/dbus-1/services/org.kde.Spectacle.service
 %{_kf5_sharedir}/kconf_update/spectacle_newConfig.upd
 %{_kf5_sharedir}/kconf_update/spectacle_shortcuts.upd
+%{_kf5_sharedir}/kconf_update/50-clipboard_settings_change.py
+%{_kf5_sharedir}/kconf_update/spectacle_clipboard.upd
 %{_kf5_sharedir}/kglobalaccel/org.kde.spectacle.desktop
 %{_userunitdir}/app-org.kde.spectacle.service
 
 %files doc
-%license LICENSES/*
 %doc README.md
 %doc %lang(en) %{_kf5_htmldir}/en/spectacle/
 
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
