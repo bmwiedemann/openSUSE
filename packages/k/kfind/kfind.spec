@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfind
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Find File Utility
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Concurrent)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 KFind allows you to search for directories and files.
@@ -67,7 +66,7 @@ KFind allows you to search for directories and files.
     %{kf5_find_htmldocs}
   %endif
 
-  %suse_update_desktop_file org.kde.kfind          System Filesystem core
+  %suse_update_desktop_file org.kde.kfind System Filesystem core
 
 %files
 %license LICENSES/*
@@ -81,7 +80,6 @@ KFind allows you to search for directories and files.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
