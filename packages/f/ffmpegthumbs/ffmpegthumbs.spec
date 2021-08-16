@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ffmpegthumbs
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        FFmpeg-based thumbnail creator for video files
 License:        LGPL-2.0-or-later
@@ -45,7 +45,6 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(taglib)
-Recommends:     %{name}-lang
 
 %description
 FFmpeg-based thumbnail creator for video files.
@@ -69,7 +68,7 @@ FFmpeg-based thumbnail creator for video files.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSES/*
 %{_kf5_appstreamdir}/org.kde.ffmpegthumbs.metainfo.xml
 %{_kf5_configkcfgdir}/ffmpegthumbnailersettings5.kcfg
 %{_kf5_debugdir}/ffmpegthumbs.categories
@@ -78,7 +77,6 @@ FFmpeg-based thumbnail creator for video files.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING
 %endif
 
 %changelog
