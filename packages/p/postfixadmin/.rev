@@ -420,4 +420,19 @@ SVN changes since 2.3.4 release (postfixadmin-2.3 branch)
   - several bugfixes, see CHANGELOG.TXT for details (forwarded request 892955 from cboltz)</comment>
     <requestid>892956</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8eec39b34acd078252424bfbf0802b0d</srcmd5>
+    <version>3.3.10</version>
+    <time>1629101503</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to PostfixAdmin 3.3.10
+  - Merge password expiration fixes
+  - Remove html readonly attribute from user's vacation page to/from selectors.
+  - vacation.pl - allow smtp helo to be specified
+  - Security fix - ClickJacking protection
+  - Security fix (low risk) - Improve randomness with PFA_token for CSRF protection
+  - Fix viewlog to allow admins to see all domains
+  - Disable password autocompletion in edit forms (forwarded request 912091 from cboltz)</comment>
+    <requestid>912092</requestid>
+  </revision>
 </revisionlist>

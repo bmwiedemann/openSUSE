@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 14 11:56:02 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update to PostfixAdmin 3.3.10
+  - Merge password expiration fixes
+  - Remove html readonly attribute from user's vacation page to/from selectors.
+  - vacation.pl - allow smtp helo to be specified
+  - Security fix - ClickJacking protection
+  - Security fix (low risk) - Improve randomness with PFA_token for CSRF protection
+  - Fix viewlog to allow admins to see all domains
+  - Disable password autocompletion in edit forms
+
+-------------------------------------------------------------------
 Thu May 13 19:55:09 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update to PostfixAdmin 3.3.9

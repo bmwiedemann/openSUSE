@@ -18,7 +18,7 @@
 
 
 Name:           postfixadmin
-Version:        3.3.9
+Version:        3.3.10
 Release:        0
 URL:            http://postfixadmin.sourceforge.net/
 Source0:        https://github.com/postfixadmin/postfixadmin/archive/%{name}-%{version}.tar.gz
