@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           krdc
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Remote Desktop Connection
 License:        GPL-2.0-or-later
@@ -55,7 +55,6 @@ BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 Requires:       breeze5-icons
 Requires:       freerdp
-Recommends:     %{name}-lang
 
 %description
 Krdc allows to connect to VNC and RDP compatible servers.
@@ -91,27 +90,26 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
      mkdir -p %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps
      cp %{_kf5_iconsdir}/oxygen/base/${i}x${i}/apps/krdc.png %{buildroot}%{_kf5_iconsdir}/hicolor/${i}x${i}/apps/
   done
-  %suse_update_desktop_file -r org.kde.krdc         System   RemoteAccess
+  %suse_update_desktop_file -r org.kde.krdc System RemoteAccess
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/krdc/
 %{_kf5_applicationsdir}/org.kde.krdc.desktop
 %{_kf5_appstreamdir}/org.kde.krdc.appdata.xml
 %{_kf5_bindir}/krdc
 %{_kf5_configkcfgdir}/krdc.kcfg
 %{_kf5_iconsdir}/hicolor/*/apps/krdc.png
-%{_kf5_kxmlguidir}/krdc/
 %{_kf5_libdir}/libkrdccore.so.*
 %{_kf5_plugindir}/krdc/
 %{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_servicesdir}/krdc_rdp_config.desktop
 %{_kf5_servicesdir}/krdc_vnc_config.desktop
-%{_kf5_servicesdir}/rdp.protocol
-%{_kf5_servicesdir}/vnc.protocol
+%{_kf5_servicetypesdir}/krdc_plugin.desktop
+%{_kf5_debugdir}/krdc.categories
 
 %files devel
 %{_includedir}/krdc/
@@ -120,7 +118,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
