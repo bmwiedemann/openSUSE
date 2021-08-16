@@ -19,7 +19,7 @@
 %define _name dde-launcher
 
 Name:           deepin-launcher
-Version:        5.4.11
+Version:        5.4.24
 Release:        0
 Summary:        Deepin Launcher
 License:        GPL-3.0-or-later
@@ -41,10 +41,10 @@ BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
 BuildRequires:  pkgconfig(gsettings-qt)
 BuildRequires:  pkgconfig(xcb-ewmh)
+Requires:       dbus-1
 Requires:       deepin-daemon
 Requires:       deepin-desktop-schemas >= 5.9.3
 Requires:       deepin-start
-Requires:       libqt5-qdbus
 
 %description
 Deepin desktop-environment - Launcher module
@@ -64,7 +64,6 @@ docs for deepin-launcher.
 %prep
 %setup -q -n %{_name}-%{version}
 sed -i 's|lrelease|lrelease-qt5|g' translate_generation.sh
-sed -i 's|qdbus|qdbus-qt5|g' dde-launcher-wapper
 
 %build
 %cmake -DWITHOUT_UNINSTALL_APP=1

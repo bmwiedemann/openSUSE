@@ -31,4 +31,15 @@
 - Use find_lang macro (forwarded request 900405 from hillwood)</comment>
     <requestid>901177</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8ca899e238c452422acff790c5099734</srcmd5>
+    <version>5.4.24</version>
+    <time>1629101352</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.4.24
+  * Optimize test modules
+  * Optimize starting
+  * Fix bugs (forwarded request 910689 from hillwood)</comment>
+    <requestid>910905</requestid>
+  </revision>
 </revisionlist>
