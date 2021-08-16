@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kirigami-gallery
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Gallery application built using Kirigami
 License:        LGPL-2.0-or-later
@@ -45,7 +45,6 @@ Requires:       kirigami2
 Requires:       kitemmodels-imports
 Requires:       libqt5-qtgraphicaleffects
 Requires:       libqt5-qtquickcontrols2
-Recommends:     %{name}-lang
 
 %description
 Example application which uses all features from kirigami,

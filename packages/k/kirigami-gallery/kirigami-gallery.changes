@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:38:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove unneeded check
+  * Use C++17
+  * Make CMake code consistent
+  * Require CMake 3.16
+  * Fix missing text in button
+  * Use qqc2-desktop-style by default
+  * Set nicer window title
+  * CMake cleanup
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
