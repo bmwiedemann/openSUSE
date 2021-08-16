@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           poxml
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Tools for translating DocBook XML files with Gettext
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -89,7 +89,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
