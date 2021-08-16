@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug 12 20:33:05 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.1
+  - desktop#3610 [stable-3.3] Update supported server versions
+  - desktop#3647 [stable-3.3] Ensure that the users id is used for accessing webdav
+  - desktop#3648 [stable-3.3] Enforce fetching of user id
+  - desktop#3656 [stable-3.3] Return the login name instead of user id
+
+-------------------------------------------------------------------
 Tue Aug  3 10:02:29 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.3.0
