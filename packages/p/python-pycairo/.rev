@@ -57,4 +57,12 @@
   * mypy: Don't run mypy via pytest</comment>
     <requestid>906780</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>157e9ed8d4c8217c5361e604d9d98510</srcmd5>
+    <version>1.20.1</version>
+    <time>1629101313</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911580</requestid>
+  </revision>
 </revisionlist>
