@@ -1,5 +1,5 @@
 #
-# spec file for package python-PyICU
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname PyICU
 Name:           python-%{modname}
-Version:        2.6
+Version:        2.7.4
 Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://github.com/ovalhub/pyicu
 Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: Support for ICU 69 commited upstream, spread over 2 commits
-Patch0:         support-icu-69.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -48,7 +46,6 @@ library (ICU).
 
 %prep
 %setup -q -n %{modname}-%{version}
-%autopatch -p1
 
 %build
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"

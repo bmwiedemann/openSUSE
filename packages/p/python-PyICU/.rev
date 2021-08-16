@@ -80,4 +80,12 @@
   * Support ICU 69</comment>
     <requestid>888967</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c3329615591efc7231410a6203b58e1b</srcmd5>
+    <version>2.7.4</version>
+    <time>1629101320</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912187</requestid>
+  </revision>
 </revisionlist>
