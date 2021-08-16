@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           parley
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Vocabulary Trainer
 License:        GPL-2.0-or-later
@@ -64,7 +64,6 @@ Obsoletes:      parley5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 Parley is a vocabulary trainer by KDE.
@@ -87,7 +86,7 @@ Parley is a vocabulary trainer by KDE.
   chmod a+x %{buildroot}%{_kf5_appsdir}/parley/plugins/*.py
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc AUTHORS README.md
 %doc %lang(en) %{_kf5_htmldir}/en/parley/
 %{_kf5_applicationsdir}/org.kde.parley.desktop
@@ -103,7 +102,6 @@ Parley is a vocabulary trainer by KDE.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
