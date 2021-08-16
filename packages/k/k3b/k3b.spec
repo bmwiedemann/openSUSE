@@ -21,7 +21,7 @@
 %bcond_without lame
 %bcond_without mad
 Name:           k3b
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        CD/DVD/Blu-ray Burning Application by KDE
 License:        GPL-2.0-or-later
@@ -81,7 +81,6 @@ Requires(postun): shared-mime-info
 Recommends:     %{_bindir}/normalize
 Recommends:     %{_bindir}/sox
 Recommends:     %{_bindir}/transcode
-Recommends:     %{name}-lang
 Recommends:     vcdimager
 Provides:       kde4-k3b = 4.2.2.svn951754
 Obsoletes:      k3b-codecs
@@ -139,7 +138,7 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc ChangeLog FAQ.txt PERMISSIONS.txt README.txt
 %{_kf5_knsrcfilesdir}/k3btheme.knsrc
 %dir %{_kf5_servicesdir}/ServiceMenus
@@ -158,15 +157,14 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_libdir}/libk3bdevice.so.*
 %{_kf5_libdir}/libk3blib.so.*
 %{_kf5_notifydir}/k3b.notifyrc
-%{_kf5_plugindir}/k3b*.so
+%dir %{_kf5_plugindir}/k3b/
+%{_kf5_plugindir}/k3b/k3b*.so
 %{_kf5_plugindir}/kcm_k3b*.so
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/kio/
 %{_kf5_plugindir}/kf5/kio/videodvd.so
 %{_kf5_servicesdir}/ServiceMenus/k3b_*.desktop
-%{_kf5_servicesdir}/k3b*.desktop
 %{_kf5_servicesdir}/kcm_k3b*.desktop
-%{_kf5_servicesdir}/videodvd.protocol
 %{_kf5_servicetypesdir}/k3bplugin.desktop
 %{_kf5_sharedir}/k3b
 %{_kf5_sharedir}/konqsidebartng/virtual_folders/services/videodvd.desktop
@@ -174,14 +172,12 @@ CXXFLAGS="%{optflags} -fno-strict-aliasing"
 %{_kf5_sharedir}/solid/actions/k3b_*.desktop
 
 %files devel
-%license COPYING*
 %{_includedir}/k3b*.h
 %{_kf5_libdir}/libk3bdevice.so
 %{_kf5_libdir}/libk3blib.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:35:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Menu: Get bluray sizes from k3b itself instead of hardcoding (kde#439475)
+  * Clean up ServiceType property usage in JSON based plugins
+  * Remove obsolete desktop files
+  * plugins: Convert desktop files to JSON
+  * Pass in JSON parameter in kcoreaddons_add_plugin function call
+  * Use FindTagLib from ECM
+  * Cleanup license headers
+  * Adjust formating of SPDX headers
+  * Remove unneeded newlines from beginning of license statements
+  * Adjust formatting of license header
+  * Convert remaining copyright texts to SPDX
+  * Remove unneeded $id$ lines from license headers
+  * Remove obsolete COPYING files
+  * Download GFDL-1.2-or-later license
+  * Remove unneeded mention of COPYING file
+  * Convert CMake module license statements to SPDX
+  * Convert license headers to SPDX
+  * Port videodvd kioslave to JSON metadata
+  * Remove Description property for kioslave
+  * Use k3b as install namespace
+  * Port plugins away from desktop file loading
+  * Adding icons for buttons in theme settings (kde#407069)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
