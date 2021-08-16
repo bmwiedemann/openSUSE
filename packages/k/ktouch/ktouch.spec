@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktouch
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Touch Typing Tutor
 License:        GPL-2.0-or-later
@@ -68,7 +68,6 @@ Requires:       kqtquickcharts
 Requires:       libqt5-qtquickcontrols2
 Provides:       kde4-ktouch = 4.3.0
 Obsoletes:      kde4-ktouch < 4.3.0
-Recommends:     %{name}-lang
 
 %description
 A KDE program that helps you to learn and practice touch typing.
@@ -91,10 +90,10 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.ktouch       X-KDE-Edu-Teaching
+  %suse_update_desktop_file org.kde.ktouch X-KDE-Edu-Teaching
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc AUTHORS README.md
 %doc %lang(en) %{_kf5_htmldir}/en/ktouch/
 %{_kf5_applicationsdir}/org.kde.ktouch.desktop
@@ -107,7 +106,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
