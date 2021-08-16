@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Too many changes since 5.84.0, only listing bugfixes:
+  * Fix Units::roundToIconSize() returning incorrect sizes with non-Qt scaling (kde#390147)
+  * Theme::currentThemeHasImage should not return true if parent themes match (kde#439847)
+
+-------------------------------------------------------------------
 Sun Jul 18 07:04:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop patch:

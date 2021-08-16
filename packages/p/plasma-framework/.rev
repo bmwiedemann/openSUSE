@@ -1053,4 +1053,12 @@
   * 0001-Revert-KF5PlasmaMacros-Only-try-to-install-desktop-f.patch</comment>
     <requestid>906903</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>8a7429f077bb8d0540949e32a4fca128</srcmd5>
+    <version>5.85.0</version>
+    <time>1629101299</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Frameworks 5.85.0 (forwarded request 912073 from cgiboudeaux)</comment>
+    <requestid>912174</requestid>
+  </revision>
 </revisionlist>
