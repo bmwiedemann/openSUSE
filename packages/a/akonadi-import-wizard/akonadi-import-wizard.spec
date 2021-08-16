@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-import-wizard
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Assistant to import PIM data
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -56,12 +56,11 @@ BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5MessageCore)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Wallet)
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
 BuildRequires:  cmake(Qt5Keychain)
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 Assistant to import PIM data from other applications into Akonadi for use in
@@ -101,7 +100,7 @@ KDE PIM applications.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-%suse_update_desktop_file -u org.kde.akonadiimportwizard    Network Email
+%suse_update_desktop_file -u org.kde.akonadiimportwizard Network Email
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -139,7 +138,6 @@ KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
