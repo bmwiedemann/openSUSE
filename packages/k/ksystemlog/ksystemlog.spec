@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksystemlog
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        System Log Viewer Tool
 License:        GPL-2.0-only
@@ -45,7 +45,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(libsystemd)
 Obsoletes:      ksystemlog5 < %{version}
 Provides:       ksystemlog5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 This program is developed for use by beginner users, who do not know
@@ -86,7 +85,6 @@ want to quickly see problems occurring on their server.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
