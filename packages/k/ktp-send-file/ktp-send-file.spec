@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-send-file
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        File manager plugin
 License:        LGPL-2.1-or-later
@@ -42,7 +42,6 @@ BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KTp)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -71,7 +70,6 @@ A File manager plugin to launch a file transfer job with a specified contact
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
