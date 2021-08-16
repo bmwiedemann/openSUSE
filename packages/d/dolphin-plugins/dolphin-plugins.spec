@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin-plugins
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Version control plugins for Dolphin
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
 Recommends:     dolphin >= %{_kapp_version}
-Recommends:     %{name}-lang
 
 %description
 Dolphin file manager specific version control plugins that:
@@ -77,27 +76,23 @@ RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %dir %{_kf5_plugindir}/kf5/kfileitemaction
+%dir %{_kf5_plugindir}/dolphin
+%dir %{_kf5_plugindir}/dolphin/vcs
 %{_kf5_appstreamdir}/org.kde.dolphin-plugins.metainfo.xml
 %{_kf5_configkcfgdir}/fileviewgitpluginsettings.kcfg
 %{_kf5_configkcfgdir}/fileviewhgpluginsettings.kcfg
 %{_kf5_configkcfgdir}/fileviewsvnpluginsettings.kcfg
-%{_kf5_plugindir}/fileviewbazaarplugin.so
-%{_kf5_plugindir}/fileviewdropboxplugin.so
-%{_kf5_plugindir}/fileviewgitplugin.so
-%{_kf5_plugindir}/fileviewhgplugin.so
-%{_kf5_plugindir}/fileviewsvnplugin.so
+%{_kf5_plugindir}/dolphin/vcs/fileviewbazaarplugin.so
+%{_kf5_plugindir}/dolphin/vcs/fileviewdropboxplugin.so
+%{_kf5_plugindir}/dolphin/vcs/fileviewgitplugin.so
+%{_kf5_plugindir}/dolphin/vcs/fileviewhgplugin.so
+%{_kf5_plugindir}/dolphin/vcs/fileviewsvnplugin.so
 %{_kf5_plugindir}/kf5/kfileitemaction/mountisoaction.so
-%{_kf5_servicesdir}/fileviewbazaarplugin.desktop
-%{_kf5_servicesdir}/fileviewdropboxplugin.desktop
-%{_kf5_servicesdir}/fileviewgitplugin.desktop
-%{_kf5_servicesdir}/fileviewhgplugin.desktop
-%{_kf5_servicesdir}/fileviewsvnplugin.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
