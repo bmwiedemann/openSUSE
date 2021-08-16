@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 11 11:53:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 5.0.0
+  * Removed compat shims for obsolete Django versions
+  * Switch from deprecated django.conf.urls.url to django.urls.path
+  * Drop support for Python 2
+  * Django generic JSONField support
+  * Django 3.2+ compatibility
+
+-------------------------------------------------------------------
 Wed Aug 19 09:42:08 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build on leap as we require too new django for py2

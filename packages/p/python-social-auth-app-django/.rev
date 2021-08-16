@@ -55,4 +55,12 @@
     <comment>- Fix build on leap as we require too new django for py2</comment>
     <requestid>827811</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>4c577f38a3af2e016dd88d8e8f3f83d2</srcmd5>
+    <version>5.0.0</version>
+    <time>1629101361</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911557</requestid>
+  </revision>
 </revisionlist>
