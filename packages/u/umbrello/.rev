@@ -1387,4 +1387,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Gear 21.04.3</comment>
     <requestid>905065</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>346ca1d40551a9c8c08c11ef210a49ee</srcmd5>
+    <version>21.08.0</version>
+    <time>1629101467</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Gear 21.08.0</comment>
+    <requestid>911808</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:43:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:06:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Fix user visible copyright string (no SPDX) (2)
+  * Fix user visible copyright string (no SPDX)
+  * cmake ignored MSVC , lets try NOT WIN32
+  * Disable LLVM tests temporarly for MSVC systems for the sake of CI Builds
+  * Revert changes to heading templates
+  * Manual conversions & formatting
+  * Convert copyright texts to SPDX format
+  * Fix formatting for SPDX headers
+  * Convert license headers to SPDX
+  * lib/cppparser/lexer.cpp : In function tokenize() replace
+    `for (;;)` by `while (!eof())`.
+  * lib/cppparser/lexer.h : In functions offset(int) and
+    getOffset(const QChar*) add Q_ASSERT calls to expose invalid
+    inputs at their source.
+  * codeimpwizard/codeimpthread.cpp : In CodeImpThread(QFileInfo&, QObject*)
+    call to connect() fix signature of SIGNAL(askQuestion) and SLOT(questionAsked).
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

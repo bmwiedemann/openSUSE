@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           umbrello
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        UML Modeller
 License:        GPL-2.0-only AND GFDL-1.2-only AND GPL-3.0-or-later
@@ -64,7 +64,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Obsoletes:      umbrello5 < %{version}
 Provides:       umbrello5 = %{version}
 
@@ -92,7 +91,7 @@ export CFLAGS="%{optflags} -fPIC"
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  %suse_update_desktop_file    org.kde.umbrello       Development Design
+  %suse_update_desktop_file org.kde.umbrello Development Design
 
 %files
 %license COPYING COPYING.DOC
@@ -109,7 +108,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
