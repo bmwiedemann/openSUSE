@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-approver
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Channel Approver for KDE Telepathy implementation
 License:        LGPL-2.1-or-later
@@ -43,7 +43,6 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -77,7 +76,6 @@ A channel approver for KDE's Telepathy implementation.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
