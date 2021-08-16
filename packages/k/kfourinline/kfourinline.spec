@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfourinline
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Four Wins game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -69,7 +68,7 @@ Four wins is a two-player board game where you have to align four
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kfourinline     Game BoardGame
+  %suse_update_desktop_file -r org.kde.kfourinline Game BoardGame
 
 %files
 %license LICENSES/*
@@ -85,7 +84,6 @@ Four wins is a two-player board game where you have to align four
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
