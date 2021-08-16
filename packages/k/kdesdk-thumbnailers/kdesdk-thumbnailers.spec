@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdesdk-thumbnailers
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Translation file thumbnail generators
 License:        GPL-2.0-or-later
@@ -39,7 +39,6 @@ BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 This package allows KDE applications to show thumbnails
@@ -64,14 +63,13 @@ and previews of po files.
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %{_kf5_configkcfgdir}/pocreatorsettings.kcfg
 %{_kf5_plugindir}/pothumbnail.so
 %{_kf5_servicesdir}/pothumbnail.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
