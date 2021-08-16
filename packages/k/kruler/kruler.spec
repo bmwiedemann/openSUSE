@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kruler
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Screen Ruler
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 A screen ruler for the Plasma desktop environment
@@ -64,7 +63,7 @@ A screen ruler for the Plasma desktop environment
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kruler         Utility DesktopUtility
+  %suse_update_desktop_file -r org.kde.kruler Utility DesktopUtility
 
 %files
 %license COPYING*
@@ -78,7 +77,6 @@ A screen ruler for the Plasma desktop environment
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
