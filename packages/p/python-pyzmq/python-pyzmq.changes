@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 11 10:15:01 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Update to 22.2.1
+  * Nicer reprs of contexts and sockets
+  * Memory allocated by recv(copy=False) is no longer read-only
+  * asyncio: Always reference current loop instead of attaching to 
+    the current loop at instantiation time. This fixes e.g. contexts 
+    and/or sockets instantiated prior to a call to asyncio.run.
+
+-------------------------------------------------------------------
 Mon Jul  5 16:30:37 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 22.1.0
