@@ -1,7 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug  3 14:46:16 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 250
+  https://cockpit-project.org/blog/cockpit-250.html
+- fix pam_motd selinux denial (0001-selinux-allow-login-to-read-motd-file.patch)
+
+-------------------------------------------------------------------
 Thu May 27 11:01:03 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
-- new version 255
+- new version 245
   https://cockpit-project.org/blog/cockpit-245.html
 
 -------------------------------------------------------------------

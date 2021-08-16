@@ -1,6 +1,6 @@
-From a911add6a66d376e0b9cef306f88a1c8289b4eb6 Mon Sep 17 00:00:00 2001
+From 37ca23741f6f0a2a05b31f75014076cbf64174ee Mon Sep 17 00:00:00 2001
 From: Ludwig Nussel <ludwig.nussel@suse.de>
-Date: Fri, 30 Apr 2021 15:10:59 +0200
+Date: Wed, 4 Aug 2021 09:50:25 +0200
 Subject: [PATCH] Need local reference for redhat font
 
 ---
@@ -8,13 +8,13 @@ Subject: [PATCH] Need local reference for redhat font
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/package.json b/package.json
-index 92c13f112..3f65d2087 100644
+index ed3eb085e..f68f93d2e 100644
 --- a/package.json
 +++ b/package.json
 @@ -7,7 +7,7 @@
-     "@patternfly/react-core": "4.106.2",
-     "@patternfly/react-styles": "4.9.4",
-     "@patternfly/react-table": "4.24.1",
+     "@patternfly/react-core": "4.144.0",
+     "@patternfly/react-styles": "4.11.7",
+     "@patternfly/react-table": "4.29.33",
 -    "@redhat/redhat-font": "git+https://github.com/RedHatOfficial/RedHatFont.git#2.2.0",
 +    "@redhat/redhat-font": "2.2.0",
      "bootstrap": "3.4.1",

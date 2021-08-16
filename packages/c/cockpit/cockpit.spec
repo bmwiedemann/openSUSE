@@ -17,7 +17,7 @@
 
 #
 # This file is maintained at the following location:
-# https://github.com/cockpit-project/cockpit/blob/master/tools/cockpit.spec
+# https://github.com/cockpit-project/cockpit/blob/main/tools/cockpit.spec
 #
 # If you are editing this file in another location, changes will likely
 # be clobbered the next time an automated release is done.
@@ -54,7 +54,7 @@ Summary:        Web Console for Linux servers
 License:        LGPL-2.1-or-later
 URL:            https://cockpit-project.org/
 
-Version:        245
+Version:        250
 Release:        0
 Source0:        cockpit-%{version}.tar
 Source1:        cockpit.pam
@@ -64,6 +64,7 @@ Source98:       package-lock.json
 Source97:       node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 Patch0:         cockpit-redhatfont.diff
+Patch1:         0001-selinux-allow-login-to-read-motd-file.patch
 
 # in RHEL 8 the source package is duplicated: cockpit (building basic packages like cockpit-{bridge,system})
 # and cockpit-appstream (building optional packages like cockpit-{pcp})
@@ -124,6 +125,8 @@ BuildRequires: libpcp_import1
 BuildRequires: openssh
 BuildRequires: distribution-logos
 BuildRequires: wallpaper-branding
+# needed for /var/lib/pcp directory ownership
+BuildRequires: pcp
 %else
 BuildRequires: pcp-libs-devel
 BuildRequires: openssh-clients
@@ -467,7 +470,6 @@ Recommends: (reportd >= 0.7.1 if abrt)
 %endif
 # NPM modules which are also available as packages
 Provides: bundled(js-jquery) = 3.5.1
-Provides: bundled(js-moment) = 2.29.1
 Provides: bundled(xstatic-bootstrap-datepicker-common) = 1.9.0
 Provides: bundled(xstatic-patternfly-common) = 3.59.5
 
@@ -506,7 +508,6 @@ authentication via sssd/FreeIPA.
 %doc %{_mandir}/man8/cockpit-ws.8.gz
 %doc %{_mandir}/man8/cockpit-tls.8.gz
 %doc %{_mandir}/man8/remotectl.8.gz
-%doc %{_mandir}/man8/pam_cockpit_cert.8.gz
 %doc %{_mandir}/man8/pam_ssh_add.8.gz
 %dir %{_sysconfdir}/cockpit
 %config(noreplace) %{_sysconfdir}/cockpit/ws-certs.d
@@ -586,6 +587,14 @@ fi
 %systemd_post cockpit.socket cockpit.service
 # firewalld only partially picks up changes to its services files without this
 test -f %{_bindir}/firewall-cmd && firewall-cmd --reload --quiet || true
+
+# check for deprecated PAM config
+if grep --color=auto pam_cockpit_cert %{_sysconfdir}/pam.d/cockpit; then
+    echo '**** WARNING:'
+    echo '**** WARNING: pam_cockpit_cert is a no-op and will be removed in a'
+    echo '**** WARNING: future release; remove it from your /etc/pam.d/cockpit.'
+    echo '**** WARNING:'
+fi
 
 %preun ws
 %systemd_preun cockpit.socket cockpit.service
@@ -737,7 +746,7 @@ This package contains files used to develop cockpit modules
 %package -n cockpit-pcp
 Summary: Cockpit PCP integration
 Requires: cockpit-bridge >= 238.1.1
-Requires(post): pcp
+Requires: pcp
 
 %description -n cockpit-pcp
 Cockpit support for reading PCP metrics and loading PCP archives.
@@ -755,6 +764,8 @@ BuildArch: noarch
 Requires: cockpit-bridge >= 186
 Requires: PackageKit
 Recommends: python3-tracer
+# HACK: https://bugzilla.redhat.com/show_bug.cgi?id=1800468
+Requires: polkit
 
 %description -n cockpit-packagekit
 The Cockpit components for installing OS updates and Cockpit add-ons,
