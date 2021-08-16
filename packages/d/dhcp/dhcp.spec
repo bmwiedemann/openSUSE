@@ -312,7 +312,7 @@ install    -m0754 $RPM_SOURCE_DIR/dhclient-script %{buildroot}%{sbindir}/
 install -d -m0755 %{buildroot}%{_libexecdir}/dhcp
 install    -m0755 $RPM_SOURCE_DIR/dhcpd.script              \
                   %{buildroot}%{_libexecdir}/dhcp/dhcpd
-sed -e 's/@LIBDIR@/%{_lib}/g' -i %{buildroot}%{_libexecdir}/dhcp/dhcpd
+sed -e 's,@LIBDIR@,%{_lib},g' -i %{buildroot}%{_libexecdir}/dhcp/dhcpd
 install    -m0755 $RPM_SOURCE_DIR/dhcrelay.script           \
                   %{buildroot}%{_libexecdir}/dhcp/dhcrelay
 # service units
@@ -325,7 +325,7 @@ install    -m0644 $RPM_SOURCE_DIR/dhcrelay.service          \
                   %{buildroot}%{_unitdir}/dhcrelay.service
 install    -m0644 $RPM_SOURCE_DIR/dhcrelay6.service         \
                   %{buildroot}%{_unitdir}/dhcrelay6.service
-sed -e 's-@LIBEXECDIR@-%{_libexecdir}-g' -i %{buildroot}%{_unitdir}/d*
+sed -e 's,@LIBEXECDIR@,%{_libexecdir},g' -i %{buildroot}%{_unitdir}/d*
 # rcservice links
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcpd
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdhcpd6
@@ -364,6 +364,8 @@ install    -m0644 contrib/ldap/dhcp.schema                       \
 install -d -m0755 %{buildroot}%{_sysconfdir}/sysconfig/network/if-up.d
 install -d -m0755 %{buildroot}%{_sysconfdir}/sysconfig/network/scripts
 install    -m0755 $RPM_SOURCE_DIR/if-up.d.dhcpd-restart-hook \
+                  %{buildroot}%{_sysconfdir}/sysconfig/network/scripts/dhcpd-restart-hook
+sed 's,@LIBEXECDIR@,%{_libexecdir},g' -i \
                   %{buildroot}%{_sysconfdir}/sysconfig/network/scripts/dhcpd-restart-hook
 ln -sf            ../scripts/dhcpd-restart-hook \
                   %{buildroot}%{_sysconfdir}/sysconfig/network/if-up.d/60-dhcpd-restart-hook

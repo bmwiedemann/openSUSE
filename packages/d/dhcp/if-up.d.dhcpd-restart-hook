@@ -102,7 +102,7 @@ dhcpv4_server_restart()
         fi
 
         if test "$restart_needed" = yes ; then
-                /etc/init.d/dhcpd try-restart
+                @LIBEXECDIR@/dhcp/dhcpd -4 try-restart
         fi
 }
 dhcpv6_server_restart()
@@ -140,7 +140,7 @@ dhcpv6_server_restart()
         fi
 
         if test "$restart_needed" = yes ; then
-                /etc/init.d/dhcpd6 try-restart
+                @LIBEXECDIR@/dhcp/dhcpd -6 try-restart
         fi
 }
 

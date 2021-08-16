@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug  5 11:33:54 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1186249: Remove remaining references to /etc/init.d from
+  dhclient-script and if-up.d.dhcpd-restart-hook .
+- Use , instead of - or / as a separator in sed when dealing with
+  path names.
+
+-------------------------------------------------------------------
 Mon May 31 09:24:51 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Add -fno-strict-aliasing to CFLAGS to avoid a segfault in dhcpd

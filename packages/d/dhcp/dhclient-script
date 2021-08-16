@@ -340,8 +340,6 @@ set_hostname()
       # reload syslog so it knows the new hostname
       if test -x /usr/bin/systemctl ; then
         /usr/bin/systemctl reload syslog.service
-      else
-        /etc/init.d/syslog reload
       fi
     fi
   fi

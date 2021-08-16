@@ -1137,4 +1137,12 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
 - Error out, if %version and %isc_version are not in sync.</comment>
     <requestid>896316</requestid>
   </revision>
+  <revision rev="126" vrev="2">
+    <srcmd5>2526dd2000bc7c484d533897bb40e3de</srcmd5>
+    <version>4.4.2.P1</version>
+    <time>1629101338</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911811</requestid>
+  </revision>
 </revisionlist>
