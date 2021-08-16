@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           keditbookmarks
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Bookmark Editor
 License:        GPL-2.0-only
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF5Parts)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
-Recommends:     %{name}-lang
 
 %description
 This is an editor to edit your KDE-wide bookmark set.
@@ -82,7 +81,6 @@ This is an editor to edit your KDE-wide bookmark set.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
