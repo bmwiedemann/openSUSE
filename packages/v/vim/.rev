@@ -5294,4 +5294,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Popup window test is flaky on MS-Windows with GUI.</comment>
     <requestid>908011</requestid>
   </revision>
+  <revision rev="289" vrev="1">
+    <srcmd5>afee57a84f6a312d3ffc6d38c9e1e2de</srcmd5>
+    <version>8.2.3318</version>
+    <time>1629101319</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912027</requestid>
+  </revision>
 </revisionlist>

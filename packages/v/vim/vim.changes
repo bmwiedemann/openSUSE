@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Wed Aug 11 09:03:06 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- Update apparmor.vim (taken from AppArmor 3.0.3)
+  * Add syntax highlighting for abi rules
+
+-------------------------------------------------------------------
+Mon Aug  9 10:24:10 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3318, fixes the following problems
+  * Vim9: exists() does not handle much at compile time.
+  * Lua: can only execute one Vim command at a time.  Not easy to get the
+  Vim version.
+  * Memory allocation functions don't have their own place.
+  * Some structures could be smaller.
+  * Popup window title with wide characters is truncated.
+  * Vim9: :finally in skipped block not handled correctly.
+  * Unexpected "No matching autocommands".
+  * Vim9: :echoconsole cannot access local variables.
+  * Vim9: no runtime check for argument type if a function only has varargs.
+  * Vim9: divide by zero causes a crash.
+  * Vim9: unpack assignment does not mention source of type error.
+  * Vim9: check for DO_NOT_FREE_CNT is very slow.
+  * Vim9: after "if false" line breaks in expression not skipped.
+  * Unused code in win_exchange() and frame_remove().
+  * Behavior of exists() in a :def function is unpredictable.
+  * Cannot use single quote in a float number for readability.
+  * Float test fails.
+  * Vim9: No error for missing white space before return type.
+  * Vim9: cannot ignore quotes in number at the command line.
+
+-------------------------------------------------------------------
+Fri Aug  6 14:10:23 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3299, fixes the following problems
+  * Vim9: TODO items in tests can be taken care of.
+  * Vim9: error about using -complete without -nargs is confusing.
+  * Julia filetype is not recognized
+  * No error for insert() or remove() changing a locked blob.
+  * Scdoc filetype is not recognized.
+  * win_enter_ext() has too many boolean arguments.
+  * Channel events not handled in BufEnter autocommand.
+  * Cannot easily access namespace dictionaries from Lua.
+  * Compiler warning for unused variable with small features.
+  * Vim9: compiling dict may use pointer after free and leak memory on failure.
+  * Coverity warns for not checking return value.
+  * Underscore in very magic pattern causes a hang.  Pattern with \V are
+  case sensitive. (Yutao Yuan)
+  * Finding completions may cause an endless loop.
+  * Lua: memory leak when adding dict item fails.
+  * 'cursorline' should not apply to 'breakindent'.
+  * Vim9: cannot add a number to a float.
+  * Cannot use all commands inside a {} block after :command and :autocmd.
+  * Build failure with small features.
+  * Vim9: exists() does not handle much at compile time.
+
+-------------------------------------------------------------------
+Wed Aug  4 08:46:36 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3281, fixes the following problems
+  * Display garbled when 'cursorline' is set and lines wrap. (Gabriel Dupras)
+  * Coverity reports a null pointer dereference.
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: crash when compiling string fails. (Yegappan Lakshmanan)
+  * Dynamic library load error does not mention why it failed.
+  * Vim9: lambda doesn't find block-local variable.
+  * Vim9: searchpair() sixth argument is compiled. (Yegappan Lakshmanan)
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: execution speed can be improved.
+  * NOCOMPOUNDSUGS entry in spell file not tested.
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: crash when using variable in a loop at script level.
+  * When using xchaha20 crypt undo file is not removed.
+  * :find searches non-existing directories.
+  * Test_term_setansicolors() fails in some configurations.
+  * Vim9: argument types are not checked at compile time.
+  * Vim9: cannot used loop variable later as lambda argument.
+  * Vim: using {} block in autoloade omnifunc fails.
+  * Cannot call script-local function after :vim9cmd. (Christian J. Robinson)
+  * Incsearch highlighting is attempted halfway a mapping.
+  * New digraph functions use old naming scheme.
+  * 'virtualedit' can only be set globally.
+  * Cannot use a simple block for the :command argument. (Maarten Tournoij)
+  * Vim9: runtime and compile time type checks are not the same.
+  * Vim9: type error when function return type is not known yet.
+  * Build failure with small features.
+  * system() does not work without a second argument.
+  * prop_list() and prop_find() do not indicate the buffer for the used type.
+  * Crash when printing long string with Lua.
+  * Cannot use lambda in {} block in user command. (Martin Tournoij)
+  * mode() does not indicate using CTRL-O in Select mode.
+  * When a builtin function gives an error processing continues.
+  * Vim9: error message does not indicate the location.
+  * Vim9: no error using heredoc for a number variable.
+  * Lua print() does not work properly.
+  * Vim9: memory leak when function reports an error.
+  * Vim9: valgrind reports leaks in builtin function test.
+  * Lua 5.3 print() with a long string crashes.
+  * The crypt key may appear in a swap partition.
+  * Memory use after free.
+  * Using uninitialized memory when checking for crypt method.
+  * Vim9: error message for wrong input uses wrong line number.
+  * Vim9: error for re-imported function with default argument.
+  * Listing builtin_gui as an available terminal is confusing.
+  * Duplicated code for adding buffer lines.
+  * Channel test fails randomly.
+  * win_gettype() does not recognize a quickfix window.
+  * ci" finds following string but ci< and others don't.
+  * Executable test may fail on new Ubuntu system.
+  * Calling prop_find() with -1 for ID gives errornous error. (Naohiro Ono)
+  * Error messages have the wrong text.
+  * When 'indentexpr' causes an error the did_throw flag may remain set.
+  * Build failure with small features.
+  * Vim9: when compiling repeat(123, N) return type is number.
+  * Build failure when ABORT_ON_INTERNAL_ERROR is defined.
+  * Vim9: "..=" does not accept same types as the ".." operator.
+  * Vim9: assign test fails.
+  * Smartcase does not work correctly in very magic pattern.
+  * Vim9: assignment with two indexes may check next line.
+  * Vim9: crash when disassembling a function that uses a deleted script
+  variable.
+  * Cannot use a block with :autocmd like with :command.
+  * Vim9: wrong argument check for partial. (Naohiro Ono)
+  * prop_find() finds property with ID -2.
+  * Vim9: cannot use :command or :au with a block in a :def function.
+  * Cannot use id zero with prop_find(). (Naohiro Ono)
+  * Autocmd test fails.
+  * Macro for printf format check can be simplified.
+  * Optimizer can use hints about ga_grow() normally succeeding.
+  * Vim9: exists() can only be evaluated at runtime.
+  * Vim9: compiled has() does not work properly.
+  * Vim9: error when adding 1 to float.
+  * Vim9: cannot use block in cmdline window.
+  * 'virtualedit' local to buffer is not the best solution.
+  * Vim9: TODO items in tests can be taken care of.
+
+-------------------------------------------------------------------
 Fri Jul 23 15:44:04 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.3204, fixes the following problems
