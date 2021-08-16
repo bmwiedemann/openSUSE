@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontactinterface
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Interface to Contacts
 License:        LGPL-2.1-or-later
@@ -89,7 +89,6 @@ to develop KDE PIM applications.
 %{_kf5_servicetypesdir}/kontactplugin.desktop
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5KontactInterface/
 %{_kf5_includedir}/KontactInterface/
 %{_kf5_includedir}/kontactinterface_version.h
@@ -98,7 +97,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
