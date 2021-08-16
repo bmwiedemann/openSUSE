@@ -16,15 +16,13 @@
 #
 
 
-%define mlt_version 6.20.0
-%define melt_path %(pkg-config --variable=meltbin mlt-framework)
-%define mlt_soname %(pkg-config --variable=moduledir mlt-framework | sed 's/.*-\\([0-9]\\+\\)/\\1/')
+%define mlt_version 7.0.0
 %define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdenlive
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Non-linear video editor
 License:        GPL-3.0-or-later
@@ -35,8 +33,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-OPENSUSE -- Rename the melt executable name in kdenliverc
-Patch0:         0001-Handle-the-melt-package-rename-nicely.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -78,17 +74,10 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libv4l2)
-BuildRequires:  pkgconfig(mlt++) >= %{mlt_version}
-BuildRequires:  pkgconfig(mlt-framework) >= %{mlt_version}
+BuildRequires:  pkgconfig(mlt++-7) >= %{mlt_version}
+BuildRequires:  pkgconfig(mlt-framework-7) >= %{mlt_version}
 BuildRequires:  pkgconfig(x11)
-# Waiting for the day all libraries have versioned symbols...
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt++.so) --qf '%%{NAME}') >= %{mlt_version}
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}') >= %{mlt_version}
-# It requires the profiles
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}')-data
-# Without a few of the plugins it crashes on start
-Requires:       %{melt_path}
-Requires:       %(rpm -qf $(readlink -qne %{_libdir}/libmlt.so) --qf '%%{NAME}')-modules
+Requires:       melt >= 7
 # It doesn't start without it (boo#994649)
 Requires:       libqt5-qtquickcontrols
 # needed for the new timeline
@@ -98,10 +87,8 @@ Recommends:     %{_bindir}/dvgrab
 Recommends:     %{_bindir}/ffmpeg
 Recommends:     %{_bindir}/ffplay
 Recommends:     %{_bindir}/genisoimage
-Recommends:     %{name}-lang
 Recommends:     frei0r-plugins
 Recommends:     libv4l
-Recommends:     mlt(%{mlt_soname})(avformat)
 Obsoletes:      kdenlive5 < %{version}
 Provides:       kdenlive5 = %{version}
 
@@ -154,7 +141,6 @@ rm -r %{buildroot}%{_datadir}/doc/Kdenlive
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

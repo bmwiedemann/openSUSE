@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:37:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Too many changes since 21.07.90, only listing bugfixes:
+  * Don't allow deleting items when a spacer move operation is running. (kde#408434)
+  * Fix crash moving clip with speed effect and mix. (kde#433579)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Too many changes since 21.07.80, only listing bugfixes:
+  * Drop custom combobox stylesheet causing unreadable text. (kde#428755)
+  * Fix crash dragging multiple audio streams clip in timeline with locked
+    tracks (kde#439849)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Dynamically update max number of concurrent proxy/transcode jobs,
+    don't show error message on job abort (kde#432365)
+  * Correctly display info on error with jobs, fix stablize add clip checkbox not working (kde#436805)
+  * Keyframes widget: add option to copy values at cursor pos to clipboard (kde#439284)
+  * Import keyframes dialog: make position alignment more customizable (kde#426316)
+  * Remove DVD Wizard (kde#403128)
+  * Implement check and transcoding for non seekable files. (kde#371062)
+  * Add option to go to start if playback started on timeline end (kde#353051)
+- Drop 0001-Handle-the-melt-package-rename-nicely.patch
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
