@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktuberling
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Potato drawing editor
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Provides:       ktuberling5 = %{version}
 Obsoletes:      ktuberling5 < %{version}
 
@@ -76,7 +75,7 @@ face and goodies can be attached onto a potato-like guy.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.ktuberling          Game KidsGame
+  %suse_update_desktop_file -r org.kde.ktuberling Game KidsGame
 
 %files
 %license COPYING*
@@ -91,7 +90,6 @@ face and goodies can be attached onto a potato-like guy.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
