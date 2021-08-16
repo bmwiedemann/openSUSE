@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Introduce MenuBar implementation
+  * Make sure raised is initialised
+  * Do not create an extra KIconLoader just for custom palettes
+  * Use flat instead of raised for flat buttons and toolbuttons (kde#438525)
+  * DialogButtonBox: remove unnecessary lines
+  * DialogButtonBox: Set standard icons for standard buttons
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
