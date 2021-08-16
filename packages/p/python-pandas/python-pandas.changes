@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Thu Aug 12 13:04:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.3.1
+  Fixed regressions
+  * Pandas could not be built on PyPy (GH42355)
+  * DataFrame constructed with an older version of pandas could not
+    be unpickled (GH42345)
+  * Performance regression in constructing a DataFrame from a
+    dictionary of dictionaries (GH42248)
+  * Fixed regression in DataFrame.agg() dropping values when the
+    DataFrame had an Extension Array dtype, a duplicate index, and
+    axis=1 (GH42380)
+  * Fixed regression in DataFrame.astype() changing the order of
+    noncontiguous data (GH42396)
+  * Performance regression in DataFrame in reduction operations
+    requiring casting such as DataFrame.mean() on integer data
+    (GH38592)
+  * Performance regression in DataFrame.to_dict() and Series.to_dict
+    () when orient argument one of “records”, “dict”, or “split”
+    (GH42352)
+  * Fixed regression in indexing with a list subclass incorrectly
+    raising TypeError (GH42433, GH42461)
+  * Fixed regression in DataFrame.isin() and Series.isin() raising
+    TypeError with nullable data containing at least one missing
+    value (GH42405)
+  * Regression in concat() between objects with bool dtype and
+    integer dtype casting to object instead of to integer (GH42092)
+  * Bug in Series constructor not accepting a dask.Array (GH38645)
+  * Fixed regression for SettingWithCopyWarning displaying
+    incorrect stacklevel (GH42570)
+  * Fixed regression for merge_asof() raising KeyError when one of
+    the by columns is in the index (GH34488)
+  * Fixed regression in to_datetime() returning pd.NaT for inputs
+    that produce duplicated values, when cache=True (GH42259)
+  * Fixed regression in SeriesGroupBy.value_counts() that resulted
+    in an IndexError when called on a Series with one row (GH42618)
+  * Fixed bug in DataFrame.transpose() dropping values when the
+    DataFrame had an Extension Array dtype and a duplicate index
+    (GH42380)
+  * Fixed bug in DataFrame.to_xml() raising KeyError when called
+    with index=False and an offset index (GH42458)
+  * Fixed bug in Styler.set_sticky() not handling index names
+    correctly for single index columns case (GH42537)
+  * Fixed bug in DataFrame.copy() failing to consolidate blocks in
+    the result (GH42579)
+
+-------------------------------------------------------------------
+Thu Jul 22 01:54:09 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * update requirements
+  * README.rst ->README.md
+
+- update to version 1.3.0:
+  * long changelog, see https://pandas.pydata.org/pandas-docs/stable/whatsnew/v1.3.0.html
+
+- changes from version 1.2.5:
+  * Fixed regression in concat() between two DataFrame where one has
+    an Index that is all-None and the other is DatetimeIndex
+    incorrectly raising (GH40841)
+  * Fixed regression in DataFrame.sum() and DataFrame.prod() when
+    min_count and numeric_only are both given (GH41074)
+  * Fixed regression in read_csv() when using memory_map=True with an
+    non-UTF8 encoding (GH40986)
+  * Fixed regression in DataFrame.replace() and Series.replace() when
+    the values to replace is a NumPy float array (GH40371)
+  * Fixed regression in ExcelFile() when a corrupt file is opened but
+    not closed (GH41778)
+  * Fixed regression in DataFrame.astype() with dtype=str failing to
+    convert NaN in categorical columns (GH41797)
+- Unpack some files required for testing
+
+-------------------------------------------------------------------
 Mon May  3 01:33:01 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 1.2.4:

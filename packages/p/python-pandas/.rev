@@ -382,4 +382,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>890050</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ddc5bac441771254e925ee9ff0df7f7c</srcmd5>
+    <version>1.3.1</version>
+    <time>1629101315</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911980</requestid>
+  </revision>
 </revisionlist>
