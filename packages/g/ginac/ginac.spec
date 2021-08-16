@@ -1,7 +1,7 @@
 #
-# spec file for package ginac
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ BuildArch:      noarch
 
 %define library_version 11
 Name:           %{srcname}%{?pkg_suffix}
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        C++ library for symbolic calculations
 License:        GPL-2.0-only
@@ -70,6 +70,7 @@ BuildRequires:  tex(caption.sty)
 BuildRequires:  tex(colortbl.sty)
 BuildRequires:  tex(etoc.sty)
 BuildRequires:  tex(fancyhdr.sty)
+BuildRequires:  tex(fancyvrb.sty)
 BuildRequires:  tex(float.sty)
 BuildRequires:  tex(hanging.sty)
 BuildRequires:  tex(helvet.sty)
@@ -104,7 +105,7 @@ Provides:       lib%{name}-devel = %{version}
 Obsoletes:      lib%{name}-devel < %{version}
 %if 0%{?suse_version} < 1550
 Requires(pre):  %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 %endif
 Recommends:     ginac-doc-tutorial
 
