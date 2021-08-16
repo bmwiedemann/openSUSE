@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ark
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Archiver Tool
 License:        GPL-2.0-or-later
@@ -62,8 +62,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
 # Recommend the most used compression programs (bnc#872010)
 Recommends:     xz
-# unrar is non-free. Avoid installing it automatically.
-Suggests:       unrar
 Obsoletes:      ark-devel
 Recommends:     p7zip-full
 Recommends:     unar
@@ -100,19 +98,19 @@ This is a KDE application to work with compressed archives.
 %postun -n libkerfuffle%{SOMAJOR} -p /sbin/ldconfig
 
 %files
-%license COPYING*
 %doc %lang(en) %{_kf5_htmldir}/en/ark/
 %doc %{_kf5_mandir}/man1/ark.*
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kfileitemaction
 %dir %{_kf5_plugindir}/kf5/kio_dnd
+%dir %{_kf5_plugindir}/kf5/parts
 %{_kf5_applicationsdir}/org.kde.ark.desktop
 %{_kf5_appstreamdir}/org.kde.ark.appdata.xml
 %{_kf5_bindir}/ark
 %{_kf5_configkcfgdir}/ark.kcfg
 %{_kf5_debugdir}/ark.categories
 %{_kf5_iconsdir}/hicolor/*/apps/*
-%{_kf5_plugindir}/arkpart.so
+%{_kf5_plugindir}/kf5/parts/arkpart.so
 %{_kf5_plugindir}/kerfuffle/
 %{_kf5_plugindir}/kf5/kfileitemaction/compressfileitemaction.so
 %{_kf5_plugindir}/kf5/kfileitemaction/extractfileitemaction.so
@@ -126,7 +124,6 @@ This is a KDE application to work with compressed archives.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

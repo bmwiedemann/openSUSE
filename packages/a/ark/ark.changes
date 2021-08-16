@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:33:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Mon Jul 26 11:35:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Port away from deprecated KConfigDialogManager::changedMap
+  * Add support for single files compressed with zstd (kde#434540)
+  * Revert addition of "application/zstd" as archive format
+  * libzipplugin: revert zip_source_file from using unique_ptr
+  * libzipplugin: some changes for merge review.
+  * libzipplugin: hack for zstd max compression method.
+  * libzipplugin: fix for pre 1.8.0 libzip versions.
+  * libzipplugin: support lzma xz for libzip 1.8.0+
+  * libzipplugin: replace almost all raw pointers with unique_ptr
+  * clirartest: Set the locale to english
+  * Bring back KPtyProcess include
+  * Remove unused includes
+  * Remove check about qt version
+  * As we depend against qt5.15 we can use qt macro/Qt::
+  * It's already defined in KDEFrameworkCompilerSettings
+  * Time to increase version
+  * Adding "application/zstd" mimetype
+  * Update Flatpak to 5.15 runtime
+  * Remove qt prefix
+  * Clean up ServiceType property usage in JSON based plugins
+  * FileItemActions: Make plugins more intuitive and interactive
+  * Show a "Welcome screen" when launched without an archive
+  * Set a better default window size
+  * Remove .travis.yml
+  * Remove forward declaration when we already include file
+  * Simplify part loading code
+  * Repair ark startup: make it find its own part again
+  * Add missing KConfig linkage
+  * Install the part in kf5/parts/
+  * Port to KRecentFilesMenu
+  * Refactor preview handling
+  * appstream: fix homepage url
+  * Support for zip files using backslashes as the path separator.
+  * Use QStringTokenizer for string splitting
+  * Require C++17
+  * Simplify fast path in ArchiveModel::parentFor
+  * Avoid QString (de)allocations in Entry::find
+  * Avoid another unnecessary string split
+  * Avoid using QString::split
+  * Use imported targets for libzip and zlib
+- Only install the license files once
+- Remove the unrar 'Suggests'.
+
+-------------------------------------------------------------------
 Tue Jul 20 11:47:23 UTC 2021 - Yaroslav Kurlaev <yaroslav.kurlaev@gmail.com>
 
 - Recommend unar
