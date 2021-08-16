@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio-extras5
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -73,7 +73,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(smbclient)
-Recommends:     %{name}-lang
 Recommends:     kimageformats
 # we want some imageformats in
 Recommends:     libqt5-qtimageformats
@@ -128,10 +127,10 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %postun -n libkioarchive5 -p /sbin/ldconfig
 
 %files
-%license COPYING.*
+%license LICENSES/*
 %{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/kio-extras.categories
-%{_kf5_libdir}/libmolletnetwork5.so.*
+%{_kf5_debugdir}/kio-extras.renamecategories
 %{_kf5_libexecdir}/smbnotifier
 %{_kf5_plugindir}/
 %{_kf5_servicesdir}/
@@ -139,9 +138,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %{_kf5_sharedir}/kio_bookmarks/
 %{_kf5_sharedir}/kio_docfilter/
 %{_kf5_sharedir}/kio_info/
-%{_kf5_sharedir}/konqsidebartng/
 %{_kf5_sharedir}/konqueror/
-%{_kf5_sharedir}/mime/packages/kf5_network.xml
 %{_kf5_sharedir}/remoteview/
 %{_kf5_sharedir}/solid/
 
@@ -151,7 +148,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %{_libdir}/cmake/KioArchive/
 
 %files -n libkioarchive5
-%license COPYING.*
+%license LICENSES/*
 %{_libdir}/libkioarchive.so.5*
 
 %if %{with lang}

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:38:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * don't auto deduce QStringBuilder (kde#439877)
+  * filter KIO: add zstd support
+  * Thumbnails: Make thumbnail generation devicePixelRatio aware (kde#342053)
+  * kio_info: fix the extraction of the POT file
+  * archive KIO: register also as handler for zstd-compressed tars
+  * Drop network: KIO slave
+  * kio-mtp: register demon on D-Bus by service name org.kde.kmtpd5
+  * Fix build against new KDNSSD includes
+  * Adding import of kio_version
+  * Move ThumbCreatorWithMetadata out of anonymous namespace
+  * Thumbnails: Refactor, add ThumbCreatorWithMetadata
+  * Thumbnails: Refactor, Make scaleDownImage an anonymous function,
+    remove unnecessary old smooth scaling hack
+  * Thumbnails: Refactor how to find thumb cache dir
+  * Thumbnails: Refactor, Add ThumbnailProtocol::ensureDirsCreated
+  * Skipping thumbnail caching for encrypted storages
+  * thumbnail: run clang-format
+  * Remove empty ExtraNames JSON property for KIO slaves
+  * Embed JSON metadata in KIOSlaves
+  * Remove obsolete .protocol files
+  * Convert protocol files to JSON
+  * Do not install deprecated protocol files
+  * Remove description from protocol files
+  * Increase deps
+  * Add missing include <thread>
+  * [kio/mtp] Use forward declaration for MTPDevice*
+  * [kio/mtp] Use ecm_qt_declare_logging_category
+  * [kio/nfs] Remove unused QTimer header
+  * [kio/nfs] Use ecm_qt_declare_logging_category
+  * [kio/man] Use ecm_qt_declare_logging_category
+  * [kio/info] Use ecm_qt_declare_logging_category
+  * [kio/filenamesearch] Use ecm_qt_declare_logging_category
+  * [kio/archive] Fix ecm_declare_logging_category usage
+  * [Thumbnail] Remove unused return value from drawSubThumbnail
+  * Enable gitlab CI
+  * Update .gitignore
+  * thumbnail: Port from deprecated qrand to QRandomGenerator
+  * thumbnail: Remove dead code
+  * Ignore smb/kdsoap-ws-discovery-client/ SPDX licenses
+  * Convert license headers to SPDX
+  * [thumbnail/exrcreator] Add missing include
+  * Bump Qt min version to 5.14 and fix two warnings
+  * Add .git-blame-ignore-revs file
+  * Run astyle to correct indentation to 4 spaces
+  * Thumbnail: Set sequenceIndexWraparoundPoint AFTER calling ThumbSequenceCreator::create()
+  * Add some missing linkages
+  * Bump KF5_MIN_VERSION to 5.80.0 for ThumbSequenceCreator::sequenceIndexWraparoundPoint().
+  * Add support for fixed-length sequence loops to ThumbSequenceCreator
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
