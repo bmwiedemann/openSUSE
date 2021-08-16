@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 13 13:55:15 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.5.0:
+  * Version 3.5.0 makes the module ready for Python 3.9.  The methods
+    "array.fromstring" and "array.tostring" will not exist in Python 3.9.
+    One additional change that I have made is that I have gone back to my
+    older implementation for __add__ on account of a bug in the new
+    implementation that I had incorporated in Version 3.4.9.
+
+-------------------------------------------------------------------
 Mon Apr  1 12:55:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 3.4.9:
