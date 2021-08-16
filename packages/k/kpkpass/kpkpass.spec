@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kpkpass
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Library to parse Passbook files
 License:        LGPL-2.1-or-later
@@ -82,7 +82,6 @@ to build programs that use the kpkpass library.
 %{_datadir}/mime/packages/application-vnd-apple-pkpass.xml
 
 %files devel
-%license LICENSES/*
 %dir %{_includedir}/KPim/
 %{_includedir}/KPim/KPkPass/
 %{_kf5_cmakedir}/KPimPkPass/
