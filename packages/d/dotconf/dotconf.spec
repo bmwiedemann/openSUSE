@@ -1,7 +1,7 @@
 #
 # spec file for package dotconf
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           dotconf
 Version:        1.3
 Release:        0
 Summary:        Configuration file parser library
-License:        LGPL-2.1+
+License:        LGPL-2.1-or-later
 Group:          Development/Languages/C and C++
-Url:            https://github.com/williamh/dotconf/
+URL:            https://github.com/williamh/dotconf/
 Source:         https://github.com/williamh/dotconf/archive/v%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -32,32 +32,32 @@ BuildRequires:  pkg-config
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-dotconf is a simple-to-use and powerful configuration-file parser
+dotconf is a configuration-file parser
 library written in C. The configuration files created for dotconf look
-very similar to those used by the Apache Webserver. Even
-Container-Directives known from httpd.conf can easily be used in the
-exact same manner as for Apache-Modules. It supports various types of
+similar to those used by the Apache web server. Even
+container directives known from httpd.conf can be used in the
+same manner as for Apache modules. It supports various types of
 arguments, dynamically loadable modules that create their own
-configuration options on-the-fly, a here-documents feature to pass very
-long ARG_STR data to your app, and on-the-fly inclusion of additional
+configuration options on-the-fly, a here-documents feature to pass
+long ARG_STR data to programs, and on-the-fly inclusion of additional
 config files.
 
 %package -n libdotconf0
 Summary:        Configuration file parser library
-Group:          Development/Languages/C and C++
+Group:          System/Languages
 # Package was formerly libdotconf-1_0-0
 Provides:       libdotconf-1_0-0 = %{version}
 Obsoletes:      libdotconf-1_0-0 < %{version}
 
 %description  -n libdotconf0
-dotconf is a simple-to-use and powerful configuration-file parser
+dotconf is a configuration-file parser
 library written in C. The configuration files created for dotconf look
-very similar to those used by the Apache Webserver. Even
-Container-Directives known from httpd.conf can easily be used in the
-exact same manner as for Apache-Modules. It supports various types of
+similar to those used by the Apache web server. Even
+container directives known from httpd.conf can be used in the
+same manner as for Apache modules. It supports various types of
 arguments, dynamically loadable modules that create their own
-configuration options on-the-fly, a here-documents feature to pass very
-long ARG_STR data to your app, and on-the-fly inclusion of additional
+configuration options on-the-fly, a here-documents feature to pass
+long ARG_STR data to programs, and on-the-fly inclusion of additional
 config files.
 
 %package devel
@@ -69,28 +69,26 @@ Provides:       %{name} = %{version}-%{release}
 Obsoletes:      %{name} < %{version}-%{release}
 
 %description devel
-dotconf is a simple-to-use and powerful configuration-file parser
+dotconf is a configuration-file parser
 library written in C. The configuration files created for dotconf look
-very similar to those used by the Apache Webserver. Even
-Container-Directives known from httpd.conf can easily be used in the
-exact same manner as for Apache-Modules. It supports various types of
+similar to those used by the Apache web server. Even
+container directives known from httpd.conf can be used in the
+same manner as for Apache modules. It supports various types of
 arguments, dynamically loadable modules that create their own
-configuration options on-the-fly, a here-documents feature to pass very
-long ARG_STR data to your app, and on-the-fly inclusion of additional
+configuration options on-the-fly, a here-documents feature to pass
+long ARG_STR data to programs, and on-the-fly inclusion of additional
 config files.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fiv
-%configure \
-  --disable-static \
-  --with-pic
-make %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 rm doc/Makefile*
 
@@ -99,11 +97,9 @@ rm doc/Makefile*
 %postun -n libdotconf0 -p /sbin/ldconfig
 
 %files -n libdotconf0
-%defattr (-,root,root,755)
 %{_libdir}/libdotconf*.so.*
 
 %files devel
-%defattr (-,root,root,755)
 %doc %{_datadir}/doc/dotconf/*
 %dir %{_datadir}/doc/dotconf
 %{_libdir}/libdotconf*.so

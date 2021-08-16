@@ -153,4 +153,12 @@
     <comment>1</comment>
     <requestid>339728</requestid>
   </revision>
+  <revision rev="22" vrev="16">
+    <srcmd5>4edcc5943ceb5951593a972755ba5ba0</srcmd5>
+    <version>1.3</version>
+    <time>1629101333</time>
+    <user>RBrownSUSE</user>
+    <comment>- Drop --with-pic, as it has no effect with --disable-static. (forwarded request 911473 from jengelh)</comment>
+    <requestid>911476</requestid>
+  </revision>
 </revisionlist>
