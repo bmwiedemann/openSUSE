@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           klines
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Tactical game
 License:        GPL-2.0-or-later
@@ -64,7 +64,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Klines is the KDE version of the russian game Lines where you have to
@@ -86,7 +85,7 @@ from the game board. Similar to tetris you fight new pieces appearing.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.klines          Game LogicGame
+  %suse_update_desktop_file -r org.kde.klines Game LogicGame
 
 %files
 %license LICENSES/*
@@ -101,7 +100,6 @@ from the game board. Similar to tetris you fight new pieces appearing.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
