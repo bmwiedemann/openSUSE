@@ -16,4 +16,15 @@
   (every dir should only have one owner) (boo#1184786) (forwarded request 897911 from hillwood)</comment>
     <requestid>897918</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>94e28e4ddbf917b233308c0ba75eb2fa</srcmd5>
+    <version>5.9.7</version>
+    <time>1629101350</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.9.7
+  * Increase unit test coverage to 81.6%
+  * Update translations
+  * Fix bugs (forwarded request 910685 from hillwood)</comment>
+    <requestid>910901</requestid>
+  </revision>
 </revisionlist>

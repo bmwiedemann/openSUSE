@@ -22,7 +22,7 @@
 %endif
 
 Name:           deepin-draw
-Version:        5.9.2
+Version:        5.9.7
 Release:        0
 Summary:        A calendar application for Deepin Desktop
 License:        GPL-3.0-or-later
@@ -40,7 +40,6 @@ BuildRequires:  deepin-manual
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libqt5-linguist
-BuildRequires:  deepin-manual
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
