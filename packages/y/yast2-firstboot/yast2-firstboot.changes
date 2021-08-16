@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 10 16:29:28 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Move the home directory when the user login is modified in the
+  client for creating a user (related to bsc#1188612).
+- 4.4.4
+
+-------------------------------------------------------------------
 Fri Jul  9 11:59:31 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Remember plain passwords in order to provide a clean navigation
