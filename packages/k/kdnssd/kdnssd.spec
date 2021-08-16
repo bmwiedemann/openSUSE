@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kdnssd
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Zeroconf Support for KIO applications
 License:        GPL-2.0-or-later
@@ -39,7 +39,6 @@ BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DNSSD)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KIO)
-Recommends:     %{name}-lang
 
 %description
 This package adds Zeroconf support to KIO, allowing the use of this protocol
@@ -67,19 +66,18 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING COPYING.DOC
+%license LICENSES/*
 %{_kf5_appstreamdir}/org.kde.zeroconf-ioslave.metainfo.xml
 %{_kf5_dbusinterfacesdir}/org.kde.kdnssd.xml
-%{_kf5_plugindir}/kded_dnssdwatcher.so
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/kded
+%{_kf5_plugindir}/kf5/kded/dnssdwatcher.so
 %{_kf5_plugindir}/kf5/kio/zeroconf.so
-%dir %{_kf5_servicesdir}/kded/
-%{_kf5_servicesdir}/kded/dnssdwatcher.desktop
 %dir %{_kf5_sharedir}/remoteview/
 %{_kf5_sharedir}/remoteview/zeroconf.desktop
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
