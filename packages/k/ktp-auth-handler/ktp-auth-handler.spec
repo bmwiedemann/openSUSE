@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-auth-handler
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Telepathy auth handler
 License:        LGPL-2.1-or-later
@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(accounts-qt5)
 BuildRequires:  pkgconfig(libsignon-qt5)
 Requires:       libqca-qt5-plugins
 Requires:       signon-plugin-oauth2
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -85,7 +84,6 @@ SSL errors on account connect.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
