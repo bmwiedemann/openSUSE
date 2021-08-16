@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Aug 15 01:39:26 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Fetch listed v0.5.0.tar.gz
+
+-------------------------------------------------------------------
+Mon Jul 26 20:33:20 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
+
+- Update to v0.5.0
+  + Fix Marshaled nested wildcard field with ordered=True
+  + Fix Float Field Handling of None
+  + Fix Werkzeug and Flask > 2.0 issues
+  + Hotfix package.json
+  + Stop calling got_request_exception when handled explicitly
+  + Structure demo zoo app
+  + Update Contributing.rst
+  + Upgrade swagger-ui
+- Update to v0.4.0
+  + Fix Namespace error handlers when propogate_exceptions=True
+  + pin flask and werkzeug due to breaking changes
+  + The Flask/Blueprint API moved to the Scaffold base class
+  + added specs-url-scheme option for API
+- Update to v0.3.0
+  + Make error handlers order of registration respected when
+    handling errors
+  + add prefix to config setting
+  + Use relative path for `api.specs_url`
+  + Allow example=False
+  + Add support for recursive models
+  + generate choices schema without collectionFormat
+  + Catch TypeError in marshalling
+  + Unable to access nested list propert
+  + allow strict mode when validating model fields
+  + Make it possible to include "unused" models in the generated
+    swagger documentation
+
+-------------------------------------------------------------------
 Tue Apr 27 17:02:22 UTC 2021 - Sean Marlow <sean.marlow@suse.com>
 
 - Add missing python2 requirement.
