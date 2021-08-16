@@ -17,12 +17,12 @@
 
 
 %define kf5_version 5.66.0
-%define qt5_version 5.14.0
+%define qt5_version 5.15.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           markdownpart
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KPart for rendering Markdown content
 License:        LGPL-2.1-or-later
@@ -37,7 +37,6 @@ BuildRequires:  extra-cmake-modules >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5Parts) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Widgets) >= %{qt5_version}
-Recommends:     %{name}-lang
 
 %description
 A(nother) Markdown viewer KParts plugin, which allows
