@@ -249,4 +249,14 @@
     <comment></comment>
     <requestid>903193</requestid>
   </revision>
+  <revision rev="35" vrev="171">
+    <srcmd5>4b0731daeb1ff3cbbd8dc79911215b98</srcmd5>
+    <version>2.1a15</version>
+    <time>1629101470</time>
+    <user>RBrownSUSE</user>
+    <comment>- Added hardening to systemd service(s). Modified:
+  * arpwatch.service
+  * arpwatch@.service</comment>
+    <requestid>911812</requestid>
+  </revision>
 </revisionlist>

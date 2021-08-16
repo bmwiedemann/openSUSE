@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 11 13:47:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * arpwatch.service
+  * arpwatch@.service
+
+-------------------------------------------------------------------
 Tue Jun 29 07:10:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Fixed local privilege escalation from runtime user to root
