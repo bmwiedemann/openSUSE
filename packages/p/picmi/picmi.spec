@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           picmi
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Nonogram Logic game
 License:        GPL-2.0-or-later
@@ -68,7 +68,7 @@ A nonogram logic game by KDE
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.picmi          Game LogicGame
+  %suse_update_desktop_file -r org.kde.picmi Game LogicGame
 
 %files
 %license COPYING*
@@ -85,7 +85,6 @@ A nonogram logic game by KDE
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
