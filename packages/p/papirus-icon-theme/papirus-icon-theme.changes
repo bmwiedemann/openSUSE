@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Thu Aug 12 23:25:27 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Update to version 20210802
+
+  - Highlights
+
+    - Modernized applications and devices icons with display
+    - Updated icons for the categories:
+      * Development
+      * Development Translation
+      * Education
+      * Games
+      * Graphics
+      * Internet #2621
+      * Utilities
+
+  - Added icons
+
+    - 0CC-FamiTracker
+    - A7800
+    - Albert launcher tray icon (#2738)
+    - Audacium #2761
+    - BambooTracker
+    - BEAST
+    - cpupower-gui
+    - CraftStudio
+    - Doki Doki Literature Club Plus!
+    - Dopamine (AppImage)
+    - drive-removable-media-usb-panel #2744
+    - Eiciel
+    - EmulationStation
+    - FamiStudio
+    - FamiTracker
+    - ffdec #2741
+    - Fontmatrix
+    - Github-desktop (Flathub) #2007
+    - GMAMEUI
+    - Google Tasks Desktop
+    - GOverlay
+    - gsplus
+    - Heroic
+    - Higan
+    - icarus
+    - Insomnia (Flathub) #2007
+    - JPEXS Free Flash Decompiler #2741
+    - Keysmith (Flathub) #2007
+    - KWeather (Flathub) #2007
+    - Liquid War
+    - Logseq #2751
+    - m64p
+    - MATE Eiciel
+    - Mednafen
+    - MESS
+    - Monero GUI (Flathub) #2007
+    - moserial (Flathub) #2007
+    - MotionBox Video Browser
+    - new-window-symbolic #2754
+    - Olympus #2753 #2748
+    - OpenJDK 16 #2737
+    - Opensnitch (tray icons)
+    - QtScrcpy #2732
+    - QuickHash
+    - Redis Desktop Manager (Flathub) #2007
+    - Rivals of Aether
+    - RustDesk #2743
+    - Sayonara (Flathub) #2007
+    - Session Desktop #2731
+    - Spek
+    - Trilium Notes #2746
+    - udiskie (actions icons) #2744
+    - Wasabi #2757
+    - Waveform11 (Flathub) #2007
+    - YOGA Image Optimizer
+    - Zenbooru
+    - ZSNES #2662
+
+  - Updated icons
+
+    - Clight
+    - Google Calendar #2756
+    - Ishiiruka
+    - Mednaffe
+
+  - Changes and fixes
+
+    - Changed symlinks target for system monitor apps
+    - Removed preferences-system from actions
+
+-------------------------------------------------------------------
 Thu Jul  1 22:48:29 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20210701
