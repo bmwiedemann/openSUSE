@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * It's deprecated in 5.85 not 5.80
+  * Rework UploadDialog, add QML version, and a new ProvidersModel
+  * Simplify lookup of knsrc files using KFileUtils::findAllUniqueFiles method
+  * Forward Attica provider icons to KNSCore::Provider
+  * Handle payload-only entries during update operations
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
