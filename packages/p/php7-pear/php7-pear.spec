@@ -22,7 +22,7 @@
 %define pear_module_version(m) %(sed -n 's/.*=>.*%{1}-\\(.*\\)\\.tar.*/\\1/p' %{SOURCE0})
 
 Name:           php7-pear
-Version:        1.10.19
+Version:        1.10.21
 Release:        0
 Summary:        PHP Extension and Application Repository
 License:        BSD-2-Clause
