@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdiamond
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Single player puzzle game
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 The objective of the game is to build lines of three similar diamonds.
@@ -86,7 +85,6 @@ The objective of the game is to build lines of three similar diamonds.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
