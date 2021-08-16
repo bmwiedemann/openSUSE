@@ -1,7 +1,7 @@
 #
 # spec file for package python-flask-restplus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source:         https://github.com/noirbizarre/flask-restplus/archive/%{version}
 Patch0:         pytest4.patch
 Patch1:         001-Fix-content-type-assertion-for-werkzeug-1.0.patch
 Patch2:         002-Update-cached_property-import-for-werkzeug-1.0.patch
+# PATCH-FIX-UPSTREAM 003-Import-from-flask-scaffold.patch https://github.com/pallets/flask/commit/9f7c602a84faa8371be4ece23e4405282d1283d2
+Patch3:         003-Import-from-flask-scaffold.patch
 BuildRequires:  %{python_module Flask >= 0.8}
 BuildRequires:  %{python_module aniso8601 >= 0.82}
 BuildRequires:  %{python_module jsonschema}
@@ -74,6 +76,8 @@ to describe APIs and to expose their documentation using Swagger.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+# _endpoint_from_view_func moved to flask.scaffold after flask 2.0.0
+%patch3 -p1
 
 %build
 %python_build
