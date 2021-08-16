@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 13 08:11:02 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- new version 33
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/33
+- fix_dependencies.patch no longer needed
+
+-------------------------------------------------------------------
 Wed Feb 24 10:51:08 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - new version 28.1

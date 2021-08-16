@@ -45,4 +45,14 @@
 - fix_dependencies.patch: fix build dependencies</comment>
     <requestid>875125</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d2cee73a0531961f33388a80558d8fe</srcmd5>
+    <version>33</version>
+    <time>1629101309</time>
+    <user>RBrownSUSE</user>
+    <comment>- new version 33
+  https://github.com/cockpit-project/cockpit-podman/releases/tag/33
+- fix_dependencies.patch no longer needed (forwarded request 911941 from lnussel)</comment>
+    <requestid>911942</requestid>
+  </revision>
 </revisionlist>
