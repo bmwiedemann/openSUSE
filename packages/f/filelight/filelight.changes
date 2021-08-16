@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Fixup previous commit and make it backwards-compatible
+  * Fix build with no deprecations using the new KShortcutsDialog API
+  * fix updating status bar when starting scan
+  * add support for re-scanning a single subfolder
+  * We depend against qt5.15
+  * Use Qt:: for qt lib
+  * Time to increase version
+  * Make it compile without deprecated method
+  * CMakePresets: add build support
+  * Fix a small issue related with "Up" button (kde#434532)
+  * Port deprecated method
+  * Use KSharedConfig::openStateConfig for history items
+  * use std::numeric_limits instead of posix defines
+  * Port deprecated signal
+  * Make the progress box prettier
+  * remember to reset total size as well as total files when starting a scan
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
