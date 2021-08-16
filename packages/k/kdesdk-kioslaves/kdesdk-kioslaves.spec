@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdesdk-kioslaves
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE SDK KIO slaves
 License:        GPL-2.0-only
@@ -73,7 +73,6 @@ This KDE KIO slave allows to browse the Perl documentation.
 
 %if %{with lang}
 %files -n kio_perldoc-lang -f kio_perldoc.lang
-%license COPYING
 %endif
 
 %changelog
