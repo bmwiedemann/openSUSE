@@ -311,6 +311,11 @@ dvd:
   # DVD exploded in size - klettres grew from 17MB to 36 - dimstar, 20190821
   - klettres: [locked]
 
+  # DVD exploded, shrinking based on fabians suggestions - rbrown, 20210816
+  - pfstools: [locked]
+  - python-QtPy: [locked]
+  - python-numba: [locked]
+
   # additional packages not picked
   - atftp
   - bcm20702a1-firmware
