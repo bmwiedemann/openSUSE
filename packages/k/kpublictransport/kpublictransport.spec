@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpublictransport
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        QML imports for querying public transport data
 License:        LGPL-2.0-or-later
@@ -85,7 +85,6 @@ ransport journey queries.Development files.
 %postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
 %{_kf5_qmldir}/org/kde/kpublictransport/
@@ -96,7 +95,6 @@ ransport journey queries.Development files.
 %{_kf5_libdir}/libKPublicTransport.so.*
 
 %files devel
-%license LICENSES/*
 %{_includedir}/KPublicTransport/
 %{_includedir}/kpublictransport/
 %{_includedir}/kpublictransport_version.h
