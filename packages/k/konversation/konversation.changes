@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:40:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08/
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * InputFilter: check NickInfoPtr object isn't null before using it (kde#437595)
+  * Replace Freenode with Libera (kde#437589)
+  * appdata: reference Libera, fix the wording
+  * It can build against QT_NO_SIGNALS_SLOTS_KEYWORDS with last qca-2.2
+  * Modernize code (using clang-tidy)
+  * Remove unused includes
+  * Remove unused forward declaration
+  * Add support for cmake preset
+- Drop patches:
+  * 0001-Bulk-search-replace-to-mention-Libera-in-localized-f.patch
+  * 0002-appdata-reference-Libera-fix-the-wording.patch
+  * 0003-Replace-Freenode-with-Libera.patch
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

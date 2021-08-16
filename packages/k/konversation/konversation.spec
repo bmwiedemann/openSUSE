@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konversation
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        A graphical IRC client by KDE
 License:        GPL-2.0-or-later
@@ -34,12 +34,8 @@ Source2:        applications.keyring
 %endif
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Use-qdbus-qt5-on-openSUSE.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0002-appdata-reference-Libera-fix-the-wording.patch
-Patch2:         0003-Replace-Freenode-with-Libera.patch
-# PATCH-FIX-OPENSUSE -- Mention libera in localized files
-Patch3:         0001-Bulk-search-replace-to-mention-Libera-in-localized-f.patch
 BuildRequires:  extra-cmake-modules
+BuildRequires:  libqca-qt5-devel
 BuildRequires:  cmake(KF5Archive) >= %{kf5_version}
 BuildRequires:  cmake(KF5Bookmarks) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -64,11 +60,9 @@ BuildRequires:  cmake(KF5Wallet) >= %{kf5_version}
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5WindowSystem) >= %{kf5_version}
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang = %{version}
 
 %description
 Konversation is an Internet Relay Chat (IRC) client built on the
