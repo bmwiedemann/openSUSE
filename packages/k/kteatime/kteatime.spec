@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kteatime
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Timer for various types of tea
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Timer utility by KDE where the user can select a particular type of tea,
@@ -69,7 +68,7 @@ and be reminded when the associated hardcoded time is over.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.kteatime    Applet
+  %suse_update_desktop_file org.kde.kteatime Applet
 
 %files
 %license COPYING COPYING.DOC
@@ -82,7 +81,6 @@ and be reminded when the associated hardcoded time is over.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
