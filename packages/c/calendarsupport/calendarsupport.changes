@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Refactor timetable printing utility functions
+  * Insert a parent class for CalPrintDay and CalPrintWeek config options
+  * Obey Use Colors option when printing tags
+  * Combine doLoadConfig()/loadConfig(), doSaveConfig()/saveConfig()
+
+-------------------------------------------------------------------
+Sat Jul 17 20:04:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Tweak headers
+  * Replace parameters with member references
+  * Move drawJournal() to the only class that might call it.
+  * Refactor Exclude Confidential/Private options
+  * Fix line breaks and duplication in printed headers
+  * Add Exclude Confidential/Private options to the Journal print-out
+  * Print a footer if a page break occurs inside a journal rntry
+  * Sort printed journal entries by date
+  * Replace a variant of a label with the more common version.
+  * Clean up the UI files
+  * Add an Extend Time Range option to the Print Week dialog
+  * Combine the printed timetable implementations
+  * Add common config options to printed journal and year
+  * Fix up the printed incidence
+  * Fix row numbers in Print Month grid layout
+  * Allow the printed to-do list to be sorted by tags
+  * Allow printing of tags, and obey the Colors checkbox
+  * Fix clazy warning
+  * Allow inclusion of categories and start dates in the printed to-do list (kde#250450)
+  * Fix autotest by partially reverting 298a8e32
+  * Fix clazy warning
+  * Modernize code
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

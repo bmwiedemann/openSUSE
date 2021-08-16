@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           calendarsupport
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM calendaring support library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -55,7 +55,6 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
@@ -111,7 +110,6 @@ The development package for the calendarsupport libraries
 %{_kf5_servicetypesdir}/calendarplugin.desktop
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5CalendarSupport/
 %{_kf5_includedir}/CalendarSupport/
 %{_kf5_includedir}/calendarsupport/
@@ -120,11 +118,11 @@ The development package for the calendarsupport libraries
 %{_kf5_mkspecsdir}/qt_CalendarSupport.pri
 
 %files -n %{lname}
+%license LICENSES/*
 %{_libdir}/libKF5CalendarSupport.so.*
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
