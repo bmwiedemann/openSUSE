@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-mime
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
@@ -45,9 +45,8 @@ BuildRequires:  cmake(KF5ItemModels) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5XmlGui) >= %{kf5_version}
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-Recommends:     %{name}-lang
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 
 %description
 This package provides libraries needed for the correct parsing of email
@@ -105,7 +104,6 @@ in KDE PIM applications.
 %{_kf5_debugdir}/*.categories
 
 %files
-%license LICENSES/*
 %{_kf5_configkcfgdir}/specialmailcollections.kcfg
 %{_kf5_mkspecsdir}/qt_AkonadiMime.pri
 %{_kf5_sharedir}/mime/packages/x-vnd.kde.contactgroup.xml
@@ -118,7 +116,6 @@ in KDE PIM applications.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_mail.desktop
 
 %files devel
-%license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/akonadi
 %{_kf5_cmakedir}/KF5AkonadiMime/
@@ -129,7 +126,6 @@ in KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
