@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-integration
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -53,7 +53,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Recommends:     kaccounts-providers
 
 %description
@@ -88,9 +87,7 @@ Small system to administer web accounts for the sites
 and services across the KDE desktop, including: Google,
 Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1
@@ -109,7 +106,6 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %postun -n libkaccounts%{sover} -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %dir %{_kf5_sharedir}/kpackage
 %dir %{_kf5_sharedir}/kpackage/kcms
 %{_kf5_plugindir}/
@@ -122,14 +118,12 @@ Facebook, Owncloud, IMAP, Jabber and others. Devel files.
 %{_kf5_libdir}/libkaccounts.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KAccounts/
 %{_kf5_libdir}/libkaccounts.so
 %{_kf5_prefix}/include/KAccounts/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
