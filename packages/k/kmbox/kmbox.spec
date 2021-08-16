@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmbox
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
@@ -77,7 +77,6 @@ to develop KDE PIM applications.
 %{_kf5_libdir}/libKF5Mbox.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5Mbox/
 %{_kf5_includedir}/KMbox/
 %{_kf5_includedir}/kmbox_version.h
