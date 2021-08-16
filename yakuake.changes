@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:43:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:06:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Tell cmake our version
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Allow switching the terminals in split view with CTRL+TAB
+  * Increase cmake and deps versions
+  * Build without Qt deprecations
+  * Port to QElapsedTimer
+  * Port away from deprecated QList methods
+  * Port various Qt deprecations
+  * Fix KF deprecations
+  * Fix clazy warnings
+  * Fix Yakuake icon appearing in taskbar through
+    Qt::Tool window flag (kde#360037)
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
