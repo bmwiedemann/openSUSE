@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           granatier
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Bomberman-like game
 License:        GPL-2.0-or-later
@@ -54,7 +54,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 In this game, the player walks through an arena, lays bombs and, in
@@ -76,7 +75,7 @@ Bomberman game.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.granatier       Game ArcadeGame
+  %suse_update_desktop_file -r org.kde.granatier Game ArcadeGame
 
 %files
 %license LICENSES/*
@@ -91,7 +90,6 @@ Bomberman game.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
