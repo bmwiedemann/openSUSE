@@ -15,15 +15,14 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.13.1
+Version:        2.14.0
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
 Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://releases.pagure.org/inscript2/inscript2-20160423.tar.gz
-Patch0:         m17n-db-1.8.0-inscript2-mni-sat.patch
+Source1:        https://releases.pagure.org/inscript2/inscript2-20210812.tar.gz
 BuildRequires:  ibus-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel
@@ -93,7 +92,6 @@ input method to speedup typing.
 %setup -q
 ##extract inscript2 maps
 tar xzf %{SOURCE1}
-%patch0 -p0
 
 %build
 export PYTHON=%{_bindir}/python3

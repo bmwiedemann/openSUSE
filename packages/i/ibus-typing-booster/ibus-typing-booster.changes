@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Aug 12 08:39:55 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.14.0
+- Update inscript2 input methods to: inscript2-20210812.tar.gz
+- Delete m17n-db-1.8.0-inscript2-mni-sat.patch, not necessary anymore
+  because of the new inscript2-20210812.tar.gz tarball
+- Translation update from Weblate (de, nl, pl, sv, tr, uk updated to 100%)
+- Update emoji annotations from CLDR
+- Improve code to determine the default dictionaries and input methods
+  for the current locale
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/209)
+- Improve behaviour of key combinations which normally select text when a preëdit is open
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/210)
+- Show possible compose completions on request
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/208)
+- When setting self._input_mode to False (direct input),
+  set self._hide_input to False as well
+- Never mix context from surrounding text with remembered context
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/204)
+- Rename the option “Use a workaround for a bug in Qt im module” to
+  “Avoid using the forward_key_event() function”
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/200)
+- Handle End, Home, KP_End, KP_Home also as commit trigger keys.
+  For normal preedits *and* for compose preedits.
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/199)
+- Improve typing space or Tab when the cursor is not at the end of the preedit
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/198)
+- Completly new implementation of reopening the preedit on
+  arrow-keys, BackSpace and Delete. Should be much more reliable.
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/196)
+- Special handling of Left and BackSpace when a candidate is manually selected
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/178)
+
+-------------------------------------------------------------------
 Tue Aug 03 09:20:37 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.13.1
