@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-accounts-kcm
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Configuration module to set up Telepathy accounts
 License:        LGPL-2.1-or-later
@@ -54,7 +54,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       telepathy-mission-control
-Recommends:     %{name}-lang
 Recommends:     telepathy-gabble
 Recommends:     telepathy-haze
 Recommends:     telepathy-idle
@@ -123,7 +122,6 @@ ConnectionManager-Protocol combinations where no plugin exists.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
