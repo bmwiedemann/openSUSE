@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailcommon
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Base KDE PIM library for mail-handling applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -60,13 +60,12 @@ BuildRequires:  cmake(KF5TextWidgets)
 BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiPlugin)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
@@ -74,9 +73,7 @@ ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 The mailcommon library is a KDE PIM project to provide a
 framework to build applications which handle e-mail.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1
@@ -121,12 +118,14 @@ Requires:       cmake(KF5PimCommon)
 This package contains the development headers for the mailcommon library.
 
 %files
-%license LICENSES/*
 %{_kf5_debugdir}/mailcommon.categories
 %{_kf5_debugdir}/mailcommon.renamecategories
 
-%files devel
+%files -n libKF5MailCommon5
 %license LICENSES/*
+%{_libdir}/libKF5MailCommon.so.*
+
+%files devel
 %dir %{_kf5_plugindir}/designer
 %{_kf5_includedir}/MailCommon/
 %{_kf5_includedir}/mailcommon/
@@ -136,13 +135,8 @@ This package contains the development headers for the mailcommon library.
 %{_kf5_mkspecsdir}/qt_MailCommon.pri
 %{_kf5_plugindir}/designer/mailcommonwidgets.so
 
-%files -n libKF5MailCommon5
-%license LICENSES/*
-%{_libdir}/libKF5MailCommon.so.*
-
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
