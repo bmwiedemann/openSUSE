@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:36:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Also register the new class
+  * Add support for classes defined in the .cpp file
+  * Update relicensecheck.pl
+  * Add comment about additional LGPL-2.0 to LGPL-2.1 grant by waba
+  * Make 'qs' use printq5string, since Qt5 is the default nowadays
+  * Remove Qt3 parts from kde-devel-gdb, long overdue
+  * Add myself (arrowdodger) to relicensecheck.pl
+  * Add smitop (myself) to relicensecheck.pl
+  * Add myself (bdevries) to relicensecheck.pl
+  * Add Aditya Mehra to relicensecheck
+  * Add kdemail alias for Elvis Angelaccio
+  * Add Leslie Zhai to relicensecheck
+  * Add mail alias for Nate
+  * Add Inoki to relicensecheck.pl
+  * licensecheck: Fix alpha sorting of mpyne entry.
+  * licensecheck: Ban FSF relicensing of code, but add permission
+    for CC-BY-SA 2.0.
+  * Added Stefan Taferner to relicensecheck
+  * Add Nicolas Hadacek to relicensecheck
+  * Fix enumeration typo
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

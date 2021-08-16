@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without  lang
 Name:           kdesdk-scripts
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Scripts for KDE software development
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -41,7 +41,6 @@ Obsoletes:      kdesdk4-scripts < %{_kapp_version}
 Provides:       kdesdk4-scripts = %{_kapp_version}
 Obsoletes:      kde-dev-scripts < %{_kapp_version}
 Provides:       kde-dev-scripts = %{_kapp_version}
-Recommends:     %{name}-lang
 
 %description
 This package contains scripts useful for development of KDE software.
@@ -94,7 +93,6 @@ cp kf5/* %{buildroot}%{_datadir}/kf5-port-scripts/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
