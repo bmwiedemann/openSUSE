@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:11:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * [KCModule] Deprecate ctor that takes KAboutData
+  * Make sure commandbar has unique actions
+  * add icons for all zoom standard actions
+  * KCommandBar update
+  * Show fuzzy matches in command bar
+  * enable auto-switching color scheme for Windows apps when Default color scheme is active
+  * Fix crash when calling KHamburgerMenu::setMenuBar(nullptr)
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
