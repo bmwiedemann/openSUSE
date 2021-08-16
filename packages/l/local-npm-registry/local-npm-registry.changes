@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 11 17:06:14 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 0.0.3:
+  * fixes case when npm is stalling when package is not found
+
+-------------------------------------------------------------------
 Tue Jan 26 14:43:10 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 0.0.2: fixes uncaught exceptions
