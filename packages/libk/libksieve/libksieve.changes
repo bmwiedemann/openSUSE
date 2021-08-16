@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix Bug 440041 - Sieve editor does not show the line numbers correctly (kde#440041)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Don't change text if we cancel dialog box
+  * Prepare to desactivate and delete script
+  * Use std::as_const
+  * Extract code for updating global script
+  * Use target_include_directories directly
+  * Increase version
+  * Remove defunct KNS upload functionality
+  * Port away from KStatefulBrush::brush(const QWidget*)
+  * Honor KDE Kiosk setting lineedit_reveal_password
+  * Convert protocol files to JSON
+  * Use more target-centric cmake code
+  * Fix clazy warning
+  * Modernize code
+  * Use forward declaration here
+  * Const'ify pointer + add missing Q_REQUIRED_RESULT
+  * Use openStateConfig  for storing window size
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

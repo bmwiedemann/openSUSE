@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksieve
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
@@ -59,7 +59,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 This package contains the libksieve library, which is used to support
@@ -93,8 +92,19 @@ Requires:       libksieve = %{version}
 %description devel
 This package contains development headers of libksieve.
 
-%files devel
+%files
 %license LICENSES/*
+%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
+%{_kf5_debugdir}/libksieve.categories
+%{_kf5_debugdir}/libksieve.renamecategories
+%{_kf5_knsrcfilesdir}/ksieve_script.knsrc
+%{_kf5_libdir}/libKF5KManageSieve.so.*
+%{_kf5_libdir}/libKF5KSieve.so.*
+%{_kf5_libdir}/libKF5KSieveUi.so.*
+%{_kf5_plugindir}/kf5/kio/sieve.so
+%{_kf5_sharedir}/sieve/
+
+%files devel
 %{_kf5_includedir}/KManageSieve/
 %{_kf5_includedir}/KSieveUi/
 %{_kf5_includedir}/kmanagesieve/
@@ -108,22 +118,8 @@ This package contains development headers of libksieve.
 %{_kf5_mkspecsdir}/qt_KSieve.pri
 %{_kf5_mkspecsdir}/qt_KSieveUi.pri
 
-%files
-%license LICENSES/*
-%doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
-%{_kf5_debugdir}/libksieve.categories
-%{_kf5_debugdir}/libksieve.renamecategories
-%{_kf5_knsrcfilesdir}/ksieve_script.knsrc
-%{_kf5_libdir}/libKF5KManageSieve.so.*
-%{_kf5_libdir}/libKF5KSieve.so.*
-%{_kf5_libdir}/libKF5KSieveUi.so.*
-%{_kf5_plugindir}/kf5/kio/sieve.so
-%{_kf5_servicesdir}/sieve.protocol
-%{_kf5_sharedir}/sieve/
-
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
