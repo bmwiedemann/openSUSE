@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           baloo5-widgets
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -44,7 +44,6 @@ BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      libKF5BalooWidgets5
 Provides:       libKF5BalooNaturalQueryParser1 = %{version}
 Obsoletes:      libKF5BalooNaturalQueryParser1 < %{version}
@@ -94,14 +93,12 @@ Development package for baloo5-widgets
 %{_kf5_servicesdir}/*.desktop
 
 %files devel
-%license COPYING*
 %{_kf5_cmakedir}/KF5BalooWidgets/
 %{_kf5_includedir}/
 %{_kf5_libdir}/libKF5BalooWidgets.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
