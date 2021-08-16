@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwave
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Sound editor by KDE
 License:        GPL-2.0-or-later
@@ -66,7 +66,6 @@ BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(mad)
-Recommends:     %{name}-lang
 Recommends:     lame
 Recommends:     toolame
 Recommends:     twolame
