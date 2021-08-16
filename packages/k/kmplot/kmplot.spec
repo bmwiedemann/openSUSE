@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmplot
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Mathematical Function Plotter
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -71,7 +70,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
   %endif
 
 %files
-%license COPYING*
+%license LICENSES/*
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/parts
 %doc %lang(en) %{_kf5_htmldir}/en/kmplot
 %{_kf5_applicationsdir}/org.kde.kmplot.desktop
 %{_kf5_appstreamdir}/org.kde.kmplot.appdata.xml
@@ -80,13 +81,12 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_dbusinterfacesdir}/org.kde.kmplot.*.xml
 %{_kf5_iconsdir}/hicolor/*/apps/kmplot.*
 %{_kf5_kxmlguidir}/kmplot/
-%{_kf5_plugindir}/kmplotpart.so
+%{_kf5_plugindir}/kf5/parts/kmplotpart.so
 %{_kf5_servicesdir}/kmplot_part.desktop
 %{_mandir}/*/kmplot.1%{?ext_man}
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:39:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Give kmplot an automatically increasing version
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove obsolete COPYING files
+  * Copy GFDL-1.2-or-later license to LICENSES folder
+  * Convert license headers to SPDX
+  * Port away from kdeinitExec(). This requires upgrading the KF5 min req.
+  * kmplot_part: add JSON metadata to plugin, install into kf5/parts subdir
+  * Make kmplot_part embeddable into konqueror again, fix off by one assert.
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
