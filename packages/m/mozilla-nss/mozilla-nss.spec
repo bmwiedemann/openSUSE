@@ -17,14 +17,14 @@
 #
 
 
-%global nss_softokn_fips_version 3.66
-%define NSPR_min_version 4.31
+%global nss_softokn_fips_version 3.68
+%define NSPR_min_version 4.32
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 Name:           mozilla-nss
-Version:        3.66
+Version:        3.68
 Release:        0
-%define underscore_version 3_66
+%define underscore_version 3_68
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -69,6 +69,7 @@ Patch25:        nss-fips-detect-fips-mode-fixes.patch
 Patch26:        nss-fips-combined-hash-sign-dsa-ecdsa.patch
 Patch27:        nss-fips-aes-keywrap-post.patch
 Patch28:        nss-btrfs-sqlite.patch
+Patch37:        nss-fips-fix-missing-nspr.patch
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 # aarch64 + gcc4.8 fails to build on SLE-12 due to undefined references
 BuildRequires:  gcc9-c++
@@ -225,6 +226,7 @@ cd nss
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch37 -p2
 
 # additional CA certificates
 #cd security/nss/lib/ckfw/builtins

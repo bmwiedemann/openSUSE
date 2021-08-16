@@ -1,0 +1,87 @@
+diff --git a/nss/lib/freebl/drbg.c b/nss/lib/freebl/drbg.c
+index 3ed1751..65fee9a 100644
+--- a/nss/lib/freebl/drbg.c
++++ b/nss/lib/freebl/drbg.c
+@@ -6,6 +6,8 @@
+ #include "stubs.h"
+ #endif
+ 
++#include <unistd.h>
++
+ #include "prerror.h"
+ #include "secerr.h"
+ 
+@@ -182,11 +184,30 @@ prng_initEntropy(void)
+     PRUint8 block[PRNG_ENTROPY_BLOCK_SIZE];
+     SHA256Context ctx;
+ 
++    /* Don't have NSPR, so can't use the real PR_CallOnce. Implement a stripped
++     * down version. This is similar to freebl_RunLoaderOnce(). */
++    if (coRNGInitEntropy.initialized) {
++        return coRNGInitEntropy.status;
++    }
++    if (__sync_lock_test_and_set(&coRNGInitEntropy.inProgress, 1) != 0) {
++        /* Shouldn't have a lot of takers here, which is good
++         * since we don't have condition variables yet.
++         * 'initialized' only ever gets set (not cleared) so we don't
++         * need the traditional locks. */
++        while (!coRNGInitEntropy.initialized) {
++            sleep(1); /* don't have condition variables, just give up the CPU */
++        }
++        return coRNGInitEntropy.status;
++    }
++
+     /* For FIPS 140-2 4.9.2 continuous random number generator test,
+      * fetch the initial entropy from the system RNG and keep it for
+      * later comparison. */
+     length = RNG_SystemRNG(block, sizeof(block));
+     if (length == 0) {
++        coRNGInitEntropy.status = PR_FAILURE;
++        __sync_synchronize ();
++        coRNGInitEntropy.initialized = 1;
+         return PR_FAILURE; /* error is already set */
+     }
+     PORT_Assert(length == sizeof(block));
+@@ -199,6 +220,10 @@ prng_initEntropy(void)
+                sizeof(globalrng->previousEntropyHash));
+     PORT_Memset(block, 0, sizeof(block));
+     SHA256_DestroyContext(&ctx, PR_FALSE);
++
++    coRNGInitEntropy.status = PR_SUCCESS;
++    __sync_synchronize ();
++    coRNGInitEntropy.initialized = 1;
+     return PR_SUCCESS;
+ }
+ 
+@@ -211,7 +236,7 @@ prng_getEntropy(PRUint8 *buffer, size_t requestLength)
+     SHA256Context ctx;
+     SECStatus rv = SECSuccess;
+ 
+-    if (PR_CallOnce(&coRNGInitEntropy, prng_initEntropy) != PR_SUCCESS) {
++    if (prng_initEntropy () != PR_SUCCESS) {
+         PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
+         return SECFailure;
+     }
+@@ -842,7 +867,21 @@ PRNGTEST_Generate(PRUint8 *bytes, unsigned int bytes_len,
+     }
+     /* replicate reseed test from prng_GenerateGlobalRandomBytes */
+     if (testContext.reseed_counter[0] >= RESEED_VALUE) {
+-        rv = prng_reseed(&testContext, NULL, 0, NULL, 0);
++        /* We need to supply the entropy so as to avoid use of global RNG */
++        static const PRUint8 reseed_entropy[] = {
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++        };
++        static const PRUint8 additional_input[] = {
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++            0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,
++        };
++        rv = prng_reseed(&testContext, reseed_entropy, sizeof reseed_entropy,
++                         additional_input, sizeof additional_input);
+         if (rv != SECSuccess) {
+             return rv;
+         }

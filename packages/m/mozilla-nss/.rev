@@ -2361,4 +2361,21 @@
 - Firefox 90.0 requires NSS 3.66</comment>
     <requestid>906331</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>f30402ad06d712de73c7da46d7dbf946</srcmd5>
+    <version>3.68</version>
+    <time>1629101322</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to NSS 3.68
+  * bmo#1713562 - Fix test leak.
+  * bmo#1717452 - NSS 3.68 should depend on NSPR 4.32.
+  * bmo#1693206 - Implement PKCS8 export of ECDSA keys.
+  * bmo#1712883 - DTLS 1.3 draft-43.
+  * bmo#1655493 - Support SHA2 HW acceleration using Intel SHA Extension.
+  * bmo#1713562 - Validate ECH public names.
+  * bmo#1717610 - Add function to get seconds from epoch from pkix::Time.
+- required by Firefox 91.0
+- added nss-fips-fix-missing-nspr.patch (via SLE sync)</comment>
+    <requestid>910950</requestid>
+  </revision>
 </revisionlist>
