@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 12 13:50:24 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- update to 14.17.5:
+  * CVE-2021-3672/CVE-2021-22931: Improper handling of untypical
+    characters in domain names (bsc#1189370, bsc#1188881)
+  * CVE-2021-22940: Use after free on close http2 on stream canceling
+    (bsc#1189368)
+  * CVE-2021-22939: Incomplete validation of rejectUnauthorized parameter
+    (bsc#1189369)
+- cares_public_headers.patch: don't use private headers
+
+-------------------------------------------------------------------
+Mon Aug  9 12:54:40 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- z15-test-skip.patch: skip problematic test on s390x
+
+-------------------------------------------------------------------
 Mon Aug  2 12:15:43 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 14.17.4:

@@ -53,4 +53,21 @@
 - PR39011.patch: use localhost instead of remote for unit test</comment>
     <requestid>909826</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a7cb29c0947dc268d81da90c088ffb81</srcmd5>
+    <version>14.17.5</version>
+    <time>1629101480</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 14.17.5:
+  * CVE-2021-3672/CVE-2021-22931: Improper handling of untypical
+    characters in domain names (bsc#1189370, bsc#1188881)
+  * CVE-2021-22940: Use after free on close http2 on stream canceling
+    (bsc#1189368)
+  * CVE-2021-22939: Incomplete validation of rejectUnauthorized parameter
+    (bsc#1189369)
+- cares_public_headers.patch: don't use private headers
+
+- z15-test-skip.patch: skip problematic test on s390x</comment>
+    <requestid>911862</requestid>
+  </revision>
 </revisionlist>

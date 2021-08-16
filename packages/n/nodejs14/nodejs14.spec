@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs14
-Version:        14.17.4
+Version:        14.17.5
 Release:        0
 
 # Double DWZ memory limits
@@ -126,6 +126,7 @@ Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
 ## Patches not distribution specific
+Patch1:         cares_public_headers.patch
 Patch3:         fix_ci_tests.patch
 Patch4:         PR39011.patch
 Patch5:         sle12_python3_compat.patch
@@ -150,6 +151,7 @@ Patch120:       flaky_test_rerun.patch
 
 # Use versioned binaries and paths
 Patch200:       versioned.patch
+Patch201:       z15-test-skip.patch
 
 BuildRequires:  pkg-config
 %if 0%{?suse_version}
@@ -246,9 +248,9 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %endif
 
 %if ! 0%{with intree_cares}
-BuildRequires:  pkgconfig(libcares) >= 1.10.0
+BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.17.1
+Provides:       bundled(libcares2) = 1.17.2
 %endif
 
 %if ! 0%{with intree_icu}
@@ -790,6 +792,7 @@ tar Jxf %{SOURCE11}
 tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 
+%patch1 -p1
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
@@ -805,10 +808,9 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 %patch104 -p1
 %patch106 -p1
-%if 0%{?suse_version} >= 1550
-%endif
 %patch120 -p1
 %patch200 -p1
+%patch201 -p1
 
 # remove backup files, if any
 find -name \*~ -print0 -delete
