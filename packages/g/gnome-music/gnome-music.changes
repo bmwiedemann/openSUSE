@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 11 08:34:46 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Revert to support python 3.6 as SLE and Leap use the version to
+  build:
+  + 0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch
+  + 0002-Revert-coresong-Add-static-type-annotations.patch
+  + 0003-gnome-music-use-python36.patch
+
+-------------------------------------------------------------------
 Thu Jul 15 11:25:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.1.1:

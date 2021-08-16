@@ -25,12 +25,22 @@ Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
 Source0:        https://download.gnome.org/sources/gnome-music/40/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-SLE 0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch yfjiang@suse.com -- disable python 3.7 related feature to allow gnome-music built on SLE/Leap
+Patch0:         0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch
+# PATCH-FIX-SLE 0002-Revert-coresong-Add-static-type-annotations.patch yfjiang@suse.com -- disable python 3.7 related feature to allow gnome-music built on SLE/Leap
+Patch1:         0002-Revert-coresong-Add-static-type-annotations.patch
+# PATCH-FIX-SLE 0003-gnome-music-use-python36.patch yfjiang -- use python 3.6 on SLE/Leap
+Patch2:         0003-gnome-music-use-python36.patch
 
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel >= 3.3
+%if 0%{?sle_version}
+BuildRequires:  python3-devel >= 3.6
+%else
+BuildRequires:  python3-devel >= 3.7
+%endif
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.35.90
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
@@ -69,7 +79,12 @@ Music player and management application for GNOME.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%if 0%{?sle_version}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%endif
 # Fix shebangs:
 sed -i -e 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|' gnome-music.in
 
