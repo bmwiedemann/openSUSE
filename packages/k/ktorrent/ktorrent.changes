@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:40:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08/
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * adjust to new Priority constants in libktorrent
+  * Fix broken GeoIp plugin (kde#403054)
+  * Fix indentation ( it was a tab vs space problem )
+  * CMP0115 is too new for now so removing
+  * Fix tests with new ecm sytle
+  * Increase Cmake deps , fix boost problems and initial steps for cpp17 support
+  * Remove unneeded ruby scripts
+  * Add copyright text to shutdowntorrentmodel.h file
+  * Remove unneeded templates
+  * Rename GPL-2.1-or-later license to GPL-2.0-or-later
+  * Convert license headers to SPDX
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

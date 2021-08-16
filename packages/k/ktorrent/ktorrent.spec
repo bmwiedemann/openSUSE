@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktorrent
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE BitTorrent Client
 License:        GPL-2.0-or-later
@@ -74,7 +74,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(taglib)
-Recommends:     %{name}-lang = %{version}
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 %endif
@@ -89,6 +88,9 @@ for BitTorrent.
 
 %prep
 %autosetup -p1
+
+# The boost minimum version change is only cosmetic. Leap 15.2 provides 1.66
+sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %build
 %cmake_kf5 -d build
