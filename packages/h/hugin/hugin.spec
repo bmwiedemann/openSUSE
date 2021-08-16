@@ -1,7 +1,7 @@
 #
 # spec file for package hugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -62,6 +62,8 @@ Group:          Productivity/Graphics/Other
 URL:            http://hugin.sourceforge.net/
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{mversion}/%{name}-%{version}.tar.bz2
 Patch0:         hugin.appdata.patch
+# https://src.fedoraproject.org/rpms/hugin/blob/rawhide/f/hugin-openexr3.patch
+Patch1:         hugin-openexr3.patch
 Requires:       enblend-enfuse >= 3.2
 # needed for photo stiching (bnc#822775)
 Requires:       make
@@ -80,6 +82,7 @@ detection and extraction of key points.
 %prep
 %setup -q
 %patch0
+%patch1 -p1
 
 chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 
@@ -90,6 +93,8 @@ mv src/translations/cs_CZ.po src/translations/cs.po
 #sed -i "s/ca_ES/ca/;s/cs_CZ/cs/" src/hugin/po/LINGUAS
 
 %build
+# Doesn't define the ZLIB::ZLIB target needed by OpenEXR 3
+rm CMakeModules/FindZLIB.cmake
 %cmake \
 	-DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
 	-DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
