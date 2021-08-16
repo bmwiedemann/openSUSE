@@ -650,4 +650,12 @@
     <comment>July 2021 CPU</comment>
     <requestid>908889</requestid>
   </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>4a69aa91328d57abadeaa78f459eae4e</srcmd5>
+    <version>1.8.0.302</version>
+    <time>1629101338</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>911810</requestid>
+  </revision>
 </revisionlist>

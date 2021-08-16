@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug  4 09:25:47 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-zero.patch: Add support for riscv54 (zero VM)
+
+-------------------------------------------------------------------
 Wed Jul 28 12:03:07 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version jdk8u302 (icedtea 3.20.0)
