@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:12:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Too many changes since 5.84.0, only listing bugfixes:
+  * Message dialogs: wrap the text (kde#440545)
+  * Fix creating thumbnails for items under desktop:/ (kde#438691)
+  * KPropertiesDialog: fix applying permissions recursively (kde#225658)
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0

@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.84
+%define _tar_path 5.85
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.84.0
+Version:        5.85.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -76,6 +76,7 @@ BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(mount)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{name}-core = %{version}
 Requires:       kded >= %{_kf5_bugfix_version}
@@ -174,12 +175,14 @@ Development files.
 %{_kf5_libexecdir}/kio_http_cache_cleaner
 %{_kf5_libexecdir}/kiod5
 %{_kf5_plugindir}/kcm_trash.so
-%{_kf5_plugindir}/kf5/kio/file.so
-%{_kf5_plugindir}/kf5/kio/ftp.so
-%{_kf5_plugindir}/kf5/kio/ghelp.so
-%{_kf5_plugindir}/kf5/kio/help.so
-%{_kf5_plugindir}/kf5/kio/http.so
-%{_kf5_plugindir}/kf5/kio/trash.so
+%{_kf5_plugindir}/kf5/kio/kio_file.so
+%{_kf5_plugindir}/kf5/kio/kio_ftp.so
+%{_kf5_plugindir}/kf5/kio/kio_ghelp.so
+%{_kf5_plugindir}/kf5/kio/kio_help.so
+%{_kf5_plugindir}/kf5/kio/kio_http.so
+%{_kf5_plugindir}/kf5/kio/kio_trash.so
+%{_kf5_plugindir}/kf5/kio/kio_remote.so
+%{_kf5_plugindir}/kf5/kiod/kssld.so
 %{_kf5_plugindir}/kf5/kiod/kssld.so
 %{_kf5_servicesdir}/http_cache_cleaner.desktop
 %{_kf5_servicesdir}/kcmtrash.desktop
@@ -204,15 +207,17 @@ Development files.
 %{_kf5_libexecdir}/kioslave5
 %{_kf5_libexecdir}/kpac_dhcp_helper
 %{_kf5_notifydir}/proxyscout.notifyrc
-%{_kf5_plugindir}/kcm_kio.so
 %{_kf5_plugindir}/kcm_webshortcuts.so
 %{_kf5_plugindir}/kf5/kded/kcookiejar.so
 %{_kf5_plugindir}/kf5/kded/proxyscout.so
 %{_kf5_plugindir}/kf5/kded/remotenotifier.so
-%{_kf5_plugindir}/kf5/kio/remote.so
 %{_kf5_plugindir}/kf5/kiod/kioexecd.so
 %{_kf5_plugindir}/kf5/kiod/kpasswdserver.so
 %{_kf5_plugindir}/kf5/urifilters/
+%{_kf5_plugindir}/kcm_cookies.so
+%{_kf5_plugindir}/kcm_netpref.so
+%{_kf5_plugindir}/kcm_proxy.so
+%{_kf5_plugindir}/kcm_smb.so
 %{_kf5_servicesdir}/cookies.desktop
 %{_kf5_servicesdir}/netpref.desktop
 %{_kf5_servicesdir}/proxy.desktop
