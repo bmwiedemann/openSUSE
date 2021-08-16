@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-contact-list
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Telepathy contact list
 License:        LGPL-2.1-or-later
@@ -52,7 +52,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(KTp)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -84,7 +83,6 @@ Telepathy contact list application
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
