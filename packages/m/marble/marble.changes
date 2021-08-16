@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove KNewStuff2 group from knsrc file
+  * Update outdated note in the setup instructions
+  * Avoid the need to set Qt::WA_DeleteOnClose on widgets using Marble
+  * Add toVariantList-function to GeoDataLineString.
+  * Adding moveLeft, Right, Up, Down and minimum/maximumZoom to MarbleQuickItem.
+  * Revert changes on Windows data and plugins path
+  * Additions to MarbleQuickItem QML element
+  * fix data directory on Windows platforms
+  * Bump marble version number in cmake as well.
+  * Bump marble version
+  * Add dummy desktop file to make apps.kde.org happy
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

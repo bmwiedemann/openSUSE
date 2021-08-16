@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           marble
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Generic map viewer
 # License note: the tools directory contains GPL-3 tools, but they are neither built nor installed by the package
@@ -75,7 +75,6 @@ Requires:       libastro%{_so_astro} = %{version}
 Requires:       libmarblewidget-qt5%{_so} = %{version}
 Requires:       marble-frontend = %{version}
 Recommends:     %{name}-doc = %{version}
-Recommends:     %{name}-lang
 Obsoletes:      marble5 < %{version}
 Provides:       marble5 < %{version}
 %ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
@@ -254,7 +253,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

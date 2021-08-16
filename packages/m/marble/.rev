@@ -1137,4 +1137,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE Gear 21.04.3</comment>
     <requestid>905045</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>737232598a75303bd4301eefd7ff4307</srcmd5>
+    <version>21.08.0</version>
+    <time>1629101457</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Gear 21.08.0</comment>
+    <requestid>911787</requestid>
+  </revision>
 </revisionlist>
