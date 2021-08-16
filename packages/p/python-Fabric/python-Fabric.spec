@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fabric
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Fabric
-Version:        2.5.0
+Version:        2.6.0
 Release:        0
 Summary:        A Pythonic tool for remote execution and deployment
 License:        BSD-2-Clause
@@ -43,6 +43,7 @@ Requires:       python-cryptography >= 1.1
 Requires:       python-decorator
 Requires:       python-invoke >= 1.3
 Requires:       python-paramiko >= 2.4
+Requires:       python-pathlib2
 Requires:       python-setuptools
 Requires:       python-six
 Conflicts:      python-Fabric3

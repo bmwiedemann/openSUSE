@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 12 11:15:13 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.6.0:
+  * [Feature] #1999: Add sudo support to Group. Thanks to Bonnie Hardin for
+    the report and to Winston Nolan for an early patchset.
+  * [Feature] #1810: Add put/get support to Group.
+  * [Feature] #1868: Ported a feature from v1: interpolating the local path
+    argument in Transfer.get with connection and remote filepath attributes.
+    For example, cxn.get(remote="/var/log/foo.log", local="{host}/") is now
+    feasible for storing a file in per-host-named directories or files, and
+    in fact Group.get does this by default.
+  * [Feature]: When the local path argument to Transfer.get contains nonexistent
+    directories, they are now created instead of raising an error.
+    Warning: This change introduces a new runtime dependency: pathlib2.
+  * [Bug]: Fix a handful of issues in the handling and mocking of SFTP local paths
+    and os.path members within fabric.testing; this should remove some occasional
+    “useless Mocks” as well as hewing closer to the real behavior of things like
+    os.path.abspath re: path normalization.
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Oct 13 10:33:07 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Upper limit pytest 6.1 -- gh#bitprophet/pytest-relaxed#12
