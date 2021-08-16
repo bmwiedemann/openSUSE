@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 11 16:15:04 UTC 2021 - Teoh Han Hui <teohhanhui@gmail.com>
+
+- Switch from PulseAudio to PipeWire
+
+-------------------------------------------------------------------
 Thu Jul  8 15:06:35 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Requires CFSSL for the verifier pattern

@@ -348,13 +348,20 @@ Provides:       pattern-icon() = pattern-x11
 Provides:       pattern-order() = 9100
 Requires:       pattern() = x11
 
-# Pulseaudio is the default sound server
-Requires:       alsa-plugins-pulse
-Requires:       pulseaudio-module-bluetooth
-Requires:       pulseaudio-module-gsettings
-Requires:       pulseaudio-module-x11
-Requires:       pulseaudio-module-zeroconf
-Requires:       pulseaudio-utils
+# PipeWire is the default sound server
+Requires:       gstreamer-plugin-pipewire
+Requires:       pipewire-alsa
+Requires:       pipewire-modules
+Requires:       pipewire-pulseaudio
+Requires:       pipewire-spa-plugins-0_2
+Requires:       pipewire-spa-tools
+Requires:       pipewire-tools
+Obsoletes:      alsa-plugins-pulse < 1.3
+Obsoletes:      pulseaudio < 14.3
+Obsoletes:      pulseaudio-module-bluetooth < 14.3
+Obsoletes:      pulseaudio-module-gsettings < 14.3
+Obsoletes:      pulseaudio-module-x11 < 14.3
+Obsoletes:      pulseaudio-module-zeroconf < 14.3
 
 # Allow users to print (and add some common printer drivers)
 Requires:       OpenPrintingPPDs
@@ -483,8 +490,6 @@ Requires:       google-roboto-fonts
 Requires:       noto-coloremoji-fonts
 Requires:       noto-emoji-fonts
 Requires:       noto-sans-fonts
-# Pulseaudio is the default sound server
-Requires:       pulseaudio-module-gsettings
 # So that GNOME keyring works
 Requires:       gcr-ssh-askpass
 Requires:       samba
@@ -548,7 +553,6 @@ Requires:       pinentry-qt5
 # Recommends and Supplements won't work, so pull in manually
 Requires:       discover-backend-flatpak
 Requires:       discover-backend-packagekit
-Requires:       pipewire
 Requires:       plasma-browser-integration
 Requires:       plasma5-defaults-openSUSE
 Requires:       purpose
