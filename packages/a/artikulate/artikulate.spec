@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           artikulate
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        LGPL-3.0-or-later AND GPL-2.0-only AND BSD-3-Clause
@@ -58,7 +58,6 @@ Requires:       kqtquickcharts >= %{_kapp_version}
 Requires:       libqt5-qtquickcontrols
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Improve your pronunciation by listening to native speakers.
@@ -99,7 +98,6 @@ Improve your pronunciation by listening to native speakers.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
