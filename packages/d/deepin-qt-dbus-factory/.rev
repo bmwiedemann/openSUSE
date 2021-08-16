@@ -98,4 +98,15 @@
   * Add show and hide for OSD</comment>
     <requestid>891663</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b0b08d011b3d1d7583361fe719163339</srcmd5>
+    <version>5.4.10</version>
+    <time>1629101349</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.4.10
+  * Update com.deepin.daemon.Timedate profile
+  * Add Authenticate interface
+  * Add an interface for sound system (forwarded request 910684 from hillwood)</comment>
+    <requestid>910900</requestid>
+  </revision>
 </revisionlist>

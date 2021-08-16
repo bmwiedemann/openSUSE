@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 26 14:05:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.10
+  * Update com.deepin.daemon.Timedate profile
+  * Add Authenticate interface
+  * Add an interface for sound system
+
+-------------------------------------------------------------------
 Tue May  4 12:34:57 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.5
