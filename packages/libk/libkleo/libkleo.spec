@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkleo
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Base package of Kleopatra, a key manager by KDE
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -47,7 +47,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(QGpgme)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 libkleo is a library used by KDE PIM applications to handle cryptographic key
@@ -92,15 +91,6 @@ The development package for the libkleo libraries.
 %post -n libKF5Libkleo5 -p /sbin/ldconfig
 %postun -n libKF5Libkleo5 -p /sbin/ldconfig
 
-%files devel
-%license LICENSES/*
-%{_kf5_cmakedir}/KF5Libkleo/
-%{_kf5_includedir}/Libkleo/
-%{_kf5_includedir}/libkleo/
-%{_kf5_includedir}/libkleo_version.h
-%{_kf5_libdir}/libKF5Libkleo.so
-%{_kf5_mkspecsdir}/qt_Libkleo.pri
-
 %files
 %config %{_kf5_configdir}/libkleopatrarc
 %{_kf5_debugdir}/libkleo.categories
@@ -111,9 +101,16 @@ The development package for the libkleo libraries.
 %license LICENSES/*
 %{_kf5_libdir}/libKF5Libkleo.so.*
 
+%files devel
+%{_kf5_cmakedir}/KF5Libkleo/
+%{_kf5_includedir}/Libkleo/
+%{_kf5_includedir}/libkleo/
+%{_kf5_includedir}/libkleo_version.h
+%{_kf5_libdir}/libKF5Libkleo.so
+%{_kf5_mkspecsdir}/qt_Libkleo.pri
+
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
