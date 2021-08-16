@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 09 00:59:34 UTC 2021 - malcolmlewis@opensuse.org
+
+- Update to version 0.99.40:
+  * Just renaming/polishing code of preferences dialog, tab fonts.
+  * Fixed blacklist of action that cannot be part of the
+    configurable toolbar; removed duplicated exec code action.
+  * Translation updates.
+- Changes from version 0.99.39:
+  * When system tray and start hidden on system tray are enabled,
+    load document only after the user click the systray icon to
+    show cherrytree, (gh#giuspen/cherrytree#1751).
+  * Fix codebox plain text wrongly using code font instead of plain
+    text font.
+  * Fix TODO lists not working in table cells,
+    (gh#giuspen/cherrytree#194).
+  * Fix File links in exported PDF do not work when path isn't
+    relative, (gh#giuspen/cherrytree#1749).
+  * Fixed 'Menu element icons are not always visible',
+    (gh#giuspen/cherrytree#1410).
+  * Fixed unit test breoken on windows with new utf-8 characters in
+    filepath.
+  * Unit tests data file use non utf-8 (cyrillic) characters for
+    the paths.
+
+-------------------------------------------------------------------
 Thu Jul  8 10:32:02 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 0.99.38:
