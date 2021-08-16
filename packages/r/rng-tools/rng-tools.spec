@@ -18,7 +18,7 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d }
 Name:           rng-tools
-Version:        6.12
+Version:        6.14
 Release:        0
 Summary:        Support daemon for hardware random device
 License:        GPL-3.0-or-later
@@ -110,6 +110,7 @@ ln -sf /sbin/service %{buildroot}%{_sbindir}/rc%{name}
 %doc NEWS README
 %license COPYING
 %{_bindir}/rngtest
+%{_bindir}/randstat
 %{_sbindir}/rngd
 %{_mandir}/man?/*.*.gz
 %{_unitdir}/%{name}.service

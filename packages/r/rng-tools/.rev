@@ -422,4 +422,26 @@
     <comment></comment>
     <requestid>880699</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>28cb2922f11952c4987d4cbc0dc727e5</srcmd5>
+    <version>6.14</version>
+    <time>1629101470</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 6.14:
+  * Fixed a null pointer deref in nistbeacon entropy source
+  * fixed some confguration tests
+  * clarified some rngd behavior in the man page
+  * update init code to do proper logging
+  * various covscan fixes
+  * fixed a memory leak in jitter entropy source
+  * fixed possible NULL deref in rdrand source
+  * various fixed in openssl mangling code
+  * added randstat binary to build
+  * minor modernizations to configure.ac
+  * Support rndr instruction on arm
+  * Support jitter software timer on coarse time systems
+  * Merged all openssl use into a single helper library
+  * Improved console output readability</comment>
+    <requestid>911819</requestid>
+  </revision>
 </revisionlist>
