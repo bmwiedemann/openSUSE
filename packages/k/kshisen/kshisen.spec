@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kshisen
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Shisen-Sho Mahjongg-like game
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Test)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Shisen-Sho (KShishen) is a game similar to Mahjongg. The object of the
@@ -71,7 +70,7 @@ two tiles with of the same type until no tile is left.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kshisen          Game BoardGame
+  %suse_update_desktop_file -r org.kde.kshisen Game BoardGame
 
 %files
 %license LICENSES/*
@@ -86,7 +85,6 @@ two tiles with of the same type until no tile is left.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
