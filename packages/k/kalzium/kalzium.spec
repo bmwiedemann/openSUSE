@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalzium
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Periodic Table of Elements
 License:        GPL-2.0-or-later
@@ -39,6 +39,8 @@ BuildRequires:  freeglut-devel
 BuildRequires:  gettext-devel
 BuildRequires:  glew-devel
 BuildRequires:  libopenbabel-devel
+BuildRequires:  ocaml
+BuildRequires:  ocaml-facile-devel
 BuildRequires:  oxygen5-icon-theme-large
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Archive)
@@ -59,12 +61,6 @@ BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
-# currently in DOESNOTBUILD (2008-07-03)
-%ifnarch ppc ppc64 s390 s390x
-BuildRequires:  ocaml
-BuildRequires:  ocaml-facile-devel
-%endif
 
 %description
 Kalzium shows a periodic table of the elements.
@@ -116,13 +112,11 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_sharedir}/libkdeedu/
 
 %files devel
-%license COPYING*
 %{_includedir}/libkdeedu/
 %{_kf5_libdir}/libscience.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
