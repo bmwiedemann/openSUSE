@@ -17,14 +17,14 @@
 
 
 %define lname libKF5Kirigami2-5
-%define _tar_path 5.84
+%define _tar_path 5.85
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kirigami2
-Version:        5.84.0
+Version:        5.85.0
 Release:        0
 Summary:        Set of QtQuick components
 License:        LGPL-2.1-or-later
@@ -37,6 +37,7 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  cmake(Qt5Concurrent) >= 5.15.0
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus) >= 5.15.0

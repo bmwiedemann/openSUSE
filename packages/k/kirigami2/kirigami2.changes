@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:12:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Too many changes since 5.84.0, only listing bugfixes:
+  * [InlineMessage] Correct spacing between close button and action buttons (kde#440604)
+  * [ScrollView] Don't scroll with arrow keys if the view isn't scrollable (kde#439459)
+  * Show author/credits task (kde#438442)
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
