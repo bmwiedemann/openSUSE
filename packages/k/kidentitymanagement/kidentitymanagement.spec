@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kidentitymanagement
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries: Identity Management
 License:        LGPL-2.1-or-later
@@ -97,7 +97,6 @@ to develop applications that make use of multiple email identities.
 %{_kf5_debugdir}/*.renamecategories
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5IdentityManagement/
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.pim.IdentityManager.xml
 %{_kf5_includedir}/KIdentityManagement/
@@ -107,7 +106,6 @@ to develop applications that make use of multiple email identities.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
