@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libksane
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE scanning library
 License:        GPL-2.0-or-later
@@ -103,7 +103,6 @@ scanners and other imaging devices supported by SANE.
 %{_kf5_libdir}/%{lname}.so.*
 
 %files devel
-%license COPYING*
 %{_kf5_cmakedir}/KF5Sane/
 %{_kf5_includedir}/KSane/
 %{_kf5_includedir}/ksane_version.h
@@ -111,7 +110,6 @@ scanners and other imaging devices supported by SANE.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

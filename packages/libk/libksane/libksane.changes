@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix color channels being swapped
+  * correctly load option values during construction
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * additional guard against nullptr
+  * prevent crashes when no device is opened
+  * fix typo
+  * more documentation updates
+  * further cleanup and extended documentation
+  * formatting fixes
+  * remove leftovers
+  * remove optionsList API from KSaneWidget again
+  * add new KSaneCore component
+  * do not use internal SANE strings for custom gamma option
+  * fix some typos and formatting issues in README
+  * Reflect value from readme
+  * port deprecated methods away from FindDevicesThread
+  * rework setting of preview DPI
+  * cleanup shut down
+  * rework updating the image in the preview viewer
+  * always fill the QImage with white when starting a new scan
+  * initialize some pointers
+  * fix the twain build
+  * directly save image data to a QImage
+  * merge the preview and scan thread
+  * Use more target-centric cmake code
+  * add missing semicolon
+  * provide a stub implementation of ksaneoption for twain
+  * correctly add ksaneoption.cpp when building twain
+  * export a list of options
+  * implement a page size ksaneoption
+  * change options API
+  * prevent emit of valueChanged in case values is the same as before
+  * cleanup license headers
+  * rework the float option to a double option
+  * update ifdefs and defines for options to new names
+  * fix and cleanup gamma options
+  * name the options more generic
+  * reimplement the invert option as a KSaneOption
+  * remove special signal of KSaneOptCheckBox
+  * change KSaneOption to a QVariant based API
+  * port to new connection syntax
+  * remove finddevicesthread from select dialog
+  * Rework options
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:55 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
