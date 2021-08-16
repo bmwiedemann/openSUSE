@@ -24,7 +24,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalgebra
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Math Expression Solver and Plotter
 License:        GPL-2.0-or-later
@@ -61,7 +61,6 @@ Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 KAlgebra is a math expression solver and plotter.
@@ -114,7 +113,6 @@ a QtQuick based version for use in mobile (phone, tablet) environments.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
