@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:36:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Port to KXMLGUIFactory::showConfigureShortcutsDialog()
+  * Minor optimization + exclude code to clang-format
+  * Use git hook about coding style
+  * Use clang format => normalize formatting
+  * Initialize value in header. Minor optimzation
+  * We can use directly target here
+  * initialize boolean in header
+  * Use QStringLiteral
+  * Store ui file in qrc
+  * Use Qt:: everywhere
+  * Time to increase version
+  * Fix repeat operation caused by memory store (kde#431331)
+  * Make allow to optional doc + allow to install po file directly
+  * Modernize code
+  * Use lower case for function names (and mod)
+  * Remove kdeinit leftover from variable name
+  * Port away from kinit
+  * remove sanitizer warning
+  * Add CMakePresets support
+  * Fix build with unity support
+  * use standard text colors for constants buttons
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:15 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

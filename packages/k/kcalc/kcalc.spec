@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalc
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
@@ -42,14 +42,12 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KCalc is the KDE calculator tool.
@@ -69,7 +67,7 @@ KCalc is the KDE calculator tool.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file org.kde.kcalc       Utility Calculator
+  %suse_update_desktop_file org.kde.kcalc Utility Calculator
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -81,14 +79,11 @@ KCalc is the KDE calculator tool.
 %{_kf5_appstreamdir}/org.kde.kcalc.appdata.xml
 %{_kf5_bindir}/kcalc
 %{_kf5_configkcfgdir}/kcalc.kcfg
-%{_kf5_kxmlguidir}/kcalc/
-%{_kf5_libdir}/libkdeinit5_kcalc.so
 %{_kf5_sharedir}/kcalc/
 %{_kf5_sharedir}/kconf_update/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
