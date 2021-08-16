@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kiten
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Japanese Reference/Study Tool
 # Data files are under CC-BY-SA-3.0 (edict) and CC-BY-SA-4.0 ("kanjidic"/SKIP numbers therein)
@@ -51,7 +51,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       fonts-KanjiStrokeOrders
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -142,7 +141,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
