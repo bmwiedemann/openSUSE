@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-addons
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -82,7 +82,6 @@ BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5XmlPatterns)
-Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
@@ -121,6 +120,7 @@ themes, and plugins providing extra or advanced functionality.
 %dir %{_kf5_plugindir}/messageviewer/headerstyle
 %dir %{_kf5_plugindir}/messageviewer/viewercommonplugin
 %dir %{_kf5_plugindir}/messageviewer/viewerplugin
+%dir %{_kf5_plugindir}/messageviewer/checkbeforedeleting
 %dir %{_kf5_qmldir}/org/kde/plasma
 %dir %{_kf5_sharedir}/qtcreator
 %dir %{_kf5_sharedir}/qtcreator/templates/
@@ -153,6 +153,8 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_libdir}/libfolderconfiguresettings.so.5.*
 %{_kf5_libdir}/libexpireaccounttrashfolderconfig.so.5
 %{_kf5_libdir}/libexpireaccounttrashfolderconfig.so.5.*
+%{_kf5_libdir}/libkmailconfirmbeforedeleting.so.5
+%{_kf5_libdir}/libkmailconfirmbeforedeleting.so.5.*
 %{_kf5_plugindir}/akonadi/emailaddressselectionldapdialogplugin.so
 %{_kf5_plugindir}/importwizard/
 %{_kf5_plugindir}/kaddressbook/
@@ -179,6 +181,7 @@ themes, and plugins providing extra or advanced functionality.
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createnoteplugin.so
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_createtodoplugin.so
 %{_kf5_plugindir}/messageviewer/viewerplugin/messageviewer_externalscriptplugin.so
+%{_kf5_plugindir}/messageviewer/checkbeforedeleting/kmail_confirmbeforedeletingplugin.so
 %{_kf5_plugindir}/pimcommon/
 %{_kf5_plugindir}/plasmacalendarplugins/
 %{_kf5_plugindir}/templateparser/
@@ -202,7 +205,6 @@ themes, and plugins providing extra or advanced functionality.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

@@ -555,4 +555,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE Gear 21.04.3</comment>
     <requestid>904914</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>f27c4d4bea8589bc7d038012334cc0f8</srcmd5>
+    <version>21.08.0</version>
+    <time>1629101180</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Gear 21.08.0</comment>
+    <requestid>911654</requestid>
+  </revision>
 </revisionlist>
