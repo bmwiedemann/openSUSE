@@ -360,6 +360,8 @@ dvd:
   - autoyast2
   # impitool can be handy when machines are configured using autoyast
   - ipmitool
+  # trying to fix images after space increases, rbrown, 20210816
+  - libliveMedia94
 
   # Have a bootable system for RPi3/4 - boo#1172574
   - raspberrypi-firmware: [aarch64]  # bsc 1130015

@@ -1130,4 +1130,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment></comment>
     <requestid>912394</requestid>
   </revision>
+  <revision rev="156" vrev="154">
+    <srcmd5>5904768a6ce2f78bdb2481557124f9ed</srcmd5>
+    <version>unknown</version>
+    <time>1629143904</time>
+    <user>RBrownSUSE</user>
+    <comment>Trying to fix broken dvd images</comment>
+  </revision>
 </revisionlist>
