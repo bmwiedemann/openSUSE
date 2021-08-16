@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kubrick
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Game based on Rubik's Cube
 License:        GPL-2.0-or-later
@@ -50,7 +50,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(glu)
 Obsoletes:      kubrick5 < %{version}
 Provides:       kubrick5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 This package contains the KDE game Kubrick which is based on Rubik's
@@ -85,7 +84,6 @@ Cube.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
