@@ -232,4 +232,12 @@
     <comment>- Update to release 1.14.7</comment>
     <requestid>892452</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>c78ebe901e8c58694f5db8e1f1fa399e</srcmd5>
+    <version>1.14.9</version>
+    <time>1629101135</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 1.14.9</comment>
+    <requestid>911494</requestid>
+  </revision>
 </revisionlist>
