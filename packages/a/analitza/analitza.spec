@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           analitza
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        A library to add mathematical features to programs
 License:        LGPL-2.1-or-later
@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(glu)
 Requires:       libAnalitza5 = %{version}
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 The Analitza library lets developers add mathematical features to programs.
@@ -108,7 +107,6 @@ add mathematical features to programs.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
