@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mailimporter
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Mail import functionality for KDE PIM applications
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 The mailimporter library is a KDE PIM project to provide a framework
@@ -110,7 +109,6 @@ used by KDE PIM applications to import data from other mail formats
 %postun -n libKF5MailImporterAkonadi5 -p /sbin/ldconfig
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5MailImporter/
 %{_kf5_cmakedir}/KF5MailImporterAkonadi/
 %{_kf5_includedir}/MailImporter/
@@ -129,17 +127,14 @@ used by KDE PIM applications to import data from other mail formats
 %{_kf5_libdir}/libKF5MailImporter.so.*
 
 %files -n libKF5MailImporterAkonadi5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5MailImporterAkonadi.so.*
 
 %files
-%license LICENSES/*
 %{_kf5_debugdir}/mailimporter.categories
 %{_kf5_debugdir}/mailimporter.renamecategories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
