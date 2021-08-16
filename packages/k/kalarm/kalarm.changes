@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:35:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Make user strings translatable
+  * Bug 437217: Fix 'Choose sound file' dialog showing no audio files (kde#437217)
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Too many changes to list here.
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Show hamburger menu when menu bar is hidden
+  * Fix crash when context menu is requested after toolbar has been edited
+  * Add date selector option to enable alarm list view to be filtered
+  * Add comments
+  * Fixup previous commit and make it backwards-compatible
+  * Fix build with deprecated API disabled
+  * Revert unwanted change in e0c14cfe5
+  * Adjust clazy checks
+  * Fix some clazy warning
+  * Remove duplicate line
+  * Make doctools optional
+  * kde4 Migration code will be remove in kf6
+  * Port to QButtonGroup::idToggled
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

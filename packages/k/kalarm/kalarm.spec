@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kalarm
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Personal Alarm Scheduler
 License:        GPL-2.0-only
@@ -73,12 +73,11 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Phonon4Qt5)
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Network) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-BuildRequires:  cmake(Qt5X11Extras) >= 5.14.0
-Recommends:     %{name}-lang
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Network) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
+BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 Provides:       kalarm5 = %{version}
 Obsoletes:      kalarm5 < %{version}
 # It can only build on the same platforms as Qt Webengine
@@ -102,7 +101,7 @@ Personal alarm message, command and email scheduler by KDE.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-%suse_update_desktop_file org.kde.kalarm          Utility  TimeUtility
+%suse_update_desktop_file org.kde.kalarm Utility TimeUtility
 
 %files
 %license LICENSES/*
@@ -129,7 +128,6 @@ Personal alarm message, command and email scheduler by KDE.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
