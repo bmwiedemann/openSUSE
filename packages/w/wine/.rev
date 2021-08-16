@@ -4092,4 +4092,19 @@
 - update staging to 6.14 release</comment>
     <requestid>909960</requestid>
   </revision>
+  <revision rev="350" vrev="1">
+    <srcmd5>6c38ca7be166964b12b1a3333a35c28d</srcmd5>
+    <version>6.15</version>
+    <time>1629101501</time>
+    <user>RBrownSUSE</user>
+    <comment>- updated to 6.15 development release
+  - WinSock (WS2_32) library converted to PE.
+  - Support for performance data in the registry.
+  - More 32-&gt;64-bit thunks for NTDLL calls.
+  - Improved floating point status handling in the C runtime.
+  - More preparation work for the GDI syscall interface.
+  - Various bug fixes.
+- update staging to 6.15 release</comment>
+    <requestid>912081</requestid>
+  </revision>
 </revisionlist>
