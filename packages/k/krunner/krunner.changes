@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Deprecate RunnerManager::runnerMetaDataList(QString parentApp) method
+  * Deprecate TryExec property for runners
+  * Use KFileUtils::findAllUniqueFiles to locate DBus runners
+  * Port away from deprecated QMutex constructor
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
