@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Remove module prefix of include
+  * Network mounts performance optimizations
+  * KateView: speed up large view jumps
+  * Fix apidox for class Mark
+  * better comments
+  * ensure close button on top for replace
+  * move close button to right for bottom widgets
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
