@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kollision
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Kollision game
 License:        GPL-2.0-or-later
@@ -56,7 +56,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KDE version of a classic arcade game
@@ -76,7 +75,7 @@ KDE version of a classic arcade game
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kollision          Game LogicGame
+  %suse_update_desktop_file -r org.kde.kollision Game LogicGame
 
 %files
 %license LICENSES/*
@@ -90,7 +89,6 @@ KDE version of a classic arcade game
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
