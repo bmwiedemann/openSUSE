@@ -19,7 +19,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontrast
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Contrast checker
 License:        GPL-3.0-or-later AND CC0-1.0
@@ -44,7 +44,6 @@ BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Svg)
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols
-Recommends:     %{name}-lang
 %lang_package
 
 %description
