@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:11:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Officially specify X-DocPath in the KCModule desktop file definition
+  * Deprecate KCModuleProxy::aboutData
+  * Add overload to pass in args in KCMultiDialog::addModule
+  * Deprecate X-KDE-FactoryName and KCModuleInfo::handle
+  * Deprecate KCMultiDialog::configCommitted(QByteArray) signal
+  * Deprecate KSettings and KCModuleInfo based methods
+  * Fix generation of documentation for deprecated methods
+  * help:/ urls are already handled by KUrlHandler from KGuiAddons
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:11 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
