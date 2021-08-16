@@ -15,4 +15,12 @@
     <comment>Update go build version requirements (forwarded request 900730 from ph03nix)</comment>
     <requestid>902412</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5a7d732d27ad9fee8377905f14bdab45</srcmd5>
+    <version>0.24</version>
+    <time>1629101497</time>
+    <user>RBrownSUSE</user>
+    <comment>Include useragent in http requests (forwarded request 911982 from ph03nix)</comment>
+    <requestid>912013</requestid>
+  </revision>
 </revisionlist>

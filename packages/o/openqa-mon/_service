@@ -3,7 +3,7 @@
     <param name="url">git://github.com/grisu48/openqa-mon.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
-    <param name="version">v0.23</param>
+    <param name="version">v0.24</param>
 	<param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="tar" mode="localonly"/>
@@ -14,4 +14,3 @@
   <service name="go_modules" mode="disabled"/>
   <service name="set_version" mode="buildtime"/>
 </services>
-
