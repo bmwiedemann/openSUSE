@@ -1871,4 +1871,13 @@ for 12.3</comment>
     <comment></comment>
     <requestid>907891</requestid>
   </revision>
+  <revision rev="203" vrev="1">
+    <srcmd5>f38a4e38e2a681528b0f23cccdccf0a1</srcmd5>
+    <version>1550+20210813.ce0df56</version>
+    <time>1629101309</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 1550+20210813.ce0df56:
+  * malcontent: loosen restrictive ReadOwn actions to prevent spurious auth requests (#56)</comment>
+    <requestid>911976</requestid>
+  </revision>
 </revisionlist>

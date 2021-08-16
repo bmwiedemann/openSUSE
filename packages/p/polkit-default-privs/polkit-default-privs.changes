@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 13 11:47:41 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210813.ce0df56:
+  * malcontent: loosen restrictive ReadOwn actions to prevent spurious auth requests (#56)
+
+-------------------------------------------------------------------
 Thu Jul 22 09:19:53 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 1550+20210722.ae1891d:
