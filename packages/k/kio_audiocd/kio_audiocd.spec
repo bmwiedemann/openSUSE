@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio_audiocd
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE I/O Slave for Audio CDs
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Phonon4Qt5)
-Recommends:     %{name}-lang
 
 %description
 This package contains an KIO slave to access audio CDs.
@@ -97,19 +96,16 @@ This package contains the development files for the audiocd kio slave
 %{_kf5_plugindir}/kf5/kio/audiocd.so
 %{_kf5_plugindir}/libaudiocd_encoder_*.so
 %{_kf5_servicesdir}/audiocd.desktop
-%{_kf5_servicesdir}/audiocd.protocol
 %{_kf5_sharedir}/konqsidebartng/virtual_folders/services/audiocd.desktop
 %{_kf5_sharedir}/solid/actions/solid_audiocd.desktop
 
 %files devel
-%license COPYING*
 %{_includedir}/audiocdencoder.h
 %{_includedir}/audiocdplugins_export.h
 %{_kf5_libdir}/libaudiocdplugins.so
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
