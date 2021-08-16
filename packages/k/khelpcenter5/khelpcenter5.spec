@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khelpcenter5
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Documentation Application
 License:        GPL-2.0-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF5CoreAddons)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5KHtml)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(KF5WindowSystem)
@@ -54,7 +53,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 # khelpcenter uses some images and stylesheets from kdoctools (boo#1011094)
 Requires:       kdoctools
-Recommends:     %{name}-lang
 Conflicts:      kdebase4-runtime < 17.04.1
 Provides:       suse_help_viewer
 
@@ -76,13 +74,13 @@ Application to show KDE Applications' documentation.
     %{kf5_find_lang}
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file    org.kde.Help          Documentation Viewer
+  %suse_update_desktop_file org.kde.Help Documentation Viewer
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
+%license LICENSES/*
 %doc README*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.Help.desktop
@@ -90,9 +88,7 @@ Application to show KDE Applications' documentation.
 %{_kf5_bindir}/khelpcenter
 %{_kf5_configkcfgdir}/khelpcenter.kcfg
 %{_kf5_debugdir}/khelpcenter.categories
-%{_kf5_kxmlguidir}/khelpcenter/
 %{_kf5_libdir}/libexec/khc_*
-%{_kf5_libdir}/libkdeinit5_khelpcenter.so
 %{_kf5_servicesdir}/
 %{_kf5_sharedir}/kde4/
 %{_kf5_sharedir}/khelpcenter/
