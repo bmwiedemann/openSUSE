@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kontact
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Personal Information Manager
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Recommends:     kmail
 Suggests:       akregator
 Suggests:       kaddressbook
@@ -81,7 +80,7 @@ KOrganizer as views in one window.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-%suse_update_desktop_file org.kde.kontact         Office   Core-Office
+%suse_update_desktop_file org.kde.kontact Office Core-Office
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -107,7 +106,6 @@ KOrganizer as views in one window.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
