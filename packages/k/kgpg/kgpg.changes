@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:38:01 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove obsolete COPYING file
+  * Manually adjustments & cleanup for SPDX license statements
+  * Convert license headers to SPDX
+  * We depend against new qt/kf5 version
+  * Reduce it
+  * Make compile without deprecated method
+  * emit->Q_EMIT
+  * Time to increase version
+  * Add build support in cmake presets
+  * Exclude some asan warning
+  * Allow to support cmake presets support
+  * Install po/doc file
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

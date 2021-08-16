@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kgpg
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Encryption Tool
 License:        GPL-2.0-or-later
@@ -58,7 +58,6 @@ Requires:       gpg2
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  libboost_headers-devel
-Recommends:     %{name}-lang
 
 %description
 Kgpg is a simple GUI for gpg
@@ -78,10 +77,9 @@ Kgpg is a simple GUI for gpg
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-#suse_update_desktop_file org.kde.kgpg.deskt Utility Security
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc AUTHORS
 %config %{_kf5_configdir}/autostart/org.kde.kgpg.desktop
 %doc %lang(en) %{_kf5_htmldir}/en/kgpg/
@@ -98,7 +96,6 @@ Kgpg is a simple GUI for gpg
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
