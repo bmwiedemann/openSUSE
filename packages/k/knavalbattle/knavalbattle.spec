@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knavalbattle
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Battleship game
 License:        GPL-2.0-or-later
@@ -59,10 +59,9 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Provides:       knavalbattle5 = %{version}
 Obsoletes:      knavalbattle5 < %{version}
-Recommends:     %{name}-lang
 
 %description
-KBatteship is a KDE implentation of the popular game "Battleship" where
+KBatteship is a KDE implementation of the popular game "Battleship" where
 you have to try to sink the opponents ships. The game can also be
 played with friends online via the internet.
 
@@ -81,12 +80,11 @@ played with friends online via the internet.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.knavalbattle    Game BoardGame
+  %suse_update_desktop_file -r org.kde.knavalbattle Game BoardGame
 
 %files
 %license COPYING COPYING.DOC
 %doc %lang(en) %{_kf5_htmldir}/en/knavalbattle/
-
 %{_kf5_applicationsdir}/org.kde.knavalbattle.desktop
 %dir %{_kf5_appsdir}/kconf_update
 %{_kf5_appsdir}/kconf_update/knavalbattle.upd
@@ -95,12 +93,9 @@ played with friends online via the internet.
 %{_kf5_bindir}/knavalbattle
 %{_kf5_debugdir}/knavalbattle.categories
 %{_kf5_iconsdir}/hicolor/*/apps/knavalbattle.*
-%{_kf5_kxmlguidir}/knavalbattle/
-%{_kf5_servicesdir}/knavalbattle.protocol
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
