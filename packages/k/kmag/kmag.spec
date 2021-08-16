@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmag
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Screen Magnifier
 License:        GPL-2.0-only
@@ -47,7 +47,6 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      kmag5 < %{version}
 Provides:       kmag5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Magnifies a part of the screen.
@@ -67,7 +66,7 @@ Magnifies a part of the screen.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kmag      Utility Accessibility
+  %suse_update_desktop_file -r org.kde.kmag Utility Accessibility
 
 %files
 %license COPYING*
@@ -81,7 +80,6 @@ Magnifies a part of the screen.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
