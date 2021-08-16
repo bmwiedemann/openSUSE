@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 13 07:49:15 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.25.0
+  * New Features
+    - Edit/Polish book: Remove unused CSS now also removes
+      unreferenced stylesheets
+    - E-book viewer: Add some CSS variables and classes that allow
+      writing calibre specific CSS in ebooks.
+      See https://manual.calibre-ebook.com/viewer.html#designing-your-book-to-work-well-with-the-calibre-viewer
+    - A new framework plugins can use to be notified about changes
+      to calibre libraries
+    - Edit metadata dialog: When pasting into the identifiers field
+      if the clipboard contains a URL paste it directly as a URL
+      identifier
+  * Bug Fixes
+    - E-book viewer: When displaying popup footnotes use the same
+      writing direction as the main text for the footnote popups
+      size and header
+    - E-book viewer: Improve the text layout when looking up words
+      in Google
+    - Content server viewer: Fix read aloud not working on mobile
+      browsers
+    
+-------------------------------------------------------------------
 Fri Jul 30 10:34:27 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.24.0
