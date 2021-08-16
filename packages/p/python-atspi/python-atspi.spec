@@ -31,6 +31,7 @@ BuildArch:      noarch
 %endif
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define _name   pyatspi
 Name:           python-atspi%{psuffix}
 Version:        2.38.1

@@ -527,4 +527,12 @@
     <comment>Update to 2.38.1 (forwarded request 879847 from dimstar)</comment>
     <requestid>880097</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>00abfa9f3078f3600a29383cda9bc49f</srcmd5>
+    <version>2.38.1</version>
+    <time>1629101331</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911421</requestid>
+  </revision>
 </revisionlist>
