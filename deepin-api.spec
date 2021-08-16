@@ -22,7 +22,7 @@
 %define   import_path     pkg.deepin.io/dde/api
 
 Name:           deepin-api
-Version:        5.4.5
+Version:        5.4.9
 Release:        0
 Summary:        Go-lang bingding for dde-daemon
 License:        GPL-3.0+
@@ -66,7 +66,7 @@ BuildRequires:  deepin-sound-theme
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-github-linuxdeepin-go-x11-client
-BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
 BuildRequires:  deepin-gir-generator
 Requires:       deepin-desktop-base
 Requires:       rfkill
@@ -123,7 +123,7 @@ Requires:       pkgconfig(libpulse-simple)
 Requires:       pkgconfig(alsa)
 Requires:       golang-github-linuxdeepin-go-lib
 Requires:       golang-github-linuxdeepin-go-x11-client
-Requires:       golang-github-linuxdeepin-go-dbus-factory
+Requires:       golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
 Requires:       deepin-gir-generator
 BuildArch:      noarch
 AutoReqProv:    On
@@ -193,6 +193,10 @@ install -m 0644 dbus.tar.gz %{buildroot}%{_datadir}/dde-api/
 %fdupes %{buildroot}
 
 %pre
+# getent group deepin-sound-player >/dev/null || %{_sbindir}/groupadd --system deepin-sound-player
+# getent passwd deepin-sound-player >/dev/null || %{_sbindir}/useradd --system -c "deepin-sound-player User" \
+#         -d %{_localstatedir}/deepin-sound-player -m -g deepin-sound-player -s %{_sbindir}/nologin \
+#         -G audio deepin-sound-player
 %service_add_pre deepin-shutdown-sound.service deepin-login-sound.service
 
 %post
@@ -204,9 +208,9 @@ install -m 0644 dbus.tar.gz %{buildroot}%{_datadir}/dde-api/
 %postun
 %service_del_postun deepin-shutdown-sound.service deepin-login-sound.service
 if [ $1 -eq 0 ]; then
-  rm -f /usr/share/polkit-1/actions/com.deepin.api*
-  rm -f /usr/share/dbus-1/system.d/com.deepin.api*
-  rm -f /usr/share/dbus-1/system-services/com.deepin.api*
+    rm -f /usr/share/polkit-1/actions/com.deepin.api*
+    rm -f /usr/share/dbus-1/system.d/com.deepin.api*
+    rm -f /usr/share/dbus-1/system-services/com.deepin.api*
 fi
 
 %files

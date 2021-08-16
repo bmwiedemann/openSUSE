@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 23 13:38:29 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.4.9
+  * Add SetTransformationMatrix to Touchscreen
+  * Change go-dbus-factory struct as interface
+  * Update test modules
+
+-------------------------------------------------------------------
 Fri May 21 14:02:11 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Keep golang verion on 1.15 on Tumbleweed, the project does not support 

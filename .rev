@@ -16,4 +16,15 @@
   golang 1.16+ (forwarded request 894952 from hillwood)</comment>
     <requestid>894966</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4445cbe81086a8b480f59434bdd2e420</srcmd5>
+    <version>5.4.9</version>
+    <time>1629101356</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.4.9
+  * Add SetTransformationMatrix to Touchscreen
+  * Change go-dbus-factory struct as interface
+  * Update test modules (forwarded request 910693 from hillwood)</comment>
+    <requestid>910910</requestid>
+  </revision>
 </revisionlist>
