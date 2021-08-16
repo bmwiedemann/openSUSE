@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-common-internals
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Telepathy common module
 License:        LGPL-2.1-or-later
@@ -67,7 +67,6 @@ BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  pkgconfig(libotr) >= 4.0.0
 Requires:       ktp-icons
 Requires:       telepathy-accounts-signon
-Recommends:     %{name}-lang
 Provides:       libktpcommoninternals6 = %{version}
 Provides:       libktpcommoninternals7 = %{version}
 Provides:       libktpcommoninternals8 = %{version}
@@ -150,7 +149,6 @@ icons for all the KDE Telepathy packages.
 %{_kf5_iconsdir}/hicolor/
 
 %files devel
-%license COPYING*
 %{_kf5_cmakedir}/KTp/
 %{_kf5_libdir}/libKTpCommonInternals.so
 %{_kf5_libdir}/libKTpLogger.so
@@ -161,7 +159,6 @@ icons for all the KDE Telepathy packages.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
