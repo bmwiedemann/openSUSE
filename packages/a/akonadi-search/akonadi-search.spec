@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-search
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
@@ -50,7 +50,6 @@ BuildRequires:  cmake(KF5Runner) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 Obsoletes:      baloo-pim < %{version}
-Recommends:     %{name}-lang
 
 %description
 AkonadiSearch is a framework for searching and managing PIM metadata
@@ -104,7 +103,6 @@ Development files for the AkonadiSearch library.
 %{_kf5_libdir}/libKF5AkonadiSearchXapian.so.*
 
 %files
-%license LICENSES/*
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/krunner
 %dir %{_kf5_sharedir}/akonadi
@@ -119,7 +117,6 @@ Development files for the AkonadiSearch library.
 %{_kf5_sharedir}/akonadi/agents/akonadiindexingagent.desktop
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5AkonadiSearch/
 %{_kf5_includedir}/*.h
 %{_kf5_includedir}/AkonadiSearch/
@@ -130,7 +127,6 @@ Development files for the AkonadiSearch library.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
