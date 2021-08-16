@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:35:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Drop X-KDE-Keywords entries from kcm desktop files
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Add parent to qmenu
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:40 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Provide metadata in kontact plugin for settings dialog rewrite
+  * Port away from deprecated KShortcutsDialog::configure() method
+  * Make it compile with last api
+  * Remove unused files
+  * Now all use KPluginLoader::findPlugins
+  * Depend against last akonadi-contact
+  * Use K_PLUGIN_CLASS_WITH_JSON directly
+  * Install in "pim/kcms/kaddressbook" namespace
+  * Remove extension here
+  * Remove duplicate check code
+  * Make sure that it doesn't crash on kontact
+  * Add more default action in hamburger menu
+  * Theses actions are already in toolbar
+  * Add KHamburgerMenu when we hide menubar
+  * Rename variable
+  * Remove clazy warning
+  * Modernize code
+  * Make dependency on KI18n explicit
+  * Make doctool optional
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

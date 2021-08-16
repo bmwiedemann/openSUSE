@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaddressbook
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Address book application to manage contacts
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -49,15 +49,14 @@ BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5PimTextEdit)
 BuildRequires:  cmake(KF5Prison)
-BuildRequires:  cmake(Qt5DBus) >= 5.14.0
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5PrintSupport) >= 5.14.0
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5DBus) >= 5.15.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5PrintSupport) >= 5.15.0
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 Requires:       kdepim-runtime
 Requires:       libKPimAddressbookImportExport5 = %{version}
 Recommends:     %{name}-doc
-Recommends:     %{name}-lang
 Provides:       kaddressbook5 = %{version}
 Obsoletes:      kaddressbook5 < %{version}
 # It can only build on the same platforms as Qt Webengine
@@ -115,7 +114,6 @@ for KAddressbook.
 %postun -n libKPimAddressbookImportExport5 -p /sbin/ldconfig
 
 %files doc
-%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kaddressbook/
 
 %files
@@ -131,7 +129,10 @@ for KAddressbook.
 %{_kf5_iconsdir}/hicolor/*/apps/kaddressbook.png
 %{_kf5_iconsdir}/hicolor/scalable/apps/kaddressbook.svg
 %{_kf5_libdir}/libkaddressbookprivate.so.*
-%{_kf5_plugindir}/kaddressbook_config_plugins.so
+%dir %{_kf5_plugindir}/pim/
+%dir %{_kf5_plugindir}/pim/kcms/
+%dir %{_kf5_plugindir}/pim/kcms/kaddressbook/
+%{_kf5_plugindir}/pim/kcms/kaddressbook/kaddressbook_config_plugins.so
 %{_kf5_plugindir}/kaddressbookpart.so
 %{_kf5_plugindir}/kontact5/kontact_kaddressbookplugin.so
 %{_kf5_servicesdir}/kaddressbook_config_plugins.desktop
@@ -141,12 +142,10 @@ for KAddressbook.
 %{_kf5_sharedir}/kontact/
 
 %files -n libKPimAddressbookImportExport5
-%license LICENSES/*
 %{_kf5_libdir}/libKPimAddressbookImportExport.so.5
 %{_kf5_libdir}/libKPimAddressbookImportExport.so.5.*
 
 %files -n libKPimAddressbookImportExport5-devel
-%license LICENSES/*
 %dir %{_includedir}/KPim
 %{_includedir}/KPim/KAddressBookImportExport/
 %{_includedir}/KPim/kaddressbookimportexport/
@@ -157,7 +156,6 @@ for KAddressbook.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
