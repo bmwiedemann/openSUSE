@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kcalutils
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Library with utility functions for handling calendar data
 License:        LGPL-2.1-or-later
@@ -43,10 +43,9 @@ BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IdentityManagement)
 BuildRequires:  cmake(KF5KDELibs4Support) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Test)
+#  Only with stable builds
 %if %{with lang}
-# Only with stable builds
 %requires_eq    grantlee5
-Recommends:     %{name}-lang
 %endif
 
 %description
@@ -103,7 +102,6 @@ to develop applications wanting to use kcalutils.
 %{_kf5_libdir}/libKF5CalendarUtils.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5CalendarUtils/
 %{_kf5_includedir}/KCalUtils/
 %{_kf5_includedir}/kcalutils_version.h
@@ -111,12 +109,10 @@ to develop applications wanting to use kcalutils.
 %{_kf5_mkspecsdir}/qt_KCalUtils.pri
 
 %files
-%license LICENSES/*
 %{_libdir}/grantlee/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
