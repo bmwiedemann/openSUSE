@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           mbox-importer
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Tool for importing mbox archives into akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -43,7 +43,6 @@ BuildRequires:  cmake(KF5PimCommon)
 BuildRequires:  cmake(KF5Service)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
@@ -73,7 +72,6 @@ into akonadi.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
