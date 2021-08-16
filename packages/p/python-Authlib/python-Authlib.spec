@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Authlib
-Version:        0.15.3
+Version:        0.15.4
 Release:        0
 Summary:        Python library for building OAuth and OpenID Connect servers
 License:        BSD-3-Clause
