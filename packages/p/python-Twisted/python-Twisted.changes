@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 13 11:50:00 UTC 2021 - Michael Gumsley <gumsley_6@hotmail.com>
+
+- Restore no-pygtkcompat.patch due to boo#1110669
+
+-------------------------------------------------------------------
 Mon Aug  2 06:41:10 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - typing_extensions is now required

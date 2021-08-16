@@ -36,6 +36,8 @@ Patch2:         no-test_successResultOfWithFailureHasTraceback.patch
 Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
 # We don't want to package yet another module, and it is easily skippable
 Patch4:         no-cython_test_exception_raiser.patch
+# boo#1110669 Our variant of PyGObject has pygtkcompat stripped which Twisted does not handle
+Patch5:         no-pygtkcompat.patch
 BuildRequires:  %{python_module Automat >= 0.8.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}

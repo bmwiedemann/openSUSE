@@ -1347,4 +1347,12 @@
 </comment>
     <requestid>910780</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>dc128be01bc0b00694f6153bebb01d0b</srcmd5>
+    <version>21.7.0</version>
+    <time>1629101317</time>
+    <user>RBrownSUSE</user>
+    <comment>- Restore no-pygtkcompat.patch due to boo#1110669</comment>
+    <requestid>911988</requestid>
+  </revision>
 </revisionlist>
