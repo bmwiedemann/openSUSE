@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Aug 12 00:38:24 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 2021.08.09:
+  - Fixed a bug in the MPEG-1 or 2 file server demultiplexors that 
+    could cause a RTSP server to crash if it received successive 
+    RTSP "SETUP" commands for the same track. (Thanks to Ba 
+    Jinsheng for reporting this.)(boo#1189352, CVE-2021-38381)
+- Update to 2021.08.06:
+  - Fixed a bug in the Matroska and Ogg file server demultiplexors 
+    that could cause a RTSP server to crash if it received 
+    successive RTSP "SETUP" commands for the same track.  (Thanks 
+    to Ba Jinsheng for reporting this.)(boo#1189353, CVE-2021-38382)
+- Update to 2021.08.04:
+  - In the "MP3FileSource" implementation, we no longer do a 
+    recursive call to "doEventLoop()" when attempting to 
+    synchronously read from a MP3 file.  This avoids a possible 
+    stack overflow in the RTSP server if multiple concurrent 
+    requests are made. (Thanks to Ba Jinsheng for reporting this.)  
+    The server still does some synchronous reads, when 
+    initializing, and when parsing MP3 frame headers. This should 
+    be fixed sometime in the future. (boo#1189351, CVE-2021-38380)
+- Update to 2021.07.20:
+  - If a "RTSPClient" receives a response to a RTSP "PLAY" that 
+    changes the 'scale()' or 'speed()' of the whole session, then 
+    those parameters also need to be changed in each subsession (as 
+    that inheritance doesn't happen automatically). (Thanks to a 
+    developer in China for reporting this.)
+- Update to 2021.07.10:
+  - Updated "H264or5VideoStreamFramer.cpp" once again to set the 
+    default value of "DeltaTfiDivisor" to 2.0 for H.265, and 1.0 
+    for everything else.  (This fixes the frame rate for another 
+    stream supplied by Paul Westlund.)
+- Update to 2021.06.29:
+  - In the proxy server implementation, if a client closes one 
+    substream, but there are still other clients receiving other 
+    substream(s), then we no send a single-track RTSP "PAUSE" 
+    command downstream, because some back-end servers might handle 
+    that by pausing all tracks of the stream.  So now, in this 
+    case, we don't send a RTSP "PAUSE" command at all. (Thanks to 
+    Jose Maria Infanzon for noting this issue.)
+- Update to 2021.06.25:
+  - Updated "H264or5VideoStreamFramer.cpp" to set the default value 
+    of "DeltaTfiDivisor" to 1.0 (rather than 2.0), and to assume a 
+    frame rate of 30 fps (rather than 25 fps) if there is no VPS or 
+    SPS NAL unit that specifies a different frame rate.  This seems 
+    to work the best for most raw H.264 and H.265 video streams.  
+    (Thanks to Paul Westlund for supplying an example file to 
+    motivate this.)
+- Change the so version of libliveMedia to 97
+
+-------------------------------------------------------------------
 Thu Jun 17 15:19:36 CEST 2021 - tiwai@suse.de
 
 - Update to 2021.05.22:
