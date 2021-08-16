@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           libkdepim
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Base package of kdepim
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,7 +51,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5UiTools)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 This package contains the libkdepim library.
@@ -106,18 +105,7 @@ Requires:       cmake(KF5AkonadiContact)
 %description devel
 The development package for the libkdepim libraries
 
-%files devel
-%license LICENSES/*
-%{_kf5_cmakedir}/KF5Libkdepim/
-%{_kf5_cmakedir}/MailTransportDBusService/
-%{_kf5_includedir}/Libkdepim/
-%{_kf5_includedir}/libkdepim/
-%{_kf5_includedir}/libkdepim_version.h
-%{_kf5_libdir}/libKF5Libkdepim.so
-%{_kf5_mkspecsdir}/qt_Libkdepim.pri
-
 %files
-%license LICENSES/*
 %{_kf5_dbusinterfacesdir}/org.kde.addressbook.service.xml
 %{_kf5_dbusinterfacesdir}/org.kde.mailtransport.service.xml
 %{_kf5_debugdir}/libkdepim.categories
@@ -128,9 +116,17 @@ The development package for the libkdepim libraries
 %license LICENSES/*
 %{_kf5_libdir}/libKF5Libkdepim.so.*
 
+%files devel
+%{_kf5_cmakedir}/KF5Libkdepim/
+%{_kf5_cmakedir}/MailTransportDBusService/
+%{_kf5_includedir}/Libkdepim/
+%{_kf5_includedir}/libkdepim/
+%{_kf5_includedir}/libkdepim_version.h
+%{_kf5_libdir}/libKF5Libkdepim.so
+%{_kf5_mkspecsdir}/qt_Libkdepim.pri
+
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
