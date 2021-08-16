@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Fix language not being correctly guessed when sentence ends in a dot
+
+-------------------------------------------------------------------
 Sun Jul  4 07:46:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
