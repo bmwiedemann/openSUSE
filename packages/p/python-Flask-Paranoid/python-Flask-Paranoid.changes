@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 14 02:54:08 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Require pip and importlib-metadata to fix build.
+- Add fix-ParanoidTests-fail.patch to fix test failures in
+  ParanoidTests.
+
+-------------------------------------------------------------------
 Wed Oct 24 14:05:47 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Ensure neutrality of description. Add paragraph from
