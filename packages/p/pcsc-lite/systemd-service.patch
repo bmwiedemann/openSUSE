@@ -1,15 +1,17 @@
 diff --git a/etc/pcscd.service.in b/etc/pcscd.service.in
-index eb093de..f0929cd 100644
+index 65ad6a6..f0929cd 100644
 --- a/etc/pcscd.service.in
 +++ b/etc/pcscd.service.in
-@@ -4,7 +4,9 @@ Requires=pcscd.socket
+@@ -4,9 +4,10 @@ Requires=pcscd.socket
  Documentation=man:pcscd(8)
  
  [Service]
--ExecStart=@sbindir_exp@/pcscd --foreground --auto-exit
+-ExecStart=@sbindir_exp@/pcscd --foreground --auto-exit $PCSCD_ARGS
 +Environment="PCSCD_OPTIONS="
 +EnvironmentFile=-/etc/sysconfig/pcscd
 +ExecStart=@sbindir_exp@/pcscd --foreground $PCSCD_OPTIONS
  ExecReload=@sbindir_exp@/pcscd --hotplug
+-EnvironmentFile=-@sysconfdir@/default/pcscd
  
  [Install]
+ Also=pcscd.socket

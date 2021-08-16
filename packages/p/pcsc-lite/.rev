@@ -658,4 +658,27 @@
     <comment></comment>
     <requestid>873229</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>6f693ec91831f5bcf445cefece70fd34</srcmd5>
+    <version>1.9.3</version>
+    <time>1629101139</time>
+    <user>RBrownSUSE</user>
+    <comment>- version 1.9.3
+  * fix a stupid regression with systemd introduced in the previous version
+- version 1.9.2
+  * improve NetBSD support
+  * pcsc-spy: version 1.1
+   . add option -t|--thread
+   . x10 speed increase
+   . correctly exit at end-of-file
+   . remove, now useless, support of macOS
+  * SetProtocol: Handle IFD_NOT_SUPPORTED from the driver
+  * hotplug_libudev.c: sanitize interface name
+  * pcsc_demo: change licence from GPLv3 to BSD
+  * use Python 3 for Python scripts (psc-spy, UnitaryTests)
+  * Some other minor improvements
+- remove obsolete pcsc-lite-python3.patch
+</comment>
+    <requestid>911551</requestid>
+  </revision>
 </revisionlist>

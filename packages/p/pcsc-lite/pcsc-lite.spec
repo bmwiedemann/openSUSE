@@ -1,7 +1,7 @@
 #
 # spec file for package pcsc-lite
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %define PKG_USER	scard
 %define PKG_GROUP	scard
 Name:           pcsc-lite
-Version:        1.9.1
+Version:        1.9.3
 Release:        0
 Summary:        PC/SC Smart Cards Library
 License:        BSD-3-Clause AND GPL-3.0-or-later
@@ -40,8 +40,6 @@ Source6:        pcsc-lite-reader-conf
 Source7:        https://pcsclite.apdu.fr/files/%{name}-%{version}.tar.bz2.asc
 Source8:        %{name}.keyring
 Patch0:         systemd-service.patch
-# PATCH-FEATURE-SLE pcsc-lite-python3.patch bsc1082129 sbrabec@suse.com -- Use python3.
-Patch1:         pcsc-lite-python3.patch
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -110,7 +108,6 @@ compile plugins for the pcsc-lite package.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
 cp -a %{SOURCE1} %{SOURCE2} %{SOURCE6} .
 
 %build
