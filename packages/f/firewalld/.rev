@@ -1079,4 +1079,12 @@ This is a bug fix only release.
     <comment>- Remove dependency on firewalld from firewall-macros (bsc#1183404) (forwarded request 883554 from mrostecki)</comment>
     <requestid>883555</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>a949918428e32137b3545d1e0bd89bf6</srcmd5>
+    <version>1.0.0</version>
+    <time>1629101326</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911378</requestid>
+  </revision>
 </revisionlist>

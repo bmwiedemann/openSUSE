@@ -1,7 +1,7 @@
 #
 # spec file for package firewalld
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,12 +21,12 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           firewalld
-Version:        0.9.3
+Version:        1.0.0
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Security
-Url:            http://www.firewalld.org
+URL:            https://www.firewalld.org
 Source0:        https://github.com/firewalld/firewalld/releases/download/v%{version}/firewalld-%{version}.tar.gz
 Source1:        docker-zone.xml
 Patch0:         0002-Disable-FlushAllOnReload-option.patch
@@ -109,6 +109,33 @@ Requires:       python3-gobject-Gdk
 The firewall configuration application provides an configuration interface for
 firewalld.
 
+%package test
+Summary:        Firewalld testsuite
+Group:          Productivity/Networking/Security
+
+%description test
+This package provides the firewalld testsuite.
+
+%package bash-completion
+Summary:        Bash Completion for firewalld
+Group:          Productivity/Networking/Security
+Requires:       %{name} = %{version}-%{release}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+Bash command line completion support for firewalld.
+
+%package zsh-completion
+Summary:        Zsh Completion for firewalld
+Group:          Productivity/Networking/Security
+Requires:       %{name} = %{version}-%{release}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+Zsh command line completion support for firewalld.
+
 %lang_package
 
 %prep
@@ -127,7 +154,7 @@ export PYTHON="%{_bindir}/python3"
 
 # Normally documentation is shipped but this will ensure that missing
 # files will be generated.
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -154,6 +181,14 @@ ln -sf %{_sbindir}/service %{buildroot}/%{_sbindir}/rcfirewalld
 # add firewalld zone (rhbz#1817022)
 install -dp %{buildroot}%{_prefix}/lib/firewalld/zones
 install -p -m 644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/zones/docker.xml
+
+# No more /etc
+mkdir -p %{buildroot}%{_prefix}/lib/modprobe.d
+mv %{buildroot}%{_sysconfdir}/modprobe.d/* %{buildroot}%{_prefix}/lib/modprobe.d
+%if %{defined _distconfdir}
+mkdir -p %{buildroot}%{_distconfdir}/xdg/autostart
+mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart
+%endif
 
 %fdupes %{buildroot}%{python3_sitelib}
 
@@ -211,10 +246,6 @@ fi
 %{_sbindir}/rcfirewalld
 %{_bindir}/firewall-cmd
 %{_bindir}/firewall-offline-cmd
-%dir %{_datadir}/bash-completion/completions
-%{_datadir}/bash-completion/completions/firewall-cmd
-%dir %{_datadir}/zsh/site-functions
-%{_datadir}/zsh/site-functions/_firewalld
 %dir %{_prefix}/lib/firewalld
 %dir %{_prefix}/lib/firewalld/icmptypes
 %dir %{_prefix}/lib/firewalld/ipsets
@@ -231,8 +262,7 @@ fi
 %{_datadir}/polkit-1
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/system.d
-%dir %{_sysconfdir}/modprobe.d
-%config(noreplace) %{_sysconfdir}/modprobe.d/firewalld-sysctls.conf
+%{_prefix}/lib/modprobe.d/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
 %config(noreplace) %{_sysconfdir}/firewalld/lockdown-whitelist.xml
 %config(noreplace) %{_sysconfdir}/logrotate.d/firewalld
@@ -252,25 +282,20 @@ fi
 
 %files -n python3-firewall
 %attr(0755,root,root) %dir %{python3_sitelib}/firewall
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/__pycache__
 %attr(0755,root,root) %dir %{python3_sitelib}/firewall/config
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/config/__pycache__
 %attr(0755,root,root) %dir %{python3_sitelib}/firewall/core
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/core/__pycache__
 %attr(0755,root,root) %dir %{python3_sitelib}/firewall/core/io
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/core/io/__pycache__
 %attr(0755,root,root) %dir %{python3_sitelib}/firewall/server
-%attr(0755,root,root) %dir %{python3_sitelib}/firewall/server/__pycache__
-%{python3_sitelib}/firewall/__pycache__/*.py*
+%attr(0755,root,root) %{python3_sitelib}/firewall/__pycache__
+%attr(0755,root,root) %{python3_sitelib}/firewall/config/__pycache__
+%attr(0755,root,root) %{python3_sitelib}/firewall/core/__pycache__
+%attr(0755,root,root) %{python3_sitelib}/firewall/core/io/__pycache__
+%attr(0755,root,root) %{python3_sitelib}/firewall/server/__pycache__
 %{python3_sitelib}/firewall/*.py*
 %{python3_sitelib}/firewall/config/*.py*
-%{python3_sitelib}/firewall/config/__pycache__/*.py*
-%{python3_sitelib}/firewall/core/*.py*
-%{python3_sitelib}/firewall/core/__pycache__/*.py*
-%{python3_sitelib}/firewall/core/io/*.py*
-%{python3_sitelib}/firewall/core/io/__pycache__/*.py*
 %{python3_sitelib}/firewall/server/*.py*
-%{python3_sitelib}/firewall/server/__pycache__/*.py*
+%{python3_sitelib}/firewall/core/io/*.py*
+%{python3_sitelib}/firewall/core/*.py*
 
 %files -n firewall-macros
 %{_rpmmacrodir}/macros.firewalld
@@ -279,7 +304,11 @@ fi
 %attr(0755,root,root) %{_bindir}/firewall-applet
 %dir %{_sysconfdir}/firewall
 %config(noreplace) %{_sysconfdir}/firewall/applet.conf
+%if %{undefined _distconfdir}
 %{_sysconfdir}/xdg/autostart/firewall-applet.desktop
+%else
+%{_distconfdir}/xdg/autostart/firewall-applet.desktop
+%endif
 %{_datadir}/icons/hicolor/*/apps/firewall-applet*.*
 %{_mandir}/man1/firewall-applet*.1%{?ext_man}
 
@@ -290,11 +319,28 @@ fi
 %attr(0755,root,root) %{_datadir}/firewalld/gtk3_chooserbutton.py*
 %attr(0755,root,root) %{_datadir}/firewalld/gtk3_niceexpander.py*
 %{_datadir}/applications/firewall-config.desktop
-%dir %{_datadir}/metainfo
 %{_datadir}/metainfo/firewall-config.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/firewall-config*.*
 %{_datadir}/glib-2.0/schemas/org.fedoraproject.FirewallConfig.gschema.xml
 %{_mandir}/man1/firewall-config*.1%{?ext_man}
+
+%files test
+%dir %{_datadir}/firewalld/testsuite
+%{_datadir}/firewalld/testsuite/README
+%{_datadir}/firewalld/testsuite/testsuite
+%dir %{_datadir}/firewalld/testsuite/integration
+%{_datadir}/firewalld/testsuite/integration/testsuite
+%dir %{_datadir}/firewalld/testsuite/python
+%attr(0755,root,root) %{_datadir}/firewalld/testsuite/python/*.py
+%attr(0755,root,root) %{_datadir}/firewalld/testsuite/python/__pycache__
+
+%files bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/firewall-cmd
+
+%files zsh-completion
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_firewalld
 
 %files lang -f %{name}.lang
 

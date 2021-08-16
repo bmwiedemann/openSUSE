@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug  7 14:27:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to 1.0.0:
+  * Reduced dependencies
+  * Intra-zone forwarding by default
+  * NAT rules moved to inet family (reduced rule set)
+  * Default target is now similar to reject
+  * ICMP blocks and block inversion only apply to input,
+    not forward
+  * tftp-client service has been removed
+  * iptables backend is deprecated
+  * Direct interface is deprecated
+  * CleanupModulesOnExit defaults to no
+    (kernel modules not unloaded)
+- Add new firewalld-test package
+- Move bash and zsh completions to more useful separate packages
+- Clean spec file
+- Move modprobe.d and autostart files out of /etc
+
+-------------------------------------------------------------------
 Wed Apr  7 09:24:28 UTC 2021 - Michał Rostecki <mrostecki@suse.com>
 
 - Remove dependency on firewalld from firewall-macros (bsc#1183404)
