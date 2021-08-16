@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           knights
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        A simple chess board
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       gnuchess
-Recommends:     %{name}-lang
 Suggests:       crafty
 Obsoletes:      kchess
 %if 0%{?suse_version}
