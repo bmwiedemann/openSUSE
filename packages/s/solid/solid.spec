@@ -17,10 +17,10 @@
 
 
 %define lname   libKF5Solid5
-%define _tar_path 5.84
+%define _tar_path 5.85
 %bcond_without lang
 Name:           solid
-Version:        5.84.0
+Version:        5.85.0
 Release:        0
 Summary:        KDE Desktop hardware abstraction
 License:        LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Use-qstrcmp-instead-of-strcmp.patch
 BuildRequires:  bison
 BuildRequires:  extra-cmake-modules >= %{_tar_path}
 BuildRequires:  fdupes
