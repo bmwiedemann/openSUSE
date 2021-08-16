@@ -1,0 +1,24 @@
+---
+ tests/test_enumerate.py |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/tests/test_enumerate.py
++++ b/tests/test_enumerate.py
+@@ -90,7 +90,7 @@ class TestEnumerator(object):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
+-    @settings(max_examples=10)
++    @settings(max_examples=10, deadline=None)
+     def test_match_subsystem(self, context, subsystem):
+         """
+         Subsystem match matches devices w/ correct subsystem.
+@@ -126,7 +126,7 @@ class TestEnumerator(object):
+ 
+     @failed_health_check_wrapper
+     @given(_CONTEXT_STRATEGY, _SUBSYSTEM_STRATEGY)
+-    @settings(max_examples=1)
++    @settings(max_examples=1, deadline=500)
+     def test_match_subsystem_nomatch_complete(self, context, subsystem):
+         """
+         Test that w/ respect to the universe of devices returned by

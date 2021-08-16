@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 10 12:49:04 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add hypothesis_settings.patch to allow longer timeouts in OBS.
+
+-------------------------------------------------------------------
 Sat Dec 12 13:12:21 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Add remove_mock.patch gh#pyudev/pyudev#409

@@ -186,4 +186,12 @@
     <comment></comment>
     <requestid>855558</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>407081eb465d0a283b8f5d65b156a61f</srcmd5>
+    <version>0.22.0</version>
+    <time>1629101324</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add hypothesis_settings.patch to allow longer timeouts in OBS.</comment>
+    <requestid>911336</requestid>
+  </revision>
 </revisionlist>

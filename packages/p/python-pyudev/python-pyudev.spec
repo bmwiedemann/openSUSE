@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyudev
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,9 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pyudev/pyudev-%
 Patch0:         pytest_register_mark.patch
 # PATCH-FEATURE_UPSTREAM remove_mock.patch gh#pyudev/pyudev#409
 Patch1:         remove_mock.patch
+# PATCH-FIX-OPENSUSE hypothesis_settings.patch mcepl@suse.com
+# tests timeout on OBS
+Patch2:         hypothesis_settings.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
