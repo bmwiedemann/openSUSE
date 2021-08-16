@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 11 15:31:36 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
+
+- sdl2-fix-wayland-fullscreen.patch
+  * fix wayland issue for wlroot, see https://github.com/libsdl-org/SDL/pull/4629
+
+-------------------------------------------------------------------
+Wed Aug 11 10:12:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.16
+  * Better native Wayland support, including handling for
+    client-side decorations and other functionality in place.
+  * Support for being able to directly interface with PipeWire for
+    audio input/output, a variety of new APIs, support for the
+    Amazon Luna game controller, rumble support for more
+    controllers.
+
+-------------------------------------------------------------------
 Wed Dec 23 10:47:09 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.14:

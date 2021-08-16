@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sle_version 0
 Name:           SDL2
 %define lname   libSDL2-2_0-0
-Version:        2.0.14
+Version:        2.0.16
 Release:        0
 Summary:        Simple DirectMedia Layer Library
 License:        Zlib
@@ -33,8 +33,8 @@ Source4:        baselibs.conf
 Patch1:         sdl2-symvers.patch
 Patch2:         SDL2-endian.patch
 Patch3:         sdl2-khronos.patch
+Patch4:         sdl2-fix-wayland-fullscreen.patch
 BuildRequires:  cmake
-BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  nasm
 BuildRequires:  pkg-config
@@ -110,13 +110,7 @@ library.
 
 %prep
 %autosetup -p1
-dos2unix WhatsNew.txt
-dos2unix TODO.txt
-dos2unix BUGS.txt
-dos2unix README-SDL.txt
-dos2unix README.txt
-dos2unix CREDITS.txt
-dos2unix COPYING.txt
+perl -i -pe 's{\r\n}{\n}g' *.txt
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -131,7 +125,7 @@ dos2unix COPYING.txt
 %endif
 	--enable-sse3=no --disable-rpath --disable-3dnow \
 	CFLAGS="%optflags -fcommon"
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
@@ -146,12 +140,12 @@ rm -fv "%buildroot/%_libdir/libSDL2.a" "%buildroot/%_libdir/libSDL2_test.a"
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%license COPYING.txt
-%doc BUGS.txt CREDITS.txt README.txt README-SDL.txt
+%license LICENSE.txt
+%doc README.md README-SDL.txt
 %_libdir/libSDL2-2*.so.*
 
 %files -n libSDL2-devel
-%doc TODO.txt WhatsNew.txt
+%doc WhatsNew.txt
 %_bindir/sdl2-config
 %_libdir/libSDL2.so
 %_includedir/SDL2/
