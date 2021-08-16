@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:40:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08/
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Migrate to new REUSE CI check
+  * Fix invalid simplification on wrapped weekday selectors
+  * Work around qmlplugindump choking on gadget singletons
+  * Fix crash in simplifiedExpression for a null expression
+  * Simplify weekday lists: Mo,Tu,We => Mo-We
+  * Add support for a dot after short weekday names (Mo. Tu. We. etc.)
+  * Add support for "whitsun +1 day", should be "easter +50 days"
+  * Add support for non-standard "whitsun" = easter +49 days
+  * Also perform simplification in the command line validation tool
+  * The recent commit "generalize to comma" was about a simplification.
+  * Add simplifiedExpression()
+  * Generalize time-only-autocorrect to work with ',' as well.
+  * Fix crash in my recently-added autocorrect check
+  * autocorrect wrong use of ';' where ',' was expected
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kopeninghours
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        OSM opening hours expression parser and evaluator
 License:        LGPL-2.0-or-later
@@ -78,7 +78,6 @@ export QT_QPA_PLATFORM=offscreen
 %postun -n libKOpeningHours1 -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %dir %{_kf5_qmldir}/org
 %dir %{_kf5_qmldir}/org/kde
 %{_kf5_qmldir}/org/kde/kopeninghours/
@@ -89,7 +88,6 @@ export QT_QPA_PLATFORM=offscreen
 %{_kf5_libdir}/libKOpeningHours.so.*
 
 %files devel
-%license LICENSES/*
 %{_includedir}/KOpeningHours/
 %{_includedir}/kopeninghours/
 %{_includedir}/kopeninghours_version.h
