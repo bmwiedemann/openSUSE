@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksquares
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        "Dots and boxes" board game
 License:        GPL-2.0-or-later
@@ -54,7 +54,6 @@ BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -81,7 +80,7 @@ which may be controlled by the computer.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.ksquares          Game BoardGame
+  %suse_update_desktop_file -r org.kde.ksquares Game BoardGame
 
 %files
 %license LICENSES/*
@@ -94,7 +93,6 @@ which may be controlled by the computer.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
