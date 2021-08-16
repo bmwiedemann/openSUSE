@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Support binary content in QR codes
+  * Constrain rendering by the minimum size, not the preferred size
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
