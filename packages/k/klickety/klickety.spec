@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           klickety
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Strategic board game
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      klickety5 < %{version}
 Provides:       klickety5 = %{version}
 
@@ -71,7 +70,7 @@ Klickety is an adaptation of the Clickomania and SameGame games.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.klickety           Game LogicGame
+  %suse_update_desktop_file -r org.kde.klickety Game LogicGame
 
 %files
 %license LICENSES/*
@@ -89,7 +88,6 @@ Klickety is an adaptation of the Clickomania and SameGame games.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
