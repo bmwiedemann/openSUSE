@@ -20,7 +20,7 @@
 %define import_path pkg.deepin.io/dde/startdde
 
 Name:           deepin-start
-Version:        5.8.7
+Version:        5.8.22
 Release:        0
 Summary:        Starter of deepin desktop
 License:        GPL-3.0-only
@@ -49,6 +49,7 @@ BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsecret-unstable)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xi)
 Requires:       deepin-daemon
@@ -94,7 +95,7 @@ rm -rf $HOME/rpmbuild/BUILD/go/src/github.com \
 %goinstall
 %gosrc
 %make_install
-install -m0644 display/listen.c %{buildroot}%{go_contribsrcdir}/%{import_path}/display/
+install -m0644 keyring/keyring.c %{buildroot}%{go_contribsrcdir}/%{import_path}/keyring/
 install -m0644 iowait/xcursor_remap.c %{buildroot}%{go_contribsrcdir}/%{import_path}/iowait/
 %gofilelist
 

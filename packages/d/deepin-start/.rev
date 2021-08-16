@@ -15,4 +15,15 @@
     <comment> (forwarded request 894970 from hillwood)</comment>
     <requestid>894971</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f1c42e6596f543ae2afc3707e85fa2e0</srcmd5>
+    <version>5.8.22</version>
+    <time>1629101355</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.8.22
+  * Change go-dbus-factory struct as interface
+  * Disable touchscreen when associated output disabled
+  * Fix bugs (forwarded request 910692 from hillwood)</comment>
+    <requestid>910909</requestid>
+  </revision>
 </revisionlist>
