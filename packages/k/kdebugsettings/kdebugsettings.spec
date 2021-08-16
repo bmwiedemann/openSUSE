@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdebugsettings
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Program to set debug verbosity for KDE applications
 License:        LGPL-2.0-or-later
@@ -47,7 +47,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      kdebugsettings5 < %{version}
 Provides:       kdebugsettings5 = %{version}
 
@@ -86,7 +85,6 @@ from verbose to completely silent.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
