@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-dev-utils
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE SDK Package
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -43,13 +43,29 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5Designer)
 BuildRequires:  cmake(Qt5UiTools)
-Recommends:     %{name}-lang
 
 %description
 This package suggests the packages, built from the kde-dev-utils module.
 
+%package -n kpartloader
+Summary:        Development tool to test KParts
+Group:          System/GUI/KDE
+Recommends:     kpartloader-lang
+
+%description -n kpartloader
+kpartloader is a debugging tool used to test
+loading of KParts.
+
 %lang_package -n kpartloader
 %lang_package -n kuiviewer
+
+%package -n kuiviewer
+Summary:        UI Files Viewer
+Group:          Development/Tools/Other
+Recommends:     kuiviewer-lang
+
+%description -n kuiviewer
+Displays Qt Designer UI files
 
 %prep
 %autosetup -p1
@@ -69,15 +85,7 @@ export CFLAGS="%{optflags} -fPIC"
     %find_lang kuiviewer
     %find_lang kpartloader
   %endif
-  %suse_update_desktop_file    org.kde.kuiviewer      Development GUIDesigner
-
-%package -n kuiviewer
-Summary:        UI Files Viewer
-Group:          Development/Tools/Other
-Recommends:     kuiviewer-lang
-
-%description -n kuiviewer
-Displays Qt Designer UI files
+  %suse_update_desktop_file org.kde.kuiviewer Development GUIDesigner
 
 %post -n kuiviewer -p /sbin/ldconfig
 %postun -n kuiviewer -p /sbin/ldconfig
@@ -97,15 +105,6 @@ Displays Qt Designer UI files
 %{_kf5_appstreamdir}/org.kde.kuiviewer.metainfo.xml
 %{_kf5_appstreamdir}/org.kde.kuiviewerpart.metainfo.xml
 
-%package -n kpartloader
-Summary:        Development tool to test KParts
-Group:          System/GUI/KDE
-Recommends:     kpartloader-lang
-
-%description -n kpartloader
-kpartloader is a debugging tool used to test
-loading of KParts.
-
 %post -n kpartloader -p /sbin/ldconfig
 %postun -n kpartloader -p /sbin/ldconfig
 
@@ -117,7 +116,6 @@ loading of KParts.
 %files -n kuiviewer-lang -f kuiviewer.lang
 
 %files -n kpartloader-lang -f kpartloader.lang
-%license LICENSES/*
 %endif
 
 %changelog
