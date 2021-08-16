@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kompare
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-only AND GFDL-1.2-only
@@ -48,7 +48,6 @@ BuildRequires:  cmake(LibKompareDiff2)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -83,7 +82,7 @@ export CFLAGS="%{optflags} -fPIC"
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kompare        Utility TextEditor
+  %suse_update_desktop_file -r org.kde.kompare Utility TextEditor
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -113,7 +112,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
