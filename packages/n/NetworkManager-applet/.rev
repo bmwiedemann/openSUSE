@@ -321,4 +321,12 @@
     <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909690 from yfjiang)</comment>
     <requestid>909740</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>10db6061e29a7d5e55f1caa7a06b7f3c</srcmd5>
+    <version>1.22.0</version>
+    <time>1629101141</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911558</requestid>
+  </revision>
 </revisionlist>

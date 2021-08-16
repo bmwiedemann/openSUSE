@@ -58,7 +58,7 @@ Requires:       dbus(org.freedesktop.secrets)
 Requires:       iso-codes
 # mobile-broadband-provider-info is required for DUN capabilities. The BT plugin crashes without it.
 Requires:       mobile-broadband-provider-info
-Requires:       nma-data
+Conflicts:      nma-data < 1.8.28
 Requires:       timezone
 Recommends:     NetworkManager-connection-editor
 Provides:       NetworkManager-client

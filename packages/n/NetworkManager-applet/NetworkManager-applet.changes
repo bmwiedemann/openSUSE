@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 12 07:58:44 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
+
+- Replaces Requires nma-data with a Conflicts on older version,
+  to please installchecker.
+
+-------------------------------------------------------------------
 Fri May 14 19:22:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.22.0:
