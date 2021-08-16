@@ -42,4 +42,20 @@
     <comment>- Switch from using nosetest runner to pytest</comment>
     <requestid>794647</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4bae9c3cbd2731876da1eada0f0eac15</srcmd5>
+    <version>0.2.5</version>
+    <time>1629101484</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.2.5:
+  * Add ``six`` to ``install_requires``.
+  * Add ``row_limit`` keyword argument to ``from_xls`` and ``from_xlsx``. (#40)
+  * Preserve column types from XLS files. (#36)
+  * Add support for Compound File Binary File (CFBF) XLS files. (#44)
+  * Close XLSX file before raising error for non-existent sheet. (#34)
+  * Use less memory and close XLS files. (#39)
+  * Drop support for Python 3.4 (end-of-life was March 18, 2019). 
+- Update {Build,}Requires.</comment>
+    <requestid>911882</requestid>
+  </revision>
 </revisionlist>
