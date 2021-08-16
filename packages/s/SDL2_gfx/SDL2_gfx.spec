@@ -1,7 +1,7 @@
 #
 # spec file for package SDL2_gfx
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,9 +23,9 @@ Release:        0
 Summary:        SDL2 Graphics Routines for Primitives and Other Support Functions
 License:        Zlib
 Group:          Development/Libraries/X11
-URL:            http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
-Source:         http://www.ferzkopp.net/Software/SDL2_gfx/%name-%version.tar.gz
-Source2:        https://sourceforge.net/projects/sdl2gfx/files/%name-%version.tar.gz.asc
+URL:            https://sourceforge.net/projects/sdl2gfx/
+Source:         https://downloads.sf.net/sdl2gfx/%name-%version.tar.gz
+Source2:        https://downloads.sf.net/sdl2gfx/%name-%version.tar.gz.asc
 Source3:        baselibs.conf
 # Key: 231D4B58E1DDB871, http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/#comment-89
 Source4:        %name.keyring
@@ -62,7 +62,7 @@ Library containing 20+ graphics primitives (line, box, circle, polygon, etc.) fo
 	--disable-mmx \
 %endif
 	--disable-static
-make %{?_smp_mflags}
+%make_build
 dos2unix ChangeLog README
 chmod 644 COPYING AUTHORS ChangeLog NEWS README
 
@@ -75,10 +75,10 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files -n %lname
 %license COPYING
-%doc AUTHORS ChangeLog NEWS README
 %_libdir/lib*.so.*
 
 %files -n libSDL2_gfx-devel
+%doc ChangeLog README
 %_includedir/SDL2/
 %_libdir/lib*.so
 %_libdir/pkgconfig/*.pc
