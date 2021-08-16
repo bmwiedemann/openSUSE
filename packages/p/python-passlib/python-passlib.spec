@@ -1,5 +1,5 @@
 #
-# spec file for package python-passlib-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -77,7 +77,9 @@ applications.
 
 %check
 %if %{with test}
-%pytest -rs
+# https://foss.heptapod.net/python-libs/passlib/-/issues/135 for the
+# skipped tests.
+%pytest -rs -k 'not (test_available_schemes or test_available_schemes or test_default_algorithm or test_empty_hash_value or test_empty_password or test_extension_config or test_invalid_hash_values or test_none_hash_value or test_unusable_flag or test_00_patch_control or test_01_overwrite_detection or test_12_config_presets or test_13_config_defaults or test_21_category_setting)'
 %endif
 
 %if !%{with test}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  6 14:01:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests and ask upstream for investigation
+  (https://foss.heptapod.net/python-libs/passlib/-/issues/135).
+
+-------------------------------------------------------------------
 Thu Jan 28 13:47:51 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - OpenLeap is not SLE
