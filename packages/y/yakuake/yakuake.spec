@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
@@ -53,7 +53,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 Requires:       konsole-part > 15.12
-Recommends:     %{name}-lang = %{version}
 Recommends:     konsole > 15.12
 
 %description
