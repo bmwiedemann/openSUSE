@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdialog
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE version of xdialog
 License:        GPL-2.0-or-later
@@ -37,7 +37,6 @@ BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5KDELibs4Support)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(Qt5DBus)
-Recommends:     %{name}-lang
 
 %description
 KDialog can be used to show nice dialog boxes from shell scripts.
@@ -67,7 +66,6 @@ KDialog can be used to show nice dialog boxes from shell scripts.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

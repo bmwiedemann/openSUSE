@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:37:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Convert license headers to SPDX
+  * Fix clazy warning
+  * Add build + clazy support
+  * Add file for Presets cmake support
+  * Allow to install translate files
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
