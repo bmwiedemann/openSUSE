@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cantor
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Worksheet GUI for mathematical software
 License:        GPL-2.0-or-later
@@ -58,13 +58,15 @@ BuildRequires:  cmake(KF5Pty)
 BuildRequires:  cmake(KF5SyntaxHighlighting)
 BuildRequires:  cmake(KF5TextEditor)
 BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Help)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
+BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 BuildRequires:  cmake(Qt5XmlPatterns)
 BuildRequires:  pkgconfig(libqalculate)
-Recommends:     %{name}-lang
+BuildRequires:  pkgconfig(luajit)
 Recommends:     maxima
 Recommends:     octave
 Obsoletes:      %{name}5 < %{version}
@@ -137,7 +139,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %postun -n libcantorlibs%{libMAJOR} -p /sbin/ldconfig
 
 %files devel
-%license COPYING*
 %dir %{_kf5_cmakedir}/Cantor
 %{_kf5_cmakedir}/Cantor/CantorConfig.cmake
 %{_kf5_cmakedir}/Cantor/CantorConfigVersion.cmake
@@ -148,7 +149,6 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %files
 %doc README.md DESIGN .doc/*
-%license COPYING*
 %{_kf5_knsrcfilesdir}/*.knsrc
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_applicationsdir}/org.kde.cantor.desktop
@@ -161,6 +161,7 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_configkcfgdir}/cantor.kcfg
 %{_kf5_configkcfgdir}/cantor_libs.kcfg
 %{_kf5_configkcfgdir}/rserver.kcfg
+%{_kf5_configkcfgdir}/octavebackend.kcfg.in
 %{_kf5_iconsdir}/hicolor/*/apps/*
 %{_kf5_kxmlguidir}/cantor/
 %{_kf5_libdir}/libcantor_config.so
@@ -189,12 +190,17 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_plugindir}/cantor/backends/cantor_sagebackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_scilabbackend.so
 %{_kf5_plugindir}/cantor/backends/cantor_qalculatebackend.so
+%{_kf5_plugindir}/cantor/backends/cantor_luabackend.so
 %dir %{_kf5_plugindir}/cantor/panels
 %{_kf5_plugindir}/cantor/panels/cantor_helppanelplugin.so
 %{_kf5_plugindir}/cantor/panels/cantor_variablemanagerplugin.so
 %{_kf5_plugindir}/cantor/panels/cantor_filebrowserpanelplugin.so
 %{_kf5_plugindir}/cantor/panels/cantor_tocpanelplugin.so
-%{_kf5_plugindir}/libcantorpart.so
+%{_kf5_plugindir}/cantor/panels/cantor_documentationpanelplugin.so
+
+%dir %{_kf5_plugindir}/kf5
+%dir %{_kf5_plugindir}/kf5/parts
+%{_kf5_plugindir}/kf5/parts/cantorpart.so
 %{_kf5_sharedir}/cantor/
 %{_kf5_sharedir}/mime/packages/cantor.xml
 
