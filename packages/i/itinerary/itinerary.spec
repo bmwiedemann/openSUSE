@@ -20,7 +20,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           itinerary
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Itinerary and boarding pass management application
 License:        LGPL-2.0-or-later
@@ -43,6 +43,7 @@ BuildRequires:  cmake(KF5Holidays)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5Notifications)
+BuildRequires:  cmake(KF5QQC2DeskopStyle)
 BuildRequires:  cmake(KF5Solid)
 BuildRequires:  cmake(KOSMIndoorMap)
 BuildRequires:  cmake(KPimItinerary)
@@ -59,8 +60,10 @@ BuildRequires:  pkgconfig(zlib)
 # QML imports
 Requires:       kirigami2
 Requires:       prison-qt5-imports
-#
-Recommends:     %{name}-lang
+# Runtime dependencies (itinerary won't start without these packages)
+Requires:       kopeninghours
+Requires:       kosmindoormap
+Requires:       kpublictransport
 
 %description
 Itinerary and boarding pass management application.
