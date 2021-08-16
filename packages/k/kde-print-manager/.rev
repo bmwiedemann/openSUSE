@@ -609,4 +609,12 @@
   desktop files in %_kf5_servicesdir anymore.</comment>
     <requestid>906904</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>c259042c569cb678e925bb8467b057ee</srcmd5>
+    <version>21.08.0</version>
+    <time>1629101182</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Gear 21.08.0</comment>
+    <requestid>911656</requestid>
+  </revision>
 </revisionlist>

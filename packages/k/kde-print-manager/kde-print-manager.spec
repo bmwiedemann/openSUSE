@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kde-print-manager
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Tools for managing print jobs and printers
 License:        GPL-2.0-or-later
@@ -61,7 +61,6 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Conflicts:      kde4-print-manager
 Obsoletes:      kde4-print-manager < %{version}
 Obsoletes:      print-manager5 < %{version}
@@ -71,9 +70,7 @@ Provides:       dbus(com.redhat.NewPrinterNotification)
 %description
 kde-print-manager provides tools for managing print jobs and printers.
 
-%if %{with lang}
 %lang_package
-%endif
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
@@ -87,14 +84,14 @@ kde-print-manager provides tools for managing print jobs and printers.
   %if %{with lang}
     %find_lang %{name} --with-man --all-name
   %endif
-  %suse_update_desktop_file -r org.kde.PrintQueue  Utility  DesktopUtility
-  %suse_update_desktop_file -r org.kde.kde-add-printer  Utility  DesktopUtility
+  %suse_update_desktop_file -r org.kde.PrintQueue Utility DesktopUtility
+  %suse_update_desktop_file -r org.kde.kde-add-printer Utility DesktopUtility
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING
+%license LICENSES/*
 %doc README
 %dir %{_kf5_plasmadir}/plasmoids
 %dir %{_kf5_plugindir}/kf5
@@ -120,7 +117,6 @@ kde-print-manager provides tools for managing print jobs and printers.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

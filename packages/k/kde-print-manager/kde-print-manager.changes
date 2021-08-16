@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:43:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Mon Jul 19 09:08:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove obsolete COPYING file
+  * Clean up license headers
+  * Convert license headers to SPDX
+  * Use qt_ macro + Qt:: directly
+  * Time to increase version
+  * [applet] Send icon an empty string, not undefined
+  * [applet] Remove config dialog and put options in Hamburger menu (kde#407857)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Sun Jul 18 08:33:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Fix the %files section. plasma-framework >= 5.84 doesn't install
