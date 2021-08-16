@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kpat
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -66,7 +66,6 @@ BuildRequires:  cmake(Qt5Widgets)
 Requires:       kdegames-carddecks-default
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KPatience is a collection of various patience games known all over the
@@ -92,7 +91,7 @@ more. The game has nice graphics and many different carddecks.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kpat          Game CardGame
+  %suse_update_desktop_file -r org.kde.kpat Game CardGame
 
 %files
 %license COPYING COPYING.DOC
@@ -118,7 +117,6 @@ more. The game has nice graphics and many different carddecks.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
