@@ -18,7 +18,7 @@
 
 Name:           libsrtp2
 %define lname	libsrtp2-1
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Secure Real-Time Transport Protocol (SRTP) library v2
 License:        BSD-3-Clause
@@ -27,7 +27,6 @@ URL:            https://github.com/cisco/libsrtp
 
 Source:         https://github.com/cisco/libsrtp/archive/v%version.tar.gz
 Source99:       baselibs.conf
-Patch1:         0001-Adjust-.pc-file-not-to-expose-used-crypto-library.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(openssl) >= 1.0.1
 # srtp was last used in openSUSE 13.1.

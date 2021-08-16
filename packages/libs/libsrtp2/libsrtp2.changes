@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 14 15:34:08 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.4.0
+  * Remove EKT files, this was never completed and the draft has
+    since changed.
+- Remove 0001-Adjust-.pc-file-not-to-expose-used-crypto-library.patch
+  (merged)
+
+-------------------------------------------------------------------
 Sat May 15 00:27:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-Adjust-.pc-file-not-to-expose-used-crypto-library.patch
