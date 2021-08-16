@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kaccounts-providers
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5Package)
 BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5WebEngineWidgets)
 Requires:       signon-plugin-oauth2
-Recommends:     %{name}-lang
 
 %description
 KDE Accounts Providers.
@@ -79,7 +78,6 @@ KDE Accounts Providers.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
