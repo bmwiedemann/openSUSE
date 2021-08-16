@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:33:32 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Drop X-KDE-Keywords entries from kcm desktop files
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:04:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Make sure that we don't cancel dialog
+  * Port away from KStatefulBrush::brush(const QWidget*)
+  * Add CMake check for KCMUtils without which akonadi-contacts fails to compile
+  * It's already find in top level
+  * Use K_PLUGIN_CLASS_WITH_JSON install in pim/kcm/kaddressbook too
+  * Remove ServiceTypes
+  * Fix some clazy warning
+  * Modernize code
+  * Remove unused includes
+  * Fix mem leak found by asan
+  * Replace std::binary_function usage with a lambda
+  * Fix for MSVC compile
+  * Add missing parent
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

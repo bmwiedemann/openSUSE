@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-contact
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
@@ -46,6 +46,8 @@ BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5GrantleeTheme)
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
 BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
+# Needed by kdesktopjson
+BuildRequires:  cmake(KF5KCMUtils) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Libkleo)
 BuildRequires:  cmake(KF5Mime)
@@ -58,7 +60,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Requires:       libKF5AkonadiContact5 = %{version}
 Requires:       libKF5ContactEditor5 = %{version}
-Recommends:     %{name}-lang
 Provides:       akonadi-contacts = %{version}
 Obsoletes:      akonadi-contacts < %{version}
 
@@ -141,19 +142,19 @@ to develop KDE PIM applications.
 %{_kf5_debugdir}/*.categories
 %{_kf5_debugdir}/*.renamecategories
 %{_kf5_plugindir}/akonadi/contacts/plugins/
-%{_kf5_plugindir}/kcm_akonadicontact_actions.so
+%dir %{_kf5_plugindir}/pim/
+%dir %{_kf5_plugindir}/pim/kcms/
+%dir %{_kf5_plugindir}/pim/kcms/kaddressbook
+%{_kf5_plugindir}/pim/kcms/kaddressbook/kcm_akonadicontact_actions.so
 %{_kf5_servicesdir}/akonadicontact_actions.desktop
 
 %files -n libKF5AkonadiContact5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5AkonadiContact.so.*
 
 %files -n libKF5ContactEditor5
-%license LICENSES/*
 %{_kf5_libdir}/libKF5ContactEditor.so.*
 
 %files -n akonadi-plugin-contacts
-%license LICENSES/*
 %{_kf5_plugindir}/akonadi_serializer_addressee.so
 %{_kf5_plugindir}/akonadi_serializer_contactgroup.so
 %dir %{_kf5_sharedir}/akonadi
@@ -163,7 +164,6 @@ to develop KDE PIM applications.
 %{_kf5_sharedir}/akonadi/plugins/serializer/akonadi_serializer_contactgroup.desktop
 
 %files devel
-%license LICENSES/*
 %dir %{_kf5_includedir}/Akonadi
 %dir %{_kf5_includedir}/ContactEditor
 %dir %{_kf5_includedir}/akonadi
@@ -181,7 +181,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
