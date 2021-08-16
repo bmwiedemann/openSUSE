@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcompactdisc
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        CD drive library for KDE Platform
 License:        GPL-2.0-or-later
@@ -89,16 +89,13 @@ sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/wmlib/wm_helpers.c
 %{_kf5_libdir}/libKF5CompactDisc.so.*
 
 %files devel
-%license COPYING*
 %{_kf5_cmakedir}/KF5CompactDisc/
 %{_kf5_includedir}/KCompactDisc/
 %{_kf5_includedir}/kcompactdisc_version.h
 %{_kf5_libdir}/libKF5CompactDisc.so
-%{_kf5_mkspecsdir}/qt_KCompactDisc.pri
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
