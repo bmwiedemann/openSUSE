@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kfloppy
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Floppy Formatter
 License:        GPL-2.0-only
@@ -42,7 +42,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 KDE Floppy Disk Utility
@@ -76,7 +75,6 @@ KDE Floppy Disk Utility
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
