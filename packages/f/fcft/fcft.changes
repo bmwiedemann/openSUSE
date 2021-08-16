@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 14 16:40:38 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 2.4.5:
+  * Fixed fcft_text_run_rasterize not checking if codepoint is in
+    the font’s charset before attempting shaping.
+  * Fixed crash when destroying a font with a grapheme cache entry
+    representing a failed grapheme glyph.
+
+-------------------------------------------------------------------
 Thu Jul 22 09:20:29 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 2.4.4:

@@ -52,4 +52,16 @@
   * Fixed rendering of bitmap fonts with Freetype &gt;= 2.11</comment>
     <requestid>907697</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>c9b4e5ffee408cbeeb4afbcbd5802d8d</srcmd5>
+    <version>2.4.5</version>
+    <time>1629101507</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.4.5:
+  * Fixed fcft_text_run_rasterize not checking if codepoint is in
+    the font’s charset before attempting shaping.
+  * Fixed crash when destroying a font with a grapheme cache entry
+    representing a failed grapheme glyph.</comment>
+    <requestid>912100</requestid>
+  </revision>
 </revisionlist>
