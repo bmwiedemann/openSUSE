@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 11 08:51:25 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add lvm2-rpmlintrc where we skip all rpmlint issue for lvm2-testsuite package
+  (bsc#1179047).
+
+-------------------------------------------------------------------
 Tue Jul 13 11:35:00 UTC 2021 - heming.zhao@suse.com
 
 - lvm2: double free or corruption with invalid LVM_SYSTEM_DIR breaks guestfs-tools (bsc#1188141)

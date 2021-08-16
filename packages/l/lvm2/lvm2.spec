@@ -1,5 +1,5 @@
 #
-# spec file for package lvm2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -58,6 +58,7 @@ Group:          System/Base
 URL:            https://www.sourceware.org/lvm2/
 Source:         ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz
 Source1:        lvm.conf
+Source2:        lvm2-rpmlintrc
 Source42:       ftp://sourceware.org/pub/lvm2/LVM2.%{version}.tgz.asc
 Source99:       baselibs.conf
 
