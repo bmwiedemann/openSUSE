@@ -17,11 +17,11 @@
 
 
 %define goipath github.com/vmware-tanzu/velero
-%define commit a77702c885898a68e6538ef39f70cff59eaedb50
+%define commit 3743ca4d533a343e5c5001b398e775f0d9c1bc25
 %define gitstate clean
 
 Name:           velero
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Backup program with deduplication and encryption
 License:        Apache-2.0

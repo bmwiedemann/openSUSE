@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 13 01:38:53 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 1.6.3:
+  * Update changelog for v1.6.3
+  * Merge pull request #4028 from zubron/add-restore-item-action-to-skip-automanaged-apiservices
+  * Cherry-pick and update changelog for v1.6.3 (#4018)
+  * Cherry pick changes for 1.6.3 and add changelog (#4006)
+  * Fix bugs of E2E test cases
+  * Support both v1beta1 and v1 CRDs for velero
+  * Upgrade Velero ClusterRoleBinding to use v1 API (#3995)
+
+-------------------------------------------------------------------
 Wed Jul 21 06:13:40 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 1.6.2:
