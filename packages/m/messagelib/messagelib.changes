@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Fix Bug 440541 - resetting quick filter if set during folder processing (kde#440541)
+  * Use qCDebug
+  * Fix Bug 439218 - Quoted strings containing comma or brackets are not parsed
+    correctly, causes message sending to fail (kde#439218)
+  * Add more autotest
+  * Try to reduce duplicate code with akonadisender
+  * Return error when we can't get "To" info
+  * Use qCWarning here
+  * Move method to util.h file
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix QStringView porting mistake
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Fix deletion of two (or more) attachments (kde#282792)
+  * Allow deletion of attachments from message structure view (kde#287177)
+  * Allow the message structure view to grow/shrink as much as sensible (kde#436044)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

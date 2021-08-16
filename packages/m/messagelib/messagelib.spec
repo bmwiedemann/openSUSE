@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           messagelib
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
@@ -82,7 +82,6 @@ BuildRequires:  cmake(Qt5Widgets)
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  libboost_headers-devel
-Recommends:     %{name}-lang
 
 %description
 This package contains the messagelib library. It is used by KDE PIM to parse and
@@ -123,25 +122,6 @@ This package contains source headers for messagelib.
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files devel
-%license LICENSES/*
-%{_kf5_cmakedir}/KF5MessageComposer/
-%{_kf5_cmakedir}/KF5MessageCore/
-%{_kf5_cmakedir}/KF5MessageList/
-%{_kf5_cmakedir}/KF5MessageViewer/
-%{_kf5_cmakedir}/KF5MimeTreeParser/
-%{_kf5_cmakedir}/KF5TemplateParser/
-%{_kf5_cmakedir}/KF5WebEngineViewer/
-%{_kf5_includedir}/
-%{_kf5_libdir}/libKF5MessageComposer.so
-%{_kf5_libdir}/libKF5MessageCore.so
-%{_kf5_libdir}/libKF5MessageList.so
-%{_kf5_libdir}/libKF5MessageViewer.so
-%{_kf5_libdir}/libKF5MimeTreeParser.so
-%{_kf5_libdir}/libKF5TemplateParser.so
-%{_kf5_libdir}/libKF5WebEngineViewer.so
-%{_kf5_mkspecsdir}/qt_*.pri
-
 %files
 %license LICENSES/*
 %{_kf5_debugdir}/messagelib.categories
@@ -165,9 +145,26 @@ This package contains source headers for messagelib.
 %{_kf5_sharedir}/messagelist/
 %{_kf5_sharedir}/messageviewer/
 
+%files devel
+%{_kf5_cmakedir}/KF5MessageComposer/
+%{_kf5_cmakedir}/KF5MessageCore/
+%{_kf5_cmakedir}/KF5MessageList/
+%{_kf5_cmakedir}/KF5MessageViewer/
+%{_kf5_cmakedir}/KF5MimeTreeParser/
+%{_kf5_cmakedir}/KF5TemplateParser/
+%{_kf5_cmakedir}/KF5WebEngineViewer/
+%{_kf5_includedir}/
+%{_kf5_libdir}/libKF5MessageComposer.so
+%{_kf5_libdir}/libKF5MessageCore.so
+%{_kf5_libdir}/libKF5MessageList.so
+%{_kf5_libdir}/libKF5MessageViewer.so
+%{_kf5_libdir}/libKF5MimeTreeParser.so
+%{_kf5_libdir}/libKF5TemplateParser.so
+%{_kf5_libdir}/libKF5WebEngineViewer.so
+%{_kf5_mkspecsdir}/qt_*.pri
+
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
