@@ -38,6 +38,8 @@ Source4:        cron.daily.do_mandb
 Source5:        wrapper.c
 Source6:        man-rpmlintrc
 Source7:        man-db-create.service
+Source8:        manpath.csh
+Source9:        manpath.sh
 Patch0:         man-db-2.3.19deb4.0-groff.dif
 Patch1:         man-db-2.7.1-security4.dif
 Patch2:         man-db-2.7.1-firefox.dif
@@ -267,6 +269,10 @@ mkdir -p %{buildroot}%{_unitdir}/
     install -m 0644 %{SOURCE7} %{buildroot}%{_unitdir}/
 %endif
 
+mkdir -p %{buildroot}%{_prefix}/etc/profile.d
+install -m 644 %{SOURCE8} %{buildroot}%{_prefix}/etc/profile.d/
+install -m 644 %{SOURCE9} %{buildroot}%{_prefix}/etc/profile.d/
+
 %find_lang man-db --all-name --with-man
 
 %pre
@@ -348,6 +354,8 @@ fi
 %ghost %{_sysconfdir}/alternatives/man.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/apropos.1%{ext_man}
 %ghost %{_sysconfdir}/alternatives/whatis.1%{ext_man}
+%dir %{_prefix}/etc/profile.d/
+%{_prefix}/etc/profile.d/manpath.*
 %{_bindir}/apropos
 %{_bindir}/catman
 %{_bindir}/lexgrog

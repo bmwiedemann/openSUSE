@@ -832,4 +832,12 @@
     line, so for example &quot;man 'chmod(2)'&quot; is now the same as</comment>
     <requestid>901432</requestid>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>3fa918ddc5fa7676569c5468b9553676</srcmd5>
+    <version>2.9.4</version>
+    <time>1629101345</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912000</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  6 13:38:49 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add manpath.sh and manpath.csh below /usr/etc/profile.d
+
+-------------------------------------------------------------------
 Tue May 31 20:59:59 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Add patch man-db-2.9.4-alternitive.dif
