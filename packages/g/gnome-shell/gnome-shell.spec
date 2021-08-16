@@ -42,6 +42,8 @@ Patch4:         gnome-shell-fate324570-Make-GDM-background-image-configurable.pa
 Patch5:         gnome-shell-jscSLE9267-Remove-sessionList-of-endSessionDialog.patch
 # PATCH-FIX-UPSTREAM gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch jsc#SLE-16051 glgo#GNOME/gnome-shell!1563 qzhao@suse.com -- launch recommended input engines when Gnome-shell init in CJK regions.
 Patch6:         gnome-shell-jsc#SLE-16051-Input-method-recommendation.patch
+# PATCH-FIX-OPENSUSE gnome-shell-executable-path-not-absolute.patch bsc#1176051 xwang@suse.com --  Fix ExecStart is not absolute path
+Patch7:         gnome-shell-executable-path-not-absolute.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gnome-shell-gdm-login-applet.patch fate#314545 dliang@suse.com -- Add an applet on login UI to display suse icon, product name, hostname.
@@ -180,6 +182,7 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %patch6 -p1
 %endif
+%patch7 -p1
 
 translation-update-upstream
 

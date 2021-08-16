@@ -1,0 +1,35 @@
+diff --git a/data/meson.build b/data/meson.build
+index 4a1e16d..490e793 100644
+--- a/data/meson.build
++++ b/data/meson.build
+@@ -115,8 +115,14 @@ if have_systemd
+     install_dir: systemduserunitdir
+   )
+ 
+-  units = files('org.gnome.Shell.target',
+-                'org.gnome.Shell-disable-extensions.service')
++  configure_file(
++    input: 'org.gnome.Shell-disable-extensions.service.in',
++    output: 'org.gnome.Shell-disable-extensions.service',
++    configuration: unitconf,
++    install_dir: systemduserunitdir
++  )
++
++  units = files('org.gnome.Shell.target')
+ 
+   install_data(units, install_dir: systemduserunitdir)
+ endif
+diff --git a/data/org.gnome.Shell-disable-extensions.service b/data/org.gnome.Shell-disable-extensions.service.in
+similarity index 85%
+rename from data/org.gnome.Shell-disable-extensions.service
+rename to data/org.gnome.Shell-disable-extensions.service.in
+index de91167..49236a6 100644
+--- a/data/org.gnome.Shell-disable-extensions.service
++++ b/data/org.gnome.Shell-disable-extensions.service.in
+@@ -11,5 +11,5 @@ ConditionPathExists=%t/gnome-shell-disable-extensions
+ [Service]
+ Type=simple
+ # Disable extensions
+-ExecStart=gsettings set org.gnome.shell disable-user-extensions true
++ExecStart=@bindir@/gsettings set org.gnome.shell disable-user-extensions true
+ Restart=no

@@ -1806,4 +1806,12 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909640 from yfjiang)</comment>
     <requestid>909730</requestid>
   </revision>
+  <revision rev="204" vrev="4">
+    <srcmd5>9c7467577c79e306ff1878e9fc6376e5</srcmd5>
+    <version>40.3</version>
+    <time>1629101137</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911497</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 10 02:51:13 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add gnome-shell-executable-path-not-absolute.patch: Fix ExecStart
+  is not absolute path. ExecStart can use related path in high
+  systemd version. The current systemd version in SLE-15-SP2
+  should use absolute path (bsc#1176051 bsc#1188960).
+
+-------------------------------------------------------------------
 Mon Aug  2 00:09:07 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop patches fixed upstream:
