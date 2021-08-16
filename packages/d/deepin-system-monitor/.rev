@@ -76,4 +76,12 @@
 - Use find_lang macro (forwarded request 900409 from hillwood)</comment>
     <requestid>901173</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>16d01b5e38c88a9d5d3445cdd2f8a047</srcmd5>
+    <version>5.8.2</version>
+    <time>1629101359</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 910947 from hillwood)</comment>
+    <requestid>910948</requestid>
+  </revision>
 </revisionlist>

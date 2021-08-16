@@ -23,13 +23,13 @@
 %endif
 
 Name:           deepin-system-monitor
-Version:        5.8.0.30
+Version:        5.8.2
 Release:        0
 Summary:        A user-friendly system monitor
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/deepin-system-monitor
-Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/linuxdeepin/deepin-system-monitor/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{name}.appdata.xml
 BuildRequires:  appstream-glib
 BuildRequires:  deepin-gettext-tools
@@ -81,12 +81,13 @@ Desktop.
 %setup -q
 sed -i 's/Exec=deepin-music/Exec=env QT_QPA_PLATFORMTHEME=deepin deepin-system-monitor/g' \
 translations/desktop/%{name}.desktop
+sed -i 's/5.5//g' src/CMakeLists.txt
 
 %if 0%{?suse_version} > 1500
 # Workaround build failure with GCC 10
-# sed -e 's|print_err|print_err_system|g' -i src/process/system_stat.cpp
-# sed -e 's|print_err|print_err_process|g' -i src/process/process_stat.cpp
-# sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
+sed -e 's|print_err|print_err_system|g' -i src/process/system_stat.cpp
+sed -e 's|print_err|print_err_process|g' -i src/process/process_stat.cpp
+sed -e 's|print_err|print_err_desktop|g' -i src/process/desktop_entry_stat.cpp
 %endif
 
 %build
@@ -106,7 +107,6 @@ install -Dm644 %{SOURCE1} %{buildroot}%{_datadir}/appdata/%{name}.appdata.xml
 %{_bindir}/%{name}
 %{_datadir}/appdata/%{name}.appdata.xml
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/deepin-manual
 %dir %{_datadir}/polkit-1
 %dir %{_datadir}/polkit-1/actions
 %{_datadir}/polkit-1/actions/com.deepin.pkexec.%{name}.policy
