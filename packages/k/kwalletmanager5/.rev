@@ -593,4 +593,12 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE Gear 21.04.3</comment>
     <requestid>905022</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>fd6f87d181a7050905ec61415b0b502e</srcmd5>
+    <version>21.08.0</version>
+    <time>1629101219</time>
+    <user>RBrownSUSE</user>
+    <comment>KDE Gear 21.08.0</comment>
+    <requestid>911764</requestid>
+  </revision>
 </revisionlist>

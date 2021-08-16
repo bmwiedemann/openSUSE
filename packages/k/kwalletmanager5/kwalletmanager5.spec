@@ -22,7 +22,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kwalletmanager5
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Wallet Management Tool
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(KF5Crash)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5I18n)
-BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5JobWidgets)
 BuildRequires:  cmake(KF5KCMUtils)
 BuildRequires:  cmake(KF5KIO)
@@ -58,7 +57,6 @@ BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Provides:       kwalletmanager = %{version}
 Obsoletes:      kwalletmanager < %{version}
 
@@ -102,7 +100,6 @@ This application allows you to manage your KDE password wallet.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
