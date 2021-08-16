@@ -16,4 +16,17 @@
   golang 1.16+ (forwarded request 894959 from hillwood)</comment>
     <requestid>894969</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e9a90b55128734536e1a1c034973657</srcmd5>
+    <version>5.13.36</version>
+    <time>1629101354</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.13.36
+  * Change go-dbus-factory struct as interface
+  * Update test modules
+  * Add SetInputIgnore ifc
+  * Fix bug
+- Drop xvfb-run.patch, merged by upstream (forwarded request 910691 from hillwood)</comment>
+    <requestid>910908</requestid>
+  </revision>
 </revisionlist>

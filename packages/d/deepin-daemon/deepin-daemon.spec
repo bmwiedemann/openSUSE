@@ -19,7 +19,7 @@
 %define   import_path pkg.deepin.io/dde/daemon
 
 Name:           deepin-daemon
-Version:        5.13.10
+Version:        5.13.36
 Release:        0
 Summary:        Daemon handling the DDE session settings
 License:        GPL-3.0+
@@ -38,7 +38,6 @@ Patch1:         %{name}-libinput.patch
 # PATCH-FIX-OPENSUSE disable-gobuild-in-makefile.patch hillwood@opensuse.org
 # Use gobuild macro instead of makefile to build go binaries
 Patch2:         disable-gobuild-in-makefile.patch
-Patch3:         xvfb-run.patch
 Group:          System/GUI/Other
 %if 0%{?suse_version} > 1500
 BuildRequires:  golang(API) = 1.15
