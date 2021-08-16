@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kbounce
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Bounce ball game
 License:        LGPL-2.0-or-later
@@ -72,7 +72,6 @@ BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 Your task in KBounce (Jezz Ball) is to catch several moving balls in a
@@ -94,7 +93,7 @@ finding new and advanced strategies to catch as many balls as possible.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kbounce         Game LogicGame
+  %suse_update_desktop_file -r org.kde.kbounce Game LogicGame
 
 %files
 %license LICENSES/*
@@ -108,7 +107,6 @@ finding new and advanced strategies to catch as many balls as possible.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
