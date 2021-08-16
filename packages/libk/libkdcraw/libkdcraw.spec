@@ -23,7 +23,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkdcraw
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Shared library interface around dcraw
 License:        LGPL-2.0-or-later AND GPL-2.0-or-later AND GPL-3.0-or-later
@@ -98,7 +98,6 @@ programs.
 %{_kf5_libdir}/%{lname}.so.*
 
 %files devel
-%license LICENSES/*
 %doc README
 %{_kf5_cmakedir}/KF5KDcraw/
 %{_kf5_includedir}/
