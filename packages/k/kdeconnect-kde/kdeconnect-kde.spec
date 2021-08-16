@@ -20,7 +20,7 @@
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 Name:           kdeconnect-kde
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Integration of Android with Linux desktops
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+BuildRequires:  libQt5Gui-private-headers-devel
 BuildRequires:  cmake(KF5ConfigWidgets)
 BuildRequires:  cmake(KF5DBusAddons)
 BuildRequires:  cmake(KF5Declarative)
@@ -51,22 +52,23 @@ BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5People)
 BuildRequires:  cmake(KF5PeopleVCard)
 BuildRequires:  cmake(KF5PulseAudioQt)
+BuildRequires:  cmake(KF5QQC2DesktopStyle)
 BuildRequires:  cmake(KF5Wayland)
+BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(Qca-qt5)
 BuildRequires:  cmake(Qt5Multimedia)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickControls2)
 BuildRequires:  cmake(Qt5X11Extras)
+BuildRequires:  cmake(Qt5WaylandClient)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libfakekey)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xtst)
-Requires:       qca-qt5
 Requires:       kirigami2
 Requires:       libqt5-qtquickcontrols2
 Requires:       plasma-framework-components
 Requires:       sshfs
-Recommends:     %{name}-lang = %{version}
 Recommends:     kpeoplevcard
 Conflicts:      kdeconnect-kde4
 
@@ -165,7 +167,6 @@ install -D -m 0644 %{SOURCE101} \
 %{_kf5_debugdir}/kdeconnect-kde.categories
 %{_kf5_htmldir}/en/kdeconnect/
 %{_kf5_iconsdir}/hicolor/*/apps/kdeconnect*
-%{_kf5_iconsdir}/hicolor/*/status/*
 %{_kf5_libdir}/libexec/
 %{_kf5_libdir}/libkdeconnect*.so.*
 %{_kf5_notifydir}/

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:36:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:48 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Set breeze as fallback icon theme for all executables
+  * Add missing KF5WindowSystem dependency
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Push a new layer when entering About Page in the SMS App (kde#423932)
+  * Link to proper website in appstream (kde#437205)
+  * mousepad: Default to scrolling up when fingers move up
+    on the android version (kde#410156)
+  * Add support for clipboard integration (kde#359747)
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
