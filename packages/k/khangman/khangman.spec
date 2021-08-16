@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           khangman
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Hangman Game
 License:        GPL-2.0-or-later
@@ -58,7 +58,6 @@ Provides:       %{name}5 = %{version}
 Obsoletes:      khangman-devel < %{version}
 Obsoletes:      khangman5 < %{version}
 Obsoletes:      libkhangmanengine5 < %{version}
-Recommends:     %{name}-lang
 
 %description
 Classical hangman game by KDE.
@@ -94,7 +93,6 @@ Classical hangman game by KDE.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
