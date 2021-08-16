@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.6.0
+Version:        16.6.2
 Release:        0
 
 # Double DWZ memory limits
@@ -131,6 +131,7 @@ Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
 ## Patches not distribution specific
+Patch1:         cares_public_headers.patch
 Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
@@ -253,7 +254,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.17.1
+Provides:       bundled(libcares2) = 1.17.2
 %endif
 
 %if ! 0%{with intree_icu}
@@ -354,7 +355,7 @@ Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 7.19.1
+Provides:       npm(npm) = 7.20.3
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -491,13 +492,13 @@ Provides:       bundled(node-libnpmsearch) = 3.1.2
 Provides:       bundled(node-libnpmteam) = 2.0.4
 Provides:       bundled(node-libnpmversion) = 1.2.1
 Provides:       bundled(node-lru-cache) = 6.0.0
-Provides:       bundled(node-make-fetch-happen) = 9.0.3
-Provides:       bundled(node-mime-db) = 1.48.0
-Provides:       bundled(node-mime-types) = 2.1.31
+Provides:       bundled(node-make-fetch-happen) = 9.0.4
+Provides:       bundled(node-mime-db) = 1.49.0
+Provides:       bundled(node-mime-types) = 2.1.32
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minipass) = 3.1.3
 Provides:       bundled(node-minipass-collect) = 1.0.2
-Provides:       bundled(node-minipass-fetch) = 1.3.3
+Provides:       bundled(node-minipass-fetch) = 1.3.4
 Provides:       bundled(node-minipass-flush) = 1.0.5
 Provides:       bundled(node-minipass-json-stream) = 1.0.1
 Provides:       bundled(node-minipass-pipeline) = 1.2.4
@@ -529,7 +530,7 @@ Provides:       bundled(node-object-assign) = 4.1.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 11.3.4
+Provides:       bundled(node-pacote) = 11.3.5
 Provides:       bundled(node-parse-conflict-json) = 1.1.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-path-parse) = 1.0.7
@@ -639,6 +640,7 @@ tar Jxf %{SOURCE11}
 tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 
+%patch1 -p1
 %patch3 -p1
 %patch5 -p1
 %patch7 -p1
@@ -653,8 +655,6 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 %patch104 -p1
 %patch106 -p1
-%if 0%{?suse_version} >= 1550
-%endif
 %patch110 -p1
 %patch120 -p1
 %patch200 -p1
