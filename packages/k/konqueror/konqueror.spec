@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konqueror
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE File Manager and Browser
 # Note for legal: konqueror-17.04.2/webenginepart/autotests/webengine_testutils.h is Qt commercial OR GPL-3.0
@@ -54,7 +54,6 @@ BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5WebEngine)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
-Recommends:     %{name}-lang
 Recommends:     dolphin-part
 Recommends:     kwebkitpart
 Obsoletes:      kde-baseapps5-libkonq < %{version}
@@ -179,7 +178,6 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/konqueror/
 
 %files -n webenginepart
-%license COPYING*
 %dir %{_kf5_plugindir}/kf5/
 %dir %{_kf5_plugindir}/kf5/parts/
 %dir %{_kf5_sharedir}/webenginepart/
@@ -191,7 +189,6 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/webenginepart/error.html
 
 %files -n konqueror-plugins
-%license COPYING*
 %config %{_kf5_configdir}/konqsidebartngrc
 %config %{_kf5_configdir}/translaterc
 %dir %{_kf5_kxmlguidir}/fsview
@@ -251,7 +248,6 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/konqsidebartng/entries/remote.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/root.desktop
 %{_kf5_sharedir}/konqsidebartng/entries/services.desktop
-%{_kf5_sharedir}/konqsidebartng/entries/settings.desktop
 %{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_bookmarks.desktop
 %{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_history.desktop
 %{_kf5_sharedir}/konqsidebartng/plugins/konqsidebar_places.desktop
@@ -275,8 +271,6 @@ Development package for the konqueror libraries.
 %{_kf5_sharedir}/webenginepart/kpartplugins/uachangerplugin.*
 
 %files devel
-%license COPYING*
-#doc README
 %{_kf5_cmakedir}/KF5Konq/
 %{_kf5_libdir}/libKF5Konq.so
 %{_kf5_libdir}/libkonqsidebarplugin.so
@@ -285,7 +279,6 @@ Development package for the konqueror libraries.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

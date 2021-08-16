@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:39:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Tell cmake our version
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove modules for settings kio slave
+  * CMake: handle hunspell-has-no-dictionaries
+  * CMake: require CMake 3.5 or later
+  * Port to KXMLGUIFactory::showConfigureShortcutsDialog()
+  * Move all one-time WebEnginePart initialiation in a single place
+  * Web archive thumbnailer: Change one qCWarning() -> qCDebug()
+  * Image Gallery: Eliminate 'endl' deprecation warnings with Qt 5.15
+  * FSView: Eliminate 'endl' deprecation warnings with Qt 5.15
+  * Refactor ClientApp::createNewWindow
+  * Make some implicit dependencies explicit
+  * Don't forward declaration when we already include file
+  * Add some missing linkages
+  * Restore spell checking support in HTML pages
+  * Remove duplicate connection, also fixing a compilation error
+  * Emit completedWithPendingAction when loading a page with http-equiv="refresh"
+  * Restore adblock filter
+  * kfmclient: Fix recursive invocation and handle association correctly
+  * Proper history navigation
+  * Display favicons for bookmarks in submenus
+  * babelfish: Line break in long security warning message
+  * webarchiver: Disable the "Create" button if no valid source URL
+  * Show favicons in bookmarks
+  * Restore saving of status bar
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
