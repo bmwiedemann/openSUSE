@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08/
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * respect file priority when selecting preview chunks
+  * Fix clang warning and processedAmount deprecation notice.
+  * CMP0115 is too new so removing it for now
+  * Fix tests with new ecm way
+  * add missing include #include <random>
+  * update random_shuffle for equivalent of cpp17
+  * Increase Cmake deps , fix boost directory and
+    make initial c++17 support
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
