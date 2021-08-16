@@ -21,7 +21,7 @@
 %{!?_kapp_version: %global _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ktp-kded-module
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDED module that manages the telepathy interactions with the KDE Desktop
 License:        LGPL-2.1-or-later
@@ -55,7 +55,6 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Sql)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -87,7 +86,6 @@ like setting user to auto-away or handling connection errors.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
