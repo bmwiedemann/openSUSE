@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:11:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * React to Telegram's new ID and show the Breeze icon
+  * React to Inkscape's new ID and show the Breeze icon (kde#440498)
+  * also add zoom-fit-page symlink for 32px
+  * align look of 22 px zoom-fit-{width,height} icons with others
+  * add zoom-fit-page symlink for 22px
+  * Symlink draw-cuboid to shape-cuboid
+  * Add temperature icons
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
