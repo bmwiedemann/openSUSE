@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug  7 14:22:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * some clean up
+  * new color version for notification icon
+  * improved icons from yesterday+ missing resolutions
+  * preferences-desktop-notification-bell icon
+  * kdf icon
+
+-------------------------------------------------------------------
 Sun Jul  4 08:05:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
