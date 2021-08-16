@@ -51,4 +51,12 @@
 - Update Summary and %description from setup.py (forwarded request 881890 from glaubitz)</comment>
     <requestid>881971</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b409191a32f01762c0978cef446ded0f</srcmd5>
+    <version>1.0.0</version>
+    <time>1629101497</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912005</requestid>
+  </revision>
 </revisionlist>
