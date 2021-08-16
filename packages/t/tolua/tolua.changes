@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 12 14:23:00 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use GNU11 instead of C99
+
+-------------------------------------------------------------------
 Fri Apr  9 10:13:14 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Fix build with Lua 5.4.3

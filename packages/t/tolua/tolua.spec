@@ -70,7 +70,7 @@ sed -i -e 's|LUA=%{_prefix}/local|LUA=%{_prefix}|g' \
     config
 sed -i -e 's|LUALIB=$(LUA)/lib|LUALIB=$(LUA)/%{_lib}|g' \
     config
-sed -i -e 's|$(OPTFLAGS)|%{optflags} -I%{lua_incdir} -std=c99|g' {config,src/bin/Makefile}
+sed -i -e 's|$(OPTFLAGS)|%{optflags} -I%{lua_incdir} -std=gnu11|g' {config,src/bin/Makefile}
 
 %build
 make %{?_smp_mflags}
