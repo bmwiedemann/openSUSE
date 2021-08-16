@@ -7,4 +7,12 @@
     <comment>DO NOT SWITCH ON BUILDING OF PYTHON310-* PACKAGES YET!</comment>
     <requestid>911469</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>2b58758aa659d596aa7f9662df83d555</srcmd5>
+    <version>3.10.0rc1</version>
+    <time>1629101488</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911981</requestid>
+  </revision>
 </revisionlist>

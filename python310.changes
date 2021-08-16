@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 12 15:11:39 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- test_faulthandler is still problematic under qemu linux-user emulation,
+  disable it there
+
+-------------------------------------------------------------------
 Wed Aug 11 05:57:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.10.0rc1 (the penultimate prerelease), which contains

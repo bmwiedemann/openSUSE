@@ -1,5 +1,5 @@
 #
-# spec file for package python310
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -492,7 +492,7 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
+EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces
