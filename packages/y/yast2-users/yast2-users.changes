@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 12 14:35:20 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Allow to edit the name of an existing user (bsc#1188612).
+- Allow to remove the password of an existing user(bsc#1189402).
+- 4.4.6
+
+-------------------------------------------------------------------
 Tue Jul 20 15:09:28 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Do not rewrite authorized_keys unless it is needed (bsc#1188361).
