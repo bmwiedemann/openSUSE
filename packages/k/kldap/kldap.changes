@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:38:59 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:06 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Honor KDE Kiosk setting lineedit_reveal_password
+  * Embed JSON metadata in KIOSlaves
+  * Remove obsolete .protocol files
+  * Convert protocol files to JSON
+  * Not necessary to add extra subdir
+  * Remove unused include
+  * Modernize code
+  * In kf6 kde4 migration code will be removed
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

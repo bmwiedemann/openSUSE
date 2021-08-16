@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kldap
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE PIM Libraries
 License:        LGPL-2.1-or-later
@@ -45,7 +45,6 @@ BuildRequires:  cmake(KF5Wallet)
 BuildRequires:  cmake(KF5WidgetsAddons) >= %{kf5_version}
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5Test)
-Recommends:     %{name}-lang
 
 %description
 This package contains additional libraries for KDE PIM applications.
@@ -90,21 +89,18 @@ to develop KDE PIM applications.
 %postun -n libKF5Ldap5 -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/kioslave5/
 %{_kf5_debugdir}/kldap.categories
 %{_kf5_debugdir}/kldap.renamecategories
 %dir %{_kf5_plugindir}/kf5
 %dir %{_kf5_plugindir}/kf5/kio
 %{_kf5_plugindir}/kf5/kio/ldap.so
-%{_kf5_servicesdir}/ldap*.protocol
 
 %files -n libKF5Ldap5
 %license LICENSES/*
 %{_kf5_libdir}/libKF5Ldap.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5Ldap/
 %{_kf5_includedir}/KLDAP/
 %{_kf5_includedir}/kldap_version.h
@@ -113,7 +109,6 @@ to develop KDE PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
