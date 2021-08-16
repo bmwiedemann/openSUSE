@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:34:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix possible abort when creating incidences with tags
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Replace "Title" with "Summary" in the user interface
+  * Allow change of completion percentage of completed to-dos (kde#397721)
+  * Get tags directly from the Akonadi::Item
+  * individualmaildialog.cpp is already as exported symbol
+  * Export symbol for test apps
+  * modernize code
+  * Use forward declaration when it's possible
+  * Allow to build test without akonadi support
+  * Fix warning
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:56:56 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

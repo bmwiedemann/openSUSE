@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           incidenceeditor
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Incidenceeditor library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -51,30 +51,13 @@ BuildRequires:  cmake(KF5Libkdepim)
 BuildRequires:  cmake(KF5MailTransport)
 BuildRequires:  cmake(KF5Mime)
 BuildRequires:  cmake(KF5PimCommonAkonadi)
-BuildRequires:  cmake(Qt5Test) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
-Recommends:     %{name}-lang
+BuildRequires:  cmake(Qt5Test) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
 
 %description
 This package contains the incidenceeditor library.
-
-%lang_package
-
-%prep
-%autosetup -p1
-
-%build
-%cmake_kf5 -d build
-
-%cmake_build
-
-%install
-%kf5_makeinstall -C build
-%if %{with lang}
-  %find_lang %{name} --with-man --all-name
-%endif
 
 %package -n libKF5IncidenceEditor5
 Summary:        Incidenceeditor Library
@@ -86,9 +69,6 @@ Provides:       libKF5IncidenceEditorsng5 = %{version}
 
 %description -n libKF5IncidenceEditor5
 The IncidenceEditor library for KDE PIM applications.
-
-%post -n libKF5IncidenceEditor5  -p /sbin/ldconfig
-%postun -n libKF5IncidenceEditor5 -p /sbin/ldconfig
 
 %package devel
 Summary:        Development package for incidenceeditor
@@ -106,8 +86,26 @@ Requires:       cmake(KF5Mime)
 %description devel
 The development package for the incidenceeditor libraries.
 
+%lang_package
+
+%prep
+%autosetup -p1
+
+%build
+%cmake_kf5 -d build
+
+%cmake_build
+
+%install
+%kf5_makeinstall -C build
+%if %{with lang}
+  %find_lang %{name} --with-man --all-name
+%endif
+
+%post -n libKF5IncidenceEditor5  -p /sbin/ldconfig
+%postun -n libKF5IncidenceEditor5 -p /sbin/ldconfig
+
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5IncidenceEditor/
 %{_kf5_includedir}/IncidenceEditor/
 %{_kf5_includedir}/incidenceeditor/
@@ -120,13 +118,11 @@ The development package for the incidenceeditor libraries.
 %{_libdir}/libKF5IncidenceEditor.so.*
 
 %files
-%license LICENSES/*
 %{_kf5_debugdir}/incidenceeditor.categories
 %{_kf5_debugdir}/incidenceeditor.renamecategories
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
