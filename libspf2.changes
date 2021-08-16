@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 13 08:27:13 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- 0001-spf_compile.c-Correct-size-of-ds_avail.patch: Fixed a remote stack
+  overflow (CVE-2021-20314 bsc#1189104)
+
+-------------------------------------------------------------------
+Sat Apr 16 20:18:36 UTC 2016 - opensuse@dstoecker.de
+
+- reworked version for openSUSE, based on Fedora version
+  * libspf2-1.2.10-format.patch
+  * libspf2-1.2.10-libreplace.patch
+
+-------------------------------------------------------------------
 Thu Jun 18 16:40:07 UTC 2015 - crrodriguez@opensuse.org
 
 - Use -std=gnu89, logging macros are broken when __STDC_VERSION__ >= 199901L
@@ -36,4 +49,3 @@ Wed Jan 28 12:52:26 UTC 2015 - lmuelle@suse.com
 Sun Dec 21 12:10:05 UTC 2014 - michal.hrusecky@opensuse.org
 
 - initial package (version 1.2.10)
-
