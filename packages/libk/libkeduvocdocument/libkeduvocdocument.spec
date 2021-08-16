@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkeduvocdocument
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Library for KDE Education Applications
 License:        GPL-2.0-or-later
@@ -95,7 +95,6 @@ develop KDE education applications.
 %{_kf5_libdir}/libKEduVocDocument.so.*
 
 %files devel
-%license COPYING*
 %doc README
 %{_kf5_cmakedir}/libkeduvocdocument/
 %{_kf5_libdir}/libKEduVocDocument.so
@@ -103,7 +102,6 @@ develop KDE education applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
