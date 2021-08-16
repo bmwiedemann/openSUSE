@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           libkcddb
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        CDDB library for KDE Applications
 License:        GPL-2.0-or-later
@@ -44,7 +44,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      libkcddb5 < %{version}
 Provides:       libkcddb5 = %{version}
 Obsoletes:      libkcddb16 < %{version}
@@ -96,7 +95,6 @@ information over the Internet.
 %postun -n libKF5Cddb5 -p /sbin/ldconfig
 
 %files
-%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %{_kf5_configkcfgdir}/
 %{_kf5_debugdir}/libkcddb.categories
@@ -108,7 +106,6 @@ information over the Internet.
 %{_kf5_libdir}/libKF5Cddb.so.*
 
 %files devel
-%license LICENSES/*
 %{_kf5_cmakedir}/KF5Cddb/
 %{_kf5_includedir}/KCddb
 %{_kf5_includedir}/kcddb_version.h
@@ -117,7 +114,6 @@ information over the Internet.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
