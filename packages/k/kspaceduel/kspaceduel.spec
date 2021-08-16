@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kspaceduel
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Space Arcade game
 License:        GPL-2.0-or-later
@@ -46,7 +46,6 @@ BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Phonon4Qt5)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Obsoletes:      kspaceduel5 < %{version}
 Provides:       kspaceduel5 = %{version}
 
@@ -71,7 +70,7 @@ collide with anything but shoot at the other space ship.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file -r org.kde.kspaceduel          Game ArcadeGame
+  %suse_update_desktop_file -r org.kde.kspaceduel Game ArcadeGame
 
 %files
 %license LICENSES/*
@@ -85,7 +84,6 @@ collide with anything but shoot at the other space ship.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
