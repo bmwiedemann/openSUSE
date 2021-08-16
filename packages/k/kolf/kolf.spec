@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kolf
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Miniature golf game
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description
 Kolf is a miniature golf game by KDE.
@@ -69,7 +68,7 @@ Kolf is a miniature golf game by KDE.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  %suse_update_desktop_file -r org.kde.kolf          Game SportsGame
+  %suse_update_desktop_file -r org.kde.kolf Game SportsGame
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
