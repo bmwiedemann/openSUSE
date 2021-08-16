@@ -52,6 +52,8 @@ Patch3:         sandbox-statx-futex_time64.patch
 Patch4:         rtc-dont-use-h264.patch
 # PATCH-FIX-UPSTREAM
 Patch5:         chromium-glibc-2.33.patch
+# PATCH-FIX-UPSTREAM
+Patch6:         0001-Fix-build-with-glibc-2.34.patch
 # http://www.chromium.org/blink not ported to PowerPC
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

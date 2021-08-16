@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  4 15:23:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch to fix build with glibc 2.34 (boo#1189095)
+  * 0001-Fix-build-with-glibc-2.34.patch
+
+-------------------------------------------------------------------
 Thu Jun 24 16:39:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the CMake version workaround to get qtbase's real version

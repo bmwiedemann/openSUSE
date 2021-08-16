@@ -727,4 +727,13 @@
     <comment>Qt WebEngine 5.15.5</comment>
     <requestid>901784</requestid>
   </revision>
+  <revision rev="71" vrev="2">
+    <srcmd5>ab674e02d399b6795a17469e93817437</srcmd5>
+    <version>5.15.5</version>
+    <time>1629101139</time>
+    <user>RBrownSUSE</user>
+    <comment>- Add patch to fix build with glibc 2.34 (boo#1189095)
+  * 0001-Fix-build-with-glibc-2.34.patch (forwarded request 911404 from cgiboudeaux)</comment>
+    <requestid>911548</requestid>
+  </revision>
 </revisionlist>
