@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug  6 12:13:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.85.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.85.0
+- Changes since 5.84.0:
+  * Deprecate kpackage_install_bundled_package cmake function
+  * Clean up leftovers from index generation
+  * Reduce severity of warnings about appstream generations
+  * Remove unused PackageLoaderPrivate::parentAppConstraint method
+  * Deprecate implicitly  defining X-KDE-ParentApp by parent structure
+  * Introduce new KPackageStructure property to identify plugins & packages
+  * autotests: Organize package structures into subdir
+  * autotests: Avoid compiling the same files 5 times
+  * Include a warning when setting the path without a structure
+
+-------------------------------------------------------------------
 Sun Jul  4 07:45:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.84.0
