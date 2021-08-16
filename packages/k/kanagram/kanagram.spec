@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kanagram
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Anagram Game
 License:        GPL-2.0-or-later
@@ -49,7 +49,6 @@ BuildRequires:  cmake(Qt5Qml)
 BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5TextToSpeech)
 Requires:       kdeedu-data
-Recommends:     %{name}-lang
 Obsoletes:      %{name}5 < %{version}
 Provides:       %{name}5 = %{version}
 
@@ -89,7 +88,6 @@ Kanagram is a letter order game.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
