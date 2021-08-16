@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           cervisia
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        CVS Frontend
 License:        GPL-2.0-only AND GFDL-1.2-only AND LGPL-2.0-only
@@ -47,7 +47,6 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(Qt5Core)
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 
 %description -n cervisia
 Cervisia is a tool to browse and work with CVS repositories.
@@ -72,7 +71,7 @@ export CFLAGS="%{optflags} -fPIC"
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  %suse_update_desktop_file    org.kde.cervisia       Development RevisionControl
+  %suse_update_desktop_file org.kde.cervisia Development RevisionControl
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -102,7 +101,6 @@ export CFLAGS="%{optflags} -fPIC"
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
