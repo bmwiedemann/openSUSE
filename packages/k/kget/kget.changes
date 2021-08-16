@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:37:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- No code change since 21.07.80
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:03 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Remove unused variable
+  * bittorrent: delete commented-out code in iwfile{list,tree}model.cpp
+  * bittorrent: use new preview priorities from libktorrent
+  * Remove unneeded check for service types in JSON metadata
+  * Make dependency on KI18n explicit
+  * Port away from deprecated KFileItemActions methods
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:35 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without	lang
 Name:           kget
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Download Manager
 License:        GPL-2.0-or-later
@@ -65,7 +65,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
 Obsoletes:      kget5 < %{version}
 Provides:       kget5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 An advanced download manager by KDE
@@ -85,7 +84,7 @@ An advanced download manager by KDE
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  %suse_update_desktop_file -r org.kde.kget         System   TrayIcon
+  %suse_update_desktop_file -r org.kde.kget System TrayIcon
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -119,7 +118,6 @@ An advanced download manager by KDE
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
