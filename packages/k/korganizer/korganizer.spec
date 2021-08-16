@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           korganizer
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Personal Organizer
 License:        GPL-2.0-only
@@ -77,7 +77,6 @@ BuildRequires:  cmake(Qt5X11Extras)
 Requires:       akonadi-calendar-tools
 Requires:       kdepim-addons
 Requires:       kdepim-runtime
-Recommends:     %{name}-lang
 Provides:       korganizer5 = %{version}
 Obsoletes:      korganizer5 < %{version}
 # It can only build on the same platforms as Qt Webengine
@@ -102,7 +101,7 @@ KOrganizer is a calendar application by KDE.
   %{kf5_find_htmldocs}
 %endif
 rm %{buildroot}%{_kf5_libdir}/*.so
-%suse_update_desktop_file org.kde.korganizer      Office   Calendar
+%suse_update_desktop_file org.kde.korganizer Office Calendar
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -132,26 +131,38 @@ rm %{buildroot}%{_kf5_libdir}/*.so
 %{_kf5_libdir}/libkorganizer_core.so.*
 %{_kf5_libdir}/libkorganizer_interfaces.so.*
 %{_kf5_libdir}/libkorganizerprivate.so.*
-%{_kf5_plugindir}/kcm_*.so
+%dir %{_kf5_plugindir}/pim/
+%dir %{_kf5_plugindir}/pim/kcms
+%dir %{_kf5_plugindir}/pim/kcms/korganizer
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configcolorsandfonts.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configdesignerfields.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configfreebusy.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configgroupscheduling.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configmain.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configplugins.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configtime.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_configviews.so
+%{_kf5_plugindir}/pim/kcms/korganizer/korganizer_userfeedback.so
+%dir %{_kf5_plugindir}/pim/kcms/summary
+%{_kf5_plugindir}/pim/kcms/summary/kcmapptsummary.so
+%{_kf5_plugindir}/pim/kcms/summary/kcmsdsummary.so
+%{_kf5_plugindir}/pim/kcms/summary/kcmtodosummary.so
 %dir %{_kf5_plugindir}/kontact5/
 %{_kf5_plugindir}/kontact5/kontact_*.so
 %{_kf5_plugindir}/korganizerpart.so
 %{_kf5_servicesdir}/kcm*.desktop
 %{_kf5_servicesdir}/kontact/
 %{_kf5_servicesdir}/korganizer_*.desktop
-%{_kf5_servicesdir}/webcal.protocol
 %{_kf5_servicetypesdir}/korganizerpart.desktop
 %dir %{_kf5_sharedir}/dbus-1/services/
 %{_kf5_sharedir}/dbus-1/services/org.kde.korgac.service
 %{_kf5_sharedir}/dbus-1/services/org.kde.korganizer.service
 %{_kf5_sharedir}/kconf_update/
 %{_kf5_sharedir}/kontact/
-%{_kf5_sharedir}/korgac/
 %{_kf5_sharedir}/korganizer/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:40:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Bind keyboard shortcuts in the Search dialog's results (kde#315894)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Replace "Title" with "Summary" in the user interface
+  * Toggle completed to-dos back to incomplete
+  * Use "item" terminology consistently in the UI
+  * Provide metadata in kontact plugin for settings dialog rewrite
+  * Port away from KStatefulBrush::brush(const QWidget*)
+  * Remove unneeded implementation of KontactInterface::Summary::configModules
+  * Install summary KCMs in pim/kcms/summary
+  * Fixup previous commit and make it backwards-compatible
+  * Fix build with deprecated API disabled
+  * Don't install the .so symlink
+  * Fix X-DocPath entries
+  * Use KPluginMetaData to load KCMs in KCMultiDialog
+  * Install KCMs in pim/kcms/korganizer namespace
+  * Show configure date/time
+  * Const'ref
+  * Fix KHamburgerMenu crashing Kontact when switching to KOrganizer
+  * Remove webcal protocol file
+  * Add KHamburgerMenu
+  * Rename variable
+  * Already defined in ecm
+  * Add more clazy check
+  * Port away from deprecated KCM create_ functions
+  * Use const QVariantList & as arguments
+  * Port kcmsdsummary to plugins system
+  * Modernize code
+  * Fix typo, add links.
+  * Simplify icon loading
+  * Install korgac icon into main hicolor icon
+  * Use QIcon::fromTheme instead of KIconLoader
+  * Make dependency on KI18n explicit
+  * Remove unused includes
+  * Make it compiles with last kf5
+  * Make doctools optional
+  * In kf6 kde4 migration code will be removed
+  * Clean up after deleteIncidence changes
+  * Offer the usual choices when deleting recurring to-dos
+  * Problems with recurring incidences with dissociated instances
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
