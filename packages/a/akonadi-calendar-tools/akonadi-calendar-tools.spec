@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           akonadi-calendar-tools
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Console applications and utilities for managing calendars
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -45,11 +45,10 @@ BuildRequires:  cmake(KF5CalendarUtils)
 BuildRequires:  cmake(KF5Contacts)
 BuildRequires:  cmake(KF5DocTools)
 BuildRequires:  cmake(KF5Libkdepim)
-BuildRequires:  cmake(Qt5Gui) >= 5.14.0
-BuildRequires:  cmake(Qt5Widgets) >= 5.14.0
+BuildRequires:  cmake(Qt5Gui) >= 5.15.0
+BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 # It can only build on the same platforms as Qt Webengine
 ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 mips mips64
-Recommends:     %{name}-lang
 
 %description
 Console applications and utilities for managing calendars in Akonadi.
@@ -82,7 +81,6 @@ Console applications and utilities for managing calendars in Akonadi.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog
