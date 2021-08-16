@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug  5 15:47:34 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 78.13.0
+  * removed WeTransfer integration package (not supported by vendor
+    any longer)
+  MFSA 2021-35 (bsc#1188891)
+  * CVE-2021-29986 (bmo#1696138)
+    Race condition when resolving DNS names could have led to
+    memory corruption
+  * CVE-2021-29988 (bmo#1717922)
+    Memory corruption as a result of incorrect style treatment
+  * CVE-2021-29984 (bmo#1720031)
+    Incorrect instruction reordering during JIT optimization
+  * CVE-2021-29980 (bmo#1722204)
+    Uninitialized memory in a canvas object could have led to
+    memory corruption
+  * CVE-2021-29985 (bmo#1722083)
+    Use-after-free media channels
+  * CVE-2021-29989 (bmo#1662676, bmo#1666184, bmo#1719178,
+    bmo#1719998, bmo#1720568)
+    Memory safety bugs fixed in Thunderbird 78.13
+
+-------------------------------------------------------------------
 Wed Jul 14 06:34:13 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.12.0

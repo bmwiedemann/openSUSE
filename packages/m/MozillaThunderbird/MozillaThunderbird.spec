@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          78
-%define mainver        %major.12.0
-%define orig_version   78.12.0
+%define mainver        %major.13.0
+%define orig_version   78.13.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -658,7 +658,6 @@ exit 0
 %dir %{progdir}/chrome/
 %{progdir}/chrome/icons/
 %{progdir}/defaults/
-%{progdir}/features/
 %{progdir}/isp/
 %{_datadir}/appdata/
 %{_datadir}/applications/%{desktop_file_name}.desktop
