@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kdepim-runtime
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Akonadi resources for PIM applications
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -87,7 +87,6 @@ Requires:       akonadi-plugin-kalarmcal
 Requires:       akonadi-plugin-mime
 Requires(post): shared-mime-info
 Requires(postun): shared-mime-info
-Recommends:     %{name}-lang
 Provides:       kio-pimlibs = %{version}
 Obsoletes:      kdepim4-runtime < %{version}
 Obsoletes:      kio-pimlibs < %{version}
@@ -114,7 +113,6 @@ use PIM applications.
     %find_lang %{name} --with-man --all-name
     %{kf5_find_htmldocs}
   %endif
-  rm -rvf %{buildroot}%{_kf5_libdir}/*.so
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -143,7 +141,6 @@ use PIM applications.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license LICENSES/*
 %endif
 
 %changelog

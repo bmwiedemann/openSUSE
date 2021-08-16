@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:37:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Revert "Start to port to qt5keychain"
+  * Drop X-KDE-Keywords entries from kcm desktop files
+
+-------------------------------------------------------------------
+Fri Jul 30 10:04:52 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * fix UI elements being used before initialization (kde#439991)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:05:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Changes since 21.04.3:
+  * Port Google Groupware resources to QFormLayout
+  * Improve wording in singlefileresource dialog
+  * Remove frame from openxchange config dialog
+  * Port Ical dir resources dialog to QFormLayout
+  * Port SingleFileResource Config UI to QFormLayout
+  * Define if we want to reply to all or reply to author
+  * Use new NewMailNotifierReplyMessageJob
+  * Add job for replying message
+  * Allow to reply message
+  * Clean up unneeded JSON parameter in kcoreaddons_add_plugin
+  * Honor KDE Kiosk setting lineedit_reveal_password
+  * std::chrono_literals
+  * not necessary to search in each sub folder
+  * Use more centric cmake code
+  * Install in "pim/kcms/kaddressbook"
+  * Embed JSON metadata in KIOSlaves
+  * Remove obsolete .protocol files
+  * Convert protocol files to JSON
+  * Start to port to qt5keychain
+  * Make compile with last kf5
+  * Fix clazy warning
+  * Unbreak Build
+  * Modernize code
+  * use forward declaration here
+  * Remove unused includes
+  * Make it compile with last kf5 version
+  * Make doctools optional
+  * In kf6 kde4 migration code will be removed
+  * Port to QButtonGroup::idToggled
+  * Remove unused include
+  * Use QLineEdit here
+  * Add a missing KService linkage
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:57:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
