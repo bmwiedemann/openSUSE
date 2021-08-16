@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kmouth
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Speech Synthesizer Frontend
 License:        GPL-2.0-or-later
@@ -52,7 +52,6 @@ BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
-Recommends:     %{name}-lang
 Provides:       kde4-kmouth = 4.3.0
 Obsoletes:      kde4-kmouth < 4.3.0
 
@@ -74,7 +73,7 @@ The computer "speaks" the entered text for talking with people.
   %find_lang %{name} --with-man --all-name
   %{kf5_find_htmldocs}
 %endif
-  %suse_update_desktop_file org.kde.kmouth       Utility Accessibility
+  %suse_update_desktop_file org.kde.kmouth Utility Accessibility
 
 %files
 %license COPYING COPYING.DOC
@@ -90,7 +89,6 @@ The computer "speaks" the entered text for talking with people.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
