@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:39:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- No code change since 21.07.90
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Resize lines when clearing to end of line. (kde#432669)
+  * Fix one crash in the sshmanager plugin (kde#439551)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:06:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Fix memory link in ssh manager QRegularExpressionValidator() (kde#439555)
+  * Fix assert _currentTerminalDisplay in Screen::setTextSelectionRendition (kde#439529)
+  * Prevent 1px sizehint when there is no preconfiguration (kde#437791)
+  * Fix crash/warn on history reflow (kde#436916)
+  * Add option to always invert text selection colours (kde#435309)
+  * Only generate autoscroll events while selecting (kde#391975)
+  * Support DECSET 1003 mouse move tracking (kde#391967)
+  * Don't send move events for normal mouse tracking (kde#302731)
+  * Do not swallow right button presses on double-click (kde#425926)
+  * Fix correct beginning position while copying texts (kde#436845)
+  * Fix crash on resize while doing other things (kde#436327)
+- Drop upstream patch:
+  * 0001-Prevent-1px-sizehint-when-there-is-no-preconfigurati.patch
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:58:08 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3

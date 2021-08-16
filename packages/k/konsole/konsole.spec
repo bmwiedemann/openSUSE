@@ -15,13 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%global libsover 21
 %define kf5_version 5.71.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           konsole
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        KDE Terminal
 License:        GPL-2.0-or-later
@@ -40,8 +40,6 @@ Source23:       utilities-terminal-su-32.png
 Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Prevent-1px-sizehint-when-there-is-no-preconfigurati.patch
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
@@ -57,7 +55,6 @@ BuildRequires:  cmake(KF5GlobalAccel)
 BuildRequires:  cmake(KF5GuiAddons)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
-BuildRequires:  cmake(KF5Init)
 BuildRequires:  cmake(KF5KIO)
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
@@ -70,7 +67,7 @@ BuildRequires:  cmake(KF5WidgetsAddons)
 BuildRequires:  cmake(KF5WindowSystem)
 BuildRequires:  cmake(KF5XmlGui)
 BuildRequires:  cmake(Qt5Concurrent)
-BuildRequires:  cmake(Qt5Core) >= 5.14.0
+BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5DBus)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Script)
@@ -109,7 +106,6 @@ Provides:       %{name}-part-lang-all = %{version}
 BuildArch:      noarch
 
 %description -n %{name}-part-lang
-
 Provides translations for the "%{name}" package.
 %endif
 
@@ -154,13 +150,11 @@ Provides translations for the "%{name}" package.
 %{_kf5_bindir}/konsoleprofile
 %{_kf5_iconsdir}/hicolor/*/apps/utilities-terminal_su.png
 %{_kf5_knsrcfilesdir}/konsole.knsrc
-%{_kf5_libdir}/libkdeinit5_konsole.so
 %{_kf5_servicesdir}/ServiceMenus/
 %{_kf5_sharedir}/khotkeys/konsole.khotkeys
+%{_kf5_libdir}/libkonsoleapp.so.*
 
 %files part
-%license COPYING
-%doc README.md
 %{_kf5_debugdir}/konsole.categories
 %{_kf5_libdir}/libkonsoleprivate.so.*
 %{_kf5_notifydir}/
@@ -171,7 +165,6 @@ Provides translations for the "%{name}" package.
 
 %if %{with lang}
 %files part-lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
