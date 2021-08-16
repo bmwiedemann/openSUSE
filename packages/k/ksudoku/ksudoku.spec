@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           ksudoku
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Program to generate and solve Sudoku puzzles in 2D or 3D
 License:        GPL-2.0-or-later
@@ -60,7 +60,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  pkgconfig(glu)
 Obsoletes:      ksudoku5 < %{version}
 Provides:       ksudoku5 = %{version}
-Recommends:     %{name}-lang
 
 %description
 KSudoku is a program that can generate and solve sudoku puzzles. The
@@ -99,7 +98,6 @@ number twice on each column, row, or subsquare.
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog
