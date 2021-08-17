@@ -32,7 +32,7 @@
 %endif
 
 Name:           nodejs16
-Version:        16.6.2
+Version:        16.6.0
 Release:        0
 
 # Double DWZ memory limits
@@ -92,7 +92,7 @@ Release:        0
 %bcond_without intree_cares
 %endif
 
-%if 0%{?suse_version} >= 1550 
+%if 0%{?suse_version} >= 1550
 %bcond_with    intree_icu
 %else
 %bcond_without intree_icu
@@ -121,17 +121,16 @@ Source1:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt
 Source2:        https://nodejs.org/dist/v%{version}/SHASUMS256.txt.sig
 Source3:        nodejs.keyring
 
-# Python 3.4 compatible node-gyp 
-### https://github.com/nodejs/node-gyp.git 
-### git archive v7.1.2 gyp/ | xz > node-gyp_7.1.2.tar.xz 
-Source5:        node-gyp_7.1.2.tar.xz 
-# Only required to run unit tests in NodeJS 10+ 
-Source10:       update_npm_tarball.sh 
+# Python 3.4 compatible node-gyp
+### https://github.com/nodejs/node-gyp.git
+### git archive v7.1.2 gyp/ | xz > node-gyp_7.1.2.tar.xz
+Source5:        node-gyp_7.1.2.tar.xz
+# Only required to run unit tests in NodeJS 10+
+Source10:       update_npm_tarball.sh
 Source11:       node_modules.tar.xz
 Source20:       bash_output_helper.bash
 
 ## Patches not distribution specific
-Patch1:         cares_public_headers.patch
 Patch3:         fix_ci_tests.patch
 Patch5:         sle12_python3_compat.patch
 Patch7:         manual_configure.patch
@@ -236,7 +235,7 @@ BuildRequires:  user(nobody)
 
 BuildRequires:  pkgconfig(openssl) >= %{openssl_req_ver}
 
-%if 0%{?suse_version} >= 1500 
+%if 0%{?suse_version} >= 1500
 BuildRequires:  libopenssl1_1-hmac
 BuildRequires:  openssl >= %{openssl_req_ver}
 %else
@@ -254,7 +253,7 @@ BuildRequires:  bundled_openssl_should_not_be_required
 %if ! 0%{with intree_cares}
 BuildRequires:  pkgconfig(libcares) >= 1.17.0
 %else
-Provides:       bundled(libcares2) = 1.17.2
+Provides:       bundled(libcares2) = 1.17.1
 %endif
 
 %if ! 0%{with intree_icu}
@@ -276,7 +275,7 @@ BuildRequires:  valgrind
 %if %{with libalternatives}
 Requires:       alts
 %else
-Requires(postun): %{_sbindir}/update-alternatives
+Requires(postun):%{_sbindir}/update-alternatives
 %endif
 # either for update-alternatives, or their removal
 Requires(post): %{_sbindir}/update-alternatives
@@ -355,7 +354,7 @@ Requires:       nodejs16 = %{version}
 Provides:       nodejs-npm = %{version}
 Obsoletes:      nodejs-npm < 4.0.0
 Provides:       npm = %{version}
-Provides:       npm(npm) = 7.20.3
+Provides:       npm(npm) = 7.19.1
 %if 0%{?suse_version} >= 1500
 %if %{node_version_number} >= 10
 Requires:       group(nobody)
@@ -492,13 +491,13 @@ Provides:       bundled(node-libnpmsearch) = 3.1.2
 Provides:       bundled(node-libnpmteam) = 2.0.4
 Provides:       bundled(node-libnpmversion) = 1.2.1
 Provides:       bundled(node-lru-cache) = 6.0.0
-Provides:       bundled(node-make-fetch-happen) = 9.0.4
-Provides:       bundled(node-mime-db) = 1.49.0
-Provides:       bundled(node-mime-types) = 2.1.32
+Provides:       bundled(node-make-fetch-happen) = 9.0.3
+Provides:       bundled(node-mime-db) = 1.48.0
+Provides:       bundled(node-mime-types) = 2.1.31
 Provides:       bundled(node-minimatch) = 3.0.4
 Provides:       bundled(node-minipass) = 3.1.3
 Provides:       bundled(node-minipass-collect) = 1.0.2
-Provides:       bundled(node-minipass-fetch) = 1.3.4
+Provides:       bundled(node-minipass-fetch) = 1.3.3
 Provides:       bundled(node-minipass-flush) = 1.0.5
 Provides:       bundled(node-minipass-json-stream) = 1.0.1
 Provides:       bundled(node-minipass-pipeline) = 1.2.4
@@ -530,7 +529,7 @@ Provides:       bundled(node-object-assign) = 4.1.1
 Provides:       bundled(node-once) = 1.4.0
 Provides:       bundled(node-opener) = 1.5.2
 Provides:       bundled(node-p-map) = 4.0.0
-Provides:       bundled(node-pacote) = 11.3.5
+Provides:       bundled(node-pacote) = 11.3.4
 Provides:       bundled(node-parse-conflict-json) = 1.1.1
 Provides:       bundled(node-path-is-absolute) = 1.0.1
 Provides:       bundled(node-path-parse) = 1.0.7
@@ -640,7 +639,6 @@ tar Jxf %{SOURCE11}
 tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 
-%patch1 -p1
 %patch3 -p1
 %patch5 -p1
 %patch7 -p1
@@ -655,6 +653,8 @@ tar Jxf %{SOURCE5} --directory=tools/gyp --strip-components=1
 %endif
 %patch104 -p1
 %patch106 -p1
+%if 0%{?suse_version} >= 1550
+%endif
 %patch110 -p1
 %patch120 -p1
 %patch200 -p1
@@ -956,6 +956,7 @@ update-alternatives --remove npm-default %{_bindir}/npm%{node_version_number}
 update-alternatives --remove npx-default %{_bindir}/npx%{node_version_number}
 
 %else
+
 %pre
 # remove files that are no longer owned but provided by update-alternatives
 if ! [ -L %{_mandir}/man1/node.1%{ext_man} ]; then

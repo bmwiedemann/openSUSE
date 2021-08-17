@@ -103,4 +103,11 @@
 - cares_public_headers.patch: don't use private headers</comment>
     <requestid>911861</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>33cdbbed31a463a80631364ddcb69cb9</srcmd5>
+    <version>16.6.0</version>
+    <time>1629189729</time>
+    <user>RBrownSUSE</user>
+    <comment>Revert to rev 7</comment>
+  </revision>
 </revisionlist>

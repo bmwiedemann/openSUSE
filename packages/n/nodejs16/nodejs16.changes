@@ -1,20 +1,4 @@
 -------------------------------------------------------------------
-Thu Aug 12 13:51:48 UTC 2021 - Adam Majer <adam.majer@suse.de>
-
-- Update to 16.6.2:
-  * CVE-2021-3672/CVE-2021-22931: Improper handling of untypical
-    characters in domain names (bsc#1189370, bsc#1188881)
-  * CVE-2021-22940: Use after free on close http2 on stream canceling
-    (bsc#1189368)
-  * CVE-2021-22939: Incomplete validation of rejectUnauthorized parameter
-    (bsc#1189369)
-  * deps: upgrade npm to 7.20.3
-  * deps: revert ABI-breaking change from V8 9.2
-  * module: fix ERR_REQUIRE_ESM error for null frames
-
-- cares_public_headers.patch: don't use private headers
-
--------------------------------------------------------------------
 Mon Aug  2 13:02:58 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - Update to 16.6.0:
