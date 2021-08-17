@@ -1433,7 +1433,6 @@
       <repopackage name="libasound2"/>
       <repopackage name="libasound2-32bit" arch="x86_64"/>
       <repopackage name="libass9"/>
-      <repopackage name="libassimp5"/>
       <repopackage name="libassuan0"/>
       <repopackage name="libatasmart-utils"/>
       <repopackage name="libatasmart4"/>
@@ -2274,7 +2273,6 @@
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
       <repopackage name="libliveMedia97"/>
-      <repopackage name="libLLVM10"/>
       <repopackage name="libLLVM12"/>
       <repopackage name="liblmdb-0_9_29"/>
       <repopackage name="libloader"/>
@@ -2576,7 +2574,6 @@
       <repopackage name="libqrcodegencpp1"/>
       <repopackage name="libqrencode4"/>
       <repopackage name="libqt5-qdbus"/>
-      <repopackage name="libqt5-qt3d-imports"/>
       <repopackage name="libqt5-qtbase-platformtheme-gtk3"/>
       <repopackage name="libqt5-qtconnectivity-tools"/>
       <repopackage name="libqt5-qtgraphicaleffects"/>
@@ -2592,23 +2589,10 @@
       <repopackage name="libqt5-qtwayland"/>
       <repopackage name="libqt5-qtwebengine"/>
       <repopackage name="libqt5-qtxmlpatterns-imports"/>
-      <repopackage name="libQt53DAnimation5"/>
-      <repopackage name="libQt53DCore5"/>
-      <repopackage name="libQt53DExtras5"/>
-      <repopackage name="libQt53DInput5"/>
-      <repopackage name="libQt53DLogic5"/>
-      <repopackage name="libQt53DQuick5"/>
-      <repopackage name="libQt53DQuickAnimation5"/>
-      <repopackage name="libQt53DQuickExtras5"/>
-      <repopackage name="libQt53DQuickInput5"/>
-      <repopackage name="libQt53DQuickRender5"/>
-      <repopackage name="libQt53DQuickScene2D5"/>
-      <repopackage name="libQt53DRender5"/>
       <repopackage name="libQt5Bluetooth5"/>
       <repopackage name="libQt5Bluetooth5-imports"/>
       <repopackage name="libQt5Concurrent5"/>
       <repopackage name="libQt5Core5"/>
-      <repopackage name="libQt5DataVisualization5"/>
       <repopackage name="libQt5DBus5"/>
       <repopackage name="libQt5Designer5"/>
       <repopackage name="libQt5Gui5"/>
@@ -2849,7 +2833,6 @@
       <repopackage name="libtalloc2-32bit" arch="x86_64"/>
       <repopackage name="libtasn1-6"/>
       <repopackage name="libtasn1-6-32bit" arch="x86_64"/>
-      <repopackage name="libtbb2"/>
       <repopackage name="libtdb1"/>
       <repopackage name="libtdb1-32bit" arch="x86_64"/>
       <repopackage name="libteamdctl0"/>
@@ -4071,7 +4054,6 @@
       <repopackage name="python38-libvirt-python"/>
       <repopackage name="python38-libxml2"/>
       <repopackage name="python38-linux-procfs"/>
-      <repopackage name="python38-llvmlite"/>
       <repopackage name="python38-lxml"/>
       <repopackage name="python38-M2Crypto"/>
       <repopackage name="python38-Mako"/>
@@ -4088,7 +4070,6 @@
       <repopackage name="python38-netifaces"/>
       <repopackage name="python38-networkx"/>
       <repopackage name="python38-notify2"/>
-      <repopackage name="python38-numba"/>
       <repopackage name="python38-numexpr"/>
       <repopackage name="python38-numpy"/>
       <repopackage name="python38-oauthlib" arch="x86_64"/>
@@ -4144,12 +4125,8 @@
       <repopackage name="python38-pyxdg"/>
       <repopackage name="python38-PyYAML"/>
       <repopackage name="python38-pyzmq"/>
-      <repopackage name="python38-qt3d-qt5"/>
       <repopackage name="python38-qt5"/>
       <repopackage name="python38-qt5-sip"/>
-      <repopackage name="python38-qtdatavis3d-qt5"/>
-      <repopackage name="python38-QtPy"/>
-      <repopackage name="python38-qtwebengine-qt5"/>
       <repopackage name="python38-redis"/>
       <repopackage name="python38-reportlab"/>
       <repopackage name="python38-requests"/>
@@ -4177,7 +4154,6 @@
       <repopackage name="python38-SQLAlchemy"/>
       <repopackage name="python38-tables"/>
       <repopackage name="python38-tabulate"/>
-      <repopackage name="python38-tbb"/>
       <repopackage name="python38-thrift"/>
       <repopackage name="python38-tk"/>
       <repopackage name="python38-tornado"/>
