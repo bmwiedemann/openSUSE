@@ -8754,6 +8754,7 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_3_0 
+  - libLLVM10 
   - libLLVM10-32bit: [x86_64] 
   - libLLVM11 
   - libLLVM11-32bit: [x86_64] 
@@ -8855,17 +8856,29 @@ unsorted:
   - libQMatrixClient0_5_3 
   - libQgpsmm29 
   - libQt53DAnimation-devel 
+  - libQt53DAnimation5 
   - libQt53DCore-devel 
+  - libQt53DCore5 
   - libQt53DExtras-devel 
+  - libQt53DExtras5 
   - libQt53DInput-devel 
+  - libQt53DInput5 
   - libQt53DLogic-devel 
+  - libQt53DLogic5 
   - libQt53DQuick-devel 
+  - libQt53DQuick5 
   - libQt53DQuickAnimation-devel 
+  - libQt53DQuickAnimation5 
   - libQt53DQuickExtras-devel 
+  - libQt53DQuickExtras5 
   - libQt53DQuickInput-devel 
+  - libQt53DQuickInput5 
   - libQt53DQuickRender-devel 
+  - libQt53DQuickRender5 
   - libQt53DQuickScene2D-devel 
+  - libQt53DQuickScene2D5 
   - libQt53DRender-devel 
+  - libQt53DRender5 
   - libQt5Bluetooth5-32bit: [x86_64] 
   - libQt5Bodymovin-devel 
   - libQt5Bodymovin-private-headers-devel 
@@ -8886,6 +8899,7 @@ unsorted:
   - libQt5DBus-devel-32bit: [x86_64] 
   - libQt5DBus-private-headers-devel 
   - libQt5DBus5-32bit: [x86_64] 
+  - libQt5DataVisualization5 
   - libQt5DataVisualization5-devel 
   - libQt5Designer5-32bit: [x86_64] 
   - libQt5DesignerComponents5 
@@ -9449,6 +9463,7 @@ unsorted:
   - libaspell15-32bit: [x86_64] 
   - libass-devel 
   - libass9-32bit: [x86_64] 
+  - libassimp5 
   - libassuan-devel 
   - libassuan0-32bit: [x86_64] 
   - libastro1 
@@ -12867,6 +12882,7 @@ unsorted:
   - libqt5-linguist-devel 
   - libqt5-qt3d-devel 
   - libqt5-qt3d-examples 
+  - libqt5-qt3d-imports 
   - libqt5-qt3d-private-headers-devel 
   - libqt5-qt3d-tools 
   - libqt5-qtbase-common-devel 
@@ -13806,6 +13822,7 @@ unsorted:
   - libtasn1-devel 
   - libtasn1-devel-32bit: [x86_64] 
   - libtasn1-tools 
+  - libtbb2 
   - libtbbmalloc2 
   - libtcmalloc4 
   - libtcmalloc_and_profiler4 
@@ -24319,6 +24336,7 @@ unsorted:
   - python38-QR-Code-generator 
   - python38-Qt.py 
   - python38-QtAwesome 
+  - python38-QtPy 
   - python38-RegexOrder 
   - python38-Routes 
   - python38-Rtree 
@@ -25670,6 +25688,7 @@ unsorted:
   - python38-lit 
   - python38-livereload 
   - python38-llfuse 
+  - python38-llvmlite 
   - python38-lmdb 
   - python38-lmfit 
   - python38-lml 
@@ -25845,6 +25864,7 @@ unsorted:
   - python38-ntlm-auth 
   - python38-ntplib 
   - python38-num2words 
+  - python38-numba 
   - python38-numba-devel 
   - python38-numcodecs 
   - python38-numericalunits 
@@ -26465,6 +26485,7 @@ unsorted:
   - python38-qscintilla-qt5 
   - python38-qstylizer 
   - python38-qsymm 
+  - python38-qt3d-qt5 
   - python38-qt3d-qt5-api 
   - python38-qt3d-qt5-doc 
   - python38-qt3d-qt5-sip 
@@ -26479,11 +26500,13 @@ unsorted:
   - python38-qtcharts-qt5-doc 
   - python38-qtcharts-qt5-sip 
   - python38-qtconsole 
+  - python38-qtdatavis3d-qt5 
   - python38-qtdatavis3d-qt5-api 
   - python38-qtdatavis3d-qt5-doc 
   - python38-qtdatavis3d-qt5-sip 
   - python38-qtnetworkauth-qt5 
   - python38-qtnetworkauth-qt5-devel 
+  - python38-qtwebengine-qt5 
   - python38-qtwebengine-qt5-api 
   - python38-qtwebengine-qt5-sip 
   - python38-quantities 
@@ -26783,6 +26806,7 @@ unsorted:
   - python38-targetcli-fb 
   - python38-tasklib 
   - python38-taskw 
+  - python38-tbb 
   - python38-tblib 
   - python38-tcolorpy 
   - python38-technicolor 
