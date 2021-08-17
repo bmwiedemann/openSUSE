@@ -108,7 +108,6 @@
       <repopackage name="amavisd-new-docs"/>
       <repopackage name="amtk-5-lang"/>
       <repopackage name="analitza"/>
-      <repopackage name="analitza-lang"/>
       <repopackage name="apache-commons-logging"/>
       <repopackage name="apache2"/>
       <repopackage name="apache2-manual"/>
@@ -506,7 +505,9 @@
       <repopackage name="findutils"/>
       <repopackage name="findutils-lang"/>
       <repopackage name="firewalld"/>
+      <repopackage name="firewalld-bash-completion"/>
       <repopackage name="firewalld-lang"/>
+      <repopackage name="firewalld-zsh-completion"/>
       <repopackage name="flac"/>
       <repopackage name="flatpak"/>
       <repopackage name="flute"/>
@@ -2127,7 +2128,7 @@
       <repopackage name="liblightdm-gobject-1-0"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
-      <repopackage name="libliveMedia94"/>
+      <repopackage name="libliveMedia97"/>
       <repopackage name="libLLVM10"/>
       <repopackage name="libLLVM12"/>
       <repopackage name="liblmdb-0_9_29"/>
@@ -2155,7 +2156,6 @@
       <repopackage name="libm17n0"/>
       <repopackage name="libmad0"/>
       <repopackage name="libmagic1"/>
-      <repopackage name="libMagick++-7_Q16HDRI5"/>
       <repopackage name="libMagickCore-7_Q16HDRI10"/>
       <repopackage name="libMagickWand-7_Q16HDRI10"/>
       <repopackage name="libmailutils5"/>
@@ -3466,7 +3466,6 @@
       <repopackage name="permissions-config"/>
       <repopackage name="pfscalibration"/>
       <repopackage name="pfstmo"/>
-      <repopackage name="pfstools"/>
       <repopackage name="phalanx"/>
       <repopackage name="phonon4qt5-backend-gstreamer"/>
       <repopackage name="phonon4qt5-lang"/>

@@ -494,6 +494,7 @@ unsorted:
   - amtterm-gtk 
   - amtu 
   - analitza-devel 
+  - analitza-lang 
   - android-tools 
   - android-tools-bash-completion 
   - android-tools-python3 
@@ -3606,6 +3607,7 @@ unsorted:
   - firewall-config 
   - firewall-macros 
   - firewalld-rpcbind-helper 
+  - firewalld-test 
   - fish 
   - fish-devel 
   - fityk 
@@ -7544,7 +7546,6 @@ unsorted:
   - jupyter-ipydatawidgets-jupyterlab 
   - jupyter-ipyevents 
   - jupyter-ipyevents-jupyterlab 
-  - jupyter-ipykernel 
   - jupyter-ipyleaflet 
   - jupyter-ipympl 
   - jupyter-ipympl-jupyterlab 
@@ -8771,6 +8772,7 @@ unsorted:
   - libLTO9 
   - libLTO9-32bit: [x86_64] 
   - libLimeSuite20_10-1 
+  - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit: [x86_64] 
   - libMagick++-devel 
   - libMagick++-devel-32bit: [x86_64] 
@@ -9836,7 +9838,7 @@ unsorted:
   - libcapi20 
   - libcapi20-3 
   - libcapi20-devel 
-  - libcapnp-0_8 
+  - libcapnp-0_9 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone4 
@@ -13595,6 +13597,7 @@ unsorted:
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
   - libspf2-2: [i586] 
+  - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
   - libsphinxbase1 
@@ -19181,6 +19184,7 @@ unsorted:
   - perl-Mail-IMAPClient 
   - perl-Mail-Message 
   - perl-Mail-SPF-Test 
+  - perl-Mail-SPF_XS 
   - perl-Mail-Sender 
   - perl-Mail-Sendmail 
   - perl-Mail-SpamAssassin-Plugin-iXhash2 
@@ -19918,6 +19922,7 @@ unsorted:
   - petsc_3_14_5-gnu-openmpi4-hpc-devel 
   - petsc_3_14_5-gnu-openmpi4-hpc-saws 
   - pfsglview 
+  - pfstools 
   - pfstools-devel 
   - pfstools-exr 
   - pfstools-imgmagick 
@@ -20129,7 +20134,7 @@ unsorted:
   - pinta-lang 
   - pipenightdreams 
   - piper 
-  - pipewire-alsa 
+  - pipewire-alsa: [i586] 
   - pipewire-alsa-32bit: [x86_64] 
   - pipewire-devel 
   - pipewire-doc 
@@ -22651,7 +22656,6 @@ unsorted:
   - python36-iptables 
   - python36-ipy 
   - python36-ipyevents 
-  - python36-ipykernel 
   - python36-ipykernel5 
   - python36-ipyleaflet 
   - python36-ipyparallel 
@@ -22863,6 +22867,7 @@ unsorted:
   - python36-mechanize 
   - python36-meld3 
   - python36-memory_profiler 
+  - python36-mergedeep 
   - python36-metaextract 
   - python36-metakernel 
   - python36-metamagic.json 
@@ -23556,6 +23561,7 @@ unsorted:
   - python36-pywinrm 
   - python36-pyxattr 
   - python36-pyxdg 
+  - python36-pyyaml_env_tag 
   - python36-pyzmq 
   - python36-pyzmq-devel 
   - python36-pyzo 
@@ -25592,6 +25598,7 @@ unsorted:
   - python38-keyring 
   - python38-keyring-keyutils 
   - python38-keyrings.alt 
+  - python38-khal 
   - python38-kismet-rest 
   - python38-kismetdb 
   - python38-kiss-headers 
@@ -25715,6 +25722,7 @@ unsorted:
   - python38-mechanize 
   - python38-meld3 
   - python38-memory_profiler 
+  - python38-mergedeep 
   - python38-metaextract 
   - python38-metakernel 
   - python38-metamagic.json 
@@ -26447,6 +26455,7 @@ unsorted:
   - python38-pywebpush 
   - python38-pywinrm 
   - python38-pyxattr 
+  - python38-pyyaml_env_tag 
   - python38-pyzmq-devel 
   - python38-pyzo 
   - python38-q 
@@ -28602,6 +28611,7 @@ unsorted:
   - python39-keyring 
   - python39-keyring-keyutils 
   - python39-keyrings.alt 
+  - python39-khal 
   - python39-kismet-rest 
   - python39-kismetdb 
   - python39-kiss-headers 
@@ -28739,6 +28749,7 @@ unsorted:
   - python39-mechanize 
   - python39-meld3 
   - python39-memory_profiler 
+  - python39-mergedeep 
   - python39-metaextract 
   - python39-metakernel 
   - python39-metamagic.json 
@@ -29520,6 +29531,7 @@ unsorted:
   - python39-pywinrm 
   - python39-pyxattr 
   - python39-pyxdg 
+  - python39-pyyaml_env_tag 
   - python39-pyzmq 
   - python39-pyzmq-devel 
   - python39-pyzo 
@@ -32210,7 +32222,6 @@ unsorted:
   - supervisor 
   - supportutils 
   - surfraw 
-  - surfraw-woffle 
   - surgescript 
   - surgescript-devel 
   - suru-plus-dark-icon-theme 

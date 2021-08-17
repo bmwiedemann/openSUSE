@@ -60,7 +60,6 @@
       <repopackage name="adobe-sourcesanspro-fonts" arch="x86_64"/>
       <repopackage name="adobe-sourceserifpro-fonts" arch="x86_64"/>
       <repopackage name="adwaita-icon-theme" arch="x86_64"/>
-      <repopackage name="alsa-plugins-pulse" arch="x86_64"/>
       <repopackage name="apparmor-abstractions" arch="x86_64"/>
       <repopackage name="apparmor-parser" arch="x86_64"/>
       <repopackage name="apparmor-profiles" arch="x86_64"/>
@@ -1023,7 +1022,6 @@
       <repopackage name="libsoxr0" arch="x86_64"/>
       <repopackage name="libspandsp2" arch="x86_64"/>
       <repopackage name="libspeex1" arch="x86_64"/>
-      <repopackage name="libspeexdsp1" arch="x86_64"/>
       <repopackage name="libsqlite3-0" arch="x86_64"/>
       <repopackage name="libsratom-0-0" arch="x86_64"/>
       <repopackage name="libsrt1_4" arch="x86_64"/>
@@ -1322,8 +1320,10 @@
       <repopackage name="pinentry" arch="x86_64"/>
       <repopackage name="pinentry-qt5" arch="x86_64"/>
       <repopackage name="pipewire" arch="x86_64"/>
+      <repopackage name="pipewire-alsa" arch="x86_64"/>
       <repopackage name="pipewire-media-session" arch="x86_64"/>
       <repopackage name="pipewire-modules" arch="x86_64"/>
+      <repopackage name="pipewire-pulseaudio" arch="x86_64"/>
       <repopackage name="pipewire-spa-plugins-0_2" arch="x86_64"/>
       <repopackage name="pipewire-spa-tools" arch="x86_64"/>
       <repopackage name="pipewire-tools" arch="x86_64"/>
@@ -1357,12 +1357,6 @@
       <repopackage name="prison-qt5-imports" arch="x86_64"/>
       <repopackage name="procps" arch="x86_64"/>
       <repopackage name="psmisc" arch="x86_64"/>
-      <repopackage name="pulseaudio" arch="x86_64"/>
-      <repopackage name="pulseaudio-module-bluetooth" arch="x86_64"/>
-      <repopackage name="pulseaudio-module-gsettings" arch="x86_64"/>
-      <repopackage name="pulseaudio-module-x11" arch="x86_64"/>
-      <repopackage name="pulseaudio-module-zeroconf" arch="x86_64"/>
-      <repopackage name="pulseaudio-utils" arch="x86_64"/>
       <repopackage name="purge-kernels-service" arch="x86_64"/>
       <repopackage name="purpose" arch="x86_64"/>
       <repopackage name="python3-apparmor" arch="x86_64"/>
@@ -1458,7 +1452,6 @@
       <repopackage name="rpm-config-SUSE"/>
       <repopackage name="rsvg-thumbnailer" arch="x86_64"/>
       <repopackage name="rsync" arch="x86_64"/>
-      <repopackage name="rtkit" arch="x86_64"/>
       <repopackage name="runc" arch="x86_64"/>
       <repopackage name="samba" arch="x86_64"/>
       <repopackage name="samba-client" arch="x86_64"/>
