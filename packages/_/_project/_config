@@ -1,5 +1,5 @@
 Prefer: libqca-qt5-2 qca-qt5-plugins
-# Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed.
+# Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed
 Ignore: firewall-macros:firewalld
 
 %define gcc_version 11
