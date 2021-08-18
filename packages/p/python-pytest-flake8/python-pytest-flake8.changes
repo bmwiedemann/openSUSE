@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:37:49 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to 1.0.7:
+  * Implement collect() for Flake8Item; from @thomascobb
+  * Document skipping behavior in README; from @jpyams
+
+-------------------------------------------------------------------
 Fri May 15 20:47:09 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Update to 1.0.6

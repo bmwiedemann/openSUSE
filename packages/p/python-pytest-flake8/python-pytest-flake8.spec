@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-flake8
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pytest-flake8
-Version:        1.0.6
+Version:        1.0.7
 Release:        0
 Summary:        Plugin for pytest to check FLAKE8 requirements
 License:        BSD-2-Clause
