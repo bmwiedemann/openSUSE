@@ -248,4 +248,13 @@ Bugfixes
     <comment></comment>
     <requestid>907973</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>d4396d588c5b1e68124e3828e4f9be4b</srcmd5>
+    <version>2.4.9.1</version>
+    <time>1629269749</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.4.9.1
+  fix retried Redis commands after a reconnect; see #642 (forwarded request 912043 from stroeder)</comment>
+    <requestid>912383</requestid>
+  </revision>
 </revisionlist>
