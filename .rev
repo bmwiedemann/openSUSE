@@ -259,4 +259,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908779</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6af7d073e59c7585178f917cdad0a51e</srcmd5>
+    <version>0.7.3+0</version>
+    <time>1629269744</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.7.3+0:
+  * Handle decoding incorrectly encoded headers
+  * Avoid decoding errors when extracting message ID from stdin
+  * Don't consider signature contents for trailers
+  * Sanitize msgid before using it as savename</comment>
+    <requestid>912315</requestid>
+  </revision>
 </revisionlist>
