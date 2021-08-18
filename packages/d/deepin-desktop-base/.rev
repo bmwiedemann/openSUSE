@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>904054</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ec22924b042256ad6bb08b5488f933a</srcmd5>
+    <version>20.2.2</version>
+    <time>1629269728</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 2021.06.16, Deepin version is 20.2.2 (forwarded request 910678 from hillwood)</comment>
+    <requestid>910892</requestid>
+  </revision>
 </revisionlist>
