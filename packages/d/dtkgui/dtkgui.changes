@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  1 08:17:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update pkgconfig profile version to 5.5 
+
+-------------------------------------------------------------------
+Sun Jul 25 07:53:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.17.1
+  * Update abi json file
+  * Add memory leak detection parameters
+  * fix: DGuiApplicationHelper::setSingleInstance start multiple instances
+  * fix: eliminate warning
+
+-------------------------------------------------------------------
 Wed May  5 10:57:57 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
  
 - Update version ro 5.4.13

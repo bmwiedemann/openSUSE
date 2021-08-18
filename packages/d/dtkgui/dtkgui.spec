@@ -19,9 +19,10 @@
 
 %define libver  5
 %define apiver  5.5.0
+%define pkg_ver 5.5
 
 Name:           dtkgui
-Version:        5.4.13
+Version:        5.5.17.1
 Release:        0
 Summary:        Deepin Toolkit GUI
 License:        LGPL-3.0
@@ -41,6 +42,7 @@ BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  libQt5PlatformSupport-private-headers-devel
 BuildRequires:  libQt5Gui-private-headers-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -52,8 +54,8 @@ Summary:        Deepin Toolkit GUI libraries
 Group:          System/Libraries
 
 %description -n lib%{name}%{libver}
-Deepint Tool Kit (Dtk) GUI is the base devlopment tool of all C++/Qt developer work 
-on Deepin.
+Deepint Tool Kit (Dtk) GUI is the base devlopment tool of all C++/Qt developer
+work on Deepin.
 
 %package devel
 Summary:        Development tools for dtkgui
@@ -61,8 +63,8 @@ Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{libver} = %{version}
 
 %description devel
-The dtkgui-devel package contains the header files and developer
-docs for dtkgui.
+The dtkgui-devel package contains the header files and developer docs for
+dtkgui.
 
 You should first read the "Deepin Application Specification".
 
@@ -77,8 +79,6 @@ You should first read the "Deepin Application Specification".
 %install
 %qmake5_install
 
-# Workaround boo#1181642
-
 %post -n lib%{name}%{libver} -p /sbin/ldconfig
 %postun -n lib%{name}%{libver} -p /sbin/ldconfig
 
@@ -90,7 +90,6 @@ You should first read the "Deepin Application Specification".
 %dir %{_libdir}/libdtk-%{apiver}/DGui/bin
 %{_libdir}/libdtk-%{apiver}/DGui/bin/deepin-gui-settings
 %{_libdir}/libdtk-%{apiver}/DGui/bin/taskbar
-# %config %{_sysconfdir}/dbus-1/system.d/com.deepin.dtk.FileDrag.conf
 
 %files -n lib%{name}%{libver}
 %{_libdir}/lib%{name}.so.*
@@ -102,7 +101,11 @@ You should first read the "Deepin Application Specification".
 %{_libdir}/cmake/DtkGui
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}%{pkg_ver}.pc
+%dir %{_libdir}/cmake/DtkGui%{pkg_ver}
+%{_libdir}/cmake/DtkGui%{pkg_ver}/DtkGui%{pkg_ver}Config.cmake
 %{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}.pri
+%{_libdir}/qt5/mkspecs/modules/qt_lib_%{name}%{pkg_ver}.pri
 
 %changelog
 

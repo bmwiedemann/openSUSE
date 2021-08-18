@@ -35,4 +35,18 @@
 - Add fix-library-link.patch</comment>
     <requestid>891672</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>89b3a06cb3316e25e122d8037587683c</srcmd5>
+    <version>5.5.17.1</version>
+    <time>1629269722</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update pkgconfig profile version to 5.5 
+
+- Update version to 5.5.17.1
+  * Update abi json file
+  * Add memory leak detection parameters
+  * fix: DGuiApplicationHelper::setSingleInstance start multiple instances
+  * fix: eliminate warning (forwarded request 910667 from hillwood)</comment>
+    <requestid>910882</requestid>
+  </revision>
 </revisionlist>
