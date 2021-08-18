@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  8 18:02:08 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 180:
+ - Don't include specific ".debug"-like lines in the output, as it invariably
+   a duplicate of the debug ID that exists in a better form in the readelf(1)
+   differences for this file.
+ - Also ignore include short "GCC" lines that differs on a single prefix byte
+   too. These are distracting, not very useful and are simply the strings(1)
+   command's idea of the build ID, which, again, is displayed nearby in the
+   file's diff.
+ - Update the invocation arguments and tests for the latest version of
+   odt2txt.
+
+-------------------------------------------------------------------
 Fri Jul 30 08:18:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 179:
