@@ -48,4 +48,21 @@ The initial package submission request was: https://build.opensuse.org/request/s
 </comment>
     <requestid>889623</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1c97bbff06502d694b824021ae3f4085</srcmd5>
+    <version>7.1</version>
+    <time>1629269758</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to primecount-7.1 (API &amp; ABI are backwards compatible).
+- Minor pi(x) &amp; phi(x, a) speed improvements.
+- PhiTiny.cpp: Use compressed phi(x, a) lookup table.
+- phi.cpp: More correct usage of recursive phi(x, a) formula.
+- PiTable.cpp: Add PrimePi(x) lookup table for x &lt; 64 * 240.
+- generate_phi.hpp: More correct usage of recursive phi(x, a) formula.
+- nth_prime.cpp: Cache small primes &lt;= 1009.
+- nth_prime.cpp: Improve error handling, n must be &gt;= 1.
+- appveyor.yml: Fix debug build.
+</comment>
+    <requestid>912453</requestid>
+  </revision>
 </revisionlist>

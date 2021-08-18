@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 16 03:20:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-7.1 (API & ABI are backwards compatible).
+- Minor pi(x) & phi(x, a) speed improvements.
+- PhiTiny.cpp: Use compressed phi(x, a) lookup table.
+- phi.cpp: More correct usage of recursive phi(x, a) formula.
+- PiTable.cpp: Add PrimePi(x) lookup table for x < 64 * 240.
+- generate_phi.hpp: More correct usage of recursive phi(x, a) formula.
+- nth_prime.cpp: Cache small primes <= 1009.
+- nth_prime.cpp: Improve error handling, n must be >= 1.
+- appveyor.yml: Fix debug build.
+
+-------------------------------------------------------------------
 Fri Apr 30 16:52:00 UTC 2021 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-7.0 (API & ABI are backwards compatible).
