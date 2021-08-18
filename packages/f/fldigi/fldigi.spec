@@ -17,7 +17,7 @@
 
 
 Name:           fldigi
-Version:        4.1.19
+Version:        4.1.20
 Release:        0
 Summary:        Digital modem program (hamradio)
 License:        GPL-3.0-only

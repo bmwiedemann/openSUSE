@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Aug 15 09:43:36 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.1.20
+  Add OFDM modes for NBEMS
+    - OFDM-500F for HF SSB
+    - OFDM-750F for HF SSB
+    - OFDM-2000F for HF-SSB/FM
+    - OFDM-2000 for HF-SSB/FM
+    - OFDM-3500 for FM 9600-port
+    - OFDM-2000F CPU-load fix
+  * Added Vestigial-carrier based AFC to OFDM modes
+    - Increases robustness and tolerance to drift
+  * OFDM 2000F hold
+  * commented out OFDM 2000 and 2000F modes for bugfixes
+  * OFDM 500F, 750F, and 3500 are complete
+  Cosmetic changes
+  * Fix cosmetic issues reported by Bob, VK2YQA
+  * Fix parse of macro <PUSH>
+  Gleam scheme
+  * add fltk 'gleam' UI scheme
+  xmlrpc id
+  * add client ID to client requests
+  * add client ID to server parsing
+  cw tracking
+  * adjust tracking filter constants to improve power detection
+  Navtex modem
+  * make single bit flip correction guess a little smarter
+  Smeter Pwr_meter
+  * correction to xmlrpc procedure to get smeter and power out
+    meter from flrig
+  My Callsign
+  * modify edit code to maintain cursor position
+  Contest fields
+  * Change to Rx text field parsing
+  * Change to cut number parsing
+  gpio ptt
+  * fix for pi3/4 gpio h/w UDRC-II operation
+
+-------------------------------------------------------------------
 Fri Jul  2 23:04:12 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 4.1.19
