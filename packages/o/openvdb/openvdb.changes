@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 10 11:49:25 UTC 2021 - pgajdos@suse.com
+
+- do not depend on OpenEXR (do not build vdb_render) [bsc#1189344]
+
+-------------------------------------------------------------------
 Sat Jul  3 16:05:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 8.1.0

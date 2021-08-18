@@ -40,8 +40,6 @@ BuildRequires:  libglfw-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  xorg-x11-devel
-BuildRequires:  pkgconfig(IlmBase)
-BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(blosc)
 BuildRequires:  pkgconfig(jemalloc)
 
@@ -90,11 +88,9 @@ library: vdb_lod, vdb_print, vdb_render, vdb_view
     -DCMAKE_NO_SYSTEM_FROM_IMPORTED:BOOL=TRUE \
     -DOPENVDB_BUILD_VDB_PRINT=ON \
     -DOPENVDB_BUILD_VDB_LOD=ON \
-    -DOPENVDB_BUILD_VDB_RENDER=ON \
     -DOPENVDB_BUILD_VDB_VIEW=ON \
     -DOPENVDB_BUILD_PYTHON_MODULE=OFF \
-    -DOPENVDB_ENABLE_RPATH=OFF \
-    -DUSE_IMATH_HALF=ON
+    -DOPENVDB_ENABLE_RPATH=OFF
 
 %cmake_build
 
@@ -121,7 +117,6 @@ rm %{buildroot}%{_libdir}/libopenvdb.a
 %license LICENSE
 %{_bindir}/vdb_lod
 %{_bindir}/vdb_print
-%{_bindir}/vdb_render
 %{_bindir}/vdb_view
 
 %changelog
