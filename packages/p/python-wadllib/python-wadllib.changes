@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 17 13:27:21 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.3.5
+  - Drop support for Python 3.2, 3.3, and 3.4.
+  - Accept Unicode parameter values again when performing multipart/form-data
+    encoding on Python 2 (broken in 1.3.3).
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Wed Jul 22 10:40:47 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to 1.3.4
