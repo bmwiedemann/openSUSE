@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 10 00:25:26 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.8.11
+  * Security
+    - bpo-44022 (boo#1189241): mod:http.client now avoids
+      infinitely reading potential HTTP headers after a 100
+      Continue status response from the server.
+    - bpo-43882: The presence of newline or tab characters in parts
+      of a URL could allow some forms of attacks.
+      Following the controlling specification for URLs defined by
+      WHATWG urllib.parse() now removes ASCII newlines and tabs
+      from URLs, preventing such attacks.
+    - bpo-42800: Audit hooks are now fired for frame.f_code,
+      traceback.tb_frame, and generator code/frame attribute
+      access.
+  * Core and Builtins
+    - bpo-44070: No longer eagerly makes import filenames absolute,
+      except for extension modules, which was introduced in 3.8.10.
+  * Library
+    - bpo-44061: Fix regression in previous release when calling
+      pkgutil.iter_modules() with a list of pathlib.Path objects
+
+-------------------------------------------------------------------
 Mon Aug  2 12:35:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Use versioned python-Sphinx to avoid dependency on other

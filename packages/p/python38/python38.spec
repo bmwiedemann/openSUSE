@@ -87,7 +87,7 @@
 %bcond_without profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.10
+Version:        3.8.11
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
