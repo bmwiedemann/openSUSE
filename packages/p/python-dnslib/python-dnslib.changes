@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 17 11:46:14 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to v0.9.16
+  * Add DNAME
+  * Add support for all RR types to NSEC type bitmap
+  * Issue 16: uncaught exceptions leak open sockets
+- from v0.9.15
+  * DNSServer fixes / Add unsupported RR types
+  * Add NULL QTYPE
+
+-------------------------------------------------------------------
 Thu Aug 27 16:12:36 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v0.9.14
