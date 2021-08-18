@@ -17,7 +17,7 @@
 
 
 Name:           help2man
-Version:        1.48.3
+Version:        1.48.4
 Release:        0
 Summary:        Script for generating man pages from --help output
 License:        GPL-3.0-or-later
