@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 16 06:50:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7.2:
+  * Avoid automatically replacing external tilesets with "similar" ones
+  * Fixed copying and capturing stamps on staggered maps (#2874)
+  * Fixed possible crash in Tile Animation Editor
+  * Fixed data loss when saving maps with tilesets that failed to load (#3106)
+  * Fixed creating multi-layer tile stamp from selection (#2899)
+  * Scripting: Automatically reset object ID when adding to avoid duplicate IDs
+  * Linux: Possible workaround for crash in clipboard manager
+  * Updated to Sentry 0.4.12
+  * Updated Italian translation
+
+-------------------------------------------------------------------
 Mon Jul 12 07:02:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.7.1:
