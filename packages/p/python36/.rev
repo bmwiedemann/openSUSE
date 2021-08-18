@@ -2987,4 +2987,12 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
   version of Python (bsc#1183858).</comment>
     <requestid>908799</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f845ba59b4f323cd57dd76d8da75bb5d</srcmd5>
+    <version>3.6.14</version>
+    <time>1629269719</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>911137</requestid>
+  </revision>
 </revisionlist>

@@ -44,7 +44,7 @@ Date:   Wed Jan 31 11:17:10 2018 +0100
  
 --- a/Lib/tarfile.py
 +++ b/Lib/tarfile.py
-@@ -1954,7 +1954,7 @@ class TarFile(object):
+@@ -1956,7 +1956,7 @@ class TarFile(object):
          elif tarinfo.isdir():
              self.addfile(tarinfo)
              if recursive:
@@ -55,7 +55,7 @@ Date:   Wed Jan 31 11:17:10 2018 +0100
  
 --- a/Lib/test/test_tarfile.py
 +++ b/Lib/test/test_tarfile.py
-@@ -1129,6 +1129,30 @@ class WriteTest(WriteTestBase, unittest.
+@@ -1136,6 +1136,30 @@ class WriteTest(WriteTestBase, unittest.
          finally:
              support.rmdir(path)
  

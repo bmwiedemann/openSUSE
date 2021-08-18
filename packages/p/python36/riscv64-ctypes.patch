@@ -19,7 +19,7 @@ https://bugs.python.org/issue35847
 +RISC-V needed the CTYPES_PASS_BY_REF_HACK.  Fixes ctypes Structure test_pass_by_value.
 --- a/Modules/_ctypes/callproc.c
 +++ b/Modules/_ctypes/callproc.c
-@@ -1063,7 +1063,7 @@ GetComError(HRESULT errcode, GUID *riid,
+@@ -1050,7 +1050,7 @@ GetComError(HRESULT errcode, GUID *riid,
  #endif
  
  #if (defined(__x86_64__) && (defined(__MINGW64__) || defined(__CYGWIN__))) || \
