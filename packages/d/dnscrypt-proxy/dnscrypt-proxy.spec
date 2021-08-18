@@ -25,7 +25,7 @@
 %define vlic_dir  vendored
 
 Name:           dnscrypt-proxy
-Version:        2.0.45
+Version:        2.1.0
 Release:        0
 Summary:        A tool for securing communications between a client and a DNS resolver
 License:        ISC
@@ -49,7 +49,7 @@ BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.15
+BuildRequires:  golang(API) >= 1.16
 BuildRequires:  pkgconfig(libsystemd)
 # For systemd pidfile solution.
 Requires:       bash
@@ -65,7 +65,8 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 A flexible DNS proxy, with support for modern encrypted DNS protocols
-such as DNSCrypt v2, DNS-over-HTTPS and Anonymized DNSCrypt.
+such as DNSCrypt v2, DNS-over-HTTPS, Anonymized DNSCrypt
+and ODoH (Oblivious DoH).
 
 %prep
 %setup -q -n %{name}-%{version}

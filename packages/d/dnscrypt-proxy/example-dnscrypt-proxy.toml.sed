@@ -22,10 +22,12 @@ s/  # allowed_names_file = 'allowed-names.txt'/  # allowed_names_file = '\/etc\/
 s/  # log_file = 'allowed-names.log'/  # log_file = '\/var\/log\/dnscrypt-proxy\/allowed-names.log'/
 s/  # allowed_ips_file = 'allowed-ips.txt'/  # allowed_ips_file = '\/etc\/dnscrypt-proxy\/allowed-ips.txt'/
 s/  # log_file = 'allowed-ips.log'/  # log_file = '\/var\/log\/dnscrypt-proxy\/allowed-ips.log'/
-s/  cache_file = 'public-resolvers.md'/  cache_file = '\/var\/lib\/dnscrypt-proxy\/public-resolvers.md'/
-s/  cache_file = 'relays.md'/  cache_file = '\/var\/lib\/dnscrypt-proxy\/relays.md'/
-s/  # cache_file = 'quad9-resolvers.md'/  #  cache_file = '\/var\/lib\/dnscrypt-proxy\/quad9-resolvers.md'/
-s/  #  cache_file = 'parental-control.md'/  #  cache_file = '\/var\/lib\/dnscrypt-proxy\/parental-control.md'/
+s/    cache_file = 'public-resolvers.md'/    cache_file = '\/var\/lib\/dnscrypt-proxy\/public-resolvers.md'/
+s/    cache_file = 'relays.md'/    cache_file = '\/var\/lib\/dnscrypt-proxy\/relays.md'/
+s/  #   cache_file = 'odoh-servers.md'/  #   cache_file = '\/var\/lib\/dnscrypt-proxy\/odoh-servers.md'/
+s/  #   cache_file = 'odoh-relays.md'/  #   cache_file = '\/var\/lib\/dnscrypt-proxy\/odoh-relays.md'/
+s/  #   cache_file = 'quad9-resolvers.md'/  #   cache_file = '\/var\/lib\/dnscrypt-proxy\/quad9-resolvers.md'/
+s/  #    cache_file = 'parental-control.md'/  #    cache_file = '\/var\/lib\/dnscrypt-proxy\/parental-control.md'/
 
 # package directory instead of source code directory
 s/## `utils\/generate-domains-blocklists` directory of the dnscrypt-proxy source code./## '\/usr\/share\/dnscrypt-proxy\/generate-domains-blocklists' directory./

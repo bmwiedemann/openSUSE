@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 15 12:00:00 UTC 2021 - cunix@mail.de - 2.1.0
+
+- Update to version 2.1.0
+  * "fallback_resolvers" was renamed to "bootstrap_resolvers"
+    Please update your configuration file accordingly.
+  * Support for Oblivious DoH.
+  * If the proxy is overloaded, cached and synthetic queries now
+    keep being served, while non-cached queries are delayed.
+  * Source URLs are now randomized.
+  * Default "reject_ttl" reduced from 600 to 10
+
+- Minimum golang version now at 1.16
+
+- Find more "legal" files to include.
+
+-------------------------------------------------------------------
 Sat Jan 30 12:00:00 UTC 2021 - cunix@mail.de
 
 - Use less predictable temporary files during build (bsc#1181502).
