@@ -186,4 +186,12 @@
   * Fix opening Desktop entries with Path (forwarded request 882355 from hillwood)</comment>
     <requestid>882356</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>880dfa4ca35a7a161f24f7c3be6b3d2b</srcmd5>
+    <version>20.04.3</version>
+    <time>1629269741</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 912368 from hillwood)</comment>
+    <requestid>912369</requestid>
+  </revision>
 </revisionlist>

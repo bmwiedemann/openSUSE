@@ -23,10 +23,13 @@ Version:        20.04.3
 Release:        0
 Summary:        Advanced MATE menu
 License:        GPL-2.0-or-later
+Group:          System/GUI/Other
 URL:            https://github.com/ubuntu-mate/mate-menu
 Source:         https://github.com/ubuntu-mate/mate-menu/archive/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE mate-menu-yast2-software.patch sor.alexei@meowr.ru -- Use YaST2 and GNOME PackageKit package managers.
 Patch0:         mate-menu-yast2-software.patch
+# PATCH-FIX-UPSTREAM fix-crash-issue.patch hillwood@opensuse.org -- Fix boo#1189452 for Leap 15.2+
+Patch1:         fix-crash-issue.patch
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  python3-distutils-extra
@@ -40,8 +43,9 @@ Requires:       python3-Unidecode
 Requires:       python3-configobj
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
+# Fix boo#1189452
+Requires:       python3-pyxdg
 Requires:       python3-setproctitle
-Requires:       python3-xdg
 Requires:       python3-xlib
 Requires:       xdg-utils
 Recommends:     %{name}-lang
@@ -60,7 +64,12 @@ Environment.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+# fix boo#1189452 for Leap 15.2+
+%if 0%{?suse_version} <=1500
+%patch1 -p1
+%endif
 
 sed -i 's/su-to-root/xdg-su/g' %{_name}/execute.py
 

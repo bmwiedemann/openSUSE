@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:40:48 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix crash (boo#1189452)
+  * Add fix-crash-issue.patch for leap
+  * Change dependence python3-pyxdg to python3-xdg
+
+-------------------------------------------------------------------
 Wed Mar 31 12:22:30 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to version 20.04.3
