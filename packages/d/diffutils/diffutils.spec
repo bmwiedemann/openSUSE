@@ -17,7 +17,7 @@
 
 
 Name:           diffutils
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        GNU diff Utilities
 License:        GFDL-1.2-only AND GPL-3.0-or-later
@@ -26,10 +26,6 @@ URL:            https://www.gnu.org/software/diffutils/
 Source0:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-Patch0:         gnulib-test-avoid-FP-perror-strerror.patch
-Patch1:         gnulib-c-stack.patch
-Requires(pre):  %{install_info_prereq}
-Requires(preun):%{install_info_prereq}
 Provides:       diff = %{version}
 Obsoletes:      diff < %{version}
 
@@ -46,37 +42,21 @@ make source code patches, for instance.
 %configure \
   --with-packager="openSUSE" \
   --with-packager-bug-reports="http://bugs.opensuse.org/"
-make %{?_smp_mflags} V=1
+%make_build
 
 %check
-%ifarch ppc64le ppc64
-make %{?_smp_mflags} check || echo 'Warning: ignore error https://debbugs.gnu.org/cgi/bugreport.cgi?bug=36488'
-%else
-make %{?_smp_mflags} check
-%endif
+%make_build check
 
 %install
 %make_install
 %find_lang %{name}
 
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
 %files
 %license COPYING
 %doc AUTHORS NEWS README THANKS
-%{_bindir}/cmp
-%{_bindir}/diff
-%{_bindir}/diff3
-%{_bindir}/sdiff
+%{_bindir}/*
 %{_infodir}/diffutils.info%{?ext_info}
-%{_mandir}/man1/cmp.1%{?ext_man}
-%{_mandir}/man1/diff.1%{?ext_man}
-%{_mandir}/man1/diff3.1%{?ext_man}
-%{_mandir}/man1/sdiff.1%{?ext_man}
+%{_mandir}/man1/*.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

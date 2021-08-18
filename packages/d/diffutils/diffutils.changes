@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug  7 08:57:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- diffutils 3.8:
+  * diff no longer treats a closed stdin as representing an absent
+    file in usage like 'diff --new-file - foo <&-'
+  * diff and related programs no longer get confused if stdin,
+    stdout, or stderr are closed
+  * cmp, diff and sdiff no longer treat negative command-line
+    option-arguments as if they were large positive numbers
+- drop gnulib-test-avoid-FP-perror-strerror.patch, upstream
+- drop gnulib-c-stack.patch, equivalent change in c-stack
+- remove deprecated texinfo packaging macros
+
+-------------------------------------------------------------------
 Mon Jul 19 12:50:49 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - gnulib-c-stack.patch: c-stack: stop using SIGSTKSZ
