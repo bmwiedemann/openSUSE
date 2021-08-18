@@ -105,6 +105,10 @@ Patch61:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 # PATCH-FIX-UPSTREAM CVE-2021-23336-only-amp-as-query-sep.patch bsc#[0-9]+ mcepl@suse.com
 # this patch makes things totally awesome
 Patch62:        CVE-2021-23336-only-amp-as-query-sep.patch
+# PATCH-FIX-UPSTREAM bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch boo#1189241 gh#python/cpython#25916
+Patch63:        bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
+# PATCH-FIX-UPSTREAM bpo43075-fix-ReDoS-in-request.patch boo#1189287 gh#python/cpython#24391
+Patch64:        bpo43075-fix-ReDoS-in-request.patch
 # COMMON-PATCH-END
 Provides:       pyth_doc
 Provides:       pyth_ps
@@ -174,6 +178,8 @@ Python, and Macintosh Module Reference in PDF format.
 %patch60 -p1
 %patch61 -p1
 %patch62 -p1
+%patch63 -p1
+%patch64 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac

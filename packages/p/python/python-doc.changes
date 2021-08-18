@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 10 12:39:28 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add bpo43075-fix-ReDoS-in-request.patch which fixes ReDoS in
+  request (bpo#43075, boo#1189287).
+- Add missing security announcement to
+  bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch.
+
+-------------------------------------------------------------------
+Mon Aug  9 15:16:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
+  which fixes http client infinite line reading (DoS) after a http 
+  100 (bpo#44022, boo#1189241).
+
+-------------------------------------------------------------------
 Fri Feb 26 18:21:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add CVE-2021-23336-only-amp-as-query-sep.patch which forbids
