@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mime-types-data
-Version:        3.2021.0225
+Version:        3.2021.0704
 Release:        0
 %define mod_name mime-types-data
 %define mod_full_name %{mod_name}-%{version}
