@@ -17,7 +17,7 @@
 
 
 Name:           deepin-desktop-schemas
-Version:        5.9.5
+Version:        5.9.16
 Release:        0
 Summary:        GSettings deepin desktop-wide schemas
 License:        GPL-3.0-or-later
