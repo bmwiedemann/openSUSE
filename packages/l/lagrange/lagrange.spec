@@ -18,12 +18,13 @@
 
 %define app_id fi.skyjake.Lagrange
 Name:           lagrange
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        Desktop GUI client for browsing Geminispace
 License:        BSD-2-Clause
 URL:            https://gmi.skyjake.fi/lagrange
 Source0:        https://git.skyjake.fi/skyjake/lagrange/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Patch0:         lagrange-1.6.3-Updated-AppData.patch
 BuildRequires:  cmake
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig
@@ -45,6 +46,7 @@ page outlines.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %cmake -DTFDN_ENABLE_SSE41=NO
