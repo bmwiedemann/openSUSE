@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Aug 16 05:51:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.9.7:
+  * Fix the network space is empty on subnet detail #1523
+  * Add a table result for `slcli hw upgrade` output. #1488
+  * Remove block/file interval option for replica volume. #1497
+  * `slcli vlan cancel` should report if a vlan is automatic. #1495
+  * New method to manage how long text is in output tables. #1506
+  * Fix Tox-analysis issues. #1510
+  * Changed a testing domain to one that really doesnt exist #1492
+  * Fix Incomplete notes field for file and block #1484
+  * Show component versions on hw detail #1470
+  * Add the firewall information on slcli firewall detail #1475
+  * Add an --orderBy parameters to call-api #1459
+  * Add image detail transaction data #1479
+  * Add routers for each DC in slcli hw create-options #1432
+  * Add preset datatype in slcli virtual detail #1435
+  * Add upgrade option to slcli hw. #1437
+  * Add the Hardware components on "slcli hardware detail" #1452
+  * Updating author_email to SLDN distro list #1469
+  * Add the option to add and upgrade the hw disk. #1455
+  * Add Billing and lastTransaction on slcli virtual detail #1466
+  * Add pagination to object storage list accounts. #1411
+  * Add username lookup to slcli object-storage credential #1415
+  * Add IOPs data to slcli block volume-list. #1418
+  * Add a flags in the report bandwidth #1420
+  * Add the option network component by router to slcli hw create. #1422
+  * Add slcli vs create by router data. #1414
+  * Add testing and support for python 3.9. #1429
+  * Checking for TermLength on prices #1428
+  * Added order lookup command to block and file orders. #1350
+  * Allow orders without a location if needed #1356
+  * Fix create subnet static for ipv4 price. #1358
+  * Fix order item-list --prices location #1360
+  * Removed Nessus scanner from docs and examples #1368
+  * Fix subnet list. #1379
+  * #1309 Fix the empty lines in slcli vs create-options
+  * #875 added option to reload bare metal servers with LVM enabled
+  * #874 Added Migrate command
+  * #1313 Added support for filteredMask
+  * #900 Support for STDIN on creating and updating tickets.
+  * #1318 add Drive number in guest drives details using the device number
+  * #1323 add vs list hardware and all option
+- Skip one test, so we don't require tkinter.
+- Conflict with sl, we both provide the same file.
+
+-------------------------------------------------------------------
 Wed Jul 29 07:47:04 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 5.8.9

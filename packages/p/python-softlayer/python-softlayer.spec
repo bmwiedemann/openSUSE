@@ -1,7 +1,7 @@
 #
 # spec file for package python-softlayer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,10 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-softlayer
-Version:        5.8.9
+Version:        5.9.7
 Release:        0
 Summary:        A set of Python libraries that assist in calling the SoftLayer API
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/softlayer/softlayer-python
 Source:         https://github.com/softlayer/softlayer-python/archive/v%{version}.tar.gz
 BuildRequires:  %{python_module PrettyTable >= 0.7.0}
@@ -47,8 +46,9 @@ Requires:       python-requests >= 2.20.0
 Requires:       python-setuptools
 Requires:       python-six >= 1.7.0
 Requires:       python-urllib3 >= 1.24
+Conflicts:      sl
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
@@ -69,7 +69,8 @@ This library provides a simple Python client to interact with SoftLayer's XML-RP
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# We do not want TKinter
+%pytest -k 'not test_getpass_issues1436'
 
 %post
 %python_install_alternative slcli
