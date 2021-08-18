@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 17 09:29:43 UTC 2021 - Uwe Drechsel <vym@insilmaril.de>
+
+- Update to upstream version 2.8.8 (Bugfixes)
+
+  In 2.8.0 vymBaseDir was not set correctly, which made most of vym
+  unusable. See also https://github.com/insilmaril/vym/issues/14
+
+-------------------------------------------------------------------
 Thu Apr 15 08:04:13 UTC 2021 - Uwe Drechsel <vym@insilmaril.de>
 
 - Update to upstream version 2.8.0 (bugfixes and features)
