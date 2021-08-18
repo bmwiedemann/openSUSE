@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 13 17:57:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.9.1
+  fix retried Redis commands after a reconnect; see #642
+
+-------------------------------------------------------------------
 Fri Jul 23 07:46:56 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to version 2.4.9
