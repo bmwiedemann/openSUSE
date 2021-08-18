@@ -201,4 +201,12 @@ Based on audit of 3.0.6.1 (forwarded request 155892 from babelworx)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>902644</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>bed821d7f4bedb6990eddf34a535b3fe</srcmd5>
+    <version>3.0.8.3</version>
+    <time>1629269752</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912408</requestid>
+  </revision>
 </revisionlist>

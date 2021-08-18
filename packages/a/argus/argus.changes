@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 10 11:50:18 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_argus.service.patch
+  Modified:
+  * argus.service
+
+-------------------------------------------------------------------
 Thu Jun  3 16:02:21 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.0.8.3

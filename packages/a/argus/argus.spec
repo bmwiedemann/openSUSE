@@ -28,6 +28,7 @@ Source3:        README.SUSE
 Source4:        argus_linux.8.gz
 Source5:        argus.service
 Patch1:         %{name}-3.0.6.1-libpcap.patch
+Patch2:         harden_argus.service.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libnsl-devel
@@ -56,6 +57,7 @@ Daemon for Argus network monitoring tool.
 %patch1 -p1
 cp %{SOURCE3} .
 cp %{SOURCE4} man/man8/
+%patch2 -p1
 
 %build
 #autoreconf -fiv
