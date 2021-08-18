@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 16 15:54:14 UTC 2021 - tiwai@suse.com
+
+- Update to version 20210812 (git commit 24c4a85d8514):
+  * amdgpu: revert back to older raven2 sdma firmware
+  * amdgpu: revert back to older raven sdma firmware
+  * amdgpu: revert back to older picasso sdma firmware
+  * amdgpu: add initial vangogh support
+  * amdgpu: update vega20 firmware from 21.30
+  * amdgpu: update vega12 firmware from 21.30
+  * amdgpu: update vega10 firmware from 21.30
+  * amdgpu: update renoir firmware from 21.30
+  * amdgpu: update raven2 firmware from 21.30
+  * amdgpu: update raven firmware from 21.30
+  * amdgpu: update polaris12 firmware from 21.30
+  * amdgpu: update picasso firmware from 21.30
+  * amdgpu: update dimgrey cavefish firmware from 21.30
+  * amdgpu: update navy flounder firmware from 21.30
+  * amdgpu: update sienna cichlid firmware from 21.30
+  * amdgpu: update navi14 firmware from 21.30
+  * amdgpu: update navi12 firmware from 21.30
+  * amdgpu: update navi10 firmware from 21.30
+  * amdgpu: update green sardine firmware from 21.30
+  * amdgpu: update arcturus firmware from 21.30
+  * linux-firmware: Update firmware file for Intel Bluetooth AX210
+  * linux-firmware: update frimware for mediatek bluetooth chip (MT7921)
+  * linux-firmware: add firmware for MT7922
+  * QCA : Updated firmware files for WCN3991
+  * i915: Add v2.03 DMC for RKL
+  * i915: Add v2.12 DMC for TGL
+  * qca: Add firmware files for BT chip WCN6750.
+
+-------------------------------------------------------------------
 Fri Jul 23 16:49:03 UTC 2021 - tiwai@suse.com
 
 - Update to version 20210719 (git commit 5de082d4d0f2):

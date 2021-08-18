@@ -23,10 +23,10 @@
 %endif
 
 %define __ksyms_path ^%{_firmwaredir}
-%define version_unconverted 20210719
+%define version_unconverted 20210812
 
 Name:           kernel-firmware
-Version:        20210719
+Version:        20210812
 Release:        0
 Summary:        Linux kernel firmware files
 License:        SUSE-Firmware AND GPL-2.0-only AND GPL-2.0-or-later AND MIT
