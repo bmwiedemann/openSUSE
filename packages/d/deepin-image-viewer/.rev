@@ -28,4 +28,14 @@
 - Use find_lang macro (forwarded request 900403 from hillwood)</comment>
     <requestid>901178</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>021817f2fdbd34624c93214b8a6ac36e</srcmd5>
+    <version>5.7.11</version>
+    <time>1629269729</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.7.11
+  * Update translations
+  * Fix bugs (forwarded request 910687 from hillwood)</comment>
+    <requestid>910903</requestid>
+  </revision>
 </revisionlist>
