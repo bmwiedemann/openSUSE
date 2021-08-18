@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:19:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.3:
+  * A few more updates -- lazy indexing and thread-subjects, org
+    link config.
+
+-------------------------------------------------------------------
+Mon Aug 16 14:18:19 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.2:
+  * Some more fixes for problems found in the 1.6 series.
+
+-------------------------------------------------------------------
 Sun Aug  1 21:08:25 UTC 2021 - Miquel Sabate Sola <msabate@suse.com>
 
-- Update to 1.6.1
+- Update to 1.6.1:
+  * Fixes for some problems found by early adopters.
+  NOTE: After upgrading, you need to call mu init, with your preferred
+  parameters before you can use mu/mu4e. This is because the underlying
+  database-schema has changed.
 
 -------------------------------------------------------------------
 Mon Jan 25 08:42:05 UTC 2021 - Michael Vetter <mvetter@suse.com>

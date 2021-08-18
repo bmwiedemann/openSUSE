@@ -297,4 +297,23 @@
     <comment></comment>
     <requestid>911241</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>d7151c2f81dd51bf45b37e3f3a18fa63</srcmd5>
+    <version>1.6.3</version>
+    <time>1629269757</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.6.3:
+  * A few more updates -- lazy indexing and thread-subjects, org
+    link config.
+
+- Update to 1.6.2:
+  * Some more fixes for problems found in the 1.6 series.
+
+- Update to 1.6.1:
+  * Fixes for some problems found by early adopters.
+  NOTE: After upgrading, you need to call mu init, with your preferred
+  parameters before you can use mu/mu4e. This is because the underlying
+  database-schema has changed.</comment>
+    <requestid>912426</requestid>
+  </revision>
 </revisionlist>
