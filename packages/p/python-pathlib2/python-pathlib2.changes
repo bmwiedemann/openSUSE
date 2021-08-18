@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 17 11:54:47 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.6:
+  * Fix minor unicode bugs in with_name and with_suffix. Many thanks to
+    ppentchev for reporting and for providing a fix.
+  * Fix a few minor bugs.
+  * Allow unicode file paths on systems that support it
+    (note: unicode file paths will not work on Windows
+    due a broken filesystem encoder on Windows on Python 2).
+  * Remove travis and add github actions for regression testing.
+  * Fix mypy warnings.
+
+-------------------------------------------------------------------
 Fri Mar 13 12:58:35 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix the py2/py3 dependencies

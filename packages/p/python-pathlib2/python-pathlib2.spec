@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
 Name:           python-pathlib2%{?psuffix}
-Version:        2.3.5
+Version:        2.3.6
 Release:        0
 Summary:        Object-oriented filesystem paths
 License:        MIT
