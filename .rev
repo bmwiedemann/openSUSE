@@ -15,4 +15,12 @@
     <comment> (forwarded request 901241 from hillwood)</comment>
     <requestid>901243</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9c5e8c8b62df5f51924ce1e1a988fb3d</srcmd5>
+    <version>5.2.24</version>
+    <time>1629269731</time>
+    <user>RBrownSUSE</user>
+    <comment>* Optimize ui (forwarded request 910916 from hillwood)</comment>
+    <requestid>910917</requestid>
+  </revision>
 </revisionlist>
