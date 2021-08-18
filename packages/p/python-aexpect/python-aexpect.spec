@@ -1,7 +1,7 @@
 #
-# spec file for package python-aexpect
+# spec file
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,31 +12,29 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define         skip_python2 1
 %global         pkgname aexpect
 Name:           python-%{pkgname}
-Version:        1.5.1
+Version:        1.6.2
 Release:        0
 Summary:        Python library to control interactive applications
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            http://avocado-framework.readthedocs.org/
 Source:         https://github.com/avocado-framework/aexpect/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
+Patch0:         helper-version-in-cmdline.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python2-subprocess32 >= 3.2.6
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
-%ifpython2
-Requires:       python2-subprocess32 >= 3.2.6
-%endif
 %python_subpackages
 
 %description
@@ -46,29 +44,30 @@ sftp, telnet, among others.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%autopatch -p1
 
 %build
 %python_build
 
 %install
 %python_install
-%python_clone -a %{buildroot}%{_bindir}/aexpect-helper
+%python_clone -a %{buildroot}%{_bindir}/aexpect_helper
 %fdupes %{buildroot}
 
 %check
 export PATH=$PATH:%{buildroot}%{_bindir}
-%python_exec setup.py test
+%pytest -k 'not pass_fds_spawn and not share_remote_objects'
 
 %post
-%python_install_alternative aexpect-helper
+%python_install_alternative aexpect_helper
 
 %postun
-%python_uninstall_alternative aexpect-helper
+%python_uninstall_alternative aexpect_helper
 
 %files %{python_files}
 %license LICENSE
 %doc README.rst
-%python_alternative %{_bindir}/aexpect-helper
+%python_alternative %{_bindir}/aexpect_helper
 %{python_sitelib}/*
 
 %changelog

@@ -18,4 +18,17 @@
 - Run tests</comment>
     <requestid>625772</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>60437e85c1ff0a9a7bae65724cc5fdbd</srcmd5>
+    <version>1.6.2</version>
+    <time>1629269760</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.6.2:
+  * No changelog available
+- Add patch helper-version-in-cmdline.patch:
+  * Always call the correct version of the helper script.
+- Drop {Build,}Requires on Python 3 subprocess backport module.
+- Switch to pytest, and skip two truculent tests</comment>
+    <requestid>912370</requestid>
+  </revision>
 </revisionlist>
