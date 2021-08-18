@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 29 07:18:53 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.0.19
+  * Fix bugs
+  * Optimize ui
+  * Update translations
+  * Optimize features about deein-turbo
+
+-------------------------------------------------------------------
 Thu Jun  3 13:15:53 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Stop owning directories provided by filesystem and other packages
