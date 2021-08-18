@@ -16,4 +16,12 @@
   (every dir should only have one owner) (boo#1184786) (forwarded request 897915 from hillwood)</comment>
     <requestid>897923</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2efa7c96b5cd6fb6b9ba773f8189c32f</srcmd5>
+    <version>5.9.7</version>
+    <time>1629269732</time>
+    <user>RBrownSUSE</user>
+    <comment>* Optimize support for touchpad (forwarded request 910918 from hillwood)</comment>
+    <requestid>910919</requestid>
+  </revision>
 </revisionlist>
