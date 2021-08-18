@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Aug 17 14:38:58 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Changes in version 1.0.7
+  - New regular patterns (27)
+    + sle12all/postfix-000020356.py: Postfix fails to start with IPv6 disabled (TID000020356)
+    + sle12sp3/kgraft-patch_SUSE-SU-2021_2389-1_12.3.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP3 LTSS
+    + sle12sp3/kgraft-patch_SUSE-SU-2021_2433-1_12.3.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP3 LTSS
+    + sle12sp3/kgraft-patch_SUSE-SU-2021_2451-1_12.3.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP3 LTSS
+    + sle12sp3/kgraft-patch_SUSE-SU-2021_2538-1_12.3.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP3 LTSS
+    + sle12sp3/kgraft-patch_SUSE-SU-2021_2563-1_12.3.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP3 LTSS
+    + sle12sp3/linuxptp_SUSE-SU-2021_2443-1_12.3.ltss.py: Security fixes for SUSE Linux Enterprise 12 SP3 LTSS
+    + sle12sp3/systemd_SUSE-SU-2021_2423-1_12.3.ltss.py: Security fixes for SUSE Linux Enterprise 12 SP3 LTSS
+    + sle12sp4/curl_SUSE-SU-2021_2425-1_12.4.ltss.py: Security fixes for SUSE Linux Enterprise 12 SP4 LTSS
+    + sle12sp4/kernel_SUSE-SU-2021_2422-1_12.4.ltss.py: Security fixes for SUSE Linux Enterprise 12 SP4 LTSS
+    + sle12sp4/kgraft-patch_SUSE-SU-2021_2389-1_12.4.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP4 LTSS
+    + sle12sp4/kgraft-patch_SUSE-SU-2021_2546-1_12.4.ltss.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP4 LTSS
+    + sle12sp4/linuxptp_SUSE-SU-2021_2443-1_12.4.ltss.py: Security fixes for SUSE Linux Enterprise 12 SP4 LTSS
+    + sle12sp4/systemd_SUSE-SU-2021_2423-1_12.4.ltss.py: Security fixes for SUSE Linux Enterprise 12 SP4 LTSS
+    + sle12sp5/dbus-1_SUSE-SU-2021_2424-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/glibc_SUSE-SU-2021_2480-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/kernel_SUSE-SU-2021_2321-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/kernel_SUSE-SU-2021_2407-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/kernel_SUSE-SU-2021_2416-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/kgraft-patch_SUSE-SU-2021_2324-1_12.5.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP5
+    + sle12sp5/kgraft-patch_SUSE-SU-2021_2389-1_12.5.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP5
+    + sle12sp5/kgraft-patch_SUSE-SU-2021_2462-1_12.5.py: Security fixes for SUSE Linux Kernel Live Patch 12 SP5
+    + sle12sp5/linuxptp_SUSE-SU-2021_2545-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/permissions_SUSE-SU-2021_2280-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/python-py_SUSE-SU-2021_2236-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/qemu_SUSE-SU-2021_2448-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+    + sle12sp5/systemd_SUSE-SU-2021_2405-1_12.5.py: Security fixes for SUSE Linux Enterprise 12 SP5
+
+-------------------------------------------------------------------
 Tue Jul 27 21:16:23 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.6
