@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:29:16 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Revert update to Source Sans 3 and keep the pro versions
+  (boo#1189267)
+
+-------------------------------------------------------------------
+Wed Aug  4 15:47:10 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Add 31-adobe-sourcesanspro.conf so that old name still works
+
+-------------------------------------------------------------------
+Thu Jul 29 14:20:46 CEST 2021 - tiwai@suse.de
+
+- Fixed github URL
+- Fixed Source URL again; we take the full source zip instead of
+  split release zip
+
+-------------------------------------------------------------------
+Thu Jul 29 10:12:02 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to version 3.046
+  * Roman and Italic now are the same version
+  * The "pro" part of the name has been dropped, internally a number
+    is now used: Source Sans 3
+  * Update URL
+  * This is a major release with many changes. See the release page
+    for the details:
+    https://github.com/adobe-fonts/source-sans/releases
+
+-------------------------------------------------------------------
 Wed May 29 04:02:31 UTC 2019 - Marguerite Su <i@marguerite.su>
 
 - Update source url

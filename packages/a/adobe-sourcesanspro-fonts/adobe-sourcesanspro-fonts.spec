@@ -1,7 +1,7 @@
 #
 # spec file for package adobe-sourcesanspro-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2012 Dominique Leuenberger, Amsterdam, Netherlands
 #
 # All modifications and additions to the file contributed by third parties
