@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:13:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 54:
+  * Floating point mask clips are now a consistent thing
+- Remove vapoursynth-include.patch: upstreamed
+
+-------------------------------------------------------------------
 Tue Jul 13 10:36:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Fix build with gcc11:

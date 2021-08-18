@@ -177,4 +177,14 @@
   * and commits b5ed913f, a4c4eba7</comment>
     <requestid>906103</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e24bdd5f7b8e098f719701768fe3fe4e</srcmd5>
+    <version>54</version>
+    <time>1629269747</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 54:
+  * Floating point mask clips are now a consistent thing
+- Remove vapoursynth-include.patch: upstreamed</comment>
+    <requestid>912352</requestid>
+  </revision>
 </revisionlist>
