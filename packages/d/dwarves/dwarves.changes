@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 13 11:35:30 UTC 2021 - msuchanek@suse.com
+
+- 15.4 has new elfutils, drop libebl-plugins dependency.
+- Update to version 1.21+git177.1ef87b2:
+  * Fix crash with split BTF debuginfo
+  * CMakeList.txt: Bump version to the upcoming 1.22 release, not out of the door yet
+  - Remove upstreamed patch dwarves-Prep-1.22.patch
+
+-------------------------------------------------------------------
+Sat Jul 17 15:48:30 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Use system libbpf when available (bsc#1188420 bsc#1188419 jsc#SLE-17288 jsc#SLE-18805).
+
+-------------------------------------------------------------------
 Thu Jul 15 20:04:36 UTC 2021 - msuchanek@suse.com
 
 - Update to version 1.21+git175.1ef87b2 (jsc#SLE-17288):

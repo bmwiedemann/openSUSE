@@ -258,4 +258,12 @@
     <comment>- Update to version 1.21+git175.1ef87b2 (jsc#SLE-17288):</comment>
     <requestid>906664</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ac0d81e6a17eb93d561d7601957a3756</srcmd5>
+    <version>1.21+git177.1ef87b2</version>
+    <time>1629269710</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912007</requestid>
+  </revision>
 </revisionlist>
