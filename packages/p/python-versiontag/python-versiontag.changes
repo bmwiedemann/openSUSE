@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 17 13:35:17 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest macro
+
+-------------------------------------------------------------------
 Wed Apr  1 12:27:48 AM UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Initial spec for v1.2.0
