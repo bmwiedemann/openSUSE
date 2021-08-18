@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:34:00 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Revert update to Source Serif 4 and keep the pro version
+  (boo#1189267)
+
+-------------------------------------------------------------------
 Wed Aug  4 15:35:17 UTC 2021 - Cor Blom <cornelis@solcon.nl>
 
 - Add 31-adobe-sourceserifpro.conf so that old name still works

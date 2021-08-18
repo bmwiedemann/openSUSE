@@ -16,26 +16,25 @@
 #
 
 
+%define _name sourceserifpro
 Name:           adobe-sourceserifpro-fonts
-Version:        4.004
+Version:        3.000
 Release:        0
 Summary:        A set of OpenType fonts designed for user interfaces
 License:        OFL-1.1
 Group:          System/X11/Fonts
-URL:            https://github.com/adobe-fonts/source-serif/
-Source0:        https://github.com/adobe-fonts/source-serif/archive/refs/tags/%{version}R.zip#/source-serif-%{version}R.zip
-Source1:        31-adobe-sourceserifpro.conf
-BuildRequires:  fontconfig
+URL:            https://github.com/adobe-fonts/source-serif-pro/
+Source:         https://github.com/adobe-fonts/source-serif-pro/releases/download/%{version}R/source-serif-pro-%{version}R.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-A set of serif OpenType fonts designed to complement Source Sans
+A set of serif OpenType fonts designed to complement Source Sans Pro
 
 %prep
-%setup -q -n source-serif-%{version}R
+%setup -q -c -n source-serif-pro-%{version}R
 # Fix line endings
 sed -i 's/\r$//g' LICENSE.md
 
@@ -45,7 +44,6 @@ sed -i 's/\r$//g' LICENSE.md
 install -d %{buildroot}%{_ttfontsdir}
 # by default install command uses 755 umask
 install -m 644 OTF/*.otf %{buildroot}%{_ttfontsdir}
-%install_fontsconf %{SOURCE1}
 
 %reconfigure_fonts_scriptlets
 
@@ -54,7 +52,5 @@ install -m 644 OTF/*.otf %{buildroot}%{_ttfontsdir}
 %doc README.md
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/*
-%files_fontsconf_availdir
-%files_fontsconf_file -l 31-adobe-sourceserifpro.conf
 
 %changelog
