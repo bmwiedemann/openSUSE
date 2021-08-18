@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 16 05:16:15 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.7.3+0:
+  * Handle decoding incorrectly encoded headers
+  * Avoid decoding errors when extracting message ID from stdin
+  * Don't consider signature contents for trailers
+  * Sanitize msgid before using it as savename
+
+-------------------------------------------------------------------
 Wed Jul 21 07:02:39 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.7.2+3:
