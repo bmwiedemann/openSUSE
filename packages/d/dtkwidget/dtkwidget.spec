@@ -19,9 +19,10 @@
 
 %define libver 5
 %define apiver 5.5.0
+%define pkg_ver 5.5
 
 Name:           dtkwidget
-Version:        5.4.16
+Version:        5.5.17.1
 Release:        0
 Summary:        Deepin graphical user interface library
 License:        LGPL-3.0-only
@@ -104,7 +105,11 @@ rm -rf %{buildroot}/usr/tests
 
 %files
 %defattr(-,root,root,-)
+%doc README.md CHANGELOG.md
+%license LICENSE
 %{_libdir}/libdtk-%{apiver}
+%dir %{_libdir}/examples
+%{_libdir}/examples/collections
 
 %files -n lib%{name}%{libver}
 %defattr(-,root,root,-)
@@ -117,6 +122,7 @@ rm -rf %{buildroot}/usr/tests
 %dir %{_includedir}/libdtk-*
 %{_includedir}/libdtk-*/DWidget
 %{_libdir}/pkgconfig/%{name}.pc
+%{_libdir}/pkgconfig/%{name}%{pkg_ver}.pc
 %{_libdir}/lib%{name}.so
 %dir %{_libdir}/cmake
 %{_libdir}/cmake/*

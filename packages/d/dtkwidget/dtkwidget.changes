@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug  1 07:39:46 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update pkgconfig profile version to 5.5 
+
+-------------------------------------------------------------------
+Sun Jul 25 08:06:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version 5.5.17.1
+  * Update manual documents
+  * Optimize menu
+  * fix: Qicon background blur
+  * Fix bugs
+
+-------------------------------------------------------------------
 Wed May  5 12:35:55 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.16

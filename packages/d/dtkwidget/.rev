@@ -188,4 +188,18 @@
 - Add fix-return-type.patch</comment>
     <requestid>891673</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>56e790e6902a1d6629ebacffc5ad00a1</srcmd5>
+    <version>5.5.17.1</version>
+    <time>1629269731</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update pkgconfig profile version to 5.5 
+
+- Update version 5.5.17.1
+  * Update manual documents
+  * Optimize menu
+  * fix: Qicon background blur
+  * Fix bugs (forwarded request 910698 from hillwood)</comment>
+    <requestid>910914</requestid>
+  </revision>
 </revisionlist>
