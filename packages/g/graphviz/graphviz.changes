@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Aug 11 12:00:16 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+- Dropped python2 subpackages as the bindings are removed in 2.48
+- Update to version 2.48.0 (changes since 2.47.1)
+  * marginally more accurate computations in Smyrna sphere projection
+  * Perl is no longer required to build Graphviz #2067
+  * nop more reliably returns success and failure exit statuses
+  * implicit 63 character limit on plugin names is removed in GVC
+  * remove Python 2 bindings #1992
+  * improved thread-safety in Graphviz bindings Makefile
+  * the CMake build system now enables -Wextra when building C++
+  * some Cgraph functions that take char* arguments that they do not modify have
+    been updated to take const char* arguments #634
+  * incorrectly using the layout attribute on anything other than a graph now
+    results in a warning about this being invalid #2078
+  * edgepaint accepts more standard -- prefixed command line arguments and
+    rejects invalid options #1971
+  * improved detection of Lefty dependencies in the Autotools build system
+  * Fix: out of bounds read when attempting to load a plugin whose name is ≥63 characters
+  * Fix: out of bounds read when examining a registered plugin whose name is ≥63 characters
+  * Fix: do not fclose(NULL) in gvmap
+  * Fix: Uninitialized variable read in delaunay_tri
+    potentially mismatched format string in tclpkg
+  * Fix: ortho's eqEndSeg incorrectly modifies its arguments #2047
+  * Fix: Autotools enables -Wtrampolines and -Wlogical-op for Clang #2066
+  * Fix: node_distinct_coloring failure due to out-of-memory now reported correctly
+    instead of referring to a failure to open lab_gamut
+  * Fix: a typo GD_LIBS to GDLIB_LIBS in tclpkg/tcldot/Makefile.am !2022
+  * Fix: Autotools build system sets libgd variables now instead of incorrectly setting
+    GTK variables
+  * Fix: HTML strings used as labels are distinguishable in GXL output by kind="HTML-like string"
+  * Fix: a Bashism removed from the Autotools build system
+  * Fix: when Criterion is available, the command_line test binary is no longer built
+    and installed by default, but rather during make check
+  * Fix: round-tripping a file through gv2gxl and then gxl2gv no longer causes
+    HTML-like labels to become non-HTML like labels #517
+  * Fix: fix ODR violation by including the ortho object files in the gvc lib also for
+    CMake and MSbuild #2096
+
+-------------------------------------------------------------------
 Mon Jun 28 06:30:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update graphviz-2.20.2-interpreter_names.patch so the Python demo

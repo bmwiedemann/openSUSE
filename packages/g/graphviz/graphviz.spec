@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package graphviz
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -52,9 +52,8 @@
 %else
 %define sle12 0
 %endif
-%bcond_without python2
 Name:           graphviz%{psuffix}
-Version:        2.47.1
+Version:        2.48.0
 Release:        0
 Summary:        Graph Visualization Tools
 License:        EPL-1.0
@@ -123,9 +122,6 @@ BuildRequires:  pkgconfig(libglade-2.0)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(pango)
-%if %{with python2}
-BuildRequires:  pkgconfig(python)
-%endif
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(tcl)
@@ -253,15 +249,6 @@ Requires:       php(zend-abi) = %{php_zend_api}
 %description -n graphviz-php
 The graphviz-php package contains the PHP extension for the graphviz
 tools.
-
-%package -n python2-gv
-Summary:        Python Extension for Graphviz
-Group:          Productivity/Graphics/Visualization/Graph
-Requires:       graphviz = %{version}
-
-%description -n python2-gv
-The package contains the Python extension for the
-graphviz tools.
 
 %package -n python3-gv
 Summary:        Python 3 Extension for Graphviz
@@ -395,12 +382,6 @@ export LDFLAGS="-pie"
       --disable-io \
       --without-visio \
 %if "%{flavor}" == "addons"
-%if %{with python2}
-      --enable-python2 \
-%else
-      --disable-python \
-      --disable-python2 \
-%endif
       --with-x \
       --with-qt \
       --with-smyrna \
@@ -615,16 +596,6 @@ fi
 %{_datadir}/php%{php_version}/gv.php
 %{_mandir}/man3/gv.3php%{ext_man}
 %config(noreplace) %{phpconf_dir}/gv.ini
-
-%if %{with python2}
-%files -n python2-gv
-%dir %{_libdir}/graphviz/python2
-%{python_sitearch}/_gv.so
-%{python_sitearch}/gv.py
-%{_libdir}/graphviz/python2/_gv.so
-%{_libdir}/graphviz/python2/gv.py
-%{_libdir}/graphviz/python2/libgv_python2.so
-%endif
 
 %files -n python3-gv
 %dir %{_libdir}/graphviz/python3
