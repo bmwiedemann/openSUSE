@@ -15,4 +15,12 @@
     <comment>- Change defaut theme as deepin-dark</comment>
     <requestid>891652</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f2010d45b0bba59f0097dbc51e1e87bd</srcmd5>
+    <version>15.0</version>
+    <time>1629269727</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update dock setting: Regularly scan wifi on dock (forwarded request 910677 from hillwood)</comment>
+    <requestid>910891</requestid>
+  </revision>
 </revisionlist>
