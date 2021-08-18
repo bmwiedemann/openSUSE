@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-zeroconf
-Version:        0.31.0
+Version:        0.35.1
 Release:        0
 Summary:        Pure Python Multicast DNS Service Discovery Library (Bonjour/Avahi compatible)
 License:        LGPL-2.0-only
 Group:          Development/Languages/Python
 URL:            https://github.com/jstasiak/python-zeroconf
 Source:         %{name}-%{version}.tar.xz
-Patch0:         disable-tests.patch
 BuildRequires:  %{python_module ifaddr >= 0.1.7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
@@ -46,7 +45,6 @@ does not force you to use a particular event loop or python-twisted.
 
 %prep
 %autosetup -p1
-sed -i -e "s/__version__ = '0.29.0'/__version__ = '%{version}'/" zeroconf/__init__.py
 
 %build
 %python_build
@@ -57,7 +55,7 @@ sed -i -e "s/__version__ = '0.29.0'/__version__ = '%{version}'/" zeroconf/__init
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest zeroconf/test.py -k 'not (test_integration_with_listener_ipv6 or test_launch)'
+%pytest tests -k 'not (test_integration_with_listener_ipv6 or test_launch or test_close_multiple_times)'
 
 %files %{python_files}
 %doc README.rst
