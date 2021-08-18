@@ -1,7 +1,7 @@
 #
 # spec file for package imv
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           imv
-Version:        3.1.2
+Version:        4.3.0
 Release:        0
 Summary:        Image viewer for X11/Wayland
 License:        MIT AND GPL-2.0-or-later
@@ -26,13 +26,25 @@ URL:            https://github.com/eXeC64/imv
 Source:         https://github.com/eXeC64/imv/archive/v%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  freeimage-devel
-BuildRequires:  libjpeg8-devel
-BuildRequires:  libpng16-devel
-BuildRequires:  librsvg-devel
-BuildRequires:  libtiff-devel
+BuildRequires:  libicu-devel
+BuildRequires:  libinih-devel
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(cmocka)
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(libheif)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.44
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libturbojpeg)
+BuildRequires:  pkgconfig(pangocairo)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-egl)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
 
 %description
 imv is a command line image viewer intended for use with tiling window managers.
@@ -41,18 +53,18 @@ imv is a command line image viewer intended for use with tiling window managers.
 %setup -q
 
 %build
-make %{?_smp_mflags} \
-    PREFIX="%{_prefix}"
+%meson -Dlibnsgif=disabled
+%meson_build
 
 %install
-%make_install \
-    PREFIX="%{_prefix}"
+%meson_install
 
 %files
 %license LICENSE
 %doc AUTHORS README.md
 %{_bindir}/%{name}*
 %{_datadir}/applications/%{name}.desktop
+%{_datadir}/applications/%{name}-folder.desktop
 %{_mandir}/man?/%{name}*
 %{_sysconfdir}/%{name}_config
 

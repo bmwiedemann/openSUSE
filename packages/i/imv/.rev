@@ -36,4 +36,12 @@
 - Remove imv-fixbuild.patch: upstreamed</comment>
     <requestid>712812</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e35ff9f012d10010e333c7f73d517cb3</srcmd5>
+    <version>4.3.0</version>
+    <time>1629269749</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912364</requestid>
+  </revision>
 </revisionlist>

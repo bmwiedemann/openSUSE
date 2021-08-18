@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:58:24 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.3.0:
+  * Give freeimage backend preceedence over libjpeg
+  * Fix lack of X11 window deletion event handling
+  * Scale fonts correctly for high-DPI wayland
+  * Suppress annoying TIFF error messages
+  * Fix missing -lm dependency for imv-msg
+  * Fix image skipping when reading slow filesystems
+  * Add a contrib directory
+  * Add contrib/imv-folder
+  * Fix zoom speed dependence on buffer/image width
+  * Improve stat error handling when loading directories
+  * Fix double-free when backend libjpeg is used
+  * Fix -n option not working for symbolic links
+  * List image/heif as a supported mime type
+  * Fix flickering bug in high-DPI wayland
+
+-------------------------------------------------------------------
+Mon Aug 16 07:58:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.2.0:
+  * Switched to meson build system
+  * Added HEIF backend
+  * Added rotate and flip commands
+  * Added colour support for overlay
+  * Added some missing command/config documentation
+  * Read directories in alphabetical order
+  * Fixed several memory leaks
+  * Improved compatibility with non glibc systems
+  * Fixed several window management bugs for Wayland
+  * Fixed bug when selecting first/last image
+
+-------------------------------------------------------------------
+Mon Aug 16 07:57:41 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.1.0:
+  * Added libsngif backend
+  * Added command history to console
+  * Added proper UTF-8 support to the console
+  * Fixed name of libjpeg-turbo backend
+  * Fixed reading images from stdin
+  * Increased maximum supported PNG file size
+  * Added Keywords to imv.desktop
+  * Set NoDisplay in imv.desktop
+  * Simplified async logic in backends
+  * Fixed typo in manpages
+  * Fixed name of the LGPL
+
+-------------------------------------------------------------------
+Mon Aug 16 07:57:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.1:
+  * Documented default binds in man page
+  * Added icon to imv.desktop
+  * Added builtin aliases to provide backwards compatibility for removed commands
+  * Added warning when legacy bind syntax is detected
+
+-------------------------------------------------------------------
+Mon Aug 16 07:55:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.0.0:
+  * Fixed keyboard layout handling, changing bind syntax
+  * Renamed many commands (select_rel -> next/prev, select_abs -> goto, etc.)
+  * Temporarily removed autoresize option
+  * Dropped SDL2 dependency, implementing Wayland and X11 support natively
+    through imv-wayland and imv-x11 binaries
+  * Added support for displaying SVGs at native resolution regardless of zoom
+    level
+  * Added hidpi support on Wayland
+  * Added '-c' argument to specify commands to run at startup
+  * Added 'bind' command to add new binds at runtime
+  * Added 'background' command to change background colour at runtime
+  * Added 'upscaling' command to modify upscaling method at runtime
+  * Added optional argument to close command to specify an index or all images
+  * Added initial_pan option to configure which part of an image is initially
+    focused on
+  * Added support for aliases passing arguments to underlying their commands
+  * Added imv-msg program to send commands to a running instance of imv
+  * Added $imv_pid environment variable
+  * Allowed imv to remain open with no images open
+  * Improved unicode support in overlay
+  * Fixed typo in $imv_slideshow_duration environment variable
+  * Added new crop scaling method, which will zoom in until an image completely
+    fills the window
+  * Fixed a bug where 16-bit greyscale images would not load
+  * Fixed a memory corruption bug in generic list implementation
+  * Fixed several memory leaks
+
+-------------------------------------------------------------------
 Mon Jul  1 11:16:36 UTC 2019 - mvetter@suse.com
 
 - Update to 3.1.2:
