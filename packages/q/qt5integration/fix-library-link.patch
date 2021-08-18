@@ -1,0 +1,59 @@
+diff -Nur qt5integration-5.5.3/src/iconengines/builtinenginechooser/builtinenginechooser.pro qt5integration-5.5.3-new/src/iconengines/builtinenginechooser/builtinenginechooser.pro
+--- qt5integration-5.5.3/src/iconengines/builtinenginechooser/builtinenginechooser.pro	2021-05-31 17:20:41.000000000 +0800
++++ qt5integration-5.5.3-new/src/iconengines/builtinenginechooser/builtinenginechooser.pro	2021-08-05 21:02:44.826995908 +0800
+@@ -1,3 +1,5 @@
++LIBS += -ldl
++
+ TARGET  = dtkbuiltin
+ PLUGIN_TYPE=iconengines
+ JSON_FILE=builtinengine.json
+diff -Nur qt5integration-5.5.3/src/iconengines/svgiconenginechooser/svgiconenginechooser.pro qt5integration-5.5.3-new/src/iconengines/svgiconenginechooser/svgiconenginechooser.pro
+--- qt5integration-5.5.3/src/iconengines/svgiconenginechooser/svgiconenginechooser.pro	2021-05-31 17:20:41.000000000 +0800
++++ qt5integration-5.5.3-new/src/iconengines/svgiconenginechooser/svgiconenginechooser.pro	2021-08-05 20:59:43.779715479 +0800
+@@ -1,3 +1,5 @@
++LIBS += -ldl
++
+ TARGET  = dsvgicon
+ JSON_FILE=qsvgiconengine.json
+ PLUGIN_TYPE=iconengines
+diff -Nur qt5integration-5.5.3/src/iconengines/xdgiconproxyenginechooser/xdgiconproxyenginechooser.pro qt5integration-5.5.3-new/src/iconengines/xdgiconproxyenginechooser/xdgiconproxyenginechooser.pro
+--- qt5integration-5.5.3/src/iconengines/xdgiconproxyenginechooser/xdgiconproxyenginechooser.pro	2021-05-31 17:20:41.000000000 +0800
++++ qt5integration-5.5.3-new/src/iconengines/xdgiconproxyenginechooser/xdgiconproxyenginechooser.pro	2021-08-05 21:03:03.374913334 +0800
+@@ -1,3 +1,5 @@
++LIBS += -ldl
++
+ TARGET  = xdgicon
+ PLUGIN_TYPE=iconengines
+ JSON_FILE=xdgiconproxyengine.json
+diff -Nur qt5integration-5.5.3/src/imageformats/svgchooser/svgchooser.pro qt5integration-5.5.3-new/src/imageformats/svgchooser/svgchooser.pro
+--- qt5integration-5.5.3/src/imageformats/svgchooser/svgchooser.pro	2021-05-31 17:20:41.000000000 +0800
++++ qt5integration-5.5.3-new/src/imageformats/svgchooser/svgchooser.pro	2021-08-05 21:06:54.889882638 +0800
+@@ -1,3 +1,5 @@
++LIBS += -ldl
++
+ TARGET  = dsvg
+ JSON_FILE=dsvg.json
+ PLUGIN_TYPE=imageformats
+diff -Nur qt5integration-5.5.3/src/platformthemes/platformthemechooser/platformthemechooser.pro qt5integration-5.5.3-new/src/platformthemes/platformthemechooser/platformthemechooser.pro
+--- qt5integration-5.5.3/src/platformthemes/platformthemechooser/platformthemechooser.pro	2021-05-31 17:20:41.000000000 +0800
++++ qt5integration-5.5.3-new/src/platformthemes/platformthemechooser/platformthemechooser.pro	2021-08-05 20:56:25.736471471 +0800
+@@ -2,6 +2,8 @@
+   QT += widgets widgets-private
+ }
+ 
++LIBS += -ldl
++
+ TARGET = qdeepin
+ 
+ PLUGIN_TYPE = platformthemes
+diff -Nur qt5integration-5.5.3/src/styles/stylechooser/stylechooser.pro qt5integration-5.5.3-new/src/styles/stylechooser/stylechooser.pro
+--- qt5integration-5.5.3/src/styles/stylechooser/stylechooser.pro	2021-05-31 17:20:41.000000000 +0800
++++ qt5integration-5.5.3-new/src/styles/stylechooser/stylechooser.pro	2021-08-05 20:42:52.819361302 +0800
+@@ -1,5 +1,7 @@
+ QT += core gui widgets
+ 
++LIBS += -ldl
++
+ TARGET = chameleon
+ 
+ PLUGIN_TYPE=styles

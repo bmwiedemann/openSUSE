@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Aug  5 13:29:32 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.3
+  * Set scrollbar visible
+  * Fix bugs
+  * Update dtk api to 5.5, add some fresh plugins for new dtk api
+- Add fix-library-link.patch, need link to dl
+
+-------------------------------------------------------------------
 Tue Feb  9 00:37:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim obsolete specfile constructs.

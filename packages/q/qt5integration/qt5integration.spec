@@ -1,7 +1,7 @@
 #
-# spec file for package deepin-qt5integration
+# spec file for package qt5integration
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,62 +12,67 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           qt5integration
-Version:        5.1.5
+Version:        5.5.3
 Release:        0
-License:        GPL-3.0
+License:        GPL-3.0-or-later
 Summary:        Qt platform theme integration plugins
-Url:            https://github.com/linuxdeepin/qt5integration
+URL:            https://github.com/linuxdeepin/qt5integration
 Group:          System/GUI/Other
 Source0:        https://github.com/linuxdeepin/qt5integration/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  libqt5-qtbase-common-devel
+# PATCH-FIX-UPSTREAM fix-library-link.patch hillwood@opensuse.org - Need link to dl
+# https://github.com/linuxdeepin/qt5integration/pull/47
+Patch0:         fix-library-link.patch
+BuildRequires:  gtest
 BuildRequires:  libQt5Gui-private-headers-devel
-BuildRequires:  libQt5Widgets-private-headers-devel
 BuildRequires:  libQt5PlatformSupport-devel-static
 BuildRequires:  libQt5PlatformSupport-private-headers-devel
+BuildRequires:  libQt5Widgets-private-headers-devel
+BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  cmake(KF5WindowSystem)
+BuildRequires:  pkgconfig(Qt5Concurrent)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5Gui)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(Qt5Xdg)
+BuildRequires:  pkgconfig(Qt5XdgIconLoader)
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(dtkcore)
-BuildRequires:  pkgconfig(dtkwidget) >= 2.0
+BuildRequires:  pkgconfig(dtkcore5.5)
+BuildRequires:  pkgconfig(dtkwidget5.5)
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(egl)
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(mtdev)
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5OpenGL)
-BuildRequires:  pkgconfig(Qt5Svg)
-BuildRequires:  pkgconfig(Qt5Xdg)
-BuildRequires:  pkgconfig(Qt5XdgIconLoader)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xrender)
+BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-ewmh)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-renderutil)
-BuildRequires:  pkgconfig(xcb)
-BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xrender)
 
 %description
 Multiple Qt plugins to provide better Qt5 integration for DDE are included.
@@ -76,13 +81,13 @@ Multiple Qt plugins to provide better Qt5 integration for DDE are included.
 %autosetup -p1
 
 %build
-%qmake5 DEFINES+=QT_NO_DEBUG_OUTPUT \
-        PREFIX=%{_prefix} \
-        LIB_INSTALL_DIR=%{_libdir}
+%qmake5
 %make_build
 
 %install
 %qmake5_install
+
+find %{buildroot}%{_kf5_plugindir} -type f ! -name '*5.5.so' -delete -print
 
 %files
 %doc CHANGELOG.md README.md
@@ -91,10 +96,11 @@ Multiple Qt plugins to provide better Qt5 integration for DDE are included.
 %dir %{_kf5_plugindir}/iconengines
 %dir %{_kf5_plugindir}/imageformats
 %dir %{_kf5_plugindir}/platformthemes
-%{_kf5_plugindir}/iconengines/libdsvgicon.so
-%{_kf5_plugindir}/iconengines/libdtkbuiltin.so
-%{_kf5_plugindir}/imageformats/libdsvg.so
-%{_kf5_plugindir}/platformthemes/libqdeepin.so
-%{_kf5_plugindir}/styles/libchameleon.so
+%{_kf5_plugindir}/iconengines/libdtkbuiltin5.5.so
+%{_kf5_plugindir}/iconengines/libxdgicon5.5.so
+%{_kf5_plugindir}/imageformats/libdsvg5.5.so
+%{_kf5_plugindir}/platformthemes/libqdeepin5.5.so
+%{_kf5_plugindir}/styles/libchameleon5.5.so
+%{_kf5_plugindir}/iconengines/libdsvgicon5.5.so
 
 %changelog
