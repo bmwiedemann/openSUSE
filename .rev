@@ -16,4 +16,18 @@
   golang 1.16+ (forwarded request 894955 from hillwood)</comment>
     <requestid>894967</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>af611f3932a1b9b1dae9ddfe30f0c296</srcmd5>
+    <version>5.9.16</version>
+    <time>1629269726</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.9.16
+  * Add light-sensor-enable
+  * Drop feature: disable automacally mute
+  * Add feature: regularly scan wifi on dock
+  * Fix bugs
+
+- Update version to 5.9.16, nothing change in tool package. (forwarded request 910676 from hillwood)</comment>
+    <requestid>910890</requestid>
+  </revision>
 </revisionlist>

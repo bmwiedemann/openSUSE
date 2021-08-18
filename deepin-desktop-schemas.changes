@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 29 12:31:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.9.16
+  * Add light-sensor-enable
+  * Drop feature: disable automacally mute
+  * Add feature: regularly scan wifi on dock
+  * Fix bugs
+
+-------------------------------------------------------------------
 Thu May  6 13:03:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update default settings. 
