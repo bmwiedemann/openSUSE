@@ -1,0 +1,19 @@
+Index: CoreFreq-1.86.7/corefreqd.service
+===================================================================
+--- CoreFreq-1.86.7.orig/corefreqd.service
++++ CoreFreq-1.86.7/corefreqd.service
+@@ -6,6 +6,14 @@
+ Description=CoreFreq Daemon
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
+ Type=simple
+ ExecStart=corefreqd -q
+ ExecStop=/bin/kill -QUIT $MAINPID

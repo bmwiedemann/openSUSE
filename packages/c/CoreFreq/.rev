@@ -89,4 +89,12 @@ Fixes compilation on kernel 5.12
 </comment>
     <requestid>903961</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>597a8c2a5c3fc7deb6d8e0e02570a3df</srcmd5>
+    <version>1.86.7</version>
+    <time>1629269751</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912382</requestid>
+  </revision>
 </revisionlist>

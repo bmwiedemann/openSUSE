@@ -25,6 +25,7 @@ URL:            https://github.com/cyring/CoreFreq
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         leap15_2.patch
 Patch1:         leap15_3.patch
+Patch2:         harden_corefreqd.service.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
@@ -46,6 +47,7 @@ AMD Families 0Fh ... 17h (Zen), 18h (Hygon Dhyana)
 %if 0%{?sle_version} == 150300
 %patch1 -p1
 %endif
+%patch2 -p1
 
 %build
 %make_build
