@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:00:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.11.10:
+  Security:
+  * MUC: Fix logic for access to affiliation lists CVE-2021-37601
+    https://prosody.im/security/advisory_20210722/
+  Minor changes:
+  * prosodyctl: Add ‘limits’ to known globals to warn about misplacing it
+  * util.ip: Fix netmask for link-local address range
+  * mod_pep: Remove obsolete node restoration code
+  * util.pubsub: Fix traceback if node data not initialized
+- Update is related to: bsc#1188976 CVE-2021-37601
+
+-------------------------------------------------------------------
 Thu May 13 18:16:14 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 0.11.9:
