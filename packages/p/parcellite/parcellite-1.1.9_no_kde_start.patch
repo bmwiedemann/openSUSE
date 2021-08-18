@@ -5,5 +5,5 @@ diff -uNr old-parcellite-1.1.9/data/parcellite-startup.desktop.in parcellite-1.1
  Exec=parcellite
  Terminal=false
  Type=Application
-+NotShownIn=KDE;
++NotShowIn=KDE;
  X-GNOME-Autostart-enabled=true
