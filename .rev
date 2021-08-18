@@ -62,4 +62,20 @@ Need for dosbox and aplaymidi for play MT-32 sound.</comment>
     macro MT32EMU_RUNTIME_VERSION_CHECK 2.</comment>
     <requestid>907427</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5a9476c9316bc1fe2d643f3c98c05713</srcmd5>
+    <version>2.5.3</version>
+    <time>1629269770</time>
+    <user>RBrownSUSE</user>
+    <comment>- Updated to 2.5.2.
+  * Fixed possible access to uninitialised rhythm timbre memory when
+    using MT-32 control ROM. With control ROMs 2.04 and above,
+    the entire rhythm timbre memory is now initialised as the real
+    devices do. Those timbres that do not exist in MT-32 models are
+    now muted. With control ROMs 1.xx, the timbres 30..59 are mapped
+    to 0..29 that should correspond to the behaviour of real units.
+    The other 4 timbres are muted to avoid undefined behaviour the
+    real hardware exhibits.</comment>
+    <requestid>912583</requestid>
+  </revision>
 </revisionlist>
