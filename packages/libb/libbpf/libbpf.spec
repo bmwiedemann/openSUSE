@@ -25,6 +25,7 @@ Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
 URL:            https://github.com/libbpf/libbpf
 Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/issues/337
 Patch:          libdir.patch
 BuildRequires:  libelf-devel
