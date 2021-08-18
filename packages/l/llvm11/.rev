@@ -94,4 +94,12 @@
   Fix build with linux-glibc-devel 5.13.</comment>
     <requestid>903833</requestid>
   </revision>
+  <revision rev="11" vrev="6">
+    <srcmd5>23f73f5aa61ceaf080ac9adcca79fe71</srcmd5>
+    <version>11.0.1</version>
+    <time>1629269761</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912486</requestid>
+  </revision>
 </revisionlist>

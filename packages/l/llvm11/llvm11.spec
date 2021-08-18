@@ -136,6 +136,8 @@ Patch32:        Fix-missing-include.patch
 Patch33:        CMake-Look-up-target-subcomponents-in-LLVM_AVAILABLE_LIBS.patch
 # Fix build with linux-glibc-devel 5.13. (https://reviews.llvm.org/D102059)
 Patch34:        compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch
+# Fix SystemZ stack temporary overflow. (https://reviews.llvm.org/D97514)
+Patch35:        llvm-systemz-args-handling.patch
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -562,6 +564,7 @@ This package contains the development files for Polly.
 %patch27 -p2
 %patch32 -p2
 %patch33 -p2
+%patch35 -p2
 
 pushd clang-%{_version}.src
 %patch2 -p1

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 16 08:36:03 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add llvm-systemz-args-handling.patch to fix s390 argument handling.
+  [bsc#1189189]
+
+-------------------------------------------------------------------
 Fri Jul  2 21:01:53 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add compiler-rt-Remove-cyclades-inclusion-in-sanitizer.patch:
