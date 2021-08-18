@@ -20,13 +20,17 @@
 %define skip_python2 1
 %bcond_without     test
 Name:           python-Flask-WTF
-Version:        0.14.3
+Version:        0.15.1
 Release:        0
 Summary:        WTForms support for Flask
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/lepture/flask-wtf
 Source:         https://files.pythonhosted.org/packages/source/F/Flask-WTF/Flask-WTF-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-ModuleNotFoundError-wtforms-compat.patch https://github.com/wtforms/wtforms/commit/a34eb532d3b96ed216f204ed3d22fc9962241446
+Patch0:         fix-ModuleNotFoundError-wtforms-compat.patch
+# PATCH-FIX-OPENSUSE fix-ModuleNotFoundError-wtforms-widgets-html5.patch https://github.com/wtforms/wtforms/commit/44a1cecc071cfaec4ff60c9e28935d136cc232ca
+Patch1:         fix-ModuleNotFoundError-wtforms-widgets-html5.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,6 +38,7 @@ Requires:       python-Flask
 Requires:       python-WTForms
 Requires:       python-Werkzeug
 Requires:       python-itsdangerous
+Recommends:     python-email_validator
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Flask-BabelEx}
@@ -51,6 +56,8 @@ Adds WTForms support to your Flask application
 
 %prep
 %setup -q -n Flask-WTF-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %python_build
@@ -62,7 +69,8 @@ Adds WTForms support to your Flask application
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%pytest tests
+# Excluded tests because of gh#wtforms/wtforms#697
+%pytest -k 'not (test_set_default_message_language or test_i18n)' tests
 %endif
 
 %files %{python_files}

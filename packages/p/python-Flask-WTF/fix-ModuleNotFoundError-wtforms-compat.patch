@@ -1,0 +1,16 @@
+ 
+--- a/tests/test_form.py
++++ b/tests/test_form.py
+@@ -2,7 +2,11 @@ from io import BytesIO
+ 
+ from flask import json, request
+ from wtforms import FileField, HiddenField, IntegerField, StringField
+-from wtforms.compat import with_metaclass
++try:
++    from wtforms.compat import with_metaclass
++except ImportError:
++    def with_metaclass(meta, base=object):
++        return meta("NewBase", (base,), {})
+ from wtforms.form import FormMeta
+ from wtforms.validators import DataRequired
+ from wtforms.widgets import HiddenInput

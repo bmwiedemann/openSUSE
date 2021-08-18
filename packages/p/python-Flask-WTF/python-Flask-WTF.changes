@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Aug 14 11:30:16 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 0.15.1
+  * Add python_requires metadata to avoid installing on unsupported
+    Python versions.
+- Changes from 0.15.0
+  * Drop support for Python < 3.6.
+  * FileSize validator.
+  * Extra requirement email installs the email_validator package.
+  * Fixed Flask 2.0 warnings.
+  * Various documentation fixes.
+  * Various CI fixes.
+- Add fix-ModuleNotFoundError-wtforms-compat.patch to fix
+  ModuleNotFoundError in tests/test_form.py.
+- Add fix-ModuleNotFoundError-wtforms-widgets-html5.patch to fix
+  ModuleNotFoundError in flask_wtf/html5.py.
+- Skip test_set_default_message_language and test_i18n because of
+  gh#wtforms/wtforms#697.
+
+-------------------------------------------------------------------
 Thu Jan 28 09:43:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Define skip_python2 so we can build the package for SLE where an
