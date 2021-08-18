@@ -26,7 +26,7 @@
 %endif
 
 Name:           deepin-file-manager
-Version:        5.2.18
+Version:        5.2.24
 Release:        0
 Summary:        Deepin File Manager
 License:        GPL-3.0-or-later AND MIT
@@ -204,9 +204,9 @@ src/dde-file-manager-daemon/dbusservice/vault.sh
 sed -i 's|qdbuscpp2xml|qdbuscpp2xml-qt5|g' src/dde-file-manager-daemon/dbusservice/vault.sh
 
 # --as-needed link option
-sed -i '/PKGCONFIG +=/s|$| x11|' src/%{_name}-lib/%{_name}-lib.pro
+sed -i '/PKGCONFIG +=/s|$| x11 liblucene++|' src/%{_name}-lib/%{_name}-lib.pro
 
-sed -i 's/dframeworkdbus/dframeworkdbus liblucene++/g;s/-lKF5Codecs/-lKF5Codecs -llucene++/g' src/dde-file-manager-lib/dde-file-manager-lib.pro
+# sed -i 's/dframeworkdbus/dframeworkdbus liblucene++/g;s/-lKF5Codecs/-lKF5Codecs -llucene++/g' src/dde-file-manager-lib/dde-file-manager-lib.pro
 
 cp 3rdparty/fsearch/* src/dde-file-manager-lib/search/
 # sed -i 's|fsearch.h|../../../3rdparty/fsearch/fsearch.h|g' src/dde-file-manager-lib/search/dfsearch.h
