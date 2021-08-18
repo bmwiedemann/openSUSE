@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %bcond_without python2
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-humanfriendly%{psuffix}
-Version:        8.1
+Version:        9.2
 Release:        0
 Summary:        Human friendly input/output for text interfaces using Python
 License:        MIT
@@ -38,7 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module capturer >= 2.1}

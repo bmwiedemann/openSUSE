@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Aug 17 10:58:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 9.2
+  Maintenance release:
+  * Merged pull request `#46`_ which fixes several :pypi:`flake8` warnings.
+  * Merged pull request `#49`_ which marks Python 3.9 support final.
+  * Merged pull request `#51`_ which helps to stabilize the test suite.
+  * Merged pull request `#52`_ which updates the :mod:`humanfriendly.sphinx`
+    module to include Sphinx extension metadata that has become mandatory in a
+    recent Sphinx release. After merging the pull request I added additional
+    metadata including the version.
+- from version 9.1
+  * Added :func:`~humanfriendly.compat.on_macos()` function to detect Apple MacOS
+    (I need this in an upcoming :pypi:`coloredlogs` release and don't want to have
+    to think about how to detect MacOS again in the future 😇).
+- from version 9.0
+  The major version number was bumped because the bug fix for
+  :func:`~humanfriendly.text.pluralize()` is backwards incompatible
+  and (even though this seems like very "cosmetic" functionality)
+  version numbers are cheap, so who cares 😉.
+  **Bug fixes:**
+  * Changed :func:`~humanfriendly.format_number()` to properly support negative
+    numbers (as suggested in `issue #40`_).
+  * Changed :func:`~humanfriendly.text.pluralize()` to generate "1.5 seconds"
+    instead of "1.5 second" (as suggested in `issue #43`_).
+  **Enhancements:**
+  * Enhanced :func:`~humanfriendly.text.concatenate()` to support ``conjunction``
+    and ``serial_comma`` keyword arguments (as suggested in `issue #30`_).
+  * Added :func:`~humanfriendly.text.pluralize_raw()` to select singular or
+    plural form without prefixing the count to the text that is returned.
+- from version 8.2
+  * Added a simple case insensitive dictionary implementation, for details refer to
+    the new :mod:`humanfriendly.case` module.
+
+-------------------------------------------------------------------
 Thu Apr 23 11:01:33 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
