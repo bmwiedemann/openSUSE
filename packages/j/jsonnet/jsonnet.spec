@@ -1,7 +1,7 @@
 #
 # spec file for package jsonnet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           jsonnet
-Version:        0.15.0
+Version:        0.17.0
 Release:        0
 Summary:        C++ implementation of Jsonnet
 License:        Apache-2.0
 URL:            https://github.com/google/jsonnet
-Source:         %{name}-%{version}.tar.gz
+Source:         https://github.com/google/jsonnet/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch:          %{name}-%{version}.dif
-BuildRequires:  gcc-c++
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gtest
 
 %description
@@ -33,7 +33,7 @@ This an implementation of Jsonnet in C++.
 
 %prep
 %setup -q
-%patch -p0
+%autopatch -p0
 
 %build
 %cmake -DUSE_SYSTEM_GTEST=ON -DBUILD_STATIC_LIBS=ON -DBUILD_SHARED_BINARIES=OFF
