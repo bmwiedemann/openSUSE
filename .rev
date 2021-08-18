@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>891653</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fcae88fd998243df0666f9bd119063b4</srcmd5>
+    <version>5.10.5</version>
+    <time>1629269725</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.10.5
+  * Update manunal documents
+  * Fix bugs
+  * Add some test modules
+  * Update translation (forwarded request 910673 from hillwood)</comment>
+    <requestid>910887</requestid>
+  </revision>
 </revisionlist>

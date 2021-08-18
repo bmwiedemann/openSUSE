@@ -23,7 +23,7 @@
 %endif
 
 Name:           deepin-compressor
-Version:        5.10.0.15
+Version:        5.10.5
 Release:        0
 License:        GPL-3.0+
 Summary:        Archive Manager for Deepin Desktop
@@ -35,6 +35,7 @@ Patch0:         001-fix-libdir.patch
 # PATCH-FIX-UPSTREAM 002-install-compressor-ChardetDetector.patch hillwood@opensuse.org 
 # Install libcompressor-ChardetDetector.so
 Patch1:         002-install-compressor-ChardetDetector.patch
+BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  libqt5-linguist
 BuildRequires:  hicolor-icon-theme
@@ -72,6 +73,11 @@ sed -i 's/lrelease/lrelease-qt5/g' src/translate_generation.sh
 %install
 %cmake_install
 
+rm %{buildroot}%{_libdir}/deepin-compressor/plugins/libcompressor-ChardetDetector.a
+chmod -x %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+%fdupes %{buildroot}%{_datadir}
+
 %files
 %doc README.md
 %license LICENSE
@@ -81,9 +87,7 @@ sed -i 's/lrelease/lrelease-qt5/g' src/translate_generation.sh
 %dir %{_datadir}/applications/context-menus
 %{_datadir}/applications/context-menus/compressor-*.conf
 %dir %{_datadir}/%{name}
-%dir %{_datadir}/%{name}/compressedformat
 %{_datadir}/deepin-manual
-%{_datadir}/%{name}/compressedformat/compressor-singlecompress.conf
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/mime/packages/deepin-compressor.xml
 
