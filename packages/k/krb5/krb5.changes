@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug  2 08:39:31 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 1.19.2
+  * Fix a denial of service attack against the KDC encrypted challenge
+    code; (CVE-2021-36222);
+  * Fix a memory leak when gss_inquire_cred() is called without a
+    credential handle.
+
+-------------------------------------------------------------------
 Mon May  3 09:40:17 UTC 2021 - Rodrigo Lourenço <rzl@rzl.ooo>
 
 - Build with full Cyrus SASL support
