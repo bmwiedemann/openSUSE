@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:47:34 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.0:
+  Features:
+  * Files on remote machines can be viewed/tailed if they are accessible
+    via SSH. The syntax for specifying the host and path is similar to
+    scp. For example, to view the files in the /var/log directory on the
+    machine "host1.example.org":
+    user@host1.example.org:/var/log
+    Note that you must be able to log into the machine without any
+    interaction.
+    Added the ':filter-expr' command to filter log messages based on an SQL
+    expression. This command allows much greater control over filtering.
+  * Added the ':mark-expr' command to mark log messages based on an SQL
+    expression. This command makes it easier to programmatically mark
+    log messages compared to using SQL.
+  * Added support for archive files, like zip, and other compression formats,
+    like xz, when compiled with libarchive. When one of these types of
+    files is detected, they are unpacked into a temporary directory and
+    all of the files are loaded into lnav.
+  * Added an 'xpath()' table-valued function for extracting values from
+    strings containing XML snippets.
+  * Added the ':prompt' command to allow for more customization of prompts.
+    Combined with a custom keymapping, you can now open a prompt and prefill
+    it with a given value. For example, a key could be bound to the
+    following command to open the command prompt with ":filter-in " already
+    filled in:
+    :prompt command : 'filter-in '
+  * Added support for the W3C Extended Log File Format with the name
+    "w3c_log". Similarly to the bro log format, the header is used to
+    determine the columns in a particular file. However, since the columns
+    can be different between files, the SQL table only has a well-known set
+    of columns and the remainder are accessible through JSON-objects stored
+    in columns like "cs_headers" and "sc_headers".
+  * Added support for the S3 Access File Format.
+  * To jump to the first search hit above the top line in a view, you can
+    press CTRL+J instead of ENTER in the search prompt. Pressing ENTER
+    will jump to the first hit below the current window.
+  * Filtering, as a whole, can be now disabled/enabled without affecting
+    the state of individual filters. This includes text and time-filters
+    (i.e. :hide-lines-before). You can enable/disable filtering by:
+    pressing 'f' in the filter editor UI; executing the ':toggle-filtering'
+    command; or by doing an UPDATE on the "filtering" column of the
+    "lnav_views" SQLite table.
+  * Themes can now include definitions for text highlights under:
+    /ui/theme-defs/<theme_name>/highlights
+  * Added a "grayscale" theme that isn't so colorful.
+  * Added the humanize_file_size() SQL function that converts a numeric size
+    to a human-friendly string.
+  * Added the sparkline() SQL function that returns a "sparkline" bar made
+    out of unicode characters. It can be used with a single value or as
+    an aggregator.
+  * Added a "log_time_msecs" hidden column to the log tables that returns
+    the timestamp as the number of milliseconds from the epoch.
+  * Added an "lnav_top_file()" SQL function that can be used to get the
+    name of the top line in the top view or NULL if the line did not come
+    from a file.
+  * Added a "mimetype" column to the lnav_file table that returns a guess as
+    to the MIME type of the file contents.
+  * Added a "content" hidden column to the lnav_file table that can be used
+    to read the contents of the file. The contents can then be passed to
+    functions that operate on XML/JSON data, like xpath() or json_tree().
+  * Added an "lnav_top_view" SQL VIEW that returns the row for the top view
+    in the lnav_views table.
+  * The "generate_series()" SQLite extension is now included by default.
+    One change from the standard implementation is that both the start and
+    stop are required parameters.
+  * Added the ";.read" SQL command for executing a plain SQL file.
+  * Added the "-N" flag so that lnav will run without opening the default
+    syslog file.
+  Interface Changes:
+  * When copying log lines, the file name and time offset will be included
+    in the copy if they are enabled.
+  * Log messages that cannot be parsed properly will be given an "invalid"
+    log level and the invalid portions colored yellow.
+  * The range_start and range_stop values of the regexp_capture() results
+    now start at 1 instead of zero to match with what the other SQL string
+    functions expect.
+  * The ":write-cols-to" command has been renamed to ":write-table-to".
+  * The DB view will limit the maximum column width to 120 characters.
+  * The ":echo" command now evaluates its message to do variable
+    substitution.
+  * The ":write-raw-to" command has been changed to write the original
+    log file content of marked lines. For example, when viewing a JSON
+    log, the JSON-Line values from the log file will be written to the
+    output file. The ":write-view-to" command has been added to perform
+    the previous work of ":write-raw-to" where the raw content of the view
+    is written to the file.
+  Fixes:
+  * Unicode text can now be entered in prompts.
+  * The replicate() SQL function would cause a crash if the number of
+    replications was zero.
+  * Many internal improvements.
+
+-------------------------------------------------------------------
 Fri Sep 25 07:38:04 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.9.0:

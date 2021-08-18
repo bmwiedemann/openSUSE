@@ -2,7 +2,7 @@
 #
 # spec file for package lnav
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010-2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,27 +18,29 @@
 #
 
 
+%if 0%{?suse_version} >= 1500
+%define cxx g++
+BuildRequires:  gcc-c++
+%else
+%define cxx g++-6
+BuildRequires:  gcc6-c++
+%endif
 Name:           lnav
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        Logfile Navigator
 License:        BSD-2-Clause
 Group:          System/Monitoring
-URL:            http://lnav.org
+URL:            https://lnav.org
 #Git-Clone:     https://github.com/tstack/lnav.git
 Source:         https://github.com/tstack/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        lnav.desktop
-%if 0%{?suse_version} >= 1500
-BuildRequires:  gcc-c++
-%define cxx g++
-%else
-BuildRequires:  gcc6-c++
-%define cxx g++-6
-%endif
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libcurl-devel
 BuildRequires:  ncurses-devel
+# Only needed for the tests to run
+BuildRequires:  openssh
 BuildRequires:  pcre-devel
 BuildRequires:  readline-devel
 BuildRequires:  zlib-devel
@@ -65,17 +67,16 @@ quickly and efficiently focus on problems.
 %setup -q
 
 %build
-export CXX=%cxx
+export CXX=%{cxx}
 autoreconf -fiv
 %configure \
      --disable-silent-rules \
      --disable-static \
      --with-ncurses \
      --with-readline
-
 #     --with-yajl       local copy contains changes that will probably be merged for next release (after 2.1.0).
 
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
