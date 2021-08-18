@@ -354,4 +354,25 @@ See the COPYING file (forwarded request 151441 from babelworx)</comment>
   - gdbm-no-common.patch (upstreamed)</comment>
     <requestid>859028</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>76ee2a3adfd8ed5981b76204aecf22eb</srcmd5>
+    <version>1.20</version>
+    <time>1629269708</time>
+    <user>RBrownSUSE</user>
+    <comment>- version update to 1.20
+  * New bucket cache
+    The bucket cache support has been rewritten from scratch.  The new
+    bucket cache code provides for significant speed up of search
+    operations.
+  * Change mmap prereading strategy
+    Pre-reading of the memory mapper regions, introduced in version 1.19
+    can be advantageous only when doing intensive look-ups on a read-only
+    database.  It degrades performance otherwise, especially if doing
+    multiple inserts.  Therefore, this version introduces a new flag
+    to gdbm_open: GDBM_PREREAD.  When given, it enables pre-reading of
+    memory mapped regions.
+- modified patches
+  % gdbm-no-build-date.patch (refreshed)</comment>
+    <requestid>911063</requestid>
+  </revision>
 </revisionlist>

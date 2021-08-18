@@ -1,7 +1,7 @@
 #
 # spec file for package gdbm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define lname	libgdbm6
 %define lcompat libgdbm_compat4
 Name:           gdbm
-Version:        1.19
+Version:        1.20
 Release:        0
 Summary:        GNU dbm key/data database
 License:        GPL-3.0-or-later
@@ -97,7 +97,7 @@ Requires:       %{lcompat} = %{version}
 Requires:       %{lname} = %{version}
 %if "%{install_info_prereq}" != ""
 Requires(pre):  %{install_info_prereq}
-Requires(preun): %{install_info_prereq}
+Requires(preun):%{install_info_prereq}
 %endif
 
 %description devel
