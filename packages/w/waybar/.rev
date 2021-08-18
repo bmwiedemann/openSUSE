@@ -423,4 +423,41 @@
   Add waybar-0.9.7-fmt-compat.patch</comment>
     <requestid>906064</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>52106db4b181222e050bf7f5fb479077</srcmd5>
+    <version>0.9.8</version>
+    <time>1629269754</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.9.8:
+  * Fix incorrect tray icon scaling
+  * Don't start if graphical-session is not running
+  * feat(tray): handle Status property
+  * feat(tray): handle scroll events
+  * feat(tray): fallback to Title for items without ToolTip
+  * feat(tray): implement tooltips (text only) for tray items
+  * refactor(tray): infer changed properties from signal name
+  * fix(tray): ignore unused WindowId property
+  * Fix blurry tray icons for HiDPI displays
+  * Remove unused variable
+  * Add man page for keyboard_state module
+  * Search for device automatically if none given
+  * Add default style
+  * Update css class when locked/unlocked
+  * Add more configuaration
+  * Basic keyboard state module
+  * Fix pulseaudio icon name compilation error
+  * pulseaudio: Control currently running sink
+  * Support per-device icon in pulseaudio
+  * Improve sway/language
+  * Do not fail to parse a multi-bar config
+  * libfmt &gt;=8.0.0 compatibility
+  * Add include man section
+  * Workaround for circular imports
+  * Proper formatting
+  * Add recursive config includes
+  * fix(util): protect std::condition_variable methods from pthread_cancel
+  * network: Fix mix use of default and state specific format
+  * network: Fix one case where default route is deleted without notification</comment>
+    <requestid>912430</requestid>
+  </revision>
 </revisionlist>

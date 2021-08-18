@@ -17,7 +17,7 @@
 
 
 Name:           waybar
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Customizable Wayland bar for Sway and Wlroots based compositors
 License:        MIT
@@ -27,8 +27,6 @@ URL:            https://github.com/Alexays/Waybar
 # to get the `date` dependency. and create own tarball
 #Source:         https://github.com/Alexays/Waybar/archive/%{version}.tar.gz
 Source:         %{version}.tar.xz
-# boo#1188200 - https://github.com/Alexays/Waybar/commit/368e4813de5356332d1167e8200cb5633e772ed6
-Patch0:         waybar-0.9.7-fmt-compat.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  gtk-layer-shell-devel
@@ -52,6 +50,7 @@ BuildRequires:  pkgconfig(libmpdclient)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 # optional: audio
+BuildRequires:  pkgconfig(libevdev)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(sigc++-2.0)
@@ -60,6 +59,7 @@ BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-protocols)
+BuildRequires:  pkgconfig(xkbregistry)
 # requires branding
 Requires:       %{name}-branding
 # optional: sway integration

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:25:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.9.8:
+  * Fix incorrect tray icon scaling
+  * Don't start if graphical-session is not running
+  * feat(tray): handle Status property
+  * feat(tray): handle scroll events
+  * feat(tray): fallback to Title for items without ToolTip
+  * feat(tray): implement tooltips (text only) for tray items
+  * refactor(tray): infer changed properties from signal name
+  * fix(tray): ignore unused WindowId property
+  * Fix blurry tray icons for HiDPI displays
+  * Remove unused variable
+  * Add man page for keyboard_state module
+  * Search for device automatically if none given
+  * Add default style
+  * Update css class when locked/unlocked
+  * Add more configuaration
+  * Basic keyboard state module
+  * Fix pulseaudio icon name compilation error
+  * pulseaudio: Control currently running sink
+  * Support per-device icon in pulseaudio
+  * Improve sway/language
+  * Do not fail to parse a multi-bar config
+  * libfmt >=8.0.0 compatibility
+  * Add include man section
+  * Workaround for circular imports
+  * Proper formatting
+  * Add recursive config includes
+  * fix(util): protect std::condition_variable methods from pthread_cancel
+  * network: Fix mix use of default and state specific format
+  * network: Fix one case where default route is deleted without notification
+  * network: Handle ip route priority
+  * network: Also clear ifname in clearIface()
+  * network: Parse whole RTM_NEWROUTE msg before interpreting it
+  * sway-language: ignore events with empty layout
+  * network: Update WiFi information when available
+  * network: Fix use of carrier information
+  * doc: add man for exclusive and passthrough flags
+  * feat(bar): add config flag to disable exclusive zone
+  * feat(bar): add config flag for pointer event passthrough
+  * Add options to use a .json extension for the config filename
+  * network: Handle carrier information
+  * network: Rework interface auto detection, handle route change events
+  * network: Rework address lookup to use only events
+  * network: Rework initial interface search by using a dump
+  * network: Read all available messages on ev_sock_
+  * network: Start the module with some text in the label_
+  * network: Initialise cidr_ like clearIface() does
+  * Fix power calculation when battery units are in μA instead of μW
+  * fix: incorrect battery percentage on Pinebook Pro
+  * fix: bluetooth status tooltip
+  * rewriteTitle: allow multiple sequential rewrites
+  * [modules/battery] allow format-discharging-full
+  * [modules/pulseaudio] fix bluetooth class for PipeWire
+  * Document changes in manpage
+  * Catch exception on erroneous rules
+  * Add option to rewrite sway/window title
+  * feat: implement mpd volume format template
+  * Remove exceed protected
+  * Add ignore-list param to wlr/taskbar
+- Remove waybar-0.9.7-fmt-compat.patch: upstreamed
+
+-------------------------------------------------------------------
 Tue Jul 13 09:50:00 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - bsc#1188200 - waybar undefined symbol:
