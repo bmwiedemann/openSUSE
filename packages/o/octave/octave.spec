@@ -16,9 +16,9 @@
 #
 
 
-%define apiver  v55
+%define apiver  v56
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 6.2.0
+%define pkg_ver 6.3.0
 %define src_ver %{pkg_ver}
 
 # Use native graphics or gnuplot
@@ -63,8 +63,10 @@ Source3:        octave.macros
 Patch0:         octave_tools_pie.patch
 # PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?54607
 Patch1:         0001-Disable-signal-handler-thread-avoid-duplicate-signal.patch
-# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016
+# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016 - updated to cope with octave-6.3.0
 Patch2:         0001-Use-reentrant-libqhull_r.patch
+# PATCH-FIX-UPSTREAM - https://savannah.gnu.org/bugs/?60016 - complements patch2 to cope with QHULL_R_* flags
+Patch3:         octave-qhull_r-fixes.patch
 BuildRequires:  arpack-ng-devel
 # Required for Patch0
 BuildRequires:  autoconf
@@ -94,7 +96,7 @@ BuildRequires:  pkgconfig(GraphicsMagick++)
 BuildRequires:  lzip
 BuildRequires:  pcre-devel
 BuildRequires:  pkg-config
-BuildRequires:  qhull-devel
+BuildRequires:  qhull_r-devel
 BuildRequires:  qrupdate-devel
 BuildRequires:  readline-devel
 BuildRequires:  suitesparse-devel
@@ -220,6 +222,7 @@ This package contains documentation for Octave.
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1
+%patch3 -p1
 
 # define octave_blas macros
 sed -i 's/OCTAVE_BLAS_LIBRARY_NAME/%{blas_library}/g' %{SOURCE3}

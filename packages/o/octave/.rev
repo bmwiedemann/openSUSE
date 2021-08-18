@@ -589,4 +589,19 @@ http://hg.savannah.gnu.org/hgweb/octave/rev/122d3f62e179 (forwarded request 1845
     <comment></comment>
     <requestid>891834</requestid>
   </revision>
+  <revision rev="72" vrev="1">
+    <srcmd5>448d0adf794864e61dd188fe8be0cbc5</srcmd5>
+    <version>6.3.0</version>
+    <time>1629269756</time>
+    <user>RBrownSUSE</user>
+    <comment>- Upgrade to octave 6.3.0:
+  * Long list of changes, see
+    https://www.gnu.org/software/octave/news/release/2021/07/11/octave-6.3.0-released.html
+- Update 0001-Use-reentrant-libqhull_r.patch for use with version
+  6.3.0
+- Add octave-qhull_r-fixes.patch to complement
+  0001-Use-reentrant-libqhull_r.patch for the build system.
+</comment>
+    <requestid>912421</requestid>
+  </revision>
 </revisionlist>

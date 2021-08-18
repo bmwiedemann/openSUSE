@@ -1,0 +1,193 @@
+--- ./build-aux/subst-config-vals.in.sh.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./build-aux/subst-config-vals.in.sh	2021-07-20 09:37:52.750166337 -0300
+@@ -202,9 +202,9 @@
+ PCRE_LIBS="@PCRE_LIBS@"
+ PTHREAD_CFLAGS="@PTHREAD_CFLAGS@"
+ PTHREAD_LIBS="@PTHREAD_LIBS@"
+-QHULL_CPPFLAGS="@QHULL_CPPFLAGS@"
+-QHULL_LDFLAGS="@QHULL_LDFLAGS@"
+-QHULL_LIBS="@QHULL_LIBS@"
++QHULL_R_CPPFLAGS="@QHULL_R_CPPFLAGS@"
++QHULL_R_LDFLAGS="@QHULL_R_LDFLAGS@"
++QHULL_R_LIBS="@QHULL_R_LIBS@"
+ QRUPDATE_CPPFLAGS="@QRUPDATE_CPPFLAGS@"
+ QRUPDATE_LDFLAGS="@QRUPDATE_LDFLAGS@"
+ QRUPDATE_LIBS="@QRUPDATE_LIBS@"
+@@ -368,9 +368,9 @@
+   -e "s|%OCTAVE_CONF_PREFIX%|\"${prefix}\"|" \
+   -e "s|%OCTAVE_CONF_PTHREAD_CFLAGS%|\"${PTHREAD_CFLAGS}\"|" \
+   -e "s|%OCTAVE_CONF_PTHREAD_LIBS%|\"${PTHREAD_LIBS}\"|" \
+-  -e "s|%OCTAVE_CONF_QHULL_CPPFLAGS%|\"${QHULL_CPPFLAGS}\"|" \
+-  -e "s|%OCTAVE_CONF_QHULL_LDFLAGS%|\"${QHULL_LDFLAGS}\"|" \
+-  -e "s|%OCTAVE_CONF_QHULL_LIBS%|\"${QHULL_LIBS}\"|" \
++  -e "s|%OCTAVE_CONF_QHULL_CPPFLAGS%|\"${QHULL_R_CPPFLAGS}\"|" \
++  -e "s|%OCTAVE_CONF_QHULL_LDFLAGS%|\"${QHULL_R_LDFLAGS}\"|" \
++  -e "s|%OCTAVE_CONF_QHULL_LIBS%|\"${QHULL_R_LIBS}\"|" \
+   -e "s|%OCTAVE_CONF_QRUPDATE_CPPFLAGS%|\"${QRUPDATE_CPPFLAGS}\"|" \
+   -e "s|%OCTAVE_CONF_QRUPDATE_LDFLAGS%|\"${QRUPDATE_LDFLAGS}\"|" \
+   -e "s|%OCTAVE_CONF_QRUPDATE_LIBS%|\"${QRUPDATE_LIBS}\"|" \
+--- ./build-aux/subst-cross-config-vals.in.sh.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./build-aux/subst-cross-config-vals.in.sh	2021-07-20 09:37:52.762166336 -0300
+@@ -206,9 +206,9 @@
+ PCRE_LIBS="@PCRE_LIBS@"
+ PTHREAD_CFLAGS="@PTHREAD_CFLAGS@"
+ PTHREAD_LIBS="@PTHREAD_LIBS@"
+-QHULL_CPPFLAGS="@QHULL_CPPFLAGS@"
+-QHULL_LDFLAGS="@QHULL_LDFLAGS@"
+-QHULL_LIBS="@QHULL_LIBS@"
++QHULL_R_CPPFLAGS="@QHULL_R_CPPFLAGS@"
++QHULL_R_LDFLAGS="@QHULL_R_LDFLAGS@"
++QHULL_R_LIBS="@QHULL_R_LIBS@"
+ QRUPDATE_CPPFLAGS="@QRUPDATE_CPPFLAGS@"
+ QRUPDATE_LDFLAGS="@QRUPDATE_LDFLAGS@"
+ QRUPDATE_LIBS="@QRUPDATE_LIBS@"
+@@ -372,9 +372,9 @@
+   -e "s|%OCTAVE_CONF_PREFIX%|\"${prefix}\"|" \
+   -e "s|%OCTAVE_CONF_PTHREAD_CFLAGS%|\"${PTHREAD_CFLAGS}\"|" \
+   -e "s|%OCTAVE_CONF_PTHREAD_LIBS%|\"${PTHREAD_LIBS}\"|" \
+-  -e "s|%OCTAVE_CONF_QHULL_CPPFLAGS%|\"${QHULL_CPPFLAGS}\"|" \
+-  -e "s|%OCTAVE_CONF_QHULL_LDFLAGS%|\"${QHULL_LDFLAGS}\"|" \
+-  -e "s|%OCTAVE_CONF_QHULL_LIBS%|\"${QHULL_LIBS}\"|" \
++  -e "s|%OCTAVE_CONF_QHULL_CPPFLAGS%|\"${QHULL_R_CPPFLAGS}\"|" \
++  -e "s|%OCTAVE_CONF_QHULL_LDFLAGS%|\"${QHULL_R_LDFLAGS}\"|" \
++  -e "s|%OCTAVE_CONF_QHULL_LIBS%|\"${QHULL_R_LIBS}\"|" \
+   -e "s|%OCTAVE_CONF_QRUPDATE_CPPFLAGS%|\"${QRUPDATE_CPPFLAGS}\"|" \
+   -e "s|%OCTAVE_CONF_QRUPDATE_LDFLAGS%|\"${QRUPDATE_LDFLAGS}\"|" \
+   -e "s|%OCTAVE_CONF_QRUPDATE_LIBS%|\"${QRUPDATE_LIBS}\"|" \
+--- ./configure.orig	2021-07-20 09:37:10.722168211 -0300
++++ ./configure	2021-07-20 09:37:52.822166334 -0300
+@@ -88542,9 +88542,9 @@
+   PortAudio libraries:           $PORTAUDIO_LIBS
+   PTHREAD flags:                 $PTHREAD_CFLAGS
+   PTHREAD libraries:             $PTHREAD_LIBS
+-  QHULL CPPFLAGS:                $QHULL_CPPFLAGS
+-  QHULL LDFLAGS:                 $QHULL_LDFLAGS
+-  QHULL libraries:               $QHULL_LIBS
++  QHULL CPPFLAGS:                $QHULL_R_CPPFLAGS
++  QHULL LDFLAGS:                 $QHULL_R_LDFLAGS
++  QHULL libraries:               $QHULL_R_LIBS
+   QRUPDATE CPPFLAGS:             $QRUPDATE_CPPFLAGS
+   QRUPDATE LDFLAGS:              $QRUPDATE_LDFLAGS
+   QRUPDATE libraries:            $QRUPDATE_LIBS
+--- ./libgnu/Makefile.in.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./libgnu/Makefile.in	2021-07-20 09:38:00.634165985 -0300
+@@ -1955,9 +1955,9 @@
+ QHELPGENERATOR = @QHELPGENERATOR@
+ QHELPGENERATORFLAGS = @QHELPGENERATORFLAGS@
+ QHELPGENERATOR_QTVER = @QHELPGENERATOR_QTVER@
+-QHULL_CPPFLAGS = @QHULL_CPPFLAGS@
+-QHULL_LDFLAGS = @QHULL_LDFLAGS@
+-QHULL_LIBS = @QHULL_LIBS@
++QHULL_R_CPPFLAGS = @QHULL_R_CPPFLAGS@
++QHULL_R_LDFLAGS = @QHULL_R_LDFLAGS@
++QHULL_R_LIBS = @QHULL_R_LIBS@
+ QRUPDATE_CPPFLAGS = @QRUPDATE_CPPFLAGS@
+ QRUPDATE_LDFLAGS = @QRUPDATE_LDFLAGS@
+ QRUPDATE_LIBS = @QRUPDATE_LIBS@
+--- ./libinterp/build-env.h.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./libinterp/build-env.h	2021-07-20 09:38:02.114165919 -0300
+@@ -138,9 +138,9 @@
+     extern const char *PREFIX;
+     extern const char *PTHREAD_CFLAGS;
+     extern const char *PTHREAD_LIBS;
+-    extern const char *QHULL_CPPFLAGS;
+-    extern const char *QHULL_LDFLAGS;
+-    extern const char *QHULL_LIBS;
++    extern const char *QHULL_R_CPPFLAGS;
++    extern const char *QHULL_R_LDFLAGS;
++    extern const char *QHULL_R_LIBS;
+     extern const char *QRUPDATE_CPPFLAGS;
+     extern const char *QRUPDATE_LDFLAGS;
+     extern const char *QRUPDATE_LIBS;
+--- ./libinterp/build-env.in.cc.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./libinterp/build-env.in.cc	2021-07-20 09:38:02.130165919 -0300
+@@ -239,11 +239,11 @@
+ 
+     const char *PTHREAD_LIBS = %OCTAVE_CONF_PTHREAD_LIBS%;
+ 
+-    const char *QHULL_CPPFLAGS = %OCTAVE_CONF_QHULL_CPPFLAGS%;
++    const char *QHULL_R_CPPFLAGS = %OCTAVE_CONF_QHULL_CPPFLAGS%;
+ 
+-    const char *QHULL_LDFLAGS = %OCTAVE_CONF_QHULL_LDFLAGS%;
++    const char *QHULL_R_LDFLAGS = %OCTAVE_CONF_QHULL_LDFLAGS%;
+ 
+-    const char *QHULL_LIBS = %OCTAVE_CONF_QHULL_LIBS%;
++    const char *QHULL_R_LIBS = %OCTAVE_CONF_QHULL_LIBS%;
+ 
+     const char *QRUPDATE_CPPFLAGS = %OCTAVE_CONF_QRUPDATE_CPPFLAGS%;
+ 
+--- ./libinterp/corefcn/toplev.cc.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./libinterp/corefcn/toplev.cc	2021-07-20 09:38:02.682165894 -0300
+@@ -534,9 +534,9 @@
+            { "PCRE_LIBS", octave::build_env::PCRE_LIBS },
+            { "PTHREAD_CFLAGS", octave::build_env::PTHREAD_CFLAGS },
+            { "PTHREAD_LIBS", octave::build_env::PTHREAD_LIBS },
+-           { "QHULL_CPPFLAGS", octave::build_env::QHULL_CPPFLAGS },
+-           { "QHULL_LDFLAGS", octave::build_env::QHULL_LDFLAGS },
+-           { "QHULL_LIBS", octave::build_env::QHULL_LIBS },
++           { "QHULL_R_CPPFLAGS", octave::build_env::QHULL_R_CPPFLAGS },
++           { "QHULL_R_LDFLAGS", octave::build_env::QHULL_R_LDFLAGS },
++           { "QHULL_R_LIBS", octave::build_env::QHULL_R_LIBS },
+            { "QRUPDATE_CPPFLAGS", octave::build_env::QRUPDATE_CPPFLAGS },
+            { "QRUPDATE_LDFLAGS", octave::build_env::QRUPDATE_LDFLAGS },
+            { "QRUPDATE_LIBS", octave::build_env::QRUPDATE_LIBS },
+--- ./libinterp/dldfcn/module-files.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./libinterp/dldfcn/module-files	2021-07-20 09:38:02.754165891 -0300
+@@ -1,13 +1,13 @@
+ # FILE|CPPFLAGS|LDFLAGS|LIBRARIES
+-__delaunayn__.cc|$(QHULL_CPPFLAGS)|$(QHULL_LDFLAGS)|$(QHULL_LIBS)
++__delaunayn__.cc|$(QHULL_R_CPPFLAGS)|$(QHULL_R_LDFLAGS)|$(QHULL_R_LIBS)
+ __fltk_uigetfile__.cc|$(FLTK_CPPFLAGS) $(FT2_CPPFLAGS)|$(FLTK_LDFLAGS) $(FT2_LDFLAGS)|$(FLTK_LIBS) $(FT2_LIBS)
+ __glpk__.cc|$(GLPK_CPPFLAGS)|$(GLPK_LDFLAGS)|$(GLPK_LIBS)
+ __init_fltk__.cc|$(FLTK_CPPFLAGS) $(FT2_CPPFLAGS) $(FONTCONFIG_CPPFLAGS)|$(FLTK_LDFLAGS) $(FT2_LDFLAGS)|$(FLTK_LIBS) $(FT2_LIBS) $(OPENGL_LIBS)
+ __init_gnuplot__.cc|$(FT2_CPPFLAGS) $(FONTCONFIG_CPPFLAGS)||
+ __ode15__.cc|$(SUNDIALS_XCPPFLAGS)|$(SUNDIALS_XLDFLAGS)|$(SUNDIALS_XLIBS)
+-__voronoi__.cc|$(QHULL_CPPFLAGS)|$(QHULL_LDFLAGS)|$(QHULL_LIBS)
++__voronoi__.cc|$(QHULL_R_CPPFLAGS)|$(QHULL_R_LDFLAGS)|$(QHULL_R_LIBS)
+ audiodevinfo.cc|$(PORTAUDIO_CPPFLAGS)|$(PORTAUDIO_LDFLAGS)|$(PORTAUDIO_LIBS)
+ audioread.cc|$(SNDFILE_CPPFLAGS)|$(SNDFILE_LDFLAGS)|$(SNDFILE_LIBS)
+-convhulln.cc|$(QHULL_CPPFLAGS)|$(QHULL_LDFLAGS)|$(QHULL_LIBS)
++convhulln.cc|$(QHULL_R_CPPFLAGS)|$(QHULL_R_LDFLAGS)|$(QHULL_R_LIBS)
+ fftw.cc|$(FFTW_XCPPFLAGS)|$(FFTW_XLDFLAGS)|$(FFTW_XLIBS)
+ gzip.cc|$(Z_CPPFLAGS) $(BZ2_CPPFLAGS)|$(Z_LDFLAGS) $(BZ2_LDFLAGS)|$(Z_LIBS) $(BZ2_LIBS)
+--- ./libinterp/dldfcn/module.mk.orig	2021-07-11 14:19:32.000000000 -0300
++++ ./libinterp/dldfcn/module.mk	2021-07-20 09:38:02.766165890 -0300
+@@ -31,9 +31,9 @@
+ 	$(AM_V_GEN)$(INSTALL_PROGRAM) %reldir%/.libs/$(shell $(SED) -n -e "s/dlname='\([^']*\)'/\1/p" < $<) $@
+ 
+ %canon_reldir%___delaunayn___la_SOURCES = %reldir%/__delaunayn__.cc
+-%canon_reldir%___delaunayn___la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(QHULL_CPPFLAGS)
+-%canon_reldir%___delaunayn___la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LDFLAG) $(QHULL_LDFLAGS) $(OCT_LINK_OPTS) $(WARN_LDFLAGS)
+-%canon_reldir%___delaunayn___la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(QHULL_LIBS)
++%canon_reldir%___delaunayn___la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(QHULL_R_CPPFLAGS)
++%canon_reldir%___delaunayn___la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LDFLAG) $(QHULL_R_LDFLAGS) $(OCT_LINK_OPTS) $(WARN_LDFLAGS)
++%canon_reldir%___delaunayn___la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(QHULL_R_LIBS)
+ %canon_reldir%___delaunayn___la_DEPENDENCIES = $(OCT_LINK_DEPS)
+ 
+ %canon_reldir%___fltk_uigetfile___la_SOURCES = %reldir%/__fltk_uigetfile__.cc
+@@ -67,9 +67,9 @@
+ %canon_reldir%___ode15___la_DEPENDENCIES = $(OCT_LINK_DEPS)
+ 
+ %canon_reldir%___voronoi___la_SOURCES = %reldir%/__voronoi__.cc
+-%canon_reldir%___voronoi___la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(QHULL_CPPFLAGS)
+-%canon_reldir%___voronoi___la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LDFLAG) $(QHULL_LDFLAGS) $(OCT_LINK_OPTS) $(WARN_LDFLAGS)
+-%canon_reldir%___voronoi___la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(QHULL_LIBS)
++%canon_reldir%___voronoi___la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(QHULL_R_CPPFLAGS)
++%canon_reldir%___voronoi___la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LDFLAG) $(QHULL_R_LDFLAGS) $(OCT_LINK_OPTS) $(WARN_LDFLAGS)
++%canon_reldir%___voronoi___la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(QHULL_R_LIBS)
+ %canon_reldir%___voronoi___la_DEPENDENCIES = $(OCT_LINK_DEPS)
+ 
+ %canon_reldir%_audiodevinfo_la_SOURCES = %reldir%/audiodevinfo.cc
+@@ -85,9 +85,9 @@
+ %canon_reldir%_audioread_la_DEPENDENCIES = $(OCT_LINK_DEPS)
+ 
+ %canon_reldir%_convhulln_la_SOURCES = %reldir%/convhulln.cc
+-%canon_reldir%_convhulln_la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(QHULL_CPPFLAGS)
+-%canon_reldir%_convhulln_la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LDFLAG) $(QHULL_LDFLAGS) $(OCT_LINK_OPTS) $(WARN_LDFLAGS)
+-%canon_reldir%_convhulln_la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(QHULL_LIBS)
++%canon_reldir%_convhulln_la_CPPFLAGS = $(libinterp_liboctinterp_la_CPPFLAGS) $(QHULL_R_CPPFLAGS)
++%canon_reldir%_convhulln_la_LDFLAGS = -avoid-version -module $(NO_UNDEFINED_LDFLAG) $(QHULL_R_LDFLAGS) $(OCT_LINK_OPTS) $(WARN_LDFLAGS)
++%canon_reldir%_convhulln_la_LIBADD = $(DLD_LIBOCTINTERP_LIBADD) $(QHULL_R_LIBS)
+ %canon_reldir%_convhulln_la_DEPENDENCIES = $(OCT_LINK_DEPS)
+ 
+ %canon_reldir%_fftw_la_SOURCES = %reldir%/fftw.cc
