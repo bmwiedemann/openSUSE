@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Aug 12 14:42:54 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- pam_umask-usergroups-login_defs.patch: Deprecate pam_umask
+  explicit "usergroups" option and instead read it from login.def's
+  "USERGROUP_ENAB" option if umask is only defined there.
+  [bsc#1189139]
+
+-------------------------------------------------------------------
+Tue Aug  3 09:26:00 UTC 2021 - pgajdos@suse.com
+
+- package man5/motd.5 as a man-pages link to man8/pam_motd.8
+  [bsc#1188724]
+
+-------------------------------------------------------------------
 Tue Jul 13 13:40:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - revert-check_shadow_expiry.diff: revert wrong

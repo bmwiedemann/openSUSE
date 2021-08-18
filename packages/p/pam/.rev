@@ -988,4 +988,18 @@
     <comment>Requested by dimstar</comment>
     <requestid>906153</requestid>
   </revision>
+  <revision rev="115" vrev="8">
+    <srcmd5>0694ce4237a7710974fc1845b50bcdfc</srcmd5>
+    <version>1.5.1</version>
+    <time>1629269709</time>
+    <user>RBrownSUSE</user>
+    <comment>- pam_umask-usergroups-login_defs.patch: Deprecate pam_umask
+  explicit &quot;usergroups&quot; option and instead read it from login.def's
+  &quot;USERGROUP_ENAB&quot; option if umask is only defined there.
+  [bsc#1189139]
+
+- package man5/motd.5 as a man-pages link to man8/pam_motd.8
+  [bsc#1188724]</comment>
+    <requestid>911843</requestid>
+  </revision>
 </revisionlist>

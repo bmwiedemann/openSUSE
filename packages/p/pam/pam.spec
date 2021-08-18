@@ -59,6 +59,7 @@ Patch8:         pam-bsc1177858-dont-free-environment-string.patch
 Patch9:         pam-pam_cracklib-add-usersubstr.patch
 Patch10:        pam-bsc1181443-make-nofile-unlimited-mean-nr_open.patch
 Patch11:        bsc1184358-prevent-LOCAL-from-being-resolved.patch
+Patch12:        pam_umask-usergroups-login_defs.patch
 # https://github.com/linux-pam/linux-pam/commit/e842a5fc075002f46672ebcd8e896624f1ec8068
 Patch100:       pam_securetty-don-t-complain-about-missing-config.patch
 Patch101:       revert-check_shadow_expiry.diff
@@ -172,6 +173,7 @@ cp -a %{SOURCE12} .
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
+%patch12 -p1
 %patch100 -p1
 %patch101 -p1
 
@@ -239,6 +241,8 @@ popd
 # Install unix2_chkpwd
 install -m 755 %{_builddir}/unix2_chkpwd %{buildroot}%{_sbindir}
 install -m 644 %{_sourcedir}/unix2_chkpwd.8 %{buildroot}/%{_mandir}/man8/
+# bsc#1188724
+echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
 # rpm macros
 install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
@@ -301,6 +305,7 @@ done
 %{_mandir}/man5/environment.5%{?ext_man}
 %{_mandir}/man5/*.conf.5%{?ext_man}
 %{_mandir}/man5/pam.d.5%{?ext_man}
+%{_mandir}/man5/motd.5%{?ext_man}
 %{_mandir}/man8/PAM.8%{?ext_man}
 %{_mandir}/man8/faillock.8%{?ext_man}
 %{_mandir}/man8/mkhomedir_helper.8%{?ext_man}
