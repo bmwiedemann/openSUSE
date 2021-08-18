@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 16 16:47:22 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Updated to 4.1.3
+  * General:
+    * Fix: clearLoadedMods(): Clear mod_hash_list
+  * Graphics:
+    * Fix: setBarGraphValue() divide-by-zero
+    * Fix: WIDGET::detach(): Check iterator before erasing
+    * Fix: IntMessageButton::getTip(): Add null-checks
+  * Campaign:
+    * Fix: Crash caused by saveMissionData()
+  * Multiplayer:
+    * Fix: Fix order of players in alliances screen
+  * Balance:
+    * Change: (Multiplayer) Reconstruct Howitzer branch and adjust
+      artillery parameters
+    * Change: (Multiplayer) Make Mantis more accessible
+    * Change: (Multiplayer) Earlier access to Assault Gun,
+      improve MG
+
+-------------------------------------------------------------------
 Sun Aug  8 05:01:57 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Updated to 4.1.2
