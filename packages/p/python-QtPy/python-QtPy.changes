@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 17 09:07:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Minimize Recommends and Suggests, dep chain is too big
+  (WebEngine, Qt3D) for the TW DVD
+
+-------------------------------------------------------------------
 Thu Jan 21 09:30:26 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch so the renaming of QtDataVisualization doesn't cause

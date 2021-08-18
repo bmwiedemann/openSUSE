@@ -33,11 +33,13 @@ BuildRequires:  %{python_module qtwebengine-qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-qt3d-qt5
 Recommends:     python-qt5
-Recommends:     python-qtdatavis3d-qt5
-Recommends:     python-qtwebengine-qt5
-Suggests:       python-pyside2
+# Optional parts, which have giant dep chains.
+# Too big for the TW DVD and default installs.
+#Recommends:     python-qt3d-qt5
+#Recommends:     python-qtdatavis3d-qt5
+#Recommends:     python-qtwebengine-qt5
+#Suggests:       python-pyside2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mock}
