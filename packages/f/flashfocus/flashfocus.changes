@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 16 08:02:11 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.4:
+  * Fixed: Remove pytest from setup.py requirements (as it is not really required).
+
+-------------------------------------------------------------------
+Mon Aug 16 08:01:53 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.3:
+  * Bump click dependency to v9
+
+-------------------------------------------------------------------
 Mon Aug 10 07:00:47 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.2.2:
