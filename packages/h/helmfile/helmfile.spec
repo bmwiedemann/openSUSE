@@ -16,7 +16,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define git_commit d8247e6543ebc4fb0864ac6160230d3bdf762dd7
+
+%define git_commit ccd81de77e0811ccaeaae5ed00164c2299c17654
 Name:           helmfile
 Version:        0.140.0
 Release:        0

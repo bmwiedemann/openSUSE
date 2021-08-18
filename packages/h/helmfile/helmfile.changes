@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 16 17:01:43 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.140.0: The following two changes were not included in the last
+  snapshot release:
+  * ccd81de (HEAD, tag: v0.140.0) Set longer no_output_timeout for
+    release
+  * 46b17e2 feat: pass-credentials to repo (#1899)
+
+-------------------------------------------------------------------
 Fri Jul 23 07:48:29 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.140.0:
