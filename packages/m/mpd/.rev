@@ -438,4 +438,28 @@
     * fix build failure with FFmpeg 3.4</comment>
     <requestid>902616</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>25365a48a079aeddce268c0381039270</srcmd5>
+    <version>0.22.10</version>
+    <time>1629269770</time>
+    <user>RBrownSUSE</user>
+    <comment>- Updated to 0.22.10
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.10/NEWS
+  * protocol: support &quot;albumart&quot; for virtual tracks in CUE sheets
+  * database: simple:
+    * fix crash bug
+    * fix absolute paths in CUE &quot;as_directory&quot; entries
+    * prune CUE entries from database for non-existent songs
+  * input:
+    * curl: fix crash bug after stream with Icy metadata was closed
+      by peer
+    * tidal: remove defunct unmaintained plugin
+  * tags: fix crash caused by bug in TagBuilder and a few potential
+    reference leaks
+  * output
+    * httpd: fix missing tag after seeking into a new song
+    * oss: fix channel order of multi-channel files
+  * mixer: alsa: fix yet more rounding errors.</comment>
+    <requestid>912566</requestid>
+  </revision>
 </revisionlist>

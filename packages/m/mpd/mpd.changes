@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 17 07:55:08 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 0.22.10
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.10/NEWS
+  * protocol: support "albumart" for virtual tracks in CUE sheets
+  * database: simple:
+    * fix crash bug
+    * fix absolute paths in CUE "as_directory" entries
+    * prune CUE entries from database for non-existent songs
+  * input:
+    * curl: fix crash bug after stream with Icy metadata was closed
+      by peer
+    * tidal: remove defunct unmaintained plugin
+  * tags: fix crash caused by bug in TagBuilder and a few potential
+    reference leaks
+  * output
+    * httpd: fix missing tag after seeking into a new song
+    * oss: fix channel order of multi-channel files
+  * mixer: alsa: fix yet more rounding errors.
+
+-------------------------------------------------------------------
 Sun Jun 27 11:12:37 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 0.22.9
