@@ -20,7 +20,7 @@
 %bcond_without akonadi
 %bcond_with qpdfview
 Name:           kraft
-Version:        0.96
+Version:        0.97
 Release:        0
 Summary:        KDE software to manage office documents in the office
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -53,8 +53,6 @@ Recommends:     python3-Weasyprint
 # PATCH-FEATURE-UPSTREAM use_qpdfview.path Open PDFs in qpdfview in appimages
 Patch0:         use_qpdfview.patch
 %endif
-# PATCH-FIX-UPSTREAM keepemptyparts.patch to use deprecated type in Qt
-Patch1:         keepemptyparts.patch
 %if %{with akonadi}
 BuildRequires:  cmake(KF5AkonadiContact)
 %endif
@@ -73,7 +71,6 @@ See the website http://volle-kraft-voraus.de for more information.
 %if %{with qpdfview}
 %patch0 -p1
 %endif
-%patch1 -p1
 
 %build
 
