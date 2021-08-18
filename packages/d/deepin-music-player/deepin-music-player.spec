@@ -24,7 +24,7 @@
 %endif
 
 Name:           deepin-music-player
-Version:        6.1.2
+Version:        6.1.7
 Release:        0
 Summary:        Deepin Music Player
 License:        GPL-3.0-or-later
@@ -33,8 +33,6 @@ URL:            https://github.com/linuxdeepin/deepin-music
 Source0:        https://github.com/linuxdeepin/deepin-music/archive/%{version}/deepin-music-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Fix-library-link.patch hillwood@opensuse.org - Fix library link
 Patch0:         Fix-library-link.patch
-# PATCH-FIX-UPSTREAM deepin-music-Qt-5_15.patch hillwood@opensuse.org - Fix return type error
-Patch1:         fix-return-type.patch
 # PATCH-FIX-UPSTREAM recompile-with-fPIC.patch hillwood@opensuse.org - Fix link failed on 64bit
 Patch2:         recompile-with-fPIC.patch
 %ifarch ppc ppc64 ppc64le s390 s390x

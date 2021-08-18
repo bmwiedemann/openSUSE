@@ -248,4 +248,12 @@
   (every dir should only have one owner) (boo#1184786) (forwarded request 897913 from hillwood)</comment>
     <requestid>897921</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b518d80110f763e645574dd2c80b37aa</srcmd5>
+    <version>6.1.7</version>
+    <time>1629269735</time>
+    <user>RBrownSUSE</user>
+    <comment> (forwarded request 910953 from hillwood)</comment>
+    <requestid>910954</requestid>
+  </revision>
 </revisionlist>

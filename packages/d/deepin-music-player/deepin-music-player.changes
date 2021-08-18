@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 29 06:37:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 6.1.7
+  * Update translations
+  * Fix bugs
+- Drop fix-return-type.patch, merged by upstream
+ 
+-------------------------------------------------------------------
 Sun May 23 07:07:47 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Stop owning directories provided by filesystem and other packages
