@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Aug 17 00:38:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 0.53.0:
+  + Features
+    * Update aws-sam-translator to 1.38.0 (pull #2082)
+    * Signal the end of life for Python 3.5 (pull #2052)
+    * Allow configuration of top level sections in rule E1001
+      (pull #2090)
+  + CloudFormation Specifications
+    * Update resource specs to 39.8.0 (pull #2087)
+    * Add StringMax to AWS::SNS::Topic.TopicName,
+      AWS::IAM::Role.Name, AWS::SNS::Topic.TopicName,
+      AWS::Lambda::Function properties Handler, Description,
+      FunctionName, and AWS::Lambda::LayerVersion properties
+      LayerName (pull #2089)
+  + Fixes
+    * Update RetentionPeriodHours for AWS::Kinesis::Stream to 8760
+      (pull #2071)
+    * Expand expanding likely_stateful_resource_types to include
+      AWS::DynamoDB::GlobalTable (pull #2079)
+- Changes from 0.52.0:
+  + Features
+    * End support for Python 3.4 (pull #2048)
+    * New rule I3013 to validate retention period settings on
+      applicable resources (pull #2054)
+  + CloudFormation Specifications
+    * Update resource specs to `39.3.0` (pull #2047)
+  + Fixes
+    * Update `ManagedPolicies.json` to include
+      `AWSLambda_FullAccess` and `AWSLambda_ReadOnlyAccess`
+      (pull #2062)
+    * Fix a warning in setuptools with `description-file` needed to
+      be `description_file` (pull #2051)
+    * Update the `schema.json` for `.cfnlintrc` files to have the
+      correct format for `custom_rules` (pull #2055)
+    * Update rule E1029 to `not` look at `TemplatyBody` since it
+      can be a nested template (pull #2057)
+    * Update rule E3012 to think of a list as json (pull #2067)
+- Changes from 0.51.0:
+  + Features
+    * A new sub class to make working with `Fn::Sub` easier
+      (pull #2003)
+  + CloudFormation Specifications
+    * Update resource specs to `39.1.0` (pull #2044)
+  + Fixes
+    * Fix an issue with `networkx` package nesting in the graph
+      function (pull #2035)
+    * Update rule E1029 to only alert when the value found is a
+      parameter or a resource (pull #2031)
+- Drop command to remove source files containing online tests.
+- Rename original tarball filename in Source field.
+- Add skip-tests-require-network.patch to skip tests that requires
+  network:
+  * test_update_resource_specs_python_2
+  * test_update_resource_specs_python_3
+
+-------------------------------------------------------------------
 Thu Jun 10 09:46:53 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.50.0:

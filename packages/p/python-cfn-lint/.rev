@@ -110,4 +110,12 @@
   * Fix an issue when finding duplicate keys where the 2nd error wasn't to the key</comment>
     <requestid>898995</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>15d3962785a4e6fb5209b78a462daf0b</srcmd5>
+    <version>0.53.0</version>
+    <time>1629269777</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912693</requestid>
+  </revision>
 </revisionlist>

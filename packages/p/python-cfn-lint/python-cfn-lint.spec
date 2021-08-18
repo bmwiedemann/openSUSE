@@ -20,12 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-cfn-lint
-Version:        0.50.0
+Version:        0.53.0
 Release:        0
 Summary:        Tool to checks cloudformation for practices and behaviour
 License:        MIT
 URL:            https://github.com/aws-cloudformation/cfn-python-lint
-Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%{version}.tar.gz#/cfn-python-lint-%{version}.tar.gz
+Source:         https://github.com/aws-cloudformation/cfn-python-lint/archive/v%{version}.tar.gz#/cfn-lint-%{version}.tar.gz
+Patch0:         skip-tests-require-network.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -37,7 +38,7 @@ Requires:       python-jsonschema > 3.0
 Requires:       python-junit-xml >= 1.9
 Requires:       python-requests >= 2.15.0
 Requires:       python-six >= 1.11
-%if %{python_version_nodots} <= 34
+%if 0%{python_version_nodots} <= 34
 Requires:       python-importlib_resources >= 1.0.2
 Requires:       python-networkx >= 2.2
 Requires:       python-pathlib2 >= 2.3.0
@@ -45,7 +46,7 @@ Requires:       python-pyrsistent <= 0.16.0
 %else
 Requires:       python-networkx >= 2.4
 Requires:       python-numpy
-%if %{python_version_nodots} < 37
+%if 0%{python_version_nodots} < 37
 Requires:       python-importlib_resources >= 1.4
 %endif
 %endif
@@ -91,10 +92,9 @@ resource properties and best practices.
 
 %prep
 %setup -q -n cfn-lint-%{version}
+%patch0 -p1
 # do not hardcode versions
 sed -i -e 's:~=:>=:g' setup.py
-# Tests require internet
-rm test/unit/module/maintenance/test_update_resource_specs*.py
 
 %build
 %python_build

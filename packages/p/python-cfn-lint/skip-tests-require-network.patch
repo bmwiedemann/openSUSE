@@ -1,0 +1,27 @@
+ 
+--- a/test/unit/module/maintenance/test_update_resource_specs.py
++++ b/test/unit/module/maintenance/test_update_resource_specs.py
+@@ -12,6 +12,7 @@ try:
+     from urllib.request import urlopen, Request
+ except ImportError:
+     from urllib2 import urlopen
++import unittest
+ 
+ LOGGER = logging.getLogger('cfnlint.maintenance')
+ LOGGER.addHandler(logging.NullHandler())
+@@ -190,6 +191,7 @@ class TestUpdateResourceSpecs(BaseTestCa
+         mock_patch_spec.assert_not_called()
+         mock_json_dump.assert_not_called()
+ 
++    @unittest.skip("Skip tests that requires network")
+     @patch('cfnlint.maintenance.multiprocessing.Pool')
+     @patch('cfnlint.maintenance.update_resource_spec')
+     @patch('cfnlint.maintenance.SPEC_REGIONS', {'us-east-1': 'http://foo.badurl'})
+@@ -202,6 +204,7 @@ class TestUpdateResourceSpecs(BaseTestCa
+ 
+         fake_pool.starmap.assert_called_once()
+ 
++    @unittest.skip("Skip tests that requires network")
+     @patch('cfnlint.maintenance.multiprocessing.Pool')
+     @patch('cfnlint.maintenance.update_resource_spec')
+     @patch('cfnlint.maintenance.SPEC_REGIONS', {'us-east-1': 'http://foo.badurl'})
