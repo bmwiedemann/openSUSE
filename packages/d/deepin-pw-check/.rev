@@ -15,4 +15,13 @@
     <comment>golang 1.16+ (forwarded request 894979 from hillwood)</comment>
     <requestid>894980</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cd4b4f28b2c44c0efcd8416edc0ec866</srcmd5>
+    <version>5.0.17</version>
+    <time>1629269724</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.0.17
+  * Fix bugs (forwarded request 910671 from hillwood)</comment>
+    <requestid>910885</requestid>
+  </revision>
 </revisionlist>

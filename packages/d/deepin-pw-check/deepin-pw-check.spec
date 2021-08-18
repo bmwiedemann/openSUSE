@@ -27,7 +27,7 @@
 %define   import_path     %{provider_prefix}
 
 Name:           deepin-pw-check
-Version:        5.0.11
+Version:        5.0.17
 Release:        0
 License:        GPL-3.0+
 Summary:        Deepin Password Check tool
@@ -39,6 +39,9 @@ Patch0:         disable-gobuild-in-makefile.patch
 BuildRequires:  gcc
 %if 0%{?suse_version} > 1500
 BuildRequires:  golang(API) = 1.15
+%endif
+%if 0%{?suse_version} <= 1500
+BuildRequires:  golang(github.com/stretchr/testify/mock)
 %endif
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig(gio-2.0)

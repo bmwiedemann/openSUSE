@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 31 12:06:22 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.0.17
+  * Fix bugs 
+
+-------------------------------------------------------------------
 Sat May 22 12:08:28 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Keep golang verion on 1.15 on Tumbleweed, the project does not support 
