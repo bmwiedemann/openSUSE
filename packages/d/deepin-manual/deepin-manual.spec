@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-manual
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if 0%{?is_opensuse}
     %define  distribution  openSUSE-Edition
@@ -22,33 +23,33 @@
 %endif
 
 Name:           deepin-manual
-Version:        5.7.0.35
+Version:        5.7.0.75
 Release:        0
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Summary:        Deepin Manual
-Url:            https://github.com/linuxdeepin/deepin-manual
+URL:            https://github.com/linuxdeepin/deepin-manual
 Group:          System/GUI/Other
 Source:         https://github.com/linuxdeepin/deepin-manual/archive/%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREA support-Qt-5_15+.patch hillwood@opensuse.org
-Patch0:         support-Qt-5_15+.patch
 BuildRequires:  fdupes
-BuildRequires:  rubygem(sass)
-# BuildRequires:  npm
+BuildRequires:  gtest
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  update-desktop-files
+BuildRequires:  libQt5Gui-private-headers-devel
+BuildRequires:  libqt5-linguist
 BuildRequires:  nodejs-common
+BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt5LinguistTools)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5X11Extras)
 BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5WebChannel)
-BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
+BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5X11Extras)
+BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
 BuildRequires:  pkgconfig(dtkgui) >= 5.0.0
 BuildRequires:  pkgconfig(dtkwidget) >= 5.0.0
-BuildRequires:  pkgconfig(dtkcore) >= 5.0.0
+BuildRequires:  rubygem(sass)
 # Qt5WebEngineWidgets is invalid on these arches
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -59,7 +60,8 @@ applications, providing specific instructions and function descriptions.
 
 %prep
 %autosetup -p1
-chmod -x LICENSE README.md 
+chmod -x LICENSE README.md
+sed -i 's/lrelease/lrelease-qt5/g' translate_generation.sh
 
 %build
 %cmake -DVERSION=%{version}-%{distribution}
@@ -70,16 +72,17 @@ install -d %{buildroot}%{_datadir}/deepin-manual/manual-assets/application
 find %{buildroot}%{_datadir}/deepin-manual -type f -name "*~" -delete -print
 find %{buildroot}%{_datadir}/deepin-manual -type f -name "._*.svg" -delete -print
 find %{buildroot}%{_datadir}/deepin-manual -type f -name ".DS_Store" -delete -print
+rm %{buildroot}%{_datadir}/deepin-manual/manual-assets/community/dde/.~修订记录.xls
 
 %fdupes %{buildroot}%{_datadir}
 %suse_update_desktop_file %{name} Utility Documentation Accessibility
 
 %files
 %defattr(-,root,root)
-%doc README.md 
+%doc README.md
 %license LICENSE
 %{_bindir}/dman
-%{_bindir}/dman-search
+%{_bindir}/dmanHelper
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/dbus-1/services/com.deepin.Manual.*
 %{_datadir}/deepin-manual
@@ -87,4 +90,3 @@ find %{buildroot}%{_datadir}/deepin-manual -type f -name ".DS_Store" -delete -pr
 %dir %{_datadir}/deepin-manual/manual-assets/application
 
 %changelog
-

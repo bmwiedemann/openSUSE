@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 31 11:16:37 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.7.0.75
+  * Fix order for English and Chinese
+  * Drop dman script
+  * Fix bugs
+- Drop support-Qt-5_15+.patch, merged by upstream
+
+-------------------------------------------------------------------
 Sun May 23 04:21:33 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Install a directoriy: %{_datadir}/deepin-manual/manual-assets/application 

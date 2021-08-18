@@ -7,4 +7,16 @@
     <comment></comment>
     <requestid>895040</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9e92ab1ba459937ca112740130bd717</srcmd5>
+    <version>5.7.0.75</version>
+    <time>1629269724</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.7.0.75
+  * Fix order for English and Chinese
+  * Drop dman script
+  * Fix bugs
+- Drop support-Qt-5_15+.patch, merged by upstream (forwarded request 910672 from hillwood)</comment>
+    <requestid>910886</requestid>
+  </revision>
 </revisionlist>
