@@ -9771,6 +9771,7 @@ unsorted:
   - libbox2d2-32bit: [x86_64] 
   - libbpf-devel 
   - libbpf0 
+  - libbpf0-32bit: [x86_64] 
   - libbraiding-devel 
   - libbraiding0 
   - libbraille 
@@ -14142,7 +14143,7 @@ unsorted:
   - libvamp-hostsdk3-32bit: [x86_64] 
   - libvamp-sdk2 
   - libvamp-sdk2-32bit: [x86_64] 
-  - libvapoursynth-53 
+  - libvapoursynth-54 
   - libvapoursynth-script0 
   - libvarnishapi2 
   - libvbr2 
@@ -14934,6 +14935,7 @@ unsorted:
   - lmms: [x86_64] 
   - lmms-devel: [x86_64] 
   - lmms-vst: [x86_64] 
+  - lnav 
   - lndir 
   - loadlin: [i586] 
   - local-npm-registry 
@@ -21009,7 +21011,6 @@ unsorted:
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
-  - python2-aexpect 
   - python2-appindicator 
   - python2-pip 
   - python2-pycairo-common-devel 
@@ -21030,7 +21031,6 @@ unsorted:
   - python3-SHERPA-MC 
   - python3-SoapySDR 
   - python3-YODA 
-  - python3-aexpect 
   - python3-ara 
   - python3-arpack-ng: [x86_64] 
   - python3-automaton 
@@ -21605,6 +21605,7 @@ unsorted:
   - python36-addict 
   - python36-aeidon 
   - python36-aenum 
+  - python36-aexpect 
   - python36-affine 
   - python36-agate 
   - python36-agate-dbf 
@@ -23828,6 +23829,7 @@ unsorted:
   - python36-sphinxcontrib-autoprogram 
   - python36-sphinxcontrib-autoprogram-doc 
   - python36-sphinxcontrib-blockdiag 
+  - python36-sphinxcontrib-copybutton 
   - python36-sphinxcontrib-devhelp 
   - python36-sphinxcontrib-documentedlist 
   - python36-sphinxcontrib-fulltoc 
@@ -24402,6 +24404,7 @@ unsorted:
   - python38-aeidon 
   - python38-aenum 
   - python38-aesara 
+  - python38-aexpect 
   - python38-afdko 
   - python38-affine 
   - python38-agate 
@@ -26735,6 +26738,7 @@ unsorted:
   - python38-sphinxcontrib-autoprogram 
   - python38-sphinxcontrib-autoprogram-doc 
   - python38-sphinxcontrib-blockdiag 
+  - python38-sphinxcontrib-copybutton 
   - python38-sphinxcontrib-devhelp 
   - python38-sphinxcontrib-documentedlist 
   - python38-sphinxcontrib-fulltoc 
@@ -27352,6 +27356,7 @@ unsorted:
   - python39-aeidon 
   - python39-aenum 
   - python39-aesara 
+  - python39-aexpect 
   - python39-afdko 
   - python39-affine 
   - python39-agate 
@@ -29838,6 +29843,7 @@ unsorted:
   - python39-sphinxcontrib-autoprogram 
   - python39-sphinxcontrib-autoprogram-doc 
   - python39-sphinxcontrib-blockdiag 
+  - python39-sphinxcontrib-copybutton 
   - python39-sphinxcontrib-devhelp 
   - python39-sphinxcontrib-documentedlist 
   - python39-sphinxcontrib-fulltoc 
