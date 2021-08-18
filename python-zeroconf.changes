@@ -1,4 +1,374 @@
 -------------------------------------------------------------------
+Mon Aug 16 01:39:16 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 0.35.1:
+  * Only reschedule types if the send next time changes (#958)
+    @bdraco
+  * When the PTR response was seen again, the timer was being
+    canceled and rescheduled even if the timer was for the same
+    time. While this did not cause any breakage, it is quite
+    inefficient.
+  * Cache DNS record and question hashes (#960) @bdraco
+  * The hash was being recalculated every time the object was
+    being used in a set or dict. Since the hashes are effectively
+    immutable, we only calculate them once now.
+- Changes from 0.35.0:
+  * Reduced chance of accidental synchronization of ServiceInfo
+    requests (#955) @bdraco
+  * Sort aggregated responses to increase chance of name compression
+    (#954) @bdraco
+  Technically backwards incompatible:
+    * Send unicast replies on the same socket the query was received
+      (#952) @bdraco
+    * When replying to a QU question, we do not know if the sending
+      host is reachable from all of the sending sockets. We now
+      avoid this problem by replying via the receiving socket. This
+      was the existing behavior when InterfaceChoice.Default is set.
+    * This change extends the unicast relay behavior to used with
+      InterfaceChoice.Default to apply when InterfaceChoice.All
+      or interfaces are explicitly passed when instantiating a
+      Zeroconf instance.
+    * Fixes #951
+- Changes from 0.34.3:
+  * Fix sending immediate multicast responses (#949) @bdraco
+- Changes from 0.34.2:
+  * Coalesce aggregated multicast answers (#945) @bdraco
+  * When the random delay is shorter than the last scheduled
+    response, answers are now added to the same outgoing time group.
+  * This reduces traffic when we already know we will be sending
+    a group of answers inside the random delay window described
+    in datatracker.ietf.org/doc/html/rfc6762#section-6.3
+  * Ensure ServiceInfo requests can be answered inside the default
+    timeout with network protection (#946) @bdraco
+  * Adjust the time windows to ensure responses that have triggered
+    the protection against against excessive packet flooding due to
+    software bugs or malicious attack described in RFC6762 section
+    6 can respond in under 1350ms to ensure ServiceInfo can ask
+    two questions within the default timeout of 3000ms
+- Changes from 0.34.1:
+  * Ensure multicast aggregation sends responses within 620ms
+    (#942) @bdraco
+  * Responses that trigger the protection against against
+    excessive packet flooding due to software bugs or malicious
+    attack described in RFC6762 section 6 could cause the multicast
+    aggregation response to be delayed longer than 620ms (The maximum
+    random delay of 120ms and 500ms additional for aggregation).
+  * Only responses that trigger the protection are delayed longer
+    than 620ms
+- Changes from 0.34.0:
+  * Implemented Multicast Response Aggregation (#940) @bdraco
+  * Responses are now aggregated when possible per rules in RFC6762
+    section 6.4
+  * Responses that trigger the protection against against
+    excessive packet flooding due to software bugs or malicious
+    attack described in RFC6762 section 6 are delayed instead of
+    discarding as it was causing responders that implement Passive
+    Observation Of Failures (POOF) to evict the records.
+  * Probe responses are now always sent immediately as there were
+    cases where they would fail to be answered in time to defend
+    a name.
+- Changes from 0.33.4:
+  * Ensure zeroconf can be loaded when the system disables IPv6
+    (#933) @che0
+- Changes from 0.33.3:
+  * Added support for forward dns compression pointers (#934) @bdraco
+  * Provide sockname when logging a protocol error (#935) @bdraco
+- Changes from 0.33.2:
+  * Handle duplicate goodbye answers in the same packet (#928)
+    @bdraco
+  * Solves an exception being thrown when we tried to remove the
+    known answer from the cache when the second goodbye answer in
+    the same packet was processed
+  * Fixed #926
+  * Skip ipv6 interfaces that return ENODEV (#930) @bdraco
+- Changes from 0.33.1:
+  * Version number change only with less restrictive directory
+    permissions
+  * Fixed #923
+- Changes from 0.33.0:
+  This release eliminates all threading locks as all non-threadsafe
+  operations now happen in the event loop.
+  * Let connection_lost close the underlying socket (#918) @bdraco
+  * The socket was closed during shutdown before asyncio's
+    connection_lost handler had a chance to close it which resulted
+    in a traceback on windows.
+  * Fixed #917
+  Technically backwards incompatible:
+    * Removed duplicate unregister_all_services code (#910) @bdraco
+    * Calling Zeroconf.close from same asyncio event loop zeroconf
+      is running in will now skip unregister_all_services and log
+      a warning as this a blocking operation and is not async safe
+      and never has been.
+    * Use AsyncZeroconf instead, or for legacy code call
+      async_unregister_all_services before Zeroconf.close
+- Changes from 0.32.1:
+  * Increased timeout in ServiceInfo.request to handle loaded systems
+    (#895) @bdraco
+  * It can take a few seconds for a loaded system to run the
+    async_request coroutine when the event loop is busy, or the
+    system is CPU bound (example being Home Assistant startup). We
+    now add an additional _LOADED_SYSTEM_TIMEOUT (10s) to the
+    run_coroutine_threadsafe calls to ensure the coroutine has
+    the total amount of time to run up to its internal timeout
+    (default of 3000ms).
+  * Ten seconds is a bit large of a timeout; however, it is only
+    used in cases where we wrap other timeouts. We now expect the
+    only instance the run_coroutine_threadsafe result timeout will
+    happen in a production circumstance is when someone is running
+    a ServiceInfo.request() in a thread and another thread calls
+    Zeroconf.close() at just the right moment that the future
+    is never completed unless the system is so loaded that it is
+    nearly unresponsive.
+  * The timeout for run_coroutine_threadsafe is the maximum time
+    a thread can cleanly shut down when zeroconf is closed out in
+    another thread, which should always be longer than the underlying
+    thread operation.
+- Changes from 0.32.0:
+  This release offers 100% line and branch coverage.
+  * Made ServiceInfo first question QU (#852) @bdraco
+  * We want an immediate response when requesting with ServiceInfo
+    by asking a QU question; most responders will not delay the
+    response and respond right away to our question. This also
+    improves compatibility with split networks as we may not have
+    been able to see the response otherwise. If the responder has
+    not multicast the record recently, it may still choose to do
+    so in addition to responding via unicast
+  * Reduces traffic when there are multiple zeroconf instances
+    running on the network running ServiceBrowsers
+  * If we don't get an answer on the first try, we ask a QM question
+    in the event, we can't receive a unicast response for some reason
+  * This change puts ServiceInfo inline with ServiceBrowser which
+    also asks the first question as QU since ServiceInfo is commonly
+    called from ServiceBrowser callbacks
+  * Limited duplicate packet suppression to 1s intervals (#841)
+    @bdraco
+  * Only suppress duplicate packets that happen within the same
+    second. Legitimate queriers will retry the question if they
+    are suppressed. The limit was reduced to one second to be in
+    line with rfc6762
+  * Made multipacket known answer suppression per interface (#836)
+    @bdraco
+  * The suppression was happening per instance of Zeroconf instead
+    of per interface. Since the same network can be seen on multiple
+    interfaces (usually and wifi and ethernet), this would confuse
+    the multi-packet known answer supression since it was not
+    expecting to get the same data more than once
+  * New ServiceBrowsers now request QU in the first outgoing when
+    unspecified (#812) @bdraco
+  * https://datatracker.ietf.org/doc/html/rfc6762#section-5.4 When
+    we start a ServiceBrowser and zeroconf has just started up,
+    the known answer list will be small. By asking a QU question
+    first, it is likely that we have a large known answer list
+    by the time we ask the QM question a second later (current
+    default which is likely too low but would be a breaking change
+    to increase). This reduces the amount of traffic on the network,
+    and has the secondary advantage that most responders will answer
+    a QU question without the typical delay answering QM questions.
+  * IPv6 link-local addresses are now qualified with scope_id
+    (#343) @ibygrave
+  * When a service is advertised on an IPv6 address where the scope
+    is link local, i.e. fe80::/64 (see RFC 4007) the resolved IPv6
+    address must be extended with the scope_id that identifies
+    through the "%" symbol the local interface to be used when
+    routing to that address. A new API parsed_scoped_addresses()
+    is provided to return qualified addresses to avoid breaking
+    compatibility on the existing parsed_addresses().
+  * Network adapters that are disconnected are now skipped (#327)
+    @ZLJasonG
+  * Fixed listeners missing initial packets if Engine starts too
+    quickly (#387) @bdraco
+  * When manually creating a zeroconf.Engine object, it is no longer
+    started automatically. It must manually be started by calling
+    .start() on the created object.
+  * The Engine thread is now started after all the listeners have
+    been added to avoid a race condition where packets could be
+    missed at startup.
+  * Fixed answering matching PTR queries with the ANY query (#618)
+    @bdraco
+  * Fixed lookup of uppercase names in the registry (#597) @bdraco
+  * If the ServiceInfo was registered with an uppercase name and
+    the query was for a lowercase name, it would not be found
+    and vice-versa.
+  * Fixed unicast responses from any source port (#598) @bdraco
+  * Unicast responses were only being sent if the source port was
+    53, this prevented responses when testing with dig:
+        dig -p 5353 @224.0.0.251 media-12.local
+    The above query will now see a response
+  * Fixed queries for AAAA records not being answered (#616) @bdraco
+  * Removed second level caching from ServiceBrowsers (#737) @bdraco
+  * The ServiceBrowser had its own cache of the last time it saw
+    a service that was reimplementing the DNSCache and presenting
+    a source of truth problem that lead to unexpected queries when
+    the two disagreed.
+  * Fixed server cache not being case-insensitive (#731) @bdraco
+  * If the server name had uppercase chars and any of the matching
+    records were lowercase, and the server would not be found
+  * Fixed cache handling of records with different TTLs (#729)
+    @bdraco
+  * There should only be one unique record in the cache at a time as
+    having multiple unique records will different TTLs in the cache
+    can result in unexpected behavior since some functions returned
+    all matching records and some fetched from the right side of
+    the list to return the newest record. Instead we now store
+    the records in a dict to ensure that the newest record always
+    replaces the same unique record, and we never have a source of
+    truth problem determining the TTL of a record from the cache.
+  * Fixed ServiceInfo with multiple A records (#725) @bdraco
+  * If there were multiple A records for the host, ServiceInfo would
+    always return the last one that was in the incoming packet,
+    which was usually not the one that was wanted.
+  * Fixed stale unique records expiring too quickly (#706) @bdraco
+  * Records now expire 1s in the future instead of instant removal.
+    tools.ietf.org/html/rfc6762#section-10.2 Queriers receiving a
+    Multicast DNS response with a TTL of zero SHOULD NOT immediately
+    delete the record from the cache, but instead record a TTL of
+    1 and then delete the record one second later. In the case of
+    multiple Multicast DNS responders on the network described in
+    Section 6.6 above, if one of the responders shuts down and
+    incorrectly sends goodbye packets for its records, it gives
+    the other cooperating responders one second to send out their
+    own response to "rescue" the records before they expire and
+    are deleted.
+  * Fixed exception when unregistering a service multiple times
+    (#679) @bdraco
+  * Added an AsyncZeroconfServiceTypes to mirror ZeroconfServiceTypes
+    to zeroconf.asyncio (#658) @bdraco
+  * Fixed interface_index_to_ip6_address not skiping ipv4 adapters
+    (#651) @bdraco
+  * Added async_unregister_all_services to AsyncZeroconf (#649)
+    @bdraco
+  * Fixed services not being removed from the registry when calling
+    unregister_all_services (#644) @bdraco
+  * There was a race condition where a query could be answered for
+    a service in the registry, while goodbye packets which could
+    result in a fresh record being broadcast after the goodbye if
+    a query came in at just the right time. To avoid this, we now
+    remove the services from the registry right after we generate
+    the goodbye packet
+  * Fixed zeroconf exception on load when the system disables IPv6
+    (#624) @bdraco
+  * Fixed the QU bit missing from for probe queries (#609) @bdraco
+  * The bit should be set per
+    datatracker.ietf.org/doc/html/rfc6762#section-8.1
+  * Fixed the TC bit missing for query packets where the known
+    answers span multiple packets (#494) @bdraco
+  * Fixed packets not being properly separated when exceeding
+    maximum size (#498) @bdraco
+  * Ensure that questions that exceed the max packet size
+    are moved to the next packet. This fixes DNSQuestions
+    being sent in multiple packets in violation of:
+    datatracker.ietf.org/doc/html/rfc6762#section-7.2
+  * Ensure only one resource record is sent when a record exceeds
+    _MAX_MSG_TYPICAL datatracker.ietf.org/doc/html/rfc6762#section-17
+  * Fixed PTR questions asked in uppercase not being answered
+    (#465) @bdraco
+  * Added Support for context managers in Zeroconf and AsyncZeroconf
+    (#284) @shenek
+  * Implemented an AsyncServiceBrowser to compliment the sync
+    ServiceBrowser (#429) @bdraco
+  * Added async_get_service_info to AsyncZeroconf and async_request
+    to AsyncServiceInfo (#408) @bdraco
+  * Implemented allowing passing in a sync Zeroconf instance to
+    AsyncZeroconf (#406) @bdraco
+  * Fixed IPv6 setup under MacOS when binding to "" (#392) @bdraco
+  * Fixed ZeroconfServiceTypes.find not always cancels the
+    ServiceBrowser (#389) @bdraco
+  * There was a short window where the ServiceBrowser thread could
+    be left running after Zeroconf is closed because the .join()
+    was never waited for when a new Zeroconf object was created
+  * Fixed duplicate packets triggering duplicate updates (#376)
+    @bdraco
+  * If TXT or SRV records update was already processed and then
+    received again, it was possible for a second update to be called
+    back in the ServiceBrowser
+  * Fixed ServiceStateChange.Updated event happening for IPs that
+    already existed (#375) @bdraco
+  * Fixed RFC6762 Section 10.2 paragraph 2 compliance (#374) @bdraco
+  * Reduced length of ServiceBrowser thread name with many types
+    (#373) @bdraco
+  * Fixed empty answers being added in ServiceInfo.request (#367)
+    @bdraco
+  * Fixed ServiceInfo not populating all AAAA records (#366) @bdraco
+  * Use get_all_by_details to ensure all records are loaded into
+    addresses.
+  * Only load A/AAAA records from the cache once in load_from_cache
+    if there is a SRV record present
+  * Move duplicate code that checked if the ServiceInfo was complete
+    into its own function
+  * Fixed a case where the cache list can change during iteration
+    (#363) @bdraco
+  * Return task objects created by AsyncZeroconf (#360) @nocarryr
+  Traffic Reduction:
+    * Added support for handling QU questions (#621) @bdraco
+    * Implements RFC 6762 sec 5.4: Questions Requesting Unicast
+      Responses datatracker.ietf.org/doc/html/rfc6762#section-5.4
+    * Implemented protect the network against excessive packet
+      flooding (#619) @bdraco
+    * Additionals are now suppressed when they are already in the
+      answers section (#617) @bdraco
+    * Additionals are no longer included when the answer is
+      suppressed by known-answer suppression (#614) @bdraco
+    * Implemented multi-packet known answer supression (#687) @bdraco
+    * Implements datatracker.ietf.org/doc/html/rfc6762#section-7.2
+    * Implemented efficient bucketing of queries with known answers
+      (#698) @bdraco
+    * Implemented duplicate question suppression (#770) @bdraco
+      http://datatracker.ietf.org/doc/html/rfc6762#section-7.3
+  Technically backwards incompatible:
+    * Update internal version check to match docs (3.6+) (#491)
+      @bdraco
+    * Python version earlier then 3.6 were likely broken with
+      zeroconf already, however, the version is now explicitly
+      checked.
+    * Update python compatibility as PyPy3 7.2 is required (#523)
+      @bdraco
+  Backwards incompatible:
+    * Drop oversize packets before processing them (#826) @bdraco
+    * Oversized packets can quickly overwhelm the system and deny
+      service to legitimate queriers. In practice, this is usually
+      due to broken mDNS implementations rather than malicious
+      actors.
+    * Guard against excessive ServiceBrowser queries from PTR
+      records significantly lowerthan recommended (#824) @bdraco
+    * We now enforce a minimum TTL for PTR records to avoid
+      ServiceBrowsers generating excessive queries refresh
+      queries. Apple uses a 15s minimum TTL, however, we do not
+      have the same level of rate limit and safeguards, so we use
+      1/4 of the recommended value.
+    * RecordUpdateListener now uses async_update_records instead
+      of update_record (#419, #726) @bdraco
+      This allows the listener to receive all the records that
+      have been updated in a single transaction such as a packet
+      or cache expiry.
+    * update_record has been deprecated in favor of
+      async_update_records A compatibility shim exists to ensure
+      classes that use RecordUpdateListener as a base class continue
+      to have update_record called, however, they should be updated
+      as soon as possible.
+    * A new method async_update_records_complete is now called on
+      each listener when all listeners have completed processing
+      updates and the cache has been updated. This allows
+      ServiceBrowsers to delay calling handlers until they are sure
+      the cache has been updated as its a common pattern to call
+      for ServiceInfo when a ServiceBrowser handler fires.
+    * The async_ prefix was chosen to make it clear that these
+      functions run in the eventloop and should never do blocking
+      I/O. Before 0.32+ these functions ran in a select() loop and
+      should not have been doing any blocking I/O, but it was not
+      clear to implementors that I/O would block the loop.
+    * Pass both the new and old records to async_update_records
+      (#792) @bdraco
+    * Pass the old_record (cached) as the value and the new_record
+      (wire) to async_update_records instead of forcing each consumer
+      to check the cache since we will always have the old_record
+      when generating the async_update_records call. This avoids
+      the overhead of multiple cache lookups for each listener.
+- Remove fix version command as upstream has fixed the version number.
+- Move skipped tests to spec file, drop disable-tests.patch.
+- Relocate tests to tests directory. (gh#jstasiak/python-zeroconf#526)
+- Add test_close_multiple_times to skipped test list.
+
+-------------------------------------------------------------------
 Fri Jun  4 17:16:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix package version. Upstream didn't tag nor change the version
