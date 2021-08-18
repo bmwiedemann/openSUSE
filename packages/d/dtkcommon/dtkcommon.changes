@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug  1 07:18:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.17
+  * Drop com.deepin.dtk.FileDrag.conf
+  * Update dependence for dtk 
+
+-------------------------------------------------------------------
 Tue May  4 06:48:36 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 5.5.2 
