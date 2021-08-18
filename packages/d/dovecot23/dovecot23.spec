@@ -19,11 +19,11 @@
 %global _lto_cflags %{nil}
 
 Name:           dovecot23
-Version:        2.3.15
+Version:        2.3.16
 Release:        0
 %define pkg_name dovecot
-%define dovecot_version 2.3.15
-%define dovecot_pigeonhole_version 0.5.15
+%define dovecot_version 2.3.16
+%define dovecot_pigeonhole_version 0.5.16
 %define dovecot_branch  2.3
 %define dovecot_pigeonhole_source_dir %{pkg_name}-%{dovecot_branch}-pigeonhole-%{dovecot_pigeonhole_version}
 %define dovecot_pigeonhole_docdir     %{_docdir}/%{pkg_name}/dovecot-pigeonhole
@@ -152,6 +152,7 @@ Source11:       https://pigeonhole.dovecot.org/releases/%{dovecot_branch}/%{dove
 Source12:       dovecot23.keyring
 Patch:          dovecot-2.3.0-dont_use_etc_ssl_certs.patch
 Patch1:         dovecot-2.3.0-better_ssl_defaults.patch
+Patch2:         mail-cache-bigendian.diff
 Summary:        IMAP and POP3 Server Written Primarily with Security in Mind
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND MIT
 Group:          Productivity/Networking/Email/Servers

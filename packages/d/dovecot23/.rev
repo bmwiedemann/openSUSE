@@ -591,4 +591,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>903106</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7c80dade31944ddb2765210d1ebf0716</srcmd5>
+    <version>2.3.16</version>
+    <time>1629269753</time>
+    <user>RBrownSUSE</user>
+    <comment>- update to 2.3.16 and pigeonhole to 0.5.16:</comment>
+    <requestid>912378</requestid>
+  </revision>
 </revisionlist>
