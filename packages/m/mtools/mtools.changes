@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  7 08:06:32 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- mtools 4.0.35:
+  * Fix cluster padding at end of file in batch mode
+
+-------------------------------------------------------------------
 Sat Jul 24 06:49:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - mtools 4.0.34:
