@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Aug 15 19:36:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove obsolete fix-wayland-gnome-crash.patch
+- remove obsolete support-gnome-40.patch
+
+-------------------------------------------------------------------
+Sun Aug  8 13:08:45 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 1.10.48:
+ - Fixed GNOME Shell applet on Ubuntu 18.04 (#281)
+- update to version 1.10.47:
+ - Fixed a crash of the GNOME Shell applet (#281)
+ - Adds support for GNOME Shell 40 (#288)
+ - Fixed issue where the installer would fail when installing as system user
+   (#291)
+ - Fixed incorrect disabling of postpone/skip button (#301)
+ - Warn if operation mode is not 'normal' after unlocking the screen (Windows
+   only for now)
+
+-------------------------------------------------------------------
 Thu Jun  3 08:25:16 UTC 2021 - Timo Jyrinki <tjyrinki@suse.com>
 
 - Add back the removed patches that were not included yet in the latest

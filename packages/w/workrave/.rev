@@ -249,4 +249,24 @@
     <comment></comment>
     <requestid>897101</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>638d22b7e578b0490881895431d67c7c</srcmd5>
+    <version>1.10.48</version>
+    <time>1629269739</time>
+    <user>RBrownSUSE</user>
+    <comment>- remove obsolete fix-wayland-gnome-crash.patch
+- remove obsolete support-gnome-40.patch
+- update to version 1.10.48:
+ - Fixed GNOME Shell applet on Ubuntu 18.04 (#281)
+- update to version 1.10.47:
+ - Fixed a crash of the GNOME Shell applet (#281)
+ - Adds support for GNOME Shell 40 (#288)
+ - Fixed issue where the installer would fail when installing as system user
+   (#291)
+ - Fixed incorrect disabling of postpone/skip button (#301)
+ - Warn if operation mode is not 'normal' after unlocking the screen (Windows
+   only for now)
+</comment>
+    <requestid>912304</requestid>
+  </revision>
 </revisionlist>
