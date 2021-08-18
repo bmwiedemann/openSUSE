@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 11 12:39:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_biboumi.service.patch
+
+-------------------------------------------------------------------
 Sun Apr 18 15:18:25 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 9.0:
