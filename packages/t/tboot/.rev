@@ -605,4 +605,20 @@
   - lcptools: Fix issues from static code analysis (forwarded request 900328 from msmeissn)</comment>
     <requestid>900884</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>d992f90275db742e9bdddae10cb230c5</srcmd5>
+    <version>20210614_1.10.2</version>
+    <time>1629269747</time>
+    <user>RBrownSUSE</user>
+    <comment>- dropped tboot-Unmask-NMI-after-returning-from-SINIT.patch (upstream)
+- dropped tboot-Release-localities-in-S3-flow-for-CRB-interface.patch (upstream)
+- dropped tboot-Configure-IOMMU-before-executing-GETSEC-SENTER.patch (upstream) 
+- dropped tboot-Do-not-try-to-read-EFI-mem-map-when-booted-with-mult.patch (upstream)
+- dropped tboot-Release-localities-in-S3-flow-for-CRB-interface.patch (upstream)
+- dropped tboot-support-sinit-padding.patch (upstream)
+- dropped tboot-Add-support-for-EFI-memory-map-parse-modification.patch
+- dropped tboot-fix-memmap1-boot-issues.patch
+- dropped tboot-Add-more-mbi-validation.patch</comment>
+    <requestid>912700</requestid>
+  </revision>
 </revisionlist>

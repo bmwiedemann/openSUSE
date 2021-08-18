@@ -51,6 +51,7 @@ Tue Jan 19 13:35:07 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
   - lcptools-v2: meet requirements from MLE DG rev16
   - lcptools-v2: Implement SM2 signing and SM2 signature verification
   - lcptools-v2: Set aux_hash_alg_mask to 0 when policy version != 0x300
+- dropped tboot-Unmask-NMI-after-returning-from-SINIT.patch (upstream)
 
 -------------------------------------------------------------------
 Thu Nov 12 12:19:51 UTC 2020 - Matthias Gerstner <matthias.gerstner@suse.com>
@@ -82,6 +83,14 @@ Mon Sep 28 12:14:22 UTC 2020 - matthias.gerstner@suse.com
         - SINIT ACM can have padding, handle that when checking size
     - disable-address-of-packed-member-warning.patch: now contained upstream
     - tboot-grub2-fix-xen-submenu-name.patch: refreshed
+- dropped tboot-Release-localities-in-S3-flow-for-CRB-interface.patch (upstream)
+- dropped tboot-Configure-IOMMU-before-executing-GETSEC-SENTER.patch (upstream) 
+- dropped tboot-Do-not-try-to-read-EFI-mem-map-when-booted-with-mult.patch (upstream)
+- dropped tboot-Release-localities-in-S3-flow-for-CRB-interface.patch (upstream)
+- dropped tboot-support-sinit-padding.patch (upstream)
+- dropped tboot-Add-support-for-EFI-memory-map-parse-modification.patch
+- dropped tboot-fix-memmap1-boot-issues.patch
+- dropped tboot-Add-more-mbi-validation.patch
 
 -------------------------------------------------------------------
 Fri Jul 12 16:24:27 UTC 2019 - Martin Liška <mliska@suse.cz>
