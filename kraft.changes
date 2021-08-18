@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 15 10:21:03 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
+
+- Update to upstream version 0.97.
+  Version 0.97 is a bugfix release and fixes a few bugs.
+- Remove patch keepemptyparts.patch which went upstream. 
+
+-------------------------------------------------------------------
 Sun Feb 28 10:01:42 UTC 2021 - Klaas Freitag <opensuse@freisturz.de>
 
 - Add patch keepemptyparts.patch to fix build with older qt versions. 
