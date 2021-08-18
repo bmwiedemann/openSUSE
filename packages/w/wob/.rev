@@ -24,4 +24,18 @@ The issue mentioned in the superseded request was fixed.  </comment>
     <comment></comment>
     <requestid>870260</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>4ca1cb151e52ec69eaa9e5f1c17008fd</srcmd5>
+    <version>0.12</version>
+    <time>1629269742</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 0.12:
+  Fixed:
+  * Allow munmap syscall to fix sandbox on musl libc #74
+  Changed:
+  * Change color format from #AARRGGBB to #RRGGBBAA #79 #81
+  Added:
+  * Allow overflow #67</comment>
+    <requestid>912349</requestid>
+  </revision>
 </revisionlist>

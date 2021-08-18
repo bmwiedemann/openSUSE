@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 16 06:58:43 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.12:
+  Fixed:
+  * Allow munmap syscall to fix sandbox on musl libc #74
+  Changed:
+  * Change color format from #AARRGGBB to #RRGGBBAA #79 #81
+  Added:
+  * Allow overflow #67
+
+-------------------------------------------------------------------
 Mon Feb  8 09:00:23 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.11:

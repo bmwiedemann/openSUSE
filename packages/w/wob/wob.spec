@@ -17,7 +17,7 @@
 
 
 Name:           wob
-Version:        0.11
+Version:        0.12
 Release:        0
 Summary:        A lightweight overlay volume/backlight/progress/anything bar for Wayland
 License:        ISC
