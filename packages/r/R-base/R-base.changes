@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Tue Aug 10 12:23:48 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES IN R 4.1.1:
+
+  NEW FEATURES:
+
+    * require(pkg, quietly = TRUE) is quieter and in particular does
+      not warn if the package is not found.
+
+  DEPRECATED AND DEFUNCT:
+
+    * Use of ftp:// URIs should be regarded as deprecated, with
+      on-going support confined to method = "libcurl" and not routinely
+      tested.  (Nowadays no major browser supports them.)
+
+    * The non-default method = "internal" is deprecated for http:// and
+      ftp:// URIs for both download.file and url.
+
+    * On Windows, method = "wininet" is deprecated for http://,
+      https:// and ftp:// URIs for both download.file and url.  (A
+      warning is only given for ftp://.)
+
+      For ftp:// URIs the default method is now "libcurl" if available
+      (which it is on CRAN builds).
+
+      method = "wininet" remains the default for http:// and https://
+      URIs but if libcurl is available, using method = "libcurl" is
+      preferred.
+
+  INSTALLATION:
+
+    * make check now works also without a LaTeX installation.  (Thanks
+      to Sebastian Meyer's PR#18103.)
+
+  BUG FIXES:
+
+    * make check-devel works again in an R build configured with
+      --without-recommended-packages.
+
+    * qnbinom(p, size, mu) for large size/mu is correct now in a range
+      of cases (PR#18095); similarly for the (size, prob)
+      parametrization of the negative binomial.  Also qpois() and
+      qbinom() are better and or faster for extreme cases.  The
+      underlying C code has been modularized and is common to all four
+      cases of discrete distributions.
+
+    * gap.axis is now part of the axis() arguments which are passed
+      from bxp(), and hence boxplot().  (Thanks to Martin Smith's
+      report and suggestions in PR#18109.)
+
+    * .First and .Last can again be set from the site profile.
+
+    * seq.int(from, to, *) and seq.default(..) now work better in large
+      range cases where from-to is infinite where the two boundaries
+      are finite.
+
+    * all.equal(x,y) now returns TRUE correctly also when several
+      entries of abs(x) and abs(y) are close to .Machine$double.xmax,
+      the largest finite numeric.
+
+    * model.frame() now clears the object bit when removing the class
+      attribute of a value via na.action (PR#18100).
+
+    * charClass() now works with multi-character strings on Windows
+      (PR#18104, fixed by Bill Dunlap).
+
+    * encodeString() on Solaris now works again in Latin-1 encoding on
+      characters represented differently in UTF-8.  Support for
+      surrogate pairs on Solaris has been improved.
+
+    * file.show() on Windows now works with non-ASCII path names
+      representable in the current native encoding (PR#18132).
+
+    * Embedded R on Windows can now find R home directory via the
+      registry even when installed only for the current user
+      (PR#18135).
+
+    * pretty(x) with finite x now returns finite values also in the
+      case where the extreme x values are close in size to the maximal
+      representable number .Machine$double.xmax.
+
+      Also, it's been tweaked for very small ranges and when a boundary
+      is close (or equal) to zero; e.g., pretty(c(0,1e-317)) no longer
+      has negative numbers, currently still warning about a very small
+      range, and pretty(2^-(1024 - 2^-1/(c(24,10)))) is more accurate.
+
+    * The error message for not finding vignette files when weaving has
+      correct file sizes now. (Thanks to Sebastian Meyer's PR#18154.)
+
+    * dnbinom(20, <large>, 1) now correctly gives 0, and similar cases
+      are more accurate with underflow precaution.  (Reported by Francisco Vera Alcivar in PR#18072.)
+
+-------------------------------------------------------------------
 Fri Jun  4 07:21:23 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - The line %{__install} -m 755 -d %{_infodir}

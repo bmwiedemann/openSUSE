@@ -25,7 +25,7 @@
 %define release 1
 
 Name:           R-base
-Version:        4.1.0
+Version:        4.1.1
 Release:        %release
 %define Rversion %{version}
 Source0:        R-%{version}.tar.bz2
@@ -1380,10 +1380,10 @@ This packages provides R-MASS, one of the recommended packages.
 
 %package -n R-Matrix
 Summary:        Package provides recommended R-Matrix
-Version:        1.3.3
+Version:        1.3.4
 Release:        %release
 Requires:       R-base
-Obsoletes:      R-Matrix-devel < 1.3.3
+Obsoletes:      R-Matrix-devel < 1.3.4
 Provides:       R-Matrix-devel
 # This is for backwards-compatibility only. Nothind *should*
 # (Build)Require R-Matrix-devel
@@ -1446,7 +1446,7 @@ This packages provides R-Matrix, one of the recommended packages.
 
 %package -n R-mgcv
 Summary:        Package provides recommended R-mgcv
-Version:        1.8.35
+Version:        1.8.36
 Release:        %release
 Requires:       R-base
 
