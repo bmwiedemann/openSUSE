@@ -18,7 +18,7 @@
 %define sover 0
 
 Name:           udisks2-qt5
-Version:        5.0.5
+Version:        5.0.6
 Release:        0
 Summary:        UDisks2 library with Qt5
 License:        LGPL-3.0+
