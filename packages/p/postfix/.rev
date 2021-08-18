@@ -1998,4 +1998,12 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>908570</requestid>
   </revision>
+  <revision rev="207" vrev="2">
+    <srcmd5>6056f5054a0500a74c19414369db0f9b</srcmd5>
+    <version>3.6.2</version>
+    <time>1629269704</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>910736</requestid>
+  </revision>
 </revisionlist>
