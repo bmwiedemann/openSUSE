@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 29 23:56:07 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 5.0.0
+
+- Update to 5.0.0:
+  * added SDP API for Capability Negociation headers (RFC5939).
+  * SDP parser no longer uses antlr, but belr.
+  * Fixed erroneous closing of file description 0, causing unexpected behaviors.
+  * Fixed crash when receiving invalid from header.
+- drop fix-build.patch
+- add belr-devel build requirement
+- drop antlr build requirement
+
+-------------------------------------------------------------------
+Sun Jul 4 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.5.20
+
+- fix several RPMLINT warning
+- Update to 4.5.20:
+  * Fix some GCC warning
+  * Fix crash while receiving some kind of invalid from header
+- Update to 4.5.15:
+  * Fix bellesip parser on IPV4 inside IPV6
+- Update to 4.5.10:
+  * Fix cast as causing belle_sip_uri_equals_with_omission to return false negatives
+
+-------------------------------------------------------------------
 Thu Apr 15 20:17:28 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
 - Update to 4.5.3:

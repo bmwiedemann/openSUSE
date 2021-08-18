@@ -20,20 +20,17 @@
 %define soname  libbellesip
 %define sover   1
 Name:           belle-sip
-Version:        4.5.3
+Version:        5.0.0
 Release:        0
 Summary:        C object-oriented SIP Stack
 License:        GPL-2.0-or-later
-URL:            https://linphone.org/technical-corner/belle-sip/overview
+Group:          Productivity/Telephony/SIP/Utilities
+URL:            https://linphone.org/technical-corner/belle-sip/
 Source:         https://gitlab.linphone.org/BC/public/belle-sip/-/archive/%{version}/%{name}-%{version}.tar.bz2
-Source1:        http://antlr3.org/download/antlr-3.4-complete.jar
 Source2:        baselibs.conf
-# PATCH-FIX-OPENSUSE fix-build.patch idoenmez@suse.de -- Remove reference to wakelock.h
-Patch0:         fix-build.patch
-BuildRequires:  antlr3c-devel
+BuildRequires:  belr-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  java
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
 BuildRequires:  pkgconfig(zlib)
@@ -44,6 +41,7 @@ object-oriented API.
 
 %package -n %{soname}%{sover}
 Summary:        C object-oriented SIP Stack
+Group:          Productivity/Telephony/SIP/Utilities
 
 %description -n %{soname}%{sover}
 Belle-sip is a SIP (RFC3261) implementation written in C, with an
@@ -51,6 +49,7 @@ object-oriented API.
 
 %package devel
 Summary:        Headers and libraries for the belle-sip library
+Group:          Development/Libraries/C and C++
 Requires:       %{soname}%{sover} = %{version}
 Requires:       pkgconfig(bctoolbox)
 Requires:       pkgconfig(zlib)
@@ -65,12 +64,8 @@ to develop applications using the belle-sip library.
 %prep
 %autosetup -p1
 
-cp -f %{SOURCE1} antlr3.jar
-
 %build
-antlr_jar="$PWD/antlr3.jar"
 %cmake \
-  -DANTLR3_JAR_PATH="$antlr_jar" \
   -DENABLE_STRICT=OFF            \
   -DENABLE_STATIC=OFF
 %cmake_build
@@ -94,6 +89,7 @@ antlr_jar="$PWD/antlr3.jar"
 %{_libdir}/%{soname}.so
 %{_libdir}/cmake/BelleSIP/
 %{_datadir}/belle_sip_tester/
+%{_datadir}/belr/
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
