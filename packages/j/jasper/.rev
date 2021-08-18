@@ -134,4 +134,14 @@
     which caused some valid codestreams to be rejected. (#289)</comment>
     <requestid>886663</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9d85501500a6cde4b4f4120a83aa2262</srcmd5>
+    <version>2.0.33</version>
+    <time>1629269745</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.0.33:
+  * Fix a JP2/JPC decoder bug (#291)
+  * Fix a build issue impacting some platforms (#296)</comment>
+    <requestid>912351</requestid>
+  </revision>
 </revisionlist>

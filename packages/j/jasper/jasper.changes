@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:04:10 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.33:
+  * Fix a JP2/JPC decoder bug (#291)
+  * Fix a build issue impacting some platforms (#296)
+
+-------------------------------------------------------------------
 Mon Apr 19 11:38:47 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.32:
