@@ -17,13 +17,13 @@
 
 
 Name:           deepin-screen-recorder
-Version:        5.9.3
+Version:        5.9.10
 Release:        0
 Summary:        Deepin Screen Recorder
 License:        GPL-3.0-or-later
+Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://github.com/linuxdeepin/deepin-screen-recorder
 Source0:        https://github.com/linuxdeepin/deepin-screen-recorder/archive/%{version}/%{name}-%{version}.tar.gz
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
@@ -71,6 +71,7 @@ deepin-screen-recorder is free and open source software for screen recording.
 
 %package -n deepin-dock-plugin-screen-recorder
 Summary:        The screen recorder plugin of deepin dock
+Group:          Productivity/Multimedia/Video/Editors and Convertors
 Requires:       %{name} = %{version}
 Requires:       deepin-dock
 

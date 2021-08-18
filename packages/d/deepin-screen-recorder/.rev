@@ -28,4 +28,15 @@
   (every dir should only have one owner) (boo#1184786) (forwarded request 897914 from hillwood)</comment>
     <requestid>897922</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>add7021d2c966290cd60d9843536da30</srcmd5>
+    <version>5.9.10</version>
+    <time>1629269726</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 5.9.10
+  * Fix bugs
+  * Add DBus interface for ocr
+  * Update translations (forwarded request 910674 from hillwood)</comment>
+    <requestid>910888</requestid>
+  </revision>
 </revisionlist>
