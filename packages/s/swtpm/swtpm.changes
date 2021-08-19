@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug  7 15:02:40 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.6.0:
+  - Addressed potential symlink attack issue (CVE-2020-28407)
+  - Rewritten in 'C'; needs json-glib
+  - Use timeouts for communicating with swtpm (Unix socket)
+  - Fix --print-capabilities for 'swtpm chardev'
+  - Various cleanups and fixes (coverity)
+- Enable selinux support
+- Removed swtpm-rename_deprecated_libtasn1_types.patch: upstream
+- Fix rpmlint errors
+
+-------------------------------------------------------------------
 Thu May 20 06:56:39 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - swtpm_cert: rename deprecated libtasn1 types.

@@ -1,0 +1,2 @@
+# This is the correct location
+addFilter(r'arch-dependent-file-in-usr-share .* /usr/share/swtpm/swtpm-localca')

@@ -18,16 +18,20 @@
 
 # Scripts in this package are python3
 %define skip_python2 1
-
+# SELinux
+%define selinuxtype targeted
+%define modulename1 swtpm
+%define modulename2 swtpm_svirt
+%define modulename3 swtpmcuse
 Name:           swtpm
-Version:        0.5.2
+Version:        0.6.0
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
 Group:          System/Base
 URL:            https://github.com/stefanberger/swtpm
-Source:         https://github.com/stefanberger/swtpm/archive/v%{version}.tar.gz
-Patch0:         swtpm-rename_deprecated_libtasn1_types.patch
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source100:      swtpm-rpmlintrc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect
@@ -41,13 +45,18 @@ BuildRequires:  libseccomp-devel
 BuildRequires:  libtasn1-devel
 BuildRequires:  libtool
 BuildRequires:  libtpms-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-cryptography
+BuildRequires:  selinux-policy-devel
+BuildRequires:  selinux-policy-targeted
 BuildRequires:  socat
+BuildRequires:  pkgconfig(json-glib-1.0)
+BuildRequires:  pkgconfig(systemd)
 Requires:       iproute2
 Requires:       python3-cryptography
 Requires:       trousers
-Requires:       user(tss)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Requires:       (%{name}-selinux if selinux-policy-base)
+Requires(pre):  user(tss)
 
 %description
 The SWTPM package provides TPM emulators with different front-end interfaces
@@ -67,60 +76,79 @@ Requires:       libtpms-devel
 %description    devel
 The development files for SWTPM
 
+%package        selinux
+Summary:        SELinux module for the Software TPM emulator
+Group:          System/Management
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+%{selinux_requires}
+
+%description    selinux
+This package provides the SELinux module for the Software TPM emulator.
+
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup
 
 %build
-
-# Fix rpmlint env-script-interpreter error
-sed -i -e "s|^#!/usr/bin/env |#!/usr/bin/|" \
-  %_builddir/%buildsubdir/src/swtpm_setup/swtpm_setup.in \
-  %_builddir/%buildsubdir/src/swtpm_setup/py_swtpm_setup/swtpm_setup.py \
-  %_builddir/%buildsubdir/samples/swtpm-create-tpmca \
-  %_builddir/%buildsubdir/samples/swtpm-create-user-config-files.in \
-  %_builddir/%buildsubdir/samples/swtpm-localca.in \
-  %_builddir/%buildsubdir/samples/py_swtpm_localca/swtpm_localca.py
-
-./autogen.sh
+mkdir m4
+autoreconf -fiv
+# configure looks for semodule on PATH
+export PATH="$PATH:%{_sbindir}"
 %configure --with-openssl --disable-static \
-     --with-tss-user=root --with-tss-group=tss
-make %{?_smp_mflags}
+     --with-tss-user=root --with-tss-group=tss \
+     --with-selinux
+%make_build
 
 %install
 %make_install
-
+find %{buildroot} -type f -name "*.la" -delete -print
+mkdir %{buildroot}%{_datadir}/selinux/packages/targeted
+mv %{buildroot}%{_datadir}/selinux/packages/*.pp %{buildroot}%{_datadir}/selinux/packages/targeted
 mkdir -p %{buildroot}%{_localstatedir}/lib/swtpm-localca
+sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-create-tpmca
+sed -e 's|#!/usr/bin/env |#!/usr/bin/|g' -i %{buildroot}%{_datadir}/swtpm/swtpm-create-user-config-files
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename1}.pp
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename2}.pp
+%selinux_modules_install -s %{selinuxtype} -p 200 %{_datadir}/selinux/packages/targeted/%{modulename3}.pp
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename1}
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename2}
+    %selinux_modules_uninstall -s %{selinuxtype} -p 200 %{modulename3}
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
+
 %files
-%defattr(-,root,root)
 %doc CHANGES README TODO
 %license LICENSE
 %{_bindir}/swtpm*
 %config %{_sysconfdir}/swtpm*
-%dir %{_datadir}/swtpm
-%{_datadir}/swtpm/*
+%{_datadir}/swtpm
 %dir %{_libdir}/swtpm
 %{_libdir}/swtpm/*.so.*
-%{_mandir}/man8/swtpm*
-%dir %{python_sitelib}/py_swtpm_localca
-%dir %{python_sitelib}/py_swtpm_setup
-%pycache_only %{python_sitelib}/py_swtpm_localca/__pycache__
-%pycache_only %{python_sitelib}/py_swtpm_setup/__pycache__
-%{python_sitelib}/py_swtpm_localca/*.py
-%{python_sitelib}/py_swtpm_setup/*.py
-%{python_sitelib}/swtpm_localca*
-%{python_sitelib}/swtpm_setup*
+%{_mandir}/man8/swtpm*%{?ext_man}
 %dir %attr(0750,tss,root) %{_localstatedir}/lib/swtpm-localca
 
 %files devel
 %{_libdir}/swtpm/*.so
-%{_libdir}/swtpm/*.la
-%dir %{_includedir}/swtpm/
-%{_includedir}/swtpm/*
-%{_mandir}/man3/swtpm*
+%{_includedir}/swtpm
+%{_mandir}/man3/swtpm*%{?ext_man}
+
+%files selinux
+%{_datadir}/selinux/packages/targeted/*.pp
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename1}
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename2}
+%ghost %verify(not md5 size mtime) %{_sharedstatedir}/selinux/%{selinuxtype}/active/modules/200/%{modulename3}
 
 %changelog
