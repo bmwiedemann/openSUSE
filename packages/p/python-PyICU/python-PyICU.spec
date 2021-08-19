@@ -24,7 +24,7 @@ Release:        0
 Summary:        Python Extension Wrapping the ICU C++ API
 License:        MIT
 Group:          Development/Libraries/Python
-URL:            https://github.com/ovalhub/pyicu
+URL:            https://gitlab.pyicu.org
 Source0:        https://files.pythonhosted.org/packages/source/P/PyICU/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -57,8 +57,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-# Running test on python3 only due to pyicu issue 61
-python3 setup.py test
+%pytest_arch -v -k 'not (testAcceptLanguage or testAcceptLanguageFromHTTP)' -rs test
 
 %files %{python_files}
 %license LICENSE

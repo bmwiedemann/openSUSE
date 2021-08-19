@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:51:00 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- %pytest_arch added to fix Leap test issues
+
+-------------------------------------------------------------------
 Fri Aug 13 17:36:21 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 -  2.7.4
