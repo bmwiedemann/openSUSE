@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 13 23:41:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.07.0
+  * make bucket in put(recursive) (#496)
+  * non-truthy prefixes (#497)
+  * implement rm_file (#499)
+- Release 2021.06.1
+  * bucket region caching (#495)
+- Release 2021.06.0
+  * support "prefix" in directory listings (#486)
+  * support negative index in cat_file (#487, 488)
+  * don't requite ETag in file details (#480) 
+
+-------------------------------------------------------------------
 Thu May 20 13:16:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.05.0

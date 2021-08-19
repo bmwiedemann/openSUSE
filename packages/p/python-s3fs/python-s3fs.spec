@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-s3fs
-Version:        2021.5.0
+Version:        2021.7.0
 Release:        0
 Summary:        Python filesystem interface for S3
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/s3fs/s3fs-%{ver
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module aiobotocore >= 1.0.1}
 BuildRequires:  %{python_module boto3}
-BuildRequires:  %{python_module fsspec >= 2021.5.0}
+BuildRequires:  %{python_module fsspec >= 2021.7.0}
 BuildRequires:  %{python_module moto-server >= 2.0}
 BuildRequires:  %{python_module pytest >= 4.2.0}
 BuildRequires:  %{python_module pytest-env}
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  python-mock
 %endif
 Requires:       python-aiobotocore >= 1.0.1
-Requires:       python-fsspec >= 2021.5.0
+Requires:       python-fsspec >= 2021.7.0
 Recommends:     aws-cli
 Recommends:     python-boto3
 BuildArch:      noarch
