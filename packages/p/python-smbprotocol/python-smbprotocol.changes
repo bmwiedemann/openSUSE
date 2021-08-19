@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Aug 17 15:32:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.2
+  * Fix up cached credential logic when setting domain_controller
+    in the initial config singleton
+- Update to version 1.6.1
+  * Remove print() statement that was used during testing
+- Update to version 1.6.0
+  * Dropped support for Python 2.7 and 3.5
+  * Add performance improvement on reads with large files
+  * Added the require_signing kwarg to smbclient.register_session()
+    to allow the caller to control whether signing is required on
+    the connection or not.
+  * Fix OverflowError when handling FILETIME values beyond the year
+    9999 - caps the value to 9999-12-31 due to a Python limitation
+  * Fix up credit charge calculation which causes a
+    STATUS_INVALID_PARAMETER response for certain read/write
+    lengths.
+  * Ensure responses with a failure are cleaned up from the
+    outstanding request table to avoid memory leaks.
+
+-------------------------------------------------------------------
 Thu May 13 16:29:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.1
