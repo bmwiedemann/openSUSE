@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 17 14:37:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.10.0
+  * PR 241 - PR: Update setup.py classifiers, by @dalthviz
+  * PR 230 - PR: Fix imported modules logic if 'FORCE_QT_API' is
+    empty, by @hiaselhans
+  * PR 224 - PR: Support python 3.9 custom_widgets iteration, by
+    @irrcombat (206)
+  * PR 215 - PR: Slight typo fix, by @altendky
+  * PR 214 - PR: Handle QtCore.SignalInstance/pyqtBoundSignal, by
+    @altendky
+  * PR 208 - PR: Move CI to Github Actions, by @goanpeca
+  * PR 204 - PR: Add Python 3.9 compatibility for collections.abc
+    module, by @tirkarthi
+  * PR 199 - PR: Add support to PyQt4-sip 4.19.13, by @milanmatic
+- Update description
+- Clarify the requirements policy
+- Test Pyside2 and Qtcharts
+- Remove extra mock requirement
+
+-------------------------------------------------------------------
 Tue Aug 17 09:07:26 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Minimize Recommends and Suggests, dep chain is too big

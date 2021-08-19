@@ -17,50 +17,64 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%bcond_without python2
 Name:           python-QtPy
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Add-QtDatavisualization-alias-to-QtDataVisualization.patch -- gh#spyder-ide/qtpy#228
 Patch0:         0001-Add-QtDatavisualization-alias-to-QtDataVisualization.patch
-BuildRequires:  %{python_module qt3d-qt5}
-BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module qtdatavis3d-qt5}
-BuildRequires:  %{python_module qtwebengine-qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Recommends:     python-qt5
-# Optional parts, which have giant dep chains.
-# Too big for the TW DVD and default installs.
-#Recommends:     python-qt3d-qt5
-#Recommends:     python-qtdatavis3d-qt5
-#Recommends:     python-qtwebengine-qt5
-#Suggests:       python-pyside2
+# Note: Don't add any Requires, Recommends, or Suggests here,
+# because we need to minimize the space occupied on the
+# Tumbleweed DVD. The application importing QtPy will have to
+# know what backend to recommend and what extras to require (e.g.
+# qtwebengine). Note that setup.py does not declare any requirements,
+# either.
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module mock}
+%if %{with python2}
+BuildRequires:  python2-mock
+%endif
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module qt3d-qt5}
+BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module qtcharts-qt5}
+BuildRequires:  %{python_module qtdatavis3d-qt5}
+BuildRequires:  %{python_module qtwebengine-qt5}
+BuildRequires:  python3-pyside2
 BuildRequires:  xvfb-run
 # /SECTION
 %python_subpackages
 
 %description
-QtPy (pronounced 'cutie pie') is a small abstraction layer that lets you
-write applications using a single api call to either PyQt or PySide.
+QtPy is a small abstraction layer that lets you
+write applications using a single API call to either PyQt or PySide.
 
 It provides support for PyQt5, PyQt4 and PySide using the PyQt5 layout (where
 the QtGui module has been split into QtGui and QtWidgets).
 
-Basically, you write your code as if you were using PyQt5 but import qt from
-`qtpy` instead of `PyQt5`.
+Basically, you can write your code as if you were using PySide2 but import Qt
+modules from qtpy instead of PySide2 (or PyQt5)
 
 %prep
 %setup -q -n QtPy-%{version}
-sed -i 's/\r$//' LICENSE.txt
+# wrong EOL encondig
+sed -i 's/\r$//' LICENSE.txt *.md
+# remove mock dependency for Python 3
+sed -i '/^import mock/ c try:\
+    from unittest import mock\
+except ImportError:\
+    import mock' qtpy/tests/test_macos_checks.py
+# qtcharts is present in our PyQt5 and Pyside2
+sed -i '/skipif.*not PYSIDE2/ d' qtpy/tests/test_qtcharts.py
+# remove script calling pytest so that pytest does not discover it
 rm qtpy/tests/runtests.py
 # Submitted to upstream at gh#spyder-ide/qtpy#228
 mv qtpy/QtDatavisualization.py qtpy/QtDataVisualization.py
@@ -80,8 +94,10 @@ mkdir empty
 pushd empty
 %{python_expand # pytest-xvfb unfortunately fails here
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
-xvfb-run --server-args="-screen 0 1920x1080x24" pytest-%{$python_bin_suffix} -v ../qtpy/tests/
+xvfb-run --server-args="-screen 0 1920x1080x24" pytest-%{$python_bin_suffix} -rwEfs -v ../qtpy/tests/
 }
+export QT_API=pyside2 FORCE_QT_API=1
+xvfb-run --server-args="-screen 0 1920x1080x24" pytest-%{python3_bin_suffix} -rwEfs -v ../qtpy/tests/
 popd
 
 %files %{python_files}
