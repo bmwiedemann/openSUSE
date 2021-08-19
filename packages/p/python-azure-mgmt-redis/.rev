@@ -69,4 +69,16 @@
 - Update Requires from setup.py (forwarded request 861349 from glaubitz)</comment>
     <requestid>861434</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>3e7eee2666baf6607d6137bd352b63c4</srcmd5>
+    <version>13.0.0</version>
+    <time>1629360073</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 13.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py</comment>
+    <requestid>912929</requestid>
+  </revision>
 </revisionlist>
