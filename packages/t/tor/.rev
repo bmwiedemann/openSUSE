@@ -902,4 +902,14 @@ nicer version with try-reload-or-restart</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>906073</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>310a3f480e7e88869eb25129a770c310</srcmd5>
+    <version>0.4.6.7</version>
+    <time>1629360059</time>
+    <user>RBrownSUSE</user>
+    <comment>tor 0.4.6.7:
+  * Fix a DoS via a remotely triggerable assertion failure
+    (boo#1189489, TROVE-2021-007, CVE-2021-38385)</comment>
+    <requestid>912796</requestid>
+  </revision>
 </revisionlist>
