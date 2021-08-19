@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-identify
-Version:        2.2.10
+Version:        2.2.13
 Release:        0
 Summary:        File identification library for Python
 License:        MIT

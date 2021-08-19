@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 18 12:47:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.2.13
+  * Add the '.kts' extension for kotlin
+- from version 2.2.12
+  * add adobe illustrator's .ai extension
+- from version 2.2.11
+  * Detect waf wscript files as Python
+  * stricter mypy settings
+
+-------------------------------------------------------------------
 Thu Jun 24 12:31:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.2.10
