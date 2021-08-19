@@ -19,7 +19,7 @@
 %define fname yomi
 %define fdir  %{_datadir}/salt-formulas
 Name:           yomi-formula
-Version:        0.0.1+git.1619170188.fa52819
+Version:        0.0.1+git.1629280900.fdbe9f0
 Release:        0
 Summary:        Yomi - Yet one more installer
 License:        Apache-2.0
@@ -74,7 +74,7 @@ cp -R pillar %{buildroot}%{_datadir}/%{fname}/
 
 # Monitoring CLI
 mkdir -p %{buildroot}%{_bindir}/
-cp -a monitor %{buildroot}%{_bindir}/
+cp -a yomi-monitor %{buildroot}%{_bindir}/
 
 # Pillars examples
 cat <<EOF > %{buildroot}%{_datadir}/%{fname}/pillar.conf
@@ -164,7 +164,7 @@ EOF
 %{fdir}/metadata/
 %{_prefix}/lib/%{fname}/
 %{_datadir}/%{fname}
-%{_bindir}/monitor
+%{_bindir}/yomi-monitor
 %config %{_sysconfdir}/salt/master.d/%{name}.conf
 
 %changelog

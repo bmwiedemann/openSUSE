@@ -231,4 +231,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>889512</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b9863641ca8542f3c60dd93b5d09e82d</srcmd5>
+    <version>0.0.1+git.1629280900.fdbe9f0</version>
+    <time>1629370156</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 0.0.1+git.1629280900.fdbe9f0:
+  * monitor: rename it to yomi-monitor
+  * suseconnect: make regcode parameter optional
+</comment>
+    <requestid>912868</requestid>
+  </revision>
 </revisionlist>

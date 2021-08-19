@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 18 10:03:43 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 0.0.1+git.1629280900.fdbe9f0:
+  * monitor: rename it to yomi-monitor
+  * suseconnect: make regcode parameter optional
+
+-------------------------------------------------------------------
 Fri Apr 23 09:30:17 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 0.0.1+git.1619170188.fa52819:
