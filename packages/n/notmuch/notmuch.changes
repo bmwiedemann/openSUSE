@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Aug 18 06:29:37 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.32.3
+
+What's new in notmuch 0.32.3
+=========================
+
+Library
+-------
+
+Restore location of database via `MAILDIR` environment variable, which
+was broken in 0.32.
+
+Bump libnotmuch minor version to match the documentation in
+`notmuch.h`.
+
+Correct documentation for deprecated database opening functions to
+point out that they (still) do not load configuration information.
+
+CLI
+---
+
+Restore "notmuch config get built_with.*", which was broken in 0.32.
+
+-------------------------------------------------------------------
 Mon Jun 28 06:35:16 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 What's new in notmuch 0.32.2

@@ -307,4 +307,12 @@ From the NEWS file, this version reports the following:
     <comment>New upstream release 0.32.2</comment>
     <requestid>903184</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9515e57a42014b9803adc7d4bcbdeaa2</srcmd5>
+    <version>0.32.3</version>
+    <time>1629360056</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912841</requestid>
+  </revision>
 </revisionlist>
