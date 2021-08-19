@@ -19,7 +19,7 @@
 
 #!BuildIgnore: post-build-checks
 
-%define patchversion 5.13.8
+%define patchversion 5.13.12
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -45,7 +45,7 @@ BuildRequires:  util-linux
 %endif
 %endif
 %endif
-BuildRequires:  kernel%kernel_flavor-srchash-967c6a8bfc85bc78dbcbb220e21cd9f1bb06f573
+BuildRequires:  kernel%kernel_flavor-srchash-999e6048a4cc6accd2653c9dccaaaff2f4ae8f86
 
 %if 0%{?rhel_version}
 BuildRequires:  kernel
@@ -64,9 +64,9 @@ BuildRequires:  dracut
 Summary:        package kernel and initrd for OBS VM builds
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.13.8
+Version:        5.13.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g967c6a8
+Release:        <RELEASE>.g999e604
 %else
 Release:        0
 %endif
@@ -80,6 +80,8 @@ loaded during build when installing the kernel package.
 %prep
 
 %build
+# set 'date of last password change' to a static value (bsc#1189305)
+sed -i 's/^\(root:\*:\)[1-9][0-9]*\(::::::\)/\142\2/' /etc/shadow
 mkdir -p /usr/lib/dracut/modules.d/80obs
 cat > /usr/lib/dracut/modules.d/80obs/module-setup.sh <<EOF
 #!/bin/bash
@@ -146,7 +148,9 @@ ROOT=""
                -m "$KERNEL_MODULES" \
                -k /boot/%{kernel_name}-*-default -M /boot/System.map-*-default -i /tmp/initrd.kvm -B
 %else
-dracut --host-only --no-hostonly-cmdline --drivers="$KERNEL_MODULES" --force /tmp/initrd.kvm `echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p'`
+dracut --reproducible --host-only --no-hostonly-cmdline \
+	--drivers="$KERNEL_MODULES" --force /tmp/initrd.kvm \
+	`echo /boot/%{kernel_name}-*%{kernel_flavor} | sed -n -e 's,[^-]*-\(.*'%{kernel_flavor}'\),\1,p'`
 %endif
 
 #cleanup

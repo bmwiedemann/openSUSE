@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.13
-%define patchversion 5.13.8
+%define patchversion 5.13.12
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -51,7 +51,7 @@
 
 # Define some CONFIG variables as rpm macros as well. (rpm cannot handle
 # defining them all at once.)
-%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES
+%define config_vars CONFIG_MODULES CONFIG_MODULE_SIG CONFIG_KMSG_IDS CONFIG_SUSE_KERNEL_SUPPORTED CONFIG_EFI_STUB CONFIG_LIVEPATCH_IPA_CLONES CONFIG_DEBUG_INFO_BTF_MODULES
 %{expand:%(eval "$(test -n "%cpu_arch_flavor" && tar -xjf %_sourcedir/config.tar.bz2 --to-stdout config/%cpu_arch_flavor)"; for config in %config_vars; do echo "%%global $config ${!config:-n}"; done)}
 %define split_extra ("%CONFIG_MODULES" == "y" && "%CONFIG_SUSE_KERNEL_SUPPORTED" == "y")
 
@@ -72,9 +72,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.13.8
+Version:        5.13.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g967c6a8
+Release:        <RELEASE>.g999e604
 %else
 Release:        0
 %endif
@@ -161,11 +161,10 @@ BuildRequires:  dwarfextract
 BuildRequires:  u-boot-tools
 %endif
 %if 0%{?usrmerged}
-# make sure we have post-usrmerge filesystem package - tumbleweed started to set version recently
-Conflicts:      filesystem < 84
-# this is the tumbleweed snapshot that introduced GCC 11 and supposedly usrmerge
-# FIXME: microos in stagings doesn't provide such a high release
-#Requires:       suse-release > 20210602
+# make sure we have a post-usrmerge system
+Conflicts:      filesystem < 16
+# FIXME: microos in stagings provides only release 1
+#Conflicts:      suse-release < 16
 %endif
 
 Obsoletes:      microcode_ctl
@@ -192,10 +191,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-967c6a8bfc85bc78dbcbb220e21cd9f1bb06f573
-Provides:       kernel-srchash-967c6a8bfc85bc78dbcbb220e21cd9f1bb06f573
+Provides:       kernel-%build_flavor-base-srchash-999e6048a4cc6accd2653c9dccaaaff2f4ae8f86
+Provides:       kernel-srchash-999e6048a4cc6accd2653c9dccaaaff2f4ae8f86
 # END COMMON DEPS
-Provides:       %name-srchash-967c6a8bfc85bc78dbcbb220e21cd9f1bb06f573
+Provides:       %name-srchash-999e6048a4cc6accd2653c9dccaaaff2f4ae8f86
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -1309,6 +1308,9 @@ Supplements:    packageand(%name:kernel-devel%variant)
 %else
 Requires:       kernel-source-vanilla = %version-%source_rel
 Supplements:    packageand(%name:kernel-source-vanilla)
+%endif
+%if "%CONFIG_DEBUG_INFO_BTF_MODULES" == "y"
+Requires:       dwarves >= 1.21
 %endif
 %ifarch %ix86
 Provides:       kernel-vmi-devel = 2.6.38

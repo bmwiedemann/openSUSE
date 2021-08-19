@@ -17,7 +17,7 @@
 # needsrootforbuild
 
 
-%define patchversion 5.13.8
+%define patchversion 5.13.12
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -36,9 +36,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Summary:        Basic QA tests for the kernel
 License:        GPL-2.0-only
 Group:          SLES
-Version:        5.13.8
+Version:        5.13.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g967c6a8
+Release:        <RELEASE>.g999e604
 %else
 Release:        0
 %endif
