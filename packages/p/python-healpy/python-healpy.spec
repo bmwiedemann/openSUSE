@@ -1,7 +1,7 @@
 #
 # spec file for package python-healpy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,14 +20,13 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-healpy
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        Python library to handle pixelated data on the sphere based on HEALPix
 License:        GPL-2.0-only
 URL:            https://github.com/healpy/healpy
 Source:         https://files.pythonhosted.org/packages/source/h/healpy/healpy-%{version}.tar.gz
-# PATCH-FEATURE-OPENSUSE python-healpy-drop-pytest-runner.patch gh#healpy/healpy#649 badshah400@gmail.com -- Drop pytest-runner requirement for install: not required
-Patch0:         python-healpy-drop-pytest-runner.patch
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.13}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +44,7 @@ Requires:       python-numpy >= 1.13
 Requires:       python-scipy
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # SECTION Additional test requirements
 # Symbol clashes with astropy < 4.0
 BuildRequires:  %{python_module astropy >= 4.0}
@@ -84,7 +83,6 @@ export CFLAGS="%{optflags}"
 %python_install
 %python_clone -a  %{buildroot}%{_bindir}/healpy_get_wmap_maps.sh
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
- 
 
 %check
 # Skip tests requiring network access

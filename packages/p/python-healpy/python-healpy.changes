@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Aug 18 12:35:01 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.15.0:
+  * Write_map keeps dtype of input map array instead of float32
+    (gh#healpy/healpy#688).
+  * Read_map keeps dtype of FITS file instead of upcasting to
+    float64 (gh#healpy/healpy#688).
+  * Write_cl uses dtype of input cl instead of float64
+    (gh#healpy/healpy#688).
+  * Changed all warnings to using the logging module, deprecated
+    all verbose keywords (gh#healpy/healpy#693).
+  * Experimental projview function to plot maps using projections
+    from matplotlib (gh#healpy/healpy#695).
+  * Flip sign for spin-0 alm2map_spin and map2alm_spin
+    (gh#healpy/healpy#707).
+  * Support transparency in plotting with the alpha parameter
+    (gh#healpy/healpy#696).
+  * Removed the note that we will change order of cl in synfast
+    and synalm, we will leave new=False default
+    (gh#healpy/healpy#687).
+  * Added convenice functions order2npix and npix2order
+    (gh#healpy/healpy#685).
+  * Support nested maps hp.smoothing (gh#healpy/healpy#678).
+  * Improvements of the build system (gh#healpy/healpy#660).
+  * Automatically build wheels for Linux/MacOS on Github actions
+    (gh#healpy/healpy#656).
+  * Drop support for Python 2.7-3.5 (gh#healpy/healpy#658).
+  * Allow OBJECT FITS header not to be a string
+    (gh#healpy/healpy#665).
+  * Fixed indexing issue in bl2beam (gh#healpy/healpy#667).
+  * Fixed map2alm_spin bug for masked input
+    (gh#healpy/healpy#651).
+  * Minor bugfixes:
+    - Accept None for cls in synalm (gh#healpy/healpy#711)
+    - Get nside from length of array in read_map
+      (gh#healpy/healpy#710).
+    - Fix spin 0 transforms in alm2map_spin
+      (gh#healpy/healpy#708).
+    - Raise exception for rotate_alm with complex64 inputs
+      (gh#healpy/healpy#704).
+    - Replace deprecated numpy aliases (gh#healpy/healpy#698).
+- New BuildRequires: python-Cython.
+- Drop python-healpy-drop-pytest-runner.patch: Upstream no longer
+  requires pytest-runner for its tests.
+
+-------------------------------------------------------------------
 Thu Jan 21 15:32:02 UTC 2021 - Benjamin Greiner <code@bnavigator.de>
 
 - Skip python36 because astropy is python >= 3.7
