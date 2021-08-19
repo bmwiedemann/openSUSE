@@ -27,6 +27,8 @@ URL:            https://www.gnu.org/software/gnuastro/
 Source:         https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz
 Source2:        https://ftp.gnu.org/pub/gnu/gnuastro/%{name}-%{version}.tar.gz.sig
 Source3:        https://akhlaghi.org/public-pgp-key.txt#/%{name}.keyring
+# PATCH-FIX-UPSTREAM gnuastro-cfitsio-version-format-change.patch badshah400@gmail.com -- accounts for 3 number version string for CFITSIO; patch taken from upstream commit
+Patch0:         gnuastro-cfitsio-version-format-change.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cfitsio)
@@ -81,7 +83,7 @@ BuildArch:      noarch
 Bash command line completion support for %{name}
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

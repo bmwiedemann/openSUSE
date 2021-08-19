@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 18 02:39:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add gnuastro-cfitsio-version-format-change.patch -- accounts for
+  3 number version string for CFITSIO; patch taken from upstream
+  commit.
+
+-------------------------------------------------------------------
 Wed Jun  2 07:37:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU Astronomy Utilities 0.15 (library 13.0.0):

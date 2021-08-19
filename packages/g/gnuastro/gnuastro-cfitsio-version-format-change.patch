@@ -1,0 +1,26 @@
+diff --git a/lib/fits.c b/lib/fits.c
+index ef559759..5fe11bd6 100644
+--- a/lib/fits.c
++++ b/lib/fits.c
+@@ -2138,8 +2138,19 @@ gal_fits_key_write_version_in_ptr(gal_fits_list_key_t **keylist, char *title,
+   /* Print 'Versions and date' title. */
+   gal_fits_key_write_title_in_ptr("Versions and date", fptr);
+ 
+-  /* Set the version of CFITSIO as a string. */
+-  sprintf(cfitsioversion, "%-.2f", CFITSIO_VERSION);
++  /* Set the version of CFITSIO as a string: before version 4.0.0 of
++     CFITSIO, there were only two numbers in the version (for example
++     '3.49' and '3.48'), but from the 4th major release, there are three
++     numbers in the version string. The third number corresponds to a new
++     'CFITSIO_MICRO' macro. So if it doesn't exist, we'll just print two
++     numbers, otherwise, we'll print the three. */
++#ifdef CFITSIO_MICRO
++  sprintf(cfitsioversion, "%d.%d.%d", CFITSIO_MAJOR,
++          CFITSIO_MINOR, CFITSIO_MICRO);
++#else
++  sprintf(cfitsioversion, "%d.%d", CFITSIO_MAJOR,
++          CFITSIO_MINOR);
++#endif
+ 
+   /* Write all the information: */
+   fits_write_date(fptr, &status);
