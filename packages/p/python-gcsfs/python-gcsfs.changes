@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 18 10:29:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.07.0
+  * fix find/glob with a prefix (#399)
+- Release notes between 0.7.1 and 2021.06.0
+  * kwargs to aiohttpClient session
+  * graceful timeout when disconnecting at finalise (#397)
+  * negative ranges in cat_file (#394)
+  * no credentials bug fix (#390)
+  * use googleapis.com (#388)
+  * more retries (#387, 385, 380)
+  * Code cleanup (#381)
+  * license to match stated one (#378)
+  * deps updated (#376)
+  * switch to calver and fsspec pin
+  * keep up with fsspec 0.9.0 async
+  * one-shot find
+  * consistency checkers
+  * retries for intermittent issues
+  * timeouts
+  * partial cat
+  * http error status
+- Fix running the testsuite -- gh#dask/gcsfs#292
+  * drop avoid_network_tests.patch
+  * use the GitHub archive for VCR recordings
+
+-------------------------------------------------------------------
 Mon May 24 03:49:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
