@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 17 10:35:45 UTC 2021 - Andreas Vetter <vetter@physik.uni-wuerzburg.de>
+
+- Update to 5.60:
+  * New features
+    - New 'sessionResume' service-level option to allow
+      or disallow session resumption
+    - Added support for the new SSL_set_options() values.
+    - Download fresh ca-certs.pem for each new release.
+  * Bugfixes
+    - Fixed 'redirect' with 'protocol'.  This combination is
+      not supported by 'smtp', 'pop3' and 'imap' protocols.
+
+-------------------------------------------------------------------
 Tue Apr 13 14:35:20 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - ensure proper startup after network: stunnel-5.59_service_always_after_network.patch

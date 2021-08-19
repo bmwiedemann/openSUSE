@@ -38,7 +38,7 @@ Requires(pre):  /usr/sbin/useradd
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           stunnel
-Version:        5.59
+Version:        5.60
 Release:        0
 Summary:        Universal TLS Tunnel
 License:        GPL-2.0-or-later
