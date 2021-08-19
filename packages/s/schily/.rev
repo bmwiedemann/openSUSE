@@ -401,4 +401,13 @@
     <comment>- Update to release 2021.07.29</comment>
     <requestid>909532</requestid>
   </revision>
+  <revision rev="43" vrev="43">
+    <srcmd5>174634c4b401b6438158c15f5e9e7f73</srcmd5>
+    <version>unknown</version>
+    <time>1629360039</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to release 2021.08.14
+make glibc-2.34 happy</comment>
+    <requestid>912307</requestid>
+  </revision>
 </revisionlist>

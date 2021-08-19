@@ -17,11 +17,11 @@
 
 
 # grep -Pir 'define\s+VERSION|strvers'
-%define rver	2021-07-29
-%global box_version	2021.07.29
+%define rver	2021-08-14
+%global box_version	2021.08.14
 %global cdr_version	3.02~a10
 %global sccs_version	5.09
-%global smake_version	1.5
+%global smake_version	1.6
 %global star_version	1.6.1
 %global libfind_version 1.8
 %global ved_version     1.8
@@ -41,6 +41,7 @@ Source1:        README-FIRST
 # and submit patches upstream FIRST (cc to the bspkg maintainer perhaps).
 Patch1:         iconv-name.diff
 Patch2:         schily-2018-05-25_star_configuration.patch
+Patch3:         schily-stksz.diff
 BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -462,6 +463,7 @@ GB).
 
 %prep
 %autosetup -n %name-%rver -p1
+
 find . "(" -type d -o -type f ")" -exec chmod u+w "{}" "+"
 
 cp %{SOURCE1} .

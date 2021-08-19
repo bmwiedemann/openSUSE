@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 15 16:01:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.08.14
+  * A new test was added to check whether SIGSTKSZ is a constant.
+  * smake: While expanding the right side of a macro assignment with
+    the operators :::= and +:=, smake no longer expands $$ to $, but
+    rather leaves $$ untouched.
+  * smake: The dynamic macros $? and $^ now work for implicit rules
+    as well.
+- Add schily-stksz.diff
+
+-------------------------------------------------------------------
 Sat Jul 31 14:04:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.07.29
