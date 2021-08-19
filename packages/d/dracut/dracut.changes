@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:51:08 UTC 2021 - lnussel@suse.de
+
+- Update to version 055+suse.117.ge5fc2048:
+  * fix(suse-initrd): need to handle relative links too
+
+-------------------------------------------------------------------
 Thu Aug 12 13:07:10 UTC 2021 - lnussel@suse.de
 
 - Update to version 055+suse.115.gf65e559b:
