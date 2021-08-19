@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>906284</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>4c249c578b3aed4f73606b1be03ed596</srcmd5>
+    <version>319</version>
+    <time>1629360060</time>
+    <user>RBrownSUSE</user>
+    <comment>- Require missed python3-libxml2 to get it build</comment>
+    <requestid>912845</requestid>
+  </revision>
 </revisionlist>

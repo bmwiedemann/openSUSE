@@ -34,6 +34,7 @@ BuildRequires:  python3 >= 3.4
 BuildRequires:  python3-docutils
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
+BuildRequires:  python3-libxml2
 BuildRequires:  python3-xdg
 BuildRequires:  typelib-1_0-Gtk-3_0
 BuildRequires:  typelib-1_0-Keybinder-3_0
@@ -47,6 +48,7 @@ Requires:       python3-dbus-python
 Requires:       python3-docutils
 Requires:       python3-gobject
 Requires:       python3-gobject-Gdk
+Requires:       python3-libxml2
 Requires:       python3-xdg
 Requires:       typelib-1_0-Gtk-3_0
 Requires:       typelib-1_0-Keybinder-3_0
