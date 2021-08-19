@@ -19,12 +19,11 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname	libfoma0
 Name:           foma
-Version:        0.9.18+git20200221.5e5521e
+Version:        0.9.18+git20210604.180b6fe
 Release:        0
 Summary:        Finite-state compiler and C library
 License:        Apache-2.0
 URL:            https://fomafst.github.io/
-# Source must be from git tarball has different license than git, no idea why
 Source0:        foma-%{version}.tar.xz
 Patch0:         foma-harden-build.patch
 BuildRequires:  bison
@@ -60,8 +59,8 @@ Requires:       %{libname} = %{version}
 Finite-state C library development files and headers for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}/%{name}
-%patch0 -p2
+%autosetup -p2 -n %{name}-%{version}/%{name}
+
 sed -i '/^CFLAGS/c\CFLAGS = %{optflags} -fcommon -Wl,--as-needed -D_GNU_SOURCE -std=c99 -fvisibility=hidden -fPIC' Makefile
 sed -i '/^LDFLAGS/c\LDFLAGS = -lreadline -lz -lreadline -fpic' Makefile
 sed -i '/^FLOOKUPLDFLAGS/c\FLOOKUPLDFLAGS = libfoma.a -lz -fpic' Makefile
@@ -75,6 +74,9 @@ sed -i '/^FLOOKUPLDFLAGS/c\FLOOKUPLDFLAGS = libfoma.a -lz -fpic' Makefile
 	prefix=%{buildroot}%{_prefix} \
 	libdir=%{buildroot}%{_libdir}
 rm -rf %{buildroot}%{_libdir}/*.a
+# github.com/mhulden/foma/issues/127
+perl -i -pe 's{\Q%{buildroot}\E}{}' "%{buildroot}/%{_libdir}/pkgconfig"/*.pc
+cat "%{buildroot}/%{_libdir}/pkgconfig"/*.pc
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -88,6 +90,7 @@ rm -rf %{buildroot}%{_libdir}/*.a
 %{_includedir}/fomalib.h
 %{_includedir}/fomalibconf.h
 %{_libdir}/libfoma.so
+%{_libdir}/pkgconfig/libfoma.pc
 
 %files -n %{libname}
 %license COPYING

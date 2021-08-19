@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 26 17:55:35 UTC 2021 - jengelh@inai.de
+
+- Update to version 0.9.18+git20210604.180b6fe:
+  * Drop xx prefix for standard C functions.
+  * Add runtime options interface for HFST.
+  * Fix segfault when Foma sigmas are merged.
+  * Add test for leaks and segfaults to avoid regression.
+  * Fix a premature free() call in fsm_isempty.
+  * add ^> to lexc's regex lexer.
+  * Fix memory leak in regex parser: destroy FSM via bison destructor.
+  * Fix memory leaks in "print shortest-string" command processor.
+  * Drop leftover command "test star-free"
+  * Avoid memory leaks in test functions: free temporary FSMs after use.
+  * Avoid memory leak in fsm_isempty function: release minimized FSM.
+  * Avoid memory leak in fsm_rewrite: free center FSM after usage.
+  * Skip definition without network when save_defined is executed.
+
+-------------------------------------------------------------------
 Wed May 19 15:14:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Define conditionally make_build to fix build on systems that do
