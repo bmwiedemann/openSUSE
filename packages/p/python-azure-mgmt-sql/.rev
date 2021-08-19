@@ -136,4 +136,15 @@
 - Update Requires from setup.py (forwarded request 903425 from glaubitz)</comment>
     <requestid>903438</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a9ca0772fc5f0649441f46ca8cfdf765</srcmd5>
+    <version>3.0.1</version>
+    <time>1629360073</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 3.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package</comment>
+    <requestid>912928</requestid>
+  </revision>
 </revisionlist>
