@@ -1,54 +1,28 @@
-# HG changeset patch
-# User msirringhaus@suse.de
-# Date 1560754926 -7200
-#      Mon Jun 17 09:02:06 2019 +0200
-# Node ID 428161c3b9599083e1b8710eda1760f1f707ab11
-# Parent  d55730171edb1935dec80234eba336787ff0e4e8
-#Description: reduce the rust debuginfo level on selected architectures where
-# compiling with debuginfo=2 causes the OOM killer to interrupt the build on
-# launchpad builders. Initially this was only on 32 bit architectures, but with
-# firefox 63 it started happening frequently on arm64 and ppc64el too.
-
 diff --git a/build/moz.configure/rust.configure b/build/moz.configure/rust.configure
 --- a/build/moz.configure/rust.configure
 +++ b/build/moz.configure/rust.configure
-@@ -603,18 +603,19 @@ set_config("CARGO_PROFILE_DEV_OPT_LEVEL"
- 
- 
- @depends(
-     rustc_opt_level,
-     debug_rust,
-     target,
-     "--enable-debug-symbols",
+@@ -610,6 +610,7 @@ set_config("CARGO_PROFILE_DEV_OPT_LEVEL"
      "--enable-frame-pointers",
-+    host,
+     path_remapping,
+     path_remappings,
++    host
  )
--def rust_compile_flags(opt_level, debug_rust, target, debug_symbols, frame_pointers):
-+def rust_compile_flags(opt_level, debug_rust, target, debug_symbols, frame_pointers, host):
+ def rust_compile_flags(
+     opt_level,
+@@ -619,6 +620,7 @@ def rust_compile_flags(
+     frame_pointers,
+     path_remapping,
+     path_remappings,
++    host
+ ):
      # Cargo currently supports only two interesting profiles for building:
      # development and release. Those map (roughly) to --enable-debug and
-     # --disable-debug in Gecko, respectively.
-     #
-     # But we'd also like to support an additional axis of control for
-     # optimization level. Since Cargo only supports 2 profiles, we're in
-     # a bit of a bind.
-     #
-@@ -627,16 +628,18 @@ def rust_compile_flags(opt_level, debug_
- 
-     # opt-level=0 implies -C debug-assertions, which may not be desired
-     # unless Rust debugging is enabled.
-     if opt_level == "0" and not debug_rust:
-         debug_assertions = False
+@@ -642,6 +644,8 @@ def rust_compile_flags(
  
      if debug_symbols:
          debug_info = "2"
-+        if host.bitness == 32 or host.cpu == 'aarch64' or host.cpu == 'ppc64':
++        if host.bitness == 32 or host.cpu == 'aarch64' or host.cpu == 'ppc64' or host.cpu == 's390x':
 +            debug_info = '1'
  
      opts = []
  
-     if debug_assertions is not None:
-         opts.append("debug-assertions=%s" % ("yes" if debug_assertions else "no"))
-     if debug_info is not None:
-         opts.append("debuginfo=%s" % debug_info)
-     if frame_pointers:

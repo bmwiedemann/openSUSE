@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Aug 18 06:34:01 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 91.0.1
+  * Fixed an issue causing buttons on the tab bar to be resized when
+    loading certain websites (bmo#1704404)
+  * Fixed an issue which caused tabs from private windows to be
+    visible in non-private windows when viewing switch-to-tab results
+    in the address bar panel (bmo#1720369)
+  * Various stability fixes
+  MFSA 2021-37 (bsc#1189547)
+  * CVE-2021-29991 (bmo#1724896)
+    Header Splitting possible with HTTP/3 Responses
+
+-------------------------------------------------------------------
+Mon Aug  9 14:55:22 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 91.0
+  MFSA 2021-33 (bsc#1188891)
+  * CVE-2021-29986 (bmo#1696138)
+    Race condition when resolving DNS names could have led to
+    memory corruption
+  * CVE-2021-29981 (bmo#1707774)
+    Live range splitting could have led to conflicting
+    assignments in the JIT
+  * CVE-2021-29988 (bmo#1717922)
+    Memory corruption as a result of incorrect style treatment
+  * CVE-2021-29983 (bmo#1719088)
+    Firefox for Android could get stuck in fullscreen mode
+  * CVE-2021-29984 (bmo#1720031)
+    Incorrect instruction reordering during JIT optimization
+  * CVE-2021-29980 (bmo#1722204)
+    Uninitialized memory in a canvas object could have led to
+    memory corruption
+  * CVE-2021-29987 (bmo#1716129)
+    Users could have been tricked into accepting unwanted
+    permissions on Linux
+  * CVE-2021-29985 (bmo#1722083)
+    Use-after-free media channels
+  * CVE-2021-29982 (bmo#1715318)
+    Single bit data leak due to incorrect JIT optimization and
+    type confusion
+  * CVE-2021-29989 (bmo#1662676, bmo#1666184, bmo#1719178,
+    bmo#1719998, bmo#1720568)
+    Memory safety bugs fixed in Firefox 91 and Firefox ESR 78.13
+  * CVE-2021-29990 (bmo#1544190, bmo#1716481, bmo#1717778,
+    bmo#1719319, bmo#1722073)
+    Memory safety bugs fixed in Firefox 91
+- requires
+  * rustc/cargo >= 1.51
+  * NSPR >= 4.32
+  * NSS >= 3.68
+- force-disable webrender on BE platforms
+
+-------------------------------------------------------------------
 Sat Jul 24 07:15:54 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 90.0.2:

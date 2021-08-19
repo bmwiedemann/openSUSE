@@ -5096,4 +5096,43 @@
     <comment></comment>
     <requestid>908075</requestid>
   </revision>
+  <revision rev="342" vrev="1">
+    <srcmd5>8b1bca36fe6da87b00dc04aa95affbb0</srcmd5>
+    <version>91.0.1</version>
+    <time>1629360042</time>
+    <user>RBrownSUSE</user>
+    <comment>superseding the 91.0 version as another security and hotfix release
+
+- Mozilla Firefox 91.0.1
+  * Fixed an issue causing buttons on the tab bar to be resized when
+    loading certain websites (bmo#1704404)
+  * Fixed an issue which caused tabs from private windows to be
+    visible in non-private windows when viewing switch-to-tab results
+    in the address bar panel (bmo#1720369)
+  * Various stability fixes
+  MFSA 2021-37 (bsc#1189547)
+  * CVE-2021-29991 (bmo#1724896)
+    Header Splitting possible with HTTP/3 Responses
+
+- Mozilla Firefox 91.0
+  MFSA 2021-33 (bsc#1188891)
+  * CVE-2021-29986 (bmo#1696138)
+    Race condition when resolving DNS names could have led to
+    memory corruption
+  * CVE-2021-29981 (bmo#1707774)
+    Live range splitting could have led to conflicting
+    assignments in the JIT
+  * CVE-2021-29988 (bmo#1717922)
+    Memory corruption as a result of incorrect style treatment
+  * CVE-2021-29983 (bmo#1719088)
+    Firefox for Android could get stuck in fullscreen mode
+  * CVE-2021-29984 (bmo#1720031)
+    Incorrect instruction reordering during JIT optimization
+  * CVE-2021-29980 (bmo#1722204)
+    Uninitialized memory in a canvas object could have led to
+    memory corruption
+  * CVE-2021-29987 (bmo#1716129)
+    Users could have been tricked into accepting unwanted</comment>
+    <requestid>912837</requestid>
+  </revision>
 </revisionlist>

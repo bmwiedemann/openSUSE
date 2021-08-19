@@ -32,9 +32,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          90
-%define mainver        %major.0.2
-%define orig_version   90.0.2
+%define major          91
+%define mainver        %major.0.1
+%define orig_version   91.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -53,6 +53,9 @@
 
 # define if ccache should be used or not
 %define useccache     1
+
+# SLE-12 doesn't have this macro
+%{!?_rpmmacrodir: %global _rpmmacrodir %{_rpmconfigdir}/macros.d}
 
 # Firefox only supports i686
 %ifarch %ix86
@@ -100,7 +103,15 @@ BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.47
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+BuildRequires:  cargo >= 1.51
+BuildRequires:  rust >= 1.51
+%else
+# Newer sle/leap/tw use parallel versioned rust releases which have
+# a different method for provides that we can use to request a
+# specific version
+BuildRequires:  rust+cargo >= 1.51
+%endif
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -110,8 +121,8 @@ BuildRequires:  libidl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.31
-BuildRequires:  mozilla-nss-devel >= 3.66
+BuildRequires:  mozilla-nspr-devel >= 4.32
+BuildRequires:  mozilla-nss-devel >= 3.68
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -121,7 +132,6 @@ BuildRequires:  python36
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust >= 1.47
 BuildRequires:  rust-cbindgen >= 0.19.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -365,6 +375,12 @@ find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIM
 sed -i "s/python3/python36/g" configure.in
 sed -i "s/python3/python36/g" mach
 export PYTHON3=/usr/bin/python36
+%endif
+
+# Webrender does not support big endian yet, so we are forcing it off
+# see: https://bugzilla.mozilla.org/show_bug.cgi?id=1716707
+%ifarch s390x ppc64
+echo 'pref("gfx.webrender.force-disabled", true);' >> %{SOURCE9}
 %endif
 
 #
@@ -652,11 +668,8 @@ cp %{SOURCE17} %{buildroot}%{_datadir}/gnome-shell/search-providers
 #
 mkdir -p %{buildroot}%{_datadir}/mozilla/extensions/%{firefox_appid}
 mkdir -p %{buildroot}%{_libdir}/mozilla/extensions/%{firefox_appid}
-%if %branding
 # Install symbolic icon for GNOME
-mkdir -p %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/
-cp %{_builddir}/%{srcname}-%{orig_version}/browser/branding/official/content/identity-icons-brand.svg \
-   %{buildroot}%{gnome_dir}/share/icons/hicolor/symbolic/apps/%{progname}-symbolic.svg
+%if %branding
 for size in 16 22 24 32 48 64 128 256; do
 %else
 for size in 16 32 48; do
