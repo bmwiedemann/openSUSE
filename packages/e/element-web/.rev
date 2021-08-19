@@ -8,4 +8,17 @@
 please use same ADI as https://build.opensuse.org/request/show/902766</comment>
     <requestid>902767</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c682e95636a06fcc010cb089685b2b5</srcmd5>
+    <version>1.7.33</version>
+    <time>1629360055</time>
+    <user>RBrownSUSE</user>
+    <comment>- Version 1.7.33
+  * Translation update
+  * New Labs feature: feature_report_to_moderators
+  * Dependency updates
+  * Add libera.chat to default room directory
+</comment>
+    <requestid>912843</requestid>
+  </revision>
 </revisionlist>

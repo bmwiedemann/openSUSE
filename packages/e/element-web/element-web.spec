@@ -17,7 +17,7 @@
 
 
 Name:           element-web
-Version:        1.7.31
+Version:        1.7.33
 Release:        0
 Summary:        A glossy Matrix collaboration client - web files
 License:        Apache-2.0
@@ -49,4 +49,3 @@ install -Dm644 config.sample.json -t "%{buildroot}%{_sysconfdir}/webapps/element
 %{_sysconfdir}/webapps/element
 
 %changelog
-
