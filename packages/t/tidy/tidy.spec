@@ -1,7 +1,7 @@
 #
 # spec file for package tidy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define regression_tests 00f1e38
 %define documentation    0ed35c6
 Name:           tidy
-Version:        5.7.28
+Version:        5.8.0
 Release:        0
 Summary:        Utility to Clean Up and Pretty-print HTML, XHTML or XML Markup
 License:        W3C
@@ -44,7 +44,7 @@ BuildRequires:  libxslt
 BuildRequires:  pkgconfig
 
 %description
-Tidy is a commandline frontend to TidyLib which allows for cleaning up and
+Tidy is a command line frontend to TidyLib which allows for cleaning up and
 pretty printing HTML, XHTML and XML markup in a variety of file encodings. For
 HTML variants, it can detect and report proprietary elements as well as many
 common coding errors, correct them and produce visually equivalent markup
@@ -53,22 +53,18 @@ Furthermore, it can convert plain HTML to XHTML. For generic XML files, Tidy is
 limited to correcting basic well-formedness errors and pretty printing.
 
 %package doc
-Summary:        Documentation for tidy and libtidy5
+Summary:        Documentation for tidy and libtidy
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 
 %description doc
 This package contains the documentation for both tidy and libtidy.
 
-%package -n libtidy5
+%package -n libtidy58
 Summary:        Library to Clean Up and Pretty-print HTML, XHTML or XML Markup
 Group:          System/Libraries
-Provides:       libtidy = %{version}
-Obsoletes:      libtidy <= 1.0
 
-%description -n libtidy5
+%description -n libtidy58
 TidyLib is a library for cleaning up and pretty printing HTML, XHTML and XML
 markup in a variety of file encodings. For HTML variants, it can detect and
 report proprietary elements as well as many common coding errors, correct them
@@ -77,14 +73,14 @@ standards and works on most browsers. Furthermore, it can convert plain HTML
 into XHTML. For generic XML files, Tidy is limited to correcting basic
 well-formedness errors and pretty printing.
 
-There is a commandline frontend for this library, contained in the package
+There is a command line frontend for this library, contained in the package
 "tidy".
 
 %package -n libtidy-devel
 Summary:        Development files for libtidy
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
-Requires:       libtidy5 = %{version}
+Requires:       libtidy58 = %{version}
 Conflicts:      libtidy-0_99-0-devel
 Conflicts:      tidy-html5-devel
 Obsoletes:      libtidy-0_99-0-devel < %{version}
@@ -109,8 +105,8 @@ mv tidy-html5-tests-* tests
 %install
 %cmake_install
 
-%post -n libtidy5 -p /sbin/ldconfig
-%postun -n libtidy5 -p /sbin/ldconfig
+%post   -n libtidy58 -p /sbin/ldconfig
+%postun -n libtidy58 -p /sbin/ldconfig
 
 %files
 %{_bindir}/tidy
@@ -119,7 +115,7 @@ mv tidy-html5-tests-* tests
 %files -n tidy-doc
 %doc build/docs/api/
 
-%files -n libtidy5
+%files -n libtidy58
 %{_libdir}/libtidy*.so.*
 
 %files -n libtidy-devel

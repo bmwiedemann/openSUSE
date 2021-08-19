@@ -222,4 +222,12 @@ SPDX format (the license corresponds to the W3C Software License) (forwarded req
   - Is #719 - Set 'muted' before any callback</comment>
     <requestid>785456</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a496edd8b946da1a767ab1bb0510baa4</srcmd5>
+    <version>5.8.0</version>
+    <time>1629371198</time>
+    <user>RBrownSUSE</user>
+    <comment></comment>
+    <requestid>912404</requestid>
+  </revision>
 </revisionlist>

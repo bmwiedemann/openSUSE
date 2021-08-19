@@ -1,12 +1,19 @@
+From: adam.majer@suse.de
+Date: 2016-06-02 12:28:27+0000
+
+  + use standard cmake BUILD_SHARED_LIBS instead of BUILD_SHARED_LIB
+  + build both static and dynamic libraries by default, instead
+    of just static
+  + link vs. dynamic by default
 ---
  CMakeLists.txt |   22 ++++++++++++----------
  1 file changed, 12 insertions(+), 10 deletions(-)
 
-Index: tidy-html5-5.6.0/CMakeLists.txt
+Index: tidy-html5-5.8.0/CMakeLists.txt
 ===================================================================
---- tidy-html5-5.6.0.orig/CMakeLists.txt
-+++ tidy-html5-5.6.0/CMakeLists.txt
-@@ -75,15 +75,15 @@ endif ()
+--- tidy-html5-5.8.0.orig/CMakeLists.txt
++++ tidy-html5-5.8.0/CMakeLists.txt
+@@ -91,15 +91,15 @@ endif ()
  #   shared library can be turned off if not needed. The console program
  #   can be configured for static linking or dynamic linking.
  #------------------------------------------------------------------------
@@ -26,7 +33,7 @@ Index: tidy-html5-5.6.0/CMakeLists.txt
          message(FATAL_ERROR "Enable shared build for this tidy linkage!")
      endif ()
  endif ()
-@@ -310,7 +310,7 @@ endif ()
+@@ -326,7 +326,7 @@ endif ()
  # Shared Library
  #   Setup whether or not we will build the shared library.
  #------------------------------------------------------------------------
@@ -35,7 +42,7 @@ Index: tidy-html5-5.6.0/CMakeLists.txt
     set(LIB_TYPE SHARED)
     message(STATUS "*** Also building DLL library ${LIB_TYPE}, version ${LIBTIDY_VERSION}, date ${LIBTIDY_DATE}")
  else()
-@@ -379,28 +379,30 @@ endif ()
+@@ -395,8 +395,8 @@ endif ()
  
  #------------------------------------------------------------------------
  # Static Library
@@ -44,8 +51,11 @@ Index: tidy-html5-5.6.0/CMakeLists.txt
 +if (BUILD_STATIC_LIBS)
  set(name tidy-static)
  add_library ( ${name} STATIC ${CFILES} ${HFILES} ${LIBHFILES} )
- set_target_properties( ${name} PROPERTIES 
-                        OUTPUT_NAME ${LIB_NAME}s )
+ if (WIN32)
+@@ -407,14 +407,17 @@ else ()
+                            OUTPUT_NAME ${LIB_NAME} )
+ 
+ endif ()
 -if (NOT TIDY_CONSOLE_SHARED) # user wants default static linkage
 +if (NOT TIDY_CONSOLE_SHARED) # user wants static linkage
      list ( APPEND add_LIBS ${name} )
@@ -60,7 +70,9 @@ Index: tidy-html5-5.6.0/CMakeLists.txt
 +        RUNTIME DESTINATION ${BIN_INSTALL_DIR}
 +        )
  install( FILES ${HFILES} DESTINATION ${INCLUDE_INSTALL_DIR} )
- 
+ if(MSVC)
+     # install(FILES $<TARGET_PDB_FILE:${name}> DESTINATION lib OPTIONAL)
+@@ -424,9 +427,8 @@ endif()
  
  #------------------------------------------------------------------------
  # Dynamic Library
