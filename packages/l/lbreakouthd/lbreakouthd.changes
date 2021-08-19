@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 14 20:37:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.8:
+  * The paddle if controlled by keys or game pad now has a slight
+    acceleration instead of going to maximum speed instantly as
+    before. This makes minor adjustments of the position much
+    easier and allows for a pretty nice control of the paddle now.
+  * A minor bug in the levelset selection dialog was fixed
+  * Cross compiling instructions were improved.
+
+-------------------------------------------------------------------
 Sun Apr 11 10:16:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.7:
