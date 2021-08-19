@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 10 08:18:53 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.7.33
+  * Translation update
+  * New Labs feature: feature_report_to_moderators
+  * Dependency updates
+  * Add libera.chat to default room directory
+
+-------------------------------------------------------------------
 Fri Jun 25 13:21:03 UTC 2021 - Dominik Heidler <dheidler@suse.com>
 
 - Version 1.7.31
