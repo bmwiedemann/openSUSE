@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 16 08:27:28 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to 3.2.6
+  + Fixed a regression in Django 3.2 that caused a crash validating
+    "NaN" input with a forms.DecimalField when additional constraints,
+    e.g. max_value, were specified
+  + Fixed a bug in Django 3.2 where a system check would crash on a
+    model with a reverse many-to-many relation inherited from a parent
+    class
+
+-------------------------------------------------------------------
 Thu Jul  1 07:50:35 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.5 (CVE-2021-35042, bsc#1187785)
