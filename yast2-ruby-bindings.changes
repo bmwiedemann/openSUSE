@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 18 14:32:24 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix dependency on s390 (revealed by previous fix for bsc#972548)
+- 4.4.4
+
+-------------------------------------------------------------------
+Fri Aug 13 16:00:32 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Added an unit test for testing empty help text (bsc#972548)
+- 4.4.3
+
+-------------------------------------------------------------------
 Wed Jul 21 14:30:46 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Avoid IO exception when the stderr was closed. This could happen
