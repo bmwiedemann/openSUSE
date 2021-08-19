@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 11 20:43:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- only list specific files installed in common directories (metainfo,
+  icons, fillupdir) (bsc#1184786)
+- 4.4.16
+
+-------------------------------------------------------------------
 Mon Aug  2 14:31:22 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Activate devices before probing (bsc#1187220).
