@@ -1,4 +1,21 @@
 --------------------------------------------------------------------
+Wed Aug 18 11:28:02 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#829
+- added function BlkFilesystem::supports_tune_options()
+- coding style
+- 4.4.35
+
+--------------------------------------------------------------------
+Mon Aug 16 07:55:24 UTC 2021 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#828
+- added non-const version of BlkFilesystem::get_blk_devices()
+- use in-class member initialization
+- coding style and documentation
+- 4.4.34
+
+--------------------------------------------------------------------
 Mon Aug 9 06:47:35 UTC 2021 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#827
