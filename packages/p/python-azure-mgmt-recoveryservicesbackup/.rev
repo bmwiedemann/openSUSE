@@ -102,4 +102,16 @@
     CHANGELOG.md file provided with this package (forwarded request 881887 from glaubitz)</comment>
     <requestid>881967</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>289417f1c61720ad0cc0d97cb46dafca</srcmd5>
+    <version>1.1.0</version>
+    <time>1629360075</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 1.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py</comment>
+    <requestid>912931</requestid>
+  </revision>
 </revisionlist>
