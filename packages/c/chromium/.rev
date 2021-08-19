@@ -3746,4 +3746,22 @@ Furthermore I have added a _constraints file to reduce the number of failed buil
     <comment>92.0.4515.131</comment>
     <requestid>910522</requestid>
   </revision>
+  <revision rev="302" vrev="1">
+    <srcmd5>c062c6f1dffe21264f191e3168311432</srcmd5>
+    <version>92.0.4515.159</version>
+    <time>1629360041</time>
+    <user>RBrownSUSE</user>
+    <comment>- Chromium 92.0.4515.159 (boo#1189490):
+  * CVE-2021-30598: Type Confusion in V8
+  * CVE-2021-30599: Type Confusion in V8
+  * CVE-2021-30600: Use after free in Printing
+  * CVE-2021-30601: Use after free in Extensions API
+  * CVE-2021-30602: Use after free in WebRTC
+  * CVE-2021-30603: Race in WebAudio
+  * CVE-2021-30604: Use after free in ANGLE
+  * Various fixes from internal audits, fuzzing and other initiatives
+- Add missing crashpad_handler (boo#1189254)
+</comment>
+    <requestid>912804</requestid>
+  </revision>
 </revisionlist>

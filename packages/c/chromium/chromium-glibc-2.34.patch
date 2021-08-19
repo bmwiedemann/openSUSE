@@ -43,16 +43,12 @@ diff -up chromium-92.0.4515.107/third_party/abseil-cpp/absl/debugging/failure_si
 diff -up chromium-92.0.4515.107/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc.sigstkszfix chromium-92.0.4515.107/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
 --- chromium-92.0.4515.107/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc.sigstkszfix	2021-07-19 14:47:20.000000000 -0400
 +++ chromium-92.0.4515.107/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc	2021-07-26 17:28:50.155924005 -0400
-@@ -138,7 +139,11 @@
+@@ -138,7 +139,7 @@
    // SIGSTKSZ may be too small to prevent the signal handlers from overrunning
    // the alternative stack. Ensure that the size of the alternative stack is
    // large enough.
 -  static const unsigned kSigStackSize = std::max(16384, SIGSTKSZ);
-+  #if __GLIBC_PREREQ(2, 34)
-+      static const unsigned kSigStackSize = std::max(static_cast<long>(16384), SIGSTKSZ);
-+  #else
-+      static const unsigned kSigStackSize = std::max(16384, SIGSTKSZ);
-+  #endif
++  static const unsigned kSigStackSize = std::max<size_t>(16384, SIGSTKSZ);
 
    // Only set an alternative stack if there isn't already one, or if the current
    // one is too small.

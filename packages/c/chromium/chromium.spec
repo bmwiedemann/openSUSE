@@ -16,13 +16,13 @@
 #
 
 
-%if "%{?suse_version}" >= "1550"
+%if 0%{?suse_version} >= 1550
 %define clang_version %{nil}
 %endif
-%if "%{?sle_version}" >= "150300"
+%if 0%{?sle_version} >= 150300
 %define clang_version 11
 %endif
-%if "%{?sle_version}" == "150200"
+%if 0%{?sle_version} == 150200
 %define clang_version 9
 %endif
 %define rname chromium
@@ -50,7 +50,7 @@
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        92.0.4515.131
+Version:        92.0.4515.159
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -597,7 +597,7 @@ export LDFLAGS="${LDFLAGS} -Wl,--build-id=sha1"
 %if %{without clang}
 export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
 %else
-%if "%{?sle_version}" == "150200"
+%if 0%{?sle_version} == 150200
 export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions"
 %else
 export CXXFLAGS="${CXXFLAGS} -flax-vector-conversions=all"
@@ -660,12 +660,12 @@ myconf_gn+=" custom_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" host_toolchain=\"//build/toolchain/linux/unbundle:default\""
 myconf_gn+=" use_custom_libcxx=false"
 %ifarch x86_64
-myconf_gn+=" target_cpu=\"x64\""
+myconf_gn+=" host_cpu=\"x64\""
 %endif
 %ifarch riscv64
-myconf_gn+=" target_cpu=\"riscv64\""
+myconf_gn+=" host_cpu=\"riscv64\""
 %endif
-myconf_gn+=" target_os=\"linux\""
+myconf_gn+=" host_os=\"linux\""
 myconf_gn+=" is_debug=false"
 myconf_gn+=" enable_nacl=false"
 %if %{with swiftshader}
@@ -710,7 +710,7 @@ myconf_gn+=" rtc_pipewire_version=\"0.3\""
 %endif
 %if %{with clang}
 myconf_gn+=" is_clang=true clang_base_path=\"/usr\" clang_use_chrome_plugins=false"
-%if "%{?suse_version}" >= "1550" || "%{?sle_version}" >= "150300"
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
 myconf_gn+=" use_thin_lto=true"
 %endif
 myconf_gn+=" use_lld=true"
@@ -731,33 +731,8 @@ myconf_gn+=" icu_use_data_file=false"
 myconf_gn+=" proprietary_codecs=true"
 myconf_gn+=" ffmpeg_branding=\"Chrome\""
 
-%ifarch %{arm}
-myconf_gn+=" target_cpu=\"arm\""
-myconf_gn+=" arm_float_abi=\"hard\""
-%ifarch armv6l armv6hl
-myconf_gn+=" arm_version=6"
-%else
-myconf_gn+=" arm_version=7"
-# Setting arm_use_neon to false breaks build
-myconf_gn+=" arm_use_neon=true"
-myconf_gn+=" arm_optionally_use_neon=true"
-%endif
-myconf_gn+=" arm_use_thumb=true"
-%endif
-
-%ifarch %{arm}
-# We don't need to cross compile while building on an arm system.
-sed -i 's|arm-linux-gnu-||g' build/toolchain/linux/BUILD.gn
-sed -i 's|arm-linux-gnueabihf-||g' build/toolchain/linux/BUILD.gn
-%endif
-
 %ifarch aarch64
-myconf_gn+=" target_cpu=\"arm64\""
-%endif
-
-%ifarch aarch64
-# We don't need to cross compile while building on an aarch64 system.
-sed -i 's|aarch64-linux-gnu-||g' build/toolchain/linux/BUILD.gn
+myconf_gn+=" host_cpu=\"arm64\""
 %endif
 
 # Set up Google API keys, see http://www.chromium.org/developers/how-tos/api-keys
@@ -810,6 +785,8 @@ cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
 # chromedriver
 cp -a chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
+
+cp -a crashpad_handler %{buildroot}%{_libdir}/chromium/crashpad_handler
 
 cp -a resources.pak %{buildroot}%{_libdir}/chromium/
 cp -a chrome %{buildroot}%{_libdir}/chromium/chromium

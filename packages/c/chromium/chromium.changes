@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Aug 17 20:28:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 92.0.4515.159 (boo#1189490):
+  * CVE-2021-30598: Type Confusion in V8
+  * CVE-2021-30599: Type Confusion in V8
+  * CVE-2021-30600: Use after free in Printing
+  * CVE-2021-30601: Use after free in Extensions API
+  * CVE-2021-30602: Use after free in WebRTC
+  * CVE-2021-30603: Race in WebAudio
+  * CVE-2021-30604: Use after free in ANGLE
+  * Various fixes from internal audits, fuzzing and other initiatives
+
+-------------------------------------------------------------------
+Sun Aug 15 16:42:43 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add missing crashpad_handler (boo#1189254)
+
+-------------------------------------------------------------------
 Fri Aug  6 16:51:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Chromium 92.0.4515.131 (boo#1189006)
