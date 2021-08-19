@@ -41,7 +41,7 @@
 
 %define glamor 1
 %define _name_archive mesa
-%define _version 21.1.6
+%define _version 21.2.0
 %define with_opencl 0
 %define with_vulkan 0
 %define with_llvm 0
@@ -114,7 +114,7 @@
 %endif
 
 Name:           Mesa-drivers
-Version:        21.1.6
+Version:        21.2.0
 Release:        0
 Summary:        System for rendering 3-D graphics
 License:        MIT
@@ -836,7 +836,7 @@ egl_platforms=x11,wayland
 %endif
   %ifarch %{ix86} x86_64
             -Ddri-drivers=i915,i965,nouveau,r100,r200 \
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,swrast,svga,virgl,iris,crocus \
   %else
   %ifarch %{arm} aarch64
             -Ddri-drivers=nouveau \
@@ -860,7 +860,11 @@ egl_platforms=x11,wayland
 %endif
             -Db_ndebug=true \
             -Dc_args="%{optflags}" \
+%ifarch %ix86
+            -Dcpp_args="$(echo %{optflags}|sed 's/-flto=auto//')"
+%else
             -Dcpp_args="%{optflags}"
+%endif
 
 %meson_build
 

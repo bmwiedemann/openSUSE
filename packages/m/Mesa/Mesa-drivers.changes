@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug  8 08:52:15 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build on %ix86 by removing "-flto=auto" from optflags for
+  cpp
+
+-------------------------------------------------------------------
+Thu Aug  5 15:51:18 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- enabled build of 'crocus' Gallium3D OpenGL driver for i965 "Gen4"
+  through Haswell "Gen7" graphics (alternative to classic "i965"
+  OpenGL driver); use MESA_LOADER_DRIVER_OVERRIDE=crocus to use it;
+  in case of issues with video hardware acceleration(vaapi driver),
+  set LIBVA_DRIVER_NAME=i965
+
+-------------------------------------------------------------------
+Thu Aug  5 01:25:40 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.2.0
+  * new release
+
+-------------------------------------------------------------------
 Thu Jul 29 08:28:31 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 21.1.6
