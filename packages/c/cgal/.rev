@@ -203,4 +203,41 @@
     <comment></comment>
     <requestid>907504</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c00f5768e9cc112b81fc051fbb764d24</srcmd5>
+    <version>5.3</version>
+    <time>1629360079</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 5.3:
+  General changes:
+  * The support for the compiled version of CGAL is dropped.
+    Only the header-only version is supported.
+  Quadtrees, Octrees, and Orthtrees (new package):
+  * This package implements a tree data structure in which each
+    node encloses a hypercubic section of space and each non-leave
+    node has hypercubic children whose edge lengths are half its
+    edge length.  Such a data structure is known as a quadtree in 2D,
+    an octree in 3D, and is generalized as an &quot;orthtree&quot; in higher dimensions.
+  Triangulations on the Sphere (new package):
+  * This package enables the construction and manipulation of Delaunay
+    triangulations on the 2-sphere.  Triangulations are built incrementally
+    and can be modified by insertion or removal of vertices.  Point location
+    querying and primitives to build the dual Voronoi diagram are provided.
+  File Input / Output:
+  * Point set, polygon soup, and polygon mesh file I/O functions have been
+    harmonized and documented:
+  * Point set I/O functions can be found in the packages Point_set_processing_3,
+    and Point_set_3.
+  * Polygon mesh I/O functions can be found in the package BGL.
+  * Polygon soup I/O can be found in the package Stream_support.
+  * A comprehensive list of the supported file formats is available in the
+    Stream_support package here; inversely, the following page can be used to
+    find out which CGAL data structures can be used given a specific file format.
+  2D and 3D Linear Geometry Kernel:
+  * Added is_translation(), is_scaling(), is_reflection(), and is_rotation()
+    to the classes Aff_transformation_2 and Aff_transformation_3, which enable
+    determining if the transformations use a specialized representation internally.
+  2D Regularized Boolean Set-Operations:</comment>
+    <requestid>912920</requestid>
+  </revision>
 </revisionlist>
