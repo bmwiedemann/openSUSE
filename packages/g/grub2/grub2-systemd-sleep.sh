@@ -121,6 +121,8 @@ grub-once-restore()
 # We need this, if more than one kernel is installed. This works reasonably
 # well with grub, if all kernels are named "vmlinuz-`uname -r`" and are
 # located in /boot. If they are not, good luck ;-)
+# for 2021-style usrmerged kernels, the location in /usr/lib/modules/ \
+# `uname -r`/vmlinuz is resolved to match...
 find-kernel-entry()
 {
 	NEXT_BOOT=""
@@ -128,9 +130,14 @@ find-kernel-entry()
 	# DEBUG "running kernel: $RUNNING" DIAG
 	while [ -n "${KERNELS[$I]}" ]; do
 		BOOTING="${KERNELS[$I]}"
-		if IMAGE=`readlink /boot/$BOOTING` && [ -e "/boot/${IMAGE##*/}" ]; then
-			# DEBUG "Found kernel symlink $BOOTING => $IMAGE" INFO
-			BOOTING=$IMAGE
+		if IMAGE=$(readlink /boot/"$BOOTING"); then
+			if [[ $IMAGE == */vmlinuz ]]; then # new usrmerged setup
+				BOOTING=${IMAGE%/vmlinuz}  # the directory name is what counts
+				BOOTING=${BOOTING##*/}
+			elif [ -e "/boot/${IMAGE##*/}" ]; then
+				# DEBUG "Found kernel symlink $BOOTING => $IMAGE" INFO
+				BOOTING=$IMAGE
+			fi
 		fi
 		BOOTING="${BOOTING#*${VMLINUZ}-}"
 		if [ "$RUNNING" == "$BOOTING" -a -n "${MENU_ENTRIES[$I]}" ]; then
@@ -169,8 +176,13 @@ prepare-grub()
 		# if there is no default entry (no menu.lst?) we fall back to
 		# the default of /boot/${VMLINUZ}.
 		[ -z "$BOOTING" ] && BOOTING="${VMLINUZ}"
-		if IMAGE=`readlink /boot/$BOOTING` && [ -e "/boot/${IMAGE##*/}" ]; then
-			BOOTING=$IMAGE
+		if IMAGE=$(readlink /boot/"$BOOTING"); then
+			if [[ $IMAGE == */vmlinuz ]]; then # new usrmerged setup
+				BOOTING=${IMAGE%/vmlinuz}  # the directory name is what counts
+				BOOTING=${BOOTING##*/}
+			elif [ -e "/boot/${IMAGE##*/}" ]; then
+				BOOTING=$IMAGE
+			fi
 		fi
 		BOOTING="${BOOTING#*${VMLINUZ}-}"
 		echo  "running kernel: '$RUNNING', probably booting kernel: '$BOOTING'"

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug  4 10:28:49 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update grub2-systemd-sleep.sh to fix hibernation by avoiding the
+  error "no kernelfile matching the running kernel found" on
+  usrmerged setup
+
+-------------------------------------------------------------------
 Thu Jul 22 16:43:20 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Replace grub2-use-stat-instead-of-udevadm-for-partition-lookup.patch and
