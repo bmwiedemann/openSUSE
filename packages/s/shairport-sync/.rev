@@ -125,4 +125,17 @@
     <comment></comment>
     <requestid>827827</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7f8065f384d22cb4e39f0cf8cfc4f0fb</srcmd5>
+    <version>3.3.8</version>
+    <time>1629360058</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update version to 3.3.8
+  * For the PulseAudio backend pa, added a new server entry to the pa section of
+    the configuration file, allowing you to specify a connection to a remote or
+    a local system PulseAudio instance instead of letting PulseAudio choose. 
+  * Enhance features. See details in RELEASENOTES.md
+  * Fix bugs (forwarded request 912797 from hillwood)</comment>
+    <requestid>912798</requestid>
+  </revision>
 </revisionlist>

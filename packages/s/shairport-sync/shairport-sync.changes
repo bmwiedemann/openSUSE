@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 18 01:55:20 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 3.3.8
+  * For the PulseAudio backend pa, added a new server entry to the pa section of
+    the configuration file, allowing you to specify a connection to a remote or
+    a local system PulseAudio instance instead of letting PulseAudio choose. 
+  * Enhance features. See details in RELEASENOTES.md
+  * Fix bugs
+
+-------------------------------------------------------------------
 Wed Aug 19 09:10:26 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Fixes for %_libexecdir changing to /usr/libexec (bsc#1174075)

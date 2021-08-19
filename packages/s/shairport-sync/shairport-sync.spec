@@ -1,7 +1,7 @@
 #
 # spec file for package shairport-sync
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           shairport-sync
-Version:        3.3.6
+Version:        3.3.8
 Release:        0
 Summary:        An AirPlay audio player
 License:        GPL-3.0-only
