@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 16 19:40:16 UTC 2021 - Simon Puchert <simonpuchert@alice.de>
+
+- Update to version 2.3.0:
+  * new plugin URL matching API
+  * HLS media initialization section (fragmented MPEG-4 streams)
+  * Fixed: YouTube channel URLs, premiering live streams,
+    added API fallback
+  * Removed plugins: canalplus, dommune, liveedu, periscope,
+    powerapp, rtlxl, streamingvideoprovider, teleclubzoom, tigerdile
+- Update to version 2.2.0:
+  * Changed default custom plugins directory path:
+    `${XDG_DATA_HOME:-${HOME}/.local/share}/streamlink/plugins`
+  * Deprecated (old) config file paths and custom plugins directory paths:
+    `${XDG_CONFIG_HOME:-${HOME}/.config}/streamlink/plugins` and
+    `${HOME}/.streamlinkrc`.
+  * Implemented `--logfile` CLI argument
+  * Fixed Youtube 404 errors by dropping private API calls (plugin rewrite)
+  * Fixed: Twitch clips and hosted channel redirection
+  * Fixed: Olympicchannel plugin
+  * Fixed various Zattoo plugin issues
+  * Fixed: HTTP responses with truncated body and mismatching content-length header
+  * Fixed: scheme-less URLs with address:port for `--http-proxy`, etc.
+  * Fixed rendered man page path on Sphinx 4
+  * Added plugins: mildom.com, booyah.live, mediavitrina.ru
+  * Removed plugins: ine.com, playtv.fr
+- Updated requirements according to upstream build instructions
+
+-------------------------------------------------------------------
 Mon May 31 20:54:10 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
 
 - Update to 2.1.2

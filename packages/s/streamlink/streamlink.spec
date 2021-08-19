@@ -18,19 +18,20 @@
 
 %define pythons python3
 Name:           streamlink
-Version:        2.1.2
+Version:        2.3.0
 Release:        0
 Summary:        Program to pipe streams from services into a video player
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://streamlink.github.io/
-Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
-BuildRequires:  python3-devel >= 3.4
-BuildRequires:  python3-requests >= 1.0
+BuildRequires:  python3-devel >= 3.6
+BuildRequires:  python3-requests >= 2.21
 BuildRequires:  python3-setuptools
 
 # TEST REQUIREMENTS
@@ -47,8 +48,8 @@ Requires:       python3-PySocks
 Requires:       python3-isodate
 Requires:       python3-pycountry
 Requires:       python3-pycryptodome
-Requires:       python3-requests >= 1.0
-Requires:       python3-websocket-client
+Requires:       python3-requests >= 2.21
+Requires:       python3-websocket-client >= 0.58
 
 Recommends:     vlc
 Suggests:       ffmpeg
@@ -92,5 +93,6 @@ done
 %doc AUTHORS CHANGELOG.md MANIFEST.in README.md
 %{_bindir}/%{name}
 %{python3_sitelib}/%{name}*/
+%_mandir/man*/*
 
 %changelog
