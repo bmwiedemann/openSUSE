@@ -23,7 +23,7 @@
 %endif
 
 Name:           easyeffects
-Version:        6.0.3+0~git.35c27c34
+Version:        6.1.0+0~git.7d084e29
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -116,7 +116,7 @@ LDFLAGS+=" -fuse-ld=gold -Wl,--icf=safe"
 %{_datadir}/dbus-1/services/com.github.wwmm.%{name}.service
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/glib-2.0/schemas/com.github.wwmm.%{name}.*.xml
-%{_datadir}/metainfo/com.github.wwmm.%{name}.appdata.xml
+%{_datadir}/metainfo/com.github.wwmm.%{name}.metainfo.xml
 
 %files doc
 %license LICENSE.md
