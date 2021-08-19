@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Wed Aug 18 09:03:43 UTC 2021 - mvetter@suse.com
+
+- Update to f3d53b to fix build on Tumbleweed because of Rust 1.54
+    See https://github.com/sharkdp/bat/issues/1796
+  * Update git2 dependency to fix incompatibility with Rust 1.54
+  * Reduce startup time in loop-through mode with 80%-90%
+  * HighlightingAssets: Move out fn get_integrated_*set() to module scope
+  * Support a hidden arg --no-custom-assets that skips loading assets from the cache
+  * HighlightingAssets: Make .syntaxes() and syntax_for_file_name() failable
+  * HighlightingAssets::get_extension_syntax(): Split up into smaller methods
+  * Make loading of cached assets closer in performance to integrated assets
+  * Add Enselic in FUNDING.yml
+  * Update battest.py
+  * Add `rs` identifier for Rust code blocks in Markdown
+  * Update CHANGELOG
+  * Add groff syntax
+  * Add custom FUNDING.yml
+  * HighlightingAssets: Introduce private fn new() helper
+  * HighlightingAssets: Encapsulate syntax_set behind a getter
+  * De-duplicate some themes.bin and syntaxes.bin related code
+  * Fix typo in README
+
+-------------------------------------------------------------------
+Wed Aug 18 07:31:12 UTC 2021 - mvetter@suse.com
+
+- Update to version 0.18.2:
+  * Add note on vulnerability reporting, closes #1473
+  * Upgrade CHANGELOG with security vulnerability notice
+  * Update Julia syntax test
+  * Update Julia syntax, closes #1692
+  * Update assets
+  * Run cargo fmt
+  * Bump version to v0.18.2
+  * Use resolved path for --diagnostic as well
+  * Fix for Windows: do not run binaries from CWD
+  * Bump assets/syntaxes/02_Extra/CMake from `7d6231c` to `ab6ef4e`
+  * Bump ansi_colours from 1.0.2 to 1.0.4
+  * Bump globset from 0.4.6 to 0.4.8
+  * Add CHANGELOG entry for #1687
+  * Abort ignored filename suffix stripping early on unworkable filenames
+  * Simplify ignored filename suffix stripping
+  * Add syntax tests for ignored filename suffixes
+  * Find syntax ignoring known backup/template filename suffixes
+  * CICD: sync with pastel, minor changes
+  * Add some more options to bash completion
+  * Bump assert_cmd from 1.0.4 to 1.0.5
+  * Fix missing config/cache arguments in Zsh completion
+  * Document --generate-config-file in manual
+  * Add change log entry for bash completion
+  * Depend on scop/bash-completion
+  * Add missing comment about --theme arg escaping
+  * Add bash completion
+  * pretty_printer.rs: Don't use a URL as an example Input title
+  * Update README.md
+  * Update README.md
+  * Modify Linguist overrides
+  * Spelling fixes
+  * Highlight mtab files with fstab highlighting
+  * README.md: List compatibility as another advantage to 3-bit themes
+  * README.md: Mention that PAGER is ignored if set to more or most
+  * Bump nix from 0.20.0 to 0.21.0
+  * Bump assert_cmd from 1.0.3 to 1.0.4
+  * Update `CHANGELOG.md` for #1668
+  * Add Verilog syntax test file
+  * Add varlink syntax test file
+  * Add TypeScriptReact syntax test file
+  * Add Stylus syntax test file
+  * Add Strace syntax test file
+  * Add Robot Framework syntax test file
+  * Add Rego syntax test file
+  * Add Puppet syntax test file
+  * Add NAnt Build File syntax test file
+  * Add Literate Haskell syntax test file
+  * Add jsonnet syntax test file
+  * Add Java Server Page (JSP) syntax test file
+  * Add 'NOTICE' to list of file names to skip
+  * Add Fortran Namelist syntax test file
+  * Add Fortran (Fixed Form) syntax test file
+  * Add Fortran (Modern) syntax test file
+  * Add F# syntax test file
+  * Add CoffeeScript syntax test file
+  * Add Cabal syntax test file
+  * CHANGELOG.md: Apply DotENV syntax also for .env.default and .env.defaults
+  * DotENV.sublime-syntax: Re-exported after .tmLanguage update
+  * Bump assets/syntaxes/02_Extra/DotENV from `a1c9176` to `58201ba`
+  * Refactor "Use `matches` macro"
+  * Update `CHANGELOG.md` for #1661
+  * Use the functional update syntax
+  * Implement `From<..>` instead of `Into<..>`
+  * Use the functional update syntax
+  * Use `matches` macro
+  * Use `!theme.is_empty()`
+  * ja: add section about integration with fzf
+  * ja: fix typo
+  * Update CHANGELOG for #1655
+  * Add XAML test file
+  * Add dash test file
+  * Update CHANGELOG for #1654
+  * Add support for XAML files
+  * Add support for dash shebang
+  * Fix broken img link
+  * Update and polish Korean translation
+
+-------------------------------------------------------------------
 Sun Jun 13 19:33:37 UTC 2021 - idesmi@protonmail.com
 
 - Update to version 0.18.1:

@@ -17,12 +17,12 @@
 
 
 Name:           bat
-Version:        0.18.1
+Version:        0.18.2
 Release:        0
 Summary:        A cat(1) clone with syntax highlighting and Git integration
 License:        Apache-2.0 OR MIT
 Group:          Productivity/Text/Utilities
-URL:            https://github.com/sharkdp/%{name}
+URL:            https://github.com/sharkdp/bat
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
 BuildRequires:  rust >= 1.45
