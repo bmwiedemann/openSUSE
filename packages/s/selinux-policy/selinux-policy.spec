@@ -131,6 +131,8 @@ Patch051:       fix_dovecot.patch
 # https://github.com/cockpit-project/cockpit/pull/15758
 Patch052:       fix_cockpit.patch
 Patch053:       fix_systemd_watch.patch
+# kernel specific sysctl.conf (boo#1184804)
+Patch054:       fix_kernel_sysctl.patch
 
 Patch100:       sedoctool.patch
 
@@ -304,9 +306,9 @@ fi;
 
 %define postInstall() \
 . %{_sysconfdir}/selinux/config; \
-if [ -e %{_sysconfdir}/selinux/%%2/.rebuild ]; then \
-  rm %{_sysconfdir}/selinux/%%2/.rebuild; \
-  /usr/sbin/semodule -B -n -s %%2; \
+if [ -e %{_sysconfdir}/selinux/%2/.rebuild ]; then \
+  rm %{_sysconfdir}/selinux/%2/.rebuild; \
+  /usr/sbin/semodule -B -n -s %2; \
 fi; \
 if [ -n "${TRANSACTIONAL_UPDATE}" ]; then \
   touch /etc/selinux/.autorelabel \

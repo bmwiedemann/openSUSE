@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 17 16:03:08 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Allow systemd-sysctl to read kernel specific sysctl.conf
+  (fix_kernel_sysctl.patch, boo#1184804)
+
+-------------------------------------------------------------------
+Tue Aug 10 08:31:16 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- Fix quoting in postInstall macro
+
+-------------------------------------------------------------------
 Fri Jul 16 07:11:57 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 20210716
