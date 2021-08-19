@@ -16,18 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%if 0%{?suse_version} >= 1500
-# skip python2 in SLE/Leap 15
-%bcond_with python2
-%else
-%bcond_without python2
-%endif
-%if ! %{with python2}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%endif
 Name:           python-moto
-Version:        2.0.5
+Version:        2.2.2
 Release:        0
 Summary:        Library to mock out the boto library
 License:        Apache-2.0
@@ -41,23 +33,14 @@ Requires:       python-Werkzeug
 Requires:       python-boto3 >= 1.9.201
 Requires:       python-botocore >= 1.12.201
 Requires:       python-cryptography >= 3.3.1
+Requires:       python-importlib_metadata
 Requires:       python-more-itertools
 Requires:       python-python-dateutil >= 2.1
 Requires:       python-pytz
 Requires:       python-requests >= 2.5
 Requires:       python-responses >= 0.9.0
-Requires:       python-six > 1.9
 Requires:       python-xmltodict
 Requires:       python-zipp
-%if %{python_version_nodots} < 37
-# gh#spulec/moto#3576
-Requires:       python-importlib-resources
-%endif
-%ifpython2
-Requires:       python-backports.tempfile
-Requires:       python-configparser < 5
-Requires:       python-mock
-%endif
 Requires(post): update-alternatives
 Requires(preun):update-alternatives
 Recommends:     python-moto-all
@@ -78,6 +61,7 @@ BuildRequires:  %{python_module cryptography >= 3.3.1}
 BuildRequires:  %{python_module docker >= 2.5.1}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module idna >= 2.5}
+BuildRequires:  %{python_module importlib_metadata}
 BuildRequires:  %{python_module jsondiff >= 1.1.2}
 BuildRequires:  %{python_module jsonpickle}
 BuildRequires:  %{python_module more-itertools}
@@ -88,18 +72,11 @@ BuildRequires:  %{python_module python-jose}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.5}
 BuildRequires:  %{python_module responses >= 0.9.0}
-BuildRequires:  %{python_module six > 1.9}
 BuildRequires:  %{python_module sshpubkeys >= 3.1.0}
 BuildRequires:  %{python_module sure}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  %{python_module zipp}
 BuildRequires:  %{python_module cfn-lint >= 0.4.0 if (%python-base without python36-base)}
-BuildRequires:  %{python_module importlib-resources if (%python-base < 3.7)}
-%if %{with python2}
-BuildRequires:  python-backports.tempfile
-BuildRequires:  python-configparser < 5
-BuildRequires:  python-mock
-%endif
 # /SECTION
 %python_subpackages
 
@@ -152,10 +129,12 @@ library. Meta package to install server extras (moto[server])
 export BOTO_CONFIG=/dev/null
 # no online tests on obs
 donttest="network"
-# no connection -- no such file
+# no connection -- no such file -- we don't have the test containers
 donttest+=" or test_terminate_job"
+donttest+=" or (test_batch_jobs and (test_dependencies or test_container_overrides))"
 # no  python2.7 on TW
 donttest+=" or test_invoke_function_from_sqs_exception"
+donttest+=" or test_rotate_secret_lambda_invocations"
 # https://github.com/boto/botocore/issues/2355
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest+=" or test_describe_certificate"
@@ -174,7 +153,8 @@ python36_donttest+=" or (test_cloudformation and (validate or invalid_missing))"
 %doc AUTHORS.md README.md
 %license LICENSE
 %python_alternative %{_bindir}/moto_server
-%{python_sitelib}/*
+%{python_sitelib}/moto
+%{python_sitelib}/moto-%{version}*-info
 
 %files %{python_files all}
 %license LICENSE
