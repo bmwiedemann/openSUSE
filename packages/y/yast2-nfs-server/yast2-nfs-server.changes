@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 17 13:46:27 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Fix the corresponding section name in the package specification
+  (bsc#1188618).
+- 4.4.2
+
+-------------------------------------------------------------------
 Fri Jul 23 10:08:49 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Set X-SuSE-YaST-AutoInstClient in the desktop file to properly
