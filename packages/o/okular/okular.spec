@@ -21,7 +21,7 @@
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           okular
-Version:        21.04.3
+Version:        21.08.0
 Release:        0
 Summary:        Document Viewer
 # GPL-3.0+ license used by a runtime plugin
@@ -33,8 +33,11 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+%if 0
 # PATCH-FEATURE-OPENSUSE
+# PATCH-NEEDS-REBASE DISABLED as of 2021-04-10: needs rework (underlying code changed)
 Patch1000:      0001-Inform-users-about-the-okular-spectre-package-in-the.patch
+%endif
 BuildRequires:  chmlib-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  freetype2-devel
@@ -80,7 +83,6 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Test)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
-Recommends:     %{name}-lang
 Suggests:       %{name}-spectre
 Obsoletes:      okular5 < %{version}
 Provides:       okular5 = %{version}
@@ -147,8 +149,7 @@ Document viewing program; supports document in various formats
 %postun -p /sbin/ldconfig
 
 %files
-%license COPYING*
-%{_kf5_debugdir}/okular.categories
+%license LICENSES/*
 %doc %lang(en) %{_kf5_htmldir}/en/*/
 %doc %{_kf5_mandir}/man1/okular.*
 %{_kf5_applicationsdir}/okularApplication_chm.desktop
@@ -187,13 +188,16 @@ Document viewing program; supports document in various formats
 %{_kf5_configkcfgdir}/gssettings.kcfg
 %{_kf5_configkcfgdir}/okular*.kcfg
 %{_kf5_configkcfgdir}/pdfsettings.kcfg
+%{_kf5_debugdir}/okular.categories
 %{_kf5_iconsdir}/hicolor/*/*/okular.*
 %{_kf5_kxmlguidir}/okular/
 %{_kf5_libdir}/libOkular5Core.so.*
 %dir %{_kf5_plugindir}/okular/
 %dir %{_kf5_plugindir}/okular/generators/
 %{_kf5_plugindir}/okularpart.so
-%{_kf5_plugindir}/kio_msits.so
+%dir %{_kf5_plugindir}/kf5/
+%dir %{_kf5_plugindir}/kf5/kio/
+%{_kf5_plugindir}/kf5/kio/kio_msits.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_chmlib.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_comicbook.so
 %{_kf5_plugindir}/okular/generators/okularGenerator_djvu.so
@@ -225,20 +229,18 @@ Document viewing program; supports document in various formats
 %{_kf5_servicesdir}/okularTxt.desktop
 %{_kf5_servicesdir}/okularXps.desktop
 %{_kf5_servicesdir}/okular_part.desktop
-%{_kf5_servicesdir}/ms-its.protocol
 %{_kf5_servicetypesdir}/okularGenerator.desktop
 %{_kf5_sharedir}/kconf_update
 %{_kf5_sharedir}/okular/
 
 %files spectre
-%license COPYING*
 %{_kf5_applicationsdir}/okularApplication_ghostview.desktop
 %{_kf5_appstreamdir}/org.kde.okular-spectre.metainfo.xml
 %{_kf5_plugindir}/okular/generators/okularGenerator_ghostview.so
 %{_kf5_servicesdir}/okularGhostview.desktop
 
 %files mobile
-%license COPYING*
+%license LICENSES/*
 %{_kf5_bindir}/okularkirigami
 %dir %{_kf5_qmldir}/org/
 %dir %{_kf5_qmldir}/org/kde/
@@ -249,14 +251,12 @@ Document viewing program; supports document in various formats
 %{_kf5_appstreamdir}/org.kde.okular.kirigami.appdata.xml
 
 %files devel
-%license COPYING*
 %{_kf5_cmakedir}/Okular5/
 %{_kf5_libdir}/libOkular5Core.so
 %{_kf5_prefix}/include/okular/
 
 %if %{with lang}
 %files lang -f %{name}.lang
-%license COPYING*
 %endif
 
 %changelog

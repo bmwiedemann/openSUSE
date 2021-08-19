@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Aug  6 09:42:44 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.0
+- Changes since 21.07.90:
+  * Take into account the label size while setting size of the page number box.
+  * ToggleActionMenu::createWidget(): Do not crash if parent is not a QToolBar
+
+-------------------------------------------------------------------
+Fri Jul 30 10:05:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.90
+  * New feature release
+- Changes since 21.07.80:
+  * Fix Page Up/Down scrolling when scrollbars are turned off (kde#421822)
+
+-------------------------------------------------------------------
+Sat Jul 17 20:07:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.07.80
+  * New feature release
+- Too many changes since 21.04.3, only listing bugfixes:
+  * Fixed encoding detection for small texts (up to 3000 bytes) (kde#334733)
+  * Fix non unique KPlugin Id for fictionbook generator (kde#439807)
+  * CursorWrapHelper: Do not crash on Wayland. (kde#437334)
+  * Uncheck mouse mode action when annotation tool selected (kde#398108)
+  * Create color mode menu. (kde#407217)
+  * doc: Try to make it clearer that one one is used not all three (kde#436820)
+  * Uncheck quick annotation when repopulating the quick tools menu (kde#426026)
+  * Enable horizontal mouse wrap for Browse tool drag scrolling (kde#371904)
+  * Fixes changing continuous mode while on tabs issue (kde#422080)
+- Only install the license files once
+
+-------------------------------------------------------------------
 Wed Jul  7 08:59:04 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.04.3
