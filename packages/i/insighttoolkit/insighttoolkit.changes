@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 16 15:10:29 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.2.1:
+  * Undocumented bug fixes (no release notes).
+- Cleanup: Drop an unused macro from the spec file.
+
+-------------------------------------------------------------------
 Sat May 15 10:14:12 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable builds for i586 for now

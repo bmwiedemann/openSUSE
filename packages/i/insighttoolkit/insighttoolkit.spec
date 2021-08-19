@@ -19,11 +19,10 @@
 
 %global __builder ninja
 %define tarname ITK
-%define baseversion 5.1
 %define libname lib%{name}5
 
 Name:           insighttoolkit
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Toolkit for scientific image processing, segmentation, and registration
 License:        Apache-2.0
