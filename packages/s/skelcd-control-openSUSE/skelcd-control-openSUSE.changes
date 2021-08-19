@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri May  7 15:25:07 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add support for riscv64 (jsc#PM-2612)
+- 20210507
+
+-------------------------------------------------------------------
 Wed May  5 13:12:33 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix path of repo for Leap 15.3 armv7 (boo#1183795)

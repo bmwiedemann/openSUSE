@@ -27,7 +27,7 @@
 #
 ######################################################################
 Name:           skelcd-control-openSUSE
-Version:        20210505
+Version:        20210507
 Release:        0
 Summary:        The openSUSE Installation Control file
 License:        MIT
@@ -126,8 +126,8 @@ install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control
 
 %define update_repo 0
 %if 0%{?sle_version} <= 150200
-# With Tumbleweed and Leap 15.2 and before, aarch64 arm ppc ppc64 ppc64le s390x are separated from regular Leap repo.
-%ifarch aarch64 %arm ppc ppc64 ppc64le s390x
+# With Tumbleweed and Leap 15.2 and before, aarch64 arm ppc ppc64 ppc64le riscv64 s390x are separated from regular Leap repo.
+%ifarch aarch64 %arm ppc ppc64 ppc64le riscv64 s390x
 %define update_repo 1
 %endif
 %endif
@@ -148,6 +148,9 @@ install -m 644 control/${CONTROL_FILE} $RPM_BUILD_ROOT%{?skelcdpath}/CD1/control
     %endif
     %ifarch armv7l armv7hl
         ports_arch="armv7hl"
+    %endif
+    %ifarch riscv64
+        ports_arch="riscv"
     %endif
     %ifarch s390x
         ports_arch="zsystems"
