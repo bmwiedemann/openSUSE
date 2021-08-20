@@ -1,5 +1,5 @@
 #
-# spec file for package python-PyQt6-3D
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -72,6 +72,7 @@ used to generate the Python bindings for %{name}
 %pyqt_install
 
 %check
+export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # there is no test suite. If it compiles and imports, it should be okay.
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c 'from PyQt6 import Qt3DAnimation, Qt3DCore, Qt3DExtras, Qt3DInput, Qt3DLogic, Qt3DRender'
