@@ -121,6 +121,7 @@ dos2unix examples/quick/models/*/view.qml
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # there is no test suite. If it compiles and imports, it should be okay.
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c 'from PyQt6 import QtCore; assert QtCore.PYQT_VERSION_STR == "%{version}"'
