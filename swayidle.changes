@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 17 18:17:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.7:
+  * swayidle can be configured in a file instead of CLI arguments
+  * The seat can be selected with the -S flag
+  * logind idle inhibitors are now supported
+- Remove swayidle-version.patch: upstreamed
+
+-------------------------------------------------------------------
 Thu Jan 23 08:51:39 UTC 2020 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6:

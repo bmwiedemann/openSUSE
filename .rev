@@ -75,4 +75,16 @@
   See https://github.com/swaywm/swayidle/pull/53</comment>
     <requestid>766521</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>59b4b70216ddcf9b0cd915950e64fe19</srcmd5>
+    <version>1.7</version>
+    <time>1629471461</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 1.7:
+  * swayidle can be configured in a file instead of CLI arguments
+  * The seat can be selected with the -S flag
+  * logind idle inhibitors are now supported
+- Remove swayidle-version.patch: upstreamed</comment>
+    <requestid>913012</requestid>
+  </revision>
 </revisionlist>
