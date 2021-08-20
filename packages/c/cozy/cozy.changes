@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 20 11:23:50 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.1.2
+  * Fix: in version 1.1.1 the mobile library switcher was not displayed when Cozy started with a narrow window
+  * Display an error banner if an error occurs while importing new files
+  * The audiobook directory selector in the empty state has been replaced by a button to allow a narrow window even with long directory names
+  * Fix: multiple small UI issues
+  * Fix: the welcome screen now works properly on a mobile device
+  * Fix: don't display the mobile library switcher when no files are imported
+  * Fix: in the book detail view the pause icon for a chapter remained even when the next chapter already started playing
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
+Fri Aug 20 10:53:15 UTC 2021 - Julian Geywitz <suse@geigi.de>
+
+- Update to 1.1.1
+  * Display an error banner if an error occurs while importing new files
+  * The audiobook directory selector in the empty state has been replaced by a button to allow a narrow window even with long directory names
+  * Fix: multiple small UI issues
+  * Fix: the welcome screen now works properly on a mobile device
+  * Fix: don't display the mobile library switcher when no files are imported
+  * Fix: in the book detail view the pause icon for a chapter remained even when the next chapter already started playing
+  * As always, updated translations thanks to all of the translators!
+
+-------------------------------------------------------------------
 Sat Aug  7 08:08:20 UTC 2021 - Julian Geywitz <suse@geigi.de>
 
 - Update to 1.1.0
