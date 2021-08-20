@@ -316,6 +316,14 @@ dvd:
   - python38-QtPy: [locked]
   - python38-numba: [locked]
 
+  # DVD a little too big remove fonts (starting with renamed noto cjk fonts) - rbrown, 20210819
+  - noto-sans-sc-bold-fonts: [locked]
+  - noto-sans-sc-fonts: [locked]
+  - noto-sans-sc-regular-fonts: [locked]
+  - noto-sans-tc-bold-fonts: [locked]
+  - noto-sans-tc-fonts: [locked]
+  - noto-sans-tc-regular-fonts: [locked]
+
   # additional packages not picked
   - atftp
   - bcm20702a1-firmware

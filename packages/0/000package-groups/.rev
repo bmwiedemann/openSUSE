@@ -1145,4 +1145,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Fix DVD size</comment>
     <requestid>912573</requestid>
   </revision>
+  <revision rev="158" vrev="156">
+    <srcmd5>ee60b786d6e3e535a033d1e4cb43f191</srcmd5>
+    <version>unknown</version>
+    <time>1629447798</time>
+    <user>RBrownSUSE</user>
+    <comment>Shrink DVD by removing noto cjk fonts</comment>
+  </revision>
 </revisionlist>
