@@ -59,7 +59,7 @@
 # upcoming python3 multiflavor: minimum supported python is 3.7
 %define         skip_python36 1
 Name:           python-astropy%{psuffix}
-Version:        4.3.post1
+Version:        4.3.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
