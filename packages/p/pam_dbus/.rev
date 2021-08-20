@@ -32,4 +32,12 @@
     <comment>- The python2 pacakge dbus-1-python is gone: use python3-dbus-python (forwarded request 822954 from WernerFink)</comment>
     <requestid>822955</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9f7607da073df54911e92faacf70eb21</srcmd5>
+    <version>0.2.1.3</version>
+    <time>1629471460</time>
+    <user>RBrownSUSE</user>
+    <comment>- Extend patch pam_dbus-0.2.1.3.dif to silent the module usage</comment>
+    <requestid>913024</requestid>
+  </revision>
 </revisionlist>

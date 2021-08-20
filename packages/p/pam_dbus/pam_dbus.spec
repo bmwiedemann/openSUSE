@@ -1,6 +1,7 @@
 #
 # spec file for package pam_dbus
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,16 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define         commit 1d32154
 Name:           pam_dbus
 Version:        0.2.1.3
 Release:        0
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Summary:        PAM module asking the logged in user for confirmation
-Url:            http://git.nomeata.de/?p=darcs-mirror-pam-dbus.debian.git;a=summary
+URL:            http://git.nomeata.de/?p=darcs-mirror-pam-dbus.debian.git;a=summary
 Group:          Productivity/Networking
 Source0:        http://git.nomeata.de/?p=darcs-mirror-pam-dbus.debian.git;a=snapshot;h=1d32154;sf=tgz#/%{name}-%{version}.tar.gz
 Source1:        pam_dbus.8

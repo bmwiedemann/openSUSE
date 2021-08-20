@@ -1,6 +1,7 @@
 ---
  data/pam_dbus.conf |    3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ src/pam_dbus.c     |   12 ++++++++++++
+ 2 files changed, 13 insertions(+), 2 deletions(-)
 
 --- data/pam_dbus.conf
 +++ data/pam_dbus.conf	2017-07-11 08:43:18.343905071 +0000
@@ -14,3 +15,36 @@
      <allow own="de.nomeata.pam_dbus"/>
    </policy>
    <policy user="root">
+--- src/pam_dbus.c
++++ src/pam_dbus.c	2021-08-19 07:33:23.113478347 +0000
+@@ -24,6 +24,7 @@
+ #include <glib.h>
+ #include <dbus/dbus.h>
+ #include <dbus/dbus-glib.h>
++#include <syslog.h>
+ 
+ PAM_EXTERN int pam_sm_authenticate(pam_handle_t *ph, int flags, int argc, const char **argv) {
+   DBusGConnection *connection;
+@@ -32,7 +33,9 @@ PAM_EXTERN int pam_sm_authenticate(pam_h
+ 
+   gboolean login_ok;
+   
++#if !GLIB_CHECK_VERSION (2,35,0)
+   g_type_init ();
++#endif
+ 
+   error = NULL;
+   connection = dbus_g_bus_get (DBUS_BUS_SYSTEM, &error);
+@@ -78,3 +81,12 @@ PAM_EXTERN int pam_sm_authenticate(pam_h
+ 
+   return login_ok ? PAM_SUCCESS : PAM_AUTH_ERR;
+ }
++
++PAM_EXTERN int pam_sm_setcred(pam_handle_t *pamh, int flags, int argc __attribute__((unused)), const
++                              char **argv __attribute__((unused))) {
++  int rc = ((flags & PAM_ESTABLISH_CRED) ? PAM_SUCCESS :
++      (flags & PAM_REINITIALIZE_CRED) ? PAM_SUCCESS :
++      (flags & PAM_REFRESH_CRED) ? PAM_SUCCESS :
++      (flags & PAM_DELETE_CRED) ? PAM_SUCCESS : PAM_SUCCESS);
++  return rc;    
++}

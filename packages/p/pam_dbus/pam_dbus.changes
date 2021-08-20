@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 19 07:35:01 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Extend patch pam_dbus-0.2.1.3.dif to silent the module usage
+
+-------------------------------------------------------------------
 Mon Jul 27 10:26:52 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - The python2 pacakge dbus-1-python is gone: use python3-dbus-python
