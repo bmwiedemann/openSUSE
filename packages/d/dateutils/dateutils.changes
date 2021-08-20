@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 20 12:15:31 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.9:
+  * allow to specify epochs in nanoseconds, %s%N (#123)
+  * fix nanosecond arithmetic (#124)
+  * make cross-compilations easier (#128)
+  * mention default timezone (#129)
+- Drop upstreamed patches:
+  * 0144b15dda4b1ea4fdbeca9f3ecb128eb98772fd.patch
+  * a0ebd0037df973aed14779b51d59da3edc506b6a.patch
+
+-------------------------------------------------------------------
 Mon May 17 09:48:34 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 0144b15dda4b1ea4fdbeca9f3ecb128eb98772fd.patch and

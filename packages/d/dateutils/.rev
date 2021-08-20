@@ -307,4 +307,19 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
     <comment></comment>
     <requestid>897111</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>61bc41cce1bb41d3968cb6b0f6ea4206</srcmd5>
+    <version>0.4.9</version>
+    <time>1629471479</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 4.9:
+  * allow to specify epochs in nanoseconds, %s%N (#123)
+  * fix nanosecond arithmetic (#124)
+  * make cross-compilations easier (#128)
+  * mention default timezone (#129)
+- Drop upstreamed patches:
+  * 0144b15dda4b1ea4fdbeca9f3ecb128eb98772fd.patch
+  * a0ebd0037df973aed14779b51d59da3edc506b6a.patch</comment>
+    <requestid>913333</requestid>
+  </revision>
 </revisionlist>
