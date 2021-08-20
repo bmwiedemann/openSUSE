@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-core-tracing-opencensus
-Version:        1.0.0b7
+Version:        1.0.0b8
 Release:        0
 Summary:        Azure Core Tracing OpenCensus client library for Python
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       python-azure-core < 2.0.0
-Requires:       python-azure-core >= 1.0.0
+Requires:       python-azure-core >= 1.13.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       python-opencensus >= 0.6.0
 Requires:       python-opencensus-ext-azure >= 0.3.1
