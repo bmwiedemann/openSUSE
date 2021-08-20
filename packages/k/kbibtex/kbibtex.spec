@@ -1,7 +1,7 @@
 #
 # spec file for package kbibtex
 #
-# Copyright (c) 2020 SUSE LINUX LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %bcond_without lang
-
 Name:           kbibtex
 Version:        0.9.2
 Release:        0
@@ -27,42 +26,38 @@ Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://userbase.kde.org/KBibTeX/
 Source:         https://download.kde.org/stable/KBibTeX/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  extra-cmake-modules
-BuildRequires:  kcompletion-devel
-BuildRequires:  kcoreaddons-devel >= 5.51.0
-BuildRequires:  kcrash-devel
-BuildRequires:  kdoctools-devel
-BuildRequires:  ki18n-devel
-BuildRequires:  kiconthemes-devel
-BuildRequires:  kio-devel
-BuildRequires:  kitemviews-devel
-BuildRequires:  kparts-devel
-BuildRequires:  kservice-devel
-BuildRequires:  ktexteditor-devel
-BuildRequires:  kwallet-devel
-BuildRequires:  kxmlgui-devel
 BuildRequires:  libicu-devel
 BuildRequires:  libpoppler-qt5-devel
 BuildRequires:  libqca-qt5-devel
-BuildRequires:  pkgconfig
 BuildRequires:  qoauth-qt5-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Concurrent)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Test)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5XmlPatterns)
+BuildRequires:  cmake(KF5Completion)
+BuildRequires:  cmake(KF5CoreAddons) >= 5.51.0
+BuildRequires:  cmake(KF5Crash)
+BuildRequires:  cmake(KF5DocTools)
+BuildRequires:  cmake(KF5I18n)
+BuildRequires:  cmake(KF5IconThemes)
+BuildRequires:  cmake(KF5ItemViews)
+BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5Parts)
+BuildRequires:  cmake(KF5Service)
+BuildRequires:  cmake(KF5TextEditor)
+BuildRequires:  cmake(KF5Wallet)
+BuildRequires:  cmake(KF5XmlGui)
+BuildRequires:  cmake(Qt5Concurrent)
+BuildRequires:  cmake(Qt5Core)
+BuildRequires:  cmake(Qt5Network)
+BuildRequires:  cmake(Qt5Test)
+# Only include WebEngine for platforms that support it
+%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
+BuildRequires:  cmake(Qt5WebEngineWidgets)
+%endif
+BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt5XmlPatterns)
 Requires(post): desktop-file-utils
 Requires(post): shared-mime-info
 Requires(postun): desktop-file-utils
 Requires(postun): shared-mime-info
-Recommends:     %{name}-lang
-# Only include WebEngine for platforms that support it
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-BuildRequires:  pkgconfig(Qt5WebEngineWidgets)
-%else
-BuildRequires:  pkgconfig(Qt5WebKitWidgets)
-%endif
 
 %description
 KBibTeX is a BibTeX editor by KDE to edit bibliographies used with
@@ -86,7 +81,7 @@ This package contains the devel files for %{name}.
 
 %build
 %cmake_kf5 -d build
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %make_install -C build
@@ -102,22 +97,22 @@ make %{?_smp_mflags}
 %files
 %doc ChangeLog
 %license LICENSE
-%{_kf5_libdir}/libkbibtex*.so.*
-%config %{_kf5_configdir}/kbibtexrc
-%{_kf5_bindir}/kbibtex
-%{_kf5_plugindir}/kbibtexpart.so*
+%dir %{_kf5_appstreamdir}
 %{_kf5_applicationsdir}/org.kde.kbibtex.desktop
+%{_kf5_appstreamdir}/org.kde.kbibtex.appdata.xml
+%{_kf5_bindir}/kbibtex
+%{_kf5_configdir}/kbibtexrc
+%{_kf5_htmldir}/*/kbibtex/
 %{_kf5_iconsdir}/hicolor/*/apps/kbibtex.png
-%{_kf5_sharedir}/kbibtex/
-%{_kf5_servicesdir}/kbibtexpart.desktop
 %{_kf5_kxmlguidir}/kbibtex/
 %{_kf5_kxmlguidir}/kbibtexpart/
-%dir %{_kf5_appstreamdir}
-%{_kf5_appstreamdir}/org.kde.kbibtex.appdata.xml
-%{_kf5_htmldir}/*/kbibtex/
-%{_kf5_sharedir}/mime/packages/bibliography.xml
-%{_kf5_sharedir}/man/man1/kbibtex.1.gz
+%{_kf5_libdir}/libkbibtex*.so.*
+%{_kf5_plugindir}/kbibtexpart.so*
+%{_kf5_servicesdir}/kbibtexpart.desktop
+%{_kf5_sharedir}/kbibtex/
 %{_kf5_sharedir}/man/*/man1/kbibtex.1.gz
+%{_kf5_sharedir}/man/man1/kbibtex.1.gz
+%{_kf5_sharedir}/mime/packages/bibliography.xml
 
 %if %{with lang}
 %files lang -f %{name}.lang

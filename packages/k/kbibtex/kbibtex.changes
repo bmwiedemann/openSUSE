@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 18 14:38:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the QtWebKit dependency.
+
+-------------------------------------------------------------------
+Thu Aug 27 08:16:13 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Apr 28 07:44:13 UTC 2020 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to version 0.9.2:
