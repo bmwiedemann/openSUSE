@@ -82,8 +82,6 @@ Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang = %{version}
 %if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngineWidgets)
-%else
-BuildRequires:  cmake(Qt5WebKitWidgets)
 %endif
 
 %description
@@ -100,7 +98,7 @@ analyze expenses.
 %if %{with qtwebengine}
 %cmake_kf5 -- -DSKG_WEBENGINE=ON -DSKG_WEBKIT=OFF
 %else
-%cmake_kf5
+%cmake_kf5 -- -DSKG_WEBKIT=OFF
 %endif
 
 %cmake_build
