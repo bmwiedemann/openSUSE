@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 19 12:52:52 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- add upstream patch seamonkey-packed_simd.patch which allows
+  packed_simd to compile with Rust 1.54
+
+-------------------------------------------------------------------
 Tue Jul 27 06:57:05 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Remove --disable-elf-hack when not available: aarch64 and ppc64*

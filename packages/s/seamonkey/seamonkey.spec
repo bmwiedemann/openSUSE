@@ -86,6 +86,7 @@ Patch2:         mozilla-language.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         seamonkey-lto.patch
 Patch5:         seamonkey-man-page.patch
+Patch6:         seamonkey-packed_simd.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh coreutils
 Provides:       seamonkey-mail = %{version}
@@ -218,6 +219,7 @@ cp %{SOURCE12} GNUmakefile
 %patch3 -p2
 %patch4 -p2
 %patch5 -p0
+%patch6 -p1
 
 cat << EOF > .mozconfig
 mk_add_options MOZILLA_OFFICIAL=1
