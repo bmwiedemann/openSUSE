@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 19 13:31:50 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 2.13.1
+  * Security
+    - CVE-2021-37698: Add TLS server certificate validation to ElasticsearchWriter, GelfWriter,
+      InfluxdbWriter and Influxdb2Writer (GHSA-cxfm-8j5v-5qr2)
+    Depending on your setup, manual intervention beyond installing the new versions may be required,
+    so please read the more detailed information in the release blog post carefully.
+  * Bugfixes
+    - IDO PgSQL: Fix a string quoting regression introduced in 2.13.0 #8958
+    - ApiListener: Automatically fall back to IPv4 in default configuration on systems without IPv6 support #8961
+
+-------------------------------------------------------------------
 Tue Aug  3 13:09:35 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.13.0
