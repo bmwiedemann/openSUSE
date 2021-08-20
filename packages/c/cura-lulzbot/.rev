@@ -137,4 +137,13 @@ Fixed license as requested</comment>
     <comment></comment>
     <requestid>889352</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>067e3e453a0feaedf3ec0b03949a7a3e</srcmd5>
+    <version>3.6.23</version>
+    <time>1629471477</time>
+    <user>RBrownSUSE</user>
+    <comment>- fix dependency error
+- fix startup on factory</comment>
+    <requestid>913287</requestid>
+  </revision>
 </revisionlist>

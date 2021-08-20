@@ -53,6 +53,7 @@ Requires:       uranium-lulzbot >= 3.6.21
 # dependency scripts do not find qtquickcontrols automatically
 Requires:       libqt5-qtquickcontrols
 Requires:       libqt5-qtquickcontrols2
+Requires:       python3-Arcus
 Requires:       python3-numpy
 Requires:       python3-opengl
 Requires:       python3-power
