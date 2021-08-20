@@ -68,6 +68,7 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
+export PYTHONDONTWRITEBYTECODE=1
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
 xvfb-run $python xkbgroup/core.py
 # pause between pythons to allow X to stop
