@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 19 15:22:20 UTC 2021 - Mike Latimer <mlatimer@suse.com>
+
+- Replace patterns-server-enterprise-fips with patterns-base-fips (which
+  obsoletes the previous package) in all SES7 related files.
+
+-------------------------------------------------------------------
 Thu Jul 29 22:53:35 UTC 2021 - Mike Latimer <mlatimer@suse.com>
 
 - Kiwi: Regenerate ceph-image.kiwi using pre-checkin script.

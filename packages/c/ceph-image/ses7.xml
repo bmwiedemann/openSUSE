@@ -31,14 +31,13 @@
   </labels>
   <packages_image>
     <package>
-      <name>patterns-ses-ceph_base</name>
+      <name>patterns-base-fips</name>
     </package>
     <package>
-      <name>patterns-server-enterprise-fips</name>
+      <name>patterns-ses-ceph_base</name>
     </package>
     <package>
       <name>zabbix-agent</name>
     </package>
   </packages_image>
-
 </param>
