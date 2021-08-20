@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Aug 19 12:55:23 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.0
+  * add optional `buffer` argument to `bitarray()` to import the buffer of
+    another object, #141, #146, see also: [buffer protocol](buffer.rst)
+  * update `.buffer_info()` to include: a read-only flag, an imported buffer
+    flag, and the number of buffer exports
+  * add optional start and stop arguments to `util.rindex()`
+  * add [memory-mapped file](../examples/mmapped-file.py) example
+  * ignore underscore (`_`) in string input, e.g. `bitarray('1100_0111')`
+  * add missing type hinting for new `.bytereverse()` arguments
+  * fix `.extend()` type annotations, #145
+  * avoid `.reverse()` using temporary memory
+  * make `.unpack()`, `util.serialize()`, `util.vl_encode()`
+    and `.__reduce__()` more memory efficient
+  * add and improve tests
+- from version 2.2.5
+  * speedup `find_bit()` and `find_last()` using uint64 checking, this means
+    a speedup for `.find()`, `.index()`, `.search()` and `util.rindex()`
+  * add optional start and stop arguments to `.bytereverse()`
+  * add example to illustrate how
+    [unaligned copying](../examples/copy_n.py) works internally
+  * add documentation
+  * add tests
+- from version 2.2.4
+  * use shift operations to speedup all unaligned copy operations, #142
+  * expose functionality to Python level only in debug mode for testing
+  * add and improve tests
+- from version 2.2.3
+  * speedup `repeat()`, #136
+  * speedup shift operations, #139
+  * optimize slice assignment with negative step, e.g.: `a[::-1] = 1`
+  * add tests
+- from version 2.2.2
+  * speedup slice assignment, see #132 and #135
+  * speedup bitwise operations, #133
+  * optimize `getbit()` and `setbit()` in `bitarray.h`
+  * fix TypeError messages when bitarray or int (0, 1) are expected (bool
+    is a subclass of int)
+  * add and improve tests
+- from version 2.2.1
+  * improve documentation
+  * speedup `vl_encode()`
+  * `bitarray.h`: make `getbit()` always an (inline) function
+  * add assertions in C code
+- from version 2.2.0
+  * add `bitarray.util.vl_encode()` and `bitarray.util.vl_decode()` which
+    uses a [variable length bitarray format](variable_length.rst), #131
+- from version 2.1.3
+  * Fix building with MSVC / Bullseye, #129
+
+-------------------------------------------------------------------
 Sat Jul 17 08:25:28 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.2.2
