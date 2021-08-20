@@ -167,6 +167,7 @@
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
       <repopackage name="awesfx"/>
+      <repopackage name="aws-cli"/>
       <repopackage name="b43-fwcutter"/>
       <repopackage name="babeltrace"/>
       <repopackage name="baloo5-file"/>
@@ -3153,12 +3154,6 @@
       <repopackage name="notification-daemon-lang"/>
       <repopackage name="noto-coloremoji-fonts"/>
       <repopackage name="noto-sans-fonts"/>
-      <repopackage name="noto-sans-sc-bold-fonts"/>
-      <repopackage name="noto-sans-sc-fonts"/>
-      <repopackage name="noto-sans-sc-regular-fonts"/>
-      <repopackage name="noto-sans-tc-bold-fonts"/>
-      <repopackage name="noto-sans-tc-fonts"/>
-      <repopackage name="noto-sans-tc-regular-fonts"/>
       <repopackage name="noto-serif-jp-bold-fonts"/>
       <repopackage name="noto-serif-jp-fonts"/>
       <repopackage name="noto-serif-jp-regular-fonts"/>
@@ -3677,6 +3672,7 @@
       <repopackage name="python38-chardet"/>
       <repopackage name="python38-click"/>
       <repopackage name="python38-cmdln"/>
+      <repopackage name="python38-colorama"/>
       <repopackage name="python38-configobj"/>
       <repopackage name="python38-constantly"/>
       <repopackage name="python38-cramjam"/>
@@ -3690,6 +3686,7 @@
       <repopackage name="python38-distro"/>
       <repopackage name="python38-dkimpy"/>
       <repopackage name="python38-dnspython"/>
+      <repopackage name="python38-docutils"/>
       <repopackage name="python38-ecdsa"/>
       <repopackage name="python38-et_xmlfile"/>
       <repopackage name="python38-falcon"/>
@@ -3807,7 +3804,9 @@
       <repopackage name="python38-reportlab"/>
       <repopackage name="python38-requests"/>
       <repopackage name="python38-requests-toolbelt"/>
+      <repopackage name="python38-roman"/>
       <repopackage name="python38-rpm"/>
+      <repopackage name="python38-rsa"/>
       <repopackage name="python38-s3fs"/>
       <repopackage name="python38-s3transfer"/>
       <repopackage name="python38-scipy"/>
@@ -4500,6 +4499,7 @@
       <repopackage name="swell-foop"/>
       <repopackage name="swell-foop-lang"/>
       <repopackage name="swtpm"/>
+      <repopackage name="swtpm-selinux"/>
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
