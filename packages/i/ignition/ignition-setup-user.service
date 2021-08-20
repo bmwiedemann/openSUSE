@@ -11,6 +11,9 @@ Before=ignition-fetch-offline.service
 OnFailure=emergency.target
 OnFailureJobMode=isolate
 
+Wants=dev-disk-by\x2dlabel-ignition.device
+After=dev-disk-by\x2dlabel-ignition.device
+
 [Service]
 Type=oneshot
 RemainAfterExit=yes

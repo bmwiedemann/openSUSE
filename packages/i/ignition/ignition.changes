@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 12 17:42:59 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- is-live-image doesn't exist on *SUSE, and our live images don't
+  use Ignition, so just add the Ignition device dependency to the
+  service file directly.
+
+-------------------------------------------------------------------
 Mon Aug 09 08:51:52 UTC 2021 - iforster@suse.com
 
 - Update to version 2.12.0:

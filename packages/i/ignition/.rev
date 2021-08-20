@@ -486,4 +486,12 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
 </comment>
     <requestid>911075</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5763f82c839687f4697e4fd9a32c7be4</srcmd5>
+    <version>2.12.0</version>
+    <time>1629471470</time>
+    <user>RBrownSUSE</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>913198</requestid>
+  </revision>
 </revisionlist>

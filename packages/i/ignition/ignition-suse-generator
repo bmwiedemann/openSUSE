@@ -11,17 +11,6 @@ set -e
 add_requires ignition-mount-initrd-fstab.service ignition-files.service
 add_requires ignition-enable-network.service ignition-fetch.service
 
-if ! is-live-image; then
-    # ignition-setup-user.service should depend on the boot device node
-    # only on diskful boots
-    mkdir -p "${UNIT_DIR}/ignition-setup-user.service.d"
-    cat > "${UNIT_DIR}/ignition-setup-user.service.d/diskful.conf" <<EOF
-[Unit]
-Wants=dev-disk-by\x2dlabel-ignition.device
-After=dev-disk-by\x2dlabel-ignition.device
-EOF
-fi
-
 if [ -z "${PLATFORM_ID}" ]; then
     platform="$(systemd-detect-virt || true)"
     case "${platform}" in
