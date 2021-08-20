@@ -353,4 +353,12 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>910384</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>dfc6b6d5c3bae28132765f4d3a946f1d</srcmd5>
+    <version>5.1.1</version>
+    <time>1629471479</time>
+    <user>RBrownSUSE</user>
+    <comment>- Skip one more potentially segfaulting test (forwarded request 913340 from bnavigator)</comment>
+    <requestid>913341</requestid>
+  </revision>
 </revisionlist>

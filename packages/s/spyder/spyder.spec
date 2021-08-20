@@ -344,6 +344,8 @@ donttest+=" or test_apps_dialog"
 donttest+=" or test_load_time"
 # no online help within qtbot timeout
 donttest+=" or test_get_pydoc or test_pydocbrowser"
+# segfault in openSUSE:Factory (?)
+dontest+=" or  test_goto_uri_project_root_path"
 
 # tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)

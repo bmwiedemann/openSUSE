@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 20 12:47:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Skip one more potentially segfaulting test
+
+-------------------------------------------------------------------
 Thu Aug  5 20:03:35 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.1.1
