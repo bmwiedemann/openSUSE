@@ -158,4 +158,15 @@
     CHANGELOG.md file provided with this package (forwarded request 905238 from glaubitz)</comment>
     <requestid>905283</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>517a0cdd2b649438d10840e4fe419ff4</srcmd5>
+    <version>22.1.0</version>
+    <time>1629471468</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 22.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 907986 from glaubitz)</comment>
+    <requestid>908001</requestid>
+  </revision>
 </revisionlist>
