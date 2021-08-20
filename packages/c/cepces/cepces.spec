@@ -31,7 +31,9 @@ Source0:        %{name}-%{version}.tar.bz2
 BuildArch:      noarch
 
 Requires:       %{app_name}-certmonger == %{version}
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 Requires:       %{app_name}-selinux == %{version}
+%endif
 Requires:       python3-%{app_name} == %{version}
 
 %description
@@ -64,6 +66,7 @@ Requires:       certmonger
 %{app_name} is an application for enrolling certificates through CEP and CES.
 This package provides the certmonger integration.
 
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %package selinux
 Summary:        SELinux support for %{app_name}
 
@@ -74,6 +77,7 @@ Requires(post): selinux-policy-targeted
 
 %description selinux
 SELinux support for %{app_name}
+%endif
 
 %prep
 %setup -q -n %{app_name}-%{version}
@@ -81,17 +85,20 @@ SELinux support for %{app_name}
 %build
 %py3_build
 
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 # Build the SELinux module(s).
 for SELINUXVARIANT in %{selinux_variants}; do
   make -C selinux clean all
   mv -v selinux/%{app_name}.pp selinux/%{app_name}-${SELINUXVARIANT}.pp
 done
+%endif
 
 %install
 %py3_install
 
 install -d -m 0700 %{buildroot}%{logdir}
 
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 # Install the SELinux module(s).
 rm -fv selinux-files.txt
 
@@ -103,6 +110,7 @@ for SELINUXVARIANT in %{selinux_variants}; do
   echo %{_datadir}/selinux/${SELINUXVARIANT}/%{app_name}.pp >> \
     selinux-files.txt
 done
+%endif
 
 # Install configuration files.
 install -d %{buildroot}%{_sysconfdir}/%{app_name}
@@ -121,6 +129,7 @@ install -p -m 755 bin/%{app_name}-submit \
 
 sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/g' %{buildroot}%{_libexecdir}/certmonger/%{app_name}-submit
 
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %post selinux
 for SELINUXVARIANT in %{selinux_variants}; do
   %{_sbindir}/semodule -n -s ${SELINUXVARIANT} \
@@ -142,6 +151,7 @@ then
     fi
   done
 fi
+%endif
 
 %post certmonger
 # Install the CA into certmonger.
@@ -177,7 +187,9 @@ popd
 %dir %{_libexecdir}/certmonger
 %{_libexecdir}/certmonger/%{app_name}-submit
 
+%if 0%{?sle_version} > 150300 || 0%{?suse_version} > 1500
 %files selinux -f selinux-files.txt
 %defattr(0644,root,root,0755)
+%endif
 
 %changelog

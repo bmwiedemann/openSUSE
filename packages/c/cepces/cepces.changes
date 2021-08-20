@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 19 14:39:17 UTC 2021 - David Mulder <dmulder@suse.com>
+
+- Disable selinux where not supported; (jsc#SLE-18456).
+
+-------------------------------------------------------------------
 Mon Jul 19 14:32:34 UTC 2021 - David Mulder <dmulder@suse.com>
 
 - Fix configuration missing global section.
