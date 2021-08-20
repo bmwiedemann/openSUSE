@@ -19,13 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-python-gammu
-Version:        3.1
+Version:        3.2.3
 Release:        0
 Summary:        Python module to communicate with mobile phones
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://wammu.eu/python-gammu/
-Source:         https://dl.cihar.com/python-gammu/python-gammu-%{version}.tar.bz2
+Source:         https://github.com/gammu/python-gammu/archive/refs/tags/%{version}.tar.gz#/python-gammu-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  gammu-devel >= 1.37.90
