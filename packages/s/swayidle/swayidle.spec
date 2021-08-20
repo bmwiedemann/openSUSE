@@ -1,7 +1,7 @@
 #
 # spec file for package swayidle
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           swayidle
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Idle management daemon for Wayland
 License:        MIT
 Group:          System/GUI/Other
 URL:            https://github.com/swaywm/swayidle
 Source0:        https://github.com/swaywm/swayidle/archive/%{version}.tar.gz
-# https://github.com/swaywm/swayidle/pull/53
-Patch0:         swayidle-version.patch
 BuildRequires:  meson >= 0.48.0
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -69,7 +67,6 @@ Zsh command line completion support for %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 export CFLAGS="%{optflags} -I/usr/include/wayland"
