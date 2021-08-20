@@ -385,6 +385,8 @@ unsorted:
   - adobe-sourcehansans-kr-fonts 
   - adobe-sourcehanserif-jp-fonts 
   - adobe-sourcehanserif-kr-fonts 
+  - adobe-sourcesans3-fonts 
+  - adobe-sourceserif4-fonts 
   - adolc-devel 
   - adolc-devel-32bit: [x86_64] 
   - adolc-doc 
@@ -995,7 +997,6 @@ unsorted:
   - awf-gtk3 
   - awf-gtk4 
   - awkward-devel 
-  - aws-cli 
   - aws-efs-utils 
   - aws-sdk-java 
   - aws-sdk-java-acm 
@@ -8575,10 +8576,6 @@ unsorted:
   - libCEGUIOgreRenderer-0-2 
   - libCEGUIOpenGLESRenderer-0-2 
   - libCEGUIOpenGLRenderer-0-2 
-  - libCGAL13 
-  - libCGAL_Core13 
-  - libCGAL_ImageIO14 
-  - libCGAL_Qt5-14 
   - libCSXCAD0 
   - libCoin60 
   - libColPack0 
@@ -9155,7 +9152,6 @@ unsorted:
   - libSoundTouch1-32bit: [x86_64] 
   - libStatTimer2: [x86_64] 
   - libSvtAv1Dec0: [x86_64] 
-  - libSwiften4 
   - libTMCG-devel 
   - libTMCG18 
   - libTutf-devel 
@@ -13885,7 +13881,7 @@ unsorted:
   - libthriftnb-0_14_1 
   - libthriftz-0_14_1 
   - libtidy-devel 
-  - libtidy5 
+  - libtidy58 
   - libtidyp-1_04-0 
   - libtidyp-devel 
   - libtiff-devel 
@@ -14323,7 +14319,6 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
-  - libwkhtmltox0 
   - libwlroots9 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
@@ -17114,11 +17109,14 @@ unsorted:
   - noto-sans-samaritan-fonts 
   - noto-sans-saurashtra-fonts 
   - noto-sans-sc-black-fonts 
+  - noto-sans-sc-bold-fonts 
   - noto-sans-sc-demilight-fonts 
+  - noto-sans-sc-fonts 
   - noto-sans-sc-fonts-full 
   - noto-sans-sc-light-fonts 
   - noto-sans-sc-medium-fonts 
   - noto-sans-sc-mono-fonts 
+  - noto-sans-sc-regular-fonts 
   - noto-sans-sc-thin-fonts 
   - noto-sans-shavian-fonts 
   - noto-sans-sinhala-fonts 
@@ -17138,11 +17136,14 @@ unsorted:
   - noto-sans-tamil-fonts 
   - noto-sans-tamil-ui-fonts 
   - noto-sans-tc-black-fonts 
+  - noto-sans-tc-bold-fonts 
   - noto-sans-tc-demilight-fonts 
+  - noto-sans-tc-fonts 
   - noto-sans-tc-fonts-full 
   - noto-sans-tc-light-fonts 
   - noto-sans-tc-medium-fonts 
   - noto-sans-tc-mono-fonts 
+  - noto-sans-tc-regular-fonts 
   - noto-sans-tc-thin-fonts 
   - noto-sans-telugu-fonts 
   - noto-sans-telugu-ui-fonts 
@@ -17962,7 +17963,6 @@ unsorted:
   - openscap-devel 
   - openscap-docker 
   - openscap-utils 
-  - openshot-qt 
   - openslide-doc 
   - openslide-tools 
   - openslp-devel 
@@ -24909,7 +24909,6 @@ unsorted:
   - python38-codecov 
   - python38-cogapp 
   - python38-colander 
-  - python38-colorama 
   - python38-colorcet 
   - python38-colorclass 
   - python38-coloredlogs 
@@ -25173,7 +25172,6 @@ unsorted:
   - python38-dockerpty 
   - python38-docopt 
   - python38-docrepr 
-  - python38-docutils 
   - python38-docutils-ast-writer 
   - python38-dogslow 
   - python38-dominate 
@@ -26586,7 +26584,6 @@ unsorted:
   - python38-robotframework 
   - python38-roifile 
   - python38-rollbar 
-  - python38-roman 
   - python38-rope 
   - python38-rpcq 
   - python38-rply 
@@ -26595,7 +26592,6 @@ unsorted:
   - python38-rpy2 
   - python38-rpyc 
   - python38-rq 
-  - python38-rsa: [i586] 
   - python38-rss2email 
   - python38-rst.linker 
   - python38-rstcheck 
@@ -32288,8 +32284,6 @@ unsorted:
   - swaylock-bash-completion 
   - swaylock-fish-completion 
   - swaylock-zsh-completion 
-  - swift-im 
-  - swiften-devel 
   - swig 
   - swig-doc 
   - swig-examples 
@@ -41797,8 +41791,6 @@ unsorted:
   - wireshark-plugin-libvirt 
   - withlock 
   - wizznic 
-  - wkhtmltopdf 
-  - wkhtmltopdf-devel 
   - wl-clipboard 
   - wl-clipboard-bash-completion 
   - wl-clipboard-zsh-completion 

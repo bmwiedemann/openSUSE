@@ -166,6 +166,7 @@
     <package name="avahi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="avahi-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="awesfx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="aws-cli" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="b43-fwcutter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="babeltrace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="baloo5-file" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3111,12 +3112,6 @@
     <package name="notification-daemon-lang" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-coloremoji-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="noto-sans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="noto-sans-sc-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="noto-sans-sc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="noto-sans-sc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="noto-sans-tc-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="noto-sans-tc-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="noto-sans-tc-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-serif-jp-bold-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-serif-jp-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="noto-serif-jp-regular-fonts" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
@@ -3644,6 +3639,7 @@
     <package name="python38-chardet" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-click" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-cmdln" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="python38-colorama" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-configobj" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python38-constantly" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python38-cramjam" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3656,6 +3652,7 @@
     <package name="python38-distro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-dkimpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python38-docutils" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-ecdsa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-et_xmlfile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3761,7 +3758,9 @@
     <package name="python38-reportlab" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-requests" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python38-requests-toolbelt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="python38-roman" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-rpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="python38-rsa" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-s3fs" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-s3transfer" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-scipy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
@@ -4450,6 +4449,7 @@
     <package name="swell-foop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="swell-foop-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="swtpm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="swtpm-selinux" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="syntax-highlighting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sysconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="sysconfig-netconfig" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -5406,7 +5406,6 @@
     <package name="python38-ldap" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-requests-oauthlib" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
-    <package name="python38-rsa" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="qemu-block-rbd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-ovmf-x86_64" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-kvm_server -->
     <package name="qemu-uefi-aarch64" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
