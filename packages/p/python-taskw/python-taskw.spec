@@ -1,7 +1,7 @@
 #
 # spec file for package python-taskw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        GPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/ralphbean/taskw
 Source:         https://files.pythonhosted.org/packages/source/t/taskw/taskw-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM taskw-1.3.0-fix-build-with-taskwarrior-2.5.2.patch https://github.com/ralphbean/taskw/compare/81f703bac941be74149d0297ea102afba11efdc8...0fa72d2656a5d220a105aad5d880ab7fb57a49cd.diff
+Patch0:         taskw-1.3.0-fix-build-with-taskwarrior-2.5.2.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -49,6 +51,7 @@ Python bindings for your taskwarrior database.
 
 %prep
 %setup -q -n taskw-%{version}
+%patch0 -p1
 
 %build
 %python_build

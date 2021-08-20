@@ -1,0 +1,55 @@
+--- a/taskw/test/test_datas.py
++++ b/taskw/test/test_datas.py
+@@ -383,7 +383,7 @@ class TestDBShellout(_BaseTestDB):
+         self.tw.task_add("foobar2")
+         self.tw.task_add("foobar+")
+         tasks = self.tw.filter_tasks({
+-            'description.contains': 'foobar+',
++            'description.contains': '"foobar+"',
+         })
+         assert len(tasks) == 1
+         assert tasks[0]['id'] == 3
+@@ -393,7 +393,7 @@ class TestDBShellout(_BaseTestDB):
+         self.tw.task_add("foobar2")
+         self.tw.task_add("foobar-")
+         tasks = self.tw.filter_tasks({
+-            'description.contains': 'foobar-',
++            'description.contains': '"foobar-"',
+         })
+         assert len(tasks) == 1
+         assert tasks[0]['id'] == 3
+@@ -451,7 +451,7 @@ class TestDBShellout(_BaseTestDB):
+         self.tw.task_add("foobar2")
+         self.tw.task_add("foo/bar")
+         tasks = self.tw.filter_tasks({
+-            'description.contains': 'foo/bar',
++            'description.contains': '"foo/bar"',
+         })
+         assert len(tasks) == 1
+         assert tasks[0]['id'] == 3
+--- a/taskw/warrior.py
++++ b/taskw/warrior.py
+@@ -412,10 +412,13 @@ class TaskWarriorShellout(TaskWarriorBas
+     and https://github.com/ralphbean/taskw/issues/30 for more.
+     """
+     DEFAULT_CONFIG_OVERRIDES = {
++        # 'verbose' must be the first param. Otherwise due to
++        # https://github.com/GothenburgBitFactory/taskwarrior/issues/1953
++        # adding tasks will not work in taskwarrior 2.5.3.
++        'verbose': 'nothing',
+         'json': {
+             'array': 'TRUE'
+         },
+-        'verbose': 'nothing',
+         'confirmation': 'no',
+         'dependency': {
+             'confirmation': 'no',
+@@ -773,6 +776,8 @@ class TaskWarriorShellout(TaskWarriorBas
+ 
+         task_to_modify.pop('uuid', None)
+         task_to_modify.pop('id', None)
++        # Urgency field is auto-generated and cannot be modified.
++        task_to_modify.pop('urgency', None)
+ 
+         # Only handle annotation differences if this is an old-style
+         # task, or if the task itself says annotations have changed.
