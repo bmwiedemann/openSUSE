@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 18 19:16:18 UTC 2021 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.9.2:
+  * Use description field as subtitle for Atom feeds, if provided
+    (#23)
+  * Update list of explicitly-supported Python versions to 3.6-3.9
+- remove fix_encoding_in_setup_py.patch: merged upstream
+- update the package description to match upstream readme
+- move the %python_subpackages macro to fix an rpmlint warning
+
+-------------------------------------------------------------------
 Thu May 27 06:29:32 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest macro

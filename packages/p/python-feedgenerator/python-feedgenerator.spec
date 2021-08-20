@@ -18,14 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-feedgenerator
-Version:        1.9.1
+Version:        1.9.2
 Release:        0
 Summary:        Standalone version of django.utilsfeedgenerator, compatible with Py3k
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/getpelican/feedgenerator
 Source:         https://files.pythonhosted.org/packages/source/f/feedgenerator/feedgenerator-%{version}.tar.gz
-Patch0:         fix_encoding_in_setup_py.patch
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
@@ -34,16 +33,14 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pytz
 Requires:       python-six
 BuildArch:      noarch
+%python_subpackages
 
 %description
-Feedgenerator-py3k is a standalone version of Django's feedgenerator.
-It is based on the current Django Version 1.5.dev20120824122350.
-
-%python_subpackages
+FeedGenerator is a standalone version of Django’s feedgenerator module.
+It has evolved over time and includes numerous enhancements.
 
 %prep
 %setup -q -n feedgenerator-%{version}
-%autopatch -p1
 
 %build
 %python_build
