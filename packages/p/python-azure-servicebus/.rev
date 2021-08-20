@@ -122,4 +122,16 @@
 - Update Requires from setup.py (forwarded request 898990 from glaubitz)</comment>
     <requestid>899038</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9b7d0bbd93e7c5fbe70324683c86337d</srcmd5>
+    <version>7.3.1</version>
+    <time>1629471466</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 7.3.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 907760 from glaubitz)</comment>
+    <requestid>907813</requestid>
+  </revision>
 </revisionlist>
