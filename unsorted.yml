@@ -5891,6 +5891,7 @@ unsorted:
   - goffice-devel 
   - goffice-lang 
   - gojsontoyaml 
+  - gokart: [x86_64] 
   - golang-github-QubitProducts-exporter_exporter 
   - golang-github-boynux-squid_exporter 
   - golang-github-cpuguy83-go-md2man 
@@ -11891,14 +11892,8 @@ unsorted:
   - libmjpegutils-devel 
   - libmlag_pb0 
   - libmlt++-7-7 
-  - libmlt++-devel 
-  - libmlt++3 
   - libmlt-7-7 
   - libmlt-devel 
-  - libmlt6 
-  - libmlt6-data 
-  - libmlt6-devel 
-  - libmlt6-modules 
   - libmlt7-data 
   - libmlt7-modules 
   - libmlx4-1-32bit: [x86_64] 
@@ -15748,7 +15743,6 @@ unsorted:
   - melody 
   - melody-lang 
   - melt 
-  - melt6 
   - memcached-devel 
   - memkind: [x86_64] 
   - memkind-devel: [x86_64] 
@@ -21229,7 +21223,6 @@ unsorted:
   - python3-matrix-synapse-ldap3 
   - python3-mistralclient 
   - python3-mlt 
-  - python3-mlt6 
   - python3-monascaclient 
   - python3-morecvutils 
   - python3-mox3 
@@ -21856,6 +21849,7 @@ unsorted:
   - python36-azure-mgmt-eventhub 
   - python36-azure-mgmt-extendedlocation 
   - python36-azure-mgmt-frontdoor 
+  - python36-azure-mgmt-guestconfig 
   - python36-azure-mgmt-hanaonazure 
   - python36-azure-mgmt-hdinsight 
   - python36-azure-mgmt-healthcareapis 
@@ -22964,6 +22958,7 @@ unsorted:
   - python36-neovim 
   - python36-neovim-remote 
   - python36-nest-asyncio 
+  - python36-nested-lookup 
   - python36-net-snmp 
   - python36-netaddr 
   - python36-netifaces 
@@ -24651,6 +24646,7 @@ unsorted:
   - python38-azure-mgmt-eventhub 
   - python38-azure-mgmt-extendedlocation 
   - python38-azure-mgmt-frontdoor 
+  - python38-azure-mgmt-guestconfig 
   - python38-azure-mgmt-hanaonazure 
   - python38-azure-mgmt-hdinsight 
   - python38-azure-mgmt-healthcareapis 
@@ -25833,6 +25829,7 @@ unsorted:
   - python38-neovim 
   - python38-neovim-remote 
   - python38-nest-asyncio 
+  - python38-nested-lookup 
   - python38-net-snmp 
   - python38-netCDF4 
   - python38-netmiko 
@@ -27616,6 +27613,7 @@ unsorted:
   - python39-azure-mgmt-eventhub 
   - python39-azure-mgmt-extendedlocation 
   - python39-azure-mgmt-frontdoor 
+  - python39-azure-mgmt-guestconfig 
   - python39-azure-mgmt-hanaonazure 
   - python39-azure-mgmt-hdinsight 
   - python39-azure-mgmt-healthcareapis 
@@ -28868,6 +28866,7 @@ unsorted:
   - python39-neovim 
   - python39-neovim-remote 
   - python39-nest-asyncio 
+  - python39-nested-lookup 
   - python39-net-snmp 
   - python39-netCDF4 
   - python39-netaddr 
@@ -29911,6 +29910,7 @@ unsorted:
   - python39-tap.py 
   - python39-targetcli-fb 
   - python39-tasklib 
+  - python39-taskw 
   - python39-tbb 
   - python39-tblib 
   - python39-tcolorpy 
