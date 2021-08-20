@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 8.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-mgmt-containerregistry
-Version:        8.0.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-containerregistry/azure-mgmt-containerregistry-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-mgmt-containerregistry/azure-mgmt-containerregistry-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -59,10 +57,10 @@ replace the old Azure Service Management (ASM).
 This package has been tested with Python 2.7, 3.5, 3.6 and 3.7.
 
 %prep
-%setup -q -n azure-mgmt-containerregistry-%{realversion}
+%setup -q -n azure-mgmt-containerregistry-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-containerregistry-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-mgmt-containerregistry-%{version}
 %python_build
 
 %install

@@ -135,4 +135,16 @@
 - Update Requires from setup.py (forwarded request 898330 from glaubitz)</comment>
     <requestid>898359</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a9c68b7f9f81f0b5be7b73ef50f8fd6d</srcmd5>
+    <version>8.1.0</version>
+    <time>1629471469</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 8.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 908409 from glaubitz)</comment>
+    <requestid>908442</requestid>
+  </revision>
 </revisionlist>
