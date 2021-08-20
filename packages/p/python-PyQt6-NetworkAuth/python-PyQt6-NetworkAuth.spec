@@ -1,5 +1,5 @@
 #
-# spec file for package python-PyQt6-NetworkAuth
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define qtlib NetworkAuth
 %define mname PyQt6-%{qtlib}
@@ -65,6 +66,7 @@ used to generate the Python bindings for %{name}
 %pyqt_install
 
 %check
+export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # there is no test suite. If it compiles and imports, it should be okay.
 export PYTHONPATH=%{buildroot}%{$python_sitearch}
 $python -c 'from PyQt6 import Qt%{qtlib}; assert Qt%{qtlib}.PYQT_NETWORKAUTH_VERSION_STR == "%{version}"'
