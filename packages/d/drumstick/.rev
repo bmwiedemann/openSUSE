@@ -119,4 +119,15 @@
   * Widgets: Fixed touch events - checked pressure capability</comment>
     <requestid>903175</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f92b717eee8d4ecbcd6046465fc614f5</srcmd5>
+    <version>2.3.1</version>
+    <time>1629471457</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to 2.3.1
+  * updated documentation
+  * Fixed WRK file processing in guiplayer utility
+  * Fixed SMF system exclusive event write method</comment>
+    <requestid>912947</requestid>
+  </revision>
 </revisionlist>
