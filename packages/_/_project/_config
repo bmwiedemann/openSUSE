@@ -1431,6 +1431,7 @@ Macros:
 # END PYTHON STUFF
 
 # BEGIN RUST STUFF 
+Prefer: -cargo1.53
 
 # Define the architectures in which Rust (and Rust crates) are available
 # NOTE: Keep this in sync with rust-srpm-macros!
