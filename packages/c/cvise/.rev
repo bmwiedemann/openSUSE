@@ -583,4 +583,19 @@
   * Handle move in int. test.</comment>
     <requestid>902777</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>c69cce7450b5ab44fad740dc54439af2</srcmd5>
+    <version>2.3.0+git.20210819.0f98784</version>
+    <time>1629471475</time>
+    <user>RBrownSUSE</user>
+    <comment>- Update to version 2.3.0+git.20210819.0f98784:
+  * Properly handle keyboard interrupt when a pass is running (#62).
+  * Use pass name in the created temporary directories (#62).
+  * Install python3-chardet.
+  * Add support for --to-utf8 (#59).
+  * Add LLVM 12 build target.
+  * Support current LLVM tip.
+  * Fix CPU count detection on Darwin.</comment>
+    <requestid>913267</requestid>
+  </revision>
 </revisionlist>

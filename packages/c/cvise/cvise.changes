@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 19 15:08:49 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210819.0f98784:
+  * Properly handle keyboard interrupt when a pass is running (#62).
+  * Use pass name in the created temporary directories (#62).
+  * Install python3-chardet.
+  * Add support for --to-utf8 (#59).
+  * Add LLVM 12 build target.
+  * Support current LLVM tip.
+  * Fix CPU count detection on Darwin.
+
+-------------------------------------------------------------------
 Mon Jun 28 09:13:38 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210628.38b42d9:

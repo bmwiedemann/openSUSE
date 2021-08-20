@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.3.0+git.20210628.38b42d9
+Version:        2.3.0+git.20210819.0f98784
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  llvm-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
 BuildRequires:  python3-Pebble
+BuildRequires:  python3-chardet
 BuildRequires:  python3-psutil
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-flake8
