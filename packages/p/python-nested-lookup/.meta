@@ -1,0 +1,5 @@
+<package name="python-nested-lookup" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-nested-lookup"/>
+</package>
