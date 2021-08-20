@@ -70,4 +70,16 @@
     <comment></comment>
     <requestid>903655</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>51d21a9697979db32a8b6ba1e03c85c0</srcmd5>
+    <version>12.1.0</version>
+    <time>1629471467</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 12.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 907782 from glaubitz)</comment>
+    <requestid>907826</requestid>
+  </revision>
 </revisionlist>
