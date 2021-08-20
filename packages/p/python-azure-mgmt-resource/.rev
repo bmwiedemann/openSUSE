@@ -132,4 +132,15 @@
     CHANGELOG.md file provided with this package (forwarded request 898818 from glaubitz)</comment>
     <requestid>898820</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>86ecdabde5c3c4d8800f38bcff6bda10</srcmd5>
+    <version>19.0.0</version>
+    <time>1629471466</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 19.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 907758 from glaubitz)</comment>
+    <requestid>907811</requestid>
+  </revision>
 </revisionlist>
