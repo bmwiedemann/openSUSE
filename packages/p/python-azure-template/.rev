@@ -52,4 +52,15 @@
 - Update Requires from setup.py (forwarded request 903441 from glaubitz)</comment>
     <requestid>903447</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4949a7e038ca9091b2274304d39c9b77</srcmd5>
+    <version>0.1.0b1006474</version>
+    <time>1629471467</time>
+    <user>RBrownSUSE</user>
+    <comment>- New upstream release
+  + Version 0.1.0b1006474
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 907761 from glaubitz)</comment>
+    <requestid>907814</requestid>
+  </revision>
 </revisionlist>
