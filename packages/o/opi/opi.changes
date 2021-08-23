@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 20 14:31:21 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.2.0
+  * Added
+    - Plugin for MEGA
+    - Plugin for Edge Beta
+    - Argument parser with option for reverse output order
+
+
+-------------------------------------------------------------------
 Tue Aug 10 09:33:19 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.1.1
