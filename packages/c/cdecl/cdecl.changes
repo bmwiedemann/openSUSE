@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 15 16:06:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.3
+  * Marking functions and conversion operators = delete is now
+    supported.
+- Add unbreak-gnulib.diff
+
+-------------------------------------------------------------------
 Wed Jun 30 16:05:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.2

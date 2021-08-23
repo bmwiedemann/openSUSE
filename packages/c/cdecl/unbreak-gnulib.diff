@@ -1,0 +1,26 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-08-15 19:20:30.942589995 +0200
+
+Compiler said _GL_ATTRIBUTE_MALLOC was undefined.
+This was a breaking change in gnulib 48ece5c3f2185f52ab8cd73ceac9bd9f0e01eac6.
+---
+ lib/stdlib.in.h |    6 ++++++
+ 1 file changed, 6 insertions(+)
+
+Index: cdecl-10.3/lib/stdlib.in.h
+===================================================================
+--- cdecl-10.3.orig/lib/stdlib.in.h
++++ cdecl-10.3/lib/stdlib.in.h
+@@ -108,6 +108,12 @@ struct random_data
+ #  define _GL_ATTRIBUTE_PURE /* empty */
+ # endif
+ #endif
++#ifndef _GL_ATTRIBUTE_MALLOC
++#define _GL_ATTRIBUTE_MALLOC
++#endif
++#ifndef _GL_ATTRIBUTE_DEALLOC_FREE
++#define _GL_ATTRIBUTE_DEALLOC_FREE
++#endif
+ 
+ /* The definition of _Noreturn is copied here.  */
+ 
