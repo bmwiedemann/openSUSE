@@ -1,0 +1,25 @@
+From b2f6105bb28c2d8dc814f152b447a02602ea7019 Mon Sep 17 00:00:00 2001
+From: Andrettin <6322423+Andrettin@users.noreply.github.com>
+Date: Fri, 20 Aug 2021 18:20:16 +0200
+Subject: [PATCH 1/2] Fix to Clang compilation issue in video.h
+
+---
+ src/video/video.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/video/video.h b/src/video/video.h
+index 7bab1621f..ba479957d 100644
+--- a/src/video/video.h
++++ b/src/video/video.h
+@@ -242,7 +242,7 @@ public:
+ 
+ 	QImage create_modified_image(const color_modification &color_modification, const bool grayscale) const;
+ 
+-	const QImage *get_frame_image(const size_t frame_index, const color_modification &color_modification = color_modification(), const bool grayscale = false) const
++	const QImage *get_frame_image(const size_t frame_index, const color_modification &color_modification = {}, const bool grayscale = false) const
+ 	{
+ 		if (grayscale) {
+ 			if (!this->grayscale_frame_images.empty()) {
+-- 
+2.32.0
+

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 21 15:27:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.0
+  * Upstream does not provide a changelog
+- Add patches:
+  * 0001-Fix-to-Clang-compilation-issue-in-video.h.patch
+  * 0002-Removed-some-no-longer-used-SDL-code.patch
+
+-------------------------------------------------------------------
 Tue Mar 16 08:33:54 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to avoid OOM

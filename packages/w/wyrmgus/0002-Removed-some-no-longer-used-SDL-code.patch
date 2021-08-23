@@ -1,0 +1,371 @@
+From fb2e3be1d43fd8b090f314a945fbf918837a3fe6 Mon Sep 17 00:00:00 2001
+From: Andrettin <6322423+Andrettin@users.noreply.github.com>
+Date: Sat, 21 Aug 2021 08:01:02 +0200
+Subject: [PATCH 2/2] Removed some no longer used SDL code
+
+---
+ src/game/savegame.cpp |   2 +-
+ src/include/color.h   |   4 --
+ src/map/map_fog.cpp   |   2 -
+ src/tolua/video.pkg   |   4 --
+ src/video/color.cpp   |   8 ---
+ src/video/graphic.cpp |  62 -------------------
+ src/video/video.cpp   | 140 ------------------------------------------
+ src/video/video.h     |  11 ----
+ 8 files changed, 1 insertion(+), 232 deletions(-)
+
+diff --git a/src/game/savegame.cpp b/src/game/savegame.cpp
+index 41a6dfd5a..5158d647d 100644
+--- a/src/game/savegame.cpp
++++ b/src/game/savegame.cpp
+@@ -68,7 +68,7 @@ void ExpandPath(std::string &newpath, const std::string &path)
+ 		}
+ 		newpath += "/" + path.substr(1);
+ 	} else {
+-		newpath = wyrmgus::database::get()->get_root_path().string() + "/" + path;
++		newpath = database::get()->get_root_path().string() + "/" + path;
+ 	}
+ }
+ 
+diff --git a/src/include/color.h b/src/include/color.h
+index 3296325bd..32cf0dab7 100644
+--- a/src/include/color.h
++++ b/src/include/color.h
+@@ -30,7 +30,6 @@
+ 
+ class CConfigData;
+ struct lua_State;
+-struct SDL_Color;
+ 
+ /// platform independent color
+ class CColor
+@@ -46,9 +45,6 @@ public:
+ 	void ProcessConfigData(const CConfigData *config_data);
+ 	void Parse(lua_State *l, int index = -1);
+ 
+-	/// Cast to a SDL_Color
+-	operator SDL_Color() const;
+-
+ 	bool operator <(const CColor &rhs) const {
+ 		if (this->R < rhs.R) {
+ 			return true;
+diff --git a/src/map/map_fog.cpp b/src/map/map_fog.cpp
+index db107baab..5aeb73f23 100644
+--- a/src/map/map_fog.cpp
++++ b/src/map/map_fog.cpp
+@@ -71,8 +71,6 @@ static constexpr std::array<int, 16> FogTable = {
+ static std::vector<std::vector<unsigned short>> VisibleTable;
+ //Wyrmgus end
+ 
+-static SDL_Surface *OnlyFogSurface = nullptr;
+-
+ class _filter_flags
+ {
+ public:
+diff --git a/src/tolua/video.pkg b/src/tolua/video.pkg
+index e5d454242..b2950f717 100644
+--- a/src/tolua/video.pkg
++++ b/src/tolua/video.pkg
+@@ -19,10 +19,6 @@ class CColor {
+ 	unsigned char A;
+ };
+ 
+-void SetColorCycleAll(bool value);
+-void ClearAllColorCyclingRange();
+-void AddColorCyclingRange(unsigned int startColorIndex, unsigned int endColorIndex);
+-
+ int get_scale_factor();
+ void pack_image_folder(const std::string dir_path, const int frames_per_row = 5);
+ void index_image_to_image_palette(const std::string &image_path, const std::string &other_image_path);
+diff --git a/src/video/color.cpp b/src/video/color.cpp
+index fc13c5d23..e7424f8be 100644
+--- a/src/video/color.cpp
++++ b/src/video/color.cpp
+@@ -34,14 +34,6 @@
+ #include "script.h"
+ #include "util/util.h"
+ 
+-#include <SDL.h>
+-
+-CColor::operator SDL_Color() const
+-{
+-	SDL_Color c = { static_cast<unsigned char>(R), static_cast<unsigned char>(G), static_cast<unsigned char>(B), static_cast<unsigned char>(A) };
+-	return c;
+-}
+-
+ CColor CColor::FromString(const std::string &str)
+ {
+ 	CColor color;
+diff --git a/src/video/graphic.cpp b/src/video/graphic.cpp
+index 63cbf5274..f32689196 100644
+--- a/src/video/graphic.cpp
++++ b/src/video/graphic.cpp
+@@ -538,68 +538,6 @@ static void ApplySepiaScale(QImage &image)
+ 	}
+ }
+ 
+-/*
+-static std::string map_terrains[8192][4096];
+-
+-static void ConvertImageToMap(SDL_Surface *Surface, int Width, int Height)
+-{
+-	SDL_LockSurface(Surface);
+-	const SDL_PixelFormat *f = Surface->format;
+-	const int bpp = Surface->format->BytesPerPixel;
+-	uint8_t r, g, b;
+-
+-	for (int j = 0; j < Height; ++j) {
+-		for (int i = 0; i < Width; ++i) {
+-			uint32_t c = *reinterpret_cast<uint32_t *>(&reinterpret_cast<uint8_t *>(Surface->pixels)[i * 4 + j * Surface->pitch]);
+-			uint8_t a;
+-
+-			CVideo::GetRGBA(c, Surface->format, &r, &g, &b, &a);
+-			if (a >= 128) {
+-				if (r == 235 && g == 235 && b == 235) {
+-					map_terrains[i][j] = "s";
+-				} else if (r == 138 && g == 11 && b == 26) {
+-					map_terrains[i][j] = "r";
+-				} else if (r == 69 && g == 91 && b == 186) {
+-					map_terrains[i][j] = "w";
+-				} else if (r == 178 && g == 34 && b == 34) {
+-					map_terrains[i][j] = "m";
+-				} else if (r == 0 && g == 255 && b == 255) {
+-					map_terrains[i][j] = "e";
+-				} else {
+-					map_terrains[i][j] = "d";
+-				}
+-			} else {
+-				map_terrains[i][j] = "0";
+-			}
+-		}
+-	}
+-	SDL_UnlockSurface(Surface);
+-	
+-	FileWriter *fw = nullptr;
+-	std::string map_filename = "scripts/map_templates/new.map";
+-
+-	try {
+-		fw = CreateFileWriter(map_filename);
+-
+-		for (int y = 0; y < Height; ++y) {
+-			for (int x = 0; x < Width; ++x) {
+-				fw->printf("%s", map_terrains[x][y].c_str());
+-			}
+-			fw->printf("\n");
+-		}
+-			
+-		fw->printf("\n");
+-	} catch (const FileException &) {
+-		fprintf(stderr, "Couldn't write the map setup: \"%s\"\n", map_filename.c_str());
+-		delete fw;
+-		return;
+-	}
+-	
+-	delete fw;
+-}
+-*/
+-//Wyrmgus end
+-
+ /**
+ **  Load a graphic
+ **
+diff --git a/src/video/video.cpp b/src/video/video.cpp
+index c655c240b..fbac3b96d 100644
+--- a/src/video/video.cpp
++++ b/src/video/video.cpp
+@@ -121,52 +121,9 @@ struct Clip {
+ 	int Y2;                             /// pushed clipping bottom right
+ };
+ 
+-class ColorIndexRange
+-{
+-public:
+-	ColorIndexRange(unsigned int begin, unsigned int end) :
+-		begin(begin), end(end)
+-	{}
+-public:
+-	unsigned int begin;
+-	unsigned int end;
+-};
+-
+-class CColorCycling
+-{
+-private:
+-	static void CreateInstanceIfNeeded()
+-	{
+-		if (s_instance == nullptr) {
+-			s_instance = std::make_unique<CColorCycling>();
+-		}
+-	}
+-
+-public:
+-	static CColorCycling &GetInstance()
+-	{
+-		CreateInstanceIfNeeded();
+-		return *s_instance;
+-	}
+-
+-	static void ReleaseInstance()
+-	{
+-		s_instance.reset();
+-	}
+-
+-public:
+-	std::vector<SDL_Surface *> PaletteList;        /// List of all used palettes.
+-	std::vector<ColorIndexRange> ColorIndexRanges; /// List of range of color index for cycling.
+-	bool ColorCycleAll = false;                    /// Flag Color Cycle with all palettes
+-	unsigned int cycleCount = 0;
+-private:
+-	static std::unique_ptr<CColorCycling> s_instance;
+-};
+-
+ extern void InitVideoSdl();         /// Init SDL video hardware driver
+ 
+ CVideo Video;
+-std::unique_ptr<CColorCycling> CColorCycling::s_instance;
+ 
+ //Wyrmgus start
+ //bool ZoomNoResize;
+@@ -329,7 +286,6 @@ void InitVideo()
+ 
+ void DeInitVideo()
+ {
+-	CColorCycling::ReleaseInstance();
+ }
+ 
+ /**
+@@ -349,102 +305,6 @@ void VideoCclRegister()
+ 	lua_register(Lua, "SetVideoSyncSpeed", CclSetVideoSyncSpeed);
+ }
+ 
+-#if 1 // color cycling
+-
+-
+-/**
+-**  Add a surface to the palette list, used for color cycling
+-**
+-**  @param surface  The SDL surface to add to the list to cycle.
+-*/
+-void VideoPaletteListAdd(SDL_Surface *surface)
+-{
+-	if (surface == nullptr || surface->format == nullptr || surface->format->BytesPerPixel != 1) {
+-		return;
+-	}
+-
+-	CColorCycling &colorCycling = CColorCycling::GetInstance();
+-	std::vector<SDL_Surface *>::iterator it = std::find(colorCycling.PaletteList.begin(), colorCycling.PaletteList.end(), surface);
+-
+-	if (it != colorCycling.PaletteList.end()) {
+-		return ;
+-	}
+-	colorCycling.PaletteList.push_back(surface);
+-}
+-
+-/**
+-**  Remove a surface to the palette list, used for color cycling
+-**
+-**  @param surface  The SDL surface to add to the list to cycle.
+-*/
+-void VideoPaletteListRemove(SDL_Surface *surface)
+-{
+-	CColorCycling &colorCycling = CColorCycling::GetInstance();
+-	std::vector<SDL_Surface *>::iterator it = std::find(colorCycling.PaletteList.begin(), colorCycling.PaletteList.end(), surface);
+-
+-	if (it != colorCycling.PaletteList.end()) {
+-		colorCycling.PaletteList.erase(it);
+-	}
+-}
+-
+-void ClearAllColorCyclingRange()
+-{
+-	CColorCycling::GetInstance().ColorIndexRanges.clear();
+-}
+-
+-void AddColorCyclingRange(unsigned int begin, unsigned int end)
+-{
+-	CColorCycling::GetInstance().ColorIndexRanges.push_back(ColorIndexRange(begin, end));
+-}
+-
+-void SetColorCycleAll(bool value)
+-{
+-	CColorCycling::GetInstance().ColorCycleAll = value;
+-}
+-
+-/**
+-**  Color Cycle for particular surface
+-*/
+-static void ColorCycleSurface(SDL_Surface &surface)
+-{
+-	SDL_Color *palcolors = surface.format->palette->colors;
+-	std::array<SDL_Color, 256> colors{};
+-	CColorCycling &colorCycling = CColorCycling::GetInstance();
+-
+-	memcpy(colors.data(), palcolors, sizeof(colors));
+-	for (std::vector<ColorIndexRange>::const_iterator it = colorCycling.ColorIndexRanges.begin(); it != colorCycling.ColorIndexRanges.end(); ++it) {
+-		const ColorIndexRange &range = *it;
+-
+-		memcpy(colors.data() + range.begin, palcolors + range.begin + 1, (range.end - range.begin) * sizeof(SDL_Color));
+-		colors[range.end] = palcolors[range.begin];
+-	}
+-	SDL_SetPalette(&surface, SDL_LOGPAL | SDL_PHYSPAL, colors.data(), 0, 256);
+-}
+-
+-/**
+-**  Undo Color Cycle for particular surface
+-**  @note function may be optimized.
+-*/
+-static void ColorCycleSurface_Reverse(SDL_Surface &surface, unsigned int count)
+-{
+-	for (unsigned int i = 0; i != count; ++i) {
+-		SDL_Color *palcolors = surface.format->palette->colors;
+-		std::array<SDL_Color, 256> colors{};
+-		CColorCycling &colorCycling = CColorCycling::GetInstance();
+-
+-		memcpy(colors.data(), palcolors, sizeof(colors));
+-		for (std::vector<ColorIndexRange>::const_iterator it = colorCycling.ColorIndexRanges.begin(); it != colorCycling.ColorIndexRanges.end(); ++it) {
+-			const ColorIndexRange &range = *it;
+-
+-			memcpy(colors.data() + range.begin + 1, palcolors + range.begin, (range.end - range.begin) * sizeof(SDL_Color));
+-			colors[range.begin] = palcolors[range.end];
+-		}
+-		SDL_SetPalette(&surface, SDL_LOGPAL | SDL_PHYSPAL, colors.data(), 0, 256);
+-	}
+-}
+-
+-#endif
+-
+ int get_scale_factor()
+ {
+ 	return wyrmgus::defines::get()->get_scale_factor();
+diff --git a/src/video/video.h b/src/video/video.h
+index ba479957d..b99ef1f62 100644
+--- a/src/video/video.h
++++ b/src/video/video.h
+@@ -36,9 +36,6 @@
+ 
+ #include <QOpenGLTexture>
+ 
+-struct SDL_Cursor;
+-struct SDL_Surface;
+-
+ namespace wyrmgus {
+ 	class font;
+ 	class map_template;
+@@ -652,14 +649,6 @@ extern uint32_t ColorRed;
+ extern uint32_t ColorGreen;
+ extern uint32_t ColorYellow;
+ 
+-//  Color Cycling stuff
+-
+-extern void VideoPaletteListAdd(SDL_Surface *surface);
+-extern void VideoPaletteListRemove(SDL_Surface *surface);
+-extern void ClearAllColorCyclingRange();
+-extern void AddColorCyclingRange(unsigned int begin, unsigned int end);
+-extern void SetColorCycleAll(bool value);
+-
+ //called by tolua++
+ extern int get_scale_factor();
+ extern void pack_image_folder(const std::string &dir_path, const int frames_per_row = 5);
+-- 
+2.32.0
+
