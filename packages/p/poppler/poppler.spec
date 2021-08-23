@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package poppler
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,20 +24,20 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.10
-%define poppler_sover 111
+%define poppler_sover 112
 %define poppler_cpp_sover 0
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
-%define poppler_qt6_sover 2
+%define poppler_qt6_sover 3
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        21.07.0
+Version:        21.08.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://poppler.freedesktop.org/
+URL:            https://poppler.freedesktop.org
 Source:         https://poppler.freedesktop.org/%{sname}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  cmake >= 3.10
@@ -281,7 +281,6 @@ echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %{_libdir}/pkgconfig/poppler-qt6.pc
 
 %else
-
 %files -n libpoppler%{poppler_sover}
 %license COPYING COPYING3
 %doc NEWS README.md README-XPDF
