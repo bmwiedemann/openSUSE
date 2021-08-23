@@ -18,7 +18,7 @@
 
 Name:           libzbc
 %define lname   libzbc5
-Version:        5.11.1
+Version:        5.12.0
 Release:        0
 Summary:        Library for manipulating ZBC and ZAC disks
 License:        BSD-2-Clause AND LGPL-3.0-or-later

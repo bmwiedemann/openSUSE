@@ -151,4 +151,12 @@
     <comment>- Update to release 5.11.1</comment>
     <requestid>908869</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>43283ba26f0b5a0bef1bfeda80326b2a</srcmd5>
+    <version>5.12.0</version>
+    <time>1629706822</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.12.0</comment>
+    <requestid>912552</requestid>
+  </revision>
 </revisionlist>
