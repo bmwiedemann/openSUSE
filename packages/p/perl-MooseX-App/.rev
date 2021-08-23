@@ -17,4 +17,12 @@ removed description from cpanspec.yml</comment>
     <comment></comment>
     <requestid>873688</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>279dcd93b5c4876f1d226a304320f10a</srcmd5>
+    <version>1.42</version>
+    <time>1629706077</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>912689</requestid>
+  </revision>
 </revisionlist>

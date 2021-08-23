@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 17 10:56:35 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
+
+- updated to 1.42
+  * Documentation
+  * Fix failing tests with new Moose versions
+    * removed 0001_fix_testing_for_Moose_2.2014.patch
+  * Sort option in bash completion plugin
+    * removed 0000_reproducible_bash_completion.patch
+  * Fixed term plugin warning
+
+-------------------------------------------------------------------
 Tue Feb 16 09:29:50 UTC 2021 - Frank Schreiner <FSchreiner@suse.com>
 
 -  fixes boo#1181616

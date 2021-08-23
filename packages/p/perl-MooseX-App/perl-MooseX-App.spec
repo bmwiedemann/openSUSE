@@ -18,42 +18,32 @@
 
 %define cpan_name MooseX-App
 Name:           perl-MooseX-App
-Version:        1.41
+Version:        1.42
 Release:        0
-Summary:        Write user-friendly command line apps with even less suffering
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Write user-friendly command line apps with even less suffering
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/M/MA/MAROS/%{cpan_name}-%{version}.tar.gz
+Source0:        MooseX-App-1.42.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-UPSTREAM fixes https://bugzilla.opensuse.org/show_bug.cgi?id=1181616 and might get superseded by https://github.com/maros/MooseX-App/pull/64
-Patch0:         0000_reproducible_bash_completion.patch
-# PATCH-FIX-UPSTREAM fixes https://github.com/maros/MooseX-App/issues/62 and might get superseded by https://github.com/maros/MooseX-App/pull/66
-Patch1:         0001_fix_testing_for_Moose_2.2014.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Config::Any)
 BuildRequires:  perl(List::Util) >= 1.44
 BuildRequires:  perl(Module::Pluggable)
 BuildRequires:  perl(Moose) >= 2.00
-BuildRequires:  perl(MooseX::Types::Path::Class)
 BuildRequires:  perl(Pod::Elemental)
 BuildRequires:  perl(Test::Most)
 BuildRequires:  perl(Test::NoWarnings)
 BuildRequires:  perl(namespace::autoclean)
-Requires:       perl(Config::Any)
 Requires:       perl(List::Util) >= 1.44
 Requires:       perl(Module::Pluggable)
 Requires:       perl(Moose) >= 2.00
-Requires:       perl(MooseX::Types::Path::Class)
 Requires:       perl(Pod::Elemental)
 Requires:       perl(namespace::autoclean)
-Recommends:     perl(File::HomeDir)
-Recommends:     perl(IO::Interactive)
-Recommends:     perl(Term::ReadKey)
-Recommends:     perl(Text::WagnerFischer)
-Recommends:     perl(Win32::Console::ANSI)
 %{perl_requires}
+# MANUAL BEGIN
+BuildRequires:  perl(Config::Any)
+# MANUAL END
 
 %description
 MooseX-App is a highly customisable helper to write user-friendly command
@@ -65,7 +55,7 @@ be defined as simple Moose accessors using the 'option' and 'parameter'
 keywords respectively.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup  -n %{cpan_name}-%{version}
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build

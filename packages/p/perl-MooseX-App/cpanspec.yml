@@ -7,12 +7,10 @@ description_paragraphs: 1
 #sources:
 #  - source1
 #  - source2
-patches:
-  0000_reproducible_bash_completion.patch: -p1 PATCH-FIX-UPSTREAM fixes https://bugzilla.opensuse.org/show_bug.cgi?id=1181616 and might get superseded by https://github.com/maros/MooseX-App/pull/64
-  0001_fix_testing_for_Moose_2.2014.patch: -p1 PATCH-FIX-UPSTREAM fixes https://github.com/maros/MooseX-App/issues/62 and might get superseded by https://github.com/maros/MooseX-App/pull/66
+#patches:
 #  bar.patch:
-#preamble: |-
-# BuildRequires:  gcc-c++
+preamble: |-
+  BuildRequires: perl(Config::Any)
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
