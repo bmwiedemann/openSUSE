@@ -19,19 +19,22 @@
 %define skip_python2 1
 %define oldpython python
 Name:           jupyter-jupyterlab-server
-Version:        2.1.3
+Version:        2.7.0
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      jupyter-jupyterlab-server-rpmlintrc
+# PATCH-FIX-UPSTREAM jupyterlab-server-pr198-openapi014.patch -- gh#jupyterlab/jupyterlab_server#198
+Patch0:         jupyterlab-server-pr198-openapi014.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Jinja2 >= 2.10}
 BuildRequires:  %{python_module base >= 3.5}
+BuildRequires:  %{python_module entrypoints >= 0.2.2}
 BuildRequires:  %{python_module json5}
 BuildRequires:  %{python_module jsonschema >= 3.0.1}
-BuildRequires:  %{python_module jupyter_server >= 1.1}
+BuildRequires:  %{python_module jupyter_server >= 1.4}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -39,9 +42,10 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Babel
 Requires:       python-Jinja2 >= 2.10
+Requires:       python-entrypoints >= 0.2.2
 Requires:       python-json5
 Requires:       python-jsonschema >= 3.0.1
-Requires:       python-jupyter_server >= 1.1
+Requires:       python-jupyter_server >= 1.4
 Requires:       python-packaging
 Requires:       python-requests
 Provides:       python-jupyterlab-server = %{version}-%{release}
@@ -71,9 +75,11 @@ Obsoletes:      jupyter-jupyterlab_server < %{version}-%{release}
 %endif
 # SECTION test requirements
 BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module openapi-core >= 0.13.8}
+BuildRequires:  %{python_module pytest >= 5.3.2}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module strict-rfc3339}
 BuildRequires:  %{python_module wheel}
 # /SECTION
@@ -83,9 +89,9 @@ BuildRequires:  %{python_module wheel}
 This package is used to launch an application built using JupyterLab.
 
 %prep
-%setup -q -n jupyterlab_server-%{version}
-# don't check code coverage
-sed -i '/--cov/ d' setup.cfg
+%autosetup -p1 -n jupyterlab_server-%{version}
+# remove color and coverage flags from pytest
+sed -i '/addopts/ d' pyproject.toml
 
 %build
 %python_build
@@ -99,6 +105,7 @@ sed -i '/--cov/ d' setup.cfg
 donttest+=" or (test_translation_api and (get_locale or backend_locale or get_installed or get_language) and not (_not_ or bad or fails))"
 # flaky
 donttest+=" or (test_workspaces_api and test_get_non_existant)"
+mv jupyterlab_server/tests/conftest.py ./
 %pytest -ra -k "not (${donttest:4})"
 
 %files %{python_files}

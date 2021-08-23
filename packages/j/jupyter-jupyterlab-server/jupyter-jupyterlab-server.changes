@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:45:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.0
+  * Switch to entrypoints package #187
+- Changelog for release 2.6.2
+  * PR: Add preferred dir option to config #190
+  * PR: Update new_defaults dictionary instead of copy #194
+  * Update tests workflow #193
+- Changelog for release 2.6.1
+  * Merge overrides settings if values are dicts #188
+- Changelog for release 2.6.0
+  * LicensesManager and API/CLI #161
+- Changelog for release 2.5.1
+  * Maintenance and upkeep improvements
+  * Remove Packaging Dependency #181
+- Changelog for release 2.5.0
+  * Support for overrides.json5 #179
+  * Documentation improvements
+  * Make LabConfig configurable and add config API docs #172
+  * Upgrade packaging #178
+  * Add more API docs #177
+  * Add cli config options documentation #176
+  * Add example request/responses to REST docs #174
+  * Add Swagger Docs #173
+  * Update Readme Badges #171
+- Changelog for release 2.4.0
+  * Add Sphinx docs #169
+  * Cleanup unused imports #165
+  * Fill in missing changelog entries #164
+  * Improve documentation: Instructions for development and test
+    setups #130
+- Changelog for release 2.3.0
+  * Set file_url_prefix trait for opening notebooks directly #162
+- Changelog for release 2.2.1
+  * Alleviate invalid locale issue by only setting it if language
+    pack exists #159
+- Changelog for release 2.2.0
+  * Add URL and description for federated extension data #154
+- Changelog for release 2.1.5
+  * Fix/cp949 encoding error #158
+- Changelog for release 2.1.4
+  * Reduce path length of installed package #157 (@afshin)
+- Changelog for release 2.1.3
+  * Fix mathjax URL handling #153
+- Add jupyterlab-server-pr198-openapi014.patch for new API in
+  openapi-core >= 0.14
+
+-------------------------------------------------------------------
 Mon Feb  1 22:50:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.1.3
