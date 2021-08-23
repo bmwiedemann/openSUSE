@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 10 13:03:47 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update to 5.13.1
+  * build: fix build on musl libc due to missing definition of NAME_MAX
+  * check:
+    * batch more work into one transaction when clearing v1 free space inodes
+    * detect directoris with wrong number of links
+  * libbtrfsutil: fix race between subvolume iterator and deletion
+  * mkfs: be more specific about supported profiles for zoned device
+  * other:
+    * documentation updates
+
+-------------------------------------------------------------------
 Tue Jul 13 00:00:00 CEST 2021 - dsterba@suse.cz
 
 - Update to 5.13

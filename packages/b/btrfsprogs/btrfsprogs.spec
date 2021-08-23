@@ -34,7 +34,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        5.13
+Version:        5.13.1
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -84,7 +84,7 @@ BuildRequires:  xmlto
 BuildRequires:  zlib-devel
 %if 0%{?suse_version} >= 1310
 Requires(post): coreutils
-Requires(postun): coreutils
+Requires(postun):coreutils
 %endif
 Supplements:    filesystem(btrfs)
 Recommends:     btrfsmaintenance
