@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 21 07:56:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti-spine 1.2.18:
+  * Fix missing time parameter on FROM_UNIXTIME function
+- add cacti-spine-1.2.18-Fix-non-void-return.patch to fix the same
+
+-------------------------------------------------------------------
 Wed May  5 18:48:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti-spine 1.2.17:

@@ -18,12 +18,13 @@
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           cacti-spine
-Version:        1.2.17
+Version:        1.2.18
 Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
 URL:            https://www.cacti.net/spine_info.php
 Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
+Patch0:         cacti-spine-1.2.18-Fix-non-void-return.patch
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
@@ -38,6 +39,7 @@ excellent performance.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 ./bootstrap

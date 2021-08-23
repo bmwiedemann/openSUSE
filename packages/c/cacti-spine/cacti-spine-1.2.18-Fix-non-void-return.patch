@@ -1,0 +1,19 @@
+From 61193457bd0d3f5fc23180e10fd6a7141392c1d6 Mon Sep 17 00:00:00 2001
+From: Andreas Stieger <Andreas.Stieger@gmx.de>
+Date: Sat, 21 Aug 2021 09:50:34 +0200
+Subject: [PATCH] Fix non-void return warnings
+
+---
+ locks.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+Index: cacti-spine-1.2.18/locks.c
+===================================================================
+--- cacti-spine-1.2.18.orig/locks.c
++++ cacti-spine-1.2.18/locks.c
+@@ -235,4 +235,5 @@ int thread_mutex_trylock(int mutex) {
+ 	SPINE_LOG_DEVDBG(( "LOCKS: [START] Mutex try lock for %s", get_name(mutex) ));
+ 	int ret_val = pthread_mutex_trylock(get_lock(mutex));
+ 	SPINE_LOG_DEVDBG(( "LOCKS: [ END ] Mutex try lock for %s, result = %d", get_name(mutex), ret_val ));
++	return ret_val;
+ }
