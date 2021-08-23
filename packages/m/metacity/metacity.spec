@@ -63,26 +63,27 @@ BuildRequires:  pkgconfig(vulkan)
 %endif
 
 %description
-Metacity is a small window manager, using GTK to do everything.
+Metacity is a window manager using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 %lang_package
 
 %package -n %{soname}%{sover}
-Summary:        Window Manager for the MATE Desktop -- Library to render themes
+Summary:        Theme rendering library for the MATE Desktop Window Manager
+Group:          System/Libraries
 
 %description -n %{soname}%{sover}
-Metacity is a small window manager, using GTK to do everything.
+Metacity is a window manager using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 This package contains a library to render themes.
 
 %package tools
-Summary:        Window Manager for the MATE Desktop -- Tools
+Summary:        Tools for the MATE Desktop Window Manager
 Requires:       %{name} = %{version}
 
 %description tools
-Metacity is a small window manager, using GTK to do everything.
+Metacity is a window manager using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 This package contains tools related to metacity, including an
@@ -90,18 +91,19 @@ utility to test themes and a small application to test window
 managers.
 
 %package devel
-Summary:        Window Manager for the MATE Desktop -- Development Files
+Summary:        Header files for the MATE Desktop Window Manager
+Group:          Development/Libraries/X11
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
-Metacity is a small window manager, using GTK to do everything.
+Metacity is a window manager using GTK to do everything.
 It is developed mainly for the MATE and GNOME Flashback desktops.
 
 This package contains all necessary include files and libraries
 needed to develop applications that require libmetacity.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 autoreconf -fi

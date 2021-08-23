@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 22 11:18:09 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim em dash grammar from summaries. Trim filler wording
+  from descriptions.
+
+-------------------------------------------------------------------
 Sat May 15 16:28:22 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 3.40.0 (changes since 3.37.1):
