@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 16 12:20:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- reenable python36 build (uses python-ipykernel5 package)
+
+-------------------------------------------------------------------
 Fri Jul 23 08:15:54 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.3.1

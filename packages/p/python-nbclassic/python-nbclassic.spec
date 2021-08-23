@@ -18,7 +18,6 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-%define skip_python36 1
 Name:           python-nbclassic
 Version:        0.3.1
 Release:        0
