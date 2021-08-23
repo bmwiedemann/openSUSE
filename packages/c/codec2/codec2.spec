@@ -1,7 +1,7 @@
 #
 # spec file for package codec2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2020-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define libname lib%{name}-0_9
+%define libname lib%{name}-1_0
 Name:           codec2
-Version:        0.9.2
+Version:        1.0.0
 Release:        0
 Summary:        Low bit rate speech codec
 # octave and asterisk directories contain GPL-2.0 licensed code but its not
@@ -102,22 +102,9 @@ EOF
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
 
-%files
+%files -n %{libname}
 %license COPYING
 %doc README*
-%{_bindir}/c2dec
-%{_bindir}/c2enc
-%{_bindir}/drs232
-%{_bindir}/drs232_ldpc
-%{_bindir}/fdmdv_demod
-%{_bindir}/fdmdv_get_test_bits
-%{_bindir}/fdmdv_mod
-%{_bindir}/fdmdv_put_test_bits
-%{_bindir}/fsk_mod
-%{_bindir}/fm_demod
-%{_bindir}/insert_errors
-
-%files -n %{libname}
 %{_libdir}/libcodec2.so.*
 
 %files devel

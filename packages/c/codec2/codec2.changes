@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 17 14:29:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update baselib.conf
+
+-------------------------------------------------------------------
+Mon Aug 16 17:22:30 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 1.0.0:
+  * No upstream changelog available
+  * Added new mode 700E
+- Test binaries not installed now, so package codec2 dropped,
+  license and doc files moved to libcodec2 library.
+- Patch codec2-no_return_random.patch rebased.
+
+-------------------------------------------------------------------
 Mon Mar  9 13:20:24 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.9.2:
