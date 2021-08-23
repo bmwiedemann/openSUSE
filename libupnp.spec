@@ -20,13 +20,13 @@
 %define pnpver 17
 %define ixmlver 11
 Name:           libupnp
-Version:        1.14.9
+Version:        1.14.10
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/pupnp/pupnp
-Source:         https://github.com/pupnp/pupnp/archive/refs/tags/release-1.14.9.tar.gz
+Source:         https://github.com/pupnp/pupnp/releases/download/release-%version/libupnp-%version.tar.bz2
 Source3:        baselibs.conf
 BuildRequires:  libtool
 BuildRequires:  pkg-config
@@ -65,8 +65,7 @@ UPnP-compliant control points, devices, and bridges on several operating
 systems.
 
 %prep
-%autosetup -p1 -n pupnp-release-%version
-if [ ! -e configure ]; then autoreconf -fi; fi
+%autosetup
 
 %build
 # the openssl simply does not compile
