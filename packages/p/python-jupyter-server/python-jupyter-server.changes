@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Aug 16 12:39:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.10.2
+  * fix: make command line aliases work again #564
+  * decode bytes from secure cookie #562
+  * Maintenance and upkeep improvements
+  * Add the needed space in the welcome message #561
+  * Update check-release workflow #558
+  * Fix typo in allow_password_change help #559
+- Release notes for v1.10.1
+  * Protect against unset spec #556
+- Release notes for v1.10.0
+  * PR: Add a new preferred-dir traitlet #549
+  * stop hook for extensions #526
+  * extensions: allow extensions in namespace packages #523
+  * Fix examples/simple test execution #552
+  * Rebuild package-lock, fixing local setup #548
+  * small test changes #541
+- Add conftest.py missing from release tarball
+
+-------------------------------------------------------------------
 Sat Jun 26 14:27:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.9.0

@@ -19,13 +19,16 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyter-server
-Version:        1.9.0
+Version:        1.10.2
 Release:        0
 Summary:        The backend to Jupyter web applications
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/jupyter-server/jupyter_server
+# need the release tarball for the static stylesheets
 Source:         https://github.com/jupyter-server/jupyter_server/releases/download/v%{version}/jupyter_server-%{version}.tar.gz
+# conftest.py is not in release tarball but required for tests
+Source1:        https://github.com/jupyter-server/jupyter_server/raw/v%{version}/conftest.py
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Send2Trash}
 BuildRequires:  %{python_module anyio >= 3.1.0}
@@ -70,10 +73,10 @@ Provides:       python-jupyter_server = %{version}-%{release}
 Obsoletes:      python-jupyter_server < %{version}-%{release}
 # SECTION extras_require test
 BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module pytest >= 6}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-tornasync}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 # /SECTION
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
@@ -91,6 +94,7 @@ languages, sharing, and interactive widgets.
 
 %prep
 %setup -q -n jupyter_server-%{version}
+cp %{SOURCE1} ./
 
 %build
 %python_build
