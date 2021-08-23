@@ -73,7 +73,7 @@ BuildRequires:  perl-XML-XPath
 BuildRequires:  pkg-config
 BuildRequires:  procps
 BuildRequires:  procps-devel
-BuildRequires:  python-devel
+BuildRequires:  python3-devel
 BuildRequires:  rpm-devel
 BuildRequires:  sendmail
 BuildRequires:  swig

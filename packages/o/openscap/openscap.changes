@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 19 04:51:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Since upstream has moved to Python 3, switch the BuildRequires from
+  python-devel to python3-devel.
+
+-------------------------------------------------------------------
 Wed Jul 14 13:58:45 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Add definition for tumbleweed to openscap-opensuse-cpe.patch (boo#1186735)
