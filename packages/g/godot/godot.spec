@@ -24,7 +24,7 @@
 %define ca_bundle %{_localstatedir}/lib/ca-certificates/ca-bundle.pem
 
 Name:           godot
-Version:        3.3.2
+Version:        3.3.3
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -148,7 +148,7 @@ Provides:       bundled(embree) = 3.12.1
 Provides:       bundled(bullet) = 2.89
 Provides:       bundled(libzstd)
 %if 0%{?sle_version} < 150200
-Provides:       bundled(mbedtls) = 2.16.10
+Provides:       bundled(mbedtls) = 2.16.11
 %endif
 %if !0%{?is_opensuse}
 # SLES seems not to have miniupnpc and wslay

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Aug 20 12:00:00 UTC 2021 - cunix@mail.de
+
+- Update to 3.3.3
+
+  Added:
+  * "action_get_deadzone()" method to InputMap
+
+  Changed:
+  * GraphEdit: Allow higher and lower maximum zoom values
+  * Copy the Godot version identifier by clicking it
+  * Separate version hash from version number
+  * Relationship lines draw on top of TreeItems
+  * Allow reading shaders from .gdshader files
+
+  Fixed:
+  * Audio: cubic resampling algorithm
+  * Save binary "ProjectSettings" key length
+  * Editor: Slow load/save of scenes with many instances of the same script
+  * Editor: Logic for showing tilemap debug collision
+  * LSP: Implement "didClose" notification
+  * LSP: "SymbolKind" reporting wrong types
+  * glTF Import: mesh nodes which are also bones
+  * Import RLE compressed TGA files
+  * Game controllers ignoring the last listed button
+  * Parsing some IPv6 URLs for WebSocket
+  * WebsocketPeer outbound buffer
+  * IP address resolution incorrectly locking the main thread
+  * PathFollow: Forward calculation for the position at the end of the curve
+  * RichTextLabel: Fix auto-wrapping on CJK texts
+  * SkeletonIK: Bones become detached if multiple SkeletonIK nodes are used
+  * Physics: calculating inertias for bodies without mass/area
+  * Physics: Ignore disabled shapes for mass property calculations
+  * ALSA MIDI with PulseAudio
+  * "Directory::get_space_left()"
+  * VisualServer now sorts based on AABB position
+  * Depth sorting of meshes with transparent textures
+  * CanvasItem bounding rect calculation
+  * Allow unclamped colors in Sprite3D
+
+  And more:
+  https://downloads.tuxfamily.org/godotengine/3.3.3/Godot_v3.3.3-stable_changelog_chrono.txt
+
+-------------------------------------------------------------------
+Fri Aug  6 07:23:11 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Use asimdrdm CPU flag for aarch64 to select only more powerful
+  buildhosts.
+
+-------------------------------------------------------------------
 Fri Jun 03 12:00:00 UTC 2021 - cunix@mail.de
 
 - Exclude currently failing %arm builds
