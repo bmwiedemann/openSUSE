@@ -1,7 +1,7 @@
 #
 # spec file for package python-ntc-templates
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ntc-templates
-Version:        1.6.0
+Version:        2.2.2
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
 URL:            https://github.com/networktocode/ntc-templates
 Source:         https://github.com/networktocode/ntc-templates/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-textfsm >= 1.1.0
@@ -51,10 +51,10 @@ Package to return structured data from the output of network devices.
 %setup -q -n ntc-templates-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -62,11 +62,15 @@ Package to return structured data from the output of network devices.
 # https://github.com/networktocode/ntc-templates/issues/743
 rm tests/cisco_ios/show_access-list/cisco_ios_show_access-list.raw
 %endif
-%pytest -k 'not (arista_eos_show_ip_access-lists or cisco_ios_show_access-list or cisco_nxos_show_ip_bgp_neighbors or cisco_nxos_show_ip_bgp_neighbors_with_policy_names or show_arp)'
+# https://github.com/networktocode/ntc-templates/issues/743 (closed but still an open issue)
+# -> skip tests: arista_eos_show_ip_access-lists, cisco_ios_show_access-list, cisco_nxos_show_ip_bgp_neighbors, cisco_nxos_show_ip_bgp_neighbors_with_policy_names
+# https://github.com/networktocode/ntc-templates/issues/958
+# -> skip tests: cisco_nxos_show_environment, cisco_nxos_show_environment2
+%pytest -k 'not (arista_eos_show_ip_access-lists or cisco_ios_show_access-list or cisco_nxos_show_ip_bgp_neighbors or cisco_nxos_show_environment or cisco_nxos_show_environment2 or cisco_nxos_show_ip_bgp_neighbors_with_policy_names)'
 
 %files %{python_files}
 %license LICENSE
-%doc README.md CHANGELOG
+%doc README.md CHANGELOG.md
 %{python_sitelib}/*
 
 %changelog

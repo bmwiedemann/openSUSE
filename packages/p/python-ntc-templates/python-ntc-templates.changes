@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Fri Aug 20 09:04:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.2
+  * cisco ios show ip access-lists template includes additional
+    ICMP_TYPE options
+  * cisco ios show version template support for StackWise Virtual
+    Domains
+- Update to version 2.2.1
+  * Missing ICMP Type mask
+- Update to version 2.2.0
+  Closed issues:
+  * cisco_ios_show_ip_access-lists template needs updated to
+    include precedence and tos in *_PORT_MATCH
+  * cisco_nxos_show_interface_transceiver transceiver template
+    failure
+  Merged pull requests:
+  * cisco_ios_show_version: Cisco IOS uptime parsing more granular
+    (days, hours, etc.).
+  * New Template: cisco_ios_show_crypto_session_details.
+  * cisco_ios_show_vrf.texfsm: Parse a vrf with no interfaces.
+  * cisco_ios_show_interfaces_switchport: Modified Trunk state to
+    handle multiline trunking lists.
+  * Fix nxos_show_interface_transceiver failure.
+  * Updated cisco_ios_show_ip_access-lists.textfsm to include the
+    SRC_PORT_MATCH and DST_PORT_MATCH values for precedence and
+    tos.
+- Update to version 2.1.0
+  Closed issues:
+  * cisco_nxos_show_cdp_neighbors_detail 'str' object has no
+    attribute 'seek'.
+  * show int status returns error (seems template error) for
+    particular switch for other switches it does work (iOS).
+  * IPinfusuion OCNOS support request.
+  * cisco_ios_show_interfaces_status.textfsm (no interface in
+    monitoring state).
+  * Arista_eos: show ip bgp summary Error.
+  * arista_eos_show_ip_route parse exception.
+  * cisco nxos show interface status issue when FC ports are
+    present.
+  * cisco_asa_show_running_cryprom_map does not parse crypto maps
+    without "set security association lifetime".
+  * Cisco ASA show vpn-sessiondb invalid and not returning data
+    after ASA SW update.
+  * cannot import name 'clitable' from 'textfsm'.
+  * Adding Restarted to show version template for cisco ios.
+  * cisco_nxos add f-path vlan type.
+  * New Template: Alcatel, sh router ospf int.
+  * New Template: SROS "show system cpu".
+  * Adds monitoring port for show interfaces status.
+  * New Template: All BGP VPNv4 Neighbors.
+  * Added Known Issues section to document Micah's finding/issue.
+  * Added deploy option to auto deploy on tags.
+  * sros, new template - sh router interface, -vrf.
+  * Add end of line for matching empty lines.
+  * New Template: ruckus_fastiron, show mac-address.
+  * New Template: ruckus_fastiron, show version.
+  * New Template: alcatel_sros, sh router mpls lsp.
+  * New Template: alcatel_sros, sap-using.
+  * New Template: alcatel_sros, sdp-using.
+  * add new template show port-security interface.
+  * Bugfix: Type for cisco_nxos_show_interface_status.
+- Update to version 2.0.0
+  * Migrate to Poetry for packaging and distribution.
+  * The templates directory has moved to ntc_templates/templates
+- Update to version 1.7.0
+  Changes to existing template fields:
+  * arista_eos_show_ip_route: NEXT_HOP and INTERFACE are now lists
+  * cisco_asa_show_vpn-sessiondb: VPN_SESSION_NAME,
+    VPN_SESSION_ACTIVE, VPN_SESSION_CUMULATIVE,
+    VPN_SESSION_PEAK_CONCURRENT, VPN_SESSION_INACTIVE,
+    TUNNELS_SUMMARY_NAME, TUNNELS_SUMMARY_ACTIVE,
+    TUNNELS_SUMMARY_CUMULATIVE,
+    TUNNELS_SUMMARY_PEAK_CONCURRENT are now lists
+- Reeanbled test "show_arp"
+
+-------------------------------------------------------------------
 Tue Dec  8 10:13:14 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Update to 1.6.0
