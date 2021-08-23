@@ -17,7 +17,7 @@
 
 
 Name:           binwalk
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        Firmware Analysis Tool
 License:        MIT
@@ -73,7 +73,6 @@ bootloaders, filesystems, etc.
 
 %prep
 %setup -q
-sed -i -e '/^#!\//, 1d' src/binwalk/plugins/hilink.py
 
 %build
 %python3_build
