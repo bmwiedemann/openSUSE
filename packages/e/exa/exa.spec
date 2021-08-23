@@ -30,6 +30,7 @@ BuildRequires:  cargo
 BuildRequires:  cmake
 BuildRequires:  fish
 BuildRequires:  git
+BuildRequires:  pandoc
 BuildRequires:  pkgconfig
 BuildRequires:  rust
 BuildRequires:  rust-std
@@ -89,11 +90,15 @@ cargo build --release %{?_smp_mflags}
 %install
 mkdir build
 cargo install --path . --root=build
-mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_mandir}/man1
-install -Dm0755 build/bin/exa %{buildroot}%{_bindir}/exa
+install -d -m 0755 %{buildroot}%{_bindir}
+install -m 0755 build/bin/exa %{buildroot}%{_bindir}/exa
 
 # Manpage
-install --preserve-timestamps -m0644 man/%{name}.1.md %{buildroot}%{_mandir}/man1/%{name}.1
+install -d -m 0755 %{buildroot}%{_mandir}/man1/
+pandoc --standalone -f markdown -t man man/exa.1.md > %{buildroot}%{_mandir}/man1/exa.1
+
+install -d -m 0755 %{buildroot}%{_mandir}/man5/
+pandoc --standalone -f markdown -t man man/exa_colors.5.md > %{buildroot}%{_mandir}/man5/exa_colors.5
 
 # Completion files
 install -Dm0644 completions/completions.bash \
@@ -105,7 +110,8 @@ install -Dm0644 completions/completions.fish "%{buildroot}/%{_datadir}/fish/vend
 %license LICENCE
 %doc README.md
 %{_bindir}/exa
-%{_mandir}/man1/%{name}*%{ext_man}
+%{_mandir}/man1/exa.1%{ext_man}
+%{_mandir}/man5/exa_colors.5%{ext_man}
 
 %files bash-completion
 %{_datarootdir}/bash-completion/completions/%{name}
