@@ -18,7 +18,7 @@
 
 
 Name:           sscep
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        A command line client for the SCEP protocol
 License:        BSD-3-Clause-Attribution AND OpenSSL

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 19 18:58:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.9.1
+  * Fixed missing Host header.
+  * Fixed multiple numeric overflows.
+
+-------------------------------------------------------------------
 Mon Feb  8 10:09:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.0
