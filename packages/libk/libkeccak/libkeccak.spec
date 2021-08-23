@@ -1,7 +1,7 @@
 #
 # spec file for package libkeccak
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
+%define lname libkeccak1
 Name:           libkeccak
-Version:        1.2
+Version:        1.2.2
 Release:        0
 Summary:        Keccak family hashing library, including SHA-3
 License:        ISC
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/maandree/libkeccak
-Source:         https://github.com/maandree/libkeccak/archive/1.2.tar.gz
+Source:         https://github.com/maandree/libkeccak/archive/refs/tags/%{version}.tar.gz
 
 %description
 libkeccak is a bit-oriented lanewise implementation of the Keccak
@@ -36,7 +37,7 @@ A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 %package devel
 Summary:        Development files for %{name}
 Group:          Development/Libraries/C and C++
-Requires:       %{name}1 = %{version}
+Requires:       %lname = %{version}
 
 %description devel
 libkeccak is a bit-oriented lanewise implementation of the Keccak
@@ -47,11 +48,11 @@ sensitive data, and HMAC.
 A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 This package contains the files required for development with %{name}.
 
-%package -n %{name}1
+%package -n %lname
 Summary:        Keccak family hashing library, including SHA-3
 Group:          System/Libraries
 
-%description -n %{name}1
+%description -n %lname
 libkeccak is a bit-oriented lanewise implementation of the Keccak
 family with support for extend output size, state marshalling,
 algorithm tuning with implicit parameters, secure erasure of
@@ -63,20 +64,20 @@ A subset of Keccak was specified by NIST as SHA-3 (Secure Hash Algorithm 3).
 %autosetup -p1
 
 %build
-make %{?_smp_mflags} CFLAGS="%{optflags}"
+%make_build CFLAGS="%{optflags}"
 
 %install
 mkdir -p %{buildroot}%{_libdir}
 %make_install PREFIX=%{_prefix}
 find %{buildroot} -type f -iname '*.a' -print -delete
-if [ "%_lib" != lib ]; then
+if [ "%{_lib}" != lib ]; then
 	mv %{buildroot}/%{_libdir}/../lib/* %{buildroot}/%{_libdir}/
 fi
 # packaged via macro
 rm -rvf %{buildroot}%{_datadir}/licenses/%{name}
 
-%post -n %{name}1 -p /sbin/ldconfig
-%postun -n %{name}1 -p /sbin/ldconfig
+%post -n %lname -p /sbin/ldconfig
+%postun -n %lname -p /sbin/ldconfig
 
 %files devel
 %doc DEPENDENCIES README TODO
@@ -86,7 +87,7 @@ rm -rvf %{buildroot}%{_datadir}/licenses/%{name}
 %{_mandir}/man3/*.3%{?ext_man}
 %{_mandir}/man7/*.7%{?ext_man}
 
-%files -n %{name}1
+%files -n %lname
 %license LICENSE
 %{_libdir}/%{name}.so.*
 

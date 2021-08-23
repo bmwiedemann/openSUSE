@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 19 18:57:06 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.2:
+  * Deprecate libkeccak_{state,hmac}_{unmarshal_ship,marshal_size}
+    and replace them with the functions without the _skip and
+    _size suffix
+  * Fix stack-overrun segfault when operating on files with large
+    st_blksize
+
+-------------------------------------------------------------------
 Fri Mar 15 10:05:21 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to new upstream release 1.2
