@@ -47,9 +47,9 @@ BuildRequires:  perl(warnings)
 BuildRequires:  perl(String::Escape)
 BuildRequires:  perl(Test::Pod)
 # POD Coverage is non-existent, causes test suite to fail
-BuildConflicts:	perl(Test::Pod::Coverage)
+BuildConflicts: perl(Test::Pod::Coverage)
 # Perl module fails the standard test suite
-BuildConflicts:	perl(Mail::SPF::Test)
+BuildConflicts: perl(Mail::SPF::Test)
 
 %description
 Implementation of the Sender Policy Framework, a part of the SPF/SRS protocol
@@ -110,7 +110,7 @@ Programs for making SPF queries and checking their results using libspf2.
 
 %package -n perl-Mail-SPF_XS
 Summary:        An XS implementation of Mail::SPF
-License:        GPL-1.0-or-later OR Artistic-1.0
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Group:          Development/Libraries
 Version:        0.01
 Release:        0
@@ -131,8 +131,7 @@ use Mail::SPF, which is a little more perlish.
 rm -rf src/libreplace
 %patch1
 %patch2 -p1
-find . -name Makefile.am -print | xargs touch
-find . -name Makefile.in -print | xargs touch
+find . "(" -name Makefile.am -o -name Makefile.in ")" -exec touch {} +
 
 %build
 %configure --enable-perl --disable-dependency-tracking
@@ -150,17 +149,14 @@ rm -f doxygen/html/*.map
 rm -f doxygen/html/*.md5
 
 %install
-rm -rf %{buildroot}
-make \
-	DESTDIR=%{buildroot} \
+%make_install \
 	PERL_INSTALL_ROOT=$(grep DESTDIR perl/Makefile &> /dev/null && echo "" || echo %{buildroot}) \
 	INSTALLDIRS=vendor \
-	INSTALL="install -p" \
-	install
+	INSTALL="install -p"
 
 # Clean up after impure perl installation
-find %{buildroot} \( -name perllocal.pod -o -name .packlist \) -exec rm {} ';'
-find %{buildroot} -type f -name '*.bs' -a -size 0 -exec rm -f {} ';'
+find %{buildroot} \( -name perllocal.pod -o -name .packlist \) -delete
+find %{buildroot} -type f -name '*.bs' -size 0 -delete
 %{_fixperms} %{buildroot}
 
 # Don't want statically-linked binaries
