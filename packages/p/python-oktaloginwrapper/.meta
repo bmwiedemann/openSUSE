@@ -1,0 +1,9 @@
+<package name="python-oktaloginwrapper" project="openSUSE:Factory">
+  <title>Okta Login Wrapper</title>
+  <description>Provide an easy way for your scripts to access resources behind an Okta SSO solution, without the need for an API token.
+
+Using a fork, since the original GitHub Repo is archived.
+</description>
+  <devel project="devel:languages:python" package="python-oktaloginwrapper"/>
+  <url>https://github.com/eliroca/OktaLoginWrapper</url>
+</package>
