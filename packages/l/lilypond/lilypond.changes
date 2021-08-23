@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 21 08:23:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 2.23.3
+- Update dependencies:
+  * Add texlive-bibtex-bin build requirement.
+  * Use sil-gentium-fonts instead of gentium.
+- Remove deprecated scripts in spec file.
+- Refreshed patches:
+  * reproducible.patch
+  * add_dircategories_to_documentation.patch
+  * use_cstring_and_ctype_includes.patch
+- Update _constraints to let lilypond-doc build.
+
+-------------------------------------------------------------------
 Tue Jan 12 12:15:54 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Update to version 2.22.0 and remove incorporated patches:

@@ -2,11 +2,9 @@ Description: Include missing cstring include files
 Forwarded: 
 Origin: vendor
 Author: Don Armstrong <don@debian.org>
-Index: b/lily/piano-pedal-engraver.cc
-===================================================================
---- a/lily/piano-pedal-engraver.cc	2021-01-12 13:57:54.630369472 +0200
-+++ b/lily/piano-pedal-engraver.cc	2021-01-12 13:58:13.563138285 +0200
-@@ -38,6 +38,7 @@
+--- a/lily/piano-pedal-engraver.cc
++++ b/lily/piano-pedal-engraver.cc
+@@ -39,6 +39,7 @@
  #include "item.hh"
  
  #include "translator.icc"
@@ -14,10 +12,8 @@ Index: b/lily/piano-pedal-engraver.cc
  
  using std::string;
  
-Index: b/lily/source-file.cc
-===================================================================
---- a/lily/source-file.cc	2021-01-12 13:57:54.630369472 +0200
-+++ b/lily/source-file.cc	2021-01-12 13:58:13.563138285 +0200
+--- a/lily/source-file.cc
++++ b/lily/source-file.cc
 @@ -19,7 +19,7 @@
  */
  
@@ -26,11 +22,9 @@ Index: b/lily/source-file.cc
 +#include <cstring>
  #include "config.hh"
  
- #include "file-name-map.hh"
-Index: b/lily/translator.cc
-===================================================================
---- a/lily/translator.cc	2021-01-12 13:57:54.630369472 +0200
-+++ b/lily/translator.cc	2021-01-12 13:58:13.563138285 +0200
+ #include "international.hh"
+--- a/lily/translator.cc
++++ b/lily/translator.cc
 @@ -18,7 +18,7 @@
  */
  
@@ -40,10 +34,8 @@ Index: b/lily/translator.cc
  #include "context-def.hh"
  #include "dispatcher.hh"
  #include "global-context.hh"
-Index: b/lily/prob.cc
-===================================================================
---- a/lily/prob.cc	2021-01-12 13:57:54.630369472 +0200
-+++ b/lily/prob.cc	2021-01-12 13:58:13.563138285 +0200
+--- a/lily/prob.cc
++++ b/lily/prob.cc
 @@ -22,6 +22,7 @@
  #include "item.hh"
  #include "input.hh"

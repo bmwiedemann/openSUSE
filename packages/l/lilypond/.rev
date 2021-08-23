@@ -333,4 +333,32 @@
   0001-scm-disable-embedded-ps-and-embedded-svg-in-dsafe-mo.patch</comment>
     <requestid>865958</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>12b8412c8e92ce753f5aade719494bbd</srcmd5>
+    <version>2.23.3</version>
+    <time>1629706096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.23.3
+- Update dependencies:
+  * Add texlive-bibtex-bin build requirement.
+  * Use sil-gentium-fonts instead of gentium.
+- Remove deprecated scripts in spec file.
+- Refreshed patches:
+  * reproducible.patch
+  * add_dircategories_to_documentation.patch
+  * use_cstring_and_ctype_includes.patch
+- Update _constraints to let lilypond-doc build.
+- Update to 2.23.3
+- Update dependencies:
+  * Add texlive-bibtex-bin build requirement.
+  * Use sil-gentium-fonts instead of gentium.
+- Remove deprecated scripts in spec file.
+- Refreshed patches:
+  * reproducible.patch
+  * add_dircategories_to_documentation.patch
+  * use_cstring_and_ctype_includes.patch
+- Update _constraints to let lilypond-doc build.
+</comment>
+    <requestid>913469</requestid>
+  </revision>
 </revisionlist>

@@ -21,11 +21,8 @@
 #"%%_project" == "openSUSE:Backports:SLE-15-SP2:Update"
 ExcludeArch:    x86 x86_64 aarch64 ppc64le s390x
 %endif
-
-%define ver     2.22
-%define plevel  0
 Name:           lilypond-doc
-Version:        %{ver}.%{plevel}
+Version:        2.23.3
 Release:        0
 Summary:        Documentation for the LilyPond Typesetter
 License:        GFDL-1.3-only
@@ -55,7 +52,6 @@ BuildRequires:  fontforge
 BuildRequires:  fonts-arabic
 BuildRequires:  freetype2-devel >= 2.1.10
 BuildRequires:  gcc-c++
-BuildRequires:  gentium
 BuildRequires:  gettext-tools
 BuildRequires:  ghostscript >= 8.60
 BuildRequires:  ghostscript-fonts-other
@@ -74,6 +70,7 @@ BuildRequires:  netpbm
 BuildRequires:  pango-devel >= 1.6.0
 BuildRequires:  perl
 BuildRequires:  rsync
+BuildRequires:  sil-gentium-fonts
 BuildRequires:  t1utils
 BuildRequires:  texlive-avantgar-fonts
 BuildRequires:  texlive-collection-fontsrecommended
@@ -93,15 +90,14 @@ BuildRequires:  zip
 BuildRequires:  pkgconfig(guile-1.8)
 BuildRequires:  pkgconfig(python3)
 Requires:       lilypond = %{version}
-Requires(pre):   %{install_info_prereq} %{_bindir}/touch %{_bindir}/sed
 Provides:       lilypond-documentation = %{version}
 Obsoletes:      lilypond-documentation < %{version}
 BuildArch:      noarch
 %if %{with docbuild}
 # NOTE: when lilypond documentation build with texinfo 5.x is fixed by upstream remove the 4s from makeinfo,
 # NOTE: texinfo and update buildrequires with:
-#BuildRequires: texi2html
-BuildRequires:  texinfo4
+BuildRequires:  texi2html
+BuildRequires:  texinfo
 %endif
 
 %description
@@ -223,6 +219,7 @@ export CFLAGS="%{optflags} -ggdb -fpermissive -fabi-version=4"
 export CXXFLAGS="$CFLAGS"
 export LILYPOND_EXTERNAL_BINARY="%{_bindir}/lilypond"
 export LILYPOND_BINARY=$LILYPOND_EXTERNAL_BINARY
+export LILYPOND_LOGLEVEL=DEBUG
 rm configure
 ./smart-autogen.sh --noconfigure
 %configure --with-ncsb-dir=%{_datadir}/ghostscript/fonts/
@@ -297,8 +294,7 @@ echo "%%exclude %{_datadir}/lilypond/%{rlversion}/ls-R" >> files-en
 #rm %%{_infodir}/lilypond || :
 
 %post
-ln -sf %{_docdir}/lilypond/Documentation %{_infodir}/lilypond && \
-%install_info --debug --info-dir=%{_infodir} --info-file=%{_infodir}/lilypond.gz
+ln -sf %{_docdir}/lilypond/Documentation %{_infodir}/lilypond
 
 %postun
 rm -f %{_infodir}/lilypond

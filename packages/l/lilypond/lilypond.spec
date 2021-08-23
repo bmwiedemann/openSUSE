@@ -21,13 +21,13 @@
 %define ver %(echo %{version} | cut -d . -f 1,2)
 
 Name:           lilypond
-Version:        2.22.0
+Version:        2.23.3
 Release:        0
 Summary:        A typesetting system for music notation
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/Other
 URL:            http://www.lilypond.org
-Source0:        https://lilypond.org/download/sources/v2.22/lilypond-%{version}.tar.gz
+Source0:        https://lilypond.org/download/sources/v2.23/lilypond-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://savannah.gnu.org/patch/index.php?9370
 Patch0:         reproducible.patch
 # Patches taken from Debian, see headers for info.
@@ -57,8 +57,9 @@ BuildRequires:  netpbm
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  t1utils
-#BuildRequires:  texi2html4
-BuildRequires:  texinfo4
+BuildRequires:  texi2html
+BuildRequires:  texinfo
+BuildRequires:  texlive-bibtex-bin
 BuildRequires:  texlive-extratools
 BuildRequires:  texlive-filesystem
 BuildRequires:  texlive-latex
@@ -74,8 +75,6 @@ BuildRequires:  pkgconfig(pango) >= 1.12.0
 BuildRequires:  pkgconfig(python3)
 # This is a work around for boo#1163190 pango-devel doesn't pull in cairo-devel although it requires it
 BuildRequires:  pkgconfig(cairo)
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
 Requires:       ghostscript >= 8.15
 Requires:       lilypond-fonts-common = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -133,9 +132,6 @@ for i in `grep -rl "/usr/bin/env python"`;do sed -i '1s@^#!.*@#!/usr/bin/python3
 
 %build
 export LIBS="$LIBS  -lglib-2.0 -lgobject-2.0"
-export TEXI2HTML=/usr/bin/texi2html4
-export TEXI2PDF=/usr/bin/texi2pdf4
-export TEXINDEX=/usr/bin/texindex4
 
 %configure \
 	--disable-checking
@@ -170,28 +166,6 @@ mkdir -p %{buildroot}%{ttfdir}
 mv %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf/*.otf %{buildroot}%{ttfdir}
 rmdir %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
 ln -s %{ttfdir} %{buildroot}%{_datadir}/lilypond/%{version}/fonts/otf
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-changes.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-contributor.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-essay.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-extending.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-internals.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-learning.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-notation.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-usage.info.gz
-%install_info --info-dir=%{_infodir} %{_infodir}/lilypond-web.info.gz
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-changes.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-contributor.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-essay.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-extending.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-internals.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-learning.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-notation.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-usage.info.gz
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/lilypond-web.info.gz
 
 %files -f %{name}.lang
 %defattr(-,root,root,-)

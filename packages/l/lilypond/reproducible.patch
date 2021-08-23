@@ -1,8 +1,6 @@
-Index: b/stepmake/stepmake/c++-vars.make
-===================================================================
---- a/stepmake/stepmake/c++-vars.make	2020-05-05 09:11:20.826176975 +0200
-+++ b/stepmake/stepmake/c++-vars.make	2020-05-05 09:11:28.450535489 +0200
-@@ -11,7 +11,7 @@ ALL_CXXFLAGS = $(CXXFLAGS) $(ALL_CXXPPFL
+--- a/stepmake/stepmake/c++-vars.make
++++ b/stepmake/stepmake/c++-vars.make
+@@ -11,7 +11,7 @@ ALL_CXXFLAGS = $(ALL_CXXPPFLAGS) $(CONFI
  
  TCC_FILES := $(call src-wildcard,*.tcc)
  HH_FILES := $(call src-wildcard,*.hh)
@@ -11,18 +9,3 @@ Index: b/stepmake/stepmake/c++-vars.make
  INL_FILES := $(call src-wildcard,*.icc)
  YY_FILES := $(call src-wildcard,*.yy)
  LL_FILES := $(call src-wildcard,*.ll)
-Index: b/scripts/build/mf2pt1.pl
-===================================================================
---- a/scripts/build/mf2pt1.pl	2020-05-05 09:11:20.826176975 +0200
-+++ b/scripts/build/mf2pt1.pl	2020-05-05 09:11:28.450535489 +0200
-@@ -800,7 +800,9 @@ assign_default $creationdate, scalar loc
- assign_default $comment, $opthash{comment}, "Font converted to Type 1 by mf2pt1, written by Scott Pakin.";
- assign_default $weight, $opthash{weight}, "Medium";
- assign_default $fixedpitch, $opthash{fixedpitch}, 0;
--assign_default $uniqueID, $opthash{uniqueid}, int(rand(1000000)) + 4000000;
-+use Digest::MD5 qw(md5);
-+my @md5 = unpack("C*", md5($filebase));
-+assign_default $uniqueID, $opthash{uniqueid}, int(($md5[0]<<22)+($md5[1]<<15)+($md5[2]<<7)+$md5[3]) + 4000000;
- assign_default $designsize, $opthash{designsize};
- die "${progname}: a design size must be specified in $mffile or on the command line\n" if !defined $designsize;
- die "${progname}: the design size must be a positive number\n" if $designsize<=0.0;

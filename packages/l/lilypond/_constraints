@@ -1,4 +1,9 @@
 <constraints>
+  <hardware>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+  </hardware>
   <overwrite>
     <conditions>
       <arch>ppc64</arch>
@@ -6,7 +11,7 @@
     </conditions>
     <hardware>
       <physicalmemory>
-        <size unit="M">3000</size>
+        <size unit="G">8</size>
       </physicalmemory>
       <disk>
         <size unit="G">4</size>

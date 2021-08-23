@@ -134,22 +134,6 @@ Index: b/Documentation/de/usage.tely
  
  @macro manualIntro
  Diese Datei erklärt, wie man die Programme, die mit LilyPond
-Index: b/Documentation/es/changes.tely
-===================================================================
---- a/Documentation/es/changes.tely	2021-01-12 13:04:38.356723822 +0200
-+++ b/Documentation/es/changes.tely	2021-01-12 13:05:18.370377247 +0200
-@@ -37,6 +37,11 @@ Véase el manual del usuario, \NAME\
- @end macro
- 
- 
-+@dircategory GNU LilyPond --- the music typesetter
-+@direntry
-+* LilyPond Changes: (lilypond-changes).   Funcionalidades nuevas.
-+@end direntry
-+
- @documentencoding UTF-8
- @documentlanguage es
- @afourpaper
 Index: b/Documentation/es/essay.tely
 ===================================================================
 --- a/Documentation/es/essay.tely	2021-01-12 13:04:38.356723822 +0200
