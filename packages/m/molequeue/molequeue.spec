@@ -1,7 +1,7 @@
 #
 # spec file for package molequeue
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  python-devel
 BuildRequires:  python3-devel
 BuildRequires:  zeromq-devel
 BuildRequires:  pkgconfig(Qt5Core)

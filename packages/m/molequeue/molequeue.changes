@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 19 06:20:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on python-devel. 
+
+-------------------------------------------------------------------
 Sat May  2 12:06:15 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Simplify spec file and use correct macros
