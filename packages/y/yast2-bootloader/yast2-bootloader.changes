@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:16:16 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Replace mkinitrd with dracut (bsc#1189374, jsc#SLE-20347)
+- 4.4.6
+
+-------------------------------------------------------------------
 Wed Jul  7 09:22:03 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Add the os-prober package to the set of packages to install
