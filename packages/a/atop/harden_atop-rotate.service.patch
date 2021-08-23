@@ -1,0 +1,23 @@
+Index: atop-2.6.0/atop-rotate.service
+===================================================================
+--- atop-2.6.0.orig/atop-rotate.service
++++ atop-2.6.0/atop-rotate.service
+@@ -2,5 +2,18 @@
+ Description=Restart atop daemon to rotate logs
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ ExecStart=/usr/bin/systemctl try-restart atop.service

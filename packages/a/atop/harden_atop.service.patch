@@ -1,0 +1,24 @@
+Index: atop-2.6.0/atop.service
+===================================================================
+--- atop-2.6.0.orig/atop.service
++++ atop-2.6.0/atop.service
+@@ -3,6 +3,19 @@ Description=Atop advanced performance mo
+ Documentation=man:atop(1)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Environment=LOGOPTS=""
+ Environment=LOGINTERVAL=600
+ Environment=LOGGENERATIONS=28

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 11 08:40:14 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_atop-rotate.service.patch
+  *harden_atop.service.patch
+  *harden_atopacct.service.patch
+  *harden_atopgpu.service.patch
+
+-------------------------------------------------------------------
 Tue Apr 13 21:33:30 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.6.0

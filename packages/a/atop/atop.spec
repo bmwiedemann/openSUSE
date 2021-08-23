@@ -29,6 +29,10 @@ Source1:        atop.desktop
 Source2:        atop.default
 Source99:       atop-rpmlintrc
 Patch0:         atop-makefile.patch
+Patch1:         harden_atop-rotate.service.patch
+Patch2:         harden_atop.service.patch
+Patch3:         harden_atopacct.service.patch
+Patch4:         harden_atopgpu.service.patch
 BuildRequires:  gcc
 BuildRequires:  glibc-devel
 BuildRequires:  make
