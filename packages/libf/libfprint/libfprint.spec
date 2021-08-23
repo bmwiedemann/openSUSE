@@ -21,8 +21,15 @@
 
 %{!?_udevrulesdir: %global _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d}
 
+# Systemd 248 and later already comes with the autosuspend hwdb
+%if 0%{?suse_version} >= 1550
+%define install_fp_udev_hwdb 0
+%else
+%define install_fp_udev_hwdb 1
+%endif
+
 Name:           libfprint
-Version:        1.90.7
+Version:        1.92.1
 Release:        0
 Summary:        Library for fingerprint reader support
 License:        LGPL-2.1-or-later
@@ -37,57 +44,56 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.46.1
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(gusb)
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(udev)
-Requires(pre):  %fillup_prereq
 
 %description
-The fprint project aims to plug a gap in the Linux desktop: support for
-consumer fingerprint reader devices.
+The fprint project provides a central system to support fingerprint
+readers. libfprint is the component which does the work of talking to
+fingerprint reading devices, and processing fingerprint data.
 
 %package -n libfprint-%{apiver}-%{apiver}
 Summary:        Library for fingerprint reader support
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 Provides:       %{name} = %{version}
 Obsoletes:      libfprint-examples
 
 %description -n libfprint-%{apiver}-%{apiver}
-The fprint project aims to plug a gap in the Linux desktop: support for
-consumer fingerprint reader devices.
+The fprint project provides a central system to support fingerprint
+readers. libfprint is the component which does the work of talking to
+fingerprint reading devices, and processing fingerprint data.
 
 %package devel
-Summary:        Library for fingerprint reader support (developer files)
+Summary:        Headers for the fingerprint reader library
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       glibc-devel
 Requires:       libfprint-%{apiver}-%{apiver} = %{version}
 
 %description devel
-This package contains the header files, static libraries and
-development documentation for libfprint. If you like to develop
-programs using libfprint, you will need to install this package.
+This package contains the header files and development documentation
+for libfprint. If you like to develop programs using libfprint, you
+will need to install this package.
 
 %package examples
-Summary:        Library for fingerprint reader support (example programs)
+Summary:        Example programs from the libfprint package
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 
 %description examples
-This package contains the header files, static libraries and
-development documentation for libfprint. If you like to develop
-programs using libfprint, you will need to install this package.
+This package contains example programs from libfprint.
 
 %package doc
 Summary:        Development documents of libfprint
-Group:          Documentation/Development
-Requires:       %{name} = %{version}
+Group:          Documentation/Other
 BuildArch:      noarch
 
 %description doc
-This package contains Development documents for libfprint
+This package contains the development documents for libfprint.
 
 %package -n typelib-1_0-FPrint-2_0
 Summary:        Introspection bindings for libfprint
@@ -101,8 +107,12 @@ This package contains the introspection bindings for the libfprint.
 
 %build
 %meson \
-	-Dx11-examples=false \
 	-Dgtk-examples=false \
+%if %{install_fp_udev_hwdb}
+	-Dudev_hwdb=enabled \
+%else
+	-Dudev_hwdb=disabled \
+%endif
 	%{nil}
 %meson_build
 
@@ -112,12 +122,18 @@ This package contains the introspection bindings for the libfprint.
 %post -n libfprint-%{apiver}-%{apiver}
 /sbin/ldconfig
 %{?udev_rules_update:%udev_rules_update}
+%if %{install_fp_udev_hwdb}
+%{?udev_hwdb_update:%udev_hwdb_update}
+%endif
 
 %postun -n libfprint-%{apiver}-%{apiver} -p /sbin/ldconfig
 
 %files -n libfprint-%{apiver}-%{apiver}
 %{_libdir}/%{name}-%{apiver}.so.*
-%{_udevrulesdir}/60-%{name}-%{apiver}-autosuspend.rules
+%{_udevrulesdir}/70-%{name}-%{apiver}.rules
+%if %{install_fp_udev_hwdb}
+%{_udevhwdbdir}/60-autosuspend-%{name}-%{apiver}.hwdb
+%endif
 
 %files -n typelib-1_0-FPrint-2_0
 %{_libdir}/girepository-1.0/*.typelib

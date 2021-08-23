@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 14 22:20:04 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update descriptions, replace historic goals.
+
+-------------------------------------------------------------------
+Thu Aug  5 14:16:57 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update version to 1.92.1
+  * Highlights:
+    + elanmoc: New driver for ELAN match-on-chip devices
+    + egis0570: New driver for some Egis Technology devices
+    + synaptics: Fix empty identify causing enroll issues
+    + elan: Support more PIDs
+    + misc: Architecture related bugfixes
+- Update version to 1.92.0
+  * Highlights:
+    + Support for SPI devices added together with the elanspi driver
+    + Generate hwdb for autosuspend (which is now pulled by systemd)
+    + An API was added to clear the device storage.
+    + Note: Devices may not implement the "list" API anymore.
+    + Device features can now be queried using a common API
+  * New drivers:
+    + vfs7552
+    + nb1010
+    + elanspi
+  * For additional changes, see 
+    https://gitlab.freedesktop.org/libfprint/libfprint/-/releases#v1.92.1
+
+-------------------------------------------------------------------
 Thu Jan 14 13:32:54 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.90.7
