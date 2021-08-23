@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth-oauthlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-google-auth-oauthlib
-Version:        0.4.1
+Version:        0.4.5
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
@@ -32,12 +32,12 @@ Requires:       python-google-auth
 Requires:       python-requests-oauthlib >= 0.7.0
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-click
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module google-auth}
+BuildRequires:  %{python_module click >= 6.0.0}
+BuildRequires:  %{python_module google-auth >= 1.0.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-oauthlib >= 0.7.0}

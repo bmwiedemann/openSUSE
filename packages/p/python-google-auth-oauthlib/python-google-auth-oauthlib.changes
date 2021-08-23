@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 20 11:44:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update 0.4.5:
+  * fix links to installed app, client secrets docs (#86)
+  * omit mention of Python 2.7 in 'CONTRIBUTING.rst' (#1127)
+  * add Samples section to CONTRIBUTING.rst (#134)
+  * release as 0.4.5 (#137)
+- from version 0.4.4
+  * add redirect_uri_trailing slash param to run_local_server (#111)
+- from version 0.4.3
+  * add `charset-utf-8` to response header (#104)
+  * **deps:** add lower bounds to all dependencies (#99)
+- from version 0.4.2
+  * don't open browser if port is occupied (#92)
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Tue May 26 06:34:28 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
