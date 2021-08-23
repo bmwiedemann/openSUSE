@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 20 11:59:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.17. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-17-has-been-released/11812
+  boo#1189645
+
+  + lxd import replaced by new lxd recover
+  + Cluster member evacuation
+  * Reworked lxc info output
+  + Requestor address in lifecycle event
+  + USB GPU support in the resources API
+  + Monitoring of all projects in lxc monitor
+  + Alternative format options in lxc monitor
+
+-------------------------------------------------------------------
 Sat Jul 31 04:33:50 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.16. The full upstream changelog is available from:
