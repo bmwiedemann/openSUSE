@@ -1,7 +1,7 @@
 #
 # spec file for package python-email_validator
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-email_validator
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        A robust email syntax and deliverability validation library for Python
 License:        CC0-1.0
 Group:          Development/Languages/Python
 URL:            https://github.com/JoshData/python-email-validator
 Source:         https://github.com/JoshData/python-email-validator/archive/v%{version}.tar.gz
-Patch0:         skip-tests-using-network.patch
-Patch1:         fix-tests-strings.patch
 BuildRequires:  %{python_module dnspython >= 1.15.0}
 BuildRequires:  %{python_module idna >= 2.0.0}
 BuildRequires:  %{python_module pytest >= 5.0}
@@ -38,7 +36,7 @@ Requires:       python-dnspython >= 1.15.0
 Requires:       python-idna >= 2.0.0
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,10 +57,6 @@ Key features:
 
 %prep
 %setup -q -n python-email-validator-%{version}
-%patch0 -p1
-%if %{?suse_version} <= 1500
-%patch1 -p1
-%endif
 
 %build
 %python_build
@@ -73,7 +67,7 @@ Key features:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+%pytest tests -k 'not (test_deliverability_no_records or test_deliverability_found or test_deliverability_fails or test_deliverability_dns_timeout or test_main_single_good_input or test_main_multi_input or test_main_input_shim or test_validate_email__with_caching_resolver or test_validate_email__with_configured_resolver)'
 
 %post
 %python_install_alternative email_validator
