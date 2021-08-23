@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tcolorpy
-Version:        0.0.8
+Version:        0.1.0
 Release:        0
 Summary:        Python library to apply true color for terminal text
 License:        MIT

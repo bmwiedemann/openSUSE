@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 20 12:29:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.1.0
+  * Add hsv property to Color class
+  * Drop support for Python 3.5
+
+-------------------------------------------------------------------
 Fri Apr 23 17:37:48 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove unnecessary shebang
