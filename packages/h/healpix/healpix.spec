@@ -1,7 +1,7 @@
 #
 # spec file for package healpix
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,16 @@
 %define cpkg chealpix
 %define clib lib%{cpkg}0
 %define cxxpkg healpix_cxx
-%define cxxlib lib%{cxxpkg}2
+%define cxxlib lib%{cxxpkg}3
 Name:           healpix
-Version:        3.70
+Version:        3.80
 Release:        0
 Summary:        Data Analysis, Simulations and Visualization on the Sphere
 License:        GPL-2.0-or-later
 URL:            https://healpix.sourceforge.io
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM healpix-cfitsio-version-format-change.patch badshah400@gmail.com -- Adapt to new three-number version format of cfitsio
+Patch0:         healpix-cfitsio-version-format-change.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -92,7 +94,7 @@ This package provides the headers and devel files for building apps with
 healpix in the C++ language.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 # Top-level configure script is useless, need to use individual dir scripts
