@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 11 16:02:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic, as it has no effect with --disable-static.
+- Trim history and author list from description.
+- Move chasen-config to devel package where these kinds of programs
+  usually are located.
+
+-------------------------------------------------------------------
 Wed May 12 19:30:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 2.4.5
