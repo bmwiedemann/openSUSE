@@ -1090,4 +1090,12 @@
     <comment>- Update to version 2.4.2+git0.553dee326:</comment>
     <requestid>904653</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>ad5c93d67786466b2c52ba8bf5b2de31</srcmd5>
+    <version>2.4.3+git0.4dd5a5a6c</version>
+    <time>1629706060</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.4.3+git0.4dd5a5a6c:</comment>
+    <requestid>912851</requestid>
+  </revision>
 </revisionlist>

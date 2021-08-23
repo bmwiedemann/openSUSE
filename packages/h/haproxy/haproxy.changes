@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Aug 17 15:50:01 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.3+git0.4dd5a5a6c:
+    CVE-2021-39240 CVE-2021-39241 CVE-2021-39242
+    (boo#1189366 boo#1189548 boo#1189549)
+  * [RELEASE] Released version 2.4.3
+  * REGTESTS: add a test to prevent h2 desync attacks
+  * BUG/MEDIUM: h2: give :authority precedence over Host
+  * BUG/MAJOR: h2: enforce stricter syntax checks on the :method pseudo-header
+  * BUG/MAJOR: h2: verify that :path starts with a '/' before concatenating it
+  * BUG/MAJOR: h2: verify early that non-http/https schemes match the valid syntax
+  * MINOR: http: add a new function http_validate_scheme() to validate a scheme
+  * DOC/MINOR: fix typo in management document
+  * CLEANUP: assorted typo fixes in the code and comments
+  * BUG/MEDIUM: cfgcheck: verify existing log-forward listeners during config check
+  * BUG/MEDIUM: spoe: Fix policy to close applets when SPOE connections are queued
+  * DOC: config: Fix 'http-response send-spoe-group' documentation
+  * DOC: Improve the lua documentation
+  * BUG/MINOR: tcpcheck: Properly detect pending HTTP data in output buffer
+  * BUG/MINOR: buffer: fix buffer_dump() formatting
+  * BUG/MEDIUM: spoe: Create a SPOE applet if necessary when the last one is released
+  * MINOR: spoe: Add a pointer on the filter config in the spoe_agent structure
+  * ADMIN: dyncookie: implement a simple dynamic cookie calculator
+  * MINOR: server: unmark deprecated on enable health/agent cli
+  * BUG/MINOR: server: update last_change on maint->ready transitions too
+  * BUG/MINOR: server: remove srv from px list on CLI 'add server' error
+  * BUILD: opentracing: fixed build when using pkg-config utility
+  * DOC: internals: document the FD takeover process
+  * BUG/MINOR: fd: protect fd state harder against a concurrent takeover
+  * BUG/MINOR: pollers: always program an update for migrated FDs
+  * BUG/MINOR: poll: fix abnormally high skip_fd counter
+  * BUG/MINOR: select: fix excess number of dead/skip reported
+  * BUG/MEDIUM: pollers: clear the sleeping bit after waking up, not before
+  * BUG/MEDIUM: connection: close a rare race between idle conn close and takeover
+  * BUG/MINOR: connection: Add missing error labels to conn_err_code_str
+  * BUG/MEDIUM: mux-h2: Handle remaining read0 cases on partial frames
+  * BUG/MINOR: mux-h1: Be sure to swap H1C to splice mode when rcv_pipe() is called
+  * BUG/MINOR: mux-h2: Obey dontlognull option during the preface
+  * BUG/MINOR: mux-h1: Obey dontlognull option for empty requests
+  * BUG/MINOR: systemd: must check the configuration using -Ws
+  * BUG/MINOR: resolvers: Use a null-terminated string to lookup in servers tree
+  * BUG/MINOR: check: fix the condition to validate a port-less server
+  * BUG/MINOR: stats: Add missing agent stats on servers
+  * BUG/MEDIUM: ssl_sample: fix segfault for srv samples on invalid request
+  * BUILD/MINOR: memprof fix macOs build.
+  * BUG/MINOR: mworker: do not export HAPROXY_MWORKER_REEXEC across programs
+  * BUG/MEDIUM: mworker: do not register an exit handler if exit is expected
+  * BUILD: lua: silence a build warning with TCC
+  * BUILD: add detection of missing important CFLAGS
+  * BUG/MINOR: ssl: Default-server configuration ignored by server
+  * MINOR: mux_h2: define config to disable h2 websocket support
+  * BUILD: http_htx: fix ci compilation error with isdigit for Windows
+
+-------------------------------------------------------------------
 Wed Jul 07 23:30:56 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.2+git0.553dee326:
