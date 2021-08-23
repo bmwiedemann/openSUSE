@@ -1,7 +1,7 @@
 #
 # spec file for package ubuntu-mate-artwork
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           ubuntu-mate-artwork
 Version:        20.04.0
 Release:        0
 Summary:        Ubuntu MATE themes and artwork
-License:        GPL-3.0-or-later AND CC-BY-SA-4.0 AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/ubuntu-mate/ubuntu-mate-artwork
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.tar.xz
@@ -35,7 +35,7 @@ BuildArch:      noarch
 This package contains Ubuntu MATE themes and artwork.
 
 %package -n metatheme-ambiant-mate-common
-Summary:        Ambiant-MATE Gtk Theme -- Common Files
+Summary:        Common files for the Ambiant-MATE Gtk Theme
 Group:          System/GUI/Other
 Recommends:     %{_name}-icon-theme
 Suggests:       dmz-icon-theme-cursors
@@ -48,7 +48,7 @@ Includes an Ambiant-MATE light-on-dark theme.
 Introduced as the default theme in Ubuntu MATE 15.04.
 
 %package -n metatheme-radiant-mate-common
-Summary:        Radiant-MATE Gtk Theme -- Common Files
+Summary:        Common files for the Radiant-MATE Gtk Theme
 Group:          System/GUI/Other
 Recommends:     %{_name}-icon-theme
 Suggests:       gtk2-metatheme-radiant-mate
@@ -60,7 +60,7 @@ Includes an Radiant-MATE dark-on-light theme.
 Introduced as one of the defaults in Ubuntu MATE 15.04.
 
 %package -n gtk2-metatheme-ambiant-mate
-Summary:        Ambiant-MATE Gtk Theme -- GTK+ 2 Support
+Summary:        GTK+ 2 support for the Ambiant-MATE Gtk Theme
 Group:          System/GUI/Other
 Requires:       gtk2-engine-murrine >= 0.90.3
 Requires:       metatheme-ambiant-mate-common = %{version}
@@ -72,7 +72,7 @@ Includes an Ambiant-MATE light-on-dark theme.
 Introduced as the default theme in Ubuntu MATE 15.04.
 
 %package -n gtk2-metatheme-radiant-mate
-Summary:        Radiant-MATE Gtk Theme -- GTK+ 2 Support
+Summary:        GTK+ 2 support for the Radiant-MATE Gtk Theme
 Group:          System/GUI/Other
 Requires:       gtk2-engine-murrine >= 0.90.3
 Requires:       metatheme-radiant-mate-common = %{version}
@@ -84,7 +84,7 @@ Includes an Radiant-MATE dark-on-light theme.
 Introduced as one of the defaults in Ubuntu MATE 15.04.
 
 %package -n gtk3-metatheme-ambiant-mate
-Summary:        Ambiant-MATE Gtk Theme -- GTK+ 3 Support
+Summary:        GTK+ 3 support for the Ambiant-MATE Gtk Theme
 Group:          System/GUI/Other
 Requires:       metatheme-ambiant-mate-common = %{version}
 Supplements:    (metatheme-ambiant-mate-common and gtk3)
@@ -95,7 +95,7 @@ Includes an Ambiant-MATE light-on-dark theme.
 Introduced as the default theme in Ubuntu MATE 15.04.
 
 %package -n gtk3-metatheme-radiant-mate
-Summary:        Radiant-MATE Gtk Theme -- GTK+ 3 Support
+Summary:        GTK+ 3 support for the Radiant-MATE Gtk Theme
 Group:          System/GUI/Other
 Requires:       metatheme-radiant-mate-common = %{version}
 Supplements:    (metatheme-radiant-mate-common and gtk3)
@@ -122,7 +122,7 @@ Group:          System/GUI/Other
 The default Ubuntu MATE wallpapers for the Ubuntu MATE releases.
 
 %prep
-%setup -q -n %{name}
+%autosetup -n %{name}
 # Remove unwanted: the Debian package, Plymouth theme, LightDM defaults.
 rm -r debian/ .%{_sysconfdir} .%{_datadir}/ubuntu-mate/ .%{_datadir}/plymouth/
 rm link-battery.sh
@@ -137,7 +137,7 @@ for icons in Ambiant-MATE Radiant-MATE; do
     # %%icon_theme_cache_create_ghost fails to work.
     touch %{buildroot}%{_datadir}/icons/$icons/icon-theme.cache
 done
-%fdupes %{buildroot}/
+%fdupes %{buildroot}/%{_prefix}
 
 %files -n metatheme-ambiant-mate-common
 %license COPYING

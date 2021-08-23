@@ -183,4 +183,12 @@
     <comment>- Update to version 20.04.0.</comment>
     <requestid>780267</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>6d6f83b41bcb8e7c57b0d5bc63af4beb</srcmd5>
+    <version>20.04.0</version>
+    <time>1629706101</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim em dash grammar from summaries. (forwarded request 913559 from jengelh)</comment>
+    <requestid>913580</requestid>
+  </revision>
 </revisionlist>
