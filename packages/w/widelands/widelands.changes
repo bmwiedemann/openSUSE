@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 22 10:56:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop Obsoletes, because build21 always compares less than 1.0
+  already.
+
+-------------------------------------------------------------------
+Tue Aug 17 18:40:23 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to version 1.0
+  * A new tribe: the Amazons
+  * An add-on system
+  * A third frisians scenario
+  * Dynamic tribe loading to speed up game loading
+  * Targeting individual map objects for removal
+  * Mute/unmute messages by buildings
+  * Fully redesigned main menu
+  * Configurable keyboard shortcuts
+  * Enhanced keyboard and mousewheel support in the UI
+  * Long-term stable Lua API for game content designers
+
+-------------------------------------------------------------------
 Sat Sep 12 09:41:42 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to build21

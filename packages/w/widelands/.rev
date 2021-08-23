@@ -67,4 +67,25 @@
     <comment></comment>
     <requestid>834533</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a4f8566f6e8cc8b4445cb7908d697b5d</srcmd5>
+    <version>1.0</version>
+    <time>1629706077</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop Obsoletes, because build21 always compares less than 1.0
+  already.
+- update to version 1.0
+  * A new tribe: the Amazons
+  * An add-on system
+  * A third frisians scenario
+  * Dynamic tribe loading to speed up game loading
+  * Targeting individual map objects for removal
+  * Mute/unmute messages by buildings
+  * Fully redesigned main menu
+  * Configurable keyboard shortcuts
+  * Enhanced keyboard and mousewheel support in the UI
+  * Long-term stable Lua API for game content designers
+</comment>
+    <requestid>913571</requestid>
+  </revision>
 </revisionlist>

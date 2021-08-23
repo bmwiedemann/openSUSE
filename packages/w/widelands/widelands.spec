@@ -1,7 +1,7 @@
 #
 # spec file for package widelands
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           widelands
-Version:        build21
+Version:        1.0
 Release:        0
 Summary:        Realtime strategy game involving map control
 License:        GPL-2.0-or-later
 URL:            https://www.widelands.org
-Source0:        https://launchpad.net/%{name}/%{version}/%{version}/+download/%{name}-%{version}-source.tar.gz
+Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  SDL2_gfx-devel
 BuildRequires:  SDL2_image-devel
 BuildRequires:  SDL2_mixer-devel
 BuildRequires:  SDL2_ttf-devel
 BuildRequires:  cmake
+BuildRequires:  curl-devel
 BuildRequires:  distribution-release
 BuildRequires:  doxygen
 BuildRequires:  fdupes
