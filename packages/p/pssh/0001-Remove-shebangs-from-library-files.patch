@@ -1,0 +1,41 @@
+From 059ddf3cca97d0b3d62f80835d6c8c040bc1cb79 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kristoffer=20Gr=C3=B6nlund?= <krig@koru.se>
+Date: Thu, 9 Jan 2014 11:45:21 +0100
+Subject: [PATCH 1/8] Remove shebangs from library files
+
+---
+ psshlib/askpass_client.py | 1 -
+ psshlib/askpass_server.py | 1 -
+ test/test.py              | 1 -
+ 3 files changed, 3 deletions(-)
+
+diff --git a/psshlib/askpass_client.py b/psshlib/askpass_client.py
+index 34a8bc95dcee..8c5fae528cfb 100644
+--- a/psshlib/askpass_client.py
++++ b/psshlib/askpass_client.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- Mode: python -*-
+ 
+ # Copyright (c) 2009-2012, Andrew McNabb
+diff --git a/psshlib/askpass_server.py b/psshlib/askpass_server.py
+index 429316407228..9d8170abe202 100644
+--- a/psshlib/askpass_server.py
++++ b/psshlib/askpass_server.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/env python
+ # -*- Mode: python -*-
+ 
+ # Copyright (c) 2009-2012, Andrew McNabb
+diff --git a/test/test.py b/test/test.py
+index e85b27d91a0f..c11d38b357a2 100644
+--- a/test/test.py
++++ b/test/test.py
+@@ -1,4 +1,3 @@
+-#!/usr/bin/python
+ 
+ # Copyright (c) 2009, Andrew McNabb
+ # Copyright (c) 2003-2008, Brent N. Chun
+-- 
+1.8.4
+

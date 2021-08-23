@@ -1,0 +1,118 @@
+From ebeb6afae57885ec005a5ea542e6fdeeda0788ea Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Kristoffer=20Gr=C3=B6nlund?= <krig@koru.se>
+Date: Thu, 9 Jan 2014 11:47:32 +0100
+Subject: [PATCH 2/8] Add quiet option
+
+---
+ man/man1/pssh.1 | 13 +++++++++++--
+ psshlib/cli.py  |  3 +++
+ psshlib/task.py | 16 +++++++++++-----
+ 3 files changed, 25 insertions(+), 7 deletions(-)
+
+diff --git a/man/man1/pssh.1 b/man/man1/pssh.1
+index e50efc78e84e..122e253793d8 100644
+--- a/man/man1/pssh.1
++++ b/man/man1/pssh.1
+@@ -7,7 +7,7 @@ pssh \(em parallel ssh program
+ 
+ .SH SYNOPSIS
+ .B pssh
+-.RB [ \-vAiIP ]
++.RB [ \-vqAiIP ]
+ .RB [ \-h
+ .IR hosts_file ]
+ .RB [ \-H
+@@ -31,7 +31,7 @@ pssh \(em parallel ssh program
+ .I command ...
+ 
+ .B pssh \-I
+-.RB [ \-vAiIP ]
++.RB [ \-vqAiIP ]
+ .RB [ \-h
+ .IR hosts_file ]
+ .RB [ \-H
+@@ -237,6 +237,15 @@ and
+ options.
+ 
+ .TP
++.B \-q
++.PD 0
++.TP
++.B \-\-quiet
++Don't print status messages. With
++.B \-i
++prepend host names to the output.
++
++.TP
+ .B \-I
+ .PD 0
+ .TP
+diff --git a/psshlib/cli.py b/psshlib/cli.py
+index c342cde47dad..58bd9332ce3d 100644
+--- a/psshlib/cli.py
++++ b/psshlib/cli.py
+@@ -45,6 +45,8 @@ def common_parser():
+             metavar='OPTION', help='SSH option (OPTIONAL)')
+     parser.add_option('-v', '--verbose', dest='verbose', action='store_true',
+             help='turn on warning and diagnostic messages (OPTIONAL)')
++    parser.add_option('-q', '--quiet', dest='quiet', action='store_true',
++            help='turn off informational and status messages (OPTIONAL)')
+     parser.add_option('-A', '--askpass', dest='askpass', action='store_true',
+             help='Ask for a password (OPTIONAL)')
+     parser.add_option('-x', '--extra-args', action='callback', type='string',
+@@ -66,6 +68,7 @@ def common_defaults(**kwargs):
+             ('errdir', 'PSSH_ERRDIR'),
+             ('timeout', 'PSSH_TIMEOUT'),
+             ('verbose', 'PSSH_VERBOSE'),
++            ('quiet', 'PSSH_QUIET'),
+             ('print_out', 'PSSH_PRINT'),
+             ('askpass', 'PSSH_ASKPASS'),
+             ('inline', 'PSSH_INLINE'),
+diff --git a/psshlib/task.py b/psshlib/task.py
+index f8052563f9e9..0c74db517ae4 100644
+--- a/psshlib/task.py
++++ b/psshlib/task.py
+@@ -56,6 +56,7 @@ class Task(object):
+ 
+         # Set options.
+         self.verbose = opts.verbose
++        self.quiet = opts.quiet
+         try:
+             self.print_out = bool(opts.print_out)
+         except AttributeError:
+@@ -188,7 +189,10 @@ class Task(object):
+             buf = os.read(fd, BUFFER_SIZE)
+             if buf:
+                 if self.inline or self.inline_stdout:
+-                    self.outputbuffer += buf
++                    if self.quiet:
++                        self.outputbuffer += "%s: %s" % (self.host, buf)
++                    else:
++                        self.outputbuffer += buf
+                 if self.outfile:
+                     self.writer.write(self.outfile, buf)
+                 if self.print_out:
+@@ -264,10 +268,11 @@ class Task(object):
+             failure = "[FAILURE]"
+             stderr = "Stderr: "
+         host = self.pretty_host
+-        if self.failures:
+-            print(' '.join((progress, tstamp, failure, host, error)))
+-        else:
+-            print(' '.join((progress, tstamp, success, host)))
++        if not self.quiet:
++            if self.failures:
++                print(' '.join((progress, tstamp, failure, host, error)))
++            else:
++                print(' '.join((progress, tstamp, success, host)))
+         # NOTE: The extra flushes are to ensure that the data is output in
+         # the correct order with the C implementation of io.
+         if self.outputbuffer:
+@@ -286,3 +291,4 @@ class Task(object):
+             except AttributeError:
+                 sys.stdout.write(self.errorbuffer)
+ 
++# vim:ts=4:sw=4:et:
+-- 
+1.8.4
+
