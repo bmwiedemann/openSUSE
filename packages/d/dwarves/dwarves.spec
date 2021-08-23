@@ -41,6 +41,7 @@ BuildRequires:  libdw-devel >= 0.171
 BuildRequires:  libelf-devel
 BuildRequires:  pkgconfig
 %if 0%{?have_libbpf}
+BuildRequires:  linux-glibc-devel >= 5.13
 BuildRequires:  pkgconfig(libbpf) >= 0.4.0
 %endif
 BuildRequires:  pkgconfig(zlib)
