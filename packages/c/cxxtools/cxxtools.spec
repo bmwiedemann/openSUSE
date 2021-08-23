@@ -160,11 +160,10 @@ It includes classes for:
 autoreconf -fiv
 %configure \
     --disable-static \
-    --with-iconvstream=yes \
 %ifarch aarch64 s390x
     --with-atomictype=pthread \
 %endif
-    --with-pic
+    --with-iconvstream=yes
 %make_build
 
 %install
