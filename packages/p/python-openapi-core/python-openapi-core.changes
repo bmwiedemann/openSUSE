@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:17:44 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.14.2
+  * Non required request body fix (#325)
+  * Parameter simple scenarion for any schema type fix (#323)
+- Release notes for 0.14.0
+  Changes:
+  * Spec replaced with SpecPath (#318)
+  Backward incompatibilities:
+  * create_spec shortcut returns SpecPath instead of Spec
+  * removed Spec-related schema package
+  * schema-related exceptions moved to top level exceptions module
+  * readOnly/writeOnly invalid properties raise error (before were
+    ommitted)
+  * MediaTypeDeserializersFactory.create expects mimetype string
+    instead of media_type
+  * MediaTypeFinder.find returns media_type, mimetype tuple instead
+    of just media_type
+- Changelog between 0.13.3 and 0.14.0:
+  https://github.com/p1c2u/openapi-core/releases
+- Edit out mock test requirement for Python 3
+
+-------------------------------------------------------------------
 Tue May  5 12:21:53 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Skip one test so we can use pytest5
