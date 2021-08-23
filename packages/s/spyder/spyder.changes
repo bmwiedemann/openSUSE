@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 20 18:46:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix typo: now really skip the test. It did not even fail in
+  staging, but still fails in Factory.
+
+-------------------------------------------------------------------
 Fri Aug 20 12:47:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip one more potentially segfaulting test
