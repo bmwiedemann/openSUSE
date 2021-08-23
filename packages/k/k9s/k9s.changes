@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 13 13:03:36 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.24.15:
+  - Breaking changes
+    * K9s home directory is now configurable via XDG
+  - Bug fixes
+    * Popeye run instructions
+    * K9s does not remember last view when switching contexts
+    * Cannot list roles
+
+-------------------------------------------------------------------
 Fri Jul 23 08:43:53 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 0.24.14:
