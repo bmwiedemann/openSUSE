@@ -1,0 +1,12 @@
+ 
+--- a/cli/onionshare_cli/web/share_mode.py
++++ b/cli/onionshare_cli/web/share_mode.py
+@@ -287,7 +287,7 @@ class ShareModeWeb(SendBaseModeWeb):
+ 
+         if_unmod = request.headers.get("If-Unmodified-Since")
+         if if_unmod:
+-            if_date = parse_date(if_unmod)
++            if_date = parse_date(if_unmod).replace(tzinfo=None)
+             if if_date and if_date > last_modified:
+                 abort(412)
+             elif range_header is None:

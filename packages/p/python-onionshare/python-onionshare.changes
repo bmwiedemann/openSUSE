@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 22 05:09:53 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 2.3.3:
+  * New feature: Setting for light or dark theme
+  * Updated Tor to 0.4.6.7 for Linux, 0.4.5.10 for Windows and macOS
+  * Various bug fixes
+- Add fix-compare-offset-naive-and-offset-aware-datetimes.patch to
+  fix test errors in test_if_unmodified_since and test_firefox_like_behavior
+  (gh#onionshare/onionshare#1398).
+
+-------------------------------------------------------------------
 Tue Jun  8 11:34:37 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - update to version 2.3.2
