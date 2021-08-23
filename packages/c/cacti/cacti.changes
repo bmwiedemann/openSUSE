@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 10 06:40:29 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cacti 1.2.18:
+  * CVE-2020-14424: Lack of escaping on template import can lead to
+    XSS exposure under 'midwinter' theme (boo#1188188)
+  * Real time graphs can expose XSS issue
+
+-------------------------------------------------------------------
 Wed May  5 18:58:50 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - cacti 1.2.17:

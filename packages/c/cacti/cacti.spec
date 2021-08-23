@@ -28,7 +28,7 @@
 %bcond_with systemd
 %endif
 Name:           cacti
-Version:        1.2.17
+Version:        1.2.18
 Release:        0
 Summary:        Web Front-End to Monitor System Data via RRDtool
 License:        GPL-2.0-or-later

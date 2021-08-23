@@ -315,4 +315,16 @@
 </comment>
     <requestid>890825</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>7ca3cff5d7c099256d5bc50e35de6f37</srcmd5>
+    <version>1.2.18</version>
+    <time>1629706089</time>
+    <user>dimstar_suse</user>
+    <comment>- cacti 1.2.18:
+  * CVE-2020-14424: Lack of escaping on template import can lead to
+    XSS exposure under 'midwinter' theme (boo#1188188)
+  * Real time graphs can expose XSS issue
+</comment>
+    <requestid>913438</requestid>
+  </revision>
 </revisionlist>
