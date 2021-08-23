@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 18 12:17:26 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- whitelist deepin-api D-Bus services (bsc#1070943)
+
+-------------------------------------------------------------------
 Wed Aug  4 07:49:04 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - whitelist oddjob-gpupdate PAM and D-Bus (bsc#1188680)

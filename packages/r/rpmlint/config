@@ -817,7 +817,14 @@ setOption("DBUSServices.WhiteList", (
     "org.fedoraproject.SetroubleshootPrivileged.conf",
     "org.fedoraproject.Setroubleshootd.conf",
     # oddjob-gpupdate (bsc#1188680)
-    "oddjob-gpupdate.conf"
+    "oddjob-gpupdate.conf",
+    # deepin-api (bsc#1070943)
+    "com.deepin.api.Device.service",
+    "com.deepin.api.Device.conf",
+    "com.deepin.api.LocaleHelper.service",
+    "com.deepin.api.LocaleHelper.conf",
+    "com.deepin.api.SoundThemePlayer.service",
+    "com.deepin.api.SoundThemePlayer.conf"
 ))
 
 setOption("PAMModules.WhiteList", (

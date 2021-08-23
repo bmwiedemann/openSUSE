@@ -3166,4 +3166,12 @@ will self heal once rpmlint-mini is rebuild
 oddjob-gpupdate isn't blocked)</comment>
     <requestid>910085</requestid>
   </revision>
+  <revision rev="356" vrev="45">
+    <srcmd5>1d3f754c3101ccdc681ace2915a47ba4</srcmd5>
+    <version>1.11</version>
+    <time>1629706458</time>
+    <user>dimstar_suse</user>
+    <comment>- whitelist deepin-api D-Bus services (bsc#1070943)</comment>
+    <requestid>912901</requestid>
+  </revision>
 </revisionlist>
