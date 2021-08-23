@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Aug 22 11:17:56 CEST 2021 - nine@detonation.org
+
+- update to version 2021.08
+  + Enable rendering of nested blocks in the Pod::To::Text module
+  + Raise priority of let and temp operators compared to .=, . and
+    auto-increment, making let $foo .= &{ Nil } work more intuitively compared to
+    (let $foo) .= &{ Nil } as was necessary before
+  + Change the Scalar.WHICH method implementation, fixing the semantics to reflect
+    that Scalar is not a value object
+  + Make the &&, || and // operators about 2x as fast for the +@a candidates
+  + Improve performance of smartmatching between two Signature objects
+  + Fix some occurrences of hash-related concurrency issues
+  + Fix the List.reduce method when used with &infix:<&&>
+  + Fix matching of native types against roles Numeric, Real and Stringy
+  + Make Pointer.Numeric and Pointer.Int methods return 0 instead of resulting in an error
+  + Fix a race in the ClassHOW.new_type method
+  + Make checking for Windows cheaper
+  + Simplify Rakudo::Iterator::While iterator code
+  + Fix location of the Proc.status deprecation message
+
+-------------------------------------------------------------------
 Sat Jul 24 21:31:25 CEST 2021 - nine@detonation.org
 
 - update to version 2021.07

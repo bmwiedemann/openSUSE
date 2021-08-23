@@ -549,4 +549,12 @@ Fixed the changelog to explain the reason for the patch.</comment>
     <comment></comment>
     <requestid>908139</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>757e8d1ea597624d2ff404e796b4533c</srcmd5>
+    <version>2021.08</version>
+    <time>1629706098</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913545</requestid>
+  </revision>
 </revisionlist>
