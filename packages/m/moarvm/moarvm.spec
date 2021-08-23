@@ -16,7 +16,7 @@
 #
 
 
-%global mvrel 2021.07
+%global mvrel 2021.08
 Name:           moarvm
 Version:        %mvrel
 Release:        2.1

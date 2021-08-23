@@ -248,4 +248,12 @@ Added information about the removal to the corresponding changelog entry.</comme
     <comment></comment>
     <requestid>908137</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>f604708312eb3eb7a92ff799a2d2d753</srcmd5>
+    <version>2021.08</version>
+    <time>1629706096</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913543</requestid>
+  </revision>
 </revisionlist>

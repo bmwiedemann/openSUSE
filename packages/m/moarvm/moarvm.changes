@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Aug 22 10:05:45 CEST 2021 - nine@detonation.org
+
+- update to version 2021.08
+
++ Fix another bug in `MVM_str_hash_fsck`
++ Free filename if exception when loading bytecode
++ Switch `MVM_coerce_n_s` to Ryū from Grisu3 with a `sprintf` fallback
++ Add JIT templates for `(bind|get)attr(s)?_*`
++ Fix deadlock by untimely GC in multi-threaded programs
++ Fix spesh optimizing away still needed label register
+
+-------------------------------------------------------------------
 Sat Jul 24 21:25:38 CEST 2021 - nine@detonation.org
 
 - update to version 2021.07
