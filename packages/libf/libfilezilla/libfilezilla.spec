@@ -16,11 +16,11 @@
 #
 
 
-%define major		14
+%define major		16
 %define libname		%{name}%{major}
 %define develname	%{name}-devel
 Name:           libfilezilla
-Version:        0.29.0
+Version:        0.31.1
 Release:        0
 Summary:        C++ library for filezilla
 License:        GPL-2.0-or-later
@@ -41,6 +41,7 @@ BuildRequires:  graphviz
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
+BuildRequires:  pkgconfig(gmp)
 BuildRequires:  pkgconfig(gnutls) >= 3.5.7
 BuildRequires:  pkgconfig(hogweed) >= 3.1
 BuildRequires:  pkgconfig(nettle) >= 3.1

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Aug 12 08:40:13 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.31.1
+  * New features:
+    - Added iterator for JSON arrays
+  * Bugfixes and minor changes:
+    - *nix: SIGPIPE is now set to SIG_IGN the first time a pipe or
+      socket gets created
+    - Handle empty search string in replace_subscripts
+- Changes from 0.31.0
+  * New features:
+    - Added simple JSON parser
+    - Added basic JWS generator
+  * Bugfixes and minor changes:
+    - Made fz::file movable
+    - Fixed empty creation_flag for fz::file if other flags are
+      also passed
+- Changes from 0.30.0
+  * New features:
+    - Added a flag to fz::file::creation_flags to create files with
+      permissions only granting the current user and administrators
+      access
+    - Added mkdir_permissions flags to fz::mkdir
+
+-------------------------------------------------------------------
 Mon Jul  5 05:32:47 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.29.0
