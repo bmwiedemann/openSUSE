@@ -1,0 +1,46 @@
+-------------------------------------------------------------------
+Thu Aug 19 10:17:27 UTC 2021 - pgajdos@suse.com
+
+- Imath-devel obsoletes ilbase-devel
+  (https://build.opensuse.org/request/show/912661#comment-1504935)
+
+-------------------------------------------------------------------
+Tue Aug 17 11:31:04 UTC 2021 - pgajdos@suse.com
+
+- be more precise in %files section
+  (https://build.opensuse.org/request/show/911960#comment-1503939)
+
+-------------------------------------------------------------------
+Mon Aug 16 11:58:58 UTC 2021 - pgajdos@suse.com
+
+- do not obsolete/provide ilmbase, Imath provides just part of
+  functionality of former ilmbase
+
+-------------------------------------------------------------------
+Sat Aug 14 22:04:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture from description.
+
+-------------------------------------------------------------------
+Fri Aug 13 09:52:42 UTC 2021 - pgajdos@suse.com
+
+- fix baselibs.conf
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
+Tue Aug 10 08:46:34 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.1.2
+- deleted patches
+  - Imath-pkgconfig-fix-libdir.patch (upstreamed)
+
+-------------------------------------------------------------------
+Fri Apr  9 11:19:34 UTC 2021 - pgajdos@suse.com
+
+- initial version 3.0.1, splitted from openexr 
+- added patches
+  fix https://github.com/AcademySoftwareFoundation/openexr/issues/595
+  + Imath-pkgconfig-fix-libdir.patch (splitted from openexr's
+    0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch)
+

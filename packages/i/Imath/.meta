@@ -1,0 +1,5 @@
+<package name="Imath" project="openSUSE:Factory">
+  <title></title>
+  <description></description>
+  <devel project="graphics" package="Imath"/>
+</package>
