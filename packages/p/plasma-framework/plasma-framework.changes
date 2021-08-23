@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 17 07:27:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a regression in Plasma icon sizes
+  when using fractional scaling on X11:
+  * 0001-Fix-Plasma-non-Qt-icon-scaling-with-integer-scale-factors.patch
+
+-------------------------------------------------------------------
 Fri Aug  6 12:13:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
