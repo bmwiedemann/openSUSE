@@ -33,8 +33,9 @@ BuildRequires:  fdupes
 BuildRequires:  freetds-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sbcl
+BuildRequires:  strace
 BuildRequires:  pkgconfig(sqlite3)
-%if 0%{?leap_version} >= 430000 || 0%{?suse_version} > 4300
+%if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libopenssl)
 BuildRequires:  pkgconfig(libssl)
@@ -77,16 +78,24 @@ echo "Arch is : %{_arch}"
 %if "%{_arch}" == "i386" || "%{_arch}" == "arm"
 export DYNSIZE="DYNSIZE=1024"
 %endif
-make V=1 %{?_smp_mflags} ${DYNSIZE} %{name}
+%make_build V=1 ${DYNSIZE} %{name}
 
 %install
 install -d %{buildroot}%{_bindir}
-install -m 755 bin/pgloader %{buildroot}%{_bindir}/pgloader
+#
+# SBCL produces ELF files that
+# (1.) have excessive gaps and which could be fixed by objcopy/strip/etc.
+# (2.) do not have any .debug_* sections, therefore rpm's debuginfo
+#      mechanism (would do strip) does not trigger at all.
+#
+# Hence this copyin-copyout call with objcopy, which reduces filesize from 20MB
+# to 300KB.
+#
+objcopy bin/pgloader %{buildroot}%{_bindir}/pgloader
 
 %fdupes %{buildroot}
 
 %files
-%defattr(-,root,root,-)
 %license local-projects/%{name}-%{version}/LICENSE
 %doc local-projects/%{name}-%{version}/README.md local-projects/%{name}-%{version}/TODO.md
 %{_bindir}/pgloader

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 18 07:46:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Reduce filesize of /usr/bin/pgloader by 19MB
+- Fix leap>=43 condition (there is no Leap 43 anywhere near).
+
+-------------------------------------------------------------------
 Mon Mar 15 17:24:24 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - fix compilation errors with sbcl 2.{1,2} by upgrading ironclad
