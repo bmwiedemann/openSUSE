@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 19 11:34:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.08.0
+  * Support for new kernel features:
+  * Add len8_dlc support for Classical CAN frames (Linux v5.11+)
+  * Add ISOTP SF_BROADCAST support (Linux v5.11+)
+
+-------------------------------------------------------------------
 Tue Dec 29 22:16:03 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2020.12.0
