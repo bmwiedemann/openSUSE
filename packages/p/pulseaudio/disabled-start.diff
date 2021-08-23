@@ -1,19 +1,15 @@
----
- src/daemon/start-pulseaudio-x11.in |    6 ++++++
- 1 file changed, 6 insertions(+)
-
---- a/src/daemon/start-pulseaudio-x11.in
-+++ b/src/daemon/start-pulseaudio-x11.in
+--- a/src/daemon/start-pulseaudio-x11.in   2021-07-27 20:02:27.739868200 +0000
++++ b/src/daemon/start-pulseaudio-x11.in   2021-08-02 20:53:22.460023234 +0000
 @@ -17,6 +17,12 @@
- 
+
  set -e
- 
+
 +. /etc/sysconfig/sound
 +
 +if [ x"$PULSEAUDIO_ENABLE" = x"no" ] || [ x"$PULSEAUDIO_SYSTEM" = x"yes" ] ; then
 +    exit 1
 +fi
 +
- if [ x"$DISPLAY" != x ] ; then
- 
-     @PACTL_BINARY@ load-module module-x11-publish "display=$DISPLAY xauthority=$XAUTHORITY" > /dev/null
+ if [ -n "$1" ] ; then
+     case $1 in
+     stop)

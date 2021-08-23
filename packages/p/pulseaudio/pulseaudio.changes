@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Tue Aug  3 20:50:50 UTC 2021 - Ondrej Holecek <oholecek@suse.com>
+
+- Update to PulseAudio 15
+  - drop esound compat support
+  - drop gconf support
+  - convert to mason build system
+  - disable doxygen doc generation
+  - droped patches:
+      drop bluetooth patches integrated in release:
+       0001-bluetooth-use-consistent-profile-names.patch
+       0002-bluetooth-separate-HSP-and-HFP.patch
+       0003-bluetooth-add-correct-HFP-rfcomm-negotiation.patch
+       0004-bluetooth-make-native-the-default-backend.patch
+       0005-bluetooth-enable-module-bluez5-discover-argument-ena.patch
+       0006-bluetooth-fix-headset-auto-ofono-handover.patch
+       0007-bluetooth-prefer-headset-HFP-HF-connection-with-nati.patch
+       0008-bluetooth-complete-bluetooth-profile-separation.patch
+       0009-bluetooth-use-device-flag-to-prevent-assertion-failu.patch
+       0010-bluetooth-rename-enable_hs_role-to-enable_shared_pro.patch
+       0011-bluetooth-clean-up-rfcomm_write-usage.patch
+      drop parecord patches integrated in release
+       parecord-fix-Failed-to-open-audio-file-for-FLAC-and-.patch
+       parecord-really-fix-recording-OGG.patch
+  - refresh disabled-start.diff patch
+  - new features:
+   * Support for LDAC and AptX bluetooth codecs, plus "SBC XQ" (SBC with higher-quality parameters)
+   * Support for HFP bluetooth profiles
+   * Support for Bluetooth A2DP AVRCP Absolute Volume
+   * ALSA path configuration files can now be placed in user home directory
+   * module-virtual-surround-sink rewritten
+   * More options for module-jackdbus-detect
+   * Improved hardware support
+     * SteelSeries Arctis 9
+     * HP Thunderbolt Dock 120W G2
+     * Behringer U-Phoria UMC22
+     * OnePlus Type-C Bullets
+     * Sennheiser GSX 1000/1200 PRO
+   * New udev variable: PULSE_MODARGS
+   * max_latency_msec argument added to module-null-source
+   * module-filter-apply can take filter parameters from device properties
+   * module-match can now be loaded multiple times
+   * Improvements to FreeBSD support
+   * Windows support added to Meson
+   * Additional commands for pactl
+   * Card profiles can be set to sticky
+   * The startup script can now read additional configuration from the /etc/pulse/default.pa.d/ directory
+   ** Notes for application developers
+   * New API for sending messages from clients to PulseAudio objects
+   * New mechanism for applications to disable shared memory on their connection to PulseAudio
+
+  ( https://www.freedesktop.org/wiki/Software/PulseAudio/Notes/15.0/ )
+
+-------------------------------------------------------------------
 Sun Jul 18 11:37:16 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Remove unneeded shadow dependency, no longer required due to

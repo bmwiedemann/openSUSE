@@ -24,12 +24,12 @@
   %define _fillupdir /var/adm/fillup-templates
 %endif
 
-%define drvver  14.2
+%define drvver  15.0
 %define soname  0
 %define _udevrulesdir %(pkg-config --variable=udevdir udev)/rules.d
 %define _bashcompletionsdir %{_datadir}/bash-completion/completions
 Name:           pulseaudio
-Version:        14.2
+Version:        15.0
 Release:        0
 Summary:        A Networked Sound Server
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -53,27 +53,13 @@ Patch1:         suppress-socket-error-msg.diff
 Patch5:         qpaeq-shebang.patch
 # PATCH-FIX-OPENSUSE Workaround for old systemd on Leap 15.x
 Patch6:         pulseaudio-old-systemd-workaround.patch
-Patch7:         parecord-fix-Failed-to-open-audio-file-for-FLAC-and-.patch
-Patch8:		parecord-really-fix-recording-OGG.patch
-# HFP support patches (bsc#1167940)
-Patch101:       0001-bluetooth-use-consistent-profile-names.patch
-Patch102:       0002-bluetooth-separate-HSP-and-HFP.patch
-Patch103:       0003-bluetooth-add-correct-HFP-rfcomm-negotiation.patch
-Patch104:       0004-bluetooth-make-native-the-default-backend.patch
-Patch105:       0005-bluetooth-enable-module-bluez5-discover-argument-ena.patch
-Patch106:       0006-bluetooth-fix-headset-auto-ofono-handover.patch
-Patch107:       0007-bluetooth-prefer-headset-HFP-HF-connection-with-nati.patch
-Patch108:       0008-bluetooth-complete-bluetooth-profile-separation.patch
-Patch109:       0009-bluetooth-use-device-flag-to-prevent-assertion-failu.patch
-Patch110:       0010-bluetooth-rename-enable_hs_role-to-enable_shared_pro.patch
-Patch111:       0011-bluetooth-clean-up-rfcomm_write-usage.patch
 BuildRequires:  alsa-devel >= 1.0.19
 BuildRequires:  bluez-devel >= 5
-BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel >= 3.0
 BuildRequires:  gcc-c++
 BuildRequires:  jack-devel
+BuildRequires:  meson
 BuildRequires:  libatomic_ops-devel >= 1.2
 BuildRequires:  libavahi-devel
 BuildRequires:  libcap-devel
@@ -82,7 +68,6 @@ BuildRequires:  libsndfile-devel >= 1.0.18
 BuildRequires:  libtool
 BuildRequires:  pkgconfig(libudev) >= 143
 BuildRequires:  libwebrtc_audio_processing-devel >= 0.3
-BuildRequires:  lirc-devel
 BuildRequires:  orc >= 0.4.9
 BuildRequires:  pkgconfig
 BuildRequires:  speexdsp-devel
@@ -90,12 +75,15 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  translation-update-upstream
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(dbus-1) >= 1.4.12
 BuildRequires:  pkgconfig(gconf-2.0)
+BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libsystemd)
+BuildRequires:  pkgconfig(lirc)
 BuildRequires:  pkgconfig(sbc) >= 1.0
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(soxr)
@@ -129,21 +117,6 @@ Conflicts:      pulseaudio-daemon
 pulseaudio is a networked sound server for Linux, other Unix like
 operating systems and Microsoft Windows. It is intended to be an
 improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
-
-%package esound-compat
-Summary:        ESOUND compatibility for PulseAudio
-Group:          System/Sound Daemons
-Requires:       %{name} = %{version}
-Provides:       esound-daemon = 0.2.41
-Obsoletes:      esound-daemon < 0.2.41
-
-%description esound-compat
-pulseaudio is a networked sound server for Linux and other Unix like
-operating systems and Microsoft Windows. It is intended to be an
-improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
-
-This package provides the compatibility layer for drop-in replacement
-of ESOUND.
 
 %package module-lirc
 Summary:        LIRC module for PulseAudio
@@ -228,19 +201,6 @@ operating systems and Microsoft Windows. It is intended to be an
 improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
 
 Contains Bluetooth audio (A2DP/HSP/HFP) support for the PulseAudio sound server.
-
-%package module-gconf
-Summary:        GCONF module for PulseAudio
-Group:          System/Sound Daemons
-Requires:       %{name} = %{version}
-Conflicts:      %{name}-module-gsettings
-
-%description module-gconf
-pulseaudio is a networked sound server for Linux and other Unix like
-operating systems and Microsoft Windows. It is intended to be an
-improved drop-in replacement for the Enlightened Sound Daemon (ESOUND).
-
-This package provides gconf storage of PulseAudio sound server settings.
 
 %package module-gsettings
 Summary:        GSettings module for PulseAudio
@@ -365,52 +325,28 @@ Optional dependency offering zsh completion for various PulseAudio utilities
 %if 0%{?suse_version} < 1550
 %patch6 -p1
 %endif
-%patch7 -p1
-%patch8 -p1
-%patch101 -p1
-%patch102 -p1
-%patch103 -p1
-%patch104 -p1
-%patch105 -p1
-%patch106 -p1
-%patch107 -p1
-%patch108 -p1
-%patch109 -p1
-%patch110 -p1
-%patch111 -p1
 
 %build
-NOCONFIGURE=1 ./bootstrap.sh
-echo 'HTML_TIMESTAMP=NO' >> doxygen/doxygen.conf.in
-export LDFLAGS="-pie"
-export CFLAGS="%{optflags} -fPIE"
-%configure \
-	--disable-static \
-	--disable-rpath \
-	--disable-running-from-build-tree \
-%ifarch armv5tel armv6hl
-	--disable-neon-opt \
-%endif
-	--with-system-user=pulse \
-	--with-system-group=pulse \
-	--with-access-group=pulse-access \
-	--disable-hal-compat \
-	--disable-bluez4 \
-	--enable-webrtc-aec \
-	--enable-adrian-aec \
-	--enable-gconf \
-	--enable-gsettings \
-	--with-udev-rules-dir=%{_udevrulesdir} \
-	--with-pulsedsp-location='%{_prefix}/\\$$LIB/pulseaudio' \
-	--with-systemduserunitdir=%{_userunitdir} \
-	--enable-stream-restore-clear-old-devices \
-	%{nil}
-%make_build
-%make_build doxygen
+%meson \
+      --auto-features=auto \
+      -Dhal-compat=false   \
+      -Dgsettings=enabled  \
+      -Ddoxygen=false      \
+      -Dsystem-user=pulse  \
+      -Dsystem-group=pulse \
+      -Daccess-group=pulse-access     \
+      -Drunning-from-build-tree=false \
+      -Dpulsedsp-location='%{_prefix}/\\$$LIB/pulseaudio' \
+      -Dudevrulesdir="%{_udevrulesdir}"      \
+      -Dsystemduserunitdir="%{_userunitdir}" \
+      -Db_pie=true \
+      %{nil}
+
+%meson_build
 %sysusers_generate_pre %{SOURCE10} pulseaudio system-user-pulse.conf
 
 %install
-%make_install
+%meson_install
 rm -rf \
 	"%{buildroot}%{_libdir}"/*.la \
 	"%{buildroot}%{_libdir}/pulse-%{drvver}/modules"/*.la \
@@ -427,6 +363,9 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # some HW may get undetected without this (check pulseaudio 6.0RC1 announce)
 ln -s default.conf %{buildroot}%{_datadir}/pulseaudio/alsa-mixer/profile-sets/extra-hdmi.conf
 
+# remove xwayland.sessions.d files. Do we have such directory?
+rm %{buildroot}%{_sysconfdir}/xdg/Xwayland-session.d/00-pulseaudio-x11
+
 install %{SOURCE2} %{buildroot}%{_bindir}
 chmod 755 %{buildroot}%{_bindir}/setup-pulseaudio
 install -d %{buildroot}%{_fillupdir}
@@ -439,17 +378,19 @@ install -m 644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/pulseaudio.conf
 install -m 644 %{SOURCE8} %{buildroot}%{_prefix}/lib/tmpfiles.d/pulseaudio-gdm-hooks.conf
 mkdir -p %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse
 install -m 644 %{SOURCE1} %{buildroot}%{_prefix}/share/factory/var/lib/gdm/.pulse/default.pa
-ln -s esdcompat %{buildroot}%{_bindir}/esd
 # create .d conf dirs (since 8.0)
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/client.conf.d
 install -m 0644 %{SOURCE9} %{buildroot}%{_sysconfdir}/pulse/client.conf.d/50-system.conf
 mkdir -p %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d
+# create .d startup dirs (since 15.0)
+mkdir -p %{buildroot}%{_sysconfdir}/pulse/default.pa.d
+mkdir -p %{buildroot}%{_sysconfdir}/pulse/system.pa.d
+
 # Install disable_flat_volumes.conf
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/pulse/daemon.conf.d/60-disable_flat_volumes.conf
 # user
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/system-user-pulse.conf
 %find_lang %{name}
-%fdupes doxygen/html
 
 %pre -f pulseaudio.pre
 
@@ -520,7 +461,6 @@ exit 0
 %{_libdir}/pulse-%{drvver}/modules/libcli.so
 %{_libdir}/pulse-%{drvver}/modules/liboss-util.so
 %{_libdir}/pulse-%{drvver}/modules/libprotocol-cli.so
-%{_libdir}/pulse-%{drvver}/modules/libprotocol-esound.so
 %{_libdir}/pulse-%{drvver}/modules/libprotocol-http.so
 %{_libdir}/pulse-%{drvver}/modules/libprotocol-native.so
 %{_libdir}/pulse-%{drvver}/modules/libprotocol-simple.so
@@ -546,11 +486,6 @@ exit 0
 %{_libdir}/pulse-%{drvver}/modules/module-device-manager.so
 %{_libdir}/pulse-%{drvver}/modules/module-device-restore.so
 %{_libdir}/pulse-%{drvver}/modules/module-echo-cancel.so
-%{_libdir}/pulse-%{drvver}/modules/module-esound-compat-spawnfd.so
-%{_libdir}/pulse-%{drvver}/modules/module-esound-compat-spawnpid.so
-%{_libdir}/pulse-%{drvver}/modules/module-esound-protocol-tcp.so
-%{_libdir}/pulse-%{drvver}/modules/module-esound-protocol-unix.so
-%{_libdir}/pulse-%{drvver}/modules/module-esound-sink.so
 %{_libdir}/pulse-%{drvver}/modules/module-equalizer-sink.so
 %{_libdir}/pulse-%{drvver}/modules/module-filter-apply.so
 %{_libdir}/pulse-%{drvver}/modules/module-filter-heuristics.so
@@ -604,6 +539,8 @@ exit 0
 %{_mandir}/man5/pulse-cli-syntax.5*
 %dir %{_sysconfdir}/pulse/
 %dir %{_sysconfdir}/pulse/daemon.conf.d
+%dir %{_sysconfdir}/pulse/default.pa.d
+%dir %{_sysconfdir}/pulse/system.pa.d
 %config %{_sysconfdir}/pulse/client.conf.d/50-system.conf
 %config(noreplace) %{_sysconfdir}/pulse/daemon.conf.d/60-disable_flat_volumes.conf
 %config(noreplace) %{_sysconfdir}/pulse/daemon.conf
@@ -622,10 +559,8 @@ exit 0
 %ghost %{_sysconfdir}/profile.d/pulseaudio.sh
 %ghost %{_sysconfdir}/profile.d/pulseaudio.csh
 
-%files esound-compat
-%{_bindir}/esdcompat
-%{_bindir}/esd
-%{_mandir}/man1/esdcompat.1*
+# xwayland integration
+%{_userunitdir}/pulseaudio-x11.service
 
 %files gdm-hooks
 %attr(0750, gdm, gdm) %ghost %dir %{_localstatedir}/lib/gdm
@@ -650,7 +585,6 @@ exit 0
 %{_libdir}/pulseaudio/libpulsecommon-%{drvver}.so
 
 %files -n libpulse-devel
-%doc doxygen/html
 %{_includedir}/pulse/
 %{_libdir}/libpulse.so
 %{_libdir}/libpulse-mainloop-glib.so
@@ -675,19 +609,10 @@ exit 0
 %{_libdir}/pulse-%{drvver}/modules/module-bluez5-device.so
 %{_libdir}/pulse-%{drvver}/modules/module-bluez5-discover.so
 
-%files module-gconf
-%dir %{_libexecdir}/pulse
-%dir %{_libdir}/pulse-%{drvver}
-%dir %{_libdir}/pulse-%{drvver}/modules
-%{_libdir}/pulse-%{drvver}/modules/module-gconf.so
-%{_libexecdir}/pulse/gconf-helper
-
 %files module-gsettings
 %dir %{_libexecdir}/pulse
 %dir %{_libdir}/pulse-%{drvver}
 %dir %{_libdir}/pulse-%{drvver}/modules
-%dir %{_datarootdir}/GConf
-%dir %{_datarootdir}/GConf/gsettings
 %{_libdir}/pulse-%{drvver}/modules/module-gsettings.so
 %{_libexecdir}/pulse/gsettings-helper
 %{_datadir}/GConf/gsettings/pulseaudio.convert
