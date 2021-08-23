@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Aug 20 09:38:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.1
+  * [IOS-XR] Fix #1330 (get_bgp_neighbors_detail: flap_count
+    return a negative value).
+  * [IOS] Fix #1387 (get_network_instances fails KeyError when
+    deleting item from interfaces).
+  * [Junos] Fix bgp flap_count issue for iosxr_netconf.
+  * [Junos] Change the function cli when result is xml object.
+  * [EOS, IOS, Junos, NXOS] Add source_interface argument to ping.
+- Update to version 3.3.0
+  New Features
+  * [Junos] Add get_vlans for Junos.
+  * [Junos] Added Support for Logical Interfaces Counters.
+  * [Junos] Use aply-groups inheritance on get-configuration RPC
+    calls.
+  * [Core] Adding cannonical mapping for 25GE, 50GE, 200GE and
+    400GE interfaces.
+  Bug Fixes
+  * [EOS] Fix for BGP description not found by get_bgp_neighbors
+    in some EOS versions.
+  * [EOS] Set next hop to something valid for vxlan routes.
+  * [EOS] Fix naplam.get_route_to() not working on EOS:failed to
+    detect a valid IP address from u''.
+  * [IOS-XR] XR 7+: get_lldp_neighbors_detail query only the
+    NodeTable.
+  * [IOS-XR] Resolve #1181 (IOS-XR get_environment() throws an
+    error in 6.3.2 on NCS5501) and reduce the get_facts heavy
+    workload.
+  * [IOS-XR] Look up the KeepAliveTime and HoldTime keys in the
+    VRF tree.
+  * [Junos] Fix sanitized bug for Junos.
+  * [Junos] Multiple next-hop self config stanzas generate a list.
+  * [Junos] Add wildcard for set matches on junos.
+  * [Junos] Fix mapping for Juniper devices with Netmiko.
+  * [IOS] Handle control plane interface.
+  * [IOS] Set minimum ttl to zero to fix issue.
+  * [NX-OS] Cast uptime values to int before processing.
+
+-------------------------------------------------------------------
 Thu Sep  3 18:55:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.0
