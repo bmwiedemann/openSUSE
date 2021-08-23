@@ -1,7 +1,7 @@
 #
 # spec file for package python-CherryPy
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-CherryPy
-Version:        18.6.0
+Version:        18.6.1
 Release:        0
 Summary:        Object-Oriented HTTP framework
 License:        BSD-3-Clause
@@ -48,6 +48,7 @@ BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module portend >= 2.1.1}
+BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-services}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}
