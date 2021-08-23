@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Sun Aug 22 11:04:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Use definite tense in %description.
+
+-------------------------------------------------------------------
+Sat Aug 21 13:32:30 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Build and install python tools
+
+-------------------------------------------------------------------
+Fri Aug 20 17:59:05 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Clean spec file
+- Use better source URL
+- Split library
+- Don't package .la files
+- Create store directory
+- Move devel library to devel subpackage
+
+-------------------------------------------------------------------
+Wed Sep  9 10:05:02 UTC 2020 - Alexander Evseev <aevseev@gmail.com> - 1.4.0
+
+- New upstream version - 1.4.0
+
+-------------------------------------------------------------------
+Mon Aug  3 14:19:30 UTC 2020 - Alexander Evseev <aevseev@gmail.com> - 1.3.1
+
+- First build. Version - 1.3.1

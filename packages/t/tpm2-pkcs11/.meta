@@ -1,0 +1,6 @@
+<package name="tpm2-pkcs11" project="openSUSE:Factory">
+  <title>A PKCS#11 interface for TPM2 hardware</title>
+  <description>PKCS #11 is a Public-Key Cryptography Standard that defines a standard method to access cryptographic services from tokens/ devices such as hardware security modules (HSM), smart cards, etc. In this project we intend to use a TPM2 device as the cryptographic token.</description>
+  <devel project="security" package="tpm2-pkcs11"/>
+  <url>https://github.com/tpm2-software/tpm2-pkcs11</url>
+</package>
