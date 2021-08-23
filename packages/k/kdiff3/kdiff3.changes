@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 20 12:58:46 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 1.9.3
+  * Fix multiple regressions in file comparison
+  * Fix trailing EOL stripped (kde#437570)
+  * Fix arbitrary line insertion during merge (kde#437570)
+- Drop 0001-Collected-fixes-from-master.patch, the relevant fixes
+  are included in this release
+
+-------------------------------------------------------------------
 Mon Jun 28 13:10:55 UTC 2021 - Tilman Vogel <tilman.vogel@web.de>
 
 - Remove GCC 11 build fix:

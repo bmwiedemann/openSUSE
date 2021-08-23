@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kdiff3
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ URL:            https://apps.kde.org/kdiff3
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        kdiff3.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Collected-fixes-from-master.patch
 BuildRequires:  boost-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
