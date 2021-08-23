@@ -1042,4 +1042,41 @@
     <comment></comment>
     <requestid>906784</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>85ff490a52c0c286f0743eaab5eaa0e2</srcmd5>
+    <version>0.19.0</version>
+    <time>1629706087</time>
+    <user>dimstar_suse</user>
+    <comment>- remove xarray-pr5449-dask-meta.patch, merged upstream.
+- remove test_resample_loffset.patch, merged upstream.
+- update to version 0.19.0:
+ - This release brings improvements to plotting of categorical data, the ability to specify how attributes:
+ - are combined in xarray operations, a new high-level :py:func:`unify_chunks` function, as well as various:
+ - deprecations, bug fixes, and minor improvements.:
+ - Many thanks to the 29 contributors to this release!:
+ - Andrew Williams, Augustus, Aureliana Barghini, Benoit Bovy, crusaderky, Deepak Cherian, ellesmith88,:
+ - Elliott Sales de Andrade, Giacomo Caria, github-actions[bot], Illviljan, Joeperdefloep, joooeey, Julia Kent,:
+ - Julius Busecke, keewis, Mathias Hauser, Matthias Göbel, Mattia Almansi, Maximilian Roos, Peter Andreas Entschev,:
+ - Ray Bell, Sander, Santiago Soler, Sebastian, Spencer Clark, Stephan Hoyer, Thomas Hirtz, Thomas Nicholas.:
+ - New Features:
+  - Allow passing argument ``missing_dims`` to :py:meth:`Variable.transpose` and :py:meth:`Dataset.transpose`
+    (:issue:`5550`, :pull:`5586`)
+    By `Giacomo Caria &lt;https://github.com/gcaria&gt;`_.
+  - Allow passing a dictionary as coords to a :py:class:`DataArray` (:issue:`5527`,
+    reverts :pull:`1539`, which had deprecated this due to python's inconsistent ordering in earlier versions).
+    By `Sander van Rijn &lt;https://github.com/sjvrijn&gt;`_.
+  - Added :py:meth:`Dataset.coarsen.construct`, :py:meth:`DataArray.coarsen.construct` (:issue:`5454`, :pull:`5475`).
+    By `Deepak Cherian &lt;https://github.com/dcherian&gt;`_.
+  - Xarray now uses consolidated metadata by default when writing and reading Zarr
+    stores (:issue:`5251`).
+    By `Stephan Hoyer &lt;https://github.com/shoyer&gt;`_.
+  - New top-level function :py:func:`unify_chunks`.
+    By `Mattia Almansi &lt;https://github.com/malmans2&gt;`_.
+  - Allow assigning values to a subset of a dataset using positional or label-based
+    indexing (:issue:`3015`, :pull:`5362`).
+    By `Matthias Göbel &lt;https://github.com/matzegoebel&gt;`_.
+  - Attempting to reduce a weighted object over missing dimensions now raises an error (:pull:`5362`).
+    By `Mattia Almansi &lt;https://github.com/malmans2&gt;`_.</comment>
+    <requestid>913397</requestid>
+  </revision>
 </revisionlist>
