@@ -22,7 +22,7 @@
 %define use_usretc 1
 %endif
 Name:           sudo
-Version:        1.9.7
+Version:        1.9.7p2
 Release:        0
 Summary:        Execute some commands as root
 License:        ISC
@@ -41,6 +41,7 @@ Patch0:         sudo-sudoers.patch
 BuildRequires:  audit-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  groff
+BuildRequires:  libopenssl-devel
 BuildRequires:  libselinux-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
@@ -115,6 +116,7 @@ export LDFLAGS="-pie"
     --enable-shell-sets-home \
     --enable-warnings \
     --enable-python \
+    --enable-openssl \
     --with-sendmail=%{_sbindir}/sendmail \
     --with-sudoers-mode=0440 \
     --with-env-editor \
@@ -122,8 +124,13 @@ export LDFLAGS="-pie"
     --with-passprompt="[sudo] password for %%p: " \
     --with-rundir=%{_localstatedir}/lib/sudo \
     --with-sssd
+%if 0%{?sle_version} < 150000
+# the SLES12 way
+make %{?_smp_mflags} V=1
+%else
 # -B required to make every build give the same result - maybe from bad build deps in Makefiles?
 %make_build -B
+%endif
 
 %install
 %make_install install_uid=`id -u` install_gid=`id -g`
