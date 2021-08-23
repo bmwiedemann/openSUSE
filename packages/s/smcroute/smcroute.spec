@@ -1,8 +1,8 @@
 #
 # spec file for package smcroute
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2018-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 
 Name:           smcroute
-Version:        2.4.4
+Version:        2.5.1
 Release:        0
 Summary:        Static multicast routing for UNIX
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Routing
-URL:            http://troglobit.com/projects/smcroute/
+URL:            https://troglobit.com/projects/smcroute/
 #Git-Clone:     https://github.com/troglobit/smcroute.git
 Source:         https://github.com/troglobit/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
@@ -56,11 +56,12 @@ autoreconf -fiv
 %configure \
     --with-systemd \
     --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 install -Dm0644 smcroute.conf %{buildroot}/%{_sysconfdir}/smcroute.conf
+install -d %{buildroot}/%{_sysconfdir}/smcroute.d/
 rm -rf %{buildroot}/%{_datadir}/doc
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 
@@ -88,7 +89,8 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_sbindir}/smcroute
 %{_sbindir}/rcsmcroute
 %config %{_sysconfdir}/smcroute.conf
-%{_mandir}/man8/smcroute.8%{?ext_man}
+%config %{_sysconfdir}/smcroute.d
+%{_mandir}/man5/smcroute.conf.5%{?ext_man}
 %{_mandir}/man8/smcroutectl.8%{?ext_man}
 %{_mandir}/man8/smcrouted.8%{?ext_man}
 %{_unitdir}/%{name}.service

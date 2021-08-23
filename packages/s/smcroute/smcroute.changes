@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Aug 22 08:42:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.1
+  Changes
+  * Add .sha256 checksum to dist files, useful for packagers
+  Fixes
+  * systemd Notify integration, restore NotifyAccess=main
+  * ftbfs on older compilers, e.g. gcc 4.8.3, use -std=gnu99
+  * Fix Documentation refs in systemd unit file, new man pages
+
+-------------------------------------------------------------------
+Fri Aug 20 13:59:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  * Fully automated test suite with 15 tests covering many use
+    cases.
+  * Support for /etc/smcroute.d/*.conf .
+  * Support for applying changes to .conf files without disturbing
+    established flows -- i.e., seamless addition or removal of
+    outbound interfaces in existing rules, or add/remove routes,
+    without ever affecting other routes.
+  * Support for route replacement/update smcroutectl.
+  * Full (*,G) wildcard route matching, for IPv4 and IPv6.
+  * Variant wildcard route matching with source and group range
+    matching. This may of course waste a lot of resources, so
+    handle with care:
+    + (*,G/LEN), issue #135 (IPv4), and issue #162 (IPv6)
+    + (S/LEN,G), issue #81
+    + (S/LEN,G/LEN)
+  * Full SSM/ASM group join support, for both IPv4 and IPv6.
+    Including joining group ranges from both smcroutectl and
+    .conf .
+  * New command line option, -F file.conf to verify file syntax.
+  * The -I NAME command line option has changed to -i NAME,
+    compat support for the previous option remains.
+  * The mrdisc flag to the phyint directive is now what solely
+    controls the functionality per interface. Previously a
+    mechanism to enable/disable the functionality (if enabled) if
+    active routes were in place. However, this did not cover (*,G)
+    routes so that has been removed to simplify and guarantee full
+    function.
+  * Output format from smcroutectl has been extensively changed.
+    E.g, new /LEN support means wider columns, but heading have
+    also changed.
+  Fixes
+  * Fix #120: failed ASM/SSM IGMP join if interface has no address
+  * Fix #130: dynamic IPv6 routes are not flushed (like IPv4 (*,G))
+  * Fix #149: (*,G) cache timeout callback stops, or never starts
+  * Fix #151: same log entries
+  * Fix #156: smcruotectl show does not show IPv6 routes
+  * Fix stochastic timer behavior, e.g. mrdisc announcements
+    experienced interference with the (*,G) cache timer
+
+-------------------------------------------------------------------
 Tue Feb 12 09:18:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.4
