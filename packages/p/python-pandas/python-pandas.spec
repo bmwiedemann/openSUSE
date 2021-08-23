@@ -53,7 +53,6 @@ Recommends:     python-Bottleneck >= 1.2.1
 Recommends:     python-numexpr >= 2.6.8
 Suggests:       python-Jinja2 >= 2.10
 Suggests:       python-PyMySQL >= 0.8.1
-Suggests:       python-QtPy
 Suggests:       python-SQLAlchemy >= 1.3.0
 Suggests:       python-XlsxWriter >= 1.0.2
 Suggests:       python-beautifulsoup4 >= 4.6.0
@@ -64,7 +63,6 @@ Suggests:       python-gcsfs >= 0.6.0
 Suggests:       python-html5lib >= 1.0.1
 Suggests:       python-lxml >= 4.3.0
 Suggests:       python-matplotlib >= 2.2.3
-Suggests:       python-numba >= 0.46.0
 Suggests:       python-openpyxl >= 3.0.0
 Suggests:       python-pandas-gbq >= 0.12.0
 Suggests:       python-psycopg2 >= 2.7
