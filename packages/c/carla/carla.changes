@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Sat Aug 21 09:24:55 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.4.0:
+  * Remove a warning when libsndfile is not present (dr_mp3 still used)
+  * One more CI fix
+  * One more compiler warning fix
+  * Fix some compiler warnings
+  * Implement carla_get_desktop_scale_factor for X11
+  * Bump version to 2.4.0
+  * Add a few more packages to CI
+  * One more CI fix
+  * CI fixes
+  * CI tweaks
+  * Use WINECC env var in CI
+  * Fix CI links and a typo
+  * Adjust lv2 gtk ui bridge for windows
+  * Add wine CI workflow
+  * Add option to use classic skin by default
+  * Speed up msys2-i686
+  * Revert "less deps for msys2"
+  * Revert "Give up on msys2 on CI"
+  * Don't build static binaries on Windows if using msys2
+  * Fix last commit
+  * Don't require gobject/glib for gtk bridges, always enabled
+  * Give up on msys2 on CI
+  * Fix for custom gtk widgets, need to use global namespace
+  * Fix build
+  * Allow lv2 gtk bridges on any system
+  * lv2 ui bridges: dlopen gtk instead of linking to it
+  * less deps for msys2
+  * Try adding pkg-config
+  * Install a few things for msys2
+  * Tweaks to msys2
+  * More packaging tests, add msys2 types
+  * Tweak build, still testing
+  * Consolidate CI builds on single file
+  * Fix macOS build and bridge standalone init
+  * Set scale factor for carla-bridge-*/carla-single standalone usage
+  * Fetch desktop scale factor for UI bridge testing; Cleanup
+  * Redo canvas.svg in a way that scales with Qt
+  * Replace canvas.png with svg version
+  * Add carla_get_desktop_scale_factor utility function
+  * Do not set JUCE editor scale factor under macOS
+  * Import Linux-VST3 crash fix from upstream
+  * Tweak for latest DPF compat
+
+-------------------------------------------------------------------
+Tue Aug 10 09:09:55 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 2.3.2:
+  * Bump version to 2.3.2
+  * Dynamic version for pkg-config files, for less maintenance
+  * Add 32x32 icon Fixes #1327
+  * Fix an assertion
+  * Fix strict build
+  * Fix macOS build
+  * Add macos plugin standalone init, fixing focus
+  * Fix a typo on XSetInputFocus
+  * Implement a way to set plugins as standalones
+  * Add missing separator in SF2 search path
+  * Fix a memory leak in CarlaString class
+  * Do not show --gdb in usage/help when not installed system-wide Closes #1454
+  * Rename a variable to make more sense
+  * Safer X11 UI use, fixes crash with a few plugins (regression)
+  * Ignore handleCommandMessage/postCommandMessage not used in linux
+  * Fix wine32 build on Fedora Closes #1449
+  * Fix X11 error when showing VST3 on linux
+  * Add VST2 host embed support (native implementation)
+- Rebase patches.
+
+-------------------------------------------------------------------
 Mon Jul 19 09:53:02 UTC 2021 - ecsos@opensuse.org
 
 - Update to version 2.3.1:

@@ -1,8 +1,8 @@
-Index: carla-2.1.1/source/backend/utils/Makefile
+Index: carla-2.4.0/source/backend/utils/Makefile
 ===================================================================
---- carla-2.1.1.orig/source/backend/utils/Makefile	2020-06-10 23:38:43.000000000 +0200
-+++ carla-2.1.1/source/backend/utils/Makefile	2020-06-12 12:45:36.674697400 +0200
-@@ -42,6 +42,8 @@ endif
+--- carla-2.4.0.orig/source/backend/utils/Makefile
++++ carla-2.4.0/source/backend/utils/Makefile
+@@ -43,6 +43,8 @@ endif
  
  LINK_FLAGS += $(LILV_LIBS)
  LINK_FLAGS += $(WATER_LIBS)
@@ -11,11 +11,11 @@ Index: carla-2.1.1/source/backend/utils/Makefile
  
  ifeq ($(HAVE_X11),true)
  LINK_FLAGS += $(X11_LIBS)
-Index: carla-2.1.1/source/bridges-plugin/Makefile
+Index: carla-2.4.0/source/bridges-plugin/Makefile
 ===================================================================
---- carla-2.1.1.orig/source/bridges-plugin/Makefile	2020-06-10 23:38:43.000000000 +0200
-+++ carla-2.1.1/source/bridges-plugin/Makefile	2020-06-12 12:45:36.674697400 +0200
-@@ -152,6 +152,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
+--- carla-2.4.0.orig/source/bridges-plugin/Makefile
++++ carla-2.4.0/source/bridges-plugin/Makefile
+@@ -154,6 +154,11 @@ NATIVE_LINK_FLAGS  += $(FLUIDSYNTH_LIBS)
  
  NATIVE_LINK_FLAGS  += $(MAGIC_LIBS)
  
@@ -27,12 +27,24 @@ Index: carla-2.1.1/source/bridges-plugin/Makefile
  LIBS_native        += $(MODULEDIR)/audio_decoder.a
  LIBS_native        += $(MODULEDIR)/native-plugins.a
  LIBS_native        += $(MODULEDIR)/sfzero.a
-Index: carla-2.1.1/source/bridges-ui/Makefile
+Index: carla-2.4.0/source/bridges-ui/Makefile
 ===================================================================
---- carla-2.1.1.orig/source/bridges-ui/Makefile	2020-06-10 23:38:43.000000000 +0200
-+++ carla-2.1.1/source/bridges-ui/Makefile	2020-06-12 12:45:36.674697400 +0200
-@@ -37,10 +37,10 @@ BUILD_QT4_FLAGS     = $(BUILD_CXX_FLAGS)
- LINK_QT4_FLAGS      = $(LINK_FLAGS) $(shell pkg-config --libs QtCore QtGui) $(LIBDL_LIBS)
+--- carla-2.4.0.orig/source/bridges-ui/Makefile
++++ carla-2.4.0/source/bridges-ui/Makefile
+@@ -28,19 +28,19 @@ LINK_FLAGS       += $(WATER_LIBS) -lpthr
+ # ---------------------------------------------------------------------------------------------------------------------
+ 
+ BUILD_GTK2_FLAGS    = $(BUILD_CXX_FLAGS) -DBRIDGE_GTK2 $(X11_FLAGS)
+-LINK_GTK2_FLAGS     = $(LINK_FLAGS) $(X11_LIBS) $(LIBDL_LIBS)
++LINK_GTK2_FLAGS     = $(LINK_FLAGS) $(X11_LIBS) $(LIBDL_LIBS) $(FLAC_LIBS) $(VORBIS_LIBS)
+ 
+ BUILD_GTK3_FLAGS    = $(BUILD_CXX_FLAGS) -DBRIDGE_GTK3 $(X11_FLAGS)
+-LINK_GTK3_FLAGS     = $(LINK_FLAGS) $(X11_LIBS) $(LIBDL_LIBS)
++LINK_GTK3_FLAGS     = $(LINK_FLAGS) $(X11_LIBS) $(LIBDL_LIBS) $(FLAC_LIBS) $(VORBIS_LIBS)
+ 
+ BUILD_QT4_FLAGS     = $(BUILD_CXX_FLAGS) -DBRIDGE_QT4 $(shell pkg-config --cflags QtCore QtGui) $(X11_FLAGS) -I$(OBJDIR) -I$(CWD)/theme -Wno-unused-variable
+-LINK_QT4_FLAGS      = $(LINK_FLAGS) $(shell pkg-config --libs QtCore QtGui) $(X11_LIBS) $(LIBDL_LIBS)
++LINK_QT4_FLAGS      = $(LINK_FLAGS) $(shell pkg-config --libs QtCore QtGui) $(X11_LIBS) $(LIBDL_LIBS) $(FLAC_LIBS) $(VORBIS_LIBS)
  
  BUILD_QT5_FLAGS     = $(BUILD_CXX_FLAGS) -DBRIDGE_QT5 $(shell pkg-config --cflags Qt5Core Qt5Gui Qt5Widgets) -I$(OBJDIR) -I$(CWD)/theme
 -LINK_QT5_FLAGS      = $(LINK_FLAGS) $(shell pkg-config --libs Qt5Core Qt5Gui Qt5Widgets) $(LIBDL_LIBS)
@@ -44,23 +56,11 @@ Index: carla-2.1.1/source/bridges-ui/Makefile
  
  BUILD_COCOA_FLAGS   = $(BUILD_CXX_FLAGS) -DBRIDGE_COCOA -ObjC++
  LINK_COCOA_FLAGS    = $(LINK_FLAGS) -framework Cocoa $(LIBDL_LIBS)
-@@ -50,8 +50,11 @@ LINK_WINDOWS_FLAGS  = $(LINK_FLAGS) -sta
- 
- ifeq ($(HAVE_X11),true)
- LINK_GTK2_FLAGS += -lX11
-+LINK_GTK2_FLAGS += $(FLAC_LIBS) $(VORBIS_LIBS)
- LINK_GTK3_FLAGS += -lX11
-+LINK_GTK3_FLAGS += $(FLAC_LIBS) $(VORBIS_LIBS)
- LINK_QT4_FLAGS  += -lX11
-+LINK_QT4_FLAGS += $(FLAC_LIBS) $(VORBIS_LIBS)
- endif
- 
- ifeq ($(TESTBUILD),true)
-Index: carla-2.1.1/source/Makefile.mk
+Index: carla-2.4.0/source/Makefile.mk
 ===================================================================
---- carla-2.1.1.orig/source/Makefile.mk	2020-06-10 23:38:43.000000000 +0200
-+++ carla-2.1.1/source/Makefile.mk	2020-06-12 12:45:36.674697400 +0200
-@@ -436,6 +436,14 @@ QT5_FLAGS = $(shell $(PKG_CONFIG) $(PKG_
+--- carla-2.4.0.orig/source/Makefile.mk
++++ carla-2.4.0/source/Makefile.mk
+@@ -583,6 +583,14 @@ QT5_FLAGS = $(shell $(PKG_CONFIG) $(PKG_
  QT5_LIBS  = $(shell $(PKG_CONFIG) $(PKG_CONFIG_FLAGS) --libs Qt5Core Qt5Gui Qt5Widgets)
  endif
  
@@ -75,11 +75,11 @@ Index: carla-2.1.1/source/Makefile.mk
  ifeq ($(HAVE_SNDFILE),true)
  SNDFILE_FLAGS = $(shell $(PKG_CONFIG) $(PKG_CONFIG_FLAGS) --cflags sndfile)
  SNDFILE_LIBS  = $(shell $(PKG_CONFIG) $(PKG_CONFIG_FLAGS) --libs sndfile)
-Index: carla-2.1.1/source/plugin/Makefile
+Index: carla-2.4.0/source/plugin/Makefile
 ===================================================================
---- carla-2.1.1.orig/source/plugin/Makefile	2020-06-10 23:38:43.000000000 +0200
-+++ carla-2.1.1/source/plugin/Makefile	2020-06-12 12:45:36.674697400 +0200
-@@ -109,6 +109,9 @@ LINK_FLAGS += $(JUCE_GUI_EXTRA_LIBS)
+--- carla-2.4.0.orig/source/plugin/Makefile
++++ carla-2.4.0/source/plugin/Makefile
+@@ -114,6 +114,9 @@ LINK_FLAGS += $(JUCE_GUI_EXTRA_LIBS)
  endif
  endif
  
@@ -89,11 +89,11 @@ Index: carla-2.1.1/source/plugin/Makefile
  ifeq ($(MACOS),true)
  SYMBOLS_NATIVE  = -Wl,-exported_symbol,_carla_get_native_rack_plugin
  SYMBOLS_NATIVE += -Wl,-exported_symbol,_carla_get_native_patchbay_plugin
-Index: carla-2.1.1/source/backend/Makefile
+Index: carla-2.4.0/source/backend/Makefile
 ===================================================================
---- carla-2.1.1.orig/source/backend/Makefile	2020-06-10 23:38:43.000000000 +0200
-+++ carla-2.1.1/source/backend/Makefile	2020-06-12 12:45:36.674697400 +0200
-@@ -67,6 +67,8 @@ STANDALONE_LINK_FLAGS += $(LIBLO_LIBS)
+--- carla-2.4.0.orig/source/backend/Makefile
++++ carla-2.4.0/source/backend/Makefile
+@@ -72,6 +72,8 @@ STANDALONE_LINK_FLAGS += $(LIBLO_LIBS)
  STANDALONE_LINK_FLAGS += $(MAGIC_LIBS)
  STANDALONE_LINK_FLAGS += $(FLUIDSYNTH_LIBS)
  STANDALONE_LINK_FLAGS += $(X11_LIBS)
