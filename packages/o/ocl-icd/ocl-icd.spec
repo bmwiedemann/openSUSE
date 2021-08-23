@@ -17,7 +17,7 @@
 
 
 Name:           ocl-icd
-Version:        2.3.0
+Version:        2.3.1
 Release:        0
 Summary:        OpenCL ICD Bindings
 License:        BSD-2-Clause
@@ -26,8 +26,6 @@ Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%
 Source1:        baselibs.conf
 # PATCH-FEATURE-OPENSUSE n_UsrShare.patch boo#1173005, comment#8
 Patch0:         n_UsrShare.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-Updated-to-support-latest-Khronos-headers.patch
 BuildRequires:  libtool
 BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
