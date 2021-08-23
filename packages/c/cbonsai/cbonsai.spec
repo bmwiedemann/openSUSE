@@ -18,15 +18,15 @@
 
 
 Name:           cbonsai
-Version:        1.2.1
+Version:        1.3.1
 Release:        0
 Summary:        A bonsai tree generator for your terminal
 License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
 URL:            https://gitlab.com/jallbrit/cbonsai
 Source:         https://gitlab.com/jallbrit/cbonsai/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
-BuildRequires:  help2man
 BuildRequires:  ncurses-devel
+BuildRequires:  scdoc
 
 %description
 A beautifully random bonsai tree generator. It intelligently
@@ -40,9 +40,7 @@ configurable via CLI options.
 %make_build
 
 %install
-install -D -m 0755 cbonsai %{buildroot}%{_bindir}/cbonsai
-install -d %{buildroot}%{_mandir}/man1
-help2man %{buildroot}%{_bindir}/%{name} --no-discard-stderr --no-info > %{buildroot}%{_mandir}/man1/%{name}.1
+make install DESTDIR=%{buildroot} PREFIX=%{_prefix}
 
 %files
 %license LICENSE
