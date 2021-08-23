@@ -195,7 +195,7 @@ splitter-whitelist = B C D E F G H I J
 # now just for testing
 source_projects_expand = devel:languages:haskell
 
-devel-whitelist = home:Marcus_H:lnk devel:languages:rust:crates devel:kanku devel:languages:javascript devel:sap KDE:Qt6 devel:languages:python:aliyun
+devel-whitelist = openSUSE:infrastructure:MirrorCache
  
 # packagelist generator related configuration
 pkglistgen-archs = i586 x86_64
@@ -229,7 +229,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210820</value>
+    <value>20210823</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
