@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 14 22:14:58 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim unnecessary intermediate steps with /usr/bin/find.
+
+-------------------------------------------------------------------
 Fri Aug 13 08:27:13 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - 0001-spf_compile.c-Correct-size-of-ds_avail.patch: Fixed a remote stack
