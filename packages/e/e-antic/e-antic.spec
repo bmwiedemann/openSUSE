@@ -18,7 +18,7 @@
 
 %define lname	libeantic1
 Name:           e-antic
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  antic-devel
 BuildRequires:  arb-devel
 BuildRequires:  automake
 BuildRequires:  cereal-devel
+BuildRequires:  fdupes
 BuildRequires:  flint-devel >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
@@ -88,6 +89,7 @@ autoreconf -fi
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 find "%buildroot" -name install_files.txt -delete
+%fdupes %buildroot/%_prefix
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig
