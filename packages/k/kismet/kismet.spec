@@ -1,7 +1,7 @@
 #
 # spec file for package kismet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,9 @@
 %bcond_with ubertooth
 %endif
 
-%define realver 2020-12-R3
+%define realver 2021-08-R1
 Name:           kismet
-Version:        2020_12_R3
+Version:        2021_08_R1
 Release:        0
 Summary:        An 802.11 Wireless Network Sniffer
 License:        GPL-2.0-or-later
@@ -55,15 +55,18 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libbtbb-devel
 BuildRequires:  ubertooth-devel
 %endif
-Recommends:     kismet-capture-linux-wifi
-Recommends:     kismet-capture-linux-bluetooth
+Recommends:     kismet-capture-bt-geiger
 Recommends:     kismet-capture-freaklabs-zigbee
-Recommends:     kismet-capture-nrf-mousejack
-Recommends:     kismet-capture-ti-cc2540
+Recommends:     kismet-capture-linux-bluetooth
+Recommends:     kismet-capture-linux-wifi
 Recommends:     kismet-capture-nrf-51822
+Recommends:     kismet-capture-nrf-52840
+Recommends:     kismet-capture-nrf-mousejack
+Recommends:     kismet-capture-rz-killerbee
+Recommends:     kismet-capture-sdr-rtl433
 Recommends:     kismet-capture-sdr-rtladsb
 Recommends:     kismet-capture-sdr-rtlamr
-Recommends:     kismet-capture-sdr-rtl433
+Recommends:     kismet-capture-ti-cc2540
 Recommends:     kismet-logtools
 %if 0%{with ubertooth}
 Recommends:     kismet-capture-ubertooth-one
@@ -167,6 +170,17 @@ tool, and WIDS (wireless intrusion detection) framework.
 This subpackage contains the nRF MouseJack capture helper.
 https://kismetwireless.net/docs/readme/datasources_nrf_mousejack/
 
+%package capture-rz-killerbee
+Summary:        Kismet Killerbee Sniffer capture helper
+Group:          Productivity/Networking/Diagnostic
+Requires:       kismet = %{version}
+
+%description capture-rz-killerbee
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the Killerbee Sniffer capture helper.
+
 %package capture-freaklabs-zigbee
 Summary:        Kismet Freaklabs Zigbee capture helper
 Group:          Productivity/Networking/Diagnostic
@@ -190,7 +204,6 @@ tool, and WIDS (wireless intrusion detection) framework.
 This subpackage contains the Texas Instruments CC2540 BTLE capture
 helper.
 
-
 %package capture-ti-cc-2531
 Summary:        Kismet TICC2531 802.15.4 Zigbee Sniffer capture helper
 Group:          Productivity/Networking/Diagnostic
@@ -202,8 +215,7 @@ tool, and WIDS (wireless intrusion detection) framework.
 This subpackage contains the Texas Instruments  TICC2531 802.15.4
 Zigbee Sniffer capture helper.
 
-
-%package capture-nrf-51822 
+%package capture-nrf-51822
 Summary:        Kismet nRF 51822 (BTLE) capture helper
 Group:          Productivity/Networking/Diagnostic
 
@@ -213,8 +225,17 @@ tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the nRF 51822 BTLE capture helper.
 
+%package capture-nrf-52840
+Summary:        Kismet nRF 52840 (BTLE) capture helper
+Group:          Productivity/Networking/Diagnostic
 
-%package capture-nrf-nxp-kw41z 
+%description capture-nrf-52840
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the nRF 52840 BTLE capture helper.
+
+%package capture-nrf-nxp-kw41z
 Summary:        Kismet NXP KW41Z BTLE and Zigbee Sniffer capture helper
 Group:          Productivity/Networking/Diagnostic
 
@@ -224,6 +245,16 @@ tool, and WIDS (wireless intrusion detection) framework.
 
 This subpackage contains the NXP KW41Z BTLE and Zigbee Sniffer capture
 helper.
+
+%package capture-bt-geiger
+Summary:        Kismet BTLE geiger counter capture helper
+Group:          Productivity/Networking/Diagnostic
+
+%description capture-bt-geiger
+Kismet is a wireless network and device detector, sniffer, wardriving
+tool, and WIDS (wireless intrusion detection) framework.
+
+This subpackage contains the BTLE geiger counter capture helper.
 
 %if 0%{with ubertooth}
 %package capture-ubertooth-one
@@ -261,13 +292,16 @@ sed -i 's/\r$//' http_data/css/layout.css
 %configure \
     --sysconfdir=%{_sysconfdir}/kismet \
     --disable-optimization
-make %{?_smp_mflags} all-with-plugins
+make %{?_smp_mflags} all
+make %{?_smp_mflags} plugins
 
 %install
 export INSTUSR=`id -un`
 export INSTGRP=`id -gn`
 export MANGRP=`id -gn`
-%make_install rpm
+export SUIDGROUP=`id -gn`
+export SUID="no"
+%make_install -e
 install -D -m 0644 packaging/systemd/kismet.service %{buildroot}%{_unitdir}/%{name}.service
 install -d %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
@@ -334,6 +368,9 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %files capture-nrf-mousejack
 %{_bindir}/kismet_cap_nrf_mousejack
 
+%files capture-rz-killerbee
+%attr(755, root, -) %{_bindir}/kismet_cap_rz_killerbee
+
 %files capture-freaklabs-zigbee
 %{_bindir}/kismet_cap_freaklabs_zigbee
 %{python3_sitelib}/KismetCaptureFreaklabsZigbee*
@@ -359,8 +396,15 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %files capture-nrf-51822
 %{_bindir}/kismet_cap_nrf_51822
 
+%files capture-nrf-52840
+%{_bindir}/kismet_cap_nrf_52840
+
 %files capture-nrf-nxp-kw41z
 %{_bindir}/kismet_cap_nxp_kw41z
+
+%files capture-bt-geiger
+%{_bindir}/kismet_cap_bt_geiger
+%{python3_sitelib}/KismetCaptureBtGeiger*
 
 %if 0%{with ubertooth}
 %files capture-ubertooth-one

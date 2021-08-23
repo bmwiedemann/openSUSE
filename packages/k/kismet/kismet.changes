@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Sat Aug 21 07:54:55 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2021-08-R1
+  Changes and Updates
+  * UTF8/Unicode support in the UI
+  * New WIDS alerts
+  * Kismet now detects the VDOO RTL8170C exploits, and "funny"
+    SSIDs that attack Apple products.
+  * Small tweaks and improvements
+  * Wigle CSV files now encode the Kismet version in the upload.
+  * Client names are used in AP lists.
+  * Initial support for environmental sensors connected to Kismet.
+  * ticc2540/2531 udev rules.
+  * Minor revamping of websocket timeouts.
+  * Regex filtering added to the wiglecsv converter.
+  * Quick copy-to-clipboard buttons for some common fields in
+    the UI.
+  Bug fixes
+  * Handle URI parameters more correctly
+  * Don’t spin on "Loading..." in the datasource window sometimes.
+- Update to version 2021-06-R1
+  Bug fixes
+  * Another huge change to the threading model.
+  * Fix kismetdb_to_pcap on older kismetdb logs.
+  * Detect version properly in kismetdb_to_pcap and query the tags
+    field properly on older logs.
+  * Handle db versions properly in kismetdb_to_wiglecsv.
+  * Detect version properly in kismetdb_to_wiglecsv and query
+    fields properly.
+  * Handle nested WHERE in sqlite bridge.
+  * Handle nested WHERE queries properly and detect malformed
+    queries in the sqlite3 bridge.
+  * Fix kismetdb_to_wiglecsv Bluetooth.
+  * Handle the nested WHERE for Bluetooth devices in wiglecsv
+    correctly.
+  * Other minor bugfixes to errors, terminology, etc.
+- Update to version 2021-05-R1
+  Changes and Updates
+  * New mutex and threading.
+  * Multi-core packet decoding.
+  * New 802.15.4 phy.
+  * 802.15.4 is now decoded and displayed in the UI! While many
+    devices report the default PAN of 0x00, it’s still a huge
+    step forward!
+  * New data capture drivers for the Nuand BladeRF2 with Wiphy
+    firmware, the nrf52840 802.15.4 hardware, and killerbee
+    802.15.4 hardware.
+  * New alert UI.
+  * Alerts now have their own top-level panel and are searchable,
+    sortable, and have priorities assigned to them.
+  * Fix Wi-Fi on Linux 5.10 and newer.
+  * The Linux kernel changed how netlink messages are fragmented,
+    which broke how channels were indexed. Most likely this would
+    show up when you had a number of Wi-Fi interfaces plugged in
+    at once. This is fixed now.
+  * PcapNG GPS logging.
+  * New custom blocks and attributes in PcapNG logs for
+    GPS logging.
+  * Shift to officially requiring C++14 .
+  * Support older libwebsockets.
+  * Support ADSB HEX export per-source.
+  * Fix datasources in error state getting into weird loops.
+  * Datasoruces flapping in some error states (such as devices
+    being unplugged) could get into weird states where the UUID
+    would flap; this confused the logs, the datasources UI, and
+    other spots. Properly retain the UUID.
+  * Fix datasources getting into a no-channels state.
+  * Some combinations of errors could lead to datasources getting
+    into a state with no channels, and never being able to get out
+    of it.
+  * Fix Wi-Fi pulling WEXT legacy channels.
+  * Default to WEXT IOCTL legacy channels when netlink fails or
+    returns no channels, resolve wext channel frequencies to
+    channel names.
+  * Fix several thread contention errors on data.
+  * Several objects were shared for serialization and not properly
+    protected, leading to subtle corruption or outright crashes at
+    times. Those are now removed from the combined APIs or properly
+    protected.
+  * Better error handling for TI-CC-2531 and TI-CC-2540 .
+  * Handle soft-resets of the TI-CC-2531 and 2540 802.15.4 and
+    BTLE chipsets gracefully, so there are fewer errors and resets
+    of the hardware.
+  * Add Bluetooth and BTLE to Wigle exports.
+  * Adding a /&censor=1 to the Kismet web UI will censor all
+    location and mac addresses (to the best of its ability),
+    making it easy to take screenshots.
+  * The new webserver broke CORS negotiation. Fixed.
+  * Smarter handling of HT/VHT IE tags.
+  * Fix error timer initialization in datasources.
+  * Don’t accidentally kill other timers anymore.
+  * Add new WIDS signatures.
+  * Detect CVE-2020-9395.
+  * Fix up HTTP header connection states.
+  * Add fetch device, monitor device, mac search APIs.
+  * Fix eventbus websocket errors.
+  * Expand buffer sizes for remote and IPC capture, this improves
+    stability significantly on some platforms.
+  * Many more smaller bugfixes throughout.
+  * General improvements and changes to the REST API.
+
+-------------------------------------------------------------------
 Sun Feb 28 18:19:30 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Update kismet-fix-build.patch to drop build date again (boo#1047218)
