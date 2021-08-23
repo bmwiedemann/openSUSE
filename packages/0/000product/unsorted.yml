@@ -65,6 +65,7 @@ unsorted:
   - ImageMagick-devel 
   - ImageMagick-devel-32bit: [x86_64] 
   - ImageMagick-doc 
+  - Imath-devel 
   - Ipopt-devel: [x86_64] 
   - Ipopt-java: [x86_64] 
   - J7Z 
@@ -2078,7 +2079,6 @@ unsorted:
   - cockpit-system: [i586] 
   - cockpit-tests 
   - cockpit-ws 
-  - codec2 
   - codec2-devel 
   - codec2-examples 
   - codehaus-parent 
@@ -2676,6 +2676,7 @@ unsorted:
   - deal_II-openmpi3-devel: [x86_64] 
   - deal_II-openmpi4-devel: [x86_64] 
   - debhelper 
+  - debianutils 
   - debootstrap 
   - debuginfod-client 
   - debuginfod-dummy-client 
@@ -8567,10 +8568,10 @@ unsorted:
   - libAppStreamQt-devel 
   - libArcus-devel 
   - libArcus3 
-  - libBulletFileLoader2_89 
-  - libBulletInverseDynamicsUtils2_89 
-  - libBulletWorldImporter2_89 
-  - libBulletXmlWorldImporter2_89 
+  - libBulletFileLoader3_17 
+  - libBulletInverseDynamicsUtils3_17 
+  - libBulletWorldImporter3_17 
+  - libBulletXmlWorldImporter3_17 
   - libCEGUI-0 
   - libCEGUIIrrlichtRenderer-0-2 
   - libCEGUINullRenderer-0-2 
@@ -8582,7 +8583,7 @@ unsorted:
   - libColPack0 
   - libColPack0-32bit: [x86_64] 
   - libColorFull0 
-  - libConvexDecomposition2_89 
+  - libConvexDecomposition3_17 
   - libEMF-devel 
   - libEMF-utils 
   - libEMF1 
@@ -8595,7 +8596,7 @@ unsorted:
   - libFS-devel-32bit: [x86_64] 
   - libFS6 
   - libFS6-32bit: [x86_64] 
-  - libGIMPACTUtils2_89 
+  - libGIMPACTUtils3_17 
   - libGLC-devel 
   - libGLC0 
   - libGLEW2_2 
@@ -8611,7 +8612,7 @@ unsorted:
   - libGeneratedSaxParser0_3 
   - libGraphicsMagick++-devel 
   - libGraphicsMagickWand-Q16-2 
-  - libHACD2_89 
+  - libHACD3_17 
   - libHX-devel 
   - libHX-devel-32bit: [x86_64] 
   - libHYPRE-gnu-mpich-hpc 
@@ -8658,6 +8659,8 @@ unsorted:
   - libIlmImfUtil-2_5-25-32bit: [x86_64] 
   - libIlmThread-2_5-25-32bit: [x86_64] 
   - libImath-2_5-25-32bit: [x86_64] 
+  - libImath-3_1-29 
+  - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
   - libKF5Activities5-32bit: [x86_64] 
@@ -9791,7 +9794,7 @@ unsorted:
   - libbudgietheme0 
   - libbuffer0_3 
   - libbullet-devel 
-  - libbullet2_89 
+  - libbullet3_17 
   - libburn-devel 
   - libbuzztrax-core-devel 
   - libbuzztrax-core1 
@@ -10012,7 +10015,7 @@ unsorted:
   - libcnotify1 
   - libcob-devel 
   - libcob4 
-  - libcodec2-0_9-32bit: [x86_64] 
+  - libcodec2-1_0-32bit: [x86_64] 
   - libcogl-gles2-20 
   - libcogl-pango20-32bit: [x86_64] 
   - libcogl20-32bit: [x86_64] 
@@ -10533,7 +10536,7 @@ unsorted:
   - libfifechan_sdl0_1_5 
   - libfilezilla-devel 
   - libfilezilla-lang 
-  - libfilezilla14 
+  - libfilezilla16 
   - libfilteraudio0 
   - libfinal-devel 
   - libfinal-examples 
@@ -11252,7 +11255,7 @@ unsorted:
   - libhdf5hl_fortran_1_10_7-gnu-openmpi4-hpc 
   - libhdhomerun-devel 
   - libhdhomerun2 
-  - libhealpix_cxx2 
+  - libhealpix_cxx3 
   - libheif-devel 
   - libheif1-32bit: [x86_64] 
   - libheimdal 
@@ -12708,9 +12711,9 @@ unsorted:
   - libpoppler-glib8-32bit: [x86_64] 
   - libpoppler-qt5-1-32bit: [x86_64] 
   - libpoppler-qt5-devel 
-  - libpoppler-qt6-2 
+  - libpoppler-qt6-3 
   - libpoppler-qt6-devel 
-  - libpoppler111-32bit: [x86_64] 
+  - libpoppler112-32bit: [x86_64] 
   - libportal-devel 
   - libportaudio2-32bit: [x86_64] 
   - libportaudiocpp0 
@@ -13932,6 +13935,7 @@ unsorted:
   - libtotem_pg5-32bit: [x86_64] 
   - libtoxcore2 
   - libtpl-extensions3 
+  - libtpm2_pkcs11-0 
   - libtpm_unseal1 
   - libtpms-devel 
   - libtraceevent-devel 
@@ -20729,6 +20733,7 @@ unsorted:
   - pspp-doc 
   - pspp-lang 
   - psqlODBC 
+  - pssh 
   - pstoedit 
   - pstoedit-devel 
   - pthread-stubs-devel 
@@ -20791,8 +20796,6 @@ unsorted:
   - ptscotch_6_1_0-gnu-openmpi4-hpc-devel-static 
   - pugixml-devel 
   - pulseaudio-equalizer 
-  - pulseaudio-esound-compat 
-  - pulseaudio-module-gconf 
   - pulseaudio-module-jack 
   - pulseaudio-module-lirc 
   - pulseaudio-qt-devel 
@@ -20957,6 +20960,7 @@ unsorted:
   - python-ply-doc 
   - python-polib-doc 
   - python-praatio-doc 
+  - python-pssh 
   - python-py2pack-doc 
   - python-pybind11-common-devel 
   - python-pycadf-common 
@@ -21124,8 +21128,6 @@ unsorted:
   - python3-heatclient 
   - python3-hg-git 
   - python3-hivex 
-  - python3-img-proof 
-  - python3-img-proof-tests 
   - python3-imobiledevice 
   - python3-inspektor 
   - python3-ipa_hbac 
@@ -22226,6 +22228,7 @@ unsorted:
   - python36-dialite 
   - python36-dictdiffer 
   - python36-dictknife 
+  - python36-dictpath 
   - python36-dicttoxml 
   - python36-diff-match-patch 
   - python36-diffimg 
@@ -22944,6 +22947,7 @@ unsorted:
   - python36-natsort 
   - python36-nautilus 
   - python36-nautilus-devel 
+  - python36-nbclassic 
   - python36-nbclient 
   - python36-nbconvert 
   - python36-nbdime 
@@ -23005,6 +23009,7 @@ unsorted:
   - python36-odorik 
   - python36-ogr 
   - python36-oic 
+  - python36-oktaloginwrapper 
   - python36-olefile 
   - python36-oletools 
   - python36-olm 
@@ -23557,6 +23562,7 @@ unsorted:
   - python36-pytricia 
   - python36-pytz 
   - python36-pytzdata 
+  - python36-pyu2f 
   - python36-pyuca 
   - python36-pyudev 
   - python36-pyupgrade 
@@ -25043,6 +25049,7 @@ unsorted:
   - python38-dialite 
   - python38-dictdiffer 
   - python38-dictknife 
+  - python38-dictpath 
   - python38-dicttoxml 
   - python38-diff-match-patch 
   - python38-diffimg 
@@ -25889,6 +25896,7 @@ unsorted:
   - python38-ogr 
   - python38-oic 
   - python38-oiffile 
+  - python38-oktaloginwrapper 
   - python38-oletools 
   - python38-olm 
   - python38-onnx 
@@ -26458,6 +26466,7 @@ unsorted:
   - python38-pytools 
   - python38-pytricia 
   - python38-pytzdata 
+  - python38-pyu2f 
   - python38-pyuca 
   - python38-pyupgrade 
   - python38-pyusb 
@@ -28032,6 +28041,7 @@ unsorted:
   - python39-dialite 
   - python39-dictdiffer 
   - python39-dictknife 
+  - python39-dictpath 
   - python39-dicttoxml 
   - python39-diff-match-patch 
   - python39-diffimg 
@@ -28932,6 +28942,7 @@ unsorted:
   - python39-ogr 
   - python39-oic 
   - python39-oiffile 
+  - python39-oktaloginwrapper 
   - python39-olefile 
   - python39-oletools 
   - python39-olm 
@@ -29538,6 +29549,7 @@ unsorted:
   - python39-pytricia 
   - python39-pytz 
   - python39-pytzdata 
+  - python39-pyu2f 
   - python39-pyuca 
   - python39-pyudev 
   - python39-pyupgrade 
@@ -32064,6 +32076,7 @@ unsorted:
   - splint 
   - splinter-devel 
   - spotify-easyrpm 
+  - spotify-qt 
   - spotifyd 
   - spread-sheet-widget-devel 
   - spyder 
@@ -40820,6 +40833,8 @@ unsorted:
   - tpm-tools-pkcs11 
   - tpm2-0-tss: [i586] 
   - tpm2-0-tss-devel 
+  - tpm2-pkcs11 
+  - tpm2-pkcs11-devel 
   - tpm2-tss-engine 
   - tpm2-tss-engine-bash-completion 
   - tpm2-tss-engine-devel 

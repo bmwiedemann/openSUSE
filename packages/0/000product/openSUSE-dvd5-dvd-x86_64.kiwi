@@ -1226,11 +1226,14 @@
       <repopackage name="kiriki"/>
       <repopackage name="kiriki-lang"/>
       <repopackage name="kismet"/>
+      <repopackage name="kismet-capture-bt-geiger"/>
       <repopackage name="kismet-capture-freaklabs-zigbee"/>
       <repopackage name="kismet-capture-linux-bluetooth"/>
       <repopackage name="kismet-capture-linux-wifi"/>
       <repopackage name="kismet-capture-nrf-51822"/>
+      <repopackage name="kismet-capture-nrf-52840"/>
       <repopackage name="kismet-capture-nrf-mousejack"/>
+      <repopackage name="kismet-capture-rz-killerbee"/>
       <repopackage name="kismet-capture-sdr-rtl433"/>
       <repopackage name="kismet-capture-sdr-rtladsb"/>
       <repopackage name="kismet-capture-sdr-rtlamr"/>
@@ -1580,7 +1583,7 @@
       <repopackage name="libclutter-gtk-1_0-0"/>
       <repopackage name="libcmap4"/>
       <repopackage name="libcmis-0_5-5"/>
-      <repopackage name="libcodec2-0_9"/>
+      <repopackage name="libcodec2-1_0"/>
       <repopackage name="libcogl-pango20"/>
       <repopackage name="libcogl20"/>
       <repopackage name="libcolamd2"/>
@@ -2510,7 +2513,7 @@
       <repopackage name="libpoppler-cpp0"/>
       <repopackage name="libpoppler-glib8"/>
       <repopackage name="libpoppler-qt5-1"/>
-      <repopackage name="libpoppler111"/>
+      <repopackage name="libpoppler112"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libpopt0-32bit" arch="x86_64"/>
       <repopackage name="libportal0"/>
