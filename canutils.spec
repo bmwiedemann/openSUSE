@@ -1,7 +1,7 @@
 #
 # spec file for package canutils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           canutils
 Summary:        Utilities for Controller Area Networks from the Linux-CAN project
 License:        GPL-2.0-only AND BSD-3-Clause
 Group:          Hardware/Other
-Version:        2020.12.0
+Version:        2021.08.0
 Release:        0
 URL:            https://github.com/linux-can/can-utils
 Source:         https://github.com/linux-can/can-utils/archive/v%version.tar.gz
