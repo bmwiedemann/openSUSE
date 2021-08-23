@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Aug 14 22:39:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Rework filezilla-welcome_dialog.patch to keep the footer text
+  rather than killing it.
+
+-------------------------------------------------------------------
+Thu Aug 12 09:00:32 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.55.1
+  * Bugfixes and minor changes:
+    - Fixed a crash if a tree view items are deleted at the same
+      time as something is being dragged over the tree view
+    - Updated to libfilezilla 0.31.1 to fix an issue with SIGPIPE
+      on *nix
+- Add filezilla-welcome_dialog.patch to fix build error:
+  welcome_dialog.cpp:122:26: error: operands to '?:' have different
+  types 'wxString' and 'const std::__cxx11::basic_string<wchar_t>'
+
+-------------------------------------------------------------------
 Wed May 19 10:45:58 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.54.1

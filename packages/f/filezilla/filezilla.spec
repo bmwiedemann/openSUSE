@@ -16,16 +16,17 @@
 #
 
 
-%define main_version 3.54.1
+%define main_version 3.55.1
 
 Name:           filezilla
-Version:        3.54.1
+Version:        3.55.1
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://filezilla-project.org/
 Source0:        https://download.filezilla-project.org/client/FileZilla_%{version}_src.tar.bz2
+Patch0:         %{name}-welcome_dialog.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -41,7 +42,7 @@ BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gtk+-2.0)
-BuildRequires:  pkgconfig(libfilezilla) >= 0.28.0
+BuildRequires:  pkgconfig(libfilezilla) >= 0.31.1
 BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(nettle) >= 3.1
 # filezilla-team use BuildRequires:  pkgconfig(sqlite3) >= 3.11.1
@@ -86,6 +87,7 @@ This are development files for filezilla.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # Fix invalid translation locales:
 cd locales

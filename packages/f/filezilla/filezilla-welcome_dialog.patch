@@ -1,0 +1,22 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2021-08-15 00:41:12.427697293 +0200
+
+[  101s] welcome_dialog.cpp:122:26: error: operands to '?:' have different
+types 'wxString' and 'const std::__cxx11::basic_string<wchar_t>'
+---
+ src/interface/welcome_dialog.cpp |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: filezilla-3.55.1/src/interface/welcome_dialog.cpp
+===================================================================
+--- filezilla-3.55.1.orig/src/interface/welcome_dialog.cpp
++++ filezilla-3.55.1/src/interface/welcome_dialog.cpp
+@@ -119,7 +119,7 @@ bool CWelcomeDialog::Run(wxWindow* paren
+ 
+ 	buttons->Realize();
+ 
+-	InitFooter(force ? wxString() : resources);
++	InitFooter(force ? wxString() : wxString(resources));
+ 
+ 	Layout();
+ 
