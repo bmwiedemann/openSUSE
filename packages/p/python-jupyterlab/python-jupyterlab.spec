@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-jupyterlab
-Version:        3.0.7
+Version:        3.1.7
 Release:        0
 Summary:        Environment for interactive and reproducible computing
 License:        BSD-3-Clause
@@ -29,12 +29,12 @@ URL:            https://github.com/jupyterlab/jupyterlab
 # install from wheel with all the bundled nodejs stuff
 Source0:        https://files.pythonhosted.org/packages/py3/j/jupyterlab/jupyterlab-%{version}-py3-none-any.whl
 Source99:       python-jupyterlab-rpmlintrc
-BuildRequires:  %{python_module Jinja2 >= 2.10}
+BuildRequires:  %{python_module Jinja2 >= 2.1}
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module jupyter_core}
-BuildRequires:  %{python_module jupyter_server >= 1.2}
-BuildRequires:  %{python_module jupyterlab-server >= 2.0}
+BuildRequires:  %{python_module jupyter_server >= 1.4}
+BuildRequires:  %{python_module jupyterlab-server >= 2.3}
 BuildRequires:  %{python_module nbclassic >= 0.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
@@ -43,11 +43,11 @@ BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-jupyterlab = %{version}
-Requires:       python-Jinja2 >= 2.10
+Requires:       python-Jinja2 >= 2.1
 Requires:       python-ipython
 Requires:       python-jupyter_core
-Requires:       python-jupyter_server >= 1.2
-Requires:       python-jupyterlab-server >= 2.0
+Requires:       python-jupyter_server >= 1.4
+Requires:       python-jupyterlab-server >= 2.3
 Requires:       python-nbclassic >= 0.2
 Requires:       python-packaging
 Requires:       python-tornado >= 6.1
@@ -56,11 +56,13 @@ Obsoletes:      python-jupyter_jupyterlab < %{version}
 BuildArch:      noarch
 # SECTION test requirements including jupyterlab_server[test] and jupyter_server[test]
 BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module openapi-core >= 0.13.8}
 BuildRequires:  %{python_module pytest >= 6.0}
 BuildRequires:  %{python_module pytest-check-links}
 BuildRequires:  %{python_module pytest-console-scripts}
 BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module strict-rfc3339}
 BuildRequires:  %{python_module virtualenv}
 BuildRequires:  %{python_module wheel}

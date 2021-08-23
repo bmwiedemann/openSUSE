@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 16 15:33:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.7
+  * Full Changelog at
+    https://jupyterlab.readthedocs.io/en/stable/getting_started/changelog.html
+- Notable change in version 3.1
+  * From JupyterLab 3.1, file documents and notebooks have
+    collaborative editing using the Yjs shared editing framework
+    Editors are not collaborative by default; to activate it, start
+    JupyterLab with the --collaborative flag. See full
+    documentation on collaboration:
+    https://jupyterlab.readthedocs.io/en/latest/user/rtc.html
+
+-------------------------------------------------------------------
 Tue Feb  9 12:51:39 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Set buildshell to /bin/bash for use of "+=".
