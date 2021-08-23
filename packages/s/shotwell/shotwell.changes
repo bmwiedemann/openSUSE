@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 18 17:54:44 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.30.14:
+  + Fix import from camera, for real.
+- Changes from version 0.30.13:
+  + Fix import from camera.
+  + Fix editing event comment if photo is selected.
+  + Fix uploading more than 50 images to Google Photos.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue May 25 10:50:10 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.30.12:
