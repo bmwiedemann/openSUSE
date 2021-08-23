@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 10 06:56:52 UTC 2021 - kh Lai <dlshcbmuipmam@hotmail.com>
+
+- Update to 3.17
+  * improvements for the finite-element-method (FEM) deformable simulation
+  * See the "Learning Agile Robotic Locomotion Skills by Imitating Animals"
+    paper for more detail about this release
+- Update use-system-libs.patch for 3.17
+- Compile with USE_DOUBLE_PRECISION
+- Disable building BULLET_ROBOTICS and OBJ2SDF by cmake options instead
+  of removing them by sed
+
+-------------------------------------------------------------------
 Wed Mar 11 09:25:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Require freeglut-devel instead of pkgconfig(freeglut).

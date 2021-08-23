@@ -1,14 +1,19 @@
-From: Max Mitschke <max.mitschke@msufcu.org>
-Date: 2019-05-22 22:10:34 -0400
-References: 
-Upstream: never
-Subject: Use system-provided tinyxml2 library instead of bundled library
----
+From f9163f939804871f8574ccd11cb16719726ef373 Mon Sep 17 00:00:00 2001
+From: Adriankhl <dlshcbmuipmam@hotmail.com>
+Date: Tue, 10 Aug 2021 14:37:36 +0800
+Subject: [PATCH] Use system library
 
-diff -Naur a/CMakeLists.txt b/CMakeLists.txt
---- a/CMakeLists.txt	2018-12-31 15:42:41.000000000 -0500
-+++ b/CMakeLists.txt	2019-05-22 21:00:13.301474451 -0400
-@@ -328,6 +328,8 @@
+---
+ CMakeLists.txt                                         | 2 ++
+ Extras/BulletRobotics/CMakeLists.txt                   | 5 ++---
+ Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt | 5 ++---
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a695b7172..e549616c2 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -352,6 +352,8 @@ ENDIF(BUILD_PYBULLET)
  OPTION(BUILD_ENET "Set when you want to build apps with enet UDP networking support" ON)
  OPTION(BUILD_CLSOCKET "Set when you want to build apps with enet TCP networking support" ON)
  
@@ -17,9 +22,46 @@ diff -Naur a/CMakeLists.txt b/CMakeLists.txt
  
  IF(BUILD_PYBULLET)
  	FIND_PACKAGE(PythonLibs)
-diff -Naur a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
---- a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt	2018-12-31 15:42:41.000000000 -0500
-+++ b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt	2019-05-22 21:14:35.432401242 -0400
+diff --git a/Extras/BulletRobotics/CMakeLists.txt b/Extras/BulletRobotics/CMakeLists.txt
+index d2ab42334..442f003a5 100644
+--- a/Extras/BulletRobotics/CMakeLists.txt
++++ b/Extras/BulletRobotics/CMakeLists.txt
+@@ -1,5 +1,6 @@
+ 
+ INCLUDE_DIRECTORIES(
++		${tinyxml2_INCLUDE_DIRS}
+ 		${BULLET_PHYSICS_SOURCE_DIR}/src
+ 		${BULLET_PHYSICS_SOURCE_DIR}/examples
+ 		${BULLET_PHYSICS_SOURCE_DIR}/examples/SharedMemory
+@@ -63,7 +64,6 @@ SET(BulletRobotics_INCLUDES
+   ../../examples/Utils/b3ERPCFMHelper.hpp
+   ../../examples/Utils/b3ReferenceFrameHelper.hpp  
+ 
+-  ../../examples/ThirdPartyLibs/tinyxml2/tinyxml2.h
+   ../../examples/ThirdPartyLibs/Wavefront/tiny_obj_loader.h
+   ../../examples/ThirdPartyLibs/stb_image/stb_image.h
+   ../../examples/ThirdPartyLibs/BussIK/Jacobian.h
+@@ -147,7 +147,6 @@ SET(BulletRobotics_SRCS ${BulletRobotics_INCLUDES}
+ 	../../examples/Utils/b3ResourcePath.cpp
+ 	../../examples/Utils/ChromeTraceUtil.cpp
+ 
+-	../../examples/ThirdPartyLibs/tinyxml2/tinyxml2.cpp
+ 	../../examples/ThirdPartyLibs/Wavefront/tiny_obj_loader.cpp
+ 	../../examples/ThirdPartyLibs/stb_image/stb_image.cpp
+ 	../../examples/ThirdPartyLibs/BussIK/Jacobian.cpp
+@@ -282,7 +281,7 @@ SET_TARGET_PROPERTIES(BulletRobotics PROPERTIES VERSION ${BULLET_VERSION})
+ SET_TARGET_PROPERTIES(BulletRobotics PROPERTIES SOVERSION ${BULLET_VERSION})
+ 
+ IF (BUILD_SHARED_LIBS)
+-	TARGET_LINK_LIBRARIES(BulletRobotics BulletInverseDynamicsUtils BulletWorldImporter BulletFileLoader BulletSoftBody BulletDynamics BulletCollision BulletInverseDynamics LinearMath Bullet3Common)
++	TARGET_LINK_LIBRARIES(BulletRobotics BulletInverseDynamicsUtils BulletWorldImporter BulletFileLoader BulletSoftBody BulletDynamics BulletCollision BulletInverseDynamics LinearMath Bullet3Common ${tinyxml2_LIBRARIES})
+ ENDIF (BUILD_SHARED_LIBS)
+ 
+   
+diff --git a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
+index 9fd125e44..560ede3d4 100644
+--- a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
++++ b/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt
 @@ -1,8 +1,8 @@
  INCLUDE_DIRECTORIES(
 +	${tinyxml2_INCLUDE_DIRS}
@@ -30,7 +72,7 @@ diff -Naur a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt b/Extras/Ser
  )
  
  ADD_LIBRARY(
-@@ -11,14 +11,13 @@
+@@ -11,14 +11,13 @@ ADD_LIBRARY(
  	btBulletXmlWorldImporter.h
  	string_split.cpp
  	string_split.h
@@ -46,3 +88,6 @@ diff -Naur a/Extras/Serialize/BulletXmlWorldImporter/CMakeLists.txt b/Extras/Ser
  ENDIF (BUILD_SHARED_LIBS)
  
  IF (INSTALL_EXTRA_LIBS)
+-- 
+2.32.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package libbullet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sover   2_89
+%define sover   3_17
 %define lname   libbullet%{sover}
 %define pdesc   Bullet is a Collision Detection and Rigid Body Dynamics Library.
 Name:           libbullet
-Version:        2.89
+Version:        3.17
 Release:        0
 Summary:        Bullet Continuous Collision Detection and Physics Library
 License:        Zlib
@@ -129,12 +129,6 @@ rm -rf build3/premake*
 rm -rf data
 rm -rf examples
 
-# Taken from Fedora specfile
-# BulletRobotics and obj2sdf require several bundled libs not yet packaged in 
-# the distribution
-sed -i 's|BulletRobotics||' Extras/CMakeLists.txt
-sed -i 's|obj2sdf||' Extras/CMakeLists.txt
-
 # Fix any file permissions and formats
 dos2unix -c ascii README.md
 
@@ -150,7 +144,11 @@ dos2unix -c ascii README.md
        -DBUILD_SHARED_LIBS=ON \
        -DBUILD_UNIT_TESTS=off \
        -DINSTALL_EXTRA_LIBS=ON \
-       -DINSTALL_LIBS=ON
+       -DINSTALL_LIBS=ON \
+       -DUSE_DOUBLE_PRECISION=ON \
+       -DBUILD_BULLET_ROBOTICS_GUI_EXTRA=OFF \
+       -DBUILD_BULLET_ROBOTICS_EXTRA=OFF \
+       -DBUILD_OBJ2SDF_EXTRA=OFF
 
 make VERBOSE=1 %{?_smp_mflags}
 
