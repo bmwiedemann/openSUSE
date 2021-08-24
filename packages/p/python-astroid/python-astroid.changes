@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Thu Aug 19 13:13:43 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.7.1
+  * When processing dataclass attributes, only do typing inference on collection types.
+    Support for instantiating other typing types is left for the future, if desired.
+    Closes #1129
+  * Fixed LookupMixIn missing from ``astroid.node_classes``.
+- from version 2.7.0
+  * Import from ``astroid.node_classes`` and ``astroid.scoped_nodes`` has been deprecated in favor of
+    ``astroid.nodes``. Only the imports from ``astroid.nodes`` will work in astroid 3.0.0.
+  * Add support for arbitrary Enum subclass hierachies
+    Closes PyCQA/pylint#533
+    Closes PyCQA/pylint#2224
+    Closes PyCQA/pylint#2626
+  * Add inference tips for dataclass attributes, including dataclasses.field calls.
+    Also add support for InitVar.
+    Closes PyCQA/pylint#2600
+    Closes PyCQA/pylint#2698
+    Closes PyCQA/pylint#3405
+    Closes PyCQA/pylint#3794
+  * Adds a brain that deals with dynamic import of `IsolatedAsyncioTestCase` class of the `unittest` module.
+    Closes PyCQA/pylint#4060
+- from version 2.6.6
+  * Added support to infer return type of ``typing.cast()``
+  * Fix variable lookup's handling of exclusive statements
+    Closes PyCQA/pylint#3711
+  * Fix variable lookup's handling of function parameters
+    Closes PyCQA/astroid#180
+  * Fix variable lookup's handling of except clause variables
+  * Fix handling of classes with duplicated bases with the same name
+    Closes PyCQA/astroid#1088
+- from version 2.6.5
+  * Fix a crash when there would be a 'TypeError object does not support
+    item assignment' in the code we parse.
+    Closes PyCQA/pylint#4439
+  * Fix a crash when a AttributeInferenceError was raised when
+    failing to find the real name in infer_import_from.
+    Closes PyCQA/pylint#4692
+- from version 2.6.4
+  * Fix a crash when a StopIteration was raised when inferring
+    a faulty function in a context manager.
+    Closes PyCQA/pylint#4723
+- from version 2.6.3
+  * Added ``If.is_sys_guard`` and ``If.is_typing_guard`` helper methods
+  * Fix a bad inferenece type for yield values inside of a derived class.
+    Closes PyCQA/astroid#1090
+  * Fix a crash when the node is a 'Module' in the brain builtin inference
+    Closes PyCQA/pylint#4671
+  * Fix issues when inferring match variables
+    Closes PyCQA/pylint#4685
+  * Fix lookup for nested non-function scopes
+  * Fix issue that ``TypedDict`` instance wasn't callable.
+    Closes PyCQA/pylint#4715
+  * Add dependency on setuptools and a guard to prevent related exceptions.
+- from version 2.6.2
+  * Fix a crash when the inference of the length of a node failed
+    Closes PyCQA/pylint#4633
+  * Fix unhandled StopIteration during inference, following the implementation
+    of PEP479 in python 3.7+
+    Closes PyCQA/pylint#4631
+    Closes #1080
+- from version 2.6.1
+   * Fix issue with ``TypedDict`` for Python 3.9+
+     Closes PyCQA/pylint#4610
+- from version 2.6.0
+   * Appveyor and travis are no longer used in the continuous integration
+   * ``setuptools_scm`` has been removed and replaced by ``tbump`` in order to not
+     have hidden runtime dependencies to setuptools
+   * ``NodeNg``, the base node class, is now accessible from ``astroid`` or
+     ``astroid.nodes`` as it can be used for typing.
+   * Update enum brain to improve inference of .name and .value dynamic class
+     attributes
+     Closes PyCQA/pylint#1932
+     Closes PyCQA/pylint#2062
+     Closes PyCQA/pylint#2306
+   * Removed ``Repr``, ``Exec``, and ``Print`` nodes as the ``ast`` nodes
+     they represented have been removed with the change to Python 3
+   * Deprecate ``Ellipsis`` node. It will be removed with the next minor release.
+     Checkers that already support Python 3.8+ work without issues. It's only
+     necessary to remove all references to the ``astroid.Ellipsis`` node.
+     This changes will make development of checkers easier as the resulting tree for Ellipsis
+     will no longer depend on the python version. **Background**: With Python 3.8 the
+     ``ast.Ellipsis`` node, along with ``ast.Str``, ``ast.Bytes``, ``ast.Num``,
+     and ``ast.NamedConstant`` were merged into ``ast.Constant``.
+   * Deprecated ``Index`` and ``ExtSlice`` nodes. They will be removed with the
+     next minor release. Both are now part of the ``Subscript`` node.
+     Checkers that already support Python 3.9+ work without issues.
+     It's only necessary to remove all references to the ``astroid.Index`` and
+     ``astroid.ExtSlice`` nodes. This change will make development of checkers
+     easier as the resulting tree for ``ast.Subscript`` nodes will no longer
+     depend on the python version. **Background**: With Python 3.9 ``ast.Index``
+     and ``ast.ExtSlice`` were merged into the ``ast.Subscript`` node.
+   * Updated all Match nodes to be internally consistent.
+   * Add ``Pattern`` base class.
+- from version 2.5.8
+   * Improve support for Pattern Matching
+   * Add lineno and col_offset for ``Keyword`` nodes and Python 3.9+
+   * Add global inference cache to speed up inference of long statement blocks
+   * Add a limit to the total number of nodes inferred indirectly as a result
+     of inferring some node
+- from version 2.5.7
+   * Fix six.with_metaclass transformation so it doesn't break user defined transformations.
+   * Fix detection of relative imports.
+     Closes #930
+     Closes PyCQA/pylint#4186
+   * Fix inference of instance attributes defined in base classes
+     Closes #932
+   * Update `infer_named_tuple` brain to reject namedtuple definitions
+     that would raise ValueError
+     Closes #920
+   * Do not set instance attributes on builtin object()
+     Closes #945
+     Closes PyCQA/pylint#4232
+     Closes PyCQA/pylint#4221
+     Closes PyCQA/pylint#3970
+     Closes PyCQA/pylint#3595
+   * Fix some spurious cycles detected in ``context.path`` leading to more cases
+     that can now be inferred
+     Closes #926
+   * Add ``kind`` field to ``Const`` nodes, matching the structure of the built-in ast Const.
+     The kind field is "u" if the literal is a u-prefixed string, and ``None`` otherwise.
+     Closes #898
+   * Fix property inference in class contexts for properties defined on the metaclass
+     Closes #940
+   * Update enum brain to fix definition of __members__ for subclass-defined Enums
+     Closes PyCQA/pylint#3535
+     Closes PyCQA/pylint#4358
+   * Update random brain to fix a crash with inference of some sequence elements
+     Closes #922
+   * Fix inference of attributes defined in a base class that is an inner class
+     Closes #904
+   * Allow inferring a return value of None for non-abstract empty functions and
+     functions with no return statements (implicitly returning None)
+     Closes #485
+   * scm_setuptools has been added to the packaging.
+   * Astroid's tags are now the standard form ``vX.Y.Z`` and not ``astroid-X.Y.Z`` anymore.
+   * Add initial support for Pattern Matching in Python 3.10
+
+-------------------------------------------------------------------
 Fri May  7 14:36:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.6
