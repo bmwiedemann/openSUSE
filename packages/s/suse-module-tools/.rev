@@ -437,4 +437,13 @@ source service setup which messed up my spec file.
     (bsc#1177695) (forwarded request 904234 from mwilck)</comment>
     <requestid>904235</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>0a179406890602a34503dc8685ccdfb8</srcmd5>
+    <version>16.0.8+1</version>
+    <time>1629795255</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.8+1:
+  * spec file: fix BuildRequires (forwarded request 913286 from mwilck)</comment>
+    <requestid>913288</requestid>
+  </revision>
 </revisionlist>

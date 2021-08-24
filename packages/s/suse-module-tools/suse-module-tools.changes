@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 20 09:05:54 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.8+1:
+  * spec file: fix BuildRequires
+
+-------------------------------------------------------------------
+Thu Aug 19 18:53:24 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.8:
+  * fix problem that initrd may not be rebuilt after installing
+    kernel-$flavor-extra (bsc#1189441)
+
+-------------------------------------------------------------------
+Thu Aug 19 11:31:32 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.7:
+  * add kernel-sysctl.service and boot-sysctl.service for applying
+    kernel-specific sysctl settings (bsc#1184804)
+  * add support for zstd-compressed kernel modules
+
+-------------------------------------------------------------------
 Mon Jul  5 15:14:47 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.6:
