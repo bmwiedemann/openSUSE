@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Carp-Assert-More
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Carp-Assert-More
 Name:           perl-Carp-Assert-More
-Version:        1.26
+Version:        2.0.1
 Release:        0
-Summary:        Convenience wrappers around Carp::Assert
+Summary:        Convenience assertions for common situations
 License:        Artistic-2.0
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/P/PE/PETDANCE/%{cpan_name}-%{version}.tar.gz
@@ -28,27 +28,25 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Carp::Assert)
 BuildRequires:  perl(Test::Exception)
-Requires:       perl(Carp::Assert)
 Requires:       perl(Test::Exception)
 %{perl_requires}
 
 %description
-Carp::Assert::More is a set of wrappers around the Carp::Assert functions
-to make the habit of writing assertions even easier.
+Carp::Assert::More is a convenient set of assertions to make the habit of
+writing assertions even easier.
 
 Everything in here is effectively syntactic sugar. There's no technical
-reason to use
+difference between calling one of these functions:
 
-    assert_isa( $foo, 'HTML::Lint' );
+    assert_datetime( $foo );
+    assert_isa( $foo, 'DateTime' );
 
-instead of
+that are provided by Carp::Assert::More and calling these assertions from
+Carp::Assert
 
     assert( defined $foo );
-    assert( ref($foo) eq 'HTML::Lint' );
-
-other than readability and simplicity of the code.
+    assert( ref($foo) eq 'DateTime' );
 
 My intent here is to make common assertions easy so that we as programmers
 have no excuse to not use them.

@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Aug 14 03:06:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.0.1
+   see /usr/share/doc/packages/perl-Carp-Assert-More/Changes
+
+  2.0.1   Fri Aug 13 11:57:15 CDT 2021
+          [FIXES]
+          assert_all_keys_in() mistakenly required a non-empty list of
+          keys to check.
+          [ENHANCEMENTS]
+          Sped up assert_isa_in(), assert_is().
+  2.0.0   Thu Aug 12 23:00::00 CDT 2021
+          [DIFFERENCES]
+          Now requires Perl 5.10 or higher.  No longer requires Carp::Assert.
+          The numeric functions are more stringent now.  If it expects
+          a number, then you need to pass a number.  For example,
+          assert_nonnegative($x) would pass if $x was a non-numeric
+          string. Now it must be numeric.
+          assert_empty() and assert_nonempty() no longer gives a message
+          of "Not an array or hash reference".  If you don't pass an array
+          or hash reference, the assertion will just fail with the message
+          passe3d in.
+          assert_aoh() and assert_datetime() no longer provide a default
+          message.
+          assert_in() is more strict. Each element of the target array
+          is checked to not be a reference.
+          assert_exists() and assert_lacks() are more strict.  The list
+          of keys to check cannot be empty.
+          [ENHANCEMENTS]
+          Most of the functions are about twice as fast because of reduced
+          number of function calls internally.
+          Added assert_context_nonvoid() and assert_context_scalar()
+          to assert on how the executing function has been called.
+          assert_in() now lets you use undef as both the needle and one
+          of the values in the haystack.
+
+-------------------------------------------------------------------
 Sun Dec 27 03:06:15 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.26
