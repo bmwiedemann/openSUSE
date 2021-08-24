@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 23 13:01:26 UTC 2021 - kukuk@suse.com
+
+- Update to version 84.87+git20210823.4c98889:
+  * Remove /etc/hushlogins
+
+-------------------------------------------------------------------
+Thu Aug 19 14:48:40 UTC 2021 - lnussel@suse.de
+
+- Update to version 84.87+git20210819.b55340d:
+  * Rework locale checks for better support of ssh
+  * Update mime types from apache
+  * Better support of Midnight Commander color skins (boo#1188862)
+
+-------------------------------------------------------------------
 Wed Jul 28 06:29:31 UTC 2021 - kukuk@suse.com
 
 - Update to version 84.87+git20210727.b447649:

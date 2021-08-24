@@ -3930,4 +3930,13 @@
     <comment></comment>
     <requestid>908838</requestid>
   </revision>
+  <revision rev="483" vrev="1">
+    <srcmd5>d70874ed48265251ce86d060afcd86c7</srcmd5>
+    <version>84.87+git20210823.4c98889</version>
+    <time>1629795233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 84.87+git20210823.4c98889:
+  * Remove /etc/hushlogins (forwarded request 913772 from kukuk)</comment>
+    <requestid>913774</requestid>
+  </revision>
 </revisionlist>

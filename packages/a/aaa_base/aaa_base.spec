@@ -23,7 +23,7 @@
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20210727.b447649
+Version:        84.87+git20210823.4c98889
 Release:        0
 URL:            https://github.com/openSUSE/aaa_base
 # do not require systemd - aaa_base is in the build environment and we don't
@@ -189,12 +189,12 @@ mkdir -p %{buildroot}%{_fillupdir}
 %config /etc/profile
 /usr/etc/profile.d/alljava.csh
 /usr/etc/profile.d/alljava.sh
-/usr/etc/profile.d/csh.ssh
 /usr/etc/profile.d/lang.csh
 /usr/etc/profile.d/lang.sh
 /usr/etc/profile.d/profile.csh
 /usr/etc/profile.d/profile.sh
-/usr/etc/profile.d/sh.ssh
+/usr/etc/profile.d/term.csh
+/usr/etc/profile.d/term.sh
 /usr/etc/profile.d/xdg-environment.csh
 /usr/etc/profile.d/xdg-environment.sh
 /usr/etc/profile.d/complete.bash
@@ -213,7 +213,6 @@ mkdir -p %{buildroot}%{_fillupdir}
 # don't forget to also change aaa_base.post, boot.cleanup
 # and /etc/permissions!
 %ghost %attr(0644,root,root) %verify(not md5 size mtime) /var/log/lastlog
-/etc/hushlogins
 /usr/bin/get_kernel_version
 /usr/sbin/refresh_initrd
 /usr/sbin/service
