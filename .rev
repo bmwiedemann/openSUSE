@@ -257,4 +257,20 @@ Bugfixes
   fix retried Redis commands after a reconnect; see #642 (forwarded request 912043 from stroeder)</comment>
     <requestid>912383</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ab3977598da449e4f3cb4286ae6e32da</srcmd5>
+    <version>2.4.9.2</version>
+    <time>1629795294</time>
+    <user>dimstar_suse</user>
+    <comment>- use declared tarball
+
+- update to 2.4.9.2
+  * Bugfixes
+    - fix graceful restart (regression); see #458
+  * Features
+    - preserve session cookie in the event of a cache backend failure
+    - update the id_token in the session cache if one is provided while
+      refreshing the access token</comment>
+    <requestid>913945</requestid>
+  </revision>
 </revisionlist>

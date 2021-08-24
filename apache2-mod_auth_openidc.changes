@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Aug 24 07:26:05 UTC 2021 - pgajdos@suse.com
+
+- use declared tarball
+
+-------------------------------------------------------------------
+Mon Aug 23 19:39:44 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.9.2
+  * Bugfixes
+    - fix graceful restart (regression); see #458
+  * Features
+    - preserve session cookie in the event of a cache backend failure
+    - update the id_token in the session cache if one is provided while
+      refreshing the access token
+
+-------------------------------------------------------------------
 Fri Aug 13 17:57:57 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.4.9.1
