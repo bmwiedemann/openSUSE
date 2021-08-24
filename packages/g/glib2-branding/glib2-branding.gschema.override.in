@@ -75,7 +75,7 @@ help = ['Help', '<Super>F1']
 
 [org.gnome.shell]
 ## Default apps shown in the gnome-shell dash
-@@IF_openSUSE@@favorite-apps = [ 'firefox.desktop', 'org.gnome.Evolution.desktop', 'empathy.desktop', 'gnome-music.desktop', 'shotwell.desktop', 'writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop' ]
+@@IF_openSUSE@@favorite-apps = [ 'firefox.desktop', 'org.gnome.Evolution.desktop', 'empathy.desktop', 'gnome-music.desktop', 'shotwell.desktop', 'libreoffice-writer.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop' ]
 @@IF_SLE@@favorite-apps = [ 'firefox.desktop', 'evolution.desktop', 'pidgin.desktop', 'gnome-photos.desktop', 'startcenter.desktop', 'org.gnome.Nautilus.desktop', 'org.gnome.Documents.desktop', 'yelp.desktop' ]
 @@IF_SLE@@## Default extensions that are enabled
 @@IF_SLE@@enabled-extensions = [ 'alternative-status-menu@gnome-shell-extensions.gcampax.github.com' ]

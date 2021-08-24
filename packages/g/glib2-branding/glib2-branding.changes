@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 11:30:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update for libreoffice-* desktop files no longer dropping the
+  libreoffice- prefix.
+
+-------------------------------------------------------------------
 Sun Oct 11 17:39:25 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add priority of 20 to gschema override, otherwise you can't
