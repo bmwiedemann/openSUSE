@@ -6,6 +6,11 @@ Wed Aug  4 10:28:49 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
   usrmerged setup
 
 -------------------------------------------------------------------
+Wed Aug  4 08:36:25 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Use %autosetup
+
+-------------------------------------------------------------------
 Thu Jul 22 16:43:20 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Replace grub2-use-stat-instead-of-udevadm-for-partition-lookup.patch and
