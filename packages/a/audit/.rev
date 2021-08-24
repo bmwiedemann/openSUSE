@@ -823,4 +823,13 @@ Fix bz#1160384</comment>
 - use https source urls</comment>
     <requestid>910030</requestid>
   </revision>
+  <revision rev="96" vrev="2">
+    <srcmd5>ec8a976eb453028c5324b32c59aac40e</srcmd5>
+    <version>3.0.3</version>
+    <time>1629795231</time>
+    <user>dimstar_suse</user>
+    <comment>- harden_auditd.service.patch: automatic hardening applied to systemd
+  services</comment>
+    <requestid>912415</requestid>
+  </revision>
 </revisionlist>

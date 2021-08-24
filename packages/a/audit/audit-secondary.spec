@@ -36,6 +36,7 @@ Patch3:         audit-allow-manual-stop.patch
 Patch4:         audit-ausearch-do-not-require-tclass.patch
 Patch5:         change-default-log_group.patch
 Patch6:         libev-werror.patch
+Patch7:         harden_auditd.service.patch
 BuildRequires:  audit-devel = %{version}
 BuildRequires:  autoconf >= 2.12
 BuildRequires:  gcc-c++
@@ -127,6 +128,7 @@ rm -rf audisp/plugins/prelude
 %patch4 -p1
 %patch5 -p1
 %patch6 -p1
+%patch7 -p1
 
 %if %{without python2} && %{with python3}
 # Fix python env call in tests if we only have Python3.

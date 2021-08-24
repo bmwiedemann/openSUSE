@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:29:21 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- harden_auditd.service.patch: automatic hardening applied to systemd
+  services
+
+-------------------------------------------------------------------
 Fri Jul 30 18:14:14 CEST 2021 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update to version 3.0.3:
