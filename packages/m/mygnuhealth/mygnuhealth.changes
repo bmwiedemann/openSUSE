@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 23 16:25:06 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.0.4
+* fixes plotting issues when matplotlib uses unsorted records or dup
+  batch inputs.
+
+-------------------------------------------------------------------
 Sun Jul 25 13:42:31 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.0.3
