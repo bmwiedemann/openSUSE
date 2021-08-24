@@ -18,7 +18,7 @@
 
 %define lname   libell0
 Name:           ell
-Version:        0.41
+Version:        0.42
 Release:        0
 Summary:        Wireless setup and cryptography library
 License:        LGPL-2.1-or-later

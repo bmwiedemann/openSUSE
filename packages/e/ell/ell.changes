@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 19 20:03:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.42
+  * Add support for constant time security functions.
+  * Add support for manipulating DHCP leases.
+
+-------------------------------------------------------------------
 Mon Jun 21 19:52:55 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.41
