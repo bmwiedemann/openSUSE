@@ -1,0 +1,276 @@
+-------------------------------------------------------------------
+Sun Aug 15 12:20:32 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 2.3.0 version
+  complete description https://github.com/PDAL/PDAL/releases/tag/2.3.0 
+
+-------------------------------------------------------------------
+Sat Aug 14 17:16:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Split bash-completion to its own package like e.g. NetworkManager.
+- Remove old rpm specfile constructs like %defattr. Trim author
+  lists from package description. Set groups. Use multi-argument
+  find -exec.
+- Drop extraneous Provides of the library package; this should
+  all be autodetected.
+- Ensure that documentation is in fact processed by fdupes.
+
+-------------------------------------------------------------------
+Fri Aug 13 08:29:11 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Add missing requires laszip-devel to devel package.
+
+-------------------------------------------------------------------
+Sun Nov 15 08:15:50 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Rework BuildRequires as only libpq is really needed
+  + Indicate -DPOSTGRESQL_INCLUDE_DIR build flag 
+  + Remove postgresql-devel postgresql-server-devel buildrequires
+- Fix a sed instruction to use -i
+
+-------------------------------------------------------------------
+Mon Sep 21 13:15:28 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de> 2.2.0
+
+- update to 2.2.0
+  * The Zstandard compression library is no longer required in order to build PDAL.
+  * The Ubuntu conda image now installs all of PDAL under /usr.
+  * The default type of the ClusterID dimension has changed from uint64_t to int64_t.
+  * Most operations now store data using ColumnPointTable, which stores data in
+    arrays of dimensions, rather than arrays of point data. This can improve the
+    performance of some operations substantially. Generally, this change should
+    not be noticeable to users.
+  * Normal refinement (refine option) in filters.normal is now off by default. (#3133)
+  * All filters now accept a where option to allow points to skip the filters. (#3118)
+  * PDAL now searches for plugins in the same directory containing the PDAL library. (#3181)
+
+  see https://github.com/PDAL/PDAL/releases/tag/2.2.0
+
+-------------------------------------------------------------------
+Wed Jun 17 13:49:44 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Add a manual fix for PDALConfig.cmake where the 
+  @PDAL_CONFIG_LIBRARY_DIRS@ is wrongly expanded.
+
+-------------------------------------------------------------------
+Fri Apr 10 16:29:56 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- update to 2.1.0 version
+  release note at https://github.com/PDAL/PDAL/releases
+  + Disable removed plugin SQLITE
+  + Disable independant plugin python3
+- Packaging
+  + Fix postgresql(-server)-devel package requirement
+  + spec cleanup
+
+-------------------------------------------------------------------
+Sat Mar 14 13:19:03 UTC 2020 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Renew spec file, remove obsolete SUSE openSUSE versions
+- Remove specific line in cmake about python3 (build failed with
+  new 3.8 version in Factory
+
+-------------------------------------------------------------------
+Tue Sep 17 07:35:50 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 2.0.1
+  See https://github.com/PDAL/PDAL/releases/tag/2.0.1
+
+-------------------------------------------------------------------
+Mon Jul  8 15:45:21 UTC 2019 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 1.9.1
+  For release notes see https://github.com/PDAL/PDAL/releases
+
+-------------------------------------------------------------------
+Wed Feb 20 09:30:33 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Remove FindLASzip-cmake.patch with new laszip 3.2.2
+
+-------------------------------------------------------------------
+Mon Feb 18 17:57:26 UTC 2019 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to 1.8.0 version (fix broken build with python3.7)
+  + changelog https://github.com/PDAL/PDAL/releases/tag/1.8.0
+  + important issue about las 1.4 compressed with laszip
+- Packaging
+  + refresh patch FindLASzip-cmake.patch
+  + spec-cleaner minimal
+  + bump SONAME to 8.0.0, SOVER to 7
+  + cleanup changes (trailling space)
+  + delete orphan f717a4c.patch
+  + add new plugin libpdal_plugin_kernel_fauxplugin
+
+-------------------------------------------------------------------
+Mon Jun 11 12:47:56 UTC 2018 - bruno@ioda-net.ch
+
+- Define %make_build for openSUSE_Leap_42.3
+
+-------------------------------------------------------------------
+Fri Jun  1 19:35:14 UTC 2018 - bruno@ioda-net.ch
+
+- Packaging:
+  + spec-clean -m (date,url,license)
+  + use make_build standard macro
+  + remove merged patch f717a4c.patch
+  + Adjust sofull_version 7.0.2 soname,sovers to 6
+  + Fix sed shebang for python3
+  + Added new reader numpy to filelist
+- Updated to 1.7.2 upstream bugfix release
+  - See changelog https://github.com/PDAL/PDAL/releases/tag/1.7.2
+- Major release 1.7.1
+  - See numerous changes at
+    https://github.com/PDAL/PDAL/releases/tag/1.7.1
+
+-------------------------------------------------------------------
+Sat Mar 17 13:45:07 UTC 2018 - aaronpuchert@alice-dsl.net
+
+- Remove unused build dependencies. Some of them aren't maintained
+  and don't build anymore. (libLAS, libght)
+- Google Test is "vendored" and is also not required as dependency.
+- FindLASzip-cmake.patch: Make sure LASzip is actually detected.
+- Change license descriptor to BSD-3-Clause matching the license
+  in the repository.
+- Remove unused CMake variables.
+- Use standard macros for building and installing.
+
+-------------------------------------------------------------------
+Mon Jan 15 13:00:20 UTC 2018 - bruno@ioda-net.ch
+
+- Update to version 1.6.0
+  Visit https://github.com/PDAL/PDAL/releases/tag/1.6.0 for all
+  improvements done since 1.5
+- Adjust sofull_version to 6.1.0 soname to 5 and sovers to 5
+- Add upstream patch f717a4c.patch (json-c 0.13 support)
+- Packaging:
+  + tarball are only published in tar.gz so adapt
+  + Build now only with python3
+  + ToBeDone upgrade laszip to 3.1.0
+  + Adapt file list to newer version
+
+-------------------------------------------------------------------
+Wed May 31 06:24:07 UTC 2017 - bruno@ioda-net.ch
+
+- Update to version 1.5.0
+  Visit https://github.com/PDAL/PDAL/releases/tag/1.5.0 for all
+  improvements done since 1.4
+- Remove patch c2cf2d.patch merged upstream
+- Adjust sofull_version to 5.1.0 soname to 5 and sovers to 4
+
+-------------------------------------------------------------------
+Fri Mar 10 12:51:53 UTC 2017 - bruno@ioda-net.ch
+
+- Use the lastest patch c2cf2d.patch in place of
+  cfb888a04897f9704d5bdfaf4d2979e9ff303aab.patch
+  with use of short commit tag.
+
+-------------------------------------------------------------------
+Wed Mar  8 14:51:03 UTC 2017 - bruno@ioda-net.ch
+
+- Update to version 1.4.0
+  visit https://github.com/PDAL/PDAL/releases/tag/1.4.0 and
+  https://github.com/PDAL/PDAL/releases/tag/1.3.0 for all
+  improvements done since 1.2
+
+- Packaging :
+  + Add cfb888a04897f9704d5bdfaf4d2979e9ff303aab.patch
+    Fix for being he only distribution with laszip header not in
+    subdir. See upstream https://github.com/PDAL/PDAL/issues/1503
+  + Move to boost-devel split for TW
+  + Comment Requires for build documentation.
+  + Remove -WL,no-undefined flag from linker (otherwise we can't
+    build) upstream use dlopen.
+  + Clean-up and adapt cmake flag and options
+
+-------------------------------------------------------------------
+Sun Apr 24 14:02:39 UTC 2016 - bruno@ioda-net.ch
+
+- Update to version 1.2.0
+  see https://github.com/PDAL/PDAL/releases/tag/1.2.0/Changelog
+- Fix missing Provide lowercase name
+- Remove 01.patch merged upstream
+
+-------------------------------------------------------------------
+Thu Feb 25 14:53:51 UTC 2016 - bruno@ioda-net.ch
+
+- Update to version 1.2.0+git.1456409216.0884085:
+  + Enable shallow clones on AppVeyor
+  + Move boost/property_tree/ptree.hpp where it is actually needed.
+  + address #1157 -- invalid JSON output due to \r\n
+  + use PDAL_LIB_INSTALL_DIR instead of CMAKE_INSTALL_LIBDIR
+  + try using webhook instead of app for slack notifications
+  + one more PDAL_LIB_INSTALL_DIR fix
+  + typo'd incoming_webhook defn
+
+- packaging : on upstream recommandation Move to git master version
+	at least until next March 2016 release.
+
+-------------------------------------------------------------------
+Thu Feb 25 11:11:11 UTC 2016 - bruno@ioda-net.ch
+
+- Upstream release 1.1.0
+	* Enhancements:
+    Add support for the LAZperf LAS compressor in decoding/encoding
+	 LAS files. LAZperf can be enabled with the 'compression' option
+	 in readers.las and writers.las.
+    Add PCL functionality as filters (filters.greedyprojection,
+	 filters.gridprojection, filters.ground filters.movingleastsquares,
+	 filters.poisson, filters.radiusoutlier, filters.statisticaloutlier,
+	 filters.voxelgrid, filters.height, filters.dartsample)
+    Add readers.gdal to support reading raster sets as point clouds
+    Update writers.geowave and readers.geowave to work with the latest
+	 version of GeoWave software.
+    Add readers.ilvis2 to support the Icebridge ILVIS2 format.
+    Disallow nested options. Check stage documentation for changes in
+	 option names and handling. (filters.ferry, filters.colorization,
+	 filters.attribute, filters.crop). Change filters.attribute to
+	 handle only a single dimension.
+    Add 'output_dims' options in writers.bpf to allow control of the
+	 dimensions that should be written.
+    Add 'all' keyword in 'extra_dims' options of writers.las to cause
+	 all dimensions to be written to either the standard or extra
+	 dimensions of a LAS point.
+    Add filters.randomize to allow randomized order of points.
+    Add filters.divider to split a set of points into subsets of a
+		fixed number or into subsets containing a specific number
+		of points.
+    Update to version 1.1.4 of rply in readers.rply.
+    Change the logic of the range filter to allow multiple ranges
+	 for a single dimension and support a simple boolean logic.
+    Change the default scaling on writer.bpf to 'auto'.
+    Add support for smoothing boundaries generated by filters.hexbin.
+    Add readers.tindex to allow vector-filtered input of point
+	 cloud files.
+    Allow merging of datasets with non-matching spatial references.
+    Many, many documentation enhancements.
+
+	* Fixes:
+
+    Handle error with Pgpointcloud when pointcloud extension is not
+	 installed on postgres server. Skip tests if extension is missing.
+    Set precision on output of doubles to metadata.
+    Fix a divide-by-zero error in readers.faux when the point count
+	 was 1. (#1015)
+    Fix fatal error loading numpy library that occurred when running
+	 filters.predicate or filters.programmable. (#1010)
+    Correct readers.las to properly check WKT bit when choosing spatial
+	 reference VLR. (#1040)
+    Correct writer.las to emit only WKT or GeoTiff VLR, not both.
+	 (#1040)
+    Check object ID against table column id (attrelid) to ensure correct
+	 PCID retrieval in readers.pgpointcloud. (#1051)
+
+- Packaging
+	- Documentation is still missing since we don't have python-breathe
+	- Some modules (plugins) are not yet present on obs
+	  So they are not compiled (help welcome)
+	- Add patches from upstream to fix lib(arch) placement
+	 * 0001-set-SOVERSION-for-plugins-too-1119.patch
+	 * 0004-install-pkgconfig-script-into-CMAKE_INSTALL_LIBDIR-1.patch
+	 * 0016-install-pdal.pc-pkgconfig-in-CMAKE_INSTALL_LIBDIR.patch
+	 * 0017-more-CMAKE_INSTALL_LIBDIR-tweaks.patch
+
+-------------------------------------------------------------------
+Sun Dec 29 16:38:02 UTC 2013 - bruno@ioda-net.ch
+
+- First packaging for OBS
+  Due to upstream bug, documentation is not available
