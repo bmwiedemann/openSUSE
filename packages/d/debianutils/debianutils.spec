@@ -41,11 +41,11 @@ Source:         http://ftp.debian.org/debian/pool/main/d/%{name}/%{name}_%{versi
 
 %install
 # savelog is under SMAIL license, don't install
-install -Dt %{buildroot}%{_bindir} add-shell
 install -Dt %{buildroot}%{_bindir} ischroot
-install -Dt %{buildroot}%{_bindir} remove-shell
-install -Dt %{buildroot}%{_bindir} run-parts
 install -Dt %{buildroot}%{_bindir} tempfile
+install -Dt %{buildroot}%{_sbindir} add-shell
+install -Dt %{buildroot}%{_sbindir} remove-shell
+install -Dt %{buildroot}%{_sbindir} run-parts
 
 install -m 0644 -Dt %{buildroot}%{_mandir}/man1 ischroot.1
 install -m 0644 -Dt %{buildroot}%{_mandir}/man8 add-shell.8
@@ -54,11 +54,11 @@ install -m 0644 -Dt %{buildroot}%{_mandir}/man1 tempfile.1
 install -m 0644 -Dt %{buildroot}%{_mandir}/man8 run-parts.8
 
 %files
-%{_bindir}/add-shell
 %{_bindir}/ischroot
-%{_bindir}/remove-shell
-%{_bindir}/run-parts
 %{_bindir}/tempfile
+%{_sbindir}/add-shell
+%{_sbindir}/remove-shell
+%{_sbindir}/run-parts
 %{_mandir}/man1/ischroot.1%{?ext_man}
 %{_mandir}/man8/add-shell.8%{?ext_man}
 %{_mandir}/man8/remove-shell.8%{?ext_man}
