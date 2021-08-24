@@ -5566,4 +5566,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>NO UsrMerge yet &amp; bpf CVE fix &amp; 5.13.12 &amp; 5.13.11 &amp; 5.13.10 &amp; 5.13.9</comment>
     <requestid>912849</requestid>
   </revision>
+  <revision rev="601" vrev="2">
+    <srcmd5>349f08f31728ea0f266cbf21d2fb6191</srcmd5>
+    <version>5.13.12</version>
+    <time>1629795255</time>
+    <user>dimstar_suse</user>
+    <comment>UsrMerge attempt v3 &amp; a Bluetooth CVE fix</comment>
+    <requestid>913265</requestid>
+  </revision>
 </revisionlist>

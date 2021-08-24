@@ -38,7 +38,7 @@ License:        GPL-2.0-only
 Group:          SLES
 Version:        5.13.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g999e604
+Release:        <RELEASE>.g33df9c6
 %else
 Release:        0
 %endif
@@ -60,7 +60,7 @@ projects and runs basic tests.
 # and called here.
 
 krel=$(uname -r)
-if test ! -d "/lib/modules/$krel/kernel"; then
+if test ! -d "/lib/modules/$krel/kernel" && test ! -d "/usr/lib/modules/$krel/kernel"; then
 	echo "Kernel package for $krel not installed; exiting"
 	exit 0
 fi

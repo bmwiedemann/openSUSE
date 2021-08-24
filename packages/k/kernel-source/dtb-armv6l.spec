@@ -31,7 +31,7 @@
 Name:           dtb-armv6l
 Version:        5.13.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g999e604
+Release:        <RELEASE>.g33df9c6
 %else
 Release:        0
 %endif

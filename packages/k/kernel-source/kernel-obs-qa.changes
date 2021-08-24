@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 18 14:54:50 CEST 2021 - tiwai@suse.de
+
+- Bluetooth: switch to lock_sock in SCO (CVE-2021-3640
+  bsc#1188172).
+- Bluetooth: avoid circular locks in sco_sock_connect
+  (CVE-2021-3640 bsc#1188172).
+- commit aa9e1af
+
+-------------------------------------------------------------------
 Wed Aug 18 09:50:06 CEST 2021 - jslaby@suse.cz
 
 - driver core: Add missing kernel doc for device::msi_lock
@@ -632,10 +641,15 @@ Wed Aug 11 08:39:05 CEST 2021 - jslaby@suse.cz
 Wed Aug 11 06:36:51 CEST 2021 - jslaby@suse.cz
 
 - Revert "Revert "UsrMerge the kernel (boo#1184804)""
+  This reverts commit 999e6048a4cc6accd2653c9dccaaaff2f4ae8f86. By that,
+  we reverted the original commit 6f5ed044f52a. But the selinux problem is
+  hopefully fixed in the meantime, so it's time to try UsrMerge for kernel
+  again.
+- Revert "Revert "UsrMerge the kernel (boo#1184804)""
   This reverts commit b6ab3ded319fca797d007c541a190a308f940cf7. By that,
   we reverted the original commit 6f5ed044f52a. But the two problems were
   adressed in the meantime, so it's time to try UsrMerge for kernel again.
-- commit 2e9639b
+- commit 33df9c6
 
 -------------------------------------------------------------------
 Mon Aug  9 13:13:03 CEST 2021 - ludwig.nussel@suse.de

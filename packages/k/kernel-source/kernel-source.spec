@@ -32,7 +32,7 @@ License:        GPL-2.0-only
 Group:          Development/Sources
 Version:        5.13.12
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g999e604
+Release:        <RELEASE>.g33df9c6
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-999e6048a4cc6accd2653c9dccaaaff2f4ae8f86
+Provides:       %name-srchash-33df9c651d0aa37cce1275bd9528ea5cb9196022
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
