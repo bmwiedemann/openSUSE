@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-mocha
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 %define mod_name mocha
 %define mod_full_name %{mod_name}-%{version}
@@ -36,7 +36,7 @@ URL:            https://mocha.jamesmead.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Mocking and stubbing library
-License:        MIT AND BSD-2-Clause
+License:        BSD-2-Clause AND MIT
 Group:          Development/Languages/Ruby
 
 %description
