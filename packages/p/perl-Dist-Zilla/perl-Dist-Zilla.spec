@@ -18,7 +18,7 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.023
+Version:        6.024
 Release:        0
 Summary:        Distribution builder; installer not included!
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -78,7 +78,7 @@ BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Path::Tiny) >= 0.052
 BuildRequires:  perl(Perl::PrereqScanner) >= 1.016
 BuildRequires:  perl(Pod::Simple)
-BuildRequires:  perl(Software::License) >= 0.103014
+BuildRequires:  perl(Software::License) >= 0.104001
 BuildRequires:  perl(Software::License::None)
 BuildRequires:  perl(Software::LicenseUtils)
 BuildRequires:  perl(String::Formatter) >= 0.100680
@@ -153,7 +153,7 @@ Requires:       perl(Params::Util)
 Requires:       perl(Path::Tiny) >= 0.052
 Requires:       perl(Perl::PrereqScanner) >= 1.016
 Requires:       perl(Pod::Simple)
-Requires:       perl(Software::License) >= 0.103014
+Requires:       perl(Software::License) >= 0.104001
 Requires:       perl(Software::LicenseUtils)
 Requires:       perl(String::Formatter) >= 0.100680
 Requires:       perl(String::RewritePrefix) >= 0.006
