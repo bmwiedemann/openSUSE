@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 22 09:27:19 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.6.4
+  - Local files containing UTF-8 text can be viewed regardless of their file
+    extension.
+  - Fixed input field cursor positioning and insertion problems around Emoji
+    variation selectors.
+  - Fixed "Unknown Status Code" shown in Page Information for valid status
+    codes.
+  - Fixed an issue with network requests that would make it appear the server
+    was not responding, but the request would not time out.
+  - Fixed a potential invalid memory access when clicking on sidebar items.
+  - OpenBSD: Fixed a freeze after a network request is cancelled.
+  - Fixed page contents not reflowing during a window resize.
+  - Added build option ENABLE_RESIZE_DRAW. SDL doesn't redraw window contents on
+    all platforms during resizing, so this can be used to force it.
+- Removed patch lagrange-1.6.3-Updated-AppData.patch. Applied upstream.
+
+-------------------------------------------------------------------
 Sun Aug 15 11:46:07 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
 
 - Added patch lagrange-1.6.3-Updated-AppData.patch
