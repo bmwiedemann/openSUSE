@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:13:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Call "make -j8 pywrap" instead of "make -j8 all pywrap" to fix random
+  build failures. The toplevel Makefile does not support concurrency,
+  and it resulted in parallel "make all" and "make pywrap" which weren't
+  aware of each other and stepped over the other's artifacts.
+
+-------------------------------------------------------------------
 Thu Mar 18 08:31:30 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Minor spec file cleanups

@@ -19,6 +19,9 @@
 %define soversion 2
 %define libname libsemanage%{soversion}
 
+%define libsepol_ver     3.2
+%define libselinux_ver   3.2
+
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
 Version:        3.2
@@ -37,8 +40,8 @@ BuildRequires:  audit-devel
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  libbz2-devel
-BuildRequires:  libselinux-devel
-BuildRequires:  libsepol-devel >= 3.2
+BuildRequires:  libselinux-devel >= %{libselinux_ver}
+BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libustr-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  swig
@@ -64,7 +67,7 @@ grep /usr/libexec . -rl | xargs sed -i "s|/usr/libexec|%{_libexecdir}|g"
          LIBDIR="%{_libdir}" \
          LIBEXECDIR="%{_libexecdir}" \
          SHLIBDIR="%{_lib}" \
-    all pywrap
+    pywrap
 }
 
 %install
