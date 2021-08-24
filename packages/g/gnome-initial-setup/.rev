@@ -96,4 +96,12 @@ Resub it :-)</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 907074 from dimstar)</comment>
     <requestid>907076</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d2fd898871ce24b5d69baca104eb12ec</srcmd5>
+    <version>40.4</version>
+    <time>1629795278</time>
+    <user>dimstar_suse</user>
+    <comment>New stable rel (forwarded request 912264 from iznogood)</comment>
+    <requestid>913687</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 15 12:58:36 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.4:
+  + Bugs fixed: glgo#GNOME/gnome-initial-setup!119 timezone: fix
+    critical on startup when geoclue is disabled.
+
+-------------------------------------------------------------------
 Fri Jul 16 10:25:56 UTC 2021 - Cliff Zhao <qzhao@suse.com>
 
 - Drop gnome-initial-setup-smarter.patch: Because the function has 
