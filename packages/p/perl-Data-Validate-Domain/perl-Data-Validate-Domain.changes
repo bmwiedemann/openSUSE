@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 22 03:07:47 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-Data-Validate-Domain/Changes
+
+  0.15     2021-08-21
+      - Reject domains with 254 or more characters. Domains are limited to 255
+        octets, but in practice this means they're actually limited to 253
+        characters. See
+        https://devblogs.microsoft.com/oldnewthing/20120412-00/?p=7873 for a
+        more detailed explanation of this. Implemented by Felipe Gaspar. Fixes
+        GitHub #5. PR #13.
+
+-------------------------------------------------------------------
 Wed Aug 24 05:15:04 UTC 2016 - coolo@suse.com
 
 - updated to 0.14
