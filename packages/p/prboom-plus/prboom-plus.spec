@@ -17,7 +17,7 @@
 
 
 Name:           prboom-plus
-Version:        2.6um+g81
+Version:        2.6.1um
 Release:        0
 Summary:        DOOM source port with demo compatibility
 License:        GPL-2.0-or-later
@@ -25,7 +25,7 @@ Group:          Amusements/Games/3D/Shoot
 URL:            http://prboom-plus.sf.net/
 
 #Git-Clone:	https://github.com/coelckers/prboom-plus
-Source:         %name-%version.tar.xz
+Source:         https://github.com/coelckers/prboom-plus/archive/refs/tags/v%version.tar.gz
 Patch1:         prboom-nodatetime.diff
 Patch2:         prboom-enable-tessellation.diff
 Patch3:         prboom-hbar-all.diff
@@ -68,7 +68,7 @@ PrBoom+ is a conservative Doom source port. It features:
 
 %build
 pushd prboom2/
-%cmake -DDOOMWADDIR="%_datadir/doom"
+%cmake -DDOOMWADDIR="%_datadir/doom" -DPRBOOMDATADIR="%_datadir/doom"
 %cmake_build
 popd
 

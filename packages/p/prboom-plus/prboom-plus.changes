@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 16 09:27:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1um
+  * Allow colored blood to get set/overridden by DEHACKED
+  * Made the Ouch Face fix available on all complevels
+  * Added the autoload folder feature from Chocolate Doom
+  * Made Doom sound quirk fixes available on all complevels
+  * UMAPINFO: introduce the new 'label' field (#308)
+  * Fixed a levelstat crash
+  * Added a "-coop_spawns" parameter for using "coop in single-player" mode
+  * UMAPINFO: entries without defined 'levelname' fall back to default
+
+-------------------------------------------------------------------
 Sat May  1 13:01:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 2.6um+git81 (15431b3a9aac)

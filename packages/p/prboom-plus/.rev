@@ -112,4 +112,12 @@ Can't really provide infinitely many versions!</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>891546</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e91ece4c8adc60cec5dbfd85cfe24921</srcmd5>
+    <version>2.6.1um</version>
+    <time>1629795289</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>913771</requestid>
+  </revision>
 </revisionlist>
