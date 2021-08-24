@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun May 16 03:06:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.710
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-Auth-Extensible/Changes
+
+  0.710 Sat 15 May 08:02:00 BST 2021
+
+      [BUG FIXES]
+
+      * Add Test::Fatal to list of dependencies (thanks yldr)
+      * Fix config for test (thanks Nick Tonkin)
+
+-------------------------------------------------------------------
 Mon May 11 10:03:19 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 - initial version of package (0.709)

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2-Plugin-Auth-Extensible
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-Name:           perl-Dancer2-Plugin-Auth-Extensible
-Version:        0.709
-Release:        0
 %define cpan_name Dancer2-Plugin-Auth-Extensible
-Summary:        Extensible authentication framework for Dancer2 apps
+Name:           perl-Dancer2-Plugin-Auth-Extensible
+Version:        0.710
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Extensible authentication framework for Dancer2 apps
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABEVERLEY/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 Patch0:         remove-env-perl.patch
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Crypt::SaltedHash)
@@ -51,14 +50,13 @@ BuildRequires:  perl(Plack::Test)
 BuildRequires:  perl(Session::Token)
 BuildRequires:  perl(Test::Deep) >= 0.114
 BuildRequires:  perl(Test::Exception)
+BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::MockDateTime)
 BuildRequires:  perl(Test::Warnings)
-BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(YAML)
 BuildRequires:  perl(namespace::clean)
-Requires:       perl-base = %{perl_version}
 Requires:       perl(Crypt::SaltedHash)
 Requires:       perl(Dancer2) >= 0.204000
 Requires:       perl(Dancer2::Core::Types)
@@ -78,7 +76,6 @@ Requires:       perl(YAML)
 Requires:       perl(namespace::clean)
 %{perl_requires}
 
-
 %description
 A user authentication and authorisation framework plugin for Dancer2 apps.
 
@@ -95,12 +92,11 @@ hashed passwords is included, or you can use Crypt::SaltedHash yourself to
 do so, or use the 'slappasswd' utility if you have it installed.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-%patch0 -p1
+%autosetup  -n %{cpan_name}-%{version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -111,7 +107,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes example ignore.txt README
 
 %changelog

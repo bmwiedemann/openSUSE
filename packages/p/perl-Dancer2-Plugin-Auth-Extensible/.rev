@@ -7,4 +7,18 @@
     <comment>several Dancer2 Plugins including dependencies</comment>
     <requestid>845927</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a5fbad9cd982625f902dd4a19be5b4b3</srcmd5>
+    <version>0.710</version>
+    <time>1629795289</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.710
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-Auth-Extensible/Changes
+  0.710 Sat 15 May 08:02:00 BST 2021
+      [BUG FIXES]
+      * Add Test::Fatal to list of dependencies (thanks yldr)
+      * Fix config for test (thanks Nick Tonkin)
+</comment>
+    <requestid>913832</requestid>
+  </revision>
 </revisionlist>
