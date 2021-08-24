@@ -17,7 +17,7 @@
 
 
 Name:           pavucontrol
-Version:        4.0
+Version:        5.0
 Release:        0
 Summary:        PulseAudio Volume Control
 License:        GPL-2.0-or-later
@@ -27,7 +27,8 @@ Source:         https://freedesktop.org/software/pulseaudio/pavucontrol/%{name}-
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gtkmm-3.0) >= 2.99
+BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.22
+BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3) >= 0.16
 BuildRequires:  pkgconfig(libpulse) >= 0.9.16
 BuildRequires:  pkgconfig(libpulse-mainloop-glib) >= 0.9.16

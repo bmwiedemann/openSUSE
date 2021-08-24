@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 18 15:44:49 UTC 2021 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 5.0:
+  * Support for switching Bluetooth codecs (new in PulseAudio 15.0).
+  * Support for locking card profiles (new in PulseAudio 15.0).
+    Locking a profile prevents PulseAudio from automatically switching
+    away from that profile on plug/unplug events.
+  * New translations: Asturian, Basque, Belarusian, Galician, Hebrew,
+    Kazakh, Norwegian Bokmål, Sinhala, Slovenian
+  * Updated translations: Catalan, Chinese (Simplified), Chinese
+    (Traditional), Croatian, Danish, Dutch, Finnish, French, German,
+    Hungarian, Italian, Japanese, Korean, Lithuanian, Norwegian
+    Nynorsk, Polish, Portugese, Portugese (Brazil), Slovak, Spanish,
+    Swedish, Turkish, Ukrainian.
+  * Some bug fixes.
+  * New dependency: json-glib.
+  * Minimum gtkmm version bumped to 3.22.
+
+-------------------------------------------------------------------
 Thu Feb 25 11:44:47 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Require the pulseaudio-daemon capability instead of the
