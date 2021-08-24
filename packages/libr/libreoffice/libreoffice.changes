@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 17 15:18:30 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Keep upstream desktop file names (bsc#1183655) and display math icon (bsc#1180479)
+
+-------------------------------------------------------------------
 Thu Jul 29 13:27:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Source profile.d/alljava.sh from either /etc (if found) or

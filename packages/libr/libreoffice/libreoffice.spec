@@ -1192,19 +1192,14 @@ cd %{buildroot}%{_datadir}/applications
 for desktop in * ; do
     # relative link is needed by %%suse_update_desktop_file
     relative_target=`readlink $desktop | sed "s|%{_libdir}|../../%{_lib}|"`
-    # FIXME: remove the libreoffice- prefix because the old desktop files are preferred in %{_sysconfdir}/gnome_defaults.conf
-    desktop_new=`echo $desktop | sed -e "s/%{name}-//"`
-    rm $desktop
-    sed -i -e "s|%{_datadir}/applications/$desktop|%{_datadir}/applications/$desktop_new|" $builddir/file-lists/*.txt
-    # finally, create the right link
-    ln -sf $relative_target $desktop_new
+    # create the link
+    ln -sf $relative_target $desktop
     # enable startup notification (bnc#796875)
-    grep -q "NoDisplay=true" $desktop_new || sed -i "s/\(\[Desktop Entry\]\)/\1\nStartupNotify=true/" $desktop_new
+    grep -q "NoDisplay=true" $desktop || sed -i "s/\(\[Desktop Entry\]\)/\1\nStartupNotify=true/" $desktop
     # suse_update
-    app=`echo $desktop_new | sed "s/.desktop//"`
+    app=`echo $desktop | sed "s/.desktop//"`
     %suse_update_desktop_file $app
 done
-sed -i -e 's:NoDisplay=false:NoDisplay=true:g' %{buildroot}/%{_datadir}/applications/math.desktop
 cd -
 ################
 # compat stuff for noarch packages
@@ -1302,17 +1297,13 @@ done
 rm -r %{buildroot}%{_datadir}/libreoffice/share/autotext/sr/
 
 # Install appdata files, so we're shown in gnome-software (and other, future app stores)
-# upstream ships the files called libreoffice-{base,writer,...}, but the destop files are called base.destop [...]
-# fixup the appdata files internal reference to the .desktop file and rename them on the go to match the name
 install -m 0755 -d %{buildroot}%{_datadir}/metainfo
 for appdata in base calc draw impress writer; do
-  sed "s/libreoffice-${appdata}.desktop/${appdata}.desktop/" \
-    sysui/desktop/appstream-appdata/libreoffice-${appdata}.appdata.xml > %{buildroot}%{_datadir}/metainfo/${appdata}.appdata.xml
-  echo "%{_datadir}/metainfo/${appdata}.appdata.xml" >>file-lists/${appdata}_list.txt
+  cp sysui/desktop/appstream-appdata/libreoffice-${appdata}.appdata.xml %{buildroot}%{_datadir}/metainfo/libreoffice-${appdata}.appdata.xml
+  echo "%{_datadir}/metainfo/libreoffice-${appdata}.appdata.xml" >>file-lists/${appdata}_list.txt
 %if 0%{?suse_version} < 1320
   echo "%dir %{_datadir}/metainfo/" >>file-lists/${appdata}_list.txt
 %endif
-  rm -rf %{buildroot}%{_datadir}/metainfo/libreoffice-${appdata}.appdata.xml
 done
 %if %{with kdeintegration}
 echo "%{_datadir}/metainfo/org.libreoffice.kde.metainfo.xml" >>file-lists/kde4_list.txt
