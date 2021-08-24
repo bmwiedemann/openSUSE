@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 20 07:32:45 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Support both rpmlint 1.x and 2.x.
+
+-------------------------------------------------------------------
+Thu Aug 19 10:04:42 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update rpmlint rules in order to work with rpmlint2
+  (bsc#1179049).
+
+-------------------------------------------------------------------
 Mon May 31 17:50:36 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 10.5.10
