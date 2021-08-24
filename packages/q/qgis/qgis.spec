@@ -39,7 +39,12 @@ Patch1:         fix-fastcgi-include.patch
 Patch2:         qgis-fix-missing-qwt-inc.patch
 # PATCH-FIX-UPSTREAM - https://github.com/qgis/QGIS/commit/581cb40603dd3daca2916b564a4cd2630d005556
 Patch3:         qgis-fix-missing-qwt-inc-part2.patch
+# PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
+Patch4:         qgis-fix-cmake-findpdal.patch
+# PATCH-FIX-UPSTREAM - gh#qgis/QGIS#44293
+Patch5:         fix-infinite-loop.patch
 BuildRequires:  FastCGI-devel
+BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
 BuildRequires:  cmake >= 3.0.0
 BuildRequires:  fdupes
@@ -117,6 +122,7 @@ BuildRequires:  pkgconfig(Qt5Qwt6)
 BuildRequires:  pkgconfig(gsl) >= 1.8
 BuildRequires:  pkgconfig(libpq) > 9.4
 BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(pdal) >= 2.2.0
 BuildRequires:  pkgconfig(proj) >= 6.3.1
 BuildRequires:  pkgconfig(python3) >= 3.7
 BuildRequires:  pkgconfig(qca2-qt5)
@@ -127,6 +133,7 @@ Requires:       libQt5Sql5-postgresql
 Requires:       libQt5Sql5-sqlite
 # proj.db is required
 Requires:       proj
+Requires:       pdal
 Requires:       python3-GDAL
 Requires:       python3-Jinja2
 Requires:       python3-OWSLib
@@ -222,6 +229,7 @@ export PATH=$PATH:$QTDIR/bin
   -DWITH_SERVER=TRUE \
   -DWITH_SERVER_PLUGINS=TRUE \
   -DWITH_POSTGRESQL=TRUE \
+  -DWITH_PDAL=TRUE \
   -DWITH_QTWEBKIT=FALSE \
   -DFCGI_INCLUDE_DIR=%{_includedir}/fastcgi \
   -DPOSTGRES_LIBRARY=%{_libdir}/libpq.so \

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 11 18:40:04 UTC 2021 - Jason Craig <os@jacraig.com>
+
+- Add fix-infinite-loop.patch: fix startup of QGIS. This will be
+  integrated upstream in 3.20.2.
+
+-------------------------------------------------------------------
+Thu Aug  5 17:41:56 UTC 2021 - D. Berge <opensuse@navlost.eu>
+
+- Enable PDAL (add qgis-fix-cmake-findpdal.patch)
+
+-------------------------------------------------------------------
 Tue Aug  3 08:40:57 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - Update to 3.20.1 (monthly bugfix)
@@ -747,4 +758,3 @@ Wed Sep 11 08:05:44 UTC 2013 - dassau@gbd-consult.de
 Mon Sep  9 14:18:59 UTC 2013 - dassau@gbd-consult.de
 
 - start building qgis packages for version 2.x 
-

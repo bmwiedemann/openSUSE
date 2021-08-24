@@ -195,4 +195,15 @@
 </comment>
     <requestid>909901</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>a7a4cf7d864b7d52e507ceeed5e27411</srcmd5>
+    <version>3.20.1</version>
+    <time>1629795259</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-infinite-loop.patch: fix startup of QGIS. This will be
+  integrated upstream in 3.20.2.
+- Enable PDAL (add qgis-fix-cmake-findpdal.patch)
+</comment>
+    <requestid>911938</requestid>
+  </revision>
 </revisionlist>

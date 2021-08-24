@@ -1,0 +1,214 @@
+From 2055199a3a4a01f5fcc9fe54a14d3ca27a21961b Mon Sep 17 00:00:00 2001
+From: PeterPetrik <zilolv@gmail.com>
+Date: Fri, 2 Jul 2021 14:40:59 +0200
+Subject: [PATCH 1/2] fix infinite loop in qgsstyle
+
+---
+ src/core/symbology/qgsstyle.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/core/symbology/qgsstyle.cpp b/src/core/symbology/qgsstyle.cpp
+index 6ca37dde3a15..c87305b3c8fa 100644
+--- a/src/core/symbology/qgsstyle.cpp
++++ b/src/core/symbology/qgsstyle.cpp
+@@ -2755,6 +2755,7 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+       if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+       {
+         // skip the symbol, should already be present
++        e = e.nextSiblingElement();
+         continue;
+       }
+ 
+@@ -2810,6 +2811,7 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+     if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+     {
+       // skip the ramp, should already be present
++      e = e.nextSiblingElement();
+       continue;
+     }
+ 
+@@ -2859,6 +2861,7 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+         if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+         {
+           // skip the format, should already be present
++          e = e.nextSiblingElement();
+           continue;
+         }
+ 
+@@ -2904,6 +2907,7 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+         if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+         {
+           // skip the settings, should already be present
++          e = e.nextSiblingElement();
+           continue;
+         }
+ 
+@@ -2950,6 +2954,7 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+       if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+       {
+         // skip the shape, should already be present
++        e = e.nextSiblingElement();
+         continue;
+       }
+ 
+@@ -2995,6 +3000,7 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+       if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+       {
+         // skip the symbol, should already be present
++        e = e.nextSiblingElement();
+         continue;
+       }
+ 
+
+From d03c4b4806ca241c8daed446c98ae66988bd1dcd Mon Sep 17 00:00:00 2001
+From: Nyall Dawson <nyall.dawson@gmail.com>
+Date: Thu, 22 Jul 2021 10:30:05 +1000
+Subject: [PATCH 2/2] Cleanup style upgrade loop
+
+Refs https://github.com/qgis/QGIS/pull/44038/files#r663350654
+---
+ src/core/symbology/qgsstyle.cpp | 24 ++++++------------------
+ 1 file changed, 6 insertions(+), 18 deletions(-)
+
+diff --git a/src/core/symbology/qgsstyle.cpp b/src/core/symbology/qgsstyle.cpp
+index c87305b3c8fa..b4f57116d81e 100644
+--- a/src/core/symbology/qgsstyle.cpp
++++ b/src/core/symbology/qgsstyle.cpp
+@@ -2749,13 +2749,12 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+   if ( version == QLatin1String( STYLE_CURRENT_VERSION ) || version == QLatin1String( "1" ) )
+   {
+     // For the new style, load symbols individually
+-    while ( !e.isNull() )
++    for ( ; !e.isNull(); e = e.nextSiblingElement() )
+     {
+       const int entityAddedVersion = e.attribute( QStringLiteral( "addedVersion" ) ).toInt();
+       if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+       {
+         // skip the symbol, should already be present
+-        e = e.nextSiblingElement();
+         continue;
+       }
+ 
+@@ -2787,7 +2786,6 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+       {
+         QgsDebugMsg( "unknown tag: " + e.tagName() );
+       }
+-      e = e.nextSiblingElement();
+     }
+   }
+   else
+@@ -2805,13 +2803,12 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+   // load color ramps
+   QDomElement rampsElement = docEl.firstChildElement( QStringLiteral( "colorramps" ) );
+   e = rampsElement.firstChildElement();
+-  while ( !e.isNull() )
++  for ( ; !e.isNull(); e = e.nextSiblingElement() )
+   {
+     const int entityAddedVersion = e.attribute( QStringLiteral( "addedVersion" ) ).toInt();
+     if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+     {
+       // skip the ramp, should already be present
+-      e = e.nextSiblingElement();
+       continue;
+     }
+ 
+@@ -2843,7 +2840,6 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+     {
+       QgsDebugMsg( "unknown tag: " + e.tagName() );
+     }
+-    e = e.nextSiblingElement();
+   }
+ 
+   // load text formats
+@@ -2855,13 +2851,12 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+     {
+       const QDomElement textFormatElement = docEl.firstChildElement( QStringLiteral( "textformats" ) );
+       e = textFormatElement.firstChildElement();
+-      while ( !e.isNull() )
++      for ( ; !e.isNull(); e = e.nextSiblingElement() )
+       {
+         const int entityAddedVersion = e.attribute( QStringLiteral( "addedVersion" ) ).toInt();
+         if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+         {
+           // skip the format, should already be present
+-          e = e.nextSiblingElement();
+           continue;
+         }
+ 
+@@ -2892,7 +2887,6 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+         {
+           QgsDebugMsg( "unknown tag: " + e.tagName() );
+         }
+-        e = e.nextSiblingElement();
+       }
+     }
+ 
+@@ -2901,13 +2895,12 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+     {
+       const QDomElement labelSettingsElement = docEl.firstChildElement( QStringLiteral( "labelsettings" ) );
+       e = labelSettingsElement.firstChildElement();
+-      while ( !e.isNull() )
++      for ( ; !e.isNull(); e = e.nextSiblingElement() )
+       {
+         const int entityAddedVersion = e.attribute( QStringLiteral( "addedVersion" ) ).toInt();
+         if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+         {
+           // skip the settings, should already be present
+-          e = e.nextSiblingElement();
+           continue;
+         }
+ 
+@@ -2938,7 +2931,6 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+         {
+           QgsDebugMsg( "unknown tag: " + e.tagName() );
+         }
+-        e = e.nextSiblingElement();
+       }
+     }
+   }
+@@ -2948,13 +2940,12 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+   {
+     const QDomElement legendPatchShapesElement = docEl.firstChildElement( QStringLiteral( "legendpatchshapes" ) );
+     e = legendPatchShapesElement.firstChildElement();
+-    while ( !e.isNull() )
++    for ( ; !e.isNull(); e = e.nextSiblingElement() )
+     {
+       const int entityAddedVersion = e.attribute( QStringLiteral( "addedVersion" ) ).toInt();
+       if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+       {
+         // skip the shape, should already be present
+-        e = e.nextSiblingElement();
+         continue;
+       }
+ 
+@@ -2985,7 +2976,6 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+       {
+         QgsDebugMsg( "unknown tag: " + e.tagName() );
+       }
+-      e = e.nextSiblingElement();
+     }
+   }
+ 
+@@ -2994,13 +2984,12 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+   {
+     const QDomElement symbols3DElement = docEl.firstChildElement( QStringLiteral( "symbols3d" ) );
+     e = symbols3DElement.firstChildElement();
+-    while ( !e.isNull() )
++    for ( ; !e.isNull(); e = e.nextSiblingElement() )
+     {
+       const int entityAddedVersion = e.attribute( QStringLiteral( "addedVersion" ) ).toInt();
+       if ( entityAddedVersion != 0 && sinceVersion != -1 && entityAddedVersion <= sinceVersion )
+       {
+         // skip the symbol, should already be present
+-        e = e.nextSiblingElement();
+         continue;
+       }
+ 
+@@ -3036,7 +3025,6 @@ bool QgsStyle::importXml( const QString &filename, int sinceVersion )
+       {
+         QgsDebugMsg( "unknown tag: " + e.tagName() );
+       }
+-      e = e.nextSiblingElement();
+     }
+   }
+ 
