@@ -1255,4 +1255,11 @@
     <comment></comment>
     <requestid>911013</requestid>
   </revision>
+  <revision rev="156" vrev="156">
+    <srcmd5>3596e3e77b6fd5957ced0aca144c272c</srcmd5>
+    <version>unknown</version>
+    <time>1629786247</time>
+    <user>dimstar_suse</user>
+    <comment>Drop VLC from KDE live, space constraints</comment>
+  </revision>
 </revisionlist>

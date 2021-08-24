@@ -59,6 +59,9 @@ buildignore icewm
 buildignore kmahjongg-lang
 buildignore konversation-lang
 buildignore libproxy1-pacrunner-webkit
+buildignore vlc
+buildignore vlc-noX
+buildignore vlc-qt
 buildignore vlc-lang
 buildignore kipi-plugins
 
