@@ -1,7 +1,7 @@
 #
 # spec file for package florence
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,9 @@ Patch3:         florence-build-without-scrollkeeper.patch
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-libxml2
+%endif
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atspi-2)
 BuildRequires:  pkgconfig(cairo)
@@ -51,10 +54,6 @@ BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xtst)
-Requires(post): desktop-file-utils
-Requires(post): glib2-tools
-Requires(postun): desktop-file-utils
-Requires(postun): glib2-tools
 
 %description
 Florence is an extensible scalable virtual keyboard for X11.
@@ -107,15 +106,7 @@ find %{buildroot} -type f -name *.la -delete
 %suse_update_desktop_file -r %{name} Utility Accessibility
 %find_lang %{name} %{?no_lang_C}
 
-%post
-%glib2_gsettings_schema_post
-%desktop_database_post
-
 %post -n libflorence-1_0-1 -p /sbin/ldconfig
-
-%postun
-%glib2_gsettings_schema_postun
-%desktop_database_postun
 
 %postun -n libflorence-1_0-1 -p /sbin/ldconfig
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 18 05:39:04 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- `BuildRequires: python3-libxml2` to fix Factory build.
+- Purged useless macros from %%post(un).
+
+-------------------------------------------------------------------
 Thu Jan 30 11:09:40 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
