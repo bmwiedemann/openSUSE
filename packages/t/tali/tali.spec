@@ -17,7 +17,7 @@
 
 
 Name:           tali
-Version:        40.1
+Version:        40.2
 Release:        0
 Summary:        Yahtzee Game for GNOME
 License:        GPL-2.0-or-later
