@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-gettext
-Version:        3.3.7
+Version:        3.3.8
 Release:        0
 %define mod_name gettext
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ URL:            https://ruby-gettext.github.io/
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Gettext is a pure Ruby libary and tools to localize messages
-License:        Ruby OR LGPL-3.0-or-later
+License:        LGPL-3.0-or-later OR Ruby
 Group:          Development/Languages/Ruby
 PreReq:         update-alternatives
 
@@ -56,7 +56,6 @@ So you can use GNU gettext tools for maintaining.
   --doc-files="README.md" \
   -f
 # MANUAL
-echo "HALLO"
 rm -v %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_name}-%{version}/test/fixtures/gtk_builder_ui_definitions.ui~
 # /MANUAL
 
