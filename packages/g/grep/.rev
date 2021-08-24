@@ -657,4 +657,16 @@ also requires -fno-profile-values to avoid ~3 differing bits (forwarded request 
   check (forwarded request 909987 from Andreas_Schwab)</comment>
     <requestid>909988</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>d612e5b7f7655de112037d9596e729a8</srcmd5>
+    <version>3.7</version>
+    <time>1629795229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to grep 3.7
+  * Preprocessing N patterns would take at least O(N^2) time when too many
+    patterns hashed to too few buckets
+- werror-return-type.patch, gnulib-c-stack.patch: Removed
+- Skip stack overflow tests in qemu build (forwarded request 912392 from Andreas_Schwab)</comment>
+    <requestid>912393</requestid>
+  </revision>
 </revisionlist>

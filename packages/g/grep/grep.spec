@@ -17,7 +17,7 @@
 
 
 Name:           grep
-Version:        3.6
+Version:        3.7
 Release:        0
 Summary:        Print lines matching a pattern
 License:        GPL-3.0-or-later
@@ -28,8 +28,6 @@ Source2:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source3:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=grep&download=1#/%{name}.keyring
 Source4:        profile.sh
 Source5:        %{name}-rpmlintrc
-Patch0:         werror-return-type.patch
-Patch1:         gnulib-c-stack.patch
 BuildRequires:  fdupes
 BuildRequires:  makeinfo
 BuildRequires:  pcre-devel
@@ -44,12 +42,9 @@ match to a specified pattern.  By default, grep prints the matching lines.
 %prep
 %autosetup -p1
 
-touch aclocal.m4 configure Makefile.in config.hin
-
 %build
 %configure \
   --disable-silent-rules \
-  --without-included-regex \
   %{nil}
 %if 0%{?do_profiling}
   %make_build CFLAGS="%{optflags} %{cflags_profile_generate}"
@@ -61,6 +56,13 @@ touch aclocal.m4 configure Makefile.in config.hin
 %endif
 
 %check
+%if 0%{?qemu_user_space_build}
+echo exit 77 > tests/stack-overflow
+echo exit 77 > tests/pcre-jitstack
+echo exit 77 > gnulib-tests/test-c-stack.sh
+echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow1.c
+echo 'int main() { return 77; }' > gnulib-tests/test-sigsegv-catch-stackoverflow2.c
+%endif
 %make_build check
 
 %install

@@ -8,7 +8,7 @@
 grep=src/grep
 t=COPYING
 exec > /dev/null
-for param in "" "-v" "-i" "-h" "-H" "-l" "-L" "-q" "-n" "-Z" "-E" "-F" "-P" "-e" "-w" "-c" "-o" ; do
-	$grep $param "GNU" $t
-	$grep $param "G.*U" $t
+for param in "" -v -i -h -H -l -L -q -n -Z -E -F -P -e -w -c -o; do
+  $grep $param "GNU" $t
+  $grep $param "G.*U" $t
 done
