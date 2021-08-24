@@ -1,7 +1,7 @@
 #
 # spec file for package cracklib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Version:        2.9.7
 Release:        0
 Summary:        Library to crack passwords using dictionaries
 License:        LGPL-2.1-only
-Group:          System/Libraries
+Group:          Development/Libraries/C and C++
 URL:            http://sourceforge.net/projects/cracklib
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source2:        baselibs.conf
@@ -63,12 +63,12 @@ Requires:       cracklib >= %{version}
 
 %description -n libcrack2
 CrackLib tests passwords to determine whether they match
-certainsecurity-oriented characteristics. You can use CrackLib to
+certain security-oriented characteristics. You can use CrackLib to
 stopusers from choosing passwords that are too simple.This package
 contains a full dictionary file used by cracklib.
 
 %package dict-small
-Summary:        Small dictionary for cracklib - A Password-Checking Library
+Summary:        Small dictionary for cracklib, a password checking library
 Group:          System/Libraries
 Conflicts:      cracklib-dict-full
 Provides:       cracklib-dict
@@ -81,17 +81,14 @@ from choosing passwords that are easy to guess.
 This package contains a small dictionay file used by cracklib.
 
 %prep
-%setup -q
-%patch1
-%patch2
+%autosetup -p0
 
 %build
 AUTOPOINT=true autoreconf -fi
 %configure \
 	--enable-hidden-symbols \
-	--disable-static \
-	--with-pic
-make %{?_smp_mflags}
+	--disable-static
+%make_build
 #make -C po update-po
 
 %install
@@ -123,7 +120,7 @@ nm -C -D %{buildroot}%{_libdir}/libcrack.so.2 | grep ' T '
 %endif
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %post -n libcrack2 -p /sbin/ldconfig
 %postun -n libcrack2 -p /sbin/ldconfig
