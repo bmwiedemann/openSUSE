@@ -1,7 +1,10 @@
-From 60ab75597d2735e8f7bf91e4423feab87568d1e7 Mon Sep 17 00:00:00 2001
+From 6eb5e25905d2258c595d7fc75624c60a357c1c3b Mon Sep 17 00:00:00 2001
 From: Michal Suchanek <msuchanek@suse.de>
 Date: Sun, 18 Jul 2021 22:05:01 +0200
 Subject: [PATCH] Makefile: Default LIBSUBDIR to lib64 on 64bit architectures.
+
+Upstream: merged (expected v0.5.0)
+Git-commit: 6eb5e25905d2258c595d7fc75624c60a357c1c3b
 
 commit a82a66e ("Extend build and add install rules to Makefile") adds
 special handling for LIBSUBDIR on x86_64. Expand this to all

@@ -29,6 +29,7 @@ Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/issues/337
 Patch:          libdir.patch
 BuildRequires:  libelf-devel
+BuildRequires:  linux-glibc-devel >= 4.5
 BuildRequires:  python3
 BuildRequires:  zlib-devel
 
