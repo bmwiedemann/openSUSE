@@ -30,6 +30,7 @@ Source1:        %{modname}.desktop
 # PATCH-FIX-OPENSUSE skip test_large_download in gui tests
 Patch0:         0001-adjust_tests.diff
 # PATCH-FIX-OPENSUSE gh#onionshare/onionshare#1398
+# https://github.com/pallets/werkzeug/commit/265bad79ee60b94f509464dcaa827cfec5833bcc
 Patch1:         fix-compare-offset-naive-and-offset-aware-datetimes.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

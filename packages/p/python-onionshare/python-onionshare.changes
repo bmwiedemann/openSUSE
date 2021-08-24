@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 22 07:38:13 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Fix fix-compare-offset-naive-and-offset-aware-datetimes.patch to
+  use the correct timezone.
+
+-------------------------------------------------------------------
 Sun Aug 22 05:09:53 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 2.3.3:
