@@ -156,4 +156,13 @@ The compiler is NOT used by default.</comment>
 - More preparation for a full glibc cross compiler (not yet active)</comment>
     <requestid>907486</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>726b95410526d2f585e6519fe1bea89c</srcmd5>
+    <version>11.2.1+git610</version>
+    <time>1629795232</time>
+    <user>dimstar_suse</user>
+    <comment>- Require libgccjit%{libgccjit_sover}%{libgccjit_suffix} from
+  libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}. (forwarded request 913043 from Andreas_Schwab)</comment>
+    <requestid>913101</requestid>
+  </revision>
 </revisionlist>

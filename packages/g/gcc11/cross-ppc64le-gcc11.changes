@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 18 15:07:05 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Require libgccjit%{libgccjit_sover}%{libgccjit_suffix} from
+  libgccjit%{libgccjit_sover}-devel%{libdevel_suffix}.
+
+-------------------------------------------------------------------
+Mon Aug 16 06:34:40 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-11 branch head (056e324ce46a7924b5cf10f610), git610
+  * Includes GCC 11.2 release
+  * Includes fix for opie build with glibc 2.34  [boo#1188623]
+
+-------------------------------------------------------------------
 Wed Jul 21 09:08:04 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-11 branch head (076930b9690ac3564638636f6b), git536
