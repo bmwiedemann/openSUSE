@@ -11,10 +11,14 @@ LimitNOFILE=65535
 NotifyAccess=all
 WorkingDirectory=/var/lib/rabbitmq
 ExecStart=/usr/sbin/rabbitmq-server
-ExecStop=/usr/sbin/rabbitmqctl stop
+ExecStop=/usr/sbin/rabbitmqctl shutdown
+# See rabbitmq/rabbitmq-server-release#51
+SuccessExitStatus=69
 TimeoutStartSec=300
 # required on machines with many cores (bsc#1094896):
 TasksMax=8192
+Restart=on-failure
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target

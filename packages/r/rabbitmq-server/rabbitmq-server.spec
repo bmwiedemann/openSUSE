@@ -32,33 +32,33 @@
 
 %define _make_args DESTDIR="%{buildroot}" PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MAN_INSTALL_PATH="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
+%define _rabbit_server_ocf scripts/rabbitmq-server.ocf
+%define _plugins_state_dir %{_localstatedir}/lib/rabbitmq/plugins
+%define _rabbit_server_ha_ocf scripts/rabbitmq-server-ha.ocf
+%define _rabbitmqctl_autocomplete scripts/bash_autocomplete.sh
+%define _rabbitmq_user rabbitmq
+%define _rabbitmq_group rabbitmq
+
 Name:           rabbitmq-server
-Version:        3.8.16
+Version:        3.9.4
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
 Group:          System/Daemons
 URL:            http://www.rabbitmq.com/
 Source:         https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz
-Source1:        rabbitmq-server.init
-# This comes from: http://hg.rabbitmq.com/rabbitmq-server/raw-file/2da625c0a436/packaging/common/rabbitmq-script-wrapper
-Source2:        rabbitmq-script-wrapper
-Source3:        rabbitmq-server.logrotate
+Source1:        https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz.asc
+Source3:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.logrotate
 Source4:        rabbitmq-env.conf
-Source5:        rabbitmq-server.sysconfig
 Source6:        rabbitmq-server.service
-Source7:        rabbitmq-server.tmpfiles.d.conf
+Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
-# from https://raw.githubusercontent.com/rabbitmq/rabbitmq-server/v3.7.x/docs/rabbitmq.conf.example
-Source9:        rabbitmq.conf.example
-Source10:       advanced.config.example
-Source11:       rabbitmq.config.example
 BuildRequires:  elixir
 # https://www.rabbitmq.com/which-erlang.html
 BuildRequires:  erlang >= 23.2
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
-BuildRequires:  libxslt
+# BuildRequires:  libxslt
 BuildRequires:  python3
 BuildRequires:  rsync
 BuildRequires:  unzip
@@ -105,6 +105,28 @@ standard for messaging.
 
 This package includes the RabbitMQ AMQP language bindings for Erlang.
 
+%package bash-completion
+Summary:        Bash completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description bash-completion
+Optional dependency offering bash completion for %{name}.
+
+%package zsh-completion
+Summary:        Zsh completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       zsh
+Supplements:    (%{name} and zsh)
+BuildArch:      noarch
+
+%description zsh-completion
+Optional dependency offering zsh completion for %{name}.
+
 %prep
 %setup -q
 cp %{SOURCE8} .
@@ -124,35 +146,42 @@ make install %{_make_args}
 mkdir -p %{buildroot}%{_sbindir}
 install -p -D -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-install -p -D -m 0644 %{SOURCE7} %{buildroot}/usr/lib/tmpfiles.d/rabbitmq-server.conf
+install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
+# Use /run instead of deprecated /var/run in tmpfiles.conf  (bsc#1185075)
+sed -i 's/\/var//' %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 # Install wrapper scripts
-%define _rabbit_wrapper %{_builddir}/`basename %{SOURCE2}`
-cp %{SOURCE2} %{_rabbit_wrapper}
-sed -i 's|@SU_RABBITMQ_SH_C@|su rabbitmq -s /bin/sh -c|' %{_rabbit_wrapper}
-sed -i 's|@RABBITMQ_ROOT@|%{_rabbit_erllibdir}/|' %{_rabbit_wrapper}
-install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmqctl
-install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-server
-install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-plugins
-install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-diagnostics
-install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-queues
-install -p -D -m 0755 %{_rabbit_wrapper} %{buildroot}%{_sbindir}/rabbitmq-upgrade
-install -p -D -m 0755 scripts/rabbitmq-server.ocf %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server
-install -p -D -m 0755 scripts/rabbitmq-server-ha.ocf %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server-ha
+sed \
+  -e 's|@RABBITMQ_USER@|%{_rabbitmq_user}|' -e 's|@RABBITMQ_GROUP@|%{_rabbitmq_group}|' \
+  < scripts/rabbitmq-script-wrapper \
+  > %{buildroot}%{_sbindir}/rabbitmqctl
+chmod 0755 %{buildroot}%{_sbindir}/rabbitmqctl
+for script in rabbitmq-server rabbitmq-plugins rabbitmq-diagnostics rabbitmq-queues rabbitmq-upgrade rabbitmq-streams; do \
+  cp -a %{buildroot}%{_sbindir}/rabbitmqctl %{buildroot}%{_sbindir}/$script
+done
+
+install -p -D -m 0755 %{_rabbit_server_ocf} %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server
+install -p -D -m 0755 %{_rabbit_server_ha_ocf} %{buildroot}%{_exec_prefix}/lib/ocf/resource.d/rabbitmq/rabbitmq-server-ha
 
 # install config files
-install -p -D -m 0644 %{SOURCE9} %{buildroot}/%{_sysconfdir}/rabbitmq/rabbitmq.conf
-install -p -D -m 0644 %{SOURCE10} %{buildroot}/%{_sysconfdir}/rabbitmq/advanced.config.example
-install -p -D -m 0644 %{SOURCE11} %{buildroot}/%{_sysconfdir}/rabbitmq/rabbitmq.config.example
+install -p -D -m 0644 deps/rabbit/docs/rabbitmq.conf.example %{buildroot}/%{_sysconfdir}/rabbitmq/rabbitmq.conf
+install -p -D -m 0644 deps/rabbit/docs/advanced.config.example %{buildroot}/%{_sysconfdir}/rabbitmq/advanced.config.example
+install -p -D -m 0644 deps/rabbit/docs/rabbitmq.conf.example %{buildroot}/%{_sysconfdir}/rabbitmq/rabbitmq.config.example
 install -p -D -m 0644 %{SOURCE4} %{buildroot}/%{_sysconfdir}/rabbitmq/rabbitmq-env.conf
 
 # Copy all necessary lib files etc.
 install -p -D -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/logrotate.d/rabbitmq-server
 
+# Install autocomplete scripts
+for script in rabbitmqctl rabbitmq-plugins rabbitmq-diagnostics; do
+  install -p -D -m 0644 %{_rabbitmqctl_autocomplete} %{buildroot}%{_datadir}/bash-completion/completions/$script
+done
+install -p -D -m 0644 scripts/zsh_autocomplete.sh %{buildroot}%{_datadir}/zsh/site-functions/_enable_rabbitmqctl_completion
+
 # Install Erlang client
 mkdir -p %{buildroot}%{_libdir}/erlang/lib
 for i in amqp_client rabbit_common ; do
-   unzip %{buildroot}%{_rabbit_erllibdir}/plugins/$i*.ez -d %{buildroot}%{_libdir}/erlang/lib
+  cp -r %{buildroot}%{_rabbit_erllibdir}/plugins/$i* -d %{buildroot}%{_libdir}/erlang/lib/
 done
 
 # Create other necessary directories for RabbitMQ server
@@ -161,14 +190,16 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/rabbitmq/mnesia
 mkdir -p %{buildroot}%{_localstatedir}/log/rabbitmq
 
 # Create hardlinks for duplicate files
-%fdupes %{buildroot}/usr/share
+%fdupes %{buildroot}/%{_datadir}
+%fdupes %{buildroot}/%{_libdir}
+%fdupes %{buildroot}/%{_sbindir}
 
 %pre
-getent group rabbitmq >/dev/null || groupadd -r rabbitmq
-getent passwd rabbitmq >/dev/null || useradd -r -g rabbitmq \
+getent group %{_rabbitmq_group} >/dev/null || groupadd -r %{_rabbitmq_group}
+getent passwd %{_rabbitmq_user} >/dev/null || useradd -r -g %{_rabbitmq_group} \
   -d %{_localstatedir}/lib/rabbitmq \
   -s /sbin/nologin \
-  -c "user for RabbitMQ messaging server" rabbitmq
+  -c "user for RabbitMQ messaging server" %{_rabbitmq_user}
 %service_add_pre %{name}.service
 
 %post
@@ -176,6 +207,12 @@ getent passwd rabbitmq >/dev/null || useradd -r -g rabbitmq \
 systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 
 %preun
+# Clean out plugin activation state, both on uninstall and upgrade
+rm -rf %{_plugins_state_dir}
+for ext in rel script boot ; do
+    rm -f %{_rabbit_erllibdir}/ebin/rabbit.$ext
+done
+
 %service_del_preun %{name}.service
 
 %postun
@@ -192,8 +229,9 @@ systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 %{_unitdir}/%{name}.service
 /usr/lib/tmpfiles.d/rabbitmq-server.conf
 #
-%attr(0750, rabbitmq, rabbitmq) %dir %{_localstatedir}/lib/rabbitmq
-%attr(0750, rabbitmq, rabbitmq) %dir %{_localstatedir}/log/rabbitmq
+%attr(0755, rabbitmq, rabbitmq) %dir %{_localstatedir}/lib/rabbitmq
+%attr(0750, rabbitmq, rabbitmq) %dir %{_localstatedir}/lib/rabbitmq/mnesia
+%attr(0755, rabbitmq, rabbitmq) %dir %{_localstatedir}/log/rabbitmq
 #
 %{_sbindir}/rabbitmq-plugins
 %{_sbindir}/rabbitmq-server
@@ -202,6 +240,9 @@ systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 %{_sbindir}/rabbitmq-upgrade
 %{_sbindir}/rcrabbitmq-server
 %{_sbindir}/rabbitmq-diagnostics
+%{_sbindir}/rabbitmq-streams
+
+%ghost %dir /run/rabbitmq
 #
 %dir /usr/lib/ocf/
 %dir /usr/lib/ocf/resource.d/
@@ -218,5 +259,11 @@ systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
 %files -n erlang-rabbitmq-client
 %{_libdir}/erlang/lib/amqp_client*/
 %{_libdir}/erlang/lib/rabbit_common*/
+
+%files bash-completion
+%{_datadir}/bash-completion/completions/rabbitmq*
+
+%files zsh-completion
+%{_datadir}/zsh/site-functions/_enable_rabbitmqctl_completion
 
 %changelog

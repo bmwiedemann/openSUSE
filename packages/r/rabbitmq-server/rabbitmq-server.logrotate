@@ -3,11 +3,5 @@
         missingok
         rotate 20
         compress
-        delaycompress
         notifempty
-        sharedscripts
-        postrotate
-              /usr/sbin/rabbitmqctl rotate_logs > /dev/null
-        endscript
-        su rabbitmq rabbitmq
 }

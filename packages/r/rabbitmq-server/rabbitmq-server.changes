@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Aug 23 14:20:39 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Separate autocomplete files into individual packages.
+
+-------------------------------------------------------------------
+Sun Aug 22 01:05:26 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.4:
+  * Bug fixes, see https://www.rabbitmq.com/changelog.html
+- Major changes from 3.9.0:
+  * Streams: a new messaging abstraction complementary to queues
+  * Support for Erlang 24
+  * Kubernetes Cluster Operator and Messaging Topology Operator
+  * Minimum required Erlang version is now 23.2
+- Fix spec file to align with gh#rabbitmq/rabbitmq-packaging/RPMS/Fedora/rabbitmq-server.spec.
+- Update rabbitmq-server.service and rabbitmq-server.logrotate.
+- Remove unused sources:
+  + Already in source:
+    * advanced.config.example
+    * rabbitmq-script-wrapper
+    * rabbitmq.conf.example
+    * rabbitmq.config.example
+  + Deprecated:
+    * rabbitmq-server.init
+    * rabbitmq-server.sysconfig
+
+-------------------------------------------------------------------
+Thu Jul 15 14:19:33 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Use /run instead of deprecated /var/run in tmpfiles.conf
+  (bsc#1185075)
+
+-------------------------------------------------------------------
 Tue May 11 23:02:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to RabbitMQ 3.8.16
