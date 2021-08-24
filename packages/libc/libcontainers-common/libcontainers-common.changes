@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:31:52 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Update common to 0.41.0
+- Update podman to 3.2.3
+- Update storage to 1.32.6
+- Update image to 5.14.0
+
+-------------------------------------------------------------------
 Tue Jun 29 07:38:39 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Mention libcontainers-common.rpmlintrc as source
