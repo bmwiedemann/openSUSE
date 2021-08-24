@@ -110,4 +110,24 @@
     <user>RBrownSUSE</user>
     <comment>Revert to rev 7</comment>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>21f1665fd78cc2662228d12dc32cdaca</srcmd5>
+    <version>16.6.2</version>
+    <time>1629795248</time>
+    <user>dimstar_suse</user>
+    <comment>Try again with cockpit SR
+
+- Update to 16.6.2:
+  * CVE-2021-3672/CVE-2021-22931: Improper handling of untypical
+    characters in domain names (bsc#1189370, bsc#1188881)
+  * CVE-2021-22940: Use after free on close http2 on stream canceling
+    (bsc#1189368)
+  * CVE-2021-22939: Incomplete validation of rejectUnauthorized parameter
+    (bsc#1189369)
+  * deps: upgrade npm to 7.20.3
+  * deps: revert ABI-breaking change from V8 9.2
+  * module: fix ERR_REQUIRE_ESM error for null frames
+- cares_public_headers.patch: don't use private headers</comment>
+    <requestid>913180</requestid>
+  </revision>
 </revisionlist>
