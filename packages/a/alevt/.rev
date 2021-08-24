@@ -172,4 +172,12 @@
 - Add use-pkgconfig.patch</comment>
     <requestid>886640</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>efc92bf273e236d86146c0804204a3f0</srcmd5>
+    <version>1.8.1</version>
+    <time>1629795291</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913857</requestid>
+  </revision>
 </revisionlist>

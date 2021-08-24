@@ -17,7 +17,7 @@
 
 
 Name:           alevt
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Teletext and Videotext Decoder for the BTTV Driver
 License:        GPL-2.0-or-later
@@ -25,8 +25,6 @@ Group:          Hardware/TV
 URL:            https://gitlab.com/alevt/alevt
 Source0:        %{URL}/-/archive/v%{version}/alevt-v%{version}.tar.bz2
 Source1:        alevt.desktop
-# PATCH-FEATURE-UPSTREAM use-pkgconfig.patch -- https://gitlab.com/alevt/alevt/-/issues/1
-Patch0:         use-pkgconfig.patch
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(libpng)

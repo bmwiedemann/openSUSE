@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 23 10:49:31 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.8.1
+  * Some SI fixes
+  * Use pkg-config to find libraries, obsoletes use-pkgconfig.patch
+
+-------------------------------------------------------------------
 Mon Apr 19 10:16:55 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
  - Fix previous changelog entry
