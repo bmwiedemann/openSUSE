@@ -2378,4 +2378,14 @@
 - added nss-fips-fix-missing-nspr.patch (via SLE sync)</comment>
     <requestid>910950</requestid>
   </revision>
+  <revision rev="177" vrev="2">
+    <srcmd5>76ca0fccd941f44c43a69c7021e73b1f</srcmd5>
+    <version>3.68</version>
+    <time>1629795244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update nss-fips-constructor-self-tests.patch to fix crashes
+  reported by upstream. This was likely affecting WebRTC calls.
+</comment>
+    <requestid>913334</requestid>
+  </revision>
 </revisionlist>

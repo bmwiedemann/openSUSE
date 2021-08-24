@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 18 12:41:56 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
+
+- Update nss-fips-constructor-self-tests.patch to fix crashes
+  reported by upstream. This was likely affecting WebRTC calls.
+
+-------------------------------------------------------------------
 Thu Aug  5 15:21:31 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.68

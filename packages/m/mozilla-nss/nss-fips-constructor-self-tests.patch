@@ -67,7 +67,7 @@ Index: nss/lib/freebl/fips-selftest.inc
 ===================================================================
 --- /dev/null
 +++ nss/lib/freebl/fips-selftest.inc
-@@ -0,0 +1,293 @@
+@@ -0,0 +1,296 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test - common stuff.
 + *
@@ -250,7 +250,10 @@ Index: nss/lib/freebl/fips-selftest.inc
 +	strncat(full_lib_name, SHLIB_VERSION"."SHLIB_SUFFIX, l);
 +	l -= strlen(SHLIB_VERSION"."SHLIB_SUFFIX);
 +#if 1
-+	rv = BLAPI_SHVerify(full_lib_name, addr, &err);
++	if (NULL == addr)
++		rv = BLAPI_SHVerifyFile(full_lib_name, &err);
++	else
++		rv = BLAPI_SHVerify(full_lib_name, addr, &err);
 +#else
 +	rv = 1;
 +#endif
@@ -930,7 +933,7 @@ Index: nss/lib/softoken/fips.c
 ===================================================================
 --- /dev/null
 +++ nss/lib/softoken/fips.c
-@@ -0,0 +1,33 @@
+@@ -0,0 +1,36 @@
 +#include "../freebl/fips-selftest.inc"
 +
 +#include "fips.h"
@@ -958,9 +961,12 @@ Index: nss/lib/softoken/fips.c
 +{
 +    fips_state = fips_initTest("softokn", (PRFuncPtr)fips_initTestSoftoken, fips_checkCryptoSoftoken);
 +
-+    /* The legacy DB must be checked unconditionally. The check is performed by
-+     * its constructor. */
-+    dlopen (SHLIB_PREFIX "nssdbm" SHLIB_VERSION "." SHLIB_SUFFIX, RTLD_LAZY);
++    /* The legacy DB must be checked unconditionally in FIPS mode. */
++
++    if (fips_state)
++    {
++        fips_state = fips_initTest("nssdbm", (PRFuncPtr) NULL, NULL);
++    }
 +
 +    return;
 +}
