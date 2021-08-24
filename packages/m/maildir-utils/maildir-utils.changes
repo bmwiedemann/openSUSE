@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 23 05:12:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.4:
+  * mu4e: Add back the `h' keybinding to toggle HTML view in a gnus article
+  * mu4e: toggle-html: use if-let/seq-find
+  * mu4e-view-gnus: Fix some flycheck warnings (doc)
+  * Create numbered backup of attached file when already exists #2090
+  * Use and instead of progn and fix some long lines
+  * mu4e-compose: regenerate Date: when user removes it
+
+-------------------------------------------------------------------
 Mon Aug 16 14:19:42 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.3:

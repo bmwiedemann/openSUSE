@@ -316,4 +316,18 @@
   database-schema has changed.</comment>
     <requestid>912426</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9e4af7c936c515c5bbd54e0f9fd12d4a</srcmd5>
+    <version>1.6.4</version>
+    <time>1629795274</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.4:
+  * mu4e: Add back the `h' keybinding to toggle HTML view in a gnus article
+  * mu4e: toggle-html: use if-let/seq-find
+  * mu4e-view-gnus: Fix some flycheck warnings (doc)
+  * Create numbered backup of attached file when already exists #2090
+  * Use and instead of progn and fix some long lines
+  * mu4e-compose: regenerate Date: when user removes it</comment>
+    <requestid>913628</requestid>
+  </revision>
 </revisionlist>
