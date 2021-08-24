@@ -62,6 +62,7 @@ sip-install or pip can then be used to build and install the project.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+export PYTHONDONTWRITEBYTECODE=1 # boo#1047218
 %{python_expand # no real unit tests; check import and bundle entry point
 export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -c 'import pyqtbuild'
