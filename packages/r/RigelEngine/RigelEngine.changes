@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Aug 23 19:39:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.1
+  * Fixed laser turrets beings destructible with Duke's regular
+    weapon after loading a quick save.
+
+-------------------------------------------------------------------
+Sun Aug 22 19:40:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 0.8.0
+  https://github.com/lethal-guitar/RigelEngine/releases/tag/v0.8.0
+  Highlights:
+  * extended modding support (swap in high fidelity replacements
+    for graphics and sound)
+  * more sound options (AdLib only, combined AdLib/SoundBlaster).
+- Drop patch:
+  * RigelEngine-fix-build.patch (not longer needed)
+
+-------------------------------------------------------------------
 Sun Feb 28 19:21:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.2
