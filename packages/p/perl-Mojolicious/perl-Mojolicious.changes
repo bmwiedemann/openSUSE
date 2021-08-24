@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 14 03:07:24 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.21
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.21  2021-08-13
+    - Added EXPERIMENTAL supprt for top-level await to Mojo::Promise.
+    - Updated Future::AsyncAwait requirement to 0.52 for new fatures and bug fixes.
+    - Improved *_attr and *_text methods in Test::Mojo to return undef instead of empty string for values that do not
+      exist. (tim-2)
+    - Fixed Mojo::DOM not to auto-close tags in <svg> and <math> blocks. (mkende)
+
+-------------------------------------------------------------------
 Tue Aug 10 03:07:42 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.20
