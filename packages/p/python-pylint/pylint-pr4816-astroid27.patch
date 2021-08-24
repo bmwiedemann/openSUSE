@@ -1,0 +1,359 @@
+From 12097bdb8912abff4edd41e92fffcf780c9cccbc Mon Sep 17 00:00:00 2001
+From: Pierre Sassoulas <pierre.sassoulas@gmail.com>
+Date: Sun, 8 Aug 2021 20:53:56 +0200
+Subject: [PATCH 1/5] Fix functional test no-value-for-parameter when
+ instancing an enum
+
+---
+ tests/functional/a/arguments_renamed.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: pylint-2.9.6/tests/functional/a/arguments_renamed.py
+===================================================================
+--- pylint-2.9.6.orig/tests/functional/a/arguments_renamed.py
++++ pylint-2.9.6/tests/functional/a/arguments_renamed.py
+@@ -17,7 +17,7 @@ class Orange(Fruit):
+     def brew(self, orange_name: str): # [arguments-renamed]
+         print(f"Brewing an orange named {orange_name}")
+ 
+-    def eat_with_condiment(self, orange_name: str, condiment: Condiment()): #[arguments-renamed]
++    def eat_with_condiment(self, orange_name: str, condiment: Condiment): #[arguments-renamed]
+         print(f"Eating a fruit named {orange_name} with {condiment}")
+ 
+ class Banana(Fruit):
+Index: pylint-2.9.6/tests/functional/e/enum_subclasses.py
+===================================================================
+--- pylint-2.9.6.orig/tests/functional/e/enum_subclasses.py
++++ pylint-2.9.6/tests/functional/e/enum_subclasses.py
+@@ -1,9 +1,10 @@
+-# pylint: disable=missing-docstring
+-from enum import Enum, IntEnum
++# pylint: disable=missing-docstring, invalid-name
++from enum import Enum, IntEnum, auto
+ 
+ 
+ class Issue1932(IntEnum):
+     """https://github.com/PyCQA/pylint/issues/1932"""
++
+     FOO = 1
+ 
+     def whats_my_name(self):
+@@ -12,8 +13,67 @@ class Issue1932(IntEnum):
+ 
+ class Issue2062(Enum):
+     """https://github.com/PyCQA/pylint/issues/2062"""
++
+     FOO = 1
+     BAR = 2
+ 
+     def __str__(self):
+         return self.name.lower()
++
++
++class OrderedEnum(Enum):
++    def __ge__(self, other):
++        if self.__class__ is other.__class__:
++            return self.value >= other.value  # line 11
++        return NotImplemented
++
++    def __gt__(self, other):
++        if self.__class__ is other.__class__:
++            return self.value > other.value  # line 16
++        return NotImplemented
++
++
++class Color(OrderedEnum):
++    red = 0
++    green = 1
++
++
++class People(Enum):
++    jack = 0
++    john = 1
++
++
++print(Color.red.value)  # line 29
++print(People.jack.name)
++
++
++class BaseEnum(Enum):
++    def some_behavior(self):
++        pass
++
++
++class MyEnum(BaseEnum):
++
++    FOO = 1
++    BAR = 2
++
++
++print(MyEnum.FOO.value)
++
++class TestBase(Enum):
++    """Adds a special method to enums."""
++
++    def hello_pylint(self) -> str:
++        """False positive."""
++        return self.name
++
++
++class TestEnum(TestBase):
++    """Tests the false positive for enums."""
++
++    a = auto()
++    b = auto()
++
++
++test_enum = TestEnum.a
++assert test_enum.hello_pylint() == test_enum.name
+Index: pylint-2.9.6/tests/functional/d/dataclass_with_default_factory.py
+===================================================================
+--- pylint-2.9.6.orig/tests/functional/d/dataclass_with_default_factory.py
++++ pylint-2.9.6/tests/functional/d/dataclass_with_default_factory.py
+@@ -1,6 +1,9 @@
+-"""A test script the confuses pylint."""
+-# https://github.com/PyCQA/pylint/issues/2605
++"""Various regression tests for dataclasses."""
++# See issues:
++# - https://github.com/PyCQA/pylint/issues/2605
++# - https://github.com/PyCQA/pylint/issues/2698
+ from dataclasses import dataclass, field
++import dataclasses as dc
+ 
+ 
+ @dataclass
+@@ -13,3 +16,28 @@ class Test:
+ TEST = Test()
+ TEST.test.append(1)
+ print(TEST.test[0])
++
++
++@dc.dataclass  # Note the use of dc instead of dataclasses
++class Test2:
++    """Test dataclass that uses a renamed import of dataclasses"""
++    int_prop: int = dc.field(default=10)
++    list_prop: list = dc.field(default_factory=list)
++    dict_prop: dict = dc.field(default_factory=dict)
++
++
++TEST2 = Test2()
++for _ in TEST2.list_prop:  # This is okay
++    pass
++
++
++TEST2.dict_prop["key"] = "value"  # This is okay
++
++
++# Test2.int_prop is inferred as 10, not a Field
++print(Test2.int_prop + 1)
++for _ in Test2.int_prop:  # [not-an-iterable]
++    pass
++
++
++Test2.int_prop["key"] = "value"  # [unsupported-assignment-operation]
+Index: pylint-2.9.6/tests/functional/d/dataclass_with_default_factory.txt
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/d/dataclass_with_default_factory.txt
+@@ -0,0 +1,2 @@
++not-an-iterable:39:9::Non-iterable value Test2.int_prop is used in an iterating context:HIGH
++unsupported-assignment-operation:43:0::'Test2.int_prop' does not support item assignment:HIGH
+Index: pylint-2.9.6/tests/functional/i/invalid/invalid_name_issue_3405.py
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/i/invalid/invalid_name_issue_3405.py
+@@ -0,0 +1,11 @@
++""" Regression test for https://github.com/PyCQA/pylint/issues/3405. """
++
++import dataclasses
++from typing import ClassVar
++
++
++@dataclasses.dataclass
++class Foo:
++    """ClassVar attribute should be matched against class-attribute-rgx, not attr-rgx"""
++    # class-attribute-rgx='^y$'
++    x: ClassVar[int] = 0  # [invalid-name]
+Index: pylint-2.9.6/tests/functional/i/invalid/invalid_name_issue_3405.rc
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/i/invalid/invalid_name_issue_3405.rc
+@@ -0,0 +1,9 @@
++[MESSAGES CONTROL]
++enable=invalid-name
++
++[BASIC]
++attr-rgx=^x$
++class-attribute-rgx=^y$
++
++[testoptions]
++min_pyver=3.7
+Index: pylint-2.9.6/tests/functional/i/invalid/invalid_name_issue_3405.txt
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/i/invalid/invalid_name_issue_3405.txt
+@@ -0,0 +1 @@
++invalid-name:11:4:Foo:"Class attribute name ""x"" doesn't conform to '^y$' pattern":HIGH
+Index: pylint-2.9.6/tests/functional/n/no/no_member_dataclasses.py
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/n/no/no_member_dataclasses.py
+@@ -0,0 +1,83 @@
++"""Test various regressions for dataclasses and no-member.
++"""
++# pylint: disable=missing-docstring, too-few-public-methods
++from abc import ABCMeta, abstractmethod
++from dataclasses import asdict, dataclass, field
++from typing import Any, Dict
++
++
++# https://github.com/PyCQA/pylint/issues/3754
++@dataclass(frozen=True)
++class DeploymentState(metaclass=ABCMeta):
++    type: str
++
++    @abstractmethod
++    def to_dict(self) -> Dict:
++        """
++        Serializes given DeploymentState instance to Dict.
++        :return:
++        """
++
++
++@dataclass(frozen=True)
++class DeploymentStateEcs(DeploymentState):
++    blue: Any
++    green: Any
++    candidate: Any
++
++    def to_dict(self) -> Dict:
++        return {
++            'type': self.type,  # No error here
++            'blue': asdict(self.blue),
++            'green': asdict(self.green),
++            'candidate': self.candidate.value,
++        }
++
++
++@dataclass(frozen=True)
++class DeploymentStateLambda(DeploymentState):
++    current: Any
++    candidate: Any
++
++    def to_dict(self) -> Dict:
++        return {
++            'type': self.type,  # No error here
++            'current': asdict(self.current),
++            'candidate': asdict(self.candidate) if self.candidate else None,
++        }
++
++
++# https://github.com/PyCQA/pylint/issues/2600
++@dataclass
++class TestClass:
++    attr1: str
++    attr2: str
++    dict_prop: Dict[str, str] = field(default_factory=dict)
++
++    def some_func(self) -> None:
++        for key, value in self.dict_prop.items():  # No error here
++            print(key)
++            print(value)
++
++
++class TestClass2:  # not a dataclass, field inferred to a Field
++    attr1: str
++    attr2: str
++    dict_prop: Dict[str, str] = field(default_factory=dict)
++
++    def some_func(self) -> None:
++        for key, value in self.dict_prop.items():  # [no-member]
++            print(key)
++            print(value)
++
++
++@dataclass
++class TestClass3:
++    attr1: str
++    attr2: str
++    dict_prop = field(default_factory=dict)  # No type annotation, not treated as field
++
++    def some_func(self) -> None:
++        for key, value in self.dict_prop.items():  # [no-member]
++            print(key)
++            print(value)
+Index: pylint-2.9.6/tests/functional/n/no/no_member_dataclasses.rc
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/n/no/no_member_dataclasses.rc
+@@ -0,0 +1,2 @@
++[testoptions]
++min_pyver=3.7
+Index: pylint-2.9.6/tests/functional/n/no/no_member_dataclasses.txt
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/n/no/no_member_dataclasses.txt
+@@ -0,0 +1,2 @@
++no-member:69:26:TestClass2.some_func:Instance of 'Field' has no 'items' member:INFERENCE
++no-member:81:26:TestClass3.some_func:Instance of 'Field' has no 'items' member:INFERENCE
+Index: pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes.py
+===================================================================
+--- pylint-2.9.6.orig/tests/functional/t/too/too_many_instance_attributes.py
++++ pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes.py
+@@ -1,5 +1,6 @@
+ # pylint: disable=missing-docstring, too-few-public-methods, useless-object-inheritance
+ 
++
+ class Aaaa(object): # [too-many-instance-attributes]
+ 
+     def __init__(self):
+Index: pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes.txt
+===================================================================
+--- pylint-2.9.6.orig/tests/functional/t/too/too_many_instance_attributes.txt
++++ pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes.txt
+@@ -1 +1 @@
+-too-many-instance-attributes:3:0:Aaaa:Too many instance attributes (21/7)
++too-many-instance-attributes:4:0:Aaaa:Too many instance attributes (21/7):HIGH
+Index: pylint-2.9.6/setup.cfg
+===================================================================
+--- pylint-2.9.6.orig/setup.cfg
++++ pylint-2.9.6/setup.cfg
+@@ -42,7 +42,7 @@ project_urls =
+ [options]
+ packages = find:
+ install_requires =
+-    astroid>=2.6.5,<2.7 # (You should also upgrade requirements_test_min.txt)
++    astroid>=2.7
+     isort>=4.2.5,<6
+     mccabe>=0.6,<0.7
+     toml>=0.7.1
+Index: pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes_py37.py
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes_py37.py
+@@ -0,0 +1,18 @@
++# pylint: disable=missing-docstring, too-few-public-methods, useless-object-inheritance
++from dataclasses import dataclass, InitVar
++
++# InitVars should not count as instance attributes (see issue #3754)
++# Default max_instance_attributes is 7
++@dataclass
++class Hello:
++    a_1: int
++    a_2: int
++    a_3: int
++    a_4: int
++    a_5: int
++    a_6: int
++    a_7: int
++    a_8: InitVar[int]
++
++    def __post_init__(self, a_8):
++        self.a_1 += a_8
+Index: pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes_py37.rc
+===================================================================
+--- /dev/null
++++ pylint-2.9.6/tests/functional/t/too/too_many_instance_attributes_py37.rc
+@@ -0,0 +1,2 @@
++[testoptions]
++min_pyver=3.7

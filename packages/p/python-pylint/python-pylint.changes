@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Aug 20 10:03:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.9.6
+  * Fix a false positive undefined-variable when variable name in
+    decoration matches function argument
+- Many more release notes from 2.9.0 to 2.9.5:
+  * https://github.com/PyCQA/pylint/releases
+  * Added time.clock to deprecated functions/methods for python 3.3
+  * No longer emit consider-using-with for ThreadPoolExecutor and
+    ProcessPoolExecutor as they have legitimate use cases without a
+    with block.
+  * The similarity checker no longer add three trailing whitespaces
+    for empty lines in its report.
+  * Python 3.10 is now supported.
+  * Added various deprecated functions/methods for python 3.10,
+    3.7, 3.6 and 3.3
+  * setuptools_scm has been removed and replaced by tbump in order
+    to not have hidden runtime dependencies to setuptools
+- Drop pylint-pr4450-import-init.patch
+- Add pylint-pr4816-astroid27.patch
+  * gh#PyCQA/pylint#4816
+  * remove astroid upper bound -- the previous pin broke a lot of
+    packages through the pkg_resources check
+
+-------------------------------------------------------------------
 Sun Jun  6 12:04:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.3:

@@ -20,29 +20,28 @@
 %bcond_without tests
 %define skip_python2 1
 Name:           python-pylint
-Version:        2.8.3
+Version:        2.9.6
 Release:        0
 Summary:        Syntax and style checker for Python code
 License:        GPL-2.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/pycqa/pylint
-Source:         https://files.pythonhosted.org/packages/source/p/pylint/pylint-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pylint-pr4450-import-init.patch -- gh#PyCQA/pylint#4450 fix broken tests
-Patch1:         https://github.com/PyCQA/pylint/pull/4450.patch#/pylint-pr4450-import-init.patch
-BuildRequires:  %{python_module setuptools_scm}
+# Tests are no longer packaged in the PyPI sdist, use GitHub archive
+Source:         https://github.com/PyCQA/pylint/archive/refs/tags/v%{version}.tar.gz#/pylint-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM pylint-pr4816-astroid27.patch - gh#PyCQA/pylint#4816 + removed upper bound
+Patch0:         pylint-pr4816-astroid27.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-astroid >= 2.5.6
+Requires:       python-astroid >= 2.7
 Requires:       python-isort >= 4.2.5
 Requires:       python-mccabe >= 0.6
 Requires:       python-toml >= 0.7.1
 %if %{with tests}
-BuildRequires:  %{python_module astroid >= 2.5.6}
+BuildRequires:  %{python_module astroid >= 2.7}
 BuildRequires:  %{python_module isort >= 4.2.5}
 BuildRequires:  %{python_module mccabe >= 0.6}
 BuildRequires:  %{python_module pytest-benchmark}
-BuildRequires:  %{python_module pytest-runner}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module toml >= 0.7.1}
@@ -91,7 +90,10 @@ export LC_ALL="en_US.UTF-8"
 # https://github.com/PyCQA/pylint/issues/3636
 # so make sure that the macro set PYTHONPATH does not result in conflicting imports
 mv pylint pylint.tmp
-%pytest --benchmark-disable --ignore tests/test_epylint.py
+# numpy inference in python39 and python38 broken -- https://github.com/PyCQA/pylint/issues/4877
+python39_donttest=("-k" "not (test_functional and (len_checks or nan_comparison_check))")
+python38_donttest=("${python39_donttest[@]}")
+%pytest --benchmark-disable --ignore tests/test_epylint.py "${$python_donttest[@]}"
 # result of the mentioned tampering: other tests must not have pwd in PYTHONPATH, but test_epylint needs it
 export PYTHONPATH=$PWD
 %pytest --benchmark-disable tests/test_epylint.py
