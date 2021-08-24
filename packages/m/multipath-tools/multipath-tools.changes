@@ -1,7 +1,33 @@
 -------------------------------------------------------------------
+Fri Aug 13 11:03:13 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Spec file: remove compatibility code for SLE <= SLE15-SP2
+
+-------------------------------------------------------------------
+Thu Aug 12 20:08:23 UTC 2021 - mwilck@suse.com
+
+- Update to version 0.8.6+32+suse.f11c192:
+  * libmultipath:fix compilation with glibc 2.34 (bsc#1189099)
+  * libmultipath: avoid buffer size warning with systemd 240+ 
+    (bsc#1189176)
+  * libmultipath: use uint64_t for sg_id.lun (bsc#1187534)
+
+- Upstream bug fixes:
+  * multipath-tools: make HUAWEI/XSG1 config work with alua and multibus
+  * multipath-tools: add info about HPE Alletra 6000 and 9000
+  * multipathd: cli_getprkey(): fix return value and "aptpl" support
+  * multipathd: don't rescan_path on wwid change in uev_update_path
+  * kpartx: Don't leak memory when getblock returns NULL
+  * multipath: free vectors in configure
+  * multipathd: fix ev_remove_path return code handling
+  * multipathd: remove duplicate orphan_paths in flush_map
+  * multipathd: don't fail to remove path once the map is removed
+  * multipathd: fix compilation issue with liburcu < 0.8
+
+-------------------------------------------------------------------
 Tue Jun  8 09:34:23 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
-- install to /usr (boo#1029961)
+- install to /usr on Tumbleweed (boo#1029961)
 
 -------------------------------------------------------------------
 Tue May 18 17:43:13 UTC 2021 - Martin Wilck <mwilck@suse.com>

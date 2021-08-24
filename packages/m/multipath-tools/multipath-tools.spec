@@ -18,27 +18,18 @@
 
 %global _lto_cflags %{nil}
 
-# Whether to build libdmmp
-# Default YES except for SLE12 / Leap 42
-%if 0%{?suse_version} >= 1500
+# Whether to build libdmmp - default YES
 %bcond_without libdmmp
-%else
-%bcond_with libdmmp
-%endif
 
-# "make test" disabled on SLE12 (cmocka not available)
-%if 0%{?suse_version} >= 1500
+# Whether to run tests - default YES
 %bcond_without check
-%else
-%bcond_with check
-%endif
 
 # This should match the version in libdmmp/Makefile
 %define _libdmmp_version 0.2.0
 %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
 
 Name:           multipath-tools
-Version:        0.8.6+10+suse.4771137
+Version:        0.8.6+32+suse.f11c192
 Release:        0
 Summary:        Tools to Manage Multipathed Devices with the device-mapper
 License:        GPL-2.0-only
@@ -87,6 +78,7 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
 
 
 # Currently, it makes no sense to split out libmpathpersist and libmpathcmd
@@ -161,22 +153,17 @@ This package provides development files and documentation for libdmmp.
 
 %prep
 %setup -q -n multipath-tools-%{version}
-# This must be before autopatch for code 12, otherwise build error
 cp %{SOURCE4} .
 cp %{SOURCE5} .
 %autopatch -p1
 
 %build
 [ -n "$SOURCE_DATE_EPOCH" ] && export KBUILD_BUILD_TIMESTAMP=@$SOURCE_DATE_EPOCH
-# %%make_build is not supported in SLE12
-%{?make_build}%{!?make_build:make %{?_smp_mflags}} \
- CC="%__cc" OPTFLAGS="%{optflags}" %{dirflags} %{makeflags}
+%{make_build} OPTFLAGS="%{optflags}" %{dirflags} %{makeflags}
 
 %if 0%{?with_check} == 1
 %check
-# ld fails to resolve cmocka's __wrap symbols with -flto
-# https://gcc.gnu.org/bugzilla/show_bug.cgi?id=88643
-make OPTFLAGS="%{optflags}" %{_make_output_sync} %{?_smp_mflags} test
+%{make_build} OPTFLAGS="%{optflags}" test
 %endif
 
 %install
@@ -215,11 +202,7 @@ exit 0
 %postun
 %{?regenerate_initrd_post}
 %service_del_postun multipathd.service
-%if 0%{?suse_version} >= 1550
 %service_del_postun_without_restart multipathd.socket
-%else
-%service_del_postun -n multipathd.socket
-%endif
 
 %posttrans
 %{?regenerate_initrd_posttrans}
