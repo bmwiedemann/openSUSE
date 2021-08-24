@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Jul 26 05:54:47 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.13.2
+ see installed CHANGELOG.md
+
+  # v1.13.2
+  
+  ## Release v1.13.2 - 2021/07/12
+  
+  ### Enhancement
+  
+  * fluent-plugin-generate: Storage plugin was supported.
+    https://github.com/fluent/fluentd/pull/3426
+  * parser_json: Added support to customize configuration of oj options.
+    Use `FLUENT_OJ_OPTION_BIGDECIMAL_LOAD`, `FLUENT_OJ_OPTION_MAX_NESTING`,
+    `FLUENT_OJ_OPTION_MODE`, and `FLUENT_OJ_OPTION_USE_TO_JSON` environment
+    variable to configure it.
+    https://github.com/fluent/fluentd/pull/3315
+  
+  ### Bug fix
+  
+  * binlog_reader: Fixed a crash bug by missing "fluent/env" dependency.
+    https://github.com/fluent/fluentd/pull/3443
+  * Fixed a crash bug on outputting log at the early stage when parsing
+    config file.  This is a regression since v1.13.0. If you use invalid
+    '@' prefix parameter, remove it as a workaround.
+    https://github.com/fluent/fluentd/pull/3451
+  * in_tail: Fixed a bug that when rotation is occurred, remaining lines
+    will be discarded if the throttling feature is enabled.
+    https://github.com/fluent/fluentd/pull/3390
+  * fluent-plugin-generate: Fixed a crash bug during gemspec generation.
+    It was unexpectedly introduced by #3305, thus this bug was a
+    regression since 1.12.3.
+    https://github.com/fluent/fluentd/pull/3444
+  
+  ### Misc
+  
+  * Fixed the runtime dependency version of http_parse.rb to 0.7.0.
+    It was fixed because false positive detection is occurred frequently
+    by security scanning tools.
+    https://github.com/fluent/fluentd/pull/3450
+  
+  # v1.13.1
+  
+  ## Release v1.13.1 - 2021/06/25
+  
+  ### Bug fix
+  
+  * out_forward: Fixed a race condition on handshake
+    It's caused by using a same unpacker from multiple threads.
+    https://github.com/fluent/fluentd/pull/3405
+    https://github.com/fluent/fluentd/pull/3406
+  * in_tail: Fixed to remove too much verbose debugging logs
+    It was unexpectedly introduced by #3185 log throttling feature.
+    https://github.com/fluent/fluentd/pull/3418
+  * Fixed not to echo back the provides path as is on a 404 error
+    There was a potential cross-site scripting vector even though
+    it is quite difficult to exploit.
+    https://github.com/fluent/fluentd/pull/3427
+  
+  ### Misc
+  
+  * Pretty print for Fluent::Config::Section has been supported
+    for debugging
+    https://github.com/fluent/fluentd/pull/3398
+  * CI: Dropped to run CI for Ruby 2.5
+    https://github.com/fluent/fluentd/pull/3412
+  
+
+-------------------------------------------------------------------
+Thu Jun 24 17:22:07 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 1.13.0
+ see installed CHANGELOG.md
+
+  # v1.13
+  
+  ## Release v1.13.0 - 2021/05/29
+  
+  ### Enhancement
+  
+  * in_tail: Handle log throttling per file feature
+    https://github.com/fluent/fluentd/pull/3185
+    https://github.com/fluent/fluentd/pull/3364
+    https://github.com/fluent/fluentd/pull/3379
+  * Extend to support service discovery manager in simpler way
+    https://github.com/fluent/fluentd/pull/3299
+    https://github.com/fluent/fluentd/pull/3362
+  * in_http: HTTP GET requests has been supported
+    https://github.com/fluent/fluentd/pull/3373
+  * The log rotate settings in system configuration has been supported
+    https://github.com/fluent/fluentd/pull/3352
+  
+  ### Bug fix
+  
+  * Fix to disable `trace_instruction` when
+    `RubyVM::InstructionSequence` is available. It improves
+    compatibility with `truffleruby` some extent.
+    https://github.com/fluent/fluentd/pull/3376
+  * in_tail: Safely skip files which are used by another process on
+    Windows. It improves exception handling about
+    `ERROR_SHARING_VIOLATION` on Windows.
+    https://github.com/fluent/fluentd/pull/3378
+  * fluent-cat: the issue resending secondary file in specific format
+    has been fixed
+    https://github.com/fluent/fluentd/pull/3368
+  * in_tail: Shutdown immediately & safely even if reading huge files
+    Note that `skip_refresh_on_startup` must be enabled.
+    https://github.com/fluent/fluentd/pull/3380
+  
+  ### Misc
+  
+  * example: Change a path to backup_path in counter_server correctly
+    https://github.com/fluent/fluentd/pull/3359
+  * README: Update link to community forum to discuss.fluentd.org
+    https://github.com/fluent/fluentd/pull/3360
+  
+
+-------------------------------------------------------------------
 Wed Jan 20 12:37:15 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 1.12.0
