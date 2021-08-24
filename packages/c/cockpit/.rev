@@ -142,4 +142,12 @@
     <comment></comment>
     <requestid>911219</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>6750069dbb79a2f78380b9a27c9031cb</srcmd5>
+    <version>250</version>
+    <time>1629795247</time>
+    <user>dimstar_suse</user>
+    <comment>- add --legacy-peer-deps to fix build</comment>
+    <requestid>913174</requestid>
+  </revision>
 </revisionlist>

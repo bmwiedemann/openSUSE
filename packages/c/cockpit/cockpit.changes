@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 19 14:54:46 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- add --legacy-peer-deps to fix build
+
+-------------------------------------------------------------------
 Tue Aug  3 14:46:16 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - new version 250

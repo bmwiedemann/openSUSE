@@ -174,7 +174,7 @@ Recommends: subscription-manager-cockpit
 %autopatch -p1
 cp %SOURCE1 tools/cockpit.pam
 #
-local-npm-registry %{_sourcedir} install --also=dev
+local-npm-registry %{_sourcedir} install --also=dev --legacy-peer-deps
 
 %build
 find node_modules -name \*.node -print -delete
