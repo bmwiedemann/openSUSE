@@ -14,6 +14,11 @@ Wed Aug 11 10:12:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
     audio input/output, a variety of new APIs, support for the
     Amazon Luna game controller, rumble support for more
     controllers.
+  * NOTE: Switching away (e.g. with Alt-Tab) from fullscreen
+    windows created with the SDL_WINDOW_FULLSCREEN flag will now
+    minimize them. If your window manager is configured to now show
+    minimzed windows in either the Alt-Tab list or the task bar,
+    you will have difficulty unminimizing these windows.
 
 -------------------------------------------------------------------
 Wed Dec 23 10:47:09 UTC 2020 - Dirk Müller <dmueller@suse.com>

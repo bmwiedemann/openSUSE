@@ -264,4 +264,12 @@
     <comment>- Update to release 2.0.16</comment>
     <requestid>911480</requestid>
   </revision>
+  <revision rev="34" vrev="2">
+    <srcmd5>d38d440c87d9eede69d01ecebfc431e4</srcmd5>
+    <version>2.0.16</version>
+    <time>1629795251</time>
+    <user>dimstar_suse</user>
+    <comment>add warning about changed SDL window behavior</comment>
+    <requestid>913402</requestid>
+  </revision>
 </revisionlist>
