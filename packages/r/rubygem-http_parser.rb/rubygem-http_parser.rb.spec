@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-http_parser.rb
 #
-# Copyright (c) 2015 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-http_parser.rb
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 %define mod_name http_parser.rb
 %define mod_full_name %{mod_name}-%{version}
@@ -32,16 +32,16 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubydevel}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://github.com/tmm1/http_parser.rb
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
+URL:            https://github.com/tmm1/http_parser.rb
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Simple callback-based HTTP request/response parser
 License:        MIT
 Group:          Development/Languages/Ruby
 
 %description
-Ruby bindings to http://github.com/ry/http-parser and
-http://github.com/a2800276/http-parser.java.
+Ruby bindings to https://github.com/joyent/http-parser and
+https://github.com/http-parser/http-parser.java.
 
 %prep
 
