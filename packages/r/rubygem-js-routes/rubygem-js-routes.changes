@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 26 05:59:53 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.0.8
+ see installed CHANGELOG.md
+
+  ## v2.0.8
+  
+  * Forbid usage of `namespace` option if `module_type` is not `nil`. [#281](https://github.com/railsware/js-routes/issues/281).
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:33:10 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.0.7
