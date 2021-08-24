@@ -1,12 +1,17 @@
 # HG changeset patch
-# Parent  aecb4600e5da17443b224c79eee178c1d8e155e3
+# Parent  d1d66f7e4d0e7fd45e91e4fcee07555e72046d48
 For FF68, AntiAliasing of XULTexts seem to be broken on big endian (s390x). Text and icons of the sandwich-menu to the
 right of the address bar, as well as plugin-windows appears transparant, which usually means unreadable (white on white).
 
-diff -r aecb4600e5da gfx/skia/skia/include/private/SkNx.h
---- a/gfx/skia/skia/include/private/SkNx.h	Tue Aug 20 09:46:55 2019 +0200
-+++ b/gfx/skia/skia/include/private/SkNx.h	Mon Sep 09 10:04:06 2019 +0200
-@@ -238,7 +238,18 @@
+diff --git a/gfx/skia/skia/include/private/SkNx.h b/gfx/skia/skia/include/private/SkNx.h
+--- a/gfx/skia/skia/include/private/SkNx.h
++++ b/gfx/skia/skia/include/private/SkNx.h
+@@ -233,17 +233,28 @@ struct SkNx<1,T> {
+     AI SkNx operator<<(int bits) const { return fVal << bits; }
+     AI SkNx operator>>(int bits) const { return fVal >> bits; }
+ 
+     AI SkNx operator+(const SkNx& y) const { return fVal + y.fVal; }
+     AI SkNx operator-(const SkNx& y) const { return fVal - y.fVal; }
      AI SkNx operator*(const SkNx& y) const { return fVal * y.fVal; }
      AI SkNx operator/(const SkNx& y) const { return fVal / y.fVal; }
  
@@ -25,10 +30,20 @@ diff -r aecb4600e5da gfx/skia/skia/include/private/SkNx.h
      AI SkNx operator|(const SkNx& y) const { return FromBits(ToBits(fVal) | ToBits(y.fVal)); }
      AI SkNx operator^(const SkNx& y) const { return FromBits(ToBits(fVal) ^ ToBits(y.fVal)); }
  
-diff -r aecb4600e5da gfx/skia/skia/src/opts/SkBlitMask_opts.h
---- a/gfx/skia/skia/src/opts/SkBlitMask_opts.h	Tue Aug 20 09:46:55 2019 +0200
-+++ b/gfx/skia/skia/src/opts/SkBlitMask_opts.h	Mon Sep 09 10:04:06 2019 +0200
-@@ -203,7 +203,13 @@
+     AI SkNx operator==(const SkNx& y) const { return FromBits(fVal == y.fVal ? ~0 : 0); }
+     AI SkNx operator!=(const SkNx& y) const { return FromBits(fVal != y.fVal ? ~0 : 0); }
+     AI SkNx operator<=(const SkNx& y) const { return FromBits(fVal <= y.fVal ? ~0 : 0); }
+     AI SkNx operator>=(const SkNx& y) const { return FromBits(fVal >= y.fVal ? ~0 : 0); }
+     AI SkNx operator< (const SkNx& y) const { return FromBits(fVal <  y.fVal ? ~0 : 0); }
+diff --git a/gfx/skia/skia/src/opts/SkBlitMask_opts.h b/gfx/skia/skia/src/opts/SkBlitMask_opts.h
+--- a/gfx/skia/skia/src/opts/SkBlitMask_opts.h
++++ b/gfx/skia/skia/src/opts/SkBlitMask_opts.h
+@@ -198,17 +198,23 @@ namespace SK_OPTS_NS {
+                                        const SkAlpha* mask, size_t maskRB,
+                                        int w, int h) {
+         auto fn = [](const Sk4px& d, const Sk4px& aa) {
+             //   = (s + d(1-sa))aa + d(1-aa)
+             //   = s*aa + d(1-sa*aa)
              //   ~~~>
              // a = 1*aa + d(1-1*aa) = aa + d(1-aa)
              // c = 0*aa + d(1-1*aa) =      d(1-aa)
@@ -42,3 +57,8 @@ diff -r aecb4600e5da gfx/skia/skia/src/opts/SkBlitMask_opts.h
                   + d.approxMulDiv255(aa.inv());
          };
          while (h --> 0) {
+             Sk4px::MapDstAlpha(w, dst, mask, fn);
+             dst  +=  dstRB / sizeof(*dst);
+             mask += maskRB / sizeof(*mask);
+         }
+     }

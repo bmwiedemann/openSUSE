@@ -3728,4 +3728,35 @@ I cannot test locally unfortunately.
     Memory safety bugs fixed in Thunderbird 78.13</comment>
     <requestid>911495</requestid>
   </revision>
+  <revision rev="259" vrev="1">
+    <srcmd5>c84bd4669d0a86e6ed6ddde07cacc223</srcmd5>
+    <version>91.0.1</version>
+    <time>1629795247</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.0.1
+  MFSA 2021-37 (bsc#1189547)
+  * CVE-2021-29991 (bmo#1724896)
+    Header Splitting possible with HTTP/3 Responses
+- appdate screenshot URL updated (by mailaender@opensuse.org)
+
+- Mozilla Thunderbird 91.0
+  * based on Mozilla's 91 ESR codebase
+  * many new and changed features
+    https://www.thunderbird.net/en-US/thunderbird/91.0/releasenotes/#whatsnew
+  * Renamed &quot;Add-ons&quot; to &quot;Add-ons and Themes&quot; and &quot;Options&quot; to &quot;Preferences&quot;
+  * Thunderbird now operates in multi-process (e10s) mode by default
+  * New user interface for adding attachments
+  * Enable redirect of messages
+  * CardDAV address book support
+- Removed obsolete patches:
+  * mozilla-bmo1463035.patch
+  * mozilla-ppc-altivec_static_inline.patch
+  * mozilla-pipewire-0-3.patch
+  * mozilla-bmo1554971.patch
+- add mozilla-libavcodec58_91.patch
+- removed obsolete BigEndian ICU build workaround
+- updated build requirements
+- build using clang</comment>
+    <requestid>913013</requestid>
+  </revision>
 </revisionlist>

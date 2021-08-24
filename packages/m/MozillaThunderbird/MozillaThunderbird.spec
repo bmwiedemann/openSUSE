@@ -25,20 +25,18 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          78
-%define mainver        %major.13.0
-%define orig_version   78.13.0
+%define major          91
+%define mainver        %major.0.1
+%define orig_version   91.0.1
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
 
-%if 0%{?suse_version} > 1500
-# PGO builds do not work in TW currently (bmo#1642410)
+# PGO builds do not work in TW currently (bmo#1680306)
 %define do_profiling   0
-%endif
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build 0
+%define clang_build    1
 
 # PIE, full relro
 %define build_hardened 1
@@ -48,6 +46,16 @@
 %bcond_without mozilla_tb_kde4
 %bcond_with    mozilla_tb_valgrind
 %bcond_without mozilla_tb_optimize_for_size
+
+# define if ccache should be used or not
+%define useccache     1
+
+# Firefox only supports i686
+%ifarch %ix86
+ExclusiveArch:  i586 i686
+BuildArch:      i686
+%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic}
+%endif
 
 # general build definitions
 %define progname thunderbird
@@ -82,31 +90,33 @@ BuildRequires:  gcc9-c++
 %else
 BuildRequires:  gcc-c++
 %endif
-BuildRequires:  cargo >= 1.41
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+BuildRequires:  cargo >= 1.51
+BuildRequires:  rust >= 1.51
+%else
+# Newer sle/leap/tw use parallel versioned rust releases which have
+# a different method for provides that we can use to request a
+# specific version
+BuildRequires:  rust+cargo >= 1.51
+%endif
+%if 0%{useccache} != 0
 BuildRequires:  ccache
+%endif
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libidl-devel
-BuildRequires:  mozilla-nspr-devel >= 4.25.1
-BuildRequires:  mozilla-nss-devel >= 3.53.1
+BuildRequires:  mozilla-nspr-devel >= 4.32
+BuildRequires:  mozilla-nss-devel >= 3.68
 BuildRequires:  nasm >= 2.14
-BuildRequires:  nodejs >= 10.21.0
-# Leap 15 still requires python2 for BE (ICU creation)
-%if 0%{?suse_version} < 1550
-BuildRequires:  python-devel
-BuildRequires:  python2-xml
-%endif
+BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
-# SLE12 exception
 BuildRequires:  python-libxml2
 BuildRequires:  python36
 %else
-# TW is python2 free
 BuildRequires:  python3 >= 3.5
 BuildRequires:  python3-devel
 %endif
-BuildRequires:  rust >= 1.41
-BuildRequires:  rust-cbindgen >= 0.14.1
+BuildRequires:  rust-cbindgen >= 0.19.0
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
 BuildRequires:  xorg-x11-libXt-devel
@@ -127,9 +137,7 @@ BuildRequires:  clang-devel >= 5
 BuildRequires:  pkgconfig(gdk-x11-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
-BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
-BuildRequires:  pkgconfig(gtk+-unix-print-2.0)
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(libpulse)
@@ -179,28 +187,25 @@ Patch1:         mozilla-nongnome-proxies.patch
 Patch2:         mozilla-kde.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
-Patch5:         mozilla-bmo1463035.patch
 Patch6:         mozilla-sandbox-fips.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
 Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
 Patch11:        mozilla-reduce-rust-debuginfo.patch
-Patch12:        mozilla-ppc-altivec_static_inline.patch
 Patch13:        mozilla-bmo1005535.patch
 Patch14:        mozilla-bmo1568145.patch
 Patch15:        mozilla-bmo1504834-part1.patch
 Patch16:        mozilla-bmo1504834-part2.patch
 Patch17:        mozilla-bmo1504834-part3.patch
-Patch18:        mozilla-bmo1554971.patch
 Patch19:        mozilla-bmo1512162.patch
 Patch20:        mozilla-fix-top-level-asm.patch
 Patch21:        mozilla-bmo1504834-part4.patch
 Patch22:        mozilla-bmo849632.patch
-Patch23:        mozilla-pipewire-0-3.patch
 Patch24:        mozilla-bmo1602730.patch
 Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
+Patch28:        mozilla-libavcodec58_91.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -281,30 +286,25 @@ fi
 %endif
 %patch3 -p1
 %patch4 -p1
-%patch5 -p1
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
 %patch9 -p1
 %patch11 -p1
-%patch12 -p1
 %patch13 -p1
 %patch14 -p1
 %patch15 -p1
 %patch16 -p1
 %patch17 -p1
-%patch18 -p1
 %patch19 -p1
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%if %{with_pipewire0_3}
-%patch23 -p1
-%endif
 %patch24 -p1
 %patch25 -p1
 %patch26 -p1
 %patch27 -p1
+%patch28 -p1
 %endif
 
 %build
@@ -343,6 +343,8 @@ export MOZ_BUILD_DATE=$RELEASE_TIMESTAMP
 export MOZILLA_OFFICIAL=1
 export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
+export MOZ_REQUIRE_SIGNING=
+export MACH_USE_SYSTEM_PYTHON=1
 %if 0%{?suse_version} <= 1320
 export CC=gcc-9
 %else
@@ -380,6 +382,7 @@ echo "export MOZCONFIG=\"$MOZCONFIG\""
 echo "export MOZILLA_OFFICIAL=1"
 echo "export BUILD_OFFICIAL=1"
 echo "export MOZ_TELEMETRY_REPORTING=1"
+echo "export MOZ_REQUIRE_SIGNING="
 echo ""
 cat << EOF
 %else
@@ -389,13 +392,14 @@ cat << EOF
 %limit_build -m 2000
 %endif
 # TODO: Check if this can be removed
-export MOZ_DEBUG_FLAGS="-pipe"
+#export MOZ_DEBUG_FLAGS="-pipe"
 cat << EOF > $MOZCONFIG
 %endif
 mk_add_options MOZILLA_OFFICIAL=1
 mk_add_options BUILD_OFFICIAL=1
 mk_add_options MOZ_MAKE_FLAGS=%{?jobs:-j%jobs}
 mk_add_options MOZ_OBJDIR=$RPM_BUILD_DIR/obj
+ac_add_options --disable-bootstrap
 ac_add_options --prefix=%{_prefix}
 ac_add_options --libdir=%{_libdir}
 ac_add_options --includedir=%{_includedir}
@@ -420,7 +424,9 @@ ac_add_options --disable-elf-hack
 #%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
+%if 0%{useccache} != 0
 ac_add_options --with-ccache
+%endif
 ac_add_options --with-system-zlib
 ac_add_options --disable-updater
 ac_add_options --disable-tests
@@ -449,7 +455,7 @@ ac_add_options --enable-optimize="-O1"
 %endif
 %ifarch x86_64
 # LTO needs newer toolchain stack only (at least GCC 8.2.1 (r268506)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 && 0%{?suse_version} < 1550
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
@@ -462,17 +468,9 @@ ac_add_options --enable-valgrind
 %endif
 EOF
 %if !%{with only_print_mozconfig}
-%ifarch ppc64 s390x s390
-# NOTE: Currently, system-icu is too old, so we can't build with that,
-#       but have to generate the .dat-file freshly. This seems to be a
-#       less fragile approach anyways.
-# ac_add_options --with-system-icu
-echo "Generate big endian version of config/external/icu/data/icud58l.dat"
-./mach python intl/icu_sources_data.py .
-ls -l config/external/icu/data
-rm -f config/external/icu/data/icudt*l.dat
-%endif
+%if 0%{useccache} != 0
 ccache -s
+%endif
 %if 0%{?do_profiling}
 xvfb-run --server-args="-screen 0 1920x1080x24" \
 %endif
@@ -640,8 +638,6 @@ exit 0
 %{progdir}/application.ini
 %{progdir}/dependentlibs.list
 %{progdir}/fonts/
-%dir %{progdir}/gtk2
-%{progdir}/gtk2/libmozgtk.so
 %{progdir}/*.so
 %{progdir}/omni.ja
 %{progdir}/pingsender

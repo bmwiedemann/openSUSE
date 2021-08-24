@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Aug 17 07:19:15 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.0.1
+  MFSA 2021-37 (bsc#1189547)
+  * CVE-2021-29991 (bmo#1724896)
+    Header Splitting possible with HTTP/3 Responses
+- appdate screenshot URL updated (by mailaender@opensuse.org)
+
+-------------------------------------------------------------------
+Sun Aug 15 17:21:46 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.0
+  * based on Mozilla's 91 ESR codebase
+  * many new and changed features
+    https://www.thunderbird.net/en-US/thunderbird/91.0/releasenotes/#whatsnew
+  * Renamed "Add-ons" to "Add-ons and Themes" and "Options" to "Preferences"
+  * Thunderbird now operates in multi-process (e10s) mode by default
+  * New user interface for adding attachments
+  * Enable redirect of messages
+  * CardDAV address book support
+- Removed obsolete patches:
+  * mozilla-bmo1463035.patch
+  * mozilla-ppc-altivec_static_inline.patch
+  * mozilla-pipewire-0-3.patch
+  * mozilla-bmo1554971.patch
+- add mozilla-libavcodec58_91.patch
+- removed obsolete BigEndian ICU build workaround
+- updated build requirements
+- build using clang
+
+-------------------------------------------------------------------
 Thu Aug  5 15:47:34 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 78.13.0
