@@ -495,4 +495,12 @@
   * Support fetching symrefs.</comment>
     <requestid>897849</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>6533b3c6a63d8865dfcc923ba7f4b020</srcmd5>
+    <version>0.20.24</version>
+    <time>1629795242</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913271</requestid>
+  </revision>
 </revisionlist>

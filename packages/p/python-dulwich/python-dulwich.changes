@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 19 15:45:44 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to 0.20.24
+  * https://github.com/dulwich/dulwich/commits/0.20.24
+  * fix build after 2023 (boo#1102840)
+  * config: disregard UTF-8 BOM when reading file
+  * Split out a AbstractHTTPGitClient class
+  * Set zip_safe=false
+  * Add separate HTTPProxyUnauthorized exception
+
+-------------------------------------------------------------------
 Sun Jun  6 12:24:30 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.23:
