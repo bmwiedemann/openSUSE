@@ -47,7 +47,7 @@ BuildRequires:  libassuan-devel
 BuildRequires:  libbtrfs-devel
 BuildRequires:  libgpgme-devel
 BuildRequires:  libseccomp-devel
-BuildRequires:  golang(API) = 1.13
+BuildRequires:  golang(API) = 1.16
 BuildRequires:  sed
 Requires:       patterns-base-apparmor
 Requires:       conntrack-tools

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 20 01:43:29 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- build with go 1.16 for reproducible binaries (boo#1102408)
+
+-------------------------------------------------------------------
 Fri Jul 23 08:39:06 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.21.2:
