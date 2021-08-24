@@ -6,6 +6,7 @@ ConditionKernelCommandLine=ignition.firstboot
 [Service]
 Type=oneshot
 RemainAfterExit=yes
+ExecStart=/usr/bin/mkdir -p /boot/writable
 ExecStart=/usr/bin/touch /boot/writable/firstboot_happened
 
 [Install]

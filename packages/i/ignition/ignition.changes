@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 14:22:10 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Make sure to create /boot/writable (may not be present in some
+  images)
+
+-------------------------------------------------------------------
 Thu Aug 12 17:42:59 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - is-live-image doesn't exist on *SUSE, and our live images don't

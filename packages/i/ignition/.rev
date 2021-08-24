@@ -494,4 +494,13 @@ This makes it possible to use Ignition also on bare metal (e.g. when dumping ima
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>913198</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>84bf39438d20c4c3a5b26dc0219a096c</srcmd5>
+    <version>2.12.0</version>
+    <time>1629795282</time>
+    <user>dimstar_suse</user>
+    <comment>Make sure to create /boot/writable (may not be present in some images)
+</comment>
+    <requestid>913855</requestid>
+  </revision>
 </revisionlist>
