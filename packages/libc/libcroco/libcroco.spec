@@ -1,7 +1,7 @@
 #
 # spec file for package libcroco
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source99:       baselibs.conf
 
 # PATCH-FIX-UPSTREAM libcroco-CVE-2017-8834.patch boo#1043898 boo#1043899 mgorse@suse.com -- fix infinite loop on invalid UTF-8.
 Patch0:         libcroco-CVE-2017-8834.patch
+# PATCH-FIX-UPSTREAM libcroco-CVE-2020-12825.patch boo#1171685 mgorse@suse.com -- limit recursion in block and any productions.
+Patch1:         libcroco-CVE-2020-12825.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.0
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.4.23

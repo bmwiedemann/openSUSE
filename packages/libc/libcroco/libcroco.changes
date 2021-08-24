@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 16 20:14:14 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Add libcroco-CVE-2020-12825.patch: limit recursion in block and
+  any productions (boo#1171685 CVE-2020-12825).
+
+-------------------------------------------------------------------
 Thu May  2 17:45:07 UTC 2019 - mgorse@suse.com
 
 - Add libcroco-CVE-2017-8834.patch: fix infinite loop on invalid

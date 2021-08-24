@@ -387,4 +387,12 @@ No indication of GPL-2.0 licensed files in the package (forwarded request 175739
 </comment>
     <requestid>700495</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>9bd58bb308a06577dd26ac7721f9022f</srcmd5>
+    <version>0.6.13</version>
+    <time>1629795237</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913179</requestid>
+  </revision>
 </revisionlist>
