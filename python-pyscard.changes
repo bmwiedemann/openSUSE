@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 19 18:50:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  * Add .reconnect() method to high-level API
+  * Use Python3 by default
+  * Handle bogus ACS ACR122U PICC reader
+
+-------------------------------------------------------------------
 Sat Jan  9 23:06:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0
