@@ -1,7 +1,7 @@
 #
 # spec file for package freshplayerplugin
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,7 +32,7 @@ Patch1:         freshplayerplugin-fix-no-hwdec.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  ragel-6
+BuildRequires:  ragel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(freetype2)
