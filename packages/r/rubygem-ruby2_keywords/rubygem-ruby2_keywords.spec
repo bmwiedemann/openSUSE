@@ -24,20 +24,20 @@
 #
 
 Name:           rubygem-ruby2_keywords
-Version:        0.0.4
+Version:        0.0.5
 Release:        0
 %define mod_name ruby2_keywords
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  %{ruby >= 2.0.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby/ruby2_keywords
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Shim library for Module#ruby2_keywords
-License:        Ruby AND BSD-2-Clause
+License:        BSD-2-Clause AND Ruby
 Group:          Development/Languages/Ruby
 
 %description
@@ -49,7 +49,7 @@ Shim library for Module#ruby2_keywords.
 
 %install
 %gem_install \
-  --doc-files="LICENSE README.md" \
+  --doc-files="ChangeLog LICENSE README.md" \
   -f
 
 %gem_packages
