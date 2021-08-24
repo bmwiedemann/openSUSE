@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 19 18:06:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.0.0
+  * Catch-all set element support.
+  * The command-line option --define is now recognized.
+  * Stateful expressions in maps.
+  * Allow combination of jhash, symhash and numgen expressions with
+    the queue statement.
+  * Allow combination of verdict maps with interval concatenations.
+
+-------------------------------------------------------------------
 Tue May 25 23:20:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.9.9
