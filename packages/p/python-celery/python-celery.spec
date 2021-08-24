@@ -1,5 +1,5 @@
 #
-# spec file for package python-celery
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -35,22 +35,23 @@ License:        BSD-3-Clause
 URL:            http://celeryproject.org
 Source:         https://files.pythonhosted.org/packages/source/c/celery/celery-%{version}.tar.gz
 Patch0:         move-pytest-configuration-to-conftest.patch
+Patch1:         relax-click.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  netcfg
 BuildRequires:  python-rpm-macros
 Requires:       python-billiard >= 3.6.3.0
-Requires:       python-click >= 7.0
+Requires:       python-click >= 8.0
 Requires:       python-click-didyoumean >= 0.0.3
 Requires:       python-click-plugins >= 1.1.1
-Requires:       python-click-repl >= 0.1.6
+Requires:       python-click-repl >= 0.2.0
 Requires:       python-kombu >= 5.0.0
 Requires:       python-pytz >= 2016.7
 Requires:       python-vine >= 5.0.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
-Recommends:     python-curses
+Requires(postun):update-alternatives
 Recommends:     python-cryptography
+Recommends:     python-curses
 Suggests:       python-eventlet
 Suggests:       python-gevent
 Suggests:       python-pymongo
@@ -58,8 +59,8 @@ Suggests:       python-python-daemon
 Suggests:       python-pytyrant
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module boto3 >= 1.9.178}
 BuildRequires:  %{python_module case >= 1.3.1}
 BuildRequires:  %{python_module celery = %{version}}

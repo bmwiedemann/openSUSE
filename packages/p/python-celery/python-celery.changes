@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 20 13:00:14 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Add relax-click.patch to fix requirements (boo#1189286)
+
+-------------------------------------------------------------------
 Fri Jul  2 08:03:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add PyYAML dependency for tests
