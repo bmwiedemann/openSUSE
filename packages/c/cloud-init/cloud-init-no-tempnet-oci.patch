@@ -1,25 +1,26 @@
 --- cloudinit/sources/DataSourceOracle.py.orig
 +++ cloudinit/sources/DataSourceOracle.py
-@@ -189,11 +189,17 @@ class DataSourceOracle(sources.DataSourc
+@@ -133,8 +133,11 @@ class DataSourceOracle(sources.DataSourc
+             BUILTIN_DS_CONFIG["configure_secondary_nics"]
+         )
+         network_context = noop()
+-        if not _is_iscsi_root():
+-            network_context = dhcp.EphemeralDHCPv4(net.find_fallback_nic())
++        # SUSE images are built with iSCSI setup. The detection of the 
++        # configured network for iscsi boot is distribution dependent.
++        # There's no implementation for openSUSE/SLE yet.
++        #if not _is_iscsi_root():
++        #    network_context = dhcp.EphemeralDHCPv4(net.find_fallback_nic())
+         with network_context:
+             fetched_metadata = read_opc_metadata(
+                 fetch_vnics_data=fetch_vnics_data
+--- cloudinit/sources/tests/test_oracle.py.orig
++++ cloudinit/sources/tests/test_oracle.py
+@@ -666,6 +666,7 @@ class TestNonIscsiRoot_GetDataBehaviour:
+     def test_read_opc_metadata_called_with_ephemeral_dhcp(
+         self, m_find_fallback_nic, m_EphemeralDHCPv4, oracle_ds
+     ):
++        return
+         in_context_manager = False
  
-         # network may be configured if iscsi root.  If that is the case
-         # then read_initramfs_config will return non-None.
--        if _is_iscsi_root():
--            data = self.crawl_metadata()
--        else:
--            with dhcp.EphemeralDHCPv4(net.find_fallback_nic()):
--                data = self.crawl_metadata()
-+        #if _is_iscsi_root():
-+        #    data = self.crawl_metadata()
-+        #else:
-+        #    with dhcp.EphemeralDHCPv4(net.find_fallback_nic()):
-+        #        data = self.crawl_metadata()
-+        #
-+        # The detection of the configured network for iscsi boot is
-+        # distribution dependent and of course only implemented for
-+        # Debian/Ubuntu. We know the network is up as we are booting from
-+        # iscsi. Skip the BS and just read the damn data
-+        data = self.crawl_metadata()
- 
-         self._crawled_metadata = data
-         vdata = data['2013-10-17']
+         def enter_context_manager():

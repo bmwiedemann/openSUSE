@@ -18,7 +18,7 @@
 %global configver 0.7
 
 Name:           cloud-init
-Version:        20.2
+Version:        21.2
 Release:        0
 License:        GPL-3.0
 Summary:        Cloud node initialization tool
@@ -26,34 +26,19 @@ Url:            http://launchpad.net/cloud-init/
 Group:          System/Management
 Source0:        %{name}-%{version}.tar.gz
 Source1:        rsyslog-cloud-init.cfg
-Patch29:        datasourceLocalDisk.patch
-Patch34:        cloud-init-tests-set-exec.patch
+Patch1:        datasourceLocalDisk.patch
 # FIXME (lp#1812117)
-Patch43:        cloud-init-write-routes.patch
+Patch2:        cloud-init-write-routes.patch
 # FIXME (lp#1849296)
-Patch52:        cloud-init-break-resolv-symlink.patch
+Patch3:        cloud-init-break-resolv-symlink.patch
 # FIXME no proposed solution
-Patch56:        cloud-init-sysconf-path.patch
+Patch4:        cloud-init-sysconf-path.patch
 # FIXME (lp#1860164)
-Patch57:        cloud-init-no-tempnet-oci.patch
-Patch58:        cloud-init-after-kvp.diff
-Patch59:        cloud-init-recognize-hpc.patch
-# FIXME https://github.com/canonical/cloud-init/commit/eea754492f074e00b601cf77aa278e3623857c5a
-Patch60:        cloud-init-azure-def-usr-pass.patch
-Patch61:        cloud-init-sle12-compat.patch
-Patch70:        use_arroba_to_include_sudoers_directory-bsc_1181283.patch
-# FIXME https://github.com/canonical/cloud-init/pull/831
-Patch71:        cloud-init-bonding-opts.patch
-# FIXME https://github.com/canonical/cloud-init/pull/858
-Patch72:        cloud-init-log-file-mode.patch
-# FIXME upstream commit b794d426b9
-Patch73:        cloud-init-no-pwd-in-log.patch
+Patch5:        cloud-init-no-tempnet-oci.patch
 # FIXME https://github.com/canonical/cloud-init/pull/857
-Patch74:        cloud-init-purge-cache-py-ver-change.patch
-# PATCH-FIX-UPSTREAM https://github.com/canonical/cloud-init/commit/f23a4c4262ac11cd75c99fcbfbfe453f4e115f18
-Patch75:        0001-templater-drop-Jinja-Python-2-compatibility-shim.patch
-# PATCH-FIX-UPSTREAM https://github.com/canonical/cloud-init/commit/899bfaa9d6bfab1db0df99257628ca1f6febff60
-Patch76:        cloud-init-update-test-characters-in-substitution-unit-test.patch
+Patch6:        cloud-init-purge-cache-py-ver-change.patch
+# FIXME https://github.com/canonical/cloud-init/commit/899bfaa9d6bfab1db0df99257628ca1f6febff60
+Patch7:        cloud-init-update-test-characters-in-substitution-unit-test.patch
 BuildRequires:  fdupes
 BuildRequires:  filesystem
 # pkg-config is needed to find correct systemd unit dir
@@ -143,27 +128,14 @@ Documentation and examples for cloud-init tools
 
 %prep
 %setup -q
-%patch29 -p0
-%patch34
-%patch43
-%patch52
-%patch56
-%patch57
-%patch58 -p1
-%patch59
-%patch60
-%if 0%{?suse_version} < 1500
-%patch61
-%endif
-%patch70 -p1
-%patch71
-%patch72
-%patch73
-%patch74
-%if 0%{?suse_version} >= 1550
-%patch75 -p1
-%endif
-%patch76 -p1
+%patch1 -p0
+%patch2
+%patch3
+%patch4
+%patch5
+%patch6
+%patch7 -p1
+
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)
 [ -n "$version_pys" ] ||
@@ -176,7 +148,7 @@ python3 setup.py build
 %check
 ## Ignore test failure currently not doing anything with opennebula
 rm -v tests/unittests/test_datasource/test_opennebula.py
-make unittest3
+make unittest
 
 %install
 python3 setup.py install --root=%{buildroot} --prefix=%{_prefix} --install-lib=%{python3_sitelib} --init-system=%{initsys}

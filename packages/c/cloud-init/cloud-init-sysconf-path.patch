@@ -1,7 +1,7 @@
 --- cloudinit/net/sysconfig.py.orig
 +++ cloudinit/net/sysconfig.py
-@@ -891,9 +891,7 @@ def available_sysconfig(target=None):
-         if not util.which(p, search=search, target=target):
+@@ -973,9 +973,7 @@ def available_sysconfig(target=None):
+         if not subp.which(p, search=search, target=target):
              return False
  
 -    expected_paths = [
@@ -9,5 +9,5 @@
 -        'etc/sysconfig/config']
 +    expected_paths = ['etc/sysconfig/network/scripts/functions.netconfig']
      for p in expected_paths:
-         if os.path.isfile(util.target_path(target, p)):
+         if os.path.isfile(subp.target_path(target, p)):
              return True

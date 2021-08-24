@@ -1,6 +1,6 @@
 --- cloudinit/net/sysconfig.py.orig
 +++ cloudinit/net/sysconfig.py
-@@ -705,6 +705,11 @@ class Renderer(renderer.Renderer):
+@@ -918,6 +918,11 @@ class Renderer(renderer.Renderer):
              resolv_content = self._render_dns(network_state,
                                                existing_dns_path=dns_path)
              if resolv_content:
@@ -11,4 +11,4 @@
 +                    os.unlink(dns_path)
                  util.write_file(dns_path, resolv_content, file_mode)
          if self.networkmanager_conf_path:
-             nm_conf_path = util.target_path(target,
+             nm_conf_path = subp.target_path(target,

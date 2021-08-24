@@ -983,4 +983,41 @@
     <comment></comment>
     <requestid>911577</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>b510d83bc82fc4495a5b5cf770c9899a</srcmd5>
+    <version>21.2</version>
+    <time>1629795251</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.2 (bsc#1186004)
+  + Remove patches included upstream:
+    - cloud-init-azure-def-usr-pass.patch
+    - cloud-init-after-kvp.diff
+    - cloud-init-recognize-hpc.patch
+    - use_arroba_to_include_sudoers_directory-bsc_1181283.patch
+    - cloud-init-bonding-opts.patch
+    - cloud-init-log-file-mode.patch
+    - cloud-init-no-pwd-in-log.patch
+    - 0001-templater-drop-Jinja-Python-2-compatibility-shim.patch
+  + Remove cloud-init-sle12-compat.patch, version in SLE 12 is frozen to 20.2
+  + Remove cloud-init-tests-set-exec.patch no longer needed 
+  + Forward port:
+    - cloud-init-write-routes.patch
+    - cloud-init-break-resolv-symlink.patch
+    - cloud-init-sysconf-path.patch
+    - cloud-init-no-tempnet-oci.patch
+  +  Add \r\n check for SSH keys in Azure (#889)
+  +  Revert &quot;Add support to resize rootfs if using LVM (#721)&quot; (#887)
+     (LP: #1922742)
+  +  Add Vultaire as contributor (#881) [Paul Goins]
+  +  Azure: adding support for consuming userdata from IMDS (#884) [Anh Vo]
+  +  test_upgrade: modify test_upgrade_package to run for more sources (#883)
+  +  Fix chef module run failure when chef_license is set (#868) [Ben Hughes]
+  +  Azure: Retry net metadata during nic attach for non-timeout errs (#878)
+     [aswinrajamannar]
+  +  Azure: Retrieve username and hostname from IMDS (#865) [Thomas Stringer]
+  +  Azure: eject the provisioning iso before reporting ready (#861) [Anh Vo]
+  +  Use `partprobe` to re-read partition table if available (#856)
+     [Nicolas Bock] (LP: #1920939)</comment>
+    <requestid>913169</requestid>
+  </revision>
 </revisionlist>
