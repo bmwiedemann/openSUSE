@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Aug 22 14:12:40 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fixed to use source snapshot from fldigi git repository
+
+-------------------------------------------------------------------
+Mon Aug 16 19:09:24 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Redownload tarball
+
+-------------------------------------------------------------------
+Mon Aug 16 14:58:47 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- update to version 1.0.1 (not released)
+  * update XmlRpcBase64.h file to comply with flxxx internals
+- update to version 1.0.0 (not released)
+  * add client_id tag
+  * remove files that should be locally created
+- update to version 0.1.5 (not released)
+  * fix XmlRpc tm_mday comparison typo
+
+-------------------------------------------------------------------
 Wed Feb 12 11:13:18 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Small package modernisation

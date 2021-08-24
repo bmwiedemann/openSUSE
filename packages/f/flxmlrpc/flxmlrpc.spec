@@ -1,7 +1,7 @@
 #
 # spec file for package flxmlrpc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,18 @@
 
 %define sover 1
 Name:           flxmlrpc
-Version:        0.1.4
+Version:        1.0.1
 Release:        0
 Summary:        An implementation of the XMLRPC protocol
 License:        LGPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://sourceforge.net/projects/fldigi/
 #Git-Clone:     https://git.code.sf.net/p/fldigi/flxmlrpc
-Source:         http://downloads.sourceforge.net/project/fldigi/%{name}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -65,6 +68,7 @@ a suite of programs written for amateur radio emergency communications.
 sed -i 's/\r$//' COPYING
 
 %build
+sh autogen.sh
 %configure \
   --disable-static
 %make_build
