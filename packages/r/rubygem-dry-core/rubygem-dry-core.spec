@@ -24,12 +24,12 @@
 #
 
 Name:           rubygem-dry-core
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 %define mod_name dry-core
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.5.0}
+BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://dry-rb.org/gems/dry-core

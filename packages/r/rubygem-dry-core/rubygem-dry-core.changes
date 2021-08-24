@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul 26 05:53:37 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.7.1
+ see installed CHANGELOG.md
+
+  ## 0.7.1 2021-07-10
+  
+  
+  ### Fixed
+  
+  - [memoizable] memoizable correctly handles cases where a method
+  has unnamed params (e.g. happens when the new `...` syntax is used) (@flash-gordon)
+  
+  
+  
+  [Compare v0.7.0...v0.7.1](https://github.com/dry-rb/dry-core/compare/v0.7.0...v0.7.1)
+  
+  ## 0.7.0 2021-07-08
+  
+  
+  ### Fixed
+  
+  - [memoizable] warnings when using keyword arguments (@flash-gordon)
+  - [deprecations] warnings show more relevant information about caller by default (@timriley)
+  
+  ### Changed
+  
+  - Minimal Ruby version is 2.6
+  - [memoizable] memoization of block-accepting methods is deprecated (@flash-gordon)
+  
+  [Compare v0.6.0...v0.7.0](https://github.com/dry-rb/dry-core/compare/v0.6.0...v0.7.0)
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:18:53 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 0.6.0
