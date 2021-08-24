@@ -30,6 +30,8 @@ Source2:        gnome.desktop
 Patch0:         gnome-session-better-handle-empty-xdg_session_type.patch
 # PATCH-FIX-UPSTREAM gnome-session-exit-when-lost-name-on-bus.patch bsc#1175622 glgo!GNOME/gnome-session!60 xwang@suse.com -- gnome-session exit immediately when lost name on bus
 Patch1:         gnome-session-exit-when-lost-name-on-bus.patch
+# PATCH-FIX-OPENSUSE gnome-session-s390-not-require-g-s-d_wacom.patch bsc#1129412 yfjiang@suse.com -- Remove the runtime requirement of g-s-d Wacom plugin
+Patch2:         gnome-session-s390-not-require-g-s-d_wacom.patch
 
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -103,7 +105,12 @@ functional GNOME desktop.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+%patch1 -p1
+%ifarch s390 s390x
+%patch2 -p1
+%endif
 translation-update-upstream po gnome-session-3.0
 
 %build

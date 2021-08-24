@@ -1451,4 +1451,12 @@ But the biggest problem is Libreoffice - There I suspect we just have to wait fo
   (bsc#1175622 glgo!GNOME/gnome-session!60, bsc#1188882). (forwarded request 909263 from xiaoguang_wang)</comment>
     <requestid>909320</requestid>
   </revision>
+  <revision rev="197" vrev="3">
+    <srcmd5>6f6ffee1407867d7a9ce83e00444b7be</srcmd5>
+    <version>40.1.1</version>
+    <time>1629795238</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913193</requestid>
+  </revision>
 </revisionlist>

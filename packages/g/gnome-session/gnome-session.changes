@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 15 03:14:36 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
+
+- Add gnome-session-s390-not-require-g-s-d_wacom.patch: Remove the
+  gnome session runtime requirement of g-s-d Wacom plugin because
+  it is not build on s390 (bsc#1129412).
+
+-------------------------------------------------------------------
 Fri Jul 30 01:01:37 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-session-exit-when-lost-name-on-bus.patch: gnome-session
