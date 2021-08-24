@@ -96,7 +96,8 @@ rm -rf /usr/share/doc/packages/*
 rm -rf /lib/firmware/{liquidio,netronome,qed,mrvl,mellanox,qcom,cypress,dpaa2,bnx2x}
 
 # Not needed, boo#1166406
-rm /boot/vmlinux*.[gx]z
+rm -f /boot/vmlinux*.[gx]z
+rm -f /usr/lib/modules/*/vmlinux*.[gx]z
 
 # Add repos from /etc/YaST2/control.xml
 add-yast-repos

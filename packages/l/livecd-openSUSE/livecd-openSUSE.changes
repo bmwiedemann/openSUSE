@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 24 14:39:26 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
+
+- config.sh: Also remove vmlinux.xz from UsrMerged kernel location
+  in /usr/lib,
+
+-------------------------------------------------------------------
 Tue Aug 24 06:22:09 UTC 2021 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - list-kde: drop VLC media player.
