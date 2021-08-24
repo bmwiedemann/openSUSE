@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-dry-inflector
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,18 @@
 #
 
 Name:           rubygem-dry-inflector
-Version:        0.2.0
+Version:        0.2.1
 Release:        0
 %define mod_name dry-inflector
 %define mod_full_name %{mod_name}-%{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 2.4}
+BuildRequires:  %{ruby >= 2.6.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-URL:            https://dry-rb.org
+URL:            https://dry-rb.org/gems/dry-inflector
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
-Summary:        DRY Inflector
+Summary:        String inflections for dry-rb
 License:        MIT
 Group:          Development/Languages/Ruby
 
@@ -48,7 +48,7 @@ String inflections for dry-rb.
 
 %install
 %gem_install \
-  --doc-files="CHANGELOG.md LICENSE.md README.md" \
+  --doc-files="CHANGELOG.md LICENSE README.md" \
   -f
 
 %gem_packages
