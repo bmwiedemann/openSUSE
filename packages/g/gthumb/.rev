@@ -811,4 +811,12 @@
   + Updated translations. (forwarded request 885251 from polslinux)</comment>
     <requestid>885649</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>030feb579d5d47a96f67c4233b7c9ac2</srcmd5>
+    <version>3.10.4</version>
+    <time>1629795295</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913941</requestid>
+  </revision>
 </revisionlist>
