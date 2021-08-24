@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 23 09:35:05 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to runc v1.0.2. Upstream changelog is available from
+  https://github.com/opencontainers/runc/releases/tag/v1.0.2
+
+  * Fixed a failure to set CPU quota period in some cases on cgroup v1.
+  * Fixed the inability to start a container with the "adding seccomp filter
+    rule for syscall ..." error, caused by redundant seccomp rules (i.e. those
+    that has action equal to the default one). Such redundant rules are now
+    skipped.
+  * Made release builds reproducible from now on.
+  * Fixed a rare debug log race in runc init, which can result in occasional
+    harmful "failed to decode ..." errors from runc run or exec.
+  * Fixed the check in cgroup v1 systemd manager if a container needs to be
+    frozen before Set, and add a setting to skip such freeze unconditionally.
+    The previous fix for that issue, done in runc 1.0.1, was not working.
+
+-------------------------------------------------------------------
 Sun Jul 18 02:40:16 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to runc v1.0.1. Upstream changelog is available from
