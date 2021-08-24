@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Aug 19 20:06:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.117
+  * Minor update to wsdl2h to support chameleon schema imports
+    when imported schema simple types are extended and inherit
+    the importing schema target namespace (previously, the
+    `__item` type would be left unqualified, resulting in a
+    warning).
+
+-------------------------------------------------------------------
 Wed Jul  7 06:42:30 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8.115
