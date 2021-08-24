@@ -676,4 +676,13 @@
     <comment></comment>
     <requestid>910794</requestid>
   </revision>
+  <revision rev="85" vrev="4">
+    <srcmd5>cb4e0eeb5f4d8e8d2e32f4e1a6dc3eaf</srcmd5>
+    <version>2.0.32</version>
+    <time>1629795281</time>
+    <user>dimstar_suse</user>
+    <comment>- allow DeviceAllow=char-input to make character input work again
+  (was blocked by ProtectClock=true check added)</comment>
+    <requestid>913759</requestid>
+  </revision>
 </revisionlist>
