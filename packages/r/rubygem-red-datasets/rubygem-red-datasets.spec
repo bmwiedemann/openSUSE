@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-red-datasets
-Version:        0.1.2
+Version:        0.1.4
 Release:        0
 %define mod_name red-datasets
 %define mod_full_name %{mod_name}-%{version}

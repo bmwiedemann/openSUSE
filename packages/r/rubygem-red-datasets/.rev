@@ -7,4 +7,12 @@
     <comment>needed for gettext</comment>
     <requestid>903600</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7477572e60c00600a6b3f1ab261101a6</srcmd5>
+    <version>0.1.4</version>
+    <time>1629795267</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912502</requestid>
+  </revision>
 </revisionlist>

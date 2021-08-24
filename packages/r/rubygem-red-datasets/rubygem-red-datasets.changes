@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 26 06:05:30 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 0.1.4
+ see installed news.md
+
+  ## 0.1.4 - 2021-07-13
+  
+  ### Improvements
+  
+    * `Datasets::SudachiSynonymDictionary`: Stopped depending on `LANG`.
+  
+  ## 0.1.3 - 2021-07-09
+  
+  ### Improvements
+  
+    * `Datasets::SeabornData`: Added.
+  
+    * `Datasets::SudachiSynonymDictionary`: Added.
+  
+
+-------------------------------------------------------------------
 Fri Jul  2 03:20:06 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - initial package (version 0.1.2)
