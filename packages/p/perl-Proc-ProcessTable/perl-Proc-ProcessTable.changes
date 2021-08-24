@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 19 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.611
+   see /usr/share/doc/packages/perl-Proc-ProcessTable/Changes
+
+  0.60 2021-08-14
+    * compiles on musl
+    * Skip LXC hidden dir in /dev when looking for TTYs
+    * Fix test on OpenBSD
+  0.61 2021-08-18
+    * fixed regression: on linux only 1st char of the command names was parsed
+
+-------------------------------------------------------------------
 Fri Jun 21 05:27:42 UTC 2019 - Stephan Kulow <coolo@please-enter-an-email-address>
 
 - updated to 0.59

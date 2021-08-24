@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Proc-ProcessTable
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,16 @@
 #
 
 
+%define cpan_name Proc-ProcessTable
 Name:           perl-Proc-ProcessTable
-Version:        0.59
+Version:        0.611
 Release:        0
 #Upstream: Artistic-2.0
-%define cpan_name Proc-ProcessTable
 Summary:        Perl extension to access the unix process table
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND GPL-2.0-only
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JW/JWB/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 %{perl_requires}
@@ -36,12 +34,12 @@ BuildRequires:  perl-macros
 Perl interface to the unix process table.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f ! -name \*.pl -print0 | xargs -0 chmod 644
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -52,7 +50,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README README.aix README.bsdi README.cygwin README.darwin README.dec_osf README.freebsd-kvm README.freebsd-procfs README.hpux README.linux README.md README.MSWin32 README.netbsd README.openbsd README.solaris README.sunos README.unixware
 
 %changelog
