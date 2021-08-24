@@ -1,7 +1,7 @@
 #
 # spec file for package ModemManager
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,14 +80,15 @@ DBus interface for modem handling. Provides a standard abstracted API
 (over DBus) to communicate with all sorts of modems (landline, GSM,
 CDMA).
 
-%package -n %{name}-bash-completion
+%package bash-completion
 Summary:        Bash completion for mmcli
 Group:          Productivity/Networking/System
 Requires:       bash-completion
 Supplements:    packageand(%{name}:bash-completion)
+BuildArch:      noarch
 
-%description -n %{name}-bash-completion
-This package contain de bash completion command for nmcli tools.
+%description bash-completion
+This package contain the bash completion command for nmcli tools.
 
 %lang_package
 
@@ -117,7 +118,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcModemManager
 %find_lang ModemManager %{name}.lang
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %pre
 %service_add_pre ModemManager.service
@@ -171,7 +172,7 @@ make %{?_smp_mflags} check
 %{_libdir}/pkgconfig/ModemManager.pc
 %{_libdir}/pkgconfig/mm-glib.pc
 
-%files -n %{name}-bash-completion
+%files bash-completion
 %{_datadir}/bash-completion/
 
 %changelog

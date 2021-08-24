@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 14 15:33:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch bash completion subpackage to noarch.
+
+-------------------------------------------------------------------
 Sun Dec  6 15:41:18 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.14.8:
