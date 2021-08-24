@@ -1,0 +1,392 @@
+-------------------------------------------------------------------
+Sun Aug 22 07:31:36 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+
+- Add firewalld service description for Radicale
+  Based on the previous work of Martin Haas <sandrick@seznam.cz>
+
+-------------------------------------------------------------------
+Sun Aug 22 06:56:19 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+
+- Migrate legacy user creation to sysusers.d(5)
+
+-------------------------------------------------------------------
+Sat Jun 19 07:40:36 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+
+- Fix error message "Address family for hostname not supported" (EAFNOSUPPORT)
+  when trying to bind to a non-loopback address during startup
+
+-------------------------------------------------------------------
+Sat Apr 3 10:21:00 UTC 2021 - Ákos Szőts <szotsaki@gmail.com>
+
+- Remove code for v1 -> v2/v3 upgrading since v1 times are long gone
+
+-------------------------------------------------------------------
+Thu Dec 10 10:18:57 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+
+- Remove %{?systemd_requires} macro as it is not always needed
+- Give full path of the interpreter in the .service file as a security hardening
+- URL update for upgrading from v1.x
+
+-------------------------------------------------------------------
+Thu Oct  8 19:32:00 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+
+- Removed Radicale.logrotate since there's no /var/log/radicale anymore
+
+-------------------------------------------------------------------
+Tue Sep 15 06:25:11 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+
+- Radicale 3.0.6
+  * Allow web plugins to handle POST requests
+- Remove /var/log/radicale since it's become unused by now
+- Remove duplicated rights and users file listings
+- Add DOCUMENTATION.md into %doc
+
+-------------------------------------------------------------------
+Fri Sep 11 07:29:30 UTC 2020 - Ákos Szőts <szotsaki@gmail.com>
+
+- Start using openSUSE built-in python packaging scripts
+- Wait with startup until network comes online. This helps the
+  situation where a non-localhost address is given to be listened on
+- Updated package description
+
+-------------------------------------------------------------------
+Tue Sep  8 12:54:27 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.5
+  * Start storage hook in own process group
+  * Kill storage hook on error or exit
+  * Try to kill child processes of storage hook
+  * Internal Server: Exit immediately when signal is received
+    (do not wait for clients or storage hook to finish)
+
+-------------------------------------------------------------------
+Fri Aug 21 09:57:59 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.4
+  * small fixes
+
+-------------------------------------------------------------------
+Mon May 25 07:21:43 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.2
+  * Use 403 response for supported-report and valid-sync-token errors
+  * Internal server: Handle missing IPv6 support
+  * Fix XML error messages
+
+-------------------------------------------------------------------
+Wed May 20 11:51:18 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.0
+  * Parallel write requests
+  * Support PyPy
+  * Protect against XML denial-of-service attacks
+  * Check for duplicated UIDs in calendars/address books
+  * Only add missing UIDs for uploaded whole calendars/address books
+  * Switch from md5 to sha256 for UIDs and tokens
+  * Code cleanup
+  * Multiple configuration files separated by :
+  * Optional configuration files by prepending file path with ?
+  * Check validity of every configuration file and command line arguments separately 
+  * Bind to IPv4 and IPv6 address, when both are available for hostname
+  * Set default address to localhost:5232
+  * Remove settings for SSL ciphers and protocol versions (enforce safe defaults instead)
+  * Remove settings for file locking because they are of little use
+  * Remove daemonization
+  * Use md5 as default for htpasswd_encryption setting
+  * Move setting realm from section server to auth
+  * Use permissions RW for non-leaf collections and rw for address books/calendars
+  * New permission i that only allows access with HTTP method GET 
+
+See https://github.com/Kozea/Radicale/blob/master/NEWS.md for more info.
+
+-------------------------------------------------------------------
+Thu Nov 29 10:10:46 UTC 2018 - Ákos Szőts <szotsaki@gmail.com>
+
+- Added python3-systemd for direct systemd journal logging
+- Upgrade messages from 1 to 2 now appear in update logs and shown after transaction
+
+- Radicale 2.1.11
+  * Fix moving items between collections 
+
+-------------------------------------------------------------------
+Wed Aug 29 17:51:59 UTC 2018 - szotsaki@gmail.com
+
+- Radicale 2.1.10
+  * Update required versions for dependencies
+  * Get RADICALE_CONFIG from WSGI environ
+  * Improve HTTP status codes
+  * Fix race condition in storage lock creation
+  * Raise default limits for content length and timeout
+  * Log output from hook
+
+-------------------------------------------------------------------
+Sun Apr 22 10:32:26 UTC 2018 - szotsaki@gmail.com
+
+- Radicale 2.1.9
+  * Specify versions for dependencies
+  * Move WSGI initialization into module
+  * Check if REPORT method is actually supported
+  * Include rights file in source distribution
+  * Specify md5 and bcrypt as extras
+  * Improve logging messages
+  * Windows: Fix crash when item path is a directory
+
+-------------------------------------------------------------------
+Sun Sep 24 06:07:41 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 2.1.8
+  * Flush files before fsync'ing
+
+- Radicale 2.1.7
+  * Don't print warning when cache format changes
+  * Add documentation for BaseAuth
+  * Add is_authenticated2(login, user, password) to BaseAuth
+  * Fix names of custom properties in PROPFIND requests with D:propname or D:allprop
+  * Return all properties in PROPFIND requests with D:propname or D:allprop
+  * Allow D:displayname property on all collections
+  * Answer with D:unauthenticated for D:current-user-principal property when not logged in
+  * Remove non-existing ICAL:calendar-color and C:calendar-timezone properties from PROPFIND requests with D:propname or D:allprop
+  * Add D:owner property to calendar and address book objects
+  * Remove D:getetag and D:getlastmodified properties from regular collections
+
+-------------------------------------------------------------------
+Sat Sep 16 19:59:41 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 2.1.6
+  * Fix content-type of VLIST
+  * Specify correct COMPONENT in content-type of VCALENDAR
+  * Cache COMPONENT of calendar objects (improves speed with some clients)
+  * Stricter parsing of filters
+  * Improve support for CardDAV filter
+  * Fix some smaller bugs in CalDAV filter
+  * Add X-WR-CALNAME and X-WR-CALDESC to calendars downloaded via HTTP/WebDAV
+  * Use X-WR-CALNAME and X-WR-CALDESC from calendars published via WebDAV
+
+-------------------------------------------------------------------
+Mon Aug 28 04:42:45 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 2.1.5
+  * Add --verify-storage command-line argument
+  * Allow comments in the htpasswd file
+  * Don't strip whitespaces from user names and passwords in the htpasswd file
+  * Remove cookies from logging output
+  * Allow uploads of whole collections with many components
+  * Show warning message if server.timeout is used with Python < 3.5.2
+
+-------------------------------------------------------------------
+Mon Aug  7 03:13:45 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 2.1.4
+  * Fix incorrect time range matching and calculation for some edge-cases with rescheduled recurrences
+  * Fix owner property
+
+- Radicale 2.1.3
+  * Enable timeout for SSL handshakes and move them out of the main thread
+  * Create cache entries during upload of items
+  * Stop built-in server on Windows when Ctrl+C is pressed
+  * Prevent slow down when multiple requests hit a collection during cache warm-up
+
+-------------------------------------------------------------------
+Tue Jul 25 05:08:35 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 2.1.2
+  * Remove workarounds for bugs in VObject < 0.9.5
+  * Error checking of collection tags and associated components
+  * Improve error checking of uploaded collections and components
+  * Don't delete empty collection properties implicitly
+  * Improve logging of VObject serialization
+
+-------------------------------------------------------------------
+Sat Jul  1 16:16:29 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 2.1.1
+  * Add missing UIDs instead of failing
+  * Improve error checking of calendar and address book objects
+  * Fix upload of whole address books
+
+- Radicale 2.1.0
+  * Built-in web interface for creating and managing address books and calendars
+    * can be extended with web plugins
+  * Much faster storage backend
+  * Significant reduction in memory usage
+  * Improved logging
+    * Include paths (of invalid items / requests) in log messages
+    * Include configuration values causing problems in log messages
+    * Log warning message for invalid requests by clients
+    * Log error message for invalid files in the storage backend
+    * No stack traces unless debugging is enabled
+  * Time range filter also regards overwritten recurrences
+  * Items that couldn't be filtered because of bugs in VObject are always
+    returned (and a warning message is logged)
+  * Basic error checking of configuration files
+  * File system locking isn't disabled implicitly anymore, instead a new
+    configuration option gets introduced
+  * The permissions of the lock file are not changed anymore
+  * Support for sync-token
+  * Support for client-side SSL certificates
+  * Rights plugins can decide if access to an item is granted explicitly
+    * Respond with 403 instead of 404 for principal collections of non-existing
+      users when ``owner_only`` plugin is used (information leakage)
+  * Authentication plugins can provide the login and password from the
+    environment
+    * new ``remote_user`` plugin, that gets the login from the ``REMOTE_USER``
+      environment variable (for WSGI server)
+    * new ``http_x_remote_user`` plugin, that gets the login from the
+      ``X-Remote-User`` HTTP header (for reverse proxies)
+
+- Radicale 2.0.0
+  * Support Python 3.3+ only, Python 2 is not supported anymore
+  * Keep only one simple filesystem-based storage system
+  * Remove built-in Git support
+  * Remove built-in authentication modules
+  * Keep the WSGI interface, use Python HTTP server by default
+  * Use a real iCal parser, rely on the "vobject" external module
+  * Add a solid calendar discovery
+  * Respect the difference between "files" and "folders", don't rely on slashes
+  * Remove the calendar creation with GET requests
+  * Be stateless
+  * Use a file locker
+  * Add threading
+  * Get atomic writes
+  * Support new filters
+  * Support read-only permissions
+  * Allow External plugins for authentication, rights management, storage and
+    version control
+
+-------------------------------------------------------------------
+Mon Jun 26 20:30:05 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 1.1.4
+- Use shutil.move for --export-storage 
+
+Sat May 27 13:18:20 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 1.1.3
+- Add a --export-storage=FOLDER command-line argument (by Unrud, see #606) 
+
+-------------------------------------------------------------------
+Mon May  1 08:48:53 UTC 2017 - szotsaki@gmail.com
+
+- Radicale 1.1.2
+- Security fix: Add a random timer to avoid timing oracles and simple bruteforce attacks when using the htpasswd authentication method.
+- Various minor fixes.
+
+-------------------------------------------------------------------
+Thu Dec 15 17:49:18 UTC 2016 - mrueckert@suse.de
+
+- downgrade requires to recommends for apache2-utils. it is not
+  really needed for all setups.
+- add recommends for optional features:
+  python3-dulwich -> git support
+  python3-passlib + python3-bcrypt-> bcrypt support
+
+-------------------------------------------------------------------
+Sun Apr 24 10:04:38 UTC 2016 - bosim@opensuse.org
+
+- Removed _source and added actual tar ball source
+- Added firewall config
+- Added python3 requirement
+
+-------------------------------------------------------------------
+Fri Jan 15 09:22:21 UTC 2016 - szotsaki@gmail.com
+
+- Radicale 1.1.1
+- Fix the owner_write rights rule
+
+-------------------------------------------------------------------
+Fri Jan  1 12:39:18 UTC 2016 - szotsaki@gmail.com
+
+- Radicale 1.1
+- Improve the regex used for well-known URIs (by Unrud)
+- Prevent regex injection in rights management (by Unrud)
+- Prevent crafted HTTP request from calling arbitrary functions (by Unrud)
+- Improve URI sanitation and conversion to filesystem path (by Unrud)
+- Decouple the daemon from its parent environment (by Unrud)
+- Assign new items to corret key (by Unrud)
+- Avoid race condition in PID file creation (by Unrud)
+- Improve the docker version (by cdpb)
+- Encode message and commiter for git commits
+- Test with Python 3.5 
+
+-------------------------------------------------------------------
+Fri Sep 18 18:18:55 UTC 2015 - szotsaki@gmail.com
+
+- Radicale 1.0
+- Enhanced performances (by Mathieu Dupuy)
+- Add MD5-APR1 and BCRYPT for htpasswd-based authentication (by Jan-Philip Gehrcke)
+- Use PAM service (by Stephen Paul Weber)
+- Don't discard PROPPATCH on empty collections (Markus Unterwaditzer)
+- Write the path of the collection in the git message (Matthew Monaco)
+- Tests launched on Travis 
+
+-------------------------------------------------------------------
+Wed Jan 21 08:33:41 UTC 2015 - szotsaki@gmail.com
+
+- Radicale 0.10
+- Support well-known URLs (by Mathieu Dupuy)
+- Fix collection discovery (by Markus Unterwaditzer)
+- Reload logger config on SIGHUP (by Élie Bouttier)
+- Remove props files when deleting a collection (by Vincent Untz)
+- Support salted SHA1 passwords (by Marc Kleine-Budde)
+- Don't spam the logs about non-SSL IMAP connections to localhost (by Giel van Schijndel)
+
+-------------------------------------------------------------------
+Fri Oct 24 15:23:43 UTC 2014 - szotsaki@gmail.com
+
+- Radicale 0.9
+- Custom handlers for auth, storage and rights (by Sergey Fursov)
+- 1-file-per-event storage (by Jean-Marc Martins)
+- Git support for filesystem storages (by Jean-Marc Martins)
+- DB storage working with PostgreSQL, MariaDB and SQLite (by Jean-Marc Martins)
+- Clean rights manager based on regular expressions (by Sweil)
+- Support of contacts for Apple's clients
+- Support colors (by Jochen Sprickerhof)
+- Decode URLs in XML (by Jean-Marc Martins)
+- Fix PAM authentication (by Stepan Henek)
+- Use consistent etags (by 9m66p93w)
+- Use consistent sorting order (by dnnr)
+- Return 401 on unauthorized DELETE requests (by Eduard Braun)
+- Move pid file creation in child process (by Mathieu Dupuy)
+- Allow requests without base_prefix (by jheidemann)
+
+-------------------------------------------------------------------
+Fri Aug  8 19:34:27 UTC 2014 - szotsaki@gmail.com
+
+- Adding missing config/log files and directories
+- Adding logrotate script
+- Fixing bnc#890094
+
+--------------------------------------------------------------------
+Fri Aug  8 18:02:22 UTC 2014 - szotsaki@gmail.com
+
+- Addressing an issue when creating new groups and users for Radicale (bnc#890093)
+
+--------------------------------------------------------------------
+Wed Sep 25 08:15:49 UTC 2013 - szotsaki@gmail.com
+
+- Radicale 0.8
+- New authentication and rights management modules (by Matthias Jordan)
+- Experimental database storage
+- Command-line option for custom configuration file (by Mark Adams)
+- Root URL not at the root of a domain (by Clint Adams, Fabrice Bellet, Vincent Untz)
+- Improved support for iCal, CalDAVSync, CardDAVSync, CalDavZAP and CardDavMATE
+- Empty PROPFIND requests handled (by Christoph Polcin)
+- Colon allowed in passwords
+- Configurable realm message
+
+-------------------------------------------------------------------
+Thu Sep 27 08:55:00 UTC 2012 - szotsaki@gmail.com
+
+- branch from mrueckert version (thank you for the .spec file)
+- Radicale 0.7.1
+- Many address books fixes
+- New IMAP ACL (by Daniel Aleksandersen)
+- PAM ACL fixed (by Daniel Aleksandersen)
+- Courier ACL fixed (by Benjamin Frank)
+- Always set display name to collections (by Oskari Timperi)
+- Various DELETE responses fixed
+
+Thu Apr 21 13:28:25 UTC 2011 - mrueckert@suse.de
+
+- initial package (v0.5)
+

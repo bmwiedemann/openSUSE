@@ -1,0 +1,29 @@
+[Unit]
+Description=Radicale CalDAV (calendar) and CardDAV (contact) server
+Documentation=https://radicale.org
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=radicale
+Group=radicale
+ExecStart=/usr/bin/python3 -m radicale
+Restart=on-failure
+# To cope with error message "Address family for hostname not supported"
+# (EAFNOSUPPORT) during startup
+RestartSec=2
+# Deny other users access to the calendar data
+UMask=0027
+# Additional security settings
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+NoNewPrivileges=true
+ReadWritePaths=/var/lib/radicale/collections
+
+[Install]
+WantedBy=multi-user.target
