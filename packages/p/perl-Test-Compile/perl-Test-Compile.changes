@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 22 03:09:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.0.1
+   see /usr/share/doc/packages/perl-Test-Compile/Changes
+
+  v3.0.1	  2021-08-22
+      - (waterkip) Really remove UNIVERSAL::require (CPAN-RT 138934)
+
+  v3.0.0	  2021-08-21
+      - Stop tring to detect the OS
+      - Stop doing strange things for non posix systems (not backwards compatible)
+      - Don't depend on UNIVERSAL::require
+
+-------------------------------------------------------------------
 Thu Jun 17 03:09:53 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.4.2
