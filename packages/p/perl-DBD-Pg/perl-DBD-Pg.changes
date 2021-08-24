@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat May 22 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.15.0
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.15.0 (released May 21, 2021)
+   - Adjust tests for the fact that reltuples can be -1 in Postgres
+       version 13 and later. This is mostly reflected in the CARDINALITY
+       column for $dbh->statistics_info.
+     [Greg Sabino Mullane]
+   - Correctly pull back pg_async status from statement handle.
+     Previously, $dbh->{pg_async} would return undef.
+     [Greg Sabino Mullane]
+     (RT ticket #136553)
+   - Remove the experimental 'fulltest' Makefile target.
+     [Greg Sabino Mullane]
+     (RT ticket #136567)
+
+-------------------------------------------------------------------
 Fri Aug 14 03:08:58 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.14.2

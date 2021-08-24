@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-Pg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,15 @@
 #
 
 
-Name:           perl-DBD-Pg
-Version:        3.14.2
-Release:        0
 %define cpan_name DBD-Pg
+Name:           perl-DBD-Pg
+Version:        3.15.0
+Release:        0
 Summary:        PostgreSQL database driver for the DBI module
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/T/TU/TURNSTEP/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(DBI) >= 1.614
@@ -52,11 +50,11 @@ DBD::Pg is a Perl module that works with the DBI module to provide access
 to PostgreSQL databases.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %check
 HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
@@ -67,7 +65,6 @@ HARNESS_TIMER=1 HARNESS_VERBOSE=1 make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes CONTRIBUTING.md README README.dev README.win32 TODO win32.mak
 
 %changelog
