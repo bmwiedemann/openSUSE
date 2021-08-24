@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 17 03:09:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.62
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.62 2021-06-16
+   - Add opendir/closedir/*dir for unicode operations
+   - Add Prima::Drawable::Antialias for drawing aliased graphic primitives
+   - Interactive selection change in Edit and PodView does not flicker now
+   - Drawable::text_wrap can operate on text together with glyph objects,
+        allowing for proper wrapping of shaped text
+   - Added ist::OR and ist::AND image stretch types
+   - Implemented arabic kashida and interspace justifications for glyphs
+   - Markup is a first class citizen with $w->text(\"B<bold>") syntax
+     (note: Q was renamed to G and will be used for quoting instead).
+   - Minor UI facelift - sliders, buttons, inputline, podview, etc
+   - Added Prima::Drawable::Metafile
+   - Recognize mouse buttons 4 and 5 on win32
+   - win32: support unicode supplementary planes
+
+-------------------------------------------------------------------
 Sat Apr 24 03:09:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.61
