@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 18 17:58:49 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + Add corner radius to forecast chart.
+  + Increase contrast when using dark themes.
+  + Bugs fixed: glgo#GNOME/gnome-weather#146,
+    glgo#GNOME/gnome-weather#168, glgo#GNOME/gnome-weather#190,
+    glgo#GNOME/gnome-weather!82, glgo#GNOME/gnome-weather#169.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gnome-weather-wrong-min-temperature.patch
+  + gnome-weather-welcome-screen-when-saved-locations.patch
+  + gnome-weather-fix-forever-loading.patch
+
+-------------------------------------------------------------------
 Sat Jul 24 20:54:54 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add patches to fix multiple issues:

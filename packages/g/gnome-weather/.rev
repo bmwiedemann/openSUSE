@@ -334,4 +334,22 @@
     <comment></comment>
     <requestid>908643</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d2ef0c89e1a2a37583d94ff0cf0bbd87</srcmd5>
+    <version>40.1</version>
+    <time>1629795279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.1:
+  + Add corner radius to forecast chart.
+  + Increase contrast when using dark themes.
+  + Bugs fixed: glgo#GNOME/gnome-weather#146,
+    glgo#GNOME/gnome-weather#168, glgo#GNOME/gnome-weather#190,
+    glgo#GNOME/gnome-weather!82, glgo#GNOME/gnome-weather#169.
+  + Updated translations.
+- Drop patches fixed upstream:
+  + gnome-weather-wrong-min-temperature.patch
+  + gnome-weather-welcome-screen-when-saved-locations.patch
+  + gnome-weather-fix-forever-loading.patch (forwarded request 912946 from iznogood)</comment>
+    <requestid>913697</requestid>
+  </revision>
 </revisionlist>
