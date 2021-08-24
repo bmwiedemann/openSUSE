@@ -1,5 +1,5 @@
 pkgname=build
-pkgver=20210120
+pkgver=20210820
 pkgrel=0
 pkgdesc="Build packages in sandbox"
 arch=('i686' 'x86_64')

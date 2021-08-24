@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20210120
+Version:        20210820
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -60,7 +60,6 @@ Conflicts:      bsdtar < 2.5.5
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Test::Harness)
 BuildRequires:  perl(Test::More)
-BuildRequires:  perl(YAML)
 BuildRequires:  perl(YAML::LibYAML)
 %if 0%{?suse_version} > 1000 || 0%{?centos_version} >= 800 || 0%{?rhel_version} >= 800 || 0%{?fedora_version} >= 21
 # None of them are actually required for core features.
@@ -73,7 +72,6 @@ Recommends:     perl(Time::Zone)
 Recommends:     perl(URI)
 Recommends:     perl(XML::Parser)
 Recommends:     perl(Net::SSL)
-Recommends:     perl(YAML)
 Recommends:     perl(YAML::LibYAML)
 Recommends:     bsdtar
 Recommends:     qemu-linux-user
@@ -248,12 +246,16 @@ exit 0
 %endif
 # we need to patch the not packaged configs, due to the buildignore
 sed -i 's,build-mkbaselibs,,' ../configs/*.conf
+if [ ! -e /.build.packages/rpmlint-Factory.rpm ]; then
+  sed -i 's,rpmlint-Factory,,' ../configs/*.conf
+fi
 ./testbuild.sh /.build.binaries/
 
 %files
 %defattr(-,root,root)
 %doc README.md
 /usr/bin/build
+/usr/bin/pbuild
 /usr/bin/buildvc
 /usr/bin/unrpm
 /usr/lib/build
@@ -261,6 +263,7 @@ sed -i 's,build-mkbaselibs,,' ../configs/*.conf
 %{_mandir}/man1/build.1*
 %{_mandir}/man1/unrpm.1*
 %{_mandir}/man1/buildvc.1*
+%{_mandir}/man1/pbuild.1*
 %if 0%{?suse_version}
 %exclude /usr/lib/build/initvm.*
 %endif

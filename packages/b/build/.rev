@@ -1321,4 +1321,41 @@ Fixes:
   - build-recipe-debootstrap: add fallback for Debian SID distro</comment>
     <requestid>865306</requestid>
   </revision>
+  <revision rev="135" vrev="1">
+    <srcmd5>6d7b67bdb2a532dfa01e5a53805e6493</srcmd5>
+    <version>20210820</version>
+    <time>1629795249</time>
+    <user>dimstar_suse</user>
+    <comment>Features:
+- cross architecture build support (for rpm and kiwi)
+- modulemd meta data support
+- pbuild to build multiple source packages
+  (initial release, can not be considered stable yet)
+- supporting external asset stores for source files
+- support multiple post build checks placed in the directory:
+  /usr/lib/build/post-build-checks/
+- sccache support
+- New --shell-after-fail option
+- allow to disable squashfs in SimpleImage
+- supporting aarch64 kernel on armv?l distributions
+- kiwi: Add support for OBS-RemoteAsset and OBS-CopyToImage directives
+- container: FROM scratch build support
+Improvements:
+- supporting kvm builds as non-root user
+- Extend stage selection support for rpm builds
+- various distribution config updates
+- Support &quot;BuildFlags: cumulaterpms&quot;
+  (was done only via suse_version before)
+Fixes:
+- container builds
+  * support newer podman versions
+  * supporting multiple containers for multi-stage builds
+- Supporting URL's in Flatpak manifests
+- epoch handling in debian builds
+- catch more cases where a failed build is marked as host error
+- fixing wrong status reporting when a job got killed
+- hugetlbfs handling fixes
+- try mounting selinuxfs in VM</comment>
+    <requestid>913263</requestid>
+  </revision>
 </revisionlist>
