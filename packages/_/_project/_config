@@ -1523,11 +1523,7 @@ Support: cputype-armv7
 Runscripts: cputype-armv7
 %endif
 
-%ifnarch ppc64
 Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type %%{?_lto_cflags}
-%else
-Optflags: * -O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -Werror=return-type
-%endif
 
 # 15.5 does not exist !
 %define suse_version 1550
