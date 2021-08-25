@@ -1880,4 +1880,13 @@ for 12.3</comment>
   * malcontent: loosen restrictive ReadOwn actions to prevent spurious auth requests (#56)</comment>
     <requestid>911976</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>5b97f91e9c29656aa9fe8331b65c8b46</srcmd5>
+    <version>1550+20210818.b0c41fd</version>
+    <time>1629917755</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1550+20210818.b0c41fd:
+  * whitelist deepin-api service actions (bsc#1070943)</comment>
+    <requestid>912905</requestid>
+  </revision>
 </revisionlist>

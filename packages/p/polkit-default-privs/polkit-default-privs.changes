@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 18 13:07:31 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 1550+20210818.b0c41fd:
+  * whitelist deepin-api service actions (bsc#1070943)
+
+-------------------------------------------------------------------
 Fri Aug 13 11:47:41 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 1550+20210813.ce0df56:
