@@ -19,7 +19,7 @@
 %global pkg_name hspec-discover
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.8.2
+Version:        2.8.3
 Release:        0
 Summary:        Automatically discover and run Hspec tests
 License:        MIT
@@ -34,6 +34,7 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-hspec-meta-devel
+BuildRequires:  ghc-mockery-devel
 %endif
 
 %description
