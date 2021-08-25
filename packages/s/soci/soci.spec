@@ -18,12 +18,12 @@
 
 %define sover   4_0
 Name:           soci
-Version:        4.0.0
+Version:        4.0.2
 Release:        0
 Summary:        The C++ Database Access Library
 License:        BSL-1.0
 URL:            https://soci.sourceforge.io/
-Source:         https://downloads.sf.net/%{name}/%{name}-%{version}.tar.gz
+Source:         https://github.com/SOCI/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
@@ -214,9 +214,6 @@ sed -i 's/-Werror //' cmake/SociConfig.cmake
 %install
 %cmake_install
 
-# Not like this.
-rm -r %{buildroot}%{_prefix}/cmake/
-
 %post -n lib%{name}_core%{sover} -p /sbin/ldconfig
 
 %postun -n lib%{name}_core%{sover} -p /sbin/ldconfig
@@ -249,6 +246,9 @@ rm -r %{buildroot}%{_prefix}/cmake/
 %dir %{_includedir}/%{name}/
 %{_includedir}/%{name}/*.h
 %{_libdir}/lib%{name}_core.so
+%dir %{_libdir}/cmake
+%dir %{_libdir}/cmake/SOCI
+%{_libdir}/cmake/SOCI/*.cmake
 
 %files -n lib%{name}_empty%{sover}
 %{_libdir}/lib%{name}_empty.so.*
