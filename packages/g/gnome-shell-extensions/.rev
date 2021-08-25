@@ -2164,4 +2164,14 @@
     <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909696 from yfjiang)</comment>
     <requestid>909742</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>2f68f61d63a0431e26ce54dc671d72b9</srcmd5>
+    <version>40.4</version>
+    <time>1629917782</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.4:
+  + drive-menu: Fix indicator visibility
+  + Use distinct gettext domain for e.g.o uploads (forwarded request 913022 from iznogood)</comment>
+    <requestid>913698</requestid>
+  </revision>
 </revisionlist>

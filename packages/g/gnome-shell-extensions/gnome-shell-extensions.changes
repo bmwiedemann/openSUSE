@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 19 08:13:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.4:
+  + drive-menu: Fix indicator visibility
+  + Use distinct gettext domain for e.g.o uploads
+
+-------------------------------------------------------------------
 Tue Jul 13 14:11:02 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.3:
