@@ -19,7 +19,7 @@
 %global pkg_name generic-random
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.0.0
+Version:        1.5.0.0
 Release:        0
 Summary:        Generic random generators for QuickCheck
 License:        MIT
