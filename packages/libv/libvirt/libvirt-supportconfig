@@ -51,17 +51,17 @@ rpm_verify() {
     return $ret
 }
 
-if rpm_installed libvirt-daemon-xen; then
+if rpm_installed libvirt-daemon-driver-libxl; then
     test -d /etc/libvirt/libxl && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/libxl/ -type f | sort)"
     test -d /var/log/libvirt/libxl && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/libxl/ -type f | sort)"
 fi
 
-if rpm_installed libvirt-daemon-qemu; then
+if rpm_installed libvirt-daemon-driver-qemu; then
     test -d /etc/libvirt/qemu && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/qemu/ -type f | sort)"
     test -d /var/log/libvirt/qemu && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/qemu/ -type f | sort)"
 fi
 
-if rpm_installed libvirt-daemon-lxc; then
+if rpm_installed libvirt-daemon-driver-lxc; then
     test -d /etc/libvirt/lxc && VM_CONF_FILES="$VM_CONF_FILES $(find -L /etc/libvirt/lxc/ -type f | sort)"
     test -d /var/log/libvirt/lxc && LIBVIRTD_LOG_FILES="$LIBVIRTD_LOG_FILES $(find -L /var/log/libvirt/lxc/ -type f | sort)"
 fi

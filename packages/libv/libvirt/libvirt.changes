@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 11 17:31:50 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- supportconfig: When checking for installed hypervisor drivers,
+  use the libvirtr-daemon-driver-<hypervisor> package instead of
+  libvirt-daemon-<hypervisor>. The latter are not required packages
+  for a functioning hypervisor driver.
+
+-------------------------------------------------------------------
 Mon Aug  2 20:44:29 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 7.6.0
