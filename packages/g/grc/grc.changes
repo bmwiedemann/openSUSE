@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 16 13:37:35 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.13:
+  * do not automatically create command aliases, unless explicitly
+    specified (for bash)
+  * several minor improvements
+
+-------------------------------------------------------------------
 Mon Mar  1 19:18:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12

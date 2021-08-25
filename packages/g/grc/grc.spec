@@ -17,7 +17,7 @@
 
 
 Name:           grc
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Generic colouriser for everything
 License:        GPL-2.0-or-later
