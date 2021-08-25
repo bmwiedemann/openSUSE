@@ -22,7 +22,7 @@ BuildRequires:  xz
 Summary:        An x86 emulation library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-Version:        3.1
+Version:        3.2
 Release:        0
 Source:         %{name}-%{version}.tar.xz
 Url:            https://github.com/wfeldt/libx86emu

@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Wed Aug 18 16:30:18 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#wfeldt/libx86emu#35
+- Fix x86test on musl
+- 3.2
+
+--------------------------------------------------------------------
 Tue Jan 28 14:19:00 UTC 2020 - wfeldt@opensuse.org
 
 - merge gh#wfeldt/libx86emu#28
