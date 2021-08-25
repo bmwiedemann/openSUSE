@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 18 10:22:27 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to 4.4.25
+  * Fix several issues found by Covscan in the testsuite.  These include:
+    - CWE-170: String not null terminated (STRING_NULL)
+    - CWE-188: Reliance on integer endianness (INCOMPATIBLE_CAST)
+    - CWE-190: Unintentional integer overflow (OVERFLOW_BEFORE_WIDEN)
+    - CWE-569: Wrong sizeof argument (SIZEOF_MISMATCH)
+    - CWE-573: Missing varargs init or cleanup (VARARGS)
+    - CWE-687: Argument cannot be negative (NEGATIVE_RETURNS)
+  * Stricter checking of invalid salt characters (issue #135).
+
+-------------------------------------------------------------------
 Thu Jun 24 08:48:06 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.4.23
