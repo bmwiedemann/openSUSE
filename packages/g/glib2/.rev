@@ -1899,4 +1899,15 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
   for close_range (boo#1189088). (forwarded request 910172 from dimstar)</comment>
     <requestid>910437</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>d7ec72eac5e510160da20219c103b7a0</srcmd5>
+    <version>2.68.4</version>
+    <time>1629917790</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.68.4:
+  + Various bugfixes and backports from master.
+  + Updated translations.
+- Drop 63e7864.patch: fixed upstream.</comment>
+    <requestid>913733</requestid>
+  </revision>
 </revisionlist>
