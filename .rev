@@ -756,4 +756,12 @@ cd - (forwarded request 199127 from Zaitor)</comment>
     <comment>Synchronize the changelog with SLE and Leap 15.4. (forwarded request 909649 from yfjiang)</comment>
     <requestid>909738</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>b784ec3a6e59381b0127fa8d2cd9d9a2</srcmd5>
+    <version>40.4</version>
+    <time>1629917774</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 912021 from iznogood)</comment>
+    <requestid>913685</requestid>
+  </revision>
 </revisionlist>
