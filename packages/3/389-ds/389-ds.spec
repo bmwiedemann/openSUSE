@@ -37,7 +37,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        2.0.6~git0.d81dc6c90
+Version:        2.0.8~git0.553f26c87
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -346,7 +346,6 @@ exit 0
 %dir %{_sysconfdir}/dirsrv
 %dir %{_sysconfdir}/dirsrv/config
 %dir %{_sysconfdir}/dirsrv/schema
-%{_libdir}/dirsrv/libns-dshttpd-*.so
 %{_libdir}/dirsrv/librewriters.so
 %{_libdir}/dirsrv/plugins/*.so
 %{_libdir}/dirsrv/python/*.py
@@ -381,8 +380,8 @@ exit 0
 %{_includedir}/dirsrv
 %{_includedir}/svrcore.h
 %{_libdir}/libsvrcore.so
-%{_libdir}/dirsrv/libns-dshttpd.so
 %{_libdir}/dirsrv/libslapd.so
+%{_libdir}/dirsrv/libns-dshttpd.so
 %{_libdir}/dirsrv/libldaputil.so
 %{_libdir}/pkgconfig/dirsrv.pc
 %{_libdir}/pkgconfig/svrcore.pc
