@@ -668,4 +668,12 @@
     <comment>GNOME 40.3 (forwarded request 906601 from dimstar)</comment>
     <requestid>907056</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>3c5c493c40dc296c091e759c6b4d2fcd</srcmd5>
+    <version>40.4</version>
+    <time>1629917777</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 912287 from iznogood)</comment>
+    <requestid>913689</requestid>
+  </revision>
 </revisionlist>
