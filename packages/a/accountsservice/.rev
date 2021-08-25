@@ -1042,4 +1042,12 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment></comment>
     <requestid>879128</requestid>
   </revision>
+  <revision rev="72" vrev="7">
+    <srcmd5>803b9e26664e22c52d3add337b1ce271</srcmd5>
+    <version>0.6.55</version>
+    <time>1629917770</time>
+    <user>dimstar_suse</user>
+    <comment>- Spec layout cleaning up for harden_accounts-daemon.service.patch. (forwarded request 910817 from yfjiang)</comment>
+    <requestid>913679</requestid>
+  </revision>
 </revisionlist>
