@@ -384,6 +384,7 @@ autoconf -f -i
 	--enable-optimise \
 	%{wx_debug:--enable-debug=%{wx_debug}} \
         --enable-repro-build \
+        --disable-glcanvasegl \
 %if "%flavor" == "GTK3-nostl"
 	--disable-stl \
 	--disable-plugins
