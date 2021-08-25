@@ -338,4 +338,16 @@
   + Windows compatibility fixes (forwarded request 874011 from iznogood)</comment>
     <requestid>875389</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>d760eef976e9f84b2808b562a3b33d8b</srcmd5>
+    <version>0.12.3</version>
+    <time>1629917770</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.3:
+  + Enable Exiv2's BMFF support if available
+  + Catch WError on windows
+  + Deprecate gexiv2_metadata_from_stream
+  + Bugs fixed: glgo#GNOME/gexiv2#66 (forwarded request 912655 from iznogood)</comment>
+    <requestid>913678</requestid>
+  </revision>
 </revisionlist>

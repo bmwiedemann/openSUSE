@@ -21,7 +21,7 @@
 %bcond_without python2
 %bcond_without python3
 Name:           libgexiv2
-Version:        0.12.2
+Version:        0.12.3
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 17 10:46:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.3:
+  + Enable Exiv2's BMFF support if available
+  + Catch WError on windows
+  + Deprecate gexiv2_metadata_from_stream
+  + Bugs fixed: glgo#GNOME/gexiv2#66
+
+-------------------------------------------------------------------
 Sat Feb 20 14:17:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.12.2:
