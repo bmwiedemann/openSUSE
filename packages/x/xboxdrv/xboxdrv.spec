@@ -15,7 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+# systemd-rpm-macros(or kmod) is wrong in 15.2
+%define _modprobedir /lib/modprobe.d
+%endif
 Name:           xboxdrv
 Version:        0.8.8
 Release:        0
@@ -73,7 +76,7 @@ scons %{?_smp_mflags}
 chmod a-x %{buildroot}%{_mandir}/man1/%{name}.1
 
 install -Dpm 0644 50-xpad.conf \
-  %{buildroot}%{_sysconfdir}/modprobe.d/50-xpad.conf
+  %{buildroot}%{_modprobedir}/50-xpad.conf
 
 install -Dpm 0644 %{name}.conf %{buildroot}%{_sysconfdir}/%{name}.conf
 install -Dpm 0644 %{name}.service %{buildroot}%{_unitdir}/%{name}.service
@@ -100,8 +103,10 @@ rm %{buildroot}%{_bindir}/%{name}ctl
 %license COPYING
 %doc AUTHORS NEWS PROTOCOL README.md TODO
 %config(noreplace) %{_sysconfdir}/%{name}.conf
-%dir %{_sysconfdir}/modprobe.d/
-%config %{_sysconfdir}/modprobe.d/50-xpad.conf
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+%dir %{_modprobedir}
+%endif
+%{_modprobedir}/50-xpad.conf
 %{_bindir}/%{name}
 %{_sbindir}/rc%{name}
 %{_unitdir}/%{name}.service

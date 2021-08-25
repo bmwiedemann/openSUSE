@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 24 10:12:41 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move modprobe.d files out of /etc
+
+-------------------------------------------------------------------
 Wed May  6 21:54:39 UTC 2020 - malcolmlewis@opensuse.org
 
 - Drop python2 xboxdrvctl and just use systemd service or xboxdrv
