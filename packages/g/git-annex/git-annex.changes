@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Wed Aug  4 10:32:07 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210803.
+  git-annex (8.20210803) upstream; urgency=medium
+
+    * whereused: New command, finds what files use a key, or where a key
+      was used historically.
+    * Fix a bug that prevented getting content from a repository that
+      started out as a bare repository, or had annex.crippledfilesystem
+      set, and was converted to a non-bare repository.
+    * Fix retrieval of content from borg repos accessed over ssh.
+    * sync: When --quiet is used, run git commit, push, and pull without
+      their ususual output.
+    * merge: When --quiet is used, run git merge without its usual output.
+    * sync, merge, post-receive: Avoid merging unrelated histories,
+      which used to be allowed only to support direct mode repositories.
+      (However, sync does still merge unrelated histories when importing
+      trees from special remotes, and the assistant still merges unrelated
+      histories.)
+    * sync, merge: Added --allow-unrelated-histories option, which
+      is the same as the git merge option.
+    * Fix bug that caused some transfers to incorrectly fail with
+      "content changed while it was being sent", when the content was not
+      changed.
+    * Fix bug that could prevent pointer files from being populated,
+      in a repository that was upgraded from v7.
+    * fsck: Detect and correct stale or missing inode caches.
+    * Fix a rounding bug in display of data sizes.
+    * git-annex get when run as the first git-annex command in a new repo
+      did not populate unlocked files.
+      (Reversion in version 8.20210621)
+
+   -- Joey Hess <id@joeyh.name>  Tue, 03 Aug 2021 12:20:09 -0400
+
+-------------------------------------------------------------------
+Thu Jul 15 16:15:36 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210714.
+  git-annex (8.20210714) upstream; urgency=medium
+
+    * assistant: Avoid unncessary git repository repair in a situation where
+      git fsck gets confused about a commit that is made while it's running.
+    * addurl: Avoid crashing when used on beegfs.
+    * --debug output goes to stderr again, not stdout.
+      (Reversion in version 8.20210428)
+    * init: Fix misbehavior when core.sharedRepository = group that
+      caused it to enter an adjusted branch and set annex.crippledfilesystem
+      (Reversion in version 8.20210630)
+    * assistant: When adding non-large files to git, honor annex.delayadd
+      configuration. Also, don't add non-large files to git when they
+      are still being written to.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 14 Jul 2021 12:22:55 -0400
+
+-------------------------------------------------------------------
+Thu Jul  1 12:52:52 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210630.
+  git-annex (8.20210630) upstream; urgency=medium
+
+    * Fixed bug that interrupting git-annex repair (or assistant) while
+      it was fixing repository corruption would lose objects that were
+      contained in pack files. Also the assistant might sometimes have
+      crashed with the same result.
+    * repair: Fix reversion in version 8.20200522 that prevented fetching
+      missing objects from remotes.
+    * sync: Partly work around github behavior that first branch to be pushed
+      to a new repository is assumed to be the head branch, by not pushing
+      synced/git-annex first.
+    * Added annex.freezecontent-command and annex.thawcontent-command
+      configs.
+    * Improve display of errors when transfers fail.
+    * Dropping an unused object with drop --unused or dropunused will
+      mark it as dead, preventing fsck --all from complaining about it
+      after it's been dropped from all repositories.
+    * addurl, importfeed: Added --no-raw option that forces download
+      with youtube-dl or a special remote. In particular this can avoid
+      falling back to raw download when youtube-dl is blocked for some
+      reason.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 30 Jun 2021 11:48:16 -0400
+
+-------------------------------------------------------------------
 Tue Jun 22 07:42:31 UTC 2021 - psimons@suse.com
 
 - Update git-annex to version 8.20210621.
