@@ -97,4 +97,14 @@
   - lots of fixes</comment>
     <requestid>870059</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>55635e0f533f0262aae54abf91133cfc</srcmd5>
+    <version>20210825</version>
+    <time>1629917911</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20210825
+  - updated to current wine versions
+  - adjust to changed download components</comment>
+    <requestid>914226</requestid>
+  </revision>
 </revisionlist>
