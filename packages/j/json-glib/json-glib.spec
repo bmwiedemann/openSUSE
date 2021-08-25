@@ -18,7 +18,7 @@
 
 
 Name:           json-glib
-Version:        1.6.2
+Version:        1.6.4
 Release:        0
 Summary:        Library for JavaScript Object Notation format
 License:        LGPL-2.1-or-later
@@ -98,7 +98,7 @@ translation-update-upstream po %{name}-1.0
 %build
 %meson \
 	-Dman=true \
-	-Dgtk_doc=enabled \
+	-Dgtk_doc=disabled \
 	%{nil}
 %meson_build
 
@@ -127,7 +127,6 @@ translation-update-upstream po %{name}-1.0
 %{_bindir}/json-glib-validate
 %{_mandir}/man1/json-glib-format.1%{ext_man}
 %{_mandir}/man1/json-glib-validate.1%{ext_man}
-%{_datadir}/gtk-doc/html/json-glib
 #
 %{_includedir}/%{name}-1.0
 %{_libdir}/*.so

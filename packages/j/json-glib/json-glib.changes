@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 21 22:41:31 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.4:
+  + Discover linker flags on all toolchains
+  + Fix memory leak
+  + Use gi-docgen instead of gtk-doc for generating the API
+    reference
+  + Build against newer versions of GLib
+- Pass gtk_doc=disabled to meson, no longer build API
+  documentation.
+
+-------------------------------------------------------------------
 Tue Feb  9 22:49:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.2:
