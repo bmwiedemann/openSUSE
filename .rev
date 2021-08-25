@@ -374,4 +374,19 @@
     <comment></comment>
     <requestid>870856</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>af7da1afb1d738a27afc89d2e712647c</srcmd5>
+    <version>1.6.4</version>
+    <time>1629917788</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.4:
+  + Discover linker flags on all toolchains
+  + Fix memory leak
+  + Use gi-docgen instead of gtk-doc for generating the API
+    reference
+  + Build against newer versions of GLib
+- Pass gtk_doc=disabled to meson, no longer build API
+  documentation. (forwarded request 913492 from iznogood)</comment>
+    <requestid>913706</requestid>
+  </revision>
 </revisionlist>
