@@ -19,7 +19,7 @@
 %global pkg_name generic-lens
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.0.0
+Version:        2.2.0.0
 Release:        0
 Summary:        Generically derive traversals, lenses and prisms
 License:        BSD-3-Clause
