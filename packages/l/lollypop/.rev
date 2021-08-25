@@ -1673,4 +1673,15 @@
     artists (glgo#World/lollypop#2798).</comment>
     <requestid>904258</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>fc24394b95c1f28729f0c86aa0927634</srcmd5>
+    <version>1.4.23</version>
+    <time>1629917883</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.23:
+  * Better looking selected album.
+  * Fix deactivation of Jamendo service provider
+    (glgo#World/lollypop#2815).</comment>
+    <requestid>914082</requestid>
+  </revision>
 </revisionlist>

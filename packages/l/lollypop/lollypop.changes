@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 24 18:11:40 UTC 2021 - antoine.belvire@opensuse.org
+
+- Update to version 1.4.23:
+  * Better looking selected album.
+  * Fix deactivation of Jamendo service provider
+    (glgo#World/lollypop#2815).
+
+-------------------------------------------------------------------
 Mon Jul 05 18:02:10 UTC 2021 - antoine.belvire@opensuse.org
 
 - Update to version 1.4.22:
