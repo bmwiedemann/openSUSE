@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 23 13:01:35 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic which has no effect with --disable-static.
+- Implement shared library policy.
+- Delete practically empty documentation files.
+
+-------------------------------------------------------------------
 Sat Oct  4 17:23:36 UTC 2014 - crrodriguez@opensuse.org
 
 - Cleanup buildrequires, no libraries other than glibc are needed. 

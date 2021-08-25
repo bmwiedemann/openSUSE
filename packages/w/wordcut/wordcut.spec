@@ -1,7 +1,7 @@
 #
 # spec file for package wordcut
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,68 +12,69 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define lname   libwordcut0
 Name:           wordcut
-BuildRequires:  libtool
-BuildRequires:  pkgconfig
 Version:        0.5.1b2
 Release:        0
-Provides:       locale(th)
-Url:            http://thaiwordseg.sourceforge.net/
+Summary:        Thai word segmentation utility
+License:        BSD-3-Clause
+Group:          Development/Libraries/C and C++
+URL:            http://thaiwordseg.sourceforge.net/
 Source0:        http://downloads.sourceforge.net/project/thaiwordseg/wordcut/wordcut-%{version}/wordcut-%{version}.tar.bz2
 Patch0:         bugzilla-152315-locale-variable-used-before-set.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Summary:        Thai word segmentation utility.
-License:        BSD-3-Clause
-Group:          System/Libraries
+BuildRequires:  libtool
+BuildRequires:  pkgconfig
+Provides:       locale(th)
 
 %description
 Thai word segmentation utility.
 
+%package -n %{lname}
+Summary:        Thai word segmentation utility
+Group:          System/Libraries
+
+%description -n %{lname}
+Thai word segmentation utility.
+
 %package devel
-Summary:        Include Files and Libraries mandatory for Development.
+Summary:        Header files for wordcut, a Thai word segmentation utility
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version} glibc-devel
+Requires:       %{lname} = %{version}
+Requires:       glibc-devel
 
 %description devel
-This package contains all necessary include files and libraries needed
-to develop applications that require these.
+This package contains files necessary to build against libwordcut.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf --force --install --verbose
-export CFLAGS="$RPM_OPT_FLAGS" 
-export CXXFLAGS="$RPM_OPT_FLAGS"
-%configure --disable-static --with-pic
-make %{_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=${RPM_BUILD_ROOT} install
+%make_install
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%post   -n %{lname} -p /sbin/ldconfig
+%postun -n %{lname} -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
-%doc AUTHORS COPYING NEWS README ChangeLog
+%license COPYING
 %{_bindir}/*
-%{_libdir}/libwordcut.so.*
 %dir %{_datadir}/wordcut/
 %{_datadir}/wordcut/*
 
+%files -n %{lname}
+%{_libdir}/libwordcut.so.*
+
 %files devel
-%defattr(-, root, root)
-/usr/include/*
+%{_includedir}/*
 %{_libdir}/libwordcut.so
 %{_libdir}/pkgconfig/*
 %exclude %{_libdir}/*.la
