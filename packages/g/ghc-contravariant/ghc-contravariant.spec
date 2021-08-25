@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-contravariant
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name contravariant
 Name:           ghc-%{pkg_name}
-Version:        1.5.3
+Version:        1.5.5
 Release:        0
 Summary:        Contravariant functors
 License:        BSD-3-Clause
