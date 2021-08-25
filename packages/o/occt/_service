@@ -1,6 +1,14 @@
 <services>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://git.dev.opencascade.org/repos/occt.git</param>
+    <param name="scm">git</param>
+    <param name="revision">V7_5_3</param>
+    <param name="version">7.5.3</param>
+  </service>
+  <service mode="manual" name="set_version" />
+
+  <service mode="buildtime" name="tar" />
+  <service mode="buildtime" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>

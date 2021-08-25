@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 25 08:54:15 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to version 7.5.3A
+  Modeling Algorithms maintenance fixes:
+  – Wrong result of the mkface command [Minor]
+  – Hang on making pipe shell using BRepOffsetAPI_MakePipeShell [Crash]
+  – BRepOffsetAPI_MakePipeShell null access [Minor]
+  – Empty result of offset operation in mode “Complete” join type “Intersection” [Minor]
+  – General Fuse produces the wrong number of solids [Minor]
+  – Empty result of offset operation in mode “Complete” Joint type “Intersection” [REGRESSION since 7.3.0]
+  – Sweep crashes if Bi-normal is given [Crash]
+  – Boolean fuse fails and corrupts the argument-shape [Major]
+  – unify same domain calls crossed for opposite vectors [Major]
+  – BOP Cut produces invalid shape [Regression]
+  – Invalid result of UnifySameDomain [Major]
+  – Modeling Data – Wrong result of extrema curve-surface [Major]
+  Data Exchange:
+  – STEP exporter generates bad geometry [REGRESSION since 7.4.0]
+
+-------------------------------------------------------------------
 Mon May 10 12:50:36 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Add disk _constraints (mostly for PPC).

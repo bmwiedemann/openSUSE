@@ -17,7 +17,7 @@
 
 
 Name:           occt
-Version:        7.5.1
+Version:        7.5.3
 Release:        0
 %define soname 7
 Summary:        OpenCASCADE Official Edition
