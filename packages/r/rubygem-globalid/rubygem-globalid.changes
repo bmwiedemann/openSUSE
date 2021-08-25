@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 25 05:12:40 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 0.5.2
+
+  * Add back Ruby 2.5 support so gem install rails works out of the box,
+    thereby satisfying Rails' Ruby version requirement. See rails/rails#42931
+
+-------------------------------------------------------------------
 Mon Jan 14 08:04:04 UTC 2019 - mschnitzer@suse.com
 
 - updated to version 0.4.2

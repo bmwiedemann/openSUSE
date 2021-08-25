@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-globalid
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-globalid
-Version:        0.4.2
+Version:        0.5.2
 Release:        0
 %define mod_name globalid
 %define mod_full_name %{mod_name}-%{version}
@@ -34,10 +34,10 @@ Release:        0
 %endif
 # /MANUAL
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{ruby >= 2.5.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-Url:            http://www.rubyonrails.org
+URL:            http://www.rubyonrails.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        Refer to any model with a URI: gid://app/class/id
