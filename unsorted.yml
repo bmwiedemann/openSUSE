@@ -176,6 +176,10 @@ unsorted:
   - OpenShadingLanguage-doc 
   - OpenShadingLanguage-example-shaders-source 
   - OpenSubdiv-devel 
+  - PDAL 
+  - PDAL-bash-completion 
+  - PDAL-devel 
+  - PDAL-doc 
   - PackageKit-backend-dnf: [i586] 
   - PackageKit-branding-upstream 
   - PackageKit-devel 
@@ -235,6 +239,7 @@ unsorted:
   - R-tools 
   - R-utils 
   - RBTools 
+  - Radicale 
   - RealtimeSync 
   - Regina-REXX 
   - Regina-REXX-devel 
@@ -1150,7 +1155,6 @@ unsorted:
   - bazel-skylib-source 
   - bazel-toolchains-source 
   - bazel-workspaces 
-  - bazel0.24: [x86_64] 
   - bazel3.4: [x86_64] 
   - bazel3.7: [x86_64] 
   - bb 
@@ -5931,6 +5935,7 @@ unsorted:
   - goocanvas2-devel 
   - goocanvas2-lang 
   - google-alegreya-fonts 
+  - google-alegreya-sans-fonts 
   - google-allerta-fonts 
   - google-anonymouspro-fonts 
   - google-authenticator-libpam 
@@ -8833,6 +8838,7 @@ unsorted:
   - libOyranosSynnefo-devel 
   - libOyranosSynnefo-devel-static 
   - libOyranosSynnefo1 
+  - libPDAL13 
   - libPocoCppParser71 
   - libPocoCrypto71 
   - libPocoData71 
@@ -10959,7 +10965,7 @@ unsorted:
   - libgsm-utils 
   - libgsm1-32bit: [x86_64] 
   - libgsmsd8 
-  - libgsoap-2_8_115 
+  - libgsoap-2_8_117 
   - libgssdp-1_2-0-32bit: [x86_64] 
   - libgssdp-devel 
   - libgssglue-devel 
@@ -30695,7 +30701,9 @@ unsorted:
   - rabbitmq-c-tools 
   - rabbitmq-java-client 
   - rabbitmq-server 
+  - rabbitmq-server-bash-completion 
   - rabbitmq-server-plugins 
+  - rabbitmq-server-zsh-completion 
   - racket 
   - racket-devel 
   - racket-doc 
@@ -31043,6 +31051,7 @@ unsorted:
   - ruby2.7-devel-extra 
   - ruby2.7-doc 
   - ruby2.7-doc-ri 
+  - ruby2.7-rubygem-em-websocket 
   - ruby2.7-rubygem-gettext-setup 
   - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-rspec-rails-3.9 
