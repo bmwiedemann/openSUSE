@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 23 12:48:31 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add closefrom.patch [boo#1189086]
+
+-------------------------------------------------------------------
 Tue Dec 15 11:00:03 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO (boo#1133101) and use -ffat-lto-objects.

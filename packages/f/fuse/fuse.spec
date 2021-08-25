@@ -1,7 +1,7 @@
 #
 # spec file for package fuse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,9 +29,10 @@ Source3:        baselibs.conf
 Source4:        fuse.conf
 Source5:        https://github.com/libfuse/libfuse/releases/download/fuse-%{version}/fuse-%{version}.tar.gz.asc
 Source6:        fuse.keyring
-Patch0:         fuse-install-fix.diff
-Patch3:         fusermount-compile-as-pie.patch
-Patch4:         aarch64-build-fix.patch
+Patch1:         fuse-install-fix.diff
+Patch2:         fusermount-compile-as-pie.patch
+Patch3:         aarch64-build-fix.patch
+Patch4:         closefrom.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
