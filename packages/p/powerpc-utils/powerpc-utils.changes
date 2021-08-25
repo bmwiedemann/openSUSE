@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Jul 30 07:39:59 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
-- Update to version 1.3.9 (jsc#SLE-18645).
+- Update to version 1.3.9 (jsc#SLE-18645, bsc#1189015).
   - Remove upstreamed patches
     - 0001-HNV-fixes-for-qrydev-and-remove-lsdevinfo.patch
     - 0002-Disable-vnic-as-backup-vdevice-for-migratable-SR_IOV.patch
