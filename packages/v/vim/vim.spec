@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 3318
+%define patchlevel 3360
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -92,7 +92,7 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(xt)
 Requires:       vim-data-common = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     vim-data = %{version}-%{release}
 Conflicts:      vim-base < 8.2
 Provides:       vi
@@ -141,7 +141,7 @@ Group:          Productivity/Text/Editors
 Requires:       gvim_client
 Requires:       vim-data = %{version}-%{release}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      gvim < 8.2
 Provides:       gvim-base = %{version}-%{release}
 Provides:       gvim-enhanced = %{version}-%{release}
@@ -161,7 +161,7 @@ want less features, you might want to install vim instead.
 Summary:        Vim with reduced features
 Group:          Productivity/Text/Editors
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       vi
 Provides:       vim_client
 Requires:       vim-data-common = %{version}-%{release}
@@ -189,7 +189,7 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch22 -p1
 %patch23 -p1
 %patch24 -p1
-%ifarch s390x %{arm} aarch64
+%ifarch s390x %{arm} aarch64 riscv64
 %patch25 -p1
 %endif
 %patch100 -p1

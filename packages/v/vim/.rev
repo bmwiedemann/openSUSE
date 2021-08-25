@@ -5302,4 +5302,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>912027</requestid>
   </revision>
+  <revision rev="290" vrev="1">
+    <srcmd5>4cb675a61cddc101fe0aa5e057c8801d</srcmd5>
+    <version>8.2.3360</version>
+    <time>1629917760</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to version 8.2.3360, fixes the following problems
+  * Vim9: cannot ignore quotes in number at the command line.
+  * Coverity action on github does not work.
+  * Some local functions are not static.
+  * Some code is not tested.
+  * Vim9: checking type of dict does not check member type.
+  * Help tag for exists_compiled() is wrong. (Maxim Kim)
+  * Vim9: Cannot use :silent with :endwhile.
+  * Digraph test fails when LC_ALL is set to &quot;C&quot;.
+  * Vim9: no error passing an empty list of the wrong type.
+  * No check for sysconf() failing.
+  * Coverity error for not checking return value.
+  * v_lock not set when getting value of environment variable.
+  * Coverity reports using uninitialized field.
+  * Coverity warns for using value without boundary check.
+  * Vim9: cannot assign to range in list.
+  * Vim9: not enough tests run with Vim9.
+  * Vim9: not enough tests run with Vim9.
+  * Vim9: not enough tests run with Vim9.
+  * Behavior of negative index in list change changed. (Naruhiko Nishino)
+  * Completing &quot;call g:&quot; returns entries with just &quot;g:&quot;. (Naohiro Ono)
+  * Vim9: no type check when assigning a list range. (Naohiro Ono)
+  * Vim9: cannot lock a member in a local dict.
+  * Accessing uninitialized pointer.
+  * Vim9: function call aborted despite try/catch. (Naohiro Ono)
+  * Test for :let errors fails.
+  * Vim9: autoload test fails.
+  * Vimscript test fails.
+  * Some code not covered by tests.
+  * Vim9: no error for using &quot;.&quot; for concatenation after &quot;:vim9cmd&quot;. (Naohiro</comment>
+    <requestid>913480</requestid>
+  </revision>
 </revisionlist>

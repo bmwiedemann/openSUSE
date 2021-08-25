@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Aug 20 08:55:25 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3360, fixes the following problems
+  * Vim9: cannot ignore quotes in number at the command line.
+  * Coverity action on github does not work.
+  * Some local functions are not static.
+  * Some code is not tested.
+  * Vim9: checking type of dict does not check member type.
+  * Help tag for exists_compiled() is wrong. (Maxim Kim)
+  * Vim9: Cannot use :silent with :endwhile.
+  * Digraph test fails when LC_ALL is set to "C".
+  * Vim9: no error passing an empty list of the wrong type.
+  * No check for sysconf() failing.
+  * Coverity error for not checking return value.
+  * v_lock not set when getting value of environment variable.
+  * Coverity reports using uninitialized field.
+  * Coverity warns for using value without boundary check.
+  * Vim9: cannot assign to range in list.
+  * Vim9: not enough tests run with Vim9.
+  * Vim9: not enough tests run with Vim9.
+  * Vim9: not enough tests run with Vim9.
+  * Behavior of negative index in list change changed. (Naruhiko Nishino)
+  * Completing "call g:" returns entries with just "g:". (Naohiro Ono)
+  * Vim9: no type check when assigning a list range. (Naohiro Ono)
+  * Vim9: cannot lock a member in a local dict.
+  * Accessing uninitialized pointer.
+  * Vim9: function call aborted despite try/catch. (Naohiro Ono)
+  * Test for :let errors fails.
+  * Vim9: autoload test fails.
+  * Vimscript test fails.
+  * Some code not covered by tests.
+  * Vim9: no error for using "." for concatenation after ":vim9cmd". (Naohiro
+  Ono)
+  * Check for legacy script is incomplete. (Naohiro Ono)
+  * line2byte() returns wrong value after adding textprop. (Yuto Kimura)
+  * Eval test for scriptversion fails.
+  * Vim9: using a function by name may delete it. (Naohiro Ono)
+  * Vim9: error for nested :enddef has wrong line number.
+  * Vim9: type of argument for negate not checked at compile time.
+  * Build failure with +byte_offset but without +textprop. (John Marriott)
+  * Adding many text properties requires a lot of function calls.
+  * Crash when 'virtualedit' is set and window is narrow.
+  * Structurizr files are not recognized.
+  * Vim9: error for type when variable is not set.
+  * User function completion fails with dict function.
+
+-------------------------------------------------------------------
+Wed Aug 18 12:43:01 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Disable unreliable tests also on riscv64
+- disable-unreliable-tests-arch.patch: also disable test_vim9_func
+
+-------------------------------------------------------------------
 Wed Aug 11 09:03:06 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - Update apparmor.vim (taken from AppArmor 3.0.3)
