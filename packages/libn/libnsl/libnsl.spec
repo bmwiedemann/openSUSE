@@ -1,7 +1,7 @@
 #
 # spec file for package libnsl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define debug_package_requires libnsl2 = %{version}-%{release}
+%define debug_package_requires libnsl3 = %{version}-%{release}
 Name:           libnsl
-Version:        1.3.0
+Version:        2.0.0
 Release:        0
-Summary:        Network Support Library (NIS/NIS+)
+Summary:        Network Support Library (NIS)
 License:        LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            http://github.com/thkukuk/libnsl
@@ -34,33 +34,30 @@ BuildRequires:  libtirpc-devel >= 1.0
 %endif
 
 %description
-The Network Support Library for NIS/NIS+ was formerly part of glibc and
+The Network Support Library for NIS(YP) was formerly part of glibc and
 is now a standalone library. The big difference is, that this library
 has support for IPv6.
-The NIS+ code is deprecated and only provided "as is".
 
-%package -n libnsl2
-Summary:        Network Support Library (NIS/NIS+)
+%package -n libnsl3
+Summary:        Network Support Library (NIS)
 Group:          System/Libraries
 
-%description -n libnsl2
-The Network Support Library for NIS/NIS+ was formerly part of glibc and
+%description -n libnsl3
+The Network Support Library for NIS was formerly part of glibc and
 is now a standalone library. The big difference is, that this library
 has support for IPv6.
-The NIS+ code is deprecated and only provided "as is".
 
 %package devel
-Summary:        Development package for Network Support Library (NIS/NIS+)
+Summary:        Development package for Network Support Library (NIS)
 Group:          Development/Libraries/C and C++
-Requires:       libnsl2 = %{version}
+Requires:       libnsl3 = %{version}
 Requires:       pkgconfig(libtirpc) >= 1.0.1
 
 %description devel
-The Network Support Library for NIS/NIS+ was formerly part of glibc and
+The Network Support Library for NIS was formerly part of glibc and
 is now a standalone library. The big difference is, that this library
 has support for IPv6.
 This package contains all files to develop and link against libnsl.
-The NIS+ API is deprecated and only provided "as is".
 
 %prep
 %setup -q
@@ -79,12 +76,12 @@ rm %{buildroot}%{_libdir}/%{name}.la
 %check
 make %{?_smp_mflags} check
 
-%post -n libnsl2 -p /sbin/ldconfig
-%postun -n libnsl2 -p /sbin/ldconfig
+%post -n libnsl3 -p /sbin/ldconfig
+%postun -n libnsl3 -p /sbin/ldconfig
 
-%files -n libnsl2
+%files -n libnsl3
 %license COPYING
-%{_libdir}/libnsl.so.2*
+%{_libdir}/libnsl.so.3*
 
 %files devel
 %{_libdir}/libnsl.so

@@ -82,4 +82,15 @@
 - Fix SRPM group and word choice in description.</comment>
     <requestid>818982</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6a209f498da08bb258adda1a2c1bd30b</srcmd5>
+    <version>2.0.0</version>
+    <time>1629917752</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  - Remove NIS+ code
+  - Bump soversion to 3
+</comment>
+    <requestid>912438</requestid>
+  </revision>
 </revisionlist>
