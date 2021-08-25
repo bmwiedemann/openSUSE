@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 18 13:19:10 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- update to 1.15
+  * add NVMe MI features
+  * add uuid index in get and set features command 
+  * nvme-cli: Add lsi option for get-log command
+  * nvme: add json output format for list_ns
+  * fabrics: add fast_io_fail_tmo option
+  * fabrics: add --host-iface option
+  * nvme: add latency parameter for passthru commands
+  * nvme: add optional copy format support id ctrl field
+  * nvme: add zone desc changed notice async event
+  * nvme: add json, binary and human readable output format for id iocs
+  * fabrics: print device name on connect
+  * nvme: add get log page 2.0 spec fields
+  * nvme: add the status codes from 2.0 spec
+  * zns: add timeout parameter for Zone Management Commands
+  * nvme: add CDW2 and CDW3 support for Write Zeroes and Verify Command
+  * nvme: add Storage Tag Check field in NVM Commands
+  * bash: updated completion support for latest commands and plugins
+  * nvme: add capacity management command support
+  * add identify CNS 0x18 domain list support
+
+-------------------------------------------------------------------
 Fri Jul 23 10:43:15 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update copyright date
