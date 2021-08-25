@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 25 06:48:44 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- update to 0.9.6
+  * prepare for python 3.9
+- dependency fixes
+
+-------------------------------------------------------------------
+Fri Jan 15 07:51:11 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- add minimal runtime requires
+- add some recommends needed for plugins
+
+-------------------------------------------------------------------
 Mon Jan 11 16:58:52 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Add missing BuildRequires: python3-filetype python3-deprecation

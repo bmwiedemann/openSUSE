@@ -17,7 +17,7 @@
 
 
 Name:           eyeD3
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Audio files and ID3 Manipulation Tool
 License:        GPL-2.0-or-later AND GPL-3.0-only
@@ -29,6 +29,24 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-filetype
 BuildRequires:  python3-scipy
 BuildRequires:  python3-setuptools
+Requires:       python3-chardet >= 4.0.0
+Requires:       python3-colorama >= 0.4.4
+Requires:       python3-deprecation >= 2.1.0
+Requires:       python3-filetype >= 1.0.7
+Requires:       python3-idna >= 2.10
+Requires:       python3-packaging >= 20.8
+Requires:       python3-pyparsing >= 2.4.7
+Requires:       python3-requests >= 2.25.1
+Requires:       python3-six >= 1.15.0
+Requires:       python3-toml >= 0.10.2
+Requires:       python3-urllib3 >= 1.26.2
+
+# for plugins
+Recommends:     python-pylast
+Recommends:     python-requests
+Recommends:     python-pillow
+Recommends:     python-grako
+Recommends:     python-ruamel.yaml
 BuildArch:      noarch
 
 %description
@@ -49,6 +67,8 @@ Features:
 
 %prep
 %setup -q
+# currently broken
+rm eyed3/plugins/mimetype.py
 
 %build
 python3 setup.py build
@@ -62,10 +82,9 @@ python3 setup.py install --prefix=%{_prefix} --root=%{buildroot}
 %doc README.rst
 %doc CONTRIBUTING.rst
 %doc HISTORY.rst
-%doc docs
+#%doc docs
 %doc examples
 %{_bindir}/eyeD3
-%{python3_sitelib}/eyed3
-%{python3_sitelib}/eyeD3*
+%{python3_sitelib}/eyed3*
 
 %changelog

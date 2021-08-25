@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>862518</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de1b7a466297e98ae75a6873fdda18cd</srcmd5>
+    <version>0.9.6</version>
+    <time>1629917897</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.9.6
+  * prepare for python 3.9
+- dependency fixes
+
+- add minimal runtime requires
+- add some recommends needed for plugins</comment>
+    <requestid>914167</requestid>
+  </revision>
 </revisionlist>
