@@ -18,7 +18,7 @@
 
 %global pkg_name X11
 Name:           ghc-%{pkg_name}
-Version:        1.10
+Version:        1.10.1
 Release:        0
 Summary:        A binding to the X11 graphics library
 License:        BSD-3-Clause

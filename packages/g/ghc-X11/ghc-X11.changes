@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:21:44 UTC 2021 - psimons@suse.com
+
+- Update X11 to version 1.10.1.
+  ## 1.10.1 (2021-08-15)
+
+    * Fixed possible high CPU usage of some blocking calls with the threaded RTS (#78)
+
+-------------------------------------------------------------------
 Tue Jun  1 12:33:42 UTC 2021 - psimons@suse.com
 
 - Update X11 to version 1.10.
