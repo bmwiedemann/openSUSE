@@ -95,4 +95,12 @@
     <comment>update (forwarded request 909109 from mschnitzer)</comment>
     <requestid>909125</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f28f642967af954feee9f60eafb1bf85</srcmd5>
+    <version>1.7.7</version>
+    <time>1629917887</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914122</requestid>
+  </revision>
 </revisionlist>

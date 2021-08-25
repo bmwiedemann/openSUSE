@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 25 05:06:34 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 1.7.7
+
+  * Fix `require_relative` in evaled code on latest ruby 3.1.0-dev. (#366)
+
+-------------------------------------------------------------------
 Thu Jul 29 08:40:13 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 1.7.6
