@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 23 22:50:11 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- switch the recommends from ladspa-zam-plugins to lv2-zam-plugins (boo#1189542)
+
+-------------------------------------------------------------------
 Tue Aug 17 17:55:01 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - updated to latest release 6.1.0

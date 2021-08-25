@@ -58,9 +58,9 @@ Requires:       dconf
 Requires:       gstreamer-plugins-bad >= 1.12.5
 Requires:       gstreamer-plugins-good >= 1.12.5
 Requires:       ladspa-swh-plugins
-Recommends:     ladspa-zam-plugins
 Recommends:     lv2-calf >= 0.90.1
 Recommends:     lv2-lsp-plugins
+Recommends:     lv2-zam-plugins
 Recommends:     rubberband-ladspa
 
 %description
