@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 27 07:52:09 UTC 2021 - psimons@suse.com
+
+- Update StateVar to version 1.2.2.
+  1.2.2
+  -----
+  * Relaxed upper version bound for `transformers`.
+
+-------------------------------------------------------------------
 Tue Dec 29 21:16:54 UTC 2020 - psimons@suse.com
 
 - Update StateVar to version 1.2.1.
