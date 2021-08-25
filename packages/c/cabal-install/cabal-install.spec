@@ -67,6 +67,7 @@ installation of Haskell libraries and programs.
 
 %prep
 %autosetup -p2
+cabal-tweak-dep-ver random '< 1.2' '< 1.3'
 
 %build
 %ghc_bin_build
