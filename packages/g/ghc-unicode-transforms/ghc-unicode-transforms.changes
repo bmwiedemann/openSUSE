@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 23 13:01:45 UTC 2021 - psimons@suse.com
+
+- Update unicode-transforms to version 0.3.8.
+  ## 0.3.8
+
+  * Allow ghc-prim 0.7
+  * Extract `unicode-data` into its own package
+  * Depend on the latest stable `text`
+
+-------------------------------------------------------------------
 Thu Apr 22 07:55:14 UTC 2021 - psimons@suse.com
 
 - Update unicode-transforms to version 0.3.7.1 revision 1.
