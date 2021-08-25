@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug  9 15:16:53 UTC 2021 - psimons@suse.com
+
+- Update rio to version 0.1.21.0.
+  ## 0.1.21.0
+
+  * Fix minor bug in `augmentPathMap` on windows wrt [#234](https://github.com/commercialhaskell/rio/issues/234) not adhering to case-insensitive semantics
+
+-------------------------------------------------------------------
 Mon Jan 25 10:07:59 UTC 2021 - psimons@suse.com
 
 - Update rio to version 0.1.20.0.
