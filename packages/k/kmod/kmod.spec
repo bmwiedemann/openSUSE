@@ -37,6 +37,7 @@ Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         usr-lib-modprobe.patch
 Patch8:         no-stylesheet-download.patch
+Patch9:         libkmod-Provide-info-even-for-modules-built-into-the.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook5-xsl-stylesheets

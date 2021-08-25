@@ -585,4 +585,12 @@
 testsuite still needs zstd command, the library can do without.</comment>
     <requestid>898019</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>ab24d438e434021ae7ec06f3a26f4f63</srcmd5>
+    <version>29</version>
+    <time>1629917758</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913049</requestid>
+  </revision>
 </revisionlist>

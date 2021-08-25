@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 18 10:55:57 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Display module information even for modules built into the running kernel
+  (bsc#1189537).
+   + libkmod-Provide-info-even-for-modules-built-into-the.patch
+
+-------------------------------------------------------------------
 Mon Jun  7 06:29:19 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Enable support for ZSTD compressed modules
