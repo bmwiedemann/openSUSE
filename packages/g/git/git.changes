@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Aug 21 07:19:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- git 2.33.0:
+  * "git send-email" learned the "--sendmail-cmd" command line option
+    and the "sendemail.sendmailCmd" configuration variable, which is a
+    more sensible approach than the current way of repurposing the
+    "smtp-server" that is meant to name the server to instead name the
+    command to talk to the server.
+  * The userdiff pattern for C# learned the token "record".
+  * "git rev-list" learns to omit the "commit <object-name>" header
+    lines from the output with the `--no-commit-header` option.
+  * "git worktree add --lock" learned to record why the worktree is
+    locked with a custom message.
+  * internal improvements including performance optimizations
+  * a number of bug fixes
+
+-------------------------------------------------------------------
 Sun Jun  6 15:30:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - git 2.32.0:
