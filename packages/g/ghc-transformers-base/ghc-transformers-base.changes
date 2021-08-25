@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug  2 09:23:01 UTC 2021 - psimons@suse.com
+
+- Update transformers-base to version 0.4.6.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Tue Jul 27 07:52:56 UTC 2021 - psimons@suse.com
+
+- Update transformers-base to version 0.4.5.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

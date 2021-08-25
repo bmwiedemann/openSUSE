@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-transformers-base
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name transformers-base
 Name:           ghc-%{pkg_name}
-Version:        0.4.5.2
+Version:        0.4.6
 Release:        0
 Summary:        Lift computations from the bottom of a transformer stack
 License:        BSD-3-Clause
