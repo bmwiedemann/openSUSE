@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 13 09:51:00 UTC 2021 - psimons@suse.com
+
+- Update xmobar to version 0.39.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/xmobar-0.39/src/changelog.md
+
+-------------------------------------------------------------------
 Wed May 19 10:10:27 UTC 2021 - psimons@suse.com
 
 - Update xmobar to version 0.38.
