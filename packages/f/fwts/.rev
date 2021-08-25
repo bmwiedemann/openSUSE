@@ -729,4 +729,21 @@
   * acpi: acpitables: add advices for table revision tests</comment>
     <requestid>910088</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ab9c38bb19a75ecd2f14d6f36599b586</srcmd5>
+    <version>21.08.00</version>
+    <time>1629917908</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 21.08.00:
+  * lib: fwts_version.h - update to V21.08.00
+  * debian: update changelog
+  * ARM64 SMCCC firmware API tests
+  * bios: smm: fix indentation
+  * acpi: sbbr: refactor by fwts_get_fadt_version
+  * lib: fwts_acpi_tables: add a function to get FADT versions
+  * acpi: fadt: remove hard-coded FADT version
+  * acpi: fadt: clarify comments of FACS and HW-reduced mode
+  * acpi: dmar: add a warning when PCI device is not found</comment>
+    <requestid>914215</requestid>
+  </revision>
 </revisionlist>
