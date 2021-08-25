@@ -1,6 +1,6 @@
 name:           tagged
 version:        0.8.6.1
-x-revision: 1
+x-revision: 2
 license:        BSD3
 license-file:   LICENSE
 author:         Edward A. Kmett
@@ -81,7 +81,7 @@ library
     build-depends: deepseq >= 1.1 && < 1.5
 
   if flag(transformers)
-    build-depends: transformers        >= 0.2 && < 0.6
+    build-depends: transformers        >= 0.2 && < 0.7
 
     -- Ensure Data.Functor.Classes is always available
     if impl(ghc >= 7.10) || impl(ghcjs)
