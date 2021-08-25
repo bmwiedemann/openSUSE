@@ -187,4 +187,12 @@ A 'Category' is any 'Semigroupoid' for which the Yoneda lemma holds.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>862329</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b082ca18f107c1cf6fd0c10bbe6ca72c</srcmd5>
+    <version>5.3.5</version>
+    <time>1629917827</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912628</requestid>
+  </revision>
 </revisionlist>
