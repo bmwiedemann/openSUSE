@@ -19,7 +19,7 @@
 %global pkg_name hledger-lib
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.21
+Version:        1.22.2
 Release:        0
 Summary:        A reusable library providing the core functionality of hledger
 License:        GPL-3.0-or-later

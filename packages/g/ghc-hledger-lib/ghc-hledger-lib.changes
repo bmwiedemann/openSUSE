@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Aug  8 22:05:02 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22.2.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.22.2/src/CHANGES.md
+
+-------------------------------------------------------------------
+Wed Aug  4 08:16:06 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22.1.
+  Upstream's change log file format is strange (too much unmodified
+  text at at the top). The automatic updater cannot extract the
+  relevant additions. You can find the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.22.1/src/CHANGES.md
+
+-------------------------------------------------------------------
+Mon Jul 19 07:06:12 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jul 10 13:42:17 UTC 2021 - psimons@suse.com
+
+- Update hledger-lib to version 1.22.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hledger-lib-1.22/src/CHANGES.md
+
+-------------------------------------------------------------------
 Thu Mar 11 08:23:02 UTC 2021 - psimons@suse.com
 
 - Update hledger-lib to version 1.21.
