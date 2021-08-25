@@ -19,7 +19,7 @@
 %global pkg_name hledger
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        1.21
+Version:        1.22.2
 Release:        0
 Summary:        Command-line interface for the hledger accounting system
 License:        GPL-3.0-or-later
@@ -39,6 +39,7 @@ BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-extra-devel
 BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-githash-devel
 BuildRequires:  ghc-hashable-devel
 BuildRequires:  ghc-haskeline-devel
 BuildRequires:  ghc-hledger-lib-devel
