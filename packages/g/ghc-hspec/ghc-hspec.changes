@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 13 09:52:18 UTC 2021 - psimons@suse.com
+
+- Update hspec to version 2.8.3.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hspec-2.8.3/src/CHANGES.markdown
+
+-------------------------------------------------------------------
 Sat May 15 15:57:09 UTC 2021 - psimons@suse.com
 
 - Update hspec to version 2.8.2.
