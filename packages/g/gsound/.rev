@@ -45,4 +45,16 @@ No matter what the .changes say, libcanberra is still needed ref configure
 </comment>
     <requestid>678972</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c068cadbf268a894e2060acae50d705</srcmd5>
+    <version>1.0.3</version>
+    <time>1629917783</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.3:
+  + No upstream changes provided, please check upstream git log.
+- Drop gsound-gsound-play-Call-setlocale.patch: Fixed upstream.
+- Add gtk-doc and meson BuildRequires and macros following
+  upstreams port. (forwarded request 913042 from iznogood)</comment>
+    <requestid>913699</requestid>
+  </revision>
 </revisionlist>

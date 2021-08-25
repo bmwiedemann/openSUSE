@@ -1,7 +1,7 @@
 #
 # spec file for package gsound
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2014 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,16 +20,16 @@
 %define soname lib%{name}0
 
 Name:           gsound
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        A library for playing system sounds
 License:        LGPL-2.1-only
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/GSound
 Source0:        https://download.gnome.org/sources/gsound/1.0/gsound-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM gsound-gsound-play-Call-setlocale.patch -- gsound-play: Call setlocale in main function
-Patch0:         gsound-gsound-play-Call-setlocale.patch
 
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(libcanberra)
@@ -78,15 +78,13 @@ applications with gsound.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--enable-vala \
+%meson \
+	-Dgtk_doc=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post -n %{soname} -p /sbin/ldconfig
 %postun -n %{soname} -p /sbin/ldconfig
@@ -94,6 +92,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %doc ChangeLog README
 %{_bindir}/gsound-play
+%{_mandir}/man1/gsound-play.1%{ext_man}
 
 %files -n %{soname}
 %license COPYING
@@ -101,7 +100,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %{_datadir}/gir-1.0/GSound-1.0.gir
-%{_datadir}/gtk-doc/html/gsound/
+%{_datadir}/gtk-doc/html/gsound-%{version}/
 %{_datadir}/vala/vapi/gsound.deps
 %{_datadir}/vala/vapi/gsound.vapi
 %{_includedir}/gsound.h
