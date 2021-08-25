@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 21 16:26:33 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Revert building with EGL support, as it breaks mutliple apps
+  (boo#1189524).
+
+-------------------------------------------------------------------
 Sat Jul 31 21:16:00 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Build with EGL support now that wxWidgets does so (since version

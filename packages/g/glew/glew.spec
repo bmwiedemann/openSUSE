@@ -76,10 +76,10 @@ functionality is exposed in a single header file.
 %autosetup
 
 %build
-%make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} SYSTEM=linux-egl LDFLAGS.EXTRA= STRIP=
+%make_build POPT="%{optflags} -fPIE -pie" GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} LDFLAGS.EXTRA= STRIP=
 
 %install
-make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} SYSTEM=linux-egl LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
+make DESTDIR=%{buildroot} GLEW_DEST=%{_prefix} LIBDIR=%{_libdir} PKGDIR=%{_libdir}/pkgconfig install.all
 chmod +x %{buildroot}%{_libdir}/*.so.*
 rm %{buildroot}%{_libdir}/*.a
 
