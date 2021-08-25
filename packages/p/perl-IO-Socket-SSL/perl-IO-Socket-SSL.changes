@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 17 03:06:30 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.072
+   see /usr/share/doc/packages/perl-IO-Socket-SSL/Changes
+
+  2.072
+  - add PEM_certs2file and PEM_file2certs in IO::Socket::SSL::Utils based
+    on idea by rovo89 in #101
+  - certs/*.p12 used for testing should now work with OpenSSL 3.0 too #108
+  - update public suffix database
+
+-------------------------------------------------------------------
 Mon May 24 03:07:25 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.071
