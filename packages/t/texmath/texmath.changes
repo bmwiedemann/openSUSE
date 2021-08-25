@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:24:01 UTC 2021 - psimons@suse.com
+
+- Update texmath to version 0.12.3.1.
+  texmath (0.12.3.1)
+
+    * MathML reader: don't allow mfenced attributes to inherit (#177).
+      When open and close attributes aren't given on an mfenced,
+      we should use defaults rather than inheriting these from a
+      parent mfenced.
+
+-------------------------------------------------------------------
 Thu May 13 08:27:48 UTC 2021 - psimons@suse.com
 
 - Update texmath to version 0.12.3.
