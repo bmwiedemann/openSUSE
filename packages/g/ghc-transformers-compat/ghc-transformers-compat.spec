@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-transformers-compat
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name transformers-compat
 Name:           ghc-%{pkg_name}
-Version:        0.6.6
+Version:        0.7
 Release:        0
 Summary:        A small compatibility shim for the transformers library
 License:        BSD-3-Clause

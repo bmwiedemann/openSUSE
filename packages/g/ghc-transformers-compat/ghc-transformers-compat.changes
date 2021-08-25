@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 27 07:52:46 UTC 2021 - psimons@suse.com
+
+- Update transformers-compat to version 0.7.
+  0.7 [2021.07.25]
+  ----------------
+  * Backport changes from `transformers-0.6.*`:
+    * Remove the long-deprecated `selectToCont` function from
+      `Control.Monad.Trans.Select`.
+    * Backport various `Generic`, `Generic1`, and `Data` instances.
+    * Backport `handleE`, `tryE`, and `finallyE` to `Control.Monad.Trans.Except`.
+    * Backport explicit implementations of `(<$)`, `liftA2`, `(*>)`, and `(<*)`
+      for `Control.Applicative.Backwards`.
+    * Backport a lazier implementation of `(<*>)` for `Control.Applicative.Lift`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
