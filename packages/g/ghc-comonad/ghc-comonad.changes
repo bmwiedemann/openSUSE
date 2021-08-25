@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug  4 08:16:12 UTC 2021 - psimons@suse.com
+
+- Update comonad to version 5.0.8 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Dec 30 17:52:56 UTC 2020 - psimons@suse.com
 
 - Update comonad to version 5.0.8.
