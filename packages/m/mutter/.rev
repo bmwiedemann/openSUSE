@@ -1451,4 +1451,16 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
     <comment>Synchronize the changelog with SLE and Leap. (forwarded request 909374 from yfjiang)</comment>
     <requestid>909729</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>ddc1787aafee6a8d7ad1a06d2a9aa22e</srcmd5>
+    <version>40.4</version>
+    <time>1629917780</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.4:
+  + Don't require a newly attached buffer to apply state.
+  + Fix upside-down Xshape surface with EGLstream.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 912941 from iznogood)</comment>
+    <requestid>913695</requestid>
+  </revision>
 </revisionlist>

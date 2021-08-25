@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 18 17:30:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.4:
+  + Don't require a newly attached buffer to apply state.
+  + Fix upside-down Xshape surface with EGLstream.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Jul 29 02:04:20 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Synchronize changelog between SLE, Leap and Factory.
