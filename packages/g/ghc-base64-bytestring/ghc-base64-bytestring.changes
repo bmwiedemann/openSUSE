@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 13 09:51:57 UTC 2021 - psimons@suse.com
+
+- Update base64-bytestring to version 1.2.1.0.
+  # 1.2.1.0
+
+  * Bugfix for GHC 9.0.1 memory corruption bug ([#46](https://github.com/haskell/base64-bytestring/pull/46))
+    * Thanks to [Fraser Tweedale](https://github.com/frasertweedale) and [Andrew Lelechenko](https://github.com/bodigrim) for logging and helping with this fix.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
