@@ -1013,4 +1013,12 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
 - Fix unit tests</comment>
     <requestid>823017</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>1bb32f232520ce1c7abe0e3b7d3d24bd</srcmd5>
+    <version>20210811T224256.f313711</version>
+    <time>1629917758</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>912957</requestid>
+  </revision>
 </revisionlist>
