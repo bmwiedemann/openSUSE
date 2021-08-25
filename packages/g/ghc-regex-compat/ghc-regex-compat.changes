@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 13 09:50:35 UTC 2021 - psimons@suse.com
+
+- Update regex-compat to version 0.95.2.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Feb 21 12:47:52 UTC 2021 - psimons@suse.com
 
 - Update regex-compat to version 0.95.2.1.
