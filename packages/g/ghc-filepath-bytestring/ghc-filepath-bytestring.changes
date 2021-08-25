@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 12 08:09:40 UTC 2021 - psimons@suse.com
+
+- Update filepath-bytestring to version 1.4.2.1.8.
+  filepath-bytestring (1.4.2.1.8) unstable; urgency=medium
+
+    * Faster implementations of encodeFilePath and decodeFilePath.
+      They are approximately 2x and 3x as fast, respectively.
+    * encodeFilePath and decodeFilePath used to truncate at the first
+      NUL. The new implementations do not do this. Since unix filepaths
+      cannot contain NUL, this behavior change is can't cause any problems,
+      unless the functions are used for values that are not actually
+      valid filepaths.
+    * Support cabal bench to benchmark the library.
+
+   -- Joey Hess <id@joeyh.name>  Wed, 11 Aug 2021 12:17:15 -0400
+
+-------------------------------------------------------------------
 Thu Mar 18 10:48:54 UTC 2021 - psimons@suse.com
 
 - Update filepath-bytestring to version 1.4.2.1.7.

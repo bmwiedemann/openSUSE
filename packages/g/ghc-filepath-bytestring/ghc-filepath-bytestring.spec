@@ -19,7 +19,7 @@
 %global pkg_name filepath-bytestring
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.2.1.7
+Version:        1.4.2.1.8
 Release:        0
 Summary:        Library for manipulating RawFilePaths in a cross platform way
 License:        BSD-3-Clause
