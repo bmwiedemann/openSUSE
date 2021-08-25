@@ -15,4 +15,12 @@
     <comment>update haskell stack in openSUS</comment>
     <requestid>857571</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>4ef2cfdf5174bfbcb1b4026ccef6955c</srcmd5>
+    <version>0.2.3.0</version>
+    <time>1629917862</time>
+    <user>dimstar_suse</user>
+    <comment>- relax constraints on transformers-compat</comment>
+    <requestid>912786</requestid>
+  </revision>
 </revisionlist>
