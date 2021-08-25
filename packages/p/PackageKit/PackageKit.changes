@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 20 01:31:50 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-fix-crash-with-empty-search-string.patch:
+  zypp: Fix crash when search string is NULL (bsc#1179287,
+  gh#hughsie/PackageKit/commit#21ccf49).
+
+-------------------------------------------------------------------
 Thu Jul 29 12:47:53 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop upstream merged patches on SLE and Leap 15.4:

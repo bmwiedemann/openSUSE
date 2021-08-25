@@ -66,6 +66,8 @@ Patch9:         PackageKit-remove-transaction-size-limit.patch
 Patch10:        PackageKit-cancel-transaction-if-daemon-disappears.patch
 # PATCH-FIX-UPSTREAM PackageKit-dnf-ignore-weak-deps.patch gh#dfaggioli/PackageKit#486 gh#Conan-Kudo/PackageKit#488 gh#Conan-Kudo/PackageKit/commit/#ecd4a96  -- dnf-backend: honor install_weak_deps=False if it is there
 Patch11:        PackageKit-dnf-ignore-weak-deps.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-fix-crash-with-empty-search-string.patch gh#hughsie/PackageKit/commit#21ccf49, bsc#1179287 sckang@suse.com -- zypp: Fix crash when search string is NULL
+Patch12:        PackageKit-zypp-fix-crash-with-empty-search-string.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
