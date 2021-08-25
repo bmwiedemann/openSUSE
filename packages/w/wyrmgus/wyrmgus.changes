@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 23 16:42:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.1
+  * Update to SDL2
+  * Bugfixes
+- Drop patches (not longer needed):
+  * 0001-Fix-to-Clang-compilation-issue-in-video.h.patch
+  * 0002-Removed-some-no-longer-used-SDL-code.patch
+
+-------------------------------------------------------------------
 Sat Aug 21 15:27:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.0.0

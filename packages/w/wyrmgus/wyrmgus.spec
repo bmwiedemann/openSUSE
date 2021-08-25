@@ -17,15 +17,13 @@
 
 
 Name:           wyrmgus
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Game engine for Wyrmsun
 License:        GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmgus/archive/v%{version}/Wyrmgus-%{version}.tar.gz
-Patch0:         0001-Fix-to-Clang-compilation-issue-in-video.h.patch
-Patch1:         0002-Removed-some-no-longer-used-SDL-code.patch
 BuildRequires:  boost-devel >= 1.69.0
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -40,10 +38,10 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(SDL_mixer)
+BuildRequires:  pkgconfig(SDL2_mixer)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(physfs)
-BuildRequires:  pkgconfig(sdl)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sqlite3)
 %if 0%{?suse_version} <= 1320
 BuildRequires:  pkgconfig(tolua++)
@@ -64,8 +62,6 @@ These are the development files for Wyrmsun which is based on the Stratagus engi
 
 %prep
 %setup -q -n Wyrmgus-%{version}
-%patch0 -p1
-%patch1 -p1
 
 %build
 %cmake \
