@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Aug 25 05:22:31 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 2.1.1
+
+  Friday 13th-release!
+
+  Careful! The bugfix below (#626) could break existing code. If you rely on the
+  return value for `authorize` and namespaced policies you might need to do some
+  changes.
+
+  ### Fixed
+
+  - `.authorize` and `#authorize` return the instance, even for namespaced
+    policies (#626)
+
+  ### Changed
+
+  - Generate application scope with `protected` attr_readers. (#616)
+
+  ### Removed
+
+  - Dropped support for Ruby end-of-life versions: 2.1 and 2.2. (#604)
+  - Dropped support for Ruby end-of-life versions: 2.3 (#633)
+  - Dropped support for Ruby end-of-life versions: 2.4, 2.5 and JRuby 9.1 (#676)
+  - Dropped support for RSpec 2 (#615)
+
+-------------------------------------------------------------------
 Thu Aug 15 13:31:57 UTC 2019 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.1.0
