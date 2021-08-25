@@ -19,7 +19,7 @@
 %global pkg_name pandoc
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        2.14.0.3
+Version:        2.14.1
 Release:        0
 Summary:        Conversion between markup formats
 License:        GPL-2.0-or-later
@@ -155,6 +155,7 @@ This package provides the Haskell %{name} library development files.
 %ghc_fix_rpath %{pkg_name}-%{version}
 # Link duplicate template files
 %fdupes %{buildroot}%{_datadir}/%{pkg_name}-%{version}/data/templates/
+install -D -m 644 man/%{name}.1 %buildroot/%_mandir/man1/%name.1
 
 %check
 %cabal_test
@@ -168,6 +169,7 @@ This package provides the Haskell %{name} library development files.
 %files
 %license COPYING.md
 %doc AUTHORS.md README.md changelog.md
+%_mandir/man1/%name.1%{?ext_man}
 %{_bindir}/%{name}
 %dir %{_datadir}/%{name}-%{version}
 %dir %{_datadir}/%{name}-%{version}/citeproc
