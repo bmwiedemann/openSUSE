@@ -19,7 +19,7 @@
 %global pkg_name foldl
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.4.11
+Version:        1.4.12
 Release:        0
 Summary:        Composable, streaming, and efficient left folds
 License:        BSD-3-Clause
@@ -31,9 +31,9 @@ BuildRequires:  ghc-comonad-devel
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-contravariant-devel
 BuildRequires:  ghc-hashable-devel
-BuildRequires:  ghc-mwc-random-devel
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-profunctors-devel
+BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-semigroupoids-devel
 BuildRequires:  ghc-text-devel

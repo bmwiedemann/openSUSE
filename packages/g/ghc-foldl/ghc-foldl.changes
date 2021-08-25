@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 10 13:40:23 UTC 2021 - psimons@suse.com
+
+- Update foldl to version 1.4.12.
+  1.4.12
+
+  * `Data.Functor.Extend.Extended` instances for `Fold` / `FoldM`
+  * Remove dependency on `mwc-random`
+
+-------------------------------------------------------------------
 Thu Feb 25 23:48:33 UTC 2021 - psimons@suse.com
 
 - Update foldl to version 1.4.11.
