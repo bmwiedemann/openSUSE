@@ -1,16 +1,15 @@
-From 9d38291824497beb433020bd3b58855816936024 Mon Sep 17 00:00:00 2001
+From e2a3f7df916a4959d126e0c34b8f70b1e23de41a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Dan=20=C4=8Cerm=C3=A1k?= <dcermak@suse.com>
 Date: Wed, 2 Sep 2020 13:47:59 +0200
 Subject: [PATCH 4/8] Add additional includes for aarch64
 
 ---
  src/cpp/core/HtmlUtils.cpp          | 1 +
- src/cpp/core/file_lock/FileLock.cpp | 1 +
  src/cpp/r/session/RStdCallbacks.cpp | 1 +
- 3 files changed, 3 insertions(+)
+ 2 files changed, 2 insertions(+)
 
 diff --git a/src/cpp/core/HtmlUtils.cpp b/src/cpp/core/HtmlUtils.cpp
-index 73de8eebbf..47ba6178f4 100644
+index ca0adb40de..8b083f461f 100644
 --- a/src/cpp/core/HtmlUtils.cpp
 +++ b/src/cpp/core/HtmlUtils.cpp
 @@ -18,6 +18,7 @@
@@ -19,22 +18,10 @@ index 73de8eebbf..47ba6178f4 100644
  #include <boost/format.hpp>
 +#include <boost/bind.hpp>
  #include <boost/algorithm/string/predicate.hpp>
+ #include <boost/bind/bind.hpp>
  
- #include <core/Base64.hpp>
-diff --git a/src/cpp/core/file_lock/FileLock.cpp b/src/cpp/core/file_lock/FileLock.cpp
-index e68d4b0441..714db65629 100644
---- a/src/cpp/core/file_lock/FileLock.cpp
-+++ b/src/cpp/core/file_lock/FileLock.cpp
-@@ -27,6 +27,7 @@
- #include <core/system/Xdg.hpp>
- 
- #include <boost/algorithm/string.hpp>
-+#include <boost/bind.hpp>
- 
- // borrowed from SessionConstants.hpp
- #define kRStudioSessionRoute "RSTUDIO_SESSION_ROUTE"
 diff --git a/src/cpp/r/session/RStdCallbacks.cpp b/src/cpp/r/session/RStdCallbacks.cpp
-index 214349b0c6..a4e174f1f1 100644
+index f461632102..937ffcc471 100644
 --- a/src/cpp/r/session/RStdCallbacks.cpp
 +++ b/src/cpp/r/session/RStdCallbacks.cpp
 @@ -19,6 +19,7 @@
@@ -44,7 +31,7 @@ index 214349b0c6..a4e174f1f1 100644
 +#include <boost/bind.hpp>
  #include <boost/function.hpp>
  #include <boost/regex.hpp>
- 
+ #include <boost/bind/bind.hpp>
 -- 
-2.30.2
+2.31.1
 

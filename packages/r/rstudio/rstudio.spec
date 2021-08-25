@@ -80,8 +80,6 @@
 %global bundled_fast_text_encoding_version 1.0.2
 # - elemental2                               => bundled in ./src/gwt/lib/elemental2, version v1.0, license is Apache-2.0
 %global bundled_elemental2_version    1.0.0
-# - core.js                                  => bundled in ./src/gwt/www/js/core-js/, version 3.6.4, license is MIT
-%global bundled_core_js_version       3.6.4
 # - junit                                    => bundled in ./src/gwt/lib/junit-4.9b3.jar, version 3.9b3, license is Eclipse Public License 1.0 (EPL-1.0), but used for testing only
 
 # the new (with 1.4) bundled markdown editor
@@ -90,25 +88,25 @@
 # missing from NOTICE:
 # - Google Closure Compiler                  => bundled in ./src/gwt/tools/compiler/ but AFAIK only used for building, version is "compiler-latest.zip as of July 9, 2019", license is Apache-2.0 with bundled dependencies under (NPL-1.1 AND (MPL-1.1 OR GPL-2.0-or-later)) AND MIT AND CPL-1.0 AND BSD-3-Clause AND Apache-2.0
 
-# override upstream's choice for the boost version on Leap,
-# but not on Tumbleweed
-%if 0%{?sle_version}
+# override upstream's choice for the boost version on Leap 15.2,
+# but not on Tumbleweed and Leap >= 15.3
+%if 0%{?sle_version} == 150200
 %global rstudio_boost_requested_version 1.66
 %endif
 %define boost_version %{?rstudio_boost_requested_version}%{?!rstudio_boost_requested_version:1.69}
 
 %global rstudio_version_major 1
 %global rstudio_version_minor 4
-%global rstudio_version_patch 1106
+%global rstudio_version_patch 1717
 # commit of the tag belonging to %%{version}
-%global rstudio_git_revision_hash 2389bc246c7946a8eb2f1a14e5a822bd5f6e1159
+%global rstudio_git_revision_hash df86b69ebdf62f1a9ed51af59c168572677541f1
 Name:           rstudio
 Version:        %{rstudio_version_major}.%{rstudio_version_minor}.%{rstudio_version_patch}
 Release:        0
 Summary:        RStudio base package
 # AGPLv3:             RStudio, icomoon glyphs
 # Apache-2.0:         gwt, gwt-websockets, gin, guice, pdf.js, fast-text-encoding, inert-polyfill.js, elemental2
-# MIT:                rsa.js/jsbn, synctex, datatables, jquery, reveal.js, qunit.js, xterm.js, guidelines-support-library-lite, rapidjson, core.js
+# MIT:                rsa.js/jsbn, synctex, datatables, jquery, reveal.js, qunit.js, xterm.js, guidelines-support-library-lite, rapidjson
 # BSD-3-Clause        qtsingleapplication, ace, highlight.js, msinttypes
 # W3C (2015):         focus-visible.js
 # BSL or MIT:         rapidxml
@@ -163,17 +161,17 @@ BuildRequires:  glibc-devel
 # for dir ownership of /usr/share/icons/hicolor/*
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  java
-BuildRequires:  libboost_atomic-devel          >= %{boost_version}
-BuildRequires:  libboost_chrono-devel          >= %{boost_version}
-BuildRequires:  libboost_date_time-devel       >= %{boost_version}
-BuildRequires:  libboost_filesystem-devel      >= %{boost_version}
-BuildRequires:  libboost_headers-devel         >= %{boost_version}
-BuildRequires:  libboost_iostreams-devel       >= %{boost_version}
-BuildRequires:  libboost_program_options-devel >= %{boost_version}
-BuildRequires:  libboost_random-devel          >= %{boost_version}
-BuildRequires:  libboost_regex-devel           >= %{boost_version}
-BuildRequires:  libboost_system-devel          >= %{boost_version}
-BuildRequires:  libboost_thread-devel          >= %{boost_version}
+BuildRequires:  libboost_atomic-devel-impl          >= %{boost_version}
+BuildRequires:  libboost_chrono-devel-impl          >= %{boost_version}
+BuildRequires:  libboost_date_time-devel-impl       >= %{boost_version}
+BuildRequires:  libboost_filesystem-devel-impl      >= %{boost_version}
+BuildRequires:  libboost_headers-devel-impl         >= %{boost_version}
+BuildRequires:  libboost_iostreams-devel-impl       >= %{boost_version}
+BuildRequires:  libboost_program_options-devel-impl >= %{boost_version}
+BuildRequires:  libboost_random-devel-impl          >= %{boost_version}
+BuildRequires:  libboost_regex-devel-impl           >= %{boost_version}
+BuildRequires:  libboost_system-devel-impl          >= %{boost_version}
+BuildRequires:  libboost_thread-devel-impl          >= %{boost_version}
 BuildRequires:  libqt5-qtbase-devel
 BuildRequires:  make
 BuildRequires:  mathjax
@@ -186,6 +184,7 @@ BuildRequires:  soci-sqlite3-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
+BuildRequires:  cmake(yaml-cpp)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -290,7 +289,14 @@ on a server has a number of benefits, including:
 %autosetup -p1
 %else
 %autosetup -N
-%autopatch -p1 -M 6
+# autopatch is broken in Leap 15.3… (boo#1189495)
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
 %endif
 
 tar -xf %{SOURCE2}
@@ -334,6 +340,7 @@ export GIT_COMMIT=%{rstudio_git_revision_hash}
     -DRSTUDIO_USE_SYSTEM_BOOST=TRUE                                                 \
     -DRSTUDIO_USE_SYSTEM_SOCI=TRUE                                                  \
     -DRSTUDIO_BOOST_SIGNALS_VERSION=2                                               \
+    -DRSTUDIO_USE_SYSTEM_YAML_CPP=TRUE                                              \
     -DBOOST_ROOT=%{_prefix} -DBOOST_LIBRARYDIR=%{_lib}                              \
     %{?rstudio_boost_requested_version:-DRSTUDIO_BOOST_REQUESTED_VERSION=%{rstudio_boost_requested_version}} \
     -DQT_QMAKE_EXECUTABLE=%{_bindir}/qmake-qt5

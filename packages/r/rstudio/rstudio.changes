@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Aug 19 13:45:49 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release v1.4.1717
+
+Rebase patches:
+* 0001-Unbundle-mathjax-and-pandoc.patch
+* 0002-Don-t-install-pandoc-and-mathjax.patch
+* 0003-Fix-rstudio-exec-path.patch
+* 0004-add-support-for-boost-1.73.patch
+* 0005-Add-additional-includes-for-aarch64.patch
+* 0006-Use-system-hunspell.patch
+* 0007-Fix-libclang-usage.patch
+* 0008-Add-support-for-RapidJSON-1.1.0-in-Leap-15.2.patch
+
+-------------------------------------------------------------------
 Tue Apr  6 10:09:27 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 New upstream release v1.4.1106

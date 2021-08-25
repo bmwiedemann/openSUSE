@@ -1,4 +1,4 @@
-From e3bde2087456926b429262253889b8593b4fdc9e Mon Sep 17 00:00:00 2001
+From e93996837bceb3bdae376332be5aca964a2737ff Mon Sep 17 00:00:00 2001
 From: Aaron Puchert <aaronpuchert@alice-dsl.net>
 Date: Mon, 7 Sep 2020 11:12:26 +0200
 Subject: [PATCH 6/8] Fix libclang usage
@@ -56,5 +56,5 @@ index 1186f3a55a..db80fec800 100644
     for (const char* prefix : {"/usr/lib", "/usr/lib64"})
     {
 -- 
-2.30.2
+2.31.1
 

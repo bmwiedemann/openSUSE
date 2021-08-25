@@ -1,4 +1,4 @@
-From 0dd9edcdceb1c673e1c96fe54223d03b31f2495a Mon Sep 17 00:00:00 2001
+From 31a42867cabd2680fb3a198d25a1d1d81d046459 Mon Sep 17 00:00:00 2001
 From: Adam Majer <adam.majer@suse.de>
 Date: Thu, 10 Sep 2020 14:56:17 +0200
 Subject: [PATCH 8/8] Add support for RapidJSON 1.1.0 in Leap 15.2
@@ -30,5 +30,5 @@ index a7a3521e4f..9ad01ce8dc 100644
  
  void Value::writeFormatted(std::ostream& os) const
 -- 
-2.30.2
+2.31.1
 

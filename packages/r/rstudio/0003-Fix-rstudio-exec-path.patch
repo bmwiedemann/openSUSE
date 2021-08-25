@@ -1,4 +1,4 @@
-From dec32816aee440573ade653d3b7de9bb606e1da6 Mon Sep 17 00:00:00 2001
+From 8754e2f6b8b46ca57fc3c446c8da48b55a49ceec Mon Sep 17 00:00:00 2001
 From: Marco Varlese <marco.varlese@suse.com>
 Date: Mon, 27 Jan 2020 14:29:40 +0100
 Subject: [PATCH 3/8] Fix rstudio exec path
@@ -20,5 +20,5 @@ index ddd96ad34b..99b207ba7c 100644
  Type=Application
  Terminal=false
 -- 
-2.30.2
+2.31.1
 

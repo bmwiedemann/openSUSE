@@ -1,4 +1,4 @@
-From 548e39fa5b7b117b20d4283d49f0be523c94b378 Mon Sep 17 00:00:00 2001
+From 8baa44c18668f4af96fc0838ac66c745a0d14c0b Mon Sep 17 00:00:00 2001
 From: Aaron Puchert <aaronpuchert@alice-dsl.net>
 Date: Mon, 7 Sep 2020 11:09:01 +0200
 Subject: [PATCH 5/8] Use system hunspell
@@ -9,7 +9,7 @@ Subject: [PATCH 5/8] Use system hunspell
  2 files changed, 8 insertions(+), 5 deletions(-)
 
 diff --git a/src/cpp/core/CMakeLists.txt b/src/cpp/core/CMakeLists.txt
-index 40a889b5ea..166df01af2 100644
+index 06303de4aa..377c377721 100644
 --- a/src/cpp/core/CMakeLists.txt
 +++ b/src/cpp/core/CMakeLists.txt
 @@ -15,7 +15,11 @@
@@ -45,5 +45,5 @@ index 861417db6e..60763c5fc1 100644
        return Success();
     }
 -- 
-2.30.2
+2.31.1
 
