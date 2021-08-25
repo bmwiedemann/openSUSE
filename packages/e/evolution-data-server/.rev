@@ -1949,4 +1949,12 @@ Please do NOT put in Staging E - but different staging prj. This is against 3.12
     <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909265 from yfjiang)</comment>
     <requestid>909321</requestid>
   </revision>
+  <revision rev="228" vrev="1">
+    <srcmd5>a7431e5f54d54f51506ffcde47045b24</srcmd5>
+    <version>3.40.4</version>
+    <time>1629917772</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 912014 from iznogood)</comment>
+    <requestid>913682</requestid>
+  </revision>
 </revisionlist>
