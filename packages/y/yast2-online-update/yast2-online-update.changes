@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 23 12:53:57 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Improved openSUSE/SLE detection (bsc#1184243)
+- Improved detecting the update repositories, check the "is_update_repo"
+  repository flag
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
