@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 18 13:23:34 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix regression in last update (bsc#1189465)
+  * fix-CVE-2021-38185_2.patch
+  * fix-CVE-2021-38185_3.patch
+
+-------------------------------------------------------------------
+Mon Aug  9 14:01:51 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Fix CVE-2021-38185 Remote code execution caused by an integer overflow in ds_fgetstr
+  (CVE-2021-38185, bsc#1189206)
+  * fix-CVE-2021-38185.patch
+
+-------------------------------------------------------------------
 Fri Oct 16 08:49:00 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 
 - prepare usrmerge (boo#1029961)

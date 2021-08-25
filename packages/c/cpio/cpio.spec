@@ -1,7 +1,7 @@
 #
 # spec file for package cpio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,11 @@ Patch23:        paxutils-rtapelib_mtget.patch
 # see https://lists.gnu.org/archive/html/bug-cpio/2019-11/msg00016.html
 Patch24:        cpio-revert-CVE-2015-1197-fix.patch
 Patch25:        cpio-fix_truncation_check.patch
+# PATCH-FIX-UPSTREAM danilo.spinella@suse.com bsc#1189206
+# Remote code execution caused by an integer overflow in ds_fgetstr
+Patch26:        fix-CVE-2021-38185.patch
+Patch27:        fix-CVE-2021-38185_2.patch
+Patch28:        fix-CVE-2021-38185_3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 #Requires(post): %{xinstall_info_prereq}
@@ -62,7 +67,7 @@ Summary:        Tape drive control utility
 Group:          Productivity/Archiving/Backup
 Requires:       %{name} = %{version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       mt
 
 %description mt
@@ -84,6 +89,9 @@ This package includes the 'mt', a local tape drive control program.
 %patch23 -p1
 %patch24 -p1
 %patch25 -p1
+%patch26 -p1
+%patch27 -p1
+%patch28 -p1
 
 %build
 gettextize -f --no-changelog
