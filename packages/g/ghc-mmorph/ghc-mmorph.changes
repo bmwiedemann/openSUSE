@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:41:11 UTC 2021 - psimons@suse.com
+
+- Update mmorph to version 1.2.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Mon Jul 19 07:06:04 UTC 2021 - psimons@suse.com
+
+- Update mmorph to version 1.2.0.
+  1.2.0
+
+  * BREAKING CHANGE: Remove instances for `ErrorT` and `ListT`
+    * These types are deprecated
+
+-------------------------------------------------------------------
 Tue Mar  2 09:34:20 UTC 2021 - psimons@suse.com
 
 - Update mmorph to version 1.1.5 revision 1.
