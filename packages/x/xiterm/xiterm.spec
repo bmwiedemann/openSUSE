@@ -1,7 +1,7 @@
 #
 # spec file for package xiterm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 %define	appdefdir  %{_datadir}/X11
-%define xincludes  %{_prefix}/include
+%define xincludes  %{_includedir}
 %define xlibraries %{_prefix}/%{_lib}
 Name:           xiterm
 Version:        0.5.20040304
@@ -149,9 +149,9 @@ Header files and development libraries for libXiterm
 %patch11 -p1
 %patch12 -p1
 %patch13 -p1
-find . -name CVS -type d | xargs rm -rf
-find . -name .cvsignore -type f | xargs rm -f
-find . -type f | xargs chmod u+w
+find . -name CVS -type d -exec rm -rf {} +
+find . -name .cvsignore -type f -delete
+find . -type f -exec chmod u+w {} +
 for i in INSTALL* README*
 do
    mv $i $i.framework
@@ -161,50 +161,42 @@ done
 export CFLAGS="%{optflags}"
 pushd lib
     autoreconf --force --install
-%configure --with-pic --disable-static --x-includes=%{xincludes} \
+%configure --disable-static --x-includes=%{xincludes} \
 		--x-libraries=%{xlibraries} \
 		--with-utempter \
 		--enable-fribidi
-make %{?_smp_mflags}
+%make_build
 popd
 pushd unix/Xaw/lib
     autoreconf --force --install
-%configure --with-pic --disable-static --x-includes=%{xincludes} \
+%configure --disable-static --x-includes=%{xincludes} \
 		--x-libraries=%{xlibraries}
-    make %{?_smp_mflags} 'INCLUDES=-I../../../lib/include -I../lib'
+    %make_build INCLUDES="-I../../../lib/include -I../lib"
 popd
 pushd unix/Xaw/src
 autoreconf --force --install
-%configure --with-pic --disable-static --x-includes=%{xincludes} \
+%configure --disable-static --x-includes=%{xincludes} \
 		--x-libraries=%{xlibraries}
-    make %{?_smp_mflags} 'INCLUDES=-I../../../lib/include -I../lib' 'LDFLAGS=-L../../../lib/src/.libs -L../lib/.libs'
+    %make_build INCLUDES="-I../../../lib/include -I../lib" LDFLAGS="-L../../../lib/src/.libs -L../lib/.libs"
 popd
 pushd unix/fbiterm
     autoreconf --force --install
     export LIBS="-lfreetype -lm"
-%configure --with-pic --disable-static \
+%configure --disable-static \
 		--x-includes=%{xincludes} \
 		--x-libraries=%{xlibraries}
-    make %{?_smp_mflags} 'INCLUDES=-I../../../lib/include' \
+    %make_build INCLUDES="-I../../../lib/include" \
          'LDFLAGS=-L../../../lib/src/.libs'
 popd
 pushd unix/gtk
-    make %{?_smp_mflags} CFLAGS="$CFLAGS -I../../../lib/include -L../../../lib/src/.libs"
+    %make_build CFLAGS="$CFLAGS -I../../../lib/include -L../../../lib/src/.libs"
 popd
 
 %install
-pushd lib
-   make DESTDIR=%{buildroot} install
-popd
-pushd unix/Xaw/lib
-   make DESTDIR=%{buildroot} install
-popd
-pushd unix/Xaw/src
-   make DESTDIR=%{buildroot} install
-popd
-pushd unix/fbiterm
-   make DESTDIR=%{buildroot} install
-popd
+%make_install -C lib
+%make_install -C unix/Xaw/lib
+%make_install -C unix/Xaw/src
+%make_install -C unix/fbiterm
 pushd unix/gtk
     install -m 755 src/gtkiterm %{buildroot}%{_prefix}/bin
 popd
@@ -236,7 +228,6 @@ chmod 0755 %{buildroot}/%{_bindir}/*
 %postun -n libXiterm1 -p /sbin/ldconfig
 
 %files
-%defattr(-, root, root)
 %doc unix/Xaw/README* unix/Xaw/src/{COPYING,ChangeLog,INSTALL*}
 %attr(-,root,tty) %{_bindir}/xiterm
 %dir %{appdefdir}/app-defaults
@@ -248,7 +239,6 @@ chmod 0755 %{buildroot}/%{_bindir}/*
 %{appdefdir}/*/app-defaults/*
 
 %files -n fbiterm
-%defattr(-, root, root)
 %doc unix/fbiterm/{AUTHORS,COPYING,ChangeLog,INSTALL,NEWS,README*}
 %attr(-,root,tty) %{_bindir}/fbiterm
 %dir %{_datadir}/fbiterm/
@@ -256,28 +246,23 @@ chmod 0755 %{buildroot}/%{_bindir}/*
 %{_datadir}/fbiterm/fonts/*
 
 %files -n gtkiterm
-%defattr(-, root, root)
 %doc unix/gtk/README*
 %attr(-,root,tty) %{_bindir}/gtkiterm
 
 %files -n libiterm1
-%defattr(-, root, root)
 %{_libdir}/libiterm.so.1*
 %{_datadir}/terminfo/i/iterm*
 
 %files -n libiterm-devel
-%defattr(-, root, root)
 %doc README* INSTALL* RELNOTES* lib/{COPYING,README*,INSTALL*,ChangeLog} lib/docs/
 %doc unix/terminfo/
 %{_libdir}/libiterm.so
 %{_includedir}/iterm/
 
 %files -n libXiterm1
-%defattr(-, root, root)
 %{_libdir}/libXiterm.so.1*
 
 %files -n libXiterm-devel
-%defattr(-, root, root)
 %doc unix/Xaw/lib/ChangeLog
 %{_libdir}/libXiterm.so
 %{_includedir}/Iterm*.h
