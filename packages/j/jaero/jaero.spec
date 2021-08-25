@@ -1,8 +1,8 @@
 #
 # spec file for package jaero
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,23 @@
 
 
 Name:           jaero
-Version:        1.0.4.11
+Version:        1.0.4.13
 Release:        0
 Summary:        A SatCom ACARS demodulator and decoder for the Aero standard
-# Bundled qcustomplot is GPL-3.0+
-# Bundled kiss_fft is BSD-3-Clause
-License:        MIT AND GPL-3.0-or-later
+License:        GPL-3.0-or-later AND MIT
 Group:          Productivity/Hamradio/Other
-URL:            http://jontio.zapto.org/hda1/jaero.html
+URL:            https://jontio.zapto.org/hda1/jaero.html
 Source:         https://github.com/jontio/JAERO/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.xz
-Patch0:         jaero-use-system-libs.patch
+# Bundled JFFT is licenced under MIT
+Source1:        https://github.com/jontio/JFFT/archive/refs/heads/master.zip
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libcorrect-devel
 BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
+BuildRequires:  unzip
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
@@ -43,9 +44,9 @@ BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(libacars)
+BuildRequires:  pkgconfig(libzmq)
+BuildRequires:  pkgconfig(qcustomplot)
 BuildRequires:  pkgconfig(vorbis)
-Requires(post): update-desktop-files
-Requires(postun): update-desktop-files
 Requires:       unzip
 
 %description
@@ -61,14 +62,7 @@ RTL-SDR dongle.
 
 %prep
 %setup -q -n JAERO-%{version}
-%patch0 -p1
-## remove bundled libs
-rm -rf libcorrect
-rm -rf libvorbis-*
-rm -rf libacars-*
-rm -rf libogg-*
-#rm -rf qcustomplot
-#rm -rf kiss_fft130
+unzip %{SOURCE1} && mv JFFT-master JFFT
 
 %build
 mkdir JAERO/build
@@ -81,14 +75,8 @@ install -Dpm 0755 JAERO/build/JAERO  %{buildroot}/%{_bindir}/jaero
 install -Dpm 0644 JAERO/images/primary-modem.svg %{buildroot}/%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %suse_update_desktop_file -c %{name} JAERO "A SatCom ACARS demodulator and decoder for the Aero standard" %{name} %{name} Network HamRadio
 
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
 %files
-%license JAERO/LICENSE
+%license LICENSE
 %doc README.md
 %{_bindir}/jaero
 %{_datadir}/applications/%{name}.desktop
