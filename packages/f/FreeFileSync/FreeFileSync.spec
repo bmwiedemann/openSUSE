@@ -17,9 +17,9 @@
 
 
 Name:           FreeFileSync
-Version:        11.11
+Version:        11.13
 Release:        0
-Summary:        Free backup software to synchronize files and folders
+Summary:        Backup software to synchronize files and folders
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.freefilesync.org/
@@ -42,19 +42,20 @@ BuildRequires:  update-desktop-files
 BuildRequires:  wxGTK3-3_2-devel >= 3.1.4
 
 %description
-FreeFileSync is a free Open Source software that helps you synchronize files
-and synchronize folders for Windows, Linux and Mac OS X. It is designed to save
-your time setting up and running backup jobs while having nice visual feedback along the way.
+FreeFileSync is a software that helps synchronizing files
+and folders. It runs backup jobs while having visual
+feedback along the way.
 
 %package -n     RealtimeSync
-Summary:        Free backup software to synchronize files and folders
+Summary:        Backup software to synchronize files and folders
 Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
 
 %description -n RealtimeSync
-The primary purpose of RealtimeSync is to execute a command line each time it detects changes
-in one of the monitored directories or when a directory becomes available (e. g. insert of a USB-stick).
-Usually this command line will trigger a FreeFileSync batch job.
+RealtimeSync executes a command each time it detects changes
+in one of the monitored directories, or when a directory becomes
+available (e.g. insertion of a USB drive).
+This command will usually trigger a FreeFileSync batch job.
 
 %prep
 %autosetup -p1 -c %{name}-%{version}
@@ -102,8 +103,8 @@ install -p %{SOURCE4} %{buildroot}%{_datadir}/pixmaps/
 %{_bindir}/update-desktop-database --quiet %{_datadir}/applications || true
 
 %files
-%license %attr(444, -, -) License.txt
-%doc %attr(444, -, -) Changelog.txt
+%license License.txt
+%doc Changelog.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/%{name}.png
@@ -111,8 +112,8 @@ install -p %{SOURCE4} %{buildroot}%{_datadir}/pixmaps/
 %dir %{_datadir}/%{name}
 
 %files -n RealtimeSync
-%license %attr(444, -, -) License.txt
-%doc %attr(444, -, -) Changelog.txt
+%license License.txt
+%doc Changelog.txt
 %{_bindir}/RealTimeSync
 %{_datadir}/applications/RealTimeSync.desktop
 %{_datadir}/pixmaps/RealTimeSync.png
