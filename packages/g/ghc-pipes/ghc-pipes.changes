@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 19 07:06:24 UTC 2021 - psimons@suse.com
+
+- Update pipes to version 4.3.16 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri May  7 09:28:58 UTC 2021 - psimons@suse.com
 
 - Update pipes to version 4.3.16.
