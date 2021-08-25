@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug  6 14:27:03 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to rdma-core v36.0:
+  - Bugfixes on all providers
+
+-------------------------------------------------------------------
 Tue May 18 09:21:31 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to rdma-core v35.0
