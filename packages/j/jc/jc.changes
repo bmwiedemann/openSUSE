@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Aug 19 19:08:12 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.1
+  * Fix issue with process substitution with the magic syntax.
+  * Fix issue with globs not including filenames with spaces with
+    magic syntax.
+
+-------------------------------------------------------------------
+Wed Jul 21 16:55:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.16.0
+  * Fix Man page location in source packages.
+  * Add sfdisk command parser tested on linux.
+  * Update unit test files to change the timezone when needed
+    (POSIX only).
+
+-------------------------------------------------------------------
 Fri Jan  8 10:04:14 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.14.1
