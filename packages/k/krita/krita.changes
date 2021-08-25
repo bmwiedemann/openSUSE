@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 25 09:39:44 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 4.4.8:
+  * See https://krita.org/en/item/krita-4-4-8-released/
+  * Disable fractional DPI scaling by default
+  * Fix loading and saving of document palettes (kde#440812)
+- Remove BuildConflicts: python3-sip-devel >= 6, it builds fine
+  with sip6 meanwhile
+
+-------------------------------------------------------------------
 Wed Aug 11 13:38:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to allow building krita with OpenEXR 3 (boo#1189327):

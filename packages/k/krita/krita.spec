@@ -24,7 +24,7 @@
 %bcond_with vc
 %endif
 Name:           krita
-Version:        4.4.7
+Version:        4.4.8
 Release:        0
 Summary:        Digital Painting Application
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND CC0-1.0 AND LGPL-2.0-only
@@ -62,16 +62,9 @@ BuildRequires:  libtiff-devel
 BuildRequires:  openjpeg2-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-# SECTION python build requirements
 BuildRequires:  python3-devel
 BuildRequires:  python3-qt5-devel
-# Krita's CMake requires the command `sip5` from SIP v5 or `sip` from SIP v4.
-# Neither is available in SIP v6. A simple sip-devel < 6 build requirement would
-# install a non-conflicting SIP v4 in parallel to v6 pulled in by qt5-devel.
-# But then CMake does not find the old sip executable.
-BuildConflicts: python3-sip-devel >= 6
 BuildRequires:  python3-sip-devel
-# /SECTION
 BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  cmake(KF5Archive)
