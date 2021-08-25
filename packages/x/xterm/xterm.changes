@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 17 09:08:15 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- use TERM=xterm-256color by default (boo#1188864)
+
+-------------------------------------------------------------------
 Wed Jun  9 14:36:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - update to Patch #368 -  2021/06/07

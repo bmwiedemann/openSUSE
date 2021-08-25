@@ -24,7 +24,7 @@ diff --git a/XTerm.ad b/XTerm.ad
  *eightBitOutput:       true
  
  !! Default Settings
- *termName:             xterm
+ *termName:             xterm-256color
  *pointerShape:         top_left_arrow
  *scrollKey:            true
 diff --git a/xterm.man b/xterm.man

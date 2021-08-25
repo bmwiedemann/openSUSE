@@ -154,7 +154,7 @@ index dd6ef52..69aac16 100644
 +*eightBitOutput:       true
 +
 +!! Default Settings
-+*termName:             xterm
++*termName:             xterm-256color
 +*pointerShape:         top_left_arrow
 +*scrollKey:            true
 +
