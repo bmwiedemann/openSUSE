@@ -47,4 +47,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>903728</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>f05c58c4dc1d1127af827c1714673469</srcmd5>
+    <version>0.18.3</version>
+    <time>1629917864</time>
+    <user>dimstar_suse</user>
+    <comment>- relax constraints on transformers-compat</comment>
+    <requestid>912789</requestid>
+  </revision>
 </revisionlist>
