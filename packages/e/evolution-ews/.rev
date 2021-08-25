@@ -972,4 +972,12 @@
     <comment>GNOME 40.3 (forwarded request 906590 from dimstar)</comment>
     <requestid>907046</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>a271124443892b97cfa03e606bacd777</srcmd5>
+    <version>3.40.4</version>
+    <time>1629917773</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 912016 from iznogood)</comment>
+    <requestid>913684</requestid>
+  </revision>
 </revisionlist>
