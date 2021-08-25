@@ -15,7 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{?suse_version} < 1550 && 0%{?sle_version} < 150300
+# systemd-rpm-macros(or kmod) is wrong in 15.2
+%define _modprobedir /lib/modprobe.d
+%endif
 Name:           pcfclock
 Version:        0.44
 Release:        0
@@ -41,7 +44,6 @@ BuildRequires:  module-init-tools
 Requires:       pcfclock-kmp
 # systemd-tmpfiles
 Requires(post): systemd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExcludeArch:    s390 s390x
 %suse_kernel_module_package -p %_sourcedir/preamble kdump um xen xenpae iseries64
 
@@ -102,26 +104,26 @@ for flavor in %flavors_to_build; do
     make -C /usr/src/linux-obj/%_target_cpu/$flavor %{?linux_make_arch} modules_install \
          M=$PWD/obj/$flavor
 done
-mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
-echo "alias char-major-181 pcfclock" > %{buildroot}%{_sysconfdir}/modprobe.d/50-pcfclock.conf
+mkdir -p %{buildroot}%{_modprobedir}
+echo "alias char-major-181 pcfclock" > %{buildroot}%{_modprobedir}/50-pcfclock.conf
 %if 0%{?suse_version} > 1140
-mkdir -p %{buildroot}/usr/lib/tmpfiles.d/
-install -m 0644 %{SOURCE3} %{buildroot}/usr/lib/tmpfiles.d/
+mkdir -p %{buildroot}%{_tmpfilesdir}
+install -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}
 %endif
 
 %post
 # Create devices nodes at installation time
-systemd-tmpfiles --create /usr/lib/tmpfiles.d/pcfclock.conf
+systemd-tmpfiles --create %{_tmpfilesdir}/pcfclock.conf
 
 %files
 %defattr(-,root,root)
 %doc README
-%{_mandir}/man4/pcfclock.4.gz
-%{_mandir}/man8/pcfdate.8.gz
+%{_mandir}/man4/pcfclock.4%{?ext_man}
+%{_mandir}/man8/pcfdate.8%{?ext_man}
 %{_sbindir}/pcfdate
-%{_sysconfdir}/modprobe.d/50-pcfclock.conf
+%{_modprobedir}/50-pcfclock.conf
 %if 0%{?suse_version} > 1140
-/usr/lib/tmpfiles.d/pcfclock.conf
+%{_tmpfilesdir}/pcfclock.conf
 %endif
 
 %changelog

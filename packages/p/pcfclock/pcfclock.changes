@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 20 20:11:49 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Move modprobe.d files out of /etc
+
+-------------------------------------------------------------------
 Tue Sep 22 01:21:38 CEST 2020 - ro@suse.de
 
 - add patch pcfclock-linux-5.8.patch to fix build with current

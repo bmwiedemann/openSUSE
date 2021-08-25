@@ -171,4 +171,12 @@
   kernel (forwarded request 835950 from oertel)</comment>
     <requestid>835951</requestid>
   </revision>
+  <revision rev="26" vrev="267">
+    <srcmd5>371582ca6a9d52b5afc032c1d10b290f</srcmd5>
+    <version>0.44</version>
+    <time>1629917903</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914178</requestid>
+  </revision>
 </revisionlist>
