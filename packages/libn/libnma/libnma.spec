@@ -1,7 +1,7 @@
 #
 # spec file for package libnma
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define base_ver 1.8
 
 Name:           libnma
-Version:        1.8.30
+Version:        1.8.32
 Release:        0
 Summary:        Shared library for NetworkManager-applet
 License:        GPL-2.0-or-later
