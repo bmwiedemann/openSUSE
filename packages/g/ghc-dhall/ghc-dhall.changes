@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 19 07:05:20 UTC 2021 - psimons@suse.com
+
+- Update dhall to version 1.39.0 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Jul 15 16:14:40 UTC 2021 - psimons@suse.com
+
+- Update dhall to version 1.39.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Fri Jun  4 09:06:46 UTC 2021 - psimons@suse.com
 
 - Update dhall to version 1.39.0.
