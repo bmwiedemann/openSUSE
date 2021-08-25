@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 24 20:47:42 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 5.0.4.
+  * csd-power-manager.c: Reset the timers when the idle-delay
+    changes.
+
+-------------------------------------------------------------------
 Wed Jun 30 06:23:00 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 5.0.3.
