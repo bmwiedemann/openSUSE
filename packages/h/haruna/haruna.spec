@@ -23,6 +23,10 @@ Summary:        Video player built with Qt/QML on top of libmpv
 License:        CC-BY-4.0 AND GPL-3.0-or-later AND WTFPL
 URL:            https://invent.kde.org/multimedia/haruna
 Source0:        https://invent.kde.org/multimedia/haruna/-/archive/v%{version}/%{name}-v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM haruna-icon_path.patch
+Patch0:         haruna-icon_path.patch
+# PATCH-FIX-UPSTREAM haruna-playlist_noid.patch
+Patch1:         haruna-playlist_noid.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  extra-cmake-modules >= 1.0.0
 BuildRequires:  hicolor-icon-theme
@@ -58,6 +62,8 @@ Recommends:     youtube-dl
 
 %prep
 %setup -q -n %{name}-v%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %cmake
@@ -74,7 +80,6 @@ rm -rf %{buildroot}%{_datadir}/doc
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/org.kde.haruna.desktop
-# (kde#441229)
 %{_datadir}/icons/hicolor/*/apps/org.kde.haruna.svg
 %{_datadir}/metainfo/org.kde.haruna.metainfo.xml
 

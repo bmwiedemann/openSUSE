@@ -1,0 +1,90 @@
+From a2bf43ce527bad90353ec911c4c24412ff703445 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?George=20Florea=20B=C4=83nu=C8=99?= <georgefb899@gmail.com>
+Date: Sun, 22 Aug 2021 22:12:52 +0300
+Subject: [PATCH] PlayList: remove ids from playlist items
+
+Having ids crashes the app on older versions of Qt
+BUG: 441258
+---
+ src/qml/PlayListItem.qml              | 8 ++++++--
+ src/qml/PlayListItemWithThumbnail.qml | 9 +--------
+ 2 files changed, 7 insertions(+), 10 deletions(-)
+
+diff --git a/src/qml/PlayListItem.qml b/src/qml/PlayListItem.qml
+index ee2bf9b..544271e 100644
+--- a/src/qml/PlayListItem.qml
++++ b/src/qml/PlayListItem.qml
+@@ -20,7 +20,6 @@ Kirigami.BasicListItem {
+     property string rowNumber: (index + 1).toString()
+     property var alpha: PlaylistSettings.overlayVideo ? 0.6 : 1
+ 
+-    height: label.font.pointSize * 3 + PlaylistSettings.rowHeight
+     padding: 0
+     backgroundColor: {
+         let color = model.isPlaying ? Kirigami.Theme.highlightColor : Kirigami.Theme.backgroundColor
+@@ -68,7 +67,7 @@ Kirigami.BasicListItem {
+             LabelWithTooltip {
+                 id: label
+ 
+-                toolTipFontSize: label.font.pointSize + 2
++                toolTipFontSize: font.pointSize + 2
+ 
+                 color: Kirigami.Theme.textColor
+                 horizontalAlignment: Qt.AlignLeft
+@@ -82,6 +81,11 @@ Kirigami.BasicListItem {
+                 layer.enabled: true
+                 Layout.fillWidth: true
+                 Layout.leftMargin: PlaylistSettings.showRowNumber || isPlaying ? 0 : Kirigami.Units.largeSpacing
++                Binding {
++                    target: root
++                    property: "height"
++                    value: font.pointSize * 3 + PlaylistSettings.rowHeight
++                }
+             }
+ 
+             Label {
+diff --git a/src/qml/PlayListItemWithThumbnail.qml b/src/qml/PlayListItemWithThumbnail.qml
+index 0f81756..e4d0c4a 100644
+--- a/src/qml/PlayListItemWithThumbnail.qml
++++ b/src/qml/PlayListItemWithThumbnail.qml
+@@ -42,8 +42,6 @@ Kirigami.BasicListItem {
+             spacing: Kirigami.Units.largeSpacing
+ 
+             Label {
+-                id: rowNumberLabel
+-
+                 text: pad(root.rowNumber, playlistView.count.toString().length)
+                 visible: PlaylistSettings.showRowNumber
+                 font.pointSize: (window.isFullScreen() && playList.bigFont)
+@@ -60,7 +58,6 @@ Kirigami.BasicListItem {
+             }
+ 
+             Rectangle {
+-                id: separator
+ 
+                 width: 1
+                 color: Kirigami.Theme.alternateBackgroundColor
+@@ -69,8 +66,6 @@ Kirigami.BasicListItem {
+             }
+ 
+             Item {
+-                id: thumbnail
+-
+                 width: (root.height - 20) * 1.33333
+                 height: root.height - 20
+ 
+@@ -118,10 +113,8 @@ Kirigami.BasicListItem {
+             }
+ 
+             LabelWithTooltip {
+-                id: label
+-
+                 text: PlaylistSettings.showMediaTitle ? model.title : model.name
+-                toolTipFontSize: label.font.pointSize + 2
++                toolTipFontSize: font.pointSize + 2
+                 color: Kirigami.Theme.textColor
+                 horizontalAlignment: Qt.AlignLeft
+                 verticalAlignment: Qt.AlignVCenter
+-- 
+GitLab
+
