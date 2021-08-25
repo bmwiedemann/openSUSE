@@ -19,7 +19,7 @@
 %global pkg_name vector-builder
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.8.1
+Version:        0.3.8.2
 Release:        0
 Summary:        Vector builder
 License:        MIT
