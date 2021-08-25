@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-digest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name digest
 Name:           ghc-%{pkg_name}
-Version:        0.0.1.2
+Version:        0.0.1.3
 Release:        0
 Summary:        Various cryptographic hashes for bytestrings; CRC32 and Adler32 for now
 License:        BSD-2-Clause
