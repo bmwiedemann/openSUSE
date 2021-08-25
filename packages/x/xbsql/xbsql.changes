@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 10:13:17 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic which has no effect with --disable-static.
+- Trim old specfile constructs.
+
+-------------------------------------------------------------------
 Sat Sep  2 11:41:18 UTC 2017 - wbauer@tmo.at
 
 - Add xbase64.patch to fix build with latest xbase(64) 3.1.2 in
