@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  1 12:50:50 UTC 2021 - psimons@suse.com
+
+- Update yesod to version 1.6.1.2.
+  ## 1.6.1.2
+
+  * Fix compatibility with template-haskell 2.17 [#1730](https://github.com/yesodweb/yesod/pull/1730)
+
+-------------------------------------------------------------------
 Thu Apr 15 10:25:20 UTC 2021 - psimons@suse.com
 
 - Update yesod to version 1.6.1.1.
