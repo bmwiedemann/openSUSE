@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Aug 18 17:33:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.4:
+  + Don't include hidden search results in keynav.
+  + Always take workarea into account when allocating workspaces.
+  + Add focus indication for switches.
+  + Fix glitch when dragging window preview in overview.
+  + workspace: Handle skip-taskbar changes.
+  + screenShield: Fix suspend inhibitor accounting.
+  + Fixed crash.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 16 20:26:30 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Remove libcroco from BuildRequires: the relevant sources are now
+  included directly in the gnome-shell tarball.
+
+-------------------------------------------------------------------
 Tue Aug 10 02:51:13 UTC 2021 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gnome-shell-executable-path-not-absolute.patch: Fix ExecStart
