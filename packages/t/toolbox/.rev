@@ -150,4 +150,18 @@
   * Fix 'toolbox list' returning an error code even if working</comment>
     <requestid>881827</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>913226dcee04aebe476a2b5f39a37d86</srcmd5>
+    <version>2.2+git20210823.dd0fff8</version>
+    <time>1629917793</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.2+git20210823.dd0fff8:
+  * README mini-typo
+  * Docker: don't use unsupported --userns=keep-id
+  * Docker: also check for created status
+  * Try to use docker if installed and podman is not
+  * Properly share namespaces in non-user toolboxes
+  * Properly quote workdir</comment>
+    <requestid>913783</requestid>
+  </revision>
 </revisionlist>

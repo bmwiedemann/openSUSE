@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 23 13:37:09 UTC 2021 - kukuk@suse.com
+
+- Update to version 2.2+git20210823.dd0fff8:
+  * README mini-typo
+  * Docker: don't use unsupported --userns=keep-id
+  * Docker: also check for created status
+  * Try to use docker if installed and podman is not
+  * Properly share namespaces in non-user toolboxes
+  * Properly quote workdir
+
+-------------------------------------------------------------------
 Mon Mar 29 09:36:19 UTC 2021 - kukuk@suse.com
 
 - Update to version 2.1+git20210329.d14ac82:
