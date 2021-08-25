@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Aug 25 06:59:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.22b:
+  * do not timeout TCP connections (fix #300) 
+  * remove obsolete usage string and added lost version option
+  * be more defensive when allocating and extending gap
+
+-------------------------------------------------------------------
+Wed Aug 18 06:59:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.22:
+  * sslh-select now supports UDP protocols.
+    Probes specified in the `protocols`
+    configuration entry are tried on incoming packets,
+    TCP or UDP, and forwarded based on the input
+    protocol (an incoming TCP connection will be
+    forwarded as TCP, and same with UDP).
+    This has been tested with DNS as shown in udp.cfg:
+    incoming packets that contain my domain name are
+    assumed to be a DNS request and forwarded
+    accordingly. Note this could cause problems if
+    combined with incoming TLS with SNI.  UDP clients
+    and servers need to agree on the IPv4/IPv6 they use:
+    use the same protocol on all sides! Often, this
+    means explicitely using 'ip4-localhost'.
+    UDP sender-receiver pairs (connections, so to speak)
+    are kept for 60s, which can be changed with
+    `udp_timeout` in the configuration.
+ * Added probes for UDP protocols QUICK and Teamspeak.
+ * Added probes for syslog protocol.
+ * sslh-select refactored to change linear searches
+   through connections to linear searches through
+   fd_set.
+ * Fixed a libconfig call to support libconfig 1.7.3.
+ * Added symbol to support libconfig 1.4.9, still in
+   use in CentOS7.
+ * Warn about unknown settings in the configuration
+   file.
+ * Added per-protocol `transparent` option. sslh-fork
+   drops the capability after creating the server-side
+   transparent socket. Transparent now uses CAP_NET_RAW
+   instead of CAP_NET_ADMIN.
+ * Removed compile-time option to use POSIX regex. Now
+   regex must be PCRE2 (Perl-Compatible). This was in
+   fact the case since v1.21, as PCRE are used to parse
+   the config file.
+- Drop sslh-nopcreposix.patch:
+  pcre2 is a hard dependency now
+
+-------------------------------------------------------------------
 Fri Apr  9 19:08:27 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - remove unused tcpd-devel dependency 

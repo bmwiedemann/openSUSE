@@ -18,7 +18,7 @@
 
 
 Name:           sslh
-Version:        1.21c
+Version:        1.22b
 Release:        0
 Summary:        SSL/SSH multiplexer
 License:        GPL-2.0-or-later
@@ -30,12 +30,13 @@ Source2:        %{name}.sysconfig
 Source3:        %{name}.conf.d
 BuildRequires:  libcap-devel
 BuildRequires:  libconfig-devel
+BuildRequires:  pcre2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       openssh
 Requires:       openssl
 Requires(pre):  group(nobody)
-Patch0:         sslh-nopcreposix.patch
-%{systemd_requires}
+%systemd_requires
 
 %description
 sslh lets one accept both HTTPS and SSH connections on the same port. It makes
@@ -46,8 +47,8 @@ corporate firewall) while still serving HTTPS on that port.
 %autosetup -n %{name}-v%{version} -p1
 
 %build
-export CFLAGS="%optflags"
-make PREFIX=%{_prefix} DESTDIR=%{buildroot}
+export CFLAGS="%{optflags}"
+%make_build PREFIX=%{_prefix} DESTDIR=%{buildroot}
 
 %install
 make PREFIX=%{_prefix} DESTDIR=%{buildroot} install
