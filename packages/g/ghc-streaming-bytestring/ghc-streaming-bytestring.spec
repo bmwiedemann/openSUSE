@@ -69,6 +69,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver mmorph '<1.2' '<1.3'
 
 %build
 %ghc_lib_build

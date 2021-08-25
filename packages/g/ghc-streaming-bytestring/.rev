@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>903732</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>bd8373f3901a0f750f0a02547ae98760</srcmd5>
+    <version>0.2.1</version>
+    <time>1629917862</time>
+    <user>dimstar_suse</user>
+    <comment>- relax constraints on mmorph</comment>
+    <requestid>912787</requestid>
+  </revision>
 </revisionlist>
