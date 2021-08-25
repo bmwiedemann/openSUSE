@@ -19,13 +19,12 @@
 %global pkg_name primitive
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.1.0
+Version:        0.7.2.0
 Release:        0
 Summary:        Primitive memory-related operations
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-rpm-macros
@@ -35,7 +34,6 @@ ExcludeArch:    %{ix86}
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-base-orphans-devel
 BuildRequires:  ghc-quickcheck-classes-base-devel
-BuildRequires:  ghc-semigroups-devel
 BuildRequires:  ghc-tagged-devel
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
@@ -57,7 +55,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
