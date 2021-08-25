@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:43:31 UTC 2021 - psimons@suse.com
+
+- Update data-fix to version 0.3.2.
+  ## 0.3.2
+
+  - Add `(un)wrapFix/Mu/Nu`
+  - Support `transformers-0.6`
+
+  ## 0.3.1
+
+  - Update bounds for GHC-9.0
+
+-------------------------------------------------------------------
 Mon Feb  8 05:04:43 UTC 2021 - psimons@suse.com
 
 - Update data-fix to version 0.3.1.
