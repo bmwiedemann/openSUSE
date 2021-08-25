@@ -17,15 +17,13 @@
 
 
 Name:           xmrig
-Version:        6.13.1
+Version:        6.14.1
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only
 URL:            https://xmrig.com/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        xmrig.service
-#PATCH-FEATURE-SUSE disable-forced-donation.patch nopeinomicon@posteo.net -- Removes forced donation to developers
-Patch0:         disable-forced-donation.patch
 #PATCH-FIX-SUSE correct-opencl-file.patch nopeinomicon@posteo.net -- Sets correct location/name for libOpenCL.so.1 used for OpenCL mode
 Patch1:         correct-opencl-file.patch
 BuildRequires:  cmake

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 25 10:53:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.14.1:
+  * v6.14.1
+  * Update CHANGELOG.md
+  * Fix algorithms order.
+  * Cleanup.
+  * Update CnHash.cpp
+  * Fixed Termux build
+  * Fix Job::getNumTransactions.
+  * Fix cn-pico name.
+  * Removed shortName.
+  * Removed duplicate strings.
+  * Fix typo.
+  * Implemented stable algorithm ids.
+  * Optimize CnHash storage.
+  * #2527 Fix narrowing conversion.
+  * namespace cleanup.
+  * v6.14.1-dev
+  * v6.14.0
+  * v6.14.0-dev
+  * Show the number of transactions in pool job
+  * #2492 Add missing --huge-pages-jit command line option.
+  * ZeroMQ support for solo mining
+  * #2476 Fixed crash in DMI memory reader.
+  * Updates from xmrig-proxy
+  * Sync with proxy.
+  * v6.13.2-dev
+- Drop disable-forced-donation.patch
+
+-------------------------------------------------------------------
 Wed Jul  7 07:57:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.13.1:
