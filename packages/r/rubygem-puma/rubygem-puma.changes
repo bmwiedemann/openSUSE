@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 25 05:21:15 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
+
+- updated to version 5.4.0
+
+  * Features
+    * Better/expanded names for threadpool threads ([#2657])
+    * Allow pkg_config for OpenSSL ([#2648], [#1412])
+    * Add `rack_url_scheme` to Puma::DSL, allows setting of `rack.url_scheme` header ([#2586], [#2569])
+
+  * Bugfixes
+    * `Binder#parse` - allow for symlinked unix path, add create_activated_fds debug ENV ([#2643], [#2638])
+    * Fix deprecation warning: minissl.c - Use Random.bytes if available ([#2642])
+    * Client certificates: set session id context while creating SSLContext ([#2633])
+    * Fix deadlock issue in thread pool ([#2656])
+
+  * Refactor
+    * Replace `IO.select` with `IO#wait_*` when checking a single IO ([#2666])
+
+-------------------------------------------------------------------
 Tue Jun  1 03:39:59 UTC 2021 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 5.3.2
