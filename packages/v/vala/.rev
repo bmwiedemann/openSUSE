@@ -1036,4 +1036,41 @@
     <comment> (forwarded request 897399 from iznogood)</comment>
     <requestid>897535</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>638af02fc1acc1cea49935665e8f8b82</srcmd5>
+    <version>0.52.5</version>
+    <time>1629917779</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.52.5:
+  + Various improvements and bug fixes:
+    - codegen:
+      . Allow null to initialize non-null struct inside initializer
+        list
+      . Implementing GLib.Source.prepare/check is optional since
+        2.36
+      . Fix variadic constructors for compact classes and structs
+      . Use detroy_value() for delete statement
+      . Fix params-array in constructor for struct
+    - vala:
+      . Rely on DataType.to_qualified_string() for error-types
+      . Disallow resize() for constant arrays
+    - Recognize multiple valid CCode.gir_namespace/_version in VAPI
+      files
+    - Slightly improve source_reference for
+      get_dup_func_expression()
+    - girwriter:
+      . Respect GIR.name for constants, errordomains and delegates
+      . Add explicit writable attribute to all field elements
+      . Fix position of &quot;result&quot; parameter for struct constructor
+      . Write missing c:type attribute of compact class record
+    - girparser: Add support for &quot;final&quot; class attribute
+    - tests/girwriter: Add missing [Flags] annotation
+    - testrunner: Add support for girwriter tests
+    - docs: Update bootstrap instructions in README.md
+  + Bindings:
+    - Partly revert &quot;gstreamer: Update from 1.19.0+ git master&quot;
+    - glib-2.0: expected_type and return value of
+      VariantDict.lookup_value() is nullable (forwarded request 912657 from iznogood)</comment>
+    <requestid>913693</requestid>
+  </revision>
 </revisionlist>
