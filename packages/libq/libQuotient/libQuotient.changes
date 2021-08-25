@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Aug 24 06:45:25 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.6.8:
+  * Retain the current room member avatar when renaming the user 
+    for the room.
+  * When displaying the room, notification/highlight counters are 
+    no more reset. This never really worked, with the notification 
+    and highlight counts jumping to zero and then back to the 
+    original value if the timeline hasn't been completely read; 
+    now that read receipts are correctly sent, the counters 
+    can be left to the homeserver to update 
+    (while E2EE is not around).
+  * Fix the missing percent encoding in User::fetchProfile(), 
+    leading to problems around historical userids that still 
+    have slashes.
+  * CS API files have been regenerated from the new matrix-doc 
+    after revamping the layout and tooling; the library API didn't 
+    change, but doc-comments are now in Markdown rather than 
+    ReStructured Text.
+  * Update GTAD configuration to version 0.8 of the tool.
+  * Fix potential linking errors around quotient_common.h.
+
+-------------------------------------------------------------------
 Sun Jul 18 14:09:53 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Updae to version 0.6.7:
