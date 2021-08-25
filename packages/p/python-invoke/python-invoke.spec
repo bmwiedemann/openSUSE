@@ -1,7 +1,7 @@
 #
 # spec file for package python-invoke
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-invoke
-Version:        1.4.1
+Version:        1.6.0
 Release:        0
 Summary:        Pythonic Task Execution
 License:        BSD-2-Clause
@@ -39,7 +39,7 @@ Requires:       python-lexicon
 Requires:       python-pexpect
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module PyYAML}

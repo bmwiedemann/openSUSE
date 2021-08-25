@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Wed Aug 18 13:52:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.6.0
+  * Version bump for next release
+  * Return to using print() and no newline in echo_format
+  * Blacken
+  * Changelog re #791
+  * s/output_format/echo_format/g
+  * Fix whitespace
+  * Contact methods update :(
+  * Adding support for a custom output format via run.echo
+  * Fix typo
+  * Tweak versionadded/changed bits for new param.
+- from version 1.5.1
+  * Alphabetize run() kwarg param declarations in docstring
+  * Document dry kwarg for run() in docstring
+  * Treat whitespace-only docstrings as empty docstrings.
+- from version 1.5.0
+  * Changelog, docstring and test tweak re #607, re #454
+  * Tweaks re #611
+  * Changelog re #409, re #398, re #611, re #580
+  * Tweak #197 changelog to link to modified API member
+  * Stop publishing bogus codecov reports from Travis
+  * Docs and changelog re #197, closes #197
+  * Realized OP's impl was overkill/caused bugs. Just set name.
+  * Use identity testing in collection task lookup asserts
+  * Refactor default task/collection collision & enhanced its tests
+  * Minor tweaks to update #197
+  * Upgrade codecov client, prev version cannot talk to their object store
+  * Fix small pile of minor doc reference errors
+  * Changelog re coverage tweaks
+  * Test Exit more thoroughly
+  * Improve test coverage of Failure hierarchy repr()
+  * Not sure why UnexpectedExit repr override __repr__ and not _repr
+  * Blacken
+  * Bump version for release/testing
+  * Populate MockContext NotImplementedErrors with triggering command
+  * Enhance MockContext a whole bunch
+  * Enhance testing concepts doc
+  * Python packaging guide is no longer using /en/latest URL
+  * Blacken, flake8
+  * Populate Result.command automatically within MockContext methods
+  * Wrap MockContext methods in actual Mock when present
+  * Expand sys.modules cleaner in conftest to clean EVERYTHING
+  * Fix inaccurate indentation for MockContext versionadded directive
+  * Needed to mark this bug major because it was in the 1.2 line which
+    hasn't since gotten any bugfix releases
+  * Grumble forgot a backported note
+  * Add test: mismatched help text raises error
+  * Add tests: parameter help defined with underscores
+  * Cosmetic: satisfy black
+  * Simplify if/else/if/else a bit
+  * Fix bug if didn't give help for param.
+  * Add error when gave help for typoed param #398
+  * Fix help text behavior for params with underscores in name #409
+  * Skip Path unit test if Path can't be imported
+  * Clarify why we do str() on a possible str object
+  * Make Travis happy for Python 2.7 and pypy
+  * Satisfy flake8 compatibility
+  * Allow Pathlib.path objects to be used with Context.cd()
+  * Allow subcollections to be defaults of parent collections
+
+-------------------------------------------------------------------
 Fri Oct 16 12:55:39 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - disable test suite with bcond because of unmaintained
