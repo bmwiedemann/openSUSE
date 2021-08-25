@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 13 09:52:10 UTC 2021 - psimons@suse.com
+
+- Update regex-base to version 0.94.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Feb 20 14:44:16 UTC 2021 - psimons@suse.com
 
 - Update regex-base to version 0.94.0.1.
