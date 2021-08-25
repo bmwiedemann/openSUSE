@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 18 03:07:35 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.56
+   see /usr/share/doc/packages/perl-libwww-perl/Changes
+
+  6.56      2021-08-17 13:57:12Z
+      - Update the CONTRIBUTING doc to no longer reference TravisCI. (GH #384) (Slaven Rezić)
+      - Increase test coverage for env_proxy() (GH#383) (Slaven Rezić)
+      - When a truthy Content-Type is provided, override the default (GH#385)
+        (Matthew Horsfall (alh))
+
+-------------------------------------------------------------------
 Fri Jun 18 03:08:54 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.55

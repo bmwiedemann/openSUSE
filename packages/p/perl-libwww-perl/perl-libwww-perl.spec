@@ -18,7 +18,7 @@
 
 %define cpan_name libwww-perl
 Name:           perl-libwww-perl
-Version:        6.55
+Version:        6.56
 Release:        0
 Summary:        The World-Wide Web library for Perl
 License:        Artistic-1.0 OR GPL-1.0-or-later
