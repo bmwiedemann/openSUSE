@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 25 05:36:04 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Do not build for Python 3.6 or 3.9 due to python-python-gvm. 
+
+-------------------------------------------------------------------
 Mon Oct 26 23:17:55 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Kill dephell dependency 

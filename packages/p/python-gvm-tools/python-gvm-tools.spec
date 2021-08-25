@@ -1,7 +1,7 @@
 #
 # spec file for package python-gvm-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,6 +19,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
+%define skip_python39 1
 Name:           python-gvm-tools
 Version:        20.10.1
 Release:        0

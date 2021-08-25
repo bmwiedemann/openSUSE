@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>844258</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>114564c2c8ec40b2b40eafea43469ab8</srcmd5>
+    <version>20.10.1</version>
+    <time>1629917894</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not build for Python 3.6 or 3.9 due to python-python-gvm.</comment>
+    <requestid>914131</requestid>
+  </revision>
 </revisionlist>
