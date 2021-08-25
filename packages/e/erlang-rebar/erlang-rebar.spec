@@ -103,7 +103,7 @@ fi
 %if %{normal_build}
 install -Dm755 rebar %{buildroot}%{_bindir}/rebar
 # Install RPM macros:
-install -Dm644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/macros.erlang-rebar
+install -Dm644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.erlang-rebar
 for dir in include ebin priv src ; do
   install -d %{buildroot}%{erlang_libdir}/rebar-%{mod_ver}/${dir}
   cp -r ${dir}/* %{buildroot}%{erlang_libdir}/rebar-%{mod_ver}/${dir}/
@@ -138,7 +138,7 @@ rm test/rebar_dia_tests.erl
 %defattr(-,root,root)
 %doc README.md THANKS LICENSE rebar.config.sample
 %{_bindir}/rebar
-%config %{_sysconfdir}/rpm/macros.erlang-rebar
+%{_rpmmacrodir}/macros.erlang-rebar
 %dir %{erlang_libdir}/rebar-%{mod_ver}
 %{erlang_libdir}/rebar-%{mod_ver}/ebin
 %{erlang_libdir}/rebar-%{mod_ver}/include

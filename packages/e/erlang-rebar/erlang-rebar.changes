@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 30 12:41:37 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Move rpm macros from /etc/rpm to %{_rpmmacrodir} (boo#1185668).
+
+-------------------------------------------------------------------
 Sat Jan 16 09:08:03 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add rebar-0014-erl_interface-was-removed-in-Erlang-23.patch:
