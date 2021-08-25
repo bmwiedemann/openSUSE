@@ -26,11 +26,15 @@ BuildRequires:  texlive-amsfonts
 BuildRequires:  texlive-cm-super
 BuildRequires:  texlive-courier
 BuildRequires:  texlive-dvips
+%if 0%{?suse_version} > 1315
 BuildRequires:  texlive-epstopdf
+%endif
 BuildRequires:  texlive-pdftex
 BuildRequires:  texlive-times
 BuildRequires:  tex(beamer.cls)
+%if 0%{?suse_version} > 1315
 BuildRequires:  tex(german.sty)
+%endif
 BuildRequires:  tex(multimedia.sty)
 BuildRequires:  tex(times.sty)
 BuildRequires:  tex(xmpmulti.sty)
@@ -50,7 +54,9 @@ Provides:       transfig.3.2.3d
 Requires:       ghostscript-fonts-std
 Requires:       ghostscript-library
 Requires:       netpbm
+%if 0%{?suse_version} > 1315
 Requires:       texlive-epstopdf
+%endif
 Version:        3.2.8a
 Release:        0
 Summary:        Graphic Converter
@@ -160,6 +166,7 @@ gzip -9 %{buildroot}%{_mandir}/man1/fig2mpdf.1
 
 mkdir -p %{buildroot}%{_defaultdocdir}/%{name}
 install -m 0644 [CLNR]* %{buildroot}%{_defaultdocdir}/%{name}
+%if 0%{?suse_version} > 1315
 pushd fig2mpdf/doc
     make
     mkdir %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf
@@ -167,6 +174,7 @@ pushd fig2mpdf/doc
     rm -f *.aux *.log *.nav *.out *.snm *.toc
     install -m 0644 * %{buildroot}%{_defaultdocdir}/%{name}/fig2mpdf/
 popd
+%endif
 pushd transfig/doc
     ../../fig2dev/fig2dev -L latex trans.fig > trans.tex
     pdflatex manual.tex

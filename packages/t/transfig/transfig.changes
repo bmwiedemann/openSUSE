@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:40:07 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Skip requirement of texlive-epstopdf as SLE-12 does not have that 
+
+-------------------------------------------------------------------
+Wed Aug 11 12:40:48 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Skip build of documentation of fig2mpdf on SLE-12
+
+-------------------------------------------------------------------
 Fri Jun 18 13:26:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Make spec file build with older SLE versions as well
