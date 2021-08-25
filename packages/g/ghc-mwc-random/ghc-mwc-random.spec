@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-mwc-random
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,9 @@
 
 
 %global pkg_name mwc-random
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.14.0.0
+Version:        0.15.0.2
 Release:        0
 Summary:        Fast, high quality pseudo random number generation
 License:        BSD-2-Clause
@@ -27,10 +28,19 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-math-functions-devel
 BuildRequires:  ghc-primitive-devel
+BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-vector-devel
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-QuickCheck-devel
+BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-doctest-devel
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-quickcheck-devel
+%endif
 
 %description
 This package contains code for generating high quality random numbers that
@@ -63,6 +73,9 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
