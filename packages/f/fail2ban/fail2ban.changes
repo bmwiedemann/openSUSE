@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 24 13:40:32 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Added fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch 
+  to fixs CVE-2021-32749 - bnc#1188610 to prevent a command injection via mail comand
+
+-------------------------------------------------------------------
 Sat Dec  5 17:25:17 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Integrate change to resolve bnc#1146856
+- Integrate change to resolve bnc#1146856 and bnc#1180738
 
 -------------------------------------------------------------------
 Sun Nov 29 11:23:09 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>

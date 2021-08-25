@@ -1,7 +1,7 @@
 #
 # spec file for package fail2ban
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -49,6 +49,9 @@ Patch200:       %{name}-disable-iptables-w-option.patch
 Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 # PATCH-FEATURE-OPENSUSE fail2ban-opensuse-service-sfw.patch jweberhofer@weberhofer.at -- start after SuSEfirewall2 only for older distributions
 Patch300:       fail2ban-opensuse-service-sfw.patch
+# PATCH-FIX-UPSTREAM fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch jweberhofer@weberhofer.at -- fixes CVE-2021-32749
+Patch400:       fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch
+
 BuildRequires:  fdupes
 BuildRequires:  logrotate
 BuildRequires:  python3-tools
@@ -133,6 +136,7 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 %if !0%{?suse_version} > 1500
 %patch300 -p1
 %endif
+%patch400 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \
