@@ -18,7 +18,7 @@
 
 %define goflags "-buildmode=pie -trimpath -mod=vendor -modcacherw"
 Name:           gh
-Version:        1.13.1
+Version:        1.14.0
 Release:        0
 Summary:        The official CLI for GitHub
 License:        MIT

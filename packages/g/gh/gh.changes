@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Aug  7 05:32:43 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
+
+- Update to version 1.14.0
+  * Improve shell completion #4028
+    - Enable --json flag completion with multiple comma-separated fields
+    - Add completion for repo create --gitignore flag
+    - Add completion for repo create --license flag
+    - Switch to Cobra's improved bash completion with descriptions
+    - Enable descriptions in PowerShell completion #4085
+    - Add completion of -R/--repo flag based on available git remotes #3942
+  * Add pr merge --admin flag to allow admins to force-merge a pull request #4071
+  * Fix authenticating with GH_ENTERPRISE_TOKEN and GH_HOST environment variables #4019
+  * Fix labels display in issue list output #4079
+  * Fix printing certain GraphQL errors #4087
+
+-------------------------------------------------------------------
 Wed Jul 28 07:17:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
 - Update to version 1.13.1
