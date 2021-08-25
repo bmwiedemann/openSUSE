@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 19 08:04:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.32.10:
+  + core: fix the order of IPv6 addresses changing on service
+    restart.
+  + initrd: add command line option to configure link
+    autonegotiation and speed.
+  + ifcfg-rh:
+    - fix crash when parsing invalid DNS address.
+    - extend ifup/ifdown scripts to work with connection profile
+      names.
+  + udev: also react to "move" (and "change") udev actions in our
+    rules.
+- Changes from version 1.32.8:
+  + firewalld: configure zones on "Reloaded" signal.
+  + core: fix wrong MTU for bridge interfaces.
+  + cloud-setup: fix gateway address for Aliyun cloud.
+
+-------------------------------------------------------------------
 Wed Jul 28 17:13:05 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.32.6:
