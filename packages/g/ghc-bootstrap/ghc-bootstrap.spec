@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-bootstrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -95,8 +95,8 @@ Requires:       binutils-gold
 Requires:       llvm9
 %endif
 %ifnarch %{arm} s390x
-Requires:       libnuma-devel
 Requires:       libffi-devel
+Requires:       libnuma-devel
 %endif
 
 %description
@@ -134,6 +134,6 @@ cd ghc-%{version}
 %files
 %doc README.openSUSE
 %license LICENSE
-/opt
+/opt/*
 
 %changelog

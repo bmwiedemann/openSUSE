@@ -217,4 +217,12 @@ Add support for ppc64le.</comment>
     <comment>update haskell stack in openSUS</comment>
     <requestid>857261</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>554f09a222c82c34da6e471a3b93574a</srcmd5>
+    <version>8.10.1</version>
+    <time>1629917865</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914207</requestid>
+  </revision>
 </revisionlist>
