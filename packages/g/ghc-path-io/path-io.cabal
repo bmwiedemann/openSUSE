@@ -1,7 +1,7 @@
 cabal-version:   1.18
 name:            path-io
 version:         1.6.3
-x-revision: 1
+x-revision: 3
 license:         BSD3
 license-file:    LICENSE.md
 maintainer:      Mark Karpov <markkarpov92@gmail.com>
@@ -38,8 +38,8 @@ library
         filepath >=1.2 && <1.5,
         path >=0.6 && <0.10,
         temporary >=1.1 && <1.4,
-        time >=1.4 && <1.11,
-        transformers >=0.3 && <0.6,
+        time >=1.4 && <1.13,
+        transformers >=0.3 && <0.7,
         unix-compat
 
     if flag(dev)
@@ -66,7 +66,7 @@ test-suite tests
         filepath >=1.2 && <1.5,
         path >=0.6 && <0.10,
         path-io,
-        transformers >=0.3 && <0.6,
+        transformers >=0.3 && <0.7,
         unix-compat
 
     if flag(dev)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug  8 22:05:14 UTC 2021 - psimons@suse.com
+
+- Update path-io to version 1.6.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jun 21 05:22:49 UTC 2021 - psimons@suse.com
 
 - Update path-io to version 1.6.3 revision 1.
