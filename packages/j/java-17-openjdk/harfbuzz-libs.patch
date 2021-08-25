@@ -1,0 +1,13 @@
+diff --git a/make/modules/java.desktop/lib/Awt2dLibraries.gmk b/make/modules/java.desktop/lib/Awt2dLibraries.gmk
+index 4d0c0c00dbf..ef7eadae206 100644
+--- a/make/modules/java.desktop/lib/Awt2dLibraries.gmk
++++ b/make/modules/java.desktop/lib/Awt2dLibraries.gmk
+@@ -435,7 +435,7 @@ endif
+ 
+ ifeq ($(USE_EXTERNAL_HARFBUZZ), true)
+    LIBFONTMANAGER_EXTRA_SRC =
+-   BUILD_LIBFONTMANAGER_FONTLIB += $(LIBHARFBUZZ_LIBS)
++   BUILD_LIBFONTMANAGER_FONTLIB += $(HARFBUZZ_LIBS)
+ else
+    LIBFONTMANAGER_EXTRA_SRC = libharfbuzz
+ 
