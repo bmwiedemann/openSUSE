@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 15 16:16:21 UTC 2021 - psimons@suse.com
+
+- Update transformers-except to version 0.1.2.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
