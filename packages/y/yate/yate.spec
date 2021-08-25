@@ -25,7 +25,7 @@
 %endif
 
 Name:           yate
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        Yet Another Telephony Engine
 License:        GPL-2.0-or-later
