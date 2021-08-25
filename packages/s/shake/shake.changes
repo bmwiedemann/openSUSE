@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 10 13:42:12 UTC 2021 - psimons@suse.com
+
+- Update shake to version 0.19.5.
+  0.19.5, released 2021-07-04
+      #807, fix space leak in Database module
+      #796, fix a bug with newCache dependencies
+      #798, optimise dependency checking
+
+-------------------------------------------------------------------
 Thu Jan 14 19:37:45 UTC 2021 - psimons@suse.com
 
 - Update shake to version 0.19.4.

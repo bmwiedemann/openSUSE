@@ -19,7 +19,7 @@
 %global pkg_name shake
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.19.4
+Version:        0.19.5
 Release:        0
 Summary:        Build system library, like Make, but more accurate dependencies
 License:        BSD-3-Clause
