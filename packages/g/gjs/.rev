@@ -1631,4 +1631,12 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
   not updated to xorg-x11-server-Xvfb. (forwarded request 908845 from yfjiang)</comment>
     <requestid>908866</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>0fda0fc76dc6ce2783960c392d631a70</srcmd5>
+    <version>1.68.3</version>
+    <time>1629917778</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 912298 from iznogood)</comment>
+    <requestid>913690</requestid>
+  </revision>
 </revisionlist>

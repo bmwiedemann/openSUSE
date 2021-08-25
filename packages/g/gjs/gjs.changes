@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 15 17:50:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.68.3:
+  + Crash and bug fixes backported from the development branch.
+  + Build fixes.
+- Changes from version 1.68.2:
+  + Crash and regression fixes backported from the development
+    branch.
+  + Build fix to adjust to GLib renaming its main branch.
+
+-------------------------------------------------------------------
 Wed Jul 28 09:36:22 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Adapt xorg-x11-Xvfb BuildRequires on SLE and Leap, whose X has
