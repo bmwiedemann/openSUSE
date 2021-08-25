@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-http-cookie
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,32 +12,30 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define mod_name http-cookie
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-http-cookie
-Version:        1.0.3
+Version:        1.0.4
 Release:        0
-%define mod_name http-cookie
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  %{ruby}
-BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/sparklemotion/http-cookie
-Source:         http://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        gem2rpm.yml
 Summary:        A Ruby library to handle HTTP Cookies based on RFC 6265
 License:        MIT
 Group:          Development/Languages/Ruby
+URL:            https://github.com/sparklemotion/http-cookie
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        gem2rpm.yml
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  %{ruby}
+BuildRequires:  ruby-macros >= 5
 
 %description
 HTTP::Cookie is a Ruby library to handle HTTP Cookies based on RFC 6265.  It
@@ -54,6 +52,11 @@ and its modular API makes it easy to add support for a new backend store.
 %gem_install \
   --doc-files="CHANGELOG.md LICENSE.txt README.md" \
   -f
+# MANUAL
+# drop files from the git repository
+find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.travis.yml' -o -name '.gitignore' \) | xargs rm
+# /MANUAL
+
 
 %gem_packages
 

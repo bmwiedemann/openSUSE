@@ -1,5 +1,12 @@
 <package name="rubygem-http-cookie" project="openSUSE:Factory">
-  <title></title>
-  <description></description>
+  <title>A Ruby library to handle HTTP Cookies based on RFC 6265</title>
+  <description>HTTP::Cookie is a Ruby library to handle HTTP Cookies based on RFC 6265.  It
+has with security, standards compliance and compatibility in mind, to behave
+just the same as today's major web browsers.  It has builtin support for the
+legacy cookies.txt and the latest cookies.sqlite formats of Mozilla Firefox,
+and its modular API makes it easy to add support for a new backend store.
+
+</description>
   <devel project="devel:languages:ruby:extensions" package="rubygem-http-cookie"/>
+  <url>https://github.com/sparklemotion/http-cookie</url>
 </package>
