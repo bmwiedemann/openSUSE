@@ -65,4 +65,12 @@
     <comment>- fix build requires syntax error on expanding multiple python flavors</comment>
     <requestid>879099</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>933066af0224960ba966e208eeea38d9</srcmd5>
+    <version>1.6.0</version>
+    <time>1629917907</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914220</requestid>
+  </revision>
 </revisionlist>

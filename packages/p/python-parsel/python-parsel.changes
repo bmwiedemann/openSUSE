@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 25 09:43:47 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.6.0:
+  * Python 3.4 is no longer supported
+  * New `Selector.remove()` and `SelectorList.remove()` methods to
+    remove selected elements from the parsed document tree
+  * Improvements to error reporting, test coverage and documentation,
+    and code cleanup
+
+-------------------------------------------------------------------
 Mon Mar 15 08:18:14 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - fix build requires syntax error on expanding multiple python flavors
