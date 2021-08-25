@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 23 08:07:30 UTC 2021 - psimons@suse.com
+
+- Update yesod-core to version 1.6.21.0.
+  ## 1.6.21.0
+
+  * Export `Yesod.Core.Dispatch.defaultGen` so that users may reuse it for their own `YesodRunnerEnv`s [#1734](https://github.com/yesodweb/yesod/pull/1734)
+
+-------------------------------------------------------------------
+Thu Jul  1 12:50:39 UTC 2021 - psimons@suse.com
+
+- Update yesod-core to version 1.6.20.2.
+  ## 1.6.20.2
+
+  * Fix compatibility with template-haskell 2.17 [#1729](https://github.com/yesodweb/yesod/pull/1729)
+
+-------------------------------------------------------------------
 Sat May 22 15:38:11 UTC 2021 - psimons@suse.com
 
 - Update yesod-core to version 1.6.20.1.
