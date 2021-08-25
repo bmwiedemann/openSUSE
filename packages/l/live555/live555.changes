@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 23 14:46:03 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 2021.08.23:
+  * Updated the "readSocket()" code in "GroupsockHelper.cpp" yet
+    again to try to eliminate another (alleged) "depends on
+    uninitialised value" report from 'valgrind'.
+    (If, after this, you still see this, then your implementation
+    of "recvfrom()" is broken.)
+- Changes in 2021.08.19:
+  * Updated the "readSocket()" code in "GroupsockHelper.cpp" to
+    eliminate another possible "depends on uninitialised value"
+    report from 'valgrind'.
+- Changes in 2021.08.18:
+  * Updated the "readSocket()" code in "GroupsockHelper.cpp" to
+    eliminate a "depends on uninitialised value" report from
+    'valgrind'.
+- Changes in 2021.08.17:
+  * Updated the 'groupsock' "setPortNum()" function to not rely
+    upon the "ss_family" family field, in case it's uninitialized.
+- Changes in 2021.08.14:
+  * Fixed a minor bug in the previous release ("delete" should have
+    been "delete[]")
+- Changes in 2021.08.13:
+  * Fixed a bug in "MPEG1or2Demux" that could cause a 'reading
+    twice at the same time" abort when streaming from a MPEG
+    Program Stream file. (boo#1189726, CVE-2021-39283)
+  * Fixed a potential memory leak in "AC3AudioStreamFramer".
+    (boo#1189725, CVE-2021-39282)
+
+-------------------------------------------------------------------
 Thu Aug 12 00:38:24 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 2021.08.09:

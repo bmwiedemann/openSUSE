@@ -20,7 +20,7 @@
 %define lmdmaj 97
 
 Name:           live555
-Version:        2021.08.09
+Version:        2021.08.23
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only
@@ -114,9 +114,9 @@ exec_prefix=${prefix}
 libdir=${exec_prefix}/%{_lib}
 includedir=${prefix}/include
 
-Name: live555
+Name:           live555
 Description: Multimedia streaming libraries
-Version: %{version}
+Version:        %{version}
 Libs: -lliveMedia -lBasicUsageEnvironment -lUsageEnvironment -lgroupsock
 Cflags: -I${includedir}/liveMedia -I${includedir}/UsageEnvironment -I${includedir}/groupsock -I${includedir}/BasicUsageEnvironment
 EOF
@@ -136,12 +136,15 @@ EOF
 %files -n libliveMedia%{lmdmaj}
 %license COPYING
 %{_libdir}/libliveMedia.so.%{lmdmaj}*
+
 %files -n libBasicUsageEnvironment1
 %license COPYING
 %{_libdir}/libBasicUsageEnvironment.so.1*
+
 %files -n libgroupsock30
 %license COPYING
 %{_libdir}/libgroupsock.so.30*
+
 %files -n libUsageEnvironment3
 %license COPYING
 %{_libdir}/libUsageEnvironment.so.3*
