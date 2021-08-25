@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nio4r
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nio4r
-Version:        2.5.4
+Version:        2.5.8
 Release:        0
 %define mod_name nio4r
 %define mod_full_name %{mod_name}-%{version}
