@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:54:56 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Add install-bin and install-man to make target, and install into
+  /usr/lib instead of /usr/lib64 on 64-bit platforms (boo#1189784).
+- Add deps/rabbit/docs/set_rabbitmq_policy.sh.example to %doc.
+
+-------------------------------------------------------------------
 Mon Aug 23 14:20:39 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Separate autocomplete files into individual packages.

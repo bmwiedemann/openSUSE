@@ -23,14 +23,15 @@
 
 %bcond_without split_plugins
 
-%define _rabbit_erllibdir %{_libdir}/rabbitmq/lib/rabbitmq_server-%{version}
-%define _rabbit_libdir %{_libdir}/rabbitmq
+# We want to install into /usr/lib, even on 64-bit platforms
+%define _rabbit_libdir %{_exec_prefix}/lib/rabbitmq
+%define _rabbit_erllibdir %{_rabbit_libdir}/lib/rabbitmq_server-%{version}
 
 %if %{undefined _initddir}
 %define _initddir %{_sysconfdir}/init.d
 %endif
 
-%define _make_args DESTDIR="%{buildroot}" PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MAN_INSTALL_PATH="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
+%define _make_args DESTDIR="%{buildroot}" PREFIX="%{_exec_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MANDIR="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
 
 %define _rabbit_server_ocf scripts/rabbitmq-server.ocf
 %define _plugins_state_dir %{_localstatedir}/lib/rabbitmq/plugins
@@ -141,7 +142,7 @@ make all %{_make_args} %{?_smp_mflags}
 # Make elixir happy with Unicode
 export LANG=en_US.UTF-8
 export PYTHON=%{_bindir}/python3
-make install %{_make_args}
+make install install-bin install-man %{_make_args}
 
 mkdir -p %{buildroot}%{_sbindir}
 install -p -D -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
@@ -249,7 +250,9 @@ done
 /usr/lib/ocf/resource.d/rabbitmq/
 #
 %license LICENSE*
-%doc README* CODE_OF_CONDUCT.md CONTRIBUTING.md
+%doc README* CODE_OF_CONDUCT.md CONTRIBUTING.md deps/rabbit/docs/set_rabbitmq_policy.sh.example
+%{_mandir}/man5/rabbitmq-env.conf.5%{?ext_man}
+%{_mandir}/man8/rabbitmq*.8%{?ext_man}
 
 %if %{with split_plugins}
 %files plugins
