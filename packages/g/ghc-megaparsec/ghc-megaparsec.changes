@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug  8 22:06:07 UTC 2021 - psimons@suse.com
+
+- Update megaparsec to version 9.1.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Thu Jul 15 16:16:11 UTC 2021 - psimons@suse.com
+
+- Update megaparsec to version 9.1.0.
+  ## Megaparsec 9.1.0
+
+  * Added `dbg'` in `Text.Megaparsec.Debug` for debugging parsers that have
+    unshowable return values.
+
+  * Documentation improvements.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build

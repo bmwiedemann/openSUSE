@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-megaparsec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %global pkg_name megaparsec
 Name:           ghc-%{pkg_name}
-Version:        9.0.1
+Version:        9.1.0
 Release:        0
 Summary:        Monadic parser combinators
 License:        BSD-2-Clause
