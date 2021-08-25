@@ -17,19 +17,16 @@
 
 
 Name:           wyrmsun
-Version:        4.1.4
+Version:        5.0.1
 Release:        0
 Summary:        Strategy game based on history, mythology and fiction
-License:        GPL-2.0-only AND CC-BY-SA-3.0
+License:        CC-BY-SA-3.0 AND GPL-2.0-only
 Group:          Amusements/Games/Strategy/Real Time
 URL:            https://andrettin.github.io/
 Source:         https://github.com/Andrettin/Wyrmsun/archive/v%{version}/Wyrmsun-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-%if 0%{?suse_version} < 1330
-BuildRequires:  update-desktop-files
-%endif
 Requires:       wyrmgus = %{version}
 BuildArch:      noarch
 
@@ -43,22 +40,12 @@ and iron. And perhaps one day they will meet one another, beyond the stars...
 %setup -q -n Wyrmsun-%{version}
 
 %build
-%cmake
+%cmake -DBIN_DIR=bin
 
 %install
 %cmake_install
 rm -R %{buildroot}%{_datadir}/doc/wyrmsun/
 %fdupes -s %{buildroot}%{_datadir}
-
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
-
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
 
 %files
 %license license.txt
@@ -68,7 +55,6 @@ rm -R %{buildroot}%{_datadir}/doc/wyrmsun/
 %{_datadir}/wyrmsun
 %{_datadir}/icons/hicolor/*/apps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/appdata
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %changelog

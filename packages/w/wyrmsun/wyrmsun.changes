@@ -1,4 +1,127 @@
 -------------------------------------------------------------------
+Mon Aug 23 16:53:30 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.1
+  * Maps
+  + Updated the territory setup for the Tyrol area for the Earth
+    map (scenario mode).
+  * Miscellaneous
+  + Updated the SDL library to SDL2
+  + Fixed issue with the save game functionality.
+  + Fixed issue with loading a saved game from within a game.
+- Drop compat cruft for legacy openSUSE systems
+- Drop patch (not longer needed)
+  * fix-build.patch
+
+-------------------------------------------------------------------
+Sat Aug 21 14:37:35 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0.0
+  * Buildings
+    + Town halls, strongholds, mines and hunting lodges no longer
+      leave a destroyed building "corpse".
+  * Encyclopedia
+    + Added support for encyclopedia entries having links to each
+      other.
+    + Updated the literary texts for the encyclopedia, streamlining
+      them (removing footnotes and the "|" character which denoted
+      a caesura/break within a verse).
+  * Factions
+    + Fixed the requirements string for the Shadowcharm Clan
+      faction.
+    - Renamed the "Goth Tribe" to "Gothic Tribe", the
+      "Ostrogoth Tribe" to "Ostrogothic Tribe" and the
+      "Visigoth Tribe" to "Visigothic Tribe".
+    - Renamed the "Swede Tribe" to "Swedish Tribe".
+  * Heroes
+    + It is no longer possible to start a custom game with a custom
+      hero, they must now be recruited as other heroes are.
+    + Updated the hero symbol icon to use a frame, to make it more
+      visible on the map.
+  * Items
+    + Added "Curupira's" magic prefix for weapons (+3 fire damage).
+    + Added Potion of Mana.
+    + Made it so the Elixir of Vitality has a purple color
+      (previously it was gray), to make it more distinct from the
+      Elixir of Dexterity (which is black).
+  * Map Editor
+    + Fixed crash which occurred when pressing the "OK" button in
+      the player properties dialog.
+    + Fixed issue which caused solid overlay tiles to not be
+      displayed in the editor.
+    + Removed the old mod creation tools from the map editor, due
+      to the amount of maintenance they required, as well as their
+      reliance on outdated parts of the engine. A mod creation user
+      interface may come back in some form in the future.
+  * Miscellaneous
+    + Removed the No Randomness and No Day/Night Cycle options.
+    + Fixed crash which occurring when accessing Goblin sound
+      options within a game.
+    + Removed the faction dropdown from the custom game menu, as a
+      faction prompt already comes when starting the game.
+    + Removed the tech tree level dropdowns from the custom game
+      menu.
+    + Persistent data (e.g. hero levels or quest completion) will
+      no longer be altered during a game if a cheat was used.
+  * Mods
+    + Removed the mods submenu, as it only supported mods in an
+      old format.
+  * Quests
+    + Added a couple of side-quests which only occur on certain
+      days of the week in the real world with the objective of
+      acquiring the upgrade of the corresponding deity, for the
+      Norse and Anglo-Saxon civilizations. For instance, the Norse
+      "Tysdag" quest only occurs on a Tuesday, and has the
+      objective of choosing the Tyr deity.
+    + Added two side-quests for the Germanic civilization to build
+      smithies.
+  * Scenarios
+    + Fixed crash which occurred when starting the Thunraz's
+      Servant scenario.
+    + Added more predefined settlement territories for the Earth
+      map.
+    + Added starting caravan for the Goldhoof Clan in the A Home
+      in the Fields of Sand scenario.
+    + Added the Heimdall's Stones unique building to the new Earth
+      map for the correct start dates.
+    + The A Home in the Fields of Sand scenario now starts during
+      summer.
+    + Improved the quality of the projection used for the Earth map.
+  * Terrain
+    + Added new dry mud and mud decoration tiles.
+    + Dry Grass terrain no longer becomes covered in snow during
+      winter.
+  * Units
+    + Fixed crash which occurred when a ranged unit was garrisoned
+      inside a caravan while near enemies.
+    + Increased Spearman damage from 5 to 6.
+    + Minecarts can now move diagonally, and can move outside of
+      railroads with a large speed penalty (-5).
+  * Upgrades
+    + Added Oil Lamp upgrade (+1 sight range for buildings),
+      researchable at the Market.
+    + Added the Furor Teutonicus upgrade for the Teutonic
+      civilization (+2 Damage for infantry), researchable at the
+      Barracks.
+    + Added the House-Burning upgrade for the Norse civilization
+      (+20% Bonus vs. Buildings for infantry), researchable at
+      the Barracks.
+  * User Interface
+    + Reworked the main menu to be QML-based.
+    + F11 is now the screenshot hotkey.
+    + Reworked the game's rendering system, graphical interface
+      and input system to use the Qt Framework.
+    + The game is now always in borderless fullscreen mode, as
+      the new UI framework supports that. The main purpose of the
+      windowed mode was to allow alt-tabbing seamlessly, which the
+      borderless fullscreen mode also provides. And unlike the old
+      fullscreen functionality, this supports any resolution.
+    + Reworked the tech tree menu.
+    + The scenario menu is now depicted as a tree.
+    + Added a submenu for managing custom heroes, and made it
+      possible to add a description to them.
+
+-------------------------------------------------------------------
 Sun Feb 28 15:20:26 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.1.4
