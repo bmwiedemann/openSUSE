@@ -7,16 +7,16 @@ Subject: [PATCH] Disable Altivec for ppc64le
  Eigen/Core |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: eigen-3.3.8/Eigen/Core
+Index: eigen-3.4.0/Eigen/src/Core/util/ConfigureVectorization.h
 ===================================================================
---- eigen-3.3.8.orig/Eigen/Core
-+++ eigen-3.3.8/Eigen/Core
-@@ -220,7 +220,7 @@
-     #undef bool
+--- eigen-3.4.0.orig/Eigen/src/Core/util/ConfigureVectorization.h
++++ eigen-3.4.0/Eigen/src/Core/util/ConfigureVectorization.h
+@@ -374,7 +374,7 @@
      #undef vector
      #undef pixel
+ 
 -  #elif defined __ALTIVEC__
 +  #elif defined __ALTIVEC__ && _CALL_ELF != 2
+ 
      #define EIGEN_VECTORIZE
      #define EIGEN_VECTORIZE_ALTIVEC
-     #include <altivec.h>

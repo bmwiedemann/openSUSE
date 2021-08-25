@@ -1,7 +1,7 @@
 #
-# spec file for package eigen3
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,10 +33,10 @@
 %endif
 
 Name:           eigen3%{?pkgsuffix}
-Version:        3.3.9
+Version:        3.4.0
 Release:        0
 Summary:        C++ Template Library for Linear Algebra
-License:        MPL-2.0 AND LGPL-2.1-only AND LGPL-2.1-or-later AND BSD-3-Clause
+License:        BSD-3-Clause AND LGPL-2.1-only AND MPL-2.0 AND LGPL-2.1-or-later
 URL:            http://eigen.tuxfamily.org/
 Source0:        https://gitlab.com/libeigen/eigen/-/archive/%{version}/%{srcname}-%{version}.tar.bz2
 Patch0:         0001-Disable-Altivec-for-ppc64le.patch
@@ -45,14 +45,8 @@ Patch1:         0001-Do-stack-allignment-on-ppc.patch
 Patch3:         01_install_FindEigen3.patch
 # PATCH-FIX-OPENSUSE eigen3-3.3.1-fixcmake.patch -- Fix double {prefix} as we use INCLUDE_INSTALL_DIR with {_includedir}
 Patch4:         eigen3-3.3.1-fixcmake.patch
-# PATCH-FIX-UPSTREAM eigen3-CastXML-support-for-aarch64.patch badshah400@gmail.com -- Add CastXML support for ARM aarch64 [https://gitlab.com/libeigen/eigen/-/issues/1979]
-Patch5:         eigen3-CastXML-support-for-aarch64.patch
 %if %{with tests}
 # SECTION Patches to fix tests
-# PATCH-FIX-UPSTREAM https://gitlab.com/libeigen/eigen/-/commit/72c0bbe2bd1c49c75b6efdb81d0558f8b62578d1
-Patch7:         eigen3-failtests-handling.patch
-# PATCH-FIX-UPSTREAM eigen3-make-sparseqr-unit-test-stable.patch https://gitlab.com/libeigen/eigen/-/issues/899 badshah400@gmail.com -- Make sparseqr test more stable to prevent random failures; patch taken from upstream commit
-Patch8:         eigen3-make-sparseqr-unit-test-stable.patch
 # PATCH-FIX-UPSTREAM eigen3-googlehash-detection.patch badshah400@gmail.com -- GoogleHash needs C++11 std to compile test code and be succesfully detected
 Patch9:         eigen3-googlehash-detection.patch
 # PATCH-FIX-UPSTREAM eigen3-fix-forward_adolc-unit-test.patch badshah400@gmail -- Prevent conflict of std::min/max with eigen's macros by importing eigen test-suite's main.h header only after all system headers have been included
@@ -122,7 +116,7 @@ echo "HTML_TIMESTAMP = NO" >> doc/Doxyfile.in
 
 %build
 %cmake \
- -DINCLUDE_INSTALL_DIR=include/eigen3 \
+ -DINCLUDE_INSTALL_DIR:PATH=include/eigen3 \
  -DCMAKE_SKIP_RPATH:BOOL=OFF \
  -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
  -DEIGEN_TEST_CXX11:Bool=%{?with_tests:ON}%{!?with_tests:OFF} \
@@ -160,6 +154,7 @@ export EIGEN_REPEAT=1
 %doc build/doc/html/
 
 %else
+
 %files devel
 %license COPYING.*
 %{_includedir}/eigen3/
