@@ -18,7 +18,7 @@
 
 %global pkg_name concurrency
 Name:           ghc-%{pkg_name}
-Version:        1.11.0.1
+Version:        1.11.0.2
 Release:        0
 Summary:        Typeclasses, functions, and data types for concurrency and STM
 License:        MIT

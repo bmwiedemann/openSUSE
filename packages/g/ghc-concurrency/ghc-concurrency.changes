@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:24:07 UTC 2021 - psimons@suse.com
+
+- Update concurrency to version 1.11.0.2.
+  1.11.0.2 (2021-08-15)
+  ---------------------
+
+  * Git: :tag:`concurrency-1.11.0.2`
+  * Hackage: :hackage:`concurrency-1.11.0.2`
+
+  Miscellaneous
+  ~~~~~~~~~~~~~
+
+  * Remove reference to freenode in README.
+
+-------------------------------------------------------------------
 Sun Mar 14 22:46:38 UTC 2021 - psimons@suse.com
 
 - Update concurrency to version 1.11.0.1.
