@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:43:21 UTC 2021 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.3.
+  5.2.3 [2021.07.27]
+  ------------------
+  * Add `shift` and `reset` to `Control.Monad.Codensity`.
+
+-------------------------------------------------------------------
+Tue Jul 27 07:51:52 UTC 2021 - psimons@suse.com
+
+- Update kan-extensions to version 5.2.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sat Feb 20 00:07:52 UTC 2021 - psimons@suse.com
 
 - Update kan-extensions to version 5.2.2.
