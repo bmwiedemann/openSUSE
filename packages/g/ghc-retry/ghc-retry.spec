@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-retry
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name retry
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.8.1.2
+Version:        0.9.0.0
 Release:        0
 Summary:        Retry combinators for monadic actions that may fail
 License:        BSD-3-Clause
