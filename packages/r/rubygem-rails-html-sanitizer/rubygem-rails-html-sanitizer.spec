@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-rails-html-sanitizer
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-rails-html-sanitizer
-Version:        1.3.0
+Version:        1.4.2
 Release:        0
 %define mod_name rails-html-sanitizer
 %define mod_full_name %{mod_name}-%{version}
@@ -37,7 +37,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{ruby}
 BuildRequires:  ruby-macros >= 5
-Url:            https://github.com/rails/rails-html-sanitizer
+URL:            https://github.com/rails/rails-html-sanitizer
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        HTML sanitization to Rails applications (part of Rails)
