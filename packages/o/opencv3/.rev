@@ -595,4 +595,12 @@ Please add to Staging:E (which has the openCV 4.1.0 SR)
 </comment>
     <requestid>874425</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>fe5ffe67c209d0f20525b167cd62ae42</srcmd5>
+    <version>3.4.10</version>
+    <time>1629917765</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913612</requestid>
+  </revision>
 </revisionlist>

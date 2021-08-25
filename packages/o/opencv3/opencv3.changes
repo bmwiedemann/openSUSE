@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Apr 13 08:29:37 UTC 2021 - pgajdos@suse.com
+
+- do not require pkgconfig(IlmBase), the correct dependency
+  [pkgconfig(IlmBase) for openexr < 3.0.0, pkgconfig(Imath) for
+  openexr >= 3.0.0] is pulled by pkgconfig(OpenEXR)
+
+-------------------------------------------------------------------
 Thu Jan 21 09:42:41 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Use the python2/python3 macros only when the corresponding 

@@ -39,7 +39,7 @@ Version:        3.4.10
 Release:        0
 Summary:        Collection of algorithms for computer vision
 # GPL-2.0 AND Apache-2.0 files are in 3rdparty/ittnotify which is not build
-License:        BSD-3-Clause AND GPL-2.0-only AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause AND GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://opencv.org/
 Source0:        https://github.com/opencv/opencv/archive/%{version}.tar.gz#/%{srcname}-%{version}.tar.gz
@@ -54,7 +54,6 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
 BuildRequires:  unzip
-BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
