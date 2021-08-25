@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-doctemplates
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name doctemplates
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.9
+Version:        0.10
 Release:        0
 Summary:        Pandoc-style document templates
 License:        BSD-3-Clause
