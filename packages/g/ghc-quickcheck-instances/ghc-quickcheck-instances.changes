@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 28 07:41:13 UTC 2021 - psimons@suse.com
+
+- Update quickcheck-instances to version 0.3.25.2 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Apr 26 09:47:01 UTC 2021 - psimons@suse.com
 
 - Add quickcheck-instances at version 0.3.25.2 revision 1.
