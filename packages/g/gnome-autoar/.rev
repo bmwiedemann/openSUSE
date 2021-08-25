@@ -91,4 +91,12 @@
     <comment>Rearrange the changelog layout to fit ibs requirement of incremental changelog compared to sle-15-sp3. (forwarded request 909348 from yfjiang)</comment>
     <requestid>909726</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>987dcd7629ac463448a5a8687dea982e</srcmd5>
+    <version>0.4.0</version>
+    <time>1629917771</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 911817 from iznogood)</comment>
+    <requestid>913680</requestid>
+  </revision>
 </revisionlist>

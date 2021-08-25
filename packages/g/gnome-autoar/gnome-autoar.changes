@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 10 19:43:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.0:
+  + Port to meson build system.
+  + Add support for creation of password-protected archives.
+  + Fix extraction of archives with absolute paths.
+- Add meson BuildRequires and macros following upstreams port.
+- Add gtk-doc BuildRequires and pass gtk_doc=true to meson, needed
+  now to build documentation.
+- Pass vapi=true to meson, needed to build vala bindings.
+
+-------------------------------------------------------------------
 Fri Jul 30 08:53:05 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Drop gnome-autoar-CVE-2020-36241.patch on SLE and Leap 15.4:

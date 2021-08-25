@@ -17,21 +17,23 @@
 
 
 Name:           gnome-autoar
-Version:        0.3.3
+Version:        0.4.0
 Release:        0
 Summary:        Automatic archives creating and extracting library
 License:        LGPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://gitlab.gnome.org/GNOME/gnome-autoar
-Source0:        https://download.gnome.org/sources/gnome-autoar/0.3/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-autoar/0.4/%{name}-%{version}.tar.xz
 
-BuildRequires:  gobject-introspection-devel
+BuildRequires:  gtk-doc
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.35.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.35.6
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.35.6
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.2
-BuildRequires:  pkgconfig(libarchive) >= 3.2.0
+BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(vapigen)
 
 %description
@@ -86,18 +88,17 @@ to use archives as a method to transfer directories over the Internet.
 This package brings files required to develop against gnome-autoar
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--enable-gtk \
+%meson \
+	-Dvapi=true \
+	-Dgtk_doc=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 
 %post   -n libgnome-autoar-0-0 -p /sbin/ldconfig
 %postun -n libgnome-autoar-0-0 -p /sbin/ldconfig
@@ -116,6 +117,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/gnome-autoar-0.vapi
 %{_datadir}/vala/vapi/gnome-autoar-gtk-0.vapi
+%{_datadir}/vala/vapi/gnome-autoar-0.deps
+%{_datadir}/vala/vapi/gnome-autoar-gtk-0.deps
 
 %files -n typelib-1_0-GnomeAutoar-0_1
 %{_libdir}/girepository-1.0/GnomeAutoar-0.1.typelib
@@ -126,10 +129,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n libgnome-autoar-0-0
 %license COPYING
 %{_libdir}/libgnome-autoar-0.so.0
-%{_libdir}/libgnome-autoar-0.so.0.0.0
+%{_libdir}/libgnome-autoar-0.so.0.1.0
 
 %files -n libgnome-autoar-gtk-0-0
 %{_libdir}/libgnome-autoar-gtk-0.so.0
-%{_libdir}/libgnome-autoar-gtk-0.so.0.0.0
+%{_libdir}/libgnome-autoar-gtk-0.so.0.1.0
 
 %changelog
