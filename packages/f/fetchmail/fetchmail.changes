@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 24 16:50:40 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 6.4.21:
+  * REGRESSION FIX: The new security fix in 6.4.20 for
+    CVE-2021-36386 caused truncation of messages logged to
+    buffered outputs, predominantly --logfile.
+
+-------------------------------------------------------------------
 Thu Jul 29 07:57:07 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 6.4.20: [bsc#1188875, CVE-2021-36386]
