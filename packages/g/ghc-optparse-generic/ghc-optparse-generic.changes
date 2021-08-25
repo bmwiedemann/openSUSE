@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 13 09:51:04 UTC 2021 - psimons@suse.com
+
+- Update optparse-generic to version 1.4.4 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Jul 10 13:39:29 UTC 2021 - psimons@suse.com
+
+- Update optparse-generic to version 1.4.4 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Feb  3 20:26:00 UTC 2021 - psimons@suse.com
 
 - Update optparse-generic to version 1.4.4 revision 1.

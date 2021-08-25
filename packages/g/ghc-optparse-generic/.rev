@@ -23,4 +23,12 @@
     <comment>update haskell stack in factory</comment>
     <requestid>870874</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>b31adb5c139f96a6b5f44adb36ef152d</srcmd5>
+    <version>1.4.4</version>
+    <time>1629917850</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>912750</requestid>
+  </revision>
 </revisionlist>
