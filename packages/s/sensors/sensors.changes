@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 20 09:40:26 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim ExcludeArch, package build is successful.
+
+-------------------------------------------------------------------
 Mon Apr 26 13:06:50 UTC 2021 - Jean Delvare <jdelvare@suse.com>
 
 - change-pidfile-path-from-var-run-to-run.patch: Change PIDFile

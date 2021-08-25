@@ -57,7 +57,6 @@ BuildRequires:  flex
 BuildRequires:  rrdtool-devel
 BuildRequires:  systemd-rpm-macros
 Requires:       modutils
-ExcludeArch:    s390 s390x
 %{?systemd_requires}
 
 %description
