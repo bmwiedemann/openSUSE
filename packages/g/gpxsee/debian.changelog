@@ -1,3 +1,10 @@
+gpxsee (9.5) stable; urgency=low
+
+  * Added support for ONmove (Decathlon) watch log files.
+  * Fixed/improved IMG labels handling.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 22 Aug 2021 17:56:58 +0200
+
 gpxsee (9.4) stable; urgency=low
 
   * Rotate JPEG thumbnails according to EXIF data.

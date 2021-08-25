@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        9.4
+Version:        9.5
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -78,7 +78,7 @@ Recommends: libqt5-qtpbfimageformat
 %description
 GPXSee is a Qt-based tool for visualizing and analyzing GPX, TCX, FIT, KML,
 IGC, CUP, NMEA, SLF, SML, LOC, OziExplorer (PLT, RTE, WPT), Garmin GPI&CSV,
-TomTom OV2&ITN and geotagged JPEG files.
+TomTom OV2&ITN, ONmove OMD/GHP and geotagged JPEG files.
 
 %prep
 %setup -q -n GPXSee-%{version}
