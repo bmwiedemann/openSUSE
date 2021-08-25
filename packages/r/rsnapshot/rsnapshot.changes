@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Aug 15 13:28:41 UTC 2021 - munix9@googlemail.com
+
+- Add fix-tests-path.patch
+  By changing the access rights in Factory/TW for /home/ from
+  0755 to 0555
+  (see https://build.opensuse.org/package/rdiff/Base:System/filesystem?linkrev=base&rev=209)
+  the tests fail.
+  The tests are now copied to /tmp/ before execution to ensure a
+  smooth run.
+
+-------------------------------------------------------------------
 Tue Jul 27 06:33:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.4:

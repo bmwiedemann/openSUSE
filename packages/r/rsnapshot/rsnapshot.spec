@@ -28,6 +28,7 @@ Source1:        rsnapshot.logrotate
 Patch1:         rsnapshot-config.patch
 Patch3:         remove-dead-external-css-link.patch
 Patch4:         backup_pgsql.patch
+Patch5:         fix-tests-path.patch
 BuildRequires:  logrotate
 BuildRequires:  openssh
 BuildRequires:  perl
@@ -63,6 +64,7 @@ find docs utils *pl *md *in -type f -exec sed -i "s|usr/local|usr|g" {} +
 make %{?_smp_mflags}
 
 %check
+cp -a t /tmp
 make %{?_smp_mflags} test
 
 %install

@@ -1,0 +1,17 @@
+--- a/configure
++++ b/configure
+@@ -2418,11 +2418,11 @@
+ CWD=`eval echo \`pwd\``
+ CWD="$CWD/"
+ 
+-TEST="$CWD/t/"
++TEST="/tmp/t/"
+ 
+-SNAP="$CWD/t/support/snapshots"
++SNAP="/tmp/t/support/snapshots"
+ 
+-TEMP="$CWD/t/support/files/template"
++TEMP="/tmp/t/support/files/template"
+ 
+ 
+ 
