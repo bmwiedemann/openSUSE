@@ -17,7 +17,7 @@
 
 
 Name:           pango
-Version:        1.48.7
+Version:        1.48.9
 Release:        0
 Summary:        Library for Layout and Rendering of Text
 License:        LGPL-2.1-or-later
@@ -26,8 +26,6 @@ URL:            https://pango.gnome.org/
 Source0:        %{name}-%{version}.tar.xz
 Source2:        macros.pango
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 3ff6365.patch dimstar@opensuse.org -- Revert upstream commit, introduces runtime dep on X
-Patch0:         https://gitlab.gnome.org/GNOME/pango/-/commit/3ff6365.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -36,7 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.12.10
 BuildRequires:  pkgconfig(fontconfig) >= 2.11.91
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(fribidi) >= 0.19.7
+BuildRequires:  pkgconfig(fribidi) >= 1.0.6
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.59.2
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
@@ -120,7 +118,6 @@ to develop applications that require these.
 
 %prep
 %setup
-%patch0 -p1 -R
 
 %build
 %meson \
