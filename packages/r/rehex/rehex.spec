@@ -17,7 +17,7 @@
 
 
 Name:           rehex
-Version:        0.3.91
+Version:        0.3.92
 Release:        0
 Summary:        Reverse Engineers' Hex Editor
 License:        GPL-2.0-only

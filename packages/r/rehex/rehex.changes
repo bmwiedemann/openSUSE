@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 26 16:28:32 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.3.92:
+  * Reduce persistent memory usage (#52).
+  * Fully undo virtual mapping changes in one step (#126).
+  * Fix build dependency errors (#129).
+  * Add "Find previous" button to search dialogs (#111).
+  * Fix hard-to-see colours in "Decode values" panel on some
+    systems (#127).
+  * Fix build errors on FreeBSD (#133).
+  * Prevent document from jumping around when the window is resized
+    or disassembly is in progress (#132).
+  * Fix build errors when using wxWidgets 3.1.5 and newer.
+  * Refactor selection handling to make sense in virtual
+    section view (#125).
+  * Add font face setting to "View" menu (#128).
+  * Correctly track whether files have been modified
+    since saving (#122).
+
+-------------------------------------------------------------------
 Thu Jun 24 11:06:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Fix Factory build
