@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Feb  7 03:07:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-CSS-Minifier-XS/Changes
+
+  0.13      2021-02-06 17:26:39-08:00 America/Vancouver
+      - Internals; avoid allocating memory for each node as we tokenize the
+        document, and simply use pointers back into original string.
+        - Dramatically improves performance; local testing shows boost from
+          ~25/s to ~85MB/s
+      - Improve zero value minification further
+      - Simplified whitespace compaction
+  0.12      2021-01-30 21:46:07-08:00 America/Vancouver
+      - rewrote test suite into a single ".t" test
+      - GH #1 / RT #97574; whitespace before a ":" in a pseudo-selector is
+        meaningful and needs to be preserved (e.g. "#link :visited")
+      - Further reductions of "zero values", when possible
+        - "00000px" and "0.0px" become "0px"
+        - "000%" and "0.0%" become "0%"
+        - units are preserved inside of functions, but eliminated otherwise, and
+          percentages are always left as a percentages
+      - Optimized whitespace collapsing
+      - Optimized memory usage and string copying
+  0.11      2020-12-30 21:27:39-08:00 America/Vancouver
+      - POD spelling fixes
+      - Switch to DZil Author Bundle
+  0.10      2020-12-28 11:00:17-08:00 America/Vancouver
+      - RT #90879; correct minification of %s in "hsl()" and "hsla()" functions
+        Thanks to Philipp Soehnlein
+      - RT #103231; don't remove units on zero values inside of functions.
+        Thanks to Isaac Montoya, for an additional test case.
+      - No long drop units on zero percentages, as those may be required for CSS
+        animations.  Thanks to Isaac Montoya for continuing to poke me on this.
+      - Now prunes leading whitespace before "!important"
+          e.g. "color: red !important" becomes "color:red!important"
+      - Switch to Dist::Zilla
+
+-------------------------------------------------------------------
 Sat Mar 14 15:58:37 UTC 2015 - coolo@suse.com
 
 - updated to 0.09
