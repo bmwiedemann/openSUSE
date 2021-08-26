@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 23 23:31:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.22
+  * Ability to encode BTF to a separate file
+  * Multithreaded DWARF loading
+  * Details at https://marc.info/?l=dwarves&m=162975403628056&w=2
+
+-------------------------------------------------------------------
 Wed Aug 18 09:00:01 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - When building with system libbpf depend also on new enough Linux headers.

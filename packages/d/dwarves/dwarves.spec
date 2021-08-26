@@ -19,12 +19,12 @@
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150300
 %define have_libbpf 1
 %endif
-%if ( 0%{?sle_version} && 0%{?sle_version} <= 150300 ) || ( 0%{?suse_version} && 0%{?suse_version} < 1500 )
-%define have_libebl-plugins 1
+%if (0%{?sle_version} && 0%{?sle_version} <= 150300) || (0%{?suse_version} && 0%{?suse_version} < 1500)
+%define have_libebl_plugins 1
 %endif
 
 Name:           dwarves
-Version:        1.21+git177.1ef87b2
+Version:        1.22
 Release:        0
 Summary:        DWARF utilities
 License:        GPL-2.0-only
@@ -32,9 +32,8 @@ Group:          Development/Tools/Debuggers
 URL:            https://acmel.wordpress.com/
 #Git-Clone:	git://git.kernel.org/pub/scm/devel/pahole/pahole
 #Git-Web:	http://git.kernel.org/cgit/devel/pahole/pahole.git
-Source:         %{name}-%{version}.tar.xz
-#Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
-#Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
+Source:         https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.xz
+Source2:        https://fedorapeople.org/~acme/dwarves/dwarves-%version.tar.sign
 Source9:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  libdw-devel >= 0.171
@@ -96,17 +95,17 @@ This package contains the development files for libdwarves, a library
 for processing DWARF, a debugging data format for ELF files.
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
 sv="$PWD/lib.v"
 ver=$(echo %version | cut -d+ -f1)
 echo "DWARVES_$ver{ global: *; };" >"$sv"
-%cmake -DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv" \
+%cmake \
 %if 0%{?have_libbpf}
 	-DLIBBPF_EMBEDDED=OFF \
 %endif
-	%nil
+	-DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv"
 %cmake_build
 
 %install
