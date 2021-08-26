@@ -1,7 +1,7 @@
 #
 # spec file for package python-pluginbase
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pluginbase
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Module for the development of flexible plugin systems
 License:        BSD-3-Clause
@@ -51,7 +51,7 @@ cd tests
 %pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/*
 

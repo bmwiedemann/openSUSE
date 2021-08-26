@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Aug 25 10:45:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.0.1
+  * Add a Pipfile with pytest and some scripts
+  * Update the setup.py to be dynamic
+  * Move the README file to RST for PyPi
+  * Bump the version to 1.0.1
+  * Remove old versions from setup.py
+  * Remove old versions from travis.yml
+  * Remove deprecated tests
+  * Remove deprecated yield_fixture
+  * Add python 3.8 and 3.9 support
+
+-------------------------------------------------------------------
 Tue May 26 08:31:22 UTC 2020 - Thomas Schraitle <thomas.schraitle@suse.com> - 1.0.0
 
 - First initial release 1.0.0
