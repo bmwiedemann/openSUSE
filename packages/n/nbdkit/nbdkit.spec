@@ -27,7 +27,7 @@
 %global broken_test_arches %{arm} aarch64
 
 Name:           nbdkit
-Version:        1.27.1
+Version:        1.27.8
 Release:        0
 Summary:        Network Block Device server
 License:        BSD-3-Clause
@@ -165,6 +165,7 @@ Requires:       %{name}-server = %{version}-%{release}
 
 %description example-plugins
 This package contains example plugins for %{name}.
+
 
 
 

@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Wed Aug 25 23:03:26 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.27.8:
+  * boo#1189634
+  * Version 1.27.8.
+  * data: Simplify some of the Python code in test cases
+  * data: Fix optimization of inlined lists
+  * data: Optimize slices of some constant expressions
+  * data: Add a test that expected optimizations are being performed
+  * data: Get rid of EXPR_EXPR
+  * data: New functions new_node/get_node with simpler usage
+  * vector: Add vector_duplicate function
+  * cow: Clarify documentation for new cow-block-size option
+  * docs: Fix title of nbdkit-client man page
+  * server: reset meta context replies on starttls
+  * Version 1.27.7.
+  * cow: Ship cow.h header
+  * Version 1.27.6.
+  * server: CVE-2021-3716 reset structured replies on starttls
+  * cow: Make the block size configurable
+  * vddk: Add stats about the amount of time spent in VDDK calls
+  * vddk: Replace DEBUG_CALL with bracketed VDDK_CALL_START/END macros
+  * cow: Remove #include <sys/ioctl.h> which appears to be unused
+  * cow: Make cow_on_cache static
+  * maint: Mention online gpg keyring for security use
+  * data: Missed optimization: ( fill ) => fill
+  * data: Optimize strings with repeated characters into fills
+  * data: When possible, combine adjacent list elements
+  * common/utils: Fix off-by-one error in <vector>_remove
+  * tests/test-data-extents.sh: Remove some bogus tests of zero extents
+  * common/allocators/zstd.c: Handle zeroing unallocated space
+  * data: Optimize single element lists containing a single byte
+  * data: Remove redundant redefinition of APPEND_EXPR macro
+  * data: Use common EXPR_NULL
+  * data: Add a new EXPR_FILL expression type to optimize <byte>*N
+  * maint: Also ignore signature files
+  * Version 1.27.5.
+  * maint: Modernize configure.ac to silence autoreconf warnings
+  * maint: Update to latest ax_pthread.m4
+  * maint: Default to probing valgrind at runtime
+  * tests/test-data-format.sh: Reenable valgrind
+  * common/allocators/malloc.c: Remove bogus kernel hints
+  * delay: Test delay-open and delay-close
+  * delay: Fix delay-close
+  * server: nanosleep: Change error for early end of sleep
+  * server: Return from nbdkit_nanosleep early if the socket closes
+  * delay: Improve parsing and representation of delay times
+  * tests/test-debug-flags.sh: Don't use port 10809 during test
+  * cow: Add some more debugging especially for blk_read_multiple and cow-on-read
+  * tests: Check that cache-min-block-size works properly
+  * data: Improve the example with a diagram
+  * example4: Do the parameter checking in config_complete
+  * example4: Use get_ready instead of config_complete to allocate the disk
+  * cache: Move plugin-args in synopsis earlier
+  * cow: General revision and updates to the manual
+  * server: Make debug messages atomic
+  * Version 1.27.4.
+  * cache, cow: Fix data corruption in zero and trim on unaligned tail
+  * docs: Grammar fix for .cache
+  * python: Implement .cleanup() method
+  * cache, cow: More links to related filters in documentation
+  * delay: Add delay-open and delay-close
+  * cow: Implement cow-on-read
+  * tests: cache: Test cache-on-read option really caches
+  * tests: cache: Simplify test-cache-on-read.sh
+  * cow: Improve documentation of cow-on-cache option
+  * docs: Improve documentation of .can_cache and .cache methods
+  * cache: Fix misleading LRU diagram and comment
+  * cache: Refactor printing state into new function
+  * cache, cow: Use a 64K block size by default
+  * cache: Add cache-min-block-size parameter
+  * cache: Implement cache-on-read=/PATH
+  * cache, cow: Use full pread/pwrite operations
+  * cache, cow: Add blk_read_multiple function
+  * cache: Reduce verbosity of debugging
+  * cow: Fix assert failure in cow_extents
+  * Version 1.27.3.
+  * ocaml: Change thread model in examples to SERIALIZE_ALL_REQUESTS
+  * docs: Correct --selinux-label example
+  * data: Include byte-swapping.h
+  * wrapper: Use vector type instead of realloc
+  * ocaml: Fix comment on plugin .pread field
+  * ocaml: tests: Add .after_fork method to test plugin
+  * ocaml: Add binding for new .cleanup method
+  * ocaml: Rearrange the callbacks
+  * ocaml: tests: Actually call .get_ready method in test plugin
+  * tests: Add a better test of real VDDK
+  * vddk: Implement can_flush and can_fua
+  * Version 1.27.2.
+  * ocaml: Fix valgrinding by only ignoring caml_stat_alloc* functions
+  * ocaml: Call caml_shutdown when unloading the plugin
+  * cow: Reduce verbosity of debugging
+  * docs: Remove nbd-client '-b 512' flag from documentation
+  * docs: Use I<> consistently around command line options
+  * ssh: Drop srv_pubkey entirely
+  * plugins/ssh: remove pointless code fetching SHA1 fingerprint
+  * floppy: Note that nbdkit-cow-filter can be used
+  * floppy: support FAT FSes with unused space.
+  * python: Remove documentation related to Python 2 and nbdkit <= 1.14
+  * data: Add le<NN>: and be<NN>: prefixes for little and big endian words
+  * data: Rearrange cases in switch statement
+  * maint: Untabify configure.ac
+  * Version 1.27.1.
+  * tests/test-cow-extents1.sh: Fix this for new output of nbdinfo
+  * tests: Skip tests/test-file-readonly.sh if run as root
+  * wrapper: Unset DEBUGINFOD_URLS
+  * tests: Test --run + --tls + $uri + $tls
+  * server: Add $tls shell variable for captive nbdkit
+  * server: When --tls is used, set captive $uri variable to nbds://...
+
+-------------------------------------------------------------------
 Thu Jul 01 12:24:31 UTC 2021 - rpm@fthiessen.de
 
 - Update to version 1.27.1:

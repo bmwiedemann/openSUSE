@@ -41,4 +41,41 @@ near future.</comment>
     <comment></comment>
     <requestid>903566</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5519bd2f44fadba2ab135ed6d3f099d3</srcmd5>
+    <version>1.27.8</version>
+    <time>1630012507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.8:
+  * boo#1189634
+  * Version 1.27.8.
+  * data: Simplify some of the Python code in test cases
+  * data: Fix optimization of inlined lists
+  * data: Optimize slices of some constant expressions
+  * data: Add a test that expected optimizations are being performed
+  * data: Get rid of EXPR_EXPR
+  * data: New functions new_node/get_node with simpler usage
+  * vector: Add vector_duplicate function
+  * cow: Clarify documentation for new cow-block-size option
+  * docs: Fix title of nbdkit-client man page
+  * server: reset meta context replies on starttls
+  * Version 1.27.7.
+  * cow: Ship cow.h header
+  * Version 1.27.6.
+  * server: CVE-2021-3716 reset structured replies on starttls
+  * cow: Make the block size configurable
+  * vddk: Add stats about the amount of time spent in VDDK calls
+  * vddk: Replace DEBUG_CALL with bracketed VDDK_CALL_START/END macros
+  * cow: Remove #include &lt;sys/ioctl.h&gt; which appears to be unused
+  * cow: Make cow_on_cache static
+  * maint: Mention online gpg keyring for security use
+  * data: Missed optimization: ( fill ) =&gt; fill
+  * data: Optimize strings with repeated characters into fills
+  * data: When possible, combine adjacent list elements
+  * common/utils: Fix off-by-one error in &lt;vector&gt;_remove
+  * tests/test-data-extents.sh: Remove some bogus tests of zero extents
+  * common/allocators/zstd.c: Handle zeroing unallocated space
+  * data: Optimize single element lists containing a single byte</comment>
+    <requestid>914307</requestid>
+  </revision>
 </revisionlist>
