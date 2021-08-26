@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-session-manager
-Version:        1.24.3
+Version:        1.26.0
 Release:        0
 Summary:        MATE Session Manager
 License:        GPL-2.0-or-later
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # Not an upstream file. Only proposes upstream packages:
@@ -50,7 +52,7 @@ Requires:       %{name}-gschemas >= %{version}
 # Make native styling in Qt5 happen.
 Requires:       libqt5-qtstyleplugins-platformtheme-gtk2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 

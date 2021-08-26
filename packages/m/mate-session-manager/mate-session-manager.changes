@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 12 08:16:39 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations
+  * Update copyright to 2021
+  * Follow freedesktop guidelines to disable autorun using Hidden key
+  * Capplet: use a function to set the visibility of treeview rows
+  * Look for the location of the locking screen app using user's PATH
+  * Capplet: memory leak
+  * Fix building Serbian translation
+  * mate-session-check-accelerated-common: missing include guard
+  * Capplet: i18n parameter_string argument of gtk_init_with_args
+  * Build: allow users to disable gettext support (--disable-nls)
+  * Build: set GETTEXT_PACKAGE=AC_PACKAGE_NAME
+  * Support xscreensaver when mate-screensaver is not available
+  * Remove warning -Wshadow
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+
+-------------------------------------------------------------------
 Mon Apr 26 20:25:18 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.24.3:
