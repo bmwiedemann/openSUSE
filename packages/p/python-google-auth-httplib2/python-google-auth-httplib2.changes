@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 23 11:45:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.1.0
+  * chore: release 0.1.0 (#22)
+  * feat: add close method (#14)
+  * build: migrate to flakybot (#21)
+  * chore: use nox and kokoro (#16)
+  * Add renovate.json (#15)
+  * Fix the signature of AuthorizedHttp.request to match
+    the signature of the request in httplib2 (#13)
+  * Expose redirect_codes on AuthorizedHttp. (#12)
+- from version 0.0.4
+  * Release 0.0.4 (#11)
+  * feat: expose a few httplib2 properties and a method (#9)
+  * Bug: Catch any underlying exceptions from http.HTTPException (#7)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Mar 14 16:31:27 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Initial commit, needed by google-api-python-client

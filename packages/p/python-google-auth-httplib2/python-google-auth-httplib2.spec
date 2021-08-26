@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-auth-httplib2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-google-auth-httplib2
-Version:        0.0.3
+Version:        0.1.0
 Release:        0
 Summary:        Google Authentication Library: httplib2 transport
 License:        Apache-2.0
@@ -27,7 +27,7 @@ URL:            https://github.com/GoogleCloudPlatform/google-auth-library-pytho
 Source:         https://files.pythonhosted.org/packages/source/g/google-auth-httplib2/google-auth-httplib2-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module google-auth}
-BuildRequires:  %{python_module httplib2 >= 0.9.1}
+BuildRequires:  %{python_module httplib2 >= 0.15.0}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest-localserver}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +36,7 @@ BuildRequires:  %{python_module six}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-google-auth
-Requires:       python-httplib2 >= 0.9.1
+Requires:       python-httplib2 >= 0.15.0
 Requires:       python-six
 BuildArch:      noarch
 %python_subpackages
