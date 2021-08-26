@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 22:16:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-route-link-add-RTNL_LINK_REASM_OVERLAPS-stat.patch
+  [boo#1189451]
+
+-------------------------------------------------------------------
 Wed Oct 14 09:12:27 UTC 2020 - Jan Engelhardt <jengelh@inai.de>
 
 - Modernize specfile constructs.

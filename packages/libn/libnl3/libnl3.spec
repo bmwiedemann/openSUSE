@@ -1,7 +1,7 @@
 #
 # spec file for package libnl3
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Name:           libnl3
 Version:        3.5.0
 Release:        0
 Summary:        Convenience library for working with Netlink sockets
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Development/Libraries/C and C++
 URL:            http://www.carisma.slowglass.com/~tgr/libnl/#(outdated)
 
@@ -31,6 +31,7 @@ URL:            http://www.carisma.slowglass.com/~tgr/libnl/#(outdated)
 Source:         https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz
 Source2:        https://github.com/thom311/libnl/releases/download/libnl%uver/libnl-%version.tar.gz.sig
 Source3:        baselibs.conf
+Patch1:         0001-route-link-add-RTNL_LINK_REASM_OVERLAPS-stat.patch
 BuildRequires:  bison >= 2.4
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.19
@@ -68,7 +69,7 @@ Netlink protocol based Linux kernel interfaces.
 
 %package -n libnl-config
 Summary:        Name maps for libnl
-License:        LGPL-2.1-only AND GPL-2.0-only
+License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Networking/Security
 %if 0%{?suse_version} >= 1130
 BuildArch:      noarch
@@ -92,7 +93,7 @@ demonstrated.
 %endif
 
 %prep
-%autosetup -p1 -n libnl-%version
+%autosetup -p0 -n libnl-%version
 
 %build
 %configure --disable-static

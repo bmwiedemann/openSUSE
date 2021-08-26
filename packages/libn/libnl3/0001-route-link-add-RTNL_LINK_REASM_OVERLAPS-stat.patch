@@ -1,0 +1,66 @@
+From bab9e77c87d3b596e77d669b0a827b50e725bb62 Mon Sep 17 00:00:00 2001
+From: Ilya Pronin <ipronin@twitter.com>
+Date: Fri, 3 Apr 2020 20:00:37 -0700
+Subject: [PATCH] route/link: add RTNL_LINK_REASM_OVERLAPS stat
+References: https://bugzilla.suse.com/show_bug.cgi?id=1189451
+
+The new stat exposes IPSTATS_MIB_REASM_OVERLAPS link stat. However, the
+original motivation for this change was fixing the issue with missing RX
+packets link stat.
+
+The regression was introduced in version 3.5.0 with commit 73c1d047,
+that added a new enum constant IPSTATS_MIB_REASM_OVERLAPS. Without this
+patch, IPSTATS_MIB_REASM_OVERLAPS is missing from
+map_stat_id_from_IPSTATS_MIB_v2 and is mapped by it to 0. This tricks
+inet6_parse_protinfo() into erroneously overwriting RTNL_LINK_RX_PACKETS
+stat, which happens to have value 0, when it tries to set
+IPSTATS_MIB_REASM_OVERLAPS.
+
+Fixes: 73c1d0479643 ('Sync linux headers to 4.19.66')
+
+https://github.com/thom311/libnl/pull/235
+---
+ include/netlink/route/link.h | 1 +
+ lib/route/link.c             | 1 +
+ lib/route/link/inet6.c       | 1 +
+ 3 files changed, 3 insertions(+)
+
+diff --git include/netlink/route/link.h include/netlink/route/link.h
+index 516d8e1..d0d6d2b 100644
+--- include/netlink/route/link.h
++++ include/netlink/route/link.h
+@@ -93,6 +93,7 @@ typedef enum {
+ 	RTNL_LINK_IP6_ECT0PKTS,		/*!< IPv6 SNMP InECT0Pkts */
+ 	RTNL_LINK_IP6_CEPKTS,		/*!< IPv6 SNMP InCEPkts */
+ 	RTNL_LINK_RX_NOHANDLER,		/*!< Received packets dropped on inactive device */
++	RTNL_LINK_REASM_OVERLAPS,       /*!< SNMP ReasmOverlaps */
+ 	__RTNL_LINK_STATS_MAX,
+ } rtnl_link_stat_id_t;
+ 
+diff --git lib/route/link.c lib/route/link.c
+index 9439fe6..ed6f455 100644
+--- lib/route/link.c
++++ lib/route/link.c
+@@ -3007,6 +3007,7 @@ static const struct trans_tbl link_stats[] = {
+ 	__ADD(RTNL_LINK_IP6_ECT0PKTS, Ip6_InECT0Pkts),
+ 	__ADD(RTNL_LINK_IP6_CEPKTS, Ip6_InCEPkts),
+ 	__ADD(RTNL_LINK_RX_NOHANDLER, rx_nohandler),
++	__ADD(RTNL_LINK_REASM_OVERLAPS, ReasmOverlaps),
+ };
+ 
+ char *rtnl_link_stat2str(int st, char *buf, size_t len)
+diff --git lib/route/link/inet6.c lib/route/link/inet6.c
+index c977b61..1ad49bf 100644
+--- lib/route/link/inet6.c
++++ lib/route/link/inet6.c
+@@ -135,6 +135,7 @@ static const uint8_t map_stat_id_from_IPSTATS_MIB_v2[__IPSTATS_MIB_MAX] = {
+ 	[33] = RTNL_LINK_IP6_ECT1PKTS,                  /* IPSTATS_MIB_ECT1PKTS                 */
+ 	[34] = RTNL_LINK_IP6_ECT0PKTS,                  /* IPSTATS_MIB_ECT0PKTS                 */
+ 	[35] = RTNL_LINK_IP6_CEPKTS,                    /* IPSTATS_MIB_CEPKTS                   */
++	[36] = RTNL_LINK_REASM_OVERLAPS,                /* IPSTATS_MIB_REASM_OVERLAPS           */
+ };
+ 
+ static int inet6_parse_protinfo(struct rtnl_link *link, struct nlattr *attr,
+-- 
+2.32.0
+

@@ -320,4 +320,12 @@ Dunno.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>843163</requestid>
   </revision>
+  <revision rev="36" vrev="3">
+    <srcmd5>89c90519d848485901a9521816effd27</srcmd5>
+    <version>3.5.0</version>
+    <time>1630012454</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 0001-route-link-add-RTNL_LINK_REASM_OVERLAPS-stat.patch [boo#1189451]</comment>
+    <requestid>913907</requestid>
+  </revision>
 </revisionlist>
