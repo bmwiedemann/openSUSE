@@ -352,10 +352,8 @@ for bin in %{ua_binaries}; do
   # dummy
   mv %{buildroot}%_bindir/${bin}%{rb_binary_suffix} %{buildroot}%_bindir/$bin.ruby%{rb_binary_suffix}
   #
-  ln -s %_bindir/$bin.ruby%{rb_binary_suffix} %{buildroot}%{_sysconfdir}/alternatives/$bin
   ln -s %{_sysconfdir}/alternatives/$bin %{buildroot}%_bindir/$bin
   #
-  ln -s %_bindir/${bin}%{rb_binary_suffix} %{buildroot}%{_sysconfdir}/alternatives//$bin%{rb_binary_suffix}
   ln -s %{_sysconfdir}/alternatives/$bin%{rb_binary_suffix} %{buildroot}%_bindir/$bin%{rb_binary_suffix}
 done
 install -dD %{buildroot}%{rb_extdir} %{buildroot}%{rb_extarchdir} %{buildroot}%{rb_extversionedarchdir} %{buildroot}%{rb_extarchdocdir}
@@ -401,14 +399,23 @@ make check V=1 TESTOPTS="$DISABLE_TESTS" ||:
 %postun -n %{libname} -p /sbin/ldconfig
 
 %files
+%ghost %{_sysconfdir}/alternatives/bundle
+%ghost %{_sysconfdir}/alternatives/bundle%{rb_binary_suffix}
+%ghost %{_sysconfdir}/alternatives/bundler
+%ghost %{_sysconfdir}/alternatives/bundler%{rb_binary_suffix}
 %ghost %{_sysconfdir}/alternatives/erb*
-%ghost %{_sysconfdir}/alternatives/rbs*
-%ghost %{_sysconfdir}/alternatives/racc*
-%ghost %{_sysconfdir}/alternatives/rake*
-%ghost %{_sysconfdir}/alternatives/rdoc*
-%ghost %{_sysconfdir}/alternatives/ri*
-%ghost %{_sysconfdir}/alternatives/bundle*
-%ghost %{_sysconfdir}/alternatives/typeprof*
+%ghost %{_sysconfdir}/alternatives/racc
+%ghost %{_sysconfdir}/alternatives/racc%{rb_binary_suffix}
+%ghost %{_sysconfdir}/alternatives/rake
+%ghost %{_sysconfdir}/alternatives/rake%{rb_binary_suffix}
+%ghost %{_sysconfdir}/alternatives/rbs
+%ghost %{_sysconfdir}/alternatives/rbs%{rb_binary_suffix}
+%ghost %{_sysconfdir}/alternatives/rdoc
+%ghost %{_sysconfdir}/alternatives/rdoc%{rb_binary_suffix}
+%ghost %{_sysconfdir}/alternatives/ri
+%ghost %{_sysconfdir}/alternatives/ri%{rb_binary_suffix}
+%ghost %{_sysconfdir}/alternatives/typeprof
+%ghost %{_sysconfdir}/alternatives/typeprof%{rb_binary_suffix}
 %{_bindir}/bundle*
 %{_bindir}/erb*
 %{_bindir}/gem*

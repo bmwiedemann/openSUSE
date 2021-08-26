@@ -38,4 +38,14 @@
     <comment>- Fix links in /etc/alternatives not to point to itself</comment>
     <requestid>904939</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>807f7a13e2b6f180c72856bc35dca767</srcmd5>
+    <version>3.0.1</version>
+    <time>1630012455</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not create links for /etc/alternatives at all but rely on
+  rpm's %ghosts being creating at runtime in %post 
+  This aligns ruby3.0 with ruby2.7 and ruby-common</comment>
+    <requestid>913948</requestid>
+  </revision>
 </revisionlist>

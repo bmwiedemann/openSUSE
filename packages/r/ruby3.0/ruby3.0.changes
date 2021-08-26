@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 24 07:26:12 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Do not create links for /etc/alternatives at all but rely on
+  rpm's %ghosts being creating at runtime in %post 
+  This aligns ruby3.0 with ruby2.7 and ruby-common
+
+-------------------------------------------------------------------
 Thu Jul  8 12:46:56 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Fix links in /etc/alternatives not to point to itself
