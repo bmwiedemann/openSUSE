@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 10 06:55:32 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations
+  * build: set GETTEXT_PACKAGE=AC_PACKAGE_NAME
+  * alsa: Add udev support
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:
