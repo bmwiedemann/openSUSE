@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.0.9
+Version:        8.0.10
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -78,7 +78,7 @@ Patch2:         php-php-config.patch
 # SUSE specific ini defaults
 Patch3:         php-ini.patch
 # use of the system timezone database
-Patch4:         php-systzdata-v19.patch
+Patch4:         php-systzdata-v20.patch
 # adjust upstream systemd unit to SUSE needs
 Patch5:         php-systemd-unit.patch
 # PATCH-FEATURE-OPENSUSE use ordered input files for reproducible /usr/bin/phar.phar

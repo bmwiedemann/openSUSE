@@ -5,7 +5,8 @@ Add support for use of the system timezone database, rather
 than embedding a copy.  Discussed upstream but was not desired.
 
 History:
-r19: fix minor compilation issue
+r20: adapt for timelib 2020.03 (in 8.0.10RC1)
+r19: adapt for timelib 2020.02 (in 8.0.0beta2)
 r18: adapt for autotool change in 7.3.3RC1
 r17: adapt for timelib 2018.01 (in 7.3.2RC1)
 r16: adapt for timelib 2017.06 (in 7.2.3RC1)
@@ -30,10 +31,9 @@ r3: fix a crash if /usr/share/zoneinfo doesn't exist (Raphael Geissert)
 r2: add filesystem trawl to set up name alias index
 r1: initial revision
 
-Index: php-8.0.0rc1/ext/date/config0.m4
-===================================================================
---- php-8.0.0rc1.orig/ext/date/config0.m4	2020-09-30 00:36:51.000000000 +0200
-+++ php-8.0.0rc1/ext/date/config0.m4	2020-10-07 09:05:50.272499235 +0200
+diff -up ./ext/date/config0.m4.systzdata ./ext/date/config0.m4
+--- ./ext/date/config0.m4.systzdata	2021-08-10 11:35:28.000000000 +0200
++++ ./ext/date/config0.m4	2021-08-10 12:09:41.067003517 +0200
 @@ -4,6 +4,19 @@ AC_CHECK_HEADERS([io.h])
  dnl Check for strtoll, atoll
  AC_CHECK_FUNCS(strtoll atoll)
@@ -54,10 +54,9 @@ Index: php-8.0.0rc1/ext/date/config0.m4
  PHP_DATE_CFLAGS="-I@ext_builddir@/lib -DZEND_ENABLE_STATIC_TSRMLS_CACHE=1 -DHAVE_TIMELIB_CONFIG_H=1"
  timelib_sources="lib/astro.c lib/dow.c lib/parse_date.c lib/parse_tz.c
                   lib/timelib.c lib/tm2unixtime.c lib/unixtime2tm.c lib/parse_iso_intervals.c lib/interval.c"
-Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
-===================================================================
---- php-8.0.0rc1.orig/ext/date/lib/parse_tz.c	2020-09-30 00:36:51.000000000 +0200
-+++ php-8.0.0rc1/ext/date/lib/parse_tz.c	2020-10-07 09:07:49.341187628 +0200
+diff -up ./ext/date/lib/parse_tz.c.systzdata ./ext/date/lib/parse_tz.c
+--- ./ext/date/lib/parse_tz.c.systzdata	2021-08-10 11:35:28.000000000 +0200
++++ ./ext/date/lib/parse_tz.c	2021-08-10 12:12:13.191605207 +0200
 @@ -26,8 +26,21 @@
  #include "timelib.h"
  #include "timelib_private.h"
@@ -92,7 +91,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
  	/* read ID */
  	version = (*tzf)[3] - '0';
  	*tzf += 4;
-@@ -418,7 +436,429 @@ void timelib_dump_tzinfo(timelib_tzinfo
+@@ -435,7 +453,429 @@ void timelib_dump_tzinfo(timelib_tzinfo
  	}
  }
  
@@ -160,7 +159,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +
 +    /* Annoying encoding used by zone.tab has no decimal point, so use
 +     * the length to determine the format:
-+     *
++     * 
 +     * 4 = DDMM
 +     * 5 = DDDMM
 +     * 6 = DDMMSS
@@ -227,10 +226,10 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +
 +        if (*p == '#' || *p == '\0' || *p == '\n')
 +            continue;
-+
++        
 +        if (!isalpha(p[0]) || !isalpha(p[1]) || p[2] != '\t')
 +            continue;
-+
++        
 +        /* code => AA */
 +        code = p;
 +        p[2] = 0;
@@ -264,11 +263,11 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +
 +        if (*p == '\n' || *p == '\t')
 +            *p = '\0';
-+
++        
 +        hash = tz_hash(name);
 +        i = malloc(sizeof *i);
 +        memcpy(i->code, code, 2);
-+        strncpy(i->name, name, sizeof(i->name) - 1);
++        strncpy(i->name, name, sizeof i->name);
 +        i->comment = strdup(comment);
 +        i->longitude = longitude;
 +        i->latitude = latitude;
@@ -284,7 +283,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +
 +/* Return location info from hash table, using given timezone name.
 + * Returns NULL if the name could not be found. */
-+const struct location_info *find_zone_info(struct location_info **li,
++const struct location_info *find_zone_info(struct location_info **li, 
 +                                           const char *name)
 +{
 +    uint32_t hash = tz_hash(name);
@@ -300,7 +299,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +    }
 +
 +    return NULL;
-+}
++}    
 +
 +/* Filter out some non-tzdata files and the posix/right databases, if
 + * present. */
@@ -337,7 +336,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +	dirstack = malloc(dirstack_size * sizeof *dirstack);
 +	dirstack_top = 1;
 +	dirstack[0] = strdup("");
-+
++	
 +	/* Index array. */
 +	index_size = 64;
 +	db_index = malloc(index_size * sizeof *db_index);
@@ -358,22 +357,22 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +			struct stat st;
 +			const char *leaf = ents[count - 1]->d_name;
 +
-+			snprintf(name, sizeof name, ZONEINFO_PREFIX "/%s/%s",
++			snprintf(name, sizeof name, ZONEINFO_PREFIX "/%s/%s", 
 +				 top, leaf);
-+
++			
 +			if (strlen(name) && stat(name, &st) == 0) {
 +				/* Name, relative to the zoneinfo prefix. */
 +				const char *root = top;
 +
 +				if (root[0] == '/') root++;
 +
-+				snprintf(name, sizeof name, "%s%s%s", root,
++				snprintf(name, sizeof name, "%s%s%s", root, 
 +					 *root ? "/": "", leaf);
 +
 +				if (S_ISDIR(st.st_mode)) {
 +					if (dirstack_top == dirstack_size) {
 +						dirstack_size *= 2;
-+						dirstack = realloc(dirstack,
++						dirstack = realloc(dirstack, 
 +								   dirstack_size * sizeof *dirstack);
 +					}
 +					dirstack[dirstack_top++] = strdup(name);
@@ -391,7 +390,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +
 +			free(ents[--count]);
 +		}
-+
++		
 +		if (count != -1) free(ents);
 +		free(top);
 +	} while (dirstack_top);
@@ -413,7 +412,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +{
 +        size_t n;
 +        char *data, *p;
-+
++        
 +        data = malloc(3 * sysdb->index_size + 7);
 +
 +        p = mempcpy(data, FAKE_HEADER, sizeof(FAKE_HEADER) - 1);
@@ -446,7 +445,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +                        ent->pos = 0;
 +                }
 +        }
-+
++        
 +        sysdb->data = (unsigned char *)data;
 +}
 +
@@ -495,7 +494,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +	struct stat st;
 +	char *p;
 +	int fd;
-+
++	
 +	if (timezone[0] == '\0' || strstr(timezone, "..") != NULL) {
 +		return NULL;
 +	}
@@ -513,7 +512,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
 +	*length = st.st_size;
 +	p = mmap(NULL, st.st_size, PROT_READ, MAP_SHARED, fd, 0);
 +	close(fd);
-+
++	
 +	return p != MAP_FAILED ? p : NULL;
 +}
 +
@@ -523,11 +522,11 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
  {
  	int left = 0, right = tzdb->index_size - 1;
  
-@@ -444,9 +884,48 @@ static int seek_to_tz_position(const uns
+@@ -461,9 +901,48 @@ static int seek_to_tz_position(const uns
  	return 0;
  }
  
-+static int seek_to_tz_position(const unsigned char **tzf, char *timezone,
++static int seek_to_tz_position(const unsigned char **tzf, const char *timezone,
 +			       char **map, size_t *maplen,
 +			       const timelib_tzdb *tzdb)
 +{
@@ -572,7 +571,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
  }
  
  const timelib_tzdb_index_entry *timelib_timezone_identifiers_list(const timelib_tzdb *tzdb, int *count)
-@@ -458,7 +937,30 @@ const timelib_tzdb_index_entry *timelib_
+@@ -475,7 +954,30 @@ const timelib_tzdb_index_entry *timelib_
  int timelib_timezone_id_is_valid(const char *timezone, const timelib_tzdb *tzdb)
  {
  	const unsigned char *tzf;
@@ -604,7 +603,7 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
  }
  
  static int skip_64bit_preamble(const unsigned char **tzf, timelib_tzinfo *tz)
-@@ -500,12 +1002,14 @@ static timelib_tzinfo* timelib_tzinfo_ct
+@@ -517,6 +1019,8 @@ static timelib_tzinfo* timelib_tzinfo_ct
  timelib_tzinfo *timelib_parse_tzfile(const char *timezone, const timelib_tzdb *tzdb, int *error_code)
  {
  	const unsigned char *tzf;
@@ -613,14 +612,16 @@ Index: php-8.0.0rc1/ext/date/lib/parse_tz.c
  	timelib_tzinfo *tmp;
  	int version;
  	int transitions_result, types_result;
- 	unsigned int type; /* TIMELIB_TZINFO_PHP or TIMELIB_TZINFO_ZONEINFO */
+@@ -524,7 +1028,7 @@ timelib_tzinfo *timelib_parse_tzfile(con
+ 
+ 	*error_code = TIMELIB_ERROR_NO_ERROR;
  
 -	if (seek_to_tz_position(&tzf, timezone, tzdb)) {
 +	if (seek_to_tz_position(&tzf, timezone, &memmap, &maplen, tzdb)) {
  		tmp = timelib_tzinfo_ctor(timezone);
  
  		version = read_preamble(&tzf, tmp, &type);
-@@ -540,11 +1044,36 @@ timelib_tzinfo *timelib_parse_tzfile(con
+@@ -563,11 +1067,36 @@ timelib_tzinfo *timelib_parse_tzfile(con
  		}
  		skip_posix_string(&tzf, tmp);
  
