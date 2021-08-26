@@ -17,17 +17,19 @@
 
 
 %define typelib typelib-1_0-Pluma-1_0
-%define _version 1.24
+%define _version 1.26
 
 Name:           pluma
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        Text editor for the MATE desktop
 License:        GPL-2.0-or-later
+Group:          Productivity/Text/Editors
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source99:       https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz.sha256sum
 BuildRequires:  fdupes
+BuildRequires:  filesystem
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -37,6 +39,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 BuildRequires:  pkgconfig(sm)
@@ -44,38 +47,41 @@ Requires:       mate-desktop-gsettings-schemas
 %glib2_gsettings_schema_requires
 
 %description
-Pluma is a small, but powerful text editor designed specifically
-for the MATE desktop. It has most standard text editor functions
-and fully supports international text in Unicode. Advanced features
-include syntax highlighting and automatic indentation of source
-code, printing and editing of multiple documents in one window.
+Pluma is a text editor designed specifically for the MATE desktop. It
+has standard text editor functions and supports international text in
+Unicode. Advanced features include syntax highlighting and automatic
+indentation of source code, and printing and editing of multiple
+documents in one window.
 
 Pluma is extensible through a plugin system, which currently
 includes support for spell checking, comparing files, viewing VCS
 ChangeLogs, and adjusting indentation levels.
 
 %package devel
-Summary:        Small and lightweight UTF-8 text editor
+Summary:        Headers for Pluma, a UTF-8 text editor
+Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 Requires:       %{typelib} = %{version}
 Requires:       pkgconfig(gtksourceview-3.0)
 
 %description devel
-pluma is a small, but powerful text editor designed specifically
-for the MATE desktop. It has most standard text editor functions
-and fully supports international text in Unicode. Advanced features
-include syntax highlighting and automatic indentation of source
-code, printing and editing of multiple documents in one window.
+Pluma is a text editor designed specifically for the MATE desktop. It
+has standard text editor functions and supports international text in
+Unicode. Advanced features include syntax highlighting and automatic
+indentation of source code, and printing and editing of multiple
+documents in one window.
 
 %package -n %{typelib}
-Summary:        Small and lightweight UTF-8 text editor introspection
+Summary:        Introspection bindings for Pluma, a UTF-8 text editor
+Group:          System/Libraries
+Requires:       %{name} = %{version}
 
 %description -n %{typelib}
-pluma is a small, but powerful text editor designed specifically
-for the MATE desktop. It has most standard text editor functions
-and fully supports international text in Unicode. Advanced features
-include syntax highlighting and automatic indentation of source
-code, printing and editing of multiple documents in one window.
+Pluma is a text editor designed specifically for the MATE desktop. It
+has standard text editor functions and supports international text in
+Unicode. Advanced features include syntax highlighting and automatic
+indentation of source code, and printing and editing of multiple
+documents in one window.
 
 %lang_package
 
@@ -95,12 +101,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md ABOUT-NLS
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
 %{_libdir}/%{name}/

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 20 09:04:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove ldconfig calls, there are no shared libs in standard dirs
+  here to update.
+- Trim filler words from descriptions.
+
+-------------------------------------------------------------------
+Wed Aug 11 13:22:32 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations
+  * filebrowser-plugin: fix segfault on open-terminal action
+  * update copyright to 2021
+  * build: fix shebangs
+  * warning: declaration of ‘taglist’ shadows a global declaration
+  * pluma: Use EXIT_SUCCESS macro instead of int value (portability)
+  * help: update help for sort plugin
+  * sort plugin: Port sort plugin to the new GtkSourceView api. 
+
+-------------------------------------------------------------------
 Tue Aug 10 04:47:18 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - tools/switch-c: Switch shebang to /usr/bin/python3

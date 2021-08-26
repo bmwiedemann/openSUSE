@@ -220,4 +220,14 @@
     <comment>- tools/switch-c: Switch shebang to /usr/bin/python3 (forwarded request 911138 from StevenK)</comment>
     <requestid>911191</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>d6221e3621696e323c242a9a95645d6a</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012487</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove ldconfig calls, there are no shared libs in standard dirs
+  here to update.
+- Trim filler words from descriptions. (forwarded request 913293 from jengelh)</comment>
+    <requestid>913315</requestid>
+  </revision>
 </revisionlist>
