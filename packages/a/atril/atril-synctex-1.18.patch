@@ -1,6 +1,7 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -89,7 +89,7 @@ GTK_REQUIRED=3.22.0
+diff -Nur atril-1.26.0/configure.ac atril-1.26.0-new/configure.ac
+--- atril-1.26.0/configure.ac	2021-08-06 19:08:05.000000000 +0800
++++ atril-1.26.0-new/configure.ac	2021-08-13 20:49:24.083429376 +0800
+@@ -96,7 +96,7 @@
  WEBKIT_REQUIRED=2.6.0
  LIBSECRET_REQUIRED=0.5
  LIBXML_REQUIRED=2.5.0
@@ -9,22 +10,24 @@
  
  AC_SUBST([GLIB_REQUIRED])
  AC_SUBST([GTK_REQUIRED])
-@@ -364,6 +364,11 @@ dnl ================== libsynctex ======
- 
- PKG_CHECK_MODULES(SYNCTEX, [synctex >= $SYNCTEX_REQUIRED], has_synctex=yes, has_synctex=no)
- 
-+PKG_CHECK_EXISTS(synctex >= 1.21, [have_synctex_1_21=yes], [have_synctex_1_21=no])
-+if test "$have_synctex_1_21" = yes; then
-+  AC_DEFINE(HAVE_SYNCTEX_1_21, 1, [synctex >= 1.21 present])
-+fi
+@@ -384,6 +384,12 @@
+ if test "$enable_synctex" = "yes"; then
+   AC_DEFINE([ENABLE_SYNCTEX],[1],[Define if synctex support is enabled])
+   PKG_CHECK_MODULES(SYNCTEX, [synctex >= $SYNCTEX_REQUIRED], has_synctex=yes, has_synctex=no)
++  
++  PKG_CHECK_EXISTS(synctex >= 1.21, [have_synctex_1_21=yes], [have_synctex_1_21=no])
++  if test "$have_synctex_1_21" = yes; then
++   AC_DEFINE(HAVE_SYNCTEX_1_21, 1, [synctex >= 1.21 present])
++  fi
 +
- dnl not found? use internal code copy.
- if test "x$has_synctex" = "xno"; then
-         AC_MSG_ERROR("SyncTeX support is disabled since library version $SYNCTEX_REQUIRED or newer not found")
---- a/libdocument/ev-document.c
-+++ b/libdocument/ev-document.c
-@@ -28,6 +28,12 @@
- #include "synctex_parser.h"
+   dnl not found? use internal code copy.
+   if test "x$has_synctex" = "xno"; then
+           AC_MSG_ERROR("SyncTeX support is disabled since library version $SYNCTEX_REQUIRED or newer not found")
+diff -Nur atril-1.26.0/libdocument/ev-document.c atril-1.26.0-new/libdocument/ev-document.c
+--- atril-1.26.0/libdocument/ev-document.c	2021-08-06 19:08:05.000000000 +0800
++++ atril-1.26.0-new/libdocument/ev-document.c	2021-08-13 20:51:23.567290326 +0800
+@@ -30,6 +30,12 @@
+ #endif
  #include "ev-file-helpers.h"
  
 +#ifndef HAVE_SYNCTEX_1_21
@@ -36,7 +39,7 @@
  typedef struct _EvPageSize
  {
  	gdouble width;
-@@ -471,7 +477,11 @@ ev_document_synctex_forward_search (EvDo
+@@ -481,7 +487,11 @@
          if (!scanner)
                  return NULL;
  

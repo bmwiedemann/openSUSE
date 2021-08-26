@@ -246,4 +246,13 @@
     <comment></comment>
     <requestid>888491</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e8114a8a6f005441c95ed28c547aa2e0</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012491</time>
+    <user>dimstar_suse</user>
+    <comment>- Make documentation noarch. Remove --with-pic because it has no
+  effect in conjunction with --disable-static. Update RPM groups. (forwarded request 913553 from jengelh)</comment>
+    <requestid>913575</requestid>
+  </revision>
 </revisionlist>

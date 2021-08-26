@@ -19,13 +19,15 @@
 %define typelib1 typelib-1_0-AtrilDocument-1_5_0
 %define typelib2 typelib-1_0-AtrilView-1_5_0
 %define sover   3
-%define _version 1.24
+%define _version 1.26
+
 Name:           atril
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop document viewer
 License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://mate-desktop.org/
+Group:          Productivity/Office/Other
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE atril-synctex-1.18.patch -- Restore SyncTeX 1.18 support.
 Patch0:         %{name}-synctex-1.18.patch
@@ -77,30 +79,34 @@ page document formats like PDF and Postscript.
 %lang_package
 
 %package -n libatrildocument%{sover}
-Summary:        MATE Document Viewer -- System Library
+Summary:        System library of the MATE Document Viewer
+Group:          System/Libraries
 Obsoletes:      mate-document-viewer-libs-3 < %{version}
 
 %description -n libatrildocument%{sover}
-Evince is a document viewer capable of displaying multiple and
+Atril is a document viewer capable of displaying multiple and
 singlepage document formats like PDF and PostScript.
 
 %package -n libatrilview%{sover}
-Summary:        MATE Document Viewer -- System Library
+Summary:        System library of the MATE Document Viewer
+Group:          System/Libraries
 Obsoletes:      mate-document-viewer-libs-3 < %{version}
 
 %description -n libatrilview%{sover}
-Evince is a document viewer capable of displaying multiple and
+Atril is a document viewer capable of displaying multiple and
 singlepage document formats like PDF and PostScript.
 
 %package -n %{typelib1}
-Summary:        MATE Desktop bindings for AtrilDocument
+Summary:        Introspection bindings for MATE Desktop's AtrilDocument
+Group:          System/Libraries
 
 %description -n %{typelib1}
 Atril is a document viewer capable of displaying multiple and single
 page document formats like PDF and Postscript.
 
 %package -n %{typelib2}
-Summary:        MATE Desktop bindings for AtrilView
+Summary:        Introspection bindings for MATE Desktop's AtrilView
+Group:          System/Libraries
 
 %description -n %{typelib2}
 Atril is a document viewer capable of displaying multiple and single
@@ -161,6 +167,15 @@ page document formats like PDF and Postscript.
 
 This package contains the Atril extension for the Caja file manager.
 
+%package doc
+Group:          Documentation/HTML
+Requires:       %{name} = %{version}
+Summary:        Documentation how to Use Atril
+BuildArch:      noarch
+
+%description doc
+This package contains the documentation for atril
+
 %prep
 %autosetup -p1
 
@@ -168,7 +183,6 @@ This package contains the Atril extension for the Caja file manager.
 NOCONFIGURE=1 mate-autogen
 %configure \
   --disable-static                    \
-  --with-pic                          \
   --libexecdir=%{_libexecdir}/%{name} \
   --enable-introspection
 %make_build
@@ -190,7 +204,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-previewer
 %{_bindir}/%{name}-thumbnailer
@@ -201,7 +215,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/%{name}/%{name}*
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/help/C/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/%{name}.appdata.xml
@@ -210,12 +223,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n libatrilview%{sover}
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_libdir}/libatrilview.so.%{sover}*
 
 %files -n libatrildocument%{sover}
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_libdir}/libatrildocument.so.%{sover}*
 
 %files devel
@@ -223,7 +236,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/
+%doc %{_datadir}/gtk-doc/html/
 
 %files -n caja-extension-%{name}
 %{_datadir}/caja/extensions/libatril-properties-page.caja-extension
@@ -237,13 +250,17 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files backends
 %license COPYING
-%doc AUTHORS README
+%doc AUTHORS README.md
 %{_libdir}/%{name}/%{sover}/backends/
 
 %files thumbnailer
 %dir %{_datadir}/thumbnailers/
 %{_datadir}/thumbnailers/atril.thumbnailer
 
+%files doc
+%doc %{_datadir}/help/*/%{name}/
+
 %files lang -f %{name}.lang
+%exclude %{_datadir}/help/*
 
 %changelog
