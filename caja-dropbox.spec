@@ -1,7 +1,7 @@
 #
 # spec file for package caja-dropbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,15 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           caja-dropbox
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        Dropbox client integrated into Caja
 License:        GPL-3.0-or-later
 URL:            https://mate-desktop.org/
+Group:          Productivity/File utilities
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE caja-dropbox_no-dropbox-bin.patch sor.alexei@meowr.ru -- Strip dropbox binary installation.
 Patch0:         caja-dropbox_no-dropbox-bin.patch
@@ -32,6 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcaja-extension) >= %{_version}
+Recommends:     %{name}-lang
 
 %description
 Dropbox is a proprietary service that lets one bring photos,
@@ -53,6 +56,8 @@ documents, and videos anywhere and share them easily.
 
 This package integrates Dropbox seamlessly into Caja.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -64,11 +69,14 @@ NOCONFIGURE=1 mate-autogen
 
 %install
 %make_install
-%suse_update_desktop_file -r caja-dropbox Network FileTransfer
+
+%find_lang %{name}
 
 %files -n caja-extension-dropbox
 %license COPYING
 %doc AUTHORS NEWS README
 %{_libdir}/caja/extensions-2.0/libcaja-dropbox.*
+
+%files lang -f %{name}.lang
 
 %changelog
