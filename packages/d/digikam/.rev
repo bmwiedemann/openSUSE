@@ -1668,4 +1668,12 @@ ImageEditor : Add HTMLGallery, Calendar, ExpoBlending, VideSlideshow,</comment>
     <comment></comment>
     <requestid>906404</requestid>
   </revision>
+  <revision rev="198" vrev="2">
+    <srcmd5>89b24520e836d2e4b70a3b7e035665e6</srcmd5>
+    <version>7.3.0</version>
+    <time>1630012510</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable build on archs missing QtWebEngine.</comment>
+    <requestid>914350</requestid>
+  </revision>
 </revisionlist>

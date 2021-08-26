@@ -29,6 +29,8 @@ URL:            https://www.digikam.org/
 Source0:        https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE -- Lower minimum exiv2 version to 0.26
 Patch0:         0001-Revert-Exiv2-is-now-released-with-exported-targets-u.patch
+# QtWebEngine is not available on ppc and zSystems
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  QtAV-devel >= 1.12
 BuildRequires:  bison
 BuildRequires:  fdupes
@@ -47,13 +49,7 @@ BuildRequires:  libpng-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
-# This condition is also below in libdigikamcore
-%ifarch ppc64
-# opencv-devel is currently not available on ppc64, but opencv3-devel is... (and the version is high enough)
-BuildRequires:  opencv3-devel
-%else
 BuildRequires:  opencv-devel >= 3.4.0
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 %if %{with apidocs}
@@ -61,6 +57,7 @@ BuildRequires:  doxygen
 BuildRequires:  graphviz-devel
 BuildRequires:  cmake(KF5DocTools)
 %endif
+BuildRequires:  cmake(KF5AkonadiContact)
 BuildRequires:  cmake(KF5CalendarCore)
 BuildRequires:  cmake(KF5Config)
 BuildRequires:  cmake(KF5CoreAddons)
@@ -85,6 +82,7 @@ BuildRequires:  cmake(Qt5Network)
 BuildRequires:  cmake(Qt5OpenGL)
 BuildRequires:  cmake(Qt5PrintSupport)
 BuildRequires:  cmake(Qt5Sql)
+BuildRequires:  cmake(Qt5WebEngineWidgets)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  cmake(Qt5Xml)
@@ -117,14 +115,6 @@ Obsoletes:      digikam-libs < %{version}
 # Docs no longer included in 6.0.0
 Provides:       %{name}-doc = %{version}
 Obsoletes:      %{name}-doc < %{version}
-# QWebEngine is not available on ppc64
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
-BuildRequires:  cmake(KF5AkonadiContact)
-BuildRequires:  cmake(Qt5WebEngineWidgets)
-%else
-%global qwebengine -DENABLE_QWEBENGINE:BOOL=OFF
-BuildRequires:  cmake(Qt5WebKitWidgets)
-%endif
 
 %description
 digiKam is a simple digital photo management application for KDE, which
@@ -162,12 +152,7 @@ Additional program to browse and view photos
 %package -n libdigikamcore%{soversion}
 Summary:        The main digikam libraries
 Group:          Development/Libraries/KDE
-%ifarch ppc64
-# DNN ABI is not stable and not using symbol versioning (boo#1185700)
-%requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv3-devel})
-%else
-%requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv-devel})
-%endif
+Requires:       opencv-devel
 Recommends:     %{name}-plugins
 
 %description -n libdigikamcore%{soversion}
@@ -183,7 +168,7 @@ The main digikam libraries that are being shared between showfoto and digikam
 %endif
 
 %build
-%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON %{?qwebengine}
+%cmake_kf5 -d build -- -DENABLE_APPSTYLES=ON -DENABLE_MEDIAPLAYER=ON
 %cmake_build
 
 %if %{with apidocs}
