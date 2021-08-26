@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 26 07:07:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Remove the kdevelop build dependencies for archs missing
+  qtwebengine.
+
+-------------------------------------------------------------------
 Fri Aug  6 09:43:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0

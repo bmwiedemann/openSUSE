@@ -1395,4 +1395,13 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
     <comment>KDE Gear 21.08.0</comment>
     <requestid>911808</requestid>
   </revision>
+  <revision rev="106" vrev="2">
+    <srcmd5>edeee4acf7ba2258355e14ed59890c87</srcmd5>
+    <version>21.08.0</version>
+    <time>1630012508</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove the kdevelop build dependencies for archs missing
+  qtwebengine.</comment>
+    <requestid>914344</requestid>
+  </revision>
 </revisionlist>

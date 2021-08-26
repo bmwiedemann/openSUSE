@@ -16,6 +16,9 @@
 #
 
 
+%ifarch %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
+%bcond_without kdevelop
+%endif
 %define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
@@ -35,8 +38,10 @@ Source2:        applications.keyring
 # PATCH-FIX-UPSTREAM
 Patch0:         0001-Make-QtWebKit-usage-in-WelcomePage-optional-with-QTe.patch
 BuildRequires:  extra-cmake-modules
+%if %{with kdevelop}
 BuildRequires:  kdevelop5-pg-qt
 BuildRequires:  kdevplatform-devel
+%endif
 BuildRequires:  libxml2-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  update-desktop-files
