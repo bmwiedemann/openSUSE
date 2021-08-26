@@ -16,13 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
 Name:           mate-power-manager
-Version:        1.24.3
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop UPower policy management
 License:        GPL-2.0-only
 URL:            https://mate-desktop.org/
+Group:          System/GUI/Other
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE mate-power-manager-upower-0.99.7.patch -- Restore UPower 0.99.7 support.
 Patch0:         mate-power-manager-upower-0.99.7.patch
@@ -39,6 +40,7 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(mate-desktop-2.0) >= %{_version}
 BuildRequires:  pkgconfig(upower-glib)
 BuildRequires:  pkgconfig(x11)
@@ -56,6 +58,14 @@ agent on top of UPower, which requires fairly new versions of the
 kernel and udev. MATE Power Manager listens for system events and
 responds with user-configurable actions.
 
+%package doc
+Group:          Documentation/HTML
+Summary:        Documentation how to Use Atril
+BuildArch:      noarch
+
+%description doc
+This package contains the documentation for atril
+
 %lang_package
 
 %prep
@@ -70,7 +80,7 @@ NOCONFIGURE=1 mate-autogen
 %install
 %make_install
 %find_lang %{name} %{?no_lang_C}
-%fdupes %{buildroot}%{_datadir}/
+%fdupes %{buildroot}%{_datadir}
 
 %files
 %license COPYING
@@ -85,13 +95,16 @@ NOCONFIGURE=1 mate-autogen
 %{_datadir}/applications/mate-power-statistics.desktop
 %{_datadir}/dbus-1/services/*.service
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/*/*
 %{_datadir}/mate-panel/
 %{_datadir}/mate-power-manager/
 %{_datadir}/polkit-1/
 %{_mandir}/man?/*.?%{?ext_man}
 
+%files doc
+%doc %{_datadir}/help/*/%{name}
+
 %files lang -f %{name}.lang
+%exclude %{_datadir}/help/*
 
 %changelog

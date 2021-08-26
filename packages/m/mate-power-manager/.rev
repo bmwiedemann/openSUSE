@@ -237,4 +237,12 @@
     <comment></comment>
     <requestid>888611</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9ec8e45df22ab03c7eab80dfde46f946</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012493</time>
+    <user>dimstar_suse</user>
+    <comment>- Make doc package noarch (forwarded request 913556 from jengelh)</comment>
+    <requestid>913578</requestid>
+  </revision>
 </revisionlist>
