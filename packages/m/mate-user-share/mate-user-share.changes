@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Aug 22 10:58:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Make doc package noarch.
+
+-------------------------------------------------------------------
+Fri Aug 13 12:04:13 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * update translations
+  * pre-bump version
+  * build: allow users to disable gettext support (--disable-nls)
+  * Update copyright to 2021
+  * Remove the execution bit from some Italian figures
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+  * Update README 
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0:
