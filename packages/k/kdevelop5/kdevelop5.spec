@@ -26,6 +26,7 @@ License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://www.kdevelop.org
 Source0:        https://download.kde.org/stable/%{rname}/%{version}/src/%{rname}-%{version}.tar.xz
+ExclusiveArch:  %{arm} aarch64 %{ix86} x86_64 %{mips} %{riscv}
 BuildRequires:  kdevelop5-pg-qt
 BuildRequires:  kf5-filesystem
 BuildRequires:  libboost_headers-devel
@@ -69,11 +70,7 @@ BuildRequires:  cmake(Qt5Quick)
 BuildRequires:  cmake(Qt5QuickWidgets)
 BuildRequires:  cmake(Qt5Script)
 BuildRequires:  cmake(Qt5Test)
-%ifarch %{ix86} x86_64 %{arm} aarch64 mips mips64
 BuildRequires:  cmake(Qt5WebEngineWidgets)
-%else
-BuildRequires:  cmake(Qt5WebKitWidgets)
-%endif
 BuildRequires:  cmake(Qt5Widgets)
 # contains the headers that are needed for the C++ parser to work (see boo#1119186)
 Requires:       clang%(rpm -q --qf '%''{version}' clang-devel | cut -d. -f1)
@@ -231,7 +228,7 @@ Provides translations to the package kdevplatform
 %{_kf5_bindir}/kdevelop*
 %{_kf5_debugdir}/kdevelop.categories
 %{_kf5_iconsdir}/*/*/*/*
-%if %pkg_vcmp knewstuff-devel >= 5.57.0
+%if %{pkg_vcmp knewstuff-devel >= 5.57.0}
 # It installs .knsrc files when built with knewstuff-devel >= 5.57.0
 %{_kf5_knsrcfilesdir}/kdevappwizard.knsrc
 %{_kf5_knsrcfilesdir}/kdevelop-qthelp.knsrc
@@ -248,7 +245,7 @@ Provides translations to the package kdevplatform
 %{_kf5_plugindir}/kf5/krunner/krunner_kdevelopsessions.so
 %{_kf5_prefix}/include/kdevelop/
 %{_kf5_qmldir}/
-%if %pkg_vcmp krunner-devel < 5.72.0
+%if %{pkg_vcmp krunner-devel < 5.72.0}
 # Only installed when built with krunner < 5.72.0
 %{_kf5_servicesdir}/kdevelopsessions.desktop
 %endif

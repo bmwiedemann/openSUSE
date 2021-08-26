@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 26 07:21:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable build for archs missing qtwebengine.
+
+-------------------------------------------------------------------
 Wed Feb  3 10:33:11 UTC 2021 - wbauer@tmo.at
 
 - Update to 5.6.2
