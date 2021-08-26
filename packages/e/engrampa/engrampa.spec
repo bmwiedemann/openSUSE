@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           engrampa
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop archive manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          Productivity/Archiving/Compression
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  caja >= %{_version}
