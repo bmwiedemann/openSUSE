@@ -1,7 +1,7 @@
 #
 # spec file for package mate-media
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-media
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop multimedia stack
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/X11/Utilities
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
@@ -71,12 +73,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libexecdir}/mate-media/
 %{_datadir}/mate-media/
 %{_datadir}/dbus-1/services/org.mate.panel.applet.GvcAppletFactory.service
-%{_datadir}/mate-panel/
-%{_datadir}/mate-panel/applets/
+%dir %{_datadir}/mate-panel/
+%dir %{_datadir}/mate-panel/applets/
 %{_datadir}/mate-panel/applets/org.mate.applets.GvcApplet.mate-panel-applet
 %{_datadir}/sounds/mate/
 %{_datadir}/applications/*.desktop
-%{_mandir}/man?/mate-volume-control-applet.?%{?ext_man}
+%{_mandir}/man?/mate-volume-control-status-icon.?%{?ext_man}
 %{_mandir}/man?/mate-volume-control.?%{?ext_man}
 
 %files lang -f %{name}.lang

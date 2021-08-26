@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 10 13:45:02 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Translations update
+  * replace mute/unmute checkmenuitem with imagemenuitem
+  * re-generate po files
+  * update copyright to 2021
+  * man page: mate-volume-control-applet.1 -> mate-volume-control-status-icon.1.
+  * Fix desktop file validation warnings
+  * remove dead function mate_panel_applet_set_background_widget 
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:
