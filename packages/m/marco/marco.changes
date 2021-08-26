@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 10 13:29:38 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * update translations
+  * tabpopup: fix cairo surface leak
+  * window: add support for _GNOME_WM_STRUT_AREA
+  * screen: add support for _GTK_WORKAREAS_Dn 
+
+-------------------------------------------------------------------
 Mon Apr 26 11:02:37 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.24.2:

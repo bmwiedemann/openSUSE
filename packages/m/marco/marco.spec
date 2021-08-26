@@ -18,13 +18,15 @@
 
 %define soname  libmarco-private
 %define sover   2
-%define _version 1.24
+%define _version 1.26
+
 Name:           marco
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE window manager
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
+Group:          System/GUI/Other
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE marco-glib-2.54.patch -- Restore GLib 2.54 support.
 Patch0:         %{name}-glib-2.54.patch
@@ -78,6 +80,7 @@ developed mainly for the MATE Desktop.
 %package devel
 Summary:        MATE window manager development files
 Requires:       %{soname}%{sover} = %{version}
+Group:          Development/Libraries/X11
 # mate-window-manager-devel was last used in openSUSE 13.1.
 Provides:       mate-window-manager-devel = %{version}
 Obsoletes:      mate-window-manager-devel < %{version}
@@ -122,11 +125,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/%{name}/
 %{_datadir}/mate-control-center/keybindings/50-marco*.xml
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/help/C/
+%{_datadir}/help/*/*/
 %{_datadir}/applications/%{name}.desktop
 %{_mandir}/man?/%{name}*.?%{?ext_man}
 
 %files lang -f %{name}.lang
+%exclude %{_datadir}/help/*
 
 %files -n %{soname}%{sover}
 %{_libdir}/*.so.%{sover}*
