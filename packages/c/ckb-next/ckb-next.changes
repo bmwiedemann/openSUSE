@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 26 07:23:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_ckb-next-daemon.service.patch
+
+-------------------------------------------------------------------
 Mon Jun  7 11:31:57 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Fix fix double slash in //bin/bash requirement

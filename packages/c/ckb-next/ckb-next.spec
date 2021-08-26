@@ -34,6 +34,7 @@ Patch3:         ckb-next-no-cmake-modules.patch
 Patch4:         ckb-next-udev.patch
 # PATCH-FIX-UPSTREAM 422.patch boo#1135528
 Patch5:         422.patch
+Patch6:         harden_ckb-next-daemon.service.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
