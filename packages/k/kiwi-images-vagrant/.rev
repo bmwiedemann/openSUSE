@@ -65,4 +65,12 @@
     <comment>Enable I/O APIC for Virtualbox vagrant box</comment>
     <requestid>904155</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>085a37c05721cbe83c1a0f18ecc2947b</srcmd5>
+    <version>1.0</version>
+    <time>1630012460</time>
+    <user>dimstar_suse</user>
+    <comment>Fix modification of the sshd config when /usr/etc/ is used</comment>
+    <requestid>913996</requestid>
+  </revision>
 </revisionlist>
