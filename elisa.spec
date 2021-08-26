@@ -31,6 +31,8 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-broken-Files-view.patch
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(KF5Baloo) >= %{kf5_version}
 BuildRequires:  cmake(KF5Config) >= %{kf5_version}
@@ -41,8 +43,8 @@ BuildRequires:  cmake(KF5DBusAddons) >= %{kf5_version}
 BuildRequires:  cmake(KF5Declarative) >= %{kf5_version}
 BuildRequires:  cmake(KF5DocTools) >= %{kf5_version}
 BuildRequires:  cmake(KF5FileMetaData) >= %{kf5_version}
-BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5I18n) >= %{kf5_version}
+BuildRequires:  cmake(KF5IconThemes) >= %{kf5_version}
 BuildRequires:  cmake(KF5KIO) >= %{kf5_version}
 BuildRequires:  cmake(KF5Kirigami2) >= %{kf5_version}
 BuildRequires:  cmake(KF5Package) >= %{kf5_version}

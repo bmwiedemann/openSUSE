@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 26 06:25:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix a critical regression in the files
+  view, which was being built without KIO support.
+  * 0001-Fix-broken-Files-view.patch
+
+-------------------------------------------------------------------
 Fri Aug  6 09:34:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
