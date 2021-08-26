@@ -1,7 +1,7 @@
 #
 # spec file for package mate-sensors-applet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,13 @@
 
 %define soname  libmate-sensors-applet-plugin
 %define sover   0
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-sensors-applet
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop panel applet to display sensor readings
+Group:          System/GUI/Other
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
@@ -43,6 +45,7 @@ BuildRequires:  pkgconfig(libatasmart)
 BuildRequires:  pkgconfig(libmatepanelapplet-4.0) >= %{_version}
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(xext)
+ExcludeArch:    s390 s390x
 
 %description
 MATE Sensors Applet is an applet for the MATE Panel to display
@@ -68,6 +71,7 @@ speeds and voltage readings under Linux.
 
 %package -n mate-applet-sensors-devel
 Summary:        Development files for mate-sensors-applet
+Group:          Development/Libraries/X11
 Requires:       %{soname}%{sover} = %{version}
 # mate-sensors-applet-devel was last used in openSUSE Leap 42.1.
 Provides:       %{name}-devel = %{version}
@@ -80,6 +84,7 @@ speeds and voltage readings under Linux.
 
 %package -n %{soname}%{sover}
 Summary:        MATE Desktop sensors applet shared libraries
+Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 MATE Sensors Applet is an applet for the MATE Panel to display

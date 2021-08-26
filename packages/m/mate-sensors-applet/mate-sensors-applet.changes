@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Aug 12 08:23:16 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations
+  * Travis-Ci: use libera.chat as notification server
+  * Update copyright to 2021
+  * Travis: disable travis builds for ubuntu
+  * Warning: declaration of ‘content_area’ shadows a previous local
+  * Build: Use PACKAGE_URL variable
+  * Update copyright to 2021
+  * Drop aticonfig plugin (#119)
+  * sensors-applet: Remove unused function
+  * Remove cppcheck warnings about the variable scope can be reduced
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+  * hddtemp & mbmon plugins: 'GTimeVal' is deprecated
+  * Travis CI: enable irc notifications with tagged commits
+  * libsensors-plugin: function declaration isn't a prototype
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:
