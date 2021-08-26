@@ -1,0 +1,191 @@
+-------------------------------------------------------------------
+Mon Aug 23 14:10:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.2
+  * MbedTLS 3.0 is now supported.
+  * Several bugs in the aio subsystem leading to hangs or
+    performance issues are addressed.
+  * Possible crash due to mismatched nni_strdup/free usage fixed.
+  * Incorrect version number macros in CMake configuration fixed.
+  * Several other minor cleanups (remove dead code, simplify some
+    things)
+- Update to version 1.5.1
+  * This release just addresses problems with the version label
+    and cmake version properties.
+- Update to version 1.5.0
+  * This release provides a two new convenience APIs,
+    nng_msg_reserve() and nng_msg_capacity(), which can help with
+    avoiding preallocations.
+  * Additionally this release fixes a bug introduced in v1.4.0
+    where setting IPC socket permissions on Linux did not work.
+- Update to version 1.4.0
+  * This is principally a performance release, as we have
+    introduced a bunch of new features that should improve
+    performance, especially for higher end systems (those with
+    multiple cores will see substantially improved scalability, and
+    lower latencies
+  Other features:
+  * TCP ports may now be specified as service names.
+  * wss4, wss6, ws4, and ws6 can be used to force IPv6 or IPv4
+    binding for websocket URLs.
+  * REQ will fail fast if no retry timer is present, and the peer
+    disconnects.
+  * abstract sockets can be used on Linux (see nng_ipc.7 for
+    details).
+  * websocket stream mode now supports TEXT mode streams.
+  * thread names can be set, and NNG will set names for its own
+    (see nng_thr_setname.3).
+  * IPv6 scoped addresses are supported.
+  * nngcat grew --file and --data options to supply data to send.
+- Update to version 1.3.2
+  * This release is just a set of improvements to fix some
+    documentation bug
+
+-------------------------------------------------------------------
+Sat Aug  1 13:29:27 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.1
+  Fixes
+  * WebSocket and HTTP support for IPv6 addresses (note: IPv6
+    scopes are still not supported).
+  * Serious framing error in TLS (regression introduced in 1.3.0).
+  * nng_msg_clear was clearing the header; now it only clears the
+    body.
+  * Use-after-free segfault in rep protocol.
+  * NNG_OPT_RECONNMAXT zero did not prevent exponential backoff.
+  * Use-after-free in TLS.
+  * Hangs in nng_close fixed.
+  * Fixes to ease inclusion in other projects.
+  * Numerous minor doc bugs fixed.
+  * Various test suite bugs fixed.
+  Features
+  * nngcat now supports data from standard input when the file is
+    specified as "-".
+
+-------------------------------------------------------------------
+Mon Mar  2 21:38:39 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.0
+  Features
+  * Support for TLS 1.3 and external TLS providers.
+  * Message cloning and related performance improvements.
+  * Numerous other performance improvements.
+  * HTTP Server support for "non-exclusive" registration -- a given
+    handler may be registered as a fallback handler (e.g. for a
+    directory), even if more specific handlers are registered.
+  * Performance test programs grew more options to select different
+    protocols and to change the URL to test across different
+    transports.
+  Notable Bug Fixes
+  * Thread count is limited.
+  * Previously we would spawn potentially vast numbers of threads
+    based on the number of available cores.
+  * Raw mode fixes for XREQ and XRESPONDENT.
+  * HTTP Server root URL handling had a few issues which are
+    resolved.
+  * Numerous test suites uncovered small (rare) races, etc. 
+  * REP protocol with SENDFD was inconsistent
+  Other Changes
+  * Polyamorous Pair v1 mode is changed, such that a new API call is
+    needed to use it. Further, this mode will likely be removed in a
+    future release.
+  * Maximum hop count across nng_device() proxies is now limited
+    to 15.
+  * The nng_msg_options support was removed.
+
+-------------------------------------------------------------------
+Thu Feb  6 21:31:19 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.6
+  * This is another release to fix builds for older compiles
+    without support for C11 atomics.
+
+-------------------------------------------------------------------
+Wed Jan 29 20:36:26 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.5
+  * This release fixes a mistake that prevented the code from
+    building for people on older compilers or older operating
+    systems.
+
+-------------------------------------------------------------------
+Tue Jan 14 11:16:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.4
+  fixed:
+  * #1132 Masking error in LMQ leads to corruption
+  * #1131 (openindiana) compile error
+  * fix reported versions in nng.h and CMakeLists.txt
+  The critical bug here is #1132 which leads to use after free
+  heap corruption, and unpredictable results once the receive or
+  send queue wraps.
+
+-------------------------------------------------------------------
+Sun Jan  5 19:36:17 UTC 2020 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2.3
+  fixed:
+  * #1079 Use after free in tcp dialer
+  * #1075 WebSocket use after free
+  * #1064 Potential deadlock in statistics code
+  * #1065 resolver leaks work structures
+
+-------------------------------------------------------------------
+Sun Dec 22 15:03:19 UTC 2019 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.2
+  This is a minor feature release of NNG.
+  * Notably it includes support for non-SP protocol usages
+    + for example NNG can be used to make generic websocket or HTTP
+      applications now.
+  * The default maximum receive size is lifted. (If you use NNG on
+    an untrusted network, please set an explicit limit instead of
+    relying on the defaults!)
+  * Substantial work on performance. Most protocols should see
+    a nice boost.
+  * Numerous bugs fixed.
+
+- Update to version 1.1.1
+  This fixes a few problems with 1.1.0.
+  * The version number at build time was misreported as 1.0.1.
+    It will now be 1.1.1.
+  * Support for use in CMake scenarios involving add_subdirectory
+  * Fix for the bug report URL if NNG crashes
+  * Fix for a crash if a remote websocket peer sends PING requests
+
+- Update to version 1.1.0
+  There are numerous bug fixes and improvements in this since 1.0.1.
+  * DNS resolution is done asynchronously at dial time, leading to
+    better self healing in the face of changing DNS records (and
+    the possibility to use DNS for round-robin load balancing.)
+  * Better peer identification is possible with IPC based transports.
+  * The HTTP framework has better support for cancellation, and the
+    HTTP client has a much friendlier ability to execute transactions.
+    Additionally, the HTTP client can now support servers that insist
+    on sending chunked transfer encodings.
+  * The ZeroTier transport received a lot of work, so that it is far
+    more stable, and supports more properties relating to peer
+    identification. There are (undocumented) options to tune the
+    local IP addresses used in ZeroTier as well. Also, the entire
+    configuration process for ZeroTier is much saner.
+  * A statistics API is available to obtain statistics about the
+    application. Unfortunately, only a few statistics have been added
+    -- more will be added in coming releases.
+  * More modern CMake style is used to provide much more correct use
+    from CMake projects - it should no longer be necessary to call
+    find_package(Threads) or similar.
+
+-------------------------------------------------------------------
+Fri Jul  6 22:15:43 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.1
+
+-------------------------------------------------------------------
+Sat Jun  9 07:40:02 UTC 2018 - mardnh@gmx.de
+
+- Update to version 1.0.0
+
+-------------------------------------------------------------------
+Thu Jun  7 19:41:58 UTC 2018 - mardnh@gmx.de
+
+- Initial package
