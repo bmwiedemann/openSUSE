@@ -1,0 +1,9 @@
+<package name="rubygem-http" project="openSUSE:Factory">
+  <title>HTTP should be easy</title>
+  <description>An easy-to-use client library for making requests from Ruby. It uses a simple
+method chaining system for building requests, similar to Python's Requests.
+
+</description>
+  <devel project="devel:languages:ruby:extensions" package="rubygem-http"/>
+  <url>https://github.com/httprb/http</url>
+</package>

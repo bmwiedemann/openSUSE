@@ -1,0 +1,288 @@
+-------------------------------------------------------------------
+Wed Aug 25 11:58:36 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Cleanup spec
+
+-------------------------------------------------------------------
+Mon Jul 26 05:58:40 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.0.1
+ see installed CHANGES.md
+
+  ## 5.0.1 (2021-06-26)
+  
+  * [#670](https://github.com/httprb/http/pull/670)
+    Revert `Response#parse` behavior introduced in #540.
+    ([@DannyBen])
+  
+  * [#669](https://github.com/httprb/http/pull/669)
+    Prevent bodies from being resubmitted when following unsafe redirects.
+    ([@odinhb])
+  
+  * [#664](https://github.com/httprb/http/pull/664)
+    Bump llhttp-ffi to 0.3.0.
+    ([@bryanp])
+  
+
+-------------------------------------------------------------------
+Thu Jun 24 17:30:39 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 5.0.0
+ see installed CHANGES.md
+
+
+-------------------------------------------------------------------
+Thu May  7 20:55:19 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.4.1
+ see installed CHANGES.md
+
+  ## 4.4.1 (2020-03-29)
+  
+  * Backport [#590](https://github.com/httprb/http/pull/590)
+    Fix parser failing on some edge cases.
+    ([@ixti])
+  
+  ## 4.4.0 (2020-03-25)
+  
+  * Backport [#587](https://github.com/httprb/http/pull/587)
+    Fix redirections when server responds with multiple Location headers.
+    ([@ixti])
+  
+  * Backport [#599](https://github.com/httprb/http/pull/599)
+    Allow passing HTTP::FormData::{Multipart,UrlEncoded} object directly.
+    ([@ixti])
+
+-------------------------------------------------------------------
+Mon Feb 10 14:52:05 UTC 2020 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.3.0
+ see installed CHANGES.md
+
+  ## 4.3.0 (2020-01-09)
+  
+  * Backport [#581](https://github.com/httprb/http/pull/581)
+    Add Ruby-2.7 compatibility.
+    ([@ixti], [@janko])
+  
+  
+  ## 4.2.0 (2019-10-22)
+  
+  * Backport [#489](https://github.com/httprb/http/pull/489)
+    Fix HTTP parser.
+    ([@ixti], [@fxposter])
+
+-------------------------------------------------------------------
+Thu Mar 14 10:57:19 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.1.1
+ see installed CHANGES.md
+
+  ## 4.1.1 (2019-03-12)
+  
+  * Add `HTTP::Headers::ACCEPT_ENCODING` constant.
+    ([@ixti])
+  
+  
+  ## 4.1.0 (2019-03-11)
+  
+  * [#533](https://github.com/httprb/http/pull/533)
+    Add URI normalizer feature that allows to swap default URI normalizer.
+    ([@mamoonraja])
+
+-------------------------------------------------------------------
+Sat Mar  2 15:22:26 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.0.5
+ see installed CHANGES.md
+
+  ## 4.0.5 (2019-02-15)
+  
+  * Backport [#532](https://github.com/httprb/http/pull/532) from master.
+    Fix pipes support in request bodies.
+    ([@ixti])
+  
+  
+  ## 4.0.4 (2019-02-12)
+  
+  * Backport [#506](https://github.com/httprb/http/pull/506) from master.
+    Skip auto-deflate when there is no body.
+    ([@Bonias])
+  
+  
+  ## 4.0.3 (2019-01-18)
+  
+  * Fix missing URL in response wrapped by auto inflate.
+    ([@ixti])
+  
+  * Provide `HTTP::Request#inspect` method for debugging purposes.
+    ([@ixti])
+  
+  
+  ## 4.0.2 (2019-01-15)
+  
+  * [#506](https://github.com/httprb/http/pull/506)
+    Fix instrumentation feature.
+    ([@paul])
+  
+  
+  ## 4.0.1 (2019-01-14)
+  
+  * [#515](https://github.com/httprb/http/pull/515)
+    Fix `#build_request` and `#request` to respect default options.
+    ([@RickCSong])
+
+-------------------------------------------------------------------
+Thu Nov 22 05:16:43 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to version 4.0.0
+ see installed CHANGES.md
+
+  ## 4.0.0 (2018-10-15)
+  
+  * [#468](https://github.com/httprb/http/pull/468)
+    Rewind `HTTP::Request::Body#source` once `#each` is complete.
+    ([@ixti])
+  
+  * [#467](https://github.com/httprb/http/pull/467)
+    Drop Ruby 2.2 support.
+    ([@ixti])
+  
+  * [#436](https://github.com/httprb/http/pull/436)
+    Raise ConnectionError when writing to socket fails.
+    ([@janko-m])
+  
+  * [#438](https://github.com/httprb/http/pull/438)
+    Expose `HTTP::Request::Body#source`.
+    ([@janko-m])
+  
+  * [#446](https://github.com/httprb/http/pull/446)
+    Simplify setting a timeout.
+    ([@mikegee])
+  
+  * [#451](https://github.com/httprb/http/pull/451)
+    Reduce memory usage when reading response body.
+    ([@janko-m])
+  
+  * [#458](https://github.com/httprb/http/pull/458)
+    Extract HTTP::Client#build_request method.
+    ([@tycoon])
+  
+  * [#462](https://github.com/httprb/http/pull/462)
+    Fix HTTP::Request#headline to allow two leading slashes in path.
+    ([@scarfacedeb])
+  
+  * [#454](https://github.com/httprb/http/pull/454)
+    [#464](https://github.com/httprb/http/pull/464)
+    [#384](https://github.com/httprb/http/issues/384)
+    Fix #readpartial not respecting max length argument.
+    ([@janko-m], [@marshall-lee])
+
+-------------------------------------------------------------------
+Wed Apr 25 23:05:37 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 3.3.0
+ see installed CHANGES.md
+
+  ## 3.3.0 (2018-04-25)
+  
+  This version backports some of the fixes and improvements made to development
+  version of the HTTP gem:
+  
+  * [#458](https://github.com/httprb/http/pull/458)
+    Extract HTTP::Client#build_request method.
+    ([@tycoon])
+
+-------------------------------------------------------------------
+Tue Apr 24 17:04:33 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 3.2.1
+ see installed CHANGES.md
+
+  ## 3.2.1 (2018-04-24)
+  
+  * [#468](https://github.com/httprb/http/pull/468)
+    Rewind `HTTP::Request::Body#source` once `#each` is complete.
+    ([@ixti])
+
+-------------------------------------------------------------------
+Sun Apr 22 16:04:28 UTC 2018 - factory-auto@kulow.org
+
+- updated to version 3.2.0
+ see installed CHANGES.md
+
+  ## 3.2.0 (2018-04-22)
+  
+  This vresion backports one change we missed to backport in previous release:
+  
+  * Reduce memory usage when reading response body
+    ([@janko-m])
+  
+  
+  ## 3.1.0 (2018-04-22)
+  
+  This version backports some of the fixes and improvements made to development
+  version of the HTTP gem:
+  
+  * Fix for `#readpartial` to respect max length argument.
+    ([@janko-m], [@marshall-lee])
+  
+  * Fix for `HTTP::Request#headline` to allow two leading slashes in path.
+    ([@scarfacedeb])
+  
+  * Fix query string building for string with newlines.
+    ([@mikegee])
+  
+  * Deallocate temporary strings in `Response::Body#to_s`.
+    ([@janko-m])
+  
+  * Add `Request::Body#source`.
+    ([@janko-m])
+
+-------------------------------------------------------------------
+Wed Oct 11 06:06:32 UTC 2017 - coolo@suse.com
+
+- updated to version 3.0.0
+ see installed CHANGES.md
+
+  ## 3.0.0 (2017-10-01)
+  
+  * Drop support of Ruby `2.0` and Ruby `2.1`.
+    ([@ixti])
+  
+  * [#410](https://github.com/httprb/http/pull/410)
+    Infer `Host` header upon redirects.
+    ([@janko-m])
+  
+  * [#409](https://github.com/httprb/http/pull/409)
+    Enables request body streaming on any IO object.
+    ([@janko-m])
+  
+  * [#413](https://github.com/httprb/http/issues/413),
+    [#414](https://github.com/httprb/http/pull/414)
+    Fix encoding of body chunks.
+    ([@janko-m])
+  
+  * [#368](https://github.com/httprb/http/pull/368),
+    [#357](https://github.com/httprb/http/issues/357)
+    Fix timeout issue.
+    ([@HoneyryderChuck])
+
+-------------------------------------------------------------------
+Tue May 23 09:58:56 UTC 2017 - coolo@suse.com
+
+- updated to version 2.2.2
+ see installed CHANGES.md
+
+  ## 2.2.2 (2017-04-27)
+  
+  * [#404](https://github.com/httprb/http/issues/404),
+    [#405](https://github.com/httprb/http/pull/405)
+    Make keepalive timeout configurable.
+    ([@nestegg])
+
+-------------------------------------------------------------------
+Tue Feb 14 12:19:47 UTC 2017 - mmeister@suse.com
+
+- Initial packaging
+
