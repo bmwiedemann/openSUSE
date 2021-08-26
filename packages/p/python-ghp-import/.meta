@@ -1,0 +1,6 @@
+<package name="python-ghp-import" project="openSUSE:Factory">
+  <title></title>
+  <description>Easily import docs to your gh-pages branch.
+</description>
+  <devel project="devel:languages:python" package="python-ghp-import"/>
+</package>
