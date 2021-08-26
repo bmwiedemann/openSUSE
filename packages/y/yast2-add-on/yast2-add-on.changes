@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 19 16:00:54 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Improve UX by using a less misleading message when
+  repo URL is unknown (bsc#1188635).
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 12:55:53 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
