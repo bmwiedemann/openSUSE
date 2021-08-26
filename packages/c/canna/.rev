@@ -294,4 +294,12 @@ Sat Oct 26 13:46:25 UTC 2013 - p.drouand@gmail.com
     <comment></comment>
     <requestid>746726</requestid>
   </revision>
+  <revision rev="39" vrev="242">
+    <srcmd5>2d4d60b8fe4f0731d899b391470cd189</srcmd5>
+    <version>3.7p3</version>
+    <time>1630012512</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 914355 from jsegitz)</comment>
+    <requestid>914380</requestid>
+  </revision>
 </revisionlist>
