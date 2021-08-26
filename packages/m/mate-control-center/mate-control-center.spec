@@ -16,17 +16,19 @@
 #
 
 
-%define soname  libmate-window-settings
-%define sover   1
+%define soname      libmate-window-settings
+%define sover       1
 %define soname_slab libmate-slab
-%define sover_slab 0
-%define _version 1.24
+%define sover_slab  0
+%define _version    1.26
+
 Name:           mate-control-center
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop control center
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
+Group:          System/GUI/Other
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  mate-common
@@ -92,6 +94,7 @@ control center.
 
 %package devel
 Summary:        Header files for MATE Control Center
+Group:          Development/Libraries/X11
 Requires:       %{soname}%{sover} = %{version}
 
 %description devel
@@ -102,6 +105,7 @@ This package provides MATE control center development files.
 
 %package -n %{soname}%{sover}
 Summary:        Utility library for getting window manager settings
+Group:          System/Libraries
 
 %description -n %{soname}%{sover}
 This library is used by MATE control center to change preferences
@@ -109,6 +113,7 @@ of window managers.
 
 %package -n %{soname_slab}%{sover_slab}
 Summary:        MATE Desktop libslab port
+Group:          System/Libraries
 
 %description -n %{soname_slab}%{sover_slab}
 This library makes it easy to create tile-based UI for MATE, as seen in
@@ -116,6 +121,7 @@ gnome-main-menu.
 
 %package -n %{soname_slab}-devel
 Summary:        Header files for libslab
+Group:          Development/Libraries/X11
 Requires:       %{soname_slab}%{sover_slab} = %{version}
 
 %description -n %{soname_slab}-devel

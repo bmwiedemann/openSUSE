@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 10 13:19:49 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Translations update
+  * Replace the deprecated GtkTable with GtkGrid
+  * Replace the deprecated gtk_widget_set_state with gtk_widget_set_state_flags
+  * Remove useless and discarded gtk_button_released
+  * Replace the deprecated g_bookmark_file_get_modified with
+    g_bookmark_file_get_modified_date_time
+  * Fix compilation warning
+  * Use gtk-cancel icon replace window-close icon
+  * update copyright to 2021 
+
+-------------------------------------------------------------------
 Mon Apr 26 19:52:43 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.24.2:
