@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 20 17:11:46 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Merged latest upstream, which includes:
+  * iscsid: set PR_SET_IO_FLUSHER (bsc#1188869)
+
+-------------------------------------------------------------------
 Wed Jul 21 01:26:15 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Merge latest upstream, which includeds:
