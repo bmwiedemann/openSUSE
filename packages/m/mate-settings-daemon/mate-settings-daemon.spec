@@ -16,11 +16,13 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-settings-daemon
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE session settings daemon
+Group:          System/GUI/Other
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
@@ -57,6 +59,7 @@ run under it.
 
 %package devel
 Summary:        MATE session settings daemon development files
+Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 
 %description devel
