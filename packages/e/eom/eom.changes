@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 22 10:50:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim filler wording from description. Make doc package noarch.
+  Update RPM groups.
+
+-------------------------------------------------------------------
+Mon Aug 16 13:40:09 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations
+  * update copyright to 2021
+- Split doc package
+
+-------------------------------------------------------------------
 Mon Apr 26 10:59:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.24.2:

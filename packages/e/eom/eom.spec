@@ -17,12 +17,14 @@
 
 
 %define typelib typelib-1_0-Eom-1_0
-%define _version 1.24
+%define _version 1.26
+
 Name:           eom
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop graphics viewer
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Productivity/Graphics/Viewers
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  hicolor-icon-theme
@@ -53,37 +55,44 @@ Obsoletes:      mate-image-viewer-lang < %{version}
 %glib2_gsettings_schema_requires
 
 %description
-The Eye of MATE is a simple graphics viewer for the MATE Desktop
+The Eye of MATE is a graphics viewer for the MATE Desktop
 which uses the gdk-pixbuf library. It can deal with large images,
-and zoom and scroll with constant memory usage. Its goals are
-simplicity and standards compliance.
+and zoom and scroll with constant memory usage.
 
 %lang_package
 
 %package devel
 Summary:        MATE Desktop graphics viewer development files
+Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 # mate-image-viewer-devel was last used in openSUSE 13.1.
 Provides:       mate-image-viewer-devel = %{version}
 Obsoletes:      mate-image-viewer-devel < %{version}
 
 %description devel
-The Eye of MATE is a simple graphics viewer for the MATE Desktop
+The Eye of MATE is a graphics viewer for the MATE Desktop
 which uses the gdk-pixbuf library. It can deal with large images,
-and zoom and scroll with constant memory usage. Its goals are
-simplicity and standards compliance.
+and zoom and scroll with constant memory usage.
 
 %package -n %{typelib}
 Summary:        MATE Desktop graphics viewer typelib
+Group:          System/Libraries
 
 %description -n %{typelib}
-The Eye of MATE is a simple graphics viewer for the MATE Desktop
+The Eye of MATE is a graphics viewer for the MATE Desktop
 which uses the gdk-pixbuf library. It can deal with large images,
-and zoom and scroll with constant memory usage. Its goals are
-simplicity and standards compliance.
+and zoom and scroll with constant memory usage.
+
+%package doc
+Group:          Documentation/HTML
+Summary:        Documentation how to Use eom
+BuildArch:      noarch
+
+%description doc
+This package contains the documentation for eom
 
 %prep
-%setup -q
+%autosetup
 
 %build
 NOCONFIGURE=1 mate-autogen
@@ -109,9 +118,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%{_datadir}/help/C/%{name}/
 
 %files lang -f %{name}.lang
+%exclude %{_datadir}/help/*
 
 %files devel
 %{_includedir}/%{name}-2.20/
@@ -121,5 +130,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n %{typelib}
 %{_libdir}/girepository-1.0/Eom-1.0.typelib
+
+%files doc
+%{_datadir}/help/*/%{name}/
 
 %changelog

@@ -230,4 +230,13 @@
     <comment></comment>
     <requestid>888516</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>38b33c642123a6a15d749d3a0169a623</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012492</time>
+    <user>dimstar_suse</user>
+    <comment>- Trim filler wording from description. Make doc package noarch.
+  Update RPM groups. (forwarded request 913554 from jengelh)</comment>
+    <requestid>913576</requestid>
+  </revision>
 </revisionlist>
