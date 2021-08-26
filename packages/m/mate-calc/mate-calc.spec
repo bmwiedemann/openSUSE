@@ -16,18 +16,21 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-calc
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop calculator application
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
+Group:          system/GUI/Other
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  mate-common >= %{_version}
+BuildRequires:  mpc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -36,6 +39,7 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mpfr)
 Recommends:     %{name}-lang
 %glib2_gsettings_schema_requires
 
@@ -63,7 +67,7 @@ NOCONFIGURE=1 mate-autogen
 
 %files
 %license COPYING
-%doc NEWS README
+%doc NEWS README.md
 %{_bindir}/mate-calc
 %{_bindir}/mate-calc-cmd
 %{_bindir}/mate-calculator
@@ -71,10 +75,11 @@ NOCONFIGURE=1 mate-autogen
 %{_datadir}/glib-2.0/schemas/*.xml
 %dir %{_datadir}/metainfo/
 %{_datadir}/metainfo/%{name}.appdata.xml
-%{_datadir}/help/C/
+%{_datadir}/help/*/%{name}/
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}-cmd.1%{?ext_man}
 
 %files lang -f %{name}.lang
+%exclude %{_datadir}/help/*
 
 %changelog

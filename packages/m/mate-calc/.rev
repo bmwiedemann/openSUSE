@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>888603</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8b7eedc8f526b8312520ae3048b84108</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012490</time>
+    <user>dimstar_suse</user>
+    <comment>fix file conflicts (forwarded request 913434 from hillwood)</comment>
+    <requestid>913442</requestid>
+  </revision>
 </revisionlist>
