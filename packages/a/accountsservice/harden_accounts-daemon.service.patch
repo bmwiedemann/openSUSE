@@ -2,13 +2,12 @@ Index: accountsservice-0.6.55/data/accounts-daemon.service.in
 ===================================================================
 --- accountsservice-0.6.55.orig/data/accounts-daemon.service.in
 +++ accountsservice-0.6.55/data/accounts-daemon.service.in
-@@ -8,6 +8,16 @@ After=nss-user-lookup.target
+@@ -8,6 +8,15 @@ After=nss-user-lookup.target
  Wants=nss-user-lookup.target
  
  [Service]
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-+ProtectHome=true
 +PrivateDevices=true
 +ProtectHostname=true
 +ProtectClock=true

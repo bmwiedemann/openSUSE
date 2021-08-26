@@ -1050,4 +1050,14 @@ By now, it's required for sle-15, so synchronized the updated specfile and chang
     <comment>- Spec layout cleaning up for harden_accounts-daemon.service.patch. (forwarded request 910817 from yfjiang)</comment>
     <requestid>913679</requestid>
   </revision>
+  <revision rev="73" vrev="8">
+    <srcmd5>ea991afe83a254c89750839ee0c02a0e</srcmd5>
+    <version>0.6.55</version>
+    <time>1630012475</time>
+    <user>dimstar_suse</user>
+    <comment>- Update harden_accounts-daemon.service.patch: Do not proect home
+  directories: the accounts daemon is used to create home
+  directories upon user creation (boo#1189853).</comment>
+    <requestid>914414</requestid>
+  </revision>
 </revisionlist>
