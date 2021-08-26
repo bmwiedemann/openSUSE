@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Aug 22 17:11:35 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
+
+- update to v5.13.0:
+  - mkfs: validate rtextsz hint when rtinherit is set
+  - xfs_repair: invalidate dirhash when junking dirent
+  - xfs_repair: validate inherited rtextsz hint alignmt
+  - xfs_quota: allow truncate of grp & prj quota files
+  - xfs_io: allow callers to dump fs stats individually
+  - xfs_io: don't count fsmaps before querying fsmaps
+  - xfs_io: print header once when dumping fsmap in csv
+  - xfs_io: clean up the funshare command a bit
+  - xfs_io: fix broken funshare_cmd usage
+  - libxfs changes merged from kernel 5.13
+
+-------------------------------------------------------------------
 Tue May 25 11:33:03 UTC 2021 - Anthony Iliopoulos <ailiop@suse.com>
 
 - update to v5.12.0:
