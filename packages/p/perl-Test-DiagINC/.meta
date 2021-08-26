@@ -1,0 +1,6 @@
+<package name="perl-Test-DiagINC" project="openSUSE:Factory">
+  <title>List modules and versions loaded if tests fail</title>
+  <description>Assuming you shipped your module to CPAN with working tests, test failures from at http://www.cpantesters.org/ might be due to platform issues, Perl version issues or problems with dependencies. This module helps you diagnose deep dependency problems by showing you exactly what modules and versions were loaded during a test run.</description>
+  <devel project="devel:languages:perl" package="perl-Test-DiagINC"/>
+  <url>https://metacpan.org/release/Test-DiagINC</url>
+</package>
