@@ -2,7 +2,7 @@
 # spec file for package ndpi
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,9 @@
 %bcond_without hyperscan
 %endif
 
-%define sover 3
+%define sover 4
 Name:           ndpi
-Version:        3.4
+Version:        4.0
 Release:        0
 Summary:        Extensible deep packet inspection library
 # wireshark/ndpi.lua is GPL-3.0-or-later
@@ -31,6 +31,12 @@ License:        LGPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/ntop/nDPI
 Source:         https://github.com/ntop/nDPI/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 0001-Added-ability-to-report-whether-a-protocol-is-encryp.patch # ntopng 5.0 needs this from the ndpi 4.0-stable branch
+Patch0:         0001-Added-ability-to-report-whether-a-protocol-is-encryp.patch
+# PATCH-FIX-UPSTREAM 0002-Report-whether-a-protocol-is-encrypted.patch # ntopng 5.0 needs this from the ndpi 4.0-stable branch
+Patch1:         0002-Report-whether-a-protocol-is-encrypted.patch
+# PATCH-FIX-UPSTREAM 0003-Firs-crash-on-ARM-during-steam-protocol-dissection.patch
+Patch2:         0003-Firs-crash-on-ARM-during-steam-protocol-dissection.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -51,6 +57,7 @@ available only on the paid version of OpenDPI.
 %package -n libndpi%{sover}
 Summary:        Extensible deep packet inspection library
 Group:          System/Libraries
+Requires:       ndpi-common
 
 %description -n libndpi%{sover}
 nDPI is a ntop-maintained superset of the OpenDPI library. It extends
@@ -86,8 +93,24 @@ available only on the paid version of OpenDPI.
 
 This package contains the ndpiReader binary.
 
+%package -n ndpi-common
+Summary:        Common files used by nDPI
+Group:          Development/Libraries/C and C++
+# version 3 rpm did not yet follow rules correctly
+Conflicts:      libndpi3
+
+%description -n ndpi-common
+nDPI is a ntop-maintained superset of the OpenDPI library. It extends
+the original library by adding new protocols that are otherwise
+available only on the paid version of OpenDPI.
+
+This package contains common files used by nDPI.
+
 %prep
 %setup -q -n nDPI-%{version}
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 sh autogen.sh
@@ -101,16 +124,12 @@ make %{?_smp_mflags}
 %install
 %make_install PREFIX=%{_prefix} prefix=%{_prefix} libdir=%{_libdir}
 rm -f %{buildroot}/%{_libdir}/libndpi.a
-rm -rf %{buildroot}/%{_sbindir}/ndpi
+rm -f %{buildroot}/%{_sbindir}/ndpi
 
 %post   -n libndpi%{sover} -p /sbin/ldconfig
 %postun -n libndpi%{sover} -p /sbin/ldconfig
 
 %files -n libndpi%{sover}
-%license COPYING
-%doc CHANGELOG.md README.md README.nDPI README.protocols
-%doc doc/nDPI_QuickStartGuide.pdf
-%{_datadir}/%{name}
 %{_libdir}/libndpi.so.%{sover}*
 
 %files -n libndpi-devel
@@ -121,5 +140,11 @@ rm -rf %{buildroot}/%{_sbindir}/ndpi
 %files -n ndpi-tools
 %{_bindir}/ndpiReader
 %doc wireshark
+
+%files -n ndpi-common
+%license COPYING
+%doc CHANGELOG.md README.md README.nDPI README.protocols
+%doc doc/nDPI_QuickStartGuide.pdf
+%{_datadir}/%{name}
 
 %changelog
