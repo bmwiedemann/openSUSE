@@ -126,4 +126,12 @@
     <comment>- Update to version 1.24.1.</comment>
     <requestid>827422</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>982a083905fb2b7befb9db0c2702245d</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012487</time>
+    <user>dimstar_suse</user>
+    <comment>- Update summaries. (forwarded request 913356 from jengelh)</comment>
+    <requestid>913366</requestid>
+  </revision>
 </revisionlist>

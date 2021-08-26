@@ -1,7 +1,7 @@
 #
 # spec file for package mate-menus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define soname  libmate-menu
-%define sover   2
-%define typelib typelib-1_0-MateMenu-2_0
-%define _version 1.24
+%define soname   libmate-menu
+%define sover    2
+%define typelib  typelib-1_0-MateMenu-2_0
+%define _version 1.26
+
 Name:           mate-menus
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop Menu
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
@@ -49,7 +51,7 @@ The libmate-menu library implements the "Desktop Menu Specification"
 from freedesktop.org.
 
 %package branding-upstream
-Summary:        The MATE Desktop Menu -- Upstream Menus Definitions
+Summary:        Upstream menus definition for the MATE desktop menu
 License:        GPL-2.0-or-later
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and branding-upstream)
@@ -72,6 +74,7 @@ This package provides the upstream definitions for menus.
 
 %package -n %{soname}%{sover}
 Summary:        MATE Desktop Menu
+Group:          System/Libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 
 %description -n %{soname}%{sover}
@@ -79,7 +82,8 @@ The libmate-menu library implements the "Desktop Menu Specification"
 from freedesktop.org.
 
 %package -n %{typelib}
-Summary:        MATE Desktop menu bindings
+Summary:        Introspection bindings for the MATE Desktop Menu
+Group:          System/Libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 
 %description -n %{typelib}
@@ -87,8 +91,9 @@ The libmate-menu library implements the "Desktop Menu Specification"
 from freedesktop.org.
 
 %package devel
-Summary:        MATE Desktop Menu
+Summary:        Header files for the MATE Desktop Menu
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Development/Libraries/X11
 Requires:       %{soname}%{sover} = %{version}
 Requires:       %{typelib} = %{version}
 Requires:       pkgconfig(glib-2.0)
