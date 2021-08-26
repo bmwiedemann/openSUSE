@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Aug 25 23:00:54 UTC 2021 - jfehlig@suse.com
+
+- Update to version 1.9.3:
+  * Version 1.9.3.
+  * maint: Modernize configure.ac to silence autoreconf warnings
+  * maint: Update to latest ax_pthread.m4
+  * copy: Avoid potential divide by zero when source size is zero
+  * copy: Test corner case of copying from zero-sized source
+  * copy: Fix progress bar
+  * Update CI files once more
+  * ci: Allow failure when building fedora rawhide container
+  * ci: Consolidate refresh scripts
+  * macOS: Simple cloexec/nonblock fix
+  * info: Require can_cache for info-can.sh
+  * CI: Add testing on Alpine
+  * Update CI files
+  * macOS: Do not use --version_script
+  * One more VSOCK include fix
+  * m4: Remove *~ on make clean
+  * ci: Rework the build script to run check-valgrind properly
+  * fuse: move check-valgrind out from condition
+  * qemu-storage-daemon 5.2.0 is still broken
+  * Version 1.9.2.
+  * python: Add missing test file to EXTRA_DIST
+  * build: Warn about large stack frames
+  * configure: Add a macro to test if compiler -W warning flags work
+  * lib/uri.c: nbd_get_uri: Do not translate port name into service
+  * python: Implement nbd.aio_connect for AF_UNIX
+  * bash: Generate completion files during build
+  * info: Add percentage after field in --map --totals
+  * info: Add --can|--is options to test for NBD flags
+  * info: Add --map --totals sub-mode to display summary of map
+  * info: Don't print extra trailing \n after output
+  * fuse: Tidy up MODES section of the documentation
+  * fuse: Note in docs that read-only server implies -r flag
+  * fuse: Improve documentation on the thread model
+  * fuse: Update comment as we expect zero support to be present in 5.14
+  * copy: Set default request-size to 2**18 (262144 bytes)
+  * copy/copy-sparse-no-extents.sh: Set request-size explicitly
+  * maint: Untabify configure.ac
+
+-------------------------------------------------------------------
 Thu Jul 01 14:37:03 UTC 2021 - jfehlig@suse.com
 
 - Update to version 1.9.1:
