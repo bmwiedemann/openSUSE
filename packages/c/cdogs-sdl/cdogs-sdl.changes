@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Aug 26 07:50:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Fix deletion of duplicate README.md
+
+-------------------------------------------------------------------
+Sat Aug 21 18:58:34 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.0.0
+  * Support for Wolfenstein 3D and Spear of Destiny
+  Game
+  * Add support for vehicles #30
+  * Add support for multi-guns
+  * Add support for custom wreck objects and bullets (allows
+    respawning actors on death)
+  * Add support for custom actor death animation
+  * Add option to skip debrief menu
+  * Fix game freeze when returning to game after leaving it paused
+    for a while
+  * Fix duplicate missions in level select
+  * Improve performance by adding max particle limit
+  * Improve level select menu with max items limit
+  * Improve game start menu by disabling continue option after
+    campaign complete
+  Editor
+  * Fix loading a campaign with less missions showing a blank
+    mission #670
+  * Add per-mission option to persist weapons (can reset weapons
+    on certain missions)
+  * Change map shortcut key to tab
+- Add patch:
+  * fix-build.patch
+
+-------------------------------------------------------------------
 Tue Jul 20 19:09:53 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 0.13.0
