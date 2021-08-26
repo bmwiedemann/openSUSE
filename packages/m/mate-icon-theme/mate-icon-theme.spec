@@ -1,7 +1,7 @@
 #
 # spec file for package mate-icon-theme
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-icon-theme
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        MATE icon theme
-License:        LGPL-3.0-only AND CC-BY-3.0
+License:        CC-BY-3.0 AND LGPL-3.0-only
+Group:          System/X11/Icons
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
@@ -48,8 +50,7 @@ NOCONFIGURE=1 mate-autogen
 
 %install
 %make_install
-%fdupes %{buildroot}%{_datadir}/icons/mate/
-%fdupes %{buildroot}%{_datadir}/icons/menta/
+%fdupes %{buildroot}%{_datadir}/icons
 
 %files
 %license COPYING

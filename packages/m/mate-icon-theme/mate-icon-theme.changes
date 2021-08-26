@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 14 09:19:34 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations 
+  * Remove the execution bit from some png files
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy) 
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.1):
