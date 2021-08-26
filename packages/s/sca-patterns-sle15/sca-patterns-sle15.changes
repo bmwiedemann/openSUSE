@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 25 22:58:37 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Fixed metadata tags in scc-registered.py
+
+-------------------------------------------------------------------
+Wed Aug 25 21:54:46 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Updates to version 1.0.7
+  - New regular patterns (1)
+    + sle15all/scc-registered.py: Check system registration status (TID000018546)
+
+-------------------------------------------------------------------
 Tue Aug 17 14:36:00 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Changes in version 1.0.7
