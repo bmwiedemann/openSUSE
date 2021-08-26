@@ -249,4 +249,12 @@
     <comment>- Update to version 1.24.1.</comment>
     <requestid>827405</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>9749c22c99fb45d23d1cf7bfc23bd6bb</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012493</time>
+    <user>dimstar_suse</user>
+    <comment>- Make doc package noarch. (forwarded request 913555 from jengelh)</comment>
+    <requestid>913577</requestid>
+  </revision>
 </revisionlist>
