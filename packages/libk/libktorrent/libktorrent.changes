@@ -1,10 +1,15 @@
 -------------------------------------------------------------------
+Thu Aug 26 09:02:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable lto for ppc64 builds.
+
+-------------------------------------------------------------------
 Fri Aug  6 09:42:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
   * New feature release
   * For more details please see:
-  * https://kde.org/announcements/gear/21.08/
+  * https://kde.org/announcements/gear/21.08.0
 - No code change since 21.07.90
 
 -------------------------------------------------------------------

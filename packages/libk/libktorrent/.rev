@@ -405,4 +405,14 @@
     <comment>KDE Gear 21.08.0</comment>
     <requestid>911782</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>3d26a94e9b04ef43dd897fd709b022f5</srcmd5>
+    <version>21.08.0</version>
+    <time>1630012512</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable lto for ppc64 builds.
+
+  * https://kde.org/announcements/gear/21.08.0</comment>
+    <requestid>914379</requestid>
+  </revision>
 </revisionlist>

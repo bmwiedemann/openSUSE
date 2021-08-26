@@ -87,6 +87,10 @@ libktorrent is a torrent downloading library.
 sed -i 's#1.71.0#1.66.0#' CMakeLists.txt
 
 %build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
+
 %cmake_kf5 -d build
 %cmake_build
 
