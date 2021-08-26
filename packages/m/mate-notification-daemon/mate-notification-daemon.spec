@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-notification-daemon
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        Notification daemon for MATE
 License:        GPL-2.0-or-later
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  mate-common >= %{_version}
@@ -31,9 +33,11 @@ BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
+BuildRequires:  pkgconfig(libmatepanelapplet-4.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(mate-desktop-2.0)
 BuildRequires:  pkgconfig(x11)
 Recommends:     %{name}-lang
 Provides:       dbus(org.freedesktop.Notifications)
@@ -66,12 +70,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %doc AUTHORS NEWS
 %{_bindir}/mate-notification-properties
 %dir %{_libexecdir}/mate-notification-daemon/
-%{_libexecdir}/mate-notification-daemon/mate-notification-daemon
+%{_libexecdir}/mate-notification-daemon/mate-notification-*
 %dir %{_libdir}/mate-notification-daemon/
 %dir %{_libdir}/mate-notification-daemon/engines/
 %{_libdir}/mate-notification-daemon/engines/lib*.so
 %{_datadir}/applications/mate-notification-properties.desktop
 %{_datadir}/dbus-1/services/org.freedesktop.mate.Notifications.service
+%{_datadir}/dbus-1/services/org.mate.panel.applet.MateNotificationAppletFactory.service
+%dir %{_datadir}/mate-panel
+%dir %{_datadir}/mate-panel/applets
+%{_datadir}/mate-panel/applets/org.mate.applets.MateNotificationApplet.mate-panel-applet
 %{_datadir}/icons/hicolor/*/apps/*
 %{_datadir}/glib-2.0/schemas/*.xml
 %{_mandir}/man1/mate-notification-properties.1%{?ext_man}
