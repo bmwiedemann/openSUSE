@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 10 09:49:45 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- add fedora's patches 0002-Use-g_memdup2-everywhere.patch and
+  0005-media-rename-local-function-conflicting-with-pause-2.patch
+  to fix compatibility problems with newer glib and glibc
+
+-------------------------------------------------------------------
 Mon Aug  2 18:27:38 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - fix bluez-auto-enable-devices subpackage (boo#1177845)

@@ -1429,4 +1429,12 @@ If we cannot get this in, we need to push an security update for the current blu
     <comment>fix bluez-auto-enable-devices subpackage (boo#1177845)</comment>
     <requestid>911193</requestid>
   </revision>
+  <revision rev="180" vrev="4">
+    <srcmd5>57a113ecc960986fa6738f67b3ff4e9a</srcmd5>
+    <version>5.60</version>
+    <time>1630012457</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>913951</requestid>
+  </revision>
 </revisionlist>
