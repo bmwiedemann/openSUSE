@@ -16,12 +16,13 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
 Name:           mate-backgrounds
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        A set of backgrounds packaged with the MATE desktop
 License:        GPL-2.0-only
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  mate-common >= %{_version}
