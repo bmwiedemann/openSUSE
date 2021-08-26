@@ -1,7 +1,7 @@
 #
 # spec file for package libmateweather
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,18 @@
 
 
 %define sover   1
-%define _version 1.24
+%define _version 1.26
+
 Name:           libmateweather
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Weather
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  mate-common >= %{_version}
 BuildRequires:  pkgconfig
 BuildRequires:  timezone >= 2016g
@@ -43,6 +46,7 @@ online services for numerous locations.
 
 %package -n mateweather-common
 Summary:        MATE Weather common files
+Group:          System/Libraries
 BuildArch:      noarch
 
 %description -n mateweather-common
@@ -52,6 +56,7 @@ online services for numerous locations.
 %package devel
 Summary:        MATE Weather development files
 Requires:       %{name}%{sover} = %{version}
+Group:          Development/Libraries/X11
 Requires:       mateweather-common = %{version}
 
 %description devel
@@ -60,6 +65,7 @@ online services for numerous locations.
 
 %package -n %{name}%{sover}
 Summary:        MATE Weather shared libraries
+Group:          System/Libraries
 Requires:       mateweather-common
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
@@ -97,7 +103,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n mateweather-common
 %{_datadir}/glib-2.0/schemas/*.xml
-%{_datadir}/icons/mate/
+%{_datadir}/icons/hicolor/*/status/*
 %{_datadir}/%{name}/
 
 %files devel

@@ -174,4 +174,12 @@
     <comment>- Update to version 1.24.1.</comment>
     <requestid>827404</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>9152dceb93dda8933dc20c74a54f1d9c</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012488</time>
+    <user>dimstar_suse</user>
+    <comment>adjust groups (forwarded request 913370 from jengelh)</comment>
+    <requestid>913373</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 10 08:16:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Translations update
+  * Using soup_session_new replaces the deprecated soup_session_async_new
+  * use irc.libera.chat for notifications
+  * use TLS certificate verification for libsoup session
+  * locations: drop Berlin Tegel
+  * add 2 brazil cities
+  * build: underline package name and version in configure summary
+  * build: set GETTEXT_PACKAGE=AC_PACKAGE_NAME
+  * Install icons in fallback icon theme
+  * README: Fix typo mistakes
+  * README: How to translate the default location data
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+  * locations: update cities in Thailand
+  * po-locations: Upgrade extract.xsl after migrating to gettext
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:
