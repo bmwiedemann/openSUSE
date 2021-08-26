@@ -23,4 +23,12 @@
     <comment></comment>
     <requestid>880566</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>68a801967b2f88ddc695f595b831ddad</srcmd5>
+    <version>0.301004</version>
+    <time>1630012503</time>
+    <user>dimstar_suse</user>
+    <comment>See also https://build.opensuse.org/request/show/914268</comment>
+    <requestid>914269</requestid>
+  </revision>
 </revisionlist>

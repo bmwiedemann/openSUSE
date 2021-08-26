@@ -18,7 +18,7 @@
 
 %define cpan_name Dancer2
 Name:           perl-Dancer2
-Version:        0.301001
+Version:        0.301004
 Release:        0
 Summary:        Lightweight yet powerful web application framework
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -28,6 +28,7 @@ Source1:        cpanspec.yml
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(CLI::Osprey)
 BuildRequires:  perl(CPAN::Meta::Requirements) >= 2.120620
 BuildRequires:  perl(Capture::Tiny) >= 0.12
 BuildRequires:  perl(Clone)
@@ -36,6 +37,7 @@ BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Exporter::Tiny)
 BuildRequires:  perl(File::Share)
 BuildRequires:  perl(File::ShareDir::Install) >= 0.06
+BuildRequires:  perl(File::Which)
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Date)
 BuildRequires:  perl(HTTP::Headers)
@@ -51,9 +53,11 @@ BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo) >= 2.000000
 BuildRequires:  perl(Moo::Role)
+BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Plack) >= 1.0040
 BuildRequires:  perl(Plack::Middleware::FixMissingBodyInRedirect)
 BuildRequires:  perl(Plack::Middleware::RemoveRedundantBody)
+BuildRequires:  perl(Pod::Simple::SimpleTree)
 BuildRequires:  perl(Ref::Util)
 BuildRequires:  perl(parent)
 #BuildRequires:  perl(Role::Tiny) >= 2.000000
@@ -68,11 +72,13 @@ BuildRequires:  perl(Type::Tiny) >= 1.000006
 BuildRequires:  perl(Types::Standard)
 BuildRequires:  perl(URI::Escape)
 BuildRequires:  perl(YAML) >= 0.86
+Requires:       perl(CLI::Osprey)
 Requires:       perl(Clone)
 Requires:       perl(Config::Any)
 Requires:       perl(Digest::SHA)
 Requires:       perl(Exporter::Tiny)
 Requires:       perl(File::Share)
+Requires:       perl(File::Which)
 Requires:       perl(HTTP::Date)
 Requires:       perl(HTTP::Headers::Fast) >= 0.21
 Requires:       perl(HTTP::Tiny)
@@ -85,6 +91,7 @@ Requires:       perl(MIME::Base64) >= 3.13
 Requires:       perl(Module::Runtime)
 Requires:       perl(Moo) >= 2.000000
 Requires:       perl(Moo::Role)
+Requires:       perl(Path::Tiny)
 Requires:       perl(Plack) >= 1.0040
 Requires:       perl(Plack::Middleware::FixMissingBodyInRedirect)
 Requires:       perl(Plack::Middleware::RemoveRedundantBody)

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Jun  7 03:06:48 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.301004
+   see /usr/share/doc/packages/perl-Dancer2/Changes
+
+  0.301004  2021-06-06 13:30:28-04:00 America/New_York
+      [ BUG FIXES ]
+      * GH #1624: Fix missing gen subcommand in tutorial (racke)
+      * PR #1626: Add File::Which to Dancer2 dependencies (Jason A. Crome)
+      [ ENHANCEMENTS ]
+      * None
+      [ DOCUMENTATION ]
+      * None
+  0.301003  2021-06-03 09:24:33-04:00 America/New_York
+      [ BUG FIXES ]
+      * GH #1611: Redirect '/' doesn't always work as expected (Russell
+        @veryrusty Jenkins, Christopher Gurnee)
+      * PR #1620: Quiet spammy failing CI builds (Jason A. Crome)
+      * PR #1623: Copy Dockerfile from the right spot (Jason A. Crome)
+      [ ENHANCEMENTS ]
+      * PR #1613: Add git features to Dancer2 CLI (Jason A. Crome)
+      * PR #1614: Generate Dockerfile when creating new app (Jason A. Crome)
+      [ DOCUMENTATION ]
+      * PR #1563: Fix typos in perlcritic.rc notes (Achyut Kumar Panda)
+      * PR #1609: Document and test for missing DSL keywords (racke, Jason A.
+        Crome)
+      * PR #1618: Provide a consistent list of community resources (Jason A.
+        Crome)
+      * PR #1619: Clarify Dancer2::Template::Simple's role in life (Jason A.
+        Crome)
+  0.301002  2021-04-18 15:29:32-04:00 America/New_York
+      [ BUG FIXES ]
+      * None
+      [ ENHANCEMENTS ]
+      * GH #1593: Log files used to build config (Nick Tonkin)
+      * PR #1608: Migrate CLI to CLI::Osprey (Jason A. Crome)
+      # PR #1610: Replace File::Find with Path::Tiny in CLI (Jason A. Crome)
+      [ DOCUMENTATION ]
+      * PR #1597: Update Core/Hook.pm Pod (Paul Clements)
+
+-------------------------------------------------------------------
 Thu Mar 18 09:52:40 UTC 2021 - Tina Müller <tina.mueller@suse.com>
 
 - Remove manual dependencies in cpanspec.yml (fixed upstream)
