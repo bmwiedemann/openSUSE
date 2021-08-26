@@ -1,7 +1,7 @@
 #
 # spec file for package mate-desktop
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,14 @@
 %define soname  libmate-desktop-2
 %define sover   17
 %define typelib typelib-1_0-MateDesktop-2_0
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-desktop
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        Library with common API for various MATE modules
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        user-dirs-update-mate.desktop
@@ -63,6 +65,7 @@ Requires:       %{name}-gschemas >= %{version}
 %description -n %{soname}-%{sover}
 This package contains the library with common API for various
 MATE modules.
+
 
 # Separate shared schemas to make MATE desktop applications usable standalone.
 
@@ -103,6 +106,7 @@ MATE Desktop GSchemas.
 
 %package devel
 Summary:        MATE module API library development files
+Group:          Development/Libraries/X11
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Requires:       %{soname}-%{sover} = %{version}
 
