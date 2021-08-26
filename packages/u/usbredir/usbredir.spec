@@ -18,7 +18,7 @@
 
 
 Name:           usbredir
-Version:        0.9.0
+Version:        0.11.0
 Release:        0
 Summary:        A protocol for redirecting USB traffic
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -26,8 +26,6 @@ Group:          System/Libraries
 URL:            https://www.spice-space.org/usbredir.html
 Source:         https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz
 Source1:        https://www.spice-space.org/download/usbredir/%{name}-%{version}.tar.xz.sig
-Patch1:         meson-Fix-include-directories-needed-to-build.patch
-Patch2:         meson-Fix-pkgconfig-required-library-name-reference.patch
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.44
 BuildRequires:  meson >= 0.48
@@ -76,8 +74,6 @@ of this protocol.
 
 %prep
 %setup -n %{name}-%{version}
-%patch1 -p1
-%patch2 -p1
 
 %build
 %meson -Dllvm-fuzz=disabled
