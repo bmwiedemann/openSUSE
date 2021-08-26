@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 26 10:10:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.5.0:
+  - (Known issue: #729 - wuxiaworld.site has changed)
+  - Update translations.
+  - Fix for lazyload images in base_xenforoforum_adapter
+  - Keep existing series/anthology URL during update for config
+    purposes.
+  - Allow chapter URLs for adapter_webnovelcom.
+  - Shift adapter_fictionmaniatv to http, problems with https
+    server?
+  - Change blockfilecache to save uint32 addrs instead of
+    original cache key. Hashing cache key proved unreliable in
+    some cases.
+  - Allow fictionpress.com with use_browser_cache--user still
+    needs to configure in personal.ini Closes #716
+
+-------------------------------------------------------------------
 Wed Jul 21 11:24:45 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 4.4.0:
