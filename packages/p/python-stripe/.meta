@@ -1,0 +1,5 @@
+<package name="python-stripe" project="openSUSE:Factory">
+  <title></title>
+  <description>Python bindings for the Stripe API</description>
+  <devel project="devel:languages:python" package="python-stripe"/>
+</package>
