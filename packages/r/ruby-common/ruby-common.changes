@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 24 06:46:07 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+- Do not create links in /etc/alternatives at all - they are ghosts
+  and rpm database will only be confused if we have some wrong
+  information about them (the link target is defined at runtime)
+ 
+  This aligns with ruby2.7 package to avoid file conflicts about
+  bundler and other built in gems
+
+-------------------------------------------------------------------
 Thu Jul  8 12:10:25 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Fix the links in /etc/alternatives not to point to themselves

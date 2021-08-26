@@ -183,4 +183,17 @@
 For staging:n</comment>
     <requestid>904758</requestid>
   </revision>
+  <revision rev="19" vrev="6">
+    <srcmd5>3064dd70d99cf779410074fe28f0a16a</srcmd5>
+    <version>2.6</version>
+    <time>1630012456</time>
+    <user>dimstar_suse</user>
+    <comment>- Do not create links in /etc/alternatives at all - they are ghosts
+  and rpm database will only be confused if we have some wrong
+  information about them (the link target is defined at runtime)
+ 
+  This aligns with ruby2.7 package to avoid file conflicts about
+  bundler and other built in gems</comment>
+    <requestid>913949</requestid>
+  </revision>
 </revisionlist>
