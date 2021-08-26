@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 21 14:55:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Move the designer plugin to the main package, it's used in
+  applications like KMail through QFormBuilder
+
+-------------------------------------------------------------------
 Fri Aug  6 12:12:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0

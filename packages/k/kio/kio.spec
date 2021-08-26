@@ -75,8 +75,8 @@ BuildRequires:  cmake(Qt5UiPlugin) >= 5.15.0
 BuildRequires:  cmake(Qt5Widgets) >= 5.15.0
 BuildRequires:  cmake(Qt5X11Extras) >= 5.15.0
 BuildRequires:  cmake(Qt5Xml) >= 5.15.0
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(mount)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{name}-core = %{version}
 Requires:       kded >= %{_kf5_bugfix_version}
@@ -218,6 +218,8 @@ Development files.
 %{_kf5_plugindir}/kcm_netpref.so
 %{_kf5_plugindir}/kcm_proxy.so
 %{_kf5_plugindir}/kcm_smb.so
+%dir %{_kf5_plugindir}/designer
+%{_kf5_plugindir}/designer/kio5widgets.so
 %{_kf5_servicesdir}/cookies.desktop
 %{_kf5_servicesdir}/netpref.desktop
 %{_kf5_servicesdir}/proxy.desktop
@@ -229,7 +231,6 @@ Development files.
 %{_kf5_sharedir}/dbus-1/services/org.kde.kpasswdserver.service
 
 %files devel
-%dir %{_kf5_plugindir}/designer
 %{_kf5_bindir}/protocoltojson
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KCookieServer.xml
 %{_kf5_dbusinterfacesdir}/kf5_org.kde.KDirNotify.xml
@@ -251,6 +252,5 @@ Development files.
 %{_kf5_mkspecsdir}/qt_KIOGui.pri
 %{_kf5_mkspecsdir}/qt_KIOWidgets.pri
 %{_kf5_mkspecsdir}/qt_KNTLM.pri
-%{_kf5_plugindir}/designer/kio5widgets.so
 
 %changelog
