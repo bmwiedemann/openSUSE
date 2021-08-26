@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Aug 26 03:54:00 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Split doc package
+
+-------------------------------------------------------------------
+Sun Aug 22 11:23:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim em dash grammar from descriptions.
+
+-------------------------------------------------------------------
+Wed Aug 11 02:23:33 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- update version to 1.26.0
+  * update copyright to 2021
+  * tx: update resource
+  * travis-Ci: use libera.chat as notification server
+  * tx: sync with transifex
+  * release 1.26.0
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.23.0):

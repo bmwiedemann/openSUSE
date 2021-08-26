@@ -240,4 +240,12 @@
     <comment>- Update to version 1.24.0.</comment>
     <requestid>780545</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>c28acd3cab1af29aa612f9ed08f34524</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012496</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 914352 from hillwood)</comment>
+    <requestid>914353</requestid>
+  </revision>
 </revisionlist>

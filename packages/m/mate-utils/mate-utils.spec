@@ -1,7 +1,7 @@
 #
 # spec file for package mate-utils
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,14 @@
 
 %define soname_dict libmatedict
 %define sover_dict 6
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-utils
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop utilities
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GFDL-1.1-only
+License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          System/X11/Utilities
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
@@ -68,7 +70,8 @@ This package provides all the tools bundled with MATE utilities:
 
 %package common-lang
 Summary:        Languages for MATE utilities
-License:        GPL-2.0-or-later AND LGPL-2.0-or-later AND GFDL-1.1-only
+License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          System/X11/Utilities
 Provides:       mate-dictionary-lang = %{version}
 Provides:       mate-disk-image-mounter-lang = %{version}
 Provides:       mate-disk-usage-analyzer-lang = %{version}
@@ -83,8 +86,10 @@ Provides common translations shared by Caja extensions
 %package -n mate-search-tool
 Summary:        MATE Search Tool
 License:        GPL-2.0-or-later
+Group:          System/X11/Utilities
 Requires:       mate-desktop-gschemas >= %{_version}
 Recommends:     mate-search-tool-lang
+Recommends:     %{name}-doc
 
 %description -n mate-search-tool
 This is the MATE Seach Tool as shipped with the MATE utilities. It uses
@@ -93,7 +98,9 @@ command-line tools such as find and locate to get results.
 %package -n mate-disk-image-mounter
 Summary:        MATE disk image mounter
 License:        GPL-2.0-or-later
+Group:          System/X11/Utilities
 Recommends:     mate-disk-image-mounter-lang
+Recommends:     %{name}-doc
 
 %description -n mate-disk-image-mounter
 This is the MATE Disk Image Mounter as shipped with the MATE
@@ -103,7 +110,9 @@ to be conviniently mounted.
 %package -n mate-disk-usage-analyzer
 Summary:        MATE disk usage analyser
 License:        GPL-2.0-or-later
+Group:          System/X11/Utilities
 Recommends:     mate-disk-usage-analyzer-lang
+Recommends:     %{name}-doc
 
 %description -n mate-disk-usage-analyzer
 This is the MATE Disk Usage Analyzer as shipped with the MATE utilities.
@@ -116,7 +125,9 @@ directory as far as any mounted/unmounted device.
 %package -n mate-dictionary
 Summary:        MATE dictionary
 License:        GPL-2.0-or-later
+Group:          System/X11/Utilities
 Recommends:     mate-dictionary-lang
+Recommends:     %{name}-doc
 
 %description -n mate-dictionary
 This is the MATE dictionary as shipped with the MATE utilities.
@@ -125,9 +136,11 @@ words
 
 %package -n mate-system-log
 Summary:        MATE system log viewer
-License:        GPL-3.0-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND GPL-3.0-or-later
+Group:          System/X11/Utilities
 Requires:       mate-desktop-gschemas >= %{_version}
 Recommends:     mate-system-log-lang
+Recommends:     %{name}-doc
 
 %description -n mate-system-log
 This is the MATE system log viewer as shipped with the MATE utilities.
@@ -137,7 +150,9 @@ operating system.
 %package -n mate-screenshot
 Summary:        MATE screenshot maker
 License:        GPL-2.0-or-later
+Group:          System/X11/Utilities
 Recommends:     mate-screenshot-lang
+Recommends:     %{name}-doc
 
 %description -n mate-screenshot
 This is the MATE screenshot maker as shipped with the MATE utilities.
@@ -147,21 +162,32 @@ save them.
 %package -n %{soname_dict}%{sover_dict}
 Summary:        Library to look up words in dictionary sources
 License:        GPL-2.0-or-later
+Group:          System/Libraries
 
 %description -n %{soname_dict}%{sover_dict}
 The matedict library is an engine to look up words in dictionary sources.
 
 %package -n %{soname_dict}-devel
-Summary:        Library to look up words in dictionary sources -- Development Files
+Summary:        Header files for MATE's dictionary library
 License:        GPL-2.0-or-later
+Group:          Development/Libraries/X11
 Requires:       %{soname_dict}%{sover_dict} = %{version}
 
 %description -n %{soname_dict}-devel
 The matedict library is an engine to look up words in dictionary sources.
 This package contains development files for libmatedict.
 
+%package doc
+Summary:        Documentation how to mate-utils
+License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          Documentation/HTML
+BuildArch:      noarch
+
+%description doc
+This package contains the documentation for mate-utils
+
 %prep
-%setup -q
+%autosetup
 
 # Do not build the pt lingua for the search tool help to solve build issues.
 sed -i 's/^\(IGNORE_HELP_LINGUAS =\)/\1 pt/' gsearchtool/help/Makefile.am
@@ -193,14 +219,14 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n mate-disk-image-mounter
 %license COPYING*
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md ChangeLog
 %{_bindir}/mate-disk-image-mounter
 %{_datadir}/applications/mate-disk-image-mounter.desktop
 
 %files -n mate-disk-usage-analyzer
 %license COPYING*
-%doc AUTHORS NEWS README
-%{_datadir}/help/C/mate-disk-usage-analyzer/
+%doc AUTHORS NEWS README.md ChangeLog
+%exclude %{_datadir}/help/C/mate-disk-usage-analyzer/
 %{_bindir}/mate-disk-usage-analyzer
 %{_datadir}/glib-2.0/schemas/org.mate.disk-usage-analyzer.gschema.xml
 %{_datadir}/applications/mate-disk-usage-analyzer.desktop
@@ -211,8 +237,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n mate-dictionary
 %license COPYING*
-%doc AUTHORS NEWS README
-%{_datadir}/help/C/mate-dictionary/
+%doc AUTHORS NEWS README.md ChangeLog
+%exclude %{_datadir}/help/C/mate-dictionary/
 %{_bindir}/mate-dictionary
 %{_datadir}/dbus-1/services/org.mate.panel.applet.DictionaryAppletFactory.service
 %{_datadir}/glib-2.0/schemas/org.mate.dictionary.gschema.xml
@@ -229,7 +255,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n mate-screenshot
 %license COPYING*
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md ChangeLog
 %{_bindir}/mate-panel-screenshot
 %{_bindir}/mate-screenshot
 %{_datadir}/glib-2.0/schemas/org.mate.screenshot.gschema.xml
@@ -241,8 +267,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n mate-search-tool
 %license COPYING*
-%doc AUTHORS NEWS README
-%{_datadir}/help/C/mate-search-tool/
+%doc AUTHORS NEWS README.md ChangeLog
+%exclude %{_datadir}/help/C/mate-search-tool/
 %{_bindir}/mate-search-tool
 %{_datadir}/glib-2.0/schemas/org.mate.search-tool.gschema.xml
 %{_datadir}/applications/mate-search-tool.desktop
@@ -253,8 +279,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files -n mate-system-log
 %license COPYING*
-%doc AUTHORS NEWS README
-%{_datadir}/help/C/mate-system-log/
+%doc AUTHORS NEWS README.md ChangeLog
+%exclude %{_datadir}/help/C/mate-system-log/
 %{_bindir}/mate-system-log
 %{_datadir}/applications/mate-system-log.desktop
 %{_datadir}/glib-2.0/schemas/org.mate.system-log.gschema.xml
@@ -262,8 +288,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man?/mate-system-log.?%{?ext_man}
 
 %files -n %{soname_dict}%{sover_dict}
-%license COPYING*
-%doc AUTHORS NEWS README
 %{_libdir}/%{soname_dict}.so.%{sover_dict}*
 
 %files -n %{soname_dict}-devel
@@ -274,7 +298,9 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/pkgconfig/mate-dict.pc
 
 %files common-lang -f %{name}.lang
-%{_datadir}/help/
-%exclude %{_datadir}/help/C/
+%exclude %{_datadir}/help/*
+
+%files doc
+%doc %{_datadir}/help/*/*/
 
 %changelog
