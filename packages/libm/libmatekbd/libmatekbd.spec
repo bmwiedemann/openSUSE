@@ -1,7 +1,7 @@
 #
 # spec file for package libmatekbd
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,17 @@
 #
 
 
-%define typelib typelib-1_0-Matekbd-1_0
-%define _version 1.24
-%define sover   4
+%define typelib  typelib-1_0-Matekbd-1_0
+%define _version 1.26
+%define sover    4
+
 Name:           libmatekbd
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop keyboard configuration libraries
 License:        LGPL-2.1-or-later
 URL:            https://mate-desktop.org/
+Group:          Develpoment/Libraries/X11
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
 BuildRequires:  mate-common >= %{_version}
@@ -46,6 +48,7 @@ MATE Desktop applications.
 
 %package -n matekbd-common
 Summary:        MATE Desktop keyboard configuration common files
+Group:          System/Libraries
 
 %description -n matekbd-common
 This package provides libmatekdb, an API to manage the keyboard in
@@ -53,6 +56,7 @@ MATE Desktop applications.
 
 %package -n %{name}%{sover}
 Summary:        MATE Desktop keyboard configuration shared libraries
+Group:          System/Libraries
 Requires:       matekbd-common
 Recommends:     %{name}-lang
 Provides:       %{name} = %{version}
@@ -65,6 +69,7 @@ MATE Desktop applications.
 
 %package devel
 Summary:        MATE Desktop keyboard configuration development files
+Group:          Development/Libraries/X11
 Requires:       %{name}%{sover} = %{version}
 Requires:       matekbd-common = %{version}
 

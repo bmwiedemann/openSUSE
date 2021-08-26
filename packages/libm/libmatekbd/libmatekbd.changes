@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 10 07:14:09 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * tx: sync with transifex
+  * build: show package name and version in configure summary
+  * build: set GETTEXT_PACKAGE=AC_PACKAGE_NAME
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+
+-------------------------------------------------------------------
 Sun Aug 16 20:09:48 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.1:
