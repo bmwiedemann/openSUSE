@@ -1,7 +1,7 @@
 #
 # spec file for package mate-common
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
 Name:           mate-common
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        Common scripts and macros to develop with MATE
 License:        GPL-3.0-or-later
 URL:            https://mate-desktop.org/
+Group:          Development/Tools/Building
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
