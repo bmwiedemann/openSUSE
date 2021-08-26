@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 16:12:57 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Patch build to work with the Leap 15.4 kernel.
+  File "fixes_for_leap15.4.patch" as added. 
+
+-------------------------------------------------------------------
 Thu Jul 29 18:34:12 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Version bump to 6.1.26 (released July 28 2021 by Oracle)
