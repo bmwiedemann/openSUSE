@@ -1,6 +1,7 @@
---- a/configure.ac
-+++ b/configure.ac
-@@ -26,35 +26,6 @@ PKG_PROG_PKG_CONFIG
+diff -Nur caja-dropbox-1.26.0/configure.ac caja-dropbox-1.26.0-new/configure.ac
+--- caja-dropbox-1.26.0/configure.ac	2021-08-07 03:07:05.000000000 +0800
++++ caja-dropbox-1.26.0-new/configure.ac	2021-08-14 19:46:28.641254212 +0800
+@@ -35,35 +35,6 @@
  PKG_CHECK_MODULES(CAJA, libcaja-extension >= $CAJA_REQUIRED)
  PKG_CHECK_MODULES(GLIB, glib-2.0 >= $GLIB_REQUIRED)
  
@@ -36,27 +37,42 @@
  # Make dependency CFLAGS and LIBS available
  AC_SUBST(CAJA_CFLAGS)
  AC_SUBST(CAJA_LIBS)
---- a/Makefile.am
-+++ b/Makefile.am
-@@ -1,19 +1,9 @@
+diff -Nur caja-dropbox-1.26.0/Makefile.am caja-dropbox-1.26.0-new/Makefile.am
+--- caja-dropbox-1.26.0/Makefile.am	2021-08-07 03:07:05.000000000 +0800
++++ caja-dropbox-1.26.0-new/Makefile.am	2021-08-14 19:48:44.361445408 +0800
+@@ -2,17 +2,10 @@
+ PO_SUBDIR = po
+ endif
+ 
+-SUBDIRS = $(PO_SUBDIR) data src
++SUBDIRS = $(PO_SUBDIR) src
+ 
  ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
  
 -bin_SCRIPTS = caja-dropbox
--CLEANFILES = $(bin_SCRIPTS) caja-dropbox.1 caja-dropbox.txt
-+CLEANFILES = caja-dropbox.txt
- EXTRA_DIST = caja-dropbox.in serializeimages.py caja-dropbox.txt.in docgen.py rst2man.py autogen.sh
--man_MANS = caja-dropbox.1
+-
+-CLEANFILES = \
+-	$(bin_SCRIPTS) \
+-	caja-dropbox.1 \
+-	caja-dropbox.txt
+-
+ EXTRA_DIST = \
+ 	autogen.sh \
+ 	caja-dropbox.in \
+@@ -21,16 +14,6 @@
+ 	rst2man.py \
+ 	serializeimages.py
  
+-man_MANS = caja-dropbox.1
+-
 -caja-dropbox: $(top_srcdir)/caja-dropbox.in $(top_srcdir)/serializeimages.py
--	python3 $(top_srcdir)/serializeimages.py $(PACKAGE_VERSION) $(datadir)/applications < $(top_srcdir)/caja-dropbox.in > caja-dropbox
+-	python3 $(top_srcdir)/serializeimages.py $(PACKAGE_VERSION) $(datadir)/applications $(GETTEXT_PACKAGE) $(datadir)/locale < $(top_srcdir)/caja-dropbox.in > caja-dropbox
 -	chmod +x caja-dropbox
 -
 -caja-dropbox.1: $(top_srcdir)/caja-dropbox.txt.in caja-dropbox $(top_srcdir)/docgen.py
 -	python3 $(top_srcdir)/docgen.py $(PACKAGE_VERSION) $(top_srcdir)/caja-dropbox.txt.in caja-dropbox.txt
 -	$(RST2MAN) caja-dropbox.txt > caja-dropbox.1
 -
--SUBDIRS = data src
-+SUBDIRS = src
- 
- # Build ChangeLog from GIT  history
- ChangeLog:
+ DISTCHECK_CONFIGURE_FLAGS = \
+     --enable-compile-warnings=no \
+     CFLAGS='-Wno-deprecated-declarations'
