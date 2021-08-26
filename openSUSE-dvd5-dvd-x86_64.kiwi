@@ -2406,8 +2406,8 @@
       <repopackage name="libnpth0"/>
       <repopackage name="libnscd1"/>
       <repopackage name="libnscd1-32bit" arch="x86_64"/>
-      <repopackage name="libnsl2"/>
-      <repopackage name="libnsl2-32bit" arch="x86_64"/>
+      <repopackage name="libnsl3"/>
+      <repopackage name="libnsl3-32bit" arch="x86_64"/>
       <repopackage name="libnss_nis2"/>
       <repopackage name="libnss_nis2-32bit" arch="x86_64"/>
       <repopackage name="libnss_usrfiles2"/>
@@ -3999,6 +3999,7 @@
       <repopackage name="python38-dbm"/>
       <repopackage name="python38-dbus-python"/>
       <repopackage name="python38-decorator"/>
+      <repopackage name="python38-deprecation"/>
       <repopackage name="python38-distro"/>
       <repopackage name="python38-dkimpy"/>
       <repopackage name="python38-dnspython"/>
@@ -4009,6 +4010,7 @@
       <repopackage name="python38-evtx" arch="x86_64"/>
       <repopackage name="python38-falcon"/>
       <repopackage name="python38-fastparquet"/>
+      <repopackage name="python38-filetype"/>
       <repopackage name="python38-flufl.bounce"/>
       <repopackage name="python38-flufl.i18n"/>
       <repopackage name="python38-flufl.lock"/>
@@ -4157,6 +4159,7 @@
       <repopackage name="python38-tabulate"/>
       <repopackage name="python38-thrift"/>
       <repopackage name="python38-tk"/>
+      <repopackage name="python38-toml"/>
       <repopackage name="python38-tornado"/>
       <repopackage name="python38-tornado5"/>
       <repopackage name="python38-tornado6"/>
@@ -4355,6 +4358,7 @@
       <repopackage name="ruby2.7-rubygem-diffy"/>
       <repopackage name="ruby2.7-rubygem-docile"/>
       <repopackage name="ruby2.7-rubygem-domain_name"/>
+      <repopackage name="ruby2.7-rubygem-down"/>
       <repopackage name="ruby2.7-rubygem-dry-configurable"/>
       <repopackage name="ruby2.7-rubygem-dry-container"/>
       <repopackage name="ruby2.7-rubygem-dry-core"/>
@@ -4377,6 +4381,7 @@
       <repopackage name="ruby2.7-rubygem-fast_gettext"/>
       <repopackage name="ruby2.7-rubygem-fast_gettext-1.1"/>
       <repopackage name="ruby2.7-rubygem-ffi"/>
+      <repopackage name="ruby2.7-rubygem-ffi-compiler"/>
       <repopackage name="ruby2.7-rubygem-flog"/>
       <repopackage name="ruby2.7-rubygem-fluentd"/>
       <repopackage name="ruby2.7-rubygem-fog-core"/>
@@ -4408,6 +4413,8 @@
       <repopackage name="ruby2.7-rubygem-hoe"/>
       <repopackage name="ruby2.7-rubygem-hpricot"/>
       <repopackage name="ruby2.7-rubygem-html2haml"/>
+      <repopackage name="ruby2.7-rubygem-http-cookie"/>
+      <repopackage name="ruby2.7-rubygem-http-form_data"/>
       <repopackage name="ruby2.7-rubygem-http_parser.rb"/>
       <repopackage name="ruby2.7-rubygem-httpclient"/>
       <repopackage name="ruby2.7-rubygem-i18n"/>
@@ -4435,6 +4442,7 @@
       <repopackage name="ruby2.7-rubygem-listen"/>
       <repopackage name="ruby2.7-rubygem-listen-3.2"/>
       <repopackage name="ruby2.7-rubygem-little-plugger"/>
+      <repopackage name="ruby2.7-rubygem-llhttp-ffi"/>
       <repopackage name="ruby2.7-rubygem-locale"/>
       <repopackage name="ruby2.7-rubygem-log4r"/>
       <repopackage name="ruby2.7-rubygem-logging"/>

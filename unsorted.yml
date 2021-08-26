@@ -2487,7 +2487,7 @@ unsorted:
   - crosstool-ng 
   - crow-translate 
   - crudini 
-  - crun: [x86_64] 
+  - crun 
   - cryfs 
   - cryptctl: [x86_64] 
   - crystalhd-firmware 
@@ -5274,8 +5274,12 @@ unsorted:
   - ghc-uglymemo-devel: [x86_64] 
   - ghc-unbounded-delays: [x86_64] 
   - ghc-unbounded-delays-devel: [x86_64] 
+  - ghc-unicode: [x86_64] 
   - ghc-unicode-collation: [x86_64] 
   - ghc-unicode-collation-devel: [x86_64] 
+  - ghc-unicode-data: [x86_64] 
+  - ghc-unicode-data-devel: [x86_64] 
+  - ghc-unicode-devel: [x86_64] 
   - ghc-unicode-transforms: [x86_64] 
   - ghc-unicode-transforms-devel: [x86_64] 
   - ghc-uniplate: [x86_64] 
@@ -7201,6 +7205,14 @@ unsorted:
   - java-16-openjdk-javadoc 
   - java-16-openjdk-jmods 
   - java-16-openjdk-src 
+  - java-17-openjdk 
+  - java-17-openjdk-accessibility 
+  - java-17-openjdk-demo 
+  - java-17-openjdk-devel 
+  - java-17-openjdk-headless 
+  - java-17-openjdk-javadoc 
+  - java-17-openjdk-jmods 
+  - java-17-openjdk-src 
   - java-1_7_0-bootstrap 
   - java-1_7_0-bootstrap-devel 
   - java-1_7_0-bootstrap-headless 
@@ -14341,6 +14353,7 @@ unsorted:
   - libwoff2dec1_0_2-32bit: [x86_64] 
   - libwoff2enc1_0_2 
   - libwoff2enc1_0_2-32bit: [x86_64] 
+  - libwordcut0 
   - libwpd-devel 
   - libwpd-devel-doc 
   - libwpd-tools 
@@ -22589,7 +22602,6 @@ unsorted:
   - python36-guessit 
   - python36-gunicorn 
   - python36-guzzle_sphinx_theme 
-  - python36-gvm-tools 
   - python36-gwdatafind 
   - python36-gwosc 
   - python36-gyp 
@@ -25044,7 +25056,6 @@ unsorted:
   - python38-dephell-venvs 
   - python38-dephell-versioning 
   - python38-dephell_changelogs 
-  - python38-deprecation 
   - python38-derpconf 
   - python38-devel 
   - python38-devpi-client 
@@ -25272,7 +25283,6 @@ unsorted:
   - python38-fido2 
   - python38-fields 
   - python38-filelock 
-  - python38-filetype 
   - python38-finance_enums 
   - python38-fire 
   - python38-first 
@@ -26869,7 +26879,6 @@ unsorted:
   - python38-tldextract 
   - python38-tmx 
   - python38-tokenize-rt 
-  - python38-toml 
   - python38-tomlkit 
   - python38-tools 
   - python38-toolz 
@@ -28421,7 +28430,6 @@ unsorted:
   - python39-guessit 
   - python39-gunicorn 
   - python39-guzzle_sphinx_theme 
-  - python39-gvm-tools 
   - python39-gwcs 
   - python39-gwdatafind 
   - python39-gwosc 
@@ -31133,6 +31141,7 @@ unsorted:
   - ruby3.0-rubygem-diffy 
   - ruby3.0-rubygem-docile 
   - ruby3.0-rubygem-domain_name 
+  - ruby3.0-rubygem-down 
   - ruby3.0-rubygem-dry-configurable 
   - ruby3.0-rubygem-dry-container 
   - ruby3.0-rubygem-dry-core 
@@ -31154,6 +31163,7 @@ unsorted:
   - ruby3.0-rubygem-faraday_middleware 
   - ruby3.0-rubygem-fast_gettext 
   - ruby3.0-rubygem-fast_gettext-1.1 
+  - ruby3.0-rubygem-ffi-compiler 
   - ruby3.0-rubygem-flog 
   - ruby3.0-rubygem-fluentd 
   - ruby3.0-rubygem-fog-core 
@@ -31186,6 +31196,8 @@ unsorted:
   - ruby3.0-rubygem-hoe 
   - ruby3.0-rubygem-hpricot 
   - ruby3.0-rubygem-html2haml 
+  - ruby3.0-rubygem-http-cookie 
+  - ruby3.0-rubygem-http-form_data 
   - ruby3.0-rubygem-http_parser.rb 
   - ruby3.0-rubygem-httpclient 
   - ruby3.0-rubygem-ice_nine 
@@ -31210,6 +31222,7 @@ unsorted:
   - ruby3.0-rubygem-liquid 
   - ruby3.0-rubygem-liquid-4 
   - ruby3.0-rubygem-little-plugger 
+  - ruby3.0-rubygem-llhttp-ffi 
   - ruby3.0-rubygem-locale 
   - ruby3.0-rubygem-log4r 
   - ruby3.0-rubygem-logging 

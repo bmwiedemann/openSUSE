@@ -2329,7 +2329,7 @@
     <package name="libnotify4" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnpth0" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnscd1" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
-    <package name="libnsl2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
+    <package name="libnsl3" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libnss_nis2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnss_usrfiles2" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="libntfs-3g88" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -3652,6 +3652,7 @@
     <package name="python38-dbm" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-dbus-python" supportstatus="unsupported"/> <!-- reason: dvd:kernel-default -->
     <package name="python38-decorator" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
+    <package name="python38-deprecation" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-distro" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python38-dkimpy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-dnspython" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3660,6 +3661,7 @@
     <package name="python38-et_xmlfile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-falcon" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-fastparquet" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="python38-filetype" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-flufl.bounce" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-flufl.i18n" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="python38-flufl.lock" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
@@ -3785,6 +3787,7 @@
     <package name="python38-tabulate" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-thrift" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="python38-toml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tornado" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tornado5" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="python38-tornado6" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
@@ -3976,6 +3979,7 @@
     <package name="ruby2.7-rubygem-diffy" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-docile" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-domain_name" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-down" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-dry-configurable" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-dry-container" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-dry-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -3998,6 +4002,7 @@
     <package name="ruby2.7-rubygem-fast_gettext" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="ruby2.7-rubygem-fast_gettext-1.1" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-ffi-compiler" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-flog" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-fluentd" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-fog-core" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4029,6 +4034,8 @@
     <package name="ruby2.7-rubygem-hoe" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-hpricot" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-html2haml" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-http-cookie" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-http-form_data" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-http_parser.rb" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-httpclient" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-i18n" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -4056,6 +4063,7 @@
     <package name="ruby2.7-rubygem-listen" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-listen-3.2" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-little-plugger" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
+    <package name="ruby2.7-rubygem-llhttp-ffi" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-locale" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-log4r" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="ruby2.7-rubygem-logging" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
@@ -5273,7 +5281,7 @@
     <package name="libnetapi0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnettle8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnscd1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="libnsl2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libnsl3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libnss_nis2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libogg0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libopenssl1_1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
