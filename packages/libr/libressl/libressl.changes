@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 26 10:25:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.4
+  * In LibreSSL, printing a certificate could result in a crash in
+    X509_CERT_AUX_print(). This was fixed.
+
+-------------------------------------------------------------------
 Wed May  5 10:36:46 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3.3
