@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug 21 22:02:20 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.6.2.
+  * NEW: Implemented realtime Opengl cube for realtime hud preview.
+  * NEW: Keybind to upload logging results to flightlessmango.com
+  * FIX: Save button on the logging folder window automatically
+    closes the form. (Asked by jason)
+  * FIX: VKbasalt generating wrong path for Shaders folder
+  * FIX: Small interface tweaks
+  * REMOVE: Text hud preview
+
+-------------------------------------------------------------------
 Thu Jul 29 09:56:57 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.6.1.
