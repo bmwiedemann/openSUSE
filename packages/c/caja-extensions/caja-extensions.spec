@@ -1,7 +1,7 @@
 #
 # spec file for package caja-extensions
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,15 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           caja-extensions
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        Set of extensions for Caja, the MATE file manager
 License:        GPL-2.0-or-later
 URL:            https://mate-desktop.org/
+Group:          Productivity/File utilities
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE caja-extensions_use-xdgsu.patch sor.alexei@meowr.ru -- Use xdg-su instead of a direct gksu call in caja-gksu.
 Patch0:         %{name}_use-xdgsu.patch
@@ -249,8 +251,8 @@ rm %{buildroot}%{_libdir}/caja-sendto/plugins/libnstgajim.so
 %license COPYING
 %doc AUTHORS NEWS README
 %{_libdir}/caja/extensions-2.0/libcaja-image-converter.so
-%{_datadir}/caja-extensions/caja-image-resize.ui
-%{_datadir}/caja-extensions/caja-image-rotate.ui
+# %{_datadir}/caja-extensions/caja-image-resize.ui
+# %{_datadir}/caja-extensions/caja-image-rotate.ui
 %{_datadir}/caja/extensions/libcaja-image-converter.caja-extension
 
 %files -n caja-extension-open-terminal
