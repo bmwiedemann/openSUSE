@@ -1,0 +1,6 @@
+<package name="perl-Test-Lib" project="openSUSE:Factory">
+  <title>Use libraries from a t/lib directory</title>
+  <description>Searches upward from the calling module for a directory _t_ with a _lib_ directory inside it, and adds it to the module search path. Looks upward up to 5 directories. This is intended to be used in test modules either directly in _t_ or in a subdirectory to find their included testing libraries located in _t/lib_.</description>
+  <devel project="devel:languages:perl" package="perl-Test-Lib"/>
+  <url>https://metacpan.org/release/Test-Lib</url>
+</package>
