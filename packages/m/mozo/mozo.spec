@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mozo
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop menu editor
 License:        LGPL-2.1-or-later
+Group:          System/X11/Utilities
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
