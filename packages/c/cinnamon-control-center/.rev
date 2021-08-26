@@ -198,4 +198,22 @@
     <comment>Resubmit</comment>
     <requestid>901349</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>154be3a5ab734dc9dee76035b8b0032c</srcmd5>
+    <version>5.0.2</version>
+    <time>1630012504</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.0.2.
+  * Remove calibrate button from UI
+  * cc-color-panel.c: Remove references to removed calibrate button.
+- Update for version 5.0.1.
+  * build: Add a build option to ignore deprecation warnings during
+    the build, and enable it by default.
+  * display panel: Hide the fractional scaling controls by default.
+  * display panel: Forgot to git add the gsettings schema file and
+    install script.
+  * l10n: Update POT
+</comment>
+    <requestid>914290</requestid>
+  </revision>
 </revisionlist>
