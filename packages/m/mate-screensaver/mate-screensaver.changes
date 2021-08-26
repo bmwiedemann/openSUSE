@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Aug 13 11:49:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * update translations
+  * Allow change of time and date formats on lock screen v4
+  * update copyright to 2021
+  * xdg-user-dir-lookup: missing include guard
+  * i18n: Do not collect the translation for Icon (data folder)
+  * i18n: Do not collect the translation for Icon
+  * i18n: Do not prepend 'GNU ' prefix to the package name
+  * Removed translation for icon file name
+  * mate-screensaver.directory.desktop: The Encoding key is deprecated
+  * Remove warning -Wshadow
+  * lock-dialog-default: fix deprecations reported by glade
+  * Add Show/Hide password emblem in password entry
+  * mate-screensaver-preferences: Show lock image preview on file chooser 
+
+-------------------------------------------------------------------
 Mon Apr 26 20:12:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.24.2:

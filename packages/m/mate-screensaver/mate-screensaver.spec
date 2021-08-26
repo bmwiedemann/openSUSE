@@ -16,12 +16,14 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-screensaver
-Version:        1.24.2
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop screensaver
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
+Group:          System/GUI/Other
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE mate-screensaver-1.7.1-vendor_pam_integration.patch nmarques@mate-desktop.org -- PAM integration with SUSE.
@@ -60,6 +62,7 @@ the MATE desktop.
 
 %package devel
 Summary:        Development files for mate-screensaver
+Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 
 %description devel
