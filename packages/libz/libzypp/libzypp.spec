@@ -40,7 +40,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.28.0
+Version:        17.28.1
 Release:        0
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
