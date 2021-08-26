@@ -1,7 +1,7 @@
 #
 # spec file for package python-caja
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 %define _name   caja-python
-%define _version 1.24
+%define _version 1.26
+
 Name:           python-caja
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        Python bindings for Caja
 License:        GPL-2.0-or-later
+Group:          Development/Libraries/Python
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  mate-common >= %{_version}

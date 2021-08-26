@@ -135,4 +135,12 @@ Please forward to 13.2</comment>
     <comment>- Update to version 1.24.0.</comment>
     <requestid>780547</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5a8873d42051cc9180d2283605955820</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012486</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913163</requestid>
+  </revision>
 </revisionlist>
