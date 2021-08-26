@@ -288,4 +288,12 @@ Add required conflicts tags</comment>
     <comment></comment>
     <requestid>888490</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9ab66942f64e1b487a637362ba29f15e</srcmd5>
+    <version>1.26.0</version>
+    <time>1630012472</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913143</requestid>
+  </revision>
 </revisionlist>

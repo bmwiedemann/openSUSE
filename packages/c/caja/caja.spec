@@ -18,13 +18,15 @@
 
 %define lname libcaja-extension1
 %define typelib typelib-1_0-Caja-2_0
-%define _version 1.24
+%define _version 1.26
+
 Name:           caja
-Version:        1.24.1
+Version:        1.26.0
 Release:        0
 Summary:        File manager for the MATE desktop
 License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://mate-desktop.org/
+Group:          Productivity/File utilities
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz
 # PATCH-FEATURE-OPENSUSE caja-glib-2.54.patch -- Restore GLib 2.54 support.
 Patch0:         %{name}-glib-2.54.patch
@@ -64,6 +66,7 @@ desktop. It works on local and remote filesystems.
 Summary:        Caja development files
 Requires:       %{lname} = %{version}
 Requires:       %{name} = %{version}
+Group:          Development/Libraries/X11
 # mate-file-manager-devel was last used in openSUSE 13.1.
 Provides:       mate-file-manager-devel = %{version}
 Obsoletes:      mate-file-manager-devel < %{version}
@@ -76,6 +79,7 @@ desktop. It works on local and remote filesystems.
 
 %package -n %{lname}
 Summary:        Caja shared libraries
+Group:          System/Libraries
 Requires:       %{name}-gschemas >= %{version}
 
 %description -n %{lname}
@@ -84,9 +88,11 @@ browse directories, preview files and launch applications associated
 with them. It is also responsible for handling the icons on the MATE
 desktop. It works on local and remote filesystems.
 
+
 # Needed for using pluma as standalone from MATE.
 %package gschemas
 Summary:        Caja GSchemas
+Group:          System/GUI/Other
 Obsoletes:      mate-file-manager < %{version}
 # caja-gsettings-schemas was last used in openSUSE Leap 42.1.
 Obsoletes:      %{name}-gsettings-schemas < %{version}
@@ -103,6 +109,7 @@ This package provides the GSettings schemas for Caja.
 
 %package -n %{typelib}
 Summary:        MATE file manager typelib
+Group:          System/Libraries
 
 %description -n %{typelib}
 Caja is the official file manager for the MATE desktop. It allows to
