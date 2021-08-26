@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 22 11:27:21 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim em dash grammar from summaries.
+
+-------------------------------------------------------------------
+Tue Aug 10 08:10:29 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * update translations
+  * Use absolute path g_get_home_dir replaces "~/"
+  * Fix clock applet add location crash
+  * Add the function of monitor panel launcher files
+
+-------------------------------------------------------------------
 Tue Jun  1 13:30:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Also fix files section for -lang package.
