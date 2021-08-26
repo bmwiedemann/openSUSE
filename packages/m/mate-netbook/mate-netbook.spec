@@ -1,7 +1,7 @@
 #
 # spec file for package mate-netbook
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,13 @@
 #
 
 
-%define _version 1.24
+%define _version 1.26
+
 Name:           mate-netbook
-Version:        1.24.0
+Version:        1.26.0
 Release:        0
 Summary:        MATE Desktop window management tool
+Group:          System/GUI/Other
 License:        GPL-3.0-only
 URL:            https://mate-desktop.org/
 Source:         https://pub.mate-desktop.org/releases/%{_version}/%{name}-%{version}.tar.xz

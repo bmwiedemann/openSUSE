@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Aug 14 09:13:26 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.26.0
+  * Update translations 
+  * update copyright to 2021
+  * mate-window-picker-applet: Do not build the path to the menu file
+  * mate-maximus-autostart.desktop: The Encoding key is deprecated
+  * mate-window: Replace GtkStock icons
+  * Update copyright to 2021
+  * Remove USE_MATE2_MACROS from autogen.sh (legacy)
+  * build: silent build warnings for distcheck
+  * windows-picker: fix `make clean` command
+  * use MATE_COMPILE_WARNINGS from mate-common 
+
+-------------------------------------------------------------------
 Wed Feb 26 19:38:40 UTC 2020 - Alexei Sorokin <sor.alexei@meowr.ru>
 
 - Update to version 1.24.0 (changes since 1.22.1):
