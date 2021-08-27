@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Wed Aug 25 13:26:27 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#519
+- ensure /usr/share/pci.ids exists (bsc#1189767)
+- 17.13
+
+--------------------------------------------------------------------
+Wed Aug 25 12:16:37 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#518
+- ensure crypto-policies are added properly (bsc#1183082)
+- 17.12
+
+--------------------------------------------------------------------
 Wed Aug 4 08:07:08 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#517
