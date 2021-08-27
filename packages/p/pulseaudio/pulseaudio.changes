@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 10:45:32 CEST 2021 - tiwai@suse.de
+
+- Drop SDL_AUDIODRIVER override, as SDL already prefers PA as
+  default; this also fixes the recent breakage with SDL2 (bsc#1189778)
+
+-------------------------------------------------------------------
 Tue Aug  3 20:50:50 UTC 2021 - Ondrej Holecek <oholecek@suse.com>
 
 - Update to PulseAudio 15

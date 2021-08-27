@@ -153,8 +153,13 @@ enable_oss() {
 
 enable_sdl() {
     echo "Enabling PulseAudio for SDL..."
-    # For SDL, we just add an environment variable, so that apps use the PA audio driver
-    set_variable SDL_AUDIODRIVER pulse
+    # We don't need the audio driver override for SDL; SDL prefers already
+    # pulseaudio as default (bsc#1189778)
+    delete_variable SDL_AUDIODRIVER
+
+    # Alternatively, we may set "pulseaudio" explicitly, which should be
+    # applicable both for SDL-1.2 and SDL-2
+    # set_variable SDL_AUDIODRIVER pulseaudio
 }
 
 enable_timidity() {
