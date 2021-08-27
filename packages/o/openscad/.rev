@@ -73,4 +73,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>893375</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>1e311d5272e63a06454160e3982d29a0</srcmd5>
+    <version>2021.01</version>
+    <time>1630093435</time>
+    <user>dimstar_suse</user>
+    <comment>- Added patch fix_build_with_cgal-5.3.patch.
+  Upstream patch to fix build with CGAL-5.3.
+</comment>
+    <requestid>914537</requestid>
+  </revision>
 </revisionlist>

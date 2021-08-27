@@ -24,6 +24,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Graphics/CAD
 URL:            https://www.openscad.org/
 Source:         https://files.openscad.org/%{name}-%{version}.src.tar.gz
+Patch1:         fix_build_with_cgal-5.3.patch
 BuildRequires:  bison
 BuildRequires:  double-conversion-devel
 BuildRequires:  eigen3-devel
@@ -62,6 +63,8 @@ aspects, e.g. modelling of machine parts.
 
 %prep
 %setup -q
+
+%patch1 -p1
 
 %build
 %qmake5 PREFIX=%{_prefix} CONFIG+=qopenglwidget CONFIG+=c++14

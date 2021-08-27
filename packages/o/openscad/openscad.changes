@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 07:43:42 UTC 2021 - Samu Voutilainen <smar@smar.fi>
+
+- Added patch fix_build_with_cgal-5.3.patch.
+  Upstream patch to fix build with CGAL-5.3.
+
+-------------------------------------------------------------------
 Sat May  8 07:00:15 UTC 2021 - Samu Voutilainen <smar@smar.fi>
 
 - Reintroduce memory-contraints macro %limit_build -m 2500.
