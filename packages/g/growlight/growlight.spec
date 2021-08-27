@@ -23,7 +23,7 @@
 %bcond_without  pandoc
 %endif
 Name:           growlight
-Version:        1.2.33
+Version:        1.2.35
 Release:        0
 Summary:        Disk manipulation and system setup tool
 License:        GPL-3.0-or-later
