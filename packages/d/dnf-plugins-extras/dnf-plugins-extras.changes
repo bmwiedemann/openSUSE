@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 03:30:52 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 4.0.15
+  + system-upgrade: Handle empty transaction on download (rh#1917639)
+
+-------------------------------------------------------------------
 Tue Apr 13 14:18:21 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.14
