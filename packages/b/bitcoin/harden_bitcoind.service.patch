@@ -1,0 +1,21 @@
+Index: bitcoin-0.21.1/contrib/init/bitcoind.service
+===================================================================
+--- bitcoin-0.21.1.orig/contrib/init/bitcoind.service
++++ bitcoin-0.21.1/contrib/init/bitcoind.service
+@@ -69,6 +69,16 @@ NoNewPrivileges=true
+ # Use a new /dev namespace only populated with API pseudo devices
+ # such as /dev/null, /dev/zero and /dev/random.
+ PrivateDevices=true
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ 
+ # Deny the creation of writable and executable memory mappings.
+ MemoryDenyWriteExecute=true

@@ -34,6 +34,7 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 Source1:        %{base}d.service
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
+Patch0:         harden_bitcoind.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -165,7 +166,7 @@ several GB of space, slowly growing.
 This package provides automated tests for %{name}-qt5 and %{name}d.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 autoreconf -fiv

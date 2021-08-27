@@ -4,6 +4,19 @@ Requires=network.target
 After=network.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 User=bitcoin
 PIDFile=/run/bitcoin/bitcoind.pid
 ExecStart=/usr/bin/bitcoind -conf=/etc/bitcoin/bitcoin.conf -pid=/run/bitcoin/bitcoind.pid -datadir=/var/lib/bitcoin
