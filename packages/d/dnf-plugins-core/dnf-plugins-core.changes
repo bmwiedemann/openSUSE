@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Aug 27 03:27:24 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 4.0.22
+  + [repomanage] Allow running only with metadata
+  + [repomanage] Enhance documentation (rh#1898293)
+  + [versionlock] Locking obsoleted package does not make the obsoleter unavailable (rh#1957280)
+  + [versionlock] Work correctly with packages with minorbump part of release (rh#1961217)
+
+-------------------------------------------------------------------
 Tue Apr 13 14:14:56 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.0.21

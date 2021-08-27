@@ -240,4 +240,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>887047</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9a5573b1f848d5647fdd5245c290ccbe</srcmd5>
+    <version>4.0.22</version>
+    <time>1630093427</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.0.22
+  + [repomanage] Allow running only with metadata
+  + [repomanage] Enhance documentation (rh#1898293)
+  + [versionlock] Locking obsoleted package does not make the obsoleter unavailable (rh#1957280)
+  + [versionlock] Work correctly with packages with minorbump part of release (rh#1961217)</comment>
+    <requestid>914476</requestid>
+  </revision>
 </revisionlist>
