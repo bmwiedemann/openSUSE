@@ -1,7 +1,7 @@
 #
 # spec file for package mobile-broadband-provider-info
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mobile-broadband-provider-info
-Version:        20201225
+Version:        20210805
 Release:        0
 Summary:        Mobile Service Provider Database
 License:        SUSE-Public-Domain

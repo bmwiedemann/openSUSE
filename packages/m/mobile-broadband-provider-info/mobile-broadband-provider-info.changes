@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 23 14:10:13 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 20210805:
+  * release: bump version to 20210805
+  * au: add new Aldi Mobile provider
+  * Include information for voicemail on AT&T USA
+  * Include Visual Voicemail Settings for T-Mobile USA
+  * Expand DTD to include information for Visual Voicemail
+  * Revert "us: change Visual Voicemail number for T-Mobile USA"
+  * by: fix MNC for "life:)" Belarus provider
+  * us: change Visual Voicemail number for T-Mobile USA
+  * de: add coments  about different APN of Deutsche Telekom
+  * de: telekom: Add apn for business IoT plan
+  * de: add APNs for T-Mobile(Telekom) provider
+  * mz: add 'default' APN in Movitel provider
+  * fi: add DNA MMS APN
+  * nl: add new Simpel provider
+- Rebase mobile-broadband-provider-info-tmobile-reorder.patch.
+
+-------------------------------------------------------------------
 Sat Dec 26 10:11:38 UTC 2020 - bjorn.lie@gmail.com
 
 - Update to version 20201225:

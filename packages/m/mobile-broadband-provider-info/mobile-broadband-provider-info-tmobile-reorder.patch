@@ -1,11 +1,12 @@
-diff --git a/serviceproviders.xml b/serviceproviders.xml
-index 013894e..4025cf4 100644
---- a/serviceproviders.xml
-+++ b/serviceproviders.xml
-@@ -3141,13 +3141,6 @@ conceived.
+Index: mobile-broadband-provider-info-20210805/serviceproviders.xml
+===================================================================
+--- mobile-broadband-provider-info-20210805.orig/serviceproviders.xml
++++ mobile-broadband-provider-info-20210805/serviceproviders.xml
+@@ -3456,14 +3456,6 @@ conceived.
  			<balance-top-up>
  				<ussd replacement="CODE">*101*CODE#</ussd>
  			</balance-top-up>
+-			<!-- ipv4-only APN, deprecated, but still popular, without CGN -->
 -			<apn value="internet.t-d1.de">
 -				<plan type="postpaid"/>
 -				<usage type="internet"/>
@@ -13,10 +14,10 @@ index 013894e..4025cf4 100644
 -				<dns>193.254.160.1</dns>
 -				<dns>193.254.160.130</dns>
 -			</apn>
+ 			<!-- dual stack or ipv4-only APN, type ipv4v6 or ipv4 -->
  			<apn value="internet.t-mobile">
  				<plan type="postpaid"/>
- 				<usage type="internet"/>
-@@ -3164,6 +3157,13 @@ conceived.
+@@ -3498,6 +3490,13 @@ conceived.
  				<mmsc>http://mms.t-mobile.de/servlets/mms</mmsc>
  				<mmsproxy>172.28.23.131:8008</mmsproxy>
  			</apn>
