@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:42:40 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * bwbar.service
+
+-------------------------------------------------------------------
 Thu Nov 23 13:45:50 UTC 2017 - rbrown@suse.com
 
 - Replace references to /var/adm/fillup-templates with new 
