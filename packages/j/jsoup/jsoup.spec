@@ -1,7 +1,7 @@
 #
 # spec file for package jsoup
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           jsoup
-Version:        1.11.3
+Version:        1.14.2
 Release:        0
 Summary:        Java library for working with HTML
 License:        MIT
 Group:          Development/Libraries/Java
-URL:            http://jsoup.org/
+URL:            https://jsoup.org/
 # ./generate-tarball.sh
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-build.xml
-# The sources contain non-free scraped web pages as test data
-Source100:      generate-tarball.sh
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.7
 BuildRequires:  javapackages-local
+BuildRequires:  jsr-305
 BuildArch:      noarch
 
 %description
@@ -58,14 +57,17 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
+%setup -q
 cp %{SOURCE1} .
 
 %pom_remove_plugin :animal-sniffer-maven-plugin
-%pom_remove_plugin :maven-javadoc-plugin
+%pom_remove_plugin :japicmp-maven-plugin
+%pom_remove_plugin :maven-failsafe-plugin
 
 %build
-%ant -f %{name}-build.xml jar javadoc
+mkdir -p lib
+build-jar-repository -s lib jsr-305
+%{ant} -f %{name}-build.xml jar javadoc
 
 %install
 # jar

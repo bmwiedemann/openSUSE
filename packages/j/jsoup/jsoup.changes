@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 06:57:23 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.14.2
+  * fixes bsc#1189749, CVE-2021-37714
+- Generate tarball using source service instead of a script
+
+-------------------------------------------------------------------
 Fri Feb 22 22:39:00 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove from the tarball the non-free test data
