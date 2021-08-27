@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 26 12:15:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 4.1.1:
+  * Fix HTTPX support for versions greater than 0.15 (thanks @jairhenrique)
+  * Include a trailing newline on json cassettes (thanks @AaronRobson)
+
+-------------------------------------------------------------------
 Fri Aug 28 07:54:23 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.1.0:

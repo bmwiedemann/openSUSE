@@ -93,4 +93,12 @@
   * Bugfix: Fix test suite by switching to mockbin (thanks @jairhenrique)</comment>
     <requestid>830210</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>26f314d75ba19e250d8d7ab725ff76dd</srcmd5>
+    <version>4.1.1</version>
+    <time>1630093422</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914455</requestid>
+  </revision>
 </revisionlist>
