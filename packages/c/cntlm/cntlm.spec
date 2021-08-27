@@ -1,7 +1,7 @@
 #
 # spec file for package cntlm
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2007 Scorpio IT, Deidesheim, Germany
 #
 # All modifications and additions to the file contributed by third parties
