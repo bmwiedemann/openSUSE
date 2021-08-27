@@ -330,4 +330,17 @@
   * mu4e-compose: regenerate Date: when user removes it</comment>
     <requestid>913628</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>45282ea94cb48b0ef9f6a160721cda15</srcmd5>
+    <version>1.6.5</version>
+    <time>1630093450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.6.5:
+  * Create numbered backup of attached file when already exists (#2090)
+  * Use and instead of progn and fix some long lines
+  * Fix mu4e-view-save-attachments void variable
+  * mu4e-headers: restore mark after update
+  * view-gnus: Add S-SPC to scroll-down binding</comment>
+    <requestid>914603</requestid>
+  </revision>
 </revisionlist>

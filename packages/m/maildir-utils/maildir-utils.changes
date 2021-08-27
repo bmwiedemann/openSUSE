@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 27 12:15:38 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.5:
+  * Create numbered backup of attached file when already exists (#2090)
+  * Use and instead of progn and fix some long lines
+  * Fix mu4e-view-save-attachments void variable
+  * mu4e-headers: restore mark after update
+  * view-gnus: Add S-SPC to scroll-down binding
+
+-------------------------------------------------------------------
 Mon Aug 23 05:12:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.4:
