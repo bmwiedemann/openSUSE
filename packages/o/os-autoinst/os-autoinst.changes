@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Aug 27 01:33:04 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1629993316.ad40aced:
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * Consistently replace File::Spec uses with Mojo::File
+  * Remove unused import File::Spec
+  * dist: Bump timeout scaling factor for slow OBS tests
+  * Add tests for console::sshVirtsh::add_disk() in t/22-svirt.t
+  * Do not override bus and dev types for xen
+  * Add YAML file for commit message checks
+  * testapi: Use "use Mojo::Base -strict;" to also enforce strictness
+
+-------------------------------------------------------------------
 Tue Aug 24 18:34:28 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1629812293.642d6bac:
