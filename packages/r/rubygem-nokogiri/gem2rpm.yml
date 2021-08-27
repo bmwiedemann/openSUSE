@@ -23,6 +23,7 @@
   BuildRequires:  libxml2-devel >= 2.6.21
   BuildRequires:  libxslt-devel
   BuildRequires:  %{rubygem pkg-config}
+  BuildRequires:  %{rubygem mini_portile2:2.6}
 #   BuildRequires: foobar
 #   Requires: foobar
 # ## used by gem2rpm

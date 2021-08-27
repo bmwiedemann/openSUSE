@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.11.7
+Version:        1.12.3
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
@@ -33,6 +33,7 @@ Release:        0
 %define rb_build_versions ruby25 ruby26
 %define rb_build_ruby_abis ruby:2.5.0 ruby:2.6.0
 %endif
+BuildRequires:  %{rubygem mini_portile2:2.6}
 BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
