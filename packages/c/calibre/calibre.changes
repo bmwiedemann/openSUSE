@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Aug 27 08:34:15 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.26.0
+  * New Features
+    - Dark color scheme: Use a darker blue for highlighted items
+  * Bug Fixes
+    - Content server book viewer: Show a message when a search
+      finds no matches
+    - MOBI Output: Fix JPEG images without any JFIF metadata not
+      being rendered on the Kindle
+    - Comic input: Fix single color images having their colors
+      changed by normalization
+    - E-book viewer: Fix creating multiple highlights in a single
+      paragraph that also contains some extra text formatting at
+      the start causing the second and subsequent highlights to
+      malfunction
+    - Edit book: Fix a regression in the previous release that
+      broke the options in the Remove unused CSS dialog
+
+-------------------------------------------------------------------
 Fri Aug 13 07:49:15 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.25.0
