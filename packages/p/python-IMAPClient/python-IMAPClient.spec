@@ -1,7 +1,7 @@
 #
 # spec file for package python-IMAPClient
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-IMAPClient
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Pythonic IMAP client library
 License:        BSD-3-Clause
