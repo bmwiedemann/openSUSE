@@ -2536,6 +2536,8 @@ unsorted:
   - cura-fdm-materials 
   - cura-lulzbot: [x86_64] 
   - curlftpfs 
+  - curtail 
+  - curtail-lang 
   - cutecom 
   - cutmp3 
   - cutmp3-doc 
@@ -9171,7 +9173,7 @@ unsorted:
   - libSampleICC1 
   - libSavitar-devel 
   - libSavitar0 
-  - libSimGearCore-2020_3_9 
+  - libSimGearCore-2020_3_11 
   - libSoQt20 
   - libSoapyOsmoSDR0 
   - libSoundTouch1-32bit: [x86_64] 
@@ -13919,7 +13921,7 @@ unsorted:
   - libtins4_2 
   - libtinyb0 
   - libtinygettext0 
-  - libtinyobjloader1 
+  - libtinyobjloader2 
   - libtinyxml0 
   - libtinyxml2-8 
   - libtirpc-devel 
@@ -22926,6 +22928,7 @@ unsorted:
   - python36-miniupnpc 
   - python36-misaka 
   - python36-mistune 
+  - python36-mkdocs 
   - python36-moban 
   - python36-moban-ansible 
   - python36-mobi 
@@ -25791,6 +25794,7 @@ unsorted:
   - python38-mistune 
   - python38-mitmproxy 
   - python38-mizani 
+  - python38-mkdocs 
   - python38-moban 
   - python38-moban-ansible 
   - python38-mobi 
@@ -28828,6 +28832,7 @@ unsorted:
   - python39-mistune 
   - python39-mitmproxy 
   - python39-mizani 
+  - python39-mkdocs 
   - python39-moban 
   - python39-moban-ansible 
   - python39-mobi 
@@ -31999,7 +32004,6 @@ unsorted:
   - soapysdr0.7-module-uhd 
   - soapysdr0.8-module-airspy 
   - soapysdr0.8-module-bladerf 
-  - soapysdr0.8-module-freesrp 
   - soapysdr0.8-module-hackrf 
   - soapysdr0.8-module-lms7 
   - soapysdr0.8-module-mirisdr 
