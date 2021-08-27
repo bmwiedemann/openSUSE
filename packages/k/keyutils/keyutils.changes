@@ -6,8 +6,8 @@ Thu Jun 24 12:54:11 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 -------------------------------------------------------------------
 Wed Jan  6 10:27:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
-- the license of the library and -devel package is LGPL only, the
-  tools are GPL.
+- adjust the library license to be LPGL-2.1+ only (the tools are GPL2+,
+  the library is just LGPL-2.1+) (bsc#1180603)
 
 -------------------------------------------------------------------
 Mon Jan  4 10:50:03 UTC 2021 - Dirk Müller <dmueller@suse.com>
