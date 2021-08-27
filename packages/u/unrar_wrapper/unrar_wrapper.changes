@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 09:36:49 UTC 2021 - pgajdos@suse.com
+
+- %check: do not use setup.py test
+
+-------------------------------------------------------------------
 Tue May 19 12:28:08 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - Add missing "Requires: python3-setuptools" [bsc#1170792]

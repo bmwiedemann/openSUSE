@@ -1,7 +1,7 @@
 #
 # spec file for package unrar_wrapper
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,7 +42,7 @@ and lsar calls in order to provide a backwards compatibility.
 python3 setup.py build
 
 %check
-python3 setup.py test
+python3 -m unittest -v
 
 %install
 python3 setup.py install --root=%{buildroot}
