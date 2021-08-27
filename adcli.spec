@@ -29,6 +29,8 @@ Source0:        https://gitlab.freedesktop.org/sbose/adcli/uploads/%{filehash}/%
 Source2:        https://gitlab.freedesktop.org/sbose/adcli/uploads/%{sighash}/%{name}-%{version}.tar.gz.sig
 # https://keys.openpgp.org/vks/v1/by-fingerprint/4A21C23848CDC107F487939849236C40EE9D57EB
 Source3:        %{name}.keyring
+Patch1:         0001-configure-check-for-ns_get16-and-ns_get32-as-well.patch
+BuildRequires:  automake
 BuildRequires:  libxslt-tools
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -52,7 +54,7 @@ Among other things it can be used to join a computer to a domain.
 This package contains the documentation for adcli.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
