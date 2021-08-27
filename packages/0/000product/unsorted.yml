@@ -917,6 +917,7 @@ unsorted:
   - atril 
   - atril-backends 
   - atril-devel 
+  - atril-doc 
   - atril-lang 
   - atril-thumbnailer 
   - attica-qt5-devel 
@@ -1662,6 +1663,7 @@ unsorted:
   - cairomm1_0-doc 
   - caja 
   - caja-devel 
+  - caja-dropbox-lang 
   - caja-engrampa 
   - caja-extension-atril 
   - caja-extension-dropbox 
@@ -3263,6 +3265,7 @@ unsorted:
   - eolie-lang 
   - eom 
   - eom-devel 
+  - eom-doc 
   - eom-lang 
   - eperiodique 
   - ephoto 
@@ -12078,7 +12081,7 @@ unsorted:
   - libndp 
   - libndp-devel 
   - libndpi-devel 
-  - libndpi3 
+  - libndpi4 
   - libndr-devel 
   - libndr-krb5pac-devel 
   - libndr-nbt-devel 
@@ -12212,6 +12215,7 @@ unsorted:
   - libnlopt0 
   - libnm0-32bit: [x86_64] 
   - libnma-devel 
+  - libnng1 
   - libnormaliz3 
   - libnoson2 
   - libnotcurses++2 
@@ -15397,6 +15401,7 @@ unsorted:
   - mate-applet-softupd 
   - mate-applet-softupd-lang 
   - mate-applets 
+  - mate-applets-doc 
   - mate-applets-lang 
   - mate-backgrounds 
   - mate-backgrounds-lang 
@@ -15444,6 +15449,7 @@ unsorted:
   - mate-polkit 
   - mate-polkit-lang 
   - mate-power-manager 
+  - mate-power-manager-doc 
   - mate-power-manager-lang 
   - mate-screensaver 
   - mate-screensaver-devel 
@@ -15469,8 +15475,10 @@ unsorted:
   - mate-user-guide 
   - mate-user-guide-lang 
   - mate-user-share 
+  - mate-user-share-doc 
   - mate-user-share-lang 
   - mate-utils-common-lang 
+  - mate-utils-doc 
   - matekbd-common 
   - materia-gtk-theme 
   - mateweather-common 
@@ -16721,6 +16729,7 @@ unsorted:
   - ndesk-dbus 
   - ndesk-dbus-glib 
   - ndesk-dbus-glib-devel 
+  - ndpi-common 
   - ndpi-tools 
   - ndppd 
   - neard 
@@ -16966,6 +16975,7 @@ unsorted:
   - nml 
   - nmon 
   - nmtree 
+  - nng-devel 
   - nnn 
   - no-more-secrets 
   - nodejs-default 
@@ -17839,6 +17849,7 @@ unsorted:
   - opengl-games-utils 
   - opengost-otf-fonts 
   - opengost-ttf-fonts 
+  - opengreedy 
   - openhpi 
   - openhpi-clients 
   - openhpi-daemon 
@@ -18717,6 +18728,7 @@ unsorted:
   - perl-CGI-Simple 
   - perl-CHI 
   - perl-CLASS 
+  - perl-CLI-Osprey 
   - perl-CPAN-Changes 
   - perl-CPAN-Common-Index 
   - perl-CPAN-DistnameInfo 
@@ -19666,6 +19678,7 @@ unsorted:
   - perl-Test-Compile 
   - perl-Test-Deep 
   - perl-Test-Deep-Type 
+  - perl-Test-DiagINC 
   - perl-Test-Differences 
   - perl-Test-Directory 
   - perl-Test-EOL 
@@ -19686,6 +19699,7 @@ unsorted:
   - perl-Test-LWP-UserAgent 
   - perl-Test-LeakTrace 
   - perl-Test-LectroTest 
+  - perl-Test-Lib 
   - perl-Test-LongString 
   - perl-Test-Magpie 
   - perl-Test-Manifest 
@@ -22542,6 +22556,7 @@ unsorted:
   - python36-getmac 
   - python36-gevent 
   - python36-geventhttpclient 
+  - python36-ghp-import 
   - python36-gi-docgen 
   - python36-girder-client 
   - python36-git-pw 
@@ -23888,6 +23903,7 @@ unsorted:
   - python36-straight-plugin 
   - python36-strict-rfc3339 
   - python36-strictyaml 
+  - python36-stripe 
   - python36-structlog 
   - python36-subgrab 
   - python36-subliminal 
@@ -25368,6 +25384,7 @@ unsorted:
   - python38-getmac 
   - python38-geventhttpclient 
   - python38-ggplot 
+  - python38-ghp-import 
   - python38-gi-docgen 
   - python38-girder-client 
   - python38-git-pw 
@@ -26800,6 +26817,7 @@ unsorted:
   - python38-streamz 
   - python38-strict-rfc3339 
   - python38-strictyaml 
+  - python38-stripe 
   - python38-structlog 
   - python38-subgrab 
   - python38-subliminal 
@@ -28369,6 +28387,7 @@ unsorted:
   - python39-gevent 
   - python39-geventhttpclient 
   - python39-ggplot 
+  - python39-ghp-import 
   - python39-gi-docgen 
   - python39-girder-client 
   - python39-git-pw 
@@ -29908,6 +29927,7 @@ unsorted:
   - python39-streamz 
   - python39-strict-rfc3339 
   - python39-strictyaml 
+  - python39-stripe 
   - python39-structlog 
   - python39-subgrab 
   - python39-subliminal 
@@ -31196,6 +31216,7 @@ unsorted:
   - ruby3.0-rubygem-hoe 
   - ruby3.0-rubygem-hpricot 
   - ruby3.0-rubygem-html2haml 
+  - ruby3.0-rubygem-http 
   - ruby3.0-rubygem-http-cookie 
   - ruby3.0-rubygem-http-form_data 
   - ruby3.0-rubygem-http_parser.rb 
