@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 12 16:32:57 UTC 2021 - Antoine Belvire <antoine.belvire@opensuse.org>
+
+- Bump required wxWidgets version to 3.1.5.
+
+-------------------------------------------------------------------
 Fri Jun 11 01:41:18 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Increase disk space constraint to 15G.

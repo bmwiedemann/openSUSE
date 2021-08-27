@@ -54,7 +54,7 @@ BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 %if %{with syswx}
-BuildRequires:  wxGTK3-devel >= 3.1.4
+BuildRequires:  wxGTK3-devel >= 3.1.5
 %else
 BuildRequires:  freeglut-devel
 BuildRequires:  gstreamer-plugins-base-devel
