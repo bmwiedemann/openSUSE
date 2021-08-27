@@ -9,7 +9,7 @@ Index: gst-libav-1.18.0/meson.build
 +gpl_option = get_option('gpl')
 +if gpl_option.enabled()
 +  message('Building a GPL licensed gst-libav')
-+  add_project_arguments('-DGST_LIBAV_ENABLE_GPL', language: 'c++')
++  add_project_arguments('-DGST_LIBAV_ENABLE_GPL', language: 'cpp')
 +endif
 +
  if gst_dep.type_name() == 'internal'
