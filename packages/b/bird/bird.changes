@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 08:05:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * bird.service
+
+-------------------------------------------------------------------
 Mon Mar 22 09:12:19 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.8
