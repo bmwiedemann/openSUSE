@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jul 26 05:49:13 UTC 2021 - Stephan Kulow <coolo@suse.com>
+
+updated to version 2.2.24
+ see installed CHANGELOG.md
+
+  # 2.2.24 (July 15, 2021)
+  
+  ## Bug fixes:
+  
+    - Fix development gem unintentionally removed on an edge case [#4751](https://github.com/rubygems/rubygems/pull/4751)
+    - Fix dangling empty plugin hooks [#4755](https://github.com/rubygems/rubygems/pull/4755)
+    - Fix `bundle plugin install --help` showing `bundle install`'s help [#4756](https://github.com/rubygems/rubygems/pull/4756)
+    - Make sure `bundle check` shows uniq missing gems [#4749](https://github.com/rubygems/rubygems/pull/4749)
+  
+  ## Performance:
+  
+    - Slightly speed up `bundler/setup` [#4750](https://github.com/rubygems/rubygems/pull/4750)
+  
+  # 2.2.23 (July 9, 2021)
+  
+  ## Enhancements:
+  
+    - Fix `bundle install` on truffleruby selecting incorrect variant for `sorbet-static` gem [#4625](https://github.com/rubygems/rubygems/pull/4625)
+    - Spare meaningless warning on read-only bundle invocations [#4724](https://github.com/rubygems/rubygems/pull/4724)
+  
+  ## Bug fixes:
+  
+    - Fix incorrect warning about duplicated gems in the Gemfile [#4732](https://github.com/rubygems/rubygems/pull/4732)
+    - Fix `bundle plugin install foo` crashing [#4734](https://github.com/rubygems/rubygems/pull/4734)
+  
+  # 2.2.22 (July 6, 2021)
+  
+  ## Enhancements:
+  
+    - Never downgrade indirect dependencies when running `bundle update` [#4713](https://github.com/rubygems/rubygems/pull/4713)
+    - Fix `getaddrinfo` errors not treated as fatal on non darwin platforms [#4703](https://github.com/rubygems/rubygems/pull/4703)
+  
+  ## Bug fixes:
+  
+    - Fix `bundle update <gem>` sometimes hanging and `bundle lock --update` not being able to update an insecure lockfile to the new format if it requires downgrades [#4652](https://github.com/rubygems/rubygems/pull/4652)
+    - Fix edge case combination of DSL methods and duplicated sources causing gems to not be found [#4711](https://github.com/rubygems/rubygems/pull/4711)
+    - Fix `bundle doctor` crashing when finding a broken symlink [#4707](https://github.com/rubygems/rubygems/pull/4707)
+    - Fix incorrect re-resolve edge case [#4700](https://github.com/rubygems/rubygems/pull/4700)
+    - Fix some gems being unintentionally locked under multiple lockfile sections [#4701](https://github.com/rubygems/rubygems/pull/4701)
+    - Fix `--conservative` flag unexpectedly updating indirect dependencies [#4692](https://github.com/rubygems/rubygems/pull/4692)
+  
+
+-------------------------------------------------------------------
 Thu Jun 24 17:07:38 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 updated to version 2.2.21
