@@ -26,7 +26,7 @@
 %define tist_working		1
 %endif
 Name:           connman
-Version:        1.39
+Version:        1.40
 Release:        0
 Summary:        Connection Manager
 License:        GPL-2.0-only
@@ -37,7 +37,6 @@ Source1:        http://www.kernel.org/pub/linux/network/connman/connman-%{versio
 Source2:        connman.keyring
 # PATCH-FIX-OPENSUSE -- Greate symlink to network.service
 Patch0:         0001-connman-1.35-service.patch
-Patch1:         0002-dnsproxy-Check-the-length-of-buffers-before-memcpy.patch
 BuildRequires:  dhcp
 BuildRequires:  openvpn
 BuildRequires:  pkgconfig
@@ -218,7 +217,6 @@ Provides client interface for Connman (Connection Manager).
 %prep
 %setup -q -n connman-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 # Using i586 repository, so explicitly forward it to CC.

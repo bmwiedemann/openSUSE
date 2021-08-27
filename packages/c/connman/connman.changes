@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 23 08:09:29 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to 1.40:
+  * Fix issue with handling WiFi disconnecting status.
+  * Fix issue with handling WiFi auto-connect and iwd backend.
+  * Drop 0002-dnsproxy-Check-the-length-of-buffers-before-memcpy.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 08:03:22 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Address buffer overflow in dnsproxy (bsc#1186869):
