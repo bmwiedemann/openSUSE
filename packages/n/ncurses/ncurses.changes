@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 16 07:10:22 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210814
+  + add workaround for broken pcre2 package in Debian 10, from xterm #369.
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
+Mon Aug  9 06:52:26 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210807
+  + ignore "--dynamic-linker" option in generated pkg/config files,
+    adapted from "distr1" patch.
+  + add CF_SHARED_OPTS case for Haiku, from patch in haikuports.
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
+Mon Aug  2 07:25:37 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20210731
+  + add extensions in xterm+tmux and ecma+strikeout to ms-terminal,
+    but cancel the non-working Cr and Ms capabilities -TD
+  + add foot and foot-direct -TD
+- Correct offsets of patch ncurses-6.2.dif
+
+-------------------------------------------------------------------
 Mon Jul 26 06:46:16 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20210724
