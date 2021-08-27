@@ -1,0 +1,40 @@
+-------------------------------------------------------------------
+Sat Aug 14 21:50:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim conjecture from description. Use multi-file find -exec.
+- Make fdupes actually functional.
+
+-------------------------------------------------------------------
+Wed May 19 18:13:47 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- update to version 1.1.2
+- unbundled font awesome
+
+-------------------------------------------------------------------
+Fri Sep 14 09:30:48 UTC 2018 - ecsos@opensuse.org
+
+- update to 1.0.4
+  - Bugfix: Ignore absolute links in Markdown (#1621).
+- changes from 1.0.3
+  - Bugfix: Warn on relative paths in navigation (#1604).
+  - Bugfix: Handle empty theme_config.yml files correctly (#1602).
+- changes from 1.0.2
+  - Bugfix: Provide absolute base_url to error templates (#1598).
+- changes from 1.0.1
+  - Bugfix: Prevent page reload when [Enter] is pressed in search
+    box (#1589).
+  - Bugfix: Avoid calling search until all assets are ready 
+   (#1584).
+  - Bugfix: Exclude README.md if index.md is present (#1580).
+  - Bugfix: Fix readthedocs theme navigation bug with homepage
+    (#1576).
+- changes from 1.0.0
+  Internal handling of pages, files and navigation has been 
+  completely refactored. See:
+  https://www.mkdocs.org/about/release-notes/#version-10-2018-08-03
+
+-------------------------------------------------------------------
+Tue Jul  3 17:40:35 UTC 2018 - ecsos@opensuse.org
+
+- initial version 0.17.4
+
