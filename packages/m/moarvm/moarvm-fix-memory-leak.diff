@@ -1,0 +1,31 @@
+commit bb14f423768d122a23a2ef6512880d0f45c3e080
+Author: Stefan Seifert <nine@detonation.org>
+Date:   Fri Aug 27 10:16:22 2021 +0200
+
+    Fix finalizers of gen2 objects rarely getting run
+    
+    After garbage collection we go through the list of objects with finalizers (the
+    finalize list) and move objects that were collected to the list of finalizers
+    to run. We rewrite the finalize list as we walk through it, in order to only
+    keep live objects. However during a nursery-only collection we only considered
+    nursery objects. Objects that were already in gen2 were not moved to the
+    collapsed finalize list. Thus we never ran those object's finalizers.
+    
+    Fix by indiscriminately moving objects we don't have a closer look at to the
+    collapsed list.
+
+diff --git a/src/gc/finalize.c b/src/gc/finalize.c
+index e30916ffb..d4aa57b71 100644
+--- a/src/gc/finalize.c
++++ b/src/gc/finalize.c
+@@ -98,6 +98,10 @@ static void walk_thread_finalize_queue(MVMThreadContext *tc, MVMuint8 gen) {
+                 add_to_finalizing(tc, tc->finalize[i]);
+             }
+         }
++        else {
++            /* Just keep gen2 objects as they are during nursery-only collection */
++            tc->finalize[collapse_pos++] = tc->finalize[i];
++        }
+     }
+     tc->num_finalize = collapse_pos;
+ }

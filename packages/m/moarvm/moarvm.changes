@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 09:29:23 UTC 2021 - Stefan Seifert <nine@detonation.org>
+
+- Backport a memory leak fix from moarvm master
+  Add moarvm-fix-memory-leak.diff to be removed on the next release
+
+-------------------------------------------------------------------
 Sun Aug 22 10:05:45 CEST 2021 - nine@detonation.org
 
 - update to version 2021.08
