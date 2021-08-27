@@ -12,7 +12,7 @@
     <param name="versionformat">%ct.%h</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">coolo@suse.com</param>
+    <param name="changesauthor">okurz@suse.com</param>
   </service>
   <service name="set_version" mode="disabled"/>
   <service name="tar" mode="buildtime"/>

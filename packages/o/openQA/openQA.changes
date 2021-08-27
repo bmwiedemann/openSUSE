@@ -1,4 +1,177 @@
 -------------------------------------------------------------------
+Thu Aug 26 17:07:24 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1629997637.5c3f9e2dd:
+  * Fix flaky coverage in `t/05-scheduler-full.t`
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * Add `/usr/bin/tail` to apparmor profile to fix hook script on o3
+  * Dependency cron 2021-08-26
+  * fullstack: Wait for live view button
+  * Avoid printing stacktrace when cgroup configuration fails
+  * Move code for cgroups configuration into its own function
+  * Prevent private assets from being cleaned up too early
+  * Refactor function to determine a job's parent IDs
+  * Improve asset registration function
+  * Prevent public assets from being cleaned up too early
+  * Improve `t/15-assets.t`
+  * Reenable sysusers once again on Tumbleweed
+  * Dependency cron 2021-08-25
+  * doc: Make the PRODUCTDIR overwrite docs less confusing
+  * Remove unused test mock and mark uncoverable line
+  * Optimize querying progress of running jobs by utilizing module columns
+  * doc: Document new cache service setting `CACHE_MIN_FREE_PERCENTAGE`
+  * doc: Improve documentation of cache service
+  * doc: Fix typo in `Installing.asciidoc`
+  * Allow configuring worker cache to keep certain percentage of free space
+  * fullstack: scale panel waits via TimeLimit
+  * Document that needles will not be loaded from a custom `CASEDIR`
+  * doc: Remove remark that asset caching overrides PRODUCTDIR
+  * Remove TODO-comment in worker code which is most likely obsolete
+  * Avoid uncovered lines in `t/24-worker-engine.t`
+  * Fix bug reporting link for SUSE 15 SP4
+  * job: Record hook_cmd in minion job notes
+  * worker: Remove delay function as now proper callbacks are used
+  * Improve test coverage of `isotovideo.pm`
+  * worker: Use proper callback instead of `delay` function during setup
+  * Let workers declare themselves as broken if asset downloads pile up
+  * Print stacktrace when worker crashes due to unhandled exception
+  * workflows: Drop the body line length check
+  * worker: Workaround errors in web socket handling
+  * workflows: Allow 180 characters in commit body
+  * Improve worker's exception handling and related test
+  * Add an explicit unit test for the workers `exec` and `delay` functions
+  * Do not remove timer after delay
+  * Create `cache_tests` jobs with increased prio
+  * Dependency cron 2021-08-11
+  * Bail out whenever the expected result was not found
+  * fullstack: Extended wait for result panel
+  * fullstack: Return early if stat fails to avoid file errors
+  * Allow users to change which group $dbuser belongs to
+  * ci: Improve hadolint check
+  * Log user data received during OAuth2
+  * Add yaml file to enable commit message checks
+  * Dependency cron 2021-08-06
+  * Fix "not last X" needle searches to include "never" results
+  * search: Search Python filenames and contents
+  * Ensure we end testing when bailing due to missing Selenium drivers
+  * Add perl(IO::Uncompress::UnXz) as an optional dependency
+  * Dependency cron 2021-08-04
+  * spec: Exclude t/43-scheduling-and-worker-scalability.t from tests again
+  * Simplify loop over results in dump_templates
+  * Extract function for product_key from dump_templates
+  * t: Add complete statement coverage for dump_templates
+  * Extract functions in script/dump_templates
+  * t: Add one subtest for dump_templates options
+  * Use "url_from_host" in OpenQA::Script::CloneJob as well
+  * Extract method OpenQA::Client::url_from_host for load+dump_templates
+  * Slightly simplify script/load+dump_templates
+  * Use signatures in script/load+dump_templates
+  * Slightly simplify OpenQA::Script::CloneJob
+  * Use signatures completely in OpenQA::Script::CloneJob
+  * Use signatures in script/openqa-clone-job
+  * t: Fix 40-openqa-clone-job to not read personal config files
+  * Fix OPENQA_CONFIG in OpenQA::UserAgent to override, not add config search path
+  * Use signatures in OpenQA::Script::Client
+  * t: Clarify that 40-script_load_templates also calls dump_templates
+  * Simplify script/dump_templates a bit
+  * Add regex and tests for fragment identifier recognition
+  * Retry the assets package generation if a CDN fails
+  * Generalize path to "unstable tests"
+  * Simplify all test selection switches for all "fullstack" tests into one
+  * Remove unnecessary "SCALABILITY_TEST" variable
+  * Update dependencies
+  * Remove `collect_coverage_of_gru_jobs` where `run_gru_job` is used anyways
+  * Perform minion jobs in foreground in several tests using `perform_jobs`
+  * Remove unused imports of `collect_coverage_of_gru_jobs`
+  * Perform all Minion jobs consistently in foreground in `t/14-grutasks.t`
+  * Remove `collect_coverage_of_gru_jobs` from `t/api/02-iso-download.t`
+  * Fix stability of check for scroll-up button in `t/ui/14-dashboard.t`
+  * Enable all rules from eslint:recommended related to syntax and logic errors
+  * Makefile: Bump retries for fullstack-unstable after recent instabilities
+  * Make default test runs less noisy
+  * Makefile: Add optional "EXTRA_PROVE_ARGS" to add to prove calls
+  * Makefile: Fix comment alignment
+  * Make scalability test setup independent of test data from `os-autoinst`
+  * Remove more dead code from OpenQA::WebAPI::Plugin::Helpers
+  * Remove dead code from OpenQA::WebAPI::Plugin::Helpers
+  * Generalize CI base container path
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * t: Bump timeout for ui/14-dashboard.t
+  * Make message about clone error unique
+  * worker: Unify retry-behavior of artefact file uploads with regular API calls
+  * worker: Move error handling for API calls into a separate function
+  * worker: Pass error during final upload as `api failure: …` reason
+  * worker: Retry when sending an artefact fails
+  * Improve error handling of _upload_log_file to retry also on connection errors
+  * Run tools/tidy
+  * Adapt codecov target to current coverage
+  * OpenQA::Worker::Engines::isotovideo: Use consistent single-ticks where applicable
+  * OpenQA::Worker::Engines::isotovideo: Simplify using signatures
+  * docs: Add option to disable test timeout with env variable
+  * Dependency cron 2021-07-27
+  * Mark most of the unstable worker test code as uncoverable
+  * t: Ensure `t/ui/14-dashboard.t` passes also when browser window is big
+  * t: Disable coverage report for forked processes in scalability test
+  * t: Fix check for `last_updated` column of needles
+  * Avoid perl warning in string concatenation
+  * Remove .jsbeautifyrc, since it is no longer needed
+  * Dependency cron 2021-07-22
+  * Use the OPENQA_UPLOAD_DELAY environment variable to speed up 24-worker-jobs.t
+  * Replace wait_with_progress with a sleep call
+  * Cover wait_with_progress with basic tests
+  * Remove dead code from LiveViewHandler
+  * git subrepo commit (merge) external/os-autoinst-common
+  * Dependency cron 2021-07-20
+  * containers: Install ruby and rubygem-sass
+  * Dependency cron 2021-07-17
+  * Add minimal js-tidy script that will take care of Node.js dependencies
+  * cache service: Avoid logging back-traces when scanning
+  * docs: Add a test example written in Python
+  * t: Improve coding style in `t/21-needles.t`
+  * t: Fix check for `last_updated` column of needles
+  * t: Use `Time::Seconds` in `t/21-needles.t`
+  * t: Cover worker's log file upload
+  * .circleci: Be more gracious with timeouts due to random slowness
+  * t: Bump timeout for ui/06-operator_links.t
+  * t: Bump timeouts for 44-scripts.t
+  * Simplify script/modify_needle
+  * t: Add test for script/modify_needle
+  * Improve error message (report filename instead of test name)
+  * Avoid getting stuck syncing tests by adding timeout to `rsync` call
+  * Prefer "const" to "let" in JavaScript code if the value is never changed
+  * Fix all ESLint rule violations
+  * Add eslint and prettier support
+  * Show logs when docker compose up fails in the test_containers_compose
+  * Fix use of su by providing shell for geekotest
+  * Clean up param_hash helper code
+  * t: Cover worker's asset upload
+  * Remove debug logging for livelog viewers
+  * t: Cover worker's handling of failing asset upload
+  * openqa-bootstrap: Check that systemd is available
+  * Add basic unit test for image live streaming
+  * Use configurable constants instead of hard-coded intervals for streaming
+  * Fix error handling when asking worker to enable the live log
+  * Improve error handling when streaming images for live view
+  * Improve log messages of image streaming code
+  * doc: Document finding tests via the REST-API
+  * doc: Improve `openqa-cli` documentation
+  * doc: Improve introduction of REST-API
+  * doc: Improve references
+  * Distinguish comment types on /tests
+  * Fix 'This: command not found' errors
+  * t: Cover posting job setup status
+  * t: Cover handling job timeout
+  * t: Cover worker's image upload
+  * t: Cover case when worker accepts job but the ws connection has been lost
+  * Write code in `t/24-worker-jobs.t` in a more compact way
+  * Avoid forking in `t/24-worker-jobs.t` to collect coverage of upload code
+  * Split `_upload_results_step_2_upload_images` into multiple functions
+  * Revert "Reenable sysusers"
+  * Remove the link to /tests/overview in the parent group overview
+  * Revert "Distinguish comment types on /tests"
+  * openqa-bootstrap: Ensure to enforce expected error handling
+
+-------------------------------------------------------------------
 Fri Jul 09 08:24:15 UTC 2021 - coolo@suse.com
 
 - Update to version 4.6.1625814138.021a88a2a:

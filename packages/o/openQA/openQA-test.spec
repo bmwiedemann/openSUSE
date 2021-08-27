@@ -18,14 +18,13 @@
 
 %define         short_name openQA
 Name:           %{short_name}-test
-Version:        4.6.1625814138.021a88a2a
+Version:        4.6.1629997637.5c3f9e2dd
 Release:        0
 Summary:        Test package for openQA
 License:        GPL-2.0-or-later
 BuildRequires:  %{short_name} == %{version}
 BuildRequires:  openQA-local-db
 %if 0%{?suse_version} > 1500
-BuildRequires:  group(geekotest)
 BuildRequires:  user(geekotest)
 %endif
 ExcludeArch:    i586
@@ -43,7 +42,6 @@ touch %{_sourcedir}/%{short_name}
 # configuration
 /usr/share/openqa/script/initdb --help
 getent passwd geekotest
-getent group geekotest
 
 %install
 # disable debug packages in package test to prevent error about missing files
