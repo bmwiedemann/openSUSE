@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 14:51:30 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Fix GPG key references for updates from openSUSE backports (boo#1189892)
+
+-------------------------------------------------------------------
 Sat Jun  5 12:53:16 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Add missing GPG key references to Leap base repositories

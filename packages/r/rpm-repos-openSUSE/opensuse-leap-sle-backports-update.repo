@@ -3,7 +3,7 @@ name=openSUSE Leap $releasever - Updates from Backports for SUSE Linux Enterpris
 baseurl=http://download.opensuse.org/update/leap/$releasever/backports/
 #metalink=http://download.opensuse.org/update/leap/$releasever/sle/repodata/repomd.xml.metalink
 enabled=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
 gpgcheck=1
 
 [opensuse-leap-sle-backports-update-debuginfo]
@@ -11,5 +11,5 @@ name=openSUSE Leap $releasever - Updates from Backports for SUSE Linux Enterpris
 baseurl=http://download.opensuse.org/debug/update/leap/$releasever/backports/
 #metalink=http://download.opensuse.org/debug/update/leap/$releasever/backports/repodata/repomd.xml.metalink
 enabled=0
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-SuSE-SLE-$releasever
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-openSUSE-Backports
 gpgcheck=1
