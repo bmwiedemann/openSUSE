@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 23 08:02:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Udpate to version 2.2.9
+  * A user noticed that doing a "send break" operation on a telnet
+    connection would crash ser2net. It would only happen if
+    rfc2217 was not enabled. I've uploaded a new version to fix the
+    issue.
+- Udpate to version 2.2.8
+  * This release adds 2-factor authentication support to gtlssh.
+
+-------------------------------------------------------------------
 Sat Jun  5 10:42:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.7
