@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 27 12:48:46 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to version 3.0.4
+- Add git patches:
+  0001-Adds-an-option-to-disable-Conan.patch,
+  0001-Scope-libraries-required-by-the-optional-features.patch
+  0001-Fixes-wxwidgets-fixup-script.patch
+- Added patch adapted from git, Fixes-GCC11-compatibility.patch
+- Removed obsolete patches, audacity-remove-wx-test.patch and
+  b4b5cc8.patch
+- Upstream changes:
+  *This is a hotfix release that fixes a bug with envelope points,
+   which could multiply uncontrollably and cause Audacity to crash.
+  *In particular:
+    #1476: Envelope points are multiplied when using 
+    Filter Curve EQ or Graphic EQ
+    #1477: Filter Curve EQ will crash if there is an envelope 
+    point outside of the selection
+  *This fix re-introduces an earlier, but way less destructive bug:
+   bugzilla 208 / #1500: Some effects delete Envelope Control Points
+   or do not move them when timeline changes
+  *Other than that, this release is identical to Version 3.0.3.
+
+-------------------------------------------------------------------
 Wed Jul  7 00:22:58 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - added https://github.com/audacity/audacity/commit/b4b5cc8.patch

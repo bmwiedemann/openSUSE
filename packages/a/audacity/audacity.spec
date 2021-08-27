@@ -17,7 +17,7 @@
 
 
 Name:           audacity
-Version:        3.0.2
+Version:        3.0.4
 Release:        0
 Summary:        A Multi Track Digital Audio Editor
 License:        GPL-2.0-or-later
@@ -29,11 +29,13 @@ Source1:        audacity-license-nyquist
 Source2:        audacity-rpmlintrc
 # PATCH-FIX-OPENSUSE audacity-no_buildstamp.patch davejplater@gmail.com -- Remove the buildstamp.
 Patch0:         audacity-no_buildstamp.patch
-Patch2:         audacity-misc-errors.patch
+Patch1:         audacity-misc-errors.patch
 # PATCH-FIX-UPSTREAM audacity-no_return_in_nonvoid.patch - Fix false positive errors Two new gcc10 ones ignoring assert
-Patch3:         audacity-no_return_in_nonvoid.patch
-Patch4:         audacity-remove-wx-test.patch
-Patch5:         https://github.com/audacity/audacity/commit/b4b5cc8.patch
+Patch2:         audacity-no_return_in_nonvoid.patch
+Patch3:         0001-Adds-an-option-to-disable-Conan.patch
+Patch4:         0001-Scope-libraries-required-by-the-optional-features.patch
+Patch5:         0001-Fixes-wxwidgets-fixup-script.patch
+Patch6:         Fixes-GCC11-compatibility.patch
 BuildRequires:  cmake >= 3.15
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
@@ -45,11 +47,13 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(flac) >= 1.3.1
 BuildRequires:  pkgconfig(flac++)
+BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(id3tag)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec) >= 51.53
 BuildRequires:  pkgconfig(libavformat) >= 52.12
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(lilv-0) >= 0.24.6
 BuildRequires:  pkgconfig(lv2) >= 1.16.0
 BuildRequires:  pkgconfig(mad)
@@ -63,6 +67,7 @@ BuildRequires:  pkgconfig(soxr)
 BuildRequires:  pkgconfig(sratom-0) >= 0.6.4
 BuildRequires:  pkgconfig(suil-0)  >= 0.10.6
 BuildRequires:  pkgconfig(twolame)
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vamp-hostsdk)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisenc)
@@ -123,9 +128,14 @@ if ! test -e %{_libdir}/pkgconfig/lame.pc
 then
 export PKG_CONFIG_PATH="`echo $PWD`:%{_libdir}/pkgconfig"
 fi
-export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb"
+export CFLAGS="%{optflags} -fno-strict-aliasing -ggdb $(wx-config --cflags)"
 export CXXFLAGS="$CFLAGS -std=gnu++11"
 %cmake \
+       -DCMAKE_MODULE_LINKER_FLAGS:STRING="$(wx-config --libs)" \
+       -DCMAKE_SHARED_LINKER_FLAGS:STRING="$(wx-config --libs)" \
+       -Daudacity_conan_enabled=Off \
+       -Daudacity_has_networking:BOOL=Off \
+       -Daudacity_lib_preference:STRING=system \
        -Duse_lame:STRING=system \
        -Daudacity_use_ffmpeg:STRING=linked
 
@@ -151,7 +161,7 @@ rm -f %{buildroot}%{_libdir}/audacity/libwx_baseu_xml-suse-nostl.so.*
 rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_core-suse-nostl.so.*
 rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_html-suse-nostl.so.*
 rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.*
-
+rm -f %{buildroot}%{_prefix}/%{name}
 %find_lang %{name}
 
 %files
@@ -159,15 +169,15 @@ rm -f %{buildroot}%{_libdir}/audacity/libwx_gtk3u_qa-suse-nostl.so.*
 %doc README.txt
 %license LICENSE.txt LICENSE_NYQUIST.txt portmixer.LICENSE.txt
 %{_bindir}/%{name}
-%dir %{_libdir}/%{name}
-%{_libdir}/%{name}/mod-script-pipe.so
+%{_libdir}/%{name}
+#%%{_libdir}/%%{name}/modules/mod-script-pipe.so
 %{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*
 %{_datadir}/mime/packages/%{name}.xml
 %{_mandir}/man?/%{name}.?%{?ext_man}
-%dir %{_datadir}/appdata/
-%{_datadir}/appdata/%{name}.appdata.xml
+%dir %{_datadir}/metainfo/
+%{_datadir}/metainfo/%{name}.appdata.xml
 
 %files lang -f %{name}.lang
 %defattr(-,root,root)

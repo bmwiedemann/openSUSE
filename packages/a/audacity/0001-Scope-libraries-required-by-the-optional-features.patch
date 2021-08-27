@@ -1,0 +1,64 @@
+From eb2df2c0f68f3086085001207ff17a12a2523e9f Mon Sep 17 00:00:00 2001
+From: Dmitry Vedenko <vedenko@gmail.com>
+Date: Fri, 18 Jun 2021 20:26:58 +0300
+Subject: [PATCH] Scope libraries, required by the optional features
+
+---
+ cmake-proxies/CMakeLists.txt | 27 +++++++++++++++------------
+ 1 file changed, 15 insertions(+), 12 deletions(-)
+
+Index: b/cmake-proxies/CMakeLists.txt
+===================================================================
+--- a/cmake-proxies/CMakeLists.txt	2021-08-18 12:21:37.000000000 +0200
++++ b/cmake-proxies/CMakeLists.txt	2021-08-26 08:14:23.274727098 +0200
+@@ -87,6 +87,7 @@ add_conan_lib(
+    REQUIRED
+    INTERFACE_NAME libmp3lame::libmp3lame
+    PKG_CONFIG "lame >= 3.100"
++   ALLOW_FIND_PACKAGE
+ )
+ 
+ add_conan_lib(
+@@ -113,16 +114,16 @@ else()
+    set ( curl_ssl "openssl" )
+ endif ()
+ 
+-add_conan_lib(
+-   ThreadPool
+-   threadpool/20140926
+-   REQUIRED
+-   ALWAYS_ALLOW_CONAN_FALLBACK
+-)
+-
+ if( ${_OPT}has_networking )
+ 
+    add_conan_lib(
++      ThreadPool
++      threadpool/20140926
++      REQUIRED
++      ALWAYS_ALLOW_CONAN_FALLBACK
++   )
++
++   add_conan_lib(
+       CURL
+       libcurl/7.75.0
+       REQUIRED
+@@ -148,11 +149,13 @@ if( NOT CMAKE_SYSTEM_NAME MATCHES "Darwi
+    )
+ endif()
+ 
+-add_conan_lib(
+-   RapidJSON
+-   rapidjson/1.1.0
+-   REQUIRED
+-)
++if( ${_OPT}has_sentry_reporting )
++   add_conan_lib(
++      RapidJSON
++      rapidjson/1.1.0
++      REQUIRED
++   )
++endif()
+ 
+ set_conan_vars_to_parent()
+ 

@@ -1,7 +1,7 @@
-Index: audacity-Audacity-3.0.2/lib-src/portaudio-v19/qa/loopback/src/paqa.c
+Index: b/lib-src/portaudio-v19/qa/loopback/src/paqa.c
 ===================================================================
---- audacity-Audacity-3.0.2.orig/lib-src/portaudio-v19/qa/loopback/src/paqa.c
-+++ audacity-Audacity-3.0.2/lib-src/portaudio-v19/qa/loopback/src/paqa.c
+--- a/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2021-08-26 08:15:19.261006566 +0200
++++ b/lib-src/portaudio-v19/qa/loopback/src/paqa.c	2021-08-26 08:15:26.829312186 +0200
 @@ -1460,7 +1460,7 @@ int main( int argc, char **argv )
  	int justMath = 0;
      char *executableName = argv[0];
@@ -11,11 +11,11 @@ Index: audacity-Audacity-3.0.2/lib-src/portaudio-v19/qa/loopback/src/paqa.c
  
  	if( argc > 1 ){
  		printf("running with arguments:");
-Index: audacity-Audacity-3.0.2/src/AboutDialog.cpp
+Index: b/src/AboutDialog.cpp
 ===================================================================
---- audacity-Audacity-3.0.2.orig/src/AboutDialog.cpp
-+++ audacity-Audacity-3.0.2/src/AboutDialog.cpp
-@@ -69,7 +69,7 @@ hold information about one contributor t
+--- a/src/AboutDialog.cpp	2021-08-26 08:15:19.261006566 +0200
++++ b/src/AboutDialog.cpp	2021-08-26 08:15:26.833312347 +0200
+@@ -71,7 +71,7 @@ hold information about one contributor t
  #endif
  
  #ifdef REV_LONG
@@ -24,7 +24,7 @@ Index: audacity-Audacity-3.0.2/src/AboutDialog.cpp
  #else
  #define REV_IDENT (XO("No revision identifier was provided").Translation())
  #endif
-@@ -575,8 +575,8 @@ void AboutDialog::PopulateInformationPag
+@@ -597,8 +597,8 @@ void AboutDialog::PopulateInformationPag
        << XO("The Build")
        << wxT("</h3>\n<table>"); // start build info table
  
