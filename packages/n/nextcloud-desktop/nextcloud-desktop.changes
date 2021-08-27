@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 27 08:32:47 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.2
+  - desktop#3676 Bugfix/checksums parse issue
+  - desktop#3686 [stable-3.3] Fix macOS app bundle name in packaging scripts
+  - desktop#3706 [stable-3.3] Bugfix/nextcloud cmd dav fix
+  - desktop#3711 [stable-3.3] support server versions for one year after it is end of life
+  - desktop#3717 [stable-3.3] Update nextcloudcmd documentation.
+  - desktop#3718 Release 3.3.2
+
+-------------------------------------------------------------------
 Thu Aug 12 20:33:05 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.3.1
