@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 23 09:51:21 UTC 2021 - mardnh@gmx.de
+
+- Update to version 2.0.0rc8+git.20210821:
+  * Add new object oriented API. 1.x API is still provided.
+  * Support line primitive.
+  * Support points primitive.
+  * Support multiple search path for .mtl(v1 API).
+  * Support vertex weight `vw`(as an tinyobj extension)
+  * Support escaped whitespece in mtllib
+  * Add robust triangulation using Mapbox
+    earcut(TINYOBJLOADER_USE_MAPBOX_EARCUT).
+  * Fix CVE-2020-28589: tinyobjloader: An improper array index
+    validation could lead to code execution.
+
+-------------------------------------------------------------------
 Mon Aug  6 22:41:02 UTC 2018 - jengelh@inai.de
 
 - Ensure neutrality of descriptions.
