@@ -1,0 +1,10 @@
+<package name="curtail" project="openSUSE:Factory">
+  <title>A simple and useful image compressor</title>
+  <description>Curtail (previously ImCompressor) is an useful image compressor, supporting
+PNG, JPEG and WEBP file types. It support both lossless and lossy compression
+modes with an option to whether keep or not metadata of images.
+
+</description>
+  <devel project="graphics" package="curtail"/>
+  <url>https://github.com/Huluti/curtail</url>
+</package>

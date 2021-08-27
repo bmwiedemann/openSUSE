@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Fri Aug 27 16:22:44 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Actually add the rpmlintrc file to sources.
+- BuildArch: noarch as recommended by rpmlint.
+
+-------------------------------------------------------------------
+Fri Aug 27 00:22:36 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
+- Add %{name}-rpmlintrc to suppress explicit-lib-dependency
+  trigerred for libwebp-tools Requires.

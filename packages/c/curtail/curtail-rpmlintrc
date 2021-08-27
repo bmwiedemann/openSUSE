@@ -1,0 +1,2 @@
+# libwebp-tools is not a library
+addFilter("curtail.* explicit-lib-dependency")
