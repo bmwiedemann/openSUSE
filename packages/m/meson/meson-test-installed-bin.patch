@@ -1,8 +1,8 @@
-Index: meson-0.58.0/run_tests.py
+Index: meson-0.59.0/run_tests.py
 ===================================================================
---- meson-0.58.0.orig/run_tests.py
-+++ meson-0.58.0/run_tests.py
-@@ -158,18 +158,10 @@ def get_meson_script():
+--- meson-0.59.0.orig/run_tests.py
++++ meson-0.59.0/run_tests.py
+@@ -163,18 +163,10 @@ def get_meson_script() -> str:
      Also used by run_unittests.py to determine what meson to run when not
      running in-process (which is the default).
      '''
@@ -21,24 +21,24 @@ Index: meson-0.58.0/run_tests.py
 -    raise RuntimeError(f'Could not find {meson_script!r} or a meson in PATH')
 +    raise RuntimeError(f'Could not find meson in PATH')
  
- def get_backend_args_for_dir(backend, builddir):
+ def get_backend_args_for_dir(backend: Backend, builddir: str) -> T.List[str]:
      '''
-@@ -359,12 +351,12 @@ def main():
-             else:
-                 env['PYTHONPATH'] = temp_dir
-         if not options.cross:
--            cmd = mesonlib.python_command + ['run_meson_command_tests.py', '-v']
--            if options.failfast:
--                cmd += ['--failfast']
--            returncode += subprocess.call(cmd, env=env)
--            if options.failfast and returncode != 0:
--                return returncode
-+            #cmd = mesonlib.python_command + ['run_meson_command_tests.py', '-v']
-+            #if options.failfast:
-+            #    cmd += ['--failfast']
-+            #returncode += subprocess.call(cmd, env=env)
-+            #if options.failfast and returncode != 0:
-+            #    return returncode
-             if no_unittests:
-                 print('Skipping all unit tests.')
-                 print(flush=True)
+@@ -345,12 +337,12 @@ def main():
+     # Can't pass arguments to unit tests, so set the backend to use in the environment
+     env = os.environ.copy()
+     if not options.cross:
+-        cmd = mesonlib.python_command + ['run_meson_command_tests.py', '-v']
+-        if options.failfast:
+-            cmd += ['--failfast']
+-        returncode += subprocess.call(cmd, env=env)
+-        if options.failfast and returncode != 0:
+-            return returncode
++        #cmd = mesonlib.python_command + ['run_meson_command_tests.py', '-v']
++        #if options.failfast:
++        #    cmd += ['--failfast']
++        #returncode += subprocess.call(cmd, env=env)
++        #if options.failfast and returncode != 0:
++        #    return returncode
+         if no_unittests:
+             print('Skipping all unit tests.')
+             print(flush=True)

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Aug 19 15:56:22 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.59.1:
+  + No upstream changes provided.
+
+-------------------------------------------------------------------
+Fri Aug  6 23:18:53 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 0.59.0:
+  https://mesonbuild.com/Release-notes-for-0-59-0.html
+- refreshed meson-test-installed-bin.patch to apply cleanly again
+
+-------------------------------------------------------------------
 Fri Jul 30 12:41:22 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Relax BuildRequires on rpm, if rpm-config-SUSE is recent enough
