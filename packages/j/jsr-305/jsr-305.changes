@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 06:59:45 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.0.2
+  * needed by the fix for bsc#1189749, CVE-2021-37714 in jsoup
+    package
+
+-------------------------------------------------------------------
 Sat Oct  5 12:51:38 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Remove references to parent from all pom files

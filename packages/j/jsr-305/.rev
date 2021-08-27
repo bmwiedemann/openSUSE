@@ -144,4 +144,12 @@
     <comment>Remove references to parent from the pom file</comment>
     <requestid>735437</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7635a02f3a44053bade77e9935ef6507</srcmd5>
+    <version>3.0.2</version>
+    <time>1630093430</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1189749, CVE-2021-37714</comment>
+    <requestid>914520</requestid>
+  </revision>
 </revisionlist>

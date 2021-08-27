@@ -1,0 +1,13 @@
+<services>
+	<service name="tar_scm" mode="disabled">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/amaembo/jsr-305.git</param>
+		<param name="revision">d7734b13c61492982784560ed5b4f4bd6cf9bb2c</param>
+		<param name="versionformat">3.0.2</param>
+	</service>
+	<service name="recompress" mode="disabled">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="disabled"/>
+</services>

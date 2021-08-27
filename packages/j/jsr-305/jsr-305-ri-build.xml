@@ -1,40 +1,115 @@
-<project name="JSR305-ri" default="build">
-	<target name="build" depends="clean,classes,jar,javadoc"/>
-	<target name="classes">
-		<mkdir dir="src/main/java"/>
-		<javac  destdir="src/main/java" debug="on">
-			<src path="src/main/java"/>
-			<classpath>
-				<pathelement location="src/main/java"/>
-			</classpath>
-		</javac>
-	</target>
+<?xml version="1.0" encoding="UTF-8"?>
 
-	<target name="jar" depends="classes">
-		<jar  destfile="jsr-305-${version}.jar" basedir="src/main/java">
-		</jar>
-	</target>
+<project name="jsr305" default="package" basedir=".">
 
-	<target name="javadoc">
-		<mkdir dir="javadoc"/>
-		<javadoc  packagenames="javax.annotation.*"
-                          sourcepath="src/main/java"
-                          defaultexcludes="yes"
-                          destdir="javadoc"
-                          version="true"
-                          use="true"
-                          windowtitle="JSR 305: Annotations for Software Defect Detection in Java">
-		</javadoc>
-	</target>
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
 
-        <target name="clean">
-		<fileset dir="src/main/java" includes="**/*.class"/>
-		<fileset dir="." includes="jsr-305-${version}.jar"/>
-                <delete dir="javadoc"/>
-        </target>
+  <property file="build.properties"/>
+  
+  <property name="project.name" value="FindBugs-jsr305"/>
+  <property name="project.groupId" value="com.google.code.findbugs"/>
+  <property name="project.artifactId" value="jsr305"/>
+  <property name="project.version" value="3.0.2"/>
+  <property name="project.description" value="JSR305 Annotations for Findbugs"/>
 
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
 
+  <property name="compiler.source" value="1.6"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true" 
+           target="${compiler.target}" 
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+    </javac>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             old="false" 
+             verbose="false" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             source="${compiler.source}"
+             charset="ISO-8859-1" 
+             linksource="false" 
+             breakiterator="false"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Bundle-Description" value="${project.description}"/>
+        <attribute name="Bundle-License" value="https://opensource.org/licenses/BSD-3-Clause"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="${project.name}"/>
+        <attribute name="Bundle-SymbolicName" value="org.jsr-305"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="javax.annotation.concurrent;version=&quot;${project.version}&quot;,javax.annotation.meta;uses:=&quot;javax.annotation&quot;;version=&quot;${project.version}&quot;"/>
+        <attribute name="Import-Package" value="javax.annotation,javax.annotation.meta"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
 
 </project>
-
-<!-- vim:set ts=4: -->
