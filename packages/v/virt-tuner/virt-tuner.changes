@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 15:10:28 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
+
+- Release 0.0.2:
+    - Allocate entire 1GiB hugepages for each cell on the single template 
+
+-------------------------------------------------------------------
 Mon Jun 28 11:40:16 UTC 2021 - Cédric Bosdonnat <cbosdonnat@suse.com>
 
 - Release 0.0.1:
