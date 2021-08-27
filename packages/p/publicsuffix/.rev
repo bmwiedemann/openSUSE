@@ -949,4 +949,22 @@ Now with build cycle removed.</comment>
   * util: gTLD data autopull updates for 2021-07-22T15:14:11 UTC (#1382)</comment>
     <requestid>910265</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>acba6cfb3a5f8eef68c31fd4908512ae</srcmd5>
+    <version>20210823</version>
+    <time>1630093407</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210823:
+  * Adding Ellucian subdomains (#1387)
+  * add ecommerce-shop.pl (#1373)
+  * add homesklep.pl domain (#1372)
+  * Updating .ve (Venezuela) entries and contact (#1397)
+  * Add clerk.app and clerkstage.app (#1389)
+  * util: gTLD data autopull updates for 2021-08-19T15:13:51 UTC (#1396)
+  * Add Smoove private domain (#1351)
+  * Update CONTRIBUTING.md sort sort sort guidelines
+  * util: gTLD data autopull updates for 2021-08-05T15:14:19 UTC (#1391)
+  * DEL whole nymnom section due to mass atrophy (#1392)</comment>
+    <requestid>914219</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:29:27 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210823:
+  * Adding Ellucian subdomains (#1387)
+  * add ecommerce-shop.pl (#1373)
+  * add homesklep.pl domain (#1372)
+  * Updating .ve (Venezuela) entries and contact (#1397)
+  * Add clerk.app and clerkstage.app (#1389)
+  * util: gTLD data autopull updates for 2021-08-19T15:13:51 UTC (#1396)
+  * Add Smoove private domain (#1351)
+  * Update CONTRIBUTING.md sort sort sort guidelines
+  * util: gTLD data autopull updates for 2021-08-05T15:14:19 UTC (#1391)
+  * DEL whole nymnom section due to mass atrophy (#1392)
+
+-------------------------------------------------------------------
 Thu Aug  5 07:34:56 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210804 (bsc#1189124):
