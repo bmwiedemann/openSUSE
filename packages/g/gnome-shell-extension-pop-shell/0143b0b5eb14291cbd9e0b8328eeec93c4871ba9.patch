@@ -4,24 +4,26 @@ Date:   Tue Mar 16 16:01:34 2021 -0400
 
     feat: Add support for GNOME 40
 
-diff --git a/metadata.json b/metadata.json
-index 2d13be6..d877ff0 100644
---- a/metadata.json
-+++ b/metadata.json
-@@ -5,6 +5,7 @@
+Index: shell-1.2.0/metadata.json
+===================================================================
+--- shell-1.2.0.orig/metadata.json
++++ shell-1.2.0/metadata.json
+@@ -5,6 +5,8 @@
      "uuid": "pop-shell@system76.com",
      "settings-schema": "org.gnome.shell.extensions.pop-shell",
      "shell-version": [
 -        "3.36"
 +        "3.36",
-+        "40"
++        "40",
++        "41"
      ]
- }
+-}
 \ No newline at end of file
-diff --git a/src/mod.d.ts b/src/mod.d.ts
-index 4e2b67e..96fae99 100644
---- a/src/mod.d.ts
-+++ b/src/mod.d.ts
++}
+Index: shell-1.2.0/src/mod.d.ts
+===================================================================
+--- shell-1.2.0.orig/src/mod.d.ts
++++ shell-1.2.0/src/mod.d.ts
 @@ -82,8 +82,8 @@ declare namespace Gtk {
  
      export class Widget {
@@ -33,11 +35,11 @@ index 4e2b67e..96fae99 100644
      }
  }
  
-diff --git a/src/prefs.ts b/src/prefs.ts
-index 15d0b4a..c4793de 100644
---- a/src/prefs.ts
-+++ b/src/prefs.ts
-@@ -70,7 +70,6 @@ function settings_dialog_view(): [AppWidgets, Gtk.Container] {
+Index: shell-1.2.0/src/prefs.ts
+===================================================================
+--- shell-1.2.0.orig/src/prefs.ts
++++ shell-1.2.0/src/prefs.ts
+@@ -70,7 +70,6 @@ function settings_dialog_view(): [AppWid
      let grid = new Gtk.Grid({
          column_spacing: 12,
          row_spacing: 12,
@@ -45,7 +47,7 @@ index 15d0b4a..c4793de 100644
      });
  
      let win_label = new Gtk.Label({
-@@ -182,6 +181,10 @@ function logging_combo(grid: any, top_index: number) {
+@@ -182,6 +181,10 @@ function logging_combo(grid: any, top_in
  // @ts-ignore
  function buildPrefsWidget() {
      let dialog = settings_dialog_new();

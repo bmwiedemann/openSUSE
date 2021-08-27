@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 14:29:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- update 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
+  also allow gnome 41
+
+-------------------------------------------------------------------
 Mon Jul 26 12:31:26 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - backport 0143b0b5eb14291cbd9e0b8328eeec93c4871ba9.patch:
