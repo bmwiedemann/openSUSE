@@ -603,4 +603,14 @@ mtime and ctime values are now stored in the manifest files only when sloppy_fil
     <comment></comment>
     <requestid>892591</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>8cabc34a2414c1c72448e13e0dce247c</srcmd5>
+    <version>4.4</version>
+    <time>1630093410</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4:
+  * See https://ccache.dev/releasenotes.html#_ccache_4_4 for detailed list
+    of changes</comment>
+    <requestid>914252</requestid>
+  </revision>
 </revisionlist>
