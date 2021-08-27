@@ -23,7 +23,7 @@
 %define gns3_group _gns3
 %define gns3_home %{_sharedstatedir}/gns3
 Name:           gns3-server
-Version:        2.2.22
+Version:        2.2.24
 Release:        0
 Summary:        A graphical network simulator
 License:        GPL-3.0-or-later
@@ -84,7 +84,7 @@ find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python3/#!\/usr\/
 find . -type f -name "*.py" -exec sed -i 's/^#!\/usr\/bin\/env python/#!\/usr\/bin\/python3/' {} +
 ## Relax requirements
 # Leap 15.2
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse} 
+%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
 sed -i 's|aiohttp==3.7.4.post0|aiohttp>=3.6.1|g' requirements.txt
 %endif
 sed -i 's|aiohttp==3.7.4.post0|aiohttp>=3.7.4|g' requirements.txt

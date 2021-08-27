@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:54:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.24
+  * Fix issue when searching for image with relative path.
+  * Fix wrong error when NAT interface is not allowed.
+  * Fix incorrect Qemu binary selected when importing template.
+  * Fix error when updating a link style.
+  * Early support for Python3.10.
+
+-------------------------------------------------------------------
+Tue Aug 17 15:58:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.23
+  * Fix hostname inconsistencies during script execution
+  * Add option `--without-kvm`
+  * Add a `reload` server endpoint. Fixes #1926
+  * Handle -no-kvm param deprecated in Qemu >= v5.2
+  * Fix binary websocket access to the console
+  * Change how to generate random MAC addresses
+  * setup.py: prevent installing tests directory
+  * Support cloning of encrypted qcow2 base image files
+  * Fix VMware VM support on Linux and Windows. Fixes #1919
+
+-------------------------------------------------------------------
 Fri Jun 11 15:12:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.22
