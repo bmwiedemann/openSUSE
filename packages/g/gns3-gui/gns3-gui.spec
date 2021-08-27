@@ -17,7 +17,7 @@
 
 
 Name:           gns3-gui
-Version:        2.2.22
+Version:        2.2.24
 Release:        0
 Summary:        GNS3 graphical interface for the GNS3 server
 License:        GPL-3.0-or-later
@@ -42,9 +42,9 @@ Requires:       python3-psutil >= 2.2.1
 Requires:       python3-qt5
 Requires:       python3-sentry-sdk >= 0.14.4
 Recommends:     gns3-server
-Recommends:     telnet
 Recommends:     libcap-progs
 Recommends:     sudo
+Recommends:     telnet
 
 BuildArch:      noarch
 # SECTION test requirements

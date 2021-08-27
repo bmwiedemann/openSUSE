@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:50:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.24
+  * Fix incorrect Qemu binary selected when importing template.
+  * Early support for Python3.10
+
+-------------------------------------------------------------------
+Tue Aug 17 16:00:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.23
+  * Handle -no-kvm param deprecated in Qemu >= v5.2
+  * Support for invisible links.
+  * Add kitty console application command line.
+  * Add Windows Terminal profile as an option for Console
+    Applications.
+
+-------------------------------------------------------------------
 Fri Jun 11 15:14:37 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.22
