@@ -788,4 +788,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment>Add BSC.</comment>
     <requestid>883908</requestid>
   </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>15baee21f3457196bbb9b9bfca266894</srcmd5>
+    <version>7.2</version>
+    <time>1630093397</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914058</requestid>
+  </revision>
 </revisionlist>

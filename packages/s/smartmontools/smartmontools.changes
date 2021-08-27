@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 24 14:32:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- smartmontools-drivedb_h-update.sh: Fix update needed logic.
+- Add smartmontools-drivedb.h, the latest version from the upstream
+  branch RELEASE_7_2_DRIVEDB.
+
+-------------------------------------------------------------------
 Wed Jan  6 12:10:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2:
@@ -36,6 +43,9 @@ Wed Jan  6 12:10:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
   - OpenBSD: Fixed timeout handling.
   - Windows: Dropped backward compatibility fixes for very old compilers. 
 - drop smartd-service-novm.patch (upstream)
+- drop smartmontools-smartd-service.patch
+  (SLE+Leap, now in upstream, bsc#1183699)
+
 
 -------------------------------------------------------------------
 Sat Jan  4 01:53:52 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
@@ -66,6 +76,8 @@ Sat Jan  4 01:53:52 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
 - Update smartmontools.keyring. Developers use new key.
 - smartmontools-drivedb_h-update.sh: Recognize equal files in
   different commits.
+- Drop smartmontools-nvme_ioctl_h-license.patch (SLE+Leap,
+  now in upstream, https://www.smartmontools.org/ticket/1226)
 - Remove smartmontools-drivedb.h. No update available in the
   upstream branch RELEASE_7_0_DRIVEDB.
 

@@ -34,7 +34,7 @@ Source5:        %{name}.generate_smartd_opts.in
 # SOURCE-FEATURE-SLE smartmontools-drivedb_h-update.sh bnc851276 sbrabec@suse.cz -- Supplementary script to update drivedb.h.
 Source6:        smartmontools-drivedb_h-update.sh
 # SOURCE-FEATURE-UPSTREAM smartmontools-drivedb.h bnc851276 sbrabec@suse.cz -- Update of drivedb.h. (Following line is handled by smartmontools-drivedb_h-update.sh.)
-#Source7:        smartmontools-drivedb.h
+Source7:        smartmontools-drivedb.h
 Source8:        smartd_generate_opts.path
 Source9:        smartd_generate_opts.service
 # PATCH-FEATURE-OPENSUSE smartmontools-suse-default.patch sbrabec@suse.cz -- Define smart SUSE defaults.
@@ -73,7 +73,7 @@ commands man smartctl and man smartd will provide more information.
 %setup -q
 cp -a %{SOURCE2} %{SOURCE5} .
 # Following line is handled by smartmontools-drivedb_h-update.sh.
-#cp -a %{SOURCE7} drivedb.h.new
+cp -a %{SOURCE7} drivedb.h.new
 %patch4
 %patch10 -p1
 #

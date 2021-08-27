@@ -73,7 +73,7 @@ fi
 # Return to the OSC repository and perform needed changes.
 cd - >/dev/null
 
-if test $EQUAL -o \( $UPD_TIME -le $PCK_TIME \) ; then
+if test $EQUAL = true -o \( $UPD_TIME -le $PCK_TIME \) ; then
 	echo "No drivedb.h update available."
 	if test -f smartmontools-drivedb.h ; then
 		osc rm --force smartmontools-drivedb.h
