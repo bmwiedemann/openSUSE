@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:45:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.15
+  * Fix potential core dumped for strrchr.
+  * Fix null pointer crash in cJSON_CreateXxArray.
+  * Fix several null pointer problems on allocation failure.
+  * Fix a possible dereference of null pointer.
+
+-------------------------------------------------------------------
 Mon Dec 28 09:52:51 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Set proper library path via LD_LIBRARY_PATH for ctest
