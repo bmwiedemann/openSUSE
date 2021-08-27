@@ -126,4 +126,12 @@ rubygem-vagrant submission was announced to opensuse-factory at http://lists.ope
     <comment>update (forwarded request 908293 from coolo)</comment>
     <requestid>909132</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6784d680c0b918af2b63690ec73b3254</srcmd5>
+    <version>3.7.0</version>
+    <time>1630093404</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914169</requestid>
+  </revision>
 </revisionlist>
