@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 13 08:46:13 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix build with glibc 2.34; (bsc#1189080); Add patch
+  0001-configure-check-for-ns_get16-and-ns_get32-as-well.patch
+
+-------------------------------------------------------------------
 Mon Mar 22 22:45:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.9.1:
