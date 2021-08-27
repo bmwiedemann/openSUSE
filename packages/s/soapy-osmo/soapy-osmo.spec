@@ -2,8 +2,7 @@
 # spec file for package soapy-osmo
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2017, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2017-2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +17,8 @@
 #
 
 
+%bcond_with mod_freesrp
+#
 %define sover 0
 %define soapy_modver 0.8
 Name:           soapy-osmo
@@ -32,7 +33,9 @@ Source:         https://github.com/pothosware/SoapyOsmo/archive/%{name}-%{versio
 # PATCH-FIX-UPSTREAM
 Patch0:         soapy_osmosdr_rfspace_disable.patch
 BuildRequires:  cmake
+%if 0%{with mod_freesrp}
 BuildRequires:  freesrp-devel
+%endif
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_chrono-devel
@@ -81,6 +84,7 @@ Group:          System/Libraries
 Soapy OsmoSDR - OsmoSDR device support for Soapy SDR.
 A Soapy module that supports OsmoSDR devices within the Soapy API.
 
+%if 0%{with mod_freesrp}
 %package -n soapysdr%{soapy_modver}-module-freesrp
 Summary:        FreeSRP osmosdr module
 Group:          System/Libraries
@@ -88,6 +92,7 @@ Group:          System/Libraries
 %description -n soapysdr%{soapy_modver}-module-freesrp
 Soapy FreeSRP - FreeSRP device support for Soapy SDR.
 A Soapy module that supports FreeSRP devices within the Soapy API.
+%endif
 
 %prep
 %setup -q -n SoapyOsmo-%{name}-%{version}
@@ -121,9 +126,11 @@ make VERBOSE=1 %{?_smp_mflags}
 %dir %{_libdir}/SoapySDR/modules%{soapy_modver}
 %{_libdir}/SoapySDR/modules%{soapy_modver}/libosmosdrSupport.so
 
+%if 0%{with mod_freesrp}
 %files -n soapysdr%{soapy_modver}-module-freesrp
 %dir %{_libdir}/SoapySDR
 %dir %{_libdir}/SoapySDR/modules%{soapy_modver}
 %{_libdir}/SoapySDR/modules%{soapy_modver}/libfreesrpSupport.so
+%endif
 
 %changelog

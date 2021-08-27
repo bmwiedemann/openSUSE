@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 11:06:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Make build with support for FreeSRP optional and disable it
+  by default.
+
+-------------------------------------------------------------------
 Sat Jul 10 10:53:30 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - SoapySDR version bumped to 0.8
