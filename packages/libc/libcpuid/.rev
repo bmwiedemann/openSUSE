@@ -121,4 +121,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>882705</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1c8900d47f6a8c2d15b5efc9f1793925</srcmd5>
+    <version>0.5.1+git.1626502835</version>
+    <time>1630093436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1+git.1626502835:
+  * CMake: reduce min cmake requirement 3.14 -&gt; 3.13
+  * Fix failing CI builds introduced by cb5fdd1
+  * Use popcount64 from libc when available (#152)
+  * allow to build either static or shared (#156)
+  * cmake: allow libcpuid to be added as a CMake subproject (#155)
+  * fix installation of BUNDLE if iOS (#154)
+  * cmake: add an option to build tests (#153)
+  * Fix #150: CPU Family/Model is used as Ext.Family/Model
+  * DB: add Tiger Lake</comment>
+    <requestid>914539</requestid>
+  </revision>
 </revisionlist>

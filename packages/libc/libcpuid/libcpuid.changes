@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 27 08:35:35 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.1+git.1626502835:
+  * CMake: reduce min cmake requirement 3.14 -> 3.13
+  * Fix failing CI builds introduced by cb5fdd1
+  * Use popcount64 from libc when available (#152)
+  * allow to build either static or shared (#156)
+  * cmake: allow libcpuid to be added as a CMake subproject (#155)
+  * fix installation of BUNDLE if iOS (#154)
+  * cmake: add an option to build tests (#153)
+  * Fix #150: CPU Family/Model is used as Ext.Family/Model
+  * DB: add Tiger Lake
+
+-------------------------------------------------------------------
 Fri Mar 26 09:34:52 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.5.1+git.1616323866:
