@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 12:07:52 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest rpm macro
+
+-------------------------------------------------------------------
 Fri Mar 12 13:18:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Fix the syntax of %{python_module} macro

@@ -47,7 +47,7 @@ Python module for WSDL parsing services package for Web Services.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest
 
 %files %{python_files}
 %license LICENSE.txt
