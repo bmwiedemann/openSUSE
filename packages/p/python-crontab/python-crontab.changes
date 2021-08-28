@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 23 12:52:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.23.0
+  * Bump version and copyright year
+  * Added early return option to next function that allows
+    returning timestamp of next occurence instead of delay.
+  * Fixed issue with comparing against None
+  * Update docstring of Crontab.__init__
+  * Added compare
+  * Bump version
+  * Allow looping ranges
+
+-------------------------------------------------------------------
 Tue Sep 17 09:57:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Use noun phrase in summary. Expand %description.
