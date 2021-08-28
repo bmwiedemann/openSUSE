@@ -93,7 +93,12 @@ sed -i 's/assert abs(distance.au - 1) < 1e-16/assert abs(distance.au - 1) < 1e-1
 
 %check
 export PYTHONPATH="../assay-%{assaycommit}"
-%python_exec -m assay --batch skyfield.tests
+%{python_expand # run assay up to 3 times in case of flaky pickling errors
+failed=0
+for i in {1..3}; do
+  $python -m assay --batch skyfield.tests && break || [ $((++failed)) -lt 3 ]
+done
+}
 
 %files %{python_files}
 %doc README.rst
