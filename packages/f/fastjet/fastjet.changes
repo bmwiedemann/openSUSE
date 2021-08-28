@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Aug 27 14:39:34 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 3.4.0
+- New features:
+ * addition of support for thread safety. It requires a compiler
+  * supporting the C++11 standard (or later) and must be explicitly
+    enabled at configure time. There are two options
+   - the --enable-limited-thread-safety configure option is generally
+     sufficient if each thread is processing entirely distinct events.
+     It should have essentially no speed overhead.
+   - the --enable-thread-safety configure option is required if you
+     want to be able to read/copy/process a common set of PseudoJets
+     across multiple threads. Depending on the system, our tests have
+     shown speed penalties of up to 10-15%. For further details, see
+     section 10 of the manual 
+  * The jet area infrastructure has new calls to facilitate
+    reproducible multi-threaded running: AreaDefinition::with_fixed_seed(seed)
+    and GhostedAreaSpec::get_last_seed(seed). See section 10.3.1 of the manual.
+  * The background estimators have a new interface to facilitate
+    reproducible multi-threaded running: BackgroundEstimatorBase::estimate(...)
+    returns a BackgroundEstimate object, which contains rho, sigma, etc. For
+    details on using it, see sections 8 and 10.3.2 of the manual. The
+    Subtractor class has been updated to use this. 
+ * Improvements to existing features:
+  * the Python interface now has improved exceptions (a fastjet Error
+    is translated into a FastJetError python exception) and can be
+    more easily be used with projects using FastJet that want to
+    define their own python wrappers. Thanks to Patrick Komiske
+    for the suggestions.
+  * PxConePlugin now has an optional mode argument for e+e- running
+    (mode=1) instead of pp running (mode=2). Thanks to Stefan Kluth
+     for the suggestion. 
+ * Bug fixes:
+  * the Fortran interface to e+e- interface now returns jets ordered
+    in decreasing energy rather than decreasing transverse momentum. 
+ * Changes compared to the fastjet-3.4.0-beta.1 release:
+  * added set_default_stream_and_mutex to Error and LimitedWarnings
+    to help guard against garbled output.
+- Build with enable-cgal-header-only for openSUSE > Leap 15.2
+  (where cgal version is >= 5).
+
+-------------------------------------------------------------------
 Mon Dec 21 20:04:22 UTC 2020 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.3.4:

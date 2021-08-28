@@ -54,4 +54,14 @@
     <comment></comment>
     <requestid>858398</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea59b960d4441515dd78717ba4cb65b1</srcmd5>
+    <version>3.4.0</version>
+    <time>1630182546</time>
+    <user>dimstar_suse</user>
+    <comment>* Update to 3.4.0
+* Build with enable-cgal-header-only for openSUSE &gt; Leap 15.2  (where cgal version is &gt;= 5).
+</comment>
+    <requestid>914683</requestid>
+  </revision>
 </revisionlist>

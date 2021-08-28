@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           fastjet
-Version:        3.3.4
+Version:        3.4.0
 Release:        0
 Summary:        Package for jet finding in pp and e+e- collisions
 License:        GPL-2.0-or-later
@@ -134,8 +134,12 @@ This package provides python3 bindings for fastjet.
 %setup -q
 
 %build
+# Don't use --enable-cgal-header-only option up to 15.2
 %configure --disable-static \
            --enable-allcxxplugins \
+%if 0%{?sle_version} < 120000 || 0%{?sle_version} > 150200
+           --enable-cgal-header-only \
+%endif
            --enable-pyext \
            --enable-cgal
 %make_build
@@ -166,6 +170,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libfastjettools.so
 %{_libdir}/libfastjetplugins.so
 %{_includedir}/fastjet/
+%{_datadir}/%{name}/
 
 %files -n fastjet-plugin-siscone
 %{_libdir}/libsiscone*.so.*
