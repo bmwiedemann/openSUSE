@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 25 08:20:54 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_bitlbee.service.patch
+  Modified:
+  * bitlbee.service-suse.in
+
+-------------------------------------------------------------------
 Tue Jul 14 16:05:02 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 3.6:

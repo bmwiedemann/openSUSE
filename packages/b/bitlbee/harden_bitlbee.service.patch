@@ -1,0 +1,24 @@
+Index: bitlbee-3.6/init/bitlbee.service.in
+===================================================================
+--- bitlbee-3.6.orig/init/bitlbee.service.in
++++ bitlbee-3.6/init/bitlbee.service.in
+@@ -2,6 +2,19 @@
+ Description=BitlBee IRC/IM gateway
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=read-only
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=@sbindir@bitlbee -F -n
+ KillMode=process
+ 

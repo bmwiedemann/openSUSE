@@ -27,6 +27,7 @@ Group:          Productivity/Networking/IRC
 URL:            http://www.bitlbee.org/
 Source:         http://get.bitlbee.org/src/bitlbee-%{version}.tar.gz
 Source2:        %{name}.service-suse.in
+Patch0:	harden_bitlbee.service.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel
 BuildRequires:  gnutls-devel
@@ -82,6 +83,7 @@ This package contains development files for external plugins.
 
 %prep
 %setup -q
+%patch0 -p1
 
 # make it verbose!
 find . -name Makefile -exec sed -i.orig 's|@$(CC)|$(CC)|;s|@$(LD)|$(LD)|' {} +
