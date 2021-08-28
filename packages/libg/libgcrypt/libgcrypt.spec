@@ -22,7 +22,7 @@
 %define libsoname %{name}%{libsover}
 %define cavs_dir %{_libexecdir}/%{name}/cavs
 Name:           libgcrypt
-Version:        1.9.3
+Version:        1.9.4
 Release:        0
 Summary:        The GNU Crypto Library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -39,7 +39,6 @@ Source5:        cavs-test.sh
 Source6:        cavs_driver.pl
 Source99:       libgcrypt.changes
 Patch1:         libgcrypt-1.4.1-rijndael_no_strict_aliasing.patch
-Patch2:         libgcrypt-sparcv9.diff
 Patch3:         libgcrypt-1.5.0-LIBGCRYPT_FORCE_FIPS_MODE-env.diff
 Patch4:         libgcrypt-1.6.1-use-fipscheck.patch
 Patch5:         libgcrypt-1.6.1-fips-cavs.patch
@@ -76,8 +75,8 @@ Patch26:        libgcrypt-PCT-RSA.patch
 Patch27:        libgcrypt-PCT-DSA.patch
 Patch28:        libgcrypt-PCT-ECC.patch
 Patch29:        libgcrypt-fips_selftest_trigger_file.patch
-#PATCH-FIX-UPSTREAM bsc#1187212 CVE-2021-33560 ElGamal encryption lacks exponent blinding
-Patch30:        libgcrypt-CVE-2021-33560-fix-ElGamal-enc.patch
+#PATCH-FIX-SUSE bsc#1189745 The t-lock test is not build with phtread in gcc7, works in gcc11
+Patch30:        libgcrypt-pthread-in-t-lock-test.patch
 BuildRequires:  automake >= 1.14
 BuildRequires:  fipscheck
 BuildRequires:  libgpg-error-devel >= 1.27

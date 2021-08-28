@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Aug 23 12:08:24 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.9.4:
+  * Bug fixes:
+    - Fix Elgamal encryption for other implementations. [CVE-2021-33560]
+    - Fix alignment problem on macOS.
+    - Check the input length of the point in ECDH.
+    - Fix an abort in gcry_pk_get_param for "Curve25519".
+  * Other features:
+    - Add GCM and CCM to OID mapping table for AES.
+  * Upstream libgcrypt-CVE-2021-33560-fix-ElGamal-enc.patch
+
+-------------------------------------------------------------------
+Mon Aug 23 10:11:55 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Remove not needed patch libgcrypt-sparcv9.diff
+
+-------------------------------------------------------------------
+Thu Jul 15 12:53:45 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix building test t-lock with pthread. [bsc#1189745]
+  * Explicitly add -lpthread to compile the t-lock test.
+  * Add libgcrypt-pthread-in-t-lock-test.patch
+
+-------------------------------------------------------------------
 Fri Jun 11 13:17:54 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Security fix: [bsc#1187212, CVE-2021-33560]
@@ -10,19 +35,19 @@ Fri Jun 11 13:17:54 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 -------------------------------------------------------------------
 Tue Apr 20 08:46:11 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- libgcrypt 1.9.3: 
+- libgcrypt 1.9.3:
   * Bug fixes:
     - Fix build problems on i386 using gcc-4.7.
     - Fix checksum calculation in OCB decryption for AES on s390.
     - Fix a regression in gcry_mpi_ec_add related to certain usages
       of curve 25519.
     - Fix a symbol not found problem on Apple M1.
-    - Fix for Apple iOS getentropy peculiarity.  
+    - Fix for Apple iOS getentropy peculiarity.
     - Make keygrip computation work for compressed points.
   * Performance:
     - Add x86_64 VAES/AVX2 accelerated implementation of Camellia.
     - Add x86_64 VAES/AVX2 accelerated implementation of AES.
-    - Add VPMSUMD acceleration for GCM mode on PPC. 
+    - Add VPMSUMD acceleration for GCM mode on PPC.
   * Internal changes.
     - Harden MPI conditional code against EM leakage.
     - Harden Elgamal by introducing exponent blinding.
@@ -411,7 +436,7 @@ Wed Jun 13 10:46:33 UTC 2018 - kbabioch@suse.com
   - Fix incorrect output of AES-keywrap mode for in-place encryption
     on some platforms.
   - Fix the gcry_mpi_ec_curve_point point validation function.
-  - Fix rare assertion failure in gcry_prime_check. 
+  - Fix rare assertion failure in gcry_prime_check.
 - Applied spec-cleaner
 
 -------------------------------------------------------------------

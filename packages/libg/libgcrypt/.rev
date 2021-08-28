@@ -755,4 +755,12 @@ This correction fixes the build failures we are currently seeing in Factory, etc
     <comment></comment>
     <requestid>900114</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>c84f8a256f9e21b3902929e48eb0bcd3</srcmd5>
+    <version>1.9.4</version>
+    <time>1630182664</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>913986</requestid>
+  </revision>
 </revisionlist>
