@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 20 19:49:53 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 181:
+ - New features and bug fixes:
+   - Don't require apksigner in order to compare .apk files using apktool.
+   - Add a special-case to squshfs image extraction to not fail if we aren't
+     root/superuser. (Closes: #991059)
+   - Reduce the maximum line length to avoid O(n^2) Wagner-Fischer algorithm,
+     which meant that diff generation took an inordinate amount of time.
+     (Closes: reproducible-builds/diffoscope#272)
+   - Include profiling information in --debug output if --profile is not set.
+   - Don't print an orphan newline when the Black source code formatter
+     self-test passes.
+ - Tests:
+   - Update test to check specific contents of squashfs listing, otherwise it
+     fails depending on the test systems uid-to-username mapping in passwd(5).
+   - Assign "seen" and "expected" values to local variables to improve
+     contextual information in/around failed tests.
+ - Misc changes:
+   - Print the size of generated HTML, text (etc.) reports.
+   - Profile calls to specialize and diffoscope.diff.linediff.
+   - Update various copyright years.
+
+-------------------------------------------------------------------
 Sun Aug  8 18:02:08 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 180:
