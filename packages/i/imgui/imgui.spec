@@ -1,7 +1,7 @@
 #
 # spec file for package imgui
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           imgui
-Version:        1.81
+Version:        1.84.2
 Release:        0
 Summary:        Immediate Mode Graphical User interface for C++ with minimal dependencies
 License:        MIT
@@ -47,6 +47,7 @@ No specific build process is required. You can add the .cpp files to your projec
 %setup -q
 
 %build
+
 %install
 mkdir -p %{buildroot}%{_includedir}/imgui
 cp *.h %{buildroot}%{_includedir}/imgui

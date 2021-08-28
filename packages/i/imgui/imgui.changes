@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Aug 23 13:52:58 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.84.2
+  Bugfix release:
+  * Disabled: Fixed nested BeginDisabled()/EndDisabled() calls.
+  * Backends: OpenGL3: OpenGL: Fixed ES 3.0 shader ("#version 300
+    es") to use normal precision floats. Avoid wobbly rendering at
+    HD resolutions.
+
+-------------------------------------------------------------------
+Sat Aug 21 21:26:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to 1.84.1
+  https://github.com/ocornut/imgui/releases/tag/v1.84
+
+-------------------------------------------------------------------
 Tue Apr 20 11:18:02 UTC 2021 - Anton Smorodskyi <asmorodskyi@suse.com>
 
 - drop logic building imgui.so because this library is dummy and not
