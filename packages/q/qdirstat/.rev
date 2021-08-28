@@ -103,4 +103,63 @@
 - Update to V1.7; upstream change log:</comment>
     <requestid>883101</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>cac69c2eeca78566274c7a4309155b4c</srcmd5>
+    <version>1.8</version>
+    <time>1630182587</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to V1.8:
+  - New view: File Age Statistics
+  - Navigation history like in a web browser (Back, Forward)
+  - Bug fixes
+  - Some small improvements
+- Update to V1.7.1:
+  - New &quot;Discover&quot; actions to easily find
+    - the largest files
+    - the newest files
+    - the oldest files
+    - files with multiple hard links
+    - broken symbolic links
+    - sparse files
+   - Now showing the target of symbolic links in the details panel
+   - Menu reorganization
+   - Bug fixes
+- Update to V1.7:
+  - Closing the gap between sizes reported by QDirstat and sizes
+    reported by the &quot;du&quot; command: Now also taking the allocated
+    size into account
+  - New &quot;Mounted Filesystems&quot; window showing output similar to &quot;df&quot;
+  - New directory selection dialog showing all (real) filesystems
+  - Workaround for NTFS oddities: Ignoring hard links on NTFS
+  - Bug fixes
+- Update to V1.6.1:
+  - Improved handling for &quot;permission denied&quot; errors while reading
+    directories
+  - Show exact byte size on demand
+  - New optional tree column &quot;oldest file&quot;
+  - Bug fix: Fixed text color in histogram in dark widget themes
+Mon 22. Jul 15:20:45 CEST 2019 - shundhammer@suse.de
+- Update to V1.6:
+  - Packages view
+  - Unpackaged files view
+  - Performance improvements
+  - Bug fixes
+- Update to V1.5:
+  - Breadcrumbs navigation
+  - File details panel
+  - Package manager support for rpm, dpkg, pacman
+  - Switchable different main window layouts
+  - Bug fixes
+- Update to V1.4 (File size stats (histogram) and more)
+- Update to V1.3 (File type stats window and more)
+- Update to V1.2 (Improved Btrfs subvolume support)
+- Own hicolor, because BuildRequiring it does not fix the
+  post-build situation.
+- Update to V1.1-Pumpkin
+- Include the hicolor-icon-theme rather than trying to make its
+  directories owned by this rpm
+- Initial stable release V1.0
+</comment>
+    <requestid>914822</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Aug 28 18:39:57 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Update to V1.8:
+  - New view: File Age Statistics
+  - Navigation history like in a web browser (Back, Forward)
+  - Bug fixes
+  - Some small improvements
+
+-------------------------------------------------------------------
 Mon Apr  5 14:45:00 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Update to V1.7.1:
@@ -12,45 +21,18 @@ Mon Apr  5 14:45:00 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
    - Now showing the target of symbolic links in the details panel
    - Menu reorganization
    - Bug fixes
-- Reverted some of mrey's .spec file changes to fix build failures
-  on SLE-12-SPx
-- Re-added man pages to files list now that they finally build
 
 -------------------------------------------------------------------
-Tue Jul 28 22:21:38 UTC 2020 - Martin Rey <mrey@suse.com>
+Sun Jul 26 12:23:47 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>
 
-- Update to V1.7; upstream change log:
+- Update to V1.7:
   - Closing the gap between sizes reported by QDirstat and sizes
-    reported by the du command: Now also taking the allocated size
-    into account.
-  - Now also displaying the allocated size where it makes sense.
-  - New "Mounted Filesystems" window showing output similar to the
-    df command (but without the cruft).
-  - New directory selection dialog showing all (real) filesystems.
-  - New checkbox to cross filesystems (temporarily) in the
-    directory selection dialog.
-  - Workaround for NTFS oddities: Ignoring hard links on NTFS.
-  - Added config option to ignore hard links in general.
-  - Added a document about Btrfs free size and how different tools
-    tend to show different values: Btrfs-Free-Size.md
-  - Fixed the internal cache writer (the one called from the File
-    menu, not the qdirstat-cache-writer Perl script): For files
-    with multiple hard links, it wrote the wrong size to the cache
-    file: The result of size / links, not size.
-    (GitHub Issue #124.)
-  - Fixed crash when terminating with Ctrl-Q while reading
-    directories (GitHub Issue #122).
-  - Now automatically reopening the old current branch in the tree
-    view when using actions like "refresh selected" and "continue
-    reading at mount point (GitHub Issue #135).
-  - Now automatically expanding the first directory level of a
-    mount point after "continue reading at mount point".
-  - Now correctly labelling a mount point as mount point in the
-    "Details" panel.
-- Changes in spec file
-  - Run spec file through spec-cleaner
-  - Change Source to an URL
-  - use %make_build in build step
+    reported by the "du" command: Now also taking the allocated
+    size into account
+  - New "Mounted Filesystems" window showing output similar to "df"
+  - New directory selection dialog showing all (real) filesystems
+  - Workaround for NTFS oddities: Ignoring hard links on NTFS
+  - Bug fixes
 
 -------------------------------------------------------------------
 Thu Feb 13 13:35:07 UTC 2020 - Stefan Hundhammer <shundhammer@suse.com>

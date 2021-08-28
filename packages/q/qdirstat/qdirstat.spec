@@ -1,7 +1,7 @@
 #
 # spec file for package qdirstat
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2020 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           qdirstat
-Version:        1.7.1
+Version:        1.8
 Release:        0
 Summary:        Directory Statistics
 License:        GPL-2.0-only
-URL:            https://github.com/shundhammer/qdirstat
+Url:            https://github.com/shundhammer/qdirstat
 Source0:        %{name}-%{version}.tar.bz2
-
 BuildRequires:  libQt5Core-devel
 BuildRequires:  libQt5Widgets-devel
 BuildRequires:  libqt5-qtbase-common-devel
@@ -67,6 +66,8 @@ To name a few:
   - Disk usage per file type (by filename extension).
 
   - File size histogram view.
+
+  - File age view.
 
   - Free, used and reserved disk size for each mounted filesystem
     (like df)
