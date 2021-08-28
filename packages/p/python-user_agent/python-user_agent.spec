@@ -1,7 +1,7 @@
 #
 # spec file for package python-user_agent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
@@ -53,7 +53,8 @@ This module generates random, valid web user agents.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# test_changelog, test_ua_script*: no ua in the PATH
+%pytest -k 'not (test_ua_script or test_changelog)'
 
 %post
 %python_install_alternative ua

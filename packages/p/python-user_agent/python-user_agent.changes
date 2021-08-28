@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 26 08:51:30 UTC 2021 - pgajdos@suse.com
+
+- %check: really test the package, use %pytest rpm macro
+
+-------------------------------------------------------------------
 Mon May 18 09:10:44 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
