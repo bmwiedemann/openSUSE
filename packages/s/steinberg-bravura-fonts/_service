@@ -6,8 +6,10 @@
     <param name="exclude">*/.DS_Store</param>
     <param name="subdir">redist</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">bravura-1.276</param>
-    <param name="versionrewrite-pattern">bravura(.*)</param>
+    <param name="exclude">svg</param>
+    <param name="exclude">woff</param>
+    <param name="revision">bravura-1.392</param>
+    <param name="versionrewrite-pattern">bravura-(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service mode="disabled" name="recompress">
