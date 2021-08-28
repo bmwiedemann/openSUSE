@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Aug 27 09:45:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.12.3
+  * Update 0.12.3 to final version
+  * Add Python 3.9 support
+  * Fix fnmatch adjacent nested curly braces (#33)
+  * tests: bump to master (#32)
+  * editorconfig as a module (#31)
+  * setup.py: read version without installing (#30)
+  * travis: support Python 3.8
+  * Fix deprecation warnings coming with Python 3.7
+  * Add (c) to copyright notices per @xuhdev's request
+
+-------------------------------------------------------------------
 Sat Mar 14 08:59:26 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Fix build without python2
