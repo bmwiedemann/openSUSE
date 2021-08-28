@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 28 17:32:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved modprobe.d snippet files from /etc/modprobe.d to 
+  /usr/lib/modprobe.d (boo#1173043)
+
+-------------------------------------------------------------------
 Mon Mar  8 16:04:02 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - SUSEPrime-0.7.17

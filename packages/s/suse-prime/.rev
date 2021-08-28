@@ -527,4 +527,13 @@ Latest changes:
     logout when displayamanger is still running (boo#1182667)</comment>
     <requestid>877779</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>5a9cd18cd307b998937dc3552fba4086</srcmd5>
+    <version>0.7.17</version>
+    <time>1630182583</time>
+    <user>dimstar_suse</user>
+    <comment>- moved modprobe.d snippet files from /etc/modprobe.d to 
+  /usr/lib/modprobe.d (boo#1173043)</comment>
+    <requestid>914814</requestid>
+  </revision>
 </revisionlist>
