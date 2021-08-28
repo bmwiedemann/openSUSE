@@ -228,4 +228,15 @@
     <comment></comment>
     <requestid>914391</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>0553a642ae7f6ecacca1e164a1c92706</srcmd5>
+    <version>0.4.4</version>
+    <time>1630182550</time>
+    <user>dimstar_suse</user>
+    <comment>- Re-labeled 422.patch
+- Updated harden_ckb-next-daemon.service.patch to fix
+  gh#ckb-next/ckb-next#740
+</comment>
+    <requestid>914692</requestid>
+  </revision>
 </revisionlist>

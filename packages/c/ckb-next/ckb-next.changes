@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 19:07:46 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Re-labeled 422.patch
+- Updated harden_ckb-next-daemon.service.patch to fix
+  gh#ckb-next/ckb-next#740
+
+-------------------------------------------------------------------
 Thu Aug 26 07:23:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):

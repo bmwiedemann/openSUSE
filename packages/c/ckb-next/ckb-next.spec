@@ -32,7 +32,7 @@ Patch2:         ckb-next-systemd.patch
 Patch3:         ckb-next-no-cmake-modules.patch
 # PATCH-FIX-UPSTREAM ckb-next-udev.patch
 Patch4:         ckb-next-udev.patch
-# PATCH-FIX-UPSTREAM 422.patch boo#1135528
+# PATCH-FIX-OPENSUSE 422.patch boo#1135528
 Patch5:         422.patch
 Patch6:         harden_ckb-next-daemon.service.patch
 BuildRequires:  ImageMagick
