@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Aug 25 09:34:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * Fix using digit field numbering and types
+  * match trailing newline (#124)
+  * readme: fix style (#126)
+  * Add Github Actions config (#129)
+  * Docs for slice change
+  * Support slice access to results (#128)
+- from version 1.18.0
+  * Add test for stateful int_convert  
+  * Make int_convert stateless
+- from version 1.17.0
+  * Make left- and center-aligned search consume up to next space
+  * adding properties to access named fields and fixed fields (#115)
+  * Fix findall case_sensitive (#113)
+- from version 1.16.0
+  * release stuff
+  * fixing issue 110 by using functor instead of inner function (#111)
+  * add failing test for bug 110
+  * Add syntax highlighting to README (#105)
+
+-------------------------------------------------------------------
 Sun Mar 15 09:40:27 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - No need to fetch license anymore, it is in the tarball
