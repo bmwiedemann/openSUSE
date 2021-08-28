@@ -21,7 +21,7 @@
 %define _rname  openssl
 Name:           openssl-1_1
 # Don't forget to update the version in the "openssl" package!
-Version:        1.1.1k
+Version:        1.1.1l
 Release:        0
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
@@ -114,6 +114,9 @@ OpenSSL contains an implementation of the SSL and TLS protocols.
 Summary:        Secure Sockets and Transport Layer Security
 License:        OpenSSL
 Group:          Productivity/Networking/Security
+%if 0%{?suse_version} && ! 0%{?sle_version}
+Requires:       crypto-policies
+%endif
 Recommends:     ca-certificates-mozilla
 # install libopenssl and libopenssl-hmac close together (bsc#1090765)
 Suggests:       libopenssl1_1-hmac = %{version}-%{release}
@@ -174,8 +177,7 @@ This package contains optional documentation provided in addition to
 this package's base documentation.
 
 %prep
-%setup -q -n %{_rname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{_rname}-%{version}
 
 %build
 %ifarch armv5el armv5tel

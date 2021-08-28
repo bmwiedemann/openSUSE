@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 24 19:32:25 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.1.1l:
+  * [bsc#1189520, CVE-2021-3711] Fixed an SM2 Decryption Buffer Overflow.
+  * [bsc#1189521, CVE-2021-3712] Fixed various read buffer overruns
+    processing ASN.1 strings
+
+-------------------------------------------------------------------
+Wed Jul 28 10:05:34 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Require the crypto-policies package from libopenssl-1_1
+
+-------------------------------------------------------------------
 Mon May 17 14:28:52 UTC 2021 - Jason Sikes <jsikes@suse.com>
 
 - Added openssl-add_rfc3526_rfc7919.patch
