@@ -29,7 +29,7 @@
 # plugin for Ansible package
 %define pythons python3
 Name:           python-ara
-Version:        1.5.4
+Version:        1.5.7
 Release:        0
 Summary:        ARA Records Ansible
 License:        GPL-3.0-or-later
@@ -44,7 +44,7 @@ Requires:       python-cliff
 Requires:       python-pbr >= 2.0.0
 Requires:       python-requests >= 2.14.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     python-Django >= 2.1.5
 Recommends:     python-django-cors-headers
 Recommends:     python-django-filter
