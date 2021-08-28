@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 23 14:53:07 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 1.31
+   see /usr/share/doc/packages/perl-Unicode-Collate/Changes
+
+  1.31  Sat Aug 21 20:02:21 2021
+      - Someone, not via rt.cpan.org, proposed patches for EBCDIC. Thanks!
+      - Here is an experimental EBCDIC support, that the author has not used yet.
+      - Since this distribution on CPAN has a pure-perl module without XSUB,
+        then the internal values should be Unicode, but not native.
+      - All t/*.t files include sub _pack_U and _unpack_U as well as sub ok.
+
+  1.30  Sun Jun  6 21:33:26 2021
+      - [rt.cpan.org #133952] mkheader subject to "print on closed filehandle"
+        warnings
+
+-------------------------------------------------------------------
 Thu May  6 10:30:46 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - ensure rebuild to be always newer than the perl-core provided
@@ -327,4 +344,3 @@ Wed Oct  5 14:28:31 UTC 2011 - coolo@suse.com
 
 - initial package 0.78
     * created by cpanspec 1.78.06
-

@@ -6,8 +6,11 @@
 #  - source2
 #patches:
 #  no-dot-inc.patch: -p1
-#preamble: |-
-# BuildRequires:  gcc-c++
+preamble: |-
+ # special case as perl itself provides Unicode-Collate as well, however
+ # in an older version. we need to rebuild on version updates
+ # to ensure we are always newer than the perl-core provided version (bsc#1185600)
+ %requires_eq    perl
 #post_prep: |-
 # hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
 # sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
