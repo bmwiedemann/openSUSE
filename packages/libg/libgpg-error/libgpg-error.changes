@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 18 14:28:47 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static).
+
+-------------------------------------------------------------------
 Fri Mar 26 14:32:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.42:

@@ -54,18 +54,16 @@ Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libgpg-error0 = %{version}
 Requires(post): info
-Requires(preun): info
+Requires(preun):info
 
 %description devel
 Files needed for software development using libgpg-error.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--with-pic
+%configure --disable-static
 %make_build
 
 %install
@@ -80,10 +78,11 @@ rm -r %{buildroot}%{_datadir}/common-lisp
 %make_build check
 
 %post -n libgpg-error0 -p /sbin/ldconfig
+%postun -n libgpg-error0 -p /sbin/ldconfig
+
 %post devel
 %install_info --info-dir=%{_infodir} %{_infodir}/gpgrt.info.gz
 
-%postun -n libgpg-error0 -p /sbin/ldconfig
 %preun devel
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/gpgrt.info.gz
 
