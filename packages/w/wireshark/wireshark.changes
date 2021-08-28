@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 26 07:31:47 UTC 2021 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 3.4.8:
+  * Dissector bug reported for Bluetooth Cycling Power Measurement
+    characteristic for extreme angles value
+  * Raknet Addresses are incorrectly identified.
+  * Editcap saving files as ethernet when specifying '-T ieee-802-11-*'
+  * CoAP dissector confuses Content-Format with Accept
+- Further features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-3.4.8.html
+
+-------------------------------------------------------------------
 Fri Jul 16 08:00:34 UTC 2021 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 3.4.7: 
