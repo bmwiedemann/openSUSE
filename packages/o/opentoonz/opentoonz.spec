@@ -64,7 +64,11 @@ BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(mypaint-brushes-1.0) >= 1.3
 %ifarch x86_64
+%if 0%{suse_version} == 1500 && 0%{?sle_version} < 150400
 BuildRequires:  pkgconfig(opencv)
+%else
+BuildRequires:  pkgconfig(opencv4)
+%endif
 %endif
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(zlib)

@@ -142,4 +142,12 @@
   precompiled dll files are present in a couple other folders. (forwarded request 887971 from cgiboudeaux)</comment>
     <requestid>887972</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>d7e473333dc93eea315f971f5495da46</srcmd5>
+    <version>1.5.0</version>
+    <time>1630182580</time>
+    <user>dimstar_suse</user>
+    <comment>- Use opencv 4 to build opentoonz if possible. (forwarded request 914790 from cgiboudeaux)</comment>
+    <requestid>914791</requestid>
+  </revision>
 </revisionlist>
