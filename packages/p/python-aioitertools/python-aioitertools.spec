@@ -19,16 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-aioitertools
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        itertools and builtins for AsyncIO and mixed iterables
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://aioitertools.omnilib.dev
 Source:         https://files.pythonhosted.org/packages/source/a/aioitertools/aioitertools-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#omnilib/aioitertools#49 mcepl@suse.com
-# Improve dependencies for Python 3.8+
-Patch0:         stdlib-typing_extensions.patch
 BuildRequires:  %{python_module asyncio}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions if %python-base < 3.8}
