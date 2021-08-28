@@ -29,12 +29,6 @@
 %define with_vulkan 0
 %endif
 
-%if 0%{?suse_version} >= 1550
-%define with_libcamera 1
-%else
-%define with_libcamera 0
-%endif
-
 %ifnarch s390 s390x ppc64
 %define with_ldacBT 1
 %else
@@ -43,9 +37,14 @@
 
 %bcond_with aac
 %bcond_with aptx
+%if 0%{?suse_version} >= 1550
+%bcond_without libcamera
+%else
+%bcond_with libcamera
+%endif
 
 Name:           pipewire
-Version:        0.3.33
+Version:        0.3.34
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -69,10 +68,11 @@ BuildRequires:  xmltoman
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
-%if %{with_libcamera}
-BuildRequires:  pkgconfig(libcamera)
+%if %{with libcamera}
+BuildRequires:  pkgconfig(libcamera) >= 0~2752
 %endif
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(libcap)
 %if %{with aac}
 BuildRequires:  pkgconfig(fdk-aac)
 %endif
@@ -96,7 +96,7 @@ BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 %if %{with aptx}
-BuildRequires:  pkgconfig(libopenaptx)
+BuildRequires:  pkgconfig(libfreeaptx)
 %endif
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
@@ -347,14 +347,18 @@ export CC=gcc-9
 %else
     -Dbluez5-codec-ldac=disabled \
 %endif
-%if %{with_libcamera}
+%if %{with libcamera}
     -Dlibcamera=enabled \
 %else
     -Dlibcamera=disabled \
 %endif
     -Dpipewire-jack=enabled \
     -Djack=enabled \
-    -Djack-devel=enabled \
+%if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
+    -Djack-devel=true \
+%else
+    -Djack-devel=false \
+%endif
     %{nil}
 %meson_build
 
@@ -557,11 +561,13 @@ fi
 %{_datadir}/pipewire/media-session.d/with-jack
 
 %files libjack-%{apiver_str}-devel
-%{_includedir}/jack
 %{_libdir}/pipewire-%{apiver}/jack/libjack.so
 %{_libdir}/pipewire-%{apiver}/jack/libjacknet.so
 %{_libdir}/pipewire-%{apiver}/jack/libjackserver.so
+%if %{?pkg_vcmp:%{pkg_vcmp meson >= 0.59.0}}%{!?pkg_vcmp:0}
+%{_includedir}/jack
 %{_libdir}/pkgconfig/jack.pc
+%endif
 
 %files -n gstreamer-plugin-pipewire
 %{_libdir}/gstreamer-1.0/libgstpipewire.so
@@ -628,6 +634,7 @@ fi
 %{_datadir}/alsa-card-profile/mixer/*
 %dir %{_datadir}/pipewire/filter-chain
 %{_datadir}/pipewire/filter-chain/demonic.conf
+%{_datadir}/pipewire/filter-chain/sink-convolver.conf
 %{_datadir}/pipewire/filter-chain/sink-dolby-surround.conf
 %{_datadir}/pipewire/filter-chain/sink-eq6.conf
 %{_datadir}/pipewire/filter-chain/sink-matrix-spatialiser.conf
@@ -641,7 +648,7 @@ fi
 %{_libdir}/spa-%{spa_ver}/control/libspa-control.so
 %{_libdir}/spa-%{spa_ver}/ffmpeg/libspa-ffmpeg.so
 %{_libdir}/spa-%{spa_ver}/jack/libspa-jack.so
-%if %{with_libcamera}
+%if %{with libcamera}
 %{_libdir}/spa-%{spa_ver}/libcamera/libspa-libcamera.so
 %endif
 %{_libdir}/spa-%{spa_ver}/support/libspa-dbus.so
@@ -666,7 +673,7 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/volume
 %dir %{_libdir}/spa-%{spa_ver}/ffmpeg
 %dir %{_libdir}/spa-%{spa_ver}/jack
-%if %{with_libcamera}
+%if %{with libcamera}
 %dir %{_libdir}/spa-%{spa_ver}/libcamera
 %endif
 %dir %{_libdir}/spa-%{spa_ver}/support
