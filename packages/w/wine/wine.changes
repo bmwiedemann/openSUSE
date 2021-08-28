@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Aug 28 07:17:43 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.16 development release
+  - Initial version of a HID-based joystick backend.
+  - Improved high-DPI theming support.
+  - More preparation work for the GDI syscall interface.
+  - Better CodeView support in WineDump.
+  - Various bug fixes.
+- update staging to 6.16 release
+
+-------------------------------------------------------------------
 Sat Aug 14 08:16:14 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.15 development release
