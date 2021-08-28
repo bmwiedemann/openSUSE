@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 20:11:18 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Don't delete the DBus service file, it's got nothing to do with
+  development (boo#1189687)
+
+-------------------------------------------------------------------
 Fri Aug  6 09:38:38 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0

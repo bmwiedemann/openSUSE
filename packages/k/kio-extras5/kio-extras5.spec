@@ -117,9 +117,6 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
     %{kf5_find_lang}
     %{kf5_find_htmldocs}
   %endif
-  # we don't need nor want devel symlink, and dbus interface -- kio-extras don't install any headers,
-  # nor are meant for development
-  rm -r %{buildroot}%{_kf5_sharedir}/dbus-1
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
@@ -141,6 +138,7 @@ sed -i '/^add_subdirectory( doc )/d' CMakeLists.txt
 %{_kf5_sharedir}/konqueror/
 %{_kf5_sharedir}/remoteview/
 %{_kf5_sharedir}/solid/
+%{_kf5_sharedir}/dbus-1/services/org.kde.kmtpd5.service
 
 %files -n libkioarchive-devel
 %{_kf5_includedir}/kio_archivebase.h
