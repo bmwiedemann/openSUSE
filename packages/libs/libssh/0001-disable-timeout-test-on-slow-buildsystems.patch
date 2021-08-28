@@ -1,11 +1,11 @@
-Index: libssh-0.9.0/tests/unittests/torture_misc.c
+Index: libssh-0.9.6/tests/unittests/torture_misc.c
 ===================================================================
---- libssh-0.9.0.orig/tests/unittests/torture_misc.c	2019-06-28 08:45:32.418434037 +0200
-+++ libssh-0.9.0/tests/unittests/torture_misc.c	2019-06-28 08:45:38.766497056 +0200
-@@ -197,11 +197,13 @@ static void torture_timeout_elapsed(void
-     (void) state;
+--- libssh-0.9.6.orig/tests/unittests/torture_misc.c	2021-08-26 15:14:47.337264821 +0200
++++ libssh-0.9.6/tests/unittests/torture_misc.c	2021-08-26 15:15:24.513466534 +0200
+@@ -211,11 +211,13 @@ static void torture_timeout_elapsed(void
      ssh_timestamp_init(&ts);
-     usleep(50000);
+     usleep(30000);
+ 
 +#ifndef SLOW_TEST_SYSTEM
      assert_true(ssh_timeout_elapsed(&ts,25));
      assert_false(ssh_timeout_elapsed(&ts,30000));
@@ -16,7 +16,7 @@ Index: libssh-0.9.0/tests/unittests/torture_misc.c
  }
  
  static void torture_timeout_update(void **state){
-@@ -209,11 +211,13 @@ static void torture_timeout_update(void
+@@ -223,11 +225,13 @@ static void torture_timeout_update(void
      (void) state;
      ssh_timestamp_init(&ts);
      usleep(50000);
@@ -30,10 +30,10 @@ Index: libssh-0.9.0/tests/unittests/torture_misc.c
  }
  
  static void torture_ssh_analyze_banner(void **state) {
-Index: libssh-0.9.0/DefineOptions.cmake
+Index: libssh-0.9.6/DefineOptions.cmake
 ===================================================================
---- libssh-0.9.0.orig/DefineOptions.cmake	2019-06-28 08:45:32.418434037 +0200
-+++ libssh-0.9.0/DefineOptions.cmake	2019-06-28 08:46:08.330789588 +0200
+--- libssh-0.9.6.orig/DefineOptions.cmake	2021-08-26 15:14:47.337264821 +0200
++++ libssh-0.9.6/DefineOptions.cmake	2021-08-26 15:14:50.093279775 +0200
 @@ -22,6 +22,7 @@ option(WITH_ABI_BREAK "Allow ABI break"
  option(WITH_GEX "Enable DH Group exchange mechanisms" ON)
  option(FUZZ_TESTING "Build with fuzzer for the server" OFF)
@@ -42,7 +42,7 @@ Index: libssh-0.9.0/DefineOptions.cmake
  
  if (WITH_ZLIB)
      set(WITH_LIBZ ON)
-@@ -57,3 +58,8 @@ endif (NOT GLOBAL_BIND_CONFIG)
+@@ -53,3 +54,8 @@ endif (NOT GLOBAL_BIND_CONFIG)
  if (NOT GLOBAL_CLIENT_CONFIG)
    set(GLOBAL_CLIENT_CONFIG "/etc/ssh/ssh_config")
  endif (NOT GLOBAL_CLIENT_CONFIG)

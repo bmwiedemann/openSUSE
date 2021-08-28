@@ -652,4 +652,14 @@ ProxyCommand parsing in ssh configuration files:
 </comment>
     <requestid>835910</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>152243eb9ce4203bef0cfa039e1c0e50</srcmd5>
+    <version>0.9.6</version>
+    <time>1630182529</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.9.6 (bsc#1189608, CVE-2021-3634)
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.9.6
+</comment>
+    <requestid>914405</requestid>
+  </revision>
 </revisionlist>

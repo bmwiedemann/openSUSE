@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 26 13:15:59 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 0.9.6 (bsc#1189608, CVE-2021-3634)
+  * https://git.libssh.org/projects/libssh.git/tag/?h=libssh-0.9.6
+
+-------------------------------------------------------------------
 Mon Sep 21 19:16:06 UTC 2020 - Andreas Schneider <asn@cryptomilk.org>
 
 - Add missing BR for openssh needed for tests

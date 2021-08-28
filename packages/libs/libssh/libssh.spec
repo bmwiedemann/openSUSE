@@ -1,7 +1,7 @@
 #
-# spec file for package libssh
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_with test
 %endif
 Name:           libssh%{pkg_suffix}
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later
