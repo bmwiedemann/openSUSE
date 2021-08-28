@@ -45,7 +45,7 @@
 %global devname lib%{name}-devel
 
 Name:           pkgconf
-Version:        1.7.4
+Version:        1.8.0
 Release:        0
 Summary:        Package compiler and linker metadata toolkit
 License:        ISC

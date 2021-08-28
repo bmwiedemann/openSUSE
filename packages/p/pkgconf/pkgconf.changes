@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Aug 23 09:18:29 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.8.0:
+  + Fix a minor memory leak relating to cross-personalities
+  + Fix some edge cases with --redefine-prefix
+  + Do not prepend sysroot_dir if the .pc file does not exist
+    in the sysroot
+  + Do not perform path filtering on default system include
+    and library path lists.
+
+-------------------------------------------------------------------
 Wed Jun 30 15:33:37 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to 1.7.4
