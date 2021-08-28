@@ -27,7 +27,6 @@ License:        GPL-2.0-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/cbrunet/python-poppler
 Source:         python-poppler-%{version}.tar.xz
-Source1:        series
 Patch:          use-system-pybind11.patch
 Patch1:         fix-image-argb.patch
 BuildRequires:  %{python_module devel}
@@ -41,7 +40,7 @@ BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3
 BuildRequires:  pkgconfig(poppler)
-# some tests require this this
+# some tests require this
 BuildRequires:  poppler-data
 %python_subpackages
 
@@ -70,11 +69,14 @@ export CXXFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%pytest_arch tests
+# gh#cbrunet/python-poppler#39
+donttest="test_get_pdf_version_of_locked_document"
+%pytest_arch tests -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt
 %doc README.md
-%{python_sitearch}/
+%{python_sitearch}/poppler
+%{python_sitearch}/python_poppler-%{version}*-info
 
 %changelog
