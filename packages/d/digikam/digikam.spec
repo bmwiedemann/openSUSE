@@ -152,7 +152,7 @@ Additional program to browse and view photos
 %package -n libdigikamcore%{soversion}
 Summary:        The main digikam libraries
 Group:          Development/Libraries/KDE
-Requires:       opencv-devel
+%requires_eq %(rpm --qf %%{name} -qf %{_libdir}/libopencv_dnn.so.%{pkg_version opencv-devel})
 Recommends:     %{name}-plugins
 
 %description -n libdigikamcore%{soversion}

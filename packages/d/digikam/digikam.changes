@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Aug 28 07:54:54 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Fix the libdigikamcore runtime dependency (boo#1189905)
+
+-------------------------------------------------------------------
 Thu Aug 26 07:37:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable build on archs missing QtWebEngine.
