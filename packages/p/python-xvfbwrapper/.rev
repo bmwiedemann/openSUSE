@@ -50,4 +50,12 @@
     <comment>- Fix build without python2</comment>
     <requestid>795669</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c6ee7d26c7d76a4b92b132695485d8a9</srcmd5>
+    <version>0.2.9</version>
+    <time>1630182557</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914741</requestid>
+  </revision>
 </revisionlist>
