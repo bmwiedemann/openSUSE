@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 20 14:37:01 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 9.0.2 (bsc#1189649)
+  + In addition to tagging images in AWS also set them to deprecated
+    in EC2. This allows the framework to hide the images from new users
+    when images are no longer supposed to be used.
+
+-------------------------------------------------------------------
 Sat Dec 12 12:21:19 UTC 2020 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 9.0.1 (bsc#1179890)

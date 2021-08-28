@@ -123,4 +123,15 @@
     creation with the new storage class and save 20% of cost.</comment>
     <requestid>855360</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>41da6b33c49a3ce8a7d62d9c64607799</srcmd5>
+    <version>9.0.2</version>
+    <time>1630182541</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.2 (bsc#1189649)
+  + In addition to tagging images in AWS also set them to deprecated
+    in EC2. This allows the framework to hide the images from new users
+    when images are no longer supposed to be used.</comment>
+    <requestid>914684</requestid>
+  </revision>
 </revisionlist>
