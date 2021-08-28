@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Aug 18 06:16:19 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch from upstream to fix KXmlGUI toolbars and Konsole
+  MainWindow size (kde#436471, kde#430036, kde#439339, boo#1188074):
+  * 0001-Fix-KXmlGUI-toolbars-and-konsole-MainWindow-size.patch
+- Add patch from upstream to fix the MainWindow size when there is
+  no saved size (like the first time a user runs Konsole)
+  (kde#437791):
+  * 0001-Fix-MainWindow-size-when-there-is-no-saved-size.patch
+ 
+
+-------------------------------------------------------------------
 Fri Aug  6 09:39:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
