@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyocr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,11 @@
 #
 
 
-%define sha f4b068cdf359186bfbed36959c53e9e52e2eda84
+%define sha f9f93bbd83ab5814b1c56c3ffe41addc9ec622dc
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyocr
-Version:        0.7.2
+Version:        0.8
 Release:        0
 Summary:        Python wrapper for OCR engines
 License:        GPL-3.0-or-later
