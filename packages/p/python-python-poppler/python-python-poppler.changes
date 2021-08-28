@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 20:15:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- remove dangling series file
+- skip failing test due to poppler 21.08.0 crash
+  gh#cbrunet/python-poppler#39
+
+-------------------------------------------------------------------
 Mon Mar 22 01:19:20 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Add fix-image-argb.patch to fix image formatting with
