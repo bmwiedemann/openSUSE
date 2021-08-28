@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 26 10:49:07 UTC 2021 - pgajdos@suse.com
+
+- %check: do not use setup.py test
+
+-------------------------------------------------------------------
 Fri Jun 12 07:28:55 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use update-alternatives for the tx binary so users can

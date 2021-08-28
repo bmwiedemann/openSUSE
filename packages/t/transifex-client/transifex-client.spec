@@ -1,7 +1,7 @@
 #
 # spec file for package transifex-client
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,7 @@ Requires:       python3-requests >= 2.19.1
 Requires:       python3-setuptools
 Requires:       python3-urllib3 >= 1.24.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %description
@@ -68,7 +68,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/tx %{buildroot}%{_bindir}/tx
 
 %check
-python3 setup.py test
+python3 -m unittest
 
 %post
 %{_sbindir}/update-alternatives --install %{_bindir}/tx tx %{_bindir}/transifex-tx 20
