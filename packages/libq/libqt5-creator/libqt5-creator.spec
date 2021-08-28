@@ -26,16 +26,20 @@
 %global libexecdirname lib
 %endif
 
+%ifnarch ppc ppc64 ppc64le s390 s390x
+%bcond_without qtwebengine
+%endif
+
 # Private QML imports
-%global __requires_exclude qmlimport\\((CameraGeometry|GridGeometry|HelperWidgets|LightUtils|LineGeometry|MouseArea3D|QtQuickDesignerTheme|SelectionBoxGeometry|StudioControls|StudioTheme).*
+%global __requires_exclude qmlimport\\((CameraGeometry|GridGeometry|HelperWidgets|LightUtils|LineGeometry|MouseArea3D|QtQuickDesignerColorPalette|QtQuickDesignerTheme|SelectionBoxGeometry|StudioControls|StudioTheme).*
 # Has mocks for quite a few components, which are only pulled in when actually used
 %global __requires_exclude_from %{_datadir}/qtcreator/qml/qmlpuppet/
 
-%define major_ver 4.15
+%define major_ver 5.0
 %define qt5_version 5.14.0
-%define tar_version 4.15.2
+%define tar_version 5.0.0
 Name:           libqt5-creator
-Version:        4.15.2
+Version:        5.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -90,6 +94,7 @@ BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(libzstd)
 Requires:       hicolor-icon-theme
 Requires:       libqt5-qtquickcontrols
+Requires:       libqt5-qtquicktimeline
 # Make sure to rebuild against latest Qt5 (using the last package in chain - libQt5Designer5)
 # Explicitly require libQt5Script5 (needed by plugins). Qt Creator crashes with old versions on project load.
 %requires_eq    libQt5Designer5
@@ -114,7 +119,7 @@ BuildRequires:  llvm-devel
 # clangcodemodel hardcodes clang include paths: QTCREATORBUG-21972
 %requires_eq    libclang%{_llvm_sonum}
 %endif
-%ifnarch ppc ppc64 ppc64le s390 s390x
+%if %{with qtwebengine}
 BuildRequires:  cmake(Qt5WebEngine) >= %{qt5_version}
 BuildRequires:  cmake(Qt5WebEngineWidgets) >= %{qt5_version}
 %endif
@@ -152,14 +157,15 @@ sed -i -e "/qtc_enable_separate_debug_info/d" cmake/QtCreatorAPI.cmake
 # https://bugreports.qt.io/browse/QTCREATORBUG-24357 suggests disabling
 # the clangpchmanagerbackend and clangrefactoringbackend builds
 %cmake \
-  -DCMAKE_INSTALL_LIBDIR=%{_lib} \
-  -DCMAKE_INSTALL_LIBEXECDIR=%{libexecdirname} \
-  -DCLANGTOOLING_LINK_CLANG_DYLIB=ON \
-  -DBUILD_WITH_PCH=OFF \
-  -DWITH_DOCS=ON \
-  -DBUILD_LIBRARY_QLITEHTML=OFF \
-  -DBUILD_EXECUTABLE_CLANGPCHMANAGERBACKEND=OFF \
-  -DBUILD_EXECUTABLE_CLANGREFACTORINGBACKEND=OFF
+  -DCMAKE_INSTALL_LIBDIR:STRING=%{_lib} \
+  -DCMAKE_INSTALL_LIBEXECDIR:STRING=%{libexecdirname} \
+  -DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=ON \
+  -DBUILD_WITH_PCH:BOOL=OFF \
+  -DWITH_DOCS:BOOL=ON \
+  -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
+%if %{with qtwebengine}
+  -DBUILD_HELVIEWERBACKEND_QTWEBENGINE:BOOL=ON
+%endif
 
 %cmake_build
 

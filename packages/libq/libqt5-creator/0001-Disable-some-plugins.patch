@@ -1,4 +1,4 @@
-From a808339287ec6dcd5981d3b28e5b0414a6a206ff Mon Sep 17 00:00:00 2001
+From 51d1d57485576dc4f735b5228dec6cf7c1c3e424 Mon Sep 17 00:00:00 2001
 From: Christophe Giboudeaux <christophe@krop.fr>
 Date: Wed, 15 Jul 2020 10:09:31 +0200
 Subject: [PATCH] Disable some plugins
@@ -11,12 +11,11 @@ which was never accepted upstream [1]
 
 [1] https://reviews.llvm.org/D53072
 ---
- src/plugins/CMakeLists.txt      | 2 --
- src/plugins/help/CMakeLists.txt | 4 ++--
- 2 files changed, 2 insertions(+), 4 deletions(-)
+ src/plugins/CMakeLists.txt | 2 --
+ 1 file changed, 2 deletions(-)
 
 diff --git a/src/plugins/CMakeLists.txt b/src/plugins/CMakeLists.txt
-index 871f999b..e6d82385 100644
+index 4b6e3c43..c78bb33c 100644
 --- a/src/plugins/CMakeLists.txt
 +++ b/src/plugins/CMakeLists.txt
 @@ -7,7 +7,6 @@ add_subdirectory(serialterminal)
@@ -27,16 +26,14 @@ index 871f999b..e6d82385 100644
  add_subdirectory(welcome)
  
  # Level 2: (only depends on Level 1 and below)
-@@ -41,7 +40,6 @@ add_subdirectory(vcsbase)
+@@ -40,7 +39,6 @@ add_subdirectory(vcsbase)
  # Level 5:
  add_subdirectory(bazaar)
  add_subdirectory(beautifier)
 -add_subdirectory(clangformat)
- add_subdirectory(clangrefactoring)
  add_subdirectory(clearcase)
  add_subdirectory(cvs)
-diff --git a/src/plugins/help/CMakeLists.txt b/src/plugins/help/CMakeLists.txt
-index 6ec6faba..0e577cb4 100644
+ add_subdirectory(designer)
 -- 
-2.30.1
+2.32.0
 
