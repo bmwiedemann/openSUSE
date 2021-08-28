@@ -19,15 +19,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tinydb
-Version:        4.4.0
+Version:        4.5.1
 Release:        0
 Summary:        A document-oriented database
 License:        MIT
 Group:          Productivity/Databases/Servers
 URL:            https://github.com/msiemens/tinydb
 Source:         https://files.pythonhosted.org/packages/source/t/tinydb/tinydb-%{version}.tar.gz
+# https://github.com/msiemens/tinydb/issues/324
+Source1:        https://github.com/msiemens/tinydb/archive/refs/tags/v%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module pytest-runner}
+BuildRequires:  %{python_module pytest-mypy}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -42,7 +45,7 @@ The target are small apps that would be “blown away” by a SQL-DB or an
 external database server.
 
 %prep
-%setup -q -n tinydb-%{version}
+%setup -q -n tinydb-%{version} -b1
 sed -i '/pytest-cov/d' setup.py
 chmod a-x LICENSE
 dos2unix LICENSE
@@ -59,7 +62,8 @@ sed -i 's/ujson/ujson_is_broken/' tinydb/storages.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+mv pytest.ini{,.notused}
+%pytest
 
 %files %{python_files}
 %license LICENSE

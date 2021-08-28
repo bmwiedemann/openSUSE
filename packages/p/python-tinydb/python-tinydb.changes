@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 27 11:09:53 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.5.1
+  v4.5.1 (2021-07-17)
+  ^^^^^^^^^^^^^^^^^^^
+  - Fix: Correctly install ``typing-extensions`` on Python 3.7
+    (see `issue 413 <https://github.com/msiemens/tinydb/issues/413>`__)
+  v4.5.0 (2021-06-25)
+  ^^^^^^^^^^^^^^^^^^^
+  - Feature: Better type hinting/IntelliSense for PyCharm, VS Code and MyPy
+    (see `issue 372 <https://github.com/msiemens/tinydb/issues/372>`__).
+    PyCharm and VS Code should work out of the box, for MyPy see
+    :ref:`MyPy Type Checking <mypy_type_checking>`
+- actually test the package
+
+-------------------------------------------------------------------
 Sun Apr  4 23:28:01 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:
