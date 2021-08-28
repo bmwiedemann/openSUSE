@@ -1,7 +1,7 @@
 From cf9313d2415961efceb503fda94705548d22849f Mon Sep 17 00:00:00 2001
 From: Michal Srb <msrb@suse.com>
 Date: Tue, 17 Jul 2018 10:58:54 +0200
-Subject: [PATCH] Declare gnome shell versions 3.10 to 3.26 as supported.
+Subject: [PATCH] Declare gnome shell versions 3.10 to 3.34 as supported.
 
 Newer versions may work as well, but were not tested.
 ---
@@ -34,6 +34,12 @@ index eaabc57..d3ed61d 100644
 +        "3.24",
 +        "3.25",
 +        "3.26"
++        "3.29",
++        "3.30",
++        "3.31",
++        "3.32",
++        "3.33",
++        "3.34",
 +    ],
 +    "uuid": "vncmanager-controller@vncmanager.michalsrb.github.com",
 +    "name": "VNC Session Configuration",

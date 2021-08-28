@@ -1,0 +1,69 @@
+From 4188469706d567e810caac74d221e065c52084b1 Mon Sep 17 00:00:00 2001
+From: Ali Abdallah <ali.abdallah@suse.com>
+Date: Fri, 9 Jul 2021 14:32:50 +0200
+Subject: [PATCH] Make it work with newer gnome-shell
+
+Fix JS code incompatibility with newer gnome-shell versions such as
+3.34, see bsc#1188118.
+
+---
+ extension.js | 37 +++++++++++++------------------------
+ 1 file changed, 13 insertions(+), 24 deletions(-)
+
+diff --git a/extension.js b/extension.js
+index e42f4fe..ec660a8 100644
+--- a/gnome-shell-extension/extension.js
++++ b/gnome-shell-extension/extension.js
+@@ -1,5 +1,6 @@
+ const Clutter = imports.gi.Clutter;
+ const GLib = imports.gi.GLib;
++const GObject = imports.gi.GObject;
+ const Main = imports.ui.main;
+ const PanelMenu = imports.ui.panelMenu;
+ const St = imports.gi.St;
+@@ -11,30 +12,18 @@ const CONTROLLER_CMD = ['/usr/bin/vncmanager-controller', '--start-setup', '--st
+ let controller;
+ let stdoutChannel;
+ 
+-function VNCController() {
+-    this._init();
+-}
+-
+-VNCController.prototype = {
+-        __proto__: PanelMenu.Button.prototype,
+-
+-        _init: function() {
+-                PanelMenu.Button.prototype._init.call(this, St.Align.START);
+-
+-                this.label = new St.Label({ text: 'VNC', y_expand: true, y_align: Clutter.ActorAlign.CENTER });
+-                this.actor.add_child(this.label);
+-                this.actor.connect('button-release-event', this._handleToggle);
+-        },
+-
+-        _handleToggle: function(actor, event) {
+-            stdoutChannel.write_chars("TOGGLE\n", 7);
+-            stdoutChannel.flush();
+-        },
+-}
+-
+-function init() {
+-
+-}
++const VNCController = GObject.registerClass(
++class VNCController extends PanelMenu.Button {
++	_init() {
++		super._init(St.Align.START);
++                let label = new St.Label({ text: 'VNC', y_expand: true, y_align: Clutter.ActorAlign.CENTER });
++		this.add_actor(label);
++                this.connect('button-release-event', () => {
++            		stdoutChannel.write_chars("TOGGLE\n", 7);
++		        stdoutChannel.flush();
++		});
++        }
++});
+ 
+ function enable() {
+       let process = GLib.spawn_async_with_pipes(null, CONTROLLER_CMD, null, GLib.SpawnFlags.DEFAULT, null);
+-- 
+2.31.1
+

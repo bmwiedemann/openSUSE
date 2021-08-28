@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug  6 06:53:54 UTC 2021 - Ali Abdallah <ali.abdallah@suse.com>
+
+- 0001-fix-js-code-incompatibility-with-gnome-3.34.patch: Fix JS code
+  code incompatibility with newer gnome-shell versions such as gnome-shell
+  3.34 (bsc#1188118)
+- Explicitly declare newer gnome-shell versions as supported.
+  * Added U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.34-as-supported.patch
+  * Deleted U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch
+
+-------------------------------------------------------------------
 Wed Sep 23 11:07:57 UTC 2020 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_UsrEtc.patch

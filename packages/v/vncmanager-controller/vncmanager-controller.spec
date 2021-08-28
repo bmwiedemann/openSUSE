@@ -1,7 +1,7 @@
 #
 # spec file for package vncmanager-controller
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,8 +35,9 @@ Summary:        Configuration application for VNC session
 License:        MIT
 Group:          System/X11/Utilities
 Source:         vncmanager-controller-%{version}.tar.gz
-Patch1:         U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.26-as-supported.patch
+Patch1:         U_vncmanager-controller-Declare-gnome-shell-versions-3.10-to-3.34-as-supported.patch
 Patch2:         n_UsrEtc.patch
+Patch3:         0001-fix-js-code-incompatibility-with-gnome-3.34.patch
 Requires:       vncmanager
 
 %description
@@ -58,6 +59,7 @@ This is configuration application to configure sharing and security from inside 
 %if 0%{?suse_version} >= 1550
 %patch2 -p1
 %endif
+%patch3 -p1
 
 %build
 %cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_VERBOSE_MAKEFILE=ON
