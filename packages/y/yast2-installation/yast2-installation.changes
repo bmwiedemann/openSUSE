@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 24 14:58:48 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Refactored umount_finish.rb (bsc#1149980)
+  More details: https://github.com/yast/yast-installation/pull/975
+  - Moved out the unmounting part to a new (testable!) Unmounter class
+  - Now using a dedicated FinishClient base class
+  - Killed a lot of YCP zombies
+  - Removed dead code going back to storage-old
+  - Modularized the code
+  - Made the client invokable stand-alone
+- 4.4.17
+
+-------------------------------------------------------------------
 Wed Aug 11 20:43:04 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - only list specific files installed in common directories (metainfo,
