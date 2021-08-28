@@ -367,4 +367,12 @@
     <comment>July 2021 CPU</comment>
     <requestid>907534</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>6e01ae33cd2065d9ec4d0db002ed2016</srcmd5>
+    <version>11.0.12.0</version>
+    <time>1630182531</time>
+    <user>dimstar_suse</user>
+    <comment>glibc 2.34 build fix</comment>
+    <requestid>914407</requestid>
+  </revision>
 </revisionlist>

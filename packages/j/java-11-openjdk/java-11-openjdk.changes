@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 26 13:45:59 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jdk11-glibc234.patch
+    + fix build with glibc-2.34 (bsc#1189201)
+
+-------------------------------------------------------------------
+Wed Aug  4 09:52:59 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- riscv64-zero.patch: Add support for riscv64 (zero VM)
+
+-------------------------------------------------------------------
 Wed Jul 21 07:23:47 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream tag jdk-11.0.12+7 (July 2021, CPU)

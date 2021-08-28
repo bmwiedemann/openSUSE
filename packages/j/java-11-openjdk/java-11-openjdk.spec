@@ -62,7 +62,7 @@
 %global jaxb_ri_repository jaxb-v2
 %global jaxb_ri_tag 2.3.1
 # priority must be 6 digits in total
-%if 0%{?suse_version} <= 1315
+%if 0%{?suse_version} <= 1315 && ! 0%{?java_bootstrap}
 %global priority        0
 %else
 %global priority        2105
@@ -232,6 +232,7 @@ Patch101:       s390-size_t.patch
 #
 Patch200:       ppc_stack_overflow_fix.patch
 Patch201:       fix_armv6_build.patch
+Patch202:       jdk11-glibc234.patch
 #
 Patch302:       disable-doclint-by-default.patch
 Patch303:       alternative-tzdb_dat.patch
@@ -242,6 +243,8 @@ Patch402:       jaw-nogtk.patch
 #
 Patch500:       activation-module.patch
 Patch501:       annotation-module.patch
+#
+Patch600:       riscv64-zero.patch
 BuildRequires:  alsa-lib-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -286,7 +289,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
 Requires(post): file
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -316,9 +319,13 @@ Provides:       jre1.8.x
 Provides:       jre1.9.x
 Obsoletes:      java-10-openjdk < %{version}-%{release}
 %endif
-%if %{bootcycle} && 0%{?suse_version} > 1315
+%if %{bootcycle}
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 BuildRequires:  java-devel >= 10
 BuildConflicts: java-devel >= 12
+%else
+BuildRequires:  %{name}-devel
+%endif
 %else
 BuildRequires:  %{name}-devel
 %endif
@@ -363,7 +370,7 @@ Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
 Recommends:     tzdata-java8
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -399,7 +406,7 @@ Requires:       %{name} = %{version}-%{release}
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
 Requires(postun):update-alternatives
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-10-openjdk-devel = %{version}-%{release}
@@ -419,7 +426,7 @@ The OpenJDK %{featurever} development tools.
 Summary:        JMods for OpenJDK %{featurever}
 Group:          Development/Languages/Java
 Requires:       %{name}-devel = %{version}-%{release}
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 Provides:       java-10-openjdk-jmods = %{version}-%{release}
 Obsoletes:      java-10-openjdk-jmods < %{version}-%{release}
 %endif
@@ -431,7 +438,7 @@ The JMods for OpenJDK %{featurever}.
 Summary:        OpenJDK %{featurever} Demos
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 Provides:       java-10-openjdk-demo = %{version}-%{release}
 Obsoletes:      java-10-openjdk-demo < %{version}-%{release}
 %endif
@@ -443,7 +450,7 @@ The OpenJDK %{featurever} demos.
 Summary:        OpenJDK %{featurever} Source Bundle
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 Provides:       java-10-openjdk-src = %{version}-%{release}
 Obsoletes:      java-10-openjdk-src < %{version}-%{release}
 %endif
@@ -459,7 +466,7 @@ Requires:       jpackage-utils
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
 Requires(postun):update-alternatives
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-10-openjdk-javadoc = %{version}-%{release}
@@ -476,7 +483,7 @@ Summary:        OpenJDK %{featurever} accessibility connector
 Group:          Development/Languages/Java
 Requires:       %{name} = %{version}-%{release}
 Requires:       xprop
-%if 0%{?suse_version} > 1315
+%if 0%{?suse_version} > 1315 || 0%{?java_bootstrap}
 Provides:       java-10-openjdk-accessibility = %{version}-%{release}
 Obsoletes:      java-10-openjdk-accessibility < %{version}-%{release}
 %endif
@@ -556,6 +563,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch201
 %endif
 
+%patch202 -p1
+
 %patch302 -p1
 %patch303 -p1
 
@@ -565,6 +574,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch500
 %patch501
+
+%patch600 -p1
 
 # Extract systemtap tapsets
 
