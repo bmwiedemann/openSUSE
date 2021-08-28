@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>e1e1d607a73711f06a691ee1217bf30c</srcmd5>
+    <version>0.10.0</version>
+    <time>1630182582</time>
+    <user>dimstar_suse</user>
+    <comment>Initial submission of Fennec programming language (LISP-like with macros compiling to Lua) to Factory.</comment>
+    <requestid>914809</requestid>
+  </revision>
+</revisionlist>
