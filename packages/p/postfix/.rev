@@ -2006,4 +2006,22 @@ successfully tested on Tumbleweed x86_64</comment>
     <comment></comment>
     <requestid>910736</requestid>
   </revision>
+  <revision rev="208" vrev="3">
+    <srcmd5>aab8d70df78552fdf72f87c4515d4932</srcmd5>
+    <version>3.6.2</version>
+    <time>1630182523</time>
+    <user>dimstar_suse</user>
+    <comment>- postfix fails with glibc 2.34
+  Define HAS_CLOSEFROM 
+  (bsc#1189101) 
+  add patch
+  - postfix-3.6.2-glibc-234-build-fix.patch
+
+- postfix fails with glibc 2.34
+  Define HAS_CLOSEFROM 
+  (bsc#1189101) 
+  add patch 
+  - postfix-3.6.2-glibc-234-build-fix.patch</comment>
+    <requestid>914312</requestid>
+  </revision>
 </revisionlist>

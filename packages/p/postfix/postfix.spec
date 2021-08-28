@@ -69,6 +69,7 @@ Patch8:         %{name}-vda-v14-3.0.3.patch
 Patch9:         fix-postfix-script.patch
 Patch10:        %{name}-avoid-infinit-loop-if-no-permission.patch
 Patch11:	set-default-db-type.patch
+Patch12:	postfix-3.6.2-glibc-234-build-fix.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cyrus-sasl-devel
 #BuildRequires:  db-devel
@@ -175,6 +176,7 @@ maps with Postfix, you need this.
 %patch9
 %patch10
 %patch11
+%patch12 -p1
 
 # ---------------------------------------------------------------------------
 

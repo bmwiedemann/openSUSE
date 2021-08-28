@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 24 09:55:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- postfix fails with glibc 2.34
+  Define HAS_CLOSEFROM 
+  (bsc#1189101) 
+  add patch 
+  - postfix-3.6.2-glibc-234-build-fix.patch
+
+-------------------------------------------------------------------
 Thu Aug  5 19:09:36 UTC 2021 - chris@computersalat.de
 
 - fix config.postfix (follow up of bsc#1188477)
