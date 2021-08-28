@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 12:36:56 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.3.2:
+  * Fixes for HEIC files from Note10+ (#127) by Drew Perttula
+  * Add missing EXIF OffsetTime tags (#126) by Étienne Pelletier
+
+-------------------------------------------------------------------
 Mon Sep  7 06:31:09 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.3.1:
