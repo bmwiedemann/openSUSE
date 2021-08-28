@@ -1,5 +1,5 @@
 #
-# spec file for package python-panel-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -29,22 +29,28 @@
 %define skip_python36 1
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.11.1
+Version:        0.12.1
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
+# upstream forgot to package test files for 0.12.1 (See Patch1)
+Source1:        https://github.com/holoviz/panel/raw/v%{version}/panel/tests/pane/assets/mp3.mp3
+Source2:        https://github.com/holoviz/panel/raw/v%{version}/panel/tests/pane/assets/mp4.mp4
 Source99:       python-panel-rpmlintrc
+# PATCH-FIX-UPSTREAM panel-pr2636-fixtests.patch -- gh#holoviz/panel#2636
+Patch1:         https://github.com/holoviz/panel/pull/2636.patch#/panel-pr2636-fixtests.patch
 BuildRequires:  %{python_module Markdown}
+BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module bokeh >= 2.2.2}
 BuildRequires:  %{python_module param >= 1.9.3}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module tqdm}
+BuildRequires:  %{python_module tqdm >= 4.48.0}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-notebook-filesystem
 BuildRequires:  nodejs
@@ -56,9 +62,9 @@ BuildRequires:  %{python_module holoviews}
 BuildRequires:  %{python_module ipympl}
 BuildRequires:  %{python_module ipython >= 7.0}
 BuildRequires:  %{python_module nbsmoke >= 0.2.0}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 1.3}
 BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module plotly}
+BuildRequires:  %{python_module plotly >= 4.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module streamz}
@@ -73,14 +79,14 @@ Requires:       python-param >= 1.9.3
 Requires:       python-pyct >= 0.4.4
 Requires:       python-pyviz-comms >= 0.7.4
 Requires:       python-requests
-Requires:       python-tqdm
+Requires:       python-tqdm >= 4.48.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
 Recommends:     python-holoviews >= 1.13.2
 Recommends:     python-matplotlib
 Recommends:     python-notebook >= 5.4
-Recommends:     python-plotly
+Recommends:     python-plotly >= 4.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -102,9 +108,11 @@ This package contains the notebook and server extension configuration common
 to all Python flavors.
 
 %prep
-%setup -q -n panel-%{version}
+%autosetup -p1 -n panel-%{version}
 # Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
 sed -i '/def _build_paneljs/ a \    return' setup.py
+mkdir panel/tests/pane/assets
+cp %{SOURCE1} %{SOURCE2} panel/tests/pane/assets/
 
 %build
 %python_build
@@ -130,12 +138,13 @@ sed -i "1{s|#!/usr/bin/env python|#!%{__$python}|}" \
 %if %{with test}
 %check
 # DISABLE TESTS REQUIRING NETWORK ACCESS
-donttest="test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane"
+donttest="test_loading_a_image_from_url or test_image_alt_text or test_image_link_url or test_vtk_pane_from_url or test_vtkjs_pane or test_pdf_embed"
 # https://github.com/holoviz/panel/issues/2101
 donttest+=" or test_record_modules_not_stdlib"
 # flaky async test
 donttest+=" or test_server_async_callbacks"
-%pytest -ra -k "not ($donttest)"
+# -s: some tests execute twice and fail without it (?)
+%pytest -s -ra -k "not ($donttest)"
 %endif
 
 %post

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Aug 26 12:28:37 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Use -s in pytest call
+
+-------------------------------------------------------------------
+Mon Aug 23 17:13:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.12.1
+  * Big Changelog since 0.11
+    https://github.com/holoviz/panel/blob/master/CHANGELOG.md
+  * New Features in 0.12:
+    Add ReactiveHTML
+    Add Terminal Widget based on xterm.js (#2090)
+    Adding a DatetimePicker widget (#2107, #2135)
+    Add editable sliders (#2111, #2133, #2208)
+    Add FlexBox layout (#2233, #2511)
+    Add ability to configure global template (#2271)
+    Add GridStack layout (#2375)
+    Add PDF pane (#2444)
+    Add /panel-preview endpoint for Jupyter server extension
+      (#2341, #2361)
+    Add Tqdm Indicator (#2079)
+  * Deprecations:
+    Remove add_periodic_callback method (#2439)
+    Remove deprecated panel.callbacks modules
+    Remove deprecated Ace pane and Audio Widget (#2427)
+    Remove Progress widget docs (#2451)
+    Tabulator no longer loaded by default, must be initialized with
+    pn.extension('tabulator')
+- Add missing test data and patch
+  * mp3.mp3
+  * mp4.mp4
+  * panel-pr2636-fixtests.patch
+  * gh#holoviz/panel#2636
+
+-------------------------------------------------------------------
 Thu Apr  1 13:47:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Move configuration file to new jupyter-panel package in order to
