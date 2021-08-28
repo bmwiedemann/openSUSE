@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Aug 27 13:09:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3
+ * Fixed writing process pid.
+- Update to version 3.0.2
+  * Fixed queue.
+- Update to version 3.0.1
+  * Fixed crash when using capture_output function.
+- Update to version 3.0.0
+  * Migrate to python3.
+- Update to version 2.8.0
+  * Fixed issue with the syslog handler and null bytes in messages.
+  * Call handleError on SyslogHandler when exception happens during
+    emit.
+  * Added some utility functions for setting up the log system
+    + Added set_handler function to set the main handler used by
+      logging (it will replace all existing handlers on the root
+      logger).
+    + Added capture_output function to capture and divert standard
+      output and standard error to the logging system.
+  * Replaced start_syslog with use_syslog and deprecated the
+    former.
+  * Improved detection of non-interactive mode.
+  * Renamed IfNotInteractive to WhenNotInteractive.
+  * Use the real path for runtime and config directories (follow
+    symlinks).
+  * Added daemon property on Process to check if it's in daemon
+    mode or not.
+  * Check exc_type instead of exc_value in the context manager's
+    __exit__ .
+  * Added module level log function to the log module similar to
+    logging.log .
+  * Use the with statement instead of try/finally.
+  * Fixed broad exception statement.
+  * Normalize names for descriptor method arguments.
+  * Removed docstrings from internal functions.
+  * Refactored configuration and runtime settings on Process.
+  * Make the local_root undefined when running from system binary
+    paths.
+  * Only ignore OSError in unlink wrapper.
+  * Use the new octal notation for file modes.
+  * Fixed spelling in exception message.
+  * Ordered imports alphabetically.
+  * Explicitly use python2 in shebang lines.
+
+-------------------------------------------------------------------
 Sun Nov 17 18:34:40 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Convert inline changelog to python-application.changes
