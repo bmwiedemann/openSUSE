@@ -38,4 +38,32 @@
   * See https://codeberg.org/dnkl/foot/releases/tag/1.8.2 for more details.</comment>
     <requestid>906959</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fbd8bbfa831f158cd1a4707dd9c8b551</srcmd5>
+    <version>1.9.0</version>
+    <time>1630182586</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * foot.ini options:
+    * include directives for including files now expand ~ in the path.
+    * New uri.uri-characters option to customize what characters are considered
+      to be part of a URL.
+  * If using a compositor with client-side decorations, the CSDs now show
+    window titles.
+  * foot upstream made a change to install its terminfos in a custom directory
+    /usr/share/foot/terminfo and point ncurses-using applications to this by
+    automatically setting the TERMINFO env var to this directory.
+    However upstream is planning to revert this change in the next release
+    since it doesn't work for many distros (including OpenSUSE) that configure
+    ncurses with --disable-root-environ and thus prevent root programs from
+    reading the env var.
+
+    foot upstream is planning to rename its custom terminfos instead.
+    It has not yet chosen a new name. For now, to unblock users who installed
+    foot and want a resolution to it conflicting with the terminfo-base package,
+    this OpenSUSE package has chosen &quot;foot-suse&quot;. It will be renamed
+    in the future when foot upstream picks a new name.
+  * See https://codeberg.org/dnkl/foot/releases/tag/1.9.0 for more details.</comment>
+    <requestid>914819</requestid>
+  </revision>
 </revisionlist>

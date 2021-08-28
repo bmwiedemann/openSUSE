@@ -17,13 +17,13 @@
 
 
 Name:           foot
-Version:        1.8.2
+Version:        1.9.0
 Release:        0
 Summary:        A Wayland terminal emulator
 License:        MIT
 URL:            https://codeberg.org/dnkl/foot
 Source0:        %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.53
+BuildRequires:  meson >= 0.54
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(fcft) < 3.0.0
@@ -46,11 +46,13 @@ A Wayland terminal emulator.
 %autosetup -n %{name}
 
 %build
-%meson -Db_lto=true
+%meson -Db_lto=true -Ddefault-terminfo=foot-suse '-Dcustom-terminfo-install-location=%{_datadir}/terminfo'
 %meson_build
 
 %install
 %meson_install
+mv %{buildroot}/%{_datadir}/terminfo/f/foot %{buildroot}/%{_datadir}/terminfo/f/foot-suse
+mv %{buildroot}/%{_datadir}/terminfo/f/foot-direct %{buildroot}/%{_datadir}/terminfo/f/foot-direct-suse
 
 %files
 %license LICENSE
@@ -62,11 +64,11 @@ A Wayland terminal emulator.
 %{_datadir}/bash-completion/
 %{_datadir}/doc/%{name}/
 %{_datadir}/fish/
+%{_datadir}/terminfo/f/foot-suse
+%{_datadir}/terminfo/f/foot-direct-suse
 %{_datadir}/zsh/
 %{_datadir}/%{name}/
 %{_datadir}/icons/hicolor/
-%{_datadir}/terminfo/f/foot
-%{_datadir}/terminfo/f/foot-direct
 %{_mandir}/man1/foot.1.gz
 %{_mandir}/man1/footclient.1.gz
 %{_mandir}/man5/foot.ini.5.gz
