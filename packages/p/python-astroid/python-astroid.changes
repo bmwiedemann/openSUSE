@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 20 19:16:19 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add typing_extensions as requirement for python36
+
+-------------------------------------------------------------------
 Thu Aug 19 13:13:43 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.7.1
