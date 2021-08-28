@@ -35,6 +35,8 @@ License:        BSD-3-Clause
 URL:            https://github.com/intake/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         %{url}/archive/%{ghversion}.tar.gz#/fsspec-%{ghversion}.tar.gz
+# PATCH-FIX-UPSTREAM fsspec-pr710-bytesreturn.patch -- gh#intake/filesystem_spec#710 and gh#zarr-developers/zarr-python#812
+Patch0:         %{url}/pull/710.patch#/fsspec-pr710-bytesreturn.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools}
@@ -83,7 +85,7 @@ BuildRequires:  %{python_module panel if (%python-base without python36-base)}
 A specification for pythonic filesystems.
 
 %prep
-%setup -q -n filesystem_spec-%{ghversion}
+%autosetup -p1 -n filesystem_spec-%{ghversion}
 # don't test nonexistent python36-numpy
 sed -i -e '/^import numpy as np/ d' -e '/^import pytest/ a np = pytest.importorskip("numpy")' fsspec/tests/test_spec.py
 
