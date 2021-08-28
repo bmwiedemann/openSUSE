@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-ufonormalizer
-Version:        0.5.3
+Version:        0.6.0
 Release:        0
 Summary:        Script to normalize the XML and other data inside of a UFO
 License:        BSD-3-Clause

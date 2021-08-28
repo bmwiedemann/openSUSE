@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Aug 26 09:50:54 UTC 2021 - pgajdos@suse.com
+
+- version update to 0.6.0
+  * Changes how <notes> are handled, the normalizer will not change
+    the formatting of lines in a note anymore. This is backwards
+    compatible, as it will not change any previously normalized UFOs.
+
+-------------------------------------------------------------------
 Sun Apr 25 20:06:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.5.3
