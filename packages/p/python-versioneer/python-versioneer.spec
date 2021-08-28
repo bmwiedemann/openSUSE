@@ -1,7 +1,7 @@
 #
 # spec file for package python-versioneer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-versioneer
-Version:        0.18
+Version:        0.20
 Release:        0
 Summary:        VCS-based management of project version strings
 License:        SUSE-Public-Domain
 Group:          Development/Languages/Python
-Url:            https://github.com/warner/python-versioneer
+URL:            https://github.com/warner/python-versioneer
 Source:         https://files.pythonhosted.org/packages/source/v/versioneer/versioneer-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module testsuite}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post):   update-alternatives
-Requires(postun):  update-alternatives
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %python_subpackages
@@ -51,7 +52,7 @@ by asking the version control system about the current tree.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest -v test/test_file.py
 
 %post
 %python_install_alternative versioneer

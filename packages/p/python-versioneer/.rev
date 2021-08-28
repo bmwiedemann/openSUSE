@@ -23,4 +23,29 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659744</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca3df46875ee0a99a9292bc7c010246b</srcmd5>
+    <version>0.20</version>
+    <time>1630182572</time>
+    <user>dimstar_suse</user>
+    <comment>- Make testing more verbose
+- version update to 0.20
+  Release 0.20 (13-Jul-2020)
+  *  Respect versionfile_source in __init__.py snippet (#241)
+  *  Add pep440-branch and pep440-post-branch styles (#164)
+  *  Stop testing deprecated easy_install, support left in for now (#237)
+  *  Use versionfile_build instead of versionfile_source where needed (#242)
+  *  Improve handling of refname edge cases (#229)
+  *  Clarify installation in docs (#235)
+  *  Play nicely with custom build_exts (#232)
+  Release 0.19 (10-Nov-2020)
+  *  Drop support for Python &lt; 3.6, test up to Python 3.9
+  *  Strip GPG signature information from date (#222)
+  *  Add bdist_ext cmdclass, to support native code extensions (#171)
+  *  Canonicalize pep440-pre style (#163)
+  *  Take arguments to get_cmdclass
+- test the package a bit at least
+</comment>
+    <requestid>914758</requestid>
+  </revision>
 </revisionlist>
