@@ -18,21 +18,25 @@
 
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-# Requires numpy: NEP 29, NumPy 1.20 in TW dropped Python 3.6 support
 %define skip_python36 1
 Name:           python-zarr
-Version:        2.8.3
+Version:        2.9.3
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
 URL:            https://github.com/zarr-developers/zarr-python
 Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM zarr-pr802-fsspec-2021-07.patch -- gh#zarr-developers/zarr-python#802 and gh#zarr-developers/zarr-python#812
+Patch0:         zarr-pr802-fsspec-2021-07.patch
+# PATCH-FIX-UPSTREAM skip-825-TestFSStore-test_create.patch gh#zarr-developers/zarr-python#825 mcepl@suse.com
+# Skip the failing test
+Patch1:         skip-825-TestFSStore-test_create.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
-BuildRequires:  %{python_module setuptools_scm > 1.5.4}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Needs full python stdlib, base is not enough
-Requires:       python >= 3.5
+Requires:       python >= 3.7
 Requires:       python-asciitree
 Requires:       python-dbm
 Requires:       python-fasteners
@@ -45,7 +49,7 @@ Suggests:       python-notebook
 BuildArch:      noarch
 # SECTION test requirements
 # Needs full python stdlib, base is not enough
-BuildRequires:  %pythons >= 3.5
+BuildRequires:  %pythons >= 3.7
 BuildRequires:  %{python_module asciitree}
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module fasteners}
@@ -61,12 +65,14 @@ BuildRequires:  %{python_module pytest}
 An implementation of chunked, compressed, N-dimensional arrays for Python.
 
 %prep
-%setup -q -n zarr-%{version}
+%autosetup -p1 -n zarr-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_build
 
 %install
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 

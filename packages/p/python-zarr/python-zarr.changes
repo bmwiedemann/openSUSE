@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug 28 08:54:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.9.3:
+  - Mark the fact that some tests that require fsspec, without
+    compromising the code coverage score. By Ben Williams; #823.
+  - Only inspect alternate node type if desired isn’t
+    present. By Trevor Manz; #696.
+  - Correct conda-forge deployment of Zarr by fixing some Zarr
+    tests. By Ben Williams; #821.
+- Add skip-825-TestFSStore-test_create.patch
+  (gh#zarr-developers/zarr-python#825).
+
+-------------------------------------------------------------------
+Mon Aug 23 16:51:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.9.0
+  * This release of Zarr Python is the first release of Zarr to not
+    support Python 3.6.
+  * Update ABSStore for compatibility with newer azure.storage.
+    blob.
+  * Pathlib support.
+  * Fix dimension_separator support.
+  * Extract ABSStore to zarr._storage.absstore.
+  * TST: add missing assert in test_hexdigest.
+- Add zarr-pr802-fsspec-2021-07.patch
+  * gh#zarr-developers/zarr-python#802
+  * gh#zarr-developers/zarr-python#812
+
+-------------------------------------------------------------------
 Fri Jul 16 15:07:21 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to v2.8.3
