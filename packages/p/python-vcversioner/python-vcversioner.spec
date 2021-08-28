@@ -1,7 +1,7 @@
 #
 # spec file for package python-vcversioner
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,17 @@ License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/habnabit/vcversioner
 Source0:        https://files.pythonhosted.org/packages/source/v/vcversioner/vcversioner-%{version}.tar.gz
+# https://github.com/habnabit/vcversioner/issues/13
 Source1:        https://raw.githubusercontent.com/habnabit/vcversioner/%{version}/COPYING
+# https://github.com/habnabit/vcversioner/issues/13
+Source2:        https://raw.githubusercontent.com/habnabit/vcversioner/%{version}/test_vcversioner.py
 Source9:        %{name}-rpmlintrc
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+# /SECTION
 BuildArch:      noarch
 %python_subpackages
 
@@ -40,7 +46,7 @@ VCS tag and extract a version from it.
 
 %prep
 %setup -q -n vcversioner-%{version}
-cp %{SOURCE1} .
+cp %{SOURCE1} %{SOURCE2} .
 
 %build
 %python_build
@@ -50,7 +56,7 @@ cp %{SOURCE1} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pytest -v
 
 %files %{python_files}
 %license COPYING
