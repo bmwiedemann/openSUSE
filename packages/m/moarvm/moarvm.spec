@@ -19,7 +19,7 @@
 %global mvrel 2021.08
 Name:           moarvm
 Version:        %mvrel
-Release:        3.1
+Release:        4.1
 Summary:        A virtual machine built especially for Rakudo Perl 6
 License:        Artistic-2.0
 Group:          Development/Libraries/Other
@@ -28,6 +28,7 @@ Source:         http://moarvm.org/releases/MoarVM-%{mvrel}.tar.gz
 # PATCH-FIX-OPENSUSE boo#1100677
 Patch0:         reproducible.patch
 Patch1:         moarvm-fix-memory-leak.diff
+Patch2:         moarvm-fix-segfaults-in-native-callbacks.diff
 BuildRequires:  perl(ExtUtils::Command)
 
 %description
@@ -48,6 +49,7 @@ MoarVM (Metamodel On A Runtime) development headers.
 %setup -q -n MoarVM-%{mvrel}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 perl Configure.pl --prefix=%{_usr} --libdir=%{_libdir} --debug --optimize=3

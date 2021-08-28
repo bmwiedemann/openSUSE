@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 28 10:25:42 UTC 2021 - Stefan Seifert <nine@detonation.org>
+
+- Backport a fix for segfaults in NativeCall callbacks from moarvm master
+  Add moarvm-fix-segfaults-in-native-callbacks.diff to be removed on the next release
+
+-------------------------------------------------------------------
 Fri Aug 27 09:29:23 UTC 2021 - Stefan Seifert <nine@detonation.org>
 
 - Backport a memory leak fix from moarvm master

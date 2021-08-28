@@ -1,0 +1,54 @@
+commit 7a385a3506cd771ed49715399fbf526bc3ffbd4d
+Author: Stefan Seifert <nine@detonation.org>
+Date:   Fri Aug 27 14:16:07 2021 +0200
+
+    Fix possible access to fromspace in NativeCall callbacks
+    
+    An untimely garbage collection between setting the result object in the
+    callback and unmarshalling of that result object could lead to an outdated
+    pointer in res.o and further to segfaults and other nastiness.
+    Fix by adding res.o to the roots. Callbacks always return objects, so no
+    no special handling of primitive types necessary.
+
+diff --git a/src/core/nativecall_dyncall.c b/src/core/nativecall_dyncall.c
+index 742e53208..95247f0f2 100644
+--- a/src/core/nativecall_dyncall.c
++++ b/src/core/nativecall_dyncall.c
+@@ -232,7 +232,7 @@ static char callback_handler(DCCallback *cb, DCArgs *cb_args, DCValue *cb_result
+ 
+     /* Build a callsite and arguments buffer. */
+     args = MVM_malloc(data->num_types * sizeof(MVMRegister));
+-    num_roots = 0;
++    num_roots = 1; /* res.o is always in roots */
+     for (i = 1; i < data->num_types; i++) {
+         MVMObject *type     = data->types[i];
+         MVMint16   typeinfo = data->typeinfos[i];
+@@ -330,6 +330,7 @@ static char callback_handler(DCCallback *cb, DCArgs *cb_args, DCValue *cb_result
+ 
+     /* Call into a nested interpreter (since we already are in one). Need to
+      * save a bunch of state around each side of this. */
++    MVM_gc_root_temp_push(tc, (MVMCollectable **)&(res.o));
+     cid.invokee = data->target;
+     cid.args    = args;
+     cid.cs      = data->cs;
+diff --git a/src/core/nativecall_libffi.c b/src/core/nativecall_libffi.c
+index a14023930..dd4c7f1ae 100644
+--- a/src/core/nativecall_libffi.c
++++ b/src/core/nativecall_libffi.c
+@@ -230,7 +230,7 @@ static void callback_handler(ffi_cif *cif, void *cb_result, void **cb_args, void
+ 
+     /* Build a callsite and arguments buffer. */
+     args = MVM_malloc(data->num_types * sizeof(MVMRegister));
+-    num_roots = 0;
++    num_roots = 1; /* res.o is always in roots */
+     for (i = 1; i < data->num_types; i++) {
+         MVMObject *type     = data->types[i];
+         MVMint16   typeinfo = data->typeinfos[i];
+@@ -321,6 +321,7 @@ static void callback_handler(ffi_cif *cif, void *cb_result, void **cb_args, void
+ 
+     /* Call into a nested interpreter (since we already are in one). Need to
+      * save a bunch of state around each side of this. */
++    MVM_gc_root_temp_push(tc, (MVMCollectable **)&(res.o));
+     cid.invokee = data->target;
+     cid.args    = args;
+     cid.cs      = data->cs;
