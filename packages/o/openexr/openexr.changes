@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Mon Aug 16 14:41:56 UTC 2021 - pgajdos@suse.com
+
+- devel package obsoletes and provides ilmbase-devel
+
+-------------------------------------------------------------------
+Fri Aug 13 10:26:55 UTC 2021 - pgajdos@suse.com
+
+- run spec-cleaner
+
+-------------------------------------------------------------------
+Fri Aug 13 10:23:25 UTC 2021 - pgajdos@suse.com
+
+- fix baselibs.conf 
+- modified sources
+  % baselibs.conf
+
+-------------------------------------------------------------------
+Fri Aug 13 09:43:27 UTC 2021 - pgajdos@suse.com
+
+- version update to 3.1.1
+  3.1.1
+  * Patch release that fixes build failures on various systems,
+    introduces CMake CMAKE_CROSSCOMPILING_EMULATOR support, and
+    fixes a few other minor issues.
+  3.1
+  * The 3.1 release of OpenEXR introduces a new library, OpenEXRCore,
+    which is the result of a significant re-thinking of how OpenEXR
+    manages file I/O and provides access to image data. It begins
+    to address long-standing scalability issues with multithreaded
+    image reading and writing.
+  3.0.1
+  Major release with major build restructing, security improvements, and
+  new features:
+
+  * Restructuring:
+    - The IlmBase/PyIlmBase submodules have been separated into the
+      Imath project, now included by OpenEXR via a CMake submodule
+      dependency, fetched automatically via CMake's FetchContent if
+      necessary.
+    - The library is now called ``libOpenEXR`` (instead of
+      ``libIlmImf``).  No header files have been renamed, they retain
+      the ``Imf`` prefix.
+    - Symbol linkage visibility is limited to specific public symbols.
+
+  * Build improvements:
+    - No more simultaneous static/shared build option.
+    - Community-provided support for bazel.
+
+  * New Features:
+    - ID Manifest Attributes, as described in ["A Scheme for Storing
+      Object ID Manifests in OpenEXR
+      Images"](https://doi.org/10.1145/3233085.3233086), Peter Hillman,
+      DigiPro 18: Proceedings of the 8th Annual Digital Production
+      Symposium, August 2018.
+    - New program: exrcheck validates the contents of an EXR file.
+
+  * Changes:
+    - EXR files with no channels are no longer allowed.
+    - Hard limit on the size of deep tile sizes; tiles must be less than
+      2^30 pixels.
+    - Tiled DWAB files used STATIC_HUFFMAN compression.
+    - ``Int64`` and ``SInt64`` types are deprecated in favor of
+      ``uint64_t`` and ``int64_t``.
+    - Header files have been pruned of extraneous ``#include``'s
+      ("Include What You Use"), which may generate compiler errors in
+      application source code from undefined symbols or
+      partially-defined types. These can be resolved by identifying and
+      including the appropriate header.
+    - See the [porting
+      guide](https://github.com/AcademySoftwareFoundation/Imath/blob/master/docs/PortingGuide2-3.md)
+      for details about differences from previous releases and how to
+      address them.
+    - Also refer to the porting guide for details about changes to
+      Imath
+
+- deleted patches
+  - 0001-Use-absolute-CMAKE_INSTALL_FULL_LIBDIR-for-libdir-in.patch, renamed:
+- added patches
+  fix https://github.com/AcademySoftwareFoundation/openexr/issues/595
+  + openexr-pkgconfig-fix-libdir.patch
+- deleted sources
+  - _multibuild (not needed)
+- see CHANGES.md for details
+- deleted patches
+  - openexr-pkgconfig-fix-libdir.patch (upstreamed)
+
+-------------------------------------------------------------------
 Tue Aug  3 10:46:19 UTC 2021 - pgajdos@suse.com
 
 - version update to 2.5.7

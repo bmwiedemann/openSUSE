@@ -628,4 +628,41 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   - openexr-CVE-2021-3605.patch (upstreamed)</comment>
     <requestid>909953</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>db5545050b8546a2e4a034d9d6301ca5</srcmd5>
+    <version>3.1.1</version>
+    <time>1630182519</time>
+    <user>dimstar_suse</user>
+    <comment>- devel package obsoletes and provides ilmbase-devel
+
+- run spec-cleaner
+
+- fix baselibs.conf 
+- modified sources
+  % baselibs.conf
+
+- version update to 3.1.1
+  3.1.1
+  * Patch release that fixes build failures on various systems,
+    introduces CMake CMAKE_CROSSCOMPILING_EMULATOR support, and
+    fixes a few other minor issues.
+  3.1
+  * The 3.1 release of OpenEXR introduces a new library, OpenEXRCore,
+    which is the result of a significant re-thinking of how OpenEXR
+    manages file I/O and provides access to image data. It begins
+    to address long-standing scalability issues with multithreaded
+    image reading and writing.
+  3.0.1
+  Major release with major build restructing, security improvements, and
+  new features:
+  * Restructuring:
+    - The IlmBase/PyIlmBase submodules have been separated into the
+      Imath project, now included by OpenEXR via a CMake submodule
+      dependency, fetched automatically via CMake's FetchContent if
+      necessary.
+    - The library is now called ``libOpenEXR`` (instead of
+      ``libIlmImf``).  No header files have been renamed, they retain
+      the ``Imf`` prefix.</comment>
+    <requestid>912439</requestid>
+  </revision>
 </revisionlist>
