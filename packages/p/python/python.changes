@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Aug 26 15:35:10 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Renamed patch for assigned CVE:
+  * bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch ->
+    CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
+    (boo#1189241, CVE-2021-3737)
+
+-------------------------------------------------------------------
+Mon Aug 23 11:16:24 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Renamed patch for assigned CVE:
+  * bpo43075-fix-ReDoS-in-request.patch -> CVE-2021-3733-fix-ReDoS-in-request.patch
+    (boo#1189287, CVE-2021-3733)
+- Fix python-doc build (bpo#35293):
+  * sphinx-update-removed-function.patch
+- Update documentation formatting for Sphinx 3.0 (bpo#40204).
+
+-------------------------------------------------------------------
 Tue Aug 10 12:39:28 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add bpo43075-fix-ReDoS-in-request.patch which fixes ReDoS in

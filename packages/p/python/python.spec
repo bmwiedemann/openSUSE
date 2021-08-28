@@ -105,10 +105,12 @@ Patch61:        CVE-2021-3177-buf_ovrfl_PyCArg_repr.patch
 # PATCH-FIX-UPSTREAM CVE-2021-23336-only-amp-as-query-sep.patch bsc#[0-9]+ mcepl@suse.com
 # this patch makes things totally awesome
 Patch62:        CVE-2021-23336-only-amp-as-query-sep.patch
-# PATCH-FIX-UPSTREAM bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch boo#1189241 gh#python/cpython#25916
-Patch63:        bpo44022-fix-http-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
-# PATCH-FIX-UPSTREAM bpo43075-fix-ReDoS-in-request.patch boo#1189287 gh#python/cpython#24391
-Patch64:        bpo43075-fix-ReDoS-in-request.patch
+# PATCH-FIX-UPSTREAM CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP-100-Continue.patch boo#1189241 gh#python/cpython#25916
+Patch63:        CVE-2021-3737-fix-HTTP-client-infinite-line-reading-after-a-HTTP-100-Continue.patch
+# PATCH-FIX-UPSTREAM CVE-2021-3733-fix-ReDoS-in-request.patch boo#1189287 gh#python/cpython#24391
+Patch64:        CVE-2021-3733-fix-ReDoS-in-request.patch
+# PATCH-FIX-UPSTREAM sphinx-update-removed-function.patch bpo#35293 gh#python/cpython#22198 -- fix doc build
+Patch65:        sphinx-update-removed-function.patch
 # COMMON-PATCH-END
 BuildRequires:  automake
 BuildRequires:  db-devel
@@ -294,6 +296,7 @@ that rely on earlier non-verification behavior.
 %patch62 -p1
 %patch63 -p1
 %patch64 -p1
+%patch65 -p1
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
