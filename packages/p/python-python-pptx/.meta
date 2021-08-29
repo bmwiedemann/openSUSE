@@ -1,0 +1,5 @@
+<package name="python-python-pptx" project="openSUSE:Factory">
+  <title>python-python-pptx</title>
+  <description></description>
+  <devel project="devel:languages:python" package="python-python-pptx"/>
+</package>
