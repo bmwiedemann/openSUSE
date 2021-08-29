@@ -1,3 +1,6 @@
+Prefer: -python36-prometheus_client
+Prefer: -python38-prometheus_client
+Prefer: -python39-prometheus_client
 Prefer: libqca-qt5-2 qca-qt5-plugins
 # Workaround https://bugzilla.opensuse.org/show_bug.cgi?id=1125775#c9 - until firewalld is fixed
 Ignore: firewall-macros:firewalld
