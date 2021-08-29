@@ -1,7 +1,7 @@
 #
 # spec file for package powermanga
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,11 +20,10 @@ Name:           powermanga
 Version:        0.93.1
 Release:        0
 Summary:        Arcade 2D shoot-them-up game
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Games/Action/Arcade
-Url:            http://linux.tlk.fr/games/Powermanga/
+URL:            http://linux.tlk.fr/games/Powermanga/
 Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tgz
-Source1:        %{name}.sh
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -56,9 +55,6 @@ autoreconf -fi
 make %{?_smp_mflags} CFLAGS="%{optflags} -std=c99"
 
 %install
-# install wrapper
-install -Dm 0755 %{S:1} %{buildroot}%{_bindir}/%{name}
-
 # install executables and mans
 install -Dm 0755 src/%{name} %{buildroot}%{_libexecdir}/%{name}/%{name}
 install -Dm 0644 %{name}.6 %{buildroot}%{_mandir}/man6/%{name}.6
@@ -84,6 +80,16 @@ install -Dm 0644 %{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.de
 # install score
 mkdir -p %{buildroot}%{_localstatedir}/games/%{name}
 touch %{buildroot}%{_localstatedir}/games/%{name}/{powermanga.hi-easy,powermanga.hi,powermanga.hi-hard}
+
+# install wrapper
+mkdir -p %{buildroot}%{_bindir}
+cat > %{buildroot}%{_bindir}/%{name} << EOF
+#!/bin/sh
+
+cd %{_libexecdir}/powermanga
+exec ./powermanga "${@}"
+EOF
+chmod 0755 %{buildroot}%{_bindir}/%{name}
 
 %if 0%{?suse_version}
     %suse_update_desktop_file %{name}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 26 18:06:51 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- generate startup code dynamically to cope with libexec relocation
+
+-------------------------------------------------------------------
 Fri Apr  7 19:10:43 UTC 2017 - meissner@suse.com
 
 - own /var/games as filesystem no longer owns it
