@@ -2693,8 +2693,6 @@ unsorted:
   - deco 
   - deepin-account-faces 
   - deepin-api 
-  - deepin-api-dbus 
-  - deepin-api-polkit 
   - deepin-calculator 
   - deepin-calculator-lang 
   - deepin-calendar 
@@ -13480,7 +13478,7 @@ unsorted:
   - libsemanage-devel-static 
   - libsemanage2-32bit: [x86_64] 
   - libsemigroups-devel 
-  - libsemigroups1 
+  - libsemigroups2 
   - libsensors4-32bit: [x86_64] 
   - libsensors4-devel 
   - libsepol-devel 
@@ -23559,6 +23557,7 @@ unsorted:
   - python36-python-openid-teams 
   - python36-python-pam 
   - python36-python-poppler 
+  - python36-python-pptx 
   - python36-python-prctl 
   - python36-python-ptrace 
   - python36-python-qdatamatrix 
@@ -23960,6 +23959,8 @@ unsorted:
   - python36-three-merge 
   - python36-thrift 
   - python36-thriftpy2 
+  - python36-time-machine 
+  - python36-time-travel 
   - python36-timeout-decorator 
   - python36-tinycss2 
   - python36-tinydb 
@@ -26462,6 +26463,7 @@ unsorted:
   - python38-python-openid-teams 
   - python38-python-pam 
   - python38-python-poppler 
+  - python38-python-pptx 
   - python38-python-prctl 
   - python38-python-pseudorandom 
   - python38-python-ptrace 
@@ -26889,6 +26891,8 @@ unsorted:
   - python38-threevis 
   - python38-thriftpy2 
   - python38-tifffile 
+  - python38-time-machine 
+  - python38-time-travel 
   - python38-timeout-decorator 
   - python38-tinyarray 
   - python38-tinycss2 
@@ -29547,6 +29551,7 @@ unsorted:
   - python39-python-openid-teams 
   - python39-python-pam 
   - python39-python-poppler 
+  - python39-python-pptx 
   - python39-python-prctl 
   - python39-python-pseudorandom 
   - python39-python-ptrace 
@@ -30004,6 +30009,8 @@ unsorted:
   - python39-thrift 
   - python39-thriftpy2 
   - python39-tifffile 
+  - python39-time-machine 
+  - python39-time-travel 
   - python39-timeout-decorator 
   - python39-tinyarray 
   - python39-tinycss2 
