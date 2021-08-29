@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Fri Jul 30 08:23:35 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.3.1:
+ - Build universal2 wheels for Python 3.8 on macOS.
+- update to version 2.3.0:
+ - Allow passing ``tick`` to ``Coordinates.move_to()`` and the pytest fixture’s
+   ``time_machine.move_to()``. This allows freezing or unfreezing of time when
+   travelling.
+
+-------------------------------------------------------------------
+Sat Jul  3 13:17:35 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.2.0:
+ - Include type hints.
+ - Convert C module to use PEP 489 multi-phase extension module initialization.
+   This makes the module ready for Python sub-interpreters.
+ - Release now includes a universal2 wheel for Python 3.9 on macOS, to work on
+   Apple Silicon.
+ - Stop distributing tests to reduce package size. Tests are not intended to be
+   run outside of the tox setup in the repository. Repackagers can use GitHub's
+   tarballs per tag.
+
+-------------------------------------------------------------------
+Sat May 29 07:50:49 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- skip python2 to fix leap build
+- add missing group tag to fix leap build
+
+-------------------------------------------------------------------
+Tue May 25 11:43:44 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- initial package for version 2.1.0.

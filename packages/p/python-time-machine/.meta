@@ -1,0 +1,9 @@
+<package name="python-time-machine" project="openSUSE:Factory">
+  <title>Travel through time in your tests</title>
+  <description>This library mocks all functions from Python's standard library that return the current date or datetime.
+It can be used independently, as a function decorator, or as a context manager.
+
+</description>
+  <devel project="devel:languages:python" package="python-time-machine"/>
+  <url>https://github.com/adamchainz/time-machine</url>
+</package>
