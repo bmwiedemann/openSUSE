@@ -6880,7 +6880,6 @@ unsorted:
   - ikona 
   - ikvm 
   - ilbc-devel 
-  - ilmbase-devel 
   - ima-evm-utils-devel 
   - ima-inspect 
   - imageburner 
@@ -8663,7 +8662,6 @@ unsorted:
   - libHYPRE_2_20_0-gnu-openmpi2-hpc 
   - libHYPRE_2_20_0-gnu-openmpi3-hpc 
   - libHYPRE_2_20_0-gnu-openmpi4-hpc 
-  - libHalf-2_5-25-32bit: [x86_64] 
   - libHepMC3-1 
   - libHepMC4 
   - libICE-devel: [i586] # devel package of dvd:libICE6 
@@ -8673,15 +8671,8 @@ unsorted:
   - libIL1 
   - libIccXML-devel 
   - libIccXML2 
-  - libIex-2_5-25-32bit: [x86_64] 
-  - libIexMath-2_5-25 
-  - libIexMath-2_5-25-32bit: [x86_64] 
-  - libIlmImf-2_5-25-32bit: [x86_64] 
-  - libIlmImfUtil-2_5-25 
-  - libIlmImfUtil-2_5-25-32bit: [x86_64] 
-  - libIlmThread-2_5-25-32bit: [x86_64] 
-  - libImath-2_5-25-32bit: [x86_64] 
-  - libImath-3_1-29 
+  - libIex-3_1-30-32bit: [x86_64] 
+  - libIlmThread-3_1-30-32bit: [x86_64] 
   - libImath-3_1-29-32bit: [x86_64] 
   - libIrrlicht1_8 
   - libKDb3-4 
@@ -8840,6 +8831,10 @@ unsorted:
   - libOpenCOLLADASaxFrameworkLoader0_3 
   - libOpenCOLLADAStreamWriter0_3 
   - libOpenColorIO2_0 
+  - libOpenEXR-3_1-30-32bit: [x86_64] 
+  - libOpenEXRCore-3_1-30 
+  - libOpenEXRUtil-3_1-30 
+  - libOpenEXRUtil-3_1-30-32bit: [x86_64] 
   - libOpenIPMI0 
   - libOpenImageDenoise0: [x86_64] 
   - libOpenImageIO2_2 
@@ -15031,6 +15026,7 @@ unsorted:
   - lttng-ust-devel 
   - lttng-ust-doc 
   - lua-Hamliblua 
+  - lua-fennel 
   - lua-genders 
   - lua-language-server 
   - lua-libguestfs: [x86_64] 
@@ -22146,6 +22142,7 @@ unsorted:
   - python36-compat-patcher-core 
   - python36-compileall2 
   - python36-compizconfig 
+  - python36-compressed_rtf 
   - python36-concurrentloghandler 
   - python36-configobj 
   - python36-configshell-fb 
@@ -23214,6 +23211,7 @@ unsorted:
   - python36-progress 
   - python36-progressbar 
   - python36-progressbar2 
+  - python36-prometheus-client 
   - python36-prometheus_client 
   - python36-promise 
   - python36-prompt_toolkit 
@@ -24961,6 +24959,7 @@ unsorted:
   - python38-compat-patcher-core 
   - python38-compileall2 
   - python38-compizconfig 
+  - python38-compressed_rtf 
   - python38-concurrentloghandler 
   - python38-configshell-fb 
   - python38-confluent-kafka 
@@ -26112,6 +26111,7 @@ unsorted:
   - python38-progress 
   - python38-progressbar 
   - python38-progressbar2 
+  - python38-prometheus-client 
   - python38-prometheus_client 
   - python38-promise 
   - python38-prompt_toolkit 
@@ -27944,6 +27944,7 @@ unsorted:
   - python39-compat-patcher-core 
   - python39-compileall2 
   - python39-compizconfig 
+  - python39-compressed_rtf 
   - python39-concurrentloghandler 
   - python39-configobj 
   - python39-configshell-fb 
@@ -29168,6 +29169,7 @@ unsorted:
   - python39-progress 
   - python39-progressbar 
   - python39-progressbar2 
+  - python39-prometheus-client 
   - python39-prometheus_client 
   - python39-promise 
   - python39-prompt_toolkit 
