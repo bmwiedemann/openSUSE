@@ -57,10 +57,10 @@ BuildRequires:  python-rpm-macros
 Requires:       %{name}-common = %{version}
 Provides:       python-%{mname} = %{version}-%{release}
 Provides:       python-sip(api) = %{python_sip_api}
-Obsoletes:      python-%{mname} < %{version}-%{release}
+Obsoletes:      python-%{mname} < %{version}
 %ifpython2
 Provides:       %{oldpython}-%{mname} = %{version}-%{release}
-Obsoletes:      %{oldpython}-%{mname} < %{version}-%{release}
+Obsoletes:      %{oldpython}-%{mname} < %{version}
 %endif
 %if %{with pyqt5_module}
 Conflicts:      python-qt5-sip
@@ -86,13 +86,13 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-%{mname}-bin = %{version}-%{release}
 Provides:       python-%{mname}-devel = %{version}-%{release}
-Obsoletes:      python-%{mname}-bin < %{version}-%{release}
-Obsoletes:      python-%{mname}-devel < %{version}-%{release}
+Obsoletes:      python-%{mname}-bin < %{version}
+Obsoletes:      python-%{mname}-devel < %{version}
 %ifpython2
 Provides:       %{oldpython}-%{mname}-bin = %{version}-%{release}
 Provides:       %{oldpython}-%{mname}-devel = %{version}-%{release}
-Obsoletes:      %{oldpython}-%{mname}-bin < %{version}-%{release}
-Obsoletes:      %{oldpython}-%{mname}-devel < %{version}-%{release}
+Obsoletes:      %{oldpython}-%{mname}-bin < %{version}
+Obsoletes:      %{oldpython}-%{mname}-devel < %{version}
 %endif
 
 %description devel

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 29 18:36:46 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Obsolete without the version release because the metapackage
+  can have a lower one.
+
+-------------------------------------------------------------------
 Mon Jul  5 22:28:42 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - compile even when older python-rpm-macros don't have the
