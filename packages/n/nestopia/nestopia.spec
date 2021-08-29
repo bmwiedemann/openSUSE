@@ -18,7 +18,7 @@
 
 
 Name:           nestopia
-Version:        1.51.0
+Version:        1.51.1
 Release:        0
 Summary:        Nintendo Entertainment System/Famicom emulator
 License:        GPL-2.0-or-later
