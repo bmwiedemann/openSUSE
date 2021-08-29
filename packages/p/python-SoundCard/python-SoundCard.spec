@@ -22,7 +22,7 @@
 %define         skip_python36 1
 %endif
 Name:           python-SoundCard
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Python package to play and record audio
 License:        BSD-3-Clause

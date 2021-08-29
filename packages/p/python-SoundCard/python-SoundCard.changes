@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 25 08:51:57 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.1:
+  * fixes freezing bug on Linux during startup
+  * improves error reporting on Linux
+  * fixes crash due to use-after-free on Linux
+  * fixes unicode error on Windows
+
+-------------------------------------------------------------------
 Fri Feb 26 11:08:45 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Do not build the python36 flavor on TW since numpy is a build
