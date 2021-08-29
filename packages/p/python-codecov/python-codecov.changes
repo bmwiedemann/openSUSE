@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 24 13:53:55 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.1.12
+  - Add Cirrus CI
+  - Bump coverage from 5.3 to 5.3.1
+  - Bump coverage from 5.3.1 to 5.4
+  - Bump coverage from 5.4 to 5.5
+  - Upgrade to GitHub-native Dependabot
+- from version 2.1.11
+  - Added option to disable printing of gcov-out
+  - Handle exceptions that don't have a returncode
+  - Update to Python 3.9
+- from version 2.1.10
+  - Output elapsed time with S3 upload
+  - Improve error reporting in the "try_run" function and correctly
+    include original command output in the error message
+  - Added sleep between upload retries.
+  - Ignore emacs lisp files
+  - Fix error try_to_run using | without shell=True (fix #284)
+  - Bump coverage from 4.5.4 to 5.2.1
+  - Update python versions
+  - Add license scan report and status
+  - Update README with accurate links
+  - Bump coverage from 5.2.1 to 5.3
+
+-------------------------------------------------------------------
 Thu Sep 17 06:50:15 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.1.9:
