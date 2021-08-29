@@ -17,15 +17,13 @@
 
 
 Name:           deepin-feature-enable
-Version:        1.0
+Version:        1.1
 Release:        0
 Summary:        Deepin Features installer
 License:        WTFPL
 Group:          System/GUI/Other
 Url:            https://github.com/linuxdeepin
 Source0:        %{name}.in
-Requires:       deepin-api-dbus
-Requires:       deepin-api-polkit
 Requires:       deepin-daemon-dbus
 Requires:       deepin-daemon-polkit
 Recommends:     deepin-file-manager-dbus

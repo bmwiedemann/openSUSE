@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Aug 28 14:45:01 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.1
+  * Fix a security issue, change temp dir to /root/.cache.
+  * Drop deepin-api profiles installation. fix boo#1070943 
+
+-------------------------------------------------------------------
 Tue Apr 27 12:05:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Initial package for version 1.0 
