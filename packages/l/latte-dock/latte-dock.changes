@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 25 20:13:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.1
+  * fix autostart crash: do not show settings dialog too early
+    (kde#440731)
+  * fix build for Fedora (kde#440759)
+  * specify product name in KAboutData to receive bug reports
+    correctly at kde bug tracker
+
+-------------------------------------------------------------------
 Tue Aug 10 07:34:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Exclude private QML requires
