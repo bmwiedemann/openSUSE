@@ -27,4 +27,12 @@
   * Update test modules (forwarded request 910693 from hillwood)</comment>
     <requestid>910910</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>547b169399e3f2fe86077d34c7a1cb5e</srcmd5>
+    <version>5.4.9</version>
+    <time>1630265643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914865</requestid>
+  </revision>
 </revisionlist>

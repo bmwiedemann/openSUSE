@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 17 15:05:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix boo#1070943, drop deepin-api-dbus-installer and deepin-api-polkit-installer 
+
+-------------------------------------------------------------------
 Fri Jul 23 13:38:29 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.4.9
