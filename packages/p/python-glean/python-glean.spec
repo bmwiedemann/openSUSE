@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-glean
-Version:        1.18.2
+Version:        1.19.0
 Release:        0
 Summary:        Program to write static config from config-drive
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://www.openstack.org/
+URL:            https://opendev.org/opendev/glean
 Source:         https://files.pythonhosted.org/packages/source/g/glean/glean-%{version}.tar.gz
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module setuptools}

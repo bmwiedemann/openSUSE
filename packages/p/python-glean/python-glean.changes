@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Aug 25 10:08:30 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * Fix a typo in a log message
+  * Do not require external mock on Python 3
+  * Add Python 3.6 to supported versions
+  * Allow disabling DHCP fallback
+  * Override NetworkManager to wait for udev-settle
+  * Reduce metadata read/parsing overhead
+  * Run glean fewer times in glean.sh
+- Update homepage in URL field
+
+-------------------------------------------------------------------
 Thu Feb  4 18:39:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.18.2
