@@ -17,8 +17,8 @@
 
 
 Name:           libsemigroups
-%define lname	libsemigroups1
-Version:        1.3.6
+%define lname	libsemigroups2
+Version:        2.0.1
 Release:        0
 Summary:        Library with algorithms for computing finite and finitely presented semigroups
 License:        GPL-3.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig(eigen3)
 
 %description
-A C++11 library containing implementations of several algorithms for
+A C++14 library containing implementations of several algorithms for
 computing finite and finitely presented semigroups.
 
 %package -n %lname
@@ -39,7 +39,7 @@ Summary:        Library with algorithms for computing finite and finitely presen
 Group:          System/Libraries
 
 %description -n %lname
-A C++11 library containing implementations of several algorithms for
+A C++14 library containing implementations of several algorithms for
 computing finite and finitely presented semigroups, namely:
 
   * the Froidure-Pin algorithm for computing finite semigroups
@@ -53,7 +53,7 @@ Group:          Development/Libraries/C and C++
 Requires:       %lname = %version
 
 %description devel
-A C++11 library containing implementations of several algorithms for
+A C++14 library containing implementations of several algorithms for
 computing finite and finitely presented semigroups, namely.
 
 This subpackage provides the development headers for it.
@@ -78,7 +78,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %postun -n %lname -p /sbin/ldconfig
 
 %files -n %lname
-%_libdir/libsemigroups.so.1*
+%_libdir/libsemigroups.so.2*
 
 %files devel
 %_includedir/libsemigroups/
