@@ -1,6 +1,6 @@
 #!/bin/bash
 # Name: Deepin DBus profiles installer
-# Version: 1.0
+# Version: 1.1
 # Description: On openSUSE, deepin-daemon does not install dbus profiles by default
 # for security. The tool can help users to install these profiles for getting the
 # full features of Deepin Desktop, if user does not care security.
@@ -36,7 +36,7 @@ if [ "$ANSWER" = "n" ] || [ "$ANSWER" = "N" ] || [ "$ANSWER" = "no" ] || [ "$ANS
     exit 1
 fi
 
-SYSTEM_TMP=/tmp
+SYSTEM_TMP=/root/.cache
 TMP_DIR=$SYSTEM_TMP/deepin-daemon-dbus
 
 pushd /usr/share/dbus-1/system.d/ &>/dev/null

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 28 14:32:55 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix a security issue for deepin-daemon-dbus-installer and 
+  deepin-daemon-polkit-installer.in, change tmp dir to /root/.cache
+
+-------------------------------------------------------------------
 Sat Jul 24 07:59:10 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.13.36
