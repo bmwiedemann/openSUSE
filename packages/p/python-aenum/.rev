@@ -55,4 +55,20 @@ https://build.opensuse.org/request/show/612101</comment>
 - Update URL now that bitbucket is dead.</comment>
     <requestid>884804</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fcef0514264b335e17e8ccf631ccace0</srcmd5>
+    <version>3.1.0</version>
+    <time>1630265634</time>
+    <user>dimstar_suse</user>
+    <comment>- Convert test script into proper unittest module and then skip
+  failing tests (gh#ethanfurman/aenum#12):
+  - tempdir_missing.patch
+  - skip_failing_testcases.patch
+- Update to 3.1.0:
+  * redo EnumConstants
+  * add `__set_name__` to `constant`
+  * add new test; make re strings raw
+</comment>
+    <requestid>914827</requestid>
+  </revision>
 </revisionlist>

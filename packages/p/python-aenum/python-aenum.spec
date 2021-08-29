@@ -18,12 +18,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-aenum
-Version:        3.0.0
+Version:        3.1.0
 Release:        0
 Summary:        Advanced Enumerations, NamedTuples, and NamedConstants
 License:        BSD-3-Clause
 URL:            https://github.com/ethanfurman/aenum
 Source:         https://files.pythonhosted.org/packages/source/a/aenum/aenum-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tempdir_missing.patch gh#ethanfurman/aenum#12 mcepl@suse.com
+# Make test file into a proper one.
+Patch0:         tempdir_missing.patch
+# PATCH-FIX-UPSTREAM skip_failing_testcases.patch gh#ethanfurman/aenum#12 mcepl@suse.com
+# Skip failing tests
+Patch1:         skip_failing_testcases.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -56,7 +62,7 @@ all other Enum capabilities, however; consequently, it can have
 duplicate values.
 
 %prep
-%setup -q -n aenum-%{version}
+%autosetup -p1 -n aenum-%{version}
 
 %build
 %python_build
@@ -66,11 +72,8 @@ duplicate values.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PYTHONDONTWRITEBYTECODE=1
 export LANG=en_US.UTF-8
-%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
-$python -B aenum/test.py
-}
+%pyunittest -v aenum.test
 
 %files %{python_files}
 %doc README aenum/CHANGES aenum/doc/*
