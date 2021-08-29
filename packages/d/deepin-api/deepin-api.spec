@@ -29,8 +29,6 @@ License:        GPL-3.0+
 URL:            https://github.com/linuxdeepin/dde-api
 Source0:        https://github.com/linuxdeepin/dde-api/archive/%{version}/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        %{name}-dbus-installer.in
-Source3:        %{name}-polkit-installer.in
 Source99:       deepin-api-rpmlintrc
 # PATCH-FIX-OPENSUSE default-grub2-theme.patch hillwood@opensuse.org - Set openSUSE grub theme as default
 Patch0:         default-grub2-theme.patch
@@ -76,30 +74,6 @@ AutoReqProv:    Off
 %description
 The deepin-api is DDE API provides some dbus interfaces that is used for screen
 zone detecting, thumbnail generating, sound playing, etc.
-
-%package polkit
-Summary:        Deepin API polkit profiles
-License:        GPL-3.0+ and WTFPL
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
-AutoReqProv:    Off
-
-%description polkit
-This package provides polkit profiles for deepin-api. These profiles are not
-adopted by security team. If you need the polkit feature, you should install
-them manually or use deepin-polkit-install package.
-
-%package dbus
-Summary:        Deepin API DBus profiles
-License:        GPL-3.0+ and WTFPL
-Requires:       %{name} = %{version}-%{release}
-BuildArch:      noarch
-AutoReqProv:    Off
-
-%description dbus
-This package provides dbus profiles for deepin-api. These profiles are not
-adopted by security team. If you need the dbus feature, you should install
-them manually or use deepin-dbus-install package.
 
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        DDE API golang codes
@@ -167,36 +141,21 @@ install -m0644 thumbnails/pdf/*.c %{buildroot}%{go_contribsrcdir}/%{import_path}
 mkdir -p out/bin/
 mv %{buildroot}%{_bindir}/* out/bin/
 %make_install SYSTEMD_SERVICE_DIR=%{_unitdir}
-install -Dm755 %{SOURCE2} %{buildroot}%{_bindir}/%{name}-dbus-installer
-install -Dm755 %{SOURCE3} %{buildroot}%{_bindir}/%{name}-polkit-installer
 
 install -d %{buildroot}%{_sbindir}
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdeepin-shutdown-sound
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rcdeepin-login-sound
 
-install -d %{buildroot}%{_datadir}/dde-api/
-# File all polkit profiles, workaround boo#1070943
-mkdir polkit
-mv %{buildroot}%{_datadir}/polkit-1/actions/* polkit/
-tar -cvf polkit.tar.gz polkit
-install -m 0644 polkit.tar.gz %{buildroot}%{_datadir}/dde-api/
-
-# File all dbus service profiles, workaround boo#1070943
-mkdir dbus
-mkdir dbus/system-services
-mkdir dbus/system.d
-mv %{buildroot}%{_datadir}/dbus-1/system-services/* dbus/system-services
-mv %{buildroot}%{_datadir}/dbus-1/system.d/* dbus/system.d
-tar -cvf dbus.tar.gz dbus
-install -m 0644 dbus.tar.gz %{buildroot}%{_datadir}/dde-api/
+# It requests an invali command in openSUSE, please use Yast2 to change locale
+rm %{buildroot}%{_datadir}/polkit-1/actions/com.deepin.api.locale-helper.policy
 
 %fdupes %{buildroot}
 
 %pre
-# getent group deepin-sound-player >/dev/null || %{_sbindir}/groupadd --system deepin-sound-player
-# getent passwd deepin-sound-player >/dev/null || %{_sbindir}/useradd --system -c "deepin-sound-player User" \
-#         -d %{_localstatedir}/deepin-sound-player -m -g deepin-sound-player -s %{_sbindir}/nologin \
-#         -G audio deepin-sound-player
+getent group deepin-sound-player >/dev/null || %{_sbindir}/groupadd --system deepin-sound-player
+getent passwd deepin-sound-player >/dev/null || %{_sbindir}/useradd --system -c "deepin-sound-player User" \
+         -d %{_localstatedir}/deepin-sound-player -m -g deepin-sound-player -s %{_sbindir}/nologin \
+         -G audio deepin-sound-player
 %service_add_pre deepin-shutdown-sound.service deepin-login-sound.service
 
 %post
@@ -207,11 +166,7 @@ install -m 0644 dbus.tar.gz %{buildroot}%{_datadir}/dde-api/
 
 %postun
 %service_del_postun deepin-shutdown-sound.service deepin-login-sound.service
-if [ $1 -eq 0 ]; then
-    rm -f /usr/share/polkit-1/actions/com.deepin.api*
-    rm -f /usr/share/dbus-1/system.d/com.deepin.api*
-    rm -f /usr/share/dbus-1/system-services/com.deepin.api*
-fi
+
 
 %files
 %doc README.md
@@ -225,24 +180,17 @@ fi
 %{_datadir}/dde-api
 %exclude %{_datadir}/dde-api/*.tar.gz
 %{_datadir}/dbus-1/services/*.service
-# %{_datadir}/dbus-1/system-services/*.service
-# %dir %{_datadir}/dbus-1/system.d/
-# %{_datadir}/dbus-1/system.d/*.conf
+%{_datadir}/dbus-1/system-services/*.service
+%dir %{_datadir}/dbus-1/system.d/
+%{_datadir}/dbus-1/system.d/*.conf
 %{_datadir}/icons/hicolor/*/actions/*
-# %{_datadir}/polkit-1/actions/*.policy
+%{_datadir}/polkit-1/actions/*.policy
 %{_prefix}/lib/deepin-api
 %dir /var/lib/polkit-1
 %dir /var/lib/polkit-1/localauthority
 %dir /var/lib/polkit-1/localauthority/10-vendor.d
 /var/lib/polkit-1/localauthority/10-vendor.d/com.deepin.api.device.pkla
 
-%files polkit
-%{_bindir}/deepin-api-polkit-installer
-%{_datadir}/dde-api/polkit.tar.gz
-
-%files dbus
-%{_bindir}/deepin-api-dbus-installer
-%{_datadir}/dde-api/dbus.tar.gz
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
 
