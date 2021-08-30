@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 30 06:51:52 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Correct Require for python-GitPython and python-PyGithub. 
+
+-------------------------------------------------------------------
+Wed Aug 25 10:24:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.3.16
+  * Ensure local HEAD matches remote during upgrade (#36)
+  * Remove typing dependency - only required for Python <= 3.4 (#45)
+  * Include license file in sdist package (#47)
+  * Add default icon and color during Skill creation (#52)
+  * Improved category selection and display (#53)
+  * Improve PyPI listing info (#51)
+- from version 0.3.15
+  * Switch Github authentication to utilize Personal Access Tokens as the
+    existing username and password method is being deprecated.
+  * Fix handling of --repo-cache argument.
+  * Query for name and e-mail if missing.
+- Update Requires in setup.py
+
+-------------------------------------------------------------------
 Mon May 25 06:50:52 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

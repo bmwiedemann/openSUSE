@@ -1,7 +1,7 @@
 #
 # spec file for package python-msk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-msk
-Version:        0.3.14
+Version:        0.3.16
 Release:        0
 Summary:        Mycroft Skills Kit
 License:        Apache-2.0
@@ -30,11 +30,11 @@ Source99:       https://raw.githubusercontent.com/MycroftAI/mycroft-skills-kit/m
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-GitPython
+Requires:       python-GitPython >= 3.0.5
 Requires:       python-PyGithub
 Requires:       python-msm >= 0.5.13
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %ifpython2
 Requires:       python-typing

@@ -47,4 +47,26 @@
     <comment></comment>
     <requestid>808672</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c545544948db1a51f8268352fb0beb0b</srcmd5>
+    <version>0.3.16</version>
+    <time>1630324513</time>
+    <user>dimstar_suse</user>
+    <comment>- Correct Require for python-GitPython and python-PyGithub. 
+
+- Update to version 0.3.16
+  * Ensure local HEAD matches remote during upgrade (#36)
+  * Remove typing dependency - only required for Python &lt;= 3.4 (#45)
+  * Include license file in sdist package (#47)
+  * Add default icon and color during Skill creation (#52)
+  * Improved category selection and display (#53)
+  * Improve PyPI listing info (#51)
+- from version 0.3.15
+  * Switch Github authentication to utilize Personal Access Tokens as the
+    existing username and password method is being deprecated.
+  * Fix handling of --repo-cache argument.
+  * Query for name and e-mail if missing.
+- Update Requires in setup.py</comment>
+    <requestid>914946</requestid>
+  </revision>
 </revisionlist>
