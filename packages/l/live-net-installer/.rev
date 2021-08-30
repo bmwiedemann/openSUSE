@@ -146,4 +146,13 @@
     <comment>- Prevent deletion of /run/utmp (boo#1187971)</comment>
     <requestid>904607</requestid>
   </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>88e3b43da4e43718ce326043e462f9f9</srcmd5>
+    <version>1.0</version>
+    <time>1630324515</time>
+    <user>dimstar_suse</user>
+    <comment>- Mount a tmpfs on repos.d to avoid influence on the running system
+  and duplicate repos in the target</comment>
+    <requestid>914908</requestid>
+  </revision>
 </revisionlist>

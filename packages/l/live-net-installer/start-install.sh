@@ -54,7 +54,10 @@ mountpoint -q /run/utmp || mount --bind /run/utmp /run/utmp
 
 # Run YaST in a separate mount namespace to avoid that it messes with the
 # running system.
-unshare -m /usr/lib/YaST2/startup/YaST2.call installation initial
+# Mount an empty tmpfs on top of repos.d inside. This avoids that YaST modifies
+# the running system's configuration, and also avoids that preexisting repos are
+# copied into the target system, causing duplicates.
+unshare -m sh -c 'mount -t tmpfs tmpfs /etc/zypp/repos.d && /usr/lib/YaST2/startup/YaST2.call installation initial'
 
 # YaST replaces this with a symlink into the destination, fix it up manually
 if [ -L /var/cache/zypp ]; then

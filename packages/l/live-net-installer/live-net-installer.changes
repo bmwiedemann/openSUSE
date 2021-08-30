@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 29 20:46:48 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Mount a tmpfs on repos.d to avoid influence on the running system
+  and duplicate repos in the target
+
+-------------------------------------------------------------------
 Wed Jul  7 14:40:54 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Prevent deletion of /run/utmp (boo#1187971)
