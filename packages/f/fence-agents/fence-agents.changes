@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 09:51:14 UTC 2021 - varkoly@suse.com
+
+- Update to version 4.10.0+git.1627556580.31443c15:
+  * fence_kubevirt: add --ssl-insecure parameter
+
+-------------------------------------------------------------------
 Thu Jul 29 05:53:12 UTC 2021 - varkoly@suse.com
 
 - Update to version 4.10.0+git.1626946937.8ade08b4:
