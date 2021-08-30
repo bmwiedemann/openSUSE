@@ -1,7 +1,7 @@
 #
 # spec file for package kakoune
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           kakoune
-Version:        2020.09.01
+Version:        2021.08.28
 Release:        0
 Summary:        A code editor heavily inspired by Vim
 License:        Unlicense
 Group:          Productivity/Text/Editors
 URL:            https://kakoune.org/
 Source:         https://github.com/mawww/kakoune/releases/download/v%{version}/kakoune-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-Add-missing-limits-includes.patch
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.0
@@ -43,7 +41,7 @@ It's faster as in less keystrokes, supports multiple selections and uses orthogo
 %build
 pushd src
 
-make %{?_smp_mflags} CXXFLAGS="%{optflags} -std=gnu++17"
+%make_build CXXFLAGS="%{optflags} -std=gnu++17"
 
 popd
 
@@ -69,5 +67,6 @@ popd
 %{_bindir}/kak
 %{_datadir}/kak
 %{_mandir}/man1/kak.1%{?ext_man}
+%{_libexecdir}/kak/
 
 %changelog

@@ -220,4 +220,25 @@
     <comment></comment>
     <requestid>898148</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>02c0b5dcd63415bee1772d09a41cbfd2</srcmd5>
+    <version>2021.08.28</version>
+    <time>1630324524</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2021.08.28:
+  * command and response fifo support
+  * Shell expansions only trim the last trailing newline instead of
+    all of them to make is possible to losslessly pass text through %sh{...}.
+  * set-option -remove support for subtracting/removing from option values
+  * Menu completions such as command name completion are now
+    auto-inserted on space
+  * write -atomic was replaced with write -method [replace|overwrite]
+    to make both write methods available explicitly
+  * write &lt;filename&gt; will fail if the given filename already exists
+    and is a regular file. Use the -force switch to override that behaviour.
+  * ncurses was replaced with a custom terminal escape sequence
+    backend, ncurses is not a dependency anymore.
+- Remove 0001-Add-missing-limits-includes.patch</comment>
+    <requestid>914969</requestid>
+  </revision>
 </revisionlist>

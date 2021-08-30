@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Aug 30 08:16:32 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2021.08.28:
+  * command and response fifo support
+  * Shell expansions only trim the last trailing newline instead of
+    all of them to make is possible to losslessly pass text through %sh{...}.
+  * set-option -remove support for subtracting/removing from option values
+  * Menu completions such as command name completion are now
+    auto-inserted on space
+  * write -atomic was replaced with write -method [replace|overwrite]
+    to make both write methods available explicitly
+  * write <filename> will fail if the given filename already exists
+    and is a regular file. Use the -force switch to override that behaviour.
+  * ncurses was replaced with a custom terminal escape sequence
+    backend, ncurses is not a dependency anymore.
+- Remove 0001-Add-missing-limits-includes.patch
+
+-------------------------------------------------------------------
 Tue Jun  1 10:45:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 compatibility fix:
