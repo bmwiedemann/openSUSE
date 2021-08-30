@@ -543,4 +543,15 @@
     <comment></comment>
     <requestid>911915</requestid>
   </revision>
+  <revision rev="69" vrev="3">
+    <srcmd5>8cef1b0006f2df47ab19dc134416360c</srcmd5>
+    <version>2020.0.0</version>
+    <time>1630324521</time>
+    <user>dimstar_suse</user>
+    <comment>* Add hugin-EGL-link-against-X11.patch: Link against X11 even when building with EGL support (https://bugs.launchpad.net/hugin/+bug/1938453).
+* Set up conditionals for building with EGL, but disable EGL support until glew bug is fixed (gh#nigels-com/glew#315).
+* Switch bcond_with to build with system flann: library is now available on all supported openSUSE versions.
+* Minor cleanup with spec-cleaner. (forwarded request 914704 from badshah400)</comment>
+    <requestid>914957</requestid>
+  </revision>
 </revisionlist>

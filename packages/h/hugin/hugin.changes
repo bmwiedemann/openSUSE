@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Aug 12 01:47:14 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add hugin-EGL-link-against-X11.patch: Link against X11 even when
+  building with EGL support
+  (https://bugs.launchpad.net/hugin/+bug/1938453).
+- Set up conditionals for building with EGL, but disable EGL
+  support until glew bug is fixed (gh#nigels-com/glew#315).
+- Switch bcond_with to build with system flann: library is now
+  available on all supported openSUSE versions.
+- Minor cleanup with spec-cleaner.
+
+-------------------------------------------------------------------
 Tue Aug 10 11:25:24 UTC 2021 - pgajdos@suse.com
 
 - build with OpenEXR 3

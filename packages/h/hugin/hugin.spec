@@ -16,44 +16,13 @@
 #
 
 
-%bcond_with hsi
-%bcond_with system_flann
-%bcond_without lapack
-
-Name:           hugin
-BuildRequires:  Mesa-devel
-BuildRequires:  OpenEXR-devel
-BuildRequires:  cmake >= 3.1.0
-BuildRequires:  desktop-file-utils
-BuildRequires:  exiftool
-BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_system-devel
-%if %{with system_flann}
-BuildRequires:  flann-devel
-%endif
-BuildRequires:  gcc-c++
-BuildRequires:  glew-devel
-%if %{with lapack}
-BuildRequires:  lapack-devel
-%endif
-BuildRequires:  libexiv2-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  liblcms2-devel
-BuildRequires:  libpano-devel >= 2.9.19
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-%if %{with hsi}
-BuildRequires:  python-wxWidgets >= 3
-BuildRequires:  swig
-%endif
-BuildRequires:  pkg-config
-BuildRequires:  sqlite3-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  vigra-devel
-BuildRequires:  wxGTK3-devel >= 3
 %define mversion 2020.0
+%bcond_with hsi
+%bcond_without system_flann
+%bcond_without lapack
+# Cannot use EGL unless glew bug https://github.com/nigels-com/glew/issues/315 is fixed
+%bcond_with egl
+Name:           hugin
 Version:        2020.0.0
 Release:        0
 Summary:        Toolchain for Stitching of Images and Creating Panoramas
@@ -64,11 +33,48 @@ Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}
 Patch0:         hugin.appdata.patch
 # https://src.fedoraproject.org/rpms/hugin/blob/rawhide/f/hugin-openexr3.patch
 Patch1:         hugin-openexr3.patch
+# PATCH-FIX-UPSTREAM hugin-EGL-link-against-X11.patch badshah400@gmail.com -- Link against X11 even when building with EGL support
+Patch2:         hugin-EGL-link-against-X11.patch
+BuildRequires:  Mesa-devel
+BuildRequires:  OpenEXR-devel
+BuildRequires:  cmake >= 3.1.0
+BuildRequires:  desktop-file-utils
+BuildRequires:  exiftool
+BuildRequires:  fdupes
+BuildRequires:  fftw3-devel
+BuildRequires:  gcc-c++
+BuildRequires:  glew-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_system-devel
+BuildRequires:  libexiv2-devel
+BuildRequires:  libjpeg-devel
+BuildRequires:  liblcms2-devel
+BuildRequires:  libpano-devel >= 2.9.19
+BuildRequires:  libpng-devel
+BuildRequires:  libtiff-devel
+BuildRequires:  pkgconfig
+BuildRequires:  sqlite3-devel
+BuildRequires:  update-desktop-files
+BuildRequires:  vigra-devel
+BuildRequires:  wxGTK3-devel >= 3.1.5
 Requires:       enblend-enfuse >= 3.2
 # needed for photo stiching (bnc#822775)
 Requires:       make
 Recommends:     autopano-sift-C
 Recommends:     exiftool
+%if %{with system_flann}
+BuildRequires:  flann-devel
+%endif
+%if %{with lapack}
+BuildRequires:  lapack-devel
+%endif
+%if %{with hsi}
+BuildRequires:  python-wxWidgets >= 3
+BuildRequires:  swig
+%endif
+%if %{with egl}
+BuildRequires:  pkgconfig(egl)
+%endif
 
 %description
 Hugin can be used to stitch multiple images together. The resulting
@@ -83,6 +89,7 @@ detection and extraction of key points.
 %setup -q
 %patch0
 %patch1 -p1
+%patch2 -p1
 
 chmod -x AUTHORS authors.txt Changes.txt README COPYING.txt
 
@@ -99,7 +106,8 @@ rm CMakeModules/FindZLIB.cmake
 	-DENABLE_LAPACK=%{?with_lapack:ON}%{!?with_lapack:OFF} \
 	-DBUILD_HSI=%{?with_hsi:ON}%{!?with_hsi:OFF} \
 	-DCMAKE_SKIP_RPATH:BOOL=OFF \
-        -DUSE_GDKBACKEND_X11:BOOL=ON
+	-DBUILD_WITH_EGL:BOOL=%{?with_egl:ON}%{!?with_egl:OFF} \
+        -DUSE_GDKBACKEND_X11:BOOL=%{?with_egl:OFF}%{!?with_egl:ON}
 
 %cmake_build
 
@@ -110,7 +118,7 @@ rm CMakeModules/FindZLIB.cmake
 %suse_update_desktop_file PTBatcherGUI 2DGraphics
 %suse_update_desktop_file calibrate_lens_gui 2DGraphics
 # locales
-%{find_lang} %{name}
+%find_lang %{name}
 
 # Use better place for MIME icon.
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/48x48/mimetypes
@@ -135,6 +143,6 @@ install -m644 -D -t %{buildroot}%{_licensedir}/hugin/ COPYING.txt
 %{_datadir}/metainfo/*xml
 %dir %{_libdir}/hugin
 %{_libdir}/hugin/*.so.*
-%doc %{_mandir}/man?/*.*
+%{_mandir}/man?/*.*
 
 %changelog
