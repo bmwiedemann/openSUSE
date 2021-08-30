@@ -1,7 +1,7 @@
 #
-# spec file for package python-apiron
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019 Dr. Axel Braun <DocB@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 %define modname apiron
 Name:           python-%{modname}
-Version:        5.1.0
+Version:        6.0.0.post1
 Release:        0
 Summary:        Apiron helps you cook a tasty client for RESTful APIs
 License:        MIT
