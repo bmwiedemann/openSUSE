@@ -1,12 +1,171 @@
 -------------------------------------------------------------------
+Fri Aug 27 07:45:01 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update package name for -M test.
+
+-------------------------------------------------------------------
+Thu Aug 26 12:15:55 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add test multibuild target and reduce BuildRequirements for rpmlint
+  package itself.
+
+-------------------------------------------------------------------
+Wed Aug 25 15:04:29 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to opensuse tip.
+
+-------------------------------------------------------------------
 Wed Aug 18 12:17:26 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - whitelist deepin-api D-Bus services (bsc#1070943)
 
 -------------------------------------------------------------------
+Wed Aug 18 08:22:54 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to version 2.1.
+
+-------------------------------------------------------------------
+Fri Aug  6 08:27:31 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Fix variable description expansion.
+
+-------------------------------------------------------------------
+Thu Aug  5 08:36:17 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Reduce Requirements for rpmlint-strict package.
+
+-------------------------------------------------------------------
 Wed Aug  4 07:49:04 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - whitelist oddjob-gpupdate PAM and D-Bus (bsc#1188680)
+
+-------------------------------------------------------------------
+Thu Jul 22 15:18:57 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to tip (adds --mini-mode argument).
+
+-------------------------------------------------------------------
+Thu Jul  1 09:13:59 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to tip (fix not working -i option).
+
+-------------------------------------------------------------------
+Tue Jun 29 13:42:36 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to tip.
+
+-------------------------------------------------------------------
+Tue Jun 29 11:08:11 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Make rpmlint-strict only a simple package with one config file.
+
+-------------------------------------------------------------------
+Tue Jun 29 09:58:21 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add Conflicts directive.
+
+-------------------------------------------------------------------
+Tue Jun 29 09:04:40 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use BuildIgnore: rpmlint-strict in order to fix boo#1187749.
+
+-------------------------------------------------------------------
+Fri Jun 25 07:21:40 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to tip.
+- Rename scoring-strict.toml to scoring-strict.override.toml in order
+  to use override mechanism.
+
+-------------------------------------------------------------------
+Thu Jun 24 09:31:43 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Removed legacy patches:
+  * extend-suse-conffiles-check.diff
+  * docdata-examples.diff
+  * devel-provide-is-devel-package.diff
+  * fix-diag-sortorder.diff
+  * check-for-self-provides.diff
+
+- Add disable-flake.patch patch.
+
+-------------------------------------------------------------------
+Thu Jun 24 09:02:17 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add rpmlint-strict sub-package that includes scoring-strict.toml.
+
+-------------------------------------------------------------------
+Thu Jun 24 08:49:39 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to tip: adds scoring-strict.toml config and BlockedFilters.
+
+-------------------------------------------------------------------
+Thu Jun 24 07:47:57 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump to tip, includes fix for Rust libraries.
+
+-------------------------------------------------------------------
+Thu Jun 17 08:26:05 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Install configs with 644.
+
+-------------------------------------------------------------------
+Thu May 27 10:52:32 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to Rpmlint 2.0:
+  * RPMLint now is a "normal" Python application and now supports being imported
+    like a standard Python module! This means that all the normal use-cases for
+    RPMLint are still supported, but now you can make it a part of larger Python-based
+    applications or services.
+  * RPMLint uses a declarative TOML-based syntax for configuring RPMLint policy
+    instead of Python code.
+  * RPMLint now has an override system for the descriptions shown for various checks,
+    so that distributions who want to give specific policy information can
+    do so without patching the code.
+  * RPMLint includes many more checks! Nearly all of the generally useful checks created
+    by the openSUSE community have been merged into the tree, so distributions can now
+    benefit from a wider offering of checks to implement policy enforcement.
+  * RPMLint is Python 3 only and now supports Python 3.6 and newer.
+  * RPMLint is now built and installed like a standard Python application using setuptools.
+
+- Removed legacy patches:
+  * invalid-filerequires.diff
+  * no-badness-return.diff
+  * no-doc-for-lib.diff
+  * only-reg-files-are-scripts.diff
+  * remove-ghostfile-checks.diff
+  * rpm415-workaround.diff
+  * rpmgroup-checks.diff
+  * rpmlint-suse.diff
+  * suse-binarieschecks.diff
+  * suse-checks.diff
+  * suse-filter-exception.diff
+  * suse-filter-more-verbose.diff
+  * suse-ignore-specfile-errors.diff
+  * suse-pkg-config-check.diff
+  * suse-python3-naming-policy.diff
+  * suse-shlib-devel-dependency.diff
+  * suse-skip-macro-expansion.diff
+  * suse-speccheck-utf8.diff
+  * suse-url-check.diff
+  * suse-version.diff
+  * yast-provides.diff
+  * 0001-ZipCheck-Also-ignore-RuntimeError.patch
+  * accept-licenses-with-plus.patch
+  * add-check-for-a-non-zero-.text-segment-in-.a-archive.patch
+  * rpmlint-slpp-NUM-NUM.patch
+  * rpmlint-tests-sle15.patch
+  * suse-rpmlint-all-pie.patch
+  * suse-spdx-license-exceptions.patch
+  * suse-tests-without-badness.patch
+
+- Removed config fileS:
+  * config
+  * licenses.config
+  * pie.config
+
+- Removed misc files: syntax-validator.py, README.packaging.txt,
+  rpmlint-1.11.tar.gz, rpmlint-checks-master.tar.xz and
+  rpmlint-tests-84.87+git20210226.d6b66e2.tar.xz.
 
 -------------------------------------------------------------------
 Fri May 21 14:08:38 UTC 2021 - Ludwig Nussel <lnussel@suse.de>

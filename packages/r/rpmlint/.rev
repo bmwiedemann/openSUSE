@@ -3174,4 +3174,41 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment>- whitelist deepin-api D-Bus services (bsc#1070943)</comment>
     <requestid>912901</requestid>
   </revision>
+  <revision rev="357" vrev="1">
+    <srcmd5>4ad66fbdf8a60329dcb3b5c4669c2e50</srcmd5>
+    <version>2.1+git20210826.0220428</version>
+    <time>1630324499</time>
+    <user>dimstar_suse</user>
+    <comment>- Update package name for -M test.
+
+- Add test multibuild target and reduce BuildRequirements for rpmlint
+  package itself.
+
+- Bump to opensuse tip.
+
+- Bump to version 2.1.
+
+- Fix variable description expansion.
+
+- Reduce Requirements for rpmlint-strict package.
+
+- Bump to tip (adds --mini-mode argument).
+
+- Bump to tip (fix not working -i option).
+
+- Bump to tip.
+
+- Make rpmlint-strict only a simple package with one config file.
+
+- Add Conflicts directive.
+
+- Use BuildIgnore: rpmlint-strict in order to fix boo#1187749.
+
+- Bump to tip.
+- Rename scoring-strict.toml to scoring-strict.override.toml in order
+  to use override mechanism.
+
+- Removed legacy patches:</comment>
+    <requestid>914534</requestid>
+  </revision>
 </revisionlist>
