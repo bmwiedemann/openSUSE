@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 30 10:13:06 UTC 2021 - pgajdos@suse.com
+
+- %check: setup.py test does not run any tests
+
+-------------------------------------------------------------------
 Sat Feb  9 16:46:18 UTC 2019 - mardnh@gmx.de
 
 - Update to version 0.4.7

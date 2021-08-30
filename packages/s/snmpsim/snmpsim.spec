@@ -1,7 +1,7 @@
 #
 # spec file for package snmpsim
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -71,9 +71,6 @@ mv %{buildroot}%{_bindir}/snmprec.py %{buildroot}%{_bindir}/snmprec
 mv %{buildroot}%{_bindir}/snmpsimd.py %{buildroot}%{_bindir}/snmpsimd
 
 %fdupes %{buildroot}%{python3_sitelib}
-
-%check
-python3 setup.py test
 
 %files
 %license LICENSE.txt
