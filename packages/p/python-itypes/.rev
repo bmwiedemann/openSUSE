@@ -7,4 +7,26 @@
     <comment></comment>
     <requestid>678911</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7289ea9efa4c53eb3f420f47f494d7bd</srcmd5>
+    <version>1.2.0</version>
+    <time>1630324507</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable tests (we need to get source tarball from GitHub
+  directly).
+- Update to version 1.2.0:
+  * adding long description content type text/markdown
+  * adding read func in setup.py
+  * removing python v3.3 support
+  * fix collections deprecation warning
+  * Create LICENSE.md
+  * Add Python 2/3 trove classifiers to setup.py
+  * Add support for running tests on Travis
+  * Add 'itypes.Object'
+  * Update README.md
+- Update to 1.2.0
+  * fix collections deprecation warning
+</comment>
+    <requestid>914895</requestid>
+  </revision>
 </revisionlist>

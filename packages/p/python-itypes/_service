@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/PavanTatikonda/itypes.git</param>
+    <param name="scm">git</param>
+    <param name="revision">1.2.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <!-- param name="versionrewrite-pattern">v(.*)</param -->
+    <param name="exclude">.git*</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled" />
+</services>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Aug 29 19:21:21 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Enable tests (we need to get source tarball from GitHub
+  directly).
+
+-------------------------------------------------------------------
+Sun Aug 29 19:18:05 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 1.2.0:
+  * adding long description content type text/markdown
+  * adding read func in setup.py
+  * removing python v3.3 support
+  * fix collections deprecation warning
+  * Create LICENSE.md
+  * Add Python 2/3 trove classifiers to setup.py
+  * Add support for running tests on Travis
+  * Add 'itypes.Object'
+  * Update README.md
+
+-------------------------------------------------------------------
+Wed Aug 25 10:16:51 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.2.0
+  * fix collections deprecation warning
+
+-------------------------------------------------------------------
 Mon Feb 25 12:46:09 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Cleanup with spec-cleaner

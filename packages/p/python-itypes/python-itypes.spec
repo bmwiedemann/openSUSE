@@ -1,7 +1,7 @@
 #
 # spec file for package python-itypes
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-itypes
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Basic immutable container types for Python
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/tomchristie/itypes
-Source:         https://files.pythonhosted.org/packages/source/i/itypes/itypes-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/tomchristie/itypes/master/LICENSE.md
+Source:         itypes-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,8 +41,7 @@ Use these in circumstances where it may result in more comprehensible code, or
 when you want to create custom types with restricted, immutable interfaces.
 
 %prep
-%setup -q -n itypes-%{version}
-cp %{SOURCE1} .
+%autosetup -p1 -n itypes-%{version}
 
 %build
 %python_build
@@ -50,6 +49,9 @@ cp %{SOURCE1} .
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest tests.py
 
 %files %{python_files}
 %license LICENSE.md
