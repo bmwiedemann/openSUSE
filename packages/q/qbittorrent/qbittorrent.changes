@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Aug 29 19:21:05 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.8
+  Bug fixes:
+  * Delay processing of watched folders 
+  * Use the same icon for selecting folders/files 
+  * Use default upper limits for ddns entries 
+  Web UI:
+  * Expose SSRF mitigation 
+  * Update webui libraries 
+  * Group trackers by hostname 
+  * Improve "last activity" calculation in WebAPI 
+
+-------------------------------------------------------------------
 Wed Aug  4 07:35:41 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.3.7
