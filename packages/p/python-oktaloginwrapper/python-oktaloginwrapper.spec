@@ -20,24 +20,25 @@
 Name:           python-oktaloginwrapper
 Version:        0.2.2
 Release:        0
-Summary:        Okta login made easy without API token
+Summary:        Okta login without API token
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/eliroca/OktaLoginWrapper
 Source:         https://github.com/eliroca/OktaLoginWrapper/archive/%{version}.tar.gz#/OktaLoginWrapper-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       python-lxml
 Requires:       python-requests
 BuildArch:      noarch
 %python_subpackages
 
 %description
-Provide an easy way for your scripts to access resources behind an Okta SSO solution, without the need for an API token.
+This modules provides a way for scripts to access resources behind
+an Okta SSO solution, without the need for an API token.
 
 %prep
-%setup -q -n OktaLoginWrapper-%{version}
+%autosetup -n OktaLoginWrapper-%{version}
 
 %build
 %python_build
