@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:42:49 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.44.1
+  * Support for generating recommended VM cluster networks in the Database service
+  * Support for creating VM cluster networks with a specified
+    listener port in the Database service
+- from version 2.44.0
+  * Support for getting management agent hosts which are eligible to create Operations
+    Insights host resources on, in the Operations Insights service
+  * Support for getting summarized agent counts and summarized plugin counts in the
+    Management Agent Cloud service
+  * Model `WorkSubmissionKey` was removed from Management Agent Cloud service
+  * Type for parameter `plugin_name` changed to `list[str]` from `str` in operation
+    `list_management_agent_plugins` in the Management Agent Cloud Service
+  * Type for parameter `version` changed to `list[str]` from `str` in operation
+    `list_management_agent_plugins` in the Management Agent Cloud Service
+  * Type for parameter `platform_type` changed to `list[str]` from `str` in operation
+    `list_management_agent_plugins` in the Management Agent Cloud Service
+- from version 2.43.2
+  * Support for manually copying volume group backups across regions
+    in the Block Volume service
+  * Support for work requests for the copy volume backup and copy boot volume
+    backup operations in the Block Volume service
+  * Support for specifying external Hive metastores during application
+    creation in the Data Flow service
+  * Support for changing the compartment of a backup in the MySQL Database service
+  * Support for model catalog features including provenance, metadata, schemas,
+    and artifact introspection in the Data Science service
+  * Support for Exadata system network bonding in the Database service
+  * Support for creating autonomous databases with early patching
+    enabled in the Database service
+
+-------------------------------------------------------------------
 Tue Aug  3 12:24:45 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.43.1
