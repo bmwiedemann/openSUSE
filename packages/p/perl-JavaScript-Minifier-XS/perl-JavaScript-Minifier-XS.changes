@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Feb  8 03:08:02 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.14
+   see /usr/share/doc/packages/perl-JavaScript-Minifier-XS/Changes
+
+  0.14      2021-02-06 23:36:36-08:00 America/Vancouver
+      - rewrote test suite into a single ".t" test
+      - optimized memory allocations, by allocating Nodes in bulk, and being
+        smarter about when we need to free/reallocate content buffers in Nodes
+      - optimize whitespace collapsing
+      - GH#3 / RT#108682; fix whitespace reduction at end of preserved line
+        comment.  Thanks to Dan Goodliffe
+      - GH#6; fix unescaped slash in character set, inside of a regex, with thanks
+        to @faf
+
+  0.13      2020-12-30 21:46:29-08:00 America/Vancouver
+      - POD cleanups; spelling, SYNOPSIS
+      - Switch to DZil Author Bundle
+
+  0.12      2020-12-28 08:31:31-08:00 America/Vancouver
+      - Switch to GitHub Actions, from Travis-CI.
+      - Add META links to GitHub repository and issue tracker
+      - Switch to Dist::Zilla
+      - Bump minimum required Perl to 5.8.1
+      - RT #130347; handle ES6 template literals.
+        Thanks to Robert Rothenberg.
+
+-------------------------------------------------------------------
 Thu Apr  9 18:51:44 UTC 2015 - coolo@suse.com
 
 - translate module::build's version to what rpm understands
