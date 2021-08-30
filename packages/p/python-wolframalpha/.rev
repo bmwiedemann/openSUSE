@@ -15,4 +15,53 @@
     <comment></comment>
     <requestid>660763</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e926fea8e09fa58336ca42b89f25e04b</srcmd5>
+    <version>5.0.0</version>
+    <time>1630324506</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix name of the python-more-itertools package.
+- version update to 5.0.0
+  v5.0.0
+  ======
+  * Rewrote object model to load objects more automatically.
+    API is mostly compatible, but there may be some rare
+    uses that may need some adjustment. In particular,
+    access to 'children' properties ('pods', 'subpods',
+    'assumptions', 'warnings') are exposed as loaded through
+    their singular names (without transforms or defaults) but
+    exposed as iterable (empty by default) through the plural
+    names.
+  v4.3.1
+  ======
+  * Fixed implementation flaw in ``Results.details``.
+  * Test coverage is now 100%.
+  v4.3.0
+  ======
+  * Added ``Client.from_env()`` to initialize a client loading the
+    API key from the keyring or environment.
+  * #13: ``Result`` objects now resolve as False and return empty
+    ``info`` and ``pods`` attributes when query was unsuccessful.
+  v4.2.0
+  ======
+  * #28: Adapt to support API change from ``.plainText`` to
+    ``.plaintext``.
+  * Moved usage guide to source and published through the docs
+    and validate the usage with doctests.
+  v4.1.1
+  ======
+  * #26: Fix error when ``always_iterable`` recognizes a dict
+    as a list of keys.
+  v4.1.0
+  ======
+  * #21: Adapt to support API change from ``.text`` to ``.plainText``.
+  * Refreshed package metadata.
+  v4.0.0
+  ======
+  * Require Python 3.6 or later.
+- test the package
+                              
+</comment>
+    <requestid>914989</requestid>
+  </revision>
 </revisionlist>

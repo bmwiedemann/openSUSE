@@ -1,7 +1,7 @@
 #
 # spec file for package python-wolframalpha
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,33 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_with test
 Name:           python-wolframalpha
-Version:        3.0.1
+Version:        5.0.0
 Release:        0
-License:        MIT
 Summary:        WolframAlpha 2.0 API client
-Url:            https://github.com/jaraco/wolframalpha
+License:        MIT
 Group:          Development/Languages/Python
+URL:            https://github.com/jaraco/wolframalpha
 Source:         https://files.pythonhosted.org/packages/source/w/wolframalpha/wolframalpha-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module setuptools_scm >= 1.9}
-%if %{with test}
-BuildRequires:  %{python_module jaraco.itertools >= 2.0}
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module xmltodict}
-%endif
-# SECTION test requirements
-%if %{with test}
-BuildRequires:  %{python_module pmxbot}
-BuildRequires:  %{python_module pytest >= 2.8}
-%endif
-# /SECTION
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-Requires:       python-jaraco.itertools >= 2.0
-Requires:       python-six
+BuildRequires:  python-rpm-macros
+Requires:       python-jaraco.context
+Requires:       python-more-itertools
 Requires:       python-xmltodict
 BuildArch:      noarch
-
+# SECTION test requirements
+BuildRequires:  %{python_module jaraco.context}
+BuildRequires:  %{python_module pytest >= 3.5}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module xmltodict}
+# /SECTION
 %python_subpackages
 
 %description
@@ -62,10 +55,10 @@ v2.0 API.
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with test}
 %check
-%python_exec setup.py test
-%endif
+# we do not provide python-pmxbot
+rm wolframalpha/{test_,}pmxbot.py
+%pytest -k 'not test_pmxbot'
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
