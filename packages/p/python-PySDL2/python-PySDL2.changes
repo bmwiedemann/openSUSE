@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Aug 29 10:31:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 0.9.8
+  * This release fixes a number of bugs, updates the bindings to
+    support new functions in SDL2 2.0.14, adds a wrapper for the
+    SDL2 MessageBox API, and more.
+  * Added bindings for new functions and constants introduced in
+    SDL2 2.0.12 and 2.0.14
+  * Added full support for SDL2 binaries in non-system locations
+    (e.g., with pysdl2-dll) when using PySDL2 with Python installed
+    from the Microsoft Store on Windows.
+  * Improved handling of SDL2 binaries that are too old to be used
+    with PySDL2.
+  * Added a new sdl2.ext API for displaying SDL2 MessageBox alerts
+    and dialog boxes.
+- Add PySDL2-pr193-skipnumpy.patch (gh#marcusva/py-sdl2#193) for
+  missing NumPy in python36
+
+-------------------------------------------------------------------
 Mon Feb  8 22:45:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - remove duplicate check section: Only the Xvfb version runs

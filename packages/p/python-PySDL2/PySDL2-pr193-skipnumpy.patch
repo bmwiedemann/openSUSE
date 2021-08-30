@@ -1,0 +1,70 @@
+From ebe6ca1b97a080c229ee80cfdd82d35663851f27 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Sun, 29 Aug 2021 13:17:22 +0200
+Subject: [PATCH] Skip tests when numpy is not available
+
+---
+ sdl2/test/sdl2ext_draw_test.py | 7 +++++++
+ sdl2/test/sdl2ext_font_test.py | 4 ++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/sdl2/test/sdl2ext_draw_test.py b/sdl2/test/sdl2ext_draw_test.py
+index 63ff360..ac11bc8 100644
+--- a/sdl2/test/sdl2ext_draw_test.py
++++ b/sdl2/test/sdl2ext_draw_test.py
+@@ -6,6 +6,11 @@
+ from sdl2.ext.compat import ExperimentalWarning
+ from sdl2 import ext as sdl2ext
+ 
++try:
++    import numpy
++    _HASNUMPY = True
++except:
++    _HASNUMPY = False
+ 
+ class TestSDL2ExtDraw(object):
+     __tags__ = ["sdl", "sdl2ext"]
+@@ -21,6 +26,7 @@ def setup_class(cls):
+     def teardown_class(cls):
+         sdl2ext.quit()
+ 
++    @pytest.mark.skipif(not _HASNUMPY, reason="pixels3d requires numpy module")
+     def test_fill(self):
+         # Initialize colour and surface/view
+         WHITE = (255, 255, 255)
+@@ -63,6 +69,7 @@ def test_fill(self):
+         with pytest.raises(ValueError):
+             sdl2ext.fill(sf.contents, WHITE, (1, 2, 3))
+ 
++    @pytest.mark.skipif(not _HASNUMPY, reason="pixels3d requires numpy module")
+     def test_line(self):
+         # Initialize colour and surface/view
+         WHITE = (255, 255, 255)
+diff --git a/sdl2/test/sdl2ext_font_test.py b/sdl2/test/sdl2ext_font_test.py
+index 8ad8000..a9acde5 100644
+--- a/sdl2/test/sdl2ext_font_test.py
++++ b/sdl2/test/sdl2ext_font_test.py
+@@ -1,6 +1,5 @@
+ # -*- coding: utf-8 -*-
+ import pytest
+-import numpy as np
+ from sdl2 import ext as sdl2ext
+ from sdl2.ext.compat import byteify, ExperimentalWarning
+ from sdl2.ext.pixelaccess import pixels2d
+@@ -46,7 +45,7 @@ def test_BitmapFont(self):
+         # Try SDL_Surface surface
+         font = sdl2ext.BitmapFont(sf.contents, (32, 32), FONTMAP)
+         assert font.size == (32, 32)
+-        
++
+         # Try SDL_Surface pointer surface
+         font = sdl2ext.BitmapFont(sf, (32, 32), FONTMAP)
+         assert font.size == (32, 32)
+@@ -72,6 +71,7 @@ def test_BitmapFont_render(self):
+             font.render("this_should_fail")
+ 
+     def test_BitmapFont_render_on(self):
++        np = pytest.importorskip("numpy", reason="numpy module is not available")
+         # Initialize font, surface, and BitmapFont for tests
+         fontpath = byteify(RESOURCES.get_path("font.bmp"), "utf-8")
+         sf = surface.SDL_LoadBMP(fontpath)
