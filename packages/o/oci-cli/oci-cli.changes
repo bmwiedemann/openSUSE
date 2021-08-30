@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Aug 25 13:20:44 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.0.2
+  * Support to generate recommended vm cluster network and create vm cluster
+    network with given customer listener port in the Database service
+    * ``oci db exadata-infrastructure generate-recommended-vm-cluster-network
+      --scan-listener-port-tcp, --scan-listener-port-tcp-ssl``
+    * ``oci db vm-cluster-network create --scans``
+  * Prompt to create a config file with a CLI session profile if a CLI command
+    is run with a nonexistent config file and --auth security_token
+  * Prompt to re-authenticate a CLI session profile if a CLI command is run with
+    an expired session token and --auth security_token
+  * Modified supported versions for the following packages:
+    cryptography (>3.2.1, <=3.4.7), click (7.1.2).
+- from version 3.0.1  
+  * Support for identifying Management Agent hosts eligible to create
+    Operations Insights Host resources on  
+    * ``oci opsi host-insights list-importable-agent-entities``
+  * Support for summarize-agen-counts and summarize-plugin-counts
+    in Management Agent service
+    * ``oci management-agent agent summarize-agent-counts``
+    * ``oci management-agent agent summarize-plugin-counts``
+  * Support for additional filters when listing management agents
+    in Management Agent service
+    * ``oci management-agent agent list --availability-status,
+      --host-id, --is-customer-deployed``
+  * Modified supported versions for the following packages: six (>=0.15.0).
+  * Check the bucket exists before bulk and sync operations in Object Storage service
+    * ``oci os object bulk-upload``
+    * ``oci os object bulk-download``
+    * ``oci os object sync``
+  * Session authentication now has no private key passphrase prompt by default; private key
+    passphrase can be provided by running session authenticate with --use-passphrase option
+    * ``oci session authenticate``
+- from version 3.0.0
+  [BREAKING] Drop support for Python 2  
+  * Support for ``os object sync`` command that synchronizes a filesystem directory with
+    an Object Storage bucket in the Object Storage service.
+    * ``oci os object sync``
+  * Support for --availability-domain option when listing VNICs attached
+    to an instance in the Compute service
+    * ``oci compute instance list-vnics --availability-domain``
+  * Support for Autonomous Database Create with Early Patching via a new parameter
+    (maintenance-schedule-type) in the Database service.
+    * ``oci db autonomous-database create --maintenance-schedule-type``
+    * ``oci db autonomous-database create-adb-cross-region-data-guard-details
+      --maintenance-schedule-type``
+    * ``oci db autonomous-database create-from-backup-id --maintenance-schedule-type``
+    * ``oci db autonomous-database create-from-backup-timestamp --maintenance-schedule-type``
+    * ``oci db autonomous-database create-from-clone --maintenance-schedule-type``
+    * ``oci db autonomous-database create-virtual-clone --maintenance-schedule-type``
+  * Support for non-default config file locations for the below commands
+    * ``oci session refresh``
+    * ``oci session export``
+    * ``oci session import``
+  * Support for Model Catalog v2.0 features including Provenance,
+    Metadata, Schema, Artifact introspection
+    * ``oci data-science model``
+  * Support for new parameter --metastore-id to specify external hive metastore
+    for Application in the Data Flow service
+    * ``oci data-flow application create --metastore-id``
+    * ``oci data-flow application update --metastore-id``
+  * Support for manual copy of volume group backups across regions in the Block Storage service
+    * ``oci bv volume-group-backup copy``
+  * Support for MDS Backup Change Compartment in MySql service
+    * ``oci mysql backup change-compartment``
+  * Block volume backup copy operations now wait for their associated work requests to complete
+    * ``oci bv boot-volume-backup copy``
+    * ``oci bv backup copy``
+- Refresh patches for new version
+  + oc_relax-python-depends.patch
+- Drop patch for compatibility with click >= 7.0, fixed upstream
+  + oc_name-defaults_file-parameter.patch
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Tue Aug  3 15:33:40 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.26.4
