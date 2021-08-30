@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 29 22:33:20 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Problems with gh#pipermerriam/flex#234 are not isolated just to
+  Python 3.9.
+
+-------------------------------------------------------------------
 Sun May 16 13:32:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Skip a failing test on Python 3.9.5: request url with tabs

@@ -71,9 +71,8 @@ Validation tooling for Swagger 2.0 specifications.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pipermerriam/flex/issues/234
-python39_donttest=" or (test_request_parameter_array_extraction and tsv)"
-%pytest -k "not (donttestdummyprefix ${$python_donttest})"
+# gh#pipermerriam/flex#234
+%pytest -k "not (donttestdummyprefix or (test_request_parameter_array_extraction and tsv))"
 
 %post
 %python_install_alternative swagger-flex
