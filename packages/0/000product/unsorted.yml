@@ -5930,7 +5930,6 @@ unsorted:
   - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
   - golang-org-x-net-context 
-  - golang-org-x-sync 
   - golang-org-x-sys 
   - golang-packaging 
   - gom-devel 
@@ -19019,6 +19018,7 @@ unsorted:
   - perl-File-Next 
   - perl-File-Path 
   - perl-File-Path-Tiny 
+  - perl-File-RandomAccess 
   - perl-File-ReadBackwards 
   - perl-File-Remove 
   - perl-File-Rsync 
@@ -21681,7 +21681,6 @@ unsorted:
   - python36-anymarkup-core 
   - python36-apache-libcloud 
   - python36-apipkg 
-  - python36-apiron 
   - python36-apns2 
   - python36-appdirs 
   - python36-application 
@@ -23210,7 +23209,6 @@ unsorted:
   - python36-progressbar 
   - python36-progressbar2 
   - python36-prometheus-client 
-  - python36-prometheus_client 
   - python36-promise 
   - python36-prompt_toolkit 
   - python36-prompt_toolkit1 
@@ -23863,7 +23861,6 @@ unsorted:
   - python36-sphinxcontrib-autoprogram 
   - python36-sphinxcontrib-autoprogram-doc 
   - python36-sphinxcontrib-blockdiag 
-  - python36-sphinxcontrib-copybutton 
   - python36-sphinxcontrib-devhelp 
   - python36-sphinxcontrib-documentedlist 
   - python36-sphinxcontrib-fulltoc 
@@ -26113,7 +26110,6 @@ unsorted:
   - python38-progressbar 
   - python38-progressbar2 
   - python38-prometheus-client 
-  - python38-prometheus_client 
   - python38-promise 
   - python38-prompt_toolkit 
   - python38-prompt_toolkit1 
@@ -26187,6 +26183,7 @@ unsorted:
   - python38-pydantic 
   - python38-pydash 
   - python38-pydata-google-auth 
+  - python38-pydata-sphinx-theme 
   - python38-pydbus 
   - python38-pydenticon 
   - python38-pydicom 
@@ -26762,6 +26759,7 @@ unsorted:
   - python38-spec 
   - python38-sphinx-argparse 
   - python38-sphinx-autodoc-typehints 
+  - python38-sphinx-book-theme 
   - python38-sphinx-bootstrap-theme 
   - python38-sphinx-feature-classification 
   - python38-sphinx-issues 
@@ -29174,7 +29172,6 @@ unsorted:
   - python39-progressbar 
   - python39-progressbar2 
   - python39-prometheus-client 
-  - python39-prometheus_client 
   - python39-promise 
   - python39-prompt_toolkit 
   - python39-prompt_toolkit1 
@@ -29264,6 +29261,7 @@ unsorted:
   - python39-pydantic 
   - python39-pydash 
   - python39-pydata-google-auth 
+  - python39-pydata-sphinx-theme 
   - python39-pydbus 
   - python39-pydenticon 
   - python39-pydicom 
@@ -29878,6 +29876,7 @@ unsorted:
   - python39-spec 
   - python39-sphinx-argparse 
   - python39-sphinx-autodoc-typehints 
+  - python39-sphinx-book-theme 
   - python39-sphinx-bootstrap-theme 
   - python39-sphinx-feature-classification 
   - python39-sphinx-issues 
@@ -31014,9 +31013,9 @@ unsorted:
   - rpmdevtools 
   - rpmemd: [x86_64] 
   - rpmlint 
-  - rpmlint-Factory 
-  - rpmlint-Factory-strict 
   - rpmlint-mini 
+  - rpmlint-strict 
+  - rpmlint-test 
   - rpmorphan 
   - rpmrebuild 
   - rr: [x86_64] 

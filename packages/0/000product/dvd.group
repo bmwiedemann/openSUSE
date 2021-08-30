@@ -3318,7 +3318,6 @@
     <package name="perl-Expect" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-Exporter-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-File-RandomAccess" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-FileHandle-Unget" supportstatus="unsupported"/> <!-- reason: dvd:expansion -->
     <package name="perl-GD" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Geography-Countries" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
