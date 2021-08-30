@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 30 09:56:56 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add examples_to_py3k.patch to remove py2k shebangs
+  (gh#AGProjects/python3-application#2).
+
+-------------------------------------------------------------------
 Fri Aug 27 13:09:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.3

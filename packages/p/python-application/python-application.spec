@@ -25,6 +25,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/AGProjects/python3-application
 Source:         https://github.com/AGProjects/python3-application/archive/refs/tags/%{version}.tar.gz#/python3-application-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM examples_to_py3k.patch gh#AGProjects/python3-application#2 mcepl@suse.com
+# Replace py2k shebangs with py3k ones
+Patch0:         examples_to_py3k.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,7 +49,7 @@ handle the following tasks:
  - Manage the version number for applications, modules and packages.
 
 %prep
-%setup -q -n python3-application-%{version}
+%autosetup -p1 -n python3-application-%{version}
 
 %build
 %python_build
