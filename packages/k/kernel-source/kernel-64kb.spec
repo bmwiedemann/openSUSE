@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.13
-%define patchversion 5.13.12
+%define patchversion 5.13.13
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -86,9 +86,9 @@ Name:           kernel-64kb
 Summary:        Kernel with 64kb PAGE_SIZE
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.13.12
+Version:        5.13.13
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g33df9c6
+Release:        <RELEASE>.g6339fac
 %else
 Release:        0
 %endif
@@ -205,10 +205,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-33df9c651d0aa37cce1275bd9528ea5cb9196022
-Provides:       kernel-srchash-33df9c651d0aa37cce1275bd9528ea5cb9196022
+Provides:       kernel-%build_flavor-base-srchash-6339facf0d7297068fd65397395ffd173dc54de2
+Provides:       kernel-srchash-6339facf0d7297068fd65397395ffd173dc54de2
 # END COMMON DEPS
-Provides:       %name-srchash-33df9c651d0aa37cce1275bd9528ea5cb9196022
+Provides:       %name-srchash-6339facf0d7297068fd65397395ffd173dc54de2
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh

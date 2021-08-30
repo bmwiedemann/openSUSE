@@ -1,4 +1,359 @@
 -------------------------------------------------------------------
+Thu Aug 26 15:52:30 CEST 2021 - jslaby@suse.cz
+
+- net: usb: asix: ax88772: Fix less than zero comparison of a u16
+  (git-fixes).
+- commit 8e5c63f
+
+-------------------------------------------------------------------
+Thu Aug 26 15:51:00 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.13.13 (bsc#1012628).
+- mtd: cfi_cmdset_0002: fix crash when erasing/writing AMD cards
+  (bsc#1012628).
+- io_uring: Use WRITE_ONCE() when writing to sq_flags
+  (bsc#1012628).
+- USB: core: Avoid WARNings for 0-length descriptor requests
+  (bsc#1012628).
+- USB: core: Fix incorrect pipe calculation in do_proc_control()
+  (bsc#1012628).
+- dmaengine: xilinx_dma: Fix read-after-free bug when terminating
+  transfers (bsc#1012628).
+- dmaengine: usb-dmac: Fix PM reference leak in usb_dmac_probe()
+  (bsc#1012628).
+- spi: spi-mux: Add module info needed for autoloading
+  (bsc#1012628).
+- net: xfrm: Fix end of loop tests for list_for_each_entry
+  (bsc#1012628).
+- ARM: dts: am43x-epos-evm: Reduce i2c0 bus speed for tps65218
+  (bsc#1012628).
+- dmaengine: of-dma: router_xlate to return -EPROBE_DEFER if
+  controller is not yet available (bsc#1012628).
+- scsi: pm80xx: Fix TMF task completion race condition
+  (bsc#1012628).
+- scsi: megaraid_mm: Fix end of loop tests for
+  list_for_each_entry() (bsc#1012628).
+- scsi: scsi_dh_rdac: Avoid crash during rdac_bus_attach()
+  (bsc#1012628).
+- scsi: core: Avoid printing an error if target_alloc() returns
+  -ENXIO (bsc#1012628).
+- scsi: core: Fix capacity set to zero after offlinining device
+  (bsc#1012628).
+- drm/amdgpu: fix the doorbell missing when in CGPG issue for
+  renoir (bsc#1012628).
+- qede: fix crash in rmmod qede while automatic debug collection
+  (bsc#1012628).
+- ARM: dts: nomadik: Fix up interrupt controller node names
+  (bsc#1012628).
+- net: usb: pegasus: Check the return value of get_geristers()
+  and friends; (bsc#1012628).
+- perf/x86: Fix out of bound MSR access (bsc#1012628).
+- spi: cadence-quadspi: Fix check condition for DTR ops
+  (bsc#1012628).
+- drm/amd/display: Fix Dynamic bpp issue with 8K30 with Navi 1X
+  (bsc#1012628).
+- drm/amd/display: workaround for hard hang on HPD on native DP
+  (bsc#1012628).
+- kyber: make trace_block_rq call consistent with documentation
+  (bsc#1012628).
+- mtd: rawnand: Add a check in of_get_nand_secure_regions()
+  (bsc#1012628).
+- arm64: dts: qcom: c630: fix correct powerdown pin for WSA881x
+  (bsc#1012628).
+- arm64: dts: qcom: msm8992-bullhead: Remove PSCI (bsc#1012628).
+- arm64: dts: qcom: msm8992-bullhead: Fix cont_splash_mem mapping
+  (bsc#1012628).
+- iommu: Check if group is NULL before remove device
+  (bsc#1012628).
+- cpufreq: arm_scmi: Fix error path when allocation failed
+  (bsc#1012628).
+- arm64: dts: qcom: msm8994-angler: Disable cont_splash_mem
+  (bsc#1012628).
+- arm64: dts: qcom: sdm845-oneplus: fix reserved-mem
+  (bsc#1012628).
+- mt76: fix enum type mismatch (bsc#1012628).
+- mtd: rawnand: Fix probe failure due to
+  of_get_nand_secure_regions() (bsc#1012628).
+- soc: fsl: qe: convert QE interrupt controller to platform_device
+  (bsc#1012628).
+- cpufreq: armada-37xx: forbid cpufreq for 1.2 GHz variant
+  (bsc#1012628).
+- dccp: add do-while-0 stubs for dccp_pr_debug macros
+  (bsc#1012628).
+- virtio: Protect vqs list access (bsc#1012628).
+- vhost-vdpa: Fix integer overflow in
+  vhost_vdpa_process_iotlb_update() (bsc#1012628).
+- bus: ti-sysc: Fix error handling for sysc_check_active_timer()
+  (bsc#1012628).
+- vhost: Fix the calculation in vhost_overflow() (bsc#1012628).
+- vdpa_sim: Fix return value check for vdpa_alloc_device()
+  (bsc#1012628).
+- vp_vdpa: Fix return value check for vdpa_alloc_device()
+  (bsc#1012628).
+- vDPA/ifcvf: Fix return value check for vdpa_alloc_device()
+  (bsc#1012628).
+- vdpa/mlx5: Avoid destroying MR on empty iotlb (bsc#1012628).
+- vdpa/mlx5: Fix queue type selection logic (bsc#1012628).
+- drm/mediatek: Add AAL output size configuration (bsc#1012628).
+- drm/mediatek: Add component_del in OVL and COLOR remove function
+  (bsc#1012628).
+- bpf: Clear zext_dst of dead insns (bsc#1012628).
+- bnxt: don't lock the tx queue from napi poll (bsc#1012628).
+- bnxt: disable napi before canceling DIM (bsc#1012628).
+- bnxt: make sure xmit_more + errors does not miss doorbells
+  (bsc#1012628).
+- bnxt: count Tx drops (bsc#1012628).
+- soc: fsl: qe: fix static checker warning (bsc#1012628).
+- net: 6pack: fix slab-out-of-bounds in decode_data (bsc#1012628).
+- ptp_pch: Restore dependency on PCI (bsc#1012628).
+- bnxt_en: Disable aRFS if running on 212 firmware (bsc#1012628).
+- bnxt_en: Add missing DMA memory barriers (bsc#1012628).
+- vrf: Reset skb conntrack connection on VRF rcv (bsc#1012628).
+- virtio-net: use NETIF_F_GRO_HW instead of NETIF_F_LRO
+  (bsc#1012628).
+- mac80211: fix locking in ieee80211_restart_work() (bsc#1012628).
+- net: qlcnic: add missed unlock in qlcnic_83xx_flash_read32
+  (bsc#1012628).
+- ixgbe, xsk: clean up the resources in ixgbe_xsk_pool_enable
+  error path (bsc#1012628).
+- sch_cake: fix srchost/dsthost hashing mode (bsc#1012628).
+- net: mdio-mux: Don't ignore memory allocation errors
+  (bsc#1012628).
+- net: mdio-mux: Handle -EPROBE_DEFER correctly (bsc#1012628).
+- ovs: clear skb->tstamp in forwarding path (bsc#1012628).
+- net: usb: asix: refactor asix_read_phy_addr() and handle errors
+  on return (bsc#1012628).
+- iommu/vt-d: Fix incomplete cache flush in
+  intel_pasid_tear_down_entry() (bsc#1012628).
+- drm/i915: Skip display interruption setup when display is not
+  available (bsc#1012628).
+- drm/i915: Tweaked Wa_14010685332 for all PCHs (bsc#1012628).
+- drm/amd/display: Use DCN30 watermark calc for DCN301
+  (bsc#1012628).
+- net: mscc: ocelot: allow forwarding from bridge ports to the
+  tag_8021q CPU port (bsc#1012628).
+- mptcp: fix memory leak on address flush (bsc#1012628).
+- mptcp: full fully established support after ADD_ADDR
+  (bsc#1012628).
+- r8152: fix writing USB_BP2_EN (bsc#1012628).
+- r8152: fix the maximum number of PLA bp for RTL8153C
+  (bsc#1012628).
+- PCI/sysfs: Use correct variable for the legacy_mem sysfs object
+  (bsc#1012628).
+- i40e: Fix ATR queue selection (bsc#1012628).
+- iavf: Fix ping is lost after untrusted VF had tried to change
+  MAC (bsc#1012628).
+- Revert "flow_offload: action should not be NULL when it is
+  referenced" (bsc#1012628).
+- net: dpaa2-switch: disable the control interface on error path
+  (bsc#1012628).
+- iommu/dma: Fix leak in non-contiguous API (bsc#1012628).
+- mmc: dw_mmc: Fix hang on data CRC error (bsc#1012628).
+- mmc: mmci: stm32: Check when the voltage switch procedure
+  should be done (bsc#1012628).
+- mmc: sdhci-msm: Update the software timeout value for sdhc
+  (bsc#1012628).
+- clk: imx6q: fix uart earlycon unwork (bsc#1012628).
+- clk: qcom: gdsc: Ensure regulator init state matches GDSC state
+  (bsc#1012628).
+- arm64: clean vdso & vdso32 files (bsc#1012628).
+- cfi: Use rcu_read_{un}lock_sched_notrace (bsc#1012628).
+- ALSA: hda - fix the 'Capture Switch' value change notifications
+  (bsc#1012628).
+- tracing: define needed config DYNAMIC_FTRACE_WITH_ARGS
+  (bsc#1012628).
+- tracing / histogram: Fix NULL pointer dereference on strcmp()
+  on NULL event name (bsc#1012628).
+- slimbus: messaging: start transaction ids from 1 instead of zero
+  (bsc#1012628).
+- slimbus: messaging: check for valid transaction id
+  (bsc#1012628).
+- slimbus: ngd: set correct device for pm (bsc#1012628).
+- slimbus: ngd: reset dma setup during runtime pm (bsc#1012628).
+- ipack: tpci200: fix many double free issues in tpci200_pci_probe
+  (bsc#1012628).
+- ipack: tpci200: fix memory leak in the tpci200_register
+  (bsc#1012628).
+- io_uring: fix code style problems (bsc#1012628).
+- io_uring: only assign io_uring_enter() SQPOLL error in actual
+  error case (bsc#1012628).
+- ALSA: hda/realtek: Enable 4-speaker output for Dell XPS 15
+  9510 laptop (bsc#1012628).
+- opp: Drop empty-table checks from _put functions (bsc#1012628).
+- btrfs: prevent rename2 from exchanging a subvol with a directory
+  from different parents (bsc#1012628).
+- tracing: Apply trace filters on all output channels
+  (bsc#1012628).
+- ALSA: hda/via: Apply runtime PM workaround for ASUS B23E
+  (bsc#1012628).
+- s390/pci: fix use after free of zpci_dev (bsc#1012628).
+- usb: typec: tcpm: Fix VDMs sometimes not being forwarded to
+  alt-mode drivers (bsc#1012628).
+- powerpc/32s: Move setup_{kuep/kuap}() into {kuep/kuap}.c
+  (bsc#1012628).
+- powerpc/32s: Refactor update of user segment registers
+  (bsc#1012628).
+- powerpc/32s: Fix random crashes by adding isync() after
+  locking/unlocking KUEP (bsc#1012628).
+- PCI: Increase D3 delay for AMD Renoir/Cezanne XHCI
+  (bsc#1012628).
+- ALSA: hda/realtek: Limit mic boost on HP ProBook 445 G8
+  (bsc#1012628).
+- ASoC: intel: atom: Fix breakage for PCM buffer address setup
+  (bsc#1012628).
+- riscv: Fix a number of free'd resources in init_resources()
+  (bsc#1012628).
+- mm: memcontrol: fix occasional OOMs due to proportional
+  memory.low reclaim (bsc#1012628).
+- mm,hwpoison: make get_hwpoison_page() call get_any_page()
+  (bsc#1012628).
+- mm/hwpoison: retry with shake_page() for unhandlable pages
+  (bsc#1012628).
+- kfence: fix is_kfence_address() for addresses below
+  KFENCE_POOL_SIZE (bsc#1012628).
+- hugetlb: don't pass page cache pages to restore_reserve_on_error
+  (bsc#1012628).
+- io_uring: fix xa_alloc_cycle() error return value check
+  (bsc#1012628).
+- fs: warn about impending deprecation of mandatory locks
+  (bsc#1012628).
+- Update config files.
+- commit b44f35f
+
+-------------------------------------------------------------------
+Thu Aug 26 08:56:57 CEST 2021 - ludwig.nussel@suse.de
+
+- post.sh: detect /usr mountpoint too
+- commit c7b3d74
+
+-------------------------------------------------------------------
+Mon Aug 23 19:27:23 CEST 2021 - jeffm@suse.com
+
+- config: re-modularize CRYPTO_{CTS,ECB,XTS} on arm* (bsc#1189034).
+  Now that FS_ENCRYPTION_ALGS is modular, the crypto modules it utilizes
+  can be modular as well.  CRYPTO_AES and CRYPTO_CBC are used by
+  ENCRYPTED_KEYS and must remain built-in.  CRYPTO_SHA512 and CRYPTO_HMAC
+  are used by module signature validation and must also remain built-in.
+- commit abd126e
+
+-------------------------------------------------------------------
+Mon Aug 23 19:27:17 CEST 2021 - jeffm@suse.com
+
+- config: re-modularize CRYPTO_{GCM,GHASH,GF128MUL} on arm* (bsc#1189033).
+  These modules were selected as built-in due to Kconfig changes between
+  4.14-rc3 and 5.8-rc1 selecting them if BIG_KEYS was enabled.  They can
+  be built as modules again now.
+- commit 9c21610
+
+-------------------------------------------------------------------
+Mon Aug 23 16:57:21 CEST 2021 - tiwai@suse.de
+
+- usb: renesas-xhci: Prefer firmware loading on unknown ROM state
+  (bsc#1189207).
+- commit 0567e80
+
+-------------------------------------------------------------------
+Mon Aug 23 09:29:30 CEST 2021 - jslaby@suse.cz
+
+- Update config files. (vanillas)
+  Oldconfig on vanillas.
+- commit fc469d6
+
+-------------------------------------------------------------------
+Mon Aug 23 09:17:23 CEST 2021 - jslaby@suse.cz
+
+- Update config files. (arm & epaper drivers and other old graphics)
+  Propagate recent epaper drivers and other old graphics changes to arms.
+- commit 985c396
+
+-------------------------------------------------------------------
+Mon Aug 23 09:16:00 CEST 2021 - jslaby@suse.cz
+
+- Update config files. (arm & CONFIG_GAMEPORT)
+  Propagate recent CONFIG_GAMEPORT changes to arms.
+- commit ef35027
+
+-------------------------------------------------------------------
+Mon Aug 23 09:11:14 CEST 2021 - jslaby@suse.cz
+
+- Update config files. (arm & CONFIG_BT_MSFTEXT)
+  Propagate recent CONFIG_BT_MSFTEXT changes to arms.
+- commit ef6c760
+
+-------------------------------------------------------------------
+Mon Aug 23 09:09:42 CEST 2021 - jslaby@suse.cz
+
+- Update config files. (arm & ATALK)
+  Propagate recent ATALK changes to arms.
+- commit d976e0c
+
+-------------------------------------------------------------------
+Mon Aug 23 09:01:42 CEST 2021 - jslaby@suse.cz
+
+- Update config files. (arm & EXT4_FS)
+  Propagate recent EXT4_FS changes to arms.
+- commit 91c3bf2
+
+-------------------------------------------------------------------
+Mon Aug 23 08:08:23 CEST 2021 - jslaby@suse.cz
+
+- Update config files.
+  Only refresh using scripts/run_oldconfig.sh.
+- commit bdb4b85
+
+-------------------------------------------------------------------
+Sun Aug 22 03:53:44 CEST 2021 - jeffm@suse.com
+
+- config: enable CONFIG_NO_HZ_FULL where supported (bsc#1189692).
+- commit da75261
+
+-------------------------------------------------------------------
+Sun Aug 22 03:44:28 CEST 2021 - jeffm@suse.com
+
+- config: enable CONFIG_MAXSMP (bsc#1189691).
+- commit 7c67b01
+
+-------------------------------------------------------------------
+Sat Aug 21 15:30:52 CEST 2021 - jeffm@suse.com
+
+- config: disable CONFIG_SOUNDWIRE_QCOM on x86 (bsc#1189686).
+- commit fb7c80f
+
+-------------------------------------------------------------------
+Fri Aug 20 23:38:26 CEST 2021 - jeffm@suse.com
+
+- config: disable CONFIG_MD_MULTIPATH (bsc#1189678).
+  First-class multipath on Linux has used dm-multipath for ages.
+- commit 1309089
+
+-------------------------------------------------------------------
+Fri Aug 20 23:37:04 CEST 2021 - jeffm@suse.com
+
+- config: disable CONFIG_PM_AUTOSLEEP and CONFIG_PM_WAKELOCKS (bsc#1189677).
+- commit 77c3a63
+
+-------------------------------------------------------------------
+Fri Aug 20 23:24:18 CEST 2021 - jeffm@suse.com
+
+- config: disable CONFIG_ISDN (bsc#1189675).
+  Without CONFIG_ISDN, we no longer need to carry:
+- patches.suse/misdn-add-support-for-group-membership-check.
+- commit 0e1a617
+
+-------------------------------------------------------------------
+Fri Aug 20 23:22:06 CEST 2021 - jeffm@suse.com
+
+- config: enable CONFIG_PRINTK_CALLER (bsc#1189674).
+- commit f0e131e
+
+-------------------------------------------------------------------
+Fri Aug 20 11:17:51 CEST 2021 - tiwai@suse.de
+
+- Update config files: make pinctrl-cherryview built-in (bsc#1189447)
+  Otherwise some devices aren't properly intiailized.
+- commit b19ed90
+
+-------------------------------------------------------------------
 Wed Aug 18 14:54:50 CEST 2021 - tiwai@suse.de
 
 - Bluetooth: switch to lock_sock in SCO (CVE-2021-3640
