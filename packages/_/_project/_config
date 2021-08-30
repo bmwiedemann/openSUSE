@@ -261,16 +261,17 @@ Support: build-mkbaselibs compat-usrmerge-build
 Prefer:  build-mkbaselibs
 Support: brp-check-suse
 Support: post-build-checks
-Support: rpmlint-Factory
+
 # Add hostname so that OBS/build will have a chance to identify the hostname (instead of localhost)
 Support: hostname
 Prefer: -busybox-hostname
 # remove build-compare support to disable "same result" package dropping
 Support: build-compare
 
+# Support: rpmlint-mini
 # In the actual Tumbleweed repos, we want to be stricter with rpmlint
 %if "%_project" == "openSUSE:Factory" || "%_project" == "openSUSE:Factory:PowerPC" || "%_project" == "openSUSE:Factory:ARM" || "%_project" == "openSUSE:Factory:Rebuild" || "%_project" == "openSUSE:Factory:Live" || "%_project" == "openSUSE:Factory:NonFree"
-Support: rpmlint-Factory-strict
+# Support: rpmlint-strict
 %endif
 
 %ifarch ia64
