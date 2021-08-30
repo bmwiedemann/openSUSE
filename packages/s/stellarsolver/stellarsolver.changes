@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 30 09:27:45 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.8:
+  * it is now possible to use the external astrometry.net
+    local solver without it needing to invoke python
+  * fixes and improvements wrt astrometry.net
+  * protect against malformed subframes that might lead to crashes
+  * fix parity calculations for ASTAP and Local Astrometry.net
+
+-------------------------------------------------------------------
 Mon May 17 13:26:41 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Fix License as, according to

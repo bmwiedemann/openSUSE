@@ -18,7 +18,7 @@
 
 %define sover 1
 Name:           stellarsolver
-Version:        1.5
+Version:        1.8
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later

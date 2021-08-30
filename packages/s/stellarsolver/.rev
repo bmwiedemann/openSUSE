@@ -15,4 +15,18 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>895179</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c5d251b6ac69f55766e3a3132dd6d4e</srcmd5>
+    <version>1.8</version>
+    <time>1630324527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8:
+  * it is now possible to use the external astrometry.net
+    local solver without it needing to invoke python
+  * fixes and improvements wrt astrometry.net
+  * protect against malformed subframes that might lead to crashes
+  * fix parity calculations for ASTAP and Local Astrometry.net
+</comment>
+    <requestid>914983</requestid>
+  </revision>
 </revisionlist>
