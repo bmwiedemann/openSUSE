@@ -17,33 +17,27 @@
 
 
 Name:           rpmlint-mini
-Version:        1.10
+Version:        2.0
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
-Group:          System/Packages
 URL:            http://rpmlint.zarb.org/
-Source:         desktop-file-utils-0.24.tar.xz
-Source2:        rpmlint-security-whitelistings-master.tar.xz
-Source100:      rpmlint-deps.txt
-Source101:      rpmlint.wrapper
-Source102:      rpmlint-mini.config
-Source103:      polkit-default-privs.config
-Source104:      appdata_checker.config
-Source105:      whitelists.config
-Source1000:     rpmlint-mini.rpmlintrc
+Source0:        desktop-file-utils-0.24.tar.xz
+Source1:        stdlib.txt
+Source2:        rpmlint.wrapper
+Source3:        rpmlint-mini.rpmlintrc
 # need to fetch the file from there
 BuildRequires:  checkbashisms
 BuildRequires:  dash
 BuildRequires:  glib2-devel
 BuildRequires:  glib2-devel-static
+BuildRequires:  libedit-devel
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  polkit-default-privs
-BuildRequires:  polkit-whitelisting
-BuildRequires:  rpmlint
+BuildRequires:  rpmlint >= 2
 #!BuildIgnore:  rpmlint-mini
 Requires:       cpio
+Requires:       polkit-default-privs
 
 %description
 rpmlint is a tool to check common errors on RPM packages. Binary and
@@ -52,11 +46,6 @@ source packages can be checked.
 %prep
 %setup -q -n desktop-file-utils-0.24
 [ -r COPYING ]
-tar xf %{S:2}
-# workaround rpmlintrc not being effective, because regular rpmlint is invoked
-# instead of rpmlint-mini, see suse-build change here:
-# https://github.com/openSUSE/obs-build/commit/1139134127373b058d3622bafb989c51e2ecc7b8
-cp %{SOURCE1000} $HOME/.rpmlintrc
 
 %build
 %configure
@@ -65,78 +54,54 @@ make %{?_smp_mflags} desktop-file-validate V=1 DESKTOP_FILE_UTILS_LIBS="%{_libdi
 popd
 
 %install
-# test if the rpmlint works at all
+# Check that rpmlint works at all
 set +e
-%{_bindir}/rpmlint rpmlint
+%{_bindir}/rpmlint -i rpmlint
 test $? -gt 0 -a $? -lt 60 && exit 1
 set -e
-# okay, lets put it together
-mkdir -p %{buildroot}/opt/testing/share/rpmlint
-install -m 755 -D src/desktop-file-validate %{buildroot}/opt/testing/bin/desktop-file-validate
+# Build a virtual env
+python3 -m venv %{buildroot}/opt/testing
+# We don't need pip, or activation
+%{buildroot}/opt/testing/bin/pip uninstall -y pip
+rm %{buildroot}/opt/testing/bin/activate*
+# We need these available
+cp -a src/desktop-file-validate %{buildroot}/opt/testing/bin
 cp -a %{_bindir}/dash %{_bindir}/checkbashisms %{buildroot}/opt/testing/bin
-mkdir -p %{buildroot}/opt/testing/%{_lib}
-cp -a %{_libdir}/libedit.so.0* %{buildroot}/opt/testing/%{_lib}
-cp -a %{_datadir}/rpmlint/*.py %{buildroot}/opt/testing/share/rpmlint
-# install config files
-install -d -m 755 %{buildroot}/opt/testing/share/rpmlint/mini
-for i in %{_sysconfdir}/rpmlint/{pie,licenses}.config "%{SOURCE103}" "%{SOURCE104}" "%{SOURCE105}"; do
-  cp $i %{buildroot}/opt/testing/share/rpmlint/mini
+cp -a %{_libdir}/libedit.so.0* %{buildroot}/opt/testing/lib
+# Install config files
+install -d -m 755 %{buildroot}/opt/testing/share
+cp -a %{_sysconfdir}/xdg/rpmlint %{buildroot}/opt/testing/share
+# Override configs are selectively taken from rpmlint-strict
+rm -f %{buildroot}/opt/testing/share/rpmlint/*.override.toml
+# Python standard library, rpmlint dependencies, and the interpreter
+pushd %{_libdir}/python%{py3_ver}
+for file in $(cat %{SOURCE1}); do
+  exp=$(ls -1 $file)
+  install -D -m 644 $exp %{buildroot}/opt/testing/lib/python%{py3_ver}/$exp
 done
-install -m 644 -D %{_datadir}/rpmlint/config %{buildroot}/opt/testing/share/rpmlint/config
-install -m 644 "%{SOURCE102}" %{buildroot}/opt/testing/share/rpmlint
-# extra data
-install -m 755 -d %{buildroot}/opt/testing/share/rpmlint/data
-install -m 644 %{_sysconfdir}/polkit-default-privs.standard %{buildroot}/opt/testing/share/rpmlint/data
-install -m 644 %{_sysconfdir}/polkit-rules-whitelist.json %{buildroot}/opt/testing/share/rpmlint/data
-install -m 644 rpmlint-security-whitelistings-master/*.json %{buildroot}/opt/testing/share/rpmlint/data
-#
-pushd %{_libdir}/python%{py3_ver}/
-for f in $(<%{SOURCE100}); do
-  find -path "*/$f" -exec install -D {} %{buildroot}/opt/testing/%{_lib}/python%{py3_ver}/{} \;
-done
-# ErlangCheck dependencies that are not under %_libdir but under /usr/lib :-(
-cp -a %{python3_sitelib}/{construct,pybeam,six.py} %{buildroot}/opt/testing/%{_lib}/python%{py3_ver}/site-packages
-install -D %{_bindir}/python3 %{buildroot}/opt/testing/bin/python3
-cp -a %{_libdir}/libpython%{py3_ver}*.so.* %{buildroot}/opt/testing/%{_lib}
-cp -a %{_bindir}/rpmlint %{buildroot}/opt/testing/share/rpmlint/rpmlint.py
-pushd %{buildroot}/opt/testing/share/rpmlint
-PYTHONOPTIMIZE=1 python3 -O -m compileall -b *.py
-rm *.py
 popd
-pushd %{buildroot}/opt/testing/%{_lib}/python%{py3_ver}/
-for f in `find -name \*.py | sort` ; do
+cp -a %{python_sitearch}/{rpm,zstd}* %{buildroot}/opt/testing/lib/python%{py3_ver}/site-packages
+cp -a %{python_sitelib} %{buildroot}/opt/testing/lib/python%{py3_ver}
+cp -a %{_libdir}/libpython%{py3_ver}*.so.* %{buildroot}/opt/testing/lib
+cp -a %{_libdir}/libexpat*.so.* %{buildroot}/opt/testing/lib
+cp -a %{_bindir}/python3 %{buildroot}/opt/testing/bin
+cp -a %{_bindir}/python%{py3_ver} %{buildroot}/opt/testing/bin
+pushd %{buildroot}/opt/testing/lib/python%{py3_ver}/
+for f in $(find -name \*.py | sort) ; do
   PYTHONOPTIMIZE=1 python3 -O -m compileall -b $f
   rm $f
 done
 popd
-find %{buildroot}/opt/testing/ -name __pycache__  -print -exec rm -Rf {} +
+find %{buildroot}/opt/testing/ -name __pycache__  -exec rm -rf {} +
+# We need to force the shebang to be under /opt/testing
+sed -e 's,/usr,/opt/testing,' %{_bindir}/rpmlint > %{buildroot}/opt/testing/bin/rpmlint.real
+chmod a+x %{buildroot}/opt/testing/bin/rpmlint.real
 rm -rf %{buildroot}/{usr,etc}
-rm -f %{buildroot}/opt/testing/bin/rpmlint
-install -m 755 -D %{SOURCE101} %{buildroot}/opt/testing/bin/rpmlint
-# hackatlon
-%define my_requires %{_builddir}/%{?buildsubdir}/%{name}-requires
-cat << EOF > %{my_requires}
-cat - > file.list
-%{__find_requires} < file.list > requires.list
-%{__find_provides} < file.list > provides.list
-while read i; do
-    grep -F -v "\$i" requires.list > requires.list.new
-    mv requires.list.new requires.list
-done < provides.list
-cat requires.list
-rm -f requires.list provides.list file.list
-EOF
-chmod +x %{my_requires}
-%define _use_internal_dependency_generator 0
-%define __find_requires %{my_requires}
-%define __find_provides %{nil}
-# final run check to detect python dep changes
-LD_LIBRARY_PATH=%{buildroot}/opt/testing/%{_lib}
-PYTHONPATH=%{buildroot}/opt/testing/share/rpmlint
-PYTHONHOME=%{buildroot}/opt/testing/
-export PYTHONPATH LD_LIBRARY_PATH PYTHONHOME
-%{buildroot}/opt/testing/bin/python3 -tt -u -O %{buildroot}/opt/testing/share/rpmlint/rpmlint.pyc  /.build.binaries/*.rpm 2>&1 || exit 1
-echo ".. ok"
+install -m 755 -D %{SOURCE2} %{buildroot}/opt/testing/bin/rpmlint
+# We don't want requirements of libraries, or the odd shebang
+%define __requires_exclude (^lib.*|python3)$
+# We don't want to provide any libraries, or Python modules we ship
+%define __provides_exclude ^(lib|python)
 
 %files
 /opt/testing

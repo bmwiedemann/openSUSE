@@ -1,12 +1,10 @@
 #!/bin/sh
-if test -d /opt/testing/lib64; then
-    LD_LIBRARY_PATH=/opt/testing/lib64
-else
-    LD_LIBRARY_PATH=/opt/testing/lib
-fi
+
+LD_LIBRARY_PATH=/opt/testing/lib
 PATH="/opt/testing/bin:$PATH"
-rpmlintdir="/opt/testing/share/rpmlint"
-PYTHONPATH="$rpmlintdir"
+PYTHONHOME=/opt/testing
+XDG_CONFIG_HOME="/opt/testing/share"
 LC_ALL=en_US.utf-8
-export PYTHONPATH LD_LIBRARY_PATH LC_ALL
-exec /opt/testing/bin/python3 -u -O "$rpmlintdir"/rpmlint.pyc  -C "$rpmlintdir" -f "$rpmlintdir"/rpmlint-mini.config "$@"
+export PYTHONHOME LD_LIBRARY_PATH LC_ALL XDG_CONFIG_HOME
+# rely on rpmlint auto-loading support for rpmlintrc files
+exec /opt/testing/bin/rpmlint.real --mini-mode $@

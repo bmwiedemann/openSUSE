@@ -1,3 +1,6 @@
+addFilter("wrong-script-interpreter")
 addFilter("library-without-ldconfig")
 addFilter("python-bytecode-without-source")
-addFilter("devel-file-in-non-devel-package")
+addFilter("files-duplicate")
+addFilter("filelist-forbidden-opt")
+addFilter("invalid-url")

@@ -865,4 +865,35 @@ undo bootstrap workaround</comment>
     <comment></comment>
     <requestid>881322</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>ed31250ca861fe36fcac6979fad10370</srcmd5>
+    <version>2.0</version>
+    <time>1630324497</time>
+    <user>dimstar_suse</user>
+    <comment>- Add run-time requirement for polkit-default-privs. 
+
+- Rely on rpmlint auto-loading support for rpmlintrc files.
+
+- Do not copy .override. config files.
+
+- Properly redirect stdout to /dev/null.
+
+- Try two for supporting multiple rpmlintrc, since shell for loops
+  always loop, even if the files don't exist. 
+
+- Support multiple rpmlintrc files correctly. 
+
+- Use --mini-mode when calling rpmlint from rpmlint-mini package.
+
+- Update to require rpmlint &gt;= 2.
+  * Due to rpmlint now being a proper Python package, build a virtual
+    environment, and copy all Python requirements into it.
+  * Replace rpmlint-deps.txt with stdlib.txt, as we need to provide the
+    Python standard library directly.
+  * Lightly rewrite rpmlint.wrapper to support the new world order.
+- Drop the config snippets, they are not required with rpmlint 2.
+- Renumber Source numbers.
+- Filter some more warnings in rpmlint-mini.rpmlintrc.</comment>
+    <requestid>910450</requestid>
+  </revision>
 </revisionlist>

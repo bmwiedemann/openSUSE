@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Aug  6 08:48:02 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add run-time requirement for polkit-default-privs. 
+
+-------------------------------------------------------------------
+Thu Aug  5 17:56:38 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Rely on rpmlint auto-loading support for rpmlintrc files.
+
+-------------------------------------------------------------------
+Thu Aug  5 13:11:51 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Do not copy .override. config files.
+
+-------------------------------------------------------------------
+Tue Aug  3 07:29:17 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Properly redirect stdout to /dev/null.
+
+-------------------------------------------------------------------
+Mon Jul 26 06:28:35 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Try two for supporting multiple rpmlintrc, since shell for loops
+  always loop, even if the files don't exist. 
+
+-------------------------------------------------------------------
+Fri Jul 23 04:55:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Support multiple rpmlintrc files correctly. 
+
+-------------------------------------------------------------------
+Thu Jul 22 15:22:01 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use --mini-mode when calling rpmlint from rpmlint-mini package.
+
+-------------------------------------------------------------------
+Mon Jul 12 02:29:45 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to require rpmlint >= 2.
+  * Due to rpmlint now being a proper Python package, build a virtual
+    environment, and copy all Python requirements into it.
+  * Replace rpmlint-deps.txt with stdlib.txt, as we need to provide the
+    Python standard library directly.
+  * Lightly rewrite rpmlint.wrapper to support the new world order.
+- Drop the config snippets, they are not required with rpmlint 2.
+- Renumber Source numbers.
+- Filter some more warnings in rpmlint-mini.rpmlintrc.
+
+-------------------------------------------------------------------
 Thu Mar 25 09:24:35 UTC 2021 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - apply workaround for situations in which regular rpmlint is invoked when
