@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 09:50:50 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.9.3
+  * Bugfixes
+    - don't apply authz to the redirect URI; fixes ac56864
+
+-------------------------------------------------------------------
 Tue Aug 24 07:26:05 UTC 2021 - pgajdos@suse.com
 
 - use declared tarball

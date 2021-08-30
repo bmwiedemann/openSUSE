@@ -273,4 +273,12 @@ Bugfixes
       refreshing the access token</comment>
     <requestid>913945</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ff076a58b1f994828c8dca528d699b58</srcmd5>
+    <version>2.4.9.3</version>
+    <time>1630324518</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 914952 from dspinella)</comment>
+    <requestid>914953</requestid>
+  </revision>
 </revisionlist>
