@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global skip_python2 1
+%global skip_python36 1
 Name:           python-sphinxcontrib-copybutton
 Version:        0.4.0
 Release:        0
@@ -26,7 +27,10 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/executablebooks/sphinx-copybutton
 Source:         https://files.pythonhosted.org/packages/source/s/sphinx-copybutton/sphinx-copybutton-%{version}.tar.gz
+BuildRequires:  %{python_module Sphinx}
+BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module sphinx-book-theme}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 0.6
@@ -41,13 +45,19 @@ Sphinx extension for adding a "copy" button to code blocks.
 
 %build
 %python_build
+%{python_expand export PYTHONPATH=build/lib
+sphinx-build -n -b html docs/ docs/_build
+rm -r docs/_build/.{buildinfo,doctrees}
+}
 
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+mv -v docs/_build documentation/
+%fdupes documentation/
 
 %files %{python_files}
-%doc README.md
+%doc README.md documentation
 %license LICENSE
 %{python_sitelib}/sphinx_copybutton*
 

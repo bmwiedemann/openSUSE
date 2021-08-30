@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 21:20:10 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add building documentation as a test for whole package.
+- Switch off building for Python 3.6.
+
+-------------------------------------------------------------------
 Mon Jul 26 16:09:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Initial package of sphinx-copybutton 0.4.0 for openSUSE

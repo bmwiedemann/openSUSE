@@ -7,4 +7,14 @@
     <comment>New dependency for kitty</comment>
     <requestid>912450</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5d2d9f35afb0001864acc6c7b36dd6f4</srcmd5>
+    <version>0.4.0</version>
+    <time>1630324503</time>
+    <user>dimstar_suse</user>
+    <comment>- Add building documentation as a test for whole package.
+- Switch off building for Python 3.6.
+</comment>
+    <requestid>914693</requestid>
+  </revision>
 </revisionlist>
