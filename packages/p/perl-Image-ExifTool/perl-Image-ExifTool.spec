@@ -18,27 +18,54 @@
 
 %define cpan_name Image-ExifTool
 Name:           perl-Image-ExifTool
-Version:        12.29
+Version:        12.30
 Release:        0
-Summary:        Perl module to read and write meta information
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Languages/Perl
-URL:            https://exiftool.org/
-Source:         https://downloads.sf.net/exiftool/%{cpan_name}-%{version}.tar.gz
+Summary:        Read and write meta information
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/E/EX/EXIFTOOL/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Requires:       perl(File::RandomAccess)
-Conflicts:      exiftool < %{version}
-BuildArch:      noarch
-%{?perl_requires}
+Recommends:     perl(Archive::Zip)
+Recommends:     perl(Compress::Zlib)
+Recommends:     perl(Digest::SHA)
+Recommends:     perl(IO::Compress::RawDeflate)
+Recommends:     perl(IO::Uncompress::RawInflate)
+Recommends:     perl(POSIX::strptime)
+%{perl_requires}
 
 %description
-ExifTool is a customisable set of Perl modules plus a full-featured
-application for reading and writing meta information in a wide variety of
-files, including the maker note information of many digital cameras by
-various manufacturers such as Canon, Casio, FujiFilm, GE, HP, JVC/Victor,
-Kodak, Leaf, Minolta/Konica-Minolta, Nikon, Olympus/Epson, Panasonic/Leica,
-Pentax/Asahi, Reconyx, Ricoh, Samsung, Sanyo, Sigma/Foveon and Sony.
+Reads and writes meta information in a wide variety of files, including the
+maker notes of many digital cameras by various manufacturers such as Canon,
+Casio, DJI, FLIR, FujiFilm, GE, GoPro, HP, JVC/Victor, Kodak, Leaf,
+Minolta/Konica-Minolta, Nikon, Nintendo, Olympus/Epson, Panasonic/Leica,
+Pentax/Asahi, Phase One, Reconyx, Ricoh, Samsung, Sanyo, Sigma/Foveon and
+Sony.
+
+%prep
+%autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+
+%build
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
+
+%check
+make test
+
+%install
+%perl_make_install
+%perl_process_packlist
+%perl_gen_filelist
+
+%files -f %{name}.files
+%doc Changes config_files html README
+%exclude %{_bindir}/exiftool
+%exclude %{_mandir}/man?/exiftool.?%{?ext_man}
+%exclude %{perl_vendorlib}/File/
+%exclude %{_mandir}/man?/File::RandomAccess*
 
 %package -n exiftool
 Summary:        Customisable application to read and write meta information in files
@@ -60,6 +87,12 @@ such as Canon, Casio, FujiFilm, GE, HP, JVC/Victor, Kodak, Leaf,
 Minolta/Konica-Minolta, Nikon, Olympus/Epson, Panasonic/Leica,
 Pentax/Asahi, Reconyx, Ricoh, Samsung, Sanyo, Sigma/Foveon and Sony.
 
+%files -n exiftool
+%doc fmt_files/
+%doc arg_files/
+%{_bindir}/exiftool
+%{_mandir}/man?/exiftool.?%{?ext_man}
+
 %package -n perl-File-RandomAccess
 Summary:        Random access reads of sequential file or scalar
 Group:          Development/Languages/Perl
@@ -68,35 +101,6 @@ Group:          Development/Languages/Perl
 Allows random access to sequential file by buffering the file if
 necessary. Also allows access to data in memory to be accessed as
 if it were a file.
-
-%prep
-%setup -q -n %{cpan_name}-%{version}
-
-%build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags} V=1
-
-%check
-make %{?_smp_mflags} V=1 test
-
-%install
-%perl_make_install
-%perl_process_packlist
-%perl_gen_filelist
-
-%files
-%doc Changes README html
-%doc config_files/
-%exclude %{_bindir}/exiftool
-%exclude %{_mandir}/man?/exiftool.?%{?ext_man}
-%{perl_vendorlib}/Image/
-%{_mandir}/man?/Image::ExifTool*
-
-%files -n exiftool
-%doc fmt_files/
-%doc arg_files/
-%{_bindir}/exiftool
-%{_mandir}/man?/exiftool.?%{?ext_man}
 
 %files -n perl-File-RandomAccess
 %{perl_vendorlib}/File/

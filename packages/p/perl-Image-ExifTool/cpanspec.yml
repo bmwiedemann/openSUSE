@@ -1,0 +1,75 @@
+---
+description_paragraphs: 1
+#description: |-
+#  override description from CPAN
+#summary: override summary from CPAN
+#no_testing: broken upstream
+#sources:
+#  - source1
+#  - source2
+#patches:
+#  foo.patch: -p1
+#  bar.patch:
+#  baz.patch: PATCH-FIX-OPENSUSE
+#preamble: |-
+# BuildRequires:  gcc-c++
+#post_prep: |-
+# hunspell=`pkg-config --libs hunspell | sed -e 's,-l,,; s,  *,,g'`
+# sed -i -e "s,hunspell-X,$hunspell," t/00-prereq.t Makefile.PL 
+#post_build: |-
+# rm unused.files
+#post_install: |-
+# sed on %{name}.files
+#license: SUSE-NonFree
+#skip_noarch: 1
+#custom_build: |-
+#./Build build flags=%{?_smp_mflags} --myflag
+#custom_test: |-
+#startserver && make test
+#ignore_requires: Bizarre::Module
+skip_doc: exiftool
+add_doc: html config_files
+misc: |-
+ %exclude %{_bindir}/exiftool
+ %exclude %{_mandir}/man?/exiftool.?%{?ext_man}
+ %exclude %{perl_vendorlib}/File/
+ %exclude %{_mandir}/man?/File::RandomAccess*
+ 
+ %package -n exiftool
+ Summary:        Customisable application to read and write meta information in files
+ Group:          Productivity/Graphics/Other
+ Requires:       perl(Image::ExifTool) = %{version}
+ Recommends:     perl(Archive::Zip)
+ # Per https://perldoc.perl.org/index-modules-I.html, these are the part of perl-base.
+ #Recommends:     perl(Compress::Zlib)
+ #Recommends:     perl(Digest::MD5)
+ #Recommends:     perl(Digest::SHA)
+ #Recommends:     perl(IO::Compress::Bzip2)
+ #Recommends:     perl(Time::HiRes)
+ 
+ %description -n exiftool
+ ExifTool is a a full-featured application for reading and writing
+ meta information in a wide variety of files, including the maker
+ note information of many digital cameras by various manufacturers
+ such as Canon, Casio, FujiFilm, GE, HP, JVC/Victor, Kodak, Leaf,
+ Minolta/Konica-Minolta, Nikon, Olympus/Epson, Panasonic/Leica,
+ Pentax/Asahi, Reconyx, Ricoh, Samsung, Sanyo, Sigma/Foveon and Sony.
+ 
+ %files -n exiftool
+ %doc fmt_files/
+ %doc arg_files/
+ %{_bindir}/exiftool
+ %{_mandir}/man?/exiftool.?%{?ext_man}
+ 
+ %package -n perl-File-RandomAccess
+ Summary:        Random access reads of sequential file or scalar
+ Group:          Development/Languages/Perl
+ 
+ %description -n perl-File-RandomAccess
+ Allows random access to sequential file by buffering the file if
+ necessary. Also allows access to data in memory to be accessed as
+ if it were a file.
+ 
+ %files -n perl-File-RandomAccess
+ %{perl_vendorlib}/File/
+ %{_mandir}/man?/File::RandomAccess*
