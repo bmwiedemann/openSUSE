@@ -26,8 +26,8 @@
 %global debug_build 1
 %endif
 
-# Disable A3700 tools until upstream fixed it - https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell/issues/22
-%bcond_with A3700_tools
+# Patch151 fixes the build with GCC11 - https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell/issues/22
+%bcond_without A3700_tools
 
 %bcond_with atf_optee
 
@@ -53,9 +53,9 @@ Name:           arm-trusted-firmware-%{platform}
 Version:        2.5
 Release:        0
 %define srcversion 2.5
-%define mv_ddr_ver mv-ddr-devel
+%define mv_ddr_ver armada-atf-master
 %define mv_bin_ver 10.0.1.0
-%define a3700_utils_ver 18.12
+%define a3700_utils_ver master
 Summary:        Arm Trusted Firmware-A
 License:        BSD-3-Clause
 Group:          System/Boot
@@ -67,17 +67,18 @@ Source3:        binaries-marvell-%{mv_bin_ver}.tar.gz
 # PATCH-FIX-UPSTREAM - https://review.trustedfirmware.org/c/TF-A/trusted-firmware-a/+/9990
 Patch1:         atf-2411053.diff
 Patch150:       A3700_utils-drop-git.patch
+Patch151:       fix-A3700-gcc11.patch
 %if "%{platform}" != ""
 #!BuildIgnore: gcc-PIE
 %endif
 %if "%{platform}" == "a3700"
 BuildRequires:  arm-trusted-firmware-tools
+BuildRequires:  cross-arm-none-newlib-devel
+BuildRequires:  gcc-c++
+BuildRequires:  libcryptopp-devel
 %endif
 %if "%{platform}" == "a3700" || "%{platform}" == "rk3399"
 BuildRequires:  cross-arm-none-gcc%{gcc_version}
-%endif
-%if "%{platform}" == "a3700"
-BuildRequires:  cross-arm-none-newlib-devel
 %endif
 %if "%{platform}" == "a80x0_mcbin" && 0
 BuildRequires:  edk2-Armada80x0McBin
@@ -187,6 +188,8 @@ This package contains fiptool.
 %else
 %setup -q -n trusted-firmware-a-%{srcversion} -a 1 -a 3
 %endif
+# git repo or branch.txt file are expected
+echo "%{mv_ddr_ver}" > mv-ddr-marvell-%{mv_ddr_ver}/branch.txt
 %else
 %if "%{platform}" == ""
 %setup -q -n trusted-firmware-a-%{srcversion} -a 2
@@ -196,18 +199,25 @@ This package contains fiptool.
 %endif
 %if "%{platform}" == "" || "%{platform}" == "a3700"
 pushd A3700-utils-marvell-%{a3700_utils_ver}
+# git repo or branch.txt file are expected
+echo "%{a3700_utils_ver}" >  branch.txt
 # Remove any pre-built x86 Linux binaries
 rm -f wtptp/linux/*
 %if "%{platform}" != ""
 install -m 0755 %{_bindir}/TBB wtptp/linux/tbb_linux
 %endif
 %patch150 -p1
+%patch151 -p1
 popd
 %endif
 %patch1 -p1
 
 %build
 export BUILD_MESSAGE_TIMESTAMP="\"$(date -d "$(head -n 2 %{_sourcedir}/arm-trusted-firmware.changes | tail -n 1 | cut -d- -f1 )" -u "+%%H:%%M:%%S, %%b %%e %%Y")\""
+%if "%{platform}" == "a3700"
+export CRYPTOPP_LIBDIR=%{_libdir}
+export CRYPTOPP_INCDIR=%{_includedir}/cryptopp
+%endif
 
 %if "%{platform}" == ""
 
@@ -304,6 +314,9 @@ make \
 %endif
 %if "%{platform}" == "a3700" || "%{platform}" == "a80x0_mcbin"
      mrvl_flash \
+%if "%{platform}" == "a3700"
+     mrvl_uart  \
+%endif
 %endif
      all fip
 %if "%{platform}" == "a3700"

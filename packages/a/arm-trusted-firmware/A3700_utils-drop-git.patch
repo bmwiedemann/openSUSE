@@ -1,12 +1,10 @@
-diff --git a/wtmi/sys_init/Makefile b/wtmi/sys_init/Makefile
-index 3037e7c..9237eb4 100644
---- a/wtmi/sys_init/Makefile
-+++ b/wtmi/sys_init/Makefile
+--- A3700-utils-marvell-master/wtmi/sys_init/Makefile.orig	2021-07-06 14:15:03.579538716 +0200
++++ A3700-utils-marvell-master/wtmi/sys_init/Makefile	2021-07-06 14:15:14.771664652 +0200
 @@ -51,8 +51,7 @@ ECHO     = @echo
  SED      = @sed
  
  LOCAL_VERSION_STRING	?= -armada
--BUILD_STRING		:= $(shell git log -n 1 --pretty=format:"%h")
+-BUILD_STRING		:= $(shell git log -n 1 --pretty=format:"%h" && (git diff-index --quiet HEAD || echo -dirty))
 -VERSION_STRING		:= $(LOCAL_VERSION_STRING)-$(BUILD_STRING)
 +VERSION_STRING		:= $(LOCAL_VERSION_STRING)
  

@@ -1,0 +1,26 @@
+diff --git a/wtptp/src/TBB_Linux/src/TimDescriptorParser.cpp b/wtptp/src/TBB_Linux/src/TimDescriptorParser.cpp
+index 294c17b4e4fb..cba1362ad89e 100644
+--- a/wtptp/src/TBB_Linux/src/TimDescriptorParser.cpp
++++ b/wtptp/src/TBB_Linux/src/TimDescriptorParser.cpp
+@@ -2682,7 +2682,7 @@ bool CTimDescriptorParser::ParseExtendedReservedData(
+ 	}
+ 	if (m_TimDescriptor.ImagesList().size() > 0) {
+ 		CImageDescription* pImage = (*(m_TimDescriptor.ImagesList().begin()));
+-		if (pImage > 0
++		if (pImage != 0
+ 				&& ((Translate(pImage->ImageIdTag()) & TYPEMASK)
+ 						== (TIMIDENTIFIER & TYPEMASK))) {
+ 			if (pImage->ImageSizeToHash() == pImage->ImageSize())
+diff --git a/wtptp/src/Wtpdownloader_Linux/makefile.mk b/wtptp/src/Wtpdownloader_Linux/makefile.mk
+index 4597b79202be..6c39406b57f3 100644
+--- a/wtptp/src/Wtpdownloader_Linux/makefile.mk
++++ b/wtptp/src/Wtpdownloader_Linux/makefile.mk
+@@ -11,7 +11,7 @@ IPP_STATIC_LIB_DIR = $(IPP_PATH)/lib
+ OBJECTS = WtpStatus.o WtpCommand.o Misc.o WtpException.o WtpImage.o Port.o ProtocolManager.o USBPortLinux.o UARTPortLinux.o TimParser.o CommandlineParser.o TimLib.o WtpDownloadApp.o \
+ 
+ 
+-CXXFLAGS = -Wno-deprecated -D LINUX=1 -D TOOLS_GUI=0 -D IPPV6=1 -D TRUSTED=1 -D DEV_DEBUG=0 -I $(COMMON_SRC)
++CXXFLAGS = -std=c++11 -Wno-deprecated -D LINUX=1 -D TOOLS_GUI=0 -D IPPV6=1 -D TRUSTED=1 -D DEV_DEBUG=0 -I $(COMMON_SRC)
+ 
+ WTP_CXXFLAGS = $(CXXFLAGS) -I $(WTP_INCLUDE)
+ 

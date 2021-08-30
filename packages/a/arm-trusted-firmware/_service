@@ -3,8 +3,8 @@
     <param name="url">https://github.com/MarvellEmbeddedProcessors/mv-ddr-marvell.git</param>
     <param name="scm">git</param>
     <param name="filename">mv-ddr-marvell-armada-atf</param>
-    <param name="versionformat">mainline</param>
-    <param name="revision">refs/heads/mv_ddr-armada-atf-mainline</param>
+    <param name="versionformat">master</param>
+    <param name="revision">55139f6e5893201c908f9d9c91bc76858def83a6</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*mv-ddr-marvell*.tar</param>
@@ -27,8 +27,8 @@
     <param name="url">https://github.com/MarvellEmbeddedProcessors/A3700-utils-marvell.git</param>
     <param name="scm">git</param>
     <param name="filename">A3700-utils-marvell</param>
-    <param name="versionformat">18.12</param>
-    <param name="revision">refs/heads/A3700_utils-armada-18.12-fixed</param>
+    <param name="versionformat">master</param>
+    <param name="revision">2efdb10f3524c534d276002adf81fec06e0f1cf2</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*A3700-utils-marvell*.tar</param>

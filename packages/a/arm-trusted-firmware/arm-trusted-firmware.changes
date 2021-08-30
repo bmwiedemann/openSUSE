@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  6 12:16:36 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update mv-ddr-marvell to use master branch as upstream recommends
+  This fixes build of a80x0_mcbin
+- Update A3700-utils-marvell to use master branch as upstream recommends
+- Re-enable A3700 tools with patch:
+  * fix-A3700-gcc11.patch
+- And refresh patch:
+  * A3700_utils-drop-git.patch
+
+-------------------------------------------------------------------
 Thu Jun 10 10:16:18 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable A3700 tools until fixed upstream:
