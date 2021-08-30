@@ -93,6 +93,7 @@ for line in watchtail(sys.stdin):
     subprocess.call(["git", "add", mappedpkg], shell=False)
     process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
     process.communicate(info.encode('utf-8'))
+    subprocess.call(["/usr/local/bin/sendmailslack", package, info])
     if os.path.isdir(mappedpkg+'/.git'):
         subprocess.call(["git", "add", "."], cwd=mappedpkg, shell=False)
         process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE, cwd=mappedpkg)
