@@ -47,6 +47,10 @@ levels.
 %setup -q
 %patch0 -p1
 unzip %{SOURCE1} && mv basics-master ../basics
+%ifnarch %ix86 x86_64
+# Drop SSE specific flags
+sed -i 's/-msse -mfpmath=sse//' Build.mk
+%endif
 
 %build
 %make_build -C ../basics static

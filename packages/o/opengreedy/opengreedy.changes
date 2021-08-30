@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 30 07:06:51 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop SSE specific flags on non x86
+
+-------------------------------------------------------------------
 Sun Aug 22 20:03:52 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Recommend opengreedy-data
