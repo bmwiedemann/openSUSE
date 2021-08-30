@@ -1,0 +1,19 @@
+-------------------------------------------------------------------
+Thu Aug 26 10:47:39 UTC 2021 - mcepl@cepl.eu
+
+- Update to version 0.6.3:
+  * 🚀 RLS: v0.6.3
+  * Fix regression with 'None' inserted in html by google analytics script (#404)
+  * 🚀 RLS: v0.6.2
+  * 🐛 FIX: fix undefined sphinx var "meta" in jinja (#395)
+  * CI: add build with pre-release versions of sphinx and jinja2 (#402)
+  * Support new+old Google analytics (#387)
+  * Raise exception if icon_links conf val is not a dict. (#392)
+  * i18n: Translate theme text variable (#398)
+  * i18n: Translate text in HTML (#397)
+  * i18n: Translate aria-label (#396)
+
+-------------------------------------------------------------------
+Thu Aug 26 10:29:15 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Initial package for pydata-sphinx-theme 0.6.3.

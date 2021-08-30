@@ -1,0 +1,72 @@
+From 92aaf756a6a079f09c424cf6b810cc3c720ec6fe Mon Sep 17 00:00:00 2001
+From: Joris Van den Bossche <jorisvandenbossche@gmail.com>
+Date: Mon, 9 Aug 2021 12:12:10 +0200
+Subject: [PATCH] TST: update role for caption in expected html output (sphinx
+ 4.1)
+
+---
+ tests/test_build/test_sidebars_captions.html    | 2 +-
+ tests/test_build/test_sidebars_level2.html      | 2 +-
+ tests/test_build/test_sidebars_nested_page.html | 2 +-
+ tests/test_build/test_sidebars_single.html      | 4 ++--
+ 4 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/tests/test_build/test_sidebars_captions.html b/tests/test_build/test_sidebars_captions.html
+index a8e70caf5..1a05a926d 100644
+--- a/tests/test_build/test_sidebars_captions.html
++++ b/tests/test_build/test_sidebars_captions.html
+@@ -1,6 +1,6 @@
+ <nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+  <div class="bd-toc-item active">
+-  <p class="caption">
++  <p class="caption" role="heading">
+    <span class="caption-text">
+     Section 1
+    </span>
+diff --git a/tests/test_build/test_sidebars_level2.html b/tests/test_build/test_sidebars_level2.html
+index 47251789b..e4d75cae6 100644
+--- a/tests/test_build/test_sidebars_level2.html
++++ b/tests/test_build/test_sidebars_level2.html
+@@ -1,7 +1,7 @@
+ <nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+  <div class="bd-toc-item active">
+   <!-- Use deeper level for sidebar -->
+-  <p class="caption">
++  <p class="caption" role="heading">
+    <span class="caption-text">
+     Subsection 1.1
+    </span>
+diff --git a/tests/test_build/test_sidebars_nested_page.html b/tests/test_build/test_sidebars_nested_page.html
+index dfc59e59f..dabf83c4d 100644
+--- a/tests/test_build/test_sidebars_nested_page.html
++++ b/tests/test_build/test_sidebars_nested_page.html
+@@ -1,6 +1,6 @@
+ <nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+  <div class="bd-toc-item active">
+-  <p class="caption">
++  <p class="caption" role="heading">
+    <span class="caption-text">
+     Section 1
+    </span>
+diff --git a/tests/test_build/test_sidebars_single.html b/tests/test_build/test_sidebars_single.html
+index ce63c3b32..50bd2813b 100644
+--- a/tests/test_build/test_sidebars_single.html
++++ b/tests/test_build/test_sidebars_single.html
+@@ -1,7 +1,7 @@
+ <nav aria-label="Main navigation" class="bd-links" id="bd-docs-nav">
+  <div class="bd-toc-item active">
+   <!-- Specify a startdepth of 0 instead of default of 1 -->
+-  <p class="caption">
++  <p class="caption" role="heading">
+    <span class="caption-text">
+     Caption 1
+    </span>
+@@ -13,7 +13,7 @@
+     </a>
+    </li>
+   </ul>
+-  <p class="caption">
++  <p class="caption" role="heading">
+    <span class="caption-text">
+     Caption 2
+    </span>
