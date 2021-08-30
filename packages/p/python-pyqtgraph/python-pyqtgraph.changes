@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Aug 30 07:48:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 0.12.2:
+  * Qt6 6.0 support has been removed in favor of Qt6 6.1+
+  * More numba utilization, specifically for makeARGB
+  * Substantial ImageItem performance improvements have been made
+  * Significant performance improvements made to ScatterPlotItem
+    and LinePlots
+  * More ColorMap features/support
+- Changes since 0.12.0:
+  * Qt < 5.12, Python < 3.7, and NumPy < 1.17 are no longer
+    supported.
+  * For full changelog (huge) since 0.12.0 see
+    https://github.com/pyqtgraph/pyqtgraph/blob/master/CHANGELOG
+- Update test data version to 8.
+
+-------------------------------------------------------------------
 Thu Feb 11 21:29:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 0.11.1

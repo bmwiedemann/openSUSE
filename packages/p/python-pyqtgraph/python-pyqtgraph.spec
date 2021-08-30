@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without  test
-# Declares to Follow NEP 29 in the next release and depends on NumPy which dropped Python 3.6
+%define skip_python2 1
 %define skip_python36 1
 # check pyqtgraph/tests/image_testing.py for the current tag
-%define testdatatag test-data-7
+%define testdatatag test-data-8
 Name:           python-pyqtgraph
-Version:        0.11.1
+Version:        0.12.2
 Release:        0
 Summary:        Scientific Graphics and GUI Library for Python
 License:        MIT
@@ -31,8 +31,8 @@ Group:          Development/Languages/Python
 URL:            http://www.pyqtgraph.org/
 Source:         https://files.pythonhosted.org/packages/source/p/pyqtgraph/pyqtgraph-%{version}.tar.gz
 Source1:        https://github.com/pyqtgraph/test-data/archive/%{testdatatag}.tar.gz
-BuildRequires:  %{python_module numpy >= 1.8}
-BuildRequires:  %{python_module qt5}
+BuildRequires:  %{python_module numpy >= 1.17}
+BuildRequires:  %{python_module qt5 >= 5.12}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -49,12 +49,12 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  git-core
 %endif
-Requires:       python-numpy >= 1.8
-Requires:       python-qt5
-# Next release:
-#Recommends:     python-colorcet
-#Recommends:     python-cupy
+Requires:       python-numpy >= 1.17
+Requires:       python-qt5 >= 5.12
+Recommends:     python-colorcet
+Recommends:     python-cupy
 Recommends:     python-h5py
+Recommends:     python-numba
 Recommends:     python-opengl
 Recommends:     python-scipy
 BuildArch:      noarch
@@ -64,9 +64,9 @@ BuildArch:      noarch
 %description
 A pure-Python graphics library for PyQt/PySide/PyQt5/PySide2
 
-PyQtGraph is intended for use in mathematics / scientific / engineering 
-applications. It is written in pure python, but the library leverages 
-numpy for number crunching, Qt's GraphicsView framework for 2D display, 
+PyQtGraph is intended for use in mathematics / scientific / engineering
+applications. It is written in pure python, but the library leverages
+numpy for number crunching, Qt's GraphicsView framework for 2D display,
 and OpenGL for 3D display.
 
 %package -n %{name}-doc
@@ -84,7 +84,7 @@ chmod a+x examples/*.py
 # For local builds: Delete files from previous failed builds, if any.
 # The next version allows us to install test data into a custom
 # $GITHUB_WORKSPACE directory inside the autocleaned BUILD dir instead of ~.
-rm -rf ~/.pyqtgraph/test-data 
+rm -rf ~/.pyqtgraph/test-data
 mkdir -p ~/.pyqtgraph/test-data
 pushd ~/.pyqtgraph/test-data
 tar -x --strip-components=2 -f %{SOURCE1}
