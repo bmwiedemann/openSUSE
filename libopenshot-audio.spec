@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot-audio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,10 @@
 #
 
 
-%define sover 7
+%define sover 8
 
 Name:           libopenshot-audio
-Version:        0.2.0+5
+Version:        0.2.1
 Release:        0
 Summary:        Audio library for the OpenShot video editor
 License:        GPL-3.0-or-later
@@ -88,5 +88,8 @@ export SOURCE_DATE_EPOCH=$(date +%s -r %{S:99})
 %{_libdir}/%{name}.so
 %{_includedir}/%{name}
 %{_mandir}/man?/openshot*
+%dir %{_libdir}/cmake/OpenShotAudio
+%{_libdir}/cmake/OpenShotAudio/FindASIO.cmake
+%{_libdir}/cmake/OpenShotAudio/OpenShotAudio*.cmake
 
 %changelog

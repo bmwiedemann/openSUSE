@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Aug 30 15:26:45 UTC 2021 - tiwai@suse.com
+
+- Use the released version 0.2.1 instead of development branch;
+  updated _service as well
+
+-------------------------------------------------------------------
+Fri Aug 27 08:47:38 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 0.2.1+5:
+  * Updated version to 0.2.1 SO 8
+  * Ensure NEED_ASIO is always set
+  * Bump actions/upload-artifact from 2.2.3 to 2.2.4 (#128)
+  * Add juce_dsp module
+  * CMake: Correct EXPORTED config install path (#127)
+  * Rename version_info files to NAME.env (#126)
+  * Name generate-docs workflow file sensibly
+  * Rename docs temp dir
+  * Generate and install JuceHeader.h
+  * Bump actions/upload-artifact from v2.2.2 to v2.2.3
+  * GH Actions: Build and publish docs (#122)
+  * CMake: Don't export openshot-audio-demo (#121)
+  * Ensure we use C++11 to build demo code (#120)
+  * Gitlab-ci: Update Windows builder configs (#119)
+  * CMake: Create and install EXPORTED configuration (#118)
+  * Normalize repo to LF (Unix) line endings, enforce (#117)
+  * Add repo name to workflow job title
+  * README: Add Github Actions status badge
+  * Update copyright in README (#113)
+  * README: Remove Travis build shield
+  * Revert version back to 0.2.0
+  * Test bumping the version (for gitlab-ci deployment testing)
+  * Test bumping the version (for gitlab-ci deployment testing)
+  * Fixing regex syntax to extract version
+  * Fixing regex syntax to extract version
+  * Fixing regex syntax to extract version
+  * Fixing regex syntax to extract version
+  * Attempting to extract VERSION and SO from CMakeLists.txt file, to be used in build system (and deployment system)
+  * Adding CI_PIPELINE_ID into the version info
+  * Updating git log format to be consistent across all 3 repos (for final release publishing reasons)
+  * Experimental multi-thread builds for Linux and Mac
+  * CI: Pare down Windows deps (#110)
+  * Add Dependabot checking for Actions (#109)
+  * CI: Switch to Github Actions (#108)
+  * Formatting fixes for INSTALL docs (#104)
+  * Fix stale yml message to be a literal string
+  * Travis: Add Focal build (#102)
+  * Updating stale github comment message
+  * Upgrade JUCE to 5.4.7 (#88)
+  * Ensure full 40-character hashes in changelog
+  * Testing -stdlib=libc++ to prevent linking with libstd++ from gcc
+  * Updating tag on gitlab to use new Ubuntu bionic build server
+  * Make JUCE source path configurable
+  * Revert "Fix isfinite() for ruby bindings"
+  * Add shell script to output version (#95)
+  * Travis: Add macOS build w/ newer XCode (#94)
+  * Update formatting for commit logs
+
+-------------------------------------------------------------------
 Thu Mar 12 07:06:00 UTC 2020 - hpj@urpla.net
 
 - Update to version 0.2.0+5:
