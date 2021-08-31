@@ -1,7 +1,7 @@
 #
 # spec file for package librepo
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -37,7 +37,7 @@
 %define devname %{name}-devel
 
 Name:           librepo
-Version:        1.14.0
+Version:        1.14.2
 Release:        0
 Summary:        Repodata downloading library
 License:        LGPL-2.0-or-later
@@ -51,9 +51,9 @@ BuildRequires:  doxygen
 BuildRequires:  gpgme-devel
 BuildRequires:  pkgconfig(check)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.26.0
+BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libcurl) >= 7.52.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(openssl)
 %if %{with zchunk}
 BuildRequires:  pkgconfig(zck) >= 0.9.11
@@ -88,8 +88,8 @@ Summary:        Python 3 bindings for the librepo library
 Group:          Development/Libraries/Python
 BuildRequires:  python3-devel
 %if %{with tests}
-BuildRequires:  python3-gpg
 BuildRequires:  python3-Flask
+BuildRequires:  python3-gpg
 BuildRequires:  python3-requests
 %endif
 BuildRequires:  python3-Sphinx

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug 25 16:46:36 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 1.14.2
+  + Recover from fsync fail on read-only filesystem (rh#1956361)
+  + Reduce time to load metadata
+  + Fix resource leaks
+  + Fix memory leaks
+
+-------------------------------------------------------------------
 Tue Apr 13 12:59:28 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to 1.14.0
@@ -25,6 +34,14 @@ Sat Aug 22 20:18:17 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
 
 - Upgrade to 1.12.1
   + Validate path read from repomd.xml (rh#1868639, CVE-2020-14352)
+- Dropped validate_path.patch to prevent directory traversal attacks
+  (boo#1175475, CVE-2020-14352) since it is upstream with version 1.12.1
+
+-------------------------------------------------------------------
+Thu Aug 20 10:30:12 UTC 2020 - Christian Vögl <christian.voegl@suse.com>
+
+- Add validate_path.patch to prevent directory traversal attacks
+  (boo#1175475, CVE-2020-14352)
 
 -------------------------------------------------------------------
 Tue Jul  7 10:38:49 UTC 2020 - Neal Gompa <ngompa13@gmail.com>
