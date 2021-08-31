@@ -185,7 +185,7 @@
   poo#94973: '20210725'
   poo#95120: '20210807'
   poo#95326: '20210713'
-  poo#95329: '20210829'
+  poo#95329: '20210830'
   poo#95467: '20210713'
   poo#95548: '20210718'
   poo#95605: '20210717'
@@ -196,7 +196,7 @@
   poo#96641: '20210807'
   poo#96644: '20210823'
   poo#97103: '20210830'
-  poo#97511: '20210829'
+  poo#97511: '20210830'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -232,7 +232,7 @@ installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51 busyb
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
 
 # packages in here are rebuild if their buildinfo changed
-rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema perf
+rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema perf wsl-appx
 
 bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-module permissions-unauthorized-file permissions-dir-without-slash permissions-file-as-dir permissions-fscaps permissions-file-setuid-bit permissions-directory-setuid-bit permissions-world-writable polkit-changed- polkit-unauthorized- polkit-untracked- </value>
   </attribute>
@@ -565,9 +565,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210830'
-published: '20210829'
-publishing: '20210829'
+    <value>failed: ''
+published: '20210830'
+publishing: '20210830'
 testing: '20210830'
 </value>
   </attribute>
