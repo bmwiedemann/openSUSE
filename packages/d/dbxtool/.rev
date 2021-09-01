@@ -32,4 +32,12 @@
   fix build on more architectures. (forwarded request 835982 from msmeissn)</comment>
     <requestid>835985</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>75fc2854e4842e09a0ed3b972bd9a0ca</srcmd5>
+    <version>8</version>
+    <time>1630525043</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 915503 from jsegitz)</comment>
+    <requestid>915508</requestid>
+  </revision>
 </revisionlist>

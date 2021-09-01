@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:26:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_dbxtool.service.patch
+
+-------------------------------------------------------------------
 Tue Sep 22 06:05:40 UTC 2020 - Marcus Meissner <meissner@suse.com>
 
 - dbxtool-fixes.patch: bigger hammer for integer size mismatch to

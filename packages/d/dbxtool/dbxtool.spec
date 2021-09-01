@@ -1,7 +1,7 @@
 #
 # spec file for package dbxtool
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ BuildRequires:  popt-devel
 Requires:       efivar >= 26-1
 Source0:        https://github.com/rhboot/dbxtool/releases/download/dbxtool-%version/dbxtool-%version.tar.bz2
 Patch0:         dbxtool-fixes.patch
+Patch1:         harden_dbxtool.service.patch
 %systemd_requires
 
 %description
@@ -35,6 +36,7 @@ This package contains DBX updates for UEFI Secure Boot.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
 make CFLAGS="%optflags"
