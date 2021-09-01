@@ -214,4 +214,13 @@ A model Open Source game.</comment>
     <comment></comment>
     <requestid>908587</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1aa3a69e3e4cc4be072761425576d28f</srcmd5>
+    <version>1.15.16</version>
+    <time>1630525038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.16:
+  * Long list of fixes, see https://github.com/wesnoth/wesnoth/blob/1.15.16/changelog.md</comment>
+    <requestid>915457</requestid>
+  </revision>
 </revisionlist>
