@@ -317,4 +317,23 @@
   pkgconfig(mutter-clutter-8) BuildRequires (forwarded request 887039 from Gankov)</comment>
     <requestid>887504</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>257a6a7ba9d62369418c9cf0974ef066</srcmd5>
+    <version>3.40.2</version>
+    <time>1630525030</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.40.2:
+  + fix a crash in memory usage checking.
+- Add gpaste-gnome-41.patch: conditionally applied when building
+  against mutter 41.
+- Replace pkgconfig(mutter-clutter-8) BuildRequires with
+  mutter-devel: make it easier to support multiple versions.
+- Switch to meson build system:
+  + Add meson BuildRequires.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install.
+
+  pkgconfig(mutter-clutter-8) BuildRequires (forwarded request 914970 from dimstar)</comment>
+    <requestid>915442</requestid>
+  </revision>
 </revisionlist>

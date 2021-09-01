@@ -1,0 +1,26 @@
+Index: gpaste-3.40.2/meson.build
+===================================================================
+--- gpaste-3.40.2.orig/meson.build
++++ gpaste-3.40.2/meson.build
+@@ -38,7 +38,7 @@ endif
+ libgpaste_deps = [ gdk_dep, gdk_pixbuf_dep, glib_dep, gtk_dep ]
+ 
+ if get_option('introspection')
+-  mutter_clutter_dep = dependency('mutter-clutter-8', version: mutter_clutter_req)
++  mutter_clutter_dep = dependency('mutter-clutter-9', version: mutter_clutter_req)
+   gjs_dep = dependency('gjs-1.0', version: gjs_req)
+ endif
+ 
+Index: gpaste-3.40.2/src/gnome-shell/metadata.json.in
+===================================================================
+--- gpaste-3.40.2.orig/src/gnome-shell/metadata.json.in
++++ gpaste-3.40.2/src/gnome-shell/metadata.json.in
+@@ -1,6 +1,7 @@
+ {
+     "shell-version": [
+-        "40.0"
++        "40.0",
++        "41"
+     ],
+     "uuid": "GPaste@gnome-shell-extensions.gnome.org",
+     "name": "GPaste",

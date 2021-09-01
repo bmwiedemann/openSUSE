@@ -19,18 +19,21 @@
 
 %global __requires_exclude typelib\\(Clutter\\)
 Name:           gpaste
-Version:        3.40.1
+Version:        3.40.2
 Release:        0
 Summary:        Clipboard management system for GNOME
 License:        BSD-2-Clause
 Group:          System/GUI/GNOME
 URL:            https://github.com/Keruspe/GPaste
 Source0:        http://www.imagination-land.org/files/%{name}/%{name}-%{version}.tar.xz
-
+# PATCH-FIX-OPENSUSE gpaste-gnome-41.patch dimstar@opensuse.org -- Fix build against GNOME 41
+Patch0:         gpaste-gnome-41.patch
 # For directory ownership
 BuildRequires:  gnome-shell >= 3.28
 BuildRequires:  gobject-introspection-devel >= 1.58.0
 BuildRequires:  intltool >= 0.50.0
+BuildRequires:  meson
+BuildRequires:  mutter-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(appstream-glib)
@@ -45,7 +48,6 @@ BuildRequires:  pkgconfig(gnome-keybindings)
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mutter-clutter-8)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vapigen) >= 0.42
 BuildRequires:  pkgconfig(x11)
@@ -112,16 +114,18 @@ menu, and provides the ability to copy/paste text.
 %lang_package
 
 %prep
-%autosetup -p1
+%setup -q
+%if %{pkg_vcmp mutter-devel > 41}
+%patch0 -p1
+%endif
 
 %build
 %define _lto_cflags %{nil}
-%configure --enable-vala
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 desktop-file-edit --set-icon=edit-paste --remove-key Categories --add-category=Applet --add-only-show-in=GNOME %{buildroot}%{_datadir}/applications/org.gnome.GPaste.Ui.desktop
 %find_lang GPaste %{?no_lang_C}
 
