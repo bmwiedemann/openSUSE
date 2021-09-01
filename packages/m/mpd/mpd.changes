@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  1 07:24:21 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 0.22.11
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.11/NEWS
+  * protocol: fix "albumart" crash.
+  * filter: ffmpeg:
+    * pass "channel_layout" instead of "channels" to buffersrc
+    * fix "av_buffersink_get_frame() failed: Resource temporarily unavailable"
+    * support double-precision samples (by converting to single precision)
+
+-------------------------------------------------------------------
 Tue Aug 17 07:55:08 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 0.22.10

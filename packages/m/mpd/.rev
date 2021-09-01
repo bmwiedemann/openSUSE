@@ -462,4 +462,18 @@
   * mixer: alsa: fix yet more rounding errors.</comment>
     <requestid>912566</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>cc2a50b929f21813bb33550f264bd762</srcmd5>
+    <version>0.22.11</version>
+    <time>1630525027</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 0.22.11
+  * https://github.com/MusicPlayerDaemon/MPD/blob/v0.22.11/NEWS
+  * protocol: fix &quot;albumart&quot; crash.
+  * filter: ffmpeg:
+    * pass &quot;channel_layout&quot; instead of &quot;channels&quot; to buffersrc
+    * fix &quot;av_buffersink_get_frame() failed: Resource temporarily unavailable&quot;
+    * support double-precision samples (by converting to single precision)</comment>
+    <requestid>915422</requestid>
+  </revision>
 </revisionlist>
