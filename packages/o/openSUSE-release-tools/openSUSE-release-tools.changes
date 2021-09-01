@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 01 07:01:02 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210901.f75b5c1b:
+  * gocd: fix a missing whitespace between command and argument for skippkg-finder
+
+-------------------------------------------------------------------
 Tue Aug 31 08:53:00 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210831.0de63caa:
