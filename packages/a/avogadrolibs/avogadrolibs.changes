@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Aug 30 09:00:55 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.95.0
+  * Update render options for Wireframe and Ball-and-Sticks
+  * Use MMTF downloads - more efficient than PDB format
+  * Add back support for importing crystals
+  * Add CJSON support for save/load residues and atom colors
+  * Detect secondary structure from residues / backbones
+  * Remove dependency on MoleQueue (bundled...)
+  * Export to SVG
+  * OpenMM script builder plugin
+  * Allow manipulate to rotate selected fragments
+  * Add bestFitPlane on Molecule
+  * Transparent support for ASE "extended XYZ" files
+  * Switch Open Babel calls to use CML and non-local numeric format
+  * Save background color across sessions and set bg alpha for export
+  * Add support for a JSON list of selected atoms
+  * Update example Avogadro RPC script
+  * Fix several crashes with proteins
+  * Fix crash in CJSON reading file without labels
+  * Fix bug deleting selected atoms
+- Add molecules and crystals data files as source, as downloading
+  on build time is not possible on OBS
+- Drop upstream merged avogadrolibs-spglib-includes.patch
+- Split data molecules and crystals data into avogadro2-data package
+  and seperated plugins into plugins subpackage
+
+-------------------------------------------------------------------
+Sat Aug 21 11:32:55 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Move non-library stuff into it's own package again
+
+-------------------------------------------------------------------
+Wed Aug 18 12:05:15 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add avogadrolibs-spglib-includes.patch -- Correct spglib
+  includes according to the location spglib headers are installed
+  to on openSUSE, which is directly inside %%_includedir.
+
+-------------------------------------------------------------------
+Wed Aug 18 06:36:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- As Factory switched from Avagadro 1 to 2, make factory bot happy
+  as patches Fix-build-with-Qt-511.patch, fix-linking-issues.patch,
+  fix-gcc-version-check.patch, 0002-create-soversion-libs.patch,
+  and use-system-libjsoncpp.patch from old package are not present
+  in this package.
+
+-------------------------------------------------------------------
+Wed May 26 09:49:41 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 1.93.1
+  * Add support for a JSON list of selected atoms
+  * Add support for only clearing selected atoms
+  * Fix invalid cmake files
+  * Fix build with HDF5 >= 1.12.0
+  * Fix problems with large molecule
+  * Update translations
+- Enable building with MoleQueue, mmtf and libmsym they are already
+  in Factory and science repository
+- Split python into seperate package
+- Add not-install-gwavi.patch
+- Drop upstream fixed fix_libgwavi_linking.patch
+
+-------------------------------------------------------------------
+Wed Feb 12 20:45:21 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- initial version of Avogadro 2 libs
+- Fix linking when using BUILD_STATIC_PLUGINS=OFF
+  fix_libgwavi_linking.patch
+
+-------------------------------------------------------------------
 Sun Jun  3 18:02:51 UTC 2018 - christophe@krop.fr
 
 - Add Fix-build-with-Qt-511.patch to fix build with Qt 5.11.
@@ -33,9 +105,7 @@ Mon Nov 28 09:00:40 UTC 2016 - tittiatcoke@gmail.com
 - Update to 0.9.0
   No Changelog available
 
-
 -------------------------------------------------------------------
 Mon Dec 22 17:36:40 UTC 2014 - alinm.elena@gmail.com
 
 - initial commit 
-
