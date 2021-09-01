@@ -169,4 +169,21 @@
     <comment></comment>
     <requestid>892612</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>ed82cd02192939c2db595e3926d53d36</srcmd5>
+    <version>1.16</version>
+    <time>1630525023</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v1.16
+  ver 1.16:
+  * Fix issue with writing provisioning files with a passphrase.
+  * Add support for Authenticator &amp; Supplicant RSN Extension elements.
+  * Add support for handling Transition Disable info.
+  * Add support for SAE Hash-to-Element feature.
+  ver 1.15:
+  * Add support for FT-over-DS procedure with multiple BSS.
+  * Add support for estimation of VHT RX data rate.
+  * Add support for exporting Daemon information. (forwarded request 915063 from mohms)</comment>
+    <requestid>915320</requestid>
+  </revision>
 </revisionlist>

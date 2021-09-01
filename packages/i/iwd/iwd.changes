@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Aug 30 13:14:51 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
+
+- update to v1.16
+  ver 1.16:
+  * Fix issue with writing provisioning files with a passphrase.
+  * Add support for Authenticator & Supplicant RSN Extension elements.
+  * Add support for handling Transition Disable info.
+  * Add support for SAE Hash-to-Element feature.
+  ver 1.15:
+  * Add support for FT-over-DS procedure with multiple BSS.
+  * Add support for estimation of VHT RX data rate.
+  * Add support for exporting Daemon information.
+
+-------------------------------------------------------------------
 Tue May 11 21:30:16 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14:
