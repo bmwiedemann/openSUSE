@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:29:41 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.10:
+  * Bump to golang 1.15.15 in build/**
+  * Bump to golang 1.15.15 in cluster/** and staging/**
+  * Bump to golang 1.15.15 in test/**
+  * Avoid spurious calls to update/delete validation
+  * Fix metrics reporting for the deprecated watch path
+  * Update configure-helper.sh
+  * Update configure-helper.sh
+  * Update configure-helper.sh
+  * Fix: ignore not a VMSS error for VMAS nodes in reconcileBackendPools
+  * feat: Provide IPv6 support for internal load balancer
+  * Update to using apiserver-network-proxy v1.22
+  * Make CSR cleaner tolerate objects with invalid status.certificate
+  * disable aufs module
+  * update comments and owners file for pkg/util/removeall
+  * kubelet: do not call RemoveAll on volumes directory for orphaned pods
+  * APF e2e: wait for steady state before proceeding
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.9
+  * Updated to use konnectivity client v0.0.21, and implemented placeholder context
+  * include google/go-cmp in client-go/dynamic/fake/BUILD
+  * Simplify use of the fake dynamic client
+  * fix: return empty VMAS name if using standalone VM
+  * Fix race in attachdetach tests
+  * Fix frameworkImpl.extenders being not set
+  * Fix closing of decorated watcher channel on timeout
+  * update bazel
+  * (scheduler e2e) Create balanced pods in parallel
+
+-------------------------------------------------------------------
 Fri Jul 16 13:08:59 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.20.9:
