@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 31 14:00:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * sockd.service
+
+-------------------------------------------------------------------
 Sun May 16 11:13:29 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.4.3
