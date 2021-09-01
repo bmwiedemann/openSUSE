@@ -1,7 +1,7 @@
 #
 # spec file for package python-language-check
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,7 +41,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 Requires:       java = 1.8.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -77,7 +77,7 @@ chmod a-x language_check/LanguageTool-%{ltver}/org/languagetool/resource/ru/make
 %if %{with test}
 %check
 export LANG=en_US.UTF-8
-%python_exec setup.py test
+%pyunittest discover -v
 %endif
 
 %post
