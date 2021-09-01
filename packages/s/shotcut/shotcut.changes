@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Sep  1 10:35:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 21.08.29:
+  New:
+  * Added support for WebP export with presets for still sequence and animation.
+  * Added Properties > Measure Video Quality… using VMAF[2].
+  * Added a new video filter GPS Text (contributed by Daniel F).
+  * Added a new video filter Reflect.
+  * Added a new Deband video filter (contributed by Austin B).
+  * Added a warning dialog before File > Export Frame… from a proxy file.
+  * Added support for keyframes to Mask: Simple Shape > Rotation.
+  * Added support for the operating system clipboard when copying and pasting filters.
+  * Added support for the operating system clipboard when cut, copy, paste, overwrite or append a clip.
+  * Added a dialog when Timeline > Track Operations > Insert Track on the top audio track to choose audio or video.
+  * Added handles to the sides of the rectangle on-screen control (VUI) (contributed by TRA).
+  Changes:
+  * Changed the storage for thumbnails and waveforms to use files instead of database.
+  * Changed Time Remap to limit input values to the maximum duration of the clip.
+  * Changed to set the file date on proxy files to match original file.
+  * Improved reliability of Time Remap status/feedback info.
+  * Improved the speed setting in the Time Remap filter with an option to either modify or lock the input time.
+  * Improved player grid display and snapping when zoomed.
+  * Improved image sequence if there is a numeric filename discontinuity or rollover to > 0.
+  Fixes:
+  * Fixed possible crash when using Audio Waveform Visualization filter.
+  * Fixed Mask: From File > Custom… might lose track of its file.
+  * Fixed Text: Simple > File date broken in v21.05.
+  * Fixed Timer filter’s new Speed parameter not scaling Duration.
+  * Fixed a possible crash reading a YUV 4:2:2 uncompressed video.
+  * Fixed some clips’ duration in project XML saved in frame units instead of seconds.
+  * Fixed Timer start and end buttons when filter in point is set.
+  * Fixed quality/rate control with libx264rgb in Export > Codec.
+  * Fixed undo simple keyframes in Size, Position & Rotate turned on advanced keyframes.
+  * Fixed undo followed by redo when trimming clips on Timeline may not be correct.
+  * Fixed a crash moving multiple clips to the beginning with Ripple All Tracks on.
+  * Fixed changing Time Remap > Enable pitch compensation in disables Zoom keyframe Values.
+  * Fixed file paths with special characters not working in filters such as Mask: From File.
+  * Fixed exported HEVC MP4 and MOV files are not playable with macOS QuickTime Player or iOS.
+  * Fixed Properties > Reset for an image.
+  * Fixed a possible crash when a transition is removed during trimming on the Timeline.
+  * Fixed keyframes may be dragged past another.
+  * Fixed Time Remap filter may cause image artifact when using Export > Parallel processing.
+  * Fixed Properties > Extract Sub-clip… on GoPro videos or other videos with non-muxable data track.
+  * Fixed Stabilize video gives incorrect results after splitting or trimming clip.
+  * Fixed a crash when dragging multiple clips with variable frame rate to timeline.
+  * Fixed the timeline playhead could go beyond the end of the timeline.
+  * Fixed opening a project starts paused on the second frame instead of the first.
+
+-------------------------------------------------------------------
 Fri Jul  9 12:25:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 21.06.29:
