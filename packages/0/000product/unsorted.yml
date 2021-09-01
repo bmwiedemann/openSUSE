@@ -5929,7 +5929,6 @@ unsorted:
   - golang-github-v2fly-v2ray-core 
   - golang-github-vpenso-prometheus_slurm_exporter 
   - golang-gopkgin-check 
-  - golang-org-x-net-context 
   - golang-org-x-sys 
   - golang-packaging 
   - gom-devel 
@@ -7008,6 +7007,24 @@ unsorted:
   - iosevka-etoile-fonts 
   - iosevka-fonts 
   - iosevka-slab-fonts 
+  - iosevka-ss01-fonts 
+  - iosevka-ss02-fonts 
+  - iosevka-ss03-fonts 
+  - iosevka-ss04-fonts 
+  - iosevka-ss05-fonts 
+  - iosevka-ss06-fonts 
+  - iosevka-ss07-fonts 
+  - iosevka-ss08-fonts 
+  - iosevka-ss09-fonts 
+  - iosevka-ss10-fonts 
+  - iosevka-ss11-fonts 
+  - iosevka-ss12-fonts 
+  - iosevka-ss13-fonts 
+  - iosevka-ss14-fonts 
+  - iosevka-ss15-fonts 
+  - iosevka-ss16-fonts 
+  - iosevka-ss17-fonts 
+  - iosevka-ss18-fonts 
   - iotop 
   - iouyap 
   - ipa-gothic-bold-fonts 
@@ -12382,7 +12399,7 @@ unsorted:
   - libopenscap25 
   - libopenscap_sce25 
   - libopenshot-audio-devel 
-  - libopenshot-audio7 
+  - libopenshot-audio8 
   - libopenshot-devel 
   - libopenshot19 
   - libopenslide-devel 
@@ -13355,6 +13372,8 @@ unsorted:
   - librtprocess-devel 
   - librtprocess0 
   - librtr0 
+  - librttopo-devel 
+  - librttopo1 
   - librttr_core0_9_6 
   - librubberband-devel 
   - librubberband2-32bit: [x86_64] 
@@ -19882,6 +19901,7 @@ unsorted:
   - perl-XML-XPathEngine 
   - perl-XML-XSLT 
   - perl-XMLRPC-Lite 
+  - perl-XS-Parse-Keyword 
   - perl-XSLoader 
   - perl-XString 
   - perl-YAML 
@@ -32565,12 +32585,12 @@ unsorted:
   - tensorflow2-gnu-openmpi2-hpc: [x86_64] 
   - tensorflow2-lite: [x86_64] 
   - tensorflow2-lite-devel: [x86_64] 
-  - tensorflow2_2_4_1-gnu-hpc: [x86_64] 
-  - tensorflow2_2_4_1-gnu-hpc-devel: [x86_64] 
-  - tensorflow2_2_4_1-gnu-hpc-doc: [x86_64] 
-  - tensorflow2_2_4_1-gnu-openmpi2-hpc: [x86_64] 
-  - tensorflow2_2_4_1-gnu-openmpi2-hpc-devel: [x86_64] 
-  - tensorflow2_2_4_1-gnu-openmpi2-hpc-doc: [x86_64] 
+  - tensorflow2_2_6_0-gnu-hpc: [x86_64] 
+  - tensorflow2_2_6_0-gnu-hpc-devel: [x86_64] 
+  - tensorflow2_2_6_0-gnu-hpc-doc: [x86_64] 
+  - tensorflow2_2_6_0-gnu-openmpi2-hpc: [x86_64] 
+  - tensorflow2_2_6_0-gnu-openmpi2-hpc-devel: [x86_64] 
+  - tensorflow2_2_6_0-gnu-openmpi2-hpc-doc: [x86_64] 
   - tepl-devel 
   - termcap 
   - termcap-32bit: [x86_64] 
@@ -41703,7 +41723,6 @@ unsorted:
   - votca-csg-common 
   - votca-csg-devel 
   - votca-csg-tutorials 
-  - votca-csgapps 
   - votca-ctp 
   - votca-ctp-common 
   - votca-ctp-devel 
