@@ -309,4 +309,23 @@
 </comment>
     <requestid>906675</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6ce801c52c11b5acad9ea03276aa543f</srcmd5>
+    <version>1.19.14</version>
+    <time>1630525007</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.19.14:
+  * Bump to golang 1.15.15 in build/**
+  * Bump to golang 1.15.15 in cluster/** and staging/**
+  * Bump to golang 1.15.15 in test/**
+  * Avoid spurious calls to update/delete validation
+  * update comments and owners file for pkg/util/removeall
+  * kubelet: do not call RemoveAll on volumes directory for orphaned pods
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.13
+  * Add missing locks for device-manager in 1.19
+  * test/e2e: Busybox image is not being templatized
+  * Fix race in attachdetach tests
+</comment>
+    <requestid>914233</requestid>
+  </revision>
 </revisionlist>

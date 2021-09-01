@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Aug 25 11:29:52 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.14:
+  * Bump to golang 1.15.15 in build/**
+  * Bump to golang 1.15.15 in cluster/** and staging/**
+  * Bump to golang 1.15.15 in test/**
+  * Avoid spurious calls to update/delete validation
+  * update comments and owners file for pkg/util/removeall
+  * kubelet: do not call RemoveAll on volumes directory for orphaned pods
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.13
+  * Add missing locks for device-manager in 1.19
+  * test/e2e: Busybox image is not being templatized
+  * Fix race in attachdetach tests
+
+-------------------------------------------------------------------
 Fri Jul 16 13:08:49 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.19.13:
