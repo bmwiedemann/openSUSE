@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  1 11:14:56 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Disabled the mqtt plugin for SLES and the modbus plugin for 
+  everything except Tumpleweed as the dependencies are not met in 
+  those distributions
+- Added the modbus plugin as dependency to plugins-all
+
+-------------------------------------------------------------------
+Mon Aug 30 08:09:48 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_collectd.service.patch
+
+-------------------------------------------------------------------
 Mon Jun 28 13:17:32 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - add modbus plugin

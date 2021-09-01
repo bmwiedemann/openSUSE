@@ -64,6 +64,7 @@ Patch7:         collectd-fix_collectd_config_path_in_snmp_probe.patch
 Patch8:         9e36cd85a2bb_sigrok_Update_to_support_libsigrok_0_4.patch
 # PATCH-FIX-OPENSUSE avoid-pg-config.patch avoid pg_config if possible
 Patch11:        avoid-pg-config.patch
+Patch12:        harden_collectd.service.patch
 # for /etc/apache2/... ownership (rpmlint):
 BuildRequires:  apache2
 BuildRequires:  autoconf
@@ -109,8 +110,12 @@ BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmnl)
+%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(libmodbus)
+%endif
+%if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libmosquitto)
+%endif
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
@@ -295,6 +300,7 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-memcachec
 Optional %{name} plugin to sample memcached statistics.
 
+%if 0%{?suse_version} > 1500
 %package plugin-modbus
 Summary:        TCP Modbus Plugin for %{name}
 Group:          System/Monitoring
@@ -302,7 +308,9 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-modbus
 Optional %{name} plugin to communicate with TCP Modbus devices.
+%endif
 
+%if 0%{?is_opensuse}
 %package plugin-mqtt
 Summary:        MQTT Plugin for %{name}
 Group:          System/Monitoring
@@ -310,6 +318,7 @@ Requires:       %{name} = %{version}-%{release}
 
 %description plugin-mqtt
 Optional %{name} plugin to send and receive MQTT messages.
+%endif
 
 %package plugin-pinba
 Summary:        Pinba Collector Plugin for %{name}
@@ -482,7 +491,12 @@ Requires:       %{name}-plugin-logparser = %{version}-%{release}
 Requires:       %{name}-plugin-lua = %{version}-%{release}
 Requires:       %{name}-plugin-mcelog = %{version}-%{release}
 Requires:       %{name}-plugin-memcachec = %{version}-%{release}
+%if 0%{?suse_version} > 1500
+Requires:       %{name}-plugin-modbus = %{version}-%{release}
+%endif
+%if 0%{?is_opensuse}
 Requires:       %{name}-plugin-mqtt = %{version}-%{release}
+%endif
 Requires:       %{name}-plugin-mysql = %{version}-%{release}
 Requires:       %{name}-plugin-notify-desktop = %{version}-%{release}
 Requires:       %{name}-plugin-openldap = %{version}-%{release}
@@ -558,6 +572,7 @@ to write %{name} unixsock clients.
 %patch8 -p1
 %endif
 %patch11 -p1
+%patch12 -p1
 
 sed -i 's|@@VERSION@@|%{version}|g' configure.ac
 
@@ -815,13 +830,17 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/memcachec.so
 %{_libdir}/collectd/memcachec.la
 
+%if 0%{?suse_version} > 1500
 %files plugin-modbus
 %{_libdir}/collectd/modbus.so
 %{_libdir}/collectd/modbus.la
+%endif
 
+%if 0%{?is_opensuse}
 %files plugin-mqtt
 %{_libdir}/collectd/mqtt.so
 %{_libdir}/collectd/mqtt.la
+%endif
 
 %if 0%{?sle_version} < 150000 || 0%{?is_opensuse}
 
