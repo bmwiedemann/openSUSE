@@ -1050,4 +1050,12 @@ This references bsc#1186798</comment>
   only link them at the post stage if they don't exist (bsc#1188043)</comment>
     <requestid>909990</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3b2699655668dae30ea60e51a5f567c7</srcmd5>
+    <version>2.6.12</version>
+    <time>1630525034</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915441</requestid>
+  </revision>
 </revisionlist>
