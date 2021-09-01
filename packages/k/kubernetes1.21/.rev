@@ -106,4 +106,41 @@
   * (scheduler e2e) Create balanced pods in parallel</comment>
     <requestid>907299</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>53277436e2d6f0fc42328faf5b6f715c</srcmd5>
+    <version>1.21.4</version>
+    <time>1630525009</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.4:
+  * Avoid spurious calls to update/delete validation
+  * Update to go1.16.7
+  * Fix metrics reporting for the deprecated watch path
+  * Update configure-helper.sh
+  * Update configure-helper.sh
+  * Update configure-helper.sh
+  * Fix disruptive subPath test failures
+  * Fix: ignore not a VMSS error for VMAS nodes in reconcileBackendPools
+  * feat: Provide IPv6 support for internal load balancer
+  * Update to using apiserver-network-proxy v1.22
+  * Make CSR cleaner tolerate objects with invalid status.certificate
+  * disable aufs module
+  * Update pd csi driver images to use v1 images (CSINode, CSIDriver, etc)
+  * storage e2e: patch in RBAC rules for secrets
+  * storage e2e: downgrade hostpath driver
+  * storage e2e: disable health check containers
+  * storage e2e: automate hostpath YAML updates, hostpath v1.6.2
+  * update comments and owners file for pkg/util/removeall
+  * kubelet: do not call RemoveAll on volumes directory for orphaned pods
+  * Fix panic in master upgrade tests
+  * Update CHANGELOG/CHANGELOG-1.21.md for v1.21.3
+  * Updated to use konnectivity client v0.0.21, and implemented placeholder context
+  * Fix the code is leaking the defaulting between unrelated pod instances
+  * Simplify use of the fake dynamic client
+  * fix: return empty VMAS name if using standalone VM
+  * wait for endpoints to be available
+  * Remove extra zone test
+  * Fix frameworkImpl.extenders being not set
+  * fix: Refresh VM cache when node is not found</comment>
+    <requestid>914239</requestid>
+  </revision>
 </revisionlist>

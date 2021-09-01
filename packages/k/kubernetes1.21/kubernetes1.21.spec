@@ -22,7 +22,7 @@
 %define baseversionminus1 1.20
 
 Name:           kubernetes%{baseversion}
-Version:        1.21.3
+Version:        1.21.4
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -53,8 +53,8 @@ BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go-go-md2man
-# Kubernetes 1.21.3 requires at least go 1.16.6 (see changelog)
-BuildRequires:  go >= 1.16.6
+# Kubernetes 1.21.4 requires at least go 1.16.7 (see changelog)
+BuildRequires:  go >= 1.16.7
 BuildRequires:  golang-packaging
 BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
@@ -68,9 +68,6 @@ management of containerized applications.
 
 It groups containers that make up an application into logical units
 for management and discovery.
-
-
-
 
 
 
