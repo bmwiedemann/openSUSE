@@ -29,7 +29,7 @@ URL:            http://hevea.inria.fr/
 Source0:        http://hevea.inria.fr/distri/%{name}-%{version}.tar.gz
 Source1:        http://hevea.inria.fr/distri/%{name}-%{version}-manual.tar.gz
 BuildRequires:  ocaml-ocamlbuild
-BuildRequires:  ocaml(ocaml.opt)
+BuildRequires:  ocaml(ocaml.opt) >= 4.08
 
 %description
 HEVEA is a LaTeX to HTML translator.  The input language is a fairly 
