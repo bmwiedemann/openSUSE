@@ -217,6 +217,9 @@ Wed Feb 12 16:45:06 CET 2020 - dimstar@opensuse.org
   + Add support for numeric keypad for zooming.
   + Fix missing filename results when searching.
   + Fix compilation on Wayland-only systems.
+- Changes from SLE version 3.34.3 (bsc#1171506): 
+  + Fix crashes often happening when searching.
+  + Fix crashes after conflict dialog response.
 
 -------------------------------------------------------------------
 Sat Jan 25 14:18:26 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
