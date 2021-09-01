@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 30 15:42:56 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Changelog Update for SLES:
+  The Following patches have been backported to SLES and are therefore
+  missing from the Factory changelog:
+  * graphviz-2.40.1-fix-dot-segfault.patch (bsc#1151207)
+  * graphviz-out-of-bounds-write.patch (bsc#1185833)
+  * graphviz-null_dereference.patch (bsc#1185833)
+
+-------------------------------------------------------------------
 Wed Aug 11 12:00:16 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 - Dropped python2 subpackages as the bindings are removed in 2.48
 - Update to version 2.48.0 (changes since 2.47.1)
