@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  1 14:58:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9.1
+  * This simplifies the handling of distributed computations in
+    connection with volume by signed decomposition. There are a
+    few other improvements.
+
+-------------------------------------------------------------------
 Fri Jul  2 21:41:53 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.9.0
