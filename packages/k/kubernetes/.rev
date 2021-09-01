@@ -740,4 +740,16 @@
     <comment>version bump</comment>
     <requestid>906677</requestid>
   </revision>
+  <revision rev="80" vrev="20">
+    <srcmd5>aa73ed510a3818759d9e6777c0bf844f</srcmd5>
+    <version>unknown</version>
+    <time>1630525009</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump coredns version to 1.8.4 and etcd to 3.5.0 
+
+- Bump kubernetes-* to 1.22.1 and kubernetes-*-minus1 to 1.21.4 
+
+------------------------------------------------------------------</comment>
+    <requestid>915013</requestid>
+  </revision>
 </revisionlist>
