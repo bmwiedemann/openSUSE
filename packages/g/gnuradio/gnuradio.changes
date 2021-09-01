@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 31 12:57:53 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- added a patch 0003-enables-use-of-qwt-6_2.patch to build with
+  Qwt-6.2.0. The patch was backported from pull request #5034.
+- fixed build for Tumbleweed and Factory
+
+-------------------------------------------------------------------
 Fri Jun 11 19:00:29 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to version 3.8.3.1
