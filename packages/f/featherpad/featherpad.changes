@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  1 10:14:21 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.0:
+  * Miscellaneous fixes to syntax highlighting of some programming
+    languages. Also, a little faster highlighting in general.
+  * Go is added to syntax highlighting.
+  * Final symlink targets are also checked for detecting programming languages.
+  * An option is added for disabling menu-bar accelerators.
+  * Number separators are used on the status-bar.
+  * AppStream metadata is added by Balló György
+  * Support for OS/2 is added by josch1710 at GitHub.
+  * Bumped the version to 1.0.0
+
+-------------------------------------------------------------------
 Wed Mar 10 08:45:18 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.18.0:

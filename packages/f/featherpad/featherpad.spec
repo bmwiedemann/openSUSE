@@ -17,7 +17,7 @@
 
 
 Name:           featherpad
-Version:        0.18.0
+Version:        1.0.0
 Release:        0
 Summary:        Qt5-based plaintext editor
 License:        GPL-3.0-only
@@ -85,6 +85,7 @@ FeatherPad is a Qt5-based plain-text editor. It is independent of any desktop en
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/help*
 %{_datadir}/icons/hicolor/*/apps/%{name}.??g
+%{_datadir}/metainfo/featherpad.metainfo.xml
 
 %files lang -f %{name}.lang
 %dir %{_datadir}/%{name}/translations

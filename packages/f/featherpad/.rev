@@ -375,4 +375,21 @@
     targets (e.g., when their parent directories are symlinks).</comment>
     <requestid>878126</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ac8564899b7ee325608c67731b9a2b9e</srcmd5>
+    <version>1.0.0</version>
+    <time>1630525031</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.0:
+  * Miscellaneous fixes to syntax highlighting of some programming
+    languages. Also, a little faster highlighting in general.
+  * Go is added to syntax highlighting.
+  * Final symlink targets are also checked for detecting programming languages.
+  * An option is added for disabling menu-bar accelerators.
+  * Number separators are used on the status-bar.
+  * AppStream metadata is added by Balló György
+  * Support for OS/2 is added by josch1710 at GitHub.
+  * Bumped the version to 1.0.0</comment>
+    <requestid>915448</requestid>
+  </revision>
 </revisionlist>
