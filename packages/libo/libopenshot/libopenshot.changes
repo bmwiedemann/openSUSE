@@ -1,4 +1,597 @@
 -------------------------------------------------------------------
+Mon Aug 30 15:23:17 UTC 2021 - tiwai@suse.com
+
+- Use the released version 0.2.6 instead of develop branch;
+  _service is changed accordingly, too
+
+-------------------------------------------------------------------
+Fri Aug 27 08:46:46 UTC 2021 - ecsos@opensuse.org
+
+- Update to version 0.2.6+5:
+  * Merge master 0.2.6 into develop
+  * set default crop border to 0
+  * Update Version to 0.2.6 SO 20
+  * Link catch-main wtih Catch2::Catch2 (#714)
+  * Bug fix. Prevent adding the same clip as child in the Tracker and Object Detection Effects
+  * Fixing SVG unit tests to correctly check the default SVG size
+  * SCALE_NONE was incorrectly sizing SVG, Image, and Video files. Since OpenShot changes the preview window size during editing, the SCALE_NONE clips should always be scaled to the ratio: preview / timeline... so they stay relative sized to the timeline size.
+  * FFmpeg: Create, use av_err2string() (#689)
+  * Fixed Draw Box property in ObjectDetection Effect
+  * Prevent re initializing ParametricEQ  for each frame
+  * Bump codecov/codecov-action from 1 to 2.0.2 (#709)
+  * Updating audio descriptions
+  * Added Delay and Echo effects
+  * Eliminate useless 'const' (#703)
+  * CMake: Fix ENABLE_MAGICK (#701)
+  * Bugfix
+  * Adding description on the audio effects and cleaning the code
+  * Adjusting parameters of distortion
+  * Spliting secundary effects from Robotization and Compressor
+  * Fixed weird noises in the audio robotization effect
+  * Added voice robotization and whisperization effect working
+  * removed comment with number
+  * Fix audio encoding on FFmpeg 4.4. AVFrame was missing a few properties that need to be set in newer versions of FFmpeg. This is also compatible with FFmpeg 3+.
+  * Reverting video_timestamp increment logic which used pkt.duration. In some codecs (such as vp8), this approach breaks due to differences in the timebase vs the framerate. For example, if the timebase is an inverse of the FPS, everything works. But if the timebase is not, for example 1/1000000, this approach breaks.
+  * Only get rotation from metadata if 0 keyframes
+  * Unit tests: --output-on-failure
+  * Switch to pkt.duration for incrementing PTS, and rename the 2 timestamp variables to something more sane.
+  * Experimental conversion of timestamp rescaling to use the av_packet_rescale_ts() method. I'm just not sure the backwards compatibility of this approach with older FFmpeg versions.
+  * We already init values in constructor, and moving incrementing to later in function.
+  * FFmpeg: Move av/swresample decision into CMake (#693)
+  * Reduced, but didn't eliminate empty time at the beginning
+  * Fix invalid starting PTS value, preventing blank 1st frames on some thumbnailing and video players.
+  * FindFFmpeg: Don't report missing components
+  * CMake: Adapt to FindFFmpeg.cmake changes
+  * Enhance FindFFmpeg.cmake
+  * CMake: USE_SWIG_DEPENDENCIES for CMake 3.20+ (#691)
+  * Fixed avresample dependency
+  * Implemented Initial audio effects
+  * tests: Make ImageWriter tests optional (#685)
+  * Unit tests: Don't run in parallel on Windows
+  * CMake: Handle indeterminate FFMpeg HWAccel status
+  * CMake: Protect against empty version vars
+  * Unit tests: Destroy zombie test
+  * Move FFmpeg hwaccel checks to CMake, eliminate #pragma messages (#645)
+  * Default virtual destructor for TrackedObjectBase
+  * TrackedObject: DRY out with delegating ctors
+  * TrackedObject: Pare down includes
+  * EffectBase: Fix JSON signatures
+  * Add TrackedObjectBBase to Python SWIG
+  * CMake: Drop minimum version to 3.10 (#682)
+  * Clip: Restore property choice names (#681)
+  * CMake: Set minimum version to 3.12 (#680)
+  * Clip: Mark GetFrame() override as such (#679)
+  * Fixed Keyframe Test
+  * removed assert from interpolation
+  * Refactoring timeline_frame_number out of apply_layer() and TimelineInfoStruct, we already have this data in scope (on the background frame instance)
+  * Fixed missing detection in the first frame
+  * More permissive range interval for Tracker test
+  * Fixed Json in Tracker Tests
+  * Refactor of global timeline effects, to address a regression with global/timeline Mask/Transitions no longer working correctly. This was caused by an optimization that broke the general behavior of the global transitions.
+  * Disabling Examples_opencv because it needs a deep refactor
+  * Added TrackedObjectBBox to python bindings
+  * Included AVresample outside if statement
+  * CMake: VERBOSE_TESTS option (default off)
+  * Settings: Unit test LIBOPENSHOT_DEBUG envvar
+  * Updated Json communication of Tracker effect
+  * Removed unnecessary Json tags
+  * Key "objects" in Json hold a dict of tracked objects
+  * Fix counting of points for color effects (#666)
+  * CI,bionic: Work around broken libzmq5 dep (#671)
+  * OpenCV: Adapt to API changes in OpenCV 4.5.2+ (#639)
+  * CMake: Build bundled jsoncpp as an OBJECT library
+  * Don't link with ImageMagick MagickWand (not used)
+  * FFmpeg: Reduce overlinking
+  * Rename version_info files to NAME.env (#665)
+  * Settings: Support LIBOPENSHOT_DEBUG envvar
+  * Fixed missing parent clip in TrackedObjectBoundingbox
+  * Downgrade OpenCV 4.5.1 msg to WARNING
+  * Add OPENCV_VERSION_STR to library symbols
+  * CMake: Reject OpenCV 4.5.1, prepare for 4.5.2+
+  * Remove mistakenly-added file
+  * small fix
+  * Fixed aspect ratio and off-center displacement when attaching a clip to a tracked object
+  * Added author and added licence in ClipProcessingJobs
+  * Tests: Switch to standard BUILD_TESTING variable
+  * Tests: Shorten some crazy long test names
+  * CMake: Add separate unit test targets
+  * Gitlab-CI: Update Windows builder configs, OpenShotAudio linking; enable Windows unit tests (#657)
+  * tests: Make ImageWriter tests optional (#659)
+  * CMake: Properly enable unit tests (#658)
+  * Fixed attaching a clip to Tracker and ObjectDetection
+  * Don't use OpenShot.h in OpenCV example
+  * Don't use OpenShot.h in ExampleHtml.cpp
+  * Properly handle unavailable Catch2 (#656)
+  * OpenCV is again an optional dependency
+  * Fixed FPS ToInt() conversion and changed initial frame number to 1
+  * Normalize repo to LF (Unix) line-endings, enforce (#654)
+  * Added option to hide bounding box text in ObjectDetector effect. Fixed tab formatting
+  * Changed None to empty string, corrected dynamic pointers
+  * Removed namespaces, iostream library and added  TrackedObject test
+  * Changed formatting from tab to spaces
+  * Fixed variable names and comments
+  * tests/KeyFrame: Split a CHECK(), for readability
+  * Give SWIG's Ruby code a namespace hint
+  * effects/ObjectDetection: Declare drawPred correctly
+  * src/effects/Tracker.h: Fix bad merge
+  * tests/KeyFrame.cpp: Typo
+  * tests/KeyFrame.cpp: Typo
+  * Added class filter and updated visualization
+  * tests/CV*: Fix opening comment
+  * tests/CacheDisk: Use separate path for each test
+  * Install Catch2 in Github Actions CI
+  * tests/FrameMapper: Variables fixes
+  * Remove old UnitTest++ tests
+  * Fix test memory leaks
+  * Port new test to Catch2
+  * Some fixes to new unit test
+  * Fix unit test building
+  * Port unit tests to Catch2
+  * Fixing tabs/spaces
+  * Removing some debug logging related to opencv effects
+  * Added new unit test which distributes audio samples between many different framerates (30/1, 24/1, 30000/1001, 119/4), and fixes a huge issue with mapping frame numbers incorrectly causing audio crackles/pops. Also fixes a bug which causes crashes on NON-STEREO channel layouts.
+  * Added confidence threshold
+  * Added default class colors
+  * Added Color selection, stroke size and opacity to ObjectDetection rectangles
+  * Fixed ObjectDetection crash (disabled effect parenting)
+  * Rename tests/*_Tests.cpp to tests/*.cpp
+  * Duplicate *_Tests.cpp history in cppunittest/ history.
+  * Protecting ObjectDetection when no object is found
+  * Timeline: Add constructor accepting ReaderInfo
+  * Tabs->spaces in OpenCV effect headers
+  * FFmpegReader: Throw correct exception (#647)
+  * tests/DummyReader: Goose coverage (#650)
+  * Add repo name to CI workflow title
+  * README: Label badges visibly
+  * README: label badges by repo
+  * README: Add Github Actions status badges
+  * README: Remove Travis build shields
+  * Added opacity to Tracker effect
+  * Implemented Stroke width and background color for Tracker bounding boxes
+  * Renamed "Parent Object ID" to "Parent"
+  * Renamed "Parent Effect ID" to "Parent"
+  * Fixed draw_box scope
+  * Protect against linking the tracked object with the parent clip
+  * Allow the user to hide the blue bounding box on the Tracker effect
+  * Added jitter filter on Tracked boxes
+  * Using normalized initial bounding box on CVTracker
+  * Set checkout fetch depth for codecov
+  * Increasing max fuzz for Chromakey
+  * Fixing logic when applying chromakey logic with pre-multiplied alpha. Each channel must be updated, vs just the alpha value.
+  * Actions CI: Set fetch-depth for Codecov
+  * Deprecate TooManySeeks exception less confusingly
+  * src/CMakeLists: Don't confuse Doxygen
+  * Doxyfile.in: Incorporate doxygen -u changes
+  * ObjectDetection: Use std::make_shared<>()
+  * Headers: Fix doc comments
+  * Reverting version
+  * Test bumping the version (for gitlab-ci deployment testing)
+  * Fixing version info needed by deployment process
+  * Adding version and so to version info (for use during deployment step)
+  * Adding version and so to version info (for use during deployment step)
+  * Adding version and so to version info (for use during deployment step)
+  * Adding version and so to version info (for use during deployment step)
+  * Adding CI_PIPELINE_ID into the version info
+  * Updating git log format to be consistent across all 3 repos (for final release publishing reasons)
+  * Implementing Codacy improvements, removing some unused or pointless code
+  * Re-enable Zmq logging
+  * Updating documentation on CacheBase class::GetFrame override
+  * Removing caching from Clip object. Causes too many issues and does not add any performance (in my tests)
+  * Fixing regression with Waveform generation.
+  * Add CODECOV_TOKEN envvar to Github CI
+  * Disabling Clip caching and fixing a bug with waveform()
+  * Large refactor of OpenMP integration (or rather the removal of OpenMP on the Timeline and FFmpeg-related classes). The logic behind this decision, was based on profiling libopenshot and the amount of wasted CPU idle time on all the various threads. The slow code is still synchronous, and all the threads must wait on each other, adding additional overhead. So, removing lots of unneeded threads, and simplifying the underlying Timeline->Clip->FFmpegReader flow. Also, removed 2 calls to QPainter::drawImage, by improving the flexibility of Clip->GetFrame.
+  * Reducing the # of threads on the Timeline in half, with a minimum of 4. Trying to experiment and reduce stuttering.
+  * Improving performance after working with google-prof, to profile CPU. Calling OMP_MP_NUM_PROCESSORS less often, since it's quite expensive according to profiling. Adjusting Timeline final_cache to match the video caching thread max_frames, so one doesn't clobber the other. Also, fixing an issue with openshot-player, where a video file with no audio skips horribly.
+  * Minor fix
+  * Added support to set an effect's properties by it's parent effect
+  * Updated JSON functions related to Tracked Objects
+  * Added support to insert the image of a clip inside a Tracked Object
+  * Added support to set the visibility of a Tracked Object
+  * Increasing Linux build threads... experimental
+  * Experimental multi-thread builds for Linux and Mac
+  * Switching to QImageReader for parsing a path to a QImage, and allowing the AutoTransform property correctly handle exif metadata (flipping and orientation of images)
+  * Removed unused class KeyframeBase
+  * Fixed bug in ObjectDetection effect
+  * Keyframe: Remove Coordinate ctor unit test
+  * Add Exceptions.h back to OpenShot.h
+  * Keyframe: Get rid of vector aliases, Coord ctor
+  * Fraction: Restore __str__ for Python
+  * KeyFrame.h: Avoid shadowing SWIG templates
+  * Add Protobuf and OpenCV to CI preinstalls
+  * Add Exceptions.h include to new effects
+  * Fixing scope issue and unused var
+  * Fixing a big issue where SVG files are not correctly scaled to larger resolutions, for cases where the default size is smaller than the Timeline size (or preview size). Now SVG files are rescaled/re-rasterized larger when needed, and otherwise cached.
+  * Updated variable names
+  * Added support to attach a clip to another clip
+  * ObjectDetection: updated object selection and transform handler
+  * Added support to show the transform handler for the selected object
+  * Coordinate_Tests: include Exceptions.h
+  * Fraction: Implement dict type methods
+  * Effect GetFrame(): Use std::make_shared
+  * Thanks to @ferdnyc for the suggestion to better detect alpha channels.
+  * Until I find a better method of detecting pix_fmt's that have an alpha channel, I'm going with a simple list. Not sure if this will work well with older versions of FFmpeg though, as these items change over time. Waiting to see how build servers handle it.
+  * Move Exceptions.h includes to .cpp files
+  * Restore (unused) TooManySeeks exception, deprecate
+  * Updated documentation
+  * ObjectDetection: show object's icons and transform handlers per frame
+  * Added support to update the detected bounding-boxes keyframes
+  * Added support to attach clip to detected object (ObjectDetection) effect
+  * Clip.cpp: Removed hard-coded Tracker effect check in AddEffect function
+  * Fixed codacy review warnings
+  * Fixed clip transform handler when attached to object
+  * Fixed codacy review warnings
+  * Tracker effect and export video fixes
+  * Tracked object bounding box transform handler fix
+  * Attaching clip to tracked object fixes
+  * Changed KeyframeBBox to TrackedObjectBBox and added TrackedObjectBase
+  * Update copyright in README and OpenShot.h
+  * Update Clip.cpp apply_keyframes funcion
+  * Removed IKeyFrame.h and applied minor fixes to Clip.cpp
+  * Updated Clip.cpp to support GUI to select attached object
+  * Minor fixes
+  * Apply suggestions from code review
+  * Rename protobuf packages to pb_foo
+  * OpenCV: Move 'using ns std', scrub whitespace
+  * OpenCV/Protobuf: Install library and headers
+  * Fix FindResvg for older CMake
+  * Property fixes for bindings
+  * Propagate library defs to swig
+  * Results of include-what-you-use run
+  * Update src/effects/Stabilizer.h
+  * Apply suggestions from code review
+  * Updating link to renamed protobuf library
+  * Changing name of ProtoBufMessage to openshot_protobuf for clarity, also installing it in PREFIX/lib
+  * Fraction: Restore __string__ for Python
+  * Eliminate TooManySeeks exception (#611)
+  * Reverting 'clear the cache when the user seeks' experiment. It was a failed experiement, not to mention that it destroys performance on the "Transform" tool.
+  * Fixing alpha videos, by handling the conversion to premultiplied RGBA separately
+  * Unit tests: Don't use OpenShot.h header (#607)
+  * Delete actions/labeler config (#608)
+  * Add Dependabot checking for Actions (#606)
+  * Remove OpenShot.h from OpenCV unit tests
+  * Unit tests: Don't use OpenShot.h header
+  * CMake: Add ENABLE_OPENCV option, use targets
+  * Added functionality to link a clip to a tracked object (Animations)
+  * Correct OpenMP function name (#601)
+  * Refresh Codecov configs (#603)
+  * Fixed protobuf message compiling on Mac
+  * Fixed protobuf message compiling on Mac
+  * Added rotation transform to the tracker bounding-box.
+  * Improved protobuf message compiling
+  * Refactored KeyframeBBox
+  * Improved protobuf message compiling
+  * label-conflicts: Only on branch push, not PR (#600)
+  * Switch to Github Actions for CI builds (#599)
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Keyframe: Replace pair vector w/ CoordinateVector
+  * Bindings: Add template specializations
+  * Keyframe: Unit tests for new constructors
+  * Keyframe: Add vector ctors
+  * Fix Point unit tests
+  * Keyframe: Replace AddPoint overload w/default arg
+  * Point: Unit tests for new constructor
+  * Point: Convert to delegating ctors, constref args
+  * # This is a combination of 2 commits. # This is the 1st commit message:
+  * Coordinate: Add std::pair constructor
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Timeline::GetClip: Add anti-slicing unit tests (#596)
+  * Fixing an issue caused by timeline::GetClip returning a ClipBase instead of a Clip (broke waveform generation). Also adding a swig definition for the Caption effect.
+  * Added transform handler for Tracker effect
+  * Updated include path on opencv examples
+  * Fixed opencv example compilation on cmake
+  * Clip: Mark methods as overrides
+  * various Readers: Fix GetCache return type
+  * tests/Coordinate: Complete coverage
+  * various: Tidy up some includes
+  * tests/Fraction: Unit tests for new ctors
+  * Fraction: New ctors accept STL container args
+  * Fraction: Update Python __repr__
+  * Add label-merge-conflicts Action workflow
+  * Added properties to Tracker effects
+  * Solved FPS bug.
+  * Removed Excess information from json.
+  * Added scale factor to class to replace OpFPS.
+  * Make OpenShotAudio loading conditional
+  * Applied code review suggestions
+  * codecov.yml: Update ignore list
+  * Applied code review suggestions
+  * Improved error handling for effect pre-processing
+  * Color_Tests: Remove commented code, be const
+  * Codecov: Update ignore list in YAML
+  * Point_Tests: Increase coverage
+  * Color_Tests: Increase coverage
+  * Fixed CVTracker test
+  * FrameMapper_tests: Add more coverage
+  * FrameMapper_Tests: Correct for reader duration
+  * FrameMapper_Tests: Use SUITE, create no-op test
+  * Added error message handling for ClipProcessingJob
+  * Fixing color format for opencv conversion
+  * Initial design of new keyframes specialized classes
+  * Apply suggestions from code review
+  * Fixed binding issues for opencv effects
+  * Fix stale yml string to be a literal string (instead of folded)
+  * Fixed a few codacy issues
+  * Updating method docs
+  * Improvement to video caching thread, to recover from the separation of cache vs display frame #. Also found a mutex that was needed, to prevent crashing when the video thread calls timeline::GetFrame at certain times... colliding with another thread (and independent of OpenMP).
+  * Added 2 new unit tests for Clip's with a Timeline associated with them, and FFmpegReaders with a Clip/Timeline associated with them.
+  * Added 2 FrameMapper unit tests which verify resampled audio data has no gaps/pops, and offset FrameMapper clips don't use the wrong # of audio samples
+  * Removing invalid ICC sRGB color profile from these PNG used in unit tests (which throw warnings)
+  * - Added default caption value, for demonstration purposes (to help users see a valid example) - Append some newlines onto the end of any caption text... needed by the regex for some reason - Updated font name and caption text to be a new type (font and caption), and we have corresponding UI changes for those on openshot-qt
+  * - Added word-wrap (using adjustable left, top, and right side keyframes) - Added background color and alpha - Added font color alpha - Added fade in / out logic - Added background padding & rounded corners - Added adjustable font name
+  * - Simplifying the FrameMapper Clip::AdjustFrameNumber method - Removing transformed == true boolean (Qt should be smart enough to optimize for blank transforms) - Fixing regression from TimelineBase import
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Resolving conflicts
+  * Add a comment explaining FFmpegReader::HasAlbumArt()'s behavior
+  * Finish conflict resolution
+  * Fixing some additional cpp_test complaints
+  * Fixing some cpp_test complaints
+  * Fix alpha and mask effects, so they correctly multiply the alpha to all colors (since we have switched to a premulitplied alpha format)
+  * Replacing ARGB32_Premultiplied with Format_RGBA8888_Premultiplied, which still seems to benefit from performance, but keeps the byte order the same as before. win win
+  * Converting RGB8888 to ARGB32_Premultiplied (for performance reasons)
+  * Replacing audio fix implementation with ParentClip(), to access clip start and position (if any)
+  * Implemented position remapper inside FrameMapper to fix audio noise when exporting to different fps
+  * Initializing Clip info struct, and fixing clip cache settings
+  * Initialize parent clip variable
+  * Fixing some regressions on image merging
+  * Large refactor of Timeline, TimelineBase, ClipBase, and Clip, to allow a Clip access to the parent timeline instance (if available), and thus, certain properties (preview size, timeline FPS, etc...). This allows for a simpler rendering of Clip keyframes (during the Clip::GetFrame method), and a simpler Timeline class, that can change the preview window size dynamically and no longer requires a Singleton Settings class.  - Also removed "crop" from Clip class, as it was never implmeneted correctly, and we have a fully functional "crop" effect when needed  - Added caching to Clip class, to optimize previewing of cached frames (much faster than previous)
+  * Fixed a bug with cropping logic on Clip (disabled it temporarily). I need to replace the Crop functionality with a more robust cropping tool. Also, updated Timeline to use the MaxWidth/MaxHeight settings when calling the clip (since those are set when the screen is resized).
+  * Refactored the Settings::Instance()->MAX_WIDTH and Settings::Instance()->MAX_HEIGHT out of the Cilp class. GetFrame() now has an overload which specifies the width, height, and samples needed. Otherwise, it returns the Clip image based on the source reader (width, height, num samples).
+  * - Refactoring all Timeline drawing code into the Clip class - Making Clip a proper Reader (so it can be used directly, instead of a Timeline)
+  * INSTALL.md: Fix Markdown style
+  * FindOpenShotAudio: Fix linking
+  * Codecov: Update excludes for new repo layout
+  * CMake: Code and Find module tweaks
+  * CMake: Add target for ImageMagick dependency
+  * Rename FindResvg, target is now Resvg::Resvg
+  * ImageReader/Writer.h: Goose coverage to 100%
+  * Fix Ruby example script bug
+  * Update INSTALL.md instructions for tree reorg
+  * tests/CmakeLists, Doxyfile.in: Update paths
+  * Root CMakeLists: Adjust paths for tree reorg
+  * Examples: Add new CMakeLists.txt for directory
+  * Bindings: Rename MappedMetadata to MetadataMap
+  * Bindings: Use SWIG shared_ptr for Ruby, also
+  * Bindings: Update include paths
+  * Examples: Update include paths
+  * tests: Update include paths
+  * Use new OpenShot::Audio target in CMakeLists.txt
+  * Update src/CMakeLists.txt for source tree reorg
+  * Update include paths in all source/header files
+  * Reorganize source tree (headers in src/)
+  * QtImageReader: Consolidate ctors
+  * Tests: Increase coverage for ImageReader/Writer
+  * ImageReader: Consolidate ctors using default arg
+  * Update the stale github message
+  * Fixing some additional cpp_test complaints
+  * Fixing some cpp_test complaints
+  * Update Saturation.cpp
+  * Update Saturation.cpp
+  * Fix alpha and mask effects, so they correctly multiply the alpha to all colors (since we have switched to a premulitplied alpha format)
+  * Replacing ARGB32_Premultiplied with Format_RGBA8888_Premultiplied, which still seems to benefit from performance, but keeps the byte order the same as before. win win
+  * Converting RGB8888 to ARGB32_Premultiplied (for performance reasons)
+  * Replacing audio fix implementation with ParentClip(), to access clip start and position (if any)
+  * Initializing Clip info struct, and fixing clip cache settings
+  * Initializing Clip info struct, and fixing clip cache settings
+  * Implemented position remapper inside FrameMapper to fix audio noise when exporting to different fps
+  * Initialize parent clip variable
+  * Allow sub-pixel sized pen stroke
+  * Adding initial caption effect, which supports VTT and SubRip formats (limited support, no formating, no regions)
+  * Fixing some regressions on image merging
+  * Large refactor of Timeline, TimelineBase, ClipBase, and Clip, to allow a Clip access to the parent timeline instance (if available), and thus, certain properties (preview size, timeline FPS, etc...). This allows for a simpler rendering of Clip keyframes (during the Clip::GetFrame method), and a simpler Timeline class, that can change the preview window size dynamically and no longer requires a Singleton Settings class.  - Also removed "crop" from Clip class, as it was never implmeneted correctly, and we have a fully functional "crop" effect when needed  - Added caching to Clip class, to optimize previewing of cached frames (much faster than previous)
+  * CMake: Switch default build type to Release
+  * Add ENABLE_MAGICK CMake option (default ON)
+  * This padding is needed to not lose samples in the first frame of a resample. Apparently, we need enough padding, so we exceed the # of samples required for the first frame, and 20 was just too low for many frame rates / sample rates.
+  * Frame: Reduce code duplication
+  * VideoRenderWidget: missing includes
+  * Pixelate: Fix missing includes
+  * Frame: Use delegating constructors
+  * Frame: Put Qt includes where they're used
+  * video_codec -> video_codec_ctx
+  * Change of name of library
+  * Adding TODO for future improvements
+  * Fix the PTS offset logic error when first reading a file on FFmpegReader. Use the calculated 0 - PTS, unless it is too large (more than 1 second off from zero)
+  * README: Wrap to 80-col, copyright => 2020
+  * Timeline.h: Formatting
+  * Const temporary variable
+  * Replace sleep()/usleep() with std::chrono calls (#473)
+  * Timeline_Tests: Unit tests for new methods
+  * Add GetMaxTime
+  * Timeline: Add id-lookup API and GetMaxFrame
+  * Clip: GetEffect implementation
+  * Timeline.h: Add lots of openshot:: prefixes
+  * ReaderBase: Deprecate SetClip/GetClip names
+  * Use MacOS 10.11 SDK (still targeting 10.9)
+  * Fixed a bug with cropping logic on Clip (disabled it temporarily). I need to replace the Crop functionality with a more robust cropping tool. Also, updated Timeline to use the MaxWidth/MaxHeight settings when calling the clip (since those are set when the screen is resized).
+  * Refactored the Settings::Instance()->MAX_WIDTH and Settings::Instance()->MAX_HEIGHT out of the Cilp class. GetFrame() now has an overload which specifies the width, height, and samples needed. Otherwise, it returns the Clip image based on the source reader (width, height, num samples).
+  * - Refactoring all Timeline drawing code into the Clip class - Making Clip a proper Reader (so it can be used directly, instead of a Timeline)
+  * Tests: Don't enable HW accel as side-effect (#557)
+  * Frame.cpp/h: Fix a bunch of wrong comments
+  * Use std::make_shared to allocate shared ptrs
+  * Add QtUtilities.h header
+  * Include Qt header for Qt::endl
+  * Use Qt::endl with QTextStream
+  * Revert "opencv path added for windows 32 build"
+  * opencv path added for windows 32 build
+  * opencv path added for windows 32 build
+  * minor fix
+  * opencv path added for windows 64 build
+  * Correction of bounding box negative proportions
+  * Drop QtMultimedia and QtMultimediaWidgets deps (#551)
+  * Improved documentation
+  * CVStabilization Test small fix
+  * Remove FFmpeg 3.2 from Travis matrix (#548)
+  * "Ensure full 40-character hashes in changelog"
+  * Replace C compatibility headers with C++
+  * Frame: juce::String supports std::basic_ostream
+  * Remove .../usr/include path on MacOS
+  * Replace math.h header with cmath
+  * Experimental clang++ compiling of libopenshot
+  * Testing -stdlib=libc++ to prevent linking with gcc's libstd++
+  * Using new 5.15 qt install for mac builder
+  * minor fixes
+  * Opencv is an optional dependency
+  * Fixed Stabilizer and created Object Detector tests
+  * Improved SORT algorithm and fixed bug when cutting clips
+  * Changed bounding box draw in Object Detector effect
+  * Added normalized bboxes for tracker and object detector
+  * Updating path to Qt5 on Mac builder
+  * Updated protobuf bash script
+  * CMake: Remove threading config variables
+  * Added CVObjectDetection and ObjectDetection effect
+  * Added interval to apply OpenCV effects
+  * Added zoom to Stabilizer Effect
+  * Tracker Effect minor fixes
+  * Fixed crashing problem and added cut compatibility with opencv effects
+  * Protobuf messages now compile with Cmake
+  * Bug fixes for the function Frame::SetImageCV
+  * minor fix
+  * Added thread runner with pre-processing effects
+  * improved the stabilize effect integration
+  * Updating linux to use Ubuntu Bionic build server
+  * Added code comments and minor changes
+  * Added Stabilize Effect
+  * Add some comment
+  * Enable IN_LIST in older CMake
+  * FFmpegWriter: Missed 1 rename to video_codec_ctx
+  * created protobuf message for Stabilization Effect
+  * Included Tracker as an effect
+  * Fixed typo
+  * Formating
+  * Removing commented out code
+  * Experimental ABI fix to deal with '__cxx11' (take 2)
+  * Experimental ABI fix to deal with '__cxx11'
+  * Experimenting with new include folder, since Catalina doesn't have a /usr/include/
+  * Experimenting with Cmake and Threads failure
+  * Making CMake Threads not required.
+  * Updating to gcc 8.4 for MacOS Catalina
+  * included CVStabilization into Clip
+  * modified cmake to include OpenCV and Protobuf as optional dependencies
+  * Leave the values for qmin and qmax at their default values except for mpeg2. Changing them for the other codecs resultet in exporting with the wrong bitrate.
+  * bug fixes
+  * Implemented CVStabilization, removed cv namespace
+  * Included unit tests for Frame and CVTracker
+  * finished adding protobuf message to CVTracker class
+  * Added protobuf dependency to load and save CVtracker data
+  * integrated Qimage to Mat conversion into Frame
+  * implemented KCF fracker class and included opencv in cmake
+  * MagickUtils: Add #pragma to silence IM6 warning
+  * Set the field order when interlace is on
+  * Fix indentation (2)
+  * Fix indentation
+  * Update src/FFmpegWriter.cpp
+  * Update src/FFmpegWriter.cpp
+  * Update src/FFmpegWriter.cpp
+  * Update src/FFmpegWriter.cpp
+  * Update src/FFmpegWriter.cpp
+  * Add a note about the buffering behavior of Timeline to DummyReader
+  * Add an APPIMAGE_BUILD option to libopenshot
+  * Timeline: const-ref path arg in constructor, docs
+  * OpenMP: Move off deprecated allow_nested boolean
+  * FFmpeg: Combine 2 constructors via a default arg, fix docs, const refs
+  * FFmpegWriter: Remove unreachable branch
+  * Replacing WriteFrame() method with custom constructor which can accept a CacheBase* pointer, for instances where a DummyReader needs some specific test Frame objects
+  * Added an additional unittest for DummyReader (for invalid frame)
+  * Adding some new functionality and documentation to DummyReader. Adding the ability to add test frames, with fake image and audio data. This will can be used in unittests, and will soon be used to verify some new audio improvements (coming soon).
+  * Removing bad suggestion. In theory, we could change this signature to take a const reference to a string, but for now, I'm reverting it.
+  * Fix regression caused by Codacy tweaks
+  * Fixing undefined got_packet int
+  * Changing some libopenshot code based on Codacy feedback. Small refactoring, scope limiing.
+  * Improvements to handling of new codecs
+  * Refert last commit
+  * Replace _Pragma with #pragma
+  * Include data for fps in clip created by ffmpeg 4+
+  * Update Ruby compatibility message
+  * Use Ubuntu 20.04 for FFmpeg 4
+  * Remove unused Qt PPAs
+  * Travis: allow_failures for FFmpeg 3.2
+  * Travis: allow_failures for FFmpeg 3.2
+  * Fix FPS setting on FFmpeg 4, which currently is not setting a valid FPS.
+  * Fix crashes and failures on decoding some types of album art images
+  * Support older CMake
+  * Add some missing juce:: prefixing
+  * Deprecated juce::ScopedPointer => std::unique_ptr
+  * Work around Ruby/JUCE isfinite() conflict properly
+  * use reader instead of new_reader
+  * Set clip in constructor to resolve scale crop issue
+  * FFmpegUtilities: replace variable definition with statement expression
+  * Add more build-config variables
+  * Add version.sh script (#500)
+  * Add QT_VERSION_STR define to OpenShotVersion.h
+  * Exponential regression rule for Pixelate scale
+  * Various: Remove unused variables (#467)
+  * Exceptions: Rename BaseException, for python (#497)
+  * Travis: Fix package list syntax, contents
+  * Findjsoncpp: Fix target
+  * CMake: Rename, modernize Findjsoncpp.cmake
+  * INSTALL doc: Correct some CMake flags, reorder
+  * Make debug handling match libopenshot-audio (#499)
+  * Remove some broken macOS defines
+  * Overrides for derived-class methods
+  * Effects: Mark overridden methods accordingly
+  * Adding keyframable origin point (for shear and rotation)
+  * INSTALL.md: Formatting, markdown cleanup
+  * Add non-subsampled color format for h264 encoder
+  * Travis: Do some YAML syntax linting (#484)
+  * Fix Win64 Gitlab builds (#485)
+  * Update release-log formatting on builders
+  * Fix Win64 Gitlab builds
+  * Add frame rate test to FFmpegReader_Tests
+  * Ignore ctags file (#482)
+  * Fix float to int16_t conversion in resampler
+  * Add SWIG/Ruby compatibility check & warning (#480)
+  * Fix zmq version check (#478)
+  * Add version reporting to FindZeroMQ
+  * ZeroMQ's std::string support is too new
+  * Add version gating for Zmq and Qt deprecations (#470)
+  * bindings: Remove relative header paths (#469)
+  * python/CMakeLists: Lowercase commands, indents
+  * ruby/CMakeLists: Lowercase commands
+  * DummyReader: Initialize is_open
+  * FrameMapper: Eliminate is_open member variable
+  * FFmpegWriter: Free any old context before clobbering
+  * FFmpegWriter: Replace AVRational casts with av_make_q()
+  * FFmpegWriter: (a/v)_codec => (a/v)_codec_ctx
+  * Exclude thirdpart/jsoncpp from Codecov scanning
+  * Clip_Tests: Remove try/catch blocks
+  * Fix test sample values
+  * Restore default gain when adding audio
+  * Fix float to int16_t conversion
+  * CMake: Use GNUInstallDirs for install paths (#457)
+  * Travis: Drop extra FFmpeg 3.4 GCC job (#463)
+  * Travis: Use CMAKE_INSTALL_PREFIX
+  * bindings: Relative paths, overridable
+  * FFmpegWriter: Code reformatting
+  * FFmpegWriter: Drop ancient FFmpeg code
+  * FFmpegWriter: Use std::clog for output
+  * Simplify fix for RAWVIDEO handling for ffmpeg 4+
+  * Fix handling of RAWIMAGE under ffmpeg 4
+  * Change frame rate detection
+  * Initial svt-hevc (h.265) encoder support added
+  * Minor improvements
+  * Newer codecs
+  * ZmqLogger: Add optional dumping to stderr
+  * Try Codecov.io instead
+  * Color-separated Saturation: Optimized math (removed no-ops)
+  * Color-separated Saturation: Line Wrap
+  * Color-separated Saturation: Enhanced description of constructor
+  * Color-separated saturation: Documented new constructor parameters
+  * Color-separated Saturation: Enhanced constructor parameter names
+  * Saturation: Enhanced Comment ("greyscale" vs. "black and white")
+  * Color-separated Saturation: Enhanced Comment
+  * Color-separated Saturation
+  * Update CMakeLists.txt
+  * Update labeler.yml
+  * Delete FindZMQ.cmake
+  * Add labeler.yml control file for label Action
+  * Add labeler workflow file
+- Drop Fix-ODR-violation-replace-variable-definition.patch,
+  because now in upstream.
+
+-------------------------------------------------------------------
 Thu Jul 23 17:56:55 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix compilation with GCC 10, add

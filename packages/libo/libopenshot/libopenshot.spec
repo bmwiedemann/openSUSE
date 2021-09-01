@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,23 @@
 #
 
 
-%define sover 19
+%define sover 20
 
 Name:           libopenshot
-Version:        0.2.5+11
+Version:        0.2.6
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://openshot.org/
 Source0:        libopenshot-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- https://github.com/OpenShot/libopenshot/pull/512.patch
-Patch0:         Fix-ODR-violation-replace-variable-definition.patch
-
 BuildRequires:  cmake
 BuildRequires:  cppzmq-devel
 BuildRequires:  gcc-c++
-BuildRequires:  libopenshot-audio-devel >= 0.1.8
 BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
 BuildRequires:  swig
+BuildRequires:  cmake(OpenShotAudio) >= 0.2.1
 # Disabled as cmake does not detect it
 BuildRequires:  pkgconfig(Magick++)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
@@ -44,6 +41,7 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(UnitTest++)
+BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
