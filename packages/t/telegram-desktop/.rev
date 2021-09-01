@@ -673,4 +673,12 @@
 - Add 0005-add-wayland-include-path.patch (forwarded request 909652 from nuklly)</comment>
     <requestid>909700</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>ba7ee85da919e49268a54a32dfac865f</srcmd5>
+    <version>2.9.0</version>
+    <time>1630525021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915301</requestid>
+  </revision>
 </revisionlist>

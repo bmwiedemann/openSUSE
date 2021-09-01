@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 30 11:30:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Enable build on armv6/armv7 since the build has been fixed
+  upstream
+
+-------------------------------------------------------------------
 Mon Aug  2 03:04:38 UTC 2021 - Xu Zhao <i@xuzhao.net>
 
 - Update to 2.9.0

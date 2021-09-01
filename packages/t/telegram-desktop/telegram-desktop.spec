@@ -53,7 +53,7 @@ Patch5:         0005-add-wayland-include-path.patch
 # https://github.com/desktop-app/lib_base.git 3582bca53a1e195a31760978dc41f67ce44fc7e4
 # but tdesktop itself still falls short, and it looks to be something
 # that would affect all ILP32 platforms.
-ExcludeArch:    %ix86 %arm aarch64_ilp32 ppc riscv32
+ExcludeArch:    %ix86 aarch64_ilp32 ppc riscv32
 BuildRequires:  appstream-glib
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.16
