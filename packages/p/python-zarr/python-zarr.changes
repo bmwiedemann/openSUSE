@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  1 09:34:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 2.9.5:
+  - Fix FSStore.listdir behavior for nested directories (replaces
+    now unnecessary skip-825-TestFSStore-test_create.patch).
+  - Fix structured arrays that contain objects (which replaces
+    zarr-pr802-fsspec-2021-07.patch).
+
+-------------------------------------------------------------------
 Sat Aug 28 08:54:39 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.9.3:

@@ -20,17 +20,12 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-zarr
-Version:        2.9.3
+Version:        2.9.5
 Release:        0
 Summary:        An implementation of chunked, compressed, N-dimensional arrays for Python
 License:        MIT
 URL:            https://github.com/zarr-developers/zarr-python
 Source:         https://files.pythonhosted.org/packages/source/z/zarr/zarr-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM zarr-pr802-fsspec-2021-07.patch -- gh#zarr-developers/zarr-python#802 and gh#zarr-developers/zarr-python#812
-Patch0:         zarr-pr802-fsspec-2021-07.patch
-# PATCH-FIX-UPSTREAM skip-825-TestFSStore-test_create.patch gh#zarr-developers/zarr-python#825 mcepl@suse.com
-# Skip the failing test
-Patch1:         skip-825-TestFSStore-test_create.patch
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  fdupes

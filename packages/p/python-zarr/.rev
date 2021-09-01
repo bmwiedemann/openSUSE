@@ -52,4 +52,17 @@
 </comment>
     <requestid>914748</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1a62792923a91e57ad34c7e038a79f57</srcmd5>
+    <version>2.9.5</version>
+    <time>1630525036</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.9.5:
+  - Fix FSStore.listdir behavior for nested directories (replaces
+    now unnecessary skip-825-TestFSStore-test_create.patch).
+  - Fix structured arrays that contain objects (which replaces
+    zarr-pr802-fsspec-2021-07.patch).
+</comment>
+    <requestid>915459</requestid>
+  </revision>
 </revisionlist>
