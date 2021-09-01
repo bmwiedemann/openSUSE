@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Wed Sep  1 13:51:37 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Tiding up old sources (remove kubernetes-1.22.0.obscpio)
+
+-------------------------------------------------------------------
+Wed Aug 25 11:31:23 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.22.1:
+  * Keep MakeMountArgSensitive and add a new signature that receives flags
+  * Update the unit tests to handle mountFlags
+  * Add missing interface method in mount_unsupported.go
+  * Pass additional flags to subpath mount to avoid flakes in certain conditions
+  * device manager: do not clean admitted pods from the state
+  * memory manager: do not clean admitted pods from the state
+  * cpu manager: do not clean admitted pods from the state
+  * Avoid spurious calls to update/delete validation
+  * Update to go1.16.7
+  * Pass unknown labels in allowedTopologies during CSI translation
+  * Fix metrics reporting for the deprecated watch path
+  * Update configure-helper.sh
+  * Update configure-helper.sh
+  * Update configure-helper.sh
+  * Remove duplicate dependencies from 1.22 changelog
+  * replace e2e WaitForPodsReady by WaitTimeoutForPodReadyInNamespace
+  * delete stale UDP conntrack entries for loadbalancer IPs
+  * Update CHANGELOG/CHANGELOG-1.22.md for v1.22.0
+  * Set idle and readheader timeouts
+
+-------------------------------------------------------------------
+Fri Aug  6 11:11:31 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
+
+- Initial Package
