@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Aug 27 02:33:44 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 2.13.0
+  + Add /data/demodularized/rpms list to modulemd and modulemd-packager
+    formats.
+  + modulemd-validator enables you to constrain a document type with
+    a new "--type" option.
+  + Reject invalid integers. Purely non-numeric values and negative
+    numbers where an unsigned type is mandated by a specification
+    raise a parser error now.
+  + Handle a failed g_setenv() call in modulemd-validator.
+  + Prevent from dereferencing a NULL pointer when reporting invalid
+    subdocuments.
+  + "modulemd-validator --version" command returns 0 exit code now.
+
+-------------------------------------------------------------------
 Mon May 31 08:36:31 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.12.1

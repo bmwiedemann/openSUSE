@@ -435,4 +435,12 @@ Ekiga has an exception for linking against e.g. openssl (forwarded request 12376
     <comment></comment>
     <requestid>823643</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>36d18cd314d88599290b2a278253b7f6</srcmd5>
+    <version>4.1.0</version>
+    <time>1630432515</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915043</requestid>
+  </revision>
 </revisionlist>

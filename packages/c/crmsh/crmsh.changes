@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Aug 27 07:03:55 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210827.1ae49236:
+  * Fix: hb_report: Using python way to collect ra trace files (bsc#1189641)
+
+-------------------------------------------------------------------
+Fri Aug 27 03:36:50 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210827.4e4e83b3:
+  * Fix: bootstrap: adjust host list for parallax to get and copy known_hosts file(bsc#1188971)
+
+-------------------------------------------------------------------
 Wed Aug 11 07:15:15 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210811.4045e09d:

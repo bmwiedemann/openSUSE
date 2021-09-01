@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Aug 27 03:02:35 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 0.63.1
+  + ModuleProfile: add isDefault()
+  + ModulePackage: add getDefaultProfile()
+  + Add new dnf_context_module_install() C API
+  + Fix a crash when [media] section in .treeinfo is missing for bootable media (rh#1946024)
+  + Add hy_query_get_advisory_pkgs to C API (rh#1960561)
+  + Add dnf_advisorypkg_get_advisory()
+  + DNF does not fail on non UTF-8 file names in a package (rh#1893176)
+  + Improve error-reporting for modular functions
+- Drop patch included in this release
+  + Patch: 0001-Fix-a-crash-when-repoId-not-found-in-loaded-conf-gke.patch
+
+-------------------------------------------------------------------
 Thu Apr 15 15:58:16 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Add patch to fix crash when loading DVD repositories

@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %global skip_python2 1
 Name:           python-Faker
-Version:        8.11.0
+Version:        8.12.1
 Release:        0
 Summary:        Python package that generates fake data
 License:        MIT

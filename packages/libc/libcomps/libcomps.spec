@@ -19,7 +19,7 @@
 
 %define major 0
 %define minor 1
-%define patch 16
+%define patch 17
 %define libname %{name}%{major}
 %define devname %{name}-devel
 
@@ -31,7 +31,6 @@ License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/libcomps
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch0:         fix-sphinx.patch
 
 BuildRequires:  check-devel
 BuildRequires:  cmake

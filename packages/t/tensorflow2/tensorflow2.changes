@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Thu Aug 19 03:51:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 2.6.0
+  Major changes are:
+  * Keras been split into a separate PIP package (keras), and its
+    code has been moved to the GitHub repositorykeras-team/keras.
+    The API endpoints for tf.keras stay unchanged, but are now
+    backed by the keras PIP package. The existing code in
+    tensorflow/python/keras is a staled copy and will be removed in
+    future release (2.7). Please remove any imports to
+    tensorflow.python.keras and replace them with public tf.keras
+    API instead.
+  * tf.train.experimental.enable_mixed_precision_graph_rewrite is
+    removed, as the API only works in graph mode and is not
+    customizable. The function is still accessible under
+    tf.compat.v1.mixed_precision.enable_mixed_precision_graph_rewrite,
+    but it is recommended to use the Keras mixed precision API
+    instead.
+  * tf.lite: Remove experimental.nn.dynamic_rnn,
+    experimental.nn.TfLiteRNNCell and
+    experimental.nn.TfLiteLSTMCell since they're no
+    longer supported. It's recommended to just use keras lstm
+    instead.
+  * tf.keras: The methods Model.to_yaml() and
+    keras.models.model_from_yaml have been replaced to raise a
+    RuntimeError as they can be abused to cause arbitrary code
+    execution. It is recommended to use JSON serialization instead
+    of YAML, or, a better alternative, serialize to H5.
+- Major changes from 2.5.x:
+  * Support for Python3.9 has been added.
+  * The TF_CPP_MIN_VLOG_LEVEL environment variable has been renamed
+    to to TF_CPP_MAX_VLOG_LEVEL which correctly describes its
+    effect.
+- Fixed multiple CVEs (boo#1189423):
+  * CVE-2021-37635
+  * CVE-2021-37636
+  * CVE-2021-37637
+  * CVE-2021-37638
+  * CVE-2021-37639
+  * CVE-2021-37640
+  * CVE-2021-37642
+  * CVE-2021-37641
+  * CVE-2021-37644
+  * CVE-2021-37643
+  * CVE-2021-37645
+  * CVE-2021-37646
+  * CVE-2021-37647
+  * CVE-2021-37648
+  * CVE-2021-37649
+  * CVE-2021-37650
+  * CVE-2021-37651
+  * CVE-2021-37652
+  * CVE-2021-37653
+  * CVE-2021-37654
+  * CVE-2021-37655
+  * CVE-2021-37656
+  * CVE-2021-37657
+  * CVE-2021-37658
+  * CVE-2021-37659
+  * CVE-2021-37660
+  * CVE-2021-37661
+  * CVE-2021-37662
+  * CVE-2021-37664
+  * CVE-2021-37663
+  * CVE-2021-37665
+  * CVE-2021-37666
+  * CVE-2021-37667
+  * CVE-2021-37668
+  * CVE-2021-37669
+  * CVE-2021-37670
+  * CVE-2021-37671
+  * CVE-2021-37672
+  * CVE-2021-37673
+  * CVE-2021-37674
+  * CVE-2021-37676
+  * CVE-2021-37675
+  * CVE-2021-37677
+  * CVE-2021-37678
+  * CVE-2021-37679
+  * CVE-2021-37680
+  * CVE-2021-37681
+  * CVE-2021-37682
+  * CVE-2021-37683
+  * CVE-2021-37684
+  * CVE-2021-37686
+  * CVE-2021-37685
+  * CVE-2021-37687
+  * CVE-2021-37688
+  * CVE-2021-37689
+  * CVE-2021-37691
+  * CVE-2021-37692
+  * CVE-2021-37690
+- Updated sources:
+  * abseil-cpp.tar.gz
+  * cpuinfo.zip
+  * dill-0.3.2.zip
+  * eigen.tar.gz
+  * google-cloud-cpp.tar.gz
+  * libxsmm_1.14.tar.gz
+  * llvm.tar.gz
+  * oneDNN.tar.gz
+  * rules_cc.tar.gz
+  * rules_closure.tar.gz
+  * rules_docker-0.18.0.tar.gz
+  * ruy.zip
+  * tblib-1.7.0.tar.gz
+- Added sources:
+  * ComputeLibrary.tar.gz
+  * oneDNN-v2.3-rc2.tar.gz
+  * platforms-0.0.2.tar.gz
+  * rules_proto.tar.gz
+  * tf_runtime.tar.gz
+  * tf_toolchains.tar.gz
+- Removed sources:
+  * kafka-v0.11.5.tar.gz
+- Add "tensorflow-2.6.0" prefix to existing patches to indicate
+  that patches are likely to be only applicable to a specific
+  version.
+  * fix-lite.patch -> tensorflow-2.6.0-fix-lite.patch
+  * numpy-tensor-small.patch -> tensorflow-2.6.0-numpy-tensor-small.patch
+  * removed-clog-build-as-included-in-cpuinfo.patch -> tensorflow-2.6.0-removed-clog-build-as-included-in-cpuinfo.patch
+  * removed-external-toolchains.patch -> tensorflow-2.6.0-removed-external-toolchains.patch
+  * remove-weakref.patch -> tensorflow-2.6.0-remove-weakref.patch
+  * tf-keras-hdf5-3.patch -> tensorflow-2.6.0-tf-keras-hdf5-3.patch
+- Rebase all existing patches.
+- Add tensorflow-2.6.0-compile-with-protobuf-3.16.patch to fix
+  build error with protobuf >= 3.16.0. (boo#1186860)
+  (https://github.com/protocolbuffers/protobuf/pull/8354)
+- Update bazel version requirement to 3.7.2.
+- Drop pcre-devel build requirement as it is not used anymore.
+- Drop --incompatible_no_support_tools_in_action_inputs=false as it
+  is removed in bazel >= 3.6.
+
+-------------------------------------------------------------------
 Wed May 19 12:02:57 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update _constraints to use host with 'asimdrdm' cpu flag to avoid

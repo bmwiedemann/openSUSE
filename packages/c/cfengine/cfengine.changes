@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Aug 25 15:25:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_cf-apache.service.patch
+  * harden_cf-execd.service.patch
+  * harden_cf-hub.service.patch
+  * harden_cf-monitord.service.patch
+  * harden_cf-postgres.service.patch
+  * harden_cf-runalerts.service.patch
+  * harden_cf-serverd.service.patch
+  * harden_cfengine3.service.patch
+  Modified:
+  * cf-execd.service
+  * cf-monitord.service
+  * cf-serverd.service
+
+-------------------------------------------------------------------
 Sun Apr 18 02:27:07 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed SPEC file: Replaced broken URL with current upstream

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Aug 31 13:52:39 UTC 2021 - enzokiel@kabelmail.de
+
+- Update to version 1.0
+  * main.c
+    + replaced 'GLIB_MAJOR_VERSION' with
+      'GLIB_MINOR_VERSION' and 'glib_major_version'
+      with 'glib_minor_version'
+  * gui.c
+    + setting '-GtkMenuBar-shadow-type' only for
+      versions < 3.20 (GTK-3 only)
+    + if closing a file with unsaved cutpoints a
+      dialog asks for discarding changes
+    + replaced in 'cff_gui_css_load_from_data'
+      'gtk_style_context_add_provider_for_screen'
+      with 'gtk_style_context_add_provider'
+    + changed priority in 'cff_gui_logwindow_color_set'
+      from 'GTK_STYLE_PROVIDER_PRIORITY_APPLICATION' to
+      '..._USER' (GTK-3 only)
+    + changed tag color and font in 'textview' to
+        GTK-2 'gtk_widget_modify_...' or
+        GTK-3 'cff_gui_css_load_from_data'
+    + in 'cff_gui_logwindow_color_parse' converting
+      'rgb(r,g,b)' to '#rrggbb' (GTK-2 only)
+    + popup in 'cff_gui_file_save' for selecting the
+      encoder for soft cutting
+    + may hang if log was set to 'debug'. So
+      'g_main_context_invoke_full' in 'cff_gui_logwindow_cb'
+      was removed, 'cff_gui_logwindow_mainthread' is now
+      called every 5ms using 'g_timeout_add_full'
+    + remove last '\n' from log string in 'cff_gui_logwindow_cb'
+    + '_textview_scroll_to_iter' in 'cff_gui_logwindow_cb'
+      was removed. Now down scrolling is done using the
+      signal 'changed', and setting the new value in
+      'cff_gui_logwindow_adjustment' with the function
+      'gtk_adjustment_set_value'
+    + the slider is now 'GtkScale'
+    + using 'Cairo' instead of 'GdkDraw' (GTK-2 only)
+  * ffmpeg.c
+    + 'cff_ffmpeg_print_codecs_for_id': codecs separated
+      by commas, last space in front of terminating ')'
+      removed
+    + softcut is de- and encoding frames at the cutpoint(s)
+    + stream-sync starts copying packets if the timestamp
+      is greater or equal than the cutpoint
+    + test if bitstream filter 'mp4toannexb' is needed for
+      encoding in 'cff_ffmpeg_get_frame_dts' (h.264 + h.265)
+    + 'cff_ffmpeg_copy_open': if 'avformat_transfer_internal_
+      stream_timing_info' failed, try '(st->oStream)->time_
+      base = (st->iStream)->time_base' before 'av_stream_get_
+      codec_timebase'
+    + if the first DVB subtitle frame should clear a subtitle,
+      it is dropped (no subtitle shown yet). This will also
+      compute the right stream duration
+  * tools-gtk.c
+    + renamed 'guitl_' to 'cff_guitl_'
+    + moved 'cff_gui_beep' to 'cff_guitl_beep'
+    + 'cff_guitl_window_destroy' sets 'gWindata.topwin'
+      to NULL, if the main window is not on the top
+    + 'cff_guitl_dialog_icon' sets 'gWindata.topwin' to
+      'gWindata.mainwin', is the top window is NULL
+    + changed signal 'size-allocate' in 'cff_guitl_window_setup'
+      to 'configure-event'
+
+-------------------------------------------------------------------
 Tue Aug 06 22:27:11 UTC 2019 - enzokiel@kabelmail.de
 
 - Update to version 0.9

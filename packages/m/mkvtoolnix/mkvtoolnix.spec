@@ -17,7 +17,7 @@
 
 
 Name:           mkvtoolnix
-Version:        60.0.0
+Version:        61.0.0
 Release:        0
 Summary:        Tools to Create, Alter, and Inspect Matroska Files
 License:        GPL-2.0-or-later
@@ -27,12 +27,11 @@ Source0:        https://mkvtoolnix.download/sources/mkvtoolnix-%{version}.tar.xz
 Source1:        https://mkvtoolnix.download/sources/mkvtoolnix-%{version}.tar.xz.sig
 # Sub-key ID 0x74AF00AD F2E32C85 of key ID 0x0F92290A 445B9007 is used for signing
 Source2:        mkvtoolnix.keyring
-# PATCH-OPENSUSE-FIX mkvtoolnix-use-system-boost.patch -- Fix includes to use boost from system
-Patch0:         mkvtoolnix-use-system-boost.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
 BuildRequires:  file-devel
+BuildRequires:  libboost_headers-devel >= 1.66.0
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(gmp)
@@ -42,7 +41,6 @@ BuildRequires:  gmp-devel
 %endif
 BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libboost_headers-devel >= 1.66.0
 BuildRequires:  libxslt-tools
 BuildRequires:  nlohmann_json-devel
 BuildRequires:  pkgconfig
@@ -85,7 +83,7 @@ This package contains the graphical user interface for the mkvtoolnix utils.
 %prep
 %autosetup -p1
 # Make sure to use system libs:
-rm -rf lib/{boost,libebml,libmatroska,nlohmann-json,pugixml,fmt,utf8-cpp}
+rm -rf lib/{libebml,libmatroska,nlohmann-json,pugixml,fmt,utf8-cpp}
 
 %build
 export CXX=g++

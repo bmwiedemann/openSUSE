@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 31 05:16:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update fix_shebang.patch to switch Python scripts to calling
+  /usr/bin/python3.
+- Add Requires on python3 for full interpreter. 
+
+-------------------------------------------------------------------
 Thu Jul 15 07:21:22 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.7:

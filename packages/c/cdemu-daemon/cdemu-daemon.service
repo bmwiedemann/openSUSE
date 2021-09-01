@@ -1,0 +1,9 @@
+[Unit]
+Description=CDEmu daemon
+
+[Service]
+Type=dbus
+EnvironmentFile=-/etc/sysconfig/cdemu-daemon
+BusName=net.sf.cdemu.CDEmuDaemon
+ExecStart=/usr/bin/cdemu-daemon -n $DEVICES -c $CTL_DEVICE -a $AUDIO_BACKEND
+Restart=no

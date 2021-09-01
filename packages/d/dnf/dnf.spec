@@ -50,7 +50,7 @@
 %bcond_with tests
 
 Name:           dnf
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        Package manager forked from Yum, using libsolv as a dependency resolver
 # For a breakdown of the licensing, see PACKAGE-LICENSING
@@ -65,7 +65,7 @@ Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # openSUSE specific fixes
 ## Migrate DNF persistent state directory to /usr/lib/sysimage
-Patch1001:      dnf-4.6.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+Patch1001:      dnf-4.8.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
 ## We defalut allow_vendor_change to False, upstream has it as True
 Patch1002:      dnf-4.6_vendor_change_doc.patch
 

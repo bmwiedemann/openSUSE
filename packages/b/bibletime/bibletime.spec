@@ -21,7 +21,7 @@
 %global __requires_exclude qmlimport\\(BibleTime.*
 
 Name:           bibletime
-Version:        3.0.1
+Version:        3.0.2
 Release:        0
 Summary:        A Bible study tool
 License:        GPL-2.0-or-later

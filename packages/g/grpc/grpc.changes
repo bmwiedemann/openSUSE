@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 30 18:56:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.39.1
+  * Fix C# protoc plugin argument parsing on 1.39.x
+
+-------------------------------------------------------------------
+Mon Aug 30 17:52:56 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove cmake's build .log from grpc-source to make
+  build-compare happier.
+
+-------------------------------------------------------------------
 Wed Jul 28 11:09:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.39.0:

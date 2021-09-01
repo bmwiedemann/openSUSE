@@ -17,7 +17,7 @@
 
 
 Name:           rt-tests
-Version:        2.1
+Version:        2.2
 Release:        0
 Summary:        Realtime Kernel Testsuite
 License:        GPL-2.0-only

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 31 08:53:00 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210831.0de63caa:
+  * Update specfile for skippkg-finder
+  * Run skippkg-finder.py before pkglistgen
+  * Add skippkg-finder.py to overwrite NON_FTP_PACKAGES for obsoleted and unneeded package
+
+-------------------------------------------------------------------
 Fri Aug 20 07:51:27 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210820.43b07171:

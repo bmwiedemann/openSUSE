@@ -1,7 +1,7 @@
 #
 # spec file for package plib
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -84,7 +84,7 @@ programming. It contains the following libraries:
 %build
 autoreconf -fiv
 export CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%configure --disable-static
+%configure --disable-static --enable-ssg=no --enable-ssgaux=no
 make %{?_smp_mflags}
 
 %install

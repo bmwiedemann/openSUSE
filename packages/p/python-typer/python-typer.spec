@@ -19,7 +19,7 @@
 
 %define skip_python2 1
 Name:           python-typer
-Version:        0.3.2
+Version:        0.4.0
 Release:        0
 Summary:        Typer, build great CLIs. Easy to code. Based on Python type hints
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/tiangolo/typer
 Source:         https://files.pythonhosted.org/packages/source/t/typer/typer-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
-Patch1:         basic-click8-compat.patch
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flit-core}
@@ -51,7 +50,6 @@ This package provides the Typer Python package required to build and run Typer-b
 
 %prep
 %setup -q -n typer-%{version}
-%patch1 -p1
 
 %build
 %python_build

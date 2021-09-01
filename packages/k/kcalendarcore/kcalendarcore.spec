@@ -35,6 +35,7 @@ Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source2:        frameworks.keyring
 %endif
 BuildRequires:  extra-cmake-modules >= %{_kf5_version}
+BuildRequires:  fdupes
 BuildRequires:  cmake(LibIcal) >= 3.0
 BuildRequires:  cmake(Qt5Core) >= 5.15.0
 BuildRequires:  cmake(Qt5Gui) >= 5.15.0
@@ -76,11 +77,17 @@ develop applications making use of KCalendarCore.
 %autosetup -p1
 
 %build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
+
 %cmake_kf5 -d build
 %cmake_build
 
 %install
 %kf5_makeinstall -C build
+
+%fdupes %{buildroot}%{_kf5_includedir}
 
 %post -n libKF5CalendarCore5 -p /sbin/ldconfig
 %postun -n libKF5CalendarCore5 -p /sbin/ldconfig

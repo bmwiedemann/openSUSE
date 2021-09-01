@@ -18,4 +18,16 @@
 - Add basic-click8-compat.patch</comment>
     <requestid>908022</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7388473d06f418778505035588968799</srcmd5>
+    <version>0.4.0</version>
+    <time>1630432528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to upstream version 0.4.0
+  * Add support for Click 8 while keeping compatibility with
+    Click 7.
+- Remove basic-click8-compat.patch as Click 8 compatibility is now
+  provided upstream.</comment>
+    <requestid>915137</requestid>
+  </revision>
 </revisionlist>

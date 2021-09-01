@@ -1,6 +1,7 @@
 #
 # spec file for package libcdada
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,34 +31,30 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  valgrind
 BuildRequires:  python3
+BuildRequires:  valgrind
 
 %description
-Small library that offers basic data structures (list, set, map, ..)
-in a pure C API for user-space applications.
+Library that offers basic data structures (list, set, map, ..)
+in a C API for user-space applications.
 
 Key features:
- - Easy to use, portable
- - No "magic" MACROs, and no need to modify your data structures
+ - No "magic" MACROs, and no need to modify data structures
    (except, perhaps, for __attribute__((packed)))
  - Uses C++ standard library as the backend for most data structures
- - Reasonable performance
 
 %package -n libcdada%{sover}
 Summary:        Basic data structures in C (libstdc++ wrapper)
 Group:          System/Libraries
 
 %description -n libcdada%{sover}
-Small library that offers basic data structures (list, set, map, ..)
-in a pure C API for user-space applications.
+Library that offers basic data structures (list, set, map, ..)
+in a C API for user-space applications.
 
 Key features:
- - Easy to use, portable
  - No "magic" MACROs, and no need to modify your data structures
    (except, perhaps, for __attribute__((packed)))
  - Uses C++ standard library as the backend for most data structures
- - Reasonable performance
 
 %package devel
 Summary:        Development files for libcdada
@@ -70,7 +67,7 @@ This package contains libraries and header files for developing
 applications that use libcdada.
 
 %prep
-%setup -q
+%autosetup
 sed -i 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|g' tools/cdada-gen
 
 %build

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 31 08:27:01 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
+
+- Update to upstream version v2.2
+  * signaltest: Fix JSON output latency values for 32bit machines
+  * oslat: Don't take trace_threshold into account during preheat
+  * sched_deadline: Update HRTICK_DL location
+  * Allow static builds by dropping dependency on pthread_getaffinity_np
+
+-------------------------------------------------------------------
 Thu Jul 29 07:12:54 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Enable build on all architectures.

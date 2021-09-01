@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 30 15:51:53 UTC 2021 - Simon Puchert <simonpuchert@alice.de>
+
+- Add python-requests-version.patch:
+  * Revert a commit that increased the version requirements as the
+    required version is not available in Factory.
+
+-------------------------------------------------------------------
 Mon Aug 16 19:40:16 UTC 2021 - Simon Puchert <simonpuchert@alice.de>
 
 - Update to version 2.3.0:

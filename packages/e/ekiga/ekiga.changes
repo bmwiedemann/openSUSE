@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 14:26:38 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add python3-libxml2 as build requirement (fixes Factory build)
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Jun 10 12:41:49 UTC 2020 - Frederic Crozat <fcrozat@suse.com>
 
 - Update ekiga-missing-includes.patch to include ostream to another

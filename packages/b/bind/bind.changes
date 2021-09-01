@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Aug 19 06:25:35 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
+
+- Upgrade to 9.16.20
+  Bugs fixed:
+  * An assertion failure occurred when named attempted to send a
+    UDP packet that exceeded the MTU size, if Response Rate
+    Limiting (RRL) was enabled.  (CVE-2021-25218)
+  * Zones using KASP and inline-signed zones failed to apply
+    changes from the unsigned zone to the signed zone under
+    certain circumstances.
+  * "rndc reload <zonename>" could trigger a redundant reload for
+    an inline-signed zone whose zone file was not modified since
+    the last "rndc reload".
+  * named failed to check the opcode of responses when performing
+    zone refreshes, stub zone updates, and UPDATE forwarding.
+  * Some changes to "zone-statistics" settings were not properly
+    processed by "rndc reconfig".
+  * The "check DS" code failed to release all resources upon
+    named shutdown when a refresh was in progress.
+  * Authentication of rndc messages could fail if a "controls"
+    statement was configured with multiple key algorithms for
+    the same listener.
+  More changes see CHANGES in the source package.
+  [bsc#1189460, CVE-2021-25218]
+
+-------------------------------------------------------------------
 Thu Jul 29 13:14:28 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 9.16.19

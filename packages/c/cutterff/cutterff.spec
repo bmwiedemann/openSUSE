@@ -1,7 +1,7 @@
 #
 # spec file for package cutterff
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           cutterff
 Summary:        Video cutter that uses FFmpeg and GTK+
-Version:        0.9
+Version:        1.0
 Release:        0
-Url:            https://cutterff.sourceforge.io/
+URL:            https://cutterff.sourceforge.io/
 Source0:        %{name}-%{version}-src.tar.bz2
 Source1:        %{name}.desktop
 License:        GPL-3.0
@@ -48,12 +48,12 @@ Features
 %lang_package
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup
 
 %build
 export CPPFLAGS="%{optflags}"
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -62,16 +62,7 @@ install -D -m644 %{S:1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 
 %find_lang %{name}
 
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-%endif
-
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc README ChangeLog
 %{_bindir}/%{name}

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Aug 26 18:45:30 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.16.2:
+  * Implement pcap control transfer replaying.
+  * Fix Coverity errors.
+  * Fix most valac build warnings.
+- Changes from version 0.16.1:
+  * Fix wrong ioctl constants on ppc64el.
+  * Fix test-umockdev-record failure in some build environments.
+- Changes from version 0.16.0:
+  * Move ioctl emulation from preload library to main test
+    process.
+  * Add test API for custom ioctl and device read/write handlers
+    (gh#martinpitt/umockdev#96, gh#martinpitt/umockdev#128).
+  * Support USB replay from usbmon pcap captures
+    (gh#martinpitt/umockdev#82, gh#martinpitt/umockdev#117).
+  * Support SPI ioctl/read/write record and replay
+    (gh#martinpitt/umockdev#121).
+- New upstream BuildRequires: pkgconfig(libpcap).
+
+-------------------------------------------------------------------
 Sat May  8 12:08:58 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.15.5:

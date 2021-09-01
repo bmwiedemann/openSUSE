@@ -20,7 +20,7 @@
 %define lverp 1
 %define src_install_dir /usr/src/%name
 Name:           grpc
-Version:        1.39.0
+Version:        1.39.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -159,9 +159,10 @@ popd
 
 # Install sources
 pushd %__builddir
+rm -fv CMakeFiles/*.log
 make clean
-rm -f "b"
-find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" -o -name "*.bin" -o -name "*.out" ")" -exec rm -rf {} +
+find . -type f "(" -name "*.so" -o -name "*.o" -o -name ".git*" -o \
+	-name "*.bin" -o -name "*.out" ")" -exec rm -Rfv {} +
 popd
 # Don't include abseil-cpp in sources
 rm -fr third_party/abseil-cpp/*

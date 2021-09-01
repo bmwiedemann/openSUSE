@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>914180</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>2322e155d127a41c753e5e9acee2e6b8</srcmd5>
+    <version>4.0.2</version>
+    <time>1630432547</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build option SOCI_CXX11=ON, some packages (lime) needs it
+- fix several RPMLINT warning
+- Enable test suite run in %check
+</comment>
+    <requestid>915267</requestid>
+  </revision>
 </revisionlist>

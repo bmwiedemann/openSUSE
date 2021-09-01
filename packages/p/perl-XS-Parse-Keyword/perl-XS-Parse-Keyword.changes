@@ -1,0 +1,20 @@
+-------------------------------------------------------------------
+Fri Aug 27 03:07:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.13
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.13    2021-08-26
+          [CHANGES]
+           * Bump to ABI version 2; pass build1's arg0 param as a pointer, not a
+             direct struct copy
+
+          [BUGFIXES]
+           * Back-compat for ABI version 1's build1 arg0 param not having a line
+             number (RT138708)
+
+-------------------------------------------------------------------
+Tue Aug 24 12:35:52 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- initial package 0.12
+ * created by cpanspec 1.81.01

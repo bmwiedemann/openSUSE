@@ -1,7 +1,7 @@
 #
 # spec file for package ekiga
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,17 @@
 
 %define with_evolution 1
 %define with_gstreamer_0_10 0
+%ifarch ppc64
+%define         _lto_cflags      %{nil}
+%endif
 Name:           ekiga
 Version:        4.1.0
 Release:        0
 Summary:        A GNOME based SIP/H323 teleconferencing application
 License:        SUSE-GPL-2.0-with-openssl-exception
 Group:          Productivity/Telephony/SIP/Clients
-Url:            http://www.ekiga.org/
-#Source:         http://download.gnome.org/sources/ekiga/4.0/%{name}-%{version}.tar.xz
+URL:            https://www.ekiga.org/
+#Source:         http://download.gnome.org/sources/ekiga/4.0/%%{name}-%%{version}.tar.xz
 Source:         ekiga-12641b735a9886a080949465d4da6d4569822ed2.tar.bz2
 # PATCH-FIX-UPSTREAM boost-configure.patch schwab@suse.de -- AX_BOOST_BASE: add aarch64 to the list of lib64 architectures
 Patch0:         boost-configure.patch
@@ -40,43 +43,41 @@ Patch4:         ekiga-dont-require-gnome-icon-theme.patch
 Patch5:         ekiga-po-Makefile.patch
 Patch6:         ekiga-signals2-leftover.patch
 Patch7:         ekiga-missing-includes.patch
-
-%if 0%{?suse_version} > 1325
-BuildRequires:  libboost_headers-devel
-%else
-BuildRequires:  boost-devel
-%endif
+BuildRequires:  clutter-gtk-devel
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gconf2-devel
+BuildRequires:  gettext
 BuildRequires:  gnome-doc-utils-devel
-BuildRequires:  gtk3-devel
-BuildRequires:  clutter-gtk-devel
 BuildRequires:  gstreamer-plugins-base-devel
-BuildRequires:  libgudev-1_0-devel
+BuildRequires:  gtk3-devel
 BuildRequires:  intltool
 BuildRequires:  libavahi-glib-devel
+BuildRequires:  libboost_headers-devel
+BuildRequires:  libgudev-1_0-devel
 BuildRequires:  libnotify-devel
 BuildRequires:  libopal-devel >= 3.10.10
 BuildRequires:  libpt-devel >= 2.10.10
 BuildRequires:  libsigc++2-devel
 BuildRequires:  libsoup-devel
+# Required for Patch1
+BuildRequires:  libtool
 BuildRequires:  libv4l-devel
 BuildRequires:  openldap2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(xv)
-BuildRequires:  gettext
-# Required for Patch1
-BuildRequires:  libtool
 Requires:       hicolor-icon-theme
 Recommends:     %{name}-lang
 Provides:       gnomemeeting = %{version}
 Obsoletes:      gnomemeeting < %{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{gconf_schemas_prereq}
+%if 0%{?suse_version} > 1500
+BuildRequires:  python3-libxml2
+%endif
 %if %{with_evolution}
 BuildRequires:  evolution-data-server-devel
 %endif
@@ -99,7 +100,7 @@ NetMeeting.
 %package -n ekiga-plugins-gstreamer
 Summary:        Gstreamer plugin for %{name}
 Group:          System/Libraries
-Supplements:    packageand(ekiga:pulseaudio)
+Supplements:    (ekiga and pulseaudio)
 
 %description -n ekiga-plugins-gstreamer
 This plugin enables gstreamer support in %{name}.
@@ -109,7 +110,7 @@ This plugin enables gstreamer support in %{name}.
 %package -n ekiga-plugins-evolution
 Summary:        Evolution plugin for %{name}
 Group:          System/Libraries
-Supplements:    packageand(ekiga:evolution-data-server)
+Supplements:    (ekiga and evolution-data-server)
 
 %description -n ekiga-plugins-evolution
 This plugin enables evolution support in %{name}.
@@ -128,12 +129,9 @@ This plugin enables evolution support in %{name}.
 %patch6 -p1
 %patch7 -p1
 translation-update-upstream
-cp -av /usr/share/gnome-doc-utils/gnome-doc-utils.make .
+cp -av %{_datadir}/gnome-doc-utils/gnome-doc-utils.make .
 
 %build
-%if 0%{?suse_version} < 1500
-export CXXFLAGS="%optflags -fexceptions"
-%endif
 autoreconf -fi
 %configure \
     --disable-schemas-install \
@@ -149,10 +147,10 @@ autoreconf -fi
 %else
     --disable-eds
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_gconf_schemas
 %find_lang %{name} %{?no_lang_C}
@@ -161,25 +159,10 @@ cat %{name}.schemas_list >%{name}.lst
 %fdupes %{buildroot}
 
 %pre -f %{name}.schemas_pre
-
-%if 0%{?suse_version} < 1500
-%post
-%desktop_database_post
-%icon_theme_cache_post
-%endif
-
 %preun -f %{name}.schemas_preun
-
 %posttrans -f %{name}.schemas_posttrans
 
-%if 0%{?suse_version} < 1500
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
-
 %files -f %{name}.lst
-%defattr(-,root,root)
 %doc ChangeLog README FAQ
 %dir %{_datadir}/gnome/
 %dir %{_datadir}/gnome/help/
@@ -203,23 +186,20 @@ cat %{name}.schemas_list >%{name}.lst
 %{_libdir}/ekiga/%{version}/plugins/libgmlibnotify.so
 %{_libdir}/ekiga/%{version}/plugins/libgmresource_list.so
 %{_libdir}/ekiga/%{version}/plugins/libgmxcap.so
-%{_mandir}/man1/ekiga.1*
+%{_mandir}/man1/ekiga.1%{?ext_man}
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %if %{with_gstreamer_0_10}
 %files -n ekiga-plugins-gstreamer
-%defattr(-,root,root)
 %{_libdir}/ekiga/%{version}/plugins/libgmgstreamer.so
 %endif
 
 %if %{with_evolution}
 %files -n ekiga-plugins-evolution
-%defattr(-,root,root)
 %{_libdir}/ekiga/%{version}/plugins/libgmevolution.so
 %endif
 
 %files lang -f %{name}.lang
-%defattr(-,root,root)
 
 %changelog

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 30 07:58:36 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Mon Apr 20 07:00:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Disable doc build as it used py2 Sphinx and new py3 one does not

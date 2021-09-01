@@ -26,6 +26,9 @@ Group:          Development/Languages/Python
 URL:            https://streamlink.github.io/
 Source:         https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
+# Revert the increased requirements for now since we don't have
+# python-requests 2.26 yet.
+Patch0:         python-requests-version.patch
 
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -66,6 +69,7 @@ Streamlink is a fork of the livestreamer project.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %python3_build

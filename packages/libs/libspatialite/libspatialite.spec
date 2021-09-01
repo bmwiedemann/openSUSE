@@ -1,7 +1,7 @@
 #
 # spec file for package libspatialite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,36 +19,38 @@
 %define sover   7
 %define libname %{name}%{sover}
 Name:           libspatialite
-Version:        4.3.0a
+Version:        5.0.1
 Release:        0
 Summary:        Spatial SQLite
 License:        MPL-1.1
 Group:          Development/Libraries/C and C++
-Url:            http://www.gaia-gis.it/spatialite/
-Source:         http://www.gaia-gis.it/gaia-sins/%{name}-sources/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM add define to use deprecated API
-Patch1:         libspatialite-deprecated-proj-api.patch
+URL:            https://www.gaia-gis.it/fossil/libspatialite/index
+Source:         https://www.gaia-gis.it/gaia-sins/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libgeos-devel
 BuildRequires:  pkgconfig
+# Mandatory for tests to have proj.db
+BuildRequires:  proj
 BuildRequires:  sqlite-devel >= 3.7.3
 BuildRequires:  pkgconfig(freexl)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(minizip)
 BuildRequires:  pkgconfig(proj)
+BuildRequires:  pkgconfig(rttopo)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-The SpatiaLite extension enables SQLite to support spatial data too [aka
-GEOMETRY], in a way conformant to OpenGis specifications.
+The SpatiaLite extension enables SQLite to support spatial data too
+[aka GEOMETRY], in a way conformant to OpenGis specifications.
 
 %package -n %{libname}
 Summary:        Spatial SQLite
 Group:          System/Libraries
 
 %description -n %{libname}
-The SpatiaLite extension enables SQLite to support spatial data too [aka
-GEOMETRY], in a way conformant to OpenGis specifications.
+The SpatiaLite extension enables SQLite to support spatial data too
+[aka GEOMETRY], in a way conformant to OpenGis specifications.
 
 %package devel
 Summary:        Development files for %{name}
@@ -61,15 +63,13 @@ to compile and develop applications that use libspatialite.
 
 %prep
 %setup -q
-%patch1 -p1
 
 %build
-%configure \
-	--disable-static
+%configure --disable-static
 make %{?_smp_mflags}
 
 %check
-# Don't fail build - two failures (reported to upstream)
+# Don't fail build - four failures (reported to upstream)
 make check %{?_smp_mflags} || :
 
 %install

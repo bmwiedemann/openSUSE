@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 31 16:08:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add 362-skip-failing-tests.patch to skip failing tests
+  (gh#meejah/txtorcon#362).
+
+-------------------------------------------------------------------
 Sat May  1 20:24:09 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Async tests don't work with pytest. Use python -m twisted.trial

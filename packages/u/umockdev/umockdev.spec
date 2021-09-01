@@ -19,7 +19,7 @@
 %define shlib libumockdev0
 %define shlibpre libumockdev-preload0
 Name:           umockdev
-Version:        0.15.5
+Version:        0.16.2
 Release:        0
 Summary:        Mock hardware devices for creating unit tests and bug reporting
 License:        LGPL-2.1-or-later
@@ -35,6 +35,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  pkgconfig(libudev)
 
 %description
@@ -101,7 +102,7 @@ umockdev.
 
 %files
 %license COPYING
-%doc NEWS README.rst
+%doc NEWS README.md
 %{_bindir}/*
 
 %files -n %{shlib}

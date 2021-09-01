@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Aug 27 03:14:14 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Update to 4.8.0
+  + Do not assume that a remote rpm is complete if present
+  + Use positive percentage for "Failed delta RPMs" message
+  + Remove redundant new line in Groups output
+  + Format empty group names outputs to <name-unset>
+  + [doc] Document default colors
+  + Use rpmkeys alone to verify signature
+  + Add dnf.error message to explain rpm.error traceback when package
+    not found after resolving a transaction (rh#1815327, rh#1887293, rh#1909845)
+  + Bugs fixed (rh#1946975, rh#1955309)
+- Refresh patch for changing dnfdb path
+  + Remove patch: dnf-4.6.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + Add patch: dnf-4.8.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+
+-------------------------------------------------------------------
 Tue Apr 13 13:56:53 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
 
 - Update to version 4.7.0

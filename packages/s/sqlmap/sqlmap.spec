@@ -28,6 +28,7 @@ Patch0:         fix_shebang.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python3
 BuildArch:      noarch
 
 %description

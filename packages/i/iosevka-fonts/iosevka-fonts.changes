@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Aug 15 16:57:41 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v10.0.0
+
+-------------------------------------------------------------------
+Mon Aug  9 10:15:58 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Fix merge conflict
+
+-------------------------------------------------------------------
+Sat Aug  7 22:24:22 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to version 9.0.1
+- Additionally package 18 stylistic sets
+- Package “Super TTC” because it is the recommended way to install fonts for
+  Desktop usage
+- Add separate %reconfigure_fonts_scriptlets for each subpackage
+- Spec file cleanup
+
+-------------------------------------------------------------------
+Wed Jul 21 08:46:29 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 7.3.2
+
+-------------------------------------------------------------------
+Mon Jul 19 09:18:19 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 7.3.0
+
+-------------------------------------------------------------------
+Mon Jul 12 09:13:37 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
+
+- Update to 7.2.8
+
+-------------------------------------------------------------------
 Mon Jun 21 07:48:05 UTC 2021 - Lukas Kucharczyk <lukas.kucharczyk@suse.com>
 
 - Update to 7.1.1

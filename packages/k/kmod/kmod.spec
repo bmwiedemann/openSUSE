@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define use_zstd 1
+%endif
+
 Name:           kmod
 %define lname	libkmod2
 Version:        29
@@ -47,7 +51,10 @@ BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.21
 BuildRequires:  xz
 BuildRequires:  pkgconfig(liblzma) >= 4.99
+%if 0%{?use_zstd}
 BuildRequires:  pkgconfig(libzstd)
+Provides:       kmod-zstd
+%endif
 BuildRequires:  pkgconfig(zlib)
 Requires(post): coreutils
 Obsoletes:      kmod-compat < %version-%release
@@ -112,7 +119,9 @@ export LDFLAGS="-Wl,-z,relro,-z,now"
 	--with-xz \
 	--with-zlib \
 	--with-openssl \
+%if 0%{?use_zstd}
 	--with-zstd \
+%endif
 	--includedir="%_includedir/kmod" \
 	--with-rootlibdir="%_libdir" \
 	--bindir="%_bindir"

@@ -15,14 +15,14 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.14.4
+Version:        2.14.8
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
 Group:          System/X11/Utilities
 URL:            https://mike-fabian.github.io/ibus-typing-booster/
 Source0:        https://github.com/mike-fabian/ibus-typing-booster/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://releases.pagure.org/inscript2/inscript2-20210812.tar.gz
+Source1:        https://releases.pagure.org/inscript2/inscript2-20210820.tar.gz
 BuildRequires:  ibus-devel
 BuildRequires:  python3
 BuildRequires:  python3-devel

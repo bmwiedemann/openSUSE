@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 07:56:40 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Add ZSTD support on Tumbleweed only. Add a way to detect ZSTD.
+
+-------------------------------------------------------------------
 Wed Aug 18 10:55:57 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Display module information even for modules built into the running kernel

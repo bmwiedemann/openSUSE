@@ -57,6 +57,14 @@ Source16:       cf-execd
 Source17:       cf-serverd
 Source20:       %{name}.cron
 Source21:       %{name}-rpmlintrc
+Patch0:         harden_cf-apache.service.patch
+Patch1:         harden_cf-execd.service.patch
+Patch2:         harden_cf-hub.service.patch
+Patch3:         harden_cf-monitord.service.patch
+Patch4:         harden_cf-postgres.service.patch
+Patch5:         harden_cf-runalerts.service.patch
+Patch6:         harden_cf-serverd.service.patch
+Patch7:         harden_cfengine3.service.patch
 BuildRequires:  bison
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -137,6 +145,14 @@ ln -s libntech-%{libntech_hash} libntech
 ##### rpmlint
 #### wrong-file-end-of-line-encoding
 find ./examples -type f -name "*.cf" -exec perl -p -i -e 's|\r\n|\n|' {} \;
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
+%patch4 -p1
+%patch5 -p1
+%patch6 -p1
+%patch7 -p1
 
 %build
 EXPLICIT_VERSION=%{version} autoreconf -fvi -I m4

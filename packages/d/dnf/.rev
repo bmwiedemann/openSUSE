@@ -502,4 +502,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>887046</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>9c6d00a9cfee07d92e2bbd5417cde2cd</srcmd5>
+    <version>4.8.0</version>
+    <time>1630432495</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.8.0
+  + Do not assume that a remote rpm is complete if present
+  + Use positive percentage for &quot;Failed delta RPMs&quot; message
+  + Remove redundant new line in Groups output
+  + Format empty group names outputs to &lt;name-unset&gt;
+  + [doc] Document default colors
+  + Use rpmkeys alone to verify signature
+  + Add dnf.error message to explain rpm.error traceback when package
+    not found after resolving a transaction (rh#1815327, rh#1887293, rh#1909845)
+  + Bugs fixed (rh#1946975, rh#1955309)
+- Refresh patch for changing dnfdb path
+  + Remove patch: dnf-4.6.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + Add patch: dnf-4.8.0-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch</comment>
+    <requestid>914475</requestid>
+  </revision>
 </revisionlist>

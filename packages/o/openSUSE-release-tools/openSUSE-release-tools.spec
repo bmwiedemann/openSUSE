@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20210820.43b07171
+Version:        20210831.0de63caa
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -438,6 +438,7 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/maintenance-installcheck.py
 %exclude %{_datadir}/%{source_dir}/project-installcheck.py
 %exclude %{_datadir}/%{source_dir}/suppkg_rebuild.py
+%exclude %{_datadir}/%{source_dir}/skippkg-finder.py
 %exclude %{_datadir}/%{source_dir}/osclib
 %exclude %{_datadir}/%{source_dir}/osc-cycle.py
 %exclude %{_datadir}/%{source_dir}/osc-origin.py
@@ -551,8 +552,10 @@ exit 0
 %files pkglistgen
 %defattr(-,root,root,-)
 %{_bindir}/osrt-pkglistgen
+%{_bindir}/osrt-skippkg-finder
 %{_datadir}/%{source_dir}/pkglistgen
 %{_datadir}/%{source_dir}/pkglistgen.py
+%{_datadir}/%{source_dir}/skippkg-finder.py
 
 %files -n osclib
 %defattr(-,root,root,-)

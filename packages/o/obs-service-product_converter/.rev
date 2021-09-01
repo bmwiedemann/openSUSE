@@ -141,4 +141,12 @@
   * release spec file cleanup</comment>
     <requestid>903181</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>85b62d16ab05baac6996a9e401abf781</srcmd5>
+    <version>1.4.7</version>
+    <time>1630432549</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915256</requestid>
+  </revision>
 </revisionlist>

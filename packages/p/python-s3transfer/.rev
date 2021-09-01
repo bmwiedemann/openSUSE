@@ -188,4 +188,12 @@
     <comment></comment>
     <requestid>908599</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>5e614d1abc2da095ff25f11ab6920144</srcmd5>
+    <version>0.5.0</version>
+    <time>1630432528</time>
+    <user>dimstar_suse</user>
+    <comment>- Update 0.5.0: (bsc#1189649)</comment>
+    <requestid>915032</requestid>
+  </revision>
 </revisionlist>

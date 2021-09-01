@@ -1,0 +1,23 @@
+Index: coturn-4.5.2/examples/etc/coturn.service
+===================================================================
+--- coturn-4.5.2.orig/examples/etc/coturn.service
++++ coturn-4.5.2/examples/etc/coturn.service
+@@ -15,6 +15,18 @@ ExecStart=/usr/bin/turnserver -c /etc/tu
+ Restart=on-failure
+ InaccessibleDirectories=/home
+ PrivateTmp=yes
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ 
+ [Install]
+ WantedBy=multi-user.target

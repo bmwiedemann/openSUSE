@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 31 12:59:35 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.0.2
+
+- Add build option SOCI_CXX11=ON, some packages (lime) needs it
+- fix several RPMLINT warning
+
+-------------------------------------------------------------------
+Wed Aug 25 09:05:17 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- Enable test suite run in %check
+
+-------------------------------------------------------------------
 Thu Aug 19 12:01:53 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - New upstream release 4.0.2

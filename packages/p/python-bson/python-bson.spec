@@ -1,7 +1,7 @@
 #
 # spec file for package python-bson
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@ Name:           python-bson
 Version:        0.5.8
 Release:        0
 Summary:        BSON codec for Python
-License:        BSD-3-Clause AND Apache-2.0
+License:        Apache-2.0 AND BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/py-bson/bson
 Source:         https://github.com/py-bson/bson/archive/%{version}.tar.gz#/bson-%{version}.tar.gz
@@ -52,7 +52,7 @@ sed -i '1 {/^#!/d}' bson/*.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst

@@ -1,5 +1,5 @@
 #
-# spec file for package tensorflow2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,12 +18,12 @@
 
 #
 %define pname tensorflow2
-%define vers 2.4.1
+%define vers 2.6.0
 #%%define cand -rc4
-%define _vers 2_4_1
+%define _vers 2_6_0
 %define libmaj 2
-%define libmin 4
-%define libref 1
+%define libmin 6
+%define libref 0
 %define python_ver_hack python3.[0-9]
 %ifarch aarch64
 %define mklconfig mkl_aarch64
@@ -137,25 +137,23 @@ Source15:       https://github.com/google/farmhash/archive/816a4ae622e964763ca08
 # License17: Apache-2.0
 Source17:       https://github.com/google/gemmlowp/archive/fda83bdc38b118cc6b56753bd540caa49e570745.zip#/gemmlowp.zip
 # License18: BSD-3-Clause
-Source18:       https://github.com/hfp/libxsmm/archive/1.9.tar.gz#/libxsmm_1.9.tar.gz
+Source18:       https://github.com/hfp/libxsmm/archive/1.14.tar.gz#/libxsmm_1.14.tar.gz
 # License19: Apache-2.0
-Source19:       https://github.com/abseil/abseil-cpp/archive/df3ea785d8c30a9503321a3d35ee7d35808f190d.tar.gz#/abseil-cpp.tar.gz
+Source19:       https://github.com/abseil/abseil-cpp/archive/997aaf3a28308eba1b9156aa35ab7bca9688e9f6.tar.gz#/abseil-cpp.tar.gz
 # License21: Apache-2.0
 Source21:       https://github.com/googleapis/googleapis/archive/541b1ded4abadcc38e8178680b0677f65594ea6f.zip#/googleapis.zip
 # License24: Apache-2.0
 Source24:       https://github.com/google/highwayhash/archive/fd3d9af80465e4383162e4a7c5e2f406e82dd968.tar.gz#/highwayhash.tar.gz
 # License26: MPL-2.0
 # NOTE: tensorflow only uses MPL-2.0 part of eigen
-Source26:       https://gitlab.com/libeigen/eigen/-/archive/011e0db31d1bed8b7f73662be6d57d9f30fa457a/eigen-011e0db31d1bed8b7f73662be6d57d9f30fa457a.tar.gz#/eigen.tar.gz
+Source26:       https://gitlab.com/libeigen/eigen/-/archive/12e8d57108c50d8a63605c6eb0144c838c128337/eigen-12e8d57108c50d8a63605c6eb0144c838c128337.tar.gz#/eigen.tar.gz
 # License27: BSD-2-Clause
 Source27:       https://github.com/intel/ARM_NEON_2_x86_SSE/archive/1200fe90bb174a6224a525ee60148671a786a71f.tar.gz#/arm_neon_2_x86_sse.tar.gz
 Source28:       https://docs.python.org/2.7/_sources/license.rst.txt#/license.rst.txt
-# License34: BSD-3-Clause and Intel
-Source34:       https://github.com/edenhill/librdkafka/archive/v0.11.5.tar.gz#/kafka-v0.11.5.tar.gz
 # License35: Apache-2.0
-Source35:       https://github.com/GoogleCloudPlatform/google-cloud-cpp/archive/v0.4.0.tar.gz#/google-cloud-cpp.tar.gz
+Source35:       https://github.com/googleapis/google-cloud-cpp/archive/v1.17.1.tar.gz#/google-cloud-cpp.tar.gz
 # License37: Apache-2.0
-Source37:       https://github.com/bazelbuild/rules_docker/archive/v0.15.0.tar.gz#/rules_docker-0.15.0.tar.gz
+Source37:       https://github.com/bazelbuild/rules_docker/releases/download/v0.18.0/rules_docker-v0.18.0.tar.gz#/rules_docker-0.18.0.tar.gz
 # License44: BSD like
 Source44:       https://github.com/nanopb/nanopb/archive/f8ac463766281625ad710900479130c7fcb4d63b.tar.gz#/nanopb.tar.gz
 # License45: Python license itself, do need as sha256b have to match so could not use system one
@@ -166,20 +164,20 @@ Source46:       https://raw.githubusercontent.com/simonpercivall/astunparse/v1.6
 # License53: BSD like
 Source53:       https://storage.googleapis.com/mirror.tensorflow.org/www.kurims.kyoto-u.ac.jp/~ooura/fft2d.tgz
 # License54: Apache-2.0 WITH LLVM-exception OR NCSA
-Source54:       https://github.com/llvm/llvm-project/archive/f402e682d0ef5598eeffc9a21a691b03e602ff58.tar.gz#/llvm.tar.gz
+Source54:       https://github.com/llvm/llvm-project/archive/f7b1fa6f5ebec5780e626aa48d582f2519a01632.tar.gz#/llvm.tar.gz
 # License56:  BSD-3-Clause
 Source56:       https://github.com/mborgerding/kissfft/archive/36dbc057604f00aacfc0288ddad57e3b21cfc1b8.tar.gz#/kissfft.tar.gz
 # Wrong rules package in Factory
 # License58:  Apache-2.0
-Source58:       https://github.com/bazelbuild/rules_cc/archive/01d4a48911d5e7591ecb1c06d3b8af47fe872371.zip#/rules_cc.tar.gz
+Source58:       https://github.com/bazelbuild/rules_cc/archive/40548a2974f1aea06215272d9c2b47a14a24e556.tar.gz#/rules_cc.tar.gz
 # Source59: Apache-2.0
 Source59:       https://github.com/bazelbuild/rules_android/archive/v0.1.1.zip#/rules_android.zip
 # License60: BSD 2-Clause
-Source60:       https://github.com/pytorch/cpuinfo/archive/6cecd15784fcb6c5c0aa7311c6248879ce2cb8b2.zip#/cpuinfo.zip
+Source60:       https://github.com/pytorch/cpuinfo/archive/5916273f79a21551890fd3d56fc5375a78d1598d.zip#/cpuinfo.zip
 # License23: BSD-3-Clause
 Source62:       https://github.com/joe-kuo/sobol_data/archive/835a7d7b1ee3bc83e575e302a985c66ec4b65249.tar.gz#/sobol_data.tar.gz
 # Source63: Apache-2.0
-Source63:       https://github.com/google/ruy/archive/5bb02fbf90824c2eb6cd7418f766c593106a332b.zip#/ruy.zip
+Source63:       https://github.com/google/ruy/archive/e6c1b8dc8a8b00ee74e7268aac8b18d7260ab1ce.zip#/ruy.zip
 # License64: Apache-2.0
 Source64:       https://github.com/dmlc/dlpack/archive/3efc489b55385936531a06ff83425b719387ec63.tar.gz#/dlpack.tar.gz
 # License65: BSD like
@@ -190,25 +188,39 @@ Source66:       https://github.com/google/re2/archive/506cfa4bffd060c06ec338ce50
 # License67: Apache-2.0 WITH LLVM-exception OR NCSA
 Source67:       https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.1/openmp-10.0.1.src.tar.xz
 # License68: Apache License 2.0
-Source68:       https://github.com/oneapi-src/oneDNN/archive/v1.6.4.tar.gz#/oneDNN.tar.gz
+Source68:       https://github.com/oneapi-src/oneDNN/archive/v2.3.tar.gz#/oneDNN.tar.gz
 # License69: BSD-2-Clause
-Source69:       https://files.pythonhosted.org/packages/ec/c4/8c651f3240a73c28a218194f3d527eb2be5a173d08501060cdee84ade33f/tblib-1.3.2.tar.gz
+Source69:       https://files.pythonhosted.org/packages/d3/41/901ef2e81d7b1e834b9870d416cb09479e175a2be1c4aa1a9dcd0a555293/tblib-1.7.0.tar.gz
 # License70: BSD-3-Clause
-Source70:       https://files.pythonhosted.org/packages/c7/11/345f3173809cea7f1a193bfbf02403fff250a3360e0e118a1630985e547d/dill-0.3.1.1.tar.gz
+Source70:       https://files.pythonhosted.org/packages/e2/96/518a8ea959a734b70d2e95fef98bcbfdc7adad1c1e5f5dd9148c835205a5/dill-0.3.2.zip
 # License71: PSF
 Source71:       https://files.pythonhosted.org/packages/6a/28/d32852f2af6b5ead85d396249d5bdf450833f3a69896d76eb480d9c5e406/typing_extensions-3.7.4.2.tar.gz
+# License72: Apache License 2.0
+Source72:       https://github.com/tensorflow/toolchains/archive/v1.1.21.tar.gz#/tf_toolchains.tar.gz
+# License73: Apache License 2.0
+Source73:       https://github.com/tensorflow/runtime/archive/b570a1921c9e55ac53c8972bd2bfd37cd0eb510d.tar.gz#/tf_runtime.tar.gz
+# License74: MIT
+Source74:       https://github.com/ARM-software/ComputeLibrary/archive/v21.05.tar.gz#/ComputeLibrary.tar.gz
+# License75: Apache License 2.0
+Source75:       https://github.com/bazelbuild/platforms/releases/download/0.0.2/platforms-0.0.2.tar.gz
+# License76: Apache License 2.0
+Source76:       https://github.com/bazelbuild/rules_proto/archive/97d8af4dc474595af3900dd85cb3a29ad28cc313.tar.gz#/rules_proto.tar.gz
+# License77: Apache License 2.0
+Source77:       https://github.com/oneapi-src/oneDNN/archive/v2.3-rc2.tar.gz#/oneDNN-v2.3-rc2.tar.gz
 Source100:      https://github.com/google/googletest/archive/release-1.8.0.tar.gz
 
-Patch10:        removed-external-toolchains.patch
+Patch10:        tensorflow-2.6.0-removed-external-toolchains.patch
 # see https://github.com/tensorflow/tensorflow/pull/35943
-Patch13:        remove-weakref.patch
-Patch14:        fix-lite.patch
+Patch13:        tensorflow-2.6.0-remove-weakref.patch
+Patch14:        tensorflow-2.6.0-fix-lite.patch
 # Fix from upstream for gcc10.1
-Patch20:        removed-clog-build-as-included-in-cpuinfo.patch
+Patch20:        tensorflow-2.6.0-removed-clog-build-as-included-in-cpuinfo.patch
 # Fix for numpy 1.20 -- https://stackoverflow.com/questions/66373169 , https://github.com/tensorflow/tensorflow/issues/47691
-Patch21:        numpy-tensor-small.patch
+Patch21:        tensorflow-2.6.0-numpy-tensor-small.patch
 # Fix for hdf5 3.0 -- https://github.com/tensorflow/tensorflow/issues/44467
-Patch22:        tf-keras-hdf5-3.patch
+Patch22:        tensorflow-2.6.0-tf-keras-hdf5-3.patch
+# PATCH-FIX-OPENSUSE tensorflow-2.6.0-compile-with-protobuf-3.16.patch https://github.com/protocolbuffers/protobuf/pull/8354
+Patch23:        tensorflow-2.6.0-compile-with-protobuf-3.16.patch
 
 Requires:       python3
 Requires:       python3-Keras-Preprocessing
@@ -236,7 +248,7 @@ Provides:       python3-tensorflow
 Provides:       tensorflow
 %endif
 %if !%{is_lite}
-BuildRequires:  bazel == 3.4.1
+BuildRequires:  bazel == 3.7.2
 #BuildRequires:  bazel-rules-cc-source
 #BuildRequires:  bazel-apple-support-source
 #BuildRequires:  bazel-rules-apple-source
@@ -299,7 +311,6 @@ BuildRequires:  libpng16-devel
 BuildRequires:  lmdb-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nasm
-BuildRequires:  pcre-devel
 # Requiring 3.9.1 which is the actual one in Leap 15.2
 BuildRequires:  protobuf-devel >= 3.9.1
 BuildRequires:  protobuf-java
@@ -473,7 +484,6 @@ mkdir -p %{bazeldir}
 %makebazelcache %{SOURCE26}
 %makebazelcache %{SOURCE27}
 %makebazelcache %{SOURCE28}
-%makebazelcache %{SOURCE34}
 %makebazelcache %{SOURCE35}
 %makebazelcache %{SOURCE44}
 %makebazelcache %{SOURCE45}
@@ -494,16 +504,26 @@ mkdir -p %{bazeldir}
 %makebazelcache %{SOURCE69}
 %makebazelcache %{SOURCE70}
 %makebazelcache %{SOURCE71}
+%makebazelcache %{SOURCE72}
+%makebazelcache %{SOURCE73}
+%makebazelcache %{SOURCE74}
+%makebazelcache %{SOURCE75}
+%makebazelcache %{SOURCE76}
+%makebazelcache %{SOURCE77}
 
 # unpack tensorflow
 %setup -q -c -n %{pname}-%{version}
 %sanitize_dir
-%patch10 -p 1
-%patch13 -p 1
-%patch14 -p 1
-%patch20 -p 1
-%patch21 -p 1
-%patch22 -p 1
+%patch10 -p 2
+%patch13 -p 2
+%patch14 -p 2
+%patch20 -p 2
+%patch21 -p 2
+%patch22 -p 2
+# https://github.com/protocolbuffers/protobuf/pull/8354
+if pkg-config --atleast-version 3.16.0 protobuf; then
+%patch23 -p 2
+fi
 
 %define make_depend_src() test -e $(basename %{1}| sed 's/-.*//') && rmdir %{?2}%{!?2:$(basename %{1}| sed 's/-.*//')}; test -e %{2} && rmdir %{2}; tar xzf %{1}; mv $(basename %{1} | sed 's/\.tar\.gz//' ) %{?2}%{!?2:$(basename %{1}| sed 's/-.*//')}
 # extract bazel rules
@@ -579,7 +599,6 @@ export TF_SYSTEM_LIBS="\
     astor_archive,\
     astunparse_archive,\
     boringssl,\
-    com_github_googleapis_googleapis,\
     com_github_googlecloudplatform_google_cloud_cpp,\
     com_github_grpc_grpc,\
     com_google_protobuf,\
@@ -596,12 +615,11 @@ export TF_SYSTEM_LIBS="\
     libjpeg_turbo,\
     jsoncpp_git,\
     lmdb,\
-		nasm,\
+    nasm,\
     nsync,\
     opt_einsum_archive,\
     org_sqlite,\
     pasta,\
-    pcre,\
     png,\
     pybind11,\
     six_archive,\
@@ -657,7 +675,6 @@ cd -
   --config=%{mklconfig} \\\
   --config=v2 \\\
   --config=noaws \\\
-  --incompatible_no_support_tools_in_action_inputs=false \\\
   --override_repository="upb=/usr/share/bazel-workspaces/upb" \\\
   --override_repository="bazel_skylib=/usr/src/bazel-skylib"\\\
   --override_repository="bazel_toolchains=/home/abuild/rpmbuild/SOURCES/bazel-toolchains" \\\

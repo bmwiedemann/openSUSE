@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 27 03:36:32 UTC 2021 - Neal Gompa <ngompa13@gmail.com>
+
+- Upgrade to 0.1.17
+  + Fix a crash when clearing COMPS_ObjRTree (rh#1888343)
+  + Don't print empty requires
+  + Fix memory leaks and resource leaks
+  + Remove Python 2 support
+- Drop patch included in this release
+  + Patch: fix-sphinx.patch
+
+-------------------------------------------------------------------
 Wed Jun  9 08:47:28 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add upstream patch fix-sphinx.patch which fixes build with Sphinx 4.x.

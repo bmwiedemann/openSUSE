@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 30 11:55:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_coturn.service.patch
+  Modified:
+  * coturn.service
+  * coturn@.service
+
+-------------------------------------------------------------------
 Mon Jan 11 10:27:20 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 4.5.2

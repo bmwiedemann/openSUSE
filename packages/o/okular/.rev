@@ -1115,4 +1115,12 @@ before the switch to 4.8 and the KR47 repo. (forwarded request 91020 from christ
     <comment>KDE Gear 21.08.0</comment>
     <requestid>912390</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>137ffbb3ee78625a732e02b9f3dd6238</srcmd5>
+    <version>21.08.0</version>
+    <time>1630432502</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable lto for ppc64 builds.</comment>
+    <requestid>914623</requestid>
+  </revision>
 </revisionlist>

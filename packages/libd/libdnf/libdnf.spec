@@ -34,7 +34,7 @@
 %define devname %{name}-devel
 
 Name:           libdnf
-Version:        0.62.0
+Version:        0.63.1
 Release:        0
 Summary:        Library providing C and Python APIs atop libsolv
 License:        LGPL-2.1-or-later
@@ -43,8 +43,6 @@ URL:            https://github.com/rpm-software-management/%{name}
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 
 # Backports from upstream
-## Fix crash when attempting to load DVD repositories
-Patch0001:      0001-Fix-a-crash-when-repoId-not-found-in-loaded-conf-gke.patch
 
 # Fixes proposed upstream
 

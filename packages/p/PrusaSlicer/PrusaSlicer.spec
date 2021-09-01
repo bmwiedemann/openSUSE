@@ -24,6 +24,9 @@ License:        AGPL-3.0-only
 Group:          Hardware/Printing
 URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM PrusaSlicer-issue6681-openvdb.patch -- gh#prusa3d/PrusaSlicer#6681
+Patch0:         https://github.com/prusa3d/PrusaSlicer/commit/e6507594fb6893156056c2123822a2b37f7f179d.patch#/PrusaSlicer-issue6681-openvdb.patch
+BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
 BuildRequires:  cmake
@@ -34,7 +37,6 @@ BuildRequires:  gcc-c++
 # For now, use bundled GLEW because of gh#prusa3d/PrusaSlicer#6396
 #!BuildIgnore:  glew-devel
 BuildRequires:  gtest >= 1.7
-BuildRequires:  ilmbase-devel
 BuildRequires:  libboost_atomic-devel
 BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_iostreams-devel
@@ -47,6 +49,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libexpat-devel
 BuildRequires:  memory-constraints
 BuildRequires:  nlopt-devel
+BuildRequires:  openexr-devel
 BuildRequires:  openvdb-devel >= 5
 BuildRequires:  openvdb-tools
 BuildRequires:  tbb-devel
@@ -82,8 +85,10 @@ rm -r resources/data/flatpak
   export CFLAGS="%optflags -mfpmath=sse -msse2"
   export CXXFLAGS="$CFLAGS"
 %endif
-%cmake -DSLIC3R_FHS=1 \
-  -DSLIC3R_GTK=3
+%cmake \
+  -DSLIC3R_FHS=1 \
+  -DSLIC3R_GTK=3 \
+  -DOPENVDB_FIND_MODULE_PATH=%{_libdir}/cmake/OpenVDB
 %cmake_build
 
 %install

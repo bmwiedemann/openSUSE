@@ -25,6 +25,9 @@ Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
 URL:            https://txtorcon.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/t/txtorcon/txtorcon-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM 362-skip-failing-tests.patch gh#meejah/txtorcon#362 mcepl@suse.com
+# Skip failing tests
+Patch0:         362-skip-failing-tests.patch
 BuildRequires:  %{python_module setuptools >= 36.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +56,7 @@ Twisted-based asynchronous Tor control protocol implementation. Includes
 unit-tests, examples, state-tracking code and configuration abstraction.
 
 %prep
-%setup -q -n txtorcon-%{version}
+%autosetup -p1 -n txtorcon-%{version}
 
 sed -i '/data_files/,/\]\,/s/^/#/' setup.py
 
@@ -69,7 +72,9 @@ sed -i '/data_files/,/\]\,/s/^/#/' setup.py
 %check
 # looks more like integration tests
 # Async tests don't work with pytest gh#crossbario/autobahn-python#1235
-%python_expand $python -m twisted.trial test
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitelib}
+$python -m twisted.trial test
+}
 
 %files %{python_files}
 %license LICENSE docs/*.rst

@@ -535,4 +535,22 @@
   + [context] Add API for distro-sync</comment>
     <requestid>885735</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>dbf6cfc2fcf98145812e938c31f28709</srcmd5>
+    <version>0.63.1</version>
+    <time>1630432494</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.63.1
+  + ModuleProfile: add isDefault()
+  + ModulePackage: add getDefaultProfile()
+  + Add new dnf_context_module_install() C API
+  + Fix a crash when [media] section in .treeinfo is missing for bootable media (rh#1946024)
+  + Add hy_query_get_advisory_pkgs to C API (rh#1960561)
+  + Add dnf_advisorypkg_get_advisory()
+  + DNF does not fail on non UTF-8 file names in a package (rh#1893176)
+  + Improve error-reporting for modular functions
+- Drop patch included in this release
+  + Patch: 0001-Fix-a-crash-when-repoId-not-found-in-loaded-conf-gke.patch</comment>
+    <requestid>914474</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 30 19:24:02 UTC 2021 - Matthias Bach <marix@marix.org> - 1.7.6
+
+- Update to version 1.7.6
+  * You can exclude recycle bin and expired entries from find
+    results by selecting the two new options in the plugin settings
+
+-------------------------------------------------------------------
 Tue Aug  3 18:55:47 UTC 2021 - Matthias Bach <marix@marix.org> - 1.7.5
 
 - Update to version 1.7.5

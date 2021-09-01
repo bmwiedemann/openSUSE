@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 24 11:56:37 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.7
+  * new option for picking rpms by version number instead of
+    repository priority
+
+-------------------------------------------------------------------
 Wed Jun 30 06:16:44 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.6

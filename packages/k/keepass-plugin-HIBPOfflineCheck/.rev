@@ -16,4 +16,14 @@
   * You can now view all your pwned passwords by using the Find menu</comment>
     <requestid>910039</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f2e9859b493650afef87dd730e122fc3</srcmd5>
+    <version>1.7.6</version>
+    <time>1630432527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.7.6
+  * You can exclude recycle bin and expired entries from find
+    results by selecting the two new options in the plugin settings</comment>
+    <requestid>915138</requestid>
+  </revision>
 </revisionlist>

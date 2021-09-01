@@ -197,4 +197,13 @@
     <comment>- Update to release 3.2.5</comment>
     <requestid>888535</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>1b978c2a413357c2ff4fd3f2b77fa244</srcmd5>
+    <version>3.2.5</version>
+    <time>1630432524</time>
+    <user>dimstar_suse</user>
+    <comment>- Add systemd and D-Bus .service files
+- Fix .spec file warning</comment>
+    <requestid>915122</requestid>
+  </revision>
 </revisionlist>

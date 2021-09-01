@@ -33,6 +33,7 @@ URL:            https://cdemu.sourceforge.io/about/daemon/
 Source:         https://downloads.sf.net/cdemu/%name-%version.tar.xz
 Source2:        60-vhba.rules
 Source3:        cdemu-daemon.sysconfig
+Source4:        cdemu-daemon.service
 BuildRequires:  cmake >= 2.8.5
 BuildRequires:  intltool >= 0.21
 BuildRequires:  pkg-config >= 0.16
@@ -74,16 +75,23 @@ mkdir -p "$b/%_sbindir" "$b/%_fillupdir" \
 	"$b/%_prefix/lib/udev/rules.d"
 install -pm0644 "%{S:2}" "$b/%_prefix/lib/udev/rules.d/60-vhba.rules"
 install -pm0644 "%{S:3}" "$b/%_fillupdir/sysconfig.cdemu-daemon"
+mkdir -p "$b/%_userunitdir"
+install -pm0644 "%{S:4}" "$b/%_userunitdir/cdemu-daemon.service"
+mkdir -p "$b/%_datadir/dbus-1/services"
+install -pm0644 "service-example/net.sf.cdemu.CDEmuDaemon.service" "$b/%_datadir/dbus-1/services/net.sf.cdemu.CDEmuDaemon.service"
 %find_lang %name
 
 %post
 %fillup_only
 
 %files -f %name.lang
-%doc AUTHORS COPYING README
+%doc AUTHORS README
+%license COPYING
 %_bindir/cdemu-daemon
 %_mandir/man8/cdemu-daemon.8*
 %_fillupdir/sysconfig.cdemu-daemon
 %_prefix/lib/udev/
+%_userunitdir/cdemu-daemon.service
+%_datadir/dbus-1/services/net.sf.cdemu.CDEmuDaemon.service
 
 %changelog

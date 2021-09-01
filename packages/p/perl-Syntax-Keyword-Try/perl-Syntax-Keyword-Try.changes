@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun  2 03:07:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-Syntax-Keyword-Try/Changes
+
+  0.25    2021-06-01
+          [CHANGES]
+           * Rewrite parsing logic to use XS::Parse::Keyword 0.06
+           * Removed the new-deprecated `try do { ... }` experimental syntax
+           * Updated docs now that 5.34 is officially released, including
+             `use feature 'try'`.
+
+-------------------------------------------------------------------
 Tue May 11 03:07:18 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.24

@@ -1,7 +1,7 @@
 #
 # spec file for package soci
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,13 @@
 
 
 %define sover   4_0
+%bcond_without tests
 Name:           soci
 Version:        4.0.2
 Release:        0
 Summary:        The C++ Database Access Library
 License:        BSL-1.0
+Group:          Productivity/Databases/Tools
 URL:            https://soci.sourceforge.io/
 Source:         https://github.com/SOCI/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
@@ -40,6 +42,7 @@ standard.
 
 %package -n lib%{name}_core%{sover}
 Summary:        The C++ Database Access Library
+Group:          Productivity/Databases/Tools
 Requires:       lib%{name}%{sover}-backend
 Suggests:       lib%{name}_empty%{sover}
 
@@ -50,6 +53,7 @@ standard.
 
 %package        devel
 Summary:        Development files for soci
+Group:          Development/Tools/Other
 Requires:       lib%{name}_core%{sover} = %{version}
 Requires:       libboost_headers-devel
 
@@ -64,6 +68,7 @@ which will use soci.
 
 %package -n lib%{name}_empty%{sover}
 Summary:        Empty back-end for soci
+Group:          Productivity/Databases/Tools
 Provides:       lib%{name}%{sover}-backend = %{version}
 
 %description -n lib%{name}_empty%{sover}
@@ -75,6 +80,7 @@ This package contains an empty back-end.
 
 %package empty-devel
 Summary:        Development files for the soci empty back-end
+Group:          Development/Tools/Other
 Requires:       %{name}-devel = %{version}
 Requires:       lib%{name}_empty%{sover} = %{version}
 
@@ -89,6 +95,7 @@ which will use soci with an empty back-end.
 
 %package -n lib%{name}_sqlite3-%{sover}
 Summary:        SQLite back-end for soci
+Group:          Productivity/Databases/Tools
 Provides:       lib%{name}%{sover}-backend = %{version}
 
 %description -n lib%{name}_sqlite3-%{sover}
@@ -100,6 +107,7 @@ This package contains the back-end for SQLite.
 
 %package sqlite3-devel
 Summary:        Development files for the soci SQLite back-end
+Group:          Development/Tools/Other
 Requires:       %{name}-devel = %{version}
 Requires:       lib%{name}_sqlite3-%{sover} = %{version}
 Requires:       pkgconfig(sqlite3)
@@ -115,6 +123,7 @@ which will use soci with SQLite.
 
 %package -n lib%{name}_postgresql%{sover}
 Summary:        PostgreSQL back-end for soci
+Group:          Productivity/Databases/Tools
 Provides:       lib%{name}%{sover}-backend = %{version}
 
 %description -n lib%{name}_postgresql%{sover}
@@ -126,6 +135,7 @@ This package contains the back-end for PostgreSQL.
 
 %package postgresql-devel
 Summary:        Development files for the soci PostgreSQL back-end
+Group:          Development/Tools/Other
 Requires:       %{name}-devel = %{version}
 Requires:       lib%{name}_postgresql%{sover} = %{version}
 Requires:       pkgconfig(libpq)
@@ -141,6 +151,7 @@ which will use soci with PostgreSQL.
 
 %package -n lib%{name}_mysql%{sover}
 Summary:        MariaDB back-end for soci
+Group:          Productivity/Databases/Tools
 Provides:       lib%{name}%{sover}-backend = %{version}
 
 %description -n lib%{name}_mysql%{sover}
@@ -152,6 +163,7 @@ This package contains the back-end for MariaDB.
 
 %package mysql-devel
 Summary:        Development files for the soci MariaDB back-end
+Group:          Development/Tools/Other
 Requires:       %{name}-devel = %{version}
 Requires:       lib%{name}_mysql%{sover} = %{version}
 Requires:       pkgconfig(libmariadb)
@@ -167,6 +179,7 @@ which will use soci with MariaDB.
 
 %package -n lib%{name}_odbc%{sover}
 Summary:        ODBC back-end for soci
+Group:          Productivity/Databases/Tools
 Provides:       lib%{name}%{sover}-backend = %{version}
 
 %description -n lib%{name}_odbc%{sover}
@@ -178,6 +191,7 @@ This package contains the back-end for unixODBC.
 
 %package odbc-devel
 Summary:        Development files for the soci ODBC back-end
+Group:          Development/Tools/Other
 Requires:       %{name}-devel = %{version}
 Requires:       lib%{name}_odbc%{sover} = %{version}
 Requires:       pkgconfig(odbc)
@@ -197,6 +211,12 @@ which will use soci with unixODBC.
 sed -i 's/-Werror //' cmake/SociConfig.cmake
 
 %build
+# Support for building tests.
+%define soci_testflags -DBUILD_TESTS="NONE"
+%if %{with tests}
+%define soci_testflags -DSOCI_TEST=ON -DSOCI_TEST_EMPTY_CONNSTR="dummy" -DSOCI_TEST_SQLITE3_CONNSTR="test.db" -DSOCI_TEST_POSTGRESQL_CONNSTR:STRING="dbname=soci_test" -DSOCI_TEST_MYSQL_CONNSTR:STRING="db=soci_test user=mloskot password=pantera"
+%endif
+
 %cmake \
   -DWITH_BOOST=ON      \
   -DWITH_EMPTY=ON      \
@@ -207,35 +227,31 @@ sed -i 's/-Werror //' cmake/SociConfig.cmake
   -DWITH_FIREBIRD=OFF  \
   -DWITH_DB2=OFF       \
   -DWITH_ORACLE=OFF    \
-  -DSOCI_TESTS=OFF     \
+  %{soci_testflags}    \
+  -DSOCI_CXX11=ON      \
   -DSOCI_STATIC=OFF
 %cmake_build
 
 %install
 %cmake_install
 
+%if %{with tests}
+%check
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:%{buildroot}%{_libdir}
+%{ctest --exclude-regex 'soci_(odbc|mysql|postgresql)_test'}
+%endif
+
 %post -n lib%{name}_core%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}_core%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}_empty%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}_empty%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}_sqlite3-%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}_sqlite3-%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}_postgresql%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}_postgresql%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}_mysql%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}_mysql%{sover} -p /sbin/ldconfig
-
 %post -n lib%{name}_odbc%{sover} -p /sbin/ldconfig
-
 %postun -n lib%{name}_odbc%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}_core%{sover}

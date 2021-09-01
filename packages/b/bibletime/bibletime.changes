@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 30 20:16:11 UTC 2021 - Cor Blom <cornelis@solcon.nl>
+
+- Update to 3.0.2:
+  * Fixed a build-error caused by an C++11 incompatibility (bug #332)
+  * Fixed copying of text disabled with Qt versions earlier than than
+    5.13 (bug #334)
+  * Fixed some undefined behavior and out-of-bounds memory errors
+  * Fixed missing documentation in Windows
+  * Updated translations
+  * Added ability to copy docs into build during install and packaging
+
+-------------------------------------------------------------------
 Sun Aug  8 19:12:41 UTC 2021 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 3.0.1:

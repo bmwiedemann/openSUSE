@@ -40,6 +40,7 @@ Source6:        %{name}.firewalld
 Source7:        README.SUSE
 Source8:        %{name}-apparmor-usr.bin.turnserver
 Source9:        %{name}@.service
+Patch0:         harden_coturn.service.patch
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  libevent-devel >= 2.0.0

@@ -104,4 +104,18 @@
     <comment></comment>
     <requestid>898673</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7d9ffdd3e8aa2548cbb817e693aa2d3b</srcmd5>
+    <version>0.1.17</version>
+    <time>1630432493</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to 0.1.17
+  + Fix a crash when clearing COMPS_ObjRTree (rh#1888343)
+  + Don't print empty requires
+  + Fix memory leaks and resource leaks
+  + Remove Python 2 support
+- Drop patch included in this release
+  + Patch: fix-sphinx.patch</comment>
+    <requestid>914473</requestid>
+  </revision>
 </revisionlist>

@@ -134,6 +134,9 @@ Document viewing program; supports document in various formats
 %autosetup -p1 -n okular-%{version}
 
 %build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
 %cmake_kf5 -d build -- -DBUILD_TESTING=OFF -DOKULAR_UI=both
 %cmake_build
 

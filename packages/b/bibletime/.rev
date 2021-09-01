@@ -193,4 +193,19 @@
 </comment>
     <requestid>910849</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f63b8e72c44631791a27e32cb2b02c8d</srcmd5>
+    <version>3.0.2</version>
+    <time>1630432537</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.2:
+  * Fixed a build-error caused by an C++11 incompatibility (bug #332)
+  * Fixed copying of text disabled with Qt versions earlier than than
+    5.13 (bug #334)
+  * Fixed some undefined behavior and out-of-bounds memory errors
+  * Fixed missing documentation in Windows
+  * Updated translations
+  * Added ability to copy docs into build during install and packaging</comment>
+    <requestid>915208</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 30 19:31:17 UTC 2021 - Matthias Bach <marix@marix.org> - 0.4.0
+
+- Update to upstream version 0.4.0
+  * Add support for Click 8 while keeping compatibility with
+    Click 7.
+- Remove basic-click8-compat.patch as Click 8 compatibility is now
+  provided upstream.
+
+-------------------------------------------------------------------
 Fri Jul 23 18:56:14 UTC 2021 - Matthias Bach <marix@marix.org>
 
 - Resolve Typer no longer working since Click got bumped to version

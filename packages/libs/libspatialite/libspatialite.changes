@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue May 11 13:23:42 UTC 2021 - Bruno Friedmann <bruno@ioda-net.ch>
+
+- Update to version 5.0.1
+  Documentation available at
+  https://www.gaia-gis.it/gaia-sins/spatialite_topics.html
+  + Add Buildrequires to librttopo (mandatory) (new package)
+  + Drop merged libspatialite-deprecated-proj-api.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Mar 17 13:49:30 UTC 2019 - Mykola Krachkovsky <w01dnick@gmail.com>
 
 - fixed build with newer libproj (using of deprecated API)
@@ -72,7 +82,7 @@ Tue Mar 6 17:00:00 UTC 2012 - tzotsos@opensuse.org
 -------------------------------------------------------------------
 Wed Aug 17 15:47:31 UTC 2011 - idonmez@novell.com
 
-- Add libspatialite-no-proj-la.patch: don't look for libproj.la file 
+- Add libspatialite-no-proj-la.patch: don't look for libproj.la file
 - Disable static libraries
 
 -------------------------------------------------------------------

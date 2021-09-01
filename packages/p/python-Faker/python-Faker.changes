@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 30 11:18:00 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 8.12.1
+  * Add missing diacritics in ``fr_FR`` ``person`` provider. Thanks @laowantong.
+- from version 8.12.0
+  * Added non-geo numbers and services phones format for ``pt_BR``. Thanks @leogregianin.
+  * Add datetime formats in ``pt_BR``. Thanks @leogregianin.
+  * Add currency formats in ``pt_BR``. Thanks @leogregianin.
+
+-------------------------------------------------------------------
 Thu Aug 12 11:41:54 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 8.11.0
