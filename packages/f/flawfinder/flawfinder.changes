@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep  1 10:20:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.0.19:
+  * entrypoint.sh: Don't require output filename to be escaped
+  * entrypoint.sh: Make minor improvements (#54)
+  * print warning messages to stderr (#58)
+  * changes to github actions
+
+-------------------------------------------------------------------
 Fri Jun 25 07:20:52 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.0.18:

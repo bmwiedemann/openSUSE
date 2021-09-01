@@ -92,4 +92,16 @@
   * Fix Sarif output relationship target id format.</comment>
     <requestid>902285</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c940d6e1d6824e19b5ab8c977d605214</srcmd5>
+    <version>2.0.19</version>
+    <time>1630525035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.19:
+  * entrypoint.sh: Don't require output filename to be escaped
+  * entrypoint.sh: Make minor improvements (#54)
+  * print warning messages to stderr (#58)
+  * changes to github actions</comment>
+    <requestid>915449</requestid>
+  </revision>
 </revisionlist>
