@@ -9,7 +9,7 @@
   boo#1172013: '20210104'
   boo#1172073: '20210712'
   boo#1174680: '20210208'
-  boo#1176553: '20210830'
+  boo#1176553: '20210831'
   boo#1177461: '20210626'
   boo#1177462: '20210227'
   boo#1177517: '20210304'
@@ -80,7 +80,7 @@
   boo#1189759: '20210823'
   boo#1189782: '20210831'
   boo#1189784: '20210824'
-  boo#1189810: '20210830'
+  boo#1189810: '20210831'
   boo#1189853: '20210830'
   boo#1189868: '20210831'
   boo#1189869: '20210831'
@@ -232,7 +232,7 @@ installcheck-ignore-conflicts = lua53-devel lua51-devel gcc-go lua53 lua51 busyb
 allowed-missing-32bit-binaries-importing = audit-secondary bash coreutils curl-mini dbus-1-x11 ft2demos gamin gdb gettext-runtime-mini krb5-mini librtas librtas-doc libselinux-bindings LibVNCServer llvm lvm2 lvm2-clvm openssl openucx postgresql10 postgresql96 psl-make-dafsa python-libxml2-python python-magic python-rpm python-semanage strace syslinux systemd-mini util-linux-systemd
 
 # packages in here are rebuild if their buildinfo changed
-rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema perf wsl-appx
+rebuildpacs-leafs = branding-openSUSE PackageKit-branding-openSUSE xfce4-branding-openSUSE xfce4-branding-openSUSE installation-images:openSUSE installation-images:Kubic installation-images:MicroOS installation-images-extras rpmlint rpmlint-mini yast2-schema perf bpftool wsl-appx
 
 bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-module permissions-unauthorized-file permissions-dir-without-slash permissions-file-as-dir permissions-fscaps permissions-file-setuid-bit permissions-directory-setuid-bit permissions-world-writable polkit-changed- polkit-unauthorized- polkit-untracked- </value>
   </attribute>
