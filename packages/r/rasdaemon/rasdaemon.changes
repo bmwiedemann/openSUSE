@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Aug 31 13:32:04 UTC 2021 - trenn@suse.de
+
+- Update to version 0.6.7.18.git+7ccf12f:
+  * labels/supermicro: added Supermicro X11SCW
+  * labels/supermicro: added Supermicro X10DRL, X11SPM
+  * labels/supermicro: added Supermicro X11SCA(-F)
+  * labels/supermicro: added Supermicro B1DRi
+  * labels/supermicro: added Supermicro X11DDW-NT(-L)
+  * labels/supermicro: added Supermicro X10DRI(-T)
+  * labels/supermicro: supermicro db syntax
+  * labels/supermicro: added x11dph-i labels
+  * rasdaemon: Support MCE for AMD CPU family 19h
+  * rasdaemon: Enumerate memory on noncpu nodes
+  * rasdaemon: set SMCA maximum number of banks to 64
+  * rasdaemon: Add new SMCA bank types with error decoding
+  * configure.ac: fix SYSCONFDEFDIR default value
+  * Add error handling for Ampere-specific errors.
+- Make git hash in version better visable .git+<githash>
+
+-------------------------------------------------------------------
 Wed Aug 11 10:20:51 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Use %{?systemd_ordering} instead of %{?systemd_requires}

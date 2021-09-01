@@ -121,4 +121,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>911414</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6285ff9121790c5dc77bdc84a333092b</srcmd5>
+    <version>0.6.7.18.git+7ccf12f</version>
+    <time>1630525025</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915411</requestid>
+  </revision>
 </revisionlist>

@@ -5,7 +5,7 @@
     <param name="changesgenerate">enable</param>
     <param name="filename">rasdaemon</param>
     <param name="revision">refs/heads/master</param>
-    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.g%h</param>
+    <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.git+%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
   </service>
   <service name="set_version" mode="localonly"/>
