@@ -39,10 +39,12 @@ access to nearly all of the libgphoto2 functions, although sometimes
 in a nonstandard manner.
 
 %prep
-%setup -q -n gphoto2-%{version}
-%patch0 -p1
+%autosetup -p1 -n gphoto2-%{version}
 # remove unwanted shebang
 sed -e '1d' -i examples/*.py
+
+# E: spurious-executable-perm
+chmod -x examples/*.py
 
 %build
 %python_build
