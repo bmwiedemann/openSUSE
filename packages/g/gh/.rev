@@ -122,4 +122,30 @@ Switched to tar_scm to pass auto review.</comment>
     <comment></comment>
     <requestid>914177</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a73f6f847c9499dd616894eaeca3deef</srcmd5>
+    <version>2.0.0</version>
+    <time>1630617630</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.0.0
+  * Support for command extensions
+  * Display label colors in issue list output #4106
+  * Add tablerow/tablerender template functions for rendering data as tables #3519
+  * Add GH_FORCE_TTY to enable terminal-style output even when redirected #4146
+  * Add repo sync command to sync a branch with its upstream state #3813
+  * Add pr checkout --branch flag to control the branch name #4005
+  * Add release create --discussion-category flag #4003
+  * Add config set browser option and GH_BROWSER environment variable #3992
+  * Add repo list --topic filter #4136
+  * Add PowerShell instructions to completion help #4114
+  * Improve accessibility of interactive select menus #4172
+  * Improve detection of truecolor terminal capabilities #4106
+  * Avoid wrapping issues in powershell.exe #4106
+  * Detect missing git and abort early during auth login flow #4109
+  * Fix HTTP 502 error printing from GraphQL responses #4154
+  * Require Go 1.16+ #4175
+  * Remove backwards compatibility with homedir library for config files #4145
+</comment>
+    <requestid>916051</requestid>
+  </revision>
 </revisionlist>
