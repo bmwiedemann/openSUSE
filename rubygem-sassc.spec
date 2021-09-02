@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-sassc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,7 @@ BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/sass/sassc-ruby
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        rpmlintrc
+Source1:        rubygem-sassc-rpmlintrc
 Source2:        gem2rpm.yml
 Summary:        Use libsass with Ruby!
 License:        MIT
