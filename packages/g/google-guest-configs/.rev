@@ -36,4 +36,12 @@
   * dracut.conf wants spaces around values (#19) (forwarded request 907120 from glaubitz)</comment>
     <requestid>907123</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>aa72b11a7c3f88545587ca8ddc147af7</srcmd5>
+    <version>20210702.00</version>
+    <time>1630617631</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916053</requestid>
+  </revision>
 </revisionlist>

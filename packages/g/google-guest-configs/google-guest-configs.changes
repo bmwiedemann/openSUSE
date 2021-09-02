@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 20 19:59:07 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Use %_modprobedir for modprobe.d files (out of /etc)
+- Use %_sysctldir for sysctl.d files (out of /etc)
+
+-------------------------------------------------------------------
 Mon Jul 19 12:03:26 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20210702.00
