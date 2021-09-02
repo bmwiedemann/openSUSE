@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  2 12:24:11 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.2.2
+  * Improves the way we skip symbols imported from other libraries.
+  * Add a constrain on Pylint (< 2.10) until we figure out how to
+    support it.
+- Reflect the above upper pinning for python-pylint in Suggests
+  and Conflicts in order to prevent updates on live systems as soon
+  as pylint is updated in Factory
+
+-------------------------------------------------------------------
 Thu Aug  5 20:18:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.2.1

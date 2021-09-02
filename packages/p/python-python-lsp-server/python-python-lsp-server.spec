@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-python-lsp-server
-Version:        1.2.1
+Version:        1.2.2
 Release:        0
 Summary:        Python Language Server for the Language Server Protocol
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-server
 Source:         https://files.pythonhosted.org/packages/source/p/python-lsp-server/python-lsp-server-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools >= 39.0.0}
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210628
 # SECTION test requirements
 BuildRequires:  %{python_module jedi >= 0.17.2}
 BuildRequires:  %{python_module PyQt5}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pycodestyle >= 2.7.0}
 BuildRequires:  %{python_module pydocstyle >= 2.0.0}
 BuildRequires:  %{python_module pyflakes >= 2.3.0}
-BuildRequires:  %{python_module pylint >= 2.5.0}
+BuildRequires:  %{python_module pylint >= 2.5.0 with %python-pylint < 2.10}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-lsp-jsonrpc >= 1.0.0}
 BuildRequires:  %{python_module rope >= 0.10.5}
@@ -60,9 +60,10 @@ Suggests:       python-mccabe >= 0.6.0
 Suggests:       python-pycodestyle >= 2.7.0
 Suggests:       python-pydocstyle >= 2.0.0
 Suggests:       python-pyflakes >= 2.3.0
-Suggests:       python-pylint >= 2.5.0
+Suggests:       (python-pylint >= 2.5.0 with python-pylint < 2.10)
 Suggests:       python-rope >= 0.10.5
 Suggests:       python-yapf
+Conflicts:      python-pylint >= 2.10
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
