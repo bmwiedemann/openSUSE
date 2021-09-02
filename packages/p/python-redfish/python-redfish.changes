@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 30 14:07:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2
+  * Added support for prepending 'https://' when the provided URI
+    of the service does not contain a scheme.
+- Update to version 3.0.1
+  * Provided additional handling for HTTP 301 and 302 redirects.
+  * Changed session creation to not follow redirects in order to
+    ensure the session token and location are not lost.
+  * Enhanced invalid JSON response handling to better highlight a
+    service error.
+- Update to version 3.0.0
+  * Removed Python2 support
+- Update to version 2.2.0
+  * Added support for NO_PROXY environment variable
+- Update to version 2.1.9
+  * Added handling for HTTP 303 responses as part of redirect
+    handling.
+
+-------------------------------------------------------------------
 Mon Aug 10 15:56:59 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.8
