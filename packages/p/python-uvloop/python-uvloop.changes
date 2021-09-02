@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Aug 30 16:07:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.16.0:
+  * Python 3.10 support (#432)
+  * Bump vendored libuv to 1.42.0 (#433)
+  * Use cibuildwheel to build wheels (#435)
+  * Add support for <timer handle>.when()
+  * Fix ref issue when protocol is in Cython
+  * Set python_requires in setup.py
+  * SSL: schedule first data after waiter wakeup
+  * Fix a possible race condition in sslproto test
+  * Fix call_soon_threadsafe thread safety
+- from version 0.15.3:
+  * SSL: schedule first data after waiter wakeup
+  * Fix a possible race condition in sslproto test
+  * Fix call_soon_threadsafe thread safety
+- from version 0.15.2:
+  * Add python_requires in setup.py to fix dependency resolution issues
+- from version 0.15.1:
+  * Fix a segfault issue when a Cython protocol is de-referencing
+    itself from Context.run() callbacks
+- from version 0.15.0:
+  * Add name keyword argument to loop.create_task()
+  * Add typing support
+  * SSL: many improvements
+  * Fix KeyboardInterrupt handling logic
+  * Python 3.8/3.9 compatibility fixes, drop support for 3.5/3.6
+  * UDP: multiple bug fixes
+  * Pipe: a critical crash fix that affects subprocess, pipe and socketpair
+  * Restore context on protocol callbacks
+  * Subprocess: stdio bug fixes
+  * Sock: fix issue in sock_connect() for large concurrency
+  * Misc fixes about docs URL, test typo, and CI compatibility
+  * Check Cython version semantically
+  * Add .flake8 to distribution tarball
+  * Switch to Github actions
+  * Bump libuv to v1.40.0
+- Disable build on Python 3.6
+
+-------------------------------------------------------------------
 Wed Nov  6 10:54:23 CET 2019 - Matej Cepl <mcepl@suse.com>
 
 - Update to 0.14.0:

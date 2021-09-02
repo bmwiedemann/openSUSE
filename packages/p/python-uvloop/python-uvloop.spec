@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvloop
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-uvloop
-Version:        0.14.0
+Version:        0.16.0
 Release:        0
 Summary:        An asyncio event loop on top of libuv
-License:        MIT AND Apache-2.0
+License:        Apache-2.0 AND MIT
 Group:          Development/Languages/Python
 URL:            http://github.com/MagicStack/uvloop
 Source:         https://files.pythonhosted.org/packages/source/u/uvloop/uvloop-%{version}.tar.gz
