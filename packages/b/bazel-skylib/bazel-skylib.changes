@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  1 07:19:40 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Add support for versioned packages. This allows to provide
+  multiple versions of this package during the Leap version
+  lifecycle.
+
+-------------------------------------------------------------------
 Mon Jun  7 14:04:56 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - update to 1.0.3
