@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 30 06:37:40 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 0.2.0
+ * Added function isds_PDZSendInfo() which supports the PDZSendInfo ISDS
+   operation.
+ * Using struct isds_timeval instead of struct timeval in the library interface.
+   The new structure always uses 64-bit integers for seconds.
+ * Added functions to provide own time conversion functions for example in
+   situations in which the target system suffers from the year 2038 problem.
+ * Fixed memory leak inside isds_get_received_envelope().
+ * Fixed memory leaks in code located in client/ and test/offline/ directories.
+
+-------------------------------------------------------------------
 Fri Apr 23 09:17:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.1.2
