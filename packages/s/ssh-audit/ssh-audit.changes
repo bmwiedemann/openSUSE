@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 30 10:11:06 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Require correct python version
+
+-------------------------------------------------------------------
+Thu Aug 26 20:12:17 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.0
+  * Fixed crash when running host key tests.
+  * Handles server connection failures more gracefully.
+  * Now prints JSON with indents when -jj is used (useful for
+    debugging).
+  * Added MD5 fingerprints to verbose output.
+  * Added -d/--debug option for getting debugging output.
+  * Updated JSON output to include MD5 fingerprints. Note that
+    this results in a breaking change in the 'fingerprints'
+    dictionary format.
+  * Updated OpenSSH 8.1 (and earlier) policies to include
+    rsa-sha2-512 and rsa-sha2-256.
+  * Added OpenSSH v8.6 & v8.7 policies.
+  * Added 3 new key exchanges:
+    + gss-gex-sha1-eipGX3TCiQSrx573bT1o1Q==
+    + gss-group1-sha1-eipGX3TCiQSrx573bT1o1Q==
+    + gss-group14-sha1-eipGX3TCiQSrx573bT1o1Q==
+  * Added 3 new MACs:
+    + hmac-ripemd160-96
+    + AEAD_AES_128_GCM
+    + AEAD_AES_256_GCM
+
+-------------------------------------------------------------------
 Mon Mar  1 08:59:13 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.4.0

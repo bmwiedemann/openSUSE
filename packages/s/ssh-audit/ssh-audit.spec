@@ -17,7 +17,7 @@
 
 
 Name:           ssh-audit
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
@@ -30,7 +30,7 @@ BuildRequires:  fdupes
 BuildRequires:  python3-pytest
 BuildRequires:  python3-rpm-macros
 BuildRequires:  python3-setuptools
-Requires:       python >= 3
+Requires:       python3
 BuildArch:      noarch
 
 %description
