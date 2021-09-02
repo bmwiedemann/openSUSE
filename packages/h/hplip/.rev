@@ -1225,4 +1225,12 @@
   * HP Laserjet M209dw</comment>
     <requestid>901116</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>931b6742cbe230fc84a709626f060397</srcmd5>
+    <version>3.21.6</version>
+    <time>1630617606</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915201</requestid>
+  </revision>
 </revisionlist>
