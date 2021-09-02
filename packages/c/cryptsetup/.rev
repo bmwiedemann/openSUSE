@@ -1004,4 +1004,12 @@ in future, e.g. &quot;Version: 2.0~beta1&quot; (forwarded request 160813 from je
     Crypto backend supports kernel notation e.g. &quot;blake2b-512&quot;.</comment>
     <requestid>903414</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>96b79bc958aca9e5f160216a8b7ebcf1</srcmd5>
+    <version>2.4.0</version>
+    <time>1630617608</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915495</requestid>
+  </revision>
 </revisionlist>

@@ -16,21 +16,22 @@
 #
 
 
+%define tar_version 2.4.0
 %define so_ver 12
 %if 0%{?is_backports}
 Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.3.6
+Version:        2.4.0
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
-License:        SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.0-or-later
+License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception
 Group:          System/Base
 URL:            https://gitlab.com/cryptsetup/cryptsetup/
-Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-%{version}.tar.xz
+Source0:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-%{tar_version}.tar.xz
 # GPG signature of the uncompressed tarball.
-Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.3/cryptsetup-%{version}.tar.sign
+Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.4/cryptsetup-%{tar_version}.tar.sign
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 Source4:        %{name}-rpmlintrc
@@ -48,6 +49,7 @@ BuildRequires:  popt-devel
 BuildRequires:  suse-module-tools
 BuildRequires:  pkgconfig(blkid)
 BuildRequires:  pkgconfig(libargon2)
+BuildRequires:  pkgconfig(libssh)
 BuildRequires:  pkgconfig(openssl)
 Requires(post): coreutils
 Requires(postun): coreutils
@@ -55,6 +57,10 @@ Requires(postun): coreutils
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
+%endif
+%if %{?suse_version} >= 1550
+# LUKS2 used as default format, which GRUB < 2.06 can't read
+Conflicts:      grub2 < 2.06
 %endif
 
 %lang_package(cryptsetup)
@@ -65,6 +71,15 @@ targets. It allows to set up targets to read cryptoloop compatible
 volumes as well as LUKS formatted ones. The package additionally
 includes support for automatically setting up encrypted volumes at boot
 time via the config file %{_sysconfdir}/crypttab.
+
+
+%package ssh
+Summary:        Cryptsetup LUKS2 SSH token
+Group:          System/Base
+
+%description ssh
+Experimental cryptsetup plugin for unlocking LUKS2 devices with
+token connected to an SSH server.
 
 %package -n libcryptsetup%{so_ver}
 Summary:        Library for setting up dm-crypt Based Encrypted Block Devices
@@ -108,7 +123,7 @@ includes support for automatically setting up encrypted volumes at boot
 time via the config file %{_sysconfdir}/crypttab.
 
 %prep
-%setup -n cryptsetup-%{version} -q
+%autosetup -n cryptsetup-%{tar_version}
 %if 0%{?is_backports}
 sed -i -e '/AC_INIT/s/cryptsetup/cryptsetup2/' configure.ac
 autoreconf -f -i
@@ -122,7 +137,9 @@ autoreconf -f -i
   --enable-pwquality \
   --enable-gcrypt-pbkdf2 \
   --enable-libargon2 \
+%if %{?suse_version} < 1550
   --with-default-luks-format=LUKS1 \
+%endif
   --with-luks2-lock-path=/run/cryptsetup \
   --with-tmpfilesdir='%{_tmpfilesdir}'
 %make_build
@@ -173,7 +190,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING*
-%doc AUTHORS FAQ README TODO docs/ChangeLog.old docs/*ReleaseNotes
+%doc AUTHORS FAQ README.md docs/*ReleaseNotes
 %if !0%{?usrmerged}
 /sbin/cryptsetup%{?is_backports:2}
 %endif
@@ -203,5 +220,12 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_includedir}/libcryptsetup.h
 %{_libdir}/libcryptsetup.so
 %{_libdir}/pkgconfig/*
+
+%files ssh
+%license COPYING COPYING.LGPL
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/libcryptsetup-token-ssh.so
+%{_mandir}/man8/cryptsetup-ssh.8.gz
+%{_sbindir}/cryptsetup-ssh
 
 %changelog

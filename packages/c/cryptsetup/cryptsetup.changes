@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Aug 25 13:46:12 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- As YaST passes necessary parameters to cryptsetup anyway, we do
+  not necessarily need to take grub into consideration. So back to
+  Argon2 to see how it goes.
+
+-------------------------------------------------------------------
+Tue Aug  3 13:42:20 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- need to use PBKDF2 by default for LUKS2 as grub can't decrypt when
+  using Argon.
+
+-------------------------------------------------------------------
+Mon Aug  2 14:43:51 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- crypsetup 2.4.0 (jsc#SLE-20275)
+  * External LUKS token plugins
+  * Experimental SSH token
+  * Default LUKS2 PBKDF is now Argon2id
+  * Increase minimal memory cost for Argon2 benchmark to 64MiB.
+  * Autodetect optimal encryption sector size on LUKS2 format.
+  * Use VeraCrypt option by default and add --disable-veracrypt option.
+  * Support --hash and --cipher to limit opening time for TCRYPT type
+  * Fixed default OpenSSL crypt backend support for OpenSSL3.
+  * integritysetup: add integrity-recalculate-reset flag.
+  * cryptsetup: retains keyslot number in luksChangeKey for LUKS2.
+  * Fix cryptsetup resize using LUKS2 tokens.
+  * Add close --deferred and --cancel-deferred options.
+  * Rewritten command-line option parsing to avoid libpopt arguments
+    memory leaks.
+  * Add --test-args option.
+
+-------------------------------------------------------------------
+Mon Aug  2 12:39:40 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Use LUKS2 as default format on Tumbleweed.
+  It provides some additional features which other tools
+  (e.g. systemd-cryptenroll) rely on. GRUB 2.06 supports unlocking
+  LUKS2 volumes meanwhile.
+
+-------------------------------------------------------------------
 Thu Jul  1 12:50:25 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - cryptsetup 2.3.6:
