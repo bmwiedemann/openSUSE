@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define project github.com/caddyserver/caddy
 
 Name:           caddy
@@ -32,8 +33,8 @@ Source4:        index.html
 Source5:        bash-completion
 Source6:        _caddy
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.15
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang(API) >= 1.15
 %{?systemd_requires}
 %{go_provides}
 # Make sure that the binary is not getting stripped.

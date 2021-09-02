@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 13:55:21 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * caddy.service
+
+-------------------------------------------------------------------
 Mon May 24 12:55:21 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 2.4.1:
