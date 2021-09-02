@@ -21,7 +21,7 @@
 %define         X_display         ":98"
 %bcond_without     test
 Name:           python-envisage
-Version:        5.0.0
+Version:        6.0.1
 Release:        0
 Summary:        Extensible application framework for Python
 # Source code is under BSD but images are under different licenses
@@ -30,15 +30,16 @@ License:        BSD-3-Clause AND Python-2.0 AND LGPL-3.0-only AND CC-BY-SA-1.0 A
 URL:            https://github.com/enthought/envisage
 Source:         https://files.pythonhosted.org/packages/source/e/envisage/envisage-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module traits}
+BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-traits
+Requires:       python-traits >= 6.2
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module apptools}
-BuildRequires:  %{python_module ipykernel}
+# Only test optional ipykernel where we still have an old version -- gh#enthought/envisage#423
+BuildRequires:  %{python_module ipykernel < 6 if %python-base < 3.7}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
 %endif
@@ -72,7 +73,7 @@ Xvfb %{X_display} >& Xvfb.log &
 trap "kill $! || true" EXIT
 sleep 10
 
-%pyunittest
+%pyunittest -v
 %endif
 
 %files %{python_files}

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Aug 30 19:16:16 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 6.0.1
+  * This bugfix release fixes the issue where Extension
+    Point resolution was happening too eagerly, which caused
+    issues during application startup time in certain cases. We
+    recommend all users of Envisage to upgrade to this bugfix
+    version.
+- Release 6.0.0
+  * This major release focuses on speeding up Envisage
+    applications. We achieved this speedup by removing
+    unused functionality in the package. Specifically, we
+    removed the @contributes_to decorator and the code
+    needed to handle methods decorated with the above
+    decorator.
+  * Additionally, with this release, parts of Envisage
+    start using the new Traits observation framework instead
+    of the old Traits on_trait_change. So, Envisage now
+    depends on Traits version >= 6.2.
+- Don't test with ipykernel => 6 -- gh#enthought/envisage#448
+
+-------------------------------------------------------------------
 Mon May  3 14:35:52 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.0.0
