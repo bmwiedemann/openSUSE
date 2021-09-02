@@ -494,6 +494,10 @@ optional_policy(`
 	virt_dbus_chat(wicked_t)
 ')
 
+optional_policy(`
+	networkmanager_dbus_chat(wicked_t)
+')
+
 #tunable_policy(`use_ecryptfs_home_dirs',`
 #fs_manage_ecryptfs_files(wicked_t)
 #')

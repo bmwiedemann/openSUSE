@@ -9,10 +9,10 @@ cockpit.socket fails to start if kerberos_enabled=false
  policy/modules/contrib/cockpit.te | 2 ++
  1 file changed, 2 insertions(+)
 
-Index: fedora-policy-20210628/policy/modules/contrib/cockpit.te
+Index: fedora-policy-20210716/policy/modules/contrib/cockpit.te
 ===================================================================
---- fedora-policy-20210628.orig/policy/modules/contrib/cockpit.te
-+++ fedora-policy-20210628/policy/modules/contrib/cockpit.te
+--- fedora-policy-20210716.orig/policy/modules/contrib/cockpit.te
++++ fedora-policy-20210716/policy/modules/contrib/cockpit.te
 @@ -51,7 +51,9 @@ can_exec(cockpit_ws_t,cockpit_session_ex
  dev_read_urand(cockpit_ws_t) # for authkey
  dev_read_rand(cockpit_ws_t)  # for libssh
@@ -23,3 +23,25 @@ Index: fedora-policy-20210628/policy/modules/contrib/cockpit.te
  
  # cockpit-ws can connect to other hosts via ssh
  corenet_tcp_connect_ssh_port(cockpit_ws_t)
+Index: fedora-policy-20210716/policy/modules/contrib/cockpit.fc
+===================================================================
+--- fedora-policy-20210716.orig/policy/modules/contrib/cockpit.fc
++++ fedora-policy-20210716/policy/modules/contrib/cockpit.fc
+@@ -3,12 +3,12 @@
+ /usr/lib/systemd/system/cockpit.*		--	gen_context(system_u:object_r:cockpit_unit_file_t,s0)
+ /etc/systemd/system/cockpit.*	--	gen_context(system_u:object_r:cockpit_unit_file_t,s0)
+ 
+-/usr/libexec/cockpit-ws		--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
+-/usr/libexec/cockpit-tls	--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
+-/usr/libexec/cockpit-wsinstance-factory	--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
++/usr/lib(exec)?/cockpit-ws		--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
++/usr/lib(exec)?/cockpit-tls	--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
++/usr/lib(exec)?/cockpit-wsinstance-factory	--	gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
+ 
+-/usr/libexec/cockpit-session	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
+-/usr/libexec/cockpit-ssh	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
++/usr/lib(exec)?/cockpit-session	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
++/usr/lib(exec)?/cockpit-ssh	--	gen_context(system_u:object_r:cockpit_session_exec_t,s0)
+ 
+ /usr/share/cockpit/motd/update-motd    -- gen_context(system_u:object_r:cockpit_ws_exec_t,s0)
+ 

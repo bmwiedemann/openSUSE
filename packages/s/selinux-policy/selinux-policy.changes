@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:45:24 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Modified fix_systemd.patch to allow systemd gpt generator access to
+  udev files (bsc#1189280)
+
+-------------------------------------------------------------------
+Fri Aug 27 13:07:54 UTC 2021 - Ales Kedroutek <ales.kedroutek@suse.com>
+
+- fix rebootmgr does not trigger the reboot properly (boo#1189878)
+  * fix managing /etc/rebootmgr.conf
+  * allow rebootmgr_t to cope with systemd and dbus messaging
+
+-------------------------------------------------------------------
+Thu Aug 26 07:37:05 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Properly label cockpit files
+- Allow wicked to communicate with network manager on DBUS (bsc#1188331)
+
+-------------------------------------------------------------------
+Mon Aug 23 15:43:28 UTC 2021 - Ales Kedroutek <ales.kedroutek@suse.com>
+
+- Added policy module for rebootmgr (jsc#SMO-28) 
+
+-------------------------------------------------------------------
 Tue Aug 17 16:03:08 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Allow systemd-sysctl to read kernel specific sysctl.conf

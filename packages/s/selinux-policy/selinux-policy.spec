@@ -81,6 +81,9 @@ Source125:      rtorrent.fc
 Source126:      wicked.te
 Source127:      wicked.if
 Source128:      wicked.fc
+Source129:      rebootmgr.te
+Source130:      rebootmgr.if
+Source131:      rebootmgr.fc
 
 Patch001:       fix_djbdns.patch
 Patch002:       fix_dbus.patch
@@ -422,7 +425,7 @@ for i in %{SOURCE10} %{SOURCE11} %{SOURCE12} %{SOURCE13} %{SOURCE14} %{SOURCE15}
  cp $i selinux_config
 done
 
-for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128}; do
+for i in %{SOURCE120} %{SOURCE121} %{SOURCE122} %{SOURCE123} %{SOURCE124} %{SOURCE125} %{SOURCE126} %{SOURCE127} %{SOURCE128} %{SOURCE129} %{SOURCE130} %{SOURCE131}; do
  cp $i policy/modules/contrib
 done
 
