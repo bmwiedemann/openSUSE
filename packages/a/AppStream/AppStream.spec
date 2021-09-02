@@ -16,6 +16,9 @@
 #
 
 
+%if 0%{?sle_version} >= 150300 && 0%{?is_opensuse} || 0%{?suse_version} > 1500
+%bcond_without vala
+%endif
 %define libappstream_sover 4
 %define libAppStreamQt_sover 2
 Name:           AppStream
@@ -33,6 +36,9 @@ BuildRequires:  gettext
 BuildRequires:  gperf
 BuildRequires:  lmdb-devel
 BuildRequires:  meson >= 0.48
+%if %{with vala}
+BuildRequires:  vala
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(Qt5Core)
@@ -114,7 +120,11 @@ GObject introspection bindings for interfaces provided by AppStream.
 
 %build
 %meson -Dqt=true \
+%if %{with vala}
+       -Dvapi=true \
+%else
        -Dvapi=false \
+%endif
        -Ddocs=false \
        -Dapidocs=false \
        -Dstemming=false
@@ -169,6 +179,12 @@ appstreamcli refresh --force || true
 %{_includedir}/appstream/
 %{_datadir}/gir-1.0/AppStream-1.0.gir
 %{_datadir}/gettext/
+%if %{with vala}
+%dir %{_datadir}/vala/
+%dir %{_datadir}/vala/vapi/
+%{_datadir}/vala/vapi/appstream.deps
+%{_datadir}/vala/vapi/appstream.vapi
+%endif
 
 %files -n typelib-1_0-AppStream-1.0
 %license LICENSE*
