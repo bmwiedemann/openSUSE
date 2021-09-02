@@ -143,4 +143,13 @@
     <comment></comment>
     <requestid>901624</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>9568a3ce6c296fddc880fa964fc308a0</srcmd5>
+    <version>8.00</version>
+    <time>1630617625</time>
+    <user>dimstar_suse</user>
+    <comment>- patched systemwide support (systemwide.patch)
+</comment>
+    <requestid>915799</requestid>
+  </revision>
 </revisionlist>

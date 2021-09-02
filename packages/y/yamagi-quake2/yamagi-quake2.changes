@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 22 12:28:26 UTC 2021 - Imo Hester <vortex@z-ray.de>
+
+- patched systemwide support (systemwide.patch)
+
+-------------------------------------------------------------------
 Mon Jun 14 16:00:04 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 8.00
@@ -393,4 +398,3 @@ Thu May 19 07:44:13 UTC 2016 - luke.nukem.jones@gmail.com
 Wed Jan  1 01:05:22 UTC 2014 - gber@opensuse.org
 
 - Initial packaging
-

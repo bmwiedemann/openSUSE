@@ -26,6 +26,8 @@ Group:          Amusements/Games/3D/Shoot
 URL:            https://www.yamagi.org/quake2/
 Source:         https://deponie.yamagi.org/quake2/quake2-%{version}.tar.xz
 Source100:      yamagi-quake2.appdata.xml
+# PATCH-FIX-OPENSUSE set correct path
+Patch0:         systemwide.patch
 BuildRequires:  ImageMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -48,6 +50,7 @@ retexturing packs and HUD scaling.
 
 %prep
 %setup -q -n quake2-%{version}
+%patch0 -p1
 
 %build
 export SOURCE_DATE_EPOCH=$(date +%s -r CHANGELOG)
