@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 24 07:19:22 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to version 3.3.24 (jsc#SLE-19252)
+  - Support for NDR link speed
+  - Backward compatibility for old drivers
+  - Several bug fixes
+
+-------------------------------------------------------------------
 Wed Nov  4 11:43:55 UTC 2020 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Support any value for %{_libexecdir} (bsc#1178326)

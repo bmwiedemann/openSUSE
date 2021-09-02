@@ -8,7 +8,7 @@
     <param name="versionformat">@PARENT_TAG@.@TAG_OFFSET@.%h</param>
     <param name="versionrewrite-pattern">(opensm-)?(.*)</param>
     <param name="versionrewrite-replacement">\2</param>
-    <param name="revision">d35a20f3be113e03316ca6c3afb7d19975772d8d</param>
+    <param name="revision">844ab3b7edaad983449b5d3a4a773088b8daa299</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">*opensm*.tar</param>
