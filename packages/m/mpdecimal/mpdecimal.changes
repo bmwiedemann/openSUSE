@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  2 13:07:52 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch on _multibuild with the separate test step (to minimize
+  dependencies).
+- Add a basic baselibs.conf.
+
+-------------------------------------------------------------------
 Tue Aug 10 00:04:52 UTC 2021 - Stefan Krah <skrah@bytereef.org>
 
 - Initial package

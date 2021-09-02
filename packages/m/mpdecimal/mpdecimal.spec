@@ -1,5 +1,5 @@
 #
-# spec file for package mpdecimal
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,15 @@
 #
 
 
-Name:           mpdecimal
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+Name:           mpdecimal%{psuffix}
 Version:        2.5.1
 Release:        0
 Summary:        C/C++ libraries for arbitrary precision decimal floating point arithmetic
@@ -25,11 +33,14 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.bytereef.org/mpdecimal/index.html
 Source0:        https://www.bytereef.org/software/mpdecimal/releases/mpdecimal-%{version}.tar.gz
 Source1:        http://speleotrove.com/decimal/dectest.zip
+Source99:       baselibs.conf
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  make
+%if %{with test}
 BuildRequires:  unzip
+%endif
 
 %description
 libmpdec is a C implementation of the General Decimal Arithmetic
@@ -78,8 +89,11 @@ The package contains documentation and development headers for
 libmpdec and libmpdec++.
 
 %prep
-%autosetup
+%autosetup -p1 -n mpdecimal-%{version}
+
+%if %{with test}
 unzip -d tests/testdata %{SOURCE1}
+%endif
 
 %build
 # NOTE: without -ffat-lto-objects the inline assembly tests in ./configure
@@ -89,14 +103,19 @@ export CXXFLAGS="$CFLAGS"
 %configure --docdir="%{_defaultdocdir}/%{name}"
 %make_build
 
-%check
-%make_build check
-
 %install
+%if !%{with test}
 %make_install
 rm -f "%{buildroot}/%{_libdir}"/*.a
 %fdupes -s %{buildroot}/%{_docdir}/%{name}
+%endif
 
+%check
+%if %{with test}
+%make_build check
+%endif
+
+%if !%{with test}
 %post -n libmpdec3 -p /sbin/ldconfig
 %post -n libmpdec++3 -p /sbin/ldconfig
 %postun -n libmpdec3 -p /sbin/ldconfig
@@ -118,5 +137,6 @@ rm -f "%{buildroot}/%{_libdir}"/*.a
 %{_libdir}/libmpdec++.so
 %{_includedir}/mpdecimal.h
 %{_includedir}/decimal.hh
+%endif
 
 %changelog
