@@ -17,7 +17,7 @@
 
 
 Name:           gerbera
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
