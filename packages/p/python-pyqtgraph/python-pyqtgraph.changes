@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  1 15:06:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Use github archive for tests
+  * remove test-data-8.tar.gz: It has been moved to the main repo
+    gh#pyqtgraph/pyqtgraph#1807
+- Fix rpmlint
+  * remove spurious executable bits and interpreter lines from
+    examples
+- Update requirements
+  * Ensure that it does not build on Leap by requiring
+    python-base >= 3.7
+  * Allow and test PyQt6 and PySide2 backend
+- Don't test OpenGL on ARM because Qt uses unsupported OpenGL ES
+
+-------------------------------------------------------------------
 Mon Aug 30 07:48:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 0.12.2:

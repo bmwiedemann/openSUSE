@@ -16,12 +16,10 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %bcond_without  test
 %define skip_python2 1
 %define skip_python36 1
-# check pyqtgraph/tests/image_testing.py for the current tag
-%define testdatatag test-data-8
 Name:           python-pyqtgraph
 Version:        0.12.2
 Release:        0
@@ -29,16 +27,17 @@ Summary:        Scientific Graphics and GUI Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            http://www.pyqtgraph.org/
-Source:         https://files.pythonhosted.org/packages/source/p/pyqtgraph/pyqtgraph-%{version}.tar.gz
-Source1:        https://github.com/pyqtgraph/test-data/archive/%{testdatatag}.tar.gz
+# test data is only in the GitHub archive
+Source:         https://github.com/pyqtgraph/pyqtgraph/archive/refs/tags/pyqtgraph-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module qt5 >= 5.12}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  dos2unix
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
+BuildRequires:  python-rpm-macros >= 20210628
 BuildRequires:  python3-Sphinx
 %if %{with test}
+BuildRequires:  %{python_module PyQt6 >= 6.1}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module matplotlib-qt5}
 BuildRequires:  %{python_module matplotlib}
@@ -47,10 +46,14 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest-xvfb}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  git-core
+BuildRequires:  python3-pyside2 >= 5.12
 %endif
 Requires:       python-numpy >= 1.17
-Requires:       python-qt5 >= 5.12
+%if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1 or python3-pyside2 >= 5.12)
+%else
+Requires:       (python-qt5 >= 5.12 or python-PyQt6 >= 6.1)
+%endif
 Recommends:     python-colorcet
 Recommends:     python-cupy
 Recommends:     python-h5py
@@ -58,7 +61,6 @@ Recommends:     python-numba
 Recommends:     python-opengl
 Recommends:     python-scipy
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -78,24 +80,15 @@ Provides:       %{python_module %{name} = %{version}}
 Documentation and help files for %{name}
 
 %prep
-%setup -q -n pyqtgraph-%{version}
-chmod a+x examples/*.py
-%if %{with test}
-# For local builds: Delete files from previous failed builds, if any.
-# The next version allows us to install test data into a custom
-# $GITHUB_WORKSPACE directory inside the autocleaned BUILD dir instead of ~.
-rm -rf ~/.pyqtgraph/test-data
-mkdir -p ~/.pyqtgraph/test-data
-pushd ~/.pyqtgraph/test-data
-tar -x --strip-components=2 -f %{SOURCE1}
-git init
-git config user.email "abuild@obs.local"
-git config user.name "abuild"
-git add .
-git commit -m "testing on openSUSE"
-git tag %{testdatatag}
-popd
-%endif
+%setup -q -n pyqtgraph-pyqtgraph-%{version}
+# Fix rpmlint
+chmod a-x examples/Symbols.py
+# only a handful of example scripts have interpreter lines, remove all, they don't have executable bits
+sed -i '1{/^#!/ d}' examples/*.py
+# fix eol encoding
+sed -i 's/\r//' examples/DateAxisItem_QtDesigner.ui
+# gcc calls, but not properly marked as script
+chmod -x examples/verlet_chain/make
 
 %build
 %python_build
@@ -113,30 +106,28 @@ cp -r doc/build/html %{buildroot}%{_docdir}/%{name}/
 cp -r doc/build/doctrees %{buildroot}%{_docdir}/%{name}/
 cp -r examples %{buildroot}%{_docdir}/%{name}/
 
-for f in MultiPlotSpeedTest MultiPlotWidget PlotSpeedTest ROItypes ScatterPlotSpeedTest ViewBox infiniteline_performance ; do
-    %{python_expand chmod a+x %{buildroot}%{$python_sitelib}/pyqtgraph/examples/$f.py
-    sed -i "s|^#!/usr/bin/env python$|#!%__$python|" %{buildroot}%{$python_sitelib}/pyqtgraph/examples/$f.py
-    sed -i "s|^#!/usr/bin/python$|#!%__$python|" %{buildroot}%{$python_sitelib}/pyqtgraph/examples/$f.py
-    sed -i "s|^#!/usr/bin/python -i$|#!%__$python|" %{buildroot}%{$python_sitelib}/pyqtgraph/examples/$f.py
-    }
-    sed -i "s|^#!/usr/bin/env python$|#!%__python3|" %{buildroot}%{_docdir}/%{name}/examples/$f.py
-    sed -i "s|^#!/usr/bin/python$|#!%__python3|" %{buildroot}%{_docdir}/%{name}/examples/$f.py
-    sed -i "s|^#!/usr/bin/python -i$|#!%__python3|" %{buildroot}%{_docdir}/%{name}/examples/$f.py
-done
 %python_compileall
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 %fdupes %{buildroot}%{_docdir}/%{name}/
 
 %if %{with test}
 %check
-# these tests need reference images audited by a user with GUI
-donttest+=" or test_ImageItem or test_PlotCurveItem"
-donttest+=" or test_ROI and (test_getArrayRegion or test_PolyLineROI)"
-# reload happens but is not detected
-donttest+=" or test_reload"
-%pytest -ra -n auto -k "not (${donttest:4})"
-rm -r ~/.pyqtgraph
+# reload happens but is not detected by pytest or pytest-xdist
+donttest="test_reload"
+# no pyside2-uic
+donttest+=" or (testExamples and (QtDesigner or designerExample) and PySide2)"
+# use shell tests instead of rpm macros: we build a noarch package but tests are arch specific
+if [ $(getconf LONG_BIT) -eq 32 -o "${RPM_ARCH}" = "aarch64" ]; then
+  # Unsupported Image Type
+  donttest+=" or (testExamples and GLImageItem.py and PyQt6)"
+  # images different, due to precision errors
+  donttest+=" or (test_ROI and test_PolyLineROI)"
+fi
+# Qt on ARM uses openGL ES, which is not supported by pyqtgraph
+if [ "${RPM_ARCH}" = "arm" -o "${RPM_ARCH}" = "aarch64" ]; then
+  donttest+=" or (testExamples and GL)"
+fi
+%pytest -ra -n auto -k "not (${donttest})"
 %endif
 
 %files %{python_files}
@@ -145,7 +136,7 @@ rm -r ~/.pyqtgraph
 %exclude %{_docdir}/%{name}/examples/
 %exclude %{_docdir}/%{name}/html/
 %{python_sitelib}/pyqtgraph/
-%{python_sitelib}/pyqtgraph-%{version}-py*.egg-info
+%{python_sitelib}/pyqtgraph-%{version}*-info
 
 %files -n %{name}-doc
 %license LICENSE.txt
