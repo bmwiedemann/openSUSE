@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Aug 30 06:35:45 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 4.18.0
+ * Changes to behaviour of the tag database object. The container emits
+   signals when content changes. Application code catches these signals and
+   updates the displayed data.
+ * Enabling foreign key functionality when opening tag database.
+ * Fixed problems with non-functional move assignments causing unnecessary
+   memory copying in some occasions.
+ * Using a single transaction to write data of a completely downloaded message
+   into the database.
+ * Fixed error when deleting entries from account database when removing
+   an account.
+ * Optimisations in database code.
+ * Manually downloaded messages are checked for their identifiers and may be
+   uploaded into records management service if a records management service is
+   configured and if the message content has not been already downloaded. The
+   dialogues notifying the user when the upload finishes are non-modal.
+ * Able to query information about the sending of PDZs.
+ * Password can be shown when creating a new account without entering the PIN.
+ * When there are multiple choices how to pay for a commercial message when
+   sending one then the user has the possibility to select the preferred way
+   of payment if it is possible.
+ * This build requires libdatovka-0.2.0 because of the modified structures for
+   holding time values and because of the newly added functionality.
+ * Fixed wrong mime type identification then sending ISDOC attachments.
+
+-------------------------------------------------------------------
 Fri Apr 23 09:15:53 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 4.17.0
