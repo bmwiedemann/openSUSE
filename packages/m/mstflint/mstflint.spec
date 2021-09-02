@@ -16,10 +16,10 @@
 #
 
 
-%define extra_version -2
+%define extra_version -1
 
 Name:           mstflint
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        Mellanox Firmware Burning and Diagnostics Tools
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -53,7 +53,7 @@ the downloads page at the Mellanox web site.
 %patch1
 %patch4
 %patch5
-%patch6 -p1
+%patch6
 
 %build
 ./autogen.sh

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  7 11:31:14 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to v4.17.0-1 (jsc#SLE-19261)
+  - Anti-rollback Protection
+    - Enabled Anti-rollback protection to prevent old vulnerable firmware
+      versions from being flashed to the device
+  - mstlink tool
+    - Added support for DSFP modules
+  - Parallel Firmware Burning (DMA Burning)
+    - Added support for parallel firmware burning.
+- Refresh PIE.patch against latest sources
+
+-------------------------------------------------------------------
 Tue May 25 16:58:42 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Link as position independent executables (bsc#1184124).

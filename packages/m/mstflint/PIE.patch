@@ -1,11 +1,21 @@
-Index: mstflint-4.16.0/configure.ac
-===================================================================
---- mstflint-4.16.0.orig/configure.ac
-+++ mstflint-4.16.0/configure.ac
-@@ -58,6 +58,9 @@ LDL=""
+commit da607dd93fc67a63029d08f868e1e1c2c70e9663
+Author: Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+Date:   Fri Jul 9 13:01:55 2021 +0200
+
+    PIE
+    
+    Hardware error from APEI Generic Hardware Error Source: 0
+    
+    Signed-off-by: Hardware error from APEI Generic Hardware Error Source: 0
+
+diff --git configure.ac configure.ac
+index 35049bcbbed4..273ce3186936 100644
+--- configure.ac
++++ configure.ac
+@@ -59,6 +59,9 @@ LDL=""
  default_en_inband=""
  
- LDFLAGS="${LDFLAGS} -L/usr/lib64 -L/usr/local/lib -L/usr/local/lib64"
+ LDFLAGS="${LDFLAGS} -L/usr/local/lib -L/usr/local/lib64 -L/usr/lib64"
 +if test "$host_cpu" != "s390x"; then
 +	LDFLAGS="${LDFLAGS} -pie"
 +fi
