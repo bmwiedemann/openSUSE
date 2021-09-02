@@ -258,4 +258,33 @@
 - Drop disable-forced-donation.patch</comment>
     <requestid>914210</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>55981200670e2679aed70576170e73d9</srcmd5>
+    <version>6.15.0</version>
+    <time>1630617617</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.0:
+  * v6.15.0
+  * Fixed class/struct inconsistency.
+  * Update CHANGELOG.md
+  * Fixed clang build.
+  * AstroBWT: add AVX2 Salsa20 implementation
+  * Added support for new CUDA plugin API.
+  * v6.15.0-dev
+  * #2555 Update deps.
+  * Increase RANDOMX_PROGRAM_MAX_SIZE
+  * Update hwloc for MSVC.
+  * Fixed Algorithm id
+  * Added Graft RandonX
+  * Update rapidjson.
+  * Cleanup ARM code.
+  * Fixed build on Linux.
+  * Code cleanup based on Clang-Tidy.
+  * Add missing files.
+  * Update BlockTemplate class.
+  * Add global wallet address parser for DaemonClient.
+  * Update Coin, BlobReader and WalletAddress.
+  * v6.14.2-dev</comment>
+    <requestid>915700</requestid>
+  </revision>
 </revisionlist>

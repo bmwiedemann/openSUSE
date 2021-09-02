@@ -17,7 +17,7 @@
 
 
 Name:           xmrig
-Version:        6.14.1
+Version:        6.15.0
 Release:        0
 Summary:        XMR mining application
 License:        GPL-3.0-only

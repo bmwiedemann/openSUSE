@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep  2 07:57:05 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.0:
+  * v6.15.0
+  * Fixed class/struct inconsistency.
+  * Update CHANGELOG.md
+  * Fixed clang build.
+  * AstroBWT: add AVX2 Salsa20 implementation
+  * Added support for new CUDA plugin API.
+  * v6.15.0-dev
+  * #2555 Update deps.
+  * Increase RANDOMX_PROGRAM_MAX_SIZE
+  * Update hwloc for MSVC.
+  * Fixed Algorithm id
+  * Added Graft RandonX
+  * Update rapidjson.
+  * Cleanup ARM code.
+  * Fixed build on Linux.
+  * Code cleanup based on Clang-Tidy.
+  * Add missing files.
+  * Update BlockTemplate class.
+  * Add global wallet address parser for DaemonClient.
+  * Update Coin, BlobReader and WalletAddress.
+  * v6.14.2-dev
+
+-------------------------------------------------------------------
 Wed Aug 25 10:53:41 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.14.1:
