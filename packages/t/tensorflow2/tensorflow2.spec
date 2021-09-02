@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package tensorflow2
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -256,7 +256,7 @@ BuildRequires:  bazel-rules-java-source
 BuildRequires:  bazel-rules-proto-source
 BuildRequires:  bazel-rules-python-source
 BuildRequires:  bazel-rules-swift-source
-BuildRequires:  bazel-skylib-source
+BuildRequires:  bazel-skylib-source >= 1.0.3
 BuildRequires:  bazel-toolchains-source
 BuildRequires:  bazel-workspaces
 #BuildRequires:  bazel-rules-foreign-cc-source
@@ -742,7 +742,6 @@ cat <<EOF > %{buildroot}%{_libdir}/pkgconfig/tensorflow-lite.pc
 Name:           tensorflow lite
 Description: tensorflow lite static library
 Version:        %{vers}
-Requires:       
 Libs: -L%{_libdir} -ltensorflow-lite -lflatbuffers
 Cflags: -I%{_includedir}
 EOF

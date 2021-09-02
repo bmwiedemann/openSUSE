@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  1 10:30:38 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Limit BuildRequires for bazel-skylib-source to versions >= 1.0.3.
+
+-------------------------------------------------------------------
 Thu Aug 19 03:51:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 2.6.0
