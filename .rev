@@ -271,4 +271,33 @@
   * Sanitize msgid before using it as savename</comment>
     <requestid>912315</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7213f665ebbb241a99c5c97eafbdc05c</srcmd5>
+    <version>0.8.0+0</version>
+    <time>1630617616</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.8.0+0:
+  * Normalize linebreaks when reconstituting body
+  * Document listid-preference config parameter
+  * Missed backfill call cleanup
+  * Remove kludges that were needed before /all/
+  * Filter duplicate results when querying new series
+  * Move dedupe code into central location
+  * Reimplement deduping based on list-id preference
+  * When deduping, prefer DKIM-validating messages
+  * Handle decoding incorrectly encoded headers
+  * Parse just headers when extracting message ID from stdin mbox
+  * Avoid decoding errors when extracting message ID from stdin
+  * Don't consider signature contents for trailers
+  * Sanitize msgid before using it as savename
+  * Fix wrong statement on patches without indexes
+  * Allow '.git' to be a file for worktrees
+  * Tweak --guess-base output
+  * Additional --guess-base refinements
+  * Reimplement --guess-base
+  * Don't append .git unnecessarily
+  * Test to make sure mbox files contain unixfrom
+  * and more...</comment>
+    <requestid>915660</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 02 05:57:57 UTC 2021 - jslaby@suse.cz
+
+- Update to version 0.8.0+0:
+  * Normalize linebreaks when reconstituting body
+  * Document listid-preference config parameter
+  * Missed backfill call cleanup
+  * Remove kludges that were needed before /all/
+  * Filter duplicate results when querying new series
+  * Move dedupe code into central location
+  * Reimplement deduping based on list-id preference
+  * When deduping, prefer DKIM-validating messages
+  * Handle decoding incorrectly encoded headers
+  * Parse just headers when extracting message ID from stdin mbox
+  * Avoid decoding errors when extracting message ID from stdin
+  * Don't consider signature contents for trailers
+  * Sanitize msgid before using it as savename
+  * Fix wrong statement on patches without indexes
+  * Allow '.git' to be a file for worktrees
+  * Tweak --guess-base output
+  * Additional --guess-base refinements
+  * Reimplement --guess-base
+  * Don't append .git unnecessarily
+  * Test to make sure mbox files contain unixfrom
+  * and more...
+
+-------------------------------------------------------------------
 Mon Aug 16 05:16:15 UTC 2021 - jslaby@suse.cz
 
 - Update to version 0.7.3+0:
