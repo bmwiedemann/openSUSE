@@ -1,0 +1,252 @@
+From da2d833ad71d79e468a98f23f77db547ca9319e3 Mon Sep 17 00:00:00 2001
+From: Vasiliy Ulyanov <vulyanov@suse.de>
+Date: Fri, 27 Aug 2021 13:38:24 +0200
+Subject: [PATCH] Specify format of the backing image
+
+Latest qemu-img deprecates use of -b without -F.
+
+Signed-off-by: Vasiliy Ulyanov <vulyanov@suse.de>
+---
+ pkg/container-disk/validation.go              | 13 ++---
+ pkg/ephemeral-disk/ephemeral-disk.go          | 50 +++++++++++++++----
+ pkg/virt-handler/isolation/BUILD.bazel        |  2 +-
+ pkg/virt-handler/isolation/validation.go      |  6 +--
+ .../virtwrap/converter/converter.go           | 23 +--------
+ pkg/virt-launcher/virtwrap/manager.go         |  4 +-
+ 6 files changed, 52 insertions(+), 46 deletions(-)
+
+diff --git a/pkg/container-disk/validation.go b/pkg/container-disk/validation.go
+index fcc4fa023..4160d4f15 100644
+--- a/pkg/container-disk/validation.go
++++ b/pkg/container-disk/validation.go
+@@ -2,20 +2,15 @@ package containerdisk
+ 
+ import (
+ 	"fmt"
++
++	ephemeraldisk "kubevirt.io/kubevirt/pkg/ephemeral-disk"
+ )
+ 
+ const (
+ 	DiskSourceFallbackPath = "/disk"
+ )
+ 
+-type DiskInfo struct {
+-	Format      string `json:"format"`
+-	BackingFile string `json:"backing-filename"`
+-	ActualSize  int    `json:"actual-size"`
+-	VirtualSize int    `json:"virtual-size"`
+-}
+-
+-func VerifyQCOW2(diskInfo *DiskInfo) error {
++func VerifyQCOW2(diskInfo *ephemeraldisk.DiskInfo) error {
+ 	if diskInfo.Format != "qcow2" {
+ 		return fmt.Errorf("expected a disk format of qcow2, but got '%v'", diskInfo.Format)
+ 	}
+@@ -26,7 +21,7 @@ func VerifyQCOW2(diskInfo *DiskInfo) error {
+ 	return nil
+ }
+ 
+-func VerifyImage(diskInfo *DiskInfo) error {
++func VerifyImage(diskInfo *ephemeraldisk.DiskInfo) error {
+ 	switch diskInfo.Format {
+ 	case "qcow2":
+ 		return VerifyQCOW2(diskInfo)
+diff --git a/pkg/ephemeral-disk/ephemeral-disk.go b/pkg/ephemeral-disk/ephemeral-disk.go
+index c88c21f64..fb0a51b32 100644
+--- a/pkg/ephemeral-disk/ephemeral-disk.go
++++ b/pkg/ephemeral-disk/ephemeral-disk.go
+@@ -20,6 +20,7 @@
+ package ephemeraldisk
+ 
+ import (
++	"encoding/json"
+ 	"fmt"
+ 	"os"
+ 	"os/exec"
+@@ -34,6 +35,13 @@ const (
+ 	ephemeralDiskPVCBaseDir = "/var/run/kubevirt-private/vmi-disks"
+ )
+ 
++type DiskInfo struct {
++	Format      string `json:"format"`
++	BackingFile string `json:"backing-filename"`
++	ActualSize  int    `json:"actual-size"`
++	VirtualSize int    `json:"virtual-size"`
++}
++
+ type EphemeralDiskCreatorInterface interface {
+ 	CreateBackedImageForVolume(volume v1.Volume, backingFile string) error
+ 	CreateEphemeralImages(vmi *v1.VirtualMachineInstance) error
+@@ -130,14 +138,36 @@ func (c *ephemeralDiskCreator) CreateEphemeralImages(vmi *v1.VirtualMachineInsta
+ }
+ 
+ func createBackingDisk(backingFile string, imagePath string) ([]byte, error) {
+-	// #nosec No risk for attacket injection. Parameters are predefined strings
+-	cmd := exec.Command("qemu-img",
+-		"create",
+-		"-f",
+-		"qcow2",
+-		"-b",
+-		backingFile,
+-		imagePath,
+-	)
+-	return cmd.CombinedOutput()
++	if backingInfo, err := GetImageInfo(backingFile); err != nil {
++		return nil, err
++	} else {
++		// #nosec No risk for attacker injection. Parameters are predefined strings
++		cmd := exec.Command("qemu-img",
++			"create",
++			"-f",
++			"qcow2",
++			"-b",
++			backingFile,
++			"-F",
++			backingInfo.Format,
++			imagePath,
++		)
++		return cmd.CombinedOutput()
++	}
++}
++
++func GetImageInfo(imagePath string) (*DiskInfo, error) {
++	// #nosec No risk for attacker injection. Only get information about an image
++	out, err := exec.Command(
++		"/usr/bin/qemu-img", "info", imagePath, "--output", "json",
++	).Output()
++	if err != nil {
++		return nil, fmt.Errorf("failed to invoke qemu-img: %v", err)
++	}
++	info := &DiskInfo{}
++	err = json.Unmarshal(out, info)
++	if err != nil {
++		return nil, fmt.Errorf("failed to parse disk info: %v", err)
++	}
++	return info, err
+ }
+diff --git a/pkg/virt-handler/isolation/BUILD.bazel b/pkg/virt-handler/isolation/BUILD.bazel
+index 7284151d8..5c38b92d2 100644
+--- a/pkg/virt-handler/isolation/BUILD.bazel
++++ b/pkg/virt-handler/isolation/BUILD.bazel
+@@ -13,7 +13,7 @@ go_library(
+     importpath = "kubevirt.io/kubevirt/pkg/virt-handler/isolation",
+     visibility = ["//visibility:public"],
+     deps = [
+-        "//pkg/container-disk:go_default_library",
++        "//pkg/ephemeral-disk:go_default_library",
+         "//pkg/util:go_default_library",
+         "//pkg/virt-handler/cgroup:go_default_library",
+         "//pkg/virt-handler/cmd-client:go_default_library",
+diff --git a/pkg/virt-handler/isolation/validation.go b/pkg/virt-handler/isolation/validation.go
+index a5d507ddd..9c09405a6 100644
+--- a/pkg/virt-handler/isolation/validation.go
++++ b/pkg/virt-handler/isolation/validation.go
+@@ -8,14 +8,14 @@ import (
+ 	v1 "kubevirt.io/client-go/api/v1"
+ 	virt_chroot "kubevirt.io/kubevirt/pkg/virt-handler/virt-chroot"
+ 
+-	containerdisk "kubevirt.io/kubevirt/pkg/container-disk"
++	ephemeraldisk "kubevirt.io/kubevirt/pkg/ephemeral-disk"
+ )
+ 
+ const (
+ 	QEMUIMGPath = "/usr/bin/qemu-img"
+ )
+ 
+-func GetImageInfo(imagePath string, context IsolationResult, config *v1.DiskVerification) (*containerdisk.DiskInfo, error) {
++func GetImageInfo(imagePath string, context IsolationResult, config *v1.DiskVerification) (*ephemeraldisk.DiskInfo, error) {
+ 	memoryLimit := fmt.Sprintf("%d", config.MemoryLimit.Value())
+ 
+ 	// #nosec g204 no risk to use MountNamespace()  argument as it returns a fixed string of "/proc/<pid>/ns/mnt"
+@@ -32,7 +32,7 @@ func GetImageInfo(imagePath string, context IsolationResult, config *v1.DiskVeri
+ 		return nil, fmt.Errorf("failed to invoke qemu-img: %v", err)
+ 	}
+ 
+-	info := &containerdisk.DiskInfo{}
++	info := &ephemeraldisk.DiskInfo{}
+ 	err = json.Unmarshal(out, info)
+ 	if err != nil {
+ 		return nil, fmt.Errorf("failed to parse disk info: %v", err)
+diff --git a/pkg/virt-launcher/virtwrap/converter/converter.go b/pkg/virt-launcher/virtwrap/converter/converter.go
+index 540235aa5..81d6fc8e3 100644
+--- a/pkg/virt-launcher/virtwrap/converter/converter.go
++++ b/pkg/virt-launcher/virtwrap/converter/converter.go
+@@ -26,10 +26,8 @@ package converter
+ */
+ 
+ import (
+-	"encoding/json"
+ 	"fmt"
+ 	"os"
+-	"os/exec"
+ 	"path/filepath"
+ 	"strconv"
+ 	"strings"
+@@ -103,7 +101,7 @@ type ConverterContext struct {
+ 	IsBlockDV             map[string]bool
+ 	HotplugVolumes        map[string]v1.VolumeStatus
+ 	PermanentVolumes      map[string]v1.VolumeStatus
+-	DiskType              map[string]*containerdisk.DiskInfo
++	DiskType              map[string]*ephemeraldisk.DiskInfo
+ 	SRIOVDevices          []api.HostDevice
+ 	SMBios                *cmdv1.SMBios
+ 	GpuDevices            []string
+@@ -452,7 +450,7 @@ func SetDriverCacheMode(disk *api.Disk, directIOChecker DirectIOChecker) error {
+ }
+ 
+ func isPreAllocated(path string) bool {
+-	diskInf, err := GetImageInfo(path)
++	diskInf, err := ephemeraldisk.GetImageInfo(path)
+ 	if err != nil {
+ 		return false
+ 	}
+@@ -2021,23 +2019,6 @@ func createHostDevicesFromMdevUUIDList(mdevUuidList []string) ([]api.HostDevice,
+ 	return hds, nil
+ }
+ 
+-func GetImageInfo(imagePath string) (*containerdisk.DiskInfo, error) {
+-
+-	// #nosec No risk for attacket injection. Only get information about an image
+-	out, err := exec.Command(
+-		"/usr/bin/qemu-img", "info", imagePath, "--output", "json",
+-	).Output()
+-	if err != nil {
+-		return nil, fmt.Errorf("failed to invoke qemu-img: %v", err)
+-	}
+-	info := &containerdisk.DiskInfo{}
+-	err = json.Unmarshal(out, info)
+-	if err != nil {
+-		return nil, fmt.Errorf("failed to parse disk info: %v", err)
+-	}
+-	return info, err
+-}
+-
+ func needsSCSIControler(vmi *v1.VirtualMachineInstance) bool {
+ 	for _, disk := range vmi.Spec.Domain.Devices.Disks {
+ 		if disk.LUN != nil && disk.LUN.Bus == "scsi" {
+diff --git a/pkg/virt-launcher/virtwrap/manager.go b/pkg/virt-launcher/virtwrap/manager.go
+index 9c14deed5..1617827c9 100644
+--- a/pkg/virt-launcher/virtwrap/manager.go
++++ b/pkg/virt-launcher/virtwrap/manager.go
+@@ -672,7 +672,7 @@ func (l *LibvirtDomainManager) generateConverterContext(vmi *v1.VirtualMachineIn
+ 	// Check if PVC volumes are block volumes
+ 	isBlockPVCMap := make(map[string]bool)
+ 	isBlockDVMap := make(map[string]bool)
+-	diskInfo := make(map[string]*containerdisk.DiskInfo)
++	diskInfo := make(map[string]*ephemeraldisk.DiskInfo)
+ 	for i, volume := range vmi.Spec.Volumes {
+ 		if volume.VolumeSource.PersistentVolumeClaim != nil {
+ 			isBlockPVC := false
+@@ -687,7 +687,7 @@ func (l *LibvirtDomainManager) generateConverterContext(vmi *v1.VirtualMachineIn
+ 			if err != nil {
+ 				return nil, err
+ 			}
+-			info, err := converter.GetImageInfo(image)
++			info, err := ephemeraldisk.GetImageInfo(image)
+ 			if err != nil {
+ 				return nil, err
+ 			}
+-- 
+2.32.0
+

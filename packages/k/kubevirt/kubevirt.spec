@@ -28,6 +28,7 @@ Source1:        kubevirt-psp-caasp.yaml
 Source2:        kubevirt_containers_meta
 Source3:        kubevirt_containers_meta.service
 Source100:      %{name}-rpmlintrc
+Patch0:         0001-Specify-format-of-the-backing-image.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig

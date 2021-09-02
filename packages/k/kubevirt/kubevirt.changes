@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Aug 27 11:53:09 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Fix issue with recent qemu-img
+  0001-Specify-format-of-the-backing-image.patch
+
+-------------------------------------------------------------------
 Fri Aug 27 05:51:11 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Update to version 0.44.1
