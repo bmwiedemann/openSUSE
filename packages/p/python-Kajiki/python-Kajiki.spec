@@ -1,7 +1,7 @@
 #
 # spec file for package python-Kajiki
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,21 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Kajiki
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Compiler for Genshi syntax outputting Python bytecode
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/nandoflorestan/kajiki
-Source:         https://files.pythonhosted.org/packages/source/K/Kajiki/Kajiki-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/k/kajiki/kajiki-%{version}.tar.gz
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module nine}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 Requires:       python-nine
 BuildArch:      noarch
 %python_subpackages
@@ -42,7 +44,7 @@ Kajiki compiles Genshi-like syntax to Python bytecode.
 other textual content for output generation on the web.)
 
 %prep
-%setup -q -n Kajiki-%{version}
+%setup -q -n kajiki-%{version}
 sed -i 's/from nose import SkipTest/from unittest import SkipTest/' kajiki/tests/test_xml.py
 
 %build
@@ -50,13 +52,21 @@ sed -i 's/from nose import SkipTest/from unittest import SkipTest/' kajiki/tests
 
 %install
 %python_install
+%python_clone -a %{buildroot}%{_bindir}/kajiki
 %python_expand rm -r %{buildroot}%{$python_sitelib}/kajiki/tests
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%post
+%python_install_alternative kajiki
+
+%postun
+%python_uninstall_alternative kajiki
 
 %check
 %pytest
 
 %files %{python_files}
+%python_alternative %{_bindir}/kajiki
 %license LICENSE.rst
 %doc README.rst
 %{python_sitelib}/*
