@@ -1,3 +1,56 @@
+-------------------------------------------------------------------
+Tue Aug 31 20:33:41 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.3.0
+  * Added legend.groupclick options
+  * Provide bbox of hover items in event data
+- Release 5.0.0
+  * Updated/Changed:
+    Items in this section may be considered backwards-incompatible
+    changes for the purposes of Semantic Versioning but we expect
+    the vast majority of users to be able to upgrade to version
+    5.0 without encountering any issues.
+  * Dropped support for Python older than 3.6 #3160
+  * Updated Plotly.js to from version 1.58.4 to version 2.1.0. See
+    the plotly.js CHANGELOG for more information. These changes
+    are reflected in the auto-generated plotly.graph_objects
+    module. Notable changes include:
+  * dropped support for IE9 and IE10
+  * dropped support for long-deprecated graph_objects like area
+    traces and scatter.(t|r) and layout.(radial|angular)axis
+    attributes
+  * modebar no longer has hovermode or spikeline buttons by
+    default (can be added back with fig.update_layout(modebar_add=
+    ["v1hovermode", "toggleSpikeLines"]))
+  * "Aa" text no longer appears on legend items unless mode="text"
+  * In bar traces, textposition now defaults to "auto"
+  * Font size for legend and colorbar titles now matches axis
+    title font size (slightly bigger)
+  * deprecated heatmapgl, pointcloud traces as well as all
+    transform attributes
+  * Combined plotlywidget into jupyterlab-plotly and packaged them
+    as a federated extension #3142 with massive thanks to
+    @fcollonval for the contribution
+  * In addition to this change, large Plotly.js bundles are now
+    lazily loaded on-demand by JupyterLab
+  * Plotly.js CDN url will now be versioned by default for HTML
+    exports using include_plotlyjs='cdn' and for "connected"
+    renderers. #2961 with thanks to @adehad for the contribution
+  * Recommending Kaleido by default over Orca #3094
+  * Replaced retrying dependency with tenacity #2911 with thanks
+    to @jmsmdy for the contribution
+  * Plotly Express now always takes into account every value in c
+    category_orders when computing discrete mappings (color,
+    symbol, line-dash, pattern-shapes) as well as facets, even
+    those values which are absent in the data #3247
+- Fix rpmlint errors: touch __init__.py mtime before deduplicating
+  the compile cache files
+- Enable tests:
+  * core test suite for all flavores
+  * optional requirements test suite for all except python36 flavor
+    -- many optional requirements are not available
+
+-------------------------------------------------------------------
 Sat Mar  6 18:25:33 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.14.3:

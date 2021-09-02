@@ -19,34 +19,50 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        4.14.3
+Version:        5.3.0
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
 URL:            https://github.com/plotly/plotly.py
+# Get the PyPI archive for the bundles JS files
 Source:         https://files.pythonhosted.org/packages/source/p/plotly/plotly-%{version}.tar.gz
+# Additionally use the GitHub archive for the test suite
+Source1:        https://github.com/plotly/plotly.py/archive/refs/tags/v%{version}.tar.gz#/plotly.py-%{version}-gh.tar.gz
 Source100:      python-plotly-rpmlintrc
-BuildRequires:  %{python_module decorator >= 4.0.6}
-BuildRequires:  %{python_module ipython}
-BuildRequires:  %{python_module ipywidgets}
-BuildRequires:  %{python_module nbformat >= 4.2}
-BuildRequires:  %{python_module notebook}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module retrying >= 1.3.3}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module six}
+BuildRequires:  %{python_module six >= 1.15.0}
+BuildRequires:  %{python_module tenacity >= 6.2.0}
 BuildRequires:  fdupes
+BuildRequires:  jupyter-jupyter_core-filesystem
 BuildRequires:  python-rpm-macros
-Requires:       python-decorator >= 4.0.6
-Requires:       python-pytz
-Requires:       python-requests
-Requires:       python-retrying >= 1.3.3
-Requires:       python-six
-Recommends:     python-matplotlib >= 1.3.1
+Requires:       python-six >= 1.15.0
+Requires:       python-tenacity >= 6.2.0
+Recommends:     python-ipython
+Recommends:     python-matplotlib >= 2.2.2
 Recommends:     python-numpy
 Recommends:     python-pandas
+Recommends:     python-scipy
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module Pillow if (%python-base without python36-base)}
+BuildRequires:  %{python_module Shapely if (%python-base without python36-base)}
+BuildRequires:  %{python_module ipykernel if (%python-base without python36-base)}
+BuildRequires:  %{python_module ipython if (%python-base without python36-base)}
+BuildRequires:  %{python_module ipywidgets if (%python-base without python36-base)}
+BuildRequires:  %{python_module jupyter if (%python-base without python36-base)}
+BuildRequires:  %{python_module matplotlib if (%python-base without python36-base)}
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
+BuildRequires:  %{python_module pandas if (%python-base without python36-base)}
+BuildRequires:  %{python_module psutil if (%python-base without python36-base)}
+BuildRequires:  %{python_module pyshp if (%python-base without python36-base)}
+BuildRequires:  %{python_module pytz if (%python-base without python36-base)}
+BuildRequires:  %{python_module scikit-image if (%python-base without python36-base)}
+BuildRequires:  %{python_module scipy if (%python-base without python36-base)}
+BuildRequires:  %{python_module statsmodels if (%python-base without python36-base)}
+BuildRequires:  %{python_module xarray if (%python-base without python36-base)}
+# /SECTION
 %python_subpackages
 
 %description
@@ -60,12 +76,11 @@ always accessible from the graph.
 
 %package        jupyter
 Summary:        Jupyter notebook integration for %{name}
+Provides:       python-jupyterlab-plotly = %{version}-%{release}
 Requires:       %{name} = %{version}
 Requires:       jupyter-plotly = %{version}
-Requires:       python-ipython
-Requires:       python-ipywidgets
-Requires:       python-nbformat >= 4.2
-Requires:       python-notebook
+Requires:       python-ipywidgets >= 7.6
+Requires:       (python-jupyterlab or python-notebook)
 
 %description    jupyter
 Use this package to make collaborative, interactive,
@@ -76,14 +91,11 @@ Python API allows you to access all of Plotly's functionality from Python.
 Plotly figures are shared, tracked, and edited all online and the data is
 always accessible from the graph.
 
-This package provides Jupyter Notebook integration and widgets.
+This package provides Jupyterlab and Notebook integration and widgets.
 
 %package     -n jupyter-plotly
 Summary:        Jupyter notebook integration for %{name}
-Requires:       jupyter-ipython
-Requires:       jupyter-ipywidgets
-Requires:       jupyter-nbformat >= 4.2
-Requires:       jupyter-notebook
+Provides:       jupyterlab-plotly = %{version}-%{release}
 Requires:       python3-plotly-jupyter = %{version}
 
 %description -n jupyter-plotly
@@ -95,10 +107,15 @@ Python API allows you to access all of Plotly's functionality from Python.
 Plotly figures are shared, tracked, and edited all online and the data is
 always accessible from the graph.
 
-This package provides Jupyter Notebook integration and widgets.
+This package provides the flavorless configuration for the
+Jupyterlab and Notebook integration and widgets.
 
 %prep
-%setup -q -n plotly-%{version}
+%setup -q -n plotly-%{version} -b 1
+# remove script interpreter line in non-executable script
+sed -i '1{/env python/ d}' _plotly_utils/png.py
+# homogenize mtime of all __init__.py files for deduplicated compile cache consistency
+find . -name __init__.py -exec touch -m -r plotly/__init__.py '{}' ';'
 
 %build
 %python_build
@@ -107,7 +124,22 @@ This package provides Jupyter Notebook integration and widgets.
 %python_install
 %jupyter_move_config
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%fdupes %{buildroot}%{jupyter_prefix}
+%fdupes %{buildroot}%{_jupyter_prefix}
+
+%check
+# No test suite in the PyPI package, which is required for the bundled JS files, go to the GitHub repo tree now.
+cd ../plotly.py-%{version}/packages/python/plotly
+%{pytest plotly/tests/test_core
+# cleanup between flavor runs
+rm plotly/tests/test_core/test_offline/plotly.min.js
+}
+# most of the optional packages are not available on python36: skip entire test suite
+python36_skip="-V"
+# not available
+donttest="test_kaleido"
+# API parameter mismatches and precision errors
+donttest+=" or test_matplotlylib"
+%pytest ${$python_skip} plotly/tests/test_optional -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt
@@ -118,11 +150,10 @@ This package provides Jupyter Notebook integration and widgets.
 
 %files %{python_files jupyter}
 %license LICENSE.txt
-%{python_sitelib}/plotlywidget/
+%{python_sitelib}/jupyterlab_plotly
 
 %files -n jupyter-plotly
 %license LICENSE.txt
-%{_jupyter_nbextension_dir}/plotlywidget/
-%config %{_jupyter_nb_notebook_confdir}/plotlywidget.json
+%config %{_jupyter_nb_notebook_confdir}/jupyterlab-plotly.json
 
 %changelog
