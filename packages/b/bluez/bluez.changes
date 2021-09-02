@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Aug 24 06:57:14 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- update to version 5.61:
+  * Fix issue with A2DP while waiting for command response.
+  * Fix issue with A2DP when SetConfiguration fails.
+  * Fix issue with device removal handling.
+  * Fix issue with storing discoverable setting.
+  * Add support for Central Address Resolution characteristic.
+  * Add support for admin policy plugin.
+
+-------------------------------------------------------------------
 Tue Aug 10 09:49:45 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - add fedora's patches 0002-Use-g_memdup2-everywhere.patch and
