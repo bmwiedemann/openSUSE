@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep  1 09:19:50 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.9.1
+  * new feature: added support for using Kerberos authentication on windows
+    clients using the native winkerberos library
+  * new feature: added support for using Channel Bind tokens with Kerberos
+    authentication on windows clients
+  * fixed a bug related to using start_tls with a RESTARTABLE strategy that
+    caused errors to be raised erroneously.
+  * fixed a bug around the type checking of Reverse DNS Settings
+    with Kerberos authentication
+  * fixed an issue related to decoding unicode strings in LDAP referrals
+    and attributes in python 2
+  * minor documentation updates and corrections
+- Fix filename pattern matching in %files section
+
+-------------------------------------------------------------------
 Wed Jan 27 16:56:28 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.9
