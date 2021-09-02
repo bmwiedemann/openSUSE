@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  2 11:12:16 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Fix build with rpmlint 2 where the suse-filelist-forbidden-sysconfig
+  is renamed.
+
+-------------------------------------------------------------------
+Tue Aug 24 06:53:06 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update URL to Cornelis Networks (jsc#SLE-20579)
+
+-------------------------------------------------------------------
 Wed Apr 28 08:23:35 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to v10.11.0.0.575

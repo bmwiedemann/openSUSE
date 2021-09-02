@@ -29,7 +29,7 @@ Release:        0
 Summary:        Intel Omni-Path basic tools and libraries for fabric managment
 License:        BSD-3-Clause OR GPL-2.0-only
 Group:          Productivity/Networking/System
-URL:            https://github.com/intel/opa-ff
+URL:            https://github.com/cornelisnetworks/opa-ff
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        opa-ff.rpmlintrc
 Patch1:         opa-ff-add-shebang-for-exp-files.patch

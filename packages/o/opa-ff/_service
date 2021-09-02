@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="url">https://github.com/01org/opa-ff.git</param>
+    <param name="url">https://github.com/cornelisnetworks/opa-ff.git</param>
     <param name="package-meta">no</param>
     <param name="exclude">.git</param>
     <param name="filename">opa-ff</param>
