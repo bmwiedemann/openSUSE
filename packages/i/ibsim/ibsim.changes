@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 23 15:12:43 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 0.11
+  - Fixes various compilations warnings
+  - Initial NDR support
+  - Remove IsVendorClassSupported capibility bit from HCA
+- Drop patches fixed upstream:
+  - ibsim-fix_type_punning.patch
+  - typo-scrips.patch
+-------------------------------------------------------------------
 Wed Apr 28 07:49:11 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to version 0.10
