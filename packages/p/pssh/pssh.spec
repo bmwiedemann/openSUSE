@@ -16,8 +16,12 @@
 #
 
 
-%global py_ver 3
 %define pkg_version 2.3.4
+%define python_version 3
+%if ! %{defined python_sitelib}
+%define python_sitelib /usr/lib/python3.6/site-packages/
+%endif
+
 Name:           pssh
 Version:        2.3.4+git10.d4909c9
 Release:        0
@@ -43,8 +47,9 @@ Patch7:         0007-openSUSE-Add-openSUSE-specific-pssh-askpass-location.patch
 Patch8:         0008-openSUSE-add-C-pcmk_nodes-option-to-get-list-of-node.patch
 # PATCH-FEATURE-UPSTREAM Prepend hostname on each line when -P is set
 Patch9:         0001-Prepend-hostname-on-each-line-when-P-is-set.patch
-BuildRequires:  python%{py_ver}-devel
-BuildRequires:  python%{py_ver}-setuptools
+BuildRequires:  python%{python_version}-devel
+BuildRequires:  python%{python_version}-setuptools
+BuildRequires:  python-rpm-macros
 Requires:       python-pssh = %{version}-%{release}
 BuildArch:      noarch
 
@@ -76,13 +81,12 @@ This package contains the pssh Python module.
 %patch9 -p1
 
 %build
-python%{py_ver} setup.py build
+python%{python_version} setup.py build
 
 %install
-python%{py_ver} setup.py install \
+python%{python_version} setup.py install \
 	 --prefix="%{_prefix}" \
 	 --root=%{buildroot}
-
 
 %files
 %doc AUTHORS ChangeLog

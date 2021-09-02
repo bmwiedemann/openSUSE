@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 23 13:01:23 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- Fix spec to be able to build on openLeap 15.N
+
+-------------------------------------------------------------------
 Sat Aug 21 09:40:05 UTC 2021 - varkoly@suse.com
 
 - Update to version 2.3.4+git10.d4909c9:
