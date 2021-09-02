@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 27 15:00:18 UTC 2021 - Joachim Gleissner <jgleissner@suse.com>
+
+- Update to version 1.6:
+  + Ignore proxy when accessing metadata (bsc#1187939)
+  + Print warning in case metadata is not accessible
+  + Documentation update
+
+-------------------------------------------------------------------
 Thu Nov  5 16:12:48 UTC 2020 - Joachim Gleissner <jgleissner@suse.com>
 
 - Update to version 1.5:
