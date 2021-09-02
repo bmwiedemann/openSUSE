@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  1 22:36:27 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix rpmlintrc naming which fixes the TW build with rpmlint 2 
+
+-------------------------------------------------------------------
 Thu Jun 25 09:45:08 UTC 2020 - Manuel Schnitzer <mschnitzer@suse.com>
 
 - updated to version 2.4.0

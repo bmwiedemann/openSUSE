@@ -27,7 +27,7 @@
 #   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
 :sources:
-  - rpmlintrc
+  - rubygem-sassc-rpmlintrc
 :gem_install_args: '  --extconf-opts=--disable-march-tune-native'
 # ## used by gem2rpm
 # :pre_install: |-
