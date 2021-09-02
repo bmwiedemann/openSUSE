@@ -39,4 +39,12 @@
     <comment>- Update to release 3.15.4</comment>
     <requestid>877363</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d61d35cab412d4c5abe2ea1682e45582</srcmd5>
+    <version>3.15.5</version>
+    <time>1630617614</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915634</requestid>
+  </revision>
 </revisionlist>
