@@ -1,7 +1,7 @@
 #
 # spec file for package orthanc-python
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2020-2021 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,16 +16,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           orthanc-python
 Summary:        Python plugin for Orthanc
 License:        AGPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
-Version:        3.3
+Version:        3.4
 Release:        0
 URL:            https://orthanc-server.com
 Source0:        https://www.orthanc-server.com/downloads/get.php?path=/plugin-python/OrthancPython-%{version}.tar.gz
 Source11:       orthanc-python-readme.openSUSE
-BuildRequires:  python3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  jsoncpp-devel
@@ -40,8 +40,9 @@ BuildRequires:  libboost_thread-devel >= 1.66
 BuildRequires:  libuuid-devel
 BuildRequires:  orthanc-devel
 BuildRequires:  orthanc-source
-BuildRequires:  pkgconfig(python3)
+BuildRequires:  python3-devel
 BuildRequires:  unzip
+BuildRequires:  pkgconfig(python3)
 
 Requires:       orthanc
 
@@ -50,7 +51,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %description
 This plugin can be used to write Orthanc plugins in Python instead of C++
 See /usr/share/doc/packages/orthanc/orthanc-python-readme.openSUSE
-
 
 %prep
 %setup -q -n OrthancPython-%{version}
@@ -74,7 +74,7 @@ echo %{python3_version}
 %install
 %cmake_install
 
-# architecture dependet files should not be in /usr/share... 
+# architecture dependet files should not be in /usr/share...
 # create a directory
 mkdir -p -m 755 %{buildroot}%{_libdir}/share/orthanc/plugins
 mkdir -p -m 755 %{buildroot}%{_docdir}/orthanc
