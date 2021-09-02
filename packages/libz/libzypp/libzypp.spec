@@ -40,11 +40,11 @@
 %endif
 
 Name:           libzypp
-Version:        17.28.1
+Version:        17.28.2
 Release:        0
+License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
 Summary:        Library for package, patch, pattern and product management
-License:        GPL-2.0-or-later
 Group:          System/Packages
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source:         %{name}-%{version}.tar.bz2
@@ -245,8 +245,15 @@ Developer documentation for libzypp.
 %build
 mkdir build
 cd build
+%if 0%{?suse_version} > 1500
+# Bug 1189788 - UsrMerge: filesystem package breaks system when upgraded in a single rpm transaction
+# While the bug is not fixed, we don't allow ZYPP_SINGLE_RPMTRANS=1 on a not UsrMerged system
+export CFLAGS="%{optflags} -DNO_SINGLETRANS_USERMERGE"
+export CXXFLAGS="%{optflags} -DNO_SINGLETRANS_USERMERGE"
+%else
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
+%endif
 unset EXTRA_CMAKE_OPTIONS
 
 cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
@@ -344,14 +351,14 @@ match_type: glob
   echo "
 solvable_name: $1
 match_type: glob
-version: $2
+Version:        $2
 " >> ${LOCKSFILE}
 ;;
     3 ) #TODO version
   echo "
 solvable_name: $1
 match_type: glob
-version: $2 $3
+Version:        $2 $3
 " >> ${LOCKSFILE}
   ;;
 esac
