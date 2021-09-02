@@ -752,4 +752,12 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
 - Internal bugfixes / optimizations </comment>
     <requestid>909993</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>cf39607b9c5616b213e81eaeef38482c</srcmd5>
+    <version>3.5.2</version>
+    <time>1630617606</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915224</requestid>
+  </revision>
 </revisionlist>
