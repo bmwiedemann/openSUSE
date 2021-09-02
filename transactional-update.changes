@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 30 17:17:29 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.5.2
+  - tukit: Fix overlay syncing errors with SELinux [bsc#1188648]
+  - Don't print message for `shell` with --quiet
+    [gh#openSUSE/transactional-update#69]
+
+-------------------------------------------------------------------
 Tue Aug  3 12:41:41 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.5.1
