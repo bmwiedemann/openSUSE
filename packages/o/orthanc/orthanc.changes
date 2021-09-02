@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  1 07:27:28 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Version 1.9.7
+* New configuration option "DicomAlwaysAllowMove" to disable verification of
+  the remote modality in C-MOVE SCP
+* API version upgraded to 15
+* Added "Level" option to POST /tools/bulk-modify
+* Added missing OpenAPI documentation of "KeepSource" in ".../modify" and ".../anonymize"
+* Added file CITATION.cff
+* Linux Standard Base (LSB) builds of Orthanc can load non-LSB builds of plugins
+* Fix upload of ZIP archives containing a DICOMDIR file
+* Fix computation of the estimated time of arrival in jobs
+* Support detection of windowing and rescale in Philips multiframe images 
+
+-------------------------------------------------------------------
 Thu Jul 22 13:34:16 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 1.9.6 
