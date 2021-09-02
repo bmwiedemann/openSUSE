@@ -989,8 +989,9 @@ unsorted:
   - avif-tools 
   - avocado-common 
   - avocado-examples 
-  - avogadrolibs 
+  - avogadro2-data 
   - avogadrolibs-devel 
+  - avogadrolibs-plugins 
   - avr-libc 
   - avrdude 
   - avrdude-devel 
@@ -1564,7 +1565,7 @@ unsorted:
   - busybox-hostname: [i586] 
   - busybox-iproute2 
   - busybox-iputils 
-  - busybox-k8s-yaml 
+  - busybox-k8s-yaml: [i586] 
   - busybox-kbd 
   - busybox-kmod 
   - busybox-less 
@@ -1827,7 +1828,6 @@ unsorted:
   - cepces-selinux 
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
-  - ceph-common: [x86_64] 
   - ceph-csi: [x86_64] 
   - ceph-csi-helm-charts: [x86_64] 
   - ceph-fuse: [x86_64] 
@@ -1854,7 +1854,7 @@ unsorted:
   - cereal-devel 
   - certbot-systemd-timer 
   - certmonger 
-  - certstrap 
+  - certstrap: [i586] 
   - cf-cli 
   - cf-cli-test 
   - cfengine 
@@ -2253,8 +2253,8 @@ unsorted:
   - coredns-for-k8s1.19-extras 
   - coredns-for-k8s1.21 
   - coredns-for-k8s1.21-extras 
-  - coredns-for-k8s1.22: [x86_64] 
-  - coredns-for-k8s1.22-extras: [x86_64] 
+  - coredns-for-k8s1.22 
+  - coredns-for-k8s1.22-extras 
   - coreutils-single 
   - coreutils-testsuite 
   - corosync 
@@ -2332,8 +2332,8 @@ unsorted:
   - crawl-data 
   - crawl-sdl 
   - crazydiskinfo 
-  - cri-tools 
-  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-container_runtime_kubernetes 
+  - cri-tools: [i586] 
+  - criu: [x86_64] # recommended by opensuse_kubic:patterns-containers-kubeadm 
   - criu-devel: [x86_64] 
   - crmsh 
   - crmsh-scripts 
@@ -3323,7 +3323,6 @@ unsorted:
   - etcd-for-k8s1.18: [x86_64] 
   - etcd-for-k8s1.19: [x86_64] 
   - etcd-for-k8s1.22: [x86_64] 
-  - etcdctl: [x86_64] 
   - etckeeper 
   - etckeeper-bash-completion 
   - etckeeper-zsh-completion 
@@ -3641,7 +3640,7 @@ unsorted:
   - flameshot-zsh-completion 
   - flann-devel 
   - flannel 
-  - flannel-k8s-yaml 
+  - flannel-k8s-yaml: [i586] 
   - flare 
   - flare-game 
   - flarq 
@@ -6581,7 +6580,7 @@ unsorted:
   - health-check 
   - health-check-bash-completion 
   - health-checker-plugins-caasp 
-  - health-checker-plugins-kubic 
+  - health-checker-plugins-kubic: [i586] 
   - health-checker-testing 
   - heaptrack-devel 
   - hedgewars 
@@ -6590,7 +6589,6 @@ unsorted:
   - heimdall-frontend 
   - hello 
   - hello-kubic: [x86_64] 
-  - hello-kubic-k8s-yaml: [x86_64] 
   - hello-lang 
   - helm: [i586] 
   - helm-bash-completion 
@@ -8207,14 +8205,13 @@ unsorted:
   - ktp-text-ui-lang 
   - ktuberling 
   - ktuberling-lang 
-  - kube-prometheus-k8s-yaml 
+  - kube-prometheus-k8s-yaml: [i586] 
   - kube-prometheus-sources 
   - kubectx 
   - kubens 
-  - kuberlr 
+  - kuberlr: [i586] 
   - kubernetes-apiserver: [x86_64] 
   - kubernetes-apiserver-minus1: [x86_64] 
-  - kubernetes-client: [x86_64] 
   - kubernetes-client-fish-completion 
   - kubernetes-controller-manager: [x86_64] 
   - kubernetes-controller-manager-minus1: [x86_64] 
@@ -8222,8 +8219,6 @@ unsorted:
   - kubernetes-coredns-minus1: [x86_64] 
   - kubernetes-etcd: [x86_64] 
   - kubernetes-etcd-minus1: [x86_64] 
-  - kubernetes-kubeadm: [x86_64] 
-  - kubernetes-kubelet: [x86_64] 
   - kubernetes-node-image-pause 
   - kubernetes-pause 
   - kubernetes-proxy: [x86_64] 
@@ -8262,8 +8257,14 @@ unsorted:
   - kubernetes1.21-client: [x86_64] 
   - kubernetes1.21-client-common: [x86_64] 
   - kubernetes1.21-controller-manager: [x86_64] 
+  - kubernetes1.21-kubeadm: [x86_64] 
+  - kubernetes1.21-kubelet-common: [x86_64] 
   - kubernetes1.21-proxy: [x86_64] 
   - kubernetes1.21-scheduler: [x86_64] 
+  - kubernetes1.22-apiserver: [x86_64] 
+  - kubernetes1.22-controller-manager: [x86_64] 
+  - kubernetes1.22-proxy: [x86_64] 
+  - kubernetes1.22-scheduler: [x86_64] 
   - kubetap 
   - kubevirt-container-disk: [x86_64] 
   - kubevirt-manifests: [x86_64] 
@@ -8276,8 +8277,6 @@ unsorted:
   - kubevirt-virtctl: [x86_64] 
   - kubic-locale-archive 
   - kubic-pause 
-  - kubicctl: [x86_64] 
-  - kubicd: [x86_64] 
   - kubie 
   - kucero 
   - kuiviewer 
@@ -8290,11 +8289,10 @@ unsorted:
   - kup-server 
   - kupfer 
   - kured 
-  - kured-k8s-yaml 
+  - kured-k8s-yaml: [i586] 
   - kuserfeedback-devel 
   - kuserfeedback-server 
   - kuserfeedback-tools 
-  - kustomize: [x86_64] 
   - kvantum-doc 
   - kvantum-manager 
   - kvantum-manager-lang 
@@ -8618,6 +8616,7 @@ unsorted:
   - libAppStreamQt-devel 
   - libArcus-devel 
   - libArcus3 
+  - libAvogadro1 
   - libBulletFileLoader3_17 
   - libBulletInverseDynamicsUtils3_17 
   - libBulletWorldImporter3_17 
@@ -9575,7 +9574,6 @@ unsorted:
   - libavfs0 
   - libavif-devel 
   - libavif12-32bit: [x86_64] 
-  - libavogadrolibs-suse0 
   - libavrdude1 
   - libavresample4_0-32bit: [x86_64] 
   - libavtp-devel 
@@ -9950,7 +9948,6 @@ unsorted:
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
   - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
-  - libcephfs2: [x86_64] 
   - libcephsqlite: [x86_64] 
   - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
@@ -11999,6 +11996,8 @@ unsorted:
   - libmpd1-32bit: [x86_64] 
   - libmpdclient-devel 
   - libmpdclient2 
+  - libmpdec++3 
+  - libmpdec3 
   - libmpeg2-0-32bit: [x86_64] 
   - libmpeg2-devel 
   - libmpeg2convert0 
@@ -12294,7 +12293,7 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboath-devel 
-  - liboath0 
+  - liboath0: [i586] 
   - liboauth-devel 
   - liboauth0-32bit: [x86_64] 
   - libobby-0_4-1 
@@ -12417,7 +12416,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio8 
   - libopenshot-devel 
-  - libopenshot19 
+  - libopenshot20 
   - libopenslide-devel 
   - libopenslide0 
   - libopensm9 
@@ -13360,7 +13359,6 @@ unsorted:
   - librevenge-generators-0_0-0 
   - librfxencode0 
   - librgw-devel: [x86_64] # devel package of dvd:librados2 
-  - librgw2: [x86_64] 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -15832,7 +15830,6 @@ unsorted:
   - metaio-devel 
   - metaio-utils 
   - metallb-controller: [x86_64] 
-  - metallb-k8s-yaml: [x86_64] 
   - metallb-speaker: [x86_64] 
   - metamath 
   - metamath-book 
@@ -16217,6 +16214,7 @@ unsorted:
   - mpclient 
   - mpd 
   - mpd-doc 
+  - mpdecimal-devel 
   - mpeg2dec 
   - mpfi-devel 
   - mpfpx-devel 
@@ -16958,7 +16956,7 @@ unsorted:
   - nfoview 
   - nfoview-lang 
   - nfs-client-provisioner 
-  - nfs-client-provisioner-k8s-yaml 
+  - nfs-client-provisioner-k8s-yaml: [i586] 
   - nfs-ganesha: [x86_64] 
   - nfs-ganesha-ceph: [x86_64] 
   - nfs-ganesha-mount-9P: [x86_64] 
@@ -17331,7 +17329,7 @@ unsorted:
   - o2scl-doc 
   - oaml-devel 
   - oath-toolkit 
-  - oath-toolkit-xml 
+  - oath-toolkit-xml: [i586] 
   - oauth-signpost 
   - obantoo 
   - obby 
@@ -18409,9 +18407,6 @@ unsorted:
   - patterns-ceph-containers-ceph_base: [x86_64] 
   - patterns-cinnamon-cinnamon 
   - patterns-cinnamon-cinnamon_basis 
-  - patterns-containers-kubeadm: [x86_64] 
-  - patterns-containers-kubic_admin: [x86_64] 
-  - patterns-containers-kubic_worker: [x86_64] 
   - patterns-deepin-deepin 
   - patterns-deepin-deepin_admin 
   - patterns-deepin-deepin_basis 
@@ -21115,6 +21110,7 @@ unsorted:
   - python3-avocado-plugins-varianter-pict 
   - python3-avocado-plugins-varianter-yaml-to-mux 
   - python3-avocado-plugins-vt 
+  - python3-avogadro 
   - python3-azurectl 
   - python3-azuremetadata 
   - python3-babeltrace 
@@ -21136,9 +21132,6 @@ unsorted:
   - python3-castellan 
   - python3-ccm 
   - python3-cepces 
-  - python3-ceph-argparse: [x86_64] 
-  - python3-ceph-common: [x86_64] 
-  - python3-cephfs: [x86_64] 
   - python3-cinderclient 
   - python3-clang 
   - python3-cliff 
@@ -21377,11 +21370,8 @@ unsorted:
   - python3-pyside2-examples 
   - python3-pysol-cards 
   - python3-pytest-cookies 
-  - python3-rados: [x86_64] 
-  - python3-rbd: [x86_64] 
   - python3-renderspec 
   - python3-reno 
-  - python3-rgw: [x86_64] 
   - python3-rpmconf 
   - python3-rrdtool 
   - python3-rust2rpm 
@@ -24351,7 +24341,7 @@ unsorted:
   - python38-Pebble 
   - python38-Pillow-tk 
   - python38-Pint 
-  - python38-PrettyTable 
+  - python38-PrettyTable: [i586] 
   - python38-Protego 
   - python38-PsyLab 
   - python38-PubChemPy 
@@ -31035,7 +31025,6 @@ unsorted:
   - rook: [x86_64] 
   - rook-ceph-helm-charts: [x86_64] 
   - rook-integration: [x86_64] 
-  - rook-k8s-yaml: [x86_64] 
   - rook-rookflex: [x86_64] 
   - root-tail 
   - rosegarden 
@@ -31545,7 +31534,7 @@ unsorted:
   - salt-proxy 
   - salt-shaptools 
   - salt-ssh 
-  - salt-standalone-formulas-configuration 
+  - salt-standalone-formulas-configuration: [i586] 
   - salt-syndic 
   - salt-zsh-completion 
   - samba-ad-dc 
@@ -41832,7 +41821,6 @@ unsorted:
   - wcslib-tools 
   - wdiff 
   - wdiff-lang 
-  - weave-k8s-yaml: [x86_64] 
   - weave-kube: [x86_64] 
   - weave-npc: [x86_64] 
   - webalizer 
@@ -42566,7 +42554,7 @@ unsorted:
   - ykclient 
   - ykpers 
   - yodl 
-  - yomi-formula 
+  - yomi-formula: [i586] 
   - you-get 
   - you-get-bash-completion 
   - you-get-fish-completion 
