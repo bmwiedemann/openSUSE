@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Aug 29 17:36:37 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 4.62.2:
+  * fix notebook memory leak (#1216)
+  * fix contrib.concurrent with generators (#1233 <- #1231)
+
+-------------------------------------------------------------------
 Thu Jul 22 01:29:29 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - update to version 4.61.2:
