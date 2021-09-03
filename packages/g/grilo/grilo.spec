@@ -1,7 +1,7 @@
 #
 # spec file for package grilo
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://live.gnome.org/Grilo
 Source0:        https://download.gnome.org/sources/grilo/0.3/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM grilo-CVE-2021-39365.patch glgo#GNOME#grilo#146 bsc#1189839 CVE-2021-39365 xwang@suse.com -- Fix missing TLS certificate verification
+Patch0:         grilo-CVE-2021-39365.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
