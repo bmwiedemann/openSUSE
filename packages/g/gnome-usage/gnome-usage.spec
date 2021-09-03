@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-usage
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Bjørn Lie, Bryne, Norway.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,13 @@
 
 
 Name:           gnome-usage
-Version:        3.37.1
+Version:        3.38.1
 Release:        0
 Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Apps/Usage
-Source:         https://download.gnome.org/sources/gnome-usage/3.37/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gnome-usage/3.38/%{name}-%{version}.tar.xz
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20.10
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.30
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 0.83
-BuildRequires:  pkgconfig(tracker-sparql-2.0)
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 
 %description
 GNOME Usage is a program to view information about the use of system

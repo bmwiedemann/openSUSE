@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  1 11:56:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.1:
+  + Flag GtkBuilder children as unowned.
+  + Prevent reading beyond GTop's args.
+  + Prevent navigation to the storage separator.
+  + Prevent a double border in the performance sidebar.
+  + List compatible form-factors.
+- Changes from version 3.38.0:
+  + Port to Tracker 3.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow  upstreams port to
+  Tracker 3.
+
+-------------------------------------------------------------------
 Sat Sep  5 23:12:01 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version v3.37.1:

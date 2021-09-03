@@ -55,4 +55,23 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847233</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>6a93426a257e3e28b7147fd611218988</srcmd5>
+    <version>3.38.1</version>
+    <time>1630697129</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.38.1:
+  + Flag GtkBuilder children as unowned.
+  + Prevent reading beyond GTop's args.
+  + Prevent navigation to the storage separator.
+  + Prevent a double border in the performance sidebar.
+  + List compatible form-factors.
+- Changes from version 3.38.0:
+  + Port to Tracker 3.
+  + Updated translations.
+- Replace pkgconfig(tracker-sparql-2.0) BuildRequires with
+  pkgconfig(tracker-sparql-3.0): follow  upstreams port to
+  Tracker 3. (forwarded request 915474 from dimstar)</comment>
+    <requestid>915477</requestid>
+  </revision>
 </revisionlist>
