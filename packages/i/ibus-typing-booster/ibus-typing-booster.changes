@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 02 18:56:01 UTC 2021 - maiku.fabian@gmail.com
+
+- Update to 2.14.10
+- Fix “Inconsistency when typing digits in Compose”
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/238)
+- Fix “Toggling input mode on/off does not work when a compose sequence is in progress”
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/237)
+- Toggling input mode off should not throw away the current input
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/236)
+
+-------------------------------------------------------------------
 Mon Aug 30 21:47:02 UTC 2021 - maiku.fabian@gmail.com
 
 - Update to 2.14.8
