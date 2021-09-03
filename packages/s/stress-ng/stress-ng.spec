@@ -18,7 +18,7 @@
 
 
 Name:           stress-ng
-Version:        0.13.00
+Version:        0.13.01
 Release:        0
 Summary:        Tool to load and stress a computer
 License:        GPL-2.0-only
@@ -59,9 +59,7 @@ Bash completion script for stress-ng.
 
 %build
 export CFLAGS="%{optflags}"
-#%%make_build
-# parallel build is broken
-make
+%make_build
 
 %install
 install -D -p -m 0755 stress-ng   \
