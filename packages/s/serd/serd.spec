@@ -67,11 +67,13 @@ for i in `grep -rl "%{_bindir}/env python"`;do sed -i '1s/^#!.*/#!\/usr\/bin\/py
 export CFLAGS='%{optflags} -std=gnu99'
 export CXXFLAGS='%{optflags}'
 ./waf configure \
-  --prefix=%{_prefix} \
-  --libdir=%{_libdir} \
-  --docdir=%{_defaultdocdir} \
-  --test \
-  --docs
+      --prefix=%{_prefix} \
+      --libdir=%{_libdir} \
+%if 0%{?suse_version} > 1501
+      --test \
+      --docs \
+%endif
+      --docdir=%{_defaultdocdir} \
 
 ./waf build -v %{?_smp_mflags}
 
@@ -79,8 +81,10 @@ export CXXFLAGS='%{optflags}'
 ./waf install --destdir=%{?buildroot}
 rm -rf %{buildroot}%{_docdir}/serd-0/html
 
+%if 0%{?suse_version} > 1501
 %check
 ./waf test
+%endif
 
 %post -n libserd-0-%{sover} -p /sbin/ldconfig
 %postun -n libserd-0-%{sover} -p /sbin/ldconfig
@@ -95,7 +99,9 @@ rm -rf %{buildroot}%{_docdir}/serd-0/html
 %{_libdir}/libserd-0.so.%{sover}*
 
 %files devel
+%if 0%{?suse_version} > 1501
 %doc %{_docdir}/serd-0
+%endif
 %{_libdir}/libserd-0.so
 %{_includedir}/serd-0/
 %{_libdir}/pkgconfig/serd-0.pc
