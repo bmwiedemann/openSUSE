@@ -17,7 +17,7 @@
 
 
 Name:           xrdb
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        X server resource database utility
 License:        MIT
