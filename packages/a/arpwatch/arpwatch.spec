@@ -21,29 +21,23 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           arpwatch
-Version:        2.1a15
+Version:        3.1
 Release:        0
 Summary:        Tool to keep track of Ethernet<->IP address pairings
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Diagnostic
 URL:            http://www-nrg.ee.lbl.gov/nrg.html
-Source:         %{name}-%{version}.tar.bz2
+Source:         %{name}-%{version}.tar.gz
 Source10:       arpwatch@.service
 Source11:       sysconfig.arpwatch
 Source12:       arpwatch.service
 Patch0:         arpwatch-2.1a11-chrootbuild.diff
 Patch1:         arpwatch-no-source-zero.dif
-Patch3:         arpwatch-2.1a11-tokenring.diff
-Patch4:         arpwatch-2.1a11-hname-overflow.dif
 Patch5:         arpwatch-2.1a11-drop-privs-manpage.dif
 Patch6:         arpwatch-2.1a11-drop-privs.dif
-Patch7:         arpwatch-2.1a11-emailaddr.dif
-Patch8:         arpwatch-2.1a15-massagevendor.patch
-Patch9:         getnameinfo.patch
 # PATCH-Fix-Upstream -- https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=625796#20 -- seife+obs@b1-systems.com
 Patch10:        0001-Ignore-802.1Q-frames.patch
 Patch11:        report-iface.patch
-Patch12:        arpwatch-MAC.patch
 Patch13:        arpwatch-exit.patch
 Patch14:        arp2ethers.patch
 BuildRequires:  libpcap-devel
@@ -83,10 +77,9 @@ mkdir -p \
 %make_install
 # ethercodes.dat is in the arpwatch-ethercodes package
 rm -f %{buildroot}/%{_datadir}/arpwatch/ethercodes.dat
-for file in massagevendor euppertolower.awk duplicates.awk p.awk; do
+for file in euppertolower.awk duplicates.awk p.awk; do
 	cp -p ${file} %{buildroot}/%{_datadir}/arpwatch
 done
-make DESTDIR=%{buildroot} install-man
 install -Dm 0644 %{SOURCE10} %{buildroot}/%{_unitdir}/arpwatch@.service
 install -Dm 0644 %{SOURCE12} %{buildroot}/%{_unitdir}/arpwatch.service
 ln -s service %{buildroot}%{_sbindir}/rcarpwatch

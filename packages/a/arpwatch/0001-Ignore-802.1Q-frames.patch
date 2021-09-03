@@ -16,9 +16,11 @@ arpwatch instance could be run there (if desired), we simply ignore all
  arpwatch.c |   12 ++++++++++++
  1 files changed, 12 insertions(+), 0 deletions(-)
 
---- a/arpwatch.c
-+++ b/arpwatch.c
-@@ -105,6 +105,10 @@ struct rtentry;
+Index: arpwatch-3.1/arpwatch.c
+===================================================================
+--- arpwatch-3.1.orig/arpwatch.c
++++ arpwatch-3.1/arpwatch.c
+@@ -109,6 +109,10 @@ struct rtentry;
  #define ETHERTYPE_APOLLO	0x8019
  #endif
  
@@ -29,7 +31,7 @@ arpwatch instance could be run there (if desired), we simply ignore all
  #ifndef IN_CLASSD_NET
  #define IN_CLASSD_NET		0xf0000000
  #endif
-@@ -538,6 +542,14 @@ sanity_ether(register struct ether_heade
+@@ -619,6 +623,14 @@ sanity_ether(struct ether_header *eh, st
  		return(0);
  	}
  
@@ -43,4 +45,4 @@ arpwatch instance could be run there (if desired), we simply ignore all
 +
  	/* XXX sysv r4 seems to use hardware format 6 */
  	if (ea->arp_hrd != ARPHRD_ETHER && ea->arp_hrd != 6) {
- 		syslog(LOG_ERR, "%s sent bad hardware format 0x%x\n",
+ 		lg(LOG_ERR, "%s sent bad hardware format 0x%x\n",

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep  3 13:31:51 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Remove accidentially checked in manpage (arpwatch.8) 
+
+-------------------------------------------------------------------
+Fri Sep  3 07:37:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 3.1 (bsc#1185939) 
+  * Dropped 
+    + arpwatch-2.1a11-emailaddr.dif, this is now supported upstream.
+      Incompatible change: Flags change from -e and -s to -w and -W
+    + arpwatch-2.1a11-hname-overflow.dif: included upstream
+    + arpwatch-2.1a11-tokenring.diff: Dropped token ring support
+    + arpwatch-2.1a15-massagevendor.patch: new python version
+      is available
+    + arpwatch-MAC.patch: Fix is upstream
+    + getnameinfo.patch
+  * Refreshed
+    + 0001-Ignore-802.1Q-frames.patch
+    + arp2ethers.patch
+  * Notable upstream changes:
+    + Add python 2 compatibility to massagevendor (for pfsense <= 2.4.4).
+    + Add -Z (zero pad) and -C (compact) flags to arpwatch and arpsnmp to allow
+      run time selection of zero padded or compact ethernet addresses in arp.dat.
+    + arpsnmp errors now go to stderr instead of syslog.
+    + Add arpwatch directory flag (-D)
+    + Added the -x flag which is like -n but excludes cidrs
+
+-------------------------------------------------------------------
 Wed Aug 11 13:47:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:

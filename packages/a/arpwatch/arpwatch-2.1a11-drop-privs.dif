@@ -1,8 +1,8 @@
-Index: arpwatch-2.1a15/arpwatch.c
+Index: arpwatch-3.1/arpwatch.c
 ===================================================================
---- arpwatch-2.1a15.orig/arpwatch.c
-+++ arpwatch-2.1a15/arpwatch.c
-@@ -64,6 +64,8 @@ struct rtentry;
+--- arpwatch-3.1.orig/arpwatch.c
++++ arpwatch-3.1/arpwatch.c
+@@ -71,6 +71,8 @@ struct rtentry;
  #include <string.h>
  #include <syslog.h>
  #include <unistd.h>
@@ -11,9 +11,9 @@ Index: arpwatch-2.1a15/arpwatch.c
  
  #include <pcap.h>
  
-@@ -152,6 +154,66 @@ int	sanity_toring(struct toring_header *
- #endif
- __dead	void usage(void) __attribute__((volatile));
+@@ -170,6 +172,66 @@ int	sanity_fddi(struct fddi_header *, st
+ int	toskip(u_int32_t);
+ void	usage(void) __attribute__((noreturn));
  
 +void dropprivileges(const char* user)
 +{
@@ -78,25 +78,25 @@ Index: arpwatch-2.1a15/arpwatch.c
  int
  main(int argc, char **argv)
  {
-@@ -164,6 +226,7 @@ main(int argc, char **argv)
- 	register char *interface, *rfilename;
+@@ -181,6 +243,7 @@ main(int argc, char **argv)
+ 	char *interface, *rfilename;
  	struct bpf_program code;
  	char errbuf[PCAP_ERRBUF_SIZE];
-+	char* serveruser = NULL;
++	char *serveruser = NULL;
  
  	if (argv[0] == NULL)
  		prog = "arpwatch";
-@@ -181,7 +244,7 @@ main(int argc, char **argv)
+@@ -198,7 +261,7 @@ main(int argc, char **argv)
  	interface = NULL;
  	rfilename = NULL;
  	pd = NULL;
--	while ((op = getopt(argc, argv, "df:i:n:Nr:")) != EOF)
-+	while ((op = getopt(argc, argv, "df:i:n:Nr:u:")) != EOF)
+-	while ((op = getopt(argc, argv, "CdD:Ff:i:n:NpP:qr:svw:W:x:zZ")) != EOF)
++	while ((op = getopt(argc, argv, "CdD:Ff:i:n:NpP:qr:svw:W:x:zZu:")) != EOF)
  		switch (op) {
  
- 		case 'd':
-@@ -213,6 +276,16 @@ main(int argc, char **argv)
- 			rfilename = optarg;
+ 		case 'C':
+@@ -283,6 +346,16 @@ main(int argc, char **argv)
+ 			zeropad = 1;
  			break;
  
 +		case 'u':
@@ -112,41 +112,39 @@ Index: arpwatch-2.1a15/arpwatch.c
  		default:
  			usage();
  		}
-@@ -295,8 +368,11 @@ main(int argc, char **argv)
+@@ -383,8 +456,9 @@ main(int argc, char **argv)
  	 * Revert to non-privileged user after opening sockets
  	 * (not needed on most systems).
  	 */
 -	setgid(getgid());
 -	setuid(getuid());
-+	/*setgid(getgid());*/
-+	/*setuid(getuid());*/
 +	if ( serveruser ) {
 +		dropprivileges( serveruser );
 +	}
  
- 	/* Must be ethernet or fddi or tokenring */
+ 	/* Must be ethernet or fddi */
  	linktype = pcap_datalink(pd);
-@@ -842,6 +918,6 @@ usage(void)
- 
- 	(void)fprintf(stderr, "Version %s\n", version);
- 	(void)fprintf(stderr, "usage: %s [-dN] [-f datafile] [-i interface]"
--	    " [-n net[/width]] [-r file]\n", prog);
-+	    " [-n net[/width]] [-r file] [-u username]\n", prog);
+@@ -933,6 +1007,6 @@ usage(void)
+ 	    "usage: %s [-CdFNpqsvzZ] [-D arpdir] [-f datafile]"
+ 	    " [-i interface]\n\t"
+ 	    " [-P pidfile] [-w watcher@email] [-W watchee@email]\n\t"
+-	    " [-n net[/width]] [-x net[/width]] [-r file]\n", prog);
++	    " [-n net[/width]] [-x net[/width]] [-r file] [-u username]\n", prog);
  	exit(1);
  }
-Index: arpwatch-2.1a15/util.c
+Index: arpwatch-3.1/util.c
 ===================================================================
---- arpwatch-2.1a15.orig/util.c
-+++ arpwatch-2.1a15/util.c
-@@ -29,6 +29,7 @@ static const char rcsid[] =
+--- arpwatch-3.1.orig/util.c
++++ arpwatch-3.1/util.c
+@@ -36,6 +36,7 @@ static const char rcsid[] =
  
  #include <sys/types.h>
  #include <sys/file.h>
 +#include <sys/stat.h>
  
+ #include <errno.h>
  #include <fcntl.h>
- #ifdef HAVE_MEMORY_H
-@@ -186,3 +187,47 @@ savestr(register const char *str)
+@@ -212,3 +213,47 @@ savestr(const char *str)
  	strsize -= i;
  	return (cp);
  }
@@ -194,15 +192,15 @@ Index: arpwatch-2.1a15/util.c
 +	free(path_component);
 +	return safe_path;
 +}
-Index: arpwatch-2.1a15/util.h
+Index: arpwatch-3.1/util.h
 ===================================================================
---- arpwatch-2.1a15.orig/util.h
-+++ arpwatch-2.1a15/util.h
-@@ -5,6 +5,7 @@ int	dump(void);
- void	dumpone(u_int32_t, u_char *, time_t, char *);
+--- arpwatch-3.1.orig/util.h
++++ arpwatch-3.1/util.h
+@@ -8,6 +8,7 @@ char	*intoa(u_int32_t);
+ void	lg(int, const char *, ...) __attribute__ ((format (printf, 2, 3)));
  int	readdata(void);
  char	*savestr(const char *);
 +int safe_base_path(char *);
  
  extern char *arpdir;
- extern char *newarpfile;
+ extern char *arpfile;
