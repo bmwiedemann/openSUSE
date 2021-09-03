@@ -456,4 +456,13 @@
     <comment>- Adapt BuildRequires for SLE15 / Leap 15.x on xml2po. (forwarded request 910164 from yfjiang)</comment>
     <requestid>910286</requestid>
   </revision>
+  <revision rev="64" vrev="19">
+    <srcmd5>89f72241af792ed98fb708ef992cc2b9</srcmd5>
+    <version>0.20.10</version>
+    <time>1630697127</time>
+    <user>dimstar_suse</user>
+    <comment>- Add python3-libxml2 as runtime dependency (up to CODE15, the
+  package was called python3-libxml2-python, conditionally added). (forwarded request 915232 from dimstar)</comment>
+    <requestid>915444</requestid>
+  </revision>
 </revisionlist>

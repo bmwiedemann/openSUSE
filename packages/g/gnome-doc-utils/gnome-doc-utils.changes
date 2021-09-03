@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 31 10:07:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add python3-libxml2 as runtime dependency (up to CODE15, the
+  package was called python3-libxml2-python, conditionally added).
+
+-------------------------------------------------------------------
 Wed Aug  4 14:36:49 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Adapt BuildRequires for SLE15 / Leap 15.x on xml2po.

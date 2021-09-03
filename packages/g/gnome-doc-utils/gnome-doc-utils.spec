@@ -43,6 +43,11 @@ BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
 Requires:       libxslt
+%if %suse_version > 1500
+Requires:       python3-libxml2
+%else
+Requires:       python3-libxml2-python
+%endif
 BuildArch:      noarch
 
 %description
