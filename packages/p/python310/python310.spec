@@ -76,6 +76,12 @@
 %if "%{_arch}" == "arm"
 %define armsuffix hf
 %endif
+# Decide whether we want to use mpdecimal
+%if 0%{?suse_version} >= 1550
+%bcond_without mpdecimal
+%else
+%bcond_with mpdecimal
+%endif
 # pyexpat.cpython-35m-x86_64-linux-gnu
 # pyexpat.cpython-35m-powerpc64le-linux-gnu
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
@@ -157,6 +163,9 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
+%endif
+%if %{with mpdecimal}
+BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
 BuildRequires:  python3-Sphinx
@@ -444,6 +453,9 @@ export CFLAGS="%{optflags} -IVendor/"
     --with-lto \
 %if %{with profileopt}
     --enable-optimizations \
+%endif
+%if %{with mpdecimal}
+    --with-system-libmpdec \
 %endif
     --enable-loadable-sqlite-extensions
 
