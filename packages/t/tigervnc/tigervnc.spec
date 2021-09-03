@@ -37,6 +37,44 @@
 Name:           tigervnc
 Version:        1.10.1
 Release:        0
+URL:            http://tigervnc.org/
+Summary:        An implementation of VNC
+License:        GPL-2.0-only AND MIT
+Group:          System/X11/Servers/XF86_4
+Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source4:        10-libvnc.conf
+Source5:        vnc-server.susefirewall
+Source6:        vnc-httpd.susefirewall
+Source7:        vnc.reg
+Source8:        vncpasswd.arg
+Source9:        vnc.pam
+Source10:       with-vnc-key.sh
+Source11:       index.vnc
+Source12:       x11vnc
+Source13:       xvnc@.service
+Source14:       xvnc.socket
+Source16:       xvnc-novnc.socket
+Source17:       tigervnc.firewalld
+Source18:       tigervnc-https.firewalld
+Source19:       xvnc.target
+Source21:       xvnc-novnc.service.in
+Patch1:         tigervnc-newfbsize.patch
+Patch2:         tigervnc-clean-pressed-key-on-exit.patch
+Patch3:         u_tigervnc-ignore-epipe-on-write.patch
+Patch4:         n_tigervnc-date-time.patch
+Patch5:         u_tigervnc-cve-2014-8240.patch
+Patch6:         u_tigervnc_update_default_vncxstartup.patch
+Patch7:         u_build_libXvnc_as_separate_library.patch
+Patch8:         u_tigervnc-add-autoaccept-parameter.patch
+Patch9:         u_change-button-layout-in-ServerDialog.patch
+Patch10:        n_correct_path_in_desktop_file.patch
+Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
+Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
+Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
+Patch21:        U_0001-Properly-store-certificate-exceptions.patch
+Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
+Patch23:        n_utilize-system-crypto-policies.patch
+Patch24:        tigervnc-FIPS-use-RFC7919.patch
 Provides:       tightvnc = 1.3.9
 Obsoletes:      tightvnc < 1.3.9
 Provides:       vnc
@@ -110,45 +148,6 @@ BuildRequires:  pkgconfig(xtrans) >= 1.2.2
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 %endif
-URL:            http://tigervnc.org/
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Summary:        An implementation of VNC
-License:        GPL-2.0-only AND MIT
-Group:          System/X11/Servers/XF86_4
-Source1:        https://github.com/TigerVNC/tigervnc/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source4:        10-libvnc.conf
-Source5:        vnc-server.susefirewall
-Source6:        vnc-httpd.susefirewall
-Source7:        vnc.reg
-Source8:        vncpasswd.arg
-Source9:        vnc.pam
-Source10:       with-vnc-key.sh
-Source11:       index.vnc
-Source12:       x11vnc
-Source13:       xvnc@.service
-Source14:       xvnc.socket
-Source16:       xvnc-novnc.socket
-Source17:       tigervnc.firewalld
-Source18:       tigervnc-https.firewalld
-Source19:       xvnc.target
-Source21:       xvnc-novnc.service.in
-Patch1:         tigervnc-newfbsize.patch
-Patch2:         tigervnc-clean-pressed-key-on-exit.patch
-Patch3:         u_tigervnc-ignore-epipe-on-write.patch
-Patch4:         n_tigervnc-date-time.patch
-Patch5:         u_tigervnc-cve-2014-8240.patch
-Patch6:         u_tigervnc_update_default_vncxstartup.patch
-Patch7:         u_build_libXvnc_as_separate_library.patch
-Patch8:         u_tigervnc-add-autoaccept-parameter.patch
-Patch9:         u_change-button-layout-in-ServerDialog.patch
-Patch10:        n_correct_path_in_desktop_file.patch
-Patch11:        U_viewer-reset-ctrl-alt-to-menu-state-on-focus.patch
-Patch12:        tigervnc-fix-saving-of-bad-server-certs.patch
-Patch13:        u_xorg-server-1.20.7-ddxInputThreadInit.patch
-Patch21:        U_0001-Properly-store-certificate-exceptions.patch
-Patch22:        U_0002-Properly-store-certificate-exceptions-in-Java-viewer.patch
-Patch23:        n_utilize-system-crypto-policies.patch
-Patch24:        tigervnc-FIPS-use-RFC7919.patch
 
 %description
 TigerVNC is an implementation of VNC (Virtual Network Computing), a
@@ -158,6 +157,8 @@ of running 3D and video applications. TigerVNC also provides
 extensions for advanced authentication methods and TLS encryption.
 
 %package -n xorg-x11-Xvnc
+Summary:        TigerVNC implementation of Xvnc
+Group:          System/X11/Servers/XF86_4
 Requires(post): /usr/sbin/useradd
 Requires(post): /usr/sbin/groupadd
 Requires(post): /bin/awk
@@ -182,43 +183,38 @@ Recommends:     xorg-x11-Xvnc-module
 Provides:       tightvnc = 1.3.9
 Provides:       xorg-x11-Xvnc:/usr/lib/vnc/with-vnc-key.sh
 Obsoletes:      tightvnc < 1.3.9
-Summary:        TigerVNC implementation of Xvnc
-Group:          System/X11/Servers/XF86_4
 
 %description -n xorg-x11-Xvnc
 This is the TigerVNC implementation of Xvnc.
 
-%ifnarch s390 s390x
 %package -n xorg-x11-Xvnc-module
-Requires:       xorg-x11-Xvnc
 Summary:        VNC module for X server
 #%%{x11_abi_extension_req}
 Group:          System/X11/Servers/XF86_4
+Requires:       xorg-x11-Xvnc
 
 %description -n xorg-x11-Xvnc-module
 This module allows to share content of X server's screen over VNC.
 It is loaded into X server as a module if enable in X server's
 configuration.
-%endif
 
 %package -n xorg-x11-Xvnc-novnc
+Summary:        NoVNC service for Xvnc
+Group:          System/X11/Servers/XF86_4
+BuildArch:      noarch
 Requires:       novnc
 Requires:       python3-websockify
 Requires:       xorg-x11-Xvnc
 %{?systemd_requires}
-Summary:        NoVNC service for Xvnc
-Group:          System/X11/Servers/XF86_4
-BuildArch:      noarch
 
 %description -n xorg-x11-Xvnc-novnc
 A service that starts noVNC linked to Xvnc server.
 
 %package -n xorg-x11-Xvnc-java
-BuildArch:      noarch
-
-%{?systemd_requires}
 Summary:        VNC viewer in java
 Group:          System/X11/Servers/XF86_4
+BuildArch:      noarch
+%{?systemd_requires}
 
 %description -n xorg-x11-Xvnc-java
 A VNC client written in java that can be used as standalone application or as
@@ -283,14 +279,14 @@ export CFLAGS="%optflags"
 sed "s|@LIBEXECDIR@|%{_libexecdir}|g" %{SOURCE21} > xvnc-novnc.service
 # Build all tigervnc
 cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DCMAKE_BUILD_TYPE=RelWithDebInfo .
-make %{?_smp_mflags}
+%make_build
 
 # Build Xvnc server
 pushd unix/xserver
 autoreconf -fi
 %configure \
         --disable-xorg --disable-xnest --disable-xvfb --disable-dmx \
-        --disable-xwin --disable-xephyr --disable-kdrive --with-pic \
+        --disable-xwin --disable-xephyr --disable-kdrive \
         --disable-static --disable-xinerama \
         --with-xkb-path="%{_datadir}/X11/xkb" \
         --with-xkb-output="%{_sharedstatedir}/xkb/compiled" \
@@ -306,13 +302,13 @@ autoreconf -fi
         --disable-devel-docs \
         --with-fontrootdir=%{_datadir}/fonts \
         --disable-selective-werror
-make %{?_smp_mflags} V=1
+%make_build V=1
 popd
 
 # Build java client
 pushd java
 cmake -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} -DJAVACFLAGS="-encoding utf8 -source 1.6 -target 1.6" .
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
@@ -425,27 +421,22 @@ fi
 %service_del_postun xvnc.socket
 
 %pre -n xorg-x11-Xvnc-novnc
-%service_add_pre xvnc-novnc.service
-%service_add_pre xvnc-novnc.socket
+%service_add_pre xvnc-novnc.service xvnc-novnc.socket
 
 %post -n xorg-x11-Xvnc-novnc
-%service_add_post xvnc-novnc.service
-%service_add_post xvnc-novnc.socket
+%service_add_post xvnc-novnc.service xvnc-novnc.socket
 
 %preun -n xorg-x11-Xvnc-novnc
-%service_del_preun xvnc-novnc.service
-%service_del_preun xvnc-novnc.socket
+%service_del_preun xvnc-novnc.service xvnc-novnc.socket
 
 %postun -n xorg-x11-Xvnc-novnc
-%service_del_postun xvnc-novnc.service
-%service_del_postun xvnc-novnc.socket
+%service_del_postun xvnc-novnc.service xvnc-novnc.socket
 
 %post -n libXvnc1 -p /sbin/ldconfig
 
 %postun -n libXvnc1 -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %ghost %{_bindir}/vncviewer
 %{_bindir}/vncviewer-tigervnc
 %doc LICENCE.TXT README.rst
@@ -476,7 +467,6 @@ fi
 
 %files -n xorg-x11-Xvnc
 %doc LICENCE.TXT README.rst vnc.reg
-%defattr(-,root,root)
 
 %{_bindir}/Xvnc
 %{_bindir}/vncconfig
@@ -546,16 +536,13 @@ fi
 %{_datadir}/vnc
 
 %files -n libXvnc1
-%defattr(-,root,root)
 %{_libdir}/libXvnc.so.1*
 
 %files -n libXvnc-devel
-%defattr(-,root,root)
 %{_libdir}/libXvnc.so
 %{_includedir}/X11/extensions/Xvnc.h
 
 %files x11vnc
-%defattr(-,root,root)
 %{_bindir}/x11vnc
 
 %changelog
