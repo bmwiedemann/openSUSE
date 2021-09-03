@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 30 10:30:30 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
+
+- Add runtime dependency on importlib-metadata on Python 3.6
+
+-------------------------------------------------------------------
 Sat Jun 19 14:16:30 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 8.0.1:

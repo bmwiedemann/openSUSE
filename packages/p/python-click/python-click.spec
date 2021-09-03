@@ -32,6 +32,9 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-setuptools
+%if "%{python_flavor}" == "python36"
+Requires:       python-importlib-metadata
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,7 +56,7 @@ defaults out of the box.
 
 %check
 export LANG=en_US.UTF-8
-%pytest --tb=short
+%pytest -rs --tb=short
 
 %files %{python_files}
 %license LICENSE.rst
