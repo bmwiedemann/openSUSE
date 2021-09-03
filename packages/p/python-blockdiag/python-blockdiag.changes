@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  1 07:28:26 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  https://github.com/blockdiag/blockdiag/pull/131
+  + python-blockdiag-nose-to-pytest.patch
+
+-------------------------------------------------------------------
+Mon Aug 30 13:34:57 UTC 2021 - pgajdos@suse.com
+
+- %check: test the package
+
+-------------------------------------------------------------------
 Mon Feb 24 02:11:52 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.1:

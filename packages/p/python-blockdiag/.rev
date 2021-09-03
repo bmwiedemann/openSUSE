@@ -51,4 +51,12 @@
   * Fix #109 blockdiag does not work with recent pillow</comment>
     <requestid>778638</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>8defa4430aa43a254203a13b5c03d8b0</srcmd5>
+    <version>2.0.1</version>
+    <time>1630697126</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915434</requestid>
+  </revision>
 </revisionlist>
