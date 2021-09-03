@@ -28,6 +28,7 @@ URL:            http://libcamera.org/
 Source:         %name-%version.tar.xz
 Source1:        baselibs.conf
 Patch1:         vers.diff
+Patch2:         fix-ppc64.patch
 BuildRequires:  boost-devel
 BuildRequires:  c++_compiler
 BuildRequires:  libQt5Core-devel
@@ -96,7 +97,11 @@ libcamera is an experimental camera user-space API.
 This is its integration plugin for gstreamer.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -N
+%patch1 -p1
+%ifarch ppc64 ppc64le
+%patch2 -p1
+%endif
 
 %build
 export CFLAGS="%optflags -Wno-error"

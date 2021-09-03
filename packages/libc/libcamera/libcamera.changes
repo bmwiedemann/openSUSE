@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 18:03:48 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to work around what seems to be a bug in gcc 11 with
+  constexpr being treated as "non const" only in ppc64/ppc64le:
+  * fix-ppc64.patch
+
+-------------------------------------------------------------------
 Fri Jul 23 17:38:10 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
 - pipewire has baselibs, so we should have them here as well 

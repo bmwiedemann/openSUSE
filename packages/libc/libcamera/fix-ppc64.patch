@@ -1,0 +1,42 @@
+From: Antonio Larrosa <alarrosa@suse.com>
+Subject: Work around what seems to be a gcc bug only happening in ppc64/ppc64le
+
+When building code like:
+constexpr Duration defaultMinFrameDuration = 1.0s / 30.0;
+or
+constexpr Duration controllerMinFrameDuration = 1.0s / 60.0;
+
+gcc 11.1.1 is giving this error:
+
+[  235s] In file included from ../include/libcamera/base/log.h:10,
+[  235s]                  from ../src/ipa/raspberrypi/raspberrypi.cpp:18:
+[  235s] ../src/ipa/raspberrypi/raspberrypi.cpp:64:53:   in ‘constexpr’ expansion of ‘std::chrono::operator/<long double, std::ratio<1>, double>(std::literals::chrono_literals::operator""s(1.0e+0l), 3.0e+1)’
+[  235s] /usr/include/c++/11/chrono:710:39: error: ‘(1.0e+0l / 3.0e+1)’ is not a constant expression
+[  235s]   710 |         return __cd(__cd(__d).count() / __s);
+[  235s]       |                     ~~~~~~~~~~~~~~~~~~^~~~~
+[  235s] ../src/ipa/raspberrypi/raspberrypi.cpp:73:56:   in ‘constexpr’ expansion of ‘std::chrono::operator/<long double, std::ratio<1>, double>(std::literals::chrono_literals::operator""s(1.0e+0l), 6.0e+1)’
+
+This change works around it to let it build fine.
+
+Index: libcamera-0~2809.e0704e97/src/ipa/raspberrypi/raspberrypi.cpp
+===================================================================
+--- libcamera-0~2809.e0704e97.orig/src/ipa/raspberrypi/raspberrypi.cpp
++++ libcamera-0~2809.e0704e97/src/ipa/raspberrypi/raspberrypi.cpp
+@@ -61,7 +61,7 @@ using utils::Duration;
+ /* Configure the sensor with these values initially. */
+ constexpr double defaultAnalogueGain = 1.0;
+ constexpr Duration defaultExposureTime = 20.0ms;
+-constexpr Duration defaultMinFrameDuration = 1.0s / 30.0;
++const Duration defaultMinFrameDuration = 1.0s / 30.0;
+ constexpr Duration defaultMaxFrameDuration = 250.0s;
+ 
+ /*
+@@ -70,7 +70,7 @@ constexpr Duration defaultMaxFrameDurati
+  * we rate-limit the controller Prepare() and Process() calls to lower than or
+  * equal to this rate.
+  */
+-constexpr Duration controllerMinFrameDuration = 1.0s / 60.0;
++const Duration controllerMinFrameDuration = 1.0s / 60.0;
+ 
+ LOG_DEFINE_CATEGORY(IPARPI)
+ 
