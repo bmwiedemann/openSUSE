@@ -20,7 +20,7 @@
 # depends on openstack package mox3: only for primary python3 provider
 %define pythons python3
 Name:           python-websockify
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        WebSocket to TCP proxy/bridge
 License:        BSD-2-Clause AND LGPL-3.0-only AND MPL-2.0 AND BSD-3-Clause
