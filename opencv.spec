@@ -54,7 +54,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  openjpeg2
 BuildRequires:  tbb-devel
 BuildRequires:  unzip
-BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
