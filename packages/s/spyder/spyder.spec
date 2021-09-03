@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.1.1
+Version:        5.1.2
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -62,7 +62,7 @@ Requires:       python3-pyflakes >= 2.2.0
 Requires:       python3-pylint >= 2.5.0
 Requires:       python3-pyls-spyder >= 0.4.0
 Requires:       python3-python-lsp-black >= 1.0.0
-Requires:       python3-python-lsp-server >= 1.2.1
+Requires:       python3-python-lsp-server >= 1.2.2
 Requires:       python3-pyxdg >= 0.26
 Requires:       python3-pyzmq >= 17
 Requires:       python3-qstylizer >= 0.1.10
@@ -71,7 +71,7 @@ Requires:       python3-qtconsole >= 5.1.0
 Requires:       python3-qtwebengine-qt5
 Requires:       python3-rope >= 0.10.5
 Requires:       python3-setuptools >= 39.0.0
-Requires:       python3-spyder-kernels >= 2.1.0
+Requires:       python3-spyder-kernels >= 2.1.1
 Requires:       python3-textdistance >= 4.2.0
 Requires:       python3-three-merge >= 0.1.1
 Requires:       python3-watchdog
@@ -151,7 +151,7 @@ BuildRequires:  python3-pytest-order
 BuildRequires:  python3-pytest-qt
 BuildRequires:  python3-pytest-timeout
 BuildRequires:  python3-python-lsp-black >= 1.0.0
-BuildRequires:  python3-python-lsp-server >= 1.2.1
+BuildRequires:  python3-python-lsp-server >= 1.2.2
 BuildRequires:  python3-pyxdg >= 0.26
 BuildRequires:  python3-pyzmq >= 17
 BuildRequires:  python3-qstylizer >= 0.1.10
@@ -160,7 +160,7 @@ BuildRequires:  python3-qtconsole >= 5.1.0
 BuildRequires:  python3-qtwebengine-qt5
 BuildRequires:  python3-rope >= 0.10.5
 BuildRequires:  python3-scipy
-BuildRequires:  python3-spyder-kernels >= 2.1.0
+BuildRequires:  python3-spyder-kernels >= 2.1.1
 BuildRequires:  python3-sympy >= 0.7.3
 BuildRequires:  python3-textdistance >= 4.2.0
 BuildRequires:  python3-three-merge >= 0.1.1
@@ -301,6 +301,12 @@ export LANG=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 mkdir -p /tmp/spyder-abuild
 
+export PYTHONPATH=%{buildroot}%{python3_sitelib}:/tmp/spyder-abuild/testroot/%{python3_sitelib}
+# install boilerplate test package
+pushd spyder/app/tests/spyder-boilerplate
+python3 setup.py install --root /tmp/spyder-abuild/testroot --prefix %{_prefix}
+popd
+
 # Upstream splits the tests into slow and fast ones.
 # Add all tests which must be skipped into $donttest.
 # - Test marked with (* tested live) are skipped after making sure the tested
@@ -373,8 +379,9 @@ donttest+=" or test_mainwindow"
 donttest+=" or test_ipython_config_dialog"
 # fails on server but not locally
 donttest+=" or (test_formatting and document and autopep8)"
+# flaky
+donttest+=" or (test_pdb_eventloop and qt5)"
 
-export PYTHONPATH=%{buildroot}%{python3_sitelib}
 # Can't use pytest-xvfb because the tests leave widgets open and trigger https://github.com/The-Compiler/pytest-xvfb/issues/11
 function testspyder() {
    xvfb-run --server-args "-screen 0 1920x1080x24" python3 runtests.py -m "not no_xvfb" --timeout 1800 -ra -k "not (${donttest:4})" $@
