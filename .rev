@@ -364,4 +364,12 @@
   * add WindowMaker-reproducible.patch</comment>
     <requestid>794222</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>dda248aa26376015a08af384b5c590fc</srcmd5>
+    <version>0.95.9</version>
+    <time>1630697181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916760</requestid>
+  </revision>
 </revisionlist>

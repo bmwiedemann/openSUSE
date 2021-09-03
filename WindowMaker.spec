@@ -51,6 +51,9 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  wallpaper-branding-openSUSE
+BuildRequires:  pkgconfig(ImageMagick)
+BuildRequires:  pkgconfig(libwebp)
+BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
