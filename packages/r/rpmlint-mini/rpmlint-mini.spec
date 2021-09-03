@@ -17,7 +17,7 @@
 
 
 Name:           rpmlint-mini
-Version:        2.0
+Version:        %(rpm -q rpmlint --qf '%%{VERSION}')
 Release:        0
 Summary:        RPM file correctness checker
 License:        GPL-2.0-or-later
