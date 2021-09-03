@@ -993,4 +993,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment></comment>
     <requestid>913893</requestid>
   </revision>
+  <revision rev="116" vrev="3">
+    <srcmd5>cb03d93138ae9d429a6dffe999fe900a</srcmd5>
+    <version>5.85.0</version>
+    <time>1630697132</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable lto for ppc64 builds.</comment>
+    <requestid>914543</requestid>
+  </revision>
 </revisionlist>

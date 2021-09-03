@@ -136,6 +136,10 @@ Development files.
 %autosetup -p1
 
 %build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
+
 %cmake_kf5 -d build
 %cmake_build
 

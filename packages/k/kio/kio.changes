@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 08:34:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable lto for ppc64 builds.
+
+-------------------------------------------------------------------
 Sat Aug 21 14:55:25 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Move the designer plugin to the main package, it's used in
