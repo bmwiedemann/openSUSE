@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 29 08:19:56 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Updated chromium-glibc-2.34.patch: Fix PTHREAD_STACK_MIN errors
+  with glibc 2.34
+
+-------------------------------------------------------------------
 Tue Aug 17 20:28:07 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 92.0.4515.159 (boo#1189490):
