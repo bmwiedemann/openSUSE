@@ -3759,4 +3759,12 @@ I cannot test locally unfortunately.
 - build using clang</comment>
     <requestid>913013</requestid>
   </revision>
+  <revision rev="260" vrev="1">
+    <srcmd5>f64e03666e751d4dd4f466d03204a9b5</srcmd5>
+    <version>91.0.3</version>
+    <time>1630697142</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914797</requestid>
+  </revision>
 </revisionlist>

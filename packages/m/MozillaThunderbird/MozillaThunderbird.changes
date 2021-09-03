@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Aug 27 21:01:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 91.0.3:
+  * fixed: Folder icons could be overridden by linked favicons in
+    HTML messages
+  * fixed: Unified folders showed no messages when underlying
+    folders were removed
+  * fixed: Folder pane toolbar did not always persist after
+    restarting Thunderbird
+  * fixed: Compose window attachment pane did not close when
+    disabling signing of an OpenPGP message
+  * fixed: Using "Reply to List" with some list emails
+    incorrectly opened a "no-reply" warning
+  * fixed: Account setup UX issues with Exchange autodiscover
+  * fixed: Account settings did not display non-UTF-8 server
+    descriptions correctly
+  * fixed: Thunderbird sometimes sent an unnecessary "SMTPUTF8",
+    causing some servers to reject mail
+  * fixed: No mouseover pop was displayed with event details for
+    non-all-day events in the Today Pane
+  * fixed: Filtering tasks in the Today Pane did not work
+  * fixed: Email based event scheduling displayed the date and
+    time in a format unreadable by humans
+
+-------------------------------------------------------------------
+Fri Aug 27 20:07:49 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Thunderbird 91.0.2:
+  * new: Tags are now colored in mail filter editor
+  * changed: Context menu items related to OpenPGP and
+    attachments are now hidden when not applicable
+  * fixed: Creating a new account with manual setup failed
+  * fixed: Recipient autocomplete always preferred the primary
+    email address for a contact
+  * fixed: LDAP performance improvements
+  * fixed: Extensions listed on the Recommended Addons did not
+    have a clear way to view details in a browser
+  * fixed: Status checkmark on View > Calendar > Calendar Pane >
+    Show Calendar Pane was reversed
+  * fixed: mid: URLs in calendar invites did not open the linked
+    mail message
+  * fixed: Various theme and UX fixes
+
+-------------------------------------------------------------------
 Tue Aug 17 07:19:15 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.0.1
