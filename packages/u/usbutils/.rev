@@ -357,4 +357,39 @@
   * usbhid-dump: Put back autoconf check for libusb_set_option() (forwarded request 849557 from pluskalm)</comment>
     <requestid>849558</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>aee0854d5c87bc6737b27922a883fe82</srcmd5>
+    <version>014</version>
+    <time>1630697124</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.14 (jira#SLE-19451):
+  * Add Tx+Rx lanes to tree mode
+  * lsusb(8): mention the udev's hardware database
+  * lsusb: Fix typo in string output for iAdditionalInfoURL
+  * lsusb-t: Add lower bound checks in read_sysfs_file_string
+  * lsusb: remove unused RETRIES constant
+  * lsusb: don't complain on EAGAIN
+  * sysfs: add copyright notice taken from name.*
+  * LICENSES: add symlink to handle &quot;or-later&quot; issue for GPL-2.0
+  * LICENSES: put spdx headers on the license files
+  * rename &quot;GPL-2.0+&quot; to &quot;GPL-2.0-or-later&quot;
+  * LICENSE: rename GPL-3.0.txt -&gt; GPL-3.0-only.txt
+  * usbhid-dump.8.in: add copyright information
+  * usbhid-dump: add copyright and SPDX info
+  * SPDX header cleanups from GPL-2.0 -&gt; GPL-2.0-only
+  * usbutils.spdx: update with output of latest reuse tool
+  * lsusb: Fix spelling of bEndpointAddress in UVC
+  * lsusb: Decode endpoint addresses in UVC
+  * lsusb.c: fix leak in dump_printer_device
+  * usb-devices: do not use `local` in a POSIX shell script
+  * desc-defs.c: fix possible out-of-bound read
+  * Fix typos in lsusb.8.in
+  * Fix locating endpoint when it's a directory rather than a symlink
+  * Fix formatting of interface descriptors to match /sys/kernel/debug/usb/devices
+  * Fix formatting of endpoint direction to match /sys/kernel/debug/usb/devices
+  * Fix formatting of endpoint type to match /sys/kernel/debug/usb/devices
+  * Fix formatting of max endpoint packet size to match /sys/kernel/debug/usb/devices
+  * lsusb: Fix buffer size copy/paste error (forwarded request 915408 from pluskalm)</comment>
+    <requestid>915414</requestid>
+  </revision>
 </revisionlist>

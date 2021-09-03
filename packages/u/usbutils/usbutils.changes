@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep  1 06:22:13 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.14 (jira#SLE-19451):
+  * Add Tx+Rx lanes to tree mode
+  * lsusb(8): mention the udev's hardware database
+  * lsusb: Fix typo in string output for iAdditionalInfoURL
+  * lsusb-t: Add lower bound checks in read_sysfs_file_string
+  * lsusb: remove unused RETRIES constant
+  * lsusb: don't complain on EAGAIN
+  * sysfs: add copyright notice taken from name.*
+  * LICENSES: add symlink to handle "or-later" issue for GPL-2.0
+  * LICENSES: put spdx headers on the license files
+  * rename "GPL-2.0+" to "GPL-2.0-or-later"
+  * LICENSE: rename GPL-3.0.txt -> GPL-3.0-only.txt
+  * usbhid-dump.8.in: add copyright information
+  * usbhid-dump: add copyright and SPDX info
+  * SPDX header cleanups from GPL-2.0 -> GPL-2.0-only
+  * usbutils.spdx: update with output of latest reuse tool
+  * lsusb: Fix spelling of bEndpointAddress in UVC
+  * lsusb: Decode endpoint addresses in UVC
+  * lsusb.c: fix leak in dump_printer_device
+  * usb-devices: do not use `local` in a POSIX shell script
+  * desc-defs.c: fix possible out-of-bound read
+  * Fix typos in lsusb.8.in
+  * Fix locating endpoint when it's a directory rather than a symlink
+  * Fix formatting of interface descriptors to match /sys/kernel/debug/usb/devices
+  * Fix formatting of endpoint direction to match /sys/kernel/debug/usb/devices
+  * Fix formatting of endpoint type to match /sys/kernel/debug/usb/devices
+  * Fix formatting of max endpoint packet size to match /sys/kernel/debug/usb/devices
+  * lsusb: Fix buffer size copy/paste error
+
+-------------------------------------------------------------------
 Fri Nov 20 07:31:55 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 013:
