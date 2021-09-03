@@ -58,6 +58,7 @@ the data available from some contemporary location services.
 %package -n %{libname}
 Summary:        Qt 5 Positioning Library
 Group:          Development/Libraries/X11
+Recommends:     geoclue2
 
 %description -n %{libname}
 The Qt Positioning API gives developers the ability to determine a

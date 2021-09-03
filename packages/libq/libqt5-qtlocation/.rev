@@ -393,4 +393,13 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
     <comment>Qt 5.15.2 + KDE patch collection</comment>
     <requestid>902335</requestid>
   </revision>
+  <revision rev="48" vrev="2">
+    <srcmd5>b26df49ee4e797c84f0cfdf92e8a98da</srcmd5>
+    <version>5.15.2+kde6</version>
+    <time>1630697145</time>
+    <user>dimstar_suse</user>
+    <comment>- Recommend installation of geoclue2. The plugin needs the
+  GeoClue2 DBus service file.</comment>
+    <requestid>914862</requestid>
+  </revision>
 </revisionlist>

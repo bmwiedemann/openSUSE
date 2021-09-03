@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 25 08:00:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Recommend installation of geoclue2. The plugin needs the
+  GeoClue2 DBus service file.
+
+-------------------------------------------------------------------
 Tue Jun 22 19:33:51 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch to KDE's maintenance branch
