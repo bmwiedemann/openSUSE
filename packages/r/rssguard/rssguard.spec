@@ -16,9 +16,9 @@
 #
 
 
-%define libver  3_9_2
+%define libver  4_0_1
 Name:           rssguard
-Version:        3.9.2
+Version:        4.0.1
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 License:        AGPL-3.0-or-later AND GPL-3.0-only
@@ -35,6 +35,8 @@ BuildRequires:  libqt5-qtbase-common-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt5Concurrent)
 BuildRequires:  pkgconfig(Qt5Core) >= 5.12
+BuildRequires:  pkgconfig(Qt5DBus)
+BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5PrintSupport)
 BuildRequires:  pkgconfig(Qt5Sql)

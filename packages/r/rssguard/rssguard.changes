@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Fri Sep  3 11:00:04 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.1
+  * Fix build regression with Qt < 5.13.0. No other changes.
+  version 4.0.0:
+  * RSS Guard 4.x is NOT backwards compatible with 3.x line.
+    + configuration file "config.ini" IS fully backwards
+      compatible.
+    + database file "database.db" is NOT backwards compatible.
+  Added:
+  * Brand new notifications subsystem added. It can play sounds,
+    individual events are independently configurable in
+    application settings.
+  * "MessageObject" class now exposes "rawContents" property for
+    message filtering. Property contains raw RSS/ATOM/JSON
+    contents of the message.
+  * URL-embedded cookies are now supported, as well as classic
+    cookies, which are now saved in non-persistent cookie jar.
+  * "Next-gen" synchronization algorithms which may, in some
+    cases, dramatically speed-up two-way synchronization of
+    articles. This new synchronization algorithm is right now
+    implemented and enabled for Google Reader API plugin as PoC
+    and is called "Intelligent synchronization algorithm" within
+    RSS Guard. The algorithm will be also implemented for other
+    plugins in the future.
+  * Google Reader API plugin supports "ot" option.
+  * Documentation was completely rewritten.
+  * Optional notification for login failures.
+  * Improved bug report templates
+  * Properly implement "feed://" scheme to be able to "open"
+    feeds from web browsers etc.
+  * Added "Unread messages" node to feeds list which now
+    centralizes access to all unread messages.
+  * New search box for feeds list toolbar which now allows users
+    to search/filter feeds list.
+  * Ability to show nothing instead of message count in feeds
+    list if count is 0.
+  * Added button to feeds list context menu to expand or
+    collapse items (recursively).
+  * Message/feeds list tooltips are now switchable.
+  * Old AdBlock implementation was replaced by new modern
+    JS/NPM-based solution "Adblocker".
+  * RSS/ATOM/JSON parsers were updated to avoid some parsing
+    errors.
+  * Google Reader API plugin is greatly enhanced, has better
+    support for TheOldReader.
+  * Inoreader plugin was merged into Google Reader API plugin as
+    Inoreader too uses Google Reader API.
+  * Toolbar search boxes have now dynamic width.
+  * Visual state of some dialogs is now remembered, for example
+    "Cleanup database".
+  * Some GUI texts and terms were unified and changed (message
+    -> article, download feed -> fetch feed, etc.).
+  * There is now some default filename set when exporting feeds
+    to file.
+  * Number of unread messages is now shown also in taskbar (not
+    just tray icon).
+  * Unified minimize/maximize/close window buttons in all RSS
+    Guard dialogs.
+  * Most of text boxes now have "clear text" button.
+  * Feeds with disable auto-fetch policy now do not update on
+    application start-up.
+  * Notifications with new messages is now only launched if
+    there are NEW UNREAD messages.
+  Fixed/changed:
+  * RSS Guard can be correctly "killed.
+  * Database file "database.db" now not stored in redundant
+    "local" subfolder.
+  * Expand state of "Labels" item is now remembered.
+  * Example scraper "translate-feed.py" now can translate ATOM
+    feeds too.
+  * External tools now can be used with any hyperlink.
+  * Account's folders/feeds are resynchronized when "Edit"
+    dialog exits only when really needed.
+  * Fixed problems related to custom order (and sorting) of
+    columns in article list.
+  * Qt stylesheet from skins is now not loaded if there is
+    already loaded some external stylesheet.
+  * Local-only labels/tags are now note removed when performing
+    folder synchronization of the account.
+  * Progress bar in "Import/Export feeds" dialog was misleading
+    and show invalid progress.
+  * Feeds were not correctly re-sorted by titles after some feed
+    is renamed.
+  * "Select next unread message" feature produces some exotic
+    message list scrolling.
+  * Application was not able to synchronize unread messages with
+    Reedah.
+  * Fixed some repeated notifications when feed gets new
+    articles.
+  * Fixed some article formatting in embedded web browser.
+  * Fixed crash in "Message filters" dialog.
+  * Fixed main window problem when hidden with tray icon
+    activated in KDE.
+  * Font size in article previewer is now properly configurable.
+  * Added some missing icons.
+  * Improved some visual glitches in dialogs and skins.
+  * "Keep message selection in the middle" now works in a more
+    reasonable way when trigerred with mouse vs keyboard.
+  * Fixed GUI behavior of "Database cleanup" dialog.
+  * "Bring application window to front once article is opened in
+    external web browser" is now disabled by default.
+  * Fixed cooperation of "Next unread article" + "Keep message
+    selection in the middle" features.
+  * URL of feeds are now sanitized before making a network
+    request.
+  * All pictures from feeds should be now properly displayed.
+  * Completely overhauled the logic of detecting existing
+    articles and updating them.
+  * Fixed problem when multi-column sorting was mistakenly
+    activated when article list is reloaded after feed is
+    fetched.
+  * Monochrome icon was adjusted a bit.
+  * Fixed feeds list scrolling when feature "Next unread
+    article" is activated.
+
+-------------------------------------------------------------------
 Mon Apr 12 11:29:45 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 3.9.2
