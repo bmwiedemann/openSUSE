@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  7 23:18:11 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static).
+- Modernize rpm macro constructs.
+
+-------------------------------------------------------------------
 Thu Mar 23 15:15:30 UTC 2017 - kstreitova@suse.com
 
 - cleanup with spec-cleaner
