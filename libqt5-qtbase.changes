@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Aug 27 17:51:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to version 5.15.2+kde222:
+  * Revert "QString::lastIndexOf: fix off-by-one for zero length matches"
+  * MySQL: treat the MYSQL_FIELD as read-only
+  * Remove checks for glibc < 2 from qplatformdefs.h files
+  * linux-clang/qplatformdefs: fix building with musl libc
+  * Refix for avoiding huge number of tiny dashes
+  * Improve fix for avoiding huge number of tiny dashes
+  * Avoid processing-intensive painting of high number of tiny dashes
+  * xcb: add a timeout control when reading INCR property
+  * Remove another usage of mysql_get_client_version()
+  * MySQL: remove the version number checks in favor of actual functionality
+  * QLibraryInfo: Add MSVC 2022
+  * doCrypt() - check the error codes
+  * Restore C++11 compatibility of QSharedPointer code
+  * opengl: fix a typo in QOpenGLPaintDevice::dotsPerMeterY()
+  * Fix rvalue overload of qobject_pointer_cast for GCC 9.3
+  * QVarLengthArray: fix aliasing error in insert(it, n, v)
+  * Fix memory leak of QOffscreenScreen in QOffscreenIntegration
+  * Fix tst_moc for C++17
+  * Add missing limits include
+  * xcb: Avoid use-after-free in QXcbConnection::initializeScreens()
+  * xcb: Remove need for QXCBScreen to resolve QXcbGlIntegration
+  * Update shared-mime-info to the 2.1 release, adjust implementation
+
+-------------------------------------------------------------------
 Thu Jun 24 19:16:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Revert to the default platform plugin list ("wayland;xcb")

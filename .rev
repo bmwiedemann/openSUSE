@@ -2302,4 +2302,34 @@ Please copy to 13.2 if possible, as can be seen from the changelog, it contains 
   * 0002-Build-fixes-for-GCC-11.patch</comment>
     <requestid>902487</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>633e646141a9b212fd7374781a36f9be</srcmd5>
+    <version>5.15.2+kde222</version>
+    <time>1630697138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.15.2+kde222:
+  * Revert &quot;QString::lastIndexOf: fix off-by-one for zero length matches&quot;
+  * MySQL: treat the MYSQL_FIELD as read-only
+  * Remove checks for glibc &lt; 2 from qplatformdefs.h files
+  * linux-clang/qplatformdefs: fix building with musl libc
+  * Refix for avoiding huge number of tiny dashes
+  * Improve fix for avoiding huge number of tiny dashes
+  * Avoid processing-intensive painting of high number of tiny dashes
+  * xcb: add a timeout control when reading INCR property
+  * Remove another usage of mysql_get_client_version()
+  * MySQL: remove the version number checks in favor of actual functionality
+  * QLibraryInfo: Add MSVC 2022
+  * doCrypt() - check the error codes
+  * Restore C++11 compatibility of QSharedPointer code
+  * opengl: fix a typo in QOpenGLPaintDevice::dotsPerMeterY()
+  * Fix rvalue overload of qobject_pointer_cast for GCC 9.3
+  * QVarLengthArray: fix aliasing error in insert(it, n, v)
+  * Fix memory leak of QOffscreenScreen in QOffscreenIntegration
+  * Fix tst_moc for C++17
+  * Add missing limits include
+  * xcb: Avoid use-after-free in QXcbConnection::initializeScreens()
+  * xcb: Remove need for QXCBScreen to resolve QXcbGlIntegration
+  * Update shared-mime-info to the 2.1 release, adjust implementation</comment>
+    <requestid>914769</requestid>
+  </revision>
 </revisionlist>
