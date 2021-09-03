@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  2 13:54:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2.1.1
+  * Avoid runfile to be shadowed by other packages
+  * Remove dependency on ipython_genutils
+  * Memoize results of is_module_installed
+  * Restrict jupyter-client to be less than version 7
+
+-------------------------------------------------------------------
 Thu Aug  5 20:11:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2.1.0
