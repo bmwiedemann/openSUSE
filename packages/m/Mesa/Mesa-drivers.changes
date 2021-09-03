@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug 28 13:36:12 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- update to 21.2.1
+  * first bugfix release
+
+-------------------------------------------------------------------
 Sun Aug  8 08:52:15 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed build on %ix86 by removing "-flto=auto" from optflags for
