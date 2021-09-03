@@ -1,7 +1,7 @@
 #
 # spec file for package libcryptui
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -21,7 +21,7 @@ Version:        3.12.2
 Release:        0
 # FIXME: find out why building introspection support for this package requires libtool
 Summary:        Library for prompting for PGP keys
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            http://projects.gnome.org/seahorse/
 Source:         http://download.gnome.org/sources/libcryptui/3.12/%{name}-%{version}.tar.xz
@@ -61,7 +61,7 @@ Libcryptui is a library used for prompting for PGP keys.
 
 %package -n typelib-1_0-CryptUI-0_0
 Summary:        Introspection bindings for libcryptui, a PGP key prompting library
-License:        LGPL-2.1-or-later AND GPL-2.0-or-later
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Libraries
 
 %description -n typelib-1_0-CryptUI-0_0
@@ -102,7 +102,7 @@ Libcryptui is a library used for prompting for PGP keys.
 
 %prep
 %setup -q
-sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2:" configure
+sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2 2.3:" configure
 translation-update-upstream
 
 %build
@@ -117,6 +117,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n libcryptui0 -p /sbin/ldconfig
 %postun -n libcryptui0 -p /sbin/ldconfig
+
 %post -n libcryptui-data
 %glib2_gsettings_schema_post
 
