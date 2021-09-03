@@ -320,10 +320,10 @@ export CFLAGS="%{optflags} -fno-strict-aliasing -std=gnu99"
   --enable-shared \
   --disable-static \
   --disable-rpath
-make all V=1 STRIP=/bin/true
+%make_build V=1 STRIP=/bin/true
 
 %install
-%makeinstall V=1 STRIP=/bin/true
+%make_install V=1 STRIP=/bin/true
 perl -p -i -e 's|#!/usr/local/bin/ruby|%{_bindir}/ruby|g' $(grep -r -l /usr/local/bin/ruby %{buildroot})
 echo "%defattr(-,root,root,-)" > devel-extra-excludes
 echo "%defattr(-,root,root,-)" > devel-extra-list

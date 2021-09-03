@@ -66,4 +66,12 @@
 - Remove links in /etc/alternatives, they are %ghosts</comment>
     <requestid>905294</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>6f4149c4114bb08bfeafb3615423891c</srcmd5>
+    <version>2.7.3</version>
+    <time>1630697165</time>
+    <user>dimstar_suse</user>
+    <comment>- use modern make_* macros</comment>
+    <requestid>915101</requestid>
+  </revision>
 </revisionlist>

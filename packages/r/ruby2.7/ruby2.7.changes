@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 30 15:02:49 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- use modern make_* macros
+
+-------------------------------------------------------------------
 Fri Jul  9 13:16:57 UTC 2021 - Stephan Kulow <coolo@suse.com>
 
 - Expand the %ghost globs - otherwise they are not packaged correctly
