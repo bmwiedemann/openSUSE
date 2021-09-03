@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  3 11:31:43 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Update _service file to use obs_scm and local/buildmode
+- Remove group rights on config file (bsc#1190042)
+- Remove mainline patches:
+D    openhpi-3.4.0-systemd.patch
+D    unlink-pidfile-on-error.patch
+
+
+-------------------------------------------------------------------
 Tue Apr 27 14:26:51 UTC 2021 - Thomas Renninger <trenn@suse.de>
 
 - Use /run not /var/run for PID file creation (bsc#1185173)

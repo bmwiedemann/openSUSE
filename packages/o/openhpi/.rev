@@ -24,4 +24,12 @@ but is a needed in SLE15-SP1 due to a feature request).</comment>
     <comment></comment>
     <requestid>906324</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e6be74c7dc08ed70c1e88d12286f311b</srcmd5>
+    <version>3.8.0.ge4631e8a</version>
+    <time>1630697178</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916139</requestid>
+  </revision>
 </revisionlist>

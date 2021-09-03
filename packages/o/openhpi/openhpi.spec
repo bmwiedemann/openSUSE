@@ -17,20 +17,17 @@
 
 
 Name:           openhpi
-Version:        3.8.0
+Version:        3.8.0.ge4631e8a
 Release:        0
 Summary:        Implementation of SA Forum's Hardware Platform Interface (HPI)
 License:        BSD-3-Clause
 Group:          System/Monitoring
 URL:            https://github.com/open-hpi/openhpi
 Source:         openhpi-%{version}.tar.xz
-#Source1:        openhpi-rpmlintrc
 Source2:        AUTHORS
-Patch0:         unlink-pidfile-on-error.patch
-Patch2:         openhpi-3.4.0-systemd.patch
-Patch3:         fix_openipmi_typedef_selector_change.patch
-Patch4:         fix_implicit_declarations.patch
-Patch5:         Use-run-instead-of-var-run.patch
+Patch1:         fix_openipmi_typedef_selector_change.patch
+Patch2:         fix_implicit_declarations.patch
+Patch3:         Use-run-instead-of-var-run.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-toys
@@ -168,7 +165,7 @@ echo "Check OPENHPI_UNCONFIGURED in %{_sysconfdir}/openhpi/openhpi.conf"
 %files
 %defattr(-,root,root,0755)
 %dir %attr(0750,root,root) %{_sysconfdir}/openhpi
-%config(noreplace) %attr(0640,root,root) %{_sysconfdir}/openhpi/*
+%config(noreplace) %attr(0600,root,root) %{_sysconfdir}/openhpi/*
 %license COPYING
 %doc ChangeLog README *.example
 %dir %{_localstatedir}/lib/openhpi
