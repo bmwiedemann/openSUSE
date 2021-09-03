@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 01 14:24:59 UTC 2021 - trenn@suse.de
+
+- Update to version 2.0.14.20.g4ee5e0c:
+  * Fix system call numbers on s390x
+  * numactl.c: fixed debug verify for --preferred option
+  * numactl.c: Fixed description for the usage of numactl
+
+-------------------------------------------------------------------
 Mon Jul 19 12:46:42 UTC 2021 - trenn@suse.de
 
 - Update to version 2.0.14.17.g498385e:

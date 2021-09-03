@@ -582,4 +582,12 @@
 - Enable automake</comment>
     <requestid>907136</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>189796c8b7f807fe1d54b245d4df0e7c</srcmd5>
+    <version>2.0.14.20.g4ee5e0c</version>
+    <time>1630697130</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915500</requestid>
+  </revision>
 </revisionlist>
