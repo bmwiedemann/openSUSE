@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 13:24:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Disable lto for ppc64 builds.
+
+-------------------------------------------------------------------
 Fri Aug  6 12:12:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0

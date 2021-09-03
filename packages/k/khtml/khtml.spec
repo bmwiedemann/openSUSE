@@ -117,6 +117,10 @@ Development files.
 %autosetup -p1
 
 %build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
+
 %cmake_kf5 -d build -- -DSYSCONF_INSTALL_DIR=%{_kf5_sysconfdir}
 %cmake_build
 
