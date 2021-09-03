@@ -22,14 +22,14 @@
 %define _name gtk
 
 Name:           gtk4
-Version:        4.2.1
+Version:        4.4.0
 Release:        0
 Summary:        The GTK+ toolkit library (version 4)
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/X11
 URL:            https://www.gtk.org/
 
-Source:         https://download.gnome.org/sources/gtk/4.2/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/gtk/4.4/%{_name}-%{version}.tar.xz
 Source2:        settings.ini
 Source3:        macros.gtk4
 Source98:       gtk4-rpmlintrc
@@ -265,10 +265,9 @@ cp %{SOURCE3} %{buildroot}%{_rpmmacrodir}
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-cups.so
-%{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-cloudprint.so
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/printbackends/libprintbackend-file.so
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/
-%{_libdir}/gtk-4.0/%{gtk_binary_version}/media/libmedia-ffmpeg.so
+#%%{_libdir}/gtk-4.0/%%{gtk_binary_version}/media/libmedia-ffmpeg.so
 %{_libdir}/gtk-4.0/%{gtk_binary_version}/media/libmedia-gstreamer.so
 %dir %{_libdir}/gtk-4.0/%{gtk_binary_version}/theming-engines/
 %dir %{_libdir}/gtk-4.0/modules

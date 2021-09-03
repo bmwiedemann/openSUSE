@@ -320,4 +320,39 @@
   SLE/Leap. (forwarded request 908848 from yfjiang)</comment>
     <requestid>908867</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>20b3f4b5a14fba50b3e3e299119a3ac6</srcmd5>
+    <version>4.4.0</version>
+    <time>1630697126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0:
+  + Input:
+    - Match IBus for display of Compose sequences
+    - Match IBus for handling of mismatches
+    - Handle Escape in Compose sequences
+    - Allow multiple dead keys
+    - Support 32bit keysyms
+  + GtkCheckButton: Activate when moving focus
+  + GtkLabel: Propertly ignore double underscores for mnemonics
+  + GtkPopoverMenu: Fix focus cycling
+  + GtkTextView:
+    - Improve word selection
+    - Fix block cursors on empty lines
+  + GdkToplevel: Support the gnome-shell titlebar gesture protocol
+  + GdkDropTarget: Allow creating drop targets in ui files
+  + gsk:
+    - Handle partial color fonts correctly
+    - Use harfbuzz for color font information
+    - Avoid pango for glyph cache rendering
+    - Shrink shadow extents
+  + Settings: Change the default for gtk-split-cursor to FALSE
+  + Demos:
+    - Small improvements to widget-factory
+    - gtk-demo: Improve the hypertext demo
+    - gtk-dem: Improve the clipboard demo
+  + X11: Set WM_CLASS on toplevels
+  + Wayland: Support wl_seat v7
+  + Updated translations. (forwarded request 915065 from dimstar)</comment>
+    <requestid>915443</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Aug 25 08:32:35 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.0:
+  + Input:
+    - Match IBus for display of Compose sequences
+    - Match IBus for handling of mismatches
+    - Handle Escape in Compose sequences
+    - Allow multiple dead keys
+    - Support 32bit keysyms
+  + GtkCheckButton: Activate when moving focus
+  + GtkLabel: Propertly ignore double underscores for mnemonics
+  + GtkPopoverMenu: Fix focus cycling
+  + GtkTextView:
+    - Improve word selection
+    - Fix block cursors on empty lines
+  + GdkToplevel: Support the gnome-shell titlebar gesture protocol
+  + GdkDropTarget: Allow creating drop targets in ui files
+  + gsk:
+    - Handle partial color fonts correctly
+    - Use harfbuzz for color font information
+    - Avoid pango for glyph cache rendering
+    - Shrink shadow extents
+  + Settings: Change the default for gtk-split-cursor to FALSE
+  + Demos:
+    - Small improvements to widget-factory
+    - gtk-demo: Improve the hypertext demo
+    - gtk-dem: Improve the clipboard demo
+  + X11: Set WM_CLASS on toplevels
+  + Wayland: Support wl_seat v7
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Jul 28 10:07:30 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add back Mesa-libGLESv2-devel BuildRequires for SLE and Leap.
