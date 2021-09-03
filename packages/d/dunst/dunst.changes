@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul  2 16:50:21 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Do not hardcode web browser
+  + dunst-xdg-open-can-open-URLs-don-t-rely-on-specific-hardco.patch
+
+-------------------------------------------------------------------
 Thu Apr 29 14:38:25 UTC 2021 - Jan Baier <jbaier@suse.com>
 
 - update to 1.6.1

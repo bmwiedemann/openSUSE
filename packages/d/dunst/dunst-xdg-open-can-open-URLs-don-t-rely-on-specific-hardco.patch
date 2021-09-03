@@ -1,0 +1,56 @@
+From 0a20e8325ae33bae09f8684834adfa8b0265faa2 Mon Sep 17 00:00:00 2001
+From: Michal Suchanek <msuchanek@suse.de>
+Date: Fri, 2 Jul 2021 18:31:46 +0200
+Subject: [PATCH] xdg-open can open URLs, don't rely on specific hardcoded
+ browser.
+
+Upstream: https://github.com/dunst-project/dunst/pull/889
+
+---
+ config.h         | 2 +-
+ docs/dunst.5.pod | 2 +-
+ dunstrc          | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/config.h b/config.h
+index fe59af1..f21504a 100644
+--- a/config.h
++++ b/config.h
+@@ -72,7 +72,7 @@ struct settings defaults = {
+ /* path to dmenu */
+ .dmenu = "/usr/bin/dmenu",
+ 
+-.browser = "/usr/bin/firefox",
++.browser = "/usr/bin/xdg-open",
+ 
+ .min_icon_size = 0,
+ .max_icon_size = 0,
+diff --git a/docs/dunst.5.pod b/docs/dunst.5.pod
+index bf4d59e..aafa8b7 100644
+--- a/docs/dunst.5.pod
++++ b/docs/dunst.5.pod
+@@ -458,7 +458,7 @@ HISTORY.
+ The command that will be run when opening the context menu. Should be either
+ a dmenu command or a dmenu-compatible menu.
+ 
+-=item B<browser> (default: "/usr/bin/firefox")
++=item B<browser> (default: "/usr/bin/xdg-open")
+ 
+ The command that will be run when opening a URL. The URL to be opened will be
+ appended to the end of the value of this setting.
+diff --git a/dunstrc b/dunstrc
+index 0c3009c..7f4aa36 100644
+--- a/dunstrc
++++ b/dunstrc
+@@ -212,7 +212,7 @@
+     dmenu = /usr/bin/dmenu -p dunst:
+ 
+     # Browser for opening urls in context menu.
+-    browser = /usr/bin/firefox -new-tab
++    browser = /usr/bin/xdg-open
+ 
+     # Always run rule-defined scripts, even if the notification is suppressed
+     always_run_script = true
+-- 
+2.31.1
+

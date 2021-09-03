@@ -26,8 +26,10 @@ Group:          System/GUI/Other
 URL:            https://dunst-project.org
 Source:         https://github.com/dunst-project/dunst/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         makefile.patch
+Patch2:         dunst-xdg-open-can-open-URLs-don-t-rely-on-specific-hardco.patch
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -47,7 +49,7 @@ provided by most desktop environments.
 
 %prep
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
 %build
 CFLAGS="%{optflags}" make %{?_smp_mflags} all dunstify
