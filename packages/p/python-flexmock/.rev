@@ -38,4 +38,25 @@
   - ensure original exception isn't suppressed in pytest hook</comment>
     <requestid>689382</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fce6eba455785e1cf7d7407184c055b5</srcmd5>
+    <version>0.10.8</version>
+    <time>1630697166</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.8:
+  * Fix with_args not working built-in functions. 
+
+- Update to 0.10.7:
+  - Fix ``with_args`` not working built-in functions and methods.
+  - Fix previous pytest ``--durations`` fix not working.
+- from version 0.10.6
+  - Fix flexmock broken with Pytest 4 &amp; 5.
+  - Fix new_instances method not working with Python 2.7.
+  - Fix multiple expectations for the same classmethod are not matched.
+- from version 0.10.5
+  - Improve error message on unmatched method signature expectation.
+  - Fix using ``should_call`` passes wrong ``runtime_self``.
+  - Fix pytest ``--durations`` flag when flexmock is installed.</comment>
+    <requestid>915211</requestid>
+  </revision>
 </revisionlist>

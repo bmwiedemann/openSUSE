@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Aug 31 08:53:33 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.10.8:
+  * Fix with_args not working built-in functions. 
+
+-------------------------------------------------------------------
+Wed Aug 25 09:55:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.10.7:
+  - Fix ``with_args`` not working built-in functions and methods.
+  - Fix previous pytest ``--durations`` fix not working.
+- from version 0.10.6
+  - Fix flexmock broken with Pytest 4 & 5.
+  - Fix new_instances method not working with Python 2.7.
+  - Fix multiple expectations for the same classmethod are not matched.
+- from version 0.10.5
+  - Improve error message on unmatched method signature expectation.
+  - Fix using ``should_call`` passes wrong ``runtime_self``.
+  - Fix pytest ``--durations`` flag when flexmock is installed.
+
+-------------------------------------------------------------------
 Thu Mar 28 14:27:55 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Update to 0.10.4:
@@ -35,4 +56,3 @@ Thu Oct 13 10:22:24 UTC 2016 - alarrosa@suse.com
 
 - Initial package 
 - Official upstream release 0.10.2
-
