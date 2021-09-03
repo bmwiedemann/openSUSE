@@ -130,6 +130,15 @@ BuildFlags: useccache:glib2
 BuildFlags: useccache:gtk3
 BuildFlags: useccache:gtk3:doc
 BuildFlags: useccache:llvm9
+buildflags: useccache:tensorflow
+buildflags: useccache:tensorflow2:hpc
+buildflags: useccache:tensorflow2:hpc-openmpi2
+buildflags: useccache:tensorflow2:lite
+buildflags: useccache:tensorflow2:standard
+buildflags: useccache:tensorflow:hpc
+buildflags: useccache:tensorflow:hpc-openmpi2
+buildflags: useccache:tensorflow:lite
+buildflags: useccache:tensorflow:standard
 # ccache 4.x breaks webkit2gtk3
 #BuildFlags: useccache:webkit2gtk3
 
