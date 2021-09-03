@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 24 07:52:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5:
+  * Fixed Issue #340 related to the handling of daemonic tasks
+    in a TaskGroup.
+  * Changed all cancellation related exceptions to inherit
+    from BaseException instead of Exception.
+  * Added ps() and where() commands to the monitor
+    that can be used from the Curio REPL when you run
+    `python -m curio`.
+
+-------------------------------------------------------------------
 Wed Dec  9 11:04:13 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Reenable python36 build and skip the failing tests. The 

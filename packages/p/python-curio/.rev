@@ -76,4 +76,19 @@
     <comment></comment>
     <requestid>854256</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8fa3b1377e7b3bd4a5bd9c28040b1877</srcmd5>
+    <version>1.5</version>
+    <time>1630697144</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5:
+  * Fixed Issue #340 related to the handling of daemonic tasks
+    in a TaskGroup.
+  * Changed all cancellation related exceptions to inherit
+    from BaseException instead of Exception.
+  * Added ps() and where() commands to the monitor
+    that can be used from the Curio REPL when you run
+    `python -m curio`.</comment>
+    <requestid>914807</requestid>
+  </revision>
 </revisionlist>
