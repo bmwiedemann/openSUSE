@@ -386,6 +386,12 @@ mkdir -p %{buildroot}%{_sysconfdir}/pam.d
 install -m 0644 %{buildroot}%{_libexecdir}/%{name}/extras/pam/%{name} \
     %{buildroot}%{_sysconfdir}/pam.d/%{name}
 
+# symlink the location where the bundled dependencies should be
+pushd %{buildroot}%{_libexecdir}/%{name}/bin
+    mkdir -p pandoc
+    ln -sf %{_bindir}/pandoc pandoc/pandoc
+popd
+
 # symlink the location where the bundled mathjax should be to
 # /usr/share/javascript/mathjax as mathjax-%%{bundled_mathjax_short_version}
 ln -sf %{_datadir}/javascript/mathjax \

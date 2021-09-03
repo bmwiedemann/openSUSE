@@ -161,4 +161,12 @@ Rebase patches:
     <comment></comment>
     <requestid>914001</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>781084f4f9ca446c1997d73b95695603</srcmd5>
+    <version>1.4.1717</version>
+    <time>1630697179</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>916738</requestid>
+  </revision>
 </revisionlist>
