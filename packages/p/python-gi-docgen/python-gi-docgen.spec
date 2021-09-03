@@ -16,17 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define pythons python3
 Name:           python-gi-docgen
-Version:        2021.2
+Version:        2021.7
 Release:        0
 Summary:        Documentation tool for GObject-based libraries
-License:        GPL-3.0-or-later AND Apache-2.0 AND CC0-1.0
+License:        Apache-2.0 AND GPL-3.0-or-later AND CC0-1.0
 URL:            https://gitlab.gnome.org/ebassi/gi-docgen
 Source:         https://files.pythonhosted.org/packages/source/g/gi-docgen/gi-docgen-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Markdown}
@@ -44,6 +44,7 @@ Requires:       python-toml
 Requires:       python-typogrify
 Suggests:       python-coverage
 Suggests:       python-green
+Obsoletes:      python38-gi-docgen < %{version}
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,5 +73,7 @@ Documentation tool for GObject-based libraries
 %license LICENSES LICENSES/Apache-2.0.txt LICENSES/GPL-3.0-or-later.txt
 %python_alternative %{_bindir}/gi-docgen
 %{python_sitelib}/*
+%{_mandir}/man1/gi-docgen.1%{?ext_man}
+%{_datadir}/pkgconfig/gi-docgen.pc
 
 %changelog

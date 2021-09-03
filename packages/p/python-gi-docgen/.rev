@@ -7,4 +7,28 @@
     <comment>New dependency for GNOME 40</comment>
     <requestid>881497</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c7f6cd9a803a50e77f7ff367ca2ce0b2</srcmd5>
+    <version>2021.7</version>
+    <time>1630697128</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2021.7:
+  + Add a &quot;check&quot; sub-command
+  + Allow defining multiple content directories
+  + Detect gtk-doc code blocks for JavaScript
+  + Multiple changes to the basic template
+  + Add in-page content navigation
+  + Filter hidden data from indices
+  + Allow defining hidden symbols matching a regular expression
+  + Handle (attribute element-type) annotation for GListModel
+  + Fix class method linking
+  + Fix links to callback type arguments
+  + Fix argument listing in class methods
+  + Don't grab the 's' key when the sidebar is hidden
+  + Index the extra content files for search
+  + Fix gtk-doc sigil handling in code blocks
+  + Re-instate gtk-doc `()` function detection
+- Switch to building only default flavour of python3.</comment>
+    <requestid>915470</requestid>
+  </revision>
 </revisionlist>
