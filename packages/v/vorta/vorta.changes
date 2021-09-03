@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 31 15:35:37 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.7.8:
+  * Fix double call to on_user_click
+  * Handle malformed .vorta-init.json on import
+
+-------------------------------------------------------------------
 Tue Jul  6 12:57:42 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.7.7
