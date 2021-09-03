@@ -1118,4 +1118,12 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
 </comment>
     <requestid>909233</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>15ea64d193bb2753e189a5a2698b8f18</srcmd5>
+    <version>7.4.23</version>
+    <time>1630697131</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>914424</requestid>
+  </revision>
 </revisionlist>
