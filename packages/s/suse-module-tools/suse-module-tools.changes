@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Aug 30 13:15:20 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.0.9:
+  * weak_modules2: fix "warning: %post(kernel-...) scriptlet failed, 
+    exit status 1" message from rpm (boo#1189881)
+  * weak-modules2: add logging at verbose level 2
+  * weak-modules2: control logging with environment variables
+    WM2_VERBOSE, WM2_DEBUG, WM2_LOGFILE
+  * regenerate-initrd-posttrans: friendly notice if dracut not found
+    (boo#1123721)
+
+-------------------------------------------------------------------
 Fri Aug 20 09:05:54 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.0.8+1:

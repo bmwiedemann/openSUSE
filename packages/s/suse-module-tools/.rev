@@ -446,4 +446,19 @@ source service setup which messed up my spec file.
   * spec file: fix BuildRequires (forwarded request 913286 from mwilck)</comment>
     <requestid>913288</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>c3c6836dda92b09688a942f2039175e7</srcmd5>
+    <version>16.0.9</version>
+    <time>1630697164</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 16.0.9:
+  * weak_modules2: fix &quot;warning: %post(kernel-...) scriptlet failed, 
+    exit status 1&quot; message from rpm (boo#1189881)
+  * weak-modules2: add logging at verbose level 2
+  * weak-modules2: control logging with environment variables
+    WM2_VERBOSE, WM2_DEBUG, WM2_LOGFILE
+  * regenerate-initrd-posttrans: friendly notice if dracut not found
+    (boo#1123721) (forwarded request 915046 from mwilck)</comment>
+    <requestid>915051</requestid>
+  </revision>
 </revisionlist>
