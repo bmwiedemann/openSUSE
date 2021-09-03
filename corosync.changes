@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 23 10:02:21 UTC 2021 - varkoly@suse.com
+
+- Update to version 2.4.5+git70.64010f57:
+  * totem: Add cancel_hold_on_retransmit config option
+
+-------------------------------------------------------------------
 Tue Jun 01 14:00:15 UTC 2021 - varkoly@suse.com
 
 - Update to version 2.4.5+git69.6236728a:
