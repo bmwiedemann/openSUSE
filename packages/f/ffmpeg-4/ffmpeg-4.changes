@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Aug 27 07:09:15 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add ffmpeg-CVE-2021-38171.patch: Backport from upstream to fix
+  adts_decode_extradata in libavformat/adtsenc.c in FFmpeg 4.4
+  does not check the init_get_bits return value (bsc#1189724).
+
+-------------------------------------------------------------------
 Tue Aug 10 09:38:39 UTC 2021 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add ffmpeg-CVE-2021-38114.patch: Backport from upstream to fix

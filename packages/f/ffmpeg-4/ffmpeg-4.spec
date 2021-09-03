@@ -120,6 +120,7 @@ Patch8:         vmaf-trim-usr-local.patch
 Patch9:         ffmpeg-4.4-CVE-2020-22046.patch
 Patch10:        ffmpeg-CVE-2021-33815.patch
 Patch11:        ffmpeg-CVE-2021-38114.patch
+Patch12:        ffmpeg-CVE-2021-38171.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel
