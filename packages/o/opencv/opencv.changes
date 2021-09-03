@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Aug 30 09:20:06 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove dependency on IlmBase, opencv never uses this directly.
+
+-------------------------------------------------------------------
 Sat May  1 12:25:46 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.5.2, highlights below, for details check
