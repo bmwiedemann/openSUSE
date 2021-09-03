@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Aug 23 13:49:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove --with-pic which has no effect with --disable-static.
+- Remove old specfile constructs.
+- Drop %if..%endif guards around %package; these do not affect
+  the build result.
+- Combine %service_* calls to reduce generated boilerplate.
+
+-------------------------------------------------------------------
 Mon Aug  2 15:21:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - no longer require libXfont(1) 
