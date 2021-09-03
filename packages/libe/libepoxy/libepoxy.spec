@@ -18,7 +18,7 @@
 
 %define sonum   0
 Name:           libepoxy
-Version:        1.5.8
+Version:        1.5.9
 Release:        0
 Summary:        OpenGL function pointer management library
 License:        MIT

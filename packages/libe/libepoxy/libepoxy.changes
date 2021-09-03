@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Aug 15 14:45:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.9:
+  + Allow libopengl.so to be used when GLX_LIB is missing.
+
+-------------------------------------------------------------------
 Fri May 21 18:03:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.8:
