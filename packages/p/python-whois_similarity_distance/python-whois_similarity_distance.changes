@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 11:52:37 UTC 2021 - pgajdos@suse.com
+
+- %check: declare there's no uptream tests
+
+-------------------------------------------------------------------
 Sat Feb 13 08:13:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 (scipy) 

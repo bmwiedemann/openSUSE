@@ -55,4 +55,12 @@
     <comment>- skip python 3.6 (scipy)</comment>
     <requestid>871594</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>9dd541c3e9b5d77f5d2c399033f6d39c</srcmd5>
+    <version>1.0.2</version>
+    <time>1630697180</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>916742</requestid>
+  </revision>
 </revisionlist>

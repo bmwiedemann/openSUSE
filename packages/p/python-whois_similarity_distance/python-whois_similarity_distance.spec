@@ -47,7 +47,7 @@ Requires:       python-texttable
 Requires:       python-tld
 Requires:       python-urllib3
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-passivetotal
 BuildArch:      noarch
 # SECTION test requirements
@@ -89,8 +89,7 @@ export LANG=en_US.UTF-8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export LANG=en_US.UTF-8
-%python_exec setup.py test
+# no upstream tests
 
 %post
 %python_install_alternative wsd_domains
