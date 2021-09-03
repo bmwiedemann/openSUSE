@@ -66,7 +66,7 @@ cd docs && make html && rm _build/html/.buildinfo
 
 %check
 export CFLAGS="%{optflags} -fno-tree-dominator-opts -fno-strict-aliasing"
-%python_exec setup.py -q test
+%pyunittest_arch discover -v greenlet.tests
 
 %files %{python_files}
 %doc AUTHORS CHANGES.rst README.rst
