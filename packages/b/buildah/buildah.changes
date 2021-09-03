@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 02 15:16:02 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.22.3:
+  * Update dependencies
+  * Post-branch commit
+  * Accept repositories on login/logout
+
+-------------------------------------------------------------------
 Fri Aug 06 09:31:59 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 1.22.0:
