@@ -259,4 +259,12 @@
   * arpwatch@.service</comment>
     <requestid>911812</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>16f466c7c275115a2e17b17ed7e5a7b7</srcmd5>
+    <version>3.1</version>
+    <time>1630697175</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916747</requestid>
+  </revision>
 </revisionlist>

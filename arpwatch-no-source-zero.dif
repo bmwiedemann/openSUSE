@@ -1,8 +1,10 @@
---- a/arpwatch.c
-+++ b/arpwatch.c
-@@ -378,6 +378,12 @@ process_ether(register u_char *u, regist
- 	/* Source ip address */
- 	BCOPY(SPA(ea), &sia, 4);
+Index: arpwatch-3.1/arpwatch.c
+===================================================================
+--- arpwatch-3.1.orig/arpwatch.c
++++ arpwatch-3.1/arpwatch.c
+@@ -481,6 +481,12 @@ process_ether(u_char *u, const struct pc
+ 	if (toskip(sia))
+ 		return;
  
 +	/* dhcp broadcasts source from 0.0.0.0 - ignore */
 +	if (sia == 0) {
@@ -12,4 +14,4 @@
 +
  	/* Watch for bogons */
  	if (isbogon(sia)) {
- 		dosyslog(LOG_INFO, "bogon", sia, sea, sha);
+ 		if (!quiet)
