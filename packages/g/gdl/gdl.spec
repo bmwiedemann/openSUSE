@@ -1,7 +1,7 @@
 #
 # spec file for package gdl
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           gdl
-Version:        3.34.0
+Version:        3.40.0
 Release:        0
 Summary:        Gnome Devtool Libraries
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
-URL:            http://ftp.gnome.org/pub/GNOME/sources/gdl/3.18/
-Source:         https://download.gnome.org/sources/gdl/3.34/%{name}-%{version}.tar.xz
+URL:            https://gitlab.gnome.org/GNOME/gdl
+Source:         https://download.gnome.org/sources/gdl/3.40/%{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
@@ -72,12 +72,12 @@ gnome-debug, gnome-build, and anjuta2.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 translation-update-upstream
 
 %build
 %configure
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
 %make_install
