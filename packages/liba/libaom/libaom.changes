@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Aug 25 09:13:44 UTC 2021 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-30475 [bsc#1189497], Buffer overflow in aom_dsp/noise_model.c
+  + libaom-CVE-2021-30475.patch
+
+-------------------------------------------------------------------
+Wed Aug 25 08:32:17 UTC 2021 - pgajdos@suse.com
+
+- Update to version 3.1.2:
+  * Update AUTHORS,CHANGELOG,CMakeLists.txt for v3.1.2
+  * Avoid chroma resampling for 420mpeg2 input
+  * Check array has two elements before using index 1
+  * Fix DecodeScalabilityTest failure in realtime only
+  * Store temporal_id and spatial_id of decoded frame
+  * exports.cmake: use APPLE and WIN32 and use def for mingw-w64
+
+-------------------------------------------------------------------
 Fri Jul  2 18:39:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.1.1

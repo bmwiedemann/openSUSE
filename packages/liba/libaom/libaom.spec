@@ -20,7 +20,7 @@
 %define __builder ninja
 %define __builddir _build
 Name:           libaom
-Version:        3.1.1
+Version:        3.1.2
 Release:        0
 Summary:        AV1 codec library
 License:        BSD-2-Clause
@@ -29,6 +29,8 @@ URL:            https://aomedia.googlesource.com/aom/
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 Patch0:         libaom-0001-Do-not-disable-_FORTIFY_SOURCE.patch
+# CVE-2021-30475 [bsc#1189497], Buffer overflow in aom_dsp/noise_model.c
+Patch1:         libaom-CVE-2021-30475.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.6
 BuildRequires:  doxygen
