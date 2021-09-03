@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 27 22:47:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 91.0.2:
+  * Fixed: Firefox no longer clears authentication data when
+    purging trackers, to avoid repeatedly prompting for a
+    password (bmo#1721084)
+
+-------------------------------------------------------------------
 Wed Aug 18 06:34:01 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 91.0.1
