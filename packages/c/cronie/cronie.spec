@@ -22,7 +22,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           cronie
-Version:        1.5.5
+Version:        1.5.7
 Release:        0
 Summary:        Cron Daemon
 License:        BSD-3-Clause AND GPL-2.0-only AND MIT
@@ -44,8 +44,6 @@ Patch3:         cronie-pam_config.diff
 Patch4:         cronie-nheader_lines.diff
 # we use cron.pid instead of crond.pid
 Patch5:         cronie-crond_pid.diff
-# PATCH-FIX-UPSTREAM use run-crons instead of run-parts for anacron (bnc#689494)
-Patch8:         cronie-anacron-1.4.7-run-crons.patch
 Patch12:        cronie-piddir.patch
 # PATCH-FIX-SUSE the first occurance of "/etc/anacrontab" was replaced by "/etc/crontab"
 # in manpage file because the /etc/crontab is still used in SUSE.
@@ -60,6 +58,7 @@ BuildRequires:  pkgconfig(systemd)
 Requires:       mail
 Requires(post): %fillup_prereq
 Requires(post): permissions
+Requires(post): debianutils
 Requires(pre):  cron
 Suggests:       mailx
 Conflicts:      cron <= 4.1
@@ -105,7 +104,6 @@ overloaded in settings.
 %patch3 -p1
 %patch4
 %patch5 -p1
-%patch8 -p1
 cp %{SOURCE7} ./cron_to_cronie.README
 %patch12 -p1
 %patch13 -p1

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 30 07:18:09 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Change default configuration to use run-parts from debianutils
+  instead of run-crons
+- Remove cronie-anacron-1.4.7-run-crons.patch to make anacron use
+  run-parts
+
+-------------------------------------------------------------------
+Sat May  8 20:33:29 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.7:
+  * anacron: Fix problem of anacron not being started on some desktops
+  * crontab: switch off colors if NO_COLOR is set
+  * crontab: crontab without arguments now works if stdin is not a TTY
+  * crond: Fix various issues on loading the crontab databases on startup
+  * anacron: Expand MAILTO and MAILFROM environment variables
+  * crontab: New option to test crontab file syntax without installing it
+- cronie-nheader_lines.diff: refresh against 1.5.7
+
+-------------------------------------------------------------------
 Fri Mar 12 22:08:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - refresh spec files (move license to licensedir) 

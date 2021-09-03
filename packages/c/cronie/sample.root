@@ -12,5 +12,8 @@ MAILTO=root
 # |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
 # |  |  |  |  |
 # *  *  *  *  * user-name command to be executed
--*/15 * * * *   root  test -x /usr/libexec/cron/run-crons && /usr/libexec/cron/run-crons >/dev/null 2>&1
+@hourly         root      run-parts /etc/cron.hourly
+@daily          root      run-parts /etc/cron.daily
+@weekly         root      run-parts /etc/cron.weekly
+@monthly        root      run-parts /etc/cron.monthly
 
