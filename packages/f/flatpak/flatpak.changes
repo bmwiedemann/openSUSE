@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Aug 25 20:54:23 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 1.11.3.
+  * Bug fixes:
+   * Don't inherit an unusual $XDG_RUNTIME_DIR setting into the sandbox,
+     fixing a regression introduced when CVE-2021-21261 was fixed in
+     1.8.5 and 1.10.0
+   * Update the included copy of bubblewrap (flatpak-bwrap) to 0.5.0
+     * Better diagnostics when a --bind or other bind-mount fails
+     * Create non-directories with safer permissions
+     * Allow mounting an non-directory over an existing non-directory
+     * Silence kernel messages for our bind-mounts
+     * Improve ability to bind-mount directories on case-insensitive
+       filesystems
+   * Don't ask user which remote to download from if there is only
+     one option
+  * Internal changes:
+    * Improve test coverage
+    * Spelling fixes
+  * Translation updates: Brazilian Portuguese, Russian, Spanish, Ukrainian
+
+-------------------------------------------------------------------
 Fri Jun 18 17:15:03 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add now working CONFIG parameter to sysusers generator
