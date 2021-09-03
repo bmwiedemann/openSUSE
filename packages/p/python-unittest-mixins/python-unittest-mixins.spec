@@ -1,7 +1,7 @@
 #
 # spec file for package python-unittest-mixins
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,11 +22,11 @@ Version:        1.6
 Release:        0
 License:        Apache-2.0
 Summary:        Helpful mixins for unittest classes
-Url:            https://github.com/nedbat/unittest-mixins
+URL:            https://github.com/nedbat/unittest-mixins
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/u/unittest-mixins/unittest-mixins-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module six >= 1.4.0}
 # /SECTION
@@ -49,7 +50,7 @@ Helpful mixins for unittest classes.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst
