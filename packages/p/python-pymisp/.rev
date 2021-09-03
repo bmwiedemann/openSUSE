@@ -829,4 +829,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912306</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>936c727cb2942098628c7ca069cdac2b</srcmd5>
+    <version>2.4.148</version>
+    <time>1630697182</time>
+    <user>dimstar_suse</user>
+    <comment>- remove executable permissions on example files.
+</comment>
+    <requestid>916766</requestid>
+  </revision>
 </revisionlist>

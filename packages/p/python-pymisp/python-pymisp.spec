@@ -84,6 +84,7 @@ Examples and HTML documentation for %{name}.
 %setup -T -D -b 1 -n PyMISP-%{version}
 mv ../misp-objects-*/* pymisp/data/misp-objects/
 find pymisp examples -name "*.py" -type f -exec sed -i '1s/^#!.*//' '{}' \+
+find examples -name "*.py" -type f -exec chmod -x '{}' \+
 
 %build
 %python_build
