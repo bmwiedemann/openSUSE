@@ -2495,6 +2495,7 @@ unsorted:
   - crun 
   - cryfs 
   - cryptctl: [x86_64] 
+  - cryptsetup-ssh 
   - crystalhd-firmware 
   - cscope 
   - cscreen 
@@ -10208,7 +10209,7 @@ unsorted:
   - libdataquay0 
   - libdatovka 
   - libdatovka-devel 
-  - libdatovka0 
+  - libdatovka2 
   - libdatrie-devel 
   - libdav1d5-32bit: [x86_64] 
   - libdavix0 
@@ -10630,7 +10631,6 @@ unsorted:
   - libfole-devel 
   - libfole1 
   - libfolks-telepathy25 
-  - libfoma-hfst0 
   - libfoma0 
   - libfont-specimen0 
   - libfontenc-devel: [i586] # devel package of dvd:libfontenc1 
@@ -10691,7 +10691,6 @@ unsorted:
   - libfsrefs-devel 
   - libfsrefs-tools 
   - libfsrefs1 
-  - libfst-hfst0 
   - libfstrcmp0 
   - libfstrm0 
   - libfsxfs-devel 
@@ -11305,7 +11304,7 @@ unsorted:
   - libheif1-32bit: [x86_64] 
   - libheimdal 
   - libheimdal-devel 
-  - libhfst53 
+  - libhfst54 
   - libhfstospell11 
   - libhfstospell11-32bit: [x86_64] 
   - libhibr-devel 
@@ -11997,7 +11996,9 @@ unsorted:
   - libmpdclient-devel 
   - libmpdclient2 
   - libmpdec++3 
+  - libmpdec++3-32bit: [x86_64] 
   - libmpdec3 
+  - libmpdec3-32bit: [x86_64] 
   - libmpeg2-0-32bit: [x86_64] 
   - libmpeg2-devel 
   - libmpeg2convert0 
@@ -13527,7 +13528,6 @@ unsorted:
   - libsfcUtil0 
   - libsfml2-2_5 
   - libsfml2-2_5-32bit: [x86_64] 
-  - libsfst-hfst0 
   - libsgutils-devel 
   - libsha1detectcoll-devel 
   - libshadowdive0_0_0-suse 
@@ -16215,6 +16215,7 @@ unsorted:
   - mpd 
   - mpd-doc 
   - mpdecimal-devel 
+  - mpdecimal-devel-32bit: [x86_64] 
   - mpeg2dec 
   - mpfi-devel 
   - mpfpx-devel 
@@ -24093,7 +24094,6 @@ unsorted:
   - python36-user_agent 
   - python36-userpath 
   - python36-uvicorn 
-  - python36-uvloop 
   - python36-validate_email 
   - python36-validators 
   - python36-varint 
