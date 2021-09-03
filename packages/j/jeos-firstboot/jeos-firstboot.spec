@@ -26,7 +26,10 @@ URL:            https://github.com/openSUSE/jeos-firstboot
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  systemd-rpm-macros
 Requires:       dialog
+Requires:       iproute2
 Requires:       live-langset-data
+Requires:       timezone
+Requires:       wicked
 BuildArch:      noarch
 %{?systemd_requires}
 

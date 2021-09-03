@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 17 17:09:39 UTC 2021 - Guilherme Moro <gmoro@suse.com>
+
+- Include appropriate Requires
+  * wicked
+  * iptroute2
+  * timezone
+
+-------------------------------------------------------------------
 Fri Jul 09 10:01:30 UTC 2021 - jeos-internal@suse.de
 
 - Update to version 1.0.2.0:
