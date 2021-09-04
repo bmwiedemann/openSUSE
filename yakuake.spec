@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           yakuake
-Version:        21.08.0
+Version:        21.08.1
 Release:        0
 Summary:        Drop-down terminal emulator based on Konsole technologies
 License:        GPL-2.0-or-later
