@@ -1,7 +1,7 @@
 #
 # spec file for package cura-engine-lulzbot
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Summary:        3D printer control software
 License:        AGPL-3.0-only
 Group:          Hardware/Printing
 Conflicts:      cura-engine
-Url:            https://code.alephobjects.com/diffusion/CTE/cura-engine.git
+URL:            https://code.alephobjects.com/diffusion/CTE/cura-engine.git
 Source0:        CuraEngine-%{version}.tar.xz
 Source1:        CuraEngine.1
 # X-OPENSUSE-PATCH fix-build.patch for new libArcus
@@ -40,8 +40,8 @@ BuildRequires:  cmake
 BuildRequires:  cppunit-devel
 BuildRequires:  libArcus-devel
 BuildRequires:  stb-devel
-# No 32bit support anymore
-ExcludeArch:    %ix86 %arm
+# No 32bit support anymore. aarch64 support was added later (please use regular cura-engine for aarch64)
+ExcludeArch:    %ix86 %arm aarch64
 
 %description
 CuraEngine is an engine for processing 3D models
