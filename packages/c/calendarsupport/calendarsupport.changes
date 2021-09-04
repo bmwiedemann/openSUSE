@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:37:42 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Remove dead print plugins
+  * Fix Clazy warnings
+  * Make events stand out from holidays when printing
+
+-------------------------------------------------------------------
 Fri Aug  6 09:34:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
