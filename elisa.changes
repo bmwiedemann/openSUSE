@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:37:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Don't find KIO on Android
+  * Fix in-app seek shortcuts (kde#441485)
+  * Fix broken "Files" view (kde#440980)
+  * Don't show "Show in Folder" buttons for radio streams (kde#439280)
+- Drop upstream patch:
+  * 0001-Fix-broken-Files-view.patch
+
+-------------------------------------------------------------------
 Thu Aug 26 06:25:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix a critical regression in the files
