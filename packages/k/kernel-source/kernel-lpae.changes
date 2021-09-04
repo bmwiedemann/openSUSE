@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Aug 30 00:37:02 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14 final
+- refresh configs
+- commit d419f63
+
+-------------------------------------------------------------------
+Mon Aug 30 00:33:56 CEST 2021 - mkubecek@suse.cz
+
+- config: update and enable armv6hl
+  New config option values copied from arvm7hl.
+- commit 7224850
+
+-------------------------------------------------------------------
+Mon Aug 30 00:25:29 CEST 2021 - mkubecek@suse.cz
+
+- config: update and enable armv7hl
+  New config option values copied from arm64 except:
+  - PCI_IXP4XX=n (does not allow module build)
+  - MTD_NAND_PL35X=m
+  - IPMI_KCS_BMC_CDEV_IPMI=m
+  - IPMI_KCS_BMC_SERIO=m
+  - MSC313E_WATCHDOG=m
+  - REGULATOR_MT6359=m
+  - REGULATOR_RT5033=m
+  - ARM_GT_INITIAL_PRESCALER_VAL=2 (default)
+  - INTEL_QEP=m
+- commit 2df785b
+
+-------------------------------------------------------------------
 Thu Aug 26 15:52:30 CEST 2021 - jslaby@suse.cz
 
 - net: usb: asix: ax88772: Fix less than zero comparison of a u16
@@ -234,7 +264,7 @@ Mon Aug 23 19:27:23 CEST 2021 - jeffm@suse.com
   can be modular as well.  CRYPTO_AES and CRYPTO_CBC are used by
   ENCRYPTED_KEYS and must remain built-in.  CRYPTO_SHA512 and CRYPTO_HMAC
   are used by module signature validation and must also remain built-in.
-- commit abd126e
+- commit dbb9dbc
 
 -------------------------------------------------------------------
 Mon Aug 23 19:27:17 CEST 2021 - jeffm@suse.com
@@ -243,7 +273,7 @@ Mon Aug 23 19:27:17 CEST 2021 - jeffm@suse.com
   These modules were selected as built-in due to Kconfig changes between
   4.14-rc3 and 5.8-rc1 selecting them if BIG_KEYS was enabled.  They can
   be built as modules again now.
-- commit 9c21610
+- commit bb04225
 
 -------------------------------------------------------------------
 Mon Aug 23 16:57:21 CEST 2021 - tiwai@suse.de
@@ -260,39 +290,54 @@ Mon Aug 23 09:29:30 CEST 2021 - jslaby@suse.cz
 - commit fc469d6
 
 -------------------------------------------------------------------
+Mon Aug 23 09:21:18 CEST 2021 - mkubecek@suse.cz
+
+- hid: fix length inconsistency
+  (20210816130059.3yxtdvu2r7wo4uu3@lion.mk-sys.cz).
+- commit 61596f4
+
+-------------------------------------------------------------------
+Mon Aug 23 09:19:25 CEST 2021 - mkubecek@suse.cz
+
+- config: refresh vanilla configs
+  Vanilla configs also need to include DEBUG_INFO_BTF_MODULES even if the
+  value does not differ from base config.
+- commit f317ebc
+
+-------------------------------------------------------------------
 Mon Aug 23 09:17:23 CEST 2021 - jslaby@suse.cz
 
 - Update config files. (arm & epaper drivers and other old graphics)
   Propagate recent epaper drivers and other old graphics changes to arms.
-- commit 985c396
+- commit dda8a0c
 
 -------------------------------------------------------------------
 Mon Aug 23 09:16:00 CEST 2021 - jslaby@suse.cz
 
 - Update config files. (arm & CONFIG_GAMEPORT)
   Propagate recent CONFIG_GAMEPORT changes to arms.
-- commit ef35027
+- commit dc92f5f
 
 -------------------------------------------------------------------
 Mon Aug 23 09:11:14 CEST 2021 - jslaby@suse.cz
 
 - Update config files. (arm & CONFIG_BT_MSFTEXT)
   Propagate recent CONFIG_BT_MSFTEXT changes to arms.
-- commit ef6c760
+- commit 408b13b
 
 -------------------------------------------------------------------
 Mon Aug 23 09:09:42 CEST 2021 - jslaby@suse.cz
 
 - Update config files. (arm & ATALK)
   Propagate recent ATALK changes to arms.
-- commit d976e0c
+- commit 32afa86
 
 -------------------------------------------------------------------
 Mon Aug 23 09:01:42 CEST 2021 - jslaby@suse.cz
 
 - Update config files. (arm & EXT4_FS)
   Propagate recent EXT4_FS changes to arms.
-- commit 91c3bf2
+- commit dbd131f
 
 -------------------------------------------------------------------
 Mon Aug 23 08:08:23 CEST 2021 - jslaby@suse.cz
@@ -300,6 +345,18 @@ Mon Aug 23 08:08:23 CEST 2021 - jslaby@suse.cz
 - Update config files.
   Only refresh using scripts/run_oldconfig.sh.
 - commit bdb4b85
+
+-------------------------------------------------------------------
+Mon Aug 23 00:02:05 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc7
+- eliminated 3 patches:
+  - patches.suse/mmc-sdhci-iproc-cap-min-clock-frequency-on-bcm2711.patch
+  - patches.suse/mmc-sdhci-iproc-set-sdhci_quirk_cap_clock_base_broken-on-bcm2711.patch
+  - patches.suse/crypto-drbg-select-SHA512.patch
+- refresh configs
+  - DYNAMIC_FTRACE_WITH_ARGS=y (x86_64 only)
+- commit 3e03413
 
 -------------------------------------------------------------------
 Sun Aug 22 03:53:44 CEST 2021 - jeffm@suse.com
@@ -335,16 +392,26 @@ Fri Aug 20 23:37:04 CEST 2021 - jeffm@suse.com
 -------------------------------------------------------------------
 Fri Aug 20 23:24:18 CEST 2021 - jeffm@suse.com
 
+- config: disable CONFIG_ISDN on arm* (bsc#1189675).
+  Without CONFIG_ISDN, we no longer need to carry:
+- patches.suse/misdn-add-support-for-group-membership-check.
 - config: disable CONFIG_ISDN (bsc#1189675).
   Without CONFIG_ISDN, we no longer need to carry:
 - patches.suse/misdn-add-support-for-group-membership-check.
-- commit 0e1a617
+- commit 310ae3e
 
 -------------------------------------------------------------------
 Fri Aug 20 23:22:06 CEST 2021 - jeffm@suse.com
 
+- config: enable CONFIG_PRINTK_CALLER on arm* (bsc#1189674).
 - config: enable CONFIG_PRINTK_CALLER (bsc#1189674).
-- commit f0e131e
+- commit 0ba49b0
+
+-------------------------------------------------------------------
+Fri Aug 20 19:42:44 CEST 2021 - afaerber@suse.com
+
+- config: arm64: Update to 5.14-rc6
+- commit 1a6db50
 
 -------------------------------------------------------------------
 Fri Aug 20 11:17:51 CEST 2021 - tiwai@suse.de
@@ -360,7 +427,11 @@ Wed Aug 18 14:54:50 CEST 2021 - tiwai@suse.de
   bsc#1188172).
 - Bluetooth: avoid circular locks in sco_sock_connect
   (CVE-2021-3640 bsc#1188172).
-- commit aa9e1af
+- Bluetooth: switch to lock_sock in SCO (CVE-2021-3640
+  bsc#1188172).
+- Bluetooth: avoid circular locks in sco_sock_connect
+  (CVE-2021-3640 bsc#1188172).
+- commit 9562b07
 
 -------------------------------------------------------------------
 Wed Aug 18 09:50:06 CEST 2021 - jslaby@suse.cz
@@ -633,9 +704,13 @@ Tue Aug 17 16:46:45 CEST 2021 - tiwai@suse.de
   (bsc#1188064).
 - Bluetooth: btusb: Add support for IMC Networks Mediatek Chip
   (bsc#1188064).
+- Bluetooth: btusb: Add support for Foxconn Mediatek Chip
+  (bsc#1188064).
+- Bluetooth: btusb: Add support for IMC Networks Mediatek Chip
+  (bsc#1188064).
 - Bluetooth: btusb: Add support for Lite-On Mediatek Chip
   (bsc#1188064).
-- commit 18891ce
+- commit 3cfd9ab
 
 -------------------------------------------------------------------
 Mon Aug 16 20:07:28 CEST 2021 - msuchanek@suse.de
@@ -646,6 +721,14 @@ Mon Aug 16 20:07:28 CEST 2021 - msuchanek@suse.de
   fully functional, for now we ship git snapshot with fixes on top of
   v1.21.
 - commit 8ba3382
+
+-------------------------------------------------------------------
+Mon Aug 16 07:05:22 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc6
+- refresh configs
+  - drop MQ_IOSCHED_DEADLINE_CGROUP
+- commit 17c8c26
 
 -------------------------------------------------------------------
 Sun Aug 15 16:05:24 CEST 2021 - jslaby@suse.cz
@@ -1007,6 +1090,19 @@ Wed Aug 11 06:36:51 CEST 2021 - jslaby@suse.cz
 - commit 33df9c6
 
 -------------------------------------------------------------------
+Tue Aug 10 11:07:07 CEST 2021 - ykaukab@suse.de
+
+- config: arm64: enable audio support for Nvidia Tegra SOCs
+- commit 9983afb
+
+-------------------------------------------------------------------
+Mon Aug  9 22:56:36 CEST 2021 - jeffm@suse.com
+
+- crypto: drbg - select SHA512 (bsc#1189034).
+  config: CRYPTO_SHA512 is built-in again.
+- commit 80170a0
+
+-------------------------------------------------------------------
 Mon Aug  9 13:13:03 CEST 2021 - ludwig.nussel@suse.de
 
 - Fix filesystem requirement and suse-release requires
@@ -1015,6 +1111,14 @@ Mon Aug  9 13:13:03 CEST 2021 - ludwig.nussel@suse.de
   Don't require suse-release as that's not technically required. Conflict
   with a too old one instead.
 - commit 913f755
+
+-------------------------------------------------------------------
+Mon Aug  9 00:03:09 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc5
+- update configs
+  - PHYS_RAM_BASE_FIXED=n (riscv64 only, follow upstream revert)
+- commit 1838496
 
 -------------------------------------------------------------------
 Sun Aug  8 12:50:22 CEST 2021 - jslaby@suse.cz
@@ -1135,11 +1239,33 @@ Wed Aug  4 21:14:06 CEST 2021 - jeffm@suse.com
   v5.10-rc1 (b7176c261cd) upstream added the ability to allocate areas for
   each NUMA node, which changed some of the defaults.
   The default number of areas (19) is used here.
+- config: make CONFIG_INTEL_PMC_CORE modular (bsc#1189072).
+  When this option was introduced, it was a boolean.  Since then it's
+  been changed to a tristate and can be made modular again.
+- config: config: disable epaper drivers and other old graphics (bsc#1189116).
+- config: disable CONFIG_GAMEPORT (bsc#1189115).
+  The last SoundBlaster card to use a Game Port shipped in 2001.  Devices
+  that connect via Game Port can still be used with a USB adapter, which
+  doesn't use the GAMEPORT driver.
+- config: enable CONFIG_BT_MSFTEXT (bsc#1189113).
+- config: disable CONFIG_ATALK (bsc#1189112).
+  This disables support for native AppleTalk which Apple stopped
+  supporting in 2009.  AppleTalk over IP is implemented using the netatalk
+  package.
+- config: enable CONFIG_CMA on x86_64 (bsc#1189109).
+  CMA was enabled in SLE15-SP3 via jsc#SLE-17227.  One difference is that
+  v5.10-rc1 (b7176c261cd) upstream added the ability to allocate areas for
+  each NUMA node, which changed some of the defaults.
+  The default number of areas (19) is used here.
 - commit c779dde
 
 -------------------------------------------------------------------
 Wed Aug  4 21:14:05 CEST 2021 - jeffm@suse.com
 
+- config: enable CONFIG_EFI_RCI2_TABLE (bsc#1189108).
+- config: disable X86_X32 (bsc#1189069).
+  This feature requires a userspace rebuild to use the X32 ABI and that
+  hasn't happened.  If that support is eventually added, we can re-enable.
 - config: enable CONFIG_EFI_RCI2_TABLE (bsc#1189108).
 - config: disable X86_X32 (bsc#1189069).
   This feature requires a userspace rebuild to use the X32 ABI and that
@@ -1354,8 +1480,16 @@ Tue Aug  3 22:37:27 CEST 2021 - jeffm@jeffm.io
 -------------------------------------------------------------------
 Tue Aug  3 10:56:12 CEST 2021 - mbrugger@suse.com
 
+- arm64: Update config files. (bsc#1188702)
 - arm63: Update config files. (bsc#1188702)
-- commit c97411a
+- commit a293b6e
+
+-------------------------------------------------------------------
+Mon Aug  2 07:52:51 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc4
+- refresh configs (cosmetic only)
+- commit 025a97d
 
 -------------------------------------------------------------------
 Sun Aug  1 10:22:47 CEST 2021 - tiwai@suse.de
@@ -1796,6 +1930,17 @@ Wed Jul 28 11:51:15 CEST 2021 - msuchanek@suse.de
 - commit b53c0bd
 
 -------------------------------------------------------------------
+Mon Jul 26 00:43:06 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc3
+- eliminated 1 patch:
+  - patches.suse/seq_file-disallow-extremely-large-seq-buffer-allocat.patch
+- update configs
+  - SND_SOC_SSM2518=n (x86 and riscv64)
+  - drop SND_SOC_ZX_AUD96P22
+- commit ee7a475
+
+-------------------------------------------------------------------
 Sun Jul 25 19:34:29 CEST 2021 - jslaby@suse.cz
 
 - Linux 5.13.5 (bsc#1012628).
@@ -2086,6 +2231,13 @@ Thu Jul 22 10:52:48 CEST 2021 - jslaby@suse.cz
   (bsc#1012628 CVE-2021-33909 bsc#1188062).
   Add CVE.
 - commit d57f3b6
+
+-------------------------------------------------------------------
+Wed Jul 21 13:19:43 CEST 2021 - mkubecek@suse.cz
+
+- seq_file: disallow extremely large seq buffer allocations
+  (CVE-2021-33909 bsc#1188062).
+- commit 060b3df
 
 -------------------------------------------------------------------
 Wed Jul 21 09:25:01 CEST 2021 - tiwai@suse.de
@@ -3152,6 +3304,15 @@ Mon Jul 19 09:26:49 CEST 2021 - dmueller@suse.com
 - commit ccf5b18
 
 -------------------------------------------------------------------
+Sun Jul 18 23:32:14 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc2
+- update configs
+  - NCSI_OEM_CMD_KEEP_PHY=y
+  - EDAC_IGEN6=m (x86_64 only)
+- commit 1d63327
+
+-------------------------------------------------------------------
 Sun Jul 18 23:25:19 CEST 2021 - mkubecek@suse.cz
 
 - series.conf: cleanup
@@ -3171,7 +3332,7 @@ Thu Jul 15 18:47:58 CEST 2021 - mbrugger@suse.com
 
 - arm64: dts: rockchip: Disable CDN DP on Pinebook Pro
   (bsc#1188234).
-- commit 105254d
+- commit 73020a9
 
 -------------------------------------------------------------------
 Wed Jul 14 20:12:49 CEST 2021 - jslaby@suse.cz
@@ -4531,6 +4692,152 @@ Wed Jul 14 20:12:49 CEST 2021 - jslaby@suse.cz
 - commit 89416ca
 
 -------------------------------------------------------------------
+Mon Jul 12 18:04:44 CEST 2021 - mkubecek@suse.cz
+
+- Update to 5.14-rc1
+- eliminated 13 patches (3 stable, 9 mainline, 1 obsolete SUSE)
+  - patches.kernel.org/5.13.1-001-Revert-KVM-x86-mmu-Drop-kvm_mmu_extended_role..patch
+  - patches.kernel.org/5.13.1-002-mm-page_alloc-correct-return-value-of-populate.patch
+  - patches.kernel.org/5.13.1-003-Linux-5.13.1.patch
+  - patches.rpmify/scripts-mkmakefile-honor-second-argument.patch
+  - patches.suse/ACPI-PM-s2idle-Add-missing-LPS0-functions-for-AMD.patch
+  - patches.suse/ACPI-processor-idle-Fix-up-C-state-latency-if-not-or.patch
+  - patches.suse/Bluetooth-btqca-Don-t-modify-firmware-contents-in-pl.patch
+  - patches.suse/Input-elants_i2c-Fix-NULL-dereference-at-probing.patch
+  - patches.suse/brcmfmac-Add-clm_blob-firmware-files-to-modinfo.patch
+  - patches.suse/brcmfmac-Delete-second-brcm-folder-hierarchy.patch
+  - patches.suse/crypto-ccp-Annotate-SEV-Firmware-file-names.patch
+  - patches.suse/pinctrl-bcm2835-accept-fewer-than-expected-irqs.patch
+  - patches.suse/proc-Avoid-mixing-integer-types-in-mem_rw.patch
+- refresh
+  - patches.suse/add-product-identifying-information-to-vmcoreinfo.patch
+  - patches.suse/dm-table-switch-to-readonly
+  - patches.suse/kernel-add-product-identifying-information-to-kernel-build.patch
+  - patches.suse/kernel-add-release-status-to-kernel-build.patch
+  - patches.suse/supported-flag
+- disable ARM architectures (need config update)
+- new config options
+  - General setup
+    - SCHED_CORE=y
+  - Power management and ACPI options
+    - ACPI_PRMT=y
+    - TPS68470_PMIC_OPREGION=y
+  - Block layer
+    - BLK_CGROUP_FC_APPID=y
+    - BLK_CGROUP_IOPRIO=y
+  - Networking support
+    - NETFILTER_NETLINK_HOOK=m
+  - File systems
+    - HUGETLB_PAGE_FREE_VMEMMAP_DEFAULT_ON=n
+  - Security options
+    - IMA_DISABLE_HTABLE=n
+  - Kernel hacking
+    - STACKTRACE_BUILD_ID=y
+    - DEBUG_FORCE_FUNCTION_ALIGN_64B=n
+    - OSNOISE_TRACER=y
+    - TIMERLAT_TRACER=y
+    - TEST_SCANF=n
+    - TEST_CLOCKSOURCE_WATCHDOG=n
+  - PCI support
+    - CXL_ACPI=m
+    - CXL_PMEM=m
+  - SCSI device support
+    - SCSI_MPI3MR=m
+    - SCSI_EFCT=m
+  - Network device support
+    - DWMAC_LOONGSON=m
+    - MEDIATEK_GE_PHY=m
+    - MOTORCOMM_PHY=m
+    - WWAN_HWSIM=m
+    - RPMSG_WWAN_CTRL=m
+    - IOSM=m
+    - PHY_CAN_TRANSCEIVER=m
+    - INFINIBAND_IRDMA=m
+  - Hardware Monitoring support
+    - SENSORS_DPS920AB=m
+    - SENSORS_MP2888=m
+    - SENSORS_PIM4328=m
+    - SENSORS_SHT4x=m
+  - Voltage and Current Regulator Support
+    - REGULATOR_MAX8893=m
+    - REGULATOR_RT6160=m
+    - REGULATOR_RT6245=m
+    - REGULATOR_RT4831=m
+  - Graphics support
+    - HSA_AMD_SVM=y
+    - DRM_SIMPLEDRM=m
+    - DRM_HYPERV=m
+    - FB_SSD1307=m
+    - BACKLIGHT_RT4831=m
+  - Sound card support
+    - SND_SOC_INTEL_SOF_CS42L42_MACH=m
+    - SND_SOC_TFA989X=n
+    - SND_SOC_WCD938X_SDW=n
+  - X86 Platform Specific Device Drivers
+    - DELL_WMI_PRIVACY=y
+    - WIRELESS_HOTKEY=m
+    - THINKPAD_LMI=m
+    - X86_PLATFORM_DRIVERS_INTEL=y
+    - INTEL_SKL_INT3472=m
+  - Common Clock Framework
+    - ICST=n
+    - CLK_SP810=n
+    - LMK04832=m
+  - IOMMU Hardware Support
+    - VIRTIO_IOMMU=m
+  - Industrial I/O support
+    - FXLS8962AF_I2C=n
+    - FXLS8962AF_SPI=n
+    - SCA3300=n
+    - TI_TSC2046=n
+    - SPS30_I2C=n
+    - SPS30_SERIAL=n
+    - IIO_ST_LSM9DS0=n
+    - TSL2591=n
+    - TMP117=n
+  - Misc devices
+    - MTD_MCHP48L640=n
+    - JOYSTICK_QWIIC=m
+    - XILLYUSB=m
+    - GPIO_TPS68470=n
+    - BATTERY_RT5033=m
+    - WATCHDOG_HRTIMER_PRETIMEOUT=y
+    - MFD_RT4831=m
+    - VIDEO_IMX208=m
+    - LEDS_LT3593=m
+    - RESET_MCHP_SPARX5=n
+  - OF dependent (i386, ppc64 / ppc64le, riscv64)
+    - MFD_QCOM_PM8008=n
+    - DRM_ITE_IT66121=n
+    - DRM_TI_SN65DSI83=n
+  - i386
+    - DRM_CROS_EC_ANX7688=n
+  - ppc64 / ppc64le
+    - STRICT_MODULE_RWX=y
+    - PPC_RFI_SRR_DEBUG=n
+  - ppc64
+    - PS3_VERBOSE_RESULT=n
+  - s390x
+    - SPARX5_SWITCH=m
+    - RESET_TI_SYSCON=n
+  - riscv64
+    - PHYS_RAM_BASE=0x80000000 (default)
+    - VMAP_STACK=y
+    - TRANSPARENT_HUGEPAGE=y
+    - READ_ONLY_THP_FOR_FS=y
+    - SND_SOC_RK817=n
+    - SND_SOC_RT5640=m
+    - POLARFIRE_SOC_MAILBOX=m
+    - DEV_DAX=m
+    - STACK_HASH_ORDER=20 (default)
+    - KFENCE=y
+    - KFENCE_STATIC_KEYS=y
+    - KFENCE_SAMPLE_INTERVAL=0 (other archs, see bsc#1185565)
+    - KFENCE_NUM_OBJECTS=255 (default)
+    - KFENCE_STRESS_TEST_FAULTS=0 (default)
+- commit 34fe32a
+
+-------------------------------------------------------------------
 Mon Jul 12 08:10:50 CEST 2021 - jslaby@suse.cz
 
 - Revert "UsrMerge the kernel (boo#1184804)"
@@ -4584,6 +4891,12 @@ Thu Jul  8 20:04:55 CEST 2021 - msuchanek@suse.de
 
 - kernel-binary.spec: Exctract s390 decompression code (jsc#SLE-17042).
 - commit 7f97df2
+
+-------------------------------------------------------------------
+Thu Jul  8 12:08:36 CEST 2021 - msuchanek@suse.de
+
+- rpm/config.sh: Build on s390.
+- commit 641dff8
 
 -------------------------------------------------------------------
 Thu Jul  8 11:17:05 CEST 2021 - msuchanek@suse.de
