@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug  6 07:34:44 UTC 2021 - Markéta Machová <mmachova@suse.com>
+
+- Babel is not required
+
+-------------------------------------------------------------------
 Fri Jul  9 11:03:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - clean up single-spec: Remove python2 remnants

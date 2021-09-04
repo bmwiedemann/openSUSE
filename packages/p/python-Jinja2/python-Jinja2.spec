@@ -16,13 +16,13 @@
 #
 
 
+%{?!python_module:%define python_module() python3-%{**}}
+%define skip_python2 1
 %ifarch %{ix86} armv7l
 %bcond_with test
 %else
 %bcond_without test
 %endif
-%{?!python_module:%define python_module() python3-%{**}}
-%define skip_python2 1
 Name:           python-Jinja2
 Version:        3.0.1
 Release:        0
@@ -36,8 +36,8 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Babel >= 0.8
 Requires:       python-MarkupSafe >= 0.23
+Recommends:     python-Babel >= 0.8
 # Do not declare buildarch as the tests are arch specific
 #BuildArch:      noarch
 Provides:       python-jinja2 = %{version}-%{release}

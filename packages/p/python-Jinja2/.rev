@@ -441,4 +441,12 @@
     <comment></comment>
     <requestid>905309</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>b8e1684da3a90fb9446edc63ba5efaa8</srcmd5>
+    <version>3.0.1</version>
+    <time>1630787625</time>
+    <user>dimstar_suse</user>
+    <comment>- Babel is not required</comment>
+    <requestid>910440</requestid>
+  </revision>
 </revisionlist>
