@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.05.2
+Version:        1.11.0
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -68,6 +68,7 @@ sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" Quake/host.c
     USE_CODEC_UMX=1 \
     USE_CODEC_MP3=0
 %make_build -C Misc/vq_pak
+strip Quake/vkquake
 
 %install
 install -Dm755 Quake/vkquake %{buildroot}%{_bindir}/%{name}

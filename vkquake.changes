@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Sep  4 15:49:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.11.0
+  * Initial support for Quake 2021 re-release
+  * External vis file support
+- Update to version 1.10.0
+  * Merged protocol extensions from QuakeSpasm-Spiked. This fixes
+    non smooth movement on elevators in certain cases.
+  * Custom HUD client side QuakeC support for Arcane Dimensions
+    (disable with cl_nocsqc 1).
+  * SIMD CPU optimizations from Andrei Drexler - especially helpful
+    in complex levels like ad_tears.
+  * Stencil buffer optimizations for sky rendering reducing
+    overdraw.
+  * Resolution scaling to 1/2 1/4 or 1/8th resolution.
+  * Added support for r_fullbright & r_lightmap.
+  * Implemented full r_showtris support.
+  * Option in menu to set max frame rate.
+  * Higher precision game time and precise frame rate throttling.
+  * Fix exclusive full screen alt+tab issues.
+  * Bumped default heap size to 384MB.
+  Changes from beta1:
+  * Fixed potential issue with Intel GPUs and render scale.
+  * Renamed "filter" to "textures" in menu to make it more clear
+    what the option does.
+  * Fixed missing gun icons in HUD.
+  Changes from beta2:
+  * Fixes ambient sounds.
+  * Multiple memory corruption fixes.
+  * Fix compatibility with some mods.
+- Update to version 1.05.3
+  * Fixed dynamic lights not updating properly.
+  * Added menu options for particles (GL or software style).
+  * Added "exclusive" menu option to fullscreen setting to control
+    VK_EXT_full_screen_exclusive.
+  * Removed a bunch of rendering cvars that do nothing in vkQuake.
+  * Fixed edge case with out of range fog values.
+- Strip binary
+
+-------------------------------------------------------------------
 Fri May  7 16:46:45 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.05.2
