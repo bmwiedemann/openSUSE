@@ -103,4 +103,15 @@
     <comment>version update</comment>
     <requestid>723019</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>3910aa1c5e183f1511428cc1fd5d7ee9</srcmd5>
+    <version>1.7.0</version>
+    <time>1630787528</time>
+    <user>dimstar_suse</user>
+    <comment>- security update
+- added patches
+  fix CVE-2021-3594 [bsc#1187367], invalid pointer initialization may lead to information disclosure (udp)
+  + apr-CVE-2021-3594.patch</comment>
+    <requestid>915695</requestid>
+  </revision>
 </revisionlist>

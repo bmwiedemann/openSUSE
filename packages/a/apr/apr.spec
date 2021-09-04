@@ -1,7 +1,7 @@
 #
 # spec file for package apr
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,8 @@ Patch5:         apr-visibility.patch
 Patch9:         apr-proc-mutex-map-anon.patch
 # prevent random failures of the testsuite (sendfile test)
 Patch10:        apr-test-sendfile-timeout.patch
+# CVE-2021-3594 [bsc#1187367], invalid pointer initialization may lead to information disclosure (udp)
+Patch11:        apr-CVE-2021-3594.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libtool
@@ -86,6 +88,7 @@ that want to make use of APR.
 %patch5 -p1
 %patch9 -p1
 %patch10 -p1
+%patch11 -p1
 
 # Do not put date to doxy content
 sed -i \
