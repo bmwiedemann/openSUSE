@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 28 08:47:58 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.3.4
+  * fix collecting of source rpms when multiple different
+    binary versions were used
+
+-------------------------------------------------------------------
 Mon Mar 15 12:26:31 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.3.3
