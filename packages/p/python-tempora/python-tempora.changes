@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  1 11:24:10 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 4.1.1
+  * Fixed issue where digits were picked up in the unit when
+    adjacent to the last unit.
+- from version 4.1.0
+  * Added support for more formats in ``parse_timedelta``.
+  * #17: ``parse_timedelta`` now supports formats emitted by
+    ``timeit``, including honoring nanoseconds at the
+    microsecond resolution.
+- from version 4.0.2
+  * Refreshed package metadata.
+- Update BuildRequires from setup.py
+
+-------------------------------------------------------------------
 Sun Nov 15 18:07:54 UTC 2020 - Arun Persaud <arun@gmx.de>
 
 - specfile:

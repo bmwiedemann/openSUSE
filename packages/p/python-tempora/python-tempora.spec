@@ -1,7 +1,7 @@
 #
 # spec file for package python-tempora
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-tempora
-Version:        4.0.1
+Version:        4.1.1
 Release:        0
 Summary:        Objects and routines pertaining to date and time (tempora)
 License:        MIT
@@ -27,8 +27,8 @@ URL:            https://github.com/jaraco/tempora
 Source:         https://files.pythonhosted.org/packages/source/t/tempora/tempora-%{version}.tar.gz
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module jaraco.functools >= 1.20}
+BuildRequires:  %{python_module pytest > 4.6}
 BuildRequires:  %{python_module pytest-freezegun}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +38,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-jaraco.functools >= 1.20
 Requires:       python-pytz
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
