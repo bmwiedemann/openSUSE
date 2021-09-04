@@ -1737,4 +1737,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>Plasma 5.22.4 (forwarded request 908666 from Vogtinator)</comment>
     <requestid>908732</requestid>
   </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>00f345e833d6f5d4cfbd9567ceeb1b63</srcmd5>
+    <version>5.22.5</version>
+    <time>1630787559</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 5.22.5. Hasn't finished building yet (forwarded request 915319 from Vogtinator)</comment>
+    <requestid>915397</requestid>
+  </revision>
 </revisionlist>

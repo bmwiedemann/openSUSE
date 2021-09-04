@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 31 19:08:53 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * [kcms/icons] Fix i18n usage
+  * [kcms/icons] Clip ListView in popup
+  * [applets/digitalclock] Let long timezones list scroll (kde#439147)
+  * [applets/digital-clock] Fix header in RTL mode (kde#438083)
+
+-------------------------------------------------------------------
 Tue Jul 27 12:35:05 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.4
