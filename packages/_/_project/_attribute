@@ -351,8 +351,8 @@ products:
     - x86_64
   - opensuse-nginx-image:
     - x86_64
-  - opensuse-openldap-image:
-    - x86_64
+#  - opensuse-openldap-image:
+#    - x86_64
   - opensuse-postfix-image:
     - x86_64
   - opensuse-redis-image:
