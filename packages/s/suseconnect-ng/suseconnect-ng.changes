@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Aug 27 22:46:39 UTC 2021 - jzerebecki@suse.com
+
+- Update to version 0.0.3~git9.19e761b:
+  * Add zypper-migration-plugin to package
+  * Remove unused Error logger
+  * Add missing doc strings to exported vars and funcs
+  * Handle error after products sync api call
+  * Make the CI check gofmt
+
+-------------------------------------------------------------------
 Tue Jul 27 09:02:36 UTC 2021 - jzerebecki@suse.com
 
 - Update to version 0.0.3~git0.dacdd3b:
