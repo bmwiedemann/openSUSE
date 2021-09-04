@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  1 23:41:15 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2021.09.01
+  * smake: The man page now better describes pattern macro
+    replacement.
+- Drop schily-stksz.diff (resolved upstream)
+
+-------------------------------------------------------------------
 Sun Aug 15 16:01:01 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2021.08.14

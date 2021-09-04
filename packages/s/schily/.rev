@@ -410,4 +410,12 @@
 make glibc-2.34 happy</comment>
     <requestid>912307</requestid>
   </revision>
+  <revision rev="44" vrev="44">
+    <srcmd5>10f4176a681866b89033e90db69121ac</srcmd5>
+    <version>unknown</version>
+    <time>1630787526</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.09.01</comment>
+    <requestid>915655</requestid>
+  </revision>
 </revisionlist>
