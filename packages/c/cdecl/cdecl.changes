@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Aug 28 13:35:12 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 10.4
+  * Added support for Microsoft calling conventions, MS __declspec,
+    and __asm keywords, and __m64/__m128 types.
+- Drop unbreak-gnulib.diff (solved upstream)
+
+-------------------------------------------------------------------
 Sun Aug 15 16:06:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 10.3
