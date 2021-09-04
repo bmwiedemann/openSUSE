@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:45:04 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- "rake osc:build" - added a workaround for broken
+  rpmlint/checkbashisms test in Factory to fix stuck builds
+  (bsc#1190094)
+- 1.5.1
+
+-------------------------------------------------------------------
 Wed Mar 24 12:02:40 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Some rake tasks improvements (bsc#1183957):
