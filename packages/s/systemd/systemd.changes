@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Sep  1 11:54:23 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Configure split-usr=true only when %usrmerged is not defined
+
+-------------------------------------------------------------------
+Wed Sep  1 09:56:55 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit 40bda18e346ff45132ccd6f8f8e96de78dcf3470 (merge of v249.4)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/7f23815a706cf2b2df3eac2eb2f8220736b8f427...40bda18e346ff45132ccd6f8f8e96de78dcf3470
+
+-------------------------------------------------------------------
+Mon Aug 23 15:12:10 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Rework the test (sub)package:
+  - it's been renamed into 'systemd-testsuite'
+  - it includes the extended tests too
+  - the relevant commits have been backported to SUSE/v249 so no SUSE
+    specific patch is needed to run the extended tests (see below)
+  - the deps needed by the extended tests have been added
+
+- Import commit 7f23815a706cf2b2df3eac2eb2f8220736b8f427
+
+  ad216581b6 test: if haveged is part of initrd it needs to be installed in the image too
+  088fbb71d0 test: adapt install_pam() for openSUSE
+  4d631c1f0c Revert "test: adapt TEST-13-NSPAWN-SMOKE for SUSE"
+  ef956eb8a2 test: on openSUSE the static linked version of busybox is named "busybox-static"
+  6f7ce633b0 TEST-13-*: in busybox container sleep(1) takes a delay in seconds only
+  278baaa3ec test: don't try to find BUILD_DIR when NO_BUILD is set
+  3bba2f876a test: add support for NO_BUILD=1 on openSUSE
+  d77cbc1b64 test: make busybox TEST-13-only dependency
+
+-------------------------------------------------------------------
+Mon Aug  2 12:54:44 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v249.2 (commit c0bb2fcbc26f6aacde574656159504f263916719)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v249/NEWS for
+  details. 
+
+  - Rebased 0002-rc-local-fix-ordering-startup-for-etc-init.d-boot.lo.patch
+            0012-resolved-create-etc-resolv.conf-symlink-at-runtime.patch
+
+-------------------------------------------------------------------
 Thu Jul 29 13:12:48 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Avoid the error message when udev is updated due to udev being

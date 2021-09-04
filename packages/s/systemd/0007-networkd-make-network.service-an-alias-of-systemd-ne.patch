@@ -1,7 +1,7 @@
-From 0adc3f402aeeadd73a0977ca6a1bc65d3d4201c1 Mon Sep 17 00:00:00 2001
+From 533a1b6996c3d99cf27ae05f0cd8131dcd9bbf30 Mon Sep 17 00:00:00 2001
 From: Pawel Wieczorkiewicz <pwieczorkiewicz@suse.de>
 Date: Tue, 2 Jun 2015 13:33:24 +0000
-Subject: [PATCH 07/12] networkd: make network.service an alias of
+Subject: [PATCH 07/11] networkd: make network.service an alias of
  systemd-networkd.service
 
 NetworkManager and wicked does this already. This is needed by yast2
@@ -13,10 +13,10 @@ and other parts of the system.
  1 file changed, 1 insertion(+)
 
 diff --git a/units/systemd-networkd.service.in b/units/systemd-networkd.service.in
-index 2673146841..083a35b912 100644
+index ffa45ba049..6a5d0dea3c 100644
 --- a/units/systemd-networkd.service.in
 +++ b/units/systemd-networkd.service.in
-@@ -50,6 +50,7 @@ User=systemd-network
+@@ -53,6 +53,7 @@ User=systemd-network
  
  [Install]
  WantedBy=multi-user.target

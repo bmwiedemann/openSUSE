@@ -26,7 +26,8 @@
 ##### WARNING: please do not edit this auto generated spec file. Use the systemd.spec! #####
 %define mini -mini
 %define min_kernel_version 4.5
-%define suse_version +suse.45.g73e9e6fb84
+%define suse_version +suse.32.g40bda18e34
+%define _testsuitedir /usr/lib/systemd/tests
 
 %bcond_with     gnuefi
 %if 0%{?bootstrap}
@@ -39,7 +40,7 @@
 %bcond_with     resolved
 %bcond_with     sysvcompat
 %bcond_with     experimental
-%bcond_with     tests
+%bcond_with     testsuite
 %else
 %bcond_without  coredump
 %ifarch %{ix86} x86_64
@@ -53,12 +54,12 @@
 %bcond_without  resolved
 %bcond_without  sysvcompat
 %bcond_without  experimental
-%bcond_without  tests
+%bcond_without  testsuite
 %endif
 
 Name:           systemd-mini
 URL:            http://www.freedesktop.org/wiki/Software/systemd
-Version:        248.6
+Version:        249.4
 Release:        0
 Summary:        A System and Session Manager
 License:        LGPL-2.1-or-later
@@ -98,6 +99,7 @@ BuildRequires:  libmount-devel >= 2.27.1
 BuildRequires:  m4
 BuildRequires:  meson >= 0.43
 BuildRequires:  pam-devel
+BuildRequires:  python3-jinja2
 # regenerate_initrd_post macro is expanded during build, hence this
 # BR. Also this macro was introduced since version 12.4.
 BuildRequires:  suse-module-tools >= 12.4
@@ -487,22 +489,77 @@ This package contains systemd-journal-gatewayd,
 systemd-journal-remote, and systemd-journal-upload.
 %endif
 
-%if %{with tests}
-%package tests
-Summary:        Unit tests for systemd
+%if %{with testsuite}
+%package testsuite
+Summary:        Testsuite for systemd
+# Unit tests dependencies
 License:        LGPL-2.1-or-later
-Requires:       %{name} = %{version}-%{release}
 Recommends:     python3
 Recommends:     python3-colorama
 # Optional dep for mkfs.vfat needed by test-loop-block (otherwise skipped)
 Recommends:     dosfstools
+# The following deps on libs are for test-dlopen-so whereas the
+# pkgconfig ones are used by test-funtions to find the libs on the
+# host and install them in the image, see install_missing_libraries()
+# for details.
+%if %{with resolved}
+Requires:       libidn2 pkgconfig(libidn2)
+%endif
+%if %{with experimental}
+Requires:       libpwquality1 pkgconfig(pwquality)
+Requires:       libqrencode4  pkgconfig(libqrencode)
+%endif
+Requires:       %{name} = %{version}-%{release}
+Requires:       attr
+Requires:       busybox-static
+Requires:       cryptsetup
+Requires:       dhcp-client
+Requires:       dosfstools
+Requires:       libcap-progs
+Requires:       lz4
+Requires:       net-tools-deprecated
+Requires:       qemu-kvm
+Requires:       quota
+Requires:       socat
+Requires:       squashfs
+Requires:       systemd-container
+Requires:       libfido2      pkgconfig(libfido2)
+Requires:       libtss2-esys0 pkgconfig(tss2-esys)
+Requires:       libtss2-mu0   pkgconfig(tss2-mu)
+Requires:       libtss2-rc0   pkgconfig(tss2-rc)
+%if %{with coredump}
+Requires:       systemd-coredump
+%endif
+%if %{with experimental}
+Requires:       systemd-experimental
+%endif
+%if %{with journal_remote}
+Requires:       systemd-journal-remote
+%endif
+%if %{with portabled}
+Requires:       systemd-portable
+%endif
+Requires:       xz
 
-%description tests
-This package contains the unit tests used to check various internal
-functions used by systemd and all its components.
+%description testsuite
+This package contains the unit tests as well as the extended
+testsuite. The unit tests are used to check various internal functions
+used by systemd whereas the extended testsuite is used to test various
+functionalities of systemd and all its components.
 
-The python script /usr/lib/systemd/tests/run-unit-tests.py can be used
-to run all unit tests at once.
+Note that the extended testsuite only works with UID=0.
+
+Run the following python script to run all unit tests at once:
+$ %{_testsuitedir}/run-unit-tests.py
+
+To run the full extended testsuite do the following:
+$ NO_BUILD=1 %{_testsuitedir}/test/run-integration-tests.sh
+
+Or to run one specific integration test:
+$ NO_BUILD=1 make -C %{_testsuitedir}/test/TEST-01-BASIC clean setup run
+
+For more details on the available options to run the extended
+testsuite, please refer to %{_testsuitedir}/test/README.testsuite.
 %endif
 
 %if %{with experimental}
@@ -558,7 +615,9 @@ Have fun with these services at your own risk.
         -Dversion-tag=%{version}%{suse_version} \
         -Ddocdir=%{_docdir}/systemd \
         -Drootprefix=/usr \
+%if !0%{?usrmerged}
         -Dsplit-usr=true \
+%endif
         -Dsplit-bin=true \
         -Dsystem-uid-max=499 \
         -Dsystem-gid-max=499 \
@@ -625,7 +684,7 @@ Have fun with these services at your own risk.
         -Dsysvinit-path= \
         -Dsysvrcnd-path= \
 %endif
-%if %{with tests}
+%if %{with testsuite}
         -Dtests=unsafe \
         -Dinstall-tests=true \
 %else
@@ -836,6 +895,10 @@ cat %{S:14} >>%{buildroot}%{_datarootdir}/systemd/kbd-model-map
 # by default (bsc#1109252).
 rm -f %{buildroot}%{_unitdir}/systemd-journald-audit.socket
 rm -f %{buildroot}%{_unitdir}/sockets.target.wants/systemd-journald-audit.socket
+
+%if %{with testsuite}
+cp -a test %{buildroot}%{_testsuitedir}/
+%endif
 
 %if ! 0%{?bootstrap}
 %find_lang systemd
@@ -1759,9 +1822,11 @@ fi
 %{_mandir}/man*/systemd-portabled*
 %endif
 
-%if %{with tests}
-%files tests
-%{_prefix}/lib/systemd/tests
+%if %{with testsuite}
+%files testsuite
+%defattr(-,root,root)
+%{_testsuitedir}
+%doc %{_testsuitedir}/test/README.testsuite
 %endif
 
 %if %{with experimental}

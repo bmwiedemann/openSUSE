@@ -1,7 +1,7 @@
-From 8e95d5534e9a577529ac49aaec610e6ceefec0b9 Mon Sep 17 00:00:00 2001
+From ae4741127dc0ae575d13b8a7b201207da6167517 Mon Sep 17 00:00:00 2001
 From: Robert Milasan <rmilasan@suse.com>
 Date: Sat, 12 Jul 2014 14:20:36 +0200
-Subject: [PATCH 05/12] udev: create default symlinks for primary cd_dvd drive
+Subject: [PATCH 05/11] udev: create default symlinks for primary cd_dvd drive
 
 Imported from SLE12-SP1, commit 4f8bacfbffd7049608b5076.
 

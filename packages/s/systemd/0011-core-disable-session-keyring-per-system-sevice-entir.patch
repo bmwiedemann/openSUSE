@@ -1,7 +1,7 @@
-From e5b3d1d00bbdbcb168889699c462bf01b58062a5 Mon Sep 17 00:00:00 2001
+From 67f3fa5aa2781d42c809da9303f81b28544824d8 Mon Sep 17 00:00:00 2001
 From: Franck Bui <fbui@suse.com>
 Date: Thu, 6 Jul 2017 15:48:10 +0200
-Subject: [PATCH 11/12] core: disable session keyring per system sevice
+Subject: [PATCH 10/11] core: disable session keyring per system sevice
  entirely for now
 
 Until PAM module "pam_keyinit" is fully integrated in SUSE's PAM stack, this
@@ -27,10 +27,10 @@ https://github.com/systemd/systemd/pull/6286
  1 file changed, 3 insertions(+)
 
 diff --git a/src/core/execute.c b/src/core/execute.c
-index 2a4840a3a9..aefd4eaff1 100644
+index 2a337b55a2..b5a1a3b6e5 100644
 --- a/src/core/execute.c
 +++ b/src/core/execute.c
-@@ -2779,6 +2779,9 @@ static int setup_keyring(
+@@ -3356,6 +3356,9 @@ static int setup_keyring(
          assert(context);
          assert(p);
  
