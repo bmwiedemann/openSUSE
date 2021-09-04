@@ -1,5 +1,5 @@
 #
-# spec file for package python-debugpy
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -39,6 +39,8 @@ URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/%{modname}/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE pydevd-openSUSE-attach-autoarch.patch -- support more than intel: use rpmbuild compiled attach library and let gdb figure out the architecture automatically. code@bnavigator.de
 Patch0:         pydevd-openSUSE-attach-autoarch.patch
+# PATCH-FIX-UPSTREAM gh#microsoft/debugpy#716
+Patch1:         correct-pthread-library-name.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}

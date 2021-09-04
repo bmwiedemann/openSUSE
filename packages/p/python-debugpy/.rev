@@ -7,4 +7,13 @@
     <comment>new requirement of ipykernel 6</comment>
     <requestid>908015</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>cd9c019c5e7a08992dec18bb04b39e2d</srcmd5>
+    <version>1.3.0</version>
+    <time>1630787529</time>
+    <user>dimstar_suse</user>
+    <comment>- Add correct-pthread-library-name.patch:
+  * Look for the correct pthread library.</comment>
+    <requestid>915711</requestid>
+  </revision>
 </revisionlist>
