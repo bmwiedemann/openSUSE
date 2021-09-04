@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 31 11:15:52 UTC 2021 - David Diaz <dgonzalez@suse.com>
+
+- Auto client does not crash when trying to import from an
+  empty add-on section (bsc#1189154).
+- 4.4.2
+
+-------------------------------------------------------------------
 Thu Aug 19 16:00:54 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Improve UX by using a less misleading message when
