@@ -1153,4 +1153,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>- Raise the minimum disk space limit.</comment>
     <requestid>914378</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>fec9b89a0188fbc648b9a41ec507bc58</srcmd5>
+    <version>21.08.1</version>
+    <time>1630787712</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.1</comment>
+    <requestid>916015</requestid>
+  </revision>
 </revisionlist>
