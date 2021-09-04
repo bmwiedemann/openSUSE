@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 18 14:29:43 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop --with-pic (no effect with --disable-static)
+- Trim old rpm macros/constructs
+
+-------------------------------------------------------------------
 Tue Jun 19 10:32:17 UTC 2018 - werner@suse.de
 
 - Update to new upstream release 1.6.3

@@ -71,4 +71,12 @@
 - Port our patches to new version</comment>
     <requestid>617712</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>eafb3ad4bd0b0078e97b1abfcad2311b</srcmd5>
+    <version>1.6.3</version>
+    <time>1630787529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915704</requestid>
+  </revision>
 </revisionlist>

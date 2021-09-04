@@ -1,7 +1,7 @@
 #
 # spec file for package libXaw3d
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,7 +22,7 @@ Release:        0
 Summary:        The 3D Athena Widget Set
 License:        MIT
 Group:          Development/Libraries/C and C++
-Url:            http://xorg.freedesktop.org/
+URL:            http://xorg.freedesktop.org/
 
 #Git-Clone:	git://anongit.freedesktop.org/xorg/lib/libXaw3d
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXaw3d/
@@ -37,7 +37,6 @@ Patch4:         xaw3d-3dlabel.patch
 Patch5:         xaw3d-fontset.patch
 Patch6:         xaw3d-elf.patch
 Patch7:         xaw3d.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf >= 2.60
 BuildRequires:  automake
 BuildRequires:  bison
@@ -131,14 +130,7 @@ If any problems arise using or starting X Window System programs,
 remove this package.
 
 %prep
-%setup -q
-%patch1 -p1 -b .p1
-%patch2 -p1 -b .p2
-%patch3 -p1 -b .p3
-%patch4 -p1 -b .p4
-%patch5 -p1 -b .p5
-%patch6 -p1 -b .p6
-%patch7 -p1 -b .p7
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -147,13 +139,12 @@ autoreconf -fi
 	--enable-multiplane-bitmaps			\
 	--enable-gray-stipples				\
 	--enable-arrow-scrollbars			\
-	--with-pic					\
 	--with-gnu-ld					\
 
-make %{?_smp_mflags} V=1
+%make_build
 
 %install
-make install DESTDIR=%buildroot
+%make_install
 find %{buildroot} -type f -name "*.la" -print -delete
 
 # Copy README here and then gobble it up via %%doc
@@ -161,7 +152,7 @@ mkdir -p %{buildroot}%_docdir/xaw3dd
 cp %_sourcedir/README.SuSE %{buildroot}/%_docdir/xaw3dd/README.SUSE
 ln -s %_docdir/xaw3dd/README.SUSE %{buildroot}%_libdir/Xaw3d/NOTE
 
-# Create /etc/ld.so.conf.d/xaw3dd.conf                                          
+# Create /etc/ld.so.conf.d/xaw3dd.conf
 mkdir -p %{buildroot}%_sysconfdir/ld.so.conf.d
 echo %_libdir/Xaw3d > %{buildroot}%_sysconfdir/ld.so.conf.d/xaw3dd.conf
 
@@ -175,26 +166,21 @@ echo %_libdir/Xaw3d > %{buildroot}%_sysconfdir/ld.so.conf.d/xaw3dd.conf
 %postun -n xaw3dd -p /sbin/ldconfig
 
 %files -n libXaw3d6
-%defattr(-,root,root)
 %_libdir/libXaw3d.so.6*
 
 %files -n libXaw3d7
-%defattr(-,root,root)
 %_libdir/libXaw3d.so.7*
 
 %files -n libXaw3d8
-%defattr(-,root,root)
 %_libdir/libXaw3d.so.8*
 
 %files devel
-%defattr(-,root,root)
 %_includedir/X11/Xaw3d/
 %_libdir/libXaw3d.so
 %_libdir/pkgconfig/xaw3d.pc
 %_docdir/%name/
 
 %files -n xaw3dd
-%defattr(-,root,root)
 %config %_sysconfdir/ld.so.conf.d/xaw3dd.conf
 %_libdir/Xaw3d/
 %doc %_libdir/Xaw3d/NOTE
