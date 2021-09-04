@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:39:34 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Fix several memory leaks
+  * Fix assert with Qt debug build in QWidget destructor
+  * Provide sanitizer build option
+
+-------------------------------------------------------------------
 Fri Aug  6 09:42:46 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
