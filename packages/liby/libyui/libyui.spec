@@ -19,7 +19,7 @@
 Name:           libyui
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.2.15
+Version:        4.2.16
 Release:        0
 
 %define         so_version 15
@@ -54,6 +54,7 @@ Obsoletes:      yast2-libyui < 2.42.0
 Requires:       yui_backend = %{so_version}
 # Force removal of old -doc packages (bsc#1184363)
 Obsoletes:      %{name}-doc < %{version}
+Provides:       %{name}-doc = %{version}
 
 %description -n %{bin_name}
 This is the user interface engine that provides the abstraction from

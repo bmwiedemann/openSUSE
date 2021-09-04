@@ -557,4 +557,14 @@ build/package/libyui.spec:Version:        3.0.13</comment>
     <comment>submit new version 4.2.15</comment>
     <requestid>910528</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>acdc36e370bb0bc6c858749df9000b08</srcmd5>
+    <version>4.2.16</version>
+    <time>1630787518</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed using an uninitialized variable, in some situations
+  the patch category could be missing in the Qt UI (bsc#1174390)
+- 4.2.16</comment>
+    <requestid>915517</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 Name:           libyui-qt-graph
 
 # DO NOT manually bump the version here; instead, use   rake version:bump
-Version:        4.2.15
+Version:        4.2.16
 Release:        0
 
 %define         so_version 15
@@ -60,6 +60,7 @@ Provides:       yast2-qt-graph = 2.46.0
 Obsoletes:      yast2-qt-graph < 2.46.0
 # Force removal of old -doc packages (bsc#1184363)
 Obsoletes:      %{name}-doc < %{version}
+
 
 %description -n %{bin_name}
 This package contains the Qt graph component for libyui.
