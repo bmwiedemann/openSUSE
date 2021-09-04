@@ -1,12 +1,12 @@
 [qemu-x86 package document]
 
-POST SLES 15 SP3 QEMU/KVM RELATED SUPPORT STATEMENTS
-====================================================
+SLES 15 SP4 QEMU/KVM RELATED SUPPORT STATEMENTS
+===============================================
 
 Overview
 --------
 
-  The QEMU based packages included with SLES 15 SP3 provide a large variety of
+  The QEMU based packages included with SLES 15 SP4 provide a large variety of
   features, from the very latest customer requests to features of questionable
   quality or value. The linux kernel includes components which contribute KVM
   virtualization features as well. This document was created to assist the user
@@ -82,7 +82,7 @@ Major QEMU/KVM Supported Features
 
 - Guest execution state may be "moved" in both time (save/restore) and space
   (static and live migration). These migrations or save/restore operations can
-  take place either from certain prior SLES versioned hosts to a SLES 15 SP3
+  take place either from certain prior SLES versioned hosts to a SLES 15 SP4
   host or between hosts of the same version. Certain other restrictions also
   apply.
 
@@ -133,7 +133,7 @@ Major QEMU/KVM Supported Features
 
 - Portions of the host file system may be shared with a guest by using virtFS.
 
-- A guest "agent" is available for SLES 15 SP3 KVM guests via the
+- A guest "agent" is available for SLES 15 SP4 KVM guests via the
   qemu-guest-agent package. This allows some introspection and control of the
   guest OS environment from the host.
 
@@ -162,9 +162,9 @@ Noteworthy QEMU/KVM Unsupported Features
 Deprecated, Superseded, Modified and Dropped Features
 -----------------------------------------------------
 
-- http://wiki.qemu-project.org/Features/LegacyRemoval and
-  https://qemu-project.gitlab.io/qemu/system/deprecated.html
-  These websites track feature deprecation and removal at the upstream
+- https://qemu-project.gitlab.io/qemu/about/deprecated.html and
+  https://qemu-project.gitlab.io/qemu/about/removed-features.html
+  These websites track features deprecation and removal at the upstream
   development level. Our qemu package inherits this community direction, but be
   aware that we can and will deviate as needed. Those deviations and additional
   information can be found in this section. Feature deprecation as well as
@@ -182,6 +182,10 @@ Deprecated, Superseded, Modified and Dropped Features
 - The use of ",boot=on" for virtio disks is no longer needed since the bios used
   supports the virtio block interface directly. In fact, its usage may cause
   problems, and is now considered deprecated.
+
+- The previously non-persistent backing file with pmem=on is deprecated. Modify
+  VM configuration to set pmem=off to continue using fake NVDIMM with backing
+  file or move backing file to NVDIMM storage and keep pmem=on.
 
 - The use of "?" as a parameter to "-cpu", "-soundhw", "-device", "-M",
   "-machine" and "-d" is now considered deprecated. Use "help"
@@ -209,6 +213,8 @@ Deprecated, Superseded, Modified and Dropped Features
   versions.
 
 - These previously supported command line options are now considered deprecated:
+  -display sdl,window_close= (use -display sdl,window-close)
+  -no-quit (use -display ...,window-close=off)
   -M option kernel-irqchip=off
   -chardev tty (use serial name instead)
   -chardev paraport (use parallel name instead)
@@ -309,6 +315,7 @@ Deprecated, Superseded, Modified and Dropped Features
   <previously mentioned items have been moved to another category>
 
 - These previously supported QMP commands are no longer recognized:
+  info cpustats
   block_passwd
   change (use blockdev-change-medium or change-vnc-password instead)
   cpu-add (use device_add instead)
@@ -323,6 +330,8 @@ Deprecated, Superseded, Modified and Dropped Features
   change
 
 - These previously supported monitor commands are no longer recognized:
+  info cpustats
+  block_passwd ...
   block_passwd
   cpu-add
   cpu_set
@@ -392,8 +401,8 @@ QEMU Command-Line and Monitor Syntax and Support
   better functionality and usability going forward. In some cases existing
   problems or even bugs in older interfaces cannot be fixed due to functional
   expectations, but are resolved in the newer interface or option.
-  This advice includes moving to the most recent machine type (eg pc-i440fx-5.2
-  instead of pc-i440fx-4.2) if possible.
+  This advice includes moving to the most recent machine type (eg pc-i440fx-6.1
+  instead of pc-i440fx-6.0) if possible.
 
 - The following command line options are supported:
   -accel ...
@@ -481,17 +490,19 @@ QEMU Command-Line and Monitor Syntax and Support
   -m ...
   -M
 
-     [help|?|none|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|pc-i440fx-2.3|
+     [help|none|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|pc-i440fx-2.3|
      pc-i440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|pc-i440fx-3.1|pc-i440fx-4.2|
-     pc-i440fx-5.2|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|
-     pc-q35-5.2|xenfv|xenfv-4.2]
+     pc-i440fx-5.2|pc-i440fx-6.0|pc-i440fx-6.1|pc-q35-2.6|pc-q35-2.9|
+     pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|pc-q35-5.2|pc-q35-6.0|pc-q35-6.1|
+     xenfv|xenfv-4.2]
 
   -machine
 
-           [help|?|none|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|
+           [help|none|pc-i440fx-1.4|pc-i440fx-1.7|pc-i440fx-2.0|
            pc-i440fx-2.3|pc-440fx-2.6|pc-i440fx-2.9|pc-i440fx-2.11|
-           pc-i440fx-3.1|pc-i440fx-4.2|pc-i440fx-5.2|pc-q35-2.6|pc-q35-2.9|
-           pc-q35-2.11|pc-q35-3.1|pc-q35-4.2|pc-q35-5.2|xenfv|xenifv-4.2]
+           pc-i440fx-3.1|pc-i440fx-4.2|pc-i440fx-5.2|pc-i440fx-6.0|
+           pc-i440fx-6.1|pc-q35-2.6|pc-q35-2.9|pc-q35-2.11|pc-q35-3.1|
+           pc-q35-4.2|pc-q35-5.2|pc-q35-6.0|pc-q35-6.1|xenfv|xenifv-4.2]
 
   -mem-path ...
   -mem-prealloc
@@ -863,8 +874,8 @@ QEMU Command-Line and Monitor Syntax and Support
            pc-q35-4.1|pc-q35-5.0|pc-q35-5.1|pc-q35-6.0]
 
   -mtdblock file
-  -net [dump|socket|vde] ...
-  -netdev [dump|hubport|l2tpv3|socket|vde] ...
+  -net [socket|vde] ...
+  -netdev [hubport|l2tpv3|socket|vde] ...
   -no-kvm
   -numa node ...
   -option-rom ...

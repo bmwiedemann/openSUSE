@@ -11,7 +11,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+)
 
 diff --git a/pc-bios/s390-ccw/netboot.mak b/pc-bios/s390-ccw/netboot.mak
-index 577c023afe3db17ada307b2abbcc..cea8fb8532ddccda2390d936c93f 100644
+index 68b4d7edcb2c8b10e162a0872e27..1839add9eea2af542b01b5591121 100644
 --- a/pc-bios/s390-ccw/netboot.mak
 +++ b/pc-bios/s390-ccw/netboot.mak
 @@ -54,6 +54,7 @@ LIBNETOBJS := args.o dhcp.o dns.o icmpv6.o ipv6.o tcp.o udp.o bootp.o \

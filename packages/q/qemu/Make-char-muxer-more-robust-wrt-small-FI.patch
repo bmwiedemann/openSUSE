@@ -29,7 +29,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  5 files changed, 22 insertions(+)
 
 diff --git a/chardev/char-fe.c b/chardev/char-fe.c
-index 474715c5a9257ae9e9e286d2e02d..eeb1b3e0b548027e2bcda0c272d5 100644
+index 7789f7be9c873928be895d618e98..c7556602c77787357c802553ab91 100644
 --- a/chardev/char-fe.c
 +++ b/chardev/char-fe.c
 @@ -21,6 +21,7 @@
@@ -41,7 +41,7 @@ index 474715c5a9257ae9e9e286d2e02d..eeb1b3e0b548027e2bcda0c272d5 100644
  #include "qemu/error-report.h"
  #include "qapi/error.h"
 diff --git a/chardev/char-mux.c b/chardev/char-mux.c
-index 72beef29d21c3bed1ffe6e48c7e7..6e5a3fb272c6b02e900b9775bad6 100644
+index 5baf4190108366803a1a0fa26fb7..2aa164c2ecac8f8a843cec9fa1e1 100644
 --- a/chardev/char-mux.c
 +++ b/chardev/char-mux.c
 @@ -22,6 +22,7 @@
@@ -52,7 +52,7 @@ index 72beef29d21c3bed1ffe6e48c7e7..6e5a3fb272c6b02e900b9775bad6 100644
  #include "qemu/osdep.h"
  #include "qapi/error.h"
  #include "qemu/module.h"
-@@ -198,6 +199,17 @@ static void mux_chr_accept_input(Chardev *chr)
+@@ -197,6 +198,17 @@ static void mux_chr_accept_input(Chardev *chr)
          be->chr_read(be->opaque,
                       &d->buffer[m][d->cons[m]++ & MUX_BUFFER_MASK], 1);
      }
@@ -70,7 +70,7 @@ index 72beef29d21c3bed1ffe6e48c7e7..6e5a3fb272c6b02e900b9775bad6 100644
  }
  
  static int mux_chr_can_read(void *opaque)
-@@ -332,6 +344,10 @@ static void qemu_chr_open_mux(Chardev *chr,
+@@ -331,6 +343,10 @@ static void qemu_chr_open_mux(Chardev *chr,
      }
  
      d->focus = -1;
@@ -82,7 +82,7 @@ index 72beef29d21c3bed1ffe6e48c7e7..6e5a3fb272c6b02e900b9775bad6 100644
       * set of muxes
       */
 diff --git a/chardev/char.c b/chardev/char.c
-index 398f09df19cd8567fa1ea96ee4d4..5778bd7666f8ff053269bf5b6b81 100644
+index 4595a8d430bf99537367b8d26379..d9d918f905a584f8cf97fb6ee1de 100644
 --- a/chardev/char.c
 +++ b/chardev/char.c
 @@ -22,6 +22,7 @@

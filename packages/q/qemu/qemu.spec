@@ -93,8 +93,8 @@
 
 %bcond_with system_membarrier
 
-%define qemuver 6.0.0
-%define srcver  6.0.0
+%define qemuver 6.1.0
+%define srcver  6.1.0
 %define sbver   1.14.0_0_g155821a
 %define srcname qemu
 Name:           qemu%{name_suffix}
@@ -174,64 +174,8 @@ Patch00038:     Revert-roms-efirom-tests-uefi-test-tools.patch
 Patch00039:     Makefile-Don-t-check-pc-bios-as-pre-requ.patch
 Patch00040:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00041:     usb-Help-compiler-out-to-avoid-a-warning.patch
-Patch00042:     module-for-virtio-gpu-pre-load-module-to.patch
-Patch00043:     qom-handle-case-of-chardev-spice-module-.patch
-Patch00044:     doc-add-our-support-doc-to-the-main-proj.patch
-Patch00045:     ui-Fix-memory-leak-in-qemu_xkeymap_mappi.patch
-Patch00046:     hw-rx-rx-gdbsim-Do-not-accept-invalid-me.patch
-Patch00047:     monitor-qmp-fix-race-on-CHR_EVENT_CLOSED.patch
-Patch00048:     vhost-user-blk-Fail-gracefully-on-too-la.patch
-Patch00049:     virtiofsd-Fix-side-effect-in-assert.patch
-Patch00050:     sockets-update-SOCKET_ADDRESS_TYPE_FD-li.patch
-Patch00051:     virtio-blk-Fix-rollback-path-in-virtio_b.patch
-Patch00052:     hw-block-nvme-consider-metadata-read-aio.patch
-Patch00053:     vhost-user-blk-Make-sure-to-set-Error-on.patch
-Patch00054:     vhost-user-blk-Don-t-reconnect-during-in.patch
-Patch00055:     vhost-user-blk-Get-more-feature-flags-fr.patch
-Patch00056:     virtio-Fail-if-iommu_platform-is-request.patch
-Patch00057:     vhost-user-blk-Check-that-num-queues-is-.patch
-Patch00058:     vfio-ccw-Permit-missing-IRQs.patch
-Patch00059:     vhost-user-gpu-fix-memory-disclosure-in-.patch
-Patch00060:     vhost-user-gpu-fix-resource-leak-in-vg_r.patch
-Patch00061:     vhost-user-gpu-fix-memory-leak-in-vg_res.patch
-Patch00062:     vhost-user-gpu-fix-memory-leak-while-cal.patch
-Patch00063:     vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch
-Patch00064:     vhost-user-gpu-fix-leak-in-virgl_resourc.patch
-Patch00065:     vhost-user-gpu-fix-OOB-write-in-virgl_cm.patch
-Patch00066:     vhost-user-gpu-abstract-vg_cleanup_mappi.patch
-Patch00067:     target-sh4-Return-error-if-CPUClass-get_.patch
-Patch00068:     tcg-arm-Fix-tcg_out_op-function-signatur.patch
-Patch00069:     x86-acpi-use-offset-instead-of-pointer-w.patch
-Patch00070:     linux-user-aarch64-Enable-hwcap-for-RND-.patch
-Patch00071:     target-i386-Exit-tb-after-wrmsr.patch
-Patch00072:     vl-allow-not-specifying-size-in-m-when-u.patch
-Patch00073:     qemu-config-load-modules-when-instantiat.patch
-Patch00074:     hmp-Fix-loadvm-to-resume-the-VM-on-succe.patch
-Patch00075:     qemu-config-parse-configuration-files-to.patch
-Patch00076:     vl-plumb-keyval-based-options-into-readc.patch
-Patch00077:     vl-plug-object-back-into-readconfig.patch
-Patch00078:     vhost-vdpa-don-t-initialize-backend_feat.patch
-Patch00079:     vl-Fix-an-assert-failure-in-error-path.patch
-Patch00080:     qemu-config-use-qemu_opts_from_qdict.patch
-Patch00081:     runstate-Initialize-Error-to-NULL.patch
-Patch00082:     tcg-sparc-Fix-temp_allocate_frame-vs-spa.patch
-Patch00083:     tcg-Allocate-sufficient-storage-in-temp_.patch
-Patch00084:     hw-block-nvme-align-with-existing-style.patch
-Patch00085:     hw-nvme-fix-missing-check-for-PMR-capabi.patch
-Patch00086:     hw-nvme-fix-pin-based-interrupt-behavior.patch
-Patch00087:     hw-rdma-Fix-possible-mremap-overflow-in-.patch
-Patch00088:     pvrdma-Ensure-correct-input-on-ring-init.patch
-Patch00089:     pvrdma-Fix-the-ring-init-error-flow-CVE-.patch
-Patch00090:     hw-pci-host-q35-Ignore-write-of-reserved.patch
-Patch00091:     block-nvme-Fix-VFIO_MAP_DMA-failed-No-sp.patch
-Patch00092:     hw-net-can-sja1000-fix-buff2frame_bas-an.patch
-Patch00093:     usbredir-fix-free-call.patch
-Patch00094:     usb-redir-avoid-dynamic-stack-allocation.patch
-Patch00095:     usb-limit-combined-packets-to-1-MiB-CVE-.patch
-Patch00096:     hw-usb-host-stub-Remove-unused-header.patch
-Patch00097:     hw-usb-Do-not-build-USB-subsystem-if-not.patch
-Patch00098:     usb-hid-avoid-dynamic-stack-allocation.patch
-Patch00099:     usb-mtp-avoid-dynamic-stack-allocation.patch
+Patch00042:     qom-handle-case-of-chardev-spice-module-.patch
+Patch00043:     doc-add-our-support-doc-to-the-main-proj.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -403,6 +347,7 @@ Recommends:     qemu-hw-display-qxl
 Recommends:     qemu-hw-display-virtio-gpu
 Recommends:     qemu-hw-display-virtio-gpu-pci
 Recommends:     qemu-hw-display-virtio-vga
+Recommends:     qemu-hw-usb-host
 Recommends:     qemu-hw-usb-redirect
 Recommends:     qemu-hw-usb-smartcard
 Recommends:     qemu-ui-gtk
@@ -442,6 +387,7 @@ Suggests:       qemu-skiboot
 Suggests:       qemu-lang
 Suggests:       qemu-microvm
 Suggests:       qemu-vhost-user-gpu
+Suggests:       qemu-accel-qtest
 Obsoletes:      qemu-audio-oss < %{qemuver}
 Obsoletes:      qemu-audio-sdl < %{qemuver}
 Obsoletes:      qemu-ui-sdl < %{qemuver}
@@ -463,6 +409,7 @@ Group:          System/Emulators/PC
 Version:        %{qemuver}
 Release:        0
 Requires:       %name = %{qemuver}
+Requires:       qemu-accel-tcg-x86
 Requires:       qemu-ipxe
 Requires:       qemu-seabios
 Requires:       qemu-sgabios
@@ -534,8 +481,8 @@ Recommends:     qemu-vgabios
 %{generic_qemu_description}
 
 This package provides some lesser used emulations, including alpha, m68k,
-mips, moxie, sparc, and xtensa. (The term "extra" is juxtapositioned against
-more popular QEMU packages which are dedicated to a single architecture.)
+mips, sparc, and xtensa. (The term "extra" is juxtapositioned against more
+popular QEMU packages which are dedicated to a single architecture.)
 
 %if %{legacy_qemu_kvm}
 %package kvm
@@ -808,6 +755,17 @@ Provides:       %name:%_datadir/%name/forsplits/03
 %description hw-usb-smartcard
 This package contains a modules for USB smartcard support for QEMU.
 
+%package hw-usb-host
+Summary:        USB passthrough driver support for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Provides:       %name:%_datadir/%name/forsplits/14
+%{qemu_module_conflicts}
+
+%description hw-usb-host
+This package contains a modules for USB passthrough driver for QEMU.
+
 %package ui-curses
 Summary:        Curses based UI support for QEMU
 Group:          System/Emulators/PC
@@ -1016,6 +974,34 @@ merges anonymous (private) pages (not pagecache ones).
 
 This package provides a service file for starting and stopping KSM.
 
+%package accel-tcg-x86
+Summary:        TCG accelerator for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Provides:       %name:%_datadir/%name/forsplits/15
+%{qemu_module_conflicts}
+
+%description accel-tcg-x86
+TCG is the QEMU binary translator, responsible for converting from target to
+host instruction set.
+
+This package provides the TCG accelerator for QEMU.
+
+%package accel-qtest
+Summary:        QTest accelerator for QEMU
+Group:          System/Emulators/PC
+Version:        %{qemuver}
+Release:        0
+Provides:       %name:%_datadir/%name/forsplits/16
+%{qemu_module_conflicts}
+
+%description accel-qtest
+QTest is a device emulation testing framework. It is useful to test device
+models.
+
+This package provides QTest accelerator for testing QEMU.
+
 # above section is for qemu
 %else
 BuildRequires:  bc
@@ -1032,6 +1018,8 @@ BuildRequires:  qemu-block-nfs = %{qemuver}
 %if 0%{?with_rbd}
 BuildRequires:  qemu-block-rbd = %{qemuver}
 %endif
+BuildRequires:  qemu-accel-qtest = %{qemuver}
+BuildRequires:  qemu-accel-tcg-x86 = %{qemuver}
 BuildRequires:  qemu-block-ssh = %{qemuver}
 BuildRequires:  qemu-chardev-baum = %{qemuver}
 BuildRequires:  qemu-chardev-spice = %{qemuver}
@@ -1039,6 +1027,7 @@ BuildRequires:  qemu-extra = %{qemuver}
 BuildRequires:  qemu-guest-agent = %{qemuver}
 BuildRequires:  qemu-hw-display-qxl = %{qemuver}
 BuildRequires:  qemu-hw-display-virtio-gpu = %{qemuver}
+BuildRequires:  qemu-hw-usb-host = %{qemuver}
 BuildRequires:  qemu-hw-usb-redirect = %{qemuver}
 BuildRequires:  qemu-hw-usb-smartcard = %{qemuver}
 BuildRequires:  qemu-ipxe = 1.0.0+
@@ -1118,65 +1107,9 @@ This package records qemu testsuite results and represents successful testing.
 %patch00041 -p1
 %endif
 %patch00042 -p1
-%patch00043 -p1
 %if %{legacy_qemu_kvm}
-%patch00044 -p1
+%patch00043 -p1
 %endif
-%patch00045 -p1
-%patch00046 -p1
-%patch00047 -p1
-%patch00048 -p1
-%patch00049 -p1
-%patch00050 -p1
-%patch00051 -p1
-%patch00052 -p1
-%patch00053 -p1
-%patch00054 -p1
-%patch00055 -p1
-%patch00056 -p1
-%patch00057 -p1
-%patch00058 -p1
-%patch00059 -p1
-%patch00060 -p1
-%patch00061 -p1
-%patch00062 -p1
-%patch00063 -p1
-%patch00064 -p1
-%patch00065 -p1
-%patch00066 -p1
-%patch00067 -p1
-%patch00068 -p1
-%patch00069 -p1
-%patch00070 -p1
-%patch00071 -p1
-%patch00072 -p1
-%patch00073 -p1
-%patch00074 -p1
-%patch00075 -p1
-%patch00076 -p1
-%patch00077 -p1
-%patch00078 -p1
-%patch00079 -p1
-%patch00080 -p1
-%patch00081 -p1
-%patch00082 -p1
-%patch00083 -p1
-%patch00084 -p1
-%patch00085 -p1
-%patch00086 -p1
-%patch00087 -p1
-%patch00088 -p1
-%patch00089 -p1
-%patch00090 -p1
-%patch00091 -p1
-%patch00092 -p1
-%patch00093 -p1
-%patch00094 -p1
-%patch00095 -p1
-%patch00096 -p1
-%patch00097 -p1
-%patch00098 -p1
-%patch00099 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1
@@ -1854,7 +1787,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
 ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
 
 install -D -m 0644 %{SOURCE201} %{buildroot}%_datadir/%name/forsplits/pkg-split.txt
-for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16
+for X in 00 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16 17 18 19
 do
   ln -s pkg-split.txt %{buildroot}%_datadir/%name/forsplits/$X
 done
@@ -1959,9 +1892,9 @@ fi
 %dir %_datadir/%name
 %dir %_datadir/%name/firmware
 %dir %_datadir/%name/forsplits
-%_datadir/%name/forsplits/14
-%_datadir/%name/forsplits/15
-%_datadir/%name/forsplits/16
+%_datadir/%name/forsplits/17
+%_datadir/%name/forsplits/18
+%_datadir/%name/forsplits/19
 %_datadir/%name/forsplits/pkg-split.txt
 %_datadir/%name/keymaps
 %_datadir/%name/qemu-ifup
@@ -1970,11 +1903,13 @@ fi
 %dir %_datadir/%name/vhost-user
 %_datadir/%name/vhost-user/50-qemu-virtiofsd.json
 %doc %_docdir/%name/_static
+%dir %_docdir/%name/about
 %dir %_docdir/%name/devel
 %dir %_docdir/%name/interop
 %dir %_docdir/%name/specs
 %dir %_docdir/%name/system
 %dir %_docdir/%name/system/arm
+%dir %_docdir/%name/system/devices
 %dir %_docdir/%name/system/i386
 %dir %_docdir/%name/system/ppc
 %dir %_docdir/%name/system/riscv
@@ -1982,23 +1917,32 @@ fi
 %dir %_docdir/%name/tools
 %dir %_docdir/%name/user
 %_docdir/%name/.buildinfo
+%_docdir/%name/about/build-platforms.html
+%_docdir/%name/about/deprecated.html
+%_docdir/%name/about/index.html
+%_docdir/%name/about/license.html
+%_docdir/%name/about/removed-features.html
 %_docdir/%name/devel/atomics.html
 %_docdir/%name/devel/bitops.html
 %_docdir/%name/devel/block-coroutine-wrapper.html
 %_docdir/%name/devel/build-system.html
+%_docdir/%name/devel/ci.html
 %_docdir/%name/devel/clocks.html
 %_docdir/%name/devel/code-of-conduct.html
 %_docdir/%name/devel/conflict-resolution.html
 %_docdir/%name/devel/control-flow-integrity.html
 %_docdir/%name/devel/decodetree.html
+%_docdir/%name/devel/ebpf_rss.html
 %_docdir/%name/devel/fuzzing.html
 %_docdir/%name/devel/index.html
 %_docdir/%name/devel/kconfig.html
 %_docdir/%name/devel/loads-stores.html
 %_docdir/%name/devel/memory.html
+%_docdir/%name/devel/modules.html
 %_docdir/%name/devel/multi-process.html
 %_docdir/%name/devel/migration.html
 %_docdir/%name/devel/multi-thread-tcg.html
+%_docdir/%name/devel/qapi-code-gen.html
 %_docdir/%name/devel/qom.html
 %_docdir/%name/devel/qgraph.html
 %_docdir/%name/devel/qtest.html
@@ -2012,8 +1956,12 @@ fi
 %_docdir/%name/devel/tcg.html
 %_docdir/%name/devel/testing.html
 %_docdir/%name/devel/tracing.html
+%_docdir/%name/devel/ui.html
+%_docdir/%name/devel/vfio-migration.html
+%_docdir/%name/devel/writing-qmp-commands.html
 %_docdir/%name/genindex.html
 %_docdir/%name/index.html
+%_docdir/%name/interop/barrier.html
 %_docdir/%name/interop/bitmaps.html
 %_docdir/%name/interop/dbus.html
 %_docdir/%name/interop/dbus-vmstate.html
@@ -2042,12 +1990,20 @@ fi
 %_docdir/%name/system/arm/aspeed.html
 %_docdir/%name/system/arm/collie.html
 %_docdir/%name/system/arm/cpu-features.html
+%_docdir/%name/system/arm/cubieboard.html
 %_docdir/%name/system/arm/digic.html
+%_docdir/%name/system/arm/emcraft-sf2.html
+%_docdir/%name/system/arm/emulation.html
 %_docdir/%name/system/arm/gumstix.html
+%_docdir/%name/system/arm/highbank.html
+%_docdir/%name/system/arm/imx25-pdk.html
 %_docdir/%name/system/arm/integratorcp.html
+%_docdir/%name/system/arm/kzm.html
+%_docdir/%name/system/arm/mainstone.html
 %_docdir/%name/system/arm/mps2.html
 %_docdir/%name/system/arm/musca.html
 %_docdir/%name/system/arm/musicpal.html
+%_docdir/%name/system/arm/nrf.html
 %_docdir/%name/system/arm/nseries.html
 %_docdir/%name/system/arm/nuvoton.html
 %_docdir/%name/system/arm/orangepi.html
@@ -2063,9 +2019,17 @@ fi
 %_docdir/%name/system/arm/virt.html
 %_docdir/%name/system/arm/xlnx-versal-virt.html
 %_docdir/%name/system/arm/xscale.html
-%_docdir/%name/system/build-platforms.html
+%_docdir/%name/system/arm/stm32.html
+%_docdir/%name/system/barrier.html
+%_docdir/%name/system/bootindex.html
 %_docdir/%name/system/cpu-hotplug.html
-%_docdir/%name/system/deprecated.html
+%_docdir/%name/system/device-emulation.html
+%_docdir/%name/system/devices/ivshmem.html
+%_docdir/%name/system/devices/net.html
+%_docdir/%name/system/devices/nvme.html
+%_docdir/%name/system/devices/usb.html
+%_docdir/%name/system/devices/vhost-user.html
+%_docdir/%name/system/devices/virtio-pmem.html
 %_docdir/%name/system/gdb.html
 %_docdir/%name/system/generic-loader.html
 %_docdir/%name/system/guest-loader.html
@@ -2074,19 +2038,16 @@ fi
 %_docdir/%name/system/images.html
 %_docdir/%name/system/index.html
 %_docdir/%name/system/invocation.html
-%_docdir/%name/system/ivshmem.html
 %_docdir/%name/system/keys.html
-%_docdir/%name/system/license.html
 %_docdir/%name/system/linuxboot.html
 %_docdir/%name/system/managed-startup.html
 %_docdir/%name/system/monitor.html
 %_docdir/%name/system/multi-process.html
 %_docdir/%name/system/mux-chardev.html
-%_docdir/%name/system/net.html
-%_docdir/%name/system/nvme.html
 %_docdir/%name/system/ppc/embedded.html
 %_docdir/%name/system/ppc/powermac.html
 %_docdir/%name/system/ppc/powernv.html
+%_docdir/%name/system/ppc/ppce500.html
 %_docdir/%name/system/ppc/prep.html
 %_docdir/%name/system/ppc/pseries.html
 %_docdir/%name/system/pr-manager.html
@@ -2094,15 +2055,18 @@ fi
 %_docdir/%name/system/qemu-cpu-models.html
 %_docdir/%name/system/qemu-manpage.html
 %_docdir/%name/system/quickstart.html
-%_docdir/%name/system/removed-features.html
 %_docdir/%name/system/riscv/microchip-icicle-kit.html
 %_docdir/%name/system/riscv/sifive_u.html
+%_docdir/%name/system/riscv/shakti-c.html
+%_docdir/%name/system/riscv/virt.html
 %_docdir/%name/system/s390x/3270.html
 %_docdir/%name/system/s390x/bootdevices.html
 %_docdir/%name/system/s390x/css.html
 %_docdir/%name/system/s390x/protvirt.html
 %_docdir/%name/system/s390x/vfio-ap.html
 %_docdir/%name/system/s390x/vfio-ccw.html
+%_docdir/%name/system/authz.html
+%_docdir/%name/system/secrets.html
 %_docdir/%name/system/security.html
 %_docdir/%name/system/target-arm.html
 %_docdir/%name/system/target-avr.html
@@ -2118,9 +2082,7 @@ fi
 %_docdir/%name/system/target-xtensa.html
 %_docdir/%name/system/targets.html
 %_docdir/%name/system/tls.html
-%_docdir/%name/system/usb.html
 %_docdir/%name/system/virtio-net-failover.html
-%_docdir/%name/system/virtio-pmem.html
 %_docdir/%name/system/vnc-security.html
 %_docdir/%name/tools/index.html
 %_docdir/%name/tools/qemu-img.html
@@ -2207,7 +2169,6 @@ fi
 %_bindir/qemu-system-mipsel
 %_bindir/qemu-system-mips64
 %_bindir/qemu-system-mips64el
-%_bindir/qemu-system-moxie
 %_bindir/qemu-system-nios2
 %_bindir/qemu-system-or1k
 %_bindir/qemu-system-riscv32
@@ -2333,6 +2294,7 @@ fi
 %dir %_datadir/%name/forsplits
 %_datadir/%name/forsplits/04
 %_libdir/%name/hw-display-virtio-gpu.so
+%_libdir/%name/hw-display-virtio-gpu-gl.so
 
 %files hw-display-virtio-gpu-pci
 %defattr(-, root, root)
@@ -2341,6 +2303,7 @@ fi
 %_datadir/%name/forsplits/11
 %dir %_libdir/%name
 %_libdir/%name/hw-display-virtio-gpu-pci.so
+%_libdir/%name/hw-display-virtio-gpu-pci-gl.so
 
 %files hw-display-virtio-vga
 %defattr(-, root, root)
@@ -2349,6 +2312,7 @@ fi
 %_datadir/%name/forsplits/12
 %dir %_libdir/%name
 %_libdir/%name/hw-display-virtio-vga.so
+%_libdir/%name/hw-display-virtio-vga-gl.so
 
 %files hw-s390x-virtio-gpu-ccw
 %defattr(-, root, root)
@@ -2373,6 +2337,14 @@ fi
 %_datadir/%name/forsplits/03
 %dir %_libdir/%name
 %_libdir/%name/hw-usb-smartcard.so
+
+%files hw-usb-host
+%defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/14
+%dir %_libdir/%name
+%_libdir/%name/hw-usb-host.so
 
 %files ui-curses
 %defattr(-, root, root)
@@ -2517,6 +2489,52 @@ fi
 %files ksm
 %defattr(-, root, root)
 %{_unitdir}/ksm.service
+
+%files accel-tcg-x86
+%defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/15
+%dir %_libdir/%name
+%_libdir/%name/accel-tcg-i386.so
+%_libdir/%name/accel-tcg-x86_64.so
+
+%files accel-qtest
+%defattr(-, root, root)
+%dir %_datadir/%name
+%dir %_datadir/%name/forsplits
+%_datadir/%name/forsplits/16
+%dir %_libdir/%name
+%_libdir/%name/accel-qtest-aarch64.so
+%_libdir/%name/accel-qtest-alpha.so
+%_libdir/%name/accel-qtest-arm.so
+%_libdir/%name/accel-qtest-avr.so
+%_libdir/%name/accel-qtest-cris.so
+%_libdir/%name/accel-qtest-hppa.so
+%_libdir/%name/accel-qtest-i386.so
+%_libdir/%name/accel-qtest-m68k.so
+%_libdir/%name/accel-qtest-microblaze.so
+%_libdir/%name/accel-qtest-microblazeel.so
+%_libdir/%name/accel-qtest-mips.so
+%_libdir/%name/accel-qtest-mips64.so
+%_libdir/%name/accel-qtest-mips64el.so
+%_libdir/%name/accel-qtest-mipsel.so
+%_libdir/%name/accel-qtest-nios2.so
+%_libdir/%name/accel-qtest-or1k.so
+%_libdir/%name/accel-qtest-ppc.so
+%_libdir/%name/accel-qtest-ppc64.so
+%_libdir/%name/accel-qtest-riscv32.so
+%_libdir/%name/accel-qtest-riscv64.so
+%_libdir/%name/accel-qtest-rx.so
+%_libdir/%name/accel-qtest-s390x.so
+%_libdir/%name/accel-qtest-sh4.so
+%_libdir/%name/accel-qtest-sh4eb.so
+%_libdir/%name/accel-qtest-sparc.so
+%_libdir/%name/accel-qtest-sparc64.so
+%_libdir/%name/accel-qtest-tricore.so
+%_libdir/%name/accel-qtest-x86_64.so
+%_libdir/%name/accel-qtest-xtensa.so
+%_libdir/%name/accel-qtest-xtensaeb.so
 
 # above section is for qemu
 %endif

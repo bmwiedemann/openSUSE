@@ -14,10 +14,10 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 6 insertions(+)
 
 diff --git a/qom/object.c b/qom/object.c
-index 1b132653c3fc8d5150723b2d4cf7..cb8cd9e6a5f48f94a0829ecc9e97 100644
+index e86cb05b84da941a177093811726..18edd2c91ab7d9a790c887fd730e 100644
 --- a/qom/object.c
 +++ b/qom/object.c
-@@ -236,6 +236,12 @@ static bool type_is_ancestor(TypeImpl *type, TypeImpl *target_type)
+@@ -237,6 +237,12 @@ static bool type_is_ancestor(TypeImpl *type, TypeImpl *target_type)
              return true;
          }
  

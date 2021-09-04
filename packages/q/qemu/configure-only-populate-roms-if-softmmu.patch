@@ -12,15 +12,15 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/configure b/configure
-index 4f374b48890e7f1a868672f2fe49..9de240a6b3e7fb7d72b57353546a 100755
+index 9a79a004d7cf1952cf3f4178e099..2a3073da6bd818cc2391c1d8f515 100755
 --- a/configure
 +++ b/configure
-@@ -5417,7 +5417,7 @@ if { test "$cpu" = "i386" || test "$cpu" = "x86_64"; } && \
- fi
+@@ -4413,7 +4413,7 @@ fi
  
  # Only build s390-ccw bios if we're on s390x and the compiler has -march=z900
+ # or -march=z10 (which is the lowest architecture level that Clang supports)
 -if test "$cpu" = "s390x" ; then
 +if test "$cpu" = "s390x" && test "$softmmu" = yes ; then
    write_c_skeleton
-   if compile_prog "-march=z900" ""; then
-     roms="$roms s390-ccw"
+   compile_prog "-march=z900" ""
+   has_z900=$?

@@ -16,7 +16,7 @@ Signed-off-by: Alexander Graf <agraf@suse.de>
  2 files changed, 13 insertions(+), 13 deletions(-)
 
 diff --git a/linux-user/qemu.h b/linux-user/qemu.h
-index 74e06e7121c56fbf568bc0d48164..709714dad5384d0813083af204c4 100644
+index 3b0b6b75fe8f1c5a5a5eb56ff99d..6a1d9b2d90da099bb2faaebbd265 100644
 --- a/linux-user/qemu.h
 +++ b/linux-user/qemu.h
 @@ -231,10 +231,10 @@ abi_long memcpy_to_target(abi_ulong dest, const void *src,
@@ -35,10 +35,10 @@ index 74e06e7121c56fbf568bc0d48164..709714dad5384d0813083af204c4 100644
  void cpu_loop(CPUArchState *env);
  const char *target_strerror(int err);
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index e5d22c4806cf4f11b43371dc52c2..ee3f66b0118d21748c1ff7475793 100644
+index 3e206c14c12d48a2ee7d242f6f13..54dcd38709918dd5f8aa8013ee17 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -8295,10 +8295,10 @@ static int host_to_target_cpu_mask(const unsigned long *host_mask,
+@@ -8182,10 +8182,10 @@ _syscall2(int, pivot_root, const char *, new_root, const char *, put_old)
   * of syscall results, can be performed.
   * All errnos that do_syscall() returns must be -TARGET_<errcode>.
   */
@@ -53,7 +53,7 @@ index e5d22c4806cf4f11b43371dc52c2..ee3f66b0118d21748c1ff7475793 100644
  {
      CPUState *cpu = env_cpu(cpu_env);
      abi_long ret;
-@@ -10966,7 +10966,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -10794,7 +10794,7 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
               */
              ret = -TARGET_EINVAL;
              if (cpu_isar_feature(aa64_sve, env_archcpu(cpu_env))
@@ -62,7 +62,7 @@ index e5d22c4806cf4f11b43371dc52c2..ee3f66b0118d21748c1ff7475793 100644
                  CPUARMState *env = cpu_env;
                  ARMCPU *cpu = env_archcpu(env);
                  uint32_t vq, old_vq;
-@@ -13318,10 +13318,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
+@@ -13163,10 +13163,10 @@ static abi_long do_syscall1(void *cpu_env, int num, abi_long arg1,
      return ret;
  }
  

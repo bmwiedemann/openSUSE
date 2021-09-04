@@ -2776,4 +2776,103 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>911328</requestid>
   </revision>
+  <revision rev="210" vrev="30">
+    <srcmd5>2d59a0f77c32612c6a252c0a32f642c2</srcmd5>
+    <version>unknown</version>
+    <time>1630787518</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v6.1: see https://wiki.qemu.org/ChangeLog/6.1
+  For a full list of formely deprecated features that are removed,
+  consult: https://qemu-project.gitlab.io/qemu/about/removed-features.html
+  For a list of new deprecated features, consult:
+  https://qemu-project.gitlab.io/qemu/about/deprecated.html
+  Some noteworthy changes:
+* Removed moxie CPU.
+* Removed lm32 CPU.
+* Removed unicore32 CPU.
+* Removed 'info cpustats'.
+* Added Aspeed machines: rainier-bmc, quanta-q7l1-bmc.
+* Added npcm7xx machine: quanta-gbs-bmc.
+* Model for Aspeed's Hash and Crypto Engine.
+* SVE2 is now emulated, including bfloat16 support
+* FEAT_I8MM, FEAT_TLBIOS, FEAT_TLBRANGE, FEAT_BF16, FEAT_AA32BF16, and
+  FEAT_MTE3 are now emulated.
+* Improved hot-unplug failures on PowerPC pseries machine.
+* Implemented some POWER10 instructions in TCG.
+* Added shakti_c RISC-V machine.
+* Improved documentation for RISC-V machines.
+* CPU models for gen16 have been added for s390x.
+* New CPU model versions added with XSAVES enabled:
+  Skylake-Client-v4, Skylake-Server-v5, Cascadelake-Server-v5,
+  Cooperlake-v2, Icelake-Client-v3, Icelake-Server-v5, Denverton-v3,
+  Snowridge-v3, Dhyana-v2
+* Added ACPI based PCI hotplug support to Q35 machine. Enabled and
+  used by default since pc-q35-6.1 machine type.
+* Added support for the pca9546 and pca9548 I2C muxes.
+* Added support for PMBus and several PMBus devices.
+* Crypto subsystem:
+  The preferred crypto backend driver now gnutls, with libgcrypt as the
+  second choice, and nettle as third choice, with ordering driven mostly
+  by performance of the ciphers.
+* Misc doc improvements.
+* Patches removed:
+  block-nvme-Fix-VFIO_MAP_DMA-failed-No-sp.patch
+  hmp-Fix-loadvm-to-resume-the-VM-on-succe.patch
+  hw-block-nvme-align-with-existing-style.patch
+  hw-block-nvme-consider-metadata-read-aio.patch
+  hw-net-can-sja1000-fix-buff2frame_bas-an.patch
+  hw-nvme-fix-missing-check-for-PMR-capabi.patch
+  hw-nvme-fix-pin-based-interrupt-behavior.patch
+  hw-pci-host-q35-Ignore-write-of-reserved.patch
+  hw-rdma-Fix-possible-mremap-overflow-in-.patch
+  hw-rx-rx-gdbsim-Do-not-accept-invalid-me.patch
+  hw-usb-Do-not-build-USB-subsystem-if-not.patch
+  hw-usb-host-stub-Remove-unused-header.patch
+  linux-user-aarch64-Enable-hwcap-for-RND-.patch
+  module-for-virtio-gpu-pre-load-module-to.patch
+  monitor-qmp-fix-race-on-CHR_EVENT_CLOSED.patch
+  pvrdma-Ensure-correct-input-on-ring-init.patch
+  pvrdma-Fix-the-ring-init-error-flow-CVE-.patch
+  qemu-config-load-modules-when-instantiat.patch
+  qemu-config-parse-configuration-files-to.patch
+  qemu-config-use-qemu_opts_from_qdict.patch
+  runstate-Initialize-Error-to-NULL.patch
+  sockets-update-SOCKET_ADDRESS_TYPE_FD-li.patch
+  target-i386-Exit-tb-after-wrmsr.patch
+  target-sh4-Return-error-if-CPUClass-get_.patch
+  tcg-Allocate-sufficient-storage-in-temp_.patch
+  tcg-arm-Fix-tcg_out_op-function-signatur.patch
+  tcg-sparc-Fix-temp_allocate_frame-vs-spa.patch
+  ui-Fix-memory-leak-in-qemu_xkeymap_mappi.patch
+  usb-hid-avoid-dynamic-stack-allocation.patch
+  usb-limit-combined-packets-to-1-MiB-CVE-.patch
+  usb-mtp-avoid-dynamic-stack-allocation.patch
+  usb-redir-avoid-dynamic-stack-allocation.patch
+  usbredir-fix-free-call.patch
+  vfio-ccw-Permit-missing-IRQs.patch
+  vhost-user-blk-Check-that-num-queues-is-.patch
+  vhost-user-blk-Don-t-reconnect-during-in.patch
+  vhost-user-blk-Fail-gracefully-on-too-la.patch
+  vhost-user-blk-Get-more-feature-flags-fr.patch
+  vhost-user-blk-Make-sure-to-set-Error-on.patch
+  vhost-user-gpu-abstract-vg_cleanup_mappi.patch
+  vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch
+  vhost-user-gpu-fix-leak-in-virgl_resourc.patch
+  vhost-user-gpu-fix-memory-disclosure-in-.patch
+  vhost-user-gpu-fix-memory-leak-in-vg_res.patch
+  vhost-user-gpu-fix-memory-leak-while-cal.patch
+  vhost-user-gpu-fix-OOB-write-in-virgl_cm.patch
+  vhost-user-gpu-fix-resource-leak-in-vg_r.patch
+  vhost-vdpa-don-t-initialize-backend_feat.patch
+  virtio-blk-Fix-rollback-path-in-virtio_b.patch
+  virtio-Fail-if-iommu_platform-is-request.patch
+  virtiofsd-Fix-side-effect-in-assert.patch
+  vl-allow-not-specifying-size-in-m-when-u.patch
+  vl-Fix-an-assert-failure-in-error-path.patch
+  vl-plug-object-back-into-readconfig.patch
+  vl-plumb-keyval-based-options-into-readc.patch
+  x86-acpi-use-offset-instead-of-pointer-w.patch
+</comment>
+    <requestid>914458</requestid>
+  </revision>
 </revisionlist>

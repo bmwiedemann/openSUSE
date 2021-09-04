@@ -18,7 +18,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  1 file changed, 12 insertions(+)
 
 diff --git a/hw/block/xen-block.c b/hw/block/xen-block.c
-index 83754a434481d9cd02bbe35bffc3..581f1d5f7a1a2ec3d9b5f7bfe2aa 100644
+index 674953f1adeeaec6a81d9857144e..07b3be7b9b9f6093642363f13187 100644
 --- a/hw/block/xen-block.c
 +++ b/hw/block/xen-block.c
 @@ -723,6 +723,8 @@ static XenBlockDrive *xen_block_drive_create(const char *id,
@@ -30,7 +30,7 @@ index 83754a434481d9cd02bbe35bffc3..581f1d5f7a1a2ec3d9b5f7bfe2aa 100644
      char *driver = NULL;
      char *filename = NULL;
      XenBlockDrive *drive = NULL;
-@@ -791,6 +793,16 @@ static XenBlockDrive *xen_block_drive_create(const char *id,
+@@ -803,6 +805,16 @@ static XenBlockDrive *xen_block_drive_create(const char *id,
          }
      }
  

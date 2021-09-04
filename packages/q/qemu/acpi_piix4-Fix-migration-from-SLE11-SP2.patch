@@ -16,10 +16,10 @@ Signed-off-by: Andreas Färber <afaerber@suse.de>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
-index 8f8b0e95e5201b1404b2a9bc7abd..4083edb21d17346ca9733de4915c 100644
+index 48f7a1edbcbc06461ecb23699a87..d32441fadf7bfc6fbb930addd697 100644
 --- a/hw/acpi/piix4.c
 +++ b/hw/acpi/piix4.c
-@@ -277,7 +277,7 @@ static bool piix4_vmstate_need_smbus(void *opaque, int version_id)
+@@ -278,7 +278,7 @@ static bool piix4_vmstate_need_smbus(void *opaque, int version_id)
  static const VMStateDescription vmstate_acpi = {
      .name = "piix4_pm",
      .version_id = 3,

@@ -13,7 +13,7 @@ Signed-off-by: Bruce Rogers <brogers@suse.com>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/roms/Makefile b/roms/Makefile
-index a91ffad548af3e95410ce6712fb3..2db995dab25f6d842def858ebbcc 100644
+index 6ea8edd9fcf6bb0cdc1f1602f241..df969e3ec33ab07fe3fcb489e0df 100644
 --- a/roms/Makefile
 +++ b/roms/Makefile
 @@ -199,7 +199,7 @@ MESON = meson
