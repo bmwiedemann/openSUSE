@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           khotkeys5
-Version:        5.22.4
+Version:        5.22.5
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}
@@ -73,8 +73,12 @@ Files to develop with KDE's hotkey daemon module.
 %autosetup -p1 -n khotkeys-%{version}
 
 %build
-  %cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
-  %cmake_build
+%ifarch ppc64
+%define _lto_cflags %{nil}
+%endif
+
+%cmake_kf5 -d build -- -DCMAKE_INSTALL_LOCALEDIR=%{_kf5_localedir}
+%cmake_build
 
 %install
   %kf5_makeinstall -C build
