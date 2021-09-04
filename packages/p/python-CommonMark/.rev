@@ -105,4 +105,12 @@ This version fixes the conflict with the &quot;cmark&quot; package.</comment>
     <comment>- Drop broken %ifpython3 macro</comment>
     <requestid>885215</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>687dfb26479e7ddc2e372def11332c79</srcmd5>
+    <version>0.9.1</version>
+    <time>1630787534</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915780</requestid>
+  </revision>
 </revisionlist>
