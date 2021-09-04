@@ -19,7 +19,7 @@
 
 %bcond_without lang
 Name:           ksystemstats5
-Version:        5.22.4
+Version:        5.22.5
 Release:        0
 # Full Plasma 5 version (e.g. 5.8.95)
 %{!?_plasma5_bugfix: %define _plasma5_bugfix %{version}}

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Aug 31 19:08:41 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * Fix handling of IPV6 addresses (kde#436296)
+
+-------------------------------------------------------------------
 Tue Jul 27 12:34:52 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.4
