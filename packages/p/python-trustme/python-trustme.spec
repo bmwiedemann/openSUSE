@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-trustme
-Version:        0.7.0
+Version:        0.9.0
 Release:        0
 Summary:        Fake CA provider for Python tests
 License:        Apache-2.0 OR MIT

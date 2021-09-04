@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Mon Aug 30 14:18:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.9.0
+  * Bump types-cryptography from 3.3.3 to 3.3.5 (#342)
+  * Bump types-pyopenssl from 20.0.4 to 20.0.5 (#343)
+  * Add type annotations (#341)
+  * Bump charset-normalizer from 2.0.3 to 2.0.4 (#340)
+  * Bump sphinx from 4.1.1 to 4.1.2
+  * Bump charset-normalizer from 2.0.2 to 2.0.3
+  * Bump idna from 2.10 to 3.2
+  * Bump sphinx from 4.1.0 to 4.1.1
+  * Bump charset-normalizer from 2.0.1 to 2.0.2
+  * Bump requests from 2.25.1 to 2.26.0 (#333)
+  * Bump sphinx from 4.0.2 to 4.1.0
+  * Bump urllib3 from 1.26.5 to 1.26.6
+  * Bump version to v0.8.0+dev
+- from version 0.8.0
+  * retry codecov more
+  * try codecov harder
+  * require codecov in ci
+  * Update tests/test_trustme.py
+  * close the wrapped sockets to prevent Unraisable ResourceWarnings
+  * Adjust tests
+  * py3.10 needs a new version of pytest
+  * Set correct KU and EKU extensions
+  * test on py 3.10
+  * Bump pytest-cov from 2.12.0 to 2.12.1
+  * Bump certifi from 2020.12.5 to 2021.5.30
+  * Bump urllib3 from 1.26.4 to 1.26.5
+  * Bump sphinxcontrib-htmlhelp from 1.0.3 to 2.0.0
+  * Bump sphinxcontrib-serializinghtml from 1.1.4 to 1.1.5
+  * Bump jinja2 from 2.11.3 to 3.0.1
+  * Bump sphinx from 4.0.1 to 4.0.2
+  * Bump pytest-cov from 2.11.1 to 2.12.0
+  * Bump docutils from 0.16 to 0.17.1
+  * Bump sphinx from 4.0.0 to 4.0.1
+  * Bump service-identity from 18.1.0 to 21.1.0
+  * Bump sphinx from 3.5.4 to 4.0.0
+  * Bump attrs from 21.1.0 to 21.2.0
+  * Bump attrs from 20.3.0 to 21.1.0
+  * Bump six from 1.15.0 to 1.16.0
+  * Bump pygments from 2.8.1 to 2.9.0
+  * Upgrade to GitHub-native Dependabot
+  * Bump babel from 2.9.0 to 2.9.1
+  * Bump sphinx from 3.5.3 to 3.5.4
+  * Bump docutils from 0.16 to 0.17
+  * Bump sphinx from 3.5.2 to 3.5.3
+  * Mention not_after in `issue_cert` signature
+  * Bump urllib3 from 1.26.3 to 1.26.4
+  * Bump pygments from 2.8.0 to 2.8.1
+  * Bump sphinx from 3.5.1 to 3.5.2
+  * Add newsfragment and Python doc for --expires-on
+  * Add an option to set when the certificate should expire (--expires-on)
+  * Bump coverage from 5.4 to 5.5
+  * Bump sphinx from 3.5.0 to 3.5.1
+  * Clarify project vision in README
+  * Bump sphinx from 3.4.3 to 3.5.0
+  * Bump pygments from 2.7.4 to 2.8.0
+  * Bump cffi from 1.14.4 to 1.14.5
+  * Bump version to 0.7.0
+
+-------------------------------------------------------------------
 Sun May  9 17:12:48 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:
