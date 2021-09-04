@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Ensure created resources/agents reconfigure with up-to-date stored config
+
+-------------------------------------------------------------------
 Fri Aug  6 09:39:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
