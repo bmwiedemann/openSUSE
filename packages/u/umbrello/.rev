@@ -1404,4 +1404,12 @@ https://www.kde.org/announcements/announce-applications-16.08.2.php
   qtwebengine.</comment>
     <requestid>914344</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>421488998046ea0b6b2213c086ae7e26</srcmd5>
+    <version>21.08.1</version>
+    <time>1630787721</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.1</comment>
+    <requestid>916036</requestid>
+  </revision>
 </revisionlist>
