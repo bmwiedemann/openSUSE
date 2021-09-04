@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  1 05:35:01 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Remove h2 < 4.0 and priority < 2.0 version restriction. (boo#1190036)
+  * remove-dependency-version-upper-bounds.patch
+
+-------------------------------------------------------------------
 Sat Aug 13 11:50:00 UTC 2021 - Michael Gumsley <gumsley_6@hotmail.com>
 
 - Restore no-pygtkcompat.patch due to boo#1110669

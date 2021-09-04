@@ -1,0 +1,13 @@
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -67,8 +67,8 @@ serial =
+ 	pyserial >= 3.0
+ 	pywin32 != 226; platform_system == "Windows"
+ http2 = 
+-	h2 >= 3.0, < 4.0
+-	priority >= 1.1.0, < 2.0
++	h2 >= 3.0
++	priority >= 1.1.0
+ contextvars = 
+ 	contextvars >= 2.4, < 3; python_version < "3.7"
+ all_non_platform = 

@@ -1355,4 +1355,12 @@
     <comment>- Restore no-pygtkcompat.patch due to boo#1110669</comment>
     <requestid>911988</requestid>
   </revision>
+  <revision rev="49" vrev="3">
+    <srcmd5>e048440936c89ff39d654c38ad062c8c</srcmd5>
+    <version>21.7.0</version>
+    <time>1630787524</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915574</requestid>
+  </revision>
 </revisionlist>

@@ -38,6 +38,8 @@ Patch3:         1521_delegate_parseqs_stdlib_bpo42967.patch
 Patch4:         no-cython_test_exception_raiser.patch
 # boo#1110669 Our variant of PyGObject has pygtkcompat stripped which Twisted does not handle
 Patch5:         no-pygtkcompat.patch
+# PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
+Patch6:         remove-dependency-version-upper-bounds.patch
 BuildRequires:  %{python_module Automat >= 0.8.0}
 BuildRequires:  %{python_module PyHamcrest >= 1.9.0}
 BuildRequires:  %{python_module appdirs >= 1.4.0}
