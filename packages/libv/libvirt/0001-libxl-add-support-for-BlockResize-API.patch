@@ -19,10 +19,10 @@ reworking this patch and submitting it to upstream libvirt.
  src/libxl/libxl_driver.c | 91 ++++++++++++++++++++++++++++++++++++++++++++++++
  1 file changed, 91 insertions(+)
 
-Index: libvirt-7.6.0/src/libxl/libxl_driver.c
+Index: libvirt-7.7.0/src/libxl/libxl_driver.c
 ===================================================================
---- libvirt-7.6.0.orig/src/libxl/libxl_driver.c
-+++ libvirt-7.6.0/src/libxl/libxl_driver.c
+--- libvirt-7.7.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.7.0/src/libxl/libxl_driver.c
 @@ -5269,6 +5269,95 @@ libxlDomainMemoryStats(virDomainPtr dom,
  
  #undef LIBXL_SET_MEMSTAT
@@ -127,10 +127,10 @@ Index: libvirt-7.6.0/src/libxl/libxl_driver.c
      .domainGetJobInfo = libxlDomainGetJobInfo, /* 1.3.1 */
      .domainGetJobStats = libxlDomainGetJobStats, /* 1.3.1 */
      .domainMemoryStats = libxlDomainMemoryStats, /* 1.3.0 */
-Index: libvirt-7.6.0/src/libxl/libxl_api_wrapper.h
+Index: libvirt-7.7.0/src/libxl/libxl_api_wrapper.h
 ===================================================================
---- libvirt-7.6.0.orig/src/libxl/libxl_api_wrapper.h
-+++ libvirt-7.6.0/src/libxl/libxl_api_wrapper.h
+--- libvirt-7.7.0.orig/src/libxl/libxl_api_wrapper.h
++++ libvirt-7.7.0/src/libxl/libxl_api_wrapper.h
 @@ -215,3 +215,18 @@ libxlSetMemoryTargetWrapper(libxl_ctx *c
  
      return ret;

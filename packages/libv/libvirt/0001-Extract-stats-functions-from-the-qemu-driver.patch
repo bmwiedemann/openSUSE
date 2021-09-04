@@ -18,10 +18,10 @@ them.
  create mode 100644 src/conf/domain_stats.c
  create mode 100644 src/conf/domain_stats.h
 
-Index: libvirt-7.6.0/src/conf/domain_stats.c
+Index: libvirt-7.7.0/src/conf/domain_stats.c
 ===================================================================
 --- /dev/null
-+++ libvirt-7.6.0/src/conf/domain_stats.c
++++ libvirt-7.7.0/src/conf/domain_stats.c
 @@ -0,0 +1,117 @@
 +/*
 + * domain_stats.c: domain stats extraction helpers
@@ -140,10 +140,10 @@ Index: libvirt-7.6.0/src/conf/domain_stats.c
 +}
 +
 +#undef STATS_ADD_NET_PARAM
-Index: libvirt-7.6.0/src/conf/domain_stats.h
+Index: libvirt-7.7.0/src/conf/domain_stats.h
 ===================================================================
 --- /dev/null
-+++ libvirt-7.6.0/src/conf/domain_stats.h
++++ libvirt-7.7.0/src/conf/domain_stats.h
 @@ -0,0 +1,60 @@
 +/*
 + * domain_stats.h: domain stats extraction helpers
@@ -205,11 +205,11 @@ Index: libvirt-7.6.0/src/conf/domain_stats.h
 +                           virTypedParamList *params);
 +
 +#endif /* __DOMAIN_STATS_H */
-Index: libvirt-7.6.0/src/libvirt_private.syms
+Index: libvirt-7.7.0/src/libvirt_private.syms
 ===================================================================
---- libvirt-7.6.0.orig/src/libvirt_private.syms
-+++ libvirt-7.6.0/src/libvirt_private.syms
-@@ -761,12 +761,16 @@ virDomainConfNWFilterTeardown;
+--- libvirt-7.7.0.orig/src/libvirt_private.syms
++++ libvirt-7.7.0/src/libvirt_private.syms
+@@ -763,12 +763,16 @@ virDomainConfNWFilterTeardown;
  virDomainConfVMNWFilterTeardown;
  
  
@@ -227,7 +227,7 @@ Index: libvirt-7.6.0/src/libvirt_private.syms
  # conf/interface_conf.h
  virInterfaceDefFormat;
  virInterfaceDefFree;
-@@ -1926,6 +1930,7 @@ virCgroupGetMemoryUsage;
+@@ -1933,6 +1937,7 @@ virCgroupGetMemoryUsage;
  virCgroupGetMemSwapHardLimit;
  virCgroupGetMemSwapUsage;
  virCgroupGetPercpuStats;
@@ -235,11 +235,11 @@ Index: libvirt-7.6.0/src/libvirt_private.syms
  virCgroupHasController;
  virCgroupHasEmptyTasks;
  virCgroupKillPainfully;
-Index: libvirt-7.6.0/src/qemu/qemu_driver.c
+Index: libvirt-7.7.0/src/qemu/qemu_driver.c
 ===================================================================
---- libvirt-7.6.0.orig/src/qemu/qemu_driver.c
-+++ libvirt-7.6.0/src/qemu/qemu_driver.c
-@@ -67,6 +67,7 @@
+--- libvirt-7.7.0.orig/src/qemu/qemu_driver.c
++++ libvirt-7.7.0/src/qemu/qemu_driver.c
+@@ -68,6 +68,7 @@
  #include "virarptable.h"
  #include "viruuid.h"
  #include "domain_conf.h"
@@ -247,7 +247,7 @@ Index: libvirt-7.6.0/src/qemu/qemu_driver.c
  #include "domain_audit.h"
  #include "domain_cgroup.h"
  #include "domain_driver.h"
-@@ -17537,13 +17538,7 @@ qemuDomainGetStatsState(virQEMUDriver *d
+@@ -17448,13 +17449,7 @@ qemuDomainGetStatsState(virQEMUDriver *d
                          virTypedParamList *params,
                          unsigned int privflags G_GNUC_UNUSED)
  {
@@ -262,7 +262,7 @@ Index: libvirt-7.6.0/src/qemu/qemu_driver.c
  }
  
  
-@@ -17836,25 +17831,11 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
+@@ -17746,25 +17741,11 @@ qemuDomainGetStatsCpuCgroup(virDomainObj
                              virTypedParamList *params)
  {
      qemuDomainObjPrivate *priv = dom->privateData;
@@ -289,7 +289,7 @@ Index: libvirt-7.6.0/src/qemu/qemu_driver.c
  }
  
  static int
-@@ -18047,76 +18028,15 @@ qemuDomainGetStatsVcpu(virQEMUDriver *dr
+@@ -17957,76 +17938,15 @@ qemuDomainGetStatsVcpu(virQEMUDriver *dr
      return ret;
  }
  
@@ -367,12 +367,12 @@ Index: libvirt-7.6.0/src/qemu/qemu_driver.c
  
  /* refresh information by opening images on the disk */
  static int
-Index: libvirt-7.6.0/src/util/vircgroup.c
+Index: libvirt-7.7.0/src/util/vircgroup.c
 ===================================================================
---- libvirt-7.6.0.orig/src/util/vircgroup.c
-+++ libvirt-7.6.0/src/util/vircgroup.c
-@@ -3005,6 +3005,31 @@ virCgroupControllerAvailable(int control
-     return virCgroupHasController(cgroup, controller);
+--- libvirt-7.7.0.orig/src/util/vircgroup.c
++++ libvirt-7.7.0/src/util/vircgroup.c
+@@ -3036,6 +3036,31 @@ virCgroupGetInode(virCgroup *cgroup)
+     return st.st_ino;
  }
  
 +int
@@ -403,7 +403,7 @@ Index: libvirt-7.6.0/src/util/vircgroup.c
  #else /* !__linux__ */
  
  bool
-@@ -3014,6 +3039,14 @@ virCgroupAvailable(void)
+@@ -3045,6 +3070,14 @@ virCgroupAvailable(void)
  }
  
  
@@ -418,10 +418,10 @@ Index: libvirt-7.6.0/src/util/vircgroup.c
  int
  virCgroupNewPartition(const char *path G_GNUC_UNUSED,
                        bool create G_GNUC_UNUSED,
-Index: libvirt-7.6.0/src/util/vircgroup.h
+Index: libvirt-7.7.0/src/util/vircgroup.h
 ===================================================================
---- libvirt-7.6.0.orig/src/util/vircgroup.h
-+++ libvirt-7.6.0/src/util/vircgroup.h
+--- libvirt-7.7.0.orig/src/util/vircgroup.h
++++ libvirt-7.7.0/src/util/vircgroup.h
 @@ -23,6 +23,7 @@
  
  #include "virbitmap.h"
@@ -430,17 +430,18 @@ Index: libvirt-7.6.0/src/util/vircgroup.h
  
  struct _virCgroup;
  typedef struct _virCgroup virCgroup;
-@@ -283,3 +284,6 @@ int virCgroupSetOwner(virCgroup *cgroup,
- int virCgroupHasEmptyTasks(virCgroup *cgroup, int controller);
+@@ -284,4 +285,7 @@ int virCgroupHasEmptyTasks(virCgroup *cg
  
  bool virCgroupControllerAvailable(int controller);
-+
+ 
 +int virCgroupGetStatsCpu(virCgroup *cgroup,
 +                         virTypedParamList *params);
-Index: libvirt-7.6.0/src/conf/meson.build
++
+ int virCgroupGetInode(virCgroup *cgroup);
+Index: libvirt-7.7.0/src/conf/meson.build
 ===================================================================
---- libvirt-7.6.0.orig/src/conf/meson.build
-+++ libvirt-7.6.0/src/conf/meson.build
+--- libvirt-7.7.0.orig/src/conf/meson.build
++++ libvirt-7.7.0/src/conf/meson.build
 @@ -15,6 +15,7 @@ domain_conf_sources = [
    'domain_conf.c',
    'domain_nwfilter.c',

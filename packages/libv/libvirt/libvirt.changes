@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  1 14:21:30 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 7.7.0
+  - jsc#SLE-18446
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html
+
+-------------------------------------------------------------------
 Wed Aug 11 17:31:50 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - supportconfig: When checking for installed hypervisor drivers,

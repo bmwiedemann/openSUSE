@@ -7,19 +7,18 @@ and npiv.
 
 For more details, see bsc#954872 and FATE#319810
 
-Index: libvirt-7.6.0/src/libxl/libxl_conf.c
+Index: libvirt-7.7.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-7.6.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-7.6.0/src/libxl/libxl_conf.c
-@@ -951,6 +951,22 @@ libxlDiskSetDiscard(libxl_device_disk *x
- #endif
+--- libvirt-7.7.0.orig/src/libxl/libxl_conf.c
++++ libvirt-7.7.0/src/libxl/libxl_conf.c
+@@ -942,6 +942,20 @@ libxlDiskSetDiscard(libxl_device_disk *x
  }
  
-+static int
+ static void
 +libxlDiskSetScript(libxl_device_disk *x_disk, const char *disk_spec)
 +{
 +    if (disk_spec == NULL)
-+        return 0;
++        return;
 +
 +    if (STRPREFIX(disk_spec, "dmmd:"))
 +        x_disk->script = g_strdup("block-dmmd");
@@ -27,14 +26,13 @@ Index: libvirt-7.6.0/src/libxl/libxl_conf.c
 +        x_disk->script = g_strdup("block-drbd");
 +    else if (STRPREFIX(disk_spec, "npiv:"))
 +        x_disk->script = g_strdup("block-npiv");
-+
-+    return 0;
 +}
 +
- static void
++static void
  libxlDiskSetCacheMode(libxl_device_disk *x_disk, int cachemode)
  {
-@@ -1096,6 +1112,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
+     switch (cachemode) {
+@@ -1084,6 +1098,7 @@ libxlMakeNetworkDiskSrc(virStorageSource
  int
  libxlMakeDisk(virDomainDiskDef *l_disk, libxl_device_disk *x_disk)
  {
@@ -42,7 +40,7 @@ Index: libvirt-7.6.0/src/libxl/libxl_conf.c
      const char *driver = virDomainDiskGetDriver(l_disk);
      int format = virDomainDiskGetFormat(l_disk);
      int actual_type = virStorageSourceGetActualType(l_disk->src);
-@@ -1109,7 +1126,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+@@ -1097,7 +1112,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
          if (libxlMakeNetworkDiskSrc(l_disk->src, &x_disk->pdev_path) < 0)
              return -1;
      } else {
@@ -51,12 +49,11 @@ Index: libvirt-7.6.0/src/libxl/libxl_conf.c
      }
  
      x_disk->vdev = g_strdup(l_disk->dst);
-@@ -1216,6 +1233,9 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
-     if (libxlDiskSetDiscard(x_disk, l_disk->discard) < 0)
-         return -1;
+@@ -1203,6 +1218,8 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+     x_disk->is_cdrom = l_disk->device == VIR_DOMAIN_DISK_DEVICE_CDROM ? 1 : 0;
+     libxlDiskSetDiscard(x_disk, l_disk->discard);
      libxlDiskSetCacheMode(x_disk, l_disk->cachemode);
-+    if (libxlDiskSetScript(x_disk, src) < 0)
-+        return -1;
++    libxlDiskSetScript(x_disk, src);
 +
      /* An empty CDROM must have the empty format, otherwise libxl fails. */
      if (x_disk->is_cdrom && !x_disk->pdev_path)

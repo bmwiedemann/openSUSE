@@ -3905,4 +3905,12 @@ StandardGroups in rpmlint package.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912945</requestid>
   </revision>
+  <revision rev="338" vrev="1">
+    <srcmd5>14a1276ff8fa9823b09d7b98162eecf4</srcmd5>
+    <version>7.7.0</version>
+    <time>1630787519</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>915519</requestid>
+  </revision>
 </revisionlist>

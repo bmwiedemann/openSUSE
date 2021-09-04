@@ -3,12 +3,12 @@ https://bugzilla.novell.com/show_bug.cgi?id=879425
  src/libxl/libxl_conf.c |   25 +++++++++++++++++++++++++
  1 file changed, 25 insertions(+)
 
-Index: libvirt-7.6.0/src/libxl/libxl_conf.c
+Index: libvirt-7.7.0/src/libxl/libxl_conf.c
 ===================================================================
---- libvirt-7.6.0.orig/src/libxl/libxl_conf.c
-+++ libvirt-7.6.0/src/libxl/libxl_conf.c
-@@ -951,6 +951,30 @@ libxlDiskSetDiscard(libxl_device_disk *x
- #endif
+--- libvirt-7.7.0.orig/src/libxl/libxl_conf.c
++++ libvirt-7.7.0/src/libxl/libxl_conf.c
+@@ -941,6 +941,28 @@ libxlDiskSetDiscard(libxl_device_disk *x
+     }
  }
  
 +static void
@@ -21,11 +21,9 @@ Index: libvirt-7.6.0/src/libxl/libxl_conf.c
 +            x_disk->readwrite = (x_disk->readwrite & LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MASK) | LIBXL_HAVE_LIBXL_DEVICE_DISK_DISABLE_FLUSH_MAGIC;
 +        break;
 +#endif
-+#if defined(LIBXL_HAVE_DEVICE_DISK_DIRECT_IO_SAFE)
 +    case VIR_DOMAIN_DISK_CACHE_DIRECTSYNC:
 +        x_disk->direct_io_safe = true;
 +        break;
-+#endif
 +    case VIR_DOMAIN_DISK_CACHE_DEFAULT:
 +    case VIR_DOMAIN_DISK_CACHE_DISABLE:
 +    case VIR_DOMAIN_DISK_CACHE_WRITETHRU:
@@ -38,10 +36,10 @@ Index: libvirt-7.6.0/src/libxl/libxl_conf.c
  static char *
  libxlMakeNetworkDiskSrcStr(virStorageSource *src,
                             const char *username,
-@@ -1191,6 +1215,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+@@ -1180,6 +1202,7 @@ libxlMakeDisk(virDomainDiskDef *l_disk,
+     x_disk->readwrite = !l_disk->src->readonly;
      x_disk->is_cdrom = l_disk->device == VIR_DOMAIN_DISK_DEVICE_CDROM ? 1 : 0;
-     if (libxlDiskSetDiscard(x_disk, l_disk->discard) < 0)
-         return -1;
+     libxlDiskSetDiscard(x_disk, l_disk->discard);
 +    libxlDiskSetCacheMode(x_disk, l_disk->cachemode);
      /* An empty CDROM must have the empty format, otherwise libxl fails. */
      if (x_disk->is_cdrom && !x_disk->pdev_path)
