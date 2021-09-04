@@ -16,7 +16,7 @@
 #
 
 
-%global longver 2021-08-01
+%global longver 2021-09-01
 %global shortver %(echo %{longver}|sed 's|-||g')
 %define libname libre2-9
 Name:           re2
@@ -72,26 +72,21 @@ libraries for %{name}. If you would like to develop programs using %{name},
 you will need to install %{name}-devel.
 
 %prep
-%setup -q -n %{name}-%{longver}
+%autosetup -n %{name}-%{longver}
 
 %build
-%if %{do_profiling}
-  %make_build CXXFLAGS="%{optflags} %{cflags_profile_generate}"
-  %make_build CXXFLAGS="%{optflags} %{cflags_profile_generate}" LDFLAGS="-lgcov" benchlog
-  %make_build clean
-  %make_build CXXFLAGS="%{optflags} %{cflags_profile_feedback}"
-%else
-  %make_build CXXFLAGS="%{optflags}"
-%endif
+ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2/-O3/g'`"
+export CXXFLAGS="${ARCH_FLAGS}"
+%make_build
 
 %install
 %make_install includedir=%{_includedir} libdir=%{_libdir}
 
 # Suppress the static library
-find %{buildroot} -name 'lib%{name}.a' -delete
+find %{buildroot} -name '*.a' -delete -print
 
 %check
-%make_build test CXXFLAGS="%{optflags}"
+%make_build shared-testinstall DESTDIR=%{buildroot} includedir=%{_includedir} libdir=%{_libdir}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
