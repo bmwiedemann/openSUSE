@@ -44,6 +44,7 @@ BuildRequires:  cmake(Qt5Gui)
 BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(frei0r)
@@ -60,6 +61,9 @@ BuildRequires:  pkgconfig(libpulse-simple)
 BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(movit)
+%if 0%{?suse_version} > 1501
+BuildRequires:  pkgconfig(opencv4)
+%endif
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(python3)
@@ -174,7 +178,11 @@ This package contains python bindings.
 %build
 # WARNING: building opencv module causes multicore issues - boo#1068792
 %cmake \
+%if 0%{?suse_version} > 1501
+   -DMOD_OPENCV=ON \
+%else
    -DMOD_OPENCV=OFF \
+%endif
    -DGPL=ON \
    -DGPL3=ON \
    -DSWIG_PYTHON=ON

@@ -686,4 +686,13 @@ Only build sdl2 module.
     <comment></comment>
     <requestid>899612</requestid>
   </revision>
+  <revision rev="55" vrev="3">
+    <srcmd5>091dc17057fa5a69771676e81644dd18</srcmd5>
+    <version>7.0.1</version>
+    <time>1630787626</time>
+    <user>dimstar_suse</user>
+    <comment>Enabled opencv to fix boo#1184430 by enabling motion tracking
+</comment>
+    <requestid>915155</requestid>
+  </revision>
 </revisionlist>
