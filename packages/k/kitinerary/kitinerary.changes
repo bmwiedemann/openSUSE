@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Add Airdo confirmation mail extractor script
+  * Extract SNCF Ouigo confirmation emails (kde#441361)
+  * Extract Ryanair PDF boarding passes
+  * Actually add the MAV extractor
+  * Add basic MAV (Hungarian state railway) domestic ticket extractor
+  * Add an alternative way of decoding RCT2 reservation data
+  * Reproduce whitespaces a bit more correctly when layouting U_TLAY text
+  * Let RCT2 type detection ignore whitespaces and support Hungarian IRTs
+  * Add a watchdog timer to interrupt long running extractor scripts
+  * Add Regionado pkpass extractor script
+
+-------------------------------------------------------------------
 Fri Aug  6 09:38:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
