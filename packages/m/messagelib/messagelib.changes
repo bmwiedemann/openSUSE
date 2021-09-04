@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:39:31 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Fix build with the CI now using the standard Akonadi test controls
+  * Adapt MessageFactoryTest::test_multipartAlternative to new replyAsHtml flag
+  * AutocryptHeadersJob: ensure reproducable order of Autocrypt-Gossip headers
+  * Fix MainTextJobTest::testHtmlWithImages
+  * MessageFactoryNG: also replace ${} wrapper from MDN templates
+  * Fix false positive for url "https://www.google.com/search?q=%5C"
+  * Fix autotest
+
+-------------------------------------------------------------------
 Fri Aug  6 09:42:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
