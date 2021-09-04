@@ -94,4 +94,27 @@
 </comment>
     <requestid>845208</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>276ba64522fdd171cd5aa2729c167559</srcmd5>
+    <version>0.20210811</version>
+    <time>1630787520</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.20210811:
+  * C++ modernization improvements.
+  * Minor style updates.
+  * Enable GN to build &amp; run on z/OS
+  * Fix a typo in the doc of &quot;generated_file&quot;
+  * Update doc/help to say --ninja-executable works for VS Flags
+  * [rust] Fix and test dylib support
+  * Add 'rustenv' to 'gn desc' output
+  * [rust] Clean up logic in PullDependentTargetLibsFrom
+  * Link Rust binaries against transitive public_deps
+  * Fix linking dynamic libraries in Rust binaries
+- Remove patches:
+  * gn-flags.patch
+  * gn-always-python3.patch
+  * riscv.patch
+</comment>
+    <requestid>915527</requestid>
+  </revision>
 </revisionlist>

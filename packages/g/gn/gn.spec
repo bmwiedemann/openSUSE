@@ -1,7 +1,7 @@
 #
 # spec file for package gn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,47 +15,39 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
 Name:           gn
-Version:        0.1807
+Version:        0.20210811
 Release:        0
 Summary:        A meta-build system that generates build files for Ninja
 License:        BSD-3-Clause
 URL:            https://gn.googlesource.com/
-Source:         https://dev.gentoo.org/~floppym/dist/%{name}-%{version}.tar.xz
-Patch0:         gn-flags.patch
-Patch1:         gn-always-python3.patch
-Patch2:         riscv.patch
-BuildRequires:  gcc-c++
+Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  clang
+BuildRequires:  libstdc++-devel
+BuildRequires:  lld
+BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  python3-base
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7-c++
-%endif
 
 %description
 GN is a meta-build system that generates build files for Ninja.
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
+%autosetup
 
 %build
-export CC=gcc
-export CXX=g++
-export AR=ar
-%if 0%{?suse_version} < 1500
-export CC=gcc-7
-export CXX=g++-7
-%endif
-export CXXFLAGS="%{optflags}"
+%define _lto_cflags %{nil}
+ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
+export CXX=clang++
+export AR=llvm-ar
+export CXXFLAGS="${ARCH_FLAGS} -fPIE"
+export LDFLAGS="-fuse-ld=lld -Wl,--build-id=sha1 -pie"
 # bootstrap
 python3 build/gen.py \
   --no-strip \
   --no-last-commit-position \
-  --no-static-libstdc++
+  --no-static-libstdc++ \
+  --use-lto
 PV=%{version}
 cat >out/last_commit_position.h <<-EOF
 	#ifndef OUT_LAST_COMMIT_POSITION_H_

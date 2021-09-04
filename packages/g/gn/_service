@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://gn.googlesource.com/gn.git</param>
+    <param name="revision">69ec4fca1fa69ddadae13f9e6b7507efa0675263</param>
+    <param name="versionformat">0.%cd</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="compression">xz</param>
+    <param name="file">*.tar</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>

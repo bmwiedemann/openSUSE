@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 01 08:59:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 0.20210811:
+  * C++ modernization improvements.
+  * Minor style updates.
+  * Enable GN to build & run on z/OS
+  * Fix a typo in the doc of "generated_file"
+  * Update doc/help to say --ninja-executable works for VS Flags
+  * [rust] Fix and test dylib support
+  * Add 'rustenv' to 'gn desc' output
+  * [rust] Clean up logic in PullDependentTargetLibsFrom
+  * Link Rust binaries against transitive public_deps
+  * Fix linking dynamic libraries in Rust binaries
+- Remove patches:
+  * gn-flags.patch
+  * gn-always-python3.patch
+  * riscv.patch
+
+-------------------------------------------------------------------
 Sat Oct 31 13:43:03 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
 - Add riscv.patch to add support for RISCV
