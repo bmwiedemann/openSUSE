@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Thu Sep 2 13:12:02 UTC 2021 - opensuse-packaging@opensuse.org
+
+- merge gh#openSUSE/installation-images#521
+- Fix conditions for removing zram devices
+- Improvements from code review
+- Fix conditions for turning on/off zram (bcs#1187434)
+- 17.14
+
+--------------------------------------------------------------------
 Wed Aug 25 13:26:27 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/installation-images#519
