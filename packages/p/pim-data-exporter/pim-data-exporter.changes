@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:39:36 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Fix export tests by adding a dummy exportdatatype.xml file again
+  * Allow to save/restore confirmbeforedeletingrc
+
+-------------------------------------------------------------------
 Fri Aug  6 09:42:58 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
