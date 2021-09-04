@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * It seems that code was not build before adding to MR
+
+-------------------------------------------------------------------
 Fri Aug  6 09:37:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
