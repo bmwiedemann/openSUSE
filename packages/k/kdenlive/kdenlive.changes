@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Compile MLT with GCC 9 - fixes brightness effect corruption
+  * Fix mix crossfade sometimes using wrong order (starting at 100% and ending at 0%) instead of reverse
+  * Upgrade document version and fix custom affine effects for MLT 7 when opening older project file
+  * Make it possible to import mlt rect keyframes to frei0r.alphaspot
+
+-------------------------------------------------------------------
 Fri Aug  6 09:37:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
