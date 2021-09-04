@@ -701,4 +701,12 @@ Mainly intended for Leap 42.3 to prevent upgrade problems. (forwarded request 49
     <comment>KDE Gear 21.08.0</comment>
     <requestid>911591</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>814d288bb17fb2ef25ac0ba7ed181014</srcmd5>
+    <version>21.08.1</version>
+    <time>1630787567</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.1</comment>
+    <requestid>915823</requestid>
+  </revision>
 </revisionlist>
