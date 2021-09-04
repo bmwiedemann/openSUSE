@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 31 19:08:43 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * fix drag and drop raise with Xwayland windows (kde#440534)
+  * platforms/drm: check wl_eglstream buffers before attaching (kde#440852)
+  * platforms/drm: fix gpu removal
+  * kcm/kwindecoration: Fix window thumbnail sizes
+  * platforms/drm: consider KWIN_DRM_DEVICES for hotplugged gpus
+  * platforms/drm: fix crashing debug operator
+  * Copy shape region to Deleted (kde#440001,kde#438458,kde#435378)
+  * Avoid discarding previous pixmap (kde#439689)
+- Drop patches, now upstream:
+  * 0001-platforms-drm-check-wl_eglstream-buffers-before-atta.patch
+
+-------------------------------------------------------------------
 Tue Jul 27 12:34:54 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.4
