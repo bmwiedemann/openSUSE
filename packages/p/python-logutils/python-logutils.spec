@@ -26,9 +26,11 @@ Group:          Development/Languages/Python
 URL:            https://logutils.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logutils/logutils-%{version}.tar.gz
 Patch0:         sphinx4.patch
+BuildRequires:  %{python_module redis}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
+BuildRequires:  redis
 BuildArch:      noarch
 %python_subpackages
 
@@ -69,7 +71,8 @@ cd doc && make html
 %python_install
 
 %check
-%python_exec setup.py test
+export PATH="$PATH:/sbin"
+%pyunittest discover -v tests
 
 %files %{python_files}
 %license LICENSE.txt
