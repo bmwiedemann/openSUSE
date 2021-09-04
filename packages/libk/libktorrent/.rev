@@ -415,4 +415,12 @@
   * https://kde.org/announcements/gear/21.08.0</comment>
     <requestid>914379</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>dbd2e9293a47d27ef68696fc2ea0608b</srcmd5>
+    <version>21.08.1</version>
+    <time>1630787711</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.1</comment>
+    <requestid>916010</requestid>
+  </revision>
 </revisionlist>
