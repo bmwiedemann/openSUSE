@@ -12,9 +12,9 @@ Index: mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
 ===================================================================
 --- mariadb-connector-c-3.1.13-src.orig/libmariadb/CMakeLists.txt
 +++ mariadb-connector-c-3.1.13-src/libmariadb/CMakeLists.txt
-@@ -414,6 +414,12 @@ IF(CMAKE_SIZEOF_VOID_P EQUAL 8 AND MSVC)
-   SET_TARGET_PROPERTIES(mariadbclient PROPERTIES STATIC_LIBRARY_FLAGS "/machine:x64")
- ENDIF()
+@@ -414,6 +414,12 @@ TARGET_LINK_LIBRARIES(libmariadb LINK_PRIVATE ${SYSTEM_LIBS})
+ 
+ SIGN_TARGET(libmariadb)
  
 +ADD_LIBRARY(libmariadbprivate SHARED ${libmariadb_RC} $<TARGET_OBJECTS:mariadb_obj> ${EMPTY_FILE} ${EXPORT_LINK})
 +TARGET_LINK_LIBRARIES(libmariadbprivate ${SYSTEM_LIBS})
