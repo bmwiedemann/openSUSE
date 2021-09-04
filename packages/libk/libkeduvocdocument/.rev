@@ -639,4 +639,12 @@
     <comment>KDE Gear 21.08.0</comment>
     <requestid>911773</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>7af1f0813e121d33e44db08c76445c98</srcmd5>
+    <version>21.08.1</version>
+    <time>1630787710</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.1</comment>
+    <requestid>916001</requestid>
+  </revision>
 </revisionlist>
