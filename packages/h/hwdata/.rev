@@ -445,4 +445,13 @@
 - Update to version 0.349 (bsc#1187948):</comment>
     <requestid>909885</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2eebf9a3b9d7e38eb7ec2cf21f8e4065</srcmd5>
+    <version>0.351</version>
+    <time>1630787527</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.351 (bsc#1190091):
+  + Updated pci, usb and vendor ids.</comment>
+    <requestid>915688</requestid>
+  </revision>
 </revisionlist>
