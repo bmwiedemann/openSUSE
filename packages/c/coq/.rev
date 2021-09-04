@@ -186,4 +186,13 @@
   * Fix Ltac2.Array.init computational complexity.</comment>
     <requestid>889764</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>547c6ade113a4a7d659ba8ab63341521</srcmd5>
+    <version>8.13.2</version>
+    <time>1630787726</time>
+    <user>dimstar_suse</user>
+    <comment>- Add documentation package based on github.com/coq/doc until we
+  can build the documentation directly in OBS.</comment>
+    <requestid>916845</requestid>
+  </revision>
 </revisionlist>

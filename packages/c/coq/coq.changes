@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  4 12:51:43 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add documentation package based on github.com/coq/doc until we
+  can build the documentation directly in OBS.
+
+-------------------------------------------------------------------
 Mon Apr 12 21:17:33 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 8.13.2.

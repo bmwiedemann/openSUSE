@@ -29,6 +29,8 @@ URL:            https://coq.inria.fr/
 Source:         https://github.com/coq/coq/archive/V%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        coq.desktop
 Source2:        coq.xml
+Source50:       coq-refman-%{version}.tar.xz
+Source51:       coq-stdlib-%{version}.tar.xz
 Source100:      %{name}-rpmlintrc
 BuildRequires:  desktop-file-utils
 BuildRequires:  make >= 3.81
@@ -70,8 +72,16 @@ Requires:       ocamlfind(findlib)
 %description devel
 This package contains development files for Coq.
 
+%package doc
+Summary:        Documentation for coq
+Group:          Documentation/HTML
+Requires:       %{name} = %{version}
+
+%description doc
+HTML reference manual for Coq and full documentation of the standard library.
+
 %prep
-%setup -q
+%setup -q -a 50 -a 51
 # META for ocamlfind doesn't contain a version, so configure.ml fails. We patch that.
 sed -i 's/v, _ = tryrun camlexec.find \["query"; "-format"; "%v"; "lablgtk3"\]/v = "%{pkg_version ocamlfind(lablgtk3)}"/' \
     configure.ml
@@ -160,6 +170,27 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
                 -or -name '*.o' \
                 -or -name '*.v' | sed "s|%{buildroot}||g" >>devel.list
 
+# Until we can build it, we fetch the documentation from the official website:
+# svn export https://github.com/coq/doc/trunk/V%{version}/refman
+# svn export https://github.com/coq/doc/trunk/V%{version}/stdlib
+# tar --sort=name --owner=0 --group=0 --mtime="@$(stat -c %%Y refman/index.html)" \
+#     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
+#     -cJf coq-refman-%{version}.tar.xz refman
+# tar --sort=name --owner=0 --group=0 --mtime="@$(stat -c %%Y stdlib/index.html)" \
+#     --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime \
+#     -cJf coq-stdlib-%{version}.tar.xz stdlib
+
+# Drop some CSS files and headers in stdlib documentation, add some margin directly.
+find stdlib/ -name '*.html' -exec sed -i '
+s#//coq.inria.fr/sites/all/themes/coq/coqdoc.css#/usr/lib64/coq/tools/coqdoc/coqdoc.css#
+/<link type="text\/css" rel="stylesheet" media="all" href="\/\/coq.inria.fr\/.*.css" \/>/d
+/<div id="container">/s/>/ style="margin:1em;">/
+/^  <div id="headertop">$/,/^  <\/div>$/d
+/^  <div id="header">$/,/^  <\/div>$/d
+' {} +
+cp -r refman stdlib %{buildroot}%{_docdir}/coq
+rm -r %{buildroot}%{_docdir}/coq/refman/{.doctrees,_sources}
+
 %files -f runtime.list
 %license LICENSE CREDITS
 %doc README.md
@@ -222,5 +253,9 @@ find %{buildroot}%{_libdir}/coq -name '*.a' \
 
 %files devel -f devel.list
 %{_libdir}/coq/tools/CoqMakefile.in
+
+%files doc
+%{_docdir}/coq/refman
+%{_docdir}/coq/stdlib
 
 %changelog
