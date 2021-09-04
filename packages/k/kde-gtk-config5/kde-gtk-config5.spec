@@ -18,7 +18,7 @@
 
 %bcond_without lang
 Name:           kde-gtk-config5
-Version:        5.22.4
+Version:        5.22.5
 Release:        0
 Summary:        Daemon for GTK2 and GTK3 Applications Appearance Under KDE
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -30,7 +30,6 @@ Source1:        https://download.kde.org/stable/plasma/%{version}/kde-gtk-config
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-UPSTREAM
-Patch1:         0001-Make-sure-to-actually-commit-GSettings-changes.patch
 Patch2:         0001-Drop-unused-dependency-on-gtk-2.0.patch
 BuildRequires:  extra-cmake-modules >= 0.0.9
 BuildRequires:  gsettings-desktop-schemas

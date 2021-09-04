@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 31 19:08:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * Don't apply window_decorations.css to non-Breeze themes.
+  * Make sure to actually commit GSettings changes
+- Drop patches, now upstream:
+  * 0001-Make-sure-to-actually-commit-GSettings-changes.patch
+
+-------------------------------------------------------------------
 Mon Aug  2 11:58:51 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to drop gtk-2.0 dependency and adjust BuildRequires:
