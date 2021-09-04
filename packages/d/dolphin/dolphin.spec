@@ -16,12 +16,11 @@
 #
 
 
-%define kf5_version 5.60.0
 # Latest stable Applications (e.g. 17.08 in KA, but 17.11.80 in KUA)
 %{!?_kapp_version: %define _kapp_version %(echo %{version}| awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           dolphin
-Version:        21.08.0
+Version:        21.08.1
 Release:        0
 Summary:        KDE File Manager
 License:        GPL-2.0-or-later
@@ -36,6 +35,8 @@ Source3:        dolphinsu.desktop
 Patch0:         dolphin-go_up.diff
 # PATCH-FIX-OPENSUSE
 Patch1:         0001-Revert-Disallow-executing-Dolphin-as-root-on-Linux.patch
+# PATCH-FIX-UPSTREAM
+Patch2:         0001-Port-to-KTerminalLauncherJob.patch
 BuildRequires:  extra-cmake-modules
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
@@ -53,7 +54,7 @@ BuildRequires:  cmake(KF5FileMetaData)
 BuildRequires:  cmake(KF5I18n)
 BuildRequires:  cmake(KF5IconThemes)
 BuildRequires:  cmake(KF5KCMUtils)
-BuildRequires:  cmake(KF5KIO)
+BuildRequires:  cmake(KF5KIO) >= 5.83
 BuildRequires:  cmake(KF5NewStuff)
 BuildRequires:  cmake(KF5Notifications)
 BuildRequires:  cmake(KF5Parts)

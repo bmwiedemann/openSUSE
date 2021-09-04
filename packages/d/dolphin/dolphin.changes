@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  2 10:27:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Add patch to fix the "Open in Terminal" functionality if kinit
+  is not running (kde#441072):
+  * 0001-Port-to-KTerminalLauncherJob.patch
+
+-------------------------------------------------------------------
+Wed Sep  1 12:37:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Filter the items that have changed
+  * FoldersPanel: Fix inline renaming (kde#441124)
+  * Fix selecting file always opening new instance (kde#440663)
+  * Avoid crash on start when help actions are restricted through the Kiosk system
+
+-------------------------------------------------------------------
 Fri Aug  6 09:34:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
