@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:47:47 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
+
+- Mercurial 5.9.1
+  
+  No upstream release notes, see
+  https://www.mercurial-scm.org/repo/hg/log?rev=5.9..5.9.1 for changelog
+  
+- Mercurial 5.9
+  
+  + New Features
+
+    * `hg config` now has a `--source` option to show where each configuration 
+      value comes from. 
+
+-------------------------------------------------------------------
 Wed Jul 14 09:41:40 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.8.1

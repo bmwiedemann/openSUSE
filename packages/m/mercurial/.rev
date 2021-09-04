@@ -1392,4 +1392,12 @@
     <comment></comment>
     <requestid>908585</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>58b9dd8c4061b46dc693214288a6f311</srcmd5>
+    <version>5.9.1</version>
+    <time>1630787530</time>
+    <user>dimstar_suse</user>
+    <comment>Mercurial 5.9.1 (forwarded request 915710 from develop7)</comment>
+    <requestid>915719</requestid>
+  </revision>
 </revisionlist>
