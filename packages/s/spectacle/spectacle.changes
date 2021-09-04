@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:39:39 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * ExportManager: delay copy to clipboard (kde#421974)
+  * Wayland: when screens have same dpr use NativeSize (kde#440226)
+  * Don't show an error message when user cancels screenshot in progress on Wayland
+
+-------------------------------------------------------------------
 Fri Aug  6 09:43:13 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
