@@ -1,0 +1,367 @@
+-------------------------------------------------------------------
+Wed Aug 18 17:22:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.95.0
+  * New "Layer" system, including custom rendering,
+    locking and hiding parts of the molecule
+  * Atom and residue labels
+  * New protein cartoon / ribbon display
+  * Update render options for Wireframe and Ball-and-Sticks
+  * Add CJSON support for save/load residues and atom colors
+  * New View => Apply Colors menu
+  * Apply color schemes for residues
+  * Render selected atoms in VdW and licorice modes
+  * Save enabled / disabled state of scene / rendering plugins on quit
+  * Install all translations
+- Add required i18n subpackage as source (OBS does not support
+  downloading on build time)
+
+-------------------------------------------------------------------
+Thu May 27 11:27:08 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to 1.93.0
+  * A lot bug fixes and enhancements
+  * Build with QT5
+- Drop upstream fixed:
+  * avogadro-port-to-eigen3.patch
+  * 0005-Link-with-libm.patch
+  * 0004-don-t-use-signbit-on-non-float.patch
+  * avogadro-1.1.0-avopkg-fix-echo.patch
+  * avogadro-boost.patch
+  * avogadro-opanbabel.patch
+- Icon and desktop file are now provided by upstream, dopped our
+  versions
+- Drop baselibs.conf, no libraries are installed (they are provided
+  by the avogadrolibs package)
+
+-------------------------------------------------------------------
+Tue Apr  2 12:55:33 UTC 2019 - Andreas Schwab <schwab@suse.de>
+
+- Remove 0006-Fix-libmsym-libdir-for-64bit.patch and define
+  INSTALL_LIB_DIR and INSTALL_CMAKE_DIR via cmdline instead
+
+-------------------------------------------------------------------
+Tue Mar 26 13:29:27 UTC 2019 - Atri B <badshah400@gmail.com>
+
+- Add avogadro-port-to-eigen3.patch: Pick commits from upstream
+  to get avogadro building with eigen3; replace libeigen2-devel
+  BuildRequires by eigen3-devel.
+- Use cmake macros for build (%%cmake_build) and install
+  (%%cmake_install).
+- Use autosetup to setup source and apply patches in one go.
+- Minor specfile cleanups:
+  * Use %%license to package COPYING file.
+  * Do away with defattrs for file lists.
+
+-------------------------------------------------------------------
+Wed Mar  7 15:44:22 UTC 2018 - crrodriguez@opensuse.org
+
+- Correct buildrequires so xorg-x11-devel is no longer 
+  used.
+
+-------------------------------------------------------------------
+Sat Feb  3 21:34:03 UTC 2018 - wbauer@tmo.at
+
+- Force python2 by passing -DPYTHON_EXECUTABLE=%{_bindir}/python2
+  to cmake to fix build on Tumbleweed
+
+-------------------------------------------------------------------
+Wed Dec 27 07:25:10 UTC 2017 - kkaempf@suse.com
+
+- Update to 1.2.0
+  * Support for the ORCA quantum chemistry package, thanks to
+    Dagmar Lenk, including input generation and output parsing
+  * Improved support for MO calculations, including orbitals with F,
+    G, H, and I angular momentum, thanks to Dagmar Lenk
+    and Albert DeFusco
+  * Support for exporting VRML models of atoms, bonds, surfaces,
+    and orbitals (e.g. for 3D printing), thanks to Ethan Pavolik
+  * Support for perceiving molecular symmetry on Mac and Linux using
+    the libmsym library1 (i.e., Properties -> Symmetry),
+    thanks to Marcus Johansson
+  * Updated links to the new Avogadro website3, manual4,
+    and discussion forum
+  * Fixed support for compiling with the Eigen3 library up to
+    version 3.2.8
+  * Improved support for space groups through spglib1
+  * Updated translations1, now including over 25 languages in
+    addition to English
+  * Fixed a bug downloading from the Protein Data Bank
+  * Fixed a bug fetching molecules from the network, including
+    the "chemical by name"
+  * Fixed a bug when naming molecules from the NIH chemical
+    resolver website
+
+- drop avogadro-cmake-3.2.patch, arm-qreal-vs-double.patch (upstream)
+
+- add 0004-don-t-use-signbit-on-non-float.patch,
+  0005-Link-with-libm.patch, 0006-Fix-libmsym-libdir-for-64bit.patch
+
+- fix package group: Productivity/Scientific/Chemistry
+
+-------------------------------------------------------------------
+Sat Dec 23 21:57:19 UTC 2017 - wbauer@tmo.at
+
+- BuildRequire libboost_python-devel instead of boost-devel on
+  Tumbleweed to fix build
+
+-------------------------------------------------------------------
+Mon Mar 28 13:19:13 UTC 2016 - dvaleev@suse.com
+
+- Fix buildfailure with openbabel (avogadro-opanbabel.patch) 
+
+-------------------------------------------------------------------
+Thu Jan  7 14:06:44 UTC 2016 - idonmez@suse.com
+
+- Add avogadro-boost.patch to fix build failures with boost 1.60.0 
+
+-------------------------------------------------------------------
+Sat Apr  4 13:38:03 UTC 2015 - dmueller@suse.com
+
+- add arm-qreal-vs-double.patch
+
+-------------------------------------------------------------------
+Tue Mar 24 16:11:06 UTC 2015 - sfalken@opensuse.org
+
+- Added patch to fix building against cmake >= 3.2, libX11 is no
+  longer magically implied. (sf#avogadro/bugs/746)
+  + avogadro-cmake-3.2.patch
+
+-------------------------------------------------------------------
+Sat Feb 14 18:32:00 UTC 2015 - Led <ledest@gmail.com>
+
+- fix using 'echo' command in avopkg script
+- add patches:
+  * avogadro-1.1.0-avopkg-fix-echo.patch
+
+-------------------------------------------------------------------
+Thu Dec 18 11:35:41 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.1.1
+  * Rudimentary support for retinal display Macs
+  * Support for manual adjustment of the view
+  * DNA/RNA builder
+  * Simple LAMMPS input generator for water
+  * PSI4 input generator added
+  * Fixed QTAIM to work on Windows
+  * Updated gl2ps snapshot
+- Remove fixed patches
+  * avogadro-1.1.0-no-return-in-nonvoid-function.patch
+  * MopacAuxReaderFix.patch
+  * shlib-pic-flag.patch
+- Use %cmake macro
+
+-------------------------------------------------------------------
+Thu Dec 18 11:35:41 UTC 2014 - p.drouand@gmail.com
+
+- Update to version 1.1.1
+  * Rudimentary support for retinal display Macs
+  * Support for manual adjustment of the view
+  * DNA/RNA builder
+  * Simple LAMMPS input generator for water
+  * PSI4 input generator added
+  * Fixed QTAIM to work on Windows
+  * Updated gl2ps snapshot
+- Remove fixed patches
+  * avogadro-1.1.0-no-return-in-nonvoid-function.patch
+  * MopacAuxReaderFix.patch
+  * shlib-pic-flag.patch
+- Use %cmake macro
+
+-------------------------------------------------------------------
+Sun Aug 11 09:08:02 UTC 2013 - schwab@suse.de
+
+- Compile with %{optflags}
+- Use RelWithDebInfo build type not to strip binaries
+- shlib-pic-flag.patch: Always use PIC in shlib objects
+
+-------------------------------------------------------------------
+Tue Feb  5 01:12:27 UTC 2013 - stecue@gmail.com
+
+- added MopacAuxReaderFix.patch to avoid crash when loading aux.
+- fixed build on SLES
+- split off python package
+  (also use sitearch for arch-dependent files)
+
+-------------------------------------------------------------------
+Sun Feb  3 16:25:54 UTC 2013 - lars@linux-schulserver.de
+
+- added avogadro-1.1.0-no-return-in-nonvoid-function.patch
+
+-------------------------------------------------------------------
+Sun Oct  7 20:17:02 UTC 2012 - lars@linux-schulserver.de
+
+- update to 1.1.0:
+  + Fix crash with dipole moment after optimization (PR#3521044)
+  + Add test files for QTAIM analysis, including diborane(B2H6), 
+    C4H4, and HCO2. These files will be used for a tutorial 
+  + Fix residue and atom code assignment
+  + be conservative about changing elements when copying atoms 
+    for the same reason
+- removed avogadro-boost148.patch and avogadro-nostrip.patch
+
+-------------------------------------------------------------------
+Fri Oct  5 11:30:01 UTC 2012 - coolo@suse.com
+
+- glew no longer requires glu, so buildrequire it explicitly
+
+-------------------------------------------------------------------
+Mon Sep 24 09:52:28 UTC 2012 - schwab@linux-m68k.org
+
+- Use %{optflags} and don't strip binaries
+
+-------------------------------------------------------------------
+Tue Apr  3 09:31:46 UTC 2012 - idonmez@suse.com
+
+- Fix compile with boost 1.48 
+
+-------------------------------------------------------------------
+Wed Feb 15 20:25:53 UTC 2012 - lars@linux-schulserver.de
+
+- fix Copyright header in specfile and license (spdx format)
+
+-------------------------------------------------------------------
+Tue Nov 29 10:57:01 CET 2011 - ro@suse.de
+
+- use _lib macro to determine lib suffix
+
+-------------------------------------------------------------------
+Sat Sep 17 13:54:22 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Implement baselibs for package
+
+-------------------------------------------------------------------
+Mon Aug  8 10:34:25 UTC 2011 - toddrme2178@gmail.ccom
+  
+- Added check for duplicate files (fix for RPMLINT warning)
+- Removed name from summary (fix for RPMLINT warning)
+- Cleaned up spec file formatting
+ 
+-------------------------------------------------------------------
+Mon Jun  6 10:45:56 UTC 2011 - andrea@opensuse.org
+
+- Spec file clean up 
+
+-------------------------------------------------------------------
+Fri May 20 03:42:46 UTC 2011 - stecue@gmail.com
+
+- removed the obsolete patches due to the new upstream version.
+- no more crash on openSUSE 11.4 when starting.
+- new upstream version (bugfix release)
+  * Fixed building of translations on Linux and Mac OS X. 
+  * Fixed issues with newer versions of SIP
+  * Import Avogadro automatically in the Python terminal
+  * Some fixes/adjustments for newer versions of Open Babel
+  * Fixed a bug in the bounds for cubes, now isosurfaces align to molecules in all cases
+  * Added picking support in wireframe - enables editing of atoms in this mode
+  * Fixed some crashes when drawing with adjust hydrogens on
+  * Ensure the GAMESS input generator updates when atoms are added, removed or updated
+  * Added some missing entries in the GAMESS input dialog
+  * Fixes to the NWChem input generator
+  * Add LARGE keyword to MOPAC input files to give full output of MOs
+  * Fixed autobonding in animations when rendering in POV-Ray for video
+  * Removed some old CMake code that was no longer needed
+  * Made Linguist optional for Avogadro builds
+  * Fixes for compilation on Windows
+  * Fixed a few memory leaks 
+
+-------------------------------------------------------------------
+Tue Oct 19 13:11:24 UTC 2010 - andrea@opensuse.org
+
+- removed proprietary test files from the tarball bnc#645306 
+
+-------------------------------------------------------------------
+Tue Oct 19 13:11:24 UTC 2010 - andrea@opensuse.org
+
+- removed proprietary test files from the tarball bnc#645306 
+
+-------------------------------------------------------------------
+Fri Oct  8 11:48:57 UTC 2010 - coolo@novell.com
+
+- move the changelog to .changes to prepare factory submission
+
+-------------------------------------------------------------------
+Fri Nov  6 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- new upstream version (Stable release)
+
+-------------------------------------------------------------------
+Sat Jul 25 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- new upstream version (bugfix release)
+
+-------------------------------------------------------------------
+Fri Jun  5 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- new upstream version (bugfix release)
+
+-------------------------------------------------------------------
+Wed Jun  3 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.9.5
+- disabled update checker
+
+-------------------------------------------------------------------
+Tue May  5 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.9.4
+
+-------------------------------------------------------------------
+Wed Apr  8 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- fixed bug 2737083 :
+  https://sourceforge.net/tracker/?func=detail&aid=2737083&group_id=165310&atid=835077
+
+-------------------------------------------------------------------
+Sat Apr  4 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- new upstream version 0.9.3
+
+-------------------------------------------------------------------
+Thu Mar 19 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- update to version 0.9.2
+- added several BuildRequires to allow GLSL  module and
+  docs compilation, python module still broken
+- added fdupes to symlink duplicate files
+
+-------------------------------------------------------------------
+Mon Feb 23 00:00:00 UTC 2009 - andrea@opensuse.org
+
+- update to version 0.9.1
+
+-------------------------------------------------------------------
+Wed Jun 11 00:00:00 UTC 2008 - andrea@opensuse.org
+
+- update to version 0.8.1
+- lots of fixing and improving:
+    for more info check here: http://avogadro.openmolecules.net/wiki/Avogadro_0.8.1
+- made rpmlint happier
+
+-------------------------------------------------------------------
+Fri May 30 00:00:00 UTC 2008 - andrea@opensuse.org
+
+- update to version 0.8.0
+
+-------------------------------------------------------------------
+Mon Mar 24 00:00:00 UTC 2008 - andrea@opensuse.org
+
+- update to version 0.6.1
+
+-------------------------------------------------------------------
+Fri Dec 21 00:00:00 UTC 2007 - andrea@opensuse.org
+
+- Fixed URL project page
+- Fixed libavogadro0 and avogadro-devel package
+- added libavogadro like obsoletes
+- follow shared library packagin policy:
+  rename libavogadro to libavogadro0
+- create a devel package containing the headers files
+- make the compiler happier: added avogadro-0.2.0-mathmeaning.patch
+
+-------------------------------------------------------------------
+Sun Dec 16 00:00:00 UTC 2007 - andrea@opensuse.org
+
+- First spec making
+
