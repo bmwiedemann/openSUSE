@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 26 13:59:42 UTC 2021 - Peter Varkoly <varkoly@suse.com>
+
+- postfix master.cf: to include "submissions" service
+  (bsc#1189684)
+  Adapt master.cf patch
+
+-------------------------------------------------------------------
 Tue Aug 24 09:55:02 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
 - postfix fails with glibc 2.34

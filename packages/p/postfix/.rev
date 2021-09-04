@@ -2024,4 +2024,12 @@ successfully tested on Tumbleweed x86_64</comment>
   - postfix-3.6.2-glibc-234-build-fix.patch</comment>
     <requestid>914312</requestid>
   </revision>
+  <revision rev="209" vrev="4">
+    <srcmd5>fe4fd196e6514d60f4efd750c45113d4</srcmd5>
+    <version>3.6.2</version>
+    <time>1630787533</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>915779</requestid>
+  </revision>
 </revisionlist>
