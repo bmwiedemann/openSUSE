@@ -835,4 +835,12 @@ Please add to Staging:I project where giflib 5.1.0 is being tested.</comment>
     <comment>KDE Gear 21.08.0</comment>
     <requestid>911723</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>2b71d2c3bcdbbb3b128cc8c12a5db240</srcmd5>
+    <version>21.08.1</version>
+    <time>1630787598</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Gear 21.08.1</comment>
+    <requestid>915952</requestid>
+  </revision>
 </revisionlist>
