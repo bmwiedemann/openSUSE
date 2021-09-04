@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Assign parentWidget before creating plugin.
+
+-------------------------------------------------------------------
 Fri Aug  6 09:39:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
