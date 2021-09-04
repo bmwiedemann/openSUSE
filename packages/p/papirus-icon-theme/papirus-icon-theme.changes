@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Fri Sep  3 23:11:30 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 20210901.
+  * Added icons
+    * Animage
+    * Audacium (AppImage)
+    * Avocado (PSX emulator)
+    * Badger
+    * Badgie
+    * Bauh (tray icons)
+    * Burp Suite #2768
+    * CatFacts
+    * DarkBar
+    * Deepin applications
+    * edit-move (actions icon)
+    * Enigma
+    * GitsCover
+    * Grapejuice #2770
+    * GreenWithEnvy (tray icons)
+    * Health
+    * Highscore #2762
+    * Hourglass
+    * Insomnia
+    * Iridium
+    * Jadx-Gui #2776
+    * Khronos
+    * Kiwix (Flathub) #2007
+    * KLayout (Flathub) #2007
+    * KWin (actions icons) #2789
+    * LibreOffice 7.2
+    * Louper
+    * Mandelbulber2 (Flathub) #2007
+    * Mattermost (tray icons)
+    * MediaGet
+    * Mixer
+    * Moneta
+    * mpvz
+    * Nasc
+    * NES, SNES, and Wii (mimetype icons) #2505
+    * ObConf-Qt
+    * Olivia
+    * Ordne
+    * OutLiner
+    * ParaView (Flathub) #2007
+    * Pebbles
+    * Peeq
+    * Play! (PS2 emulator)
+    * Popsicle
+    * QRC (mimetype icons)
+    * QtWAW (app & tray) #2769
+    * Rambox Pro (app & tray icons) #2765
+    * Rannum
+    * Remember The Milk (tray icons)
+    * remmina-status (tray icons)
+    * Scilab (Flathub) #2007
+    * ShouldIDoIt
+    * SMPlayer (Flatpak, AppImage)
+    * Sonic Mania (Steam and Lutris)
+    * Synology Cloud Station Backup #2007
+    * Time-Limit
+    * Touché #2785
+    * Tuner
+    * TypeWriter
+    * Wasabi Wallet (Flathub) #2007
+    * Weather icons (48px status) #2764
+    * window-keep-{above,below}, and window-{shade,unshade}
+      (actions icons) #2767
+    * Windy weather icons #2764
+    * Yaradio Yamusic (app and tray icons)
+    * Zint Barcode Studio (Flathub) #2007
+  * Updated icons
+    * Audacium
+    * Dialect #2421
+    * Insync (app and tray icons)
+    * Mailspring
+    * Preferences Desktop Display
+    * RPCS3
+    * show-menu (actions icon)
+    * Ubiquity
+  * Changes and fixes
+    * Increased opacity for monochrome icons from
+      0.30 to 0.35 #2782
+    * Removed Blueman icons from status #2784
+    * Removed KDE color scheme from ePapirus symbolic icons #2781
+  * Others
+    * Added test for searching unoptimized icons
+    * Fixed installation issue when target directory contained
+      spaces #2795
+
+-------------------------------------------------------------------
 Thu Aug 12 23:25:27 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Update to version 20210802

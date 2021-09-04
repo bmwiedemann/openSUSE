@@ -17,7 +17,7 @@
 
 
 Name:           papirus-icon-theme
-Version:        20210802
+Version:        20210901
 Release:        0
 Summary:        Papirus icon theme for Linux
 License:        GPL-3.0-only
@@ -38,6 +38,7 @@ and other modifications. The theme is available for GTK and KDE.
 This package contains the following icon themes:
 
 ePapirus
+ePapirus-Dark
 Papirus
 Papirus-Dark
 Papirus-Light
@@ -61,6 +62,7 @@ find %{buildroot}%{_datadir}/icons -name LICENSE -delete
 %doc README.md
 %license LICENSE
 %{_datadir}/icons/ePapirus
+%{_datadir}/icons/ePapirus-Dark
 %{_datadir}/icons/Papirus
 %{_datadir}/icons/Papirus-Light
 %{_datadir}/icons/Papirus-Dark
