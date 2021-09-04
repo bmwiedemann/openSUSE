@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:14 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Re-add servicetype for pimeventsplugin (kde#440449)
+  * Fix autotest
+  * Allow to cancel action
+
+-------------------------------------------------------------------
 Fri Aug  6 09:37:16 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
