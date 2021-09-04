@@ -242,4 +242,14 @@
 </comment>
     <requestid>912868</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e8b4d599250f25f3e682218390525cfe</srcmd5>
+    <version>0.0.1+git.1630589391.4557cfd</version>
+    <time>1630787531</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.0.1+git.1630589391.4557cfd:
+  * macros: fix names of states and modules
+</comment>
+    <requestid>915768</requestid>
+  </revision>
 </revisionlist>
