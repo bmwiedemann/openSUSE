@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:38:49 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Only emit empty() in SessionFinished() when in TabbedNavigation mode (kde#441206)
+  * When closing a session, don't close the whole window if there are splits
+  * Fix MainWindow size when there is no saved size
+  * Fix KXmlGUI toolbars; and Konsole MainWindow size (kde#430036)
+  * Fix crash when setting blur effect (kde#439871)
+  * Prevent window "flashing" when closing the last session (kde#432077)
+- Drop upstream patches:
+  * 0001-Fix-KXmlGUI-toolbars-and-konsole-MainWindow-size.patch
+  * 0001-Fix-MainWindow-size-when-there-is-no-saved-size.patch
+
+-------------------------------------------------------------------
 Wed Aug 18 06:16:19 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix KXmlGUI toolbars and Konsole
