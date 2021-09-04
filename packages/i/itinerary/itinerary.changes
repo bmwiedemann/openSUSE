@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:37:51 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Properly encode mail attachments received via FairEmail share intents
+  * Rename icon according to Flatpak convention
+  * Add breeze as fallback icon theme
+  * Add 21.08.0 changelog
+
+-------------------------------------------------------------------
 Fri Aug  6 09:34:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
