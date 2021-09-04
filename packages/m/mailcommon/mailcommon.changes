@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:39:28 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Fix CryptoUtils::assembleMessage() to not add bogus text/plain content-type
+  * Fix FilterActionEncryptTest, workaround now expired key in test data
+  * filter tests: adapt to kmime enforcing explicit Content-Type
+  * FavoriteProxyTest: adapt test for dropping option on favourites
+
+-------------------------------------------------------------------
 Fri Aug  6 09:42:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 21.08.0
