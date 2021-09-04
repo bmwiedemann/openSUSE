@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Aug 31 19:08:47 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 5.22.5
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/plasma/5/5.22.5
+- Changes since 5.22.4:
+  * [emojier] Set KLocalizedContext
+  * [emojier] Register QAbstractItemModel to QML
+  * [containments/desktop] Stop hardcoding applet handle tooltip position (kde#425636)
+  * [containments/panel] Fix panel applet configuration with touch (kde#439918)
+  * [desktoppackage/alternatives] Don't overflow with long text (kde#439098)
+  * [applets/taskmanager] Don't make pinned app tooltips interactive (kde#439094)
+  * [containments/desktop] Fix applet overlay icon size with touch interaction
+  * Use the correct panel prefixes from the theme
+
+-------------------------------------------------------------------
 Tue Jul 27 12:34:58 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.4
