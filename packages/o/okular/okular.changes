@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:39:33 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 21.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/21.08.1
+- Changes since 21.08.0:
+  * Stamps: Fix final showing the expired stamp (kde#441134)
+  * textpage: Don't use the page bounding rect as initial text rect
+  * CI: silence clazy warning now that there's a new clazy version
+
+-------------------------------------------------------------------
 Fri Aug 27 13:19:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable lto for ppc64 builds.
