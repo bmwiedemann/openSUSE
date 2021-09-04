@@ -1249,4 +1249,21 @@ http://lists.opensuse.org/opensuse-factory/2015-03/msg00391.html (forwarded requ
     * Updated lists of ioctl commands from Linux 5.13. (forwarded request 907067 from AndreasSchwab)</comment>
     <requestid>907068</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>433ab3c1d1d4cc2bf84695d3d6865873</srcmd5>
+    <version>5.14</version>
+    <time>1630787532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to strace 5.14
+  * Improvements
+    * Implemented decoding of memfd_secret and quotactl_fd syscalls,
+      introduced in Linux 5.14.
+    * Enhanced prctl syscall decoding.
+    * Enhanced decoding of IFLA_* netlink attributes.
+    * Enhanced decoding of MDBA_ROUTER_PATTR_* mdb router port netlink attributes.
+    * Updated lists of BPF_*, IORING_*, MADV_*, MOUNT_ATTR_*, SCTP_*,
+      and UFFD_* constants.
+    * Updated lists of ioctl commands from Linux 5.14. (forwarded request 915775 from AndreasSchwab)</comment>
+    <requestid>915776</requestid>
+  </revision>
 </revisionlist>
