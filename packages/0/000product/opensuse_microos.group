@@ -72,7 +72,7 @@
     <package name="libjson-c5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="libkeyutils1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="libkmod2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
-    <package name="libldap-2_5-0" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
+    <package name="libldap-2_4-2" supportstatus="unsupported"/> <!-- reason: opensuse_microos:patterns-microos-base -->
     <package name="liblua5_4-5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="liblz4-1" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->
     <package name="liblzma5" supportstatus="unsupported"/> <!-- reason: opensuse_microos:kernel-default -->

@@ -1,8 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds: [x86_64] 
-  - 389-ds-devel: [x86_64] 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -8120,7 +8119,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -8612,7 +8611,6 @@ unsorted:
   - lib2geom-devel 
   - lib3270-5_3 
   - lib3270-devel 
-  - lib389: [x86_64] 
   - lib3ds-1-3 
   - lib3ds-devel 
   - lib4store-devel 
@@ -13827,7 +13825,6 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
-  - libsvrcore0: [x86_64] 
   - libswitchboard-2_0-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
@@ -16202,7 +16199,7 @@ unsorted:
   - mozilla-nss-devel 
   - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit: [x86_64] 
-  - mozilla-nss-tools 
+  - mozilla-nss-tools: [i586] 
   - mozilla-zilla-slab-fonts 
   - mozjs78 
   - mozjs78-devel 
@@ -17922,6 +17919,7 @@ unsorted:
   - openldap2-devel-32bit: [x86_64] 
   - openldap2-devel-static 
   - openldap2-doc 
+  - openldap2-ppolicy-check-password 
   - openlibm-devel 
   - openlierox 
   - openmarkup 
@@ -24543,9 +24541,9 @@ unsorted:
   - python38-arabic-reshaper 
   - python38-archmage 
   - python38-arf 
-  - python38-argcomplete 
+  - python38-argcomplete: [i586] 
   - python38-argh 
-  - python38-argparse-manpage 
+  - python38-argparse-manpage: [i586] 
   - python38-args 
   - python38-arrow 
   - python38-asciimatics 
@@ -24902,7 +24900,7 @@ unsorted:
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
-  - python38-cachetools 
+  - python38-cachetools: [i586] 
   - python38-cachey 
   - python38-cachy 
   - python38-cairocffi 
@@ -25407,14 +25405,14 @@ unsorted:
   - python38-funcy 
   - python38-furl 
   - python38-fuse 
-  - python38-fusepy 
+  - python38-fusepy: [i586] 
   - python38-fuzzywuzzy 
   - python38-fysom 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
-  - python38-gcsfs 
-  - python38-gcsfs-fuse 
+  - python38-gcsfs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-gcsfs-fuse: [i586] 
   - python38-gear 
   - python38-ged4py 
   - python38-genfire 
@@ -25446,9 +25444,9 @@ unsorted:
   - python38-goobook 
   - python38-google-api-core 
   - python38-google-api-python-client 
-  - python38-google-auth 
+  - python38-google-auth: [i586] 
   - python38-google-auth-httplib2 
-  - python38-google-auth-oauthlib 
+  - python38-google-auth-oauthlib: [i586] 
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
@@ -25733,7 +25731,7 @@ unsorted:
   - python38-lazy 
   - python38-lazy-object-proxy 
   - python38-lazyarray 
-  - python38-ldap 
+  - python38-ldap: [i586] 
   - python38-ldap3 
   - python38-ldapdomaindump 
   - python38-ldappool 
@@ -26643,7 +26641,7 @@ unsorted:
   - python38-requests-html 
   - python38-requests-kerberos 
   - python38-requests-mock 
-  - python38-requests-oauthlib 
+  - python38-requests-oauthlib: [i586] 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 

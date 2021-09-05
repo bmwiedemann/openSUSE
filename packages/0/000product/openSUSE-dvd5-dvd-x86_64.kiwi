@@ -54,6 +54,7 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="x86_64"/>
     </metadata>
     <repopackages>
+      <repopackage name="389-ds" arch="x86_64"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
       <repopackage name="abcde"/>
@@ -1318,6 +1319,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
+      <repopackage name="krb5-client" arch="x86_64"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -1396,6 +1398,7 @@
       <repopackage name="lftp"/>
       <repopackage name="lhasa"/>
       <repopackage name="lib2geom1_1_0"/>
+      <repopackage name="lib389" arch="x86_64"/>
       <repopackage name="liba52-0"/>
       <repopackage name="libaa1"/>
       <repopackage name="libabw-0_1-1"/>
@@ -2254,8 +2257,8 @@
       <repopackage name="liblayout"/>
       <repopackage name="liblcms2-2"/>
       <repopackage name="libldac2"/>
-      <repopackage name="libldap-2_5-0"/>
-      <repopackage name="libldap-2_5-0-32bit" arch="x86_64"/>
+      <repopackage name="libldap-2_4-2"/>
+      <repopackage name="libldap-2_4-2-32bit" arch="x86_64"/>
       <repopackage name="libldap-data"/>
       <repopackage name="libldapcpp1"/>
       <repopackage name="libldb2"/>
@@ -2814,6 +2817,7 @@
       <repopackage name="libsunpinyin3"/>
       <repopackage name="libsvn_auth_gnome_keyring-1-0"/>
       <repopackage name="libsvn_auth_kwallet-1-0"/>
+      <repopackage name="libsvrcore0" arch="x86_64"/>
       <repopackage name="libSvtAv1Enc0" arch="x86_64"/>
       <repopackage name="libswresample3_9"/>
       <repopackage name="libswscale5_9"/>
@@ -3333,6 +3337,7 @@
       <repopackage name="mozilla-nspr"/>
       <repopackage name="mozilla-nss"/>
       <repopackage name="mozilla-nss-certs"/>
+      <repopackage name="mozilla-nss-tools" arch="x86_64"/>
       <repopackage name="MozillaFirefox"/>
       <repopackage name="MozillaFirefox-branding-openSUSE"/>
       <repopackage name="MozillaFirefox-translations-common"/>
@@ -3941,7 +3946,9 @@
       <repopackage name="python38-alembic"/>
       <repopackage name="python38-apipkg"/>
       <repopackage name="python38-appdirs"/>
+      <repopackage name="python38-argcomplete" arch="x86_64"/>
       <repopackage name="python38-argon2-cffi"/>
+      <repopackage name="python38-argparse-manpage" arch="x86_64"/>
       <repopackage name="python38-asn1crypto"/>
       <repopackage name="python38-async_generator"/>
       <repopackage name="python38-async_timeout"/>
@@ -3956,11 +3963,13 @@
       <repopackage name="python38-bcrypt"/>
       <repopackage name="python38-Beaker"/>
       <repopackage name="python38-beautifulsoup4"/>
+      <repopackage name="python38-blinker" arch="x86_64"/>
       <repopackage name="python38-boto3"/>
       <repopackage name="python38-botocore"/>
       <repopackage name="python38-Bottleneck"/>
       <repopackage name="python38-brotlipy"/>
       <repopackage name="python38-cached-property"/>
+      <repopackage name="python38-cachetools" arch="x86_64"/>
       <repopackage name="python38-certifi"/>
       <repopackage name="python38-cffi"/>
       <repopackage name="python38-chardet"/>
@@ -3993,7 +4002,10 @@
       <repopackage name="python38-flufl.i18n"/>
       <repopackage name="python38-flufl.lock"/>
       <repopackage name="python38-fsspec"/>
+      <repopackage name="python38-fusepy" arch="x86_64"/>
       <repopackage name="python38-future"/>
+      <repopackage name="python38-gcsfs" arch="x86_64"/>
+      <repopackage name="python38-gcsfs-fuse" arch="x86_64"/>
       <repopackage name="python38-Genshi"/>
       <repopackage name="python38-gevent"/>
       <repopackage name="python38-gmpy"/>
@@ -4001,6 +4013,8 @@
       <repopackage name="python38-gobject"/>
       <repopackage name="python38-gobject-cairo"/>
       <repopackage name="python38-gobject-Gdk"/>
+      <repopackage name="python38-google-auth" arch="x86_64"/>
+      <repopackage name="python38-google-auth-oauthlib" arch="x86_64"/>
       <repopackage name="python38-greenlet"/>
       <repopackage name="python38-gst"/>
       <repopackage name="python38-gunicorn"/>
@@ -4023,6 +4037,7 @@
       <repopackage name="python38-kiwisolver"/>
       <repopackage name="python38-lazr.config"/>
       <repopackage name="python38-lazr.delegates"/>
+      <repopackage name="python38-ldap" arch="x86_64"/>
       <repopackage name="python38-liblarch"/>
       <repopackage name="python38-liblarch-gtk"/>
       <repopackage name="python38-libvirt-python"/>
@@ -4046,6 +4061,7 @@
       <repopackage name="python38-notify2"/>
       <repopackage name="python38-numexpr"/>
       <repopackage name="python38-numpy"/>
+      <repopackage name="python38-oauthlib" arch="x86_64"/>
       <repopackage name="python38-olefile"/>
       <repopackage name="python38-openpyxl"/>
       <repopackage name="python38-ordered-set"/>
@@ -4077,6 +4093,7 @@
       <repopackage name="python38-Pygments"/>
       <repopackage name="python38-pygraphviz"/>
       <repopackage name="python38-PyHamcrest"/>
+      <repopackage name="python38-PyJWT" arch="x86_64"/>
       <repopackage name="python38-pylibmc"/>
       <repopackage name="python38-pymongo"/>
       <repopackage name="python38-PyMySQL"/>
@@ -4102,6 +4119,7 @@
       <repopackage name="python38-redis"/>
       <repopackage name="python38-reportlab"/>
       <repopackage name="python38-requests"/>
+      <repopackage name="python38-requests-oauthlib" arch="x86_64"/>
       <repopackage name="python38-requests-toolbelt"/>
       <repopackage name="python38-roman"/>
       <repopackage name="python38-rpm"/>
