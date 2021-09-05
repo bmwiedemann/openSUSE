@@ -16,8 +16,16 @@
 #
 
 
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir /var/adm/fillup-templates
+%endif
+
 %define run_test_suite 0
-%define version_main 2.5.7
+%define version_main 2.4.59
+%define name_ppolicy_check_module ppolicy-check-password
+%define version_ppolicy_check_module 1.2
+%define ppolicy_docdir %{_docdir}/openldap-%{name_ppolicy_check_module}-%{version_ppolicy_check_module}
 %define slapdrundir %{_rundir}/slapd
 
 Name:           openldap2
@@ -46,10 +54,19 @@ Source21:       slapd-ldif-update-crc.sh
 Source22:       update-crc.sh
 Source23:       slapd.conf
 Source24:       slapd.conf.olctemplate
+Patch1:         0001-ITS-8866-slapo-unique-to-return-filter-used-in-diagn.patch
 Patch3:         0003-LDAPI-socket-location.dif
 Patch5:         0005-pie-compile.dif
+Patch7:         0007-Recover-on-DB-version-change.dif
 Patch8:         0008-In-monitor-backend-do-not-return-Connection0-entries.patch
+Patch11:        0011-openldap-re24-its7796.patch
+Patch15:        openldap-r-only.dif
 Patch16:        0016-Clear-shared-key-only-in-close-function.patch
+Source200:      %{name_ppolicy_check_module}-%{version_ppolicy_check_module}.tar.gz
+Source201:      %{name_ppolicy_check_module}.Makefile
+Source202:      %{name_ppolicy_check_module}.conf
+Source203:      %{name_ppolicy_check_module}.5
+Patch200:       0200-Fix-incorrect-calculation-of-consecutive-number-of-c.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  cyrus-sasl-devel
@@ -68,7 +85,7 @@ BuildRequires:  pkgconfig(systemd)
 %{?systemd_requires}
 %endif
 Requires:       /usr/bin/awk
-Requires:       libldap-2_5-0 = %{version_main}
+Requires:       libldap-2_4-2 = %{version_main}
 Recommends:     cyrus-sasl
 Conflicts:      openldap
 PreReq:         %fillup_prereq
@@ -146,6 +163,7 @@ cloak
 denyop
 lastbind      writes last bind timestamp to entry
 noopsrch      handles no-op search control
+pw-argon2     generates/validates Argon2 password hashes
 pw-sha2       generates/validates SHA-2 password hashes
 pw-pbkdf2     generates/validates PBKDF2 password hashes
 smbk5pwd      generates Samba3 password hashes (heimdal krb disabled)
@@ -163,7 +181,7 @@ The OpenLDAP Admin Guide plus a set of OpenLDAP related IETF internet drafts.
 %package client
 Summary:        OpenLDAP client utilities
 Group:          Productivity/Networking/LDAP/Clients
-Requires:       libldap-2_5-0 = %{version_main}
+Requires:       libldap-2_4-2 = %{version_main}
 
 %description client
 OpenLDAP client utilities such as ldapadd, ldapsearch, ldapmodify.
@@ -177,7 +195,7 @@ Obsoletes:      openldap2-devel-64bit
 %endif
 #
 Conflicts:      openldap-devel
-Requires:       libldap-2_5-0 = %{version_main}
+Requires:       libldap-2_4-2 = %{version_main}
 Recommends:     cyrus-sasl-devel
 
 %description devel
@@ -195,22 +213,54 @@ Requires:       openldap2-devel = %version
 This package provides the static versions of the OpenLDAP libraries
 for development.
 
-%package      -n libldap-2_5-0
+%package      -n libldap-2_4-2
 Summary:        OpenLDAP Client Libraries
 Group:          Productivity/Networking/LDAP/Clients
 Recommends:     libldap-data >= %{version_main}
 
-%description -n libldap-2_5-0
+%description -n libldap-2_4-2
 This package contains the OpenLDAP client libraries.
 
+%package ppolicy-check-password
+Version:        %{version_ppolicy_check_module}
+Release:        0
+Summary:        Password quality check module for OpenLDAP
+Group:          Productivity/Networking/LDAP/Servers
+URL:            https://github.com/onyxpoint/ppolicy-check-password
+BuildRequires:  cracklib-devel
+Requires:       openldap2 = %version_main
+Recommends:     cracklib
+Recommends:     cracklib-dict-full
+
+%description ppolicy-check-password
+An implementation of password quality check module, based on the original
+work done by LDAP Toolbox Project (https://ltd-project.org), that works
+together with OpenLDAP password policy overlay (ppolicy), to enforce
+password strength policies.
+
 %prep
-# Unpack and patch OpenLDAP 2.5
+# Unpack ppolicy check module
+%setup -b 200 -q -n %{name_ppolicy_check_module}-%{version_ppolicy_check_module}
+%patch200 -p1
+cd ..
+# Compress the manual page of ppolicy check module
+gzip -k %{S:203}
+
+# Unpack and patch OpenLDAP 2.4
 %setup -q -a 9 -n openldap-%{version_main}
+%patch1 -p1
 %patch3 -p1
 %patch5 -p1
+%patch7 -p1
 %patch8 -p1
+%patch11 -p1
+%patch15 -p1
 %patch16 -p1
 cp %{SOURCE5} .
+
+# Move ppolicy check module and its Makefile into openldap-2.4/contrib/slapd-modules/
+mv ../%{name_ppolicy_check_module}-%{version_ppolicy_check_module} contrib/slapd-modules/%{name_ppolicy_check_module}
+cp %{S:201} contrib/slapd-modules/%{name_ppolicy_check_module}/Makefile
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
@@ -231,10 +281,13 @@ export STRIP=""
         --with-cyrus-sasl \
         --enable-crypt \
         --enable-ipv6=yes \
-        --enable-dynacl \
         --enable-aci \
+        --enable-bdb=mod \
+        --enable-hdb=mod \
+        --enable-rewrite \
         --enable-ldap=mod \
         --enable-meta=mod \
+        --enable-monitor=mod \
         --enable-perl=mod \
         --enable-sock=mod \
         --enable-sql=mod \
@@ -244,19 +297,21 @@ export STRIP=""
         --enable-overlays=mod \
         --enable-syncprov=mod \
         --enable-ppolicy=mod \
+        --enable-lmpasswd \
         --with-yielding-select \
-        --with-argon2 \
   || cat config.log
 make depend
 make %{?_smp_mflags}
 # Build selected contrib overlays
-for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace
+for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/argon2 passwd/sha2 passwd/pbkdf2 trace
 do
   make -C contrib/slapd-modules/${SLAPO_NAME} %{?_smp_mflags} "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}"
 done
 # slapo-smbk5pwd only for Samba password hashes
 make -C contrib/slapd-modules/smbk5pwd %{?_smp_mflags} "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" DEFS="-DDO_SAMBA" HEIMDAL_LIB=""
 
+# Build ppolicy-check-password module
+make -C contrib/slapd-modules/%{name_ppolicy_check_module} %{?_smp_mflags} "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}"
 # Create ldap user
 %sysusers_generate_pre %{SOURCE19} ldap
 
@@ -294,12 +349,12 @@ make STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdi
 # Additional symbolic link to slapd executable in /usr/sbin/
 ln -s %{_libdir}/slapd %{buildroot}%{_sbindir}/slapd
 # Install selected contrib overlays
-for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/sha2 passwd/pbkdf2 trace
+for SLAPO_NAME in addpartial allowed allop autogroup lastbind denyop cloak noopsrch passwd/argon2 passwd/sha2 passwd/pbkdf2 trace
 do
   make -C contrib/slapd-modules/${SLAPO_NAME} STRIP="" DESTDIR="%{buildroot}" "mandir=%{_mandir}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
 done
 # slapo-smbk5pwd only for Samba password hashes
-make -C contrib/slapd-modules/smbk5pwd STRIP="" DESTDIR="%{buildroot}" "mandir=%{_mandir}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
+make -C contrib/slapd-modules/smbk5pwd STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libdir}" install
 install -m 755 %{SOURCE13} %{buildroot}/usr/lib/openldap/start
 install -m 644 %{SOURCE14} %{buildroot}%{_unitdir}
 mkdir -p %{buildroot}%{_sysconfdir}/openldap/slapd.d
@@ -307,7 +362,7 @@ mkdir -p %{buildroot}%{_sysconfdir}/sasl2
 install -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/sasl2/slapd.conf
 install -m 755 -d %{buildroot}/var/lib/ldap
 chmod a+x %{buildroot}%{_libdir}/liblber.so*
-chmod a+x %{buildroot}%{_libdir}/libldap.so*
+chmod a+x %{buildroot}%{_libdir}/libldap_r.so*
 install -m 755 %{SOURCE6} %{buildroot}%{_sbindir}/schema2ldif
 mkdir -p  %{buildroot}%{_tmpfilesdir}/
 install -m 644 %{SOURCE18} %{buildroot}%{_tmpfilesdir}/
@@ -317,6 +372,18 @@ install -m 644 %{SOURCE19} %{buildroot}%{_sysusersdir}/
 install -m 755 %{SOURCE19}  ${RPM_BUILD_ROOT}/usr/lib/openldap/fixup-modulepath
 install -m 755 %{SOURCE20}  ${RPM_BUILD_ROOT}/%{_sbindir}/slapd-ldif-update-crc
 install -m 755 %{SOURCE21}  ${RPM_BUILD_ROOT}/usr/lib/openldap/update-crc
+
+# Install ppolicy check module
+make -C contrib/slapd-modules/ppolicy-check-password STRIP="" DESTDIR="%{buildroot}" "sysconfdir=%{_sysconfdir}/openldap" "libdir=%{_libdir}" "libexecdir=%{_libexecdir}" install
+install -m 0644 %{S:202}  %{buildroot}%{_sysconfdir}/openldap/check_password.conf
+# Install ppolicy check module's doc files
+pushd contrib/slapd-modules/%{name_ppolicy_check_module}
+mkdir -p "%{buildroot}%ppolicy_docdir"
+install -m 0644 README "%{buildroot}%ppolicy_docdir"
+install -m 0644 LICENSE "%{buildroot}%ppolicy_docdir"
+popd
+# Install ppolicy check module's manual page
+install -m 0644 %{S:203}.gz %{buildroot}%{_mandir}/man5/
 
 mkdir -p %{buildroot}%{_fillupdir}
 install -m 644 %{SOURCE16} %{buildroot}%{_fillupdir}/sysconfig.openldap
@@ -334,6 +401,7 @@ rm -rf doc/guide/release
 install -d %{buildroot}%{DOCDIR}/adminguide \
            %{buildroot}%{DOCDIR}/images \
            %{buildroot}%{DOCDIR}/drafts
+install -m 644 %{buildroot}/etc/openldap/DB_CONFIG.example %{buildroot}%{DOCDIR}/
 install -m 644 doc/guide/admin/* %{buildroot}%{DOCDIR}/adminguide
 install -m 644 doc/guide/images/*.gif %{buildroot}%{DOCDIR}/images
 install -m 644 doc/drafts/* %{buildroot}%{DOCDIR}/drafts
@@ -345,8 +413,10 @@ install -m 644 ANNOUNCEMENT \
                %{buildroot}%{DOCDIR}
 install -m 644 servers/slapd/slapd.ldif \
                %{buildroot}%{DOCDIR}/slapd.ldif.default
+rm -f %{buildroot}/etc/openldap/DB_CONFIG.example
 rm -f %{buildroot}/etc/openldap/schema/README
 rm -f %{buildroot}/etc/openldap/slapd.ldif*
+rm -f %{buildroot}%{slapdrundir}/openldap-data/DB_CONFIG.example
 mv servers/slapd/back-sql/rdbms_depend servers/slapd/back-sql/examples
 
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcslapd
@@ -359,12 +429,14 @@ rm -f %{buildroot}/usr/share/man/man5/slapd-passwd.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-shell.5
 rm -f %{buildroot}/usr/share/man/man5/slapd-tcl.5
 # Remove *.la files, libtool does not handle this correct
-# Keep .la files for modules in the openldap subdirectory, which are consumed
-# in this form.
-rm -f  %{buildroot}%{_libdir}/*.la
+rm -f  %{buildroot}%{_libdir}/lib*.la
 
-# Provide a libldap_r for backwards-compatibility with OpenLDAP < 2.5.
-ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
+# Make ldap_r the only copy in the system [rh#1370065].
+# libldap.so is only for `gcc/ld -lldap`. Make no libldap-2.4.so.2.
+rm -f "%{buildroot}%{_libdir}"/libldap-2.4.so*
+ln -fs libldap_r.so "%{buildroot}%{_libdir}/libldap.so"
+gcc -shared -o "%{buildroot}%{_libdir}/libldap-2.4.so.2" -Wl,--no-as-needed \
+       -Wl,-soname -Wl,libldap-2.4.so.2 -L "%{buildroot}%{_libdir}" -lldap_r
 
 %pre -f ldap.pre
 %service_add_pre slapd.service
@@ -374,9 +446,9 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %tmpfiles_create %{name}.conf
 %service_add_post slapd.service
 
-%post -n libldap-2_5-0 -p /sbin/ldconfig
+%post -n libldap-2_4-2 -p /sbin/ldconfig
 
-%postun -n libldap-2_5-0 -p /sbin/ldconfig
+%postun -n libldap-2_4-2 -p /sbin/ldconfig
 
 %preun
 %service_del_preun slapd.service
@@ -402,24 +474,24 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %{_fillupdir}/sysconfig.openldap
 %{_sbindir}/slap*
 %{_sbindir}/rcslapd
+%{_libdir}/openldap/back_bdb*
+%{_libdir}/openldap/back_hdb*
 %{_libdir}/openldap/back_ldap*
 %{_libdir}/openldap/back_mdb*
+%{_libdir}/openldap/back_monitor*
 %{_libdir}/openldap/back_relay*
 %{_libdir}/openldap/accesslog*
 %{_libdir}/openldap/auditlog*
-%{_libdir}/openldap/autoca*
 %{_libdir}/openldap/collect*
 %{_libdir}/openldap/constraint*
 %{_libdir}/openldap/dds*
 %{_libdir}/openldap/deref*
 %{_libdir}/openldap/dyngroup*
 %{_libdir}/openldap/dynlist*
-%{_libdir}/openldap/homedir*
 %{_libdir}/openldap/memberof*
-%{_libdir}/openldap/otp*
 %{_libdir}/openldap/pcache*
-%{_libdir}/openldap/ppolicy*
-%{_libdir}/openldap/remoteauth*
+%{_libdir}/openldap/ppolicy-2.4.*
+%{_libdir}/openldap/ppolicy.*
 %{_libdir}/openldap/refint*
 %{_libdir}/openldap/retcode*
 %{_libdir}/openldap/rwm*
@@ -439,20 +511,16 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %dir %attr(0750, ldap, ldap) %{_sharedstatedir}/ldap
 %ghost %attr(0750, ldap, ldap) %{slapdrundir}
 %doc %{_mandir}/man8/sl*
-%doc %{_mandir}/man8/lloadd.*
-%doc %{_mandir}/man5/lloadd.conf.*
 %doc %{_mandir}/man5/slapd.*
-%doc %{_mandir}/man5/slapd-asyncmeta.*
+%doc %{_mandir}/man5/slapd-bdb.*
 %doc %{_mandir}/man5/slapd-config.*
+%doc %{_mandir}/man5/slapd-hdb.*
 %doc %{_mandir}/man5/slapd-ldap.*
 %doc %{_mandir}/man5/slapd-ldif.*
 %doc %{_mandir}/man5/slapd-mdb.*
 %doc %{_mandir}/man5/slapd-monitor.*
-%doc %{_mandir}/man5/slapd-pw-*
 %doc %{_mandir}/man5/slapd-relay.*
-%doc %{_mandir}/man5/slapd-wt.*
 %doc %{_mandir}/man5/slapo-*
-%doc %{_mandir}/man5/slappw-argon2.*
 %dir %{DOCDIR}
 %doc %{DOCDIR}/ANNOUNCEMENT
 %doc %{DOCDIR}/COPYRIGHT
@@ -460,6 +528,7 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %doc %{DOCDIR}/README*
 %doc %{DOCDIR}/CHANGES
 %doc %{DOCDIR}/slapd.ldif.default
+%doc %{DOCDIR}/DB_CONFIG.example
 
 %files back-perl
 %defattr(-,root,root)
@@ -505,12 +574,14 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %{_libdir}/openldap/autogroup.*
 %{_libdir}/openldap/lastbind.*
 %{_libdir}/openldap/noopsrch.*
+%{_libdir}/openldap/pw-argon2.*
 %{_libdir}/openldap/pw-sha2.*
 %{_libdir}/openldap/pw-pbkdf2.*
 %{_libdir}/openldap/denyop.*
 %{_libdir}/openldap/cloak.*
 %{_libdir}/openldap/smbk5pwd.*
 %{_libdir}/openldap/trace.*
+%doc %{_mandir}/man5/slapd-pw-argon2.*
 
 %files client
 %defattr(-,root,root)
@@ -527,13 +598,12 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 /usr/bin/ldapsearch
 /usr/bin/ldappasswd
 /usr/bin/ldapurl
-/usr/bin/ldapvc
 /usr/bin/ldapwhoami
 
-%files -n libldap-2_5-0
+%files -n libldap-2_4-2
 %defattr(-,root,root)
-%{_libdir}/liblber*2.5.so.*
-%{_libdir}/libldap*2.5.so.*
+%{_libdir}/liblber*2.4.so.*
+%{_libdir}/libldap*2.4.so.*
 
 %files devel
 %defattr(-,root,root)
@@ -544,11 +614,17 @@ ln -fs libldap.so "%{buildroot}%{_libdir}/libldap_r.so"
 %{_includedir}/*.h
 %{_libdir}/liblber.so
 %{_libdir}/libldap*.so
-%{_libdir}/pkgconfig/*.pc
 
 %files devel-static
 %defattr(-,root,root)
 %_libdir/liblber.a
 %_libdir/libldap*.a
+
+%files ppolicy-check-password
+%defattr(-,root,root)
+%doc %{ppolicy_docdir}/
+%config(noreplace) /etc/openldap/check_password.conf
+%{_libdir}/openldap/ppolicy-check-password.*
+%{_mandir}/man5/ppolicy-check-password.*
 
 %changelog

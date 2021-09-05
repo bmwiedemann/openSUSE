@@ -1,0 +1,80 @@
+diff --git a/servers/slapd/back-bdb/filterindex.c b/servers/slapd/back-bdb/filterindex.c
+index 71e3ea4..bafef72 100644
+--- a/servers/slapd/back-bdb/filterindex.c
++++ b/servers/slapd/back-bdb/filterindex.c
+@@ -741,7 +741,7 @@ equality_candidates(
+ 		&db, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= bdb_equality_candidates: (%s) not indexed\n", 
+ 			ava->aa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+@@ -858,7 +858,7 @@ approx_candidates(
+ 		&db, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= bdb_approx_candidates: (%s) not indexed\n",
+ 			ava->aa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+@@ -978,7 +978,7 @@ substring_candidates(
+ 		&db, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= bdb_substring_candidates: (%s) not indexed\n",
+ 			sub->sa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+@@ -1095,7 +1095,7 @@ inequality_candidates(
+ 		&db, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= bdb_inequality_candidates: (%s) not indexed\n", 
+ 			ava->aa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+diff --git a/servers/slapd/back-mdb/filterindex.c b/servers/slapd/back-mdb/filterindex.c
+index 58c1cc8..20c58b7 100644
+--- a/servers/slapd/back-mdb/filterindex.c
++++ b/servers/slapd/back-mdb/filterindex.c
+@@ -709,7 +709,7 @@ equality_candidates(
+ 		&dbi, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= mdb_equality_candidates: (%s) not indexed\n", 
+ 			ava->aa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+@@ -825,7 +825,7 @@ approx_candidates(
+ 		&dbi, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= mdb_approx_candidates: (%s) not indexed\n",
+ 			ava->aa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+@@ -944,7 +944,7 @@ substring_candidates(
+ 		&dbi, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= mdb_substring_candidates: (%s) not indexed\n",
+ 			sub->sa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;
+@@ -1060,7 +1060,7 @@ inequality_candidates(
+ 		&dbi, &mask, &prefix );
+ 
+ 	if ( rc == LDAP_INAPPROPRIATE_MATCHING ) {
+-		Debug( LDAP_DEBUG_ANY,
++		Debug( LDAP_DEBUG_TRACE,
+ 			"<= mdb_inequality_candidates: (%s) not indexed\n", 
+ 			ava->aa_desc->ad_cname.bv_val, 0, 0 );
+ 		return 0;

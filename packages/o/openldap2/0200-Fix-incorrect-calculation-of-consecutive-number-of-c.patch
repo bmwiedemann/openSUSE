@@ -1,0 +1,130 @@
+From b026c9236e6b11c158e69572a28eb0efb174234b Mon Sep 17 00:00:00 2001
+From: HouzuoGuo <guohouzuo@gmail.com>
+Date: Wed, 17 Feb 2016 16:10:05 +0100
+Subject: [PATCH] Fix incorrect calculation of consecutive number of characters
+ in a class, when the input is shorter than 6 chars or consecutive chars
+ appear at the beginning of input
+
+
+diff --git a/check_password.c b/check_password.c
+index 0d9f901..acf8eda 100644
+--- a/check_password.c
++++ b/check_password.c
+@@ -355,18 +355,7 @@ check_password (char *pPasswd, char **ppErrStr, Entry *pEntry)
+ 	int min_quality = DEFAULT_QUALITY;
+ 	int use_cracklib = DEFAULT_CRACKLIB;
+ 
+-	/** bail out early as cracklib will reject passwords shorter
+-	 * than 6 characters
+-	 */
+-
+ 	nLen = strlen (pPasswd);
+-	if ( nLen < 6) {
+-		mem_len = realloc_error_message(&szErrStr, mem_len,
+-				strlen(PASSWORD_TOO_SHORT_SZ) +
+-				strlen(pEntry->e_name.bv_val) + 1);
+-		sprintf (szErrStr, PASSWORD_TOO_SHORT_SZ, pEntry->e_name.bv_val, nLen);
+-		goto fail;
+-	}
+ 
+   if (read_config_file() == -1) {
+     syslog(LOG_ERR, "Warning: Could not read values from config file %s. Using defaults.", CONFIG_FILE);
+@@ -392,46 +381,38 @@ check_password (char *pPasswd, char **ppErrStr, Entry *pEntry)
+    */
+ 
+   if ( max_consecutive_per_class != 0 ) {
+-    int consec_chars = 1;
+-    char type[10] = "unkown";
+-    char prev_type[10] = "unknown";
++    char prev_type = '\0';
++    char this_type = ' ';
++    i = 0;
++    int consec_chars = 0;
+     for ( i = 0; i < nLen; i++ ) {
+-
+       if ( islower(pPasswd[i]) ) {
+-        strncpy(type,"lower",10);
++        this_type = 'l';
+       }
+       else if ( isupper(pPasswd[i]) ) {
+-        strncpy(type,"upper",10);
++        this_type = 'u';
+       }
+       else if ( isdigit(pPasswd[i]) ) {
+-        strncpy(type,"digit",10);
++        this_type = 'd';
+       }
+       else if ( ispunct(pPasswd[i]) ) {
+-        strncpy(type,"punct",10);
++        this_type = 'p';
+       }
+       else {
+-        strncpy(type,"unknown",10);
+-      }
+-
+-      if ( consec_chars > max_consecutive_per_class ) {
+-				mem_len = realloc_error_message(&szErrStr, mem_len,
+-						strlen(CONSEC_FAIL_SZ) +
+-						strlen(pEntry->e_name.bv_val));
+-				sprintf (szErrStr, CONSEC_FAIL_SZ, pEntry->e_name.bv_val);
+-				goto fail;
++        this_type = ' ';
+       }
+-
+-      if ( strncmp(type,prev_type,10) == 0 ) {
+-        consec_chars++;
++      if (this_type == prev_type) {
++        ++consec_chars;
++      } else if (i > 0) {
++        consec_chars = 0;
+       }
+-      else {
+-        if (strncmp("unknown",prev_type,8) != 0) {
+-          consec_chars = 1;
+-        }
+-        else {
+-          consec_chars++;
+-        }
+-        strncpy(prev_type,type,10);
++      prev_type = this_type;
++      if ( consec_chars >= max_consecutive_per_class ) {
++        mem_len = realloc_error_message(&szErrStr, mem_len,
++          strlen(CONSEC_FAIL_SZ) +
++          strlen(pEntry->e_name.bv_val));
++        sprintf (szErrStr, CONSEC_FAIL_SZ, pEntry->e_name.bv_val);
++        goto fail;
+       }
+     }
+   }
+diff --git a/check_password_test.c b/check_password_test.c
+index 626d719..d33bd80 100644
+--- a/check_password_test.c
++++ b/check_password_test.c
+@@ -90,7 +90,6 @@ void setconf(
+ }
+ 
+ int main(void) {
+-
+   // Empty Config, equiv to:
+   // 5,3,1,0,0,0,0
+   setconf(-1,-1,-1,-1,-1,-1,-1);
+@@ -109,5 +108,16 @@ int main(void) {
+   testpass("Test 2.1", "Simp1e", 1);
+   testpass("Test 2.2", "SimPle", 1);
+   testpass("Test 2.1", "Simp1e!", 0);
++
++  setconf(1,0,0,0,0,0,0);
++  testpass("a", "Ab1,", 0);
++  testpass("a", "AAb1,", 1);
++  testpass("a", "Abb1,", 1);
++
++  setconf(3,0,0,0,0,0,0);
++  testpass("a", "AAAbbb111,,,", 0);
++  testpass("a", "AAAAbbb111,,,,", 1);
++  testpass("a", "AAAbbbb111,,,", 1);
++
+   return 0;
+ }
+-- 
+2.7.1
+

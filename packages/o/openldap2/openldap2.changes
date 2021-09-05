@@ -1,62 +1,4 @@
 -------------------------------------------------------------------
-Tue Aug 24 13:04:36 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
-
-- Update to upstream version 2.5.7
-	Fixed lloadd client state tracking (ITS#9624)
-	Fixed slapd bconfig to canonicalize structuralObjectclass (ITS#9611)
-	Fixed slapd-ldif duplicate controls response (ITS#9497)
-	Fixed slapd-mdb multival crash when attribute is missing an equality matchingrule (ITS#9621)
-	Fixed slapd-mdb compatibility with OpenLDAP 2.4 MDB databases (ITS#8958)
-	Fixed slapd-mdb idlexp maximum size handling (ITS#9637)
-	Fixed slapd-monitor number of ops executing with asynchronous backends (ITS#9628)
-	Fixed slapd-sql to add support for ppolicy attributes (ITS#9629)
-	Fixed slapd-sql to close transactions after bind and search (ITS#9630)
-	Fixed slapo-accesslog to make reqMod optional (ITS#9569)
-	Fixed slapo-ppolicy logging when pwdChangedTime attribute is not present (ITS#9625)
-	Documentation
-		slapd-mdb(5) note max idlexp size is 30, not 31 (ITS#9637)
-		slapo-accesslog(5) note that reqMod is optional (ITS#9569)
-		Add ldapvc(1) man page (ITS#9549)
-		Add guide section on load balancer (ITS#9443)
-		Updated guide to document multiprovider as replacement for mirrormode (ITS#9200)
-		Updated guide to clarify slapd-mdb upgrade requirements (ITS#9200)
-		Updated guide to document removal of deprecated options from client tools (ITS#9200)
-
--------------------------------------------------------------------
-Fri Jul 30 13:30:05 UTC 2021 - Philipp Wagner <mail@philipp-wagner.com>
-
-- Major version update to 2.5.6
-  See https://www.openldap.org/software/release/announce.html for a list of
-  changes.
-- The threaded version of the OpenLDAP libraries, libldap_r, has been merged
-  with libldap with 2.5. Removed all related downstream changes, including the
-  openldap-r-only.dif patch.
-  Introduce a new compatibility symlink in the other direction: libldap_r
-  pointing to libldap.
-- Removed the ppolicy-check-password module. It is unmaintained and does not
-  build any more. As part of that also remove the patch
-  patch 0200-Fix-incorrect-calculation-of-consecutive-number-of-c.patch, which
-  is applied to this module.
-- Removed patch 0001-ITS-8866-slapo-unique-to-return-filter-used-in-diagn.patch
-  Fixed upstream in 2.5 (ITS#8866)
-- Updated patch 0005-pie-compile.dif
-  Removed the hunks on back-bdb and back-hdb, which are retired backends in 2.5.
-- Removed patch 0007-Recover-on-DB-version-change.dif
-  The back-bdb backend was retired.
-- Removed patch 0011-openldap-re24-its7796.patch
-  Fixed upstream in 2.5 (ITS#7796)
-- Remove non-existant configure arguments:
-  --enable-rewrite, --enable-monitor, --enable-lmpasswd
-- Add the --enable-dynacl configure option, which is required for --enable-aci
-- Add the --with-argon2 configure option and remove it from the contrib
-  modules, since it is now official (ITS#9453).
-- Pass mandir to smbk5pwd to ensure the man page ends up in /usr/share.
-- Include the new overlays in libdir/openldap in the packages.
-- Add the pkgconfig files to the devel package.
-- Remove compat macro for _fillupdir, which was introduced in Nov 2017 and
-  should be widely available now.
-
--------------------------------------------------------------------
 Fri Jun  4 00:06:15 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - updated to 2.4.59
@@ -249,7 +191,7 @@ OpenLDAP 2.4.51 Release (2020/08/11)
 -------------------------------------------------------------------
 Mon Jun  8 12:46:34 UTC 2020 - Callum Farmer <callumjfarmer13@gmail.com>
 
-- Revert changes to libexecdir
+- Revert changes to libexecdir 
 
 -------------------------------------------------------------------
 Sun Jun  7 10:20:45 UTC 2020 - Michael Ströder <michael@stroeder.com>
@@ -506,7 +448,7 @@ Mon Nov 12 14:25:52 UTC 2018 - Dominique Leuenberger <dleuenberger@suse.com>
 -------------------------------------------------------------------
 Thu Nov  8 15:25:08 UTC 2018 - varkoly@suse.com
 
-- bsc#1111388 openldap and /var/lib/ldap/DB_CONFIG* (transactional-update)
+- bsc#1111388 openldap and /var/lib/ldap/DB_CONFIG* (transactional-update) 
 
 -------------------------------------------------------------------
 Fri Oct 26 14:58:41 UTC 2018 - Michael Ströder <michael@stroeder.com>
@@ -520,7 +462,7 @@ Fri Aug 17 07:46:47 UTC 2018 - ckowalczyk@suse.com
 
 - Fix slapd segfaults in mdb_env_reader_dest
 +  with patch 0016-Clear-shared-key-only-in-close-function.patch
-+  (bsc#1089640)
++  (bsc#1089640) 
 
 -------------------------------------------------------------------
 Fri Jun 29 16:23:22 UTC 2018 - michael@stroeder.com
@@ -630,7 +572,7 @@ Mon Dec 11 22:51:03 UTC 2017 - michael@stroeder.com
 -------------------------------------------------------------------
 Thu Nov 23 13:36:52 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new
+- Replace references to /var/adm/fillup-templates with new 
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -690,7 +632,7 @@ Tue Jun  6 13:47:18 UTC 2017 - hguo@suse.com
 
 - There is no change made about the package itself, this is only
   copying over some changelog texts from SLE package:
-- bug#976172 owned by hguo@suse.com: openldap2 - missing
+- bug#976172 owned by hguo@suse.com: openldap2 - missing  
   /usr/share/doc/packages/openldap2/guide/admin/guide.html
 - bug#916914 owned by varkoly@suse.com: VUL-0: CVE-2015-1546:
   openldap2: slapd crash in valueReturnFilter cleanup
@@ -2036,7 +1978,7 @@ Wed Jun 11 13:03:29 CEST 2008 - rhafer@suse.de
 -------------------------------------------------------------------
 Fri May 16 13:24:11 CEST 2008 - rhafer@suse.de
 
-- Support update from 2.3 releases (bnc#390247)
+- Support update from 2.3 releases (bnc#390247) 
 
 -------------------------------------------------------------------
 Thu May  8 08:55:00 CEST 2008 - rhafer@suse.de
@@ -2123,7 +2065,7 @@ Wed Feb 20 09:49:30 CET 2008 - rhafer@suse.de
   * Fixed slapd modrdn check for valid new DN (ITS#5344)
   * Fixed slapd multi-step SASL binds (ITS#5298)
   * Fixed slapd overlay ordering when moving to slapd.d (ITS#5284)
-  * Fixed slapd NULL printf (ITS#5264)
+  * Fixed slapd NULL printf (ITS#5264) 
   * Fixed slapd NULL set values (ITS#5286)
   * Fixed slapd timestamp race condition (ITS#5370)
   * Fixed slapd cn=config crash on delete (ITS#5343)
@@ -2497,7 +2439,7 @@ Wed May 10 10:20:16 CEST 2006 - rhafer@suse.de
 Fri Mar 24 13:48:52 CET 2006 - rhafer@suse.de
 
 - Backported fix from CVS for occasional crashes in referral
-  chasing code (as used in e.g. back-meta/back-ldap).
+  chasing code (as used in e.g. back-meta/back-ldap). 
   (Bug: #160566, ITS: #4448)
 
 -------------------------------------------------------------------
@@ -2778,7 +2720,7 @@ Tue Aug  3 14:48:25 CEST 2004 - rhafer@suse.de
   new sysconfig variable (OPENLDAP_REGISTER_SLP) to be able
   to switch SLP registration on and off. (Bugzilla #39865)
 - removed unneeded README.update
-
+ 
 -------------------------------------------------------------------
 Fri Apr 30 16:46:50 CEST 2004 - rhafer@suse.de
 
@@ -3313,3 +3255,4 @@ Tue Nov  7 18:52:54 CET 2000 - choeger@suse.de
 Fri Oct  6 11:35:47 CEST 2000 - choeger@suse.de
 
 - first package of openldap2 (v2.0.6)
+
