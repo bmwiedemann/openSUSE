@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20210903" schemaversion="4.1">
+<image name="OBS__openSUSE___20210904" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210903</productvar>
+      <productvar name="VERSION">20210904</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210903,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20210904,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210903/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20210904/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -196,7 +196,6 @@
       <repopackage name="bash-completion"/>
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
-      <repopackage name="bbswitch-kmp-default" arch="x86_64"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -312,7 +311,6 @@
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
-      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
@@ -325,7 +323,6 @@
       <repopackage name="cpupower"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
-      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo_c"/>
       <repopackage name="cron"/>
@@ -410,14 +407,12 @@
       <repopackage name="dolphin-part-lang"/>
       <repopackage name="dos2unix"/>
       <repopackage name="dosfstools"/>
-      <repopackage name="dpdk-kmp-default" arch="x86_64"/>
       <repopackage name="dracut"/>
       <repopackage name="dracut-mkinitrd-deprecated"/>
       <repopackage name="dracut-transactional-update"/>
       <repopackage name="dragonplayer"/>
       <repopackage name="dragonplayer-lang"/>
       <repopackage name="drbd" arch="x86_64"/>
-      <repopackage name="drbd-kmp-default" arch="x86_64"/>
       <repopackage name="drbd-utils" arch="x86_64"/>
       <repopackage name="drkonqi5"/>
       <repopackage name="drkonqi5-lang"/>
@@ -1323,7 +1318,6 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -2910,7 +2904,6 @@
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
-      <repopackage name="libv4l2rds0" arch="x86_64"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
@@ -3264,7 +3257,6 @@
       <repopackage name="metatheme-greybird-geeko-common"/>
       <repopackage name="metatheme-sonar-common"/>
       <repopackage name="mgopen-fonts"/>
-      <repopackage name="mhvtl-kmp-default" arch="x86_64"/>
       <repopackage name="milou5"/>
       <repopackage name="milou5-lang"/>
       <repopackage name="minicom"/>
@@ -3349,7 +3341,6 @@
       <repopackage name="mpg123-openal"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
-      <repopackage name="msr-safe-kmp-default" arch="x86_64"/>
       <repopackage name="mtdev-devel" arch="x86_64"/>
       <repopackage name="mtools"/>
       <repopackage name="mtr"/>
@@ -3465,9 +3456,6 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
-      <repopackage name="openafs"/>
-      <repopackage name="openafs-client"/>
-      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -3614,7 +3602,6 @@
       <repopackage name="patterns-yast-yast2_server"/>
       <repopackage name="pavucontrol"/>
       <repopackage name="pavucontrol-lang"/>
-      <repopackage name="pcfclock-kmp-default" arch="x86_64"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pcsc-acr38"/>
@@ -4170,6 +4157,8 @@
       <repopackage name="qca-qt5"/>
       <repopackage name="qca-qt5-plugins"/>
       <repopackage name="qemu"/>
+      <repopackage name="qemu-accel-qtest"/>
+      <repopackage name="qemu-accel-tcg-x86"/>
       <repopackage name="qemu-arm"/>
       <repopackage name="qemu-audio-spice"/>
       <repopackage name="qemu-block-curl"/>
@@ -4186,6 +4175,7 @@
       <repopackage name="qemu-hw-display-virtio-gpu"/>
       <repopackage name="qemu-hw-display-virtio-gpu-pci"/>
       <repopackage name="qemu-hw-display-virtio-vga"/>
+      <repopackage name="qemu-hw-usb-host"/>
       <repopackage name="qemu-hw-usb-redirect"/>
       <repopackage name="qemu-hw-usb-smartcard"/>
       <repopackage name="qemu-ipxe"/>
@@ -4833,7 +4823,6 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
-      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>
@@ -5095,11 +5084,6 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="util-macros-devel" arch="x86_64"/>
       <repopackage name="v4l-conf"/>
-      <repopackage name="v4l-utils" arch="x86_64"/>
-      <repopackage name="v4l-utils-lang" arch="x86_64"/>
-      <repopackage name="v4l2loopback-autoload" arch="x86_64"/>
-      <repopackage name="v4l2loopback-kmp-default" arch="x86_64"/>
-      <repopackage name="v4l2loopback-utils" arch="x86_64"/>
       <repopackage name="vacation"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vhba-kmp-default" arch="x86_64"/>
@@ -5312,7 +5296,6 @@
       <repopackage name="xsetroot"/>
       <repopackage name="xsettingsd"/>
       <repopackage name="xstroke"/>
-      <repopackage name="xtables-addons-kmp-default" arch="x86_64"/>
       <repopackage name="xtables-plugins"/>
       <repopackage name="xterm"/>
       <repopackage name="xterm-bin"/>
