@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Sep  2 15:27:30 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Drop rpi-imager.yaml as it is not used in spec file
+- Fix Source URL
+
+-------------------------------------------------------------------
+Sun Aug  8 07:56:46 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- Categories and Generic name added to desktop file
+
+-------------------------------------------------------------------
+Wed Jul 28 08:08:05 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 1.6.2
+  * specfile cleaned up
+  * switch to cmake
+  * desktop file fixed
+  * desktop-file install
+
+-------------------------------------------------------------------
+Sun Apr 18 12:17:46 UTC 2021 - eymeric dechelette <hatchchien@protonmail.com>
+
+-first packaging
+-see changelog at https://github.com/raspberrypi/rpi-imager/releases 
