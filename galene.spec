@@ -25,7 +25,7 @@
 %bcond_without  apparmor
 
 Name:           galene
-Version:        0.3.5
+Version:        0.4
 Release:        0
 Summary:        Galène videoconferencing server
 License:        MIT
@@ -57,7 +57,7 @@ deployed with moderate server resources.
 
 %prep
 %setup -qa1
-%patch1 -p0
+%patch1 -p1
 
 %build
 %ifarch ppc64
@@ -116,6 +116,7 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
 %files
 %doc CHANGES
+%doc INSTALL
 %doc README
 %doc README.FRONTEND
 %doc README.PROTOCOL

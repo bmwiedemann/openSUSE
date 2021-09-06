@@ -6,7 +6,7 @@
 ## ServiceRestart: galene
 # Configure command-line arguments for Galène video conference server
 # see https://galene.org/README.html
-ARGS="-http 0.0.0.0:8443 -data /etc/galene -groups /var/lib/galene/groups -static /usr/share/galene/static -recordings /var/lib/galene/recordings"
+ARGS="-http :8443 -data /etc/galene -groups /var/lib/galene/groups -static /usr/share/galene/static -recordings /var/lib/galene/recordings"
 
 # pion debug messages set by env vars
 

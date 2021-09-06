@@ -1,6 +1,8 @@
---- static/galene.html.orig	2021-01-25 20:21:21.526952394 +0100
-+++ static/galene.html	2021-01-28 18:50:14.600185433 +0100
-@@ -207,9 +207,9 @@
+diff --git a/static/galene.html b/static/galene.html
+index 07cd283..767e552 100644
+--- a/static/galene.html
++++ b/static/galene.html
+@@ -201,9 +201,9 @@
            <form id="sendform">
              <label for="sendselect" class="sidenav-label-first">Send:</label>
              <select id="sendselect" class="select select-inline">
@@ -10,5 +12,16 @@
 -              <option value="normal" selected>normal</option>
 +              <option value="normal">normal</option>
                <option value="unlimited">unlimited</option>
+             </select>
+           </form>
+@@ -211,8 +211,8 @@
+           <form id="simulcastform">
+             <label for="simulcastselect" class="sidenav-label-first">Simulcast:</label>
+             <select id="simulcastselect" class="select select-inline">
+-              <option value="off">off</option>
+-              <option value="auto" selected>auto</option>
++              <option value="off" selected>off</option>
++              <option value="auto">auto</option>
+               <option value="on">on</option>
              </select>
            </form>
