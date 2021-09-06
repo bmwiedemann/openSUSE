@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep  5 18:06:07 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.21.3
+  * All bidicts now provide the equals_order_sensitive() method,
+    not just bidict.OrderedBidicts.
+  * Since support for Python < 3.6 was dropped in v0.21.0,
+    non-Ordered bidicts preserve a deterministic ordering on all
+    supported Python versions, so all bidicts can now provide
+    equals_order_sensitive().
+  * Take better advantage of the fact that dicts are reversible
+    in Python 3.8+. This allows even non-Ordered bidicts to
+    efficiently provide a __reversed__() implementation, which
+    they now do. As a result, if you are using Python 3.8+,
+    frozenbidict now gives you everything that
+    FrozenOrderedBidict gives you with less space overhead.
+  * Drop setuptools_scm as a setup_requires dependency.
+  * Remove the bidict.__version_info__ attribute.
+
+-------------------------------------------------------------------
 Wed May 26 07:30:55 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - Update to version 0.21.2
