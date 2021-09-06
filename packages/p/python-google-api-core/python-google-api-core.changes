@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep  6 05:22:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * do not error on LROs with no response or error (#258) (618f192)
+  * drop support for Python 2.7 / 3.5 (#212) (a30f004)
+  * bump grpcio version to use stable aio API (#234) (bdbf889)
+  * strip trailing _ from field mask paths (#228) (ff6ef1b)
+  * add 'requests.exceptions.ChunkedEncodingError' to retryable exceptions
+    (#237) (5e540f2)
+  * add ServiceUnavailable exception to polling retries (#184) (11032cf)
+  * undprecate entity factory helpers (#101) (1fbee03), closes #100
+  * add iterator capability to paged iterators (#200) (3487d68)
+  * HTTPIterator now accepts a page_size parameter to control page
+    (#197) (a421913)
+  * Add support for rest/ token in x-goog-api-client header (#189) (15aca6b)
+  * retry google.auth TransportError and requests ConnectionError
+    (#178) (6ae04a8)
+  * skip empty policy bindings in len() and iter() (#159) (9eaa786)
+  * save empty IAM policy bindings (#155) (536c2ca)
+  * add operation name to x-goog-request-params in async client
+    (#137) (7271b23)
+  * allow default_host and default_scopes to be passed to create_channel
+    (#134) (94c76e0)
+  * add operation name to x-goog-request-params (#133) (97cef4a)
+  * allow gRPC metadata to be passed to operations client (#127) (73854e8)
+- Refresh {Build,}Requires, adding pytest-asyncio and proto-plus.
+
+-------------------------------------------------------------------
 Wed Jan  6 14:55:34 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Skip build on python2 as it is not supported anymore
