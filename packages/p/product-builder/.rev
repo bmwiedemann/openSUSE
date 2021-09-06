@@ -366,4 +366,14 @@ as requested by Michel</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>915646</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>0b8622d8cc501e6c59e2fa8a648ac6e5</srcmd5>
+    <version>1.4.2</version>
+    <time>1630928554</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.2
+  * support newest rpm version mode (no repository priority)
+  * helpful error message when exact version is required</comment>
+    <requestid>917081</requestid>
+  </revision>
 </revisionlist>
