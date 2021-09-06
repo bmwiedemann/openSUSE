@@ -1,14 +1,4 @@
 -------------------------------------------------------------------
-Sat Aug 28 18:20:45 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
-
-- Revert to the 1.8.x behavior of installing terminfos
-  under /usr/share/terminfo
-  * The custom terminfos have been renamed to foot-suse and foot-direct-suse
-    so that they don't conflict with terminfo-base's.
-  * The default value of TERM is "foot-suse" if it has not been overridden
-    via term in the config file.
-
--------------------------------------------------------------------
 Fri Aug 27 22:17:48 UTC 2021 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update to 1.9.0:
