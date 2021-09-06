@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-ntc-templates
-Version:        2.2.2
+Version:        2.3.1
 Release:        0
 Summary:        Package to return structured data from the output of network devices
 License:        Apache-2.0
