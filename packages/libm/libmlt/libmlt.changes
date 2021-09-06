@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  6 06:17:29 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Remove unnecessary BuildRequires:  pkgconfig(OpenEXR)
+
+-------------------------------------------------------------------
 Mon Aug 30 14:16:06 UTC 2021 - Dave Plater <davejplater@gmail.com>
 
 - Enabled opencv to fix boo#1184430 by enabling motion tracking
