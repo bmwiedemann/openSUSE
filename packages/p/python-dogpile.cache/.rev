@@ -299,4 +299,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>902220</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>889d7a0b32ce6bac67f1954c3c209db4</srcmd5>
+    <version>1.1.4</version>
+    <time>1630936679</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.1.4:
+  * [usecase] [memcached] Added support for pymemcache socket keepalive
+    and retrying client.
+  * [bug] [general] Fixed Python 3.10 deprecation warning involving
+    threading. Pull request
+  * [bug] [regression] [tests] Repaired the test suite to work with the
+    5.x series of the decorator module, which now appears to make use of
+    the __signature__ attribute.
+  * [bug] [regression] Fixed regression where ProxyBackend was missing
+    several methods that were added as part of the 1.1 release.
+  * [feature] [region] Added new region method CacheRegion.key_is_locked().
+    Returns True if the given key is subject to the dogpile lock, which
+    would indicate that the generator function is running at that time.
+  * [feature] [memcached] Added support for the pymemcache backend, using
+    the &quot;dogpile.cache.pymemcache&quot; backend identifier.</comment>
+    <requestid>916952</requestid>
+  </revision>
 </revisionlist>
