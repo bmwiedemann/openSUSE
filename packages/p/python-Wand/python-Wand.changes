@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 31 10:57:14 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.6.7
+  * Added :meth:`Image.image_add() <wand.image.Image.image_add>` method.
+  * Added :meth:`Image.image_get() <wand.image.Image.image_get>` method.
+  * Added :meth:`Image.image_remove() <wand.image.Image.image_remove>` method.
+  * Added :meth:`Image.image_set() <wand.image.Image.image_set>` method.
+  * Added :meth:`Image.image_swap() <wand.image.Image.image_swap>` method.
+  * Fixed sub-image extraction on read. [:issue:`532`]
+  * Fixed :attr:`~wand.image.BaseImage.background_color` attribute
+    when image was not read.
+  * [DOC] Completed :doc:`Distortion <./guide/distortion>` guide. [:issue:`534`]
+  * [DOC] Added :doc:`Morphology <./guide/morphology>` guide.
+
+-------------------------------------------------------------------
 Sat May  8 20:30:37 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Skip tests using fftw library, we don't have the support built

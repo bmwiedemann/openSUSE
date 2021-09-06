@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-Wand
-Version:        0.6.6
+Version:        0.6.7
 Release:        0
 Summary:        Ctypes-based simple MagickWand API binding for Python
 License:        MIT
