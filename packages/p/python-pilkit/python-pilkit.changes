@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  6 08:44:11 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add switch-to-pytest.patch:
+  * Switch to using pytest, rather than nose. 
+
+-------------------------------------------------------------------
 Tue Jun  1 08:51:39 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pytest rpm macro

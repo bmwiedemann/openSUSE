@@ -22,11 +22,10 @@ Version:        2.0
 Release:        0
 Summary:        A collection of utilities and processors for the Python Imaging Libary
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/matthewwithanm/pilkit/
 Source:         https://files.pythonhosted.org/packages/source/p/pilkit/pilkit-%{version}.tar.gz
 Patch0:         pil-fix-test.patch
-BuildRequires:  %{python_module pytest}
+Patch1:         switch-to-pytest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -34,8 +33,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module mock >= 1.0.1}
-BuildRequires:  %{python_module nose >= 1.3.6}
-BuildRequires:  %{python_module nose-progressive >= 1.5.1}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -48,7 +46,7 @@ interface for performing manipulations on PIL images.
 
 %prep
 %setup -q -n pilkit-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
