@@ -281,4 +281,12 @@ Bugfixes
     <comment> (forwarded request 914952 from dspinella)</comment>
     <requestid>914953</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>20c5671326acf42e52412733d7d9023b</srcmd5>
+    <version>2.4.9.4</version>
+    <time>1630936687</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917070</requestid>
+  </revision>
 </revisionlist>
