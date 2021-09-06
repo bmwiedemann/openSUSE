@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  6 07:12:44 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.22c:
+  * Fix invalid size (#302)
+  * Test aborted connections (#285)
+
+-------------------------------------------------------------------
 Wed Aug 25 06:59:54 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.22b:

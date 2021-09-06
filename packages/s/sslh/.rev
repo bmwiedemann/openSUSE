@@ -85,4 +85,14 @@
  * Added symbol to support libconfig 1.4.9, still in</comment>
     <requestid>914168</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>99b37161257ea4cb702e7d2b2ea0de9d</srcmd5>
+    <version>1.22c</version>
+    <time>1630936685</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22c:
+  * Fix invalid size (#302)
+  * Test aborted connections (#285)</comment>
+    <requestid>916996</requestid>
+  </revision>
 </revisionlist>
