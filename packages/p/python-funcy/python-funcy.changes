@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Aug 31 10:08:03 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.16
+  * support Python 3.9 officially
+  * unify @memoize() and @cache(): both have .skip/.memory/.invalidate/.invalidate_all now
+  * support dynamic resulting exception in @reraise() (Laurens Duijvesteijn)
+  * made () optional for @decorator-made decorators with kw-only args
+  * added @throttle()
+  * added has_path() (Denys Zorinets)
+  * fixed autocurry kwargs handling
+- from version 1.15
+  * made rpartial accept keyworded arguments (Ruan Comelli)
+  * made `@cache.invalidate()` idempotent (Dmitry Vasilyanov)
+  * made raiser() accept a string as a shortcut
+  * fixed cheatsheat description for 'distinct' helper (tsouvarev)
+  * fixed some seqs docstrings
+  * fixed some typos (Tim Gates)
+
+-------------------------------------------------------------------
 Sun Aug  9 10:12:11 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v1.14
