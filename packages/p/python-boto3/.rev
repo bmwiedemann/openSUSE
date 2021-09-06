@@ -549,4 +549,12 @@
   * api-change:``qldb``: [``botocore``] Amazon QLDB now supports ledgers encrypted with customer</comment>
     <requestid>911065</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>4824a50dd539e017eb00dd3f25aabce3</srcmd5>
+    <version>1.18.7</version>
+    <time>1630936682</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>917097</requestid>
+  </revision>
 </revisionlist>
