@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Tue Jul 27 12:39:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Version update to 1.21.7
+- Version update to 1.21.7 (bsc#1189649)
   * api-change:``s3control``: S3 Access Point aliases can be used anywhere you
     use S3 bucket names to access data in S3
   * api-change:``textract``: Adds support for AnalyzeExpense, a new API to extract
