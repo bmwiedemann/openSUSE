@@ -1,7 +1,7 @@
 #
 # spec file for package geekodoc
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,28 +12,40 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %bcond_without  tests
-
 #
 Name:           geekodoc
-Version:        1.0.2.1
+Version:        2.0.0
 Release:        0
 Summary:        DocBook based RNG Schema for SUSE Documentation
-License:        GPL-3.0
+License:        GPL-3.0-only
 Group:          Productivity/Publishing/DocBook
-Url:            https://github.com/openSUSE/geekodoc/archive/%{name}-%{version}.tar.gz
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/openSUSE/geekodoc/archive/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.bz2
+# Taken from maintenance/novdoc-2019-02-01
+# Created with:
+# $ git archive --prefix=novdoc-20190201/ \
+#               --output=/tmp/novdoc-20190201.tar.bz2 \
+#               --format=tar HEAD novdoc/ catalog.d/
+Source10:       novdoc-20190201.tar.bz2
 BuildRequires:  docbook_5 >= 5.1
+BuildRequires:  fdupes
 BuildRequires:  jing
 BuildRequires:  libxml2-tools
 BuildRequires:  make
+%if 0%{?is_opensuse}
+BuildRequires:  openSUSE-release
+%else
+BuildRequires:  sles-release
+%endif
 BuildRequires:  python3-rnginline
 BuildRequires:  python3-setuptools
 BuildRequires:  trang
+
 Requires:       sgml-skel >= 0.7
 Requires(post): sgml-skel >= 0.7
 Requires(postun): sgml-skel >= 0.7
@@ -55,32 +67,59 @@ NovDoc is a DTD/RELAX NG schema used for older SUSE documentation.
 
 %prep
 %setup -q
+tar -xf %{SOURCE10}
+mv novdoc-20190201/novdoc .
+mv novdoc-20190201/catalog.d/novdoc.xml catalog.d/
 
 %build
 touch geekodoc/rng/geekodoc5.rnc
 # GeekoDoc
-make %{?_smp_mflags} VERBOSE=1 -C geekodoc/rng
-make %{?_smp_mflags} VERBOSE=1 -C geekodoc/rng geekodoc5-flat.rng
+./build.sh -vv
 
 # Novdoc
-make %{?_smp_mflags} VERBOSE=1 -C novdoc/rng
+%make_build -C novdoc/rng
 
 %install
-install -d %{buildroot}%{_datadir}/xml/{geekodoc/rng,novdoc/rng} \
+docbookxi_rnc="$(xmlcatalog /etc/xml/catalog http://www.docbook.org/xml/5.1/rng/docbookxi.rnc)"
+docbookxi_rng="$(xmlcatalog /etc/xml/catalog http://www.docbook.org/xml/5.1/rng/docbookxi.rng)"
+
+install -d %{buildroot}%{_datadir}/xml/{geekodoc/rng/{1_5.1,2_5.2},novdoc/rng} \
            %{buildroot}%{_sysconfdir}/xml/catalog.d
 
-# Install GeekoDoc:
-cp geekodoc/rng/geekodoc5-flat.rn? %{buildroot}%{_datadir}/xml/geekodoc/rng
+# Fix include for "lonely" schema:
+sed -i "s#include \"docbookxi.rnc\"#include \"$docbookxi_rnc\"#" \
+    build/geekodoc/rng/1_5.1/geekodoc-v1.rnc
+sed -i "s#<include href=\"docbookxi.rng\">#<include href=\"$docbookxi_rng\">#" \
+    build/geekodoc/rng/1_5.1/geekodoc-v1.rng
 
-# Install Novdoc:
+#### Install flat GeekoDoc:
+install -v -m 0644 build/geekodoc/rng/1_5.1/geekodoc-v1-flat.rn[cg] \
+        %{buildroot}%{_datadir}/xml/geekodoc/rng/1_5.1/
+install -v -m 0644 build/geekodoc/rng/2_5.2/geekodoc-v2-flat.rn[cg] \
+        %{buildroot}%{_datadir}/xml/geekodoc/rng/2_5.2/
+
+pushd %{buildroot}%{_datadir}/xml/geekodoc/rng
+# For compatibility reasons:
+ln -s 1_5.1/geekodoc-v1-flat.rnc geekodoc5-flat.rnc
+ln -s 1_5.1/geekodoc-v1-flat.rng geekodoc5-flat.rng
+  pushd 1_5.1/
+    ln -s geekodoc-v1-flat.rnc geekodoc5-flat.rnc
+    ln -s geekodoc-v1-flat.rng geekodoc5-flat.rng
+  popd
+popd
+
+#### Install Novdoc:
 cp -a novdoc/dtd %{buildroot}%{_datadir}/xml/novdoc
 cp novdoc/rng/novdocxi-flat.rn? novdoc/rng/novell.ent %{buildroot}%{_datadir}/xml/novdoc/rng
 
-# Install catalogs:
+#### Install catalogs:
 cp catalog.d/* %{buildroot}%{_sysconfdir}/xml/catalog.d/
 
 # Fixup catalog paths
 sed -i 's#"\.\./#"%{_datadir}/xml/#' %{buildroot}%{_sysconfdir}/xml/catalog.d/*
+
+# Deal with duplicates
+%fdupes  %{buildroot}%{_datadir}/xml/
 
 %post
 update-xml-catalog
@@ -105,21 +144,35 @@ update-xml-catalog
 
 %if 0%{with tests}
 %check
-cd geekodoc/tests
-./run-tests.sh -V xmllint
-./run-tests.sh -V jing
+./tests/run-tests.sh -V xmllint
+./tests/run-tests.sh -V jing
+
+echo "### Checking catalog entries..."
+for uri in \
+   urn:x-suse:rnc:v1:geekodoc-flat \
+   urn:x-suse:rng:v1:geekodoc-flat \
+   urn:x-suse:rnc:v2:geekodoc-flat \
+   urn:x-suse:rng:v2:geekodoc-flat \
+   urn:x-suse:rng:geekodoc5-flat.rng \
+   urn:x-suse:rng:geekodoc5-flat.rnc \
+   https://github.com/openSUSE/geekodoc/raw/master/geekodoc/rng/geekodoc5-flat.rnc \
+   https://github.com/openSUSE/geekodoc/raw/master/geekodoc/rng/geekodoc5-flat.rng \
+   ;
+  do
+  xmlcatalog %{buildroot}%{_sysconfdir}/xml/catalog.d/geekodoc.xml $uri || exit $?
+done
 %endif
 
 %files
 %license LICENSE ChangeLog
-%config %{_sysconfdir}/xml/catalog.d/geekodoc.xml
-%{_datadir}/xml/geekodoc
+%config %{_sysconfdir}/xml/catalog.d/geekodoc*.xml
+%dir %{_datadir}/xml/geekodoc
 %{_datadir}/xml/geekodoc/*
 
 %files -n novdoc
 %license LICENSE
 %config %{_sysconfdir}/xml/catalog.d/novdoc.xml
-%{_datadir}/xml/novdoc
+%dir %{_datadir}/xml/novdoc
 %{_datadir}/xml/novdoc/*
 
 %changelog

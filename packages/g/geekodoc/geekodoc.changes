@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Fri Sep  3 10:06:03 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.0.0
+
+- Release 2.0.0, no substantial changes 
+
+-------------------------------------------------------------------
+Fri Aug  6 07:26:21 UTC 2021 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.0.0.beta4
+
+- Prepare 2.0.0 beta4
+  - Introduce external directory in source dir
+  - Update ChangeLog
+  - Add test cases for both GeekoDoc versions
+  - Catalog changes
+    Remove old non-flat URIs as this was not really needed
+    Keep URIs with flat
+  - Introduce new directory structure under /usr/share/xml/geekodoc/rng/
+  - Add new catalog URIs:
+    - urn:x-suse:rnc:v1:geekodoc-flat
+    - urn:x-suse:rnc:v2:geekodoc-flat
+    - urn:x-suse:rng:v1:geekodoc-flat
+    - urn:x-suse:rng:v2:geekodoc-flat
+  - The old URIs are still available:
+   - https://github.com/openSUSE/geekodoc/raw/master/geekodoc/rng/v1/geekodoc5-flat.rng
+   - https://github.com/openSUSE/geekodoc/raw/master/geekodoc/rng/v1/geekodoc5-flat.rnc 
+   - urn:x-suse:rng:geekodoc5-flat.rng
+
+- GeekoDoc v2:
+  - Base it on DocBook 5.2b10a5 (dbitsxi)
+  - Identify GeekoDoc as "5.2-subset GeekoDoc-2"
+  - Incorporate all the changes from GeekoDoc v1
+  - Fix #73: Restrict xml:id/linkend to alphanum + "-" (#75)
+  - Release GeekoDoc 2.0.0 (#76)
+  - Use dbits.rnc as a basis, instead of docbookxi.rnc for GeekoDoc v1.
+    This is needed for translation purposes.
+
+- GeekoDoc v1:
+  - Describe installation on Debian/Ubuntu (#85)
+  - Fix #69: reduce content model of replaceable (#71)
+  - Fix #64: disallow empty sections (#72)
+  - Fix #59: Reduce content model of command (#66)
+  - Fix #63: restrict content model of book
+  - Fix #61: remove depth attribute on imagedata
+
+-------------------------------------------------------------------
+Tue Oct 14 13:42:00 UTC 2020 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.0.0.beta1
+
+- Prepare 2.0.0 beta1 (WIP)
+- Base GeekoDoc v2 on dbits
+- From version 2, only the flat file is packaged as the normal one
+  is not really used.
+- See ChangeLog for further details
+
+-------------------------------------------------------------------
 Fri Feb  9 12:27:58 UTC 2018 - thomas.schraitle@suse.com
 
 - Bugfix release 1.0.2.1
