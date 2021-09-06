@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  5 22:46:29 UTC 2021 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build failures of FreeCAD due to a missing class definition,
+  introduced with occt 7.5.2. Add
+  0001-0032328-Missing-include-of-TopoDS_Edge.hxx-in-ShapeU.patch
+
+-------------------------------------------------------------------
 Wed Aug 25 08:54:15 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - update to version 7.5.3A

@@ -31,6 +31,8 @@ Source0:        occt-%{version}.tar.xz
 Patch1:         fix_build.patch
 # PATCH-FIX-UPSTREAM - https://gitlab.com/blobfish/occt/-/commit/ad0ba55f55b36dc957f66192c4766ace83f82b7e
 Patch2:         0001-Add-error-checking-to-chamfer-and-fillet-code.patch
+# PATCH-FIX-UPSTREAM - https://tracker.dev.opencascade.org/view.php?id=32328
+Patch3:         0001-0032328-Missing-include-of-TopoDS_Edge.hxx-in-ShapeU.patch
 Provides:       OpenCASCADE = %{version}
 BuildRequires:  bison
 BuildRequires:  cmake
