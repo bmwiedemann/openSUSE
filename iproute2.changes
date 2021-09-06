@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep  1 11:49:51 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.14
+  * ip: Add nodst option to macvlan type source
+  * iplink: add support for parent device
+  * iplink: support for WWAN devices
+  * bridge: reorder cmd line arg parsing to let "-c" be detected
+    as "color" option
+
+-------------------------------------------------------------------
 Wed Jul 28 07:34:28 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.13
