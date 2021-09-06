@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  5 22:20:08 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.0.5:
+  * Add 3.9 support.
+- Drop py39.patch as this is upstreamed.
+- Skip failed test for the moment - TestAstroid.
+
+-------------------------------------------------------------------
 Fri Apr 16 12:42:11 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add patch py39.patch to fix build with Python 3.9

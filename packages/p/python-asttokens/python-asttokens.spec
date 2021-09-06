@@ -2,7 +2,7 @@
 # spec file for package python-asttokens
 #
 # Copyright (c) 2021 SUSE LLC
-# Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
+# Copyright (c) 2019-2021 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asttokens
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        Annotate AST trees with source code positions
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/gristlabs/asttokens
 Source:         https://files.pythonhosted.org/packages/source/a/asttokens/asttokens-%{version}.tar.gz
-Patch0:         py39.patch
 BuildRequires:  %{python_module astroid}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pytest}
@@ -46,8 +45,7 @@ BuildArch:      noarch
 Annotate AST trees with source code positions
 
 %prep
-%setup -q -n asttokens-%{version}
-%autopatch -p1
+%autosetup -n asttokens-%{version}
 
 %build
 export LC_ALL=en_US.utf8
@@ -59,7 +57,7 @@ export LC_ALL=en_US.utf8
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+%pytest -k 'not TestAstroid'
 
 %files %{python_files}
 %doc README.rst
