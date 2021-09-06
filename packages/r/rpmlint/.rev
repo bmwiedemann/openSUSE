@@ -3211,4 +3211,17 @@ oddjob-gpupdate isn't blocked)</comment>
 - Removed legacy patches:</comment>
     <requestid>914534</requestid>
   </revision>
+  <revision rev="358" vrev="1">
+    <srcmd5>2c21484143b3dd81a2d3163bc9dee165</srcmd5>
+    <version>2.1+git20210902.aa0b9ef</version>
+    <time>1630936671</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix PieExecutables matching.
+
+- KMP policy: support legacy 'packageand' directive in Supplements
+  (boo#1190103).
+
+- Handle empty glibc archives (starting with version 2.34).</comment>
+    <requestid>915738</requestid>
+  </revision>
 </revisionlist>
