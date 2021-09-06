@@ -1375,4 +1375,23 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * Fix enlightenment paths for 32-bit architectures</comment>
     <requestid>894035</requestid>
   </revision>
+  <revision rev="149" vrev="29">
+    <srcmd5>bf978ac08a21a22d952870250204cf14</srcmd5>
+    <version>unknown</version>
+    <time>1630936670</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210901:
+  * libksysguard5: Updated path for ksgrd_network_helper
+  * kdesu: Updated path for kdesud
+  * sbin_dirs cleanup: these binaries have already been moved to /usr/sbin
+  * mariadb: revert auth_pam_tool to /usr/lib{,64} again
+  * cleanup: revert virtualbox back to plain /usr/lib
+  * cleanup: remove deprecated /etc/ssh/sshd_config
+  * hawk_invoke is not part of newer hawk2 packages anymore
+  * cleanup: texlive-filesystem: public now resides in libexec
+  * cleanup: authbind: helper now resides in libexec
+  * cleanup: polkit: the agent now also resides in libexec
+  * libexec cleanup: 'inn' news binaries now reside in libexec</comment>
+    <requestid>915438</requestid>
+  </revision>
 </revisionlist>

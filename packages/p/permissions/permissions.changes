@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 01 07:33:41 UTC 2021 - matthias.gerstner@suse.com
+
+- Update to version 20210901:
+  * libksysguard5: Updated path for ksgrd_network_helper
+  * kdesu: Updated path for kdesud
+  * sbin_dirs cleanup: these binaries have already been moved to /usr/sbin
+  * mariadb: revert auth_pam_tool to /usr/lib{,64} again
+  * cleanup: revert virtualbox back to plain /usr/lib
+  * cleanup: remove deprecated /etc/ssh/sshd_config
+  * hawk_invoke is not part of newer hawk2 packages anymore
+  * cleanup: texlive-filesystem: public now resides in libexec
+  * cleanup: authbind: helper now resides in libexec
+  * cleanup: polkit: the agent now also resides in libexec
+  * libexec cleanup: 'inn' news binaries now reside in libexec
+
+-------------------------------------------------------------------
 Tue May 18 11:16:07 UTC 2021 - matthias.gerstner@suse.com
 
 - Update to version 20210518:
