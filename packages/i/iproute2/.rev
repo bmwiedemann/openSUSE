@@ -969,4 +969,12 @@ require bash-completion for iproute2-bash-completion]</comment>
     <comment>- Update to release 5.13</comment>
     <requestid>908809</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>708e6b09dcf47f6f70ab1f5275ca4117</srcmd5>
+    <version>5.14</version>
+    <time>1630936671</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.14</comment>
+    <requestid>915512</requestid>
+  </revision>
 </revisionlist>
