@@ -29,6 +29,7 @@ Source1:        https://fedorahosted.org/releases/e/l/elfutils/%{version}/elfuti
 Source2:        elfutils.changes
 Source3:        elfutils.keyring
 Patch0:         disable-run-readelf-self-test.patch
+Patch1:         tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug  5 18:12:21 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
+  in order to fix boo#1189083.
+
+-------------------------------------------------------------------
 Mon May 24 07:39:53 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Update to version 0.185:

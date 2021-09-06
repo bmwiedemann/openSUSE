@@ -32,6 +32,7 @@ Source4:        https://fedorahosted.org/releases/e/l/%{name}/%{version}/%{name}
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
 Patch0:         disable-run-readelf-self-test.patch
+Patch1:         tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

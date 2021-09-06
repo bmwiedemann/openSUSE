@@ -879,4 +879,12 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
                when nothing was done). On error the exit code is now always 1.</comment>
     <requestid>895138</requestid>
   </revision>
+  <revision rev="89" vrev="2">
+    <srcmd5>bcc5fa2c25ac0269fda9c045ad0982fc</srcmd5>
+    <version>0.185</version>
+    <time>1630936670</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>910365</requestid>
+  </revision>
 </revisionlist>
