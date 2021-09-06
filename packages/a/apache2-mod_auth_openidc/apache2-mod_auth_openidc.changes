@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  3 17:47:35 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- update to 2.4.9.4
+  * Security
+    - prevent open redirect by applying OIDCRedirectURLsAllowed setting to 
+      target_link_uri; closes #672
+  * Bugfixes
+    - don't apply authz in discovery process; fixes step up authentication 
+      when combined with Discovery
+
+-------------------------------------------------------------------
 Fri Aug 27 09:50:50 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - update to 2.4.9.3
