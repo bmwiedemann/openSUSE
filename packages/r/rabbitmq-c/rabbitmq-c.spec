@@ -105,7 +105,7 @@ export RABBITMQ_MNESIA_BASE=/home/abuild/rabbitmq/mnesia
 export RABBITMQ_SCHEMA_DIR=/home/abuild/rabbitmq/schema
 export RABBITMQ_GENERATED_CONFIG_DIR=/home/abuild/rabbitmq/config
 %endif
-sbin_base=%{_libdir}/rabbitmq/lib/rabbitmq_server-*/sbin
+sbin_base=/usr/lib*/rabbitmq/lib/rabbitmq_server-*/sbin
 $sbin_base/rabbitmq-server&
 sleep 5
 $sbin_base/rabbitmqctl await_startup

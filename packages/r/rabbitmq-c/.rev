@@ -41,4 +41,12 @@
     <comment>Update to version 0.11.0 (forwarded request 891265 from susnux)</comment>
     <requestid>891305</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ca1e089f7eeeb7aa2bce106f9c1701e4</srcmd5>
+    <version>0.11.0</version>
+    <time>1630936683</time>
+    <user>dimstar_suse</user>
+    <comment>- %check: fix testsuite run</comment>
+    <requestid>917000</requestid>
+  </revision>
 </revisionlist>
