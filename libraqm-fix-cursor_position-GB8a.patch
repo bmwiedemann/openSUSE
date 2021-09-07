@@ -1,0 +1,21 @@
+From 9badec46ab730344063e729070d1829ca5bc04d6 Mon Sep 17 00:00:00 2001
+From: Khaled Hosny <khaled@aliftype.com>
+Date: Thu, 26 Aug 2021 16:57:18 +0200
+Subject: [PATCH] This test requires new HarfBuzz
+
+---
+ tests/cursor_position_GB8a.test | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: raqm-0.7.1/tests/cursor_position_GB8a.test
+===================================================================
+--- raqm-0.7.1.orig/tests/cursor_position_GB8a.test
++++ raqm-0.7.1/tests/cursor_position_GB8a.test
+@@ -1,6 +1,6 @@
+ fonts/sha1sum/bcb3b98eb67ece19b8b709f77143d91bcb3d95eb.ttf
+ 🇦🇧🇨🇩
+---cluster 1 --position 1000
++--cluster 1 --position 1000 --require HB_020900
+ Text is: 🇦🇧🇨🇩
+ Direction is: DEFAULT
+ 

@@ -25,13 +25,12 @@ License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/HOST-Oman/libraqm
 Source:         https://github.com/HOST-Oman/libraqm/releases/download/v%{version}/raqm-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE disable some tests for old SuSE Versions
-Patch0:         libraqm-test.patch
+Patch1:         libraqm-fix-cursor_position-GB8a.patch
 BuildRequires:  freetype2-devel
 BuildRequires:  fribidi-devel
 BuildRequires:  gcc
 BuildRequires:  gtk-doc
-BuildRequires:  harfbuzz-devel
+BuildRequires:  pkgconfig(harfbuzz) >= 1.7.2
 
 %description
 Library that encapsulates the logic for complex
@@ -63,28 +62,23 @@ Library that encapsulates the logic for complex
 text layout and provides a convenient API.
 
 %prep
-%setup -q -n raqm-%{version}
-%if 0%{?suse_version} <= 1510
-%patch0 -p1
-%endif
+%autosetup -n raqm-%{version} -p1
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1500
 sed s:python:%{__python3}:g -i tests/Makefile.in #Fixed in next release on upstream
 %endif
-%configure --enable-gtk-doc
 
 %build
-make %{?_smp_mflags}
+%configure --enable-gtk-doc
+%make_build
 
 %check
 export LC_ALL=C.utf8
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
-rm -f %{buildroot}%{_libdir}/*.{la,a}
+rm -fv %{buildroot}/%{_libdir}/*.a %{buildroot}/%{_libdir}/*.la
 
-%post devel -p /sbin/ldconfig
-%postun devel -p /sbin/ldconfig
 %post -n %{name}%{sover} -p /sbin/ldconfig
 %postun -n %{name}%{sover} -p /sbin/ldconfig
 
