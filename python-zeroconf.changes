@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep  6 09:19:13 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 0.36.2:
+  * Include NSEC records for non-existent types when responding
+    with addresses
+  * Implements RFC6762 sec 6.2
+    (http://datatracker.ietf.org/doc/html/rfc6762#section-6.2)
+
+- Update to 0.36.1:
+  * Skip goodbye packets for addresses when there is another
+    service registered with the same name (#968) @bdraco
+  * If a ServiceInfo that used the same server name as another
+    ServiceInfo was unregistered, goodbye packets would be sent for
+    the addresses and would cause the other service to be seen as
+    offline.
+  * Fixed equality and hash for dns records with the unique bit
+    (#969)
+  * These records should have the same hash and equality since
+    the unique bit (cache flush bit) is not considered when adding
+    or removing the records from the cache.
+
+- Update to 0.36.0:
+  * Technically backwards incompatible:
+  * Fill incomplete IPv6 tuples to avoid WinError on windows (#965)
+
+-------------------------------------------------------------------
 Mon Aug 16 01:39:16 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 0.35.1:
