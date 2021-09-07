@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep 02 14:38:58 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 2.4.4:
+  * acmeserver: Don't set host for directory links by default
+  * acmeserver: Trim slashes from path prefix
+  * admin: Implement load_interval to pull config on a timer
+  * admin: Replace admin cert cache when reloading
+  * admin: Sync server variables
+  * caddyfile: Better error message for missing site block braces
+  * caddyfile: Error on invalid site addresses containing comma
+  * caddyfile: keep error chain info in Dispenser.Errf
+  * caddyhttp: Fix edgecase with auto HTTP->HTTPS logic
+  * caddyhttp: Fix incorrect determination of gRPC protocol
+  * caddyhttp: Refactor and export SanitizedPathJoin for use in fastcgi
+  * caddyhttp: Updated the documentation for MatchQuery
+  * caddytls: Add Caddyfile support for propagation_timeout
+  * caddytls: Remove "IssuerRaw" field
+  * cmd: Fix paths when using an env file
+  * cmd: New add-package and remove-package commands
+  * cmd: use net.ErrClosed for matching returned error
+  * core: Unix ns and Unix ms time placeholders
+  * encode: Tweak compression settings
+  * fileserver: Add disable_canonical_uris Caddyfile subdirective
+  * fileserver: Clarify docs about canonicalization
+  * fileserver: Don't persist parsed template
+  * fileserver: Fix browse name_dir_first sorting
+  * fileserver: Fix browse not redirecting query parameters
+  * fileserver: Only redirect if filename not rewritten
+  * fileserver: Redirect within the original URL
+  * go.mod: Update dependencies
+  * httpcaddyfile: Add preferred_chains global option and issuer subdirective
+  * httpcaddyfile: Add shortcut for proxy hostport placeholder
+  * httpcaddyfile: Add skip_install_trust global option
+  * httpcaddyfile: Don't add HTTP hosts to TLS APs
+  * httpcaddyfile: Don't put localhost in public APs
+  * httpcaddyfile: Ensure hosts to skip for logs can always be collected
+  * httpcaddyfile: Improve unrecognized directive errors
+  * httpcaddyfile: Reorder some directives
+  * logging: Actually use level_key
+  * logging: Add missing interface guards for replace filter
+  * logging: Prep for common_log removal
+  * logging: Warn for deprecated single_field encoder
+  * metrics: use buildinfo collector from new collectors pkg
+  * reverseproxy: Adjust test related to #4201
+  * reverseproxy: Always remove hop-by-hop headers
+  * reverseproxy: Fix overwriting of max_idle_conns_per_host
+  * reverseproxy: Incorporate latest proxy changes from stdlib
+  * reverseproxy: Keep path to unix socket as dial address
+  * reverseproxy: Remove redundant flushing
+
+-------------------------------------------------------------------
 Wed Aug 25 13:55:21 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Modified:
