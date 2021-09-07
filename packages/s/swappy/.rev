@@ -50,4 +50,26 @@
   * docs(readme): add instructions to build i18n</comment>
     <requestid>874288</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8467046af14fdf681b4324738984feb3</srcmd5>
+    <version>1.4.0</version>
+    <time>1631042481</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.4.0:
+  Features:
+  * draw: draw shape from center if holding control (d80c361)
+  * i18n: add french translations (cacb283)
+  Bug Fixes:
+  * desktop: remove annotation from desktop categories (0d383f6)
+  * desktop: various fixes (42425c0)
+  * i18n: add german translations to desktop file (c6b09e5)
+  * i18n: add turkish translation to desktop file (fa5769e)
+  * i18n: properly set translation domain during layout init (5301aeb), closes #92
+  * pixbuf: handle invalid input file (cdbd06d)
+  * pixbuf: handle overflow when filename_format is too long (185575b), closes #74
+  * po: update GETTEXT_PACKAGE value with project name (7fd552e)
+  * release: properly check sha256 remote content (91985c7), closes #90
+- Remove swappy-desktopfile.patch</comment>
+    <requestid>917151</requestid>
+  </revision>
 </revisionlist>

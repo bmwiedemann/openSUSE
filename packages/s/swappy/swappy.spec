@@ -17,7 +17,7 @@
 
 
 Name:           swappy
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Wayland compositor screenshot editor
 License:        MIT
@@ -25,9 +25,6 @@ Group:          Productivity/Graphics/Other
 URL:            https://github.com/jtheoof/swappy
 Source:         https://github.com/jtheoof/swappy/archive/v%{version}.tar.gz
 Source1:        https://github.com/jtheoof/swappy/releases/download/v%{version}/swappy-%{version}.tar.gz.sig
-Patch0:         swappy-desktopfile.patch
-Requires:       fontawesome-fonts
-Requires:       wl-clipboard
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -35,6 +32,8 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(pango)
+Requires:       fontawesome-fonts
+Requires:       wl-clipboard
 
 %description
 A Wayland native snapshot and editor tool
@@ -43,7 +42,6 @@ A Wayland native snapshot and editor tool
 
 %prep
 %setup -q
-%patch0 -p1 
 
 %build
 %meson
@@ -62,7 +60,7 @@ A Wayland native snapshot and editor tool
 %{_datadir}/applications/swappy.desktop
 %{_datadir}/icons/hicolor/scalable/apps/swappy.svg
 
-%files lang -f %{name}.lang 
+%files lang -f %{name}.lang
 %{_datadir}/locale/en/LC_MESSAGES/swappy.mo
 
 %changelog
