@@ -1165,7 +1165,7 @@ unsorted:
   - bb 
   - bbe 
   - bbswitch 
-  - bbswitch-kmp-default 
+  - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -2330,7 +2330,7 @@ unsorted:
   - crash-doc 
   - crash-eppic 
   - crash-gcore 
-  - crash-kmp-default 
+  - crash-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - crash-kmp-pae: [i586] 
   - crawl 
   - crawl-data 
@@ -8118,7 +8118,6 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
-  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -14170,7 +14169,7 @@ unsorted:
   - libv4l-devel-32bit: [x86_64] 
   - libv4l1-0-32bit: [x86_64] 
   - libv4l2-0-32bit: [x86_64] 
-  - libv4l2rds0 
+  - libv4l2rds0: [i586] 
   - libv4l2rds0-32bit: [x86_64] 
   - libv4lconvert0-32bit: [x86_64] 
   - libva-devel 
@@ -16354,7 +16353,7 @@ unsorted:
   - msmtp-mta 
   - msoak 
   - mspack-examples 
-  - msr-safe-kmp-default 
+  - msr-safe-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - msr-safe-kmp-pae: [i586] 
   - msr-tools 
   - mstflint 
@@ -17825,14 +17824,11 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
-  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
-  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
-  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -18497,7 +18493,7 @@ unsorted:
   - pcb 
   - pcb-doc 
   - pcfclock 
-  - pcfclock-kmp-default 
+  - pcfclock-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - pcfclock-kmp-pae: [i586] 
   - pciutils-devel 
   - pciutils-devel-32bit: [x86_64] 
@@ -32420,7 +32416,7 @@ unsorted:
   - syntax-highlighting-devel-32bit: [x86_64] 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default 
+  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils 
   - sysfsutils-devel 
@@ -41508,13 +41504,13 @@ unsorted:
   - uwsgi-xslt 
   - v2ray-core 
   - v4l-tools 
-  - v4l-utils 
+  - v4l-utils: [i586] 
   - v4l-utils-devel-tools 
-  - v4l-utils-lang 
-  - v4l2loopback-autoload 
-  - v4l2loopback-kmp-default 
+  - v4l-utils-lang: [i586] 
+  - v4l2loopback-autoload: [i586] 
+  - v4l2loopback-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - v4l2loopback-kmp-pae: [i586] 
-  - v4l2loopback-utils 
+  - v4l2loopback-utils: [i586] 
   - vacuum-im 
   - vacuum-im-devel 
   - vacuum-im-lang 
@@ -42405,7 +42401,7 @@ unsorted:
   - xsv-bash-completion 
   - xsynth-dssi 
   - xtables-addons 
-  - xtables-addons-kmp-default 
+  - xtables-addons-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - xtables-addons-kmp-pae: [i586] 
   - xtables-geoip 
   - xteddy 

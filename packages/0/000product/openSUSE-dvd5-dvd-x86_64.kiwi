@@ -197,6 +197,7 @@
       <repopackage name="bash-completion"/>
       <repopackage name="bash-doc"/>
       <repopackage name="bash-lang"/>
+      <repopackage name="bbswitch-kmp-default" arch="x86_64"/>
       <repopackage name="bc"/>
       <repopackage name="bcm20702a1-firmware"/>
       <repopackage name="bcm43xx-firmware"/>
@@ -324,6 +325,7 @@
       <repopackage name="cpupower"/>
       <repopackage name="cracklib"/>
       <repopackage name="cracklib-dict-full"/>
+      <repopackage name="crash-kmp-default" arch="x86_64"/>
       <repopackage name="crda"/>
       <repopackage name="createrepo_c"/>
       <repopackage name="cron"/>
@@ -1319,7 +1321,7 @@
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
       <repopackage name="krb5-32bit" arch="x86_64"/>
-      <repopackage name="krb5-client" arch="x86_64"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krdc" arch="x86_64"/>
       <repopackage name="krdc-lang" arch="x86_64"/>
       <repopackage name="krename"/>
@@ -2908,6 +2910,7 @@
       <repopackage name="libv4l"/>
       <repopackage name="libv4l1-0"/>
       <repopackage name="libv4l2-0"/>
+      <repopackage name="libv4l2rds0" arch="x86_64"/>
       <repopackage name="libv4lconvert0"/>
       <repopackage name="libva-drm2"/>
       <repopackage name="libva-glx2"/>
@@ -3346,6 +3349,7 @@
       <repopackage name="mpg123-openal"/>
       <repopackage name="mpt-firmware"/>
       <repopackage name="mpt-status"/>
+      <repopackage name="msr-safe-kmp-default" arch="x86_64"/>
       <repopackage name="mtdev-devel" arch="x86_64"/>
       <repopackage name="mtools"/>
       <repopackage name="mtr"/>
@@ -3461,6 +3465,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
@@ -3607,6 +3614,7 @@
       <repopackage name="patterns-yast-yast2_server"/>
       <repopackage name="pavucontrol"/>
       <repopackage name="pavucontrol-lang"/>
+      <repopackage name="pcfclock-kmp-default" arch="x86_64"/>
       <repopackage name="pciutils"/>
       <repopackage name="pcmciautils"/>
       <repopackage name="pcsc-acr38"/>
@@ -4841,6 +4849,7 @@
       <repopackage name="syntax-highlighting"/>
       <repopackage name="sysconfig"/>
       <repopackage name="sysconfig-netconfig"/>
+      <repopackage name="sysdig-kmp-default" arch="x86_64"/>
       <repopackage name="syslinux"/>
       <repopackage name="syslog-service"/>
       <repopackage name="system-config-printer"/>
@@ -5102,6 +5111,11 @@
       <repopackage name="util-linux-systemd"/>
       <repopackage name="util-macros-devel" arch="x86_64"/>
       <repopackage name="v4l-conf"/>
+      <repopackage name="v4l-utils" arch="x86_64"/>
+      <repopackage name="v4l-utils-lang" arch="x86_64"/>
+      <repopackage name="v4l2loopback-autoload" arch="x86_64"/>
+      <repopackage name="v4l2loopback-kmp-default" arch="x86_64"/>
+      <repopackage name="v4l2loopback-utils" arch="x86_64"/>
       <repopackage name="vacation"/>
       <repopackage name="vcdimager"/>
       <repopackage name="vhba-kmp-default" arch="x86_64"/>
@@ -5314,6 +5328,7 @@
       <repopackage name="xsetroot"/>
       <repopackage name="xsettingsd"/>
       <repopackage name="xstroke"/>
+      <repopackage name="xtables-addons-kmp-default" arch="x86_64"/>
       <repopackage name="xtables-plugins"/>
       <repopackage name="xterm"/>
       <repopackage name="xterm-bin"/>
