@@ -83,4 +83,16 @@
   proper upgrade from previous version 1.6.0b3 (forwarded request 898311 from glaubitz)</comment>
     <requestid>898411</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f4179aee8a8e57f3f882a6f452f3c0d6</srcmd5>
+    <version>1.6.1</version>
+    <time>1631042506</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.6.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 917250 from glaubitz)</comment>
+    <requestid>917296</requestid>
+  </revision>
 </revisionlist>
