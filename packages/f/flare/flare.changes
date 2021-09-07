@@ -1,4 +1,143 @@
 -------------------------------------------------------------------
+Sun Sep  5 04:25:46 UTC 2021 - saku nix <ssakuragi2@hotmail.com>
+- Version update to 1.12
+  Engine features
+  * NPC interactions are now canceled when the player is attacked.
+    ‘combat_aborts_npc_interact’ has been added to engine/misc.txt to control
+    this setting.
+  * Added ‘bar_fill_offset’ and ‘bar_fill_size’ to MenuStatBar and MenuEnemy
+    properties.
+  * Added support for fading out combat text. See the ‘fade_duration’ property
+    in engine/combat.txt.
+  * Added ‘save_oncutscene’ property to engine/misc.txt. Saving before a cutscene
+    was previously controlled with ‘save_onload’, which caused issues with
+    cutscenes when set to false.
+  * Added ‘save_anywhere’ property to engine/misc.txt. This allows for saving
+    via the pause menu. (m7600)
+  * Added display of enemies, allies, NPCs, and intermap teleport events to the
+    minimap.
+  * Added support for defining the colors of tiles and entities on the minimap.
+  * Added ‘show_on_minimap’ event component. Currently, this only applies to
+    intermap teleport events.
+  * Added ‘show_on_minimap’ property to NPCs.
+  * Properties that take an alignment can now be aligned to the menu frame.
+  * Support multiple images in animation definitions. (bloodhero)
+  * Expanded slot widget configuration in engine/widget_settings.txt. Quantity
+    text color can be changed, as well as label settings for displaying hotkeys.
+  * Re-implemented displaying hotkeys on action bar slots.
+  * Support for ‘item:quantity’ syntax for Event properties: ‘requires_item’,
+    ‘requires_not_item’, ‘remove_item’, and ‘reward_item’.
+  * Added ‘show_randomize’ property to new game menu configuration.
+  * Added ‘disable_equip_slots’ property for passive powers.
+  * ‘Block’ powers can now use post_power to trigger a power when taking damage.
+  * Power descriptions are now displayed in action bar tooltips. This can be
+    controlled with the ‘tooltip_length’ property in menus/actionbar.txt.
+  * A dialog box is now displayed instead of a log message when the player dies,
+    giving the options to exit or respawn (if applicable).
+  * Added movement input type dialog box. It is displayed for new players to
+    easily select between keyboard, mouse, and joystick movement.
+  * Added ‘–safe-video’ command line option. For troubleshooting purposes, this
+    feature is displayed as an option when starting after a potential crash.
+  * The ‘categories’ property has been extended to the player character. The
+    Power property ‘target_categories’ can now be used for the player as a result.
+  * The ability to stash quest items can now be controlled with the ‘no_stash’ property.
+  * Added a button for opening the pause/configuration menu as part of the minimap.
+  * Added ‘script’ property to items. This removes the need to create a power in
+    order to execute a script via activating an item.
+  * Player ‘melee_range’ is now configurable in engine/stats.txt.
+  * Added comparison tooltips for items. These can be disabled in the Interface
+    settings. (r-a-cristian-93, Justin Jacobs)
+  * Added ‘parallax_layers’ property to Events. This functions exactly like the
+    Map property of the same name.
+  * Added ‘visible’, ‘visible_check_locked’, and ‘visible_check_status’ to powers
+    and upgrades in power trees.
+  * Added ‘requires_status’ and ‘requires_not_status’ to powers and upgrades in
+    power trees. ‘visible_requires_status’ and ‘visible_requires_not_status’
+    have been marked as deprecated.
+  * Added ‘on_interact’ as a possible value for Event types. Essentially the
+    same as ‘on_trigger’, except the event can ONLY be activated through the hotspot.
+  * Support an arbitrary number of Stash tabs. Each tab has a display name and
+    an ‘is_private’ flag.
+  * Added ‘save_onstash’ property to engine/misc.txt, so it is now possible to
+    disable the automatic save when modifying stash contents.
+  * The player’s last used Stash tab is now remembered across sessions.
+  * Added the ability for NPCs to join the player’s party. (Igor Paliychuk)
+  * Added support for the ‘delay’ property used by Events contained in script files.
+  * Added ‘Frame Limit’ option to Video settings.
+  * Added ‘Maximum Render Size’ option to Video settings.
+  * Improved visual indication of which item set bonuses are active.
+  * Support enabling touch screen controls on non-Android systems.
+  * Added ‘Touch Gamepad Scale’ option to Input settings.
+  * Support fullscreen mode in the Emscripten port.
+  * Added scrollbar.bg_color to engine/widget_settings.txt.
+  * Updates to package_osx.sh, including usage of Homebrew for dependencies (ludoza)
+
+  Engine fixes
+  * Fix memory leak of tab control in stash menu (MiroslavR)
+  * Fixed stat bars not having any fill when the value they were representing was
+    non-zero. Now they will always show at least 1 pixel of the bar’s fill graphics.
+  * Fixed a bug where the game window could be resized below the minimum size after
+    exiting fullscreen mode.
+  * Removed the default resolution scaling when virtual_heights is undefined.
+  * Improved performance when checking map event hotspots.
+  * Fix Windows-style paths with backslashes not working on non-Windows systems.
+  * Prevent allies counting as attack targets when using mouse movement.
+  * Fix needing to press the ‘Cancel’ key twice to exit the vendor menu.
+  * Fix unintended key presses being registered when quitting the game via an OS
+    keyboard shortcut.
+  * Fix divide-by-zero crash when using the dev HUD with a game that uses
+    orthogonal rendering.
+  * Fixed a memory leak in Loot copy constructor.
+  * Fixed ‘resist_percent’ property of engine/combat.txt not working when targets
+    had 100% resistance.
+  * Support attack_speed effects with a magnitude less than 100%.
+  * Fixed bug where dead entities could steal HP/MP.
+  * Fix broken parsing of engine/default_keybindings.txt.
+  * Fix Effect animations not being synced properly in some cases.
+  * Removed hard-coded restrictions on using items from the inventory. Now any
+    item that has a power and is not equipment can be used.
+  * Fix crash when fonts are missing. The engine will try to fall back to the next
+    available font for the current language.
+  * Background color when using sdl_hardware renderer no longer fills entire
+    window, instead only filling the drawing surface as it should.
+  * Fix crash when loading a cutscene from a book event.
+  * Fix infinite transformation loop when dying in a transformed state that was
+    activated by a passive power.
+  * Fix bug where the player wasn’t returned to their normal state after dying
+    in a transformed state.
+  * Prevent combat text from overlapping.
+  * Improved performance when handling many status effects.
+  * Improved performance when an entity is repeatedly unable to find a path to
+    thier target.
+  * Fix bug where killing an enemy with return damage would not set defeat status
+    or reward XP/loot.
+  * Fix check of item requirements when a power requires an item but doesn’t
+    consume it.
+  * Fix ‘respec’ events to no longer remove item-based powers from the action bar.
+  * Fix log message when gaining more than one level at once.
+  * Fixed excessive memory usage when using Items, ItemSets, and Powers with high-value IDs.
+  * Fix bug where power upgrades that didn’t require power points would not
+    automatically upgrade if other requirements were met.
+  * Fix infinite loop bug when a power’s list of upgrades contains the base power ID.
+  * Fix infinite loop bug when locking power upgrades.
+  * The executable directory is now used when trying to find PATH_DATA on Linux. (r-a-cristian-93)
+  * Fix ‘corpse_timeout’ in engine/misc.txt being parsed incorrectly (r-a-cristian-93)
+  * Reworked camera speed curve to prevent graphical “wiggle” during slow movement.
+  * Fix missing effect description text in power tooltips when using built-in types.
+  * Fix static events not executing on the same frame as on_load events.
+  * Fix parsing bug in power trees that would save base power properties to an upgrade power.
+  * Fix on_load events with requires_class not working in maps/spawn.txt
+  * Fix timing of Effects so that the first “tick” happens immediately.
+  * Fix “Press button to use” prompt no showing up for some items.
+  * Fix loud loot drop sound effect when there are a large number of drops at once.
+  * Fix incorrect HP/MP regen for high regen values and high frame limits.
+  * Fix camera, parallax layer, and cutscene speeds when using alternative frame limits.
+  * Fix not restoring fullscreen option when pressing Cancel or Defaults in config menu.
+  * Smoother scrolling in WidgetScrollBox.
+  * Fix click-and-drag behavior on WidgetTabControl, WidgetSlider, and WidgetScrollBar.
+  * Fix dialog topics being auto-selected when they shouldn’t for non-vendor NPCs.
+
+-------------------------------------------------------------------
 Sun Jul 28 05:06:39 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
 
 - Version update to 1.11 
@@ -266,4 +405,3 @@ Wed Dec 23 00:00:00 UTC 2011 - dap.darkness@gmail.com
   * New Grassland tileset
   * New questing areas: Frontier and Living Bones
   * Redesigned creatures are tougher and more varied
-

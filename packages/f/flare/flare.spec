@@ -1,7 +1,7 @@
 #
 # spec file for package flare
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           flare
-Version:        1.11
+Version:        1.12
 Release:        0
 Summary:        Free Libre Action Roleplaying Engine
-License:        GPL-3.0-or-later AND (CC-BY-SA-3.0 OR CC-BY-SA-4.0)
+License:        (CC-BY-SA-3.0 OR CC-BY-SA-4.0) AND GPL-3.0-or-later
 Group:          Amusements/Games/RPG
-Url:            http://flarerpg.org
-Source0:        https://sourceforge.net/projects/flare-game/files/Linux/%{name}-engine-v%{version}.tar.gz
+URL:            https://flarerpg.org
+Source0:        https://github.com/flareteam/flare-game/releases/download/v%{version}/%{name}-engine-v%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -35,8 +35,8 @@ BuildRequires:  pkgconfig(SDL2_ttf)
 Requires:       %{name}-game = %{version}
 Requires(post): hicolor-icon-theme
 Requires(post): update-desktop-files
-Requires(postun): hicolor-icon-theme
-Requires(postun): update-desktop-files
+Requires(postun):hicolor-icon-theme
+Requires(postun):update-desktop-files
 Recommends:     python
 Provides:       %{name}-engine = %{version}
 
