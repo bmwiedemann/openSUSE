@@ -40,7 +40,7 @@ Requires:       virt-sandbox
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 powerpc64le
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 powerpc64 powerpc64le
 %python_subpackages
 
 %description

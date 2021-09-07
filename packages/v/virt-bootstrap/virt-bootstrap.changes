@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 31 08:08:08 UTC 2021 - ohering@suse.de
+
+- apparently 'powerpc64' is now a thing (bsc#1127769)
+
+-------------------------------------------------------------------
 Fri Apr 30 19:15:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Only build python3 on Tumbleweed: python3-libguestfs is only
