@@ -919,4 +919,16 @@
 </comment>
     <requestid>910279</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>d07dd383c7dd348c1e2e842f7bf79966</srcmd5>
+    <version>1.18.2</version>
+    <time>1631042509</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.2
+  * Bugfixes:
+    #7827: The error message &quot;given name ... differs from filesystem name ...&quot; does not help users to resolve the issue
+    #7893: Updating ignores blocks GUI when IO slots are unavailable
+</comment>
+    <requestid>917279</requestid>
+  </revision>
 </revisionlist>

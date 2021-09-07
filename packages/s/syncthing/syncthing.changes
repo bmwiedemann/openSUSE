@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  7 12:24:57 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 1.18.2
+  * Bugfixes:
+    #7827: The error message "given name ... differs from filesystem name ..." does not help users to resolve the issue
+    #7893: Updating ignores blocks GUI when IO slots are unavailable
+
+-------------------------------------------------------------------
 Thu Aug  5 08:37:17 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.18.1
