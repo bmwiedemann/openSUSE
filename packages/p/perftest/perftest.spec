@@ -16,9 +16,9 @@
 #
 
 
-%define extra_version 0.37
+%define extra_version 0.2
 Name:           perftest
-Version:        4.4
+Version:        4.5
 Release:        0
 Summary:        IB Performance tests
 License:        BSD-3-Clause OR GPL-2.0-or-later
@@ -26,6 +26,7 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/linux-rdma/perftest
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
 Patch4:         perftest-armv6.patch
+Patch5:         Do-not-check-if-CPU-is-RO-compliant-at-compile-time.patch
 # For transition to rdma-core make sure the new packages are selected
 # Once the transition is made the version check can be removed
 BuildRequires:  autoconf
@@ -34,6 +35,7 @@ BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
 BuildRequires:  librdmacm-devel
 BuildRequires:  libtool
+BuildRequires:  pciutils-devel
 
 %description
 gen2 uverbs microbenchmarks
@@ -41,6 +43,7 @@ gen2 uverbs microbenchmarks
 %prep
 %setup -q -n %{name}-%{version}%{extra_version}
 %patch4 -p1
+%patch5
 
 %build
 ./autogen.sh

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Aug 24 07:37:12 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 4.5.0-2 (jsc#SLE-19251)
+  - No release notes available
+- Add Do-not-check-if-CPU-is-RO-compliant-at-compile-time.patch
+  to make sure relaxed ordering only depends on the run-time CPU
+  and not the compile-time one.
+
+-------------------------------------------------------------------
 Wed Mar 17 17:14:47 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 4.4.0-37
