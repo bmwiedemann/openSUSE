@@ -39,8 +39,11 @@
 %bcond_with sigc_block_workaround
 %endif
 
+# Distros using just zypper may want to enable this as default earlier
+%bcond_with enable_preview_single_rpmtrans_as_default_for_zypper
+
 Name:           libzypp
-Version:        17.28.2
+Version:        17.28.3
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -269,6 +272,7 @@ cmake -DCMAKE_INSTALL_PREFIX=%{_prefix} \
       %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=1} \
       %{?with_sigc_block_workaround:-DENABLE_SIGC_BLOCK_WORKAROUND=1} \
       %{!?with_mediabackend_tests:-DDISABLE_MEDIABACKEND_TESTS=1} \
+      %{?with enable_preview_single_rpmtrans_as_default_for_zypper:-DENABLE_PREVIEW_SINGLE_RPMTRANS_AS_DEFAULT_FOR_ZYPPER=1} \
       ${EXTRA_CMAKE_OPTIONS} \
       ..
 make %{?_smp_mflags} VERBOSE=1
