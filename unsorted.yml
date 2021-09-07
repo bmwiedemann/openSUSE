@@ -5942,7 +5942,6 @@ unsorted:
   - golang-org-x-sys 
   - golang-packaging 
   - gom-devel 
-  - gomuks 
   - goobox 
   - goobox-lang 
   - goocanvas-devel 
@@ -14296,7 +14295,6 @@ unsorted:
   - libvorbisenc2-32bit: [x86_64] 
   - libvoro++0 
   - libvotca_csg2021 
-  - libvotca_ctp5 
   - libvotca_tools2021 
   - libvotca_xtp2021: [x86_64] 
   - libvotequorum8 
@@ -23052,14 +23050,10 @@ unsorted:
   - python36-nodeenv 
   - python36-nornir 
   - python36-nose 
-  - python36-nose-cov 
   - python36-nose-cover3 
-  - python36-nose-exclude 
   - python36-nose-progressive 
-  - python36-nose-timer 
   - python36-nose2 
   - python36-nose_warnings_filters 
-  - python36-nosexcover 
   - python36-notebook 
   - python36-notebook-lang 
   - python36-notify2 
@@ -25929,14 +25923,10 @@ unsorted:
   - python38-nodeenv 
   - python38-nornir 
   - python38-nose 
-  - python38-nose-cov 
   - python38-nose-cover3 
-  - python38-nose-exclude 
   - python38-nose-progressive 
-  - python38-nose-timer 
   - python38-nose2 
   - python38-nose_warnings_filters 
-  - python38-nosexcover 
   - python38-notebook 
   - python38-notebook-lang 
   - python38-nox 
@@ -28977,14 +28967,10 @@ unsorted:
   - python39-nodeenv 
   - python39-nornir 
   - python39-nose 
-  - python39-nose-cov 
   - python39-nose-cover3 
-  - python39-nose-exclude 
   - python39-nose-progressive 
-  - python39-nose-timer 
   - python39-nose2 
   - python39-nose_warnings_filters 
-  - python39-nosexcover 
   - python39-notebook 
   - python39-notebook-lang 
   - python39-notify2 
@@ -31042,6 +31028,7 @@ unsorted:
   - rpcgen 
   - rpcsvc-proto-devel 
   - rpi-eeprom-config 
+  - rpi-imager 
   - rpm-32bit: [x86_64] 
   - rpm-build 
   - rpm-build-perl 
@@ -41744,10 +41731,6 @@ unsorted:
   - votca-csg-common 
   - votca-csg-devel 
   - votca-csg-tutorials 
-  - votca-ctp 
-  - votca-ctp-common 
-  - votca-ctp-devel 
-  - votca-ctp-doc 
   - votca-tools 
   - votca-tools-devel 
   - votca-xtp: [x86_64] 
