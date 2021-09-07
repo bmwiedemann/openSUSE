@@ -11,3 +11,8 @@ addFilter(".*obsolete-not-provided slurmdb-direct.*")
 # This mainly applies to upgrade packages for Leap and SLE in the maintenance
 # channel.
 addFilter("libnss_slurm\d_\d{2}_\d{2}.*: .* shlib-policy-name-error.*")
+
+# slurms uses shared libraries for its plugins, so these plugins can have 
+# no dependency information
+
+addFilter(".*shared-library-without-dependency-information /usr/lib64/slurm/.*so")

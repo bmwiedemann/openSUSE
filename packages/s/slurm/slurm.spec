@@ -1,5 +1,5 @@
 #
-# spec file for package slurm
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,9 +17,9 @@
 
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
-%define so_version 36
-%define ver 20.11.8
-%define _ver _20_11
+%define so_version 37
+%define ver 21.08.0
+%define _ver _21_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
 %define pmi_so 0
@@ -85,10 +85,6 @@ ExclusiveArch:  do_not_build
 
 %if 0%{?have_http_parser} && 0%{?have_json_c}
 %define build_slurmrestd 1
-%endif
-
-%if 0
- %define have_netloc 1
 %endif
 
 %if 0%{?is_opensuse} && 0%{!?sle_version:1}
@@ -565,7 +561,6 @@ autoreconf
            --enable-slurmrestd \
 %endif
 	   --with-yaml \
-%{!?have_netloc:--without-netloc} \
            --sysconfdir=%{_sysconfdir}/%{pname} \
 %{!?have_hdf5:--without-hdf5} \
 %{!?have_lz4:--without-lz4} \
@@ -929,7 +924,6 @@ exit 0
 %{_bindir}/sshare
 %{_bindir}/sstat
 %{_bindir}/strigger
-%{?have_netloc:%{_bindir}/netloc_to_topology}
 %{_sbindir}/slurmctld
 %{_sbindir}/slurmsmwd
 %dir %{_libdir}/slurm/src
@@ -1002,7 +996,7 @@ exit 0
 %{_libdir}/libpmi2.so
 %{_libdir}/libslurm.so
 %{_libdir}/slurm/src/*
-%{_mandir}/man3/slurm_*
+#%{_mandir}/man3/slurm_*
 %{_libdir}/pkgconfig/slurm.pc
 
 %files sview
@@ -1065,8 +1059,9 @@ exit 0
 %{_libdir}/slurm/acct_gather_filesystem_none.so
 %{_libdir}/slurm/acct_gather_interconnect_none.so
 %{_libdir}/slurm/acct_gather_profile_none.so
+%{_libdir}/slurm/burst_buffer_lua.so
 %{?have_json_c:%{_libdir}/slurm/burst_buffer_datawarp.so}
-%{_libdir}/slurm/burst_buffer_generic.so
+%{_libdir}/slurm/cgroup_v1.so
 %{_libdir}/slurm/core_spec_none.so
 %{_libdir}/slurm/cli_filter_none.so
 %{_libdir}/slurm/cli_filter_lua.so
@@ -1076,7 +1071,6 @@ exit 0
 %{_libdir}/slurm/ext_sensors_none.so
 %{_libdir}/slurm/gpu_generic.so
 %{_libdir}/slurm/gres_gpu.so
-%{_libdir}/slurm/gres_mic.so
 %{_libdir}/slurm/gres_mps.so
 %{_libdir}/slurm/gres_nic.so
 %{_libdir}/slurm/jobacct_gather_cgroup.so
@@ -1107,6 +1101,9 @@ exit 0
 %{_libdir}/slurm/mpi_pmix.so
 %{_libdir}/slurm/mpi_pmix_v3.so
 %endif
+%{_libdir}/slurm/node_features_helpers.so
+%{_libdir}/slurm/openapi_dbv0_0_37.so
+%{_libdir}/slurm/openapi_v0_0_37.so
 %{_libdir}/slurm/power_none.so
 %{_libdir}/slurm/preempt_none.so
 %{_libdir}/slurm/preempt_partition_prio.so
@@ -1121,10 +1118,12 @@ exit 0
 %{_libdir}/slurm/route_topology.so
 %{_libdir}/slurm/sched_backfill.so
 %{_libdir}/slurm/sched_builtin.so
-%{_libdir}/slurm/sched_hold.so
 %{_libdir}/slurm/select_cons_res.so
 %{_libdir}/slurm/select_cons_tres.so
 %{_libdir}/slurm/select_linear.so
+%{_libdir}/slurm/serializer_json.so
+%{_libdir}/slurm/serializer_url_encoded.so
+%{_libdir}/slurm/serializer_yaml.so
 %{_libdir}/slurm/site_factor_none.so
 %{_libdir}/slurm/slurmctld_nonstop.so
 %{_libdir}/slurm/switch_none.so
@@ -1228,6 +1227,7 @@ exit 0
 %{_mandir}/man5/cgroup.*
 %{_mandir}/man5/gres.*
 %{_mandir}/man5/nonstop.conf.5.*
+%{_mandir}/man5/oci.conf.5.gz
 %{_mandir}/man5/topology.*
 %{_mandir}/man5/knl.conf.5.*
 %{_mandir}/man5/job_container.conf.5.*
