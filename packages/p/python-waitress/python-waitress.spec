@@ -1,7 +1,7 @@
 #
-# spec file for package python-waitress
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-waitress%{psuffix}
-Version:        1.4.4
+Version:        2.0.0
 Release:        0
 Summary:        Waitress WSGI server
 License:        ZPL-2.1
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %else
 # Documentation requirements
 BuildRequires:  python3-Sphinx
@@ -94,6 +94,7 @@ http://docs.pylonsproject.org/projects/waitress/en/latest/ .
 %{python_sitelib}/*
 
 %else
+
 # doc flavor
 %description
 This package contains documentation files for %{name}.
