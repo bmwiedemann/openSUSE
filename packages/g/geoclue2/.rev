@@ -299,4 +299,12 @@ So please don't worry for the build failure you see :) (forwarded request 198545
     <comment></comment>
     <requestid>855674</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>50134d9c319c6fd38f7d47f6945a6621</srcmd5>
+    <version>2.5.7</version>
+    <time>1631042016</time>
+    <user>dimstar_suse</user>
+    <comment>Update geoclue to 2.5.7</comment>
+    <requestid>916132</requestid>
+  </revision>
 </revisionlist>

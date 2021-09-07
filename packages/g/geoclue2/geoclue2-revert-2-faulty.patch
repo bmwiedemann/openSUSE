@@ -1,0 +1,111 @@
+From 194529c7e7123b06d41eb8025cd4375aba271068 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Mon, 30 Nov 2020 15:20:01 +0000
+Subject: [PATCH] gclue-wifi: Fix returning NULL error if BSS list is empty
+
+This fixes a critical warning (and accompanying leak of the `GTask`) if
+the BSS list is empty, which causes `create_query()` to return NULL
+with no error set.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ src/gclue-wifi.c | 33 +++++++++++++++++++++++++++++----
+ 1 file changed, 29 insertions(+), 4 deletions(-)
+
+diff --git a/src/gclue-wifi.c b/src/gclue-wifi.c
+index 0bb166c..b06737d 100644
+--- a/src/gclue-wifi.c
++++ b/src/gclue-wifi.c
+@@ -837,6 +837,7 @@ gclue_wifi_get_accuracy_level (GClueWifi *wifi)
+         return wifi->priv->accuracy_level;
+ }
+ 
++/* Can return NULL without setting @error, signifying an empty BSS list. */
+ static GList *
+ get_bss_list (GClueWifi *wifi,
+               GError   **error)
+@@ -858,10 +859,22 @@ gclue_wifi_create_query (GClueWebSource *source,
+ {
+         GList *bss_list; /* As in Access Points */
+         SoupMessage *msg;
++        g_autoptr(GError) local_error = NULL;
+ 
+-        bss_list = get_bss_list (GCLUE_WIFI (source), error);
+-        if (bss_list == NULL)
++        bss_list = get_bss_list (GCLUE_WIFI (source), &local_error);
++        if (local_error != NULL) {
++                g_propagate_error (error, g_steal_pointer (&local_error));
++                return NULL;
++        }
++
++        /* Empty list? */
++        if (bss_list == NULL) {
++                g_set_error_literal (error,
++                                     G_IO_ERROR,
++                                     G_IO_ERROR_FAILED,
++                                     "No WiFi networks found");
+                 return NULL;
++        }
+ 
+         msg = gclue_mozilla_create_query (bss_list, NULL, error);
+         g_list_free (bss_list);
+@@ -883,10 +896,22 @@ gclue_wifi_create_submit_query (GClueWebSource  *source,
+ {
+         GList *bss_list; /* As in Access Points */
+         SoupMessage * msg;
++        g_autoptr(GError) local_error = NULL;
+ 
+-        bss_list = get_bss_list (GCLUE_WIFI (source), error);
+-        if (bss_list == NULL)
++        bss_list = get_bss_list (GCLUE_WIFI (source), &local_error);
++        if (local_error != NULL) {
++                g_propagate_error (error, g_steal_pointer (&local_error));
++                return NULL;
++        }
++
++        /* Empty list? */
++        if (bss_list == NULL) {
++                g_set_error_literal (error,
++                                     G_IO_ERROR,
++                                     G_IO_ERROR_FAILED,
++                                     "No WiFi networks found");
+                 return NULL;
++        }
+ 
+         msg = gclue_mozilla_create_submit_query (location,
+                                                  bss_list,
+-- 
+GitLab
+
+
+From 715cfbf5bec8002fb1e9759b6c34bc070f977807 Mon Sep 17 00:00:00 2001
+From: Philip Withnall <pwithnall@endlessos.org>
+Date: Mon, 9 Nov 2020 17:47:44 +0000
+Subject: [PATCH] gclue-wifi: Handle errors getting the BSS list
+
+Without this, we can submit empty requests to the Mozilla geolocation
+service.
+
+Signed-off-by: Philip Withnall <pwithnall@endlessos.org>
+---
+ src/gclue-wifi.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/src/gclue-wifi.c b/src/gclue-wifi.c
+index fecfd08..5ab4501 100644
+--- a/src/gclue-wifi.c
++++ b/src/gclue-wifi.c
+@@ -840,7 +840,9 @@ gclue_wifi_create_query (GClueWebSource *source,
+         GList *bss_list; /* As in Access Points */
+         SoupMessage *msg;
+ 
+-        bss_list = get_bss_list (GCLUE_WIFI (source), NULL);
++        bss_list = get_bss_list (GCLUE_WIFI (source), error);
++        if (bss_list == NULL)
++                return NULL;
+ 
+         msg = gclue_mozilla_create_query (bss_list, NULL, error);
+         g_list_free (bss_list);
+-- 
+GitLab
+

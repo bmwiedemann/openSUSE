@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Dec 31 13:10:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.7:
+  + A bug fix release, mainly fixing a bunch of memory leaks.
+- Add geoclue2-revert-2-faulty.patch: Revert two broken commits.
+  https://gitlab.freedesktop.org/geoclue/geoclue/-/issues/142
+
+-------------------------------------------------------------------
 Sun Dec 13 13:01:31 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.5.6:

@@ -19,7 +19,7 @@
 %define _name geoclue
 
 Name:           geoclue2
-Version:        2.5.6
+Version:        2.5.7
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -28,6 +28,9 @@ URL:            https://gitlab.freedesktop.org/geoclue/geoclue
 Source0:        %{url}/-/archive/%{version}/geoclue-%{version}.tar.bz2
 Source1:        srvGeoClue.conf
 Source99:       geoclue2-rpmlintrc
+
+# PATCH-FIX-UPSTREAM geoclue2-revert-2-faulty.patch -- Revert two broken commits
+Patch0:         geoclue2-revert-2-faulty.patch
 
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  meson >= 0.47.2
@@ -89,7 +92,8 @@ awareness in applications. GeoClue uses the D-Bus inter-process
 communication mechanism to provide location information
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -n %{_name}-%{version} -N
+%patch0 -p1 -R
 
 %build
 %meson \
