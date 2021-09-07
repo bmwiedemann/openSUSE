@@ -43,8 +43,6 @@ BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 # /SECTION
-Provides:       python-WTForms-lang = %{version}-%{release}
-Obsoletes:      python-WTForms-lang < %{version}
 %python_subpackages
 
 %description
@@ -59,10 +57,23 @@ Summary:        Documentation for WTForms
 %description -n %{name}-doc
 Documentation for WTForms, which is a forms validation and rendering library for Python web development.
 
+%package lang
+Summary:        Translations for builtin WTForms messages
+Group:          System/Localization
+Requires:       %{name} = %{version}
+Provides:       python-WTForms-lang = %{version}
+Obsoletes:      python-WTForms-lang < %{version}
+
+%description lang
+Translations for builtin WTForms messages.
+
+WTForms is a forms validation and rendering library for Python web development.
+
 %prep
 %autosetup -p1 -n wtforms-%{version}
 
 %build
+%python_exec setup.py compile_catalog
 %python_build
 # Fix wrong EOL-encoding
 sed -i "s/\r//" CHANGES.rst
@@ -72,6 +83,7 @@ rm docs/changes.rst
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_find_lang wtforms
 
 %check
 # Excluded tests because of gh#wtforms/wtforms#697
@@ -81,8 +93,12 @@ rm docs/changes.rst
 %license LICENSE.rst
 %doc CHANGES.rst README.rst
 %{python_sitelib}/*
+%exclude %{python_sitelib}/wtforms/locale
 
 %files -n %{name}-doc
 %doc docs/*.rst
+
+%files %{python_files lang} -f %{python_prefix}-wtforms.lang
+%{python_sitelib}/wtforms/locale
 
 %changelog

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  6 17:16:46 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Put translated catalogs in -lang subpackages for each python
+  flavor.
+
+-------------------------------------------------------------------
+Fri Sep  3 10:25:00 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
+
+- Build the translations catalogs so builtin messages can be
+  translated (this is needed to run the test_wtform_xlation test
+  in python-Flask-Security-Too 4.1.0)
+
+-------------------------------------------------------------------
 Sat Jun 05 19:37:37 UTC 2021 - mcepl@cepl.eu
 
 - Update to version 2.3.3+git.1621448902.a55be54:
