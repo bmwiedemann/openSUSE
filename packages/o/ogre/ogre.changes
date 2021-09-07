@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  6 08:19:56 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- Ogre is incompatible with OpenEXR v3. OpenEXR is an optional
+  dependency, so disable it for now using %bcond_with.
+
+-------------------------------------------------------------------
 Mon May  3 21:29:33 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 1.12.12

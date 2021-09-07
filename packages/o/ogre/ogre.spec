@@ -20,6 +20,8 @@
 %define _version 1-12-12
 %define soname 1_12_12
 %bcond_with cg
+# OpenEXR v3 is incompatible https://github.com/OGRECave/ogre/issues/2179
+%bcond_with openexr
 Name:           ogre
 Version:        1.12.12
 Release:        0
@@ -43,7 +45,9 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  swig
 BuildRequires:  mono(mcs)
+%if %{with openexr}
 BuildRequires:  pkgconfig(OpenEXR)
+%endif
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(assimp)
@@ -94,9 +98,9 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 %package -n libOgreMain%{soname}
 Summary:        Ogre 3D: an open source graphics engine
 Group:          System/Libraries
+Recommends:     %{name}-media = %{version}
 Recommends:     libOgreMain%{soname}-codecs
 Recommends:     libOgreMain%{soname}-plugins
-Recommends:     %{name}-media = %{version}
 
 %description -n libOgreMain%{soname}
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented, flexible
@@ -372,12 +376,12 @@ Group:          Development/Libraries/C and C++
 Requires:       pkgconfig(OGRE)
 Requires:       pkgconfig(OGRE-Bites)
 Requires:       pkgconfig(OGRE-MeshLodGenerator)
+Requires:       pkgconfig(OGRE-Overlay)
 Requires:       pkgconfig(OGRE-Paging)
 Requires:       pkgconfig(OGRE-Property)
-Requires:       pkgconfig(OGRE-Volume)
-Requires:       pkgconfig(OGRE-Overlay)
 Requires:       pkgconfig(OGRE-RTShaderSystem)
 Requires:       pkgconfig(OGRE-Terrain)
+Requires:       pkgconfig(OGRE-Volume)
 
 %description devel
 OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
@@ -385,8 +389,8 @@ OGRE (Object-Oriented Graphics Rendering Engine) is a scene-oriented 3D engine.
 %package -n ogre-demos
 Summary:        Ogre demo programs
 Group:          Development/Libraries/C and C++
-Requires:       libOgreMain%{soname}-plugins = %{version}
 Requires:       %{name}-media = %{version}
+Requires:       libOgreMain%{soname}-plugins = %{version}
 %if %{with cg}
 Requires:       libOgreMain%{soname}-plugin-Cg = %{version}
 %endif
@@ -511,7 +515,9 @@ mv "%{buildroot}%{_datadir}/doc/OGRE" "%{buildroot}%{_docdir}/OGRE"
 
 %files -n libOgreMain%{soname}-codecs
 %{_libdir}/OGRE/Codec_Assimp.so{,.%{version}}
+%if %{with openexr}
 %{_libdir}/OGRE/Codec_EXR.so{,.%{version}}
+%endif
 %{_libdir}/OGRE/Codec_FreeImage.so{,.%{version}}
 %{_libdir}/OGRE/Codec_STBI.so{,.%{version}}
 
