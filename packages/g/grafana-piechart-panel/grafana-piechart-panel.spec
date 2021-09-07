@@ -1,7 +1,7 @@
 #
 # spec file for package grafana-piechart-panel
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,12 @@
 
 
 Name:           grafana-piechart-panel
-Version:        1.4.0
+Version:        1.6.1
 Release:        0
 Summary:        Grafana Piechart panel
 License:        MIT
 Group:          System/Monitoring
-Url:            https://github.com/grafana/piechart-panel
+URL:            https://github.com/grafana/piechart-panel
 Source:         piechart-panel-%{version}.tar.xz
 Requires:       grafana
 BuildRequires:  grafana
@@ -32,7 +32,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Pie chart panel for grafana
-
 
 %prep
 %setup -q -n piechart-panel-%{version}

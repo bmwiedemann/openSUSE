@@ -6,8 +6,8 @@
     <param name="exclude">.editorconfig</param>
     <param name="exclude">.circleci</param>
     <param name="exclude">docker-compose.yml</param>
-    <param name="versionformat">1.4.0</param>
-    <param name="revision">v1.4.0</param>
+    <param name="versionformat">1.6.1</param>
+    <param name="revision">v1.6.1</param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">piechart-panel-*.tar</param>
