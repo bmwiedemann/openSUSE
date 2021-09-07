@@ -215,4 +215,19 @@
 </comment>
     <requestid>913371</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>df276b76e352ed5b3691caaf052260e2</srcmd5>
+    <version>2.3.0</version>
+    <time>1631042487</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 2.3.0
+  * Changed
+    - Fixed gpgcheck entry in add_repo()
+    - Allowed using multiple query keywords that are combined using AND
+  * Added
+    - Plugin for sublime text
+    - Plugin for yandex-disk
+</comment>
+    <requestid>917142</requestid>
+  </revision>
 </revisionlist>

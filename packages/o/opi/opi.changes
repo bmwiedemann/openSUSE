@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  6 14:49:35 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 2.3.0
+  * Changed
+    - Fixed gpgcheck entry in add_repo()
+    - Allowed using multiple query keywords that are combined using AND
+  * Added
+    - Plugin for sublime text
+    - Plugin for yandex-disk
+
+-------------------------------------------------------------------
 Fri Aug 20 14:31:21 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 2.2.0
