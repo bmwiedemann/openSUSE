@@ -19,7 +19,7 @@
 %define _lto_cflags %{nil}
 %define sover   5
 Name:           dav1d
-Version:        0.9.1
+Version:        0.9.2
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause
