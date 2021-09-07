@@ -1,7 +1,7 @@
 #
 # spec file for package python-WebTest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define oldpython python
-%bcond_without tests
 Name:           python-WebTest
-Version:        2.0.35
+Version:        3.0.0
 Release:        0
 Summary:        Helper to test WSGI applications
 License:        MIT
 Group:          Development/Languages/Python
-URL:            http://webtest.pythonpaste.org/
+URL:            https://webtest.pythonpaste.org/
 Source:         https://files.pythonhosted.org/packages/source/W/WebTest/WebTest-%{version}.tar.gz
 BuildRequires:  %{python_module PasteDeploy}
 BuildRequires:  %{python_module WSGIProxy2}
 BuildRequires:  %{python_module WebOb >= 1.2}
 BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module cssselect}
 BuildRequires:  %{python_module pyquery}
 BuildRequires:  %{python_module setuptools}
@@ -42,14 +42,8 @@ BuildRequires:  python3-Sphinx
 BuildRequires:  python3-pylons-sphinx-themes
 Requires:       python-WebOb >= 1.2
 Requires:       python-beautifulsoup4
-Requires:       python-six
 Requires:       python-waitress >= 0.8.5
 BuildArch:      noarch
-%if %{with tests}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
-%endif
 %ifpython2
 Obsoletes:      %{oldpython}-webtest < %{version}
 Provides:       %{oldpython}-webtest = %{version}
@@ -84,10 +78,8 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-%if %{with tests}
 %check
-%python_exec setup.py -q test
-%endif
+%pyunittest -v
 
 %files %{python_files}
 %license license.rst
