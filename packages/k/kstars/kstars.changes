@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  7 13:50:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patch to fix build with Eigen >= 3.4.0 (kde#442082):
+  * 0001-Partial-fix-for-442082-regarding-building-on-newer-E.patch
+
+-------------------------------------------------------------------
 Thu Jul  8 06:25:47 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 3.5.4:

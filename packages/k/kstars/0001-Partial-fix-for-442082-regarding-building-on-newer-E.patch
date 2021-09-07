@@ -1,0 +1,809 @@
+From b964c3043455e7bdbf13b9e2ca8f179b1af731b5 Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Tue, 7 Sep 2021 16:17:36 +0300
+Subject: [PATCH] Partial fix for #442082 regarding building on newer Eigen
+ version.
+
+(cherry picked from commit 69ea81e02455c783d24e7e2ec13f25d2bb7a4f8c)
+---
+ .../skyitems/skynodes/horizonnode.cpp         |   2 +-
+ .../projections/equirectangularprojector.cpp  |  40 +++----
+ kstars/projections/equirectangularprojector.h |   4 +-
+ kstars/projections/projector.cpp              |  40 +++----
+ kstars/projections/projector.h                |  19 ++--
+ kstars/skyglpainter.cpp                       | 102 +++++++++---------
+ kstars/skyglpainter.h                         |  85 ++++++++-------
+ kstars/skyqpainter.cpp                        |   2 +-
+ 8 files changed, 146 insertions(+), 148 deletions(-)
+
+diff --git a/kstars/kstarslite/skyitems/skynodes/horizonnode.cpp b/kstars/kstarslite/skyitems/skynodes/horizonnode.cpp
+index 0edebbf85..528c0313d 100644
+--- a/kstars/kstarslite/skyitems/skynodes/horizonnode.cpp
++++ b/kstars/kstarslite/skyitems/skynodes/horizonnode.cpp
+@@ -22,7 +22,7 @@ void HorizonNode::update()
+     m_polygonNode->setColor(color);
+     m_polygonNode->setLineWidth(2);
+ 
+-    QVector<Vector2f> ground = SkyMapLite::Instance()->projector()->groundPoly();
++    QVector<Eigen::Vector2f> ground = SkyMapLite::Instance()->projector()->groundPoly();
+ 
+     if (ground.size())
+     {
+diff --git a/kstars/projections/equirectangularprojector.cpp b/kstars/projections/equirectangularprojector.cpp
+index fa9394769..9116768d6 100644
+--- a/kstars/projections/equirectangularprojector.cpp
++++ b/kstars/projections/equirectangularprojector.cpp
+@@ -38,10 +38,10 @@ double EquirectangularProjector::radius() const
+     return 1.0;
+ }
+ 
+-Vector2f EquirectangularProjector::toScreenVec(const SkyPoint *o, bool oRefract, bool *onVisibleHemisphere) const
++Eigen::Vector2f EquirectangularProjector::toScreenVec(const SkyPoint *o, bool oRefract, bool *onVisibleHemisphere) const
+ {
+     double Y, dX;
+-    Vector2f p;
++    Eigen::Vector2f p;
+ 
+     oRefract &= m_vp.useRefraction;
+     if (m_vp.useAltAz)
+@@ -110,7 +110,7 @@ bool EquirectangularProjector::unusablePoint(const QPointF &p) const
+     return (dx * dx > M_PI * M_PI / 4.0) || (dy * dy > M_PI * M_PI / 4.0);
+ }
+ 
+-QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) const
++QVector<Eigen::Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) const
+ {
+     float x0 = m_vp.width / 2.;
+     float y0 = m_vp.width / 2.;
+@@ -122,7 +122,7 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+         belowFocus.setAz(m_vp.focus->az().Degrees());
+         belowFocus.setAlt(0.0);
+ 
+-        Vector2f obf = toScreenVec(&belowFocus, false);
++        Eigen::Vector2f obf = toScreenVec(&belowFocus, false);
+ 
+         //If the horizon is off the bottom edge of the screen,
+         //we can return immediately
+@@ -130,7 +130,7 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+         {
+             if (drawLabel)
+                 *drawLabel = false;
+-            return QVector<Vector2f>();
++            return QVector<Eigen::Vector2f>();
+         }
+ 
+         //We can also return if the horizon is off the top edge,
+@@ -139,13 +139,13 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+         {
+             if (drawLabel)
+                 *drawLabel = false;
+-            return QVector<Vector2f>();
++            return QVector<Eigen::Vector2f>();
+         }
+ 
+-        QVector<Vector2f> ground;
++        QVector<Eigen::Vector2f> ground;
+         //Construct the ground polygon, which is a simple rectangle in this case
+-        ground << Vector2f(x0 - dX, obf.y()) << Vector2f(x0 + dX, obf.y()) << Vector2f(x0 + dX, y0 + dY)
+-               << Vector2f(x0 - dX, y0 + dY);
++        ground << Eigen::Vector2f(x0 - dX, obf.y()) << Eigen::Vector2f(x0 + dX, obf.y()) << Eigen::Vector2f(x0 + dX, y0 + dY)
++               << Eigen::Vector2f(x0 - dX, y0 + dY);
+ 
+         if (labelpoint)
+         {
+@@ -162,7 +162,7 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+     {
+         float dX = m_vp.zoomFactor * M_PI / 2;
+         float dY = m_vp.zoomFactor * M_PI / 2;
+-        QVector<Vector2f> ground;
++        QVector<Eigen::Vector2f> ground;
+ 
+         static const QString horizonLabel = i18n("Horizon");
+         float marginLeft, marginRight, marginTop, marginBot;
+@@ -181,7 +181,7 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+         {
+             SkyPoint p   = pointAt(az);
+             bool visible = false;
+-            Vector2f o   = toScreenVec(&p, false, &visible);
++            Eigen::Vector2f o   = toScreenVec(&p, false, &visible);
+             if (visible)
+             {
+                 ground.append(o);
+@@ -200,16 +200,16 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+         {
+             if (drawLabel)
+                 *drawLabel = false;
+-            return QVector<Vector2f>();
++            return QVector<Eigen::Vector2f>();
+         }
+ 
+         if (allGround)
+         {
+             ground.clear();
+-            ground.append(Vector2f(x0 - dX, y0 - dY));
+-            ground.append(Vector2f(x0 + dX, y0 - dY));
+-            ground.append(Vector2f(x0 + dX, y0 + dY));
+-            ground.append(Vector2f(x0 - dX, y0 + dY));
++            ground.append(Eigen::Vector2f(x0 - dX, y0 - dY));
++            ground.append(Eigen::Vector2f(x0 + dX, y0 - dY));
++            ground.append(Eigen::Vector2f(x0 + dX, y0 + dY));
++            ground.append(Eigen::Vector2f(x0 - dX, y0 + dY));
+             if (drawLabel)
+                 *drawLabel = false;
+             return ground;
+@@ -225,10 +225,10 @@ QVector<Vector2f> EquirectangularProjector::groundPoly(SkyPoint *labelpoint, boo
+             *drawLabel = true;
+ 
+         //Now add points along the ground
+-        ground.append(Vector2f(x0 + dX, ground.last().y()));
+-        ground.append(Vector2f(x0 + dX, y0 + dY));
+-        ground.append(Vector2f(x0 - dX, y0 + dY));
+-        ground.append(Vector2f(x0 - dX, ground.first().y()));
++        ground.append(Eigen::Vector2f(x0 + dX, ground.last().y()));
++        ground.append(Eigen::Vector2f(x0 + dX, y0 + dY));
++        ground.append(Eigen::Vector2f(x0 - dX, y0 + dY));
++        ground.append(Eigen::Vector2f(x0 - dX, ground.first().y()));
+         return ground;
+     }
+ }
+diff --git a/kstars/projections/equirectangularprojector.h b/kstars/projections/equirectangularprojector.h
+index d3df1ad6e..97667eabe 100644
+--- a/kstars/projections/equirectangularprojector.h
++++ b/kstars/projections/equirectangularprojector.h
+@@ -35,9 +35,9 @@ class EquirectangularProjector : public Projector
+         Projection type() const override;
+         double radius() const override;
+         bool unusablePoint(const QPointF &p) const override;
+-        Vector2f toScreenVec(const SkyPoint *o, bool oRefract = true, bool *onVisibleHemisphere = nullptr) const override;
++        Eigen::Vector2f toScreenVec(const SkyPoint *o, bool oRefract = true, bool *onVisibleHemisphere = nullptr) const override;
+         SkyPoint fromScreen(const QPointF &p, dms *LST, const dms *lat, bool onlyAltAz = false) const override;
+-        QVector<Vector2f> groundPoly(SkyPoint *labelpoint = nullptr, bool *drawLabel = nullptr) const override;
++        QVector<Eigen::Vector2f> groundPoly(SkyPoint *labelpoint = nullptr, bool *drawLabel = nullptr) const override;
+         void updateClipPoly() override;
+ };
+ 
+diff --git a/kstars/projections/projector.cpp b/kstars/projections/projector.cpp
+index a56b3600f..e067974cc 100644
+--- a/kstars/projections/projector.cpp
++++ b/kstars/projections/projector.cpp
+@@ -113,7 +113,7 @@ bool Projector::onScreen(const QPointF &p) const
+     return (0 <= p.x() && p.x() <= m_vp.width && 0 <= p.y() && p.y() <= m_vp.height);
+ }
+ 
+-bool Projector::onScreen(const Vector2f &p) const
++bool Projector::onScreen(const Eigen::Vector2f &p) const
+ {
+     return onScreen(QPointF(p.x(), p.y()));
+ }
+@@ -123,7 +123,7 @@ QPointF Projector::clipLine(SkyPoint *p1, SkyPoint *p2) const
+     return KSUtils::vecToPoint(clipLineVec(p1, p2));
+ }
+ 
+-Vector2f Projector::clipLineVec(SkyPoint *p1, SkyPoint *p2) const
++Eigen::Vector2f Projector::clipLineVec(SkyPoint *p1, SkyPoint *p2) const
+ {
+     /* ASSUMES p1 was not clipped but p2 was.
+      * Return the QPoint that barely clips in the line twixt p1 and p2.
+@@ -135,7 +135,7 @@ Vector2f Projector::clipLineVec(SkyPoint *p1, SkyPoint *p2) const
+     // 2^iterations should be >= max pixels/line
+     bool isVisible = true; // so we start at midpoint
+     SkyPoint mid;
+-    Vector2f oMid;
++    Eigen::Vector2f oMid;
+     double x, y, z, dx, dy, dz, ra, dec;
+     int newx, newy, oldx, oldy;
+     oldx = oldy = -10000; // any old value that is not the first omid
+@@ -259,7 +259,7 @@ double Projector::findNorthPA(const SkyPoint *o, float x, float y) const
+     SkyPoint test(o->ra().Hours(), newDec);
+     if (m_vp.useAltAz)
+         test.EquatorialToHorizontal(data->lst(), data->geo()->lat());
+-    Vector2f t = toScreenVec(&test);
++    Eigen::Vector2f t = toScreenVec(&test);
+     float dx   = t.x() - x;
+     float dy   = y - t.y(); //backwards because QWidget Y-axis increases to the bottom
+     float north;
+@@ -280,9 +280,9 @@ double Projector::findPA(const SkyObject *o, float x, float y) const
+     return (findNorthPA(o, x, y) + o->pa());
+ }
+ 
+-QVector<Vector2f> Projector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) const
++QVector<Eigen::Vector2f> Projector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) const
+ {
+-    QVector<Vector2f> ground;
++    QVector<Eigen::Vector2f> ground;
+ 
+     static const QString horizonLabel = i18n("Horizon");
+     float marginLeft, marginRight, marginTop, marginBot;
+@@ -313,7 +313,7 @@ QVector<Vector2f> Projector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) c
+     {
+         SkyPoint p   = pointAt(az);
+         bool visible = false;
+-        Vector2f o   = toScreenVec(&p, false, &visible);
++        Eigen::Vector2f o   = toScreenVec(&p, false, &visible);
+         if (visible)
+         {
+             ground.append(o);
+@@ -332,16 +332,16 @@ QVector<Vector2f> Projector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) c
+     {
+         if (drawLabel)
+             *drawLabel = false;
+-        return QVector<Vector2f>();
++        return QVector<Eigen::Vector2f>();
+     }
+ 
+     if (allGround)
+     {
+         ground.clear();
+-        ground.append(Vector2f(-10., -10.));
+-        ground.append(Vector2f(m_vp.width + 10., -10.));
+-        ground.append(Vector2f(m_vp.width + 10., m_vp.height + 10.));
+-        ground.append(Vector2f(-10., m_vp.height + 10.));
++        ground.append(Eigen::Vector2f(-10., -10.));
++        ground.append(Eigen::Vector2f(m_vp.width + 10., -10.));
++        ground.append(Eigen::Vector2f(m_vp.width + 10., m_vp.height + 10.));
++        ground.append(Eigen::Vector2f(-10., m_vp.height + 10.));
+         if (drawLabel)
+             *drawLabel = false;
+         return ground;
+@@ -352,10 +352,10 @@ QVector<Vector2f> Projector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) c
+     //FIXME: not just gnomonic
+     if (daz < 25.0 || type() == Projector::Gnomonic)
+     {
+-        ground.append(Vector2f(m_vp.width + 10.f, ground.last().y()));
+-        ground.append(Vector2f(m_vp.width + 10.f, m_vp.height + 10.f));
+-        ground.append(Vector2f(-10.f, m_vp.height + 10.f));
+-        ground.append(Vector2f(-10.f, ground.first().y()));
++        ground.append(Eigen::Vector2f(m_vp.width + 10.f, ground.last().y()));
++        ground.append(Eigen::Vector2f(m_vp.width + 10.f, m_vp.height + 10.f));
++        ground.append(Eigen::Vector2f(-10.f, m_vp.height + 10.f));
++        ground.append(Eigen::Vector2f(-10.f, ground.first().y()));
+     }
+     else
+     {
+@@ -368,7 +368,7 @@ QVector<Vector2f> Projector::groundPoly(SkyPoint *labelpoint, bool *drawLabel) c
+             dms a(t);
+             double sa(0.), ca(0.);
+             a.SinCos(sa, ca);
+-            ground.append(Vector2f(0.5 * m_vp.width + r * ca, 0.5 * m_vp.height - r * sa));
++            ground.append(Eigen::Vector2f(0.5 * m_vp.width + r * ca, 0.5 * m_vp.height - r * sa));
+         }
+     }
+ 
+@@ -473,7 +473,7 @@ SkyPoint Projector::fromScreen(const QPointF &p, dms *LST, const dms *lat, bool
+     return result;
+ }
+ 
+-Vector2f Projector::toScreenVec(const SkyPoint *o, bool oRefract, bool *onVisibleHemisphere) const
++Eigen::Vector2f Projector::toScreenVec(const SkyPoint *o, bool oRefract, bool *onVisibleHemisphere) const
+ {
+     double Y, dX;
+     double sindX, cosdX, sinY, cosY;
+@@ -495,7 +495,7 @@ Vector2f Projector::toScreenVec(const SkyPoint *o, bool oRefract, bool *onVisibl
+ 
+     if (!(std::isfinite(Y) && std::isfinite(dX)))
+     {
+-        return Vector2f(0, 0);
++        return Eigen::Vector2f(0, 0);
+ 
+         // JM: Enable this again later when trying to find a solution for it
+         //     As it is now creating too much noise in the log file.
+@@ -561,5 +561,5 @@ Vector2f Projector::toScreenVec(const SkyPoint *o, bool oRefract, bool *onVisibl
+         y = newY;
+     }
+ #endif
+-    return Vector2f(x, y);
++    return Eigen::Vector2f(x, y);
+ }
+diff --git a/kstars/projections/projector.h b/kstars/projections/projector.h
+index 68138a0ce..6abed9029 100644
+--- a/kstars/projections/projector.h
++++ b/kstars/projections/projector.h
+@@ -43,8 +43,6 @@
+ #include <cstddef>
+ #include <cmath>
+ 
+-using namespace Eigen;
+-
+ class KStarsData;
+ 
+ /** This is just a container that holds information needed to do projections. */
+@@ -129,7 +127,7 @@ class Projector
+          *
+          * While this seems ugly, it is less ugly than duplicating 150 loc to change 5.
+          *
+-         * @return Vector2f containing screen pixel x, y coordinates of SkyPoint.
++         * @return Eigen::Vector2f containing screen pixel x, y coordinates of SkyPoint.
+          * @param o pointer to the SkyPoint for which to calculate x, y coordinates.
+          * @param oRefract true = use Options::useRefraction() value.
+          *   false = do not use refraction.  This argument is only needed
+@@ -137,7 +135,8 @@ class Projector
+          * @param onVisibleHemisphere pointer to a bool to indicate whether the point is
+          *   on the visible part of the Celestial Sphere.
+          */
+-        virtual Vector2f toScreenVec(const SkyPoint *o, bool oRefract = true, bool *onVisibleHemisphere = nullptr) const;
++        virtual Eigen::Vector2f toScreenVec(const SkyPoint *o, bool oRefract = true,
++                                            bool *onVisibleHemisphere = nullptr) const;
+ 
+         /**
+          * This is exactly the same as toScreenVec but it returns a QPointF.
+@@ -163,14 +162,14 @@ class Projector
+         QPointF clipLine(SkyPoint *p1, SkyPoint *p2) const;
+ 
+         /**
+-         * ASSUMES *p1 did not clip but *p2 did.  Returns the Vector2f on the line
++         * ASSUMES *p1 did not clip but *p2 did.  Returns the Eigen::Vector2f on the line
+          * between *p1 and *p2 that just clips.
+          */
+-        Vector2f clipLineVec(SkyPoint *p1, SkyPoint *p2) const;
++        Eigen::Vector2f clipLineVec(SkyPoint *p1, SkyPoint *p2) const;
+ 
+         /** Check whether the projected point is on-screen */
+         bool onScreen(const QPointF &p) const;
+-        bool onScreen(const Vector2f &p) const;
++        bool onScreen(const Eigen::Vector2f &p) const;
+ 
+         /**
+          * @short Determine if the skypoint p is likely to be visible in the display window.
+@@ -228,7 +227,7 @@ class Projector
+          * a slightly increased Dec as the object, and calculating the angle w.r.t. the
+          * Y-axis of the line connecting the object to its test point.
+          */
+-    double findNorthPA(const SkyPoint *o, float x, float y) const;
++        double findNorthPA(const SkyPoint *o, float x, float y) const;
+ 
+         /**
+          * Determine the on-screen position angle of a SkyObject.  This is the sum
+@@ -238,7 +237,7 @@ class Projector
+          * a slightly increased Dec as the object, and calculating the angle w.r.t. the
+          * Y-axis of the line connecting the object to its test point.
+          */
+-    double findPA(const SkyObject *o, float x, float y) const;
++        double findPA(const SkyObject *o, float x, float y) const;
+ 
+         /**
+          * Get the ground polygon
+@@ -246,7 +245,7 @@ class Projector
+          * @param drawLabel this tells whether to draw a label.
+          * @return the ground polygon
+          */
+-        virtual QVector<Vector2f> groundPoly(SkyPoint *labelpoint = nullptr, bool *drawLabel = nullptr) const;
++        virtual QVector<Eigen::Vector2f> groundPoly(SkyPoint *labelpoint = nullptr, bool *drawLabel = nullptr) const;
+ 
+         /**
+          * @brief updateClipPoly calculate the clipping polygen given the current FOV.
+diff --git a/kstars/skyglpainter.cpp b/kstars/skyglpainter.cpp
+index 3d71f6cc6..64380fdee 100644
+--- a/kstars/skyglpainter.cpp
++++ b/kstars/skyglpainter.cpp
+@@ -49,9 +49,9 @@
+ #include "skyobjects/supernova.h"
+ #include "skyobjects/constellationsart.h"
+ 
+-Vector2f SkyGLPainter::m_vertex[NUMTYPES][6 * BUFSIZE];
+-Vector2f SkyGLPainter::m_texcoord[NUMTYPES][6 * BUFSIZE];
+-Vector3f SkyGLPainter::m_color[NUMTYPES][6 * BUFSIZE];
++Eigen::Vector2f SkyGLPainter::m_vertex[NUMTYPES][6 * BUFSIZE];
++Eigen::Vector2f SkyGLPainter::m_texcoord[NUMTYPES][6 * BUFSIZE];
++Eigen::Vector3f SkyGLPainter::m_color[NUMTYPES][6 * BUFSIZE];
+ int SkyGLPainter::m_idx[NUMTYPES];
+ bool SkyGLPainter::m_init = false;
+ 
+@@ -66,12 +66,12 @@ SkyGLPainter::SkyGLPainter(QGLWidget *widget) : SkyPainter()
+             m_idx[i] = 0;
+             for (int j = 0; j < BUFSIZE; ++j)
+             {
+-                m_texcoord[i][6 * j + 0] = Vector2f(0, 0);
+-                m_texcoord[i][6 * j + 1] = Vector2f(1, 0);
+-                m_texcoord[i][6 * j + 2] = Vector2f(0, 1);
+-                m_texcoord[i][6 * j + 3] = Vector2f(0, 1);
+-                m_texcoord[i][6 * j + 4] = Vector2f(1, 0);
+-                m_texcoord[i][6 * j + 5] = Vector2f(1, 1);
++                m_texcoord[i][6 * j + 0] = Eigen::Vector2f(0, 0);
++                m_texcoord[i][6 * j + 1] = Eigen::Vector2f(1, 0);
++                m_texcoord[i][6 * j + 2] = Eigen::Vector2f(0, 1);
++                m_texcoord[i][6 * j + 3] = Eigen::Vector2f(0, 1);
++                m_texcoord[i][6 * j + 4] = Eigen::Vector2f(1, 0);
++                m_texcoord[i][6 * j + 5] = Eigen::Vector2f(1, 1);
+             }
+         }
+         //Generate textures that were loaded before the SkyMap was
+@@ -143,7 +143,7 @@ void SkyGLPainter::drawBuffer(int type)
+ bool SkyGLPainter::addItem(SkyPoint *p, int type, float width, char sp)
+ {
+     bool visible = false;
+-    Vector2f vec = m_proj->toScreenVec(p, true, &visible);
++    Eigen::Vector2f vec = m_proj->toScreenVec(p, true, &visible);
+     if (!visible)
+         return false;
+ 
+@@ -160,27 +160,27 @@ bool SkyGLPainter::addItem(SkyPoint *p, int type, float width, char sp)
+     int i   = 6 * m_idx[type];
+     float w = width / 2.;
+ 
+-    m_vertex[type][i + 0] = vec + Vector2f(-w, -w);
+-    m_vertex[type][i + 1] = vec + Vector2f(w, -w);
+-    m_vertex[type][i + 2] = vec + Vector2f(-w, w);
+-    m_vertex[type][i + 3] = vec + Vector2f(-w, w);
+-    m_vertex[type][i + 4] = vec + Vector2f(w, -w);
+-    m_vertex[type][i + 5] = vec + Vector2f(w, w);
++    m_vertex[type][i + 0] = vec + Eigen::Vector2f(-w, -w);
++    m_vertex[type][i + 1] = vec + Eigen::Vector2f(w, -w);
++    m_vertex[type][i + 2] = vec + Eigen::Vector2f(-w, w);
++    m_vertex[type][i + 3] = vec + Eigen::Vector2f(-w, w);
++    m_vertex[type][i + 4] = vec + Eigen::Vector2f(w, -w);
++    m_vertex[type][i + 5] = vec + Eigen::Vector2f(w, w);
+ 
+-    Vector3f c(1., 1., 1.);
++    Eigen::Vector3f c(1., 1., 1.);
+     if (sp != 'x' && Options::starColorMode() != 0)
+     {
+         // We have a star and aren't drawing real star colors
+         switch (Options::starColorMode())
+         {
+             case 1: // solid red
+-                c = Vector3f(255. / 255., 0., 0.);
++                c = Eigen::Vector3f(255. / 255., 0., 0.);
+                 break;
+             case 2: // solid black
+-                c = Vector3f(0., 0., 0.);
++                c = Eigen::Vector3f(0., 0., 0.);
+                 break;
+             case 3: // Solid white
+-                c = Vector3f(1., 1., 1.);
++                c = Eigen::Vector3f(1., 1., 1.);
+                 break;
+         }
+     }
+@@ -235,7 +235,7 @@ bool SkyGLPainter::addItem(SkyPoint *p, int type, float width, char sp)
+         starColor.setHsv(h, s, v);
+ 
+         // Get RGB ratios and put them in 'c'
+-        c = Vector3f(starColor.redF(), starColor.greenF(), starColor.blueF());
++        c = Eigen::Vector3f(starColor.redF(), starColor.greenF(), starColor.blueF());
+     }
+     for (int j = 0; j < 6; ++j)
+     {
+@@ -246,7 +246,7 @@ bool SkyGLPainter::addItem(SkyPoint *p, int type, float width, char sp)
+     return true;
+ }
+ 
+-void SkyGLPainter::drawTexturedRectangle(const QImage &img, const Vector2f &pos, const float angle, const float sizeX,
++void SkyGLPainter::drawTexturedRectangle(const QImage &img, const Eigen::Vector2f &pos, const float angle, const float sizeX,
+                                          const float sizeY)
+ {
+     // Set up texture
+@@ -321,7 +321,7 @@ bool SkyGLPainter::drawPlanet(KSPlanetBase *planet)
+     {
+         // Draw them as textures
+         bool visible = false;
+-        Vector2f pos = m_proj->toScreenVec(planet, true, &visible);
++        Eigen::Vector2f pos = m_proj->toScreenVec(planet, true, &visible);
+         if (!visible)
+             return false;
+ 
+@@ -347,17 +347,17 @@ void SkyGLPainter::drawSkyPolygon(LineList *list)
+     SkyList *points = list->points();
+     bool isVisible, isVisibleLast;
+     SkyPoint *pLast = points->last();
+-    Vector2f oLast  = m_proj->toScreenVec(pLast, true, &isVisibleLast);
++    Eigen::Vector2f oLast  = m_proj->toScreenVec(pLast, true, &isVisibleLast);
+     // & with the result of checkVisibility to clip away things below horizon
+     isVisibleLast &= m_proj->checkVisibility(pLast);
+ 
+     //Guess that we will require around the same number of items as in points.
+-    QVector<Vector2f> polygon;
++    QVector<Eigen::Vector2f> polygon;
+     polygon.reserve(points->size());
+     for (int i = 0; i < points->size(); ++i)
+     {
+         SkyPoint *pThis = points->at(i);
+-        Vector2f oThis  = m_proj->toScreenVec(pThis, true, &isVisible);
++        Eigen::Vector2f oThis  = m_proj->toScreenVec(pThis, true, &isVisible);
+         // & with the result of checkVisibility to clip away things below horizon
+         isVisible &= m_proj->checkVisibility(pThis);
+ 
+@@ -367,12 +367,12 @@ void SkyGLPainter::drawSkyPolygon(LineList *list)
+         }
+         else if (isVisibleLast)
+         {
+-            Vector2f oMid = m_proj->clipLineVec(pLast, pThis);
++            Eigen::Vector2f oMid = m_proj->clipLineVec(pLast, pThis);
+             polygon << oMid;
+         }
+         else if (isVisible)
+         {
+-            Vector2f oMid = m_proj->clipLineVec(pThis, pLast);
++            Eigen::Vector2f oMid = m_proj->clipLineVec(pThis, pLast);
+             polygon << oMid;
+             polygon << oThis;
+         }
+@@ -391,7 +391,7 @@ void SkyGLPainter::drawSkyPolygon(LineList *list)
+     }
+ }
+ 
+-void SkyGLPainter::drawPolygon(const QVector<Vector2f> &polygon, bool convex, bool flush_buffers)
++void SkyGLPainter::drawPolygon(const QVector<Eigen::Vector2f> &polygon, bool convex, bool flush_buffers)
+ {
+     //Flush all buffers
+     if (flush_buffers)
+@@ -441,7 +441,7 @@ void SkyGLPainter::drawPolygon(const QVector<Vector2f> &polygon, bool convex, bo
+ 
+ void SkyGLPainter::drawHorizon(bool filled, SkyPoint *labelPoint, bool *drawLabel)
+ {
+-    QVector<Vector2f> ground = m_proj->groundPoly(labelPoint, drawLabel);
++    QVector<Eigen::Vector2f> ground = m_proj->groundPoly(labelPoint, drawLabel);
+ 
+     if (ground.size())
+     {
+@@ -470,7 +470,7 @@ void SkyGLPainter::drawSkyPolyline(LineList *list, SkipHashList *skipList, LineL
+     glBegin(GL_LINE_STRIP);
+     SkyList *points = list->points();
+     bool isVisible, isVisibleLast;
+-    Vector2f oLast = m_proj->toScreenVec(points->first(), true, &isVisibleLast);
++    Eigen::Vector2f oLast = m_proj->toScreenVec(points->first(), true, &isVisibleLast);
+     // & with the result of checkVisibility to clip away things below horizon
+     isVisibleLast &= m_proj->checkVisibility(points->first());
+     if (isVisibleLast)
+@@ -480,7 +480,7 @@ void SkyGLPainter::drawSkyPolyline(LineList *list, SkipHashList *skipList, LineL
+ 
+     for (int i = 1; i < points->size(); ++i)
+     {
+-        Vector2f oThis = m_proj->toScreenVec(points->at(i), true, &isVisible);
++        Eigen::Vector2f oThis = m_proj->toScreenVec(points->at(i), true, &isVisible);
+         // & with the result of checkVisibility to clip away things below horizon
+         isVisible &= m_proj->checkVisibility(points->at(i));
+ 
+@@ -501,7 +501,7 @@ void SkyGLPainter::drawSkyPolyline(LineList *list, SkipHashList *skipList, LineL
+             }
+             else if (isVisibleLast)
+             {
+-                Vector2f oMid = m_proj->clipLineVec(points->at(i - 1), points->at(i));
++                Eigen::Vector2f oMid = m_proj->clipLineVec(points->at(i - 1), points->at(i));
+                 glVertex2fv(oMid.data());
+                 //If the last point was visible but this one isn't we are at
+                 //the end of a strip, so we need to end
+@@ -509,7 +509,7 @@ void SkyGLPainter::drawSkyPolyline(LineList *list, SkipHashList *skipList, LineL
+             }
+             else if (isVisible)
+             {
+-                Vector2f oMid = m_proj->clipLineVec(points->at(i), points->at(i - 1));
++                Eigen::Vector2f oMid = m_proj->clipLineVec(points->at(i), points->at(i - 1));
+                 glVertex2fv(oMid.data());
+                 glVertex2fv(oThis.data());
+             }
+@@ -543,7 +543,7 @@ void SkyGLPainter::drawObservingList(const QList<SkyObject *> &obs)
+         if (!m_proj->checkVisibility(obj))
+             continue;
+         bool visible;
+-        Vector2f vec = m_proj->toScreenVec(obj, true, &visible);
++        Eigen::Vector2f vec = m_proj->toScreenVec(obj, true, &visible);
+         if (!visible || !m_proj->onScreen(vec))
+             continue;
+         const float size = 30.;
+@@ -559,7 +559,7 @@ void SkyGLPainter::drawFlags()
+     QImage image;
+     const QString label;
+     bool visible = false;
+-    Vector2f vec;
++    Eigen::Vector2f vec;
+     int i;
+ 
+     for (i = 0; i < data->skyComposite()->flags()->size(); i++)
+@@ -623,7 +623,7 @@ void SkyGLPainter::drawText(int x, int y, const QString text, QFont font, QColor
+     float h  = text_image.height();
+     float vx = x + 0.5 * w + 10;
+     float vy = y - 10;
+-    drawTexturedRectangle(text_image, Vector2f(vx, vy), 0, w, h);
++    drawTexturedRectangle(text_image, Eigen::Vector2f(vx, vy), 0, w, h);
+ }
+ 
+ bool SkyGLPainter::drawConstellationArtImage(ConstellationsArt *obj)
+@@ -633,8 +633,8 @@ bool SkyGLPainter::drawConstellationArtImage(ConstellationsArt *obj)
+ void SkyGLPainter::drawSkyLine(SkyPoint *a, SkyPoint *b)
+ {
+     bool aVisible, bVisible;
+-    Vector2f aScreen = m_proj->toScreenVec(a, true, &aVisible);
+-    Vector2f bScreen = m_proj->toScreenVec(b, true, &bVisible);
++    Eigen::Vector2f aScreen = m_proj->toScreenVec(a, true, &aVisible);
++    Eigen::Vector2f bScreen = m_proj->toScreenVec(b, true, &bVisible);
+ 
+     glDisable(GL_TEXTURE_2D);
+     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+@@ -714,7 +714,7 @@ void SkyGLPainter::setBrush(const QBrush &brush)
+     Q_UNUSED(brush);
+     /*
+     QColor c = brush.color();
+-    m_pen = Vector4f( c.redF(), c.greenF(), c.blueF(), c.alphaF() );
++    m_pen = Eigen::Vector4f( c.redF(), c.greenF(), c.blueF(), c.alphaF() );
+     glColor4fv( m_pen.data() );
+     */
+ }
+@@ -722,7 +722,7 @@ void SkyGLPainter::setBrush(const QBrush &brush)
+ void SkyGLPainter::setPen(const QPen &pen)
+ {
+     QColor c = pen.color();
+-    m_pen    = Vector4f(c.redF(), c.greenF(), c.blueF(), c.alphaF());
++    m_pen    = Eigen::Vector4f(c.redF(), c.greenF(), c.blueF(), c.alphaF());
+     glColor4fv(m_pen.data());
+     glLineWidth(pen.widthF());
+     if (pen.style() != Qt::SolidLine)
+@@ -739,7 +739,7 @@ void SkyGLPainter::drawSatellite(Satellite *sat)
+ {
+     KStarsData *data = KStarsData::Instance();
+     bool visible     = false;
+-    Vector2f pos, vertex;
++    Eigen::Vector2f pos, vertex;
+ 
+     sat->HorizontalToEquatorial(data->lst(), data->geo()->lat());
+ 
+@@ -763,13 +763,13 @@ void SkyGLPainter::drawSatellite(Satellite *sat)
+         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+         glBegin(GL_QUADS);
+ 
+-        vertex = pos + Vector2f(-1.0, -1.0);
++        vertex = pos + Eigen::Vector2f(-1.0, -1.0);
+         glVertex2fv(vertex.data());
+-        vertex = pos + Vector2f(1.0, -1.0);
++        vertex = pos + Eigen::Vector2f(1.0, -1.0);
+         glVertex2fv(vertex.data());
+-        vertex = pos + Vector2f(1.0, 1.0);
++        vertex = pos + Eigen::Vector2f(1.0, 1.0);
+         glVertex2fv(vertex.data());
+-        vertex = pos + Vector2f(-1.0, 1.0);
++        vertex = pos + Eigen::Vector2f(-1.0, 1.0);
+         glVertex2fv(vertex.data());
+ 
+         glEnd();
+@@ -783,7 +783,7 @@ bool SkyGLPainter::drawSupernova(Supernova *sup)
+ {
+     KStarsData *data = KStarsData::Instance();
+     bool visible     = false;
+-    Vector2f pos, vertex;
++    Eigen::Vector2f pos, vertex;
+ 
+     sup->HorizontalToEquatorial(data->lst(), data->geo()->lat());
+ 
+@@ -797,16 +797,16 @@ bool SkyGLPainter::drawSupernova(Supernova *sup)
+     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+ 
+     glBegin(GL_LINES);
+-    vertex = pos + Vector2f(2.0, 0.0);
++    vertex = pos + Eigen::Vector2f(2.0, 0.0);
+     glVertex2fv(vertex.data());
+-    vertex = pos + Vector2f(-2.0, 0.0);
++    vertex = pos + Eigen::Vector2f(-2.0, 0.0);
+     glVertex2fv(vertex.data());
+     glEnd();
+ 
+     glBegin(GL_LINES);
+-    vertex = pos + Vector2f(0.0, 2.0);
++    vertex = pos + Eigen::Vector2f(0.0, 2.0);
+     glVertex2fv(vertex.data());
+-    vertex = pos + Vector2f(0.0, -2.0);
++    vertex = pos + Eigen::Vector2f(0.0, -2.0);
+     glVertex2fv(vertex.data());
+     glEnd();
+ 
+diff --git a/kstars/skyglpainter.h b/kstars/skyglpainter.h
+index c03c2880d..6c11b3ede 100644
+--- a/kstars/skyglpainter.h
++++ b/kstars/skyglpainter.h
+@@ -22,7 +22,6 @@
+ 
+ #include <cstddef>
+ #include <Eigen/Core>
+-using namespace Eigen;
+ 
+ #include "skypainter.h"
+ #include "skyobjects/skyobject.h"
+@@ -32,52 +31,52 @@ class QGLWidget;
+ 
+ class SkyGLPainter : public SkyPainter
+ {
+-  public:
+-    explicit SkyGLPainter(QGLWidget *widget);
+-    bool drawPlanet(KSPlanetBase *planet) override;
+-    bool drawPointSource(const SkyPoint *loc, float mag, char sp = 'A') override;
+-    void drawSkyPolygon(LineList *list, bool forceClip = true) override;
+-    void drawSkyPolyline(LineList *list, SkipHashList *skipList = nullptr,
+-                         LineListLabel *label = nullptr) override;
+-    void drawSkyLine(SkyPoint *a, SkyPoint *b) override;
+-    void drawSkyBackground() override;
+-    void drawObservingList(const QList<SkyObject *> &obs) override;
+-    void drawFlags() override;
+-    void end() override;
+-    void begin() override;
+-    void setBrush(const QBrush &brush) override;
+-    void setPen(const QPen &pen) override;
+-    void drawHorizon(bool filled, SkyPoint *labelPoint = nullptr,
+-                     bool *drawLabel = nullptr) override;
+-    bool drawSatellite(Satellite *sat) override;
+-    bool drawSupernova(Supernova *sup) override;
+-    void drawText(int x, int y, const QString text, QFont font, QColor color);
+-    bool drawConstellationArtImage(ConstellationsArt *obj) override;
+-    bool drawHips() override;
++    public:
++        explicit SkyGLPainter(QGLWidget *widget);
++        bool drawPlanet(KSPlanetBase *planet) override;
++        bool drawPointSource(const SkyPoint *loc, float mag, char sp = 'A') override;
++        void drawSkyPolygon(LineList *list, bool forceClip = true) override;
++        void drawSkyPolyline(LineList *list, SkipHashList *skipList = nullptr,
++                             LineListLabel *label = nullptr) override;
++        void drawSkyLine(SkyPoint *a, SkyPoint *b) override;
++        void drawSkyBackground() override;
++        void drawObservingList(const QList<SkyObject *> &obs) override;
++        void drawFlags() override;
++        void end() override;
++        void begin() override;
++        void setBrush(const QBrush &brush) override;
++        void setPen(const QPen &pen) override;
++        void drawHorizon(bool filled, SkyPoint *labelPoint = nullptr,
++                         bool *drawLabel = nullptr) override;
++        bool drawSatellite(Satellite *sat) override;
++        bool drawSupernova(Supernova *sup) override;
++        void drawText(int x, int y, const QString text, QFont font, QColor color);
++        bool drawConstellationArtImage(ConstellationsArt *obj) override;
++        bool drawHips() override;
+ 
+-  private:
+-    bool addItem(SkyPoint *p, int type, float width, char sp = 'a');
+-    void drawBuffer(int type);
+-    void drawPolygon(const QVector<Vector2f> &poly, bool convex = true,
+-                     bool flush_buffers = true);
++    private:
++        bool addItem(SkyPoint *p, int type, float width, char sp = 'a');
++        void drawBuffer(int type);
++        void drawPolygon(const QVector<Eigen::Vector2f> &poly, bool convex = true,
++                         bool flush_buffers = true);
+ 
+-    /** Render textured rectangle on screeen. Parameters are texture
+-         *  to be used, position, orientation and size of rectangle*/
+-    void drawTexturedRectangle(const QImage &img, const Vector2f &pos, const float angle,
+-                               const float sizeX, const float sizeY);
++        /** Render textured rectangle on screeen. Parameters are texture
++             *  to be used, position, orientation and size of rectangle*/
++        void drawTexturedRectangle(const QImage &img, const Eigen::Vector2f &pos, const float angle,
++                                   const float sizeX, const float sizeY);
+ 
+-    const Projector *m_proj;
++        const Projector *m_proj;
+ 
+-    Vector4f m_pen;
+-    static const int BUFSIZE = 512;
+-    ///FIXME: what kind of TYPE_UNKNOWN objects are there?
+-    static const int NUMTYPES = (int)SkyObject::TYPE_UNKNOWN + 1;
+-    static Vector2f m_vertex[NUMTYPES][6 * BUFSIZE];
+-    static Vector2f m_texcoord[NUMTYPES][6 * BUFSIZE];
+-    static Vector3f m_color[NUMTYPES][6 * BUFSIZE];
+-    static int m_idx[NUMTYPES];
+-    static bool m_init;  ///< keep track of whether we have filled the texcoord array
+-    QGLWidget *m_widget; // Pointer to (GL) widget on which we are painting
++        Eigen::Vector4f m_pen;
++        static const int BUFSIZE = 512;
++        ///FIXME: what kind of TYPE_UNKNOWN objects are there?
++        static const int NUMTYPES = (int)SkyObject::TYPE_UNKNOWN + 1;
++        static Eigen::Vector2f m_vertex[NUMTYPES][6 * BUFSIZE];
++        static Eigen::Vector2f m_texcoord[NUMTYPES][6 * BUFSIZE];
++        static Eigen::Vector3f m_color[NUMTYPES][6 * BUFSIZE];
++        static int m_idx[NUMTYPES];
++        static bool m_init;  ///< keep track of whether we have filled the texcoord array
++        QGLWidget *m_widget; // Pointer to (GL) widget on which we are painting
+ };
+ 
+ #endif // SKYGLPAINTER_H
+diff --git a/kstars/skyqpainter.cpp b/kstars/skyqpainter.cpp
+index 96d7b0bd5..12265183a 100644
+--- a/kstars/skyqpainter.cpp
++++ b/kstars/skyqpainter.cpp
+@@ -1033,7 +1033,7 @@ void SkyQPainter::drawFlags()
+ 
+ void SkyQPainter::drawHorizon(bool filled, SkyPoint *labelPoint, bool *drawLabel)
+ {
+-    QVector<Vector2f> ground = m_proj->groundPoly(labelPoint, drawLabel);
++    QVector<Eigen::Vector2f> ground = m_proj->groundPoly(labelPoint, drawLabel);
+     if (ground.size())
+     {
+         QPolygonF groundPoly(ground.size());
+-- 
+2.32.0
+

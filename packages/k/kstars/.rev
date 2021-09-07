@@ -1036,4 +1036,13 @@
   seems that no new release will be made for 3.5.4 (e.g. 3.5.4.1)</comment>
     <requestid>907912</requestid>
   </revision>
+  <revision rev="121" vrev="2">
+    <srcmd5>03c06bb58eaa7c19c964676e812eada7</srcmd5>
+    <version>3.5.4</version>
+    <time>1631042511</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix build with Eigen &gt;= 3.4.0 (kde#442082):
+  * 0001-Partial-fix-for-442082-regarding-building-on-newer-E.patch (forwarded request 917301 from Vogtinator)</comment>
+    <requestid>917309</requestid>
+  </revision>
 </revisionlist>

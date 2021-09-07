@@ -33,6 +33,8 @@ URL:            https://edu.kde.org/kstars/
 Source0:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM 563c5f336ed4ed6a931b914fc4e836276dccfb70 -- this patch fixes an issue with the twilight calculation
 Patch0:         hotfix-twilight.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Partial-fix-for-442082-regarding-building-on-newer-E.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
