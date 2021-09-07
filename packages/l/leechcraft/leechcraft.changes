@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 31 05:17:40 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Updated to 0.6.70-14771-g9d21b0f8ad snapshot:
+  * libtorrent-rasterbar 2 support;
+  * bittorrent plugin for ppc64 enabled;
+  * kinotify & azoth don't require Qt5WebKitWidgets any more;
+  * some tests were fixed & enabled;
+  * azoth not for architectures without QtWebEngine now;
+  * poshuku-foc plugin (adobe flash) became deprecated.
+- Removed leechcraft-libtorrent-legacy.patch
+
+-------------------------------------------------------------------
 Thu Jul 29 06:58:59 UTC 2021 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Obsoletes poshuku (browser) for architectures without QtWebEngine.

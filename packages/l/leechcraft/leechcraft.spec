@@ -27,7 +27,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml5
 
 %define so_ver -qt5-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-14675-g3f93af1b45
+%define LEECHCRAFT_VERSION 0.6.70-14771-g9d21b0f8ad
 
 %define db_postfix %{so_ver}_1
 %define gui_postfix %{so_ver}_1
@@ -46,7 +46,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.14675.g3f93af1b45
+Version:        0.6.70+git.14771.g9d21b0f8ad
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -57,9 +57,6 @@ Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECH
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 Source9:        lc_plugin_wrapper-qt5.1
-
-# PATCH-FIX-OPENSUSE leechcraft-libtorrent-legacy.patch
-Patch2:         leechcraft-libtorrent-legacy.patch
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
@@ -107,8 +104,9 @@ BuildRequires:  pkgconfig(Qt5Sql) >= 5.13
 BuildRequires:  pkgconfig(Qt5Svg) >= 5.13
 BuildRequires:  pkgconfig(Qt5WebChannel) >= 5.13
 %ifnarch ppc ppc64 ppc64le s390 s390x
-BuildRequires:  pkgconfig(Qt5WebEngine) >= 5.13
+BuildRequires:  cmake(Qt5WebEngineWidgets) >= 5.13
 %endif
+# Will be removed soon! WIP: core, blogique, lhtr etc.
 BuildRequires:  pkgconfig(Qt5WebKitWidgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5Widgets) >= 5.13
 BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.13
@@ -145,10 +143,7 @@ BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 %endif
 BuildRequires:  pkgconfig(libtcmalloc)
-%ifarch %ix86 x86_64 %arm ppc64le
-BuildRequires:  pkgconfig(libtorrent-rasterbar-1) >= 1.2.0
-%endif
-
+BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(poppler-qt5)
@@ -189,9 +184,6 @@ Recommends:     %{name}-secman-simplestorage
 Recommends:     %{name}-visualnotifications
 Suggests:       %{name}-lastfmscrobble
 
-%ifarch ppc64
-Obsoletes:      %{name}-bittorrent
-%endif
 Obsoletes:      %{name}-choroid
 Obsoletes:      %{name}-harbinger
 Obsoletes:      %{name}-nacheku
@@ -317,6 +309,7 @@ LeechCraft and then either save them locally or upload them to an
 imagebin.
 
 
+%ifnarch ppc ppc64 ppc64le s390 s390x
 %package azoth
 Summary:        LeechCraft Instant messenger Module
 License:        BSL-1.0
@@ -705,9 +698,9 @@ Requires:       %{name}-xtazy = %{version}
 %description azoth-xtazy
 This package provides an Azoth plugin which allows to publish
 the current user tune.
+%endif
 
 
-%ifarch %ix86 x86_64 %arm ppc64le
 %package bittorrent
 Summary:        LeechCraft BitTorrent client Module
 License:        BSL-1.0
@@ -732,7 +725,6 @@ Features:
  * Fast resume support to avoid long startup times.
  * IP filter to block/unblock unwanted peers.
  * Support for extension protocol
-%endif
 
 %package blasq
 Summary:        LeechCraft Image storage Module
@@ -1525,7 +1517,7 @@ This package contains a LeechCraft Monocle subplugin for djvu
 document support via the djvulibre backend.
 
 %package musiczombie
-Summary:        LeechCraft Azoth MusicBrainz.org client Module
+Summary:        LeechCraft LMP MusicBrainz.org client Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
@@ -1669,6 +1661,7 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-poshuku-backend = %{version}
 Recommends:     %{name}-imgaste = %{version}
 Recommends:     %{name}-intermutko = %{version}
+Obsoletes:      %{name}-poshuku-foc
 Obsoletes:      %{name}-poshuku-webkitview
 
 %description poshuku
@@ -1750,16 +1743,6 @@ Requires:       %{name}-poshuku = %{version}
 This package provides file: scheme support for LeechCraft Poshuku,
 allowing to navigate local resources.
 FileScheme also supports "downloading" files from there.
-
-
-%package poshuku-foc
-Summary:        LeechCraft Poshuku Flash-on-Click module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-poshuku = %{version}
-
-%description poshuku-foc
-This package provides Flash-on-Click support for LeechCraft Poshuku browser.
 
 
 %package poshuku-fua
@@ -2249,7 +2232,6 @@ XmlSettingsDialog LeechCraft subsystem.
 
 %prep
 %setup -q -n leechcraft-%{LEECHCRAFT_VERSION}
-%patch2 -p1
 
 #removing non-free icons
 rm -rf src/plugins/azoth/share/azoth/iconsets/clients/default
@@ -2282,12 +2264,13 @@ cmake ../src \
         -DWITH_DBUS_LOADERS=True \
         -DWITH_PCRE=True \
         -DWITH_QWT=True \
-        -DENABLE_UTIL_TESTS=False \
+        -DENABLE_UTIL_TESTS=True \
         -DENABLE_ADVANCEDNOTIFICATIONS=True \
         -DENABLE_AGGREGATOR=True \
                 -DENABLE_AGGREGATOR_BODYFETCH=True \
                 -DENABLE_AGGREGATOR_WEBACCESS=True \
         -DENABLE_AUSCRIE=True \
+%ifnarch ppc ppc64 ppc64le s390 s390x
         -DENABLE_AZOTH=True \
                 -DENABLE_AZOTH_ABBREV=True \
                 -DENABLE_AZOTH_ACETAMIDE=True \
@@ -2323,6 +2306,9 @@ cmake ../src \
                 -DENABLE_AZOTH_XOOX=True \
                 -DENABLE_CRYPT=True \
                 -DENABLE_MEDIACALLS=False \
+%else
+        -DENABLE_AZOTH=False \
+%endif
         -DENABLE_BLASQ=True \
                 -DENABLE_BLASQ_DEATHNOTE=True \
                 -DENABLE_BLASQ_RAPPOR=True \
@@ -2352,7 +2338,7 @@ cmake ../src \
         -DENABLE_KNOWHOW=True \
         -DENABLE_KRIGSTASK=True \
         -DENABLE_LACKMAN=True \
-                -DTESTS_LACKMAN=False \
+                -DTESTS_LACKMAN=True \
         -DENABLE_LADS=False \
         -DENABLE_LASTFMSCROBBLE=True \
         -DENABLE_LAUGHTY=True \
@@ -2409,14 +2395,9 @@ cmake ../src \
                 -DENABLE_POSHUKU_AUTOSEARCH=True \
                 -DENABLE_POSHUKU_CLEANWEB=True \
                 -DENABLE_POSHUKU_DCAC=True \
-%ifarch %ix86 x86_64
-                -DENABLE_POSHUKU_DCAC_TESTS=True \
-%else
-                -DENABLE_POSHUKU_DCAC_TESTS=False \
-%endif
+                        -DENABLE_POSHUKU_DCAC_TESTS=True \
                 -DENABLE_POSHUKU_FATAPE=True \
                 -DENABLE_POSHUKU_FILESCHEME=True \
-                -DENABLE_POSHUKU_FOC=True \
                 -DENABLE_POSHUKU_FUA=True \
                 -DENABLE_POSHUKU_KEYWORDS=True \
                 -DENABLE_POSHUKU_ONLINEBOOKMARKS=True \
@@ -2425,7 +2406,7 @@ cmake ../src \
                 -DENABLE_POSHUKU_QRD=True \
                 -DENABLE_POSHUKU_SPEEDDIAL=True \
                 -DENABLE_POSHUKU_WEBENGINEVIEW=True \
-                        -DENABLE_POSHUKU_WEBENGINEVIEW_TESTS=False \
+                        -DENABLE_POSHUKU_WEBENGINEVIEW_TESTS=True \
                 -DENABLE_POSHUKU_WEBKITVIEW=False \
 %else
         -DENABLE_POSHUKU=False \
@@ -2440,12 +2421,8 @@ cmake ../src \
         -DENABLE_TABSESSMANAGER=True \
         -DENABLE_TABSLIST=True \
         -DENABLE_TEXTOGROOSE=True \
-%ifarch %ix86 x86_64 %arm ppc64le
         -DENABLE_BITTORRENT=True \
                  -DENABLE_BITTORRENT_GEOIP=True \
-%else
-        -DENABLE_BITTORRENT=False \
-%endif
         -DENABLE_TOUCHSTREAMS=True \
         -DENABLE_TPI=True \
         -DENABLE_VROOBY=True \
@@ -2462,7 +2439,9 @@ cmake ../src \
 cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 
 %fdupes -s %{buildroot}%{_datadir}/%{name}/translations
+%ifnarch ppc ppc64 ppc64le s390 s390x
 %fdupes -s %{buildroot}%{_datadir}/%{name}/azoth
+%endif
 %fdupes -s %{buildroot}%{_datadir}/%{name}/global_icons/flags
 %fdupes -s %{buildroot}%{_datadir}/%{name}/themes
 
@@ -2578,6 +2557,7 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_auscrie_*.qm
 %{plugin_dir}/lib%{name}_auscrie.so
 
+%ifnarch ppc ppc64 ppc64le s390 s390x
 %files azoth
 %defattr(-,root,root)
 %dir %{_datadir}/leechcraft/azoth
@@ -2749,15 +2729,14 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %{settings_dir}/azothxtazysettings.xml
 %{plugin_dir}/*craft_azoth_xtazy.so
 %{translations_dir}/*craft_azoth_xtazy*
+%endif
 
-%ifarch %ix86 x86_64 %arm ppc64le
 %files bittorrent
 %defattr(-,root,root)
 %{settings_dir}/torrentsettings.xml
 %{translations_dir}/*craft_bittorrent_*.qm
 %{plugin_dir}/*craft_bittorrent.so
 %{_datadir}/applications/%{name}-bittorrent-qt5.desktop
-%endif
 
 %files blasq
 %defattr(-,root,root)
@@ -2948,7 +2927,6 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 
 %files kinotify
 %defattr(-,root,root)
-%{_datadir}/leechcraft/kinotify
 %{settings_dir}/kinotifysettings.xml
 %{plugin_dir}/*craft_kinotify.so
 %{translations_dir}/*craft_kinotify_*.qm
@@ -3220,12 +3198,6 @@ cp %{SOURCE8} %{SOURCE9} %{buildroot}%{_mandir}/man1
 %defattr(-,root,root)
 %{translations_dir}/*craft_poshuku_filescheme_*.qm
 %{plugin_dir}/*craft_poshuku_filescheme.so
-
-%files poshuku-foc
-%defattr(-,root,root)
-%{translations_dir}/*craft_poshuku_foc_*.qm
-%{plugin_dir}/*craft_poshuku_foc.so
-%{settings_dir}/poshukufocsettings.xml
 
 %files poshuku-fua
 %defattr(-,root,root)
