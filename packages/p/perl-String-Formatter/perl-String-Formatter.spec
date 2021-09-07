@@ -1,7 +1,7 @@
 #
 # spec file for package perl-String-Formatter
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,27 +12,26 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-String-Formatter
-Version:        0.102084
-Release:        0
 %define cpan_name String-Formatter
-Summary:        build sprintf-like functions of your own
-License:        GPL-2.0
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/String-Formatter/
-Source:         http://www.cpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Name:           perl-String-Formatter
+Version:        1.234
+Release:        0
+Summary:        Build sprintf-like functions of your own
+License:        GPL-1.0-or-later
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
 BuildRequires:  perl(Params::Util)
 BuildRequires:  perl(Sub::Exporter)
 BuildRequires:  perl(Test::More) >= 0.96
-#BuildRequires: perl(String::Formatter)
 Requires:       perl(Params::Util)
 Requires:       perl(Sub::Exporter)
 %{perl_requires}
@@ -86,18 +85,18 @@ defaults 'method_replace' and 'require_single_input'. Finally, a
 'require_arrayref_input'. For more on these, keep reading, and check out
 the cookbook.
 
-the String::Formatter::Cookbook manpage provides a number of recipes for
-ways to put String::Formatter to use.
+String::Formatter::Cookbook provides a number of recipes for ways to put
+String::Formatter to use.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup  -n %{cpan_name}-%{version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -105,7 +104,7 @@ ways to put String::Formatter to use.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes LICENSE README
+%doc Changes README
+%license LICENSE
 
 %changelog

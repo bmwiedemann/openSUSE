@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 29 03:07:32 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.234
+   see /usr/share/doc/packages/perl-String-Formatter/Changes
+
+  1.234     2021-08-28 17:28:18-04:00 America/New_York
+          - move bench.pl from dist root so it won't get installed to @INC
+          - fix some problems with doc layout
+
+-------------------------------------------------------------------
 Mon Nov 25 07:38:07 UTC 2013 - coolo@suse.com
 
 - updated to 0.102084
