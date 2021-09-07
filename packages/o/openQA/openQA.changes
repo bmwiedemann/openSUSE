@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 07 13:25:28 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631021118.ebe25e524:
+  * Ensure that worker_container can start any instance
+  * Dependency cron 2021-09-07
+  * Write error check in `eveluate_error` in a more compact way
+  * Improve logging for artefact uploads
+  * Remove no longer necessary test code
+  * Speed up 21-admin-needles.t by running all Minion jobs in foreground
+  * Fix permission errors when running tidy with docker-compose setup
+  * Add documentation for upgrading PostgreSQL database
+  * Optimize group_overview
+  * Don't check for unset var BYPASS_SYSTEMD_CHECK in openqa-bootstrap
+  * Reference arch diagram in devel mode debug steps
+  * Reference doc about debugging devel mode on errors
+  * Dependency cron 2021-09-06
+  * Add filter searching modules by regular expression
+  * Speed up 12-needle-edit.t by running all Minion jobs in foreground
+  * Migrate from FontAwesome to ForkAwesome
+  * Add note about `[global]` section for configuring `WORKER_HOSTNAME`
+  * Enable `[global]` section of `workers.ini` by default
+  * Speed up cache service tests by not forking Minion jobs
+  * Return to previous page on openID login
+  * Allow limit parameter for api/v1/jobs/overview
+  * Add /usr/bin/tac to apparmor profile to fix hook script on o3
+
+-------------------------------------------------------------------
 Thu Aug 26 17:07:24 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1629997637.5c3f9e2dd:
