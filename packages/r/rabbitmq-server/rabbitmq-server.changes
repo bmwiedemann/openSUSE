@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  7 07:52:54 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.5:
+  + Core Server
+    * Bug Fixes
+      - Virtual host metadata (description, tags) was not imported
+        from definitions.
+      - Reduced unnecessary debug logging from streams.
+  + AWS Peer Discovery Plugin
+    * Enhancements
+      - AWS API calls are now retried multiple times.
+  + Management Plugin
+    * Enhancements
+      - PUT /api/vhosts/{name} now can update metadata (tags and
+        descriptions) for existing virtual hosts.
+
+-------------------------------------------------------------------
 Wed Aug 25 11:54:56 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Add install-bin and install-man to make target, and install into
