@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Sep  6 13:42:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.14.4
+  * Bugfix release
+- Update to version 3.14.3
+  * This release contains a single fix for ensuring NULL values
+    are inserted when issuing a bulk-insert of heterogeneous
+    dictionaries which may be missing explicit NULL values.
+- Update to version 3.14.2
+  * Support for named Check and foreign-key constraints.
+  * Better foreign-key introspection for CockroachDB (and Postgres)
+  * Register UUID adapter for Postgres.
+  * Add fn.array_agg() to blacklist for automatic value coercion.
+- Update to version 3.14.1
+  Changes
+  * Properly delegate to a foreign-key field's db_value() function
+    when converting model instances.
+  * Strip quote marks and parentheses from column names returned
+    by sqlite cursor when a function-call is projected without an
+    alias.
+  * Fix DataSet.create_index() method.
+  * Fix column-to-model mapping in model-select from subquery
+    with joins.
+  * Improvements to foreign-key lazy-loading.
+  * Preserve and handle CHECK() constraints in Sqlite migrator.
+  * Add stddev aggregate function to collection of sqlite
+    user-defined funcs.
+- Update to version 3.14.0
+  * Add an experimental helper,
+    shortcuts.resolve_multimodel_query(),
+    for resolving multiple models used in a compound select query.
+  * Add a lateral() method to select query for use with lateral
+    joins, refs issue #2205.
+  * Added support for nested transactions (savepoints) in
+    cockroach-db (requires 20.1 or newer).
+  * Automatically escape wildcards passed to string-matching
+    methods, refs #2224.
+  * Allow index-type to be specified on MySQL, refs #2242.
+  * Added a new API, converter() to be used for specifying a
+    function to use to convert a row-value pulled off the cursor.
+  * Add set() and clear() method to the bitfield flag descriptor.
+  * Add support for range types with IN and other expressions.
+  * Support CTEs bound to compound select queries, refs #2289.
+  Bug-fixes
+  * Fix to return related object id when accessing via the
+    object-id descriptor, when the related object is not populated.
+  * Fix to ensure we do not insert a NULL value for a primary key.
+  * Fix to conditionally set the field/column on an added column
+    in a migration.
+  * Apply field conversion logic to model-class values. Relocates
+    the logic from issue #2131 and fixes #2185.
+  * Clone node before modifying it to be flat in an enclosed
+    nodelist expr, fixes issue #2200.
+  * Fix an invalid item assignment in nodelist, refs #2220.
+  * Fix an incorrect truthiness check used with save() and only=.
+  * Fix regression in filter() where using both *args and **kwargs
+    caused the expressions passed as args to be discarded. #2293.
+
+-------------------------------------------------------------------
 Wed May 20 07:26:11 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

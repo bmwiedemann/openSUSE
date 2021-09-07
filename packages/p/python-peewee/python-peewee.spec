@@ -1,7 +1,7 @@
 #
 # spec file for package python-peewee
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-peewee
-Version:        3.13.1
+Version:        3.14.4
 Release:        0
 Summary:        An expressive ORM that supports multiple SQL backends
 License:        BSD-3-Clause
 URL:            https://github.com/coleifer/peewee
-Source:         https://github.com/coleifer/peewee/archive/%{version}.tar.gz
+Source:         https://github.com/coleifer/peewee/archive/refs/tags/%{version}.tar.gz#/peewee-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyMySQL}
@@ -39,7 +39,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(sqlite3)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 %python_subpackages
 
 %description
