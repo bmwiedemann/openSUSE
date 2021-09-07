@@ -100,4 +100,15 @@
 - Update Requires from setup.py (forwarded request 890965 from glaubitz)</comment>
     <requestid>890969</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>5bdae27002426ed3caf386e522b8ffca</srcmd5>
+    <version>9.1.0</version>
+    <time>1631042507</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 9.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917286 from glaubitz)</comment>
+    <requestid>917297</requestid>
+  </revision>
 </revisionlist>
