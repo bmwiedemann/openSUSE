@@ -1,7 +1,7 @@
 #
 # spec file for package python-mbstrdecoder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-mbstrdecoder
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Multi-byte character string decoder
 License:        MIT
@@ -44,10 +44,6 @@ Python library for multi-byte character string decoding.
 %setup -q -n mbstrdecoder-%{version}
 # Remove build alias
 sed -i '/build =/d' setup.cfg
-
-# Remove chardet v4 block
-# Effectively the same as https://github.com/thombashi/mbstrdecoder/pull/4
-sed -i 's/,<4.0.0//' setup.py
 
 %build
 %python_build
