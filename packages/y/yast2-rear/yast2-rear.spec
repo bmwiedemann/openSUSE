@@ -17,7 +17,7 @@
 
 
 Name:           yast2-rear
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        YaST2 - Rear - Relax and Recover
 License:        GPL-2.0-only
@@ -39,7 +39,10 @@ Requires:       rear >= 1.10.0
 Requires:       yast2
 Requires:       yast2-ruby-bindings >= 1.0.0
 Requires:       yast2-storage-ng
-BuildArch:      noarch
+
+# Build the package only for architectures supported by rear (bsc#1189646)
+# See https://github.com/rear/rear/blob/f06e0d22eeb3bd45ad8ce0b8fce0b538e4534f93/packaging/rpm/rear.spec#L27-L33
+ExclusiveArch:  %ix86 x86_64 ppc ppc64 ppc64le ia64
 
 %description
 The YaST2 component for configuring Rear - Relax and Recover Backup
