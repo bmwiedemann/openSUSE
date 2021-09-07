@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Aug 24 06:34:32 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to mpich 3.4.2
+  - Update embedded hwloc to version 2.4.1. Fixes a build issue on
+    systems with OpenCL.
+  - Fix additional bugs in GPU-aware nonblocking op collectives
+  - Fix support for GNI provider in ch4:ofi netmod
+  - Fix bug in dynamic window memory registration with ch4:ofi netmod
+  - Fix bug in persistent pt2pt when used with MPI_PROC_NULL
+  - Fix bug in hydra nameserver when freeing published entries
+  - Fix bugs in XPMEM support
+  - Fix bug in MPI_Comm_spawn_multiple where non-root args were not ignored
+
+-------------------------------------------------------------------
 Sun Jun 13 11:39:25 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - don't own /usr/share/doc (owned by "filesystem") to avoid conflict on install

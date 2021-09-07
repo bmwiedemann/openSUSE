@@ -1,5 +1,5 @@
 #
-# spec file for package %{package_name}%{?testsuite:-testsuite}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,8 +24,8 @@
 # % define build_static_devel 1
 
 %define pname mpich
-%define vers  3.4.1
-%define _vers 3_4_1
+%define vers  3.4.2
+%define _vers 3_4_2
 
 %if "%{flavor}" == ""
 ExclusiveArch:  do_not_build

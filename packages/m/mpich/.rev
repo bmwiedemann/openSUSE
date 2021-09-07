@@ -189,4 +189,12 @@
     <comment>- don't own /usr/share/doc (owned by &quot;filesystem&quot;) to avoid conflict on install (forwarded request 899802 from cboltz)</comment>
     <requestid>900758</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>10b1d9fb9525fe017a46c8bb89c84a8f</srcmd5>
+    <version>3.4.2</version>
+    <time>1631042485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917141</requestid>
+  </revision>
 </revisionlist>
