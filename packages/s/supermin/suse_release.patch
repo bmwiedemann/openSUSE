@@ -53,7 +53,7 @@
 +    be read or the ID_LIKE field is not defined. *)
 --- a/src/ph_rpm.ml
 +++ b/src/ph_rpm.ml
-@@ -42,6 +42,7 @@ let opensuse_detect () =
+@@ -43,6 +43,7 @@ let opensuse_detect () =
      Config.zypper <> "no" &&
      (List.mem (Os_release.get_id ()) [ "sled"; "sles" ] ||
       string_prefix "opensuse" (Os_release.get_id ()) ||

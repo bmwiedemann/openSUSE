@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 31 08:08:08 UTC 2021 - ohering@suse.de
+
+- s390x may have a kernel named /boot/image
+
+-------------------------------------------------------------------
+Wed Aug 25 08:48:22 MDT 2021 - carnold@suse.com
+
+- Update to 5.2.1 bug fix release. Include post 5.2.1 upstream fix.
+  Avoid-lstat-Value-too-large-for-defined-data-type.patch
+  disable-test-if-newer-ext2.patch
+
+-------------------------------------------------------------------
 Thu Apr  1 13:56:13 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Fix typo risc64 -> riscv64

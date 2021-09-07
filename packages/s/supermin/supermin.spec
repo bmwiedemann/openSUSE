@@ -17,18 +17,20 @@
 
 
 Name:           supermin
-Version:        5.2.0
+Version:        5.2.1
 Release:        0
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
 URL:            https://libguestfs.org/
-Source0:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.0.tar.gz
-Source1:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.0.tar.gz.sig
+Source0:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.1.tar.gz
+Source1:        https://download.libguestfs.org/supermin/5.2-stable/supermin-5.2.1.tar.gz.sig
 Source9:        supermin.keyring
 # Pending upstream review
-Patch0:         suse_release.patch
-Patch1:         supermin-kernel_version_compressed.patch
+Patch0:         Avoid-lstat-Value-too-large-for-defined-data-type.patch
+Patch10:        suse_release.patch
+Patch11:        supermin-kernel_version_compressed.patch
+Patch12:        disable-test-if-newer-ext2.patch
 BuildRequires:  augeas
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -89,7 +91,7 @@ find %{buildroot} -ls
 ls -alt /boot /lib/modules || :
 ls -altd /lib/modules/*/* || :
 
-for i in /boot/Image* /boot/vmlinu*
+for i in /boot/image* /boot/Image* /boot/vmlinu*
 do
   test -f "$i" || continue
   if get_kernel_version "${i}" > $$

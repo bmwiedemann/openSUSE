@@ -1,6 +1,6 @@
---- supermin-5.2.0/src/format_ext2_kernel.ml	2021/02/05 16:10:36	1.1
-+++ supermin-5.2.0/src/format_ext2_kernel.ml	2021/02/05 16:12:46
-@@ -212,6 +212,16 @@
+--- supermin-5.2.1.orig/src/format_ext2_kernel.ml
++++ supermin-5.2.1/src/format_ext2_kernel.ml
+@@ -213,6 +213,16 @@ and get_kernel_version debug kernel_file
    | None ->
       (* Try to work it out from the filename instead. *)
       let basename = Filename.basename kernel_file in

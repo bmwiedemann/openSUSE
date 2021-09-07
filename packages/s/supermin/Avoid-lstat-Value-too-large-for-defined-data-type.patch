@@ -1,0 +1,165 @@
+Subject: Open Unix.LargeFile to avoid "lstat: Value too large for defined data type".
+From: Richard W.M. Jones rjones@redhat.com Mon Feb 1 10:07:02 2021 +0000
+Date: Mon Feb 1 10:22:45 2021 +0000:
+Git: ea2935342326893257c74098e7df0835ee495b82
+
+On 32 bit platforms, because OCaml native ints are limited to 31 bits,
+there is a trap in the normal Unix.stat, Unix.lstat functions where
+any field in the stat struct may overflow.  The result is random
+errors like:
+
+  supermin: error: lstat: Value too large for defined data type: /tmp/tmp.Ss9aYEBASm/d2/root
+
+You would probably only see this on armv7.
+
+The OCaml Unix module has a "LargeFile" submodule which fixes this by
+using int64 for some (unfortunately not all) fields.
+
+For more information see the OCaml sources, file
+otherlibs/unix/stat.c, all instances of "EOVERFLOW".
+
+(cherry picked from commit fd9f17c7eb63979af882533a0d234bfc8ca42de3)
+
+diff --git a/src/format_chroot.ml b/src/format_chroot.ml
+index 346c24b..34606f7 100644
+--- a/src/format_chroot.ml
++++ b/src/format_chroot.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/format_ext2.ml b/src/format_ext2.ml
+index 6348c29..e311ea6 100644
+--- a/src/format_ext2.ml
++++ b/src/format_ext2.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/format_ext2_initrd.ml b/src/format_ext2_initrd.ml
+index 38977e6..6268442 100644
+--- a/src/format_ext2_initrd.ml
++++ b/src/format_ext2_initrd.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/format_ext2_kernel.ml b/src/format_ext2_kernel.ml
+index 98bff3a..3be4413 100644
+--- a/src/format_ext2_kernel.ml
++++ b/src/format_ext2_kernel.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+@@ -95,8 +96,8 @@ and find_kernel_from_lib_modules debug =
+     let kernels =
+       filter_map (
+         fun kernel_file ->
+-          let size = try (stat kernel_file).st_size with Unix_error _ -> 0 in
+-          if size < 10000 then None
++          let size = try (stat kernel_file).st_size with Unix_error _ -> 0L in
++          if size < 10000_L then None
+           else (
+             let kernel_name = Filename.basename kernel_file in
+             let modpath = Filename.dirname kernel_file in
+diff --git a/src/mode_build.ml b/src/mode_build.ml
+index ed47366..ff7733e 100644
+--- a/src/mode_build.ml
++++ b/src/mode_build.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/package_handler.ml b/src/package_handler.ml
+index 0409438..f0d6db3 100644
+--- a/src/package_handler.ml
++++ b/src/package_handler.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/ph_dpkg.ml b/src/ph_dpkg.ml
+index 1e785de..6d4fce1 100644
+--- a/src/ph_dpkg.ml
++++ b/src/ph_dpkg.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/ph_pacman.ml b/src/ph_pacman.ml
+index 67f7512..50500a5 100644
+--- a/src/ph_pacman.ml
++++ b/src/ph_pacman.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/ph_rpm.ml b/src/ph_rpm.ml
+index 9745efd..183b5f3 100644
+--- a/src/ph_rpm.ml
++++ b/src/ph_rpm.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Utils
+diff --git a/src/supermin.ml b/src/supermin.ml
+index e923111..9f838d9 100644
+--- a/src/supermin.ml
++++ b/src/supermin.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ open Types
+diff --git a/src/utils.ml b/src/utils.ml
+index b25df88..f5990ef 100644
+--- a/src/utils.ml
++++ b/src/utils.ml
+@@ -17,6 +17,7 @@
+  *)
+ 
+ open Unix
++open Unix.LargeFile
+ open Printf
+ 
+ let (+^) = Int64.add
