@@ -24,7 +24,7 @@
 %define project github.com/cri-o/cri-o
 # Define macros for further referenced sources
 Name:           cri-o
-Version:        1.21.2
+Version:        1.22.0
 Release:        0
 Summary:        OCI-based implementation of Kubernetes Container Runtime Interface
 License:        Apache-2.0
@@ -56,7 +56,7 @@ Requires:       cni-plugins
 Requires:       iproute2
 Requires:       iptables
 Requires:       libcontainers-common >= 0.0.1
-Requires:       runc >= 1.0.0~rc6
+Requires:       runc >= 1.0.2
 Requires:       conmon
 Suggests:       katacontainers
 # Provide generic cri-runtime dependency (needed by kubernetes)

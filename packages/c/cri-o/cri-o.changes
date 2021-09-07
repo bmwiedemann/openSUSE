@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Sep 02 14:57:14 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 1.22.0:
+    Dependency-Change
+      * Update runc within static binary bundle to v1.0.1
+      * Update static binary bundle runc version to v1.0.0-rc94.
+      * Update static binary bundle runc version to v1.0.0-rc95.
+      * Updated crun in static binary bundle to v0.20.1
+    Deprecation
+      * The internal_wipe option is now true by default.
+        Further, it is being deprecated, and will be unconditionally true in the future.
+    API Change
+      * Update how the resources for a workload is specified. Now, to override a workload,
+        the pod must have the annotation $prefix/$ctr_name = {"$resource_type": "$resource_value"}.
+        The workloads feature has also been marked as experimental, which should have happened
+        from the beginning.
+    Feature
+      * Added --metrics-collectors/metrics_collectors configuration to enable or disable certain metrics.
+      * All metrics collectors are enabled per default.
+      * Added crio_image_pulls_layer_size histogram metric to get insights about all pulled layer sizes.
+      * Added build tags as well as AppArmor and seccomp status to crio version output.
+      * Added generation of self-signed certificates for the secure metrics endpoint
+      * if the provided cert and key paths are not available on disk.
+      * Added secure metrics endpoint configuration options
+      * Added structural logging of container ID, sandbox ID and process ID on container start.
+      * Automatically reload metrics TLS certificate and key if any of those specified files change.
+      * CNI plugins are now passed a K8S_POD_UID environment variable containing the pod UID
+        this sandbox was started for.
+      * Changed the logging behavior of klog messages to be included in the CRI-O logs.
+      * The klog info verbositry is converted to CRI-O debug to lower the log verbosity.
+      * Cri-o now does not limit the DNS search paths.
+      * Enable the "volatile" option for the overlay drivers when it is supported by the underlying kernel.
+      * Rootless: enable resource limit when cgroup v2 controllers are delegated.
+      * Support io.kubernetes.cri.blockio-class container annotation for specifying blockio class.
+      * Support blockio.resources.beta.kubernetes.io/pod pod annotation for specifying the default blockio
+        class to all containers in the pod.
+      * Support blockio.resources.beta.kubernetes.io/container.NAME pod annotation for specifying
+        the blockio class of the NAME container in the pod.
+      * Add blockio_config_file config file option (and corresponding --blockio-config-file for command line)
+        for configuring blockio classes and their cgroups blockio controller parameters.
+        * Support io.kubernetes.cri.rdt-class container annotation for specifying RDT class.
+      * Add rdt_config_file config file option (and corresponding --rdt-config-file for command line)
+        for configuring the resctrl pseudo-filesystem.
+        * The config field drop_infra_ctr is now true by default
+        * The runtime_config_path option, which allows to specify the path of the runtime configuration file,
+          is now supported by CRI-O. This is specific to the VM runtime type.
+        * Validate certificate dates for TLS metrics endpoint
+    Design
+      * Drop support for the crio.shutdown.
+      * ExecSync requests now don't use conmon, instead calling the runtime directly, which reduces overhead.
+    Bug or Regression
+      * Add support for absent_mount_sources_to_reject, which allows admins to configure paths that,
+        when mounted into a container despite not existing on the host, causes a container creation
+        request to fail. This is useful for paths like /etc/hostname, which causes trouble as a directory,
+        but possibly shouldn't be created as a file either (in the case of a dynamic hostname).
+      * Add symlink /proc/mounts on /etc/mtab to container
+      * Add the config field internal_wipe which moves the responsibility of wiping containers after a reboot
+        and images after an upgrade from the external binary crio wipe to the main crio server.
+        This has a handful of advantages, the main one being crio is now better able to cleanup CNI resources after a reboot.
+      * Allow users to customize conmon's resources if a pod is in a workload.
+      * CRI-O now logs when it is using cgroupv2
+      * Fix a bug in internal_wipe that would mean CNI resources would be leaked across reboots.
+      * Fix a bug where CRI-O can't work with runc 1.0.0-rc93 because of an incorrectly specified list of capabilities
+      * Fix a bug where CRI-O would leak opened files for namespaces on a server restore
+      * Fix a bug where crio config would print a string for privileged_without_host_devices, not a boolean
+      * Fix a bug where a container exec process received a little less time than the timeout provided
+      * Fix a bug where an exec sync timeout would fail to cleanup the runtime exec process
+      * Fix a bug where cAdvisor couldn't read the disk usage of a pod with a dropped infra container
+      * Fix a bug where duplicate requests would stall even if the pod or container was already created
+      * Fix a bug where server startup was significantly slowed down by attempting to clean up CNI resources after a reboot.
+      * Fix a performance regression with exec probes
+      * Fix a segfault when CRI-O has takes more than 8 minutes to create a pod or container
+      * Fix an RSS regression with exec sync requests
+      * Fix an issue where a container started with a terminal fails on exec sync calls
+      * Fix drop ALL and add back few caps behavior to not include the default configured capabilities
+      * Fix potential panic when reopening a container's log
+      * Fixed bug where it was not possible to run containers using the default or no seccomp profile on
+      * seccomp disabled builds/machines
+      * Fixed bug where runtime VM created containers never reach their completed state.
+      * Fixed linkmode detection for on en_US systems crio version
+      * Fixed runtime panic for layers lockfile if its parent directory does not exist.
+      * Added support for repositories in auth.json
+      * Re-attempt setting up conmon's cgroup if it fails on EAGAIN from dbus
+      * Reduce the permission on the listen socket to 0660
+      * Reuse connection when connecting to dbus, as well as reattempt the connection if it fails temporarily
+      * The privileged_without_host_devices flag can now be given a an additional parameter to configure a runtime
+      * Wait for CNI plugins to be ready before starting non-host-network pods, to allow pods that may run CNI
+        plugins to start faster
+    Other (Cleanup or Flake)
+      * Add systemd After=crio.service to containers and conmon
+      * Switched build artifacts to be published via the cri-o bucket.
+      * Use build tag for linkmode detection on crio version.
+    Uncategorized
+      * Add Particule as adopters
+      * Add --device-ownership-from-security-context which allows an admin to specify devices be configured
+        to be owned by the container user and group, rather than unconditionally *   being root.
+      * Added internal/process/defunct_processes.go and crio_processes_defunct metric to collect
+        the total number of defunct/zombie processes in a node.
+      * Raise a warning when creating a bind mount on the container root
+
+-------------------------------------------------------------------
 Fri Aug 20 01:43:29 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - build with go 1.16 for reproducible binaries (boo#1102408)
