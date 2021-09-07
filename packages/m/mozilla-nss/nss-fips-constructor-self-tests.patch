@@ -67,7 +67,7 @@ Index: nss/lib/freebl/fips-selftest.inc
 ===================================================================
 --- /dev/null
 +++ nss/lib/freebl/fips-selftest.inc
-@@ -0,0 +1,296 @@
+@@ -0,0 +1,306 @@
 +/*
 + * PKCS #11 FIPS Power-Up Self Test - common stuff.
 + *
@@ -250,8 +250,18 @@ Index: nss/lib/freebl/fips-selftest.inc
 +	strncat(full_lib_name, SHLIB_VERSION"."SHLIB_SUFFIX, l);
 +	l -= strlen(SHLIB_VERSION"."SHLIB_SUFFIX);
 +#if 1
-+	if (NULL == addr)
-+		rv = BLAPI_SHVerifyFile(full_lib_name, &err);
++	if (NULL == addr) {
++		char full_path [PATH_MAX+1];
++
++		full_path [0] = '\0';
++		l = PATH_MAX;
++		strncat (full_path, "/usr/lib64/", l);
++		l -= strlen ("/usr/lib64/");
++		strncat (full_path, full_lib_name, l);
++		l -= strlen (full_lib_name);
++
++		rv = BLAPI_SHVerifyFile(full_path, &err);
++	}
 +	else
 +		rv = BLAPI_SHVerify(full_lib_name, addr, &err);
 +#else

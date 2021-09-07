@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep  3 09:10:56 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to NSS 3.69.1
+  * bmo#1722613 (Backout) - Disable DTLS 1.0 and 1.1 by default
+  * bmo#1720226 (Backout) - integrity checks in key4.db not happening
+                            on private components with AES_CBC
+  NSS 3.69
+  * bmo#1722613 - Disable DTLS 1.0 and 1.1 by default (backed out again)
+  * bmo#1720226 - integrity checks in key4.db not happening on private
+                  components with AES_CBC (backed out again)
+  * bmo#1720235 - SSL handling of signature algorithms ignores
+                  environmental invalid algorithms.
+  * bmo#1721476 - sqlite 3.34 changed it's open semantics, causing
+                  nss failures.
+                  (removed obsolete nss-btrfs-sqlite.patch)
+  * bmo#1720230 - Gtest update changed the gtest reports, losing gtest
+                  details in all.sh reports.
+  * bmo#1720228 - NSS incorrectly accepting 1536 bit DH primes in FIPS mode
+  * bmo#1720232 - SQLite calls could timeout in starvation situations.
+  * bmo#1720225 - Coverity/cpp scanner errors found in nss 3.67
+  * bmo#1709817 - Import the NSS documentation from MDN in nss/doc.
+  * bmo#1720227 - NSS using a tempdir to measure sql performance not active
+- add nss-fips-stricter-dh.patch
+- updated existing patches with latest SLE
+
+-------------------------------------------------------------------
 Wed Aug 18 12:41:56 UTC 2021 - Hans Petter Jansson <hpj@suse.com>
 
 - Update nss-fips-constructor-self-tests.patch to fix crashes

@@ -1,7 +1,7 @@
-diff --git a/nss/lib/freebl/drbg.c b/nss/lib/freebl/drbg.c
-index 3ed1751..65fee9a 100644
---- a/nss/lib/freebl/drbg.c
-+++ b/nss/lib/freebl/drbg.c
+diff --git a/lib/freebl/drbg.c b/lib/freebl/drbg.c
+index 3ed1751..56a1a58 100644
+--- a/lib/freebl/drbg.c
++++ b/lib/freebl/drbg.c
 @@ -6,6 +6,8 @@
  #include "stubs.h"
  #endif
@@ -42,18 +42,17 @@ index 3ed1751..65fee9a 100644
          return PR_FAILURE; /* error is already set */
      }
      PORT_Assert(length == sizeof(block));
-@@ -199,6 +220,10 @@ prng_initEntropy(void)
+@@ -199,6 +220,9 @@ prng_initEntropy(void)
                 sizeof(globalrng->previousEntropyHash));
      PORT_Memset(block, 0, sizeof(block));
      SHA256_DestroyContext(&ctx, PR_FALSE);
-+
 +    coRNGInitEntropy.status = PR_SUCCESS;
 +    __sync_synchronize ();
 +    coRNGInitEntropy.initialized = 1;
      return PR_SUCCESS;
  }
  
-@@ -211,7 +236,7 @@ prng_getEntropy(PRUint8 *buffer, size_t requestLength)
+@@ -211,7 +235,7 @@ prng_getEntropy(PRUint8 *buffer, size_t requestLength)
      SHA256Context ctx;
      SECStatus rv = SECSuccess;
  
@@ -62,7 +61,44 @@ index 3ed1751..65fee9a 100644
          PORT_SetError(SEC_ERROR_LIBRARY_FAILURE);
          return SECFailure;
      }
-@@ -842,7 +867,21 @@ PRNGTEST_Generate(PRUint8 *bytes, unsigned int bytes_len,
+@@ -564,10 +588,34 @@ prng_freeRNGContext(RNGContext *rng)
+ SECStatus
+ RNG_RNGInit(void)
+ {
++    /* Don't have NSPR, so can't use the real PR_CallOnce. Implement a stripped
++     * down version. This is similar to freebl_RunLoaderOnce(). */
++    if (coRNGInit.initialized) {
++        return coRNGInit.status;
++    }
++    if (__sync_lock_test_and_set(&coRNGInit.inProgress, 1) != 0) {
++        /* Shouldn't have a lot of takers here, which is good
++         * since we don't have condition variables yet.
++         * 'initialized' only ever gets set (not cleared) so we don't
++         * need the traditional locks. */
++        while (!coRNGInit.initialized) {
++            sleep(1); /* don't have condition variables, just give up the CPU */
++        }
++        return coRNGInit.status;
++    }
++
+     /* Allow only one call to initialize the context */
+-    PR_CallOnce(&coRNGInit, rng_init);
++    coRNGInit.status = rng_init ();
++    __sync_synchronize ();
++    coRNGInit.initialized = 1;
++    if (coRNGInit.status != PR_SUCCESS)
++        return SECFailure;
++
+     /* Make sure there is a context */
+-    return (globalrng != NULL) ? SECSuccess : SECFailure;
++    coRNGInit.status = (globalrng != NULL) ? SECSuccess : SECFailure;
++    __sync_synchronize ();
++    coRNGInit.initialized = 1;
++    return coRNGInit.status;
+ }
+ 
+ /*
+@@ -842,7 +890,21 @@ PRNGTEST_Generate(PRUint8 *bytes, unsigned int bytes_len,
      }
      /* replicate reseed test from prng_GenerateGlobalRandomBytes */
      if (testContext.reseed_counter[0] >= RESEED_VALUE) {
