@@ -52,4 +52,16 @@
 - Remove temporary version override (forwarded request 903209 from glaubitz)</comment>
     <requestid>903216</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b0b124c0ab3da3dd785202d8220493cd</srcmd5>
+    <version>3.1.2</version>
+    <time>1631042504</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 3.1.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 917247 from glaubitz)</comment>
+    <requestid>917294</requestid>
+  </revision>
 </revisionlist>
