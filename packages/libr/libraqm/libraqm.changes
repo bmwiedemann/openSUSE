@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  7 12:08:27 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop libraqm-test.patch altogether, testsuite completes now
+  on TW and SLE15.
+- Remove unnecessary ldconfig calls.
+
+-------------------------------------------------------------------
+Tue Sep  7 07:27:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libraqm-fix-cursor_position-GB8a.patch: Fix test suite run,
+  patch cherry-picked from upstream commit 9badec46.
+
+-------------------------------------------------------------------
+Sun Aug 22 03:51:00 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Make libraqm-test.patch apply to all suse versions to fix build.
+- Use "pkgconfig(harfbuzz) >= 1.7.2" as build requirement.
+
+-------------------------------------------------------------------
 Fri Apr 02 11:20:21 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 0.7.1
