@@ -1,0 +1,17 @@
+diff -Nura plymouth-0.9.5~git20210406.e554475/systemd-units/plymouth-start.service.in plymouth-0.9.5~git20210406.e554475_new/systemd-units/plymouth-start.service.in
+--- plymouth-0.9.5~git20210406.e554475/systemd-units/plymouth-start.service.in	2021-04-06 19:53:40.000000000 +0800
++++ plymouth-0.9.5~git20210406.e554475_new/systemd-units/plymouth-start.service.in	2021-08-31 22:00:17.133637877 +0800
+@@ -6,12 +6,11 @@
+ Before=systemd-ask-password-plymouth.service
+ ConditionKernelCommandLine=!plymouth.enable=0
+ ConditionVirtualization=!container
+-IgnoreOnIsolate=true
+ 
+ [Service]
+ ExecStart=@PLYMOUTH_DAEMON_DIR@/plymouthd --mode=boot --pid-file=@plymouthruntimedir@/pid --attach-to-session
+ ExecStartPost=-@PLYMOUTH_CLIENT_DIR@/plymouth show-splash
+ Type=forking
+ RemainAfterExit=yes
+-KillMode=mixed
++KillMode=none
+ SendSIGKILL=no

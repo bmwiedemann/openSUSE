@@ -1,4 +1,254 @@
 -------------------------------------------------------------------
+Tue Aug 31 14:13:20 UTC 2021 - Cliff Zhao <qzhao@suse.com>
+
+- Add plymouth-keep-KillMode-none.patch: Keep the plymouth-start.service 
+  KillMode=none. The new mothod of "mixed" KillMode could not work
+  with current edition of systemd and will block system boot
+  (bsc#1177082 bsc#1184087 boo#1182145).
+- Update plymouth-dracut-path.patch: Make it could apply to prior 
+  update edition.
+
+-------------------------------------------------------------------
+Wed Aug 18 07:52:38 UTC 2021 - pandom79@gmail.com
+
+- Update to version 0.9.5~git20210406.e554475:
+  * systemd: Add plymouth-switch-root-initramfs.service to switch back to initramfs on shutdown
+  * main: Add a plymouthd-fd-escrow helper
+  * main: Dump debug log to plymouth-shutdown-debug.log on shutdown/reboot
+  * main: Cleanly quit on SIGTERM
+  * main: Only mark plymouthd as unkillable when running from the initrd
+  * ply-device-manager: Don't deactivate renderers from ply_device_manager_free ()
+  * details: Clear newly added text-display before replaying log messages
+  * text/tribar: Fix ply_boot_splash_hide () not clearing the terminal
+  * ply-text-display: Fix bottom pixels of fbcon not getting cleared
+  * ply-text-display: Only skip clearing the screen when tracing to a terminal
+  * main: Redirect stdio/stderr to null when tracing to a file
+  * ply-logger: Add a ply_is_tracing_to_terminal () helper
+  * main: Retain splash on on_show_splash() and on_hide_splash()
+  * ply-device-manager: Fix bad assertion
+  * two-step: Links against libintl.so if LNS
+  * The use of AM_GNU_GETTEXT_VERSION in configure.ac instructs autopoint to copy po/Makefile.in.in from the exact gettext version. It is fine if the version of gettext installed on the system has the same minor version number with the requested version, but it fails if you have a newer version of gettext because of the mismatch between autoconf macros and Makefile.in.in.
+  * ply-device-manager: Speed up DRM-connector probing
+  * ply-device-manager: add a verify_add_or_change() helper
+  * ply-device-manager: push udev_device_get_devnode call up into on_udev_event
+  * two-step: Fix unused variable compiler warning
+  * scripts: Remove new-object.sh
+  * two-step: Only create background_bgrt_fallback_image if use_firmware_background is set
+  * two-step: Always load the BGRT fallback image
+  * Fix BGRT fallback rendering
+  * systemd: switch to KillMode=mixed
+  * Use fallback image if BGRT is not supported
+  * client: Don't wait forever for a ping reply
+  * Revert "Don't wait forever for a ping reply."
+  * Don't wait forever for a ping reply.
+  * boot-server: Handle client disconnecting while trigger pending
+  * boot-server: Ref count the connections
+  * drm: Honor modes selected by the user through video= kernel cmdline argument
+  * use resolution of higher res monitor for window size
+  * Initialize the translations on start if they are available
+  * Use the correct key name for title and subtitle
+  * autogoo: use /proc/self/fd/0 instead of /dev/stdin
+  * configure: bump to 0.9.6
+  * Apply suggestion to .gitlab-ci.yml
+  * ci: Add a `distcheck` step
+  * Add CI pipeline for Plymouth
+  * configure: quiet a warning
+  * po: drop intltool usage
+  * docs: fix man page cross-reference
+  * Rename 'percent_done' to 'fraction_done'
+  * main: Don't bail out of load_settings if "Theme" is missing
+  * main: fix mode changing before splash is shown
+  * main: switch log file when switching mode
+  * two-step: Center message text within labels if labels are centered
+  * drm: Do not unnecessarily get output info twice
+  * ply-device-manager: Only consume one udev event at a time
+  * two-step: Do not jump to end-animation on halt/reboot if it is disabled
+  * Add RemainAfterExit=yes to plymouth's systemd service files
+  * two-step: Add UseEndAnimation setting
+  * script: add Image.Crop(x, y, width, height)
+  * ply-throbber: Do not redraw when we need to stop throbbing on free
+  * ply-keymap-icon: Do not draw on free
+  * ply-capslock-icon: Do not draw on free
+  * script: add missing unref() for system update func
+  * themes: Drop UseFirmwareBackground=true from spinner/bgrt firmware-upgrade settings
+  * Fix SetSystemUpdateFunction
+  * event-loop: Remove ply_trace calls around the disconnect handler
+  * event-loop: Fix debug-log "failed to delete fd # from epoll watch list" spam
+  * terminal-session: Drop unnecessary grantpt() call.
+  * build-goo: Remove vestigial remnants of old GDM integration code.
+  * main: Add state variable splash_is_becoming_idle
+  * configure: Update bug report URL.
+  * drm: Remove reset_scan_out_buffer_if_needed() prototype declaration
+  * drm: Remove unnecessary next_node helper variable
+  * two-step: Remove unnecessary next_node helper variable
+  * Allow running plymouth-populate-initrd in a cross-compiler environment
+  * throbgress: Remove the throbgress plugin
+  * drm: Remove explicit set_scan_out_buffer() from activate()
+  * drm: Mark buffer as clean in ply_renderer_head_new()
+  * two-step: Fix wrong horizontal position of bgrt logo on left-side-up LCD panels
+  * two-step: Change keyboard-indicator positioning to fixed offset below dialog
+  * themes: spinner/bgrt: Modify password dialog to match gnome 3.34 changes
+  * two-step: Remove workaround for upside-down panels
+  * drm: Keep hw-rotation on devices with upside down LCD panels
+  * drm: Add get_primary_plane_rotation() helper function
+  * systemd-ask-password-plymouth.service.in: Do not hardcode /run path to pid file
+  * scripts: Add a logrotate file for /var/log/boot.log
+  * drm: Install our fb after drawing to it
+  * drm: Delay installing our framebuffer until the first draw
+  * configure: Make runtimedir configurable
+  * ply-pixel-buffer: Fix bottom edge rendering of scaled buffers
+  * themes: Add images for keyboard indicator support to spinner and spinfinity
+  * two-step: Add Keyboard layout indicator support
+  * capslock-icon: Draw the icon on show
+  * libply-splash-graphics: Add new keymap-icon control
+  * scripts: Add keymap-render.py script
+  * renderer: Add ply_renderer_get_keymap function
+  * terminal: add ply_terminal_get_keymap function
+  * key-file: Add support for non ini style config files
+  * x11-render-plugin: Use GTK 3.22's method to get screen size to avoid deprecate warning in compile.
+  * space-flares: Fix compiler warning
+  * ply-utils: Drop unused ply_string_has_prefix helper
+  * main: Use ply_kernel_command_line_get_key_value where appropriate
+  * ply-utils: Add ply_kernel_command_line_get_key_value helper
+  * two-step: Merge show_password_prompt and show_prompt into 1 function
+  * twp-step: Remove superflous is_hidden / is_stopped checks from on_draw
+  * two-step: Cleanup stop_animation function
+  * two-step: Group progress_animaton init together with creation
+  * themes: Move spinifity from the throbgress splash to the two-step splash
+  * two-step: Add new UseAnimation setting
+  * two-step: Make progress-bar location and size configurable
+  * two-step: Fix progress-bar not hiding when it should
+  * two-step: Fix progress-bar not updating on normal boot
+  * two-step: Fold ply_progress_animation_hide call into view_start_end_animation
+  * two-step: Add a capslock indicator
+  * two-step: Use new ply_key_file_get_* helpers to read theme file
+  * libply: Add ply_key_file_get_long() function
+  * libply: Add ply_key_file_get_double() function
+  * libply: Add ply_key_file_get_raw_value() helper
+  * libply-splash-graphics: Add new capslock-icon control
+  * ply-renderer: Add ply_renderer_get_capslock_state function
+  * terminal: add ply_terminal_get_capslock_state function
+  * label: Properly deal with pixel-buffers with non-upright device_rotation
+  * ply-device-manager: De-activate and close renderer on device hot unplug
+  * script: Add image tile support.
+  * plymouthd.defaults: Bump default DeviceTimeout to 8 seconds
+  * Update tr.po
+  * two-step: bgrt: Add workaround for desktops which do not use the golden ratio
+  * Revert "Merge branch 'avoid_shutdown_failure_v2' into 'master'"
+  * ply-utils: Drop ply_fd_can_take_data and ply_fd_may_block function Since it is from a bygone time which is no longer in use.
+  * ply-utils: Get rid of unused old code, drop function ply_get_max_open_fds, ply_close_open_fds, ply_close_all_fds.
+  * scripts: update file plymouth.spec to integrate recent fixes.
+  * ply-systemd-units: Drop attach-session in systemd-units to avoid the failure of unmounting separate /var during poweroff.
+  * two-step: Deal with buggy firmware which does not pre-rotate the bgrt image
+  * Revert "Merge branch 'bugfix' into 'master'"
+  * ply-utils: Drop ply_fd_can_take_data and ply_fd_may_block function Since it is from a bygone time which is no longer in use.
+  * configure: bump so name
+  * ply terminal session: Drop function ply_terminal_session_execute and ply_terminal_session_open_console, Since this is a feature from a bygone time which is no longer in use without ply_terminal_session_run.
+  * ply terminal session: Drop ply_terminal_session_run, this is a feature from a bygone time which is no longer in use
+  * Regenerate plymouth.pot
+  * two-step: Add support for firmware-splashes with rotation status bits set
+  * Unify all code's vi format control. Update several file's vi format control line to make it easy to maintain.
+  * ply-text-display.c: Correct vi format line make vi can directly edit this file without errors and make it use 8 space tabs etc.
+  * Add a new firmware-upgrade mode for use by fwupd
+  * drm: Fix tiled mode detection
+  * main.c: Deprecate gdm transition signal
+  * themes: Update spinner and bgrt background settings
+  * ply-pixel-buffer: Fix right and bottom edge rendering of scaled buffers
+  * Add support for translating the user visible strings in some themes
+  * Prefix Title and Subtitle theme config keywords with an underscore
+  * Add new reboot and system-upgrade modes
+  * main: Remove private ply_mode_t
+  * two-step: Make ProgressBarShowPercentComplete a per mode setting
+  * plymouthd.defaults: Change default ShowDelay to 0
+  * ply-boot-splash: Do not add ply_boot_splash_update_progress timeout multiple times
+  * logging: Minor log-message fixes
+  * logging: Improve logging format
+  * themes: Update spinner and bgrt theme offline updates mode
+  * two-step: Add a per mode setting to suppress messages
+  * two-step: Add progress-bar support
+  * two-step: Add MessageBelowAnimation option
+  * two-step: Add support for specifying a title and sub-title in the theme file
+  * two-step: Add per mode settings
+  * two-step: Drop background_is_bgrt view_t member
+  * ply-progress-bar: Allow caller to specify the widgets width and height
+  * ply-progress-bar: Allow choosing fore- and back-ground color
+  * ply-progress-bar: Redraw on percentage update
+  * ply-label: Make sure get_width_of_control / get_height_of_control return correct values
+  * boot-server: fix type confusion when allocating connection object
+  * ply-device-manager: Handle change events for monitor hotplugging
+  * ply-device-manager: Consume all events in one go
+  * drm: Stop limiting preferred-mode picking to UEFI systems
+  * drm: Reset mode on display-port connected outputs with a bad link-status
+  * drm: Implement handle_change_event
+  * drm: Ensure heads are mapped before flushing them
+  * drm: Allow calling create_heads_for_active_connectors multiple times
+  * drm: Allow calling ply_renderer_head_add_connector with existing connector_id
+  * drm: Limit backend->resources lifetime to within query_device
+  * drm: Store and keep all the outputs in the backend
+  * drm: Add get_output_info helper function
+  * drm: Stop storing a pointer to drmModeConnector in ply_output_t
+  * drm: Stop keeing a drmModeConnector instance around
+  * drm: Refactor ply_renderer_head_add_connector and ply_renderer_head_new
+  * ply-renderer: Add ply_renderer_handle_change_event function
+  * ply-array: Add ply_array_contains_uint32_element function
+  * themes: Update spinner and bgrt diskcrypt dialog
+  * themes: spinner: Add watermark alignment settings
+  * themes: bgrt: Remove duplicate images
+  * plymouth-populate-initrd: Don't assume the ImageDir is the theme-dir
+  * two-step: Make clearing the dialog-background when using the firmware background optional
+  * two-step: Add support for non center alignment of the (diskcrypt) dialog
+  * two-step: Make the box image surrounding the unlock dialog optional
+  * two-step: Rename UseBGRT to UseFirmwareBackground
+  * libply: Add ply_key_file_get_bool function
+  * two-step: Use plymouth_strtod
+  * libply: Add ply_strtod helper
+  * ply-keyboard: Fix compiler warning
+  * device-manager: free keyboards when deactivating a renderer
+  * keyboard: add helper to get the keyboard's renderer, if applicable
+  * drm: Pick a controller for unconfigured connectors
+  * drm: Drop crtcs for clones for which we've picked different modes
+  * drm: More connector enumeration refactoring
+  * drm: Store tiled and rotation in ply_output_t
+  * drm: Refactor create_heads_for_active_connectors
+  * drm: Directly store the mode instead of the mode_index
+  * drm: Drop unused encoder_id
+  * two-step: Do not rotate bgrt background image for upside-down panels
+  * themes: Add new BGRT theme, using the firmware boot splash as background
+  * two-step: bgrt: Deal with quirky firmwares
+  * two-step: Add ACPI BGRT extension support
+  * two-step: Speed up background-tile drawing on HiDPI screens
+  * two-step: Use a pixel-buffer instead of an image for the view's background
+  * ply-pixel-display: Add ply_pixel_display_get_device_scale() function
+  * ply-pixel-buffer: Add ply_pixel_buffer_rotate_upright helper
+  * ply-pixel-buffer: Add ply_pixel_buffer_get/set_device_rotation helpers
+  * ply-pixel-buffer: Fix marking buffers as opaque when doing a solid fill
+  * ply-pixel-buffer: Fix fill_with_buffer fastpath when device_scale != 1
+  * drm: Implement ply_renderer_get_panel_properties
+  * ply-renderer: Add ply_renderer_get_panel_properties function
+  * ply-image: Add support for loading BMPs
+  * ply-image: Do not assume all files are PNGs
+  * two-step: Fix crash asking for password with multiple heads
+  * spinner theme: update
+  * two-step: Fix animation not starting on later added heads
+  * ply-device-manager: Fix race causing undesired creation of non-gfx devs
+  * logger: Add a separator between different boot logs
+  * systemd-units: Also add "ConditionVirtualization=!container" in systemd-ask-password-plymouth.path.in
+  * configure: bump to 0.9.5
+  * drm: Use preferred mode for outputs instead of current mode
+  * drm: Refactor ply_renderer_connector_get_rotation
+  * drm: Reset LUT/gamma table before the first drmModeSetCrtc call
+  * libply: Move kernel commandline parsing functions to libply/ply-utils
+  * throbber: Don't skip last frame when waiting for end.
+  * boot-server: free the argument and triggers
+  * script: fix various memory leaks
+  * key-file: ply_key_file_get_value returns duplicated memory, don't leak
+  * event-loop: fix leak in error path
+  * boot-splash: fix memory leak in error path
+  * populate-initrd: drop unused local variable
+  * device-manager: don't watch for udev events when deactivated
+  * main: ensure tty is closed on deactivate
+
+-------------------------------------------------------------------
 Fri May 14 14:19:22 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Do not own /usr/share/locale (owned by filesystem):

@@ -1,7 +1,7 @@
-diff -Nura plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in
---- plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.in	2020-04-11 14:22:34.000000000 +0800
-+++ plymouth-0.9.5+git20200921+20778f2_new/scripts/plymouth-populate-initrd.in	2020-10-02 21:34:54.588764052 +0800
-@@ -414,8 +414,8 @@
+diff -Nura plymouth-0.9.5~git20210406.e554475/scripts/plymouth-populate-initrd.in plymouth-0.9.5~git20210406.e554475_new/scripts/plymouth-populate-initrd.in
+--- plymouth-0.9.5~git20210406.e554475/scripts/plymouth-populate-initrd.in	2021-08-31 21:58:26.153527871 +0800
++++ plymouth-0.9.5~git20210406.e554475_new/scripts/plymouth-populate-initrd.in	2021-08-31 22:25:36.360335610 +0800
+@@ -415,8 +415,8 @@
  ddebug "Running with PLYMOUTH_LDD_PATH=$PLYMOUTH_LDD_PATH"
  
  mkdir -p ${INITRDDIR}${PLYMOUTH_DATADIR}/plymouth/themes
@@ -9,6 +9,6 @@ diff -Nura plymouth-0.9.5+git20200921+20778f2/scripts/plymouth-populate-initrd.i
 -inst ${PLYMOUTH_CLIENT_PATH} $INITRDDIR
 +inst ${PLYMOUTH_DAEMON_PATH} $INITRDDIR /usr/sbin/plymouthd
 +inst ${PLYMOUTH_CLIENT_PATH} $INITRDDIR /usr/bin/plymouth
+ inst ${PLYMOUTH_DRM_ESCROW_PATH} $INITRDDIR
  inst ${PLYMOUTH_DATADIR}/plymouth/themes/text/text.plymouth $INITRDDIR
  inst ${PLYMOUTH_PLUGIN_PATH}/text.so $INITRDDIR
- inst ${PLYMOUTH_DATADIR}/plymouth/themes/details/details.plymouth $INITRDDIR

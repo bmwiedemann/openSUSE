@@ -1,6 +1,6 @@
-diff -Nura plymouth-0.9.5+git20200921+20778f2/themes/spinfinity/Makefile.am plymouth-0.9.5+git20200921+20778f2_new/themes/spinfinity/Makefile.am
---- plymouth-0.9.5+git20200921+20778f2/themes/spinfinity/Makefile.am	2020-04-11 14:22:34.000000000 +0800
-+++ plymouth-0.9.5+git20200921+20778f2_new/themes/spinfinity/Makefile.am	2020-11-26 22:11:57.472271985 +0800
+diff -Nura plymouth-0.9.5~git20210406.e554475/themes/spinfinity/Makefile.am plymouth-0.9.5~git20210406.e554475_new/themes/spinfinity/Makefile.am
+--- plymouth-0.9.5~git20210406.e554475/themes/spinfinity/Makefile.am	2020-04-11 14:22:34.000000000 +0800
++++ plymouth-0.9.5~git20210406.e554475_new/themes/spinfinity/Makefile.am	2020-11-26 22:11:57.472271985 +0800
 @@ -54,4 +54,3 @@
  EXTRA_DIST = spinfinity.plymouth.in
  

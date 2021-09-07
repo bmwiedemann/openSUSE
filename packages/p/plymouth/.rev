@@ -876,4 +876,12 @@ plymouth-branding-openSUSE (forwarded request 114125 from gary_lin)</comment>
     <comment></comment>
     <requestid>893332</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>d8054130031b37a5540c16ccdd510ab2</srcmd5>
+    <version>0.9.5~git20210406.e554475</version>
+    <time>1631042017</time>
+    <user>dimstar_suse</user>
+    <comment>1. Add plymouth-keep-KillMode-none.patch: Keep the plymouth-start.service KillMode=none. The new mothod of &quot;mixed&quot; KillMode could not work with current edition of systemd and will block system boot (bsc#1177082 bsc#1184087 boo#1182145). and update plymouth-dracut-path.patch: Make it could apply to prior update edition. 2, Update to version 0.9.5~git20210406.e554475.</comment>
+    <requestid>916133</requestid>
+  </revision>
 </revisionlist>

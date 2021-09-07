@@ -21,13 +21,9 @@
 %bcond_with x11_renderer
 
 %global soversion 5
-%define plymouthdaemon_execdir %{_sbindir}
-%define plymouthclient_execdir %{_bindir}
-%define plymouth_libdir %{_libdir}
-%define plymouth_initrd_file /boot/initrd-plymouth.img
 
 Name:           plymouth
-Version:        0.9.5+git20201026+53c83cc
+Version:        0.9.5~git20210406.e554475
 Release:        0
 Summary:        Graphical Boot Animation and Logger
 License:        GPL-2.0-or-later
@@ -49,6 +45,8 @@ Patch4:         plymouth-no-longer-modify-conf-to-drop-isopensuse-macro.patch
 Patch6:         plymouth-disable-fedora-logo.patch
 # PATCH-FIX-OPENSUSE plymouth-only_use_fb_for_cirrus_bochs.patch bnc#888590 boo#1172028 bsc#1181913 fvogt@suse.com -- force fb for cirrus and bochs, force drm otherwise. replace removal of framebuffer driver and plymouth-ignore-cirrusdrm.patch with single patch.
 Patch7:         plymouth-only_use_fb_for_cirrus_bochs.patch
+# PATCH-FIX-OPENSUSE plymouth-keep-KillMode-none.patch bsc#1177082 bsc#1184087 boo#1182145 qzhao@suse.com -- Keep the plymouth-start.service KillMode=none.
+Patch8:         plymouth-keep-KillMode-none.patch
 # PATCH-FIX-UPSTREAM 0001-Add-label-ft-plugin.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
 Patch1000:      0001-Add-label-ft-plugin.patch
 # PATCH-FIX-UPSTREAM 0002-Install-label-ft-plugin-into-initrd-if-available.patch boo#959986 fvogt@suse.com -- add ability to output text in initrd needed for encryption.
@@ -523,23 +521,18 @@ if [ $1 -eq 0 ]; then
 fi
 
 %files
-%license COPYING
-%doc AUTHORS NEWS README
+%dir %{_sysconfdir}/plymouth
+%ghost %{_sysconfdir}/plymouth/plymouthd.conf
 %dir %{_datadir}/plymouth
 %dir %{_datadir}/plymouth/themes
 %dir %{_datadir}/plymouth/themes/details
 %dir %{_datadir}/plymouth/themes/text
-%dir %{_localstatedir}/lib/plymouth
+%dir %{_sharedstatedir}/plymouth
 %dir %{_libdir}/plymouth
 %dir %{_libdir}/plymouth/renderers
-%dir %{_sysconfdir}/plymouth
-%ghost %{_sysconfdir}/plymouth/plymouthd.conf
-/etc/logrotate.d/bootlog
-%{plymouthdaemon_execdir}/plymouthd
-%{plymouthclient_execdir}/plymouth
-%if !0%{?usrmerged}
-/bin/plymouth
-%endif
+%{_sysconfdir}/logrotate.d/bootlog
+%{_bindir}/plymouth
+%{_sbindir}/plymouthd
 %{_libdir}/plymouth/details.so
 %{_libdir}/plymouth/text.so
 %{_libdir}/plymouth/renderers/drm*
@@ -554,6 +547,9 @@ fi
 %ghost %{_localstatedir}/lib/plymouth/boot-duration
 %{_unitdir}/*
 %ghost %{_localstatedir}/log/boot.log
+%{_libexecdir}/plymouth/plymouthd-fd-escrow
+%doc AUTHORS NEWS README
+%license COPYING
 
 %files lang -f %{name}.lang
 
@@ -565,8 +561,8 @@ fi
 %{_libexecdir}/plymouth/plymouth-generate-initrd
 
 %files devel
-%{plymouth_libdir}/libply.so
-%{plymouth_libdir}/libply-splash-core.so
+%{_libdir}/libply.so
+%{_libdir}/libply-splash-core.so
 %{_libdir}/libply-boot-client.so
 %{_libdir}/libply-splash-graphics.so
 %{_libdir}/pkgconfig/ply-splash-core.pc
@@ -578,13 +574,13 @@ fi
 %{_libdir}/libply-boot-client.so.%{soversion}*
 
 %files -n libply-splash-core%{soversion}
-%{plymouth_libdir}/libply-splash-core.so.%{soversion}*
+%{_libdir}/libply-splash-core.so.%{soversion}*
 
 %files -n libply-splash-graphics%{soversion}
 %{_libdir}/libply-splash-graphics.so.%{soversion}*
 
 %files -n libply%{soversion}
-%{plymouth_libdir}/libply.so.%{soversion}*
+%{_libdir}/libply.so.%{soversion}*
 
 %files scripts
 %dir %{_libexecdir}/plymouth
