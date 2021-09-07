@@ -285,4 +285,33 @@
     - Updated HOWTO.INSTALL to mention Makefile.local.</comment>
     <requestid>893058</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>df4ee496a8f0a9cf6471f415696c70bd</srcmd5>
+    <version>2.14.0.0</version>
+    <time>1631042498</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.14.0.0:
+  * The :-separated default CALCRC value has been reversed.
+    The default CALCRC was:
+    ${CALC_SHAREDIR}/startup:~/.calcrc:./.calcinit
+    The default CALCRC is now:
+    ./.calcinit:~/.calcrc:${CALC_SHAREDIR}/startup
+    See &quot;help environment&quot; for details.
+  * Added engineering mode as per a GitHub pull request:
+    ; config(&quot;mode&quot;,&quot;eng&quot;),
+    ; 10^41
+    	100e39
+    or for example:
+    ; base(1000),
+    ; 2^23209-1
+  	~402.87411577898877818187e6984
+    For more information see: help base
+  * Added regression test code for engineering mode.  Improved and
+    expanded regression test code related to the base() and base2()
+    builtin functions.
+  * Fixed a critical bug in the above mentioned pull request where
+    a call to base2(1000) would make calc unstable and likely to
+    dump core.</comment>
+    <requestid>917248</requestid>
+  </revision>
 </revisionlist>

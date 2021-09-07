@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep  7 10:11:36 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.14.0.0:
+  * The :-separated default CALCRC value has been reversed.
+    The default CALCRC was:
+    ${CALC_SHAREDIR}/startup:~/.calcrc:./.calcinit
+    The default CALCRC is now:
+    ./.calcinit:~/.calcrc:${CALC_SHAREDIR}/startup
+    See "help environment" for details.
+  * Added engineering mode as per a GitHub pull request:
+    ; config("mode","eng"),
+    ; 10^41
+    	100e39
+    or for example:
+    ; base(1000),
+    ; 2^23209-1
+  	~402.87411577898877818187e6984
+    For more information see: help base
+  * Added regression test code for engineering mode.  Improved and
+    expanded regression test code related to the base() and base2()
+    builtin functions.
+  * Fixed a critical bug in the above mentioned pull request where
+    a call to base2(1000) would make calc unstable and likely to
+    dump core.
+
+-------------------------------------------------------------------
 Fri May 14 08:52:48 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.13.0.1:
