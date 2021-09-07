@@ -1,7 +1,7 @@
 #
 # spec file for package pyradio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2019-2020 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           pyradio
-Version:        0.8.7.1
+Version:        0.8.9.9
 Release:        0
 Summary:        Curses based internet radio player
 License:        MIT
@@ -51,7 +51,7 @@ install -Dm0644 pyradio.1 %{buildroot}%{_mandir}/man1/pyradio.1
 %python_expand %fdupes %{buildroot}%{python3_sitelib}/
 
 %files
-%doc Changelog README.md
+%doc Changelog radio-browser.md README.md
 %license LICENSE
 %{_bindir}/pyradio
 %{_mandir}/man1/pyradio.1%{?ext_man}
