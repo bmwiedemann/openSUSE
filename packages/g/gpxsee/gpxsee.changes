@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep  5 16:29:19 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.6
+  * Added support for downloading DEM files.
+  * Fixed map tiles/files download timeout handling.
+  * Various GUI polishing (mostly macOS).
+
+-------------------------------------------------------------------
 Sun Aug 22 17:53:18 CEST 2021 - tumic@cbox.cz
 
 - Update to version 9.5
