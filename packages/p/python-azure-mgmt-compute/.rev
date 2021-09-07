@@ -169,4 +169,15 @@
     CHANGELOG.md file provided with this package (forwarded request 907986 from glaubitz)</comment>
     <requestid>908001</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d5a6243b7a6801c98dea90e2a4c0e508</srcmd5>
+    <version>23.0.0</version>
+    <time>1631042500</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 23.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917268 from glaubitz)</comment>
+    <requestid>917281</requestid>
+  </revision>
 </revisionlist>
