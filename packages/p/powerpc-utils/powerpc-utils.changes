@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  3 18:04:46 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Optimize lsdevinfo filtering to prevent LPM timeouts (bsc#1189571 LTC#193419).
+  + lsdevinfo-optimize-criteria-filtering.patch
+
+-------------------------------------------------------------------
 Fri Jul 30 07:39:59 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 1.3.9 (jsc#SLE-18645, bsc#1189015).

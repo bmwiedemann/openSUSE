@@ -28,6 +28,7 @@ Source1:        nvsetenv
 Patch1:         powerpc-utils-lsprop.patch
 Patch2:         ofpathname_powernv.patch
 Patch4:         libvirt-service-dep.patch
+Patch5:         lsdevinfo-optimize-criteria-filtering.patch
 Patch14:        fix_kexec_service_name_for_suse.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
