@@ -18,7 +18,7 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without python2
+%define skip_python2 1
 Name:           python-contextlib2
 Version:        21.6.0
 Release:        0
@@ -31,11 +31,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-# SECTION test requirements
-%if %{with python2}
-BuildRequires:  python-unittest2
-%endif
-# /SECTION
 %python_subpackages
 
 %description

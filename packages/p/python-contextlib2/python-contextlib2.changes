@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Aug 31 20:50:33 UTC 2021 - Torsten Gruner <simmphonie@opensuse.org>
+
+- Remove Python 2 support. Supported Python versions are currently 3.6+
+
+-------------------------------------------------------------------
 Thu Jul 22 09:59:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 21.6.0:
