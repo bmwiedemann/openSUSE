@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep  5 04:48:14 UTC 2021 - saku nix <ssakuragi2@hotmail.com>
+
+- Version update to 1.12
+  * New graphics for HP and MP status bars
+  * Reworked art for the Cleave power
+  * Cleave power radius reduced to closer match its artwork
+  * Reduced the strength and radius of Rakk’s freeze attack
+  * Fixed the Goblin Thief being able to steal potions from a
+    Summoned Zombie
+  * Reduced the hitbox for spike traps
+  * Greatly reduced the damage for spike traps. In exchange, the
+    traps now inflict bleeding.
+  * New alchemy ingredient: Mushrooms
+  * Added 4 new potion recipes
+  * Overall reduced drop rates for alchemy items
+  * Added Alchemy quest
+  * Added animations for immunity and ice-based slow status effects
+  * Redesigned the Family Crypt map and quest
+  * Redesigned the Nazia Mines maps and quest
+  * Redesigned the Torture Chambers map and quest (again)
+  * Mortar & Pestle can now be placed on the action bar
+  * All quest items can be stored in the player’s private 
+
+-------------------------------------------------------------------
 Sun Jul 28 05:19:19 UTC 2019 - Max Mitschke <maxmitschke@fastmail.com>
 
 - Version update to 1.11 
@@ -163,4 +187,3 @@ Wed Dec 23 00:00:00 UTC 2011 - dap.darkness@gmail.com
   * New Grassland tileset
   * New questing areas: Frontier and Living Bones
   * Redesigned creatures are tougher and more varied
-

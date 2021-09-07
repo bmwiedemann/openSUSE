@@ -39,4 +39,135 @@
     <comment></comment>
     <requestid>719371</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>485974831e87a16ec1ca942bd2e0fa4b</srcmd5>
+    <version>1.12</version>
+    <time>1631042522</time>
+    <user>dimstar_suse</user>
+    <comment>- Version update to 1.12
+  * New graphics for HP and MP status bars
+  * Reworked art for the Cleave power
+  * Cleave power radius reduced to closer match its artwork
+  * Reduced the strength and radius of Rakk’s freeze attack
+  * Fixed the Goblin Thief being able to steal potions from a
+    Summoned Zombie
+  * Reduced the hitbox for spike traps
+  * Greatly reduced the damage for spike traps. In exchange, the
+    traps now inflict bleeding.
+  * New alchemy ingredient: Mushrooms
+  * Added 4 new potion recipes
+  * Overall reduced drop rates for alchemy items
+  * Added Alchemy quest
+  * Added animations for immunity and ice-based slow status effects
+  * Redesigned the Family Crypt map and quest
+  * Redesigned the Nazia Mines maps and quest
+  * Redesigned the Torture Chambers map and quest (again)
+  * Mortar &amp; Pestle can now be placed on the action bar
+  * All quest items can be stored in the player’s private 
+- Version update to 1.11 
+  * Items that couldn't be stashed in the last update can not be
+    put in the private stash.
+  * Salted Field: moved chest to the south end of the map to prevent
+    easy farming.
+  * Updated translations for Belarusian, German, Hungarian, and 
+    Ukranian.
+- Version update to 1.10 
+  * Fixed an oversight that allowed easy farming of the Torture Chambers boss 
+    and loot chests.
+  * Made it so that potions and scrolls can not be stashed. This fixes an 
+    exploit where players could utilize a low level character to get these 
+    items for cheap.
+  * Added new attack and interact cursors.
+  * Added sound effect and cursors for indicating low health.
+- Version update to 1.09.01
+  * Fixed main weapon layer order when hero is facing east.
+  * Updated Ukranian translations
+- Version update to 1.09
+  * Add auto-equip checkbox to the Inventory menu.
+  * Add interface option buttons to the actionbar.
+  * Added script font for Cyrillic languages.
+  * Fix the “Locked Out” quest not appearing in the completed 
+    quests list.
+  * Made changes to the Wizard’s Tower: Laboratory map to prevent 
+    attacking Metzger from outside the intended range.
+  * Added Catalan translations
+  * Updated translations for German, Scottish Gaelic, 
+    Brazilian Portueguese, Ukranian, Vietnamese
+- Updated location of flare-game data directory to follow
+  packaging standards
+- Added CMake as a build requirement with same build params as
+  flare package. This is to make build process similar between
+  flare and flare-game.
+- Version update to 1.08 
+- Version update to 1.06 
+- Version update to 1.0 release:
+  * No real upstream changelog but first non-alpha release supporting
+    big campain mode
+- Cleanup a bit
+- Readme states: data files are released under CC-BY-SA 3.0.
+  Later versions are permitted. Adapted the license field.
+- Prevented openSUSE 13.1' error (invalid-license CC-BY-SA-4.0).
+- Prevented SLE 11 build.
+- Version bump to 0.20:
+  * no upstream changelog.
+- Tarball &amp; spec for data subpackage.
+- License, *Requires, %description were fixed up.
+- Version bump to 0.19:
+  * Lots of various improvements. See ChangeLog
+- Remove _service and use rather tarball next to pkg with possiblity to
+  local service run of download_files
+- Use cmake macro and overall cleanup of .spec
+- 0.18 release
+  * 10 Equipment Slots, up from 4 (and easily configurable)
+  * Starting &quot;Class&quot; choice (beginner's power/item kit)
+  * Environmental/Ambient Sounds on maps
+  * Much improved handling of Animations, Effects, and Sounds
+  * New Powers: Stealth, Traps, Thrown Weapons
+  * New Item Bonuses: XP gain, Gold Find, Item Find, and more
+  * Improved support for various input devices
+- Service source_validator was enabled.
+- Spec header was fixed up according to distro policy.
+- Sources were moved from GitHub to SourceForge.
+- Spec was fixed up via `spec-cleaner`.
+- Requires hicolor-icon-theme not to pack unnecessary dirs.
+- Python became recommended, not required.
+- xgettext.py &amp; readme.txt might be executable.
+- 0.17.1 release
+  * Instant-sell items now go to the vendor Buyback tab
+  * Disable New/Load buttons if there is no story mod loaded
+  * Prevent crash when binding higher number mouse buttons
+  * Prevent crash when loading a map with missing layers
+  * Add helpful tooltips when play buttons are disabled
+  * Removed -flto compiler flag from default build script
+- 0.17 release
+  * All menus now easy to mod/reskin
+  * New Powers tree with traditional tabs and spendable points
+  * Shared Stash! Collect epics, hoard resist gear, or buff your new characters
+  * Warp Zone - fast-travel map to get around the alpha demo campaign
+- Clean section was removed.
+- Url was updated.
+- 0.16 release
+  * Improved enemy pathfinding, including flying creatures
+  * Summon or transform into enemies!
+  * Config menu including keybindings, mods, and more
+  * Orthogonal map support
+- git
+  * Configuration menu was implemented
+- Build improvements
+  * Cmake build type became &quot;RelWithDebInfo&quot;
+  * Cmake verbose makefile became &quot;True&quot;
+  * Binary path fixing patch was replaced by cmake option.
+  * Rpm optimisation flags were enabled.
+- 0.15.1 release
+  * Fixes a couple issues (build flags, random enemy groups)
+- 0.15 release
+  * Now using TTF for fonts
+  * All game data can be overwritten/added via mods
+  * Translation support for the core engine and mods
+  * New Grassland tileset
+  * New questing areas: Frontier and Living Bones
+  * Redesigned creatures are tougher and more varied
+</comment>
+    <requestid>917345</requestid>
+  </revision>
 </revisionlist>
