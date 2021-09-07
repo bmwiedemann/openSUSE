@@ -177,4 +177,12 @@
 - Refresh {Build,}Requires, adding pytest-asyncio and proto-plus.</comment>
     <requestid>916954</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b609056b3ca7243d89e734aaae8447bc</srcmd5>
+    <version>2.0.1</version>
+    <time>1631042498</time>
+    <user>dimstar_suse</user>
+    <comment>- To avoid a build cycle, switch to multibuild.</comment>
+    <requestid>917253</requestid>
+  </revision>
 </revisionlist>

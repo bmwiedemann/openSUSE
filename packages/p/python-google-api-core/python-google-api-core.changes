@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  7 11:04:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- To avoid a build cycle, switch to multibuild. 
+
+-------------------------------------------------------------------
 Mon Sep  6 05:22:42 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.0.1:

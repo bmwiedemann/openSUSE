@@ -17,6 +17,14 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
 %define         skip_python2 1
 Name:           python-google-api-core
 Version:        2.0.1
@@ -34,10 +42,13 @@ BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module requests >= 2.18.0}
 BuildRequires:  %{python_module setuptools >= 40.3.0}
 # START TESTING SECTION
+%if %{with test}
+BuildRequires:  %{python_module google-api-core >= %{version}}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module proto-plus}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
+%endif
 # END TESTIN SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -62,15 +73,21 @@ Core Library for Google Client Libraries.
 %python_build
 
 %install
+%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
 %check
+%if %{with test}
 %pytest
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/*
+%endif
 
 %changelog
