@@ -81,4 +81,12 @@
     <comment>- Add _constraints with default 4GB min disk space (forwarded request 823754 from michel_mno)</comment>
     <requestid>823783</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5a007cc6e9a3335474ab1bb83343e27c</srcmd5>
+    <version>0.6.2</version>
+    <time>1631042521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917334</requestid>
+  </revision>
 </revisionlist>
