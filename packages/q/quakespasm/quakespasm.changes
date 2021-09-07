@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Sep  7 07:09:02 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.1
+  * Fix lightmap issues after vkQuake surface mark/cull
+    optimizations merge.
+
+-------------------------------------------------------------------
+Fri Sep  3 22:13:39 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.94.0
+  *  Initial support for playing the 'Quake 2021 re-release'
+     content.
+  *  Fix rendering bug when cl_bobcycle was set to zero.
+  *  Fixed buffer overflow with large char skybox names.
+  *  Fixed a missing MAXALIASFRAMES bounds check.
+  *  OpenGL: workaround Intel UHD 600 driver bug.
+  *  OpenGL: merged surface mark & cull optimizations from vkQuake.
+  *  Compensate viewmodel distortion at fov > 90.
+  *  Raised MAX_GLTEXTURES limit from 2048 to 4096 for now.
+  *  Changed 'model has a skin taller than 480' error into a
+     warning.
+  *  Reject lit files if they're the wrong size (eg hipnotic/
+     start.bsp vs id1/start.lit or just a bsp that no longer has
+     any coloured lits, etc)
+  *  External ent files are now versioned using 4 digit crc of the
+     original map's ents, like e1m1@c49d.ent, which is much safer.
+     The old method (e.g. e1m1.ent) still works but isn't
+     recommended.
+  *  Support for external vis files.
+  *  Save: remove CR/LFs from level name to avoids broken saves,
+     e.g.  with autumn_sp map.
+  *  Music: improvements to mp3 tag detection / skipping.
+  *  Music: umx loader fix for malformed / crafted files.
+  *  New console command music_jump: Jump to given order in music,
+     like Unreal's music change - only for module (tracker) music.
+  *  Updated third-party libraries (music codecs, SDL, etc.) Other
+     minor fixes, tidy-ups and protability tweaks.
+
+-------------------------------------------------------------------
 Sat Feb 20 10:11:15 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Specfile cleanup
