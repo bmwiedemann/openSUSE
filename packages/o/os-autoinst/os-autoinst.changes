@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 07 16:12:58 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1630918490.b349ba2a:
+  * consoles::sshVirtsh: Remove the unused argument
+  * consoles::sshVirtsh: Remove unnecessary second argument
+  * Allow more modern perl style with consistent "use Mojo::Base -strict"
+  * t: Add more low-level python module test with more details
+  * consoles::sshVirtsh: Extract methods for copy_image variants
+  * consoles::sshVirtsh: Extract helper methods in consoles::sshVirtsh
+  * consoles::sshVirtsh: Extract methods for create_disk/copy_image
+  * Use signatures in consoles::sshVirtsh
+  * Allow overriding Mojolicious limits for the file upload
+  * Add test for upload exceeding error
+  * Fix error handling when creating target directory for upload
+  * Add tests for upload API
+  * Fix render calls in error handling of asset upload
+  * tests: Verify that serialization works after cloning
+  * Fix incorrect serialization attempts of paths leading to error
+
+-------------------------------------------------------------------
 Fri Aug 27 01:33:04 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1629993316.ad40aced:
