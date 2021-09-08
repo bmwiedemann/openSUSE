@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package slurm
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -87,6 +87,10 @@ ExclusiveArch:  do_not_build
 %define build_slurmrestd 1
 %endif
 
+%if 0
+%define have_netloc 1
+%endif
+
 %if 0%{?is_opensuse} && 0%{!?sle_version:1}
 %define is_factory 1
 %endif
@@ -131,6 +135,7 @@ Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
 Patch3:         load-pmix-major-version.patch
+Patch100:       Fix-statement-condition-in-netloc-autoconf-macro.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -542,6 +547,7 @@ Contains also cray specific documentation.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch100 -p1
 %if 0%{?python_ver} < 3
 # Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
 mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3
@@ -556,11 +562,12 @@ autoreconf
            --without-rpath \
            --without-datawarp \
            --with-shared-libslurm \
-           --with-pmix=/usr/ \
+           %{?with_pmix:--with-pmix=/usr/} \
 %if 0%{?build_slurmrestd}
            --enable-slurmrestd \
 %endif
 	   --with-yaml \
+%{!?have_netloc:--without-netloc} \
            --sysconfdir=%{_sysconfdir}/%{pname} \
 %{!?have_hdf5:--without-hdf5} \
 %{!?have_lz4:--without-lz4} \
@@ -727,6 +734,7 @@ EOF
 # Temporary - remove when build is fixed upstream.
 %if !0%{?build_slurmrestd}
 rm -f %{buildroot}/%{_mandir}/man8/slurmrestd.*
+rm -f %{buildroot}/%{_libdir}/slurm/openapi_*
 %endif
 
 %check
@@ -924,6 +932,7 @@ exit 0
 %{_bindir}/sshare
 %{_bindir}/sstat
 %{_bindir}/strigger
+%{?have_netloc:%{_bindir}/netloc_to_topology}
 %{_sbindir}/slurmctld
 %{_sbindir}/slurmsmwd
 %dir %{_libdir}/slurm/src
@@ -1102,8 +1111,6 @@ exit 0
 %{_libdir}/slurm/mpi_pmix_v3.so
 %endif
 %{_libdir}/slurm/node_features_helpers.so
-%{_libdir}/slurm/openapi_dbv0_0_37.so
-%{_libdir}/slurm/openapi_v0_0_37.so
 %{_libdir}/slurm/power_none.so
 %{_libdir}/slurm/preempt_none.so
 %{_libdir}/slurm/preempt_partition_prio.so
@@ -1182,6 +1189,8 @@ exit 0
 %{?comp_at}
 %{_sbindir}/slurmrestd
 %{_mandir}/man8/slurmrestd.*
+%{_libdir}/slurm/openapi_dbv0_0_37.so
+%{_libdir}/slurm/openapi_v0_0_37.so
 %{_libdir}/slurm/openapi_dbv0_0_36.so
 %{_libdir}/slurm/openapi_v0_0_35.so
 %{_libdir}/slurm/openapi_v0_0_36.so

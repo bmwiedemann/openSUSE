@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  6 15:34:06 UTC 2021 - Egbert Eich <eich@suse.com>
+
+- Fix-statement-condition-in-netloc-autoconf-macro.patch:
+  Fix netloc check, reestablish netloc disable code.
+- Make configure arg '--with-pmix' conditional.
+- Move openapi plugins to package slurm-restd.
+
+-------------------------------------------------------------------
 Thu Sep  2 13:19:33 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - updated to 21.08.1, major changes:

@@ -1,0 +1,42 @@
+From 1f8be9ffb586b8bc3e5c7bf45cef16db5bf9b479 Mon Sep 17 00:00:00 2001
+From: Tim McMullan <mcmullan@schedmd.com>
+Date: Thu, 26 Aug 2021 16:58:37 -0600
+Subject: [PATCH] Fix statement condition in netloc autoconf macro.
+
+Includes output of running 'autoreconf -i'.
+Continuation of d7c089ec63.
+
+Bug 12370
+---
+ NEWS                  | 1 +
+ auxdir/x_ac_netloc.m4 | 2 +-
+ configure             | 2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+--- a/auxdir/x_ac_netloc.m4
++++ b/auxdir/x_ac_netloc.m4
+@@ -21,7 +21,7 @@ AC_DEFUN([X_AC_NETLOC],
+     [AS_IF([test "x$with_netloc" != xno && test "x$with_netloc" != xyes],
+            [_x_ac_netloc_dirs="$with_netloc"])])
+ 
+-  if [test "$with_netloc" = xno]; then
++  if [test "x$with_netloc" = xno]; then
+     AC_MSG_WARN([support for netloc disabled])
+   else
+     AC_CACHE_CHECK(
+diff --git a/configure b/configure
+index 3dbe39b9b8..d563cfcd56 100755
+--- a/configure
++++ b/configure
+@@ -24168,7 +24168,7 @@ fi
+ fi
+ 
+ 
+-  if test "$with_netloc" = xno; then
++  if test "x$with_netloc" = xno; then
+     { $as_echo "$as_me:${as_lineno-$LINENO}: WARNING: support for netloc disabled" >&5
+ $as_echo "$as_me: WARNING: support for netloc disabled" >&2;}
+   else
+-- 
+2.26.2
+
