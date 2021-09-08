@@ -17,7 +17,7 @@
 
 
 Name:           xdg-utils
-Version:        1.1.3+20200220
+Version:        1.1.3+20201113
 Release:        0
 Summary:        Utilities to uniformly interface desktop environments
 License:        MIT
