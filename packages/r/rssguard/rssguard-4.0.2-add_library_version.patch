@@ -1,7 +1,7 @@
-Index: rssguard-3.9.0/src/librssguard/librssguard.pro
+Index: rssguard-4.0.2/src/librssguard/librssguard.pro
 ===================================================================
---- rssguard-3.9.0.orig/src/librssguard/librssguard.pro
-+++ rssguard-3.9.0/src/librssguard/librssguard.pro
+--- rssguard-4.0.2.orig/src/librssguard/librssguard.pro
++++ rssguard-4.0.2/src/librssguard/librssguard.pro
 @@ -1,7 +1,10 @@
  TEMPLATE = lib
  
@@ -44,24 +44,24 @@ Index: rssguard-3.9.0/src/librssguard/librssguard.pro
  RESOURCES += ../../resources/sql.qrc \
               ../../resources/rssguard.qrc
  
-Index: rssguard-3.9.0/src/rssguard/rssguard.pro
+Index: rssguard-4.0.2/src/rssguard/rssguard.pro
 ===================================================================
---- rssguard-3.9.0.orig/src/rssguard/rssguard.pro
-+++ rssguard-3.9.0/src/rssguard/rssguard.pro
-@@ -44,7 +44,7 @@ INCLUDEPATH +=  $$PWD/../librssguard \
- DEPENDPATH += $$PWD/../librssguard
+--- rssguard-4.0.2.orig/src/rssguard/rssguard.pro
++++ rssguard-4.0.2/src/rssguard/rssguard.pro
+@@ -46,7 +46,7 @@ DEPENDPATH += $$PWD/../librssguard
  
  win32: LIBS += -L$$OUT_PWD/../librssguard/ -llibrssguard
--unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
-+unix: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard-$$APP_VERSION
+ mac: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
+-unix:!mac: LIBS += $$OUT_PWD/../librssguard/librssguard.so
++unix:!mac: LIBS += $$OUT_PWD/../librssguard/librssguard-$${APP_VERSION}.so
  os2: LIBS += -L$$OUT_PWD/../librssguard/ -lrssguard
  
  win32 {
-Index: rssguard-3.9.0/pri/install.pri
+Index: rssguard-4.0.2/pri/install.pri
 ===================================================================
---- rssguard-3.9.0.orig/pri/install.pri
-+++ rssguard-3.9.0/pri/install.pri
-@@ -54,14 +54,17 @@ unix:!mac:!android {
+--- rssguard-4.0.2.orig/pri/install.pri
++++ rssguard-4.0.2/pri/install.pri
+@@ -57,14 +57,17 @@ unix:!mac:!android {
    appdata.files = ../../resources/desktop/$${APP_REVERSE_NAME}.appdata.xml
    appdata.path = $$quote($$PREFIX/share/metainfo/)
  
