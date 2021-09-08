@@ -24,7 +24,7 @@ Name:           qgis-ltr
 %else
 Name:           qgis
 %endif
-Version:        3.20.1
+Version:        3.20.2
 Release:        0
 Summary:        A Geographic Information System (GIS)
 License:        GPL-2.0-only
@@ -41,8 +41,6 @@ Patch2:         qgis-fix-missing-qwt-inc.patch
 Patch3:         qgis-fix-missing-qwt-inc-part2.patch
 # PATCH-FIX-UPSTREAM - scan for pdal-config instead of pdal in cmake
 Patch4:         qgis-fix-cmake-findpdal.patch
-# PATCH-FIX-UPSTREAM - gh#qgis/QGIS#44293
-Patch5:         fix-infinite-loop.patch
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4

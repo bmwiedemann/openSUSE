@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  7 09:13:17 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 3.20.2 (monthly bugfix)
+- Drop upstream patch:
+  * fix-infinite-loop.patch
+
+-------------------------------------------------------------------
 Wed Aug 11 18:40:04 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Add fix-infinite-loop.patch: fix startup of QGIS. This will be
