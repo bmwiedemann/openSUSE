@@ -235,7 +235,6 @@ Patch107:       grub2-btrfs-07-subvol-fallback.patch
 Patch108:       grub2-btrfs-08-workaround-snapshot-menu-default-entry.patch
 Patch109:       grub2-btrfs-09-get-default-subvolume.patch
 Patch110:       grub2-btrfs-10-config-directory.patch
-Patch111:       0001-btrfs-disable-zstd-support-for-i386-pc.patch
 # Support EFI xen loader
 Patch120:       grub2-efi-xen-chainload.patch
 Patch121:       grub2-efi-chainloader-root.patch
@@ -306,6 +305,8 @@ Patch786:       0046-squash-verifiers-Move-verifiers-API-to-kernel-image.patch
 Patch788:       0001-ieee1275-Avoiding-many-unecessary-open-close.patch
 Patch789:       0001-Workaround-volatile-efi-boot-variable.patch
 Patch790:       0001-30_uefi-firmware-fix-printf-format-with-null-byte.patch
+Patch791:       0001-i386-pc-build-btrfs-zstd-support-into-separate-modul.patch
+Patch792:       0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
 
 Requires:       gettext-runtime
 %if 0%{?suse_version} >= 1140
@@ -347,17 +348,6 @@ architecture.  It support rich scale of kernel formats, file systems,
 computer architectures and hardware devices.
 
 This package includes user space utlities to manage GRUB on your system.
-
-
-Authors:
---------
-    Gordon Matzigkeit
-    Yoshinori K. Okuji
-    Colin Watson
-    Colin D. Bennett
-    Vesa Jääskeläinen
-    Robert Millan
-    Carles Pina
 
 %package branding-upstream
 
@@ -999,6 +989,7 @@ fi
 %else
 %license COPYING
 %endif
+%doc AUTHORS
 %doc NEWS README
 %doc THANKS TODO ChangeLog
 %doc docs/autoiso.cfg docs/osdetect.cfg

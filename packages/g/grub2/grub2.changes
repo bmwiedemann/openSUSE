@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep  7 02:32:30 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Follow usr merge for looking up kernel config (bsc#1189782) (bsc#1190061)
+  * 0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
+
+-------------------------------------------------------------------
+Wed Sep  1 05:49:47 UTC 2021 - Michael Chang <mchang@suse.com>
+
+- Add btrfs zstd compression on i386-pc and also make sure it won't break
+  existing grub installations (bsc#1161823)
+  * deleted 0001-btrfs-disable-zstd-support-for-i386-pc.patch
+  * added 0001-i386-pc-build-btrfs-zstd-support-into-separate-modul.patch
+
+-------------------------------------------------------------------
+Tue Aug 31 05:56:56 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Delete the author list from %description (the %description section is
+  literally for package descriptions (only) these days, encoding was also
+  problematic).
+- Add %doc AUTHORS to get packaged that info
+
+-------------------------------------------------------------------
 Wed Aug  4 10:28:49 UTC 2021 - Stefan Seyfried <seife+obs@b1-systems.com>
 
 - update grub2-systemd-sleep.sh to fix hibernation by avoiding the
