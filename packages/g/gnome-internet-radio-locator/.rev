@@ -63,4 +63,28 @@
   + 0001-Fix-prototype-of-gtk_internet_radio_locator_radius.patch</comment>
     <requestid>893980</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b874c31f0e960b0840ac502a64c77497</srcmd5>
+    <version>12.0.3</version>
+    <time>1631129799</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.0.3:
+  + GUI: Add Search placeholder text.
+- Changes from version 12.0.2:
+  + New RadiOrakel (FM 99.3) stream.
+- Changes from version 12.0.1:
+  + Add a few more stations from SomaFM.
+- Changes from version 12.0.0:
+  + Add GeoClue code.
+- Changes from version 11.12:
+  + Updated documentation.
+- Changes from version 11.10:
+  + GUI: Use Geoclue to locate view.
+- Changes from version 5.0.3:
+  + Updated documentation.
+- Changes from version 5.0.2 and 5.0.1:
+  + Updated translations.
+- Add pkgconfig(geoclue-2.0) BuildRequires: new dependency. (forwarded request 915759 from dimstar)</comment>
+    <requestid>916116</requestid>
+  </revision>
 </revisionlist>

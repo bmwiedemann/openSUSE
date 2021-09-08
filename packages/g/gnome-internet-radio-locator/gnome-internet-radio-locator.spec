@@ -17,18 +17,19 @@
 
 
 Name:           gnome-internet-radio-locator
-Version:        5.0.0
+Version:        12.0.3
 Release:        0
 Summary:        Live Internet radio broadcaster discovery program
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://wiki.gnome.org/Apps/InternetRadioLocator
-Source0:        https://download.gnome.org/sources/%{name}/5.0/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-internet-radio-locator/12.0/%{name}-%{version}.tar.xz
 
 BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12.10
+BuildRequires:  pkgconfig(geoclue-2.0) >= 2.5.7
 BuildRequires:  pkgconfig(geocode-glib-1.0) >= 3.20
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
@@ -39,7 +40,7 @@ BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.28
-BuildRequires:  pkgconfig(libgeoclue-2.0) >= 0.29.1
+BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.5.7
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.0
 BuildRequires:  pkgconfig(pangoft2) >= 0.28
 Provides:       girl < 11
@@ -73,9 +74,7 @@ make %{?_smp_mflags}
 %license COPYING
 %doc AUTHORS ChangeLog THANKS NEWS
 %{_bindir}/%{name}
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/gnome-internet-radio-locator-5.0.dtd
-%{_datadir}/%{name}/gnome-internet-radio-locator.xml
+%{_datadir}/%{name}/
 %{_datadir}/applications/%{name}.desktop
 %dir %{_datadir}/icons/hicolor/1024x1024
 %dir %{_datadir}/icons/hicolor/1024x1024/apps
