@@ -42,10 +42,23 @@ object-oriented API.
 %package -n %{soname}%{sover}
 Summary:        C object-oriented SIP Stack
 Group:          Productivity/Telephony/SIP/Utilities
+Requires:       %{name}-data >= %{version}
 
 %description -n %{soname}%{sover}
 Belle-sip is a SIP (RFC3261) implementation written in C, with an
 object-oriented API.
+
+%package data
+Summary:        Belle-sip data files
+Group:          Productivity/Telephony/SIP/Utilities
+Requires:       %{soname}%{sover} = %{version}
+BuildArch:      noarch
+
+%description data
+Belle-sip is a SIP (RFC3261) implementation written in C, with an
+object-oriented API.
+
+This package contains data files such as belr grammar.
 
 %package devel
 Summary:        Headers and libraries for the belle-sip library
@@ -81,6 +94,10 @@ to develop applications using the belle-sip library.
 %license LICENSE.txt
 %{_libdir}/%{soname}.so.%{sover}*
 
+%files data
+%dir %{_datadir}/belr/
+%{_datadir}/belr/grammars/
+
 %files devel
 %license LICENSE.txt
 %doc AUTHORS.md CHANGELOG.md README.md
@@ -89,7 +106,6 @@ to develop applications using the belle-sip library.
 %{_libdir}/%{soname}.so
 %{_libdir}/cmake/BelleSIP/
 %{_datadir}/belle_sip_tester/
-%{_datadir}/belr/
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
