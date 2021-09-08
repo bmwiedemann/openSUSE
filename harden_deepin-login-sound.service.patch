@@ -1,0 +1,24 @@
+Index: dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
+===================================================================
+--- dde-api-5.4.9.orig/misc/systemd/system/deepin-login-sound.service
++++ dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
+@@ -4,6 +4,19 @@ Requires=sound.target
+ After=dbus.service lightdm.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ ExecStart=/usr/bin/dbus-send --system --dest=com.deepin.api.SoundThemePlayer --print-reply /com/deepin/api/SoundThemePlayer com.deepin.api.SoundThemePlayer.PlaySoundDesktopLogin
+ RemainAfterExit=yes
