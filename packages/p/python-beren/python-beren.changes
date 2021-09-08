@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 31 18:03:24 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- skip python36: apiron on TW does not support Python 3.6 anymore
+- remove apiron version pinning from Python sitelib metadata
+  (upstream uses apiron==6.0.0)
+
+-------------------------------------------------------------------
 Thu Jul 22 19:46:12 UTC 2021 - Axel Braun <axel.braun@gmx.de>
 
 - version 0.7.1 

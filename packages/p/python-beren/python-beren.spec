@@ -17,10 +17,9 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
-
+%define skip_python36 1
 %define modname beren
 Name:           python-%{modname}
 Version:        0.7.1
@@ -29,11 +28,10 @@ Summary:        Provides a REST client targeted at Orthanc REST API endpoints
 License:        GPL-3.0-or-later
 URL:            https://github.com/teffalump/beren
 Source:         https://files.pythonhosted.org/packages/source/b/%{modname}/%{modname}-%{version}.tar.gz
-BuildRequires:  %{python_module apiron >= 5.1.0 }
+BuildRequires:  %{python_module apiron}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
-
-Requires:       python-apiron >= 5.1.0
+Requires:       python-apiron
 
 %python_subpackages
 
@@ -42,17 +40,23 @@ python-beren provides a REST client targeted at Orthanc REST API endpoints
 
 %prep
 %setup -q -n %{modname}-%{version}
+# remove the pinning from the metadata
+sed -i 's/apiron==.*$/apiron/' requirements.txt
 
 %build
 %python_build
 
 %install
 %python_install
-%python_expand %fdupes %{buildroot}%{python_sitelib}
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+#%%check
+# unit tests all test against a live demo server.
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%{python_sitelib}/*
+%{python_sitelib}/beren
+%{python_sitelib}/beren-%{version}*-info
 
 %changelog
