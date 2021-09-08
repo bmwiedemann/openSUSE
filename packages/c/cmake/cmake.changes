@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 31 13:19:26 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Be more verbose when version in generated xxxConfigVersion.cmake
+  files is empty.
+
+-------------------------------------------------------------------
 Sun Aug 29 13:38:36 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.21.2:

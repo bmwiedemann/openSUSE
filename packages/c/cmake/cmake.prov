@@ -69,7 +69,11 @@ class CMakeParser:
             # set(PACKAGE_VERSION <version>)
             version = re.match(r"^set[\ ]*\([\ ]*PACKAGE_VERSION[\ ]+[\"]*([0-9\.]+)[\"]*[\ ]*[.]*\)", line)
             if version:
-                return version.groups(1)[0]
+                _version = version.groups(1)[0]
+                if _version == '..':
+                    sys.stderr.write("error: Version pattern found without values - '%s' was created incorrectly\n" % versionFile)
+                return _version
+
 
         return None
 
