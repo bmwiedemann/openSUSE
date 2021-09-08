@@ -2685,6 +2685,7 @@ Subsection `ligations` is used to customize the ligation set assigned to `calt` 
   - `brst`: Center asterisk in `(*` and `*)`.
   - `plusplus`: Enable ligation for `++` and further plus-chaining.
   - `kern-dotty`: Move connecting dotty punctuations closer, like for `::`, `:::` and `...`.
+  - `kern-bars`: Move consecutive bars closer, like for `||`, `|||` and `//`.
   - `logic`: Enable ligation for `/\` and `\/`.
   - `llgg`: Enable ligation for `<<`, `>>` and other angle-bracket chaining.
   - `llggeq`: Enable ligation for `<<=`, `>>=` as shift operator.
@@ -2745,6 +2746,8 @@ Subsection `variants` is used to configure character variants in the font. Prope
 
   - Default digit form:
      <table><tr><td rowspan="2" width="348"><img src="images/character-variant-lnum.png" width="320"/></td><td><code>digit-form = 'lining'</code></td></tr><tr><td>Lining (default)</td></tr><tr><td rowspan="2" width="348"><img src="images/character-variant-onum.png" width="320"/></td><td><code>digit-form = 'old-style'</code></td></tr><tr><td>Old-style</td></tr></table>
+  - APL form:
+     <table><tr><td rowspan="2" width="252"><img src="images/character-variant-APLF-off.png" width="224"/></td><td><code>apl-form = 'none'</code></td></tr><tr><td>Disable APL-specific forms</td></tr><tr><td rowspan="2" width="252"><img src="images/character-variant-APLF-on.png" width="224"/></td><td><code>apl-form = 'enable'</code></td></tr><tr><td>Enable APL-specific forms for operators used in APL to harmonize APL operators</td></tr></table>
   - Styles for `A`:
      <table><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-1.png" width="32"/></td><td><code>capital-a = 'straight-serifless'</code>, <code>cv01 = 1</code></td></tr><tr><td>Standard, straight <code>A</code>, without serifs</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-2.png" width="32"/></td><td><code>capital-a = 'curly-serifless'</code>, <code>cv01 = 2</code></td></tr><tr><td>Slightly curly <code>A</code>, like Iosevka 2.x, without serifs</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-3.png" width="32"/></td><td><code>capital-a = 'straight-top-serifed'</code>, <code>cv01 = 3</code></td></tr><tr><td>Straight <code>A</code> with serif at top</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-4.png" width="32"/></td><td><code>capital-a = 'curly-top-serifed'</code>, <code>cv01 = 4</code></td></tr><tr><td>Slightly curly <code>A</code>, like Iosevka 2.x, with serif at top</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-5.png" width="32"/></td><td><code>capital-a = 'straight-base-serifed'</code>, <code>cv01 = 5</code></td></tr><tr><td>Straight <code>A</code> with serif at both top and bottom</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-6.png" width="32"/></td><td><code>capital-a = 'curly-base-serifed'</code>, <code>cv01 = 6</code></td></tr><tr><td>Slightly curly <code>A</code>, like Iosevka 2.x, with serif at both top and bottom</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-7.png" width="32"/></td><td><code>capital-a = 'straight-tri-serifed'</code>, <code>cv01 = 7</code></td></tr><tr><td>Straight <code>A</code> with serif at both top and bottom</td></tr><tr><td rowspan="2" width="60"><img src="images/character-variant-cv01-8.png" width="32"/></td><td><code>capital-a = 'curly-tri-serifed'</code>, <code>cv01 = 8</code></td></tr><tr><td>Slightly curly <code>A</code>, like Iosevka 2.x, with serif at both top and bottom</td></tr></table>
   - Styles for `B`:
@@ -3064,6 +3067,10 @@ A sample configuration could be found at [private-build-plans.sample.toml](priva
 
 → [Sarasa Gothic](https://github.com/be5invis/Sarasa-Gothic).
 
+## Mirrors
+
+- TUNA (CN): https://mirrors.tuna.tsinghua.edu.cn/github-release/be5invis/Iosevka
+- NJU (CN): https://mirrors.nju.edu.cn/github-release/be5invis/Iosevka
 ---
 
 ![Family Matrix](images/matrix.png)
