@@ -55,6 +55,8 @@ Patch1:         chrony-service-helper.patch
 Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch4:         chrony-refid-internal-md5.patch
+Patch5:         harden_chrony-wait.service.patch
+Patch6:         harden_chronyd.service.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  gcc-c++
@@ -155,6 +157,8 @@ sed -e 's-@CHRONY_HELPER@-%{chrony_helper}-g' -i %{PATCH1} %{SOURCE3} %{SOURCE5}
 %patch2 -p1
 %patch3
 %patch4
+%patch5 -p1
+%patch6 -p1
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
