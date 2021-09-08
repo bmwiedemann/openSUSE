@@ -3939,4 +3939,12 @@
 </comment>
     <requestid>907125</requestid>
   </revision>
+  <revision rev="516" vrev="1">
+    <srcmd5>b0028f921089a3a2b419b2bdef2dda01</srcmd5>
+    <version>4.4.17</version>
+    <time>1631129784</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.17</comment>
+    <requestid>917053</requestid>
+  </revision>
 </revisionlist>
