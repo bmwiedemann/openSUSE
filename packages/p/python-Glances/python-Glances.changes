@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 03 07:20:11 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 3.2.3.1:
+  * Incorrect processes disk IO stats #1922
+
+-------------------------------------------------------------------
+Sat Aug 21 13:14:30 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 3.2.3:
+  * Processor name getting cut off #1917
+  * batinfo not in docker image (and in requirements files...) ? #1915
+  * Glances don't send hostname (tag) to influxdb2
+
+-------------------------------------------------------------------
 Tue Jul 13 11:43:41 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add a new glances-common package that contains a service file
