@@ -1,5 +1,0 @@
-<package name="switchboard" project="openSUSE:Factory">
-  <title>Switchboard</title>
-  <description>Modular Desktop Settings Hub</description>
-  <devel project="X11:Pantheon" package="switchboard"/>
-</package>
