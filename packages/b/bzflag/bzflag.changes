@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Aug 26 11:36:28 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * bzflagserver.service
+
+-------------------------------------------------------------------
 Sun Feb 28 16:06:59 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 2.4.22
