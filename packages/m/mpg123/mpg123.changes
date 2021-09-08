@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  6 07:08:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.29.0
+  build:
+  * added --enable-runtime-tables
+  libmpg123:
+  * Float deocder runtime table computation is back as option,
+    based on suggestion and initial patch by Ethan Halsall for a
+    smaller download size of the wasm decoder built from
+    libmpg23. This only trims the size of the binary on disk
+    (network), for runtime overhead and a bit of uneasyness about
+    concurrency during table computation, which happens
+    implicitly on handle initialization, only guarded by an
+    integer flag. This does _not_ revive mpg123_init().
+  * The ID3v2 UTF-16 BOM check is now a straight-on loop and not
+    a recursive function.
+
+-------------------------------------------------------------------
 Mon Jul 12 10:51:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.28.2
