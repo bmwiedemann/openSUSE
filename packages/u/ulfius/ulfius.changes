@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  7 06:37:49 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.7.4
+  Fix security issue CVE-2021-40540 (bsc#1190246)
+  * Add void parameter to functions with no param.
+  * Fix bug when malformed HTTP requests are sent.
+  * Remove yder flag from libulfius.pc when yder is disabled.
+
+-------------------------------------------------------------------
 Sat Jun  5 13:30:48 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.7.3
