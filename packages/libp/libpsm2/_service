@@ -1,15 +1,15 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="scm">git</param>
-    <param name="url">https://github.com/01org/opa-psm2.git</param>
+    <param name="url">https://github.com/cornelisnetworks/opa-psm2.git</param>
     <param name="package-meta">no</param>
     <param name="exclude">.git</param>
     <param name="filename">libpsm2</param>
-    <param name="version">11.2.185</param>
-    <param name="versionrewrite-pattern">PSM2_(.*)</param>
+    <param name="version">11.2.203</param>
+    <param name="versionrewrite-pattern">PSM2_(.*)(nccl)\?</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="match-tag">PSM2_*</param>
-    <param name="revision">7a33bedc4bb3dff4e57c00293a2d70890db4d983</param>
+    <param name="revision"></param>
   </service>
   <service name="recompress" mode="disabled">
     <param name="file">libpsm2*.tar</param>

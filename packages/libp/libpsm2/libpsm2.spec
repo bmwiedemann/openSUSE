@@ -1,7 +1,7 @@
 #
 # spec file for package libpsm2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,12 @@
 
 %define psm_so 2
 Name:           libpsm2
-Version:        11.2.185
+Version:        11.2.203
 Release:        0
 Summary:        Intel PSM Messaging API libraries
 License:        BSD-2-Clause OR GPL-2.0-only
 Group:          Development/Libraries/C and C++
-URL:            https://github.com/01org/opa-psm2/
+URL:            https://github.com/cornelisnetworks/opa-psm2/
 Source0:        %{name}-%{version}%{git_ver}.tar.bz2
 Source1:        libpsm2.changelog
 Source2:        libpsm2-rpmlintrc
@@ -78,7 +78,6 @@ Development files for the libpsm2 library.
 
 %description    compat
 Support for MPIs linked with PSM versions < 2.
-
 
 %prep
 %setup -q -n %{name}-%{version}%{git_ver}
