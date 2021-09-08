@@ -1,0 +1,42 @@
+Index: blender-2.93.3/build_files/cmake/Modules/FindOpenEXR.cmake
+===================================================================
+--- blender-2.93.3.orig/build_files/cmake/Modules/FindOpenEXR.cmake	2021-04-21 04:02:36.000000000 +0200
++++ blender-2.93.3/build_files/cmake/Modules/FindOpenEXR.cmake	2021-08-20 09:21:15.947647251 +0200
+@@ -34,11 +34,10 @@ ENDIF()
+ SET(_openexr_libs_ver_init "2.0")
+ 
+ SET(_openexr_FIND_COMPONENTS
+-  Half
+   Iex
+-  IlmImf
+-  IlmThread
+   Imath
++  OpenEXR
++  IlmThread
+ )
+ 
+ SET(_openexr_SEARCH_DIRS
+@@ -120,7 +119,7 @@ FIND_PACKAGE_HANDLE_STANDARD_ARGS(OpenEX
+ IF(OPENEXR_FOUND)
+   SET(OPENEXR_LIBRARIES ${_openexr_LIBRARIES})
+   # Both include paths are needed because of dummy OSL headers mixing #include <OpenEXR/foo.h> and #include <foo.h> :(
+-  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR)
++  SET(OPENEXR_INCLUDE_DIRS ${OPENEXR_INCLUDE_DIR} ${OPENEXR_INCLUDE_DIR}/OpenEXR ${OPENEXR_INCLUDE_DIR}/Imath)
+ ENDIF()
+ 
+ MARK_AS_ADVANCED(
+Index: blender-2.93.3/source/blender/imbuf/intern/openexr/openexr_api.cpp
+===================================================================
+--- blender-2.93.3.orig/source/blender/imbuf/intern/openexr/openexr_api.cpp	2021-04-21 04:02:39.000000000 +0200
++++ blender-2.93.3/source/blender/imbuf/intern/openexr/openexr_api.cpp	2021-08-20 09:21:15.947647251 +0200
+@@ -38,8 +38,10 @@
+ #include <ImfChannelList.h>
+ #include <ImfCompression.h>
+ #include <ImfCompressionAttribute.h>
++#include <ImfFrameBuffer.h>
+ #include <ImfIO.h>
+ #include <ImfInputFile.h>
++#include <ImfInt64.h>
+ #include <ImfOutputFile.h>
+ #include <ImfPixelType.h>
+ #include <ImfStandardAttributes.h>

@@ -19,9 +19,6 @@
 
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
-
-%bcond_without alembic
-%bcond_without collada
 %ifarch x86_64
 %bcond_without embree
 %bcond_without oidn
@@ -29,42 +26,40 @@
 %bcond_with embree
 %bcond_with oidn
 %endif
-%bcond_without opencl
-%bcond_without opensubdiv
-%bcond_without openvdb
-%bcond_without osl
-%bcond_with    system_audaspace
-
-# TBD
-%bcond_with usd
-%bcond_with openxr
 
 %if 0%{?gcc_version} < 10
-#global force_gcc_version 9
 %bcond_without clang
-%if 0%{?suse_version} >= 1550
-%bcond_without lld
-%else
 %bcond_with    lld
-%endif
 %else
 %bcond_with    clang
+%bcond_without lld
+%endif
+
+%if 0%{?suse_version} >= 1550
+#global force_gcc_version 10
 %endif
 
 # Set this to 1 for fixing bugs.
 %define debugbuild 0
-
 # Find the version of python3 that blender is going to build against.
 %define py3version %(pkg-config python3.9 --modversion)
-
 # blender has versions like x.xxy which have x.xx (notice the missing
 # trailing y) in the directory path. This makes this additional variable
 # necessary.
 %define _version %(echo %{version} | cut -b 1-4)
 %define _suffix %(echo %{_version} | tr -d '.')
-
+%bcond_without alembic
+%bcond_without collada
+%bcond_without opencl
+%bcond_without opensubdiv
+%bcond_without openvdb
+%bcond_without osl
+%bcond_with    system_audaspace
+# TBD
+%bcond_with usd
+%bcond_with openxr
 Name:           blender
-Version:        2.93.1
+Version:        2.93.4
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
 License:        GPL-2.0-or-later
@@ -84,7 +79,8 @@ Source10:       SUSE-NVIDIA-OptiX-rendering.txt
 Source99:       series
 # PATCH-FIX-OPENSUSE https://developer.blender.org/D5858
 Patch0:         reproducible.patch
-#!BuildIgnore:  libGLwM1
+# https://github.com/bartoszek/AUR-blender-2.83-git/blob/master/openexr3.patch
+Patch1:         blender-293-openexr3.patch
 BuildRequires:  OpenColorIO-devel >= 2.0
 BuildRequires:  OpenEXR-devel
 BuildRequires:  OpenImageIO
@@ -96,22 +92,6 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  distribution-release
 BuildRequires:  fdupes
 BuildRequires:  fftw3-devel
-%if %{with clang}
-BuildRequires:  clang
-%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
-BuildRequires:  libomp9-devel
-%else
-BuildRequires:  libomp-devel
-%endif
-%if %{with lld}
-#!BuildIgnore:  gcc-c++
-#!BuildIgnore:  binutils-gold
-BuildRequires:  lld
-%endif
-%else
-BuildRequires:  binutils-gold
-BuildRequires:  gcc%{?force_gcc_version}-c++
-%endif
 BuildRequires:  gettext-tools
 BuildRequires:  graphviz
 BuildRequires:  help2man
@@ -140,7 +120,7 @@ BuildRequires:  lzo-devel
 BuildRequires:  openal-soft-devel
 BuildRequires:  pcre-devel
 BuildRequires:  perl-Text-Iconv
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  potrace-devel
 BuildRequires:  python39-numpy-devel
 BuildRequires:  python39-requests
@@ -149,18 +129,11 @@ BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  cmake(pugixml)
-BuildRequires:  pkgconfig(IlmBase)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(glw)
-BuildRequires:  pkgconfig(python-3.9)
-%if 0%{?suse_version} > 1500
-BuildRequires:  pkgconfig(gmpxx)
-%else
-BuildRequires:  gmp-devel
-%endif
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -169,6 +142,7 @@ BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(python-3.9)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xfixes)
@@ -176,6 +150,38 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
+#!BuildIgnore:  libGLwM1
+Requires:       python39-base
+Requires:       python39-numpy
+Requires:       python39-requests
+Requires(post): hicolor-icon-theme
+Requires(postun):hicolor-icon-theme
+Recommends:     %name-demo = %version
+# current locale handling doesn't create locale(..) provides correctly
+Recommends:     %name-lang = %version
+Provides:       %{name}-%{_suffix} = %{version}
+BuildRequires:  pkgconfig(OpenEXR)
+%if %{with clang}
+BuildRequires:  clang
+%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
+BuildRequires:  libomp9-devel
+%else
+BuildRequires:  libomp-devel
+%endif
+%if %{with lld}
+BuildRequires:  lld
+#!BuildIgnore:  binutils-gold
+#!BuildIgnore:  gcc-c++
+%endif
+%else
+BuildRequires:  binutils-gold
+BuildRequires:  gcc%{?force_gcc_version}-c++
+%endif
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(gmpxx)
+%else
+BuildRequires:  gmp-devel
+%endif
 # conditional requirements
 %if 0%{?debugbuild} == 1
 BuildRequires:  pkgconfig(valgrind)
@@ -216,15 +222,6 @@ Requires:       audaspace-plugins
 %ifarch x86_64
 Requires:       %{name}-cycles-devel = %{version}
 %endif
-Requires:       python39-base
-Requires:       python39-numpy
-Requires:       python39-requests
-Requires(post): hicolor-icon-theme
-Requires(postun):hicolor-icon-theme
-Provides:       %{name}-%{_suffix} = %{version}
-# current locale handling doesn't create locale(..) provides correctly
-Recommends:     %name-lang = %version
-Recommends:     %name-demo = %version
 
 %description
 Blender is a 3D modelling and rendering package. It is the in-house
@@ -278,13 +275,13 @@ md5sum -c %{SOURCE1}
 popd
 
 %setup -q
-%patch0 -p1
+%autopatch -p1
 
-rm -rf extern/glew
+#rm -rf extern/glew
 rm -rf extern/libopenjpeg
 # silence warning about missing includedir
-mkdir -p extern/glew/include
-for i in `grep -rl "/usr/bin/env python3"`;do sed -i '1s@^#!.*@#!/usr/bin/python3@' ${i} ;done
+#mkdir -p extern/glew/include
+for i in `grep -rl "%{_bindir}/env python3"`;do sed -i '1s@^#!.*@#!%{_bindir}/python3@' ${i} ;done
 
 %build
 export SUSE_ASNEEDED=0
@@ -333,12 +330,17 @@ cmake ../ \
 %if %{with alembic}
       -DWITH_ALEMBIC:BOOL=ON \
 %endif
+      -DWITH_AUDASPACE:BOOL=ON \
+%if %{with system_audaspace}
+      -DWITH_SYSTEM_AUDASPACE:BOOL=ON \
+%endif
       -DWITH_BUILDINFO:BOOL=OFF \
       -DWITH_BULLET:BOOL=ON \
       -DWITH_CODEC_AVI:BOOL=ON \
       -DWITH_CODEC_FFMPEG:BOOL=ON \
       -DWITH_CODEC_SNDFILE:BOOL=ON \
       -DLIBSNDFILE_ROOT_DIR:FILE=%{_prefix} \
+      -DWITH_COMPOSITOR:BOOL=ON \
 %ifarch ppc ppc64 ppc64le
       -DWITH_CYCLES:BOOL=OFF \
       -DWITH_CYCLES_EMBREE:BOOL=OFF \
@@ -356,12 +358,11 @@ cmake ../ \
 %endif
       -DWITH_DRACO:BOOL=ON \
       -DWITH_FFTW3:BOOL=ON \
-      -DWITH_LIBMV:BOOL=ON \
-      -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=ON \
-      -DWITH_COMPOSITOR:BOOL=ON \
       -DWITH_FREESTYLE:BOOL=ON \
-      -DWITH_IK_SOLVER:BOOL=ON \
+      -DWITH_GMP:BOOL=ON \
+      -DWITH_HARU:BOOL=OFF \
       -DWITH_IK_ITASC:BOOL=ON \
+      -DWITH_IK_SOLVER:BOOL=ON \
       -DWITH_IMAGE_CINEON:BOOL=ON \
       -DWITH_IMAGE_DDS:BOOL=ON \
       -DWITH_IMAGE_HDR:BOOL=ON \
@@ -370,20 +371,19 @@ cmake ../ \
       -DWITH_IMAGE_TIFF:BOOL=ON \
       -DWITH_INPUT_NDOF:BOOL=ON \
       -DWITH_INTERNATIONAL:BOOL=ON \
+      -DWITH_LIBMV:BOOL=ON \
+      -DWITH_LIBMV_SCHUR_SPECIALIZATIONS:BOOL=ON \
       -DWITH_LZMA:BOOL=ON \
       -DWITH_LZO:BOOL=ON \
       -DWITH_SYSTEM_LZO:BOOL=ON \
-      -DWITH_MOD_REMESH:BOOL=ON \
       -DWITH_MOD_FLUID:BOOL=ON \
 %ifnarch x86_64
       -DWITH_MOD_OCEANSIM:BOOL=OFF \
 %else
       -DWITH_MOD_OCEANSIM:BOOL=ON \
 %endif
-      -DWITH_AUDASPACE:BOOL=ON \
-%if %{with system_audaspace}
-      -DWITH_SYSTEM_AUDASPACE:BOOL=ON \
-%endif
+      -DWITH_MOD_REMESH:BOOL=ON \
+      -DWITH_NANOVDB:BOOL=ON \
       -DWITH_OPENAL:BOOL=ON \
 %if %{with collada}
       -DWITH_OPENCOLLADA:BOOL=ON \
@@ -394,7 +394,6 @@ cmake ../ \
 %if %{with oidn}
       -DWITH_OPENIMAGEDENOISE:BOOL=ON \
 %endif
-      -DWITH_OPENIMAGEIO:BOOL=ON \
       -DWITH_OPENMP:BOOL=ON \
 %if %{with opensubdiv}
       -DWITH_OPENSUBDIV:BOOL=ON \
@@ -404,6 +403,8 @@ cmake ../ \
       -DWITH_OPENVDB:BOOL=ON \
       -DWITH_OPENVDB_BLOSC:BOOL=ON \
 %endif
+      -DWITH_POTRACE:BOOL=ON \
+      -DWITH_PUGIXML:BOOL=ON \
       -DWITH_PYTHON:BOOL=ON \
       -DWITH_PYTHON_INSTALL:BOOL=OFF \
       -DPYTHON_VERSION=$psver \
@@ -423,22 +424,21 @@ cmake ../ \
       -DWITH_MEM_JEMALLOC:BOOL=ON \
 %endif
       -DWITH_JACK:BOOL=ON \
-      -DWITH_SYSTEM_GLEW:BOOL=ON \
       -DWITH_DOC_MANPAGE:BOOL=ON \
       -DWITH_GHOST_XDND:BOOL=ON \
       -DWITH_X11_XINPUT:BOOL=ON \
       -DWITH_X11_XF86VMODE:BOOL=ON \
+      -DWITH_SYSTEM_GLEW:BOOL=OFF \
 %if %{with openxr}
       -DWITH_XR_OPENXR:BOOL=ON \
 %endif
 %if %{with opencl}
       -DWITH_CYCLES_DEVICE_OPENCL:BOOL=ON \
 %endif
-      -DWITH_CYCLES_CUDA_BINARIES:BOOL=ON \
-      -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF \
-      -DCYCLES_CUDA_BINARIES_ARCH="sm_30;sm_35;sm_37;sm_50;sm_52;sm_60;sm_61;sm_70;sm_75;compute_75" \
       -DWITH_CYCLES_DEVICE_OPTIX:BOOL=ON \
-      -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix
+      -DOPTIX_ROOT_DIR:PATH=/opt/nvidia/optix \
+      -DWITH_CYCLES_CUDA_BINARIES:BOOL=ON \
+      -DWITH_CYCLES_CUBIN_COMPILER:BOOL=OFF
 
 make %{?_smp_mflags}
 

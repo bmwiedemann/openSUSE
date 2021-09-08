@@ -1181,4 +1181,12 @@ Enable cycles-osl in build</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>907137</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>86c1530b5780d9e544390b1adc5d0410</srcmd5>
+    <version>2.93.4</version>
+    <time>1631129798</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917553</requestid>
+  </revision>
 </revisionlist>
