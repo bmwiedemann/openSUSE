@@ -7,6 +7,16 @@ Mon Jul 19 12:17:54 UTC 2021 - Thomas Renninger <trenn@suse.de>
  * cpupower           to    5.14-rcX (kernel sources state)
 - Already upstream and included in the update:
 D intel-speed-select_remove_DATE_TIME.patch
+- SLE patches for jsc#SLE-17797 dropped (in fact never been applied to factory),
+  due to inclusion in upstream version:
+  cpupower-Add-CPUPOWER_CAP_AMD_HW_PSTATE-cpuid-caps-flag.patch
+  cpupower-Condense-pstate-enabled-bit-checks-in-decode_pstates.patch
+  cpupower-Update-family-checks-when-decoding-HW-pstates.patch
+  cpupower-Remove-family-arg-to-decode_pstates.patch
+  cpupower-Correct-macro-name-for-CPB-caps-flag.patch
+  cpupower-Update-msr_pstate-union-struct-naming.patch
+  cpupower-Add-cpuid-cap-flag-for-MSR_AMD_HWCR-support.patch
+  cpupower-Remove-unused-pscur-variable.patch
 
 -------------------------------------------------------------------
 Thu Nov 12 22:01:00 UTC 2020 - Thomas Renninger <trenn@suse.de>
