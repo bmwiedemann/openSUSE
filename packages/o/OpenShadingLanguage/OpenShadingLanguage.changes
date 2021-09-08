@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Aug 31 14:36:55 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix source URL
+
+-------------------------------------------------------------------
+Mon Aug 30 15:24:21 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to version 1.11.14.2
+  + Fix warnings that occur when compiling with clang and C++17 mode. #1379
+  + CI/testing: Additional CI tests for clang+c++17 (#1379), gcc11 (#1381),
+    llvm 12 (#1381), speed up CI builds by not building the testing components
+    of OIIO (#1380).
+
+- Update to version 1.11.14.1
+  + Fix library setup for LLVM installations consisting of static libraries.
+    This fixes a build problem that can crop up on MacOS using
+    Homebrew-installed LLVM 12. #1375
+
+- Update to version 1.11.14.0
+  + oslc/OSLCompiler: Check for errors when when writing oso (for example,
+    disk volume full). #1360
+  + Fix crash generating closure function calls with LLVM 11. #1361
+  + Build: LLVM 12 compatibility. #1351
+  + Build: Support for CMake 3.20 #1354
+  + Build: Be robust to certain OpenEXR 2.x config fies. #1356
+  + Build: Fixes to deal with newer OIIO builds that are C++14.
+
+- Remove 0001-LLVM-12-compatibility-fixes.patch
+  fixed upstream
+- Add build dependency on OpenImageIO (executables)
+
+-------------------------------------------------------------------
 Sun May  2 05:54:38 UTC 2021 - munix9@googlemail.com
 
 - Update to version 1.11.13

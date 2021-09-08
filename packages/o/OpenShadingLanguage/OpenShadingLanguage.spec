@@ -23,18 +23,16 @@
 %define oiio_major_minor_ver %(rpm -q --queryformat='%%{version}' OpenImageIO-devel | cut -d . -f 1-2)
 
 Name:           OpenShadingLanguage
-Version:        1.11.13.0
+Version:        1.11.14.2
 Release:        0
 Summary:        A language for programmable shading
 License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
-URL:            https://github.com/imageworks/OpenShadingLanguage
-Source0:        https://github.com/imageworks/OpenShadingLanguage/archive/Release-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+URL:            https://github.com/AcademySoftwareFoundation/OpenShadingLanguage
+Source0:        https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://creativecommons.org/licenses/by/3.0/legalcode.txt#/CC-BY-3.0.txt
-# PATCH-FIX-UPSTREAM 0001-LLVM-12-compatibility-fixes.patch
-# https://github.com/AcademySoftwareFoundation/OpenShadingLanguage/pull/1331
-Patch0:         0001-LLVM-12-compatibility-fixes.patch
 BuildRequires:  OpenEXR-devel
+BuildRequires:  OpenImageIO
 BuildRequires:  bison
 BuildRequires:  clang-devel >= 7
 BuildRequires:  cmake >= 3.12
@@ -193,7 +191,7 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -n %{name}-Release-%{version} -p1
+%autosetup -p1
 find . -iname CMakeLists.txt -exec sed "-i" "-e s/COMMAND python/COMMAND python3/" "{}" \;
 
 %build
