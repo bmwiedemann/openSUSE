@@ -18,7 +18,7 @@
 
 
 Name:           json-glib
-Version:        1.6.4
+Version:        1.6.6
 Release:        0
 Summary:        Library for JavaScript Object Notation format
 License:        LGPL-2.1-or-later
@@ -28,9 +28,10 @@ URL:            http://live.gnome.org/JsonGlib
 Source0:        https://download.gnome.org/sources/json-glib/1.6/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  glib2-devel >= 2.54
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
+BuildRequires:  libxslt-tools
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  translation-update-upstream
