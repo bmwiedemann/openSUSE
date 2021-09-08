@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.4
+  * Changed
+    - Removed the tripadvisor brand icon by request of Tripadvisor
+    - Update bug, bullseye, drone, icons #17800 #17106 #17730
+    - Update bootstrap, discord, figma, and font-awesome-* brand icons #17436
+  * Fixed
+    - Made font-family matching case-insensitive for SVG + JavaScript version of Font Awesome #17860
+    - Corrected missing version hospital-user #17435
+    - Removed useless .tgz file in @fortawesome/fontawesome-pro and all @fortawesome/pro-*-svg-icons
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.3
+  * Changed
+    - Updated air-freshener's design due to trademark violation notice
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.2
+  * Changed
+    - Support release to improve Font Awesome Kits performance
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.1
+  * Changed
+    - Update to the ravelry brand icon
+  * Fixed
+    - Removed fill attribute from the vest and vest-patches icon
+    - Moved attribution comment to correct location for sprites
+    - Fixed duotone icons not rendering in Kits
+
+-------------------------------------------------------------------
+Wed Sep 8 08:02:23 UTC 2021 - Dawid Respondek <nyslay@gmail.com>
+- Update to version 5.15.0
+  * Added
+    - Added guilded, hive, innosoft, instalod, ns8, octopus-deploy, perbyte,
+    - uncharted, watchman-monitoring, wodu sponsored brand icons
+    - Added commissioned vest and vest-patch icon
+    - Added cloudflare brand icon
+  * Changed
+    - Removed the adobe icon at the request of Adobe
+    - Update rocketchat brand icon
+  * Fixed
+    - Conflict detection now includes Kits when checking for conflicts
+
+-------------------------------------------------------------------
 Sun Aug 16 14:24:23 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 5.14.0:

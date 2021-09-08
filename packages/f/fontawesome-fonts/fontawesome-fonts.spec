@@ -17,7 +17,7 @@
 
 
 Name:           fontawesome-fonts
-Version:        5.14.0
+Version:        5.15.4
 Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
