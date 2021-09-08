@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 25 07:41:46 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Update to 1.13.1
+  - Enable loading ZE library with dlopen()
+  - Add IPv6 support to fi_pingpong
+  - EFA, PSM3 and SHM fixes
+
+-------------------------------------------------------------------
 Wed Jul  7 11:13:26 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 1.13.0
