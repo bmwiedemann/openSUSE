@@ -1,0 +1,12 @@
+diff --git a/janus.c b/janus.c
+index 029201d1..d6e5a538 100644
+--- a/janus.c
++++ b/janus.c
+@@ -28,6 +28,7 @@
+ #ifdef HAVE_TURNRESTAPI
+ #include <curl/curl.h>
+ #endif
++#include <openssl/rand.h>
+ 
+ #include "janus.h"
+ #include "version.h"

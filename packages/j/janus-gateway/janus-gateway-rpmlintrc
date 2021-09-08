@@ -1,0 +1,4 @@
+addFilter("non-standard-uid .*")
+addFilter("non-standard-gid .*")
+addFilter("devel-file-in-non-devel-package .*")
+addFilter("binary-or-shlib-calls-gethostbyname /usr/lib/janus/plugins/libjanus_.*")

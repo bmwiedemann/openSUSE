@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  6 12:53:58 UTC 2021 - Michael Ströder <michael@stroeder.com>
+
+- added janus-gateway-rpmlintrc
+- removed systemd-related conditionals to fix obsolete-suse-version-check
+- added 0001-include-rand-header-file.patch
+- use %fdupes macro
+- Update to version 0.11.4:
+  * Fixed ICE restart issues with recent versions of libnice (#2729)
+  * Changed randon number generators to use crypto-safe functions (#2738)
+  * Added support for abs-send-time RTP extension (#2721)
+  * Added configurable mechanism for manually setting static event loop to use for new handles (#2684)
+  * Fixed datachannel protocol not being sent to plugins for incoming messages (#2753)
+  * Added ability to specify recordings folder in AudioBridge (#2707)
+  * Added support for forwarding groups in AudioBridge (#2653)
+  * Fixed missing Contact header in SIP plugin when using Sofia >= 1.13 (#2708)
+  * Better SDES-SRTP negotiation in SIP and NoSIP plugins (#2727)
+  * Fixed WebSocket transport and event handler lagging 25/30s when shutting down or reconnecting (#2734)
+  * Fixed incoming_header_prefixes not working for helper sessions in SIP plugin
+  * Fix partial/broken ACL support in TextRoom plugin (#2763)
+  * Fixed potential race condition when reclaiming sessions in HTTP transport plugin
+  * Fixed WebSocket event handler reconnect mechanism (#2736)
+  * Other smaller fixes and improvements
+
+-------------------------------------------------------------------
 Tue Jun 15 13:44:32 UTC 2021 - michael@stroeder.com
 
 - Update to version 0.11.3:

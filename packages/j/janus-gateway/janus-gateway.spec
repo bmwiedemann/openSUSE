@@ -16,18 +16,12 @@
 #
 
 
-%if 0%{?suse_version} > 1230
-%bcond_without systemd
-%else
-%bcond_with    systemd
-%endif
-
 %if 0%{?suse_version} > 1320
 %bcond_without janus_postprocessing
 %endif
 
 Name:           janus-gateway
-Version:        0.11.3
+Version:        0.11.4
 Release:        0
 License:        GPL-3.0-only
 Summary:        Janus WebRTC Gateway
@@ -35,6 +29,8 @@ URL:            https://github.com/meetecho/janus-gateway
 Group:          Productivity/Networking/Other
 Source:         %{name}-%{version}.tar.xz
 Source1:        janus.service
+Source100:      %{name}-rpmlintrc
+Patch1:         0001-include-rand-header-file.patch
 # for run autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -66,12 +62,8 @@ BuildRequires:  libwebsockets-devel >= 4.0.0
 # MQTT support
 BuildRequires:  libpaho-mqtt-devel
 Requires(pre):  shadow
-%if %{with systemd}
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
-%else
-PreReq:         %{insserv_prereq} %{fillup_prereq}
-%endif
 
 %define user_name janus
 %define home      %{_sharedstatedir}/janus/
@@ -119,6 +111,7 @@ rm -rv *.jcfg.sample
 chmod -R o= .
 popd
 rm -rv %{buildroot}%{_datadir}/doc/%{name}
+rm -rv %{buildroot}%{_datadir}/janus/streams/test_gstreamer*.sh
 #
 install -D -d -m 0750 %{buildroot}%{home}
 
@@ -156,9 +149,7 @@ install -D -d -m 0750 %{buildroot}%{home}
 %endif
 %{_libdir}/janus/
 %{_datadir}/janus/
-%if %{with systemd}
 %{_unitdir}/janus.service
-%endif
 %dir %attr(750,%{user_name},%{user_name}) %{home}
 
 %files devel
