@@ -2995,7 +2995,6 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
-  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -5920,7 +5919,6 @@ unsorted:
   - golang-github-czerwonk-ping_exporter 
   - golang-github-golang-protobuf 
   - golang-github-jteeuwen-go-bindata 
-  - golang-github-kr-pty 
   - golang-github-linuxdeepin-dde-api 
   - golang-github-linuxdeepin-deepin-daemon 
   - golang-github-linuxdeepin-deepin-desktop-schemas 
@@ -8564,7 +8562,6 @@ unsorted:
   - leechcraft-poshuku-dcac 
   - leechcraft-poshuku-fatape 
   - leechcraft-poshuku-filescheme 
-  - leechcraft-poshuku-foc 
   - leechcraft-poshuku-fua 
   - leechcraft-poshuku-keywords 
   - leechcraft-poshuku-onlinebookmarks 
@@ -13583,7 +13580,7 @@ unsorted:
   - libsliplu1 
   - libslirp-devel 
   - libslopy7_5 
-  - libslurm36: [x86_64] 
+  - libslurm37: [x86_64] 
   - libsmartcols-devel 
   - libsmartcols-devel-32bit: [x86_64] 
   - libsmartcols-devel-static 
@@ -16294,14 +16291,14 @@ unsorted:
   - mpich-ofi-gnu-hpc-devel 
   - mpich-ofi-gnu-hpc-devel-static 
   - mpich-ofi-gnu-hpc-macros-devel 
-  - mpich-ofi_3_4_1-gnu-hpc 
-  - mpich-ofi_3_4_1-gnu-hpc-devel 
-  - mpich-ofi_3_4_1-gnu-hpc-devel-static 
-  - mpich-ofi_3_4_1-gnu-hpc-macros-devel 
-  - mpich_3_4_1-gnu-hpc 
-  - mpich_3_4_1-gnu-hpc-devel 
-  - mpich_3_4_1-gnu-hpc-devel-static 
-  - mpich_3_4_1-gnu-hpc-macros-devel 
+  - mpich-ofi_3_4_2-gnu-hpc 
+  - mpich-ofi_3_4_2-gnu-hpc-devel 
+  - mpich-ofi_3_4_2-gnu-hpc-devel-static 
+  - mpich-ofi_3_4_2-gnu-hpc-macros-devel 
+  - mpich_3_4_2-gnu-hpc 
+  - mpich_3_4_2-gnu-hpc-devel 
+  - mpich_3_4_2-gnu-hpc-devel-static 
+  - mpich_3_4_2-gnu-hpc-macros-devel 
   - mpitests 
   - mpitests-mpich 
   - mpitests-mpich-gnu-hpc 
@@ -17862,7 +17859,6 @@ unsorted:
   - opencensus-proto-source 
   - opencl-cpp-headers 
   - opencl-headers 
-  - opencl-headers-1_2 
   - openconnect-devel 
   - openconnect-doc 
   - opencsg-devel 
@@ -21638,6 +21634,7 @@ unsorted:
   - python36-WSGIProxy2 
   - python36-WSME 
   - python36-WTForms 
+  - python36-WTForms-lang 
   - python36-Wand 
   - python36-WeasyPrint 
   - python36-WebOb 
@@ -23046,7 +23043,6 @@ unsorted:
   - python36-nodeenv 
   - python36-nornir 
   - python36-nose 
-  - python36-nose-cover3 
   - python36-nose-progressive 
   - python36-nose2 
   - python36-nose_warnings_filters 
@@ -23239,7 +23235,6 @@ unsorted:
   - python36-premailer 
   - python36-prestring 
   - python36-pretend 
-  - python36-proboscis 
   - python36-process-tests 
   - python36-proglog 
   - python36-progress 
@@ -24439,6 +24434,7 @@ unsorted:
   - python38-WSGIProxy2 
   - python38-WSME 
   - python38-WTForms 
+  - python38-WTForms-lang 
   - python38-Wand 
   - python38-WeasyPrint 
   - python38-WebOb 
@@ -25919,7 +25915,6 @@ unsorted:
   - python38-nodeenv 
   - python38-nornir 
   - python38-nose 
-  - python38-nose-cover3 
   - python38-nose-progressive 
   - python38-nose2 
   - python38-nose_warnings_filters 
@@ -26133,7 +26128,6 @@ unsorted:
   - python38-premailer 
   - python38-prestring 
   - python38-pretend 
-  - python38-proboscis 
   - python38-process-tests 
   - python38-proglog 
   - python38-progress 
@@ -27391,6 +27385,7 @@ unsorted:
   - python39-WSGIProxy2 
   - python39-WSME 
   - python39-WTForms 
+  - python39-WTForms-lang 
   - python39-Wand 
   - python39-WeasyPrint 
   - python39-WebOb 
@@ -28963,7 +28958,6 @@ unsorted:
   - python39-nodeenv 
   - python39-nornir 
   - python39-nose 
-  - python39-nose-cover3 
   - python39-nose-progressive 
   - python39-nose2 
   - python39-nose_warnings_filters 
@@ -29189,7 +29183,6 @@ unsorted:
   - python39-premailer 
   - python39-prestring 
   - python39-pretend 
-  - python39-proboscis 
   - python39-process-tests 
   - python39-proglog 
   - python39-progress 
