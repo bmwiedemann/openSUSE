@@ -19,15 +19,12 @@
 %{?!python_module:%define python_module() python-%{**} %{!?skip_python3:python3-%{**}}}
 %bcond_without python2
 Name:           python-txtorcon
-Version:        20.0.0
+Version:        21.1.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
 URL:            https://txtorcon.readthedocs.org
 Source:         https://files.pythonhosted.org/packages/source/t/txtorcon/txtorcon-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 362-skip-failing-tests.patch gh#meejah/txtorcon#362 mcepl@suse.com
-# Skip failing tests
-Patch0:         362-skip-failing-tests.patch
 BuildRequires:  %{python_module setuptools >= 36.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

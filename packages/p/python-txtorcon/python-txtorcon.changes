@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Aug 31 20:06:50 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 21.1.0:
+  - This fixes some incorrectly-skipped tests in 21.0.0
+    * Fix some incorrect unit-test skipping logic gh#meejah/txtorcon#354
+      and gh#meejah/txtorcon#352
+    * Fix broken tests revealed by previous fixes gh#meejah/txtorcon#356
+    * fix Python 3.x+ bug with TorInfo and .__class__ access
+      (gh#meejah/txtorcon#350)
+- Patch 362-skip-failing-tests.patch can be removed again.
+
+-------------------------------------------------------------------
 Tue Aug 31 16:08:32 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add 362-skip-failing-tests.patch to skip failing tests
