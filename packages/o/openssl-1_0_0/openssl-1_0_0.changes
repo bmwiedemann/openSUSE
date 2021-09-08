@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Aug 29 02:24:08 UTC 2021 - Jason Sikes <jsikes@suse.com>
+
+- Several OpenSSL functions that print ASN.1 data have been found to assume that
+  the ASN1_STRING byte array will be NUL terminated, even though this is not
+  guaranteed for strings that have been directly constructed. Where an application
+  requests an ASN.1 structure to be printed, and where that ASN.1 structure
+  contains ASN1_STRINGs that have been directly constructed by the application
+  without NUL terminating the "data" field, then a read buffer overrun can occur.
+  * CVE-2021-3712 continued
+  * bsc#1189521
+  * Add CVE-2021-3712-ASN1_STRING-issues.patch
+  * Sourced from openssl-CVE-2021-3712.tar.bz2 posted on bsc-1189521
+    2021-08-24 00:47 PDT by Marcus Meissner and from
+    https://github.com/openssl/openssl/commit/d9d838ddc0ed083fb4c26dd067e71aad7c65ad16
+
+-------------------------------------------------------------------
 Mon Jul 12 12:38:20 UTC 2021 - Jason Sikes <jsikes@suse.com>
 
 - Add safe primes to DH parameter generation

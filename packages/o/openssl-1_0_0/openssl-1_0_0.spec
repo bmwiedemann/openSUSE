@@ -97,6 +97,8 @@ Patch82:        openssl-CVE-2021-23841.patch
 Patch83:        openssl-1.0.0-pic-pie.patch
 Patch84:        openssl-DH.patch
 Patch85:        openssl-add_rfc3526_rfc7919.patch
+# OpenSSL Security Advisory [17 August 2021] bsc#1189521 CVE-2021-3712
+Patch86:        CVE-2021-3712-ASN1_STRING-issues.patch
 # steam patches
 Patch100:       openssl-fix-cpuid_setup.patch
 # compat patches to build with soversion 10 (bsc#1175429)
@@ -259,6 +261,7 @@ testing framework and utilities.
 %patch83 -p1
 %patch84 -p1
 %patch85 -p1
+%patch86 -p1
 
 # clean up patching leftovers
 find . -name '*.orig' -delete
