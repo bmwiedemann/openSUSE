@@ -760,4 +760,14 @@ This should fix the current openQA failure: https://openqa.opensuse.org/tests/12
     <comment></comment>
     <requestid>915224</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>1e7f16ecaccabcfa0d2271bb1a1ddf27</srcmd5>
+    <version>3.5.3</version>
+    <time>1631129790</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 3.5.3
+  - t-u: Purge kernels as part of package operations
+    Required for live patching support [bsc#1189728]</comment>
+    <requestid>917087</requestid>
+  </revision>
 </revisionlist>

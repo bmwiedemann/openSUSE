@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  6 10:04:50 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.5.3
+  - t-u: Purge kernels as part of package operations
+    Required for live patching support [bsc#1189728]
+
+-------------------------------------------------------------------
 Mon Aug 30 17:17:29 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.5.2
