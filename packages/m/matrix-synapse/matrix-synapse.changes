@@ -1,7 +1,106 @@
 -------------------------------------------------------------------
+Tue Sep  7 16:11:58 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.42.0
+  This version of Synapse removes deprecated room-management admin
+  APIs, removes out-of-date email pushers, and improves error
+  handling for fallback templates for user-interactive
+  authentication. For more information on these points, server
+  administrators are encouraged to read the upgrade notes.
+
+  - Features
+    - Support room version 9 from MSC3375. (#10747)
+    - Add support for MSC3231: Token authenticated registration.
+      Users can be required to submit a token during registration
+      to authenticate themselves. Contributed by Callum Brown.
+      (#10142)
+    - Add support for MSC3283: Expose enable_set_displayname in
+      capabilities. (#10452)
+    - Port the PresenceRouter module interface to the new generic
+      interface. (#10524)
+    - Add pagination to the spaces summary based on updates to
+      MSC2946. (#10613, #10725)
+  - Bugfixes
+    - Validate new m.room.power_levels events. Contributed by
+      @aaronraimist. (#10232)
+    - Display an error on User-Interactive Authentication fallback
+      pages when authentication fails. Contributed by Callum Brown.
+      (#10561)
+    - Remove pushers when deleting an e-mail address from an
+      account. Pushers for old unlinked emails will also be
+      deleted. (#10581, #10734)
+    - Reject Client-Server /keys/query requests which provide
+      device_ids incorrectly. (#10593)
+    - Rooms with unsupported room versions are no longer returned
+      via /sync. (#10644)
+    - Enforce the maximum length for per-room display names and
+      avatar URLs. (#10654)
+    - Fix a bug which caused the synapse_user_logins_total
+      Prometheus metric not to be correctly initialised on restart.
+      (#10677)
+    - Improve ServerNoticeServlet to avoid duplicate requests and
+      add unit tests. (#10679)
+    - Fix long-standing issue which caused an error when a
+      thumbnail is requested and there are multiple thumbnails with
+      the same quality rating. (#10684)
+    - Fix a regression introduced in v1.41.0 which affected the
+      performance of concurrent fetches of large sets of events, in
+      extreme cases causing the process to hang. (#10703)
+    - Fix a regression introduced in Synapse 1.41 which broke email
+      transmission on Systems using older versions of the Twisted
+      library. (#10713)
+  - Improved Documentation
+    - Add documentation on how to connect Django with Synapse using
+      OpenID Connect and django-oauth-toolkit. Contributed by
+      @HugoDelval. (#10192)
+    - Advertise https://matrix-org.github.io/synapse documentation
+      in the README and CONTRIBUTING files. (#10595)
+    - Fix some of the titles not rendering in the OpenID Connect
+      documentation. (#10639)
+    - Minor clarifications to the documentation for reverse
+      proxies. (#10708)
+    - Remove table of contents from the top of installation and
+      contributing documentation pages. (#10711)
+  - Deprecations and Removals
+    - Remove deprecated Shutdown Room and Purge Room Admin API.
+      (#8830)
+  - Internal Changes
+    - Print a warning when using one of the deprecated template_dir
+      settings. (#10768)
+    - Improve type hints for the proxy agent and SRV resolver
+      modules. Contributed by @dklimpel. (#10608)
+    - Clean up some of the federation event authentication code for
+      clarity. (#10614, #10615, #10624, #10640)
+    - Add a comment asking developers to leave a reason when
+      bumping the database schema version. (#10621)
+    - Remove not needed database updates in modify user admin API.
+      (#10627)
+    - Convert room member storage tuples to attrs classes. (#10629,
+      #10642)
+    - Use auto-attribs for the attrs classes used in sync. (#10630)
+    - Make backfill and get_missing_events use the same codepath.
+      (#10645)
+    - Improve the performance of the /hierarchy API (from MSC2946)
+      by caching responses received over federation. (#10647)
+    - Run a nightly CI build against Twisted trunk. (#10651,
+      #10672)
+    - Do not print out stack traces for network errors when
+      fetching data over federation. (#10662)
+    - Simplify tests for device admin rest API. (#10664)
+    - Add missing type hints to REST servlets. (#10665, #10666,
+      #10674)
+    - Flatten the tests.synapse.rests package by moving the
+      contents of v1 and v2_alpha into the parent. (#10667)
+    - Update complement.sh to rebuild the base Docker image when
+      run with workers. (#10686)
+    - Split the event-processing methods in FederationHandler into
+      a separate FederationEventHandler. (#10692)
+    - Remove unused compare_digest function. (#10706)
+
+-------------------------------------------------------------------
 Tue Aug 31 14:21:51 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to 1.41.1
+- Update to 1.41.1 (boo#1190037 boo#1190038)
   Due to the two security issues highlighted below, server
   administrators are encouraged to update Synapse. We are not aware
   of these vulnerabilities being exploited in the wild.
