@@ -95,7 +95,6 @@ Requires:       MicroOS-release
 Requires:       dosfstools
 Requires:       glibc-locale-base
 Suggests:       busybox-gzip
-Requires:       haveged
 Requires:       health-checker
 Requires:       health-checker-plugins-MicroOS
 Requires:       iputils
@@ -205,6 +204,7 @@ Provides:       pattern-category() = MicroOS
 Provides:       pattern-icon() = pattern-kubic
 Provides:       pattern-order() = 9030
 Provides:       pattern-visible()
+Requires:       ethtool
 %ifnarch s390x
 Requires:       irqbalance
 %endif

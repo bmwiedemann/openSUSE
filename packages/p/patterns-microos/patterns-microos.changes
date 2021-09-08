@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  6 08:55:20 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add ethtool to hardware pattern [jsc#PM-2983]
+
+-------------------------------------------------------------------
+Mon Sep  6 08:21:28 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Remove haveged (obsolete with recent kernels) [bsc#1190024]
+
+-------------------------------------------------------------------
 Wed Aug 11 16:15:04 UTC 2021 - Teoh Han Hui <teohhanhui@gmail.com>
 
 - Switch from PulseAudio to PipeWire
