@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 30 13:50:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_chrony-wait.service.patch
+  * harden_chronyd.service.patch
+
+-------------------------------------------------------------------
 Thu Jul  1 12:38:13 UTC 2021 - Reinhard Max <max@suse.com>
 
 - boo#1187906: Consolidate all references to the helper script.

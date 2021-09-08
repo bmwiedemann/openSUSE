@@ -358,4 +358,12 @@
   rules: chrony-refid-internal-md5.patch .</comment>
     <requestid>903544</requestid>
   </revision>
+  <revision rev="32" vrev="5">
+    <srcmd5>16826a8621b12252ba41a7c6b5a30a86</srcmd5>
+    <version>4.1</version>
+    <time>1631129776</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>916851</requestid>
+  </revision>
 </revisionlist>
