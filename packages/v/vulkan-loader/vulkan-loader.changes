@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  5 11:06:59 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.189.0
+  * loader: Dont return OOM on function load failure
+  * Deallocate the extension lists when deleting an item from
+    layer list
+  * Add layer and implementation-specific logging
+  * Allow "icd" as well as "implem" for VK_LOADER_DEBUG
+  * Fix Vulkan CTS testcase bug:
+    "create_instance_device_intentional_alloc_fail"
+  * loader: Fix accidental error propagation
+
+-------------------------------------------------------------------
 Mon Jul  5 23:59:23 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.182.0
