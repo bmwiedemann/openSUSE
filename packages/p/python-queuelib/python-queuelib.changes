@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep  6 09:07:34 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.6.2
+  Version 1.6.2
+  -------------
+  (released on August 26th, 2021)
+  No functionality changes with respect to 1.6.1
+  * Added `python_requires>=3.5` to `setup.py`
+  * Formatted the codebase with `black`
+  * Added type annotations
+  * Added CI checks for typing, security and linting
+  Version 1.6.1
+  -------------
+  (released on April 21st, 2021)
+  No code changes with respect to 1.6
+  * Migrate CI to GitHub actions
+  * Fix release
+  Version 1.6
+  -----------
+  (released on April 21st, 2021)
+  * Add peek support
+  * Remove py2 support
+  * Full test coverage
+
+-------------------------------------------------------------------
 Fri Nov 15 10:20:46 UTC 2019 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix requires

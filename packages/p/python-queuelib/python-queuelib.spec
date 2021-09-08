@@ -1,7 +1,7 @@
 #
 # spec file for package python-queuelib
 #
-# Copyright (c) 2019 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-queuelib
-Version:        1.5.0
+Version:        1.6.2
 Release:        0
 Summary:        Collection of Persistent (Disk-Based) Queues
 License:        BSD-2-Clause
@@ -52,7 +52,7 @@ Queuelib goals are speed and simplicity. It was originally part of the
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst NEWS
