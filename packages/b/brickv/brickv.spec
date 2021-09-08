@@ -25,6 +25,7 @@ License:        GPL-2.0-only
 Group:          Development/Tools/Debuggers
 URL:            http://www.tinkerforge.com
 Source0:        https://github.com/Tinkerforge/brickv/archive/v%{version}.tar.gz
+Patch0:         0001-udev-rules-Fix-ATTR-assignment.patch
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -44,6 +45,10 @@ Small Qt GUI to control and test all Bricks and Bricklets from Tinkerforge.
 
 %prep
 %setup -q
+%patch0 -p1
+# remove unneeded shebangs
+sed -i 's|#!/usr/bin/env python3||g' src/brickv/main.py
+sed -i 's|#!/usr/bin/env python3||g' src/brickv/plugin_system/plugins/red/build_serviceproviders.py
 
 %build
 export SERVICEPROVIDERS_XML_PATH=/usr/share/mobile-broadband-provider-info/serviceproviders.xml

@@ -1,0 +1,32 @@
+From 497f502561c805927ae7320bf19b9a54045fadc9 Mon Sep 17 00:00:00 2001
+From: Frank Kunz <mailinglists@kunz-im-inter.net>
+Date: Mon, 6 Sep 2021 22:01:53 +0200
+Subject: [PATCH] udev-rules: Fix ATTR assignment
+
+Signed-off-by: Frank Kunz <mailinglists@kunz-im-inter.net>
+---
+ .../lib/udev/rules.d/99-tinkerforge-brick-flash.rules           | 2 +-
+ .../linux/brickv/lib/udev/rules.d/99-tinkerforge-brickv.rules   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/build_data/linux/brick-flash/lib/udev/rules.d/99-tinkerforge-brick-flash.rules b/src/build_data/linux/brick-flash/lib/udev/rules.d/99-tinkerforge-brick-flash.rules
+index b50de5c8..e646f3ac 100644
+--- a/src/build_data/linux/brick-flash/lib/udev/rules.d/99-tinkerforge-brick-flash.rules
++++ b/src/build_data/linux/brick-flash/lib/udev/rules.d/99-tinkerforge-brick-flash.rules
+@@ -1,3 +1,3 @@
+ # Disable autosuspend for Tinkerforge Brick bootloader mode
+ # Bootloader otherwise stops working the first time autosuspend is enabled
+-ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTR{idProduct}=="6124", TEST=="power/autosuspend", ATTR{power/autosuspend}:="-1"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTR{idProduct}=="6124", TEST=="power/autosuspend", ATTR{power/autosuspend}="-1"
+diff --git a/src/build_data/linux/brickv/lib/udev/rules.d/99-tinkerforge-brickv.rules b/src/build_data/linux/brickv/lib/udev/rules.d/99-tinkerforge-brickv.rules
+index b50de5c8..e646f3ac 100644
+--- a/src/build_data/linux/brickv/lib/udev/rules.d/99-tinkerforge-brickv.rules
++++ b/src/build_data/linux/brickv/lib/udev/rules.d/99-tinkerforge-brickv.rules
+@@ -1,3 +1,3 @@
+ # Disable autosuspend for Tinkerforge Brick bootloader mode
+ # Bootloader otherwise stops working the first time autosuspend is enabled
+-ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTR{idProduct}=="6124", TEST=="power/autosuspend", ATTR{power/autosuspend}:="-1"
++ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="03eb", ATTR{idProduct}=="6124", TEST=="power/autosuspend", ATTR{power/autosuspend}="-1"
+-- 
+2.33.0
+

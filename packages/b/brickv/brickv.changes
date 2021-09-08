@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  7 19:23:04 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
+
+- Fix shebang
+- Add patch to fix udev rule warning
+   0001-udev-rules-Fix-ATTR-assignment.patch
+
+-------------------------------------------------------------------
 Fri May 14 20:33:11 UTC 2021 - Frank Kunz <mailinglists@kunz-im-inter.net>
 
 - Update to new upstream version 2.4.19:
