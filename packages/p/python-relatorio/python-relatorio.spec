@@ -57,7 +57,10 @@ as documents (odt, ods, pdf) or images (png, svg).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+# https://relatorio.tryton.org/bug65
+sed -i 's:iteritems:items:' relatorio/tests/test_api.py
+mv relatorio relatorio_hide
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE
