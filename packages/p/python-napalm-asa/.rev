@@ -15,4 +15,18 @@
     <comment></comment>
     <requestid>805820</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>027e76e31b6fcdce141edaa5d9d6293c</srcmd5>
+    <version>0.1.4</version>
+    <time>1631129804</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.1.4:
+  * No upstream changelog.
+- Correct Source URL to be version agnostic.
+- Drop napalm3.patch:
+  * No longer required.
+- Only skip test_get_config_filtered, which is not supported. 
+- Refresh {Build,}Requires on python-naplam.</comment>
+    <requestid>917392</requestid>
+  </revision>
 </revisionlist>
