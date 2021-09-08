@@ -1,0 +1,168 @@
+From 601ffa784f03cea843b9b732e561ffea0b8c036f Mon Sep 17 00:00:00 2001
+From: Oleksandr Shchirskyi <oleksandr.shchirskyi@linux.intel.com>
+Date: Fri, 18 Jun 2021 15:53:32 +0200
+Subject: [PATCH] Don't associate spares with other arrays during RAID Examine
+Git-commit: 601ffa784f03cea843b9b732e561ffea0b8c036f
+Patch-mainline: mdadm-4.1+
+References: bsc#1180661, bsc#1182642
+
+Spares in imsm belong to containers, not volumes, and must go into
+a separate container when assembling the RAID.
+Remove association spares with other arrays and make Examine print
+separate containers for spares.
+Auto assemble without config file already works like this. So make
+creating a config file and assembling from it consistent with auto
+assemble.
+With this change, mdadm -Es will add this line to output if spares
+are found:
+ARRAY metadata=imsm UUID=00000000:00000000:00000000:00000000
+
+Signed-off-by: Oleksandr Shchirskyi <oleksandr.shchirskyi@linux.intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Acked-by: Coly Li <colyli@suse.de>
+---
+ Examine.c     |  2 +-
+ super-intel.c | 74 +++++++++++++--------------------------------------
+ 2 files changed, 20 insertions(+), 56 deletions(-)
+
+Index: mdadm-4.1/Examine.c
+===================================================================
+--- mdadm-4.1.orig/Examine.c
++++ mdadm-4.1/Examine.c
+@@ -166,7 +166,7 @@ int Examine(struct mddev_dev *devlist,
+ 			int newline = 0;
+ 
+ 			ap->st->ss->brief_examine_super(ap->st, c->verbose > 0);
+-			if (ap->spares)
++			if (ap->spares && !ap->st->ss->external)
+ 				newline += printf("   spares=%d", ap->spares);
+ 			if (c->verbose > 0) {
+ 				newline += printf("   devices");
+Index: mdadm-4.1/super-intel.c
+===================================================================
+--- mdadm-4.1.orig/super-intel.c
++++ mdadm-4.1/super-intel.c
+@@ -2084,12 +2084,6 @@ static void brief_examine_super_imsm(str
+ 	/* We just write a generic IMSM ARRAY entry */
+ 	struct mdinfo info;
+ 	char nbuf[64];
+-	struct intel_super *super = st->sb;
+-
+-	if (!super->anchor->num_raid_devs) {
+-		printf("ARRAY metadata=imsm\n");
+-		return;
+-	}
+ 
+ 	getinfo_super_imsm(st, &info, NULL);
+ 	fname_from_uuid(st, &info, nbuf, ':');
+@@ -3835,12 +3829,9 @@ static void imsm_copy_dev(struct imsm_de
+ 
+ static int compare_super_imsm(struct supertype *st, struct supertype *tst)
+ {
+-	/*
+-	 * return:
++	/*  return:
+ 	 *  0 same, or first was empty, and second was copied
+-	 *  1 second had wrong number
+-	 *  2 wrong uuid
+-	 *  3 wrong other info
++	 *  1 sb are different
+ 	 */
+ 	struct intel_super *first = st->sb;
+ 	struct intel_super *sec = tst->sb;
+@@ -3852,27 +3843,27 @@ static int compare_super_imsm(struct sup
+ 	}
+ 	/* in platform dependent environment test if the disks
+ 	 * use the same Intel hba
+-	 * If not on Intel hba at all, allow anything.
++	 * if not on Intel hba at all, allow anything.
++	 * doesn't check HBAs if num_raid_devs is not set, as it means
++	 * it is a free floating spare, and all spares regardless of HBA type
++	 * will fall into separate container during the assembly
+ 	 */
+-	if (!check_env("IMSM_NO_PLATFORM") && first->hba && sec->hba) {
++	if (first->hba && sec->hba && first->anchor->num_raid_devs != 0) {
+ 		if (first->hba->type != sec->hba->type) {
+ 			fprintf(stderr,
+ 				"HBAs of devices do not match %s != %s\n",
+ 				get_sys_dev_type(first->hba->type),
+ 				get_sys_dev_type(sec->hba->type));
+-			return 3;
++			return 1;
+ 		}
+ 		if (first->orom != sec->orom) {
+ 			fprintf(stderr,
+ 				"HBAs of devices do not match %s != %s\n",
+ 				first->hba->pci_id, sec->hba->pci_id);
+-			return 3;
++			return 1;
+ 		}
+ 	}
+ 
+-	/* if an anchor does not have num_raid_devs set then it is a free
+-	 * floating spare
+-	 */
+ 	if (first->anchor->num_raid_devs > 0 &&
+ 	    sec->anchor->num_raid_devs > 0) {
+ 		/* Determine if these disks might ever have been
+@@ -3884,7 +3875,7 @@ static int compare_super_imsm(struct sup
+ 
+ 		if (memcmp(first->anchor->sig, sec->anchor->sig,
+ 			   MAX_SIGNATURE_LENGTH) != 0)
+-			return 3;
++			return 1;
+ 
+ 		if (first_family == 0)
+ 			first_family = first->anchor->family_num;
+@@ -3892,43 +3883,17 @@ static int compare_super_imsm(struct sup
+ 			sec_family = sec->anchor->family_num;
+ 
+ 		if (first_family != sec_family)
+-			return 3;
++			return 1;
+ 
+ 	}
+ 
+-	/* if 'first' is a spare promote it to a populated mpb with sec's
+-	 * family number
+-	 */
+-	if (first->anchor->num_raid_devs == 0 &&
+-	    sec->anchor->num_raid_devs > 0) {
+-		int i;
+-		struct intel_dev *dv;
+-		struct imsm_dev *dev;
+-
+-		/* we need to copy raid device info from sec if an allocation
+-		 * fails here we don't associate the spare
+-		 */
+-		for (i = 0; i < sec->anchor->num_raid_devs; i++) {
+-			dv = xmalloc(sizeof(*dv));
+-			dev = xmalloc(sizeof_imsm_dev(get_imsm_dev(sec, i), 1));
+-			dv->dev = dev;
+-			dv->index = i;
+-			dv->next = first->devlist;
+-			first->devlist = dv;
+-		}
+-		if (i < sec->anchor->num_raid_devs) {
+-			/* allocation failure */
+-			free_devlist(first);
+-			pr_err("imsm: failed to associate spare\n");
+-			return 3;
+-		}
+-		first->anchor->num_raid_devs = sec->anchor->num_raid_devs;
+-		first->anchor->orig_family_num = sec->anchor->orig_family_num;
+-		first->anchor->family_num = sec->anchor->family_num;
+-		memcpy(first->anchor->sig, sec->anchor->sig, MAX_SIGNATURE_LENGTH);
+-		for (i = 0; i < sec->anchor->num_raid_devs; i++)
+-			imsm_copy_dev(get_imsm_dev(first, i), get_imsm_dev(sec, i));
+-	}
++	/* if an anchor does not have num_raid_devs set then it is a free
++	* floating spare. don't assosiate spare with any array, as during assembly
++	* spares shall fall into separate container, from which they can be moved
++	* when necessary
++	*/
++	if (first->anchor->num_raid_devs ^ sec->anchor->num_raid_devs)
++		return 1;
+ 
+ 	return 0;
+ }

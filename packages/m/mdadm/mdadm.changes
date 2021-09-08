@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep  2 05:17:18 UTC 2021 - Coly Li <colyli@suse.com>
+
+- Remove Spare drives line from details for external metadata
+  (bsc#1180661, bsc#1182642)
+  0118-Remove-Spare-drives-line-from-details-for-external-m.patch
+- Don't associate spares with other arrays during RAID Examine
+  (bsc#1180661, bsc#1182642)
+  0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch
+
+-------------------------------------------------------------------
 Fri May 14 14:40:40 UTC 2021 - Coly Li <colyli@suse.com>
 
 - Grow: be careful of corrupt dev_roles list (bsc#1181619)

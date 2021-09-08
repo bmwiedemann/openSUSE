@@ -154,6 +154,8 @@ Patch114:       0114-super1-fix-Floating-point-exception.patch
 Patch115:       0115-super1.c-avoid-useless-sync-when-bitmap-switches-fro.patch
 Patch116:       0116-imsm-nvme-multipath-support.patch
 Patch117:       0117-Grow-be-careful-of-corrupt-dev_roles-list.patch
+Patch118:       0118-Remove-Spare-drives-line-from-details-for-external-m.patch
+Patch119:       0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch
 Patch1001:      1001-display-timeout-status.patch
 Patch1002:      1002-OnCalendar-format-fix-of-mdcheck_start-timer.patch
 Patch1003:      1003-mdadm-treat-the-Dell-softraid-array-as-local-array.patch
@@ -278,6 +280,8 @@ mdadm is a program that can be used to control Linux md devices.
 %patch115 -p1
 %patch116 -p1
 %patch117 -p1
+%patch118 -p1
+%patch119 -p1
 %patch1001 -p1
 %patch1002 -p1
 %patch1003 -p1

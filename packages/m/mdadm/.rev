@@ -1355,4 +1355,17 @@ which haven't landed upstream yet
     <comment></comment>
     <requestid>893458</requestid>
   </revision>
+  <revision rev="129" vrev="14">
+    <srcmd5>01a19759a9450d2c383a7f4edb87178b</srcmd5>
+    <version>4.1</version>
+    <time>1631129780</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove Spare drives line from details for external metadata
+  (bsc#1180661, bsc#1182642)
+  0118-Remove-Spare-drives-line-from-details-for-external-m.patch
+- Don't associate spares with other arrays during RAID Examine
+  (bsc#1180661, bsc#1182642)
+  0119-Don-t-associate-spares-with-other-arrays-during-RAID.patch (forwarded request 915689 from colyli)</comment>
+    <requestid>916947</requestid>
+  </revision>
 </revisionlist>

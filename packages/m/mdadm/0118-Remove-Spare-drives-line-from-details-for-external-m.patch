@@ -1,0 +1,38 @@
+From 8d69bf147ec77447c5d45c17bed7dc017808cc44 Mon Sep 17 00:00:00 2001
+From: Oleksandr Shchirskyi <oleksandr.shchirskyi@linux.intel.com>
+Date: Fri, 18 Jun 2021 15:53:31 +0200
+Subject: [PATCH] Remove Spare drives line from details for external metadata
+Git-commit: 8d69bf147ec77447c5d45c17bed7dc017808cc44
+Patch-mainline: mdadm-4.1+
+References: bsc#1180661, bsc#1182642
+
+Arrays with external metadata do not have spare disks directly
+assigned to volumes; spare disks belong to containers and are
+moved to arrays when the array is degraded/reshaping.
+Thus, the display of zero spare disks in volume details is
+incorrect and can be confusing.
+
+Signed-off-by: Oleksandr Shchirskyi <oleksandr.shchirskyi@linux.intel.com>
+Signed-off-by: Jes Sorensen <jsorensen@fb.com>
+Acked-by: Coly Li <colyli@suse.de>
+---
+ Detail.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Detail.c b/Detail.c
+index cd26fb0..ad56344 100644
+--- a/Detail.c
++++ b/Detail.c
+@@ -548,7 +548,8 @@ int Detail(char *dev, struct context *c)
+ 			       array.working_disks);
+ 		if (array.raid_disks) {
+ 			printf("    Failed Devices : %d\n", array.failed_disks);
+-			printf("     Spare Devices : %d\n", array.spare_disks);
++			if (!external)
++				printf("     Spare Devices : %d\n", array.spare_disks);
+ 		}
+ 		printf("\n");
+ 		if (array.level == 5) {
+-- 
+2.31.1
+
