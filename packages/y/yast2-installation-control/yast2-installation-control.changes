@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  6 15:08:30 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Fix default ntp servers definition allowing zero or multiple
+  server entries (bsc#1180699).
+- 4.4.3
+
+-------------------------------------------------------------------
 Mon May 31 07:50:39 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Allow to modify IPv4 and IPv6 forwarding defaults (bsc#1186280)
