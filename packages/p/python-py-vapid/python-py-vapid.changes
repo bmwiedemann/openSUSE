@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  8 04:27:28 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.2:
+  * allow hyphens in sub domains (#96)
+  * Fix argument declaration (#95)
+  * use better host validation(#92)
+  * do not enforce dot in sub claim email host part (#90)
+  * switch to pytest from nose
+  * fix JWT padding (Thanks @JohnDoee) #81 
+- Drop skip-test_sign_01.patch, no longer required
+
+-------------------------------------------------------------------
 Sun Jun  7 06:14:33 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec, removing unnecessary build dependencies

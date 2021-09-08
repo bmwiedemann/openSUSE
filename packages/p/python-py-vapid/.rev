@@ -7,4 +7,19 @@
     <comment> </comment>
     <requestid>815519</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4174dba5b8b45949735fd12441e7e778</srcmd5>
+    <version>1.8.2</version>
+    <time>1631129805</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.2:
+  * allow hyphens in sub domains (#96)
+  * Fix argument declaration (#95)
+  * use better host validation(#92)
+  * do not enforce dot in sub claim email host part (#90)
+  * switch to pytest from nose
+  * fix JWT padding (Thanks @JohnDoee) #81 
+- Drop skip-test_sign_01.patch, no longer required</comment>
+    <requestid>917409</requestid>
+  </revision>
 </revisionlist>
