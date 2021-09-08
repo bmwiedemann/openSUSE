@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  6 13:40:10 UTC 2021 - pgajdos@suse.com
+
+- version update to 5.13 [bsc#1189908]
+  http://linux-man-pages.blogspot.com/2021/06/man-pages-512-released.html
+
+-------------------------------------------------------------------
 Tue Aug  3 09:32:32 UTC 2021 - pgajdos@suse.com
 
 - do not package man5/motd.5, it is provided by pam package

@@ -1916,4 +1916,13 @@
   [bsc#1188724]</comment>
     <requestid>909932</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>0fd574657c6a521324c159a2e50c7a8e</srcmd5>
+    <version>5.13</version>
+    <time>1631129795</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 5.13 [bsc#1189908]
+  http://linux-man-pages.blogspot.com/2021/06/man-pages-512-released.html</comment>
+    <requestid>917211</requestid>
+  </revision>
 </revisionlist>
