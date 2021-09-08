@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>809804</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>f346db76c451bcdba38a969b6ed53c99</srcmd5>
+    <version>1.2.6</version>
+    <time>1631129807</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unnecessary BuildRequires on nose.</comment>
+    <requestid>917449</requestid>
+  </revision>
 </revisionlist>

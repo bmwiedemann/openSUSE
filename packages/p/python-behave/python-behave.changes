@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  8 06:52:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop unnecessary BuildRequires on nose. 
+
+-------------------------------------------------------------------
 Wed May 27 09:36:27 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative

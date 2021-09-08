@@ -1,7 +1,7 @@
 #
 # spec file for package python-behave
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,7 @@ Requires:       python-parse >= 1.8.2
 Requires:       python-parse_type >= 0.4.2
 Requires:       python-six >= 1.11
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Suggests:       python-argparse
 Suggests:       python-coverage
 Suggests:       python-enum34
@@ -55,7 +55,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyHamcrest >= 1.8}
 BuildRequires:  %{python_module mock >= 1.1}
-BuildRequires:  %{python_module nose >= 1.3}
 BuildRequires:  %{python_module parse >= 1.8.2}
 BuildRequires:  %{python_module parse_type >= 0.4.2}
 BuildRequires:  %{python_module path.py >= 10.1}
