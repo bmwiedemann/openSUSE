@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep  7 18:09:15 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- only build the documentation in the ocio_tools case:
+  - move BuildRequires into the %if
+  - explicitely disable doc building in the library build case
+
+-------------------------------------------------------------------
+Tue Sep  7 17:02:01 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- A probably better fix for solving the build cycle. First build
+  will only build all the libraries, 2nd build the cmdline tools
+
+-------------------------------------------------------------------
+Tue Sep  7 08:47:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not depends on OpenImageIO, in order to break up a build
+  cycle (boo#1190237).
+
+-------------------------------------------------------------------
+Fri Aug 20 08:19:26 UTC 2021 - pgajdos@suse.com
+
+- fix build with openexr3
+- added patches
+  https://aur.archlinux.org/cgit/aur.git/tree/opencolorio-openexr3.patch?h=opencolorio-qfix
+  + OpenColorIO-openexr3.patch
+
+-------------------------------------------------------------------
 Tue Jul 27 06:47:25 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix 64bit library install location for aarch64 and ppc64* as
