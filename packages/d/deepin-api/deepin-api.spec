@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-api
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2021 Hillwood Yang <hillwood@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -13,7 +13,10 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 #
 %define   provider        github
 %define   provider_tld    com
@@ -25,7 +28,8 @@ Name:           deepin-api
 Version:        5.4.9
 Release:        0
 Summary:        Go-lang bingding for dde-daemon
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
+Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-api
 Source0:        https://github.com/linuxdeepin/dde-api/archive/%{version}/%{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -35,37 +39,38 @@ Patch0:         default-grub2-theme.patch
 # PATCH-FIX-OPENSUSE disable-gosrc-install-in-makefile.patch hillwood@opensuse.org
 # Use goinstall macro instead of makefile
 Patch1:         disable-gosrc-install-in-makefile.patch
-Group:          System/GUI/Other
-BuildRequires:  fdupes
+Patch2:         harden_deepin-login-sound.service.patch
+Patch3:         harden_deepin-shutdown-sound.service.patch
 BuildRequires:  deepin-gettext-tools
+BuildRequires:  fdupes
 %if 0%{?suse_version} > 1500
 BuildRequires:  golang(API) = 1.15
 %endif
-BuildRequires:  golang-packaging
-BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(cairo-ft)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(libcanberra)
-BuildRequires:  pkgconfig(librsvg-2.0)
-BuildRequires:  pkgconfig(poppler-glib)
-BuildRequires:  pkgconfig(polkit-qt5-1)
-BuildRequires:  pkgconfig(systemd)
-BuildRequires:  pkgconfig(xfixes)
-BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(libpulse-simple)
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  update-desktop-files
+BuildRequires:  deepin-gir-generator
 BuildRequires:  deepin-sound-theme
-BuildRequires:  systemd-rpm-macros
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
 BuildRequires:  golang-github-linuxdeepin-go-lib
 BuildRequires:  golang-github-linuxdeepin-go-x11-client
-BuildRequires:  golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
-BuildRequires:  deepin-gir-generator
+BuildRequires:  golang-packaging
+BuildRequires:  systemd-rpm-macros
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(cairo-ft)
+BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gudev-1.0)
+BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libpulse-simple)
+BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(polkit-qt5-1)
+BuildRequires:  pkgconfig(poppler-glib)
+BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xi)
 Requires:       deepin-desktop-base
 Requires:       rfkill
 AutoReqProv:    Off
@@ -78,29 +83,28 @@ zone detecting, thumbnail generating, sound playing, etc.
 %package -n golang-%{provider}-%{project}-%{repo}
 Summary:        DDE API golang codes
 Group:          Development/Languages/Golang
-Requires:       pkgconfig(glib-2.0)
-Requires:       pkgconfig(cairo-ft)
-Requires:       pkgconfig(gio-2.0)
-Requires:       pkgconfig(gtk+-3.0)
-Requires:       pkgconfig(gdk-pixbuf-xlib-2.0)
-Requires:       pkgconfig(gudev-1.0)
-Requires:       pkgconfig(libcanberra)
-Requires:       pkgconfig(librsvg-2.0)
-Requires:       pkgconfig(poppler-glib)
-Requires:       pkgconfig(polkit-qt5-1)
-Requires:       pkgconfig(systemd)
-Requires:       pkgconfig(xfixes)
-Requires:       pkgconfig(xcursor)
-Requires:       pkgconfig(x11)
-Requires:       pkgconfig(xi)
-Requires:       pkgconfig(libpulse-simple)
-Requires:       pkgconfig(alsa)
+Requires:       deepin-gir-generator
+Requires:       golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
 Requires:       golang-github-linuxdeepin-go-lib
 Requires:       golang-github-linuxdeepin-go-x11-client
-Requires:       golang-github-linuxdeepin-go-dbus-factory >= 1.9.17
-Requires:       deepin-gir-generator
+Requires:       pkgconfig(alsa)
+Requires:       pkgconfig(cairo-ft)
+Requires:       pkgconfig(gdk-pixbuf-xlib-2.0)
+Requires:       pkgconfig(gio-2.0)
+Requires:       pkgconfig(glib-2.0)
+Requires:       pkgconfig(gtk+-3.0)
+Requires:       pkgconfig(gudev-1.0)
+Requires:       pkgconfig(libcanberra)
+Requires:       pkgconfig(libpulse-simple)
+Requires:       pkgconfig(librsvg-2.0)
+Requires:       pkgconfig(polkit-qt5-1)
+Requires:       pkgconfig(poppler-glib)
+Requires:       pkgconfig(systemd)
+Requires:       pkgconfig(x11)
+Requires:       pkgconfig(xcursor)
+Requires:       pkgconfig(xfixes)
+Requires:       pkgconfig(xi)
 BuildArch:      noarch
-AutoReqProv:    On
 AutoReq:        Off
 %{go_provides}
 
@@ -167,7 +171,6 @@ getent passwd deepin-sound-player >/dev/null || %{_sbindir}/useradd --system -c 
 %postun
 %service_del_postun deepin-shutdown-sound.service deepin-login-sound.service
 
-
 %files
 %doc README.md
 %license LICENSE
@@ -190,7 +193,6 @@ getent passwd deepin-sound-player >/dev/null || %{_sbindir}/useradd --system -c 
 %dir /var/lib/polkit-1/localauthority
 %dir /var/lib/polkit-1/localauthority/10-vendor.d
 /var/lib/polkit-1/localauthority/10-vendor.d/com.deepin.api.device.pkla
-
 
 %files -n golang-%{provider}-%{project}-%{repo} -f file.lst
 

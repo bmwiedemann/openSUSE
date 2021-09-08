@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  1 12:35:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_deepin-login-sound.service.patch
+  * harden_deepin-shutdown-sound.service.patch
+
+-------------------------------------------------------------------
 Tue Aug 17 15:05:35 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix boo#1070943, drop deepin-api-dbus-installer and deepin-api-polkit-installer 
