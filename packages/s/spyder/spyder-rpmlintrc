@@ -1,2 +1,2 @@
-addFilter("python-naming-policy-not-applied")
-addFilter("devel-file-in-non-devel-package .*/tests/data/.*")
+# lang package has no python scripts
+addFilter("lang.*no-dependency-on python")

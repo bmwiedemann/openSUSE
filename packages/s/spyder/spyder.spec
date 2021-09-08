@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -324,17 +324,14 @@ donttest+=" or (test_objectexplorer_collection_types and params5)"
 donttest+=" or test_run_python_script_in_terminal"
 # we are not on conda env
 donttest+=" or test_status_bar_conda_interpreter_status"
-# "Only for CIS, but we are not on conda as upstream's CI
+# "Only for CIs", but we are not on conda/pyenv as upstream's CI
 donttest+=" or test_conda"
 donttest+=" or test_is_valid_interpreter"
-# "Only for CIs", but we are not on pyenv as upstream's CI
 donttest+=" or test_pyenv"
 # too flaky for OBS
 donttest+=" or test_update_decorations_when_scrolling"
 # occational fail
 donttest+=" or test_bracket_closing_new_line"
-# combobox not populated inside our test environment
-donttest+=" or test_maininterpreter_page"
 # flaky
 donttest+=" or (test_ipythonconsole and test_pdb_multiline)"
 # These tests are testing against buggy behavior in Qt 5.12. We have newer Qt in Tumbleweed.
@@ -352,8 +349,6 @@ donttest+=" or test_load_time"
 donttest+=" or test_get_pydoc or test_pydocbrowser"
 # segfault in openSUSE:Factory (?)
 donttest+=" or  test_goto_uri_project_root_path"
-
-# tests marked slow:
 # completes to math.hypot(cooordinates) instead of expected math.hypot(*coordinates)
 donttest+=" or (test_introspection and test_completions)"
 # test_update.py would require network connections
@@ -364,8 +359,6 @@ donttest+=" or test_class_func_selector"
 donttest+=" or test_console_working_directory"
 # tries to download stuff
 donttest+=" or test_kite_install"
-# no warnings returned here. PyLS/LSP problem? It works in the installed application, though.
-donttest+=" or test_ignore_warnings or  test_move_warnings or  test_get_warnings or  test_update_warnings"
 # qtbot timeout
 donttest+=" or test_get_hints"
 # occasional segfaults. fails to get the root tree otherwise (LSP problem?)
@@ -381,6 +374,8 @@ donttest+=" or test_ipython_config_dialog"
 donttest+=" or (test_formatting and document and autopep8)"
 # flaky
 donttest+=" or (test_pdb_eventloop and qt5)"
+# Test is not independent: QThread *sometimes* misses the CONF_SECTION
+donttest+=" or test_handle_exception"
 
 # Can't use pytest-xvfb because the tests leave widgets open and trigger https://github.com/The-Compiler/pytest-xvfb/issues/11
 function testspyder() {

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  8 09:20:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Clean a few test skips, add a new one
+- remove _constraints
+
+-------------------------------------------------------------------
+Mon Sep  6 11:49:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 5.1.3
+  * Fix RTreeError with snippets
+  * Fix TypeError with snippets
+- Filter new rpmlint 2 errors in spyder-rpmlintrc
+
+-------------------------------------------------------------------
 Thu Sep  2 12:25:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 5.1.2
