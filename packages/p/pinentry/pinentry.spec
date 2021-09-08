@@ -20,7 +20,7 @@
 %define nmajor  %(grep NCURSES_VERSION_MAJOR < %{_includedir}/ncurses.h)
 %global flavor @BUILD_FLAVOR@%{nil}
 Name:           pinentry
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 License:        GPL-2.0-or-later
@@ -39,19 +39,20 @@ BuildRequires:  libgpg-error-devel >= 1.16
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
+Provides:       pinentry-dialog
 %if "%{flavor}" == "gui"
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Widgets)
-%ifnarch ppc
-BuildRequires:  pkgconfig(efl)
-%endif
+BuildRequires:  pkgconfig(Qt5X11Extras) >= 5.1.0
 BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gcr-base-3)
 BuildRequires:  pkgconfig(gtk+-2.0) >= 2.12.0
 BuildRequires:  pkgconfig(libsecret-1)
+%ifnarch ppc
+BuildRequires:  pkgconfig(efl)
 %endif
-Provides:       pinentry-dialog
+%endif
 
 %description
 This is a collection of simple PIN or passphrase entry dialogs which
@@ -245,6 +246,7 @@ install -p -m 755 -D %{SOURCE3} %{buildroot}%{_bindir}/pinentry
 %{_bindir}/pinentry-qt4
 %attr(755,root,root) %{_bindir}/pinentry-qt
 %else
+
 %files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README

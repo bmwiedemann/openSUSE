@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Aug 28 09:33:53 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- pinentry 1.2.0:
+  * qt: Show a warning if Caps Lock is on
+  * qt: Support password formatting.  This makes generated
+    passwords easier to transcribe
+  * qt: Fix showing of pinentry window on Wayland
+  * qt: Check passphrase constraints before accepting passphrase
+    if passphrase constraints are requested to be enforced
+  * qt: Improve detection of running in a GUI session
+  * qt: Improve accessibility when entering new password
+
+-------------------------------------------------------------------
 Fri Jan 29 22:35:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - add _multibuild to separate out gui client builds 
