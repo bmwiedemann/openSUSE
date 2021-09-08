@@ -210,4 +210,12 @@ join Staging:E</comment>
     <comment>- Update to release 2021.1</comment>
     <requestid>890654</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>841e2fcca594870845e91058bf53b6aa</srcmd5>
+    <version>2021.3</version>
+    <time>1631129785</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2021.3</comment>
+    <requestid>917058</requestid>
+  </revision>
 </revisionlist>
