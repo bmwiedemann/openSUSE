@@ -41,6 +41,8 @@ License:        BSD-3-Clause
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
 Source0:        https://github.com/OpenImageIO/oiio/archive/Release-%{version}.tar.gz#/oiio-%{version}.tar.gz
+# using PREFER_CONFIG will grab the system tbb cmake definition, that's doesn't define the necessary variables
+Patch0:         fix-tbb-linking.diff
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
 BuildRequires:  cmake >= 3.12
@@ -71,7 +73,7 @@ BuildRequires:  txt2man
 BuildRequires:  pkgconfig(OpenColorIO)
 BuildRequires:  pkgconfig(OpenEXR)
 %if %{with ptex}
-BuildRequires:  pkgconfig(Ptex)
+BuildRequires:  ptex-devel-static
 %endif
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(fmt)
@@ -163,6 +165,7 @@ This package contains python bindings for OpenImageIO.
 
 %prep
 %setup -q -n oiio-Release-%{version}
+%autopatch -p1
 
 # Make sure that bundled libraries are not used
 rm -f src/include/pugiconfig.hpp \
@@ -174,6 +177,7 @@ rm -rf src/include/tbb/
 %ifarch ppc
     -DNOTHREADS=ON \
 %endif
+    -DCMAKE_CXX_STANDARD=14 \
     -DINSTALL_DOCS:BOOL=ON \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
     -DCMAKE_INSTALL_MANDIR:PATH=%{_mandir}/man1 \

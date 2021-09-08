@@ -1,0 +1,12 @@
+--- a/src/cmake/externalpackages.cmake	2021-08-01 22:52:26.000000000 +0000
++++ b/src/cmake/externalpackages.cmake	2021-08-18 12:26:34.418401091 +0000
+@@ -171,8 +171,7 @@
+ # Intel TBB
+ set (TBB_USE_DEBUG_BUILD OFF)
+ checked_find_package (TBB 2017
+-                      DEFINITIONS  -DUSE_TBB=1
+-                      PREFER_CONFIG)
++                      DEFINITIONS  -DUSE_TBB=1)
+ 
+ checked_find_package (DCMTK VERSION_MIN 3.6.1)  # For DICOM images
+ checked_find_package (FFmpeg VERSION_MIN 2.6)
