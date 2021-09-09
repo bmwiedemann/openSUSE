@@ -18,7 +18,7 @@
 
 Name:           cutterff
 Summary:        Video cutter that uses FFmpeg and GTK+
-Version:        1.0
+Version:        1.0.1
 Release:        0
 URL:            https://cutterff.sourceforge.io/
 Source0:        %{name}-%{version}-src.tar.bz2

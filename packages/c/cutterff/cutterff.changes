@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 09 19:19:31 UTC 2021 - enzokiel@kabelmail.de
+
+- Update to version 1.0.1
+  * gui.c
+    + if encoding (softcut enabled) has finished, the text in the
+      progressbar may not disappear. Fixed!
+  * ffmpeg.c
+    + if saving a file with softcut more than once the automatic
+      enabling of 'h264_mp4toannexb' or 'hevc_mp4toannexb' fails.
+      Fixed!
+    + in 'cff_ffmpeg_copy_write_frame_softcut' the PTS assignment
+      may wrong, 'pts -= pts_diff' followed by 'pts = pptr->dts'.
+      Fixed!
+    + 'av_packet_int' replaced with 'av_packet_alloc'
+    + 'av_packet_ref' replaced with 'av_packet_clone'
+
+-------------------------------------------------------------------
 Tue Aug 31 13:52:39 UTC 2021 - enzokiel@kabelmail.de
 
 - Update to version 1.0
