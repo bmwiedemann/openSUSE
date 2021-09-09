@@ -19,7 +19,7 @@
 %global pkg_name criterion
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.9.0
+Version:        1.5.10.0
 Release:        0
 Summary:        Robust, reliable performance measurement and analysis
 License:        BSD-2-Clause

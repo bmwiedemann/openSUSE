@@ -7,4 +7,12 @@
     <comment>new haskell package</comment>
     <requestid>890677</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f912e080650df342b81586c44c69f8d7</srcmd5>
+    <version>1.5.10.0</version>
+    <time>1631221653</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>917482</requestid>
+  </revision>
 </revisionlist>

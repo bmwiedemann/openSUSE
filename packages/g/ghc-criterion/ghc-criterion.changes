@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep  3 13:23:55 UTC 2021 - psimons@suse.com
+
+- Update criterion to version 1.5.10.0 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
+Sat Aug 21 16:27:28 UTC 2021 - psimons@suse.com
+
+- Update criterion to version 1.5.10.0.
+  1.5.10.0
+
+  * Fix a bug in which the `defaultMainWith` function would not use the
+    `regressions` values specified in the `Config` argument. This bug only
+    affected `criterion` the library—uses of the `--regressions` flag from
+    `criterion` executables themselves were unaffected.
+
+-------------------------------------------------------------------
 Mon Apr 26 09:47:18 UTC 2021 - psimons@suse.com
 
 - Add criterion at version 1.5.9.0 revision 1.
