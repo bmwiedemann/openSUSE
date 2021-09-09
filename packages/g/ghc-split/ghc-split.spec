@@ -67,6 +67,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
+chmod a-x README CHANGES
 
 %install
 %ghc_lib_install
