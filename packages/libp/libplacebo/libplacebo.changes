@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Tue Sep  7 09:09:22 UTC 2021 - Niklas Haas <obs@haasn.xyz>
+
+- Update libplacebo to version 4.157.0:
+
+This is a major new release involving a significant overhaul of the
+public API, full thread safety, support for Direct3D 11 / Win32 /
+MSVC, native HDR output, and more.
+
+The primary way of accessing most libplacebo objects has been revamped.
+Rather than writing e.g. `const struct pl_tex *image`, users now simply
+write `pl_tex image`. In addition, the `struct pl_context *ctx` was
+universally refactored and replaced by `pl_log log`, with no concern
+besides logging.
+
+Direct3D 11 is now natively supported by libplacebo, and compiling on
+Windows in general has been made more straightforward.
+
+The entire API was revamped to be thread safe by default, even when
+using OpenGL (assuming the user provides the appropriate context binding
+callbacks). Accompanying this change, the `pl_queue` has been rewritten
+with multi-threaded decoding loops in mind. See the accompanying
+`plplay` demo for an illustration.
+
+Finally, this release brings with it a lot of features for feature
+parity with mpv, such as the ability to get pass stats / timings,
+oversample scaling, and more.
+
+Additions:
+- add a `void *user_data` field to `pl_frame`, with no further
+  interpretation by libplacebo
+- add `pl_queue_push_block`, useful for multi-threaded decoding loops
+- add a `uint64_t timeout` to `pl_queue_update`, allowing it to
+  block until frames are available even when not using a `get_frame`
+  callback
+- make `pl_queue_update` also return valid data when failing with
+  PL_QUEUE_MORE, allowing access to partial/incomplete mix outputs
+- allow calling `pl_render_image` on `image == NULL`, to render overlays
+  only
+- add `pl_get_buffer2`, API-compatible with AVCodecContext.get_buffer2
+- add support for blitting from/to several obscure formats such as
+  a1rgb5 or 64-bit integer formats
+- add `pl_tex_clear_ex` to support clearing integer textures
+- add `pl_render_params.ignore_icc_profiles`, for debugging
+- add `pl_queue_params.interpolation_threshold`, to allow disabling
+  frame mixing when the source FPS approximately matches the display FPS
+- always accept DRM_FORMAT_MOD_INVALID for texture imports
+- add extra windowing functions to <libplacebo/filters.h>
+- add the `pl_fmt.gatherable` capability
+- add `pl_shader_sample_oversample`, a variant of nearest-neighbour
+  that preserves pixel aspect ratios - good for pixel art
+- add `pl_scale_filters` alongside `pl_frame_mixers`
+- add support for compile-time specialization constants (`pl_constant`),
+  and use them to speed up recompilation of shaders with hard-coded
+  constants
+- add `pl_render_params.dynamic_constants`, which lifts hard-coded
+  constants to dynamic variables - useful for scenarios in which render
+  parameters are expected to change very frequently
+- add more PL_COLOR_TRC_GAMMAxx definitions
+- implement full black point adaptation, even when not using ICC
+  profiles, and infer this black-point-adapted BT.1886 instead of gamma
+  2.2 as the default gamma curve for SDR files.
+- add `pl_shader_res.description` and `pl_shader_res.steps`, containing
+  more friendly names for shaders plus a detailed list of operations
+  that shader is performing
+- add callbacks to `pl_dispatch` and `pl_renderer` for informing users
+  of executed passes and their execution times
+- add support for the Direct3D 11 graphics API
+- add `pl_swapchain_colorspace_hint`, replacing
+  `pl_swapchain_hdr_metadata` as the new way to update swapchain
+  colorspace metadata at runtime. This can be used to e.g. switch
+  between HDR and SDR mode, for supported swapchains
+- add `pl_peak_detect_params.minimum_peak`, allowing users to constrain
+  the detected peak values to only be sensible (e.g. above 1.0)
+
+Changes:
+- simplify the `shaderc` pkg-config check - rather than querying for
+  `shaderc_shared.pc`, `shaderc_combined.pc` etc, simply check for
+  `shaderc.pc`, matching upstream
+- make almost everything thread-safe, and document the parts that
+  aren't. In particular, almost all GPU state access is now thread safe,
+  freeing up users to access `pl_gpu` instances from multiple threads,
+  even when the underlying API is OpenGL
+- deprecate `disable_overlay_sampling`, now effectively always true
+- `struct pl_overlay` has been refactored completely to allow for
+  overlays with more than one part per texture. The only way of using
+  this struct is deprecated
+- prefix `enum pl_queue_status` members by `PL_`, fixing an oversight in
+  the previous version of this API
+- make `pl_renderer` automatically clear the target image, freeing users
+  from the responsibility of calling `pl_frame_clear` themselves. This
+  can be controlled via three new fields in `pl_render_params`:
+  `background_color`, `background_transparency` and `skip_target_clearing`
+- rename `pl_context` to `pl_log`, and make its use optional. The old
+  names have been deprecated. It now lives inside <libplacebo/log.h>
+- add `typedefs` to all public-facing object types, o make them shorter
+  to reference. For example, `const struct pl_tex *tex` is now simply
+  `pl_tex tex`. This change affects almost every type of object in
+  libplacebo. The old way of referencing these objects is still
+  possible, but considered deprecated. Note that due to C++-specific
+  reasons, C++ users *must* upgrade their codeto the new API style
+- remove PL_PRIM_TRIANGLE_FAN
+- remove support for 64-bit float formats, which probably don't work on
+  any Vulkan implementation
+- stop contrast-limiting ICC profiles, instead assuming perceptual
+  profiles have infinite contrast
+- remove `pl_shader_signature` for being necessarily unsafe
+- require Vulkan 1.1 as the minimum vulkan version
+- rename `pl_oversample_frame_mixer` to `pl_filter_oversample`, and
+  allow using it for image scaling as well
+- change `pl_color_space_monitor` from PL_COLOR_TRC_GAMMA22 to UNKNOWN
+- change the signature of `pl_shader_(de)linearize` slightly
+- significantly increase the default strengths of the desaturation
+  settings in`pl_color_map_params`, to mimic the hollywood feel
+- refactor `pl_glsl_desc` and `pl_gpu_caps` completely, in favor of the
+  new structs `pl_glsl_version` and `pl_gpu_limits`, with new members.
+  The old API is still available for the time being, but deprecated
+
+Fixes and performance improvements:
+- fix possible use-after-free in `plplay`
+- don't explode `pl_queue` on NaN/Infinity/weird PTS values
+- fix edge case involving plane merging for cropped images
+- improve `plplay` by using threaded libplacebo APIs
+- several fixes for edge cases in <libplacebo/utils/libav.h> helpers
+- several fixes for 32-bit platforms (e.g. integer overflows)
+- fix blending edge cases involving overlays and alpha channels
+- skip some unnecessary matrix multiplications for RGB content
+- allow for some small backwards PTS jumps in `pl_queue_update`
+- fix drawing overlays to subsampled targets
+- `pl_dispatch` now garbage collects old, unused passes to free up RAM
+- various improvements to debug/diagnonstic printouts
+- allow blitting from e.g. 2D to 3D textures
+- slightly improve small texture transfers in some emulated edge cases
+- fix several possible hash collisions for generated shaders, making the
+  shader dispatch mechanism significantly more robust
+- properly allow building against vulkan headers without linking to the
+  vulkan loader
+- C++ compatibility for public headers
+- improve performance of textureGather-based polar sampling, especially
+  for radius 2 and 4
+- fix vulkan texture handle capabilities check, again
+- don't include superfluous pNext chains, fixes undefined behavior
+- fix crash on edge case when shader compilation fails
+- infer unsampled alpha channels as 1.0, rather than 0.0
+- properly infer `target->color` in `pl_render_image`
+- properly tag the OpenGL swapchain as pl_color_space_monitor
+- fix possible crash in pl_get_detected_peak
+- fix several edge cases in pl_render_image_mix relating to LUTs,
+  3DLUTs, HDR peak detection and so on
+- fix sig_peak inferral for HLG content
+- several compatibility fixes for older GLSL, and GLES 2.0
+- fix possible use-after-free in pl_shader_custom
+- fix `pl_color_map_params.gamut_clipping` for HDR targets
+- reduce the number of redundant color space transformations required
+  for frame mixing
+- fix edge case in pl_dispatch_save for some ancient GL drivers
+- several fixes for LLVM/MinGW/MSVC
+- fix bug where pl_pass_run incorrectly invalidated/accessed
+  `params->target` even for compute shaders
+- add windows compatibility to several demo programs
+- fix the pl_fmt <-> DRM fourcc format mapping table
+- fix inappropriate texture access function for generated samplers with
+  the sampler2D API
+- avoid generating spurious EGL errors when probing for EGL format
+  modifiers
+- fix various typis in the documentation
+
+-------------------------------------------------------------------
 Fri May  7 09:51:50 UTC 2021 - Niklas Haas <obs@haasn.xyz>
 
 - Update libplacebo to version 3.120.3:

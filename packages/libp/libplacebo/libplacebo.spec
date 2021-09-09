@@ -16,9 +16,9 @@
 #
 
 
-%define sover 120
+%define sover 157
 Name:           libplacebo
-Version:        3.120.3
+Version:        4.157.0
 Release:        0
 Summary:        Library for GPU-accelerated video/image rendering primitives
 License:        LGPL-2.1-or-later
@@ -80,7 +80,7 @@ help understand and demonstrate the various options provided by %{name}.
 cp %{SOURCE1} ./demos/3rdparty/nuklear/
 
 %build
-%meson -Dglslang=disabled -Dtests=true -Ddemos=true
+%meson -Dglslang=disabled -Dd3d11=disabled -Dtests=true -Ddemos=true
 %meson_build
 
 %install
