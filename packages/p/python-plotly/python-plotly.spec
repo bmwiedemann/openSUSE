@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-plotly
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Library for collaborative, interactive, publication-quality graphs
 License:        MIT
@@ -44,9 +44,9 @@ Recommends:     python-pandas
 Recommends:     python-scipy
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module Pillow if (%python-base without python36-base)}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module Pillow if (%python-base without python36-base)}
 BuildRequires:  %{python_module Shapely if (%python-base without python36-base)}
 BuildRequires:  %{python_module ipykernel if (%python-base without python36-base)}
 BuildRequires:  %{python_module ipython if (%python-base without python36-base)}
@@ -76,11 +76,11 @@ always accessible from the graph.
 
 %package        jupyter
 Summary:        Jupyter notebook integration for %{name}
-Provides:       python-jupyterlab-plotly = %{version}-%{release}
 Requires:       %{name} = %{version}
 Requires:       jupyter-plotly = %{version}
 Requires:       python-ipywidgets >= 7.6
 Requires:       (python-jupyterlab or python-notebook)
+Provides:       python-jupyterlab-plotly = %{version}-%{release}
 
 %description    jupyter
 Use this package to make collaborative, interactive,
@@ -95,8 +95,8 @@ This package provides Jupyterlab and Notebook integration and widgets.
 
 %package     -n jupyter-plotly
 Summary:        Jupyter notebook integration for %{name}
-Provides:       jupyterlab-plotly = %{version}-%{release}
 Requires:       python3-plotly-jupyter = %{version}
+Provides:       jupyterlab-plotly = %{version}-%{release}
 
 %description -n jupyter-plotly
 Use this package to make collaborative, interactive,
