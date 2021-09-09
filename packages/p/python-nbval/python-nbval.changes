@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Aug 29 13:12:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add 0001-Make-tests-pass-with-ipykernel-6.0.0.patch from Arch
+
+-------------------------------------------------------------------
 Wed Apr 14 13:53:04 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 -  Add nbval-filter-mpldeprecation.patch for new Matplotlib 3.4

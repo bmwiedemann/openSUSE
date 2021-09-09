@@ -28,6 +28,9 @@ URL:            https://github.com/computationalmodelling/nbval
 Source:         https://files.pythonhosted.org/packages/source/n/nbval/nbval-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM nbval-filter-mpldeprecation.patch -- gh#computationalmodelling/nbval#167
 Patch0:         nbval-filter-mpldeprecation.patch
+# PATCH-FIX-UPSTREAM 0001-Make-tests-pass-with-ipykernel-6.0.0.patch -- Taken from archlinux, yan12125@gmail.com
+# https://github.com/archlinux/svntogit-community/blob/0aeb3d7e25d351606f46becc33f79e1c369572d0/python-nbval/trunk/0001-Make-tests-pass-with-ipykernel-6.0.0.patch (with whitespace changes)
+Patch1:         0001-Make-tests-pass-with-ipykernel-6.0.0.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
