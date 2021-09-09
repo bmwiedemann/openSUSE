@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  9 08:04:30 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable timer tests
+
+-------------------------------------------------------------------
 Wed Aug 18 12:34:13 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
 
 - Fix build with current openvdb package

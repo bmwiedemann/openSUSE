@@ -219,14 +219,15 @@ mkdir -p build/fonts
 ln -s ../../src/fonts/Droid_Serif/DroidSerif.ttf build/fonts/DroidSerif.ttf
 ln -s ../../src/fonts/Droid_Sans/DroidSans.ttf build/fonts/DroidSans.ttf
 # Exclude known broken tests
+# timer tests won't do reliably in OBS
 %ifarch x86_64
 %ctest '-E' 'broken|texture-icwrite|unit_timer|unit_simd|heif|cmake-consumer'
 %ctest '-R' 'texture-icwrite' || true
-%ctest '-j1' '-R' 'unit_timer'
+#%%ctest '-j1' '-R' 'unit_timer'
 %else
 # Many test cases are failing on PPC, ARM, ix64 ... ignore for now
 %ctest '-E' 'broken|texture-icwrite|unit_timer' || true
-%ctest '-j1' '-R' 'unit_timer'
+#%%ctest '-j1' '-R' 'unit_timer'
 %endif
 
 %post -n libOpenImageIO%{so_ver} -p /sbin/ldconfig
