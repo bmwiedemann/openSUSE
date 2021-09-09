@@ -76,4 +76,16 @@
     blocking integration API.</comment>
     <requestid>906828</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8ab898905de9f6bf11c84d6f99881d03</srcmd5>
+    <version>0.7.1</version>
+    <time>1631221637</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.7.1:
+  * Add ``async with`` support to :class:`~.asyncio.DBusConnection` in the
+    asyncio integration.
+  * Fix calling :meth:`~.asyncio.DBusConnection.receive` immediately after opening
+    a connection in the asyncio integration.</comment>
+    <requestid>917207</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  7 06:51:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.1:
+  * Add ``async with`` support to :class:`~.asyncio.DBusConnection` in the
+    asyncio integration.
+  * Fix calling :meth:`~.asyncio.DBusConnection.receive` immediately after opening
+    a connection in the asyncio integration.
+
+-------------------------------------------------------------------
 Sat Jul 17 13:51:07 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.7.0:
