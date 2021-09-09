@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  6 16:08:36 UTC 2021 - Richard Brown <rbrown@suse.com>
+
+- Comment out ostree_repo [boo#1189893] 
+
+-------------------------------------------------------------------
 Fri Jul 23 08:31:52 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Update common to 0.41.0
