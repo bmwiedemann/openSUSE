@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep  5 11:12:16 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release SDK-1.2.189.0
+  * layers: Validate a lot more flags and commands
+  * gpu: Add multi_draw calls to GPU-AV / DPrintf
+  * layers: Add VK_KHR_shader_atomic_int64
+  * layers: Add shaderImageInt64Atomics
+  * layers: Add Atomic Float Features
+  * layers: AMD best practice layer
+
+-------------------------------------------------------------------
 Tue Jul  6 09:04:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release SDK-1.2.182.0

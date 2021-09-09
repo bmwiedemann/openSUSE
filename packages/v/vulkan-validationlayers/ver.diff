@@ -8,11 +8,11 @@ As a result, a version needs to be added.
  layers/vk_layer_config.h |    2 +-
  2 files changed, 3 insertions(+), 2 deletions(-)
 
-Index: Vulkan-ValidationLayers-sdk-1.2.182.0/CMakeLists.txt
+Index: Vulkan-ValidationLayers-sdk-1.2.189.0/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-sdk-1.2.182.0.orig/CMakeLists.txt
-+++ Vulkan-ValidationLayers-sdk-1.2.182.0/CMakeLists.txt
-@@ -362,11 +362,12 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/s
+--- Vulkan-ValidationLayers-sdk-1.2.189.0.orig/CMakeLists.txt
++++ Vulkan-ValidationLayers-sdk-1.2.189.0/CMakeLists.txt
+@@ -343,11 +343,12 @@ set(SCRIPTS_DIR "${PROJECT_SOURCE_DIR}/s
  # files directly in layers.
  
  add_library(VkLayer_utils
@@ -25,11 +25,11 @@ Index: Vulkan-ValidationLayers-sdk-1.2.182.0/CMakeLists.txt
 +set_target_properties(VkLayer_utils PROPERTIES OUTPUT_NAME "VkLayer_utils-@PACKAGE_VERSION@")
  target_link_libraries(VkLayer_utils PUBLIC Vulkan::Headers)
  set_target_properties(VkLayer_utils PROPERTIES CXX_STANDARD ${VVL_CPP_STANDARD})
- if (UPDATE_DEPS)
-Index: Vulkan-ValidationLayers-sdk-1.2.182.0/layers/vk_layer_config.h
+ if (VVL_ENABLE_ASAN)
+Index: Vulkan-ValidationLayers-sdk-1.2.189.0/layers/vk_layer_config.h
 ===================================================================
---- Vulkan-ValidationLayers-sdk-1.2.182.0.orig/layers/vk_layer_config.h
-+++ Vulkan-ValidationLayers-sdk-1.2.182.0/layers/vk_layer_config.h
+--- Vulkan-ValidationLayers-sdk-1.2.189.0.orig/layers/vk_layer_config.h
++++ Vulkan-ValidationLayers-sdk-1.2.189.0/layers/vk_layer_config.h
 @@ -33,7 +33,7 @@
  #define SECONDARY_VK_REGISTRY_HIVE_STR "HKEY_CURRENT_USER"
  #endif
