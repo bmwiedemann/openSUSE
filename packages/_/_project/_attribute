@@ -86,7 +86,7 @@
   boo#1189869: '20210907'
   boo#1189909: '20210907'
   boo#1189913: '20210903'
-  boo#1189915: '20210906'
+  boo#1189915: '20210907'
   boo#1189927: '20210907'
   bsc#1179395: '20210308'
   bsc#1181835: '20210307'
@@ -98,6 +98,7 @@
   gh#os-autoinst/os-autoinst-distri-opensuse#12831: '20210710'
   gh#os-autoinst/os-autoinst-distri-opensuse#12841: '20210706'
   gh#os-autoinst/os-autoinst-distri-opensuse#12914: '20210718'
+  gh#os-autoinst/os-autoinst-distri-opensuse#13068: '20210907'
   kde#432460: '20210222'
   kde#433053: '20210222'
   kde#433155: '20210318'
@@ -186,7 +187,7 @@
   poo#94973: '20210725'
   poo#95120: '20210807'
   poo#95326: '20210713'
-  poo#95329: '20210906'
+  poo#95329: '20210907'
   poo#95467: '20210713'
   poo#95548: '20210718'
   poo#95605: '20210717'
@@ -197,7 +198,7 @@
   poo#96641: '20210807'
   poo#96644: '20210823'
   poo#97103: '20210907'
-  poo#97511: '20210906'
+  poo#97511: '20210907'
   poo#98343: '20210907'
 </value>
   </attribute>
@@ -567,9 +568,9 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210907'
-published: '20210906'
-publishing: '20210906'
+    <value>failed: ''
+published: '20210907'
+publishing: '20210907'
 testing: '20210907'
 </value>
   </attribute>
