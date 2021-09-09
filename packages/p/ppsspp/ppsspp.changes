@@ -1,4 +1,425 @@
 -------------------------------------------------------------------
+Thu Sep 02 16:14:42 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210902:
+  * interp: Prevent crash on bad lv.q or sv.q addr.
+
+-------------------------------------------------------------------
+Wed Sep 01 17:00:55 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210901:
+  * Don't add VIRTKEY_TOGGLE_FULLSCREE in custom key list on mobile device
+
+-------------------------------------------------------------------
+Wed Sep 01 10:41:52 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210901:
+  * Remove old ouya joystick prompt pngs from source_assets
+  * UI: Fix save state scrollview height.
+
+-------------------------------------------------------------------
+Tue Aug 31 19:32:18 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210830:
+  * [Libretro] Small core options cleanup + create a new git-version.cpp instead of appending stuff in it
+  * Reuse translation for combo button as well
+  * Reuse translation
+  * Support virutal button in touch gesture
+  * UI: Fix scrollview focus scroll before relayout.
+  * UI: Fix refocus on no control change.
+  * UI: Restore focus on PSP view as well.
+  * UI: Refocus better on control mapping change.
+  * UI: Fix focus persistence in control mapping.
+  * UI: Handle WRAP_CONTENT in flexible scroll views.
+  * UI: Allow scoll views to have specific height.
+  * UI: Fix grids in ScrollViews and adjust gravity.
+  * Handle vertex shader generation failures better.
+  * Basic mappable gesture
+
+-------------------------------------------------------------------
+Sun Aug 29 19:16:12 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210829:
+  * Debugger: Avoid infinite loop in disasm API.
+  * KeyMap: Simplify UI updates.
+  * UI: Try to keep button visible while mapping.
+  * UI: Allow binding all typically buttons in a row.
+  * UI: Allow rebinding the analog from PSP view.
+  * UI: Allow mapping buttons from visual PSP display.
+  * UI: Add a screen to visualize PSP controls.
+
+-------------------------------------------------------------------
+Sun Aug 29 15:28:53 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210829:
+  * Increase the range of cardboard setting sliders to 150%. See #14768
+  * Hack the math better in cardboard VR mode, to avoid issues with very wide aspect ratios.
+  * Experiment: Remove probably-redundant motionevent class check
+  * No R2 on xbox controllers, remove redundant mapping.
+  * Nonsensical to use the Shield pad map for Shield TV.
+  * Tweak defaults some more (no L2 on xbox pads..). Minor code cleanup.
+  * Common: Reduce some log levels.
+  * Add additional autoconf layout for xbox pads on Android. Revert the normal pad layout.
+  * Move keymap defaults to a separate file. Not exactly a clean separation though.
+  * Android: More strict identification of keyboard events.
+  * Fix bug with device IDs on Android, causing the on-screen back button to be misinterpreted.
+  * Update th_TH.ini
+  * Savedata: Use PARAM.SFO constant properly.
+  * Debugger: Fix breakpoints on delay slots.
+  * gason: Allow tagged pointers.
+  * http: Specify expected mime types in downloads.
+  * http: Add Accept header as a parameter in requests.
+  * Store: Display the error code in case of error downloading the json.
+  * Keyboard/gamepad navigation: Change the formula for scoring neighbors.
+  * Fix navigating the analog stick calibration screen with just a gamepad
+  * Bugfix
+  * Android: Remove the old limitation of 3 registered input devices.
+  * Auto-default Sony Bravia TVs to OpenGL.
+  * Don't default to Vulkan on any 32-bit Android devices.
+  * GameScreen: Minor logic cleanup, remove Calculate CRC button when not needed.
+  * Remove unintended whitespace changes
+  * Rename namespace to PPSSPP_VK, remove indentation
+  * Make touch layout accurate
+  * Prevent dlopen collisions between ppsspp_libretro.so and libvulkan.so
+  * Allow no chat button and make quickchat settings disabled when chat is not enabled
+  * Fix action button size
+  * Improve touch control layout screen
+  * Fix some comments and a string
+  * Fix some bad translations (used Google Translate...)
+  * Update translations for Unthrottle to Fast-forward
+  * Rename Unthrottle to Fast-forward globally
+  * Fix string comparison for hiding "Unknown" CPU name
+  * (Libretro) Switch back to earlier base_width/base_height values
+  * Set base_width/base_height to sane dimensions (480x272)
+  * Dialog: Lock volatile when the access thread runs.
+  * Ge: Add measured minimal timing for sceGeDrawSync.
+  * HLE: Ignore flip time in syscall stats.
+  * Dialog: Prevent reschedule on shutdown start.
+  * Clean up a string from translations
+  * Fix append mode through OpenCFile, fixing cheat import on scoped storage.
+  * Dialog: Avoid crash with hacked dialog start.
+  * Store: Make description focusable.
+  * UI: Fix typo in using My Documents for data.
+  * Change ffmpeg include headers priority to avoid collission with system ffmpeg
+  * Fix layout opacity
+  * Bump maxrecent default to 60. Don't show CPU name if we don't have one.
+  * If it's a TV and VIRTKEY_PAUSE is not mapped to a pad control, pause on app switch.
+  * Auto-pause on app switch. Will be made conditional in the next commit.
+  * Cleanup
+  * Improve default pad mapping for Android. Hide irrelevant options on Android TV.
+  * Fix some old bugs where we overrode the device ID to 0 wrongly for back button
+  * Narrow the mapping UI, making it a bit less uncomfortable to use.
+  * Scoped storage: recognize "wt" and "rt" modes. Should fix the cheat.db issue
+  * Cleanup
+  * Fix savestate undo consistency
+  * UI: Fix enable/disable of reporting outside game.
+  * UI: Fix reset of alt speed options in settings.
+  * Update ja_Jp.ini for Reverb volume
+  * Thread: set names on BSDs after 062566b67cb0
+  * Thread: unbreak on BSDs after 50d9d7ea6f2a
+  * Update ja_JP.ini
+  * Sas: Add option to control reverb volume.
+  * Do not call methods on gpu if it is null. Fixes #13412 (sans video rewind). (#14674)
+  * Scoped storage japanese translation fix
+  * UI: Use a UIState for exceptions.
+  * SaveState: Allow loading save state in exception.
+  * UI: Show a reset button on the crash screen.
+  * Core: Ensure exception is reset on reset.
+  * Fix Translation lang ja_JP.ini(File change)
+  * UI: Avoid reselecting on page up at top.
+  * UI: Refactor to reuse distance logic.
+  * UI: Handle focus on page up/down.
+  * UI: Change focus with home/end.
+  * UI: Track page up/down and home/end as focus moves.
+  * libpng: Patch out 100% opaque optimization.
+  * GPU: Use an empty vertex buf for reinterpret.
+  * Headless: Cleanup extraneous output.
+  * Font: Match stingy selection per test.
+  * Font: Limit max references to fonts.
+  * Font: Delay only on first open of internal font.
+  * Font: Reuse alloc when reopening internal fonts.
+  * Windows: Avoid deprecated functions.
+  * SaveState: Validate size matches measured.
+  * Update th_TH.ini
+  * Undo last save
+  * Allow to disable right analog diagonal
+  * Fix some mis-handling of single file URI. Fixes the Load... button.
+  * Propagate errors from file identification upwards better.
+  * If in legacy storage mode from an earlier install, we still might need to ask for permission.
+  * Only pop up the config save error after main and settings screens.
+  * SaveState: Show a warning if saved after savestate.
+  * SaveState: Use default ZSTD compress level.
+  * SaveState: Ask to include xxhash in frames.
+  * SaveState: Add const for save compression.
+  * Tweaks
+  * Improve translatability of memstick screen
+  * Wording fixes for PPSSPP Gold.
+  * Fix indentation
+  * Buildfix, bugfix
+  * A bunch of small scoped storage UX improvements.
+  * Address feedback
+  * Minor improvements on Android 9/10. Let the user reset to root of storage.
+  * Correct the cutoff for scoped storage. Android 9,10 (API 28,29) shouldn't use it.
+  * Handle an empty path in the game browser.
+  * When changing the PSP folder, move the files in a nice background process, showing progress.
+  * Indentation fix
+  * UI message cleanup
+  * Address feedback
+  * Android 28 was the wrong cutoff for oldschool permissions, 29 is correct.
+  * Delete some left-behind lines
+  * Basic flow of setting up and moving the PSP directory works now.
+  * Get the new setup flow going, with a confirmation dialog etc.
+  * Work on the new experience
+  * Enable scoped storage enforcement on Android 11+.
+  * Allow to invert context dimension for combo button
+  * Add ULES00581 to compat.ini for MTX JIT hack
+  * Use horizontal layout
+  * Retraduciendo el archivo
+  * Savestate load undo
+  * D3D11: Use right state in flush before output.
+  * Add savestate undo UI
+  * cmake: use vendor-neutral GL implementation when available; fallback to legacy GL
+  * Update libretro.cpp
+  * GitHub: Update link for translation contribution.
+  * GitHub: Switch to issue form templates.
+  * Make tap to customize translatable
+  * fix overlinking of OpenGL libraries
+  * sceNetAdhoc: fix format specifier for debug log
+  * Update es_ES.ini
+  * Fix get CPU & CPU Brand
+  * Fix ABI
+  * Fix copied mips bugs
+  * Add in bit length check
+  * temporary riscv define fix
+  * No CPU part for RISC-V
+  * RISC-V CPU detect
+  * Clean up unused event
+  * Fix silly filesystem mounting bug introduced in #14638
+  * Add a missing java function (fix a little merge mistake)
+  * Trim username on join as well
+  * Detect CwCheat file UTF-8 BOM sequence and ignore it
+  * Accept numpad enter as well
+  * Fix further issues when the memstick dir is the PSP dir
+  * Less "Fd x for content URI" logspam
+  * Scoped storage: Make the home button simply go to the root of the current directory tree.
+  * Two more functions
+  * Convert four more functions to allow for error codes.
+  * Change one storage function to use an error code.
+  * Workaround for the /PSP path thing. Needs testing.
+  * Add and hook up Android_MoveFile
+  * Error code support preparations
+  * Couple of minor things, crashfix on deserialization failure
+  * Add support for FILE_APPEND.
+  * Fix English language mapping after recent i18n additions.
+  * Cleanup the ownership model in MetaFileSystem.
+  * Fix lastModified, speed up Android_FileExists. Add Android_CopyFile (unused)
+  * Use a simpler method that actually works to get free storage space from content URI.
+  * Use a DocumentsContract query for single-file GetFileInfo too.
+  * Greatly speed up content URI file listings by using DocumentContract queries.
+  * log fix
+  * OpenGL: Accept "AMD" as a vendor string for, well, AMD.
+  * Fix for new bug in GetDirListing, oops
+  * Forgot to pass the flags to GetFilesInDir to mimic the old behavior
+  * Fix multiple issues preventing in-game saves from working.
+  * Refactor DirectoryFileSystem::GetDirListing to use GetFilesInDir.
+  * Fix assorted path issues
+  * Remove unnecessary slash conversion
+  * Add quick method to check file existence by content URI.
+  * Fix date/time display for savestates
+  * Add handling for Android content URIs to VFSReadFile, fixing savestate thumbnails.
+  * Assorted directory fixes
+  * Add ability to rename content URI files, fixing saving save states.
+  * Hack around #14628. The icon is distorted but at least no crash.
+  * Buildfix
+  * Make GetFilesInDir fully-featured enough to use in DirectoryFileSystem
+  * Warning fix
+  * Just some variable initialization
+  * better formatting
+  * Need strtoull for 64-bit ulongs.
+  * Add i18n inifile load on libretro startup
+  * Audio settings: Move microphone list to the bottom.
+  * Implement the option for auto audio devices switching for Windows too
+  * BlockTransferAllowCreateFB: Remove Ys Seven (thanks LunaMoo).
+  * Add contents of the assets/lang submodule to the main repo.
+  * Remove lang from gitmodules
+  * Added JIT hack for MTX MotoTrax EU (ported from US)
+  * Add support for the PS5 DualSense controller
+  * Better protection against broken viewports.
+  * Revert "Make sure we don't try to set a negative viewport size."
+  * Sort file listings from Android Content URIs. May help #14607
+  * Update assets/lang
+  * Fix bug in homebrew store with files with "." in their names.
+  * Unify the Vulkan format definitions / swizzles
+  * Make the "Running Slow" warning a bit more lenient.
+  * Update UI atlas
+  * Customizable touch control (rebased with label)
+  * Turn off all 16-bit formats if B5G6R5 format is not available.
+  * Change the default port offset (#14599)
+  * Revert "Merge pull request #14588 from hrydgard/vk-correct-565-format"
+  * Minor cleanup
+  * PathBrowser: Load all types of path asynchronously. Helps with slow scoped storage listings :/
+  * Path browser: Move special handling of Windows root directory to GetFilesInDir.
+  * Minor cleanup
+  * UWP buildfix
+  * Reorder servers in GameSettingsScreen.cpp
+  * Change default server in Config.cpp
+  * WASAPI: Survive switching to a mono device. Fixes #14591
+  * HLSL depal simplification
+  * Address feedback
+  * Android buildfix
+  * Implement basic depth texturing for OpenGL, requires depth clamp for now.
+  * Support depth clamping in OpenGL where available.
+  * Minor tweaks
+  * Change some names, add scroll view for analog settings
+  * Analog calibration: Tweak defaults, add reset buttton
+  * Move the raw input data display to the touchscreen tester. Put the output to the left next to the controls.
+  * Move auto-rotation code to ControlMapper so it can be checked using the new screen
+  * Move the setting up a bit
+  * Replace the "Test Analogs" screen with a new screen that lets you directly try the settings.
+  * Hide the calls to ConvertAnalogStick inside ControlMapper.
+  * Move the internal screen rotation compensation to after value mapping.
+  * Merge __CtrlSetAnalogX/Y into one function. Always called together.
+  * Move the joystick deadzone processing until after all the mapping.
+  * Avoid a name collision from previous commit, to be safe.
+  * Buildfix
+  * Break out EmuScreen's key/axis inputs to ControlMapper.cpp/h
+  * Disable analog stick deduplication (#14590)
+  * Revert removal of Teardown call
+  * Fix black screen on multiple libretro content loads.
+  * Vulkan: Use the mandatory-support RGB565 format and not the opposite one.
+  * Somewhat improved error checking in MemArena.
+  * Avoid crash on early input events.
+  * Refactor and unify analog input settings
+  * Fix some Japanese characters position.
+  * [Libretro] Fix analog left direction for FFT
+  * Re-target to merged upstream changes
+  * Swap submodule repo to fork
+  * Include FakeJit in RISC-V build
+  * UWP: Add a missing bounds check from  TextDrawerWin32::DrawStringBitmap
+  * Updated Logs on sceNetAdhocDiscover to find more info on games that use AdhocDiscover.
+  * Update CMakeLists.txt
+  * Minor changes to Wrapped Port detection.
+  * Making sure not to get random port when original port is not zero.
+  * Show the returned error code on sceNetAdhocctlCreate/Connect/Join on Debug Log
+  * Implement thread debug id with the syscall instead of gettid().
+  * Add some PPSSPP's Japanese keyboard
+  * An attempt at cleaning up the checks in ThreadUtil
+  * Fix some Japanese characters position.
+  * Store the OpenSL error in a global to avoid "No context"
+  * Remove asserts from OpenSL init. Expose error inside audio settings
+  * Try a slightly rougher fix for libretro builds
+  * Possible fix for reported problem with gettid() in libretro
+  * Android: Fix logical CPU count.
+  * Core: Correct relocation error check.
+  * Mailbox: Address feedback
+  * Minor cleanups
+  * Address feedback (except the mailbox refcount)
+  * Make use of hyperthreading for worker threads. Still cap to 16 workers.
+  * typo, unnecessary
+  * Untested libretro fixes, misc
+  * un-revert zstd
+  * atomic include buildfix
+  * Draw: Use constants for texture slots.
+  * Simplifiy WaitableCounter. Fixes it on Mac/ARM.
+  * Unittest buildfixes on mac
+  * Kill the pesky goto
+  * ParallelLoop: A bit smarter straggler handling.
+  * Make the minimum items per thread explicit. Found some bugs, optional arguments are evil.
+  * Autodetect number of threads (remove setting). Fix some bugs.
+  * Postshader: Add uniform for delta since last frame.
+  * Postshader: Let shaders use the previous frame.
+  * Postshader: Correct sampler binding translation.
+  * Draw: Assert sampler bindings are in valid ranges.
+  * Font: Prevent a crash on invalid data.
+  * Additional android buildfix
+  * Android.mk buildfix
+  * Fix memory leak
+  * Change the policy for number of threads
+  * Code cleanup
+  * Remove experimental unused stuff.
+  * Rename setCurrentThreadName to SetCurrentThreadName
+  * Fix a way the threadmanager could get stuck.
+  * Get rid of Executor.cpp/h.
+  * Get rid of the PrioritizedWorkQueue. Instead just queue tasks on the ThreadManager.
+  * GameInfoCache: Don't expose the workqueue. Was unused anyway.
+  * Implement new thread manager, port stuff to it.
+  * Minor cleanup
+  * iOS: don't add a slash to the save path.
+  * Io: Correct CreateFullPath() on Linux.
+  * Io: Correct file open error code.
+  * Default to something for now.
+  * Reducing HLE delays on Adhoc-related syscalls that can be called more than once on a single frame.
+  * Reducing HLE delays on socket-related syscalls since we are using real network which already have it's own overhead.
+  * Minor changes to Adhoc's Verbose Logs returning error code.
+  * Address more feedback
+  * Only log slow file listings
+  * Address more feedback, warning fix
+  * Address a bunch of the feedback
+  * Revert "Turn on scoped storage, for the purposes of testing on this branch."
+  * Cleanup, layout fix on memory stick screen, reorder some settings
+  * Split out AndroidStorage.cpp from android/jni/app-android.cpp, move to Common
+  * Simple attempt at libretro buildfix, comment fix
+  * UWP and Android buildfixes
+  * Add missing files that .gitignore ignored...
+  * Fix File::GetFileInfo for Content URIs. Can now load homebrew.
+  * Add content URI support to LocalFileLoader, remove ContentUriFileLoader
+  * Can now install to but not run homebrew from content uri
+  * Add support for writing to file. Basics work now (having memstick on a content path)
+  * Rewrite CreateFullPath to be agnostic of path format.
+  * wip
+  * Cleanup. Add a way to get very early log output on Android.
+  * Route DirectoryFileSystem::Open to Android storage.
+  * Remove more special casing of content URIs
+  * Remove now-unnecessary special cases in PathBrowser
+  * Remove CreateDirIn, not useful enough to keep.
+  * Android content URI support in Path.
+  * Remove AndroidStorageFileSystem. Not useful.
+  * Delete a couple unused constructors of IOFile
+  * Convert GetFileSize to use Path
+  * Start work on supporting Android Content URIs in the FileUtil API.
+  * Assorted plumbing.
+  * More work on AndroidStorageFileSystem.cpp. Fix current directory getting reset.
+  * Implement a "FileSystem" that wraps Android content storage. So far unused.
+  * Implement file filters for Android in PathBrowser
+  * Start experimenting with DocumentsContract (the thing DocumentFile wraps)
+  * Android: Get things playable on scoped storage. Things work except the built-in file browser.
+  * Turn on scoped storage, for the purposes of testing on this branch.
+  * GPU: Clamp DXT texture memory bound.
+  * Io: Don't confuse kernel object with meta handle.
+  * Io: Allow opening tty0: for output.
+  * Reporting: Move message report interface to Common.
+  * Global: Tether wildcard git ignore rules.
+  * Build: Disable NEON png on non-Android too.
+  * Update .gitlab-ci.yml
+  * Transform labels to lower case for armips
+  * Disable NEON optimizations for libpng17 as a try to fix android texture replacement.
+  * Tools: Correct AtlasTool in release builds.
+  * iOS: Guard extended button selector access.
+  * Debugger: Expose API to reset game.
+  * Debugger: Fix websocket read silly mistake.
+  * Debugger: Add replay execute/flush APIs.
+  * Create GameMode's socket after Master and all Replicas have been created so we will know the largest buffer size.
+  * UI: Correct screenshot paths.
+  * Remove the ability to have multiple search paths for config.
+  * Config: Remove the use of multiple search paths.
+  * Remove createdPath_ from Config.cpp/h, seems pretty useless.
+  * iOS: Correct Path assignment on init.
+  * Rename g_Config.externalDirectory to defaultCurrentDirectory - since that's what it was.
+  * Replay: Properly load RTC time on load file.
+  * Debugger: Add stub API for replay functionality.
+  * Update for translation.
+  * Change github link
+  * Update GameSettingsScreen.cpp
+  * Add CRC32 calc
+  * First pass on using Display KHR, needs proper init flags
+  * Code style fix
+  * Rewording
+  * Little improvement
+  * Improve tilt masking
+  * Auto switch option
+  * Allow tilt input on Z instead of X
+
+-------------------------------------------------------------------
 Sun May 30 00:11:42 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version 1.11.3~git20210527:
