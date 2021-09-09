@@ -148,9 +148,9 @@ unsorted:
   - OpenCSD 
   - OpenCSD-devel 
   - OpenCSD-doc 
-  - OpenColorIO 
   - OpenColorIO-devel 
-  - OpenColorIO-doc 
+  - OpenColorIO-doc: [i586] 
+  - OpenColorIO-tools: [i586] 
   - OpenIPMI 
   - OpenIPMI-devel 
   - OpenIPMI-python3 
@@ -1199,6 +1199,7 @@ unsorted:
   - beignet-devel 
   - belcard-data 
   - belcard-devel 
+  - belle-sip-data 
   - belle-sip-devel 
   - belr-devel 
   - bemenu 
@@ -5760,8 +5761,6 @@ unsorted:
   - gnome-shell-extension-pop-shell 
   - gnome-shell-extension-terminus 
   - gnome-shell-extension-user-theme 
-  - gnome-shell-extensions-common 
-  - gnome-shell-extensions-common-lang 
   - gnome-shell-search-provider-boxes 
   - gnome-shell-search-provider-eolie 
   - gnome-shell-search-provider-gnome-calendar 
@@ -9193,7 +9192,7 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSPIRV-Tools-suse21-32bit: [x86_64] 
+  - libSPIRV-Tools-suse22-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
   - libSavitar-devel 
@@ -13379,7 +13378,7 @@ unsorted:
   - librrd8 
   - librsb-devel 
   - librsb0 
-  - librssguard-4_0_1 
+  - librssguard-4_0_2 
   - librssguard-devel 
   - librsvg-2-2-32bit: [x86_64] 
   - librsvg-devel 
@@ -13820,7 +13819,6 @@ unsorted:
   - libsvm-devel 
   - libsvm-java 
   - libsvm2 
-  - libswitchboard-2_0-0 
   - libsword-1_8_1 
   - libswresample3_9-32bit: [x86_64] 
   - libswscale5_9-32bit: [x86_64] 
@@ -18196,6 +18194,7 @@ unsorted:
   - owncloud-client-l10n 
   - owncloud-client-nautilus 
   - owncloud-client-nemo 
+  - owntone 
   - oxygen5 
   - oxygen5-cursors 
   - oxygen5-decoration 
@@ -22038,7 +22037,6 @@ unsorted:
   - python36-behave 
   - python36-bencode 
   - python36-beniget 
-  - python36-beren 
   - python36-betamax 
   - python36-betamax-matchers 
   - python36-bibtexparser 
@@ -30778,7 +30776,6 @@ unsorted:
   - raft-devel 
   - rage 
   - ragel 
-  - ragel-6 
   - rainbow 
   - rainbow-bash-completion 
   - rainbow-zsh-completion 
@@ -32380,9 +32377,6 @@ unsorted:
   - swingx 
   - swingx-javadoc 
   - switch_sles_sle-hpc 
-  - switchboard 
-  - switchboard-devel 
-  - switchboard-lang 
   - switcheroo-control 
   - switcheroo-control-doc 
   - sword 

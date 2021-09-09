@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20210907" schemaversion="4.1">
+<image name="OBS__MicroOS___20210908" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20210907</productvar>
+      <productvar name="VERSION">20210908</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210907,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20210908,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210907/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20210908/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -171,7 +171,6 @@
       <repopackage name="gtk3-schema" arch="x86_64"/>
       <repopackage name="gtk3-tools" arch="x86_64"/>
       <repopackage name="haproxy" arch="x86_64"/>
-      <repopackage name="haveged" arch="x86_64"/>
       <repopackage name="health-checker" arch="x86_64"/>
       <repopackage name="health-checker-plugins-kubic" arch="x86_64"/>
       <repopackage name="health-checker-plugins-MicroOS" arch="x86_64"/>
@@ -353,7 +352,6 @@
       <repopackage name="libgtk-3-0" arch="x86_64"/>
       <repopackage name="libgudev-1_0-0" arch="x86_64"/>
       <repopackage name="libharfbuzz0" arch="x86_64"/>
-      <repopackage name="libhavege2" arch="x86_64"/>
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhogweed6" arch="x86_64"/>
       <repopackage name="libhugetlbfs" arch="x86_64"/>
