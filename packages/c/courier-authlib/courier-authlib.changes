@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 30 13:24:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Modified:
+  * courier-authdaemon.service
+
+-------------------------------------------------------------------
 Tue Apr 13 06:34:33 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 0.71.3
