@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  9 02:08:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch from nose to pytest.
+- Add do-not-use-numpy-decorators.patch:
+  * The numpy decorators require nose, switch to unittest.skipIf()
+
+-------------------------------------------------------------------
 Sun Feb 14 10:32:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python36 (no scipy anymore) 

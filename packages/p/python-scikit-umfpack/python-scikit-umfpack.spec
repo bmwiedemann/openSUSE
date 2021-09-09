@@ -24,9 +24,9 @@ Version:        0.3.2
 Release:        0
 Summary:        Python interface to UMFPACK sparse direct solver
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/scikit-umfpack/scikit-umfpack
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-umfpack/scikit-umfpack-%{version}.tar.gz
+Patch0:         do-not-use-numpy-decorators.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.14.3}
 BuildRequires:  %{python_module scipy >= 1.0.0rc1}
@@ -42,7 +42,7 @@ Requires:       python-numpy >= 1.14.3
 Requires:       python-scipy >= 1.0.0rc1
 ExcludeArch:    aarch64 ppc64 ppc64le
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %ifpython2
 Provides:       %{oldpython}-scikits-umfpack = %{version}
@@ -55,6 +55,7 @@ The scikit-umfpack package provides wrapper of UMFPACK sparse direct solver to S
 
 %prep
 %setup -q -n scikit-umfpack-%{version}
+%autopatch -p1
 sed -i -e '/^#!\//, 1d' scikits/umfpack/setup.py
 sed -i -e '/^#!\//, 1d' scikits/umfpack/tests/try_umfpack.py
 
@@ -73,7 +74,7 @@ export LANG=en_US.UTF-8
 %check
 export LANG=en_US.UTF-8
 export CFLAGS="%{optflags}"
-%python_exec setup.py test
+%pytest_arch
 
 %files %{python_files}
 %doc README.rst

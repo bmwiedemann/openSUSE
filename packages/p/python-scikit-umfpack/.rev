@@ -31,4 +31,14 @@
     <comment>- skip python36 (no scipy anymore)</comment>
     <requestid>872135</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>1e0a4be0937d5358d5f96c73e34a8a5e</srcmd5>
+    <version>0.3.2</version>
+    <time>1631221650</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch from nose to pytest.
+- Add do-not-use-numpy-decorators.patch:
+  * The numpy decorators require nose, switch to unittest.skipIf()</comment>
+    <requestid>917634</requestid>
+  </revision>
 </revisionlist>
