@@ -1,5 +1,5 @@
 #
-# spec file for package armnn%{?package_suffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -64,12 +64,10 @@
 %bcond_with armnn_onnx
 %endif
 %define version_major 21
-%define version_minor 05
+%define version_minor 08
 %define version_lib 25
 %define version_lib_tfliteparser 24
 %define version_lib_onnxparser 24
-# Do not package ArmnnConverter, by default
-%bcond_with armnn_tools
 Name:           armnn%{?package_suffix}
 Version:        %{version_major}.%{version_minor}
 Release:        0
@@ -81,8 +79,6 @@ Source0:        https://github.com/ARM-software/armnn/archive/v%{version}.tar.gz
 Source1:        armnn-rpmlintrc
 # PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/499
 Patch1:         96beb97.diff
-# PATCH-FIX-UPSTREAM - https://github.com/ARM-software/armnn/issues/545
-Patch2:         armnn-fix-include.patch
 # PATCHES to add downstream ArmnnExamples binary - https://layers.openembedded.org/layerindex/recipe/87610/
 Patch200:       0003-add-more-test-command-line-arguments.patch
 Patch201:       0005-add-armnn-mobilenet-test-example.patch
@@ -358,7 +354,6 @@ This package contains the libarmnnOnnxParser library from armnn.
 %patch1 -p1
 %endif
 %endif
-%patch2 -p1
 %if %{with armnn_extra_tests}
 %patch200 -p1
 %patch201 -p1
@@ -469,10 +464,6 @@ find ./build/tests -maxdepth 1 -type f -executable -exec cp $CP_ARGS {} %{buildr
 %if %{with armnn_flatbuffers}
 # Install Sample app
 cp $CP_ARGS ./build/samples/SimpleSample %{buildroot}%{_bindir}
-%if %{with armnn_tools}
-# Install ArmNNConverter
-cp $CP_ARGS ./build/ArmnnConverter %{buildroot}%{_bindir}
-%endif
 %endif
 # Drop static libs - https://github.com/ARM-software/armnn/issues/514
 rm -f  %{buildroot}%{_libdir}/*.a
@@ -517,9 +508,7 @@ LD_LIBRARY_PATH="$(pwd)/build/" \
 %if %{with armnn_tests}
 %{_bindir}/ExecuteNetwork
 %if %{with armnn_flatbuffers}
-%if %{with armnn_tools}
 %{_bindir}/ArmnnConverter
-%endif
 %{_bindir}/TfLite*-Armnn
 %endif
 %if %{with armnn_onnx}

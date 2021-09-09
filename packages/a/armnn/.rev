@@ -148,4 +148,31 @@
 </comment>
     <requestid>906631</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>218d61f6c5eaf2573a0171450d53bf70</srcmd5>
+    <version>21.08</version>
+    <time>1631221657</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.08:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.08
+  * Main changes:
+    - new capabilities and improve performance:
+      * Added the ability to import protected DMA Buffers and
+      allow Arm NN to run inferences that are in Protected GPU Memory.
+      As well as providing Custom Memory Allocator which supports
+      importing malloc, Dma_buf and protected Dma buffers.
+      * Users with multi core NPUs has been given the ability to pin
+      inferences to selected cores giving them the ability to balance
+      parallel workloads across the NPU and increase throughput.
+      * Boost has been completely removed from the code base making
+      Arm NN easier to integrate into other software stacks.
+      * Added support for non-constant weights and biases on
+      FullyConnected which lay the groundwork for supporting more models.
+      * More operators supported on Arm NN, TfLite Parser, TfLite
+      Delegate and Android NNAPI driver.
+- Drop upstream patch:
+  * armnn-fix-include.patch
+</comment>
+    <requestid>917697</requestid>
+  </revision>
 </revisionlist>

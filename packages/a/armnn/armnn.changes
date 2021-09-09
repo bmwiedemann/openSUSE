@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep  9 08:04:50 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 21.08:
+  * Changelog: https://github.com/ARM-software/armnn/releases/tag/v21.08
+  * Main changes:
+    - new capabilities and improve performance:
+      * Added the ability to import protected DMA Buffers and
+      allow Arm NN to run inferences that are in Protected GPU Memory.
+      As well as providing Custom Memory Allocator which supports
+      importing malloc, Dma_buf and protected Dma buffers.
+      * Users with multi core NPUs has been given the ability to pin
+      inferences to selected cores giving them the ability to balance
+      parallel workloads across the NPU and increase throughput.
+      * Boost has been completely removed from the code base making
+      Arm NN easier to integrate into other software stacks.
+      * Added support for non-constant weights and biases on
+      FullyConnected which lay the groundwork for supporting more models.
+      * More operators supported on Arm NN, TfLite Parser, TfLite
+      Delegate and Android NNAPI driver.
+- Drop upstream patch:
+  * armnn-fix-include.patch
+
+-------------------------------------------------------------------
 Fri Jul 16 08:23:43 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add '-Wno-error=stringop-overread' to workaround build error
