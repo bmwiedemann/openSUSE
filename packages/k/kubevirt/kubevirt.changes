@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  9 05:01:33 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
+
+- Update to version 0.45.0
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v0.45.0
+
+
+-------------------------------------------------------------------
 Fri Aug 27 11:53:09 UTC 2021 - Vasily Ulyanov <vasily.ulyanov@suse.com>
 
 - Fix issue with recent qemu-img

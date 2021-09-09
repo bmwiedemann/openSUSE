@@ -1,4 +1,4 @@
-From da2d833ad71d79e468a98f23f77db547ca9319e3 Mon Sep 17 00:00:00 2001
+From 9619e0e977af51bf01917dc0f482c06daa32f089 Mon Sep 17 00:00:00 2001
 From: Vasiliy Ulyanov <vulyanov@suse.de>
 Date: Fri, 27 Aug 2021 13:38:24 +0200
 Subject: [PATCH] Specify format of the backing image
@@ -169,7 +169,7 @@ index a5d507ddd..9c09405a6 100644
  	if err != nil {
  		return nil, fmt.Errorf("failed to parse disk info: %v", err)
 diff --git a/pkg/virt-launcher/virtwrap/converter/converter.go b/pkg/virt-launcher/virtwrap/converter/converter.go
-index 540235aa5..81d6fc8e3 100644
+index ac1ba5a10..eeb0b2eb4 100644
 --- a/pkg/virt-launcher/virtwrap/converter/converter.go
 +++ b/pkg/virt-launcher/virtwrap/converter/converter.go
 @@ -26,10 +26,8 @@ package converter
@@ -189,10 +189,10 @@ index 540235aa5..81d6fc8e3 100644
  	PermanentVolumes      map[string]v1.VolumeStatus
 -	DiskType              map[string]*containerdisk.DiskInfo
 +	DiskType              map[string]*ephemeraldisk.DiskInfo
- 	SRIOVDevices          []api.HostDevice
  	SMBios                *cmdv1.SMBios
- 	GpuDevices            []string
-@@ -452,7 +450,7 @@ func SetDriverCacheMode(disk *api.Disk, directIOChecker DirectIOChecker) error {
+ 	SRIOVDevices          []api.HostDevice
+ 	LegacyHostDevices     []api.HostDevice
+@@ -407,7 +405,7 @@ func SetDriverCacheMode(disk *api.Disk, directIOChecker DirectIOChecker) error {
  }
  
  func isPreAllocated(path string) bool {
@@ -201,8 +201,8 @@ index 540235aa5..81d6fc8e3 100644
  	if err != nil {
  		return false
  	}
-@@ -2021,23 +2019,6 @@ func createHostDevicesFromMdevUUIDList(mdevUuidList []string) ([]api.HostDevice,
- 	return hds, nil
+@@ -1873,23 +1871,6 @@ func boolToString(value *bool, defaultPositive bool, positive string, negative s
+ 	return toString(*value)
  }
  
 -func GetImageInfo(imagePath string) (*containerdisk.DiskInfo, error) {
@@ -226,10 +226,10 @@ index 540235aa5..81d6fc8e3 100644
  	for _, disk := range vmi.Spec.Domain.Devices.Disks {
  		if disk.LUN != nil && disk.LUN.Bus == "scsi" {
 diff --git a/pkg/virt-launcher/virtwrap/manager.go b/pkg/virt-launcher/virtwrap/manager.go
-index 9c14deed5..1617827c9 100644
+index e559b7292..615c53473 100644
 --- a/pkg/virt-launcher/virtwrap/manager.go
 +++ b/pkg/virt-launcher/virtwrap/manager.go
-@@ -672,7 +672,7 @@ func (l *LibvirtDomainManager) generateConverterContext(vmi *v1.VirtualMachineIn
+@@ -640,7 +640,7 @@ func (l *LibvirtDomainManager) generateConverterContext(vmi *v1.VirtualMachineIn
  	// Check if PVC volumes are block volumes
  	isBlockPVCMap := make(map[string]bool)
  	isBlockDVMap := make(map[string]bool)
@@ -238,7 +238,7 @@ index 9c14deed5..1617827c9 100644
  	for i, volume := range vmi.Spec.Volumes {
  		if volume.VolumeSource.PersistentVolumeClaim != nil {
  			isBlockPVC := false
-@@ -687,7 +687,7 @@ func (l *LibvirtDomainManager) generateConverterContext(vmi *v1.VirtualMachineIn
+@@ -655,7 +655,7 @@ func (l *LibvirtDomainManager) generateConverterContext(vmi *v1.VirtualMachineIn
  			if err != nil {
  				return nil, err
  			}
@@ -248,5 +248,5 @@ index 9c14deed5..1617827c9 100644
  				return nil, err
  			}
 -- 
-2.32.0
+2.33.0
 
