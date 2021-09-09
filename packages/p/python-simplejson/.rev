@@ -375,4 +375,16 @@
     adding wheels for Python 3.9.</comment>
     <requestid>906723</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7cc7a209981a507424e8e33bf1b56966</srcmd5>
+    <version>3.17.5</version>
+    <time>1631221637</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.17.5:
+  * Fix the C extension module to harden is_namedtuple against looks-a-likes such
+    as Mocks. Also prevent dict encoding from causing an unraised SystemError when
+    encountering a non-Dict. Noticed by running user tests against a CPython
+    interpreter with C asserts enabled (COPTS += -UNDEBUG).</comment>
+    <requestid>917209</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  7 06:55:10 UTC 2021 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.17.5:
+  * Fix the C extension module to harden is_namedtuple against looks-a-likes such
+    as Mocks. Also prevent dict encoding from causing an unraised SystemError when
+    encountering a non-Dict. Noticed by running user tests against a CPython
+    interpreter with C asserts enabled (COPTS += -UNDEBUG).
+
+-------------------------------------------------------------------
 Fri Jul 16 19:39:11 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.17.3:
