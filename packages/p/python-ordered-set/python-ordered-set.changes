@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep  6 13:54:50 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.0.2
+  * Restore compatibility with Python 3.5
+  * fix packaging, remove vestiges of type stubs
+  * Remove unused type
+  * Add a mailmap
+  * remove old .pyi type stub
+  * Implement code review suggestions for types
+  * Code formatting (isort and black)
+  * Move type annotations inline
+  * Directly distribute type stub file via PEP 561
+  * Handle another indexing case from NumPy
+
+-------------------------------------------------------------------
 Thu Jun 17 17:22:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add Provides: for python*dist(ordered-set): work around

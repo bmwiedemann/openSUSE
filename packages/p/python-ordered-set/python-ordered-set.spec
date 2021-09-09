@@ -31,7 +31,7 @@
 %bcond_with test
 %endif
 Name:           python-%{modname}%{psuffix}
-Version:        3.1.1
+Version:        4.0.2
 Release:        0
 Summary:        Custom MutableSet that remembers its order
 License:        MIT
