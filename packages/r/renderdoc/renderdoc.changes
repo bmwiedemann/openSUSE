@@ -1,0 +1,130 @@
+-------------------------------------------------------------------
+Wed Sep  8 13:23:52 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use pcre-devel instead of pcre-devel-static 
+
+-------------------------------------------------------------------
+Wed Sep  8 13:18:02 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim redundant metadata from description.
+
+-------------------------------------------------------------------
+Wed Sep  8 10:43:22 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove unused LIB_INSTALL_DIR 
+
+-------------------------------------------------------------------
+Wed Sep  8 10:11:45 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use %autosetup during %prep
+- Update source0 to get proper filename
+- Use %cmake_build instead of %make_build for consistency 
+
+-------------------------------------------------------------------
+Wed Sep  1 19:03:14 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Use correct LIB_SUFFIX 
+
+-------------------------------------------------------------------
+Tue Aug  3 09:01:52 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.15
+  * Highlights
+    - The Event Browser has been significantly refactored.
+    - Bindless feedback is available on D3D12 for DXBC shaders (SM5.1). 
+    - Python API changes
+    - Bug fixes 
+
+-------------------------------------------------------------------
+Mon May 31 08:29:40 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.14
+  * Highlights
+    - RenderDoc can now display print statements from shaders in
+      Vulkan.
+    - The pipeline state view will now show thumbnail previews of
+      textures on hover to help quickly identify which texture is
+      bound to a given slot
+
+-------------------------------------------------------------------
+Fri Feb 12 09:49:06 UTC 2021 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.12
+  * Highlights
+    - Qt version updated to Qt 5.15.2.
+    - Python docstrings improved
+
+-------------------------------------------------------------------
+Mon Sep 21 10:44:42 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.10 
+  * Highlights
+    - Reduced idle overhead while injected into programs, while not
+      actively capturing a frame.
+    - All APIs have seen improvements, though some will see greater
+      savings than others especially depending on API usage
+      patterns. Modern APIs (D3D12/Vulkan) with high frequency API
+      calls and command buffer recording will likely see bigger
+      savings.
+    - Improved speed of capturing a frame on Vulkan when GPU-local
+      host-visible uncached memory is mapped.
+    - Improved application startup time from cold.
+    - Improved replay time for switching events for Vulkan
+      captures with large numbers of descriptors bound with few
+      actually used (i.e. 'bindless' type workflows).
+
+-------------------------------------------------------------------
+Wed Aug 26 13:47:48 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Explicitly enable build for xcb and xlib 
+- Build as stable version
+
+-------------------------------------------------------------------
+Fri Aug 14 14:30:35 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Forgot to remove unneeded qpainterpath patch 
+
+-------------------------------------------------------------------
+Fri Aug 14 14:24:43 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 1.9 
+
+-------------------------------------------------------------------
+Thu Jun 25 08:58:04 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Increase %limit_build to 1750 
+
+-------------------------------------------------------------------
+Wed Jun 24 15:35:01 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add %limit_build -m 1400
+- Changed devel description to description to silence rpmlint
+  warning
+- Exclude duplicate of LICENSE.md
+
+-------------------------------------------------------------------
+Tue Jun 23 10:53:13 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Clean specfile with spec-cleaner 
+
+-------------------------------------------------------------------
+Wed Jun 17 16:48:48 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Add group specification
+- Patch desktop menu file to add debugger to category
+
+-------------------------------------------------------------------
+Tue Jun 16 13:59:05 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Remove vulkan-devel from build requirements
+- Add correct release type for the build 
+
+-------------------------------------------------------------------
+Tue Jun 16 06:57:15 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Fix directories and summary errors
+
+-------------------------------------------------------------------
+Mon Jun 15 17:57:24 UTC 2020 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Initial version 1.8
