@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  9 11:38:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove arch exclusion, almost all of them build.
+
+-------------------------------------------------------------------
 Tue Aug 31 08:08:08 UTC 2021 - ohering@suse.de
 
 - s390x may have a kernel named /boot/image

@@ -59,9 +59,8 @@ Requires:       xmlstarlet
 Requires:       zypper
 Provides:       febootstrap
 %{?ocaml_preserve_bytecode}
-%if "%{?_ignore_exclusive_arch}" == ""
-ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-%endif
+# fails to run %%check
+ExcludeArch:    armv7l
 
 %description
 supermin is a tool for building supermin appliances. These are tiny
