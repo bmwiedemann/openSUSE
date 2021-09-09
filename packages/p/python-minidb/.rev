@@ -44,4 +44,19 @@
 </comment>
     <requestid>879471</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>99d9995de0849b7e51df9113643b28e3</srcmd5>
+    <version>2.0.5</version>
+    <time>1631221648</time>
+    <user>dimstar_suse</user>
+    <comment>- Use GitHub tarball (for tests and README.md).
+- Update to 2.0.5
+  * Clean up things and set up CI (#16)
+  * Don't use ported_eq function
+- Drop patches for issues fixed upstream
+  * no_ported_eq.patch
+- Rename README to README.md in %files section
+</comment>
+    <requestid>917716</requestid>
+  </revision>
 </revisionlist>

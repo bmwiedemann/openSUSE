@@ -17,19 +17,17 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname minidb
 %define         skip_python2 1
 %bcond_without  test
 Name:           python-minidb
-Version:        2.0.4
+Version:        2.0.5
 Release:        0
 Summary:        SQLite3-based store for Python objects
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://thp.io/2010/minidb/
-Source:         https://files.pythonhosted.org/packages/source/m/minidb/minidb-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM no_ported_eq.patch gh#thp/minidb#15 mcepl@suse.com
-# Don't use ported_eq workaround.
-Patch0:         no_ported_eq.patch
+Source:         https://github.com/thp/%{modname}/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
@@ -56,11 +54,11 @@ Minidb 2 allows you to store Python objects in a SQLite 3 database.
 
 %if %{with test}
 %check
-%pytest test/test_minidb.py
+%pytest -v
 %endif
 
 %files %{python_files}
-%doc README
+%doc README.md
 %{python_sitelib}/minidb.py*
 %{python_sitelib}/minidb-%{version}-py*.egg-info
 %pycache_only %{python_sitelib}/__pycache__/minidb*.py*

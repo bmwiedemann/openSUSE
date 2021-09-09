@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  9 11:49:43 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Use GitHub tarball (for tests and README.md).
+
+-------------------------------------------------------------------
+Wed Sep  1 12:57:53 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.0.5
+  * Clean up things and set up CI (#16)
+  * Don't use ported_eq function
+- Drop patches for issues fixed upstream
+  * no_ported_eq.patch
+- Rename README to README.md in %files section
+
+-------------------------------------------------------------------
 Tue Mar 16 15:59:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 2.0.4:
