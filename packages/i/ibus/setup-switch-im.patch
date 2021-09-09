@@ -1,6 +1,6 @@
-diff -Nur ibus-1.5.23/setup/main.py ibus-1.5.23-new/setup/main.py
---- ibus-1.5.23/setup/main.py	2020-09-29 18:58:24.000000000 +0800
-+++ ibus-1.5.23-new/setup/main.py	2020-09-30 13:44:05.023868829 +0800
+diff -Nur ibus-1.5.25/setup/main.py ibus-1.5.25-new/setup/main.py
+--- ibus-1.5.25/setup/main.py	2021-08-20 08:48:40.000000000 +0800
++++ ibus-1.5.25-new/setup/main.py	2021-09-06 20:54:06.205651597 +0800
 @@ -508,11 +508,16 @@
          self.__engine_setup_exec_list[name] = os.spawnl(os.P_NOWAIT, *args)
  
@@ -29,7 +29,7 @@ diff -Nur ibus-1.5.23/setup/main.py ibus-1.5.23-new/setup/main.py
 -        GLib.timeout_add_seconds(timeout, lambda *args: main_loop.quit())
 -        self.__bus.connect("connected", lambda *args: main_loop.quit())
 -
--        os.spawnlp(os.P_NOWAIT, "ibus-daemon", "ibus-daemon", "--xim")
+-        os.spawnlp(os.P_NOWAIT, "ibus-daemon", "ibus-daemon", "--xim", "--daemonize")
 -
 -        main_loop.run()
 -

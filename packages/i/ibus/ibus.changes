@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep  8 13:04:55 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
+
+- Refresh ibus-socket-name-compatibility.patch
+- Add ibus-missing-include.patch to fix build on Leap
+- Add ibus-fix-wrong-cursor-location.patch
+   (based on https://github.com/ibus/ibus/commit/936a0e76df79d92a8bdc03e9205330fb84a2083e.patch)
+   (gh#ibus/ibus#2337)
+- Drop ibus-python-install-dir.patch
+  Two reasons: it's for, disabled in .spec, python2, and patch forces
+  the re-generation of configure, which requires aclocal-1.16,
+  unavailable on Leap-15.3, and that breaks the build.
+
+-------------------------------------------------------------------
+Mon Sep  6 13:36:21 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.25
+  * src/tests: Run gnome-session with no-overview mode 
+  * client/gtk2: Implement ibus_im_context_set_surrounding_with_selection
+  * src/ibuscomposetable: Do not include the same compose file 
+  * src/ibusenginesimple: Multi_key to 0xB7
+  * src/ibusenginesimple: Make Compose preedit less intrusive 
+  * Change default Emoji shortcut key
+  * setup: Enhance engine search function
+  * client/gtk2/ibusimcontext: Enable sync process in GTK4
+  * engine: Update simple.xml with xkeyboard-config 2.33
+  * src/ibuscomposetable: Add support for the include directive (lf-)
+  * src/ibuscomposetable: Fix a buffer overflow in compose handling (lf-)
+  * client/x11: Add support for XFixes ClientDisconnectMode (Olivier Fourdan)
+  * setup: Start ibus-daemon with the --daemonize option (Gunnar Hjalmarsson)
+  * src: Fix a typo in ibusenginesimple.h (user202729)
+  * Update translations
+
+-------------------------------------------------------------------
 Tue Jul 20 06:28:57 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Own /usr/share/GConf and /usr/share/GConf/gsettings: the time

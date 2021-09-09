@@ -983,4 +983,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>907312</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>1b72a1d1fa38e07b777cf4229ba1f6aa</srcmd5>
+    <version>1.5.25</version>
+    <time>1631221642</time>
+    <user>dimstar_suse</user>
+    <comment>Seems reviving the old SR did not work anyway, so we're back to QA</comment>
+    <requestid>917758</requestid>
+  </revision>
 </revisionlist>

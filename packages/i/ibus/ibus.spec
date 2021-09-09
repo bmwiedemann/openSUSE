@@ -25,7 +25,7 @@
 %endif
 
 Name:           ibus
-Version:        1.5.24
+Version:        1.5.25
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later
@@ -64,6 +64,9 @@ Patch12:        ibus-disable-engines-preload-in-GNOME.patch
 # Qt5 does not be update to the new version and patch for ibus on Leap 15,
 # it still needs this patch on leap 15. (boo#1187202)
 Patch15:        ibus-socket-name-compatibility.patch
+Patch16:        ibus-missing-include.patch
+# PATCH-FIX-UPSTREAM ibus-fix-wrong-cursor-location.patch gh#ibus/ibus#2337
+Patch17:        ibus-fix-wrong-cursor-location.patch
 BuildRequires:  fdupes
 BuildRequires:  gettext-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.6
@@ -146,7 +149,7 @@ This package contains data of emoji dictionary for IBus and other applications
 Summary:        IBus input method support for gtk2 applications
 Group:          System/I18n/Chinese
 Requires:       %{name} = %{version}
-Supplements:    packageand(ibus:gtk2)
+Supplements:    (ibus and gtk2)
 %{gtk2_immodule_requires}
 
 %description gtk
@@ -157,7 +160,7 @@ Summary:        IBus input method support for gtk3 applications
 Group:          System/I18n/Chinese
 BuildRequires:  pkgconfig(gtk+-3.0)
 Requires:       %{name} = %{version}
-Supplements:    packageand(ibus:gtk3)
+Supplements:    (ibus and gtk3)
 %{gtk3_immodule_requires}
 
 %description gtk3
@@ -181,7 +184,7 @@ docs for ibus.
 
 %prep
 %setup -q
-%patch0 -p1
+#%patch0 -p1
 %patch4 -p1
 %patch8 -p1
 %if 0%{?sle_version} < 150200 && 0%{?suse_version} <=1500
@@ -200,10 +203,11 @@ cp -r %{SOURCE11} .
 %patch12 -p1
 %if 0%{?suse_version} <= 1500
 %patch15 -p1
+%patch16 -p1
 %endif
+%patch17 -p1
 
 %build
-autoreconf -fi
 %configure --disable-static \
            --enable-gtk3 \
            --enable-vala \
@@ -335,7 +339,7 @@ dconf update
 # This file is not a config file. Users may not modify it.
 %config %{_sysconfdir}/dconf/db/ibus.d/00-upstream-settings
 %config %{_sysconfdir}/dconf/profile/ibus
-%{_sysconfdir}/xdg/autostart/ibus-autostart.desktop
+%config %{_sysconfdir}/xdg/autostart/ibus-autostart.desktop
 %{_mandir}/man1/ibus.1%{ext_man}
 %{_mandir}/man1/ibus-daemon.1%{ext_man}
 %{_mandir}/man1/ibus-setup.1%{ext_man}

@@ -1,11 +1,6 @@
-This writes ~/.config/ibus/bus/SOCKETPATH with the old name.
-Author: Changwoo Ryu
-Last-Update: 2020-05-01
-Bug: https://bugreports.qt.io/browse/QTBUG-82910
-Forwarded: not-needed, workaround
-
---- a/src/ibusshare.c
-+++ b/src/ibusshare.c
+diff -Naur ibus-1.5.25/src/ibusshare.c ibus-1.5.25.new/src/ibusshare.c
+--- ibus-1.5.25/src/ibusshare.c	2021-08-20 02:48:40.000000000 +0200
++++ ibus-1.5.25.new/src/ibusshare.c	2021-09-08 19:41:27.233077477 +0200
 @@ -90,79 +90,132 @@
      return g_getenv("IBUS_SESSION_ID");
  }
@@ -193,7 +188,7 @@ Forwarded: not-needed, workaround
      return path;
  }
  
-@@ -248,19 +301,45 @@
+@@ -243,14 +296,42 @@
      return address;
  }
  
@@ -202,6 +197,8 @@ Forwarded: not-needed, workaround
  void
  ibus_write_address (const gchar *address)
  {
++
++    
 +    const gchar *socket_path;
 +    const gchar *socket_path_compat;
 +
@@ -215,7 +212,7 @@ Forwarded: not-needed, workaround
 +        if (g_getenv ("GNOME_SETUP_DISPLAY") != NULL &&
 +            strcmp (g_getenv ("GNOME_SETUP_DISPLAY"), g_getenv ("DISPLAY")) == 0) {
 +            /* Running from gnome-shell with the setup display; write the socket
-+             * address to an additional path for X11 clients */
+++             * address to an additional path for X11 clients */
 +            socket_path_compat = ibus_get_socket_path_gnome_xwayland_compat ();
 +            if (socket_path_compat != NULL)
 +                ibus_write_address_internal (address, socket_path_compat);
@@ -232,12 +229,20 @@ Forwarded: not-needed, workaround
  
 -    path = g_path_get_dirname (ibus_get_socket_path ());
 +    path = g_path_get_dirname (socket_path);
-     g_mkdir_with_parents (path, 0700);
+     errno = 0;
+     if (g_mkdir_with_parents (path, 0700)) {
+         g_warning ("Failed to mkdir %s: %s", path, g_strerror (errno));
+@@ -260,11 +341,11 @@
      g_free (path);
  
--    g_unlink (ibus_get_socket_path ());
+     errno = 0;
+-    if (g_unlink (ibus_get_socket_path ())) {
++    if (g_unlink (socket_path)) {
+         g_warning ("Failed to unlink %s: %s",
+-                   ibus_get_socket_path (), g_strerror (errno));
++                   socket_path, g_strerror (errno));
+     }
 -    pf = fopen (ibus_get_socket_path (), "w");
-+    g_unlink (socket_path);
 +    pf = fopen (socket_path, "w");
      g_return_if_fail (pf != NULL);
  
