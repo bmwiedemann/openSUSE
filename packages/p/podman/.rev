@@ -715,4 +715,41 @@ Bugfixes
     <comment></comment>
     <requestid>907716</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>e2d5da9c2c3081a139598405e1fd53fa</srcmd5>
+    <version>3.3.1</version>
+    <time>1631221643</time>
+    <user>dimstar_suse</user>
+    <comment>- require runc &gt;= 1.0.1
+
+- Update to version 3.3.1:
+  * Bugfixes
+    - Fixed a bug where unit files created by podman generate systemd could 
+      not cleanup shut down containers when stopped by systemctl stop (#11304).
+    - Fixed a bug where podman machine commands would not properly locate 
+      the gvproxy binary in some circumstances.
+    - Fixed a bug where containers created as part of a pod using the 
+      --pod-id-file option would not join the pod's network namespace (#11303).
+    - Fixed a bug where Podman, when using the systemd cgroups driver, 
+      could sometimes leak dbus sessions.
+    - Fixed a bug where the until filter to podman logs and podman events 
+      was improperly handled, requiring input to be negated (#11158).
+    - Fixed a bug where rootless containers using CNI networking run on 
+      systems using systemd-resolved for DNS would fail to start if resolved 
+      symlinked /etc/resolv.conf to an absolute path (#11358).
+  * API
+    - A large number of potential file descriptor leaks from improperly closing 
+      client connections have been fixed.
+
+- Revert crun change due to crun having exclusive arch targets
+  that would drop podman support in PPC and IBM Z
+
+- Update to version 3.3.0:
+  * Fix network aliases with network id
+  * machine: compute sha256 as we read the image file
+  * machine: check for file exists instead of listing directory
+  * pkg/bindings/images.nTar(): slashify hdr.Name values
+  * Volumes: Only remove from DB if plugin removal succeeds</comment>
+    <requestid>917154</requestid>
+  </revision>
 </revisionlist>
