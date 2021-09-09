@@ -4,5 +4,5 @@
 addFilter ("^lxd.* E: invalid-filepath-dependency .* /usr/lib(32|64)?/lxd/")
 
 # We need lxd-agent and lxd-p2c to be statically linked.
-addFilter ("^lxd.*: W: statically-linked-binary /usr/bin/lxd-(agent|p2c)")
-addFilter ("^lxd.*: W: position-independent-executable-suggested /usr/bin/lxd-(agent|p2c)")
+addFilter ("^lxd.*: [EW]: statically-linked-binary /usr/bin/lxd-(agent|p2c)")
+addFilter ("^lxd.*: [EW]: position-independent-executable-suggested /usr/bin/lxd-(agent|p2c)")

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep  5 06:43:47 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to LXD 4.18. The full upstream changelog is available from:
+  https://discuss.linuxcontainers.org/t/lxd-4-18-has-been-released/12068/2
+  boo#1190323
+
+  + Network forwards (floating IPs)
+  + Native BGP support
+  * NAT address customization with OVN
+  * lxd cluster edit for cluster disaster recovery
+  + Refresh support for custom volume copies
+  + Additional device restrictions for projects
+  * --minimal option for lxd init
+  * Additional network counters in instance state
+
+-------------------------------------------------------------------
 Fri Aug 20 11:59:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to LXD 4.17. The full upstream changelog is available from:

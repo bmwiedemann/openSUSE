@@ -14,10 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-# nodebuginfo
 
-
-%go_nostrip
 
 %define _buildshell /bin/bash
 %define import_path github.com/lxc/lxd
@@ -34,7 +31,7 @@
 %endif
 
 Name:           lxd
-Version:        4.17
+Version:        4.18
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -114,7 +111,7 @@ similar to virtual machines but uses Linux containers (LXC) instead.
 Summary:        Bash Completion for %{name}
 Group:          System/Management
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:bash-completion)
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -123,23 +120,12 @@ Bash command line completion support for %{name}.
 %prep
 %setup -q
 
-# Create fake "go mod"-like import paths. This is going to be really fun to
-# maintain but it's unfortunately necessary because openSUSE doesn't have nice
-# "go mod" support in OBS...
-ln -s . _dist/src/github.com/cpuguy83/go-md2man/v2
-
 %build
 # Make sure any leftover go build caches are gone.
 go clean -cache
 
-# Set up GOPATH.
-export GOPATH="$PWD/.gopath"
-export PKGDIR="$GOPATH/src/%{import_path}"
-mkdir -p "$PKGDIR"
-cp -a * "$PKGDIR"
-
 # Set up temporary installation paths.
-export INSTALL_ROOT="$PKGDIR/.install"
+export INSTALL_ROOT="$PWD/.install"
 export INSTALL_INCLUDEDIR="$INSTALL_ROOT/%{_includedir}"
 export INSTALL_LIBDIR="$INSTALL_ROOT/%{_libdir}/%{name}"
 
@@ -155,7 +141,7 @@ export PKG_CONFIG_PATH="$INSTALL_LIBDIR/pkgconfig"
 export CPPFLAGS="-I$INSTALL_INCLUDEDIR"
 
 # raft
-pushd "$PKGDIR/_dist/deps/raft"
+pushd "vendor/raft"
 autoreconf -fiv
 %configure \
 	--libdir="%{_libdir}/%{name}" \
@@ -165,7 +151,7 @@ make DESTDIR="$INSTALL_ROOT" install
 popd
 
 # dqlite
-pushd "$PKGDIR/_dist/deps/dqlite"
+pushd "vendor/dqlite"
 (
 autoreconf -fiv
 %configure \
@@ -182,9 +168,6 @@ readarray -t mainpkgs \
 	<<<"$(go list -f '{{.Name}}:{{.ImportPath}}' %{import_path}/... | \
 	      awk -F: '$1 == "main" { print $2 }' | \
 	      grep -Ev '^github.com/lxc/lxd/(test|shared)')"
-
-# _dist/src is effectively an old-school "vendor/" tree, so add it to GOPATH.
-export GOPATH="$GOPATH:$PKGDIR/_dist"
 
 # Needed because lxd and deps use funky #cgo LDFLAGS that Go blocks by default.
 export CGO_LDFLAGS_ALLOW="(-Wl,-wrap,pthread_create)|(-Wl,-z,now)"
@@ -232,8 +215,8 @@ done
 
 # This part is quite ugly, so I apologise upfront.
 #
-# We want to have our _dist/deps/* libraries be dylibs so that we don't bloat
-# our lxd binary. Unfortunately, we are presented with a few challenges:
+# We want to have our vendor/* libraries be dylibs so that we don't bloat our
+# lxd binary. Unfortunately, we are presented with a few challenges:
 #
 #  * Doing this naively (put it in {_libdir}) results in sqlite3 package
 #    conflicts -- and we aren't going to maintain sqlite3 for all of openSUSE
@@ -247,7 +230,7 @@ done
 #
 # So, the only reasonable choice left is to use absolute paths as DT_NEEDED
 # entries -- which bypasses the need for RUNPATH and allows us to set garbage
-# sonames for our _dist/deps/* libraries. Absolute paths for DT_NEEDED is
+# sonames for our vendor/* libraries. Absolute paths for DT_NEEDED is
 # *slightly* undefined behaviour, but glibc has had this behaviour for a very
 # long time -- and others have considered using it in a similar manner[1].
 #
@@ -297,6 +280,11 @@ do
 		name="$(basename "$(readlink "$lib")" | sed -E 's/\.[0-9]+\.[0-9]+$//')"
 		patchelf --replace-needed {,%{_libdir}/%{name}/}"$name" "$target"
 	done
+
+	# TODO: For some reason, BRP isn't auto-stripping our binaries even though
+	# we've dropped go_nostrip. So just strip them manually until I can figure
+	# out why that's happening.
+	strip "$target"
 done
 
 # Generate man pages.
@@ -323,9 +311,7 @@ done
 popd
 
 %install
-export GOPATH="$PWD/.gopath"
-export PKGDIR="$GOPATH/src/%{import_path}"
-export INSTALL_LIBDIR="$PKGDIR/.install/%{_libdir}/%{name}"
+export INSTALL_LIBDIR="$PWD/.install/%{_libdir}/%{name}"
 
 install -d -m 0755 %{buildroot}%{_libdir}/%{name}
 # We can't use install because *.so.$n are symlinks.
