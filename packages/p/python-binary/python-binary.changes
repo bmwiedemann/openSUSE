@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  6 08:08:08 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pytest macro
+
+-------------------------------------------------------------------
 Fri May 17 16:55:36 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Remove installed tests directory
