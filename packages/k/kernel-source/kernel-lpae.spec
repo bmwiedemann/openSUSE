@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.0
+%define patchversion 5.14.1
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -86,9 +86,9 @@ Name:           kernel-lpae
 Summary:        Kernel for LPAE enabled systems
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.0
+Version:        5.14.1
 %if 0%{?is_kotd}
-Release:        <RELEASE>.gdc06e24
+Release:        <RELEASE>.g67af907
 %else
 Release:        0
 %endif
@@ -119,6 +119,11 @@ BuildRequires:  dwarves >= 1.21
 BuildRequires:  libelf-devel
 # required for 50-check-kernel-build-id rpm check
 BuildRequires:  elfutils
+%if "%{compress_modules}" == "zstd"
+BuildRequires:  zstd
+# Make sure kmod supports zstd compressed modules
+Requires(post): kmod-zstd
+%endif
 Provides:       %name = %version-%source_rel
 # bnc#901925
 Provides:       %name-%version-%source_rel
@@ -205,10 +210,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-dc06e24ed55cc7b02a04a66a5ddcfbd8abb2b548
-Provides:       kernel-srchash-dc06e24ed55cc7b02a04a66a5ddcfbd8abb2b548
+Provides:       kernel-%build_flavor-base-srchash-67af907a1ed285fde3476e8419e51f68252f488f
+Provides:       kernel-srchash-67af907a1ed285fde3476e8419e51f68252f488f
 # END COMMON DEPS
-Provides:       %name-srchash-dc06e24ed55cc7b02a04a66a5ddcfbd8abb2b548
+Provides:       %name-srchash-67af907a1ed285fde3476e8419e51f68252f488f
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
 Source2:        source-post.sh
@@ -1431,7 +1436,7 @@ fi
 
 %preun -n cluster-md-kmp-%build_flavor
 nvr=cluster-md-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n cluster-md-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1472,7 +1477,7 @@ fi
 
 %preun -n dlm-kmp-%build_flavor
 nvr=dlm-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n dlm-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1513,7 +1518,7 @@ fi
 
 %preun -n gfs2-kmp-%build_flavor
 nvr=gfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n gfs2-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1569,7 +1574,7 @@ fi
 
 %preun -n kselftests-kmp-%build_flavor
 nvr=kselftests-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n kselftests-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1611,7 +1616,7 @@ fi
 
 %preun -n ocfs2-kmp-%build_flavor
 nvr=ocfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n ocfs2-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
@@ -1652,7 +1657,7 @@ fi
 
 %preun -n reiserfs-kmp-%build_flavor
 nvr=reiserfs-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
 
 %postun -n reiserfs-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2

@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Sat Sep  4 10:22:09 CEST 2021 - jslaby@suse.cz
+
+- watchdog: Fix NULL pointer dereference when releasing cdev
+  (bsc#1190093).
+- Update config files.
+  We can enable the option after this fix again.
+- commit 65109d0
+
+-------------------------------------------------------------------
+Sat Sep  4 07:01:40 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.14.1 (bsc#1012628).
+- Bluetooth: btusb: check conditions before enabling USB ALT 3
+  for WBS (bsc#1012628).
+- net: dsa: mt7530: fix VLAN traffic leaks again (bsc#1012628).
+- btrfs: fix NULL pointer dereference when deleting device by
+  invalid id (bsc#1012628).
+- Revert "floppy: reintroduce O_NDELAY fix" (bsc#1012628).
+- fscrypt: add fscrypt_symlink_getattr() for computing st_size
+  (bsc#1012628).
+- ext4: report correct st_size for encrypted symlinks
+  (bsc#1012628).
+- f2fs: report correct st_size for encrypted symlinks
+  (bsc#1012628).
+- ubifs: report correct st_size for encrypted symlinks
+  (bsc#1012628).
+- net: don't unconditionally copy_from_user a struct ifreq for
+  socket ioctls (bsc#1012628).
+- audit: move put_tree() to avoid trim_trees refcount underflow
+  and UAF (bsc#1012628).
+- commit 1059c60
+
+-------------------------------------------------------------------
+Fri Sep  3 11:08:31 CEST 2021 - mkubecek@suse.cz
+
+- update patches metadata
+- update upstream references:
+  - patches.suse/Bluetooth-avoid-circular-locks-in-sco_sock_connect.patch
+  - patches.suse/Bluetooth-btusb-Add-support-for-Foxconn-Mediatek-Chi.patch
+  - patches.suse/Bluetooth-btusb-Add-support-for-IMC-Networks-Mediate.patch
+  - patches.suse/Bluetooth-switch-to-lock_sock-in-SCO.patch
+- commit c2e3f15
+
+-------------------------------------------------------------------
+Fri Sep  3 10:49:22 CEST 2021 - mkubecek@suse.cz
+
+- HID: usbhid: Simplify code in hid_submit_ctrl()
+  (<cover.1630658591.git.mkubecek@suse.cz>).
+- HID: usbhid: Fix warning caused by 0-length input reports
+  (<cover.1630658591.git.mkubecek@suse.cz>).
+- HID: usbhid: Fix flood of "control queue full" messages
+  (<cover.1630658591.git.mkubecek@suse.cz>).
+- commit 4552165
+
+-------------------------------------------------------------------
+Fri Sep  3 10:47:34 CEST 2021 - mkubecek@suse.cz
+
+- Delete patches.suse/hid-fix-length-inconsistency.patch.
+  To be replaced by a cherry pick of corresponding upstream commits.
+- commit ba7e2a2
+
+-------------------------------------------------------------------
+Thu Sep  2 18:26:03 CEST 2021 - mkubecek@suse.cz
+
+- Delete patches.suse/Revert-netfilter-conntrack-remove-helper-hook-again.patch (bsc#1189964)
+  The regression addressed by this revert was fixed properly by mainline
+  commit ee04805ff54a ("netfilter: conntrack: make conntrack userspace
+  helpers work again") in 5.7.
+- commit 775ed38
+
+-------------------------------------------------------------------
+Thu Sep  2 18:22:53 CEST 2021 - mkubecek@suse.cz
+
+- series.conf: cleanup
+  Move queued patches to "almost mainline" section.
+  No effect on expanded tree.
+- commit e91bb9d
+
+-------------------------------------------------------------------
+Thu Sep  2 09:57:18 CEST 2021 - jslaby@suse.cz
+
+- vt_kdsetmode: extend console locking (bsc#1190025
+  CVE-2021-3753).
+- commit 18d6ea3
+
+-------------------------------------------------------------------
+Thu Sep  2 08:46:00 CEST 2021 - jslaby@suse.cz
+
+- Update config files. Disable CONFIG_WATCHDOG_HRTIMER_PRETIMEOUT
+  (bsc#1190093)
+- commit 55bd270
+
+-------------------------------------------------------------------
+Wed Sep  1 16:24:50 CEST 2021 - tiwai@suse.de
+
+- Bluetooth: sco: Fix lock_sock() blockage by memcpy_from_msg()
+  (CVE-2021-3640 bsc#1188172).
+- commit b9d15a3
+
+-------------------------------------------------------------------
+Tue Aug 31 23:50:52 CEST 2021 - lduncan@suse.com
+
+- Delete
+  patches.suse/uapi-add-a-compatibility-layer-between-linux-uio-h-and-glibc (bsc#1189959).
+  No longer needed, since it's upstream now.
+- commit b1aeba4
+
+-------------------------------------------------------------------
+Tue Aug 31 12:12:22 CEST 2021 - mbrugger@suse.com
+
+- arm64: Update config files. (bsc#1189922)
+  Enable ISP1760_DUAL_ROLE
+- commit c265161
+
+-------------------------------------------------------------------
+Tue Aug 31 08:41:22 CEST 2021 - msuchanek@suse.de
+
+- rpm/kernel-binary.spec.in: Use kmod-zstd provide.
+  This makes it possible to use kmod with ZSTD support on non-Tumbleweed.
+- commit 357f09a
+
+-------------------------------------------------------------------
 Mon Aug 30 00:37:02 CEST 2021 - mkubecek@suse.cz
 
 - Update to 5.14 final
@@ -283,6 +405,18 @@ Mon Aug 23 16:57:21 CEST 2021 - tiwai@suse.de
 - commit 0567e80
 
 -------------------------------------------------------------------
+Mon Aug 23 14:35:12 CEST 2021 - martin.wilck@suse.com
+
+- kernel-binary.spec.in: make sure zstd is supported by kmod if used
+- commit f36412b
+
+-------------------------------------------------------------------
+Mon Aug 23 14:32:13 CEST 2021 - martin.wilck@suse.com
+
+- kernel-binary.spec.in: add zstd to BuildRequires if used
+- commit aa61dba
+
+-------------------------------------------------------------------
 Mon Aug 23 09:29:30 CEST 2021 - jslaby@suse.cz
 
 - Update config files. (vanillas)
@@ -412,6 +546,14 @@ Fri Aug 20 19:42:44 CEST 2021 - afaerber@suse.com
 
 - config: arm64: Update to 5.14-rc6
 - commit 1a6db50
+
+-------------------------------------------------------------------
+Fri Aug 20 17:16:36 CEST 2021 - martin.wilck@suse.com
+
+- rpm: support gz and zst compression methods
+  Extend commit 18fcdff43a00 ("rpm: support compressed modules") for
+  compression methods other than xz.
+- commit 3b8c4d9
 
 -------------------------------------------------------------------
 Fri Aug 20 11:17:51 CEST 2021 - tiwai@suse.de

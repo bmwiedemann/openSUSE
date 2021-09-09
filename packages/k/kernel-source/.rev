@@ -5590,4 +5590,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>5.14</comment>
     <requestid>915029</requestid>
   </revision>
+  <revision rev="604" vrev="1">
+    <srcmd5>66448edaff66b0013b52ab0a11c572ae</srcmd5>
+    <version>5.14.1</version>
+    <time>1631221642</time>
+    <user>dimstar_suse</user>
+    <comment>5.14.1 &amp; other fixes</comment>
+    <requestid>916953</requestid>
+  </revision>
 </revisionlist>
