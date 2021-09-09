@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  6 08:50:56 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Thu Jan 23 17:34:52 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 3.7

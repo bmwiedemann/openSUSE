@@ -1,7 +1,7 @@
 #
 # spec file for package python-boolean.py
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ Group:          Development/Languages/Python
 URL:            https://github.com/bastikr/boolean.py
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module Sphinx}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,7 +52,7 @@ sphinx-build docs html
 rm -rf html/.{doctrees,buildinfo}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE.txt
