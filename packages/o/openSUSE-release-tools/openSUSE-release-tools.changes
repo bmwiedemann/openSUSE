@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 08 07:02:07 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210907.d2e3c9d2:
+  * Add some comments
+  * Create ProductVersion attribute
+  * Remove attributes when destroying a workflow
+
+-------------------------------------------------------------------
+Tue Sep 07 09:33:30 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210907.d07908c4:
+  * skippkg-finder: move extra packages to the OSRT attribute
+
+-------------------------------------------------------------------
 Mon Sep 06 12:21:29 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210906.2f7e2499:
