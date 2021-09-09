@@ -17,9 +17,10 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-
 %define pname python-h5py
-
+%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
+%define skip_python36 1
 # SECTION MPI DEFINITIONS
 %if "%{flavor}" == "openmpi1"
 %global mpi_flavor openmpi
@@ -29,17 +30,14 @@
 %define mpi_vers 1
 %endif
 %endif
-
 %if "%{flavor}" == "openmpi2"
 %global mpi_flavor openmpi
 %define mpi_vers 2
 %endif
-
 %if "%{flavor}" == "openmpi3"
 %global mpi_flavor openmpi
 %define mpi_vers 3
 %endif
-
 %if "%{flavor}" == "openmpi4"
 %global mpi_flavor openmpi
 %define mpi_vers 4
@@ -64,12 +62,8 @@
 %define my_sitearch_in_expand %{$python_sitearch}
 %endif
 # /SECTION MPI DEFINITIONS
-
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%define skip_python2 1
-%define skip_python36 1
 Name:           %{pname}%{?my_suffix}
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Python interface to the Hierarchical Data Format library
 License:        BSD-3-Clause
@@ -93,6 +87,7 @@ BuildRequires:  %{python_module cached-property if (%python-base < 3.8)}
 BuildRequires:  %{python_module numpy-devel >= 1.17.5 if (%python-base >= 3.8)}
 BuildRequires:  %{python_module numpy-devel >= 1.19.3 if (%python-base >= 3.9)}
 Requires:       hdf5%{?my_suffix}
+%requires_eq    libhdf5%{?my_suffix}
 %if 0%{python_version_nodots} >= 39
 Requires:       python-numpy >= 1.19.3
 %else
@@ -102,8 +97,7 @@ Requires:       python-numpy >= 1.17.5
 Requires:       python-numpy >= 1.12
 %endif
 %endif
-%requires_eq    libhdf5%{?my_suffix}
-%if %python_version_nodots < 38
+%if %{python_version_nodots} < 38
 Requires:       python-cached-property
 %endif
 %if %{with mpi}
