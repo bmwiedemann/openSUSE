@@ -648,4 +648,15 @@
     <comment></comment>
     <requestid>898637</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>873706141215dc46dc274771560c8919</srcmd5>
+    <version>1.4</version>
+    <time>1631221641</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4
+  - Fix support for mulitple locations for configuration files
+  - Drop pam-config-fix-pam_keyinit-options.patch
+  - Drop pam-config-remove-bad-access-call.patch</comment>
+    <requestid>917310</requestid>
+  </revision>
 </revisionlist>

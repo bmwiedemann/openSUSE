@@ -17,15 +17,13 @@
 
 
 Name:           pam-config
-Version:        1.3
+Version:        1.4
 Release:        0
 Summary:        Utility to modify common PAM configuration files
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/SUSE/pam-config
 Source:         %{name}-%{version}.tar.xz
-Patch1:         pam-config-remove-bad-access-call.patch
-Patch2:         pam-config-fix-pam_keyinit-options.patch
 PreReq:         pam >= 1.3.0
 Recommends:     pam_pwquality
 
@@ -38,8 +36,6 @@ add/adjust/remove other PAM modules and their options.
 
 %prep
 %setup -q
-%patch1 -p1
-%patch2 -p1
 
 %build
 %configure

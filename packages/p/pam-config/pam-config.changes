@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  7 14:15:42 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.4
+  - Fix support for mulitple locations for configuration files
+  - Drop pam-config-fix-pam_keyinit-options.patch
+  - Drop pam-config-remove-bad-access-call.patch
+
+-------------------------------------------------------------------
 Tue Jun  8 12:46:00 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
 
 - Add "revoke" to the option list for pam_keyinit
