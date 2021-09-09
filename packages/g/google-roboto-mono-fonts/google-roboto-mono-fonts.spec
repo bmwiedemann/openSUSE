@@ -1,7 +1,7 @@
 #
 # spec file for package google-roboto-mono-fonts
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -23,17 +23,17 @@ Summary:        Google Roboto Mono fonts
 License:        Apache-2.0
 Group:          System/X11/Fonts
 Url:            https://www.google.com/fonts/specimen/Roboto+Mono
-Source0:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Regular.ttf
-Source1:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Bold.ttf
-Source2:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Italic.ttf
-Source3:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-BoldItalic.ttf
-Source4:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Medium.ttf
-Source5:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-MediumItalic.ttf
-Source6:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Light.ttf
-Source7:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-LightItalic.ttf
-Source8:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-Thin.ttf
-Source9:        https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/RobotoMono-ThinItalic.ttf
-Source10:       https://raw.githubusercontent.com/google/fonts/master/apache/robotomono/LICENSE.txt
+Source0:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-Regular.ttf
+Source1:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-Bold.ttf
+Source2:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-Italic.ttf
+Source3:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-BoldItalic.ttf
+Source4:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-Medium.ttf
+Source5:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-MediumItalic.ttf
+Source6:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-Light.ttf
+Source7:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-LightItalic.ttf
+Source8:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-Thin.ttf
+Source9:        https://raw.githubusercontent.com/googlefonts/RobotoMono/main/fonts/ttf/RobotoMono-ThinItalic.ttf
+Source10:       https://raw.githubusercontent.com/google/fonts/main/apache/robotomono/LICENSE.txt
 BuildRequires:  fontpackages-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
@@ -66,7 +66,7 @@ install -m 0644 *.ttf %{buildroot}%{_ttfontsdir}/
 
 %files
 %defattr(-,root,root)
-%doc LICENSE.txt
+%license LICENSE.txt
 %{_ttfontsdir}
 
 %changelog
