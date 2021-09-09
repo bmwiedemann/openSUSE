@@ -16,11 +16,11 @@
 #
 
 
-%define so_ver 23
+%define so_ver 24
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        21.05
+Version:        21.08
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
@@ -135,8 +135,6 @@ rm -f %{buildroot}%{_bindir}/*.h
 for pyfile in `ls %{buildroot}%{_bindir}/*.py`; do
   sed -i -e 's|#!%{_bindir}/env python|#!%{_bindir}/python|' $pyfile
 done
-# Drop txt files
-rm %{buildroot}%{_bindir}/*.txt
 
 %post -n libarm_compute%{so_ver} -p /sbin/ldconfig
 %postun -n libarm_compute%{so_ver} -p /sbin/ldconfig
