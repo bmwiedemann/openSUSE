@@ -1,0 +1,17 @@
+Index: schedule-1.1.0/test_schedule.py
+===================================================================
+--- schedule-1.1.0.orig/test_schedule.py	2021-03-07 11:49:24.000000000 +0100
++++ schedule-1.1.0/test_schedule.py	2021-09-08 10:48:44.066906764 +0200
+@@ -1,8 +1,11 @@
+ """Unit tests for schedule.py"""
+ import datetime
+ import functools
+-import mock
+ import unittest
++try:
++    import unittest.mock as mock
++except ImportError:
++    import mock
+ 
+ # Silence "missing docstring", "method could be a function",
+ # "class already defined", and "too many public methods" messages:
