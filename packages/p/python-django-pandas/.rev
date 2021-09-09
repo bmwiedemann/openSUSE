@@ -17,4 +17,15 @@ also, what the heck is this new UI? I am unable to find all the buttons I like..
     <comment></comment>
     <requestid>894540</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>2684b8d298bbae4d02971a8585959c7c</srcmd5>
+    <version>0.6.2</version>
+    <time>1631221670</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-test_verbose.patch skipping
+  django_pandas.tests.test_io.RelatedFieldsTest.test_verbose
+  (gh#chrisdev/django-pandas#137).
+</comment>
+    <requestid>917809</requestid>
+  </revision>
 </revisionlist>
