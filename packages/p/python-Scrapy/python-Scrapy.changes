@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  1 04:25:44 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Remove h2 < 4.0 dependency version restriction. (boo#1190035)
+  * remove-h2-version-restriction.patch
+- Add peak method to queues to fix build with queuelib 1.6.2.
+  * add-peak-method-to-queues.patch
+- Drop support for Python 3.6 as python-uvloop does not support it.
+- Require testfixtures >= 6.0.0 (tests need LogCapture.check_present).
+  (https://github.com/Simplistix/testfixtures/commit/2953bb4caadc1a462e5332ffb01591ba1fc3284f)
+
+-------------------------------------------------------------------
 Wed Apr 28 09:29:08 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.5.0:

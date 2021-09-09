@@ -18,6 +18,8 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+# python-uvloop does not support python3.6
+%define skip_python36 1
 Name:           python-Scrapy
 Version:        2.5.0
 Release:        0
@@ -26,6 +28,10 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://scrapy.org
 Source:         https://files.pythonhosted.org/packages/source/S/Scrapy/Scrapy-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE remove-h2-version-restriction.patch boo#1190035 -- run scrapy with h2 >= 4.0.0
+Patch0:         remove-h2-version-restriction.patch
+# PATCH-FIX-UPSTREAM add-peak-method-to-queues.patch https://github.com/scrapy/scrapy/commit/68379197986ae3deb81a545b5fd6920ea3347094
+Patch1:         add-peak-method-to-queues.patch
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module Protego >= 0.1.15}
 BuildRequires:  %{python_module PyDispatcher >= 2.0.5}
@@ -47,7 +53,7 @@ BuildRequires:  %{python_module queuelib >= 1.4.2}
 BuildRequires:  %{python_module service_identity >= 16.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sybil}
-BuildRequires:  %{python_module testfixtures}
+BuildRequires:  %{python_module testfixtures >= 6.0.0}
 BuildRequires:  %{python_module uvloop}
 BuildRequires:  %{python_module w3lib >= 1.17.2}
 BuildRequires:  %{python_module zope.interface >= 4.1.3}
@@ -88,7 +94,8 @@ Group:          Documentation/HTML
 Provides documentation for %{name}.
 
 %prep
-%setup -q -n Scrapy-%{version}
+%setup -n Scrapy-%{version}
+%autopatch -p1
 sed -i -e 's:= python:= python3:g' docs/Makefile
 
 %build
