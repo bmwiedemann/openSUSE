@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  7 22:02:06 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Updates to version 1.0.8
+  + Removed outdated TID2 link in bhc-diskused-00001.pl (bsc#1190260)
+  + Added Video link to coredumpctl-000018634.py
+  + Updated renewal link in bhc-scc-expired.py
+  + Updated registration link in bhc-scc-registered.py
+
+-------------------------------------------------------------------
+Fri Aug 27 13:41:02 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Renamed patterns for file standard
+  + renamed: patterns/SLE/sle12all/scc-expired.py -> patterns/SLE/sle12all/bhc-scc-expired.py
+  + renamed: patterns/SLE/sle12all/scc-registered.py -> patterns/SLE/sle12all/bhc-scc-registered.py
+
+-------------------------------------------------------------------
 Wed Aug 25 22:59:27 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Fixed metadata tags for scc-registered.py
