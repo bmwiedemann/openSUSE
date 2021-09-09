@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-reflection
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -66,6 +66,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %build
 %ghc_lib_build
+chmod a-x *.markdown ./examples/*
 
 %install
 %ghc_lib_install
