@@ -735,4 +735,12 @@
     <comment></comment>
     <requestid>917083</requestid>
   </revision>
+  <revision rev="90" vrev="4">
+    <srcmd5>0ae2175722e7601bb1851040bc776d27</srcmd5>
+    <version>2.48.0</version>
+    <time>1631221649</time>
+    <user>dimstar_suse</user>
+    <comment>Fixed a typo and wrong mail address in the last changelog entry. Sorry for the request spam.</comment>
+    <requestid>917610</requestid>
+  </revision>
 </revisionlist>
