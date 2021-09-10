@@ -1,7 +1,7 @@
 #
 # spec file for package amsynth
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,9 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
+%ifnarch %ix86
 BuildRequires:  pandoc
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
@@ -36,7 +38,6 @@ BuildRequires:  pkgconfig(gtk+-2.0)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(liblo)
 BuildRequires:  pkgconfig(sndfile)
-Recommends:     %{name}-lang
 
 %description
 Amsynth is an analog modelling (a.k.a virtual analog) software synthesizer.
@@ -175,7 +176,9 @@ make %{?_smp_mflags}
 %{_datadir}/icons/hicolor/*/apps/amsynth.*
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/amsynth.appdata.xml
+%ifnarch %ix86
 %{_mandir}/man1/amsynth.1%{?ext_man}
+%endif
 
 %files plugin-dssi
 %{_libdir}/dssi/
@@ -193,7 +196,9 @@ make %{?_smp_mflags}
 %{_datadir}/appdata/vst-amsynth-plugin.metainfo.xml
 
 %files lang -f %{name}.lang
+%ifnarch %ix86
 %{_mandir}/de/man1/amsynth.1%{?ext_man}
 %{_mandir}/fr/man1/amsynth.1%{?ext_man}
+%endif
 
 %changelog
