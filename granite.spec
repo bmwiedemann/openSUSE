@@ -1,7 +1,7 @@
 #
 # spec file for package granite
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,12 +16,12 @@
 #
 
 
-%define sover 5
+%define sover 6
 %define soname libgranite
 %define _typelibdir %(pkg-config --variable=typelibdir gobject-introspection-1.0)
 %define _girdir %(pkg-config --variable=girdir gobject-introspection-1.0)
 Name:           granite
-Version:        5.5.0
+Version:        6.1.1
 Release:        0
 Summary:        An extension of GTK+ libraries
 License:        LGPL-3.0-or-later AND LGPL-3.0-or-later
@@ -100,7 +100,7 @@ This package contains the development files for %{soname}.
 # Can't install typelib-1_0-Granite nothing provides libgranite.so.*()(64bit)
 sed -e "s/\(.\)@PLAINNAME@\(.\)/\1%{soname}.so.%{sover}\2/" \
     -i lib/meson.build
-    
+
 %build
 %meson
 %meson_build
@@ -139,3 +139,5 @@ sed -e "s/\(.\)@PLAINNAME@\(.\)/\1%{soname}.so.%{sover}\2/" \
 %{_datadir}/vala/vapi/%{name}.vapi
 
 %files lang -f %{name}.lang
+
+%changelog
