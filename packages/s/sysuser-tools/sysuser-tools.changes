@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  8 09:12:05 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add support for new shell field [bsc#1189518]
+
+-------------------------------------------------------------------
 Thu Jul 15 06:45:15 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Use /bin/bash for sysusers-generate-pre
