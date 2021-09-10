@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  7 08:15:38 UTC 2021 - psimons@suse.com
+
+- Update vector to version 0.12.3.0 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Apr  7 07:36:26 UTC 2021 - psimons@suse.com
 
 - Update vector to version 0.12.3.0.
