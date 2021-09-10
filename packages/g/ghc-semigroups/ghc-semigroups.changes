@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  3 13:20:33 UTC 2021 - psimons@suse.com
+
+- Update semigroups to version 0.19.2.
+  0.19.2 [2021.08.30]
+  -------------------
+  * Backport `Hashable1` instances for `NonEmpty`, `Min`, `Max`, `First`, `Last`,
+    `WrappedMonoid`, and `Option`.
+
+-------------------------------------------------------------------
 Wed Jul 28 07:42:52 UTC 2021 - psimons@suse.com
 
 - Update semigroups to version 0.19.1 revision 1.
