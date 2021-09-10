@@ -19,7 +19,7 @@
 %global pkg_name th-expand-syns
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.4.8.0
+Version:        0.4.9.0
 Release:        0
 Summary:        Expands type synonyms in Template Haskell ASTs
 License:        BSD-3-Clause
@@ -35,6 +35,10 @@ ExcludeArch:    %{ix86}
 
 %description
 Expands type synonyms in Template Haskell ASTs.
+
+As of version '0.4.9.0', this library is a small shim on top of the
+'applySubstitution'/'resolveTypeSynonyms' functions from 'th-abstraction', so
+you may want to consider using 'th-abstraction' instead.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep  3 14:01:20 UTC 2021 - psimons@suse.com
+
+- Update th-expand-syns to version 0.4.9.0.
+  ## 0.4.9.0 [2021.08.30]
+
+  * Consolidate the type-synonym expansion functionality with `th-abstraction`,
+    which also provides the ability to expand type synonyms. After this change,
+    the `th-expand-syns` library is mostly a small shim on top of
+    `th-abstraction`. The only additional pieces of functionality that
+    `th-expand-syns` which aren't currently available in `th-abstraction` are:
+
+    * `th-expand-syns`' `expandSyns{With}` functions will warn that they cannot
+      expand type families (if the `SynonymExpansionSettings` are configured to
+      check for this). By contrast, `th-abstraction`'s `applySubstitution`
+      function will silently ignore type families.
+    * `th-expand-syns` provides a `substInCon` function which allows substitution
+      into `Con`s.
+    * `th-expand-syns` provides `evade{s}` functions which support type variable
+      `Name` freshening that calculating the free variables in any type that
+      provides an instance of `Data`.
+
+-------------------------------------------------------------------
 Fri Mar 12 20:54:41 UTC 2021 - psimons@suse.com
 
 - Update th-expand-syns to version 0.4.8.0.
