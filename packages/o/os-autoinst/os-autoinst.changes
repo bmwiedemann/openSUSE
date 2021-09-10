@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 10 00:48:18 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631168368.97814235:
+  * Deduce format of backing file from extension
+  * Fix `qemu-img` failure with QEMU 6.1.0 due to missing file format
+
+-------------------------------------------------------------------
 Tue Sep 07 16:12:58 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1630918490.b349ba2a:
