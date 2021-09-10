@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:31:58 UTC 2021 - psimons@suse.com
+
+- Update th-abstraction to version 0.4.3.0.
+  ## 0.4.3.0 -- 2021.08.30
+  * Make `applySubstitution` avoid capturing type variable binders when
+    substituting into `forall`s.
+  * Fix a bug in which `resolveTypeSynonyms` would incorrectly expand type
+    synonyms that are not applied to enough arguments.
+  * Allow the test suite to build with GHC 9.2.
+
+-------------------------------------------------------------------
 Fri Apr 30 08:29:32 UTC 2021 - psimons@suse.com
 
 - Update th-abstraction to version 0.4.2.0 revision 1.
