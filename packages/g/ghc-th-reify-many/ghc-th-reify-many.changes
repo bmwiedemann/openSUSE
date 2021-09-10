@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  6 09:35:16 UTC 2021 - psimons@suse.com
+
+- Update th-reify-many to version 0.1.10.
+  Upstream does not provide a change log file.
+
+-------------------------------------------------------------------
+Thu Sep  2 08:31:54 UTC 2021 - psimons@suse.com
+
+- Update th-reify-many to version 0.1.9 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
