@@ -1,7 +1,7 @@
 cabal-version:   1.12
 name:            tar
 version:         0.5.1.1
-x-revision:      3
+x-revision: 4
 
 license:         BSD3
 license-file:    LICENSE
@@ -42,7 +42,7 @@ flag old-bytestring
 
 library
 
-  build-depends: base       >= 4 && < 4.16,
+  build-depends: base       >= 4 && < 4.17,
                  filepath             < 1.5,
                  array                < 0.6,
                  containers >= 0.2 && < 0.7,
@@ -51,7 +51,7 @@ library
   if flag(old-time)
     build-depends: directory < 1.2, old-time < 1.2
   else
-    build-depends: directory >= 1.2 && < 1.4, time < 1.12
+    build-depends: directory >= 1.2 && < 1.4, time < 1.13
 
   if flag(old-bytestring)
     build-depends: bytestring-builder >= 0.10.4.0.2 && < 0.11, bytestring == 0.9.*
