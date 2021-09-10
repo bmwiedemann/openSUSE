@@ -1,7 +1,7 @@
 #
 # spec file for package liblcf
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,8 +27,8 @@ URL:            https://easyrpg.org
 Source0:        https://github.com/EasyRPG/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  doxygen
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
@@ -59,7 +59,7 @@ It can read and write LCF and XML files.
 %setup -q
 
 %build
-%cmake
+%cmake -DDISABLE_UPDATE_MIMEDB=ON
 %cmake_build
 
 %install

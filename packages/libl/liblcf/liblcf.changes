@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 10 09:39:48 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -DDISABLE_UPDATE_MIMEDB=ON to cmake: to not build the mime
+  database during build: this will be auto-rebuild on package
+  install.
+
+-------------------------------------------------------------------
 Thu May  7 08:20:07 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 0.6.2
