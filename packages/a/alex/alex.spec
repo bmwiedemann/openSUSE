@@ -1,7 +1,7 @@
 #
 # spec file for package alex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,10 +51,14 @@ lex or flex for C/C++.
 
 %build
 %ghc_bin_build
+chmod a-x TODO *.md
+chmod a-x ./doc/*
+chmod a-x ./examples/*
 cd doc
 test -f configure || autoreconf
 # FIXME: you should use the %%configure macro
 ./configure
+
 
 %install
 %ghc_bin_install
