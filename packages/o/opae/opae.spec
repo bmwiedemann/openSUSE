@@ -41,6 +41,7 @@ Patch1:         opae-fix-linking-issue.patch
 Patch2:         opae-support-OBS-build.patch
 Patch3:         opae-libs-fix-macro-indentation.patch
 Patch4:         opae-libs-xfpga-fix-strnlen-argument.patch
+Patch5:         opae-fix-support-with-newer-spdlog.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  boost-devel
 BuildRequires:  cli11-devel
@@ -149,6 +150,7 @@ Libraries for the Open Programmable Acceleration Engine Libraries tools.
 %patch2
 %patch3
 %patch4
+%patch5
 
 %build
 export RPM_OPT_FLAGS
