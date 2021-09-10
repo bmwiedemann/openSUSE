@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.27.0
+Version:        2.27.2
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -57,7 +57,7 @@ Requires:       python3-PyNaCl >= 1.4.0
 Requires:       python3-PyYAML >= 5.1
 Requires:       python3-antlr4-python3-runtime >= 4.7.2
 Requires:       python3-azure-appconfiguration >= 1.1.1
-Requires:       python3-azure-batch >= 10.0
+Requires:       python3-azure-batch >= 11.0
 Requires:       python3-azure-cosmos >= 3.0.2
 Requires:       python3-azure-datalake-store >= 0.0.49
 Requires:       python3-azure-functions-devops-build >= 0.0.22
@@ -71,7 +71,7 @@ Requires:       python3-azure-mgmt-apimanagement >= 0.2.0
 Requires:       python3-azure-mgmt-appconfiguration >= 2.0.0
 Requires:       python3-azure-mgmt-applicationinsights >= 1.0.0
 Requires:       python3-azure-mgmt-authorization >= 0.61.0
-Requires:       python3-azure-mgmt-batch >= 15.0.0
+Requires:       python3-azure-mgmt-batch >= 16.0.0
 Requires:       python3-azure-mgmt-batchai >= 7.0.0b1
 Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 0.3.0
@@ -80,7 +80,7 @@ Requires:       python3-azure-mgmt-cognitiveservices >= 12.0.0
 Requires:       python3-azure-mgmt-compute >= 22.0.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
 Requires:       python3-azure-mgmt-containerinstance >= 1.4
-Requires:       python3-azure-mgmt-containerregistry >= 8.0.0
+Requires:       python3-azure-mgmt-containerregistry >= 8.1.0
 Requires:       python3-azure-mgmt-containerservice >= 16.0.0
 Requires:       python3-azure-mgmt-cosmosdb >= 6.4.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
