@@ -19,13 +19,12 @@
 %global pkg_name dhall
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.39.0
+Version:        1.40.1
 Release:        0
 Summary:        A configuration language guaranteed to terminate
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  chrpath
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Diff-devel
@@ -74,7 +73,7 @@ BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-manipulate-devel
 BuildRequires:  ghc-th-lift-instances-devel
-BuildRequires:  ghc-transformers-compat-devel
+BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-transformers-devel
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-uri-encode-devel
@@ -94,6 +93,7 @@ BuildRequires:  ghc-tasty-expected-failure-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-silver-devel
+BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-turtle-devel
 %endif
 
@@ -120,8 +120,6 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
-cabal-tweak-dep-ver transformers-compat '< 0.7' '< 0.8'
 
 %build
 %ghc_lib_build
