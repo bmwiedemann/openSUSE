@@ -1,5 +1,5 @@
 #
-# spec file for package ngspice
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 
 Name:           %pname%{?build_shared:-shared}
 %define so_ver 0
-Version:        34
+Version:        35
 Release:        0
 Summary:        Mixed-level, Mixed-signal Circuit Simulator Based on spice3f5
 License:        BSD-2-Clause
@@ -196,6 +196,7 @@ rm -rf %{buildroot}/%{_mandir} \
 %{_libdir}/%{pname}
 
 %else
+
 %files -n lib%{pname}%{so_ver}
 %{_libdir}/lib%{pname}.so.*
 
