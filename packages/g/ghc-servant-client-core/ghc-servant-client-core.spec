@@ -67,6 +67,7 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver 'base-compat' '< 0.12' '< 0.13'
 
 %build
 %ghc_lib_build
