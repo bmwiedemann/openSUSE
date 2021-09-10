@@ -3507,12 +3507,6 @@ unsorted:
   - featherpad 
   - featherpad-lang 
   - fec-devel 
-  - fedfs-utils-admin 
-  - fedfs-utils-client 
-  - fedfs-utils-common 
-  - fedfs-utils-devel 
-  - fedfs-utils-nsdbparams 
-  - fedfs-utils-server 
   - feh 
   - felix-gogo-command 
   - felix-gogo-command-javadoc 
@@ -9214,7 +9208,7 @@ unsorted:
   - libUil4-32bit: [x86_64] 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
-  - libVkLayer_utils-1_2_182_0 
+  - libVkLayer_utils-1_2_189_0 
   - libWN3 
   - libWPEBackend-fdo-1_0-1-32bit: [x86_64] 
   - libWildMidi2 
@@ -9476,9 +9470,9 @@ unsorted:
   - libarchive13-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
-  - libarm_compute23: [x86_64] 
-  - libarm_compute_core23: [x86_64] 
-  - libarm_compute_graph23: [x86_64] 
+  - libarm_compute24: [x86_64] 
+  - libarm_compute_core24: [x86_64] 
+  - libarm_compute_graph24: [x86_64] 
   - libarmadillo10 
   - libarmadillo10-32bit: [x86_64] 
   - libarmnn25: [x86_64] 
@@ -12213,7 +12207,6 @@ unsorted:
   - libnfnetlink0-32bit: [x86_64] 
   - libnfs-devel 
   - libnfsidmap-sss 
-  - libnfsjunct0 
   - libnftnl-devel 
   - libnghttp2-14-32bit: [x86_64] 
   - libnghttp2-devel 
@@ -21609,7 +21602,6 @@ unsorted:
   - python36-SPARQLWrapper 
   - python36-SQLAlchemy 
   - python36-SQLAlchemy-Utils 
-  - python36-Scrapy 
   - python36-SecretStorage 
   - python36-Send2Trash 
   - python36-Shapely 
@@ -23041,7 +23033,6 @@ unsorted:
   - python36-nodeenv 
   - python36-nornir 
   - python36-nose 
-  - python36-nose-progressive 
   - python36-nose2 
   - python36-nose_warnings_filters 
   - python36-notebook 
@@ -23850,7 +23841,6 @@ unsorted:
   - python36-slip 
   - python36-slip-dbus 
   - python36-slixmpp 
-  - python36-slumber 
   - python36-smartypants 
   - python36-smbprotocol 
   - python36-smmap 
@@ -23876,6 +23866,7 @@ unsorted:
   - python36-sphinx-autodoc-typehints 
   - python36-sphinx-bootstrap-theme 
   - python36-sphinx-feature-classification 
+  - python36-sphinx-inline-tabs 
   - python36-sphinx-issues 
   - python36-sphinx-jsonschema 
   - python36-sphinx-removed-in 
@@ -25913,7 +25904,6 @@ unsorted:
   - python38-nodeenv 
   - python38-nornir 
   - python38-nose 
-  - python38-nose-progressive 
   - python38-nose2 
   - python38-nose_warnings_filters 
   - python38-notebook 
@@ -26755,7 +26745,6 @@ unsorted:
   - python38-sleekxmpp 
   - python38-slimit 
   - python38-slixmpp 
-  - python38-slumber 
   - python38-slycot 
   - python38-smartypants 
   - python38-smbprotocol 
@@ -26784,6 +26773,7 @@ unsorted:
   - python38-sphinx-book-theme 
   - python38-sphinx-bootstrap-theme 
   - python38-sphinx-feature-classification 
+  - python38-sphinx-inline-tabs 
   - python38-sphinx-issues 
   - python38-sphinx-jsonschema 
   - python38-sphinx-removed-in 
@@ -28176,7 +28166,6 @@ unsorted:
   - python39-django-nose 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
-  - python39-django-pandas 
   - python39-django-perf-rec 
   - python39-django-pglocks 
   - python39-django-phonenumber-field 
@@ -28956,7 +28945,6 @@ unsorted:
   - python39-nodeenv 
   - python39-nornir 
   - python39-nose 
-  - python39-nose-progressive 
   - python39-nose2 
   - python39-nose_warnings_filters 
   - python39-notebook 
@@ -29862,7 +29850,6 @@ unsorted:
   - python39-slip 
   - python39-slip-dbus 
   - python39-slixmpp 
-  - python39-slumber 
   - python39-slycot 
   - python39-smartypants 
   - python39-smbprotocol 
@@ -29894,6 +29881,7 @@ unsorted:
   - python39-sphinx-book-theme 
   - python39-sphinx-bootstrap-theme 
   - python39-sphinx-feature-classification 
+  - python39-sphinx-inline-tabs 
   - python39-sphinx-issues 
   - python39-sphinx-jsonschema 
   - python39-sphinx-removed-in 
@@ -30890,6 +30878,8 @@ unsorted:
   - remontoire 
   - renameutils 
   - rendercheck 
+  - renderdoc 
+  - renderdoc-devel 
   - rep-gtk 
   - rep-gtk-devel 
   - replacer 
@@ -32323,6 +32313,7 @@ unsorted:
   - superlu_5_2_2-gnu-hpc-devel 
   - superlu_5_2_2-gnu-hpc-doc 
   - superlu_5_2_2-gnu-hpc-examples 
+  - supermin: [i586] 
   - superpaper 
   - supertux2 
   - supertuxkart 
