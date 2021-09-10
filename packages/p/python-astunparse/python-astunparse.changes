@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 10 05:23:39 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Sun Apr 18 12:03:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add astunparse-pr57-py39.patch by Fedora maintainer for Python

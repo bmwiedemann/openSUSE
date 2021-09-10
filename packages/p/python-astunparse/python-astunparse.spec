@@ -61,7 +61,7 @@ Added to this is a pretty-printing dump utility function.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst HISTORY.rst
