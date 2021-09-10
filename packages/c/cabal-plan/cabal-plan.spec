@@ -1,7 +1,7 @@
 #
 # spec file for package cabal-plan
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -101,6 +101,7 @@ This package provides the Haskell %{name} library development files.
 %autosetup
 cabal-tweak-dep-ver 'optics-core' '^>= 0.3' '^>= 0.4'
 cabal-tweak-dep-ver 'semialign' '^>= 1.1' '^>= 1.2'
+cabal-tweak-dep-ver 'base-compat' '^>=0.11' '^>= 0.12'
 
 %build
 %define cabal_configure_options -fexe
