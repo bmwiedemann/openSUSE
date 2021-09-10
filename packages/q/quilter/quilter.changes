@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:42:01 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.3.4:
+  * Listen to feedback, act upon it and make Quilter even better.
+  * Fix warnings that were printed when running the app
+  * WebView.vala / FileManager.vala - Use YAML'd markdown files
+    to good use
+  * po/README.md - update instructions
+  * MainWindow.vala - small change
+  * Styling - Make Sepia better styled
+  * Merge branch 'master' of https://github.com/lainsce/quilter
+  * Fix flatpak nightly
+  * headerbar.ui - Make View Type submenu look better
+  * HeaderBar.vala - Less wordy tooltips
+  * Missing tooltips re-added
+  * Update screenshots
+  * Small fix on CSS
+  * SideBar.vala / HeadrBar.vala - Use a Hdy.Flap
+  * Fix an oops for Focus Mode
+  * StatusBar.vala - Use a "statusbar" holding the text tracker
+  * HeaderBar.vala - Move View Mode switcher to Main Menu
+  * SearchBar.vala - Make the Search look attached to the
+    headerbar
+  * HeaderBar.vala - Move Statusbar components here / Add Save
+    button
+  * SideBar.vala - Select row in Files intelligently
+  * Outline should now work, finally
+  * UI Files - Ported Preferences and Searchbar to use .ui files.
+  * MainWindow.vala / SideBar.vala - Finally update the outline
+    even on ephemeral files (cache)
+  * statusbar.ui - make StatusBar.vala use a .ui file
+  * Various Optimizations and minor UI fixes
+  * sidebarbox.ui file has to have the activatable prop set to
+    true (1)
+  * small fix; the create a new file should be here
+  * on startup, start with a blank doc.
+  * sidebar/sidebarbox.ui - Change SideBar and SideBarBox.vala
+    into templated classes powered by .ui
+  * rename Devel icon to have no period between Quilter and Devel
+  * headerbar.ui - Headerbar is now made via UI file
+  * SideBar / SideBarBox / HeaderBar / styling - changes all
+    around
+  * ...
+
+-------------------------------------------------------------------
 Fri Aug 28 23:10:53 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.5.1:

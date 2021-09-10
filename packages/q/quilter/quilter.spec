@@ -1,7 +1,7 @@
 #
 # spec file for package quilter
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,12 +12,12 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           quilter
-Version:        2.5.1
+Version:        3.3.4
 Release:        0
 Summary:        Writing application
 License:        GPL-3.0-only
@@ -34,8 +34,9 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(gtkspell3-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(webkit2gtk-4.0)
 Recommends:     %{name}-lang
 
@@ -50,6 +51,7 @@ A fullscreen word processor for Elementary OS.
 # use default font
 sed -i '/QuiltMono.ttf/d' $(grep -rl QuiltMono.ttf)
 sed -i '/QuiltVier.ttf/d' $(grep -rl QuiltVier.ttf)
+sed -i '/QuiltZwei.ttf/d' $(grep -rl QuiltZwei.ttf)
 
 %build
 %meson
@@ -57,32 +59,20 @@ sed -i '/QuiltVier.ttf/d' $(grep -rl QuiltVier.ttf)
 
 %install
 %meson_install
-%suse_update_desktop_file -r com.github.lainsce.quilter GTK Utility TimeUtility
-%find_lang com.github.lainsce.quilter %{name}.lang
-%fdupes %{buildroot}/%{_datadir}
+%suse_update_desktop_file -r io.github.lainsce.Quilter GTK Utility TimeUtility
+%find_lang io.github.lainsce.Quilter %{name}.lang
+%fdupes %{buildroot}/%{_datadir}  
 
-# dirlist HiDPI icons (see: hicolor/index.theme)
-_dirlist=$PWD/dir.lst
-pushd %{buildroot}
-find ./ | while read _list; do
-    echo $_list | grep '[0-9]\@[0-9]' || continue
-    _path=$(echo $_list | sed 's/[^/]//')
-    if ! ls ${_path%/*}; then
-        grep -xqs "\%dir\ ${_path%/*}" $_dirlist || echo "%dir ${_path%/*}" >> $_dirlist
-    fi
-done
-popd
-
-%files -f dir.lst
+%files
 %license LICENSE
 %doc AUTHORS README.md
-%{_bindir}/com.github.lainsce.quilter
-%{_datadir}/com.github.lainsce.quilter/
-%{_datadir}/applications/com.github.lainsce.quilter.desktop
-%{_datadir}/glib-2.0/schemas/com.github.lainsce.quilter.gschema.xml
-%{_datadir}/gtksourceview-3.0/styles/*.xml
-%{_datadir}/icons/hicolor/*/apps/com.github.lainsce.quilter.??g
-%{_datadir}/metainfo/com.github.lainsce.quilter.appdata.xml
+%{_bindir}/io.github.lainsce.Quilter
+%{_datadir}/io.github.lainsce.Quilter/
+%{_datadir}/applications/io.github.lainsce.Quilter.desktop
+%{_datadir}/glib-2.0/schemas/io.github.lainsce.Quilter.gschema.xml
+%{_datadir}/gtksourceview-4/styles/*.xml
+%{_datadir}/icons/hicolor/*/apps/io.github.lainsce.Quilter*.??g
+%{_datadir}/metainfo/io.github.lainsce.Quilter.appdata.xml
 
 %files lang -f %{name}.lang
 
