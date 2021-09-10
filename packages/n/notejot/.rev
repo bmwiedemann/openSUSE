@@ -128,4 +128,12 @@
     <comment></comment>
     <requestid>894837</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e9c80dfd04ea985b920daaf696cd2090</srcmd5>
+    <version>3.1.4</version>
+    <time>1631310048</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 917844 from awissu)</comment>
+    <requestid>917850</requestid>
+  </revision>
 </revisionlist>

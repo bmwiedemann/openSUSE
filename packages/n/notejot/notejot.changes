@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:36:07 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.1.4:
+  * Fix crash caused by two objects having the same ID (#285)
+  * update appdata
+  * Merge branch 'master' of https://github.com/lainsce/notejot
+  * When moving from trash to a notebook, actually do so.
+  * Update de_DE.po (#280)
+  * Fix empty state showing a scrollbar when not needed
+  * Fix titlebar color when moving to trash or all notes when a
+    note is selected
+  * Fix READMEs (#276)
+  * Update po/README.md (#275)
+  * Fix if removing a notebook it accidentally removes all notes
+    from other notebooks
+  * Update it.po (#274)
+  * *
+  * Fix permanent window maximization at startup (#272)
+  * update data
+  * Formatting Improvements (#270)
+  * Add more metadata information (#268)
+  * Update it.po (#267)
+  * Filter notes list by notebook better
+  * Create notes inside notebooks if one is selected in the
+    notebooks menu
+  * Remember window size #263 (#264)
+  * clear formatting before applying new formatting (#261)
+  * fix formatting of identical text (#262)
+  * small stuff
+  * Fixing #258 App won't use dark mode when there are no notes
+    (#259)
+  * 3.1.0 - Many bugfixes and UI and styling changes
+  * Update io.github.lainsce.Notejot.appdata.xml.in
+  * appcenter stuff back
+  * use bindings to hide & show back buttons and close buttons
+    (#247)
+  * 3.0.5 - Fix #241 - Uneven padding
+  * 3.0.5 - Try to fix most slowdowns with the note list and
+    leaflet
+  * 3.0.5 - Fix #240 - no close button on notes list when folded
+  * ...
+
+-------------------------------------------------------------------
 Thu May 20 13:38:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.0.4
