@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  6 09:35:41 UTC 2021 - psimons@suse.com
+
+- Update fmt to version 0.6.3.0.
+  # 0.6.3.0
+
+  * Add support for `deriving ... via GenericBuildable T`
+
+-------------------------------------------------------------------
 Sun Aug  1 17:38:21 UTC 2021 - psimons@suse.com
 
 - Update fmt to version 0.6.2.0.

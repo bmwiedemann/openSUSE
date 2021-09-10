@@ -19,7 +19,7 @@
 %global pkg_name fmt
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.6.2.0
+Version:        0.6.3.0
 Release:        0
 Summary:        A new formatting library
 License:        BSD-3-Clause
