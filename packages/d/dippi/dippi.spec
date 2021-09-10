@@ -1,7 +1,7 @@
 #
 # spec file for package dippi
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dippi
-Version:        2.7.4
+Version:        3.1.1
 Release:        0
 Summary:        Tool for calculating display info like DPI and aspect ratio
 License:        GPL-3.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(granite)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libhandy-1)
 Recommends:     %{name}-lang
 
 %description
@@ -72,7 +73,8 @@ done
 popd
 
 %files -f dir.lst
-%doc AUTHORS COPYING README.md
+%license COPYING
+%doc AUTHORS README.md
 %{_bindir}/com.github.cassidyjames.dippi
 %{_datadir}/applications/com.github.cassidyjames.dippi.desktop
 %{_datadir}/icons/hicolor/*/apps/com.github.cassidyjames.dippi.??g

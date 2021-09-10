@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:23:58 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 3.1.1:
+  * Under-the-hood packaging updates for elementary OS 6
+  * The Adventure of Link: you can now share Dippi results as a
+    link so anyone can see all the details and make their own
+    calculations. Plus:
+  * More details on launch
+  * Bolded sections of descriptions for easier skimmability
+  * Fix window resizing for different results
+  * Animate between results
+  * Port to elementary OS 6
+  * Follow the dark style preference
+  * Drag window from anywhere
+  * Refreshed typography and design
+
+-------------------------------------------------------------------
 Wed Feb 19 19:05:44 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 2.7.4:
