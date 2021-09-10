@@ -1,7 +1,7 @@
 #
 # spec file for package python-sshpubkeys
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,19 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sshpubkeys
-Version:        3.1.0
+Version:        3.3.1
 Release:        0
 Summary:        SSH public key parser
 License:        BSD-3-Clause
 URL:            https://github.com/ojarva/python-sshpubkeys
-Source:         https://github.com/ojarva/python-sshpubkeys/archive/v%{version}.tar.gz
-BuildRequires:  %{python_module cryptography >= 2.6.1}
-BuildRequires:  %{python_module ecdsa >= 0.13}
+Source:         https://github.com/ojarva/python-sshpubkeys/archive/%{version}.tar.gz
+BuildRequires:  %{python_module cryptography >= 3.2}
+BuildRequires:  %{python_module ecdsa >= 0.13.3}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module yapf >= 0.21.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-cryptography >= 2.6.1
-Requires:       python-ecdsa >= 0.13
+Requires:       python-cryptography >= 3.2
+Requires:       python-ecdsa >= 0.13.3
 BuildArch:      noarch
 %python_subpackages
 
@@ -50,7 +48,7 @@ OpenSSH Public Key Parser for Python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst
