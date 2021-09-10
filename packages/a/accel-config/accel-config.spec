@@ -19,7 +19,7 @@
 %define pkg_libname libaccel-config1
 %define src_name idxd-config-accel-config-v%{version}
 Name:           accel-config
-Version:        3.2
+Version:        3.4.1
 Release:        0
 Summary:        Configure accelerator subsystem devices
 License:        GPL-2.0-only
@@ -31,7 +31,6 @@ BuildRequires:  automake
 BuildRequires:  binutils
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  systemd
 BuildRequires:  xmlto
 BuildRequires:  pkgconfig(json-c)
 BuildRequires:  pkgconfig(libkmod)
@@ -73,14 +72,12 @@ echo %{version} > version
 
 %install
 %make_install
-find %{buildroot} -name '*.la' -exec rm -f {} ';'
+find %{buildroot} -type f -name "*.la" -delete -print
 
 %post -n %{pkg_libname} -p /sbin/ldconfig
-
 %postun -n %{pkg_libname} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %license Documentation/COPYING licenses/BSD-MIT licenses/CC0
 %license licenses/accel-config-licenses LICENSE_GPL_2_0
 %{_bindir}/accel-config
@@ -89,14 +86,12 @@ find %{buildroot} -name '*.la' -exec rm -f {} ';'
 %config %{_sysconfdir}/accel-config/accel-config.conf.sample
 
 %files -n %{pkg_libname}
-%defattr(-,root,root)
 %doc README.md
 %license Documentation/COPYING licenses/BSD-MIT licenses/CC0
 %license licenses/libaccel-config-licenses accfg/lib/LICENSE_LGPL_2_1
 %{_libdir}/libaccel-config.so.*
 
 %files -n %{name}-devel
-%defattr(-,root,root)
 %license Documentation/COPYING
 %{_includedir}/accel-config/
 %{_libdir}/libaccel-config.so
