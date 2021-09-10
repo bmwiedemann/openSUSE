@@ -346,4 +346,11 @@
     <comment>- Comment out ostree_repo [boo#1189893]</comment>
     <requestid>917155</requestid>
   </revision>
+  <revision rev="41" vrev="4">
+    <srcmd5>c851d8744fa405b685ecbf82fe06e09c</srcmd5>
+    <version>20210626</version>
+    <time>1631313824</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1189893</comment>
+  </revision>
 </revisionlist>
