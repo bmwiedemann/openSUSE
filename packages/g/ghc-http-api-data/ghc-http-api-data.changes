@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:33:15 UTC 2021 - psimons@suse.com
+
+- Update http-api-data to version 0.4.3 revision 3.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Apr  6 13:21:54 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - fix license to BSD-2-Clause
