@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  6 19:32:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Fix tests
+- Update dependencies
+- Update to version 2.5.0
+  * Added --raw to allow specifying the raw request body without
+    extra processing as an alternative to stdin.
+  * Added support for XML formatting.
+  * Added internal support for file-like object responses to
+    improve adapter plugin support.
+  * Fixed --continue --download with a single byte to be
+    downloaded left.
+  * Fixed --verbose HTTP 307 redirects with streamed request body.
+  * Fixed handling of session files with Cookie: followed by other
+    headers.
+- Update to version 2.4.0
+  * Added support for --session cookie expiration based on
+    Set-Cookie: max-age=<n>.
+  * Show a --check-status warning with --quiet as well, not only
+    when the output is redirected.
+  * Fixed upload with --session.
+  * Fixed a missing blank line between request and response.
+
+-------------------------------------------------------------------
 Fri Mar 19 12:26:10 UTC 2021 - Robert Munteanu <rombert@apache.org>
 
 - Disable tests that fail in OBS 

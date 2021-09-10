@@ -17,7 +17,7 @@
 
 
 Name:           httpie
-Version:        2.3.0
+Version:        2.5.0
 Release:        0
 Summary:        CLI, cURL-like tool for humans
 License:        BSD-3-Clause
@@ -28,15 +28,19 @@ Source1:        http.1
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Pygments >= 2.5.2
+BuildRequires:  python3-defusedxml >= 0.6.0
 BuildRequires:  python3-mock
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-httpbin
 BuildRequires:  python3-requests >= 2.22.0
 BuildRequires:  python3-requests-toolbelt >= 0.9.1
+BuildRequires:  python3-responses
 BuildRequires:  python3-setuptools
 Requires:       python3-Pygments >= 2.5.2
+Requires:       python3-defusedxml >= 0.6.0
 Requires:       python3-requests >= 2.22.0
 Requires:       python3-requests-toolbelt >= 0.9.1
+Requires:       python3-responses
 Provides:       python3-httpie = 2.3.0
 Provides:       python38-httpie = 2.3.0
 Obsoletes:      python3-httpie < 2.3.0
@@ -54,7 +58,6 @@ responses.
 
 %prep
 %setup -q
-
 #drop shebang
 sed -i -e '/^#!\//, 1d' httpie/__main__.py
 
@@ -70,16 +73,16 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/http.1
 
 %check
 export LC_CTYPE=en_US.UTF-8
-export PYTHONPATH=$PWD
 # disable tests that fail on OBS with [Errno -3] Temporary failure in name resolution
-pytest --deselect=tests/test_uploads.py
+#pytest --deselect=tests/test_uploads.py
+pytest --deselect=tests/test_uploads.py tests -v
 
 %files
-%doc AUTHORS.rst CHANGELOG.rst README.rst
+%doc AUTHORS.md CHANGELOG.md README.md
 %license LICENSE
 %{_bindir}/http
 %{_bindir}/https
-%{python_sitelib}/*
+%{python_sitelib}/httpie*
 %{_mandir}/man1/http.1%{?ext_man}
 
 %changelog

@@ -63,4 +63,12 @@
     <comment>Forward the current version of httpie to Factory</comment>
     <requestid>883346</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b0dc6995d23e53e0174c89f492eec742</srcmd5>
+    <version>2.5.0</version>
+    <time>1631310095</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917996</requestid>
+  </revision>
 </revisionlist>
