@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  8 08:11:07 UTC 2021 - psimons@suse.com
+
+- Update shake to version 0.19.6.
+  0.19.6, released 2021-09-07
+      #810, don't hash files in &%> if you don't have to
+
+-------------------------------------------------------------------
 Sat Jul 10 13:42:12 UTC 2021 - psimons@suse.com
 
 - Update shake to version 0.19.5.
