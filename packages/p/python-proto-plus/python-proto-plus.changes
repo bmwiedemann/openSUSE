@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 10 10:52:33 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to 1.19.0
+  * pass 'including_default_value_fields' through to 'Message.to_dict'
+    method (gh#googleapis/proto-plus-python#232)
+
+-------------------------------------------------------------------
 Sat Mar 20 12:24:03 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - update to 1.18.1

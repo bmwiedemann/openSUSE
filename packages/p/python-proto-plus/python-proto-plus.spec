@@ -20,7 +20,7 @@
 %define skip_python2 1
 %define modname proto-plus
 Name:           python-proto-plus
-Version:        1.18.1
+Version:        1.19.0
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
