@@ -39,4 +39,12 @@
     <comment>- Update to new release (forwarded request 783986 from awissu)</comment>
     <requestid>783987</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3a20e4c4e761883877ae5e0b35c76dbd</srcmd5>
+    <version>1.1.2</version>
+    <time>1631310044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 917844 from awissu)</comment>
+    <requestid>917845</requestid>
+  </revision>
 </revisionlist>

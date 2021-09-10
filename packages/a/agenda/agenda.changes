@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:20:23 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.1.2:
+  * Bug Fixes
+  * Fixed the issue where the task list is not saved on
+    unexpected quit
+  * Fixed the issue where the window position and size are not
+    saved on unexpected quit
+  * Added Ctrl-Q and Ctrl-W keyboard shortcuts for closing the
+    window
+  * Packaged the app as a flatpak for elementary OS 6!
+  * Fixed some theme issues
+
+-------------------------------------------------------------------
 Wed Mar 11 16:43:24 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.1.0:
