@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  3 11:57:07 UTC 2021 - psimons@suse.com
+
+- Update persistent to version 2.13.1.2.
+  ## 2.13.1.2
+
+  * [#1308](https://github.com/yesodweb/persistent/pull/1308)
+      * Consolidate the documentation for the Persistent quasiquoter in
+        Database.Persist.Quasi.
+  * [#1312](https://github.com/yesodweb/persistent/pull/1312)
+      * Reorganize documentation and link to more modules.
+      * Expose `Database.Persist.Sql.Migration`
+
+-------------------------------------------------------------------
 Thu Jul  1 12:50:46 UTC 2021 - psimons@suse.com
 
 - Update persistent to version 2.13.1.1.
