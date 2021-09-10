@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:32:23 UTC 2021 - psimons@suse.com
+
+- Update base64-bytestring-type to version 1.0.1 revision 9.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Feb 21 12:48:07 UTC 2021 - psimons@suse.com
 
 - Update base64-bytestring-type to version 1.0.1 revision 8.
