@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  7 08:28:49 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Increase RAM required in _constraints to match the current
+  requirements and avoid OOM errors seen on aarch64
+
+-------------------------------------------------------------------
+Tue Sep  7 03:45:51 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- relax dependency on base-compat-batteries 
+
+-------------------------------------------------------------------
 Sun Aug  8 22:05:02 UTC 2021 - psimons@suse.com
 
 - Update hledger-lib to version 1.22.2.

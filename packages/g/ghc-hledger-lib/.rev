@@ -95,4 +95,15 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912604</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>0fa4fa6c9d0c71083a704c5a5672b2b6</srcmd5>
+    <version>1.22.2</version>
+    <time>1631310082</time>
+    <user>dimstar_suse</user>
+    <comment>- Increase RAM required in _constraints to match the current
+  requirements and avoid OOM errors seen on aarch64
+
+- relax dependency on base-compat-batteries</comment>
+    <requestid>917923</requestid>
+  </revision>
 </revisionlist>

@@ -93,6 +93,7 @@ This package provides the Haskell %{pkg_name} library development files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
+cabal-tweak-dep-ver 'base-compat-batteries' '<0.12' '<0.13'
 
 %build
 %ghc_lib_build
