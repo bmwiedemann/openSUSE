@@ -17,13 +17,13 @@
 
 
 Name:           reco
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        Audio Recording App
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/ryonakano/reco
-Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/ryonakano/reco/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libxml2-tools
