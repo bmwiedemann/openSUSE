@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 22 15:48:17 UTC 2021 - psimons@suse.com
+
+- Update dhall-json to version 1.7.8.
+  1.7.8
+
+  * [Add support for `Date` / `Time` / `TimeZone`](https://github.com/dhall-lang/dhall-haskell/pull/2247)
+
+-------------------------------------------------------------------
 Fri Jun  4 09:06:40 UTC 2021 - psimons@suse.com
 
 - Update dhall-json to version 1.7.7.
