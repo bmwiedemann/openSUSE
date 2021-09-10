@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  7 10:13:33 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
+
+- update to v1.17
+  * Fix issue with sending additional and vendor IEs.
+  * Fix issue with IE ordering for 802.11-2020 support.
+  * Fix issue with frequency update on channel switch events.
+  * Fix issue with drivers and handling of IF_OPER_UP setting.
+
+-------------------------------------------------------------------
 Mon Aug 30 13:14:51 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
 
 - update to v1.16

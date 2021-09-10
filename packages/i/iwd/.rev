@@ -186,4 +186,12 @@
   * Add support for exporting Daemon information. (forwarded request 915063 from mohms)</comment>
     <requestid>915320</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1db08cd0d236bf823c897438680b7b8a</srcmd5>
+    <version>1.17</version>
+    <time>1631310092</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917967</requestid>
+  </revision>
 </revisionlist>
