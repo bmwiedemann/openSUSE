@@ -346,9 +346,6 @@ install -m 644 %{SOURCE25} %{buildroot}%{_sysusersdir}/system-user-ntp.conf
 
 %pre -n system-user-nobody -f nobody.pre
 
-%post -n system-user-nobody
-test -x /usr/sbin/usermod && /usr/sbin/usermod -s /bin/bash nobody ||:
-
 %pre -n system-user-upsd -f upsd.pre
 
 %pre -n system-user-uuidd -f uuidd.pre

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  8 12:48:06 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Set shell for nobody in sysusers.d config
+
+-------------------------------------------------------------------
 Tue Jun  8 14:17:24 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Add default hardware group for 'sgx' enclave access
