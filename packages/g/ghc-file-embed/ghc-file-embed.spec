@@ -19,7 +19,7 @@
 %global pkg_name file-embed
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.0.14.0
+Version:        0.0.15.0
 Release:        0
 Summary:        Use Template Haskell to embed file contents directly
 License:        BSD-2-Clause

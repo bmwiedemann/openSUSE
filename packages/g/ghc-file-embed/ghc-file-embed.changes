@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Aug 29 13:57:28 UTC 2021 - psimons@suse.com
+
+- Update file-embed to version 0.0.15.0.
+  ## 0.0.15.0
+
+  * Add `makeRelativeToLocationPredicate`
+
+-------------------------------------------------------------------
 Tue May 11 09:10:44 UTC 2021 - psimons@suse.com
 
 - Update file-embed to version 0.0.14.0.
