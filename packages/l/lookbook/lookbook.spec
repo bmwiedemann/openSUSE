@@ -1,7 +1,7 @@
 #
 # spec file for package lookbook
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           lookbook
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Navigator for finding and browsing system icons
 License:        GPL-3.0-or-later
@@ -34,12 +34,16 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 0.5
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
+BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+Recommends:     %{name}-lang
 
 %description
 Lookbook is a browser for system icons. Icons can be grouped by
 category or be searched by icon name. Icons are shown in different
 sizes. A code snippet to use in programs can be displayed.
+
+%lang_package
 
 %prep
 %setup -q
@@ -51,6 +55,7 @@ sizes. A code snippet to use in programs can be displayed.
 %install
 %meson_install
 %suse_update_desktop_file -r com.github.danrabbit.lookbook GTK Development X-SuSE-Core-Development
+%find_lang com.github.danrabbit.lookbook %{name}.lang
 %fdupes %{buildroot}/%{_datadir}
 
 # dirlist HiDPI icons (see: hicolor/index.theme)
@@ -73,5 +78,7 @@ popd
 %{_datadir}/glib-2.0/schemas/com.github.danrabbit.lookbook.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/com.github.danrabbit.lookbook.??g
 %{_datadir}/metainfo/com.github.danrabbit.lookbook.appdata.xml
+
+%files lang -f %{name}.lang
 
 %changelog

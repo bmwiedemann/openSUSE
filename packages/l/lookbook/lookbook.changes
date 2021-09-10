@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:32:12 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.2.0:
+  * Add audio-headphones and audio-headset
+  * Add distribute actions
+  * Disable sidebar when searching
+  * Remove non-fdo app names
+  * Add status emblems
+  * Mimetypes → Media Types
+  * Added French and Portuguese translations
+
+-------------------------------------------------------------------
 Mon Oct 29 19:36:34 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.1.0:
