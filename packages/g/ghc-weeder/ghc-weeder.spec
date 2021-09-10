@@ -18,7 +18,7 @@
 
 %global pkg_name weeder
 Name:           ghc-%{pkg_name}
-Version:        2.1.3
+Version:        2.2.0
 Release:        0
 Summary:        Detect dead code
 License:        BSD-3-Clause
