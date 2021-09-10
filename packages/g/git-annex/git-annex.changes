@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Sep  5 17:54:01 UTC 2021 - psimons@suse.com
+
+- Update git-annex to version 8.20210903.
+  git-annex (8.20210903) upstream; urgency=medium
+
+    * Deal with clock skew, both forwards and backwards, when logging
+      information to the git-annex branch.
+    * GIT_ANNEX_VECTOR_CLOCK can now be set to a fixed value (eg 1)
+      rather than needing to be advanced each time a new change is made.
+    * Misuse of GIT_ANNEX_VECTOR_CLOCK will no longer confuse git-annex.
+    * add: When adding a dotfile, avoid treating its name as an extension.
+    * rsync special remote: Stop displaying rsync progress, and use
+      git-annex's own progress display.
+    * Many special remotes now checksum content while it is being retrieved,
+      instead of in a separate pass at the end. This is supported for all
+      special remotes on Linux (except for bittorrent), and for many
+      on other OS's (except for adb, external, gcrypt, hook, and rsync).
+    * unused: Skip the refs/annex/last-index ref that git-annex recently
+      started creating.
+    * Fix test suite failure on Windows.
+    * New --batch-keys option added to these commands:
+      get, drop, move, copy, whereis
+    * Added annex.youtube-dl-command config. This can be used to run some
+      forks of youtube-dl.
+    * Run cp -a with --no-preserve=xattr, to avoid problems with copied
+      xattrs, including them breaking permissions setting on some NFS
+      servers.
+    * add, import: Detect when xattrs or perhaps ACLs prevent removing
+      write permissions from an annexed file, and fail with an informative
+      message.
+    * Fix support for readonly git remotes.
+      (Reversion in version 8.20210621)
+    * When downloading urls fail, explain which urls failed for which
+      reasons.
+    * web: Avoid displaying a warning when downloading one url failed
+      but another url later succeeded.
+
+   -- Joey Hess <id@joeyh.name>  Fri, 03 Sep 2021 12:00:46 -0400
+
+-------------------------------------------------------------------
 Wed Aug  4 10:32:07 UTC 2021 - psimons@suse.com
 
 - Update git-annex to version 8.20210803.
