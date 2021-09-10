@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  7 12:36:01 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 3.77:
+  * Added experimental support for filled objects in DXF output
+    using the HATCH element of DXF.
+  * Fixed a problem when running pstoedit with output to standard
+    output instead of a file.
+  * Adapted to new versioning scheme of GhostScript.
+  * Additional backend for pcb-rnd.
+  * Some additional options in WEMF driver.
+  * Better handling of bounding box in EMF output.
+  * Better handling of metric option in fig driver.
+
+-------------------------------------------------------------------
 Thu Sep 17 17:56:09 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 3.75:
