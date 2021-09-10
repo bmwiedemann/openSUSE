@@ -66,6 +66,7 @@ Read more at: <https://hledger.org>.
 
 %prep
 %autosetup
+cabal-tweak-dep-ver 'base-compat-batteries' '<0.12' '<0.13'
 
 %build
 %ghc_bin_build
