@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 10 09:27:55 UTC 2021 - psimons@suse.com
+
+- Update http-client to version 0.7.9.
+  ## 0.7.9
+
+  * Exceptions from streamed request body now cause the request to fail. Previously they were
+    routed through onRequestBodyException and, by default, the IOExceptions were discarded.
+
+-------------------------------------------------------------------
 Thu Apr 22 10:05:02 UTC 2021 - psimons@suse.com
 
 - Update http-client to version 0.7.8.

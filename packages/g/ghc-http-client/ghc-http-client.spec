@@ -19,7 +19,7 @@
 %global pkg_name http-client
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.7.8
+Version:        0.7.9
 Release:        0
 Summary:        An HTTP client engine
 License:        MIT
