@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:33:14 UTC 2021 - psimons@suse.com
+
+- Update th-orphans to version 0.13.12 revision 1.
+  ### 0.13.12 [2021.08.30]
+  * Implement `qGetDoc` and `qPutDoc` (introduced in `template-haskell-2.18.0.0`)
+    for the `Quasi` instances defined in `th-orphans`.
+
+-------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
  
 - disable %{ix86} build
