@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  3 13:20:36 UTC 2021 - psimons@suse.com
+
+- Update tree-diff to version 0.2 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Wed Mar 17 09:45:13 UTC 2021 - psimons@suse.com
 
 - Update tree-diff to version 0.2.
