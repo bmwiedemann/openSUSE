@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  3 16:59:17 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- Update to 7.7.0
+  - Add all new APIs and constants in libvirt 7.7.0
+  - jsc#SLE-18446
+
+-------------------------------------------------------------------
 Tue Jul  6 21:52:02 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to 7.5.0
