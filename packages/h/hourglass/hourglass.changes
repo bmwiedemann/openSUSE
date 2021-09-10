@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:29:43 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 2.0.0:
+  * This release comes with numerous bug fixes &amp;
+    improvements!
+- Changes in Alarm:
+  * Refresh weekday toggle activity when opening popover
+  * Notify on every 0 second
+  * Keep repeated alarms on and turn off one-time alarms after
+    ringing
+  * Now alarm date is optional; if you don't specify date of the
+    alarm, it will be notified at that time of today
+  * Remove unused "update-frequency" gsettings key
+  * Fix repeating alarms can't be disabled
+  * Explicitly set the year
+- Changes in Timer:
+  * Add Reset button
+  * Support setting purpose of a timer
+  * Lessen damages to your storage
+  * Restore started time on end
+  * Make sure to iconify always when the timer is active
+- Other changes:
+  * Fix a regression that any key input no longer accepted
+  * Lessen window width by default
+  * Fix the app exits if the window has been iconified
+  * Code refactoring
+  * Update translations
+  * Publish the app to the new AppCenter on elementary OS 6 with
+    the Flatpak manifest
+  * Respect an elementary OS-wide dark preference
+  * Now you can close the window with the shortcut key Ctrl+Q,
+    while the daemon stays running in the background
+  * Fix unreadable font size in the Alarm view
+  * Fix wrong OARS data
+  * Move the delete button in the action bar
+  * Redesign app icons (big thanks to @Fatih20)
+  * Update Brazilian Portuguese translation (by @gfavaro)
+
+-------------------------------------------------------------------
 Sun Oct 11 07:29:30 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 1.2.3:

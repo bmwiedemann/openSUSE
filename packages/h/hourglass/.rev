@@ -31,4 +31,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>842369</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0c59ee2b58d1629c7e74f7e816a0d559</srcmd5>
+    <version>2.0.0</version>
+    <time>1631310046</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to new release (forwarded request 917844 from awissu)</comment>
+    <requestid>917847</requestid>
+  </revision>
 </revisionlist>
