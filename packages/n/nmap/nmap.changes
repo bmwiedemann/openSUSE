@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  9 12:35:58 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 7.92:
+  * TLS 1.3 now supported by most scripts for which it is relevant
+  * Other bugfixes and improvements
+  * https://nmap.org/changelog.html#7.92
+
+-------------------------------------------------------------------
 Thu Jul  1 04:28:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Also guard the python-devel BuildRequires if we're building for Python 2 

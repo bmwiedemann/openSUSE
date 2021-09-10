@@ -27,7 +27,7 @@
 %define with_python2 1
 %endif
 Name:           nmap
-Version:        7.91
+Version:        7.92
 Release:        0
 Summary:        Network exploration tool and security scanner
 License:        GPL-2.0-or-later
@@ -45,8 +45,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
 BuildRequires:  libpcap-devel
+BuildRequires:  libssh2-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pcre-devel
+BuildRequires:  zlib-devel
 %if %{with_python2}
 BuildRequires:  python-devel
 %endif
