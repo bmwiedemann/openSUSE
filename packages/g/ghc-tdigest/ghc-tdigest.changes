@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:32:35 UTC 2021 - psimons@suse.com
+
+- Update tdigest to version 0.2.1.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Mon Jan  4 11:06:55 UTC 2021 - psimons@suse.com
 
 - Update tdigest to version 0.2.1.1.
