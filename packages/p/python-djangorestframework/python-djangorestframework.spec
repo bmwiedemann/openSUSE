@@ -1,5 +1,5 @@
 #
-# spec file for package python-djangorestframework
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-djangorestframework%{psuffix}
-Version:        3.11.2
+Version:        3.12.4
 Release:        0
 Summary:        A REST Framework for Django
 License:        BSD-2-Clause
@@ -83,7 +83,8 @@ authentication and permission policies out of the box.
 
 %check
 %if %{with test}
-%pytest
+# gh#encode/django-rest-framework#8159 and gh#encode/django-rest-framework#8160
+%pytest -vv -k 'not (test_invalid_inputs or test_markdown)'
 %endif
 
 %if !%{with test}
