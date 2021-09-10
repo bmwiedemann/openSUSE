@@ -37,6 +37,8 @@ Source1:        http://www.kernel.org/pub/linux/network/connman/connman-%{versio
 Source2:        connman.keyring
 # PATCH-FIX-OPENSUSE -- Greate symlink to network.service
 Patch0:         0001-connman-1.35-service.patch
+Patch1:         harden_connman-vpn.service.patch
+Patch2:         harden_connman-wait-online.service.patch
 BuildRequires:  dhcp
 BuildRequires:  openvpn
 BuildRequires:  pkgconfig
@@ -217,6 +219,8 @@ Provides client interface for Connman (Connection Manager).
 %prep
 %setup -q -n connman-%{version}
 %patch0 -p1
+%patch1 -p1
+%patch2 -p1
 
 %build
 # Using i586 repository, so explicitly forward it to CC.

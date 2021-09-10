@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 30 08:28:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_connman-vpn.service.patch
+  * harden_connman-wait-online.service.patch
+
+-------------------------------------------------------------------
 Mon Aug 23 08:09:29 UTC 2021 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to 1.40:
