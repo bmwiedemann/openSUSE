@@ -21,7 +21,7 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 Summary:        GTK+ audio player
 License:        Zlib AND GPL-2.0-or-later AND LGPL-2.1-or-later AND BSD-3-Clause
