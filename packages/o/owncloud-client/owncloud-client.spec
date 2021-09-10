@@ -18,7 +18,7 @@
 
 Name:           owncloud-client
 
-Version:        2.8.1
+Version:        2.9.0
 Release:        0
 
 Summary:        The ownCloud synchronization client
@@ -33,8 +33,6 @@ Source4:        ownCloud.conf
 # PATCH-FIX-UPSTREAM fix position of systray menu https://github.com/owncloud/client/issues/5968
 # for all except tumbleweed and ongoing, as the Qt bug is fixed in there.
 Patch0:         fix-systray-menu-pos.patch
-# PATCH-FIX-UPSTREAM fix build error caused by implicit cast to QCar
-Patch1:         fix-use-of-deleted-function.patch
 
 %define cmake_args -DSYSCONF_INSTALL_DIR=%{_sysconfdir}
 
@@ -86,7 +84,6 @@ Suggests:       %{name}-nautilus
 Supplements:    packageand(%{name}:nautilus)
 Suggests:       %{name}-nemo
 
-Requires:       %{name}-l10n
 Requires:       libowncloudsync0 = %{version}
 
 ######################################################################### Obsoletes only below here.
@@ -96,6 +93,7 @@ Obsoletes:      libocsync-devel-doc
 Obsoletes:      libocsync-doc
 Obsoletes:      libocsync-plugin-owncloud
 Obsoletes:      libocsync0
+Obsoletes:      owncloud-client-l10n
 
 ######################################################################### Package Descriptions start here.
 
@@ -124,14 +122,6 @@ Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description -n %{name}-doc
 Documentation for the ownCloud desktop application.
-
-%package -n %{name}-l10n
-Summary:        Localization for ownCloud
-Group:          Development/Libraries/C and C++
-Requires:       %{name}%{?_isa} = %{version}-%{release}
-
-%description -n %{name}-l10n
-Localization files for the ownCloud desktop application.
 
 %package -n libowncloudsync0
 Requires:       libqt5keychain1 => %{keychain_version}
@@ -210,8 +200,6 @@ Framework 5 based Dolphin filemanager to display overlay icons.
 %if 0%{?suse_version} <= 1500
 %patch0 -p1
 %endif
-
-%patch1 -p1
 
 %build
 
@@ -297,10 +285,6 @@ done
 # https://github.com/owncloud/client/issues/4107
 %config /etc/sysctl.d/69-sync-inotify.conf
 %config /etc/ownCloud/ownCloud.conf
-
-%files -n %{name}-l10n
-%defattr(-,root,root,-)
-%{_datadir}/owncloud/
 
 %files -n libowncloudsync0
 %defattr(-,root,root,-)
