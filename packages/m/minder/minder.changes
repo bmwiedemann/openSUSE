@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Sep  9 22:34:08 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 1.13.1:
+  * Changes
+  * Updated Italian translation (thanks to @albanobattistella)
+  * Updated screenshots for elementary OS 6.
+  * Bug Fixes
+  * Fixed command support for non-English keyboard layouts.
+  * New
+  * Added support for toggling the task indicator when multiple
+    nodes are selected.
+  * Added German translation (thanks to Peter Sonntaga).
+  * Added zoom amount in the zoom button tooltip.
+  * Added support for y command to create/remove node links when
+    multiple nodes are selected.
+  * Added support for x command to create connections when two
+  * Added support for system dark mode setting.
+  * Updated Italian translation (thanks to @albanobattistella).
+  * Updated Russian translation (thanks to Alexandre Prokoudine).
+  * Improved task indicator sizes in leaf nodes.
+  * Changed fold indicator from a circle to a square.
+  * Removed zoom in/out menu items and made them buttons instead.
+  * Node/connection is now automatically selected on right click
+    if it is not selected.
+  * Moved node change contextual menu items into their own
+    submenu.
+  * Changed forward slash command to Control-A for selecting all
+    text.
+  * Changed backward slash command to Control-Shift-A for
+    deselecting all text.
+  * Changed F1 command to Control-? for displaying keyboard
+    shortcuts.
+  * Updated keyboard shortcuts cheatsheet.
+  * Updated code base for elementary OS 6 (gtksourceview-4,
+    libhandy-1, Flatpak support, etc.)
+  * Fixed issue where sticker tooltips were not displaying
+    translated names.
+  * Fixed node resizing issues when system font is changed in
+    system settings.
+  * Fixed Flatpak issue to allow dark mode system settings to
+    affect application.
+  * Fixed layout issues when root node is resized.
+  * Fixed squared and rounded link display for nodes attached to
+    root node.
+  * Fixed cursor location when End key used.
+  * Fixed potential node identification generation issue that can
+    lead to bad connections on load.
+  * Fixed location of node stickers within the node to improve
+    look.
+  * Fixed issues copying and pasting a single selected node.
+
+-------------------------------------------------------------------
 Fri Jun 25 08:18:17 UTC 2021 - eymeric dechelette <hatchchien@protonmail.com>
 - Update 1.12.5:
     Changes:

@@ -1,7 +1,7 @@
 #
 # spec file for package minder
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           minder
-Version:        1.12.5
+Version:        1.13.1
 Release:        0
 Summary:        Mind-mapping app
 License:        GPL-3.0-or-later
@@ -36,8 +36,9 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(granite) >= 5.2.3
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtksourceview-3.0)
+BuildRequires:  pkgconfig(gtksourceview-4)
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libhandy-1)
 BuildRequires:  pkgconfig(libmarkdown)
 BuildRequires:  pkgconfig(libxml-2.0)
 Recommends:     %{name}-lang
