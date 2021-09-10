@@ -19,7 +19,7 @@
 %global pkg_name th-compat
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.1.2
+Version:        0.1.3
 Release:        0
 Summary:        Backward- (and forward-)compatible Quote and Code types
 License:        BSD-3-Clause
