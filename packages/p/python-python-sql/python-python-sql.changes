@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 10 07:14:18 UTC 2021 - pgajdos@suse.com
+
+- version update to 1.2.2
+  Version 1.2.2 - 2021-05-16
+  * Escape table and column names containing double quote
+  * Use alias on the main table used in UPDATE and INSERT
+  * Add support for Python 3.9
+  Version 1.2.1 - 2020-10-08
+  * Fix AttributeError in Select.params with windows
+
+-------------------------------------------------------------------
 Tue Oct  6 08:20:02 UTC 2020 - Axel Braun <axel.braun@gmx.de>
 
 - Version 1.2.0 

@@ -1,7 +1,7 @@
 #
-# spec file for package python-python-sql
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define base_name python-sql
 Name:           python-%{base_name}
-Version:        1.2.0
+Version:        1.2.2
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause
@@ -44,7 +44,9 @@ python-sql is a library to write SQL queries in a pythonic way.
 %python_install
 
 %check
-%python_exec setup.py test
+mv sql sql_hide
+%pyunittest discover -v
+mv sql_hide sql
 
 %files %{python_files}
 %doc README
