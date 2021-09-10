@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sun Aug 08 15:58:47 UTC 2021 - adam@mizerski.pl
+
+- Update to version 0.3.0:
+  - Improvements
+    - Links that are currently inactive are drawn using a dashed line
+    - New nodes are positioned with some spacing to the window border
+    - Links can now be created by dragging a port to another in both directions
+  - Fixes
+    - The build no longer fails with pipewire >= 0.3.32
+
+-------------------------------------------------------------------
+Mon Jun 14 07:17:53 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- new package; version 0.2.1
