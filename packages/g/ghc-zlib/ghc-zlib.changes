@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  7 08:16:24 UTC 2021 - psimons@suse.com
+
+- Update zlib to version 0.6.2.3 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Tue Feb 23 10:03:49 UTC 2021 - psimons@suse.com
 
 - Update zlib to version 0.6.2.3.
