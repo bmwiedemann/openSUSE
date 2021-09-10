@@ -31,4 +31,12 @@
     <comment>- relax constraints on transformers-compat</comment>
     <requestid>912788</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7ec614b8ec9ebaee9095a95166225552</srcmd5>
+    <version>0.18.3</version>
+    <time>1631310061</time>
+    <user>dimstar_suse</user>
+    <comment>automated update of haskell stack</comment>
+    <requestid>917471</requestid>
+  </revision>
 </revisionlist>

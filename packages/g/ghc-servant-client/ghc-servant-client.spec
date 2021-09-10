@@ -88,6 +88,7 @@ This package provides the Haskell %{pkg_name} library development files.
 %prep
 %autosetup -n %{pkg_name}-%{version}
 cabal-tweak-dep-ver transformers-compat '< 0.7' '< 0.8'
+cabal-tweak-dep-ver base-compat '< 0.12' '< 0.13'
 
 %build
 %ghc_lib_build
