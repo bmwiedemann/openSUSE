@@ -752,4 +752,11 @@ Bugfixes
   * Volumes: Only remove from DB if plugin removal succeeds</comment>
     <requestid>917154</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>6bf13f8ff57091a38c6f2e54ac4ddd57</srcmd5>
+    <version>3.2.3</version>
+    <time>1631313754</time>
+    <user>dimstar_suse</user>
+    <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1189893</comment>
+  </revision>
 </revisionlist>
