@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 10 00:13:23 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631197970.87d9d07f3:
+  * Redirect to original page even on automatic login redirect
+  * Use consistent quoting style in `create_artefact`
+  * Improve formatting tx error on artefact creation
+  * Return errors on artefact creation correctly
+  * Fix job status icons in activity view
+  * Avoid rendering `ARRAY(0x…)` in users table
+  * Use consistent colors for checkbox buttons in users table
+  * Fix checkboxes on users table broken by ForkAwesome migration (35a5333)
+
+-------------------------------------------------------------------
 Tue Sep 07 13:25:28 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631021118.ebe25e524:
