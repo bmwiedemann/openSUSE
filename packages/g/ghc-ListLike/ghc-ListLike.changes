@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  2 08:31:56 UTC 2021 - psimons@suse.com
+
+- Update ListLike to version 4.7.6.
+  ### 4.7.5
+
+    - warning-free for `-Wall` and `-Wcompat`
+
+-------------------------------------------------------------------
 Mon Apr 26 09:49:20 UTC 2021 - psimons@suse.com
 
 - Add ListLike at version 4.7.4.

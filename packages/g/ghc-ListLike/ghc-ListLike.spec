@@ -19,7 +19,7 @@
 %global pkg_name ListLike
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        4.7.4
+Version:        4.7.6
 Release:        0
 Summary:        Generalized support for list-like structures
 License:        BSD-3-Clause
