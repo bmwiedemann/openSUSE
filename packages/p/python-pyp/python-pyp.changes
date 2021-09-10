@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Sep  9 08:38:33 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+version 0.3.4:
+ - Reduce reconstructed traceback's reliance on CPython
+   implementation details
+ - Fix automatic print behaviour in edge case interaction with
+   scopes
+
+-------------------------------------------------------------------
+Fri Sep 25 19:07:17 UTC 2020 - Hans-Peter Jansen <hpj@urpla.net>
+
+- version 0.3.3: initial build
