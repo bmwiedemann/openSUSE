@@ -44,7 +44,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.34
+Version:        0.3.35
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -54,6 +54,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
 
+BuildRequires:  docutils
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
@@ -64,12 +65,11 @@ BuildRequires:  graphviz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  xmltoman
 BuildRequires:  pkgconfig(alsa) >= 1.1.7
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(bluez)
 %if %{with libcamera}
-BuildRequires:  pkgconfig(libcamera) >= 0~2752
+BuildRequires:  pkgconfig(libcamera) >= 0~3015
 %endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(libcap)
@@ -634,10 +634,11 @@ fi
 %{_datadir}/alsa-card-profile/mixer/*
 %dir %{_datadir}/pipewire/filter-chain
 %{_datadir}/pipewire/filter-chain/demonic.conf
-%{_datadir}/pipewire/filter-chain/sink-convolver.conf
 %{_datadir}/pipewire/filter-chain/sink-dolby-surround.conf
 %{_datadir}/pipewire/filter-chain/sink-eq6.conf
 %{_datadir}/pipewire/filter-chain/sink-matrix-spatialiser.conf
+%{_datadir}/pipewire/filter-chain/sink-virtual-surround-5.1-kemar.conf
+%{_datadir}/pipewire/filter-chain/sink-virtual-surround-7.1-hesuvi.conf
 %{_datadir}/pipewire/filter-chain/source-rnnoise.conf
 
 %files spa-plugins-%{spa_ver_str}
@@ -645,6 +646,17 @@ fi
 %{_libdir}/spa-%{spa_ver}/audioconvert/libspa-audioconvert.so
 %{_libdir}/spa-%{spa_ver}/audiomixer/libspa-audiomixer.so
 %{_libdir}/spa-%{spa_ver}/bluez5/libspa-bluez5.so
+%if %{with aac}
+%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-aac.so
+%endif
+%if %{with aptx}
+%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-aptx.so
+%endif
+%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-faststream.so
+%if %{with_ldacBT}
+%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-ldac.so
+%endif
+%{_libdir}/spa-%{spa_ver}/bluez5/libspa-codec-bluez5-sbc.so
 %{_libdir}/spa-%{spa_ver}/control/libspa-control.so
 %{_libdir}/spa-%{spa_ver}/ffmpeg/libspa-ffmpeg.so
 %{_libdir}/spa-%{spa_ver}/jack/libspa-jack.so
