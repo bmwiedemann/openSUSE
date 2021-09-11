@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep  6 11:20:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.1
+  * Add dependency on IPython genutils gh#ipython/ipykernel#756
+
+-------------------------------------------------------------------
+Mon Aug 30 19:28:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 6.3.0
+  * Add deep variable inspection #753 (@JohanMabille)
+  * Add IPKernelApp.capture_fd_output config to disable FD-level
+    capture #752 (@minrk)
+  * Remove a lot of nose stuff
+- Release 6.2.0
+  * Add Support for Message Based Interrupt #741 (@afshin)
+- Release 6.1.0
+  * Implemented richInspectVariable request handler #734
+    (@JohanMabille)
+  * Fix exception raised by OutStream.write #726 (@SimonKrughoff)
+
+-------------------------------------------------------------------
 Wed Jul 28 12:08:06 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Skip pickle tests to get rid of ipyparallel dependency which we 

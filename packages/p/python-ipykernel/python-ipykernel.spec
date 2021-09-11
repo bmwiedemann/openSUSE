@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-ipykernel
-Version:        6.0.3
+Version:        6.3.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -37,13 +37,12 @@ Requires:       hicolor-icon-theme
 Requires:       jupyter-jupyter-client
 Requires:       python-debugpy >= 1.0
 Requires:       python-ipython >= 7.23.1
+Requires:       python-ipython_genutils
 Requires:       python-jupyter-client
 Requires:       python-jupyter-core
+Requires:       python-matplotlib-inline >= 0.1
 Requires:       python-tornado >= 4.2
 Requires:       python-traitlets >= 4.1.0
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata
-%endif
 Provides:       python-jupyter_ipykernel = %{version}
 Obsoletes:      python-jupyter_ipykernel < %{version}
 Provides:       %{python_module ipykernel-doc = %{version}}
@@ -58,14 +57,14 @@ Obsoletes:      jupyter-ipykernel < %{version}-%{release}
 %endif
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module debugpy >= 1.0.0}
 BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 7.23.1}
+BuildRequires:  %{python_module ipython_genutils}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
 BuildRequires:  %{python_module matplotlib-inline >= 0.1}
-BuildRequires:  %{python_module nose_warnings_filters}
+# still using nose streams from ipython, but they are working on a removal
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 4.2}
