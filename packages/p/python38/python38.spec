@@ -75,19 +75,20 @@
 %if "%{_arch}" == "arm"
 %define armsuffix hf
 %endif
+# Decide whether we want to use mpdecimal
+%if 0%{?suse_version} >= 1550
+%bcond_without mpdecimal
+%else
+%bcond_with mpdecimal
+%endif
 # pyexpat.cpython-35m-x86_64-linux-gnu
 # pyexpat.cpython-35m-powerpc64le-linux-gnu
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
-# deadlocks on test_faulthandler and blocks the build
-%if 0%{?qemu_user_space_build}
-%bcond_with profileopt
-%else
 %bcond_without profileopt
-%endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.8.11
+Version:        3.8.12
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -125,6 +126,10 @@ Patch03:        SUSE-FEDORA-multilib.patch
 # PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
 # Improve reproduceability
 Patch06:        distutils-reproducible-compile.patch
+# PATCH-FEATURE-UPSTREAM decimal-3.8.patch bsc#1189356 mcepl@suse.com
+# fix building with mpdecimal
+# https://www.bytereef.org/contrib/decimal-3.8.diff
+Patch05:        decimal-3.8.patch
 # support finding packages in /usr/local, install to /usr/local by default
 Patch07:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
@@ -173,6 +178,9 @@ BuildRequires:  pkgconfig(zlib)
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
+%endif
+%if %{with mpdecimal}
+BuildRequires:  mpdecimal-devel
 %endif
 %if %{with doc}
 %if 0%{?suse_version} > 1500
@@ -393,6 +401,9 @@ other applications.
 %if "%{_lib}" == "lib64"
 %patch03 -p1
 %endif
+%if %{with mpdecimal}
+%patch05 -p1
+%endif
 
 %patch06 -p1
 %patch07 -p1
@@ -465,6 +476,9 @@ sed -e 's/-fprofile-correction//' -i Makefile.pre.in
 %if %{with profileopt}
     --enable-optimizations \
 %endif
+%if %{with mpdecimal}
+    --with-system-libmpdec \
+%endif
     --enable-loadable-sqlite-extensions
 
 # prevent make from trying to rebuild PYTHON_FOR_GEN stuff
@@ -506,7 +520,7 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
+EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces
