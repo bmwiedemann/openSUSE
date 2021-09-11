@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  6 09:44:46 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Define default ntp servers (bsc#1180699)
+- 20210906
+
+-------------------------------------------------------------------
 Fri May  7 15:25:07 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - Add support for riscv64 (jsc#PM-2612)
