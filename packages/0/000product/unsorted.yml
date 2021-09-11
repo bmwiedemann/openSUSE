@@ -6595,6 +6595,7 @@ unsorted:
   - helmfile-zsh-completion 
   - help2man 
   - help2man-lang 
+  - helvum: [x86_64] 
   - herbstluftwm 
   - herbstluftwm-bash-completion 
   - herbstluftwm-examples 
@@ -10963,7 +10964,7 @@ unsorted:
   - libgpod4-32bit: [x86_64] 
   - libgrail6 
   - libgrail6-32bit: [x86_64] 
-  - libgranite5 
+  - libgranite6 
   - libgraphblas5 
   - libgraphene-1_0-0-32bit: [x86_64] 
   - libgraphene-devel 
@@ -15020,6 +15021,7 @@ unsorted:
   - lomt-sortsmillgoudy-fonts 
   - lonote 
   - lookbook 
+  - lookbook-lang 
   - loook 
   - loudmouth-devel 
   - loudmouth-doc 
@@ -18184,7 +18186,6 @@ unsorted:
   - owncloud-client 
   - owncloud-client-caja 
   - owncloud-client-dolphin 
-  - owncloud-client-l10n 
   - owncloud-client-nautilus 
   - owncloud-client-nemo 
   - owntone 
@@ -22017,6 +22018,7 @@ unsorted:
   - python36-babelfish 
   - python36-backcall 
   - python36-backoff 
+  - python36-backports.entry_points_selectable 
   - python36-baron 
   - python36-base 
   - python36-base-32bit: [x86_64] 
@@ -23394,6 +23396,7 @@ unsorted:
   - python36-pyosf 
   - python36-pyotp 
   - python36-pyowm 
+  - python36-pyp 
   - python36-pypandoc: [x86_64] 
   - python36-pyparallel 
   - python36-pyparsing 
@@ -23689,7 +23692,6 @@ unsorted:
   - python36-redbaron 
   - python36-redfish 
   - python36-redis 
-  - python36-rednose 
   - python36-regex 
   - python36-relatorio 
   - python36-releases 
@@ -24813,6 +24815,7 @@ unsorted:
   - python38-babelfish 
   - python38-backcall 
   - python38-backoff 
+  - python38-backports.entry_points_selectable 
   - python38-baron 
   - python38-base-32bit: [x86_64] 
   - python38-base58 
@@ -26280,6 +26283,7 @@ unsorted:
   - python38-pyosf 
   - python38-pyotp 
   - python38-pyowm 
+  - python38-pyp 
   - python38-pypandoc: [x86_64] 
   - python38-pyparallel 
   - python38-pyperclip 
@@ -26588,7 +26592,6 @@ unsorted:
   - python38-reconfigure 
   - python38-redbaron 
   - python38-redfish 
-  - python38-rednose 
   - python38-regex 
   - python38-relatorio 
   - python38-releases 
@@ -27781,6 +27784,7 @@ unsorted:
   - python39-babelfish 
   - python39-backcall 
   - python39-backoff 
+  - python39-backports.entry_points_selectable 
   - python39-baron 
   - python39-base 
   - python39-base-32bit: [x86_64] 
@@ -29353,6 +29357,7 @@ unsorted:
   - python39-pyosf 
   - python39-pyotp 
   - python39-pyowm 
+  - python39-pyp 
   - python39-pypandoc: [x86_64] 
   - python39-pyparallel 
   - python39-pyparsing 
@@ -29675,7 +29680,6 @@ unsorted:
   - python39-redbaron 
   - python39-redfish 
   - python39-redis 
-  - python39-rednose 
   - python39-regex 
   - python39-relatorio 
   - python39-releases 
