@@ -7,4 +7,12 @@
     <comment>this package was still missing in Factory</comment>
     <requestid>914872</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1104069621bc36a4e19dae4277a166bf</srcmd5>
+    <version>2.4.0</version>
+    <time>1631391873</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>918465</requestid>
+  </revision>
 </revisionlist>
