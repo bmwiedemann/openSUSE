@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:23:54 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.3
+  * Added checks to prevent directory traversal vulnerability when
+    external extractors create symlinks on the filesystem.
+  * Added --run-as command line option to allow users to control
+    the privilege level external extractors are given as well as
+    the power to run as root if they so choose.
+
+-------------------------------------------------------------------
 Thu Aug 19 19:27:51 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2

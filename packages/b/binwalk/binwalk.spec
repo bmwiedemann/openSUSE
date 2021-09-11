@@ -17,7 +17,7 @@
 
 
 Name:           binwalk
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        Firmware Analysis Tool
 License:        MIT
