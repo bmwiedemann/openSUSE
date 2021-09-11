@@ -29,6 +29,15 @@ Patch0:         unbundle-http-parser.patch
 # PATCH-FIX-UPSTREAM stdlib-typing_extensions.patch gh#aio-libs/aiohttp#5374 mcepl@suse.com
 # Fix typing_extensions imports.
 Patch1:         stdlib-typing_extensions.patch
+# PATCH-FIX-UPSTREAM python39-failures.patch gh#aio-libs/aiohttp#5991 mcepl@suse.com
+# Bridge over Python 3.9.6 v 3.9.7 incompatibilities
+Patch2:         python39-failures.patch
+# PATCH-FIX-UPSTREAM remove_deprecated_loop_argument.patch gh#aio-libs/aiohttp#5991 mcepl@suse.com
+# remove deprecated loop argument
+Patch3:         remove_deprecated_loop_argument.patch
+# PATCH-FIX-UPSTREAM backport_fix_for_setting_cookies.patch gh#aio-libs/aiohttp#5233 mcepl@suse.com
+# backport of fixes from 3.8 branch
+Patch4:         backport_fix_for_setting_cookies.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module async_timeout >= 3.0}
 BuildRequires:  %{python_module attrs >= 17.3.0}

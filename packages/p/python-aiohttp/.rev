@@ -198,4 +198,19 @@
 </comment>
     <requestid>898580</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>3b84314c2278152f8e05a90528a7740d</srcmd5>
+    <version>3.7.4</version>
+    <time>1631391855</time>
+    <user>dimstar_suse</user>
+    <comment>- Restore python39-failures.patch, which is actually still needed.
+- Remove python39-failures.patch and replace it with actual fix
+  of the issue in remove_deprecated_loop_argument.patch.
+- Add backport_fix_for_setting_cookies.patch for backport of
+  fixes from 3.8 branch.
+- Add python39-failures.patch to fix test problems with Python 3.9.7+
+  (gh#aio-libs/aiohttp#5991).
+</comment>
+    <requestid>917994</requestid>
+  </revision>
 </revisionlist>

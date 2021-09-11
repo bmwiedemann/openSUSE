@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:22:31 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Restore python39-failures.patch, which is actually still needed.
+
+-------------------------------------------------------------------
+Thu Sep  9 20:05:44 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove python39-failures.patch and replace it with actual fix
+  of the issue in remove_deprecated_loop_argument.patch.
+- Add backport_fix_for_setting_cookies.patch for backport of
+  fixes from 3.8 branch.
+
+-------------------------------------------------------------------
+Wed Sep  8 21:10:23 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add python39-failures.patch to fix test problems with Python 3.9.7+
+  (gh#aio-libs/aiohttp#5991).
+
+-------------------------------------------------------------------
 Tue Jun  8 19:15:11 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Remove pytest-asyncio dependency which is actually harmful
