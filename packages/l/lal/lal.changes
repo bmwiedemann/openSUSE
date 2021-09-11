@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:48:22 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix test flavour after renaming srcrpm in previous commit.
+
+-------------------------------------------------------------------
+Sun May 16 15:14:20 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Fix srcrpm name for test flavor.
+
+-------------------------------------------------------------------
 Wed Apr 21 10:59:16 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Split tests into a multibuild flavor to avoid circular

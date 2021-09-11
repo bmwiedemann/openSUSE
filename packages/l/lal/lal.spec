@@ -33,7 +33,7 @@
 
 # No support for octave >= 6
 %bcond_with octave
-Name:           lal
+Name:           lal%{psuffix}
 Version:        7.1.2
 Release:        0
 Summary:        A collection of various gravitational wave data analysis routines
@@ -137,7 +137,7 @@ gravitational wave data analysis routines written in C following the ISO/IEC
 This package provides the octave module for lal.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n lal-%{version}
 
 %build
 %{python_expand # Necessary to run %%configure with all python flavors
