@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep  9 08:18:32 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210908:
+  * Add instances.spawn.cc (#1411)
+  * Remove: nctu.me (#1407)
+  * Roll back diher.solutions PR #1393 (#1406)
+  * Update public_suffix_list.dat (#1390)
+  * Add barsy.ro to Lukanet Ltd private domains (#1402)
+  * Add affinitylottery.org.uk raffleentry.org.uk and weeklylottery.org.uk to public suffix list (#1398)
+  * Tabitorder.co.il (#1385)
+  * add diher.solutions and rss.my.id to the list (#1393)
+  * Include *.cloudera.site to the PSL (#1400)
+  * Adds pages.it.hs-heilbronn.de (#1388)
+  * these domains are being deprecated, we wish to clean up after ourselves (#1399)
+
+-------------------------------------------------------------------
 Wed Aug 25 11:29:27 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210823:
