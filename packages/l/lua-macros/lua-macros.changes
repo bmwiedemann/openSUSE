@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 28 09:42:55 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Change usage of math to string.gsub to prevent extra decimal
+  places causing issues
+
+-------------------------------------------------------------------
+Fri Aug 27 10:07:01 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Add %lua_version_default, %lua_version_default_nodots
+  and %ifluadefault: to allow to separate what flavour builds
+  the documentation
+- Bump version to 20210827
+
+-------------------------------------------------------------------
 Thu Jun 10 16:58:39 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add -n (name) option to %lua_provides

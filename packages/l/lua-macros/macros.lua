@@ -2,7 +2,7 @@
 
 # The major.minor version of Lua
 %lua_version %(lua -e 'print(_VERSION)' | cut -d ' ' -f 2)
-%lua_version_nodots %(lua -e 'print(math.floor((%{lua_version}*10)))')
+%lua_version_nodots %(lua -e 'print((string.gsub("%{lua_version}", "%.", "")))')
 
 # compiled modules should go here
 %lua_archdir %{_libdir}/lua/%{lua_version}
@@ -13,11 +13,18 @@
 # lua includes folder
 %lua_incdir %{_includedir}/lua%{lua_version}
 
+%lua_version_default 5.4
+%lua_version_default_nodots %(lua -e 'print((string.gsub("%{lua_version_default}", "%.", "")))')
+
+%ifluadefault \
+%if %{lua_version_nodots} == %{lua_version_default_nodots} \
+%{nil}
+
 # Lua default version
 # -e: Exclude lua prefix
 # -n: Specify name
 %lua_provides(en:) \
-%if "%{flavor}" == "lua54" \
+%ifluadefault \
 %if 0%{?-n:1} \
 Provides: %{-n*} = %{version}-%{release} \
 Obsoletes: %{-n*} < %{version}-%{release} \

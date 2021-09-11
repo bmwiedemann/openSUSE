@@ -19,7 +19,7 @@
 %define _rpmmacrodir %{_rpmconfigdir}/macros.d
 %endif
 Name:           lua-macros
-Version:        20170611
+Version:        20210827
 Release:        0
 Summary:        Macros for lua language
 License:        MIT

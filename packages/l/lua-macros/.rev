@@ -49,4 +49,18 @@
     <comment></comment>
     <requestid>899445</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c48ec52509ca28b0c2c24545dff34044</srcmd5>
+    <version>20210827</version>
+    <time>1631391849</time>
+    <user>dimstar_suse</user>
+    <comment>- Change usage of math to string.gsub to prevent extra decimal
+  places causing issues
+- Add %lua_version_default, %lua_version_default_nodots
+  and %ifluadefault: to allow to separate what flavour builds
+  the documentation
+- Bump version to 20210827
+</comment>
+    <requestid>914763</requestid>
+  </revision>
 </revisionlist>
