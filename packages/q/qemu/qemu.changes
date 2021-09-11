@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep  8 17:51:18 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Fix qemu build on ARMv7 (bsc#1190211)
+* Patches added:
+  tcg-arm-Fix-tcg_out_vec_op-function-sign.patch
+
+-------------------------------------------------------------------
+Wed Sep  8 13:56:04 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Update supported file for ARM machines.
+
+-------------------------------------------------------------------
+Thu Sep  2 19:17:19 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Keep qemu-img without backing format still deprecated
+  (bsc#1190135)
+* Patches added:
+  Revert-qemu-img-Improve-error-for-rebase.patch
+  Revert-qemu-img-Require-F-with-b-backing.patch
+- Update the support files to reflect the deprecation.
+
+-------------------------------------------------------------------
+Tue Aug 31 12:34:39 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Update build dependencies versions: libgcrypt >= 1.8.0,
+  gnutls >= 3.5.18, glib >= 2.56, libssh >= 0.8.7
+
+-------------------------------------------------------------------
+Fri Aug 27 17:16:51 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Fix hardcoded binfmt handler doesn't play well with containers
+  (bsc#1186256)
+* Patches added:
+  qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+
+-------------------------------------------------------------------
 Thu Aug 26 03:35:03 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Update to v6.1: see https://wiki.qemu.org/ChangeLog/6.1

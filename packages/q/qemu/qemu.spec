@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package qemu
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -176,6 +176,10 @@ Patch00040:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00041:     usb-Help-compiler-out-to-avoid-a-warning.patch
 Patch00042:     qom-handle-case-of-chardev-spice-module-.patch
 Patch00043:     doc-add-our-support-doc-to-the-main-proj.patch
+Patch00044:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+Patch00045:     Revert-qemu-img-Improve-error-for-rebase.patch
+Patch00046:     Revert-qemu-img-Require-F-with-b-backing.patch
+Patch00047:     tcg-arm-Fix-tcg_out_vec_op-function-sign.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -206,7 +210,7 @@ BuildRequires:  ninja >= 1.7
 BuildRequires:  python3-base >= 3.6
 BuildRequires:  python3-setuptools
 %if "%{name}" == "qemu-linux-user"
-BuildRequires:  glib2-devel-static
+BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
 BuildRequires:  pcre-devel-static
 BuildRequires:  zlib-devel-static
@@ -248,7 +252,7 @@ BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  dos2unix
 %endif
 BuildRequires:  flex
-BuildRequires:  pkgconfig(glib-2.0) >= 2.48
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56
 %if %{build_x86_firmware_from_source}
 BuildRequires:  glibc-devel-32bit
 %endif
@@ -256,11 +260,11 @@ BuildRequires:  libaio-devel
 BuildRequires:  libattr-devel
 BuildRequires:  libbz2-devel
 BuildRequires:  libfdt-devel >= 1.4.2
-BuildRequires:  libgcrypt-devel >= 1.5.0
+BuildRequires:  libgcrypt-devel >= 1.8.0
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
 BuildRequires:  pkgconfig(glusterfs-api) >= 3
-BuildRequires:  pkgconfig(gnutls) >= 3.1.18
+BuildRequires:  pkgconfig(gnutls) >= 3.5.18
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
 BuildRequires:  pkgconfig(libcap-ng)
@@ -286,7 +290,7 @@ BuildRequires:  librbd-devel
 %endif
 BuildRequires:  Mesa-devel
 BuildRequires:  pkgconfig(libseccomp) >= 2.3.0
-BuildRequires:  pkgconfig(libssh) >= 0.8
+BuildRequires:  pkgconfig(libssh) >= 0.8.7
 BuildRequires:  pkgconfig(slirp) >= 4.2.0
 BuildRequires:  pkgconfig(spice-server) >= 0.12.5
 %if 0%{?with_uring}
@@ -1110,6 +1114,10 @@ This package records qemu testsuite results and represents successful testing.
 %if %{legacy_qemu_kvm}
 %patch00043 -p1
 %endif
+%patch00044 -p1
+%patch00045 -p1
+%patch00046 -p1
+%patch00047 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

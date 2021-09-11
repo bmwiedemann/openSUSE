@@ -152,6 +152,10 @@ Deprecated, Superseded, Modified and Dropped Features
   removed features are also tracked in the "System Emulation" section of the
   documentation installed with the qemu package.
 
+- qemu-img: Deprecate use of -b without -F. Creating an image that requires
+  format probing of the backing image is potentially unsafe and is now
+  deprecated.
+
 - Aspeed swift-bmc machine is deprecated. It can be easily replaced by the
   witherspoon-bmc or the romulus-bmc machines.
 
@@ -798,34 +802,31 @@ QEMU Command-Line and Monitor Syntax and Support
      lm3s6965evb|lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|
      midway|mps2-an385|mps2-an386|mps2-an500|mps2-an505|mps2-an511|mps2-an521|
      mps3-an524|mps3-an547|musca-a|musca-b1|musicpal|n800|n810|netduino2|
-     netduinoplus2|none|npcm750-evb|nuri|orangepi-pc|palmetto-bmc|
-     quanta-gbs-bmc|quanta-gsj|quanta-q71l-bmc|rainier-bmc|raspi0|raspi1ap|
-     raspi2|raspi2b|raspi3ap|raspi3|raspi3b|realview-eb|realview-eb-mpcore|
-     realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|smdkc210|
-     sonorapass-bmc|spitz|stm32vldiscovery|supermicrox11-bmc|swift-bmc|sx1|
-     sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|versatilepb|vexpress-a15|
-     vexpress-a9|virt-2.10|virt-2.11|virt-2.12|virt-2.6|virt-2.7|virt-2.8|
-     virt-2.9|virt-3.0|virt-3.1|virt-4.0|virt-4.1|virt-4.2|virt-5.0|virt-5.1|
-     virt-5.2|virt-6.0|virt|virt-6.1|witherspoon-bmc|xilinx-zynq-a9|
-     xlnx-versal-virt|xlnx-zcu102|z2]
+     netduinoplus2|npcm750-evb|nuri|orangepi-pc|palmetto-bmc|quanta-gsj|raspi0|
+     raspi1ap|raspi2|raspi2b|raspi3ap|raspi3|raspi3b|realview-eb|
+     realview-eb-mpcore|realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|
+     sbsa-ref|smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|swift-bmc|sx1|
+     sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|versatilepb|
+     vexpress-a15|vexpress-a9|virt-2.12|virt-2.7|virt-2.8|virt-3.0|virt-4.0|
+     virt-4.1|virt-5.0|virt-5.1|virt-6.0|virt|virt-6.1|witherspoon-bmc|
+     xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
 
   -machine
 
-           [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
-           connex|cubieboard|emcraft-sf2|g220a-bmc|highbank|imx25-pdk|integratorcp|
-           kzm|lm3s6965evb|lm3s811evb|mainstone|mcimx6ul-evk|mcimx7d-sabre|microbit|
-           midway|mps2-an385|mps2-an386|mps2-an500|mps2-an505|mps2-an511|mps2-an521|
-           mps3-an524|mps3-an547|musca-a|musca-b1|musicpal|n800|n810|netduino2|
-           netduinoplus2|none|npcm750-evb|nuri|orangepi-pc|palmetto-bmc|
-           quanta-gbs-bmc|quanta-gsj|quanta-q71l-bmc|rainier-bmc|raspi0|raspi1ap|
-           raspi2|raspi2b|raspi3ap|raspi3|raspi3b|realview-eb|realview-eb-mpcore|
-           realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|smdkc210|
-           sonorapass-bmc|spitz|stm32vldiscovery|supermicrox11-bmc|swift-bmc|sx1|
-           sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|versatilepb|
-           vexpress-a15|vexpress-a9|virt-2.10|virt-2.11|virt-2.12|virt-2.6|virt-2.7|
-           virt-2.8|virt-2.9|virt-3.0|virt-3.1|virt-4.0|virt-4.1|virt-4.2|virt-5.0|
-           virt-5.1|virt-5.2|virt-6.0|virt|virt-6.1|witherspoon-bmc|xilinx-zynq-a9|
-           xlnx-versal-virt|xlnx-zcu102|z2]
+        [akita|ast2500-evb|ast2600-evb|borzoi|canon-a1100|cheetah|collie|
+        connex|cubieboard|emcraft-sf2|g220a-bmc|highbank|imx25-pdk|
+        integratorcp|kzm|lm3s6965evb|lm3s811evb|mainstone|mcimx6ul-evk|
+        mcimx7d-sabre|microbit|midway|mps2-an385|mps2-an386|mps2-an500|
+        mps2-an505|mps2-an511|mps2-an521|mps3-an524|mps3-an547|musca-a|
+        musca-b1|musicpal|n800|n810|netduino2|netduinoplus2|npcm750-evb|
+        nuri|orangepi-pc|palmetto-bmc|quanta-gsj|raspi0|raspi1ap|raspi2|
+        raspi2b|raspi3ap|raspi3|raspi3b|realview-eb|realview-eb-mpcore|
+        realview-pb-a8|realview-pbx-a9|romulus-bmc|sabrelite|sbsa-ref|
+        smdkc210|sonorapass-bmc|spitz|supermicrox11-bmc|swift-bmc|sx1|
+        sx1-v1|tacoma-bmc|terrier|tosa|verdex|versatileab|versatilepb|
+        vexpress-a15|vexpress-a9|virt-2.12|virt-2.7|virt-2.8|virt-3.0|
+        virt-4.0|virt-4.1|virt-5.0|virt-5.1|virt-6.0|virt|virt-6.1|
+        witherspoon-bmc|xilinx-zynq-a9|xlnx-versal-virt|xlnx-zcu102|z2]
 
   -mtdblock file
   -net [socket|vde] ...

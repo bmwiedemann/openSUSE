@@ -148,6 +148,10 @@ Deprecated, Superseded, Modified and Dropped Features
   removed features are also tracked in the "System Emulation" section of the
   documentation installed with the qemu package.
 
+- qemu-img: Deprecate use of -b without -F. Creating an image that requires
+  format probing of the backing image is potentially unsafe and is now
+  deprecated.
+
 - The previously non-persistent backing file with pmem=on is deprecated. Modify
   VM configuration to set pmem=off to continue using fake NVDIMM with backing
   file or move backing file to NVDIMM storage and keep pmem=on.

@@ -171,6 +171,10 @@ Deprecated, Superseded, Modified and Dropped Features
   removed features are also tracked in the "System Emulation" section of the
   documentation installed with the qemu package.
 
+- qemu-img: Deprecate use of -b without -F. Creating an image that requires
+  format probing of the backing image is potentially unsafe and is now
+  deprecated.
+
 - When no video adapter is specified, the default used is stdvga. This differs
   from the default of prior releases which was cirrus. The cirrus adapter was
   considered too outdated to continue to use as the default.

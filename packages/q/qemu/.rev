@@ -2875,4 +2875,28 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>914458</requestid>
   </revision>
+  <revision rev="211" vrev="31">
+    <srcmd5>e1f6cb25635736df62ae267ce7079f20</srcmd5>
+    <version>unknown</version>
+    <time>1631391859</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix qemu build on ARMv7 (bsc#1190211)
+* Patches added:
+  tcg-arm-Fix-tcg_out_vec_op-function-sign.patch
+- Update supported file for ARM machines.
+- Keep qemu-img without backing format still deprecated
+  (bsc#1190135)
+* Patches added:
+  Revert-qemu-img-Improve-error-for-rebase.patch
+  Revert-qemu-img-Require-F-with-b-backing.patch
+- Update the support files to reflect the deprecation.
+- Update build dependencies versions: libgcrypt &gt;= 1.8.0,
+  gnutls &gt;= 3.5.18, glib &gt;= 2.56, libssh &gt;= 0.8.7
+- Fix hardcoded binfmt handler doesn't play well with containers
+  (bsc#1186256)
+* Patches added:
+  qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+</comment>
+    <requestid>917638</requestid>
+  </revision>
 </revisionlist>
