@@ -53,7 +53,7 @@
 # Will do the /usr/bin/python3 and all the core links
 %define         primary_interpreter 0
 # We don't process beta signs well
-%define         folderversion 3.9.6
+%define         folderversion 3.9.7
 %define         tarname    Python-%{tarversion}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
@@ -76,19 +76,20 @@
 %if "%{_arch}" == "arm"
 %define armsuffix hf
 %endif
+# Decide whether we want to use mpdecimal
+%if 0%{?suse_version} >= 1550
+%bcond_without mpdecimal
+%else
+%bcond_with mpdecimal
+%endif
 # pyexpat.cpython-35m-x86_64-linux-gnu
 # pyexpat.cpython-35m-powerpc64le-linux-gnu
 # pyexpat.cpython-35m-armv7-linux-gnueabihf
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
-# deadlocks on test_faulthandler and blocks the build
-%if 0%{?qemu_user_space_build}
-%bcond_with profileopt
-%else
 %bcond_without profileopt
-%endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.9.6
+Version:        3.9.7
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -110,7 +111,8 @@ Source20:       idle3.appdata.xml
 # 3. mkdir Vendor && mv usr/include/* Vendor/
 # 4. tar cJf bluez-devel-vendor.tar.xz Vendor/
 Source21:       bluez-devel-vendor.tar.xz
-Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
+# https://keybase.io/ambv/pgp_keys.asc?fingerprint=e3ff2839c048b25c084debe9b26995e310250568
+Source99:       python.keyring
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
@@ -125,6 +127,10 @@ Patch02:        F00251-change-user-install-location.patch
 # PATCH-FEATURE-UPSTREAM distutils-reproducible-compile.patch gh#python/cpython#8057 mcepl@suse.com
 # Improve reproduceability
 Patch06:        distutils-reproducible-compile.patch
+# PATCH-FEATURE-UPSTREAM decimal.patch bsc#1189356 mcepl@suse.com
+# fix building with mpdecimal
+# https://www.bytereef.org/contrib/decimal.diff
+Patch05:        decimal.patch
 # support finding packages in /usr/local, install to /usr/local by default
 Patch07:        python-3.3.0b1-localpath.patch
 # replace DATE, TIME and COMPILER by fixed definitions to aid reproducible builds
@@ -164,10 +170,16 @@ BuildRequires:  pkgconfig(zlib)
 BuildRequires:  pkgconfig(libnsl)
 BuildRequires:  pkgconfig(libtirpc)
 %endif
+%if %{with mpdecimal}
+BuildRequires:  mpdecimal-devel
+%endif
 %if %{with doc}
+%if 0%{?suse_version} >= 1550
 BuildRequires:  %{python_pkg_name}-Sphinx
-%if 0%{?suse_version} >= 1500
 BuildRequires:  %{python_pkg_name}-python-docs-theme
+%else
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-python-docs-theme
 %endif
 %endif
 %if %{with general}
@@ -391,6 +403,9 @@ other applications.
 %if 0%{?sle_version} && 0%{?sle_version} <= 150300
 %patch34 -p1
 %endif
+%if %{with mpdecimal}
+%patch05 -p1
+%endif
 
 # drop Autoconf version requirement
 sed -i 's/^AC_PREREQ/dnl AC_PREREQ/' configure.ac
@@ -453,6 +468,9 @@ export CFLAGS="%{optflags} -IVendor/"
 %if %{with profileopt}
     --enable-optimizations \
 %endif
+%if %{with mpdecimal}
+    --with-system-libmpdec \
+%endif
     --enable-loadable-sqlite-extensions
 
 # prevent make from trying to rebuild PYTHON_FOR_GEN stuff
@@ -494,7 +512,7 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
+EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_os test_posix test_signal test_socket test_subprocess"
 %endif
 
 # This test (part of test_uuid) requires real network interfaces

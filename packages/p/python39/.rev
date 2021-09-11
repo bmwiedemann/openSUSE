@@ -319,4 +319,12 @@
       specifier.</comment>
     <requestid>911061</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>29e22e55acd1ac2602964664a11ab59f</srcmd5>
+    <version>3.9.7</version>
+    <time>1631391853</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>917360</requestid>
+  </revision>
 </revisionlist>

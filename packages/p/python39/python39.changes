@@ -1,4 +1,240 @@
 -------------------------------------------------------------------
+Tue Aug 31 10:17:28 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.9.7:
+  - Security
+    - Replaced usage of tempfile.mktemp() with TemporaryDirectory
+      to avoid a potential race condition.
+    - Add auditing events to the marshal module, and stop raising
+      code.__init__ events for every unmarshalled code object.
+      Directly instantiated code objects will continue to raise
+      an event, and audit event handlers should inspect or
+      collect the raw marshal data. This reduces a significant
+      performance overhead when loading from .pyc files.
+    - Made the internal putcmd function in smtplib sanitize input
+      for presence of \r and \n characters to avoid (unlikely)
+      command injection.
+  - Core and Builtins
+    - Fixed pickling of range iterators that iterated for over
+      2**32 times.
+    - Fix a race in WeakKeyDictionary, WeakValueDictionary and
+      WeakSet when two threads attempt to commit the last pending
+      removal. This fixes asyncio.create_task and fixes a data
+      loss in asyncio.run where shutdown_asyncgens is not run
+    - Fixed a corner case bug where the result of
+      float.fromhex('0x.8p-1074') was rounded the wrong way.
+    - Refine the syntax error for trailing commas in import
+      statements. Patch by Pablo Galindo.
+    - Restore behaviour of complex exponentiation with
+      integer-valued exponent of type float or complex.
+    - Correct the ast locations of f-strings with format specs
+      and repeated expressions. Patch by Pablo Galindo
+    - Use new trashcan macros (Py_TRASHCAN_BEGIN/END) in
+      frameobject.c instead of the old ones
+      (Py_TRASHCAN_SAFE_BEGIN/END).
+    - Fix segmentation fault with deep recursion when cleaning
+      method objects. Patch by Augusto Goulart and Pablo Galindo.
+    - Fix bug where PyErr_SetObject hangs when the current
+      exception has a cycle in its context chain.
+    - Fix reference leaks in the error paths of update_bases()
+      and __build_class__. Patch by Pablo Galindo.
+    - Fix undefined behaviour in complex object exponentiation.
+    - Remove uses of PyObject_GC_Del() in error path when
+      initializing types.GenericAlias.
+    - Remove the pass-through for hash() of weakref.proxy objects
+      to prevent unintended consequences when the original
+      referred object dies while the proxy is part of a hashable
+      object. Patch by Pablo Galindo.
+    - Fix ltrace functionality when exceptions are raised. Patch
+      by Pablo Galindo
+    - Fix a crash at Python exit when a deallocator function
+      removes the last strong reference to a heap type. Patch by
+      Victor Stinner.
+    - Fix crash when using passing a non-exception to
+      a generator’s throw() method. Patch by Noah Oxer
+  - Library
+    - run() now always return a TestResult instance. Previously
+      it returned None if the test class or method was decorated
+      with a skipping decorator.
+    - Fix bugs in cleaning up classes and modules in unittest:
+        - Functions registered with addModuleCleanup() were not
+          called unless the user defines tearDownModule() in
+          their test module.
+        - Functions registered with addClassCleanup() were not
+          called if tearDownClass is set to None.
+        - Buffering in TestResult did not work with functions
+          registered with addClassCleanup() and
+          addModuleCleanup().
+        - Errors in functions registered with addClassCleanup()
+          and addModuleCleanup() were not handled correctly in
+          buffered and debug modes.
+        - Errors in setUpModule() and functions registered with
+          addModuleCleanup() were reported in wrong order.
+        - And several lesser bugs.
+    - Made email date parsing more robust against malformed
+      input, namely a whitespace-only Date: header. Patch by
+      Wouter Bolsterlee.
+    - Fix a crash in the signal handler of the faulthandler
+      module: no longer modify the reference count of frame
+      objects. Patch by Victor Stinner.
+    - Method stopTestRun() is now always called in pair with
+      method startTestRun() for TestResult objects implicitly
+      created in run(). Previously it was not called for test
+      methods and classes decorated with a skipping decorator.
+    - argparse.BooleanOptionalAction’s default value is no longer
+      printed twice when used with
+      argparse.ArgumentDefaultsHelpFormatter.
+    - Upgrade bundled pip to 21.2.3 and setuptools to 57.4.0
+    - Fix the os.set_inheritable() function on FreeBSD 14 for
+      file descriptor opened with the O_PATH flag: ignore the
+      EBADF error on ioctl(), fallback on the fcntl()
+      implementation. Patch by Victor Stinner.
+    - The @functools.total_ordering() decorator now works with
+      metaclasses.
+    - sqlite3 user-defined functions and aggregators returning
+      strings with embedded NUL characters are no longer
+      truncated. Patch by Erlend E. Aasland.
+    - Always show loop= arg deprecations in asyncio.gather() and
+      asyncio.sleep()
+    - Non-protocol subclasses of typing.Protocol ignore now the
+      __init__ method inherited from protocol base classes.
+    - The tokenize.tokenize() doesn’t incorrectly generate
+      a NEWLINE token if the source doesn’t end with a new line
+      character but the last line is a comment, as the function
+      is already generating a NL token. Patch by Pablo Galindo
+    - Fix http.client.HTTPSConnection fails to download >2GiB
+      data.
+    - rcompleter does not call getattr() on property objects to
+      avoid the side-effect of evaluating the corresponding
+      method.
+    - weakref.proxy objects referencing non-iterators now raise
+      TypeError rather than dereferencing the null tp_iternext
+      slot and crashing.
+    - The implementation of collections.abc.Set._hash() now
+      matches that of frozenset.__hash__().
+    - Fixed issue in compileall.compile_file() when sys.stdout is
+      redirected. Patch by Stefan Hölzl.
+    - Give priority to using the current class constructor in
+      inspect.signature(). Patch by Weipeng Hong.
+    - Fix memory leak in _tkinter._flatten() if it is called with
+      a sequence or set, but not list or tuple.
+    - Update shutil.copyfile() to raise FileNotFoundError instead
+      of confusing IsADirectoryError when a path ending with
+      a os.path.sep does not exist; shutil.copy() and
+      shutil.copy2() are also affected.
+    - handle StopIteration subclass raised from
+      @contextlib.contextmanager generator
+    - Make the implementation consistency of indexOf() between
+      C and Python versions. Patch by Dong-hee Na.
+    - Fixes TypedDict to work with typing.get_type_hints() and
+      postponed evaluation of annotations across modules.
+    - Fix bug with pdb’s handling of import error due to
+      a package which does not have a __main__ module
+    - Fixed an exception thrown while parsing a malformed
+      multipart email by email.message.EmailMessage.
+    - pathlib.PureWindowsPath.is_reserved() now identifies
+      a greater range of reserved filenames, including those with
+      trailing spaces or colons.
+    - Handle exceptions from parsing the arg of pdb’s run/restart
+      command.
+    - The sqlite3 context manager now performs a rollback (thus
+      releasing the database lock) if commit failed. Patch by
+      Luca Citi and Erlend E. Aasland.
+    - Improved string handling for sqlite3 user-defined functions
+      and aggregates:
+        - It is now possible to pass strings with embedded null
+          characters to UDFs
+        - Conversion failures now correctly raise MemoryError
+    - Patch by Erlend E. Aasland.
+    - Handle RecursionError in TracebackException’s constructor,
+      so that long exceptions chains are truncated instead of
+      causing traceback formatting to fail.
+    - Fix email.message.EmailMessage.set_content() when called
+      with binary data and 7bit content transfer encoding.
+    - The compresslevel and preset keyword arguments of
+      tarfile.open() are now both documented and tested.
+    - Fixed a Y2k38 bug in the compileall module where it would
+      fail to compile files with a modification time after the
+      year 2038.
+    - Fix test___all__ on platforms lacking a shared memory
+      implementation.
+    - Pass multiprocessing BaseProxy argument manager_owned
+      through AutoProxy.
+    - email.utils.getaddresses() now accepts email.header.Header
+      objects along with string values. Patch by Zackery Spytz.
+    - lib2to3 now recognizes async generators everywhere.
+    - Fix TypeError when required subparsers without dest do not
+      receive arguments. Patch by Anthony Sottile.
+  - Documentation
+    - Removed the othergui.rst file, any references to it, and
+      the list of GUI frameworks in the FAQ. In their place I’ve
+      added links to the Python Wiki page on GUI frameworks.
+    - Update the definition of __future__ in the glossary by
+      replacing the confusing word “pseudo-module” with a more
+      accurate description.
+    - Add typical examples to os.path.splitext docs
+    - Clarify that shutil.make_archive() is not thread-safe due
+      to reliance on changing the current working directory.
+    - Update of three expired hyperlinks in
+      Doc/distributing/index.rst: “Project structure”, “Building
+      and packaging the project”, and “Uploading the project to
+      the Python Packaging Index”.
+    - Updated the docstring and docs of filecmp.cmp() to be more
+      accurate and less confusing especially in respect to
+      shallow arg.
+    - Match the docstring and python implementation of countOf()
+      to the behavior of its c implementation.
+    - List all kwargs for textwrap.wrap(), textwrap.fill(), and
+      textwrap.shorten(). Now, there are nav links to attributes
+      of TextWrap, which makes navigation much easier while
+      minimizing duplication in the documentation.
+    - Clarify that atexit uses equality comparisons internally.
+    - Documentation of csv.Dialect is more descriptive.
+    - Fix documentation for the return type of
+      sysconfig.get_path().
+    - Add a “Security Considerations” index which links to
+      standard library modules that have explicitly documented
+      security considerations.
+    - Remove the unqualified claim that tkinter is threadsafe. It
+      has not been true for several years and likely never was.
+      An explanation of what is true may be added later, after
+      more discussion, and possibly after patching _tkinter.c,
+  - Tests
+    - Add calls of gc.collect() in tests to support PyPy.
+    - Made tests relying on the _asyncio C extension module
+      optional to allow running on alternative Python
+      implementations. Patch by Serhiy Storchaka.
+    - Fix auto history tests of test_readline: sometimes, the
+      newline character is not written at the end, so don’t
+      expect it in the output.
+    - Add ability to wholesale silence DeprecationWarnings while
+      running the regression test suite.
+    - Notify users running test_decimal regression tests on macOS
+      of potential harmless “malloc can’t allocate region”
+      messages spewed by test_decimal.
+    - Fixed floating point precision issue in turtle tests.
+    - Regression tests, when run with -w, are now re-running only
+      the affected test methods instead of re-running the entire
+      test file.
+    - Add test for nested queues when using multiprocessing
+      shared objects AutoProxy[Queue] inside ListProxy and
+      DictProxy
+
+-------------------------------------------------------------------
+Fri Aug 27 12:00:12 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add decimal.patch to add building with --with-system-libmpdec
+  option (bsc#1189356).
+
+-------------------------------------------------------------------
+Thu Aug 26 11:25:12 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- test_faulthandler is still problematic under qemu linux-user emulation,
+  disable it there
+- Reenable profileopt with qemu emulation, test_faulthandler is no longer
+  run during profiling
+
+-------------------------------------------------------------------
 Mon Aug  9 11:14:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.6:
