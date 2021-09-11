@@ -1,7 +1,7 @@
 #
 # spec file for package python-smartypants
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Python fork of perl SmartyPants
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
-Url:            https://github.com/leohemsted/smartypants.py
+URL:            https://github.com/leohemsted/smartypants.py
 Source:         https://github.com/leohemsted/smartypants.py/archive/v%{version}.tar.gz#/smartypants-%{version}.tar.gz
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module pygments}
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 
 %python_subpackages
@@ -46,6 +46,7 @@ typographic punctuation HTML entities.
 
 %build
 %python_build
+sed -i 's:python:python3:' setup.py smartypants tests/*.py
 
 %install
 %python_install
@@ -61,7 +62,7 @@ typographic punctuation HTML entities.
 %python_uninstall_alternative smartypants
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v tests
 
 %files %{python_files}
 %license COPYING
