@@ -17,8 +17,8 @@
 
 
 Name:           libcamera
-%define lname   libcamera-suse5
-Version:        0~2809.e0704e97
+%define lname   libcamera-suse6
+Version:        0~3015.a2571042
 Release:        0
 Summary:        A complex camera support library in C++
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -110,7 +110,7 @@ export CXXFLAGS="$CFLAGS"
   -Ddocumentation=disabled \
   -Dqcam=enabled \
   -Dv4l2=false -Dtracing=disabled \
-  -Dpipelines=ipu3,raspberrypi,rkisp1,simple,uvcvideo,vimc \
+  -Dpipelines=ipu3,rkisp1,simple,uvcvideo,vimc \
   -Dlc-compliance=disabled
 %meson_build
 

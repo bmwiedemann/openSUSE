@@ -64,4 +64,13 @@
     <comment></comment>
     <requestid>914789</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b1ae4cb88beaf60001c530a5270f93b5</srcmd5>
+    <version>0~3015.a2571042</version>
+    <time>1631391862</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to snapshot 0~3015 (a2571042)
+- Disable pipeline 'raspberrypi' because it creates segfaults at runtime.</comment>
+    <requestid>917699</requestid>
+  </revision>
 </revisionlist>
