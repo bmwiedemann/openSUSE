@@ -74,4 +74,24 @@
 </comment>
     <requestid>917588</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d0c59e4dffa69383bfe799fbbdb42068</srcmd5>
+    <version>10.2.0</version>
+    <time>1631391871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v10.2.0
+  * Changes of version 10.2.0
+    = Refine the size and placements of diacritics, to avoid
+      stacking marks to collide (#1204).
+    = Refine the alignment of Number Sign (#) to align with
+      numbers (#1210).
+    = Add tailless variants for Greek small Mu (μ) (#1211).
+    = Remove unnecessary serifs of Greek Capital Ksi (Ξ) (#1212).
+    = Add quick reuse of default weight/width/slope grades
+      in customized build (#1215).
+    = Add taller variants for At sign's Threefold and Fourfold
+      form (#1216).
+</comment>
+    <requestid>918445</requestid>
+  </revision>
 </revisionlist>
