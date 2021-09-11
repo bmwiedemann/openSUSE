@@ -1910,4 +1910,12 @@ WANTED for 13.1 (forwarded request 202421 from RBrownCCB)</comment>
 - Drop 63e7864.patch: fixed upstream.</comment>
     <requestid>913733</requestid>
   </revision>
+  <revision rev="243" vrev="2">
+    <srcmd5>0fc9c7aedb8e1921f22049882ddfc523</srcmd5>
+    <version>2.68.4</version>
+    <time>1631391862</time>
+    <user>dimstar_suse</user>
+    <comment>- desktop-file-utils: add Pantheon desktop environment (forwarded request 917385 from awissu)</comment>
+    <requestid>917686</requestid>
+  </revision>
 </revisionlist>

@@ -315,6 +315,7 @@ mkdir -p %{buildroot}%{_localstatedir}/cache/gio-2.0 %{buildroot}%{_datadir}/app
 >> %{buildroot}%{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list
 >> %{buildroot}%{_localstatedir}/cache/gio-2.0/xfce-mimeapps.list
 >> %{buildroot}%{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
+>> %{buildroot}%{_localstatedir}/cache/gio-2.0/pantheon-mimeapps.list
 ln -s %{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list %{buildroot}%{_datadir}/applications/gnome-mimeapps.list
 # gio-querymodules magic
 %if "%{_lib}" == "lib64"
@@ -351,7 +352,7 @@ mkdir -p %{buildroot}%{_datadir}/gtk-doc/html
 
 %post -n %{libgio}
 %{ldconfig}
-for ENV in gnome xfce lxde
+for ENV in gnome xfce lxde pantheon
 do mimeapps="%{_localstatedir}/cache/gio-2.0/$ENV-mimeapps.list" &&
 	2>/dev/null <"${mimeapps}" || cat >"${mimeapps}" <<EOF
 # Dummy file. Install desktop-file-utils to get better defaults.
@@ -463,6 +464,7 @@ done
 %ghost %{_localstatedir}/cache/gio-2.0/gnome-mimeapps.list
 %ghost %{_localstatedir}/cache/gio-2.0/xfce-mimeapps.list
 %ghost %{_localstatedir}/cache/gio-2.0/lxde-mimeapps.list
+%ghost %{_localstatedir}/cache/gio-2.0/pantheon-mimeapps.list
 
 %files -n libgio-fam
 %license COPYING
