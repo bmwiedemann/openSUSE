@@ -30,6 +30,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/openexr/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
+# PATCH-FIX-UPSTREAM https://github.com/AcademySoftwareFoundation/openexr/issues/1135
+Patch1:         openexr-fix-armv7.patch
+# PATCH-FIX-UPSTREAM https://github.com/AcademySoftwareFoundation/openexr/issues/1135
+Patch2:         openexr-fix-armv7-2.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  fltk-devel
 BuildRequires:  freeglut-devel
@@ -145,7 +149,7 @@ Industrial Light & Magic for use in computer imaging applications.
 This package contains documentation.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 export PTHREAD_LIBS="-lpthread"

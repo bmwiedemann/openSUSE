@@ -1,0 +1,23 @@
+From 26d2fd360edebee51e786ad75b595664a7fb881c Mon Sep 17 00:00:00 2001
+From: Kimball Thurston <kdt3rd@gmail.com>
+Date: Tue, 31 Aug 2021 04:00:39 +1200
+Subject: [PATCH] Fixes #1135, test which assumed 64-bit pointer size (#1136)
+
+Signed-off-by: Kimball Thurston <kdt3rd@gmail.com>
+---
+ src/test/OpenEXRCoreTest/compression.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/test/OpenEXRCoreTest/compression.cpp b/src/test/OpenEXRCoreTest/compression.cpp
+index 5d408ca7c..b10fff9ad 100644
+--- a/src/test/OpenEXRCoreTest/compression.cpp
++++ b/src/test/OpenEXRCoreTest/compression.cpp
+@@ -1333,7 +1333,7 @@ testHUF (const std::string& tempdir)
+ {
+     uint64_t esize = internal_exr_huf_compress_spare_bytes ();
+     uint64_t dsize = internal_exr_huf_decompress_spare_bytes ();
+-    EXRCORE_TEST (esize == 65537 * (8 + 8 + 8 + 4));
++    EXRCORE_TEST (esize == 65537 * (8 + 8 + sizeof(void*) + 4));
+     EXRCORE_TEST (dsize == (65537 * 8 + (1 << 14) * 16));
+ 
+     std::vector<uint8_t> hspare;

@@ -1,0 +1,29 @@
+From daf791092ec0d7208cc222432c86464852e10fbc Mon Sep 17 00:00:00 2001
+From: Kimball Thurston <kdt3rd@gmail.com>
+Date: Thu, 2 Sep 2021 21:08:39 +1200
+Subject: [PATCH] the HufDec struct used during decompression also contains a
+ pointer
+
+Account for that for 32-bit machines in the unit / coverage test.
+
+Signed-off-by: Kimball Thurston <kdt3rd@gmail.com>
+---
+ src/test/OpenEXRCoreTest/compression.cpp | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/test/OpenEXRCoreTest/compression.cpp b/src/test/OpenEXRCoreTest/compression.cpp
+index b10fff9ad..aed0257ff 100644
+--- a/src/test/OpenEXRCoreTest/compression.cpp
++++ b/src/test/OpenEXRCoreTest/compression.cpp
+@@ -1333,8 +1333,9 @@ testHUF (const std::string& tempdir)
+ {
+     uint64_t esize = internal_exr_huf_compress_spare_bytes ();
+     uint64_t dsize = internal_exr_huf_decompress_spare_bytes ();
+-    EXRCORE_TEST (esize == 65537 * (8 + 8 + sizeof(void*) + 4));
+-    EXRCORE_TEST (dsize == (65537 * 8 + (1 << 14) * 16));
++    EXRCORE_TEST (esize == 65537 * (8 + 8 + sizeof (uint64_t*) + 4));
++    EXRCORE_TEST (
++        dsize == (65537 * 8 + (1 << 14) * (sizeof (uint32_t*) + 4 + 4)));
+ 
+     std::vector<uint8_t> hspare;
+ 

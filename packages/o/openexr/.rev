@@ -665,4 +665,14 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
       the ``Imf`` prefix.</comment>
     <requestid>912439</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>82adaf5ee7d475d6247bb427d6de59c1</srcmd5>
+    <version>3.1.1</version>
+    <time>1631391866</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch to fix OpenEXRCore.testHUF on armv7:
+  * openexr-fix-armv7.patch
+  * openexr-fix-armv7-2.patch (forwarded request 917760 from Guillaume_G)</comment>
+    <requestid>917761</requestid>
+  </revision>
 </revisionlist>

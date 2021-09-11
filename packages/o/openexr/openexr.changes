@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 31 06:23:32 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix OpenEXRCore.testHUF on armv7:
+  * openexr-fix-armv7.patch
+  * openexr-fix-armv7-2.patch
+
+-------------------------------------------------------------------
 Mon Aug 16 14:41:56 UTC 2021 - pgajdos@suse.com
 
 - devel package obsoletes and provides ilmbase-devel
