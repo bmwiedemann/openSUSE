@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  8 22:11:35 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Updated to latest upstream 2.1.5 as 2.1.5-suse, which contains
+  these changes not already present:
+  * Handle IPv6 interfaces correctly. (bsc#1187958)
+  * Handle qedi correctly in NPAR mode (bsc#1187958)
+  * Update iscsiadm man page (bsc#1187958)
+  * Update iface.example for ipv6
+  * Change iscsi IP type from defines to enum.
+  * Handle recv() returning 0 in iscsid_response()
+
+-------------------------------------------------------------------
 Fri Aug 20 17:11:46 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Merged latest upstream, which includes:
