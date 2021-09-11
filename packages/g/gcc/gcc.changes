@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Aug 27 17:41:23 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Add libgccjit%{libgccjit_sover}-devel package
+
+-------------------------------------------------------------------
 Fri Jul  9 07:41:14 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - With gcc-PIE add -pie even when -fPIC is specified but we are

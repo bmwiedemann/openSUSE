@@ -41,6 +41,7 @@ Name:           gcc
 %else
 %define build_d 0
 %endif
+%define libgccjit_sover 0
 URL:            http://gcc.gnu.org/
 %define gcc_version 11
 %define gcc_suffix 11
@@ -72,8 +73,6 @@ Source:         cpp
 %description
 The system GNU C Compiler.
 
-
-
 %package -n gcc-32bit
 Summary:        The system GNU C Compiler
 License:        GPL-3.0-or-later
@@ -83,8 +82,6 @@ Requires:       gcc%{gcc_version}-32bit
 
 %description -n gcc-32bit
 The system GNU C Compiler.
-
-
 
 %package -n gcc-64bit
 Summary:        The system GNU C Compiler
@@ -96,8 +93,6 @@ Requires:       gcc%{gcc_version}-64bit
 %description -n gcc-64bit
 The system GNU C Compiler.
 
-
-
 %package -n cpp
 Summary:        The system GNU Preprocessor
 License:        GPL-3.0-or-later
@@ -106,7 +101,6 @@ Requires:       cpp%{gcc_version}
 
 %description -n cpp
 The system GNU Preprocessor.
-
 
 %package -n gcc-devel
 Summary:        The system GNU C Compiler Plugin development files
@@ -118,7 +112,6 @@ Requires:       gcc%{gcc_version}-devel
 %description -n gcc-devel
 The system GNU C Compiler Plugin development files.
 
-
 %package -n gcc-locale
 Summary:        The system GNU Compiler locale files
 License:        GPL-3.0-or-later
@@ -127,8 +120,6 @@ Requires:       gcc%{gcc_version}-locale
 
 %description -n gcc-locale
 The system GNU Compiler locale files.
-
-
 
 %package -n gcc-info
 Summary:        The system GNU Compiler documentation
@@ -139,6 +130,7 @@ PreReq:         gcc%{gcc_version}-info
 
 %description -n gcc-info
 The system GNU Compiler documentation.
+
 
 # install / update the entries
 %post -n gcc-info
@@ -167,7 +159,6 @@ Requires:       gcc%{gcc_version}-c++
 %description -n gcc-c++
 The system GNU C++ Compiler.
 
-
 %package -n gcc-c++-32bit
 Summary:        The system GNU C++ Compiler
 License:        GPL-3.0-or-later
@@ -178,7 +169,6 @@ Requires:       gcc-c++ = %{version}
 
 %description -n gcc-c++-32bit
 The system GNU C++ Compiler 32 bit support.
-
 
 %package -n gcc-c++-64bit
 Summary:        The system GNU C++ Compiler
@@ -191,21 +181,18 @@ Requires:       gcc-c++ = %{version}
 %description -n gcc-c++-64bit
 The system GNU C++ Compiler 64 bit support.
 
-
-
 %package -n libstdc++-devel
 Summary:        The system GNU C++ development files
-License:        GPL-3.0-with-GCC-exception
+License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
 Requires:       libstdc++6-devel-gcc%{gcc_version}
 
 %description -n libstdc++-devel
 The system GNU C++ development files.
 
-
 %package -n libstdc++-devel-32bit
 Summary:        The system GNU C++ 32bit development files
-License:        GPL-3.0-with-GCC-exception
+License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
 Requires:       libstdc++-devel
 Requires:       libstdc++6-devel-gcc%{gcc_version}-32bit
@@ -213,18 +200,15 @@ Requires:       libstdc++6-devel-gcc%{gcc_version}-32bit
 %description -n libstdc++-devel-32bit
 The system GNU C++ 32bit development files.
 
-
 %package -n libstdc++-devel-64bit
 Summary:        The system GNU C++ 64bit development files
-License:        GPL-3.0-with-GCC-exception
+License:        GPL-3.0-only WITH GCC-exception-3.1
 Group:          System/Libraries
 Requires:       libstdc++-devel
 Requires:       libstdc++6-devel-gcc%{gcc_version}-64bit
 
 %description -n libstdc++-devel-64bit
 The system GNU C++ 64bit development files.
-
-
 
 %package -n gcc-fortran
 Summary:        The system GNU Fortran Compiler
@@ -236,7 +220,6 @@ Requires:       gcc%{gcc_version}-fortran
 %description -n gcc-fortran
 The system GNU Fortran Compiler.
 
-
 %package -n gcc-fortran-32bit
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
@@ -247,7 +230,6 @@ Requires:       gcc-fortran = %{version}
 %description -n gcc-fortran-32bit
 The system GNU Fortran Compiler 32 bit support.
 
-
 %package -n gcc-fortran-64bit
 Summary:        The system GNU Fortran Compiler
 License:        GPL-3.0-or-later
@@ -257,8 +239,6 @@ Requires:       gcc-fortran = %{version}
 
 %description -n gcc-fortran-64bit
 The system GNU Fortran Compiler 64 bit support.
-
-
 
 %package -n gcc-objc
 Summary:        The system GNU Objective C Compiler
@@ -273,8 +253,6 @@ Obsoletes:      gcc-objc-64bit
 %description -n gcc-objc
 The system GNU Objective C Compiler.
 
-
-
 %package -n gcc-objc-32bit
 Summary:        The system GNU Objective C Compiler
 License:        GPL-3.0-or-later
@@ -284,8 +262,6 @@ Requires:       gcc-objc = %{version}
 
 %description -n gcc-objc-32bit
 The system GNU Objective C Compiler 32 bit support.
-
-
 
 %package -n gcc-objc-64bit
 Summary:        The system GNU Objective C Compiler
@@ -297,8 +273,6 @@ Requires:       gcc-objc = %{version}
 %description -n gcc-objc-64bit
 The system GNU Objective C Compiler 64 bit support.
 
-
-
 %package -n gcc-obj-c++
 Summary:        The system GNU Objective C++ Compiler
 License:        GPL-3.0-or-later
@@ -308,8 +282,6 @@ Requires:       gcc-objc = %{version}
 
 %description -n gcc-obj-c++
 The system GNU Objective C++ Compiler.
-
-
 
 %package -n gcc-PIE
 Summary:        A default configuration to build all binaries in PIE mode
@@ -322,7 +294,6 @@ This package contains a configuration file (spec) that changes the
 compilers default setting to build all ELF binaries in the Position
 Independend Executable (PIE) variant. This enables better address
 space randomization (ASLR).
-
 
 %package -n gcc-ada
 Summary:        The system GNU Ada Compiler
@@ -354,7 +325,6 @@ Requires:       gcc-ada = %{version}
 %description -n gcc-ada-64bit
 The system GNU Ada Compiler 64 bit support.
 
-
 %package -n gcc-go
 Summary:        The system GNU Go Compiler
 License:        GPL-3.0-or-later
@@ -362,7 +332,7 @@ Group:          Development/Languages/C and C++
 Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-go
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n gcc-go
 The system GNU Go Compiler.
@@ -387,7 +357,6 @@ Requires:       gcc-go = %{version}
 %description -n gcc-go-64bit
 The system GNU Go Compiler 64bit support.
 
-
 %package -n gcc-d
 Summary:        The system GNU D Compiler
 License:        GPL-3.0-or-later
@@ -395,7 +364,7 @@ Group:          Development/Languages/C and C++
 Requires:       gcc = %{version}
 Requires:       gcc%{gcc_version}-d
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 
 %description -n gcc-d
 The system GNU D Compiler.
@@ -420,8 +389,16 @@ Requires:       gcc-d = %{version}
 %description -n gcc-d-64bit
 The system GNU D Compiler 64bit support.
 
+%package -n libgccjit%{libgccjit_sover}-devel
+Summary:        Support for embedding GCC inside programs and libraries
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+Requires:       libgccjit%{libgccjit_sover}-devel-gcc%{gcc_version}
 
-%prep 
+%description -n libgccjit%{libgccjit_sover}-devel
+Package contains header files and documentation for GCC JIT front-end.
+
+%prep
 
 %install
 mkdir -p $RPM_BUILD_ROOT/lib
@@ -682,5 +659,9 @@ fi
 %endif
 
 %endif
+
+%files -n libgccjit%{libgccjit_sover}-devel
+%defattr(-,root,root)
+# empty - only for the dependency
 
 %changelog
