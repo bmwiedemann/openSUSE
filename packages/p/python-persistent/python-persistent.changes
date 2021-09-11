@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Thu Sep  2 12:04:25 UTC 2021 - pgajdos@suse.com
+
+- version update to 4.7.0
+  4.7.0 (2021-04-13)
+  ==================
+  - Add support for Python 3.9.
+  - Move from Travis CI to Github Actions.
+  - Supply manylinux wheels for aarch64 (ARM).
+  - Fix the pure-Python implementation to activate a ghost object
+    when setting its ``__class__`` and ``__dict__``. This matches the
+    behaviour of the C implementation. See `issue 155
+    <https://github.com/zopefoundation/persistent/issues/155>`_.
+  - Fix the CFFI cache implementation (used on CPython when
+    ``PURE_PYTHON=1``) to not print unraisable ``AttributeErrors`` from
+    ``_WeakValueDictionary`` during garbage collection. See `issue 150
+    <https://github.com/zopefoundation/persistent/issues/150>`_.
+  - Make the pure-Python implementation of the cache run a garbage
+    collection (``gc.collect()``) on ``full_sweep``, ``incrgc`` and
+    ``minimize`` *if* it detects that an object that was weakly
+    referenced has been ejected. This solves issues on PyPy with ZODB raising
+    ``ConnectionStateError`` when there are persistent
+    ``zope.interface`` utilities/adapters registered. This partly
+    reverts a change from release 4.2.3.
+  4.6.4 (2020-03-26)
+  ==================
+  - Fix an overly specific test failure using zope.interface 5. See
+    `issue 144 <https://github.com/zopefoundation/persistent/issues/144>`_.
+  - Fix two reference leaks that could theoretically occur as the result
+    of obscure errors. See `issue 143 <https://github.com/zopefoundation/persistent/issues/143>`
+- %check: use %pyunittest rpm macro
+  - removed upstreamed tests.patch
+
+-------------------------------------------------------------------
 Thu Mar 26 07:39:16 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to fix build with new zope.interface:

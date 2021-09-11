@@ -1,7 +1,7 @@
 #
 # spec file for package python-persistent
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013-2019 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,12 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-persistent
-Version:        4.6.3
+Version:        4.7.0
 Release:        0
 Summary:        Translucent persistent objects
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/persistent
 Source:         https://files.pythonhosted.org/packages/source/p/persistent/persistent-%{version}.tar.gz
-# https://github.com/zopefoundation/persistent/issues/144
-Patch0:         tests.patch
 BuildRequires:  %{python_module cffi}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module manuel}
@@ -54,7 +52,6 @@ This package contains the files needed for binding the %{name} C module.
 
 %prep
 %setup -q -n persistent-%{version}
-%patch0 -p1
 rm -rf persistent.egg-info
 
 %build
@@ -68,8 +65,11 @@ rm -rf persistent.egg-info
 }
 
 %check
-find . -name \*.pyc -delete
-%python_exec setup.py test -v
+old=persistent
+new=persistent_hide
+mv $old $new
+sed -i "s:<$old.test:<$new.test:" persistent_hide/tests/test_persistence.py
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %license LICENSE.txt
