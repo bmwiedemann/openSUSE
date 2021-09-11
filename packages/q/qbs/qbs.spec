@@ -19,7 +19,7 @@
 
 %define qt5_version 5.14.0
 Name:           qbs
-Version:        1.19.1
+Version:        1.20.0
 Release:        0
 Summary:        Modern build tool for software projects
 # Legal:
@@ -97,6 +97,9 @@ makeopts=""
 rm %{buildroot}%{_libexecdir}/%{name}/dmgbuild
 rm -r %{buildroot}%{_datadir}/%{name}/python
 
+# E: version-control-internal-file
+rm %{buildroot}%{_datadir}/qbs/modules/typescript/qbs-tsc-scan/.gitignore
+
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config.1.gz
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-config-ui.1.gz
 ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-create-project.1.gz
@@ -112,8 +115,7 @@ ln -f -s qbs.1.gz %{buildroot}/%{_mandir}/man1/qbs-setup-toolchains.1.gz
 %files
 %license LGPL_EXCEPTION.txt LICENSE.LGPLv21 LICENSE.LGPLv3 LICENSE.GPL3-EXCEPT
 %doc README.md
-# No changelog file in 1.19.0
-# %%doc changelogs/changes-%%{version}.md
+%doc changelogs/changes-%{version}.md
 %dir %{_datadir}/%{name}/
 %dir %{_libdir}/%{name}/
 %dir %{_libdir}/%{name}/plugins/

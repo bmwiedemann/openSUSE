@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep  9 18:11:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.20.0
+  * CMake and Qbs builds now fully support building with Qt6.
+  * Qbs now prints the old properties set when refusing to build
+    a project with changed properties.
+  * Added convenience command to qbs-config to add a profile in
+    one go instead of setting properties separately.
+  * Added profiling timer for module providers.
+- Check the changes-1.20.0.md file for other changes.
+
+-------------------------------------------------------------------
 Wed Jul 21 06:45:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Remove the dmgbuild binary until it's ported to python 3.

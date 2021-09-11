@@ -141,4 +141,12 @@ Initial import of qbs 1.10.1
 - Drop fix-env-script-interpreter.patch. No longer needed.</comment>
     <requestid>907419</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>515bfc0671bc63911ec0b2a28a430fab</srcmd5>
+    <version>1.20.0</version>
+    <time>1631391871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918461</requestid>
+  </revision>
 </revisionlist>
