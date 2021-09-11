@@ -881,4 +881,14 @@
     <comment></comment>
     <requestid>915461</requestid>
   </revision>
+  <revision rev="79" vrev="2">
+    <srcmd5>a22fa1927799cab7a2f425d0b8a56735</srcmd5>
+    <version>3.2.7</version>
+    <time>1631391854</time>
+    <user>dimstar_suse</user>
+    <comment>- Add failing_test_subparser_invalid_option.patch fixing
+  https://code.djangoproject.com/ticket/33082
+</comment>
+    <requestid>917776</requestid>
+  </revision>
 </revisionlist>

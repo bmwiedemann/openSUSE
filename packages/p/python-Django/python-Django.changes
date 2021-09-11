@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  9 15:21:45 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add failing_test_subparser_invalid_option.patch fixing
+  https://code.djangoproject.com/ticket/33082
+
+-------------------------------------------------------------------
 Wed Sep  1 10:13:34 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to 3.2.7
