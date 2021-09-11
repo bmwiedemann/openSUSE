@@ -26,8 +26,8 @@
 # major 69
 # mainver %major.99
 %define major          91
-%define mainver        %major.0.3
-%define orig_version   91.0.3
+%define mainver        %major.1.0
+%define orig_version   91.1.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define source_prefix  thunderbird-%{orig_version}
@@ -36,7 +36,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    1
+%define clang_build    0
 
 # PIE, full relro
 %define build_hardened 1
@@ -206,6 +206,8 @@ Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
+Patch29:        mozilla-silence-no-return-type.patch
+Patch30:        mozilla-bmo531915.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -288,7 +290,7 @@ fi
 %patch4 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
+#%patch8 -p1
 %patch9 -p1
 %patch11 -p1
 %patch13 -p1
@@ -305,6 +307,8 @@ fi
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch29 -p1
+%patch30 -p1
 %endif
 
 %build

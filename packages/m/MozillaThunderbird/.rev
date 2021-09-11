@@ -3767,4 +3767,26 @@ I cannot test locally unfortunately.
     <comment></comment>
     <requestid>914797</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>992625b882f4725fcd0225e2546a6dfc</srcmd5>
+    <version>91.1.0</version>
+    <time>1631391863</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Thunderbird 91.1.0
+  * Thunderbird registered Accessibility Handlers using same GUIDs
+    as Firefox, causing performance issues for NVDA users
+  * Focus lost when reordering accounts by keyboard in the Account Manager
+  * Account setup did not use provider display name for setting up
+    calendars
+  * Various theme and UX fixes
+  MFSA 2021-41 (bsc#1190269)
+  * CVE-2021-38492 (bmo#1721107)
+    Navigating to `mk:` URL scheme could load Internet Explorer
+  * CVE-2021-38495 (bmo#1723391, bmo#1723920, bmo#1724101,
+    bmo#1724107)
+    Memory safety bugs fixed in Thunderbird 91.1
+- (re-)added mozilla-silence-no-return-type.patch
+- add mozilla-bmo531915.patch to fix build for i586</comment>
+    <requestid>917701</requestid>
+  </revision>
 </revisionlist>

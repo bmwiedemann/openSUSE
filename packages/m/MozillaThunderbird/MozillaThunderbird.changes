@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep  2 07:03:59 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.1.0
+  * Thunderbird registered Accessibility Handlers using same GUIDs
+    as Firefox, causing performance issues for NVDA users
+  * Focus lost when reordering accounts by keyboard in the Account Manager
+  * Account setup did not use provider display name for setting up
+    calendars
+  * Various theme and UX fixes
+  MFSA 2021-41 (bsc#1190269)
+  * CVE-2021-38492 (bmo#1721107)
+    Navigating to `mk:` URL scheme could load Internet Explorer
+  * CVE-2021-38495 (bmo#1723391, bmo#1723920, bmo#1724101,
+    bmo#1724107)
+    Memory safety bugs fixed in Thunderbird 91.1
+- (re-)added mozilla-silence-no-return-type.patch
+- add mozilla-bmo531915.patch to fix build for i586
+
+-------------------------------------------------------------------
 Fri Aug 27 21:01:34 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Thunderbird 91.0.3:
