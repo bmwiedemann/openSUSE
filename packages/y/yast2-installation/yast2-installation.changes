@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  9 15:54:57 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Display release notes during upgrade (bsc#1186044)
+- 4.4.18
+
+-------------------------------------------------------------------
 Tue Aug 24 14:58:48 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 
 - Refactored umount_finish.rb (bsc#1149980)
