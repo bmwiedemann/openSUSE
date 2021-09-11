@@ -1,7 +1,2 @@
-addFilter('suse-filelist-forbidden-systemd-userdirs')
-addFilter('systemd-unit-in-etc')
-addFilter('dangling-symlink')
-addFilter('postin-without-tmpfile-creation')
+addFilter('post-without-tmpfile-creation')
 addFilter('tmpfile-not-in-filelist')
-addFilter('suse-missing-rclink')
-addFilter('.*W: systemd-service-without-service.*MicroOS-firstboot.service.*')

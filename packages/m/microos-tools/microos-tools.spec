@@ -17,7 +17,7 @@
 
 
 Name:           microos-tools
-Version:        2.11
+Version:        2.12
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -59,47 +59,50 @@ install -m 0644 %{SOURCE2} %{buildroot}/%{_tmpfilesdir}
 %endif
 
 %pre
-%service_add_pre setup-systemd-proxy-env.service printenv.service
+%service_add_pre setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
 %post
 %{regenerate_initrd_post}
-%service_add_post setup-systemd-proxy-env.service printenv.service
+%service_add_post setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
 %preun
-%service_del_preun setup-systemd-proxy-env.service printenv.service
+%service_del_preun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
 %postun
 %{regenerate_initrd_post}
-%service_del_postun setup-systemd-proxy-env.service printenv.service
+%service_del_postun setup-systemd-proxy-env.service setup-systemd-proxy-env.path printenv.service
 
 %posttrans
 %{regenerate_initrd_posttrans}
+
+%pre -n microos-devel-tools
+%service_add_pre microos-ro.service
+
+%post -n microos-devel-tools
+%service_add_post microos-ro.service
+
+%preun -n microos-devel-tools
+%service_del_preun microos-ro.service
+
+%postun -n microos-devel-tools
+%service_del_postun microos-ro.service
 
 %files
 %license COPYING
 %dir %{_sysconfdir}/selinux
 %config %{_sysconfdir}/selinux/fixfiles_exclude_dirs
-%dir %{_sysconfdir}/systemd
-%dir %{_sysconfdir}/systemd/system
-%config %{_sysconfdir}/systemd/system/systemd-firstboot.service
-%{_unitdir}/MicroOS-firstboot.service
 %{_unitdir}/printenv.service
 %{_unitdir}/setup-systemd-proxy-env.path
 %{_unitdir}/setup-systemd-proxy-env.service
-%dir %{_unitdir}/sysinit.target.wants
-%{_unitdir}/sysinit.target.wants/MicroOS-firstboot.service
 %dir %{_unitdir}/salt-minion.service.d
 %{_unitdir}/salt-minion.service.d/TMPDIR.conf
 %{_tmpfilesdir}/salt-minion-tmpdir.conf
 %{_sysctldir}/30-corefiles.conf
-%{_libexecdir}/MicroOS-firstboot
 %{_sbindir}/setup-systemd-proxy-env
 %dir %{_prefix}/lib/dracut
 %dir %{_prefix}/lib/dracut/modules.d
 %{_prefix}/lib/dracut/modules.d/98selinux-microos
 %{_systemdgeneratordir}/selinux-autorelabel-generator
-%config %{_sysconfdir}/profile.d/ssh-locale-check.sh
-%{_bindir}/locale-check
 %if 0%{?suse_version} <= 1500
 %{_unitdir}/tmp.mount
 %{_tmpfilesdir}/microos-tmp.conf

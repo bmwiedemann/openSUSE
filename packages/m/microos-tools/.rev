@@ -179,4 +179,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>902856</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>2aebfbbc9e2b105c72a8c7b9c5ab9204</srcmd5>
+    <version>2.12</version>
+    <time>1631391864</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.12
+  - Remove special MicroOS firstboot script
+  - Remove locale-check, replaced by another aaa_base implementation</comment>
+    <requestid>917715</requestid>
+  </revision>
 </revisionlist>
