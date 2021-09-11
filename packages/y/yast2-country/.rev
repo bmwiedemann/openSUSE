@@ -1678,4 +1678,12 @@
     <comment>submit new version 4.4.5</comment>
     <requestid>913020</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>ae137456a14fb47909651cd20fa2ed63</srcmd5>
+    <version>4.4.6</version>
+    <time>1631391856</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.6</comment>
+    <requestid>917227</requestid>
+  </revision>
 </revisionlist>
