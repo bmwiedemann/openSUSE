@@ -904,4 +904,13 @@ undo bootstrap workaround</comment>
     <comment>- Share Version with rpmlint package.</comment>
     <requestid>915050</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>10ea5ac95efe30ae20b86bf21c1c46f2</srcmd5>
+    <version>MACRO</version>
+    <time>1631391853</time>
+    <user>dimstar_suse</user>
+    <comment>- Install %{_libdir}/libmpdec*.so.* to venv as it can be used
+  by _pydecimal.py python module.</comment>
+    <requestid>917098</requestid>
+  </revision>
 </revisionlist>

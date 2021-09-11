@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep  6 12:12:52 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Install %{_libdir}/libmpdec*.so.* to venv as it can be used
+  by _pydecimal.py python module.
+
+-------------------------------------------------------------------
 Mon Aug 30 13:15:03 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Share Version with rpmlint package.

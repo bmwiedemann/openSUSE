@@ -84,6 +84,7 @@ cp -a %{python_sitearch}/{rpm,zstd}* %{buildroot}/opt/testing/lib/python%{py3_ve
 cp -a %{python_sitelib} %{buildroot}/opt/testing/lib/python%{py3_ver}
 cp -a %{_libdir}/libpython%{py3_ver}*.so.* %{buildroot}/opt/testing/lib
 cp -a %{_libdir}/libexpat*.so.* %{buildroot}/opt/testing/lib
+cp -a %{_libdir}/libmpdec*.so.* %{buildroot}/opt/testing/lib || echo "Skipping libmpdec.so"
 cp -a %{_bindir}/python3 %{buildroot}/opt/testing/bin
 cp -a %{_bindir}/python%{py3_ver} %{buildroot}/opt/testing/bin
 pushd %{buildroot}/opt/testing/lib/python%{py3_ver}/
