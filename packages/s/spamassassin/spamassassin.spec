@@ -40,6 +40,7 @@ Source1:        https://downloads.apache.org/spamassassin/source/Mail-SpamAssass
 Source2:        https://mailfud.org/iXhash2/%{IXHASH}.tar.gz
 Source3:        https://github.com/mpaperno/spampd/archive/%{spd_version}.tar.gz#/%{SPAMPD}.tar.gz
 Source10:       local.cf
+Source11:       README.SUSE
 Source12:       sysconfig.spamd
 Source14:       sysconfig.spampd
 Source15:       timed-sa-update
@@ -220,6 +221,7 @@ tar -zxf %{SOURCE1} -C rules
 %patch6
 %patch7 -p1
 %patch10
+cp %{SOURCE11} ./
 
 %build
 # Run substitutions in default rules
@@ -263,7 +265,6 @@ mv %{buildroot}%{_bindir}/spamd %{buildroot}%{_sbindir}/
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysconfdir}/mail/spamassassin/local.cf
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspamd
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcspampd
-echo "Most of the documentation is at ../perl-Mail-SpamAssassin/." > README.SUSE
 install -D -m 0640 %{SOURCE12} %{buildroot}%{_fillupdir}/sysconfig.spamd
 install -m 0640 %{SOURCE14} %{buildroot}%{_fillupdir}/
 test -f %{buildroot}%{_datadir}/spamassassin/user_prefs.template || {
@@ -316,7 +317,7 @@ fi
 
 %files
 %defattr(-,root,root)
-%doc spamd/README spamd/README.vpopmail spamd/PROTOCOL
+%doc spamd/README spamd/README.vpopmail spamd/PROTOCOL README.SUSE
 %{_mandir}/man1/sa-*
 %{_mandir}/man1/spamassassin*
 %{_mandir}/man1/spamd.1*
