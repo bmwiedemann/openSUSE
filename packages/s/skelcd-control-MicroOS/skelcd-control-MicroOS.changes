@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  7 12:00:30 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Define default NTP servers for MicroOS (bsc#1180699)
+- 20210907
+
+-------------------------------------------------------------------
 Mon Jun 28 12:39:32 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Add remote attestation roles: micro_os_role_ra_{agent,verifier} (bsc#1187796)
