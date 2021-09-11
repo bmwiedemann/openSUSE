@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  8 17:01:58 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Don't reexecute user manager instances on package update yet
+
+  This can't be done until users have their user instance updated to
+  the new version that supports reexecuting with SIGRTMIN+25 because
+  this signal terminates the user managers for the previous versions.
+
+-------------------------------------------------------------------
+Wed Sep  8 13:21:34 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Import commit ec72db9ee0f8ce061f83624d7148ff38a5993b11
+
+  3b1aa2f79f manager: reexecute on SIGRTMIN+25, user instances only
+  fd46c81922 test: make sure to include all haveged unit files
+
+- systemd.spec: reexec user manager instances on package updates
+
+-------------------------------------------------------------------
+Fri Sep  3 09:38:23 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Make sure the versions of both udev and systemd packages are always the same (bsc#1189480)
+
+-------------------------------------------------------------------
+Thu Sep  2 10:01:23 UTC 2021 - Franck Bui <fbui@suse.com>
+
+- Drop dependency on m4 (replaced by Jinja2)
+
+-------------------------------------------------------------------
 Wed Sep  1 11:54:23 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Configure split-usr=true only when %usrmerged is not defined

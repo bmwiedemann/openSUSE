@@ -5514,4 +5514,24 @@ handle manual pages that consist only of a .so directive such as
 - Configure split-usr=true only when %usrmerged is not defined</comment>
     <requestid>915488</requestid>
   </revision>
+  <revision rev="336" vrev="2">
+    <srcmd5>dbb54092b3e49d742312ff9d25f457d3</srcmd5>
+    <version>249.4</version>
+    <time>1631391861</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't reexecute user manager instances on package update yet
+  This can't be done until users have their user instance updated to
+  the new version that supports reexecuting with SIGRTMIN+25 because
+  this signal terminates the user managers for the previous versions.
+
+- Import commit ec72db9ee0f8ce061f83624d7148ff38a5993b11
+  3b1aa2f79f manager: reexecute on SIGRTMIN+25, user instances only
+  fd46c81922 test: make sure to include all haveged unit files
+- systemd.spec: reexec user manager instances on package updates
+
+- Make sure the versions of both udev and systemd packages are always the same (bsc#1189480)
+
+- Drop dependency on m4 (replaced by Jinja2)</comment>
+    <requestid>917666</requestid>
+  </revision>
 </revisionlist>

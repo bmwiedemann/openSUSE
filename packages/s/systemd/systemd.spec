@@ -24,7 +24,7 @@
 %define bootstrap 0
 %define mini %nil
 %define min_kernel_version 4.5
-%define suse_version +suse.32.g40bda18e34
+%define suse_version +suse.35.gec72db9ee0
 %define _testsuitedir /usr/lib/systemd/tests
 
 %bcond_with     gnuefi
@@ -94,7 +94,6 @@ BuildRequires:  gperf
 BuildRequires:  libacl-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libmount-devel >= 2.27.1
-BuildRequires:  m4
 BuildRequires:  meson >= 0.43
 BuildRequires:  pam-devel
 BuildRequires:  python3-jinja2
@@ -275,13 +274,14 @@ This library provides several of the systemd C APIs:
 Summary:        A rule-based device node and kernel event manager
 License:        GPL-2.0-only
 URL:            http://www.kernel.org/pub/linux/utils/kernel/hotplug/udev.html
+Requires:       %{name} = %{version}-%{release}
+%systemd_requires
 Requires:       kmod
 Requires:       system-group-hardware
 Requires:       group(kvm)
 Requires(post): sed
 Requires(post): coreutils
 Requires(postun): coreutils
-%systemd_requires
 
 Conflicts:      filesystem < 11.5
 Conflicts:      mkinitrd < 2.7.0
@@ -367,12 +367,12 @@ and systemd-importd.
 Summary:        Systemd tools for networkd and resolved
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
+%systemd_requires
 # This Recommends because some symbols of libidn2 are dlopen()ed by resolved
 Recommends:     pkgconfig(libidn2)
 BuildRequires:  pkgconfig(libidn2)
 Provides:       systemd:/usr/lib/systemd/systemd-networkd
 Provides:       systemd:/usr/lib/systemd/systemd-resolved
-%systemd_requires
 
 %description network
 Systemd tools to manage network settings using networkd and
@@ -565,6 +565,7 @@ testsuite, please refer to %{_testsuitedir}/test/README.testsuite.
 Summary:        Experimental systemd features
 License:        LGPL-2.1-or-later
 Requires:       %{name} = %{version}-%{release}
+%systemd_requires
 # These Recommends because some symbols of these libs are dlopen()ed by home stuff
 Recommends:     libfido2
 Recommends:     libpwquality1
@@ -576,7 +577,6 @@ BuildRequires:  pkgconfig(pwquality)
 # fdisk and openssl are build requirements for home stuff and repart
 BuildRequires:  pkgconfig(fdisk)
 BuildRequires:  pkgconfig(openssl)
-%systemd_requires
 
 %description experimental
 This package contains optional extra services that are considered as
@@ -939,7 +939,23 @@ pam-config --add --systemd || :
 [ -e %{_localstatedir}/lib/random-seed ] && mv %{_localstatedir}/lib/random-seed %{_localstatedir}/lib/systemd/ || :
 /usr/lib/systemd/systemd-random-seed save || :
 
-systemctl daemon-reexec  || :
+systemctl daemon-reexec || :
+
+# Reexecute user manager instances (if any). It is asynchronous but it
+# shouldn't be a problem in practice: a problem would arise only if
+# the new version of a user service has a brand new option that is
+# only understood by the latest version of the user manager and the
+# user service is started before the user manager get reexecuted. But
+# this case is very unlikely especially since we don't restart any
+# user service for now on.
+#
+# Before doing this, we unfortunately have to wait until users will
+# reexec their user manager (by either rebooting or restarting their
+# session) to a version that supports SIGRTMIN+25 otherwise sending
+# the signal to an old version will kill the manager which means
+# tearing down the user session.
+#
+# systemctl kill --kill-who=main --signal=SIGRTMIN+25 "user@*.service" || :
 
 %journal_catalog_update
 %tmpfiles_create
