@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 10 18:54:06 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210910.877432d2:
+  * do not use oscrc from fixtures (should fix #1989)
+  * fix deprecation warning in parser
+
+-------------------------------------------------------------------
 Wed Sep 08 07:02:07 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210907.d2e3c9d2:
