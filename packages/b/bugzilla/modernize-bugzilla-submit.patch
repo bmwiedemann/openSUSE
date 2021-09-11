@@ -1,0 +1,88 @@
+Index: bugzilla-5.0.6/contrib/bugzilla-submit/bugzilla-submit
+===================================================================
+--- bugzilla-5.0.6.orig/contrib/bugzilla-submit/bugzilla-submit
++++ bugzilla-5.0.6/contrib/bugzilla-submit/bugzilla-submit
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # This Source Code Form is subject to the terms of the Mozilla Public
+ # License, v. 2.0. If a copy of the MPL was not distributed with this
+ # file, You can obtain one at http://mozilla.org/MPL/2.0/.
+@@ -26,16 +26,12 @@ def error(m):
+     sys.stderr.flush()
+     sys.exit(1)
+ 
+-version = string.split(string.split(sys.version)[0], ".")[:2]
+-if map(int, version) < [2, 3]:
+-    error("you must upgrade to Python 2.3 or higher to use this script.")
++import urllib.request, urllib.parse, urllib.error, re, os, netrc, email.Parser, optparse
+ 
+-import urllib, re, os, netrc, email.Parser, optparse
+-
+-class ErrorURLopener(urllib.URLopener):
++class ErrorURLopener(urllib.request.URLopener):
+     """URLopener that handles HTTP 404s"""
+     def http_error_404(self, url, fp, errcode, errmsg, headers, *extra):
+-        raise ValueError, errmsg # 'File Not Found'
++        raise ValueError(errmsg) # 'File Not Found'
+ 
+ # Set up some aliases -- partly to hide the less friendly fieldnames
+ # behind the names actually used for them in the stock web page presentation,
+@@ -59,7 +55,7 @@ def header_to_field(hdr):
+     return hdr
+ 
+ def field_to_header(hdr):
+-    hdr = "-".join(map(lambda x: x.capitalize(), hdr.split("_")))
++    hdr = "-".join([x.capitalize() for x in hdr.split("_")])
+     for (alias, name) in field_aliases:
+         if hdr == name:
+             hdr = alias
+@@ -114,9 +110,9 @@ def get_credentials(bugzilla):
+     authenticate_on = '"' + bugzilla + '"'
+     try:
+         credentials = netrc.netrc()
+-    except netrc.NetrcParseError, e:
++    except netrc.NetrcParseError as e:
+         error("ill-formed .netrc: %s:%s %s" % (e.filename, e.lineno, e.msg))
+-    except IOError, e:
++    except IOError as e:
+         error("missing .netrc file %s" % str(e).split()[-1])
+     ret = credentials.authenticators(authenticate_on)
+     if not ret:
+@@ -177,12 +173,11 @@ def validate_fields(data):
+     legal_fields = required_fields + (
+         "assigned_to", "cc", "keywords", "dependson", "blocked",
+     )
+-    my_fields = data.keys()
+-    for field in my_fields:
++    for field in data:
+         if field not in legal_fields:
+             error("invalid field: %s" % field_to_header(field))
+     for field in required_fields:
+-        if field not in my_fields:
++        if field not in data:
+             error("required field missing: %s" % field_to_header(field))
+     
+     if not data['short_desc']:
+@@ -197,7 +192,7 @@ def validate_fields(data):
+ 
+ def submit_bug_POST(bugzilla, data):
+     # Move the request over the wire
+-    postdata = urllib.urlencode(data)
++    postdata = urllib.parse.urlencode(data)
+     try:
+         url = ErrorURLopener().open("%s/post_bug.cgi" % bugzilla, postdata)
+     except ValueError:
+@@ -270,10 +265,10 @@ def check_result_POST(ret, data):
+               "is Bugzilla instance's top-level directory?" % bugzilla)
+     m = re.search("Bug ([0-9]+) Submitted", ret)
+     if not m:
+-        print ret
++        print(ret)
+         error("Internal error: bug id not found; please report a bug")
+     id = m.group(1)
+-    print "Bug %s posted." % id
++    print("Bug %s posted." % id)
+ 
+ #
+ #

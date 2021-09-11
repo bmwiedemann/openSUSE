@@ -1,7 +1,7 @@
 #
 # spec file for package bugzilla
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source3:        MPL-2.0.html
 Source4:        %{name}.conf
 Source5:        %{name}-rpmlintrc
 Patch1:         fix_whine_error.patch
+Patch2:         modernize-bugzilla-submit.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig(systemd)
@@ -123,9 +124,8 @@ This subpackage contains the Apache configuration files
 
 %prep
 %setup -q
-%patch1 -p1
+%autopatch -p1
 # rpmlint
-sed -i -e 's|\/usr\/bin\/env python|\/usr\/bin\/python|g' contrib/bugzilla-submit/bugzilla-submit
 sed -i -e 's|\/usr\/bin\/env perl|\/usr\/bin\/perl|g' contrib/perl-fmt
 #
 tar -xzf %{SOURCE2}  --directory "template"

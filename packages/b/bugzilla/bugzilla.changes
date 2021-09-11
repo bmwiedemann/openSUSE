@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 31 06:31:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add modernize-bugzilla-submit.patch:
+  - Port bugzilla-submit to Python 3. 
+
+-------------------------------------------------------------------
 Sun Dec 13 11:12:55 UTC 2020 - ecsos <ecsos@opensuse.org>
 
 - Use apache-rpm-macros.
