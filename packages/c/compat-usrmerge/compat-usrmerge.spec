@@ -35,6 +35,7 @@ Source5:        usrmerge.attr
 Source6:        usrmerge_binsbindeps.lua
 Source7:        usrmergefiles.py
 BuildRequires:  gcc
+BuildRequires:  glibc-static
 BuildRequires:  pkgconfig(rpm)
 
 %description
@@ -43,6 +44,7 @@ Scripts and data files related to UsrMerge
 
 %package tools
 Summary:        UsrMerge tools
+Requires:       (compat-usrmerge if compat-usrmerge)
 # have to turn requires off this off to avoid pulling in stuff
 # before filessytem.
 # xmv has very minimal glibc requirements and could probably be
@@ -68,7 +70,7 @@ binaries in /(s)bin.
 
 %build
 gcc -Wall %optflags -o usrmergecheck %{SOURCE2} `pkg-config --libs rpm`
-gcc -Wall %optflags -o xmv %{SOURCE4}
+gcc -Wall %optflags -static -o xmv %{SOURCE4}
 
 %install
 install -D -m755 usrmergecheck %{buildroot}%{_bindir}/usrmergecheck
@@ -144,9 +146,7 @@ end
 EOF
 %endif
 
-%if 0%{?usrmerge_filetriggers}
-
-%filetriggerin  -p <lua> -- %{_sbindir} %{_bindir} %{_libdir}
+%filetriggerin -p <lua> -- %{_sbindir} %{_bindir} %{_libdir}
 require("usrmerge")
 if posix.getenv("VERBOSE_FILETRIGGERS") then
     usrmerge.debug = "%{nvr}(in)"
@@ -158,7 +158,7 @@ while file do
 end
 io.flush()
 
-%filetriggerpostun  -p <lua> -- %{_sbindir} %{_bindir} %{_libdir}
+%filetriggerpostun -p <lua> -- %{_sbindir} %{_bindir} %{_libdir}
 -- the module is already gone if we get called for ourselves
 if pcall(require, 'usrmerge') then
     if posix.getenv("VERBOSE_FILETRIGGERS") then
@@ -172,7 +172,7 @@ if pcall(require, 'usrmerge') then
     io.flush()
 end
 
-%filetriggerpostun  -p <lua> -- /sbin /bin /%{_lib}
+%filetriggerpostun -p <lua> -- /sbin /bin /%{_lib}
 -- the module is already gone if we get called for ourselves
 if pcall(require, 'usrmerge') then
     if posix.getenv("VERBOSE_FILETRIGGERS") then
@@ -185,8 +185,6 @@ if pcall(require, 'usrmerge') then
     end
     io.flush()
 end
-
-%endif
 
 %files
 %dir %{_rpmconfigdir}/lua

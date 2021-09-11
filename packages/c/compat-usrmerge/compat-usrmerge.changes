@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 27 06:35:26 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
+
+- statically link xmv to avoid glibc 2.34 dependency
+  (__libc_start_main@GLIBC_2.34)
+- turn on filetriggers in main package. Needed for single transaction upgrades
+  (boo#1189788)
+
+-------------------------------------------------------------------
 Tue Jun 15 15:27:41 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - another fix for split /usr to avoid running out of space (boo#1186781)
