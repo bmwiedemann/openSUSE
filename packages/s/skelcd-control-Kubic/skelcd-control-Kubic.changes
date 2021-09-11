@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  7 10:49:43 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Define default NTP servers for Kubic (bsc#1180699)
+- 20210907
+
+-------------------------------------------------------------------
 Wed Jun  2 13:25:34 UTC 2021 - Stefan Schubert <schubi@suse.de>
 
 - Enable ipv4_forward and ipv6_forward for ALL roles (bsc#1186280).
