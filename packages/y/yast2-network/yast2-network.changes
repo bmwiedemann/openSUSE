@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  7 07:41:52 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Add support for reading the default NTP servers from the control
+  file in case of defined (bsc#1180699)
+- 4.4.23
+
+-------------------------------------------------------------------
 Fri Jul 30 08:07:09 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
 
 - Fix write of device routes. (bsc#1188908)
