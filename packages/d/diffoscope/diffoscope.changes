@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Sep  4 17:53:01 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 183:
+ - Add support for extracting Android signing blocks.
+   (Closes: reproducible-builds/diffoscope#246)
+ - Format debug messages for elf sections using our
+   diffoscope.utils.format_class utility.
+ - Clarify a comment about the HUGE_TOOLS dict in diffoscope.external_tools.
+ - Clarify output around APK Signing Blocks and remove an accidental duplicate
+   "0x" prefix.
+
+-------------------------------------------------------------------
+Sun Aug 29 09:41:54 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 182:
+ - Also ignore, for example, spurious "fwGCC: (Debian ... )" lines in output
+   from strings(1).
+ - Only use "java -jar /path/to/apksigner.jar" if we have a .jar as newer
+   versions of apksigner use a shell wrapper script which will obviously be
+   rejected by the JVM. Also mention in the diff if apksigner is missing.
+ - Pass "-f" to apktool to avoid creating a strangely-named subdirectory and
+   to simplify code.
+ - If we specify a suffix for temporary file or directory, ensure it starts
+   with a "_" to make the generated filenames more human-readable.
+ - Drop an unused File import.
+ - Update the minimum version of the Black source code formatter.
+ - Support parsing the return value of squashfs versions which discriminate
+   between fatal and non-fatal errors.
+
+-------------------------------------------------------------------
 Fri Aug 20 19:49:53 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 181:
