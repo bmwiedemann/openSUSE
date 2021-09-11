@@ -135,4 +135,12 @@
     <comment>- Update to 2.9.8. No changelog. (forwarded request 907089 from cgiboudeaux)</comment>
     <requestid>907090</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f39f704f55fdb9a8df99b399d0d5bce9</srcmd5>
+    <version>2.9.9</version>
+    <time>1631391871</time>
+    <user>dimstar_suse</user>
+    <comment>gmic 2.9.9 (forwarded request 918447 from cgiboudeaux)</comment>
+    <requestid>918448</requestid>
+  </revision>
 </revisionlist>
