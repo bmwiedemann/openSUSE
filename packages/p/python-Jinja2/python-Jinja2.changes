@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 10 08:07:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add no-warnings-as-errors.patch:
+  * Do not treat warnings as errors until upstream fix using async loops.
+
+-------------------------------------------------------------------
 Fri Aug  6 07:34:44 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Babel is not required

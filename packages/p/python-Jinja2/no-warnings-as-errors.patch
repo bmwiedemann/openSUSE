@@ -1,0 +1,13 @@
+Index: Jinja2-3.0.1/setup.cfg
+===================================================================
+--- Jinja2-3.0.1.orig/setup.cfg
++++ Jinja2-3.0.1/setup.cfg
+@@ -44,8 +44,6 @@ babel.extractors =
+ 
+ [tool:pytest]
+ testpaths = tests
+-filterwarnings = 
+-	error
+ 
+ [coverage:run]
+ branch = True

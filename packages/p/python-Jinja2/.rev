@@ -449,4 +449,13 @@
     <comment>- Babel is not required</comment>
     <requestid>910440</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>782d37199906ea2a4e66ef48ef2f5690</srcmd5>
+    <version>3.0.1</version>
+    <time>1631391854</time>
+    <user>dimstar_suse</user>
+    <comment>- Add no-warnings-as-errors.patch:
+  * Do not treat warnings as errors until upstream fix using async loops.</comment>
+    <requestid>917899</requestid>
+  </revision>
 </revisionlist>
