@@ -1358,4 +1358,14 @@ Fixes:
 - try mounting selinuxfs in VM</comment>
     <requestid>913263</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>8394d589313f4f8e2105ea7759c4694c</srcmd5>
+    <version>20210902</version>
+    <time>1631391851</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix unpacking of deb/arch archives without bsdtar
+
+- fixed regression in multiline macro evaluation from 20th August release</comment>
+    <requestid>915720</requestid>
+  </revision>
 </revisionlist>

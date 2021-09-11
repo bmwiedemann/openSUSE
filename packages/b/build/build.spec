@@ -1,5 +1,5 @@
 #
-# spec file for package build
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -28,7 +28,7 @@ Name:           %{__pkg_name}
 Summary:        A Script to Build SUSE Linux RPMs
 License:        GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Tools/Building
-Version:        20210820
+Version:        20210902
 Release:        0
 Source:         obs-build-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -65,19 +65,19 @@ BuildRequires:  perl(YAML::LibYAML)
 # None of them are actually required for core features.
 # Perl helper scripts use them.
 Recommends:     perl(Date::Language)
+Recommends:     /sbin/mkfs.ext3
+Recommends:     /usr/bin/qemu-kvm
+Recommends:     bsdtar
+Recommends:     qemu-linux-user
+Recommends:     zstd
 Recommends:     perl(Date::Parse)
 Recommends:     perl(LWP::UserAgent)
+Recommends:     perl(Net::SSL)
 Recommends:     perl(Pod::Usage)
 Recommends:     perl(Time::Zone)
 Recommends:     perl(URI)
 Recommends:     perl(XML::Parser)
-Recommends:     perl(Net::SSL)
 Recommends:     perl(YAML::LibYAML)
-Recommends:     bsdtar
-Recommends:     qemu-linux-user
-Recommends:     zstd
-Recommends:     /usr/bin/qemu-kvm
-Recommends:     /sbin/mkfs.ext3
 %endif
 
 %if 0%{?suse_version} > 1120 || ! 0%{?suse_version}
@@ -126,6 +126,7 @@ for generating delta rpm packages.
 %if "%{_host_cpu}" == "i686"
 %define initvm_arch i586
 %endif
+
 %package initvm-%{initvm_arch}
 Summary:        Virtualization initializer for emulated cross architecture builds
 Group:          Development/Tools/Building
