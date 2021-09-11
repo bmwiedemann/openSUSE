@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  5 18:45:32 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Skip .cargo-checksum.json files in hidden-file-or-dir.
+
+-------------------------------------------------------------------
 Thu Sep  2 10:56:07 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Fix PieExecutables matching.

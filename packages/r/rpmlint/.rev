@@ -3224,4 +3224,12 @@ oddjob-gpupdate isn't blocked)</comment>
 - Handle empty glibc archives (starting with version 2.34).</comment>
     <requestid>915738</requestid>
   </revision>
+  <revision rev="359" vrev="1">
+    <srcmd5>a056b73cf26241e9f7fb95cb2c62047c</srcmd5>
+    <version>2.1+git20210905.37b3933</version>
+    <time>1631391855</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip .cargo-checksum.json files in hidden-file-or-dir.</comment>
+    <requestid>917128</requestid>
+  </revision>
 </revisionlist>
