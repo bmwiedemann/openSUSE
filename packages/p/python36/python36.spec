@@ -545,7 +545,7 @@ EXCLUDE="$EXCLUDE test_faulthandler"
 %endif
 # some tests break in QEMU
 %if 0%{?qemu_user_space_build}
-EXCLUDE="$EXCLUDE test_multiprocessing_forkserver test_multiprocessing_spawn test_posix test_os test_socket"
+EXCLUDE="$EXCLUDE test_faulthandler test_multiprocessing_forkserver test_multiprocessing_spawn test_posix test_os test_socket"
 # qemu bug (siginterrupt handling)
 EXCLUDE="$EXCLUDE test_signal"
 %endif
