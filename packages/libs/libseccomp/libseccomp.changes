@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  1 18:48:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.2
+  * Update the syscall table for Linux v5.14-rc7                                                                    
+  * Add a function, get_notify_fd(), to the Python bindings to
+    get the nofication file descriptor.
+  * Consolidate multiplexed syscall handling for all
+    architectures into one location.
+  * Add multiplexed syscall support to PPC and MIPS
+  * The meaning of SECCOMP_IOCTL_NOTIF_ID_VALID changed within
+    the kernel. libseccomp's fd notification logic was modified
+    to support the kernel's previous and new usage of
+    SECCOMP_IOCTL_NOTIF_ID_VALID.
+
+-------------------------------------------------------------------
 Sat Nov 21 16:59:46 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 2.5.1:
