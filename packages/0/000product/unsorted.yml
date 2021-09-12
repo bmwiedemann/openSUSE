@@ -32,7 +32,6 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
-  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -15058,6 +15057,7 @@ unsorted:
   - lua-lmod 
   - lua-lmod-doc 
   - lua-macros 
+  - lua-penlight-doc 
   - lua-rrdtool 
   - lua51 
   - lua51-BitOp 
@@ -15108,7 +15108,6 @@ unsorted:
   - lua51-moonscript 
   - lua51-mpack 
   - lua51-penlight 
-  - lua51-penlight-doc 
   - lua51-readline 
   - lua51-say 
   - lua51-slaxml 
@@ -15161,7 +15160,6 @@ unsorted:
   - lua53-moonscript 
   - lua53-mpack 
   - lua53-penlight 
-  - lua53-penlight-doc 
   - lua53-readline 
   - lua53-say 
   - lua53-slaxml 
@@ -15215,7 +15213,6 @@ unsorted:
   - lua54-moonscript 
   - lua54-mpack 
   - lua54-penlight 
-  - lua54-penlight-doc 
   - lua54-readline 
   - lua54-say 
   - lua54-slaxml 

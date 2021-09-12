@@ -313,6 +313,7 @@
       <repopackage name="colord-lang"/>
       <repopackage name="compat-usrmerge-tools"/>
       <repopackage name="container-selinux"/>
+      <repopackage name="CoreFreq-kmp-default" arch="x86_64"/>
       <repopackage name="coreutils"/>
       <repopackage name="coreutils-doc"/>
       <repopackage name="coreutils-lang"/>
