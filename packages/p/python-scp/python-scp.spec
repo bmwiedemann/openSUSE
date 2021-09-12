@@ -19,16 +19,18 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-scp
-Version:        0.13.6
+Version:        0.14.1
 Release:        0
 Summary:        SSH scp module for paramiko
 License:        LGPL-2.1-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/jbardin/scp.py
-Source:         https://files.pythonhosted.org/packages/source/s/scp/scp-%{version}.tar.gz
+Source:         https://github.com/jbardin/scp.py/archive/refs/tags/v%{version}.tar.gz#/scp-%{version}.tar.gz
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
+BuildRequires:  openssh-clients
+BuildRequires:  openssh-server
 BuildRequires:  python-rpm-macros
 Requires:       python-paramiko
 BuildArch:      noarch
@@ -40,7 +42,7 @@ scp protocol. This is the protocol as referenced from the openssh scp program,
 and has only been tested with this implementation.
 
 %prep
-%setup -q -n scp-%{version}
+%setup -q -n scp.py-%{version}
 
 %build
 %python_build
@@ -50,8 +52,9 @@ and has only been tested with this implementation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# tests require running ssh server
-#%%python_exec -m unittest discover
+export SCPPY_PORT=10022
+./.ci/setup_ssh.sh
+%pyunittest -v
 
 %files %{python_files}
 %license LICENSE.txt

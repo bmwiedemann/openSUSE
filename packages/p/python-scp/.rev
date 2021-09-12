@@ -69,4 +69,12 @@
     similarly to rsync, copying the contents of the directory.</comment>
     <requestid>917208</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c6a6f0d56083076dbc7eba33958572fc</srcmd5>
+    <version>0.14.1</version>
+    <time>1631470182</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918512</requestid>
+  </revision>
 </revisionlist>
