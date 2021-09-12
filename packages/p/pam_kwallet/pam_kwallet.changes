@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 12 09:46:53 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add a hard dependency for the 32bit libs to provide a safeguard
+  for the most common case, when the soft dependency in baselibs.conf
+  is not enough.
+
+-------------------------------------------------------------------
 Tue Aug 31 19:08:46 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 5.22.5

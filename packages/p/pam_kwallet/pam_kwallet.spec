@@ -39,6 +39,11 @@ BuildRequires:  socat
 BuildRequires:  xz
 BuildRequires:  cmake(KF5Wallet) >= 5.58.0
 Requires:       %{name}-common = %{version}
+# PAM modules need to be available for all archs of PAM on the system, otherwise pam-config
+# will not enable it.
+# Technically there can be different suffixes than just -32bit, but that's the most common.
+# Expressing a hard dependency the other way around in baselibs.conf is not possible.
+Requires:       (%{name}-32bit if pam-32bit)
 %if 0%{?suse_version} >= 1330
 Requires(post): coreutils pam pam-config
 Requires(postun):coreutils pam pam-config
