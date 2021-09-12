@@ -4121,4 +4121,18 @@
 - update staging to 6.16 release</comment>
     <requestid>914747</requestid>
   </revision>
+  <revision rev="352" vrev="1">
+    <srcmd5>626ba1eeb53cef8b99347c36078ca293</srcmd5>
+    <version>6.17</version>
+    <time>1631470179</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.17 development release
+  - WineCfg program converted to PE.
+  - Better high-DPI support in builtin applications.
+  - More preparation work for the GDI syscall interface.
+  - Improved debugger support in Wow64 mode.
+  - Various bug fixes.
+- update staging to 6.17 release</comment>
+    <requestid>918510</requestid>
+  </revision>
 </revisionlist>
