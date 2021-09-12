@@ -21,7 +21,7 @@
 %define         skip_python36 1
 %bcond_without  test
 Name:           python-pypet
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        Parameter exploration and storage of results for numerical simulations
 License:        BSD-3-Clause
@@ -33,6 +33,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
+BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module numpy >= 1.6.1}
 BuildRequires:  %{python_module pandas >= 0.15.0}
 BuildRequires:  %{python_module scipy >= 0.9.0}

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 11 22:44:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.6.0:
+  - Fixed broken support for scipy sparse matrices
+  - Sparse matrices are now serialized using scipy save_npz
+    function and hex conversion
+  - BACKWARDS INCOMPATIBLE CHANGE: Can no longer load sparse
+    matrices stored with older versions!
+  - Fixed import from collections.abc for Python 3.10
+
+-------------------------------------------------------------------
 Sun Feb 14 19:59:43 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - turn off python 3.6 build (no scipy) 

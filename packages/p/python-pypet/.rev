@@ -39,4 +39,19 @@
     <comment>- turn off python 3.6 build (no scipy)</comment>
     <requestid>872201</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>75600ba06328f22b3006c1ee99db7e98</srcmd5>
+    <version>0.6.0</version>
+    <time>1631470184</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.0:
+  - Fixed broken support for scipy sparse matrices
+  - Sparse matrices are now serialized using scipy save_npz
+    function and hex conversion
+  - BACKWARDS INCOMPATIBLE CHANGE: Can no longer load sparse
+    matrices stored with older versions!
+  - Fixed import from collections.abc for Python 3.10
+</comment>
+    <requestid>918513</requestid>
+  </revision>
 </revisionlist>
