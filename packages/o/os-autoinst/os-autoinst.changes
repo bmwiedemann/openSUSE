@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 12 08:16:19 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631277879.0da8130f:
+  * mmapi: Add get_current_job_id() function
+
+-------------------------------------------------------------------
 Fri Sep 10 00:48:18 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631168368.97814235:
