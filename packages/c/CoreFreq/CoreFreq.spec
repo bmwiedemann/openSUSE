@@ -17,7 +17,7 @@
 
 
 Name:           CoreFreq
-Version:        1.86.7
+Version:        1.87.1
 Release:        0
 Summary:        CPU monitoring software designed for 64-bits processors
 License:        GPL-2.0-or-later

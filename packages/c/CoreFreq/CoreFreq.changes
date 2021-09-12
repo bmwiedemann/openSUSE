@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep  7 10:17:46 UTC 2021 - Michael Pujos <pujos.michael@gmail.com>
+
+- Update to version 1.87.1
+
+-------------------------------------------------------------------
 Tue Jul 27 09:50:10 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added harden_corefreqd.service.patch
