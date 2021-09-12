@@ -16,22 +16,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%define flavor @BUILD_FLAVOR@
+%define flavor @BUILD_FLAVOR@%{nil}
 %define mod_name penlight
-%define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
-%define with_docs 1
-
-Version:        1.6.0
+%define rname Penlight
+%ifluadefault
+%define with_main 1
+%endif
+%if "%{flavor}" == ""
+Name:           lua-%{mod_name}
+ExclusiveArch:  do_not_build
+%else
+Name:           %{flavor}-%{mod_name}
+%endif
+Version:        1.10.0
 Release:        0
 Summary:        Generally useful modules inspired by the Python standard libraries
 License:        MIT
 Group:          Development/Languages/Other
-URL:            http://stevedonovan.github.com/Penlight
-Source:         https://github.com/stevedonovan/Penlight/archive/%{version}.tar.gz#/Penlight-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM lua54.patch gh#Tieske/Penlight#320 mcepl@suse.com
-# workaround hardcoded version of Lua 5.3.
-Patch0:         lua54.patch
+URL:            https://lunarmodules.github.io/Penlight/
+Source0:        https://github.com/lunarmodules/Penlight/archive/%{version}/%{rname}-%{version}.tar.gz
+Patch0:         lua5_4_3.patch
 BuildRequires:  %{flavor}-devel
 BuildRequires:  %{flavor}-ldoc
 BuildRequires:  %{flavor}-luafilesystem
@@ -39,15 +43,8 @@ BuildRequires:  %{flavor}-markdown
 Requires:       %{flavor}
 Requires:       %{flavor}-luafilesystem
 BuildArch:      noarch
+Recommends:     lua-%{mod_name}-doc
 %lua_provides
-%if "%{flavor}" == ""
-Name:           lua-%{mod_name}
-ExclusiveArch:  do_not_build
-%else
-Name:           %{flavor}-%{mod_name}
-%endif
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 
 %description
 A set of pure Lua libraries focusing on input data handling (such as
@@ -55,19 +52,17 @@ reading configuration files), functional programming (such as map,
 reduce, placeholder expressions,etc), and OS path management. Much of
 the functionality is inspired by the Python standard libraries.
 
-%if 0%{?with_docs}
-%package doc
-Summary:        Documentation for %{name}
+%if 0%{?with_main}
+%package -n lua-%{mod_name}-doc
+Summary:        Documentation for lua-%{mod_name}
 Group:          Development/Languages/Other
-Requires:       %{name} = %{version}
 
-%description doc
-Documentation for the package %{name}
+%description -n lua-%{mod_name}-doc
+Documentation for the package lua-%{mod_name}
 %endif
 
 %prep
-%setup -q -n Penlight-%{version}
-%autopatch -p1
+%autosetup -n %{rname}-%{version} -p1
 
 %build
 
@@ -92,7 +87,9 @@ lua%{lua_version} run.lua tests
 # Add bash/zsh-completion files
 # from completions/bash/penlight.bash penlight
 
-%files doc
+%if 0%{?with_main}
+%files -n lua-%{mod_name}-doc
 %doc docs
+%endif
 
 %changelog

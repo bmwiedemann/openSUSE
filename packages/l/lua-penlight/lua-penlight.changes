@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Apr 21 12:57:58 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.10.0:
+  * Fix Lua 5.4 issues
+  * Fix Lua 5.1 compat issues
+  * Fixed a lot of bugs
+- Removed lua54.patch: upstream
+- Added lua5_4_3.patch: fix tests fail on Lua 5.4.3
+
+-------------------------------------------------------------------
 Thu Feb 18 16:02:23 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Use %lua_provides macro for default lua versioning

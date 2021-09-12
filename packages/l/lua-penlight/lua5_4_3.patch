@@ -1,0 +1,23 @@
+From 10dfaea6adfddab4f138faad67b563b7c33c90a3 Mon Sep 17 00:00:00 2001
+From: Pierre Chapuis <git@catwell.info>
+Date: Thu, 29 Apr 2021 11:31:12 +0200
+Subject: [PATCH] fix tests on Lua 5.4.3
+
+see http://lua-users.org/lists/lua-l/2021-04/msg00024.html
+---
+ tests/lua/mod52.lua | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/lua/mod52.lua b/tests/lua/mod52.lua
+index 06e505e0..4b3ec7ce 100644
+--- a/tests/lua/mod52.lua
++++ b/tests/lua/mod52.lua
+@@ -15,7 +15,7 @@ function answer ()
+         ["1"] = "attempt to call global 'print'",
+         ["2"] = "attempt to call global 'print'",
+         ["3"] = "attempt to call a nil value",
+-        ["4"] = "attempt to call a nil value",
++        ["4"] = "a nil value",
+     }
+     local expected = versioned_errors[LUA_VERSION:match("Lua 5.(%d)")]
+     test.assertraise(function()
