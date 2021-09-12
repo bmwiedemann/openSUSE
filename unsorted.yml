@@ -9873,7 +9873,7 @@ unsorted:
   - libcalcium0 
   - libcamd-doc 
   - libcamera-devel 
-  - libcamera-suse5-32bit: [x86_64] 
+  - libcamera-suse6-32bit: [x86_64] 
   - libcamera-tools 
   - libcanberra-devel 
   - libcanberra-gtk-devel 
@@ -10752,6 +10752,7 @@ unsorted:
   - libgcc_s1-gcc7 
   - libgcc_s1-gcc7-32bit: [x86_64] 
   - libgccjit0 
+  - libgccjit0-devel 
   - libgccjit0-devel-gcc11 
   - libgci-1-0_0_0 
   - libgcin-im-client1-32bit: [x86_64] 
@@ -11992,7 +11993,6 @@ unsorted:
   - libmpdclient2 
   - libmpdec++3 
   - libmpdec++3-32bit: [x86_64] 
-  - libmpdec3 
   - libmpdec3-32bit: [x86_64] 
   - libmpeg2-0-32bit: [x86_64] 
   - libmpeg2-devel 
