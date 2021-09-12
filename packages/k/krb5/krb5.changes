@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 30 12:45:25 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix KDC null pointer dereference via a FAST inner body that
+  lacks a server field; (CVE-2021-37750); (bsc#1189929);
+- Added patches:
+  * 0009-Fix-KDC-null-deref-on-TGS-inner-body-null-server.patch
+
+-------------------------------------------------------------------
 Mon Aug  2 08:39:31 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 1.19.2
