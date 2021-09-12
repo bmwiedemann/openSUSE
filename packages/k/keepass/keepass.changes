@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 12 09:25:21 UTC 2021 - Matthias Bach <marix@marix.org> - 2.49
+
+- Update to 2.49
+  * New Features:
+    + Added dedicated context menu for custom string fields in the entry dialog, which provides the following new commands: 'Copy Name(s)', 'Copy Value(s)', 'Copy Item(s)', 'Paste Item(s)', 'Select All' and 'Move To'.
+    + Added dedicated context menu for auto-type associations in the entry dialog, which provides the following new commands: 'Copy Target Window(s)', 'Copy Sequence(s)', 'Copy Item(s)', 'Paste Item(s)', 'Duplicate Item(s)' and 'Select All'.
+    + Added optional 'Auto-Type - Enabled' main entry list column (turned off by default, can be turned on in 'View' → 'Configure Columns').
+    + Added optional 'Auto-Type - Sequences' main entry list column (turned off by default, can be turned on in 'View' → 'Configure Columns').
+    + Added support for importing Keeper 16.0.0 JSON files.
+    + Dialog banners can now be read by screen readers (if the option 'Optimize for screen reader' is turned on).
+    + Controls in the accessibility/automation control tree are now ordered by their visual locations (if the option 'Optimize for screen reader' is turned on).
+    + Added automatic screen reader detection based on the operating system's screen reader parameter (this does not make the option 'Optimize for screen reader' obsolete though, because not all screen readers set the parameter).
+  * Various Improvements
+  * Bugfixes:
+    + The save confirmation dialog of the entry dialog does not create unnecessary history entries anymore.
+
+-------------------------------------------------------------------
 Tue May 11 19:13:28 UTC 2021 - Matthias Bach <marix@marix.org> - 2.48.1
 
 - Update to 2.48.1
