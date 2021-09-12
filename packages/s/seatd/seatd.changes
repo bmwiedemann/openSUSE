@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sat Sep 11 20:18:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * seatd-launch: Fix chmod error goto
+  * man: Add simple seatd-launch(1) page
+  * seatd-launch: Set socket permissions directly
+  * seat: Allow new clients when active is pending ack
+  * Add .editorconfig
+  * seat: Avoid holding a tty fd
+  * meson.build: fix build with gcc < 7
+  * libseat: Fix build of builtin backend
+  * libseat: Update builtin backend root requirement documentation
+  * Revert "libseat: Check euid before using builtin"
+  * logind: Remove redundant null check
+  * Make libseat_seat_listener const
+  * seatd: Use path in chmod/chown operations
+  * seatd: Improve socket permission error handling
+  * seatd-launch: Command line argument support
+  * seatd-launch: check for getpwuid errors
+  * seatd-launch: don't use gotos in child processes
+  * seatd-launch: propagate child exit status
+  * seatd-launch: Add seatd launch wrapper
+  * seatd: Only set UID/GID when specified
+  * seatd: s6-style readiness notification support
+  * seatd: We shouldn't poll if predispatch > 0
+  * libseat: Rename dispatch_background in backends
+  * libseat/seatd: Add dispatch_pending_and_execute
+  * libseat/seatd: Return executed events
+  * link with rt
+  * readme: Update discuss section
+  * meson: Support building builtin without seatd
+  * libseat/seatd: downgrade ENOENT log to info
+  * contrib/systemd: Use a different group
+  * meson: make 'logind' var always available
+  * Avoid a clang-format quirk
+  * meson: declare libseat dependency
+  * Add no-op session
+  * client: enable cr_pid on FreeBSD >= 12.3
+  * readme: Remove alpha label
+  * contrib: Add Documentation to systemd unit
+  * meson: Disable examples by default
+  * Correct minor misspellings
+  * meson: Minor cleanup
+  * meson: Fix logind backend auto mode
+
+-------------------------------------------------------------------
 Thu Mar 25 19:29:37 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - enable logind for the libseat (disabled by default)

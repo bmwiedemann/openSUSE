@@ -17,7 +17,7 @@
 
 
 Name:           seatd
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Seat management daemon
 License:        MIT
@@ -28,15 +28,13 @@ BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
-
+BuildRequires:  pkgconfig(systemd)
+Requires:       libseat1 = %{version}
 %if 0%{?suse_version} > 1520
 #15.2 don't have needed API
 #https://github.com/systemd/systemd/commit/b423e4fb73866e529869b348efb7169ee91f00c9
 BuildRequires:  pkgconfig(libsystemd) >= 237
 %endif
-
-BuildRequires:  pkgconfig(systemd)
-Requires:       libseat1 = %{version}
 
 %description
 Seat management takes care of mediating access to shared devices (graphics, input), without requiring the applications needing access to be root.
@@ -63,7 +61,7 @@ Development files for %{name}.
 %build
 %if 0%{?suse_version} > 1520
 #15.2 don't have needed API
-%meson -Dlogind=enabled
+%meson -Dlibseat-logind=systemd
 %else
 %meson
 %endif
@@ -79,7 +77,9 @@ Development files for %{name}.
 %files
 %doc README*
 %{_bindir}/%{name}
+%{_bindir}/seatd-launch
 %{_mandir}/man1/%{name}.1%{?ext_man}
+%{_mandir}/man1/seatd-launch.1%{?ext_man}
 
 %files -n libseat1
 %license LICENSE
