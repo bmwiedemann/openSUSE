@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 12 10:55:22 UTC 2021 - Dead Mozay <dead-mozay@opensuse.org>
+
+- Update to version 0.6.9:
+  * Here's one more stable branch release of libQuotient, 
+    fixing a rare assertion failure due to uninitialised
+    read marker when new events arrive and all history 
+    is already loaded.  
+
+-------------------------------------------------------------------
 Tue Aug 24 06:45:25 UTC 2021 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.6.8:
