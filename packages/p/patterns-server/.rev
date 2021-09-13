@@ -79,4 +79,11 @@
     <comment></comment>
     <requestid>882473</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>1324e3472e11f32a8837c72124f381d7</srcmd5>
+    <version>20210330</version>
+    <time>1631528832</time>
+    <user>dimstar_suse</user>
+    <comment>- Make wireshark recommended, not required.</comment>
+  </revision>
 </revisionlist>

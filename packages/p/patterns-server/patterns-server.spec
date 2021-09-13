@@ -152,7 +152,6 @@ Provides:       pattern() = gateway_server
 Provides:       pattern-icon() = pattern-server
 Provides:       pattern-order() = 3020
 Provides:       pattern-visible()
-Requires:       wireshark
 Requires:       pattern() = basesystem
 Recommends:     arptables
 Recommends:     calamaris
@@ -165,6 +164,7 @@ Recommends:     radvd
 Recommends:     rarpd
 Recommends:     squid
 Recommends:     whois
+Recommends:     wireshark
 Recommends:     wondershaper
 %if 0%{?is_opensuse}
 Provides:       patterns-openSUSE-gateway_server = %{version}
