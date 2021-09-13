@@ -16,7 +16,7 @@
 #
 
 
-%define pgversion 11.12
+%define pgversion 11.13
 %define pgmajor 11
 %define pgsuffix %pgmajor
 %define buildlibs 0
@@ -72,11 +72,7 @@ BuildRequires:  tcl-devel
 BuildRequires:  timezone
 BuildRequires:  zlib-devel
 %bcond_without  selinux
-%if %pgmajor > 10 || 0%{?suse_version} <= 1500
 %bcond_without  icu
-%else
-%bcond_with icu
-%endif
 %if  !%buildlibs
 BuildRequires:  %libecpg
 BuildRequires:  %libpq
@@ -88,10 +84,10 @@ BuildRequires:  %libpq
 %bcond_with     systemd
 %bcond_with     systemd_notify
 %endif
+
 %if 0%{?suse_version} >= 1500 && %pgsuffix >= 11 && %pgsuffix < 90
 %bcond_without  llvm
 %else
-# LLVM is currently unsupported on SLE, so don't use it
 %bcond_with     llvm
 %endif
 %endif
@@ -149,6 +145,10 @@ Patch4:         postgresql-plperl-keep-rpath.patch
 Patch6:         postgresql-testsuite-int8.sql.patch
 Patch8:         postgresql-testsuite-keep-results-file.patch
 Patch9:         postgresql-var-run-socket.patch
+%if %{with llvm}
+Patch10:        postgresql-llvm-optional.patch
+Patch11:        0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
+%endif
 URL:            https://www.postgresql.org/
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       postgresql = %version-%release
@@ -223,9 +223,9 @@ Requires:       this-is-only-for-build-envs
 Provides:       %libecpg = %version-%release
 Provides:       %libpq = %version-%release
 Provides:       %pgname-devel = %version-%release
-Conflicts:      %pgname-devel
 Conflicts:      %libecpg
 Conflicts:      %libpq
+Conflicts:      %pgname-devel
 %else
 Requires:       %libecpg >= %version
 Requires:       %libpq >= %version
@@ -251,8 +251,8 @@ Requires:       %pgname-server = %version-%release
 Provides:       postgresql-server-devel-exclusive = %pgmajor
 Conflicts:      postgresql-server-devel-exclusive < %pgmajor
 %if %{with llvm}
-Requires:       clang
-Requires:       llvm
+Recommends:     clang
+Recommends:     llvm
 %endif
 Requires:       libxslt-devel
 Requires:       openssl-devel
@@ -438,7 +438,7 @@ that supports an extended subset of the SQL standard, including
 transactions, foreign keys, subqueries, triggers, and user-defined
 types and functions.
 
-This package contains the PL/Tcl procedural language for PostgreSQL. 
+This package contains the PL/Tcl procedural language for PostgreSQL.
 With thie module one can use Tcl to write stored procedures, functions,
 and triggers.
 
@@ -455,6 +455,10 @@ touch -r configure tmp
 %patch6
 %patch8 -p1
 %patch9
+%if %{with llvm}
+%patch10
+%patch11
+%endif
 touch -r tmp configure
 rm tmp
 find src/test/ -name '*.orig' -delete
@@ -529,8 +533,7 @@ make check || {
 %endif
 
 %install
-VLANG=${RPM_PACKAGE_VERSION%%.*}
-VSO=${RPM_PACKAGE_VERSION%%%%.*}
+VLANG=%pgmajor
 %if %mini
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/include install
 make DESTDIR=%buildroot PACKAGE_TARNAME=%pgname -C src/interfaces install
@@ -718,7 +721,7 @@ cat server-devel.files >> devel.files
 cat > libpq.files <<EOF
 %defattr(-,root,root)
 %dir %pgdatadir
-%pgdatadir/pg_service.conf.sample 
+%pgdatadir/pg_service.conf.sample
 EOF
 find %buildroot -name 'libpq*.so.*' -printf '/%%P\n' >> libpq.files
 %find_lang libpq5-$VLANG libpq.files
@@ -918,6 +921,7 @@ fi
 %if %buildlibs && %mini
 %files %devel -f devel.files -f libpq.files -f libecpg.files
 %else
+
 %files %devel -f devel.files
 %endif
 

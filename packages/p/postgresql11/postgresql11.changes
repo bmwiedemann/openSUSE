@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Aug 31 11:14:53 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1185952: fix build with llvm12 on s390x.
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch 
+- bsc#1179945: Re-enable icu for PostgreSQL 10.
+
+-------------------------------------------------------------------
+Tue Aug 24 13:09:36 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- Upgrade to version 11.13:
+  * https://www.postgresql.org/docs/11/release-11-13.html
+  * CVE-2021-3677 (boo#1189748)
+    The planner could create an incorrect plan in cases where two
+    ProjectionPaths were stacked on top of each other. The only
+    known way to trigger that situation involves parallel sort
+    operations, but there may be other instances. The result would
+    be crashes or incorrect query results. Disclosure of server
+    memory contents is also possible.
+
+-------------------------------------------------------------------
+Fri Jul  2 07:50:45 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1187751: Make the dependency of postgresqlXX-server-devel on
+  llvm and clang optional (postgresql-llvm-optional.patch).
+
+-------------------------------------------------------------------
 Tue May 11 16:20:41 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Upgrade to version 11.12:
