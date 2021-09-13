@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  9 23:35:04 UTC 2021 - Neil Brown <nfbrown@suse.com>
+
+- Add 0001-gssd-fix-crash-in-debug-message.patch
+  Fix crash when rpc-gssd run with -v. 
+  (boo#1190144)
+
+-------------------------------------------------------------------
 Tue Aug 10 05:08:18 UTC 2021 - Neil Brown <nfbrown@suse.com>
 
 - Remove dependency on fedfs-utils-devel.
