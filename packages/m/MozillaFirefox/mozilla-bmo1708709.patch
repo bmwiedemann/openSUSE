@@ -1,0 +1,201 @@
+Index: firefox-91.0.2/dom/xul/XULPopupElement.cpp
+===================================================================
+--- firefox-91.0.2.orig/dom/xul/XULPopupElement.cpp
++++ firefox-91.0.2/dom/xul/XULPopupElement.cpp
+@@ -271,8 +271,7 @@ already_AddRefed<DOMRect> XULPopupElemen
+     // For native menus we can't query the true size. Use the anchor rect
+     // instead, which at least has the position at which we were intending to
+     // open the menu.
+-    screenRect = Some(CSSRect(
+-        CSSIntRect::FromUnknownRect(menuPopupFrame->GetScreenAnchorRect())));
++    screenRect = Some(CSSRect(menuPopupFrame->GetScreenAnchorRect()));
+   } else {
+     // For non-native menus, query the bounds from the widget.
+     if (nsView* view = menuPopupFrame->GetView()) {
+Index: firefox-91.0.2/layout/xul/nsMenuPopupFrame.h
+===================================================================
+--- firefox-91.0.2.orig/layout/xul/nsMenuPopupFrame.h
++++ firefox-91.0.2/layout/xul/nsMenuPopupFrame.h
+@@ -321,7 +321,7 @@ class nsMenuPopupFrame final : public ns
+   // If aUpdateAttrs is true, and the popup already has left or top attributes,
+   // then those attributes are updated to the new location.
+   // The frame may be destroyed by this method.
+-  void MoveTo(const mozilla::CSSIntPoint& aPos, bool aUpdateAttrs);
++  void MoveTo(const mozilla::CSSPoint& aPos, bool aUpdateAttrs);
+ 
+   void MoveToAnchor(nsIContent* aAnchorContent, const nsAString& aPosition,
+                     int32_t aXPos, int32_t aYPos, bool aAttributesOverride);
+@@ -370,7 +370,9 @@ class nsMenuPopupFrame final : public ns
+ 
+   // Return the screen coordinates in CSS pixels of the popup,
+   // or (-1, -1, 0, 0) if anchored.
+-  nsIntRect GetScreenAnchorRect() const { return mScreenRect; }
++  mozilla::CSSIntRect GetScreenAnchorRect() const {
++    return mozilla::CSSRect::FromAppUnitsRounded(mScreenRect);
++  }
+ 
+   mozilla::LayoutDeviceIntPoint GetLastClientOffset() const {
+     return mLastClientOffset;
+@@ -557,7 +559,7 @@ class nsMenuPopupFrame final : public ns
+   // override mXPos and mYPos.
+   int32_t mXPos;
+   int32_t mYPos;
+-  nsIntRect mScreenRect;
++  nsRect mScreenRect;
+   // Used for store rectangle which the popup is going to be anchored to,
+   // we need that for Wayland
+ #ifdef MOZ_WAYLAND
+Index: firefox-91.0.2/layout/xul/nsMenuPopupFrame.cpp
+===================================================================
+--- firefox-91.0.2.orig/layout/xul/nsMenuPopupFrame.cpp
++++ firefox-91.0.2/layout/xul/nsMenuPopupFrame.cpp
+@@ -868,8 +868,9 @@ void nsMenuPopupFrame::InitializePopup(n
+       InitPositionFromAnchorAlign(anchor, align);
+     }
+   }
+-
+-  mScreenRect = nsIntRect(-1, -1, 0, 0);
++  // When converted back to CSSIntRect it is (-1, -1, 0, 0) - as expected in
++  // nsXULPopupManager::Rollup
++  mScreenRect = nsRect(-AppUnitsPerCSSPixel(), -AppUnitsPerCSSPixel(), 0, 0);
+ 
+   if (aAttributesOverride) {
+     // Use |left| and |top| dimension attributes to position the popup if
+@@ -881,11 +882,13 @@ void nsMenuPopupFrame::InitializePopup(n
+     nsresult err;
+     if (!left.IsEmpty()) {
+       int32_t x = left.ToInteger(&err);
+-      if (NS_SUCCEEDED(err)) mScreenRect.x = x;
++      if (NS_SUCCEEDED(err))
++        mScreenRect.x = nsPresContext::CSSPixelsToAppUnits(x);
+     }
+     if (!top.IsEmpty()) {
+       int32_t y = top.ToInteger(&err);
+-      if (NS_SUCCEEDED(err)) mScreenRect.y = y;
++      if (NS_SUCCEEDED(err))
++        mScreenRect.y = nsPresContext::CSSPixelsToAppUnits(y);
+     }
+   }
+ }
+@@ -900,7 +903,8 @@ void nsMenuPopupFrame::InitializePopupAt
+   mPopupState = ePopupShowing;
+   mAnchorContent = nullptr;
+   mTriggerContent = aTriggerContent;
+-  mScreenRect = nsIntRect(aXPos, aYPos, 0, 0);
++  mScreenRect = nsRect(nsPresContext::CSSPixelsToAppUnits(aXPos),
++                       nsPresContext::CSSPixelsToAppUnits(aYPos), 0, 0);
+   mXPos = 0;
+   mYPos = 0;
+   mFlip = FlipType_Default;
+@@ -920,7 +924,8 @@ void nsMenuPopupFrame::InitializePopupAs
+   mTriggerContent = aTriggerContent;
+   mPopupState = ePopupShowing;
+   mAnchorContent = nullptr;
+-  mScreenRect = nsIntRect(aXPos, aYPos, 0, 0);
++  mScreenRect = nsRect(nsPresContext::CSSPixelsToAppUnits(aXPos),
++                       nsPresContext::CSSPixelsToAppUnits(aYPos), 0, 0);
+   mXPos = 0;
+   mYPos = 0;
+   mFlip = FlipType_Default;
+@@ -941,7 +946,7 @@ void nsMenuPopupFrame::InitializePopupAt
+                                              bool aAttributesOverride) {
+   InitializePopup(nullptr, aTriggerContent, aPosition, 0, 0,
+                   MenuPopupAnchorType_Rect, aAttributesOverride);
+-  mScreenRect = aRect;
++  mScreenRect = ToAppUnits(aRect, AppUnitsPerCSSPixel());
+ }
+ 
+ void nsMenuPopupFrame::ShowPopup(bool aIsContextMenu) {
+@@ -1430,7 +1435,7 @@ nsresult nsMenuPopupFrame::SetPopupPosit
+     // If anchored to a rectangle, use that rectangle. Otherwise, determine the
+     // rectangle from the anchor.
+     if (mAnchorType == MenuPopupAnchorType_Rect) {
+-      anchorRect = ToAppUnits(mScreenRect, AppUnitsPerCSSPixel());
++      anchorRect = mScreenRect;
+     } else {
+       // if the frame is not specified, use the anchor node passed to OpenPopup.
+       // If that wasn't specified either, use the root frame. Note that
+@@ -1539,10 +1544,8 @@ nsresult nsMenuPopupFrame::SetPopupPosit
+       // Account for the margin that will end up being added to the screen
+       // coordinate the next time SetPopupPosition is called.
+       mAnchorType = MenuPopupAnchorType_Point;
+-      mScreenRect.x =
+-          nsPresContext::AppUnitsToIntCSSPixels(screenPoint.x - margin.left);
+-      mScreenRect.y =
+-          nsPresContext::AppUnitsToIntCSSPixels(screenPoint.y - margin.top);
++      mScreenRect.x = screenPoint.x - margin.left;
++      mScreenRect.y = screenPoint.y - margin.top;
+     }
+   } else {
+     // The popup is positioned at a screen coordinate.
+@@ -1571,10 +1574,8 @@ nsresult nsMenuPopupFrame::SetPopupPosit
+     }
+ 
+     // next, convert into app units accounting for the zoom
+-    screenPoint.x = presContext->DevPixelsToAppUnits(
+-        nsPresContext::CSSPixelsToAppUnits(mScreenRect.x) / factor);
+-    screenPoint.y = presContext->DevPixelsToAppUnits(
+-        nsPresContext::CSSPixelsToAppUnits(mScreenRect.y) / factor);
++    screenPoint.x = presContext->DevPixelsToAppUnits(mScreenRect.x / factor);
++    screenPoint.y = presContext->DevPixelsToAppUnits(mScreenRect.y / factor);
+     anchorRect = nsRect(screenPoint, nsSize(0, 0));
+ 
+     // add the margins on the popup
+@@ -2377,9 +2378,10 @@ void nsMenuPopupFrame::DestroyFrom(nsIFr
+   nsBoxFrame::DestroyFrom(aDestructRoot, aPostDestroyData);
+ }
+ 
+-void nsMenuPopupFrame::MoveTo(const CSSIntPoint& aPos, bool aUpdateAttrs) {
++void nsMenuPopupFrame::MoveTo(const CSSPoint& aPos, bool aUpdateAttrs) {
+   nsIWidget* widget = GetWidget();
+-  if ((mScreenRect.x == aPos.x && mScreenRect.y == aPos.y) &&
++  nsPoint appUnitsPos = mozilla::CSSPixel::ToAppUnits(aPos);
++  if ((mScreenRect.x == appUnitsPos.x && mScreenRect.y == appUnitsPos.y) &&
+       (!widget || widget->GetClientOffset() == mLastClientOffset)) {
+     return;
+   }
+@@ -2400,8 +2402,8 @@ void nsMenuPopupFrame::MoveTo(const CSSI
+   }
+ 
+   mAnchorType = MenuPopupAnchorType_Point;
+-  mScreenRect.x = aPos.x - nsPresContext::AppUnitsToIntCSSPixels(margin.left);
+-  mScreenRect.y = aPos.y - nsPresContext::AppUnitsToIntCSSPixels(margin.top);
++  mScreenRect.x = appUnitsPos.x - margin.left;
++  mScreenRect.y = appUnitsPos.y - margin.top;
+ 
+   SetPopupPosition(nullptr, true, false);
+ 
+@@ -2409,8 +2411,8 @@ void nsMenuPopupFrame::MoveTo(const CSSI
+   if (aUpdateAttrs && (popup->HasAttr(kNameSpaceID_None, nsGkAtoms::left) ||
+                        popup->HasAttr(kNameSpaceID_None, nsGkAtoms::top))) {
+     nsAutoString left, top;
+-    left.AppendInt(aPos.x);
+-    top.AppendInt(aPos.y);
++    left.AppendInt(RoundedToInt(aPos).x);
++    top.AppendInt(RoundedToInt(aPos).y);
+     popup->SetAttr(kNameSpaceID_None, nsGkAtoms::left, left, false);
+     popup->SetAttr(kNameSpaceID_None, nsGkAtoms::top, top, false);
+   }
+Index: firefox-91.0.2/layout/xul/nsXULPopupManager.cpp
+===================================================================
+--- firefox-91.0.2.orig/layout/xul/nsXULPopupManager.cpp
++++ firefox-91.0.2/layout/xul/nsXULPopupManager.cpp
+@@ -269,8 +269,7 @@ bool nsXULPopupManager::Rollup(uint32_t
+       if (popupFrame->IsAnchored()) {
+         // Check if the popup has a screen anchor rectangle. If not, get the
+         // rectangle from the anchor element.
+-        anchorRect =
+-            CSSIntRect::FromUnknownRect(popupFrame->GetScreenAnchorRect());
++        anchorRect = popupFrame->GetScreenAnchorRect();
+         if (anchorRect.x == -1 || anchorRect.y == -1) {
+           nsCOMPtr<nsIContent> anchor = popupFrame->GetAnchor();
+ 
+@@ -507,7 +506,7 @@ void nsXULPopupManager::PopupMoved(nsIFr
+   } else {
+     CSSPoint cssPos = LayoutDeviceIntPoint::FromUnknownPoint(aPnt) /
+                       menuPopupFrame->PresContext()->CSSToDevPixelScale();
+-    menuPopupFrame->MoveTo(RoundedToInt(cssPos), false);
++    menuPopupFrame->MoveTo(cssPos, false);
+   }
+ }
+ 

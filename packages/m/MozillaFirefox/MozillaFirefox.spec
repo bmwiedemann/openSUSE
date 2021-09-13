@@ -20,10 +20,6 @@
 %define _dwz_low_mem_die_limit  40000000
 %define _dwz_max_die_limit     200000000
 
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150100
-#!BuildIgnore: post-build-checks
-%endif
-
 # changed with every update
 # orig_version vs. mainver: To have beta-builds
 # FF70beta3 would be released as FF69.99
@@ -32,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %major.99
-%define major          91
-%define mainver        %major.0.2
-%define orig_version   91.0.2
+%define major          92
+%define mainver        %major.0
+%define orig_version   92.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -44,7 +40,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    1
+%define clang_build    0
 
 # PIE, full relro
 %define build_hardened 1
@@ -66,9 +62,9 @@ BuildArch:      i686
 
 # general build definitions
 %define progname firefox
+%define appname  Firefox
 %define pkgname  MozillaFirefox
 %define srcname  firefox
-%define appname  Firefox
 %define progdir %{_prefix}/%_lib/%{progname}
 %define gnome_dir     %{_prefix}
 %define desktop_file_name %{progname}
@@ -122,7 +118,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.32
-BuildRequires:  mozilla-nss-devel >= 3.68
+BuildRequires:  mozilla-nss-devel >= 3.69.1
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 10.22.1
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -211,7 +207,6 @@ Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch6:         mozilla-sandbox-fips.patch
 Patch7:         mozilla-fix-aarch64-libopus.patch
-Patch8:         mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
 Patch9:         mozilla-s390-context.patch
 Patch10:        mozilla-pgo.patch
 Patch11:        mozilla-reduce-rust-debuginfo.patch
@@ -229,6 +224,8 @@ Patch25:        mozilla-bmo998749.patch
 Patch26:        mozilla-bmo1626236.patch
 Patch27:        mozilla-s390x-skia-gradient.patch
 Patch28:        mozilla-libavcodec58_91.patch
+Patch29:        mozilla-bmo1708709.patch
+Patch30:        mozilla-silence-no-return-type.patch
 # Firefox/browser
 Patch101:       firefox-kde.patch
 Patch102:       firefox-branded-icons.patch
@@ -339,7 +336,6 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch4 -p1
 %patch6 -p1
 %patch7 -p1
-%patch8 -p1
 %patch9 -p1
 %patch10 -p1
 %patch11 -p1
@@ -357,6 +353,8 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %patch26 -p1
 %patch27 -p1
 %patch28 -p1
+%patch29 -p1
+%patch30 -p1
 # Firefox
 %patch101 -p1
 %patch102 -p1
@@ -365,7 +363,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %build
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
+modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
 find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +

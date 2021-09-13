@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Sep  6 10:16:28 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 92.0
+  * More secure connections: Firefox can now automatically upgrade to
+    HTTPS using HTTPS RR as Alt-Svc headers
+  * Full-range color levels are now supported for video playback on
+    many systems
+  MFSA 2021-38 (bsc#1190269)
+  * CVE-2021-29993 (bmo#1708544, bmo#1708767, bmo#1712240,
+    bmo#1712242, bmo#1729259)
+    Handling custom intents could lead to crashes and UI spoofs
+  * CVE-2021-38491 (bmo#1551886)
+    Mixed-Content-Blocking was unable to check opaque origins
+  * CVE-2021-38492 (bmo#1721107)
+    Navigating to `mk:` URL scheme could load Internet Explorer
+  * CVE-2021-38493 (bmo#1723391, bmo#1724101, bmo#1724107)
+    Memory safety bugs fixed in Firefox 92, Firefox ESR 78.14 and
+    Firefox ESR 91.1
+  * CVE-2021-38494 (bmo#1723920, bmo#1725638)
+    Memory safety bugs fixed in Firefox 92
+- updated appdata
+- remove mozilla-disable-wasm-emulate-arm-unaligned-fp-access.patch
+  (does not apply anymore; unclear if obsolete)
+- bring back mozilla-silence-no-return-type.patch and
+  run post-build-checks everywhere again
+- requires NSS 3.69.1
+
+-------------------------------------------------------------------
+Tue Aug 31 00:33:39 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add mozilla-bmo1708709.patch: On [wayland] popup can be wrongly
+  repositioned due to rounding errors when font scaling != 1
+  (bmo#1708709); patch taken from upstream bug report and rebased
+  to apply cleanly against current version.
+
+-------------------------------------------------------------------
+Sun Aug 29 14:45:29 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump using with GCC (tested locally).
+
+-------------------------------------------------------------------
 Fri Aug 27 22:47:48 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 91.0.2:
