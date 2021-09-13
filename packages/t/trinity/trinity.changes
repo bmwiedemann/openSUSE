@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 13 08:33:55 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20210826:
+  * Use fcntl.h for dev_t & mode_t
+
+-------------------------------------------------------------------
 Wed Jul 21 06:55:09 UTC 2021 - jslaby@suse.cz
 
 - Update to version 1.9+git.20210717:

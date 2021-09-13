@@ -670,4 +670,13 @@
   * net/proto-ip-raw.c: fix build with kernel &gt;= 5.13</comment>
     <requestid>907420</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>fdd776e2b83c4b753b281229f1bba2ca</srcmd5>
+    <version>1.9+git.20210826</version>
+    <time>1631543074</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20210826:
+  * Use fcntl.h for dev_t &amp; mode_t</comment>
+    <requestid>918662</requestid>
+  </revision>
 </revisionlist>
