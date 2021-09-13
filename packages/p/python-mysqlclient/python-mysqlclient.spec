@@ -1,5 +1,5 @@
 #
-# spec file for package python-mysqlclient-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -35,6 +35,7 @@ Summary:        Python interface to MySQL
 License:        GPL-2.0-or-later
 URL:            https://github.com/PyMySQL/mysqlclient-python
 Source:         https://files.pythonhosted.org/packages/source/m/mysqlclient/mysqlclient-%{version}.tar.gz
+Patch0:         liberally-accept-charsets.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -69,6 +70,7 @@ This package adds Python 3 support and bug fixes to MySQLdb1.
 
 %prep
 %setup -q -n mysqlclient-%{version}
+%autopatch -p1
 
 %build
 %if !%{with test}

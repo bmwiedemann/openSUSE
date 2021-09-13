@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 10 07:48:36 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add liberally-accept-charsets.patch:
+  * Support multibyte utf8 return values with new versions of MariaDB. 
+
+-------------------------------------------------------------------
 Tue Mar 16 20:42:57 UTC 2021 - Matthias Fehring <buschmann23@opensuse.org>
 
 - Update to 2.0.3:
