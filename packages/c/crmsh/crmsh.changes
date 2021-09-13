@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 13 04:20:39 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210913.d7356663:
+  * Dev: testcases: origin testcases change for using logging in crmsh
+  * Dev: behave: functional test change for using logging in crmsh
+  * Dev: unittest: Change unit test since changed as logging
+  * Dev: Using python logging in all crmsh modules
+  * Dev: hb_report: Integrate hb_report logging
+  * Dev: crash_test: Integrate crash test logging
+  * Dev: crm: Load python logging config in /usr/sbin/crm
+  * Dev: log: Using logging as log system in crmsh
+  * Dev: msg: Remove msy.py
+  * Dev: constants: Add color const for logging
+
+-------------------------------------------------------------------
+Tue Sep 07 05:31:52 UTC 2021 - XLiang@suse.com
+
+- Update to version 4.3.1+20210907.58e47776:
+  * Dev: unittest: Adjust unit test for previous changes
+  * Fix: utils: Improve detect_cloud function and support non-Hyper-V in Azure
+
+-------------------------------------------------------------------
 Fri Aug 27 07:03:55 UTC 2021 - XLiang@suse.com
 
 - Update to version 4.3.1+20210827.1ae49236:
