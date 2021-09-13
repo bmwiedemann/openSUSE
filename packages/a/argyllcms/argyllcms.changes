@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep  7 19:33:45 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.2.0:
+  * Added native i1Pro3 and i1Pro3 Plus driver.
+  * Fix bug in applycal.c where it gets an "Error - Write file: 1,
+    icmTextDescription_write: ascii string is shorter" error on
+    replacing one calibration with another.
+  * Improved i1pro & Munki patch recognition to work much more
+    reliably with a slow swipe speed.
+  * Fixed oeminst to work with spyder V5.5. setup.exe
+  * Fixed bug in oemdld that prevented HTML encoded characters in
+    download file decoding properly, which prevented certain
+    filenames from working.
+  * Fixed bug in ccxxmake -S -f where save error wasn't being fully
+    reported, and display technology presence check was faulty.
+  * Fixed typo in display technology, VPA -> PVA.
+  * Made Klein K10A "Lights Off" command timeout a soft error. For
+    some reason this command doesn't seem to be implemented on some
+    K10A's.
+  * Added CIE dE2000 to spotread output.
+  * Fixed accidental global "wrl" in gamut/gamut.h that cases
+    compile warnings.
+  * For more see http://www.argyllcms.com/doc/ChangesSummary.html
+- Drop argyllcms--gcc--fno-common.patch (upstreamed with exception
+  of static declaration of struct huft, which is not required).
+
+-------------------------------------------------------------------
 Tue Mar 10 02:08:52 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix argyllcms--gcc--fno-common.patch according to the upstream
