@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Aug 31 11:14:53 UTC 2021 - Reinhard Max <max@suse.com>
+
+- bsc#1185952: fix build with llvm12 on s390x.
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
+- bsc#1179945: Re-enable icu for PostgreSQL 10.
+- bsc#1187751: Make the dependency of postgresqlXX-server-devel on
+  llvm and clang optional (postgresql-llvm-optional.patch).
+
+-------------------------------------------------------------------
+Tue Aug 24 13:14:42 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- bsc#1190177: Upgrade to version 10.18:
+  * https://www.postgresql.org/docs/10/release-10-18.html
+
+-------------------------------------------------------------------
 Tue May 11 16:21:41 UTC 2021 - Reinhard Max <max@suse.com>
 
 - Upgrade to version 10.17:

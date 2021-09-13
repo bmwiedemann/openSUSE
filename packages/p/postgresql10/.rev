@@ -582,4 +582,19 @@
   only be delivered on PackageHub for now (boo#1183118).</comment>
     <requestid>893132</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c9a3d0dd7b59afa2f410fe0102e974cb</srcmd5>
+    <version>10.18</version>
+    <time>1631543054</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185952: fix build with llvm12 on s390x.
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch
+- bsc#1179945: Re-enable icu for PostgreSQL 10.
+- bsc#1187751: Make the dependency of postgresqlXX-server-devel on
+  llvm and clang optional (postgresql-llvm-optional.patch).
+
+- bsc#1190177: Upgrade to version 10.18:
+  * https://www.postgresql.org/docs/10/release-10-18.html</comment>
+    <requestid>917538</requestid>
+  </revision>
 </revisionlist>
