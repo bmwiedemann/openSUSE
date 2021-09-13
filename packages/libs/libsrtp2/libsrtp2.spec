@@ -18,7 +18,7 @@
 
 Name:           libsrtp2
 %define lname	libsrtp2-1
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Secure Real-Time Transport Protocol (SRTP) library v2
 License:        BSD-3-Clause
