@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  8 06:52:33 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * resolve-ambiguities.patch
+    + fix some ambiguities in type resolutions on older compilers
+    + enables building on sle12-sp5
+
+-------------------------------------------------------------------
+Mon Sep  6 12:49:30 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.1.10:
+  * Parse shadow.
+  * Improve detection of the "new" formats.
+  * Fix handling of text baseline shift.
+  * Improve various formats.
+- Remove upstreamed patch 0001-add-missing-include-for-std-for_each.patch
+
+-------------------------------------------------------------------
 Fri Aug 21 21:24:58 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - add 0001-add-missing-include-for-std-for_each.patch to fix build

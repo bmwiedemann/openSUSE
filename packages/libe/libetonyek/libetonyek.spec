@@ -1,7 +1,7 @@
 #
 # spec file for package libetonyek
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
+%{!?make_build:%global make_build make %{?_smp_mflags}}
 %define libname libetonyek-0_1-1
 Name:           libetonyek
-Version:        0.1.9
+Version:        0.1.10
 Release:        0
 Summary:        Library for Apple Keynote presentations
 License:        MPL-2.0
 Group:          Productivity/Publishing/Word
 URL:            https://wiki.documentfoundation.org/DLP/Libraries/libetonyek
 Source0:        http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM: https://gerrit.libreoffice.org/c/libetonyek/+/94450
-Patch0:         0001-add-missing-include-for-std-for_each.patch
+Patch0:         resolve-ambiguities.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  doxygen
@@ -90,19 +90,18 @@ Group:          Productivity/Publishing/Word
 This package contains tools to work with Apple Keynote presentations
 
 %prep
-%setup -q
-%patch0 -p1
+%autosetup -p1
 
 %build
 autoreconf -fvi
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
 %configure \
-        --with-mdds="1.5" \
+	--with-mdds="1.5" \
 	--disable-silent-rules \
 	--disable-werror \
 	--disable-static \
 	--docdir=%{_docdir}/%{name}-devel/html
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -119,7 +118,7 @@ cp -p AUTHORS COPYING ChangeLog %{buildroot}%{_docdir}/%{name}-devel/
 %fdupes -s %{buildroot}
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
