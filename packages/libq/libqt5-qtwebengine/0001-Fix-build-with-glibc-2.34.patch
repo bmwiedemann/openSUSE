@@ -8,8 +8,23 @@ Subject: [PATCH] Fix build with glibc 2.34
  .../breakpad/src/client/linux/handler/exception_handler.cc     | 2 +-
  2 files changed, 3 insertions(+), 2 deletions(-)
 
+diff --git a/src/3rdparty/chromium/sandbox/linux/services/credentials.cc b/src/3rdparty/chromium/sandbox/linux/services/credentials.cc
+index d7b5d8c4413..a62cb21bd7a 100644
+--- a/src/3rdparty/chromium/sandbox/linux/services/credentials.cc
++++ b/src/3rdparty/chromium/sandbox/linux/services/credentials.cc
+@@ -98,7 +98,9 @@ bool ChrootToSafeEmptyDir() {
+   // attempt this optimization.
+   clone_flags |= CLONE_VM | CLONE_VFORK | CLONE_SETTLS;
+ 
+-  char tls_buf[PTHREAD_STACK_MIN] = {0};
++  const std::size_t pthread_stack_min = PTHREAD_STACK_MIN;
++  char tls_buf[pthread_stack_min];
++  memset(tls_buf, 0, pthread_stack_min);
+   tls = tls_buf;
+ #endif
+ 
 diff --git a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
-index 5d13bdbbb..2ed137b58 100644
+index 5d13bdbbbd1..2ed137b58f1 100644
 --- a/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
 +++ b/src/3rdparty/chromium/third_party/abseil-cpp/absl/debugging/failure_signal_handler.cc
 @@ -135,7 +135,8 @@ static bool SetupAlternateStackOnce() {
@@ -23,7 +38,7 @@ index 5d13bdbbb..2ed137b58 100644
      defined(ABSL_HAVE_MEMORY_SANITIZER) || defined(ABSL_HAVE_THREAD_SANITIZER)
    // Account for sanitizer instrumentation requiring additional stack space.
 diff --git a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
-index ca353c409..2e43ba6fc 100644
+index ca353c40997..2e43ba6fc04 100644
 --- a/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
 +++ b/src/3rdparty/chromium/third_party/breakpad/breakpad/src/client/linux/handler/exception_handler.cc
 @@ -138,7 +138,7 @@ void InstallAlternateStackLocked() {
@@ -35,6 +50,5 @@ index ca353c409..2e43ba6fc 100644
  
    // Only set an alternative stack if there isn't already one, or if the current
    // one is too small.
--- 
+--
 2.32.0
-

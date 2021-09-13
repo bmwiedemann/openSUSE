@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Sep 09 07:19:58 UTC 2021 - christophe@krop.fr
+
+- Update to version 5.15.6:
+  * Update Chromium:
+    + [Backport] CVE-2021-30560: Use after free in Blink XSLT
+    + [Backport] CVE-2021-30566: Stack buffer overflow in Printing
+    + [Backport] CVE-2021-30585: Use after free in sensor handling
+    + Bump V8_PATCH_LEVEL
+    + [Backport] Security bug 1228036
+    + [Backport] CVE-2021-30604: Use after free in ANGLE
+    + [Backport] CVE-2021-30603: Race in WebAudio
+    + [Backport] CVE-2021-30602: Use after free in WebRTC
+    + [Backport] CVE-2021-30599: Type Confusion in V8
+    + [Backport] CVE-2021-30598: Type Confusion in V8
+    + [Backport] Security bug 1227933
+    + [Backport] Security bug 1205059
+    + [Backport] Security bug 1184294
+    + [Backport] Security bug 1198385
+    + [Backport] CVE-2021-30588: Type Confusion in V8
+    + [Backport] CVE-2021-30587: Inappropriate implementation in Compositing on Windows
+    + [Backport] CVE-2021-30573: Use after free in GPU
+    + [Backport] CVE-2021-30569, security bugs 1198216 and 1204814
+    + [Backport] CVE-2021-30568: Heap buffer overflow in WebGL
+    + [Backport] CVE-2021-30541: Use after free in V8
+    + [Backport] Security bugs 1197786 and 1194330
+    + [Backport] Security bug 1194689
+    + [Backport] CVE-2021-30563: Type Confusion in V8
+    + [Backport] Security bug 1211215
+    + [Backport] Security bug 1209558
+    + [Backport] CVE-2021-30553: Use after free in Network service
+    + [Backport] CVE-2021-30548: Use after free in Loader
+    + [Backport] CVE-2021-30547: Out of bounds write in ANGLE
+    + [Backport] CVE-2021-30556: Use after free in WebAudio
+    + [Backport] CVE-2021-30559: Out of bounds write in ANGLE
+    + [Backport] CVE-2021-30533: Insufficient policy enforcement in PopupBlocker
+    + [Backport] Security bug 1202534
+    + [Backport] CVE-2021-30536: Out of bounds read in V8
+    + [Backport] CVE-2021-30522: Use after free in WebAudio
+    + [Backport] CVE-2021-30554 Use after free in WebGL
+    + [Backport] CVE-2021-30551: Type Confusion in V8
+    + [Backport] CVE-2021-30544: Use after free in BFCache
+    + [Backport] CVE-2021-30535: Double free in ICU
+    + [Backport] CVE-2021-30534: Insufficient policy enforcement in iFrameSandbox
+    + [Backport] CVE-2021-30530: Out of bounds memory access in WebAudio
+    + [Backport] CVE-2021-30523: Use after free in WebRTC
+    + Generate mojo bindings before compiling extension API registration
+  * Bump version from 5.15.5 to 5.15.6
+  * Always send phased wheel events beginning with Began
+- Import patch from the chromium package:
+  * 0001-return-ENOSYS-for-clone3.patch
+- Add changes from the chromium package to
+  0001-Fix-build-with-glibc-2.34.patch
+
+-------------------------------------------------------------------
 Wed Aug  4 15:23:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add patch to fix build with glibc 2.34 (boo#1189095)

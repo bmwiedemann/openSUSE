@@ -29,19 +29,17 @@
 %global _qtwebengine_dictionaries_dir %{_libqt5_datadir}/qtwebengine_dictionaries
 
 Name:           libqt5-qtwebengine
-Version:        5.15.5
+Version:        5.15.6
 Release:        0
 Summary:        Qt 5 WebEngine Library
 License:        LGPL-3.0-only OR GPL-2.0-only OR GPL-3.0-only
 Group:          Development/Libraries/X11
 URL:            https://www.qt.io
 %define base_name libqt5
-%define real_version 5.15.5
-%define so_version 5.15.5
+%define real_version 5.15.6
+%define so_version 5.15.6
 %define tar_version qtwebengine-everywhere-src-%{version}
 Source:         %{tar_version}.tar.xz
-# Generated from a local build
-Source1:        sync.profile
 # PATCH-FIX-UPSTREAM armv6-ffmpeg-no-thumb.patch - Fix ffmpeg configuration for armv6
 Patch0:         armv6-ffmpeg-no-thumb.patch
 # PATCH-FIX-OPENSUSE disable-gpu-when-using-nouveau-boo-1005323.diff
@@ -54,7 +52,9 @@ Patch4:         rtc-dont-use-h264.patch
 Patch5:         chromium-glibc-2.33.patch
 # PATCH-FIX-UPSTREAM
 Patch6:         0001-Fix-build-with-glibc-2.34.patch
-# http://www.chromium.org/blink not ported to PowerPC
+# PATCH-FIX-UPSTREAM
+Patch7:         0001-return-ENOSYS-for-clone3.patch
+# http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint
 #!BuildIgnore: rpmlint
@@ -68,7 +68,7 @@ BuildRequires:  git-core
 BuildRequires:  krb5
 BuildRequires:  krb5-devel
 BuildRequires:  libQt5QuickControls2-devel
-# For building pdf exmples...
+# For building pdf examples...
 BuildRequires:  libqt5-qtsvg-devel
 BuildRequires:  libcap-devel
 BuildRequires:  libgcrypt-devel
@@ -82,7 +82,7 @@ BuildRequires:  libqt5-qtwebchannel-private-headers-devel >= 5.12
 BuildRequires:  libqt5-qtxmlpatterns-private-headers-devel >= 5.12
 BuildRequires:  memory-constraints
 BuildRequires:  ninja
-# nodejs-default doesn't exist on Leap 15.2 and nodejs/nodejs-common is confused on TW/i586
+# nodejs-default doesn't exist on Leap 15.2
 %if 0%{?suse_version} == 1500 && 0%{?sle_version} == 150200
 BuildRequires:  nodejs-common
 %else
@@ -278,9 +278,11 @@ Recommends:     libqt5-qtpdf-devel
 Examples for the libqt5-qtpdf module.
 
 %prep
-%setup -q -n %{tar_version}
+%autosetup -p1 -n %{tar_version}
 sed -i 's|$(STRIP)|strip|g' src/core/core_module.pro
-%autopatch -p1
+
+#force the configure script to generate the forwarding headers (it checks whether .git directory exists)
+mkdir .git
 
 # QTBUG-61128
 sed -i -e '/toolprefix = /d' -e 's/\${toolprefix}//g' \
@@ -318,12 +320,6 @@ export RPM_OPT_FLAGS="${RPM_OPT_FLAGS} -Wno-return-type"
         -webengine-proprietary-codecs \
 %endif
 
-# For an unknown reason, syncqt isn't executed when building the package on the build service
-cp %{SOURCE1} .
-for i in QtWebEngine QtWebEngineCore QtWebEngineWidgets QtPdf QtPdfWidgets ; do
-  perl -w %{_libqt5_bindir}/syncqt.pl -module $i -version %{version} -outdir $PWD -builddir $PWD $PWD
-done
-
 # Determine the right number of parallel processes based on the available memory
 %limit_build -m 2750
 
@@ -343,9 +339,6 @@ sed -i '/^Libs.private/d' %{buildroot}%{_libdir}/pkgconfig/Qt*Web*.pc
 
 # kill .la files
 rm -f %{buildroot}%{_libqt5_libdir}/*.la
-
-# webenginecore expects icudatl.dat at this location
-# ln -sf %{_datadir}/icu/*/icudt*l.dat %{buildroot}%{_datadir}/qt5/icudtl.dat
 
 # Workaround to allow using QtWE with older Qt versions
 %global qtcore_version %(printf %{pkg_version libQt5Core5} | cut -d + -f 1)
