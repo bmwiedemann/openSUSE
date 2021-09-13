@@ -1,0 +1,19 @@
+
+Index: VirtualBox-6.1.26/include/iprt/stdarg.h
+===================================================================
+--- VirtualBox-6.1.26.orig/include/iprt/stdarg.h
++++ VirtualBox-6.1.26/include/iprt/stdarg.h
+@@ -44,7 +44,12 @@
+ #   define __builtin_stdarg_start __builtin_va_start
+ #  endif
+ # else
+-#  include <stdarg.h>
++#  include <linux/version.h>
++#  if LINUX_VERSION_CODE < KERNEL_VERSION(5, 15, 0)
++#   include <stdarg.h>
++#  else
++#   include <linux/stdarg.h>
++#  endif
+ # endif
+ #endif
+ 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  8 04:54:25 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
+
+- Add file "fixes-for-5.15.patch" to fix builds on kernel 5.15.
+
+-------------------------------------------------------------------
 Mon Aug 23 16:12:57 UTC 2021 - Larry Finger <Larry.Finger@gmail.com>
 
 - Patch build to work with the Leap 15.4 kernel.
