@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 08 09:59:35 UTC 2021 - trenn@suse.de
+
+- Update to version 1.8.0.18.git+2435e8d:
+  * fix unsigned integer subtraction sign overflow
+  * fix opendir fails in check_platform_device
+  * irqbalance: Check validity of numa_node
+  * configure.ac: use pkg-config to find numa
+  * Disable the communication socket when UI is disabled
+  * Fix comma typo in ui.c
+  * drop NoNewPrivs from irqbalance service
+  * remove no existing irq in banned_irqs
+  * Fix compile issue with none AARCH64 builds
+
+-------------------------------------------------------------------
+Wed Sep  8 08:58:47 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Fixes integrated mainline:
+  * bsc#1119461
+  * bsc#1138190
+  * bsc#1154905
+  * bsc#1178477 bsc#1183405 (removed patches due to mainline integration):
+       procinterrupts-check-xen-dyn-event-more-flexible.patch
+  * bsc#1182254 bsc#1156315 (removed patches due to mainline integration):
+       fix-ambiguous-parsing-of-node-entries-in-sys.patch
+  * bsc#1183157
+       also-fetch-node-info-for-non-PCI-devices.patch
+
+-------------------------------------------------------------------
 Tue Aug 31 13:42:01 UTC 2021 - trenn@suse.de
 
 - Update to version 1.8.0.18.git+2435e8d.obscpio:
