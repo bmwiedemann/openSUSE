@@ -17,7 +17,7 @@
 
 
 Name:           amarok
-Version:        2.9.75git.20210626T134054~59b22189f6
+Version:        2.9.75git.20210830T182443~10309f00af
 Release:        0
 Summary:        Media Player
 License:        GPL-2.0-or-later
@@ -137,6 +137,9 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 
 %fdupes -s %{buildroot}
 
+# E: devel-file-in-non-devel-package
+rm %{buildroot}%{_kf5_libdir}/libamarok{core,lib,shared,-sqlcollection,-transcoding}.so
+
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
@@ -156,13 +159,13 @@ export RPM_OPT_FLAGS="%{optflags} -mminimal-toc"
 %{_kf5_htmldir}/en/amarok/
 %{_kf5_iconsdir}/hicolor/*/*/*
 %{_kf5_knsrcfilesdir}/amarok.knsrc
-%{_kf5_libdir}/libamarok-sqlcollection.so*
-%{_kf5_libdir}/libamarok-transcoding.so*
+%{_kf5_libdir}/libamarok-sqlcollection.so.*
+%{_kf5_libdir}/libamarok-transcoding.so.*
 %{_kf5_libdir}/libamarok_service_lastfm_config.so
-%{_kf5_libdir}/libamarokcore.so*
-%{_kf5_libdir}/libamaroklib.so*
-%{_kf5_libdir}/libamarokpud.so*
-%{_kf5_libdir}/libamarokshared.so*
+%{_kf5_libdir}/libamarokcore.so.*
+%{_kf5_libdir}/libamaroklib.so.*
+%{_kf5_libdir}/libamarokpud.so
+%{_kf5_libdir}/libamarokshared.so.*
 %{_kf5_libdir}/libampache_account_login.so
 %{_kf5_libdir}/libgpodder_service_config.so
 %{_kf5_notifydir}/amarok.notifyrc

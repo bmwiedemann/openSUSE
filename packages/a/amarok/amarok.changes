@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 08 06:43:42 UTC 2021 - christophe@krop.fr
+
+- Update to version 2.9.75git.20210830T182443~10309f00af:
+  * Set Attributes before constructing the Application
+  * Port away from KRandom, bump Qt req. ver. to 5.10
+- Rebase amarok-2.9.75git.20210830T182443~10309f00af.tar.xz
+- Update translations
+
+-------------------------------------------------------------------
 Fri Jul 02 14:27:25 UTC 2021 - christophe@krop.fr
 
 - Update to version 2.9.75git.20210626T134054~59b22189f6:
