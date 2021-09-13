@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 11 15:30:00 UTC 2021 - IBBoard <dev@ibboard.co.uk>
+
+- Fix Python XDG dependency so that Kupfer doesn't crash on start
+
+-------------------------------------------------------------------
 Wed Aug 18 07:54:01 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Require missed python3-libxml2 to get it build 
