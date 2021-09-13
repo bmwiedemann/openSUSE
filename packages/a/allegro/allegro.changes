@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  9 11:35:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Add missing dependencies to allegro-devel
+  * allegro5/allegro_opengl.h includes GL/gl.h
+    Requires: pkgconfig(gl)
+  * allegro5/allegro_x.h includes X11/Xlib.h
+    Requires: pkgconfig(x11)
+
+-------------------------------------------------------------------
 Fri Apr 30 16:50:26 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Fixed dumb dependency

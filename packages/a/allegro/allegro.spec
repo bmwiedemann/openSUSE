@@ -28,7 +28,7 @@ Name:           allegro
 Version:        5.2.7.0
 Release:        0
 Summary:        A game programming library
-License:        Zlib AND BSD-3-Clause
+License:        BSD-3-Clause AND Zlib
 Group:          Development/Libraries/C and C++
 URL:            https://liballeg.org
 Source0:        https://github.com/liballeg/allegro5/releases/download/%{version}/allegro-%{version}.tar.gz
@@ -80,6 +80,8 @@ Group:          System/Libraries
 Summary:        Development files for liballegro
 Group:          Development/Libraries/C and C++
 Requires:       liballegro%{allegro_so_nr} = %{version}
+Requires:       pkgconfig(gl)
+Requires:       pkgconfig(x11)
 
 %description -n liballegro%{allegro_so_nr}-devel
 Development files needed to build applications which use liballegro.
