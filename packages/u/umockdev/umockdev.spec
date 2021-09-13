@@ -34,7 +34,8 @@ BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(gudev-1.0)
+# Disable to avoid build cycle with gudev (it is recommended but not required here)
+# BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libpcap)
 BuildRequires:  pkgconfig(libudev)
 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 13 13:09:28 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable to avoid build cycle with gudev (it is recommended but
+  not required for umockdev itself).
+
+-------------------------------------------------------------------
 Thu Aug 26 18:45:30 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.16.2:
