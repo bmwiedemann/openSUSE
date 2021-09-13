@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Sep  8 12:26:56 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
+
+- update to 1.23.0:
+  Features:
+  * Support Rootless Docker #12359
+  * Add support for tcsh in docker-env subcommand #12332
+  * Support Ingress on MacOS, driver docker #12089
+  * Add support for linux/s390x on docker/podman drivers #12079
+  * Add configurable port for minikube mount #11979
+  * Add method for customized box output #11709
+  * Add addon support for portainer #11933
+  * minikube start --image-repository will now accept URLs with port #11585
+  * Add ability to create extra disks for hyperkit driver #11483
+  * Add ability to create extra disks for kvm2 driver #12351
+
+  minikube image:
+  * Add minikube image commands for pull and tag and push #12326
+  * new image save command #12162
+  * Auto start buildkit daemon on image build for containerd #12076
+
+  Bug fixes:
+  * Select WSL VM IP when performing mounting #12319
+  * Fix minikube restart on Cloud Shell #12237
+  * pause each container separately #12318
+  * Add output parameter to the docker-env none shell #12263
+  * Clean up ssh tunnels during exit. #11745
+  * Fix loading an image from tar failing on existing delete #12143
+  * configure gcp-auth addon pull secret to work with all GCR and AR mirrors #12106
+  * Fix the error output of minikube version --components command #12085
+  * Added restart command after setting crio options #11968
+  * Don't set conntrack parameters in kube-proxy #11957
+  * Fix kvm2 driver arm64 deb package #11937
+  * Allow to set the dashboard proxyfied port #11553
+
+  Version Upgrades:
+  * bump golang version to 1.17 #12378
+  * Bump default Kubernetes version to v1.22.1 and update addons
+    to with new API (ingress, gcpauth, olm and cilium) #12325
+  * Add kubeadm image versions for kubernetes 1.22 #12331
+  * bump calico to v3.20 and move away from v1beta apis #12230
+  * Upgrade Buildroot to 2021.02 LTS with Linux 4.19 #12268
+  * Upgrade buildkit from 0.8.2 to 0.9.0 #12032
+  * ISO: Upgrade Docker, from 20.10.6 to 20.10.8 #12122
+  * ISO: Upgrade crictl (from cri-tools) to v1.21.0 #12129
+
+-------------------------------------------------------------------
 Tue Jul 13 12:44:02 UTC 2021 - Klaus Kämpf <kkaempf@suse.com>
 
 - update to 1.22.0:
