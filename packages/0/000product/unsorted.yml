@@ -762,7 +762,6 @@ unsorted:
   - arphic-gkai00mp-fonts 
   - arping2 
   - arprec-devel 
-  - arptables 
   - arpwatch-ethercodes-build 
   - artha 
   - artifacts 
@@ -1702,7 +1701,6 @@ unsorted:
   - calamares-branding-upstream 
   - calamares-lang 
   - calamares-webview 
-  - calamaris 
   - calc 
   - calc-devel 
   - calcium-devel 
@@ -1732,7 +1730,6 @@ unsorted:
   - canlock 
   - canna 
   - canna-devel 
-  - canna-libs 
   - canna-libs-32bit: [x86_64] 
   - canna-yubin 
   - cannadic 
@@ -2679,7 +2676,6 @@ unsorted:
   - ddccontrol-doc 
   - ddccontrol-gtk 
   - ddccontrol-lang 
-  - ddclient 
   - ddcutil 
   - ddgr 
   - ddnet 
@@ -2824,7 +2820,7 @@ unsorted:
   - dhall-json: [x86_64] 
   - dhall-yaml: [x86_64] 
   - dhcp-devel 
-  - dhcp-doc 
+  - dhcp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - dhcpd-pools 
   - dhewm3 
   - dhex 
@@ -2913,7 +2909,6 @@ unsorted:
   - docbook-css-stylesheets 
   - docbook-dsssl-stylesheets 
   - docbook-simple 
-  - docbook-tdg 
   - docbook-toys 
   - docbook-utils 
   - docbook-utils-minimal 
@@ -3148,7 +3143,6 @@ unsorted:
   - edict 
   - editorconfig 
   - editres 
-  - eekboard 
   - eekboard-devel 
   - eeyek-fonts 
   - efibootmgr: [i586] 
@@ -3370,7 +3364,7 @@ unsorted:
   - exfatprogs 
   - exif 
   - exiftran 
-  - exim 
+  - exim: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - eximon 
   - eximstats-html 
   - exiv2 
@@ -3532,8 +3526,6 @@ unsorted:
   - fence-agents-devel 
   - fence-sanlock 
   - festival-devel 
-  - fetchmail 
-  - fetchmailconf 
   - fetchmsttfonts 
   - ffado 
   - ffado-mixer 
@@ -3940,7 +3932,7 @@ unsorted:
   - gcc-fortran-32bit: [x86_64] 
   - gcc-go 
   - gcc-go-32bit: [x86_64] 
-  - gcc-info 
+  - gcc-info: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - gcc-locale 
   - gcc-obj-c++ 
   - gcc-objc 
@@ -3978,7 +3970,7 @@ unsorted:
   - gcc11-fortran-32bit: [x86_64] 
   - gcc11-go 
   - gcc11-go-32bit: [x86_64] 
-  - gcc11-info 
+  - gcc11-info: [i586] 
   - gcc11-locale: [i586] 
   - gcc11-obj-c++ 
   - gcc11-obj-c++-32bit: [x86_64] 
@@ -5423,7 +5415,6 @@ unsorted:
   - ghex-devel 
   - ghex-lang 
   - ghostscript-devel 
-  - ghostscript-fonts 
   - ghostscript-mini 
   - ghostscript-mini-devel 
   - ghostview 
@@ -5495,7 +5486,7 @@ unsorted:
   - git-credential-gnome-keyring 
   - git-credential-libsecret 
   - git-crypt 
-  - git-daemon 
+  - git-daemon: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - git-delta 
   - git-deps 
   - git-deps-html 
@@ -5861,7 +5852,7 @@ unsorted:
   - gnustep-base 
   - gnustep-base-devel 
   - gnustep-make 
-  - gnutls 
+  - gnutls: [i586] 
   - gnutls-guile 
   - go 
   - go-doc 
@@ -6391,9 +6382,6 @@ unsorted:
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
-  - guestfs-data: [x86_64] 
-  - guestfs-tools: [x86_64] 
-  - guestfs-winsupport: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
   - guice-bom 
@@ -6731,8 +6719,6 @@ unsorted:
   - hxtools-scripts 
   - hydrogen 
   - hyena 
-  - hylafax+ 
-  - hylafax+-client 
   - hyperfine 
   - hyperfine-bash-completion 
   - hyperfine-fish-completion 
@@ -7842,7 +7828,6 @@ unsorted:
   - kernel-default-base-rebuild 
   - kernel-default-devel 
   - kernel-devel 
-  - kernel-docs 
   - kernel-docs-html 
   - kernel-firmware 
   - kernel-kvmsmall: [x86_64] 
@@ -7970,7 +7955,7 @@ unsorted:
   - kim-api 
   - kim-api-devel 
   - kim-api-examples 
-  - kimageformats-eps 
+  - kimageformats-eps: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - kimagemapeditor 
   - kimagemapeditor-lang 
   - kimap-devel 
@@ -8007,7 +7992,6 @@ unsorted:
   - kitinerary-devel 
   - kitty 
   - kiwi-man-pages 
-  - kiwi-pxeboot 
   - kiwi-systemdeps 
   - kiwi-systemdeps-bootloaders 
   - kiwi-systemdeps-containers 
@@ -8134,14 +8118,14 @@ unsorted:
   - krb5-plugin-preauth-pkinit 
   - krb5-plugin-preauth-spake 
   - krb5-server 
-  - krdc 
+  - krdc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - krdc-devel 
-  - krdc-lang 
+  - krdc-lang: [i586] 
   - kreport 
   - kreport-devel 
   - kreport-lang 
-  - krfb 
-  - krfb-lang 
+  - krfb: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - krfb-lang: [i586] 
   - kristall 
   - krita 
   - krita-devel 
@@ -8451,8 +8435,7 @@ unsorted:
   - ldc-phobos-devel 
   - ldc-runtime-devel 
   - ldirectord 
-  - ldmtool 
-  - ldns 
+  - ldmtool: [i586] 
   - ldns-devel 
   - leafnode 
   - leafpad 
@@ -8706,7 +8689,6 @@ unsorted:
   - libHepMC4 
   - libICE-devel: [i586] # devel package of dvd:libICE6 
   - libICE-devel-32bit: [x86_64] 
-  - libICE6-32bit: [x86_64] 
   - libIDL-2-0 
   - libIDL-2-0-32bit: [x86_64] 
   - libIL1 
@@ -9204,7 +9186,6 @@ unsorted:
   - libSILLY1 
   - libSM-devel: [i586] # devel package of dvd:libSM6 
   - libSM-devel-32bit: [x86_64] 
-  - libSM6-32bit: [x86_64] 
   - libSPIRV-Tools-suse22-32bit: [x86_64] 
   - libSampleICC-devel 
   - libSampleICC1 
@@ -9323,7 +9304,6 @@ unsorted:
   - libXres-devel-32bit: [x86_64] 
   - libXss-devel 
   - libXss-devel-32bit: [x86_64] 
-  - libXss1-32bit: [x86_64] 
   - libXt-devel: [i586] # devel package of dvd:libXt6 
   - libXt-devel-32bit: [x86_64] 
   - libXt6-32bit: [x86_64] 
@@ -9332,7 +9312,6 @@ unsorted:
   - libXtst6-32bit: [x86_64] 
   - libXv-devel: [i586] # devel package of dvd:libXv1 
   - libXv-devel-32bit: [x86_64] 
-  - libXv1-32bit: [x86_64] 
   - libXvMC-devel 
   - libXvMC-devel-32bit: [x86_64] 
   - libXvMC1-32bit: [x86_64] 
@@ -10144,7 +10123,6 @@ unsorted:
   - libcreg1 
   - libcriu2: [x86_64] 
   - libcroco 
-  - libcroco-0_6-3 
   - libcroco-0_6-3-32bit: [x86_64] 
   - libcroco-devel 
   - libcrossguid0 
@@ -10537,7 +10515,6 @@ unsorted:
   - libfastjetcontribfragile 
   - libfastjson-devel 
   - libfastlz1 
-  - libfaxutil7_0_3 
   - libfcache-devel 
   - libfcache1 
   - libfcft3 
@@ -10934,7 +10911,7 @@ unsorted:
   - libgnuradio-iqbalance-devel 
   - libgnuradio-iqbalance3_8_0 
   - libgnutls-dane-devel 
-  - libgnutls-dane0 
+  - libgnutls-dane0: [i586] 
   - libgnutls-devel 
   - libgnutls-devel-32bit: [x86_64] 
   - libgnutlsxx-devel 
@@ -11060,7 +11037,6 @@ unsorted:
   - libgstvulkan-1_0-0-32bit: [x86_64] 
   - libgstwayland-1_0-0-32bit: [x86_64] 
   - libgstwebrtc-1_0-0-32bit: [x86_64] 
-  - libgthread-2_0-0-32bit: [x86_64] 
   - libgtk-3-0-32bit: [x86_64] 
   - libgtk-4-1-32bit: [x86_64] 
   - libgtk-layer-shell0 
@@ -11106,7 +11082,6 @@ unsorted:
   - libguess1-32bit: [x86_64] 
   - libguestfs-devel: [x86_64] 
   - libguestfs-test: [x86_64] 
-  - libguestfs0: [x86_64] 
   - libguile-cairo0 
   - libguile-srfi-srfi-1-v-3-3 
   - libguile-srfi-srfi-13-14-v-3-3 
@@ -11156,7 +11131,6 @@ unsorted:
   - libhandy-devel 
   - libhandy0-devel 
   - libhangul-devel 
-  - libhangul1 
   - libhangul1-32bit: [x86_64] 
   - libharfbuzz-gobject0-32bit: [x86_64] 
   - libharfbuzz-icu0-32bit: [x86_64] 
@@ -11336,7 +11310,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
-  - libhivex0 
+  - libhivex0: [i586] 
   - libhmac-devel 
   - libhmac-tools 
   - libhmac1 
@@ -11514,7 +11488,6 @@ unsorted:
   - libjbig2dec0 
   - libjbig2dec0-32bit: [x86_64] 
   - libjcat-devel 
-  - libjd0 
   - libjemalloc2 
   - libjim0_75 
   - libjpeg62 
@@ -11700,9 +11673,8 @@ unsorted:
   - libldc-jit96 
   - libldl-doc 
   - libldl2 
-  - libldm-1_0-0 
+  - libldm-1_0-0: [i586] 
   - libldm-1_0-0-devel 
-  - libldns3 
   - libleechcraft-util-db-qt5-0_6_75_1 
   - libleechcraft-util-gui-qt5-0_6_75_1 
   - libleechcraft-util-models-qt5-0_6_75_1 
@@ -11896,7 +11868,6 @@ unsorted:
   - libmdmp-devel 
   - libmdmp-tools 
   - libmdmp1 
-  - libmeanwhile1 
   - libmed-devel: [x86_64] 
   - libmed-python: [x86_64] 
   - libmed11: [x86_64] 
@@ -12471,7 +12442,7 @@ unsorted:
   - liboping-devel-32bit: [x86_64] 
   - liboping0 
   - liboping0-32bit: [x86_64] 
-  - libopts25 
+  - libopts25: [i586] 
   - libopus-devel 
   - libopus0-32bit: [x86_64] 
   - libopusenc-devel 
@@ -12726,17 +12697,17 @@ unsorted:
   - libplplotfortran0 
   - libplplotqt2 
   - libplplotwxwidgets1 
-  - libpmem-devel: [x86_64] # devel package of dvd:pmdk 
-  - libpmemblk-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmemblk-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmemblk1: [x86_64] 
   - libpmemkv1: [x86_64] 
   - libpmemkv_json_config1: [x86_64] 
-  - libpmemlog-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmemlog-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmemlog1: [x86_64] 
   - libpmemobj-cpp-devel: [x86_64] 
   - libpmemobj-cpp-devel-doc: [x86_64] 
-  - libpmemobj-devel: [x86_64] # devel package of dvd:pmdk 
-  - libpmempool-devel: [x86_64] # devel package of dvd:pmdk 
+  - libpmemobj-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmempool-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmempool1: [x86_64] 
   - libpmi0: [x86_64] 
   - libpmix2: [x86_64] 
@@ -12756,8 +12727,7 @@ unsorted:
   - libpnetcdf_1_12_2-gnu-openmpi2-hpc: [x86_64] 
   - libpnetcdf_1_12_2-gnu-openmpi3-hpc: [x86_64] 
   - libpnetcdf_1_12_2-gnu-openmpi4-hpc: [x86_64] 
-  - libpng12-0 
-  - libpng12-0-32bit: [x86_64] 
+  - libpng12-0: [x86_64] 
   - libpng12-compat-devel 
   - libpng12-compat-devel-32bit: [x86_64] 
   - libpng12-devel 
@@ -12890,7 +12860,6 @@ unsorted:
   - libpurple-devel 
   - libpurple-plugin-gnome-keyring 
   - libpurple-plugin-pack-extras 
-  - libpurple-plugin-sametime 
   - libpwquality-devel 
   - libpwquality-tools: [i586] 
   - libpystring0_0 
@@ -13400,7 +13369,7 @@ unsorted:
   - librnp0 
   - librocsgraphtheory0 
   - librpma0: [x86_64] 
-  - librpmem-devel: [x86_64] # devel package of dvd:pmdk 
+  - librpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - librpmem1: [x86_64] 
   - librrd8 
   - librsb-devel 
@@ -13684,7 +13653,7 @@ unsorted:
   - libspeechd2-32bit: [x86_64] 
   - libspeex1-32bit: [x86_64] 
   - libspeexdsp1-32bit: [x86_64] 
-  - libspf2-2 
+  - libspf2-2: [i586] 
   - libspf2-apidocs 
   - libspf2-devel 
   - libspf2-tools 
@@ -14124,7 +14093,6 @@ unsorted:
   - libuna1 
   - libuna1-mini 
   - libunbound-devel-mini 
-  - libunbound8 
   - libunibilium4 
   - libunibreak-devel 
   - libunibreak3 
@@ -14264,13 +14232,13 @@ unsorted:
   - libvips42 
   - libvirt 
   - libvirt-cim 
-  - libvirt-client 
+  - libvirt-client: [i586] 
   - libvirt-daemon-config-network 
   - libvirt-daemon-config-nwfilter 
-  - libvirt-daemon-driver-lxc 
+  - libvirt-daemon-driver-lxc: [i586] 
   - libvirt-daemon-driver-storage-gluster 
   - libvirt-daemon-hooks 
-  - libvirt-daemon-lxc 
+  - libvirt-daemon-lxc: [i586] 
   - libvirt-dbus 
   - libvirt-devel 
   - libvirt-devel-32bit: [x86_64] 
@@ -14278,7 +14246,7 @@ unsorted:
   - libvirt-glib-devel 
   - libvirt-lock-sanlock 
   - libvirt-nss 
-  - libvirt-sandbox-1_0-5 
+  - libvirt-sandbox-1_0-5: [i586] 
   - libvirt-sandbox-devel 
   - libvisio-devel 
   - libvisio-devel-doc 
@@ -16076,13 +16044,8 @@ unsorted:
   - mktorrent 
   - mkvtoolnix 
   - mkvtoolnix-gui 
-  - mlterm 
-  - mlterm-canna 
-  - mlterm-ibus 
   - mlterm-m17n 
-  - mlterm-scim 
   - mlterm-uim 
-  - mlterm-wnn 
   - mm-common 
   - mm-common-docs 
   - mmc-utils 
@@ -16133,7 +16096,7 @@ unsorted:
   - monitoring-plugins-clamav 
   - monitoring-plugins-contentage 
   - monitoring-plugins-count_file 
-  - monitoring-plugins-cups 
+  - monitoring-plugins-cups: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - monitoring-plugins-dbi 
   - monitoring-plugins-dbi-mysql 
   - monitoring-plugins-dbi-pgsql 
@@ -16153,7 +16116,7 @@ unsorted:
   - monitoring-plugins-metadata 
   - monitoring-plugins-mysql 
   - monitoring-plugins-mysql_health 
-  - monitoring-plugins-nagios 
+  - monitoring-plugins-nagios: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - monitoring-plugins-nis 
   - monitoring-plugins-nrpe 
   - monitoring-plugins-nwc_health 
@@ -16760,7 +16723,6 @@ unsorted:
   - nautilus-terminal 
   - nauty 
   - nauty-devel 
-  - nbd 
   - nbdfuse 
   - nbdkit 
   - nbdkit-bash-completion 
@@ -17322,7 +17284,7 @@ unsorted:
   - ntl-doc 
   - ntp 
   - ntp-dcf77-tools 
-  - ntp-doc 
+  - ntp-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - ntpsec 
   - ntpsec-devel 
   - ntpsec-doc 
@@ -18058,7 +18020,6 @@ unsorted:
   - openslide-doc 
   - openslide-tools 
   - openslp-devel 
-  - openslp-server 
   - opensm 
   - opensm-devel 
   - opensm-devel-32bit: [x86_64] 
@@ -18312,7 +18273,6 @@ unsorted:
   - pam_csync-32bit: [x86_64] 
   - pam_dbus 
   - pam_krb5 
-  - pam_krb5-32bit: [x86_64] 
   - pam_kwallet 
   - pam_kwallet-32bit: [x86_64] 
   - pam_kwallet-common 
@@ -18367,8 +18327,8 @@ unsorted:
   - papi_6_0_0_1-hpc-devel-static 
   - papirus-folders 
   - papirus-icon-theme 
-  - paprefs 
-  - paprefs-lang 
+  - paprefs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - paprefs-lang: [i586] 
   - paps 
   - par2cmdline 
   - par_text 
@@ -18451,8 +18411,6 @@ unsorted:
   - patterns-deepin-deepin_office 
   - patterns-deepin-deepin_office_opt 
   - patterns-deepin-deepin_utilities 
-  - patterns-desktop-books 
-  - patterns-desktop-mobile 
   - patterns-desktop-technical_writing 
   - patterns-devel-C-C++-devel_C_C++ 
   - patterns-devel-base-devel_basis 
@@ -18501,13 +18459,11 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
-  - patterns-media-rest_dvd 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
   - patterns-server-directory_server-32bit 
   - patterns-server-file_server-32bit 
-  - patterns-server-gateway_server 
   - patterns-server-gateway_server-32bit 
   - patterns-server-kvm_tools 
   - patterns-server-lamp_server-32bit 
@@ -18843,7 +18799,7 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector 
+  - perl-Class-Inspector: [i586] 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -18966,7 +18922,6 @@ unsorted:
   - perl-Data-Uniqid 
   - perl-Data-Util 
   - perl-Data-Validate-Domain 
-  - perl-Data-Validate-IP 
   - perl-Data-Visitor 
   - perl-Date-Calc 
   - perl-Date-Holidays-CZ 
@@ -19099,7 +19054,7 @@ unsorted:
   - perl-File-Remove 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir 
+  - perl-File-ShareDir: [i586] 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -19526,7 +19481,7 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util 
+  - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -19673,7 +19628,7 @@ unsorted:
   - perl-String-Format 
   - perl-String-Formatter 
   - perl-String-RewritePrefix 
-  - perl-String-ShellQuote 
+  - perl-String-ShellQuote: [i586] 
   - perl-String-ToIdentifier-EN 
   - perl-String-Trim 
   - perl-String-Truncate 
@@ -19700,7 +19655,6 @@ unsorted:
   - perl-Syntax-Keyword-Junction 
   - perl-Syntax-Keyword-Try 
   - perl-Sys-CPU 
-  - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
@@ -19923,7 +19877,7 @@ unsorted:
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
-  - perl-Win-Hivex 
+  - perl-Win-Hivex: [i586] 
   - perl-Wx 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
@@ -19990,7 +19944,7 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
-  - perl-libintl-perl 
+  - perl-libintl-perl: [i586] 
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
@@ -20541,14 +20495,12 @@ unsorted:
   - postfix-bdb 
   - postfix-bdb-lmdb 
   - postfix-devel 
-  - postfix-doc 
   - postfix-ldap 
   - postfix-mysql 
   - postfix-postgresql 
   - postfixadmin 
   - postfixadmin-apache 
   - postgresql-devel 
-  - postgresql-docs 
   - postgresql-jdbc 
   - postgresql-jdbc-javadoc 
   - postgresql-plperl 
@@ -20616,7 +20568,6 @@ unsorted:
   - postgresql12-timescaledb 
   - postgresql13-devel 
   - postgresql13-devel-mini 
-  - postgresql13-docs 
   - postgresql13-pg_cron 
   - postgresql13-pg_cron-llvmjit 
   - postgresql13-pgagent 
@@ -20658,8 +20609,8 @@ unsorted:
   - powermock-testng 
   - powerstat 
   - powerstat-bash-completion 
-  - powertop 
-  - powertop-lang 
+  - powertop: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - powertop-lang: [i586] 
   - poxml-lang 
   - ppl 
   - ppl-devel 
@@ -21283,7 +21234,6 @@ unsorted:
   - python3-libfwnt 
   - python3-libfwps 
   - python3-libfwsi 
-  - python3-libguestfs: [x86_64] 
   - python3-libixion 
   - python3-liblnk 
   - python3-libluksde 
@@ -21453,7 +21403,6 @@ unsorted:
   - python3-unbound 
   - python3-upm 
   - python3-vapoursynth 
-  - python3-virt-bootstrap: [x86_64] 
   - python3-virt-tuner 
   - python3-virtualbox: [x86_64] 
   - python3-virtualenvwrapper 
@@ -24932,7 +24881,7 @@ unsorted:
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
-  - python38-cachetools 
+  - python38-cachetools: [i586] 
   - python38-cachey 
   - python38-cachy 
   - python38-cairocffi 
@@ -25276,7 +25225,7 @@ unsorted:
   - python38-djvulibre 
   - python38-dns-lexicon 
   - python38-dnslib 
-  - python38-doc 
+  - python38-doc: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
   - python38-doc-devhelp 
   - python38-docformatter 
   - python38-docker 
@@ -25341,7 +25290,7 @@ unsorted:
   - python38-evdev 
   - python38-eventlet 
   - python38-evilunit 
-  - python38-evtx 
+  - python38-evtx: [i586] 
   - python38-exam 
   - python38-execnet 
   - python38-executing 
@@ -25437,15 +25386,14 @@ unsorted:
   - python38-funcy 
   - python38-furl 
   - python38-fuse 
-  - python38-fusepy 
-  - python38-future 
+  - python38-fusepy: [i586] 
   - python38-fuzzywuzzy 
   - python38-fysom 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
-  - python38-gcsfs 
-  - python38-gcsfs-fuse 
+  - python38-gcsfs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
+  - python38-gcsfs-fuse: [i586] 
   - python38-gear 
   - python38-ged4py 
   - python38-genfire 
@@ -25477,9 +25425,9 @@ unsorted:
   - python38-goobook 
   - python38-google-api-core 
   - python38-google-api-python-client 
-  - python38-google-auth 
+  - python38-google-auth: [i586] 
   - python38-google-auth-httplib2 
-  - python38-google-auth-oauthlib 
+  - python38-google-auth-oauthlib: [i586] 
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
@@ -25543,7 +25491,7 @@ unsorted:
   - python38-hepunits 
   - python38-hetzner 
   - python38-hetznercloud 
-  - python38-hexdump 
+  - python38-hexdump: [i586] 
   - python38-hijri-converter 
   - python38-hkdf 
   - python38-hl7apy 
@@ -26667,7 +26615,7 @@ unsorted:
   - python38-requests-html 
   - python38-requests-kerberos 
   - python38-requests-mock 
-  - python38-requests-oauthlib 
+  - python38-requests-oauthlib: [i586] 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
@@ -30379,7 +30327,6 @@ unsorted:
   - qemu-extra 
   - qemu-hw-s390x-virtio-gpu-ccw 
   - qemu-ivshmem-tools 
-  - qemu-kvm 
   - qemu-linux-user 
   - qemu-ovmf-x86_64-debug: [x86_64] 
   - qemu-testsuite 
@@ -30836,7 +30783,6 @@ unsorted:
   - rapid-photo-downloader-lang 
   - rapidjson-devel 
   - raptor 
-  - rarpd 
   - rasdaemon 
   - rash 
   - rasmol 
@@ -30871,7 +30817,6 @@ unsorted:
   - rclone-zsh-completion 
   - rcm 
   - rcs 
-  - rdesktop 
   - rdiff 
   - rdiff-backup 
   - rdma-core-devel 
@@ -31574,7 +31519,6 @@ unsorted:
   - samba-ad-dc-32bit: [x86_64] 
   - samba-ceph: [x86_64] 
   - samba-core-devel 
-  - samba-doc 
   - samba-dsdb-modules 
   - samba-krb-printing 
   - samba-libs-python3-32bit: [x86_64] 
@@ -31726,19 +31670,13 @@ unsorted:
   - scidavis 
   - scidavis-lang 
   - scikit-hep-testdata-files 
-  - scim 
   - scim-32bit: [x86_64] 
   - scim-anthy 
   - scim-canna 
   - scim-chewing 
   - scim-devel 
-  - scim-gtk 
-  - scim-gtk-32bit: [x86_64] 
-  - scim-gtk3 
   - scim-gtk3-32bit: [x86_64] 
-  - scim-hangul 
   - scim-input-pad 
-  - scim-lang 
   - scim-m17n 
   - scim-pinyin 
   - scim-skk 
@@ -31893,7 +31831,6 @@ unsorted:
   - shunit2 
   - siege 
   - sierra-gtk-theme 
-  - siga 
   - sigil 
   - signify 
   - signing-party 
@@ -31962,7 +31899,7 @@ unsorted:
   - skinlf-demo 
   - skinlf-javadoc 
   - skkdic-extra 
-  - skopeo 
+  - skopeo: [i586] 
   - skopeo-bash-completion 
   - skrooge 
   - skrooge-lang 
@@ -32224,8 +32161,6 @@ unsorted:
   - sqliteodbc-doc 
   - sqlmap 
   - sqtop 
-  - squashfs 
-  - squid 
   - squidGuard 
   - squidGuard-doc 
   - squidview 
@@ -32346,11 +32281,8 @@ unsorted:
   - subunit-filters 
   - subunit-shell 
   - subversion-devel 
-  - subversion-doc 
   - subversion-python 
   - subversion-ruby 
-  - subversion-server 
-  - subversion-tools 
   - suck 
   - sudo-devel 
   - sudo-test 
@@ -32388,7 +32320,7 @@ unsorted:
   - superlu_5_2_2-gnu-hpc-devel 
   - superlu_5_2_2-gnu-hpc-doc 
   - superlu_5_2_2-gnu-hpc-examples 
-  - supermin 
+  - supermin: [i586] 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -36806,7 +36738,6 @@ unsorted:
   - texlive-latex-bin-dev-bin 
   - texlive-latex-brochure 
   - texlive-latex-course 
-  - texlive-latex-doc 
   - texlive-latex-doc-ptr 
   - texlive-latex-firstaid-dev 
   - texlive-latex-firstaid-dev-doc 
@@ -40860,7 +40791,6 @@ unsorted:
   - tidy 
   - tidy-doc 
   - tidyp 
-  - tiff 
   - tig 
   - tiger-types 
   - tiger-types-javadoc 
@@ -40909,8 +40839,6 @@ unsorted:
   - tktable 
   - tkxcd 
   - tllist-devel 
-  - tlp 
-  - tlp-rdw 
   - tls 
   - tlswrap 
   - tmate 
@@ -41378,7 +41306,6 @@ unsorted:
   - udev-browse 
   - udev-mini 
   - udev-persistent-ifnames 
-  - udftools 
   - udhcp 
   - udiskie 
   - udiskie-lang 
@@ -41433,8 +41360,6 @@ unsorted:
   - umoci 
   - umockdev 
   - umockdev-devel 
-  - unbound 
-  - unbound-anchor 
   - unbound-devel 
   - unbound-munin 
   - unclutter: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
@@ -41451,7 +41376,6 @@ unsorted:
   - unifraktur-fonts 
   - unionfs-fuse 
   - unique-factory-devel 
-  - unison 
   - unit-api 
   - unit-api-javadoc 
   - unittest-cpp-devel 
@@ -41727,7 +41651,7 @@ unsorted:
   - virglrenderer-test-server 
   - virt-manager 
   - virt-p2v: [x86_64] 
-  - virt-sandbox 
+  - virt-sandbox: [i586] 
   - virt-top 
   - virt-v2v: [x86_64] 
   - virt-v2v-bash-completion: [x86_64] 
@@ -42320,7 +42244,7 @@ unsorted:
   - xmlsec1-gnutls-devel 
   - xmlsec1-nss-devel 
   - xmlsec1-openssl-devel 
-  - xmlstarlet 
+  - xmlstarlet: [i586] 
   - xmlstreambuffer 
   - xmlstreambuffer-javadoc 
   - xmlto 
@@ -42365,7 +42289,6 @@ unsorted:
   - xonsh 
   - xonsh-doc 
   - xorg-cf-files 
-  - xorg-docs 
   - xorg-scripts 
   - xorg-sgml-doctools 
   - xorg-x11 
@@ -42461,7 +42384,6 @@ unsorted:
   - xstream-benchmark 
   - xstream-javadoc 
   - xstream-parent 
-  - xstroke 
   - xsv 
   - xsv-bash-completion 
   - xsynth-dssi 
@@ -42547,11 +42469,8 @@ unsorted:
   - yast2-geo-cluster 
   - yast2-gpmc 
   - yast2-installation-control 
-  - yast2-instserver 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
-  - yast2-isns 
-  - yast2-nis-server 
   - yast2-online-update-configuration 
   - yast2-online-update-frontend 
   - yast2-pkg-bindings-devel-doc 
@@ -42562,7 +42481,6 @@ unsorted:
   - yast2-samba-provision 
   - yast2-schema-collection 
   - yast2-slide-show 
-  - yast2-slp-server 
   - yast2-support 
   - yast2-testsuite 
   - yast2-theme-oxygen 
@@ -42585,13 +42503,10 @@ unsorted:
   - yast2-trans-ne 
   - yast2-trans-nn 
   - yast2-trans-ps 
-  - yast2-trans-sl 
   - yast2-trans-sq 
   - yast2-trans-sr-latin 
   - yast2-trans-sw 
-  - yast2-trans-ta 
   - yast2-trans-tg 
-  - yast2-trans-th 
   - yast2-trans-tk 
   - yast2-update-FACTORY 
   - yast2-usbauth 
@@ -42665,7 +42580,7 @@ unsorted:
   - zdbsp 
   - zeal 
   - zerobranestudio 
-  - zerofree 
+  - zerofree: [i586] 
   - zeromq-devel 
   - zfp-devel: [x86_64] 
   - zhu3d 
