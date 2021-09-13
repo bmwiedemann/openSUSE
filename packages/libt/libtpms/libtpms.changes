@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Aug 31 16:36:31 UTC 2021 - pgajdos@suse.com
+
+- security update
+- added patches
+  fix CVE-2021-3746 [bsc#1189935], out-of-bounds access via specially crafted TPM 2 command packets
+  + libtpms-CVE-2021-3746.patch
+
+-------------------------------------------------------------------
 Sat Aug  7 15:00:32 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 0.8.4:
