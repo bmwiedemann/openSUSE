@@ -132,8 +132,6 @@ URL:            https://www.kernel.org/pub/linux/utils/util-linux/
 Source:         https://www.kernel.org/pub/linux/utils/util-linux/v2.36/util-linux-%{version}.tar.xz
 Source1:        util-linux-rpmlintrc
 Source2:        util-linux-login_defs-check.sh
-Source4:        raw.service
-Source5:        etc.raw
 Source6:        etc_filesystems
 Source7:        baselibs.conf
 Source8:        login.pamd
@@ -653,49 +651,21 @@ install -m 644 runuser.default %{buildroot}%{_distconfdir}/default/runuser
 rm -f %{buildroot}%{python3_sitearch}/libmount/*.*a
 %if %build_util_linux
 %if !0%{?usrmerged}
-ln -s %{_bindir}/kill %{buildroot}/bin
-ln -s %{_bindir}/su %{buildroot}/bin
-ln -s %{_bindir}/dmesg %{buildroot}/bin
-ln -s %{_bindir}/more %{buildroot}/bin
-ln -s %{_bindir}/mount %{buildroot}/bin
-ln -s %{_bindir}/umount %{buildroot}/bin
-ln -s %{_sbindir}/agetty %{buildroot}/sbin
-ln -s %{_sbindir}/blockdev %{buildroot}/sbin
-ln -s %{_sbindir}/cfdisk %{buildroot}/sbin
-ln -s %{_sbindir}/ctrlaltdel %{buildroot}/sbin
-ln -s %{_sbindir}/fdisk %{buildroot}/sbin
-ln -s %{_sbindir}/fsck.minix %{buildroot}/sbin
-ln -s %{_sbindir}/fsck.cramfs %{buildroot}/sbin
-ln -s %{_sbindir}/hwclock %{buildroot}/sbin
-ln -s %{_sbindir}/losetup %{buildroot}/sbin
-ln -s %{_sbindir}/mkfs %{buildroot}/sbin
-ln -s %{_sbindir}/mkfs.bfs %{buildroot}/sbin
-ln -s %{_sbindir}/mkfs.minix %{buildroot}/sbin
-ln -s %{_sbindir}/mkfs.cramfs %{buildroot}/sbin
-ln -s %{_sbindir}/mkswap %{buildroot}/sbin
-ln -s %{_sbindir}/nologin %{buildroot}/sbin
-ln -s %{_sbindir}/pivot_root %{buildroot}/sbin
-ln -s %{_sbindir}/raw %{buildroot}/sbin
-ln -s %{_sbindir}/sfdisk %{buildroot}/sbin
-ln -s %{_sbindir}/swapoff %{buildroot}/sbin
-ln -s %{_sbindir}/swapon %{buildroot}/sbin
-ln -s %{_sbindir}/blkid %{buildroot}/sbin
-ln -s %{_sbindir}/findfs %{buildroot}/sbin
-ln -s %{_sbindir}/fsck %{buildroot}/sbin
-ln -s %{_sbindir}/switch_root %{buildroot}/sbin
-ln -s %{_sbindir}/wipefs %{buildroot}/sbin
-ln -s %{_sbindir}/fsfreeze %{buildroot}/sbin
-ln -s %{_sbindir}/swaplabel %{buildroot}/sbin
-ln -s %{_sbindir}/fstrim %{buildroot}/sbin
-ln -s %{_sbindir}/chcpu %{buildroot}/sbin
+for i in kill su dmesg more mount umount; do
+	ln -s "%{_bindir}/$i" "%{buildroot}/bin/"
+done
+for i in agetty blockdev cfdisk ctrlaltdel fdisk fsck.minix fsck.cramfs \
+    hwclock losetup mkfs mkfs.bfs mkfs.minix mkfs.cramfs mkswap nologin \
+    pivot_root raw sfdisk swapoff swapon blkid findfs fsck switch_root \
+    wipefs fsfreeze swaplabel fstrim chcpu; do
+	ln -s "%{_sbindir}/$i" "%{buildroot}/sbin/"
+done
 %endif
+rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
+	"%{buildroot}/%{_mandir}/man8/raw.8"*
 install -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/filesystems
 echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
-# Install scripts to configure raw devices at boot time
-install -m 644 $RPM_SOURCE_DIR%{_sysconfdir}.raw   %{buildroot}%{_sysconfdir}/raw
-install -m 644 $RPM_SOURCE_DIR/raw.service %{buildroot}%{_unitdir}
-ln -sf service %{buildroot}%{_sbindir}/rcraw
 # upstream moved getopt examples from datadir to docdir but we keep
 # the old location because we would need to fix the manpage first
 mv %{buildroot}%{_docdir}/%{_name}/getopt %{buildroot}%{_datadir}/
@@ -773,14 +743,12 @@ rm -f %{buildroot}%{_mandir}/man8/lsblk.8*
 
 %if %build_util_linux
 %pre
-%service_add_pre raw.service
 # move outdated pam.d/*.rpmsave files away
 for i in login remote runuser runuser-l su su-l ; do
     test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i}.rpmsave.old ||:
 done
 
 %post
-%service_add_post raw.service
 %set_permissions %{_bindir}/wall %{_bindir}/write %{_bindir}/mount %{_bindir}/umount
 %set_permissions %{_bindir}/su
 %if ! %{defined no_config}
@@ -817,12 +785,6 @@ for i in  login remote runuser runuser-l su su-l; do
   test -f /etc/pam.d/${i}.rpmsave && mv -v /etc/pam.d/${i}.rpmsave /etc/pam.d/${i} ||:
 done
 %endif
-
-%preun
-%service_del_preun raw.service
-
-%postun
-%service_del_postun raw.service
 
 %verifyscript
 %verify_permissions -e %{_bindir}/wall -e %{_bindir}/write -e %{_bindir}/mount -e %{_bindir}/umount
@@ -912,8 +874,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %doc Documentation/modems-with-agetty.txt
 %doc Documentation/mount.txt
 %doc Documentation/pg.txt
-%{_unitdir}/raw.service
-%config(noreplace) %attr(644,root,root) %{_sysconfdir}/raw
 %config(noreplace) %{_sysconfdir}/filesystems
 %config(noreplace) %{_sysconfdir}/blkid.conf
 %if %{defined no_config}
@@ -960,7 +920,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 /sbin/mkswap
 /sbin/nologin
 /sbin/pivot_root
-/sbin/raw
 /sbin/swapoff
 /sbin/swapon
 /sbin/blkid
@@ -1066,8 +1025,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_sbindir}/nologin
 %{_sbindir}/partx
 %{_sbindir}/pivot_root
-%{_sbindir}/raw
-%{_sbindir}/rcraw
 %{_sbindir}/resizepart
 %{_sbindir}/rfkill
 %{_sbindir}/rtcwake
@@ -1179,7 +1136,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %{_mandir}/man8/chcpu.8.gz
 %{_mandir}/man8/partx.8.gz
 %{_mandir}/man8/pivot_root.8.gz
-%{_mandir}/man8/raw.8.gz
 %{_mandir}/man8/rtcwake.8.gz
 %{_mandir}/man8/setarch.8.gz
 %{_mandir}/man8/swapoff.8.gz

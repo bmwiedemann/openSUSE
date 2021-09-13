@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  9 20:52:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove the raw utility altogether, as it is not even built any
+  more with glibc >=2.34.
+
+-------------------------------------------------------------------
 Tue May 25 15:02:00 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - login.pamd: use pam_motd to unify motd handling [bsc#1185897].
