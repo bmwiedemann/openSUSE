@@ -252,6 +252,7 @@ dvd:
 
   ## attemt to shrink the DVD - 20151115 by dimstar: [locked]
   - valgrind-devel: [locked]
+  - wireshark: [locked]
 
   ## Further shrinkg the DVD - 20160330 by dimstar: [locked]
   - ImageMagick-doc: [locked]

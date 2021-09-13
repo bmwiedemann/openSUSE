@@ -1165,4 +1165,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <time>1631520990</time>
     <user>dimstar_suse</user>
   </revision>
+  <revision rev="161" vrev="159">
+    <srcmd5>92caaf970979b49e7852f910e0c9dbfb</srcmd5>
+    <version>unknown</version>
+    <time>1631525533</time>
+    <user>dimstar_suse</user>
+    <comment>Drop wireshark from the DVD</comment>
+  </revision>
 </revisionlist>
