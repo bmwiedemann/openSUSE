@@ -1172,4 +1172,12 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop wireshark from the DVD</comment>
   </revision>
+  <revision rev="162" vrev="160">
+    <srcmd5>2f9942469436d2751e1048de8ae395b1</srcmd5>
+    <version>unknown</version>
+    <time>1631543068</time>
+    <user>dimstar_suse</user>
+    <comment>Switch icon names to reflect the distribution, to avoid icon themes from displaying the wrong logo</comment>
+    <requestid>917961</requestid>
+  </revision>
 </revisionlist>

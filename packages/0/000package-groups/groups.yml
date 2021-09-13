@@ -51,6 +51,8 @@ dvd:
   - shim: [x86_64,aarch64]
   - patterns-gnome-gnome: [required,suggested]
   - patterns-gnome-gnome_basis: [required,suggested]
+  - patterns-gnome-gnome_basis_opt: [required,suggested]
+  - patterns-gnome-gnome_games: [required,suggested]
   - patterns-gnome-gnome_imaging: [required,suggested]
   - patterns-gnome-gnome_internet: [required,suggested]
   - patterns-gnome-gnome_multimedia: [required,suggested]
@@ -68,6 +70,7 @@ dvd:
   - patterns-kde-kde_office: [required,suggested]
   - patterns-kde-kde_plasma: [suggested]
   - patterns-kde-kde_utilities: [required,suggested]
+  - patterns-kde-kde_utilities_opt: [required,suggested]
   - patterns-kde-kde_yast: [required,suggested]
   - patterns-base-apparmor: [required,suggested]
   - patterns-base-base: [required,suggested]
@@ -79,6 +82,7 @@ dvd:
   - patterns-fonts-fonts: [required,suggested]
   - patterns-games-games: [required,suggested]
   - patterns-server-lamp_server: [required,suggested]
+  - patterns-desktop-laptop: [suggested]
   - patterns-server-mail_server: [required,suggested]
   - patterns-desktop-multimedia: [required,suggested]
   - patterns-network-network_admin: [suggested]
@@ -252,7 +256,6 @@ dvd:
 
   ## attemt to shrink the DVD - 20151115 by dimstar: [locked]
   - valgrind-devel: [locked]
-  - wireshark: [locked]
 
   ## Further shrinkg the DVD - 20160330 by dimstar: [locked]
   - ImageMagick-doc: [locked]
