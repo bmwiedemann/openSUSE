@@ -644,4 +644,12 @@
     <comment>- Update to kernel headers 5.13 (forwarded request 902814 from Andreas_Schwab)</comment>
     <requestid>902815</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>704039e05ca31064347a0db690c18529</srcmd5>
+    <version>5.14</version>
+    <time>1631543070</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to kernel headers 5.14 (forwarded request 915622 from Andreas_Schwab)</comment>
+    <requestid>915625</requestid>
+  </revision>
 </revisionlist>
