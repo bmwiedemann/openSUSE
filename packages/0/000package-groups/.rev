@@ -1152,4 +1152,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>RBrownSUSE</user>
     <comment>Shrink DVD by removing noto cjk fonts</comment>
   </revision>
+  <revision rev="159" vrev="157">
+    <srcmd5>1fae03ab89b5ea1be65ef2be20407c26</srcmd5>
+    <version>unknown</version>
+    <time>1631516835</time>
+    <user>dimstar_suse</user>
+    <comment>Drop gnome_basis_opt from the DVD</comment>
+  </revision>
 </revisionlist>
