@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Sep 13 08:47:48 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- Updated to version 3.8.3 which fixes regression introduced in 3.8.1 that
+  caused bind mounts without a destination to be added twice.
+
+-------------------------------------------------------------------
+Mon Sep  6 13:12:00 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- update to version 3.8.2
+- New features:
+  * A new overlay command allows creation and addition of writable overlays.
+  * Administrators can allow named users/groups to use specific CNI network
+    configurations. Managed by directives in singularity.conf.
+  * The build command now honors --nv, --rocm, and --bind flags, permitting
+    builds that require GPU access or files bound in from the host.
+  * A library service hostname can be specified as the first component of a
+    library:// URL.
+-  Bug fixes:
+  
+  * Respect http proxy server environment variables in key operations.
+  * When pushing SIF images to oras:// endpoints, work around Harbor & GitLab
+    failure to accept the SifConfigMediaType.
+  * Avoid a setfsuid compilation warning on some gcc versions.
+  * Fix a crash when silent/quiet log levels used on pulls from shub:// and
+    http(s):// URIs.
+  * Wait for dm device to appear when mounting an encrypted container rootfs.
+  * Accommodate ppc64le pageSize in TestCgroups and disable -race.
+  * Allow escaped \$ in a SINGULARITYENV_ var to set a literal $ in a container
+    env var. Also allow escaped commas and colons in the source bind path.
+  * Handle absolute symlinks correctly in multi-stage build %copy from blocks.
+  * Fix incorrect reference in sandbox restrictive permissions warning.
+  * Prevent garbage collection from closing the container image file descriptor.
+  * Update to Arch Linux pacman.conf URL and remove file size verification.
+  * Avoid panic when mountinfo line has a blank field.
+  * Fix regression when files sourced from %environment contain \ escaped shell
+    builtins (fixes issue with source of conda profile.d script).
+  * singularity delete will use the correct library service when the hostname
+    is specified in the library:// URI.
+  * singularity build will use the correct library service when the hostname is
+    specified in the library:// URI / definition file.
+  * When destination is ommitted in %files entry in definition file, ensure
+    globbed files are copied to correct resolved path.
+  * Return an error if --tokenfile used for remote login to an OCI registry, as
+    this is not supported.
+  * Ensure repeated remote login to same URI does not create duplicate entries
+    in ~/.singularity/remote.yaml.
+  * Properly escape single quotes in Docker CMD / ENTRYPOINT translation.
+  * Updated the modified golang-x-crypto module with the latest upstream version.
+
+
+
+
+-------------------------------------------------------------------
 Fri Jun  4 11:35:15 UTC 2021 - Christian Goll <cgoll@suse.com>
 
 - Update to version 3.7.4  (boo#1186619)

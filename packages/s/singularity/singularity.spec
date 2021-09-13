@@ -23,7 +23,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL
 Group:          Productivity/Clustering/Computing
 Name:           singularity
-Version:        3.7.4
+Version:        3.8.3
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://github.com/hpcng/singularity
@@ -56,14 +56,15 @@ containers that can be used across host environments.
 
 %prep
 %setup -q -n gopath/%{singgopath} -c
-%patch1 -p 4
 cp %{S:1} .
+mv %{name}-%{version} %{name}
+cd %{_builddir}/gopath
+pwd
+ls
+%patch1 -p1
 
 %build
-export GOPATH=$PWD/gopath
-export PATH=$GOPATH/bin:$PATH
 cd %{name}
-
 # Not all of these parameters currently have an effect, but they might be
 #  used someday.  They are the same parameters as in the configure macro.
 ./mconfig -V %{version}-%{release} \
