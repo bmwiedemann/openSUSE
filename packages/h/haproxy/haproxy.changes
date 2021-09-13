@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 07 15:43:22 UTC 2021 - mrueckert@suse.de
+
+- Update to version 2.4.4+git0.acb1d0bea: CVE-2021-40346 (boo#1189877)
+  * [RELEASE] Released version 2.4.4
+  * Revert "BUG/MINOR: stream-int: Don't block reads in si_update_rx() if chn may receive"
+  * BUG/MAJOR: htx: fix missing header name length check in htx_add_header/trailer
+  * CLEANUP: htx: remove comments about "must be < 256 MB"
+  * BUG/MINOR: config: reject configs using HTTP with bufsize >= 256 MB
+  * DOC: configuration: remove wrong tcp-request examples in tcp-response
+  * BUG/MINOR: vars: fix set-var/unset-var exclusivity in the keyword parser
+  * CLEANUP: Add missing include guard to signal.h
+  * BUG/MINOR: tools: Fix loop condition in dump_text()
+  * BUG/MINOR threads: Use get_(local|gm)time instead of (local|gm)time
+  * BUG/MINOR: ebtree: remove dependency on incorrect macro for bits per long
+  * MINOR: time: add report_idle() to report process-wide idle time
+  * BUG/MINOR: time: fix idle time computation for long sleeps
+  * BUG/MINOR: lua: use strlcpy2() not strncpy() to copy sample keywords
+  * MINOR: compiler: implement an ONLY_ONCE() macro
+  * BUG/MINOR: base64: base64urldec() ignores padding in output size check
+  * BUG/MEDIUM: base64: check output boundaries within base64{dec,urldec}
+  * BUG/MINOR: stick-table: fix the sc-set-gpt* parser when using expressions
+  * MINOR: hlua: take the global Lua lock inside a global function
+  * REGTESTS: abortonclose: after retries, 503 is expected, not close
+  * REGTESTS: http_upgrade: fix incorrect expectation on TCP->H1->H2
+  * BUG/MEDIUM: h2: match absolute-path not path-absolute for :path
+
+-------------------------------------------------------------------
 Tue Aug 17 15:50:01 UTC 2021 - mrueckert@suse.de
 
 - Update to version 2.4.3+git0.4dd5a5a6c:
