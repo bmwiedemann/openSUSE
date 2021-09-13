@@ -1,7 +1,7 @@
 #
 # spec file for package conntrack-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,8 +30,8 @@ Group:          Productivity/Networking/Security
 URL:            http://conntrack-tools.netfilter.org/
 
 #Git-Clone:	git://git.netfilter.org/conntrack-tools
-Source:         ftp://ftp.netfilter.org/pub/conntrack-tools/%name-%version.tar.bz2
-Source2:        ftp://ftp.netfilter.org/pub/conntrack-tools/%name-%version.tar.bz2.sig
+Source:         https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.bz2
+Source2:        https://www.netfilter.org/projects/conntrack-tools/files/conntrack-tools-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source5:        conntrackd.service
 Source6:        conntrackd.README.SUSE

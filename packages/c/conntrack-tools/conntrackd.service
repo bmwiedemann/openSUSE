@@ -15,6 +15,16 @@ ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 ProtectSystem=full
 ProtectHome=true
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 WatchdogSec=60
 
 [Install]
