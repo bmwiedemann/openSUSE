@@ -23,10 +23,10 @@
 %endif
 
 %global unregisterised_archs s390 s390x riscv64
-%define full_version 8.10.4
+%define full_version 8.10.7
 
 Name:           ghc
-Version:        8.10.4
+Version:        8.10.7
 Release:        0
 URL:            https://www.haskell.org/ghc/
 Source:         https://downloads.haskell.org/~ghc/%{full_version}/ghc-%{version}-src.tar.xz
@@ -53,10 +53,10 @@ BuildRequires:  xz
 %ifarch aarch64 %{arm}
 BuildRequires:  binutils-gold
 %endif
-%ifarch aarch64 %{arm} %{ix86} x86_64
-BuildRequires:  clang9
-BuildRequires:  llvm9
-BuildRequires:  llvm9-devel
+%ifarch aarch64 %{arm} 
+BuildRequires:  clang >= 9
+BuildRequires:  llvm >= 9
+BuildRequires:  llvm-devel >= 9
 %endif
 %if %{undefined without_manual}
 BuildRequires:  python3-Sphinx
@@ -80,8 +80,6 @@ Patch35:        ghc-pie.patch
 Patch100:       ghc-8.0.2-Cabal-dynlibdir.patch
 # PATCH-FIX-UPSTREAM buildpath-abi-stability.patch -- debian patch for more stable abi-1
 Patch110:       buildpath-abi-stability.patch
-# PATCH-FIX-UPSTREAM 4134.diff -- documentation fiixes and sphinx4 build fix
-Patch120:       4134.patch
 
 %description
 Haskell is the standard purely functional programming language; the
@@ -139,10 +137,10 @@ To install all of GHC install package ghc.
 #!ForceMultiversion
 %ghc_lib_subpackage -d Cabal-3.2.1.0
 %ghc_lib_subpackage -d array-0.5.4.0
-%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.1.0
+%ghc_lib_subpackage -d -c gmp-devel,libffi-devel,libdw-devel,libelf-devel%{libnuma_dep} base-4.14.3.0
 %ghc_lib_subpackage -d binary-0.8.8.0
 %ghc_lib_subpackage -d bytestring-0.10.12.0
-%ghc_lib_subpackage -d containers-0.6.2.1
+%ghc_lib_subpackage -d containers-0.6.5.1
 %ghc_lib_subpackage -d deepseq-1.4.4.0
 %ghc_lib_subpackage -d directory-1.3.6.0
 %ghc_lib_subpackage -d exceptions-0.10.4 
@@ -153,14 +151,14 @@ To install all of GHC install package ghc.
 %ghc_lib_subpackage -d ghc-compact-0.1.0.0
 %ghc_lib_subpackage -d ghc-heap-%{ghc_version_override}
 %ghc_lib_subpackage -d -x ghci-%{ghc_version_override}
-%ghc_lib_subpackage -d haskeline-0.8.0.1
+%ghc_lib_subpackage -d haskeline-0.8.2
 %ghc_lib_subpackage -d hpc-0.6.1.0
 %ghc_lib_subpackage -d libiserv-%{ghc_version_override}
 %ghc_lib_subpackage -d mtl-2.2.2
 %ghc_lib_subpackage -d parsec-3.1.14.0
 %ghc_lib_subpackage -d pretty-1.1.3.6
-%ghc_lib_subpackage -d process-1.6.9.0
-%ghc_lib_subpackage -d stm-2.5.0.0
+%ghc_lib_subpackage -d process-1.6.13.2
+%ghc_lib_subpackage -d stm-2.5.0.1
 %ghc_lib_subpackage -d template-haskell-2.16.0.0
 %ghc_lib_subpackage -d -c ncurses-devel terminfo-0.4.1.4
 %ghc_lib_subpackage -d text-1.2.4.1
@@ -194,7 +192,6 @@ except the ghc library, which is installed by the toplevel ghc metapackage.
 %patch35 -p1
 %patch100 -p1
 %patch110 -p1
-%patch120 -p1
 
 %build
 cat > mk/build.mk <<EOF

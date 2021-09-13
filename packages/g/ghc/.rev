@@ -883,4 +883,41 @@ Please wait for SR #249835 (ghc-bootstrap).</comment>
 </comment>
     <requestid>902384</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>f665dcd3a41c84ff2c85369fa574f9da</srcmd5>
+    <version>8.10.7</version>
+    <time>1631543073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.10.7
+- drop 4134.patch and refresh ghc-pie.patch
+ * portabilit yfixes
+ * Export some RTS symbols required for static builds of GHC
+ * Fix LLVM version checking logic so it no longer complains
+    about supported LLVM versions.
+ * Fix some RTS crashes on Darwin due to mixing up the closure
+    sizes of the aarch64 and x86-64 backends.
+ * Fix a crash on the non-moving GC due to incorrect logic
+    for calculating the header size for array write barries
+ * Fix a bug in base leading to a high likelihood of space
+    leaks when using lazy bytestrings
+ * Fix some timer races in the RTS possibly manifesting in #18033 and #20132
+ * Fix a number of bugs affecting the RTS m32 allocator
+ * Fix a bug where code may be unloaded prematurely
+    when using the parallel garbage collector
+ * Fix a bug where the linker may during shutdown unload code before
+    libraries’ atexit handlers have a chance to run
+ * Improve code layout by distiguishing conditional and unconditional branches
+ * Add hs-boot file support for -ddump-minimal-imports
+ * Ensure hs-boot files are built before source files in GHCs -M mode
+ * Fix a long standing GHC API bug affecting clients like HLS where
+    async exceptions used to cancel threads during typechecking would be
+    caught by the Template Haskell evaluator and reported as compile errors
+ * Improve error messages when looking up packages fails
+ * Fix a number of quirks in GC accounting
+ * Fix a code generation bug which could result in entry of unlifted
+    objects in some programs using unboxed sums
+ * Ensure that POSIX signals are not delivered to the ticker thread
+    when using the pthread itimer implementation.</comment>
+    <requestid>917983</requestid>
+  </revision>
 </revisionlist>
