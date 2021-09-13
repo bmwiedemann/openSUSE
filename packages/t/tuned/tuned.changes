@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 10 19:53:30 UTC 2021 - trenn@suse.de
+
+- Update to version 2.16.0:
+  * bootloader: make skip_grub_config consistent with initrd_remove_dir
+
+-------------------------------------------------------------------
 Fri Jul 09 11:13:35 UTC 2021 - trenn@suse.de
 
 - Update to version 2.15.0+git.1625694366.bc3f737:
