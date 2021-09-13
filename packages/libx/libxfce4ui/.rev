@@ -342,4 +342,12 @@
     <comment>- Build package with glade support (forwarded request 876926 from mauriziogalli)</comment>
     <requestid>877535</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>52faabcbe1ee861f0fd36c4ec0f2c5d0</srcmd5>
+    <version>4.16.1</version>
+    <time>1631543061</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>917600</requestid>
+  </revision>
 </revisionlist>

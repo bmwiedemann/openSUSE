@@ -20,7 +20,7 @@
 %define libname_gtk3 libxfce4ui-2-0
 
 Name:           libxfce4ui
-Version:        4.16.0
+Version:        4.16.1
 Release:        0
 Summary:        Widgets Library for the Xfce Desktop Environment
 License:        LGPL-2.1-or-later
@@ -30,8 +30,6 @@ Source0:        https://archive.xfce.org/src/xfce/libxfce4ui/4.16/%{name}-%{vers
 # needed until all applications have been ported to xfce_dialog_show_help() or
 # an alternative mechanism
 Source1:        xfhelp4.sh
-# PATCH-FEATURE-OPENSUSE xfdesktop-backgrounds-path.patch mauriziogalli@opensuse.org -- Workaround to remove subtitles area in Xfce applications headerbar 
-Patch0:         headerbar_subtitle.patch
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -117,7 +115,9 @@ BuildArch:      noarch
 %description branding-upstream
 This package provides the upstream look and feel for libxfce4ui.
 
+
 # this should be replaced by %%lang_package once bnc#513786 is resolved
+
 %package lang
 Summary:        Languages for package %{name}
 License:        LGPL-2.1-or-later
@@ -192,6 +192,7 @@ rm -rf %{buildroot}%{_datadir}/locale/{ast,kk,tl_PH,ur_PK}
 %{_libdir}/libxfce4kbd-private-3.so.*
 
 %files lang -f %{name}.lang
+
 %files devel
 %{_libdir}/libxfce4ui-*.so
 %{_libdir}/libxfce4kbd-private-*.so

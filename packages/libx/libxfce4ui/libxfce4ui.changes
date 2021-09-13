@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  7 23:36:49 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.1
+  * Add 4.16 section to docs
+  * about: Replace stock with regular button
+  * about: Make Close button translatable (bxo#xfce/libxfce4ui#41)
+  * Fix cast alignment warning
+  * Remove Gtk2 leftovers
+  * Don't reserve vertical space for subtitles in headerbars
+  * Translation Updates
+- Remove headerbar_subtitle.patch - fixed upstream
+
+-------------------------------------------------------------------
 Fri Mar  5 08:57:40 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Build package with glade support 
