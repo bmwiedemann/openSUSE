@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  8 12:46:31 UTC 2021 - Max Lin <mlin@suse.com>
+
+- fix a typo in cmake.macros bsc#1190302
+  * change CMAKE_SKIP_INSTALL_RPATHS to CMAKE_SKIP_INSTALL_RPATH
+
+-------------------------------------------------------------------
 Tue Aug 31 13:19:26 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 
 - Be more verbose when version in generated xxxConfigVersion.cmake

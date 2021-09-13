@@ -36,7 +36,7 @@
         -DLIB_SUFFIX=64 \\\
 %endif \
 %if %suse_version <= 1500 \
-        -DCMAKE_SKIP_INSTALL_RPATHS:BOOL=ON \\\
+        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \\\
 %endif \
         -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON \\\
         -DBUILD_SHARED_LIBS:BOOL=ON \\\
