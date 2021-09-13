@@ -18,7 +18,7 @@
 
 %define cpan_name DateTime-Calendar-Julian
 Name:           perl-DateTime-Calendar-Julian
-Version:        0.104
+Version:        0.105
 Release:        0
 Summary:        Dates in the Julian calendar
 License:        Artistic-1.0 OR GPL-1.0-or-later

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  6 03:06:05 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.105
+   see /usr/share/doc/packages/perl-DateTime-Calendar-Julian/Changes
+
+  0.105		2021-09-05	T. R. Wyant
+      Correct generation of 'provides' metadata.  Thanks to Favio Poletti
+      for blogging
+      https://github.polettix.it/ETOOBUSY/2021/06/15/the-real-pause-workaround/,
+      and ultimately to Joel Berger for the pointer to
+      https://metacpan.org/pod/CPAN::Meta::Spec#no_index
+
+-------------------------------------------------------------------
 Tue Mar 16 03:07:09 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.104
