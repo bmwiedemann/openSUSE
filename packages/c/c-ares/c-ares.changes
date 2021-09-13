@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep  9 12:15:01 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- new upstream website
+- drop multibuild - tests do not require static library anymore
+- spec file cleanup
+- drop sources that were re-added to upstream distibution
+  (c-ares-config.cmake.in ares_dns.h libcares.pc.cmake) 
+
+-------------------------------------------------------------------
+Wed Sep  8 14:07:34 UTC 2021 - Adam Majer <adam.majer@suse.de>
+
+- 5c995d5.patch: augment input validation on hostnames to allow _
+  as part of DNS response (bsc#1190225)
+
+-------------------------------------------------------------------
 Thu Aug 12 13:59:07 UTC 2021 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.17.2:

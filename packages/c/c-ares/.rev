@@ -168,4 +168,19 @@ for details see,
 https://c-ares.haxx.se/changelog.html#1_17_2</comment>
     <requestid>911845</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>90cacebe5a14a1c327f2c682af95d440</srcmd5>
+    <version>1.17.2</version>
+    <time>1631543062</time>
+    <user>dimstar_suse</user>
+    <comment>- new upstream website
+- drop multibuild - tests do not require static library anymore
+- spec file cleanup
+- drop sources that were re-added to upstream distibution
+  (c-ares-config.cmake.in ares_dns.h libcares.pc.cmake) 
+
+- 5c995d5.patch: augment input validation on hostnames to allow _
+  as part of DNS response (bsc#1190225)</comment>
+    <requestid>917731</requestid>
+  </revision>
 </revisionlist>

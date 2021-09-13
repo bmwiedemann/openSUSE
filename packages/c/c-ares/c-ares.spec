@@ -16,23 +16,6 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-
-%if "%{flavor}" == "%{nil}"
-ExclusiveArch:  do_not_build
-%define pname   c-ares
-%endif
-
-%if "%{flavor}" == "tests"
-%define pname   c-ares-tests
-%bcond_without  tests
-%endif
-
-%if "%{flavor}" == "main"
-%define pname   c-ares
-%bcond_with     tests
-%endif
-
 %define sonum   2
 %define libname libcares%{sonum}
 
@@ -40,29 +23,24 @@ ExclusiveArch:  do_not_build
 %define cmake_build make -O VERBOSE=1 %{?_smp_mflags}
 %endif
 
-Name:           %{pname}
+Name:           c-ares
 Version:        1.17.2
 Release:        0
 Summary:        Library for asynchronous name resolves
 License:        MIT
-URL:            https://c-ares.haxx.se/
-Source0:        http://c-ares.haxx.se/download/c-ares-%{version}.tar.gz
-Source1:        http://c-ares.haxx.se/download/c-ares-%{version}.tar.gz.asc
+URL:            https://c-ares.org/
+Source0:        https://c-ares.org/download/c-ares-%{version}.tar.gz
+Source1:        https://c-ares.org/download/c-ares-%{version}.tar.gz.asc
 Source3:        c-ares.keyring
 Source4:        baselibs.conf
-### REMOVE when upstream fixes https://github.com/c-ares/c-ares/issues/373
-Source5:        libcares.pc.cmake
-Source6:        c-ares-config.cmake.in
-Source7:        ares_dns.h
 Patch0:         0001-Use-RPM-compiler-options.patch
 Patch1:         disable-live-tests.patch
+Patch2:         https://github.com/c-ares/c-ares/commit/5c995d5.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-%if %{with tests}
+BuildRequires:  pkg-config
 # Needed for getservbyport_r function to work properly.
 BuildRequires:  netcfg
-%endif
-BuildRequires:  pkg-config
 
 %description
 c-ares is a C library that performs DNS requests and name resolves
@@ -106,35 +84,20 @@ by Greg Hudson at MIT.
 This package provides the development libraries and headers needed
 to build packages that depend on c-ares.
 
-
 %prep
 %autosetup -p1 -n c-ares-%{version}
 
-cp %{S:5} %{S:6} .
-cp %{S:7} include
-
 %build
-
-%cmake \
-%if %{with tests}
-    -DCARES_BUILD_TESTS:BOOL=ON \
-%endif
-    %{nil}
+%cmake -DCARES_BUILD_TESTS:BOOL=ON
 %cmake_build
 
 %install
-%if !%{with tests}
 %cmake_install
-%endif
 
-%if %{with tests}
 %check
 pushd build
 %cmake_build -C test
 LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
-%endif
-
-%if !%{with tests}
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -159,7 +122,5 @@ LD_LIBRARY_PATH=.%_libdir:./%_lib ./bin/arestest
 %{_mandir}/man3/ares_*.3%{?ext_man}
 %{_libdir}/pkgconfig/libcares.pc
 %{_libdir}/cmake/c-ares/
-
-%endif
 
 %changelog
