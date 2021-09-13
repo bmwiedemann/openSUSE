@@ -181,4 +181,27 @@ Upgrade to version 12.6:
   Use llvm11 as a workaround.</comment>
     <requestid>894525</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>711b4b88a7d1915198a2f2f60fd06b26</srcmd5>
+    <version>12.8</version>
+    <time>1631543057</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1185952: fix build with llvm12 on s390x.
+  0001-jit-Workaround-potential-datalayout-mismatch-on-s390.patch 
+- bsc#1179945: Re-enable icu for PostgreSQL 10.
+
+- Upgrade to version 12.8:
+  * https://www.postgresql.org/docs/12/release-12-8.html
+  * CVE-2021-3677 (boo#1189748)
+    The planner could create an incorrect plan in cases where two
+    ProjectionPaths were stacked on top of each other. The only
+    known way to trigger that situation involves parallel sort
+    operations, but there may be other instances. The result would
+    be crashes or incorrect query results. Disclosure of server
+    memory contents is also possible.
+
+- bsc#1187751: Make the dependency of postgresqlXX-server-devel on
+  llvm and clang optional (postgresql-llvm-optional.patch).</comment>
+    <requestid>917541</requestid>
+  </revision>
 </revisionlist>
