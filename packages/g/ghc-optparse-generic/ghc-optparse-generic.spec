@@ -18,13 +18,12 @@
 
 %global pkg_name optparse-generic
 Name:           ghc-%{pkg_name}
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Auto-generate a command-line parser for your datatype
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-Only-devel
 BuildRequires:  ghc-bytestring-devel
@@ -57,7 +56,6 @@ files.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
