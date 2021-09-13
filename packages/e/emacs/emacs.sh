@@ -137,5 +137,40 @@ if test -z "NO_AT_BRIDGE" ; then
     fi
     unset gsettings
 fi
+#
+# Check input method for working ibus setup
+#
+case "$XMODIFIERS" in
+@im=ibus*)
+    _arch=$(getconf LONG_BIT)
+    if test "$_arch" != 64
+    then
+	unset _arch
+    else
+	_arch=-64
+    fi
+    if type -p gtk-query-immodules-3.0${_arch} &> /dev/null
+    then
+	_ibus=$(gtk-query-immodules-3.0${_arch} | grep im-ibus)
+    else
+	unset _ibus
+    fi
+    if test -n "$_ibus"
+    then
+	if test -z "$GTK_IM_MODULE" -o "$GTK_IM_MODULE" != ibus
+	then
+	    export GTK_IM_MODULE=ibus
+	fi
+    else
+	unset XMODIFIERS
+    fi
+    unset _ibus _arch
+    if ! ibus list-engine &> /dev/null
+    then
+	unset GTK_IM_MODULE XMODIFIERS
+    fi
+    ;;
+*)
+esac
 unset G_MESSAGES_DEBUG G_DEBUG G_MESSAGES_PREFIXED
 exec -a $arg0 ${1+"$@"} "${argv[@]}"

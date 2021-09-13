@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  8 09:05:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Work for boo#1183497: make sure that if ibus is the input method
+  that there exists a working gtk immodule for ibus as well as the
+  ibus daemon is up and running 
+
+-------------------------------------------------------------------
 Wed Jul 21 09:22:45 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - sigsegv-stack.patch: Port alternate signal stack to upcoming glibc 2.34
