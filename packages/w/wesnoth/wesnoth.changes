@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 13 08:54:26 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.15.17:
+  Campaigns:
+  * World Conquest is re-enabled.
+  Translations:
+  * Updated translations: British English, Polish
+  Miscellaneous and Bug Fixes:
+  * Messenger MAI: fixed bug of own units sometimes blocking the path
+    to a waypoint for the messenger
+  * A bug that would corrupt WML sent to the multiplayer and add-ons
+    server was fixed.
+
+-------------------------------------------------------------------
 Wed Sep  1 10:57:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.15.16:

@@ -223,4 +223,21 @@ A model Open Source game.</comment>
   * Long list of fixes, see https://github.com/wesnoth/wesnoth/blob/1.15.16/changelog.md</comment>
     <requestid>915457</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6b468a0265bfef104c25f835c624c4f0</srcmd5>
+    <version>1.15.17</version>
+    <time>1631543076</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.15.17:
+  Campaigns:
+  * World Conquest is re-enabled.
+  Translations:
+  * Updated translations: British English, Polish
+  Miscellaneous and Bug Fixes:
+  * Messenger MAI: fixed bug of own units sometimes blocking the path
+    to a waypoint for the messenger
+  * A bug that would corrupt WML sent to the multiplayer and add-ons
+    server was fixed.</comment>
+    <requestid>918667</requestid>
+  </revision>
 </revisionlist>
