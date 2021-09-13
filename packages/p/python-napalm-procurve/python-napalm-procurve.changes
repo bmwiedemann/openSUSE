@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 13 08:51:26 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip failing tests gh#ixs/napalm-procurve#19.
+
+-------------------------------------------------------------------
 Tue Mar 16 04:29:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add setup-parse-requirements.patch to use the correct property for

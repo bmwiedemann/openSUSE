@@ -48,4 +48,13 @@
   recent pip versions.</comment>
     <requestid>879333</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>6ff893167405277e147dc23df26dbb56</srcmd5>
+    <version>0.7.0</version>
+    <time>1631543075</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip failing tests gh#ixs/napalm-procurve#19.
+</comment>
+    <requestid>918666</requestid>
+  </revision>
 </revisionlist>

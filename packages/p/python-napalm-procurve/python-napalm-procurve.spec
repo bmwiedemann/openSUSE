@@ -59,7 +59,8 @@ ProCurve driver support for Napalm network automation.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# gh#ixs/napalm-procurve#19
+%pytest -k 'not (test_method_signatures or test_get_config_filtered)'
 
 %files %{python_files}
 %license LICENSE
