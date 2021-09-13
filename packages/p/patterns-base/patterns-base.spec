@@ -543,11 +543,11 @@ This is the enhanced base runtime system with lots of convenience packages.
 %pattern_primaryfunctions
 Summary:        FIPS 140-2 specific packages
 Group:          Metapackages
+Provides:       patterns-sles-fips = %{version}
 Provides:       pattern() = fips
-Provides:       pattern-icon() = pattern-basis_addon
+Provides:       pattern-icon() = pattern-basis-addon
 Provides:       pattern-order() = 3010
 Provides:       pattern-visible()
-Provides:       patterns-sles-fips = %{version}
 Obsoletes:      patterns-sles-fips < %{version}
 Provides:       patterns-server-enterprise-fips = %{version}
 Obsoletes:      patterns-server-enterprise-fips < %{version}

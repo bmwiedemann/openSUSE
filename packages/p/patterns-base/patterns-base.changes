@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 19 11:35:16 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Fix typo in the icon name for the fips pattern (bsc#1189550)
+
+-------------------------------------------------------------------
 Tue Jul 13 15:22:30 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Suggest libjack-devel so it's preferred to
