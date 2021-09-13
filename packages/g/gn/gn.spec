@@ -15,6 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifnarch riscv64
+%define with_lto 1
+%endif
 Name:           gn
 Version:        0.20210811
 Release:        0
@@ -24,7 +27,9 @@ URL:            https://gn.googlesource.com/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  clang
 BuildRequires:  libstdc++-devel
+%ifnarch riscv64
 BuildRequires:  lld
+%endif
 BuildRequires:  llvm
 BuildRequires:  ninja
 BuildRequires:  python3-base
@@ -41,13 +46,13 @@ ARCH_FLAGS="`echo %{optflags} | sed -e 's/-O2//g'`"
 export CXX=clang++
 export AR=llvm-ar
 export CXXFLAGS="${ARCH_FLAGS} -fPIE"
-export LDFLAGS="-fuse-ld=lld -Wl,--build-id=sha1 -pie"
+export LDFLAGS="%{?with_lto:-fuse-ld=lld} -Wl,--build-id=sha1 -pie"
 # bootstrap
 python3 build/gen.py \
   --no-strip \
   --no-last-commit-position \
   --no-static-libstdc++ \
-  --use-lto
+  %{?with_lto:--use-lto}
 PV=%{version}
 cat >out/last_commit_position.h <<-EOF
 	#ifndef OUT_LAST_COMMIT_POSITION_H_

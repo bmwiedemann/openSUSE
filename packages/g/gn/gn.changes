@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 10 10:18:06 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
+
+- Fix build with riscv64
+
+-------------------------------------------------------------------
 Wed Sep 01 08:59:31 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 0.20210811:
