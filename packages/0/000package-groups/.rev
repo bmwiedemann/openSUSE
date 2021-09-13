@@ -1159,4 +1159,10 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <user>dimstar_suse</user>
     <comment>Drop gnome_basis_opt from the DVD</comment>
   </revision>
+  <revision rev="160" vrev="158">
+    <srcmd5>b4c1e43ee2b6c6b2528dd5d2ce4507da</srcmd5>
+    <version>unknown</version>
+    <time>1631520990</time>
+    <user>dimstar_suse</user>
+  </revision>
 </revisionlist>
