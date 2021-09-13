@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 13 01:39:48 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.20.0:
+  * Adds support for errors.py to also use 'errors' for error_details (#1281) (a5d2081)
+  * add status_code property on http error handling (#1185) (db2a766)
+  * Change default of static_discovery when discoveryServiceUrl set (#1261) (3b4f2e2)
+  * correct api version in oauth-installed.md (#1258) (d1a255f)
+  * fix .close() (#1231) (a9583f7)
+  * Resolve issue where num_retries would have no effect (#1244) (c518472)
+  * Include discovery artifacts in published package (#1221) (ad618d0)
+  * Require Python 3.6+
+  * Add support for using static discovery documents (#1109) (32d1c59)
+  * Update synth.py to copy discovery files from discovery-artifact-manager (#1104) (af918e8)
+  * Catch ECONNRESET and other errors more reliably (#1147) (ae9cd99)
+  * deps: add upper-bound google-auth dependency (#1180) (c687f42)
+  * handle error on service not enabled (#1117) (c691283)
+  * Improve support for error_details (#1126) (e6a1da3)
+  * MediaFileUpload error if file does not exist (#1127) (2c6d029)
+  * replace deprecated socket.error with OSError (#1161) (b7b9986)
+  * Use logging level info when file_cache is not available (#1125) (0b32e69)
+  * add httplib2 authorization to thread_safety (#1005) (205ae59), closes #808
+  * Change error parsing to check for 'message' (#1083) (a341c5a), closes #1082
+  * don't raise when downloading zero byte files (#1074) (86d8788) 
+- Refreshed python-google-api-python-client-no-unittest2.patch
+
+-------------------------------------------------------------------
 Mon Jul  5 19:41:14 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 1.12.8
