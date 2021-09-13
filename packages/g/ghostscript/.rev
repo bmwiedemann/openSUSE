@@ -447,4 +447,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>895991</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>f3282fe1ec1cf9fb626d85015489e7c6</srcmd5>
+    <version>9.54.0</version>
+    <time>1631543067</time>
+    <user>dimstar_suse</user>
+    <comment>Ghostscript security fix CVE-2021-3781 (bsc#1190381) (forwarded request 917941 from jsmeix)</comment>
+    <requestid>917942</requestid>
+  </revision>
 </revisionlist>

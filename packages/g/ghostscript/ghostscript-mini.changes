@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 10 09:37:46 CEST 2021 - jsmeix@suse.de
+
+- CVE-2021-3781.patch fixes CVE-2021-3781
+  Trivial -dSAFER bypass
+  cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
+  (bsc#1190381)
+
+-------------------------------------------------------------------
 Fri May 21 13:40:56 CEST 2021 - jsmeix@suse.de
 
 - Version upgrade to 9.54.0

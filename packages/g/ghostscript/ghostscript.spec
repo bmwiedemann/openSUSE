@@ -112,6 +112,12 @@ Patch100:       remove-zlib-h-dependency.patch
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 Patch101:       ijs_exec_server_dont_use_sh.patch
+# Patch102 CVE-2021-3781.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=patch;h=a9bd3dec9fde
+# that fixes CVE-2021-3781 Trivial -dSAFER bypass
+# cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
+# and https://bugzilla.suse.com/show_bug.cgi?id=1190381
+Patch102:       CVE-2021-3781.patch
 # RPM dependencies:
 # Additional RPM Provides of the ghostscript-library packages in openSUSE 11.4 from
 # "rpm -q --provides ghostscript-library" and "rpm -q --provides ghostscript-x11":
@@ -301,6 +307,12 @@ This package contains the development files for Ghostscript.
 # Patch101 ijs_exec_server_dont_use_sh.patch fixes IJS printing problem
 # additionally allow exec'ing hpijs in apparmor profile was needed (bsc#1128467):
 %patch101 -p1
+# Patch102 CVE-2021-3781.patch is
+# https://git.ghostscript.com/?p=ghostpdl.git;a=patch;h=a9bd3dec9fde
+# that fixes CVE-2021-3781 Trivial -dSAFER bypass
+# cf. https://bugs.ghostscript.com/show_bug.cgi?id=704342
+# and https://bugzilla.suse.com/show_bug.cgi?id=1190381
+%patch102 -p1
 # Remove patch backup files to avoid packaging
 # cf. https://build.opensuse.org/request/show/581052
 rm -f Resource/Init/*.ps.orig
