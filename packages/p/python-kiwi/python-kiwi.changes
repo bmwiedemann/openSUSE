@@ -1,4 +1,180 @@
 -------------------------------------------------------------------
+Tue Sep 07 18:02:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.53 → 9.23.54
+
+-------------------------------------------------------------------
+Mon Sep 06 11:35:52 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed condition for GRUB_DISABLE_LINUX_UUID="true"
+
+  The grub config parameter GRUB_DISABLE_LINUX_UUID must only
+  be set if the device persistence setting is not UUID. However,
+  in kiwi UUID device names are the default and doesn't have to
+  be expressed explicitly. Therefore the condition to check
+  for different than 'by-uuid' is wrong for the default case were
+  no device persistence setting exists. This results in a wrong
+  grub option to be set. This commit fixes it in a way to disable
+  UUID device names in grub if the only other device persistency
+  setting in kiwi named: 'by-label' is explicitly configured.
+  This Fixes #1842
+
+-------------------------------------------------------------------
+Mon Sep 06 10:41:16 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added force_trailing_slash argument to sync_data
+
+  A speciality of the rsync tool is that it behaves differently
+  if the given source_dir ends with a '/' or not. If it ends
+  with a slash the data structure below will be synced to the
+  target_dir. If it does not end with a slash the source_dir
+  and its contents are synced to the target_dir. For example:
+
+  source
+  └── some_data
+
+  1. $ rsync -a source target
+
+  target
+  └── source
+  └── some_data
+
+  2. $ rsync -a source/ target
+
+  target
+  └── some_data
+
+  The parameter force_trailing_slash in the DataSync::sync_data
+  method can be used to make sure rsync behaves like shown in
+  the second case. This Fixes #1786
+
+-------------------------------------------------------------------
+Mon Sep 06 10:24:41 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added type hints for DataSync class
+
+-------------------------------------------------------------------
+Fri Sep 03 08:48:20 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.52 → 9.23.53
+
+-------------------------------------------------------------------
+Thu Sep 02 13:00:51 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Add missing bootloader tests
+
+  Merging #1850 exposed the missing bootloader tests.
+  This reminds me to move the gitlab driven unit tests
+  to github actions because for forked repos the gitlab
+  tests does not run but github actions tests would run
+
+-------------------------------------------------------------------
+Tue Aug 31 20:22:52 CEST 2021 - Robert Schneider <48757730+data-intelligence-robot@users.noreply.github.com>
+
+- Fix logging of ISO publisher
+
+-------------------------------------------------------------------
+Tue Aug 31 01:29:40 CEST 2021 - Mexit <mexit@o2.pl>
+
+- Improving text formatting
+
+-------------------------------------------------------------------
+Tue Aug 31 00:21:45 CEST 2021 - Mexit <mexit@o2.pl>
+
+- Added documentation for grub2 loopback ISO images
+
+-------------------------------------------------------------------
+Fri Aug 27 15:33:57 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.51 → 9.23.52
+
+-------------------------------------------------------------------
+Fri Aug 27 15:33:19 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed pep E711 code smell
+
+  comparison to None should be 'if cond is not None:'
+
+-------------------------------------------------------------------
+Fri Aug 27 15:29:13 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.50 → 9.23.51
+
+-------------------------------------------------------------------
+Fri Aug 27 13:47:05 CEST 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- No compression with encryption
+
+  When an image is setup to use encryption the resulting image appears
+  as a random stream of bytes and cannot be compressed. Simply skip
+  the compression in this case.
+
+-------------------------------------------------------------------
+Thu Aug 26 12:52:18 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fix typo in schema documentation
+
+  ciper -> cipher. Fix originally done by Robert Schweikert
+  and moved to the right place, see Issue #1906 for details
+
+-------------------------------------------------------------------
+Thu Aug 12 17:34:44 CEST 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
+
+- Allow target dir for archive
+
+  - Add the option to specify a target directory
+  to unpack the archive
+  - Update doc for target dir attribute
+
+  This Fixes #1794
+
+-------------------------------------------------------------------
+Tue Aug 10 18:12:25 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Log deprecation errors to stderr
+
+  Make sure information about deprecated shell methods
+  logs their information to stderr. This will cause the
+  error message to be exposed to the user and not only
+  in the log file
+
+-------------------------------------------------------------------
+Tue Aug 10 16:11:38 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed TW build test
+
+  Explicitly added packages that causes conflicts due
+  to the busybox alternatives
+
+-------------------------------------------------------------------
+Tue Aug 10 15:13:50 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.49 → 9.23.50
+
+-------------------------------------------------------------------
+Thu Aug 05 16:34:10 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added support for repo customization script
+
+  repo files allows for several customization options
+  which could not be set by kiwi through the current
+  repository schema. As the options used do not follow
+  any standard and are not compatible between package
+  managers and distributions the only generic way to
+  handle this is through a script which is invoked
+  with the repo file as parameter for each file created
+  to describe a repo for the selected package manager.
+  This allows users to update/change the repo file content
+  on their individual needs. In the kiwi description the
+  path to the custom script can be specified as follows
+
+  <repository ... customize="/path/to/custom_script">
+  <source path="..."/>
+  </repository>
+
+  This Fixes #1896
+
+-------------------------------------------------------------------
 Fri Jul 30 11:01:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.48 → 9.23.49
@@ -312,6 +488,20 @@ Wed Jun 23 14:45:09 CEST 2021 - Dan Čermák <dcermak@suse.com>
   dracut-pre-mount[480]: //lib/dracut/hooks/pre-mount/30-kiwi-overlay-root.sh: line 46: lsblk: command not found
 
 -------------------------------------------------------------------
+Tue Jun 22 11:22:09 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Start moving CI test from gitlab to actions
+
+  Moving the linter and unit tests to github workflows and
+  out of the gitlab CI system has the advantage that pull
+  request from forked repos will run the tests. In the long
+  run I think we should move away completely from gitlab CI
+  and use github actions as this will reduce the number of
+  external services used in the kiwi project. This commit
+  starts with the most simple parts: unit and type tests,
+  doc rendering and code style
+
+-------------------------------------------------------------------
 Mon Jun 21 15:47:31 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Make sure chat link points to Element not Riot
@@ -377,6 +567,26 @@ Mon Jun 21 11:51:43 CEST 2021 - Marcus Schäfer <ms@suse.de>
 Sat Jun 19 22:01:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Make sure mypy stubs will be installed
+
+-------------------------------------------------------------------
+Thu Jun 17 22:30:20 CEST 2021 - Mexit <mexit@o2.pl>
+
+- Update grub2.py
+
+-------------------------------------------------------------------
+Thu Jun 17 18:19:20 CEST 2021 - Mexit <mexit@o2.pl>
+
+- Code improvement
+
+-------------------------------------------------------------------
+Thu Jun 17 18:17:12 CEST 2021 - Mexit <mexit@o2.pl>
+
+- Code improvement
+
+-------------------------------------------------------------------
+Wed Jun 16 20:22:22 CEST 2021 - Mexit <mexit@o2.pl>
+
+- Allow the ISO to be booted from grub directly
 
 -------------------------------------------------------------------
 Wed Jun 16 11:33:24 CEST 2021 - Marcus Schäfer <ms@suse.de>
@@ -2327,6 +2537,21 @@ Wed Jan 13 12:32:17 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
 Tue Jan 12 17:31:13 CET 2021 - Jesus Bermudez Velazquez <jesus.bv@suse.com>
 
 - Update contributing link in README
+
+-------------------------------------------------------------------
+Mon Jan 11 15:02:52 CET 2021 - Marcus Schäfer <ms@suse.de>
+
+- Delete obsolete ddb.adapterType patching
+
+  When building a vmdk image with pvscsi as adapter type, kiwi
+  implicitly changed the adapter_type from pvscsi to lsilogic
+  because qemu only knows lsilogic. At the end kiwi patched
+  the adapter type in the descriptor of the vmdk header back
+  to pvscsi. That patching seems to be wrong according to
+  information from users and VMware support. This commit
+  deletes the descriptor patching and only leaves the pvscsi
+  setting in the guest configuration(vmx).
+  This Fixes bsc#1180539 and Fixes #1847
 
 -------------------------------------------------------------------
 Mon Jan 11 09:48:00 CET 2021 - Marcus Schäfer <ms@suse.de>

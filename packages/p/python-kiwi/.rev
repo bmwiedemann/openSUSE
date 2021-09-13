@@ -1857,4 +1857,41 @@
 - Bump version: 9.23.45 → 9.23.46</comment>
     <requestid>910293</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>6d440f5eb11b045d567598e78785019d</srcmd5>
+    <version>9.23.54</version>
+    <time>1631543052</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump version: 9.23.53 → 9.23.54
+
+- Fixed condition for GRUB_DISABLE_LINUX_UUID=&quot;true&quot;
+  The grub config parameter GRUB_DISABLE_LINUX_UUID must only
+  be set if the device persistence setting is not UUID. However,
+  in kiwi UUID device names are the default and doesn't have to
+  be expressed explicitly. Therefore the condition to check
+  for different than 'by-uuid' is wrong for the default case were
+  no device persistence setting exists. This results in a wrong
+  grub option to be set. This commit fixes it in a way to disable
+  UUID device names in grub if the only other device persistency
+  setting in kiwi named: 'by-label' is explicitly configured.
+  This Fixes #1842
+
+- Added force_trailing_slash argument to sync_data
+  A speciality of the rsync tool is that it behaves differently
+  if the given source_dir ends with a '/' or not. If it ends
+  with a slash the data structure below will be synced to the
+  target_dir. If it does not end with a slash the source_dir
+  and its contents are synced to the target_dir. For example:
+  source
+  └── some_data
+  1. $ rsync -a source target
+  target
+  └── source
+  └── some_data
+  2. $ rsync -a source/ target
+  target
+  └── some_data
+  The parameter force_trailing_slash in the DataSync::sync_data</comment>
+    <requestid>917454</requestid>
+  </revision>
 </revisionlist>
