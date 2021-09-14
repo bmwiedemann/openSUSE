@@ -33,4 +33,12 @@
 </comment>
     <requestid>865181</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>cf607bd176a3411ad0a7108e7deb2942</srcmd5>
+    <version>0.10.12</version>
+    <time>1631646873</time>
+    <user>dimstar_suse</user>
+    <comment>Fix ftbfs due to rpmlintrc changes</comment>
+    <requestid>918838</requestid>
+  </revision>
 </revisionlist>

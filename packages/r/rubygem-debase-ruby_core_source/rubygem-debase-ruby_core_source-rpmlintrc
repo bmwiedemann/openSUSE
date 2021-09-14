@@ -1,0 +1,2 @@
+# The package ships header files in the gems directory on purpose
+addFilter("devel-file-in-non-devel-package.*h")

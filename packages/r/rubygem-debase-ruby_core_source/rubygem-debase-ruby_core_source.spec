@@ -16,29 +16,30 @@
 #
 
 
+%define mod_name debase-ruby_core_source
+%define mod_full_name %{mod_name}-%{version}
 #
 # This file was generated with a gem2rpm.yml and not just plain gem2rpm.
 # All sections marked as MANUAL, license headers, summaries and descriptions
 # can be maintained in that file. Please consult this file before editing any
 # of those fields
 #
-
 Name:           rubygem-debase-ruby_core_source
 Version:        0.10.12
 Release:        0
-%define mod_name debase-ruby_core_source
-%define mod_full_name %{mod_name}-%{version}
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  %{ruby >= 1.9.3}
-BuildRequires:  %{rubygem gem2rpm}
-BuildRequires:  ruby-macros >= 5
-URL:            http://github.com/os97673/debase-ruby_core_source
-Source:         https://rubygems.org/gems/%{mod_full_name}.gem
-Source1:        rpmlintrc
-Source2:        gem2rpm.yml
 Summary:        Provide Ruby core source files
 License:        MIT
 Group:          Development/Languages/Ruby
+URL:            https://github.com/os97673/debase-ruby_core_source
+Source:         https://rubygems.org/gems/%{mod_full_name}.gem
+Source1:        rubygem-debase-ruby_core_source-rpmlintrc
+Source2:        gem2rpm.yml
+BuildRequires:  %{ruby >= 1.9.3}
+BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
+# MANUAL
+BuildRequires:  fdupes
+# /MANUAL
 
 %description
 Provide Ruby core source files for C extensions that need them.
@@ -51,6 +52,12 @@ Provide Ruby core source files for C extensions that need them.
 %gem_install \
   --doc-files="CHANGELOG.md LEGAL LICENSE.txt README.md" \
   -f
+# MANUAL
+# drop files from the git repository
+find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.gitignore' \) | xargs rm
+%fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_full_name}/
+# /MANUAL
+
 
 %gem_packages
 

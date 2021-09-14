@@ -1,4 +1,4 @@
-# ---
+---
 # ## used by gem2rpm
 # :summary: this is a custom summary
 # ## used by gem2rpm
@@ -15,8 +15,8 @@
 # ## used by gem2rpm
 # :disable_automatic_rdoc_dep: true
 # ## used by gem2rpm
-# :preamble: |-
-#   BuildRequires: foobar
+:preamble: |-
+  BuildRequires: fdupes
 #   Requires: foobar
 # ## used by gem2rpm
 # :patches:
@@ -26,7 +26,7 @@
 #   if you need to fiddle with the source dir before rebuilding the gem
 # ## used by gem2rpm
 :sources:
-  - rpmlintrc
+  - rubygem-debase-ruby_core_source-rpmlintrc
 # - foo.desktop
 # - bar.desktop
 # :gem_install_args: '....'
@@ -36,9 +36,10 @@
 #   export USE_VENDORED_LIBEV="no"
 #   %endif
 # ## used by gem2rpm
-# :post_install: |-
-#   # delete custom files here or do other fancy stuff
-#   install -D -m 0644 %{S:1} %{buildroot}%{_bindir}/gem2rpm-opensuse
+:post_install: |-
+  # drop files from the git repository
+  find %{buildroot}/%{_libdir}/ruby/gems/ \( -name '.gitignore' \) | xargs rm
+  %fdupes %{buildroot}%{_libdir}/ruby/gems/*/gems/%{mod_full_name}/
 # ## used by gem2rpm
 # :testsuite_command: |-
 #   (pushd %{buildroot}%{gem_base}/gems/%{mod_full_name} && rake test)
