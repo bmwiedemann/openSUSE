@@ -18,7 +18,7 @@
 
 %define cpan_name JSON-Validator
 Name:           perl-JSON-Validator
-Version:        4.21
+Version:        4.23
 Release:        0
 Summary:        Validate data against a JSON schema
 License:        Artistic-2.0
@@ -46,6 +46,7 @@ to define the schema programmatically.
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
