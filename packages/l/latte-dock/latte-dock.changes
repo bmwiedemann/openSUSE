@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 13 18:27:27 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Update to 0.10.2
+  * Fix crash from containmentactions loading after KDE Frameworks
+    5.86 (kde#441448)
+  * Fitt's Law fix for vertical panels in justify alignment
+  * Fitt's Law fix for applets touching the screen edge and at the
+    same time using parabolic effect
+  * Hide all context menu actions if the user has chosen it
+  * Add missing translations for docks/panels dialog
+
+-------------------------------------------------------------------
 Wed Aug 25 20:13:37 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 0.10.1
