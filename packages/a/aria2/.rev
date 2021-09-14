@@ -786,4 +786,12 @@ SPDX format for this license - which has an openssl exception (forwarded request
 - Drop no longer needed aria2-CVE-2019-3500.patch</comment>
     <requestid>736013</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>3d02b1a4c04ca0dd2fa444e1eb5bdfd9</srcmd5>
+    <version>1.36.0</version>
+    <time>1631646871</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918825</requestid>
+  </revision>
 </revisionlist>

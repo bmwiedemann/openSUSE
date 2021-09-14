@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 13 20:16:12 UTC 2021 - Enrico Belleri <idesmi@protonmail.com>
+
+- Update to version 1.36.0
+  * Update wslay
+  * Fix segfault when time_t is 64bit on 32bit arch
+  * Updates the make_bash_completion script to Python3
+  * Prevent corrupt downloads after app and/or system crash
+  * Reset sessionDownloadLength and sessionUploadLength on download start
+
+-------------------------------------------------------------------
 Tue Oct  8 07:47:43 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.35.0

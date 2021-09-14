@@ -1,7 +1,7 @@
 #
 # spec file for package aria2
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define         somajor 0
 Name:           aria2
-Version:        1.35.0
+Version:        1.36.0
 Release:        0
 Summary:        Parallelizing Multi-Protocol Utility for Downloading Files
 License:        SUSE-GPL-2.0-with-openssl-exception
 URL:            https://aria2.github.io
 Source0:        https://github.com/aria2/aria2/releases/download/release-%{version}/%{name}-%{version}.tar.xz
-BuildRequires:  bison
 BuildRequires:  gcc-c++
-BuildRequires:  gmp-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(gnutls)
@@ -38,6 +36,11 @@ BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     ca-certificates
+%if 0%{?suse_version} > 1500
+BuildRequires:  pkgconfig(gmp)
+%else
+BuildRequires:  gmp-devel
+%endif
 
 %description
 aria2 is a utility for downloading files. It has a segmented
