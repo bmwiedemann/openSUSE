@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep  9 03:07:33 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.26
+   see /usr/share/doc/packages/perl-Mojo-Pg/Changes
+
+  4.26  2021-09-08
+    - Fixed a bug in Mojo::Pg::PubSub would sometimes miss notifications. (akarelas)
+
+-------------------------------------------------------------------
 Sun Feb 21 03:11:58 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.25
