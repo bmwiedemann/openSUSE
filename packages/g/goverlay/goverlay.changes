@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 13 22:06:46 UTC 2021 - andy great <andythe_great@pm.me>
+
+- Update to version 0.6.3.
+  * NEW: Add vkcube test inside the Gamemenu button
+  * NEW: Add script "start_goverlay.sh" to the .tar.xz binary
+  * FIX: Fixed the custom FPS option that broke some updates ago.
+  * FIX: Changed Distro version implementation so it works on steam
+    games now.
+  * FIX: Code cleanup after text hud was removed
+  * FIX: small interface fixes
+
+-------------------------------------------------------------------
 Sat Aug 21 22:02:20 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Update to version 0.6.2.
