@@ -38,8 +38,7 @@ Recommends:     %{name}-rdw = %{version}
 Recommends:     ethtool
 Recommends:     lsb-release
 Recommends:     smartmontools
-Suggests:       acpi-call-kmp
-Suggests:       tp-smapi-kmp
+Recommends:     bbswitch
 Conflicts:      laptop-mode-tools
 BuildArch:      noarch
 %{?systemd_ordering}
