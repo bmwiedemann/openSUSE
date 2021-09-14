@@ -1,0 +1,17 @@
+Index: django-rest-knox-4.1.0/knox_project/settings.py
+===================================================================
+--- django-rest-knox-4.1.0.orig/knox_project/settings.py
++++ django-rest-knox-4.1.0/knox_project/settings.py
+@@ -10,7 +10,6 @@ INSTALLED_APPS = (
+     'django.contrib.sessions',
+     'rest_framework',
+     'knox',
+-    'django_nose',
+ )
+ 
+ MIDDLEWARE_CLASSES = (
+@@ -56,4 +55,3 @@ USE_TZ = True
+ 
+ STATIC_URL = '/static/'
+ 
+-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 01:26:23 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-django-nose.patch:
+  * Use pytest-django to run the tests, rather than django-nose. 
+
+-------------------------------------------------------------------
 Tue Apr 28 09:42:48 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to build with Django 3.x:

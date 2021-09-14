@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-rest-knox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ License:        MIT
 URL:            https://github.com/James1345/django-rest-knox
 Source:         https://github.com/James1345/django-rest-knox/archive/%{version}.tar.gz#/django-rest-knox-%{version}.tar.gz
 Patch0:         django3.patch
+Patch1:         remove-django-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -36,9 +37,10 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module django-nose}
 BuildRequires:  %{python_module djangorestframework}
 BuildRequires:  %{python_module freezegun}
+BuildRequires:  %{python_module pytest-django}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
 
@@ -46,8 +48,7 @@ BuildRequires:  %{python_module freezegun}
 Authentication for Django REST framework.
 
 %prep
-%setup -q -n django-rest-knox-%{version}
-%patch0 -p1
+%autosetup -p1 -n django-rest-knox-%{version}
 # knox does not use pyOpenSSL; it uses cryptography.
 # pyOpenSSL is a proxy for cryptography in 3.6.0,
 # and replaced by cryptography in 4.0.0
@@ -62,7 +63,7 @@ sed -i "s/'pyOpenSSL'/'cryptography'/" setup.py
 
 %check
 export DJANGO_SETTINGS_MODULE=knox_project.settings
-%python_expand $python manage.py test -v 2
+%pytest tests/tests.py
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
