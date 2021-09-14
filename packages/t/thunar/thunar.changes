@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Sep 12 15:45:32 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.9
+  * Listen to changes on shortcuts to update them when required
+  * Use move action when dragging files of different users
+    (gxo#xfce/thunar#196)
+  * Fix file-icon update when file is cut (gxo#xfce/thunar#588)
+  * Open correct folder on middle-click in tree-view
+    (gxo#xfce/thunar#626)
+  * Disable automatic queueing of file transferes
+    (gxo#xfce/thunar#569)
+  * Fix GLib-CRITICAL in list-view (gxo#xfce/thunar#487)
+  * thunar_file_is_executable() now checks if .desktop file is safe
+  * Fix missing folder in history when opened in new tab
+    (gxo#xfce/thunar#594)
+  * Fixing various memory leaks (gxo#xfce/thunar#573)
+  * Update manpage (gxo#xfce/thunar#121)
+  * Dont show "execute" on context menu for folders
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat May  8 10:04:26 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.8
