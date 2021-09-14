@@ -57,7 +57,6 @@ This package provides Qt5 WebEngine framework API files for the Eric IDE.
 %package sip
 Summary:        Sip files for %{name}
 Group:          Development/Libraries/Python
-Supplements:    packageand(python-sip:python-%{mname}) 
 Provides:       %{oldpython}-%{mname}-sip = %{version}-%{release}
 Obsoletes:      %{oldpython}-%{mname}-sip < %{version}-%{release}
 Requires:       python-qt5-devel

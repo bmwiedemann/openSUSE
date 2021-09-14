@@ -98,4 +98,12 @@ Required for python-AnyQt</comment>
     <comment></comment>
     <requestid>900826</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>400f2028d0b319b894e2915571c09316</srcmd5>
+    <version>5.15.4</version>
+    <time>1631646881</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918870</requestid>
+  </revision>
 </revisionlist>
