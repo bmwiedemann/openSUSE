@@ -1180,4 +1180,11 @@ vendor &quot;openSUSE&quot;, product &quot;MicroOS&quot; though.</comment>
     <comment>Switch icon names to reflect the distribution, to avoid icon themes from displaying the wrong logo</comment>
     <requestid>917961</requestid>
   </revision>
+  <revision rev="163" vrev="161">
+    <srcmd5>7872a0af1d9d136bf3425809d0bff0c9</srcmd5>
+    <version>unknown</version>
+    <time>1631607972</time>
+    <user>dimstar_suse</user>
+    <comment>Shrink DVD a bit - lock wireshark</comment>
+  </revision>
 </revisionlist>
