@@ -17,7 +17,7 @@
 
 
 Name:           antimicrox
-Version:        3.1.6
+Version:        3.1.7
 Release:        0
 Summary:        Graphical program used to map keyboard keys and mouse controls to a game-pad
 License:        GPL-3.0-or-later
@@ -28,7 +28,7 @@ Source0:        https://github.com/AntiMicroX/%{name}/archive/%{version}.tar.gz#
 Patch0:         remove_datetime_aboutdialog.patch
 # PATCH-FIX-OPENSUSE fix_xcb_linker.patch -- fix linking xcb
 Patch1:         fix_xcb_linker.patch
-BuildRequires:  cmake >= 3.6
+BuildRequires:  cmake >= 3.12
 BuildRequires:  desktop-file-utils
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
@@ -75,6 +75,9 @@ which was later abandoned and revived by juliagoda.
 # remove redundant changelog
 rm %{buildroot}%{_datadir}/%{name}/CHANGELOG.md
 rm %{buildroot}%{_datadir}/doc/%{name}/CHANGELOG.md
+ 
+# rename udev rule - see gh#AntiMicroX/antimicrox/#204
+mv %{buildroot}%{_udevrulesdir}/60-antimcrox-uinput.rules %{buildroot}%{_udevrulesdir}/60-%{name}-uinput.rules
 
 %fdupes %{buildroot}%{_datadir}
 %suse_update_desktop_file -r io.github.antimicrox.%{name} System HardwareSettings
@@ -88,9 +91,10 @@ rm %{buildroot}%{_datadir}/doc/%{name}/CHANGELOG.md
 %{_datadir}/metainfo/io.github.antimicrox.%{name}.appdata.xml
 %{_datadir}/mime/packages/io.github.antimicrox.%{name}.xml
 %{_datadir}/icons/hicolor/*/apps/*
-%{_datadir}/icons/breeze/
-%{_datadir}/icons/breeze/48x48/*
+%dir %{_datadir}/icons/breeze
+%dir %{_datadir}/icons/breeze/48x48
 %{_datadir}/icons/breeze/48x48/apps*
 %{_mandir}/man?/%{name}.?%{?ext_man}
+%{_udevrulesdir}/60-%{name}-uinput.rules
 
 %changelog

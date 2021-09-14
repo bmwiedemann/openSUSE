@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 11 04:41:12 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 3.1.7
+  - Wayland support for keyboard emulation rocket
+  - Load save dialogue window won't show saved configs = can't
+    open saves
+  - Segmentation Fault when change profile from command line
+  - Include Appstream information into AppImage Build
+  - fix: Remove warning "QLocalSocket::waitForDisconnected()
+    is not allow…
+  - Crash-related fixes linked with memory management
+  - refactor: Improve log showing gamepad name
+  - refactor: Refactor executing commands
+  - Allow regular users using uinput
+  - feat: switch from xtest to uinput when wayland is detected
+- Update BuildRequires: cmake >= 3.12 is needed
+- Fix some rpmlint warnings
+
+-------------------------------------------------------------------
 Sat Aug 28 07:25:32 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 3.1.6
