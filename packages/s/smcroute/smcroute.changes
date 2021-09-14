@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug 27 16:26:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.2
+  Changes
+  * Allow installing routes with no outbound interfaces.
+  * Reinitialize VIFs on reload in case of new interfaces.
+  * Handle cases when interfaces change ifindex, i.e. they've first
+    been * removed and then re-added with the same name.
+  Fixes
+  * Fix VIF leak when deleting interfaces with MRDISC enabled.
+  * Fix handling when an (S,G) moves to another IIF. This fixes
+    issues where the SMCRoute kernel cache was out of sync with
+    the kernel MFC.
+  * Fix handling of lost/disabled interfaces at reload. This fixes
+    a couple of issues where routes were not updated properly at
+    runtime.
+  * Update interface flags on reload, this fixes issues when
+    SMCRoute failed to detect interfaces that had their MULTICAST
+    flag set or cleared at runtime.
+  * Skip setsockopt() for IPC sockets. This fixes warnings in
+    syslog about failing to disable MULTICAST_LOOP and
+    MULTICAST_ALL.
+
+-------------------------------------------------------------------
 Sun Aug 22 08:42:23 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.1
