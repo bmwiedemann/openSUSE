@@ -1,7 +1,7 @@
 #
 # spec file for package stardict-tools
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           stardict-tools
 Version:        3.0.1
 Release:        0
 Summary:        StarDict Editor
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Office/Dictionary
-Url:            http://stardict.sourceforge.net
+URL:            http://stardict.sourceforge.net
 Source:         %{name}-%{version}.tar.bz2
 Source1:        %{name}.README.SUSE
 Source2:        stardict-editor.png
@@ -32,6 +32,7 @@ Patch2:         stardict-tools-3.0.1-destbufferoverflow.patch
 Patch3:         stardict-tools-3.0.1-gcc44.patch
 Patch4:         stardict-tools-3.0.1-gcc6.patch
 Patch5:         stardict-tools-3.0.1-wikipediaImage.patch
+Patch6:         python3-support.patch
 BuildRequires:  dos2unix
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel >= 2.6.0
@@ -61,6 +62,7 @@ dictionaries of DICT, wquick, mova and pydict to stardict format.
 %patch3
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
 
 %build
 autoreconf -fiv
@@ -84,15 +86,8 @@ for file in $(grep noinst_PROGRAMS Makefile.am | sed -e 's/noinst_PROGRAMS = //'
 	fi
 done
 # install scripts in sharedir
-for file in uyghur2dict.py mkguangyunst.py stmerge.py KangXiZiDian-djvu2tiff.py; do
-	echo '#!%{_bindir}/python' > "${file}.tmp"
-	cat "$file" >> "${file}.tmp"
-	mv -f "${file}.tmp" "$file"
-	chmod 755 "$file"
-done
 for file in *.py *.pl *.perl; do
   dos2unix -q -n $file %{buildroot}/%{_datadir}/%{name}/$file
-  sed -i 's|^#!%{_bindir}/env python.*|#!%{_bindir}/python|' %buildroot/%{_datadir}/%{name}/$file
   chmod 755 %{buildroot}/%{_datadir}/%{name}/$file
 done
 popd 1>/dev/null

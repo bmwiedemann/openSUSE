@@ -1,0 +1,602 @@
+Index: stardict-tools-3.0.1/src/jm2stardict.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/jm2stardict.py
++++ stardict-tools-3.0.1/src/jm2stardict.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python2
++#!/usr/bin/python3
+ # 
+ # converts XML JMDict to Stardict idx/dict format
+ # JMDict website: http://www.csse.monash.edu.au/~jwb/j_jmdict.html
+@@ -27,9 +27,8 @@ import struct, sys, string, codecs,os
+ 
+ def text(nodes):
+     label = ""
+-    textnodes = filter(lambda x: x.nodeName == "#text", nodes)
+-    for t in textnodes:
+-	label += t.data
++    for t in [x for x in nodes if x.nodeName == "#text"]:
++        label += t.data
+     return label
+ 
+ def strcasecmp(a, b):
+@@ -42,7 +41,7 @@ def strcasecmp(a, b):
+     # if result == 0:
+ 
+     result = cmp(a[0].lower() , b[0].lower())
+-	
++
+     return result
+ 
+ def merge_dup(list):
+@@ -50,55 +49,55 @@ def merge_dup(list):
+     lastkey = ""
+     
+     for x in list:
+-	if x[0] == lastkey:
+-	    newlist[-1] = (newlist[-1][0], newlist[-1][1] + "\n" + x[1])
+-	else:
+-	    newlist.append(x)
+-	    lastkey = x[0]
++        if x[0] == lastkey:
++            newlist[-1] = (newlist[-1][0], newlist[-1][1] + "\n" + x[1])
++        else:
++            newlist.append(x)
++            lastkey = x[0]
+     
+     return newlist
+ 
+ class JMDictHandler(ContentHandler):
+     def __init__(self):
+-	self.mapping = []
+-	self.state = ""
+-	self.buffer = ""
++        self.mapping = []
++        self.state = ""
++        self.buffer = ""
+ 
+     def startElement(self, name, attrs):
+-	if name == "entry":
+-	    self.kanji = []
+-	    self.chars = []
+-	    self.gloss = []
+-	    self.state = ""
+-	    self.buffer = ""
+-	elif name == "keb":
+-	    self.state = "keb"
+-	elif name == "reb":
+-	    self.state = "reb"
+-	elif name == "gloss" and not attrs:
+-	    self.state = "gloss"
+-	elif name == "xref":
+-	    self.state = "xref"
+-	
++        if name == "entry":
++            self.kanji = []
++            self.chars = []
++            self.gloss = []
++            self.state = ""
++            self.buffer = ""
++        elif name == "keb":
++            self.state = "keb"
++        elif name == "reb":
++            self.state = "reb"
++        elif name == "gloss" and not attrs:
++            self.state = "gloss"
++        elif name == "xref":
++            self.state = "xref"
++
+     def endElement(self, name):
+-	if name == "entry":
+-	    self.mapping.append((self.kanji, self.chars, self.gloss))
+-	elif name == "keb":
+-	    self.kanji.append(self.buffer)
+-	elif name == "reb":
+-	    self.chars.append(self.buffer)
+-	elif name == "gloss" and self.buffer:
+-	    self.gloss.append(self.buffer)
+-	elif name == "xref":
+-	    self.gloss.append(self.buffer)
+-	
+-	self.buffer = ""
+-	self.state = ""
+-	    
++        if name == "entry":
++            self.mapping.append((self.kanji, self.chars, self.gloss))
++        elif name == "keb":
++            self.kanji.append(self.buffer)
++        elif name == "reb":
++            self.chars.append(self.buffer)
++        elif name == "gloss" and self.buffer:
++            self.gloss.append(self.buffer)
++        elif name == "xref":
++            self.gloss.append(self.buffer)
++
++        self.buffer = ""
++        self.state = ""
++
+     def characters(self, ch):
+-	if self.state in ["keb", "reb", "gloss", "xref"]:
+-	    self.buffer = self.buffer + ch
+-	    
++        if self.state in ["keb", "reb", "gloss", "xref"]:
++            self.buffer = self.buffer + ch
++
+ 
+ def map_to_file(dictmap, filename):    
+     dict = open(filename + ".dict","wb")
+@@ -111,59 +110,59 @@ def map_to_file(dictmap, filename):
+     idx.write(struct.pack("!I",len(dictmap)))
+     
+     for k,v in dictmap:
+-	k_utf8 = k.encode("utf-8")
+-	v_utf8 = v.encode("utf-8")
+-	idx.write(k_utf8 + "\0")    
+-	idx.write(struct.pack("!I",offset))
+-	idx.write(struct.pack("!I",len(v_utf8)))
+-	offset += len(v_utf8)
+-	dict.write(v_utf8)    
++        k_utf8 = k.encode("utf-8")
++        v_utf8 = v.encode("utf-8")
++        idx.write(k_utf8 + "\0")
++        idx.write(struct.pack("!I",offset))
++        idx.write(struct.pack("!I",len(v_utf8)))
++        offset += len(v_utf8)
++        dict.write(v_utf8)
+     
+     dict.close()
+     idx.close()
+ 
+ if __name__ == "__main__":
+     
+-    print "opening xml dict .."
++    print("opening xml dict ..")
+     f = gzip.open("JMdict.gz")
+     #f = open("jmdict_sample.xml")
+     
+-    print "parsing xml file .."
++    print("parsing xml file ..")
+     parser = xml.sax.make_parser()
+     handler = JMDictHandler()
+     parser.setContentHandler(handler)
+     parser.parse(f)
+     f.close()
+ 
+-    print "creating dictionary .."
++    print("creating dictionary ..")
+     # create a japanese -> english mappings
+     jap_to_eng = []
+     for kanji,chars,gloss in handler.mapping:
+-	for k in kanji:
+-	    key = k
+-	    value = string.join(chars + gloss, "\n")
+-	    jap_to_eng.append((key,value))
+-	for c in chars:
+-	    key = c
+-	    value = string.join(kanji + gloss, "\n")
+-	    jap_to_eng.append((key,value))
+-	    
++        for k in kanji:
++            key = k
++            value = string.join(chars + gloss, "\n")
++            jap_to_eng.append((key,value))
++        for c in chars:
++            key = c
++            value = string.join(kanji + gloss, "\n")
++            jap_to_eng.append((key,value))
++
+     eng_to_jap = []
+     for kanji,chars,gloss in handler.mapping:
+-	for k in gloss:
+-	    key = k
+-	    value = string.join(kanji + chars, "\n")
+-	    eng_to_jap.append((key,value))
+-	
+-    print "sorting dictionary .."
++        for k in gloss:
++            key = k
++            value = string.join(kanji + chars, "\n")
++            eng_to_jap.append((key,value))
++
++    print("sorting dictionary ..")
+     jap_to_eng.sort(strcasecmp)
+     eng_to_jap.sort(strcasecmp)
+     
+-    print "merging and pruning dups.."
++    print("merging and pruning dups..")
+     jap_to_eng = merge_dup(jap_to_eng)
+     eng_to_jap = merge_dup(eng_to_jap)
+     
+-    print "writing to files.."
++    print("writing to files..")
+     
+     # create dict and idx file
+     map_to_file(jap_to_eng, "jmdict-ja-en")
+Index: stardict-tools-3.0.1/src/makevietdict.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/makevietdict.py
++++ stardict-tools-3.0.1/src/makevietdict.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # WinVNKey Hannom Database to Stardict dictionary source Conversion Tool
+ # coded by wesnoth@ustc on 070804
+ # http://winvnkey.sourceforge.net
+@@ -7,7 +7,7 @@ infileencoding = 'utf-16-le'
+ outfileencoding = 'utf-8'
+ 
+ def showhelp():
+-	print "Usage: %s filename" % sys.argv[0]
++	print("Usage: %s filename" % sys.argv[0])
+ 
+ def ishantu(str):
+ 	if len(str) > 0 and ord(str[0]) > 0x2e80:
+@@ -37,15 +37,15 @@ def mysplit(line):
+ 			return line
+ 
+ if __name__ == '__main__':
+-	if len(sys.argv) <> 2:
++	if len(sys.argv) != 2:
+ 		showhelp()
+ 	else:
+ 		fp = open(sys.argv[1], 'r')
+-		print 'Reading file...'
++		print('Reading file...')
+ 		lines = unicode(fp.read(), infileencoding).split(u'\n')
+ 		lineno = 0
+ 		hugedict = {}
+-		print 'Generating Han-Viet dict...'
++		print('Generating Han-Viet dict...')
+ 		for line in lines:
+ 			lineno += 1
+ 			if line.endswith(u'\r'):
+@@ -72,7 +72,7 @@ if __name__ == '__main__':
+ 			line[1] = filter(None, map(string.strip, line[1].split(u',')))
+ 			#hugedict[line[0]] = hugedict.get(line[0], []) + line[1]
+ 			for item in line[1]:
+-				if not hugedict.has_key(line[0]):
++				if line[0] not in hugedict:
+ 					hugedict[line[0]] = [item]
+ 				elif not item in hugedict[line[0]]:
+ 					hugedict[line[0]] +=  [item]
+@@ -83,25 +83,25 @@ if __name__ == '__main__':
+ 		#		print viettu.encode('utf-8'), ',', 
+ 		#	print
+ 		fp.close()
+-		print 'Generating Viet-Han dict...'
++		print('Generating Viet-Han dict...')
+ 		dicthuge = {}
+-		for hantu, quocngu in hugedict.iteritems():
++		for hantu, quocngu in hugedict.items():
+ 			for viettu in quocngu:
+-				if not dicthuge.has_key(viettu):
++				if viettu not in dicthuge:
+ 					dicthuge[viettu] = [hantu]
+ 				elif not hantu in dicthuge[viettu]:
+ 					dicthuge[viettu] +=  [hantu]
+-		print 'Writing Han-Viet dict...'
++		print('Writing Han-Viet dict...')
+ 		gp = open('hanviet.txt', 'w')
+-		for hantu, quocngu in hugedict.iteritems():
++		for hantu, quocngu in hugedict.items():
+ 			gp.write(hantu.encode('utf-8'))
+ 			gp.write('\t')
+ 			gp.write((u', '.join(quocngu)).encode('utf-8'))
+ 			gp.write('\n')
+ 		gp.close()
+-		print 'Writing Viet-Han dict...'
++		print('Writing Viet-Han dict...')
+ 		gp = open('viethan.txt', 'w')
+-		for quocngu,hantu in dicthuge.iteritems():
++		for quocngu,hantu in dicthuge.items():
+ 			gp.write(quocngu.encode('utf-8'))
+ 			gp.write('\t')
+ 			gp.write((u' '.join(hantu)).encode('utf-8'))
+Index: stardict-tools-3.0.1/src/lingea-trd-decoder.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/lingea-trd-decoder.py
++++ stardict-tools-3.0.1/src/lingea-trd-decoder.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ #
+ # Script for decoding Lingea Dictionary (.trd) file
+@@ -49,34 +49,34 @@ VERSION = "0.4"
+ 
+ import getopt, sys
+ def usage():
+-   print "Lingea Dictionary Decoder"
+-   print "-------------------------"
+-   print "Version: %s" % VERSION
+-   print "Copyright (C) 2007 - Klokan Petr Pridal, Petr Dlouhy"
+-   print
+-   print "Usage: python lingea-trd-decoder.py DICTIONARY.trd > DICTIONARY.tab"
+-   print "Result convertion by stardict-tools: /usr/lib/stardict-tools/tabfile"
+-   print
+-   print "    -o <num>      --out-style        : Output style"
+-   print "                                          0   no tags"
+-   print "                                          1   \\n tags"
+-   print "                                          2   html tags"
+-   print "    -h            --help             : Print this message"
+-   print "    -d            --debug            : Degub"
+-   print "    -r            --debug-header     : Degub - print headers"
+-   print "    -a            --debug-all        : Degub - print all records"
+-   print "    -l            --debug-limit      : Degub limit"
+-   print
+-   print "For HTML support in StarDict dictionary .ifo has to contain:"
+-   print "sametypesequence=g"
+-   print "!!! Change the .ifo file after generation by tabfile !!!"
+-   print
++   print("Lingea Dictionary Decoder")
++   print("-------------------------")
++   print("Version: %s" % VERSION)
++   print("Copyright (C) 2007 - Klokan Petr Pridal, Petr Dlouhy")
++   print()
++   print("Usage: python lingea-trd-decoder.py DICTIONARY.trd > DICTIONARY.tab")
++   print("Result convertion by stardict-tools: /usr/lib/stardict-tools/tabfile")
++   print()
++   print("    -o <num>      --out-style        : Output style")
++   print("                                          0   no tags")
++   print("                                          1   \\n tags")
++   print("                                          2   html tags")
++   print("    -h            --help             : Print this message")
++   print("    -d            --debug            : Degub")
++   print("    -r            --debug-header     : Degub - print headers")
++   print("    -a            --debug-all        : Degub - print all records")
++   print("    -l            --debug-limit      : Degub limit")
++   print()
++   print("For HTML support in StarDict dictionary .ifo has to contain:")
++   print("sametypesequence=g")
++   print("!!! Change the .ifo file after generation by tabfile !!!")
++   print()
+ 
+ try:
+    opts, args = getopt.getopt(sys.argv[1:], "hdo:ral:", ["help", "debug", "out-style=", "debug-header", "debug-all", "debug-limit="])
+ except getopt.GetoptError:
+    usage()
+-   print "ERROR: Bad option"
++   print("ERROR: Bad option")
+    sys.exit(2)
+    
+ import locale
+@@ -94,7 +94,7 @@ for o, a in opts:
+       OUTSTYLE = locale.atoi(a)
+       if OUTSTYLE > 2:
+          usage()
+-         print "ERROR: Output style not specified"
++         print("ERROR: Output style not specified")
+    if o in ("-r", "--debug-header"):
+       # If DEBUG and DEBUGHEADER, then print just all header records
+       DEBUGHEADER = True
+@@ -113,7 +113,7 @@ if len(args) == 1:
+     FILENAME = args[0]
+ else:
+    usage()
+-   print "ERROR: You have to specify .trd file to decode"
++   print("ERROR: You have to specify .trd file to decode")
+    sys.exit(2)
+ 
+ from struct import *
+@@ -428,7 +428,7 @@ def out( comment = "", skip = False):
+             comment = comment % s
+         else:
+             comment = comment % bs[pos]
+-    if DEBUG: print "%03d %s %s | %s | %03d" % (pos, toBin(bs[pos]),comment, s, (triple + pos))
++    if DEBUG: print("%03d %s %s | %s | %03d" % (pos, toBin(bs[pos]),comment, s, (triple + pos)))
+     if skip:
+         pos += triple + 1
+         return s.replace('`','') # Remove '`' character from words
+@@ -671,14 +671,14 @@ if DEBUG:
+         s = decode(getRec(i))
+         if DEBUGHEADER:
+             # print s.split('\t')[0]
+-            print s
++            print(s)
+         if DEBUGLIMIT > 0 and not s.endswith('\n'):
+             DEBUG = True
+-            print "-"*80
+-            print "%s) at address %s" % (i, toBin(index[i]))
+-            print
++            print("-"*80)
++            print("%s) at address %s" % (i, toBin(index[i])))
++            print()
+             s = decode(getRec(i))
+-            print s
++            print(s)
+             DEBUGLIMIT -= 1
+     DEBUG = True
+ else:
+@@ -686,10 +686,10 @@ else:
+     for i in range(1,entryCount):
+         s = decode(getRec(i))
+         if s.endswith('\n'):
+-            print s,
++            print(s, end=' ')
+         else:
+-            print s
+-            print "!!! RECORD STRUCTURE DECODING ERROR !!!"
+-            print "Please run this script in DEBUG mode and repair DATA BLOCK(S) section in function decode()"
+-            print "If you succeed with whole dictionary send report (name of the dictionary and source code of script) to slovniky@googlegroups.com"
++            print(s)
++            print("!!! RECORD STRUCTURE DECODING ERROR !!!")
++            print("Please run this script in DEBUG mode and repair DATA BLOCK(S) section in function decode()")
++            print("If you succeed with whole dictionary send report (name of the dictionary and source code of script) to slovniky@googlegroups.com")
+             break
+Index: stardict-tools-3.0.1/src/extractKangXi.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/extractKangXi.py
++++ stardict-tools-3.0.1/src/extractKangXi.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python3
+ # -*- coding: utf-8 -*-
+ import sys, os, string, re, glob
+ import libxml2dom
+@@ -20,7 +20,7 @@ num = 0
+ errorfiles = []
+ for filename in filelist:
+ 	num += 1
+-	print >> sys.stderr, filename, num, 'of', filenum
++	print(filename, num, 'of', filenum, file=sys.stderr)
+ 	try:
+ 		fp = open(filename, 'r')
+ 		doc = libxml2dom.parseString(fp.read(), html=1)
+@@ -29,7 +29,7 @@ for filename in filelist:
+ 		style = re.search(r'(?s)\s*\.(\S+)\s*{\s*display:\s*none', style)
+ 		displaynone = style.group(1)
+ 		tabpages = doc.getElementsByTagName("div")
+-		tabpages = filter(lambda s: s.getAttribute("class") == "tab-page", tabpages)
++		tabpages = [s for s in tabpages if s.getAttribute("class") == "tab-page"]
+ 		for tabpage in tabpages:
+ 			found = False
+ 			for node in tabpage.childNodes:
+@@ -45,16 +45,16 @@ for filename in filelist:
+ 				paragraphs = tabpage.getElementsByTagName("p")
+ 				thisitem = character + u'\t'
+ 				for paragraph in paragraphs:
+-					if paragraph.getAttribute("class") <> displaynone:
++					if paragraph.getAttribute("class") != displaynone:
+ 						#print TextInNode(paragraph).encode(fencoding)
+ 						text = paragraph.textContent
+ 						#text = filter(lambda s: not s in u' \t\r\n', text)
+ 						text = re.sub(r'\s+', r' ', text)
+ 						thisitem += text + u'\\n'
+-				print thisitem.encode(fencoding)
++				print(thisitem.encode(fencoding))
+ 	except:
+-		print >> sys.stderr, 'error occured'
++		print('error occured', file=sys.stderr)
+ 		errorfiles += [filename]
+ 		continue
+ if errorfiles:
+-	print >> sys.stderr, 'Error files:', '\n'.join(errorfiles)
++	print('Error files:', '\n'.join(errorfiles), file=sys.stderr)
+Index: stardict-tools-3.0.1/src/stmerge.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/stmerge.py
++++ stardict-tools-3.0.1/src/stmerge.py
+@@ -1,18 +1,19 @@
+-import sys, string
+-base = {}
+-for line in sys.stdin.readlines():
+-	words = string.split(line[:-1], '\t')
+-	if len(words) != 2:
+-		print "Error!"
+-		exit
+-	if base.has_key(words[0]):
+-		base[words[0]] += [words[1]]
+-	else:
+-		base[words[0]] = [words[1]]
+-keys = base.keys()
+-keys.sort()
+-for key in keys:
+-	print key,'\t',
+-	for val in base[key]:
+-		print val,',',
+-	print
++#!/usr/bin/python3
++import sys, string
++base = {}
++for line in sys.stdin.readlines():
++	words = string.split(line[:-1], '\t')
++	if len(words) != 2:
++		print("Error!")
++		exit
++	if words[0] in base:
++		base[words[0]] += [words[1]]
++	else:
++		base[words[0]] = [words[1]]
++keys = list(base.keys())
++keys.sort()
++for key in keys:
++	print(key,'\t', end=' ')
++	for val in base[key]:
++		print(val,',', end=' ')
++	print()
+Index: stardict-tools-3.0.1/src/KangXiZiDian-djvu2tiff.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/KangXiZiDian-djvu2tiff.py
++++ stardict-tools-3.0.1/src/KangXiZiDian-djvu2tiff.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ # This tool convert KangXiZiDian djvu files to tiff files.
+ # Download djvu files: http://bbs.dartmouth.edu/~fangq/KangXi/KangXi.tar
+ # Character page info: http://wenq.org/unihan/Unihan.txt as kIRGKangXi field.
+Index: stardict-tools-3.0.1/src/hanzim2dict.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/hanzim2dict.py
++++ stardict-tools-3.0.1/src/hanzim2dict.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/python3
+ #
+ # hanzim2dict
+ # 
+@@ -44,7 +44,7 @@ for line in lines:
+     code = toUTF(fromGB(line[0])[0])[0]
+     pinyin = line[2]
+     definition = '<'+pinyin+'> '+line[3]+' ['+line[1]+']'
+-    if wordmap.has_key(code):
++    if code in wordmap:
+         wordmap[code].add(definition)
+     else:
+         wordmap[code] = Word(code, definition)
+@@ -55,11 +55,11 @@ for filename in ("cidianf.gb", "sanzicid
+ 
+     for line in lines:
+         if len(line) < 2:
+-            print len(line)
++            print(len(line))
+             continue
+         code = toUTF(fromGB(line[0][:-2])[0])[0]
+         definition = line[1]+' ['+line[0][-1:]+']'
+-        if wordmap.has_key(code):
++        if code in wordmap:
+             wordmap[code].add(definition)
+         else:
+             wordmap[code] = Word(code, definition)
+Index: stardict-tools-3.0.1/src/mkguangyunst.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/mkguangyunst.py
++++ stardict-tools-3.0.1/src/mkguangyunst.py
+@@ -1,3 +1,4 @@
++#!/usr/bin/python3
+ import sys, string
+ for line in sys.stdin.readlines():
+ 	words = string.split(line[:-1], '\t')
+@@ -15,6 +16,6 @@ for line in sys.stdin.readlines():
+ 	pinyin= words[13]
+ 	psyun = words[22]
+ 	if beizhu == '':
+-		print "%s\t%s %s%s%s%s%s%s %sQIE PINYIN%s PSYUN%s\\n%s" % (romazi, muci, sheng, yunbu, she, hu, deng, diao, fanqie, pinyin, psyun, chars)
++		print("%s\t%s %s%s%s%s%s%s %sQIE PINYIN%s PSYUN%s\\n%s" % (romazi, muci, sheng, yunbu, she, hu, deng, diao, fanqie, pinyin, psyun, chars))
+ 	else:
+-		print "%s\t%s %s%s%s%s%s%s %sQIE PINYIN%s PSYUN%s\\n%s\\n%s" % (romazi, muci, sheng, yunbu, she, hu, deng, diao, fanqie, pinyin, psyun, chars, beizhu)
++		print("%s\t%s %s%s%s%s%s%s %sQIE PINYIN%s PSYUN%s\\n%s\\n%s" % (romazi, muci, sheng, yunbu, she, hu, deng, diao, fanqie, pinyin, psyun, chars, beizhu))
+Index: stardict-tools-3.0.1/src/uyghur2dict.py
+===================================================================
+--- stardict-tools-3.0.1.orig/src/uyghur2dict.py
++++ stardict-tools-3.0.1/src/uyghur2dict.py
+@@ -1,4 +1,4 @@
+-﻿#!/usr/bin/env python
++﻿#!/usr/bin/python3
+ #
+ # uyghur2dict
+ # By Abdisalam (anatilim@gmail.com), inspired by Michael Robinson's hanzim2dict converter.
+@@ -41,7 +41,7 @@ lines = map(lambda x: split(x[:-1], '\t\
+ for line in lines:
+     code = line[0]
+     definition = line[1]
+-    if wordmap.has_key(code):
++    if code in wordmap:
+         wordmap[code].add(definition)
+     else:
+         wordmap[code] = Word(code, definition)
+@@ -84,4 +84,4 @@ ifo.write("author=Abdisalam\n")
+ ifo.write("email=anatilim@gmail.com\n")
+ ifo.write("description=感谢新疆维吾尔自治区语委会、新疆青少年出版社为我们提供《汉维词典》的词库\n")
+ ifo.write("sametypesequence=m\n")
+-ifo.close()
+\ No newline at end of file
++ifo.close()
