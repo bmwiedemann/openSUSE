@@ -1,0 +1,24 @@
+Index: deepin-turbo-0.0.5/src/booster-desktop/deepin-turbo-booster-desktop.service
+===================================================================
+--- deepin-turbo-0.0.5.orig/src/booster-desktop/deepin-turbo-booster-desktop.service
++++ deepin-turbo-0.0.5/src/booster-desktop/deepin-turbo-booster-desktop.service
+@@ -3,6 +3,19 @@ Description=desktop application launch b
+ After=display-manager.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=notify
+ ExecStart=/usr/lib/deepin-turbo/booster-desktop --systemd
+ Restart=always

@@ -26,6 +26,8 @@ Summary:        A screenshot tool
 Url:            https://github.com/linuxdeepin/deepin-turbo
 Group:          Productivity/Graphics/Convertors
 Source:         https://github.com/linuxdeepin/deepin-turbo/archive/%{version}/%{name}-%{version}.tar.gz
+Patch0:	harden_deepin-turbo-booster-desktop.service.patch
+Patch1:	harden_deepin-turbo-booster-dtkwidget.service.patch
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(dtkwidget)
@@ -56,6 +58,8 @@ The deepin-turbo-devel package contains the header files for deepin-turbo.
 
 %prep
 %setup -q -n %{name}-%{version}
+%patch0 -p1
+%patch1 -p1
 
 %build
 %cmake

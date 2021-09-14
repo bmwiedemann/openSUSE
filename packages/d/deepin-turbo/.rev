@@ -41,4 +41,12 @@
 - Use %{_userunitdir} instead of abusing %{_libexecdir}…. (forwarded request 886038 from hillwood)</comment>
     <requestid>886039</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>87ef5ba64b8999c22bd120a7fcd2d3c5</srcmd5>
+    <version>0.0.5</version>
+    <time>1631646864</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918800</requestid>
+  </revision>
 </revisionlist>
