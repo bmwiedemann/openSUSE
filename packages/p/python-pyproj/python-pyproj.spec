@@ -20,7 +20,7 @@
 %define skip_python36 1
 %{?!python_module:%define python_module() python3-%{**}}
 Name:           python-pyproj
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Python interface to PROJ library
 License:        SUSE-Public-Domain AND X11

@@ -130,4 +130,12 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment></comment>
     <requestid>902368</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a97617ba4fa3ff6c1f7941c0b1c41fc3</srcmd5>
+    <version>3.2.0</version>
+    <time>1631646866</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918806</requestid>
+  </revision>
 </revisionlist>

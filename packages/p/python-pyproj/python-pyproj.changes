@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Sep 13 09:05:10 UTC 2021 - Libor Pechacek <lpechacek@suse.com>
+
+- Update to 3.2.0
+  * WHL: Wheels contain PROJ 8.1.1
+  * DOC: Add new pyproj logo (issue #700)
+  * REF: Handle deprecation of
+    proj_context_set_autoclose_database (issue #866)
+  * REF: Make CRS methods inheritable (issue #847)
+  * ENH: Added pyproj.crs.CRS.is_derived (pull #902)
+  * ENH: Added pyproj.crs.GeocentricCRS (pull #903)
+  * ENH: Added pyproj.crs.CRS.list_authority (issue #918)
+  * ENH: Added inplace kwarg to
+    :meth:pyproj.transformer.Transformer.transform (issue #906)
+  * PERF: Disable unnecessary copy in dtype conversion for buffer
+    (pull #904)
+  * DOC: Improve FAQ text about CRS formats (issue #789)
+  * BUG: Add PyPy cython array implementation (issue #854)
+  * BUG: Fix spelling for
+    pyproj.crs.coordinate_operation.AzimuthalEquidistantConversion
+    and pyproj.crs.coordinate_operation.LambertAzimuthalEqualAreaConversion
+    (issue #882)
+  * BUG: Make datum name match exact in
+    pyproj.database.query_utm_crs_info (pull #887)
+  * BUG: Update pyproj.enums.GeodIntermediateFlag for future
+    Python compatibility (issue #855)
+  * BUG: Hide unnecessary PROJ ERROR from
+    proj_crs_get_coordoperation (issue #873)
+  * BUG: Fix pickling for CRS builder classes (issue #897)
+  * CLN: Remove ignore_axis_order kwarg from
+    pyproj.crs.CRS.is_exact_same as it was added by accident
+    (pull #904)
+  * CLN: remove numeric/numarrays support (pull #908)
+  * LNT: Add pylint & address issues (pull #909)
+  * DEP: Remove distutils dependency (pull #917)
+
+-------------------------------------------------------------------
 Fri Jun 25 10:34:27 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix the python >= 3.7 build requirement
