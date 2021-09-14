@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu Sep  9 16:33:33 CEST 2021 - rgoldwyn@suse.com
+
+- Delete 0001-apparmor-fix-unnecessary-creation-of-net-compat.patch
+  (bsc#1189978)
+  Compat patch no longer required since userspace is upgraded to v3.x
+- commit c28bbe5
+
+-------------------------------------------------------------------
+Wed Sep  8 16:16:46 CEST 2021 - jeffm@suse.com
+
+- Delete patches.suse/setuid-dumpable-wrongdir (bsc#1189957).
+- commit 762368d
+
+-------------------------------------------------------------------
+Wed Sep  8 14:40:21 CEST 2021 - tiwai@suse.de
+
+- Bluetooth: schedule SCO timeouts with delayed_work
+  (CVE-2021-3640 bsc#1188172).
+- Refresh patches.suse/Bluetooth-switch-to-lock_sock-in-SCO.patch.
+- commit 2605fb9
+
+-------------------------------------------------------------------
+Wed Sep  8 13:39:44 CEST 2021 - jslaby@suse.cz
+
+- rpm/kernel-source.spec.in: do some more for vanilla_only
+  Make sure:
+  * sources are NOT executable
+  * env is not used as interpreter
+  * timestamps are correct
+  We do all this for normal kernel builds, but not for vanilla_only
+  kernels (linux-next and vanilla).
+- commit b41e4fd
+
+-------------------------------------------------------------------
+Wed Sep  8 09:11:24 CEST 2021 - jslaby@suse.cz
+
+- Linux 5.14.2 (bsc#1012628).
+- ext4: fix race writing to an inline_data file while its xattrs
+  are changing (bsc#1012628).
+- ext4: fix e2fsprogs checksum failure for mounted filesystem
+  (bsc#1012628).
+- xtensa: fix kconfig unmet dependency warning for
+  HAVE_FUTEX_CMPXCHG (bsc#1012628).
+- USB: serial: pl2303: fix GL type detection (bsc#1012628).
+- USB: serial: cp210x: fix control-characters error handling
+  (bsc#1012628).
+- USB: serial: cp210x: fix flow-control error handling
+  (bsc#1012628).
+- ALSA: hda/realtek: Quirk for HP Spectre x360 14 amp setup
+  (bsc#1012628).
+- ALSA: usb-audio: Fix regression on Sony WALKMAN NW-A45 DAC
+  (bsc#1012628).
+- ALSA: hda/realtek: Workaround for conflicting SSID on ASUS
+  ROG Strix G17 (bsc#1012628).
+- ALSA: pcm: fix divide error in snd_pcm_lib_ioctl (bsc#1012628).
+- ALSA: usb-audio: Work around for XRUN with low latency playback
+  (bsc#1012628).
+- media: stkwebcam: fix memory leak in stk_camera_probe
+  (bsc#1012628).
+- commit b155faa
+
+-------------------------------------------------------------------
+Tue Sep  7 18:27:27 CEST 2021 - mkubecek@suse.cz
+
+- series.conf: cleanup
+- update upstream reference and move to appropriate section:
+  - patches.suse/crypto-ecc-handle-unaligned-input-buffer-in-ecc_swap.patch
+- commit 1eedbb8
+
+-------------------------------------------------------------------
+Tue Sep  7 15:36:01 CEST 2021 - mbrugger@suse.com
+
+- crypto: ecc - handle unaligned input buffer in ecc_swap_digits
+  (bsc#1188327).
+- commit f7925a4
+
+-------------------------------------------------------------------
+Tue Sep  7 09:21:37 CEST 2021 - hare@suse.de
+
+- Refresh patches.suse/scsi-retry-alua-transition-in-progress.
+- Delete patches.suse/megaraid-mbox-fix-SG_IO.
+- commit d1e442c
+
+-------------------------------------------------------------------
+Mon Sep  6 19:48:11 CEST 2021 - mkoutny@suse.com
+
+- memcg: enable accounting of ipc resources (bsc#1190115
+  CVE-2021-3759).
+- commit 9193235
+
+-------------------------------------------------------------------
 Sat Sep  4 10:22:09 CEST 2021 - jslaby@suse.cz
 
 - watchdog: Fix NULL pointer dereference when releasing cdev

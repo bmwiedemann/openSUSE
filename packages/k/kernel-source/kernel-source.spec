@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.1
+%define patchversion 5.14.2
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        5.14.1
+Version:        5.14.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g67af907
+Release:        <RELEASE>.g314dce0
 %else
 Release:        0
 %endif
@@ -43,7 +43,7 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-67af907a1ed285fde3476e8419e51f68252f488f
+Provides:       %name-srchash-314dce0059447f7063b87fb9e87c4744e389054d
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
@@ -267,6 +267,7 @@ perl "%_sourcedir/group-source-files.pl" \
 	-D "$OLDPWD/devel.files" -N "$OLDPWD/nondevel.files" \
 	-L "%src_install_dir"
 popd
+%endif
 
 find %{buildroot}/usr/src/linux* -type f -name '*.[ch]' -perm /0111 -exec chmod -v a-x {} +
 # OBS checks don't like /usr/bin/env in script interpreter lines
@@ -281,6 +282,7 @@ done
 ts="$(head -n1 %_sourcedir/source-timestamp)"
 find %buildroot/usr/src/linux* ! -type l | xargs touch -d "$ts"
 
+%if ! %vanilla_only
 %post -f %name-post.sh
 
 %post -n kernel-devel%variant -f %name-post.sh
