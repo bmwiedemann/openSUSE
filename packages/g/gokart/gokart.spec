@@ -17,7 +17,7 @@
 
 
 Name:           gokart
-Version:        0.1.0
+Version:        0.2.0
 Release:        0
 Summary:        Static analysis tool for securing Go code
 License:        Apache-2.0

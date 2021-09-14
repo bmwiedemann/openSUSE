@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 02 14:03:52 UTC 2021 - alexandre.vicenzi@suse.com
+
+- Update to version 0.2.0:
+  * Add new flags usage to Getting Started (#31)
+  * Adding -r flag to automatically clone and test remote go modules, along with functionality to test the Scan cmd (#20)
+  * Making a minor change to error messages when packages aren't found in the directory (#28)
+  * Feature enhancement implementation for Issue #3 (Findings Output to File Flag) (#24)
+  * changed panic to log.Fatal (#22)
+  * removed non-user-controllable input sources (#23)
+  * typo fixes (#14)
+  * Improved config mgmt and fixed out of bounds panic (#5)
+  * add link to Praetorian blog post in README
+
+-------------------------------------------------------------------
 Thu Aug 19 13:17:50 UTC 2021 - Alexandre Vicenzi <alexandre.vicenzi@suse.com>
 
 - Initial version

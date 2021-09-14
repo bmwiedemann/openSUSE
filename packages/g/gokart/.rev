@@ -7,4 +7,12 @@
     <comment>Initial package of CLI tool for static analysis of Go code</comment>
     <requestid>913224</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e0ed4f823fedf7c7d6ab536c0aaed808</srcmd5>
+    <version>0.2.0</version>
+    <time>1631646859</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.2.0 (forwarded request 915782 from avicenzi)</comment>
+    <requestid>918787</requestid>
+  </revision>
 </revisionlist>
