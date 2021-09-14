@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 14 08:28:45 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20210830:
+  * GLStateEGL: Support EGL versions < 1.4
+  * Fix model loading on big endian.
+  * Fix -Wunreachable-code-aggressive.
+
+-------------------------------------------------------------------
 Fri May 28 11:23:11 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20210521:

@@ -216,4 +216,15 @@
   * NativeStateWayland: Improve surface configuration handling</comment>
     <requestid>895960</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>eeea2e4ed1df6882e2a7aff2aa16d9fb</srcmd5>
+    <version>20210830</version>
+    <time>1631646876</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20210830:
+  * GLStateEGL: Support EGL versions &lt; 1.4
+  * Fix model loading on big endian.
+  * Fix -Wunreachable-code-aggressive.</comment>
+    <requestid>918851</requestid>
+  </revision>
 </revisionlist>
