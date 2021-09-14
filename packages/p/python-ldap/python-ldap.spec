@@ -1,7 +1,7 @@
 #
 # spec file for package python-ldap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ CFLAGS="%{optflags}" %python_build
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pyunittest_arch discover -v -s Tests -p 't_*'
 
 %files %{python_files}
 %license LICENCE

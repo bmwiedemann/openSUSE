@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 12:35:59 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest_arch rpm macro
+
+-------------------------------------------------------------------
 Mon Sep 28 02:59:28 UTC 2020 - William Brown <william.brown@suse.com>
 
 - update to upstream release 3.3.1:
