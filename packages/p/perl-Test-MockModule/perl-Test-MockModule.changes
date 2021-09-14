@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  8 03:06:22 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.177.0
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  v0.177.0
+  - 35f0d0b Update changelog - Geoff Franks
+  - 1d5b485 Move test modules from build to test requires - Olaf Alders
+  - 78afe10 Clean up changelog - Geoff Franks
+
+  v0.277.0
+
+  - Move test modules from build to test requires - Olaf Alders
+
+-------------------------------------------------------------------
 Wed Jan  6 03:09:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.176.0

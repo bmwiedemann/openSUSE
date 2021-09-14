@@ -18,7 +18,7 @@
 
 %define cpan_name Test-MockModule
 Name:           perl-Test-MockModule
-Version:        0.176.0
+Version:        0.177.0
 Release:        0
 Summary:        Override subroutines in a module for unit testing
 License:        Artistic-1.0 OR GPL-1.0-or-later
