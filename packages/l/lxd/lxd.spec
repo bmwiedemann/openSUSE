@@ -14,7 +14,10 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# nodebuginfo
 
+
+%go_nostrip
 
 %define _buildshell /bin/bash
 %define import_path github.com/lxc/lxd
@@ -280,11 +283,6 @@ do
 		name="$(basename "$(readlink "$lib")" | sed -E 's/\.[0-9]+\.[0-9]+$//')"
 		patchelf --replace-needed {,%{_libdir}/%{name}/}"$name" "$target"
 	done
-
-	# TODO: For some reason, BRP isn't auto-stripping our binaries even though
-	# we've dropped go_nostrip. So just strip them manually until I can figure
-	# out why that's happening.
-	strip "$target"
 done
 
 # Generate man pages.

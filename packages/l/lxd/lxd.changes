@@ -14,6 +14,10 @@ Sun Sep  5 06:43:47 UTC 2021 - Aleksa Sarai <asarai@suse.com>
   * --minimal option for lxd init
   * Additional network counters in instance state
 
+- Disable stripping of binaries, which seems to be causing issues at runtime
+  due to some ld.so assertion failing. In particular it seems that libdqlite is
+  getting corrupted somehow.
+
 -------------------------------------------------------------------
 Fri Aug 20 11:59:37 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
