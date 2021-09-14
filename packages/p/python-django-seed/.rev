@@ -31,4 +31,12 @@
   * Python 3.6, 3.7, 3.8 added to build matrix</comment>
     <requestid>777601</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>c4fe738bb7a19a53479f1b1026f054b3</srcmd5>
+    <version>0.2.2</version>
+    <time>1631646869</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pytest-django from django-nose.</comment>
+    <requestid>918824</requestid>
+  </revision>
 </revisionlist>
