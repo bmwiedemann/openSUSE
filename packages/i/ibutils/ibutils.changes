@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 07:31:40 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Unify changelog with SLE15
+
+-------------------------------------------------------------------
 Thu Apr 22 09:58:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Trim old rpm constructs.
@@ -7,7 +12,7 @@ Thu Apr 22 09:58:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Thu Apr 15 15:38:24 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
-- Hardening: Link ibis executable with -pie.
+- Hardening: Link ibis executable with -pie (bsc#1184123).
   - Added ibutils-ibis-PIE.patch
 
 -------------------------------------------------------------------

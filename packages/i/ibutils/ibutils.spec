@@ -1,5 +1,5 @@
 #
-# spec file for package ibutils%{?pname_suff}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
