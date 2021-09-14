@@ -68,13 +68,13 @@ BuildRequires:  setxkbmap
 BuildRequires:  smartmontools
 BuildRequires:  speedtest-cli
 BuildRequires:  sudo
-BuildRequires:  systemd
 BuildRequires:  wireless-tools
 BuildRequires:  xdg-utils
 BuildRequires:  xdotool
 BuildRequires:  xprop
 BuildRequires:  xrandr
 BuildRequires:  xset
+BuildRequires:  pkgconfig(systemd)
 # bluetooth, bluetooth2, deezer, spotify, etc use dbus-send
 Requires:       dbus-1
 # In earlier i3 versions, blocks won't have background colors
