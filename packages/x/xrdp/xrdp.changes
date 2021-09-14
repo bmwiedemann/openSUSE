@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Aug 11 13:46:09 UTC 2021 - Daike Yu <yu.daike@suse.com>
+
+- Fix crash in xrdp-fate318398-change-expired-password.patch (bsc#1187258)
+
+-------------------------------------------------------------------
 Wed Jan  6 07:06:23 UTC 2021 - Felix Zhang <fzhang.foss@gmail.com>
 
 - Update to version 0.9.15
