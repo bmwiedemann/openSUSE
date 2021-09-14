@@ -912,4 +912,12 @@ nicer version with try-reload-or-restart</comment>
     (boo#1189489, TROVE-2021-007, CVE-2021-38385)</comment>
     <requestid>912796</requestid>
   </revision>
+  <revision rev="99" vrev="2">
+    <srcmd5>1290c5ad832b069dd89687fec8161ac4</srcmd5>
+    <version>0.4.6.7</version>
+    <time>1631646883</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918873</requestid>
+  </revision>
 </revisionlist>

@@ -122,7 +122,7 @@ install -D -m 644 contrib/operator-tools/tor.logrotate %{buildroot}/%{_sysconfdi
 %check
 %ifnarch ppc ppc64 ppc64le aarch64 armv7l i586
 %make_build check || (
-	find -type f -name test-suite.log -print -exec cat {} \;
+	find -type f -name test-suite.log -print -exec cat {} +
 	exit 42
 )
 %endif
@@ -130,22 +130,18 @@ install -D -m 644 contrib/operator-tools/tor.logrotate %{buildroot}/%{_sysconfdi
 %pre
 getent group %{torgroup} >/dev/null || groupadd -r %{torgroup}
 getent passwd %{toruser} >/dev/null || useradd -r -g %{torgroup} -d %{home_dir} -s /sbin/nologin -c "User for %{name}" %{toruser}
-%service_add_pre tor.service
-%service_add_pre tor-master.service
+%service_add_pre tor.service tor-master.service
 
 %post
 %fillup_only
-%service_add_post tor.service
-%service_add_post tor-master.service
+%service_add_post tor.service tor-master.service
 systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 
 %preun
-%service_del_preun tor.service
-%service_del_preun tor-master.service
+%service_del_preun tor.service tor-master.service
 
 %postun
-%service_del_postun tor.service
-%service_del_postun tor-master.service
+%service_del_postun tor.service tor-master.service
 
 %files
 %license LICENSE
