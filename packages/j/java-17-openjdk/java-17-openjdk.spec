@@ -1,5 +1,5 @@
 #
-# spec file for package java-17-openjdk
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -141,7 +141,7 @@
 %global tapsetdir %{tapsetroot}/tapset/%{_build_cpu}
 %endif
 Name:           java-%{featurever}-openjdk
-Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}~%{buildver}
+Version:        %{featurever}.%{interimver}.%{updatever}.%{patchver}
 Release:        0
 Summary:        OpenJDK %{featurever} Runtime Environment
 License:        Apache-1.1 AND Apache-2.0 AND GPL-1.0-or-later AND GPL-2.0-only AND GPL-2.0-only WITH Classpath-exception-2.0 AND LGPL-2.0-only AND MPL-1.0 AND MPL-1.1 AND SUSE-Public-Domain AND W3C
@@ -267,6 +267,7 @@ BuildRequires:  pkgconfig(gthread-2.0)
 Requires:       %{name}-headless = %{version}-%{release}
 Requires:       fontconfig
 Requires(post): file
+%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java = %{javaver}
 Provides:       java-%{javaver} = %{version}-%{release}
@@ -285,7 +286,7 @@ Provides:       jre-%{bits} = %{javaver}
 Provides:       jre-%{javaver}-%{bits}
 Provides:       jre-%{javaver}-openjdk-%{bits} = %{version}-%{release}
 Provides:       jre-openjdk-%{bits} = %{version}-%{release}
-Provides:       jre1.1openSUSE_Leap_42.30.x
+Provides:       jre1.10.x
 Provides:       jre1.3.x
 Provides:       jre1.4.x
 Provides:       jre1.5.x
@@ -293,6 +294,7 @@ Provides:       jre1.6.x
 Provides:       jre1.7.x
 Provides:       jre1.8.x
 Provides:       jre1.9.x
+%endif
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7
 BuildRequires:  gcc7-c++
@@ -304,8 +306,12 @@ BuildRequires:  gcc-c++ >= 7
 BuildRequires:  liblcms2-devel
 %endif
 %if %{bootcycle}
+%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 BuildRequires:  java-devel >= 16
 BuildConflicts: java-devel >= 18
+%else
+BuildRequires:  %{name}-devel
+%endif
 %else
 BuildRequires:  %{name}-devel
 %endif
@@ -337,8 +343,9 @@ Requires:       mozilla-nss
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     tzdata-java8
+%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -358,6 +365,7 @@ Provides:       jndi-dns = %{version}
 Provides:       jndi-ldap = %{version}
 Provides:       jndi-rmi = %{version}
 Provides:       jsse = %{version}
+%endif
 
 %description headless
 The OpenJDK %{featurever} runtime environment without audio and video support.
@@ -370,7 +378,8 @@ Requires:       %{name} = %{version}-%{release}
 # Post requires update-alternatives to install tool update-alternatives.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall tool update-alternatives.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 # Standard JPackage devel provides.
 Provides:       java-%{javaver}-devel = %{version}
 Provides:       java-devel = %{javaver}
@@ -379,6 +388,7 @@ Provides:       java-sdk = %{javaver}
 Provides:       java-sdk-%{javaver} = %{version}
 Provides:       java-sdk-%{javaver}-openjdk = %{version}
 Provides:       java-sdk-openjdk = %{version}
+%endif
 
 %description devel
 The OpenJDK %{featurever} development tools.
@@ -414,10 +424,12 @@ Requires:       jpackage-utils
 # Post requires update-alternatives to install javadoc alternative.
 Requires(post): update-alternatives
 # Postun requires update-alternatives to uninstall javadoc alternative.
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
+%if 0%{?suse_version} > 1500 || 0%{?java_bootstrap}
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
+%endif
 BuildArch:      noarch
 
 %description javadoc
@@ -487,7 +499,6 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch16 -p1
 %patch17 -p1
-
 
 %patch20 -p1
 
@@ -563,7 +574,7 @@ bash ../configure \
     --with-version-patch=%{patchver} \
     --with-version-date=%{datever} \
     --with-version-build=%{buildver} \
-%if 0
+%if 1
     --with-version-pre="" \
 %endif
     --with-version-opt="suse-%{release}-%{_arch}" \
