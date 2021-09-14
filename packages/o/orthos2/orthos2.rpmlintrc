@@ -1,0 +1,9 @@
+# On Deb-based distros the deduplication would fail
+addFilter("orthos2.noarch: W: files-duplicate /usr/lib/python3.*/site-packages/orthos2")
+addFilter("orthos2.noarch: W: files-duplicate /srv/www/orthos2/static")
+
+# Need until we may get an official orthos2 user/group
+addFilter("orthos2.noarch: W: non-standard-uid *")
+addFilter("orthos2.noarch: W: non-standard-gid *")
+
+addFilter("orthos2.noarch: W: hidden-file-or-dir /var/lib/orthos2/.ssh")

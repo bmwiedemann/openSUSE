@@ -1,0 +1,5 @@
+<package name="orthos2" project="openSUSE:Factory">
+  <title>orthos2 server administrating tool</title>
+  <description></description>
+  <devel project="systemsmanagement" package="orthos2"/>
+</package>
