@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  3 07:13:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_dde-filemanager-daemon.service.patch
+
+-------------------------------------------------------------------
 Wed Jul 28 12:58:14 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update versiion to 5.2.24

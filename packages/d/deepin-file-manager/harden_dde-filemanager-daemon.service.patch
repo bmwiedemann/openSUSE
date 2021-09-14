@@ -1,0 +1,22 @@
+Index: dde-file-manager-5.2.24/src/dde-file-manager-daemon/dbusservice/dde-filemanager-daemon.service
+===================================================================
+--- dde-file-manager-5.2.24.orig/src/dde-file-manager-daemon/dbusservice/dde-filemanager-daemon.service
++++ dde-file-manager-5.2.24/src/dde-file-manager-daemon/dbusservice/dde-filemanager-daemon.service
+@@ -2,6 +2,17 @@
+ Description=DDE File Manager Daemon
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=dbus
+ BusName=com.deepin.filemanager.daemon
+ ExecStart=/usr/bin/dde-file-manager-daemon

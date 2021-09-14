@@ -41,6 +41,7 @@ Source2:        deepin-file-polkit-installer.in
 Patch1:         fix-return-type-error.patch
 # PATCH-FIX-UPSTEAM fix-header-include.patch hillwood@opensuse.org - dfsearch is necessary
 Patch2:         fix-header-include.patch
+Patch3:         harden_dde-filemanager-daemon.service.patch
 %ifarch ppc ppc64 ppc64le s390 s390x
 BuildRequires:  deepin-desktop-base
 %else
