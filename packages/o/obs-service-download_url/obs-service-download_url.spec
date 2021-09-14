@@ -1,7 +1,7 @@
 #
 # spec file for package obs-service-download_url
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           obs-service-download_url
-Summary:        An OBS source service: curl download tool
+Summary:        An OBS source service: wget download tool
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            http://openbuildservice.org
@@ -31,7 +31,7 @@ BuildArch:      noarch
 %description
 This is a source service for openSUSE Build Service.
 
-It supports downloading files from given URLs via curl
+It supports downloading files from given URLs via wget
 
 %prep
 %setup -q

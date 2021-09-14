@@ -10,4 +10,4 @@ Section: misc
 Architecture: all
 Depends: ${misc:Depends}
 Description: This is a source service for openSUSE Build Service.
- It supports downloading files from given URLs via curl
+ It supports downloading files from given URLs via wget
