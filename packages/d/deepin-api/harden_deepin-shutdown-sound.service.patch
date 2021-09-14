@@ -2,7 +2,7 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-shutdown-sound.service
 ===================================================================
 --- dde-api-5.4.9.orig/misc/systemd/system/deepin-shutdown-sound.service
 +++ dde-api-5.4.9/misc/systemd/system/deepin-shutdown-sound.service
-@@ -5,6 +5,19 @@ After=sound.target local-fs.target
+@@ -5,6 +5,20 @@ After=sound.target local-fs.target
  Before=systemd-logind.service
  
  [Service]
@@ -11,6 +11,7 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-shutdown-sound.service
 +ProtectSystem=full
 +ProtectHome=true
 +PrivateDevices=true
++DeviceAllow=char-snd rw
 +ProtectHostname=true
 +ProtectClock=true
 +ProtectKernelTunables=true

@@ -2,7 +2,7 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
 ===================================================================
 --- dde-api-5.4.9.orig/misc/systemd/system/deepin-login-sound.service
 +++ dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
-@@ -4,6 +4,19 @@ Requires=sound.target
+@@ -4,6 +4,20 @@ Requires=sound.target
  After=dbus.service lightdm.service
  
  [Service]
@@ -11,6 +11,7 @@ Index: dde-api-5.4.9/misc/systemd/system/deepin-login-sound.service
 +ProtectSystem=full
 +ProtectHome=true
 +PrivateDevices=true
++DeviceAllow=char-snd rw
 +ProtectHostname=true
 +ProtectClock=true
 +ProtectKernelTunables=true
