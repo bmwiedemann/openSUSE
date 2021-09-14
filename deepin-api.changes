@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  3 07:18:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Allow access to sound device. Updated
+  * harden_deepin-login-sound.service.patch
+  * harden_deepin-shutdown-sound.service.patch
+
+-------------------------------------------------------------------
 Wed Sep  1 12:35:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added patch(es):
