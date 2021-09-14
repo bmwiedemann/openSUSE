@@ -1477,6 +1477,7 @@
       <repopackage name="libbase"/>
       <repopackage name="libbasicobjects0"/>
       <repopackage name="libBasicUsageEnvironment1"/>
+      <repopackage name="libbcg729-0"/>
       <repopackage name="libbd_btrfs2"/>
       <repopackage name="libbd_crypto2"/>
       <repopackage name="libbd_fs2"/>
@@ -2292,6 +2293,7 @@
       <repopackage name="libltdl7-32bit" arch="x86_64"/>
       <repopackage name="libLTO12"/>
       <repopackage name="liblttng-ust0" arch="x86_64"/>
+      <repopackage name="liblua5_1-5"/>
       <repopackage name="liblua5_3-5"/>
       <repopackage name="liblua5_4-5"/>
       <repopackage name="libluajit-5_1-2"/>
@@ -2316,6 +2318,7 @@
       <repopackage name="libmariadbd19"/>
       <repopackage name="libmarkdown2"/>
       <repopackage name="libmatroska7"/>
+      <repopackage name="libmaxminddb0"/>
       <repopackage name="libmbim"/>
       <repopackage name="libmbim-glib4"/>
       <repopackage name="libmeanwhile1"/>
@@ -2991,6 +2994,8 @@
       <repopackage name="libwebrtc_audio_processing1"/>
       <repopackage name="libwebsockets18"/>
       <repopackage name="libwinpr2"/>
+      <repopackage name="libwireshark14"/>
+      <repopackage name="libwiretap11"/>
       <repopackage name="libwmf-0_2-7"/>
       <repopackage name="libwmf-tools"/>
       <repopackage name="libwnck-3-0"/>
@@ -3003,6 +3008,7 @@
       <repopackage name="libwpg-0_3-3"/>
       <repopackage name="libwps-0_4-4"/>
       <repopackage name="libwrap0"/>
+      <repopackage name="libwsutil12"/>
       <repopackage name="libwx_baseu-suse-nostl5_0_0" arch="x86_64"/>
       <repopackage name="libwx_baseu_net-suse-nostl5_0_0" arch="x86_64"/>
       <repopackage name="libwx_baseu_xml-suse-nostl5_0_0" arch="x86_64"/>
@@ -5158,6 +5164,8 @@
       <repopackage name="WindowMaker-themes"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
+      <repopackage name="wireshark"/>
+      <repopackage name="wireshark-ui-qt"/>
       <repopackage name="wmctrl"/>
       <repopackage name="wol"/>
       <repopackage name="wol-lang"/>

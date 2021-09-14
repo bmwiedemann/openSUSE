@@ -9600,7 +9600,6 @@ unsorted:
   - libbasicobjects-devel-32bit: [x86_64] 
   - libbasicobjects0-32bit: [x86_64] 
   - libbcc0 
-  - libbcg729-0 
   - libbcg729-0-32bit: [x86_64] 
   - libbcmatroska2-0 
   - libbcmatroska2-0-32bit: [x86_64] 
@@ -9943,9 +9942,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -11771,7 +11770,6 @@ unsorted:
   - liblttng-ust-ctl4 
   - liblttng-ust-python-agent0 
   - liblttng-ust0: [i586] 
-  - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
   - liblua5_4-5-32bit: [x86_64] 
@@ -11850,7 +11848,6 @@ unsorted:
   - libmatroska-devel 
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
-  - libmaxminddb0 
   - libmaxminddb0-32bit: [x86_64] 
   - libmbedcrypto7 
   - libmbedcrypto7-32bit: [x86_64] 
@@ -13104,8 +13101,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -13128,7 +13125,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13355,7 +13352,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -14362,8 +14359,6 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
-  - libwireshark14 
-  - libwiretap11 
   - libwlroots9 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
@@ -14402,7 +14397,6 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
-  - libwsutil12 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -30767,7 +30761,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -41861,10 +41855,8 @@ unsorted:
   - winrs 
   - wipe 
   - wireguard-tools 
-  - wireshark 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
-  - wireshark-ui-qt 
   - withlock 
   - wizznic 
   - wl-clipboard 
