@@ -7,4 +7,42 @@
     <comment>Resurrect dropped package</comment>
     <requestid>911484</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5b2e605cc2a67b501e0e64abf8d411f0</srcmd5>
+    <version>2.2.0</version>
+    <time>1631646882</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.2.0
+  This is mostly a bug-fix release with many fixes allowing to
+  work with newer version of libraries. Several compilation issues
+  have been resolved on Ubuntu 18.04, 20.04 and Cygwin. The HDR
+  merging (pfshdrcalibrate) uses now better, noise-optimal weights,
+  which should reduce noise for darker image parts.
+  * Added: v210 format in pfsinyuv
+  * Fixed: memleak in pfssize
+  * Fixed: Fix format-security errors with Octave 5.1
+  * Added: pfs_automerge
+  * Fixed: typos in the documentation
+  * Added: simple deghosting in pfshdrcalibrate (-d option)
+  * Fixed: pfsalign now uses free AKAZE feature detector, avoiding
+    issues with missing non-free OpenCV classes
+  * Fixed: Updated installation instruction for Ubuntu 18.04
+  * Fixed: Fixed a number of compiler warnings from g++ 7.4.0
+  * Fixed: Octave interface upgraded to Octave-6
+  * Fixed: pfstmo_durand02 - reversed the old fix that made images
+    over-saturated. Now 99.5th percentile is mapped to white. 
+  * Removed: pfsinjpeghdr, pfsoutjpeghdr (discontinued)
+  * Fixed: compilation fails with GCC11/std=c++17, duplicate &quot;clamp&quot; definition
+  * Added: pfshdrcalibrate now performs exposure merging in a noise-optimal manner
+  * Added: pfsindcraw now calls libraw's dcraw_emu instead of
+    dcraw if the former is available
+- Rebase patch: pfstools-1.8.1-fix-return-in-nonvoid.patch
+- Drop patches (included upstream):
+  - pfstools-Fix-build-with-Octave-6.patch
+  - 0001-Remove-using-namespace-std-from-global-namespace.patch
+- Disable EXR package which does not build
+- Reenable OpenCV package
+</comment>
+    <requestid>918875</requestid>
+  </revision>
 </revisionlist>

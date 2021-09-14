@@ -18,7 +18,7 @@
 
 %define _libname libpfs2
 Name:           pfstools
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        High Dynamic Range Image and Video manipulation tools
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,13 +31,9 @@ Patch3:         pfstools-stdlib.patch
 Patch4:         pfstools-1.8.1-fix-return-in-nonvoid.patch
 # PATCH-FIX-OPENSUSE - https://sourceforge.net/p/pfstools/bugs/45/
 Patch5:         pfstools-fix-libpfs-linkage.patch
-# PATCH-FIX-OPENSUSE - https://sourceforge.net/p/pfstools/bugs/49/
-Patch6:         pfstools-Fix-build-with-Octave-6.patch
 # patch derived from https://github.com/pld-linux/pfstools/commit/67bd2304e516545f2b203f975ac5dd30d2b479b3
 # I guess it could go upstream as is; sent email to mantiuk at gmail
 Patch7:         pfstools-ImageMagick7.patch
-# PATCH-FIX-UPSTREAM - https://sourceforge.net/p/pfstools/bugs/50/
-Patch8:         0001-Remove-using-namespace-std-from-global-namespace.patch
 BuildRequires:  Mesa
 BuildRequires:  blas
 # previous versions of cmake don't support ImageMagick 7
@@ -61,6 +57,7 @@ BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libexif)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(octave)
+BuildRequires:  pkgconfig(opencv)
 Requires:       dcraw
 
 %description
@@ -82,15 +79,14 @@ for reading, writing, manipulating and viewing high-dynamic range
 data using the pfs file format for HDR data. The concept of pfstools
 is similar to netpbm for low-dynamic range images.
 
-#Disable until opencv can be enabled.
-#%%package -n pfscalign
-#Summary:        Align image stack
-#License:        GPL-2.0+ and LGPL-2.1+
-#Group:          Productivity/Multimedia/Other
+%package -n pfscalign
+Summary:        Align image stack
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+Group:          Productivity/Multimedia/Other
 
-#%%description -n pfscalign
-#Align multiple exposures using homographic transformation. The command
-#uses a similar feature-point based method as most panorama stitching software.
+%description -n pfscalign
+Align multiple exposures using homographic transformation. The command
+uses a similar feature-point based method as most panorama stitching software.
 
 %package -n pfscalibration
 Summary:        Photometric Calibration of HDR and LDR Cameras
@@ -133,15 +129,16 @@ Group:          Productivity/Multimedia/Other
 %description -n pfsglview
 pfsglview is a viewer program based on OpenGL for viewing HDR graphic files.
 
-%package exr
-Summary:        EXR file import and export for PFS tools
-License:        GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Other
+#%%package exr
+#Summary:        EXR file import and export for PFS tools
+#License:        GPL-2.0-or-later AND LGPL-2.1-or-later
+#Group:          Productivity/Multimedia/Other
 
-%description exr
-This package contains two-way conversion filters between the EXR file
-format and pfstools's HDR graphics file format.
 
+
+#%%description exr
+#This package contains two-way conversion filters between the EXR file
+#format and pfstools's HDR graphics file format.
 %package imgmagick
 Summary:        ImageMagick file import for PFS tools
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -226,6 +223,8 @@ grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %{_bindir}/pfsrotate
 %{_bindir}/pfssize
 %{_bindir}/pfstag
+%{_bindir}/pfs_automerge
+%{_bindir}/pfs_split_exposures.py
 %{_datadir}/pfstools/hdrhtml_c_b2.csv
 %{_datadir}/pfstools/hdrhtml_c_b3.csv
 %{_datadir}/pfstools/hdrhtml_c_b4.csv
@@ -236,6 +235,7 @@ grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %{_datadir}/pfstools/hdrhtml_t_b3.csv
 %{_datadir}/pfstools/hdrhtml_t_b4.csv
 %{_datadir}/pfstools/hdrhtml_t_b5.csv
+%{_mandir}/man1/pfs_automerge.1%{?ext_man}
 %{_mandir}/man1/pfsabsolute.1%{?ext_man}
 %{_mandir}/man1/pfscat.1%{?ext_man}
 %{_mandir}/man1/pfsclamp.1%{?ext_man}
@@ -275,10 +275,9 @@ grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/libpfs.so
 
-#Disabled until we can renable opencv
-#%%files -n pfscalign
-#%%{_bindir}/pfsalign
-#%%{_mandir}/man1/pfsalign%%{ext_man}
+%files -n pfscalign
+%{_bindir}/pfsalign
+%{_mandir}/man1/pfsalign.1%{ext_man}
 
 %files -n pfscalibration
 %{_bindir}/dcraw2hdrgen
@@ -325,11 +324,11 @@ grep -r include %{buildroot}%{_includedir} | awk -F: '{print $2}'
 %{_bindir}/pfsglview
 %{_mandir}/man1/pfsglview.1%{?ext_man}
 
-%files exr
-%{_bindir}/pfsinexr
-%{_bindir}/pfsoutexr
-%{_mandir}/man1/pfsinexr.1%{?ext_man}
-%{_mandir}/man1/pfsoutexr.1%{?ext_man}
+#%%files exr
+#%%{_bindir}/pfsinexr
+#%%{_bindir}/pfsoutexr
+#%%{_mandir}/man1/pfsinexr.1%%{?ext_man}
+#%%{_mandir}/man1/pfsoutexr.1%%{?ext_man}
 
 %files imgmagick
 %{_bindir}/pfsinimgmagick
