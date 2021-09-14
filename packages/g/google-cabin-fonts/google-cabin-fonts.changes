@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 12 16:35:51 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to v3.001+git1595464381.70efa8c
+  * See FONTLOG.txt
+- Package OTF fonts instead of TTF
+- Change URL
+- Reformat description
+- Package documentation, move license to %_defaultlicensedir
+- Add the _service file
+- Use spec-cleaner
+
+-------------------------------------------------------------------
 Thu Aug 30 11:09:00 UTC 2012 - toms@opensuse.org
 
 - Fixed bad syntax error in spec file which let to an 
