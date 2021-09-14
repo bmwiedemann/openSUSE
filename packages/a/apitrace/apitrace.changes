@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Tue Sep 14 10:07:19 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- improve packaging
+  - remove GLIBC_PRIVATE from generated rpm requires
+    (see https://github.com/apitrace/apitrace/issues/258)
+  - don't use bundled 'snappy'.
+  - don't duplicate license and docs files
+
+-------------------------------------------------------------------
+Fri Sep 10 18:41:00 UTC 2021 - Adam Mizerski <adam@mizerski.pl>
+
+- mention baselibs.conf in spec
+
+-------------------------------------------------------------------
+Wed Sep  8 21:16:27 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.0
+  * Upstream does not provide a changelog
+- Run unit tests
+- Package license file and readme
+
+-------------------------------------------------------------------
+Mon Jan 27 21:00:55 UTC 2020 - Adam Mizerski <adam@mizerski.pl>
+
+- new package; version 9.0
