@@ -7,4 +7,12 @@
     <comment>For https://build.opensuse.org/request/show/915220</comment>
     <requestid>915221</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>84c458fedd283ade64d01c78b4fe3f24</srcmd5>
+    <version>0.15</version>
+    <time>1631646853</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918699</requestid>
+  </revision>
 </revisionlist>

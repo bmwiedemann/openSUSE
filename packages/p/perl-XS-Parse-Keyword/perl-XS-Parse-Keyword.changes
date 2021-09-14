@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  7 03:07:21 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.15
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+
+  0.15    2021-09-06
+          [CHANGES]
+           * Optional generation of wrapper functions around scalar-infix
+             operators
+           * Quieter Build.PL by skipping PL_infix_plugin check on versions
+             of perl known to be too old it
+
+  0.14    2021-08-31
+          [CHANGES]
+           * Added the entire XS::Parse::Infix subsystem
+           * Added XPK_INFIX_* token types
+
+-------------------------------------------------------------------
 Fri Aug 27 03:07:07 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.13
