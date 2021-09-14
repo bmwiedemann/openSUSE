@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 13 13:41:01 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 1.8.4
+  * Fix a security issue with message key sharing
+
+-------------------------------------------------------------------
 Tue Aug 10 08:18:53 UTC 2021 - Dominik Heidler <dheidler@suse.de>
 
 - Version 1.7.33

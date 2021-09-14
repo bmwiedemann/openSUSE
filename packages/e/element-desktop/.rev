@@ -21,4 +21,16 @@ please use same ADI as https://build.opensuse.org/request/show/902766</comment>
 </comment>
     <requestid>912844</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>404305fdefa3a43e59332b5885660db0</srcmd5>
+    <version>1.8.4</version>
+    <time>1631646858</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 1.8.4
+  * Fix a security issue with message key sharing
+
+Please use same ADI as https://build.opensuse.org/request/show/918731
+</comment>
+    <requestid>918732</requestid>
+  </revision>
 </revisionlist>
