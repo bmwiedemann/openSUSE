@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 13 13:57:00 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * dictd.service
+
+-------------------------------------------------------------------
 Mon Mar 30 12:37:41 UTC 2020 - Matej Cepl <mcepl@suse.com>
 
 - Update to 1.13.0:
