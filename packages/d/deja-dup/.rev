@@ -580,4 +580,12 @@ So preferably for 13.1 as well.</comment>
     <comment></comment>
     <requestid>900206</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>05dd01fb4f132d646002d40f6acdbd5c</srcmd5>
+    <version>42.8</version>
+    <time>1631646875</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918854</requestid>
+  </revision>
 </revisionlist>
