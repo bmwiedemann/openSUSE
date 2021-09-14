@@ -1,7 +1,7 @@
 #
 # spec file for package deepin-daemon
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,8 +12,9 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %define   _name       dde-daemon
 %define   import_path pkg.deepin.io/dde/daemon
@@ -22,7 +23,8 @@ Name:           deepin-daemon
 Version:        5.13.36
 Release:        0
 Summary:        Daemon handling the DDE session settings
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
+Group:          System/GUI/Other
 URL:            https://github.com/linuxdeepin/dde-daemon
 Source0:        https://github.com/linuxdeepin/dde-daemon/archive/%{version}/%{_name}-%{version}.tar.gz
 Source1:        %{name}.sysusers
@@ -38,39 +40,40 @@ Patch1:         %{name}-libinput.patch
 # PATCH-FIX-OPENSUSE disable-gobuild-in-makefile.patch hillwood@opensuse.org
 # Use gobuild macro instead of makefile to build go binaries
 Patch2:         disable-gobuild-in-makefile.patch
-Group:          System/GUI/Other
+Patch3:         harden_deepin-accounts-daemon.service.patch
+Patch4:         harden_hwclock_stop.service.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  golang(API) = 1.15
 %endif
-BuildRequires:  golang-packaging
 BuildRequires:  deepin-gettext-tools
 BuildRequires:  fontpackages-devel
+BuildRequires:  golang-github-linuxdeepin-dde-api
+BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
+BuildRequires:  golang-packaging
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fontconfig)
-BuildRequires:  pkgconfig(gnome-keyring-1)
 BuildRequires:  pkgconfig(gdk-pixbuf-xlib-2.0)
-BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gnome-keyring-1)
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libbamf3)
 BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(gudev-1.0)
-BuildRequires:  pkgconfig(librsvg-2.0)
-BuildRequires:  pkgconfig(libinput)
 BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xi)
-BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xfixes)
+BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  golang-github-linuxdeepin-go-dbus-factory
-BuildRequires:  golang-github-linuxdeepin-dde-api
+BuildRequires:  pkgconfig(xtst)
 %if 0%{?sle_version} == 150200
 BuildRequires:  golang-github-stretchr-testify
 %endif
@@ -86,9 +89,9 @@ Requires:       gvfs
 Requires:       iw
 Requires:       rfkill
 Requires:       upower
+Requires:       wallpaper-branding-openSUSE
 Requires:       xdotool
 Requires:       xvfb-run
-Requires:       wallpaper-branding-openSUSE
 %if %{suse_version} > 1500
 Requires:       libgdk_pixbuf_xlib-2_0-0
 %else
@@ -106,6 +109,7 @@ Deepin Daemon is a daemon for handling the deepin session settings
 
 %package polkit
 Summary:        Deepin daemon polkit profiles
+Group:          System/GUI/Other
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 AutoReqProv:    Off
@@ -117,6 +121,7 @@ them manually or use deepin-polkit-install package.
 
 %package dbus
 Summary:        Deepin daemon DBus profiles
+Group:          System/GUI/Other
 Requires:       %{name} = %{version}-%{release}
 BuildArch:      noarch
 AutoReqProv:    Off
@@ -129,10 +134,9 @@ them manually or use deepin-dbus-install package.
 %package -n golang-github-linuxdeepin-deepin-daemon
 Summary:        Deepin daemon golang codes
 Group:          Development/Languages/Golang
-Requires:       golang-github-linuxdeepin-go-dbus-factory
 Requires:       golang-github-linuxdeepin-dde-api
+Requires:       golang-github-linuxdeepin-go-dbus-factory
 BuildArch:      noarch
-AutoReqProv:    On
 AutoReq:        Off
 %{go_provides}
 
@@ -330,4 +334,3 @@ fi
 %files lang -f %{_name}.lang
 
 %changelog
-

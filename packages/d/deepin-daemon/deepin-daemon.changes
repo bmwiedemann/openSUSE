@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  3 07:04:36 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_deepin-accounts-daemon.service.patch
+  * harden_hwclock_stop.service.patch
+
+-------------------------------------------------------------------
 Sat Aug 28 14:32:55 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix a security issue for deepin-daemon-dbus-installer and 
