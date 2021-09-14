@@ -176,4 +176,13 @@
   * mmc-utils: Add eMMC erase command support</comment>
     <requestid>901699</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5c003795be0ac56d175ea165f5054494</srcmd5>
+    <version>0.1+git.20210824</version>
+    <time>1631646870</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.1+git.20210824:
+  * mmc-utils: Fix for Firmware Version string printing</comment>
+    <requestid>918828</requestid>
+  </revision>
 </revisionlist>

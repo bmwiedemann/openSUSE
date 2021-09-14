@@ -17,7 +17,7 @@
 
 
 Name:           mmc-utils
-Version:        0.1+git.20210511
+Version:        0.1+git.20210824
 Release:        0
 Summary:        Tools for MMC/SD devices
 License:        GPL-2.0-only
