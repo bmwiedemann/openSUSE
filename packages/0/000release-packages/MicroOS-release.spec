@@ -289,7 +289,7 @@ CPE_NAME="cpe:/o:opensuse:microos:%{version}"
 BUG_REPORT_URL="https://bugs.opensuse.org"
 HOME_URL="https://www.opensuse.org/"
 DOCUMENTATION_URL="https://en.opensuse.org/Portal:MicroOS"
-LOGO="distributor-logo"
+LOGO="distributor-logo-MicroOS"
 EOF
 ln -s ..%{_prefix}/lib/os-release %{buildroot}%{_sysconfdir}/os-release
 
