@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 13 14:50:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.1
+  * Settings window: decrease width
+  * Settings: use Kirigami gridUnit for width and height
+  * Settings: remove page before pushing another one
+  * Fix video repeating when repeat is turned off 
+  * Remove quit button from toolbar 
+  * Fix play/pause button being disabled when it shouldn't
+  * Change resume playback setting into 2 settings 
+  * PlayListItem: remove id
+  * PlayList: remove ids from playlist items
+  * Install icon in the correct path
+- Drop haruna-icon_path.patch and haruna-playlist_noid.patch
+  (merged upstream)
+
+-------------------------------------------------------------------
 Mon Aug 23 06:51:44 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add haruna-icon_path.patch and haruna-playlist_noid.patch
