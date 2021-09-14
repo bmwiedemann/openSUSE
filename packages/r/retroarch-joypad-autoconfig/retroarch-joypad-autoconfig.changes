@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Tue Sep 07 13:13:53 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210903:
+  * fix Mayflash SS to USB Adapter
+  * Add support for menu toggle to work on SF30 Pro for macOS
+  * Add Atomic PSX/PS2 Pad Converter for Android
+  * Update udev/Hyperkin_Trooper_V2.cfg
+  * Rename both Blue Buttons to their position instead
+  * HORI Arcade Sticks: HORI Real Arcade Pro VX Ultimate MvsC 3 for Xbox 360 and HORI Fighting Stick 3 for Playstation 3
+  * Update udev/Hyperkin_Trooper_V2.cfg
+  * Update Microsoft_X-Box_One_pad_(Firmware_2015).cfg
+  * Create Hyperkin Controller Adapter For N64.cfg
+  * Create Retro-Bit Tribute64 - USB (D-Input).cfg
+  * Delete Retro-Bit Tribute64 - USB (D-Input).cfg
+  * DS3 Compatible HID Device
+  * Oops
+  * Add files via upload
+  * Update Amazon Fire TV Remote.cfg
+  * Update Amazon Fire TV Remote.cfg
+  * Fixed the Home button keycode
+  * Update dinput/BrawlerGen USB Genesis Mini (Switch mode).cfg
+  * Create BrawlerGen USB Genesis Mini (Switch mode).cfg
+  * Update Amazon Fire TV Remote.cfg
+  * added button labels
+  * added undev .cfg for Hyperkin Trooper V2
+  * Update Amazon Fire TV Remote.cfg
+  * Update Amazon Fire TV Remote.cfg
+  * Update and rename Thrustmaster eSwap Pro PS3.cfg to Thrustmaster eSwap Pro.cfg
+  * Add proper layout config for Capcom Home arcade Controller sticks - Doesnt affect SF2 CE Mini Arcade Stick in anyway other than the   display name of the controller but as anyone can clearly see its   already recognised as CHA2 which means "Capcom Home arcade Controller 2"   and not "SF2 CE Mini Arcade Stick" - Added missing button "7" which is select or insert coin  button(s)   that again doesnt affect the "SF2 CE Mini Arcade Stick" as everyone can see   https://cdn.shopify.com/s/files/1/2274/2569/products/Micro_Controller_wHand.jpg?v=1576164688   It simply misses that button.
+  * Update 8BitDo_SN30_Pro+_BT_X.cfg
+  * iBuffalo BSGP801 reports 2 trailing spaces in device name. Duplicate file unnecessary.
+  * Update dinput/Faceoff_Wired_Pro_Controller_for_Nintendo_Switch.cfg
+  * Create Nacon_Compact_Controller_for_PS4.cfg
+  * Create Faceoff_Wired_Pro_Controller_for_Nintendo_Switch.cfg
+  * xinput: Add MAYFLASH UAS F500 v2 distribution name
+  * sdl: Add Xbox Elite Controoller
+  * Add Microsoft Xbox Elite Series 2 Pad for udev
+  * Add SN30 Pro for Android gamepad
+  * xinput: Add MAYFLASH UAS F500 V2 support
+  * Create PDP Wired Controller for Xbox One - Stealth Series.cfg
+  * Clean up HOLTEK and Stadia display names
+  * Add 8BitDo N30 Pro 2 gamepad
+  * Update sdl2 config for Nintendo Switch Pro Controller
+  * Add raphnet dual GC/n64 config
+  * Make raphnet adapters config naming consistent
+  * Add Atomic PSX/PS2 Pad Converter sdl2
+  * Add Atomic PSX/PS2 Pad Converter udev
+  * Fix various configs with btn-only labels for axis triggers
+  * Create Arcade Stick (Street Fighter IV FightStick TE).cfg
+  * Rename eSwap PRO Controller.cfg to Thrustmaster eSwap Pro PS3.cfg
+  * Create eSwap PRO Controller.cfg
+  * remove dangerous hotkeys. Closes #750
+  * Add support for Xbox Wireless Controller (2020)
+  * udev: Fix faulty PS4 controller mappings
+  * Xbox Series Controller Profile for XINPUT
+  * Configuration for JOYROOM-ZS149
+  * Added 8BitDo Pro 2 gamepad
+  * Update 8bitdo SN30 GP profile with latest mappings
+  * Disable xinput profile for 8bitdo N30 Modkit
+  * Update Xbox One S Wireless Controller.cfg
+  * Adds Xbox 360 Wireless Reciever for dinput
+  * Updated Switch Pro Controller for udev
+  * Added Magicsee R1 one-hand controller to android
+  * Update Afterglow autoconfigs from #719 (#729)
+  * Create  iPEGA_PG_9068.cfg
+  * Add display name and comments on hid/HORI_mini_wired_ps4.cfg
+  * Clean up buffalo configs
+  * Update Afterglow controller
+  * Update Xbox controller configs
+  * Update Xbox 360 Wireless Reciever ID
+  * Add mfi to install files
+  * Update 8Bitdo_N30_Modkit_BT.cfg
+  * Update l2 and r2 on PS3 PANHAI controller
+  * Add 8Bitdo Modkits
+  * XBOX 360 and Generic XInput touch-up
+  * Create 8Bitdo Saturn Controller Modkit autoconfig.
+  * Fixed Afterglow autoconfig
+  * 3 new autoconfigs
+  * Add Go Advance gamepads for all 3 generations
+  * add Xbox Series X/S mappings
+  * Create odroidgo3_joypad.cfg
+  * add udev HORI Fighting Stick Mini (Nintendo Switch)
+  * add udev HORI RAP.V (Nintendo Switch)
+  * Add .gitlab-ci.yml file
+  * Added Magicsee R1 one-hand controller to udev
+  * 3 dinput profiles had winxinput as driver.
+  * Create Bliss-Box 4-Play SATURN_ANALOG.cfg
+  * Create Saturn to USB v3.0.cfg
+  * add DaemonBite Arduino board linux configs
+  * Add Stadia controller udev mapping
+  * Added a display name to the DS4v2 autoconfig.
+  * Added Austgame PS2 to USB adapter
+  * Deleting the X360 wireless profile I created.
+  * Remove 2 more duplicates.
+  * Remove duplicates.
+  * xinput/dinput cleanup.
+  * android: Fix Xiaomi Bluetooth Gamepad X Y btn swap issue
+  * Add config for Q4RAF Arcade Stick
+  * Create Xiaomi_MiBoxS_RC.cfg
+  * Create Snakebyte_SB906701.cfg
+  * Create Logitech_Keyboard_K480.cfg
+  * Update button labels
+  * Update input_device
+  * Update device_display_name
+  * Update Controller (ESM GAME FOR WINDOWS 1.02).cfg
+  * Update Controller (ESM GAME FOR WINDOWS 1.02).cfg
+  * Config for EasySMX  ESM-9110
+  * Disabled udev Retro-Bit Gen/Sat due to vid/pid conflict
+  * Disabled Xinput Switch / Steam config Conflicts with Steam_Link_Virtual_Pad.cfg causing CI checks to fail
+  * Fix L2/R2 labels for PS3 and PS4 controllers for SDL2.
+  * add config for Xbox 360 RF module Rev VA
+  * Renamed DS4 configs for consistency There are two revisions of DS4.
+  * Fix DS4 Select (Share button) and Touchpad binding
+  * HID: add HORI mini wired PS4 USB controller
+  * Fix start button on Nimbus MFi controller
+  * Fix Nimbus MFi controller on HID
+  * Add MFI controller to the MFI driver
+  * Fix various mislabels
+  * Fix typo in README file
+  * HID: add Dualshock USB wireless adapter
+  * Create Hyperkin_SmartBoy.cfg
+  * Create STMicroelectronics Lenovo GamePad.cfg
+  * Update Generic   USB  Joystick  .cfg
+  * add udev retrolink usb n64 controller
+  * Update SWITCH CO.,LTD. Controller (Dinput).cfg
+  * 2 other autoconfigs copied from xinput to dinput.
+  * Create SWITCH CO.,LTD. Controller (Dinput).cfg
+  * Add XBOX One S Bluetooth
+  * Add autoconfig for HOLTEK's Twin Shock
+
+-------------------------------------------------------------------
 Sat Aug 08 09:10:45 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200730:
