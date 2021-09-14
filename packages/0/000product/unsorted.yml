@@ -9600,6 +9600,7 @@ unsorted:
   - libbasicobjects-devel-32bit: [x86_64] 
   - libbasicobjects0-32bit: [x86_64] 
   - libbcc0 
+  - libbcg729-0 
   - libbcg729-0-32bit: [x86_64] 
   - libbcmatroska2-0 
   - libbcmatroska2-0-32bit: [x86_64] 
@@ -11770,6 +11771,7 @@ unsorted:
   - liblttng-ust-ctl4 
   - liblttng-ust-python-agent0 
   - liblttng-ust0: [i586] 
+  - liblua5_1-5 
   - liblua5_1-5-32bit: [x86_64] 
   - liblua5_3-5-32bit: [x86_64] 
   - liblua5_4-5-32bit: [x86_64] 
@@ -11848,6 +11850,7 @@ unsorted:
   - libmatroska-devel 
   - libmatroska7-32bit: [x86_64] 
   - libmaxminddb-devel 
+  - libmaxminddb0 
   - libmaxminddb0-32bit: [x86_64] 
   - libmbedcrypto7 
   - libmbedcrypto7-32bit: [x86_64] 
@@ -14359,6 +14362,8 @@ unsorted:
   - libwhich 
   - libwiiuse0 
   - libwim15 
+  - libwireshark14 
+  - libwiretap11 
   - libwlroots9 
   - libwmf-0_2-7-32bit: [x86_64] 
   - libwmf-devel 
@@ -14397,6 +14402,7 @@ unsorted:
   - libwsman_client5 
   - libwsman_clientpp-devel 
   - libwsman_clientpp1 
+  - libwsutil12 
   - libwtcdb-devel 
   - libwtcdb-tools 
   - libwtcdb1 
@@ -41855,8 +41861,10 @@ unsorted:
   - winrs 
   - wipe 
   - wireguard-tools 
+  - wireshark 
   - wireshark-devel 
   - wireshark-plugin-libvirt 
+  - wireshark-ui-qt 
   - withlock 
   - wizznic 
   - wl-clipboard 
