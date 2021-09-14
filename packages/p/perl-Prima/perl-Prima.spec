@@ -18,7 +18,7 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.62
+Version:        1.63
 Release:        0
 #Upstream: SUSE-Public-Domain
 Summary:        Perl graphic toolkit
