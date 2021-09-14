@@ -36,7 +36,6 @@ BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module Flask}
-BuildRequires:  %{python_module nose}
 # End of test requirements
 Requires:       python-blinker
 Requires:       python-Flask
@@ -61,7 +60,7 @@ cp %{SOURCE99} .
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.rst

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 11:49:34 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Sat Aug 14 02:54:59 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Require pip and importlib-metadata to fix build.
