@@ -5,6 +5,19 @@ Conflicts=sendmail.service postfix.service
 
 [Service]
 PrivateTmp=true
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Environment=QUEUE=1h
 EnvironmentFile=-/etc/sysconfig/exim
 ExecStart=/usr/sbin/exim $EXIM_ARGS

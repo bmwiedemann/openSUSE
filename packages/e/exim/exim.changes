@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 07:31:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * exim.service
+
+-------------------------------------------------------------------
 Thu Jul  8 06:08:34 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update eximstats-html-update.py to run under Python 3. 
