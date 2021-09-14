@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 14 16:03:09 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631608585.77a6c349a:
+  * Remove unnecessary x-bit
+  * Fix broken syntax in logrotate config
+  * docs: Treat database migration as advanced topic
+  * Install recommended deps in worker container
+  * Fetch and display job status for test urls in comments
+  * Install test distri deps in worker container on entry
+  * Fix reference to "Changing timeouts" section
+  * Speed up scan_for_untracked_assets further
+  * Speed up scan_for_untracked_assets by using less syscalls
+  * Strip down `openqa-clone-job` examples for `docker-compose` setup
+  * Mark single exception log in ResultSet::Assets as uncoverable
+  * Improve docker-compose docs as suggested in review
+  * Document running `openqa-clone-job` within container
+  * Document accessing a `psql` shell when using the docker-compose setup
+  * Do not configure web UI and worker containers to share the same network
+  * Fix configuration of additional web UI services in docker-compose setup
+  * Fix quoting in example in container setup docs
+  * Fix indentation of "Data storage …" section in container setup docs
+  * Improve documentation of docker-compose setup
+  * Fix docker-compose setup for worker
+  * Fix client and worker configuration of docker-compose setup
+  * Fix NGINX config for docker-compose setup
+
+-------------------------------------------------------------------
 Sun Sep 12 08:03:07 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631288156.16e44e0ea:
