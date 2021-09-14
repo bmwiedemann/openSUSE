@@ -47,6 +47,7 @@ console size, wrapping your words properly to fit the column size.
 
 %prep
 %setup -q -n clint-%{version}
+chmod -x examples/*
 
 %build
 sed -i '1s/^#!.*//' examples/*.py clint/packages/appdirs.py examples/unicode.sh

@@ -27,4 +27,13 @@
 </comment>
     <requestid>894263</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>87e689a80ef98bd875b884df568e0b6d</srcmd5>
+    <version>0.5.1</version>
+    <time>1631646869</time>
+    <user>dimstar_suse</user>
+    <comment>- remove executable bits from examples
+</comment>
+    <requestid>918819</requestid>
+  </revision>
 </revisionlist>
