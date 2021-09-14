@@ -23,4 +23,12 @@
     <comment>* Optimize ui (forwarded request 910916 from hillwood)</comment>
     <requestid>910917</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>4a4c7718324367036b51c4555562efeb</srcmd5>
+    <version>5.2.24</version>
+    <time>1631646863</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918799</requestid>
+  </revision>
 </revisionlist>
