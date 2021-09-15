@@ -3,6 +3,19 @@ Description=Distccd: A Distributed Compilation Server
 After=network.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 EnvironmentFile=-/etc/sysconfig/distccd
 ExecStart=/usr/bin/distccd --verbose --no-detach --daemon --port 3632 -N 15 --allow $ALLOWED_SERVERS $EXTRA_PARAMS
 
