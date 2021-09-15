@@ -105,7 +105,6 @@ BuildRequires:  pkgconfig(libsigrok)
 BuildRequires:  pkgconfig(dbi)
 BuildRequires:  pkgconfig(libatasmart)
 BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
@@ -116,9 +115,13 @@ BuildRequires:  pkgconfig(libmodbus)
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(libmosquitto)
 %endif
+BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
+%if 0%{?suse_version} > 1520
+BuildRequires:  pkgconfig(librabbitmq)
+%endif
 BuildRequires:  pkgconfig(librrd)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupsclient)
@@ -183,6 +186,17 @@ a browser.
 
 Please look at %{_sysconfdir}/apache2/conf.d/%{name}-js.conf on how to
 enable.
+
+%if 0%{?suse_version} > 1520
+%package plugin-amqp
+Summary:        AMQP Plugin for %{name}
+Group:          System/Monitoring
+Requires:       %{name} = %{version}-%{release}
+
+%description plugin-amqp
+The AMQP plugin transmits or receives values collected by collectd via the
+Advanced Message Queuing Protocol (AMQP).
+%endif
 
 %package plugin-notify-desktop
 Summary:        Desktop Notification Plugin for %{name}
@@ -479,6 +493,9 @@ Optional %{name} plugin to send values to InfluxDB using line protocol via udp
 Summary:        All Monitoring Plugins for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
+%if 0%{?suse_version} > 1520
+Requires:       %{name}-plugin-amqp = %{version}-%{release}
+%endif
 Requires:       %{name}-plugin-buddyinfo = %{version}-%{release}
 Requires:       %{name}-plugin-connectivity = %{version}-%{release}
 Requires:       %{name}-plugin-dbi = %{version}-%{release}
@@ -772,6 +789,12 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %config(noreplace) %{_sysconfdir}/collectd/collection-js.conf
 /srv/www/collectd-js
 %{_libexecdir}/collectd-js
+
+%if 0%{?suse_version} > 1520
+%files plugin-amqp
+%{_libdir}/collectd/amqp.so
+%{_libdir}/collectd/amqp.la
+%endif
 
 %files plugin-notify-desktop
 %{_libdir}/collectd/notify_desktop.so

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  8 14:08:46 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- add amqp plugin
+
+-------------------------------------------------------------------
 Wed Sep  1 11:14:56 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Disabled the mqtt plugin for SLES and the modbus plugin for 

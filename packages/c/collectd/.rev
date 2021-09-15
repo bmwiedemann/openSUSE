@@ -354,4 +354,12 @@ Packaging :
     <comment></comment>
     <requestid>915478</requestid>
   </revision>
+  <revision rev="41" vrev="6">
+    <srcmd5>2c52b94c38cec7248643095356674810</srcmd5>
+    <version>5.12.0</version>
+    <time>1631739079</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918989</requestid>
+  </revision>
 </revisionlist>
