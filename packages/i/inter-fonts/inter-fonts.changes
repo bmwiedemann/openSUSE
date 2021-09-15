@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Sep 14 18:19:50 UTC 2021 - Anton Shvetz <shvetz.anton@gmail.com>
+
+- Update to 3.19:
+  * Fixes a variable-font interpolation bug with Roman numeral
+    eight. #382
+  * Fixes spacing of the latin epsilon glyph thanks to @hcsch. #377
+  * Adds new glyph U+25AA "blackSmallSquare" including calt
+    mappings for case sensitivity. #373
+  * Removes U+20E3 "uni20E3" COMBINING ENCLOSING KEYCAP which
+    triggers a bug in chromium, causing certain emoji to not render
+    properly. #371
+  * Improvements to Roman numerals
+  * Adjusts vertical metrics metadata to that of v3.15 and older.
+    This should fix any vertical alignment issues that might have
+    occurred with v3.17. #361
+  * Fixes several issues with italics introduced by Glyphs 3 upgrade:
+    = Fixes an issue with backslash in Italic masters. #362
+    = Fixes issues with afii10026 and uni0376 in italic masters
+    = Fixes issue with italic q U+0071 by inlining the shape
+      instead of using components. #360
+  * Fixes issue with U+035E COMBINING DOUBLE MACRON and
+    U+20F0 COMBINING ASTERISK ABOVE in Thin Italic. #363
+  * Fixes positioning issue with U+0358 COMBINING DOT ABOVE RIGHT
+  * Improvements to U+20DC COMBINING FOUR DOTS ABOVE and
+    U+20DB COMBINING THREE DOTS ABOVE
+  * Improvements to U+204E LOW ASTERISK
+  * Improved positioning via mark anchors of combining glyphs
+    U+20F0, U+035E and U+035F. #363
+  * Changes glyph shape of Latin upper-case iota. #359
+  * Improved glyph composition via ccmp for enclosed glyphs like
+    U+0041,U+20DD. #335
+  * Fixes issues with appearance in Microsoft Word. #352
+    (note that #156 is still unresolved although we have made
+    some progress in v3.16 toward developing workarounds
+    for certain printers.)
+  * Fixes double grave interpolation issue. #317
+  * Fixes design issue with glyphs acutedblnosp, dblgravecmb,
+    uni02F6 and uni02F5. #339
+  * Fixes missing or incorrect mark anchors in several
+    turn* glyphs. #336
+  * Adds Baht currency glyph U+0E3F. #323
+  * Improvement to Latin iota (lower and upper case) glyphs. #340
+  * Improvement to some numerical fraction glyphs
+  * Adds a dummy DSIG table to address issues with
+    Microsoft Office 2003 and older
+  * Improvements when using Inter with certain older Microsoft
+    products by decomposing any nested components which some
+    of that software has issues with
+  * Addresses a major regression in v3.16 where several
+    italic glyphs got messed up due to a Glyphs 3 version upgrade
+    of the source file. This only affected users of v3.16
+    which was only released for about 12 hours before being
+    replaced with this release v3.17. #360
+- Additionally package README.md
+- Update description
+
+-------------------------------------------------------------------
 Sat Aug 22 23:26:54 UTC 2020 - Alexei Podvalsky <avvissu@yandex.by>
 
 - Update to 3.15:

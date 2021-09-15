@@ -1,7 +1,7 @@
 #
 # spec file for package inter-fonts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,26 @@
 
 
 Name:           inter-fonts
-Version:        3.15
+Version:        3.19
 Release:        0
 Summary:        The Inter font family
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://rsms.me/inter/
 Source0:        https://github.com/rsms/inter/releases/download/v%{version}/Inter-%{version}.zip
+Source1:        https://github.com/rsms/inter/raw/v%{version}/README.md
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 
 %description
-The Inter is a typeface specially designed for user interfaces with focus
-on high legibility of small-to-medium sized text on computer screens.
+Inter is a typeface specially designed for user interfaces with focus on high
+legibility of small-to-medium sized text on computer screens.
 
 %prep
-%setup -cT -a0
+%autosetup -cT -a0
+cp %{SOURCE1} .
 
 %build
 :
@@ -48,5 +50,6 @@ install -m0644 -t %{buildroot}%{_ttfontsdir} 'Inter Desktop'/*.otf
 %files
 %license LICENSE.txt
 %{_ttfontsdir}
+%doc README.md
 
 %changelog
