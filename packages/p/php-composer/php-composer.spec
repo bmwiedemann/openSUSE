@@ -1,7 +1,7 @@
 #
 # spec file for package php-composer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           php-composer
-Version:        1.10.19
+Version:        1.10.22
 Release:        0
 Summary:        Dependency Management for PHP
 License:        MIT
