@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>aa3937ded6a75c44262e1cbedb5785b3</srcmd5>
+    <version>0.25.0</version>
+    <time>1631739085</time>
+    <user>dimstar_suse</user>
+    <comment>Update to a newer version and fix the libfdt issue that caused the crash before.</comment>
+    <requestid>919023</requestid>
+  </revision>
+</revisionlist>

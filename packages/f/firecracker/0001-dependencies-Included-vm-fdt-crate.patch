@@ -1,0 +1,59 @@
+From 866c185ed957e22cec84608ac03b5e6af12b0381 Mon Sep 17 00:00:00 2001
+From: AlexandruCihodaru <cihodar@amazon.com>
+Date: Mon, 6 Sep 2021 11:13:47 +0300
+Subject: [PATCH 1/3] [dependencies]: Included vm-fdt crate
+
+Signed-off-by: AlexandruCihodaru <cihodar@amazon.com>
+---
+ Cargo.lock          | 7 +++++++
+ src/arch/Cargo.toml | 2 +-
+ 2 files changed, 8 insertions(+), 1 deletion(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index ec4d9baf..3c64fc7c 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -39,6 +39,7 @@ dependencies = [
+  "utils",
+  "versionize",
+  "versionize_derive",
++ "vm-fdt",
+  "vm-memory 0.1.0",
+ ]
+ 
+@@ -978,6 +979,12 @@ dependencies = [
+ name = "virtio_gen"
+ version = "0.1.0"
+ 
++[[package]]
++name = "vm-fdt"
++version = "0.1.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "bd986f4fdf949ab2181c7b4fedb03fb0e9de6b0aa788fff247b2608701ce3457"
++
+ [[package]]
+ name = "vm-memory"
+ version = "0.1.0"
+diff --git a/src/arch/Cargo.toml b/src/arch/Cargo.toml
+index f1a5ec9a..9e92d975 100644
+--- a/src/arch/Cargo.toml
++++ b/src/arch/Cargo.toml
+@@ -9,6 +9,7 @@ kvm-bindings = { version = ">=0.4.0", features = ["fam-wrappers"] }
+ kvm-ioctls = ">=0.9.0"
+ libc = ">=0.2.39"
+ vm-memory = { path = "../vm-memory" }
++vm-fdt = "0.1.0"
+ versionize = ">=0.1.6"
+ versionize_derive = ">=0.1.3"
+ 
+@@ -18,6 +19,5 @@ utils = { path = "../utils" }
+ 
+ [dev-dependencies]
+ device_tree = ">=1.1.0"
+-
+ [target.'cfg(target_arch="aarch64")'.dependencies]
+ libfdt-bindings = { path = "../libfdt-bindings" }
+\ No newline at end of file
+-- 
+2.33.0
+
