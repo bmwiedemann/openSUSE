@@ -17,7 +17,7 @@
 #
 
 
-%define parent_tag 4.10.0
+%define parent_tag 4.11.0
 %define tag_offset %nil
 %define revision v%{parent_tag}
 
@@ -40,6 +40,7 @@ This package provides translations of man pages in multiple languages.
 %man_lang_package da Danish
 %man_lang_package de German
 %man_lang_package es Spanish
+%man_lang_package hu Hungarian
 %man_lang_package it Italian
 %man_lang_package mk Macedonian
 %man_lang_package nl Dutch
@@ -57,8 +58,14 @@ This package provides translations of man pages in multiple languages.
 %build
 %configure --enable-distribution=%{distribution_id}
 %make_build
+# Hungarian translations are not built by default
+# https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/7
+%make_build --directory po/hu
 
 %install
 %make_install
+# Hungarian translations are not installed by default
+# https://salsa.debian.org/manpages-l10n-team/manpages-l10n/-/issues/7
+%make_install --directory po/hu
 
 %changelog
