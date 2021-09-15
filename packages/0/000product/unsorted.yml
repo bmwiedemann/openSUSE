@@ -694,6 +694,9 @@ unsorted:
   - apg 
   - apiguardian 
   - apiguardian-javadoc 
+  - apitrace 
+  - apitrace-wrappers 
+  - apitrace-wrappers-32bit: [x86_64] 
   - apparmor-rpm-macros 
   - appeditor 
   - appeditor-lang 
@@ -1163,8 +1166,6 @@ unsorted:
   - bazel3.7: [x86_64] 
   - bb 
   - bbe 
-  - bbswitch 
-  - bbswitch-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - bbswitch-kmp-pae: [i586] 
   - bcache-tools: [i586] 
   - bcal: [x86_64] 
@@ -18103,6 +18104,9 @@ unsorted:
   - orthanc-source 
   - orthanc-webviewer 
   - orthanc-wsi 
+  - orthos2 
+  - orthos2-client 
+  - orthos2-docs 
   - ortp 
   - ortp-devel 
   - os-autoinst 
@@ -19999,10 +20003,10 @@ unsorted:
   - petsc_3_14_5-gnu-openmpi3-hpc-saws 
   - petsc_3_14_5-gnu-openmpi4-hpc-devel 
   - petsc_3_14_5-gnu-openmpi4-hpc-saws 
+  - pfscalign 
   - pfsglview 
   - pfstools 
   - pfstools-devel 
-  - pfstools-exr 
   - pfstools-imgmagick 
   - pfstools-octave 
   - pfsview 
@@ -21285,7 +21289,6 @@ unsorted:
   - python3-manilaclient 
   - python3-marisa 
   - python3-masakariclient 
-  - python3-matrix-synapse-ldap3 
   - python3-mistralclient 
   - python3-mlt 
   - python3-monascaclient 
@@ -22966,7 +22969,6 @@ unsorted:
   - python36-model-bakery 
   - python36-modernize 
   - python36-mohawk 
-  - python36-moksha-common 
   - python36-mongoengine 
   - python36-monotonic 
   - python36-more-itertools 
@@ -25828,7 +25830,6 @@ unsorted:
   - python38-model-bakery 
   - python38-modernize 
   - python38-mohawk 
-  - python38-moksha-common 
   - python38-mongoengine 
   - python38-monitoring-plugins-http_json 
   - python38-monotonic 
@@ -28864,7 +28865,6 @@ unsorted:
   - python39-model-bakery 
   - python39-modernize 
   - python39-mohawk 
-  - python39-moksha-common 
   - python39-mongoengine 
   - python39-monotonic 
   - python39-more-itertools 
