@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 15 03:54:17 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- Version 0.20.2
+
+  - Respect KDE's scrollbar click behavior by default.
+  - Elide push button text if there isn't enough space for it.
+  - Allow opening of the user config file from Kvantum Manager.
+  - Added LibreOffice to the black list of window dragging (as a 
+    workaround for issues related to its Qt5 skin under Wayland).
+
+-------------------------------------------------------------------
 Thu Aug 12 23:19:10 UTC 2021 - Konstantin Voinov <kv@kott.no-ip.biz>
 
 - Version 0.20.1
