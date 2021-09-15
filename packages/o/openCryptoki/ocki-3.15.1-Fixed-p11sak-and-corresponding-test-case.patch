@@ -1,0 +1,28 @@
+From e4786baf61c107c65a3b9ed0eb1415400866eab0 Mon Sep 17 00:00:00 2001
+From: Juergen Christ <jchrist@linux.ibm.com>
+Date: Thu, 25 Feb 2021 14:02:33 +0100
+Subject: [PATCH] Fixed p11sak and corresponding test case
+
+Fixed off-by-one write to heap, testcase and test case executor.
+
+Signed-off-by: Juergen Christ <jchrist@linux.ibm.com>
+---
+ usr/sbin/p11sak/p11sak.c            | 2 +-
+ 3 files changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/usr/sbin/p11sak/p11sak.c b/usr/sbin/p11sak/p11sak.c
+index 38c1f88b..d99db970 100644
+--- a/usr/sbin/p11sak/p11sak.c
++++ b/usr/sbin/p11sak/p11sak.c
+@@ -1353,7 +1353,7 @@ static CK_RV tok_key_get_label_attr(CK_SESSION_HANDLE session,
+         return rc;
+     }
+ 
+-    label = malloc(template[0].ulValueLen);
++    label = malloc(template[0].ulValueLen + 1);
+     if (!label) {
+         printf("Error: cannot malloc storage for label.\n");
+         return CKR_HOST_MEMORY;
+-- 
+2.26.2
+

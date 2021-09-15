@@ -43,6 +43,10 @@ Patch2:         ocki-3.15.1-Added-error-message-handling-for-p11sak-remove-key-c
 Patch3:         ocki-3.15.1-Fix-compiling-with-c.patch
 Patch4:         ocki-3.15.1-A-slot-ID-has-nothing-to-do-with-the-number-of-slots.patch
 Patch5:         ocki-3.15.1-SOFT-Fix-problem-with-C_Get-SetOperationState-and-di.patch
+Patch6:         ocki-3.15.1-Added-NULL-pointer-to-avoid-double-free-for-the-list.patch
+Patch7:         ocki-3.15.1-SOFT-Check-the-EC-Key-on-C_CreateObject-and-C_Derive.patch
+Patch8:         ocki-3.15.1-Fixed-p11sak-and-corresponding-test-case.patch
+Patch9:         ocki-3.15.1-p11sak-Fix-CKA_LABEL-handling.patch
 BuildRequires:  bison
 BuildRequires:  dos2unix
 BuildRequires:  flex
@@ -135,6 +139,10 @@ Cryptographic Accelerator (FC 4960 on pSeries).
 %patch3 -p1
 %patch4 -p1
 %patch5 -p1
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
 
 cp %{SOURCE2} .
 

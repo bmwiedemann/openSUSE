@@ -1,0 +1,40 @@
+From 900a480c3c4e1cfb1496d80fb20e8eab4a8108db Mon Sep 17 00:00:00 2001
+From: Matthias Reumann <matthias.reumann1@ibm.com>
+Date: Wed, 17 Mar 2021 11:22:31 +0100
+Subject: [PATCH] Added NULL pointer to avoid double free() for the list-key
+ and remove-key commands.
+
+Signed-off by Matthias Reumann <matthias.reumann1@ibm.com>
+---
+ usr/sbin/p11sak/p11sak.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/usr/sbin/p11sak/p11sak.c b/usr/sbin/p11sak/p11sak.c
+index d99db970..3ba57022 100644
+--- a/usr/sbin/p11sak/p11sak.c
++++ b/usr/sbin/p11sak/p11sak.c
+@@ -2149,7 +2149,9 @@ static CK_RV list_ckey(CK_SESSION_HANDLE session, p11sak_kt kt, int long_print)
+             printf("%s\n", label);
+         }
+         free(label);
++        label = NULL;
+         free(keytype);
++        keytype = NULL;
+     }
+ 
+     rc = funcs->C_FindObjectsFinal(session);
+@@ -2313,9 +2315,10 @@ static CK_RV delete_key(CK_SESSION_HANDLE session, p11sak_kt kt, char *rm_label,
+                 }
+             }
+         }
+-
+         free(label);
++        label = NULL;
+         free(keytype);
++        keytype = NULL;
+     }
+ 
+     rc = funcs->C_FindObjectsFinal(session);
+-- 
+2.26.2
+

@@ -1,0 +1,52 @@
+From f6588fac5c767500df7fba97244a41db60e9d737 Mon Sep 17 00:00:00 2001
+From: Ingo Franzki <ifranzki@linux.ibm.com>
+Date: Mon, 3 May 2021 10:05:07 +0200
+Subject: [PATCH] SOFT: Check the EC Key on C_CreateObject and C_DeriveKey
+
+When constructing an OpenSSL EC public or private key from PKCS#11
+attributes or ECDH public data, check that the key is valid, i.e. that
+the point is on the curve.
+
+This prevents one from creating an EC key object via C_CreateObject with
+invalid key data. It also prevents C_DeriveKey to derive a secret using
+ECDH with an EC public key (public data) that uses a different curve
+or is invalid by other means.
+
+Signed-off-by: Ingo Franzki <ifranzki@linux.ibm.com>
+---
+ usr/lib/soft_stdll/soft_specific.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+diff --git a/usr/lib/soft_stdll/soft_specific.c b/usr/lib/soft_stdll/soft_specific.c
+index 25a97e29..9f6c2d47 100644
+--- a/usr/lib/soft_stdll/soft_specific.c
++++ b/usr/lib/soft_stdll/soft_specific.c
+@@ -4207,6 +4207,12 @@ static CK_RV fill_ec_key_from_pubkey(EC_KEY *ec_key, const CK_BYTE *data,
+         goto out;
+     }
+ 
++    if (!EC_KEY_check_key(ec_key)) {
++        TRACE_ERROR("EC_KEY_check_key failed\n");
++        rc = CKR_FUNCTION_FAILED;
++        goto out;
++    }
++
+ out:
+     if (temp != NULL)
+         free(temp);
+@@ -4246,6 +4252,12 @@ static CK_RV fill_ec_key_from_privkey(EC_KEY *ec_key, const CK_BYTE *data,
+         goto out;
+     }
+ 
++    if (!EC_KEY_check_key(ec_key)) {
++        TRACE_ERROR("EC_KEY_check_key failed\n");
++        rc = CKR_FUNCTION_FAILED;
++        goto out;
++    }
++
+ out:
+     if (point != NULL)
+         EC_POINT_free(point);
+-- 
+2.16.2.windows.1
+

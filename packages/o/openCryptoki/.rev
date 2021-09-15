@@ -609,4 +609,27 @@
     <comment></comment>
     <requestid>872977</requestid>
   </revision>
+  <revision rev="61" vrev="5">
+    <srcmd5>b845a2237ca0fe645369f292087fa43e</srcmd5>
+    <version>3.15.1</version>
+    <time>1631739096</time>
+    <user>dimstar_suse</user>
+    <comment>Bug fixes for bsc#1190527:
+
+- Added the following patches for bsc#1182726 &quot; p11sak list-key segfault&quot;
+  * ocki-3.15.1-Added-NULL-pointer-to-avoid-double-free-for-the-list.patch
+    Added NULL pointer to avoid double free() for the list-key and
+    remove-key commands.
+  * ocki-3.15.1-Fixed-p11sak-and-corresponding-test-case.patch
+    Note that two hunks that were unrelated to fixing the running
+    code were removed from this patch.
+  * ocki-3.15.1-p11sak-Fix-CKA_LABEL-handling.patch
+- Added ocki-3.15.1-SOFT-Check-the-EC-Key-on-C_CreateObject-and-C_Derive.patch
+  When constructing an OpenSSL EC public or private key from PKCS#11
+  attributes or ECDH public data, check that the key is valid, i.e. that
+  the point is on the curve.
+  (bsc#1185976)
+</comment>
+    <requestid>919254</requestid>
+  </revision>
 </revisionlist>
