@@ -1045,4 +1045,12 @@
   * 0001-Partial-fix-for-442082-regarding-building-on-newer-E.patch (forwarded request 917301 from Vogtinator)</comment>
     <requestid>917309</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>18eb0874be38c076197d52b6c25b751b</srcmd5>
+    <version>3.5.5</version>
+    <time>1631739101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919273</requestid>
+  </revision>
 </revisionlist>

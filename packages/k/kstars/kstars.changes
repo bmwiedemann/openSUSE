@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 15 14:12:19 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.2:
+  * Fix transit and set times for several types of objects
+  * When no temperature is supplied, turn off force
+  * Fix crash division by zero
+  * Reset default binning for solver to 2x2 since some cameras can be terrible at 4x4
+  * Idle is acceptable state for parking and unparking for dust caps
+  * INDI drivers sync
+  * On abnormal disconnect, try to clear devices first by using BlockingQueuedConnection
+  * Fix issue where calibration wasn't updated if guider binning was changed
+  * Add extra checks to prevent mix up of camera signals to guide slots
+  * fix guide driftplot for RA
+  * Guider fixes: ra error plotting reversed, disabling axes bug
+  * Sort by magnitude and activate supernovae when searching for them
+  * Save guide bin index properly for future sessions
+  * Refactor guider, adjust UI, convert to 0-1.0 control parameter, use calibration
+  * Ensure that filter info is synchronized before capture
+  * Removing legacy polar alignment
+  * fix for the twilight restriction
+  * Improve randomness of non guiding dithering
+  * When Ekos resets, release dark library
+  * Bring back auto dark in capture module
+  * Lots of small fixes
+- Drop 0001-Partial-fix-for-442082-regarding-building-on-newer-E.patch
+- Drop hotfix-twilight.patch
+
+-------------------------------------------------------------------
 Tue Sep  7 13:50:06 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix build with Eigen >= 3.4.0 (kde#442082):
