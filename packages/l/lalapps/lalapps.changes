@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 13 13:58:08 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalapps-disable-testWeave-for-non-x86_64.patch: Disable
+  Weave related tests on all but x86_64 where tolerance errors
+  show up, see https://git.ligo.org/lscsoft/lalsuite/-/issues/105,
+  boo#1189928; introduces BuildRequires: libtool and requires
+  running autoreconf before configure.
+
+-------------------------------------------------------------------
 Tue Jun  8 20:51:27 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add lalapps-gcc11-array-bounds-decl.patch: Fix building with gcc

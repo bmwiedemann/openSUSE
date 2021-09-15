@@ -31,6 +31,8 @@ Source:         http://software.ligo.org/lscsoft/source/lalsuite/%{name}-%{versi
 Patch0:         lalapps-fix-uninitialised-var.patch
 # PATCH-FIX-UPSTREAM lalapps-gcc11-array-bounds-decl.patch badshah400@gmail.com -- Fix building with gcc 11 by correcting array bounds declaration; patch part of upstream merge request [https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/1605]
 Patch1:         lalapps-gcc11-array-bounds-decl.patch
+# PATCH-FIX-UPSTREAM lalapps-disable-testWeave-for-non-x86_64.patch badshah400@gmail.com -- Disable Weave related tests on all but x86_64 where tolerance errors show up, see https://git.ligo.org/lscsoft/lalsuite/-/issues/105
+Patch2:         lalapps-disable-testWeave-for-non-x86_64.patch
 BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module glue}
@@ -66,6 +68,9 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  bc
 BuildRequires:  lalpulsar-data
 Requires:       python3-%{name} = %{version}
+# /SECTION
+# SECTION Required for Patch2
+BuildRequires:  libtool
 # /SECTION
 # 32-bit no longer supported upstream
 ExcludeArch:    %{ix86}
@@ -110,6 +115,8 @@ sed -Ei "1{s|/usr/bin/env python|%{_bindir}/python3|}" \
   src/pulsar/HeterodyneSearch/make_frame_cache
 
 %build
+# Patch2 touches autotool files
+autoreconf -fvi
 %{python_expand # Necessary to run %%configure for all active python flavors
 export PYTHON=%{_bindir}/$python
 mkdir ../$python
@@ -117,7 +124,6 @@ cp -pr ./ ../$python
 pushd ../$python
 # FIXME: Failures because XLAL_ERROR implictly converts to function return type
 export CFLAGS+=" -Wno-enum-conversion"
-%configure \
 %configure --enable-swig
 %make_build
 popd

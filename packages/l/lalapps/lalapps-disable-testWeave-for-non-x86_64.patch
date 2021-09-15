@@ -1,0 +1,33 @@
+Index: lalapps-7.2.0/src/pulsar/Weave/Makefile.am
+===================================================================
+--- lalapps-7.2.0.orig/src/pulsar/Weave/Makefile.am
++++ lalapps-7.2.0/src/pulsar/Weave/Makefile.am
+@@ -75,5 +75,10 @@ if !CFITSIO
+ skip_tests += $(test_scripts)
+ endif
+ 
++# Skip Weave tests on non-x86_64
++if SKIP_WEAVE_TESTS
++skip_tests += $(test_scripts)
++endif
++
+ # testWeave_reference_results.sh requires output from tests that compare against reference results
+ testWeave_reference_results.log: testWeave_interpolating.log testWeave_non_interpolating.log testWeave_single_segment.log
+Index: lalapps-7.2.0/configure.ac
+===================================================================
+--- lalapps-7.2.0.orig/configure.ac
++++ lalapps-7.2.0/configure.ac
+@@ -318,6 +318,13 @@ AM_CPPFLAGS="-I\$(top_srcdir)/src ${AM_C
+ # RedHat-derived systems.
+ AC_SUBST([pkgpythondir], ["\${pkgpyexecdir}"])
+ 
++# testWeave_* results have tolerance issues that show up in some archs, use only for x86_64
++# See https://git.ligo.org/lscsoft/lalsuite/-/issues/105
++AC_MSG_CHECKING([if arch is non-x86_64 so weave tests should be disabled])
++AC_DEFINE([SKIP_WEAVE_TESTS], [0], [Set to 1 for non-x86_64 architectures])
++AS_IF([test x"$(arch)" != "xx86_64"], AC_MSG_RESULT([yes]), AC_MSG_RESULT([no]))
++AM_CONDITIONAL([SKIP_WEAVE_TESTS], [test x"$(arch)" != "xx86_64"])
++
+ # output
+ AC_OUTPUT
+ AC_MSG_NOTICE([
