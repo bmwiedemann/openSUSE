@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1631277879.0da8130f
+Version:        4.6.1631543245.9bb4b0ca
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -87,8 +87,13 @@ Recommends:     /usr/bin/Xvnc
 Recommends:     /usr/bin/qemu-img
 Recommends:     /usr/bin/xkbcomp
 Recommends:     dumponlyconsole
+Recommends:     icewm
 Recommends:     qemu >= 2.0.0
 Recommends:     tesseract-ocr
+Recommends:     x3270
+Recommends:     xdotool
+Recommends:     xterm
+Recommends:     xterm-console
 # Optional dependency for Python test API support
 Recommends:     perl(Inline::Python)
 Requires(pre):  %{_bindir}/getent
