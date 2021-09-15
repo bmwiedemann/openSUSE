@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Mon Sep 13 03:06:23 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9914
+   see /usr/share/doc/packages/perl-Perl-PrereqScanner-NotQuiteLite/Changes
+
+  0.9914 2021/09/13
+    - Support Object::Pad
+
+-------------------------------------------------------------------
+Wed Nov  4 17:32:34 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- initial package 0.9913
+ * created by cpanspec 1.79.01
