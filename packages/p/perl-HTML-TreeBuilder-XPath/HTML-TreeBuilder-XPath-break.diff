@@ -1,0 +1,16 @@
+All this does is to avoid a match in perl.prov
+
+Index: HTML-TreeBuilder-XPath-0.14/lib/HTML/TreeBuilder/XPath.pm
+===================================================================
+--- HTML-TreeBuilder-XPath-0.14.orig/lib/HTML/TreeBuilder/XPath.pm
++++ HTML-TreeBuilder-XPath-0.14/lib/HTML/TreeBuilder/XPath.pm
+@@ -94,7 +94,8 @@ sub cmp
+ 
+ # need to modify directly the HTML::Element package, because HTML::TreeBuilder won't let me
+ # change the class of the nodes it generates
+-package HTML::Element;
++package
++ HTML::Element;
+ use Scalar::Util qw(weaken);
+ use vars qw(@ISA);
+ 
