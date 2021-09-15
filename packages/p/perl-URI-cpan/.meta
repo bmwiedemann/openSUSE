@@ -1,0 +1,6 @@
+<package name="perl-URI-cpan" project="openSUSE:Factory">
+  <title>perl-URI-cpan</title>
+  <description>URLs that refer to things on the CPAN</description>
+  <devel project="devel:languages:perl" package="perl-URI-cpan"/>
+  <url>https://metacpan.org/release/URI-cpan</url>
+</package>
