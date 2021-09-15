@@ -536,4 +536,17 @@ Latest changes:
   /usr/lib/modprobe.d (boo#1173043)</comment>
     <requestid>914814</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>0958981347c4b2acdea6686e532a6f41</srcmd5>
+    <version>0.8.2</version>
+    <time>1631739097</time>
+    <user>dimstar_suse</user>
+    <comment>- SUSEPrime-0.8.2
+  * 0.8.0 adds nvidia-prime-render offload support with both
+    modesetting and xf86-video-intel drivers. Massive changes! 
+    --&gt; https://github.com/openSUSE/SUSEPrime/releases/tag/0.8.0
+  * 0.8.1/0.8.2 adds amd support (needed for AMD/NVIDIA combos)
+- merged suse-prime/suse-prime-bbswitch packages</comment>
+    <requestid>919256</requestid>
+  </revision>
 </revisionlist>

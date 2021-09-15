@@ -17,35 +17,25 @@
 
 
 Name:           suse-prime
-Version:        0.7.17
+Version:        0.8.2
 Release:        0
-Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops
+Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
 License:        SUSE-Public-Domain
 Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/SUSEPrime
 Source0:        https://github.com/openSUSE/SUSEPrime/archive/%{version}.tar.gz#/SUSEPrime-%{version}.tar.gz
+Recommends:     bbswitch
 Recommends:     nvidia_driver
 Supplements:    modalias(nvidia_driver:pci:v00008086d*sv*sd*bc03sc*i*)
 Conflicts:      suse-prime-alt
-Conflicts:      suse-prime-bbswitch
-BuildArch:      noarch
-
-%description
-A collection of shell scripts that makes it possible to use the
-NVIDIA GPU on a Optimus Laptop. The switching is similar to
-the feature provided by the nvidia-prime package in Ubuntu.
-
-%package bbswitch
-Summary:        GPU (nvidia/intel) selection for NVIDIA optimus laptops with bbswitch support
-Group:          System/X11/Utilities
+#Provides:       suse-prime-bbswitch:/usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
+Obsoletes:      suse-prime-bbswitch < %{version}
+Provides:       suse-prime-bbswitch = %{version}
 BuildRequires:  pkgconfig(systemd)
-Requires:       bbswitch
-Conflicts:      suse-prime
-Conflicts:      suse-prime-alt
 BuildArch:      noarch
 %{?systemd_ordering}
 
-%description bbswitch
+%description
 A collection of shell scripts that makes it possible to use the
 NVIDIA GPU on a Optimus Laptop. The switching is similar to
 the feature provided by the nvidia-prime package in Ubuntu.
@@ -63,6 +53,7 @@ install -m 0644 xorg-intel.conf  %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-intel-intel.conf  %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-nvidia.conf %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-nvidia-prime-render-offload.conf %{buildroot}%{_datadir}/prime/
+install -m 0644 xorg-amd.conf %{buildroot}%{_datadir}/prime/
 mkdir -p %{buildroot}/usr/lib/modprobe.d
 install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}/usr/lib/modprobe.d/
 install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}/usr/lib/modprobe.d/
@@ -76,7 +67,16 @@ install -m 0644 90-nvidia-udev-pm-G05.rules %{buildroot}/usr/lib/udev/rules.d
 mkdir -p %{buildroot}/usr/sbin
 ln -snf service %{buildroot}/usr/sbin/rcprime-select
 
+%pre
+%service_add_pre prime-select.service
+
+%post
+%{?regenerate_initrd_post}
+%service_add_post prime-select.service
+systemctl enable prime-select.service
+
 %preun
+%service_del_preun prime-select.service
 if [ "$1" -eq 0 ]; then
    # cleanup before uninstalling the package completely
    export PATH=$PATH:/usr/sbin
@@ -87,6 +87,7 @@ fi
 if [ "$1" -eq 0 ]; then
    true
    %{?regenerate_initrd_post}
+   %service_del_postun prime-select.service
 fi
 
 %posttrans
@@ -97,53 +98,13 @@ fi
 rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %{?regenerate_initrd_post}
 
-%if 0%{?is_opensuse}
-%pre bbswitch
-%service_add_pre prime-select.service
-
-%post bbswitch
-%{?regenerate_initrd_post}
-%service_add_post prime-select.service
-systemctl enable prime-select.service
-
-%preun bbswitch
-%service_del_preun prime-select.service
-if [ "$1" -eq 0 ]; then
-   # cleanup before uninstalling the package completely
-   export PATH=$PATH:/usr/sbin
-   %{_sbindir}/prime-select unset
-fi
-exit 0
-
-%postun bbswitch
-%{?regenerate_initrd_post}
-%service_del_postun prime-select.service
-
-%posttrans bbswitch
-%{?regenerate_initrd_posttrans}
-%endif
-
 %files
 %defattr(-,root,root)
 %doc README.md
 %dir /usr/lib/dracut/
 %dir /usr/lib/dracut/dracut.conf.d/
 %dir %{_datadir}/prime
-%{_datadir}/prime/xorg-intel.conf
-%{_datadir}/prime/xorg-intel-intel.conf
-%{_datadir}/prime/xorg-nvidia.conf
-%{_datadir}/prime/xorg-nvidia-prime-render-offload.conf
-%ghost %dir %{_sysconfdir}/prime
-%ghost %config(noreplace) %{_sysconfdir}/prime/current_type
-%{_sbindir}/prime-select
-%config /usr/lib/modprobe.d/09-nvidia-modprobe-pm-G05.conf
-/usr/lib/dracut/dracut.conf.d/90-nvidia-dracut-G05.conf
-/usr/lib/udev/rules.d/90-nvidia-udev-pm-G05.rules
-
-%if 0%{?is_opensuse}
-%files bbswitch
-%doc README.md
-%dir %{_datadir}/prime
+%{_datadir}/prime/xorg-amd.conf
 %{_datadir}/prime/xorg-intel.conf
 %{_datadir}/prime/xorg-intel-intel.conf
 %{_datadir}/prime/xorg-nvidia.conf
@@ -152,12 +113,10 @@ exit 0
 %ghost %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %{_sbindir}/rcprime-select
-%config /usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
+/usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
+/usr/lib/modprobe.d/09-nvidia-modprobe-pm-G05.conf
+/usr/lib/dracut/dracut.conf.d/90-nvidia-dracut-G05.conf
+/usr/lib/udev/rules.d/90-nvidia-udev-pm-G05.rules
 %{_unitdir}/prime-select.service
-%else
-%exclude %config /usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
-%exclude %{_unitdir}/prime-select.service
-%exclude %{_sbindir}/rcprime-select
-%endif
 
 %changelog

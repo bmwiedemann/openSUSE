@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 15 13:55:07 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.2
+  * 0.8.0 adds nvidia-prime-render offload support with both
+    modesetting and xf86-video-intel drivers. Massive changes! 
+    --> https://github.com/openSUSE/SUSEPrime/releases/tag/0.8.0
+  * 0.8.1/0.8.2 adds amd support (needed for AMD/NVIDIA combos)
+- merged suse-prime/suse-prime-bbswitch packages
+
+-------------------------------------------------------------------
 Sat Aug 28 17:32:08 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved modprobe.d snippet files from /etc/modprobe.d to 
