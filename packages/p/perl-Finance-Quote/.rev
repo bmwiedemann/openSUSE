@@ -476,4 +476,12 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
 </comment>
     <requestid>843870</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f960a2f2060ec533a636d833ab09d42d</srcmd5>
+    <version>1.51</version>
+    <time>1631739067</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918697</requestid>
+  </revision>
 </revisionlist>

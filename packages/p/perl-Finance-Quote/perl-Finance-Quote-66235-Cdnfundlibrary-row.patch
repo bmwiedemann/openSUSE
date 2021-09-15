@@ -1,22 +1,12 @@
-https://rt.cpan.org/Public/Bug/Display.html?id=66235
-
-Subject: Cdnfundlibrary isn't retrieving the newest available NAV
-Date: Mon Feb 28 01:39:08 2011 nul [...] ereomega.net - Ticket created
-
-The row of the table Cdnfundlibrary retrieves is the second to most
-recent (top) row. The following current code should be changed
-so that the newest available NAV is retrieved.
-
-Index: finance-quote/lib/Finance/Quote/Cdnfundlibrary.pm
-===================================================================
---- finance-quote.orig/lib/Finance/Quote/Cdnfundlibrary.pm
-+++ finance-quote/lib/Finance/Quote/Cdnfundlibrary.pm
-@@ -92,7 +92,7 @@ sub fundlibrary   {
-           $fundquote {$mutual, "method"} = "fundlibrary";
+diff -ur Finance-Quote-1.50/lib/Finance/Quote/Cdnfundlibrary.pm Finance-Quote-1.50_fix/lib/Finance/Quote/Cdnfundlibrary.pm
+--- Finance-Quote-1.50/lib/Finance/Quote/Cdnfundlibrary.pm	2021-06-27 05:52:21.000000000 +0200
++++ Finance-Quote-1.50_fix/lib/Finance/Quote/Cdnfundlibrary.pm	2021-08-25 18:33:24.262128339 +0200
+@@ -102,7 +102,7 @@
  
-           # Fund price and date
--	  $row = $rows[1];
-+	  $row = $rows[0];
-           $fundquote {$mutual, "price"} =  $$row[2];
-           $fundquote {$mutual, "nav"} = $$row[2];
-           $fundquote {$mutual, "last"} = $$row[2];
+       @rows = $te->rows;
+       if(@rows) {
+-        $row = $rows[1];
++        $row = $rows[0];
+ 
+         $fundquote {$mutual, "name"} = trim($$row[0]);
+         $fundquote {$mutual, "symbol"} = $mutual;

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Finance-Quote
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,98 +18,105 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.49
+Version:        1.51
 Release:        0
+#Upstream: GPL-1.0-or-later
+License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
-License:        GPL-2.0-or-later AND GPL-3.0-or-later
-Group:          Development/Libraries/Perl
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/E/EC/ECOCODE/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/B/BP/BPSCHUCK/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
-Patch2:         perl-Finance-Quote-66235-Cdnfundlibrary-row.patch
-Patch3:         perl-Finance-Quote-debian-03_whatis.patch
-Patch5:         perl-Finance-Quote-debian-06_seb.patch
-Patch6:         perl-Finance-Quote-debian-10_whatis.patch
+# PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=66235
+Patch0:         perl-Finance-Quote-66235-Cdnfundlibrary-row.patch
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CGI)
+BuildRequires:  perl(Date::Manip)
+BuildRequires:  perl(Date::Range)
+BuildRequires:  perl(Date::Simple)
 BuildRequires:  perl(DateTime)
+BuildRequires:  perl(DateTime::Duration)
+BuildRequires:  perl(DateTime::Format::ISO8601)
 BuildRequires:  perl(DateTime::Format::Strptime)
-BuildRequires:  perl(HTML::Parser)
 BuildRequires:  perl(HTML::TableExtract)
 BuildRequires:  perl(HTML::TokeParser)
+BuildRequires:  perl(HTML::TokeParser::Simple)
 BuildRequires:  perl(HTML::TreeBuilder)
+BuildRequires:  perl(HTML::TreeBuilder::XPath)
 BuildRequires:  perl(HTTP::Cookies)
 BuildRequires:  perl(HTTP::Headers)
+BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(HTTP::Request::Common)
 BuildRequires:  perl(HTTP::Status)
+BuildRequires:  perl(IO::Uncompress::Unzip)
 BuildRequires:  perl(JSON)
-BuildRequires:  perl(JSON::Parse)
-BuildRequires:  perl(LWP::Protocol::https)
 BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent)
+BuildRequires:  perl(Module::Load)
+BuildRequires:  perl(Spreadsheet::XLSX)
 BuildRequires:  perl(String::Util)
+BuildRequires:  perl(Test::Kwalitee)
+BuildRequires:  perl(Test::Perl::Critic)
+BuildRequires:  perl(Test::Pod)
+BuildRequires:  perl(Test::Pod::Coverage) >= 1.00
 BuildRequires:  perl(Text::Template)
 BuildRequires:  perl(Time::Piece)
-BuildRequires:  perl(URI)
-BuildRequires:  perl(URI::Escape)
-BuildRequires:  perl(URI::QueryParam)
-Requires:       perl(CGI)
+BuildRequires:  perl(Time::Seconds)
+BuildRequires:  perl(Try::Tiny)
+BuildRequires:  perl(Web::Scraper)
+BuildRequires:  perl(XML::LibXML)
+BuildRequires:  perl(feature)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::Format::Strptime)
-Requires:       perl(HTML::Parser)
 Requires:       perl(HTML::TableExtract)
 Requires:       perl(HTML::TokeParser)
+Requires:       perl(HTML::TokeParser::Simple)
 Requires:       perl(HTML::TreeBuilder)
+Requires:       perl(HTML::TreeBuilder::XPath)
 Requires:       perl(HTTP::Cookies)
 Requires:       perl(HTTP::Headers)
+Requires:       perl(HTTP::Request)
 Requires:       perl(HTTP::Request::Common)
 Requires:       perl(HTTP::Status)
+Requires:       perl(IO::Uncompress::Unzip)
 Requires:       perl(JSON)
-Requires:       perl(JSON::Parse)
-Requires:       perl(LWP::Protocol::https)
 Requires:       perl(LWP::Simple)
 Requires:       perl(LWP::UserAgent)
+Requires:       perl(Module::Load)
+Requires:       perl(Spreadsheet::XLSX)
 Requires:       perl(String::Util)
 Requires:       perl(Text::Template)
 Requires:       perl(Time::Piece)
-Requires:       perl(URI)
-Requires:       perl(URI::Escape)
-Requires:       perl(URI::QueryParam)
-BuildArch:      noarch
+Requires:       perl(Time::Seconds)
+Requires:       perl(Try::Tiny)
+Requires:       perl(Web::Scraper)
+Requires:       perl(XML::LibXML)
 %{perl_requires}
 
 %description
-This module gets stock quotes from various internet sources, including
-Yahoo! Finance, Fidelity Investments, and the Australian Stock Exchange.
-There are two methods of using this module -- a functional interface that
-is deprecated, and an object-orientated method that provides greater
-flexibility and stability.
+This module gets stock quotes from various internet sources all over the
+world. Quotes are obtained by constructing a quoter object and using the
+fetch method to gather data, which is returned as a two-dimensional hash
+(or a reference to such a hash, if called in a scalar context). For
+example:
 
-With the exception of straight currency exchange rates, all information is
-returned as a two-dimensional hash (or a reference to such a hash, if
-called in a scalar context). For example:
-
-    %%info = $q->fetch("australia","CML");
-    print "The price of CML is ".$info{"CML","price"};
+    $q = Finance::Quote->new;
+    %info = $q->fetch("australia", "CML");
+    print "The price of CML is ".$info{"CML", "price"};
 
 The first part of the hash (eg, "CML") is referred to as the stock. The
 second part (in this case, "price") is referred to as the label.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
-%patch2 -p1
-%patch3
-%patch5
-%patch6
+%autosetup  -n %{cpan_name}-%{version} -p1
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} test
+make test
 
 %install
 %perl_make_install
@@ -117,8 +124,7 @@ make %{?_smp_mflags} test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
+%doc Changes README
 %license LICENSE
-%doc ChangeLog.1 Changes README
 
 %changelog
