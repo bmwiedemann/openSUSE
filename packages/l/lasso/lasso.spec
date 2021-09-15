@@ -39,23 +39,23 @@ Source:         http://dev.entrouvert.org/lasso/lasso-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  check-devel
-BuildRequires:  glib2-devel
 BuildRequires:  gtk-doc
 BuildRequires:  libtool
 BuildRequires:  libtool-ltdl-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
 # The Lasso build system requires python, especially the binding generators
 BuildRequires:  python3
 BuildRequires:  python3-devel
 BuildRequires:  python3-lxml
 BuildRequires:  python3-six
 BuildRequires:  swig
-BuildRequires:  xmlsec1-devel >= 1.2.25
-BuildRequires:  xmlsec1-openssl-devel >= 1.2.25
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(xmlsec1) >= 1.2.25
+BuildRequires:  pkgconfig(xmlsec1-openssl) >= 1.2.25
+BuildRequires:  pkgconfig(zlib)
 %if %{with_wsf}
-BuildRequires:  cyrus-sasl-devel
+BuildRequires:  pkgconfig(cyrus-sasl)
 %endif
 
 %description
@@ -67,7 +67,6 @@ for multiple languages.
 %package -n %{libname}
 Summary:        Lasso runtime libraries
 Group:          System/Libraries
-Requires:       xmlsec1 >= 1.2.25-4
 
 %description -n %{libname}
 This package contains the runtime libraries for lasso (Liberty Alliance Single Sign On).

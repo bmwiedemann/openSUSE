@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 15 11:55:17 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- the required of xmlsec1 (which only has the commandline binariy)
+  in the library package seems unnecessary.
+- some pkgconfig buildrequires conversion
+
+-------------------------------------------------------------------
 Fri Jun 18 22:29:40 UTC 2021 - Michael Ströder <michael@stroeder.com>
 
 - Update to 2.7.0
