@@ -425,4 +425,22 @@
 - Add fix_include_path.patch</comment>
     <requestid>903068</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>76737c6fbe82fd242825a45bcd39dc13</srcmd5>
+    <version>1.9.2</version>
+    <time>1631739094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.2:
+  * Stable Astrotrac Mount driver.
+  * ESATTO Backlash measure and correction 
+  * Correct color space when stacking on indi_v4l2_ccd driver with
+    a web cam that doesn't have color space info. 
+  * The driver for the Planewave Delta-T was not working
+  * Improved handling of myFP2ESP controllers
+  * Pegasus UCH
+  * TheSkyX/Paramount Pier-side + guide async cmd fixes 
+  * Update lx200_OnStep.cpp 
+- Drop fix_include_path.patch</comment>
+    <requestid>919246</requestid>
+  </revision>
 </revisionlist>

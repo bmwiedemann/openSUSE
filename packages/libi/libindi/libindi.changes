@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 15 13:22:44 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.9.2:
+  * Stable Astrotrac Mount driver.
+  * ESATTO Backlash measure and correction 
+  * Correct color space when stacking on indi_v4l2_ccd driver with
+    a web cam that doesn't have color space info. 
+  * The driver for the Planewave Delta-T was not working
+  * Improved handling of myFP2ESP controllers
+  * Pegasus UCH
+  * TheSkyX/Paramount Pier-side + guide async cmd fixes 
+  * Update lx200_OnStep.cpp 
+- Drop fix_include_path.patch
+
+-------------------------------------------------------------------
 Mon Jun 28 05:36:16 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.9.1:
