@@ -1,0 +1,141 @@
+-------------------------------------------------------------------
+Tue Sep 14 19:34:31 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh spec file
+
+-------------------------------------------------------------------
+Thu Nov  8 06:24:49 UTC 2018 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.25
+   see /usr/share/doc/packages/perl-HTML-Selector-XPath/Changes
+
+-------------------------------------------------------------------
+Sun Oct  7 18:48:43 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix build
+
+-------------------------------------------------------------------
+Wed Feb  7 16:37:42 UTC 2018 - coolo@suse.com
+
+- updated to 0.23
+   see /usr/share/doc/packages/perl-HTML-Selector-XPath/Changes
+
+-------------------------------------------------------------------
+Mon May 23 11:56:22 UTC 2016 - coolo@suse.com
+
+- updated to 0.20
+   see /usr/share/doc/packages/perl-HTML-Selector-XPath/Changes
+
+-------------------------------------------------------------------
+Tue Apr 14 20:09:25 UTC 2015 - coolo@suse.com
+
+- updated to 0.18
+   see /usr/share/doc/packages/perl-HTML-Selector-XPath/Changes
+
+  0.18 NEXT
+        - Fix bug in `:not(...)[attr] (Aaron Crane)
+        - Support `:nth-child(odd)` and `:nth-child(even)` (Aaron Crane)
+        - Translation of `[attr$=tail]` works with XPath 1.0 (Aaron Crane)
+  
+  0.17 Sat Aug 30 16:12:52 GMT+2 2014
+        - Support unicode characters for id and class selectors (aereal)
+        - Normalize space characters of the class attribute (hitode909)
+  
+  0.16 Sat Aug 10 17:52:00 GMT 2013
+        - Added link to repository (D. Steinbrunner)
+  
+  0.15 Mon Oct  1 19:14:05 GMT 2012
+        - Fix bugs in :contains("string") (Aaron Crane)
+  
+  0.14 Mon Jan 16 22:00:00 GMT 2012
+        - Also allow single quotes in attribute expressions,
+          as seems to be allowed
+          per http://www.w3.org/TR/CSS2/syndata.html
+  
+  0.13 Sun Jan 15 18:52:00 GMT 2012
+        - Added C<prefix> option to add a prefix like C<xhtml>,
+          contributed by Toby Inkster
+          This closes RT #73719
+  
+  0.12 Thu Nov 24 22:13:00 GMT 2011
+        - Add tests and fix negated selectors as reported
+          by Nilson Santos Figueiredo Junior
+  
+  0.11 Sun Oct 23 21:45:00 GMT 2011
+        - Add test to MANIFEST so it also ships
+  
+  0.10 Sun Oct 23 21:10:53 GMT 2011
+        - Identifiers are now parsed closer to the CSS3 spec
+        - Certain invalid attribute selectors now raise an exception
+  
+  0.09 Sun Oct 16 13:07:09 GMT 2011
+        - Fix bug in attribute-value-substring selectors where
+          the CSS attributes were wrongly assumed to be
+          specified with @href (Aaron Crane)
+        - Make test suite less verbose (Aaron Crane)
+  
+  0.08 Sun Sep 18 12:31:31 PDT 2011
+        - Fix bug when combining selectors (p , q). Whitespace created invalid
+          XPath expressions there. (Corion)
+        - Fix bug when combining :root selectors as the second selector.
+          The first selector was modified. (Corion)
+        - :root now acts relative to the given "root" option,
+          not the document root (Corion)
+        - More css3 selectors support (Corion)
+
+-------------------------------------------------------------------
+Tue Apr 14 20:09:24 UTC 2015 - coolo@suse.com
+
+- updated to 0.11
+   see /usr/share/doc/packages/perl-HTML-Selector-XPath/Changes
+
+  0.11 Sun Oct 23 21:45:00 GMT 2011
+        - Add test to MANIFEST so it also ships
+  
+  0.10 Sun Oct 23 21:10:53 GMT 2011
+        - Identifiers are now parsed closer to the CSS3 spec
+        - Certain invalid attribute selectors now raise an exception
+  
+  0.09 Sun Oct 16 13:07:09 GMT 2011
+        - Fix bug in attribute-value-substring selectors where
+          the CSS attributes were wrongly assumed to be
+          specified with @href (Aaron Crane)
+        - Make test suite less verbose (Aaron Crane)
+  
+  0.08 Sun Sep 18 12:31:31 PDT 2011
+        - Fix bug when combining selectors (p , q). Whitespace created invalid
+          XPath expressions there. (Corion)
+        - Fix bug when combining :root selectors as the second selector.
+          The first selector was modified. (Corion)
+        - :root now acts relative to the given "root" option,
+          not the document root (Corion)
+        - More css3 selectors support (Corion)
+
+-------------------------------------------------------------------
+Fri Apr 22 07:26:12 UTC 2011 - coolo@opensuse.org
+
+- updated to 0.07
+     - Added a COPYRIGHT section
+  
+     - Add CSS3 "=$" operator (Corion)
+     - Add CSS3 "=^" operator (Corion)
+     - Add complex subexpressions for :not() (Corion)
+     - Add :empty selector (Corion)
+     - Support 'root' parameters to to_xpath (JZOBEL, David Wheeler, Corion)
+  
+     - Add CSS3 "=*" operator for real substring matching (Corion)
+     - Add CSS3 ":first-of-type" and ":nth-of-type()" pseudo-attributes (Corion)
+       (but if you're using them, you're likely better off using XPath already)
+     - Add CSS3 "~" operator (Corion)
+     - Adopt tests for "~" operator from RT #61990, by Aaron Crane (Corion)
+     - Add :contains() selector (only immediate child nodes) (Corion)
+     - Support implicit selectors like "> em" (translated to "* > em") (Corion)
+       Fixes RT #50131 (Reported by David Wheeler)
+     - Fix more implicit universal selectors (fixes RT #49982)
+       :lang(c) as a bare selector works now (Corion, Aaron Crane)
+
+-------------------------------------------------------------------
+Sat Dec 25 01:00:39 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.04)
+
