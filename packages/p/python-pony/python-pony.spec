@@ -53,7 +53,7 @@ dos2unix README.md
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v pony/orm/tests -p 'test_*.py'
 
 %files %{python_files}
 %doc README.md
