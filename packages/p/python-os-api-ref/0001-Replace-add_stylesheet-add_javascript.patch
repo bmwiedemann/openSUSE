@@ -1,0 +1,48 @@
+From 1e639fd5a2de4595559478f3a513e2023ea6fa23 Mon Sep 17 00:00:00 2001
+From: Stephen Finucane <stephenfin@redhat.com>
+Date: Mon, 7 Dec 2020 11:21:31 +0000
+Subject: [PATCH] Replace 'add_stylesheet', 'add_javascript'
+
+We currently see the following warnings when building a doc project
+involving os-api-ref:
+
+  RemovedInSphinx40Warning: The app.add_stylesheet() is deprecated.
+  Please use app.add_css_file() instead.
+  RemovedInSphinx40Warning: The app.add_javascript() is deprecated.
+  Please use app.add_js_file() instead.
+
+As the message would suggest, these methods were replaced by
+'add_css_file' and 'add_js_file' in commits 3afc72fb [1] and f3168d98
+[2], respectively. Both changes were first included in Sphinx 1.8, which
+is lower than our current minimum, so there's no need to bump
+requirements.
+
+[1] https://github.com/sphinx-doc/sphinx/commit/3afc72fb
+[2] https://github.com/sphinx-doc/sphinx/commit/f3168d98
+
+Change-Id: I7f4d772adbcb9d592935b14c430ae3a62a60b6d1
+Signed-off-by: Stephen Finucane <stephenfin@redhat.com>
+---
+ os_api_ref/__init__.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/os_api_ref/__init__.py b/os_api_ref/__init__.py
+index 01c31c3..77f6c73 100644
+--- a/os_api_ref/__init__.py
++++ b/os_api_ref/__init__.py
+@@ -655,9 +655,9 @@ def copy_assets(app, exception):
+ 
+ 
+ def add_assets(app):
+-    app.add_stylesheet('api-site.css')
+-    app.add_javascript('api-site.js')
+-    app.add_javascript('combobox.js')
++    app.add_css_file('api-site.css')
++    app.add_js_file('api-site.js')
++    app.add_js_file('combobox.js')
+ 
+ 
+ def setup(app):
+-- 
+2.32.0
+

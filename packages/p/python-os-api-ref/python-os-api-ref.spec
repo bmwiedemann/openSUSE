@@ -1,7 +1,7 @@
 #
 # spec file for package python-os-api-ref
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,9 @@ Release:        0
 Summary:        Sphinx Extensions to support API reference sites in OpenStack
 License:        Apache-2.0
 Group:          Development/Languages/Python
-URL:            https://launchpad.net/%{sname}
+URL:            https://docs.openstack.org/os-api-ref
 Source0:        https://files.pythonhosted.org/packages/source/o/os-api-ref/os-api-ref-2.1.0.tar.gz
+Patch1:         0001-Replace-add_stylesheet-add_javascript.patch
 BuildRequires:  openstack-macros
 BuildRequires:  python3-PyYAML >= 3.12
 BuildRequires:  python3-Sphinx
@@ -51,7 +52,6 @@ expand / collapse all sections.
 
 %package -n python3-os-api-ref
 Summary:        Sphinx Extensions to support API reference sites in OpenStack
-Group:          Development/Languages/Python
 Requires:       python3-PyYAML >= 3.12
 Requires:       python3-Sphinx
 Requires:       python3-openstackdocstheme >= 2.2.1
