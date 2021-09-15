@@ -1,0 +1,119 @@
+-------------------------------------------------------------------
+Tue Sep 14 20:40:21 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add rpmlintrc as source to spec file
+
+-------------------------------------------------------------------
+Thu Aug  8 05:14:52 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.01
+   see /usr/share/doc/packages/perl-Module-CPANTS-Analyse/Changes
+
+  1.01 2019-08-08
+    - Fixed not to set an error message when extracted nicely
+      (spotted by Martin Becker++)
+    - Fixed to restore mtime of MANIFEST.SKIP if it is modified by
+      #include_default
+    - Improved primary module detection
+    - Fixed to catch CPAN::Meta::YAML's warnings (of duplicate keys)
+    - Improved test_prereqs_match to handle t::lib::Util, and ignore
+      files that contain but don't end with .t
+    - Fixed to store multiple licenses in META files
+
+-------------------------------------------------------------------
+Wed Apr  3 07:14:18 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 1.00
+   see /usr/share/doc/packages/perl-Module-CPANTS-Analyse/Changes
+
+  1.00 2019-02-03
+    ** BACKWARD INCOMPATIBLE CHANGE **
+    - Module::CPANTS::Kwalitee::Uses now uses a different prereq scanner
+      (Perl::PrereqScanner::NotQuiteLite).
+    - Added new kwalitee metrics:
+      no_maniskip_error, no_missing_files_in_provides, no_files_to_be_skipped
+    - Delayed plugin loading
+  
+  0.99 2019-01-15
+    - requires Module::Find
+  
+  0.98 2019-01-15
+    ** BACKWARD INCOMPATIBLE (INTERNAL) CHANGE **
+    - Module::CPANTS::Kwalitee now uses Module::Find to find
+      Kwalitee modules (instead of Module::Pluggable that unconditonally
+      spits a deprecation warning). You usually don't need to care
+      but if you have your custom Kwalitee plugin loader (such as
+      Module::CPANTS::SiteKwalitee), you need to change it.
+      Sorry for the inconvenience.
+  
+    - Allow dash and dot in script name in the NAME section for
+      non-pm, non-pod files
+  
+  0.97_11 2018-04-22
+    - no changes; for testing
+  
+  0.97_10 2018-04-22
+    - no changes; for testing
+  
+  0.97_09 2018-04-22
+    - no changes; for testing
+  
+  0.97_08 2018-04-22
+    - no changes; for testing
+  
+  0.97_07 2018-04-22
+    - no changes; for testing
+  
+  0.97_06 2018-04-22
+    - no changes; for testing
+  
+  0.97_05 2018-04-22
+    - no changes; for testing
+  
+  0.97_04 2018-04-21
+    - Skip everything in MANIFEST.SKIP while testing symlinks (GH#33, Tux++)
+  
+  0.97_03 2016-09-01
+    - Not to check use_strict/use_warnings for Perl 6 modules in a
+      Perl 5 distribution (Stefan Seifert++)
+    - Worked around a File::Find::Object issue (reported by dolmen)
+    - Fixed dynamic_config handling (David Golden++)
+    - Improved LICENSE file detection (RT#114247)
+  
+  0.97_02 2016-04-27
+    - Requires List::Util 1.33
+  
+  0.97_01 2016-04-24
+    - Added has_meta_json metric (RT#107885)
+    - Accept a few more README extensions (mrcaron)
+    - Accept two more Moose modules as strict equivalents
+    - Various micro optimization for performance
+    - Dropped a few dependencies
+    - Doc patch from brac-mac and joenio
+
+-------------------------------------------------------------------
+Fri Apr 24 15:36:03 UTC 2015 - coolo@suse.com
+
+- updated to 0.96
+   see /usr/share/doc/packages/perl-Module-CPANTS-Analyse/Changes
+
+-------------------------------------------------------------------
+Fri Jun  3 09:01:09 UTC 2011 - coolo@novell.com
+
+- fix requires
+
+-------------------------------------------------------------------
+Wed Dec  1 13:33:42 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:30:33 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Aug 26 14:07:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.85)
+

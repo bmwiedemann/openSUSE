@@ -1,0 +1,5 @@
+<package name="perl-Module-CPANTS-Analyse" project="openSUSE:Factory">
+  <title>perl-Module-CPANTS-Analyse</title>
+  <description>Generate Kwalitee ratings for a distribution</description>
+  <devel project="devel:languages:perl" package="perl-Module-CPANTS-Analyse"/>
+</package>
