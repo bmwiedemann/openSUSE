@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Tue Sep 14 19:42:19 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh spec file
+
+-------------------------------------------------------------------
+Mon May 13 05:02:35 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.09
+   see /usr/share/doc/packages/perl-Array-Diff/Changes
+
+  0.09 2019-05-10 NEILB
+      - Set minimum Perl version in metadata. PR from MANWAR.
+      - Clarified in the doc that the arrays must be sorted. RT#39184
+
+-------------------------------------------------------------------
+Thu May  9 05:02:31 UTC 2019 - Stephan Kulow <coolo@suse.com>
+
+- updated to 0.08
+   see /usr/share/doc/packages/perl-Array-Diff/Changes
+
+  0.08 2019-05-08 NEILB
+      - First non-developer release since switching to Dist::Zilla
+  
+  0.07_03 2019-05-08 NEILB
+      - Added Array::Compare to SEE ALSO
+      - Added List::Compare to SEE ALSO
+      - Really just making another developer release, as PAUSE and then
+        CPAN Testers had issues, so previous dev releases didn't get much
+        testing.
+  
+  0.07_02 2019-05-07 NEILB
+      - Added a bunch of entries to SEE ALSO.
+  
+  0.07_01 2019-05-06 NEILB
+      - Added version dependency for Algorithm::Diff in Array/Diff.pm
+      - Switched to Dist::Zilla
+
+-------------------------------------------------------------------
+Sun Oct  7 12:24:47 UTC 2018 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Fix build for perl 5.28
+
+-------------------------------------------------------------------
+Tue Apr 14 11:46:23 UTC 2015 - coolo@suse.com
+
+- updated to 0.07
+   see /usr/share/doc/packages/perl-Array-Diff/Changes
+
+  0.07 2010-10-08T08:59:12+09:00
+       - oops, depends Algorithm::Diff 1.19 again ;) (RT #61967)
+  
+  0.06 2010-10-08T08:48:01+09:00
+       - depends Algorithm::Diff 0.19 (RT #61967)
+
+-------------------------------------------------------------------
+Tue Apr 14 11:46:21 UTC 2015 - coolo@suse.com
+
+- updated to 0.07
+   see /usr/share/doc/packages/perl-Array-Diff/Changes
+
+  0.07 2010-10-08T08:59:12+09:00
+       - oops, depends Algorithm::Diff 1.19 again ;) (RT #61967)
+  
+  0.06 2010-10-08T08:48:01+09:00
+       - depends Algorithm::Diff 0.19 (RT #61967)
+
+-------------------------------------------------------------------
+Wed Dec  1 09:44:28 UTC 2010 - coolo@novell.com
+
+- switch to perl_requires macro
+
+-------------------------------------------------------------------
+Mon Nov 29 18:29:21 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Mon Nov 29 17:53:18 UTC 2010 - coolo@novell.com
+
+- remove /var/adm/perl-modules
+
+-------------------------------------------------------------------
+Thu Aug 26 11:14:57 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.05002)
+
