@@ -1,12 +1,12 @@
-Index: libguestfs-1.44.0/appliance/packagelist.in
+Index: libguestfs-1.44.2/appliance/packagelist.in
 ===================================================================
---- libguestfs-1.44.0.orig/appliance/packagelist.in
-+++ libguestfs-1.44.0/appliance/packagelist.in
-@@ -130,6 +130,7 @@ ifelse(SUSE,1,
-   ntfs-3g
-   reiserfs
-   squashfs
-+  sysconfig-netconfig
-   systemd
-   vim
-   xz
+--- libguestfs-1.44.2.orig/appliance/packagelist.in
++++ libguestfs-1.44.2/appliance/packagelist.in
+@@ -118,6 +118,7 @@ ifelse(SUSE,1,
+   dnl It seems no other augeas package depends on it.
+   augeas-lenses
+   btrfsprogs
++  busybox
+   cdrkit-cdrtools-compat
+   cryptsetup
+   dhcpcd

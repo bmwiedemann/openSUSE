@@ -59,7 +59,7 @@ _exit() {
 }
 
 _unrpm() {
-	CPIO_OPTS="--extract --unconditional --preserve-modification-time --make-directories"
+	CPIO_OPTS="--extract --unconditional --preserve-modification-time --make-directories --extract-over-symlinks"
 	FILES="$@"
 	for f in $FILES; do
 		echo -ne "$f:\t"

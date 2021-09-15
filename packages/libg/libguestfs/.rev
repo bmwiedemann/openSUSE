@@ -902,4 +902,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>908444</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>73aebe4d11c3515fb41920e6bd8eca09</srcmd5>
+    <version>1.44.2</version>
+    <time>1631739095</time>
+    <user>dimstar_suse</user>
+    <comment>Update to libguestfs version 1.44.2</comment>
+    <requestid>919270</requestid>
+  </revision>
 </revisionlist>

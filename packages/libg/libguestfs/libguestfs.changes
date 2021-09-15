@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Sep 15 10:31:29 MDT 2021 - carnold@suse.com
+
+- bsc#1190501 - virt-builder fails to install packages when
+  building an image
+  9db0c98c-appliance-enable-bashs-Process-Substitution-feature.patch
+- Upstream bug fixes
+  c0de4de9-appliance-add-reboot-and-netconfig-for-SUSE.patch
+  f47e0bb6-appliance-reorder-mounting-of-special-filesystems-in-init.patch
+
+-------------------------------------------------------------------
+Mon Sep 13 16:34:08 MDT 2021 - carnold@suse.com
+
+- Newer cpio versions must be told to extract over symlinks
+  libguestfs.test.simple.create-opensuse-guest-crypt-on-lvm.sh
+  libguestfs.test.simple.create-opensuse-guest.sh
+  libguestfs.test.simple.create-sles12-guest-crypt-on-lvm.sh
+  libguestfs.test.simple.create-sles12-guest.sh
+- Allow the use busybox dhcp client
+  appliance.patch
+  netconfig.patch
+
+-------------------------------------------------------------------
+Mon Sep 13 15:02:23 MDT 2021 - carnold@suse.com
+
+- Update to version 1.44.2
+  makefile-ocaml-find-guestfs.patch
+  * Port libguestfs to use pcre2 instead of pcre
+  * inspection: More reliable detection of Linux split /usr configurations
+  * python: Relicense setup.py to LGPLv2+ (originally GPLv2+)
+  * lib: qemu: Don't use -enable-fips option.
+  * rust: Fix deprecated use of panic!(format!(...))
+  * point users to Libera Chat rather than FreeNode
+  * python: Don't leak fields when creating Python structs
+  * appliance: Add IBM850 iconv converter for syslinux
+  * launch: board model for RISC-V
+  * lib: Add osinfo information for Windows Server 2022 Datacenter
+  * lib: Autodetect backing format for qemu-img create -b
+  * appliance: Fix searching for shared libraries on usr-merged Debian systems
+  * appliance: Add mount package for Debian
+  * m4/guestfs-appliance.m4: Add support for Alma and Cloud Linux
+  * daemon/luks.c: Ignore bogus GCC -fanalyzer double-free warning
+  * daemon/xattr.c: Increase size of temporary buffer for %zu
+  * daemon/utils.c: Fix potential unbounded stack usage
+  * Various other bug fixes
+- Upstream bug fixes post 1.44.2
+  e26cfa44-daemon-Build-with--pthread.patch
+  489b14b7-ocaml-examples-Link-examples-to-gnulib.patch
+  68a02c2f-customize--resize--sparsify--sysprep-Link-explicitly-with-pthread.patch
+
+-------------------------------------------------------------------
 Mon Jul 19 01:01:01 UTC 2021 - ohering@suse.de
 
 - Remove obsolete yajl
@@ -50,6 +100,11 @@ Tue Apr 13 13:13:13 UTC 2021 - ohering@suse.de
   build native target unconditionally
 
 -------------------------------------------------------------------
+Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
+
+- Require current ocaml-rpm-macros
+
+-------------------------------------------------------------------
 Tue Jan 12 05:38:44 MST 2021 - carnold@suse.com
 
 - Modify Source0 to point at the correct url for the source.
@@ -81,6 +136,13 @@ Mon Jan 11 11:42:51 MST 2021 - carnold@suse.com
 - Drop
    bfd08867-golang-Fix-path-to-include-guestfs.h..patch
    dbfab7d3-build-fix-includedir-in-uninstalled-libguestfs.pc.patch
+
+-------------------------------------------------------------------
+Thu Nov  5 14:57:40 MST 2020 - carnold@suse.com
+
+- bsc#1178495 - Leap Gap: Libguestfs.spec contains the is_opensuse
+  macro
+  libguestfs.spec
 
 -------------------------------------------------------------------
 Tue Oct 20 14:01:16 MDT 2020 - carnold@suse.com

@@ -37,10 +37,10 @@ libvirt URLs.
  create mode 100644 common/utils/libxml2-utils.c
  create mode 100644 common/utils/libxml2-utils.h
 
-Index: libguestfs-1.43.2/common/mlxml/Makefile.am
+Index: libguestfs-1.44.2/common/mlxml/Makefile.am
 ===================================================================
---- libguestfs-1.43.2.orig/common/mlxml/Makefile.am
-+++ libguestfs-1.43.2/common/mlxml/Makefile.am
+--- libguestfs-1.44.2.orig/common/mlxml/Makefile.am
++++ libguestfs-1.44.2/common/mlxml/Makefile.am
 @@ -54,6 +54,7 @@ libmlxml_a_CPPFLAGS = \
  	-I. \
  	-I$(top_builddir) \
@@ -49,10 +49,10 @@ Index: libguestfs-1.43.2/common/mlxml/Makefile.am
  	-I$(shell $(OCAMLC) -where)
  libmlxml_a_CFLAGS = \
  	$(WARN_CFLAGS) $(WERROR_CFLAGS) \
-Index: libguestfs-1.43.2/common/mlxml/xml-c.c
+Index: libguestfs-1.44.2/common/mlxml/xml-c.c
 ===================================================================
---- libguestfs-1.43.2.orig/common/mlxml/xml-c.c
-+++ libguestfs-1.43.2/common/mlxml/xml-c.c
+--- libguestfs-1.44.2.orig/common/mlxml/xml-c.c
++++ libguestfs-1.44.2/common/mlxml/xml-c.c
 @@ -27,17 +27,21 @@
  #include <stdlib.h>
  #include <string.h>
@@ -133,19 +133,19 @@ Index: libguestfs-1.43.2/common/mlxml/xml-c.c
 +  xmlFreeURI (uri);
    CAMLreturn (rv);
  }
-Index: libguestfs-1.43.2/common/mlxml/xml.ml
+Index: libguestfs-1.44.2/common/mlxml/xml.ml
 ===================================================================
---- libguestfs-1.43.2.orig/common/mlxml/xml.ml
-+++ libguestfs-1.43.2/common/mlxml/xml.ml
+--- libguestfs-1.44.2.orig/common/mlxml/xml.ml
++++ libguestfs-1.44.2/common/mlxml/xml.ml
 @@ -162,3 +162,4 @@ type uri = {
  }
  
  external parse_uri : string -> uri = "mllib_xml_parse_uri"
 +external parse_nonstandard_uri : string -> uri = "mllib_xml_parse_nonstandard_uri"
-Index: libguestfs-1.43.2/common/mlxml/xml.mli
+Index: libguestfs-1.44.2/common/mlxml/xml.mli
 ===================================================================
---- libguestfs-1.43.2.orig/common/mlxml/xml.mli
-+++ libguestfs-1.43.2/common/mlxml/xml.mli
+--- libguestfs-1.44.2.orig/common/mlxml/xml.mli
++++ libguestfs-1.44.2/common/mlxml/xml.mli
 @@ -115,3 +115,7 @@ val parse_uri : string -> uri
      Note this is different from the {!URI} module which is specialized
      for parsing the [-a] parameter on the command line.  This function
@@ -154,10 +154,10 @@ Index: libguestfs-1.43.2/common/mlxml/xml.mli
 +val parse_nonstandard_uri : string -> uri
 +(** Similar to {!parse_uri} but only for use with our non-standard
 +    URIs.  See [guestfs_int_parse_nonstandard_uri] in [common/utils]. *)
-Index: libguestfs-1.43.2/common/options/uri.c
+Index: libguestfs-1.44.2/common/options/uri.c
 ===================================================================
---- libguestfs-1.43.2.orig/common/options/uri.c
-+++ libguestfs-1.43.2/common/options/uri.c
+--- libguestfs-1.44.2.orig/common/options/uri.c
++++ libguestfs-1.44.2/common/options/uri.c
 @@ -38,6 +38,7 @@
  
  #include "guestfs.h"
@@ -178,13 +178,13 @@ Index: libguestfs-1.43.2/common/options/uri.c
               getprogname (), arg);
      return -1;
    }
-Index: libguestfs-1.43.2/common/utils/Makefile.am
+Index: libguestfs-1.44.2/common/utils/Makefile.am
 ===================================================================
---- libguestfs-1.43.2.orig/common/utils/Makefile.am
-+++ libguestfs-1.43.2/common/utils/Makefile.am
-@@ -28,12 +28,15 @@ libutils_la_SOURCES = \
- 	libxml2-cleanups.c \
+--- libguestfs-1.44.2.orig/common/utils/Makefile.am
++++ libguestfs-1.44.2/common/utils/Makefile.am
+@@ -29,12 +29,15 @@ libutils_la_SOURCES = \
  	libxml2-writer-macros.h \
+ 	pcre2-cleanups.c \
  	stringlists-utils.c \
 +	libxml2-utils.c \
 +	libxml2-utils.h \
@@ -199,10 +199,10 @@ Index: libguestfs-1.43.2/common/utils/Makefile.am
  libutils_la_CFLAGS = \
  	$(WARN_CFLAGS) $(WERROR_CFLAGS) \
  	$(GCC_VISIBILITY_HIDDEN) \
-Index: libguestfs-1.43.2/common/utils/libxml2-utils.c
+Index: libguestfs-1.44.2/common/utils/libxml2-utils.c
 ===================================================================
 --- /dev/null
-+++ libguestfs-1.43.2/common/utils/libxml2-utils.c
++++ libguestfs-1.44.2/common/utils/libxml2-utils.c
 @@ -0,0 +1,178 @@
 +/* libguestfs
 + * Copyright (C) 2017 Red Hat Inc.
@@ -382,10 +382,10 @@ Index: libguestfs-1.43.2/common/utils/libxml2-utils.c
 +
 +  return out;
 +}
-Index: libguestfs-1.43.2/common/utils/libxml2-utils.h
+Index: libguestfs-1.44.2/common/utils/libxml2-utils.h
 ===================================================================
 --- /dev/null
-+++ libguestfs-1.43.2/common/utils/libxml2-utils.h
++++ libguestfs-1.44.2/common/utils/libxml2-utils.h
 @@ -0,0 +1,27 @@
 +/* libguestfs
 + * Copyright (C) 2017 Red Hat Inc.

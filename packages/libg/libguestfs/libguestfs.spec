@@ -18,7 +18,7 @@
 # needsbinariesforbuild
 
 
-Version:        1.44.1
+Version:        1.44.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 
@@ -99,13 +99,13 @@ BuildRequires:  perl(Module::Build)
 BuildRequires:  db48-utils
 BuildRequires:  dhcp-client
 BuildRequires:  libjansson-devel
-BuildRequires:  pcre-devel
+BuildRequires:  pcre2-devel
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  qemu-tools
 BuildRequires:  readline-devel
 BuildRequires:  supermin >= 5.1.6
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(python3)
 # Required to build tools, its independent from bindings
 BuildRequires:  glib2-devel
 BuildRequires:  ocaml >= 4.01
@@ -141,6 +141,14 @@ Summary:        Compatibility package for guestfs-tools
 # Upstream patches
 License:        GPL-2.0-only
 
+# Upstream
+Patch1:         e26cfa44-daemon-Build-with--pthread.patch
+Patch2:         489b14b7-ocaml-examples-Link-examples-to-gnulib.patch
+Patch3:         68a02c2f-customize--resize--sparsify--sysprep-Link-explicitly-with-pthread.patch
+Patch4:         c0de4de9-appliance-add-reboot-and-netconfig-for-SUSE.patch
+Patch5:         9db0c98c-appliance-enable-bashs-Process-Substitution-feature.patch
+Patch6:         f47e0bb6-appliance-reorder-mounting-of-special-filesystems-in-init.patch
+
 # Pending upstram review
 Patch50:        0001-Introduce-a-wrapper-around-xmlParseURI.patch
 Patch51:        0002-common-extract-UTF-8-conversion-function.patch
@@ -149,8 +157,10 @@ Patch52:        0003-inspector-rpm-summary-and-description-may-not-be-utf.patch
 Patch100:       appliance.patch
 Patch101:       netconfig.patch
 Patch102:       libguestfs.env.patch
+Patch103:       makefile-ocaml-find-guestfs.patch
 
 Source0:        https://download.libguestfs.org/1.44-stable/libguestfs-%{version}.tar.gz
+Source1:        https://download.libguestfs.org/1.44-stable/libguestfs-%{version}.tar.gz.sig
 Source3:        libguestfs.rpmlintrc
 Source100:      mount-rootfs-and-chroot.sh
 Source101:      README
