@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8853313ac795868fe58343f9abba5910</srcmd5>
+    <version>0.2</version>
+    <time>1631739098</time>
+    <user>dimstar_suse</user>
+    <comment>- rename package from system-tuning-common-SUSE to udev-extra-rules 
+  in order to better reflect its purpose
+- Fixes for IO scheduler rules (bsc#1188713)</comment>
+    <requestid>919264</requestid>
+  </revision>
+</revisionlist>
