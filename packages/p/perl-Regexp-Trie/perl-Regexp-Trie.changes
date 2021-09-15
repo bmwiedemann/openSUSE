@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Sep 14 19:53:02 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- refresh spec file
+
+-------------------------------------------------------------------
+Tue Sep 14 19:52:50 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- updated to 0.02
+   see /usr/share/doc/packages/perl-Regexp-Trie/Changes
+
+-------------------------------------------------------------------
+Wed Nov  4 17:28:46 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- initial package 0.02
+ * created by cpanspec 1.79.01
