@@ -1,7 +1,7 @@
 #
 # spec file for package qtcurve
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +25,6 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/system/qtcurve
 Source0:        qtcurve-%{version}.tar.gz
-Source1:        baselibs.conf
 Patch0:         0001-utils-gtkprops-Remove-unnecessary-constexpr-this-is-.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-Qt-5.15-missing-QPainterPath-include.patch
@@ -52,10 +51,6 @@ BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5X11Extras)
 BuildRequires:  pkgconfig(x11-xcb)
 BuildRequires:  pkgconfig(xcb)
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-BuildRequires:  kde4-filesystem
-BuildRequires:  kdebase4-workspace-devel
-%endif
 
 %description
 QtCurve is a set of widget styles available for Qt and GTK+.
@@ -75,18 +70,6 @@ Group:          System/GUI/KDE
 %description -n libqtcurve-cairo1
 QtCurve is a set of widget styles available for Qt and GTK+.
 This package cointains library for common drawing routines.
-
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-%package kde4
-Summary:        QtCurve style for KDE 4
-Group:          System/GUI/KDE
-Requires:       libqtcurve-utils2 = %{version}
-%{kde4_runtime_requires}
-
-%description kde4
-This is the QtCurve style for KDE 4. QtCurve is a set of widget
-styles available for Qt and GTK+.
-%endif
 
 %package gtk2
 Summary:        QtCurve style for GTK+ 2
@@ -134,21 +117,6 @@ of widget styles available for Qt and GTK+.
 %{_libdir}/libqtcurve-cairo.so.*
 # We don't need the devel symlink
 %exclude %{_libdir}/libqtcurve-cairo.so
-
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} < 150200
-%files kde4
-%license COPYING
-%doc ChangeLog.md README.md TODO.md
-%{_kde4_modulesdir}/kstyle_qtcurve_config.so
-%{_kde4_modulesdir}/kwin_qtcurve_config.so
-%{_kde4_modulesdir}/kwin3_qtcurve.so
-%{_kde4_modulesdir}/plugins/styles
-%{_kde4_appsdir}/QtCurve
-%{_kde4_appsdir}/kstyle
-%{_kde4_appsdir}/color-schemes/QtCurve.colors
-%{_kde4_appsdir}/color-schemes/QtCurveAgua.colors
-%{_kde4_appsdir}/kwin/qtcurve.desktop
-%endif
 
 %if %{with lang}
 %files lang -f qtcurve.lang
