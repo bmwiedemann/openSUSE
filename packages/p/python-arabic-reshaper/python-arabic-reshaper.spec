@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-arabic-reshaper
-Version:        2.1.1
+Version:        2.1.3
 Release:        0
 Summary:        Python module for formatting Arabic sentences
 License:        MIT
@@ -52,7 +52,7 @@ applications that do not support Arabic.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

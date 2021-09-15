@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 15 11:35:08 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.1.3
+  * Remove dependency on `__version__.py` and `default-config.ini` files
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Sun Feb  7 14:29:59 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Update to v2.1.1
