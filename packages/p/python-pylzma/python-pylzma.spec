@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylzma
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,9 @@ License:        LGPL-2.1-only
 Group:          Development/Languages/Python
 URL:            https://github.com/fancycode/pylzma
 Source0:        https://github.com/fancycode/pylzma/archive/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-pylzma-test-python3.patch gh#fancycode/pylzma#76 mcepl@suse.com
+# use python3 syntax in test_usage.py
+Patch0:         python-pylzma-test-python3.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -38,6 +41,7 @@ that has been compressed or can be decompressed by the LZMA library.
 
 %prep
 %setup -q -n %{oname}-%{version}
+%patch0 -p1
 
 # Remove Shebang
 sed -i '1d' py7zlib.py
@@ -50,7 +54,7 @@ sed -i '1d' py7zlib.py
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+%pyunittest_arch discover -v
 
 %files %{python_files}
 %license LICENSE

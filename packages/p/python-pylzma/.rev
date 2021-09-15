@@ -36,4 +36,17 @@
     <comment></comment>
     <requestid>662480</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f056ed9b99844dbd51a0a80f8932b46c</srcmd5>
+    <version>0.5.0</version>
+    <time>1631739089</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix the patch metadata in the SPEC file.
+
+- %check: use %pyunittest_arch rpm macro
+- added patches
+  fix https://github.com/fancycode/pylzma/issues/76
+  + python-pylzma-test-python3.patch</comment>
+    <requestid>919149</requestid>
+  </revision>
 </revisionlist>
