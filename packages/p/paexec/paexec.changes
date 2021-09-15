@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 11:45:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Initialize /var/tmp/mkcmake-home/.mkcmake during prep phase:
+  works against a race condition in bmake.
+
+-------------------------------------------------------------------
 Wed Sep 16 21:44:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 1.1.4:

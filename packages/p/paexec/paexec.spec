@@ -1,7 +1,7 @@
 #
 # spec file for package paexec
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,6 +53,8 @@ sed -i 's|#!/usr/bin/env |#!%{_bindir}/|' examples/*/* paexec/paexec_reorder
 
 %define env export EGDIR=%{_docdir}/%{name}/examples DESTDIR=%{buildroot}
 %define _mkcmake %{mkcmake} DOCDIR=%{_docdir}/%{name}
+
+mkdir -p /var/tmp/mkcmake-home/.mkcmake
 
 %build
 %{env}
