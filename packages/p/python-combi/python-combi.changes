@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 16 17:07:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add denose.patch (and denose-clear-trailing-space.patch which just
+  removes trailing whitespace) to remove dependency on nose.
+  gh#cool-RR/combi#5
+- Package was effectively killed upstream
+  https://github.com/cool-RR/combi/commit/0142389599a394298299bed7e95c689b3790a457,
+  so we will probably remove it as well.
+
+-------------------------------------------------------------------
 Thu May 24 17:30:28 UTC 2018 - toddrme2178@gmail.com
 
 - spec file cleanups

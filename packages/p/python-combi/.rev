@@ -7,4 +7,18 @@
     <comment>Pythonic package for combinatorics</comment>
     <requestid>612075</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>836c5ae6eebe9a13cbd8a384470fff5a</srcmd5>
+    <version>1.1.2</version>
+    <time>1631826904</time>
+    <user>dimstar_suse</user>
+    <comment>- Add denose.patch (and denose-clear-trailing-space.patch which just
+  removes trailing whitespace) to remove dependency on nose.
+  gh#cool-RR/combi#5
+- Package was effectively killed upstream
+  https://github.com/cool-RR/combi/commit/0142389599a394298299bed7e95c689b3790a457,
+  so we will probably remove it as well.
+</comment>
+    <requestid>919557</requestid>
+  </revision>
 </revisionlist>
