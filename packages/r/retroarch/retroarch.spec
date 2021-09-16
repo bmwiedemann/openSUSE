@@ -17,7 +17,7 @@
 
 
 Name:           retroarch
-Version:        1.9.6
+Version:        1.9.9
 Release:        0
 Summary:        Emulator frontend
 License:        GPL-3.0-only
