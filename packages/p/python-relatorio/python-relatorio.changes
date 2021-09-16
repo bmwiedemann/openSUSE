@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 16 06:56:49 UTC 2021 - pgajdos@suse.com
+
+- python_alternative relatorio-render
+
+-------------------------------------------------------------------
+Sun Sep 12 15:46:17 UTC 2021 - Axel Braun <axel.braun@gmx.de>
+
+- version 0.10.0
+  * Add relatorio-render script
+  * Add templating of meta in opendocument
+  * Remove support for Python older than 3.5
+
+-------------------------------------------------------------------
 Mon Sep  6 10:45:42 UTC 2021 - pgajdos@suse.com
 
 - %check: use %pyunittest rpm macro

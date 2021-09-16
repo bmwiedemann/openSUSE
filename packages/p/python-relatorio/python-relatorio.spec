@@ -20,7 +20,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         mod_name relatorio
 Name:           python-relatorio
-Version:        0.9.3
+Version:        0.10.0
 Release:        0
 Summary:        Python module to create reports from Python objects
 License:        GPL-3.0-or-later
@@ -38,6 +38,8 @@ Requires:       python-PyYAML
 Requires:       python-lxml
 Requires:       python-pycha
 Requires:       python-python-magic
+Requires(post): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,6 +57,7 @@ as documents (odt, ods, pdf) or images (png, svg).
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/relatorio-render
 
 %check
 # https://relatorio.tryton.org/bug65
@@ -62,9 +65,16 @@ sed -i 's:iteritems:items:' relatorio/tests/test_api.py
 mv relatorio relatorio_hide
 %pyunittest discover -v
 
+%post
+%python_install_alternative relatorio-render
+
+%postun
+%python_uninstall_alternative relatorio-render
+
 %files %{python_files}
 %license LICENSE
 %doc README COPYRIGHT README
 %{python_sitelib}/*
+%python_alternative %{_bindir}/relatorio-render
 
 %changelog
