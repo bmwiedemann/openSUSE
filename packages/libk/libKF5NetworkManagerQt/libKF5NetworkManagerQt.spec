@@ -17,7 +17,7 @@
 
 
 %define soversion 6
-%define _tar_path 5.85
+%define _tar_path 5.86
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
@@ -25,7 +25,7 @@
 # Only needed for the package signature condition
 %bcond_without lang
 Name:           libKF5NetworkManagerQt
-Version:        5.85.0
+Version:        5.86.0
 Release:        0
 Summary:        A Qt wrapper for NetworkManager DBus API
 License:        LGPL-2.1-only OR LGPL-3.0-only
@@ -36,7 +36,6 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/networkm
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/networkmanager-qt-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  kf5-filesystem
