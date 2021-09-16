@@ -1069,4 +1069,12 @@
     <comment></comment>
     <requestid>912558</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>bcd9840634b16f57ccfc7d597283f9d3</srcmd5>
+    <version>5.86.0</version>
+    <time>1631826862</time>
+    <user>dimstar_suse</user>
+    <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
+    <requestid>919230</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:24 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * ExpandableListItem: Fix overlapping entries with many expanded items (kde#428102)
+  * ExpandableListitem: Fix stylus input for buttons (kde#426079)
+  * [Calendar] Fix pinned calendar displaying the wrong number of dots (kde#440627)
+  * [PC3/TextField] Fix text color with certain themes (kde#438854)
+- Drop upstream patch:
+  * 0001-Fix-Plasma-non-Qt-icon-scaling-with-integer-scale-factors.patch
+
+-------------------------------------------------------------------
 Tue Aug 17 07:27:12 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch from upstream to fix a regression in Plasma icon sizes
