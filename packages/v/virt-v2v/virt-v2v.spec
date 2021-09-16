@@ -18,17 +18,19 @@
 
 
 # If there are patches which touch autotools files, set this to 1.
-%global patches_touch_autotools %{nil}
+%global patches_touch_autotools 1
 # The source directory.
-%global source_directory 1.43-development
+%global source_directory 1.44-stable
 Name:           virt-v2v
-Version:        1.43.5
+Version:        1.44.0
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://github.com/libguestfs/virt-v2v
-Source0:        http://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
+Patch0:         fix-linker-error.patch
+Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz
+Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
 BuildRequires:  augeas-devel
 BuildRequires:  file-devel
 #BuildRequires: /usr/bin/pod2man

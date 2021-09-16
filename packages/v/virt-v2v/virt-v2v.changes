@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 16 11:58:59 MDT 2021 - carnold@suse.com
+
+- Fix ocaml linker error due to unresolved 'rpl_free'. For
+  comparison, see libguestfs commit 489b14b75e.
+  fix-linker-error.patch
+
+-------------------------------------------------------------------
+Fri May  7 14:34:45 MDT 2021 - carnold@suse.com
+
+- Update to version 1.44.0
+  Include virt-v2v-1.44.0.tar.gz.sig
+  * windows: Allow qxldod.inf as synonym for qxl.inf
+  * -i ova: Set LANG=C and --no-auto-compress when running tar.
+  * Increase required free space in Windows to 100 MB
+  * Tidy up error messages when mounting a virtio-win ISO
+
+-------------------------------------------------------------------
 Thu Apr 29 09:37:35 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Update to version 1.43.5
