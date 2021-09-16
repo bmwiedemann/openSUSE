@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 13 06:17:58 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch migrate-to-pytest.patch:
+  * Migrate to pytest, lightly rebased from upstream. 
+
+-------------------------------------------------------------------
 Mon May 25 21:27:01 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
 
 - Restore semanticversioning.patch to allow semantic_version >= 2.7 

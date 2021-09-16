@@ -1,7 +1,7 @@
 #
-# spec file for package python
+# spec file
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,7 @@ License:        BSD-2-Clause
 URL:            https://github.com/bitprophet/releases
 Source:         https://files.pythonhosted.org/packages/source/r/releases/releases-%{version}.tar.gz
 Patch0:         semanticversioning.patch
+Patch1:         migrate-to-pytest.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -45,9 +46,9 @@ BuildRequires:  %{python_module Sphinx >= 1.3}
 BuildRequires:  %{python_module invocations}
 BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module mock >= 1.0.1}
+BuildRequires:  %{python_module pytest-relaxed}
 BuildRequires:  %{python_module semantic_version}
 BuildRequires:  %{python_module six >= 1.4.1}
-BuildRequires:  %{python_module spec >= 0.11.3}
 %endif
 %python_subpackages
 
@@ -70,7 +71,7 @@ Specifically:
 
 %prep
 %setup -q -n releases-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
