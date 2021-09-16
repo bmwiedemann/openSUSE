@@ -32,7 +32,6 @@ Source:         https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
