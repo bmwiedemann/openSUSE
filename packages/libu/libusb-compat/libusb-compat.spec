@@ -1,7 +1,7 @@
 #
 # spec file for package libusb-compat
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,35 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           libusb-compat
-Url:            http://libusb.info/
+URL:            http://libusb.info/
 Summary:        libusb-1.0 Compatibility Layer for libusb-0.1
-License:        BSD-3-Clause and LGPL-2.1+
+License:        BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Version:        0.1.5
+Version:        0.1.7
 Release:        0
-Source:         http://downloads.sourceforge.net/project/libusb/%{name}-0.1/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source:         https://github.com/libusb/libusb-compat-0.1/releases/download/v%{version}/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
 Source2:        %{name}.rpmlintrc
-# PATCH-FIX-UPSTREAM libusb-compat-update-news.patch sbrabec@suse.cz -- Update news for 0.1.5.
-Patch0:         libusb-compat-update-news.patch
-# PATCH-FIX-UPSTREAM libusb-compat-revert-atexit.patch sbrabec@suse.cz -- Revert atexit().
-Patch1:         libusb-compat-revert-atexit.patch
-# PATCH-FIX-UPSTREAM libusb-compat-add-destructor.patch sbrabec@suse.cz -- Add destructor.
-Patch2:         libusb-compat-add-destructor.patch
-# PATCH-FEATURE-OPENSUSE libusb-compat-hide-libusb-1_0.patch boo#596411 sbrabec@suse.cz -- Hide libusb-1.0 symbols to prevent symbol clash.
-Patch3:         libusb-compat-hide-libusb-1_0.patch
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libusb-1.0)
-# Needed for libusb-compat-hide-libusb-1_0.patch:
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  libtool
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %define debug_package_requires libusb-0_1-5 = %{version}-%{release}
 
 %description
@@ -87,13 +74,8 @@ and walk like libusb-0.1.
 
 %prep
 %setup -q
-%patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
 
 %build
-autoreconf -f -i
 %configure --disable-static
 make %{?_smp_mflags}
 

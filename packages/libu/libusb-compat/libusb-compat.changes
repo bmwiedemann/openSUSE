@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Aug 30 15:44:27 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 0.1.7:
+  * Add library destructor to handle cleanup of libusb
+    (obsoletes libusb-compat-add-destructor.patch)
+  * Prevent libusb-1.0 symbol clash by dlopening libusb-1.0
+    (obsoletes libusb-compat-hide-libusb-1_0.patch)
+  * Other fixes
+    (obsoletes libusb-compat-update-news.patch and
+    libusb-compat-revert-atexit.patch)
+- New download URL.
+
+-------------------------------------------------------------------
 Thu Jul  9 18:26:32 CEST 2015 - sbrabec@suse.com
 
 - Fix libusb-compat-hide-libusb-1_0.patch: Ensure that inline
