@@ -149,4 +149,16 @@ versions of libva(2)</comment>
     <comment></comment>
     <requestid>841334</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d79091761e8fd3d2d9073d679be66065</srcmd5>
+    <version>21.3.3</version>
+    <time>1631826901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.3.3:
+  * Supported platforms: 
+    BDW/SKL/APL(BXT)/KBL/CFL/WHL/CML/ICL/EHL/JSL/TGL/RKL/DG1/SG1/ADL-S/ADL-P
+  * Extensive new features and enhancements, see README.md
+- Move generated supplements list to supplements.inc</comment>
+    <requestid>919555</requestid>
+  </revision>
 </revisionlist>

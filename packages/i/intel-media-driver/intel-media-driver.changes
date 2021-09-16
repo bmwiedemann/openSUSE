@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 15 05:53:42 UTC 2021 - Tejas Guruswamy <tejas.guruswamy@opensuse.org>
+
+- Update to 21.3.3:
+  * Supported platforms: 
+    BDW/SKL/APL(BXT)/KBL/CFL/WHL/CML/ICL/EHL/JSL/TGL/RKL/DG1/SG1/ADL-S/ADL-P
+  * Extensive new features and enhancements, see README.md
+- Move generated supplements list to supplements.inc
+
+-------------------------------------------------------------------
 Sat Oct 10 20:48:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 20.3.0:
