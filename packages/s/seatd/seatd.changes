@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 16 07:40:50 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * seatd-launch: Specify exact environment to seatd
+  * seatd-launch: Use absolute path for seatd
+
+-------------------------------------------------------------------
+Wed Sep 15 07:35:12 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * seatd-launch: print unlink/kill errors
+  * seatd-launch: exit with status >128 if child is signalled
+  * man/seatd-launch: Make mssage about root clearer
+  * seatd-launch: Use optind to find the command
+  * seatd-launch: respect PATH when looking for command
+  * man: Add seatd-launch(1) to SEE ALSO of seatd(1)
+
+-------------------------------------------------------------------
 Sat Sep 11 20:18:15 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.0:

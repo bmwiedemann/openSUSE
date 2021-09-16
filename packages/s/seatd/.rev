@@ -70,4 +70,22 @@
   * libseat/seatd: downgrade ENOENT log to info</comment>
     <requestid>918472</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>ad2998e03f6cc334bc3b9f9b9952dc7b</srcmd5>
+    <version>0.6.2</version>
+    <time>1631826895</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2:
+  * seatd-launch: Specify exact environment to seatd
+  * seatd-launch: Use absolute path for seatd
+
+- Update to 0.6.1:
+  * seatd-launch: print unlink/kill errors
+  * seatd-launch: exit with status &gt;128 if child is signalled
+  * man/seatd-launch: Make mssage about root clearer
+  * seatd-launch: Use optind to find the command
+  * seatd-launch: respect PATH when looking for command
+  * man: Add seatd-launch(1) to SEE ALSO of seatd(1)</comment>
+    <requestid>919491</requestid>
+  </revision>
 </revisionlist>
