@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 13 05:24:28 UTC 2021 - Stefan Bluhm <stefan.bluhm@clacee.eu>
+
+- Added build support for Enterprise Linux.
+
+-------------------------------------------------------------------
 Fri Sep  8 08:03:21 UTC 2017 - fstrba@suse.com
 
 - Specify java target and source version to 1.6 in order to allow
