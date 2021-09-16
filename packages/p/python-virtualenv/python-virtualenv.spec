@@ -1,5 +1,5 @@
 #
-# spec file for package python-virtualenv-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,8 +17,8 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "test"
+%global flavor @BUILD_FLAVOR@%%{nil}
+%if "%%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
 %else
@@ -26,44 +26,51 @@
 %bcond_with test
 %endif
 Name:           python-virtualenv%{psuffix}
-Version:        20.2.2
+Version:        20.7.0
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
 URL:            http://www.virtualenv.org/
 Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virtualenv-%{version}.tar.gz
+BuildRequires:  %{python_module distlib >= 0.3.1}
+BuildRequires:  %{python_module filelock >= 3.0.0}
+BuildRequires:  %{python_module importlib-metadata >= 0.12}
+BuildRequires:  %{python_module importlib-resources >= 1.0}
 BuildRequires:  %{python_module setuptools >= 41.0.0}
 BuildRequires:  %{python_module setuptools_scm >= 2}
+BuildRequires:  %{python_module six >= 1.9.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-appdirs >= 1.4.3
+Requires:       python-backports.entry_points_selectable >= 1.0.4
 Requires:       python-distlib >= 0.3.1
 Requires:       python-filelock >= 3.0.0
+Requires:       python-platformdirs >= 2
 Requires:       python-setuptools
 Requires:       python-six >= 1.9.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 BuildArch:      noarch
-%if %{python_version_nodots} < 38
 Requires:       python-importlib-metadata >= 0.12
 Requires:       python-importlib_resources >= 1.0
-%endif
 %ifpython2
 Requires:       python-contextlib2 >= 0.6.0
 Requires:       python-pathlib2 >= 2.3.3
 %endif
 %if %{with test}
+BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
 BuildRequires:  %{python_module coverage >= 4.5.1}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module flaky >= 3}
 BuildRequires:  %{python_module packaging >= 20.0}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module platformdirs >= 2}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-env >= 0.6.2}
 BuildRequires:  %{python_module pytest-freezegun >= 0.4.1}
 BuildRequires:  %{python_module pytest-mock >= 2.0.0}
 BuildRequires:  %{python_module pytest-timeout >= 1.3.4}
-BuildRequires:  %{python_module virtualenv >= %{version}}
 %endif
+
 %python_subpackages
 
 %description
@@ -85,7 +92,7 @@ virtualenv environments (and optionally doesnt use the globally installed
 libraries either).
 
 %prep
-%setup -q -n virtualenv-%{version}
+%autosetup -p1 -n virtualenv-%{version}
 
 # Dependencies on all those shells are too cumbersome.
 rm -r tests/unit/activation
@@ -94,18 +101,17 @@ rm -r tests/unit/activation
 %python_build
 
 %install
-%if !%{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/virtualenv
-%endif
 
 %check
 %if %{with test}
 export LANG="en_US.UTF8"
 skiptests="test_seed_link_via_app_data"
 # test_seed_link_via_app_data - online tests downloads from pypi
-%pytest -k "not ($skiptests)"
+%pytest
+rm -rf %{buildroot}
 %endif
 
 %if !%{with test}

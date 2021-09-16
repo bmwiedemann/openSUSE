@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 14 08:21:26 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing Requires on two modules. 
+- Drop no longer required appdirs Requires.
+- Shift new BuildRequires to :test to avoid cycles.
+
+-------------------------------------------------------------------
+Wed Aug  4 14:41:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Switch off tests, they are just broken.
+
+-------------------------------------------------------------------
+Tue Aug  3 09:08:14 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 20.7.0:
+  - Removed xonsh activator due to this breaking fairly often the
+    CI and lack of support from those packages maintainers,
+    upstream is encouraged to continue supporting the project as
+    a plugin
+  - Support Python interpreters without distutils (fallback to
+    syconfig in these cases)
+  - Plugins now use 'selectable' entry points
+  - add libffi-7.dll to the hard-coded list of dlls for PyPy
+  - Drop python 3.4 support as it has been over 2 years since EOL
+  - Use the better maintained platformdirs instead of appdirs
+  - Built in discovery class is always preferred over plugin
+    supplied classes.
+  - On the programmatic API allow passing in the environment
+    variable dictionary to use, defaults to os.environ if not
+    specified
+  - The builtin discovery takes now a --try-first-with argument
+    and is first attempted as valid interpreters. One can use
+    this to force discovery of a given python executable when the
+    discovery order/mechanism raises errors
+
+-------------------------------------------------------------------
 Thu Mar 11 23:11:29 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Actually switch off all activation tests, so we can shed all those

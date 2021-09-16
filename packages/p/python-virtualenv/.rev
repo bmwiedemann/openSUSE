@@ -524,4 +524,37 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
 </comment>
     <requestid>878421</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>020919bf18911aec6fa1da122b92eeda</srcmd5>
+    <version>20.7.0</version>
+    <time>1631826880</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing Requires on two modules. 
+- Drop no longer required appdirs Requires.
+- Shift new BuildRequires to :test to avoid cycles.
+
+- Switch off tests, they are just broken.
+
+- Update to 20.7.0:
+  - Removed xonsh activator due to this breaking fairly often the
+    CI and lack of support from those packages maintainers,
+    upstream is encouraged to continue supporting the project as
+    a plugin
+  - Support Python interpreters without distutils (fallback to
+    syconfig in these cases)
+  - Plugins now use 'selectable' entry points
+  - add libffi-7.dll to the hard-coded list of dlls for PyPy
+  - Drop python 3.4 support as it has been over 2 years since EOL
+  - Use the better maintained platformdirs instead of appdirs
+  - Built in discovery class is always preferred over plugin
+    supplied classes.
+  - On the programmatic API allow passing in the environment
+    variable dictionary to use, defaults to os.environ if not
+    specified
+  - The builtin discovery takes now a --try-first-with argument
+    and is first attempted as valid interpreters. One can use
+    this to force discovery of a given python executable when the
+    discovery order/mechanism raises errors</comment>
+    <requestid>918847</requestid>
+  </revision>
 </revisionlist>
