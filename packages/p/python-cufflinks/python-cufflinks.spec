@@ -26,6 +26,7 @@ Summary:        Productivity Tools for Plotly + Pandas
 License:        MIT
 URL:            https://github.com/santosjorge/cufflinks
 Source:         https://files.pythonhosted.org/packages/source/c/cufflinks/cufflinks-%{version}.tar.gz
+Patch0:         use-assert.patch
 BuildRequires:  %{python_module setuptools >= 34.4.1}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -41,10 +42,10 @@ BuildArch:      noarch
 BuildRequires:  %{python_module colorlover >= 0.2.1}
 BuildRequires:  %{python_module ipython >= 5.3.0}
 BuildRequires:  %{python_module ipywidgets >= 7.0.0}
-BuildRequires:  %{python_module nose >= 1.3.7}
 BuildRequires:  %{python_module numpy >= 1.9.2}
 BuildRequires:  %{python_module pandas >= 0.19.2}
 BuildRequires:  %{python_module plotly >= 4.1.1}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module six >= 1.9.0}
 # /SECTION
 %python_subpackages
@@ -54,6 +55,7 @@ This library binds the plotly with pandas for plotting.
 
 %prep
 %setup -q -n cufflinks-%{version}
+%autopatch -p1
 
 %build
 %python_build
@@ -61,6 +63,9 @@ This library binds the plotly with pandas for plotting.
 %install
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+%pytest tests.py
 
 %files %{python_files}
 %doc README.md

@@ -1,0 +1,30 @@
+Index: cufflinks-0.17.3/tests.py
+===================================================================
+--- cufflinks-0.17.3.orig/tests.py
++++ cufflinks-0.17.3/tests.py
+@@ -7,7 +7,6 @@ import cufflinks as cf
+ import pandas as pd
+ import numpy as np
+ import unittest
+-from nose.tools import assert_equals
+ 
+ ##
+ ## nosetests -xv tests.py --with-coverage --cover-package=cufflinks
+@@ -73,7 +72,7 @@ def bar_row_input_argument_tests():
+ 	}
+ 
+ 	def bar_row_test(self, **kwargs):
+-		self._iplot(self.df.ix[1], **kwargs)
++		self._iplot(self.df.loc[1], **kwargs)
+ 
+ 	_generate_tests(TestIPlot, bar_row_test, 'bar_row', options)
+ 
+@@ -196,7 +195,7 @@ def color_normalize_tests():
+ 	c=dict([(k.lower(),v.upper()) for k,v in list(cf.cnames.items())])
+ 	d={}
+ 	for k,v in list(c.items()):
+-		assert_equals(v,cf.normalize(k).upper())
++		assert v == cf.normalize(k).upper()
+ 	return 2
+ 
+ # technical analysis

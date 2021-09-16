@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 06:52:40 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-assert.patch:
+  * Don't use nose asserts.
+- Actually run the testsuite. 
+
+-------------------------------------------------------------------
 Wed Apr 21 06:06:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
