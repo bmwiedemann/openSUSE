@@ -3225,6 +3225,7 @@
       <repopackage name="man-pages-de"/>
       <repopackage name="man-pages-es"/>
       <repopackage name="man-pages-fr"/>
+      <repopackage name="man-pages-hu"/>
       <repopackage name="man-pages-it"/>
       <repopackage name="man-pages-ja"/>
       <repopackage name="man-pages-pl"/>
@@ -3628,19 +3629,25 @@
       <repopackage name="pentaho-reporting-flow-engine"/>
       <repopackage name="pentobi-kde-thumbnailer"/>
       <repopackage name="perl"/>
+      <repopackage name="perl-Algorithm-Diff"/>
+      <repopackage name="perl-Archive-Any-Lite"/>
       <repopackage name="perl-Archive-Zip"/>
+      <repopackage name="perl-Array-Diff"/>
       <repopackage name="perl-Authen-SASL"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
       <repopackage name="perl-BSD-Resource"/>
       <repopackage name="perl-CDDB_get"/>
       <repopackage name="perl-CGI"/>
+      <repopackage name="perl-Class-Accessor"/>
       <repopackage name="perl-Class-Inspector" arch="x86_64"/>
       <repopackage name="perl-Class-XSAccessor"/>
       <repopackage name="perl-common-sense"/>
       <repopackage name="perl-Config-General"/>
       <repopackage name="perl-Convert-ASN1"/>
       <repopackage name="perl-Convert-BinHex"/>
+      <repopackage name="perl-CPAN-DistnameInfo"/>
+      <repopackage name="perl-CPAN-Meta-Requirements"/>
       <repopackage name="perl-Cpanel-JSON-XS"/>
       <repopackage name="perl-Crypt-DES"/>
       <repopackage name="perl-Crypt-OpenSSL-Bignum"/>
@@ -3648,11 +3655,16 @@
       <repopackage name="perl-Crypt-OpenSSL-RSA"/>
       <repopackage name="perl-Crypt-Rijndael"/>
       <repopackage name="perl-Crypt-SmbHash"/>
+      <repopackage name="perl-Data-Binary"/>
+      <repopackage name="perl-Data-Dump"/>
+      <repopackage name="perl-Data-OptList"/>
+      <repopackage name="perl-Data-Section"/>
       <repopackage name="perl-Data-Validate-IP"/>
       <repopackage name="perl-Date-Manip"/>
       <repopackage name="perl-DBD-mysql"/>
       <repopackage name="perl-DBD-SQLite"/>
       <repopackage name="perl-DBI"/>
+      <repopackage name="perl-Devel-Symdump"/>
       <repopackage name="perl-Digest-HMAC"/>
       <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
@@ -3663,6 +3675,7 @@
       <repopackage name="perl-Error"/>
       <repopackage name="perl-Expect"/>
       <repopackage name="perl-Exporter-Tiny"/>
+      <repopackage name="perl-File-Find-Object"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-File-ShareDir" arch="x86_64"/>
       <repopackage name="perl-FileHandle-Unget"/>
@@ -3700,7 +3713,11 @@
       <repopackage name="perl-Mail-SPF"/>
       <repopackage name="perl-MailTools"/>
       <repopackage name="perl-MIME-tools"/>
+      <repopackage name="perl-Module-CPANfile"/>
+      <repopackage name="perl-Module-CPANTS-Analyse"/>
+      <repopackage name="perl-Module-Find"/>
       <repopackage name="perl-Mojolicious"/>
+      <repopackage name="perl-MRO-Compat"/>
       <repopackage name="perl-MusicBrainz-DiscID"/>
       <repopackage name="perl-Net-CIDR-Lite"/>
       <repopackage name="perl-Net-DBus"/>
@@ -3713,21 +3730,32 @@
       <repopackage name="perl-Net-SNMP"/>
       <repopackage name="perl-Net-SSLeay"/>
       <repopackage name="perl-NetAddr-IP"/>
-      <repopackage name="perl-Params-Util" arch="x86_64"/>
+      <repopackage name="perl-Params-Util"/>
       <repopackage name="perl-Parse-RecDescent"/>
+      <repopackage name="perl-Perl-PrereqScanner-NotQuiteLite"/>
+      <repopackage name="perl-Pod-Coverage"/>
+      <repopackage name="perl-Pod-Parser"/>
       <repopackage name="perl-razor-agents"/>
+      <repopackage name="perl-Regexp-Trie"/>
       <repopackage name="perl-SNMP"/>
       <repopackage name="perl-Socket6"/>
+      <repopackage name="perl-Software-License"/>
       <repopackage name="perl-String-ShellQuote" arch="x86_64"/>
+      <repopackage name="perl-Sub-Exporter"/>
+      <repopackage name="perl-Sub-Install"/>
       <repopackage name="perl-Sys-Guestfs" arch="x86_64"/>
       <repopackage name="perl-Term-ReadKey"/>
+      <repopackage name="perl-Test-Kwalitee"/>
       <repopackage name="perl-Test-Pod"/>
+      <repopackage name="perl-Test-Pod-Coverage"/>
       <repopackage name="perl-Text-CSV_XS"/>
+      <repopackage name="perl-Text-Template"/>
       <repopackage name="perl-TimeDate"/>
       <repopackage name="perl-Try-Tiny"/>
       <repopackage name="perl-Types-Serialiser"/>
       <repopackage name="perl-Unix-Syslog"/>
       <repopackage name="perl-URI"/>
+      <repopackage name="perl-URI-cpan"/>
       <repopackage name="perl-WebService-MusicBrainz"/>
       <repopackage name="perl-Win-Hivex" arch="x86_64"/>
       <repopackage name="perl-WWW-RobotRules"/>
@@ -4862,7 +4890,6 @@
       <repopackage name="system-group-kvm"/>
       <repopackage name="system-group-libvirt"/>
       <repopackage name="system-group-wheel"/>
-      <repopackage name="system-tuning-common-SUSE"/>
       <repopackage name="system-user-bin"/>
       <repopackage name="system-user-daemon"/>
       <repopackage name="system-user-flatpak"/>
@@ -5080,6 +5107,7 @@
       <repopackage name="ucode-intel"/>
       <repopackage name="udev"/>
       <repopackage name="udev-configure-printer"/>
+      <repopackage name="udev-extra-rules"/>
       <repopackage name="udftools"/>
       <repopackage name="udisks2"/>
       <repopackage name="udisks2-lang"/>

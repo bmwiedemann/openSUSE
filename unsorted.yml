@@ -2101,6 +2101,7 @@ unsorted:
   - codespell 
   - cogl-devel 
   - collectd 
+  - collectd-plugin-amqp 
   - collectd-plugin-buddyinfo 
   - collectd-plugin-connectivity 
   - collectd-plugin-dbi 
@@ -3607,6 +3608,7 @@ unsorted:
   - fipscheck 
   - fipscheck-devel 
   - fira-code-fonts 
+  - firecracker: [x86_64] 
   - firectl: [x86_64] 
   - firefox-esr-branding-openSUSE 
   - firefox-uget-integrator 
@@ -13063,9 +13065,7 @@ unsorted:
   - libqt5xdg-devel 
   - libqt6keychain1 
   - libqtcurve-cairo1 
-  - libqtcurve-cairo1-32bit: [x86_64] 
   - libqtcurve-utils2 
-  - libqtcurve-utils2-32bit: [x86_64] 
   - libqtermwidget5-0 
   - libqtolm-devel 
   - libquadmath0-32bit: [x86_64] 
@@ -18684,7 +18684,6 @@ unsorted:
   - perl-Algorithm-C3 
   - perl-Algorithm-CheckDigits 
   - perl-Algorithm-Combinatorics 
-  - perl-Algorithm-Diff 
   - perl-Alien-Build 
   - perl-Alien-Libxml2 
   - perl-Alien-SDL 
@@ -18761,9 +18760,7 @@ unsorted:
   - perl-CLI-Osprey 
   - perl-CPAN-Changes 
   - perl-CPAN-Common-Index 
-  - perl-CPAN-DistnameInfo 
   - perl-CPAN-Meta-Check 
-  - perl-CPAN-Meta-Requirements 
   - perl-CPAN-Mini 
   - perl-CPAN-Perl-Releases 
   - perl-CPAN-Uploader 
@@ -18784,7 +18781,6 @@ unsorted:
   - perl-Carton 
   - perl-Catalyst-Manual 
   - perl-Chart 
-  - perl-Class-Accessor 
   - perl-Class-Accessor-Chained 
   - perl-Class-Accessor-Grouped 
   - perl-Class-Accessor-Lite 
@@ -18903,7 +18899,6 @@ unsorted:
   - perl-Dancer2-Plugin-WebSocket 
   - perl-Data-Clone 
   - perl-Data-Compare 
-  - perl-Data-Dump 
   - perl-Data-Dump-Streamer 
   - perl-Data-Dumper-Concise 
   - perl-Data-Entropy 
@@ -18912,13 +18907,11 @@ unsorted:
   - perl-Data-Hierarchy 
   - perl-Data-Integer 
   - perl-Data-ObjectDriver 
-  - perl-Data-OptList 
   - perl-Data-Page 
   - perl-Data-Peek 
   - perl-Data-Perl 
   - perl-Data-Printer 
   - perl-Data-Random 
-  - perl-Data-Section 
   - perl-Data-Section-Simple 
   - perl-Data-ShowTable 
   - perl-Data-Structure-Util 
@@ -18929,6 +18922,7 @@ unsorted:
   - perl-Data-Visitor 
   - perl-Date-Calc 
   - perl-Date-Holidays-CZ 
+  - perl-Date-Range 
   - perl-Date-Simple 
   - perl-Date-Tiny 
   - perl-DateTime 
@@ -18976,7 +18970,6 @@ unsorted:
   - perl-Devel-REPL 
   - perl-Devel-StackTrace 
   - perl-Devel-StackTrace-AsHTML 
-  - perl-Devel-Symdump 
   - perl-Devel-TakeHashArgs 
   - perl-Devel-Trace 
   - perl-Device-SerialPort 
@@ -19129,6 +19122,7 @@ unsorted:
   - perl-HTML-Restrict 
   - perl-HTML-RewriteAttributes 
   - perl-HTML-Scrubber 
+  - perl-HTML-Selector-XPath 
   - perl-HTML-SimpleParse 
   - perl-HTML-Stream 
   - perl-HTML-TableExtract 
@@ -19136,6 +19130,7 @@ unsorted:
   - perl-HTML-Tidy 
   - perl-HTML-TokeParser-Simple 
   - perl-HTML-Tree 
+  - perl-HTML-TreeBuilder-XPath 
   - perl-HTTP-Body 
   - perl-HTTP-BrowserDetect 
   - perl-HTTP-CookieJar 
@@ -19258,7 +19253,6 @@ unsorted:
   - perl-MIME-Types 
   - perl-MLDBM 
   - perl-MLDBM-Sync 
-  - perl-MRO-Compat 
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
   - perl-Mail-Message 
@@ -19303,9 +19297,7 @@ unsorted:
   - perl-Module-Build-Using-PkgConfig 
   - perl-Module-Build-WithXSpp 
   - perl-Module-Build-XSUtil 
-  - perl-Module-CPANfile 
   - perl-Module-Depends 
-  - perl-Module-Find 
   - perl-Module-Implementation 
   - perl-Module-Info 
   - perl-Module-Install 
@@ -19485,7 +19477,6 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -19526,7 +19517,6 @@ unsorted:
   - perl-Plack-Middleware-RemoveRedundantBody 
   - perl-Plack-Middleware-Session 
   - perl-Plack-Test-Agent 
-  - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
   - perl-Pod-Elemental 
@@ -19535,7 +19525,6 @@ unsorted:
   - perl-Pod-Markdown 
   - perl-Pod-MinimumVersion 
   - perl-Pod-POM 
-  - perl-Pod-Parser 
   - perl-Pod-Readme 
   - perl-Pod-Spell 
   - perl-Pod-Usage 
@@ -19606,7 +19595,6 @@ unsorted:
   - perl-Snowball-Norwegian 
   - perl-Snowball-Swedish 
   - perl-Socket-MsgHdr 
-  - perl-Software-License 
   - perl-Sort-Key 
   - perl-Sort-Naturally 
   - perl-Sort-Versions 
@@ -19639,14 +19627,12 @@ unsorted:
   - perl-String-Util 
   - perl-Struct-Dumb 
   - perl-Sub-Delete 
-  - perl-Sub-Exporter 
   - perl-Sub-Exporter-ForMethods 
   - perl-Sub-Exporter-GlobExporter 
   - perl-Sub-Exporter-Progressive 
   - perl-Sub-HandlesVia 
   - perl-Sub-Identify 
   - perl-Sub-Info 
-  - perl-Sub-Install 
   - perl-Sub-Name 
   - perl-Sub-Override 
   - perl-Sub-Quote 
@@ -19756,7 +19742,6 @@ unsorted:
   - perl-Test-Output 
   - perl-Test-Perl-Critic 
   - perl-Test-PerlTidy 
-  - perl-Test-Pod-Coverage 
   - perl-Test-Refcount 
   - perl-Test-Requires 
   - perl-Test-Requires-Git 
@@ -19815,7 +19800,6 @@ unsorted:
   - perl-Text-Sprintf-Named 
   - perl-Text-Table 
   - perl-Text-TabularDisplay 
-  - perl-Text-Template 
   - perl-Text-Unidecode 
   - perl-Text-WrapI18N 
   - perl-Text-Wrapper 
@@ -19881,6 +19865,7 @@ unsorted:
   - perl-Web-MREST 
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
+  - perl-Web-Scraper 
   - perl-Win-Hivex: [i586] 
   - perl-Wx 
   - perl-X11-Protocol-Other 
@@ -20032,6 +20017,7 @@ unsorted:
   - photorec 
   - php-Icinga 
   - php-composer 
+  - php-composer2 
   - php-cs-fixer 
   - php-mapscript 
   - php-pear-Auth_SASL 
@@ -22361,7 +22347,6 @@ unsorted:
   - python36-django-money 
   - python36-django-multiselectfield 
   - python36-django-nine 
-  - python36-django-nose 
   - python36-django-oauth-toolkit 
   - python36-django-oidc-provider 
   - python36-django-oscar 
@@ -25179,7 +25164,6 @@ unsorted:
   - python38-django-money 
   - python38-django-multiselectfield 
   - python38-django-nine 
-  - python38-django-nose 
   - python38-django-oauth-toolkit 
   - python38-django-oidc-provider 
   - python38-django-oscar 
@@ -28171,7 +28155,6 @@ unsorted:
   - python39-django-money 
   - python39-django-multiselectfield 
   - python39-django-nine 
-  - python39-django-nose 
   - python39-django-oauth-toolkit 
   - python39-django-oidc-provider 
   - python39-django-perf-rec 
@@ -30689,9 +30672,7 @@ unsorted:
   - qt6-xml-devel 
   - qt6-xml-private-devel 
   - qtcurve-gtk2 
-  - qtcurve-gtk2-32bit: [x86_64] 
   - qtcurve-qt5 
-  - qtcurve-qt5-32bit: [x86_64] 
   - qtdbusextended-devel 
   - qtdeclarative-imports-provides-qt6 
   - qtel 
@@ -32335,7 +32316,6 @@ unsorted:
   - suse-hpc 
   - suse-module-tools-legacy 
   - suse-prime 
-  - suse-prime-bbswitch 
   - suse-xsl-stylesheets 
   - suseconnect-ng 
   - suseprime-appindicator 
@@ -32429,6 +32409,7 @@ unsorted:
   - sysstat 
   - sysstat-isag 
   - system-group-obsolete 
+  - system-tuning-common-SUSE 
   - system-user-grafana 
   - system-user-libvirt-dbus 
   - system-user-loki 
