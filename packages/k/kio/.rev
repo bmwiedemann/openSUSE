@@ -1001,4 +1001,12 @@ I'd vote for Leap 15.0 as well... (forwarded request 604374 from wolfi323)</comm
     <comment>- Disable lto for ppc64 builds.</comment>
     <requestid>914543</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>ec9c894075571b063912d801f4a2328c</srcmd5>
+    <version>5.86.0</version>
+    <time>1631826844</time>
+    <user>dimstar_suse</user>
+    <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
+    <requestid>919198</requestid>
+  </revision>
 </revisionlist>

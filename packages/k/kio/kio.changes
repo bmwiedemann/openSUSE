@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:09 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * Inline kssld operators to avoid duplicate symbol errors (kde#428807)
+  * KFilePlaceEditDialog: Always preserve previous icon (kde#439622)
+  * kio_http: wrap a long error message (kde#160399)
+  * kio_file: detect failure to create symlinks due to filesystem support (kde#253678)
+  * CopyJob: ask users about replacing invalid characters in file/folder names (kde#136746)
+  * KDirOperator: expand to url only in detail tree view (kde#440475)
+
+-------------------------------------------------------------------
 Fri Aug 27 08:34:41 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Disable lto for ppc64 builds.

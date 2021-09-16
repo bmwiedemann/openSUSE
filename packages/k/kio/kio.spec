@@ -16,14 +16,14 @@
 #
 
 
-%define _tar_path 5.85
+%define _tar_path 5.86
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           kio
-Version:        5.85.0
+Version:        5.86.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -34,7 +34,6 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE kio_help-fallback-to-kde4-docs.patch -- allow kio_help to see into kde4 documentation, needed especially for khelpcenter5
 Patch0:         kio_help-fallback-to-kde4-docs.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
