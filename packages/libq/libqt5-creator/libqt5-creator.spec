@@ -37,9 +37,9 @@
 
 %define major_ver 5.0
 %define qt5_version 5.14.0
-%define tar_version 5.0.0
+%define tar_version 5.0.1
 Name:           libqt5-creator
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -162,9 +162,9 @@ sed -i -e "/qtc_enable_separate_debug_info/d" cmake/QtCreatorAPI.cmake
   -DCLANGTOOLING_LINK_CLANG_DYLIB:BOOL=ON \
   -DBUILD_WITH_PCH:BOOL=OFF \
   -DWITH_DOCS:BOOL=ON \
-  -DBUILD_LIBRARY_QLITEHTML:BOOL=OFF \
+  -DBUILD_LIBRARY_QLITEHTML:BOOL=ON \
 %if %{with qtwebengine}
-  -DBUILD_HELVIEWERBACKEND_QTWEBENGINE:BOOL=ON
+  -DBUILD_HELPVIEWERBACKEND_QTWEBENGINE:BOOL=ON
 %endif
 
 %cmake_build

@@ -889,4 +889,12 @@ No hurry to checkin ;-) but it is needed for QtLocation</comment>
     <comment></comment>
     <requestid>914746</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>9422cd97d77092a0432e02f30cfadffb</srcmd5>
+    <version>5.0.1</version>
+    <time>1631826892</time>
+    <user>dimstar_suse</user>
+    <comment>Qt Creator 5.0.1 (forwarded request 919251 from cgiboudeaux)</comment>
+    <requestid>919450</requestid>
+  </revision>
 </revisionlist>
