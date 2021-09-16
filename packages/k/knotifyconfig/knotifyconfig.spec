@@ -17,14 +17,14 @@
 
 
 %define lname   libKF5NotifyConfig5
-%define _tar_path 5.85
+%define _tar_path 5.86
 # Full KF5 version (e.g. 5.33.0)
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
 %bcond_without lang
 Name:           knotifyconfig
-Version:        5.85.0
+Version:        5.86.0
 Release:        0
 Summary:        Configuration dialog for desktop notifications
 License:        LGPL-2.1-or-later
@@ -35,7 +35,6 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-Source99:       baselibs.conf
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
