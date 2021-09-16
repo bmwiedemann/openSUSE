@@ -1,0 +1,141 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Fri, 5 Feb 2021 19:50:03 +0100
+Subject: libxc sr xg_sr_bitmap
+
+tools: add API for expandable bitmaps
+
+Since the incoming migration stream lacks info about what the highest pfn
+will be, some data structures can not be allocated upfront.
+
+Add an API for expandable bitmaps, loosely based on pfn_set_populated.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libs/guest/xg_sr_common.c |   39 +++++++++++++++++++++++
+ tools/libs/guest/xg_sr_common.h |   67 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 106 insertions(+)
+
+--- a/tools/libs/guest/xg_sr_common.c
++++ b/tools/libs/guest/xg_sr_common.c
+@@ -164,6 +164,45 @@ static void __attribute__((unused)) buil
+ }
+ 
+ /*
++ * Expand the tracking structures as needed.
++ * To avoid realloc()ing too excessively, the size increased to the nearest
++ * power of two large enough to contain the required number of bits.
++ */
++bool _sr_bitmap_expand(struct sr_bitmap *bm, unsigned long bits)
++{
++    size_t new_max;
++    size_t old_sz, new_sz;
++    void *p;
++
++    if (bits <= bm->bits)
++        return true;
++
++    /* Round up to the nearest power of two larger than bit, less 1. */
++    new_max = bits;
++    new_max |= new_max >> 1;
++    new_max |= new_max >> 2;
++    new_max |= new_max >> 4;
++    new_max |= new_max >> 8;
++    new_max |= new_max >> 16;
++    new_max |= sizeof(unsigned long) > 4 ? new_max >> 32 : 0;
++
++    /* Allocate units of unsigned long */
++    new_max = (new_max + BITS_PER_LONG - 1) & ~(BITS_PER_LONG - 1);
++
++    old_sz = bitmap_size(bm->bits);
++    new_sz = bitmap_size(new_max);
++    p = realloc(bm->p, new_sz);
++    if (!p)
++        return false;
++
++    memset(p + old_sz, 0, new_sz - old_sz);
++    bm->p = p;
++    bm->bits = new_max;
++
++    return true;
++}
++
++/*
+  * Local variables:
+  * mode: C
+  * c-file-style: "BSD"
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -18,6 +18,73 @@ const char *rec_type_to_str(uint32_t typ
+ struct xc_sr_context;
+ struct xc_sr_record;
+ 
++struct sr_bitmap
++{
++    void *p;
++    unsigned long bits;
++};
++
++extern bool _sr_bitmap_expand(struct sr_bitmap *bm, unsigned long bits);
++
++static inline bool sr_bitmap_expand(struct sr_bitmap *bm, unsigned long bits)
++{
++    if (bits > bm->bits)
++        return _sr_bitmap_expand(bm, bits);
++    return true;
++}
++
++static inline void sr_bitmap_free(struct sr_bitmap *bm)
++{
++    free(bm->p);
++    bm->p = NULL;
++}
++
++static inline bool sr_set_bit(unsigned long bit, struct sr_bitmap *bm)
++{
++    if (sr_bitmap_expand(bm, bit) == false)
++        return false;
++
++    set_bit(bit, bm->p);
++    return true;
++}
++
++static inline bool sr_test_bit(unsigned long bit, struct sr_bitmap *bm)
++{
++    if (bit > bm->bits)
++        return false;
++    return !!test_bit(bit, bm->p);
++}
++
++static inline void sr_clear_bit(unsigned long bit, struct sr_bitmap *bm)
++{
++    if (bit <= bm->bits)
++        clear_bit(bit, bm->p);
++}
++
++static inline bool sr_test_and_clear_bit(unsigned long bit, struct sr_bitmap *bm)
++{
++    if (bit > bm->bits)
++        return false;
++    return !!test_and_clear_bit(bit, bm->p);
++}
++
++/* No way to report potential allocation error, bitmap must be expanded prior usage */
++static inline bool sr_test_and_set_bit(unsigned long bit, struct sr_bitmap *bm)
++{
++    if (bit > bm->bits)
++        return false;
++    return !!test_and_set_bit(bit, bm->p);
++}
++
++static inline bool sr_set_long_bit(unsigned long base_bit, struct sr_bitmap *bm)
++{
++    if (sr_bitmap_expand(bm, base_bit + BITS_PER_LONG) == false)
++        return false;
++
++    set_bit_long(base_bit, bm->p);
++    return true;
++}
++
+ /**
+  * Save operations.  To be implemented for each type of guest, for use by the
+  * common save algorithm.

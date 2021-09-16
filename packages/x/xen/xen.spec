@@ -29,7 +29,7 @@
 Name:           xen
 ExclusiveArch:  %ix86 x86_64 aarch64
 %define changeset 41121
-%define xen_build_dir xen-4.15.0-testing
+%define xen_build_dir xen-4.15.1-testing
 #
 %define with_gdbsx 0
 %define with_dom0_support 0
@@ -130,12 +130,12 @@ BuildRequires:  pesign-obs-integration
 %endif
 Provides:       installhint(reboot-needed)
 
-Version:        4.15.0_01
+Version:        4.15.1_01
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
 Group:          System/Kernel
-Source0:        xen-4.15.0-testing-src.tar.bz2
+Source0:        xen-4.15.1-testing-src.tar.bz2
 Source1:        stubdom.tar.bz2
 Source2:        ipxe.tar.bz2
 Source3:        mini-os.tar.bz2
@@ -167,31 +167,42 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+# EMBARGOED security fixes
 # libxc
-Patch301:       libxc-sr-readv_exact.patch
-Patch302:       libxc-sr-add-xc_is_known_page_type.patch
-Patch303:       libxc-sr-use-xc_is_known_page_type.patch
-Patch304:       libxc-sr-page_type_has_stream_data.patch
-Patch305:       libxc-sr-save-show_transfer_rate.patch
-Patch306:       libxc-sr-arrays.patch
-Patch307:       libxc-sr-batch_pfns.patch
-Patch308:       libxc-sr-save-mfns.patch
-Patch309:       libxc-sr-save-types.patch
-Patch310:       libxc-sr-save-errors.patch
-Patch311:       libxc-sr-save-iov.patch
-Patch312:       libxc-sr-save-rec_pfns.patch
-Patch313:       libxc-sr-save-guest_data.patch
-Patch314:       libxc-sr-save-local_pages.patch
-Patch315:       libxc-sr-restore-pfns.patch
-Patch316:       libxc-sr-restore-types.patch
-Patch317:       libxc-sr-restore-mfns.patch
-Patch318:       libxc-sr-restore-map_errs.patch
-Patch319:       libxc-sr-restore-populate_pfns-mfns.patch
+Patch301:       libxc-sr-383b41974d5543b62f3181d216070fe3691fb130.patch
+Patch302:       libxc-sr-9e59d9f8ee3808acde9833192211da25f66d8cc2.patch
+Patch303:       libxc-sr-5588ebcfca774477cf823949e5703b0ac48818cc.patch
+Patch304:       libxc-sr-f17a73b3c0264c62dd6b5dae01ed621c051c3038.patch
+Patch305:       libxc-bitmap-long.patch
+Patch306:       libxc-sr-xl-migration-debug.patch
+Patch307:       libxc-sr-readv_exact.patch
+Patch308:       libxc-sr-save-show_transfer_rate.patch
+Patch309:       libxc-sr-save-mfns.patch
+Patch310:       libxc-sr-save-types.patch
+Patch311:       libxc-sr-save-errors.patch
+Patch312:       libxc-sr-save-iov.patch
+Patch313:       libxc-sr-save-rec_pfns.patch
+Patch314:       libxc-sr-save-guest_data.patch
+Patch315:       libxc-sr-save-local_pages.patch
+Patch316:       libxc-sr-restore-pfns.patch
+Patch317:       libxc-sr-restore-types.patch
+Patch318:       libxc-sr-restore-mfns.patch
+Patch319:       libxc-sr-restore-map_errs.patch
 Patch320:       libxc-sr-restore-populate_pfns-pfns.patch
-Patch321:       libxc-sr-restore-read_record.patch
-Patch322:       libxc-sr-restore-handle_buffered_page_data.patch
-Patch323:       libxc-sr-restore-handle_incoming_page_data.patch
-Patch324:       libxc-bitmap-long.patch
+Patch321:       libxc-sr-restore-populate_pfns-mfns.patch
+Patch322:       libxc-sr-restore-read_record.patch
+Patch323:       libxc-sr-restore-handle_buffered_page_data.patch
+Patch324:       libxc-sr-restore-handle_incoming_page_data.patch
+Patch325:       libxc-sr-LIBXL_HAVE_DOMAIN_SUSPEND_PROPS.patch
+Patch326:       libxc-sr-precopy_policy.patch
+Patch327:       libxc-sr-max_iters.patch
+Patch328:       libxc-sr-min_remaining.patch
+Patch329:       libxc-sr-abort_if_busy.patch
+Patch330:       libxc-sr-xg_sr_bitmap.patch
+Patch331:       libxc-sr-xg_sr_bitmap-populated_pfns.patch
+Patch332:       libxc-sr-restore-hvm-legacy-superpage.patch
+Patch333:       libxc-sr-track-migration-time.patch
+Patch334:       libxc-sr-number-of-iterations.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch
@@ -207,27 +218,23 @@ Patch410:       ignore-ip-command-script-errors.patch
 # Needs to go upstream
 Patch420:       suspend_evtchn_lock.patch
 Patch421:       vif-route.patch
-Patch422:       gcc11-fixes.patch
 # Other bug fixes or features
 Patch450:       xen.sysconfig-fillup.patch
 Patch451:       xenconsole-no-multiple-connections.patch
 Patch452:       hibernate.patch
 Patch453:       stdvga-cache.patch
 Patch454:       ipxe-enable-nics.patch
+Patch455:       xl-save-pc.patch
 Patch456:       pygrub-boot-legacy-sles.patch
 Patch457:       pygrub-handle-one-line-menu-entries.patch
 Patch458:       aarch64-rename-PSR_MODE_ELxx-to-match-linux-headers.patch
-Patch459:       aarch64-maybe-uninitialized.patch
 Patch461:       libxl.max_event_channels.patch
-Patch462:       libxc.sr.superpage.patch
 Patch463:       libxl.add-option-to-disable-disk-cache-flushes-in-qdisk.patch
 Patch464:       libxl.pvscsi.patch
 Patch465:       xen.libxl.dmmd.patch
-Patch466:       libxl.set-migration-constraints-from-cmdline.patch
 Patch467:       xenstore-run-in-studomain.patch
 Patch468:       libxl.helper_done-crash.patch
 Patch469:       libxl.LIBXL_HOTPLUG_TIMEOUT.patch
-Patch470:       libxc.migrate_tracking.patch
 # python3 conversion patches
 Patch500:       build-python3-conversion.patch
 Patch501:       migration-python3-conversion.patch
@@ -235,8 +242,7 @@ Patch502:       bin-python3-conversion.patch
 # Hypervisor and PV driver Patches
 Patch600:       xen.bug1026236.suse_vtsc_tolerance.patch
 Patch601:       x86-ioapic-ack-default.patch
-Patch602:       x86-cpufreq-report.patch
-Patch603:       xenwatchdogd-restart.patch
+Patch602:       xenwatchdogd-restart.patch
 Patch621:       xen.build-compare.doc_html.patch
 Patch623:       ipxe-no-error-logical-not-parentheses.patch
 Patch624:       ipxe-use-rpm-opt-flags.patch
@@ -415,8 +421,11 @@ Authors:
 %endif
 
 %prep
-%setup -q -n %xen_build_dir -a 1 -a 2 -a 3 -a 4
-%autosetup -D -T -n %xen_build_dir -p1
+%autosetup -p1 -n %xen_build_dir -a 3
+# extract manually because autosetup, unlike setup, can handle just a singe archive (the last one specified with -a)
+tar xfa %SOURCE1
+tar xfa %SOURCE2
+tar xfa %SOURCE4
 
 %build
 %define _lto_cflags %{nil}
@@ -793,9 +802,9 @@ cp -avL '%{SOURCE10172}' "%{buildroot}${unit}"
 mkdir xendomains-wait-disk
 cp -avL '%{SOURCE10173}' xendomains-wait-disk/LICENSE
 cp -avL '%{SOURCE10174}' xendomains-wait-disk/README.md
-tee %{buildroot}%{_unitdir}/xendomains-wait-disks.service <<'_EOS_'
+tee %{buildroot}%{_unitdir}/xendomains-wait-disks.service <<_EOS_
 [Unit]
-Description=Xendomains - for those machines that will start, wait for their disks to apear
+Description=Xendomains - for those machines that will start, wait for their disks to appear
 Requires=proc-xen.mount xenstored.service
 After=proc-xen.mount xenstored.service xenconsoled.service xen-init-dom0.service
 After=network-online.target

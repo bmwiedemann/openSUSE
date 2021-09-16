@@ -2606,4 +2606,12 @@
     <comment></comment>
     <requestid>907839</requestid>
   </revision>
+  <revision rev="304" vrev="1">
+    <srcmd5>ca5095593878fbe7e7431f89b1a174e1</srcmd5>
+    <version>4.15.1_01</version>
+    <time>1631826872</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Xen version 4.15.1 with various other fixes.</comment>
+    <requestid>918052</requestid>
+  </revision>
 </revisionlist>

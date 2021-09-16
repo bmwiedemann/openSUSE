@@ -1,0 +1,180 @@
+References: bug#1176189
+
+Usage of xl save -p|-c will suspend the domU.
+As a result the monitoring xl process with get a LIBXL_EVENT_TYPE_DOMAIN_SHUTDOWN/LIBXL_SHUTDOWN_REASON_SUSPEND event.
+This will cause it to exit because it does not know the -p/-c flags were used to keep the domU active.
+As a result the final shutdown will not destroy the domU.
+
+Write a flag to xenstore to let the monitoring process know about the usage of -p/-c.
+Remove the flag once the suspend is done.
+
+Recognize the flag in the monitoring process.
+Keep going if the flag is seen.
+Watch again for @releaseDomain events.
+Keep going if the event type and shutdown reason remains the same.
+---
+ tools/xl/Makefile         |    3 +-
+ tools/xl/xl.h             |    1 
+ tools/xl/xl_saverestore.c |   15 ++++++++++++++
+ tools/xl/xl_vmcontrol.c   |   48 ++++++++++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 66 insertions(+), 1 deletion(-)
+
+--- a/tools/xl/Makefile
++++ b/tools/xl/Makefile
+@@ -26,6 +26,7 @@ XL_OBJS += xl_vmcontrol.o xl_saverestore
+ XL_OBJS += xl_vdispl.o xl_vsnd.o xl_vkb.o
+ 
+ $(XL_OBJS): CFLAGS += $(CFLAGS_libxentoollog)
++$(XL_OBJS): CFLAGS += $(CFLAGS_libxenstore)
+ $(XL_OBJS): CFLAGS += $(CFLAGS_XL)
+ $(XL_OBJS): CFLAGS += -include $(XEN_ROOT)/tools/config.h # libxl_json.h needs it.
+ 
+@@ -38,7 +39,7 @@ $(XL_OBJS): _paths.h
+ all: xl
+ 
+ xl: $(XL_OBJS)
+-	$(CC) $(LDFLAGS) -o $@ $(XL_OBJS) $(LDLIBS_libxenutil) $(LDLIBS_libxenlight) $(LDLIBS_libxentoollog) -lyajl $(APPEND_LDFLAGS)
++	$(CC) $(LDFLAGS) -o $@ $(XL_OBJS) $(LDLIBS_libxenutil) $(LDLIBS_libxenlight) $(LDLIBS_libxentoollog) $(LDLIBS_libxenstore) -lyajl $(APPEND_LDFLAGS)
+ 
+ .PHONY: install
+ install: all
+--- a/tools/xl/xl.h
++++ b/tools/xl/xl.h
+@@ -300,6 +300,7 @@ typedef enum {
+     DOMAIN_RESTART_SOFT_RESET,   /* Soft reset should be performed */
+ } domain_restart_type;
+ 
++#define XL_SAVE_PAUSE_CHECKPOINT "suse-xl-save-pc"
+ extern void printf_info_sexp(int domid, libxl_domain_config *d_config, FILE *fh);
+ extern void apply_global_affinity_masks(libxl_domain_type type,
+                                         libxl_bitmap *vcpu_affinity_array,
+--- a/tools/xl/xl_saverestore.c
++++ b/tools/xl/xl_saverestore.c
+@@ -21,6 +21,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
++#include <xenstore.h>
+ #include <libxl.h>
+ #include <libxl_utils.h>
+ #include <libxlutil.h>
+@@ -127,6 +128,8 @@ static int save_domain(uint32_t domid, i
+                        const char *filename, int checkpoint,
+                        int leavepaused, const char *override_config_file)
+ {
++    struct xs_handle *xsh = NULL;
++    char path[80];
+     int fd;
+     uint8_t *config_data;
+     int config_len;
+@@ -144,12 +147,24 @@ static int save_domain(uint32_t domid, i
+         fprintf(stderr, "Failed to open temp file %s for writing\n", filename);
+         exit(EXIT_FAILURE);
+     }
++    if (leavepaused || checkpoint)
++    {
++        snprintf(path, sizeof(path), "/libxl/%u/" XL_SAVE_PAUSE_CHECKPOINT, domid);
++        xsh = xs_open(0);
++        if (xsh)
++            xs_write(xsh, XBT_NULL, path, leavepaused ? "p" : "c", 1);
++    }
+ 
+     save_domain_core_writeconfig(fd, filename, config_data, config_len);
+ 
+     int rc = libxl_domain_suspend_suse(ctx, domid, fd, &props, NULL);
+     close(fd);
+ 
++    if (xsh) {
++        xs_rm(xsh, XBT_NULL, path);
++        xs_close(xsh);
++    }
++
+     if (rc < 0) {
+         fprintf(stderr, "Failed to save domain, resuming domain\n");
+         libxl_domain_resume(ctx, domid, 1, 0);
+--- a/tools/xl/xl_vmcontrol.c
++++ b/tools/xl/xl_vmcontrol.c
+@@ -22,6 +22,7 @@
+ #include <time.h>
+ #include <unistd.h>
+ 
++#include <xenstore.h>
+ #include <libxl.h>
+ #include <libxl_utils.h>
+ #include <libxlutil.h>
+@@ -663,6 +664,10 @@ int create_domain(struct domain_create *
+     int migrate_fd = dom_info->migrate_fd;
+     bool config_in_json;
+ 
++    libxl_event_type type = 0;
++    uint8_t shutdown_reason = 0;
++    bool is_in_suspend = false;
++
+     int i;
+     int need_daemon = daemonize;
+     int ret, rc;
+@@ -1029,6 +1034,24 @@ start:
+         ret = domain_wait_event(domid, &event);
+         if (ret) goto out;
+ 
++        if (is_in_suspend) {
++            if ( type == event->type && event->u.domain_shutdown.shutdown_reason == shutdown_reason) {
++                struct timespec req = { .tv_nsec = 123456789, };
++                libxl_evdisable_domain_death(ctx, deathw);
++                deathw = NULL;
++                ret = libxl_evenable_domain_death(ctx, domid, 0, &deathw);
++                if (ret) goto out;
++                libxl_event_free(ctx, event);
++                LOG("Domain %u still suspended", domid);
++                nanosleep(&req, NULL);
++                continue;
++            }
++            is_in_suspend = false;
++            LOG("Domain %u left suspend state", domid);
++        }
++        type = event->type;
++        shutdown_reason = event->u.domain_shutdown.shutdown_reason;
++
+         switch (event->type) {
+ 
+         case LIBXL_EVENT_TYPE_DOMAIN_SHUTDOWN:
+@@ -1090,14 +1113,39 @@ start:
+                 goto start;
+ 
+             case DOMAIN_RESTART_NONE:
++                {
++                struct xs_handle *xsh = xs_open(0);
++
++                if (xsh) {
++                    char path[80];
++                    unsigned int len = 0;
++                    char *val;
++
++                    snprintf(path, sizeof(path), "/libxl/%u/" XL_SAVE_PAUSE_CHECKPOINT, domid);
++                    val = xs_read(xsh, XBT_NULL, path, &len);
++                    xs_close(xsh);
++                    LOG("Got %p '%s' from %s, len %u", val, val ?:"", path, len);
++                    free(val);
++                    if (val)
++                    {
++                        is_in_suspend = true;
++                        libxl_evdisable_domain_death(ctx, deathw);
++                        deathw = NULL;
++                        ret = libxl_evenable_domain_death(ctx, domid, 0, &deathw);
++                        if (ret) goto out;
++                        break;
++                    }
++                }
+                 LOG("Done. Exiting now");
+                 libxl_event_free(ctx, event);
+                 ret = 0;
+                 goto out;
++                }
+ 
+             default:
+                 abort();
+             }
++            break;
+ 
+         case LIBXL_EVENT_TYPE_DOMAIN_DEATH:
+             LOG("Domain %u has been destroyed.", domid);

@@ -1,0 +1,30 @@
+From: Andrew Cooper <andrew.cooper3@citrix.com>
+Date: Fri, 2 Jul 2021 19:08:46 +0100
+Subject: libxc sr 383b41974d5543b62f3181d216070fe3691fb130
+
+tools/libxenguest: Fix migration's debug option
+
+The code has gone through many refactors, but the first refactor was the one
+which broke it by inverting the check with respect to checkpointed streams.
+
+Fixes: 7449fb36c6c8 ("migration/save: pass checkpointed_stream from libxl to libxc")
+Reported-by: Olaf Hering <olaf@aepfle.de>
+Signed-off-by: Andrew Cooper <andrew.cooper3@citrix.com>
+Acked-by: Olaf Hering <olaf@aepfle.de>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+(cherry picked from commit 383b41974d5543b62f3181d216070fe3691fb130)
+---
+ tools/libs/guest/xg_sr_save.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
+@@ -752,7 +752,7 @@ static int send_domain_memory_live(struc
+     if ( rc )
+         goto out;
+ 
+-    if ( ctx->save.debug && ctx->stream_type != XC_STREAM_PLAIN )
++    if ( ctx->save.debug && ctx->stream_type == XC_STREAM_PLAIN )
+     {
+         rc = verify_frames(ctx);
+         if ( rc )

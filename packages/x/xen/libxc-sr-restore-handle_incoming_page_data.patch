@@ -2,7 +2,7 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Thu, 29 Oct 2020 16:13:10 +0100
 Subject: libxc sr restore handle_incoming_page_data
 
-tools/guest: restore: write data directly into guest
+tools: restore: write data directly into guest
 
 Read incoming migration stream directly into the guest memory.
 This avoids the memory allocation and copying, and the resulting
@@ -10,23 +10,32 @@ performance penalty.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |   1 +
- tools/libs/guest/xg_sr_restore.c | 132 ++++++++++++++++++++++++++++++++++--
- 2 files changed, 129 insertions(+), 4 deletions(-)
+ tools/libs/guest/xg_sr_common.h  |    3 
+ tools/libs/guest/xg_sr_restore.c |  155 +++++++++++++++++++++++++++++++++++++--
+ 2 files changed, 153 insertions(+), 5 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -231,6 +231,7 @@ struct xc_sr_restore_arrays {
-     xen_pfn_t mfns[MAX_BATCH_SIZE];
-     int map_errs[MAX_BATCH_SIZE];
-     void *guest_data[MAX_BATCH_SIZE];
-+    struct iovec iov[MAX_BATCH_SIZE];
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -263,6 +263,8 @@ struct xc_sr_context
+             xen_pfn_t *pp_pfns;
+             xen_pfn_t *pp_mfns;
+             void **guest_data;
++            struct iovec *iov;
++            struct xc_sr_rec_page_data_header *pages;
  
-     /* populate_pfns */
-     xen_pfn_t pp_mfns[MAX_BATCH_SIZE];
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -393,6 +393,122 @@ err:
+             void *guest_mapping;
+             uint32_t nr_mapped_pages;
+@@ -311,6 +313,7 @@ struct xc_sr_context
+ 
+             /* Sender has invoked verify mode on the stream. */
+             bool verify;
++            void *verify_buf;
+         } restore;
+     };
+ 
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -382,6 +382,129 @@ err:
  }
  
  /*
@@ -39,9 +48,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +                                     struct xc_sr_rhdr *rhdr)
 +{
 +    xc_interface *xch = ctx->xch;
-+    struct xc_sr_restore_arrays *m = ctx->restore.m;
-+    struct xc_sr_rec_page_data_header *pages = &m->pages;
-+    uint64_t *pfn_nums = m->pages.pfn;
++    struct xc_sr_rec_page_data_header *pages = ctx->restore.pages;
++    uint64_t *pfn_nums = &pages->pfn[0];
 +    uint32_t i;
 +    int rc, iov_idx;
 +
@@ -57,7 +65,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +        goto err;
 +    }
 +
-+    if ( verify_rec_page_hdr(ctx, rhdr->length, pages) == false )
++    if ( !verify_rec_page_hdr(ctx, rhdr->length, pages) )
 +    {
 +        rc = -1;
 +        goto err;
@@ -71,7 +79,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +        goto err;
 +    }
 +
-+    if ( verify_rec_page_pfns(ctx, rhdr->length, pages) == false )
++    if ( !verify_rec_page_pfns(ctx, rhdr->length, pages) )
 +    {
 +        rc = -1;
 +        goto err;
@@ -82,24 +90,27 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +    if ( rc )
 +        goto err;
 +
-+    /* Prepare read buffers, either guest or throw away memory */
++    /* Prepare read buffers, either guest or throw-away memory */
 +    for ( i = 0, iov_idx = 0; i < pages->count; i++ )
 +    {
-+        if ( !m->guest_data[i] )
++        struct iovec *iov;
++
++        if ( !ctx->restore.guest_data[i] )
 +            continue;
 +
-+        m->iov[iov_idx].iov_len = PAGE_SIZE;
++        iov = &ctx->restore.iov[iov_idx];
++        iov->iov_len = PAGE_SIZE;
 +        if ( ctx->restore.verify )
-+            m->iov[iov_idx].iov_base = ctx->restore.verify_buf + i * PAGE_SIZE;
++            iov->iov_base = ctx->restore.verify_buf + (i * PAGE_SIZE);
 +        else
-+            m->iov[iov_idx].iov_base = m->guest_data[i];
++            iov->iov_base = ctx->restore.guest_data[i];
 +        iov_idx++;
 +    }
 +
 +    if ( !iov_idx )
 +        goto done;
 +
-+    rc = readv_exact(ctx->fd, m->iov, iov_idx);
++    rc = readv_exact(ctx->fd, ctx->restore.iov, iov_idx);
 +    if ( rc )
 +    {
 +        PERROR("read of %d pages failed", iov_idx);
@@ -109,24 +120,29 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +    /* Post-processing of pfn data */
 +    for ( i = 0, iov_idx = 0; i < pages->count; i++ )
 +    {
-+        if ( !m->guest_data[i] )
++        void *addr;
++
++        if ( !ctx->restore.guest_data[i] )
 +            continue;
 +
-+        rc = ctx->restore.ops.localise_page(ctx, m->types[i], m->iov[iov_idx].iov_base);
++        addr = ctx->restore.iov[iov_idx].iov_base;
++        rc = ctx->restore.ops.localise_page(ctx, ctx->restore.types[i], addr);
 +        if ( rc )
 +        {
 +            ERROR("Failed to localise pfn %#"PRIpfn" (type %#"PRIx32")",
-+                  m->pfns[i], m->types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
++                  ctx->restore.pfns[i],
++                  ctx->restore.types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
 +            goto err;
 +
 +        }
 +
 +        if ( ctx->restore.verify )
 +        {
-+            if ( memcmp(m->guest_data[i], m->iov[iov_idx].iov_base, PAGE_SIZE) )
++            if ( memcmp(ctx->restore.guest_data[i], addr, PAGE_SIZE) )
 +            {
 +                ERROR("verify pfn %#"PRIpfn" failed (type %#"PRIx32")",
-+                      m->pfns[i], m->types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
++                      ctx->restore.pfns[i],
++                      ctx->restore.types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
 +            }
 +        }
 +
@@ -149,7 +165,23 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
   * Handle PAGE_DATA record from an existing buffer
   * Given a list of pfns, their types, and a block of page data from the
   * stream, populate and record their types, map the relevant subset and copy
-@@ -773,11 +889,19 @@ static int process_incoming_record_heade
+@@ -726,6 +849,15 @@ static int process_buffered_record(struc
+     case REC_TYPE_VERIFY:
+         DPRINTF("Verify mode enabled");
+         ctx->restore.verify = true;
++        if ( !ctx->restore.verify_buf )
++        {
++            ctx->restore.verify_buf = malloc(MAX_BATCH_SIZE * PAGE_SIZE);
++            if ( !ctx->restore.verify_buf )
++            {
++                PERROR("Unable to allocate verify_buf");
++                rc = -1;
++            }
++        }
+         break;
+ 
+     case REC_TYPE_CHECKPOINT:
+@@ -752,11 +884,19 @@ static int process_incoming_record_heade
      struct xc_sr_record rec;
      int rc;
  
@@ -173,3 +205,26 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  }
  
  
+@@ -801,9 +941,12 @@ static int setup(struct xc_sr_context *c
+     ctx->restore.pp_pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_pfns));
+     ctx->restore.pp_mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_mfns));
+     ctx->restore.guest_data = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.guest_data));
++    ctx->restore.iov = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.iov));
++    ctx->restore.pages = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pages->pfn) + sizeof(*ctx->restore.pages));
+     if ( !ctx->restore.pfns || !ctx->restore.types || !ctx->restore.mfns ||
+          !ctx->restore.map_errs || !ctx->restore.pp_pfns ||
+-         !ctx->restore.pp_mfns || !ctx->restore.guest_data )
++         !ctx->restore.pp_mfns || !ctx->restore.guest_data ||
++         !ctx->restore.iov || !ctx->restore.pages )
+     {
+         ERROR("Unable to allocate memory");
+         rc = -1;
+@@ -840,6 +983,8 @@ static void cleanup(struct xc_sr_context
+ 
+     free(ctx->restore.buffered_records);
+     free(ctx->restore.populated_pfns);
++    free(ctx->restore.pages);
++    free(ctx->restore.iov);
+     free(ctx->restore.guest_data);
+     free(ctx->restore.pp_mfns);
+     free(ctx->restore.pp_pfns);

@@ -1,40 +1,56 @@
 From: Olaf Hering <olaf@aepfle.de>
-Date: Fri, 23 Oct 2020 14:36:45 +0200
+Date: Fri, 23 Oct 2020 14:39:30 +0200
 Subject: libxc sr restore pfns
 
-tools/guest: restore: move pfns array
+tools: restore: preallocate pfns array
 
-Remove allocation from hotpath, move pfns array into preallocated space.
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in an incoming batch.
+Allocate the space once.
+
+Adjust the verification for page count. It must be at least one page,
+but not more than MAX_BATCH_SIZE.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  | 2 ++
- tools/libs/guest/xg_sr_restore.c | 6 ++----
- 2 files changed, 4 insertions(+), 4 deletions(-)
+ tools/libs/guest/xg_sr_common.h  |    1 +
+ tools/libs/guest/xg_sr_restore.c |   23 +++++++++++++++--------
+ 2 files changed, 16 insertions(+), 8 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -224,6 +224,8 @@ struct xc_sr_save_arrays {
- };
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -256,6 +256,7 @@ struct xc_sr_context
+         {
+             struct xc_sr_restore_ops ops;
+             struct restore_callbacks *callbacks;
++            xen_pfn_t *pfns;
  
- struct xc_sr_restore_arrays {
-+    /* handle_page_data */
-+    xen_pfn_t pfns[MAX_BATCH_SIZE];
- };
- 
- struct xc_sr_context
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -315,7 +315,7 @@ static int handle_page_data(struct xc_sr
+             int send_back_fd;
+             unsigned long p2m_size;
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -314,7 +314,7 @@ static int handle_page_data(struct xc_sr
      unsigned int i, pages_of_data = 0;
      int rc = -1;
  
 -    xen_pfn_t *pfns = NULL, pfn;
-+    xen_pfn_t *pfns = ctx->restore.m->pfns, pfn;
++    xen_pfn_t pfn;
      uint32_t *types = NULL, type;
  
      /*
-@@ -363,9 +363,8 @@ static int handle_page_data(struct xc_sr
+@@ -349,9 +349,9 @@ static int handle_page_data(struct xc_sr
+         goto err;
+     }
+ 
+-    if ( pages->count < 1 )
++    if ( !pages->count || pages->count > MAX_BATCH_SIZE )
+     {
+-        ERROR("Expected at least 1 pfn in PAGE_DATA record");
++        ERROR("Unexpected pfn count %u in PAGE_DATA record", pages->count);
+         goto err;
+     }
+ 
+@@ -362,9 +362,8 @@ static int handle_page_data(struct xc_sr
          goto err;
      }
  
@@ -45,7 +61,21 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          ERROR("Unable to allocate enough memory for %u pfns",
                pages->count);
-@@ -412,7 +411,6 @@ static int handle_page_data(struct xc_sr
+@@ -393,7 +392,7 @@ static int handle_page_data(struct xc_sr
+              * have a page worth of data in the record. */
+             pages_of_data++;
+ 
+-        pfns[i] = pfn;
++        ctx->restore.pfns[i] = pfn;
+         types[i] = type;
+     }
+ 
+@@ -407,11 +406,10 @@ static int handle_page_data(struct xc_sr
+         goto err;
+     }
+ 
+-    rc = process_page_data(ctx, pages->count, pfns, types,
++    rc = process_page_data(ctx, pages->count, ctx->restore.pfns, types,
                             &pages->pfn[pages->count]);
   err:
      free(types);
@@ -53,3 +83,26 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
+@@ -728,6 +726,14 @@ static int setup(struct xc_sr_context *c
+         goto err;
+     }
+ 
++    ctx->restore.pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pfns));
++    if ( !ctx->restore.pfns )
++    {
++        ERROR("Unable to allocate memory");
++        rc = -1;
++        goto err;
++    }
++
+     ctx->restore.buffered_records = malloc(
+         DEFAULT_BUF_RECORDS * sizeof(struct xc_sr_record));
+     if ( !ctx->restore.buffered_records )
+@@ -758,6 +764,7 @@ static void cleanup(struct xc_sr_context
+ 
+     free(ctx->restore.buffered_records);
+     free(ctx->restore.populated_pfns);
++    free(ctx->restore.pfns);
+ 
+     if ( ctx->restore.ops.cleanup(ctx) )
+         PERROR("Failed to clean up");

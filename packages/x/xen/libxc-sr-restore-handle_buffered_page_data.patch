@@ -2,7 +2,7 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Tue, 27 Oct 2020 19:21:50 +0100
 Subject: libxc sr restore handle_buffered_page_data
 
-tools/guest: restore: split handle_page_data
+tools: restore: split handle_page_data
 
 handle_page_data must be able to read directly into mapped guest memory.
 This will avoid unneccesary memcpy calls for data that can be consumed verbatim.
@@ -17,42 +17,26 @@ no change in behavior is intended.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |   9 +
- tools/libs/guest/xg_sr_restore.c | 343 +++++++++++++++++++++++-------------
- 2 files changed, 231 insertions(+), 121 deletions(-)
+ tools/libs/guest/xg_sr_common.h  |    4 
+ tools/libs/guest/xg_sr_restore.c |  320 ++++++++++++++++++++++++---------------
+ 2 files changed, 207 insertions(+), 117 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -230,9 +230,14 @@ struct xc_sr_restore_arrays {
-     /* process_page_data */
-     xen_pfn_t mfns[MAX_BATCH_SIZE];
-     int map_errs[MAX_BATCH_SIZE];
-+    void *guest_data[MAX_BATCH_SIZE];
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -262,6 +262,10 @@ struct xc_sr_context
+             int *map_errs;
+             xen_pfn_t *pp_pfns;
+             xen_pfn_t *pp_mfns;
++            void **guest_data;
 +
-     /* populate_pfns */
-     xen_pfn_t pp_mfns[MAX_BATCH_SIZE];
-     xen_pfn_t pp_pfns[MAX_BATCH_SIZE];
-+
-+    /* Must be the last member */
-+    struct xc_sr_rec_page_data_header pages;
- };
- 
- struct xc_sr_context
-@@ -323,7 +328,11 @@ struct xc_sr_context
- 
-             /* Sender has invoked verify mode on the stream. */
-             bool verify;
-+            void *verify_buf;
-+
-             struct xc_sr_restore_arrays *m;
 +            void *guest_mapping;
 +            uint32_t nr_mapped_pages;
-         } restore;
-     };
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -186,123 +186,18 @@ int populate_pfns(struct xc_sr_context *
+             int send_back_fd;
+             unsigned long p2m_size;
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -183,121 +183,18 @@ int populate_pfns(struct xc_sr_context *
      return rc;
  }
  
@@ -66,8 +50,6 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +static int handle_static_data_end_v2(struct xc_sr_context *ctx)
  {
 -    xc_interface *xch = ctx->xch;
--    xen_pfn_t *mfns = ctx->restore.m->mfns;
--    int *map_errs = ctx->restore.m->map_errs;
 -    int rc;
 -    void *mapping = NULL, *guest_page = NULL;
 -    unsigned int i, /* i indexes the pfns from the record. */
@@ -85,8 +67,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 -    {
 -        ctx->restore.ops.set_page_type(ctx, pfns[i], types[i]);
 -
--        if ( page_type_has_stream_data(types[i]) == true )
--            mfns[nr_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, pfns[i]);
+-        if ( page_type_has_stream_data(types[i]) )
+-            ctx->restore.mfns[nr_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, pfns[i]);
 -    }
 -
 -    /* Nothing to do? */
@@ -95,7 +77,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 -
 -    mapping = guest_page = xenforeignmemory_map(
 -        xch->fmem, ctx->domid, PROT_READ | PROT_WRITE,
--        nr_pages, mfns, map_errs);
+-        nr_pages, ctx->restore.mfns, ctx->restore.map_errs);
 -    if ( !mapping )
 -    {
 -        rc = -1;
@@ -106,14 +88,14 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 -
 -    for ( i = 0, j = 0; i < count; ++i )
 -    {
--        if ( page_type_has_stream_data(types[i]) == false )
+-        if ( !page_type_has_stream_data(types[i]) )
 -            continue;
 -
--        if ( map_errs[j] )
+-        if ( ctx->restore.map_errs[j] )
 -        {
 -            rc = -1;
 -            ERROR("Mapping pfn %#"PRIpfn" (mfn %#"PRIpfn", type %#"PRIx32") failed with %d",
--                  pfns[i], mfns[j], types[i], map_errs[j]);
+-                  pfns[i], ctx->restore.mfns[j], types[i], ctx->restore.map_errs[j]);
 -            goto err;
 -        }
 -
@@ -167,8 +149,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 -    unsigned int i, pages_of_data = 0;
 -    int rc = -1;
 -
--    xen_pfn_t *pfns = ctx->restore.m->pfns, pfn;
--    uint32_t *types = ctx->restore.m->types, type;
+-    xen_pfn_t pfn;
+-    uint32_t type;
 -
      /*
       * v2 compatibility only exists for x86 streams.  This is a bit of a
@@ -180,7 +162,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      /* v2 compat.  Infer the position of STATIC_DATA_END. */
      if ( ctx->restore.format_version < 3 && !ctx->restore.seen_static_data_end )
      {
-@@ -320,12 +215,26 @@ static int handle_page_data(struct xc_sr
+@@ -315,12 +212,26 @@ static int handle_page_data(struct xc_sr
          ERROR("No STATIC_DATA_END seen");
          goto err;
      }
@@ -209,18 +191,11 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          goto err;
      }
  
-@@ -335,13 +244,35 @@ static int handle_page_data(struct xc_sr
+@@ -330,13 +241,28 @@ static int handle_page_data(struct xc_sr
          goto err;
      }
  
 -    if ( rec->length < sizeof(*pages) + (pages->count * sizeof(uint64_t)) )
-+    if ( pages->count > MAX_BATCH_SIZE )
-+    {
-+        ERROR("pfn count %u in PAGE_DATA record too large", pages->count);
-+        errno = E2BIG;
-+        goto err;
-+    }
-+
 +    if ( rec_length < sizeof(*pages) + (pages->count * sizeof(uint64_t)) )
      {
          ERROR("PAGE_DATA record (length %u) too short to contain %u"
@@ -247,14 +222,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      for ( i = 0; i < pages->count; ++i )
      {
          pfn = pages->pfn[i] & PAGE_DATA_PFN_MASK;
-@@ -364,23 +295,183 @@ static int handle_page_data(struct xc_sr
-              * have a page worth of data in the record. */
-             pages_of_data++;
- 
--        pfns[i] = pfn;
--        types[i] = type;
-+        ctx->restore.m->pfns[i] = pfn;
-+        ctx->restore.m->types[i] = type;
+@@ -363,19 +289,177 @@ static int handle_page_data(struct xc_sr
+         ctx->restore.types[i] = type;
      }
  
 -    if ( rec->length != (sizeof(*pages) +
@@ -269,8 +238,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          goto err;
      }
  
--    rc = process_page_data(ctx, pages->count, pfns, types,
--                           &pages->pfn[pages->count]);
+-    rc = process_page_data(ctx, pages->count, ctx->restore.pfns,
+-                           ctx->restore.types, &pages->pfn[pages->count]);
 +    ret = true;
 +
 +err:
@@ -279,18 +248,17 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +/*
 + * Populate pfns, if required
-+ * Fill m->guest_data with either mapped address or NULL
++ * Fill guest_data with either mapped address or NULL
 + * The caller must unmap guest_mapping
 + */
 +static int map_guest_pages(struct xc_sr_context *ctx,
 +                           struct xc_sr_rec_page_data_header *pages)
 +{
 +    xc_interface *xch = ctx->xch;
-+    struct xc_sr_restore_arrays *m = ctx->restore.m;
 +    uint32_t i, p;
 +    int rc;
 +
-+    rc = populate_pfns(ctx, pages->count, m->pfns, m->types);
++    rc = populate_pfns(ctx, pages->count, ctx->restore.pfns, ctx->restore.types);
 +    if ( rc )
 +    {
 +        ERROR("Failed to populate pfns for batch of %u pages", pages->count);
@@ -301,15 +269,15 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +    for ( i = 0; i < pages->count; i++ )
 +    {
-+        ctx->restore.ops.set_page_type(ctx, m->pfns[i], m->types[i]);
++        ctx->restore.ops.set_page_type(ctx, ctx->restore.pfns[i], ctx->restore.types[i]);
 +
-+        if ( page_type_has_stream_data(m->types[i]) == false )
++        if ( page_type_has_stream_data(ctx->restore.types[i]) == false )
 +        {
-+            m->guest_data[i] = NULL;
++            ctx->restore.guest_data[i] = NULL;
 +            continue;
 +        }
 +
-+        m->mfns[ctx->restore.nr_mapped_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, m->pfns[i]);
++        ctx->restore.mfns[ctx->restore.nr_mapped_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, ctx->restore.pfns[i]);
 +    }
 +
 +    /* Nothing to do? */
@@ -318,7 +286,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +    ctx->restore.guest_mapping = xenforeignmemory_map(xch->fmem, ctx->domid,
 +            PROT_READ | PROT_WRITE, ctx->restore.nr_mapped_pages,
-+            m->mfns, m->map_errs);
++            ctx->restore.mfns, ctx->restore.map_errs);
 +    if ( !ctx->restore.guest_mapping )
 +    {
 +        rc = -1;
@@ -330,20 +298,20 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +    /* Verify mapping, and assign address to pfn data */
 +    for ( i = 0, p = 0; i < pages->count; i++ )
 +    {
-+        if ( page_type_has_stream_data(m->types[i]) == false )
++        if ( !page_type_has_stream_data(ctx->restore.types[i]) )
 +            continue;
 +
-+        if ( m->map_errs[p] == 0 )
++        if ( ctx->restore.map_errs[p] == 0 )
 +        {
-+            m->guest_data[i] = ctx->restore.guest_mapping + (p * PAGE_SIZE);
++            ctx->restore.guest_data[i] = ctx->restore.guest_mapping + (p * PAGE_SIZE);
 +            p++;
 +            continue;
 +        }
 +
-+        errno = m->map_errs[p];
++        errno = ctx->restore.map_errs[p];
 +        rc = -1;
 +        PERROR("Mapping pfn %#"PRIpfn" (mfn %#"PRIpfn", type %#"PRIx32") failed",
-+              m->pfns[i], m->mfns[p], m->types[i]);
++              ctx->restore.pfns[i], ctx->restore.mfns[p], ctx->restore.types[i]);
 +        goto err;
 +    }
 +
@@ -365,7 +333,6 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +{
 +    xc_interface *xch = ctx->xch;
 +    struct xc_sr_rec_page_data_header *pages = rec->data;
-+    struct xc_sr_restore_arrays *m = ctx->restore.m;
 +    void *p;
 +    uint32_t i;
 +    int rc = -1, idx;
@@ -375,14 +342,14 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +        goto err;
 +
 +    /* First read and verify the header */
-+    if ( verify_rec_page_hdr(ctx, rec->length, pages) == false )
++    if ( !verify_rec_page_hdr(ctx, rec->length, pages) )
 +    {
 +        rc = -1;
 +        goto err;
 +    }
 +
 +    /* Then read and verify the pfn numbers */
-+    if ( verify_rec_page_pfns(ctx, rec->length, pages) == false )
++    if ( !verify_rec_page_pfns(ctx, rec->length, pages) )
 +    {
 +        rc = -1;
 +        goto err;
@@ -395,32 +362,32 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +
 +    for ( i = 0, idx = 0; i < pages->count; i++ )
 +    {
-+        if ( !m->guest_data[i] )
++        if ( !ctx->restore.guest_data[i] )
 +            continue;
 +
 +        p = &pages->pfn[pages->count] + (idx * PAGE_SIZE);
-+        rc = ctx->restore.ops.localise_page(ctx, m->types[i], p);
++        rc = ctx->restore.ops.localise_page(ctx, ctx->restore.types[i], p);
 +        if ( rc )
 +        {
 +            ERROR("Failed to localise pfn %#"PRIpfn" (type %#"PRIx32")",
-+                  m->pfns[i], m->types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
++                  ctx->restore.pfns[i], ctx->restore.types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
 +            goto err;
 +
 +        }
 +
 +        if ( ctx->restore.verify )
 +        {
-+            if ( memcmp(m->guest_data[i], p, PAGE_SIZE) )
++            if ( memcmp(ctx->restore.guest_data[i], p, PAGE_SIZE) )
 +            {
 +                errno = EIO;
 +                ERROR("verify pfn %#"PRIpfn" failed (type %#"PRIx32")",
-+                      m->pfns[i], m->types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
++                      ctx->restore.pfns[i], ctx->restore.types[i] >> XEN_DOMCTL_PFINFO_LTAB_SHIFT);
 +                goto err;
 +            }
 +        }
 +        else
 +        {
-+            memcpy(m->guest_data[i], p, PAGE_SIZE);
++            memcpy(ctx->restore.guest_data[i], p, PAGE_SIZE);
 +        }
 +
 +        idx++;
@@ -437,7 +404,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      return rc;
  }
  
-@@ -641,12 +732,21 @@ static int process_buffered_record(struc
+@@ -636,7 +720,7 @@ static int process_buffered_record(struc
          break;
  
      case REC_TYPE_PAGE_DATA:
@@ -446,27 +413,23 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
          break;
  
      case REC_TYPE_VERIFY:
-         DPRINTF("Verify mode enabled");
-         ctx->restore.verify = true;
-+        if ( !ctx->restore.verify_buf )
-+        {
-+            ctx->restore.verify_buf = malloc(MAX_BATCH_SIZE * PAGE_SIZE);
-+            if ( !ctx->restore.verify_buf )
-+            {
-+                rc = -1;
-+                PERROR("Unable to allocate verify_buf");
-+            }
-+        }
-         break;
- 
-     case REC_TYPE_CHECKPOINT:
-@@ -725,7 +825,8 @@ static int setup(struct xc_sr_context *c
-     }
-     ctx->restore.allocated_rec_num = DEFAULT_BUF_RECORDS;
- 
--    ctx->restore.m = malloc(sizeof(*ctx->restore.m));
-+    ctx->restore.m = malloc(sizeof(*ctx->restore.m) +
-+            (sizeof(*ctx->restore.m->pages.pfn) * MAX_BATCH_SIZE));
-     if ( !ctx->restore.m ) {
-         ERROR("Unable to allocate memory for arrays");
+@@ -716,9 +800,10 @@ static int setup(struct xc_sr_context *c
+     ctx->restore.map_errs = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.map_errs));
+     ctx->restore.pp_pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_pfns));
+     ctx->restore.pp_mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_mfns));
++    ctx->restore.guest_data = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.guest_data));
+     if ( !ctx->restore.pfns || !ctx->restore.types || !ctx->restore.mfns ||
+          !ctx->restore.map_errs || !ctx->restore.pp_pfns ||
+-         !ctx->restore.pp_mfns )
++         !ctx->restore.pp_mfns || !ctx->restore.guest_data )
+     {
+         ERROR("Unable to allocate memory");
          rc = -1;
+@@ -755,6 +840,7 @@ static void cleanup(struct xc_sr_context
+ 
+     free(ctx->restore.buffered_records);
+     free(ctx->restore.populated_pfns);
++    free(ctx->restore.guest_data);
+     free(ctx->restore.pp_mfns);
+     free(ctx->restore.pp_pfns);
+     free(ctx->restore.map_errs);

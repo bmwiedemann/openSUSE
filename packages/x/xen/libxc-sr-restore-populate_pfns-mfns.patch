@@ -2,50 +2,110 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Fri, 23 Oct 2020 14:54:12 +0200
 Subject: libxc sr restore populate_pfns mfns
 
-tools/guest: restore: move mfns array in populate_pfns
+tools: restore: preallocate populate_pfns mfns array
 
-Remove allocation from hotpath, move populate_pfns mfns array into preallocated space.
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in an incoming batch.
+Allocate the space once.
+
 Use some prefix to avoid conflict with an array used in handle_page_data.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  | 2 ++
- tools/libs/guest/xg_sr_restore.c | 5 ++---
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ tools/libs/guest/xg_sr_common.h  |    1 +
+ tools/libs/guest/xg_sr_restore.c |   23 ++++++++---------------
+ 2 files changed, 9 insertions(+), 15 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -230,6 +230,8 @@ struct xc_sr_restore_arrays {
-     /* process_page_data */
-     xen_pfn_t mfns[MAX_BATCH_SIZE];
-     int map_errs[MAX_BATCH_SIZE];
-+    /* populate_pfns */
-+    xen_pfn_t pp_mfns[MAX_BATCH_SIZE];
- };
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -261,6 +261,7 @@ struct xc_sr_context
+             xen_pfn_t *mfns;
+             int *map_errs;
+             xen_pfn_t *pp_pfns;
++            xen_pfn_t *pp_mfns;
  
- struct xc_sr_context
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -138,12 +138,12 @@ int populate_pfns(struct xc_sr_context *
+             int send_back_fd;
+             unsigned long p2m_size;
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -138,17 +138,9 @@ int populate_pfns(struct xc_sr_context *
                    const xen_pfn_t *original_pfns, const uint32_t *types)
  {
      xc_interface *xch = ctx->xch;
--    xen_pfn_t *mfns = malloc(count * sizeof(*mfns)),
-+    xen_pfn_t *mfns = ctx->restore.m->pp_mfns,
-         *pfns = malloc(count * sizeof(*pfns));
+-    xen_pfn_t *mfns = malloc(count * sizeof(*mfns));
      unsigned int i, nr_pfns = 0;
      int rc = -1;
  
--    if ( !mfns || !pfns )
-+    if ( !pfns )
+-    if ( !mfns )
+-    {
+-        ERROR("Failed to allocate %zu bytes for populating the physmap",
+-              2 * count * sizeof(*mfns));
+-        goto err;
+-    }
+-
+     for ( i = 0; i < count; ++i )
      {
-         ERROR("Failed to allocate %zu bytes for populating the physmap",
-               2 * count * sizeof(*mfns));
-@@ -191,7 +191,6 @@ int populate_pfns(struct xc_sr_context *
+         if ( (!types || page_type_to_populate(types[i])) &&
+@@ -157,7 +149,7 @@ int populate_pfns(struct xc_sr_context *
+             rc = pfn_set_populated(ctx, original_pfns[i]);
+             if ( rc )
+                 goto err;
+-            ctx->restore.pp_pfns[nr_pfns] = mfns[nr_pfns] = original_pfns[i];
++            ctx->restore.pp_pfns[nr_pfns] = ctx->restore.pp_mfns[nr_pfns] = original_pfns[i];
+             ++nr_pfns;
+         }
+     }
+@@ -165,7 +157,7 @@ int populate_pfns(struct xc_sr_context *
+     if ( nr_pfns )
+     {
+         rc = xc_domain_populate_physmap_exact(
+-            xch, ctx->domid, nr_pfns, 0, 0, mfns);
++            xch, ctx->domid, nr_pfns, 0, 0, ctx->restore.pp_mfns);
+         if ( rc )
+         {
+             PERROR("Failed to populate physmap");
+@@ -174,22 +166,20 @@ int populate_pfns(struct xc_sr_context *
+ 
+         for ( i = 0; i < nr_pfns; ++i )
+         {
+-            if ( mfns[i] == INVALID_MFN )
++            if ( ctx->restore.pp_mfns[i] == INVALID_MFN )
+             {
+                 ERROR("Populate physmap failed for pfn %u", i);
+                 rc = -1;
+                 goto err;
+             }
+ 
+-            ctx->restore.ops.set_gfn(ctx, ctx->restore.pp_pfns[i], mfns[i]);
++            ctx->restore.ops.set_gfn(ctx, ctx->restore.pp_pfns[i], ctx->restore.pp_mfns[i]);
+         }
+     }
+ 
+     rc = 0;
  
   err:
-     free(pfns);
 -    free(mfns);
- 
+-
      return rc;
  }
+ 
+@@ -706,8 +696,10 @@ static int setup(struct xc_sr_context *c
+     ctx->restore.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.mfns));
+     ctx->restore.map_errs = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.map_errs));
+     ctx->restore.pp_pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_pfns));
++    ctx->restore.pp_mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pp_mfns));
+     if ( !ctx->restore.pfns || !ctx->restore.types || !ctx->restore.mfns ||
+-         !ctx->restore.map_errs || !ctx->restore.pp_pfns )
++         !ctx->restore.map_errs || !ctx->restore.pp_pfns ||
++         !ctx->restore.pp_mfns )
+     {
+         ERROR("Unable to allocate memory");
+         rc = -1;
+@@ -744,6 +736,7 @@ static void cleanup(struct xc_sr_context
+ 
+     free(ctx->restore.buffered_records);
+     free(ctx->restore.populated_pfns);
++    free(ctx->restore.pp_mfns);
+     free(ctx->restore.pp_pfns);
+     free(ctx->restore.map_errs);
+     free(ctx->restore.mfns);

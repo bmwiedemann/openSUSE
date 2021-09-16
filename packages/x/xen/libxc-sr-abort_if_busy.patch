@@ -1,0 +1,238 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 7 Jan 2021 20:25:28 +0100
+Subject: libxc sr abort_if_busy
+
+tools: add --abort_if_busy to libxl_domain_suspend
+
+Provide a knob to the host admin to abort the live migration of a
+running domU if the downtime during final transit will be too long
+for the workload within domU.
+
+Adjust error reporting. Add ERROR_MIGRATION_ABORTED to allow callers of
+libxl_domain_suspend to distinguish between errors and the requested
+constraint.
+
+Adjust precopy_policy to simplify reporting of remaining dirty pages.
+The loop in send_memory_live populates ->dirty_count in a different
+place than ->iteration. Let it proceeed one more time to provide the
+desired information before leaving the loop.
+
+This patch adjusts xl(1) and the libxl API.
+External users check LIBXL_HAVE_DOMAIN_SUSPEND_PROPS for the availibility
+of the new .abort_if_busy property.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ docs/man/xl.1.pod.in                  |    8 ++++++++
+ tools/include/libxl.h                 |    1 +
+ tools/libs/light/libxl_dom_save.c     |    7 ++++++-
+ tools/libs/light/libxl_domain.c       |    1 +
+ tools/libs/light/libxl_internal.h     |    2 ++
+ tools/libs/light/libxl_stream_write.c |    9 ++++++++-
+ tools/libs/light/libxl_types.idl      |    1 +
+ tools/xl/xl_cmdtable.c                |    6 +++++-
+ tools/xl/xl_migrate.c                 |   30 +++++++++++++++++++++++-------
+ 9 files changed, 55 insertions(+), 10 deletions(-)
+
+--- a/docs/man/xl.1.pod.in
++++ b/docs/man/xl.1.pod.in
+@@ -508,6 +508,14 @@ low, the guest is suspended and the domU
+ This allows the host admin to control for how long the domU will likely
+ be suspended during transit.
+ 
++=item B<--abort_if_busy>
++
++Abort migration instead of doing final suspend/move/resume if the
++guest produced more than I<min_remaining> dirty pages during th number
++of I<max_iters> iterations.
++This avoids long periods of time where the guest is suspended, which
++may confuse the workload within domU.
++
+ =back
+ 
+ =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
+--- a/tools/include/libxl.h
++++ b/tools/include/libxl.h
+@@ -1718,6 +1718,7 @@ typedef struct {
+ } libxl_domain_suspend_suse_properties;
+ #define LIBXL_SUSPEND_DEBUG 1
+ #define LIBXL_SUSPEND_LIVE 2
++#define LIBXL_SUSPEND_ABORT_IF_BUSY 4
+ 
+ #define LIBXL_HAVE_DOMAIN_SUSPEND_SUSE
+ int libxl_domain_suspend_suse(libxl_ctx *ctx, uint32_t domid, int fd,
+--- a/tools/libs/light/libxl_dom_save.c
++++ b/tools/libs/light/libxl_dom_save.c
+@@ -383,11 +383,16 @@ static int libxl__domain_save_precopy_po
+          stats.iteration, stats.dirty_count, stats.total_written);
+     if (stats.dirty_count >= 0 && stats.dirty_count < dss->min_remaining)
+         goto stop_copy;
+-    if (stats.iteration >= dss->max_iters)
++    if (stats.dirty_count >= 0 && stats.iteration >= dss->max_iters)
+         goto stop_copy;
+     return XGS_POLICY_CONTINUE_PRECOPY;
+ 
+ stop_copy:
++    if (dss->abort_if_busy)
++    {
++        dss->remaining_dirty_pages = stats.dirty_count;
++        return XGS_POLICY_ABORT;
++    }
+     return XGS_POLICY_STOP_AND_COPY;
+ }
+ 
+--- a/tools/libs/light/libxl_domain.c
++++ b/tools/libs/light/libxl_domain.c
+@@ -529,6 +529,7 @@ static int do_libxl_domain_suspend(libxl
+     dss->type = type;
+     dss->max_iters = props->max_iters ?: LIBXL_XGS_POLICY_MAX_ITERATIONS;
+     dss->min_remaining = props->min_remaining ?: LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT;
++    dss->abort_if_busy = props->flags & LIBXL_SUSPEND_ABORT_IF_BUSY;
+     dss->live = props->flags & LIBXL_SUSPEND_LIVE;
+     dss->debug = props->flags & LIBXL_SUSPEND_DEBUG;
+     dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
+--- a/tools/libs/light/libxl_internal.h
++++ b/tools/libs/light/libxl_internal.h
+@@ -3647,9 +3647,11 @@ struct libxl__domain_save_state {
+     libxl_domain_type type;
+     int live;
+     int debug;
++    int abort_if_busy;
+     int checkpointed_stream;
+     uint32_t max_iters;
+     uint32_t min_remaining;
++    long remaining_dirty_pages;
+     const libxl_domain_remus_info *remus;
+     /* private */
+     int rc;
+--- a/tools/libs/light/libxl_stream_write.c
++++ b/tools/libs/light/libxl_stream_write.c
+@@ -344,11 +344,18 @@ void libxl__xc_domain_save_done(libxl__e
+         goto err;
+ 
+     if (retval) {
++        if (dss->remaining_dirty_pages) {
++            LOGD(NOTICE, dss->domid, "saving domain: aborted,"
++                 " %ld remaining dirty pages.", dss->remaining_dirty_pages);
++        } else {
+         LOGEVD(ERROR, errnoval, dss->domid, "saving domain: %s",
+               dss->dsps.guest_responded ?
+               "domain responded to suspend request" :
+               "domain did not respond to suspend request");
+-        if (!dss->dsps.guest_responded)
++        }
++        if (dss->remaining_dirty_pages)
++           rc = ERROR_MIGRATION_ABORTED;
++        else if(!dss->dsps.guest_responded)
+             rc = ERROR_GUEST_TIMEDOUT;
+         else if (dss->rc)
+             rc = dss->rc;
+--- a/tools/libs/light/libxl_types.idl
++++ b/tools/libs/light/libxl_types.idl
+@@ -76,6 +76,7 @@ libxl_error = Enumeration("error", [
+     (-30, "QMP_DEVICE_NOT_ACTIVE"), # a device has failed to be become active
+     (-31, "QMP_DEVICE_NOT_FOUND"), # the requested device has not been found
+     (-32, "QEMU_API"), # QEMU's replies don't contains expected members
++    (-33, "MIGRATION_ABORTED"),
+     ], value_namespace = "")
+ 
+ libxl_domain_type = Enumeration("domain_type", [
+--- a/tools/xl/xl_cmdtable.c
++++ b/tools/xl/xl_cmdtable.c
+@@ -175,7 +175,11 @@ struct cmd_spec cmd_table[] = {
+       "-p                Do not unpause domain after migrating it.\n"
+       "-D                Preserve the domain id\n"
+       "--max_iters N     Number of copy iterations before final stop+move\n"
+-      "--min_remaining N Number of remaining dirty pages before final stop+move"
++      "--min_remaining N Number of remaining dirty pages before final stop+move\n"
++      "--abort_if_busy   Abort migration instead of doing final stop+move,\n"
++      "                  if the number of dirty pages is higher than <min_remaining>\n"
++      "                  after <max_iters> iterations. Otherwise the amount of memory\n"
++      "                  to be transfered would exceed maximum allowed domU downtime."
+     },
+     { "restore",
+       &main_restore, 0, 1,
+--- a/tools/xl/xl_migrate.c
++++ b/tools/xl/xl_migrate.c
+@@ -177,7 +177,7 @@ static void migrate_do_preamble(int send
+ }
+ 
+ static void migrate_domain(uint32_t domid, int preserve_domid,
+-                           const char *rune, int debug,
++                           const char *rune, int debug, int abort_if_busy,
+                            uint32_t max_iters,
+                            uint32_t min_remaining,
+                            const char *override_config_file)
+@@ -213,14 +213,20 @@ static void migrate_domain(uint32_t domi
+ 
+     if (debug)
+         props.flags |= LIBXL_SUSPEND_DEBUG;
++    if (abort_if_busy)
++        props.flags |= LIBXL_SUSPEND_ABORT_IF_BUSY;
+     rc = libxl_domain_suspend_suse(ctx, domid, send_fd, &props, NULL);
+     if (rc) {
+         fprintf(stderr, "migration sender: libxl_domain_suspend failed"
+                 " (rc=%d)\n", rc);
+-        if (rc == ERROR_GUEST_TIMEDOUT)
+-            goto failed_suspend;
+-        else
+-            goto failed_resume;
++        switch (rc) {
++            case ERROR_GUEST_TIMEDOUT:
++                goto failed_suspend;
++            case ERROR_MIGRATION_ABORTED:
++                goto failed_busy;
++            default:
++                goto failed_resume;
++        }
+     }
+ 
+     //fprintf(stderr, "migration sender: Transfer complete.\n");
+@@ -302,6 +308,12 @@ static void migrate_domain(uint32_t domi
+     fprintf(stderr, "Migration failed, failed to suspend at sender.\n");
+     exit(EXIT_FAILURE);
+ 
++ failed_busy:
++    close(send_fd);
++    migration_child_report(recv_fd);
++    fprintf(stderr, "Migration aborted as requested, domain is too busy.\n");
++    exit(EXIT_FAILURE);
++
+  failed_resume:
+     close(send_fd);
+     migration_child_report(recv_fd);
+@@ -545,13 +557,14 @@ int main_migrate(int argc, char **argv)
+     char *rune = NULL;
+     char *host;
+     int opt, daemonize = 1, monitor = 1, debug = 0, pause_after_migration = 0;
+-    int preserve_domid = 0;
++    int preserve_domid = 0, abort_if_busy = 0;
+     uint32_t max_iters = 0;
+     uint32_t min_remaining = 0;
+     static struct option opts[] = {
+         {"debug", 0, 0, 0x100},
+         {"max_iters", 1, 0, 0x101},
+         {"min_remaining", 1, 0, 0x102},
++        {"abort_if_busy", 0, 0, 0x103},
+         {"live", 0, 0, 0x200},
+         COMMON_LONG_OPTS
+     };
+@@ -585,6 +598,9 @@ int main_migrate(int argc, char **argv)
+     case 0x102: /* --min_remaining */
+         min_remaining = atoi(optarg);
+         break;
++    case 0x103: /* --abort_if_busy */
++        abort_if_busy = 1;
++        break;
+     case 0x200: /* --live */
+         /* ignored for compatibility with xm */
+         break;
+@@ -619,7 +635,7 @@ int main_migrate(int argc, char **argv)
+                   pause_after_migration ? " -p" : "");
+     }
+ 
+-    migrate_domain(domid, preserve_domid, rune, debug,
++    migrate_domain(domid, preserve_domid, rune, debug, abort_if_busy,
+                    max_iters, min_remaining, config_filename);
+     return EXIT_SUCCESS;
+ }

@@ -1,8 +1,24 @@
-Track live migration state unconditionally in logfiles to see how long a domU was suspended.
-Depends on libxc.sr.superpage.patch
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 4 Feb 2021 20:33:53 +0100
+Subject: libxc sr track migration time
 
---- xen-4.15.0-testing.orig/tools/include/xentoollog.h
-+++ xen-4.15.0-testing/tools/include/xentoollog.h
+Track live migration state unconditionally in logfiles to see how long a domU was suspended.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/include/xentoollog.h       |    1 
+ tools/libs/ctrl/xc_domain.c      |   12 ++++++-
+ tools/libs/ctrl/xc_private.h     |    9 +++++
+ tools/libs/ctrl/xc_resume.c      |    5 ++-
+ tools/libs/guest/xg_sr_common.c  |   59 +++++++++++++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_common.h  |    3 +
+ tools/libs/guest/xg_sr_restore.c |    3 +
+ tools/libs/guest/xg_sr_save.c    |    6 +++
+ tools/xl/xl.c                    |    2 +
+ 9 files changed, 96 insertions(+), 4 deletions(-)
+
+--- a/tools/include/xentoollog.h
++++ b/tools/include/xentoollog.h
 @@ -133,6 +133,7 @@ const char *xtl_level_to_string(xentooll
  });
  
@@ -11,8 +27,8 @@ Depends on libxc.sr.superpage.patch
  #endif /* XENTOOLLOG_H */
  
  /*
---- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_domain.c
-+++ xen-4.15.0-testing/tools/libs/ctrl/xc_domain.c
+--- a/tools/libs/ctrl/xc_domain.c
++++ b/tools/libs/ctrl/xc_domain.c
 @@ -68,20 +68,28 @@ int xc_domain_cacheflush(xc_interface *x
  int xc_domain_pause(xc_interface *xch,
                      uint32_t domid)
@@ -44,8 +60,8 @@ Depends on libxc.sr.superpage.patch
  }
  
  
---- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_private.h
-+++ xen-4.15.0-testing/tools/libs/ctrl/xc_private.h
+--- a/tools/libs/ctrl/xc_private.h
++++ b/tools/libs/ctrl/xc_private.h
 @@ -43,6 +43,15 @@
  
  #include <xen-tools/libs.h>
@@ -62,8 +78,8 @@ Depends on libxc.sr.superpage.patch
  #if defined(HAVE_VALGRIND_MEMCHECK_H) && !defined(NDEBUG) && !defined(__MINIOS__)
  /* Compile in Valgrind client requests? */
  #include <valgrind/memcheck.h>
---- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_resume.c
-+++ xen-4.15.0-testing/tools/libs/ctrl/xc_resume.c
+--- a/tools/libs/ctrl/xc_resume.c
++++ b/tools/libs/ctrl/xc_resume.c
 @@ -282,7 +282,10 @@ out:
   */
  int xc_domain_resume(xc_interface *xch, uint32_t domid, int fast)
@@ -76,10 +92,10 @@ Depends on libxc.sr.superpage.patch
 +        SUSEINFO("domid %u: %s%s returned %d", domid, __func__, fast ? " fast" : "", ret);
 +    return ret;
  }
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.c
-@@ -204,6 +204,65 @@ bool _xc_sr_bitmap_resize(struct xc_sr_b
-     return true;
+--- a/tools/libs/guest/xg_sr_common.c
++++ b/tools/libs/guest/xg_sr_common.c
+@@ -163,6 +163,65 @@ static void __attribute__((unused)) buil
+     BUILD_BUG_ON(sizeof(struct xc_sr_rec_hvm_params)        != 8);
  }
  
 +/* Write a two-character hex representation of 'byte' to digits[].
@@ -142,11 +158,11 @@ Depends on libxc.sr.superpage.patch
 +}
 +
  /*
-  * Local variables:
-  * mode: C
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -267,6 +267,7 @@ struct xc_sr_context
+  * Expand the tracking structures as needed.
+  * To avoid realloc()ing too excessively, the size increased to the nearest
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -294,6 +294,7 @@ struct xc_sr_context
      xc_stream_type_t stream_type;
  
      xc_dominfo_t dominfo;
@@ -154,18 +170,18 @@ Depends on libxc.sr.superpage.patch
  
      union /* Common save or restore data. */
      {
-@@ -536,6 +537,8 @@ static inline int pfn_set_populated(stru
-     return 0;
- }
+@@ -505,6 +506,8 @@ extern struct xc_sr_save_ops save_ops_x8
+ extern struct xc_sr_restore_ops restore_ops_x86_pv;
+ extern struct xc_sr_restore_ops restore_ops_x86_hvm;
  
 +extern void sr_uuid_to_string(char *dest, const uint8_t *uuid);
 +
  struct xc_sr_record
  {
      uint32_t type;
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -875,6 +875,7 @@ static int restore(struct xc_sr_context
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -884,6 +884,7 @@ static int restore(struct xc_sr_context
      struct xc_sr_rhdr rhdr;
      int rc, saved_rc = 0, saved_errno = 0;
  
@@ -173,7 +189,7 @@ Depends on libxc.sr.superpage.patch
      IPRINTF("Restoring domain");
  
      rc = setup(ctx);
-@@ -950,6 +951,7 @@ static int restore(struct xc_sr_context
+@@ -959,6 +960,7 @@ static int restore(struct xc_sr_context
      PERROR("Restore failed");
  
   done:
@@ -181,7 +197,7 @@ Depends on libxc.sr.superpage.patch
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -1019,6 +1021,7 @@ int xc_domain_restore(xc_interface *xch,
+@@ -1028,6 +1030,7 @@ int xc_domain_restore(xc_interface *xch,
              io_fd, dom, ctx.dominfo.hvm, stream_type);
  
      ctx.domid = dom;
@@ -189,18 +205,18 @@ Depends on libxc.sr.superpage.patch
  
      if ( read_headers(&ctx) )
          return -1;
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
 @@ -354,7 +354,7 @@ static void show_transfer_rate(struct xc
-     MiB_sec /= 1024U*1024U;
+     MiB_sec = (ctx->save.pages_sent * PAGE_SIZE * 1000U) / ms / (1024U*1024U);
  
      errno = 0;
--    ERROR("%s: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", __func__,
+-    IPRINTF("%s: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", __func__,
 +    SUSEINFO("domid %u: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", ctx->domid,
-           ctx->save.overhead_sent, ctx->save.pages_sent, diff.tv_sec, diff.tv_nsec, MiB_sec);
+             ctx->save.overhead_sent, ctx->save.pages_sent,
+             diff.tv_sec, diff.tv_nsec, MiB_sec);
  }
- 
-@@ -861,6 +861,7 @@ static int save(struct xc_sr_context *ct
+@@ -877,12 +877,14 @@ static int save(struct xc_sr_context *ct
      xc_interface *xch = ctx->xch;
      int rc, saved_rc = 0, saved_errno = 0;
  
@@ -208,7 +224,14 @@ Depends on libxc.sr.superpage.patch
      IPRINTF("Saving domain %d, type %s",
              ctx->domid, dhdr_type_to_str(guest_type));
  
-@@ -981,6 +982,7 @@ static int save(struct xc_sr_context *ct
+     rc = setup(ctx);
+     if ( rc )
+         goto err;
++    SUSEINFO("domid %u: p2m_size %lx", ctx->domid, ctx->save.p2m_size);
+ 
+     xc_report_progress_single(xch, "Start of stream");
+ 
+@@ -997,6 +999,7 @@ static int save(struct xc_sr_context *ct
      PERROR("Save failed");
  
   done:
@@ -216,16 +239,7 @@ Depends on libxc.sr.superpage.patch
      cleanup(ctx);
  
      if ( saved_rc )
-@@ -1041,6 +1043,8 @@ out:
-         return XGS_POLICY_ABORT;
-     }
- suspend:
-+    SUSEINFO("domid %u: suspending, %ld remaining dirty pages prior final transit",
-+            suse_flags.ctx->domid, suse_flags.dirty_count);
-     return XGS_POLICY_STOP_AND_COPY;
- }
- 
-@@ -1109,6 +1113,7 @@ int xc_domain_save_suse(xc_interface *xc
+@@ -1059,6 +1062,7 @@ int xc_domain_save(xc_interface *xch, in
              io_fd, dom, flags, ctx.dominfo.hvm);
  
      ctx.domid = dom;
@@ -233,8 +247,8 @@ Depends on libxc.sr.superpage.patch
  
      if ( ctx.dominfo.hvm )
      {
---- xen-4.15.0-testing.orig/tools/xl/xl.c
-+++ xen-4.15.0-testing/tools/xl/xl.c
+--- a/tools/xl/xl.c
++++ b/tools/xl/xl.c
 @@ -406,6 +406,8 @@ int main(int argc, char **argv)
      logger = xtl_createlogger_stdiostream(stderr, minmsglevel, xtl_flags);
      if (!logger) exit(EXIT_FAILURE);

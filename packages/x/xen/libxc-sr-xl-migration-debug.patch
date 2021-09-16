@@ -1,0 +1,46 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 29 Oct 2020 17:00:19 +0100
+Subject: libxc sr xl migration debug
+
+xl: fix description of migrate --debug
+
+xl migrate --debug used to track every pfn in every batch of pages.
+But these times are gone. The code in xc_domain_save is the consumer
+of this knob, now may enable verification mode.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+
+v03:
+- adjust to describe what --debug would do when the code which
+  consumes this knob is fixed.
+v02:
+- the option has no effect anymore
+---
+ docs/man/xl.1.pod.in   |    4 +++-
+ tools/xl/xl_cmdtable.c |    2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+--- a/docs/man/xl.1.pod.in
++++ b/docs/man/xl.1.pod.in
+@@ -481,7 +481,9 @@ domain.
+ 
+ =item B<--debug>
+ 
+-Display huge (!) amount of debug information during the migration process.
++This enables verification mode, which will transfer the entire domU memory
++once more to the receiving host to make sure the content is identical on
++both sides.
+ 
+ =item B<-p>
+ 
+--- a/tools/xl/xl_cmdtable.c
++++ b/tools/xl/xl_cmdtable.c
+@@ -171,7 +171,7 @@ struct cmd_spec cmd_table[] = {
+       "                migrate-receive [-d -e]\n"
+       "-e              Do not wait in the background (on <host>) for the death\n"
+       "                of the domain.\n"
+-      "--debug         Print huge (!) amount of debug during the migration process.\n"
++      "--debug         Enable verification mode.\n"
+       "-p              Do not unpause domain after migrating it.\n"
+       "-D              Preserve the domain id"
+     },

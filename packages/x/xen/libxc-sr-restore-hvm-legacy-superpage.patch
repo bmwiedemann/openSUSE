@@ -1,19 +1,35 @@
-tools/libxc: use superpages during restore of HVM guest
+From: Olaf Hering <olaf@aepfle.de>
+Date: Mon, 7 Aug 2017 12:58:02 +0000
+Subject: libxc sr restore hvm legacy superpage
+
+tools: use superpages during restore of HVM guest
+
 bsc#1035231 - migration of HVM domU does not use superpages on destination dom0
 bsc#1055695 - XEN: 11SP4 and 12SP3 HVM guests can not be restored
 
 During creating of a HVM domU meminit_hvm() tries to map superpages.
 After save/restore or migration this mapping is lost, everything is
-allocated in single pages. This causes a performance degradition after
+allocated in single pages. This causes a performance degradation after
 migration.
 
-Add neccessary code to preallocate a superpage for the chunk of pfns
-that is received. In case a pfn was not populated on the sending side it
-must be freed on the receiving side to avoid over-allocation.
+Add neccessary code to preallocate a superpage for an incoming chunk of
+pfns. In case a pfn was not populated on the sending side, it must be
+freed on the receiving side to avoid over-allocation.
 
 The existing code for x86_pv is moved unmodified into its own file.
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_dom_x86.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_dom_x86.c
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ tools/libs/guest/xg_dom_x86.c            |    5 
+ tools/libs/guest/xg_private.h            |    5 
+ tools/libs/guest/xg_sr_common.h          |   28 +-
+ tools/libs/guest/xg_sr_restore.c         |   60 -----
+ tools/libs/guest/xg_sr_restore_x86_hvm.c |  370 ++++++++++++++++++++++++++++++-
+ tools/libs/guest/xg_sr_restore_x86_pv.c  |   61 +++++
+ 6 files changed, 456 insertions(+), 73 deletions(-)
+
+--- a/tools/libs/guest/xg_dom_x86.c
++++ b/tools/libs/guest/xg_dom_x86.c
 @@ -44,11 +44,6 @@
  
  #define SUPERPAGE_BATCH_SIZE 512
@@ -26,86 +42,21 @@ The existing code for x86_pv is moved unmodified into its own file.
  #define X86_CR0_PE 0x01
  #define X86_CR0_ET 0x10
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_private.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_private.h
-@@ -110,6 +110,11 @@ unsigned long csum_page (void * page);
- 
- typedef uint64_t x86_pgentry_t;
+--- a/tools/libs/guest/xg_private.h
++++ b/tools/libs/guest/xg_private.h
+@@ -154,4 +154,9 @@ int pin_table(xc_interface *xch, unsigne
+ #define M2P_SIZE(_m)    ROUNDUP(((_m) * sizeof(xen_pfn_t)), M2P_SHIFT)
+ #define M2P_CHUNKS(_m)  (M2P_SIZE((_m)) >> M2P_SHIFT)
  
 +#define SUPERPAGE_2MB_SHIFT   9
 +#define SUPERPAGE_2MB_NR_PFNS (1UL << SUPERPAGE_2MB_SHIFT)
 +#define SUPERPAGE_1GB_SHIFT   18
 +#define SUPERPAGE_1GB_NR_PFNS (1UL << SUPERPAGE_1GB_SHIFT)
 +
- #define PAGE_SHIFT_ARM          12
- #define PAGE_SIZE_ARM           (1UL << PAGE_SHIFT_ARM)
- #define PAGE_MASK_ARM           (~(PAGE_SIZE_ARM-1))
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.c
-@@ -164,6 +164,47 @@ static void __attribute__((unused)) buil
- }
- 
- /*
-+ * Expand the tracking structures as needed.
-+ * To avoid realloc()ing too excessively, the size increased to the nearest power
-+ * of two large enough to contain the required number of bits.
-+ */
-+bool _xc_sr_bitmap_resize(struct xc_sr_bitmap *bm, unsigned long bits)
-+{
-+    if (bits > bm->bits)
-+    {
-+        size_t new_max;
-+        size_t old_sz, new_sz;
-+        void *p;
-+
-+        /* Round up to the nearest power of two larger than bit, less 1. */
-+        new_max = bits;
-+        new_max |= new_max >> 1;
-+        new_max |= new_max >> 2;
-+        new_max |= new_max >> 4;
-+        new_max |= new_max >> 8;
-+        new_max |= new_max >> 16;
-+#ifdef __x86_64__
-+        new_max |= new_max >> 32;
-+#endif
-+
-+        old_sz = bitmap_size(bm->bits + 1);
-+        new_sz = bitmap_size(new_max + 1);
-+        p = realloc(bm->p, new_sz);
-+        if (!p)
-+            return false;
-+
-+        if (bm->p)
-+            memset(p + old_sz, 0, new_sz - old_sz);
-+        else
-+            memset(p, 0, new_sz);
-+
-+        bm->p = p;
-+        bm->bits = new_max;
-+    }
-+    return true;
-+}
-+
-+/*
-  * Local variables:
-  * mode: C
-  * c-file-style: "BSD"
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -18,6 +18,12 @@ const char *rec_type_to_str(uint32_t typ
- struct xc_sr_context;
- struct xc_sr_record;
- 
-+struct xc_sr_bitmap
-+{
-+    void *p;
-+    unsigned long bits;
-+};
-+
- /**
-  * Save operations.  To be implemented for each type of guest, for use by the
-  * common save algorithm.
-@@ -141,6 +147,16 @@ struct xc_sr_restore_ops
+ #endif /* XG_PRIVATE_H */
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -208,6 +208,16 @@ struct xc_sr_restore_ops
      int (*setup)(struct xc_sr_context *ctx);
  
      /**
@@ -122,7 +73,7 @@ The existing code for x86_pv is moved unmodified into its own file.
       * Process an individual record from the stream.  The caller shall take
       * care of processing common records (e.g. END, PAGE_DATA).
       *
-@@ -287,6 +303,8 @@ struct xc_sr_context
+@@ -338,6 +348,8 @@ struct xc_sr_context
  
              int send_back_fd;
              unsigned long p2m_size;
@@ -131,111 +82,22 @@ The existing code for x86_pv is moved unmodified into its own file.
              xc_hypercall_buffer_t dirty_bitmap_hbuf;
  
              /* From Image Header. */
-@@ -324,8 +342,7 @@ struct xc_sr_context
-             uint32_t     xenstore_domid,  console_domid;
- 
-             /* Bitmap of currently populated PFNs during restore. */
--            unsigned long *populated_pfns;
--            xen_pfn_t max_populated_pfn;
-+            struct xc_sr_bitmap populated_pfns;
- 
-             /* Sender has invoked verify mode on the stream. */
-             bool verify;
-@@ -425,6 +442,14 @@ struct xc_sr_context
+@@ -471,6 +483,14 @@ struct xc_sr_context
                      {
                          /* HVM context blob. */
                          struct xc_sr_blob context;
 +
 +                        /* Bitmap of currently allocated PFNs during restore. */
-+                        struct xc_sr_bitmap attempted_1g;
-+                        struct xc_sr_bitmap attempted_2m;
-+                        struct xc_sr_bitmap allocated_pfns;
++                        struct sr_bitmap attempted_1g;
++                        struct sr_bitmap attempted_2m;
++                        struct sr_bitmap allocated_pfns;
 +                        xen_pfn_t prev_populated_pfn;
 +                        xen_pfn_t iteration_tracker_pfn;
 +                        unsigned long iteration;
                      } restore;
                  };
              } hvm;
-@@ -439,6 +464,78 @@ extern struct xc_sr_save_ops save_ops_x8
- extern struct xc_sr_restore_ops restore_ops_x86_pv;
- extern struct xc_sr_restore_ops restore_ops_x86_hvm;
- 
-+extern bool _xc_sr_bitmap_resize(struct xc_sr_bitmap *bm, unsigned long bits);
-+
-+static inline bool xc_sr_bitmap_resize(struct xc_sr_bitmap *bm, unsigned long bits)
-+{
-+    if (bits > bm->bits)
-+        return _xc_sr_bitmap_resize(bm, bits);
-+    return true;
-+}
-+
-+static inline void xc_sr_bitmap_free(struct xc_sr_bitmap *bm)
-+{
-+    free(bm->p);
-+    bm->p = NULL;
-+}
-+
-+static inline bool xc_sr_set_bit(unsigned long bit, struct xc_sr_bitmap *bm)
-+{
-+    if (!xc_sr_bitmap_resize(bm, bit))
-+        return false;
-+
-+    set_bit(bit, bm->p);
-+    return true;
-+}
-+
-+static inline bool xc_sr_set_long_bit(unsigned long base_bit, struct xc_sr_bitmap *bm)
-+{
-+    if (!xc_sr_bitmap_resize(bm, base_bit + BITS_PER_LONG))
-+        return false;
-+
-+    set_bit_long(base_bit, bm->p);
-+    return true;
-+}
-+
-+static inline bool xc_sr_test_bit(unsigned long bit, struct xc_sr_bitmap *bm)
-+{
-+    if (bit > bm->bits)
-+        return false;
-+    return !!test_bit(bit, bm->p);
-+}
-+
-+static inline bool xc_sr_test_and_clear_bit(unsigned long bit, struct xc_sr_bitmap *bm)
-+{
-+    if (bit > bm->bits)
-+        return false;
-+    return !!test_and_clear_bit(bit, bm->p);
-+}
-+
-+static inline bool xc_sr_test_and_set_bit(unsigned long bit, struct xc_sr_bitmap *bm)
-+{
-+    if (bit > bm->bits)
-+        return false;
-+    return !!test_and_set_bit(bit, bm->p);
-+}
-+
-+static inline bool pfn_is_populated(struct xc_sr_context *ctx, xen_pfn_t pfn)
-+{
-+    return xc_sr_test_bit(pfn, &ctx->restore.populated_pfns);
-+}
-+
-+static inline int pfn_set_populated(struct xc_sr_context *ctx, xen_pfn_t pfn)
-+{
-+    xc_interface *xch = ctx->xch;
-+
-+    if ( !xc_sr_set_bit(pfn, &ctx->restore.populated_pfns) )
-+    {
-+        ERROR("Failed to realloc populated_pfns bitmap");
-+        errno = ENOMEM;
-+        return -1;
-+    }
-+    return 0;
-+}
-+
- struct xc_sr_record
- {
-     uint32_t type;
-@@ -489,14 +586,6 @@ int read_record_header(struct xc_sr_cont
+@@ -535,14 +555,6 @@ int read_record_header(struct xc_sr_cont
  int read_record_data(struct xc_sr_context *ctx, int fd, struct xc_sr_rhdr *rhdr,
                       struct xc_sr_record *rec);
  
@@ -250,70 +112,12 @@ The existing code for x86_pv is moved unmodified into its own file.
  /* Handle a STATIC_DATA_END record. */
  int handle_static_data_end(struct xc_sr_context *ctx);
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -71,121 +71,6 @@ static int read_headers(struct xc_sr_con
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -71,60 +71,6 @@ static int read_headers(struct xc_sr_con
      return 0;
  }
  
--/*
-- * Is a pfn populated?
-- */
--static bool pfn_is_populated(const struct xc_sr_context *ctx, xen_pfn_t pfn)
--{
--    if ( pfn > ctx->restore.max_populated_pfn )
--        return false;
--    return test_bit(pfn, ctx->restore.populated_pfns);
--}
--
--/*
-- * Set a pfn as populated, expanding the tracking structures if needed. To
-- * avoid realloc()ing too excessively, the size increased to the nearest power
-- * of two large enough to contain the required pfn.
-- */
--static int pfn_set_populated(struct xc_sr_context *ctx, xen_pfn_t pfn)
--{
--    xc_interface *xch = ctx->xch;
--
--    if ( pfn > ctx->restore.max_populated_pfn )
--    {
--        xen_pfn_t new_max;
--        size_t old_sz, new_sz;
--        unsigned long *p;
--
--        /* Round up to the nearest power of two larger than pfn, less 1. */
--        new_max = pfn;
--        new_max |= new_max >> 1;
--        new_max |= new_max >> 2;
--        new_max |= new_max >> 4;
--        new_max |= new_max >> 8;
--        new_max |= new_max >> 16;
--#ifdef __x86_64__
--        new_max |= new_max >> 32;
--#endif
--
--        old_sz = bitmap_size(ctx->restore.max_populated_pfn + 1);
--        new_sz = bitmap_size(new_max + 1);
--        p = realloc(ctx->restore.populated_pfns, new_sz);
--        if ( !p )
--        {
--            ERROR("Failed to realloc populated bitmap");
--            errno = ENOMEM;
--            return -1;
--        }
--
--        memset((uint8_t *)p + old_sz, 0x00, new_sz - old_sz);
--
--        ctx->restore.populated_pfns    = p;
--        ctx->restore.max_populated_pfn = new_max;
--    }
--
--    assert(!test_bit(pfn, ctx->restore.populated_pfns));
--    set_bit(pfn, ctx->restore.populated_pfns);
--
--    return 0;
--}
--
 -/*
 - * Given a set of pfns, obtain memory from Xen to fill the physmap for the
 - * unpopulated subset.  If types is NULL, no page type checking is performed
@@ -323,21 +127,18 @@ The existing code for x86_pv is moved unmodified into its own file.
 -                  const xen_pfn_t *original_pfns, const uint32_t *types)
 -{
 -    xc_interface *xch = ctx->xch;
--    xen_pfn_t *mfns = ctx->restore.m->pp_mfns,
--        *pfns = ctx->restore.m->pp_pfns;
 -    unsigned int i, nr_pfns = 0;
 -    int rc = -1;
 -
 -    for ( i = 0; i < count; ++i )
 -    {
--        if ( (!types ||
--              (types && page_type_has_stream_data(types[i]) == true)) &&
+-        if ( (!types || page_type_to_populate(types[i])) &&
 -             !pfn_is_populated(ctx, original_pfns[i]) )
 -        {
 -            rc = pfn_set_populated(ctx, original_pfns[i]);
 -            if ( rc )
 -                goto err;
--            pfns[nr_pfns] = mfns[nr_pfns] = original_pfns[i];
+-            ctx->restore.pp_pfns[nr_pfns] = ctx->restore.pp_mfns[nr_pfns] = original_pfns[i];
 -            ++nr_pfns;
 -        }
 -    }
@@ -345,7 +146,7 @@ The existing code for x86_pv is moved unmodified into its own file.
 -    if ( nr_pfns )
 -    {
 -        rc = xc_domain_populate_physmap_exact(
--            xch, ctx->domid, nr_pfns, 0, 0, mfns);
+-            xch, ctx->domid, nr_pfns, 0, 0, ctx->restore.pp_mfns);
 -        if ( rc )
 -        {
 -            PERROR("Failed to populate physmap");
@@ -354,14 +155,14 @@ The existing code for x86_pv is moved unmodified into its own file.
 -
 -        for ( i = 0; i < nr_pfns; ++i )
 -        {
--            if ( mfns[i] == INVALID_MFN )
+-            if ( ctx->restore.pp_mfns[i] == INVALID_MFN )
 -            {
 -                ERROR("Populate physmap failed for pfn %u", i);
 -                rc = -1;
 -                goto err;
 -            }
 -
--            ctx->restore.ops.set_gfn(ctx, pfns[i], mfns[i]);
+-            ctx->restore.ops.set_gfn(ctx, ctx->restore.pp_pfns[i], ctx->restore.pp_mfns[i]);
 -        }
 -    }
 -
@@ -374,38 +175,17 @@ The existing code for x86_pv is moved unmodified into its own file.
  static int handle_static_data_end_v2(struct xc_sr_context *ctx)
  {
      int rc = 0;
-@@ -328,7 +213,7 @@ static int map_guest_pages(struct xc_sr_
+@@ -259,7 +205,8 @@ static int map_guest_pages(struct xc_sr_
      uint32_t i, p;
      int rc;
  
--    rc = populate_pfns(ctx, pages->count, m->pfns, m->types);
-+    rc = ctx->restore.ops.populate_pfns(ctx, pages->count, m->pfns, m->types);
+-    rc = populate_pfns(ctx, pages->count, ctx->restore.pfns, ctx->restore.types);
++    rc = ctx->restore.ops.populate_pfns(ctx, pages->count, ctx->restore.pfns,
++                                        ctx->restore.types);
      if ( rc )
      {
          ERROR("Failed to populate pfns for batch of %u pages", pages->count);
-@@ -929,10 +814,8 @@ static int setup(struct xc_sr_context *c
-     if ( rc )
-         goto err;
- 
--    ctx->restore.max_populated_pfn = (32 * 1024 / 4) - 1;
--    ctx->restore.populated_pfns = bitmap_alloc(
--        ctx->restore.max_populated_pfn + 1);
--    if ( !ctx->restore.populated_pfns )
-+    rc = !xc_sr_bitmap_resize(&ctx->restore.populated_pfns, 32 * 1024 / 4);
-+    if ( rc )
-     {
-         ERROR("Unable to allocate memory for populated_pfns bitmap");
-         rc = -1;
-@@ -977,7 +860,7 @@ static void cleanup(struct xc_sr_context
- 
-     free(ctx->restore.m);
-     free(ctx->restore.buffered_records);
--    free(ctx->restore.populated_pfns);
-+    xc_sr_bitmap_free(&ctx->restore.populated_pfns);
- 
-     if ( ctx->restore.ops.cleanup(ctx) )
-         PERROR("Failed to clean up");
-@@ -1146,7 +1029,12 @@ int xc_domain_restore(xc_interface *xch,
+@@ -1091,6 +1038,9 @@ int xc_domain_restore(xc_interface *xch,
          return -1;
      }
  
@@ -413,97 +193,105 @@ The existing code for x86_pv is moved unmodified into its own file.
 +    ctx.restore.max_pages = ctx.dominfo.max_memkb >> (PAGE_SHIFT-10);
 +    ctx.restore.tot_pages = ctx.dominfo.nr_pages;
      ctx.restore.p2m_size = nr_pfns;
-+    DPRINTF("dom %u p2m_size %lx max_pages %lx",
-+            ctx.domid, ctx.restore.p2m_size, ctx.restore.max_pages);
      ctx.restore.ops = ctx.dominfo.hvm
          ? restore_ops_x86_hvm : restore_ops_x86_pv;
+--- a/tools/libs/guest/xg_sr_restore_x86_hvm.c
++++ b/tools/libs/guest/xg_sr_restore_x86_hvm.c
+@@ -130,12 +130,32 @@ static int x86_hvm_localise_page(struct
+     return 0;
+ }
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore_x86_hvm.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore_x86_hvm.c
-@@ -136,6 +136,8 @@ static int x86_hvm_localise_page(struct
++static bool x86_hvm_expand_sp_bitmaps(struct xc_sr_context *ctx, unsigned long max_pfn)
++{
++    struct sr_bitmap *bm;
++
++    bm = &ctx->x86.hvm.restore.attempted_1g;
++    if ( !sr_bitmap_expand(bm, max_pfn >> SUPERPAGE_1GB_SHIFT) )
++        return false;
++
++    bm = &ctx->x86.hvm.restore.attempted_2m;
++    if ( !sr_bitmap_expand(bm, max_pfn >> SUPERPAGE_2MB_SHIFT) )
++        return false;
++
++    bm = &ctx->x86.hvm.restore.allocated_pfns;
++    if ( !sr_bitmap_expand(bm, max_pfn) )
++        return false;
++
++    return true;
++}
++
+ /*
+  * restore_ops function. Confirms the stream matches the domain.
+  */
  static int x86_hvm_setup(struct xc_sr_context *ctx)
  {
      xc_interface *xch = ctx->xch;
-+    struct xc_sr_bitmap *bm;
-+    unsigned long bits;
++    struct sr_bitmap *bm;
+     unsigned long max_pfn;
  
      if ( ctx->restore.guest_type != DHDR_TYPE_X86_HVM )
-     {
-@@ -161,7 +163,30 @@ static int x86_hvm_setup(struct xc_sr_co
-     }
- #endif
+@@ -164,12 +184,32 @@ static int x86_hvm_setup(struct xc_sr_co
  
-+    bm = &ctx->x86.hvm.restore.attempted_1g;
-+    bits = (ctx->restore.p2m_size >> SUPERPAGE_1GB_SHIFT) + 1;
-+    if ( xc_sr_bitmap_resize(bm, bits) == false )
+     max_pfn = max(ctx->restore.p2m_size, ctx->dominfo.max_memkb >> (PAGE_SHIFT-10));
+     if ( !sr_bitmap_expand(&ctx->restore.populated_pfns, max_pfn) )
+-    {
+-        PERROR("Unable to allocate memory for populated_pfns bitmap");
+-        return -1;
+-    }
 +        goto out;
++
++    if ( !x86_hvm_expand_sp_bitmaps(ctx, max_pfn) )
++        goto out;
++
++    /* FIXME: distinguish between PVH and HVM */
++    /* No superpage in 1st 2MB due to VGA hole */
++#define LAPIC_BASE_ADDRESS  0xfee00000u
++#define ACPI_INFO_PHYSICAL_ADDRESS 0xfc000000u
++#define LAPIC_BASE_PFN (LAPIC_BASE_ADDRESS >> XC_PAGE_SHIFT)
++#define ACPI_INFO_PFN  (ACPI_INFO_PHYSICAL_ADDRESS >> XC_PAGE_SHIFT)
++    bm = &ctx->x86.hvm.restore.attempted_1g;
++    sr_set_bit(0, bm);
++    sr_set_bit(LAPIC_BASE_PFN >> SUPERPAGE_1GB_SHIFT, bm);
++    sr_set_bit(ACPI_INFO_PFN >> SUPERPAGE_1GB_SHIFT, bm);
 +
 +    bm = &ctx->x86.hvm.restore.attempted_2m;
-+    bits = (ctx->restore.p2m_size >> SUPERPAGE_2MB_SHIFT) + 1;
-+    if ( xc_sr_bitmap_resize(bm, bits) == false )
-+        goto out;
-+
-+    bm = &ctx->x86.hvm.restore.allocated_pfns;
-+    bits = ctx->restore.p2m_size + 1;
-+    if ( xc_sr_bitmap_resize(bm, bits) == false )
-+        goto out;
-+
-+    /* No superpage in 1st 2MB due to VGA hole */
-+    xc_sr_set_bit(0, &ctx->x86.hvm.restore.attempted_1g);
-+    xc_sr_set_bit(0, &ctx->x86.hvm.restore.attempted_2m);
-+
++    sr_set_bit(0, bm);
++    sr_set_bit(LAPIC_BASE_PFN >> SUPERPAGE_2MB_SHIFT, bm);
++    sr_set_bit(ACPI_INFO_PFN >> SUPERPAGE_2MB_SHIFT, bm);
+ 
      return 0;
 +
 +out:
-+    ERROR("Unable to allocate memory for pfn bitmaps");
++    PERROR("Unable to allocate memory for pfn bitmaps");
 +    return -1;
  }
  
  /*
-@@ -242,6 +267,9 @@ static int x86_hvm_stream_complete(struc
+@@ -250,6 +290,9 @@ static int x86_hvm_stream_complete(struc
  static int x86_hvm_cleanup(struct xc_sr_context *ctx)
  {
+     sr_bitmap_free(&ctx->restore.populated_pfns);
++    sr_bitmap_free(&ctx->x86.hvm.restore.attempted_1g);
++    sr_bitmap_free(&ctx->x86.hvm.restore.attempted_2m);
++    sr_bitmap_free(&ctx->x86.hvm.restore.allocated_pfns);
      free(ctx->x86.hvm.restore.context.ptr);
-+    xc_sr_bitmap_free(&ctx->x86.hvm.restore.attempted_1g);
-+    xc_sr_bitmap_free(&ctx->x86.hvm.restore.attempted_2m);
-+    xc_sr_bitmap_free(&ctx->x86.hvm.restore.allocated_pfns);
  
      free(ctx->x86.restore.cpuid.ptr);
-     free(ctx->x86.restore.msr.ptr);
-@@ -249,6 +277,380 @@ static int x86_hvm_cleanup(struct xc_sr_
+@@ -258,6 +301,336 @@ static int x86_hvm_cleanup(struct xc_sr_
      return 0;
  }
  
 +/*
-+ * Set a pfn as allocated, expanding the tracking structures if needed.
++ * Set a range of pfns as allocated
 + */
-+static int pfn_set_allocated(struct xc_sr_context *ctx, xen_pfn_t pfn)
++static void pfn_set_long_allocated(struct xc_sr_context *ctx, xen_pfn_t base_pfn)
 +{
-+    xc_interface *xch = ctx->xch;
-+
-+    if ( !xc_sr_set_bit(pfn, &ctx->x86.hvm.restore.allocated_pfns) )
-+    {
-+        ERROR("Failed to realloc allocated_pfns bitmap");
-+        errno = ENOMEM;
-+        return -1;
-+    }
-+    return 0;
++    sr_set_long_bit(base_pfn, &ctx->x86.hvm.restore.allocated_pfns);
 +}
 +
-+/*
-+ * Set a range of pfns as allocated, expanding the tracking structures if needed.
-+ */
-+static int pfn_set_long_allocated(struct xc_sr_context *ctx, xen_pfn_t base_pfn)
++static void pfn_set_allocated(struct xc_sr_context *ctx, xen_pfn_t pfn)
 +{
-+    xc_interface *xch = ctx->xch;
-+
-+    if ( !xc_sr_set_long_bit(base_pfn, &ctx->x86.hvm.restore.allocated_pfns) )
-+    {
-+        ERROR("Failed to realloc allocated_pfns bitmap");
-+        errno = ENOMEM;
-+        return -1;
-+    }
-+    return 0;
++    sr_set_bit(pfn, &ctx->x86.hvm.restore.allocated_pfns);
 +}
 +
 +struct x86_hvm_sp {
@@ -520,15 +308,12 @@ The existing code for x86_pv is moved unmodified into its own file.
 +static bool x86_hvm_alloc_1g(struct xc_sr_context *ctx, struct x86_hvm_sp *sp)
 +{
 +    xc_interface *xch = ctx->xch;
-+    struct xc_sr_bitmap *bm;
 +    unsigned int order;
 +    int i, done;
 +    xen_pfn_t extent;
 +
-+    bm = &ctx->x86.hvm.restore.attempted_1g;
-+
 +    /* Only one attempt to avoid overlapping allocation */
-+    if ( xc_sr_test_and_set_bit(sp->index, bm) )
++    if ( sr_test_and_set_bit(sp->index, &ctx->x86.hvm.restore.attempted_1g) )
 +        return false;
 +
 +    order = SUPERPAGE_1GB_SHIFT;
@@ -550,9 +335,8 @@ The existing code for x86_pv is moved unmodified into its own file.
 +    DPRINTF("1G %" PRI_xen_pfn "\n", sp->base_pfn);
 +
 +    /* Mark all 2MB pages as done to avoid overlapping allocation */
-+    bm = &ctx->x86.hvm.restore.attempted_2m;
 +    for ( i = 0; i < (SUPERPAGE_1GB_NR_PFNS/SUPERPAGE_2MB_NR_PFNS); i++ )
-+        xc_sr_set_bit((sp->base_pfn >> SUPERPAGE_2MB_SHIFT) + i, bm);
++        sr_set_bit((sp->base_pfn >> SUPERPAGE_2MB_SHIFT) + i, &ctx->x86.hvm.restore.attempted_2m);
 +
 +    return true;
 +}
@@ -561,15 +345,12 @@ The existing code for x86_pv is moved unmodified into its own file.
 +static bool x86_hvm_alloc_2m(struct xc_sr_context *ctx, struct x86_hvm_sp *sp)
 +{
 +    xc_interface *xch = ctx->xch;
-+    struct xc_sr_bitmap *bm;
 +    unsigned int order;
 +    int done;
 +    xen_pfn_t extent;
 +
-+    bm = &ctx->x86.hvm.restore.attempted_2m;
-+
 +    /* Only one attempt to avoid overlapping allocation */
-+    if ( xc_sr_test_and_set_bit(sp->index, bm) )
++    if ( sr_test_and_set_bit(sp->index, &ctx->x86.hvm.restore.attempted_2m) )
 +        return false;
 +
 +    order = SUPERPAGE_2MB_SHIFT;
@@ -628,29 +409,17 @@ The existing code for x86_pv is moved unmodified into its own file.
 + */
 +static int x86_hvm_allocate_pfn(struct xc_sr_context *ctx, xen_pfn_t pfn)
 +{
-+    xc_interface *xch = ctx->xch;
 +    bool success;
-+    int rc = -1;
 +    unsigned long idx_1g, idx_2m;
 +    struct x86_hvm_sp sp = {
 +        .pfn = pfn
 +    };
 +
-+    if ( xc_sr_test_bit(pfn, &ctx->x86.hvm.restore.allocated_pfns) )
++    if ( sr_test_bit(pfn, &ctx->x86.hvm.restore.allocated_pfns) )
 +        return 0;
 +
 +    idx_1g = pfn >> SUPERPAGE_1GB_SHIFT;
 +    idx_2m = pfn >> SUPERPAGE_2MB_SHIFT;
-+    if ( !xc_sr_bitmap_resize(&ctx->x86.hvm.restore.attempted_1g, idx_1g) )
-+    {
-+        PERROR("Failed to realloc attempted_1g");
-+        return -1;
-+    }
-+    if ( !xc_sr_bitmap_resize(&ctx->x86.hvm.restore.attempted_2m, idx_2m) )
-+    {
-+        PERROR("Failed to realloc attempted_2m");
-+        return -1;
-+    }
 +
 +    sp.index = idx_1g;
 +    success = x86_hvm_alloc_1g(ctx, &sp);
@@ -672,17 +441,15 @@ The existing code for x86_pv is moved unmodified into its own file.
 +        if ( sp.count >= BITS_PER_LONG ) {
 +            sp.count -= BITS_PER_LONG;
 +            ctx->restore.tot_pages += BITS_PER_LONG;
-+            rc = pfn_set_long_allocated(ctx, sp.base_pfn + sp.count);
++            pfn_set_long_allocated(ctx, sp.base_pfn + sp.count);
 +        } else {
 +            sp.count--;
 +            ctx->restore.tot_pages++;
-+            rc = pfn_set_allocated(ctx, sp.base_pfn + sp.count);
++            pfn_set_allocated(ctx, sp.base_pfn + sp.count);
 +        }
-+        if ( rc )
-+            break;
 +    } while ( sp.count );
 +
-+    return rc;
++    return 0;
 +}
 +
 +/*
@@ -695,35 +462,27 @@ The existing code for x86_pv is moved unmodified into its own file.
 +                               xen_pfn_t gap_start, xen_pfn_t gap_end)
 +{
 +    xc_interface *xch = ctx->xch;
-+    struct xc_sr_bitmap *bm;
 +    xen_pfn_t _pfn, pfn;
 +    uint32_t domid, freed = 0;
 +    int rc;
 +
-+    bm = &ctx->x86.hvm.restore.allocated_pfns;
-+    if ( !xc_sr_bitmap_resize(bm, gap_end) )
-+    {
-+        PERROR("Failed to realloc allocated_pfns %" PRI_xen_pfn, gap_end);
-+        return -1;
-+    }
-+
 +    pfn = gap_start >> SUPERPAGE_1GB_SHIFT;
 +    do
 +    {
-+        xc_sr_set_bit(pfn, &ctx->x86.hvm.restore.attempted_1g);
++        sr_set_bit(pfn, &ctx->x86.hvm.restore.attempted_1g);
 +    } while (++pfn <= gap_end >> SUPERPAGE_1GB_SHIFT);
 +
 +    pfn = gap_start >> SUPERPAGE_2MB_SHIFT;
 +    do
 +    {
-+        xc_sr_set_bit(pfn, &ctx->x86.hvm.restore.attempted_2m);
++        sr_set_bit(pfn, &ctx->x86.hvm.restore.attempted_2m);
 +    } while (++pfn <= gap_end >> SUPERPAGE_2MB_SHIFT);
 +
 +    pfn = gap_start;
 +
 +    while ( pfn <= gap_end )
 +    {
-+        if ( xc_sr_test_and_clear_bit(pfn, bm) )
++        if ( sr_test_and_clear_bit(pfn, &ctx->x86.hvm.restore.allocated_pfns) )
 +        {
 +            domid = ctx->domid;
 +            _pfn = pfn;
@@ -746,7 +505,7 @@ The existing code for x86_pv is moved unmodified into its own file.
 +
 +static int x86_hvm_unpopulate_page(struct xc_sr_context *ctx, xen_pfn_t pfn)
 +{
-+    xc_sr_test_and_clear_bit(pfn, &ctx->restore.populated_pfns);
++    sr_clear_bit(pfn, &ctx->restore.populated_pfns);
 +    return x86_hvm_punch_hole(ctx, pfn, pfn);
 +}
 +
@@ -780,9 +539,7 @@ The existing code for x86_pv is moved unmodified into its own file.
 +    rc = x86_hvm_allocate_pfn(ctx, pfn);
 +    if ( rc )
 +        goto err;
-+    rc = pfn_set_populated(ctx, pfn);
-+    if ( rc )
-+        goto err;
++    pfn_set_populated(ctx, pfn);
 +    ctx->x86.hvm.restore.prev_populated_pfn = pfn;
 +
 +    rc = 0;
@@ -802,7 +559,7 @@ The existing code for x86_pv is moved unmodified into its own file.
 +{
 +    xc_interface *xch = ctx->xch;
 +    xen_pfn_t pfn, min_pfn, max_pfn;
-+    bool has_data, populated;
++    bool to_populate, populated;
 +    unsigned i = count;
 +    int rc = 0;
 +
@@ -810,6 +567,12 @@ The existing code for x86_pv is moved unmodified into its own file.
 +    max_pfn = count ? original_pfns[count - 1] : 0;
 +    DPRINTF("batch of %u pfns between %" PRI_xen_pfn " %" PRI_xen_pfn "\n",
 +            count, min_pfn, max_pfn);
++
++    if ( !x86_hvm_expand_sp_bitmaps(ctx, max_pfn) )
++    {
++        ERROR("Unable to allocate memory for pfn bitmaps");
++        return -1;
++    }
 +
 +    /*
 +     * There is no indicator for a new iteration.
@@ -824,7 +587,7 @@ The existing code for x86_pv is moved unmodified into its own file.
 +    {
 +        pfn = original_pfns[i];
 +
-+        has_data = page_type_has_stream_data(types[i]);
++        to_populate = page_type_to_populate(types[i]);
 +        populated = pfn_is_populated(ctx, pfn);
 +
 +        /*
@@ -833,10 +596,10 @@ The existing code for x86_pv is moved unmodified into its own file.
 +         * page has no data, pfn populated: likely ballooned out during migration
 +         * page has no data, pfn not populated: nothing to do
 +         */
-+        if ( has_data && !populated )
++        if ( to_populate && !populated )
 +        {
 +            rc = x86_hvm_populate_page(ctx, pfn);
-+        } else if ( !has_data && populated )
++        } else if ( !to_populate && populated )
 +        {
 +            rc = x86_hvm_unpopulate_page(ctx, pfn);
 +        }
@@ -851,7 +614,7 @@ The existing code for x86_pv is moved unmodified into its own file.
  struct xc_sr_restore_ops restore_ops_x86_hvm =
  {
      .pfn_is_valid    = x86_hvm_pfn_is_valid,
-@@ -257,6 +659,7 @@ struct xc_sr_restore_ops restore_ops_x86
+@@ -266,6 +639,7 @@ struct xc_sr_restore_ops restore_ops_x86
      .set_page_type   = x86_hvm_set_page_type,
      .localise_page   = x86_hvm_localise_page,
      .setup           = x86_hvm_setup,
@@ -859,8 +622,8 @@ The existing code for x86_pv is moved unmodified into its own file.
      .process_record  = x86_hvm_process_record,
      .static_data_complete = x86_static_data_complete,
      .stream_complete = x86_hvm_stream_complete,
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore_x86_pv.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore_x86_pv.c
+--- a/tools/libs/guest/xg_sr_restore_x86_pv.c
++++ b/tools/libs/guest/xg_sr_restore_x86_pv.c
 @@ -960,6 +960,64 @@ static void x86_pv_set_gfn(struct xc_sr_
  }
  
@@ -874,9 +637,9 @@ The existing code for x86_pv is moved unmodified into its own file.
 +                                const uint32_t *types)
 +{
 +    xc_interface *xch = ctx->xch;
-+    xen_pfn_t *mfns = ctx->restore.m->pp_mfns,
-+        *pfns = ctx->restore.m->pp_pfns;
-+    unsigned i, nr_pfns = 0;
++    xen_pfn_t *mfns = ctx->restore.pp_mfns,
++        *pfns = ctx->restore.pp_pfns;
++    unsigned int i, nr_pfns = 0;
 +    int rc = -1;
 +
 +    for ( i = 0; i < count; ++i )
@@ -935,7 +698,7 @@ The existing code for x86_pv is moved unmodified into its own file.
          return -1;
  
      for ( i = 0; i < (PAGE_SIZE / sizeof(uint64_t)); ++i )
-@@ -1193,6 +1251,7 @@ struct xc_sr_restore_ops restore_ops_x86
+@@ -1200,6 +1258,7 @@ struct xc_sr_restore_ops restore_ops_x86
      .set_gfn         = x86_pv_set_gfn,
      .localise_page   = x86_pv_localise_page,
      .setup           = x86_pv_setup,

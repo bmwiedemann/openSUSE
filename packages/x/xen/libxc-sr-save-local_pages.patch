@@ -2,24 +2,26 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Fri, 23 Oct 2020 12:47:56 +0200
 Subject: libxc sr save local_pages
 
-tools/guest: save: move local_pages array
+tools: save: preallocate local_pages array
 
-Remove allocation from hotpath, move local_pages array into preallocated space.
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in a batch.
+Allocate the space once.
 
-Adjust the code to use the src page as is in case of HVM.
-In case of PV the page may need to be normalised, use an private memory
+Adjust the code to use the unmodified src page in case of HVM.
+In case of PV the page may need to be normalised, use a private memory
 area for this purpose.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h       | 22 ++++++++++++----------
- tools/libs/guest/xg_sr_save.c         | 25 +++----------------------
- tools/libs/guest/xg_sr_save_x86_hvm.c |  5 +++--
- tools/libs/guest/xg_sr_save_x86_pv.c  | 31 +++++++++++++++++++++----------
- 4 files changed, 39 insertions(+), 44 deletions(-)
+ tools/libs/guest/xg_sr_common.h       |   22 ++++++++++++----------
+ tools/libs/guest/xg_sr_save.c         |   26 ++++----------------------
+ tools/libs/guest/xg_sr_save_x86_hvm.c |    5 +++--
+ tools/libs/guest/xg_sr_save_x86_pv.c  |   31 +++++++++++++++++++++----------
+ 4 files changed, 40 insertions(+), 44 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
 @@ -33,16 +33,12 @@ struct xc_sr_save_ops
       * Optionally transform the contents of a page from being specific to the
       * sending environment, to being generic for the stream.
@@ -51,7 +53,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      /**
       * Set up local environment to save a domain. (Typically querying
-@@ -373,6 +369,12 @@ struct xc_sr_context
+@@ -359,6 +355,12 @@ struct xc_sr_context
                  {
                      struct
                      {
@@ -64,22 +66,22 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
                          /* State machine for the order of received records. */
                          bool seen_pv_info;
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
-@@ -91,11 +91,10 @@ static int write_batch(struct xc_sr_cont
-     xen_pfn_t *mfns = ctx->save.m->mfns, *types = ctx->save.m->types;
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
+@@ -89,11 +89,10 @@ static int write_batch(struct xc_sr_cont
+ {
+     xc_interface *xch = ctx->xch;
      void *guest_mapping = NULL;
-     void **guest_data = ctx->save.m->guest_data;
 -    void **local_pages = NULL;
-     int *errors = ctx->save.m->errors, rc = -1;
+     int rc = -1;
      unsigned int i, p, nr_pages = 0, nr_pages_mapped = 0;
      unsigned int nr_pfns = ctx->save.nr_batch_pfns;
 -    void *page, *orig_page;
 +    void *src;
-     uint64_t *rec_pfns = ctx->save.m->rec_pfns;
-     struct iovec *iov = ctx->save.m->iov; int iovcnt = 0;
+     int iovcnt = 0;
      struct xc_sr_rec_page_data_header hdr = { 0 };
-@@ -105,16 +104,6 @@ static int write_batch(struct xc_sr_cont
+     struct xc_sr_record rec = {
+@@ -102,16 +101,6 @@ static int write_batch(struct xc_sr_cont
  
      assert(nr_pfns != 0);
  
@@ -95,31 +97,32 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 -
      for ( i = 0; i < nr_pfns; ++i )
      {
-         types[i] = mfns[i] = ctx->save.ops.pfn_to_gfn(ctx,
-@@ -176,11 +165,8 @@ static int write_batch(struct xc_sr_cont
+         ctx->save.types[i] = ctx->save.mfns[i] = ctx->save.ops.pfn_to_gfn(ctx,
+@@ -175,11 +164,9 @@ static int write_batch(struct xc_sr_cont
                  goto err;
              }
  
 -            orig_page = page = guest_mapping + (p * PAGE_SIZE);
--            rc = ctx->save.ops.normalise_page(ctx, types[i], &page);
+-            rc = ctx->save.ops.normalise_page(ctx, ctx->save.types[i], &page);
 -
 -            if ( orig_page != page )
 -                local_pages[i] = page;
 +            src = guest_mapping + (p * PAGE_SIZE);
-+            rc = ctx->save.ops.normalise_page(ctx, types[i], src, i, &guest_data[i]);
++            rc = ctx->save.ops.normalise_page(ctx, ctx->save.types[i], src, i,
++                                              &ctx->save.guest_data[i]);
  
              if ( rc )
              {
-@@ -195,8 +181,6 @@ static int write_batch(struct xc_sr_cont
+@@ -194,8 +181,6 @@ static int write_batch(struct xc_sr_cont
                  else
                      goto err;
              }
 -            else
--                guest_data[i] = page;
+-                ctx->save.guest_data[i] = page;
  
              rc = -1;
              ++p;
-@@ -255,9 +239,6 @@ static int write_batch(struct xc_sr_cont
+@@ -256,9 +241,6 @@ static int write_batch(struct xc_sr_cont
   err:
      if ( guest_mapping )
          xenforeignmemory_unmap(xch->fmem, guest_mapping, nr_pages_mapped);
@@ -129,8 +132,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save_x86_hvm.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save_x86_hvm.c
+--- a/tools/libs/guest/xg_sr_save_x86_hvm.c
++++ b/tools/libs/guest/xg_sr_save_x86_hvm.c
 @@ -129,9 +129,10 @@ static xen_pfn_t x86_hvm_pfn_to_gfn(cons
      return pfn;
  }
@@ -144,19 +147,19 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      return 0;
  }
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save_x86_pv.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save_x86_pv.c
+--- a/tools/libs/guest/xg_sr_save_x86_pv.c
++++ b/tools/libs/guest/xg_sr_save_x86_pv.c
 @@ -999,29 +999,31 @@ static xen_pfn_t x86_pv_pfn_to_gfn(const
   * save_ops function.  Performs pagetable normalisation on appropriate pages.
   */
  static int x86_pv_normalise_page(struct xc_sr_context *ctx, xen_pfn_t type,
 -                                 void **page)
-+                                  void *src, unsigned int idx, void **ptr)
++                                 void *src, unsigned int idx, void **ptr)
  {
      xc_interface *xch = ctx->xch;
 -    void *local_page;
-     int rc;
 +    void *dst;
+     int rc;
  
      type &= XEN_DOMCTL_PFINFO_LTABTYPE_MASK;
  
@@ -180,7 +183,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
 -    rc = normalise_pagetable(ctx, *page, local_page, type);
 -    *page = local_page;
-+    dst = ctx->x86.pv.save.normalised_pages + idx * PAGE_SIZE;
++    dst = ctx->x86.pv.save.normalised_pages + (idx * PAGE_SIZE);
 +    rc = normalise_pagetable(ctx, src, dst, type);
 +    *ptr = dst;
  

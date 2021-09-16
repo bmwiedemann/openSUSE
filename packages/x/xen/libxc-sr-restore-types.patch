@@ -2,38 +2,40 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Fri, 23 Oct 2020 14:39:31 +0200
 Subject: libxc sr restore types
 
-tools/guest: restore: move types array
+tools: restore: preallocate types array
 
-Remove allocation from hotpath, move types array into preallocated space.
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in an incoming batch.
+Allocate the space once.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  |  1 +
- tools/libs/guest/xg_sr_restore.c | 12 +-----------
- 2 files changed, 2 insertions(+), 11 deletions(-)
+ tools/libs/guest/xg_sr_common.h  |    1 +
+ tools/libs/guest/xg_sr_restore.c |   22 +++++++---------------
+ 2 files changed, 8 insertions(+), 15 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -226,6 +226,7 @@ struct xc_sr_save_arrays {
- struct xc_sr_restore_arrays {
-     /* handle_page_data */
-     xen_pfn_t pfns[MAX_BATCH_SIZE];
-+    uint32_t types[MAX_BATCH_SIZE];
- };
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -257,6 +257,7 @@ struct xc_sr_context
+             struct xc_sr_restore_ops ops;
+             struct restore_callbacks *callbacks;
+             xen_pfn_t *pfns;
++            uint32_t *types;
  
- struct xc_sr_context
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -316,7 +316,7 @@ static int handle_page_data(struct xc_sr
+             int send_back_fd;
+             unsigned long p2m_size;
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -315,7 +315,7 @@ static int handle_page_data(struct xc_sr
      int rc = -1;
  
-     xen_pfn_t *pfns = ctx->restore.m->pfns, pfn;
+     xen_pfn_t pfn;
 -    uint32_t *types = NULL, type;
-+    uint32_t *types = ctx->restore.m->types, type;
++    uint32_t type;
  
      /*
       * v2 compatibility only exists for x86 streams.  This is a bit of a
-@@ -363,14 +363,6 @@ static int handle_page_data(struct xc_sr
+@@ -362,14 +362,6 @@ static int handle_page_data(struct xc_sr
          goto err;
      }
  
@@ -48,12 +50,44 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      for ( i = 0; i < pages->count; ++i )
      {
          pfn = pages->pfn[i] & PAGE_DATA_PFN_MASK;
-@@ -410,8 +402,6 @@ static int handle_page_data(struct xc_sr
-     rc = process_page_data(ctx, pages->count, pfns, types,
-                            &pages->pfn[pages->count]);
+@@ -393,7 +385,7 @@ static int handle_page_data(struct xc_sr
+             pages_of_data++;
+ 
+         ctx->restore.pfns[i] = pfn;
+-        types[i] = type;
++        ctx->restore.types[i] = type;
+     }
+ 
+     if ( rec->length != (sizeof(*pages) +
+@@ -406,11 +398,9 @@ static int handle_page_data(struct xc_sr
+         goto err;
+     }
+ 
+-    rc = process_page_data(ctx, pages->count, ctx->restore.pfns, types,
+-                           &pages->pfn[pages->count]);
++    rc = process_page_data(ctx, pages->count, ctx->restore.pfns,
++                           ctx->restore.types, &pages->pfn[pages->count]);
   err:
 -    free(types);
 -
      return rc;
  }
  
+@@ -727,7 +717,8 @@ static int setup(struct xc_sr_context *c
+     }
+ 
+     ctx->restore.pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pfns));
+-    if ( !ctx->restore.pfns )
++    ctx->restore.types = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.types));
++    if ( !ctx->restore.pfns  || !ctx->restore.types )
+     {
+         ERROR("Unable to allocate memory");
+         rc = -1;
+@@ -764,6 +755,7 @@ static void cleanup(struct xc_sr_context
+ 
+     free(ctx->restore.buffered_records);
+     free(ctx->restore.populated_pfns);
++    free(ctx->restore.types);
+     free(ctx->restore.pfns);
+ 
+     if ( ctx->restore.ops.cleanup(ctx) )

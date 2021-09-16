@@ -2,39 +2,39 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Fri, 23 Oct 2020 14:42:19 +0200
 Subject: libxc sr restore mfns
 
-tools/guest: restore: move mfns array
+tools: restore: preallocate mfns array
 
-Remove allocation from hotpath, move mfns array into preallocated space.
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in an incoming batch.
+Allocate the space once.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h  | 2 ++
- tools/libs/guest/xg_sr_restore.c | 5 ++---
- 2 files changed, 4 insertions(+), 3 deletions(-)
+ tools/libs/guest/xg_sr_common.h  |    1 +
+ tools/libs/guest/xg_sr_restore.c |   16 ++++++++--------
+ 2 files changed, 9 insertions(+), 8 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -227,6 +227,8 @@ struct xc_sr_restore_arrays {
-     /* handle_page_data */
-     xen_pfn_t pfns[MAX_BATCH_SIZE];
-     uint32_t types[MAX_BATCH_SIZE];
-+    /* process_page_data */
-+    xen_pfn_t mfns[MAX_BATCH_SIZE];
- };
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -258,6 +258,7 @@ struct xc_sr_context
+             struct restore_callbacks *callbacks;
+             xen_pfn_t *pfns;
+             uint32_t *types;
++            xen_pfn_t *mfns;
  
- struct xc_sr_context
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_restore.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_restore.c
-@@ -205,7 +205,7 @@ static int process_page_data(struct xc_s
+             int send_back_fd;
+             unsigned long p2m_size;
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -204,7 +204,6 @@ static int process_page_data(struct xc_s
                               xen_pfn_t *pfns, uint32_t *types, void *page_data)
  {
      xc_interface *xch = ctx->xch;
 -    xen_pfn_t *mfns = malloc(count * sizeof(*mfns));
-+    xen_pfn_t *mfns = ctx->restore.m->mfns;
      int *map_errs = malloc(count * sizeof(*map_errs));
      int rc;
      void *mapping = NULL, *guest_page = NULL;
-@@ -213,7 +213,7 @@ static int process_page_data(struct xc_s
+@@ -212,11 +211,11 @@ static int process_page_data(struct xc_s
          j,          /* j indexes the subset of pfns we decide to map. */
          nr_pages = 0;
  
@@ -43,7 +43,39 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          rc = -1;
          ERROR("Failed to allocate %zu bytes to process page data",
-@@ -299,7 +299,6 @@ static int process_page_data(struct xc_s
+-              count * (sizeof(*mfns) + sizeof(*map_errs)));
++              count * sizeof(*map_errs));
+         goto err;
+     }
+ 
+@@ -232,7 +231,7 @@ static int process_page_data(struct xc_s
+         ctx->restore.ops.set_page_type(ctx, pfns[i], types[i]);
+ 
+         if ( page_type_has_stream_data(types[i]) )
+-            mfns[nr_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, pfns[i]);
++            ctx->restore.mfns[nr_pages++] = ctx->restore.ops.pfn_to_gfn(ctx, pfns[i]);
+     }
+ 
+     /* Nothing to do? */
+@@ -241,7 +240,7 @@ static int process_page_data(struct xc_s
+ 
+     mapping = guest_page = xenforeignmemory_map(
+         xch->fmem, ctx->domid, PROT_READ | PROT_WRITE,
+-        nr_pages, mfns, map_errs);
++        nr_pages, ctx->restore.mfns, map_errs);
+     if ( !mapping )
+     {
+         rc = -1;
+@@ -259,7 +258,7 @@ static int process_page_data(struct xc_s
+         {
+             rc = -1;
+             ERROR("Mapping pfn %#"PRIpfn" (mfn %#"PRIpfn", type %#"PRIx32") failed with %d",
+-                  pfns[i], mfns[j], types[i], map_errs[j]);
++                  pfns[i], ctx->restore.mfns[j], types[i], map_errs[j]);
+             goto err;
+         }
+ 
+@@ -298,7 +297,6 @@ static int process_page_data(struct xc_s
          xenforeignmemory_unmap(xch->fmem, mapping, nr_pages);
  
      free(map_errs);
@@ -51,3 +83,21 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      return rc;
  }
+@@ -718,7 +716,8 @@ static int setup(struct xc_sr_context *c
+ 
+     ctx->restore.pfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.pfns));
+     ctx->restore.types = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.types));
+-    if ( !ctx->restore.pfns  || !ctx->restore.types )
++    ctx->restore.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->restore.mfns));
++    if ( !ctx->restore.pfns || !ctx->restore.types || !ctx->restore.mfns )
+     {
+         ERROR("Unable to allocate memory");
+         rc = -1;
+@@ -755,6 +754,7 @@ static void cleanup(struct xc_sr_context
+ 
+     free(ctx->restore.buffered_records);
+     free(ctx->restore.populated_pfns);
++    free(ctx->restore.mfns);
+     free(ctx->restore.types);
+     free(ctx->restore.pfns);
+ 

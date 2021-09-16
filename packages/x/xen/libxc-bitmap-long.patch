@@ -1,41 +1,52 @@
 From: Olaf Hering <olaf@aepfle.de>
 Date: Wed, 9 Dec 2020 16:40:00 +0100
-Subject: bitmap long
+Subject: libxc sr bitmap long
 
 tools: add API to work with sevaral bits at once
 
 Introduce new API to test if a fixed number of bits is clear or set,
 and clear or set them all at once.
 
-The caller has to make sure the input bitnumber is a multiply of BITS_PER_LONG.
+The caller has to make sure the input bitnumber is a multiple of BITS_PER_LONG.
 
 This API avoids the loop over each bit in a known range just to see
 if all of them are either clear or set.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
----
- tools/libs/guest/xg_bitops.h | 25 +++++++++++++++++++++++++
- 1 file changed, 25 insertions(+)
 
-Index: xen-4.15.0-testing/tools/libs/ctrl/xc_bitops.h
-===================================================================
---- xen-4.15.0-testing.orig/tools/libs/ctrl/xc_bitops.h
-+++ xen-4.15.0-testing/tools/libs/ctrl/xc_bitops.h
-@@ -77,4 +77,29 @@ static inline void bitmap_or(void *_dst,
+v02:
+- change return type from int to bool (jgross)
+---
+ tools/libs/ctrl/xc_bitops.h |   28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
+
+--- a/tools/libs/ctrl/xc_bitops.h
++++ b/tools/libs/ctrl/xc_bitops.h
+@@ -3,6 +3,7 @@
+ 
+ /* bitmap operations for single threaded access */
+ 
++#include <stdbool.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
+@@ -77,4 +78,31 @@ static inline void bitmap_or(void *_dst,
          dst[i] |= other[i];
  }
  
-+static inline int test_bit_long_set(unsigned long nr_base, const void *_addr)
++static inline bool test_bit_long_set(unsigned long nr_base, const void *_addr)
 +{
 +    const unsigned long *addr = _addr;
 +    unsigned long val = addr[nr_base / BITS_PER_LONG];
++
 +    return val == ~0;
 +}
 +
-+static inline int test_bit_long_clear(unsigned long nr_base, const void *_addr)
++static inline bool test_bit_long_clear(unsigned long nr_base, const void *_addr)
 +{
 +    const unsigned long *addr = _addr;
 +    unsigned long val = addr[nr_base / BITS_PER_LONG];
++
 +    return val == 0;
 +}
 +

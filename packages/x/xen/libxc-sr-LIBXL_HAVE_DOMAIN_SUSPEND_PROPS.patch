@@ -1,0 +1,160 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 7 Jan 2021 15:58:30 +0100
+Subject: libxc sr LIBXL_HAVE_DOMAIN_SUSPEND_PROPS
+
+tools: adjust libxl_domain_suspend to receive a struct props
+
+Upcoming changes will pass more knobs down to xc_domain_save.
+Adjust the libxl_domain_suspend API to allow easy adding of additional knobs.
+
+No change in behavior intented.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+Acked-by: Christian Lindig <christian.lindig@citrix.com>
+---
+ tools/include/libxl.h                |   23 +++++++++++++++++++----
+ tools/libs/light/libxl_domain.c      |   22 +++++++++++++++++++---
+ tools/ocaml/libs/xl/xenlight_stubs.c |    3 ++-
+ tools/xl/xl_migrate.c                |    9 ++++++---
+ tools/xl/xl_saverestore.c            |    3 ++-
+ 5 files changed, 48 insertions(+), 12 deletions(-)
+
+--- a/tools/include/libxl.h
++++ b/tools/include/libxl.h
+@@ -1705,13 +1705,28 @@ static inline int libxl_retrieve_domain_
+     libxl_retrieve_domain_configuration_0x041200
+ #endif
+ 
+-int libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd,
+-                         int flags, /* LIBXL_SUSPEND_* */
+-                         const libxl_asyncop_how *ao_how)
+-                         LIBXL_EXTERNAL_CALLERS_ONLY;
++/*
++ * LIBXL_HAVE_DOMAIN_SUSPEND_PROPS indicates that the
++ * libxl_domain_suspend_props() function takes a props struct.
++ */
++#define LIBXL_HAVE_DOMAIN_SUSPEND_PROPS 1
++
++typedef struct {
++    uint32_t flags; /* LIBXL_SUSPEND_* */
++} libxl_domain_suspend_suse_properties;
+ #define LIBXL_SUSPEND_DEBUG 1
+ #define LIBXL_SUSPEND_LIVE 2
+ 
++#define LIBXL_HAVE_DOMAIN_SUSPEND_SUSE
++int libxl_domain_suspend_suse(libxl_ctx *ctx, uint32_t domid, int fd,
++                              const libxl_domain_suspend_suse_properties *props, /* optional */
++                              const libxl_asyncop_how *ao_how)
++                              LIBXL_EXTERNAL_CALLERS_ONLY;
++
++int libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd, int flags,
++                         const libxl_asyncop_how *ao_how)
++                         LIBXL_EXTERNAL_CALLERS_ONLY;
++
+ /*
+  * Only suspend domain, do not save its state to file, do not destroy it.
+  * Suspended domain can be resumed with libxl_domain_resume()
+--- a/tools/libs/light/libxl_domain.c
++++ b/tools/libs/light/libxl_domain.c
+@@ -505,7 +505,8 @@ static void domain_suspend_cb(libxl__egc
+ 
+ }
+ 
+-int libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd, int flags,
++static int do_libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd,
++                         const libxl_domain_suspend_suse_properties *props,
+                          const libxl_asyncop_how *ao_how)
+ {
+     AO_CREATE(ctx, domid, ao_how);
+@@ -526,8 +527,8 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+     dss->domid = domid;
+     dss->fd = fd;
+     dss->type = type;
+-    dss->live = flags & LIBXL_SUSPEND_LIVE;
+-    dss->debug = flags & LIBXL_SUSPEND_DEBUG;
++    dss->live = props->flags & LIBXL_SUSPEND_LIVE;
++    dss->debug = props->flags & LIBXL_SUSPEND_DEBUG;
+     dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
+ 
+     rc = libxl__fd_flags_modify_save(gc, dss->fd,
+@@ -542,6 +543,21 @@ int libxl_domain_suspend(libxl_ctx *ctx,
+     return AO_CREATE_FAIL(rc);
+ }
+ 
++int libxl_domain_suspend_suse(libxl_ctx *ctx, uint32_t domid, int fd,
++                              const libxl_domain_suspend_suse_properties *props,
++                              const libxl_asyncop_how *ao_how)
++{
++    return do_libxl_domain_suspend(ctx, domid, fd, props, ao_how);
++}
++
++int libxl_domain_suspend(libxl_ctx *ctx, uint32_t domid, int fd, int flags,
++                         const libxl_asyncop_how *ao_how)
++{
++    libxl_domain_suspend_suse_properties props = { .flags = flags };
++
++    return do_libxl_domain_suspend(ctx, domid, fd, &props, ao_how);
++}
++
+ static void domain_suspend_empty_cb(libxl__egc *egc,
+                               libxl__domain_suspend_state *dss, int rc)
+ {
+--- a/tools/ocaml/libs/xl/xenlight_stubs.c
++++ b/tools/ocaml/libs/xl/xenlight_stubs.c
+@@ -614,10 +614,11 @@ value stub_libxl_domain_suspend(value ct
+ 	int ret;
+ 	uint32_t c_domid = Int_val(domid);
+ 	int c_fd = Int_val(fd);
++	libxl_domain_suspend_props props = {};
+ 	libxl_asyncop_how *ao_how = aohow_val(async);
+ 
+ 	caml_enter_blocking_section();
+-	ret = libxl_domain_suspend(CTX, c_domid, c_fd, 0, ao_how);
++	ret = libxl_domain_suspend(CTX, c_domid, c_fd, &props, ao_how);
+ 	caml_leave_blocking_section();
+ 
+ 	free(ao_how);
+--- a/tools/xl/xl_migrate.c
++++ b/tools/xl/xl_migrate.c
+@@ -186,7 +186,10 @@ static void migrate_domain(uint32_t domi
+     char *away_domname;
+     char rc_buf;
+     uint8_t *config_data;
+-    int config_len, flags = LIBXL_SUSPEND_LIVE;
++    int config_len;
++    libxl_domain_suspend_suse_properties props = {
++        .flags = LIBXL_SUSPEND_LIVE,
++        };
+ 
+     save_domain_core_begin(domid, preserve_domid, override_config_file,
+                            &config_data, &config_len);
+@@ -205,8 +208,8 @@ static void migrate_domain(uint32_t domi
+     xtl_stdiostream_adjust_flags(logger, XTL_STDIOSTREAM_HIDE_PROGRESS, 0);
+ 
+     if (debug)
+-        flags |= LIBXL_SUSPEND_DEBUG;
+-    rc = libxl_domain_suspend(ctx, domid, send_fd, flags, NULL);
++        props.flags |= LIBXL_SUSPEND_DEBUG;
++    rc = libxl_domain_suspend_suse(ctx, domid, send_fd, &props, NULL);
+     if (rc) {
+         fprintf(stderr, "migration sender: libxl_domain_suspend failed"
+                 " (rc=%d)\n", rc);
+--- a/tools/xl/xl_saverestore.c
++++ b/tools/xl/xl_saverestore.c
+@@ -130,6 +130,7 @@ static int save_domain(uint32_t domid, i
+     int fd;
+     uint8_t *config_data;
+     int config_len;
++    libxl_domain_suspend_suse_properties props = {};
+ 
+     save_domain_core_begin(domid, preserve_domid, override_config_file,
+                            &config_data, &config_len);
+@@ -146,7 +147,7 @@ static int save_domain(uint32_t domid, i
+ 
+     save_domain_core_writeconfig(fd, filename, config_data, config_len);
+ 
+-    int rc = libxl_domain_suspend(ctx, domid, fd, 0, NULL);
++    int rc = libxl_domain_suspend_suse(ctx, domid, fd, &props, NULL);
+     close(fd);
+ 
+     if (rc < 0) {

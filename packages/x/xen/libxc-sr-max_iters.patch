@@ -1,0 +1,148 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Sat, 9 Jan 2021 11:32:17 +0100
+Subject: libxc sr max_iters
+
+tools: add --max_iters to libxl_domain_suspend
+
+Migrating a large, and potentially busy, domU will take more
+time than neccessary due to excessive number of copying iterations.
+
+Allow to host admin to control the number of iterations which
+copy cumulated domU dirty pages to the target host.
+
+The default remains 5, which means one initial iteration to copy the
+entire domU memory, and up to 4 additional iterations to copy dirty
+memory from the still running domU. After the given number of iterations
+the domU is suspended, remaining dirty memory is copied and the domU is
+finally moved to the target host.
+
+This patch adjusts xl(1) and the libxl API.
+External users check LIBXL_HAVE_DOMAIN_SUSPEND_PROPS for the availibility
+of the new .max_iters property.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+---
+ docs/man/xl.1.pod.in              |    4 ++++
+ tools/include/libxl.h             |    1 +
+ tools/libs/light/libxl_dom_save.c |    2 +-
+ tools/libs/light/libxl_domain.c   |    1 +
+ tools/libs/light/libxl_internal.h |    1 +
+ tools/xl/xl_cmdtable.c            |    3 ++-
+ tools/xl/xl_migrate.c             |   10 +++++++++-
+ 7 files changed, 19 insertions(+), 3 deletions(-)
+
+--- a/docs/man/xl.1.pod.in
++++ b/docs/man/xl.1.pod.in
+@@ -496,6 +496,10 @@ such that it will be identical on the de
+ configuration is overridden using the B<-C> option. Note that it is not
+ possible to use this option for a 'localhost' migration.
+ 
++=item B<--max_iters> I<iterations>
++
++Number of copy iterations before final suspend+move (default: 5)
++
+ =back
+ 
+ =item B<remus> [I<OPTIONS>] I<domain-id> I<host>
+--- a/tools/include/libxl.h
++++ b/tools/include/libxl.h
+@@ -1713,6 +1713,7 @@ static inline int libxl_retrieve_domain_
+ 
+ typedef struct {
+     uint32_t flags; /* LIBXL_SUSPEND_* */
++    uint32_t max_iters;
+ } libxl_domain_suspend_suse_properties;
+ #define LIBXL_SUSPEND_DEBUG 1
+ #define LIBXL_SUSPEND_LIVE 2
+--- a/tools/libs/light/libxl_dom_save.c
++++ b/tools/libs/light/libxl_dom_save.c
+@@ -383,7 +383,7 @@ static int libxl__domain_save_precopy_po
+          stats.iteration, stats.dirty_count, stats.total_written);
+     if (stats.dirty_count >= 0 && stats.dirty_count < LIBXL_XGS_POLICY_TARGET_DIRTY_COUNT)
+         goto stop_copy;
+-    if (stats.iteration >= LIBXL_XGS_POLICY_MAX_ITERATIONS)
++    if (stats.iteration >= dss->max_iters)
+         goto stop_copy;
+     return XGS_POLICY_CONTINUE_PRECOPY;
+ 
+--- a/tools/libs/light/libxl_domain.c
++++ b/tools/libs/light/libxl_domain.c
+@@ -527,6 +527,7 @@ static int do_libxl_domain_suspend(libxl
+     dss->domid = domid;
+     dss->fd = fd;
+     dss->type = type;
++    dss->max_iters = props->max_iters ?: LIBXL_XGS_POLICY_MAX_ITERATIONS;
+     dss->live = props->flags & LIBXL_SUSPEND_LIVE;
+     dss->debug = props->flags & LIBXL_SUSPEND_DEBUG;
+     dss->checkpointed_stream = LIBXL_CHECKPOINTED_STREAM_NONE;
+--- a/tools/libs/light/libxl_internal.h
++++ b/tools/libs/light/libxl_internal.h
+@@ -3648,6 +3648,7 @@ struct libxl__domain_save_state {
+     int live;
+     int debug;
+     int checkpointed_stream;
++    uint32_t max_iters;
+     const libxl_domain_remus_info *remus;
+     /* private */
+     int rc;
+--- a/tools/xl/xl_cmdtable.c
++++ b/tools/xl/xl_cmdtable.c
+@@ -173,7 +173,8 @@ struct cmd_spec cmd_table[] = {
+       "                of the domain.\n"
+       "--debug         Enable verification mode.\n"
+       "-p              Do not unpause domain after migrating it.\n"
+-      "-D              Preserve the domain id"
++      "-D              Preserve the domain id\n"
++      "--max_iters N   Number of copy iterations before final stop+move"
+     },
+     { "restore",
+       &main_restore, 0, 1,
+--- a/tools/xl/xl_migrate.c
++++ b/tools/xl/xl_migrate.c
+@@ -178,6 +178,7 @@ static void migrate_do_preamble(int send
+ 
+ static void migrate_domain(uint32_t domid, int preserve_domid,
+                            const char *rune, int debug,
++                           uint32_t max_iters,
+                            const char *override_config_file)
+ {
+     pid_t child = -1;
+@@ -189,6 +190,7 @@ static void migrate_domain(uint32_t domi
+     int config_len;
+     libxl_domain_suspend_suse_properties props = {
+         .flags = LIBXL_SUSPEND_LIVE,
++        .max_iters = max_iters,
+         };
+ 
+     save_domain_core_begin(domid, preserve_domid, override_config_file,
+@@ -542,8 +544,10 @@ int main_migrate(int argc, char **argv)
+     char *host;
+     int opt, daemonize = 1, monitor = 1, debug = 0, pause_after_migration = 0;
+     int preserve_domid = 0;
++    uint32_t max_iters = 0;
+     static struct option opts[] = {
+         {"debug", 0, 0, 0x100},
++        {"max_iters", 1, 0, 0x101},
+         {"live", 0, 0, 0x200},
+         COMMON_LONG_OPTS
+     };
+@@ -571,6 +575,9 @@ int main_migrate(int argc, char **argv)
+     case 0x100: /* --debug */
+         debug = 1;
+         break;
++    case 0x101: /* --max_iters */
++        max_iters = atoi(optarg);
++        break;
+     case 0x200: /* --live */
+         /* ignored for compatibility with xm */
+         break;
+@@ -605,7 +612,8 @@ int main_migrate(int argc, char **argv)
+                   pause_after_migration ? " -p" : "");
+     }
+ 
+-    migrate_domain(domid, preserve_domid, rune, debug, config_filename);
++    migrate_domain(domid, preserve_domid, rune, debug,
++                   max_iters, config_filename);
+     return EXIT_SUCCESS;
+ }
+ 

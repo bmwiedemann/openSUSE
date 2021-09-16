@@ -1,0 +1,91 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 1 Jul 2021 11:56:05 +0200
+Subject: libxc sr 9e59d9f8ee3808acde9833192211da25f66d8cc2
+
+tools/migration: unify known page type checking
+
+Users of xc_get_pfn_type_batch may want to sanity check the data
+returned by Xen. Add helpers for this purpose:
+
+is_known_page_type verifies the type returned by Xen on the saving
+side, or the incoming type for a page on the restoring side, is known
+by the save/restore code.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+Reviewed-by: Juergen Gross <jgross@suse.com>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+(cherry picked from commit 9e59d9f8ee3808acde9833192211da25f66d8cc2)
+---
+ tools/libs/guest/xg_sr_common.h  |   29 +++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_restore.c |    5 ++---
+ tools/libs/guest/xg_sr_save.c    |    6 ++++++
+ 3 files changed, 37 insertions(+), 3 deletions(-)
+
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -455,6 +455,35 @@ int populate_pfns(struct xc_sr_context *
+ /* Handle a STATIC_DATA_END record. */
+ int handle_static_data_end(struct xc_sr_context *ctx);
+ 
++/* Page type known to the migration logic? */
++static inline bool is_known_page_type(uint32_t type)
++{
++    switch ( type )
++    {
++    case XEN_DOMCTL_PFINFO_NOTAB:
++
++    case XEN_DOMCTL_PFINFO_L1TAB:
++    case XEN_DOMCTL_PFINFO_L1TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_L2TAB:
++    case XEN_DOMCTL_PFINFO_L2TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_L3TAB:
++    case XEN_DOMCTL_PFINFO_L3TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_L4TAB:
++    case XEN_DOMCTL_PFINFO_L4TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_XTAB:
++    case XEN_DOMCTL_PFINFO_XALLOC: /* Synthetic type in Xen 4.2 - 4.5 */
++    case XEN_DOMCTL_PFINFO_BROKEN:
++        return true;
++
++    default:
++        return false;
++    }
++}
++
+ #endif
+ /*
+  * Local variables:
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -406,10 +406,9 @@ static int handle_page_data(struct xc_sr
+         }
+ 
+         type = (pages->pfn[i] & PAGE_DATA_TYPE_MASK) >> 32;
+-        if ( ((type >> XEN_DOMCTL_PFINFO_LTAB_SHIFT) >= 5) &&
+-             ((type >> XEN_DOMCTL_PFINFO_LTAB_SHIFT) <= 8) )
++        if ( !is_known_page_type(type) )
+         {
+-            ERROR("Invalid type %#"PRIx32" for pfn %#"PRIpfn" (index %u)",
++            ERROR("Unknown type %#"PRIx32" for pfn %#"PRIpfn" (index %u)",
+                   type, pfn, i);
+             goto err;
+         }
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
+@@ -147,6 +147,12 @@ static int write_batch(struct xc_sr_cont
+ 
+     for ( i = 0; i < nr_pfns; ++i )
+     {
++        if ( !is_known_page_type(types[i]) )
++        {
++            ERROR("Unknown type %#"PRIpfn" for pfn %#"PRIpfn, types[i], mfns[i]);
++            goto err;
++        }
++
+         switch ( types[i] )
+         {
+         case XEN_DOMCTL_PFINFO_BROKEN:

@@ -10,13 +10,16 @@ The relevant data is how fast the pfns travel, not so much how much
 protocol overhead exists. So the reported MiB/sec is just for pfns.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
----
- tools/libs/guest/xg_sr_common.h |  2 ++
- tools/libs/guest/xg_sr_save.c   | 47 ++++++++++++++++++++++++++++++++++++++
- 2 files changed, 49 insertions(+)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
+v02:
+- rearrange MiB_sec calculation (jgross)
+---
+ tools/libs/guest/xg_sr_common.h |    2 +
+ tools/libs/guest/xg_sr_save.c   |   46 ++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 48 insertions(+)
+
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
 @@ -238,6 +238,8 @@ struct xc_sr_context
              bool debug;
  
@@ -26,8 +29,8 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
              struct precopy_stats stats;
  
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
 @@ -1,5 +1,6 @@
  #include <assert.h>
  #include <arpa/inet.h>
@@ -44,7 +47,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
  
      if ( nr_pages )
      {
-@@ -357,6 +360,43 @@ static int suspend_domain(struct xc_sr_c
+@@ -357,6 +360,42 @@ static int suspend_domain(struct xc_sr_c
      return 0;
  }
  
@@ -52,9 +55,9 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +{
 +    xc_interface *xch = ctx->xch;
 +    struct timespec end = {}, diff = {};
-+    size_t ms, MiB_sec = ctx->save.pages_sent * PAGE_SIZE;
++    size_t ms, MiB_sec;
 +
-+    if (!MiB_sec)
++    if (!ctx->save.pages_sent)
 +        return;
 +
 +    if ( clock_gettime(CLOCK_MONOTONIC, &end) )
@@ -72,23 +75,22 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
 +    }
 +
 +    ms = (diff.tv_nsec / (1000U*1000U));
++    ms += (diff.tv_sec * 1000U);
 +    if (!ms)
 +        ms = 1;
-+    ms += (diff.tv_sec * 1000U);
 +
-+    MiB_sec *= 1000U;
-+    MiB_sec /= ms;
-+    MiB_sec /= 1024U*1024U;
++    MiB_sec = (ctx->save.pages_sent * PAGE_SIZE * 1000U) / ms / (1024U*1024U);
 +
 +    errno = 0;
-+    ERROR("%s: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", __func__,
-+          ctx->save.overhead_sent, ctx->save.pages_sent, diff.tv_sec, diff.tv_nsec, MiB_sec);
++    IPRINTF("%s: %zu bytes + %zu pages in %ld.%09ld sec, %zu MiB/sec", __func__,
++            ctx->save.overhead_sent, ctx->save.pages_sent,
++            diff.tv_sec, diff.tv_nsec, MiB_sec);
 +}
 +
  /*
   * Send a subset of pages in the guests p2m, according to the dirty bitmap.
   * Used for each subsequent iteration of the live migration loop.
-@@ -370,9 +410,15 @@ static int send_dirty_pages(struct xc_sr
+@@ -370,9 +409,15 @@ static int send_dirty_pages(struct xc_sr
      xen_pfn_t p;
      unsigned long written;
      int rc;
@@ -104,7 +106,7 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      for ( p = 0, written = 0; p < ctx->save.p2m_size; ++p )
      {
          if ( !test_bit(p, dirty_bitmap) )
-@@ -396,6 +442,7 @@ static int send_dirty_pages(struct xc_sr
+@@ -396,6 +441,7 @@ static int send_dirty_pages(struct xc_sr
      if ( written > entries )
          DPRINTF("Bitmap contained more entries than expected...");
  

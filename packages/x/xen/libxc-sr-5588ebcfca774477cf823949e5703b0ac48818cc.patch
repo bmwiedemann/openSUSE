@@ -1,0 +1,76 @@
+From: Olaf Hering <olaf@aepfle.de>
+Date: Thu, 1 Jul 2021 11:56:07 +0200
+Subject: libxc sr 5588ebcfca774477cf823949e5703b0ac48818cc
+
+tools/migration: unify type checking for data pfns in the VM
+
+Introduce a helper which decides if a given pfn in the migration
+stream is backed by memory.
+
+This highlights more clearly that type XEN_DOMCTL_PFINFO_XALLOC (a
+synthetic toolstack-only type used between Xen 4.2 to 4.5 which
+indicated a dirty page on the sending side for which no data will be
+send in the initial iteration) does get populated in the VM.
+
+No change in behaviour intended, except for invalid page types which now
+have a safer default.
+
+Signed-off-by: Olaf Hering <olaf@aepfle.de>
+Reviewed-by: Andrew Cooper <andrew.cooper3@citrix.com>
+(cherry picked from commit 5588ebcfca774477cf823949e5703b0ac48818cc)
+---
+ tools/libs/guest/xg_sr_common.h  |   29 +++++++++++++++++++++++++++++
+ tools/libs/guest/xg_sr_restore.c |    4 +---
+ 2 files changed, 30 insertions(+), 3 deletions(-)
+
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -484,6 +484,35 @@ static inline bool is_known_page_type(ui
+     }
+ }
+ 
++/* Page type backed by RAM in the guest? */
++static inline bool page_type_to_populate(uint32_t type)
++{
++    switch ( type )
++    {
++    case XEN_DOMCTL_PFINFO_NOTAB:
++
++    case XEN_DOMCTL_PFINFO_L1TAB:
++    case XEN_DOMCTL_PFINFO_L1TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_L2TAB:
++    case XEN_DOMCTL_PFINFO_L2TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_L3TAB:
++    case XEN_DOMCTL_PFINFO_L3TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_L4TAB:
++    case XEN_DOMCTL_PFINFO_L4TAB | XEN_DOMCTL_PFINFO_LPINTAB:
++
++    case XEN_DOMCTL_PFINFO_XALLOC:
++        return true;
++
++    case XEN_DOMCTL_PFINFO_XTAB:
++    case XEN_DOMCTL_PFINFO_BROKEN:
++    default:
++        return false;
++    }
++}
++
+ #endif
+ /*
+  * Local variables:
+--- a/tools/libs/guest/xg_sr_restore.c
++++ b/tools/libs/guest/xg_sr_restore.c
+@@ -152,9 +152,7 @@ int populate_pfns(struct xc_sr_context *
+ 
+     for ( i = 0; i < count; ++i )
+     {
+-        if ( (!types || (types &&
+-                         (types[i] != XEN_DOMCTL_PFINFO_XTAB &&
+-                          types[i] != XEN_DOMCTL_PFINFO_BROKEN))) &&
++        if ( (!types || page_type_to_populate(types[i])) &&
+              !pfn_is_populated(ctx, original_pfns[i]) )
+         {
+             rc = pfn_set_populated(ctx, original_pfns[i]);

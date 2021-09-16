@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Fri Sep 10 13:07:31 MDT 2021 - carnold@suse.com
+
+- Update to Xen 4.15.1 bug fix release
+  xen-4.15.1-testing-src.tar.bz2
+- Drop patches contained in new tarball
+  60631c38-VT-d-QI-restore-flush-hooks.patch
+  60700077-x86-vpt-avoid-pt_migrate-rwlock.patch
+  60787714-revert-x86-HPET-avoid-legacy-replacement-mode.patch
+  60787714-x86-HPET-avoid-legacy-replacement-mode.patch
+  60787714-x86-HPET-factor-legacy-replacement-mode-enabling.patch
+  608676f2-VT-d-register-based-invalidation-optional.patch
+  60a27288-x86emul-gas-2-36-test-harness-build.patch
+  60af933d-x86-gcc11-hypervisor-build.patch
+  60afe616-x86-CPUID-rework-HLE-and-RTM-handling.patch
+  60afe617-x86-TSX-minor-cleanup-and-improvements.patch
+  60afe618-x86-TSX-deprecate-vpmu=rtm-abort.patch
+  60be0e24-credit2-pick-runnable-unit.patch
+  60be0e42-credit2-per-entity-load-tracking-when-continuing.patch
+  60be3097-x86-CPUID-fix-HLE-and-RTM-handling-again.patch
+  60bf9e19-Arm-create-dom0less-domUs-earlier.patch
+  60bf9e1a-Arm-boot-modules-scrubbing.patch
+  60bf9e1b-VT-d-size-qinval-queue-dynamically.patch
+  60bf9e1c-AMD-IOMMU-size-command-buffer-dynamically.patch
+  60bf9e1d-VT-d-eliminate-flush-related-timeouts.patch
+  60bf9e1e-x86-spec-ctrl-protect-against-SCSB.patch
+  60bf9e1f-x86-spec-ctrl-mitigate-TAA-after-S3.patch
+  60bfa904-AMD-IOMMU-wait-for-command-slot.patch
+  60bfa906-AMD-IOMMU-drop-command-completion-timeout.patch
+  60c0bf86-x86-TSX-cope-with-deprecation.patch
+  60c8a7ac-x86-vpt-fully-init-timers-before-enlisting.patch
+  60c8de6e-osdep_xenforeignmemory_map-prototype.patch
+  60d49689-VT-d-undo-device-mappings-upon-error.patch
+  60d496b9-VT-d-adjust-domid-map-updating-on-unmap.patch
+  60d496d6-VT-d-clear_fault_bits-should-clear-all.patch
+  60d496ee-VT-d-dont-lose-errors-on-multi-IOMMU-flush.patch
+  60d5c6df-IOMMU-PCI-dont-let-domain-cleanup-continue.patch
+  libxl-d5f54009dba11d04bfe2a28eee47b994de66b84a.patch
+  libxl-f3f778c81769075ac0eb93b98d4b2803e7936453.patch
+  libxl-4e217db45e83fc3173382306c8b03da86099a25d.patch
+  libxl-85760c03d664400368a3f76ae0225307c25049a7.patch
+  libxl-0ff26a3225d69ffec76fe5aca8296852fa951204.patch
+  libxl-7c313e8365eb663311a0cf39f77b4f5880244765.patch
+  libxl-0c0b3a7e4a2d65fd252b89b46bdcdb048bb24b6c.patch
+  libxl-fe6630ddc4e8a8fbf8dd28a1bc58e3881393f9c1.patch
+  libxl-qemu6-vnc-password.patch
+  libxl-qemu6-scsi.patch
+
+-------------------------------------------------------------------
+Mon Aug 30 15:15:15 UTC 2021 - ohering@suse.de
+
+- bsc#1189882 - refresh libxc-sr-restore-hvm-legacy-superpage.patch
+  prevent superpage allocation in the LAPIC and ACPI_INFO range
+
+-------------------------------------------------------------------
+Wed Aug  4 05:55:41 MDT 2021 - carnold@suse.com
+
+- Drop aarch64-maybe-uninitialized.patch as the fix is in tarball.
+
+-------------------------------------------------------------------
+Mon Jul 26 10:10:10 UTC 2021 - ohering@suse.de
+
+- Simplify %autosetup
+
+-------------------------------------------------------------------
+Fri Jul 23 11:11:11 UTC 2021 - ohering@suse.de
+
+- refresh the migration patches to state v20210713
+  removed libxc-sr-add-xc_is_known_page_type.patch
+  removed libxc-sr-arrays.patch
+  removed libxc-sr-batch_pfns.patch
+  removed libxc-sr-page_type_has_stream_data.patch
+  removed libxc-sr-use-xc_is_known_page_type.patch
+  removed libxc.migrate_tracking.patch
+  removed libxc.sr.superpage.patch
+  removed libxl.set-migration-constraints-from-cmdline.patch
+  added libxc-sr-383b41974d5543b62f3181d216070fe3691fb130.patch
+  added libxc-sr-5588ebcfca774477cf823949e5703b0ac48818cc.patch
+  added libxc-sr-9e59d9f8ee3808acde9833192211da25f66d8cc2.patch
+  added libxc-sr-LIBXL_HAVE_DOMAIN_SUSPEND_PROPS.patch
+  added libxc-sr-abort_if_busy.patch
+  added libxc-sr-f17a73b3c0264c62dd6b5dae01ed621c051c3038.patch
+  added libxc-sr-max_iters.patch
+  added libxc-sr-min_remaining.patch
+  added libxc-sr-number-of-iterations.patch
+  added libxc-sr-precopy_policy.patch
+  added libxc-sr-restore-hvm-legacy-superpage.patch
+  added libxc-sr-track-migration-time.patch
+  added libxc-sr-xg_sr_bitmap-populated_pfns.patch
+  added libxc-sr-xg_sr_bitmap.patch
+  added libxc-sr-xl-migration-debug.patch
+
+-------------------------------------------------------------------
 Thu Jul 22 22:33:51 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - spec: Change the '--with-system-ovmf' configure option to use
@@ -7,6 +99,101 @@ Thu Jul 22 22:33:51 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
   https://bugzilla.tianocore.org/show_bug.cgi?id=1689
   https://bugzilla.tianocore.org/show_bug.cgi?id=2122
+
+-------------------------------------------------------------------
+Wed Jul 21 08:08:08 UTC 2021 - ohering@suse.de
+
+- bsc#1176189 - xl monitoring process exits during xl save -p|-c
+  keep the monitoring process running to cleanup the domU during shutdown
+  xl-save-pc.patch
+
+-------------------------------------------------------------------
+Tue Jul 13 12:30:00 CEST 2021 - jbeulich@suse.com
+
+- bsc#1179246 - Dom0 hangs when pinning CPUs for dom0 with HVM guest
+  60be0e24-credit2-pick-runnable-unit.patch
+  60be0e42-credit2-per-entity-load-tracking-when-continuing.patch
+- Upstream bug fixes (bsc#1027519)
+  60be3097-x86-CPUID-fix-HLE-and-RTM-handling-again.patch
+  60bf9e19-Arm-create-dom0less-domUs-earlier.patch (Replaces xsa372-1.patch)
+  60bf9e1a-Arm-boot-modules-scrubbing.patch (Replaces xsa372-2.patch)
+  60bf9e1b-VT-d-size-qinval-queue-dynamically.patch (Replaces xsa373-1.patch)
+  60bf9e1c-AMD-IOMMU-size-command-buffer-dynamically.patch (Replaces xsa373-2.patch)
+  60bf9e1d-VT-d-eliminate-flush-related-timeouts.patch (Replaces xsa373-2.patch)
+  60bf9e1e-x86-spec-ctrl-protect-against-SCSB.patch (Replaces xsa375.patch)
+  60bf9e1f-x86-spec-ctrl-mitigate-TAA-after-S3.patch (Replaces xsa377.patch)
+  60bfa904-AMD-IOMMU-wait-for-command-slot.patch (Replaces xsa373-4.patch)
+  60bfa906-AMD-IOMMU-drop-command-completion-timeout.patch (Replaces xsa373-5.patch)
+  60c8a7ac-x86-vpt-fully-init-timers-before-enlisting.patch
+  60c8de6e-osdep_xenforeignmemory_map-prototype.patch
+  60d49689-VT-d-undo-device-mappings-upon-error.patch
+  60d496b9-VT-d-adjust-domid-map-updating-on-unmap.patch
+  60d496d6-VT-d-clear_fault_bits-should-clear-all.patch
+  60d496ee-VT-d-dont-lose-errors-on-multi-IOMMU-flush.patch
+  60d5c6df-IOMMU-PCI-dont-let-domain-cleanup-continue.patch
+- Dropped gcc11-fixes.patch
+
+-------------------------------------------------------------------
+Tue Jun 29 10:10:10 UTC 2021 - ohering@suse.de
+
+- bsc#1180350 - some long deprecated commands were finally removed
+  in qemu6. Adjust libxl to use supported commands.
+  libxl-d5f54009dba11d04bfe2a28eee47b994de66b84a.patch
+  libxl-f3f778c81769075ac0eb93b98d4b2803e7936453.patch
+  libxl-4e217db45e83fc3173382306c8b03da86099a25d.patch
+  libxl-85760c03d664400368a3f76ae0225307c25049a7.patch
+  libxl-0ff26a3225d69ffec76fe5aca8296852fa951204.patch
+  libxl-7c313e8365eb663311a0cf39f77b4f5880244765.patch
+  libxl-0c0b3a7e4a2d65fd252b89b46bdcdb048bb24b6c.patch
+  libxl-fe6630ddc4e8a8fbf8dd28a1bc58e3881393f9c1.patch
+  libxl-qemu6-vnc-password.patch
+  libxl-qemu6-scsi.patch
+
+-------------------------------------------------------------------
+Tue Jun 22 09:09:09 UTC 2021 - ohering@suse.de
+
+- Update logrotate.conf, move global options into per-file sections
+  to prevent globbering of global state (bsc#1187406)
+
+-------------------------------------------------------------------
+Mon Jun  7 15:15:15 UTC 2021 - ohering@suse.de
+
+- Fix shell macro expansion in xen.spec, so that ExecStart=
+  in xendomains-wait-disks.service is created correctly (bsc#1183877)
+
+-------------------------------------------------------------------
+Mon May 31 12:30:00 CEST 2021 - jbeulich@suse.com
+
+- Upstream bug fixes (bsc#1027519)
+  60631c38-VT-d-QI-restore-flush-hooks.patch
+  60700077-x86-vpt-avoid-pt_migrate-rwlock.patch
+  60787714-revert-x86-HPET-avoid-legacy-replacement-mode.patch
+  60787714-x86-HPET-avoid-legacy-replacement-mode.patch
+  60787714-x86-HPET-factor-legacy-replacement-mode-enabling.patch
+  608676f2-VT-d-register-based-invalidation-optional.patch
+  60a27288-x86emul-gas-2-36-test-harness-build.patch
+  60af933d-x86-gcc11-hypervisor-build.patch
+  60afe616-x86-CPUID-rework-HLE-and-RTM-handling.patch
+  60afe617-x86-TSX-minor-cleanup-and-improvements.patch
+  60afe618-x86-TSX-deprecate-vpmu=rtm-abort.patch
+- Embargoed security fixes
+  xsa372-1.patch
+  xsa372-2.patch
+  xsa373-1.patch
+  xsa373-2.patch
+  xsa373-3.patch
+  xsa373-4.patch
+  xsa373-5.patch
+  xsa375.patch
+  xsa377.patch
+- Embargoed non-security fix
+  x86-TSX-cope-with-deprecation.patch
+
+-------------------------------------------------------------------
+Mon May 31 12:20:00 CEST 2021 - jbeulich@suse.com
+
+- x86-cpufreq-report.patch: Drop. We haven't had a kernel understanding
+  this custom extension for quite some time.
 
 -------------------------------------------------------------------
 Tue May  4 14:14:14 UTC 2021 - ohering@suse.de

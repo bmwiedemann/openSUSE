@@ -2,39 +2,40 @@ From: Olaf Hering <olaf@aepfle.de>
 Date: Fri, 23 Oct 2020 11:30:41 +0200
 Subject: libxc sr save iov
 
-tools/guest: save: move iov array
+tools: save: preallocate iov array
 
-Remove allocation from hotpath, move iov array into preallocated space.
+Remove repeated allocation from migration loop. There will never be
+more than MAX_BATCH_SIZE pages to process in a batch.
+Allocate the space once.
 
 Signed-off-by: Olaf Hering <olaf@aepfle.de>
 ---
- tools/libs/guest/xg_sr_common.h | 2 ++
- tools/libs/guest/xg_sr_save.c   | 7 ++-----
- 2 files changed, 4 insertions(+), 5 deletions(-)
+ tools/libs/guest/xg_sr_common.h |    1 +
+ tools/libs/guest/xg_sr_save.c   |   34 +++++++++++++++++-----------------
+ 2 files changed, 18 insertions(+), 17 deletions(-)
 
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_common.h
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_common.h
-@@ -219,6 +219,8 @@ struct xc_sr_save_arrays {
-     xen_pfn_t types[MAX_BATCH_SIZE];
-     /* write_batch: Errors from attempting to map the gfns. */
-     int errors[MAX_BATCH_SIZE];
-+    /* write_batch: iovec[] for writev(). */
-+    struct iovec iov[MAX_BATCH_SIZE + 4];
- };
- 
- struct xc_sr_restore_arrays {
---- xen-4.15.0-testing.orig/tools/libs/guest/xg_sr_save.c
-+++ xen-4.15.0-testing/tools/libs/guest/xg_sr_save.c
-@@ -97,7 +97,7 @@ static int write_batch(struct xc_sr_cont
+--- a/tools/libs/guest/xg_sr_common.h
++++ b/tools/libs/guest/xg_sr_common.h
+@@ -247,6 +247,7 @@ struct xc_sr_context
+             xen_pfn_t *mfns;
+             xen_pfn_t *types;
+             int *errors;
++            struct iovec *iov;
+             unsigned int nr_batch_pfns;
+             unsigned long *deferred_pages;
+             unsigned long nr_deferred_pages;
+--- a/tools/libs/guest/xg_sr_save.c
++++ b/tools/libs/guest/xg_sr_save.c
+@@ -96,7 +96,7 @@ static int write_batch(struct xc_sr_cont
      unsigned int nr_pfns = ctx->save.nr_batch_pfns;
      void *page, *orig_page;
      uint64_t *rec_pfns = NULL;
 -    struct iovec *iov = NULL; int iovcnt = 0;
-+    struct iovec *iov = ctx->save.m->iov; int iovcnt = 0;
++    int iovcnt = 0;
      struct xc_sr_rec_page_data_header hdr = { 0 };
      struct xc_sr_record rec = {
          .type = REC_TYPE_PAGE_DATA,
-@@ -109,10 +109,8 @@ static int write_batch(struct xc_sr_cont
+@@ -108,10 +108,8 @@ static int write_batch(struct xc_sr_cont
      guest_data = calloc(nr_pfns, sizeof(*guest_data));
      /* Pointers to locally allocated pages.  Need freeing. */
      local_pages = calloc(nr_pfns, sizeof(*local_pages));
@@ -46,7 +47,52 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      {
          ERROR("Unable to allocate arrays for a batch of %u pages",
                nr_pfns);
-@@ -266,7 +264,6 @@ static int write_batch(struct xc_sr_cont
+@@ -221,17 +219,17 @@ static int write_batch(struct xc_sr_cont
+     for ( i = 0; i < nr_pfns; ++i )
+         rec_pfns[i] = ((uint64_t)(ctx->save.types[i]) << 32) | ctx->save.batch_pfns[i];
+ 
+-    iov[0].iov_base = &rec.type;
+-    iov[0].iov_len = sizeof(rec.type);
++    ctx->save.iov[0].iov_base = &rec.type;
++    ctx->save.iov[0].iov_len = sizeof(rec.type);
+ 
+-    iov[1].iov_base = &rec.length;
+-    iov[1].iov_len = sizeof(rec.length);
++    ctx->save.iov[1].iov_base = &rec.length;
++    ctx->save.iov[1].iov_len = sizeof(rec.length);
+ 
+-    iov[2].iov_base = &hdr;
+-    iov[2].iov_len = sizeof(hdr);
++    ctx->save.iov[2].iov_base = &hdr;
++    ctx->save.iov[2].iov_len = sizeof(hdr);
+ 
+-    iov[3].iov_base = rec_pfns;
+-    iov[3].iov_len = nr_pfns * sizeof(*rec_pfns);
++    ctx->save.iov[3].iov_base = rec_pfns;
++    ctx->save.iov[3].iov_len = nr_pfns * sizeof(*rec_pfns);
+ 
+     iovcnt = 4;
+     ctx->save.pages_sent += nr_pages;
+@@ -243,15 +241,15 @@ static int write_batch(struct xc_sr_cont
+         {
+             if ( guest_data[i] )
+             {
+-                iov[iovcnt].iov_base = guest_data[i];
+-                iov[iovcnt].iov_len = PAGE_SIZE;
++                ctx->save.iov[iovcnt].iov_base = guest_data[i];
++                ctx->save.iov[iovcnt].iov_len = PAGE_SIZE;
+                 iovcnt++;
+                 --nr_pages;
+             }
+         }
+     }
+ 
+-    if ( writev_exact(ctx->fd, iov, iovcnt) )
++    if ( writev_exact(ctx->fd, ctx->save.iov, iovcnt) )
+     {
+         PERROR("Failed to write page data to stream");
+         goto err;
+@@ -267,7 +265,6 @@ static int write_batch(struct xc_sr_cont
          xenforeignmemory_unmap(xch->fmem, guest_mapping, nr_pages_mapped);
      for ( i = 0; local_pages && i < nr_pfns; ++i )
          free(local_pages[i]);
@@ -54,3 +100,25 @@ Signed-off-by: Olaf Hering <olaf@aepfle.de>
      free(local_pages);
      free(guest_data);
  
+@@ -846,10 +843,12 @@ static int setup(struct xc_sr_context *c
+     ctx->save.mfns = malloc(MAX_BATCH_SIZE * sizeof(*ctx->save.mfns));
+     ctx->save.types = malloc(MAX_BATCH_SIZE * sizeof(*ctx->save.types));
+     ctx->save.errors = malloc(MAX_BATCH_SIZE * sizeof(*ctx->save.errors));
++    ctx->save.iov = malloc((4 + MAX_BATCH_SIZE) * sizeof(*ctx->save.iov));
+     ctx->save.deferred_pages = bitmap_alloc(ctx->save.p2m_size);
+ 
+     if ( !ctx->save.batch_pfns || !ctx->save.mfns || !ctx->save.types ||
+-         !ctx->save.errors || !dirty_bitmap || !ctx->save.deferred_pages )
++         !ctx->save.errors || !ctx->save.iov || !dirty_bitmap ||
++         !ctx->save.deferred_pages )
+     {
+         ERROR("Unable to allocate memory for dirty bitmaps, batch pfns and"
+               " deferred pages");
+@@ -880,6 +879,7 @@ static void cleanup(struct xc_sr_context
+     xc_hypercall_buffer_free_pages(xch, dirty_bitmap,
+                                    NRPAGES(bitmap_size(ctx->save.p2m_size)));
+     free(ctx->save.deferred_pages);
++    free(ctx->save.iov);
+     free(ctx->save.errors);
+     free(ctx->save.types);
+     free(ctx->save.mfns);
