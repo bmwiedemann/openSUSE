@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:29 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:27 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * markdown.xml: End nested sub-headers fold regions when parent header is closed (kde#441278)
+  * Python: Add "yield from" keyword (kde#441540)
+  * isocpp.xml: Highlight raw string delimeters (kde#440038)
+
+-------------------------------------------------------------------
 Fri Aug  6 12:13:43 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
