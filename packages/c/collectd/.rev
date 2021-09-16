@@ -362,4 +362,17 @@ Packaging :
     <comment></comment>
     <requestid>918989</requestid>
   </revision>
+  <revision rev="42" vrev="7">
+    <srcmd5>6b11988223fe6b91f90df23cacba333a</srcmd5>
+    <version>5.12.0</version>
+    <time>1631826905</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix version mess introduced in previous changes.
+  + rabbitmq-c package is available since SLES 15 SP3
+    so amqp plugin can be enabled for Tumbleweed or Leap 15.3+
+  + libmodbus package is available in SLES 15 SP4 Backports
+    so modbus plugin can be enabled for Tumbleweed or Leap 15.4+
+</comment>
+    <requestid>919583</requestid>
+  </revision>
 </revisionlist>

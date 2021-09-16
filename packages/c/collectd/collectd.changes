@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 16 09:29:07 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Fix version mess introduced in previous changes.
+  + rabbitmq-c package is available since SLES 15 SP3
+    so amqp plugin can be enabled for Tumbleweed or Leap 15.3+
+  + libmodbus package is available in SLES 15 SP4 Backports
+    so modbus plugin can be enabled for Tumbleweed or Leap 15.4+
+
+-------------------------------------------------------------------
 Wed Sep  8 14:08:46 UTC 2021 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - add amqp plugin

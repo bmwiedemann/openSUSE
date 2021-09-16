@@ -109,7 +109,7 @@ BuildRequires:  pkgconfig(libiptc)
 BuildRequires:  pkgconfig(libmemcached)
 BuildRequires:  pkgconfig(libmicrohttpd)
 BuildRequires:  pkgconfig(libmnl)
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 BuildRequires:  pkgconfig(libmodbus)
 %endif
 %if 0%{?is_opensuse}
@@ -119,7 +119,7 @@ BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(liboping)
 BuildRequires:  pkgconfig(libpq)
-%if 0%{?suse_version} > 1520
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 BuildRequires:  pkgconfig(librabbitmq)
 %endif
 BuildRequires:  pkgconfig(librrd)
@@ -187,7 +187,7 @@ a browser.
 Please look at %{_sysconfdir}/apache2/conf.d/%{name}-js.conf on how to
 enable.
 
-%if 0%{?suse_version} > 1520
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %package plugin-amqp
 Summary:        AMQP Plugin for %{name}
 Group:          System/Monitoring
@@ -314,7 +314,7 @@ Requires:       %{name} = %{version}-%{release}
 %description plugin-memcachec
 Optional %{name} plugin to sample memcached statistics.
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %package plugin-modbus
 Summary:        TCP Modbus Plugin for %{name}
 Group:          System/Monitoring
@@ -493,7 +493,7 @@ Optional %{name} plugin to send values to InfluxDB using line protocol via udp
 Summary:        All Monitoring Plugins for %{name}
 Group:          System/Monitoring
 Requires:       %{name} = %{version}-%{release}
-%if 0%{?suse_version} > 1520
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 Requires:       %{name}-plugin-amqp = %{version}-%{release}
 %endif
 Requires:       %{name}-plugin-buddyinfo = %{version}-%{release}
@@ -508,7 +508,7 @@ Requires:       %{name}-plugin-logparser = %{version}-%{release}
 Requires:       %{name}-plugin-lua = %{version}-%{release}
 Requires:       %{name}-plugin-mcelog = %{version}-%{release}
 Requires:       %{name}-plugin-memcachec = %{version}-%{release}
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 Requires:       %{name}-plugin-modbus = %{version}-%{release}
 %endif
 %if 0%{?is_opensuse}
@@ -790,7 +790,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 /srv/www/collectd-js
 %{_libexecdir}/collectd-js
 
-%if 0%{?suse_version} > 1520
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 %files plugin-amqp
 %{_libdir}/collectd/amqp.so
 %{_libdir}/collectd/amqp.la
@@ -853,7 +853,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %{_libdir}/collectd/memcachec.so
 %{_libdir}/collectd/memcachec.la
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150400
 %files plugin-modbus
 %{_libdir}/collectd/modbus.so
 %{_libdir}/collectd/modbus.la
