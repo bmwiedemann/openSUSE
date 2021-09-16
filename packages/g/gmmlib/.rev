@@ -92,4 +92,13 @@
     <comment></comment>
     <requestid>841333</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>875aa8bb8b014199ad04dd0474d0304f</srcmd5>
+    <version>21.2.2</version>
+    <time>1631826902</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.2.2
+  * No upstream changelog available.</comment>
+    <requestid>919556</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package gmmlib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global somajor 11
 %global libname libigdgmm%{somajor}
 Name:           gmmlib
-Version:        20.3.2
+Version:        21.2.2
 Release:        0
 Summary:        Intel(R) Graphics Memory Management Library Package
 License:        MIT
@@ -65,6 +65,7 @@ This package provides development files.
 %autosetup -n %{name}-intel-%{name}-%{version}
 
 %build
+chmod a-x LICENSE.md
 %cmake
 %cmake_build
 
