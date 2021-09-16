@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  6 06:22:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Refactor LineChartNode to reuse LineSegmentNode
+  * Increase minimum size for line chart interpolation
+  * Implement batching for Line chart material
+  * Add a property to BarChart that renders it as horizontal bars
+  * Support specifying a corner radius for bar chart bars
+  * Support setting a background color for bar charts
+  * Refactor BarChart to use individual nodes per bar and an sdf shader
+  * Remove stray GL include
+
+-------------------------------------------------------------------
 Fri Aug  6 12:13:07 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
