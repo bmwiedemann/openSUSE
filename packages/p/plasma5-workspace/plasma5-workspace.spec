@@ -41,7 +41,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/plasma-workspa
 Source1:        https://download.kde.org/stable/plasma/%{version}/plasma-workspace-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-Source3:        baselibs.conf
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus-qt5.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
