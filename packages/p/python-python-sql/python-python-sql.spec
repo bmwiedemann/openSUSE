@@ -17,9 +17,11 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+# Requires python >= 3.5
+%define         skip_python2 1
 %define base_name python-sql
 Name:           python-%{base_name}
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        Library to write SQL queries
 License:        BSD-3-Clause
