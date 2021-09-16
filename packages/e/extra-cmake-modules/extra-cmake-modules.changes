@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  6 06:21:50 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * ECMSetupQtPluginMacroNames: avoid adding duplicates to vars in config code
+  * Enable KDEGitCommitHooks on Windows
+  * Add LicenseRef-KDE-Accepted-LGPL to license compatibility matrix
+
+-------------------------------------------------------------------
 Fri Aug  6 12:11:20 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
