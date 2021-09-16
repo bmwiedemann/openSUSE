@@ -26,11 +26,19 @@ Group:          Development/Libraries/Java
 Url:            http://jakarta.apache.org/commons/discovery.html
 Source0:        http://www.apache.org/dist/jakarta/commons/discovery/source/commons-discovery-0.4-src.tar.gz
 BuildRequires:  ant
+%if 0%{?rhel}
+BuildRequires:  apache-commons-logging >= 1.0.4
+%else
 BuildRequires:  commons-logging >= 1.0.4
+%endif
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
 BuildRequires:  junit >= 3.7
+%if 0%{?rhel}
+Requires:       apache-commons-logging >= 1.0.4
+%else
 Requires:       commons-logging >= 1.0.4
+%endif
 Provides:       %{short_name} = %{version}
 Obsoletes:      %{short_name} < %{version}
 #XXX: temporary fix to make axis auto dependencies work, need to revork package
