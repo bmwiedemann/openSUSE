@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:02 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * document clipboard more extensively
+  * Add missing PRIVATE part for linking in cmake
+  * Try to fix Android build via linking GLESv3
+  * qtquicksettings: Add workaround for Nvidia Wayland
+  * GridDelegate: Fix non-existant context property
+  * AbstractKCM: Fix padding when header/footer is not visible
+  * Don't use the KIO AccessManager on Android
+
+-------------------------------------------------------------------
 Fri Aug  6 12:12:05 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
