@@ -369,4 +369,12 @@
     <comment>fix SLE 12 build (forwarded request 903846 from AndreasStieger)</comment>
     <requestid>904141</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>f77b7f2573c00bcc720b8e8297c8cddf</srcmd5>
+    <version>3.0.5</version>
+    <time>1631826894</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919481</requestid>
+  </revision>
 </revisionlist>

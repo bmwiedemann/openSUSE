@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 08:59:23 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Changed tests_binary_rpath to subtract points for files found with RPATH set,
+  not add points for files that are configured correctly. This resulted in a 
+  huge number of points that skewed the overal result
+
+-------------------------------------------------------------------
 Sat Jul  3 11:54:47 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix SLE 12 build

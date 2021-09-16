@@ -32,14 +32,12 @@
 
 	RPNOTOK=0
 	FILENUM=0
-	HPMAX=0
 	HPBAD=0
 	for FILE in $(find / -xdev -type f \( -perm -0100 -o -perm -0010 -o -perm -0001 \) 2>/dev/null)
 	do
 		((FILENUM++))
 		for RPATH_VAL in $(objdump -p "$FILE" 2>/dev/null | egrep -w '(RPATH|RUNPATH)' | awk '{ print $2 ":"}')
 		do
-			((HPMAX++))
 			if [ "${RPATH_VAL:0:7}" = "\$ORIGIN" ]; then continue; fi
 			while [ -n "$RPATH_VAL" ]
 			do
@@ -59,7 +57,7 @@
 					:/usr/local/lib*)
 						;;
 					*)
-						((HPBAD++))
+						((HPBAD--))
 						RPNOTOK=1;
 						Display --indent 4 --text "${FILE}" --text "RPATH \"$RPATH_VAL_NXT\" on $FILE is not allowed" --result WARNING --color RED
 				esac
@@ -69,9 +67,7 @@
 	if [ $RPNOTOK == 0 ]; then
 		Display --indent 4 --text "No bad RPATH usage found in $FILENUM executables" --result OK --color GREEN
 	fi
-	HP=$(expr $HPMAX - $HPBAD)
-# 	echo "AddHP $HP $HPMAX"
-	AddHP $HP $HPMAX
+	AddHP $HPBAD 0
 
     fi
 #
