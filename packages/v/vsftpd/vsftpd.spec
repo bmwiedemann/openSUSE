@@ -27,7 +27,7 @@
 %define use_firewalld 0
 %endif
 Name:           vsftpd
-Version:        3.0.4
+Version:        3.0.5
 Release:        0
 Summary:        Very Secure FTP Daemon - Written from Scratch
 License:        SUSE-GPL-2.0-with-openssl-exception

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 10 13:15:44 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 3.0.5:
+  * Fix ALPN callback to correctly select the 'ftp' string if present.
+    Works with FileZilla-3.55.0.
+  * Fix a couple of seccomp policy issues with Fedora 34.
+
+-------------------------------------------------------------------
 Tue Jun 15 07:49:13 AM UTC 2021 - Peter Simons <psimons@suse.com>
 
 - Update to version 3.0.4.
