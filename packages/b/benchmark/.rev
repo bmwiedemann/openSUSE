@@ -171,4 +171,41 @@
 - Drop no longer needed 0001-src-benchmark_register.h-add-missing-limits-inclusio.patch</comment>
     <requestid>888936</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>939d69d51a20b6ee7caa6791f63d9e89</srcmd5>
+    <version>1.5.5</version>
+    <time>1631826879</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.5:
+  * [NFCI] Drop warning to satisfy clang's -Wunused-but-set-variable diag (#1174)
+  * Add support for new architecture loongarch (#1173)
+  * Use modern clang/libc++ for sanitizers (#1171)
+  * Enable various sanitizer builds in github actions (#1167)
+  * Random interleaving of benchmark repetitions - the sequel (fixes #1051) (#1163)
+  * Fix leak in test, and provide path to remove leak from library (#1169)
+  * [NFCI] Make BenchmarkRunner non-internal to it's .cpp file
+  * [NFCI] RunBenchmarks(): extract FlushStreams()/Report() functions
+  * compare.py: sort the results (#1168)
+  * Make 'complexity reports' cache per-family, not global (#1166)
+  * Introduce per-family instance index (#1165)
+  * Introduce &quot;family index&quot; field into JSON output (#1164)
+  * BenchmarkFamilies::FindBenchmarks(): correctly use std::vector&lt;&gt;::reserve()
+  * Ensure that we print repetition count even when it was specified via flag `--benchmark_repetitions=`
+  * Revert &quot;Implementation of random interleaving.  (#1105)&quot; (#1161)
+  * Fix perf counter argument parsing (#1160)
+  * Run build-and-test on all branches
+  * Un-disable github actions :]
+  * Run build-and-test on all branches
+  * Set theme jekyll-theme-hacker
+  * bump version to v1.5.4
+  * Removing freenode from README
+  * Fix pedantic compilation flag violation (#1156)
+  * fix version recorded in releases (#1047)
+  * Implementation of random interleaving.  (#1105)
+  * remove appveyor and add libera.chat as IRC resource
+  * [PFM] Extend perf counter support to multi-threaded cases. (#1153)
+  * Support -Wsuggest-override (#1059)
+  * Refactor `BenchmarkInstance` (#1148)</comment>
+    <requestid>918664</requestid>
+  </revision>
 </revisionlist>

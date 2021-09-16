@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Sep 13 08:40:20 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.5:
+  * [NFCI] Drop warning to satisfy clang's -Wunused-but-set-variable diag (#1174)
+  * Add support for new architecture loongarch (#1173)
+  * Use modern clang/libc++ for sanitizers (#1171)
+  * Enable various sanitizer builds in github actions (#1167)
+  * Random interleaving of benchmark repetitions - the sequel (fixes #1051) (#1163)
+  * Fix leak in test, and provide path to remove leak from library (#1169)
+  * [NFCI] Make BenchmarkRunner non-internal to it's .cpp file
+  * [NFCI] RunBenchmarks(): extract FlushStreams()/Report() functions
+  * compare.py: sort the results (#1168)
+  * Make 'complexity reports' cache per-family, not global (#1166)
+  * Introduce per-family instance index (#1165)
+  * Introduce "family index" field into JSON output (#1164)
+  * BenchmarkFamilies::FindBenchmarks(): correctly use std::vector<>::reserve()
+  * Ensure that we print repetition count even when it was specified via flag `--benchmark_repetitions=`
+  * Revert "Implementation of random interleaving.  (#1105)" (#1161)
+  * Fix perf counter argument parsing (#1160)
+  * Run build-and-test on all branches
+  * Un-disable github actions :]
+  * Run build-and-test on all branches
+  * Set theme jekyll-theme-hacker
+  * bump version to v1.5.4
+  * Removing freenode from README
+  * Fix pedantic compilation flag violation (#1156)
+  * fix version recorded in releases (#1047)
+  * Implementation of random interleaving.  (#1105)
+  * remove appveyor and add libera.chat as IRC resource
+  * [PFM] Extend perf counter support to multi-threaded cases. (#1153)
+  * Support -Wsuggest-override (#1059)
+  * Refactor `BenchmarkInstance` (#1148)
+  * Remove travis configs that are covered by actions (#1145)
+  * remove done TODOs
+  * add g++-6 to ubuntu-14.04 (#1144)
+  * Add MSVC ARM64 support to cmake (#1090)
+  * Add ubuntu-14.04 build and test workflow (#1131)
+  * Clean -Wreserved-identifier instances (#1143)
+  * Fix StrSplit empty string case (#1142)
+  * cmake: Add explicit BENCHMARK_ENABLE_LIBPFM option (#1141)
+  * Add API to benchmark allowing for custom context to be added (#1137)
+  * Add `benchmark_context` flag that allows per-run custom context. (#1127)
+  * Add multiple compiler support to build-and-test workflow (#1128)
+  * enable markdown rendering on github pages
+  * Support optional, user-directed collection of performance counters (#1114)
+
+-------------------------------------------------------------------
 Wed Apr 28 06:47:33 UTC 2021 - mpluskal@suse.com
 
 - Update to version 1.5.3:
