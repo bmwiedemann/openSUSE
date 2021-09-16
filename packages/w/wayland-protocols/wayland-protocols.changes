@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep  1 17:58:37 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 1.22
+  This release includes a new staging protocol: DRM object leasing.
+
+  Besides that, various test and build system improvements are
+  included, as well as a set of clarifications to the
+  xdg-activation protocol and other protocols.
+
+  * xdg-shell: Make xdg_surface fail when surface has role
+  * xdg-output: fix minor calculation error
+  * xdg-activation: correct sequence when X11 client spawns
+    Wayland client
+  * xdg-activation: rewrite and move description of token forwarding
+  * xdg-activation-v1: clarify set_{serial,surface}
+  * presentation-time: use enum entry description tags
+- Check https://lists.freedesktop.org/archives/wayland-devel/2021-September/041972.html
+  for the full list of changes.
+
+-------------------------------------------------------------------
 Sun May  9 17:31:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.21:
