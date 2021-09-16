@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 16 13:33:50 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210916.57abe572:
+  * Fix typo in documentation
+  * OBSLocal: functions to easily manage several review bots
+  * OBSLocal: rename assertReviewBot to assertReviewScript
+  * OBSLocal: improve documentation about scripts and asserts
+  * OBSLocal: small reorganization
+  * Extract useful stuff to a base OBSLocal.StagingWorkflow class
+  * OBSLocal: clarify some aspects of attributes management
+  * Rename test file to ensure it is executed in CI
+  * Rename OBSLocal.StagingWorkflow to OBSLocal.FactoryWorkflow
+
+-------------------------------------------------------------------
 Tue Sep 14 05:39:07 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210914.b25b3f35:
