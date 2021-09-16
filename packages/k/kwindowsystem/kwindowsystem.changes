@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:22 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * Read uncomplete WM_CLASS string (kde#441005)
+  * Don't link publicly against XCB (kde#441266)
+
+-------------------------------------------------------------------
 Fri Aug  6 12:13:26 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
