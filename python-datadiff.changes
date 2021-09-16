@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 05:42:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch switch-to-pytest.patch:
+  * Stop using nose imports, use pytest instead.
+
+-------------------------------------------------------------------
 Mon Oct 21 12:34:48 UTC 2019 - Martin Hauke <mardnh@gmx.de>
 
 - Add license file LICENSE-2.0.txt
