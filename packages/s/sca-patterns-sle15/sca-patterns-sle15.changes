@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 15:01:07 UTC 2021 - Jason Record <jason.record@suse.com>
+
+- Added video links to patterns (bsc#1190460)
+  + bhc-scc-expired.py,  bhc-scc-registered.py, bhc-diskused-00001.pl, bhc-memused-00001.pl
+
+-------------------------------------------------------------------
 Wed Sep  8 19:36:20 UTC 2021 - Jason Record <jason.record@suse.com>
 
 - Updates to version 1.0.8
