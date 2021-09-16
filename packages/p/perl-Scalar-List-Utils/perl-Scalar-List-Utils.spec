@@ -18,7 +18,7 @@
 
 %define cpan_name Scalar-List-Utils
 Name:           perl-Scalar-List-Utils
-Version:        1.56
+Version:        1.59
 Release:        0
 Summary:        Common Scalar and List utility subroutines
 License:        Artistic-1.0 OR GPL-1.0-or-later
@@ -34,7 +34,6 @@ Common Scalar and List utility subroutines
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 13 03:07:19 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.59
+   see /usr/share/doc/packages/perl-Scalar-List-Utils/Changes
+
+  1.59 -- 2021-09-12
+  	[CHANGES]
+  	 * Removed Scalar::Util::isbool() as the API design for older perls
+  	   isn't quite clear, and it doesn't do anything useful on any
+  	   currently-released perl version
+  	  * Tidy up the unnecessary bits of @EXPORT_FAIL
+  	  * Use the new G_LIST constant rather than G_ARRAY
+  1.58 -- 2021-09-12
+          (bad release because I forgot to `git push`)
+  1.57 -- 2021-09-11
+  	[CHANGES]
+  	 * Added Scalar::Util::isbool() to track new core-supported boolean
+  	   value nature on scalars
+  	 * Fix various typoes in docs, code comments, etc...
+  	 * Removed code conditional on whether SvWEAKREF is supported, as
+  	   every perl since v5.6 supports it
+  	[BUGFIXES]
+  	 * Fix segfaults when an undefined subroutine is passed to
+  	   block-taking subs (thanks ilmari)
+  	 * Correct refcount handling on hv_store_ent to PL_DBsub in
+  	   set_subname() (thanks nwc10)
+  	 * Don't rely on Scalar::Util functions when unit-testing List::Util
+  	   ones (thanks haarg)
+
+-------------------------------------------------------------------
 Wed Mar 31 03:09:27 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.56
