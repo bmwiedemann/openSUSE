@@ -1495,4 +1495,18 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>913320</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>57f6cd8f8153075244421ec19d6869cc</srcmd5>
+    <version>0.8.7+14+suse.5a09bfa</version>
+    <time>1631826872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version  0.8.7+14+suse.5a09bfa1:
+  * Fix possible string overflows (bsc#1188148)
+- Upstream fixes / changes
+  * better string handling
+  * multipath: print warning if multipathd isn't running
+  * mpathpersist: better error msg when no usable paths exist
+  * fixes from 0.8.6+32+suse.f11c192 merged upstream (forwarded request 918046 from mwilck)</comment>
+    <requestid>918047</requestid>
+  </revision>
 </revisionlist>

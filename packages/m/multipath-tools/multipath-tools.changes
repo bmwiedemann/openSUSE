@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 10 20:36:51 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Update to version  0.8.7+14+suse.5a09bfa1:
+  * Fix possible string overflows (bsc#1188148)
+
+- Upstream fixes / changes
+  * better string handling
+  * multipath: print warning if multipathd isn't running
+  * mpathpersist: better error msg when no usable paths exist
+  * fixes from 0.8.6+32+suse.f11c192 merged upstream
+  
+-------------------------------------------------------------------
 Fri Aug 13 11:03:13 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Spec file: remove compatibility code for SLE <= SLE15-SP2
