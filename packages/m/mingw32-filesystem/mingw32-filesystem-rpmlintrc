@@ -1,0 +1,5 @@
+addFilter("^mingw32-.*filelist-forbidden-fhs23")
+addFilter("^mingw32-.*filelist-forbidden-opt")
+addFilter("^mingw32-.*non-conffile-in-etc")
+# positive false on tumbleweed, does not work as expected
+addFilter("^mingw32-.*unused-rpmlintrc-filter")
