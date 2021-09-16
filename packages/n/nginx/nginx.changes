@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:44:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Updated to 1.21.3
+  * https://nginx.org/en/CHANGES
+  * Optimization of client request body reading when using HTTP/2.
+  * Fixed request body filters internal API when using HTTP/2 and
+    buffering of the data being processed.
+
+-------------------------------------------------------------------
 Wed Sep  1 07:09:54 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
 
 - Updated to 1.21.2

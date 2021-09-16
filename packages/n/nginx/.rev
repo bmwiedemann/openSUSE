@@ -800,4 +800,16 @@
     disk if the &quot;Content-Length&quot; header line was not present in the request.</comment>
     <requestid>915419</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>b92f4ed7981c63ab0397c9c731df78f9</srcmd5>
+    <version>1.21.3</version>
+    <time>1631826870</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated to 1.21.3
+  * https://nginx.org/en/CHANGES
+  * Optimization of client request body reading when using HTTP/2.
+  * Fixed request body filters internal API when using HTTP/2 and
+    buffering of the data being processed.</comment>
+    <requestid>918014</requestid>
+  </revision>
 </revisionlist>
