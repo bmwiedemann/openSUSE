@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-filesystem
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,13 @@
 #
 
 
+# Tumbleweed
+%if %suse_version == 1550
+%define _rpmlintdir /opt/testing/share/rpmlint
+%else
+%define _rpmlintdir /opt/testing/share/rpmlint/mini
+%endif
+
 %define debug_package %{nil}
 %if %{undefined _distconfdir}
 %define _distconfdir %{_sysconfdir}
@@ -24,7 +31,7 @@
 %define _rpmmacrodir %{_sysconfdir}/rpm
 %endif
 Name:           mingw64-filesystem
-Version:        20201105
+Version:        20210914
 Release:        0
 Summary:        MinGW base filesystem and environment
 License:        GPL-2.0-or-later
@@ -45,6 +52,7 @@ Source11:       languages.man
 Source12:       mingw64-cmake.prov
 Source13:       mingw64-cmake.attr
 Source14:       macros.mingw64-cmake
+Source15:       mingw64-filesystem-rpmlintrc 
 Provides:       mingw64(bcrypt.dll)
 Provides:       mingw64(dbghelp.dll)
 Provides:       mingw64(mpr.dll)
@@ -53,7 +61,7 @@ Provides:       mingw64(userenv.dll)
 Provides:       mingw64(uxtheme.dll)
 # TODO: The available DLL's can be identified by the
 # available import libraries of the mingw64-runtime package.
-# needed by mingw64-libqt5-qtbase 
+# needed by mingw64-libqt5-qtbase
 Provides:       mingw64(d2d1.dll)
 Provides:       mingw64(d3d11.dll)
 Provides:       mingw64(dwrite.dll)
@@ -61,6 +69,7 @@ Provides:       mingw64(ncrypt.dll)
 Requires:       mingw64-cross-breakpad-tools
 Requires:       python3
 Requires:       rpm
+Requires:       rpmlint-mini
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 #!BuildIgnore: post-build-checks
@@ -103,10 +112,17 @@ install -m 644 %{SOURCE2} %{buildroot}%{_distconfdir}/profile.d
 
 mkdir -p %{buildroot}%{_rpmmacrodir}
 install -m 644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.mingw64
-install -m 644 %{SOURCE14} %{buildroot}%{_rpmmacrodir}/macros.mingw64-cmake
+install -m 644 %{SOURCE14} %{buildroot}%{_rpmmacrodir}/$(basename %{SOURCE14})
 
-mkdir -p %{buildroot}%{_sysconfdir}/rpmlint
-install -m 644 %{SOURCE7} %{buildroot}%{_sysconfdir}/rpmlint/mingw64-rpmlint.config
+mkdir -p %{buildroot}%_rpmlintdir
+# tumbleweed
+%if %suse_version == 1550
+# convert to toml file format, which seems to be required
+sed "s,addFilter *(\",     ',g;s#\")#',#g" %{SOURCE7} | gawk 'BEGIN { print "Filters = ["} { print $0 } END { print "]"}' > %{SOURCE7}.toml
+install -m 644 %{SOURCE7}.toml %{buildroot}%_rpmlintdir/mingw64.toml
+%else
+install -m 644 %{SOURCE7} %{buildroot}%_rpmlintdir/mingw64-rpmlint.config
+%endif
 
 mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32
 
@@ -137,7 +153,7 @@ mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32/sys-root/mingw%{_localstatedi
 
 # Let programs locate their plugins relative to the executable without using
 # upward movement ("..") in those packages, cf. libdbi, libenchant.
-# 
+#
 mkdir -p %{buildroot}%{_prefix}/x86_64-w64-mingw32/sys-root/mingw/bin/lib
 ln -s ../../lib "%buildroot/%_prefix/x86_64-w64-mingw32/sys-root/mingw/bin/lib/x86_64-pc"
 
@@ -183,7 +199,11 @@ done < %{SOURCE11}
 %else
 %{_distconfdir}/profile.d/mingw64.sh
 %endif
-%config %{_sysconfdir}/rpmlint/mingw64-rpmlint.config
+%if %suse_version == 1550
+%_rpmlintdir/mingw64.toml
+%else
+%_rpmlintdir/mingw64-rpmlint.config
+%endif
 %{_rpmconfigdir}/mingw64-cmake.prov
 %{_fileattrsdir}/mingw64-cmake.attr
 %{_bindir}/mingw64-*

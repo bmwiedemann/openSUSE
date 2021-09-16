@@ -3,7 +3,7 @@ addFilter ("^mingw64-.*devel-file-in-non-devel")
 
 # /usr/x86_64-w64-mingw32 is permitted by MinGW packaging guidelines.
 addFilter ("^mingw64-.*non-standard-dir-in-usr x86_64-w64-mingw32")
-addFilter ("^mingw64-.*suse-filelist-forbidden-fhs23 /usr/x86_64-w64-mingw32")
+addFilter ("^mingw64-.*filelist-forbidden-fhs23 /usr/x86_64-w64-mingw32")
 
 # GCC and libtool create executable archive files.  It's not clear
 # why, but we permit this for now.
@@ -20,3 +20,8 @@ addFilter("debuginfo-without-sources")
 
 # This group is used a lot, so ignore the warning about it.
 addFilter ("^mingw64-.*non-standard-group Development/Libraries$")
+
+# using /opt/testing
+addFilter("^mingw64-*filelist-forbidden-opt")
+
+addFilter("^mingw64-.*potential-bashisms")

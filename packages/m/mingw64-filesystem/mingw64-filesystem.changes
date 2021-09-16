@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 14 10:20:08 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
+
+- Fix install path and file format for global rpmlint config file on
+  openSUSE_Tumbleweed (bug boo#1190304, boo#1190438)
+- Use rpmlint-mini also on Leap 15.x to fix the conflict breakage
+- Be more verbose when version in generated xxxConfigVersion.cmake
+  files is empty (see https://build.opensuse.org/request/show/915515)
+- Sync with mingw32 variant
+
+-------------------------------------------------------------------
+Tue Sep 14 06:39:03 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Force rpmlint use and avoid using of rpmlint-mini
+
+-------------------------------------------------------------------
 Wed Jul 28 06:04:17 UTC 2021 - Ralf Habacker <ralf.habacker@freenet.de>
 
 -  Add provides for bcrypt.dll required by mingw64-gdb 10.2
