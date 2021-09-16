@@ -33,7 +33,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/kdecoration-%{
 Source1:        https://download.kde.org/stable/plasma/%{version}/kdecoration-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-Source3:        baselibs.conf
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules >= 0.0.11
 BuildRequires:  kf5-filesystem
