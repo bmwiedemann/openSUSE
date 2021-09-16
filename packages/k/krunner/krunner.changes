@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:17 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * replace "MacOSX" with "macOS"
+  * Port away from KPluginLoader
+  * Output warning if unknown X-Plasma-API is requested
+  * Deprecate constructor overload which can not be used with KPluginFactory
+  * cmake: Remove intermediate copy target
+  * Use the pointer-to-member-function QObject::connect() signal/slot syntax
+  * Add snippet on how to port deprecated AbstractRunner action methods
+  * abstractrunner: Deprecate utility methods for actions
+  * dbusrunner: Add Teardown and Config methods to D-Bus interface
+
+-------------------------------------------------------------------
 Fri Aug  6 12:13:10 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
