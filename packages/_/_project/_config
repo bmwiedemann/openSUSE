@@ -515,6 +515,9 @@ Prefer: -nunit3-devel
 # Pick the regular libz.so.1
 Prefer: -libz-ng-compat1 -zlib-ng-compat-devel
 
+# have choice for system-tuning-common-SUSE needed by patterns-base-enhanced_base: system-tuning-common-SUSE udev-extra-rules; udev-extra-rules provides/obsoletes system-tuning-common-SUSE, thus we prefer the newer one
+Prefer: -system-tuning-common-SUSE
+
 # 32bit -devel packages contain .pc files and cause a 'have choice' for OBS. unfavor the -32bit variants
 Prefer: -ColPack-devel-32bit                          
 Prefer: -FAudio-devel-32bit                           
