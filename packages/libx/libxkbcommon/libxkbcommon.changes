@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 10 20:04:05 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.1
+  * In `xkbcli interactive-x11`, use the Esc keysym instead of
+    the Esc keycode for quitting.
+  * In `xkbcli how-to-type`, add `--keysym` argugment for how to
+    type a keysym instead of a Unicode codepoint.
+  * Fix a crash in `xkb_x11_keymap_new_from_device` error
+    handling given some invalid keymaps. Had regressed in 1.2.0.
+
+-------------------------------------------------------------------
 Sat May  1 21:36:45 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.0
