@@ -468,4 +468,18 @@
     <comment>KDE Frameworks 5.85.0 (forwarded request 912073 from cgiboudeaux)</comment>
     <requestid>912143</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>d08ceae8ea38b36866154b77ff59c97f</srcmd5>
+    <version>5.86.0</version>
+    <time>1631826819</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * Use text as tooltip only for icon-only buttons (kde#441810)
+  * controls/AbstractApplicationHeader: disable hiding on touch scrolling behaviour by default (kde#439923)</comment>
+    <requestid>919165</requestid>
+  </revision>
 </revisionlist>
