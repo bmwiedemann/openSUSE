@@ -392,4 +392,12 @@ Not installed by default yet as it's currently in beta.</comment>
     <comment>KDE Frameworks 5.85.0 (forwarded request 912073 from cgiboudeaux)</comment>
     <requestid>912177</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>01f8bc5021374ef1fcb33b23fb3b5f0a</srcmd5>
+    <version>5.86.0</version>
+    <time>1631826818</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.86 (forwarded request 917089 from cgiboudeaux)</comment>
+    <requestid>918612</requestid>
+  </revision>
 </revisionlist>
