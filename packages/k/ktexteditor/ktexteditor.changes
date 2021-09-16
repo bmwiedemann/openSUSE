@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:18 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:22:19 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Too many changes since 5.85.0, only listing bugfixes:
+  * Python indentation: decrease indent when appropriate keyword is typed (kde#392732)
+  * Do not show encoding error when file only contains BOM (kde#440359)
+
+-------------------------------------------------------------------
 Fri Aug  6 12:13:12 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0

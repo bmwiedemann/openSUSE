@@ -20,10 +20,10 @@
 %{!?_kf5_version: %global _kf5_version %{version}}
 # Last major and minor KF5 version (e.g. 5.33)
 %{!?_kf5_bugfix_version: %define _kf5_bugfix_version %(echo %{_kf5_version} | awk -F. '{print $1"."$2}')}
-%define _tar_path 5.85
+%define _tar_path 5.86
 %bcond_without lang
 Name:           ktexteditor
-Version:        5.85.0
+Version:        5.86.0
 Release:        0
 Summary:        Embeddable text editor component
 License:        LGPL-2.1-or-later
@@ -34,7 +34,6 @@ Source:         https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-
 Source1:        https://download.kde.org/stable/frameworks/%{_tar_path}/%{name}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-Source99:       baselibs.conf
 # PATCH-MISFEATURE-OPENSUSE - Disliked by the security team (boo#1033055)
 Patch1:         0001-Disable-KAuth-integration.patch
 BuildRequires:  extra-cmake-modules >= %{_kf5_bugfix_version}
