@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:24:00 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Drop the unneeded baselibs.conf.
+
+-------------------------------------------------------------------
+Mon Sep  6 06:21:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 5.86.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/5/5.86.0
+- Changes since 5.85.0:
+  * Add support for static builds
+  * We depend against c++-17 so we can use qOverload directly
+  * Hide KHamburgerMenu in QMenus when a native menu bar is used (kde#439997)
+  * clarify quickhelp apidocs
+
+-------------------------------------------------------------------
 Fri Aug  6 12:11:47 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 5.85.0
