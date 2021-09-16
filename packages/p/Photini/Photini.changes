@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 16 14:15:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2021.9.0
+  * New option to set file timestamps to photo's taken date/time.
+  * Improved GPX importer.
+  * Add option to use python-exiv2 for metadata access.
+
+-------------------------------------------------------------------
 Mon Jul 12 10:54:42 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2021.7.0
