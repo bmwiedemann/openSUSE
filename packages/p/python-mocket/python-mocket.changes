@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep  4 18:19:20 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- remove obsolete kwsyntax.patch.
+
+-------------------------------------------------------------------
+Sat Sep  4 18:10:11 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- Update to version 3.9.44:
+ - Update __init__.py
+ - Removing the constraint for `decorator`.
+ - Update __init__.py (#155)
+ - Patch from PR #150 (Refactored the mocketize decorator) (#153)
+   * Patch from PR #150. Thanks to @micheles form the hints.
+   * Complete refactor for using `decorator>=5`.
+ - Update README.rs
+
+-------------------------------------------------------------------
 Thu Aug  5 15:22:22 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Add kwsyntax.patch to fix test failure with new decorator.

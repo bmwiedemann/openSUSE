@@ -26,21 +26,20 @@
 %bcond_with test
 %endif
 Name:           python-mocket%{psuffix}
-Version:        3.9.42
+Version:        3.9.44
 Release:        0
 Summary:        Python socket mock framework
 License:        BSD-3-Clause
 URL:            https://github.com/mindflayer/python-mocket
 Source0:        https://files.pythonhosted.org/packages/source/m/mocket/mocket-%{version}.tar.gz
-Patch0:         kwsyntax.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-decorator
+Requires:       python-decorator >= 4
 Requires:       python-http-parser >= 0.9.0
-Requires:       python-python-magic
+Requires:       python-python-magic >= 0.4.5
 Requires:       python-six
-Requires:       python-urllib3
+Requires:       python-urllib3 >= 1.25.3
 Suggests:       python-gevent
 Suggests:       python-pook >= 0.2.1
 Suggests:       python-redis
@@ -81,7 +80,6 @@ included, with gevent/asyncio/SSL support.
 
 %prep
 %setup -q -n mocket-%{version}
-%autopatch -p1
 sed -i '/cov/ d' setup.cfg
 sed -i '/pipenv/ d' setup.py
 sed -i 's/==.*$//' requirements.txt
