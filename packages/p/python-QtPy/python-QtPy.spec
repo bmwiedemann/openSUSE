@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-QtPy
-Version:        1.10.0
+Version:        1.11.1
 Release:        0
 Summary:        Abstraction layer on top of Qt bindings
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/spyder-ide/qtpy
 Source:         https://files.pythonhosted.org/packages/source/Q/QtPy/QtPy-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM 0001-Add-QtDatavisualization-alias-to-QtDataVisualization.patch -- gh#spyder-ide/qtpy#228
-Patch0:         0001-Add-QtDatavisualization-alias-to-QtDataVisualization.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -76,9 +74,6 @@ except ImportError:\
 sed -i '/skipif.*not PYSIDE2/ d' qtpy/tests/test_qtcharts.py
 # remove script calling pytest so that pytest does not discover it
 rm qtpy/tests/runtests.py
-# Submitted to upstream at gh#spyder-ide/qtpy#228
-mv qtpy/QtDatavisualization.py qtpy/QtDataVisualization.py
-%patch0 -p1
 
 %build
 %python_build

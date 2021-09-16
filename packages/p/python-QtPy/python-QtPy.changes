@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 14 11:06:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.11.1
+  * Wrap pysideuic and pyside2uic imports since they could be
+    unavailable
+  * qtpy/tests/test_uic.py: skip if pyside2uic not installed
+- Release 1.11.0
+  * Add QtWebEngineWidgets.QWebEngineProfile for PyQt5 and PySide2
+  * Rename QtDatavisualization to use uppercase v
+  * Add support for QStyleOptionFrameV3 from PyQt4
+  * Add QtWinExtras module
+  * Add support for QtSerialPort add-on
+  * Add support for the QtPositioning module
+  * Add loadUiType implementation for PySide2
+- Drop patch merged upstream gh#spyder-ide/QtPy#228
+  * 0001-Add-QtDatavisualization-alias-to-QtDataVisualization.patch
+
+-------------------------------------------------------------------
 Tue Aug 17 14:37:49 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.10.0
