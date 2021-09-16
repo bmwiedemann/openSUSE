@@ -26,7 +26,6 @@ License:        LGPL-2.0-or-later
 Group:          System/GUI/KDE
 URL:            https://phonon.kde.org/
 Source:         https://download.kde.org/stable/%{rname}/%{version}/%{rname}-%{version}.tar.xz
-Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules >= 5.60.0
 BuildRequires:  fdupes

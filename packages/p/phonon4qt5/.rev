@@ -205,4 +205,12 @@
     <comment></comment>
     <requestid>733475</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2715af1b4af46426d7b547e74f22bf53</srcmd5>
+    <version>4.11.1</version>
+    <time>1631826861</time>
+    <user>dimstar_suse</user>
+    <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
+    <requestid>919229</requestid>
+  </revision>
 </revisionlist>
