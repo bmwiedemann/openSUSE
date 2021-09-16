@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 12 17:21:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.48.10:
+  + Fix a crash in strikethrough drawing.
+  + pango-view:
+    - Support antialiasing freetype.
+    - Use GraphicsMagick.
+
+-------------------------------------------------------------------
 Wed Aug 18 17:36:58 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.48.9:

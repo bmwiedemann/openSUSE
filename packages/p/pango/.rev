@@ -1059,4 +1059,12 @@
   offending commit. (forwarded request 912943 from iznogood)</comment>
     <requestid>913696</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>a947f0e745af0aee7d4bd94d7e181b39</srcmd5>
+    <version>1.48.10</version>
+    <time>1631826876</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 918528 from iznogood)</comment>
+    <requestid>918655</requestid>
+  </revision>
 </revisionlist>
