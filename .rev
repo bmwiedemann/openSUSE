@@ -183,4 +183,12 @@
     <comment>- Disable lto for ppc64 builds.</comment>
     <requestid>914619</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a1ef5f7a49c705f6d0d4e211f53fbce4</srcmd5>
+    <version>5.86.0</version>
+    <time>1631826812</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 5.86 (forwarded request 917089 from cgiboudeaux)</comment>
+    <requestid>918548</requestid>
+  </revision>
 </revisionlist>
