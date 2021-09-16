@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Sep 16 02:26:24 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 0.24.0:
+  * Bump to 0.24.0 and added changelogs (#2842)
+  * Hide manifests behind button toggle (#2841)
+  * Add property CustomSvg to icons and navigation (#2786)
+  * Fixed status indicator for text and link components (#2811)
+  * plugins - automatically reload/remove Go plugins (#2818)
+  * Create helper for logs and add documentation
+  * Add protoc-gen-go-grpc (#2774)
+  * Allow Go plugins to apply yaml (#2775)
+  * Bump google.golang.org/grpc from 1.39.1 to 1.40.0
+  * Bump jsoneditor from 9.5.2 to 9.5.4 in /web
+  * Bump tar from 6.1.0 to 6.1.11 in /web
+  * Show container image manifest for pods (#2810)
+  * Set accessor for tabs from plugins (#2809)
+  * Show error for JS plugin watcher (#2776)
+  * Update "Resources" page in octant.dev (#2794)
+  * Bump github.com/fsnotify/fsnotify from 1.5.0 to 1.5.1
+  * Bump core-js from 3.16.1 to 3.16.2 in /web
+  * Bump cytoscape from 3.18.2 to 3.19.1 in /web
+  * Bump electron-builder from 22.12.0 to 22.12.1 in /web
+  * Bump tslib from 2.3.0 to 2.3.1 in /web
+  * Bump electron from 11.4.11 to 11.4.12 in /web
+  * Fix modal flicker on module load (#2779)
+  * Bump github.com/fsnotify/fsnotify from 1.4.9 to 1.5.0
+  * Bump jszip from 3.5.0 to 3.7.1 in /web
+  * Bump path-parse from 1.0.6 to 1.0.7 in /web
+  * Bump @babel/core from 7.14.8 to 7.15.0 in /web
+  * Bump electron from 11.4.8 to 11.4.11 in /web
+  * Bump @types/node from 14.17.6 to 14.17.9 in /web
+  * Bump go.uber.org/zap from 1.18.1 to 1.19.0
+  * Bump google.golang.org/grpc from 1.39.0 to 1.39.1
+  * Add npm cache (#2743)
+  * Make icon tooltip reference visible
+  * Bump angular to 12.2.0 and postcss deps
+  * prevent plugins in Windows from creating terminals (#2701)
+  * Bump actions/setup-node from 2.3.0 to 2.3.2
+  * Bump choco to 0.23 (#2720)
+
+-------------------------------------------------------------------
 Wed Aug 04 11:24:58 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 0.23.0:
