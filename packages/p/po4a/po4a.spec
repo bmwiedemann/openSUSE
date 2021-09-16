@@ -17,7 +17,7 @@
 
 
 Name:           po4a
-Version:        0.63
+Version:        0.64
 Release:        0
 Summary:        Framework to translate documentation and other materials
 License:        GPL-2.0-only
@@ -79,6 +79,7 @@ Recommends:     libtext-wrapi18n-perl
 Recommends:     libunicode-linebreak-perl
 %else
 Requires:       %{name}-lang = %{version}
+Requires:       gettext-tools
 Requires:       perl-SGMLS
 Requires:       perl-YAML-Tiny
 Requires:       perl(Pod::Parser)

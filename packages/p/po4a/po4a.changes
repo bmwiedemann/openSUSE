@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 16 14:07:38 UTC 2021 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Add gettext-tools as Requires (boo#1190403)
+
+-------------------------------------------------------------------
+Mon Sep 13 14:02:47 UTC 2021 - Luiz Fernando Ranghetti <elchevive@opensuse.org>
+
+- Update to version 0.64
+- Remove a69b48eda3ebd66eec30a34a377c7a00c6f8e36c.patch (included in this
+release)
+
+Asciidoc:
+ * Detect sublevel description lists with :::
+ * Don't split in attributes include:: and ifeval:: lines (Github's #298)
+
+Pod:
+ * Don't wrap textblocks, as it may break C<> markup (similar to Github's #242)
+
+Core:
+ * Mitigate Perl bug #18604 (simplify a regexp into a substring index) (Github's #302)
+ * Improve the consistency of all our module lists (related to Github's #136)
+   Thanks Viet Than.
+
+
+-------------------------------------------------------------------
+Fri Sep 10 20:17:45 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- backport https://github.com/mquinson/po4a/commit/a69b48eda3ebd66eec30a34a377c7a00c6f8e36c.patch
+  this works around a memory leak in perl
+  https://github.com/Perl/perl5/issues/18604
+  https://github.com/mquinson/po4a/issues/317
+  https://github.com/mquinson/po4a/issues/302
+
+-------------------------------------------------------------------
 Sat Jul 10 00:41:40 UTC 2021 - Pau Garcia Quiles <pau.garcia@suse.com>
 
 - debbuild does not understand patterns like man[1357] so desaggregating
