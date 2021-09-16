@@ -27,7 +27,6 @@ URL:            https://www.kde.org
 Source:         https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/%{rname}/%{rname}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
-Source3:        baselibs.conf
 BuildRequires:  cmake >= 3.11
 BuildRequires:  extra-cmake-modules
 BuildRequires:  kf5-filesystem
