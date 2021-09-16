@@ -18,20 +18,19 @@
 
 Name:           leiningen
 # Change LEIN_VERSION in lein-pkg when bumping
-Version:        2.9.6
+Version:        2.9.7
 Release:        0
 Summary:        Automation for Clojure projects
 License:        EPL-1.0
 Group:          Development/Tools/Building
 URL:            https://leiningen.org/
-Source0:        https://github.com/technomancy/leiningen/releases/download/%{version}/leiningen-%{version}-standalone.zip
+Source0:        https://github.com/technomancy/leiningen/releases/download/%{version}/leiningen-%{version}-standalone.jar
 # Following files are taken from the upstream repo in the `doc` and `bin` subfolders:
-Source1:        lein-pkg
-Source2:        bash_completion.bash
-Source3:        zsh_completion.zsh
-Source4:        lein.1
+Source1:        https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein-pkg
+Source2:        https://raw.githubusercontent.com/technomancy/leiningen/stable/bash_completion.bash
+Source3:        https://raw.githubusercontent.com/technomancy/leiningen/stable/zsh_completion.zsh
+Source4:        https://raw.githubusercontent.com/technomancy/leiningen/stable/doc/lein.1
 BuildRequires:  fdupes
-BuildRequires:  unzip
 Requires:       clojure >= 1.10.0
 Requires:       java >= 1.8.0
 BuildArch:      noarch
