@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 10 11:30:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- ExcludeArch %ix86: this is a bit a special trick, but as there is
+  no pandoc for intel/i586 arch, we can't build there anyway. As
+  the resulting package is noarch though, it does not matter much.
+
+-------------------------------------------------------------------
 Wed Jul 28 11:46:18 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.5.17

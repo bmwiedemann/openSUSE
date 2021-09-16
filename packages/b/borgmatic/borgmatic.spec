@@ -64,6 +64,7 @@ Requires:       python3-pykwalify
 Requires:       python3-requests
 Requires:       python3-ruamel.yaml
 Requires:       python3-setuptools
+ExcludeArch:    %ix86
 BuildArch:      noarch
 
 %description
