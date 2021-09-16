@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 08:45:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Inject multibuild to avoid build cycles. 
+
+-------------------------------------------------------------------
 Thu Feb  4 09:58:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add pytest-cov-pr453-coverage54.patch to work with coverage 5.4

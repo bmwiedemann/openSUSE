@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest-cov
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -17,7 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-Name:           python-pytest-cov
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%bcond_without test
+%define psuffix -%{flavor}
+%else
+%bcond_with test
+%define psuffix %{nil}
+%endif
+Name:           python-pytest-cov%{psuffix}
 Version:        2.11.1
 Release:        0
 Summary:        Pytest plugin for coverage reporting
@@ -29,11 +37,13 @@ Patch0:         https://github.com/pytest-dev/pytest-cov/pull/453.patch#/pytest-
 BuildRequires:  %{python_module coverage >= 5.2.1}
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
+%if %{with test}
 BuildRequires:  %{python_module pytest >= 4.6.0}
 BuildRequires:  %{python_module pytest-xdist}
+BuildRequires:  %{python_module virtualenv}
+%endif
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module virtualenv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-coverage >= 5.2.1
@@ -56,21 +66,27 @@ through pytest-cov or through coverage's config file.
 %python_build
 
 %install
+%if ! %{with test}
 %python_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/
+%endif
 
 %check
+%if %{with test}
 # test_dist_missing_data - needs internet access
 # test_central_subprocess_change_cwd_with_pythonpath - needs pytest cov in venv which is not doable in OBS build
 export PYTHONDONTWRITEBYTECODE=1
 echo "import site;site.addsitedir(\"$(pwd)/src\")" > tests/sitecustomize.py
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib}:$PWD/tests py.test-%{$python_bin_suffix} -v -k 'not (test_dist_missing_data or test_central_subprocess_change_cwd_with_pythonpath)'
+%endif
 
+%if ! %{with test}
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/pytest-cov.pth
 %{python_sitelib}/pytest_cov
 %{python_sitelib}/pytest_cov-%{version}-py%{python_version}.egg-info
+%endif
 
 %changelog

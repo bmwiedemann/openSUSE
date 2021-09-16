@@ -191,4 +191,12 @@
     <comment></comment>
     <requestid>869515</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>5349864310b5db8b80a8b6cc1324c3bc</srcmd5>
+    <version>2.11.1</version>
+    <time>1631826880</time>
+    <user>dimstar_suse</user>
+    <comment>- Inject multibuild to avoid build cycles.</comment>
+    <requestid>918856</requestid>
+  </revision>
 </revisionlist>
