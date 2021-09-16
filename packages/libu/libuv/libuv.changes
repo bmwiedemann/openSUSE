@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 12 19:31:23 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.42.0:
+  * more errno mappings and fixes
+  * higher performance try-writes
+  * fix string encoding issue of uv_os_gethostname
+  * Workarounds for a copy_file_range kernel bug
+  * Better support for TSan
+
+-------------------------------------------------------------------
 Tue Jul 13 08:28:21 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- CVE-2021-22918: fix out of bounds read in punycode decoder
-  (bsc#1187973)
+- update to 1.41.1:
+  * CVE-2021-22918: fix out of bounds read in punycode decoder
+    (bsc#1187973)
 
 -------------------------------------------------------------------
 Tue Feb 23 22:43:09 UTC 2021 - Dirk Müller <dmueller@suse.com>
