@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep  3 13:29:24 MDT 2021 - carnold@suse.com
+
+- Update to database version 20210903
+  osinfo-db-20210903.tar.xz
+
+-------------------------------------------------------------------
+Wed Sep  1 10:03:41 MDT 2021 - carnold@suse.com
+
+- Update to database version 20210809
+  osinfo-db-20210809.tar.xz
+
+-------------------------------------------------------------------
 Tue Jul 27 12:43:17 MDT 2021 - carnold@suse.com
 
 - bsc#1182144 - osinfo-db: autoinst.xml does not work with

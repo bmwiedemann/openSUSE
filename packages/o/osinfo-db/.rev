@@ -392,4 +392,12 @@
     <comment>Fix language element in opensuse-autoyast-desktop.xml for bsc#1182144</comment>
     <requestid>908654</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>2fb2aa42f6de80ef7b277de3f5ef68cb</srcmd5>
+    <version>20210903</version>
+    <time>1631826871</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>918021</requestid>
+  </revision>
 </revisionlist>
