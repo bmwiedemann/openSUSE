@@ -34,7 +34,6 @@ Source:         https://download.kde.org/stable/plasma/%{version}/libkscreen-%{v
 Source1:        https://download.kde.org/stable/plasma/%{version}/libkscreen-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
-Source3:        baselibs.conf
 BuildRequires:  cmake >= 3.16
 BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
