@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 16 04:01:51 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.0:
+  * Fixing a warning from deprecated get_platform function.
+  * Applied black
+  * some cleanups
+  * removed the package module (not used)
+  * more tests
+  * logging slightly improved 
+- Actually run tests, skipping one test that requires network.
+- Stop installing easydev_buildPackage
+
+-------------------------------------------------------------------
 Tue May 26 06:34:04 UTC 2020 - Petr Gajdos <pgajdos@suse.com>
 
 - %python3_only -> %python_alternative
