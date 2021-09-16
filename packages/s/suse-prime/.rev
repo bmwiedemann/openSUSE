@@ -549,4 +549,13 @@ Latest changes:
 - merged suse-prime/suse-prime-bbswitch packages</comment>
     <requestid>919256</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>c71bc2b5a1110c0a78c74e842dcee724</srcmd5>
+    <version>0.8.2</version>
+    <time>1631826885</time>
+    <user>dimstar_suse</user>
+    <comment>- use appropriate folders for dracut/modprobe config files on older
+  releases than Tumbleweed</comment>
+    <requestid>919292</requestid>
+  </revision>
 </revisionlist>

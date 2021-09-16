@@ -28,7 +28,6 @@ Recommends:     bbswitch
 Recommends:     nvidia_driver
 Supplements:    modalias(nvidia_driver:pci:v00008086d*sv*sd*bc03sc*i*)
 Conflicts:      suse-prime-alt
-#Provides:       suse-prime-bbswitch:/usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
 Obsoletes:      suse-prime-bbswitch < %{version}
 Provides:       suse-prime-bbswitch = %{version}
 BuildRequires:  pkgconfig(systemd)
@@ -54,14 +53,22 @@ install -m 0644 xorg-intel-intel.conf  %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-nvidia.conf %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-nvidia-prime-render-offload.conf %{buildroot}%{_datadir}/prime/
 install -m 0644 xorg-amd.conf %{buildroot}%{_datadir}/prime/
+%if 0%{?suse_version} >= 1550
 mkdir -p %{buildroot}/usr/lib/modprobe.d
 install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}/usr/lib/modprobe.d/
 install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}/usr/lib/modprobe.d/
+mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d/
+install -m 0644 90-nvidia-dracut-G05.conf %{buildroot}/usr/lib/dracut/dracut.conf.d/
+%else
+mkdir -p %{buildroot}%{_sysconfdir}/modprobe.d
+install -m 0644 09-nvidia-modprobe-bbswitch-G04.conf %{buildroot}%{_sysconfdir}/modprobe.d
+install -m 0644 09-nvidia-modprobe-pm-G05.conf %{buildroot}%{_sysconfdir}/modprobe.d
+mkdir -p %{buildroot}/etc/dracut.conf.d
+install -m 0644 90-nvidia-dracut-G05.conf %{buildroot}/etc/dracut.conf.d
+%endif
 mkdir -p %{buildroot}%{_unitdir}
 install -m 0644 prime-select.service %{buildroot}%{_unitdir}/
 install -D -m 0755 prime-select.sh %{buildroot}%{_sbindir}/prime-select
-mkdir -p %{buildroot}/usr/lib/dracut/dracut.conf.d/
-install -m 0644 90-nvidia-dracut-G05.conf %{buildroot}/usr/lib/dracut/dracut.conf.d/
 mkdir -p %{buildroot}/usr/lib/udev/rules.d
 install -m 0644 90-nvidia-udev-pm-G05.rules %{buildroot}/usr/lib/udev/rules.d
 mkdir -p %{buildroot}/usr/sbin
@@ -101,8 +108,12 @@ rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %files
 %defattr(-,root,root)
 %doc README.md
+%if 0%{?suse_version} >= 1550
 %dir /usr/lib/dracut/
 %dir /usr/lib/dracut/dracut.conf.d/
+%else
+/etc/dracut.conf.d
+%endif
 %dir %{_datadir}/prime
 %{_datadir}/prime/xorg-amd.conf
 %{_datadir}/prime/xorg-intel.conf
@@ -113,9 +124,15 @@ rm -f /etc/dracut.conf.d/50-nvidia-default.conf
 %ghost %config(noreplace) %{_sysconfdir}/prime/current_type
 %{_sbindir}/prime-select
 %{_sbindir}/rcprime-select
+%if 0%{?suse_version} >= 1550
 /usr/lib/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
 /usr/lib/modprobe.d/09-nvidia-modprobe-pm-G05.conf
 /usr/lib/dracut/dracut.conf.d/90-nvidia-dracut-G05.conf
+%else
+%{_sysconfdir}/modprobe.d/09-nvidia-modprobe-bbswitch-G04.conf
+%{_sysconfdir}/modprobe.d/09-nvidia-modprobe-pm-G05.conf
+/etc/dracut.conf.d/90-nvidia-dracut-G05.conf
+%endif
 /usr/lib/udev/rules.d/90-nvidia-udev-pm-G05.rules
 %{_unitdir}/prime-select.service
 
