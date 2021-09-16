@@ -1,7 +1,7 @@
 #
 # spec file for package libexif
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,15 @@
 
 
 Name:           libexif
-Version:        0.6.22
+Version:        0.6.23
 Release:        0
 URL:            http://libexif.sourceforge.net
 Summary:        An EXIF Tag Parsing Library for Digital Cameras
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Source0:        %{name}-%{version}.tar.bz2
-Source2:        %{name}-%{version}.tar.bz2.asc
+Source0:        https://github.com/libexif/libexif/releases/download/v%version/libexif-%version.tar.bz2
+Source2:        https://github.com/libexif/libexif/releases/download/v%version/libexif-%version.tar.bz2.asc
 Source3:        %name.keyring
 Source1:        baselibs.conf
 BuildRequires:  doxygen
