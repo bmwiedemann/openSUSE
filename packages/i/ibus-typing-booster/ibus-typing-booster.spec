@@ -15,7 +15,7 @@
 #
 
 Name:           ibus-typing-booster
-Version:        2.14.10
+Version:        2.14.12
 Release:        0 
 Summary:        An input completion utility
 License:        GPL-3.0+
