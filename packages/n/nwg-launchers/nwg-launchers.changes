@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 17 12:42:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.1:
+  * Fix incorrect path to icon-missing file (#174)
+
+-------------------------------------------------------------------
+Fri Sep 17 12:41:17 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.0:
+  * This release brings server mode to nwggrid launcher.
+    It shoudln't break your setup as we provide transparent replacement
+    to the old nwggrid application. To use server mode, run nwggrid-server
+    in the background (e.g. using nohup or placing nwggrid-server in
+    autostart), use nwggrid -client to connect to the running server.
+    You shouldn't need to restart the server as nwggrid now tracks the
+    changes happening to desktop files in all directories, updating it's
+    inner representation when necessary.
+
+-------------------------------------------------------------------
 Tue Jul 20 07:54:40 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.5.0:

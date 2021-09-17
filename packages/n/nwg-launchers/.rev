@@ -104,4 +104,23 @@
   * Support for wlr-layer-shell protocol</comment>
     <requestid>907259</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>095d94d0008c6c55c6c7e2dae78f1b92</srcmd5>
+    <version>0.6.1</version>
+    <time>1631913965</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.1:
+  * Fix incorrect path to icon-missing file (#174)
+
+- Update to 0.6.0:
+  * This release brings server mode to nwggrid launcher.
+    It shoudln't break your setup as we provide transparent replacement
+    to the old nwggrid application. To use server mode, run nwggrid-server
+    in the background (e.g. using nohup or placing nwggrid-server in
+    autostart), use nwggrid -client to connect to the running server.
+    You shouldn't need to restart the server as nwggrid now tracks the
+    changes happening to desktop files in all directories, updating it's
+    inner representation when necessary.</comment>
+    <requestid>919743</requestid>
+  </revision>
 </revisionlist>
