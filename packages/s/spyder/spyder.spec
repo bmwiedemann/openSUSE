@@ -18,7 +18,7 @@
 
 %bcond_without  test
 Name:           spyder
-Version:        5.1.3
+Version:        5.1.5
 Release:        0
 Summary:        The Scientific Python Development Environment
 License:        MIT
@@ -334,6 +334,7 @@ donttest+=" or test_update_decorations_when_scrolling"
 donttest+=" or test_bracket_closing_new_line"
 # flaky
 donttest+=" or (test_ipythonconsole and test_pdb_multiline)"
+donttest+=" or (test_ipythonconsole and test_auto_backend)"
 # These tests are testing against buggy behavior in Qt 5.12. We have newer Qt in Tumbleweed.
 # https://github.com/spyder-ide/spyder/issues/12663
 donttest+=" or (test_codeeditor and test_editor_backspace_char)"
@@ -377,14 +378,18 @@ donttest+=" or (test_pdb_eventloop and qt5)"
 # Test is not independent: QThread *sometimes* misses the CONF_SECTION
 donttest+=" or test_handle_exception"
 
+export donttest
 # Can't use pytest-xvfb because the tests leave widgets open and trigger https://github.com/The-Compiler/pytest-xvfb/issues/11
-function testspyder() {
-   xvfb-run --server-args "-screen 0 1920x1080x24" python3 runtests.py -m "not no_xvfb" --timeout 1800 -ra -k "not (${donttest:4})" $@
-   # wait a bit until we can start the next xvfb
-   sleep 5
-}
-testspyder
-testspyder --run-slow
+# create test script so that we can use one Xvfb with both test suites:
+echo '
+#!/bin/bash
+testcmd=(python3 runtests.py -m "not no_xvfb" --timeout 1800 -ra -k "not (${donttest:4})")
+"${testcmd[@]}"
+"${testcmd[@]}" --run-slow
+' > runtests.sh
+xvfb-run --server-args "-screen 0 1920x1080x24" bash runtests.sh
+# wait a bit so that Xvfb can fully exit before the final build steps try to allocate memory
+sleep 10
 %endif
 
 %files

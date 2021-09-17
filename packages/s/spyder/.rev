@@ -395,4 +395,30 @@ rename the package from spyder3 to spyder.
 </comment>
     <requestid>917544</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>76289c49420f666144c9c6beacdcf795</srcmd5>
+    <version>5.1.5</version>
+    <time>1631913980</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.1.5
+  * Fix docking of external plugins.
+  * Catch error when starting watcher (Projects)
+  * Improve appearance of toolbar extension button
+- Another take on the kernel crash / OOM issue: test everything
+  (including slow tests) within one xvfb-run boo#1190482
+- kernel still crashing. Disable slow tests for now.
+- Update to version 5.1.4
+  * Fix serious memory leaks and improve performance when typing
+    in the editor.
+  * Fix Issue 16401 - Trim all newlines after the final one when
+    saving a file causes Spyder to freeze when saving a blank file
+  * Fix Issue 16384 - Editor becomes sluggish when displaying
+    errors
+  * Fix Issue 16343 - No handler for workspace/executeCommand
+    request
+- Avoid kernel crash (!?) at testspyder bash function return
+  * boo#1190482
+</comment>
+    <requestid>919871</requestid>
+  </revision>
 </revisionlist>
