@@ -71,7 +71,6 @@ BuildRequires:      python3-email_validator
 BuildRequires:      python3-Flask
 BuildRequires:      python3-Flask-WTF
 BuildRequires:      python3-Markdown
-BuildRequires:      python3-nose
 BuildRequires:      python3-Pillow
 BuildRequires:      python3-psutil
 BuildRequires:      python3-pygit2 >= 0.26.0
