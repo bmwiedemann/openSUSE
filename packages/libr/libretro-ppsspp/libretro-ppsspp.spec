@@ -17,7 +17,7 @@
 
 
 Name:           libretro-ppsspp
-Version:        0~git20210422
+Version:        0~git20210910
 Release:        0
 Summary:        PPSSPP libretro core for PSP emulation
 License:        GPL-2.0-only

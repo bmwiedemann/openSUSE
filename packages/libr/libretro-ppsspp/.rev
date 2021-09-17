@@ -39,4 +39,12 @@
     <comment></comment>
     <requestid>889054</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d24ecf976bbff796b68b01e99b30972d</srcmd5>
+    <version>0~git20210910</version>
+    <time>1631913978</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>919869</requestid>
+  </revision>
 </revisionlist>
