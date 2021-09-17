@@ -41,7 +41,7 @@
 %define _rabbitmq_group rabbitmq
 
 Name:           rabbitmq-server
-Version:        3.9.5
+Version:        3.9.6
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -75,7 +75,6 @@ Requires(pre):  %fillup_prereq
 Requires:       rabbitmq-server-plugins
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
-Requires:       socat
 # Do not use noarch since the Erlang packaging does not really allow that
 #BuildArch:      noarch
 
@@ -243,7 +242,6 @@ done
 %{_sbindir}/rabbitmq-diagnostics
 %{_sbindir}/rabbitmq-streams
 
-%ghost %dir /run/rabbitmq
 #
 %dir /usr/lib/ocf/
 %dir /usr/lib/ocf/resource.d/
@@ -253,6 +251,9 @@ done
 %doc README* CODE_OF_CONDUCT.md CONTRIBUTING.md deps/rabbit/docs/set_rabbitmq_policy.sh.example
 %{_mandir}/man5/rabbitmq-env.conf.5%{?ext_man}
 %{_mandir}/man8/rabbitmq*.8%{?ext_man}
+# E: script-without-shebang
+%exclude %{_rabbit_libdir}/autocomplete/bash_autocomplete.sh
+%exclude %{_rabbit_libdir}/autocomplete/zsh_autocomplete.sh
 
 %if %{with split_plugins}
 %files plugins

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 17 00:15:42 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.6:
+  + Core Server
+    * Bug Fixes
+      - TLS information delivered in Proxy protocol header is now
+        attached to connection metrics as if it was provided by a
+        non-proxying client.
+      - max_message_size had a one-off error in the validator.
+      - mirroring_sync_batch_size was incorrectly validated as if
+        it represented batch size in bytes.
+  + Stream Plugin
+    * Bug Fixes
+      - Offset parameters were not stored correctly in some cases.
+      - Partitions list order is now stable.
+      - When stream clients close connections abruptly, publisher
+        and consumer metrics get cleaned up correctly.
+  + Management Plugin
+    * Enhancements
+      - Stream publishers are now listed on the individual stream
+        page.
+      - Counters have been added to the tiles of several sections
+        on detail pages.
+  + Dependency Upgrades
+    * Osiris was upgraded to 1.2.0
+    * Ranch was upgraded to 2.1.0
+- Removes socat dependency from specs.
+  (gh#rabbitmq/rabbitmq-packaging#8)
+- Fix rpmlint errors:
+  * E: script-without-shebang for autocomplete scripts
+  * E: dir-or-file-in-run /run/rabbitmq
+
+-------------------------------------------------------------------
 Tue Sep  7 07:52:54 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.5:
