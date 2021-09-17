@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep  9 07:42:34 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add glibc-2.34-fix.patch as a fix for upstream issue gh#52:
+  https://github.com/libhugetlbfs/libhugetlbfs/pull/63/commits
+  (boo#1189094).
+
+-------------------------------------------------------------------
+Thu Sep 09 07:38:10 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.23.0.g6b126a4:
+  * Update NEWS for 2.23 release
+  * Wait child with os.wait()
+  * Makefile: add MANDIR variable
+  * Makefile: skip LIB resolve check if NATIVEONLY
+  * Introduce basic riscv64 support
+  * ld.hugetlbfs: fix -Ttext-segment argument on AArch64
+  * tests: add explicit permissions to open() call
+  * Update NEWS for 2.22 release
+  * Convert setup script to python3
+  * Clean up error checking in dump_proc_pid_maps()
+
+-------------------------------------------------------------------
 Fri Jul 16 21:21:31 UTC 2021 - trenn@suse.de
 
 - Update to version 2.23.0.g6b126a4:
