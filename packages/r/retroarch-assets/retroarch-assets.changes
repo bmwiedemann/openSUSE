@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 10 13:50:10 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210903:
+  * (.gitlab-ci.yml) Add 'ctr' asset directory to build target
+  * Added new core icons
+  * (3DS) Add bottom screen menu
+  * Applied correct color to selection cursor background.
+  * Ozone Dracula assets
+  * dot-art: new supervision icon
+  * Added 5 variants of mageboy color rgui theme
+  * update for rgui russian bitmap font
+  * update for rgui english bitmap font
+  * update rgui korean english bitmap font
+  * Revert "[VITA] Add Livearea assets"
+  * [VITA] Add Livearea assets
+  * Add files via upload
+  * Add files via upload
+  * Delete info.txt
+  * Add files via upload
+  * Create info.txt
+  * Add .gitlab-ci.yml file
+  * Updated all Wii U banners
+  * (RGUI) Update Chinese and Japanese bitmap fonts
+  * (RGUI) Add CJK fonts
+  * Add files via upload
+  * Theme Icon Additions & Modifications
+  * Theme Additions, Renames & Changes
+  * Twilight Zone Assets
+  * Update cursor_noborder.png
+  * Update cursor_noborder.png
+  * Hacking The Kernel Assets
+  * Boysenberry-theme-assets
+  * (ozone) new theme: 1987 assets
+  * (XMB/Ozone Monochrome) Add CD32 system icon
+  * Rename iQue
+
+-------------------------------------------------------------------
 Sat Aug 08 08:56:24 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200807:
