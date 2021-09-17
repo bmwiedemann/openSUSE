@@ -209,6 +209,7 @@
   poo#98481: '20210910'
   poo#98580: '20210912'
   poo#98598: '20210914'
+  poo#98646: '20210915'
   poo#98739: '20210914'
 </value>
   </attribute>
@@ -579,9 +580,9 @@ set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
     <value>failed: ''
-published: '20210914'
-publishing: '20210914'
-testing: '20210915'
+published: '20210915'
+publishing: '20210915'
+testing: '20210916'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">
