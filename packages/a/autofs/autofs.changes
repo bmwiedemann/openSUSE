@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  8 18:15:58 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+-  autofs-5.1.7-use-default-stack-size-for-threads.patch: Use default
+   stack size for threads (bsc#1189199)
+
+-------------------------------------------------------------------
 Thu Apr 22 14:43:15 UTC 2021 - Goldwyn Rodrigues <rgoldwyn@suse.com>
 
 - Upgrade to 5.1.7
