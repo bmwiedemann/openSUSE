@@ -21,7 +21,7 @@
 %define freerdp_version 2.2.0
 
 Name:           gnome-remote-desktop
-Version:        40.0
+Version:        40.2
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -37,8 +37,8 @@ BuildRequires:  pkgconfig(freerdp-client2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp-server2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(fuse3) >= 3.9.1
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.32
-BuildRequires:  pkgconfig(glib-2.0) >= 2.32
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.68
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.10.0
 BuildRequires:  pkgconfig(libnotify)

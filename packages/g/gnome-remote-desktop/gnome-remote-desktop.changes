@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 15 15:43:17 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.2:
+  + rdp-fuse-clipboard: Handle FUSE lifetime object in FUSE thread
+  + tests: Use bash from environment instead of hardcoded path
+- Changes from version 40.1:
+  + clipboard-rdp:
+    - Also output client capabilities  
+    - Add dummy handling for the Temporary Directory PDU
+    - Advertise clipboard data locking  
+    - Adapt to data locking changes
+    - Add APIs to lock/unlock the clients clipboard data
+    - Implement clipboard data locking
+    - clipboard-rdp: Use g_idle_add() instead of g_timeout_add()
+  + rdp: Allow submitting clipDataIds for FileContentsRequests  
+  + rdp-fuse-clipboard:
+    - Remove the old API
+    - Use notify_delete() instead of notify_inval_entry()
+    - Be more verbose with file range requests
+    - Read files until the very end
+    - Handle all file lists via clipDataIds
+  + rdp-sam: Remove stray trailing whitespaces
+  + pipewire-stream: Don't leak GSource's
+  + build:
+    - Add missing new line
+    - Explicitly depend on glib >= 2.68
+
+-------------------------------------------------------------------
 Sun Mar 21 16:31:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
