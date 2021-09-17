@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-asyncssh
 Version:        2.5.0
 Release:        0
@@ -35,9 +36,9 @@ BuildRequires:  %{python_module gssapi >= 1.2.0}
 BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module uvloop >= 0.9.1}
-BuildRequires:  (libnettle8 if python38-base)
 BuildRequires:  openssh
 BuildRequires:  openssl
+BuildRequires:  (libnettle8 if python38-base)
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,8 +47,8 @@ Requires:       python-cryptography >= 2.8
 Requires:       python-gssapi >= 1.2.0
 Requires:       python-libnacl >= 1.4.2
 Requires:       python-pyOpenSSL >= 17.0.0
-Recommends:     python-fido2 >= 0.8.1
 Recommends:     libnettle8
+Recommends:     python-fido2 >= 0.8.1
 BuildArch:      noarch
 
 %python_subpackages
@@ -55,7 +56,6 @@ BuildArch:      noarch
 %description
 AsyncSSH is a Python package which provides an asynchronous client and
 server implementation of the SSHv2 protocol on top of the Python asyncio framework.
-
 
 %prep
 %setup -q -n asyncssh-%{version}
@@ -69,7 +69,7 @@ server implementation of the SSHv2 protocol on top of the Python asyncio framewo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m unittest discover -v 
+%python_exec -m unittest discover -v
 
 %files %{python_files}
 %license LICENSE COPYRIGHT
