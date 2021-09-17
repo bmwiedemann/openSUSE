@@ -25,15 +25,15 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://livereload.readthedocs.io/en/latest/
 Source:         https://github.com/lepture/python-livereload/archive/%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module tornado}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-six
 Requires:       python-tornado
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -53,8 +53,8 @@ Reload webpages on changes, without hitting refresh in your browser.
 %python_expand %fdupes -s %{buildroot}%{$python_sitelib}
 
 %check
-# AssertionError
-#make test
+# https://github.com/lepture/python-livereload/issues/200
+%pytest -k 'not test_watch_multiple_dirs'
 
 %post
 %python_install_alternative livereload

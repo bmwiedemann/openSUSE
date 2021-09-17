@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 17 06:34:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest (and not nose) for the testsuite, actually running it. 
+
+-------------------------------------------------------------------
 Wed May 19 18:08:10 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - update to version 2.6.3
