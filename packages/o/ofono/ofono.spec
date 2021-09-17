@@ -19,7 +19,7 @@
 
 
 Name:           ofono
-Version:        1.32
+Version:        1.33
 Release:        0
 Summary:        Mobile telephony application development framework
 License:        GPL-2.0-only

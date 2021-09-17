@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 16 19:34:11 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.33:
+  * Fix issue with filling unused part of AID with FFs.
+  * Fix issue with reads beyond the first block of SIM filesystem.
+  * Fix issue with parsing auth response according to TS 31.102.
+
+-------------------------------------------------------------------
 Sat May  8 16:38:36 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.32:
