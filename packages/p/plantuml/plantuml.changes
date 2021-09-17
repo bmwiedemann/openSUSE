@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 16 12:30:41 UTC 2021 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 1.2021.10
+  See http://plantuml.com/de/changes for all changes
+- Add patch:
+  * build-with-javac-utf8-encoding.patch
+
+-------------------------------------------------------------------
 Sun Apr  4 20:10:45 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2021.4
