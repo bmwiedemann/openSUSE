@@ -109,4 +109,16 @@
 - Update Requires from setup.py (forwarded request 882011 from glaubitz)</comment>
     <requestid>882013</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>3098492cdb0502685c9e9ac9d73e272a</srcmd5>
+    <version>8.0.0</version>
+    <time>1631913940</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from setup.py (forwarded request 917913 from glaubitz)</comment>
+    <requestid>917938</requestid>
+  </revision>
 </revisionlist>
