@@ -18,3 +18,9 @@ addFilter("shared-lib-calls-exit")
 # with glibc, therefore do not warn about them
 addFilter("glibc.*no-manual-page-for-binary (getent|iconv|ldd|ldconfig|locale)")
 addFilter("nscd.*no-manual-page-for-binary nscd")
+# the cross..-devel packages contain everything, in non-std paths, so no
+# ldconfig is wanted or needed (for sle-15 based trees), and we accept
+# the *.so symlinks, and deliver (target) binaries
+addFilter("cross.*library-without-ldconfig-post.*")
+addFilter("cross.*non-devel-file-in-devel-package.*")
+addFilter("cross.*arch-independent-package-contains-binary-or-object.*")

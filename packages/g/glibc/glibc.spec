@@ -1,5 +1,5 @@
 #
-# spec file for package glibc%{name_suffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -25,6 +25,24 @@
 
 %define flavor @BUILD_FLAVOR@%{nil}
 
+# We need to map from flavor to cross-arch, but as we need the
+# result in BuildRequires where the build service evaluates, we
+# can use only simple RPM expressions, no lua, no shell, no '{expand:'
+# expression :-/  Ideally we'd like to just strip the 'cross_' prefix,
+# but we can't.  So enumerate the possibilities for now.
+%if "%flavor" == "cross-aarch64"
+%define cross_arch aarch64
+%endif
+%if "%flavor" == "cross-riscv64"
+%define cross_arch riscv64
+%endif
+
+%if 0%{?cross_arch:1}
+%define binutils_os %{cross_arch}-suse-linux
+# use same sysroot as in binutils.spec
+%define sysroot %{_prefix}/%{binutils_os}/sys-root
+%endif
+
 %if 0%{?usrmerged} || 0%{?suse_version} >= 1550
 %bcond_without usrmerged
 %else
@@ -35,6 +53,7 @@
 %define build_main 1
 %define build_utils %{with build_all}
 %define build_testsuite %{with build_all}
+%define build_cross 0
 %if "%flavor" == "utils"
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
@@ -51,6 +70,18 @@ ExclusiveArch:  do_not_build
 %define build_utils 0
 %define build_testsuite 1
 %endif
+%if 0%{?cross_arch:1}
+%define build_main 0
+%define build_utils 0
+%define build_testsuite 0
+%define build_cross 1
+%undefine _build_create_debug
+ExcludeArch:    %{cross_arch}
+%if %{with ringdisabled}
+ExclusiveArch:  do_not_build
+%endif
+%endif
+%define host_arch %{?cross_arch}%{!?cross_arch:%{_target_cpu}}
 
 %if %{build_main}
 %define name_suffix %{nil}
@@ -86,6 +117,10 @@ BuildRequires:  gd-devel
 BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
 %endif
+%if %{build_cross}
+BuildRequires:  cross-%{cross_arch}-gcc11-bootstrap
+BuildRequires:  cross-%{cross_arch}-linux-glibc-devel
+%endif
 %if "%flavor" == "i686"
 ExclusiveArch:  i586 i686
 BuildArch:      i686
@@ -99,7 +134,7 @@ BuildArch:      i686
 %define build_locales 1
 %define build_html 0
 %else
-%if %{with fast_build} || %{build_utils} && %{without build_all}
+%if %{with fast_build} || %{build_cross} || %{build_utils} && %{without build_all}
 %define build_profile 0
 %define build_locales 0
 %define build_html 0
@@ -131,10 +166,10 @@ BuildArch:      i686
 %define enablekernel 4.15
 %endif
 
-Version:        2.33
+Version:        2.34
 Release:        0
 %if !%{build_snapshot}
-%define git_id 9826b03b74
+%define git_id ae37d06c7d
 %define libversion %version
 %else
 %define git_id %(echo %version | sed 's/.*\.g//')
@@ -246,26 +281,20 @@ Patch306:       glibc-fix-double-loopback.diff
 ###
 # Patches from upstream
 ###
-# PATCH-FIX-UPSTREAM nsswitch: return result when nss database is locked (BZ #27343)
-Patch1000:      nss-database-check-reload.patch
-# PATCH-FIX-UPSTREAM nss: Re-enable NSS module loading after chroot (BZ #27389)
-Patch1001:      nss-load-chroot.patch
-# PATCH-FIX-UPSTREAM x86: Set minimum x86-64 level marker (BZ #27318)
-Patch1002:      x86-isa-level.patch
-# PATCH-FIX-UPSTREAM nscd: Fix double free in netgroupcache (CVE-2021-27645, BZ #27462)
-Patch1003:      nscd-netgroupcache.patch
-# PATCH-FIX-UPSTREAM nss: fix nss_database_lookup2's alternate handling (BZ #27416)
-Patch1004:      nss-database-lookup.patch
-# PATCH-FIX-UPSTREAM linux: always update select timeout (BZ #27706)
-Patch1005:      select-modify-timeout.patch
-# PATCH-FIX-UPSTREAM: nptl_db: Support different libpthread/ld.so load orders (BZ #27744)
-Patch1006:      nptl-db-libpthread-load-order.patch
-# PATCH-FIX-UPSTREAM: string: Work around GCC PR 98512 in rawmemchr
-Patch1007:      rawmemchr-warning.patch
-# PATCH-FIX-UPSTREAM: x86: tst-cpu-features-supports.c: Update AMX check
-Patch1008:      tst-cpu-features-amx.patch
-# PATCH-FIX-UPSTREAM: Use __pthread_attr_copy in mq_notify (CVE-2021-33574, BZ #27896)
-Patch1009:      mq-notify-use-after-free.patch
+# PATCH-FIX-UPSTREAM ldconfig: avoid leak on empty paths in config file
+Patch1000:      ldconfig-leak-empty-paths.patch
+# PATCH-FIX-UPSTREAM gconv_parseconfdir: Fix memory leak
+Patch1001:      gconv-parseconfdir-memory-leak.patch
+# PATCH-FIX-UPSTREAM gaiconf_init: Avoid double-free in label and precedence lists
+Patch1002:      gaiconf-init-double-free.patch
+# PATCH-FIX-UPSTREAM copy_and_spawn_sgid: Avoid double calls to close()
+Patch1003:      copy-and-spawn-sgid-double-close.patch
+# PATCH-FIX-UPSTREAM iconv_charmap: Close output file when done
+Patch1004:      icon-charmap-close-output.patch
+# PATCH-FIX-UPSTREAM Linux: Fix fcntl, ioctl, prctl redirects for _TIME_BITS=64 (BZ #28182)
+Patch1005:      fcntl-time-bits-64-redirect.patch
+# PATCH-FIX-UPSTREAM librt: fix NULL pointer dereference (BZ #28213)
+Patch1006:      librt-null-pointer.patch
 
 ###
 # Patches awaiting upstream approval
@@ -453,6 +482,18 @@ makedb: A program to create a database for nss
 %lang_package
 %endif
 
+%package -n cross-%{cross_arch}-glibc-devel
+Summary:        Include Files and Libraries Mandatory for Development
+License:        BSD-3-Clause AND LGPL-2.1-or-later AND LGPL-2.1-or-later WITH GCC-exception-2.0 AND GPL-2.0-or-later
+Group:          Development/Libraries/C and C++
+Requires:       cross-%{cross_arch}-linux-glibc-devel
+BuildArch:      noarch
+AutoReqProv:    off
+
+%description -n cross-%{cross_arch}-glibc-devel
+These libraries are needed to develop programs which use the standard C
+library in a cross compilation setting.
+
 %prep
 %setup -n glibc-%{version} -q -a 4
 %patch6 -p1
@@ -474,6 +515,9 @@ makedb: A program to create a database for nss
 %patch304 -p1
 %patch306 -p1
 
+%patch2000 -p1
+%patch2001 -p1
+
 %patch1000 -p1
 %patch1001 -p1
 %patch1002 -p1
@@ -481,12 +525,6 @@ makedb: A program to create a database for nss
 %patch1004 -p1
 %patch1005 -p1
 %patch1006 -p1
-%patch1007 -p1
-%patch1008 -p1
-%patch1009 -p1
-
-%patch2000 -p1
-%patch2001 -p1
 
 %patch3000
 
@@ -503,19 +541,22 @@ uptime || :
 ulimit -a
 nice
 # We do not want configure to figure out the system its building one
-# to support a common ground and thus set build and host to the
-# target_cpu.
+# to support a common ground and thus set build and host ourself.
+target="%{host_arch}-suse-linux"
+case " %arm " in
+  *" %{host_arch} "*) target="%{host_arch}-suse-linux-gnueabi" ;;
+esac
 %ifarch %arm
-%define target %{_target_cpu}-suse-linux-gnueabi
+%define build %{_target_cpu}-suse-linux-gnueabi
 %else
-%define target %{_target_cpu}-suse-linux
+%define build %{_target_cpu}-suse-linux
 %endif
 # Don't use as-needed, it breaks glibc assumptions
 # Before enabling it, run the testsuite and verify that it
 # passes completely
 export SUSE_ASNEEDED=0
 # Adjust glibc version.h
-echo "#define CONFHOST \"%{target}\"" >> version.h
+echo "#define CONFHOST \"${target}\"" >> version.h
 echo "#define GITID \"%{git_id}\"" >> version.h
 #
 # Default CFLAGS and Compiler
@@ -531,6 +572,9 @@ for opt in $tmp; do
 %if "%flavor" == "i686"
     *i586*) BuildFlags+=" ${opt/i586/i686}" ;;
 %endif
+%if %{build_cross}
+    -m*) ;;  # remove all machine specific options for crosses
+%endif
     *) BuildFlags+=" $opt" ;;
   esac
 done
@@ -542,6 +586,10 @@ BuildCCplus="%__cxx"
 #
 #now overwrite for some architectures
 #
+%if %{build_cross}
+BuildCC=%{cross_arch}-suse-linux-gcc
+BuildCCplus=%{cross_arch}-suse-linux-g++
+%else
 %ifarch sparc64
 	BuildFlags="-O2 -mcpu=ultrasparc -mvis -fcall-used-g6"
 	BuildCC="gcc -m64"
@@ -578,6 +626,7 @@ BuildCCplus="%__cxx"
 	# fails to build otherwise - need to recheck and fix
 	%define enable_stackguard_randomization 0
 %endif
+%endif
 
 #
 # Build base glibc
@@ -589,13 +638,22 @@ profile="--enable-profile"
 %else
 profile="--disable-profile"
 %endif
+
+CONFARGS=
+case " %{ix86} x86_64 aarch64 " in
+  *" %{host_arch} "*) CONFARGS="$CONFARGS --enable-static-pie" ;;
+esac
+
 ../configure \
 	CFLAGS="$BuildFlags" BUILD_CFLAGS="$BuildFlags" \
 	CC="$BuildCC" CXX="$BuildCCplus" \
 	--prefix=%{_prefix} \
 	--libexecdir=%{_libexecdir} --infodir=%{_infodir} \
         $profile \
-	--build=%{target} --host=%{target} \
+	--build=%{build} --host=${target} \
+%if %{build_cross}
+	--with-headers=%{sysroot}/usr/include \
+%else
 %ifarch armv7hl ppc ppc64 ppc64le i686 x86_64 sparc sparc64 s390 s390x
 	--enable-multi-arch \
 %endif
@@ -616,20 +674,27 @@ profile="--disable-profile"
 	--enable-cet \
 %endif
 %endif
+	--enable-systemtap \
+%endif
+	$CONFARGS \
 %if %{enable_stackguard_randomization}
 	--enable-stackguard-randomization \
 %endif
 	${enable_stack_protector:+--enable-stack-protector=$enable_stack_protector} \
-%ifarch %{ix86} x86_64 aarch64
-	--enable-static-pie \
-%endif
 	--enable-tunables \
 	--enable-kernel=%{enablekernel} \
 	--with-bugurl=http://bugs.opensuse.org \
 	--enable-bind-now \
-	--enable-systemtap \
 	--disable-timezone-tools \
-	--disable-crypt
+	--disable-crypt || \
+  {
+    rc=$?;
+    echo "------- BEGIN config.log ------";
+    %{__cat} config.log;
+    echo "------- END config.log ------";
+    exit $rc;
+  }
+
 make %{?_smp_mflags}
 cd ..
 
@@ -742,6 +807,7 @@ mkdir -p %{buildroot}%{_sbindir}
 ln -s %{buildroot}%{_sbindir} %{buildroot}/sbin
 %endif
 
+%if !%{build_cross}
 %ifarch riscv64
 mkdir -p %{buildroot}%{_libdir}
 ln -s . %{buildroot}%{_libdir}/lp64d
@@ -750,10 +816,11 @@ mkdir -p %{buildroot}%{slibdir}
 ln -s . %{buildroot}%{slibdir}/lp64d
 %endif
 %endif
+%endif
 
 %if %{build_main}
 # We don't want to strip the .symtab from our libraries in find-debuginfo.sh,
-# certainly not from libpthread.so.* because it is used by libthread_db to find
+# certainly not from libc.so.* because it is used by libthread_db to find
 # some non-exported symbols in order to detect if threading support
 # should be enabled.  These symbols are _not_ exported, and we can't easily
 # export them retroactively without changing the ABI.  So we have to
@@ -857,7 +924,7 @@ install -m 644 %{SOURCE21} %{buildroot}/usr/lib/systemd/system
 
 %if 0%{?rtld_oldname:1}
 # Provide compatibility link
-ln -s %{slibdir}/ld-%{libversion}.so %{buildroot}%{rtlddir}/%{rtld_oldname}
+ln -s %{rtlddir}/%{rtld_name} %{buildroot}%{rtlddir}/%{rtld_oldname}
 %endif
 
 # Move getconf to %{_libexecdir}/getconf/ to avoid cross device link
@@ -894,22 +961,22 @@ ln -s %{_prefix}/share/misc/Makefile.makedb %{buildroot}/var/lib/misc/Makefile
 
 # LSB
 %ifarch %ix86
-ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb.so.3
+ln -sf %{rtlddir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb.so.3
 %endif
 %ifarch x86_64
-ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-x86-64.so.3
+ln -sf %{rtlddir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-x86-64.so.3
 %endif
 %ifarch ppc
-ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-ppc32.so.3
+ln -sf %{rtlddir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-ppc32.so.3
 %endif
 %ifarch ppc64
-ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-ppc64.so.3
+ln -sf %{rtlddir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-ppc64.so.3
 %endif
 %ifarch s390
-ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-s390.so.3
+ln -sf %{rtlddir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-s390.so.3
 %endif
 %ifarch s390x
-ln -sf %{slibdir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-s390x.so.3
+ln -sf %{rtlddir}/%{rtld_name} $RPM_BUILD_ROOT%{slibdir}/ld-lsb-s390x.so.3
 %endif
 
 %else
@@ -920,10 +987,7 @@ make %{?_smp_mflags} install_root=%{buildroot} install -C cc-base \
   subdirs='malloc debug elf'
 cd manpages; make install_root=%{buildroot} install; cd ..
 # Remove unwanted files
-rm -f %{buildroot}%{slibdir}/ld*.so* %{buildroot}%{slibdir}/lib[!mp]*
-%if "%{rtlddir}" != "%{slibdir}"
-rm -f %{buildroot}%{rtlddir}/ld*.so*
-%endif
+rm -f %{buildroot}%{rtlddir}/ld*.so* %{buildroot}%{slibdir}/lib[!mp]*
 %if "%{_libdir}" != "%{slibdir}"
 rm -f %{buildroot}%{_libdir}/lib*
 %else
@@ -938,6 +1002,28 @@ rm %{buildroot}%{_libdir}/lp64d
 rm %{buildroot}%{slibdir}/lp64d
 %endif
 %endif
+
+%endif
+
+%if %{build_cross}
+# See above
+export STRIP_KEEP_SYMTAB=*.so*
+export NO_BRP_STRIP_DEBUG=true
+make %{?_smp_mflags} install_root=%{buildroot}/%{sysroot} install -C cc-base
+rm -rf %{buildroot}/%{sysroot}/%{_libdir}/audit
+rm -rf %{buildroot}/%{sysroot}/%{_libdir}/gconv
+rm -rf %{buildroot}/%{sysroot}/%{_infodir}
+rm -rf %{buildroot}/%{sysroot}/%{_prefix}/share/i18n
+rm -rf %{buildroot}/%{sysroot}/%{_datadir}/locale/*/
+rm -f %{buildroot}/%{sysroot}/%{_bindir}/makedb
+rm -rf %{buildroot}/%{sysroot}/var/lib
+rm -f %{buildroot}/%{sysroot}/%{_sbindir}/nscd
+
+# Some programs look for <prefix>/lib/../$subdir where subdir is
+# for instance "lib64".  For this path lookup to succeed we need the
+# ../lib subdir, even if it's empty, so enforce its existence.
+mkdir -p %{buildroot}/%{sysroot}/lib
+mkdir -p %{buildroot}/%{sysroot}/%{_prefix}/lib
 
 %endif
 
@@ -1063,11 +1149,7 @@ exit 0
 %doc %{_mandir}/man1/getconf.1.gz
 %doc %{_mandir}/man5/*
 
-%{slibdir}/ld-%{libversion}.so
-%{slibdir}/%{rtld_name}
-%if "%{rtlddir}" != "%{slibdir}"
 %{rtlddir}/%{rtld_name}
-%endif
 %if 0%{?rtld_oldname:1}
 %{rtlddir}/%{rtld_oldname}
 %endif
@@ -1083,42 +1165,26 @@ exit 0
 %endif
 %endif
 
-%{slibdir}/libBrokenLocale-%{libversion}.so
 %{slibdir}/libBrokenLocale.so.1
 %{slibdir}/libSegFault.so
-%{slibdir}/libanl-%{libversion}.so
 %{slibdir}/libanl.so.1
-%{slibdir}/libc-%{libversion}.so
 %{slibdir}/libc.so.6*
-%{slibdir}/libdl-%{libversion}.so
+%{slibdir}/libc_malloc_debug.so.0
 %{slibdir}/libdl.so.2*
-%{slibdir}/libm-%{libversion}.so
 %{slibdir}/libm.so.6*
 %ifarch x86_64
-%{slibdir}/libmvec-%{libversion}.so
 %{slibdir}/libmvec.so.1
 %endif
-%{slibdir}/libnsl-%{libversion}.so
 %{slibdir}/libnsl.so.1
-%{slibdir}/libnss_compat-%{libversion}.so
 %{slibdir}/libnss_compat.so.2
-%{slibdir}/libnss_db-%{libversion}.so
 %{slibdir}/libnss_db.so.2
-%{slibdir}/libnss_dns-%{libversion}.so
 %{slibdir}/libnss_dns.so.2
-%{slibdir}/libnss_files-%{libversion}.so
 %{slibdir}/libnss_files.so.2
-%{slibdir}/libnss_hesiod-%{libversion}.so
 %{slibdir}/libnss_hesiod.so.2
-%{slibdir}/libpthread-%{libversion}.so
 %{slibdir}/libpthread.so.0
-%{slibdir}/libresolv-%{libversion}.so
 %{slibdir}/libresolv.so.2
-%{slibdir}/librt-%{libversion}.so
 %{slibdir}/librt.so.1
-%{slibdir}/libthread_db-1.0.so
 %{slibdir}/libthread_db.so.1
-%{slibdir}/libutil-%{libversion}.so
 %{slibdir}/libutil.so.1
 %dir %attr(0700,root,root) /var/cache/ldconfig
 %{rootsbindir}/ldconfig
@@ -1147,6 +1213,7 @@ exit 0
 %dir %{_libdir}/gconv
 %{_libdir}/gconv/*.so
 %{_libdir}/gconv/gconv-modules
+%{_libdir}/gconv/gconv-modules.d
 %attr(0644,root,root) %verify(not md5 size mtime) %ghost %{_libdir}/gconv/gconv-modules.cache
 
 %files locale
@@ -1170,45 +1237,40 @@ exit 0
 %{_libdir}/libBrokenLocale.so
 %{_libdir}/libanl.so
 %{_libdir}/libc.so
-%{_libdir}/libdl.so
+%{_libdir}/libc_malloc_debug.so
 %{_libdir}/libm.so
 %ifarch x86_64
 %{_libdir}/libmvec.so
 %endif
 %{_libdir}/libnss_compat.so
 %{_libdir}/libnss_db.so
-%{_libdir}/libnss_dns.so
-%{_libdir}/libnss_files.so
 %{_libdir}/libnss_hesiod.so
-%{_libdir}/libpthread.so
 %{_libdir}/libresolv.so
-%{_libdir}/librt.so
 %{_libdir}/libthread_db.so
-%{_libdir}/libutil.so
 # These static libraries are needed even for shared builds
 %{_libdir}/libc_nonshared.a
+%{_libdir}/libdl.a
 %{_libdir}/libg.a
 %ifarch ppc ppc64 ppc64le s390 s390x sparc sparcv8 sparcv9 sparcv9v
 # This is not built on sparc64.
 	%{_libdir}/libnldbl_nonshared.a
 %endif
 %{_libdir}/libmcheck.a
+%{_libdir}/libpthread.a
+%{_libdir}/librt.a
+%{_libdir}/libutil.a
 
 %files devel-static
 %defattr(-,root,root)
 %{_libdir}/libBrokenLocale.a
 %{_libdir}/libanl.a
 %{_libdir}/libc.a
-%{_libdir}/libdl.a
 %{_libdir}/libm.a
 %ifarch x86_64
 %{_libdir}/libm-%{libversion}.a
 %{_libdir}/libmvec.a
 %endif
-%{_libdir}/libpthread.a
 %{_libdir}/libresolv.a
-%{_libdir}/librt.a
-%{_libdir}/libutil.a
 
 %ifnarch i686
 %files info
@@ -1273,6 +1335,13 @@ exit 0
 %files lang -f libc.lang
 %endif
 
+%endif
+
+%if %{build_cross}
+%files -n cross-%{cross_arch}-glibc-devel
+%defattr(-,root,root)
+%license COPYING COPYING.LIB
+%{sysroot}
 %endif
 
 %if %{build_utils}

@@ -2,4 +2,6 @@
   <package>i686</package>
   <package>utils</package>
   <package>testsuite</package>
+  <package>cross-aarch64</package>
+  <package>cross-riscv64</package>
 </multibuild>

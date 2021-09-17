@@ -2499,4 +2499,26 @@ for more fun options (forwarded request 147495 from coolo)</comment>
 - Add conflict with pre-usrmerge filesystem package (forwarded request 900350 from lnussel)</comment>
     <requestid>900402</requestid>
   </revision>
+  <revision rev="253" vrev="1">
+    <srcmd5>cf79a1c9661f46fa4c0f10bc8ebeda61</srcmd5>
+    <version>2.34</version>
+    <time>1631913922</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't create separate debuginfo packages for cross packages
+
+- ldconfig-leak-empty-paths.patch: ldconfig: avoid leak on empty paths in
+  config file
+- gconv-parseconfdir-memory-leak.patch: gconv_parseconfdir: Fix memory leak
+- gaiconf-init-double-free.patch: gaiconf_init: Avoid double-free in label
+  and precedence lists
+- copy-and-spawn-sgid-double-close.patch: copy_and_spawn_sgid: Avoid
+  double calls to close()
+- icon-charmap-close-output.patch: iconv_charmap: Close output file when
+  done
+- fcntl-time-bits-64-redirect.patch: Linux: Fix fcntl, ioctl, prctl
+  redirects for _TIME_BITS=64 (BZ #28182)
+- librt-null-pointer.patch: librt: fix NULL pointer dereference (BZ
+  #28213) (forwarded request 911560 from Andreas_Schwab)</comment>
+    <requestid>911561</requestid>
+  </revision>
 </revisionlist>

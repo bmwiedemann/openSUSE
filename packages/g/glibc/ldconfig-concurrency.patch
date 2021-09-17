@@ -1,11 +1,11 @@
 	* elf/cache.c (save_cache): Use unique temporary name.
 	(save_aux_cache): Likewise.
 
-Index: glibc-2.29/elf/cache.c
+Index: glibc-2.34/elf/cache.c
 ===================================================================
---- glibc-2.29.orig/elf/cache.c
-+++ glibc-2.29/elf/cache.c
-@@ -427,12 +427,12 @@ save_cache (const char *cache_name)
+--- glibc-2.34.orig/elf/cache.c
++++ glibc-2.34/elf/cache.c
+@@ -716,12 +716,12 @@ save_cache (const char *cache_name)
    /* Write out the cache.  */
  
    /* Write cache first to a temporary file and rename it later.  */
@@ -22,15 +22,7 @@ Index: glibc-2.29/elf/cache.c
    if (fd < 0)
      error (EXIT_FAILURE, errno, _("Can't create temporary cache file %s"),
  	   temp_name);
-@@ -481,6 +481,7 @@ save_cache (const char *cache_name)
-   free (file_entries_new);
-   free (file_entries);
-   free (strings_finalized.strings);
-+  free (temp_name);
- 
-   while (entries)
-     {
-@@ -804,8 +805,9 @@ save_aux_cache (const char *aux_cache_na
+@@ -1128,8 +1128,9 @@ save_aux_cache (const char *aux_cache_na
    /* Write out auxiliary cache file.  */
    /* Write auxiliary cache first to a temporary file and rename it later.  */
  
@@ -42,7 +34,7 @@ Index: glibc-2.29/elf/cache.c
  
    /* Check that directory exists and create if needed.  */
    char *dir = strdupa (aux_cache_name);
-@@ -819,8 +821,7 @@ save_aux_cache (const char *aux_cache_na
+@@ -1143,8 +1144,7 @@ save_aux_cache (const char *aux_cache_na
      }
  
    /* Create file.  */
@@ -52,7 +44,7 @@ Index: glibc-2.29/elf/cache.c
    if (fd < 0)
      goto out_fail;
  
-@@ -840,5 +841,6 @@ save_aux_cache (const char *aux_cache_na
+@@ -1167,5 +1167,6 @@ save_aux_cache (const char *aux_cache_na
  out_fail:
    /* Free allocated memory.  */
    free (temp_name);

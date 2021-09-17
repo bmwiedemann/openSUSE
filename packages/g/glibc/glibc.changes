@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Wed Aug 11 12:56:09 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Don't create separate debuginfo packages for cross packages
+
+-------------------------------------------------------------------
+Wed Aug 11 12:23:10 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- ldconfig-leak-empty-paths.patch: ldconfig: avoid leak on empty paths in
+  config file
+- gconv-parseconfdir-memory-leak.patch: gconv_parseconfdir: Fix memory leak
+- gaiconf-init-double-free.patch: gaiconf_init: Avoid double-free in label
+  and precedence lists
+- copy-and-spawn-sgid-double-close.patch: copy_and_spawn_sgid: Avoid
+  double calls to close()
+- icon-charmap-close-output.patch: iconv_charmap: Close output file when
+  done
+- fcntl-time-bits-64-redirect.patch: Linux: Fix fcntl, ioctl, prctl
+  redirects for _TIME_BITS=64 (BZ #28182)
+- librt-null-pointer.patch: librt: fix NULL pointer dereference (BZ
+  #28213)
+
+-------------------------------------------------------------------
+Tue Aug 10 13:18:54 UTC 2021 - Michael Matz <matz@suse.com>
+
+- Add cross development packages for aarch64 and riscv64.
+
+-------------------------------------------------------------------
+Mon Aug  2 09:38:46 UTC 2021 - Andreas Schwab <schwab@suse.de>
+
+- Update to glibc 2.34
+  Major new features:
+  * When _DYNAMIC_STACK_SIZE_SOURCE or _GNU_SOURCE are defined,
+    PTHREAD_STACK_MIN is no longer constant and is redefined to
+    sysconf(_SC_THREAD_STACK_MIN)
+  * Add _SC_MINSIGSTKSZ and _SC_SIGSTKSZ
+  * The dynamic linker implements the --list-diagnostics option, printing
+    a dump of information related to IFUNC resolver operation and
+    glibc-hwcaps subdirectory selection
+  * On Linux, the function execveat has been added
+  * The ISO C2X function timespec_getres has been added
+  * The feature test macro __STDC_WANT_IEC_60559_EXT__, from draft ISO
+    C2X, is supported to enable declarations of functions defined in Annex F
+    of C2X
+  * Add support for 64-bit time_t on configurations like x86 where time_t
+    is traditionally 32-bit
+  * The main gconv-modules file in glibc now contains only a small set of
+    essential converter modules and the rest have been moved into a supplementary
+    configuration file gconv-modules-extra.conf in the gconv-modules.d directory
+    in the same GCONV_PATH
+  * On Linux, a new tunable, glibc.pthread.stack_cache_size, can be used
+    to configure the size of the thread stack cache
+  * The function _Fork has been added as an async-signal-safe fork replacement
+    since Austin Group issue 62 droped the async-signal-safe requirement for
+    fork (and it will be included in the future POSIX standard)
+  * On Linux, the close_range function has been added
+  * The function closefrom has been added
+  * The posix_spawn_file_actions_closefrom_np function has been added, enabling
+    posix_spawn and posix_spawnp to close all file descriptors great than or
+    equal to a giver integer
+  Deprecated and removed features, and other changes affecting compatibility:
+  * The function pthread_mutex_consistent_np has been deprecated
+  * The function pthread_mutexattr_getrobust_np has been deprecated
+  * The function pthread_mutexattr_setrobust_np has been deprecated
+  * The function pthread_yield has been deprecated
+  * The function inet_neta declared in <arpa/inet.h> has been deprecated
+  * Various rarely-used functions declared in <resolv.h> and
+    <arpa/nameser.h> have been deprecated
+  * The pthread cancellation handler is now installed with SA_RESTART and
+    pthread_cancel will always send the internal SIGCANCEL on a cancellation
+    request
+  * The symbols mallwatch and tr_break are now deprecated and no longer used in
+    mtrace
+  * The __morecore and __after_morecore_hook malloc hooks and the default
+    implementation __default_morecore have been removed from the API
+  * Debugging features in malloc such as the MALLOC_CHECK_ environment variable
+    (or the glibc.malloc.check tunable), mtrace() and mcheck() have now been
+    disabled by default in the main C library
+  * The deprecated functions malloc_get_state and malloc_set_state have been
+    moved from the core C library into libc_malloc_debug.so
+  * The deprecated memory allocation hooks __malloc_hook, __realloc_hook,
+    __memalign_hook and __free_hook are now removed from the API
+  Changes to build and runtime requirements:
+  * On Linux, the shm_open, sem_open, and related functions now expect the
+    file shared memory file system to be mounted at /dev/shm
+  Security related changes:
+    CVE-2021-27645: The nameserver caching daemon (nscd), when processing
+    a request for netgroup lookup, may crash due to a double-free,
+    potentially resulting in degraded service or Denial of Service on the
+    local system
+    CVE-2021-33574: The mq_notify function has a potential use-after-free
+    issue when using a notification type of SIGEV_THREAD and a thread
+    attribute with a non-default affinity mask
+- nss-database-check-reload.patch, nss-load-chroot.patch,
+  x86-isa-level.patch, nscd-netgroupcache.patch,
+  nss-database-lookup.patch, select-modify-timeout.patch,
+  nptl-db-libpthread-load-order.patch, rawmemchr-warning.patch,
+  tst-cpu-features-amx.patch, mq-notify-use-after-free.patch: Removed
+
+-------------------------------------------------------------------
 Fri Jun 11 11:42:10 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - Enable usrmerge in Factory always as it's default there

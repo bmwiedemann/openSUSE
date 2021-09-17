@@ -1,3 +1,8 @@
+Member GPG keyring of libc group.
+
+Note that this keyring is not intended for checking releases of that group.
+Use Group Release Keyring instead.
+
 GPG keys of Andreas Schwab <schwab>
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: GnuPG v2
