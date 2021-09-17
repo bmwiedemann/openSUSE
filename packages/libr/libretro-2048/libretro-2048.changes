@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:57:25 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210814:
+  * Get rid of printfs at startup
+  * Add ios-arm64, tvos-arm64
+  * (MSVC 2005) We need to embed MSVCR runtime into the DLL for better compatibility
+  * Fix lib dirs
+  * Fix MSVC2005/2010 solutions - add MSVC2005/2010 to gitlab
+  * Update
+  * Update Makefile.libretro
+  * (macOS) Update macOS ARM64 building - and use CROSS_COMPILE
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update Makefile.libretro
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Revert "Update .gitlab-ci.yml"
+  * Update .gitlab-ci.yml
+  * Don't set LD if PREINITIALIZED=1
+  * Add msvc10 x64 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add ARM64 Mac support
+  * Make it to compile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile.libretro
+  * Update .gitlab-ci.yml
+  * Update
+  * Add wiiu target
+  * Update
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add ps2 target
+  * Add vita
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update JNI_PATH
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add .gitlab-ci.yml
+
+-------------------------------------------------------------------
 Sat May 30 15:11:59 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200520:
