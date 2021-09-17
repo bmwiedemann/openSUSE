@@ -140,4 +140,89 @@
  *  Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND. (forwarded request 906046 from ukbeast89)</comment>
     <requestid>906062</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>144fac7633613c9f4c5f1e696dcde272</srcmd5>
+    <version>21.09</version>
+    <time>1631913960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.09:
+  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name 
+    table.
+  * platform_sdl2: When querying the default device, ignore audio devices with way too many 
+    channels.
+  * platform_win32: Minor Win32 buildfixes
+- update to 21.07:
+  * Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND.
+- update to 21.05:
+  * CMake: Add 'Requires' for GStreamer to the pkgconfig file
+  * Updated source to github.
+- update to 21.04:
+  * Added support for SDL_GetAudioDeviceSpec, coming in a future SDL release
+  * FACT: Implemented accurate Fast/Slow/SinCos RPC curve types
+  * Added support for XMA2 audio, for Xbox 360 data
+  * Voice filters/effects should be processed even when SendCount is 0
+  * FACT: Fix parsing/calculation of filter Q factors
+  * FACT: Enforce STOPPING flag for fade-outs or RPC releases
+  * FACT: Various fixes for parsing big-endian SoundBanks
+  
+- update to 21.03.5:
+  * Fixes a regression that caused SoundBanks to no longer parse correctly
+- update to 21.03:
+  * Implemented FACT_FLAG_MANAGEDATA
+  * Implemented the CUEPLAY and CUESTOP notification types
+  * Added support for XACT 3.0 content
+  * Added support for WaveBanks with endian-swapped PCM data
+- update to 21.02:
+  * XACT: All notification types with the PERSIST flag are now recorded
+- update to 21.01:
+  Enforce SDL 2.0.9 or newer as a build requirement
+  Micro-optimize byte swapping for XACT file parsing
+- update to 20.12:
+  Added an x64 configuration to visualc
+  CMake project now generates a pkgconfig file
+  Fix compatibility with CMake 2.8.12
+  GStreamer builds now explicitly check for &gt;=1.9.2
+  Initialize the subformat for GetDeviceFormat, fixes a ton of Ubisoft games
+  Don't assert when FAudio_Initialize Flags includes FAUDIO_DEBUG_ENGINE
+  
+- update to 20.10:
+  Add support for WAVESTOP notifications
+  Add support for engines without settings files (or empty settings files)
+  Add power-of-two quantum fallback paths for *BSD and Emscripten
+  Return a unique error code for audio engines with a bad platform ID
+  Fix a deadlock in Wolfenstein: The Old Blood related to callbacks
+  Fix a crash for streaming WaveBanks when calling Destroy
+  stb_vorbis: Handle malloc(0) calls
+  
+- The FFmpeg backend for WMA decoding has been replaced with GStreamer. 
+  Distributors are encouraged to configure their FAudio builds with 
+  -DGSTREAMER=ON even if a WMA plugin is not available by default; 
+  end users can provide their own plugins if needed.
+  added -DGSTREAMER=ON flag for gstreamer backend.
+  
+- update to 20.09:
+  IGLDevice has been replaced with FNA3D, the new graphics library for FNA!
+  Direct3D 11 is now supported and is the default for Windows/Xbox
+  Vulkan is now available as an experimental backend
+  Metal is now the default for Apple platforms
+  ModernGL and ThreadedGL have been removed
+  THREADED_GL and DISABLE_THREADING have been removed
+  MojoShader is now statically linked directly into FNA3D
+  SDL2_image has been replaced with FNA3D_Image, which is built into FNA3D
+  Add experimental support for WebAssembly via Emscripten and mono-wasm
+  Update to FAudio 20.09
+- Rebase faudio-older-sdl2.patch to fix build error in Leap.
+- Update to version 20.05:
+  * No changelog available
+- Update to 20.03. No changelog
+- Update faudio-older-sdl2.patch.
+- Avoid name repetition in summaries.
+- Update RPM groups.
+- Ensure directories are owned.
+- initial import of the FAudio library used by Wine
+- Verson 19.03
+- We build only the lib/FAudio part of this package.
+- faudio-older-sdl2.patch: build against a bit older SDL2 on Leap 42.3. (forwarded request 919562 from ukbeast89)</comment>
+    <requestid>919669</requestid>
+  </revision>
 </revisionlist>

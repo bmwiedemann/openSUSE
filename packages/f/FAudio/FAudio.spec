@@ -17,7 +17,7 @@
 
 
 Name:           FAudio
-Version:        21.07
+Version:        21.09
 Release:        0
 Summary:        A reimplementation of the XNA Game Studio libraries
 License:        Zlib
@@ -87,8 +87,8 @@ FNA is a reimplementation of the Microsoft XNA Game Studio 4.0 Refresh libraries
 %{_libdir}/libFAudio.so
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/FAudio
-%{_libdir}/cmake/FAudio/FAudio-config.cmake
 %{_libdir}/cmake/FAudio/FAudio-targets.cmake
+%{_libdir}/cmake/FAudio/FAudioConfig.cmake
 %{_libdir}/cmake/FAudio/FAudio-targets-release.cmake
 %{_libdir}/pkgconfig/FAudio.pc
 

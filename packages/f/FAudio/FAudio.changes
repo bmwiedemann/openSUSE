@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 16 17:48:28 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+
+- update to 21.09:
+  * FACT: Fix a crash from an uninitialized pointer when a WaveBank does not have a name 
+    table.
+  * platform_sdl2: When querying the default device, ignore audio devices with way too many 
+    channels.
+  * platform_win32: Minor Win32 buildfixes
+
+-------------------------------------------------------------------
 Tue Jul 13 08:35:10 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 21.07:
- *  Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND.
+  * Fix incorrect value for MF_MT_AUDIO_AVG_BYTES_PER_SECOND.
 
 -------------------------------------------------------------------
 Tue May  4 21:43:48 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
