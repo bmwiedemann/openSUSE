@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 06:18:35 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
+
+- skip python 3.6. uvloop is not provided there and newer aiorpcx
+  requires py >= 3.8 anyway. (But is API incomatible with electrum
+  so far.)
+
+-------------------------------------------------------------------
 Mon Apr 19 06:50:31 UTC 2021 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.18.7

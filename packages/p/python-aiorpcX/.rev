@@ -57,4 +57,14 @@
     <comment></comment>
     <requestid>887912</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9af6b2dae23bf8a7e0742bb58c0ca99b</srcmd5>
+    <version>0.18.7</version>
+    <time>1631913958</time>
+    <user>dimstar_suse</user>
+    <comment>- skip python 3.6. uvloop is not provided there and newer aiorpcx
+  requires py &gt;= 3.8 anyway. (But is API incomatible with electrum
+  so far.)</comment>
+    <requestid>919653</requestid>
+  </revision>
 </revisionlist>
