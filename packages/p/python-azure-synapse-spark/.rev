@@ -41,4 +41,15 @@
     CHANGELOG.md file provided with this package (forwarded request 881906 from glaubitz)</comment>
     <requestid>881986</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c900c418a861759ad26f380f8427d485</srcmd5>
+    <version>0.6.0</version>
+    <time>1631913933</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 0.6.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917463 from glaubitz)</comment>
+    <requestid>917556</requestid>
+  </revision>
 </revisionlist>
