@@ -134,4 +134,15 @@
 - Update Requires from setup.py (forwarded request 907760 from glaubitz)</comment>
     <requestid>907813</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dababa8344eea3082ef171442455c544</srcmd5>
+    <version>7.3.3</version>
+    <time>1631913937</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.3.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917689 from glaubitz)</comment>
+    <requestid>917704</requestid>
+  </revision>
 </revisionlist>

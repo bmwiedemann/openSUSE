@@ -21,7 +21,7 @@
 %define skip_python2 1
 %endif
 Name:           python-azure-servicebus
-Version:        7.3.1
+Version:        7.3.3
 Release:        0
 Summary:        Microsoft Azure Service Bus Runtime Client Library
 License:        Apache-2.0
