@@ -113,12 +113,14 @@ PATH=/sbin:$PATH ./configure \
 %else
     --prefix=%{_prefix} \
 %endif
+%if 0%{?is_opensuse}
+    --localstatedir=/var \
+%endif
     --libdir=%{_prefix}/lib \
     --mandir=%{_mandir} \
     --sysconfdir=%{_sysconfdir} \
     --datarootdir=%{_datadir} \
     --datadir=%{_datadir} \
-    --libdir=%{_prefix}/lib \
     --exec_prefix=%{_prefix}/lib \
     %{?with_drbdmon:   --with-drbdmon}     \
     %{?with_prebuiltman: --with-prebuiltman} \

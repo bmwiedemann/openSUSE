@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 17 08:05:56 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1190591, fail to start due to lack of /usr/var/run/drbd
+
+-------------------------------------------------------------------
 Wed Jul 21 07:20:21 UTC 2021 - nick wang <nwang@suse.com>
 
 - Update to 9.18.0
