@@ -1,7 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 16 06:16:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * fips.patch
+    + implement FIPS support in OpenJDK
+
+-------------------------------------------------------------------
 Tue Sep 14 14:33:43 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
-- jdk-17+35 is official release of OpenJDK 17
+- jdk-17+35 is official release of OpenJDK 17 (jsc#SLE-18742)
+
+-------------------------------------------------------------------
+Mon Sep 13 12:46:09 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * nss-security-provider.patch
+    + revert recent changes making NSS provider the default one
+    + fixes bsc#1190252
 
 -------------------------------------------------------------------
 Mon Aug 23 07:16:54 UTC 2021 - Fridrich Strba <fstrba@suse.com>

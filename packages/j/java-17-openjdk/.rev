@@ -15,4 +15,12 @@
     <comment>jdk-17+35 is the official OpenJDK 17</comment>
     <requestid>918965</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>5849c99cd1397f0b6933c29bc80c8673</srcmd5>
+    <version>17.0.0.0</version>
+    <time>1631913957</time>
+    <user>dimstar_suse</user>
+    <comment>revert NSS changes + other way to support FIPS mode</comment>
+    <requestid>919651</requestid>
+  </revision>
 </revisionlist>

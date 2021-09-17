@@ -158,7 +158,9 @@ Source10:       systemtap-tapset.tar.xz
 # Desktop files. Adapated from IcedTea.
 Source11:       jconsole.desktop.in
 # nss configuration file
-Source13:       nss.cfg.in
+Source12:       nss.cfg.in
+# nss fips configuration file
+Source13:       nss.fips.cfg.in
 # Ensure we aren't using the limited crypto policy
 Source14:       TestCryptoLevel.java
 # Ensure ECDSA is working
@@ -208,6 +210,7 @@ Patch15:        system-pcsclite.patch
 
 Patch16:        system-crypto-policy.patch
 Patch17:        nss-security-provider.patch
+Patch18:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -249,7 +252,7 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libtool
 BuildRequires:  libxslt
-BuildRequires:  mozilla-nss-devel
+BuildRequires:  mozilla-nss-devel >= 3.53
 BuildRequires:  pkgconfig
 BuildRequires:  unzip
 BuildRequires:  update-desktop-files
@@ -499,6 +502,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 
 %patch16 -p1
 %patch17 -p1
+%patch18 -p1
 
 %patch20 -p1
 
@@ -549,7 +553,11 @@ for file in %{SOURCE11} ; do
 done
 
 # Setup nss.cfg
-sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.cfg
+sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE12} > nss.cfg
+
+# Setup nss.fips.cfg
+sed -e "s:@NSS_LIBDIR@:%{NSS_LIBDIR}:g" %{SOURCE13} > nss.fips.cfg
+sed -i -e "s:@NSS_SECMOD@:/etc/pki/nssdb:g" nss.fips.cfg
 
 %build
 
@@ -588,6 +596,7 @@ bash ../configure \
     --disable-keep-packaged-modules \
     --with-debug-level=%{debugbuild} \
     --with-native-debug-symbols=internal \
+    --enable-sysconf-nss \
     --with-zlib=system \
     --with-libjpeg=system \
     --with-giflib=system \
@@ -616,6 +625,9 @@ export JAVA_HOME=$(pwd)/%{buildoutputdir}/%{imagesdir}/jdk
 
 # Install nss.cfg right away as we will be using the JRE above
 install -m 644 nss.cfg $JAVA_HOME/conf/security/
+
+# Install nss.fips.cfg: NSS configuration for global FIPS mode (crypto-policies)
+install -m 644 nss.fips.cfg $JAVA_HOME/conf/security/
 
 # Copy tz.properties
 echo "sun.zoneinfo.dir=%{_datadir}/javazi" >> $JAVA_HOME/conf/tz.properties
@@ -1221,6 +1233,7 @@ fi
 %{_jvmdir}/%{sdkdir}/lib/libprefs.so
 %{_jvmdir}/%{sdkdir}/lib/librmi.so
 %{_jvmdir}/%{sdkdir}/lib/libsctp.so
+%{_jvmdir}/%{sdkdir}/lib/libsystemconf.so
 %ifarch x86_64
 %{_jvmdir}/%{sdkdir}/lib/libsvml.so
 %endif
@@ -1240,6 +1253,7 @@ fi
 
 %config(noreplace) %{_jvmdir}/%{sdkdir}/lib/security/blocked.certs
 %config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.cfg
+%config(noreplace) %{_jvmdir}/%{sdkdir}/conf/security/nss.fips.cfg
 %{_jvmdir}/%{sdkdir}/lib/security/default.policy
 %{_jvmdir}/%{sdkdir}/lib/security/public_suffix_list.dat
 
