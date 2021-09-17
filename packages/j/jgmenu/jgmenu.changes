@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 17 12:38:33 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.4.0:
+  * Make --simple force short-lived mode (the way it was always intended to be
+    an is described in documentation). Fixes issue #153.
+  * jgmenu-apps:
+    - Respect TryExec in .desktop files including the handling of absolute
+      paths. Fixes issues #146 and #151.
+    - Parse .desktop file 'Path' field and support working directory
+    - Make exec[] field bigger to allow long strings (as seen in for example
+      wine applications).
+    - Include .desktop files in $XDG_DATA_DIRS/applications/ sub-directories
+      For example, ~/.local/share/applications/wine/Programs/Games/
+  * jgmenu-lx: escape C:\ in order to cope with libmenu-cache escaping the
+    backslash in 'C:\' in wine applications' .desktop file Exec= field
+  * gtktheme: call `jgmenu_run config` synchronously to avoid config file write
+    errors
+
+-------------------------------------------------------------------
 Mon Jan  4 11:06:16 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.3.0:
