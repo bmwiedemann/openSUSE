@@ -16,20 +16,18 @@
 #
 
 
-%define realversion 1.0.0
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %if 0%{?suse_version} >= 1500
 %define skip_python2 1
 %endif
 Name:           python-azure-communication-chat
-Version:        1.0.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Microsoft Azure Communication Chat Service Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-chat/azure-communication-chat-%{realversion}.zip
+Source:         https://files.pythonhosted.org/packages/source/a/azure-communication-chat/azure-communication-chat-%{version}.zip
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-communication-nspkg >= 0.0.0b1}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -50,10 +48,10 @@ BuildArch:      noarch
 This package contains a Python SDK for Azure Communication Services for Chat.
 
 %prep
-%setup -q -n azure-communication-chat-%{realversion}
+%setup -q -n azure-communication-chat-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-communication-chat-%{realversion}
+install -m 644 %{SOURCE1} %{_builddir}/azure-communication-chat-%{version}
 %python_build
 
 %install
