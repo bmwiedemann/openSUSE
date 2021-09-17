@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-3dengine
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-3dengine
-Version:        0~git20191116
+Version:        0~git20210107
 Release:        0
 Summary:        3D Engine libretro core
 License:        GPL-3.0-only
