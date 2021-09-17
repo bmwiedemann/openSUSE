@@ -26,6 +26,9 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/Python
 URL:            https://github.com/pygame/pygame
 Source0:        https://files.pythonhosted.org/packages/source/p/pygame/pygame-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-SDL2-2.0.16.patch gh#pygame/pygame#2721 mcepl@suse.com
+# patch from gh#pygame/pygame#2670
+Patch0:         support-SDL2-2.0.16.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module setuptools}
@@ -91,6 +94,7 @@ This package contains documentation and example programs for Pygame.
 %prep
 %setup -q -n pygame-%{version}
 %autopatch -p1
+
 sed -i 's/\r$//' docs/reST/ref/code_examples/draw_module_example.py
 sed -i 's/\r$//' docs/reST/ref/code_examples/joystick_calls.py
 sed -i 's/\r$//' docs/licenses/LICENSE*.txt
@@ -126,7 +130,7 @@ export SDL_VIDEODRIVER=dummy
 export SDL_AUDIODRIVER=disk
 export LANG=en_US.UTF-8
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
-$python -m pygame.tests.__main__ --exclude opengl --time_out 300
+$python -m pygame.tests.__main__ -v --exclude opengl --time_out 300
 }
 
 %files %{python_files}

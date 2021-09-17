@@ -1,0 +1,94 @@
+From 6b7a8c14f1c20d521d0e15873e1fa7f3679b86f4 Mon Sep 17 00:00:00 2001
+From: Starbuck5 <charlie.c.hayden@gmail.com>
+Date: Fri, 13 Aug 2021 21:49:39 -0700
+Subject: [PATCH 1/3] Move to SDL 2.0.16 for Windows
+
+---
+ buildconfig/download_win_prebuilt.py |    8 ++++----
+ test/mixer_test.py                   |    5 +++--
+ test/video_test.py                   |   10 ++++++----
+ 3 files changed, 13 insertions(+), 10 deletions(-)
+
+--- a/buildconfig/download_win_prebuilt.py
++++ b/buildconfig/download_win_prebuilt.py
+@@ -64,8 +64,8 @@ def get_urls(x86=True, x64=True, sdl2=Tr
+     if sdl2:
+         url_sha1.extend([
+             [
+-            'https://www.libsdl.org/release/SDL2-devel-2.0.14-VC.zip',
+-            '48d5dcd4a445410301f5575219cffb6de654edb8',
++            'https://www.libsdl.org/release/SDL2-devel-2.0.16-VC.zip',
++            '13d952c333f3c2ebe9b7bc0075b4ad2f784e7584',
+             ],
+             [
+             'https://www.libsdl.org/projects/SDL_image/release/SDL2_image-devel-2.0.5-VC.zip',
+@@ -244,12 +244,12 @@ def place_downloaded_prebuilts(temp_dir,
+         copy(
+             os.path.join(
+                 temp_dir,
+-                'SDL2-devel-2.0.14-VC/SDL2-2.0.14'
++                'SDL2-devel-2.0.16-VC/SDL2-2.0.16'
+             ),
+             os.path.join(
+                 move_to_dir,
+                 prebuilt_dir,
+-                'SDL2-2.0.14'
++                'SDL2-2.0.16'
+             )
+         )
+ 
+--- a/test/mixer_test.py
++++ b/test/mixer_test.py
+@@ -41,7 +41,8 @@ CONFIGS = [
+ 
+ CONFIG = {"frequency": 22050, "size": -16, "channels": 2}  # base config
+ if pygame.get_sdl_version()[0] >= 2:
+-    CONFIG = {"frequency": 44100, "size": 32, "channels": 2}  # base config
++    # base config
++    CONFIG = {"frequency": 44100, "size": 32, "channels": 2, "allowedchanges": 0}
+ 
+ 
+ class InvalidBool(object):
+@@ -86,7 +87,7 @@ class MixerModuleTest(unittest.TestCase)
+         # default values. No way to check buffer size though.
+         mixer.pre_init(22050, -8, 1)  # Non default values
+         mixer.pre_init(0, 0, 0)  # Should reset to default values
+-        mixer.init()
++        mixer.init(allowedchanges=0)
+         self.assertEqual(mixer.get_init()[0], 44100)
+         self.assertEqual(mixer.get_init()[1], -16)
+         self.assertGreaterEqual(mixer.get_init()[2], 2)
+--- a/test/video_test.py
++++ b/test/video_test.py
+@@ -1,4 +1,6 @@
+ import unittest
++import platform
++import sys
+ import pygame
+ 
+ SDL2 = pygame.get_sdl_version()[0] >= 2
+@@ -6,13 +8,14 @@ SDL2 = pygame.get_sdl_version()[0] >= 2
+ if SDL2:
+     from pygame._sdl2 import video
+ 
+-
+     class VideoModuleTest(unittest.TestCase):
+         default_caption = "pygame window"
+ 
++        @unittest.skipIf((not (sys.maxsize > 2 ** 32)),
++            "32 bit SDL 2.0.16 has an issue.",
++        )
+         def test_renderer_set_viewport(self):
+-            """ works.
+-            """
++            """works."""
+             window = video.Window(title=self.default_caption, size=(800, 600))
+             renderer = video.Renderer(window=window)
+             renderer.logical_size = (1920, 1080)
+@@ -20,6 +23,5 @@ if SDL2:
+             renderer.set_viewport(rect)
+             self.assertEqual(renderer.get_viewport(), (0, 0, 1920, 1080))
+ 
+-
+     if __name__ == "__main__":
+         unittest.main()

@@ -219,4 +219,15 @@
     <comment></comment>
     <requestid>888765</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>a4bace8da874783ad368ef0fade728db</srcmd5>
+    <version>2.0.1</version>
+    <time>1631913949</time>
+    <user>dimstar_suse</user>
+    <comment>- Add support-SDL2-2.0.16.patch swtiching off
+  tests.video_test.VideoModuleTest.test_renderer_set_viewport
+  (gh#pygame/pygame#2721 and gh#pygame/pygame#2670) on 32bit
+  systems for incompatibility with SDL2 2.0.16.</comment>
+    <requestid>919721</requestid>
+  </revision>
 </revisionlist>

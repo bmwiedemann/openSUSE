@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 16 21:02:06 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Add support-SDL2-2.0.16.patch swtiching off
+  tests.video_test.VideoModuleTest.test_renderer_set_viewport
+  (gh#pygame/pygame#2721 and gh#pygame/pygame#2670) on 32bit
+  systems for incompatibility with SDL2 2.0.16.
+
+-------------------------------------------------------------------
 Tue Apr 27 11:22:12 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Explictly require libudev while building (for staging)
