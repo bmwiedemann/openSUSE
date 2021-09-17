@@ -1,7 +1,7 @@
 #
 # spec file for package python-uvicorn
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,6 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
+%define skip_python36 1
 Name:           python-uvicorn
 Version:        0.12.3
 Release:        0
@@ -39,7 +40,7 @@ Suggests:       python-uvloop >= 0.14.0
 Suggests:       python-watchgod >= 0.6
 Suggests:       python-wsproto >= 0.15.0
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module PyYAML >= 5.1}
