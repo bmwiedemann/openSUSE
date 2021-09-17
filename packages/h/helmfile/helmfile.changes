@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 17 06:57:31 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
+
+- v0.140.1:
+  * 787e6c8 (HEAD, tag: v0.140.1) ubuntu docker based image for
+    helmfile (#1863)
+  * 724b4b3 readme: fix wrong paths for environments on conf
+    example (#1885)
+  * 2792ef7 bug: write-values deletes provided --values files.
+    (#1905)
+  * f57b510 Fix json patches and strategic patches to do work
+    when there was only one resource in the targeted chart/directory
+    (#1962)
+  * 7845ccc Stop integration test for Helm 2.17.0 (#1961)
+  * e1cabc8 Add support for --validate on chartify (#1960)
+  * 0f91f2c Add IKEA to users. (#1925)
+  * 8594944 Update writing-helmfile.md (#1937)
+  * ae438c8 Add more examples for remote env value files (#1938)
+  * ad2f8e8 Add debian docker image, drop helm2, upgrade packages.
+    (#1956)
+
+-------------------------------------------------------------------
 Mon Aug 16 17:01:43 UTC 2021 - Manfred Hollstein <manfred.h@gmx.net>
 
 - v0.140.0: The following two changes were not included in the last
