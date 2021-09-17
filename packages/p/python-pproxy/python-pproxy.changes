@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 17 07:03:50 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for python 3.6: the required dependency uvloop does
+  no longer support Python 3.6 since version 0.16.
+
+-------------------------------------------------------------------
 Thu Jun  3 09:29:40 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to v2.7.8
