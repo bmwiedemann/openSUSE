@@ -19,7 +19,7 @@
 %define name_ext -test
 %define         short_name os-autoinst
 Name:           %{short_name}%{?name_ext}
-Version:        4.6.1631543245.9bb4b0ca
+Version:        4.6.1631697994.f5fcf5e7
 Release:        0
 Summary:        test package for os-autoinst
 License:        GPL-2.0-or-later

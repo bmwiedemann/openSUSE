@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 17 00:38:33 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631697994.f5fcf5e7:
+  * Regression in 'consoles::sshVirtsh::get_remote_vmm'
+  * Extend unit tests for svirt backend
+  * Write condition in `attach_to_running` in a more compact way
+  * Fix parameters of `attach_to_running`
+
+-------------------------------------------------------------------
 Tue Sep 14 16:35:06 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631543245.9bb4b0ca:
