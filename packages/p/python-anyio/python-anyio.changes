@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Sep 17 19:23:22 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to v3.3.1
+  * Added missing documentation for the ExceptionGroup.exceptions
+   attribute
+  * Changed the asyncio test runner not to use uvloop by default
+    (to match the behavior of anyio.run())
+  * Fixed RuntimeError on asyncio when a CancelledError is raised
+    from a task spawned through a BlockingPortal (#357)
+  * Fixed asyncio warning about a Future with an exception that
+    was never retrieved which happened when a socket was already
+    written to but the peer abruptly closed the connection
+- Release 3.3.0
+  * Added asynchronous Path class
+  * Added the wrap_file() function for wrapping existing files as
+    asynchronous file objects
+  * Relaxed the type of the path initializer argument to
+    FileReadStream and FileWriteStream so they accept any
+    path-like object (including the new asynchronous Path class)
+  * Dropped unnecessary dependency on the async_generator library
+  * Changed the generics in AsyncFile so that the methods
+    correctly return either str or bytes based on the argument to
+    open_file()
+  * Fixed an asyncio bug where under certain circumstances, a
+    stopping worker thread would still accept new assignments,
+    leading to a hang
+- Release 3.2.1
+  * Fixed idle thread pruning on asyncio sometimes causing an
+    expired worker thread to be assigned a task
+- Release 3.2.0
+  * Added Python 3.10 compatibility
+  * Added the ability to close memory object streams synchronously
+    (including support for use as a synchronous context manager)
+  * Changed the default value of the use_uvloop asyncio backend
+    option to False to prevent unsafe event loop policy changes in
+    different threads
+  * Fixed to_thread.run_sync() hanging on the second call on
+    asyncio when used with loop.run_until_complete()
+  * Fixed to_thread.run_sync() prematurely marking a worker thread
+    inactive when a task await on the result is cancelled
+  * Fixed ResourceWarning about an unclosed socket when UNIX
+    socket connect fails on asyncio
+  * Fixed the type annotation of open_signal_receiver() as a
+    synchronous context manager
+  * Fixed the type annotation of DeprecatedAwaitable(|List|Float).
+    __await__ to match the typing.Awaitable protocol
+- Unskip python36: uvloop is only optional
+
+-------------------------------------------------------------------
+Fri Sep 17 06:59:56 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build for python 3.6: the required dependency uvloop does
+  no longer support Python 3.6 since version 0.16.
+
+-------------------------------------------------------------------
 Thu Jun  3 09:17:54 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 3.1.0:
