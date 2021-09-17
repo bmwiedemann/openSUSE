@@ -1,7 +1,7 @@
 #
 # spec file for package openssl-ibmca
 #
-# Copyright (c) 2018-2020 SUSE LLC
+# Copyright (c) 2018-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,10 @@
 #
 
 
+%global enginesdir %(pkg-config --variable=enginesdir libcrypto)
+
 Name:           openssl-ibmca
-Version:        2.1.1
+Version:        2.2.1
 Release:        0
 Summary:        The IBMCA OpenSSL dynamic engine
 License:        Apache-2.0
@@ -37,32 +39,27 @@ Requires:       openssl
 ExclusiveArch:  s390x
 
 %description
-This package contains a shared object OpenSSL dynamic engine for the
-IBM eServer Cryptographic Accelerator (ICA).
+This package contains a shared object OpenSSL dynamic engine which interfaces
+to libica, a library enabling the IBM s390/x CPACF crypto instructions.
 
 %prep
 %autosetup
 ./bootstrap.sh
 
 %build
-# The directory where crypto engines are located is owned by the libcrypto package.
-# Find out where that is for this version of the distribution.
-%define _ENGINE_DIR %(pkg-config --variable=enginesdir libcrypto)
-
-autoreconf --force --install
 export CFLAGS="%{optflags}"
 export CPPFLAGS="%{optflags}"
 %configure \
-  --libdir=%{_ENGINE_DIR}
-make %{?_smp_mflags}
+  --libdir=%{enginesdir}
+%make_build
 
 %install
 # Update the sample config file so that the dynamic path points
 # to the correct version of the engines directory.
-sed -i -e "/^dynamic_path/s, = .*/, = %{_ENGINE_DIR}/," src/openssl.cnf.sample
+sed -i -e "/^dynamic_path/s, = .*/, = %{enginesdir}/," src/openssl.cnf.sample
 
 %make_install
-rm %{buildroot}/%{_ENGINE_DIR}/ibmca.la
+rm %{buildroot}/%{enginesdir}/ibmca.la
 
 %post
 #Original fix for bsc#942839 was to update on first install
@@ -116,7 +113,12 @@ fi
 %license LICENSE
 %doc README.md
 %doc src/openssl.cnf.sample
-%{_ENGINE_DIR}/ibmca.*
+%doc src/openssl.cnf.defaultlibica
+%doc src/openssl.cnf.libica
+%doc src/openssl.cnf.libica-cex
+%dir %{_datadir}/%{name}
+%{_datadir}/%{name}/openssl.cnf.*
+%{enginesdir}/ibmca.*
 %{_mandir}/man5/ibmca.5%{?ext_man}
 
 %changelog
