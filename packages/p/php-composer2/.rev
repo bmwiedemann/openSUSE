@@ -7,4 +7,12 @@
     <comment>This package should later on replace php-composer which has been deprecated</comment>
     <requestid>919163</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>416a4d15d82bdb73cad362bdf46c16b7</srcmd5>
+    <version>2.1.8</version>
+    <time>1631913964</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919724</requestid>
+  </revision>
 </revisionlist>

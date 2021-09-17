@@ -27,6 +27,7 @@ Source0:        https://getcomposer.org/download/%{version}/composer.phar
 Source1:        https://github.com/composer/composer/raw/%{version}/LICENSE
 Requires:       php-curl
 Requires:       php-json
+Requires:       php-mbstring
 Requires:       php-openssl
 Requires:       php-phar
 Requires:       php-zip
