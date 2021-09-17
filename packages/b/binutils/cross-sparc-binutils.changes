@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Aug  3 13:36:19 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Bump binutils-2.37-branch.diff: fixes PR28138.
+
+-------------------------------------------------------------------
+Thu Jul 22 17:36:14 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Use LTO & PGO build.
+
+-------------------------------------------------------------------
+Thu Jul 22 15:01:27 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Update to binutils 2.37:
+  * The GNU Binutils sources now requires a C99 compiler and library to
+    build.
+  * Support for the arm-symbianelf format has been removed.
+  * Support for Realm Management Extension (RME) for AArch64 has been
+    added.
+  * A new linker option '-z report-relative-reloc' for x86 ELF targets
+    has been added to report dynamic relative relocations.
+  * A new linker option '-z start-stop-gc' has been added to disable
+    special treatment of __start_*/__stop_* references when
+    --gc-sections.
+  * A new linker options '-Bno-symbolic' has been added which will
+    cancel the '-Bsymbolic' and '-Bsymbolic-functions' options.
+  * The readelf tool has a new command line option which can be used to
+    specify how the numeric values of symbols are reported.
+    --sym-base=0|8|10|16 tells readelf to display the values in base 8,
+    base 10 or base 16.  A sym base of 0 represents the default action
+    of displaying values under 10000 in base 10 and values above that in
+    base 16.
+  * A new format has been added to the nm program.  Specifying
+    '--format=just-symbols' (or just using -j) will tell the program to
+    only display symbol names and nothing else.
+  * A new command line option '--keep-section-symbols' has been added to
+    objcopy and strip.  This stops the removal of unused section symbols
+    when the file is copied.  Removing these symbols saves space, but
+    sometimes they are needed by other tools.
+  * The '--weaken', '--weaken-symbol' and '--weaken-symbols' options
+    supported by objcopy now make undefined symbols weak on targets that
+    support weak symbols. 
+  * Readelf and objdump can now display and use the contents of .debug_sup
+    sections.
+  * Readelf and objdump will now follow links to separate debug info
+    files by default.  This behaviour can be stopped via the use of the
+    new '-wN' or '--debug-dump=no-follow-links' options for readelf and
+    the '-WN' or '--dwarf=no-follow-links' options for objdump.  Also
+    the old behaviour can be restored by the use of the
+    '--enable-follow-debug-links=no' configure time option.
+
+    The semantics of the =follow-links option have also been slightly
+    changed.  When enabled, the option allows for the loading of symbol
+    tables and string tables from the separate files which can be used
+    to enhance the information displayed when dumping other sections,
+    but it does not automatically imply that information from the
+    separate files should be displayed.
+
+    If other debug section display options are also enabled (eg
+    '--debug-dump=info') then the contents of matching sections in both
+    the main file and the separate debuginfo file *will* be displayed.
+    This is because in most cases the debug section will only be present
+    in one of the files.
+
+    If however non-debug section display options are enabled (eg
+    '--sections') then the contents of matching parts of the separate
+    debuginfo file will *not* be displayed.  This is because in most
+    cases the user probably only wanted to load the symbol information
+    from the separate debuginfo file.  In order to change this behaviour
+    a new command line option --process-links can be used.  This will
+    allow di0pslay options to applied to both the main file and any
+    separate debuginfo files.
+  * Nm has a new command line option: '--quiet'.  This suppresses "no
+    symbols" diagnostic.
+- Includes fixes for these CVEs:
+  bnc#1181452 aka CVE-2021-20197 aka PR26945
+  bnc#1183511 aka CVE-2021-20284 aka PR26931
+  bnc#1184620 aka CVE-2021-3487 aka PR26946
+  bnc#1184794 aka CVE-2020-35448 aka PR26574
+- Rebased patches: binutils-build-as-needed.diff, binutils-fix-abierrormsg.diff,
+  binutils-fix-invalid-op-errata.diff, binutils-fix-relax.diff,
+  binutils-revert-nm-symversion.diff, binutils-revert-plt32-in-branches.diff
+- Removed patches (are in upstream): ppc-ensure-undef-dynamic-weak-undefined.patch and
+  ppc-use-local-plt.patch.
+- Add binutils-2.37-branch.diff.gz.
+
+-------------------------------------------------------------------
 Fri May  7 15:34:22 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - ppc-ensure-undef-dynamic-weak-undefined.patch: PPC: ensure_undef_dynamic

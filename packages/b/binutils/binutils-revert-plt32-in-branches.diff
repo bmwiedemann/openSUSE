@@ -80,17 +80,17 @@ Date:   Tue Feb 13 07:34:22 2018 -0800
     	* testsuite/ld-x86-64/x86-64.exp: Run PR ld/22791 tests.
 
 diff --git a/bfd/elf64-x86-64.c b/bfd/elf64-x86-64.c
-index daae52b9537..5030cc6e121 100644
+index dc416a7f..b9f96729 100644
 --- a/bfd/elf64-x86-64.c
 +++ b/bfd/elf64-x86-64.c
-@@ -1834,6 +1834,24 @@ elf_x86_64_convert_load_reloc (bfd *abfd,
-   return TRUE;
+@@ -1832,6 +1832,24 @@ elf_x86_64_convert_load_reloc (bfd *abfd,
+   return true;
  }
  
 +/* Is the instruction before OFFSET in CONTENTS a 32bit relative
 +   branch?  */
 +
-+static bfd_boolean
++static bool
 +is_32bit_relative_branch (bfd_byte *contents, bfd_vma offset)
 +{
 +  /* Opcode		Instruction
@@ -108,7 +108,7 @@ index daae52b9537..5030cc6e121 100644
  /* Look through the relocs for a section during the first phase, and
     calculate needed space in the global offset table, procedure
     linkage table, and dynamic reloc sections.  */
-@@ -3143,28 +3161,30 @@ elf_x86_64_relocate_section (bfd *output_bfd,
+@@ -3159,9 +3177,6 @@ elf_x86_64_relocate_section (bfd *output_bfd,
  			&& (eh == NULL
  			    || !UNDEFINED_WEAK_RESOLVED_TO_ZERO (info,
  								 eh)))
@@ -118,10 +118,11 @@ index daae52b9537..5030cc6e121 100644
  		       || (no_copyreloc_p
  			   && h->def_dynamic
  			   && !(h->root.u.def.section->flags & SEC_CODE))))
+@@ -3170,20 +3185,25 @@ elf_x86_64_relocate_section (bfd *output_bfd,
  		  || bfd_link_dll (info)))
  	    {
- 	      bfd_boolean fail = FALSE;
-+	      bfd_boolean branch
+ 	      bool fail = false;
++	      bool branch
 +		= ((r_type == R_X86_64_PC32
 +		    || r_type == R_X86_64_PC32_BND)
 +		   && is_32bit_relative_branch (contents, rel->r_offset));
@@ -139,14 +140,15 @@ index daae52b9537..5030cc6e121 100644
  		  /* We can only use PC-relative relocations in PIE
 -		     from non-code sections.  */
 +		     from non-code sections or branches.  */
- 		  if (h->type == STT_FUNC
- 		      && (sec->flags & SEC_CODE) != 0)
--		    fail = TRUE;
+ 		  if (h->root.type == bfd_link_hash_undefweak
+ 		      || (h->type == STT_FUNC
+ 			  && (sec->flags & SEC_CODE) != 0))
+-		    fail = true;
 +		    fail = !branch;
  		}
  	      else if (no_copyreloc_p || bfd_link_dll (info))
  		{
-@@ -3173,9 +3193,10 @@ elf_x86_64_relocate_section (bfd *output_bfd,
+@@ -3192,9 +3212,10 @@ elf_x86_64_relocate_section (bfd *output_bfd,
  		     relocations against default and protected
  		     symbols since address of protected function
  		     and location of protected data may not be in
@@ -160,10 +162,10 @@ index daae52b9537..5030cc6e121 100644
  
  	      if (fail)
 diff --git a/gas/config/tc-i386.c b/gas/config/tc-i386.c
-index 9a2dfc92281..885ee85b999 100644
+index d3441988e34..8f8fb086cd8 100644
 --- a/gas/config/tc-i386.c
 +++ b/gas/config/tc-i386.c
-@@ -8605,52 +8605,12 @@ output_branch (void)
+@@ -8793,55 +8793,12 @@ output_branch (void)
    frag_var (rs_machine_dependent, 5, i.reloc[0], subtype, sym, off, p);
  }
  
@@ -171,38 +173,41 @@ index 9a2dfc92281..885ee85b999 100644
 -/* Return TRUE iff PLT32 relocation should be used for branching to
 -   symbol S.  */
 -
--static bfd_boolean
+-static bool
 -need_plt32_p (symbolS *s)
 -{
 -  /* PLT32 relocation is ELF only.  */
 -  if (!IS_ELF)
--    return FALSE;
+-    return false;
 -
 -#ifdef TE_SOLARIS
 -  /* Don't emit PLT32 relocation on Solaris: neither native linker nor
 -     krtld support it.  */
--  return FALSE;
+-  return false;
 -#endif
 -
 -  /* Since there is no need to prepare for PLT branch on x86-64, we
 -     can generate R_X86_64_PLT32, instead of R_X86_64_PC32, which can
 -     be used as a marker for 32-bit PC-relative branches.  */
 -  if (!object_64bit)
--    return FALSE;
+-    return false;
+-
+-  if (s == NULL)
+-    return false;
 -
 -  /* Weak or undefined symbol need PLT32 relocation.  */
 -  if (S_IS_WEAK (s) || !S_IS_DEFINED (s))
--    return TRUE;
+-    return true;
 -
 -  /* Non-global symbol doesn't need PLT32 relocation.  */
 -  if (! S_IS_EXTERNAL (s))
--    return FALSE;
+-    return false;
 -
 -  /* Other global symbols need PLT32 relocation.  NB: Symbol with
 -     non-default visibilities are treated as normal global symbol
 -     so that PLT32 relocation can be used as a marker for 32-bit
 -     PC-relative branches.  It is useful for linker relaxation.  */
--  return TRUE;
+-  return true;
 -}
 -#endif
 -
@@ -216,7 +221,7 @@ index 9a2dfc92281..885ee85b999 100644
  
    if (i.tm.opcode_modifier.jump == JUMP_BYTE)
      {
-@@ -8724,17 +8684,8 @@ output_jump (void)
+@@ -8915,17 +8872,8 @@ output_jump (void)
        abort ();
      }
  
@@ -233,9 +238,9 @@ index 9a2dfc92281..885ee85b999 100644
 -		      i.op[0].disps, 1, jump_reloc);
 +		      i.op[0].disps, 1, reloc (size, 1, 1, i.reloc[0]));
  
-   /* All jumps handled here are signed, but don't use a signed limit
-      check for 32 and 16 bit jumps as we want to allow wrap around at
-@@ -12085,10 +12036,6 @@ md_estimate_size_before_relax (fragS *fragP, segT segment)
+   /* All jumps handled here are signed, but don't unconditionally use a
+      signed limit check for 32 and 16 bit jumps as we want to allow wrap
+@@ -12184,10 +12132,6 @@ md_estimate_size_before_relax (fragS *fragP, segT segment)
  	reloc_type = (enum bfd_reloc_code_real) fragP->fr_var;
        else if (size == 2)
  	reloc_type = BFD_RELOC_16_PCREL;
@@ -531,10 +536,10 @@ index f0659cd901e..b9dd81345b7 100644
  	popq	%rcx
  	retq
 diff --git a/ld/testsuite/ld-x86-64/x86-64.exp b/ld/testsuite/ld-x86-64/x86-64.exp
-index 83fdaa7db65..a3bb1e9ebd6 100644
+index 17fd10ee121..b4ae52ab376 100644
 --- a/ld/testsuite/ld-x86-64/x86-64.exp
 +++ b/ld/testsuite/ld-x86-64/x86-64.exp
-@@ -1250,44 +1250,6 @@ if { [isnative] && [check_compiler_available] } {
+@@ -1264,44 +1264,6 @@ if { [isnative] && [check_compiler_available] } {
  	     {readelf -lW pr22393-3b.rd}} \
  	    "pr22393-3-static" \
  	] \
@@ -579,7 +584,7 @@ index 83fdaa7db65..a3bb1e9ebd6 100644
  	[list \
  	    "Build pr22842.so" \
  	    "-shared" \
-@@ -1752,15 +1714,6 @@ if { [isnative] && [check_compiler_available] } {
+@@ -1703,15 +1665,6 @@ if { [isnative] && [check_compiler_available] } {
  	    "pr22393-3-static" \
  	    "pass.out" \
  	] \

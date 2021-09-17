@@ -2,12 +2,12 @@ Index: ld/ldmain.c
 ===================================================================
 --- ld/ldmain.c.orig	2017-07-26 10:07:31.862559913 +0200
 +++ ld/ldmain.c	2017-07-26 10:07:31.886560303 +0200
-@@ -307,6 +307,8 @@ main (int argc, char **argv)
+@@ -309,6 +309,8 @@ main (int argc, char **argv)
      yydebug = 1;
    }
  #endif
 +  if (getenv ("SUSE_ASNEEDED") && atoi(getenv ("SUSE_ASNEEDED")) > 0)
-+    input_flags.add_DT_NEEDED_for_regular = TRUE;
++    input_flags.add_DT_NEEDED_for_regular = true;
  
-   config.build_constructors = TRUE;
+   config.build_constructors = true;
    config.rpath_separator = ':';

@@ -13,7 +13,7 @@ ld: final link failed: file in wrong format
 
 --- bfd/elfnn-aarch64.c.mm	2019-09-09 13:19:43.000000000 +0000
 +++ bfd/elfnn-aarch64.c	2019-11-20 11:44:00.000000000 +0000
-@@ -4313,7 +4313,8 @@ elfNN_aarch64_size_stubs (bfd *output_bfd,
+@@ -4312,7 +4312,8 @@ elfNN_aarch64_size_stubs (bfd *output_bfd,
  	      || (input_bfd->flags & BFD_LINKER_CREATED) != 0)
  	    continue;
  
@@ -21,5 +21,5 @@ ld: final link failed: file in wrong format
 +	  if (input_bfd != stub_bfd
 +	      && !_bfd_aarch64_erratum_835769_scan (input_bfd, info,
  						 &num_erratum_835769_fixes))
- 	    return FALSE;
+ 	    return false;
  	}

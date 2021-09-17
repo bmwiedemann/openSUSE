@@ -24,7 +24,7 @@ Index: bfd/elf32-s390.c
 +		   input_bfd, elf_howto_table[r_type].name,
 +		   h->root.root.string);
 +	      bfd_set_error (bfd_error_bad_value);
-+	      return FALSE;
++	      return false;
 +	    }
 +
  	  if (h != NULL

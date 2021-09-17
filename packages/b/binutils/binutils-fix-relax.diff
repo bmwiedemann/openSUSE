@@ -15,6 +15,6 @@ index 549a8be6a6..b89b0023db 100644
  	{
 -	  if (abs_symbol && local_ref && relocx)
 +	  if (abs_symbol && local_ref && relocx && rex)
- 	    to_reloc_pc32 = FALSE;
+ 	    to_reloc_pc32 = false;
  
  	  if (to_reloc_pc32)

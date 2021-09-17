@@ -37,7 +37,7 @@ BuildRequires:  zlib-devel-static
 %else
 BuildRequires:  zlib-devel
 %endif
-Version:        2.36
+Version:        2.37
 Release:        0
 #
 # RUN_TESTS
@@ -86,7 +86,7 @@ Source5:        binutils.keyring
 Source1:        pre_checkin.sh
 Source2:        README.First-for.SUSE.packagers
 Source3:        baselibs.conf
-Patch1:         binutils-2.36-branch.diff.gz
+Patch1:         binutils-2.37-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -104,8 +104,6 @@ Patch38:        binutils-fix-invalid-op-errata.diff
 Patch39:        binutils-revert-nm-symversion.diff
 Patch40:        binutils-fix-abierrormsg.diff
 Patch41:        binutils-fix-relax.diff
-Patch42:        ppc-use-local-plt.patch
-Patch43:        ppc-ensure-undef-dynamic-weak-undefined.patch
 Patch100:       add-ulp-section.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
@@ -197,8 +195,6 @@ echo "make check will return with %{make_check_handling} in case of testsuite fa
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
-%patch42 -p1
-%patch43 -p1
 %patch100 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
@@ -286,7 +282,11 @@ cd build-dir
 	--enable-default-hash-style=both \
 %endif
 	--enable-shared \
+%if %{suse_version} > 1500
+	--enable-pgo-build=lto \
+%endif
 	--enable-obsolete
+
 make %{?_smp_mflags}
 
 %else

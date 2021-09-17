@@ -18,16 +18,15 @@ Index: binutils-2.35/bfd/elf64-ppc.c
 ===================================================================
 --- binutils-2.35.orig/bfd/elf64-ppc.c	2020-07-24 11:12:19.000000000 +0200
 +++ binutils-2.35/bfd/elf64-ppc.c	2020-08-10 17:25:00.205219071 +0200
-@@ -5301,12 +5301,17 @@ ppc64_elf_merge_private_bfd_data (bfd *i
-     }
-   else if (iflags != oflags && iflags != 0)
+@@ -5310,11 +5310,17 @@ ppc64_elf_merge_private_bfd_data (bfd *ibfd, struct bfd_link_info *info)
+ 
+   if (iflags & ~EF_PPC64_ABI)
      {
 -      _bfd_error_handler
 -	/* xgettext:c-format */
--	(_("%pB: ABI version %ld is not compatible with ABI version %ld output"),
--	 ibfd, iflags, oflags);
+-	(_("%pB uses unknown e_flags 0x%lx"), ibfd, iflags);
 -      bfd_set_error (bfd_error_bad_value);
--      return FALSE;
+-      return false;
 +      if (abiversion (info->output_bfd) == 0)
 +	set_abiversion (info->output_bfd, abiversion (ibfd));
 +      else
@@ -37,8 +36,8 @@ Index: binutils-2.35/bfd/elf64-ppc.c
 +	      (_("%pB: ABI version %ld is not compatible with ABI version %ld output"),
 +	       ibfd, iflags, oflags);
 +	  bfd_set_error (bfd_error_bad_value);
-+	  return FALSE;
++	  return false;
 +	}
      }
- 
-   if (!_bfd_elf_ppc_merge_fp_attributes (ibfd, info))
+   else if (iflags != oflags && iflags != 0)
+     {

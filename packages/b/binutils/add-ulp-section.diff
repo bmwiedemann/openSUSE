@@ -2,26 +2,26 @@ This is for userspace live patching, adding some space into
 shared libs or executable (in the .ulp section) when one of the 
 input files contains a section named .ulp.track.
 
-Index: binutils-2.35/bfd/elf-bfd.h
-===================================================================
---- binutils-2.35.orig/bfd/elf-bfd.h	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/bfd/elf-bfd.h	2020-08-10 16:30:46.555219071 +0200
-@@ -1476,6 +1476,10 @@ struct elf_backend_data
+diff --git a/bfd/elf-bfd.h b/bfd/elf-bfd.h
+index 101c2fdf50d..f5d9e201fdb 100644
+--- a/bfd/elf-bfd.h
++++ b/bfd/elf-bfd.h
+@@ -1487,6 +1487,10 @@ struct elf_backend_data
      (const bfd *ibfd, bfd *obfd, const Elf_Internal_Shdr *isection,
       Elf_Internal_Shdr *osection);
  
-+  bfd_boolean (*elf_backend_is_ulp_enabled) (bfd *abfd);
++  bool (*elf_backend_is_ulp_enabled) (bfd *abfd);
 +
-+  bfd_boolean (*elf_backend_setup_ulp) (struct bfd_link_info *);
++  bool (*elf_backend_setup_ulp) (struct bfd_link_info *);
 +
    /* Used to handle bad SHF_LINK_ORDER input.  */
    void (*link_order_error_handler) (const char *, ...);
  
-Index: binutils-2.35/bfd/elflink.c
-===================================================================
---- binutils-2.35.orig/bfd/elflink.c	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/bfd/elflink.c	2020-08-10 16:30:46.565219071 +0200
-@@ -7197,6 +7197,13 @@ bfd_elf_size_dynamic_sections (bfd *outp
+diff --git a/bfd/elflink.c b/bfd/elflink.c
+index ce1407fa2dc..5c70bcf6c07 100644
+--- a/bfd/elflink.c
++++ b/bfd/elflink.c
+@@ -7260,6 +7260,13 @@ bfd_elf_size_dynamic_sections (bfd *output_bfd,
  	  s = bfd_get_linker_section (dynobj, ".gnu.version");
  	  s->flags |= SEC_EXCLUDE;
  	}
@@ -33,13 +33,13 @@ Index: binutils-2.35/bfd/elflink.c
 +          (*bed->elf_backend_setup_ulp)(info);
 +        }
      }
-   return TRUE;
+   return true;
  }
-Index: binutils-2.35/bfd/elfxx-target.h
-===================================================================
---- binutils-2.35.orig/bfd/elfxx-target.h	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/bfd/elfxx-target.h	2020-08-10 16:30:46.565219071 +0200
-@@ -768,6 +768,14 @@
+diff --git a/bfd/elfxx-target.h b/bfd/elfxx-target.h
+index 4c6b1f20340..1f54509cd08 100644
+--- a/bfd/elfxx-target.h
++++ b/bfd/elfxx-target.h
+@@ -771,6 +771,14 @@
  #define elf_backend_copy_special_section_fields _bfd_elf_copy_special_section_fields
  #endif
  
@@ -54,7 +54,7 @@ Index: binutils-2.35/bfd/elfxx-target.h
  #ifndef elf_backend_compact_eh_encoding
  #define elf_backend_compact_eh_encoding NULL
  #endif
-@@ -900,6 +908,8 @@ static struct elf_backend_data elfNN_bed
+@@ -904,6 +912,8 @@ static const struct elf_backend_data elfNN_bed =
    elf_backend_maybe_function_sym,
    elf_backend_get_reloc_section,
    elf_backend_copy_special_section_fields,
@@ -63,40 +63,40 @@ Index: binutils-2.35/bfd/elfxx-target.h
    elf_backend_link_order_error_handler,
    elf_backend_relplt_name,
    ELF_MACHINE_ALT1,
-Index: binutils-2.35/bfd/elfxx-x86.c
-===================================================================
---- binutils-2.35.orig/bfd/elfxx-x86.c	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/bfd/elfxx-x86.c	2020-08-10 16:30:46.565219071 +0200
+diff --git a/bfd/elfxx-x86.c b/bfd/elfxx-x86.c
+index 62d516aab8d..c0fb718d85c 100644
+--- a/bfd/elfxx-x86.c
++++ b/bfd/elfxx-x86.c
 @@ -31,6 +31,8 @@
  #define ELF64_DYNAMIC_INTERPRETER "/lib/ld64.so.1"
  #define ELFX32_DYNAMIC_INTERPRETER "/lib/ldx32.so.1"
  
 +#define ULP_ENTRY_LEN 16
 +
- bfd_boolean
+ bool
  _bfd_x86_elf_mkobject (bfd *abfd)
  {
-@@ -984,6 +986,64 @@ _bfd_elf_x86_valid_reloc_p (asection *in
+@@ -984,6 +986,64 @@ _bfd_elf_x86_valid_reloc_p (asection *input_section,
    return valid_p;
  }
  
 +/* Check if input bfds are ulp-enabled by containing .ulp.track section */
 +
-+bfd_boolean
++bool
 +_bfd_x86_elf_is_ulp_enabled (struct bfd *input_bfd)
 +{
 +  while (input_bfd != NULL)
 +  for (; input_bfd != NULL; input_bfd = input_bfd->link.next)
 +    {
 +      if (input_bfd->section_count == 0) continue;
-+      if (bfd_get_section_by_name (input_bfd, ".ulp.track")) return TRUE;
++      if (bfd_get_section_by_name (input_bfd, ".ulp.track")) return true;
 +    }
-+  return FALSE;
++  return false;
 +}
 +
 +/* To be used by elf_link_hash_traverse when computing the ulp length */
 +
-+static bfd_boolean
++static bool
 +bfd_x86_elf_link_compute_ulp (struct elf_link_hash_entry *h, void *data)
 +{
 +  unsigned long *ulp_length = (unsigned long *) data;
@@ -105,12 +105,12 @@ Index: binutils-2.35/bfd/elfxx-x86.c
 +    {
 +      ++(*ulp_length);
 +    }
-+  return TRUE;
++  return true;
 +}
 +
 +/* Fill the user-space live patching section */
 +
-+bfd_boolean
++bool
 +_bfd_x86_elf_setup_ulp (struct bfd_link_info *info)
 +{
 +  struct elf_x86_link_hash_table *htab;
@@ -129,19 +129,19 @@ Index: binutils-2.35/bfd/elfxx-x86.c
 +
 +  ulp->contents = (bfd_byte *) bfd_malloc (ulp->size);
 +  if (ulp->contents == NULL)
-+    return FALSE;
++    return false;
 +
 +  if (!ulp->contents)
-+    return FALSE;
++    return false;
 +
 +  memset(ulp->contents, 0x00, ulp->size);
-+  return TRUE;
++  return true;
 +}
 +
  /* Set the sizes of the dynamic sections.  */
  
- bfd_boolean
-@@ -2855,7 +2915,26 @@ _bfd_x86_elf_link_setup_gnu_properties
+ bool
+@@ -3030,7 +3090,26 @@ _bfd_x86_elf_link_setup_gnu_properties
  
  	      htab->plt_second = sec;
  	    }
@@ -169,11 +169,11 @@ Index: binutils-2.35/bfd/elfxx-x86.c
  
        if (!info->no_ld_generated_unwind_info)
  	{
-Index: binutils-2.35/bfd/elfxx-x86.h
-===================================================================
---- binutils-2.35.orig/bfd/elfxx-x86.h	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/bfd/elfxx-x86.h	2020-08-10 16:30:46.565219071 +0200
-@@ -449,6 +449,7 @@ struct elf_x86_link_hash_table
+diff --git a/bfd/elfxx-x86.h b/bfd/elfxx-x86.h
+index db11327e96f..89f51382216 100644
+--- a/bfd/elfxx-x86.h
++++ b/bfd/elfxx-x86.h
+@@ -452,6 +452,7 @@ struct elf_x86_link_hash_table
    asection *plt_second_eh_frame;
    asection *plt_got;
    asection *plt_got_eh_frame;
@@ -181,20 +181,20 @@ Index: binutils-2.35/bfd/elfxx-x86.h
  
    /* Parameters describing PLT generation, lazy or non-lazy.  */
    struct elf_x86_plt_layout plt;
-@@ -687,6 +688,12 @@ extern void _bfd_x86_elf_link_fixup_ifun
-   (struct bfd_link_info *, struct elf_x86_link_hash_table *,
-    struct elf_link_hash_entry *, Elf_Internal_Sym *sym);
+@@ -690,6 +691,12 @@ extern void _bfd_x86_elf_link_report_relative_reloc
+   (struct bfd_link_info *, asection *, struct elf_link_hash_entry *,
+    Elf_Internal_Sym *, const char *, const void *);
  
-+extern bfd_boolean _bfd_x86_elf_is_ulp_enabled
++extern bool _bfd_x86_elf_is_ulp_enabled
 +  (struct bfd *);
 +
-+extern bfd_boolean _bfd_x86_elf_setup_ulp
++extern bool _bfd_x86_elf_setup_ulp
 +  (struct bfd_link_info *);
 +
  #define bfd_elf64_mkobject \
    _bfd_x86_elf_mkobject
  #define bfd_elf32_mkobject \
-@@ -724,3 +731,7 @@ extern void _bfd_x86_elf_link_fixup_ifun
+@@ -727,3 +734,7 @@ extern void _bfd_x86_elf_link_report_relative_reloc
    _bfd_x86_elf_merge_gnu_properties
  #define elf_backend_fixup_gnu_properties \
    _bfd_x86_elf_link_fixup_gnu_properties

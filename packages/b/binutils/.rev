@@ -1947,4 +1947,12 @@ contain it.
   patch) (forwarded request 891347 from Andreas_Schwab)</comment>
     <requestid>892038</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>1bb9bdfc780607c3dfc3196222ceaacf</srcmd5>
+    <version>2.37</version>
+    <time>1631913922</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump binutils-2.37-branch.diff: fixes PR28138. (forwarded request 910001 from marxin)</comment>
+    <requestid>910009</requestid>
+  </revision>
 </revisionlist>

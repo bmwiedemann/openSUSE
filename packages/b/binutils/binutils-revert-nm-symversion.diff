@@ -4,29 +4,29 @@ file with symbol names.  ld errors on the '@' characters.  Until
 those packages are fixed we use this patch.  We have to carry it
 for old code streams forever.
 
-Index: binutils-2.35/binutils/nm.c
-===================================================================
---- binutils-2.35.orig/binutils/nm.c	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/binutils/nm.c	2020-08-07 16:42:58.000000000 +0200
-@@ -418,7 +418,7 @@ print_symname (const char *form, struct extended_symbol_info *info,
+diff --git a/binutils/nm.c b/binutils/nm.c
+index 2637756c647..253714ef179 100644
+--- a/binutils/nm.c
++++ b/binutils/nm.c
+@@ -458,7 +458,7 @@ print_symname (const char *form, struct extended_symbol_info *info,
  	name = alloc;
      }
  
--  if (info != NULL && info->elfinfo)
-+  if (info != NULL && info->elfinfo && 0)
+-  if (info != NULL && info->elfinfo && with_symbol_versions)
++  if (info != NULL && info->elfinfo && with_symbol_versions && 0)
      {
        const char *version_string;
-       bfd_boolean hidden;
-Index: binutils-2.35/ld/testsuite/ld-elf/pr25708.d
-===================================================================
---- binutils-2.35.orig/ld/testsuite/ld-elf/pr25708.d	2020-07-24 11:12:20.000000000 +0200
-+++ binutils-2.35/ld/testsuite/ld-elf/pr25708.d	2020-08-07 16:44:50.000000000 +0200
+       bool hidden;
+diff --git a/ld/testsuite/ld-elf/pr25708.d b/ld/testsuite/ld-elf/pr25708.d
+index 60b8e31807a..1b62e25347e 100644
+--- a/ld/testsuite/ld-elf/pr25708.d
++++ b/ld/testsuite/ld-elf/pr25708.d
 @@ -2,8 +2,9 @@
  #ld: -shared -version-script pr13195.t
- #nm: -D
+ #nm: -D --with-symbol-versions
  #target: *-*-linux* *-*-gnu* arm*-*-uclinuxfdpiceabi
 -#xfail: hppa64-*-* ![check_shared_lib_support] 
-+#xfail: *-*-* ![check_shared_lib_support] 
++#xfail: *-*-* ![check_shared_lib_support]
  # h8300 doesn't support -shared, and hppa64 creates .foo
 +# our binutils revert the printing of symversions with nm -D
  
