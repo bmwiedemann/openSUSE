@@ -1,7 +1,7 @@
 #
 # spec file for package python-cx_Freeze
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,9 @@ License:        Python-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/anthony-tuininga/cx_Freeze
 Source:         https://github.com/anthony-tuininga/cx_Freeze/archive/%{version}.tar.gz
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module base >= 3.5}
 BuildRequires:  %{python_module devel}
-# imports nose in one test
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module openpyxl}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -38,7 +37,7 @@ BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # we provide same binary like the deprecated py2 variant
 Conflicts:      %{oldpython}-cx_Freeze
 %python_subpackages
@@ -56,6 +55,7 @@ other systems.
 
 %prep
 %setup -q -n cx_Freeze-%{version}
+%autopatch -p1
 sed -i -e '/^#!\//, 1d' cx_Freeze/samples/*/*.py
 chmod a-x cx_Freeze/initscripts/*.py
 
