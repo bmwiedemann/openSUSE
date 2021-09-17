@@ -26,10 +26,10 @@
 %{!?with_lua: %global with_lua 0}
 %endif
 
-%define libbpf_version 0.4
+%define libbpf_version 0.5
 
 Name:           bcc
-Version:        0.20.0
+Version:        0.22.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
