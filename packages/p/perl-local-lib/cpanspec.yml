@@ -18,8 +18,8 @@ sources:
 #post_build: |-
 # rm unused.files
 post_install: |-
- %__install -d "%{buildroot}%{_sysconfdir}/profile.d"
- %__install -m0644 "%{SOURCE1}" "%{SOURCE2}" "%{buildroot}%{_sysconfdir}/profile.d/"
+ install -d "%{buildroot}%{_sysconfdir}/profile.d"
+ install -m0644 "%{SOURCE1}" "%{SOURCE2}" "%{buildroot}%{_sysconfdir}/profile.d/"
 #license: SUSE-NonFree
 #skip_noarch: 1
 #custom_build: |-
@@ -27,3 +27,24 @@ post_install: |-
 #custom_test: |-
 #startserver && make test
 #ignore_requires: Bizarre::Module
+#skip_doc: regexp_to_skip_for_doc.*
+#add_doc: files to add to docs
+misc: |-
+ %package -n perl-homedir
+ Summary:        Per-user Perl local::lib setup
+ Group:          Development/Libraries/Perl
+ Requires:       %{name} = %{version}-%{release}
+ Requires:       /usr/bin/cpan
+ 
+ %description -n perl-homedir
+ perl-homedir configures the system to automatically create a ~/perl5
+ directory in each user's $HOME on user login.  This allows each user to
+ install and CPAN packages via the CPAN to their $HOME, with no additional
+ configuration or privliges, and without installing them system-wide.
+ 
+ If you want your users to be able to install and use their own Perl modules,
+ install this package.
+ 
+ %files -n perl-homedir
+ %defattr(-,root,root)
+ %config(noreplace) %{_sysconfdir}/profile.d/*

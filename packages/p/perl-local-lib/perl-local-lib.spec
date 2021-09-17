@@ -1,7 +1,7 @@
 #
 # spec file for package perl-local-lib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,18 @@
 #
 
 
+%define cpan_name local-lib
 Name:           perl-local-lib
 Version:        2.000024
 Release:        0
-%define cpan_name local-lib
-Summary:        Create and use a local lib/ for perl modules with PERL5LIB
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Create and use a local lib/ for perl modules with PERL5LIB
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{version}.tar.gz
 Source1:        perl-homedir.sh
 Source2:        perl-homedir.csh
 Source3:        cpanspec.yml
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN) >= 1.82
@@ -74,6 +72,29 @@ When possible, these will be appended to instead of overwritten entirely.
 
 These values are then available for reference by any code after import.
 
+%prep
+%autosetup  -n %{cpan_name}-%{version}
+
+%build
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
+
+%check
+make test
+
+%install
+%perl_make_install
+%perl_process_packlist
+# MANUAL BEGIN
+install -d "%{buildroot}%{_sysconfdir}/profile.d"
+install -m0644 "%{SOURCE1}" "%{SOURCE2}" "%{buildroot}%{_sysconfdir}/profile.d/"
+# MANUAL END
+%perl_gen_filelist
+
+%files -f %{name}.files
+%doc Changes README
+%license LICENSE
+
 %package -n perl-homedir
 Summary:        Per-user Perl local::lib setup
 Group:          Development/Libraries/Perl
@@ -88,30 +109,6 @@ configuration or privliges, and without installing them system-wide.
 
 If you want your users to be able to install and use their own Perl modules,
 install this package.
-
-%prep
-%setup -q -n %{cpan_name}-%{version}
-
-%build
-perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
-
-%check
-make test
-
-%install
-%perl_make_install
-%perl_process_packlist
-# MANUAL BEGIN
-%__install -d "%{buildroot}%{_sysconfdir}/profile.d"
-%__install -m0644 "%{SOURCE1}" "%{SOURCE2}" "%{buildroot}%{_sysconfdir}/profile.d/"
-# MANUAL END
-%perl_gen_filelist
-
-%files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes README
-%license LICENSE
 
 %files -n perl-homedir
 %defattr(-,root,root)
