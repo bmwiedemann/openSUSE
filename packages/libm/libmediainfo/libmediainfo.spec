@@ -19,7 +19,7 @@
 
 %define sover	0
 Name:           libmediainfo
-Version:        21.03
+Version:        21.09
 Release:        0
 Summary:        Library for supplying technical and tag information about a video or audio file
 License:        BSD-2-Clause
