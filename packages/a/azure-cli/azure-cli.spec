@@ -32,7 +32,7 @@ Name:           azure-cli
 Name:           azure-cli%{?name_ext}
 %endif
 %define         short_name azure-cli
-Version:        2.27.2
+Version:        2.28.1
 Release:        0
 Summary:        Microsoft Azure CLI 2.0
 License:        MIT
@@ -77,11 +77,11 @@ Requires:       python3-azure-mgmt-billing >= 6.0.0
 Requires:       python3-azure-mgmt-botservice >= 0.3.0
 Requires:       python3-azure-mgmt-cdn >= 11.0.0
 Requires:       python3-azure-mgmt-cognitiveservices >= 12.0.0
-Requires:       python3-azure-mgmt-compute >= 22.0.0
+Requires:       python3-azure-mgmt-compute >= 22.1.0
 Requires:       python3-azure-mgmt-consumption >= 2.0
-Requires:       python3-azure-mgmt-containerinstance >= 1.4
+Requires:       python3-azure-mgmt-containerinstance >= 8.0.0
 Requires:       python3-azure-mgmt-containerregistry >= 8.1.0
-Requires:       python3-azure-mgmt-containerservice >= 16.0.0
+Requires:       python3-azure-mgmt-containerservice >= 16.1.0
 Requires:       python3-azure-mgmt-cosmosdb >= 6.4.0
 Requires:       python3-azure-mgmt-databoxedge >= 1.0.0
 Requires:       python3-azure-mgmt-datalake-analytics >= 0.2.1
@@ -96,16 +96,16 @@ Requires:       python3-azure-mgmt-extendedlocation >= 1.0.0b2
 Requires:       python3-azure-mgmt-hdinsight >= 8.0.0
 Requires:       python3-azure-mgmt-imagebuilder >= 0.4.0
 Requires:       python3-azure-mgmt-iotcentral >= 9.0.0b1
-Requires:       python3-azure-mgmt-iothub >= 2.0.0
-Requires:       python3-azure-mgmt-iothubprovisioningservices >= 0.2.0
-Requires:       python3-azure-mgmt-keyvault >= 9.0.0
+Requires:       python3-azure-mgmt-iothub >= 2.1.0
+Requires:       python3-azure-mgmt-iothubprovisioningservices >= 0.3.0
+Requires:       python3-azure-mgmt-keyvault >= 9.1.0
 Requires:       python3-azure-mgmt-kusto >= 0.3.0
 Requires:       python3-azure-mgmt-loganalytics >= 11.0.0
 Requires:       python3-azure-mgmt-managedservices >= 1.0
 Requires:       python3-azure-mgmt-managementgroups >= 0.1
 Requires:       python3-azure-mgmt-maps >= 2.0.0
 Requires:       python3-azure-mgmt-marketplaceordering >= 1.1.0
-Requires:       python3-azure-mgmt-media >= 3.0.0
+Requires:       python3-azure-mgmt-media >= 7.0.0
 Requires:       python3-azure-mgmt-monitor >= 2.0.0
 Requires:       python3-azure-mgmt-msi >= 0.2
 Requires:       python3-azure-mgmt-netapp >= 4.0.0
@@ -115,19 +115,19 @@ Requires:       python3-azure-mgmt-privatedns >= 1.0.0
 Requires:       python3-azure-mgmt-rdbms >= 9.1.0b1
 Requires:       python3-azure-mgmt-recoveryservices >= 2.0.0
 Requires:       python3-azure-mgmt-recoveryservicesbackup >= 0.14.0
-Requires:       python3-azure-mgmt-redhatopenshift >= 0.1.0
+Requires:       python3-azure-mgmt-redhatopenshift >= 1.0.0
 Requires:       python3-azure-mgmt-redis >= 13.0.0
 Requires:       python3-azure-mgmt-relay >= 0.1.0
 Requires:       python3-azure-mgmt-reservations >= 0.6.0
-Requires:       python3-azure-mgmt-resource >= 18.0.0
+Requires:       python3-azure-mgmt-resource >= 19.0.0
 Requires:       python3-azure-mgmt-search >= 8.0
-Requires:       python3-azure-mgmt-security >= 0.6.0
+Requires:       python3-azure-mgmt-security >= 1.0.0
 Requires:       python3-azure-mgmt-servicebus >= 6.0.0
-Requires:       python3-azure-mgmt-servicefabric >= 0.5.0
+Requires:       python3-azure-mgmt-servicefabric >= 1.0.0
 Requires:       python3-azure-mgmt-servicefabricmanagedclusters >= 1.0.0
 Requires:       python3-azure-mgmt-signalr >= 1.0.0b2
 Requires:       python3-azure-mgmt-sql >= 3.0.1
-Requires:       python3-azure-mgmt-sqlvirtualmachine >= 0.5.0
+Requires:       python3-azure-mgmt-sqlvirtualmachine >= 1.0.0b1
 Requires:       python3-azure-mgmt-storage >= 18.0.0
 Requires:       python3-azure-mgmt-synapse >= 2.0.0
 Requires:       python3-azure-mgmt-trafficmanager >= 0.51.0
@@ -136,9 +136,9 @@ Requires:       python3-azure-multiapi-storage >= 0.6.2
 Requires:       python3-azure-storage-common >= 1.4
 Requires:       python3-azure-synapse-accesscontrol >= 0.5.0
 Requires:       python3-azure-synapse-artifacts >= 0.6.0
+Requires:       python3-azure-synapse-managedprivateendpoints >= 0.3.0
 Requires:       python3-azure-synapse-spark >= 0.2.0
 Requires:       python3-javaproperties >= 0.5.1
-Requires:       python3-jsmin >= 2.2.2
 Requires:       python3-jsondiff >= 1.2.0
 Requires:       python3-packaging >= 20.9
 Requires:       python3-pydocumentdb >= 2.0.1
