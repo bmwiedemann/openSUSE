@@ -17,6 +17,7 @@
 
 
 %define skip_python2 1
+%define skip_python36 1
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-asyncpg
 Version:        0.22.0
