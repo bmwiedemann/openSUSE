@@ -30,4 +30,15 @@
     CHANGELOG.md file provided with this package (forwarded request 905266 from glaubitz)</comment>
     <requestid>905281</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32170273a7e05db3ed3da0ef3df0535c</srcmd5>
+    <version>1.0.0b6</version>
+    <time>1631913938</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.0.0b6
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 917743 from glaubitz)</comment>
+    <requestid>917745</requestid>
+  </revision>
 </revisionlist>
