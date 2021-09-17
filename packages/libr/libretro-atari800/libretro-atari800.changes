@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:59:05 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210805:
+  * retrofw target remove findstring (#78)
+  * add retrofw target (#77)
+  * Fixed PS3/Psl1ght build (#72)
+  * Third (final??) attemp at a new Virtual Keyboard  (#75)
+  * Better buttons names.
+  * Modified buttons names
+  * Update libretro-core.c
+  * Added new system options for modern Atari XL/XE with 576 or 1088KB of RAM.
+  * Cleared code formatting
+  * Remove unnecessary files in dependencies
+  * Add ios9 core
+  * ios arm32bit doesn't seem to compile yet (ASM error), so exclude for now
+  * Update libco
+  * Add ios-arm64 and tvos-arm64
+  * Add Ps2 Support
+  * (MacOS) Add ARM64 MacOS build
+  * fix buzzing sound in audio
+  * fix buzzing sound in audio
+  * fix buzzing sound in audio
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Update .gitlab-ci.yml
+  * Add car, com and xex to valid extensions
+  * Update .gitlab-ci.yml
+  * Bitmask code was wrong
+  * Bake in zlib
+  * Add zlib headers
+  * Add zlib headers
+  * Add .gitlab-ci.yml
+  * Get rid of this file
+  * Cleanups
+  * Commit what we need for libretro-common
+  * Remove submodule
+  * Get rid of submodules
+  * libretro: use input bitmask
+  * Attempt to fix OSX build
+  * libretro: Build utf encoding
+
+-------------------------------------------------------------------
 Sat May 30 16:03:35 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200429:
