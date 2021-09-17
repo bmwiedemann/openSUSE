@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>581304676a05f1f9f69172fd25a1b1e1</srcmd5>
+    <version>0.4.2</version>
+    <time>1631913964</time>
+    <user>dimstar_suse</user>
+    <comment>Sphinx extension to generate OpenGraph metadata.
+This package is eventually going to be needed by Kitty, when someone manages to fix the new versions.</comment>
+    <requestid>919719</requestid>
+  </revision>
+</revisionlist>
