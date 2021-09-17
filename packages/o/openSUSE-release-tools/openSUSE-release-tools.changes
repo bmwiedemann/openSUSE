@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 14:32:47 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210916.1cb39a18:
+  * rabbit-openqa.py: Ignore PR verification runs with / in BUILD
+
+-------------------------------------------------------------------
 Thu Sep 16 13:33:50 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210916.57abe572:
