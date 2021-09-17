@@ -530,4 +530,12 @@
   + Improve logging when trying to interract with a git repo via http(s)</comment>
     <requestid>871310</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>e9221683939d8fc93096849772249aed</srcmd5>
+    <version>5.13.2</version>
+    <time>1631913951</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop unused dependency on nose</comment>
+    <requestid>919592</requestid>
+  </revision>
 </revisionlist>
