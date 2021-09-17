@@ -86,4 +86,16 @@
 - Update Requires from setup.py (forwarded request 898465 from glaubitz)</comment>
     <requestid>898480</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5fe986131c99522475dd2f89aa5f79ac</srcmd5>
+    <version>2.0.0</version>
+    <time>1631913939</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 917744 from glaubitz)</comment>
+    <requestid>917746</requestid>
+  </revision>
 </revisionlist>
