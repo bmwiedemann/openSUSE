@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 13:04:50 UTC 2021 - mliska@suse.cz
+
+- Update to version 2.3.0+git.20210917.064adbb:
+  * Print filename when reducing multiple files.
+  * Fix typo in README.md.
+
+-------------------------------------------------------------------
 Thu Aug 19 15:08:49 UTC 2021 - mliska@suse.cz
 
 - Update to version 2.3.0+git.20210819.0f98784:
