@@ -1,0 +1,475 @@
+# Update gnulib module dynarray to fix use of reserved macros
+
+Index: guile-3.0.7/lib/Makefile.am
+===================================================================
+--- guile-3.0.7.orig/lib/Makefile.am
++++ guile-3.0.7/lib/Makefile.am
+@@ -543,6 +543,32 @@ EXTRA_libgnu_la_SOURCES += duplocale.c
+ ## begin gnulib module dynarray
+ 
+ if gl_GNULIB_ENABLED_dynarray
++BUILT_SOURCES += malloc/dynarray.gl.h malloc/dynarray-skeleton.gl.h
++
++malloc/dynarray.gl.h: malloc/dynarray.h
++	$(AM_V_at)$(MKDIR_P) malloc
++	$(AM_V_GEN)rm -f $@-t $@ && \
++	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
++	  sed -e '/libc_hidden_proto/d' < $(srcdir)/malloc/dynarray.h; \
++	} > $@-t && \
++	mv $@-t $@
++MOSTLYCLEANFILES += malloc/dynarray.gl.h malloc/dynarray.gl.h-t
++
++malloc/dynarray-skeleton.gl.h: malloc/dynarray-skeleton.c
++	$(AM_V_at)$(MKDIR_P) malloc
++	$(AM_V_GEN)rm -f $@-t $@ && \
++	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
++	  sed -e 's|<malloc/dynarray\.h>|<malloc/dynarray.gl.h>|g' \
++	      -e 's|__attribute_maybe_unused__|_GL_ATTRIBUTE_MAYBE_UNUSED|g' \
++	      -e 's|__attribute_nonnull__|_GL_ATTRIBUTE_NONNULL|g' \
++	      -e 's|__attribute_warn_unused_result__|_GL_ATTRIBUTE_NODISCARD|g' \
++	      -e 's|__glibc_likely|_GL_LIKELY|g' \
++	      -e 's|__glibc_unlikely|_GL_UNLIKELY|g' \
++	      < $(srcdir)/malloc/dynarray-skeleton.c; \
++	} > $@-t && \
++	mv $@-t $@
++MOSTLYCLEANFILES += malloc/dynarray-skeleton.gl.h malloc/dynarray-skeleton.gl.h-t
++
+ libgnu_la_SOURCES += malloc/dynarray_at_failure.c                 malloc/dynarray_emplace_enlarge.c                 malloc/dynarray_finalize.c                 malloc/dynarray_resize.c                 malloc/dynarray_resize_clear.c
+ 
+ endif
+@@ -2098,6 +2124,21 @@ EXTRA_DIST += same-inode.h
+ ## begin gnulib module scratch_buffer
+ 
+ if gl_GNULIB_ENABLED_scratch_buffer
++BUILT_SOURCES += malloc/scratch_buffer.gl.h
++
++malloc/scratch_buffer.gl.h: malloc/scratch_buffer.h
++	$(AM_V_at)$(MKDIR_P) malloc
++	$(AM_V_GEN)rm -f $@-t $@ && \
++	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
++	  sed -e 's|__always_inline|inline _GL_ATTRIBUTE_ALWAYS_INLINE|g' \
++	      -e 's|__glibc_likely|_GL_LIKELY|g' \
++	      -e 's|__glibc_unlikely|_GL_UNLIKELY|g' \
++	      -e '/libc_hidden_proto/d' \
++	      < $(srcdir)/malloc/scratch_buffer.h; \
++	} > $@-t && \
++	mv $@-t $@
++MOSTLYCLEANFILES += malloc/scratch_buffer.gl.h malloc/scratch_buffer.gl.h-t
++
+ libgnu_la_SOURCES += malloc/scratch_buffer_dupfree.c                 malloc/scratch_buffer_grow.c                 malloc/scratch_buffer_grow_preserve.c                 malloc/scratch_buffer_set_array_size.c
+ 
+ endif
+Index: guile-3.0.7/lib/Makefile.in
+===================================================================
+--- guile-3.0.7.orig/lib/Makefile.in
++++ guile-3.0.7/lib/Makefile.in
+@@ -232,24 +232,31 @@ target_triplet = @target@
+ @gl_GNULIB_ENABLED_alloca_TRUE@am__append_1 = @LTALLOCA@
+ @gl_GNULIB_ENABLED_alloca_TRUE@am__append_2 = @LTALLOCA@
+ @gl_GNULIB_ENABLED_cloexec_TRUE@am__append_3 = cloexec.c
+-@gl_GNULIB_ENABLED_dynarray_TRUE@am__append_4 = malloc/dynarray_at_failure.c                 malloc/dynarray_emplace_enlarge.c                 malloc/dynarray_finalize.c                 malloc/dynarray_resize.c                 malloc/dynarray_resize_clear.c
+-@gl_GNULIB_ENABLED_43fe87a341d9b4b93c47c3ad819a5239_TRUE@am__append_5 = fd-hook.c
+-@gl_GNULIB_ENABLED_be453cec5eecf5731a274f2de7f2db36_TRUE@am__append_6 = gettext.h
+-@gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76_TRUE@am__append_7 = hard-locale.c
+-@gl_GNULIB_ENABLED_idx_TRUE@am__append_8 = idx.h
+-@gl_GNULIB_ENABLED_scratch_buffer_TRUE@am__append_9 = malloc/scratch_buffer_dupfree.c                 malloc/scratch_buffer_grow.c                 malloc/scratch_buffer_grow_preserve.c                 malloc/scratch_buffer_set_array_size.c
+-@gl_GNULIB_ENABLED_e7e881d32ca02f1c997b13c737c64bbd_TRUE@am__append_10 = setlocale_null.c
+-@gl_GNULIB_ENABLED_size_max_TRUE@am__append_11 = size_max.h
+-@gl_GNULIB_ENABLED_sockets_TRUE@am__append_12 = sockets.h sockets.c
+-@GL_COND_LIBTOOL_TRUE@am__append_13 = $(LTLIBICONV)
+-@gl_GNULIB_ENABLED_sys_random_TRUE@am__append_14 = sys/random.h
+-@gl_GNULIB_ENABLED_sys_random_TRUE@am__append_15 = sys/random.h sys/random.h-t
+-@gl_GNULIB_ENABLED_sys_random_TRUE@am__append_16 = sys
+-@gl_GNULIB_ENABLED_tempname_TRUE@am__append_17 = tempname.c
+-@gl_GNULIB_ENABLED_3dcce957eadc896e63ab5f137947b410_TRUE@am__append_18 = wctype.h
+-@gl_GNULIB_ENABLED_3dcce957eadc896e63ab5f137947b410_TRUE@am__append_19 = wctype-h.c
+-@gl_GNULIB_ENABLED_3dcce957eadc896e63ab5f137947b410_TRUE@am__append_20 = wctype.h wctype.h-t
+-@gl_GNULIB_ENABLED_xsize_TRUE@am__append_21 = xsize.h xsize.c
++@gl_GNULIB_ENABLED_dynarray_TRUE@am__append_4 = malloc/dynarray.gl.h malloc/dynarray-skeleton.gl.h
++@gl_GNULIB_ENABLED_dynarray_TRUE@am__append_5 = malloc/dynarray.gl.h \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	malloc/dynarray.gl.h-t \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	malloc/dynarray-skeleton.gl.h \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	malloc/dynarray-skeleton.gl.h-t
++@gl_GNULIB_ENABLED_dynarray_TRUE@am__append_6 = malloc/dynarray_at_failure.c                 malloc/dynarray_emplace_enlarge.c                 malloc/dynarray_finalize.c                 malloc/dynarray_resize.c                 malloc/dynarray_resize_clear.c
++@gl_GNULIB_ENABLED_43fe87a341d9b4b93c47c3ad819a5239_TRUE@am__append_7 = fd-hook.c
++@gl_GNULIB_ENABLED_be453cec5eecf5731a274f2de7f2db36_TRUE@am__append_8 = gettext.h
++@gl_GNULIB_ENABLED_30838f5439487421042f2225bed3af76_TRUE@am__append_9 = hard-locale.c
++@gl_GNULIB_ENABLED_idx_TRUE@am__append_10 = idx.h
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@am__append_11 = malloc/scratch_buffer.gl.h
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@am__append_12 = malloc/scratch_buffer.gl.h malloc/scratch_buffer.gl.h-t
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@am__append_13 = malloc/scratch_buffer_dupfree.c                 malloc/scratch_buffer_grow.c                 malloc/scratch_buffer_grow_preserve.c                 malloc/scratch_buffer_set_array_size.c
++@gl_GNULIB_ENABLED_e7e881d32ca02f1c997b13c737c64bbd_TRUE@am__append_14 = setlocale_null.c
++@gl_GNULIB_ENABLED_size_max_TRUE@am__append_15 = size_max.h
++@gl_GNULIB_ENABLED_sockets_TRUE@am__append_16 = sockets.h sockets.c
++@GL_COND_LIBTOOL_TRUE@am__append_17 = $(LTLIBICONV)
++@gl_GNULIB_ENABLED_sys_random_TRUE@am__append_18 = sys/random.h
++@gl_GNULIB_ENABLED_sys_random_TRUE@am__append_19 = sys/random.h sys/random.h-t
++@gl_GNULIB_ENABLED_sys_random_TRUE@am__append_20 = sys
++@gl_GNULIB_ENABLED_tempname_TRUE@am__append_21 = tempname.c
++@gl_GNULIB_ENABLED_3dcce957eadc896e63ab5f137947b410_TRUE@am__append_22 = wctype.h
++@gl_GNULIB_ENABLED_3dcce957eadc896e63ab5f137947b410_TRUE@am__append_23 = wctype-h.c
++@gl_GNULIB_ENABLED_3dcce957eadc896e63ab5f137947b410_TRUE@am__append_24 = wctype.h wctype.h-t
++@gl_GNULIB_ENABLED_xsize_TRUE@am__append_25 = xsize.h xsize.c
+ subdir = lib
+ ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
+ am__aclocal_m4_deps = $(top_srcdir)/m4/00gnulib.m4 \
+@@ -2182,32 +2189,34 @@ EXTRA_DIST = accept.c w32sock.h alignof.
+ 	$(top_srcdir)/build-aux/vc-list-files verify.h vsnprintf.c \
+ 	wchar.in.h wcrtomb.c wctype.in.h write.c xalloc-oversized.h
+ BUILT_SOURCES = $(ALLOCA_H) arpa/inet.h $(BYTESWAP_H) dirent.h \
+-	$(ERRNO_H) fcntl.h $(FLOAT_H) $(ICONV_H) iconv_open-aix.h \
+-	iconv_open-hpux.h iconv_open-irix.h iconv_open-osf.h \
+-	iconv_open-solaris.h iconv_open-zos.h inttypes.h langinfo.h \
+-	$(LIMITS_H) locale.h math.h netdb.h $(NETINET_IN_H) poll.h \
+-	signal.h $(STDALIGN_H) $(STDBOOL_H) $(STDDEF_H) $(STDINT_H) \
+-	stdio.h stdlib.h string.h sys/file.h $(am__append_14) \
+-	sys/select.h sys/socket.h sys/stat.h sys/time.h sys/times.h \
+-	sys/types.h sys/uio.h time.h unistd.h wchar.h $(am__append_18)
++	$(am__append_4) $(ERRNO_H) fcntl.h $(FLOAT_H) $(ICONV_H) \
++	iconv_open-aix.h iconv_open-hpux.h iconv_open-irix.h \
++	iconv_open-osf.h iconv_open-solaris.h iconv_open-zos.h \
++	inttypes.h langinfo.h $(LIMITS_H) locale.h math.h netdb.h \
++	$(NETINET_IN_H) poll.h $(am__append_11) signal.h $(STDALIGN_H) \
++	$(STDBOOL_H) $(STDDEF_H) $(STDINT_H) stdio.h stdlib.h string.h \
++	sys/file.h $(am__append_18) sys/select.h sys/socket.h \
++	sys/stat.h sys/time.h sys/times.h sys/types.h sys/uio.h time.h \
++	unistd.h wchar.h $(am__append_22)
+ SUFFIXES = 
+ MOSTLYCLEANFILES = core *.stackdump alloca.h alloca.h-t arpa/inet.h \
+ 	arpa/inet.h-t byteswap.h byteswap.h-t dirent.h dirent.h-t \
+-	errno.h errno.h-t fcntl.h fcntl.h-t float.h float.h-t iconv.h \
+-	iconv.h-t iconv_open-aix.h-t iconv_open-hpux.h-t \
+-	iconv_open-irix.h-t iconv_open-osf.h-t iconv_open-solaris.h-t \
+-	iconv_open-zos.h-t inttypes.h inttypes.h-t langinfo.h \
+-	langinfo.h-t limits.h limits.h-t locale.h locale.h-t math.h \
+-	math.h-t netdb.h netdb.h-t netinet/in.h netinet/in.h-t poll.h \
+-	poll.h-t signal.h signal.h-t stdalign.h stdalign.h-t stdbool.h \
++	$(am__append_5) errno.h errno.h-t fcntl.h fcntl.h-t float.h \
++	float.h-t iconv.h iconv.h-t iconv_open-aix.h-t \
++	iconv_open-hpux.h-t iconv_open-irix.h-t iconv_open-osf.h-t \
++	iconv_open-solaris.h-t iconv_open-zos.h-t inttypes.h \
++	inttypes.h-t langinfo.h langinfo.h-t limits.h limits.h-t \
++	locale.h locale.h-t math.h math.h-t netdb.h netdb.h-t \
++	netinet/in.h netinet/in.h-t poll.h poll.h-t $(am__append_12) \
++	signal.h signal.h-t stdalign.h stdalign.h-t stdbool.h \
+ 	stdbool.h-t stddef.h stddef.h-t stdint.h stdint.h-t stdio.h \
+ 	stdio.h-t stdlib.h stdlib.h-t string.h string.h-t sys/file.h \
+-	sys/file.h-t $(am__append_15) sys/select.h sys/select.h-t \
++	sys/file.h-t $(am__append_19) sys/select.h sys/select.h-t \
+ 	sys/socket.h sys/socket.h-t sys/stat.h sys/stat.h-t sys/time.h \
+ 	sys/time.h-t sys/times.h sys/times.h-t sys/types.h \
+ 	sys/types.h-t sys/uio.h sys/uio.h-t time.h time.h-t unistd.h \
+-	unistd.h-t wchar.h wchar.h-t $(am__append_20)
+-MOSTLYCLEANDIRS = arpa netinet sys $(am__append_16) sys sys sys sys \
++	unistd.h-t wchar.h wchar.h-t $(am__append_24)
++MOSTLYCLEANDIRS = arpa netinet sys $(am__append_20) sys sys sys sys \
+ 	sys
+ CLEANFILES = 
+ DISTCLEANFILES = 
+@@ -2224,14 +2233,14 @@ AM_CPPFLAGS =
+ AM_CFLAGS = $(CFLAG_VISIBILITY)
+ libgnu_la_SOURCES = accept4.c basename-lgpl.c binary-io.h binary-io.c \
+ 	c-ctype.h c-ctype.c c-strcase.h c-strcasecmp.c c-strncasecmp.c \
+-	$(am__append_3) dirname-lgpl.c stripslash.c $(am__append_4) \
+-	$(am__append_5) full-read.h full-read.c full-write.h \
+-	full-write.c $(am__append_6) $(am__append_7) $(am__append_8) \
++	$(am__append_3) dirname-lgpl.c stripslash.c $(am__append_6) \
++	$(am__append_7) full-read.h full-read.c full-write.h \
++	full-write.c $(am__append_8) $(am__append_9) $(am__append_10) \
+ 	localcharset.c malloca.c math.c minmax.h nproc.c nstrftime.c \
+-	pipe2.c safe-read.c safe-write.c $(am__append_9) \
+-	$(am__append_10) $(am__append_11) $(am__append_12) stat-time.c \
+-	striconveh.h striconveh.c sys_socket.c $(am__append_17) \
+-	unistd.c $(am__append_19) $(am__append_21)
++	pipe2.c safe-read.c safe-write.c $(am__append_13) \
++	$(am__append_14) $(am__append_15) $(am__append_16) stat-time.c \
++	striconveh.h striconveh.c sys_socket.c $(am__append_21) \
++	unistd.c $(am__append_23) $(am__append_25)
+ libgnu_la_LIBADD = $(gl_LTLIBOBJS) $(am__append_1)
+ libgnu_la_DEPENDENCIES = $(gl_LTLIBOBJS) $(am__append_2)
+ EXTRA_libgnu_la_SOURCES = accept.c alloca.c bind.c btowc.c \
+@@ -2265,7 +2274,7 @@ libgnu_la_LDFLAGS = $(AM_LDFLAGS) -no-un
+ 	$(LIB_HARD_LOCALE) $(LIB_MBRTOWC) $(LIB_POLL) $(LIB_SELECT) \
+ 	$(LIB_SETLOCALE_NULL) $(LOG1P_LIBM) $(LOG_LIBM) $(LTLIBICONV) \
+ 	$(LTLIBINTL) $(LTLIBUNISTRING) $(ROUND_LIBM) $(SERVENT_LIB) \
+-	$(TRUNC_LIBM) $(am__append_13)
++	$(TRUNC_LIBM) $(am__append_17)
+ 
+ # Use this preprocessor expression to decide whether #include_next works.
+ # Do not rely on a 'configure'-time test for this, since the expression
+@@ -3243,6 +3252,28 @@ dirent.h: dirent.in.h $(top_builddir)/co
+ 	} > $@-t && \
+ 	mv $@-t $@
+ 
++@gl_GNULIB_ENABLED_dynarray_TRUE@malloc/dynarray.gl.h: malloc/dynarray.h
++@gl_GNULIB_ENABLED_dynarray_TRUE@	$(AM_V_at)$(MKDIR_P) malloc
++@gl_GNULIB_ENABLED_dynarray_TRUE@	$(AM_V_GEN)rm -f $@-t $@ && \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	  sed -e '/libc_hidden_proto/d' < $(srcdir)/malloc/dynarray.h; \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	} > $@-t && \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	mv $@-t $@
++
++@gl_GNULIB_ENABLED_dynarray_TRUE@malloc/dynarray-skeleton.gl.h: malloc/dynarray-skeleton.c
++@gl_GNULIB_ENABLED_dynarray_TRUE@	$(AM_V_at)$(MKDIR_P) malloc
++@gl_GNULIB_ENABLED_dynarray_TRUE@	$(AM_V_GEN)rm -f $@-t $@ && \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	  sed -e 's|<malloc/dynarray\.h>|<malloc/dynarray.gl.h>|g' \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	      -e 's|__attribute_maybe_unused__|_GL_ATTRIBUTE_MAYBE_UNUSED|g' \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	      -e 's|__attribute_nonnull__|_GL_ATTRIBUTE_NONNULL|g' \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	      -e 's|__attribute_warn_unused_result__|_GL_ATTRIBUTE_NODISCARD|g' \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	      -e 's|__glibc_likely|_GL_LIKELY|g' \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	      -e 's|__glibc_unlikely|_GL_UNLIKELY|g' \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	      < $(srcdir)/malloc/dynarray-skeleton.c; \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	} > $@-t && \
++@gl_GNULIB_ENABLED_dynarray_TRUE@	mv $@-t $@
++
+ # We need the following in order to create <errno.h> when the system
+ # doesn't have one that is POSIX compliant.
+ @GL_GENERATE_ERRNO_H_TRUE@errno.h: errno.in.h $(top_builddir)/config.status
+@@ -3827,6 +3858,18 @@ poll.h: poll.in.h $(top_builddir)/config
+ 	} > $@-t && \
+ 	mv -f $@-t $@
+ 
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@malloc/scratch_buffer.gl.h: malloc/scratch_buffer.h
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	$(AM_V_at)$(MKDIR_P) malloc
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	$(AM_V_GEN)rm -f $@-t $@ && \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	{ echo '/* DO NOT EDIT! GENERATED AUTOMATICALLY! */'; \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	  sed -e 's|__always_inline|inline _GL_ATTRIBUTE_ALWAYS_INLINE|g' \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	      -e 's|__glibc_likely|_GL_LIKELY|g' \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	      -e 's|__glibc_unlikely|_GL_UNLIKELY|g' \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	      -e '/libc_hidden_proto/d' \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	      < $(srcdir)/malloc/scratch_buffer.h; \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	} > $@-t && \
++@gl_GNULIB_ENABLED_scratch_buffer_TRUE@	mv $@-t $@
++
+ # We need the following in order to create <signal.h> when the system
+ # doesn't have a complete one.
+ signal.h: signal.in.h $(top_builddir)/config.status $(CXXDEFS_H) $(ARG_NONNULL_H) $(WARN_ON_USE_H)
+Index: guile-3.0.7/lib/cdefs.h
+===================================================================
+--- guile-3.0.7.orig/lib/cdefs.h
++++ guile-3.0.7/lib/cdefs.h
+@@ -259,9 +259,7 @@
+ # define __attribute_const__ /* Ignore */
+ #endif
+ 
+-#if defined __STDC_VERSION__ && 201710L < __STDC_VERSION__
+-# define __attribute_maybe_unused__ [[__maybe_unused__]]
+-#elif __GNUC_PREREQ (2,7) || __glibc_has_attribute (__unused__)
++#if __GNUC_PREREQ (2,7) || __glibc_has_attribute (__unused__)
+ # define __attribute_maybe_unused__ __attribute__ ((__unused__))
+ #else
+ # define __attribute_maybe_unused__ /* Ignore */
+@@ -320,7 +318,9 @@
+ #endif
+ 
+ /* The nonnull function attribute marks pointer parameters that
+-   must not be NULL.  */
++   must not be NULL.  This has the name __nonnull in glibc,
++   and __attribute_nonnull__ in files shared with Gnulib to avoid
++   collision with a different __nonnull in DragonFlyBSD 5.9.  */
+ #ifndef __attribute_nonnull__
+ # if __GNUC_PREREQ (3,3) || __glibc_has_attribute (__nonnull__)
+ #  define __attribute_nonnull__(params) __attribute__ ((__nonnull__ params))
+@@ -332,6 +332,16 @@
+ # define __nonnull(params) __attribute_nonnull__ (params)
+ #endif
+ 
++/* The returns_nonnull function attribute marks the return type of the function
++   as always being non-null.  */
++#ifndef __returns_nonnull
++# if __GNUC_PREREQ (4, 9) || __glibc_has_attribute (__returns_nonnull__)
++# define __returns_nonnull __attribute__ ((__returns_nonnull__))
++# else
++# define __returns_nonnull
++# endif
++#endif
++
+ /* If fortification mode, we warn about unused results of certain
+    function calls which can lead to problems.  */
+ #if __GNUC_PREREQ (3,4) || __glibc_has_attribute (__warn_unused_result__)
+@@ -485,9 +495,9 @@
+       [!!sizeof (struct { int __error_if_negative: (expr) ? 2 : -1; })]
+ #endif
+ 
+-/* The #ifndef lets Gnulib avoid including these on non-glibc
+-   platforms, where the includes typically do not exist.  */
+-#ifndef __WORDSIZE
++/* Gnulib avoids including these, as they don't work on non-glibc or
++   older glibc platforms.  */
++#ifndef __GNULIB_CDEFS
+ # include <bits/wordsize.h>
+ # include <bits/long-double.h>
+ #endif
+@@ -594,9 +604,26 @@ _Static_assert (0, "IEEE 128-bits long d
+    array according to access mode, or at least one element when
+    size-index is not provided:
+      access (access-mode, <ref-index> [, <size-index>])  */
+-#define __attr_access(x) __attribute__ ((__access__ x))
++#  define __attr_access(x) __attribute__ ((__access__ x))
++#  if __GNUC_PREREQ (11, 0)
++#    define __attr_access_none(argno) __attribute__ ((__access__ (__none__, argno)))
++#  else
++#    define __attr_access_none(argno)
++#  endif
+ #else
+ #  define __attr_access(x)
++#  define __attr_access_none(argno)
++#endif
++
++#if __GNUC_PREREQ (11, 0)
++/* Designates dealloc as a function to call to deallocate objects
++   allocated by the declared function.  */
++# define __attr_dealloc(dealloc, argno) \
++    __attribute__ ((__malloc__ (dealloc, argno)))
++# define __attr_dealloc_free __attr_dealloc (__builtin_free, 1)
++#else
++# define __attr_dealloc(dealloc, argno)
++# define __attr_dealloc_free
+ #endif
+ 
+ /* Specify that a function such as setjmp or vfork may return
+Index: guile-3.0.7/lib/dynarray.h
+===================================================================
+--- guile-3.0.7.orig/lib/dynarray.h
++++ guile-3.0.7/lib/dynarray.h
+@@ -1,12 +1,12 @@
+ /* Type-safe arrays which grow dynamically.
+    Copyright 2021 Free Software Foundation, Inc.
+ 
+-   This program is free software: you can redistribute it and/or modify
+-   it under the terms of the GNU Lesser General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
++   This file is free software: you can redistribute it and/or modify
++   it under the terms of the GNU Lesser General Public License as
++   published by the Free Software Foundation; either version 2.1 of the
++   License, or (at your option) any later version.
+ 
+-   This program is distributed in the hope that it will be useful,
++   This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+@@ -257,18 +257,22 @@ static DYNARRAY_ELEMENT *
+ 
+ #if defined DYNARRAY_STRUCT || defined DYNARRAY_ELEMENT || defined DYNARRAY_PREFIX
+ 
+-# include <libc-config.h>
++# ifndef _GL_LIKELY
++/* Rely on __builtin_expect, as provided by the module 'builtin-expect'.  */
++#  define _GL_LIKELY(cond) __builtin_expect ((cond), 1)
++#  define _GL_UNLIKELY(cond) __builtin_expect ((cond), 0)
++# endif
+ 
+ /* Define auxiliary structs and declare auxiliary functions, common to all
+    instantiations of dynarray.  */
+-# include <malloc/dynarray.h>
++# include <malloc/dynarray.gl.h>
+ 
+ /* Define the instantiation, specified through
+      DYNARRAY_STRUCT
+      DYNARRAY_ELEMENT
+      DYNARRAY_PREFIX
+    etc.  */
+-# include <malloc/dynarray-skeleton.c>
++# include <malloc/dynarray-skeleton.gl.h>
+ 
+ #else
+ 
+Index: guile-3.0.7/lib/libc-config.h
+===================================================================
+--- guile-3.0.7.orig/lib/libc-config.h
++++ guile-3.0.7/lib/libc-config.h
+@@ -28,7 +28,10 @@
+ 
+    When compiled as part of glibc this is a no-op; when compiled as
+    part of Gnulib this includes Gnulib's <config.h> and defines macros
+-   that glibc library code would normally assume.  */
++   that glibc library code would normally assume.
++
++   Note: This header file MUST NOT be included by public header files
++   of Gnulib.  */
+ 
+ #include <config.h>
+ 
+@@ -71,7 +74,7 @@
+ # endif
+ #endif
+ 
+-#ifndef __attribute_maybe_unused__
++#ifndef __attribute_nonnull__
+ /* <sys/cdefs.h> either does not exist, or is too old for Gnulib.
+    Prepare to include <cdefs.h>, which is Gnulib's version of a
+    more-recent glibc <sys/cdefs.h>.  */
+@@ -80,13 +83,9 @@
+ # ifndef _FEATURES_H
+ #  define _FEATURES_H 1
+ # endif
+-/* Define __WORDSIZE so that <cdefs.h> does not attempt to include
+-   nonexistent files.  Make it a syntax error, since Gnulib does not
+-   use __WORDSIZE now, and if Gnulib uses it later the syntax error
+-   will let us know that __WORDSIZE needs configuring.  */
+-# ifndef __WORDSIZE
+-#  define __WORDSIZE %%%
+-# endif
++/* Define __GNULIB_CDEFS so that <cdefs.h> does not attempt to include
++   nonexistent files.  */
++# define __GNULIB_CDEFS
+ /* Undef the macros unconditionally defined by our copy of glibc
+    <sys/cdefs.h>, so that they do not clash with any system-defined
+    versions.  */
+@@ -118,6 +117,9 @@
+ # undef __THROW
+ # undef __THROWNL
+ # undef __attr_access
++# undef __attr_access_none
++# undef __attr_dealloc
++# undef __attr_dealloc_free
+ # undef __attribute__
+ # undef __attribute_alloc_size__
+ # undef __attribute_artificial__
+Index: guile-3.0.7/lib/scratch_buffer.h
+===================================================================
+--- guile-3.0.7.orig/lib/scratch_buffer.h
++++ guile-3.0.7/lib/scratch_buffer.h
+@@ -1,12 +1,12 @@
+ /* Variable-sized buffer with on-stack default allocation.
+    Copyright (C) 2017-2021 Free Software Foundation, Inc.
+ 
+-   This program is free software: you can redistribute it and/or modify
+-   it under the terms of the GNU Lesser General Public License as published by
+-   the Free Software Foundation; either version 3 of the License, or
+-   (at your option) any later version.
++   This file is free software: you can redistribute it and/or modify
++   it under the terms of the GNU Lesser General Public License as
++   published by the Free Software Foundation; either version 2.1 of the
++   License, or (at your option) any later version.
+ 
+-   This program is distributed in the hope that it will be useful,
++   This file is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU Lesser General Public License for more details.
+@@ -110,14 +110,18 @@ extern void *scratch_buffer_dupfree (str
+ 
+ /* The implementation is imported from glibc.  */
+ 
+-#include <libc-config.h>
+-
+ /* Avoid possible conflicts with symbols exported by the GNU libc.  */
+ #define __libc_scratch_buffer_dupfree gl_scratch_buffer_dupfree
+ #define __libc_scratch_buffer_grow gl_scratch_buffer_grow
+ #define __libc_scratch_buffer_grow_preserve gl_scratch_buffer_grow_preserve
+ #define __libc_scratch_buffer_set_array_size gl_scratch_buffer_set_array_size
+ 
+-#include <malloc/scratch_buffer.h>
++#ifndef _GL_LIKELY
++/* Rely on __builtin_expect, as provided by the module 'builtin-expect'.  */
++# define _GL_LIKELY(cond) __builtin_expect ((cond), 1)
++# define _GL_UNLIKELY(cond) __builtin_expect ((cond), 0)
++#endif
++
++#include <malloc/scratch_buffer.gl.h>
+ 
+ #endif /* _GL_SCRATCH_BUFFER_H */
