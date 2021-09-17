@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 17 00:03:13 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631807736.c954196f5:
+  * Explicitly cover code with unstable test coverage
+  * Dependency cron 2021-09-15
+  * Add NAMEs such that pod2man output is valid man(7)
+  * overview: Add higher inactivity timeout
+  * Stop upsetting pod2man
+
+-------------------------------------------------------------------
 Tue Sep 14 16:03:09 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631608585.77a6c349a:
