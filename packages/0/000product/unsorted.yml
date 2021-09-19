@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
+  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -2353,6 +2353,7 @@ unsorted:
   - cross-aarch64-gcc11-icecream-backend: [x86_64] 
   - cross-aarch64-gcc7: [x86_64] 
   - cross-aarch64-gcc7-icecream-backend: [x86_64] 
+  - cross-aarch64-glibc-devel 
   - cross-aarch64-linux-glibc-devel 
   - cross-amdgcn-gcc10: [x86_64] 
   - cross-amdgcn-gcc11: [x86_64] 
@@ -2454,6 +2455,7 @@ unsorted:
   - cross-riscv64-gcc11: [x86_64] 
   - cross-riscv64-gcc11-bootstrap 
   - cross-riscv64-gcc11-icecream-backend: [x86_64] 
+  - cross-riscv64-glibc-devel 
   - cross-riscv64-linux-glibc-devel 
   - cross-riscv64-newlib-devel 
   - cross-rx-binutils 
@@ -9809,9 +9811,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -12958,8 +12960,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librbd1 
-  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
+  - librados-devel: [x86_64] # devel package of dvd:librados2 
+  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -12982,7 +12984,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
+  - librbd-devel: [x86_64] # devel package of dvd:librados2 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13209,7 +13211,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
+  - librgw-devel: [x86_64] # devel package of dvd:librados2 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -14398,7 +14400,7 @@ unsorted:
   - libxcb-composite0-32bit: [x86_64] 
   - libxcb-cursor0-32bit: [x86_64] 
   - libxcb-damage0-32bit: [x86_64] 
-  - libxcb-devel: [i586] # devel package of dvd:libxcb-sync1 
+  - libxcb-devel: [i586] # devel package of dvd:libxcb-randr0 
   - libxcb-devel-32bit: [x86_64] 
   - libxcb-devel-doc 
   - libxcb-dpms0-32bit: [x86_64] 
@@ -21520,7 +21522,6 @@ unsorted:
   - python36-aioquic 
   - python36-aioredis 
   - python36-aioresponses 
-  - python36-aiorpcX 
   - python36-aiosmtpd 
   - python36-aiosmtplib 
   - python36-aiosqlite 
@@ -21577,8 +21578,6 @@ unsorted:
   - python36-asv 
   - python36-async_generator 
   - python36-async_timeout 
-  - python36-asyncpg 
-  - python36-asyncssh 
   - python36-asynctest 
   - python36-atlassian-python-api 
   - python36-atom 
@@ -21624,6 +21623,8 @@ unsorted:
   - python36-azure-ai-metricsadvisor 
   - python36-azure-ai-nspkg 
   - python36-azure-ai-textanalytics 
+  - python36-azure-ai-translation-document 
+  - python36-azure-ai-translation-nspkg 
   - python36-azure-appconfiguration 
   - python36-azure-applicationinsights 
   - python36-azure-batch 
@@ -21657,6 +21658,7 @@ unsorted:
   - python36-azure-communication-administration 
   - python36-azure-communication-chat 
   - python36-azure-communication-identity 
+  - python36-azure-communication-networktraversal 
   - python36-azure-communication-nspkg 
   - python36-azure-communication-phonenumbers 
   - python36-azure-communication-sms 
@@ -21786,6 +21788,7 @@ unsorted:
   - python36-azure-mgmt-powerbidedicated 
   - python36-azure-mgmt-powerbiembedded 
   - python36-azure-mgmt-privatedns 
+  - python36-azure-mgmt-purview 
   - python36-azure-mgmt-quantum 
   - python36-azure-mgmt-rdbms 
   - python36-azure-mgmt-recoveryservices 
@@ -23051,7 +23054,6 @@ unsorted:
   - python36-power 
   - python36-poyo 
   - python36-pprintpp 
-  - python36-pproxy 
   - python36-praatio 
   - python36-pre-commit 
   - python36-precis-i18n 
@@ -23737,6 +23739,7 @@ unsorted:
   - python36-sphinxcontrib-svg2pdfconverter 
   - python36-sphinxcontrib-trio 
   - python36-sphinxcontrib-websupport 
+  - python36-sphinxext-opengraph 
   - python36-sphobjinv 
   - python36-spidev 
   - python36-spotipy 
@@ -23913,7 +23916,6 @@ unsorted:
   - python36-user-agents 
   - python36-user_agent 
   - python36-userpath 
-  - python36-uvicorn 
   - python36-validate_email 
   - python36-validators 
   - python36-varint 
@@ -24419,6 +24421,8 @@ unsorted:
   - python38-azure-ai-metricsadvisor 
   - python38-azure-ai-nspkg 
   - python38-azure-ai-textanalytics 
+  - python38-azure-ai-translation-document 
+  - python38-azure-ai-translation-nspkg 
   - python38-azure-appconfiguration 
   - python38-azure-applicationinsights 
   - python38-azure-batch 
@@ -24452,6 +24456,7 @@ unsorted:
   - python38-azure-communication-administration 
   - python38-azure-communication-chat 
   - python38-azure-communication-identity 
+  - python38-azure-communication-networktraversal 
   - python38-azure-communication-nspkg 
   - python38-azure-communication-phonenumbers 
   - python38-azure-communication-sms 
@@ -24581,6 +24586,7 @@ unsorted:
   - python38-azure-mgmt-powerbidedicated 
   - python38-azure-mgmt-powerbiembedded 
   - python38-azure-mgmt-privatedns 
+  - python38-azure-mgmt-purview 
   - python38-azure-mgmt-quantum 
   - python38-azure-mgmt-rdbms 
   - python38-azure-mgmt-recoveryservices 
@@ -26644,6 +26650,7 @@ unsorted:
   - python38-sphinxcontrib-svg2pdfconverter 
   - python38-sphinxcontrib-trio 
   - python38-sphinxcontrib-websupport 
+  - python38-sphinxext-opengraph 
   - python38-sphobjinv 
   - python38-spidev 
   - python38-spotipy 
@@ -27386,6 +27393,8 @@ unsorted:
   - python39-azure-ai-metricsadvisor 
   - python39-azure-ai-nspkg 
   - python39-azure-ai-textanalytics 
+  - python39-azure-ai-translation-document 
+  - python39-azure-ai-translation-nspkg 
   - python39-azure-appconfiguration 
   - python39-azure-applicationinsights 
   - python39-azure-batch 
@@ -27419,6 +27428,7 @@ unsorted:
   - python39-azure-communication-administration 
   - python39-azure-communication-chat 
   - python39-azure-communication-identity 
+  - python39-azure-communication-networktraversal 
   - python39-azure-communication-nspkg 
   - python39-azure-communication-phonenumbers 
   - python39-azure-communication-sms 
@@ -27548,6 +27558,7 @@ unsorted:
   - python39-azure-mgmt-powerbidedicated 
   - python39-azure-mgmt-powerbiembedded 
   - python39-azure-mgmt-privatedns 
+  - python39-azure-mgmt-purview 
   - python39-azure-mgmt-quantum 
   - python39-azure-mgmt-rdbms 
   - python39-azure-mgmt-recoveryservices 
@@ -29751,6 +29762,7 @@ unsorted:
   - python39-sphinxcontrib-svg2pdfconverter 
   - python39-sphinxcontrib-trio 
   - python39-sphinxcontrib-websupport 
+  - python39-sphinxext-opengraph 
   - python39-sphobjinv 
   - python39-spidev 
   - python39-spotipy 
@@ -30592,7 +30604,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
   - raft-devel 
   - rage 
   - ragel 
