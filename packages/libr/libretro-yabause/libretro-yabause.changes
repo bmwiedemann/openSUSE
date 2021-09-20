@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:25:10 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210903:
+  * (libretro) retropad's L/R should be swapped
+  * fix https://github.com/libretro/yabause/issues/269
+  * Update libretro.c
+  * AV system info - correct base_width/base_height
+  * tmpfile() can fail
+  * Adding Spanish translation to the core, unifying the "Restart Required" texts.
+  * (libretro) disk control support (oops) + mouse support
+  * (libretro) disk control support (part 3)
+  * (libretro) disk control support (part 2)
+  * (libretro) disk control support
+  * (libretro) cheevos support
+  * (ARM64 Mac) For cross-compilation - check if target has 'arm64' in the name and if so, disable SSE
+  * Fix detection
+  * Add osx-arm64 rules
+  * Add missing tvos target
+  * Add ios targets
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add support for macOS 11 and arm64
+  * Create .gitlab-ci.yml
+  * (libretro) add sega saturn wheel
+
+-------------------------------------------------------------------
 Thu Oct 15 12:50:35 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build on non-x86

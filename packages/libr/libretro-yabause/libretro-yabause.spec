@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-yabause
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-yabause
-Version:        0~git20200605
+Version:        0~git20210903
 Release:        0
 Summary:        Yabause libretro core for Sega Saturn emulation
 License:        GPL-3.0-only
