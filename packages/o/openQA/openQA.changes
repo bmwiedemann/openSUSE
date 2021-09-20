@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 19 08:03:17 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1631887122.a5fe7e20c:
+  * Test format_time_duration
+  * Explicitly install os-autoinst dependencies in container
+  * format_time_duration: Also display days in test duration
+  * Refresh asset size after the upload has been completed
+
+-------------------------------------------------------------------
 Fri Sep 17 00:03:13 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631807736.c954196f5:
