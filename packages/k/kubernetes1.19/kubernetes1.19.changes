@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 16 11:33:00 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.19.15:
+  * optimize the use of informer for scheduler
+  * Initialize scheduler's podInformer in sharedInformerFactory
+  * Fix buckets initialization
+  * Do not throw error when we can't get canonical path
+  * Fix vsphere disk detach failing
+  * fix: ensure InstanceShutdownByProviderID return false for creating Azure VMs
+  * fix: skip case sensitivity when checking Azure NSG rules
+  * Add subpath mount files to BUILD
+  * Pass additional flags to subpath mount to avoid flakes in certain conditions
+  * Create a FakeMounter for the subpath that wraps the mountutils FakeMounter
+  * Duplicate vendor/k8s.io/utils/mount/fake_mounter.go history in pkg/volume/util/subpath/subpath_fake_mounter.go history.
+  * Add MountSensitiveWithFlags to the subpath Mounter interface
+  * New subpath Mounter implements mount.Interface, update kubelet startup
+  * Duplicate vendor/k8s.io/utils/mount/* history in pkg/volume/util/subpath/subpath_* history.
+  * Update CHANGELOG/CHANGELOG-1.19.md for v1.19.14
+  * Copy golang license to staging copies
+  * job controller: don't mutate shared cache object
+  * Set idle and readheader timeouts
+
+-------------------------------------------------------------------
 Wed Aug 25 11:29:52 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.19.14:
