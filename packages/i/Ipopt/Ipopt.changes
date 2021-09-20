@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:25:25 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.14.3:
+  * Fixed timing for iterate initialization if initialization
+    fails due to an evaluation error.
+  * Fixed possible integer overflow when reserving space for
+    indices of Jacobian belonging to fixed variables (introduced
+    with 3.14.0) and reduced memory usage for indices of Jacobian
+    belonging to fixed variables.
+
+-------------------------------------------------------------------
 Wed Jul 28 10:29:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.14.2:
