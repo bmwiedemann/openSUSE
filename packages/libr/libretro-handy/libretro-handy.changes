@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:14:08 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210730:
+  * add retrofw port
+  * Add optional frameskipping
+  * (.gitlab-ci.yml) Add RS-90 target
+  * RS90 support
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Add od-beta
+  * Update .gitlab-ci.yml
+  * (MSVC) Embed MSVCR runtime
+  * Add MSVC 2005 / 2010 cores
+  * Update bins for new toolchain
+  * Little fix
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update osx target
+  * Update
+  * Update
+  * Cleanups
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add OpenDingux target to .gitlab-ci.yml
+  * Add github CI/CD and Gitlab CI/CD for core compilation
+  * Add PS2 platform
+  * Update .gitlab-ci.yml
+  * Miscellaneous fixes/improvements
+  * Add OpenDingux target
+  * Update .gitlab-ci.yml
+  * Add .gitlab-ci.yml
+  * libretro: use input bitmasks
+  * clear blip buffer on load state
+  * rotate safety check
+
+-------------------------------------------------------------------
 Sat Aug 08 09:53:47 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200625:
