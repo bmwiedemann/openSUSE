@@ -19,7 +19,7 @@
 %define sover 13
 
 Name:           libpinyin
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Intelligent Pinyin IME
 License:        GPL-3.0-or-later

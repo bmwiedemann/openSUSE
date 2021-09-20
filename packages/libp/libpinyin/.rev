@@ -290,4 +290,12 @@
   * bug fixes (forwarded request 862019 from wsxy162)</comment>
     <requestid>862081</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2d46852118b647187565052351bba448</srcmd5>
+    <version>2.6.1</version>
+    <time>1632173572</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920051</requestid>
+  </revision>
 </revisionlist>
