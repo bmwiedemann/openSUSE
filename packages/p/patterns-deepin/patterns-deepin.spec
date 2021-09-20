@@ -19,7 +19,7 @@
 %bcond_with betatest
 
 Name:           patterns-deepin
-Version:        15.2.20210508
+Version:        15.3.20210916
 Release:        0
 Summary:        Patterns for Installation (Deepin)
 License:        MIT
@@ -77,7 +77,7 @@ Suggests:       deepin-voice-note
 Suggests:       deepin-calculator
 
 %description deepin
-The Deepin desktop environment is a desktop environment using traditional metaphors.
+The Deepin desktop environment is a desktop environment using fashion metaphors.
 
 %files deepin
 %dir %{_defaultdocdir}/patterns
@@ -260,9 +260,7 @@ Supplements:    packageand(patterns-deepin:patterns-office)
 Requires:       pattern() = deepin_basis
 Recommends:     pattern() = deepin_office_opt
 Recommends:     libreoffice-qt5
-# deepin-reader is not already, use evince instead
-# Recommends:     deepin-reader
-Recommends:     evince
+Recommends:     deepin-reader
 
 %description deepin_office
 Deepin Office
