@@ -17,7 +17,7 @@
 
 
 Name:           yast2-online-update
-Version:        4.4.1
+Version:        4.4.3
 Release:        0
 URL:            https://github.com/yast/yast-online-update
 Summary:        YaST2 - Online Update (YOU)
@@ -34,8 +34,8 @@ BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 
 # Product EOL tag
 Requires:       yast2-pkg-bindings >= 3.1.6
-# Kernel::InformAboutKernelChange
-Requires:       yast2 >= 2.23.8
+# UIExtensionChecker
+Requires:       yast2 >= 4.4.19
 # PackageCallbacks::FormatPatchName
 Requires:       yast2-packager >= 2.13.159
 # Added Logger (replacement for y2error, y2milestone, ...)
@@ -50,6 +50,8 @@ Obsoletes:      y2c_online_update
 Obsoletes:      y2t_online_update
 Obsoletes:      yast2-config-online-update
 Obsoletes:      yast2-trans-online-update
+
+Recommends:     yast2-online-update-frontend
 
 BuildArch:      noarch
 

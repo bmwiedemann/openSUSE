@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 15 13:33:59 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Check for pkg UI extension (in interactive mode) and offer to
+  install it if not present (jsc#SLE-20346, jsc#SLE-20462)
+- 4.4.3
+
+-------------------------------------------------------------------
+Wed Sep 15 12:11:40 UTC 2021 - Stefan Schubert <schubi@suse.de>
+
+- Added recommends to yast2-online-update-frontend in order to
+  install *.desktop file (bsc#1177997).
+- 4.4.2
+
+-------------------------------------------------------------------
 Mon Aug 23 12:53:57 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Improved openSUSE/SLE detection (bsc#1184243)
