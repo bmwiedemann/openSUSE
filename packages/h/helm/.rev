@@ -239,4 +239,12 @@ See changelog in:
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>906191</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>37b61e1a9a4623e4a1db20c2aac969ad</srcmd5>
+    <version>3.6.3</version>
+    <time>1632173529</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919363</requestid>
+  </revision>
 </revisionlist>

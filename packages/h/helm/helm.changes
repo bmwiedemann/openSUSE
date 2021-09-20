@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 16 02:32:04 UTC 2021 - jenting.hsiao@suse.com
+
+- Update to version 3.6.3:
+  * Ensure RawPath match Path when resolving reference
+  * Set Helm as manager for managedFields
+  * fix(dep update): helm dep update is not respecting the "version" stipulated in the requirements
+  * fix(doc): fix kube client interface doc. (#9882)
+  * use TLS client information from repo config when downloading a chart
+  * Adding test for user/pass without repo on Helm install
+  * Fix the url being set by WithURL on the getters
+  * tweak basic handling
+  * keep existing behavior of returning ErrReleaseNotFound when release(s) failed to decode
+  * fix(sql storage): Query() should return ErrReleaseNotFound immediately when no records are found
+  * Add Test cases for repository-config without file extension
+  * Correctly determine repository-config lockfile path
+  * Fixed Test
+  * Added test for lint mode
+  * Fail message is now the same as the required message. Fixed #8973 Helm function 'fail' should not fail when doing 'helm lint'
+  * fix helm dep build/update doesn't inherit --insecure-skip-tls-verify from helm repo add
+
+-------------------------------------------------------------------
 Tue Jul 06 21:22:54 UTC 2021 - jenting.hsiao@suse.com
 
 - Update to version 3.6.2:
