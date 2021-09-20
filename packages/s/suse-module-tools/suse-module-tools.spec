@@ -45,7 +45,7 @@
 %global modprobe_conf_rpmsave %(echo "%{modprobe_conf_files}" | sed 's,\\([^ ]*\\),%{_sysconfdir}/modprobe.d/\\1.conf.rpmsave,g')
 
 Name:           suse-module-tools
-Version:        16.0.9
+Version:        16.0.10+7
 Release:        0
 Summary:        Configuration for module loading and SUSE-specific utilities for KMPs
 License:        GPL-2.0-or-later
@@ -64,6 +64,7 @@ Requires:       rpm
 Requires(post): /usr/bin/grep
 Requires(post): /usr/bin/sed
 Requires(post): coreutils
+Provides:       suse-kernel-rpm-scriptlets = 0
 # Use weak dependencies for dracut and kmod in order to
 # keep Ring0 lean. In normal deployments, these packages
 # will be available anyway.
@@ -79,8 +80,7 @@ Conflicts:      filesystem < 15.5-40.2
 %description
 This package contains helper scripts for KMP installation and
 uninstallation, as well as default configuration files for depmod and
-modprobe. These utilities are provided by kmod-compat or
-module-init-tools, whichever implementation you choose to install.
+modprobe.
 
 
 %package legacy
@@ -136,6 +136,17 @@ install -d -m 755 "%{buildroot}%{_rpmmacrodir}"
 install -pm 644 "macros.initrd" "%{buildroot}%{_rpmmacrodir}"
 %endif
 install -pm 755 "regenerate-initrd-posttrans" "%{buildroot}/usr/lib/module-init-tools/"
+install -d -m 755 "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
+install -pm 755 "kernel-scriptlets/cert-script" "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
+install -pm 755 "kernel-scriptlets/inkmp-script" "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
+install -pm 755 "kernel-scriptlets/kmp-script" "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
+install -pm 755 "kernel-scriptlets/rpm-script" "%{buildroot}/usr/lib/module-init-tools/kernel-scriptlets"
+for i in "pre" "preun" "post" "posttrans" "postun" ; do
+    ln -s cert-script %{buildroot}/usr/lib/module-init-tools/kernel-scriptlets/cert-$i
+    ln -s inkmp-script %{buildroot}/usr/lib/module-init-tools/kernel-scriptlets/inkmp-$i
+    ln -s kmp-script %{buildroot}/usr/lib/module-init-tools/kernel-scriptlets/kmp-$i
+    ln -s rpm-script %{buildroot}/usr/lib/module-init-tools/kernel-scriptlets/rpm-$i
+done
 
 install -d -m 755 "%{buildroot}%{_prefix}/bin"
 install -pm 755 kmp-install "%{buildroot}%{_bindir}/"
