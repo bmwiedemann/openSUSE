@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:09:08 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210830:
+  * Add a force landscape option. (#72)
+  * Revert "Implement persistent buffer API support"
+  * Implement persistent buffer API support
+  * Get rid of assert
+  * Backport https://github.com/gameblabla/SwanEmu/commit/dec77b00d7f878a692ca318f1fc092e7591a3db9
+  * Add od-beta
+  * Take out puts/printf calls in state.c
+  * Fix LGTM warning
+  * Add ios-arm64/tvos-arm64
+  * (MSVC) Embed MSVCRT runtime
+  * Add MSVC 2005 and 2010 cores
+  * add armv8 support & rpi4 aarch64
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Updates
+  * Cleanups
+  * Update
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add OpenDingux target to .gitlab-ci.yml
+  * Add optional automatic frame skipping
+  * Add optional WonderSwan 'mono' colourisation palettes
+  * Add note that Color Depth option needs restart
+  * Silence warning [-Wmissing-braces]
+  * Add software-based display rotation fallback + 'Rotate Display' core option
+  * Update libretro-common
+  * Fix v30mz regression
+  * Make this extern
+  * Update
+  * Add .gitlab-ci.yml
+  * MSVC C buildfixes
+  * Nearly entire codebase is C now - except for mempatcher.cpp
+  * Convert v30mz.cpp to C
+  * Convert eeprom.cpp to C
+  * Use SFVARN_BOOL in more places
+  * Create SFVARN_BOOL
+  * Unused header file
+  * remove unused headers
+  * Cleanups
+  * Fix MSVC build
+  * Convert libretro.cpp to C
+  * Cleanups
+  * Turn C++ comments into C
+  * Convert tcache.cpp to C
+  * Cleanups
+  * Cleanup
+  * Cleanups
+  * Convert rtc.cpp to C
+  * Convert interrupt.cpp to C
+  * Cleanup interrupt.cpp
+  * Convert Blip_Buffer to C
+  * Cleanups
+  * Cleanups
+  * Remove unused dis files
+  * Cleanups
+  * remove unused header
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * iOS buildfix
+  * Cleanups
+  * Cleanups
+  * Header cleanups
+  * Cleanups
+  * Cleanups
+  * libretro: use input bitmask
+  * MSVC buildfixes
+  * Turn state.cpp into C
+  * Split up macros/inline functions from state.h
+  * Simplifications
+  * Cleanups
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+
+-------------------------------------------------------------------
 Sat May 30 16:48:02 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200518:
