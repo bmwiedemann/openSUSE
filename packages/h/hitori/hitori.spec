@@ -17,7 +17,7 @@
 
 
 Name:           hitori
-Version:        3.38.2
+Version:        3.38.3
 Release:        0
 Summary:        Original puzzle of Nikoli
 License:        GPL-3.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 17 12:15:06 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.38.3:
+  + docs: Document renaming of master branch to main.
+  + appdata: Update OARS ratings from 1.0 to 1.1 and add
+    requires/recommends data.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May 27 17:07:54 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.38.2:
