@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 16 11:22:40 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.22.2:
+  * [go1.16] Update to go1.16.8
+  * Fix Job tracking with finalizers for more than 500 pods
+  * e2e iperf2 change threshold to 10MBps = 80 Mbps
+  * legacy-cloud-providers: aws: Add support for consuming web identity credentials
+  * Fix the key missing issue for structured log
+  * add a test for jsonpath template parsing to prevent regressions
+  * revert "fix wrong output when using jsonpath"
+  * Fix a small regression in Service updates
+  * kubelet: Admission must exclude completed pods and avoid races
+  * Don't prematurely close reflectors in case of slow initialization in watch based manager
+  * backport 104410 to release-1.22
+  * Fix storage class setup in regional_pd.go
+  * pkg/kubelet/cm: use SkipFreezeOnSet
+  * vendor: bump runc to 1.0.2
+  * vendor: bump k8s.io/util to get fix for LRU cache
+  * Update CHANGELOG/CHANGELOG-1.22.md for v1.22.1
+  * fix: ensure InstanceShutdownByProviderID return false for creating Azure VMs
+  * fix: skip case sensitivity when checking Azure NSG rules
+  * Copy golang license to staging copies
+
+-------------------------------------------------------------------
 Wed Sep  1 13:51:37 UTC 2021 - Richard Brown <rbrown@suse.com>
 
 - Tiding up old sources (remove kubernetes-1.22.0.obscpio)
