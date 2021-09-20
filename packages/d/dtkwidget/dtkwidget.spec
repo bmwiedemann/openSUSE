@@ -33,6 +33,10 @@ Source0:        https://github.com/linuxdeepin/dtkwidget/archive/%{version}/%{na
 Patch0:         dtkwidget-fix-lost-pkgconfig.patch
 # PATCH-FIX-UPSTEAM fix-return-type.patch hillwood@opensuse.org - fix a return type error
 Patch1:         fix-return-type.patch
+# PATCH-FIX-UPSTEAM fix-return-type.patch
+# Fix print window for deepin-reader
+# https://github.com/linuxdeepin/dtkwidget/commit/cedbe540bdcfb5672f97763abb8cf1f79439ec4c
+Patch2:         fix-deepin-reader.patch
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  dtkcommon
@@ -80,9 +84,7 @@ docs for dtkcore.
 %lang_package
 
 %prep
-%setup -q
-%patch0 -p1
-%patch1 -p1
+%autosetup -p1
 # sed -i 's/lrelease/qt5/g' tools/translate_generation.*
 
 %build
