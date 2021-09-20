@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:16:29 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210812:
+  * add retrofw target
+  * Add cross-compilation rules for OSX ARM64
+  * Add osx-arm64/tvos-arm64/ios-arm64
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Add .gitlab-ci.yml
+  * Cleanups
+  * Cleanups
+  * do not import libcommon-stdstring by default, fixes #85
+  * Update Makefile
+  * Update readme.md
+  * Allow m3u for tape images. Fixes #70 Thanks @Solo187 for your report.
+  * libretro-common: added whole lib and updated main include.
+  * kbdauto: update kbd_table with lang reference. Fixes #73 Thanks @vbe75 for your report!
+  * Better green phosphor formula thanks to zackizacki Added new option to customize phosphor calculation Fix #49
+  * updated libretro-common
+
+-------------------------------------------------------------------
 Sat May 30 18:27:45 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200508:
