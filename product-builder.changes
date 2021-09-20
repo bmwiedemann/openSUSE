@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 09:04:30 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.4
+  * put all candidates of all modules to the medium
+  * fixed architecture handling in version priority mode
+
+-------------------------------------------------------------------
 Mon Sep  6 11:03:58 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.2

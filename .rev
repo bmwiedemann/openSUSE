@@ -376,4 +376,14 @@ as requested by Michel</comment>
   * helpful error message when exact version is required</comment>
     <requestid>917081</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>971d593020b5a05e988d93754f849b03</srcmd5>
+    <version>1.4.4</version>
+    <time>1632173515</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.4
+  * put all candidates of all modules to the medium
+  * fixed architecture handling in version priority mode</comment>
+    <requestid>919687</requestid>
+  </revision>
 </revisionlist>
