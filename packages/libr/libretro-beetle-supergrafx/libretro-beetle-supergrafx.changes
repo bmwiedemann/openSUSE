@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:08:30 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210412:
+  * Remove unused Sort.c
+  * Remove unnecessary files in dependencies
+  * Get rid of error_on_eos
+  * Remove obsolete flags
+  * Update libchdr - removal of libflac
+  * Fix one potential memory leak
+  * Cleanups/backports of other commits from Mednafen repos
+  * Add ios-arm64/tvos-arm64
+  * (MSVC) Embed MSVCRT runtime
+  * Fix MSVC 2010 x64
+  * Fix MSVC 2005 / 2010 cores
+  * Add MSVC 2005 / 2010 cores
+  * Further Makefile improvements
+  * (iOS9) Add ios target
+  * (macOS) Add cross compilation for ARM64
+  * (Mac) Fix build
+  * add armv8
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Update .gitlab-ci.yml
+  * Update
+  * [iOS][tvOS] Add -DHAVE_UNISTD_H flag to compile zlib
+  * Update libflac with portability patches applied on top
+  * Update libchdr to upstream
+  * Fix CHD alignment with zlib/lzma
+  * MSVC buildfix
+  * memmap: Fix baseram size
+  * Use RETRO_LOG_DEBUG for MDFN_printf
+  * Remove these macros and more bios cleanups
+  * Make system directory check only for CD games
+  * Use const char * for MDFN_GetSettings()
+  * Update deps/flac-1.3.2
+  * Add .gitlab-ci.yml
+  * Silence warning, [-Wmaybe-uninitialized]
+  * Update libretro-common
+  * memmap: Allow access to all memory below $110000
+  * Silence warning
+  * Silence warnings [-Wparentheses]
+  * Remove unnecessary files
+  * Make aspect ratio option change during runtime
+  * Fix  uninitialized variables in update_geometry()
+  * update composite palette
+  * iOS: Buildfix
+  * Remove empty headers
+  * Remove git-virtb.h
+  * Add native cheat support
+  * vdc: Optimize DrawBG
+  * vdc: Optimize DrawSprites
+  * Prevent potential memory leaks
+  * Add missing header guards
+  * Update libretro-common
+  * Move 2/6 button mode switch back to input.cpp
+  * Move soft-reset handling to input.cpp
+  * input: Add option to disable turbotap (multitap)
+  * Turn some vars into static
+  * input.cpp: Formatting
+  * Cleanups
+  * Remove mednafen-driver.h
+  * Get rid of driver.h
+  * Some buildfixes
+  * Get rid of unused header
+  * Get rid of IsAbsolutePath
+  * Remove unneeded headers
+  * remove unneeded headers
+  * vdc.cpp: Indentation and alignments
+  * Restore references to MDFN_MidLineUpdate
+  * Trim trailing whitespace
+  * Return bool type for MDFN_LoadGame and MDFN_LoadCD
+  * Remove unused MDFN_DebugPrintReal
+  * Simplify MDFN_printf and MDFN_PrintError
+  * Remove unused functions
+  * Buildfix
+  * iOS: Buildfix
+  * Buildfix for iOS
+  * Fix CD Image Cache not working with CHD
+  * libchdr: add precache option (backport https://github.com/libretro/beetle-psx-libretro/commit/ee40afa0ca01f5d501277c64ec9cafcf19539c70#diff-935c9756cf98ab0806d0db03f93758cd)
+  * Input: Remove typedef union and cleanup
+  * Fix incorrect data type for mouse_sensitivity
+  * Add custom palette support, add composite palette (backport https://github.com/libretro/beetle-pce-libretro/pull/7)
+  * More input cleanups
+  * Input: Cleanup
+  * Fix 2/6 button mode switch only working for player 1
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+  * allow using system libs
+
+-------------------------------------------------------------------
 Sat May 30 16:45:02 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200520:
