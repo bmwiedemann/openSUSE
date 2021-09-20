@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 26 13:45:59 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openjdk-glibc234.patch
+    + fix build with glibc-2.34 (bsc#1189201)
+
+-------------------------------------------------------------------
 Wed Aug  4 10:01:03 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - riscv64-zero.patch: Add support for riscv64 (zero VM)

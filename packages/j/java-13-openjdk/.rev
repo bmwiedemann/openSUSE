@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>911407</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>bca4b8c05b19d228b649321ddcdfa404</srcmd5>
+    <version>13.0.8.0</version>
+    <time>1632173602</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build with glibc 2.34</comment>
+    <requestid>920315</requestid>
+  </revision>
 </revisionlist>

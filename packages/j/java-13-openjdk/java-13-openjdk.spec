@@ -207,6 +207,7 @@ Patch13:        implicit-pointer-decl.patch
 #
 Patch15:        system-pcsclite.patch
 Patch16:        missing-return.patch
+Patch17:        openjdk-glibc234.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
@@ -488,6 +489,7 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %endif
 
 %patch16 -p1
+%patch17 -p1
 
 %patch20 -p1
 
