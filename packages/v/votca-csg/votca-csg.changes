@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 20 09:45:09 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Update to 2021.2
+  - made masses in test more accurate ([gh#votca/csgp#705])
+  - format code with clang-12.0.1 ([gh#votca/csgp#707])
+
+-------------------------------------------------------------------
 Sun Jul 18 14:05:45 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Update to 2021.1
