@@ -17,7 +17,7 @@
 
 
 Name:           libretro-dolphin
-Version:        0~git20210209
+Version:        0~git20210909
 Release:        0
 Summary:        Dolphin libretro core for Nintendo GameCube and Wii emulation
 License:        GPL-3.0-only

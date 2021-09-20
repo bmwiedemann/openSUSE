@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:37:37 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210909:
+  * Fix nunchuk axes for remap + mouse buttons (#226)
+  * Input fixes/improvements (#166)
+  * "Max Anisotropy" core option fix (#225)
+  * Update Main.cpp
+  * Build fixes (#218)
+  * Update Main.cpp
+  * Update Main.cpp
+  * Add Fast Depth Calculation option (#209)
+  * fix linux build (#204)
+  * Fix for Dolphin core on Xbox.  All credit to LazyFunker (#203)
+  * Set back specific PlatformToolset
+  * Set ENABLE_QT=0 in CMakelists.txt for Libretro
+  * (Windows) Force static linking of CRT runtime
+  * Disable analytics by default (#198)
+  * Add an option to disable OSD
+
+-------------------------------------------------------------------
 Sat Mar 13 04:19:05 UTC 2021 - i@guoyunhe.me
 
 - Update to version 0~git20210209:
