@@ -31,7 +31,7 @@
 #
 Name:           pam
 #
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -49,23 +49,16 @@ Source9:        baselibs.conf
 Source10:       unix2_chkpwd.c
 Source11:       unix2_chkpwd.8
 Source12:       pam-login_defs-check.sh
-Source13:       motd.tmpfiles
+Source13:       pam.tmpfiles
+Source14:       Linux-PAM-%{version}-docs.tar.xz.asc
+Source15:       Linux-PAM-%{version}.tar.xz.asc
 Patch2:         pam-limit-nproc.patch
 Patch4:         pam-hostnames-in-access_conf.patch
 Patch5:         pam-xauth_ownership.patch
-Patch6:         pam_cracklib-removal.patch
-Patch7:         pam_tally2-removal.patch
 Patch8:         pam-bsc1177858-dont-free-environment-string.patch
-Patch9:         pam-pam_cracklib-add-usersubstr.patch
-Patch10:        pam-bsc1181443-make-nofile-unlimited-mean-nr_open.patch
-Patch11:        bsc1184358-prevent-LOCAL-from-being-resolved.patch
 Patch12:        pam_umask-usergroups-login_defs.patch
-# https://github.com/linux-pam/linux-pam/commit/e842a5fc075002f46672ebcd8e896624f1ec8068
-Patch100:       pam_securetty-don-t-complain-about-missing-config.patch
-Patch101:       revert-check_shadow_expiry.diff
 BuildRequires:  audit-devel
 BuildRequires:  bison
-BuildRequires:  cracklib-devel
 BuildRequires:  flex
 BuildRequires:  libtool
 BuildRequires:  xz
@@ -121,9 +114,7 @@ a Berkeley DB database.
 %package doc
 Summary:        Documentation for Pluggable Authentication Modules
 Group:          Documentation/HTML
-%if 0%{?suse_version} >= 1140
 BuildArch:      noarch
-%endif
 
 %description doc
 PAM (Pluggable Authentication Modules) is a system security tool that
@@ -146,36 +137,14 @@ having to recompile programs which do authentication.
 This package contains header files and static libraries used for
 building both PAM-aware applications and modules for use with PAM.
 
-%package deprecated
-Summary:        Deprecated PAM Modules
-Group:          System/Libraries
-Provides:       pam:/%{_lib}/security/pam_cracklib.so
-Provides:       pam:/%{_lib}/security/pam_tally2.so
-
-%description deprecated
-PAM (Pluggable Authentication Modules) is a system security tool that
-allows system administrators to set authentication policies without
-having to recompile programs that do authentication.
-
-This package contains deprecated extra modules like pam_cracklib and
-pam_tally2, which are no longer supported upstream and will be completly
-removed with one of the next releases.
-
 %prep
 %setup -q -n Linux-PAM-%{version} -b 1
 cp -a %{SOURCE12} .
 %patch2 -p1
 %patch4 -p1
 %patch5 -p1
-%patch6 -R -p1
-%patch7 -R -p1
 %patch8 -p1
-%patch9 -p1
-%patch10 -p1
-%patch11 -p1
 %patch12 -p1
-%patch100 -p1
-%patch101 -p1
 
 %build
 bash ./pam-login_defs-check.sh
@@ -192,9 +161,9 @@ CFLAGS="$CFLAGS -DNDEBUG"
 	--enable-securedir=%{_pam_moduledir} \
 	--enable-vendordir=%{_distconfdir} \
 %if %{with debug}
-	--enable-debug \
+	--enable-debug
 %endif
-	--enable-tally2 --enable-cracklib
+
 %make_build
 gcc -fwhole-program -fpie -pie -D_FILE_OFFSET_BITS=64 -D_GNU_SOURCE %{optflags} -I%{_builddir}/Linux-PAM-%{version}/libpam/include %{SOURCE10} -o %{_builddir}/unix2_chkpwd -L%{_builddir}/Linux-PAM-%{version}/libpam/.libs -lpam
 
@@ -246,7 +215,7 @@ echo '.so man8/pam_motd.8' > %{buildroot}%{_mandir}/man5/motd.5
 # rpm macros
 install -D -m 644 %{SOURCE2} %{buildroot}%{_rpmmacrodir}/macros.pam
 # /run/motd.d
-install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/motd.conf
+install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/pam.conf
 # Create filelist with translations
 %find_lang Linux-PAM
 
@@ -258,7 +227,7 @@ install -Dm0644 %{SOURCE13} %{buildroot}%{_tmpfilesdir}/motd.conf
 /sbin/ldconfig
 %set_permissions %{_sbindir}/unix_chkpwd
 %set_permissions %{_sbindir}/unix2_chkpwd
-%tmpfiles_create %{_tmpfilesdir}/motd.conf
+%tmpfiles_create %{_tmpfilesdir}/pam.conf
 
 %postun -p /sbin/ldconfig
 %pre
@@ -279,7 +248,6 @@ done
 %dir %{_pam_secconfdir}
 %dir %{_pam_secconfdir}/limits.d
 %dir %{_prefix}/lib/motd.d
-%ghost %dir %{_rundir}/motd.d
 %if %{defined config_noreplace}
 %config(noreplace) %{_pam_confdir}/other
 %config(noreplace) %{_pam_confdir}/common-*
@@ -421,7 +389,7 @@ done
 %verify(not mode) %attr(4755,root,shadow) %{_sbindir}/unix2_chkpwd
 %attr(0700,root,root) %{_sbindir}/unix_update
 %{_unitdir}/pam_namespace.service
-%{_tmpfilesdir}/motd.conf
+%{_tmpfilesdir}/pam.conf
 
 %files -n pam_unix
 %defattr(-,root,root,755)
@@ -435,12 +403,6 @@ done
 %defattr(-,root,root,755)
 %{_pam_moduledir}/pam_userdb.so
 %{_mandir}/man8/pam_userdb.8%{?ext_man}
-
-%files deprecated
-%defattr(-,root,root,755)
-%{_pam_moduledir}/pam_cracklib.so
-%{_pam_moduledir}/pam_tally2.so
-%{_sbindir}/pam_tally2
 
 %files doc
 %defattr(644,root,root,755)
@@ -460,5 +422,6 @@ done
 %{_libdir}/libpamc.so
 %{_libdir}/libpam_misc.so
 %{_rpmmacrodir}/macros.pam
+%{_libdir}/pkgconfig/pam*.pc
 
 %changelog

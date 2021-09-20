@@ -27,7 +27,7 @@
 %endif
 Name:           pam_unix-nis
 #
-Version:        1.5.1
+Version:        1.5.2
 Release:        0
 Summary:        PAM module for standard UNIX and NIS authentication
 License:        GPL-2.0-or-later OR BSD-3-Clause
@@ -36,7 +36,6 @@ URL:            http://www.linux-pam.org/
 Source:         Linux-PAM-%{version}.tar.xz
 Source9:        baselibs.conf
 Patch:          Makefile-pam_unix-nis.diff
-Patch1:         revert-check_shadow_expiry.diff
 BuildRequires:  pam-devel
 %if 0%{?suse_version} > 1320
 BuildRequires:  pkgconfig(libeconf)
@@ -58,7 +57,6 @@ module has NIS support.
 %prep
 %setup -q -n Linux-PAM-%{version}
 %patch -p1
-%patch1 -p1
 
 %build
 export CFLAGS="%{optflags} -DNDEBUG"
@@ -69,8 +67,7 @@ export CFLAGS="%{optflags} -DNDEBUG"
 	--pdfdir=%{_docdir}/pam/pdf \
 	--enable-isadir=../..%{_pam_moduledir} \
 	--enable-securedir=%{_pam_moduledir} \
-	--enable-vendordir=%{_distconfdir} \
-	--enable-tally2 --enable-cracklib
+	--enable-vendordir=%{_distconfdir}
 make -C modules/pam_unix
 
 %install

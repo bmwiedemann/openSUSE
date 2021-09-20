@@ -1002,4 +1002,41 @@
   [bsc#1188724]</comment>
     <requestid>911843</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>b00f278d3328c3b17a8588be19953530</srcmd5>
+    <version>1.5.2</version>
+    <time>1632173503</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename motd.tmpfiles to pam.tmpfiles
+  - Add /run/faillock directory
+
+- pam-login_defs-check.sh: adjust for new login.defs variable usages
+
+- Update to 1.5.2
+  Noteworthy changes in Linux-PAM 1.5.2:
+  * pam_exec: implemented quiet_log option.
+  * pam_mkhomedir: added support of HOME_MODE and UMASK from
+    /etc/login.defs.
+  * pam_timestamp: changed hmac algorithm to call openssl instead
+    of the bundled sha1 implementation if selected, added option
+    to select the hash algorithm to use with HMAC.
+  * Added pkgconfig files for provided libraries.
+  * Added --with-systemdunitdir configure option to specify systemd
+    unit directory.
+  * Added --with-misc-conv-bufsize configure option to specify the
+    buffer size in libpam_misc's misc_conv() function, raised the
+    default value for this parameter from 512 to 4096.
+  * Multiple minor bug fixes, portability fixes, documentation
+    improvements, and translation updates.
+  pam_tally2 has been removed upstream, remove pam_tally2-removal.patch
+  pam_cracklib has been removed from the upstream sources. This
+  obsoletes pam-pam_cracklib-add-usersubstr.patch and
+  pam_cracklib-removal.patch.
+  The following patches have been accepted upstream and, so,
+  are obsolete:
+  - pam-bsc1181443-make-nofile-unlimited-mean-nr_open.patch
+  - pam_securetty-don-t-complain-about-missing-config.patch
+  - bsc1184358-prevent-LOCAL-from-being-resolved.patch</comment>
+    <requestid>919240</requestid>
+  </revision>
 </revisionlist>
