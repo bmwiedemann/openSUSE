@@ -214,6 +214,8 @@ Patch18:        fips.patch
 #
 Patch20:        loadAssistiveTechnologies.patch
 #
+Patch30:        openjdk-glibc234.patch
+#
 # OpenJDK specific patches
 #
 Patch200:       ppc_stack_overflow_fix.patch
@@ -505,6 +507,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %patch18 -p1
 
 %patch20 -p1
+
+%patch30 -p1
 
 %patch200 -p1
 

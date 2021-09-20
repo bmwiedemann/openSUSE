@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 20 06:41:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openjdk-glibc234.patch
+    + fix build with glibc-2.34 (bsc#1189201)
+
+-------------------------------------------------------------------
 Thu Sep 16 06:16:11 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
