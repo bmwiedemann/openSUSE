@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 16 14:59:23 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Tumbleweed is not affected by the following SLE issues:
+  * bsc#1148742
+  * bsc#1135350
+  * bsc#1133512
+
+-------------------------------------------------------------------
 Thu Sep  9 12:35:58 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 7.92:
