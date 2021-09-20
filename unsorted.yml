@@ -32,6 +32,7 @@ unsorted:
   - ComputeLibrary-devel: [x86_64] 
   - ComputeLibrary-sample-data: [x86_64] 
   - CoreFreq: [x86_64] 
+  - CoreFreq-kmp-default: [x86_64] 
   - CorsixTH 
   - Crystalcursors 
   - DVDStyler 
@@ -2998,6 +2999,7 @@ unsorted:
   - drawing 
   - drawing-lang 
   - drbd-formula 
+  - drbd-kmp-default: [x86_64] 
   - drbd-utils: [i586] 
   - drc 
   - drc-doc 
@@ -8061,6 +8063,7 @@ unsorted:
   - kraft 
   - krb5-auth-dialog 
   - krb5-auth-dialog-lang 
+  - krb5-client: [i586] 
   - krb5-devel 
   - krb5-devel-32bit: [x86_64] 
   - krb5-mini 
@@ -17673,11 +17676,14 @@ unsorted:
   - openSUSE-release-usb-x11 
   - openSUSE-signkey-cert: [x86_64] 
   - openSUSEway 
+  - openafs 
   - openafs-authlibs 
   - openafs-authlibs-devel 
+  - openafs-client 
   - openafs-devel 
   - openafs-fuse_client 
   - openafs-kernel-source 
+  - openafs-kmp-default 
   - openafs-server 
   - openal-soft-devel 
   - openal-soft-devel-32bit: [x86_64] 
@@ -32234,7 +32240,7 @@ unsorted:
   - syntax-highlighting-devel 
   - sysbench 
   - sysdig 
-  - sysdig-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
+  - sysdig-kmp-default 
   - sysdig-kmp-pae: [i586] 
   - sysfsutils 
   - sysfsutils-devel 
@@ -41493,10 +41499,13 @@ unsorted:
   - virt-viewer 
   - virtme 
   - virtualbox: [x86_64] 
-  - virtualbox-devel: [x86_64] # devel package of dvd:virtualbox-guest-x11 
+  - virtualbox-devel: [x86_64] 
   - virtualbox-guest-desktop-icons: [x86_64] 
   - virtualbox-guest-source: [x86_64] 
+  - virtualbox-guest-tools: [x86_64] 
+  - virtualbox-guest-x11: [x86_64] 
   - virtualbox-host-source: [x86_64] 
+  - virtualbox-kmp-default: [x86_64] 
   - virtualbox-qt: [x86_64] 
   - virtualbox-vnc: [x86_64] 
   - virtualbox-websrv: [x86_64] 
