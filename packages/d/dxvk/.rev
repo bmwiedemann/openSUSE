@@ -15,4 +15,41 @@
     <comment>- Build only on x86* (forwarded request 901299 from Guillaume_G)</comment>
     <requestid>901302</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>61b4bde1937262c164b19a237b9bbbb8</srcmd5>
+    <version>1.9.2</version>
+    <time>1632173623</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.9.2
+  - Reduced overall CPU overhead in D3D9.
+  - Fixed various failures in wine's D3D9 tests.
+  - Fixed various issues when the `d3d9.evictManagedTexturesOnUnlock` option is enabled.
+  - Fixed various issues when the `d3d11.relaxedBarriers` option is enabled.
+  - **Call of Cthulhu**: Fixed reflection rendering (#2248)
+  - **Crysis 3**, **Homefront The Revolution**: Worked around poor performance (#2256) (#2241)
+  - **GODS**: Fixed gamma curve (#2250)
+  - **Total War Medieval 2**: Fixed black lines on the world map (#2258) and settings text (#2247)
+    The game still crashes when loading battles due to running out of address space.
+  - **Fantasy Grounds**: Fix incorrect rendering (#2251)
+  - **Need For Speed Heat**: Fixed ground textures rendering incorrectly (#1764).
+  - **Paranormal Files**: Fix black screen (#2192)
+  - **Pathfinder: Wrath of the Rightous**: Fixed GPU hang in loading screen.
+     Note that the game itself has further issues loading certain parts
+     of the game, which do not appear to be related to wine or DXVK in
+     any way.
+  - **Payday**: Fix flickering reflections (#2259)
+  - **Shin Megami Tensei 3**: Fixed hang when entering save room (#2161)
+  - **Sine Mora EX**: Added 60 FPS lock (#2261)
+- updated to 1.9.1
+  - Fixed a number of performance and stability issues introduced with the D3D9 locking rewrite in 1.9 (#2142, #2149, #2150, #2164, #2168).
+  - Rewrote the way staging textures are handled in D3D11. This can reduce memory usage and the number of image copies necessary to move data between the CPU and GPU, and fixes severe performance issues in Roblox on Nvidia GPUs.
+  - Removed some workarounds for very old Mesa versions (19.0 and older).
+  - Reimplemented locking primitives based on Windows SRW locks. This may be more efficient compared to the winpthreads implementation in mingw builds.
+  - Earth Defense Force 5: Work around performance issues caused by the game frequently turning vertical synchronization on and off between frames (#2127)
+  - Far Cry 1: Spoof Nvidia GPU in order to enable higher-quality water rendering.
+  - Far Cry 5 and other Dunia Engine games: Fixed various issues due to uninitialized memory (PR #2137).
+  - GTA IV: Fixed broken app profile that would break the game on Nvidia GPUs.
+  - Risen 3: Fixed crash on Nvidia GPUs (#2154).</comment>
+    <requestid>920342</requestid>
+  </revision>
 </revisionlist>
