@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Sep 15 15:08:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Temporarily disable flaky test 1184
+  * See https://github.com/curl/curl/issues/7725
+
+-------------------------------------------------------------------
+Wed Sep 15 06:21:42 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.79.0: [bsc#1190213, CVE-2021-22945]
+  [bsc#1190373, CVE-2021-22946] [bsc#1190374, CVE-2021-22947]
+  * Changes:
+    - bearssl: support CURLOPT_CAINFO_BLOB
+    - http: consider cookies over localhost to be secure
+    - secure transport: support CURLINFO_CERTINFO
+  * Bugfixes:
+    - CVE-2021-22945: clear the leftovers pointer when sending succeeds
+    - CVE-2021-22946: do not ignore --ssl-reqd
+    - CVE-2021-22947: reject STARTTLS server response pipelining
+    - auth: do not append zero-terminator to authorisation id in kerberos
+    - auth: properly handle byte order in kerberos security message
+    - auth: use sasl authzid option in kerberos
+    - auth: we do not support a security layer after kerberos authentication
+    - c-hyper: deal with Expect: 100-continue combined with POSTFIELDS
+    - c-hyper: handle HTTP/1.1 => HTTP/1.0 downgrade on reused connection
+    - c-hyper: initial step for 100-continue support
+    - c-hyper: initial support for "dumping" 1xx HTTP responses
+    - curl-openssl.m4: show correct output for OpenSSL v3
+    - docs/MQTT: update state of username/password support
+    - docs: the security list is reached at security at curl.se now
+    - getparameter: fix the --local-port number parser
+    - hostip: Make Curl_ipv6works function independent of getaddrinfo
+    - http_proxy: fix the User-Agent inclusion in CONNECT
+    - http_proxy: fix user-agent and custom headers for CONNECT with hyper
+    - http_proxy: only wait for writable socket while sending request
+    - mailing lists: move from cool.haxx.se to lists.haxx.se
+    - mbedtls: avoid using a large buffer on the stack
+    - mbedTLS: initial 3.0.0 support
+    - ngtcp2: remove the acked_crypto_offset struct field init
+    - ngtcp2: replace deprecated functions with nghttp3_conn_shutdown_stream_read
+    - ngtcp2: reset the oustanding send buffer again when drained
+    - ngtcp2: rework the return value handling of ngtcp2_conn_writev_stream
+    - ngtcp2: stop buffering crypto data
+    - ngtcp2: utilize crypto API functions to simplify
+    - openssl: when creating a new context, there cannot be an old one
+    - scripts: invoke interpreters through /usr/bin/env
+    - tests/runtests.pl: cleanup copy&paste mistakes and unused code
+    - tests: be explicit about using 'python3' instead of 'python'
+    - tool/tests: fix potential year 2038 issues
+    - tool_operate: Fix --fail-early with parallel transfers
+    - x509asn1: fix heap over-read when parsing x509 certificates
+  * Rebase libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Wed Jul 21 06:50:22 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 7.78.0:
