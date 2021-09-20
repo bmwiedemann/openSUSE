@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:02:07 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210324:
+  * Cleanup
+  * Cleanups
+  * Add extra ios targets and mac-arm64
+  * Update .gitlab-ci.yml
+  * Update bins for new toolchain
+  * Add armv8 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update .gitlab-ci.yml
+  * Cleanups/updates
+  * Add Raspberry Pi 4 64bit platform
+  * Add PS2 platform
+  * Cleanups
+  * Cleanup settings.cpp
+  * Add fixed rotation to core options
+  * Minor tweak to frame buffer
+  * mednafen.h: Git rid of these macros
+  * Fix malloc/delete mismatch
+  * Silence missing guard warnings
+  * Add 16/32 color modes switching and cleanups
+  * Update Makefile
+  * Update libretro-common
+  * Include <retro_inline.h> for compilers that are not MSVC or GCC
+  * Add .gitlab-ci.yml
+  * Fix retro_load_game always returns false (Fix #40)
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanup
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+
+-------------------------------------------------------------------
 Sat May 30 16:06:40 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200518:
