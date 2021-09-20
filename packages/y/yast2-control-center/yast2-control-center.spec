@@ -17,7 +17,7 @@
 
 
 Name:           yast2-control-center
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 URL:            https://github.com/yast/yast-control-center
 Summary:        YaST2 - Control Center

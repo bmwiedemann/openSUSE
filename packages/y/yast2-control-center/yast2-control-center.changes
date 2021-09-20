@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 13 15:49:40 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Avoid creating nohup.out file in the user's home directory
+  (bsc#1189651).
+- 4.4.3
+
+-------------------------------------------------------------------
 Mon Jul 26 14:27:27 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Use correct path for yast2 binary (related to bsc#1154854).
