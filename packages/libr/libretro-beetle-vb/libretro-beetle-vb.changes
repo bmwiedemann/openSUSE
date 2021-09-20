@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:08:49 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210719:
+  * Revert "Update vsu.cpp"
+  * Remove ALMS stuff
+  * Update vsu.cpp
+  * Allow low-battery toggle to be remapped
+  * Set CPU Emulation to fast
+  * Set CPU Emulation to fast
+  * Add button to trigger low-battery sensor
+  * Fix the CPU option being set to disabled...
+  * Fix the CPU option being set to disabled...
+  * Bump version number
+  * Cleanups, and add persistent buffer support
+  * Backport Mednafen 1.27.0 change - VB: Block writes to VSU registers and memories when A0 and A1 are not both 0, per tip from "enthusi".
+  * We don't need to link against winmm for this core
+  * Cleanups
+  * remove asserts
+  * Add CROSS_COMPILE rules for OSX
+  * Get rid of puts/printf calls in state.c
+  * Fix LGTM warning
+  * Add ios-arm64/tvos-arm64/osx-arm64
+  * Update .gitlab-ci.yml
+  * (MSVC) embed MSVCRT runtime
+  * Add MSVC 2005 / 2010 cores
+  * add armv8 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update osx target
+  * Update .gitlab-ci.yml
+  * Update
+  * Cleanups
+  * Add Raspberry Pi 3 and Raspberry Pi 4 platforms in 64bit mode. Remove unnecessary and dangerous CFLAGs for the Pi platforms.
+  * Update libretro-common
+  * Get rid of register storage class specifier
+  * Add.gitlab-ci.yml
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * CalcCurrentOutput - cleanup
+  * MSVC buildfix
+  * Cleanups
+  * Cleanups
+  * Convert input.cpp to C
+  * Cleanups
+  * Convert vib.cpp to C
+  * Cleanups
+  * Convert timer.cpp to C
+  * Cleanups
+  * Cleanups
+  * Get rid of surface.cpp
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * 8bpp isn't used - get rid of it
+  * masmem - We need only the U16 equivalents for VB
+  * Cleanups
+  * Cleanup
+  * Don't include math_ops.h header in libretro.cpp
+  * Cleanups
+  * remove unused files
+  * Cut down on stdio.h usage
+  * Get rid of printf calls
+  * Header cleanups
+  * Move v810_timestamp typedef to mednafen-types.h
+  * Add DEBUG ifdefs
+  * Cleanups
+  * Get rid of function overloading
+  * Get rid of state_inline.h
+  * Use SFVARN_BOOL where possible
+  * Cleanups
+  * Cleanups
+  * Fix build for MSVC 2003
+  * Buildfix for some platforms
+  * Get rid of unused headers
+  * Cleanups
+  * Header cleanups
+  * MSVC buildfixes
+  * Cleanups
+  * Cleanups
+  * Remove driver.h
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Remove unused debug.cpp
+  * Cleanups
+  * Cleanups
+  * Convert state.cpp to C + other cleanups
+  * libretro: use input bitmask
+  * Cleanup
+  * Simplifications
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+
+-------------------------------------------------------------------
 Sat May 30 16:46:29 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200518:
