@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  6 19:41:42 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.11
+  * Skip setting alternate interface when not needed
+  * Only clamp transfer size on Linux
+  * Quirk for GD32 leave request
+  * Improve status and error messages and exit codes
+  * dfuse: Process all alternate interfaces in a DfuSe file
+  * dfuse-pack.py: Fix alternate settings if first is 0
+
+-------------------------------------------------------------------
 Sun Dec 27 21:27:08 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10

@@ -133,4 +133,16 @@ yesterday's tarball.</comment>
     <comment></comment>
     <requestid>896416</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8e811cf0fcac0e8831be83a7f2b1626d</srcmd5>
+    <version>2021.5</version>
+    <time>1632251533</time>
+    <user>dimstar_suse</user>
+    <comment>- xorgproto 2021.5
+  * This release introduces the version 2.4 of the X Input
+    protocol. It contains the addition of the concept of touchpad
+    gestures. Touchpad gesture is an interaction of two or more
+    fingers that can be interpreted as a swipe or a pinch.</comment>
+    <requestid>919283</requestid>
+  </revision>
 </revisionlist>

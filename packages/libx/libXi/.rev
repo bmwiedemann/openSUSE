@@ -184,4 +184,16 @@
   * Update XIChangeHierarchy.txt</comment>
     <requestid>711295</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4d5a883c30febacd9b08b8a4de897e11</srcmd5>
+    <version>1.8</version>
+    <time>1632251534</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.8
+  * This release of libXi marks the support of XI 2.4 touchpad
+    gesture events official. This feature is the only difference
+    between libXi 1.8 and the latest release in the 1.7.x series
+    (1.7.10).</comment>
+    <requestid>919284</requestid>
+  </revision>
 </revisionlist>

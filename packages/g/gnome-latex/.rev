@@ -67,4 +67,13 @@
     the build system. (forwarded request 889633 from dimstar)</comment>
     <requestid>890119</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>200ee85502af8398e1d175efaea022a9</srcmd5>
+    <version>3.38.0</version>
+    <time>1632251589</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920406 from sbrabec)</comment>
+    <requestid>920573</requestid>
+  </revision>
 </revisionlist>

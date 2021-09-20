@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Sep 10 23:52:50 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.55 → 9.23.56
+
+-------------------------------------------------------------------
+Fri Sep 10 22:42:23 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Only wipe bundle dir when required
+
+  The given result bundle dir must only be wiped if the
+  request to turn the result files into an rpm was given.
+  Only in this case the given bundle dir must start empty
+
+-------------------------------------------------------------------
+Fri Sep 10 22:30:55 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed uninstall handling via dnf, microdnf, zypper
+
+  The above package managers supports uninstall instructions
+  like 'iwl*'. In kiwi there was code checking via rpm if
+  the packages given to uninstall actually exists. That code
+  does not work if the given package to uninstall is an
+  instruction that matches a pattern. Therefore if we use
+  the uninstall section in the kiwi image description, just
+  pass the provided information to the package manager and
+  don't try to be clever in kiwi itself.
+
+-------------------------------------------------------------------
+Thu Sep 09 13:17:47 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Allow to set --logfile for result namespace
+
+  Setting a logfile for e.g 'kiwi-ng result bundle ...'
+  is useful and should be possible
+
+-------------------------------------------------------------------
+Thu Sep 09 10:00:04 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Bump version: 9.23.54 → 9.23.55
+
+-------------------------------------------------------------------
+Wed Sep 08 13:07:47 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Added support for building rpm package from bundle
+
+  With the new option --package-as-rpm it is possible to
+  call the kiwi result bundler such that the image build
+  results gets packaged into an rpm. I think this is a
+  handy feature to transport image builds via repositories
+
+-------------------------------------------------------------------
+Wed Sep 08 10:11:23 CEST 2021 - Marcus Schäfer <ms@suse.de>
+
+- Fixed MicroOS integration test
+
+  With ignition/combustion in place it's not allowed
+  to use tmp as a subvolume
+
+-------------------------------------------------------------------
 Tue Sep 07 18:02:22 CEST 2021 - Marcus Schäfer <ms@suse.de>
 
 - Bump version: 9.23.53 → 9.23.54

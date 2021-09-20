@@ -17,13 +17,10 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-# Features available:
-# all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider"]
-# all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator"]
-%define features "all-authenticators,all-providers"
+
 %{?systemd_ordering}
 Name:           parsec
-Version:        0.7.2
+Version:        0.8.0
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -35,8 +32,7 @@ Source3:        parsec.service
 Source4:        config.toml
 Source5:        parsec.conf
 Source6:        system-user-parsec.conf
-# Fix build with old rust used in Leap 15.3/SLE15-SP3 - https://github.com/parallaxsecond/parsec/issues/409
-Patch1:         parsec-fix-old-rust.patch
+Source10:       https://git.trustedfirmware.org/TS/trusted-services.git/snapshot/trusted-services-c1cf912.tar.gz
 BuildRequires:  cargo
 BuildRequires:  clang-devel
 BuildRequires:  cmake
@@ -65,17 +61,31 @@ This abstraction layer keeps workloads decoupled from physical platform details,
 enabling cloud-native delivery flows within the data center and at the edge.
 
 %prep
-%autosetup -p1 -a1
+%setup -q -a1 -a10
+rmdir trusted-services-vendor
+mv trusted-services-c1cf912 trusted-services-vendor
 rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
 # Enable all providers
 sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
-echo 'default = ["all-authenticators", "all-providers"]' >> Cargo.toml
+# Features available in 0.8.0:
+# all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "trusted-service-provider"]
+# all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"]
+%if 0%{suse_version} > 1500
+# Tumbleweed
+# Disable "trusted-service-provider" until we have a trusted-services package
+echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "all-authenticators"]' >> Cargo.toml
+%else
+# Leap/SLE
+# Disable jwt-svid-authenticator (SPIFFE-based authenticator) as it cannot be compiled with rust 1.43.1
+# Disable "trusted-service-provider" until we have a trusted-services package
+echo 'default = ["direct-authenticator", "unix-peer-credentials-authenticator", "tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider"]' >> Cargo.toml
+%endif
 
 %build
 export PROTOC=%{_bindir}/protoc
 export PROTOC_INCLUDE=%{_includedir}
-%cargo_build -- --features=%features
+%cargo_build
 %sysusers_generate_pre %{SOURCE6} parsec
 
 %install
@@ -98,7 +108,7 @@ rm -rf %{buildroot}%{_datadir}/cargo/registry
 %check
 export PROTOC=%{_bindir}/protoc
 export PROTOC_INCLUDE=%{_includedir}
-%cargo_test -- --lib --features=%features
+%cargo_test -- --lib
 
 %pre -f parsec.pre
 %service_add_pre parsec.service

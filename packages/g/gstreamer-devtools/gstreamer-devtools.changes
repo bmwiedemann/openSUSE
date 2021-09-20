@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 15 10:08:14 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + scenario: Fix EOS handling in seek_forward.scenario
+  + validate-utils: Only modify structure fields that really need
+    updates
+  + Don't use volatile to mean atomic (fixes compiler warnings with
+    gcc 11)
+- Changes from version 1.18.4:
+  + No changes
+
+-------------------------------------------------------------------
 Sat Jan 16 20:08:38 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.3:

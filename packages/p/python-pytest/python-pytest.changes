@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 14 09:22:10 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 6.2.5
+ * Python 3.10 is now supported.
+ *  Enable compatibility with pluggy 1.0 or later.
+
+-------------------------------------------------------------------
 Fri May 14 10:04:36 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.2.4

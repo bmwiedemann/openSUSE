@@ -1,0 +1,24 @@
+From 92fc089d50fc81b9903cd0573c95749e41081474 Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sun, 25 Jul 2021 21:38:26 +0000
+Subject: [PATCH] IWYU: add cstring for std::strcpy
+
+---
+ extensions/browser/extension_dialog_auto_confirm.cc | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/extensions/browser/extension_dialog_auto_confirm.cc b/extensions/browser/extension_dialog_auto_confirm.cc
+index adb4ac3..be8b161 100644
+--- a/extensions/browser/extension_dialog_auto_confirm.cc
++++ b/extensions/browser/extension_dialog_auto_confirm.cc
+@@ -4,6 +4,7 @@
+ 
+ #include "extensions/browser/extension_dialog_auto_confirm.h"
+ 
++#include <cstring>
+ #include <utility>
+ 
+ #include "base/check.h"
+-- 
+2.31.1
+

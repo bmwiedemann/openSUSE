@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Sep 17 13:38:47 UTC 2021 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 15.5.4
+  * Add client-side HTTP server info (instantaneous, secure, raw
+    data from https://master1.ddnet.tw/ddnet/15/servers.json)
+  * Predict tune zones for characters, allow unpredicted
+    tune zone settings for projectiles and lasers
+  * Steam: Support connecting to hostname
+    (for example steam://run/412220//ger2.ddnet.tw:8303/)
+  * Implement HSL sliders
+  * Add hookcollision color changeable in HUD
+  * Remove "Show only supported" resolutions switch from
+    graphics tab
+  * Remove texture quality config
+  * HiDPI-aware resolution list
+  * Fix some buttons in menus
+  * Set all Intel GPU Windows players to OpenGL 2.0 by default
+  * Fix composed binds involving F-keys
+  * Differentiate better between window modes
+  * Fix out of list clip clickable/hoverable items
+  * Center more tees in graphics
+  * Fix auto-reconnect while in game
+  * Fix parsing an ipv6 address without port
+  * Avoid spawn effect being clipped for spawning player
+  * Fix serverbrowser crash
+  * Make pixel alignment numerical more robust when scrolling
+  * Compress IPv6 string representations according to RFC5952
+  * Fix crash when sorting empty friend list
+  * Fix X11 notifications
+  * Differenciate between width and height for body part
+  * Add better support for compose binds in demo menu
+  * Print GPU info into console
+  * Fix infinite loop in editor when changing height
+  * Make sure ctrl+shift+s works same as clicking UI
+  * Disable swap properly since it's still broken
+  * Fix multiple crashes with super
+  * Add new tune: hammer_hit_fire_delay
+  * Fix team rank updating not working
+  * Lower save/swap punishment
+  * Fix duplicate uuid index in maps edited by tools
+- Add BuildRequires Mesa-libGLESv3-devel
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Thu Apr 29 12:49:54 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 15.4

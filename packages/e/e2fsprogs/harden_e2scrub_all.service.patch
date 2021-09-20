@@ -1,0 +1,23 @@
+Index: e2fsprogs-1.46.3/scrub/e2scrub_all.service.in
+===================================================================
+--- e2fsprogs-1.46.3.orig/scrub/e2scrub_all.service.in
++++ e2fsprogs-1.46.3/scrub/e2scrub_all.service.in
+@@ -6,6 +6,18 @@ ConditionCapability=CAP_SYS_RAWIO
+ Documentation=man:e2scrub_all(8)
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=oneshot
+ Environment=SERVICE_MODE=1
+ ExecStart=@root_sbindir@/e2scrub_all

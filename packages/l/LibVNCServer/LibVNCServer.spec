@@ -29,7 +29,7 @@ Source0:        https://github.com/LibVNC/libvncserver/archive/%{name}-%{version
 Source1:        baselibs.conf
 #PATCH-FIX-OPENSUSE: redefine keysyms only if needed
 Patch0:         redef-keysym.patch
-#PATCH-FEATURE-UPSTREAM TLS security type enablement patches gh#LibVNC/libvncserver!234 
+#PATCH-FEATURE-UPSTREAM TLS security type enablement patches gh#LibVNC/libvncserver!234
 Patch10:        0001-libvncserver-Add-API-to-add-custom-I-O-entry-points.patch
 Patch11:        0002-libvncserver-Add-channel-security-handlers.patch
 # https://github.com/LibVNC/libvncserver/commit/87c52ee0551b7c4e76855d270d475b9e3039fe08
@@ -110,14 +110,14 @@ files for LibVNCServer.
 for file in ChangeLog ; do
 mv ${file} ${file}.OLD && \
 iconv -f ISO_8859-1 -t UTF8 ${file}.OLD > ${file} && \
-touch --reference ${file}.OLD $file 
+touch --reference ${file}.OLD $file
 done
 
 %build
 %cmake
 make %{?_smp_mflags}
 
-%check 
+%check
 pushd build
 export LD_LIBRARY_PATH="$(pwd)"
 make test

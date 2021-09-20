@@ -35,7 +35,6 @@ Patch0:         gnome-boxes-opensuse.patch
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.36.0
 BuildRequires:  yelp-tools
@@ -124,7 +123,6 @@ search results from Boxes.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \

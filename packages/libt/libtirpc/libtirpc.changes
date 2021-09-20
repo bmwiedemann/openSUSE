@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 15 05:35:58 UTC 2021 - Petr Vorel <pvorel@suse.cz>
+
+- Backport DoS vulnerability fix 0001-Fix-DoS-vulnerability-in-libtirpc.patch
+- Replace %setup with %autosetup
+
+-------------------------------------------------------------------
 Sun May 16 09:17:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.2:

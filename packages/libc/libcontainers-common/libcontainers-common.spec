@@ -134,6 +134,8 @@ install -D -m 0644 podman-%{podmanver}/docs/source/markdown/containers-mounts.co
 install -D -m 0644 common-%{commonver}/docs/containers.conf.5 %{buildroot}/%{_mandir}/man5/
 
 %post
+# Comment out ostree_repo if it's blank [boo#1189893]
+sed -i 's/ostree_repo = ""/\#ostree_repo = ""/g' /etc/containers/storage.conf
 # If installing, check if /var/lib/containers (or /var/lib in its defect) is btrfs and set driver
 # to "btrfs" if true
 if [ $1 -eq 1 ] ; then

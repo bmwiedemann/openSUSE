@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Thu Sep 16 14:32:26 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/perl-bootloader#136
+- report error if config file could not be updated (bsc#1188768)
+- 0.936
+
+--------------------------------------------------------------------
 Tue Jul 27 09:21:14 UTC 2021 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/perl-bootloader#135

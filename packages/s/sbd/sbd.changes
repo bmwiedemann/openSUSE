@@ -1,7 +1,27 @@
 -------------------------------------------------------------------
+Thu Aug 12 15:48:03 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.0+20210720.f4ca41f:
+- sbd-inquisitor: Implement default delay start for diskless sbd (bsc#1189398)
+- sbd-inquisitor: Sanitize numeric arguments
+
+-------------------------------------------------------------------
+Thu Aug 12 15:28:38 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.0+20210629.1c72cf2:
+- sbd-inquisitor: tolerate and strip any leading spaces of command line option values (bsc#1187547)
+- sbd-inquisitor: tell the actual watchdog device specified with `-w` (bsc#1187547)
+
+-------------------------------------------------------------------
+Thu Aug 12 13:47:25 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 1.5.0+20210614.d7f447d (v1.5.0):
+- spec, configure.ac: default to resource-syncing with pacemaker
+
+-------------------------------------------------------------------
 Mon May  3 11:45:21 UTC 2021 - Peter Varkoly <varkoly@suse.com>
 
--  Deprecated path "/var/run/" used in systemd-services (bsc#1185182) 
+- Deprecated path "/var/run/" used in systemd-services (bsc#1185182) 
 
 -------------------------------------------------------------------
 Tue Mar 09 11:48:15 UTC 2021 - Yan Gao <ygao@suse.com>

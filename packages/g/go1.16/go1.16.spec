@@ -135,7 +135,7 @@
 %endif
 
 Name:           go1.16
-Version:        1.16.7
+Version:        1.16.8
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -316,6 +316,9 @@ install -d %{buildroot}%{_datadir}/go/%{go_api}
 for ext in *.{go,c,h,s,S,py,syso}; do
   find src -name ${ext} -exec install -Dm644 \{\} %{buildroot}%{_datadir}/go/%{go_api}/\{\} \;
 done
+# executable bash scripts called by go tool, etc
+find src -name "*.bash" -exec install -Dm655 \{\} %{buildroot}%{_datadir}/go/%{go_api}/\{\} \;
+
 mkdir -p $GOROOT/src
 for i in $(ls %{buildroot}/usr/share/go/%{go_api}/src);do
   ln -s /usr/share/go/%{go_api}/src/$i $GOROOT/src/$i

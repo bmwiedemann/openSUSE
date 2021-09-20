@@ -1,0 +1,24 @@
+From 409859ad9ba763a4267fb3457df7cd8eb0b7387b Mon Sep 17 00:00:00 2001
+From: Stephan Hartmann <stha09@googlemail.com>
+Date: Sun, 25 Jul 2021 19:43:45 +0000
+Subject: [PATCH] IWYU: add vector for std::vector
+
+---
+ chrome/browser/devtools/devtools_embedder_message_dispatcher.h | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/chrome/browser/devtools/devtools_embedder_message_dispatcher.h b/chrome/browser/devtools/devtools_embedder_message_dispatcher.h
+index 12f8500..4007112 100644
+--- a/chrome/browser/devtools/devtools_embedder_message_dispatcher.h
++++ b/chrome/browser/devtools/devtools_embedder_message_dispatcher.h
+@@ -8,6 +8,7 @@
+ #include <map>
+ #include <memory>
+ #include <string>
++#include <vector>
+ 
+ #include "base/callback.h"
+ #include "ui/gfx/geometry/insets.h"
+-- 
+2.31.1
+

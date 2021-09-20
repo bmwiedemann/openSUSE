@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-nettool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  gnome-common
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
@@ -57,7 +56,6 @@ tools, like ping, netstat, ifconfig, whois, traceroute, and finger.
 %prep
 %setup -q
 %patch1 -p1
-translation-update-upstream
 
 %build
 NOCONFIGURE=1 ./autogen.sh

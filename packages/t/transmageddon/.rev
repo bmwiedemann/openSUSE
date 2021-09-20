@@ -198,4 +198,13 @@
 - Do not produce the obsolete., now empty post scriptlets. (forwarded request 835801 from dimstar)</comment>
     <requestid>836024</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>146b39d417908b098e766acbbbcb5ba3</srcmd5>
+    <version>1.5</version>
+    <time>1632251584</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920443 from sbrabec)</comment>
+    <requestid>920559</requestid>
+  </revision>
 </revisionlist>

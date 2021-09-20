@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 17 03:43:56 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.1:
+  * Fix up some project metadata.
+  * Dropped support for Python <3.6
+  * Added a _version submodule and imported its dunder-attributes into
+    the top level module
+  * Migrated CI to CircleCI (from Travis)
+  * Migrated tests to pytest(-relaxed)
+  * Moved changelog to stub Sphinx project for Releases plugin
+  * Changed README to ReStructured Text (from Markdown) 
+- Dropped patch add_test_init.patch, no longer required.
+- Added patch add-pytest-ini.patch:
+  * Add the pytest.ini file that isn't included in the source distribution
+    so the testsuite works.
+
+-------------------------------------------------------------------
 Tue Dec  4 12:49:59 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

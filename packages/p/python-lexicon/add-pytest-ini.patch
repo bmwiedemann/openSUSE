@@ -1,0 +1,8 @@
+Index: lexicon-2.0.1/pytest.ini
+===================================================================
+--- /dev/null
++++ lexicon-2.0.1/pytest.ini
+@@ -0,0 +1,3 @@
++[pytest]
++testpaths = tests
++python_files = *

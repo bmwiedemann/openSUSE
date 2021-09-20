@@ -172,7 +172,7 @@ BuildRequires:  liburing-devel
 %else
 %define	build_make_smp_mflags %{?jobs:-j%jobs}
 %endif
-Version:        4.14.6+git.168.6a9fc8a1ddd
+Version:        4.14.6+git.182.2205d5224e3
 Release:        0
 Url:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -343,6 +343,29 @@ Requires:       libsamba-policy0-python3 = %{version}
 The samba-python3 package contains the Python libraries needed by programs
 that use SMB, RPC and other Samba provided protocols in Python3 programs.
 
+%package gpupdate
+Summary:        Samba Group Policy
+License:        GPL-3.0-or-later
+Group:          Productivity/Networking/Samba
+Requires:       samba-ldb-ldap = %{version}
+Requires:       sscep
+Requires:       certmonger
+Requires:       cepces
+Requires:       samba-python3 = %{version}
+
+%description gpupdate
+The samba-gpupdate package provides the samba-gpupdate tool for applying
+Group Policies on a Samba client.
+
+%package ldb-ldap
+Summary:        Samba Ldb Ldap Modules
+License:        GPL-3.0-or-later
+Group:          Productivity/Networking/Samba
+
+%description ldb-ldap
+samba-ldb-ldap contains the ldb ldap module required by samba-tool and
+samba-gpupdate.
+
 %package test
 Summary:        Testing tools for Samba servers and clients
 License:        GPL-3.0-or-later
@@ -373,6 +396,7 @@ Requires(pre):  /usr/sbin/groupadd
 Requires:       coreutils
 Requires:       samba-client >= %{version}
 Requires:       libtevent-util0 >= %{version}
+Requires:       samba-gpupdate = %{version}
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 
@@ -930,6 +954,7 @@ Summary:        Samba LDB modules
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/Samba
 Requires:       libldb2 >= %{ldb_version}
+Requires:       samba-ldb-ldap = %{version}
 Requires(post): /sbin/ldconfig
 Requires(postun): /sbin/ldconfig
 
@@ -1097,8 +1122,6 @@ make install \
 # debug symbols are created and installed if the files are excluded only
 %if ! %{with_dc}
 rm \
-	%{buildroot}/%{_libdir}/samba/ldb/ildap.so \
-	%{buildroot}/%{_libdir}/samba/ldb/ldbsamba_extensions.so \
 	%{buildroot}/%{_mandir}/man8/samba.8* \
 	%{buildroot}/%{_mandir}/man8/samba-tool.8* \
 	%{buildroot}/%{_mandir}/man8/samba_downgrade_db.8*
@@ -1979,6 +2002,11 @@ exit 0
 %defattr(-,root,root)
 %{python3_sitearch}/*
 
+%files gpupdate
+%defattr(-,root,root)
+%{_sbindir}/samba-gpupdate
+%{_mandir}/man8/samba-gpupdate.8.gz
+
 %files test
 %defattr(-,root,root)
 %{_bindir}/gentest
@@ -2013,7 +2041,6 @@ exit 0
 %{_bindir}/wbinfo
 %{_sbindir}/rcwinbind
 %{_sbindir}/winbindd
-%{_sbindir}/samba-gpupdate
 /%{_lib}/security/pam_winbind.so
 %{_libdir}/libnss_winbind.so.*
 %{_libdir}/samba/idmap
@@ -2027,7 +2054,6 @@ exit 0
 %{_mandir}/man8/winbind_krb5_localauth.8.*
 %{_mandir}/man8/winbind_krb5_locator.8.*
 %{_mandir}/man5/pam_winbind.conf.5.*
-%{_mandir}/man8/samba-gpupdate.8.gz
 %{_mandir}/man8/idmap_ad.8.*
 %{_mandir}/man8/idmap_autorid.8.*
 %{_mandir}/man8/idmap_hash.8.*
@@ -2526,6 +2552,11 @@ exit 0
 %{_mandir}/man8/samba-tool.8.*
 %{_mandir}/man8/samba_downgrade_db.8.*
 
+%files ldb-ldap
+%defattr(-,root,root)
+%{_libdir}/samba/ldb/ildap.so
+%{_libdir}/samba/ldb/ldbsamba_extensions.so
+
 %files dsdb-modules
 %defattr(-,root,root)
 %{_libdir}/samba/ldb/acl.so
@@ -2539,10 +2570,8 @@ exit 0
 %{_libdir}/samba/ldb/extended_dn_in.so
 %{_libdir}/samba/ldb/extended_dn_out.so
 %{_libdir}/samba/ldb/extended_dn_store.so
-%{_libdir}/samba/ldb/ildap.so
 %{_libdir}/samba/ldb/instancetype.so
 %{_libdir}/samba/ldb/lazy_commit.so
-%{_libdir}/samba/ldb/ldbsamba_extensions.so
 %{_libdir}/samba/ldb/linked_attributes.so
 %{_libdir}/samba/ldb/new_partition.so
 %{_libdir}/samba/ldb/objectclass.so

@@ -1753,4 +1753,12 @@ Tue Sep 23 20:24:35 UTC 2014 - hrvoje.senjan@gmail.com
     <comment>baselibs.conf removed (almost) everywhere (forwarded request 919083 from cgiboudeaux)</comment>
     <requestid>919231</requestid>
   </revision>
+  <revision rev="174" vrev="3">
+    <srcmd5>c97bf297987bb4ea3ad782f03c08dd4d</srcmd5>
+    <version>5.22.5</version>
+    <time>1632251549</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919708</requestid>
+  </revision>
 </revisionlist>

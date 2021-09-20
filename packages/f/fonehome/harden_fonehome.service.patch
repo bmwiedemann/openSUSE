@@ -1,0 +1,21 @@
+Index: fonehome-1.2.1/src/unit/fonehome.service
+===================================================================
+--- fonehome-1.2.1.orig/src/unit/fonehome.service
++++ fonehome-1.2.1/src/unit/fonehome.service
+@@ -5,6 +5,16 @@
+ After=network.target syslog.socket
+ 
+ [Service]
++ProtectSystem=full
++ProtectHome=true
++PrivateDevices=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
+ ExecStart=@fonehomescript@
+ Restart=always
+ RestartSec=30s

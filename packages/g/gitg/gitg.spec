@@ -1,7 +1,7 @@
 #
 # spec file for package gitg
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Patch0:         gitg-typelib-dependencies.patch
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
@@ -141,8 +140,6 @@ graphical presentation.
 
 %prep
 %autosetup -p1
-sed -i 's/\[.*\]//g' po/POTFILES.in 
-translation-update-upstream po gitg
 
 %build
 %meson \

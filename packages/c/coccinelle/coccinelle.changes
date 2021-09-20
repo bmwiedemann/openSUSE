@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 21 00:36:44 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Fix totally broken python support, set the correct python3
+  interpreter, otherwise it defaults to python, which in our case
+  is python 2.7. (changed kill-env.diff, spec) 
+
+-------------------------------------------------------------------
 Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
 
 - build with VERBOSE=yes

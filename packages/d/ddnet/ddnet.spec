@@ -15,38 +15,40 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           ddnet
-Version:        15.4
+Version:        15.5.4
 Release:        0
 Summary:        DDraceNetwork, a cooperative racing mod of Teeworlds
 License:        Zlib AND CC-BY-SA-3.0 AND Apache-2.0 AND MIT AND SUSE-Public-Domain
+Group:          Amusements/Games/Action/Race
 URL:            https://ddnet.tw/
 Source:         https://github.com/ddnet/ddnet/archive/%{version}/%{name}-%{version}.tar.gz
-Group:          Amusements/Games/Action/Race
+BuildRequires:  Mesa-libGLESv3-devel
+BuildRequires:  appstream-glib
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libminiupnpc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pnglite-devel
 BuildRequires:  python3
 BuildRequires:  pkgconfig(freetype2)
-BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(wavpack)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  libminiupnpc-devel
 Requires:       %{name}-data = %{version}-%{release}
-BuildRequires:  appstream-glib
 
 %description
 DDraceNetwork (DDNet) is an actively maintained version of DDRace,

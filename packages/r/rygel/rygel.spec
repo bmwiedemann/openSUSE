@@ -31,7 +31,6 @@ BuildRequires:  libunistring-devel
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.36.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -218,7 +217,6 @@ the local machine.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \

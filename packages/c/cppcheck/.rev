@@ -181,4 +181,12 @@
 - drop 0002-Another-gcc11-fix-3179.patch, 0001-Fix-gcc11-build-errors.patch: upstream</comment>
     <requestid>906819</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>4848dd537d9bb152350e31f7bf6602c2</srcmd5>
+    <version>2.5</version>
+    <time>1632251600</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920630</requestid>
+  </revision>
 </revisionlist>

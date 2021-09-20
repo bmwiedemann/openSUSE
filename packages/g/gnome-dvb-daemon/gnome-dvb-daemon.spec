@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-dvb-daemon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,6 @@ BuildRequires:  intltool >= 0.40.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel >= 3.2
 BuildRequires:  totem-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.25.1
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.0
@@ -87,7 +86,6 @@ This package contains a Totem plugin to use your DVB devices.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure \

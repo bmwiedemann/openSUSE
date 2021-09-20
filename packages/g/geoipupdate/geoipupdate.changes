@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 07:05:44 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * geoipupdate.service
+
+-------------------------------------------------------------------
 Fri Apr 23 14:36:31 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 4.7.1: 

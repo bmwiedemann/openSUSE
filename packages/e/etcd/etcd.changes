@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 07:23:37 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * etcd.service
+
+-------------------------------------------------------------------
 Mon Aug  9 14:22:24 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - Don't require systemd (works without, too)

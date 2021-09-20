@@ -210,4 +210,13 @@
     <comment>Scripted push from GNOME:Apps</comment>
     <requestid>767357</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>253796646c78ff6541e99251f5067c00</srcmd5>
+    <version>0.2.90</version>
+    <time>1632251577</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920404 from sbrabec)</comment>
+    <requestid>920547</requestid>
+  </revision>
 </revisionlist>

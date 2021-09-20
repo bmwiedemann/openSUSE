@@ -17,7 +17,7 @@
 
 
 Name:           xorgproto
-Version:        2021.4
+Version:        2021.5
 Release:        0
 Summary:        The X11 Protocol collection
 License:        MIT

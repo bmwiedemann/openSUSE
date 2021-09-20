@@ -1030,4 +1030,14 @@ Also for 12.3 (optical only / making the launchers 'findable')</comment>
     <comment>Scripted push from GNOME:Next (forwarded request 893932 from dimstar)</comment>
     <requestid>893959</requestid>
   </revision>
+  <revision rev="136" vrev="7">
+    <srcmd5>eed490e516d0f16172f5af11ee0023bc</srcmd5>
+    <version>3.32.0</version>
+    <time>1632251539</time>
+    <user>dimstar_suse</user>
+    <comment>- Add gnome-packagekit-drop-NEWEST-on-get-updates.patch: Don't use
+  PK_FILTER_ENUM_NEWEST filter when getting updates
+  (glgo#GNOME/gnome-packagekit!3, bsc#1190330). (forwarded request 919999 from JonathanKang)</comment>
+    <requestid>920045</requestid>
+  </revision>
 </revisionlist>

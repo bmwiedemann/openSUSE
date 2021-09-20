@@ -19,13 +19,13 @@
 %define panel_version 4.12.0
 %define plugin whiskermenu
 Name:           xfce4-whiskermenu-plugin
-Version:        2.5.3
+Version:        2.6.0
 Release:        0
 Summary:        Alternate Xfce Menu
 License:        GPL-2.0-or-later
 Group:          System/GUI/XFCE
 URL:            https://docs.xfce.org/panel-plugins/xfce4-whiskermenu-plugin
-Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.5/%{name}-%{version}.tar.bz2
+Source0:        https://archive.xfce.org/src/panel-plugins/%{name}/2.6/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig

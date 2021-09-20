@@ -53,18 +53,19 @@ Python module to apply JSON-Patches (according to RFC 6902).
 rm %{buildroot}%{_bindir}/jsondiff
 
 %check
-%python_exec tests.py
+%pyunittest -v tests
 
 %post
 %python_install_alternative jsonpatch
 
-%preun
+%postun
 %python_uninstall_alternative jsonpatch
 
 %files %{python_files}
 %license COPYING
 %doc AUTHORS README.md
 %python_alternative %{_bindir}/jsonpatch
-%{python_sitelib}/*
+%{python_sitelib}/jsonpatch*
+%pycache_only %{python_sitelib}/__pycache__/jsonpatch*.pyc
 
 %changelog

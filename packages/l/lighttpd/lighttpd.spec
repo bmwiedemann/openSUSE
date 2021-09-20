@@ -1,7 +1,7 @@
 #
 # spec file for package lighttpd
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,18 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 %define pkg_home %{_localstatedir}/lib/%{name}
-Name:           lighttpd
-Version:        1.4.58
-Release:        0
 #
 %define pkg_name %{name}
 %define pkg_version %{version}
 %define tarball_version %{version}
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
+Name:           lighttpd
+Version:        1.4.59
+Release:        0
 #
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -60,16 +59,14 @@ BuildRequires:  pam-devel
 BuildRequires:  pcre-devel
 BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
-%if 0%{?suse_version} > 1500
-# pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
-BuildRequires:  postgresql-server-devel
-%endif 
 BuildRequires:  shadow
 BuildRequires:  sqlite-devel >= 3
 BuildRequires:  zlib-devel
 BuildRequires:  perl(CGI)
+BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libmaxminddb)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(systemd)
 Requires:       spawn-fcgi
 Requires(post): %fillup_prereq
@@ -79,6 +76,10 @@ Recommends:     logrotate
 Provides:       http_daemon
 Provides:       httpd
 %{?systemd_requires}
+%if 0%{?suse_version} > 1500
+# pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
+BuildRequires:  postgresql-server-devel
+%endif
 %if 0%{?suse_version} >= 1330
 BuildRequires:  php7-fastcgi
 %else
@@ -265,12 +266,13 @@ Requires:       %{name} = %{version}
 A module to provide SASL authentication in lighttpd.
 
 %package mod_authn_pam
-Summary:        PAM authentication in lighttpd
-Group:          Productivity/Networking/Web/Servers
+Summary:        pam authentication in lighttpd
+# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
+Group:          productivity/networking/web/servers
 Requires:       %{name} = %{version}
 
 %description mod_authn_pam
-A module to provide PAM authentication in lighttpd.
+a module to provide pam authentication in lighttpd.
 
 %prep
 %setup -q -n %{pkg_name}-%{pkg_version}
@@ -295,13 +297,15 @@ export CFLAGS="%{optflags} -DLDAP_DEPRECATED -W -Wmissing-prototypes -Wmissing-d
     --with-lua                  \
     --with-memcached            \
     --with-bzip2                \
+    --with-zstd                 \
+    --with-brotli               \
     --with-webdav-props         \
     --with-webdav-locks         \
     --with-fam                  \
     --with-maxminddb            \
     --with-sasl                 \
     --with-attr
-make %{?_smp_mflags}
+%make_build
 
 %check
 %if 0%{?suse_version} > 1200
@@ -426,6 +430,7 @@ chmod -x doc/scripts/spawn-php.sh doc/scripts/rrdtool-graph.sh
 %{_libdir}/%{name}/mod_vhostdb.so
 %{_libdir}/%{name}/mod_wstunnel.so
 %{_libdir}/%{name}/mod_authn_dbi.so
+%{_libdir}/%{name}/mod_ajp13.so
 %{_mandir}/man8/*.8%{?ext_man}
 %doc AUTHORS NEWS README
 #doc doc/*.dot

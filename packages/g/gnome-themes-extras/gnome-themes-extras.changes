@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 19:52:02 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Feb 28 16:29:59 UTC 2018 - dimstar@opensuse.org
 
 - Modernize spec-file by calling spec-cleaner

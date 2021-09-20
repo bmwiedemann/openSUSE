@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 08:23:41 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_fcoe.service.patch
+
+-------------------------------------------------------------------
 Thu Mar 25 17:09:14 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Update to version 1.0.34 (fixing bsc#1182804), which replaces the

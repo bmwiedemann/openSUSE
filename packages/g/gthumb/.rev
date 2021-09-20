@@ -875,4 +875,13 @@
     - Lots of others small fixes. (forwarded request 920243 from polslinux)</comment>
     <requestid>920248</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>91d1a659f6664b476826afcd589c1893</srcmd5>
+    <version>3.12.0</version>
+    <time>1632251580</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920421 from sbrabec)</comment>
+    <requestid>920552</requestid>
+  </revision>
 </revisionlist>

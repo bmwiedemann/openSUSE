@@ -37,6 +37,7 @@ Summary:        FCoE userspace management tools
 License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
+Patch0:	harden_fcoe.service.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -47,6 +48,7 @@ connections.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -vi

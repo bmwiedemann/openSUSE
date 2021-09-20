@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Sat Aug 28 13:35:59 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- merge java bindings in GObject development package
+
+-------------------------------------------------------------------
+Mon Jun 28 21:08:48 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- remove soname from gobject devel package
+
+-------------------------------------------------------------------
+Sat Jun  5 12:18:21 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- split typelib into separate package
+
+-------------------------------------------------------------------
+Wed May 19 20:38:34 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim description to be on point for openSUSE.
+
+-------------------------------------------------------------------
+Tue May 18 18:06:21 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- initial packaging of version 1.0.9

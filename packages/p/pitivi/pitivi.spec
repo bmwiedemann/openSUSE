@@ -36,7 +36,6 @@ BuildRequires:  python3-cairo-devel
 BuildRequires:  python3-gobject
 BuildRequires:  python3-nose
 BuildRequires:  shared-mime-info
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gst-validate-1.0) >= 1.12.2
 BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.14.1
 BuildRequires:  pkgconfig(gstreamer-transcoder-1.0)
@@ -71,7 +70,6 @@ sed -i -e '1s!/usr/bin/env !/usr/bin/!' bin/pitivi.in
 
 # Remove bunlded gst-transcoder
 rm -rf subprojects/gst-transcoder
-translation-update-upstream
 
 %build
 %meson -Denable-docs=true

@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           buildah
-Version:        1.22.3
+Version:        1.23.0
 Release:        0
 Summary:        Tool for building OCI containers
 License:        Apache-2.0
@@ -48,7 +48,7 @@ Requires:       cni
 Requires:       libcontainers-common
 Requires:       libcontainers-image
 Requires:       libcontainers-storage
-Requires:       runc >= 1.0.1
+Requires:       runc >= 1.0.2
 Requires:       slirp4netns
 %{go_nostrip}
 %if 0%{?with_libostree}

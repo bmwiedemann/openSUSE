@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>905550</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>06ad9a6823b02e4fc6147c9ef74109ce</srcmd5>
+    <version>9.0.0</version>
+    <time>1632251602</time>
+    <user>dimstar_suse</user>
+    <comment>- Silence rpmlint2: devel-file-in-non-devel-package</comment>
+    <requestid>920638</requestid>
+  </revision>
 </revisionlist>

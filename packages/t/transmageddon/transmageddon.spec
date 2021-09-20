@@ -1,7 +1,7 @@
 #
 # spec file for package transmageddon
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2010 Dominique Leuenberger, Amsterdam, Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -34,7 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool >= 0.40.0
 BuildRequires:  python3
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 Requires:       gstreamer-plugins-base >= 1.2.0
 Requires:       python3
@@ -58,7 +57,6 @@ having to resort to command line tools with ungainly syntaxes.
 %setup -q
 %patch0 -p1
 %patch1 -p1
-translation-update-upstream
 
 %build
 %configure

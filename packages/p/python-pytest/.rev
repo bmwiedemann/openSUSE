@@ -944,4 +944,14 @@
     <comment></comment>
     <requestid>893085</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>19ad38187302953db0c533c14ea86ab3</srcmd5>
+    <version>6.2.5</version>
+    <time>1632251540</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.2.5
+ * Python 3.10 is now supported.
+ *  Enable compatibility with pluggy 1.0 or later.</comment>
+    <requestid>920178</requestid>
+  </revision>
 </revisionlist>

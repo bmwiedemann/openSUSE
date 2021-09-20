@@ -16,15 +16,6 @@
 #
 
 
-%if 0%{?suse_version} >= 1550
-%define clang_version %{nil}
-%endif
-%if 0%{?sle_version} >= 150300
-%define clang_version 11
-%endif
-%if 0%{?sle_version} == 150200
-%define clang_version 9
-%endif
 %define rname chromium
 # bsc#1108175
 %define __provides_exclude ^lib.*\\.so.*$
@@ -42,6 +33,11 @@
 %bcond_with system_harfbuzz
 %bcond_with pipewire
 %endif
+%if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150300
+%bcond_without system_ffmpeg
+%else
+%bcond_with system_ffmpeg
+%endif
 %ifarch %{arm} aarch64
 %bcond_with swiftshader
 %else
@@ -50,7 +46,7 @@
 %bcond_with lto
 %bcond_without clang
 Name:           chromium
-Version:        92.0.4515.159
+Version:        93.0.4577.82
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -60,11 +56,10 @@ Source1:        README.SUSE
 Source2:        https://github.com/google/highway/archive/refs/tags/0.12.2.tar.gz#/highway-0.12.2.tar.gz
 # Toolchain definitions
 Source30:       master_preferences
-Source100:      chromium-browser.sh
-Source101:      chromium-browser.desktop
-Source102:      chromium-browser.xml
-Source103:      chromium.default
 Source104:      chromium-symbolic.svg
+# https://github.com/chromium/chromium/tree/%{version}/chrome/installer/linux/common/installer.include
+Source105:      INSTALL.sh
+#
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
 Patch1:         exclude_ymp.patch
@@ -93,19 +88,26 @@ Patch20:        chromium-86-f_seal.patch
 Patch21:        chromium-gcc11.patch
 Patch23:        chromium-glibc-2.33.patch
 Patch25:        chromium-90-fseal.patch
-Patch29:        chromium-92-EnumTable-crash.patch
+Patch29:        chromium-93-EnumTable-crash.patch
 Patch30:        chromium-shim_headers.patch
 Patch31:        chromium-89-missing-cstring-header.patch
-Patch33:        chromium-88-gcc-fix-swiftshader-libEGL-visibility.patch
 Patch36:        chromium-90-ruy-include.patch
 Patch40:        chromium-91-java-only-allowed-in-android-builds.patch
 Patch44:        chromium-91-libyuv-aarch64.patch
 Patch46:        chromium-91-sql-standard-layout-type.patch
-Patch47:        chromium-92-v8-constexpr.patch
 Patch49:        chromium-freetype-2.11.patch
 Patch50:        chromium-clang-nomerge.patch
 Patch51:        chromium-glibc-2.34.patch
-Patch52:        chromium-no-writeprotection.patch
+Patch53:        chromium-93-ContextSet-permissive.patch
+Patch54:        chromium-93-ClassProperty-include.patch
+Patch55:        chromium-93-BluetoothLowEnergyScanFilter-include.patch
+Patch56:        chromium-93-HashPasswordManager-include.patch
+Patch57:        chromium-93-pdfium-include.patch
+Patch58:        chromium-93-DevToolsEmbedderMessageDispatcher-include.patch
+Patch59:        chromium-93-FormForest-constexpr.patch
+Patch60:        chromium-93-ScopedTestDialogAutoConfirm-include.patch
+Patch61:        chromium-93-InkDropHost-crash.patch
+Patch62:        chromium-93-ffmpeg-4.4.patch
 # Google seem not too keen on merging this but GPU accel is quite important
 #  https://chromium-review.googlesource.com/c/chromium/src/+/532294
 #  https://github.com/saiarcot895/chromium-ubuntu-build/tree/master/debian/patches
@@ -141,8 +143,8 @@ BuildRequires:  nodejs >= 8.0
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python
-BuildRequires:  python-xml
-BuildRequires:  python2-setuptools
+BuildRequires:  python3
+BuildRequires:  python3-setuptools
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  util-linux
@@ -194,7 +196,7 @@ BuildRequires:  pkgconfig(nss) >= 3.26
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus) >= 1.3.1
-BuildRequires:  pkgconfig(python)
+BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(re2)
 BuildRequires:  pkgconfig(schroedinger-1.0)
 BuildRequires:  pkgconfig(slang)
@@ -223,7 +225,6 @@ BuildRequires:  pkgconfig(xshmfence)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(zlib)
-Requires:       hicolor-icon-theme
 Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
@@ -261,9 +262,9 @@ BuildRequires:  pkgconfig(icu-i18n) >= 67.0
 BuildRequires:  pkgconfig(vpx) >= 1.8.2
 %endif
 %if %{with clang}
-BuildRequires:  clang%{clang_version}
-BuildRequires:  lld%{clang_version}
-BuildRequires:  llvm%{clang_version}
+BuildRequires:  clang
+BuildRequires:  lld
+BuildRequires:  llvm
 %else
 BuildRequires:  binutils-gold
 %if %{?suse_version} > 1500
@@ -305,6 +306,12 @@ ln -s %{_bindir}/node third_party/node/linux/node-linux-x64/bin/node
 rm buildtools/third_party/eu-strip/bin/eu-strip
 ln -s %{_bindir}/eu-strip buildtools/third_party/eu-strip/bin/eu-strip
 
+# python3
+mkdir $HOME/bin
+export PYTHON=python3
+ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
+export PATH="$HOME/bin/:$PATH"
+
 # Remove bundled libs
 keeplibs=(
     base/third_party/cityhash
@@ -332,7 +339,6 @@ keeplibs=(
     third_party/angle/src/common/third_party/base
     third_party/angle/src/common/third_party/smhasher
     third_party/angle/src/common/third_party/xxhash
-    third_party/angle/src/third_party/compiler
     third_party/angle/src/third_party/libXNVCtrl
     third_party/angle/src/third_party/trace_event
     third_party/angle/src/third_party/volk
@@ -348,6 +354,7 @@ keeplibs=(
     third_party/catapult/common/py_vulcanize/third_party/rcssmin
     third_party/catapult/common/py_vulcanize/third_party/rjsmin
     third_party/catapult/third_party/beautifulsoup4
+    third_party/catapult/third_party/html5lib-1.1/
     third_party/catapult/third_party/html5lib-python
     third_party/catapult/third_party/polymer
     third_party/catapult/third_party/six
@@ -521,7 +528,6 @@ keeplibs=(
     third_party/xcbproto
     third_party/zlib/google
     third_party/zxcvbn-cpp
-    tools/grit/third_party/six
     url/third_party/mozilla
     v8/src/third_party/siphash
     v8/src/third_party/utf8-decoder
@@ -537,6 +543,9 @@ keeplibs+=(
 %endif
 %if !%{with system_icu}
 keeplibs+=( third_party/icu )
+%endif
+%if !%{with system_ffmpeg}
+keeplibs+=( third_party/ffmpeg )
 %endif
 %if !%{with system_vpx}
 keeplibs+=(
@@ -563,7 +572,6 @@ export NM=llvm-nm
 export AR=ar
 export NM=nm
 %if 0%{?suse_version} <= 1500
-mkdir -p "$HOME/bin/"
 export CC=gcc-10
 export CXX=g++-10
 # some still call gcc/g++
@@ -623,7 +631,6 @@ export LDFLAGS="-flto=$_link_threads --param lto-max-streaming-parallelism=1"
 
 # Set system libraries to be used
 gn_system_libraries=(
-    ffmpeg
     flac
     fontconfig
     libdrm
@@ -650,6 +657,9 @@ gn_system_libraries+=( icu )
 %endif
 %if %{with system_vpx}
 gn_system_libraries+=( libvpx )
+%endif
+%if %{with system_ffmpeg}
+gn_system_libraries+=( ffmpeg )
 %endif
 build/linux/unbundle/replace_gn_files.py --system-libraries ${gn_system_libraries[@]}
 
@@ -697,6 +707,8 @@ myconf_gn+=" enable_widevine=true"
 myconf_gn+=" use_dbus=true"
 myconf_gn+=" media_use_openh264=false"
 myconf_gn+=" rtc_use_h264=false"
+myconf_gn+=" use_v8_context_snapshot=true"
+myconf_gn+=" v8_use_external_startup_data=true"
 # See dependency logic in third_party/BUILD.gn
 %if %{with system_harfbuzz}
 myconf_gn+=" use_system_harfbuzz=true"
@@ -751,77 +763,25 @@ export PYTHONPATH="$PWD/xcb-proto-1.14${PYTHONPATH+:}${PYTHONPATH}"
 ninja -v %{?_smp_mflags} -C out/Release chrome chromedriver
 
 %install
-mkdir -p %{buildroot}%{_libdir}/chromium
-mkdir -p %{buildroot}%{_prefix}/lib/
-mkdir -p %{buildroot}%{_bindir}
-install -m 755 %{SOURCE100} %{buildroot}%{_bindir}/chromium
-
-# x86_64 capable systems need this
-sed -i "s|%{_prefix}/lib/chromium|%{_libdir}/chromium|g" %{buildroot}%{_bindir}/chromium
-
-mkdir -p %{buildroot}%{_mandir}/man1/
-pushd out/Release
-
-# Install the file %{_sysconfdir}/default/chromium which defines the chromium flags
-mkdir -p %{buildroot}%{_sysconfdir}/default
-install -m 644 %{SOURCE103} %{buildroot}%{_sysconfdir}/default/chromium
-
-cp -a *.bin *.pak locales %{buildroot}%{_libdir}/chromium/
-
-# This is ANGLE, not to be confused with the similarly named files under swiftshader/
-cp -a libEGL.so* libGLESv2.so* %{buildroot}%{_libdir}/chromium/
-rm %{buildroot}%{_libdir}/chromium/*.so.TOC
-
-%if !%{with system_icu}
-cp -a icudtl.dat %{buildroot}%{_libdir}/chromium/
-%endif
-
-%if %{with swiftshader}
-# general folder for these is swiftshader bsc#1176450
-mkdir -p %{buildroot}%{_libdir}/chromium/swiftshader
-cp -a swiftshader/*.so %{buildroot}%{_libdir}/chromium/swiftshader/
-%endif
-
+export OUTPUTDIR="out/Release"
+bash %{SOURCE105} -s %{buildroot} -l %{_libdir} %{!?with_system_icu:-i true}
 # chromedriver
-cp -a chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver
+cp -a ${OUTPUTDIR}/chromedriver.unstripped %{buildroot}%{_libdir}/chromium/chromedriver
 ln -s %{_libdir}/chromium/chromedriver %{buildroot}%{_bindir}/chromedriver
-
-cp -a crashpad_handler %{buildroot}%{_libdir}/chromium/crashpad_handler
-
-cp -a resources.pak %{buildroot}%{_libdir}/chromium/
-cp -a chrome %{buildroot}%{_libdir}/chromium/chromium
-popd
-
-install -Dm 0644 chrome/app/theme/chromium/product_logo_256.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_128.png %{buildroot}%{_datadir}/icons/hicolor/128x128/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_64.png %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_48.png %{buildroot}%{_datadir}/icons/hicolor/48x48/apps/chromium-browser.png
-install -Dm 0644 chrome/app/theme/chromium/product_logo_24.png %{buildroot}%{_datadir}/icons/hicolor/24x24/apps/chromium-browser.png
-install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser-symbolic.svg
-
-mkdir -p %{buildroot}%{_datadir}/applications/
-desktop-file-install --dir %{buildroot}%{_datadir}/applications %{SOURCE101}
-
-install -D -m0644 chrome/installer/linux/common/chromium-browser/chromium-browser.appdata.xml %{buildroot}%{_datadir}/metainfo/chromium-browser.appdata.xml
-
-mkdir -p %{buildroot}%{_datadir}/gnome-control-center/default-apps/
-cp -a %{SOURCE102} %{buildroot}%{_datadir}/gnome-control-center/default-apps/
-
 # link to browser plugin path.  Plugin patch doesn't work. Why?
 mkdir -p %{buildroot}%{_libdir}/browser-plugins
-pushd %{buildroot}%{_libdir}/chromium
 ln -s %{_libdir}/browser-plugins %{buildroot}%{_libdir}/chromium/plugins
-popd
-
 # Install the master_preferences file
 mkdir -p %{buildroot}%{_sysconfdir}/chromium
 install -m 0644 %{SOURCE30} %{buildroot}%{_sysconfdir}/chromium
-
-# install manpages
-mkdir -p %{buildroot}%{_mandir}/man1/
-cp -a chrome/app/resources/manpage.1.in %{buildroot}%{_mandir}/man1/chromium.1
-sed -i "s|@@PACKAGE@@|chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
-sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
+# Compat link
+ln -s %{_bindir}/chromium-browser %{buildroot}%{_bindir}/chromium
+# Policy dirs
+mkdir -p %{buildroot}%{_sysconfdir}/chromium/policies
+mkdir %{buildroot}%{_sysconfdir}/chromium/policies/managed
+mkdir %{buildroot}%{_sysconfdir}/chromium/policies/recommended
+# SVG
+install -Dm 0644 %{SOURCE104} %{buildroot}%{_datadir}/icons/hicolor/symbolic/apps/chromium-browser.svg
 
 %fdupes -s %{buildroot}
 
@@ -829,17 +789,14 @@ sed -i "s|@@MENUNAME@@|Chromium|g" %{buildroot}%{_mandir}/man1/chromium.1
 %license LICENSE
 %doc AUTHORS
 %config %{_sysconfdir}/chromium
-%config(noreplace) %{_sysconfdir}/default/chromium
-%dir %{_datadir}/gnome-control-center
-%dir %{_datadir}/gnome-control-center/default-apps
-%{_datadir}/gnome-control-center/default-apps/chromium-browser.xml
 %{_libdir}/chromium
 %{_datadir}/applications/*.desktop
 %{_datadir}/metainfo/chromium-browser.appdata.xml
 %{_datadir}/icons/hicolor
 %exclude %{_libdir}/chromium/chromedriver
+%{_bindir}/chromium-browser
 %{_bindir}/chromium
-%{_mandir}/man1/chromium.1%{?ext_man}
+%{_mandir}/man1/chromium-browser.1%{?ext_man}
 
 %files -n chromedriver
 %{_libdir}/chromium/chromedriver

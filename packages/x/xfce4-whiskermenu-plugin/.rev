@@ -460,4 +460,12 @@
   * Translation updates</comment>
     <requestid>866793</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b9414fd5ea410f2df9033406d9c9c958</srcmd5>
+    <version>2.6.0</version>
+    <time>1632251569</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920475</requestid>
+  </revision>
 </revisionlist>

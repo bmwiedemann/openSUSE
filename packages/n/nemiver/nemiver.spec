@@ -1,7 +1,7 @@
 #
 # spec file for package nemiver
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -34,7 +34,6 @@ BuildRequires:  intltool
 BuildRequires:  libgtop-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gdlmm-3.0) >= 3.0
@@ -77,8 +76,6 @@ This package contains the development files to build debugger backend.
 %prep
 %setup -q
 %patch0 -p1
-# Disabled from ver 0.9.6, it breaks the build.
-#translation-update-upstream
 
 %build
 %if 0%{?scm_bootstrap}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 21 16:13:16 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1632228188.ad82e8315:
+  * Makefile: Add retries for current instabilities of t/full-stack.t
+  * Worker.pm: Print pool directory on error
+  * Add OPENQA_HOSTNAME to the job settings
+  * Make clear 'Module' field in test overview page
+  * Mark non-existing asset as such in the downloads tab
+  * Cover missing lines in function for module result upload
+  * Cover `OpenQA::Worker::Job::settings`
+  * Additions to apparmor profiles
+
+-------------------------------------------------------------------
 Sun Sep 19 08:03:17 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631887122.a5fe7e20c:

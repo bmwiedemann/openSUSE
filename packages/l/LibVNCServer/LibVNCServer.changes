@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 17 07:14:46 UTC 2021 - pgajdos@suse.com
+
+- purposedly adding just this changelog entry
+- previous version updates fixed also:
+  * CVE-2020-14398 [bsc#1173880] -- improperly closed TCP connection causes an infinite loop in libvncclient/sockets.c
+  * CVE-2017-18922 [bsc#1173477] -- preauth buffer overwrite
+  * CVE-2018-20748 [bsc#1123823] -- libvnc contains multiple heap out-of-bounds writes
+  * CVE-2020-25708 [bsc#1178682] -- libvncserver/rfbserver.c has a divide by zero which could result in DoS
+  * CVE-2018-21247 [bsc#1173874] -- uninitialized memory contents are vulnerable to Information leak
+  * CVE-2018-20750 [bsc#1123832] -- heap out-of-bounds write vulnerability in libvncserver/rfbserver.c
+  * CVE-2020-14397 [bsc#1173700] -- NULL pointer dereference in libvncserver/rfbregion.c
+  * CVE-2019-20839 [bsc#1173875] -- buffer overflow in ConnectClientToUnixSock()
+  * CVE-2020-14401 [bsc#1173694] -- potential integer overflows in libvncserver/scale.c
+  * CVE-2020-14400 [bsc#1173691] -- Byte-aligned data is accessed through uint16_t pointers in libvncserver/translate.c.
+  * CVE-2019-20840 [bsc#1173876] -- unaligned accesses in hybiReadAndDecode can lead to denial of service
+  * CVE-2020-14399 [bsc#1173743] -- Byte-aligned data is accessed through uint32_t pointers in libvncclient/rfbproto.c.
+  * CVE-2020-14402 [bsc#1173701] -- out-of-bounds access via encodings.
+  * CVE-2020-14403 [bsc#1173701]
+  * CVE-2020-14404 [bsc#1173701]
+
+-------------------------------------------------------------------
 Fri Jan  8 15:07:43 UTC 2021 - Frederic Crozat <fcrozat@suse.com>
 
 - Add many patches needed for GNOME Remote desktop (already in

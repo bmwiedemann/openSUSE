@@ -257,4 +257,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>920201</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>f28d9b90f6ebd96c29b4c4819b5d008b</srcmd5>
+    <version>1.1.0</version>
+    <time>1632251573</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix totally broken python support, set the correct python3
+  interpreter, otherwise it defaults to python, which in our case
+  is python 2.7. (changed kill-env.diff, spec) (forwarded request 920465 from elvigia)</comment>
+    <requestid>920539</requestid>
+  </revision>
 </revisionlist>

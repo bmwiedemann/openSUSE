@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 19:54:27 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Feb  3 12:58:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Rename package goocanvas2, new compat package as upstream moved

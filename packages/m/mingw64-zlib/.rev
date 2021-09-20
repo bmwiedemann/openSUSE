@@ -7,4 +7,12 @@
     <comment>new package for win64 cross compilation</comment>
     <requestid>749676</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>87276b956df63578a2ce03aa37526210</srcmd5>
+    <version>1.2.11</version>
+    <time>1632251575</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>920535</requestid>
+  </revision>
 </revisionlist>

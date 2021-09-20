@@ -29,7 +29,6 @@ Source1:        eog-plugins.SUSE
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python3 >= 3.2
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.9.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(eog) >= 3.11.4
@@ -179,7 +178,6 @@ The Eye of Gnome Slideshow Shuffle plugin
 %prep
 %setup -q
 install -m 644 %{SOURCE1} .
-translation-update-upstream
 
 %build
 %configure \

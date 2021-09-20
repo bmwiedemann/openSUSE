@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 17:31:09 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Sun Feb 14 19:42:44 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add libgda-6.patch: support GDA 6

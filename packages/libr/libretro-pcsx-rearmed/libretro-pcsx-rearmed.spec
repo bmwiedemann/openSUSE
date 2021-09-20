@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-pcsx-rearmed
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,15 @@
 
 
 Name:           libretro-pcsx-rearmed
-Version:        0~git20200805
+Version:        0~git20210825
 Release:        0
 Summary:        ARM optimized PCSX core for PlayStation emulation
 License:        GPL-2.0-only
 URL:            http://www.retroarch.com
 Source:         %{name}-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
+# stdatomic.h
+BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  make
 
 Provides:       libretro-pcsx_rearmed = %{version}

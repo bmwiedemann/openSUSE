@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 18 07:24:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.59:
+  * HTTP/2 enabled by default
+  * mod_deflate zstd suppport
+  * new mod_ajp13
+
+-------------------------------------------------------------------
 Mon Dec 28 10:47:41 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.58: 

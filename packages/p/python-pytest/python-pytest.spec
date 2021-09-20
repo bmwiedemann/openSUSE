@@ -1,5 +1,5 @@
 #
-# spec file for package python-pytest%{psuffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -27,7 +27,7 @@
 %endif
 %define skip_python2 1
 Name:           python-pytest%{psuffix}
-Version:        6.2.4
+Version:        6.2.5
 Release:        0
 Summary:        Simple powerful testing with Python
 License:        MIT
@@ -59,7 +59,6 @@ BuildRequires:  %{python_module hypothesis >= 3.56}
 # nose is really not REQUIRED, the test suite skips over particular
 # tests, when the package is not available.
 # BuildRequires:  %%{python_module nose}
-BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 BuildRequires:  %{python_module pexpect}
 BuildRequires:  %{python_module pygments-pytest}
 BuildRequires:  %{python_module pytest >= %{version}}
@@ -67,6 +66,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xmlschema}
 BuildRequires:  lsof
+BuildRequires:  %{python_module numpy if (%python-base without python36-base)}
 %endif
 %if %{?python_version_nodots} < 36
 Requires:       python-pathlib2 >= 2.2.0

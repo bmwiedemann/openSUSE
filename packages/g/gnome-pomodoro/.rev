@@ -219,4 +219,19 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
     <comment>Support gnome-shell &lt; 41</comment>
     <requestid>885422</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c65588ee2f0d5dc9b8b50afe56232077</srcmd5>
+    <version>0.19.2</version>
+    <time>1632251575</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.19.2:
+  * Fix dialog animation braking ScreenShield
+  * Cleanup deprecated code 
+  * Fix blur effect artifacts 
+  * Dont wake up the screen after screensaver
+  * Fix possible recursion during blinking animation
+  * Workaround choppy blur effect animation in gnome-shell 3.38
+  * Fix indicator opacity after lock screen (forwarded request 920337 from jubalh)</comment>
+    <requestid>920542</requestid>
+  </revision>
 </revisionlist>

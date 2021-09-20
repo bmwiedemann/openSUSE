@@ -1486,4 +1486,14 @@ distutils.spawn. [bsc#1109663, CVE-2018-1000802]</comment>
     <comment></comment>
     <requestid>914454</requestid>
   </revision>
+  <revision rev="157" vrev="8">
+    <srcmd5>785f013102b9b54904a2ab304d379807</srcmd5>
+    <version>2.7.18</version>
+    <time>1632251536</time>
+    <user>dimstar_suse</user>
+    <comment>    addressing CVE-2019-18348 (bpo#38576, bsc#1155094). Such
+    potentially malicious header injection URLs now cause
+    InvalidURL to be raised.</comment>
+    <requestid>919877</requestid>
+  </revision>
 </revisionlist>

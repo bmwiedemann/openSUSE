@@ -1,7 +1,7 @@
 #
 # spec file for package accerciser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  gobject-introspection
 BuildRequires:  pkgconfig
 # py3atspi is a virtual name that is provided by the default at-spi stack
 BuildRequires:  py3atspi
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(atspi-2) >= 2.5.2
@@ -71,7 +70,6 @@ This package provides the IPython console widget
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

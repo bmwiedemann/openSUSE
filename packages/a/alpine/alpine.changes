@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 19 12:26:48 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.25
+  * New configuration variable VAR_ssl-ciphers that allows users
+    to list the ciphers to use when connecting to a SSL
+    server.
+  * New hidden feature FEAT_enable-delete-before-writing to add
+    support for terminals that need lines to be deleted before
+    being written.
+  * Always follow ‘suppress-asterisks-in-password-prompt’ setting
+    in the various password prompts.
+  * Fixed a memory corruption when alpine searches for a string
+    that is an incomplete utf8 string in a local folder.
+  * Fixed: When forwarding a message, replacing an attachment
+    might make Alpine re-attach the original attachment.
+
+-------------------------------------------------------------------
 Tue May 25 11:44:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add chappa-DelText.patch [boo#1182236]

@@ -1,0 +1,44 @@
+Index: requirements-parser-0.2.0/tests/test_parser.py
+===================================================================
+--- requirements-parser-0.2.0.orig/tests/test_parser.py
++++ requirements-parser-0.2.0/tests/test_parser.py
+@@ -1,6 +1,6 @@
+ import os
+ import json
+-from nose.tools import raises, assert_equal
++from pytest import raises
+ import warnings
+ 
+ from requirements import parse
+@@ -32,17 +32,17 @@ def test_requirement_files():
+             return f
+ 
+         @fancy
+-        @raises(ValueError)
+         def check_fail(s):
+             with warnings.catch_warnings():
+                 warnings.simplefilter("ignore")
+-                list([dict(r) for r in parse(s)])
++                with raises(ValueError):
++                    list([dict(r) for r in parse(s)])
+ 
+         @fancy
+         def check(s, expected):
+             with warnings.catch_warnings():
+                 warnings.simplefilter("ignore")
+-                assert_equal(listify(dict(r) for r in parse(s)), expected)
++                assert listify(dict(r) for r in parse(s)) == expected
+ 
+         fp = os.path.join(REQFILE_DIR, fn)
+ 
+@@ -51,8 +51,8 @@ def test_requirement_files():
+             continue
+ 
+         if 'fail' in fn:
+-            yield check_fail, open(fp)
++            check_fail(open(fp))
+         else:
+             with open(fp[:-4] + '.expected', 'r') as f2:
+                 expected = json.loads(f2.read())
+-                yield check, open(fp), expected
++                check(open(fp), expected)

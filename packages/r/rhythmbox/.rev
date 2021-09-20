@@ -764,4 +764,13 @@
     <comment>- Disable zeitgeist plugin: zeitgeist is no longer maintained. (forwarded request 834602 from dimstar)</comment>
     <requestid>834884</requestid>
   </revision>
+  <revision rev="99" vrev="4">
+    <srcmd5>7bb40f7af70040232ac9ac528494ec4f</srcmd5>
+    <version>3.4.4</version>
+    <time>1632251583</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920439 from sbrabec)</comment>
+    <requestid>920558</requestid>
+  </revision>
 </revisionlist>

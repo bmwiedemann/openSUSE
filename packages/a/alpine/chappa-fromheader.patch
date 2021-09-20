@@ -1,6 +1,6 @@
-diff -rc alpine-2.24/alpine/send.c alpine-2.24.fromheader/alpine/send.c
-*** alpine-2.24/alpine/send.c	2020-10-10 00:24:28.212554806 -0600
---- alpine-2.24.fromheader/alpine/send.c	2020-10-10 00:26:58.004372183 -0600
+diff -rc alpine-2.25/alpine/send.c alpine-2.25.fromheader/alpine/send.c
+*** alpine-2.25/alpine/send.c	2021-09-18 09:02:36.350783312 -0600
+--- alpine-2.25.fromheader/alpine/send.c	2021-09-18 09:03:16.987063842 -0600
 ***************
 *** 908,914 ****
      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, KS_NONE},
@@ -51,12 +51,12 @@ diff -rc alpine-2.24/alpine/send.c alpine-2.24.fromheader/alpine/send.c
   
   	/*
   	 * Don't ever believe the sender that is there.
-diff -rc alpine-2.24/pith/conf.c alpine-2.24.fromheader/pith/conf.c
-*** alpine-2.24/pith/conf.c	2020-10-10 00:24:28.204554602 -0600
---- alpine-2.24.fromheader/pith/conf.c	2020-10-10 00:26:58.004372183 -0600
+diff -rc alpine-2.25/pith/conf.c alpine-2.25.fromheader/pith/conf.c
+*** alpine-2.25/pith/conf.c	2021-09-18 09:02:36.390783589 -0600
+--- alpine-2.25.fromheader/pith/conf.c	2021-09-18 09:03:16.991063870 -0600
 ***************
-*** 2984,2989 ****
---- 2984,2991 ----
+*** 2989,2994 ****
+--- 2989,2996 ----
   	 F_NO_FCC_ATTACH, h_config_no_fcc_attach, PREF_SEND, 0},
   	{"fcc-on-bounce", "Include Fcc When Bouncing Messages",
   	 F_FCC_ON_BOUNCE, h_config_fcc_on_bounce, PREF_SEND, 0},
@@ -65,12 +65,12 @@ diff -rc alpine-2.24/pith/conf.c alpine-2.24.fromheader/pith/conf.c
   	{"mark-fcc-seen", NULL,
   	 F_MARK_FCC_SEEN, h_config_mark_fcc_seen, PREF_SEND, 0},
   	{"fcc-only-without-confirm", "Send to Fcc Only Without Confirming",
-diff -rc alpine-2.24/pith/conftype.h alpine-2.24.fromheader/pith/conftype.h
-*** alpine-2.24/pith/conftype.h	2020-10-10 00:24:28.204554602 -0600
---- alpine-2.24.fromheader/pith/conftype.h	2020-10-10 00:26:58.004372183 -0600
+diff -rc alpine-2.25/pith/conftype.h alpine-2.25.fromheader/pith/conftype.h
+*** alpine-2.25/pith/conftype.h	2021-09-18 09:02:36.390783589 -0600
+--- alpine-2.25.fromheader/pith/conftype.h	2021-09-18 09:03:16.991063870 -0600
 ***************
-*** 410,415 ****
---- 410,416 ----
+*** 412,417 ****
+--- 412,418 ----
   	F_AUTO_REPLY_TO,
   	F_VERBOSE_POST,
   	F_FCC_ON_BOUNCE,
@@ -78,12 +78,12 @@ diff -rc alpine-2.24/pith/conftype.h alpine-2.24.fromheader/pith/conftype.h
   	F_SEND_WO_CONFIRM,
   	F_USE_SENDER_NOT_X,
   	F_BLANK_KEYMENU,
-diff -rc alpine-2.24/pith/pine.hlp alpine-2.24.fromheader/pith/pine.hlp
-*** alpine-2.24/pith/pine.hlp	2020-10-10 00:24:28.204554602 -0600
---- alpine-2.24.fromheader/pith/pine.hlp	2020-10-10 00:26:58.016372489 -0600
+diff -rc alpine-2.25/pith/pine.hlp alpine-2.25.fromheader/pith/pine.hlp
+*** alpine-2.25/pith/pine.hlp	2021-09-18 09:02:36.390783589 -0600
+--- alpine-2.25.fromheader/pith/pine.hlp	2021-09-18 09:03:17.047064257 -0600
 ***************
-*** 30135,30140 ****
---- 30135,30156 ----
+*** 30313,30318 ****
+--- 30313,30334 ----
   &lt;End of help on this topic&gt;
   </BODY>
   </HTML>
@@ -106,9 +106,9 @@ diff -rc alpine-2.24/pith/pine.hlp alpine-2.24.fromheader/pith/pine.hlp
   ====== h_config_use_sender_not_x =====
   <HTML>
   <HEAD>
-diff -rc alpine-2.24/pith/send.c alpine-2.24.fromheader/pith/send.c
-*** alpine-2.24/pith/send.c	2020-10-10 00:24:28.204554602 -0600
---- alpine-2.24.fromheader/pith/send.c	2020-10-10 00:26:58.016372489 -0600
+diff -rc alpine-2.25/pith/send.c alpine-2.25.fromheader/pith/send.c
+*** alpine-2.25/pith/send.c	2021-09-18 09:02:36.390783589 -0600
+--- alpine-2.25.fromheader/pith/send.c	2021-09-18 09:03:17.047064257 -0600
 ***************
 *** 53,59 ****
   /* name::type::canedit::writehdr::localcopy::rcptto */
@@ -143,9 +143,9 @@ diff -rc alpine-2.24/pith/send.c alpine-2.24.fromheader/pith/send.c
   	pf->rcptto      = pf_template[i].rcptto;
   	pf->writehdr    = pf_template[i].writehdr;
   	pf->localcopy   = pf_template[i].localcopy;
-diff -rc alpine-2.24/pith/send.h alpine-2.24.fromheader/pith/send.h
-*** alpine-2.24/pith/send.h	2020-10-10 00:24:28.204554602 -0600
---- alpine-2.24.fromheader/pith/send.h	2020-10-10 00:26:58.016372489 -0600
+diff -rc alpine-2.25/pith/send.h alpine-2.25.fromheader/pith/send.h
+*** alpine-2.25/pith/send.h	2021-09-18 09:02:36.390783589 -0600
+--- alpine-2.25.fromheader/pith/send.h	2021-09-18 09:03:17.087064532 -0600
 ***************
 *** 159,164 ****
 --- 159,166 ----

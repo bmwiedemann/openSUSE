@@ -1,7 +1,7 @@
 #
 # spec file for package rhythmbox
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,6 @@ BuildRequires:  gobject-introspection-devel >= 0.10.0
 BuildRequires:  intltool
 BuildRequires:  lirc-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  yelp-tools
@@ -88,7 +87,6 @@ This package contains the development requirements to extend rhythmbox.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 export MOZILLA_PLUGINDIR=%{_libdir}/browser-plugins

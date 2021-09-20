@@ -18,14 +18,14 @@
 
 %define libversion 79
 %define devversion 5
-%define devrelease 5.6
+%define devrelease 5.7
 # Beta does not mean "before release" but a release that is considered as beta:
 %define _version %{version}
 %define _name gwenhywfar
-%define releasenumber 364
+%define releasenumber 384
 %bcond_with configure
 Name:           gwenhywfar
-Version:        5.6.0
+Version:        5.7.2
 Release:        0
 Summary:        Multiplatform helper library for other libraries
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -194,6 +194,16 @@ some often needed functions (e.g. for handling and parsing of
 configuration files, reading/writing of XML files, interprocess
 communication etc).
 
+%package gwenbuild
+Summary:        Specific build system for the aqbanking universe
+License:        LGPL-2.1-or-later
+Group:          Development/Libraries/C and C++
+Requires:       %{name}-devel = %{version}
+
+%description gwenbuild
+Gwenbuild is a lightweight and fast build system tailored for the
+aqbanking universe.
+
 %lang_package
 
 %prep
@@ -304,5 +314,11 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/cmake/gwengui-qt5-%{devrelease}
 
 %files lang -f %{_name}.lang
+
+%files gwenbuild
+%dir %{_datadir}/gwenhywfar
+%{_datadir}/gwenhywfar/gwenbuild
+%{_datadir}/gwenbuild
+%{_bindir}/gwbuild
 
 %changelog

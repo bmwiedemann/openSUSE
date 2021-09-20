@@ -24,6 +24,8 @@ License:        GPL-3.0-or-later
 URL:            https://github.com/danmar/cppcheck
 Source:         https://github.com/danmar/cppcheck/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         fix-i586.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Fix-compilation-with-recent-glibc-where-SIGSTKSZ-is-.patch
 BuildRequires:  cmake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  gcc-c++

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 05:50:50 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Add rpmlintrc file to silence some rpmlint errors that make
+  the build fail.
+
+-------------------------------------------------------------------
 Sun May  5 15:02:38 UTC 2019 - ralf.habacker@freenet.de
 
 - migrate to cmake to support static library

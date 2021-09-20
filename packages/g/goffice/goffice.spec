@@ -29,7 +29,6 @@ BuildRequires:  ghostscript-devel >= 9.06
 BuildRequires:  intltool
 BuildRequires:  libgsf-devel >= 1.14.24
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(cairo-pdf) >= 1.10.0
 BuildRequires:  pkgconfig(cairo-ps) >= 1.10.0
@@ -100,7 +99,6 @@ goffice.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure \

@@ -43,6 +43,8 @@ Patch5:         gnome-packagekit-fix-not-responding-after-update.patch
 Patch6:         gnome-packagekit-bring-back-logout-support.patch
 # PATCH-FIX-UPSTREAM gnome-packagekit-define-HAVE_SYSTEMD.patch glgo#GNOME/gnome-packagekit!3, bsc#1134544 sckang@suse.com -- define HAVE_SYSTEMD macro if systemd if found.
 Patch7:         gnome-packagekit-define-HAVE_SYSTEMD.patch
+# PATCH-FIX-UPSTREAM gnome-packagekit-drop-NEWEST-on-get-updates.patch glgo#GNOME/gnome-packagekit!3, bsc#1190330 sckang@suse.com -- Don't use PK_FILTER_ENUM_NEWEST filter when getting updates
+Patch8:         gnome-packagekit-drop-NEWEST-on-get-updates.patch
 
 BuildRequires:  PackageKit-devel
 BuildRequires:  desktop-file-utils

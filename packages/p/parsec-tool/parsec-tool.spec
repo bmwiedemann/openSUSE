@@ -19,7 +19,7 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?systemd_ordering}
 Name:           parsec-tool
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Platform AbstRaction for SECurity
 License:        Apache-2.0
@@ -38,7 +38,7 @@ A tool to communicate with the Parsec service on the command-line.
 
 %prep
 %setup -qa1
-mkdir .cargo
+rm -rf .cargo && mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build

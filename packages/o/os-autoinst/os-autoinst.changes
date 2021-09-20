@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 21 16:26:05 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1632209573.6778e83a:
+  * mmapi: Allow for longer and more retries after observed failures
+  * Fix spelling for svirt xml file
+  * Add OPENQA_HOSTNAME to xml metadata
+
+-------------------------------------------------------------------
 Sun Sep 19 08:37:03 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1631879042.64c44cb2:

@@ -36,7 +36,6 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig
 # Disable python3-devel BR for now, not supported yet.
 #BuildRequires:  python3-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
 BuildRequires:  pkgconfig(gmodule-2.0) >= 2.38.0
@@ -132,16 +131,6 @@ Gnumeric is part of the GNOME project.
 
 %prep
 %autosetup -p1
-translation-update-upstream
-translation-update-upstream po-functions gnumeric-functions
-# remove incomplete translations caused by translation-update-upstream (global LINGUAS file, two domains)
-for LNG in po/*.po ; do
-    LNG=`basename ${LNG%%.po}`
-    if ! test -f po-functions/$LNG.po ; then
-        echo "Removing incomplete $LNG from LINGUAS."
-        sed -i "/^$LNG\$/d" po/LINGUAS
-    fi
-done
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

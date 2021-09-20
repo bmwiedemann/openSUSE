@@ -227,4 +227,13 @@
     <comment></comment>
     <requestid>906623</requestid>
   </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>80ecff29546b4562a36595c31ac8a995</srcmd5>
+    <version>3.26.1</version>
+    <time>1632251581</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920427 from sbrabec)</comment>
+    <requestid>920553</requestid>
+  </revision>
 </revisionlist>

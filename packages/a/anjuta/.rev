@@ -850,4 +850,13 @@
     <comment>Scripted push from GNOME:Next (forwarded request 894770 from dimstar)</comment>
     <requestid>894782</requestid>
   </revision>
+  <revision rev="115" vrev="4">
+    <srcmd5>71f301c45885d50bf53adcc36d4006cd</srcmd5>
+    <version>3.34.0</version>
+    <time>1632251585</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920391 from sbrabec)</comment>
+    <requestid>920564</requestid>
+  </revision>
 </revisionlist>

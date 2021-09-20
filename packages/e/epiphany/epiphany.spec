@@ -29,7 +29,6 @@ Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(cairo) >= 1.2
 BuildRequires:  pkgconfig(gcr-3) >= 3.5.5
@@ -98,7 +97,6 @@ search results from Web (epiphany)
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson \

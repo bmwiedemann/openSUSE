@@ -44,7 +44,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.35
+Version:        0.3.36
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,6 +53,10 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-media-session-dont-use-after-free-if-linking-node-removed.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0002-update-version-number-as-well.patch
 
 BuildRequires:  docutils
 BuildRequires:  doxygen

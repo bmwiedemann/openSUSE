@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 15:58:18 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
+
+- Added hardening to systemd service(s) (bsc#1181400)
+  * Added patch harden_fonehome.service.patch
+
+-------------------------------------------------------------------
 Tue Jun 22 17:35:12 UTC 2021 - Archie Cobbs <archie.cobbs@gmail.com>
 
 - Upgrade to version 1.2.1

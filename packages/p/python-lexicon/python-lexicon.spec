@@ -1,7 +1,7 @@
 #
 # spec file for package python-lexicon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-lexicon
-Version:        1.0.0
+Version:        2.0.1
 Release:        0
 Summary:        Python dict subclass(es) with aliasing and attribute access
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/bitprophet/lexicon
 Source:         https://files.pythonhosted.org/packages/source/l/lexicon/lexicon-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM: add_test_init.patch # fix execution of tests
-Patch0:         https://github.com/bitprophet/lexicon/pull/10.patch#/add_test_init.patch
+Patch0:         add-pytest-ini.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -35,8 +33,7 @@ Requires:       python-six
 Conflicts:      python-dns-lexicon
 BuildArch:      noarch
 # SECTION tests
-BuildRequires:  %{python_module six}
-BuildRequires:  %{python_module spec}
+BuildRequires:  %{python_module pytest-relaxed}
 # /SECTION tests
 %python_subpackages
 
@@ -49,7 +46,7 @@ Lexicon is a collection of dict subclasses:
 
 %prep
 %setup -q -n lexicon-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
@@ -59,10 +56,10 @@ Lexicon is a collection of dict subclasses:
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand spec-%{$python_bin_suffix}
+%pytest
 
 %files %{python_files}
-%doc README.md
+%doc README.rst
 %license LICENSE
 %{python_sitelib}/*
 

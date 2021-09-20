@@ -759,4 +759,12 @@ Bugfixes
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1189893</comment>
   </revision>
+  <revision rev="87" vrev="2">
+    <srcmd5>e2e26ac0292b3bcaa98760b496780441</srcmd5>
+    <version>3.3.1</version>
+    <time>1632251548</time>
+    <user>dimstar_suse</user>
+    <comment>Stage with libcontainers-common</comment>
+    <requestid>919693</requestid>
+  </revision>
 </revisionlist>

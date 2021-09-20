@@ -438,4 +438,12 @@
     <comment>- Add chappa-DelText.patch [boo#1182236]</comment>
     <requestid>895372</requestid>
   </revision>
+  <revision rev="54" vrev="24">
+    <srcmd5>d7227327a8feede2f612a9f21ba12e4a</srcmd5>
+    <version>unknown</version>
+    <time>1632251565</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.25</comment>
+    <requestid>920447</requestid>
+  </revision>
 </revisionlist>

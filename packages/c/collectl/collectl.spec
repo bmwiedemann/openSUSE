@@ -1,7 +1,7 @@
 #
 # spec file for package collectl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://collectl.sourceforge.net
 Source0:        http://sourceforge.net/projects/collectl/files/collectl/%{name}-%{version}/%{name}-%{version}.src.tar.gz
 Source1:        collectl.service
 Source2:        collectl.sysconfig
+Patch0:         harden_collectl.service.patch
 BuildRequires:  fdupes
 BuildRequires:  systemd-rpm-macros
 BuildArch:      noarch
@@ -48,6 +49,7 @@ information. It features:
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 

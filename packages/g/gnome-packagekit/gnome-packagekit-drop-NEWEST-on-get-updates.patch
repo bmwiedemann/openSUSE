@@ -1,0 +1,35 @@
+From 7346b97737ccf909380ad59917c5df01a0099ffa Mon Sep 17 00:00:00 2001
+From: Jonathan Kang <jonathankang@gnome.org>
+Date: Mon, 13 Sep 2021 13:55:50 +0800
+Subject: [PATCH] Don't use PK_FILTER_ENUM_NEWEST filter when getting updates
+
+Calling PackageKit's get-updates method returns the optimal updates.
+So a PK_FILTER_ENUM_NEWEST is not needed, and can cause some updates
+not shown.
+
+http://bugzilla.opensuse.org/show_bug.cgi?id=1190330
+---
+ src/gpk-update-viewer.c | 7 -------
+ 1 file changed, 7 deletions(-)
+
+diff --git a/src/gpk-update-viewer.c b/src/gpk-update-viewer.c
+index 16031d94..67e15f09 100644
+--- a/src/gpk-update-viewer.c
++++ b/src/gpk-update-viewer.c
+@@ -2423,13 +2423,6 @@ gpk_update_viewer_get_new_update_array (void)
+ 	text = g_strdup_printf ("<big><b>%s</b></big>", _("Checking for updates…"));
+ 	gtk_label_set_label (GTK_LABEL(widget), text);
+ 
+-	/* only show newest updates? */
+-	ret = g_settings_get_boolean (settings, GPK_SETTINGS_ONLY_NEWEST);
+-	if (ret) {
+-		g_debug ("only showing newest updates");
+-		filter = pk_bitfield_from_enums (PK_FILTER_ENUM_NEWEST, -1);
+-	}
+-
+ 	/* get new array */
+ 	pk_client_get_updates_async (PK_CLIENT(task), filter, cancellable,
+ 				     (PkProgressCallback) gpk_update_viewer_progress_cb, NULL,
+-- 
+2.31.1
+

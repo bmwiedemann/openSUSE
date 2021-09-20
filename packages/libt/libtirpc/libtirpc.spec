@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://sourceforge.net/projects/libtirpc/
 Source:         https://download.sourceforge.net/libtirpc/%{name}-%{version}.tar.bz2
 Source1:        baselibs.conf
+Patch1:         0001-Fix-DoS-vulnerability-in-libtirpc.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(krb5)
 
@@ -67,7 +68,7 @@ This implementation allows the support of other transports than UDP and
 TCP over IPv4.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 sed -i -e 's|${includedir}/tirpc|${includedir}|g' libtirpc.pc.in

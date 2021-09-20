@@ -27,4 +27,24 @@
     <comment>Remove superfluous devel dependency for noarch package</comment>
     <requestid>659473</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8f49c61a1cb9b028cafbf95af07e1030</srcmd5>
+    <version>2.0.1</version>
+    <time>1632251544</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.1:
+  * Fix up some project metadata.
+  * Dropped support for Python &lt;3.6
+  * Added a _version submodule and imported its dunder-attributes into
+    the top level module
+  * Migrated CI to CircleCI (from Travis)
+  * Migrated tests to pytest(-relaxed)
+  * Moved changelog to stub Sphinx project for Releases plugin
+  * Changed README to ReStructured Text (from Markdown) 
+- Dropped patch add_test_init.patch, no longer required.
+- Added patch add-pytest-ini.patch:
+  * Add the pytest.ini file that isn't included in the source distribution
+    so the testsuite works.</comment>
+    <requestid>919616</requestid>
+  </revision>
 </revisionlist>

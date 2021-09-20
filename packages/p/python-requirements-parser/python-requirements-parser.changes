@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 21 01:02:21 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add remove-nose.patch:
+  * Use pytest, rather than nose.
+
+-------------------------------------------------------------------
 Wed Apr 15 08:39:06 UTC 2020 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to not fail parsing requirements files with valid

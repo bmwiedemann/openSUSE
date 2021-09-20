@@ -35,4 +35,13 @@
   + Updated translations. (forwarded request 896972 from iznogood)</comment>
     <requestid>897163</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>43c4cf9ddee5cb3062c6fa021e185d34</srcmd5>
+    <version>1.12.2</version>
+    <time>1632251577</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920401 from sbrabec)</comment>
+    <requestid>920546</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,21 @@
+Index: e2fsprogs-1.46.3/scrub/e2scrub_reap.service.in
+===================================================================
+--- e2fsprogs-1.46.3.orig/scrub/e2scrub_reap.service.in
++++ e2fsprogs-1.46.3/scrub/e2scrub_reap.service.in
+@@ -11,6 +11,16 @@ PrivateNetwork=true
+ ProtectSystem=true
+ ProtectHome=read-only
+ PrivateTmp=yes
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ AmbientCapabilities=CAP_SYS_ADMIN CAP_SYS_RAWIO
+ NoNewPrivileges=yes
+ User=root

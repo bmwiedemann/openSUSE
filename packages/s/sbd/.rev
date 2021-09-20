@@ -459,4 +459,23 @@ the sources.</comment>
     <comment>-  Deprecated path &quot;/var/run/&quot; used in systemd-services (bsc#1185182)</comment>
     <requestid>890022</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f94ea7dfa200455b8b29659c596faced</srcmd5>
+    <version>1.5.0+20210720.f4ca41f</version>
+    <time>1632251561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0+20210720.f4ca41f:
+- sbd-inquisitor: Implement default delay start for diskless sbd (bsc#1189398)
+- sbd-inquisitor: Sanitize numeric arguments
+
+- Update to version 1.5.0+20210629.1c72cf2:
+- sbd-inquisitor: tolerate and strip any leading spaces of command line option values (bsc#1187547)
+- sbd-inquisitor: tell the actual watchdog device specified with `-w` (bsc#1187547)
+
+- Update to version 1.5.0+20210614.d7f447d (v1.5.0):
+- spec, configure.ac: default to resource-syncing with pacemaker
+
+- Deprecated path &quot;/var/run/&quot; used in systemd-services (bsc#1185182) (forwarded request 919505 from yan_gao)</comment>
+    <requestid>919506</requestid>
+  </revision>
 </revisionlist>

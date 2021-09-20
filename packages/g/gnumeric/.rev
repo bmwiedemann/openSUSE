@@ -1002,4 +1002,13 @@
     <comment> (forwarded request 899523 from iznogood)</comment>
     <requestid>899643</requestid>
   </revision>
+  <revision rev="124" vrev="2">
+    <srcmd5>b3f0e18416fc05a99815d014a5f71ee5</srcmd5>
+    <version>1.12.50</version>
+    <time>1632251578</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920416 from sbrabec)</comment>
+    <requestid>920549</requestid>
+  </revision>
 </revisionlist>

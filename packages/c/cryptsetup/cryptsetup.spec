@@ -16,14 +16,14 @@
 #
 
 
-%define tar_version 2.4.0
+%define tar_version 2.4.1
 %define so_ver 12
 %if 0%{?is_backports}
 Name:           cryptsetup2
 %else
 Name:           cryptsetup
 %endif
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        LGPL-2.0-or-later AND SUSE-GPL-2.0-with-openssl-exception

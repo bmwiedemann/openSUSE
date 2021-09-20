@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Sep 14 13:16:51 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Clean up spec file formatting
+
+-------------------------------------------------------------------
+Tue Aug 24 10:15:16 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Set CAP_NET_RAW capability to allow ICMP requests
+
+-------------------------------------------------------------------
+Tue Aug 17 14:04:35 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Initial package, version 0.19.0

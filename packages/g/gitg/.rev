@@ -466,4 +466,13 @@
     <comment>Push GNOME 3.38</comment>
     <requestid>847192</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>3b04547a5fe2901e4218e98e27de0fc0</srcmd5>
+    <version>3.32.1+312</version>
+    <time>1632251587</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920398 from sbrabec)</comment>
+    <requestid>920569</requestid>
+  </revision>
 </revisionlist>

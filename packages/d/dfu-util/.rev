@@ -7,4 +7,12 @@
     <comment>I want to maintain dfu-util in Factory</comment>
     <requestid>860269</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e697f8ea212f160432d2eeb77372a020</srcmd5>
+    <version>0.11</version>
+    <time>1632251605</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920660</requestid>
+  </revision>
 </revisionlist>

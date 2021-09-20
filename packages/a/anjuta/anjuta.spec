@@ -33,6 +33,7 @@ BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc-c++
+BuildRequires:  gnome-common
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  intltool
 BuildRequires:  libapr-util1-devel
@@ -43,10 +44,8 @@ BuildRequires:  perl-gettext
 BuildRequires:  pkgconfig
 BuildRequires:  sqlite3-devel
 BuildRequires:  subversion-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala
 BuildRequires:  yelp-tools
-BuildRequires:  gnome-common
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.0.0
 BuildRequires:  pkgconfig(gdl-3.0) >= 3.5.5
 BuildRequires:  pkgconfig(gladeui-2.0) >= 3.12.0
@@ -129,7 +128,6 @@ GNOME desktop.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 export AUTOPOINT='intltoolize --automake --copy'

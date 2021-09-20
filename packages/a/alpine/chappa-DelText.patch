@@ -4,10 +4,10 @@
  pico/search.c |    8 ++++++--
  3 files changed, 57 insertions(+), 2 deletions(-)
 
-Index: alpine-2.24/pico/basic.c
+Index: alpine-2.25/pico/basic.c
 ===================================================================
---- alpine-2.24.orig/pico/basic.c
-+++ alpine-2.24/pico/basic.c
+--- alpine-2.25.orig/pico/basic.c
++++ alpine-2.25/pico/basic.c
 @@ -959,7 +959,57 @@ scrolldownline(int f, int n)
      return (scrollforw (1, FALSE));
  }
@@ -66,10 +66,10 @@ Index: alpine-2.24/pico/basic.c
  
  /*
   * Scroll to a position.
-Index: alpine-2.24/pico/efunc.h
+Index: alpine-2.25/pico/efunc.h
 ===================================================================
---- alpine-2.24.orig/pico/efunc.h
-+++ alpine-2.24/pico/efunc.h
+--- alpine-2.25.orig/pico/efunc.h
++++ alpine-2.25/pico/efunc.h
 @@ -59,6 +59,7 @@ extern  unsigned char accent(UCS, UCS);
  extern  unsigned char GetAccent(void);
  extern	int forwpage(int, int);
@@ -78,10 +78,10 @@ Index: alpine-2.24/pico/efunc.h
  extern  int scrollupline(int, int);
  extern  int scrolldownline(int, int);
  extern  int scrollto(int, int);
-Index: alpine-2.24/pico/search.c
+Index: alpine-2.25/pico/search.c
 ===================================================================
---- alpine-2.24.orig/pico/search.c
-+++ alpine-2.24/pico/search.c
+--- alpine-2.25.orig/pico/search.c
++++ alpine-2.25/pico/search.c
 @@ -73,7 +73,7 @@ EXTRAKEYS    menu_srchpat[] = {
  	{"^O", N_("End of Para"),   (CTRL|'O')},
  	{"^U", N_("FullJustify"),   (CTRL|'U')},

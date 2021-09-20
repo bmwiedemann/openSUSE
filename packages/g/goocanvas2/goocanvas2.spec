@@ -1,7 +1,7 @@
 #
-# spec file for package goocanvas
+# spec file for package goocanvas2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -29,7 +29,6 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/GooCanvas
 Source0:        https://download.gnome.org/sources/goocanvas/2.0/%{_name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 %if %{with_introspection}
@@ -85,7 +84,6 @@ This package provides the GObject Introspection bindings for GooCanvas.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
-translation-update-upstream
 
 %build
 %configure \

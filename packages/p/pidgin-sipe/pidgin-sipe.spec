@@ -1,7 +1,7 @@
 #
 # spec file for package pidgin-sipe
 #
-# Copyright (c) 2019 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  AppStream
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(farstream-0.2)
 BuildRequires:  pkgconfig(freerdp-shadow2)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -127,7 +126,6 @@ SIP/SIMPLE used by various products:
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure \

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 08:55:42 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * fetchmail.service
+
+-------------------------------------------------------------------
 Tue Aug 24 16:50:40 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 6.4.21:

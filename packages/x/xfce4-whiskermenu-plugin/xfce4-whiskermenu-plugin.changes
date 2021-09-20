@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 19 19:15:27 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.6.0
+  * Fix unable to resize with metacity.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#56)
+  * Fix invalid desktop files when hiding applications.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#53)
+  * Fix not showing focused launcher when searching.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#45)
+  * Add option to disable sorting categories.
+    (gxo#panel-plugins/xfce4-whiskermenu-plugin#42)
+  * Translation updates
+
+-------------------------------------------------------------------
 Mon Jan 25 09:36:03 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 2.5.3

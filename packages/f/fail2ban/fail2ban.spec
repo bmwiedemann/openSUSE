@@ -51,6 +51,7 @@ Patch201:       %{name}-0.10.4-env-script-interpreter.patch
 Patch300:       fail2ban-opensuse-service-sfw.patch
 # PATCH-FIX-UPSTREAM fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch jweberhofer@weberhofer.at -- fixes CVE-2021-32749
 Patch400:       fail2ban-0.11.2-upstream-patch-for-CVE-2021-32749.patch
+Patch401:       harden_fail2ban.service.patch
 
 BuildRequires:  fdupes
 BuildRequires:  logrotate
@@ -137,6 +138,7 @@ sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
 %patch300 -p1
 %endif
 %patch400 -p1
+%patch401 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \

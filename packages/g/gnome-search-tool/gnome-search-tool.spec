@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-search-tool
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -36,7 +36,6 @@ Source6:        %{name}-256.png
 Patch0:         gnome-search-tool-desktop-icons.patch
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= 2.30.0
@@ -55,7 +54,6 @@ to get results.
 
 %prep
 %setup -q
-translation-update-upstream
 %patch0 -p1
 
 %build

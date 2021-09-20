@@ -1,0 +1,49 @@
+From 802150d7be94e5317b257df545d55ce5b007ae65 Mon Sep 17 00:00:00 2001
+From: Jose Dapena Paz <jdapena@igalia.com>
+Date: Tue, 20 Jul 2021 18:50:11 +0000
+Subject: [PATCH] libstdc++: do not use unique_ptr bool() operator in a constexpr in form_forest.h
+
+Fix build breakage in GCC, because of calling non constexpr functions from a
+constexpr function. In this case, libstdc++ unique_ptr bool() operator is not
+constexpr, so it cannot be used inside CompareByFrameToken.
+
+An example of build breakage caused by this:
+    ../../components/autofill/content/browser/form_forest.h:157:21: error: call to non-‘constexpr’ function ‘std::unique_ptr<_Tp, _Dp>::operator bool() const [with _Tp = autofill::internal::FormForest::FrameData; _Dp = std::default_delete<autofill::internal::FormForest::FrameData>]’
+      157 |         return f && g ? f->frame_token < g->frame_token : f.get() < g.get();
+          |                     ^
+
+Bug: 957519
+Change-Id: I3c49559084fe58886a03520729873b7c4ac89bbf
+Reviewed-on: https://chromium-review.googlesource.com/c/chromium/src/+/3041050
+Commit-Queue: Dominic Battré <battre@chromium.org>
+Reviewed-by: Dominic Battré <battre@chromium.org>
+Cr-Commit-Position: refs/heads/master@{#903595}
+---
+
+diff --git a/components/autofill/content/browser/form_forest.h b/components/autofill/content/browser/form_forest.h
+index c89a8eb..f414ab8 100644
+--- a/components/autofill/content/browser/form_forest.h
++++ b/components/autofill/content/browser/form_forest.h
+@@ -152,16 +152,16 @@
+     // used by FrameData sets.
+     struct CompareByFrameToken {
+       using is_transparent = void;
+-      constexpr bool operator()(const std::unique_ptr<FrameData>& f,
+-                                const std::unique_ptr<FrameData>& g) const {
++      bool operator()(const std::unique_ptr<FrameData>& f,
++                      const std::unique_ptr<FrameData>& g) const {
+         return f && g ? f->frame_token < g->frame_token : f.get() < g.get();
+       }
+-      constexpr bool operator()(const std::unique_ptr<FrameData>& f,
+-                                const LocalFrameToken& g) const {
++      bool operator()(const std::unique_ptr<FrameData>& f,
++                      const LocalFrameToken& g) const {
+         return f ? f->frame_token < g : true;
+       }
+-      constexpr bool operator()(const LocalFrameToken& f,
+-                                const std::unique_ptr<FrameData>& g) const {
++      bool operator()(const LocalFrameToken& f,
++                      const std::unique_ptr<FrameData>& g) const {
+         return g ? f < g->frame_token : false;
+       }
+     };

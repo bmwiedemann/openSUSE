@@ -295,4 +295,12 @@
 - removed gkrellm-2.3.10-d51b57616e.patch (released upstream now)</comment>
     <requestid>748752</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>474e3dcaf65b76580818b01fa053911c</srcmd5>
+    <version>2.3.11</version>
+    <time>1632251572</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 920522 from jsegitz)</comment>
+    <requestid>920536</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:10:34 UTC 2021 - i@guoyunhe.me
+
+- Limit gcc-c++ >= 4.9 because of stdatomic.h
+- Update to version 0~git20210825:
+  * CDROM: Rename Reset+Init commands, fix "This is Football 2" lockup
+  * Properly fix the extern to const void instead of just void.
+  * Fix broken HLE PR.
+  * CDROM: Ignore sectors with channel number 255
+  * Rewrite GPU bios functions according to OpenBIOS.
+  * Properly protect the HLE instructions against corrupted memory.
+  * Fixes Diablo 1 SPU bug properly and remove Diablo hack.
+  * gte: Fix gteH division and sign extension (from PCSX4ALL)
+  * [SPU] Emulate SPUSTAT[5:0] as a mirror of SPUCNT[5:0]
+  * mdec.cpp: Dare to set MDEC_BIAS to 10
+  * Fix save state compatibility that was broken by my CDrom timing changes.
+  * Sort out compiler warnings, all of them
+  * CDRom timings changes
+  * Fix initialization on Frontends without variable support.
+  * Handle DIV overflow in lightrec and the interpreter
+  * Attempt to fix Android build
+  * Do not compile debugger codes by default
+  * Set inputs to use "standard" by default
+  * These are now unnecessary
+  * Update multitap option description
+  * Fix reporting for connected or unconnected inputs
+  * Fix fgets param
+  * Add libretro VFS and use VFS for windows target
+  * Buildfix for Apple
+  * implify multitap core options
+  * libchdr: Use also fopen_utf8 here
+  * Android: Update jni
+  * 3ds: Buildfix
+  * Restore deps/mman
+  * Update Makefile
+  * git subrepo clone (merge) https://github.com/rtissera/libchdr deps/libchdr
+  * Cleanup deps
+  * Add missing files
+  * Selectively replace fopen() with fopen_utf8()
+  * Get rid of interpreter name
+  * Add ios-arm64/tvos-arm64, ios9, and osx-arm64. osx-arm64 is interpreter for now (lightrec crashes at startup)
+  * Update libchdr (replace libflac with dr_flac)
+  * Restrict threaded rendering to unai / peops
+  * Change HLE BIOS message.
+  * Do not hide multitap core options
+  * Set multitap options disabled by default, prevent previous defaults from being accidentally loaded instead.
+  * libretro: Add support for ps1_rom.bin (PS3 BIOS)
+  * Disable lightrec for libnx
+  * add H5 + N2 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * libretro: android: remove flag allowing text relocations
+  * libretro: android: Fix non-armv7 builds
+  * Create .gitlab-ci.yml
+  * Update
+  * Removed conditional include on non-existent file.
+  * Add Rpi4 platform in 64bit mode.
+  * Set multitap options to "disabled" by default
+  * iOS: Another try at interpreter override
+  * CHD: Support for precache mode CD access method
+  * Indicate that multitap requires restart and cleanup
+  * Move input type selection to RETRO_ENVIRONMENT_SET_CONTROLLER_INFO
+  * fix chd track info parsing.
+  * Fix negcon not working correctly in some games
+  * Remove dfinput plugin from Makefile
+  * Change indents to tabs and alignment
+  * libpscore/plugins.c: Trim trailing whitespace
+  * Fix input not responding
+  * Fix unnecessary threaded rendering frame drops
+  * Fix build with -fno-common (default in gcc10)
+  * Allow threaded rendering for peops and enable on unix
+  * iOS: Fix interpreter overrides
+  * Add a threaded renderer
+  * Update libchdr from latest upstream changes
+  * [3DS] Set default CPU rate to the usual 57
+  * Revert "fixes link time errors on the RPi platform (tested with 3 and 4)"
+  * fixes link time errors on the RPi platform (tested with 3 and 4)
+  * [3DS] Enable threading for the SPU
+  * Correctly signal errors for out-of-bounds async CD reads
+  * Add Emscripten target
+  * Add support for dual-guncon
+  * cdriso: parse .cd<X> files as .cue.
+  * [3DS] Support latest libctru
+  * Add an option to downscale hi-res views
+
+-------------------------------------------------------------------
 Wed Aug 12 19:28:23 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200805:

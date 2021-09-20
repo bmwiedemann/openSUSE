@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 15 09:16:54 UTC 2021 - Jan Kara <jack@suse.cz>
+
+- Update to 1.46.4:
+  * Default to 256-byte inodes for all filesystems, not only larger ones
+  * Bigalloc is considered supported now for small cluster sizes
+  * E2fsck and e2image fixes for quota feature
+  * Fix mke2fs creation of filesystem into non-existent file
+- libss-add-newer-libreadline.so.8-to-dlopen-path.patch: libss: add newer
+  libreadline.so.8 to dlopen path (bsc#1189453)
+
+-------------------------------------------------------------------
+Tue Sep 14 07:03:07 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_e2scrub@.service.patch
+  * harden_e2scrub_all.service.patch
+  * harden_e2scrub_fail@.service.patch
+  * harden_e2scrub_reap.service.patch
+
+-------------------------------------------------------------------
 Mon Aug  2 20:47:09 UTC 2021 - Jan Kara <jack@suse.cz>
 
 - Update to 1.46.3:

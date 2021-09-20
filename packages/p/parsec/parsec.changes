@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug  6 07:01:27 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 0.8.0:
+  * Changelog: https://github.com/parallaxsecond/parsec/compare/0.7.2...0.8.0
+- Drop upstream patch:
+  * parsec-fix-old-rust.patch
+- Disable 'trusted-service-provider' as it currently fails to build
+- Disable 'jwt-svid-authenticator' (SPIFFE-based authenticator)
+  on Leap, as it cannot be compiled with rust 1.43.1
+
+-------------------------------------------------------------------
 Fri Apr 30 11:36:56 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix build with old rust used in Leap 15.3/SLE15-SP3.

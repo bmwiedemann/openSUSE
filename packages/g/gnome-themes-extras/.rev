@@ -163,4 +163,13 @@
     <comment>spec-cleaner (forwarded request 581112 from dimstar)</comment>
     <requestid>582749</requestid>
   </revision>
+  <revision rev="24" vrev="79">
+    <srcmd5>726d2972b29fca9f7cab196b82998bbb</srcmd5>
+    <version>2.22.0</version>
+    <time>1632251590</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920413 from sbrabec)</comment>
+    <requestid>920578</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 20 12:55:42 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
+
+- Update to version 1.7.13 (jsc#SLE-18188).
+  - Fix support for SCSI loc code
+- Remove obsolete BuildRoot and defattr
+
+-------------------------------------------------------------------
 Wed Aug 11 10:42:31 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Update to version 1.7.12 (jsc#SLE-18188).

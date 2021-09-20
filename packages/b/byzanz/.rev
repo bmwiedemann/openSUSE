@@ -208,4 +208,13 @@
     <comment>- Fixed SPEC file: Replaced broken URL with latest upstream (forwarded request 886389 from susnux)</comment>
     <requestid>886875</requestid>
   </revision>
+  <revision rev="28" vrev="5">
+    <srcmd5>8655c20117bfa3699ebc42dd8a28c9b7</srcmd5>
+    <version>0.3.0+git20140619</version>
+    <time>1632251576</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920392 from sbrabec)</comment>
+    <requestid>920544</requestid>
+  </revision>
 </revisionlist>

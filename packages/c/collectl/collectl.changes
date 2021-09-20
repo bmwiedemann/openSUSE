@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 30 08:10:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s). Added patch(es):
+  * harden_collectl.service.patch
+  Modified:
+  * collectl.service
+
+-------------------------------------------------------------------
 Sat Nov 14 20:21:44 UTC 2020 - Egbert Eich <eich@suse.com>
 
 - Update to 4.3.1

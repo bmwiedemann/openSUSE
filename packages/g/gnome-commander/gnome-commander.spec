@@ -30,7 +30,6 @@ BuildRequires:  chmlib-devel
 BuildRequires:  fdupes
 BuildRequires:  itstool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(exiv2) >= 0.14
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44.0
@@ -68,7 +67,6 @@ networks.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure\

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Sep 10 02:44:03 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.16.8 (released 2021-09-09) includes a security fix to the
+  archive/zip package, as well as bug fixes to the archive/zip,
+  go/internal/gccgoimporter, html/template, net/http, and
+  runtime/pprof packages.
+  Refs boo#1182345 go1.16 release tracking
+  CVE-2021-39293
+  * boo#1190589 go#47801 CVE-2021-39293
+  * go#47985 archive/zip: overflow in preallocation check can cause OOM panic
+  * go#47691 x/net/http2: server sends RST_STREAM w/ PROTOCOL_ERROR to clients it incorrectly believes have violated max advertised num streams
+  * go#47675 runtime/pprof: apparent deadlock in TestGoroutineSwitch on linux-armv6l
+  * go#47610 go/internal/gccgoimporter: TestInstallationImporter broken with tip gccgo
+  * go#47535 net/http: TestCancelRequestWhenSharingConnection can cause port exhaustion
+  * go#47042 html/template: data race with concurrent ExecuteTemplate calls
+
+-------------------------------------------------------------------
+Thu Aug 12 20:48:30 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Add bash scripts used by go tool commands to provide a more
+  complete cross-compiling go toolchain install.
+  * Fixes "go tool dist list" error "all.bash does not exist"
+  * Added to packaging:
+    /usr/lib64/go/1.16/lib/time/update.bash (already packaged)
+    /usr/lib64/go/1.16/src/all.bash
+    /usr/lib64/go/1.16/src/bootstrap.bash
+    /usr/lib64/go/1.16/src/buildall.bash
+    /usr/lib64/go/1.16/src/clean.bash
+    /usr/lib64/go/1.16/src/cmp.bash
+    /usr/lib64/go/1.16/src/make.bash
+    /usr/lib64/go/1.16/src/race.bash
+    /usr/lib64/go/1.16/src/run.bash
+    /usr/share/go/1.16/src/all.bash
+    /usr/share/go/1.16/src/bootstrap.bash
+    /usr/share/go/1.16/src/buildall.bash
+    /usr/share/go/1.16/src/clean.bash
+    /usr/share/go/1.16/src/cmd/compile/internal/ssa/gen/cover.bash
+    /usr/share/go/1.16/src/cmd/vendor/golang.org/x/sys/windows/mkerrors.bash
+    /usr/share/go/1.16/src/cmd/vendor/golang.org/x/sys/windows/mkknownfolderids.bash
+    /usr/share/go/1.16/src/cmp.bash
+    /usr/share/go/1.16/src/internal/trace/mkcanned.bash
+    /usr/share/go/1.16/src/make.bash
+    /usr/share/go/1.16/src/race.bash
+    /usr/share/go/1.16/src/run.bash
+
+-------------------------------------------------------------------
 Thu Aug  5 21:03:30 UTC 2021 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.16.7 (released 2021-08-05) includes a security fix to the

@@ -1,7 +1,7 @@
 #
 # spec file for package glabels
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,7 +34,6 @@ BuildRequires:  itstool
 BuildRequires:  qrencode-devel
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42.0
@@ -66,9 +65,9 @@ This package contains all necessary include files and libraries needed
 to develop applications that require these.
 
 %lang_package
+
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

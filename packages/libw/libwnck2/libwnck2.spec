@@ -1,7 +1,7 @@
 #
 # spec file for package libwnck2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -35,7 +35,6 @@ BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  startup-notification-devel
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xres)
 
@@ -78,8 +77,6 @@ to develop applications that require these.
 
 %prep
 %setup -q -n %{_name}-%{version}
-translation-update-upstream
-# rpmlint note: libwnck has a separate translation for both Bengali and Bengali India
 
 %build
 # needed for libwnck-2.19.4:

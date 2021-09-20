@@ -23,14 +23,14 @@ Summary:        MinGW-w64 runtime libraries for Win32
 License:        SUSE-Public-Domain
 Group:          Development/Libraries/C and C++
 URL:            http://mingw-w64.sf.net/
-Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%{version}.tar.bz2
+Source:         http://downloads.sf.net/mingw-w64/mingw-w64-v%version.tar.bz2
 Source100:      %name-rpmlintrc
-#!BuildIgnore: post-build-checks
 BuildRequires:  mingw32-cross-binutils
 BuildRequires:  mingw32-cross-gcc-bootstrap >= 4.4.0
 BuildRequires:  mingw32-filesystem
 BuildRequires:  mingw32-headers >= %version
 BuildRequires:  xz
+#!BuildIgnore:  post-build-checks
 # When building the CRT, any newer (>=) headers should be ok, since the CRT
 # won't make use of them. At runtime, ensure that headers are not too new (<=)
 # because ominous link failures can result -- let OBS go into unresolvable

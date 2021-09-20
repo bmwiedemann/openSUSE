@@ -7,13 +7,13 @@ Don't choose arbitrary python interpreters from $PATH.
  tools/pycocci |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: coccinelle-1.0.6/tools/pycocci
+Index: coccinelle-1.1.0/tools/pycocci
 ===================================================================
---- coccinelle-1.0.6.orig/tools/pycocci
-+++ coccinelle-1.0.6/tools/pycocci
+--- coccinelle-1.1.0.orig/tools/pycocci
++++ coccinelle-1.1.0/tools/pycocci
 @@ -1,4 +1,4 @@
 -#!/usr/bin/env python
-+#!/usr/bin/python
++#!/usr/bin/python3
  #
  # Copyright (c) 2014 Luis R. Rodriguez  <mcgrof@suse.com>
  # Copyright (c) 2013 Johannes Berg <johannes@sipsolutions.net>

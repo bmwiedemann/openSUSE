@@ -186,13 +186,13 @@ Python, and Macintosh Module Reference in PDF format.
 
 # drop Autoconf version requirement
 sed -i 's/^version_required/dnl version_required/' configure.ac
+# COMMON-PREP-END
 
 # Update documentation formatting for Sphinx 3.0 (bpo#40204)
 for i in `find Doc/ -type f -name "*.rst"`
 do
   sed -i 's/:c:type:/:c:expr:/g' $i
 done
-# COMMON-PREP-END
 
 %build
 TODAY_DATE=`date -r %{S:0} "+%B %d, %Y"`

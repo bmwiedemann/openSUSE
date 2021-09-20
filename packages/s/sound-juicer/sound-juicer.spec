@@ -1,7 +1,7 @@
 #
 # spec file for package sound-juicer
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ BuildRequires:  brasero-devel
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.49.5
@@ -53,7 +52,6 @@ GStreamer-based CD ripping tool. Saves audio CDs to Ogg/vorbis.
 
 %prep
 %setup -q
-translation-update-upstream po %{name}
 
 %build
 %meson

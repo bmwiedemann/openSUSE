@@ -34,7 +34,6 @@ BuildRequires:  intltool
 BuildRequires:  itstool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.34
 BuildRequires:  pkgconfig(dconf)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.10
@@ -65,7 +64,6 @@ features are:
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 autoreconf -fiv

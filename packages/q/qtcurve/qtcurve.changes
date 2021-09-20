@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 20 07:12:51 UTC 2021 - Илья Индиго <ilya@ilya.pp.ua>
+
+- Readded baselibs.conf with qtcurve-gtk2-32bit support.
+
+-------------------------------------------------------------------
 Wed Sep 15 08:47:21 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Spec cleanup.
@@ -901,4 +906,3 @@ Fri May 25 15:26:30 CEST 2007 - stbinner@suse.de
 Tue May 15 13:19:42 CEST 2007 - stbinner@suse.de
 
 - initial package in abuild
-

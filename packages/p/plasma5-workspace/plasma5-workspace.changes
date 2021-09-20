@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 21:51:26 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
+
+- Add upstream patch to fix a bug that would result in power management
+  remaining inhibited even after un-inhibiting it in the UI:
+  * Call-UnInhibit-with-correct-signature-in-powermanagement-dataengine.patch
+
+-------------------------------------------------------------------
 Wed Sep 15 08:24:25 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Drop the unneeded baselibs.conf.

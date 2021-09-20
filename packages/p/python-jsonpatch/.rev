@@ -209,4 +209,13 @@
   * take_index causing 'move' of incorrect values due to bad True==1 comparison</comment>
     <requestid>894164</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>91f71359fdf82ac598c30873658d456e</srcmd5>
+    <version>1.32</version>
+    <time>1632251541</time>
+    <user>dimstar_suse</user>
+    <comment>- Don't use python setup.py test expression.
+</comment>
+    <requestid>920183</requestid>
+  </revision>
 </revisionlist>

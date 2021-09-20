@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 19 14:18:58 UTC 2021 - malcolmlewis@opensuse.org
+
+- Updated to version 2.12.3:
+  * Fixed pan/pan & select mismatch in defaults for toolbar icon
+    and image control. Now both default to pan & select tool.
+  * Remember selected image control tool between sessions.
+  * Ensure that all intermediate TIFFs are written with only one
+    strip to avoid triggering bug in PDF::Builder creating corrupt
+    PDF.
+  * Translation updates.
+
+-------------------------------------------------------------------
 Thu Jul 15 10:11:26 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.12.2:

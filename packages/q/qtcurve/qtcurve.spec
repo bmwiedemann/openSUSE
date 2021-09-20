@@ -25,6 +25,7 @@ License:        LGPL-2.1-or-later
 Group:          System/GUI/KDE
 URL:            https://invent.kde.org/system/qtcurve
 Source0:        qtcurve-%{version}.tar.gz
+Source1:        baselibs.conf
 Patch0:         0001-utils-gtkprops-Remove-unnecessary-constexpr-this-is-.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         0001-Fix-build-with-Qt-5.15-missing-QPainterPath-include.patch

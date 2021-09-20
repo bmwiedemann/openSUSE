@@ -22,7 +22,7 @@
 %define with_libostree 1
 %endif
 Name:           podman
-Version:        3.2.3
+Version:        3.3.1
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -59,7 +59,7 @@ Requires:       conmon >= 2.0.24
 Requires:       fuse-overlayfs
 Requires:       iptables
 Requires:       libcontainers-common >= 20210626
-Requires:       runc >= 1.0.0~rc4
+Requires:       runc >= 1.0.1
 Requires:       slirp4netns >= 0.4.0
 Requires:       timezone
 Recommends:     %{name}-cni-config = %{version}
@@ -130,7 +130,7 @@ make %{?_smp_mflags} docs
 make DESTDIR=%{buildroot} PREFIX=/usr install install.completions install.docker install.docker-docs
 
 # packaged in libcontainers-common
-rm %{buildroot}/usr/share/man/man5/containers-mounts.conf.* %{buildroot}/usr/share/man/man5/oci-hooks.*
+rm %{buildroot}/usr/share/man/man5/oci-hooks.*
 
 # Add podman modprobe.d drop-in config
 mkdir -p %{buildroot}%{_prefix}/lib/modules-load.d
@@ -165,10 +165,12 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_unitdir}/podman.service
 %{_unitdir}/podman.socket
 %{_unitdir}/podman-auto-update.service
+%{_unitdir}/podman-restart.service
 %{_unitdir}/podman-auto-update.timer
 %{_userunitdir}/podman.service
 %{_userunitdir}/podman.socket
 %{_userunitdir}/podman-auto-update.service
+%{_userunitdir}/podman-restart.service
 %{_userunitdir}/podman-auto-update.timer
 %ghost /run/podman
 %ghost  %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-libpodconf
@@ -184,7 +186,6 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %{_datadir}/fish/vendor_completions.d/podman-remote.fish
 
 %files cni-config
-%config %{_sysconfdir}/cni/net.d/87-podman-bridge.conflist
 %license LICENSE
 
 %files docker
@@ -196,23 +197,23 @@ install -D -m 0644 %{SOURCE4} %{buildroot}%{_docdir}/%{name}/README.SUSE
 %tmpfiles_create %{_tmpfilesdir}/podman-docker.conf
 
 %pre
-%service_add_pre podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%service_add_pre podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 # move away any old rpmsave config file to avoid having it re-activated again in
 # %%posttrans
 test -f /etc/containers/libpod.conf.rpmsave && mv -v /etc/containers/libpod.conf.rpmsave /etc/containers/libpod.conf.rpmsave.old ||:
 
 %post
-%service_add_post podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%service_add_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 %tmpfiles_create %{_tmpfilesdir}/podman.conf
-%systemd_user_post podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%systemd_user_post podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 
 %preun
-%service_del_preun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
-%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%service_del_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%systemd_user_preun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 
 %postun
-%service_del_postun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
-%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-auto-update.timer
+%service_del_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
+%systemd_user_postun podman.service podman.socket podman-auto-update.service podman-restart.service podman-auto-update.timer
 
 %posttrans
 # if libpod.conf.rpmsave was created, set an update

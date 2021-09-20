@@ -29,7 +29,6 @@ BuildRequires:  intltool
 BuildRequires:  krb5-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0)
@@ -51,7 +50,6 @@ It features ticket autorenewal and supports pkinit.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure \

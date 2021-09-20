@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 15 20:54:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- xorgproto 2021.5
+  * This release introduces the version 2.4 of the X Input
+    protocol. It contains the addition of the concept of touchpad
+    gestures. Touchpad gesture is an interaction of two or more
+    fingers that can be interpreted as a swipe or a pinch.
+
+-------------------------------------------------------------------
 Mon May 31 15:07:17 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - package licenses as %%license 

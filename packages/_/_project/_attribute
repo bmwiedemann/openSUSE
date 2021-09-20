@@ -36,7 +36,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210826'
-  boo#1183454: '20210918'
+  boo#1183454: '20210920'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -82,15 +82,15 @@
   boo#1189784: '20210824'
   boo#1189810: '20210906'
   boo#1189853: '20210902'
-  boo#1189868: '20210918'
-  boo#1189869: '20210918'
+  boo#1189868: '20210920'
+  boo#1189869: '20210920'
   boo#1189909: '20210916'
   boo#1189913: '20210903'
   boo#1189915: '20210918'
   boo#1189927: '20210918'
   boo#1190434: '20210918'
   boo#1190529: '20210914'
-  bsc#1161276: '20210918'
+  bsc#1161276: '20210920'
   bsc#1179395: '20210308'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
@@ -157,7 +157,7 @@
   poo#91058: '20210517'
   poo#91079: '20210524'
   poo#91088: '20210502'
-  poo#91383: '20210918'
+  poo#91383: '20210920'
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
@@ -197,12 +197,12 @@
   poo#95789: '20210726'
   poo#96302: '20210801'
   poo#96389: '20210801'
-  poo#96611: '20210917'
+  poo#96611: '20210920'
   poo#96641: '20210807'
   poo#96644: '20210915'
   poo#97103: '20210908'
   poo#97511: '20210912'
-  poo#98343: '20210918'
+  poo#98343: '20210920'
   poo#98418: '20210908'
   poo#98421: '20210910'
   poo#98424: '20210908'
@@ -210,7 +210,7 @@
   poo#98580: '20210912'
   poo#98598: '20210914'
   poo#98646: '20210918'
-  poo#98739: '20210914'
+  poo#98739: '20210920'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -254,7 +254,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210920</value>
+    <value>20210921</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -579,10 +579,10 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: '20210918'
+    <value>failed: '20210920'
 published: '20210916'
 publishing: '20210916'
-testing: '20210918'
+testing: '20210920'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="OriginConfig">

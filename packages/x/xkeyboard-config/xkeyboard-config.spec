@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.12
@@ -50,7 +49,6 @@ make keyboards more accessible to people with physical impairments.
 
 %prep
 %setup -q
-#translation-update-upstream
 %patch100 -p1
 %patch109 -p1
 

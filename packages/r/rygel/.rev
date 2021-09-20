@@ -695,4 +695,13 @@
   + Updated translations. (forwarded request 920121 from iznogood)</comment>
     <requestid>920251</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>2ffef208a6555af7fb33ec8622030f40</srcmd5>
+    <version>0.40.2</version>
+    <time>1632251593</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920440 from sbrabec)</comment>
+    <requestid>920593</requestid>
+  </revision>
 </revisionlist>

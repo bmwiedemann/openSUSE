@@ -50,6 +50,7 @@ Group:          System/Daemons
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 Source:         %{name}-%{version}.tar.gz
+Patch0:         harden_fonehome.service.patch
 URL:            https://github.com/archiecobbs/%{name}/
 Requires:       bc
 Requires:       findutils
@@ -75,6 +76,12 @@ operations server.
 
 %prep
 %setup
+%patch0 -p1
+
+# Avoid "Unknown key name 'XXX' in section 'Service', ignoring." warnings from systemd on older releases
+%if 0%{?is_opensuse} && 0%{?sle_version} < 150300
+sed -r -i '/^(Protect(Home|Hostname|KernelLogs)|PrivateMounts)=/d' src/unit/fonehome.service
+%endif
 
 %build
 subst()

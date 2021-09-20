@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 17:35:30 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Jun  3 17:03:06 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add glabels-externs.patch: define shared variables as extern.

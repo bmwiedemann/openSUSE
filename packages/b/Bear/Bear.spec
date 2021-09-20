@@ -1,7 +1,7 @@
 #
 # spec file for package Bear
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,37 @@
 #
 
 
-# Tests are resolvable only on Tumbleweed
-%if 0%{?suse_version} > 1500
 %bcond_without tests
-%else
-%bcond_with tests
-%endif
 Name:           Bear
-Version:        2.4.2
+Version:        3.0.15
 Release:        0
 Summary:        Tool to generate compilation database for clang tooling
 License:        GPL-3.0-or-later
 URL:            https://github.com/rizsotto/Bear
-Source:         %{URL}/archive/%{version}.tar.gz
+Source:         %{URL}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  cmake
+BuildRequires:  cmake(nlohmann_json) >= 3.7.3
+BuildRequires:  pkgconfig(absl_synchronization)
+BuildRequires:  pkgconfig(fmt) >= 6.1
+BuildRequires:  pkgconfig(grpc)
+BuildRequires:  pkgconfig(grpc++) >= 1.26
+BuildRequires:  pkgconfig(protobuf) >= 3.11
+BuildRequires:  pkgconfig(spdlog)
 %if %{with tests}
-BuildRequires:  clang
-BuildRequires:  gcc-c++
 BuildRequires:  python3-lit
 BuildRequires:  python3-setuptools
+BuildRequires:  pkgconfig(gmock) >= 1.10
+BuildRequires:  pkgconfig(gtest) >= 1.10
+BuildRequires:  pkgconfig(gtest_main) >= 1.10
+# one of the tests requires /usr/bin/more
+BuildRequires:  util-linux
+# additional binaries for specific tests
+BuildRequires:  gcc-fortran
+BuildRequires:  valgrind
+BuildRequires:  fakeroot
+# the fakeroot test requires xargs
+BuildRequires:  findutils
 %endif
 
 %description
@@ -46,32 +57,37 @@ project compiles with no cmake, but another build system, there is no free json
 file. Bear is a tool to generate such file during the build process.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
+for f in $(ls test/bin/); do
+    sed -i "s|^#\!/usr/bin/env\s\+python\s\?$|#!%{__python3}|" test/bin/$f
+done
+
 %cmake \
-    -DCMAKE_INSTALL_LIBDIR:PATH=%{_lib}
-%cmake_build
+%if %{without tests}
+  -DENABLE_UNIT_TESTS=OFF \
+  -DENABLE_FUNC_TESTS=OFF
+%else
+  -DENABLE_UNIT_TESTS=ON \
+  -DENABLE_FUNC_TESTS=ON
+%endif
+%make_build
 
 %install
 %cmake_install
-sed -i "s|env python.*$|python3|g" %{buildroot}%{_bindir}/bear
-rm -rf %{buildroot}%{_datadir}/doc/bear
-
-%if %{with tests}
-%check
-pushd build
-make check
-popd
-%endif
+# Let RPM install it correctly
+rm -rf %{buildroot}%{_datadir}/doc
 
 %files
 %license COPYING
-%doc ChangeLog.md README.md
+%doc README.md
 %{_bindir}/bear
-%{_datadir}/bash-completion/completions/bear
+%{_bindir}/citnames
+%{_bindir}/intercept
 %{_mandir}/man1/bear.1%{?ext_man}
-%dir %{_libdir}/bear
-%{_libdir}/bear/libear.so
+%{_mandir}/man1/citnames.1%{?ext_man}
+%{_mandir}/man1/intercept.1%{?ext_man}
+%{_libdir}/bear/
 
 %changelog

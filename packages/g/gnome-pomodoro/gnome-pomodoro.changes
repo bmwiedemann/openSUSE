@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 20 14:02:05 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.19.2:
+  * Fix dialog animation braking ScreenShield
+  * Cleanup deprecated code 
+  * Fix blur effect artifacts 
+  * Dont wake up the screen after screensaver
+  * Fix possible recursion during blinking animation
+  * Workaround choppy blur effect animation in gnome-shell 3.38
+  * Fix indicator opacity after lock screen
+
+-------------------------------------------------------------------
 Tue Apr 13 12:41:06 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.19.1:

@@ -27,7 +27,7 @@
  pith/mailindx.h           |    3 
  pith/makefile.wnt         |    5 
  pith/pine.hlp             | 1150 +++++++++++++++++++++++++++++++++
- pith/reply.c              |  277 +++++++-
+ pith/reply.c              |  279 +++++++-
  pith/rules.c              | 1565 ++++++++++++++++++++++++++++++++++++++++++++++
  pith/rules.h              |  154 ++++
  pith/rulestype.h          |   94 ++
@@ -39,13 +39,13 @@
  pith/state.h              |   11 
  pith/string.c             |   58 +
  pith/string.h             |    2 
- 40 files changed, 4487 insertions(+), 297 deletions(-)
+ 40 files changed, 4488 insertions(+), 298 deletions(-)
 
-Index: alpine-2.24/alpine/adrbkcmd.c
+Index: alpine-2.25/alpine/adrbkcmd.c
 ===================================================================
---- alpine-2.24.orig/alpine/adrbkcmd.c
-+++ alpine-2.24/alpine/adrbkcmd.c
-@@ -4128,6 +4128,8 @@ ab_compose_internal(BuildTo bldto, int a
+--- alpine-2.25.orig/alpine/adrbkcmd.c
++++ alpine-2.25/alpine/adrbkcmd.c
+@@ -4129,6 +4129,8 @@ ab_compose_internal(BuildTo bldto, int a
  	 * won't do anything, but will cause compose_mail to think there's
  	 * already a role so that it won't try to confirm the default.
  	 */
@@ -54,7 +54,7 @@ Index: alpine-2.24/alpine/adrbkcmd.c
  	if(role)
  	  role = copy_action(role);
  	else{
-@@ -4135,6 +4137,7 @@ ab_compose_internal(BuildTo bldto, int a
+@@ -4136,6 +4138,7 @@ ab_compose_internal(BuildTo bldto, int a
  	    memset((void *)role, 0, sizeof(*role));
  	    role->nick = cpystr("Default Role");
  	}
@@ -62,11 +62,11 @@ Index: alpine-2.24/alpine/adrbkcmd.c
      }
  
      compose_mail(addr, fcc, role, NULL, NULL);
-Index: alpine-2.24/alpine/alpine.c
+Index: alpine-2.25/alpine/alpine.c
 ===================================================================
---- alpine-2.24.orig/alpine/alpine.c
-+++ alpine-2.24/alpine/alpine.c
-@@ -500,6 +500,7 @@ main(int argc, char **argv)
+--- alpine-2.25.orig/alpine/alpine.c
++++ alpine-2.25/alpine/alpine.c
+@@ -506,6 +506,7 @@ main(int argc, char **argv)
      /* Set up optional for user-defined display filtering */
      pine_state->tools.display_filter	     = dfilter;
      pine_state->tools.display_filter_trigger = dfilter_trigger;
@@ -74,7 +74,7 @@ Index: alpine-2.24/alpine/alpine.c
  
  #ifdef _WINDOWS
      if(ps_global->install_flag){
-@@ -3267,6 +3268,9 @@ goodnight_gracey(struct pine *pine_state
+@@ -3281,6 +3282,9 @@ goodnight_gracey(struct pine *pine_state
      extern KBESC_T *kbesc;
  
      dprint((2, "goodnight_gracey:\n"));    
@@ -84,10 +84,10 @@ Index: alpine-2.24/alpine/alpine.c
  
      /* We want to do this here before we close up the streams */
      trim_remote_adrbks();
-Index: alpine-2.24/alpine/confscroll.c
+Index: alpine-2.25/alpine/confscroll.c
 ===================================================================
---- alpine-2.24.orig/alpine/confscroll.c
-+++ alpine-2.24/alpine/confscroll.c
+--- alpine-2.25.orig/alpine/confscroll.c
++++ alpine-2.25/alpine/confscroll.c
 @@ -52,6 +52,7 @@ static char rcsid[] = "$Id: confscroll.c
  #include "../pith/tempfile.h"
  #include "../pith/pattern.h"
@@ -142,10 +142,10 @@ Index: alpine-2.24/alpine/confscroll.c
      else if(var == &ps->vars[V_INDEX_FORMAT]){
  	reset_index_format();
  	clear_index_cache(ps->mail_stream, 0);
-Index: alpine-2.24/alpine/dispfilt.c
+Index: alpine-2.25/alpine/dispfilt.c
 ===================================================================
---- alpine-2.24.orig/alpine/dispfilt.c
-+++ alpine-2.24/alpine/dispfilt.c
+--- alpine-2.25.orig/alpine/dispfilt.c
++++ alpine-2.25/alpine/dispfilt.c
 @@ -461,3 +461,63 @@ df_valid_test(struct mail_bodystruct *bo
  
      return(passed);
@@ -210,10 +210,10 @@ Index: alpine-2.24/alpine/dispfilt.c
 +
 +    return(status);
 +}
-Index: alpine-2.24/alpine/dispfilt.h
+Index: alpine-2.25/alpine/dispfilt.h
 ===================================================================
---- alpine-2.24.orig/alpine/dispfilt.h
-+++ alpine-2.24/alpine/dispfilt.h
+--- alpine-2.25.orig/alpine/dispfilt.h
++++ alpine-2.25/alpine/dispfilt.h
 @@ -25,7 +25,7 @@ char	*dfilter_trigger(BODY *, char *, si
  char	*expand_filter_tokens(char *, ENVELOPE *, char **, char **, char **, int *, int *, int *);
  char	*filter_session_key(void);
@@ -223,10 +223,10 @@ Index: alpine-2.24/alpine/dispfilt.h
  
  
  #endif /* PINE_DISPFILT_INCLUDED */
-Index: alpine-2.24/alpine/folder.c
+Index: alpine-2.25/alpine/folder.c
 ===================================================================
---- alpine-2.24.orig/alpine/folder.c
-+++ alpine-2.24/alpine/folder.c
+--- alpine-2.25.orig/alpine/folder.c
++++ alpine-2.25/alpine/folder.c
 @@ -248,7 +248,7 @@ folder_screen(struct pine *ps)
      dprint((1, "=== folder_screen called ====\n"));
      mailcap_free(); /* free resources we won't be using for a while */
@@ -244,10 +244,10 @@ Index: alpine-2.24/alpine/folder.c
  }
  
  
-Index: alpine-2.24/alpine/mailcmd.c
+Index: alpine-2.25/alpine/mailcmd.c
 ===================================================================
---- alpine-2.24.orig/alpine/mailcmd.c
-+++ alpine-2.24/alpine/mailcmd.c
+--- alpine-2.25.orig/alpine/mailcmd.c
++++ alpine-2.25/alpine/mailcmd.c
 @@ -73,6 +73,7 @@ static char rcsid[] = "$Id: mailcmd.c 12
  #include "../pith/tempfile.h"
  #include "../pith/search.h"
@@ -256,7 +256,7 @@ Index: alpine-2.24/alpine/mailcmd.c
  #ifdef _WINDOWS
  #include "../pico/osdep/mswin.h"
  #endif
-@@ -2721,6 +2722,9 @@ role_compose(struct pine *state)
+@@ -2722,6 +2723,9 @@ role_compose(struct pine *state)
  		role->nick = cpystr("Default Role");
  	    }
  
@@ -266,13 +266,13 @@ Index: alpine-2.24/alpine/mailcmd.c
  	    state->redrawer = NULL;
  	    switch(action){
  	      case 'c':
-@@ -2771,12 +2775,12 @@ save_prompt(struct pine *state, CONTEXT_
+@@ -2772,12 +2776,12 @@ save_prompt(struct pine *state, CONTEXT_
  	    char *nmsgs, ENVELOPE *env, long int rawmsgno, char *section,
  	    SaveDel *dela, SavePreserveOrder *prea)
  {
 -    int		      rc, ku = -1, n, flags, last_rc = 0, saveable_count = 0, done = 0;
 +    int		      rc, ku = -1, n = 0, flags, last_rc = 0, saveable_count = 0, done = 0;
-     int		      delindex, preindex, r;
+     int		      delindex = 0, preindex = 0, r;
      char	      prompt[6*MAX_SCREEN_COLS+1], *p, expanded[MAILTMPLEN];
      char              *buf = tmp_20k_buf;
      char              shortbuf[200];
@@ -281,7 +281,7 @@ Index: alpine-2.24/alpine/mailcmd.c
      HelpType	      help;
      SaveDel           del = DontAsk;
      SavePreserveOrder pre = DontAskPreserve;
-@@ -2784,6 +2788,7 @@ save_prompt(struct pine *state, CONTEXT_
+@@ -2785,6 +2789,7 @@ save_prompt(struct pine *state, CONTEXT_
      static HISTORY_S *history = NULL;
      CONTEXT_S	     *tc;
      ESCKEY_S	      ekey[10];
@@ -289,11 +289,11 @@ Index: alpine-2.24/alpine/mailcmd.c
  
      if(!cntxt)
        alpine_panic("no context ptr in save_prompt");
-@@ -2793,6 +2798,15 @@ save_prompt(struct pine *state, CONTEXT_
+@@ -2794,6 +2799,15 @@ save_prompt(struct pine *state, CONTEXT_
      if(!(folder = save_get_default(state, env, rawmsgno, section, cntxt)))
        return(0);		/* message expunged! */
  
-+    if (rule = get_result_rule(V_SAVE_RULES, FOR_SAVE, env)){
++    if ((rule = get_result_rule(V_SAVE_RULES, FOR_SAVE, env)) != NULL){
 +       strncpy(folder2,rule->result,sizeof(folder2)-1);
 +       folder2[sizeof(folder2)-1] = '\0';
 +       folder = folder2;
@@ -305,10 +305,10 @@ Index: alpine-2.24/alpine/mailcmd.c
      /* how many context's can be saved to... */
      for(tc = state->context_list; tc; tc = tc->next)
        if(!NEWS_TEST(tc))
-Index: alpine-2.24/alpine/mailindx.c
+Index: alpine-2.25/alpine/mailindx.c
 ===================================================================
---- alpine-2.24.orig/alpine/mailindx.c
-+++ alpine-2.24/alpine/mailindx.c
+--- alpine-2.25.orig/alpine/mailindx.c
++++ alpine-2.25/alpine/mailindx.c
 @@ -229,6 +229,8 @@ mail_index_screen(struct pine *state)
      state->prev_screen = mail_index_screen;
      state->next_screen = SCREEN_FUN_NULL;
@@ -333,10 +333,10 @@ Index: alpine-2.24/alpine/mailindx.c
  }
  
  
-Index: alpine-2.24/alpine/mailpart.c
+Index: alpine-2.25/alpine/mailpart.c
 ===================================================================
---- alpine-2.24.orig/alpine/mailpart.c
-+++ alpine-2.24/alpine/mailpart.c
+--- alpine-2.25.orig/alpine/mailpart.c
++++ alpine-2.25/alpine/mailpart.c
 @@ -182,7 +182,7 @@ attachment_screen(struct pine *ps)
  		  maxnumwid = 0, maxsizewid = 0, old_cols = -1, km_popped = 0, expbits,
  		  last_type = TYPEOTHER;
@@ -370,10 +370,10 @@ Index: alpine-2.24/alpine/mailpart.c
  }
  
  
-Index: alpine-2.24/alpine/mailview.c
+Index: alpine-2.25/alpine/mailview.c
 ===================================================================
---- alpine-2.24.orig/alpine/mailview.c
-+++ alpine-2.24/alpine/mailview.c
+--- alpine-2.25.orig/alpine/mailview.c
++++ alpine-2.25/alpine/mailview.c
 @@ -252,6 +252,8 @@ mail_view_screen(struct pine *ps)
      ps->prev_screen = mail_view_screen;
      ps->force_prefer_plain = ps->force_no_prefer_plain = 0;
@@ -391,10 +391,10 @@ Index: alpine-2.24/alpine/mailview.c
  
      if (prefix && *prefix)
         fs_give((void **)&prefix);
-Index: alpine-2.24/alpine/osdep/termin.gen.c
+Index: alpine-2.25/alpine/osdep/termin.gen.c
 ===================================================================
---- alpine-2.24.orig/alpine/osdep/termin.gen.c
-+++ alpine-2.24/alpine/osdep/termin.gen.c
+--- alpine-2.25.orig/alpine/osdep/termin.gen.c
++++ alpine-2.25/alpine/osdep/termin.gen.c
 @@ -33,6 +33,8 @@ static char rcsid[] = "$Id: termin.gen.c
  #include "../../pith/newmail.h"
  #include "../../pith/conf.h"
@@ -456,7 +456,7 @@ Index: alpine-2.24/alpine/osdep/termin.gen.c
      if(ucs != NO_OP_COMMAND && ucs != NO_OP_IDLE && ucs != KEY_RESIZE)
        zero_new_mail_count();
  
-@@ -1158,6 +1196,7 @@ process_config_input(UCS *ch)
+@@ -1159,6 +1197,7 @@ process_config_input(UCS *ch)
  	if(ps_global->initial_cmds && !*ps_global->initial_cmds && ps_global->free_initial_cmds){
  	    fs_give((void **) &ps_global->free_initial_cmds);
  	    ps_global->initial_cmds = NULL;
@@ -464,10 +464,10 @@ Index: alpine-2.24/alpine/osdep/termin.gen.c
  	}
  
  	return(ret);
-Index: alpine-2.24/alpine/reply.c
+Index: alpine-2.25/alpine/reply.c
 ===================================================================
---- alpine-2.24.orig/alpine/reply.c
-+++ alpine-2.24/alpine/reply.c
+--- alpine-2.25.orig/alpine/reply.c
++++ alpine-2.25/alpine/reply.c
 @@ -62,7 +62,8 @@ The evolution continues...
  #include "../pith/tempfile.h"
  #include "../pith/busy.h"
@@ -478,7 +478,7 @@ Index: alpine-2.24/alpine/reply.c
  
  /*
   * Internal Prototypes
-@@ -110,11 +111,12 @@ reply(struct pine *pine_state, ACTION_S
+@@ -109,11 +110,12 @@ reply(struct pine *pine_state, ACTION_S
      long        msgno, j, totalm, rflags, *seq = NULL;
      int         i, include_text = 0, times = -1, warned = 0, rv = 0,
  		flags = RSF_QUERY_REPLY_ALL, reply_raw_body = 0;
@@ -492,7 +492,7 @@ Index: alpine-2.24/alpine/reply.c
  #if	defined(DOS) && !defined(_WINDOWS)
      char *reserve;
  #endif
-@@ -140,6 +142,69 @@ reply(struct pine *pine_state, ACTION_S
+@@ -139,6 +141,69 @@ reply(struct pine *pine_state, ACTION_S
         && F_ON(F_ENABLE_FULL_HDR_AND_TEXT, ps_global))
        reply_raw_body = 1;
  
@@ -514,7 +514,7 @@ Index: alpine-2.24/alpine/reply.c
 +		goto done_early;
 +	    }
 +
-+	    if(rule = get_result_rule(V_REPLY_INDENT_RULES, FOR_COMPOSE , env)){
++	    if((rule = get_result_rule(V_REPLY_INDENT_RULES, FOR_COMPOSE , env)) != NULL){
 +	        RULELIST *list = get_rulelist_from_code(V_REPLY_INDENT_RULES,
 +                                                ps_global->rule_list);
 +	        RULE_S *prule = get_rule(list, rule->number);
@@ -562,7 +562,7 @@ Index: alpine-2.24/alpine/reply.c
      /*
       * We may have to loop through first to figure out what default
       * reply-indent-string to offer...
-@@ -288,8 +353,18 @@ reply(struct pine *pine_state, ACTION_S
+@@ -287,8 +352,18 @@ reply(struct pine *pine_state, ACTION_S
  		outgoing->subject = cpystr("Re: several messages");
  	    }
  	}
@@ -583,7 +583,7 @@ Index: alpine-2.24/alpine/reply.c
      }
  
      /* fill reply header */
-@@ -308,13 +383,7 @@ reply(struct pine *pine_state, ACTION_S
+@@ -307,13 +382,7 @@ reply(struct pine *pine_state, ACTION_S
      if(sp_expunge_count(pine_state->mail_stream))	/* cur msg expunged */
        goto done_early;
  
@@ -598,7 +598,7 @@ Index: alpine-2.24/alpine/reply.c
  	rflags = ROLE_REPLY;
  	if(!ps_global->reply.role_chosen && nonempty_patterns(rflags, &dummy)){
  	    /* setup default role */
-@@ -725,6 +794,9 @@ reply(struct pine *pine_state, ACTION_S
+@@ -724,6 +793,9 @@ reply(struct pine *pine_state, ACTION_S
      if(prefix)
        fs_give((void **)&prefix);
  
@@ -608,7 +608,7 @@ Index: alpine-2.24/alpine/reply.c
      if(fcc)
        fs_give((void **) &fcc);
  
-@@ -1598,9 +1670,14 @@ forward(struct pine *ps, ACTION_S *role_
+@@ -1594,9 +1666,14 @@ forward(struct pine *ps, ACTION_S *role_
  	}
      }
  
@@ -624,7 +624,7 @@ Index: alpine-2.24/alpine/reply.c
  
      outgoing->message_id  = generate_message_id(role);
  
-@@ -1834,6 +1911,7 @@ forward(struct pine *ps, ACTION_S *role_
+@@ -1830,6 +1907,7 @@ forward(struct pine *ps, ACTION_S *role_
  #if	defined(DOS) && !defined(_WINDOWS)
      free((void *)reserve);
  #endif
@@ -632,10 +632,10 @@ Index: alpine-2.24/alpine/reply.c
      pine_send(outgoing, &body, "FORWARD MESSAGE",
  	      role, NULL, &reply, redraft_pos,
  	      NULL, NULL, 0);
-Index: alpine-2.24/alpine/roleconf.c
+Index: alpine-2.25/alpine/roleconf.c
 ===================================================================
---- alpine-2.24.orig/alpine/roleconf.c
-+++ alpine-2.24/alpine/roleconf.c
+--- alpine-2.25.orig/alpine/roleconf.c
++++ alpine-2.25/alpine/roleconf.c
 @@ -7706,6 +7706,11 @@ role_text_tool_inick(struct pine *ps, in
  	    if(apval)
  	      *apval = (role && role->nick) ? cpystr(role->nick) : NULL;
@@ -648,10 +648,10 @@ Index: alpine-2.24/alpine/roleconf.c
  	    if((*cl)->value)
  	      fs_give((void **)&((*cl)->value));
  
-Index: alpine-2.24/alpine/send.c
+Index: alpine-2.25/alpine/send.c
 ===================================================================
---- alpine-2.24.orig/alpine/send.c
-+++ alpine-2.24/alpine/send.c
+--- alpine-2.25.orig/alpine/send.c
++++ alpine-2.25/alpine/send.c
 @@ -63,7 +63,7 @@ static char rcsid[] = "$Id: send.c 1142
  #include "../pith/mimetype.h"
  #include "../pith/send.h"
@@ -720,7 +720,7 @@ Index: alpine-2.24/alpine/send.c
 +			    (void)removing_extra_stuff(addr);
 +			    if (rule->result)
 +				fs_give((void **)&rule->result);
-+				fs_give((void **)&rule);
++			    fs_give((void **)&rule);
 +			}
 +			fs_give((void **)&ps_global->procid);
 +			if (outgoing->date)
@@ -730,10 +730,10 @@ Index: alpine-2.24/alpine/send.c
  		    rfc822_parse_adrlist(pf->addr, addr,
  					 ps_global->maildomain);
  		    fs_give((void **)&addr);
-Index: alpine-2.24/pith/Makefile.am
+Index: alpine-2.25/pith/Makefile.am
 ===================================================================
---- alpine-2.24.orig/pith/Makefile.am
-+++ alpine-2.24/pith/Makefile.am
+--- alpine-2.25.orig/pith/Makefile.am
++++ alpine-2.25/pith/Makefile.am
 @@ -26,7 +26,7 @@ libpith_a_SOURCES = ablookup.c abdlc.c a
  	filter.c flag.c folder.c handle.c help.c helpindx.c hist.c icache.c ical.c imap.c init.c \
  	keyword.c ldap.c list.c mailcap.c mailcmd.c mailindx.c maillist.c mailview.c \
@@ -743,10 +743,10 @@ Index: alpine-2.24/pith/Makefile.am
  	state.c status.c store.c stream.c string.c strlst.c takeaddr.c tempfile.c text.c \
  	thread.c adjtime.c url.c util.c helptext.c smkeys.c smime.c
  
-Index: alpine-2.24/pith/Makefile.in
+Index: alpine-2.25/pith/Makefile.in
 ===================================================================
---- alpine-2.24.orig/pith/Makefile.in
-+++ alpine-2.24/pith/Makefile.in
+--- alpine-2.25.orig/pith/Makefile.in
++++ alpine-2.25/pith/Makefile.in
 @@ -142,7 +142,7 @@ am_libpith_a_OBJECTS = ablookup.$(OBJEXT
  	mimedesc.$(OBJEXT) mimetype.$(OBJEXT) msgno.$(OBJEXT) \
  	newmail.$(OBJEXT) news.$(OBJEXT) pattern.$(OBJEXT) \
@@ -773,10 +773,10 @@ Index: alpine-2.24/pith/Makefile.in
  
  .c.o:
  @am__fastdepCC_TRUE@	$(AM_V_CC)$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
-Index: alpine-2.24/pith/adrbklib.c
+Index: alpine-2.25/pith/adrbklib.c
 ===================================================================
---- alpine-2.24.orig/pith/adrbklib.c
-+++ alpine-2.24/pith/adrbklib.c
+--- alpine-2.25.orig/pith/adrbklib.c
++++ alpine-2.25/pith/adrbklib.c
 @@ -5138,8 +5138,14 @@ init_addrbooks(OpenStatus want_status, i
  	    if(as.cur >= as.how_many_personals)
  	      pab->type |= GLOBAL;
@@ -794,10 +794,10 @@ Index: alpine-2.24/pith/adrbklib.c
  	    /* global address books are forced readonly */
  	    if(pab->type & GLOBAL && pab->access != NoAccess)
  	      pab->access = ReadOnly;
-Index: alpine-2.24/pith/conf.c
+Index: alpine-2.25/pith/conf.c
 ===================================================================
---- alpine-2.24.orig/pith/conf.c
-+++ alpine-2.24/pith/conf.c
+--- alpine-2.25.orig/pith/conf.c
++++ alpine-2.25/pith/conf.c
 @@ -29,6 +29,7 @@ static char rcsid[] = "$Id: conf.c 1266
  #include "../pith/remote.h"
  #include "../pith/keyword.h"
@@ -843,7 +843,7 @@ Index: alpine-2.24/pith/conf.c
  CONF_TXT_T cf_text_speller[] =		"Specifies the program invoked by ^T in the Composer.";
  
  #ifdef _WINDOWS
-@@ -574,6 +605,34 @@ static struct variable variables[] = {
+@@ -576,6 +607,34 @@ static struct variable variables[] = {
  	NULL,			cf_text_thread_exp_char},
  {"threading-lastreply-character",	0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
  	"Threading Last Reply Character",	cf_text_thread_lastreply_char},
@@ -878,7 +878,7 @@ Index: alpine-2.24/pith/conf.c
  #ifndef	_WINDOWS
  {"display-character-set",		0, 1, 0, 1, 1, 0, 0, 0, 0, 1, 0,
  	NULL,			cf_text_disp_char_set},
-@@ -2772,6 +2831,7 @@ init_vars(struct pine *ps, void (*cmds_f
+@@ -2777,6 +2836,7 @@ init_vars(struct pine *ps, void (*cmds_f
        if(cmds_f)
          (*cmds_f)(ps, VAR_INIT_CMD_LIST);
  
@@ -886,7 +886,7 @@ Index: alpine-2.24/pith/conf.c
  #ifdef	_WINDOWS
      mswin_set_quit_confirm (F_OFF(F_QUIT_WO_CONFIRM, ps_global));
  #endif	/* _WINDOWS */
-@@ -3228,6 +3288,8 @@ feature_list(int index)
+@@ -3233,6 +3293,8 @@ feature_list(int index)
  	 F_FORCE_LOW_SPEED, h_config_force_low_speed, PREF_OS_LWSD, 0},
  	{"auto-move-read-msgs", "Auto Move Read Messages",
  	 F_AUTO_READ_MSGS, h_config_auto_read_msgs, PREF_MISC, 0},
@@ -895,7 +895,7 @@ Index: alpine-2.24/pith/conf.c
  	{"auto-unselect-after-apply", NULL,
  	 F_AUTO_UNSELECT, h_config_auto_unselect, PREF_MISC, 0},
  	{"auto-unzoom-after-apply", NULL,
-@@ -7927,6 +7989,34 @@ config_help(int var, int feature)
+@@ -7934,6 +7996,34 @@ config_help(int var, int feature)
  	return(h_config_ab_sort_rule);
        case V_FLD_SORT_RULE :
  	return(h_config_fld_sort_rule);
@@ -930,11 +930,11 @@ Index: alpine-2.24/pith/conf.c
        case V_POST_CHAR_SET :
  	return(h_config_post_char_set);
        case V_UNK_CHAR_SET :
-Index: alpine-2.24/pith/conf.h
+Index: alpine-2.25/pith/conf.h
 ===================================================================
---- alpine-2.24.orig/pith/conf.h
-+++ alpine-2.24/pith/conf.h
-@@ -161,6 +161,46 @@
+--- alpine-2.25.orig/pith/conf.h
++++ alpine-2.25/pith/conf.h
+@@ -162,6 +162,46 @@
  #define GLO_AB_SORT_RULE	     vars[V_AB_SORT_RULE].global_val.p
  #define VAR_FLD_SORT_RULE	     vars[V_FLD_SORT_RULE].current_val.p
  #define GLO_FLD_SORT_RULE	     vars[V_FLD_SORT_RULE].global_val.p
@@ -981,10 +981,10 @@ Index: alpine-2.24/pith/conf.h
  #ifndef	_WINDOWS
  #define VAR_CHAR_SET		     vars[V_CHAR_SET].current_val.p
  #define GLO_CHAR_SET		     vars[V_CHAR_SET].global_val.p
-Index: alpine-2.24/pith/conftype.h
+Index: alpine-2.25/pith/conftype.h
 ===================================================================
---- alpine-2.24.orig/pith/conftype.h
-+++ alpine-2.24/pith/conftype.h
+--- alpine-2.25.orig/pith/conftype.h
++++ alpine-2.25/pith/conftype.h
 @@ -71,6 +71,20 @@ typedef	enum {    V_PERSONAL_NAME = 0
  		, V_THREAD_MORE_CHAR
  		, V_THREAD_EXP_CHAR
@@ -1006,7 +1006,7 @@ Index: alpine-2.24/pith/conftype.h
  #ifndef	_WINDOWS
  		, V_CHAR_SET
  		, V_OLD_CHAR_SET
-@@ -348,6 +362,7 @@ typedef enum {
+@@ -349,6 +363,7 @@ typedef enum {
  	F_FULL_AUTO_EXPUNGE,
  	F_EXPUNGE_MANUALLY,
  	F_AUTO_READ_MSGS,
@@ -1014,10 +1014,10 @@ Index: alpine-2.24/pith/conftype.h
  	F_AUTO_FCC_ONLY,
  	F_READ_IN_NEWSRC_ORDER,
  	F_SELECT_WO_CONFIRM,
-Index: alpine-2.24/pith/detoken.c
+Index: alpine-2.25/pith/detoken.c
 ===================================================================
---- alpine-2.24.orig/pith/detoken.c
-+++ alpine-2.24/pith/detoken.c
+--- alpine-2.25.orig/pith/detoken.c
++++ alpine-2.25/pith/detoken.c
 @@ -25,7 +25,7 @@ static char rcsid[] = "$Id: detoken.c 76
  #include "../pith/reply.h"
  #include "../pith/mailindx.h"
@@ -1079,10 +1079,10 @@ Index: alpine-2.24/pith/detoken.c
  		  repl = get_reply_data(env, role, pt->ctype,
  					subbuf, sizeof(subbuf)-1);
  
-Index: alpine-2.24/pith/indxtype.h
+Index: alpine-2.25/pith/indxtype.h
 ===================================================================
---- alpine-2.24.orig/pith/indxtype.h
-+++ alpine-2.24/pith/indxtype.h
+--- alpine-2.25.orig/pith/indxtype.h
++++ alpine-2.25/pith/indxtype.h
 @@ -84,6 +84,11 @@ typedef enum {iNothing, iStatus, iFStatu
  	      iCurNews, iArrow,
  	      iMailbox, iAddress, iInit, iCursorPos,
@@ -1131,10 +1131,10 @@ Index: alpine-2.24/pith/indxtype.h
  
  #define DEFAULT_REPLY_INTRO "default"
  
-Index: alpine-2.24/pith/mailcmd.c
+Index: alpine-2.25/pith/mailcmd.c
 ===================================================================
---- alpine-2.24.orig/pith/mailcmd.c
-+++ alpine-2.24/pith/mailcmd.c
+--- alpine-2.25.orig/pith/mailcmd.c
++++ alpine-2.25/pith/mailcmd.c
 @@ -39,6 +39,7 @@ static char rcsid[] = "$Id: mailcmd.c 11
  #include "../pith/ablookup.h"
  #include "../pith/search.h"
@@ -1343,7 +1343,7 @@ Index: alpine-2.24/pith/mailcmd.c
  
  	for(; f && *archive; archive++){
  	    char *p;
-@@ -2761,3 +2658,295 @@ get_uname(char *mailbox, char *target, i
+@@ -2760,3 +2657,295 @@ get_uname(char *mailbox, char *target, i
  
      return(*target ? target : NULL);
  }
@@ -1639,10 +1639,10 @@ Index: alpine-2.24/pith/mailcmd.c
 +
 +  }
 +}
-Index: alpine-2.24/pith/mailcmd.h
+Index: alpine-2.25/pith/mailcmd.h
 ===================================================================
---- alpine-2.24.orig/pith/mailcmd.h
-+++ alpine-2.24/pith/mailcmd.h
+--- alpine-2.25.orig/pith/mailcmd.h
++++ alpine-2.25/pith/mailcmd.h
 @@ -42,6 +42,8 @@
  #define DB_FROMTAB	0x02	/* opening because of TAB command      */
  #define DB_INBOXWOCNTXT	0x04	/* interpret inbox as one true inbox */
@@ -1666,10 +1666,10 @@ Index: alpine-2.24/pith/mailcmd.h
  void	   cross_delete_crossposts(MAILSTREAM *);
  long	   zoom_index(struct pine *, MAILSTREAM *, MSGNO_S *, int);
  int	   unzoom_index(struct pine *, MAILSTREAM *, MSGNO_S *);
-Index: alpine-2.24/pith/mailindx.c
+Index: alpine-2.25/pith/mailindx.c
 ===================================================================
---- alpine-2.24.orig/pith/mailindx.c
-+++ alpine-2.24/pith/mailindx.c
+--- alpine-2.25.orig/pith/mailindx.c
++++ alpine-2.25/pith/mailindx.c
 @@ -41,6 +41,7 @@ static char rcsid[] = "$Id: mailindx.c 1
  #include "../pith/send.h"
  #include "../pith/options.h"
@@ -2078,7 +2078,7 @@ Index: alpine-2.24/pith/mailindx.c
 +
 +  rule = get_result_rule(V_THREAD_DISP_STYLE_RULES, FOR_THREAD, NULL);
 +  if (rule || ps_global->VAR_THREAD_DISP_STYLE){
-+     for(i = 0; v = thread_disp_styles(i); i++)
++     for(i = 0; (v = thread_disp_styles(i)) != NULL; i++)
 +        if(!strucmp(rule ? rule->result : ps_global->VAR_THREAD_DISP_STYLE, 
 +		    rule ? (v ? v->name : "" ) : S_OR_L(v))){
 +              ps_global->thread_disp_style = v->value;
@@ -2106,7 +2106,7 @@ Index: alpine-2.24/pith/mailindx.c
 +    fs_give((void **)&env->sparep);
 + if(we_clear)
 +   mail_free_envelope(&env);
-+ if(rule = get_rulelist_from_code(V_REPLACE_RULES, ps_global->rule_list)){
++ if((rule = get_rulelist_from_code(V_REPLACE_RULES, ps_global->rule_list)) != NULL){
 +    list = functions_for_token(token);
 +    while(rule_result == NULL && (prule = get_rule(rule,n++))){
 +        rule_context = 0;
@@ -2129,10 +2129,10 @@ Index: alpine-2.24/pith/mailindx.c
 + }
 + return rule_result;
 +}
-Index: alpine-2.24/pith/mailindx.h
+Index: alpine-2.25/pith/mailindx.h
 ===================================================================
---- alpine-2.24.orig/pith/mailindx.h
-+++ alpine-2.24/pith/mailindx.h
+--- alpine-2.25.orig/pith/mailindx.h
++++ alpine-2.25/pith/mailindx.h
 @@ -30,6 +30,9 @@ extern void		(*setup_header_widths)(MAIL
  
  
@@ -2143,10 +2143,10 @@ Index: alpine-2.24/pith/mailindx.h
  int	       msgline_hidden(MAILSTREAM *, MSGNO_S *, long, int);
  void	       adjust_cur_to_visible(MAILSTREAM *, MSGNO_S *);
  unsigned long  line_hash(char *);
-Index: alpine-2.24/pith/makefile.wnt
+Index: alpine-2.25/pith/makefile.wnt
 ===================================================================
---- alpine-2.24.orig/pith/makefile.wnt
-+++ alpine-2.24/pith/makefile.wnt
+--- alpine-2.25.orig/pith/makefile.wnt
++++ alpine-2.25/pith/makefile.wnt
 @@ -46,7 +46,8 @@ HFILES=	../include/system.h ../include/g
  	init.h keyword.h ldap.h list.h mailcap.h mailcmd.h mailindx.h maillist.h \
  	mailpart.h mailview.h margin.h mimedesc.h mimetype.h msgno.h newmail.h news.h \
@@ -2166,11 +2166,11 @@ Index: alpine-2.24/pith/makefile.wnt
  	smime.obj smkeys.obj sort.obj state.obj status.obj store.obj stream.obj string.obj strlst.obj \
  	takeaddr.obj tempfile.obj text.obj thread.obj adjtime.obj url.obj util.obj
  
-Index: alpine-2.24/pith/pine.hlp
+Index: alpine-2.25/pith/pine.hlp
 ===================================================================
---- alpine-2.24.orig/pith/pine.hlp
-+++ alpine-2.24/pith/pine.hlp
-@@ -4602,6 +4602,7 @@ There are also additional details on
+--- alpine-2.25.orig/pith/pine.hlp
++++ alpine-2.25/pith/pine.hlp
+@@ -4760,6 +4760,7 @@ There are also additional details on
  <li><a href="h_config_alt_reply_menu">FEATURE: <!--#echo var="FEAT_alternate-reply-menu"--></a>
  <li><a href="h_config_force_low_speed">FEATURE: <!--#echo var="FEAT_assume-slow-link"--></a>
  <li><a href="h_config_auto_read_msgs">FEATURE: <!--#echo var="FEAT_auto-move-read-msgs"--></a>
@@ -2178,7 +2178,7 @@ Index: alpine-2.24/pith/pine.hlp
  <li><a href="h_config_auto_open_unread">FEATURE: <!--#echo var="FEAT_auto-open-next-unread"--></a>
  <li><a href="h_config_auto_unselect">FEATURE: <!--#echo var="FEAT_auto-unselect-after-apply"--></a>
  <li><a href="h_config_auto_unzoom">FEATURE: <!--#echo var="FEAT_auto-unzoom-after-apply"--></a>
-@@ -20133,6 +20134,7 @@ This set of special tokens may be used i
+@@ -20292,6 +20293,7 @@ This set of special tokens may be used i
  <A HREF="h_config_index_format">&quot;<!--#echo var="VAR_index-format"-->&quot;</A> option,
  in the <A HREF="h_config_reply_intro">&quot;<!--#echo var="VAR_reply-leadin"-->&quot;</A> option,
  in signature files,
@@ -2186,7 +2186,7 @@ Index: alpine-2.24/pith/pine.hlp
  in template files used in
  <A HREF="h_rules_roles">&quot;roles&quot;</A>, and in the folder name
  that is the target of a Filter Rule.
-@@ -20145,7 +20147,7 @@ and in the target of Filter Rules.
+@@ -20304,7 +20306,7 @@ and in the target of Filter Rules.
  <P>
  <P>
  
@@ -2195,7 +2195,7 @@ Index: alpine-2.24/pith/pine.hlp
  
  <DL>
  <DT>SUBJECT</DT>
-@@ -20179,6 +20181,22 @@ email address, never the personal name.
+@@ -20338,6 +20340,22 @@ email address, never the personal name.
  For example, &quot;mailbox@domain&quot;.
  </DD>
  
@@ -2218,7 +2218,7 @@ Index: alpine-2.24/pith/pine.hlp
  <DT>MAILBOX</DT>
  <DD>
  This is the same as the &quot;ADDRESS&quot; except that the 
-@@ -20226,6 +20244,15 @@ are unavailable) of the persons specifie
+@@ -20385,6 +20403,15 @@ are unavailable) of the persons specifie
  message's &quot;Cc:&quot; header field.
  </DD>
  
@@ -2234,7 +2234,7 @@ Index: alpine-2.24/pith/pine.hlp
  <DT>RECIPS</DT>
  <DD>
  This token represents the personal names (or email addresses if the names
-@@ -20234,6 +20261,14 @@ message's &quot;To:&quot; header field a
+@@ -20393,6 +20420,14 @@ message's &quot;To:&quot; header field a
  the message's &quot;Cc:&quot; header field.
  </DD>
  
@@ -2249,7 +2249,7 @@ Index: alpine-2.24/pith/pine.hlp
  <DT>NEWSANDRECIPS</DT>
  <DD>
  This token represents the newsgroups from the
-@@ -21366,6 +21401,110 @@ This is an end of line marker.
+@@ -21525,6 +21560,110 @@ This is an end of line marker.
  </DL>
  
  <P>
@@ -2360,7 +2360,7 @@ Index: alpine-2.24/pith/pine.hlp
  <H1><EM>Token Available Only for Templates and Signatures</EM></H1>
  
  <DL>
-@@ -24828,6 +24967,922 @@ character sets Alpine knows about by usi
+@@ -25015,6 +25154,922 @@ character sets Alpine knows about by usi
  &lt;End of help on this topic&gt;
  </BODY>
  </HTML>
@@ -3283,7 +3283,7 @@ Index: alpine-2.24/pith/pine.hlp
  ====== h_config_char_set =====
  <HTML>
  <HEAD>
-@@ -28580,6 +29635,76 @@ the From field is used to show the relat
+@@ -28767,6 +29822,76 @@ the From field is used to show the relat
  &lt;End of help on this topic&gt;
  </BODY>
  </HTML>
@@ -3360,7 +3360,7 @@ Index: alpine-2.24/pith/pine.hlp
  ====== h_config_pruning_rule =====
  <HTML>
  <HEAD>
-@@ -32271,6 +33396,29 @@ automatically transfer all read messages
+@@ -32449,6 +33574,29 @@ automatically transfer all read messages
  them as deleted in the INBOX.  Messages in the INBOX marked with an 
  &quot;N&quot; (meaning New, or unseen) are not affected.
  <P>
@@ -3390,10 +3390,10 @@ Index: alpine-2.24/pith/pine.hlp
  <UL>   
  <LI><A HREF="h_finding_help">Finding more information and requesting help</A>
  </UL><P>
-Index: alpine-2.24/pith/reply.c
+Index: alpine-2.25/pith/reply.c
 ===================================================================
---- alpine-2.24.orig/pith/reply.c
-+++ alpine-2.24/pith/reply.c
+--- alpine-2.25.orig/pith/reply.c
++++ alpine-2.25/pith/reply.c
 @@ -47,6 +47,8 @@ static char rcsid[] = "$Id: reply.c 1074
  #include "../pith/mailcmd.h"
  #include "../pith/margin.h"
@@ -3525,7 +3525,8 @@ Index: alpine-2.24/pith/reply.c
        case iInit:
 +      if (env)  
  	get_addr_data(env, type, buf, maxlen);
- 	break;
+-	break;
++      break;
  
 -      case iRoleNick:
 -	if(role && role->nick){
@@ -3549,7 +3550,7 @@ Index: alpine-2.24/pith/reply.c
 +        {MAILSTREAM *stream = ps_global->mail_stream;
 +	 MSGNO_S *msgmap = NULL;
 +         long msgno;
-+         MESSAGECACHE *mc;
++         MESSAGECACHE *mc = NULL;
 +	 strncpy(buf, "_FLAG_", maxlen);	/* default value */
 +	 if (stream){
 +	     msgmap = sp_msgmap(stream);
@@ -3740,7 +3741,7 @@ Index: alpine-2.24/pith/reply.c
 -	buftmp[sizeof(buftmp)-1] = '\0';
 +    buftmp[0] = '\0';
 +    ps_global->procid = cpystr("fwd-subject");
-+    if (rule = get_result_rule(V_FORWARD_RULES,FOR_COMPOSE, env)){
++    if ((rule = get_result_rule(V_FORWARD_RULES,FOR_COMPOSE, env)) != NULL){
 +       snprintf(buftmp, sizeof(buftmp), "%s", rule->result);
 +       fs_give((void **)&rule->result);
 +       fs_give((void **)&rule);
@@ -3754,10 +3755,10 @@ Index: alpine-2.24/pith/reply.c
  	/* decode any 8bit (copy to the temp buffer if decoding doesn't) */
  	if(rfc1522_decode_to_utf8((unsigned char *) tmp_20k_buf,
  				  SIZEOF_20KBUF, buftmp) == (unsigned char *) buftmp)
-Index: alpine-2.24/pith/rules.c
+Index: alpine-2.25/pith/rules.c
 ===================================================================
 --- /dev/null
-+++ alpine-2.24/pith/rules.c
++++ alpine-2.25/pith/rules.c
 @@ -0,0 +1,1565 @@
 +/* This module was written by
 + *
@@ -4140,11 +4141,11 @@ Index: alpine-2.24/pith/rules.c
 +    d = data;
 +
 +  rvalue = (TOKEN_VALUE *) rule_alloc_mem(sizeof(TOKEN_VALUE));
-+  if (p = advance_to_char(d,';', STRICTLY, &offset)){
++  if ((p = advance_to_char(d,';', STRICTLY, &offset)) != NULL){
 +      rvalue->testxt = p;
 +      rvalue->next   = parse_group_data(d + strlen(p) + 1 + offset, error);
 +  }
-+  else if (p = advance_to_char(d,'}', STRICTLY, NULL))
++  else if ((p = advance_to_char(d,'}', STRICTLY, NULL)) != NULL)
 +      rvalue->testxt = p;
 +  else if (d && *d == '}')
 +      rvalue->testxt = cpystr("");
@@ -4302,7 +4303,7 @@ Index: alpine-2.24/pith/rules.c
 +		   else error++;
 +		   break;
 +	case '|':
-+	case '&': if(*(p+1) = *p){
++	case '&': if((*(p+1) = *p) != '\0'){
 +			strcat(q, CSEP_S); strcat(q, *p == '|' ? "OR " : "AND ");
 +			p += 2;
 +		  } else error++;
@@ -4532,7 +4533,7 @@ Index: alpine-2.24/pith/rules.c
 +{
 +  TOKEN_VALUE *rv;
 +  REXSUB_S *rsv = NULL;		/* rexsub value */
-+  char *d, *p, *t, *n;		/* data, pattern, text, number */
++  char *d = NULL, *p, *t, *n;	/* data, pattern, text, number */
 +  long number;
 +  int offset, error;
 +
@@ -4624,7 +4625,7 @@ Index: alpine-2.24/pith/rules.c
 +  RULELIST *trulelist = NULL;
 +
 +  if (list[i] && *list[i]){
-+     if(rule = parse_rule(list[i], context)){
++     if((rule = parse_rule(list[i], context)) != NULL){
 +	trulelist  = (RULELIST *) rule_alloc_mem(sizeof(RULELIST));
 +	trulelist->prule = rule;
 +	trulelist->next = get_rule_list(list, context, i+1);
@@ -4660,7 +4661,7 @@ Index: alpine-2.24/pith/rules.c
 +  if (list && *list && **list){
 +     trulelist = (PRULELIST_S *) rule_alloc_mem(sizeof(PRULELIST_S));
 +     trulelist->varnum = code;
-+     if (trulelist->rlist = get_rule_list(list, context, 0))
++     if ((trulelist->rlist = get_rule_list(list, context, 0)) != NULL)
 +        ps_global->rule_list = add_prule(ps_global->rule_list, trulelist);
 +     else
 +	free_parsed_rule_list(&trulelist);
@@ -4737,7 +4738,7 @@ Index: alpine-2.24/pith/rules.c
 +  if(!rlist)
 +     return NULL;
 +
-+  if (result = process_rule(rlist->prule, ctxt, env))
++  if ((result = process_rule(rlist->prule, ctxt, env)) != NULL)
 +      return result;
 +  else{
 +       (*n)++;
@@ -5075,7 +5076,7 @@ Index: alpine-2.24/pith/rules.c
 +   if (!tval)
 +      return test;
 +
-+   while(begin_text = strstr(test+offset,tval->testxt)){
++   while((begin_text = strstr(test+offset,tval->testxt)) != NULL){
 +      memmove(begin_text, begin_text+strlen(tval->testxt), strlen(begin_text) - strlen(tval->testxt) + 1);
 +      offset = begin_text - test;
 +   }
@@ -5091,7 +5092,7 @@ Index: alpine-2.24/pith/rules.c
 + int offset;
 +
 + if (taction->context & context){
-+    if (test = detoken_src(taction->token, context, env, NULL, NULL, NULL))
++    if ((test = detoken_src(taction->token, context, env, NULL, NULL, NULL)) != NULL)
 +       test = do_trim(test, taction->value);
 +    return test;
 + }
@@ -5109,7 +5110,7 @@ Index: alpine-2.24/pith/rules.c
 +      return test;
 +
 +   if((trim_text = expand(test, tval->testxt)) != NULL){
-+      while(begin_text = strstr(test+offset, trim_text)){
++      while((begin_text = strstr(test+offset, trim_text)) != NULL){
 +          memmove(begin_text, begin_text+strlen(trim_text), strlen(begin_text) - strlen(trim_text) + 1);
 +          offset = begin_text - test;
 +      }
@@ -5324,10 +5325,10 @@ Index: alpine-2.24/pith/rules.c
 +  env = pine_mail_fetchenvelope(idata->stream, idata->rawno);
 +  return env;
 +}
-Index: alpine-2.24/pith/rules.h
+Index: alpine-2.25/pith/rules.h
 ===================================================================
 --- /dev/null
-+++ alpine-2.24/pith/rules.h
++++ alpine-2.25/pith/rules.h
 @@ -0,0 +1,154 @@
 +/* Included file rules.h */
 +
@@ -5483,10 +5484,10 @@ Index: alpine-2.24/pith/rules.h
 +#define RELAXED 0x2
 +
 +#endif 	/* PITH_RULES_INCLUDED */
-Index: alpine-2.24/pith/rulestype.h
+Index: alpine-2.25/pith/rulestype.h
 ===================================================================
 --- /dev/null
-+++ alpine-2.24/pith/rulestype.h
++++ alpine-2.25/pith/rulestype.h
 @@ -0,0 +1,94 @@
 +#ifndef PITH_RULESTYPE_INCLUDED
 +#define PITH_RULESTYPE_INCLUDED
@@ -5582,10 +5583,10 @@ Index: alpine-2.24/pith/rulestype.h
 +
 +
 +#endif	/* PITH_RULESTYPE_INCLUDED */
-Index: alpine-2.24/pith/save.c
+Index: alpine-2.25/pith/save.c
 ===================================================================
---- alpine-2.24.orig/pith/save.c
-+++ alpine-2.24/pith/save.c
+--- alpine-2.25.orig/pith/save.c
++++ alpine-2.25/pith/save.c
 @@ -955,7 +955,7 @@ save(struct pine *state, MAILSTREAM *str
  	      *date = '\0';
  
@@ -5595,10 +5596,10 @@ Index: alpine-2.24/pith/save.c
  				   mc ? mc->rfc822_size : 0L, flags, date, so);
  
  	    if(flags)
-Index: alpine-2.24/pith/send.c
+Index: alpine-2.25/pith/send.c
 ===================================================================
---- alpine-2.24.orig/pith/send.c
-+++ alpine-2.24/pith/send.c
+--- alpine-2.25.orig/pith/send.c
++++ alpine-2.25/pith/send.c
 @@ -44,6 +44,7 @@ static char rcsid[] = "$Id: send.c 1204
  #include "../pith/ablookup.h"
  #include "../pith/sort.h"
@@ -5681,10 +5682,10 @@ Index: alpine-2.24/pith/send.c
      }
      else if((postcmd = smtp_command(ps_global->c_client_error, sizeof(ps_global->c_client_error))) != NULL){
  	char *cmdlist[2];
-Index: alpine-2.24/pith/sort.c
+Index: alpine-2.25/pith/sort.c
 ===================================================================
---- alpine-2.24.orig/pith/sort.c
-+++ alpine-2.24/pith/sort.c
+--- alpine-2.25.orig/pith/sort.c
++++ alpine-2.25/pith/sort.c
 @@ -30,7 +30,7 @@ static char rcsid[] = "$Id: sort.c 1142
  #include "../pith/signal.h"
  #include "../pith/busy.h"
@@ -5721,7 +5722,7 @@ Index: alpine-2.24/pith/sort.c
  				: pat->action->revsort;
  	}
      }
-+  }
++    }
  
      if(the_sort_order == SortThread && !(flags & SRT_MAN))
        ps_global->thread_cur_sort = ps_global->thread_def_sort;
@@ -5765,10 +5766,10 @@ Index: alpine-2.24/pith/sort.c
 +        return is_rev || rev  ?  SortScore : EndofList;
 +   return EndofList;
 +}
-Index: alpine-2.24/pith/sort.h
+Index: alpine-2.25/pith/sort.h
 ===================================================================
---- alpine-2.24.orig/pith/sort.h
-+++ alpine-2.24/pith/sort.h
+--- alpine-2.25.orig/pith/sort.h
++++ alpine-2.25/pith/sort.h
 @@ -45,6 +45,6 @@ char	*sort_name(SortOrder);
  void	 sort_folder(MAILSTREAM *, MSGNO_S *, SortOrder, int, unsigned, int);
  int	 decode_sort(char *, SortOrder *, int *, int);
@@ -5777,10 +5778,10 @@ Index: alpine-2.24/pith/sort.h
 +SortOrder translate(char *, int);
  
  #endif /* PITH_SORT_INCLUDED */
-Index: alpine-2.24/pith/state.c
+Index: alpine-2.25/pith/state.c
 ===================================================================
---- alpine-2.24.orig/pith/state.c
-+++ alpine-2.24/pith/state.c
+--- alpine-2.25.orig/pith/state.c
++++ alpine-2.25/pith/state.c
 @@ -35,6 +35,7 @@ static char rcsid[] = "$Id: state.c 1074
  #include "../pith/smime.h"
  #include "../pith/ical.h"
@@ -5799,10 +5800,10 @@ Index: alpine-2.24/pith/state.c
      free_vars(*pps);
  
      fs_give((void **) pps);
-Index: alpine-2.24/pith/state.h
+Index: alpine-2.25/pith/state.h
 ===================================================================
---- alpine-2.24.orig/pith/state.h
-+++ alpine-2.24/pith/state.h
+--- alpine-2.25.orig/pith/state.h
++++ alpine-2.25/pith/state.h
 @@ -33,7 +33,7 @@
  #include "../pith/stream.h"
  #include "../pith/color.h"
@@ -5824,7 +5825,7 @@ Index: alpine-2.24/pith/state.h
      unsigned     read_predicted:1;
  
      char         cur_folder[MAXPATH+1];
-@@ -368,6 +373,7 @@ struct pine {
+@@ -369,6 +374,7 @@ struct pine {
      struct {
          char	*(*display_filter)(char *, STORE_S *, gf_io_t, FILTLIST_S *);
          char	*(*display_filter_trigger)(BODY *, char *, size_t);
@@ -5832,7 +5833,7 @@ Index: alpine-2.24/pith/state.h
      } tools;
  
      KEYWORD_S   *keywords;
-@@ -378,6 +384,9 @@ struct pine {
+@@ -379,6 +385,9 @@ struct pine {
      char	 last_error[500];
      INIT_ERR_S  *init_errs;
  
@@ -5842,10 +5843,10 @@ Index: alpine-2.24/pith/state.h
      PRINT_S	*print;
  
  #ifdef SMIME
-Index: alpine-2.24/pith/string.c
+Index: alpine-2.25/pith/string.c
 ===================================================================
---- alpine-2.24.orig/pith/string.c
-+++ alpine-2.24/pith/string.c
+--- alpine-2.25.orig/pith/string.c
++++ alpine-2.25/pith/string.c
 @@ -20,6 +20,7 @@ static char rcsid[] = "$Id: string.c 910
      string.c
      Misc extra and useful string functions
@@ -5872,7 +5873,7 @@ Index: alpine-2.24/pith/string.c
 +
 +    for(;isspace(*p); p++);
 +
-+    while(*string = *p++)
++    while((*string = *p++) != '\0')
 +      if(!isspace((unsigned char)*string)){
 +	only_one_space = 0;
 +	string++;
@@ -5922,10 +5923,10 @@ Index: alpine-2.24/pith/string.c
 +        }
 +}
 +
-Index: alpine-2.24/pith/string.h
+Index: alpine-2.25/pith/string.h
 ===================================================================
---- alpine-2.24.orig/pith/string.h
-+++ alpine-2.24/pith/string.h
+--- alpine-2.25.orig/pith/string.h
++++ alpine-2.25/pith/string.h
 @@ -87,6 +87,7 @@ struct date {
  
  /* exported prototypes */

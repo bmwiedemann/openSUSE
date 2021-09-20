@@ -19,7 +19,7 @@
 Name:           alpine
 # For debugging only:
 %define		build_vanilla		0
-Version:        2.24
+Version:        2.25
 Release:        0
 Summary:        Mail User Agent
 License:        Apache-2.0
@@ -28,7 +28,7 @@ URL:            http://alpine.x10host.com/alpine/
 #Git-Clone:     https://repo.or.cz/alpine.git
 
 Source:         http://alpine.x10host.com/alpine/release/src/alpine-%version.tar.xz
-Source2:        http://alpine.x10host.com/alpine/release/src/sig/alpine-%version.tar.xz.sig
+#Source2:        http://alpine.x10host.com/alpine/release/src/sig/alpine-%version.tar.xz.sig
 Source3:        %name.png
 Source4:        %name.desktop
 Source9:        UPDATING.txt

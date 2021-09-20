@@ -1,4 +1,11 @@
 --------------------------------------------------------------------
+Mon Sep 20 11:25:53 UTC 2021 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/installation-images#523
+- increase minimal ext2 fs size to 128 kiB
+- 17.15
+
+--------------------------------------------------------------------
 Thu Sep 2 13:12:02 UTC 2021 - opensuse-packaging@opensuse.org
 
 - merge gh#openSUSE/installation-images#521

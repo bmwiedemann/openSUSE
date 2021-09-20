@@ -1894,4 +1894,12 @@
   The parameter force_trailing_slash in the DataSync::sync_data</comment>
     <requestid>917454</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>bda34dfe7a0aae14500505a22a951b22</srcmd5>
+    <version>9.23.56</version>
+    <time>1632251538</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>919900</requestid>
+  </revision>
 </revisionlist>

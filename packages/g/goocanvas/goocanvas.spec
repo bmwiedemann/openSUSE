@@ -27,7 +27,6 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/GooCanvas
 Source0:        https://download.gnome.org/sources/goocanvas/3.0/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(cairo) >= 1.10.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
 %if %{with_introspection}
@@ -83,7 +82,6 @@ This package provides the GObject Introspection bindings for GooCanvas.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

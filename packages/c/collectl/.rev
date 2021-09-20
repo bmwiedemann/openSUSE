@@ -317,4 +317,12 @@
     <comment>Same as the rq from tabraham1, would be nice to have this update in Factory</comment>
     <requestid>888536</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>d723cbb8479e64f8abc4f0e5a560eef4</srcmd5>
+    <version>4.3.1</version>
+    <time>1632251566</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920407</requestid>
+  </revision>
 </revisionlist>

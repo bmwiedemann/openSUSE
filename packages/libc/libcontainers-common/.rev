@@ -353,4 +353,14 @@
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1189893</comment>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>edc79c6c38fe9df60db016b47fb5b66b</srcmd5>
+    <version>20210626</version>
+    <time>1632251547</time>
+    <user>dimstar_suse</user>
+    <comment>- Comment out ostree_repo if it's blank [boo#1189893] 
+
+- Comment out ostree_repo [boo#1189893]</comment>
+    <requestid>919692</requestid>
+  </revision>
 </revisionlist>

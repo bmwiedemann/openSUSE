@@ -842,4 +842,13 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
     <comment> (forwarded request 899522 from iznogood)</comment>
     <requestid>899642</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>282d08ef451b1ee11799aa8d19a22033</srcmd5>
+    <version>0.10.50</version>
+    <time>1632251579</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920417 from sbrabec)</comment>
+    <requestid>920550</requestid>
+  </revision>
 </revisionlist>

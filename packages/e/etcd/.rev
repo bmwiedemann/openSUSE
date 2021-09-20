@@ -245,4 +245,12 @@
 - Change to sysuser-tools to create system user</comment>
     <requestid>911064</requestid>
   </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>c286952e6d48257650975215e8be9212</srcmd5>
+    <version>3.4.16</version>
+    <time>1632251550</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919709</requestid>
+  </revision>
 </revisionlist>

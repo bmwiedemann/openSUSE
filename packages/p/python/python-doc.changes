@@ -76,8 +76,9 @@ Thu Apr 23 09:17:24 UTC 2020 - Matej Cepl <mcepl@suse.com>
   - Fixed line numbers and column offsets for AST nodes for calls
     without arguments in decorators.
   - Disallow control characters in hostnames in http.client,
-    addressing CVE-2019-18348. Such potentially malicious header
-    injection URLs now cause a InvalidURL to be raised.
+    addressing CVE-2019-18348 (bpo#38576, bsc#1155094). Such
+    potentially malicious header injection URLs now cause
+    InvalidURL to be raised.
   - Fix urllib.urlretrieve failing on subsequent ftp transfers
     from the same host.
   - Fix problems identified by GCC's -Wstringop-truncation

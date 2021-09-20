@@ -29,11 +29,25 @@
 %global watchdog_timeout_default 5
 %endif
 
-%global sync_resource_startup_default no
-%global sync_resource_startup_sysconfig no
+# Be careful with sync_resource_startup_default
+# being enabled. This configuration has
+# to be in sync with configuration in pacemaker
+# where it is called sbd_sync - assure by e.g.
+# mutual rpm dependencies.
+%bcond_without sync_resource_startup_default
+# Syncing enabled per default will lead to
+# syncing enabled on upgrade without adaption
+# of the config.
+# Setting can still be overruled via sysconfig.
+# The setting in the config-template packaged
+# will follow the default if below is is left
+# empty. But it is possible to have the setting
+# in the config-template deviate from the default
+# by setting below to an explicit 'yes' or 'no'.
+%global sync_resource_startup_sysconfig ""
 
 Name:           sbd
-Version:        1.4.2+20210305.926b554
+Version:        1.5.0+20210720.f4ca41f
 Release:        0
 Summary:        Storage-based death
 License:        GPL-2.0-or-later
@@ -57,6 +71,7 @@ BuildRequires:  pkgconfig(pacemaker-cib)
 BuildRequires:  pkgconfig(uuid)
 Requires(post): %fillup_prereq
 Conflicts:      ClusterTools2 < 2.3.2
+Conflicts:      libpacemaker3 < 2.1.0
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
@@ -79,7 +94,7 @@ regression-testing sbd.
 ./autogen.sh
 
 %configure --with-watchdog-timeout-default=%{watchdog_timeout_default} \
-           --with-sync-resource-startup-default=%{sync_resource_startup_default} \
+           --with-sync-resource-startup-default=%{?with_sync_resource_startup_default:yes}%{!?with_sync_resource_startup_default:no}  \
            --with-sync-resource-startup-sysconfig=%{sync_resource_startup_sysconfig} \
            --localstatedir="/"
 make %{?_smp_mflags}

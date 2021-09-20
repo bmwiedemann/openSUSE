@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 15 21:47:48 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.8
+  * This release of libXi marks the support of XI 2.4 touchpad
+    gesture events official. This feature is the only difference
+    between libXi 1.8 and the latest release in the 1.7.x series
+    (1.7.10).
+
+-------------------------------------------------------------------
 Fri Jun 21 09:59:29 UTC 2019 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.7.10

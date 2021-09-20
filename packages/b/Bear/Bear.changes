@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 21 07:11:56 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 3.0.15
+- Removed fix-python3-tests.patch (replaced with a sed call)
+- Removed fix-libexec-tests.patch (merged upstream)
+
+-------------------------------------------------------------------
+Mon May 24 10:43:01 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Fixed build / test requirement for lit
+
+-------------------------------------------------------------------
+Fri May 14 08:41:11 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Update to version 3.0.11
+  * Rewrite Bear in C++
+  * Bear is decomposed into an intercept and a semantic analysis
+    processes. It also supports compiler wrappers for intercepting
+    compiler calls in environments where the dynamic linker trick is
+    not working.
+  * Support CUDA compilations
+  * Add '--remove-flags' argument
+  * fix performance bug.
+  * ccache compiler wrapper no longer in the output
+  * 'citnames' execution time linear to the input size.
+  * 'intercept' performance tuning to allocate less object during
+    event processing.
+  * Interception execution reporter ('er') got merged with the
+    compiler wrapper ('wrapper').
+  * 'bear' and 'citnames' are expose less flags, but using a
+    configuration file.
+  * Bear cleans up 'intercept' command output after using it.
+- Add fix-libexec-tests.patch and fix-python3-tests.patch
+
+-------------------------------------------------------------------
 Thu Oct 17 12:10:56 UTC 2019 - Richard Brown <rbrown@suse.com>
 
 - Remove obsolete Groups tag (fate#326485)

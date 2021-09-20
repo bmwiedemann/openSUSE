@@ -1,7 +1,7 @@
 #
 # spec file for package python-requirements-parser
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,10 +27,11 @@ URL:            https://github.com/davidfischer/requirements-parser
 Source:         https://github.com/davidfischer/requirements-parser/archive/v%{version}.tar.gz#/requirements-parser-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM 0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch alarrosa@suse.com -- https://github.com/davidfischer/requirements-parser/pull/47
 Patch0:         0001-Dont-fail-with-valid-options-in-requirements_txt-files.patch
+Patch1:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module nose}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 BuildArch:      noarch
@@ -42,7 +43,7 @@ A Pip requirement file parser.
 
 %prep
 %setup -q -n requirements-parser-%{version}
-%patch0 -p1
+%autopatch -p1
 
 %build
 %python_build
@@ -52,7 +53,7 @@ A Pip requirement file parser.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m nose
+%pytest
 
 %files %{python_files}
 %doc AUTHORS.rst README.rst docs/*.rst

@@ -282,4 +282,12 @@
     <comment>- Update to release 1.22</comment>
     <requestid>913908</requestid>
   </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>9fe90d6d27253d0da3ffc8afe968c1a6</srcmd5>
+    <version>1.22</version>
+    <time>1632251571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920629</requestid>
+  </revision>
 </revisionlist>

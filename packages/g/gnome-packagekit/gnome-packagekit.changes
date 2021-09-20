@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:46:52 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gnome-packagekit-drop-NEWEST-on-get-updates.patch: Don't use
+  PK_FILTER_ENUM_NEWEST filter when getting updates
+  (glgo#GNOME/gnome-packagekit!3, bsc#1190330).
+
+-------------------------------------------------------------------
 Fri May 14 19:32:49 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Normalize used patch tags.

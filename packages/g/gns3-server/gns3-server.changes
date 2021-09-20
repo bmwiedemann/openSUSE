@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 13:42:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * gns3-server.service
+
+-------------------------------------------------------------------
 Wed Aug 25 11:54:18 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.24

@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-subtitles
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.50
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.0
 BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.0
@@ -51,7 +50,6 @@ editing, translation and synchronization.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \

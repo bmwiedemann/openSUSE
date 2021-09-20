@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 14 06:33:59 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- CHANGES TO REMIND
+
+* VERSION 3.3 Patch 8 - 2021-09-13
+
+- NEW FEATURE: remind: Add INCLUDECMD command
+
+- NEW FEATURE: remind: Add shellescape() built-in function
+
+- BUG FIX: tkremind: TkRemind would sometimes fill in incorrect initial
+  values for the reminder-editing form if you clicked on a TkRemind-created
+    reminder to edit it.  This has been fixed.
+
+- BUG FIX: tkremind: Get back better error messages from Remind if you
+  try to create a reminder with an invalid date specification.
+
+- BUG FIX: remind: Catch integer overflow if we try to evaluate $IntMin * -1
+
+- DOC UPDATES: remind: Minor man page fixes
+
+-------------------------------------------------------------------
 Tue May 11 08:50:47 UTC 2021 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - CHANGES TO REMIND

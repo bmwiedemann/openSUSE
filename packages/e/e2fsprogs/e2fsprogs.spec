@@ -66,7 +66,7 @@ Conflicts:      libcom_err2-mini
 Conflicts:      libcom_err-mini-devel
 %endif
 #
-Version:        1.46.3
+Version:        1.46.4
 Release:        0
 Summary:        Utilities for the Second Extended File System
 License:        GPL-2.0-only
@@ -89,6 +89,11 @@ Source5:        https://thunk.org/tytso/tytso-key.asc#/%{name}.keyring
 Patch3:         libcom_err-compile_et_permissions.patch
 Patch4:         e2fsprogs-1.42-implicit_fortify_decl.patch
 Patch5:         e2fsprogs-1.42-ext2fsh_implicit.patch
+Patch6:         harden_e2scrub@.service.patch
+Patch7:         harden_e2scrub_all.service.patch
+Patch8:         harden_e2scrub_fail@.service.patch
+Patch9:         harden_e2scrub_reap.service.patch
+Patch10:        libss-add-newer-libreadline.so.8-to-dlopen-path.patch
 # Do not suppress make commands
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -253,6 +258,11 @@ Development files for the com_err error message display library. Static librarie
 %patch4
 %patch5
 cp %{SOURCE2} .
+%patch6 -p1
+%patch7 -p1
+%patch8 -p1
+%patch9 -p1
+%patch10 -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

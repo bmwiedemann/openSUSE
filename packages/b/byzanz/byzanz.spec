@@ -23,14 +23,13 @@ Name:           byzanz
 Version:        0.3.0+git20140619
 Release:        0
 Summary:        Tool to record a running X desktop to an animated GIF file
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://gitlab.gnome.org/Archive/byzanz
 Source:         https://launchpad.net/ubuntu/+archive/primary/+files/%{name}_%{version}.orig.tar.xz
 BuildRequires:  gettext-devel
 BuildRequires:  gnome-common
 BuildRequires:  intltool
-BuildRequires:  translation-update-upstream
 BuildRequires:  perl(XML::Parser)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -82,7 +81,7 @@ export GCONF_DISABLE_MAKEFILE_SCHEMA_INSTALL=1
 %glib2_gsettings_schema_postun
 %endif
 
-%files 
+%files
 %license COPYING
 %doc AUTHORS ChangeLog NEWS
 %if %{build_applet}

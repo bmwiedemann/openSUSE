@@ -1,7 +1,7 @@
 #
 # spec file for package memprof
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,9 +20,9 @@ Name:           memprof
 Version:        0.6.2
 Release:        0
 Summary:        A Memory Profiler with GNOME Interface
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Development/Tools/Debuggers
-Url:            http://www.gnome.org/projects/memprof/
+URL:            http://www.gnome.org/projects/memprof/
 Source:         https://download.gnome.org/sources/memprof/0.6/%{name}-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM memprof-bfd-headers.patch bgo#688398 dmistar@opensuse.org -- Fix new binutils requirement to include config.h
 Patch2:         memprof-bfd-headers.patch
@@ -36,7 +36,6 @@ BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libglade2-devel
 BuildRequires:  pkg-config
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Depend on x86 instruction set.
@@ -50,7 +49,6 @@ requirements and hunt for leaks very easily.
 
 %prep
 %setup -q
-translation-update-upstream
 %patch3
 %patch4 -p1
 %patch2 -p1

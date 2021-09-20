@@ -1,0 +1,5 @@
+<package name="libinsane" project="openSUSE:Factory">
+  <title>LibInsane</title>
+  <description>library to access scanners</description>
+  <devel project="devel:libraries:c_c++" package="libinsane"/>
+</package>

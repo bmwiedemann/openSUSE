@@ -17,7 +17,7 @@
 
 
 Name:           lsvpd
-Version:        1.7.12
+Version:        1.7.13
 Release:        0
 Summary:        VPD Hardware Inventory Utilities for Linux
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  sg3_utils-devel
 BuildRequires:  zlib-devel
 Requires:       /bin/sed
 Recommends:     hwdata
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  ppc ppc64 ppc64le
 
 %description
@@ -83,7 +82,6 @@ fi
 exit 0
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc README NEWS
 %dir %{_sysconfdir}/lsvpd

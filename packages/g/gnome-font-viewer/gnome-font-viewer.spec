@@ -27,7 +27,6 @@ Source0:        https://download.gnome.org/sources/gnome-font-viewer/40/%{name}-
 
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -46,7 +45,6 @@ A utility to let you see the installed fonts at a glance.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %meson

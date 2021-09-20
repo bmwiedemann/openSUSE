@@ -60,7 +60,7 @@ fixing bugs in systems code.
 
 %build
 autoreconf -fi
-%configure
+%configure --with-python=%python_for_executables
 %make_build -j1 VERBOSE=yes
 
 %install
