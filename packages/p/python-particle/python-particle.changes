@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Sep 18 17:26:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.16.1:
+  * Fixed a regression with the import time being unreasonably
+    slow.
+  * Restore Python 3.5 support (no benefit to drop until 2.7 is
+    dropped).
+- Changes from version 0.16.0:
+  * Particle class:
+    - Added finditer, which returns an iterator instead of a
+      complete list like findall.
+    - Method find deprecated. It will be removed from version
+      0.17.0 onwards.
+  * PDGID class:
+    - New functions is_sm_lepton, is_sm_quark and
+      is_excited_quark_or_lepton for qualification of PDG IDs.
+    - is_composite_quark_or_lepton deprecated in favour of better
+      named is_excited_quark_or_lepton.
+    - is_lepton fixed to match the behaviour of the related
+      is_quark, i.e. now excited leptons are not considered
+      leptons (only SM and 4th generation leptons).
+    - Improvements to documentation.
+    - Test suite enhanced accordingly.
+  * Data files:
+    - Added the 2021 PDG data table .mcd file, now default.
+    - Version 10 of package CSV data files: Since PDG 2021
+      information now the default.
+    - Lifetimes of neutrinos set to infinity.
+    - Check added for duplicate entries in .mcd PDG data files.
+  * Tests:
+    - Tests of coverage added back, using Codecov on GHAs.
+    - CI enhanced, e.g. adding codespell, isort and flake8 checks
+      tp pre-commit hooks.
+  * Miscellaneous:
+    - Support for Python 3.10 added.
+    - Several FutureWarning warnings fixed.
+    - Code modernisation.
+- Update _service file for new tests.
+- New BuildRequires for tests: python-Deprecated.
+
+-------------------------------------------------------------------
 Sat Jul  3 04:12:25 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.15.1:

@@ -19,7 +19,7 @@
 %global modname particle
 %define skip_python2 1
 Name:           python-particle
-Version:        0.15.1
+Version:        0.16.1
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -38,6 +38,7 @@ Recommends:     python-pandas
 Recommends:     python-tabulate
 BuildArch:      noarch
 # SECTION For tests
+BuildRequires:  %{python_module Deprecated}
 BuildRequires:  %{python_module hepunits}
 BuildRequires:  %{python_module importlib_resources}
 BuildRequires:  %{python_module pytest}
