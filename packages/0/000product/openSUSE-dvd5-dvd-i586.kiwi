@@ -1275,6 +1275,7 @@
       <repopackage name="kqtquickcharts"/>
       <repopackage name="kquickcharts"/>
       <repopackage name="krb5"/>
+      <repopackage name="krb5-client"/>
       <repopackage name="krename"/>
       <repopackage name="kreversi"/>
       <repopackage name="kreversi-lang"/>
@@ -3184,6 +3185,9 @@
       <repopackage name="open-iscsi"/>
       <repopackage name="open-vm-tools"/>
       <repopackage name="open-vm-tools-desktop"/>
+      <repopackage name="openafs"/>
+      <repopackage name="openafs-client"/>
+      <repopackage name="openafs-kmp-default"/>
       <repopackage name="openal-soft-data"/>
       <repopackage name="opencc-data"/>
       <repopackage name="openconnect"/>
