@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.18.4
+Version:        1.18.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -31,12 +31,11 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
-# PATCH-FIX-UPSTREAM 90903917.patch dimstar@opensuse.org -- Fix build when Meson >= 0.58.0rc1
-Patch0:         https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/-/commit/90903917.patch
 # PATCH-FIX-OPENSUSE gstreamer-plugins-base-gl-deps.patch dimstar@opensuse.org -- Local workaround for https://gitlab.freedesktop.org/gstreamer/gst-plugins-base/issues/735
 Patch3:         gstreamer-plugins-base-gl-deps.patch
 Patch4:         add_wayland_dep_to_tests.patch
 Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
+
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
 BuildRequires:  fdupes
@@ -56,7 +55,6 @@ BuildRequires:  orc >= 0.4.24
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa) >= 0.9.1
 BuildRequires:  pkgconfig(egl)
@@ -509,8 +507,6 @@ package.
 
 %prep
 %autosetup -n %{_name}-%{version} -p1
-
-translation-update-upstream po gst-plugins-base-%{gst_branch}
 
 %build
 export PYTHON=%{_bindir}/python3

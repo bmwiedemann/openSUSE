@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:48:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support (PM-2938).
+
+-------------------------------------------------------------------
+Wed Sep 15 08:46:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + appsrc: Don't leak buffer list while wrongly unreffing buffer
+    on EOS/flushing
+  + audioaggregator:
+    - Don't overwrite already written samples
+    - Resync on the next buffer when dropping a buffer on discont
+      resyncing
+  + audiobasesink: Fix of double lock release
+  + audiobasesrc: Fix divide by zero assertion
+  + clockoverlay: Fix broken string formatting by strftime() on
+    Windows
+  + compositor: Fix NV12 blend operation
+  + giosrc: Don't leak scheme string in gst_gio_src_query()
+  + giobasesink: Handle incomplete writes in
+    gst_gio_base_sink_render()
+  + gl/wayland:
+    - Use consistent wl_display when creating work queue for proxy
+      wrapper
+    - Provide a dummy global_remove function
+  + gl: Fix build when Meson >= 0.58.0rc1
+  + playbin2: fix base_time selection when flush seeking live (such
+    as with RTSP)
+  + rtspconnection:
+    - Add IPv6 support for tunneled mode
+    - Consistently translate GIOError to GstRTSPResult (for
+      rtspsrc)
+  + rawbaseparse: check destination format correctly
+  + uridecodebin: Don't force floating reference for future
+    reusable decodebin
+  + parsebin: Put stream flags in GstStream
+  + splitmuxsink: always use factory property when set
+  + video-converter: Set up matrix tables only once.
+  + videoscale: Performance degradation from 1.16.2 -> 1.18.4
+  + videotestsrc: Fix a leak when computing alpha caps
+  + audio/video-converter: Plug some minor leaks
+  + audio,video-format: Make generate_raw_formats idempotent for
+    assertions
+  + Don't use volatile to mean atomic (fixes compiler warnings with
+    gcc 11)
+  + Fix build issue on MinGW64
+- Drop 90903917.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Sat Jul 17 09:57:52 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 90903917.patch: Fix build with meson >= 0.58.0rc1
