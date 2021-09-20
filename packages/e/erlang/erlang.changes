@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 07:19:32 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * epmd.service
+
+-------------------------------------------------------------------
 Wed Aug 04 16:05:03 UTC 2021 - opensuse-packaging@opensuse.org
 
 - Changes for 24.0.5:
