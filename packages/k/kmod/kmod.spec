@@ -44,7 +44,7 @@ Patch8:         no-stylesheet-download.patch
 Patch9:         libkmod-Provide-info-even-for-modules-built-into-the.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  docbook5-xsl-stylesheets
+BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libopenssl-devel >= 1.1.0
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
