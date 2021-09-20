@@ -21,18 +21,16 @@
 # NEP 29: NumPy dropped Python 3.6
 %define         skip_python36 1
 Name:           python-holoviews
-Version:        1.14.3
+Version:        1.14.6
 Release:        0
 Summary:        Composable, declarative visualizations for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/holoviz/holoviews
 Source0:        https://files.pythonhosted.org/packages/source/h/holoviews/holoviews-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM remove_nose.patch gh#holoviz/holoviews#4621 mcepl@suse.com
-Patch1:         remove_nose.patch
 BuildRequires:  %{python_module colorcet}
 BuildRequires:  %{python_module numpy >= 1.0}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 0.20}
 BuildRequires:  %{python_module panel >= 0.8.0}
 BuildRequires:  %{python_module param >= 1.9.3}
 BuildRequires:  %{python_module pyct >= 0.4.4}
@@ -42,15 +40,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-colorcet
 Requires:       python-numpy >= 1.0
-Requires:       python-pandas
+Requires:       python-pandas >= 0.20
 Requires:       python-panel >= 0.8.0
 Requires:       python-param >= 1.9.3
 Requires:       python-pyviz-comms >= 0.7.4
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
-Recommends:     python-bokeh >= 1.1.0
+Recommends:     python-bokeh >= 2.2
 Recommends:     python-ipython >= 5.4.0
-Recommends:     python-matplotlib >= 2.2
+Recommends:     python-matplotlib >= 3
 Recommends:     python-notebook
 Recommends:     python-pscript >= 0.7.1
 Suggests:       python-networkx
@@ -67,23 +65,21 @@ Suggests:       python-scipy
 Suggests:       python-shapely
 Suggests:       python-scikit-image
 %if "%python_flavor" != "python2"
-Suggests:       python-spatialpandas
 Suggests:       python-pyarrow < 1.0
 Suggests:       python-ibis-framework >= 1.3
 %endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module bokeh >= 1.1.0}
+BuildRequires:  %{python_module bokeh >= 2.2}
 BuildRequires:  %{python_module dash >= 1.16}
 BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader >= 0.11.1}
 BuildRequires:  %{python_module deepdiff}
 BuildRequires:  %{python_module ffmpeg-python}
 BuildRequires:  %{python_module ipython >= 5.4.0}
-BuildRequires:  %{python_module jsonschema}
 BuildRequires:  %{python_module keyring}
-BuildRequires:  %{python_module matplotlib >= 2.2}
+BuildRequires:  %{python_module matplotlib >= 3}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbsmoke}
 BuildRequires:  %{python_module netCDF4}
@@ -116,6 +112,7 @@ rendered automatically by one of the supported plotting libraries
 %prep
 %setup -q -n holoviews-%{version}
 %autopatch -p1
+sed -i '/"nose"/ d' setup.py
 
 %build
 %python_build
@@ -135,12 +132,10 @@ $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/ho
 %if %{with test}
 %check
 
-# These tests need matplotlib < 3.1
-# (the package itself does not, but the testsuite specifies it because it checks parameter names)
+# wrong MPL api parameter expectations
 # gh#holoviz/holoviews#4621
 donttest+=" or (MPLRendererTest and test_get_size_column_plot)"
 donttest+=" or (MPLRendererTest and test_get_size_row_plot)"
-donttest+=" or (MPLRendererTest and test_render_mp4)"
 donttest+=" or (TestBokehUtils and test_py2js_funcformatter_arg_and_kwarg)"
 donttest+=" or (TestBokehUtils and test_py2js_funcformatter_single_arg)"
 donttest+=" or (TestBokehUtils and test_py2js_funcformatter_two_args)"
@@ -151,14 +146,7 @@ donttest+=" or (TestCrossBackendOptionPickling and test_builder_backend_switch_s
 donttest+=" or (TestCrossBackendOptionPickling and test_builder_cross_backend_validation)"
 donttest+=" or (TestCrossBackendOptions and test_builder_backend_switch_signature)"
 donttest+=" or (TestCrossBackendOptions and test_builder_cross_backend_validation)"
-donttest+=" or (TestCurvePlot and test_curve_datetime64)"
-donttest+=" or (TestCurvePlot and test_curve_dt_datetime)"
-donttest+=" or (TestCurvePlot and test_curve_heterogeneous_datetime_types_overlay)"
-donttest+=" or (TestCurvePlot and test_curve_heterogeneous_datetime_types_with_pd_overlay)"
 donttest+=" or (TestCurvePlot and test_curve_linewidth_op)"
-donttest+=" or (TestCurvePlot and test_curve_padding_datetime_nonsquare)"
-donttest+=" or (TestCurvePlot and test_curve_padding_datetime_square)"
-donttest+=" or (TestCurvePlot and test_curve_pandas_timestamps)"
 donttest+=" or (TestCurvePlot and test_curve_style_mapping_constant_value_dimensions)"
 donttest+=" or (TestCurvePlot and test_curve_style_mapping_ndoverlay_dimensions)"
 donttest+=" or (TestElementPlot and test_element_zformatter_function)"
@@ -167,11 +155,8 @@ donttest+=" or (TestElementPlot and test_element_zformatter_string)"
 donttest+=" or (TestErrorBarPlot and test_errorbars_line_color_op)"
 donttest+=" or (TestErrorBarPlot and test_errorbars_line_width_op_update)"
 donttest+=" or (TestErrorBarPlot and test_errorbars_line_width_op)"
-donttest+=" or (TestHistogramPlot and test_histogram_datetime64_plot)"
 donttest+=" or (TestHistogramPlot and test_histogram_line_color_op)"
 donttest+=" or (TestHistogramPlot and test_histogram_line_width_op)"
-donttest+=" or (TestHistogramPlot and test_histogram_padding_datetime_nonsquare)"
-donttest+=" or (TestHistogramPlot and test_histogram_padding_datetime_square)"
 donttest+=" or (TestHistogramPlot and test_op_ndoverlay_value)"
 donttest+=" or (TestLabelsPlot and test_label_alpha_op_update)"
 donttest+=" or (TestLabelsPlot and test_label_alpha_op)"
@@ -232,14 +217,9 @@ donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_square_heights)"
 donttest+=" or (TestSpikesPlot and test_spikes_padding_datetime_square)"
 donttest+=" or (TestVectorFieldPlot and test_vectorfield_line_width_op_update)"
 donttest+=" or (TestVectorFieldPlot and test_vectorfield_line_width_op)"
-# These fail with matplotlib 3.4.1 because they check for the wrong exceptions -- gh#holoviz/holoviews#4886
-donttest+=" or (TestErrorBarPlot and test_errorbars_color_op)"
-donttest+=" or (TestErrorBarPlot and test_errorbars_color_op_update)"
-donttest+=" or (TestMplGraphPlot  and test_graph_op_node_alpha)"
-donttest+=" or (TestMplTriMeshPlot and test_trimesh_op_node_alpha)"
 
 # These fail on 32-bit -- gh#holoviz/holoviews#4778
-if [[ $(getconf LONG_BIT) == 32 ]]; then
+if [[ $(getconf LONG_BIT) -eq 32 ]]; then
     donttest+=" or (DatashaderAggregateTests and test_rasterize_regrid_and_spikes_overlay)"
     donttest+=" or (DatashaderAggregateTests and test_rgb_regrid_packed)"
     donttest+=" or (DatashaderRasterizeTests and test_rasterize_image_string_aggregator)"
@@ -269,6 +249,10 @@ if [[ $(getconf LONG_BIT) == 32 ]]; then
     donttest+=" or (TestLinkSelectionsPlotly and test_datashade_selection)"
     donttest+=" or (TestPointerCallbacks and test_pointer_x_datetime_out_of_bounds)"
     donttest+=" or (TestPointerCallbacks and test_tap_datetime_out_of_bounds)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_implicit_nodes)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_dask_trimesh_with_node_vdims)"
+    donttest+=" or (DatashaderRasterizeTests and test_rasterize_pandas_trimesh_implicit_nodes)"
 fi
 
 %pytest -o python_files='test*.py base.py' holoviews/tests -k "not (${donttest:4})"

@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sat Sep 18 09:52:09 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.14.6
+  * Compatibility for bokeh 2.4 and fixes to processing of falsey
+    properties and visible style property (#5059, #5063)
+  * Stricter validation of data.interface before calling subclass
+    (#5050)
+  * Fix to prevent options being ignored in some cases (#5016)
+  * Improvements to linked selections including support for linked
+    selection lasso for cudf and improved warnings   * (#5044,
+    #5051)
+  * Respect apply_ranges at range computation level (#5081)
+  * Keep ordering of kdim when stacking Areas (#4971)
+  * Apply hover postprocessor on updates (#5039)
+- Release 1.14.5
+  * Support for pandas>=1.3 (#5013)
+  * Various bug fixes relating to dim transforms including the use
+    of parameters in slices and the use of getattribute
+    (#4993, #5001, #5005)
+- Release 1.14.4
+  Enhancements:
+  * Reenable SaveTool for plots with Tiles (#4922)
+  * Enable dask TriMesh rasterization using datashader (#4935)
+  * Use dataframe index for TriMesh node indices (#4936)
+  Bug fixes:
+  * Fix hover for stacked Bars (#4892)
+  * Check before dereferencing Bokeh colormappers (#4902)
+  * Fix multiple parameterized inputs to dim (#4903)
+  * Fix floating point error when generating bokeh Palettes (#4911)
+  * Fix bug using dimensions with label on Bars (#4929)
+  * Do not reverse colormaps with '_r' suffix a second time (#4931)
+  * Fix remapping of Params stream parameter names (#4932)
+  * Ensure Area.stack keeps labels (#4937)
+  Compatibility:
+  * Unfortunately a number of tile sources are no longer publicly
+    available. Attempting to use these tile sources will now issue
+    warnings unless hv.config.
+  * raise_deprecated_tilesource_exception is set to
+    True in which case exceptions will be raised instead.
+  * The Wikipedia tile source is no longer available as it is no
+    longer being served outside the wikimedia domain. As one of
+    the most frequently used tile sources, HoloViews now issues a
+    warning and switches to the OpenStreetMap (OSM) tile source
+    instead.
+  * The CartoMidnight and CartoEco tile sources are no longer
+    publicly available. Attempting to use these tile sources will
+    result in a deprecation warning.
+- Refresh remove_nose.patch: with sed line is simpler
+
+-------------------------------------------------------------------
 Fri Apr  9 09:43:43 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 1.14.3
