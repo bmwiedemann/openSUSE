@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:56:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + audiolatency:
+    - Use live mode audiotestsrc
+    - Handle audio buffers with invalid duration
+  + ccconverter: fix framerate caps negotiation from non-cdp to cdp
+  + dashdemux:
+    - Properly initalize GError, remove duplicate logging call
+    - Log protection events on corresponding pad
+    - Fix dash_mpdparser_check_mpd_client_set_methods unit test
+  + h264parse,h265parse: Push parameter set NAL units again per
+    segment-done
+  + h265parse:
+    - Fix a typo in get_compatible_profile_caps()
+    - Don't invalidate the last PPS when parsing a new SPS
+  + h264parse: improve PPS handling
+  + h2645parser: Catch overflows in AVC/HEVC NAL unit length
+    calculations
+  + interlace:
+    - Don't set field-order field for progressive caps, fixes
+      negotiation issues
+    - Fix too small buffer size error
+  + jpegparse: Don't generate timestamp for 0/1 framerates
+  + opencv: fix build error on macOS
+  + openexr: Fix build with OpenEXR 3
+  + openh264enc: fix broken sps/pps header generation and some
+    minor leaks
+  + mpeg2enc:
+    - Fix interlace-mode detection on input video
+    - Only allow 1 pending frame for encoding (fixes unbound memory
+      usage in case encoder can't keep up with input)
+  + mfvideoenc: Don't pass 0/1 framerate to MFT
+  + mfvideosrc:
+    - Fix for negative MF stride
+    - Fix negotiation when interlace-mode is specified
+  + mxfvanc: Handle empty ANC essence
+  + rtmp2src: workaround a GLib race when destroying a
+    GMainContext/GSource
+  + rtpsrc: Plug leak of rtcp_send_addr and fix setting URI back to
+    NULL
+  + rtpsink: Return proper pad from _request_new_pad()
+  + rist: Plug leak of rtcp_send_addr
+  + rtmp2: Use correct size of write macro for param2
+  + rtmp2/connection: Separate inner from outer cancelling
+  + tsmux:
+    - When selecting random PIDs, name the pads according to those
+      PIDs
+    - Recheck existing pad PIDs when requesting a new pad with a
+      random pid
+  + tsdemux:
+    - Fix seek with stop regression
+    - Clear all streams when rewinding, fixes the case where the
+      demuxer sends out partial invalid data downstream after a
+      seek which causes some decoders (such as dvdlpmdec) to error
+      out
+  + v4l2slh264dec: Fix slice header bit size calculation
+  + videoparseutils: Fix for wrong CEA708 minimum size check
+  + waylandsink: Fix for missing initial configure
+  + wpe: Make threaded view singleton creation thread safe
+  + x265: Fix a deadlock when failing to create the x265enc
+  + Don't use volatile to mean atomic (fixes compiler warnings with
+    gcc 11)
+- Drop gstreamer-plugins-bad-openexr3.patch: Fixed upstream.
+- No longer pass nvdec=disabled, nvenc=disabled and vdpau=disabled
+  to meson, no longer needed, nor recognized.
+
+-------------------------------------------------------------------
 Sat May  8 18:02:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - don't own appdata dir - is provided by filesystem 

@@ -25,7 +25,7 @@
 %bcond_with faac
 %bcond_with faad
 Name:           gstreamer-plugins-bad
-Version:        1.18.4
+Version:        1.18.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -36,8 +36,7 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
-# https://gitlab.freedesktop.org/gstreamer/gst-plugins-bad/-/issues/1574
-Patch0:         gstreamer-plugins-bad-openexr3.patch
+
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -613,15 +612,12 @@ export PYTHON=%{_bindir}/python3
         -Dkate=disabled \
 	-Dmagicleap=disabled \
 	-Dmicrodns=disabled \
-	-Dnvdec=disabled \
-	-Dnvenc=disabled \
 	-Dopencv=disabled \
 	-Dopenni2=disabled \
 	-Dopensles=disabled \
 	-Dsctp=disabled \
 	-Dsvthevcenc=disabled \
 	-Dtinyalsa=disabled \
-	-Dvdpau=disabled \
 	-Dwasapi=disabled \
 	-Dwasapi2=disabled \
 	-Dwayland=enabled \
