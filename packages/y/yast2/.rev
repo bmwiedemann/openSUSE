@@ -3947,4 +3947,12 @@
     <comment>submit new version 4.4.17</comment>
     <requestid>917053</requestid>
   </revision>
+  <revision rev="517" vrev="1">
+    <srcmd5>91286d9df3ab722f63a6a8c9c6be634e</srcmd5>
+    <version>4.4.20</version>
+    <time>1632173528</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 4.4.20</comment>
+    <requestid>919733</requestid>
+  </revision>
 </revisionlist>

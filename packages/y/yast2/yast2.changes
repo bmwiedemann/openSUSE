@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Sep 16 13:41:05 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
+
+- Fixed losing the current product and package selection during
+  installation, caused by unnecessary reloading of repositories
+  (bsc#1190228)
+- 4.4.20
+
+-------------------------------------------------------------------
+Wed Sep 15 15:30:00 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- Added infrastructure for installing missing UI extension plug-ins
+  (jsc#SLE-20346, jsc#SLE-20462)
+- 4.4.19
+
+-------------------------------------------------------------------
+Wed Sep 15 13:58:56 UTC 2021 - José Iván López González <jlopez@suse.com>
+
+- Add Y2Issues::WithIssues mixin to make easier to work with a list
+  of issues (needed for jsc#SLE-20563).
+- 4.4.18
+
+-------------------------------------------------------------------
 Mon Sep  6 07:42:09 UTC 2021 - Martin Vidner <mvidner@suse.com>
 
 - Mark systemd unit/service state "maintenance" as active
@@ -24,7 +46,7 @@ Wed Jun 23 13:24:04 UTC 2021 - Ancor Gonzalez Sosa <ancor@suse.com>
 - Y2Issues::Issue: renamed severity "fatal" to "error", to be more
   consistent with other parts of (Auto)YaST
 - Added options to configure the behavior of Y2Issues.report
-  (related to jsc#PM-2620 and bsc#1166743)
+  (related to jsc#SLE-20563 and bsc#1166743)
 - 4.4.14
 
 -------------------------------------------------------------------
@@ -37,7 +59,7 @@ Mon Jun 21 20:51:57 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 -------------------------------------------------------------------
 Thu Jun 17 06:15:02 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add riscv64 architecture helper (jsc#PM-2612)
+- add riscv64 architecture helper (jsc#SLE-19562)
 - 4.4.12
 
 -------------------------------------------------------------------
@@ -463,7 +485,7 @@ Fri Jul 24 08:06:27 UTC 2020 - Jeff Kowalczyk <jkowalczyk@suse.com>
 Thu Jul 23 14:03:42 UTC 2020 - José Iván López González <jlopez@suse.com>
 
 - Add Layout class to configure a Wizard layout.
-- Related to jsc#PM-1998.
+- Related to jsc#SLE-15899.
 - 4.3.16
 
 -------------------------------------------------------------------
