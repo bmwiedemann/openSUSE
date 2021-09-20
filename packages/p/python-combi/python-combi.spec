@@ -19,17 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-combi
-Version:        1.1.2
+Version:        1.1.4
 Release:        0
 Summary:        A Pythonic package for combinatorics
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://pypi.python.org/pypi/combi/
 Source:         https://files.pythonhosted.org/packages/source/c/combi/combi-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM denose.patch gh#cool-RR/combi#5 mcepl@suse.com
-# Remove dependency on nose, use pytest instead
-Patch0:         denose-clear-trailing-space.patch
-Patch1:         denose.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -50,6 +46,12 @@ programming.
 
 %prep
 %autosetup -p1 -n combi-%{version}
+
+# Fix CRLF -> LF
+sed -i -e 's/\r//g' docs/changelog.txt
+
+# Remove unnecessary nosetests.xml
+rm source_py*/test_combi/nosetests.xml
 
 %build
 %python_build

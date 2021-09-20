@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 18 08:59:02 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.1.4:
+  - that includes just my two patches into tarball.
+Remove patches:
+- denose.patch
+- denose-clear-trailing-space.patch
+
+-------------------------------------------------------------------
 Thu Sep 16 17:07:42 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add denose.patch (and denose-clear-trailing-space.patch which just
