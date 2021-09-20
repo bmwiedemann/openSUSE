@@ -1,4 +1,756 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:23:38 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210907:
+  * fixed wording
+  * libretro: Re-enable rewind support (fixes #820).
+  * improved last commit by using 'using' :)
+  * enhanced tooltips (per cell and/or whole widget) for DataGridWidget updated debugger doc
+  * libretro: Fix segfault when starting Stella.  For now, this also disables rewind.
+  * added _inTim and timInt pseudo registers (resolves #168)
+  * added missing missile state tracking to debugger 'tia' command.
+  * enhanced debugger 'tia' command
+  * fixed missing control key support in LauncherDialog's filter
+  * fixed EditableWidget bug #819
+  * cleaned the PlusROM setup code a bit
+  * added some doc for the PlusROM functionality
+  * missing files (again)
+  * made PlusROM nick input dialog working added settings for nick and id TODO: doc
+  * added missing class
+  * added missing class
+  * does NOT compile!
+  * Add HTTP_LIB support for Visual Studio.
+  * Wrap calls to httplib inside a define.  This allows to build without such support. - Linux has this enabled by default, R77 disabled by default - Still TODO is get it working for Windows and Mac
+  * Fix compilation in Linux for missing http_lib header file.
+  * Pluscart networking.
+  * updated docs and WhatsNewDialog
+  * Fix minor compiler warning, and bump version number for state file.
+  * Fix minor compiler warning.
+  * Added preliminary support for 'MVC' bankswitching scheme by Rob Bairos.
+  * updated Player and Missile serializing for previous commit
+  * added different debug colors for player/missile copies (resolves #713)
+  * Fix minor compiler warnings in g++ and clang.
+  * reformatted the ARM fatal error popup a little bit
+  * added "Check for Update" button to HelpDialog (see #407)
+  * Improved #807 fix
+  * Fixed games count when there is no parent directory (fixes #807)
+  * improved progress bar handling for long running file list operations
+  * changed Air Raid properties to NTSC-50 format (fixes #812)
+  * trying to fix #808
+  * intermediate Thumb cycle count commit (part 2)
+  * intermediate Thumb cycle count commit
+  * another fix for MAMCR further improved merged I-S cycles
+  * added emulation of merged I-S cycles improved ARM timers fixed MAMCR register emulation
+  * extended single cycle access to everything except Flash
+  * Fix minor warnings in g++10.
+  * fixed a bug in branch cycle counting (now the test value is less than 0.1% off)
+  * added more chips types for ARM cycle count added missing cycle counts for push and pop added music update cycles to ARM cycle count for CDFJ fixed stmia cycle counts
+  * added DEGREE and ELLIPSIS chars to allowed PopUpWidget chars
+  * Fix minor warnings from g++10.3.
+  * fixed #805 (ROMs detect QuadTari as Genesis)
+  * added that digital audio considers console timing added a 10% factor to ARM cycle count when digital audio is enabled
+  * trying to fix Libretro builds
+  * further enhanced ARM cycle counts
+  * slightly improved cart type detection
+  * fixed extra cycle in ARM cycle counts
+  * added directory navigation support to launcher 'Select' button
+  * fixed ARM branch cycles (not taken = 1) added cycle change tracking
+  * Improved cycle counting for MUL instruction Made ARM Timers functional
+  * switched ARM cycle counting to "real" cycles
+  * fixed unwanted input consuming
+  * Added missing file to Xcode, and fixed compile error.
+  * libretro: Fix compile error from missing file in Makefile.
+  * added missing file
+  * added UI elements for ARM cycles to debugger widgets refactored ARM cart classes a bit
+  * added command line options to include (coarse) ARM cycles into system cycles
+  * renamed everything "keypad" into "keyboard"
+  * removed Stell/2600-daptor renaming
+  * Fixed stepping forward faster than stepping back
+  * Keep vblank lines consistently at 36 each field.
+  * added change tracking to ARM stats
+  * added last but one ARM stats to debug widgets
+  * First pass at state load/save for MVC scheme.
+  * Remove partial top and bottom line for square area
+  * Revert to old way of handling framebuffer surfaces. Still TODO is fix crash when FileListWidget is used (BrowserDialog).
+  * disabled random start bank for 3E+ carts (fixes #800)
+  * fixed common button clash for R77 with keypad
+  * removed SA erasing and adding in case they are added in ID order
+  * reverted GUID part of last commit
+  * added GUID hash to controller name renamed Joystick Database into Controller Database
+  * implemented adding *all* SA to the database again when one SA is added (fixes #754)
+  * trying to fix #793
+  * converted combo map saving into json format (resolves #793)
+  * fixed history scrolling
+  * fixed autosave
+  * enhanced save command, saves to user directory by default added "autosave" command
+  * improved/fixed some event renaming (sorry)
+  * libretro: Fix compile error with recent event renaming.
+  * made port naming (left/right) consistent (see #796)
+  * Updated Changes.txt and WhatsNewDialog
+  * added clearHistory command for PromptWidget (see #240)
+  * Fix minor warnings from g++11.
+  * refactored history buffer and increased max size from 20 to 1000
+  * added history filtering and duplicate removal (see #240)
+  * minor polishing of PromptWidget
+  * Refactored PromptWidget a bit
+  * further improved debugger tab auto complete (see #240)
+  * added game properties for two Simone Serra games
+  * enhanced tab auto complete for _functions
+  * enhanced PromptWidget tab auto complete (camel case)
+  * Fix minor warning from g++11.
+  * added URL properties for prototypes
+  * added option to log breaks and traps instead of interrupting emulation (resolves #741)
+  * switched user palette loading to on demand
+  * merged new URL properties
+  * added links for many homebrews
+  * Fix libretro build.
+  * Move detection of MVC file out of FSNode class.  There are several reasons for this:  - It more properly belongs in the class actually opening the ROM, since FSNode can represent more than just ROM files.  - Some ports don't have proper FSNode support, so MVC would break there.  - In general, it makes FSNode::read more general, able to read partial files.
+  * Added aborting editing (closes #726)
+  * Fix warning about 'sequence-points' from gcc.
+  * merged emulation and UI event mapping tabs
+  * fixed occasional NoType mappings being saved and loaded
+  * disabled focus handling for ColorWidget (reduces draws)
+  * reworked Palette settings a bit
+  * enhanced links in HelpDialog fixed link color for Dark theme
+  * (MovieCart) Avoid unnecessary shuffling of color data during encoding and decoding, as new kernel does not require it.
+  * redesigned RomInfoWidget link display enhanced AboutDialog with more links
+  * Fix crash in debugger.  Much more work still required here.
+  * added more movie cart test ROMs
+  * Added support for Mac.
+  * A few more formatting cleanups.
+  * More updates to MovieCart to match Stella style.
+  * added movie cart test ROMs
+  * (MovieCart) Implemented left_line/right_line kernel adaptations by Thomas Jentzsch
+  * Fix minor compiler warnings.
+  * added functional links to RomInfoWidget added links to Robot City and Aardvark ROMs
+  * enhanced StaticTextWidget to display links adapted AboutDialog accordingly
+  * Some cleanups for moviecart code.  - Compiles in Linux now, and without any warnings or errors  - Converted some code to use that already in Stella  - Formatting cleanups to match Stella style
+  * Next development cycle (for 6.6) begins.
+  * added basic valid URL checks to cartridge links
+  * implemented cartridge links in GameInfoDialog (see #788)
+  * enhanced the debugger exit fix
+  * cleaned up debugger exiting code (fixes #516)
+  * Final updates for 6.5.3 release. Added debugging note when not using SDL 2.0.14, so we know that OpenURL won't work.
+  * updated help key for macOS
+  * moved and renamed help action in InputDialog
+  * added help key to HelpDialog
+  * added one more debugger help link
+  * added some more debugger help links
+  * bug fix
+  * added doc links to snapshot archive
+  * improved context-sensitive help, now also works per widget, tab or tab group
+  * Fix method in header and implementation with different parameter.
+  * enhanced help with optional direct URL
+  * added help anchor to LauncherDialog
+  * added help anchor to DebuggerDialog
+  * fixed anchor in HTML
+  * fixed anchor
+  * Updated docs for 6.5.3 release for April 20 (this can change if necessary).
+  * updated doc and snapshots for help button
+  * Fix non-ASCII character in ROM properties.
+  * Fix missing comma in EventHandler class.
+  * Fix compilation when using SDL < 2.0.14 (needed for SDL_OpenURL). Abstract SDL functionality into SDL-specific class, away from Dialog class.
+  * added help hotkey in UI mode (F1) added missing anchors
+  * added help links to most dialogs (see #740) TODO: tab specific help?
+  * updated props for coming Aardvark ROM release
+  * Updated Changes.txt
+  * forgot to save before committing...
+  * fixed palette and custom BLARGG settings saving (see #787)
+  * Update to Xcode project file.
+  * do not map QuadTari-only events if no QuadTari is used
+  * Fix minor warning in clang.
+  * fixed HiDPI mode (note to myself: sometimes initialization is bad)
+  * adapt desktop size and maximum TIA zoom level to display used
+  * (MovieCart) combined subfolder of classes into CartMVC
+  * Swapped (Shift+)Backspace keys between Frying and CompuMate Backspace
+  * Fix genesis widget.
+  * Very small cleanup to Makefile.
+  * Fix update order, change genesis to pull pin to ground.
+  * replaced broken H.E.R.O Genesis test ROM
+  * Properly model analog input.
+  * (MovieCart) Limit reading of image data to single frame when its likely an MVC file. This avoids reading of GB of data.
+  * MovieCart Streaming image and audio content created by presenting dynamic 1K of data on the bus, with On Screen Display. Volume, Brightness and Shuttle controlled by joystick and console switches. Original implementation: github.com/lodefmode/moviecart
+  * Forgot to save.
+  * PaddleReader goes AnalogReadout.
+  * Use a more realistic resistance in dump mode.
+  * Typo.
+  * Adjust paddle parameters, improve keyboard controller emulation, emulate cap discharge,
+  * (Libretro/macOS) Add ARM64 rules
+  * fixed missing immediate disassembling
+  * (Libretro) Fix ios9 build
+  * (Libretro) Add more platforms to gitlab
+  * improved QuadTari fix
+  * fixed QuadTari handling for controller types != joysticks
+  * fixed 360° char
+  * removed two non-implemented methods
+  * Another spelling fix ("toggle")
+  * Final updates for 6.5.2 release.
+  * Updated a few files for upcoming release. Now in testing phase; final release coming in a few days.
+  * Updated changes and WhatsNewDialog Updated version number in docs
+  * did some code cleanup
+  * added ARM stats to BUS and DPC+ debug widgets
+  * fix Libretro build
+  * added some ARM stats to CDF debug widget
+  * Only use static libgcc/libstdc++ if they're present
+  * Implemented input bitmasks
+  * minor QuadTari timing fix
+  * fixed QuadTari multiplexing timing (fixes #766)
+  * enhanced QuadTari detection pattern
+  * fixed broken driving controller support (see #760)
+  * derived Genesis and Booster from Joystick controller class
+  * fixed R77 doc graphics links
+  * fixed missing SliderWidget initialization command if value is -1
+  * fixed merge bug (fixes #758)
+  * fixed #756 (CDFJ rom size always 512KB)
+  * Added patches from Debian build (too bad I didn't see these about 6 hours ago). Bumped version number, to start work on 6.6.
+  * Final updates for 6.5.1 release.
+  * partially reverted a95d40c6 (debugger widgets needed for saveOldState)
+  * Getting ready for 6.5.1 release.
+  * Fix dialogs not being rendered in certain cases.
+  * libretro: Don't reload non-existent surfaces.
+  * Fix final issue with snapshots not loading in RomInfoWidget.
+  * updated Changes.txt & WhatsNewDialog
+  * refactored Paddles class
+  * Fix crash when FrameBuffer message surfaces haven't been created. The next task is to move all FrameBuffer message-related functionality into its own class.
+  * changed LauncherDialog and EditableWidget ContextMenu and dialog shade surface creation to on demand
+  * renamed pause dimming setting
+  * added option to disable emulation shading in pause mode via command line (resolves #755)
+  * fixed memory leak in EventMappingWidget
+  * Attempt to fix continuous creation of dialog surfaces without cleanup, causing crashes on R77. Remove cache of surfaces from FrameBuffer, into each dialog that owns it. Make surfaces be unique_ptr instead of shared_ptr, so we can be sure cleanup occurs.
+  * added to allocate tooltip surface on demand only
+  * create DebuggerDialog and included OptionsDialog on demand only
+  * refactored launcher dialog to use only one pointer for other dialogs
+  * refactored dialogs to use only one pointer for other dialogs
+  * added missing re-rendering
+  * added missing files
+  * enhanced R77 doc
+  * fixed, extra joystick button mappings are for R77 only
+  * added high scores button to R77 command dialog
+  * And so it begins again ...
+  * Final commit for 6.5 release.
+  * update WhatsNewDialog
+  * minor doc update
+  * Added info about database to changelog.
+  * Revert "Fix for suggestion from clang-tidy."
+  * fixed snapshot delay in TimeMachine dialog added single save states commands to TimeMachine dialog
+  * Fix for suggestion from clang-tidy.
+  * Fix crash with minimal launcher UI.
+  * Attempt at fixing R77 crash.
+  * Disable defunct joymap for the R77.
+  * Fixes for suggestions from cppcheck.
+  * Yearly update to copyright for 2021.
+  * Started final doc updates for 6.5 release.
+  * Revert "attempted to fix special char problems in Windows (see #751)"
+  * attempted to fix special char problems in Windows (see #751)
+  * fixed BrowserDialog sizing and title
+  * fixed high scores hashing
+  * added high score clearing for invalid data fixed high score error messages
+  * libretro: Fix missing file.
+  * Minor cleanup.
+  * Add missing file to Visual Studio.
+  * Add a note on the WAL file
+  * Move highscores to DB.
+  * updated doc for new SQLite database
+  * Added new class to Visual Studio project.
+  * Rename method in OSystem to more accurately describe its current functionality.
+  * Refactoring, remove sqlite from libretro build.
+  * Fix minor compile warning in Xcode (unused variable).
+  * Don't throw exceptions with 'new'.
+  * Add settings migration on MacOS.
+  * libretro: Fix segfault on startup.
+  * Fixed filename changes for Xcode project.
+  * Change filenames in Visual Studio.
+  * libretro: Fix changed files in Makefile. Still some work to do here; crashes on startup.
+  * Fix settings file import on windows.
+  * Cleanup, fix leftovers.
+  * Rename SettingsDb -> StellaDb .
+  * Refactoring: more fluent interfaces, improve const semantics.
+  * Add migration for existing stella.pro
+  * Added missing files to Visual Studio project, and fixed compile error.
+  * Added missing files to Xcode project.
+  * Prefer settings DB for import in case of ambiguity.
+  * Add a migration for an old settings DB (R77 style).
+  * Change DB name to stella, add migration for old stellarc file.
+  * Tune sqlite build, remove the possibility of linking against system libsqlite3.
+  * Move error handling to SqliteDatabase, performance tuning.
+  * further improved highlighting fix
+  * libretro: Update config file for recent new classes.
+  * updated VS project files
+  * Make pragmas conditional to clang.
+  * Customize column names.
+  * JSON serialized storage of properties table.
+  * replaced the highlighting fix with a much better one :)
+  * added workaround for highlighting non-disassembled code
+  * fixed spelling of 'M Network'
+  * libretro: Updated for new repo class.
+  * Updated Xcode project for latest repo classes.
+  * Add new class to Visual Studio project file.
+  * Pretty-print serialized mappings.
+  * Reimplement export / load of per-ROM properties.
+  * libretro: Add support for latest SQL classes.
+  * Remove leftover.
+  * Move properties to sqlite.
+  * Add property repository.
+  * minor debugger doc updates
+  * Added new files for Visual Studio.
+  * Added new files to Xcode project.
+  * Say hello to composite key value repo.
+  * Fix issues with passing streams into lambda, and data not being transferred sometimes. Documented weirdness of this; perhaps a future version of C++ will allow it. Write data through 'node' object rather than raw ofstream, like other code in the class.
+  * fixed duplicate prompt when stepping, tracing etc. after browser dialog a few minor improvements
+  * inlined browser dialogs in debugger parser added optional browser dialog to "dump" command (somewhat ugly!)
+  * Add generic 'contains' method, and remove incorrect FIXME.
+  * Missed a few brace-initializations.
+  * Clarified point in changelog.
+  * Fixed a few more unused variables warnings.
+  * Fix warning with unused variables. I left most of them there commented out, since they may be needed in the future.
+  * fixed copy & paste error
+  * centralized some dialog constants
+  * Improved BrowserDialog usage, eliminating redundant code in several places. This class now uses a lambda function to do the work when clicking OK or Cancel. This commit also adds the changes from the previously reverted commit.
+  * Revert "cleaned up code for use of fonts for BrowserDialog"
+  * cleaned up code for use of fonts for BrowserDialog
+  * Fix compile issue with LoggerDialog.
+  * fixed scrollbar alignment issues
+  * fixed selection issue when switching input event filters
+  * added missing changes in LoggerDialog
+  * Fix issues with About dialog in dark mode on macOS (fixes #748). Note that this only works with macOS 10.14 and above.  Someone with more Mac experience will have to fix it for older versions.
+  * Fix ZIP files in Windows not finding last path correctly.
+  * added BrowserDialog to LoggerDialog updated some docs
+  * minor doc updates
+  * enhanced and cleaned up OS specific path code improved mouse double click marking added file list resizing in browser dialog
+  * Fix overzealous TV detection in ROM filenames.  Fixes #747.
+  * fixed a saveses bug renamed browser titles
+  * refactored directory names, removed default load dir updated docs
+  * added "userdir" settings which can be used to overwrite default save (and load) directories
+  * Eliminate duplicate copies of lastPathComponent function.
+  * added file browser to GameInfoDialog export code cleanup updated docs
+  * Remove dead Blargg code.
+  * Few more fixes for suggestions from cppcheck.
+  * Added a few more 'string_view' in bspf.
+  * Revert "2nd try to get notifications"
+  * 2nd try to get notifications
+  * Revert "intentionally broken code for testing libretro build notifications"
+  * intentionally broken code for testing libretro build notifications
+  * Fix compile error.
+  * renamed Game properties 'Save' button into 'Export'
+  * added tooltip to GameInfoDialog 'Save' button
+  * Updated changelog.
+  * Added C++ compatible string search functions to BSPF. This allows us to remove strcmp, stricmp, strcasecmp, etc, which are non-standard and C-style functions.
+  * fixed(?) libretro/Makefile
+  * ...and removed the const too
+  * removed default, just to be sure
+  * fixed broken joystick mapping loading
+  * minor hotkey updates to debugger doc
+  * updated doc for missing GameInfoDialog save button
+  * fixed missing GameInfoDialog save button
+  * update docs (Launcher keys, upper case hotkeys)
+  * limited redraw debug output to DEBUG_BUILD
+  * Final batch of brace conversion. Added const in a few places.
+  * Forgot one file for brace fixes in the last merge.
+  * Move duplicated 'trim' function to BSPF. Remove unused methods from Settings.
+  * More conversion to brace syntax.
+  * Fix segfault when exceptions are thrown on errors. That was exactly the point of exceptions; to NOT crash the app!
+  * Make variables initialized in c'tor initialization list use brace-syntax.  - This is on the advice of one of the static analyzers we use.  - More classes have to be converted; this is only the first pass.
+  * Fixed a clang warning.
+  * Fix minor warning.
+  * added mouse support to editable widgets added missing hotkeys to launcher context menu updated docs
+  * Disabled PlusROM for now, until we find more time to work on it.
+  * libretro: Fix warnings with memset; use default initialization instead.
+  * Various fixes for suggestions from cppcheck.
+  * minor enhancement of input global keys
+  * fixed specific mouse axes for paddles (fixes #746) added specific mouse axes properties for SWOOPS
+  * Some of the checkers don't like stray Unicode in ASCII files.
+  * reordered hotkeys and fixed UI for driving controller sensitivity (value used for digital input too)
+  * removed JOYSTICK_SUPPORT checks to align with header file
+  * libretro: Fix compile errors (PlusROM and some minor joystick stuff).
+  * Add PlusROM to Xcode project.
+  * Add PlusROM to Visual Studio project.
+  * Added beginning infrastructure for PlusROM support. For now, none of the network functionality is present; PlusROM's are correctly detected, though.
+  * changed sorting of saved mappings for easier debugging
+  * added new hotkey mappings
+  * Arrgh, should have just left this alone.
+  * Oops, seems gitignore is recursive, so we can't remove certain files.
+  * Ignore more files in git.
+  * fixed global hotkey logic and warning
+  * added hotkeys for Input Devices & Ports settings added hotkeys for Game Properties/Controller settings added new global hotkey group for new hotkeys add a few more tooltips updated doc
+  * Hook up SQL for Visual Studio.
+  * Some fixes for suggestions from clang-tidy.
+  * Completely remove 'cfgfile' functionality, since the SQL backend uses the same name on all ports.
+  * libretro: Fix compile for new SQL classes.
+  * Fix compile warnings in Linux.
+  * Fixed typo, and some formatting cleanup.
+  * Fixed configure bug in Linux.
+  * Sqlite is the only choice now.
+  * Fix 'daptor devices sometimes not getting correct default mappings (fixes #685).
+  * Sqlite3 is not conditional anymore, support amalgamation on UNIX.
+  * fixed key map conversion for multiple modifier keys
+  * Add the amalagmated SQlite source.
+  * fixed MDM single bank ROM crash (fixes #743)
+  * added sorting when saving JoyMap and KeyMap
+  * moved new EventMode::kEditMode to end of list to fix mapping conversion
+  * added support for default image in ROM info viewer (resolves #601)
+  * Fix compile warnings in Xcode.
+  * Fix clang warning.
+  * improved playback sound muting
+  * added sound to Time Machine playback fixed playback speed updated docs
+  * fixed and enhanced TimeMachineDialog
+  * Fix crash when loading ROMs into ROM launcher under certain circumstances.
+  * switched high score checksum calculations to md5 added high score properties for a few more games updated docs
+  * libretro: Update gitlab ci extends ordering
+  * refactored HighScoresDialog/Manager added checksums to high scores added high score properties for more games updated docs
+  * update highscores doc, added currently supported game list added input char limitation to DataGridWidget
+  * added shading to TIA surface when emulation paused or dialog on top
+  * Fix warnings from gcc.
+  * Trying to fix build bug #736
+  * HighScoresDialog exception fix
+  * JSON exception analysis
+  * Condig style.
+  * changed high score (file) format to JSON
+  * Move function to bspf.hxx.  It's not used yet, but it might be in the future.
+  * Add high score stuff to Xcode project.
+  * Fixed a few warnings from clang.
+  * defined high score properties for many ROMs added option to limit number of chars for text input added tooltips to High Scores dialogs and widgets updated docs
+  * updated defprops
+  * finished high scores definitions saving conversion to JSON
+  * Simplified some code; use a lambda instead of two identical loops.
+  * Switch to C++17 structured bindings for maps in a few places, adding const as well. This makes the code a little easier to follow.
+  * started converting high score definitions saving to JSON
+  * Handle modekey mask properly.
+  * Fix gcc warning: use const references instead of pass by value for exceptions.
+  * Various code cleanups.
+  * Remove workarounds in pre-C++17 code.
+  * Added JSON stuff to Xcode project.
+  * libretro: Add JSON stuff to build script.
+  * Added json stuff to Visual Studio project file.
+  * Wrap json.hxx in another header, which disables warnings for code we don't control. Eventually we can add directives here for other compilers too (in json_lib.hxx).
+  * Migration fixes.
+  * Revert "Fix bad use of constexpr." --- don't need that anymore with C++17
+  * made DelayQueueWidget use setDirty removed superfluous code from TiaWidget
+  * minimized redraws in debugger
+  * Move Linux builds to use C++17 by default.
+  * Avoid endless loop and heap corruption of doom.
+  * Fix null pointer.
+  * improved debugger's RAM labels (part 2)
+  * Fix bad use of constexpr.
+  * improved debugger's RAM labels
+  * added some more tooltips to UI
+  * updated changes.txt
+  * Convert legacy keyboard mappings.
+  * Coversion for legacy joystick mappings.
+  * fixed doc
+  * fixed #735 (trackball fire)
+  * Fixed compile error and warnings from g++.
+  * added path info to launcher tooltips when displaying sub directories fixed launcher files list when filtering was canceled added persisting 'incl. subdirectories' setting
+  * JSON mappings for keyboard.
+  * Fix compile warning and error in clang.
+  * added cancel option (button, enter, ESC) to ProgressDialog adapted all ProgressDialog using actions to allow canceling
+  * added launcher reload delay while typing filter
+  * updated docs
+  * fixed small font for launcher
+  * fixed considering "show all files" at startup fixed launcher focus issues after exiting ROMs
+  * added subdirectory search to launcher enhanced ProgressDialog
+  * improved wildcard handling (addresses #154)
+  * fixed #732
+  * Fix typo in tooltip.
+  * tooltips are disabled for R77
+  * added wildcard support to launcher dialog filter
+  * added tooltips to DeveloperDialog
+  * Don't forget about Mac for a tooltip.
+  * updated changes and WhatsNewDialog
+  * improved tooltips hiding added tooltip to breakpoint/trap status added tooltip to search/compare buttons and dialogs added tooltips to data operation buttons
+  * changed y-position displayed in tooltip to scanline number
+  * Don't serialize redundant properties.
+  * removed "on top" logic for drawing widgets
+  * Enable RTTI for Xcode.
+  * fixed potential Clang warnings
+  * added tooltip hiding when context menus are opened added tooltips to TiaOutputWidget and TiaZoomWidget
+  * Enable RTTI by default for Linux/UNIX builds; disable it for release builds only.
+  * Add debugger files to Xcode project, and fix minor warnings.
+  * Fix location of files in VS project.
+  * Fix wrong location of debugger files.
+  * oops, added missing files
+  * added tooltip display of RAM labels in DataGridWidgets added tooltip display of labels of some ToggleBitsWidget bits merged tooltip display of 2nd and 3rd RomListWidget byte added tooltip display of signed values
+  * Fix some clang warnings and minor typo.
+  * disable tooltip when displayed value changes/is edited
+  * added a few more tooltips to VideoAudioDialog
+  * Use const references where appropriate. Probably not a huge performance gain, but added to match the rest of the code.
+  * improved string wrapping (incl. '\n') fixed potential exception in StringListWidget
+  * added multi-line tooltip support
+  * improved tooltip handling (better delays, rerender instead of redraw) added tooltip to StringListWidget for shortened texts (e.g. ROM names in launcher) added code for StaticTextWidget tooltip (without setting widget dirty)
+  * Fixed another minor clang warning.
+  * Fixed minor clang warnings, and implemented clang-tidy suggestions.
+  * added tooltips to TiaInfoWidget and CpuWidget
+  * aligned tooltip font to dialog font improved debugger tooltip display added tooltips for RomListWidget bytes
+  * enhanced GPRx bits display in debugger, now considers reflection
+  * added considering bit order in PF pixel tooltip display removed unused click count from ToggleWidget
+  * keep tooltips visible while mouse moves in focus show tooltips faster when moving from one to another update tooltip when mouse moves over different widget items disable tooltip when editing
+  * fixed bug which removed highlighting for most widgets
+  * added value tool tips to debugger (DataGridWiget, ToogleWidget)
+  * Load joystick mappings from json.
+  * fixed tool tip font for Launcher added a few more tool tips
+  * added a separate flag for mouse focus
+  * fixed tool tips for HiDPI added tool tip repositioning if exceeding surface
+  * Fix warning, and add ToolTip to Linux build.
+  * added initial tool tip functionality removed duplicate _editMode in DataGridWidget
+  * Fix audio changes to be compatible with CDF/CDFJ
+  * Increase sample size from 2K to 512K for CDFJ+
+  * Remove overkill.
+  * JSON joystick mappings, still missing load and migration.
+  * Enable rtti in makefile.
+  * Some simplifications to Point/Size/Rect classes.
+  * attempt to fix 'shifting' dialogs (OptionsDialog)
+  * removed duplicate _editMode variable fixed missing redraws when StringListWidgets gain focus prevent focus for disabled widget
+  * fixed garbage in fullscreen mode fixed breakpoints flickering in RomListWidget fixed palette update in VideoAudioDialog
+  * Optimize/simplify dialog shading slightly  - move creation to c'tor  - apply position and size with one method instead of two
+  * Eliminate graphical garbage in background in fullscreen mode for Linux/Mac.
+  * improved dirty chain detection
+  * removed special colors and drawing for Dialog in background
+  * fixed breakpoints setting in RomListWidget improved drawing of breakpoints in RomListWidget made RomListWidget redraw regularly only if in edit mode
+  * added a full render when event WINDOW_EXPOSED and WINDOW_RESIZED are handled stopped screen from changing frames when 'Pause' is displayed
+  * improved fullscreen message in debugger mode
+  * fixed UI palette update crash fixed garbage when switching state in fullscreen modes
+  * Update Xcode for class addition. Comment out code that causes a crash on Mac.
+  * fixed initial focus display
+  * disabled palette display if without console
+  * fixed missing render when a stacked dialog was closed in emulation
+  * avoid full update when window gets exposed (test)
+  * fixed forced full redraws force full UI redraw when UI palette changes
+  * fixed rendering, all dialogs are always re-rendered
+  * Fix compile warning.
+  * fixed AboutDialog widget overlapping
+  * refactored UI ticks
+  * removed debug code
+  * Allow first click detection when Stella lost focus.
+  * minimized ContextMenu redraws fixed shading caused by ContextMenu
+  * replaced shaded UI redraws with shading surface
+  * further minimized UI redraws when message is displayed
+  * minimized UI redraws and renderings when message is displayed refactored message creation
+  * Less noise from clang.
+  * split Dialog drawing and rendering and skip drawing render when possible
+  * improved blinking cursor
+  * removed some superfluous redraws
+  * added blinking cursor
+  * fixed RomInfoWidget drawing
+  * activated enhanced "full" redraw logic
+  * added individual size to each save state (fixes #727)
+  * added individual size to each save state (fixes #727)
+  * move Widget flags into GuiObject
+  * added support of transparent widgets (for TimeMachineDialog)
+  * initial commit for #719
+  * adding 3E+ test ROM
+  * trying to fix CLANG warning
+  * Pull in nlohmann JSON.
+  * A few more fixes for suggestions from clang static analyzer.
+  * Fix minor warnings from clang static analyzer.
+  * fixed too large shift exponent used in DataGridWidget
+  * Revert "Don't calculate palette before all sliders have initialized."
+  * Don't calculate palette before all sliders have initialized.
+  * Sync the Debian packaging from Debian
+  * Use a native version in the Debian changelog
+  * Fix compile warning.
+  * Fix #721
+  * finalized EditableWidget updated doc
+  * Minor formatting fixes.
+  * Added a few more editing shortcuts, fixed a few warnings, and re-applied reverted commit.
+  * fixed problem with QWERTZ keys
+  * Fix option-backspace.
+  * MacOS mappings.
+  * bugfix: edit mappings removed identical emulation mappings
+  * refactored EditableWidget to use events instead of scancodes (TODO: text, MacOS keys)
+  * added single char aggregation for undos fixed potential bug when moving cursor one word left
+  * Added UndoHandler to Xcode, and fixed minor warnings.
+  * refactored undo functionality into UndoHandler class
+  * added undo/redo to EditableWidget
+  * Fix avoxport popup not selecting correct device in InputDialog. Incidentally, I think we should change VarList::push_back() to not allow this type of error to happen. Having to pass two parameters with the same value seems to be very hacky.
+  * added filtering to text pasted to EditableWidget updated doc for UI keys (TODO: UI edit keys)
+  * fixed Ctrl+A in EditableWidget
+  * updated HelpDialog added 'Space' for selecting UI elements
+  * fixed tab bug in VideoAudioDialog
+  * some minor EditableWidget enhancements and code cosmetics
+  * selection bug fix attempt
+  * added selection reset for all widgets derived from EditableWidget
+  * removed forgotten TODO
+  * finalized EditableWidget enabled selection drawing on all derived widgets
+  * fixed copy/paste bug
+  * improved keyboard copy/paste selection
+  * added keyboard copy/paste selection in EditableWidget (addresses #105) increased width of edit cursor
+  * Some refactoring of EditableWidget
+  * And so it begins again; bump version number to 6.5_pre Move some serial port code directly into portNames(); meant to do this for 6.4, oh well.
+  * updated debugger screenshot for "Frame Cycls"
+  * More syntax fixes; indicate plural of "Cycle" as "Cycls" in the debugger (we really need more room here :) )
+  * Added new debugger pseudo-registers to the changelog. Changed string "Cycl." to "Cycle", since there was no point using a '.' with a fixed-width font.
+  * Updated git commit ID for last commit before the 6.4 release (we hope). Changed changelog slightly, since Stella loads ROMs, not cartridges.
+  * updated WhatsNewDialog, reordered Changes.txt
+  * Changelog.
+  * Slight refactor of label array in DeveloperDialog. - This is a followup to the last commit for this class - We don't need this to be a static in the header file itself
+  * fixed DeveloperDialog default settings of CPU register (fixes #717)
+  * Updated various files for upcoming 6.4 release.
+  * updated changes/WhatsNewDialog
+  * added color parameters to 'Custom' palette, fixes #657
+  * Updated changelog for upcoming release.
+  * More fixes to SaveKey data file; make sure file is always 32KB.
+  * Use proper constant for invalid handles in Windows.
+  * enabled messages in continuous snapshots mode (fixes #714) changed hotkey for continuous snapshots mode
+  * Remove redundant define, which was already inside the same define.
+  * Fix bug where selected ROM isn't remembered when exiting and re-entering a directory.
+  * Revert "Revert change in serial port autodetection that was causing the real serial port to not be found."
+  * Revert change in serial port autodetection that was causing the real serial port to not be found.
+  * Minor updates to comments.
+  * fixed Atari mouse auto detection
+  * libretro: Minor doc updates and code rearrangement.
+  * Updated Xcode project for recent framebuffer rework.
+  * Minor update to VS project file.
+  * Fairly huge refactoring of FrameBuffer class into FBBackend and friends. Only tested in Linux and libretro for now; Windows and Mac will follow soon.
+  * added QuadTari test ROM
+  * updated doc graphics due to new PopupWidget look
+  * added editable PopupWidget made AtariVox serial port editable
+  * Switch to 'cu' AVox-USB devices for Mac.
+  * Fix serial port autodetect issues for Mac (similar to fixes for Linux).
+  * Fix romSize overflow. Fixes DPC emulation with UNSAFE_OPTIMIZATIONS.
+  * Whitespace.
+  * Change serial port autodetection in Unix to not re-configure the ports, only test if they can be opened.
+  * Initialize EEPROM data if file doesn't exist.
+  * Moved some framebuffer enums to appropriate file.
+  * A few more FrameBuffer cleanups. - refactored a block of code that was essentially the same in 3 different places
+  * Fix some warnings from clang.
+  * allow disabling scroll bars in ListWidget
+  * updated debugger doc
+  * Eliminate dead code.
+  * A few more cleanups relating to Common::Size vs. separate components.
+  * Updated changelog for aspect correction/pixel-exact snapshots.
+  * Updated Xcode for VideoModeHandler class.
+  * Updated VS project for VideoModeHandler class.
+  * Started cleanup of FrameBuffer class. - Moved Video mode stuff into separate class - Fix bug with aspect correction in fullscreen mode still giving graphical artifacts
+  * fully resolved #165 (added timer read cycles count) refined TiaInfoWidget again added doc
+  * fixed "no debugger" project files
+  * implemented WSYNC part of #165 (TODO: doc) refined TiaInfoWidget, CpuWidget and RamWidget
+  * added some minor refinements of RamWidget and CpuWidget
+  * fix #710
+  * Create .gitlab-ci.yml
+  * minor UI keys doc update
+  * added cut/copy/paste text support for Windows keys
+  * Added basic (entire and single line only) text cut/copy and paste (partially implements #105)
+  * Display zoom factor when switch from/to fullscreen mode
+  * Final updates for 6.3 release.
+  * added info to "Correct aspect ratio" UI setting
+  * fixed wording
+  * made correct aspect ratio a permanent setting added hotkey for correct aspect ratio updated docs
+  * Added debugger pseudo-registers to detect timer access on wraparound (fixes #606).
+  * Startup bank randomization is now disabled for BUS and DPC+ too (similar reasoning as for CDF).
+  * changed plain video mode into no correct aspect ratio mode updated docs
+  * added doc for plain video mode renamed plain video mode option
+  * Add plain video mode.
+  * Adapt dialog for various font sizes
+  * Added autodetection for AVox-USB adaptor to UI (fixes #688).
+  * Forgot to include header file in VS project file.
+  * Wrap 'windows.h' inside a C++ compatible header file.
+  * Autodetect serial port for AVox-USB adaptor on startup, and set 'avoxport' argument. This completely automates the discovery of the AVox port when only one such port exists. If there is more than one, this code selects the first one.  Further work will allow the user to go into the Input dialog and select the correct one, if more than one exists.
+  * CDFJ+ test binaries
+  * Fix minor warning (missing newline), and minor cleanup.
+  * updated docs for CDFJ+
+  * fixed warnings
+  * Add romSize and ramSize functions
+  * Revert "Remove vscode settings"
+  * Remove vscode settings
+  * Update debugger widget for CDFJ+
+  * Preliminary support for CDFJ+ bankswitching
+  * Added code to detect valid serial ports. Next we have to tie this into the UI, so AtariVox port can be more easily detected.
+  * updated docs for 'Dark' theme
+  * Guarantee 'inline' code actually happens.
+  * Add QuadTari support to Xcode.
+  * addressing #694, this seems to fix it (internal RAM bank segment addresses were exceeding 64K)
+  * updated Quadtari docs
+  * added more controller widget support for QuadTari added tabbing through controller widgets
+  * enhanced UA bank switching to support more Brazilian carts (fixes #698)
+  * working on more controllers and debugger widgets
+  * made changes in controller widgets and switches highlighted in SWCHA(R)/SWCHB(R) made SWCHB(R) editable in debugger
+  * Updated StellaSettingsDialog and WhatsNewDialog
+  * made changes in controller widgets and switches highlighted in SWCHA(R)/SWCHB(R) made SWCHB(R) editable in debugger
+  * reduced QuadTari timer to 1 scanline
+  * Fix a few compiler warning and errors from the latest g++ and clang compilers.
+  * QuadTari documentation
+  * added multiple controller support (joystick, driving, SaveKey, AtariVox)
+  * libretro: Updated VS2017 project. This has been broken for months, so I wonder whether we should keep it.
+  * Fix compile errors.
+  * started working on multiple controller support
+  * Fix compile warning in clang, and compile error for libretro build.
+  * fixed build error and warning reduced QuadTari switch timer value
+  * added QuadTari controller switch timer
+  * added missing files (again :( )
+  * added QuadTari debugging widget (joysticks only) added mapping for 2nd QuadTari joysticks
+  * added QuadTari support for joysticks added autodetection for QuadTari
+  * add missing files
+  * fixed 3E+ peeks and pokes (using 3E code now)
+  * fixes #695 (wrong RWPs) (directPokeBase must NOT be set! (partially reverts 0bf12045d and b57c2d05c)
+  * micro typo
+  * initial commit for QuadTari support (see #693)
+  * documented new delayed background color glitch developer option
+  * initial commit
+  * added delayed background color glitch developer option
+  * Add '--enable-release' to configure script, which for now sets the Makefile to use LTO.
+  * enabled "Whole Program Optimization" for release versions (~5% faster in Turbo mode)
+  * updated event version to force initial controller mapping
+  * fix attempt for #692
+  * added Genesis autodetection for Zeviouz
+  * Add support for 2600-daptor II when flashed as an AVox-USB converter. Basically, for this device we use software flow control rather than hardware CTS signal.
+  * Fix compiler warning.
+  * enhanced CartCDF, now ignores random startup banks (partially addresses #690)
+  * Fix warnings from Clang 11. Apparently d'tors in child classes should now be marked override rather than virtual (to match other methods). So we do that specifically now.
+  * Revert "Fix compiler warnings: uInt32 to size_t." This causes more problems than it's worth.
+  * Fix compiler warnings: uInt32 to size_t.
+  * adapted HighScoresDialog to variable font sizes
+  * removed superfluous property in PropSet
+  * removed warnings
+  * Cleanup, compile fixes.
+  * allow remapping of fire button for trackball and light gun games
+  * a cosmetic change in HighScoresDialog
+  * a bit of formatting and artifacts cleanup
+  * remember high score initials for next session
+  * minor tweaks
+  * add high score notes
+  * add more high score data add hexadecimal score formatting (SCSIcide)
+  * more high scores data bugfixing
+  * allow user defined high score variations improve Stay Frosty 2 high scores definition add Seawolf high scores definition improve R77 paddle mapping
+  * One more for Merge remote-tracking branch 'remotes/origin/master' into feature-highscores
+  * add high score support for CDF, DPC+ and BUS add high score data for Draconian RC6 and SF2 (RC8)
+  * add high scores data for 6 more games move cart name from title to extra widget fix and refactor value bit masking
+  * remove high score player parameter refactor GameInfoDialog dialog accordingly change high score format order
+  * refactor GameInfoDialog UI creation
+  * fix title display refactor "pos(ition)" into "rank" improve Lady Bug data (add special)
+  * display game name in high scores title
+  * add prev/next buttons correct reading properties if file has different name
+  * minor tweaks
+  * clean the code a bit
+  * add HighScoresDialog to LauncherDialog remove high scores debug events add Dragster data to stella.pro
+  * correct hotkey for TimeMachine UI (2/2)
+  * correct hotkey for TimeMachine UI
+  * add "invert score order" format parameter add "Save?" dialog
+  * add delete options to HighScoresDialog
+  * clean up Stella.pro file
+  * add load/save for high scores (via Serializer) change high scores hotkey to INSERT block high score dialog when no data is defined
+  * get current data for HighScoresDialog define, load and store "special" value
+  * start adding Special improve HighScoresDialog
+  * added Special to GameDialog
+  * add missing file to non-VS projects start to fill the HighScoresDialog with real data
+  * initial work on HighScoresDialog
+  * add two more methods for retrieving current values add Stella.pro for testing
+  * add namespace for HighScoresManager omit default property parameters
+  * finalize High Scores tab in GameInfoDialog
+  * refactor for saving props save props
+  * fix PopUpWidget colors when disabled display current scores and values address value formatting
+  * consider GUI_SUPPORT, rename into HighScoresManager, value formatting
+  * refactoring
+  * trying to commit to feature-highscores
+  * Fix stringToInt in a few places.
+  * Wrap std::stoi inside BSPF::stringToInt, and handle its exceptions.
+  * Fix missing properties in DefProps.
+  * Use 'const' instead of 'constexpr' when generating properties file.
+  * add HighScoreManager class add high score tab in GameInfoDialog
+  * adapt DefProps.hxx generation (TODO: compiler error)
+  * change zero value for phosphor into "0" (not "Off")
+  * separate properties for addresses and address formats
+  * initial commit defines properties for Asteroids, Chopper Command and Frooger add new properties parser add reading score etc. from RAM add test hotkeys (CTRL+SHIFT S/V) display current score and variation
+
+-------------------------------------------------------------------
 Sat Aug 08 09:38:48 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200804:
