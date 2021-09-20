@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-prettyprinter
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name prettyprinter
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.0
+Version:        1.7.1
 Release:        0
 Summary:        A modern, easy to use, well-documented, extensible pretty-printer
 License:        BSD-2-Clause
