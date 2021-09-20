@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:58:45 UTC 2021 - i@guoyunhe.me
+
+- Remove fix-multiple-definition-error.patch
+- Update to version 0~git20210311:
+  * Add ios-arm64/tvos-arm64
+  * Fix explicit CC/CXX settings breaking Windows build
+  * Update .gitlab-ci.yml
+  * (macOS) Add ARM 64bit Mac support
+  * Update to new PS2 toolchain
+  * Add armv8 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add CI for PS2
+  * Add PS2 support in Makefile
+  * Add BGR color support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Buildfix for Windows
+  * Add .gitlab-ci.yml
+  * Update
+  * Update README.md
+  * Update README.md
+  * Fix multiple definition error when -fno-common
+
+-------------------------------------------------------------------
 Sun Jun  7 09:39:45 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Add fix-multiple-definition-error.patch to fix Tumbleweed build
