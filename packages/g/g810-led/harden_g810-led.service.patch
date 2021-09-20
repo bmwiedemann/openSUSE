@@ -1,0 +1,23 @@
+Index: g810-led-0.4.2/systemd/g810-led.service
+===================================================================
+--- g810-led-0.4.2.orig/systemd/g810-led.service
++++ g810-led-0.4.2/systemd/g810-led.service
+@@ -2,6 +2,18 @@
+ Description=Set Logitech G810 Led Profile
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=/usr/bin/g810-led -p /etc/g810-led/profile
+ Type=oneshot
+ RemainAfterExit=yes

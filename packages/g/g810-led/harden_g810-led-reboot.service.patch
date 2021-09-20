@@ -1,0 +1,23 @@
+Index: g810-led-0.4.2/systemd/g810-led-reboot.service
+===================================================================
+--- g810-led-0.4.2.orig/systemd/g810-led-reboot.service
++++ g810-led-0.4.2/systemd/g810-led-reboot.service
+@@ -5,6 +5,18 @@ Before=shutdown.target reboot.target hal
+ 
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ ExecStart=/usr/bin/g810-led -p /etc/g810-led/reboot
+ Type=oneshot
+ RemainAfterExit=yes

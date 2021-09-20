@@ -24,6 +24,8 @@ License:        GPL-3.0-only
 Group:          Hardware/Other
 URL:            https://github.com/MatMoul/g810-led/wiki
 Source0:        https://github.com/MatMoul/g810-led/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch0:	harden_g810-led-reboot.service.patch
+Patch1:	harden_g810-led.service.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libhidapi-devel
 BuildRequires:  pkgconfig
@@ -45,6 +47,8 @@ Compatible keyboards:
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 %make_build
