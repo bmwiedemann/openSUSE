@@ -64,7 +64,6 @@ BuildRequires:  pkgconfig
 %if %{with python_plugin}
 BuildRequires:  python-gtk-devel >= 2.10.4
 %endif
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(atk) >= 2.2.0
 BuildRequires:  pkgconfig(babl) >= 0.1.78
@@ -216,12 +215,6 @@ applications that want to make use of the GIMP libraries.
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-translation-update-upstream
-translation-update-upstream po-libgimp gimp20-libgimp
-translation-update-upstream po-python gimp20-python
-translation-update-upstream po-script-fu gimp20-script-fu
-translation-update-upstream po-plug-ins gimp20-std-plug-ins
-translation-update-upstream po-tips gimp20-tips
 # Safety check for ABI version change.
 vabi=`printf "%d" $(sed -n '/#define GIMP_MODULE_ABI_VERSION/{s/.* //;p}' libgimpmodule/gimpmodule.h)`
 if test "x${vabi}" != "x%{abiver}"; then
