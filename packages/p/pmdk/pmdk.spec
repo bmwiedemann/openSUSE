@@ -1,7 +1,7 @@
 #
 # spec file for package pmdk
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright 2016, Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@
 %define min_ndctl_ver 63.0
 
 Name:           pmdk
-Version:        1.9
+Version:        1.11.0
 Release:        0
 Summary:        Persistent Memory Development Kit
 License:        BSD-3-Clause
@@ -36,7 +36,7 @@ Source:         https://github.com/pmem/pmdk/archive/%version.tar.gz
 Source1:        pregen-doc.tgz
 Source99:       gen-doc.sh
 Patch0:         examples-rpmem-add-missing-lfabric-flag.patch
-Patch1:         common-fix-LIBFABRIC-flags.patch
+
 BuildRequires:  automake
 BuildRequires:  fdupes
 BuildRequires:  man
@@ -110,6 +110,34 @@ This library is provided for software which tracks every store to
 pmem and needs to flush those changes to durability. Most developers
 will find higher level libraries like libpmemobj to be much more
 convenient.
+
+%package -n libpmem2-1
+Summary:        Low-level persistent memory support library
+Group:          System/Libraries
+Recommends:     %name
+
+%description -n libpmem2-1
+libpmem provides low level persistent memory support, in particular,
+support for the persistent memory instructions for flushing changes
+to pmem. libpmem2 has a new API that addresses many of the shortcommings
+of libpmem1
+
+%package -n libpmem2-devel
+Summary:        Development files for the low-level persistent memory library
+Group:          Development/Libraries/C and C++
+Requires:       libpmem2-1 = %version
+
+%description -n libpmem2-devel
+libpmem2 provides low level persistent memory support. In particular,
+support for the persistent memory instructions for flushing changes
+to pmem is provided.
+
+This library is provided for software which tracks every store to
+pmem and needs to flush those changes to durability. Most developers
+will find higher level libraries like libpmemobj to be much more
+convenient. libpmem2 has a new API that addresses many of the shortcommings
+of libpmem1
+
 
 %package -n libpmemblk1
 Summary:        Persistent Memory Resident Block library
@@ -240,7 +268,7 @@ Documentation for the pmem library interface.
 %prep
 %setup -q
 %patch0
-%patch1
+
 #Extract pre generated documentation
 tar xf %{S:1}
 
@@ -287,6 +315,8 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 
 %post   -n libpmem1 -p /sbin/ldconfig
 %postun -n libpmem1 -p /sbin/ldconfig
+%post   -n libpmem2-1 -p /sbin/ldconfig
+%postun -n libpmem2-1 -p /sbin/ldconfig
 %post   -n libpmemblk1 -p /sbin/ldconfig
 %postun -n libpmemblk1 -p /sbin/ldconfig
 %post   -n libpmemlog1 -p /sbin/ldconfig
@@ -328,6 +358,18 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %dir %_libdir/pmdk_debug/
 %_libdir/pmdk_debug/libpmem.so*
 %_includedir/libpmem.h
+
+%files -n libpmem2-1
+%defattr(-,root,root)
+%_libdir/libpmem2.so.1*
+
+%files -n libpmem2-devel
+%defattr(-,root,root)
+%_libdir/libpmem2.so
+%_libdir/pkgconfig/libpmem2.pc
+%dir %_libdir/pmdk_debug/
+%_libdir/pmdk_debug/libpmem2.so*
+%_includedir/libpmem2.h
 
 %files -n libpmemblk1
 %defattr(-,root,root)
@@ -396,7 +438,8 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %files -n rpmemd
 %_bindir/rpmemd
 %_mandir/man1/rpmemd.1*
-%endif #with_fabric
+#with_fabric
+%endif
 
 %files devel-doc
 %_mandir/man3/*.3*

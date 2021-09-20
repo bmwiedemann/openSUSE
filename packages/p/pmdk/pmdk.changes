@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:36:35 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Renamed libpmem2-1-devel to libpmem2-devel
+
+-------------------------------------------------------------------
+Wed Sep  8 14:42:34 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to PMDK 1.11.0
+  * Version 1.11.0
+    - Adds new APIs for libpmem2, most notably there are new functions
+      to shrink and extend an existing reservation and a new iterator API
+      for mappings contained within an existing reservation. There's also
+      a new function to retrieve a numa node for a source.
+    - Makes the pmemobj_open() and pmemobj_close() functions from libpmemobj
+      thread-safe. It's now easier to correctly manage persistent memory
+      pools in a parallel environment.
+    - Introduces a new API in libpmemobj to globally change the method of
+      assigning arenas to threads. The default is to rely on a OS per-thread
+      key to store arena information. This release introduces an option
+      to avoid the use of thread-local keys by simply using one global
+      arena for all threads in a pool.
+    - pmem2: don't force smaller alignment for fsdax mappings
+    - rpmem: various fixes for powerpc64le
+    - doc: fix documentation of pmem_is_pmem()
+    - common: fix various minor problems found by static analysis
+    - pmem2: arm64: fix possible data loss on ARMv8.2+ (improper flushing)
+    This release introduces no changes to the on-media layout and is
+    fully compatible with the previous version of PMDK. 
+
+  * Version 1.10
+    - This release introduces a new stable PMDK library, libpmem2, which
+      is the next major release of libpmem.
+      This library has an entirely new, but familiar, API that addresses many
+      shortcomings of the previous version, while retaining all of its
+      functionality. To learn more, see https://pmem.io/pmdk/libpmem2/ or
+      libpmem2(7).
+      The old library, libpmem, is still going to be maintained for the
+      foreseeable future, but we'd like to encourage any new applications to
+      leverage libpmem2.
+
+-------------------------------------------------------------------
+Wed Sep  8 10:06:57 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
+
+- Update to PMDK 1.9.2
+  * Version 1.9.2
+    - This release reverts an incorrect change in SDS handling
+      "pool: disable SDS check if not supported", and introduces
+      a proper fix for the issues that patch attempted to correct.
+  * Version 1.9.1
+    - common: fix LIBFABRIC flags
+    - common: Add runtime SDS check and disable
+    - pool: disable SDS check if not supported
+    - obj: fix failure atomicity bug in huge allocs
+    - obj: add missing drain after ulog processing 
+ - Drop common-fix-LIBFABRIC-flags.patch (now in upstream)
+ - Add a comment to gen-doc.sh
+
+-------------------------------------------------------------------
 Fri Jan 22 09:25:21 UTC 2021 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable aarch64 build
