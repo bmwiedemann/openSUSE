@@ -1,0 +1,35 @@
+commit b75a16ae5e8d9bc9d1b917e20a6d85db3cbc7b82
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Fri Sep 10 14:34:09 2021 -0600
+
+    libxl: Improve reporting of die_id in capabilities
+    
+    On Xen, libvirt runs in a VM (typically dom0) and does not have an accurate
+    picture of numa and cpu topology of the underlying physical machine using
+    the "usual" mechanisms. numa info and cpu toplogy are retrieved from libxl
+    and used to populate the libvirt conterparts. Commit 7b79ee2f78b introduced
+    support for reporting die_id in capabilities, but did not account for
+    special handling of numa and cpu topology in libxl.
+    
+    Currently, Xen does not report die_id in the libxl_cputopology structure.
+    In the meantime, set die_id to 0, which was suggested by the Xen developers
+    and is slightly better than random garbage such as
+    
+    <cpu id='1' socket_id='0' die_id='-1073069552' core_id='0' siblings='0-1'/>
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.7.0/src/libxl/libxl_capabilities.c
+===================================================================
+--- libvirt-7.7.0.orig/src/libxl/libxl_capabilities.c
++++ libvirt-7.7.0/src/libxl/libxl_capabilities.c
+@@ -292,6 +292,8 @@ libxlCapsInitNuma(libxl_ctx *ctx, virCap
+         cpus[node][nr_cpus_node[node]-1].id = i;
+         cpus[node][nr_cpus_node[node]-1].socket_id = cpu_topo[i].socket;
+         cpus[node][nr_cpus_node[node]-1].core_id = cpu_topo[i].core;
++        /* Until Xen reports die_id, 0 is better than random garbage */
++        cpus[node][nr_cpus_node[node]-1].die_id = 0;
+         /* Allocate the siblings maps. We will be filling them later */
+         cpus[node][nr_cpus_node[node]-1].siblings = virBitmapNew(nr_cpus);
+     }

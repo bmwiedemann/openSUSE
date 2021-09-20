@@ -1,0 +1,32 @@
+commit 65fab900c5206700f728de5dec72886832b5328f
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Mon Sep 13 16:04:41 2021 -0600
+
+    libxl: Fix driver reload
+    
+    On reload, the libxl driver calls virDomainObjListLoadAllConfigs to load
+    all configs from /etc/libvirt/libxl/ but incorrectly passes 'true' for
+    the liveStatus parameter, resulting in error messages such as
+    
+    libvirtd[21053]: XML error: unexpected root element <domain>, expecting <domstatus>
+    libvirtd[21053]: Failed to load config for domain 'sles15sp3'
+    
+    Fix by not requesting live status when re-reading the persistent VM config
+    files.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Michal Privoznik <mprivozn@redhat.com>
+
+Index: libvirt-7.7.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-7.7.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.7.0/src/libxl/libxl_driver.c
+@@ -821,7 +821,7 @@ libxlStateReload(void)
+     virDomainObjListLoadAllConfigs(libxl_driver->domains,
+                                    cfg->configDir,
+                                    cfg->autostartDir,
+-                                   true,
++                                   false,
+                                    libxl_driver->xmlopt,
+                                    NULL, libxl_driver);
+ 

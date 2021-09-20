@@ -1,0 +1,28 @@
+commit 51eb680b2647a8c0520ec5da3bb32d711d59f81b
+Author: Jim Fehlig <jfehlig@suse.com>
+Date:   Tue Sep 14 11:11:11 2021 -0600
+
+    libxl: Don't autostart domains on driver reload
+    
+    When libxlAutostartDomain was introduced with commit fb92307f0d, one hunk
+    mistakenly added a call site in libxlStateReload. Domains should not be
+    autostarted when reloading the driver, so remove the offending hunk.
+    
+    Signed-off-by: Jim Fehlig <jfehlig@suse.com>
+    Reviewed-by: Ján Tomko <jtomko@redhat.com>
+
+Index: libvirt-7.7.0/src/libxl/libxl_driver.c
+===================================================================
+--- libvirt-7.7.0.orig/src/libxl/libxl_driver.c
++++ libvirt-7.7.0/src/libxl/libxl_driver.c
+@@ -825,10 +825,6 @@ libxlStateReload(void)
+                                    libxl_driver->xmlopt,
+                                    NULL, libxl_driver);
+ 
+-    virDomainObjListForEach(libxl_driver->domains, false,
+-                            libxlAutostartDomain,
+-                            libxl_driver);
+-
+     virObjectUnref(cfg);
+     return 0;
+ }

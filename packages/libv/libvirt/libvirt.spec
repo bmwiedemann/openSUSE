@@ -285,6 +285,9 @@ Source6:        libvirtd-relocation-server.xml
 Source99:       baselibs.conf
 Source100:      %{name}-rpmlintrc
 # Upstream patches
+Patch0:         b75a16ae-libxl-improve-die-id.patch
+Patch1:         65fab900-libxl-fix-driver-reload.patch
+Patch2:         51eb680b-libxl-dont-autostart-on-reload.patch
 # Patches pending upstream review
 Patch100:       libxl-dom-reset.patch
 Patch101:       network-don-t-use-dhcp-authoritative-on-static-netwo.patch

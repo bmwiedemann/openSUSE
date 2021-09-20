@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 14 20:16:34 UTC 2021 - James Fehlig <jfehlig@suse.com>
+
+- libxl: Improve reporting of die_id in capabilities
+  b75a16ae-libxl-improve-die-id.patch
+  boo#1190493
+- libxl: Fix driver reload
+  65fab900-libxl-fix-driver-reload.patch,
+  51eb680b-libxl-dont-autostart-on-reload.patch
+  bsc#1190420
+
+-------------------------------------------------------------------
 Wed Sep  1 14:21:30 UTC 2021 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 7.7.0
