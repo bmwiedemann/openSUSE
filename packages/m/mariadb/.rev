@@ -1712,4 +1712,12 @@ See http://lists.opensuse.org/opensuse-factory/2013-01/msg00544.html for more co
     <comment></comment>
     <requestid>913273</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>461abfe0351ebcc2fd76caf226c69e45</srcmd5>
+    <version>10.6.4</version>
+    <time>1632173504</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>918741</requestid>
+  </revision>
 </revisionlist>

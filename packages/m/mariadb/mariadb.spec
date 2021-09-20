@@ -26,12 +26,6 @@
 # ignore failures
 %define ignore_testsuite_result 0
 %define with_oqgraph 1
-# TokuDB engine is available only for x86_64 architecture
-# see https://mariadb.com/kb/en/mariadb/tokudb/
-# Temporarily stop to build it as jemalloc 5 is not backwards compatible
-# and a build without jemalloc is not supported upstream (MDEV-15034)
-# Also we can't use PerconaFT (AGPL licence) that is needed for tokudb
-%define with_tokudb 0
 # Mroonga and RocksDB are available only for x86_64 architecture
 # see https://mariadb.com/kb/en/mariadb/about-mroonga/ and
 # https://mariadb.com/kb/en/library/myrocks-supported-platforms/
@@ -56,7 +50,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        10.5.10
+Version:        10.6.4
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -189,9 +183,6 @@ BuildRequires:  libboost_headers-devel
 %else
 BuildRequires:  boost-devel
 %endif
-%endif
-%if 0%{with_tokudb} > 0
-BuildRequires:  jemalloc-devel
 %endif
 
 %description
@@ -402,12 +393,6 @@ done
 # tests created by upstream
 cat %{SOURCE50} | tee -a mysql-test/unstable-tests
 
-# Remove python scripts remains from tokudb upstream (those files are not used anyway)
-rm -r storage/tokudb/mysql-test/tokudb/t/*.py
-
-# Remove PerconaFT from the package because it has AGPL licence [bsc#1118754]
-rm -rf storage/tokudb/PerconaFT
-
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 EXTRA_FLAGS="-Wno-unused-but-set-variable -fno-strict-aliasing -Wno-unused-parameter"
@@ -439,9 +424,6 @@ export CXXFLAGS="$CFLAGS -felide-constructors"
        -DWITH_PERFSCHEMA_STORAGE_ENGINE=1                           \
 %if 0%{with_oqgraph} < 1
        -DPLUGIN_OQGRAPH=NO                                          \
-%endif
-%if 0%{with_tokudb} < 1
-       -DPLUGIN_TOKUDB=NO                                           \
 %endif
 %if 0%{with_mroonga} < 1
        -DPLUGIN_MROONGA=NO                                          \
@@ -603,6 +585,8 @@ rm %{buildroot}%{_mandir}/man1/mariadb_config*.1*
 rm %{buildroot}%{_mandir}/man1/mysql_config*.1*
 rm %{buildroot}%{_mandir}/man1/mytop.1*
 rm -r %{buildroot}%{_includedir}/mysql
+# Devel man pages
+rm -rf %{buildroot}%{_mandir}/man3/*
 
 # Rename the wsrep README so it corresponds with the other README names
 cp Docs/README-wsrep Docs/README.wsrep
@@ -747,6 +731,8 @@ cd build
 
 %if 0%{run_testsuite} > 0
 cd mysql-test
+# spider test have been enabled in 10.6 and they fail, skip these tests
+# mariadb-client cannot connect to the server due to self-signed certificates
 ./mysql-test-run.pl \
     --parallel=%{?jobs:%{jobs}}     \
     --force                         \
@@ -761,6 +747,7 @@ cd mysql-test
 %if 0%{ignore_testsuite_result} > 0
     || :
 %else
+    --skip-test=spider \
     --skip-test-list=unstable-tests
 %endif
 %endif
@@ -869,6 +856,10 @@ exit 0
 %{_unitdir}/mariadb.target
 %{_unitdir}/mysql.service
 %{_unitdir}/mysql@.service
+%{_unitdir}/mariadb-extra.socket
+%{_unitdir}/mariadb-extra@.socket
+%{_unitdir}/mariadb.socket
+%{_unitdir}/mariadb@.socket
 %{_tmpfilesdir}/mariadb.conf
 %{_sbindir}/rcmysql
 %{_sbindir}/rcmariadb
@@ -910,6 +901,8 @@ exit 0
 %dir %{_datadir}/mysql/systemd
 %{_datadir}/mysql/systemd/mariadb.service
 %{_datadir}/mysql/systemd/mariadb@.service
+%{_datadir}/mysql/systemd/mariadb-extra@.socket
+%{_datadir}/mysql/systemd/mariadb@.socket
 
 %files rpm-macros
 %dir %{_rpmconfigdir}/macros.d

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep  6 08:35:07 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 10.6.4
+  * release notes and changelog:
+    https://mariadb.com/kb/en/library/mariadb-1064-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1064-changelog
+    https://mariadb.com/kb/en/library/mariadb-1063-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1063-changelog
+    https://mariadb.com/kb/en/library/mariadb-1062-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1062-changelog
+    https://mariadb.com/kb/en/library/mariadb-1061-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1061-changelog
+    https://mariadb.com/kb/en/library/mariadb-1060-release-notes
+    https://mariadb.com/kb/en/library/mariadb-1060-changelog
+  * fixes for the following security vulnerabilities:
+    10.6.4: CVE-2021-2372
+            CVE-2021-2389
+- Removed support to tokudb as it has been removed from upstream
+- Refresh mariadb-10.2.4-fortify-and-O.patch
+- Add new systemd socket from upstream
+
+-------------------------------------------------------------------
 Fri Aug 20 07:32:45 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Support both rpmlint 1.x and 2.x.
