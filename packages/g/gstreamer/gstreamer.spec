@@ -19,7 +19,7 @@
 %define gst_branch 1.0
 
 Name:           gstreamer
-Version:        1.18.4
+Version:        1.18.5
 Release:        0
 Summary:        Streaming-Media Framework Runtime
 License:        LGPL-2.1-or-later
@@ -39,7 +39,6 @@ BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.31
-BuildRequires:  gnome-patch-translation
 BuildRequires:  gobject-introspection-devel >= 1.31.1
 BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  hotdoc
@@ -49,7 +48,6 @@ BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
@@ -151,12 +149,8 @@ to develop applications that require these.
 
 %prep
 %setup -q -n gstreamer-%{version}
-translation-update-upstream po gstreamer-%{gst_branch}
-#gnome-patch-translation-prepare po gstreamer-%%{gst_branch}
-# The order matters. Only run gnome-patch-translation-update after patching!
 %patch1 -p1
 %patch2 -p1
-#gnome-patch-translation-update po gstreamer-%%{gst_branch}
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-doc-cache-generator.py
 
 %build

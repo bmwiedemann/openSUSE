@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:44:54 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream and
+  gnome-patch-translation support (PM-2938).
+
+-------------------------------------------------------------------
+Wed Sep 15 08:39:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + aggregator:
+    - Release the SRC lock while querying latency
+    - Release pads' peeked buffer when removing the pad or
+      finalizing it
+  + basesink: Don't swap rstart/rstop when stepping
+  + basesrc: Print segments with GST_SEGMENT_FORMAT and not
+    GST_PTR_FORMAT
+  + childproxy: init value in gst_child_proxy_get_property() if
+    needed
+  + clocksync: Fix providing system clock by default
+  + concat:
+    - Properly propagate seqnum of segment events
+    - adjust running time offsets on downstream events
+    - fix locking in SEGMENT event handler
+  + downloadbuffer/sparsefile: several fixes for win32
+  + element: NULL the lists of contexts in dispose()
+  + multiqueue:
+    - Use running time of gap events for wakeups.
+    - Ensure peer pad exists when iterating internal links
+  + pad:
+    - Keep IDLE probe hook alive during immediate callback
+    - Ensure last flow return is set on sink pads in push mode
+    - Don't spam the debug log at INFO level when default-chaining
+      a buffer list
+    - clear probes holding mutex
+  + parse-launch:
+    - Fix a critical when using the : operator.
+  + Don't do delayed property setting for top-level properties.
+  + plugin: load plugins with unknown license strings
+  + ptpclock: Don't leak the GList
+  + queue2: Refuse all serialized queries when posting buffering
+    messages
+  + systemclock: Update monotonic reference time when re-scheduling
+  + High CPU usage in 1.18 (but not master) when pausing playback
+    in gnome-music
+  + Don't use volatile to mean atomic (fixes compiler warnings with
+    gcc 11)
+
+-------------------------------------------------------------------
 Fri Mar 19 20:51:25 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.4:
