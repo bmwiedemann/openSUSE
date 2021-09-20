@@ -17,14 +17,14 @@
 
 
 Name:           gthumb
-Version:        3.10.4
+Version:        3.12.0
 Release:        0
 # FIXME: Add libchamplain BuildRequires once the map feature is considered stable.
 Summary:        An Image Viewer and Browser for GNOME
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
 URL:            https://wiki.gnome.org/Apps/gthumb
-Source0:        https://download.gnome.org/sources/gthumb/3.10/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gthumb/3.12/%{name}-%{version}.tar.xz
 
 BuildRequires:  bison
 BuildRequires:  fdupes
