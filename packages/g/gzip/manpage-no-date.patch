@@ -10,7 +10,7 @@ Index: gzip-1.9/doc/gzip.texi
 +(version @value{VERSION}),
  and documents commands for compressing and decompressing data.
  
- Copyright @copyright{} 1998-1999, 2001-2002, 2006-2007, 2009-2018 Free Software
+ Copyright @copyright{} 1998--1999, 2001--2002, 2006--2007, 2009--2021 Free
 @@ -47,7 +47,6 @@ Free Documentation License''.
  @title GNU gzip
  @subtitle The data compression program

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep  9 08:23:45 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 1.11:
+  * Performance improvements
+  * Added hardware acceleration for IBM Z
+- Refresh patches:
+  * manpage-no-date.patch
+  * xz_lzma.patch
+- Remove upstreamed patches:
+  * gzip-1.10-fix-DFLTCC-segfault.patch
+  * gzip-1.10-fix_count_of_lines_to_skip.patch
+  * gzip-1.10-ibm_dfltcc_support.patch
+
+-------------------------------------------------------------------
 Wed Jun 23 09:25:09 UTC 2021 - Franck Bui <fbui@suse.com>
 
 - Avoid text relocation on i386 (bsc#1143125)
