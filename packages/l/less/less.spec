@@ -41,6 +41,8 @@ BuildRequires:  automake
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 Requires:       file
+# lessopen.sh uses which
+Requires:       which
 
 %description
 less is a text file browser and pager similar to more. It allows

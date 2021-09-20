@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 09:58:23 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Add missing runtime dependency on which, which it is used by lessopen.sh.
+  Fix bsc#1190552.
+
+-------------------------------------------------------------------
 Tue Jul  6 12:58:32 UTC 2021 - Predrag Ivanović <predivan@mts.rs>
 
 - Fix build on Leap:

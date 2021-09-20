@@ -561,4 +561,12 @@ The less license is a choice of either GPL-3.0+ or BSD-2-Clause (less license). 
     Account for distinction in confdir after UsrMerge. (forwarded request 904391 from predivan)</comment>
     <requestid>905248</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>54c3edd5bd84f4d75e4da9c018c296ec</srcmd5>
+    <version>590</version>
+    <time>1632173537</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>919490</requestid>
+  </revision>
 </revisionlist>
