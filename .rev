@@ -31,4 +31,25 @@
     <comment></comment>
     <requestid>821147</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>93639c96f3c7d864c3e23094a5f5e790</srcmd5>
+    <version>0.6.7</version>
+    <time>1632173592</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.7:
+  * switch from nose to pytest
+  * remove nose from appveyor.yml
+  * drop python 3.3
+  * Adding support for itunes:type tag
+  * urllib.request used over urllib for import
+  * Use raw strings in regexps
+  * Fix parsing cover URL on a new line
+  * Support media:content tags under media:group
+  * Get generator tag from RSS v2
+  * Add testing on python 3.6 to 3.9, and remove 3.4 and 3.5.
+  * Use VS2019 for newer versions, and 3.9 support.
+  * Add media:thumbnail tests. 
+- Dropped python-podcastparser-remove-nose.patch</comment>
+    <requestid>920221</requestid>
+  </revision>
 </revisionlist>
