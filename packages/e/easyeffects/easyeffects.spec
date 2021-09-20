@@ -23,7 +23,7 @@
 %endif
 
 Name:           easyeffects
-Version:        6.1.0+0~git.7d084e29
+Version:        6.1.2+0~git.89063a4b
 Release:        0
 Summary:        Audio effects for Pulseaudio applications
 License:        GPL-3.0-or-later
@@ -35,6 +35,7 @@ BuildRequires:  appstream-glib
 BuildRequires:  binutils-gold
 %endif
 BuildRequires:  cmake
+BuildRequires:  gcc10
 BuildRequires:  gcc10-c++
 BuildRequires:  itstool
 BuildRequires:  meson

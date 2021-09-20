@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Sep 20 16:37:54 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- removed PR-1159-App-info-UI-management-improved.patch as changes
+  were applied
+- updated to release 6.1.2
+  + Improved compatibility with WirePlumber.
+    This is needed to run on systems that decided to use it instead
+    of the built-in PipeWire session manager.
+    More information at https://github.com/wwmm/easyeffects/issues/1144 
+
+-------------------------------------------------------------------
+Mon Sep 20 12:29:17 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- add upstream patch PR-1159-App-info-UI-management-improved.patch 
+
+-------------------------------------------------------------------
+Mon Sep 20 08:38:57 UTC 2021 - Boris Manojlovic <boris@steki.net>
+
+- updated to latest release 6.1.1 
+- Added:
+  * When trying to add an autoloading profile for a device already
+    in the list its target preset will be updated. This way we can change
+    the profile preset without having to remove and recreating it.
+  * The preset autoloading support implementation was redesigned again.
+    It should work on more hardware now. For more information see issue 1051.
+  * If the Limiter or the Maximizer are set in the last position of the plugin stack,
+    new plugins are added at the second to last position in order
+    to prevent hardware damage on eventually high output level.
+  * Removing an application from the blocklist, its previous enabled state is restored.
+- Fixed:
+  * Sometimes when removing imported models from the noise reduction
+    plugin the current used model was not properly updated. This should be fixed now.
+  * When editing presets files in an external editor,
+    duplicated entries won't be shown in our presets menu.
+  * Now the blocklist is correctly set when switching presets.
+  * Now the status of the global bypass button is correctly updated when changing plugin stack.
+  * Missing icons on the system should not be shown inside the application info UI
+   (if an application icon could not be shown even if you're sure it's correctly installed, please open an issue).
+  * Some icons not showing in Plasma DE with Breeze icon theme should appear now.
+
+-------------------------------------------------------------------
 Mon Aug 23 22:50:11 UTC 2021 - Boris Manojlovic <boris@steki.net>
 
 - switch the recommends from ladspa-zam-plugins to lv2-zam-plugins (boo#1189542)
