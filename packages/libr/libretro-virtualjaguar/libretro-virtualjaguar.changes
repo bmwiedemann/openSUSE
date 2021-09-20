@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:24:37 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210314:
+  * Add ios-arm64/tvos-arm64/osx-arm64
+  * (MSVC) Embed MSVCRT runtime
+  * Add MSVC 2005 / 2010 cores
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Fix warning
+  * Add .gitlab-ci.yml
+  * Fix incorrect controller mapping
+  * Fix arm build
+  * Force a rebuild
+
+-------------------------------------------------------------------
 Tue Jun 16 09:24:24 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200521:
