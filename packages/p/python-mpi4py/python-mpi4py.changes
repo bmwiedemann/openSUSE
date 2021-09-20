@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 18 01:29:32 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Reactivate test_msgspec, disable test_spawn
+
+-------------------------------------------------------------------
+Fri Sep 17 00:28:00 UTC 2021 - Christoph Junghans <junghans@votca.org>
+
+- Build against openmpi4
+
+-------------------------------------------------------------------
 Thu Feb 25 18:03:42 UTC 2021 - andy great <andythe_great@pm.me>
 
 - Skip python 3.6 because numpy no longer support it.

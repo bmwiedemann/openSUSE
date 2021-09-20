@@ -100,4 +100,14 @@
     <comment></comment>
     <requestid>875230</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>33890219eec27dad0a8d51f5856a6a4a</srcmd5>
+    <version>3.0.3</version>
+    <time>1632173548</time>
+    <user>dimstar_suse</user>
+    <comment>- Reactivate test_msgspec, disable test_spawn
+- Build against openmpi4
+</comment>
+    <requestid>919998</requestid>
+  </revision>
 </revisionlist>

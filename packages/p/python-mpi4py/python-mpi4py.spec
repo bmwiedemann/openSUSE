@@ -21,7 +21,7 @@
 %if 0%{?sle_version} && 0%{?sle_version} < 150000
   %define mpiver  openmpi
 %else
-  %define mpiver  openmpi2
+  %define mpiver  openmpi4
 %endif
 Name:           python-mpi4py
 Version:        3.0.3
@@ -142,7 +142,7 @@ export OMPI_MCA_rmaps_base_oversubscribe=yes
 rm -rf build _build.*
 %{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
 rm -rf build _build.*
-%{_libdir}/mpi/gcc/%{mpiver}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="test_msgspec"
+%{_libdir}/mpi/gcc/%{mpiver}/bin/mpiexec --use-hwthread-cpus --mca btl tcp,self -n 1  $python -B test/runtests.py -v --exclude="test_spawn"
 }
 
 %files %{python_files}
