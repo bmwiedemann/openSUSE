@@ -3284,4 +3284,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>913670</requestid>
   </revision>
+  <revision rev="195" vrev="26">
+    <srcmd5>b455525ae5f4bc430e2f23b158397cb3</srcmd5>
+    <version>6.2.MACRO</version>
+    <time>1632173540</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ncurses patch 20210911
+  + adjust ifdef in test_opaque.c to fix build with ncurses 5.7
+  + add testing note for xterm-{hp|sco|sun} -TD
+  + corrected description for ansi.sys-old -TD
+  + add xterm+nopcfkeys, to fill in keys for xterm-hp, xterm-sun -TD
+  + use hp+arrows in a few places -TD
+  + use hp+pfk-cr in a few places -TD
+- Correct offsets of patch ncurses-6.2.dif
+
+- Add ncurses patch 20210905
+  + correct logic in filtering of redefinitions (report by Sven Joachim,
+    cf: 20210828).
+- Add ncurses patch 20210904
+  + modify linux3.0 entry to reflect default mapping of shift-tab by
+    kbd 1.14 (report by Jan Engelhardt) -TD
+  + add historical note to tput, curses-terminfo and curses-color
+    manpages based on source-code for SVr2, SVr3 and SVr4.
+  + minor grammatical fixes for &quot;it's&quot; vs &quot;its&quot; (report by Nick Black).
+  + amend fix for --disable-root-environ (report by Arnav Singh).
+  + build-fix for compiling link_test
+  + drop symbols GCC_PRINTF and GCC_SCANF from curses.h.in, to simplify
+    use (Debian #993179).
+- Add ncurses patch 20210828
+  + correct reversed check for --disable-root-environ (report/analysis
+    by Arnav Singh, cf: 20210626).
+  + apply gcc format attribute to prototypes which use a va_list
+    parameter rather than a &quot;...&quot; variable-length parameter list
+    (prompted by discussion in a tmux pull-request).
+  + modify configure scripts to filter out redefinitions of _XOPEN_SOURCE,
+    e.g., for NetBSD which generally supports 500, but 600 is needed for</comment>
+    <requestid>918836</requestid>
+  </revision>
 </revisionlist>
