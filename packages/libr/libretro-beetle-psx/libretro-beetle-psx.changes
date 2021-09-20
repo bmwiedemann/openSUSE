@@ -1,4 +1,181 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:05:57 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210830:
+  * Override lightrec's debug.h with one that uses log_cb
+  * Revert "Reduce compile time up to 57%, reduce binary size up to 32%"
+  * lightrec: Set default LOG_LEVEL=3 (Info)
+  * Acquire shared memory from shm_open more reliably
+  * Revert "Disable a bad optimization in lightrec config until fixed"
+  * git subrepo pull (merge) deps/lightrec
+  * Revert "Update core options"
+  * Update core options
+  * Implement core option categories
+  * Translated core options don't need default values
+  * Disable a bad optimization in lightrec config until fixed
+  * Add 18:9, 19:9 and 20:9 widescreen aspect ratio options
+  * Handle DIV overflow in lightrec
+  * Disable pre-cache for physical media
+  * remove obsolete submodule reference
+  * Add LIGHTREC_LOG_LEVEL, allow enabling disassembler
+  * Adjust for changes in lightrec api
+  * git subrepo pull --force deps/lightrec
+  * Fix Android 10+ shared memory failing
+  * Fix crash in BIOS while dynarec+runahead are active
+  * Update lightning.h to match changes in deps/lightning/include/lightning.h.in
+  * git subrepo pull (merge) deps/lightning
+  * Move lightning.h and lightrec config.h to fix subrepos
+  * Reduce compile time up to 57%, reduce binary size up to 32%
+  * Fix snprintf warning, improve error messages when path too long
+  * Fix debug vulkan compile, fix widescreen_hack_aspect_ratio_setting
+  * git subrepo commit (merge) deps/lightrec
+  * Add HAS_DEFAULT_ELM flag for lightrec changes, requires gcc to enable
+  * Hide "track/dump/replace textures" core options for Software and OpenGL renderers
+  * Don't need libzma Sort.c
+  * Get rid of unnneeded files in dependencies
+  * Get rid of error_on_eos
+  * Make ReadM3U code use libretro-common file_stream
+  * Cleanups
+  * Some backports from Mednafen 1.27.0 unstable
+  * Cleanups
+  * Get rid of throws - ErrnoHolder
+  * Get rid of puts/printf calls
+  * Put this behind DEBUG ifdef
+  * Silence some LGTM warnings
+  * Update libchdr
+  * Backport https://github.com/libretro-mirrors/mednafen-git/commit/ca5a290de1632a9e3a782d553c19a705385bafdd - PSX: Fixed various inaccuracies in the SPU reverb emulation code. PSX: Fixed quasi-benign dereferencing of a null pointer in the GPU code when playing a PSF.
+  * * Fix memory leak in FileStream * Change old_cacheimage to cacheimage
+  * Backport https://github.com/libretro-mirrors/mednafen-git/commit/c68ef3063923cd9681d386caf300434b5a3ca5b9
+  * Add ios-arm64/tvos-arm64
+  * Update
+  * Add LINK_STATIC_CPLUSPLUS for Linux cores
+  * Modified shared memory card option description.
+  * Removed check for shared memory cards
+  * (macOS) Set up CROSS_COMPILE for ARM 64bit
+  * Add arm64/x64 mac targets
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Comment out OSX for now
+  * Update
+  * (.gitlab-ci.yml) Remove redundant android core defintion
+  * (.gitlab-ci.yml) Enable building of both 'mednafen_psx' and 'mednafen_psx_hw'
+  * Fix #256 (Widescreen hack aspect ratio setting)
+  * [iOS][tvOS] Add -DHAVE_UNISTD_H flag to compile zlib
+  * Revert "Backport this from mainline (mednafen 1.22.2) -"
+  * Update libflac
+  * Add Rpi4 platform in 64bit mode.
+  * Fix compile
+  * WIP update libchdr
+  * Fix CHD alignment with lzma/zlib
+  * Add UNSCALED to flat primitive vertex shader
+  * Update rthreads.c
+  * Simplify SimpleFIFO some more
+  * Simplify SimpleFIFo
+  * Remove code from previous changes causing problems in Grandia
+  * Update libretro-common
+  * Update flac
+  * Fix syntax
+  * Add .gitlab-ci.yml
+  * Use non-pgxp xy to calculate uv offsets to avoid weird interaction with pgxp
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cut down on stdio.h usage
+  * Revert "improve context switching"
+  * Additional texture uv adjustment (Vulkan)
+  * Texture uv adjustment (Vulkan)
+  * Fix PGXP vertex culling option not being set on startup
+  * Hide texture filtering exclude options for non-Vulkan; minor refactoring
+  * Add options to exclude sprites and 2D polygons from texture filtering
+  * Fix "almost" infinite loop in Suikoden
+  * improve context switching
+  * VRAM wrap around possible missing graphics
+  * VRAM wraparound for copy_vram_to_cpu_synchronous
+  * VRAM wraparound for adaptive smoothing
+  * Cleanups
+  * Add PGXP NCLIP on off switch
+  * Correct pgxp 2d tol for quads
+  * Header cleanups + getting rid of IsAbsolutePath - using libretro-common equivalent
+  * Fix Wild Arms 2 overworld forest sprite for software mode with scaling
+  * Fix non-pgxp being completely broken in previous commit in this pr
+  * Get rid of MD5 calculation
+  * Cleanups
+  * Use signed integer for comparison
+  * Make pgxp tolerance an option
+  * Copy adjusted vert for first vert in quad
+  * "Clamp" pgxp coordinates if lacking w components
+  * Fix Wild Arms 2 overworld forest sprite; some rearranging of code;
+  * Cleanups
+  * Revert "Cleanups"
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Simplify hack to avoid texture filtering on scaled read
+  * Wrap around in vram on scanout
+  * Add barrier to prevent flickering in location titles in Valkyrie Profile
+  * Cleanups
+  * Cleanups
+  * Get rid of HAVE_CDROM_NEW
+  * Add shift variable to spec constant
+  * Avoid textureLod path that requires division; fix performance regression
+  * Remove this variable
+  * Cleanups
+  * Get rid of overloading
+  * Cleanups
+  * Convert settings.cpp to C
+  * Cleanup
+  * Unbreak scanout_to_buffer, scanout_vram_to_texture, and scanout_vram_to_buffer when msaa is enabled
+  * Make uv_rect passed to texture_loaded in build_attribs more correct; some minor cleanup
+  * Added missing prebuilt shader files
+  * Simplify ternary code in render_semi_transparent_primitives
+  * Use unscaled framebuffer read when possible (some performance improvement)
+  * Use separate pass for msaa resolve (minor performance improvement) (fix broken msaa resolve on AMD hardware)
+  * Use scaled_framebuffer_msaa for texture reads if possible (fix unwanted black outlines in Vagrant Story for msaa as well) (further performance hit)
+  * Ignore first/last row/column instead of checking if half loaded in atlas texture_loaded
+  * Use scaled_framebuffer for texture reads (higher quality fix for unwanted black oulines for Vagrant Story) (performance regression to be resolved)
+  * Use nearest neighbor for resolve to unscaled; separate pass for ssaa
+  * Spec constants for resolve
+  * Spec constants for feedback shaders
+  * Spec constants for filters to get down the number of shader combinations
+  * Apply JINC2 change to OpenGl
+  * Update JINC2 to prevent NaN, which result in black texture in some cases
+  * Xcode wants his variables initialized or won't link (#709)
+  * Update Makefile
+  * Backport Lakka patch
+  * Updated built shaders to reflect source changes
+  * Fix incorrect jagged edges with masked textures
+  * Correctly clamp coordinates with xBr and SABR
+  * Fixes Haiku build with LightRec
+  * Reset state of memory card when loading a new one
+  * Reset state of memory card when formatting after loading a blank card
+  * Renamed state.cpp to state.c
+  * Cleanup
+  * Cleanups
+  * Cleanup
+  * Update libretro-common
+  * Add missing header
+  * Update
+  * Update  libretro-common
+  * Fix memory leak
+  * Format memory card properly
+  * Make dynamically switching memory cards work with autosave
+  * libretro: android: Fix hw compilation
+  * Prevent buffer over-read when saving states
+  * Fix failed assert when asked to clear an empty rect
+  * added track textures option
+  * Logging optimizations
+  * Add dumped feature
+  * Makefile tweaks
+  * updated prebuilt shaders
+  * wip so far
+  * Implement ability to dynamically switch memory cards
+  * Removed library path /usr/local/lib.
+
+-------------------------------------------------------------------
 Fri Jun 12 19:15:56 UTC 2020 - i@guoyunhe.me
 
 - Require GCC >= 4.9 because of a bug in 4.8. See
