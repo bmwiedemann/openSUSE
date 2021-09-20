@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 18 19:58:41 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.1.1:
+  * Added support for a progress bar description
+    (gh#dfm/emcee#401).
+
+-------------------------------------------------------------------
 Sat Jul  3 04:55:24 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.1.0:
