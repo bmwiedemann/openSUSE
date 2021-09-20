@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:33:23 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210816:
+  * Revert "Update base_width/base_height scaling"
+  * Update base_width/base_height scaling
+  * Fixed 32bit Haiku build (#86)
+  * Enable Haiku build (#85)
+  * Add ios-arm64/tvos-arm64
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update osx target
+  * Update .gitlab-ci.yml
+  * libretro: Update gitlab ci extends ordering (#81)
+  * Change pcap header include
+  * Add .gitlab-ci.yml
+  * call context matching driver (#78)
+  * Revert "improve context logic (#74)" (#75)
+  * improve context logic (#74)
+
+-------------------------------------------------------------------
 Tue Jun  9 14:44:29 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - On Arm, build only armv7 as this is the only supported arch
