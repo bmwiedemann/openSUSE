@@ -1,5 +1,5 @@
 # Type Path                    Mode UID  GID     Age Argument
-d      /var/run/salt           0750 root salt
-d      /var/run/salt/master    0750 salt salt
-d      /var/run/salt/minion    0750 root root
+d      /run/salt               0750 root salt
+d      /run/salt/master        0750 salt salt
+d      /run/salt/minion        0750 root root
 

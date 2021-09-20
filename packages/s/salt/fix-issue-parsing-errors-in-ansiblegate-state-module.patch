@@ -1,0 +1,44 @@
+From cc017f6ed279af7fe02c890e4a7725e6903f364d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 26 Apr 2021 12:13:59 +0100
+Subject: [PATCH] Fix issue parsing errors in ansiblegate state module
+
+---
+ salt/states/ansiblegate.py | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
+
+diff --git a/salt/states/ansiblegate.py b/salt/states/ansiblegate.py
+index 5daba0f37f..bd00653928 100644
+--- a/salt/states/ansiblegate.py
++++ b/salt/states/ansiblegate.py
+@@ -183,7 +183,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+         checks = __salt__["ansible.playbooks"](
+             name, rundir=rundir, check=True, diff=True, **ansible_kwargs
+         )
+-        if all(
++        if "stats" not in checks:
++            ret["comment"] = checks.get("stderr", checks)
++            ret["result"] = False
++            ret["changes"] = {}
++        elif all(
+             not check["changed"]
+             and not check["failures"]
+             and not check["unreachable"]
+@@ -212,7 +216,11 @@ def playbooks(name, rundir=None, git_repo=None, git_kwargs=None, ansible_kwargs=
+         results = __salt__["ansible.playbooks"](
+             name, rundir=rundir, diff=True, **ansible_kwargs
+         )
+-        if all(
++        if "stats" not in results:
++            ret["comment"] = results.get("stderr", results)
++            ret["result"] = False
++            ret["changes"] = {}
++        elif all(
+             not check["changed"]
+             and not check["failures"]
+             and not check["unreachable"]
+-- 
+2.31.1
+
+

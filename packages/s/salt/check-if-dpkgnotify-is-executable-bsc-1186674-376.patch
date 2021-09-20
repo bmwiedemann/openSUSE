@@ -1,0 +1,23 @@
+From b477b00447b49fc2f221cfb6d2c491bcd1970119 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <35733135+vzhestkov@users.noreply.github.com>
+Date: Tue, 1 Jun 2021 13:04:43 +0300
+Subject: [PATCH] Check if dpkgnotify is executable (bsc#1186674)
+ (#376)
+
+It prevents fails on removing salt-minion package
+when the dpkg configuration is still active
+---
+ scripts/suse/dpkg/99dpkgnotify | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/suse/dpkg/99dpkgnotify b/scripts/suse/dpkg/99dpkgnotify
+index 8013387a57..f89815f605 100644
+--- a/scripts/suse/dpkg/99dpkgnotify
++++ b/scripts/suse/dpkg/99dpkgnotify
+@@ -1 +1 @@
+-DPkg::Post-Invoke {"/usr/bin/dpkgnotify";};
++DPkg::Post-Invoke {"if [ -x /usr/bin/dpkgnotify ]; then /usr/bin/dpkgnotify; fi;";};
+-- 
+2.31.1
+
+

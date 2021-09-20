@@ -1,0 +1,39 @@
+From 9a8ca020a3cacbcfbbc33f209cd0ea6c3da3f788 Mon Sep 17 00:00:00 2001
+From: Alexander Graul <agraul@suse.com>
+Date: Tue, 17 Aug 2021 11:52:00 +0200
+Subject: [PATCH] Don't use shell="/sbin/nologin" in requisites
+
+Using shell="/sbin/nologin" in an onlyif/unless requisite does not
+really make sense since the condition can't be run. shell=/sbin/nologin
+is also a common argument, e.g. for user.present.
+
+Fixes: bsc#1188259
+---
+ salt/state.py | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/salt/state.py b/salt/state.py
+index 64c5225728..c6742101b2 100644
+--- a/salt/state.py
++++ b/salt/state.py
+@@ -889,9 +889,14 @@ class State:
+             cmd_opts[run_cmd_arg] = low_data.get(run_cmd_arg)
+ 
+         if "shell" in low_data:
+-            cmd_opts["shell"] = low_data["shell"]
++            shell = low_data["shell"]
+         elif "shell" in self.opts["grains"]:
+-            cmd_opts["shell"] = self.opts["grains"].get("shell")
++            shell = self.opts["grains"].get("shell")
++        else:
++            shell = None
++        # /sbin/nologin always causes the onlyif / unless cmd to fail
++        if shell is not None and shell != "/sbin/nologin":
++            cmd_opts["shell"] = shell
+ 
+         if "onlyif" in low_data:
+             _ret = self._run_check_onlyif(low_data, cmd_opts)
+-- 
+2.32.0
+
+

@@ -1758,4 +1758,41 @@ let build start it or we will get libvirt errors.
   * allow-vendor-change-option-with-zypper-313.patch</comment>
     <requestid>887060</requestid>
   </revision>
+  <revision rev="118" vrev="6">
+    <srcmd5>b546ad5e615ee688758c1cc5ed975d5b</srcmd5>
+    <version>3002.2</version>
+    <time>1632173534</time>
+    <user>dimstar_suse</user>
+    <comment>- Exclude the full path of a download URL to prevent injection of
+  malicious code (bsc#1190265) (CVE-2021-21996)
+- Added:
+  * exclude-the-full-path-of-a-download-url-to-prevent-i.patch
+
+- Fix wrong relative paths resolution with Jinja renderer when importing subdirectories
+- Added:
+  * templates-move-the-globals-up-to-the-environment-jin.patch
+
+- Don't pass shell=&quot;/sbin/nologin&quot; to onlyif/unless checks (bsc#1188259)
+- Add missing aarch64 to rpm package architectures
+- Backport of upstream PR#59492
+- Added:
+  * backport-of-upstream-pr59492-to-3002.2-404.patch
+  * don-t-use-shell-sbin-nologin-in-requisites.patch
+  * add-missing-aarch64-to-rpm-package-architectures-405.patch
+
+- Fix failing unit test for systemd
+- Fix error handling in openscap module (bsc#1188647)
+- Better handling of bad public keys from minions (bsc#1189040)
+- Added:
+  * better-handling-of-bad-public-keys-from-minions-bsc-.patch
+  * fix-error-handling-in-openscap-module-bsc-1188647-40.patch
+  * fix-failing-unit-tests-for-systemd.patch
+
+- Define license macro as doc in spec file if not existing
+- Add standalone formulas configuration for salt minion and remove salt-master requirement (bsc#1168327)
+
+- Do noop for services states when running systemd in offline mode (bsc#1187787)
+- transactional_updates: do not execute states in parallel but use a queue (bsc#1188170)</comment>
+    <requestid>919452</requestid>
+  </revision>
 </revisionlist>

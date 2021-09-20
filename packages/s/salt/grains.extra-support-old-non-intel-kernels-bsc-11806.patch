@@ -1,0 +1,51 @@
+From 27c7a9f62b1a589365785c9428293653ac76fee3 Mon Sep 17 00:00:00 2001
+From: Alberto Planas <aplanas@suse.com>
+Date: Mon, 10 May 2021 16:26:02 +0200
+Subject: [PATCH] grains.extra: support old non-intel kernels
+ (bsc#1180650) (#368)
+
+---
+ salt/grains/extra.py | 16 ++++++++++++----
+ 1 file changed, 12 insertions(+), 4 deletions(-)
+
+diff --git a/salt/grains/extra.py b/salt/grains/extra.py
+index 7729a5c0a5..f2abd1281c 100644
+--- a/salt/grains/extra.py
++++ b/salt/grains/extra.py
+@@ -71,10 +71,10 @@ def suse_backported_capabilities():
+     }
+ 
+ 
+-def __secure_boot():
++def __secure_boot(efivars_dir):
+     """Detect if secure-boot is enabled."""
+     enabled = False
+-    sboot = glob.glob("/sys/firmware/efi/vars/SecureBoot-*/data")
++    sboot = glob.glob(os.path.join(efivars_dir, "SecureBoot-*/data"))
+     if len(sboot) == 1:
+         # The minion is usually running as a privileged user, but is
+         # not the case for the master.  Seems that the master can also
+@@ -89,9 +89,17 @@ def __secure_boot():
+ 
+ def uefi():
+     """Populate UEFI grains."""
++    efivars_dir = next(
++        iter(
++            filter(
++                os.path.exists, ["/sys/firmware/efi/efivars", "/sys/firmware/efi/vars"]
++            )
++        ),
++        None,
++    )
+     grains = {
+-        "efi": os.path.exists("/sys/firmware/efi/systab"),
+-        "efi-secure-boot": __secure_boot(),
++        "efi": bool(efivars_dir),
++        "efi-secure-boot": __secure_boot(efivars_dir) if efivars_dir else False,
+     }
+ 
+     return grains
+-- 
+2.31.1
+
+

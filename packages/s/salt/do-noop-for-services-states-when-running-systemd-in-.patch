@@ -1,0 +1,631 @@
+From 6837044f5a207cf39f3064428b0ed276226a5e39 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 9 Jul 2021 09:05:55 +0100
+Subject: [PATCH] Do noop for services states when running systemd in
+ offline mode (bsc#1187787)
+
+transactional_updates: do not execute states in parallel but use a queue (bsc#1188170)
+
+Add changes suggested by pre-commit
+
+Fix unit tests for transactional_updates module
+
+Add unit tests to cover queue cases on transaction_update states
+
+Refactor offline checkers and add unit tests
+
+Fix regression that always consider offline mode
+
+Add proper mocking and skip tests when running in offline mode
+---
+ salt/modules/systemd_service.py               |   5 +
+ salt/modules/transactional_update.py          |  56 +++-
+ salt/states/service.py                        |  14 +
+ tests/integration/states/test_service.py      |   4 +
+ .../unit/modules/test_transactional_update.py | 264 +++++++++++++++++-
+ tests/unit/states/test_service.py             |  43 ++-
+ 6 files changed, 377 insertions(+), 9 deletions(-)
+
+diff --git a/salt/modules/systemd_service.py b/salt/modules/systemd_service.py
+index 49e5bd813f..8d495433f8 100644
+--- a/salt/modules/systemd_service.py
++++ b/salt/modules/systemd_service.py
+@@ -102,6 +102,11 @@ def _check_available(name):
+     """
+     Returns boolean telling whether or not the named service is available
+     """
++    if offline():
++        raise CommandExecutionError(
++            "Cannot run in offline mode. Failed to get information on unit '%s'" % name
++        )
++
+     _status = _systemctl_status(name)
+     sd_version = salt.utils.systemd.version(__context__)
+     if sd_version is not None and sd_version >= 231:
+diff --git a/salt/modules/transactional_update.py b/salt/modules/transactional_update.py
+index 9cdaddb91a..3af9d91822 100644
+--- a/salt/modules/transactional_update.py
++++ b/salt/modules/transactional_update.py
+@@ -281,10 +281,14 @@ import os
+ import sys
+ import tempfile
+ 
++# required by _check_queue invocation later
++import time  # pylint: disable=unused-import
++
+ import salt.client.ssh.state
+ import salt.client.ssh.wrapper.state
+ import salt.exceptions
+ import salt.utils.args
++from salt.modules.state import _check_queue, _prior_running_states, _wait, running
+ 
+ __func_alias__ = {"apply_": "apply"}
+ 
+@@ -295,7 +299,14 @@ def __virtual__():
+     """
+     transactional-update command is required.
+     """
++    global _check_queue, _wait, _prior_running_states, running
+     if __utils__["path.which"]("transactional-update"):
++        _check_queue = salt.utils.functools.namespaced_function(_check_queue, globals())
++        _wait = salt.utils.functools.namespaced_function(_wait, globals())
++        _prior_running_states = salt.utils.functools.namespaced_function(
++            _prior_running_states, globals()
++        )
++        running = salt.utils.functools.namespaced_function(running, globals())
+         return True
+     else:
+         return (False, "Module transactional_update requires a transactional system")
+@@ -1068,7 +1079,13 @@ def _create_and_execute_salt_state(
+ 
+ 
+ def sls(
+-    mods, saltenv="base", test=None, exclude=None, activate_transaction=False, **kwargs
++    mods,
++    saltenv="base",
++    test=None,
++    exclude=None,
++    activate_transaction=False,
++    queue=False,
++    **kwargs
+ ):
+     """Execute the states in one or more SLS files inside a transaction.
+ 
+@@ -1093,6 +1110,13 @@ def sls(
+         (i.e there is a new snaphot in the system), a new reboot will
+         be scheduled (default False)
+ 
++    queue
++        Instead of failing immediately when another state run is in progress,
++        queue the new state run to begin running once the other has finished.
++
++        This option starts a new thread for each queued state run, so use this
++        option sparingly. (Default: False)
++
+     For a formal description of the possible parameters accepted in
+     this function, check `state.sls` documentation.
+ 
+@@ -1104,6 +1128,10 @@ def sls(
+         salt microos transactional_update.sls stuff activate_transaction=True
+ 
+     """
++    conflict = _check_queue(queue, kwargs)
++    if conflict is not None:
++        return conflict
++
+     # Get a copy of the pillar data, to avoid overwriting the current
+     # pillar, instead the one delegated
+     pillar = copy.deepcopy(__pillar__)
+@@ -1156,7 +1184,7 @@ def sls(
+     )
+ 
+ 
+-def highstate(activate_transaction=False, **kwargs):
++def highstate(activate_transaction=False, queue=False, **kwargs):
+     """Retrieve the state data from the salt master for this minion and
+     execute it inside a transaction.
+ 
+@@ -1168,6 +1196,13 @@ def highstate(activate_transaction=False, **kwargs):
+         (i.e there is a new snaphot in the system), a new reboot will
+         be scheduled (default False)
+ 
++    queue
++        Instead of failing immediately when another state run is in progress,
++        queue the new state run to begin running once the other has finished.
++
++        This option starts a new thread for each queued state run, so use this
++        option sparingly. (Default: False)
++
+     CLI Example:
+ 
+     .. code-block:: bash
+@@ -1177,6 +1212,10 @@ def highstate(activate_transaction=False, **kwargs):
+         salt microos transactional_update.highstate activate_transaction=True
+ 
+     """
++    conflict = _check_queue(queue, kwargs)
++    if conflict is not None:
++        return conflict
++
+     # Get a copy of the pillar data, to avoid overwriting the current
+     # pillar, instead the one delegated
+     pillar = copy.deepcopy(__pillar__)
+@@ -1210,7 +1249,7 @@ def highstate(activate_transaction=False, **kwargs):
+     )
+ 
+ 
+-def single(fun, name, test=None, activate_transaction=False, **kwargs):
++def single(fun, name, test=None, activate_transaction=False, queue=False, **kwargs):
+     """Execute a single state function with the named kwargs, returns
+     False if insufficient data is sent to the command
+ 
+@@ -1224,6 +1263,13 @@ def single(fun, name, test=None, activate_transaction=False, **kwargs):
+         (i.e there is a new snaphot in the system), a new reboot will
+         be scheduled (default False)
+ 
++    queue
++        Instead of failing immediately when another state run is in progress,
++        queue the new state run to begin running once the other has finished.
++
++        This option starts a new thread for each queued state run, so use this
++        option sparingly. (Default: False)
++
+     CLI Example:
+ 
+     .. code-block:: bash
+@@ -1232,6 +1278,10 @@ def single(fun, name, test=None, activate_transaction=False, **kwargs):
+         salt microos transactional_update.single pkg.installed name=emacs activate_transaction=True
+ 
+     """
++    conflict = _check_queue(queue, kwargs)
++    if conflict is not None:
++        return conflict
++
+     # Get a copy of the pillar data, to avoid overwriting the current
+     # pillar, instead the one delegated
+     pillar = copy.deepcopy(__pillar__)
+diff --git a/salt/states/service.py b/salt/states/service.py
+index 4ea36a78f6..3a216920f4 100644
+--- a/salt/states/service.py
++++ b/salt/states/service.py
+@@ -342,6 +342,10 @@ def _disable(name, started, result=True, **kwargs):
+     return ret
+ 
+ 
++def _offline():
++    return "service.offline" in __salt__ and __salt__["service.offline"]()
++
++
+ def _available(name, ret):
+     """
+     Check if the service is available
+@@ -436,6 +440,11 @@ def running(name, enable=None, sig=None, init_delay=None, **kwargs):
+     if isinstance(enable, str):
+         enable = salt.utils.data.is_true(enable)
+ 
++    if _offline():
++        ret["result"] = True
++        ret["comment"] = "Running in OFFLINE mode. Nothing to do"
++        return ret
++
+     # Check if the service is available
+     try:
+         if not _available(name, ret):
+@@ -631,6 +640,11 @@ def dead(name, enable=None, sig=None, init_delay=None, **kwargs):
+     if isinstance(enable, str):
+         enable = salt.utils.data.is_true(enable)
+ 
++    if _offline():
++        ret["result"] = True
++        ret["comment"] = "Running in OFFLINE mode. Nothing to do"
++        return ret
++
+     # Check if the service is available
+     try:
+         if not _available(name, ret):
+diff --git a/tests/integration/states/test_service.py b/tests/integration/states/test_service.py
+index 81359d44ea..9c89d2cfd0 100644
+--- a/tests/integration/states/test_service.py
++++ b/tests/integration/states/test_service.py
+@@ -26,6 +26,7 @@ class ServiceTest(ModuleCase, SaltReturnAssertsMixin):
+         cmd_name = "crontab"
+         os_family = self.run_function("grains.get", ["os_family"])
+         os_release = self.run_function("grains.get", ["osrelease"])
++        is_systemd = self.run_function("grains.get", ["systemd"])
+         self.stopped = False
+         self.running = True
+         if os_family == "RedHat":
+@@ -53,6 +54,9 @@ class ServiceTest(ModuleCase, SaltReturnAssertsMixin):
+         if os_family != "Windows" and salt.utils.path.which(cmd_name) is None:
+             self.skipTest("{} is not installed".format(cmd_name))
+ 
++        if is_systemd and self.run_function("service.offline"):
++            self.skipTest("systemd is OFFLINE")
++
+     def tearDown(self):
+         if self.post_srv_disable:
+             self.run_function("service.disable", name=self.service_name)
+diff --git a/tests/unit/modules/test_transactional_update.py b/tests/unit/modules/test_transactional_update.py
+index 2d30f296d7..6f8587baa0 100644
+--- a/tests/unit/modules/test_transactional_update.py
++++ b/tests/unit/modules/test_transactional_update.py
+@@ -1,6 +1,7 @@
+ import sys
+ 
+ import pytest
++import salt.modules.state as statemod
+ import salt.modules.transactional_update as tu
+ import salt.utils.platform
+ from salt.exceptions import CommandExecutionError
+@@ -16,7 +17,10 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
+     """
+ 
+     def setup_loader_modules(self):
+-        return {tu: {"__salt__": {}, "__utils__": {}}}
++        return {
++            tu: {"__salt__": {}, "__utils__": {}},
++            statemod: {"__salt__": {}, "__context__": {}},
++        }
+ 
+     def test__global_params_no_self_update(self):
+         """Test transactional_update._global_params without self_update"""
+@@ -643,11 +647,103 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
+         opts_mock = {
+             "hash_type": "md5",
+         }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(return_value=[]),
++        }
+         get_sls_opts.return_value = opts_mock
+-        with patch.dict(tu.__opts__, opts_mock):
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
+             assert tu.sls("module") == "result"
+             _create_and_execute_salt_state.assert_called_once()
+ 
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.modules.transactional_update.TransactionalUpdateHighstate")
++    @patch("salt.fileclient.get_file_client")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_sls_queue_true(
++        self,
++        get_sls_opts,
++        get_file_client,
++        TransactionalUpdateHighstate,
++        _create_and_execute_salt_state,
++    ):
++        """Test transactional_update.sls"""
++        TransactionalUpdateHighstate.return_value = TransactionalUpdateHighstate
++        TransactionalUpdateHighstate.render_highstate.return_value = (None, [])
++        TransactionalUpdateHighstate.state.reconcile_extend.return_value = (None, [])
++        TransactionalUpdateHighstate.state.requisite_in.return_value = (None, [])
++        TransactionalUpdateHighstate.state.verify_high.return_value = []
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(
++                side_effect=[
++                    [
++                        {
++                            "fun": "state.running",
++                            "pid": "4126",
++                            "jid": "20150325123407204096",
++                        }
++                    ],
++                    [],
++                ]
++            ),
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
++            assert tu.sls("module", queue=True) == "result"
++            _create_and_execute_salt_state.assert_called_once()
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.modules.transactional_update.TransactionalUpdateHighstate")
++    @patch("salt.fileclient.get_file_client")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_sls_queue_false_failing(
++        self,
++        get_sls_opts,
++        get_file_client,
++        TransactionalUpdateHighstate,
++        _create_and_execute_salt_state,
++    ):
++        """Test transactional_update.sls"""
++        TransactionalUpdateHighstate.return_value = TransactionalUpdateHighstate
++        TransactionalUpdateHighstate.render_highstate.return_value = (None, [])
++        TransactionalUpdateHighstate.state.reconcile_extend.return_value = (None, [])
++        TransactionalUpdateHighstate.state.requisite_in.return_value = (None, [])
++        TransactionalUpdateHighstate.state.verify_high.return_value = []
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(
++                side_effect=[
++                    [
++                        {
++                            "fun": "state.running",
++                            "pid": "4126",
++                            "jid": "20150325123407204096",
++                        }
++                    ],
++                    [],
++                ]
++            ),
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
++            assert tu.sls("module", queue=False) == [
++                'The function "state.running" is running as PID 4126 and was started at 2015, Mar 25 12:34:07.204096 with jid 20150325123407204096'
++            ]
++
+     @patch("salt.modules.transactional_update._create_and_execute_salt_state")
+     @patch("salt.modules.transactional_update.TransactionalUpdateHighstate")
+     @patch("salt.fileclient.get_file_client")
+@@ -666,11 +762,95 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
+         opts_mock = {
+             "hash_type": "md5",
+         }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(return_value=[]),
++        }
+         get_sls_opts.return_value = opts_mock
+-        with patch.dict(tu.__opts__, opts_mock):
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
+             assert tu.highstate() == "result"
+             _create_and_execute_salt_state.assert_called_once()
+ 
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.modules.transactional_update.TransactionalUpdateHighstate")
++    @patch("salt.fileclient.get_file_client")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_highstate_queue_true(
++        self,
++        get_sls_opts,
++        get_file_client,
++        TransactionalUpdateHighstate,
++        _create_and_execute_salt_state,
++    ):
++        """Test transactional_update.highstage"""
++        TransactionalUpdateHighstate.return_value = TransactionalUpdateHighstate
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(
++                side_effect=[
++                    [
++                        {
++                            "fun": "state.running",
++                            "pid": "4126",
++                            "jid": "20150325123407204096",
++                        }
++                    ],
++                    [],
++                ]
++            ),
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
++            assert tu.highstate(queue=True) == "result"
++            _create_and_execute_salt_state.assert_called_once()
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.modules.transactional_update.TransactionalUpdateHighstate")
++    @patch("salt.fileclient.get_file_client")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_highstate_queue_false_failing(
++        self,
++        get_sls_opts,
++        get_file_client,
++        TransactionalUpdateHighstate,
++        _create_and_execute_salt_state,
++    ):
++        """Test transactional_update.highstage"""
++        TransactionalUpdateHighstate.return_value = TransactionalUpdateHighstate
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(
++                side_effect=[
++                    [
++                        {
++                            "fun": "state.running",
++                            "pid": "4126",
++                            "jid": "20150325123407204096",
++                        }
++                    ],
++                    [],
++                ]
++            ),
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
++            assert tu.highstate(queue=False) == [
++                'The function "state.running" is running as PID 4126 and was started at 2015, Mar 25 12:34:07.204096 with jid 20150325123407204096'
++            ]
++
+     @patch("salt.modules.transactional_update._create_and_execute_salt_state")
+     @patch("salt.client.ssh.state.SSHState")
+     @patch("salt.utils.state.get_sls_opts")
+@@ -683,7 +863,83 @@ class TransactionalUpdateTestCase(TestCase, LoaderModuleMockMixin):
+         opts_mock = {
+             "hash_type": "md5",
+         }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(return_value=[]),
++        }
+         get_sls_opts.return_value = opts_mock
+-        with patch.dict(tu.__opts__, opts_mock):
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
+             assert tu.single("pkg.installed", name="emacs") == "result"
+             _create_and_execute_salt_state.assert_called_once()
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.client.ssh.state.SSHState")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_single_queue_false_failing(
++        self, get_sls_opts, SSHState, _create_and_execute_salt_state
++    ):
++        """Test transactional_update.single"""
++        SSHState.return_value = SSHState
++        SSHState.verify_data.return_value = None
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(
++                side_effect=[
++                    [
++                        {
++                            "fun": "state.running",
++                            "pid": "4126",
++                            "jid": "20150325123407204096",
++                        }
++                    ],
++                    [],
++                ]
++            ),
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
++            assert tu.single("pkg.installed", name="emacs", queue=False) == [
++                'The function "state.running" is running as PID 4126 and was started at 2015, Mar 25 12:34:07.204096 with jid 20150325123407204096'
++            ]
++
++    @patch("salt.modules.transactional_update._create_and_execute_salt_state")
++    @patch("salt.client.ssh.state.SSHState")
++    @patch("salt.utils.state.get_sls_opts")
++    def test_single_queue_true(
++        self, get_sls_opts, SSHState, _create_and_execute_salt_state
++    ):
++        """Test transactional_update.single"""
++        SSHState.return_value = SSHState
++        SSHState.verify_data.return_value = None
++
++        _create_and_execute_salt_state.return_value = "result"
++        opts_mock = {
++            "hash_type": "md5",
++        }
++        salt_mock = {
++            "saltutil.is_running": MagicMock(
++                side_effect=[
++                    [
++                        {
++                            "fun": "state.running",
++                            "pid": "4126",
++                            "jid": "20150325123407204096",
++                        }
++                    ],
++                    [],
++                ]
++            ),
++        }
++        get_sls_opts.return_value = opts_mock
++        with patch.dict(tu.__opts__, opts_mock), patch.dict(
++            statemod.__salt__, salt_mock
++        ):
++            assert tu.single("pkg.installed", name="emacs", queue=True) == "result"
++            _create_and_execute_salt_state.assert_called_once()
+diff --git a/tests/unit/states/test_service.py b/tests/unit/states/test_service.py
+index 51755fc5a1..de09f2f8ab 100644
+--- a/tests/unit/states/test_service.py
++++ b/tests/unit/states/test_service.py
+@@ -304,6 +304,24 @@ class ServiceTestCase(TestCase, LoaderModuleMockMixin):
+                                 service.__context__, {"service.state": "running"}
+                             )
+ 
++    def test_running_in_offline_mode(self):
++        """
++        Tests the case in which a service.running state is executed on an offline environemnt
++
++        """
++        name = "thisisnotarealservice"
++        with patch.object(service, "_offline", MagicMock(return_value=True)):
++            ret = service.running(name=name)
++            self.assertDictEqual(
++                ret,
++                {
++                    "changes": {},
++                    "comment": "Running in OFFLINE mode. Nothing to do",
++                    "result": True,
++                    "name": name,
++                },
++            )
++
+     def test_dead(self):
+         """
+             Test to ensure that the named service is dead
+@@ -443,6 +461,24 @@ class ServiceTestCase(TestCase, LoaderModuleMockMixin):
+                 },
+             )
+ 
++    def test_dead_in_offline_mode(self):
++        """
++        Tests the case in which a service.dead state is executed on an offline environemnt
++
++        """
++        name = "thisisnotarealservice"
++        with patch.object(service, "_offline", MagicMock(return_value=True)):
++            ret = service.dead(name=name)
++            self.assertDictEqual(
++                ret,
++                {
++                    "changes": {},
++                    "comment": "Running in OFFLINE mode. Nothing to do",
++                    "result": True,
++                    "name": name,
++                },
++            )
++
+     def test_enabled(self):
+         """
+             Test to verify that the service is enabled
+@@ -567,8 +603,11 @@ class ServiceTestCaseFunctional(TestCase, LoaderModuleMockMixin):
+     @slowTest
+     def test_running_with_reload(self):
+         with patch.dict(service.__opts__, {"test": False}):
+-            service.dead(self.service_name, enable=False)
+-            result = service.running(name=self.service_name, enable=True, reload=False)
++            with patch("salt.utils.systemd.offline", MagicMock(return_value=False)):
++                service.dead(self.service_name, enable=False)
++                result = service.running(
++                    name=self.service_name, enable=True, reload=False
++                )
+ 
+         if salt.utils.platform.is_windows():
+             comment = "Started Service {}".format(self.service_name)
+-- 
+2.32.0
+
+

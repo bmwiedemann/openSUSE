@@ -1,7 +1,191 @@
 -------------------------------------------------------------------
+Wed Sep 15 11:18:58 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Exclude the full path of a download URL to prevent injection of
+  malicious code (bsc#1190265) (CVE-2021-21996)
+
+- Added:
+  * exclude-the-full-path-of-a-download-url-to-prevent-i.patch
+
+-------------------------------------------------------------------
+Tue Aug 31 11:28:13 UTC 2021 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Fix wrong relative paths resolution with Jinja renderer when importing subdirectories
+
+- Added:
+  * templates-move-the-globals-up-to-the-environment-jin.patch
+
+-------------------------------------------------------------------
+Thu Aug 19 14:41:12 UTC 2021 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Don't pass shell="/sbin/nologin" to onlyif/unless checks (bsc#1188259)
+- Add missing aarch64 to rpm package architectures
+- Backport of upstream PR#59492
+
+- Added:
+  * backport-of-upstream-pr59492-to-3002.2-404.patch
+  * don-t-use-shell-sbin-nologin-in-requisites.patch
+  * add-missing-aarch64-to-rpm-package-architectures-405.patch
+
+-------------------------------------------------------------------
+Wed Aug 11 12:22:24 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix failing unit test for systemd
+- Fix error handling in openscap module (bsc#1188647)
+- Better handling of bad public keys from minions (bsc#1189040)
+
+- Added:
+  * better-handling-of-bad-public-keys-from-minions-bsc-.patch
+  * fix-error-handling-in-openscap-module-bsc-1188647-40.patch
+  * fix-failing-unit-tests-for-systemd.patch
+
+-------------------------------------------------------------------
+Tue Aug 10 12:59:25 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Define license macro as doc in spec file if not existing
+- Add standalone formulas configuration for salt minion and remove salt-master requirement (bsc#1168327)
+
+-------------------------------------------------------------------
+Fri Jul 16 15:35:10 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Do noop for services states when running systemd in offline mode (bsc#1187787)
+- transactional_updates: do not execute states in parallel but use a queue (bsc#1188170)
+
+- Added:
+  * do-noop-for-services-states-when-running-systemd-in-.patch
+
+-------------------------------------------------------------------
+Thu Jul  8 08:06:40 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Handle "master tops" data when states are applied by "transactional_update" (bsc#1187787)
+- Enhance openscap module: add "xccdf_eval" call
+
+- Added:
+  * enhance-openscap-module-add-xccdf_eval-call-386.patch
+  * handle-master-tops-data-when-states-are-applied-by-t.patch
+
+-------------------------------------------------------------------
+Tue Jul  6 08:00:23 UTC 2021 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- virt: pass emulator when getting domain capabilities from libvirt
+- Adding preliminary support for Rocky Linux
+- Implementation of held/unheld functions for state pkg (bsc#1187813)
+
+- Added:
+  * implementation-of-held-unheld-functions-for-state-pk.patch
+  * adding-preliminary-support-for-rocky.-59682-391.patch
+  * virt-pass-emulator-when-getting-domain-capabilities-.patch
+
+-------------------------------------------------------------------
+Fri Jun 25 11:54:13 UTC 2021 - Alexander Graul <alexander.graul@suse.com>
+
+- Replace deprecated Thread.isAlive() with Thread.is_alive()
+
+- Added:
+  * backport-thread.is_alive-fix-390.patch
+
+-------------------------------------------------------------------
+Thu Jun 24 12:41:03 UTC 2021 - Victor Zhestkov <victor.zhestkov@suse.com>
+
+- Fix exception in yumpkg.remove for not installed package
+- Fix save for iptables state module (bsc#1185131)
+
+- Added:
+  * fix-exception-in-yumpkg.remove-for-not-installed-pac.patch
+  * fix-save-for-iptables-state-module-bsc-1185131-372.patch
+
+-------------------------------------------------------------------
+Thu Jun 24 09:44:36 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- virt: use /dev/kvm to detect KVM
+
+- Added:
+  * virt-use-dev-kvm-to-detect-kvm-383.patch
+
+-------------------------------------------------------------------
+Thu Jun 24 08:41:31 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- zypperpkg: improve logic for handling vendorchange flags
+
+- Added:
+  * move-vendor-change-logic-to-zypper-class-355.patch
+
+-------------------------------------------------------------------
+Mon Jun 21 14:57:02 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add bundled provides for tornado to the spec file
+- Enhance logging when inotify beacon is missing pyinotify (bsc#1186310)
+- Add "python3-pyinotify" as a recommended package for Salt in SUSE/OpenSUSE distros
+
+- Added:
+  * enhance-logging-when-inotify-beacon-is-missing-pyino.patch
+
+-------------------------------------------------------------------
+Fri Jun  4 09:00:07 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix tmpfiles.d configuration for salt to not use legacy paths (bsc#1173103)
+
+-------------------------------------------------------------------
+Tue Jun  1 12:05:20 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Check if dpkgnotify is executable (bsc#1186674)
+
+- Added:
+  * check-if-dpkgnotify-is-executable-bsc-1186674-376.patch
+
+-------------------------------------------------------------------
+Fri May 21 15:01:10 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Detect Python version to use inside container (bsc#1167586) (bsc#1164192)
+- Handle volumes on stopped pools in virt.vm_info (bsc#1186287)
+- Drop support for Python2. Obsoletes "python2-salt" package
+
+- Added:
+  * handle-volumes-on-stopped-pools-in-virt.vm_info-373.patch
+  * figure-out-python-interpreter-to-use-inside-containe.patch
+
+-------------------------------------------------------------------
+Mon May 10 14:45:26 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- grains.extra: support old non-intel kernels (bsc#1180650)
+- Fix missing minion returns in batch mode (bsc#1184659)
+
+- Added:
+  * fix-missing-minion-returns-in-batch-mode-360.patch
+  * grains.extra-support-old-non-intel-kernels-bsc-11806.patch
+
+-------------------------------------------------------------------
+Tue May  4 13:44:13 UTC 2021 - Jochen Breuer <jbreuer@suse.de>
+
+- Parsing Epoch out of version provided during pkg remove (bsc#1173692)
+
+- Added:
+  * parsing-epoch-out-of-version-provided-during-pkg-rem.patch
+
+-------------------------------------------------------------------
+Tue Apr 27 15:02:30 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix issue parsing errors in ansiblegate state module
+
+- Added:
+  * fix-issue-parsing-errors-in-ansiblegate-state-module.patch
+
+-------------------------------------------------------------------
+Tue Apr 27 12:27:17 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Prevent command injection in the snapper module (bsc#1185281) (CVE-2021-31607)
+- transactional_update: detect recursion in the executor
+- Add subpackage salt-transactional-update (jsc#SLE-18028)
+- Remove duplicate directories from specfile
+
+- Added:
+  * transactional_update-detect-recursion-in-the-executo.patch
+  * prevent-command-injection-in-the-snapper-module-bsc-.patch
+
+-------------------------------------------------------------------
 Tue Apr 20 12:18:06 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
-- Improvements on "ansiblegate" module:
+- Improvements on "ansiblegate" module (bsc#1185092):
   * New methods: ansible.targets / ansible.discover_playbooks
   * General bugfixes
 
@@ -220,7 +404,7 @@ Tue Jan  5 10:15:08 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@s
 -------------------------------------------------------------------
 Fri Dec 18 12:13:49 UTC 2020 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
-- Update to Salt release version 3002.2
+- Update to Salt release version 3002.2 (jsc#ECO-3212) (jsc#SLE-18033)
 - See release notes: https://docs.saltstack.com/en/latest/topics/releases/3002.2.html
 
 - Modified:
