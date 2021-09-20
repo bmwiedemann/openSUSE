@@ -91,8 +91,11 @@ cp %{SOURCE0} .
 %install
 :
 
+%if "%{sipN}" == "sip4"
+# only sip4 still provides the old python-sip package
 %files %{python_files}
 %doc README.SUSE
+%endif
 
 %files %{python_files devel}
 %doc README.SUSE

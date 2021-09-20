@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 13 16:04:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Don't create non-devel -sip metapackage for sip6 -- boo#1190441
+
+-------------------------------------------------------------------
 Fri Feb 26 09:46:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Upgrade defaults: SIPv6 for TW
