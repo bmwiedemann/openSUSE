@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:56:08 UTC 2021 - i@guoyunhe.me
+
+- Update to version 1.50~git20210827:
+  * Sync with upstream version 1.51.1
+  * Add python script to update NstDatabase.xml
+  * Update NstDatabase.xml
+  * Option to hide crosshairs for lightgun games. Fixes #24
+  * Allow users to select to use a pointer device for the Arkanoid paddle
+  * Update version in libretro.cpp
+  * Restore overclocking
+  * Update core to 1.51.0
+  * Add ios-arm64 / tvos-arm64
+  * Arkanoid controller support. Fixes #9
+  * Configurable controls
+  * (MSVC) Embed MSVCR runtime
+  * Add MSVC 2005/2010 targets
+  * Don't set min version for ARM 64bit
+  * (macOS) Set up CROSS_COMPILE for ARM 64bit
+  * Add armv8 + rpi4 64 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Updated to the new lightgun API
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * added Show Advanced Audio Settings core option
+  * Update
+  * Update Makefile
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * libretro: Update gitlab ci extends ordering
+  * Add .gitlab-ci.yml
+  * added individual audio channels volume core options (0ldsk00l/nestopia#335)
+
+-------------------------------------------------------------------
 Tue Jun 16 06:41:17 UTC 2020 - i@guoyunhe.me
 
 - Update to version 1.50~git20200510:
