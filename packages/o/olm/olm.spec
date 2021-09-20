@@ -24,13 +24,13 @@
 in C and C++, including an implementation of the Megolm cryptographic ratchet
 
 Name:           %{origname}
-Version:        3.2.4
+Version:        3.2.6
 Release:        0
 Summary:        Double Ratchet cryptographic library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://gitlab.matrix.org/matrix-org/olm/
-Source0:        %{url}/-/archive/%{version}/%{origname}-%{version}.tar.bz2
+Source0:        https://gitlab.matrix.org/matrix-org/olm/-/archive/%{version}/olm-%{version}.tar.bz2
 # PATCH-FIX-UPSTREAM cmake-enable-testing-builddir.patch -- Enable testing inside the build directory
 Patch0:         cmake-enable-testing-builddir.patch
 BuildRequires:  %{python_module cffi >= 1.0.0}
@@ -81,7 +81,6 @@ Requires:       %{libname} = %{version}
 %description -n %{origname}-devel
 %{descriptor}.
 %{summary}
-
 
 %prep
 %autosetup -p1 -n %{origname}-%{version}

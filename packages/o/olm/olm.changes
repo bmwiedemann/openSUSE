@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 20 07:24:12 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.6
+  * Fix building on various platforms when using CMake.  
+    Building from the Makefile still assumes that it is using gcc.
+- Changes from 3.2.5
+  * Add functions for getting error codes rather than error strings.
+  * Only export olm symbols.
+  * Improve error handling in unpickle functions.
+  * Add support for fallback keys to the Objective-C and Android bindings.
+
+-------------------------------------------------------------------
 Thu Jun  3 01:12:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.2.4

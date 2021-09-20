@@ -28,4 +28,12 @@ Python bindings first time inclusion.</comment>
 - Enable testing</comment>
     <requestid>897728</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>a560d5ba9047c444cc633d259d1f5f53</srcmd5>
+    <version>3.2.6</version>
+    <time>1632173622</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.2.6</comment>
+    <requestid>920341</requestid>
+  </revision>
 </revisionlist>
