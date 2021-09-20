@@ -85,6 +85,7 @@ Patch178:       virtinst-sap-detection.patch
 Patch179:       virtinst-smbios-unsupported-for-xenpv.patch
 Patch180:       virtinst-keep-iso-for-xenpv.patch
 Patch181:       virtinst-add-slem-detection-support.patch
+Patch182:       virtinst-add-sle-hpc-support.patch
 
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -223,6 +224,7 @@ machine).
 %patch179 -p1
 %patch180 -p1
 %patch181 -p1
+%patch182 -p1
 
 %build
 %if %{default_hvs}

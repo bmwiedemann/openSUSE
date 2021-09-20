@@ -1,0 +1,47 @@
+References: bsc#1190215
+
+Index: virt-manager-3.2.0/virtinst/install/urldetect.py
+===================================================================
+--- virt-manager-3.2.0.orig/virtinst/install/urldetect.py
++++ virt-manager-3.2.0/virtinst/install/urldetect.py
+@@ -273,12 +273,17 @@ class _SUSEContent(object):
+         if "Enterprise" in self.product_name or "SLES" in self.product_name:
+             if " SAP " in self.product_name:
+                 sle_version = self.product_name.strip().rsplit(' ')[7]
++            if " High Performance " in self.product_name:
++                sle_version = self.product_name.strip().rsplit(' ')[6]
+             else:
+                 sle_version = self.product_name.strip().rsplit(' ')[4]
+             if len(self.product_name.strip().rsplit(' ')) > 5 and not " Micro " in self.product_name:
+                 if " SAP " in self.product_name:
+                     sle_version = (sle_version + '.' +
+                         self.product_name.strip().rsplit(' ')[8][2])
++                if " High Performance " in self.product_name:
++                    sle_version = (sle_version + '.' +
++                        self.product_name.strip().rsplit(' ')[7][2])
+                 else:
+                     sle_version = (sle_version + '.' +
+                         self.product_name.strip().rsplit(' ')[5][2])
+@@ -670,6 +675,14 @@ class _SLESDistro(_SuseDistro):
+     famregex = ".*SUSE Linux Enterprise.*"
+ 
+ 
++class _SLEHPCDistro(_SuseDistro):
++    PRETTY_NAME = "SLE-HPC"
++    matching_distros = ["sle-hpc"]
++    _variant_prefix = "sles"
++    _suse_regex = [".*SUSE Linux Enterprise High Performance Computing*", ".*SUSE SLE-HPC*", ".*SUSE SLE_HPC*"]
++    famregex = ".*SUSE Linux Enterprise.*"
++
++
+ class _SLEDDistro(_SuseDistro):
+     PRETTY_NAME = "SLED"
+     matching_distros = ["sled"]
+@@ -938,6 +951,7 @@ def _build_distro_list(osobj):
+         _CentOSDistro,
+         _SLEDistro,
+         _SLESDistro,
++        _SLEHPCDistro,
+         _SLEDDistro,
+         _OpensuseDistro,
+         _MICRODistro,
