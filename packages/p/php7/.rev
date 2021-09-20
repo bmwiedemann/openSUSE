@@ -1126,4 +1126,14 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
     <comment></comment>
     <requestid>914424</requestid>
   </revision>
+  <revision rev="102" vrev="2">
+    <srcmd5>dd7aa6772726cab5e338ee2dc1075650</srcmd5>
+    <version>7.4.23</version>
+    <time>1632173514</time>
+    <user>dimstar_suse</user>
+    <comment>- added patches
+  https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
+  + php7-gd-removed-unused-constants.patch</comment>
+    <requestid>919076</requestid>
+  </revision>
 </revisionlist>

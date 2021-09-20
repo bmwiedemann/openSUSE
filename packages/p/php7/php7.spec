@@ -1,5 +1,5 @@
 #
-# spec file for package php7
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -100,6 +100,8 @@ Patch12:        php-crypt-tests.patch
 Patch17:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
 Patch19:        php-build-reproducible-phar.patch
+# https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
+Patch20:        php7-gd-removed-unused-constants.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -960,6 +962,7 @@ cp %{SOURCE5} .
 %patch12 -p1
 %patch17 -p1
 %patch19 -p1
+%patch20 -p1
 
 # use system pcre2
 rm -r ext/pcre/pcre2lib

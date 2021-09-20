@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 15 07:36:53 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
+  + php7-gd-removed-unused-constants.patch
+
+-------------------------------------------------------------------
 Thu Aug 26 15:32:39 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 7.4.23: This is a security release which also contains
