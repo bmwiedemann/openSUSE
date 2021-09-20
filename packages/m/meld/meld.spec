@@ -30,7 +30,6 @@ BuildRequires:  fdupes
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.47.0
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
@@ -76,7 +75,6 @@ Subversion, Bazaar-ng and Mercurial can be browsed and viewed.
 %prep
 %autosetup -p1
 sed -i "s|/usr/bin/env python3|%{_bindir}/python3|g" bin/meld
-translation-update-upstream
 
 %build
 %meson

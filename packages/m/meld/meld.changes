@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 02:03:26 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Fri Apr 16 07:14:07 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add typelib(GtkSource) = 4 requires: The code obscures a lot of
