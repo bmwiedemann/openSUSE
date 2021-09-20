@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 15 08:15:19 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.16.3:
+  * Several pcap replay fixes.
+  * Immediately create "bus" and "class" directories in /sys to
+    fix udev enumerator (gh#martinpitt/umockdev#144).
+  * preload: Avoid some unaligned access to fix failure on sparc
+    (gh#martinpitt/umockdev#147).
+  * Fix build on Alpine.
+  * Don't build with -Werror by default; use meson setup --werror
+    to re-enable.
+
+-------------------------------------------------------------------
 Mon Sep 13 13:09:28 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable to avoid build cycle with gudev (it is recommended but
