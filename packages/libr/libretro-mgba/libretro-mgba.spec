@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-mgba
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-mgba
-Version:        0~git20200805
+Version:        0~git20210903
 Release:        0
 Summary:        The mGBA libretro core for GameBoy Advance emulation
 License:        MPL-2.0

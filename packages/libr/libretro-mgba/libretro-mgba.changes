@@ -1,4 +1,1205 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:48:58 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210903:
+  * Vita: Build fixes
+  * OpenGL: Buildfixes and CMake cleanup
+  * CMake: Attempt to fix #1839 again
+  * All: Fix indentation errors
+  * Updater: MacOS fixes
+  * Updater: Partial macOS support
+  * CInema: Fix Windows/MSYS2 build
+  * CMake: Yet more MSVC buildfixes
+  * Updater: More MSVC build fixes
+  * FFmpeg: Remove disused fields
+  * FFmpeg: Stop using deprecated AVPacket API
+  * FFmpeg: Use refcounted buffers for frame data
+  * FFmpeg: Drop support for libavcodec 54 and below
+  * FFmpeg: Don't attempt to use YUV 4:2:0 for lossless videos (fixes #2084)
+  * CMake: Bring up DMG distribution on macOS
+  * CMake: Small naming and packaging updates
+  * mGUI: Add margin to right-aligned menu text (fixes #871)
+  * Updater: Fix MSVC build
+  * GBA Video: Swap priority and window rendering order
+  * Updater: More MSVC build fixes
+  * FFmpeg: Remove disused fields
+  * FFmpeg: Stop using deprecated AVPacket API
+  * FFmpeg: Use refcounted buffers for frame data
+  * FFmpeg: Drop support for libavcodec 54 and below
+  * FFmpeg: Don't attempt to use YUV 4:2:0 for lossless videos (fixes #2084)
+  * CMake: Bring up DMG distribution on macOS
+  * CMake: Small naming and packaging updates
+  * mGUI: Add margin to right-aligned menu text (fixes #871)
+  * Updater: Fix MSVC build
+  * GBA Video: Swap priority and window rendering order
+  * Libretro: Fix crash when using Game Boy codes (fixes #2281)
+  * CMake: Fix regression searching for localtime_r on Linux (fixes #2276)
+  * Qt: Update German GUI translation
+  * Qt: Update translations
+  * Qt: Fix lupdate complaints
+  * Qt: Update translation (Italian)
+  * Qt: Update translation (Dutch)
+  * Windows: Fix MSVC build
+  * Qt: Add missing file
+  * All: Add updater stub and hook it into the Qt frontend
+  * Qt: Add update checking infrastructure
+  * Don't make the top-left square of the logging grid checkable
+  * AppVeyor: Clean more directories
+  * Update Makefile.libretro
+  * GB Video: Render SGB border when unmasking with ATTR/PAL_SET (fixes #2261)
+  * GBA Video: Fix backdrop color if DISPCNT is first set to 0 (fixes #2260)
+  * GB Video: Fix memory leak when reseting SGB games
+  * Qt: Update translation (Italian)
+  * CInema: Fix memory issues in 4-ups
+  * CMake: Fix build on BSD
+  * Util: Detect futimens/futimes instead of guessing
+  * CMake: Clean up function detection technical debt
+  * Core: Remove dead code
+  * Libretro: Fix bitmask turbo
+  * Qt: Update German GUI translation
+  * Libretro: Clean up memory mapping
+  * CHANGES: Update for 0.9.2
+  * Qt: Fix bounded fast forward with enhancement OpenGL renderer
+  * Switch: Fix build on latest libnx
+  * Qt: Reuse timer when rescheduling missing frames
+  * Res: Update patrons for June
+  * CInema: Add 4-up diffs
+  * Adding Spanish translation.
+  * CInema: Add basic crash handling
+  * mGUI: Pressing confirm should only advance valid states if the data is a string
+  * GBA I/O: Fix deserializing audio on big endian
+  * GBA Video: Backport many rendering changes from medusa
+  * Qt: Redo sensor binding to be less fragile
+  * mGUI: Use variants for menu data
+  * Qt: Add time elapsed to Discord Rich Presence (closes #2225)
+  * GBA SIO: Add more missing NORMAL8 implementation bits (fixes #2044)
+  * GBA: Improve timing when not booting from BIOS
+  * GBA Serialize: Fix loading audio enable bit late (fixes #2230)
+  * Qt: Mark some Cheats strings as untranslatable
+  * Qt: Update translation (French)
+  * Qt: Update translation (Turkish)
+  * Qt: Add options to mute inactive or non-P1 multiplayer windows (fixes #857)
+  * Qt: Add options to mute on minimize or focus lost
+  * Res: Port scale2x an scale4x shaders
+  * CInema: Fix renamed MBC1 RAM tests
+  * GB Memory: Add cursory cartridge open bus emulation (fixes #2032)
+  * Qt: Fix library loading rejecting non-GBA games (fixes #2175)
+  * mGUI: Cache save state screenshot validity in state menu (fixes #2005)
+  * Qt: Update translation (Turkish)
+  * Qt: Only set default controller bindings if loading fails (fixes #799)
+  * README: Drop Windows Vista mention
+  * Qt: Decrease early-sync timeout
+  * GB Audio: Fix audio channel 4 being slow to deserialize
+  * GBA Memory: Fix prefetch mask when swapping modes within a region
+  * Core: Don't attempt to restore rewind diffs past start of rewind
+  * Qt: Update translation (Turkish)
+  * Qt: Update translation (Spanish)
+  * Qt: Update translation (Polish)
+  * Qt: Update translation (Malay)
+  * Qt: Update translation (Portuguese (Brazil))
+  * Qt: Update translation (Portuguese (Brazil))
+  * Qt: Update translation (Portuguese (Brazil))
+  * GBA SIO: Fix SI value for unattached MULTI mode
+  * GBA SIO: Fix missing interrupt on an unattached NORMAL transfer
+  * Qt: Update German GUI translation
+  * CMake: Fix macOS version detection
+  * Qt: Fix having to press controller buttons twice for menu items (fixes #2143)
+  * Core: Fix portable mode on macOS
+  * CMake: MacOS cleanup
+  * GBA Savedata: Support for 64 kiB SRAM saves
+  * Qt: Add missing EEPROM 8kB string
+  * ARM Debugger: Fix disassembly alignment (fixes #2204)
+  * Qt: Text interaction and font cleanup
+  * Qt: Clean up cheats dialog
+  * Qt: Minor .ui updates
+  * Libretro: Add GB palette setting
+  * Add files via upload
+  * Updated translation
+  * Core: Fix memory searches for relative values (fixes #2135)
+  * mGUI: Add fast forward mute
+  * Add compile flags for Odroid Go Advance
+  * mGUI: Fix SDF font fast-forward and mute icons
+  * Qt: Update translation (Hungarian)
+  * Qt: Added translation (Hungarian)
+  * Qt: Update translation (French)
+  * Qt: Update translation (German)
+  * Qt: Update translation (Italian)
+  * Qt: Update translation (Norwegian Bokmål)
+  * Qt: Update translation (Spanish)
+  * CHANGES: Update
+  * Qt: Fix non-Multimedia build (fixes #2180)
+  * GBA SIO: Add missing NORMAL8 implementation bits (fixes #2172)
+  * 3DS: Fix build
+  * 3DS: Remember to init cfg:u when querying model
+  * Qt: Fix crash in sprite view for partially out-of-bounds sprites (fixes #2165)
+  * GB: Add missing override for Mario & Yoshi
+  * Qt: Update translations
+  * GB: Add SGB palettes, options for selecting which palettes
+  * GB: Add GB Light palette
+  * GB: Add SGB color palettes
+  * GB: Support for combo "Super Game Boy Color" SGB + GBC ROM hacks
+  * GB Video: Clear VRAM on reset (fixes #2152)
+  * GB Core: Fix VRAM and WRAM bank sizes
+  * GB Core: Fix GBC colors setting breaking default model overrides (fixes #2161)
+  * Core: Suspend runloop when a core crashes
+  * Util: Improve speed of UPS patch loading
+  * GBA: Fix some patch loading edge cases
+  * Util: Fix loading UPS patches that affect the last byte of the file
+  * GB Core: Support reloading palette at runtime
+  * mGUI: Add GB palette overrides
+  * mGUI: Add arrow keys to symbol and add unicode codepoints
+  * GB: Fix and rename palettes
+  * GBA IO: Serialize JOY_RECV_HI and JOY_TRANS_HI
+  * Qt: Update translations
+  * GB: Presets for Game Boy palettes
+  * Qt: Fix UI element ordering (fixes #2156)
+  * GBA Video: Revert scanline latching changes (fixes #2153, fixes #2149)
+  * GBA Overrides: Add missing override for Drill Dozer (Europe)
+  * Remove reference to removed arm-algo.S
+  * Qt: Fix applying savetype-only overrides
+  * GBA: Add override for DigiCommunication Nyo
+  * Qt: Remove potentially deadlocking optimization
+  * Qt: Update translations
+  * Qt: Redo internal library API and clean up LibraryTree
+  * Core: Fix memory leak in opening games from the library
+  * Qt: Start cleaning up library code
+  * Qt: Fix infrequent deadlock when using sync to video
+  * Qt: Update translation (Spanish)
+  * mGUI: Initial cheat support UI
+  * mGUI: Initial OSK support
+  * Util: Add toUtf16 function
+  * Switch: Minor cleanup
+  * mGUI: "Accept" button should increment menu selection
+  * mGUI: Fix some small memory leaks
+  * CHANGES: Update for 0.9.1
+  * Res: Update nointro.dat
+  * Res: Update patrons for April
+  * Qt: Restore maximized state when starting (fixes #487)
+  * CONTRIBUTING.md: Remove whitespace
+  * Qt: Improve handling of disabling VBA bug compat mode (fixes #2129)
+  * Qt: Blur image slightly on savestate screen
+  * Util: 2D convolve with channels
+  * Qt: AudioProcessor refactoring
+  * Qt: Move display configuration
+  * Qt: Parse --version flag
+  * Qt: Update translation (Portuguese (Brazil))
+  * Qt: Update translation (Portuguese (Brazil))
+  * Qt: Update translation (Italian)
+  * Qt: Update translation (Russian)
+  * Qt: Move display attaching code
+  * Qt: Rearrange menus some
+  * ARM: Fix LDM^ with empty rlist (fixes #2127)
+  * Qt: Fix frames getting backlogged (fixes #2122)
+  * Qt: Fix saving settings enabling camera when camera name changes (fixes #2125)
+  * Libretro: Redo key handling, support bitmasks
+  * Libretro: Add missing rotation peripheral
+  * Libretro: Fix GB SRAM in memory map
+  * Libretro: Fix GB SRAM in memory map
+  * Qt: Update translation (Japanese)
+  * GB: Fix skipping BIOS
+  * Qt: Update translations
+  * Qt: Update translation (Finnish)
+  * Qt: Added translation (Finnish)
+  * Qt: Fix smudged window icon on Windows, recompress icons
+  * GBA Overrides: Remove now-redundant e-Reader overrides
+  * Define MINIMAL_CORE=2 for libretro port
+  * Define -DDISABLE_THREADING for Android
+  * (Android) There are no C++ source files so don't link against C++_static (Makefile.common) Add missing rewind.c
+  * (Android) define -DUSE_PTHREADS
+  * macOS and iOS need to have HAVE_STRLCPY defined
+  * Qt: Fix OpenGL renderer lagging behind when fast-forwarding (fixes #2094)
+  * Qt: Remove no-longer used dependency
+  * GBA e-Reader: Initial error detection and retrying
+  * GBA e-Reader: Improve initial boundary detection
+  * Qt: Expose e-Reader parsing
+  * GBA e-Reader: Add visual dotcode parsing
+  * FFmpeg: Add image scaling function
+  * Util: Add bits of a convolution API
+  * Qt: Fix crash when switching from high-resolution OpenGL renderer to software
+  * mGUI: Fix build
+  * Qt: Update translation (Chinese (Simplified))
+  * Qt: Update translation (Spanish)
+  * Qt: Update translation (German)
+  * GBA e-Reader: Refactor out of GPIO code
+  * GBA Cart: Refactor hardware.c into cart/gpio.c etc
+  * GBA Memory: Remove unused variable
+  * GBA Memory: Log GPIO writes on non-GPIO carts as Pak Hardware instead of Memory
+  * GBA Video: Fix mode 3-5 overflow with mosaic (fixes #1691)
+  * GBA Video: Fix window start on modes 2-5 with mosaic (fixes #1690)
+  * GBA SIO: Silence initial mode switch
+  * GBA Video: Don't attempt to copy invalid registers when switching renderer
+  * Core: Truncate preloading ROMs that slightly exceed max size (fixes #2093)
+  * GBA e-Reader: Fix bitmap short strip scanning
+  * Tools: Spit out dotcodes that mGBA can read
+  * GBA Video: Fix mode 5 frame 1 caching (fixes #2075)
+  * GBA: Default-enable VBA bug compat for Ruby and Emerald ROM hacks
+  * GBA: Fix non-USA 1.0 FireRed misdetecting as a ROM hack (fixes #2100)
+  * GB Serialize: Fix switching speed modes when loading a state (fixes #2097)
+  * GBA: Fix crash when ROM loading fails
+  * Qt: Add ROM filename and size to bug reporter
+  * GBA: Fix FireRed revision misdetecting as a ROM hack
+  * Core: Fix first event scheduling after loading savestate
+  * GBA Memory: Fix loading Thumb savestates when in ARM mode
+  * Qt: Update translations
+  * Added translation using Weblate (Norwegian Bokmål)
+  * CMake: Bump version
+  * CHANGES: Update for 0.9.0
+  * 3DS: Fix #1294 slightly better this time
+  * 3DS: Fix memory leak
+  * Qt: Fix up report view a bit on macOS
+  * Qt: Update translation (Spanish)
+  * Qt: Update translation (Spanish)
+  * Qt: Update translation (Spanish)
+  * Qt: Update translation (Spanish)
+  * Python: Fix build
+  * Qt: Update German GUI translation
+  * Qt: Update translations
+  * GBA SIO: Fix Dolphin connection when driver is inactive
+  * GBA SIO: Fix TRANS bit clearing order
+  * GBA SIO: Improve logging
+  * GBA SIO: Improve readability
+  * Qt: Add reset toggle for Dolphin connection
+  * GBA SIO: Fix Dolphin disconnecting
+  * Qt: Dolphin cleanup
+  * GBA SIO: Dolphin cleanup
+  * Qt: Add Dolphin connector dialog
+  * GBA SIO: Dolphin connectivity
+  * Qt: Update translation (Spanish)
+  * Qt: Update translation (Spanish)
+  * mGUI: De-constify fonts
+  * Res: Update nointro.dat
+  * Qt: Move painter interrupting to main thread
+  * Switch: Remove more deprecated Npad names
+  * GB: Support loading CGB-on-AGB boot ROM
+  * GBA Video: Fix transposed BG mosaic parameters in GL renderer
+  * Res: Update patrons.txt
+  * Qt: Fix loading patches after mGBA starts
+  * Libretro: Lazy-load rumble interface
+  * Switch: Clean up audio queue handling
+  * GBA Audio: Prevent write to audio registers if audio is OFF
+  * GBA Audio: Fix reads from CH3 Wave RAM
+  * Switch: Allow switching between CPU and GPU renderers without reloading
+  * GBA BIOS: Fix invalid decompression bounds checking
+  * Qt: Modernize overrides view and fix not applying VBA bug mode
+  * Feature: Clear thread proxy queue on reset (fixes #2080)
+  * Add od-beta
+  * Switch: Optimize font rendering (fixes #2078)
+  * GB MBC: Force minimum SRAM size on rare MBCs that always have SRAM
+  * GB Video: Don't rendering negative batches
+  * GB MBC: Remove unused SRAM size
+  * Switch: Fix image size scaling rounding (fixes #2073)
+  * Switch: Increase allowable queued buffers when exiting fast forward
+  * GB Video: Fix deserializing negative LX state
+  * Core: Fix destroying an mVL with an invalid channel count
+  * GB Video: Discard SGB packets in non-SGB mVLs
+  * GBA Video: Fix x offset in 256-color BG mosaic (fixes #1684)
+  * GB Audio: Fix frame sequencer timing in double speed mode (fixes #2071)
+  * GB Serialize: Fix crash when loading pre-0.7 SGB savestates
+  * GB: Properly unmap ROM base when unloading ROM
+  * Libretro: Lazy-load rumble interface
+  * Android: Reduce target API level to 16 (Android 4.1+)
+  * Qt: Update German GUI translation
+  * Qt: Flesh out Interrupter some
+  * Qt: Don't attempt to create a GL2 context if GL2 is disabled
+  * GB: Fix loading model overrides
+  * Update .gitlab-ci.yml
+  * Emscripten support (#226)
+  * Libretro: Lazy-load sensors
+  * Libretro: Lazy-load sensors
+  * GBA: Fix loading subsequent save files (fixes #2067)
+  * Qt: Fix swapped mosaic directions
+  * Qt: Move game title lookup into CoreController
+  * Backport serialization fix from upstream
+  * CMake: Prefix version-info target with ${BINARY_NAME}
+  * CMake: Dont cache variables when building with LIBMGBA_ONLY
+  * CMake: version.cmake set WORKING_DIRECTORY to CMAKE_CURRENT_SOURCE_DIR
+  * GB Audio: Add channel 4 batching back (fixes #1313)
+  * SM83: HALT should not consume an extra T-state
+  * SM83: Improve mid-M-cycle interrupts
+  * CInema: Fix glob anchoring
+  * SM83: Fix runloop early exit when event happens outside FETCH
+  * Debugger: Call CLI debugger system init
+  * GB Audio: Remove redundant timing argument to GBAudioUpdateFrame
+  * GB Audio: Fix some channel 4 timing edge cases
+  * Qt: Fix up debugger console slightly
+  * FFmpeg: Add CRF support for applicable codecs
+  * Tools: Minor perf tool fixes
+  * Tools: Quickly print perf fps
+  * Tools: Add exponential backoff retrying, print last result
+  * Switch: Update for new libnx pad API
+  * Add ios-arm64/tvos-arm64
+  * GB: Fix marking BIOS as unmapped when skipping BIOS (fixes #2061)
+  * Qt: Hide hat number if it's 0
+  * Qt: Fix inability to clear hat bindings
+  * Qt: Disable saving/loading nameless profiles
+  * ARM: Use mask lookup table for condition codes
+  * CMake: Move epoxy GL defines to the right list (fixes #1792)
+  * GBA Memory: Fix masking of misaligned jumps
+  * All: Fix various build failure fallout
+  * CMake: C is a bad programming language
+  * VFS: Clean up minizip usage
+  * GB: Fix memory leak unloading masked savedata
+  * GB: Clean up BIOS unmapping
+  * GB: Clean up cartridge removal codepath (fixes #398)
+  * Qt: Update translations
+  * Qt: Select newly added cheat set after adding it
+  * GB Cheats: Fix Game Genie check code (fixes #2055)
+  * GBA Memory: Fix AGBPrint writing past 16MB ROMs
+  * GB: Fix crash when changing ROM while in banked address space
+  * GBA Memory: Improved AGBPrint emulation of edge cases (fixes #1867)
+  * Core: Fix some cheats API change fallout (fixes #2053)
+  * GBA Video: Fix typing mismatch in modes 3, 4 and 5 renderer (fixes #2047)
+  * Qt: Add utility for IP address conversion to internal format
+  * Qt: Refactor out duplicated named view setup
+  * Qt: Misc minor cleanup
+  * Qt: Clean up unused private vars
+  * Qt: std::move cleanup
+  * ARM: Optimize PC-write functions
+  * Qt: Update translation (Chinese (Simplified))
+  * ARM: Fix long and accumulate multiply timing
+  * Qt: Update translation (Russian)
+  * GBA SIO: Fix Normal mode transfer start timing (fixes #425)
+  * GBA Timers: Fix toggling timer cascading while timer is active (fixes #2043)
+  * Qt: Update German GUI translation
+  * GB, GBA Serialize: Attempt to fix MSVC build
+  * GBA SIO: Clean up lockstep cycle counting
+  * GBA SIO: Fix hanging on starting a second multiplayer window (fixes #854)
+  * Qt: Fix build on older Qt
+  * Qt: Fix outdated copyright translation strings
+  * Qt: Update translations
+  * Qt: Add save converter tool
+  * Qt: Add linked library info to report generator
+  * VFS: Fix build with minizip
+  * Qt: Add creating a VFileDevice from a QByteArray
+  * Utils: Make sure to seek to start of file when doing PNG check
+  * Qt: Cleaner byte size formatting
+  * Core: Allow deserializing PNG savestates with ignoring extdata
+  * Qt: Flesh out VFileDevice more, to avoid leak
+  * (Gitlab/Libretro) Add ios target
+  * (macOS) Add arm 64bit to .gitlab-ci.yml
+  * (macOS) Set up CROSS_COMPILE for ARM 64bit
+  * Qt: Better initial shortcut editor column sizes
+  * Cheats: Fix indirect write cheats (fixes #2026)
+  * Qt: Don't use a static QFont
+  * Qt: Fix mgba-it translation
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Portuguese (Brazil))
+  * Qt: Clean up memory model in ConfigController
+  * GBA Memory: Fix Matrix memory bounding
+  * Core: Fix portable working directory on Windows (fixes #2009)
+  * Qt: Clean up sign warnings
+  * Qt: Add clamp function, using stl if available
+  * Qt: Update German GUI translation
+  * Qt: Update German GUI translation
+  * Core: Add mCoreCreate function for making a core based on platform type
+  * Qt: Fix some frame viewer memory leaks
+  * Update bins for new toolchain
+  * Update Application.mk
+  * Update .gitlab-ci.yml
+  * Libretro: Fix sensors
+  * README: Update Spanish translation
+  * Doc: Update German README file
+  * Qt: Update German GUI translation
+  * Qt: Make save game/save state terminology consistent
+  * Qt: Update About screen copyright
+  * README: Mention translations, update copyright
+  * Core: Adding to library is now recursive
+  * GB: Redo double speed emulation (closes #1515)
+  * Qt: Update ts files
+  * Qt: Ensure non-present MRU items are removed (fixes #2000)
+  * Update .gitlab-ci.yml
+  * Utils: Clean up duplicated clamping code
+  * GB Cheats: Fix Game Genie codes
+  * Core: Add memory block info lookup function
+  * GB Core: Return the current number of banks for ROM/SRAM, not theoretical max
+  * GBA: Remove Pokemon Pinball R/S override
+  * Libretro: De-copy-paste memory.c
+  * Qt: Use relative paths in portable mode when applicable (fixes #838)
+  * GB: Fix regression with HDMAs not always properly blocking
+  * GB, GBA: Fix global cycle counter discrepancy
+  * Update Makefile.libretro
+  * Debugger: Add event dumping
+  * Update Makefile.libretro
+  * Update .gitlab-ci.yml
+  * Wii: Fix build
+  * Qt: Update German GUI translation
+  * GB Video: Always clean OAM at x 0
+  * Qt: Add button to jump to log settings
+  * Qt: Update translations
+  * Core: Add prefix to platform enum names
+  * Qt: Add GB support in I/O viewer
+  * Qt: Lay groundwork for adding GB IO register descriptions
+  * Qt: Mark more strings as untranslated
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Spanish)
+  * Core: Improve support for ROM patch cheats, supporting disabling overlapping patches
+  * Qt: Import German GUI translation updates from weblate
+  * Qt: Fix loading a new game crashing on Wayland (fixes #1992)
+  * Libretro: Fix sensors
+  * Use sensor interface; add sensor light core option
+  * Core: Improve memory handling when deleting a cheat device
+  * GBA Cheats: Allow unlimited ROM patch-type codes per set
+  * libretro: ps3: Fix makefile rule
+  * remove obsolete __CELLOS_LV2__ references - use PSL1GHT
+  * Remove arm-algo.S and references
+  * Qt: Review JPN translation (#1986)
+  * Fix #211
+  * SDL: Remove debug test that got left in
+  * Qt: Unify monospace font usage
+  * SDL: Fall back to sw blit if OpenGL init fails
+  * Windows: Replace installer image, @2x this time
+  * Windows: Use provided version string where possible
+  * CMake: Properly detect when setup.iss has changed
+  * CMake: Add method for specifying alternate package names
+  * GBA Serialize: Fix alignment check when loading states
+  * Debugger: Add fin alias for finish
+  * ARM Debugger: Only break on exceptions when stack call tracing is on
+  * Qt: Fix issues with I/O viewer not properly synchronizing state
+  * All: Updated MSYS2 instructions
+  * Qt: Update German GUI translation
+  * Qt: Actually fix build on MSVC
+  * New README_ZH_CN.md and updates to Simp. Chinese and Japanese translation (#1981)
+  * Qt: Fix build on MSVC
+  * Qt: Move empty string list to new file
+  * Qt: Fill in mgba-en.ts
+  * Qt: Mark more labels as not needing translation
+  * Util: Make clz consistent
+  * Qt: Add slightly more CPU info to bug report
+  * Qt: Update TS files
+  * Qt: Mark several labels as not needing translation
+  * Qt: General fixes to Simp. Chinese translation (#1977)
+  * Qt: Fix build
+  * Qt: Add bug report tool
+  * Core: Fix getting config directory on Windows (fixes #1974)
+  * Qt: Fix build on old gcc
+  * Qt: Add load/saveState VFile functions, flags parameter to explicit state functions
+  * Qt: Add wrappers for accessing QIODevices as VFiles
+  * Qt: Add API wrapper for VFileMemChunk
+  * Core: Fix build on Windows
+  * CMake: Add missing minizip file
+  * Core: Clean up and extend config saving/loading
+  * VFS: Initial write support for zip files
+  * Update .gitlab-ci.yml
+  * PS3 Build fix
+  * Res: Update nointro.dat (finally)
+  * Qt: Fix some sign warnings
+  * Qt: Fix unused variable warnings
+  * Qt: Fix unhandled case warnings
+  * Qt: Update exe chip names (#1954)
+  * GBA Video: Fix palette when being initialized mid-frame
+  * GBA Video: Fix I/O registers when switching renderer (fixes #1967)
+  * GBA BIOS: Add VBA LZ77 decompression bug compat in VBA bug compat mode
+  * Win32: Add missing Spanish README file; add missing language tokens
+  * Win32: Update list of available languages in the Inno Setup installer
+  * Qt: Update German GUI translation
+  * README: Add Spanish translation
+  * Travis: Forcibly select osx_image because Travis loves using long-EOL'd stuff
+  * Qt: Fix proxied events blocking properly
+  * Qt: Always start painter thread even if not in use
+  * Qt: Pay down some technical debt in the shader selector
+  * Qt: Add checking and downgrading OpenGL support outside of the painter
+  * Qt: Fix crash when editing shortcuts with none selected (fixes #1964)
+  * Qt: Set default setting for dynamicTitle (fixes #1965)
+  * GBA Video: Ensure wait instead of flush when getting proxy pixels
+  * Qt: Update German GUI translation
+  * Fix typo in SettingsView.ui
+  * Libretro: Defer loading save so RTC loading actually works (fixes #1959)
+  * GB: Restore RTC state if loading save after reset
+  * GBA Video: Fix resetting palettes
+  * GB Video: Fix clearing scanline buffer (fixes #1958)
+  * libretro: Update gitlab ci extends ordering
+  * GBA Video: Avoid integer division using reciprocal tricks
+  * GBA Video: Fix depth/stencil masking while clearing
+  * GBA Video: New GL palette approach, no more batch splitting on palette edits
+  * Qt: Fix up GL changes causing timing issues
+  * mGUI: Improve loading speed (fixes #1957)
+  * GBA: Regrettably add VBA bug compat mode
+  * GBA Hardware: Unpack RTC struct
+  * GBA Hardware: e-Reader should not re-scan last card
+  * ARM: Fix long multiply-and-accumulate register write order (fixes #1956)
+  * Debugger: Fix crash when tracing without a file output
+  * Fix LIBMGBA_ONLY build
+  * Qt: Fix build on clang
+  * Qt: Discard additional frame draws if waiting fails
+  * Feature: Allow configuring waiting on frame flushing in proxy
+  * Core: Fix possible video sync deadlock
+  * 3DS: Batch directory reads
+  * GBA Video: Skip attempting to render offscreen sprites in OpenGL
+  * Add OpenDingux target to .gitlab-ci.yml
+  * mGUI: Skip second scan loop when possible
+  * Wii: Add libwiidrc support
+  * CMake: Move BUILD_GL flags to FEATURE_DEFINES
+  * ARM: Fix non-debugger build
+  * CInema: Add xbaselines for mooneye-gb
+  * GB I/O: Implement preliminary support for PCM12/PCM34 (#1468)
+  * CMake: Move gl.c and gles2.c to FEATURE_SRC
+  * Qt: Pre-attach GDB stub when launching with -g (fixes #1950)
+  * Qt: Pre-attach GDB stub when launching with -g (fixes #1950)
+  * CMake: Fix build on Windows
+  * GBA: Fix loading multiboot ELF files (fixes #1949)
+  * Core: Fix loading ELF files that have unexpected empty program headers
+  * CMake: Link with correct OpenGL library (fixes #1872)
+  * CMake: Replace desktop file installing code with just the file
+  * Debugger: Fix change watchpoints (fixes #1947)
+  * GBA Hardware: Add support for "reduced" header e-Reader dumps
+  * Brazilian portuguese translation (#1917)
+  * Qt: Take SGB border into account in frame viewer
+  * Qt: Allow frame viewer on Game Boy
+  * GB Video: Fix highlighting after modifying GB palettes
+  * GB Video: Fix SGB video logs
+  * GBA Video: Only use shader for setting window params if a clear is insufficient
+  * GBA Video: Minor cleanup
+  * Qt: Update German GUI translation
+  * Qt: Add option to toggle forceGbp mode
+  * GBA: Remove Pokemon Pinball R/S override
+  * GBA Video: Fix OBJWIN erratic rendering in OpenGL renderer
+  * CHANGES: Update
+  * GB Video: Add highlighting
+  * Core: Add RGB8 to native color function
+  * Core: Make _mix public
+  * GB Video: Add constants for OBJ maxima
+  * GBA Video: Clean up redundant code
+  * Core: Replace GBA_COLOR_WHITE with M_COLOR_WHITE
+  * Qt: Fix unused variable warning in SettingsView
+  * Qt: Fix some unused parameter warnings
+  * Fix a few warnings regarding `QAbstractButton::setChecked` usage
+  * GBA Memory: Return correct byte in out of bounds ROM read
+  * GB: Improve emulation of DMG-on-CGB register reads
+  * GB: Fix CGB-to-DMG switchover
+  * GBA I/O: Ignore high bits on IME
+  * GB: Downgrade DMG-only ROMs from CGB mode even without boot ROM
+  * Core: Fix ordering of thread state request processing
+  * Qt: Fix gamepad event dispatching (fixes #1922)
+  * mGUI: Don't attempt to preload files larger than can fit in RAM
+  * Wii: Fix crash on unloading irregularly sized GBA ROMs
+  * Fix missing endif macro declaration
+  * Fix miss merge conflicts trying to not to break commit 942d58bf0763caa98b063a6afca116d458122115
+  * Qt: Fix GIF view title
+  * Qt: Fix cancelling pausing before the frame ends
+  * Core: Rework thread state synchronization
+  * Qt: Fix game display sometimes disappearing after closing load/save state screen
+  * Add Raspberry Pi 4 64bit mode platform
+  * Core: Fix thread unsafety issue when dispatching code to a thread
+  * Qt: Remove thread parameter for Interrupter that can be autodetected
+  * Core: Fix threading improperly setting paused state while interrupted
+  * GBA Memory: Mark Famicom Mini games 22 through 28 as non-mirroring
+  * Fix the GBVideoDummyRendererDrawRange signature
+  * Qt: Remove unused variables
+  * Reorder initialization in CoreController to silence a few warnings
+  * CHANGES: Add reference to Qt OpenGL fix for #1724
+  * Qt: Clean up unique_ptr a bit
+  * Qt: Asynchronous drawing startup
+  * Qt: Create OpenGL context on a thread without moving it
+  * Qt: Better handle switching between software and hardware renderers
+  * Optimise simple/smart interframe blending
+  * Switch: Fix build
+  * Debugger: Close trace log when done tracing
+  * Qt: Fix running proxied video if it gets pushed to the main thread
+  * Util: Add default memory.c implementation
+  * Python: Better handling of Git revision info (fixes #1933)
+  * Libretro: Only set camera peripheral when it is available (#1931)
+  * CMake: Fix build with downstream minizip that exports incompatible symbols
+  * Qt: Actually bounds check memory block index
+  * ARM Debugger: Fix debugger API misdeclaration
+  * ARM: Move shifter call to avoid stack usage
+  * ARM: Fix Addressing mode 1 shifter on rs == pc (fixes #1926)
+  * Qt: Update German GUI translation
+  * Qt: Update German GUI translation
+  * CMake: Bump version number
+  * CHANGES: Update for 0.8.4
+  * CHANGES: Update for 0.8.4
+  * Res: Update patrons for October
+  * Wii: Fix ppc32 endianness regression
+  * Res: Update patrons for October
+  * Vita: Clear both buffers when loading a game
+  * Vita: Clear both buffers when loading a game
+  * GBA Serialize: Ensure program counter is aligned when loading
+  * GBA Serialize: Ensure program counter is aligned when loading
+  * ARM Decoder: Fix decoding pre-indexed writeback instructions (fixes #1915)
+  * ARM Decoder: Fix decoding pre-indexed writeback instructions (fixes #1915)
+  * GBA Video: Add window y offsetting
+  * GBA Video: Add window toggling
+  * Clean up OpenDingux compiler options + style nits
+  * GB, GBA Video: Copy disable flags when drawing scanlines in proxy when not blocking
+  * GB Video: Initialize disable flags in proxy
+  * GB Video: Fix drawing background when window is force-disabled by frontend
+  * GB Video: Copy layer disable state across proxy
+  * Qt: Add background and window toggling to frame viewer
+  * GB, GBA Video: Copy disable flags when drawing scanlines in proxy when not blocking
+  * GB Video: Initialize disable flags in proxy
+  * GB Video: Fix drawing background when window is force-disabled by frontend
+  * GB: Add enum for the layer names
+  * GB Video: Copy layer disable state across proxy
+  * GB I/O: Finally rename registers to have a prefix
+  * Qt: Window title updates can be disabled (closes #1912)
+  * Add optional automatic frame skipping based on frontend audio buffer level
+  * Update .gitlab-ci.yml
+  * ARM: Don't force passed opcodes to be truncated
+  * OpenEmu: Update implementation (#1910)
+  * Update
+  * Update
+  * Add .gitlab-ci.yml
+  * mGUI: Fix cycling through config setting states with accept button
+  * Qt: Fix aliasing on background logo (closes #1886)
+  * Qt: Fix stride changing when toggling SGB borders (fixes #1898)
+  * GB Core: Add reload config option for SGB borders
+  * Libretro: Add GBP rumble option
+  * GBA Core: Add forceGbp option for always-GBP mode
+  * mGUI: Fix cycling through config setting states with accept button
+  * mGUI: Game Boy Player feature support
+  * GBA: Clear GBP connection on reset
+  * GBA Hardware: Don't gate GBP features on not having an SIO driver installed
+  * Libretro: Add GBP rumble option
+  * GBA Core: Add forceGbp option for always-GBP mode
+  * Qt: Clean up redundant config tweaking
+  * Qt: Fix aliasing on background logo (closes #1886)
+  * ARM Decoder: Only print PC-relative register contents in loads (fixes #1908)
+  * ARM Decoder: Revamp load/store interface, readability cleanup
+  * Qt: Start adding support for GB to the frame view
+  * GB: Disallow skipping BIOS with no ROM loaded
+  * GB Video: Clean up OBJ parsing outside of renderer
+  * Qt: Fix stride changing when toggling SGB borders (fixes #1898)
+  * GB Core: Add reload config option for SGB borders
+  * GBA Video: Fix mode 4 transparency in OpenGL (fixes #1907)
+  * Win32: Fix supressing start menu item creation
+  * GBA Video: Fix mode 4 transparency in OpenGL (fixes #1907)
+  * Qt: Load/save bytes from memory viewer in the order visible (fixes #1900)
+  * Win32: Add more language options to the installer
+  * Win32: Fix supressing start menu item creation
+  * GBA Video: Fix deferred blending when OBJWIN matches window (fixes #1905)
+  * GBA Video: Fix deferred blending when OBJWIN matches window (fixes #1905)
+  * Qt: Load/save bytes from memory viewer in the order visible (fixes #1900)
+  * Qt: Fix drawing on macOS break when using OpenGL (fixes #1899)
+  * Qt: Fix drawing on macOS break when using OpenGL (fixes #1899)
+  * GBA Video: Do not affect OBJ pixel priority when writing OBJWIN (fixes #1890)
+  * GBA Video: Improve speed of window texture generation on AMD
+  * GBA Video: Do not affect OBJ pixel priority when writing OBJWIN (fixes #1890)
+  * Fix a race condition on `InputController::m_pendingEvents`
+  * GBA Video: Improve speed of window texture generation on AMD
+  * GBA Video: Convert OpenGL VRAM texture to integer
+  * GBA Video: Emulate sprite cycle limits in OpenGL renderer (fixes #1635)
+  * Interframe Blending: Increase accurracy of 'Simple/Smart (Fast)' options and remove 'Simple/Smart (Accurate)' options
+  * GBA BIOS: Division by zero sometimes doesn't crash
+  * libretro: use input bitmask
+  * Fix a race condition on `InputController::m_pendingEvents`
+  * GB MBC: Fix some MBC3 bit masking
+  * Qt: Fix camera image being upside-down sometimes (fixes #829 again)
+  * GBA BIOS: Division by zero should emit a FATAL error
+  * Qt: Add copy button to GB printer dialog
+  * Qt: Fix camera image being upside-down sometimes (fixes #829 again)
+  * README: Update Ubuntu Docker image list
+  * README: Update Ubuntu Docker image list
+  * SM83: Disassemble STOP as one byte
+  * GB: Add support for sleep and shutdown callbacks
+  * Core: Add shutdown callback
+  * GB I/O: Add BANK register name
+  * CMake: Fix PGO on non-GNU platforms
+  * support variant symfile format with function sizes
+  * ARM Debugger: Disassembler now resolves addresses to symbol names
+  * GBA Video: Fix rare regression blending semitransparent sprites (fixes #1876)
+  * GBA Video: Fix rare regression blending semitransparent sprites (fixes #1876)
+  * libretro: Fix cheevos memory map for GB games using external RAM
+  * Libretro: Add cheevos support for GB/GBC
+  * Libretro: Add Italian core options translation
+  * Libretro: Build fixes for non-GB and coe cleanup
+  * Qt: Fix language code for Korean
+  * Qt: Update French translations
+  * AppVeyor: Attempt cleanup if the cache goes awry
+  * GBA I/O: Green swap register should be readable
+  * Use sensor interface; add sensor light core option
+  * Sync libretro.h
+  * Doc: Update German README file
+  * GB MBC: Add MBC6 flash support (read-only currently)
+  * CMake: Install cinema with tests
+  * GBA Video: Implement green swap (fixes #1609)
+  * GBA Memory: Minor code simplification
+  * Util: Use __builtin_bswap on PPC big-endian platforms that support it
+  * Util: Fill out and fix big-endian byteswap load/stores
+  * libretro: Fix cheevos memory map for GB games using external RAM
+  * Libretro: Add cheevos support for GB/GBC
+  * Libretro: Add Italian core options translation
+  * Libretro: Build fixes for non-GB and coe cleanup
+  * GB: Add separate overrides for GBC games that can also run on SGB or regular GB
+  * Qt: Fix language code for Korean
+  * Qt: Refactor GB names and lists into namespace
+  * Core: Add savedataUpdated callback
+  * GBA Memory: Improve robustness of Matrix memory support
+  * Qt: Add another static dependency on Windows
+  * Qt: Add another static dependency on Windows
+  * Qt: Add CoreManager::getExtdata API
+  * Qt: Add VFileDevice from filename API
+  * 3DS: Slightly refactor GPU operations
+  * 3DS: Fix thread cleanup
+  * GBA Video: Code cleanup
+  * Python: Add VFS.fromEmpty utility
+  * Python: Add aliases for some registers
+  * GBA Audio: Fix serializing/deserializing flags
+  * GB Audio: Fix deserializing while audio was disabled (fixes #1305)
+  * GB Audio: Fix deserializing while audio was disabled (fixes #1305)
+  * GBA Video: Don't draw sprites using unmapped VRAM in GL renderer (fixes #1865)
+  * GBA Video: Don't draw sprites using unmapped VRAM in GL renderer (fixes #1865)
+  * Qt: Fix Battle Chip view not displaying chips on some DPI settings
+  * Qt: Fix Battle Chip view not displaying chips on some DPI settings
+  * GBA DMA: Fix ordering and timing of overlapping DMAs
+  * GBA DMA: Only update DMA scheduling if needed
+  * GBA Audio: Revamp FIFO emulation (fixes #356, fixes #875, fixes #1847)
+  * Vita: Wait, what do you mean sceKernelFindMemBlockByAddr has been in vitasdk for 4.5 years?
+  * GBA Audio: Fix volume/mute in XQ audio (fixes #1864)
+  * GBA Audio: Fix stereo in XQ audio
+  * Vita: Remove disused variable
+  * Vita: Fix memory leaking
+  * VFS: Change semantics of VFile.sync on mapped files (fixes #1730)
+  * GBA Audio: Fix volume/mute in XQ audio (fixes #1864)
+  * GBA Audio: Fix stereo in XQ audio
+  * Vita: Slightly safer perf-start
+  * CMake: Add perf to the list of all Vita components
+  * Vita: Fix dependencies
+  * Vita: Add supporting framework for mgba-perf
+  * Vita: Port mgba-perf
+  * Vita: Fix memory leaking
+  * Vita: Remove disused variable
+  * Vita: Port socket shim
+  * mGUI: Add status indicators for fast-forward and mute
+  * 3DS: Use an actual texture format
+  * mGUI: Add mute (closes #1494)
+  * GBA: Fix Sharkport size check
+  * Res: Add icons for fast forward and mute
+  * Wii: Fix ppc32 endianness regression
+  * Wii: Generate tpls at compile time
+  * Qt: Update German GUI translation
+  * Doc: Update German README file
+  * Qt: Update localization files from sources
+  * GBA: Fix endianness issues in renderer proxy
+  * Core: Fix memory leak loading ELF files
+  * GBA Core: Fix memory leak when loading symbols
+  * GB Core: Separate out dir and symbol table cleanup
+  * GBA Hardware: Fix GB Player detection on big endian platforms
+  * Util: ppc64 byteswap access fixes
+  * GBA: Disable more checks when loading GS save with checks disabled (fixes #1851)
+  * Util: Dynamically grow hash tables as needed (fixes #1859)
+  * Util: Ensure key sizes match before comparing
+  * Core: Fix memory leak loading ELF files
+  * GBA Core: Fix memory leak when loading symbols
+  * GB Core: Separate out dir and symbol table cleanup
+  * Util: Table cleanup, add HashTableEnumerateBinary
+  * Qt: Memory viewer now supports editing decimal values directly (closes #1705)
+  * CHANGES: Update for new mappers, etc
+  * GB MBC: Add Hitek and BBD mappers
+  * GBA Hardware: Fix GB Player detection on big endian platforms
+  * Util: ppc64 byteswap access fixes
+  * Test: Use consistent timezone for tests
+  * GBA: Fix endianness issues in renderer proxy
+  * mVL: Endianness fixes
+  * Test: Fix big endian
+  * Test: Better frame counts
+  * Test: Fix normalized diff not getting written
+  * AppVeyor: vcpkg is bad
+  * Qt: Fix a handful of warnings
+  * Some small fixes. (#1854)
+  * GBA BIOS: Fix user stack usage regression
+  * Test: Fix rebaselining tests with too few frames
+  *  Qt: General fixes to Chinese translations
+  * Update colour correction parameters
+  * Windows: Fix build
+  * GBA: Disable more checks when loading GS save with checks disabled (fixes #1851)
+  * VFS: Sync on unmap
+  * Test: Flush output stream on string flush
+  * Debugger: parse memory operations correctly
+  * ARM: Expose ARMSelectBank API
+  * Stack traces: fix tracing of indirect jumps and interrupt handlers
+  * CHANGES: Update
+  * GB Audio: Fix deserializing audio channels 2 and 3
+  * GBA Audio: Fix deserializing SOUNDCNT_L
+  * GB Audio: Fix initial sweep state
+  * GB Serialize: Fix audio channel 2 and 3 loading
+  * GBA Serialize: Fix using the wrong storage for biosStall
+  * GBA SIO: Fix deseralizing SIO registers
+  * GB Audio: Fix serializing sweep time
+  * GBA Audio: Fix deserializing SOUNDCNT_L
+  * GB Audio: Fix initial sweep state
+  * GB Serialize: Fix some deserialization bugs
+  * Core: Add mTimingScheduleAbsolute
+  * mGUI: Fix crash when runner->running is null
+  * Core: Fix reported ROM size when a fixed buffer size is used
+  * Core: Fix reported ROM size when a fixed buffer size is used
+  * mGUI: Fix crash when runner->running is null
+  * mGUI: Show battery percentage
+  * GBA Hardware: Add a little more RTC logging
+  * GBA Hardware: Add a little RTC logging
+  * GBA Video: Invalidate map cache when modifying BGCNT (fixes #1846)
+  * mVL: Fix injecting accidentally draining non-injection buffer
+  * GBA Video: Invalidate map cache when modifying BGCNT (fixes #1846)
+  * mVL: Fix injecting accidentally draining non-injection buffer
+  * 3DS: Fix crash with libctru 2.0 when exiting
+  * 3DS: Fix crash with libctru 2.0 when exiting
+  * mGUI: Fix closing down a game if an exit is signalled
+  * mGUI: Fix closing down a game if an exit is signalled
+  * CMake: Fix build with libzip 1.7.1
+  * CMake: Fix build with libzip 1.7.1
+  * Test: Fix build on Wii
+  * Wii: Support mgba-perf
+  * Wii: Add network socket support
+  * 3DS: Redo video sync to be more precise
+  * Qt: Add dummy English translation file (fixes #1469)
+  * VFS: Fix directory node listing on some filesystems
+  * 3DS: Redo video sync to be more precise
+  * GBA BIOS: Make HLE BIOS calls interruptable (fixes #1711, fixes #1823)
+  * Qt: Add dummy English translation file (fixes #1469)
+  * Test: Fix replaying baseline for non-GBA
+  * VFS: Fix directory node listing on some filesystems
+  * CMake: Wii has a perf build now
+  * Tools: Remove implicit -- from server command line
+  * Revert "OpenGL: Attempt to fix some build configurations (fixes #1839)"
+  * OpenGL: Attempt to fix some build configurations (fixes #1839)
+  * Qt: WebP is not APNG
+  * CHANGES: Update for 0.8.3
+  * ARM: Fix warnings
+  * Stack traces: fix flipped variables that cause a crash
+  * GBA SIO: Fix Normal mode being totally broken (fixes #1800)
+  * Vita: Clean this up properly
+  * Wii: Log in a way that Dolphin picks up
+  * CMake: 3DS/Wii tiny cleanup
+  * GBA Memory: Fix instability on Wii when using AGBPrint
+  * Test: Fix build on Wii
+  * Vita: Clean up merged commit
+  * GBA Video: Fix frameskip affecting timing
+  * README: Add missing Switch mention, update notes on macOS
+  * Qt: More warning fixes
+  * Test: Fix CInemaTest.directory size
+  * Qt: Add sugar for addGameAction on a CoreController call
+  * Qt: Begin mopping up warnings
+  * 3DS: Fix garbage on borders of scaled screens
+  * 3DS: Use "wide mode" where applicable for slightly better filtering
+  * 3DS: Make pre-init garbage slightly less bad
+  * 3DS: Migrate to libctru CondVar
+  * 3DS: Migrate to userAppInit
+  * Debugger: Fix Python build
+  * Debugger: add support for simple command scripts
+  * Debugger: look up symbols in stack traces
+  * Debugger: reverse symbol lookup
+  * Util: support non-string keys in hash tables
+  * GB/GBA Core: Simplify renderer setup
+  * GB/GBA Video: Move dummy renderer to core
+  * GB Core: Fix some MINIMAL_CORE differences
+  * 3DS: Fix compilation flags
+  * Qt: Attempt to fix DisplayGL crash
+  * Qt: Display memory cleanup
+  * Stack traces: add detection for other calling conventions and stack manipulation
+  * Test: Add wildcard matching
+  * Test: Avoid tentatively encoding videos
+  * Test: Add xbaseline writing
+  * Test: Add way to detect if an xfail test output changes
+  * Test: Refactor out image comparison
+  * Test: Fix out-of-date CInema usage info
+  * Test: Switch baselines from png/mkv to zmbv/avi
+  * Test: Add rudimentary input playback
+  * Test: Allow logging to mark messages as repeating
+  * Test: Add option to only rebaseline missing tests
+  * Test: Clamp job count
+  * Test: End test early if a fatal error occurs
+  * Test: Flush logs if they get too full
+  * Test: Switch from using Python for CInema to C impl
+  * CMake: Fix ctest not detecting tests at root
+  * GBA: Allow pausing event loop while CPU is blocked
+  * GB: Allow pausing event loop while CPU is blocked
+  * Test: Threaded string builder on *nix
+  * Test: Initial threading work in CInema
+  * Util: Refactor TLS out of platform-specific APIs
+  * Util: Reset vector size on deinit
+  * Core: Fix thread names that were too long
+  * ARM: Fix decoder detection of branches with ALU and LDR instrctions
+  * Test: Fix testToPath breakage
+  * GBA Video: Fix some undefined behavior in shifts
+  * Wii: Fix pixelated filtering on interframe blending (fixes #1830)
+  * Third-Party: Disable some warnings in discord-rpc
+  * CMake: Minor cleanup
+  * CMake: Disable MSVC type narrowing warning
+  * CHANGES: update
+  * Stack trace: fix release build failure
+  * Stack trace: coding style cleanup
+  * Stack trace: use popcount function instead of inline loop
+  * Stack trace: remove debugging code
+  * Stack trace: trace mode CLI control
+  * Stack trace: finish implementation and debug
+  * Stack trace: WIP backtrace implementation
+  * Stack trace: add tracing to ARM debugger
+  * Stack trace: implement data structures
+  * ARM/SM83: Wrap register files in structs
+  * Japanese translation by JaKid20
+  * GBA Savedata: Fix potential corruption when loading a 1Mbit flash save
+  * ARM: Fix regression setting C flag in SBC (fixes #1827)
+  * SM83: Simplify register pair access on big endian
+  * SM83: Fix flags on little endian PowerPC
+  * FFmpeg: Add ZMBV specialization
+  * Test: Load dummy save in CInema
+  * FFmpeg: Fix decoder dimensions changing
+  * Test: Move much of the logging to stdout
+  * Test: Fix writing diffs
+  * Test: Fix non-SGB video tests
+  * FFmpeg: Minor lossless encoding improvements
+  * Test: CInema supports videos now
+  * FFmpeg: Get frame decoding working
+  * FFmpeg: Decoder skeleton
+  * Test: I added strlcpy for a reason
+  * GB: Fix OAM in GB mVL playback
+  * FFmpeg: Add WebP recording
+  * FFmpeg: Backport and improve some API from medusa
+  * Util: Factor out gcd code
+  * Util: Disable mmap allocator when running under address sanitizer
+  * Test: Fix crash if directory doesn't resolve
+  * GBA: Fix leak if attempting to load BIOS multiple times
+  * Vita: Fix flickering when using frameskip
+  * GBA: Reshuffle Wii U VC opcode log
+  * GB: Export GBInputInfo
+  * Test: Add missing newline
+  * Test: Implement logger in CInema
+  * Test: Move much of the logging to stdout
+  * Test: Set deterministic RTC
+  * Test: Allow root CInema config
+  * Test: Add back rebaselining
+  * Test: Add CInema diff writes
+  * Test: Refactor out PNG loading
+  * Test: CInema stats, test skipping, warning fixes
+  * Test: Actually add CInema core config loading
+  * Test: Add initial configuration bits to CInema
+  * CInema: Remove grayscale PNGs
+  * mVL: Add parameter for closing the video log backing
+  * Test: Initial CInema testing
+  * CInema: Clean up size issues
+  * Test: Start porting CInema to C
+  * Core: Add mVideoLogIsCompatible function
+  * Qt: Update Simplified Chinese GUI translation (#1819)
+  * GB Video: Fix state loading
+  * FFmpeg: Fix encoding of time base
+  * GBA Video: Fix color of disabled screen
+  * GB Video: Always initialize palette
+  * ARM: Fix edge case with Thumb SBC flags (fixes #1818)
+  * CMake: Fix build with libzip 1.7
+  * All: Correct more format strings on Windows (fixes #1817)
+  * FFmpeg: Fix some small memory leaks
+  * GB MBC: Support for unlicensed Pokemon Jade/Diamond Game Boy mapper
+  * Qt: Add missing option for Wisdom Tree in overrides list
+  * Qt: Disable deprecation warnings on newer Qts
+  * GBA Video: Move some macros out of a header
+  * All: Use calloc instead of malloc in several places
+  * Util: Start cleaning up some bounded string copies
+  * Core: Add missing BUILD_GLES3 flag
+  * Third-Party: Update inih
+  * Qt: Fix logging config section width
+  * AppVeyor: Slightly better cleanup
+  * AppVeyor: Add test
+  * FFmpeg: Use range coder for FFV1 to reduce output size
+  * GBA Memory: Stall on VRAM access in mode 2 (fixes #190)
+  * README: Remove ImageMagick mention
+  * Windows: Fix installer build
+  * README: Preliminary MSVC build instructions
+  * gitignore: Update for MSVC build products
+  * Windows: Get CMake barely working with vcpkg badness
+  * Qt: Missed a few
+  * Qt: Don't use non-C++14 designated initializers
+  * GBA Video: Fix invalid read in mode 4 mosaic
+  * Util: Fix crash if PNG header fails to write
+  * CHANGES: Update
+  * ARM: Fix LDM^ {pc} differences (fixes #1698)
+  * ARM: Fix LDM^ writeback to user-mode register
+  * Qt: The `mutable` keyword exists for a reason
+  * Core: Const-correctness
+  * Util: Add PNGRead safety checks
+  * Fix Italian real time clock translation (#1809)
+  * Qt: Fix a race condition in the frame inspector
+  * Qt: Fix file handle leak on opening an invalid ROM
+  * GBA BIOS: De-magic constant RegisterRamReset
+  * GBA BIOS: Fix reloading video registers after reset (fixes #1808)
+  * Core: Fix warning in DISABLE_THREADING build
+  * CMake: Fix packaging of test components
+  * CMake: Fix cpack
+  * CMake: Fix regex on empty libzip version
+  * Core: Fix mCoreIsCompatible on null vf
+  * GBA Memory: De-inline GBALoadBad
+  * CMake: Move test lists into test directory
+  * Qt: Setting to show filename in title bar instead of ROM name. (#1807)
+  * GBA: Fix msvc compilation
+  * All: Correct format strings for some numbers on Windows (fixes #1794)
+  * Qt: Add per-page scrolling to memory view (fixes #1795)
+  * Core: Warn when savedata fails to load from state
+  * GBA Savedata: Fix extracting save when not yet configured in-game
+  * GB Core: Fix extracting SRAM when none is present
+  * GB Memory: Fix OAM DMA from top 8 kB
+  * GB: Partially fix timing for skipped BIOS
+  * GB MBC: Fix MBC2 bit selection
+  * GB MBC: Fix MBC1 RAM enable bit selection
+  * GB MBC: Fix MBC1 mode changing behavior
+  * CInema: Update mooneye-gb tests
+  * CInema: Migrate to using ini manifests
+  * CHANGES: Update for 0.8.2
+  * Revert "GBA Video: Add sprite cycle counting to GL (fixes #1635)"
+  * GBA Video: Fix sprite/backdrop blending regression
+  * GBA Video: Add sprite cycle counting to GL (fixes #1635)
+  * GBA Video: Simplify sprite cycle counting (fixes #1279)
+  * ARM: Fix disassembling of several S-type instructions (fixes mgba.io/i/1778)
+  * GBA: Add timing fudge factor for running a frame
+  * GBA: Break infinite loop for 0-frame mVLs (fixes #1723)
+  * Qt: Show a warning when save file can't be opened
+  * GB: Fix HALT bug
+  * Qt: Fix unmapping zipped ROM (fixes #1777)
+  * SM83: Emulate HALT bug
+  * 3DS: Fix framelimiter on newer citro3d (fixes #1771)
+  * 3DS: Fix warning
+  * Qt: Fix static compilation in MinGW (fixes #1769)
+  * 3DS: Clean up legacy initialization (fixes #1768)
+  * GBA Serialize: Only flunk BIOS check if official BIOS was expected
+  * Debugger: Keep track of global cycle count
+  * GBA: Fix timing advancing too quickly in rare cases
+  * CMake: Fix rebuilding dkp ports
+  * 3DS: Fix perf build
+  * README: Update Ubuntu Docker images
+  * GBA Video: Fix double-size OBJ wrapping in GL renderer (fixes #1712)
+  * Core: Fix version header
+  * CMake: Fix C standard selection
+  * GBA Video: Add missing parts of 256-color mode 0 mosaic (fixes #1701)
+  * ARM Debugger: Clear low bit on breakpoint addresses (fixes #1764)
+  * All: Improve export headers (fixes #1738)
+  * GBA Video: Fix disabling OBJWIN in GL renderer (fixes #1759)
+  * GB IO: Add some register names
+  * ARM: Fix timing on Thumb shift instructions
+  * GBA BIOS: Reset renderer when RegisterRamReset called (fixes #1756)
+  * CMake: Always use devkitPro toolchain when applicable (fixes #1755)
+  * GBA Video: Fix mosaic objects drawing past the end (fixes #1702)
+  * GB MBC: Support 4MB MBC30 ROMs (fixes #1713)
+  * GB Video: Fix BGPS value after skipping BIOS (fixes #1717)
+  * GB Video: Fix up timing after skipping BIOS
+  * GB Video: Fix state after skipping BIOS (fixes #1715 and fixes #1716)
+  * GB: Fix GBC game registers after skipping BIOS
+  * 3DS: Fix build with ctrulib 1.7.0
+  * GBA: Add missing RTC overrides for Legendz games
+  * Update Simp. Chinese translation and entry IDs. (#1741)
+  * Use consistent conditionals for big endian detection (not all PowerPC hosts are big-endian!)
+  * Memory Search: on return press in value field execute search (#1707)
+  * Qt: Update French translations (#1703)
+  * Qt: Update Italian GUI translation
+  * Win32: Fix copyright year of the Win32 installer
+  * GB Video: Fix some cases where SGB border doesn't draw to mutli-buffers
+  * Core: Add portable.ini check for Haiku
+  * Qt: Fix SDL 1.2 build
+  * Core: Add support for Haiku's config directory
+  * Qt: Add template for Dutch Qt GUI translation
+  * Qt: Fix OpenGL 2.1 support (fixes #1678)
+  * All: Fix your libc, Windows
+  * GBA: More warning fixes
+  * All: Fix some warnings
+  * GBA IO: Fix regression breaking keyCallbacks
+  * GBA Timers: Fix deserializing count-up timers
+  * GBA SIO: Fix copying Normal mode transfer values
+  * GBA SIO: Fix double-unloading active driver
+  * GBA SIO: Fix Multiplayer busy bit
+  * GBA Video: Fix IO cache size
+  * Qt: Fix build on Qt < 5.10
+  * Qt: Fix build on Qt < 5.10
+  * GBA e-Reader: Increase scanning stability more
+  * GBA e-Reader: Bitmap scanning
+  * GBA e-Reader: Batch scanning
+  * GBA e-Reader: Use LED duration register
+  * Qt: Filter e-Reader card formats
+  * GBA e-Reader: .bin scanning
+  * GBA e-Reader: Split out into separate file
+  * Qt: Set icon for Discord Rich Presence
+  * Qt: Defer texture updates until frame is drawn (fixes #1590)
+  * Qt: Fix memory leak in library
+  * Tools: Initial support for .bin in make-dotcode.py
+  * VFS: Fix memory leak if attempt to open a 7z fails
+  * GBA Hardware: Increase e-Reader scanning stability
+  * GBA Hardware: Fix e-Reader crash on reset (fixes #1675)
+  * GBA: Reject incorrectly sized BIOSes
+  * Tools: Add prototype dotcode generator
+  * Qt: Disable Replace ROM option when no game loaded
+  * GBA Hardware: Small e-Reader cleanup
+  * README: Update
+  * GBA Hardware: e-Reader calibration initialization
+  * GBA Hardware: First working e-Reader scanning
+  * GBA Hardware: Scanning now fails successfully
+  * GBA Hardware: Remove leftover code
+  * GBA Hardware: Fix-up card scanning
+  * GBA Hardware: I know this e-Reader code is wrong
+  * GBA Hardware: e-Reader serial now works
+  * GBA Hardware: Still-broken implementation of e-Reader serial protocol
+  * GBA Hardware: Add skeleton for e-Reader support
+  * GBA BIOS: Fix register clobbering in HLE Halt
+  * Core: Fix crash modifying hash table entry (fixes #1673)
+  * GB: Add input description file
+  * Qt: Add transformation matrix info to sprite view
+  * Qt: Add hex index to palette view
+  * Core: Fix ELF loading regression (fixes #1669)
+  * CHANGES: Update for 0.8.1
+  * SDL: Refresh stale pointers after adding a joystick (fixes #1622)
+  * GBA DMA: Fix invalid audio DMA parameters
+  * Qt: Fix invalid names for modifier keys (fixes #525)
+  * Qt: More GIF view UX fixes
+  * Qt: Fix pausing Qt Multimedia audio (fixes #1643)
+  * GBA Video: Fix fallthrough in deserializing
+  * SDL: Fix Windows build on static 2.0.10
+  * GBA BIOS: Improve HLE BIOS timing
+  * GBA BIOS: Implement dummy sound driver calls
+  * SDL: Use DirectSound audio driver by default on Windows
+  * Qt: Minor GIF view UX improvement
+  * GBA: Automatically skip BIOS for multiboot ROMs
+  * GBA: Fix multiboot entry point while skipping BIOS
+  * Debugger: Don't skip undefined instructions when debugger attached
+  * GBA BIOS: Fix undefined instruction HLE behavior
+  * Qt: GIF view consistency
+  * Qt: Fix non-GB build (fixes #1664)
+  * FFmpeg: Add APNG recording and looping support
+  * Wii: Support mgba-perf
+  * Wii: Add network socket support
+  * VFS: Fix unmapping order on Win32
+  * CMake: Fix static build
+  * CMake: Include namelink in dev package
+  * VFS: Fix handle leak when double-mapping (fixes #1659)
+  * FFmpeg: Add more presets
+  * FFmpeg: Disallow recording video with no audio nor video
+  * FFmpeg: Fix crash when -strict -2 is needed for vcodec or container
+  * Qt: Fix GIF view not allowing manual filename entry
+  * Qt: Fix window title not updating after shutting down game
+  * Core: Fix integer overflow in ELF loading
+  * Debugger: Fix build on MINIMAL_CORE=2
+  * Travis: Fix osx deps
+  * GB Serialize: Fix timing bug loading channel 4 timing
+  * Update and correct Chinese (Simpilfied) translation (#1658)
+  * Core: Ensure ELF regions can be written before trying
+  * Qt: Fix non-SDL build (fixes #1656)
+  * Switch: Make OpenGL scale adjustable while running
+  * Util: Fix crash reading invalid ELFs
+  * Core: Fix race condition initializing thread proxy
+  * Qt: Make renderer able to be changed while running
+  * Qt: Fix extraneous dialog (fixes #1654)
+  * GBA Video: Fix OpenGL sprite flag priority
+  * GBA Video: Remove redundant flags layers
+  * GBA Video: Fix backdrop blending on lines without sprites (fixes #1647)
+  * GBA: Rip out old rr code
+  * Qt: Fix toggled actions on gamepads (fixes #1650)
+  * Qt: Fix crash unloading shaders
+  * Revert "Revert "GBA Memory: Improve gamepak prefetch timing""
+  * GBA Video: Fix Hblank timing
+  * GBA Video: Latch scanline at end of Hblank (fixes #1319)
+  * Qt: Fix missing OSD messages
+  * GBA Video: Don't clear flag buffers since they always get overwritten when used
+  * Qt: Fix color selection in asset view (fixes #1648)
+  * Qt: Add template for Russian Qt GUI translation
+  * Qt: Fix strings for GameShark save menu options
+  * Qt: Force OpenGL paint engine creation thread (fixes #1642)
+  * GBA Video: Fix OAM not invalidating after reset (fixes #1630)
+  * GBA Serialize: Fix audio DMA timing deserialization
+  * GBA Serialize: Fix audio serialization for desynced FIFOs
+  * GBA DMA: Linger last DMA on bus (fixes mgba.io/i/301, fixes mgba.io/i/1320)
+  * GBA Serialize: Fix serializing DMA transfer register
+  * ARM: Fix STR storing PC after address calculation
+  * ARM: Fix ALU reading PC after shifting
+  * GBA Memory: Misaligned SRAM writes are ignored
+  * Qt: Fix race condition with proxied video events
+  * Qt: Only dynamically reset video scale if a game is running
+  * CMake: Update version number
+
+-------------------------------------------------------------------
 Sat Aug 08 09:19:53 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200805:
