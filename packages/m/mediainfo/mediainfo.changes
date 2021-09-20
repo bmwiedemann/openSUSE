@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 17 13:58:11 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version version 21.09
+  New features:
+  * Graph view for 3D audio streams (thanks to graphviz)
+  * ADM: full featured support (programmes, content, objects,
+    pack formats...)
+  * ADM: in WAV (axml, bxml), MXF
+  * S-ADM in AES3: support of Levels A1 and AX1
+  * MOV/MP4: support of Dolby Vision Metadata XML
+  * MXF: detection of IAB
+  * SMPTE ST 337 (AES3): support of subframe mode
+  * HEVC: CEA-608/708 caption support
+  * MP4/QuickTime: Android slow motion real frame rate
+  * JSON output: add creatingLibrary field
+  Fixed bugs:
+  * MPEG-4: read too much data with some predecessor definitions
+  * EBUCore: fix of fields order and types
+
+-------------------------------------------------------------------
 Fri Mar 26 18:24:54 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 21.03
