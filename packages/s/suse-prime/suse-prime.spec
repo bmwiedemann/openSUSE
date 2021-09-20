@@ -24,7 +24,6 @@ License:        SUSE-Public-Domain
 Group:          System/X11/Utilities
 URL:            https://github.com/openSUSE/SUSEPrime
 Source0:        https://github.com/openSUSE/SUSEPrime/archive/%{version}.tar.gz#/SUSEPrime-%{version}.tar.gz
-Recommends:     bbswitch
 Recommends:     nvidia_driver
 Supplements:    modalias(nvidia_driver:pci:v00008086d*sv*sd*bc03sc*i*)
 Conflicts:      suse-prime-alt

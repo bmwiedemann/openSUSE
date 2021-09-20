@@ -558,4 +558,12 @@ Latest changes:
   releases than Tumbleweed</comment>
     <requestid>919292</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>f4b98e37c7c855f5369df0ed4f457853</srcmd5>
+    <version>0.8.2</version>
+    <time>1632173580</time>
+    <user>dimstar_suse</user>
+    <comment>- no longer recommend bbswitch (github issue#70)</comment>
+    <requestid>920110</requestid>
+  </revision>
 </revisionlist>

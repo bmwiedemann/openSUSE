@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 19 08:25:46 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- no longer recommend bbswitch (github issue#70) 
+
+-------------------------------------------------------------------
+Thu Sep 16 09:15:53 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- SUSEPrime-0.8.2 covered github issue #58 (no code changes)
+
+-------------------------------------------------------------------
 Thu Sep 16 01:43:03 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - use appropriate folders for dracut/modprobe config files on older
