@@ -1,7 +1,7 @@
 #
 # spec file for package dxflib
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 # Patch1 needs update on version change
-%define lname	libdxflib-3_17_0-1
+%define lname	libdxflib-3_26_4-1
 Name:           dxflib
-Version:        3.17.0
+Version:        3.26.4
 Release:        0
 Summary:        Parser library for the Drawing Exchange Format (DXF)
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Url:            https://qcad.org/en/dxflib-downloads
+#Git-Clone:	https://github.com/qcad/qcad
+URL:            https://qcad.org/en/dxflib-downloads
 Source:         https://qcad.org/archives/dxflib/%name-%version-src.tar.gz
 Patch1:         dxflib-versioning.diff
 BuildRequires:  gcc-c++
@@ -54,12 +55,11 @@ This package contains the development library symlink and header
 files.
 
 %prep
-%setup -qn %name-%version-src
-%patch -P 1 -p1
+%autosetup -n %name-%version-src -p1
 
 %build
 %qmake5 %name.pro
-make %{?_smp_mflags}
+%make_build
 
 %install
 # `make install` does not do anything.
@@ -70,7 +70,7 @@ cp -a libdxflib*.so.* "$b/%_libdir/"
 ln -Tsfv "libdxflib-%version.so.1" "$b/%_libdir/libdxflib.so"
 
 %check
-make check %{?_smp_mflags}
+%make_build check
 
 %post   -n %lname -p /sbin/ldconfig
 %postun -n %lname -p /sbin/ldconfig

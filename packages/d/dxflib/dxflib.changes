@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 19 08:36:44 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.26.4
+  * fix LWPOLYLINE without Z values
+  * fix DL_POLYLINE3D flag definition
+  * add dimscale support for leaders
+  * add support for flipped dimension arrows to dxflib
+  * check vertexIndex which might be -1 for broken DXF
+    [boo#1190345, CVE-2021-21897]
+
+-------------------------------------------------------------------
 Sun Apr 15 09:16:11 UTC 2018 - aloisio@gmx.com
 
 - Update to version 3.17.0 (no changelog supplied)
