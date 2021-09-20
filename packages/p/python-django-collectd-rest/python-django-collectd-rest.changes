@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 20 11:50:49 UTC 2021 - pgajdos@suse.com
+
+- %check: do not use setup.py test
+
+-------------------------------------------------------------------
 Sat Mar  7 07:50:02 UTC 2020 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Version 0.2.1.1

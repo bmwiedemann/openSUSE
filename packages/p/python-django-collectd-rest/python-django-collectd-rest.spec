@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-collectd-rest
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -57,7 +57,9 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-%python_exec setup.py test
+mv collectd_rest{,_hide}
+%{python_expand export PYTHONPATH=%{buildroot}%{$python_sitearch}
+$python runtests.py}
 
 %files %{python_files}
 %license LICENSE
