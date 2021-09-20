@@ -1,0 +1,77 @@
+From b9d914bb3b5b0ecf8568adf1b4610d4da2cde244 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 15 Sep 2021 10:34:08 +0200
+Subject: [PATCH] Make filewatchunittest much quicker
+
+Use QSignalSpy::wait to avoid waiting needlessly.
+Reduce time to wait for (expected and unexpected) signals to 2s.
+---
+ .../filewatchunittest/filewatchunittest.cpp   | 19 +++++++++----------
+ 1 file changed, 9 insertions(+), 10 deletions(-)
+
+diff --git a/unittest/filewatchunittest/filewatchunittest.cpp b/unittest/filewatchunittest/filewatchunittest.cpp
+index d1bc117c..63baa655 100644
+--- a/unittest/filewatchunittest/filewatchunittest.cpp
++++ b/unittest/filewatchunittest/filewatchunittest.cpp
+@@ -40,7 +40,7 @@ void FileWatchUnitTest::cleanupTestCase()
+ 
+ void FileWatchUnitTest::filewatchTest()
+ {
+-    QWARN("Unittest will take about 1 minute. Please wait.");
++    QWARN("Unittest will take about 10 seconds. Please wait.");
+ 
+     QCA::FileWatch watcher;
+     QCOMPARE(watcher.fileName(), QString());
+@@ -55,41 +55,40 @@ void FileWatchUnitTest::filewatchTest()
+ 
+     watcher.setFileName(tempFile->fileName());
+     QCOMPARE(watcher.fileName(), tempFile->fileName());
+-    QTest::qWait(7000);
++    QVERIFY(!spy.wait(2000));
+     QCOMPARE(spy.count(), 0);
+     tempFile->close();
+-    QTest::qWait(7000);
++    QVERIFY(!spy.wait(2000));
+     QCOMPARE(spy.count(), 0);
+ 
+     tempFile->open();
+     tempFile->write("foo");
+     tempFile->flush();
+-    QTest::qWait(7000);
++    QVERIFY(spy.wait(2000));
+     QCOMPARE(spy.count(), 1);
+ 
+     tempFile->close();
+-    QTest::qWait(7000);
+-
++    QVERIFY(!spy.wait(2000));
+     QCOMPARE(spy.count(), 1);
+ 
+     tempFile->open();
+     tempFile->write("foo");
+     tempFile->flush();
+-    QTest::qWait(7000);
++    QVERIFY(spy.wait(2000));
+     QCOMPARE(spy.count(), 2);
+ 
+     tempFile->write("bar");
+     tempFile->flush();
+-    QTest::qWait(7000);
++    QVERIFY(spy.wait(2000));
+     QCOMPARE(spy.count(), 3);
+ 
+     tempFile->close();
+-    QTest::qWait(7000);
++    QVERIFY(!spy.wait(2000));
+ 
+     QCOMPARE(spy.count(), 3);
+ 
+     delete tempFile;
+-    QTest::qWait(7000);
++    QVERIFY(spy.wait(2000));
+     QCOMPARE(spy.count(), 4);
+ }
+ 
+-- 
+2.33.0
+

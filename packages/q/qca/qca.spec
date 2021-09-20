@@ -38,7 +38,7 @@ ExclusiveArch:  do_not_build
 %define _soversion 2
 %bcond_without pkcs11
 Name:           qca%{pkgname_suffix}
-Version:        2.3.3
+Version:        2.3.4
 Release:        0
 Summary:        Qt Cryptographic Architecture 2
 License:        LGPL-2.1-or-later
@@ -48,6 +48,8 @@ Source1:        https://download.kde.org/stable/qca/%{version}/qca-%{version}.ta
 Source2:        qca.keyring
 # PATCH-FIX-OPENSUSE
 Patch0:         qca-2.3.0-fixDSA.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Make-filewatchunittest-much-quicker.patch
 BuildRequires:  ca-certificates
 BuildRequires:  cmake
 BuildRequires:  gpg2
@@ -61,6 +63,7 @@ BuildRequires:  update-desktop-files
 %if 0%{?qt5}
 BuildRequires:  cmake(Qt5Core) >= %{qt_min_version}
 BuildRequires:  cmake(Qt5Network) >= %{qt_min_version}
+BuildRequires:  cmake(Qt5Test) >= %{qt_min_version}
 %endif
 %if 0%{?qt6}
 BuildRequires:  cmake(Qt6Core) >= %{qt_min_version}
@@ -136,15 +139,17 @@ SASL support.
 
 %prep
 %autosetup -p1 -n qca-%{version}
+# Don't build examples
+echo > examples/CMakeLists.txt
 
 %build
 %if 0%{?qt5}
 %cmake \
 %else
 %cmake_qt6 \
-    -DQT6=ON \
+  -DQT6=ON \
 %endif
-  -DBUILD_TESTS=OFF \
+  -DBUILD_TESTS=ON \
   -DQCA_INSTALL_IN_QT_PREFIX=ON \
   -DQCA_BINARY_INSTALL_DIR:PATH="%{_bindir}" \
   -DQCA_MAN_INSTALL_DIR:PATH="%{_mandir}" \
@@ -163,10 +168,8 @@ SASL support.
 %qt6_install
 %endif
 
-# Only Qt5 creates pkgconfig files
-%if !0%{?qt5}
-rm %{buildroot}%{_libdir}/pkgconfig/qca2-%{flavor}.pc
-%endif
+%check
+%ctest
 
 %post -n libqca-%{flavor}-%{_soversion} -p /sbin/ldconfig
 %postun -n libqca-%{flavor}-%{_soversion} -p /sbin/ldconfig

@@ -25,4 +25,14 @@
 - Recommend optional plugins from the library</comment>
     <requestid>900717</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0ff51a8888a2bd9528e8a51e362e59bc</srcmd5>
+    <version>2.3.4</version>
+    <time>1632173528</time>
+    <user>dimstar_suse</user>
+    <comment>- Run ctest in %check
+- Add patch to make %check much quicker:
+  * 0001-Make-filewatchunittest-much-quicker.patch (forwarded request 919589 from Vogtinator)</comment>
+    <requestid>919654</requestid>
+  </revision>
 </revisionlist>
