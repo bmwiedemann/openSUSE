@@ -1,0 +1,89 @@
+-------------------------------------------------------------------
+Fri Sep 10 03:06:19 UTC 2021 - William Brown <william.brown@suse.com>
+
+	Version 1.55.0 (2021-09-09)
+	============================
+
+	Language
+	--------
+	- [You can now write open "from" range patterns (`X..`), which will start at `X` and
+	  will end at the maximum value of the integer.][83918]
+	- [You can now explicitly import the prelude of different editions
+	  through `std::prelude` (e.g. `use std::prelude::rust_2021::*;`).][86294]
+
+	Compiler
+	--------
+	- [Added tier 3\* support for `powerpc64le-unknown-freebsd`.][83572]
+
+	\* Refer to Rust's [platform support page][platform-support-doc] for more
+	   information on Rust's tiered platform support.
+
+	Libraries
+	---------
+
+	- [Updated std's float parsing to use the Eisel-Lemire algorithm.][86761]
+	  These improvements should in general provide faster string parsing of floats,
+	  no longer reject certain valid floating point values, and reduce
+	  the produced code size for non-stripped artifacts.
+	- [`string::Drain` now implements `AsRef<str>` and `AsRef<[u8]>`.][86858]
+
+	Stabilised APIs
+	---------------
+
+	- [`Bound::cloned`]
+	- [`Drain::as_str`]
+	- [`IntoInnerError::into_error`]
+	- [`IntoInnerError::into_parts`]
+	- [`MaybeUninit::assume_init_mut`]
+	- [`MaybeUninit::assume_init_ref`]
+	- [`MaybeUninit::write`]
+	- [`array::map`]
+	- [`ops::ControlFlow`]
+	- [`x86::_bittest`]
+	- [`x86::_bittestandcomplement`]
+	- [`x86::_bittestandreset`]
+	- [`x86::_bittestandset`]
+	- [`x86_64::_bittest64`]
+	- [`x86_64::_bittestandcomplement64`]
+	- [`x86_64::_bittestandreset64`]
+	- [`x86_64::_bittestandset64`]
+
+	The following previously stable functions are now `const`.
+
+	- [`str::from_utf8_unchecked`]
+
+
+	Cargo
+	-----
+	- [Cargo will now deduplicate compiler diagnostics to the terminal when invoking
+	  rustc in parallel such as when using `cargo test`.][cargo/9675]
+	- [The package definition in `cargo metadata` now includes the `"default_run"`
+	  field from the manifest.][cargo/9550]
+	- [Added `cargo d` as an alias for `cargo doc`.][cargo/9680]
+	- [Added `{lib}` as formatting option for `cargo tree` to print the `"lib_name"`
+	  of packages.][cargo/9663]
+
+	Rustdoc
+	-------
+	- [Added "Go to item on exact match" search option.][85876]
+	- [The "Implementors" section on traits no longer shows redundant
+	  method definitions.][85970]
+	- [Trait implementations are toggled open by default.][86260] This should make the
+	  implementations more searchable by tools like `CTRL+F` in your browser.
+	- [Intra-doc links should now correctly resolve associated items (e.g. methods)
+	  through type aliases.][86334]
+	- [Traits which are marked with `#[doc(hidden)]` will no longer appear in the
+	  "Trait Implementations" section.][86513]
+
+
+	Compatibility Notes
+	-------------------
+	- [std functions that return an `io::Error` will no longer use the
+	  `ErrorKind::Other` variant.][85746] This is to better reflect that these
+	  kinds of errors could be categorised [into newer more specific `ErrorKind`
+	  variants][79965], and that they do not represent a user error.
+	- [Using environment variable names with `process::Command` on Windows now
+	  behaves as expected.][85270] Previously using envionment variables with
+	  `Command` would cause them to be ASCII-uppercased.
+	- [Rustdoc will now warn on using rustdoc lints that aren't prefixed
+	  with `rustdoc::`][86849]
