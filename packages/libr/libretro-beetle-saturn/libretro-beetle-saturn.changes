@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:08:08 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210817:
+  * Revert "Update core options"
+  * Update core options
+  * Implement core option categories
+  * Add hack to fix hang at end of disc 1 of Grandia
+  * Prevent hang when launching Blast Wind
+  * Fix hang on boot when rewind or runahead is enabled
+  * remove unused Sort.c
+  * Remove unneeded files from zlib dependency
+  * Get rid of error_on_eos
+  * Buildfixes
+  * Cleanups
+  * Get rid of ErrnoHolder
+  * Backport VDP2 render thread 'busy wait' performance fix
+  * Put printing track layout of disc behind an DEBUG ifdef
+  * Fix LGTM warning
+  * Silence some LGTM warnings
+  * Update libchdr + fixes
+  * Fix memleak in FileStream
+  * Add ios-arm64/tvos-arm64
+  * Add files via upload
+  * Added separate options for shared internal and external vram
+  * (macOS) Fix cross-compilation for ARM64
+  * Add Mac x64 and arm64 targets
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add files via upload
+  * Update .gitlab-ci.yml
+  * Add files via upload
+  * Add files via upload
+  * added option to enable shared memory card support
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Updates
+  * [iOS][tvOS] Add -DHAVE_UNISTD_H flag to compile zlib
+  * Update Makefile.common
+  * Update Makefile.common
+  * Update Makefile.common
+  * Update
+  * Update libflac
+  * Update libchdr to upstream
+  * Fix CHD zlib/lzma alignment
+  * Don't need SimpleFIFO
+  * Update rthreads.c
+  * Update libretro-common
+  * Wrap around fseeko/ftello
+  * Add .gitlab-ci.yml
+  * (SimpleFIFO) Get rid of vector usage
+  * Comment out unnecessary conditionals that only did a printf
+  * Cleanups- cut down on stdio.h usage
+  * Cut down on stdio.h usage
+  * Get rid of some templates
+  * Cleanups
+  * Cleanup files that are not used
+  * Add missing header
+  * Fix header includes
+  * Header cleanups
+  * Cleanups
+  * Convert settings.cpp to C
+  * Remove trio_sprintf
+  * Remove SH7095 Disassemble
+  * Use libretro-common function path_is_absolute
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Get rid of some templated functions and no-op debug printf macros
+  * Get rid of MDFN_SSFPLAY_COMPILE
+  * Get rid of some unnecessary templated functions
+  * We don't need this buffer
+  * Cleanups
+  * Cleanup unused MD5 entries
+  * Cleanups
+  * Cleanups
+  * Fixed CHD on VFS
+  * Xcode wants variables initialized or won't link externals
+  * Fix build on every Unix system that is not Linux
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+
+-------------------------------------------------------------------
 Sat May 30 16:39:47 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200526:
