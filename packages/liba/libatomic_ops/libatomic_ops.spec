@@ -1,7 +1,7 @@
 #
 # spec file for package libatomic_ops
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libatomic_ops
-Version:        7.6.10
+Version:        7.6.12
 Release:        0
 Summary:        A portable library for atomic memory operations
 License:        GPL-2.0-or-later AND MIT
 Group:          Development/Languages/C and C++
-Url:            https://github.com/ivmai/libatomic_ops
-
-#Git-Clone:	git://github.com/ivmai/libatomic_ops
-Source:         http://www.ivmaisoft.com/_bin/atomic_ops/%name-%version.tar.gz
+URL:            https://github.com/ivmai/libatomic_ops
+Source:         https://github.com/ivmai/libatomic_ops/releases/download/v%version/%name-%version.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
@@ -52,26 +50,25 @@ considers memory barrier semantics, and allows the construction of code
 that involves minimum overhead across a variety of architectures.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
+%global _lto_cflags %_lto_cflags -ffat-lto-objects
 autoreconf -fiv
 %configure --docdir="%_docdir/%name"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
-rm -f "%buildroot/%_libdir"/*.la
-cp -a ChangeLog "%buildroot/%_docdir/%name/"
+rm -fv "%buildroot/%_libdir"/*.la
+cp -av ChangeLog "%buildroot/%_docdir/%name/"
 
 %check
 %if !0%{?qemu_user_space_build:1}
-make check %{?_smp_mflags}
+%make_build check
 %endif
 
 %files devel
-%defattr(-,root,root)
 %_libdir/libatomic_ops*.a
 %_includedir/atomic_ops/
 %_includedir/atomic_ops*.h

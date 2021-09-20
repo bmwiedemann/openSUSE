@@ -121,4 +121,12 @@
     <comment></comment>
     <requestid>720464</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>2e964afd3661fff812390aa3cae657f0</srcmd5>
+    <version>7.6.12</version>
+    <time>1632173540</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 7.6.12</comment>
+    <requestid>918781</requestid>
+  </revision>
 </revisionlist>

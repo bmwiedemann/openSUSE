@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 13 10:45:00 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.6.12
+  * Declare argument of AO_load_next with const in
+    atomic_ops_stack.
+  * Fix gcc/sunc x86 AO_compare_double_and_swap_double
+    missing side effect.
+  * Fix link fail caused by missing GCC char/short atomic
+    primitives on riscv64.
+  * Turn off compare_double_and_swap_double_full PIC hack for
+    GCC 5+ (x86).
+  * Use GCC atomic intrinsics for s390x (clang 8.0+ and gcc 5.4+).
+
+-------------------------------------------------------------------
 Fri Aug  2 07:04:12 UTC 2019 - Martin Liška <mliska@suse.cz>
 
 - Use FAT LTO objects in order to provide proper static library.
