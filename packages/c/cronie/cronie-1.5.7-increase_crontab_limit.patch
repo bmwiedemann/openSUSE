@@ -1,0 +1,25 @@
+From ec8b5e5569b7f95a71ceca224fb4662f5799833e Mon Sep 17 00:00:00 2001
+From: Danilo Spinella <danilo.spinella@suse.com>
+Date: Tue, 13 Jul 2021 17:08:36 +0200
+Subject: [PATCH] Increase the maximum number of crontab entries
+
+Old limit is considered too low for users with edge cases.
+
+Fixes #91.
+---
+ src/macros.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/macros.h b/src/macros.h
+index cba5fb2..d50e981 100644
+--- a/src/macros.h
++++ b/src/macros.h
+@@ -59,7 +59,7 @@
+ #define	ROOT_UID	0	/* don't change this, it really must be root */
+ #define	ROOT_USER	"root"	/* ditto */
+ #define MAX_USER_ENVS	1000	/* maximum environment variables in user's crontab */
+-#define MAX_USER_ENTRIES 1000	/* maximum crontab entries in user's crontab */
++#define MAX_USER_ENTRIES 10000	/* maximum crontab entries in user's crontab */
+ #define MAX_GARBAGE	32768	/* max num of chars of comments and whitespaces between entries */
+ #define MAX_CLOSE_FD	10000	/* max fd num to close when spawning a child process */
+ 

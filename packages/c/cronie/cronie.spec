@@ -32,7 +32,6 @@ Source0:        https://github.com/cronie-crond/%{name}/archive/%{name}-%{versio
 Source2:        run-crons
 Source3:        sample.root
 Source4:        deny.sample
-Source6:        cronie-rpmlintrc
 Source7:        cron_to_cronie.README
 Source8:        cron.service
 Source9:        sysconfig.cron
@@ -48,6 +47,8 @@ Patch12:        cronie-piddir.patch
 # PATCH-FIX-SUSE the first occurance of "/etc/anacrontab" was replaced by "/etc/crontab"
 # in manpage file because the /etc/crontab is still used in SUSE.
 Patch13:        fix-manpage-replace-anacrontab-with-crontab.patch
+# PATCH-FIX-UPSTREAM Increase the maximum number of crontab entries bsc#1187508
+Patch14:        cronie-1.5.7-increase_crontab_limit.patch
 BuildRequires:  audit-devel
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -57,8 +58,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(systemd)
 Requires:       mail
 Requires(post): %fillup_prereq
-Requires(post): permissions
 Requires(post): debianutils
+Requires(post): permissions
 Requires(pre):  cron
 Suggests:       mailx
 Conflicts:      cron <= 4.1
@@ -107,6 +108,7 @@ overloaded in settings.
 cp %{SOURCE7} ./cron_to_cronie.README
 %patch12 -p1
 %patch13 -p1
+%patch14 -p1
 
 %build
 # fill macro CRON_VERSION it is used in top three lines of crontab file,should be reworked

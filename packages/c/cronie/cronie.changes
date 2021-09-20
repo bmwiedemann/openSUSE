@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 15 12:00:14 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Increase limit of allowed entries in crontab files to fix bsc#1187508
+  * cronie-1.5.7-increase_crontab_limit.patch
+- Run spec-cleaner
+- Remove cronie-rpmlintrc as the filter was unused
+
+-------------------------------------------------------------------
 Mon Aug 30 07:18:09 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Change default configuration to use run-parts from debianutils
