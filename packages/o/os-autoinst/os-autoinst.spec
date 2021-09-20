@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1631697994.f5fcf5e7
+Version:        4.6.1631879042.64c44cb2
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -81,19 +81,13 @@ Source0:        %{name}-%{version}.tar.xz
 %define test_requires %build_requires %spellcheck_requires %test_base_requires %yamllint_requires perl(Inline::Python) perl(YAML::PP)
 # The following line is generated from dependencies.yaml
 %define devel_requires %python_style_requires %test_requires ShellCheck perl(Devel::Cover) perl(Devel::Cover::Report::Codecov) perl(Perl::Tidy)
+%define s390_zvm_requires /usr/bin/xkbcomp /usr/bin/Xvnc x3270 icewm xterm xterm-console xdotool fonts-config mkfontdir mkfontscale
 BuildRequires:  %test_requires %test_version_only_requires
 Requires:       %main_requires
-Recommends:     /usr/bin/Xvnc
 Recommends:     /usr/bin/qemu-img
-Recommends:     /usr/bin/xkbcomp
-Recommends:     dumponlyconsole
-Recommends:     icewm
+Recommends:     dumponlyconsole %s390_zvm_requires
 Recommends:     qemu >= 2.0.0
 Recommends:     tesseract-ocr
-Recommends:     x3270
-Recommends:     xdotool
-Recommends:     xterm
-Recommends:     xterm-console
 # Optional dependency for Python test API support
 Recommends:     perl(Inline::Python)
 Requires(pre):  %{_bindir}/getent
@@ -147,6 +141,15 @@ Requires:       qemu-x86
 %description qemu-x86
 Convenience package providing os-autoinst and qemu-x86 dependencies.
 %endif
+
+%package s390-deps
+Summary:        Convenience package providing os-autoinst + s390 worker jumphost deps
+Group:          Development/Tools/Other
+Requires:       %s390_zvm_requires
+Requires:       os-autoinst
+
+%description s390-deps
+Convenience package providing os-autoinst + s390 worker jumphost dependencies.
 
 %prep
 %setup -q
@@ -244,5 +247,7 @@ cd %{__builddir}
 
 %files qemu-x86
 %endif
+
+%files s390-deps
 
 %changelog
