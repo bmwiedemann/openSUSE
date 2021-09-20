@@ -17,7 +17,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.2
+%define patchversion 5.14.5
 %define variant %{nil}
 
 %include %_sourcedir/kernel-spec-macros
@@ -31,9 +31,9 @@ Name:           kernel-docs
 Summary:        Kernel Documentation
 License:        GPL-2.0-only
 Group:          Documentation/Man
-Version:        5.14.2
+Version:        5.14.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g314dce0
+Release:        <RELEASE>.gfdb6afd
 %else
 Release:        0
 %endif
@@ -64,14 +64,11 @@ BuildRequires:  texlive-zapfding
 %endif
 Url:            http://www.kernel.org/
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-314dce0059447f7063b87fb9e87c4744e389054d
+Provides:       %name-srchash-fdb6afd559a158844f6065913de0fa6cbbef9315
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
-Source2:        source-post.sh
 Source3:        kernel-source.rpmlintrc
-Source8:        devel-pre.sh
-Source9:        devel-post.sh
 Source10:       preun.sh
 Source11:       postun.sh
 Source12:       pre.sh
@@ -142,10 +139,7 @@ Source120:      kabi.tar.bz2
 Source121:      sysctl.tar.bz2
 # These files are found in the kernel-source package:
 NoSource:       0
-NoSource:       2
 NoSource:       3
-NoSource:       8
-NoSource:       9
 NoSource:       10
 NoSource:       11
 NoSource:       12

@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.2
+%define patchversion 5.14.5
 %define variant %{nil}
 %define vanilla_only 0
 
@@ -30,9 +30,9 @@ Name:           kernel-source
 Summary:        The Linux Kernel Sources
 License:        GPL-2.0-only
 Group:          Development/Sources
-Version:        5.14.2
+Version:        5.14.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g314dce0
+Release:        <RELEASE>.gfdb6afd
 %else
 Release:        0
 %endif
@@ -43,14 +43,11 @@ BuildRequires:  fdupes
 BuildRequires:  sed
 Requires(post): coreutils sed
 Provides:       %name = %version-%source_rel
-Provides:       %name-srchash-314dce0059447f7063b87fb9e87c4744e389054d
+Provides:       %name-srchash-fdb6afd559a158844f6065913de0fa6cbbef9315
 Provides:       linux
 Provides:       multiversion(kernel)
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
-Source2:        source-post.sh
 Source3:        kernel-source.rpmlintrc
-Source8:        devel-pre.sh
-Source9:        devel-post.sh
 Source10:       preun.sh
 Source11:       postun.sh
 Source12:       pre.sh
@@ -258,10 +255,6 @@ install -m 644 %_sourcedir/kernel-subpackage-spec $RPM_BUILD_ROOT/usr/lib/rpm/ke
 install -m 644 -T %_sourcedir/kernel-default-base.spec.txt $RPM_BUILD_ROOT/usr/lib/rpm/kernel/kernel-default-base.spec
 %endif
 
-sed -e "s:@KERNELRELEASE@:%kernelrelease:g" \
-	-e "s:@SRCVARIANT@:%variant:g" \
-	%_sourcedir/source-post.sh > %name-post.sh
-
 pushd "%buildroot"
 perl "%_sourcedir/group-source-files.pl" \
 	-D "$OLDPWD/devel.files" -N "$OLDPWD/nondevel.files" \
@@ -283,9 +276,15 @@ ts="$(head -n1 %_sourcedir/source-timestamp)"
 find %buildroot/usr/src/linux* ! -type l | xargs touch -d "$ts"
 
 %if ! %vanilla_only
-%post -f %name-post.sh
+%post
+%relink_function
 
-%post -n kernel-devel%variant -f %name-post.sh
+relink linux-%kernelrelease%variant /usr/src/linux%variant
+
+%post -n kernel-devel%variant
+%relink_function
+
+relink linux-%kernelrelease%variant /usr/src/linux%variant
 
 %files -f nondevel.files
 %defattr(-, root, root)

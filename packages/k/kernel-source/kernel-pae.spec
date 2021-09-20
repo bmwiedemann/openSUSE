@@ -18,7 +18,7 @@
 
 
 %define srcversion 5.14
-%define patchversion 5.14.2
+%define patchversion 5.14.5
 %define variant %{nil}
 %define vanilla_only 0
 %define compress_modules xz
@@ -48,6 +48,39 @@
 
 %global cpu_arch %(%_sourcedir/arch-symbols %_target_cpu)
 %define cpu_arch_flavor %cpu_arch/%build_flavor
+
+%global certs %( for f in %_sourcedir/*.crt; do                                                         \
+    if ! test -e "$f"; then                                                                             \
+        continue                                                                                        \
+    fi                                                                                                  \
+    h=$(openssl x509 -inform PEM -fingerprint -noout -in "$f")                                          \
+    if [ -z "$h" ] ; then                                                                               \
+        echo Cannot parse "$f" >&2                                                                      \
+        confinue                                                                                        \
+    fi                                                                                                  \
+    cert=$(echo "$h" | sed -rn 's/^SHA1 Fingerprint=//; T; s/://g; s/(.{8}).*/\\1/p')                   \
+    echo Found signing certificate "$f" "($cert)" >&2                                                   \
+    cat "$f" >>%_sourcedir/.kernel_signing_key.pem                                                      \
+    mkdir -p %_sourcedir/.kernel_signing_certs                                                          \
+    openssl x509 -inform PEM -in "$f" -outform DER -out %_sourcedir/.kernel_signing_certs/"$cert".crt   \
+    echo -n "$cert" ""                                                                                  \
+done )
+
+%ifarch %ix86 x86_64
+%define image vmlinuz
+%endif
+%ifarch ppc ppc64 ppc64le
+%define image vmlinux
+%endif
+%ifarch s390 s390x
+%define image image
+%endif
+%ifarch %arm
+%define image zImage
+%endif
+%ifarch aarch64 riscv64
+%define image Image
+%endif
 
 # Define some CONFIG variables as rpm macros as well. (rpm cannot handle
 # defining them all at once.)
@@ -86,9 +119,9 @@ Name:           kernel-pae
 Summary:        Kernel with PAE Support
 License:        GPL-2.0-only
 Group:          System/Kernel
-Version:        5.14.2
+Version:        5.14.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g314dce0
+Release:        <RELEASE>.gfdb6afd
 %else
 Release:        0
 %endif
@@ -182,8 +215,6 @@ BuildRequires:  u-boot-tools
 %if 0%{?usrmerged}
 # make sure we have a post-usrmerge system
 Conflicts:      filesystem < 16
-# FIXME: microos in stagings provides only release 1
-#Conflicts:      suse-release < 16
 %endif
 
 Obsoletes:      microcode_ctl
@@ -210,10 +241,10 @@ Conflicts:      hyper-v < 4
 Conflicts:      libc.so.6()(64bit)
 %endif
 Provides:       kernel = %version-%source_rel
-Provides:       kernel-%build_flavor-base-srchash-314dce0059447f7063b87fb9e87c4744e389054d
-Provides:       kernel-srchash-314dce0059447f7063b87fb9e87c4744e389054d
+Provides:       kernel-%build_flavor-base-srchash-fdb6afd559a158844f6065913de0fa6cbbef9315
+Provides:       kernel-srchash-fdb6afd559a158844f6065913de0fa6cbbef9315
 # END COMMON DEPS
-Provides:       %name-srchash-314dce0059447f7063b87fb9e87c4744e389054d
+Provides:       %name-srchash-fdb6afd559a158844f6065913de0fa6cbbef9315
 %ifarch %ix86
 Provides:       kernel-bigsmp = 2.6.17
 Obsoletes:      kernel-bigsmp <= 2.6.17
@@ -238,10 +269,7 @@ Obsoletes:      kernel-ec2-base <= 4.4
 %endif
 %obsolete_rebuilds %name
 Source0:        http://www.kernel.org/pub/linux/kernel/v5.x/linux-%srcversion.tar.xz
-Source2:        source-post.sh
 Source3:        kernel-source.rpmlintrc
-Source8:        devel-pre.sh
-Source9:        devel-post.sh
 Source10:       preun.sh
 Source11:       postun.sh
 Source12:       pre.sh
@@ -326,10 +354,7 @@ BuildArch:      i686
 
 # These files are found in the kernel-source package:
 NoSource:       0
-NoSource:       2
 NoSource:       3
-NoSource:       8
-NoSource:       9
 NoSource:       10
 NoSource:       11
 NoSource:       12
@@ -623,14 +648,12 @@ fi
 # copy module signing certificate(s). We use the default path and trick
 # certs/Makefile to not regenerate the certificate. It is done this way so
 # that the kernel-source package can be rebuilt even without the certificate
-mkdir -p certs
-for f in %_sourcedir/*.crt; do
-    if ! test -e "$f"; then
-        continue
-    fi
+echo Signing certificates "%certs"
+if [ -f %_sourcedir/.kernel_signing_key.pem ] ; then
+    mkdir -p certs
     touch certs/x509.genkey
-    cat "$f" >>certs/signing_key.pem
-done
+    cp "%_sourcedir/.kernel_signing_key.pem" certs/signing_key.pem
+fi
 
 %if "%CONFIG_KMSG_IDS" == "y"
     chmod +x ../scripts/kmsg-doc
@@ -716,13 +739,10 @@ add_vmlinux()
 # architecture specifics
 %ifarch %ix86 x86_64
     add_vmlinux --compressed
-    image=bzImage
-    cp -p arch/x86/boot/$image %buildroot/boot/vmlinuz-%kernelrelease-%build_flavor
-    image=vmlinuz
+    cp -p arch/x86/boot/bzImage %buildroot/boot/%image-%kernelrelease-%build_flavor
 %endif
 %ifarch ppc ppc64 ppc64le
     add_vmlinux
-    image=vmlinux
 %endif
 %ifarch s390 s390x
     add_vmlinux --compressed
@@ -730,8 +750,7 @@ add_vmlinux()
     if test ! -f arch/s390/boot/$image; then
         image=bzImage
     fi
-    cp -p arch/s390/boot/$image %buildroot/boot/image-%kernelrelease-%build_flavor
-    image=image
+    cp -p arch/s390/boot/$image %buildroot/boot/%image-%kernelrelease-%build_flavor
     if test -e arch/s390/boot/kerntypes.o; then
         cp -p arch/s390/boot/kerntypes.o %buildroot/boot/Kerntypes-%kernelrelease-%build_flavor
     elif test -x "$(which dwarfextract 2>/dev/null)"; then
@@ -747,34 +766,31 @@ add_vmlinux()
 %endif
 %ifarch %arm
     add_vmlinux --compressed
-    image=zImage
-    cp -p arch/arm/boot/$image %buildroot/boot/$image-%kernelrelease-%build_flavor
+    cp -p arch/arm/boot/%image %buildroot/boot/%image-%kernelrelease-%build_flavor
 %endif
 %ifarch aarch64
     add_vmlinux --compressed
-    image=Image
-    cp -p arch/arm64/boot/$image %buildroot/boot/$image-%kernelrelease-%build_flavor
+    cp -p arch/arm64/boot/%image %buildroot/boot/%image-%kernelrelease-%build_flavor
 %endif
 %ifarch riscv64
     add_vmlinux --compressed
-    image=Image
-    cp -p arch/riscv/boot/$image %buildroot/boot/$image-%kernelrelease-%build_flavor
+    cp -p arch/riscv/boot/%image %buildroot/boot/%image-%kernelrelease-%build_flavor
 %endif
 
 # sign the modules, firmware and possibly the kernel in the buildservice
 BRP_PESIGN_FILES=""
 %if "%CONFIG_EFI_STUB" == "y"
 %if 0%{?usrmerged}
-BRP_PESIGN_FILES="%modules_dir/$image"
+BRP_PESIGN_FILES="%modules_dir/%image"
 %else
-BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
+BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
 %endif
 %endif
 %ifarch s390x ppc64 ppc64le
 %if 0%{?usrmerged}
-BRP_PESIGN_FILES="%modules_dir/$image"
+BRP_PESIGN_FILES="%modules_dir/%image"
 %else
-BRP_PESIGN_FILES="/boot/$image-%kernelrelease-%build_flavor"
+BRP_PESIGN_FILES="/boot/%image-%kernelrelease-%build_flavor"
 %endif
 %endif
 %if "%CONFIG_MODULE_SIG" == "y"
@@ -791,49 +807,29 @@ export BRP_PESIGN_COMPRESS_MODULE=%{compress_modules}
 %endif
 
 if test -x /usr/lib/rpm/pesign/gen-hmac; then
-	$_ -r %buildroot /boot/$image-%kernelrelease-%build_flavor
+	$_ -r %buildroot /boot/%image-%kernelrelease-%build_flavor
 fi
 
 # Package the compiled-in certificates as DER files in /etc/uefi/certs
 # and have mokutil enroll them when the kernel is installed
-certs=()
+echo Signing certificates "%certs"
+certs=(%certs)
 if test %CONFIG_MODULE_SIG = "y"; then
-    for f in %_sourcedir/*.crt; do
-            if ! test -s "$f"; then
-                    continue
-            fi
-            h=$(openssl x509 -inform PEM -fingerprint -noout -in "$f")
-            test -n "$h"
-            cert=/etc/uefi/certs/$(echo "$h" | \
-                sed -rn 's/^SHA1 Fingerprint=//; T; s/://g; s/(.{8}).*/\1/p').crt
-            if test -e %buildroot/"$cert"; then
-                    continue
-            fi
+    for f in %_sourcedir/.kernel_signing_certs/*.crt; do
             mkdir -p %buildroot/etc/uefi/certs
-            openssl x509 -inform PEM -in "$f" -outform DER -out %buildroot/"$cert"
-            certs=("${certs[@]}" "$cert")
+            cp -v $f %buildroot/etc/uefi/certs
     done
 fi
 
-for sub in '' '-extra' \
-%if %split_extra && %split_optional
-    '-optional' \
-%endif
-; do
-    case "$sub" in
-    '') base_package=1 ;;
-    *) base_package=0 ;;
-    esac
-    for script in preun postun pre post devel-pre devel-post; do
+    for script in preun postun pre post; do
         if test %build_flavor = "zfcpdump"; then
-            : >%my_builddir/$script$sub.sh
+            : >%my_builddir/$script.sh
             continue
         fi
         sed -e "s:@KERNELRELEASE@:%kernelrelease:g" \
-            -e "s:@IMAGE@:$image:g" \
+            -e "s:@IMAGE@:%image:g" \
             -e "s:@FLAVOR""@:%build_flavor:g" \
-            -e "s:@SUBPACKAGE@:%name$sub:g" \
-            -e "s:@BASE_PACKAGE@:$base_package:g" \
+            -e "s:@PACKAGE@:%name:g" \
             -e "s:@RPM_VERSION_RELEASE@:%version-%release:g" \
             -e "s:@RPM_TARGET_CPU@:%_target_cpu:g" \
 	    -e "s:@CPU_ARCH_FLAVOR@:%cpu_arch_flavor:g" \
@@ -845,28 +841,22 @@ for sub in '' '-extra' \
 %else
             -e "/^@USRMERGE@/d" \
 %endif
-            %_sourcedir/$script.sh > %my_builddir/$script$sub.sh
-        if test "$base_package" -eq 1 -a "${#certs[@]}" -gt 0; then
+            %_sourcedir/$script.sh > %my_builddir/$script.sh
+        if test "${#certs[@]}" -gt 0; then
             case "$script" in
             preun | postun | post)
                 # Copy the respective scriptlet from kernel-cert-subpackage
                 sed "1,/^%%$script / d; /^%%[^%%]/,\$ d; s:@CERTS@:${certs[*]}:g" \
                     %_sourcedir/kernel-cert-subpackage \
-                    >>"%my_builddir/$script$sub.sh"
+                    >>"%my_builddir/$script.sh"
             esac
         fi
 	# Do an exit 0 at the end of each scriptlet. If the last real command
 	# in the scriptlet (e.g. update-bootloader call, see bnc#809617)
 	# returns an error, we do not want to amplify the damage by leaving
 	# the system in an inconsistent state.
-	echo "exit 0" >>"%my_builddir/$script$sub.sh"
+	echo "exit 0" >>"%my_builddir/$script.sh"
     done
-done
-
-%if %build_vanilla
-# keep this -suffix list in sync with post.sh and postun.sh
-suffix=-%build_flavor
-%endif
 
 cp -p .config %buildroot/boot/config-%kernelrelease-%build_flavor
 sysctl_file=%buildroot/boot/sysctl.conf-%kernelrelease-%build_flavor
@@ -1105,8 +1095,8 @@ shopt -s nullglob dotglob
 sed -e 's/^[.]//' | grep -v -e '[.]ipa-clones$' -e '/Symbols[.]list$' -e '/ipa-clones[.]list$'| \
 add_dirs_to_filelist >> %my_builddir/kernel-devel.files
 
-{   echo %ghost /boot/$image$suffix
-    echo %ghost /boot/initrd$suffix
+{   echo %ghost /boot/%image
+    echo %ghost /boot/initrd
     cd %buildroot
     for f in boot/*; do
         l="${f##*/}"
@@ -1291,13 +1281,35 @@ This package contains additional modules not supported by SUSE.
 
 
 %source_timestamp
-%preun extra -f preun-extra.sh
 
-%postun extra -f postun-extra.sh
+%post extra
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-extra-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
 
-%pre extra -f pre-extra.sh
+%posttrans extra
+%{?regenerate_initrd_posttrans}
 
-%post extra -f post-extra.sh
+%preun extra
+nvr=%name-extra-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun extra
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-extra-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %if %split_extra
 
@@ -1349,10 +1361,34 @@ This package contains optional modules only for openSUSE Leap.
 
 %source_timestamp
 
-%preun optional -f preun-optional.sh
-%postun optional -f postun-optional.sh
-%pre optional -f pre-optional.sh
-%post optional -f post-optional.sh
+%post optional
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-optional-%version-%release
+if test -x "$wm2"; then
+	rpm -ql "$nvr" | INITRD_IN_POSTTRANS=1 /bin/bash -${-/e/} "$wm2" \
+	--add-kernel-modules %kernelrelease-%build_flavor
+fi
+
+%posttrans optional
+%{?regenerate_initrd_posttrans}
+
+%preun optional
+nvr=%name-optional-%version-%release
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
+
+%postun optional
+wm2=/usr/lib/module-init-tools/weak-modules2
+nvr=%name-optional-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
+if test -x "$wm2"; then
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
+	--remove-kernel-modules %kernelrelease-%build_flavor
+fi
 
 %files optional -f kernel-optional.files
 %defattr(-, root, root)
@@ -1417,9 +1453,17 @@ kernel module packages) against the %build_flavor flavor of the kernel.
 
 %if "%CONFIG_MODULES" == "y"
 
-%pre devel -f devel-pre.sh
+%pre devel
 
-%post devel -f devel-post.sh
+# handle update from an older kernel-source with linux-obj as symlink
+if [ -h /usr/src/linux-obj ]; then
+    rm -vf /usr/src/linux-obj
+fi
+
+%post devel
+%relink_function
+
+relink ../../linux-%{kernelrelease}%{variant}-obj/"%cpu_arch_flavor" /usr/src/linux-obj/"%cpu_arch_flavor"
 
 %files devel -f kernel-devel.files
 %defattr(-,root,root)
@@ -1506,16 +1550,21 @@ fi
 
 %preun -n cluster-md-kmp-%build_flavor
 nvr=cluster-md-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
 
 %postun -n cluster-md-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
 nvr=cluster-md-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
 if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
-rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n cluster-md-kmp-%build_flavor -f cluster-md-kmp.files
 %defattr(-, root, root)
@@ -1547,16 +1596,21 @@ fi
 
 %preun -n dlm-kmp-%build_flavor
 nvr=dlm-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
 
 %postun -n dlm-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
 nvr=dlm-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
 if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
-rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n dlm-kmp-%build_flavor -f dlm-kmp.files
 %defattr(-, root, root)
@@ -1588,16 +1642,21 @@ fi
 
 %preun -n gfs2-kmp-%build_flavor
 nvr=gfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
 
 %postun -n gfs2-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
 nvr=gfs2-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
 if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
-rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n gfs2-kmp-%build_flavor -f gfs2-kmp.files
 %defattr(-, root, root)
@@ -1644,16 +1703,21 @@ fi
 
 %preun -n kselftests-kmp-%build_flavor
 nvr=kselftests-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
 
 %postun -n kselftests-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
 nvr=kselftests-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
 if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
-rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n kselftests-kmp-%build_flavor -f kselftests-kmp.files
 %defattr(-, root, root)
@@ -1686,16 +1750,21 @@ fi
 
 %preun -n ocfs2-kmp-%build_flavor
 nvr=ocfs2-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
 
 %postun -n ocfs2-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
 nvr=ocfs2-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
 if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
-rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n ocfs2-kmp-%build_flavor -f ocfs2-kmp.files
 %defattr(-, root, root)
@@ -1727,16 +1796,21 @@ fi
 
 %preun -n reiserfs-kmp-%build_flavor
 nvr=reiserfs-kmp-%build_flavor-%version-%release
-rpm -ql "$nvr" | grep '\.ko\(\.xz\|\.gz\|\.zst\)\?$' > "/var/run/rpm-$nvr-modules"
+rpm -ql "$nvr" | sed -n '/\.ko\(\.xz\|\.gz\|\.zst\)\?$/p' > "/var/run/rpm-$nvr-modules"
 
 %postun -n reiserfs-kmp-%build_flavor
 wm2=/usr/lib/module-init-tools/weak-modules2
 nvr=reiserfs-kmp-%build_flavor-%version-%release
+modules=( $(cat "/var/run/rpm-$nvr-modules") )
+rm -f "/var/run/rpm-$nvr-modules"
+if [ ${#modules[*]} = 0 ]; then
+    echo "WARNING: $nvr does not contain any kernel modules" >&2
+    exit 0
+fi
 if test -x "$wm2"; then
-	/bin/bash -${-/e/} "$wm2" < "/var/run/rpm-$nvr-modules" \
+	printf '%s\n' "${modules[@]}" | /bin/bash -${-/e/} "$wm2" \
 	--remove-kernel-modules %kernelrelease-%build_flavor
 fi
-rm -f "/var/run/rpm-$nvr-modules"
 
 %files -n reiserfs-kmp-%build_flavor -f reiserfs-kmp.files
 %defattr(-, root, root)
