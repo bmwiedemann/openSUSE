@@ -19,15 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 %bcond_without  test
+%define modname PyInstaller
 Name:           python-PyInstaller
-Version:        3.6
+Version:        4.5.1
 Release:        0
 Summary:        Bundle a Python application and all its dependencies into a single package
 License:        GPL-2.0-only
 URL:            https://www.pyinstaller.org
-Source:         https://files.pythonhosted.org/packages/source/P/PyInstaller/PyInstaller-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pyinstaller/pyinstaller/pull/5547/commits/589819183afc18f2d5b51dbbce68b7aca020c5e8 Bindepend: Skip/warn unrecognised output from ldconfig
-Patch0:         glibc233.patch
+Source:         https://github.com/pyinstaller/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -39,7 +38,7 @@ Requires:       python-macholib >= 1.8
 Requires:       python-pefile >= 2017.8.1
 Requires:       python-setuptools
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     upx
 %if %{with test}
 BuildRequires:  %{python_module Babel}
@@ -57,6 +56,7 @@ BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  upx
 %if %{with python2}
 BuildRequires:  python-dis3
@@ -73,8 +73,9 @@ package. The user can run the packaged app without installing a Python
 interpreter or any modules.
 
 %prep
-%setup -q -n PyInstaller-%{version}
+%setup -q -n pyinstaller-%{version}
 %autopatch -p1
+
 chmod a-x PyInstaller/utils/hooks/__init__.py
 
 # Force build of bootloader
@@ -106,7 +107,8 @@ fi
 %check
 export LANG=en_US.UTF-8
 # test_get_co_using_ctypes, test_get_co_using_ctypes_from_extension, test_replace_paths_in_code broken with python 3.8 on PyInstall 3.6
-%pytest_arch -n auto tests/unit -k 'not (test_find_module or test_egg and not test_nspkg1 or test_get_co_using_ctypes or test_get_co_using_ctypes_from_extension or test_replace_paths_in_code)'
+# gh#pyinstaller/pyinstaller#4406 skip TestDeeplyNested.testRegr (it is just the only method in the class)
+%pytest_arch -n auto tests/unit -k 'not (test_find_module or test_egg and not test_nspkg1 or test_get_co_using_ctypes or test_get_co_using_ctypes_from_extension or test_replace_paths_in_code or TestDeeplyNested)'
 %endif
 
 %post

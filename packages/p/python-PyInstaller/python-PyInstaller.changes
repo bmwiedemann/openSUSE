@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 16 11:25:16 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 4.5.1: large number of changes, see packaged CHANGES.rst for
+  the complete list.
+- Remove glibc233.patch (included upstream)
+
+-------------------------------------------------------------------
 Thu Apr  1 13:27:23 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Automagically skip matplotlib tests because matplotlib dropped python36
-- Add glibc233.patch to fix recent test failure
+- Add glibc233.patch to fix recent test failure (gh#pyinstaller/pyinstaller#5540)
 
 -------------------------------------------------------------------
 Wed Mar 18 07:22:03 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
