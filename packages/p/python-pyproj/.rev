@@ -138,4 +138,12 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment></comment>
     <requestid>918806</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5505c68f515c8f420cd6e21de212b9a0</srcmd5>
+    <version>3.2.1</version>
+    <time>1632173622</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream v3.2.1. (forwarded request 920328 from LPechacek)</comment>
+    <requestid>920344</requestid>
+  </revision>
 </revisionlist>
