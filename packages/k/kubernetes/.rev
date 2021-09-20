@@ -752,4 +752,12 @@
 ------------------------------------------------------------------</comment>
     <requestid>915013</requestid>
   </revision>
+  <revision rev="81" vrev="21">
+    <srcmd5>580e0ddcb43f0c761074845c584e3db4</srcmd5>
+    <version>unknown</version>
+    <time>1632173530</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump kubernetes-* to 1.22.2 and *-minus1 to 1.21.5</comment>
+    <requestid>919507</requestid>
+  </revision>
 </revisionlist>
