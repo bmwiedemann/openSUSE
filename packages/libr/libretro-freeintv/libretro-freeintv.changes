@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:03:13 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210819:
+  * Serialization now can work anytime. Rewind working. PSG now compatible with Intellivision AY-3-8914. RetroArch restart function now works.
+  * Corrected small bug in unserialize (detected by Jamiras)
+  * Forgot to add comment in README
+  * Added save states via retro_serialize()
+  * Update .gitlab-ci.yml
+  * add retrofw target
+  * Further permissions corrected
+  * Corrected file permissions (new machine)
+  * Collision borders now true to hardware
+  * Solved bug in STIC border collision and optimized it.
+  * Solved bug in border color. Implemented STIC screen disable. Shows explanation if GROM and EXEC are missing. HALT and undefined instructions shows a message instead of exiting. Corrected position of messages for cartridge load.
+  * Corrected LFSR for PSG noise. Added comments
+  * Solved bug in PSG, counters shouldn't be reset when updating frequency
+  * 8x16 sprites didn't made card number even. Minor optimizations
+  * Solved crash in B17 Bomber (it wrote on Exec ROM, made ROM protected)
+  * Solved STIC collision bugs for Astrosmash
+  * Solved bug with scroll Y delay without border hiding (black bar showed on 4-tris)
+  * Solved bug in color stack mode (4-Tris didn't showed current piece
+  * Corrected bug in Overflow flag for SUB/CMP. Corrected scrolling visual bug keeping STIC timings. Corrected several instruction timings and interrupt timing.
+  * Fix OSX targets
+  * Add osx-arm64/ios-arm64/tvos-arm64
+  * Update .gitlab-ci.yml
+  * (MSVC) Embed MSVCR runtime
+  * Add MSVC 2005 / 2010 cores
+  * Update bins for new toolchain
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Update
+  * Update .gitlab-ci.yml
+  * Add ps2 target
+  * Add .gitlab-ci.yml
+
+-------------------------------------------------------------------
 Sat Aug 08 09:36:46 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200721:
