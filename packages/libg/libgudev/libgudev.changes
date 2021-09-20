@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Aug 15 13:05:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 237:
+  + Fix reading double precision floats from sysfs attributes in
+    locales that use comma as a separator
+  + Fix compilation warning
+  + Fix headers to help with build reproducibility
+  + Clarify licensing information
+- Changes from version 236:
+  + Fix meson project name to match autotools.
+- Changes from version 235:
+  + Port build system to meson and remove autotools
+  + Fix conversion of sysfs attributes to boolean.
+- Add meson BuildRequires and macros following upstreams port.
+- Enable pkgconfig(umockdev-1.0) BuildRequires and test macro.
+- Update Licence tag to LGPL-2.1-or-later.
+
+-------------------------------------------------------------------
 Sun Jan 24 14:29:42 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 234:

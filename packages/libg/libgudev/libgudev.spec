@@ -17,15 +17,16 @@
 
 
 Name:           libgudev
-Version:        234
+Version:        237
 Release:        0
 Summary:        Library that provides GObject bindings for libudev
-License:        LGPL-2.0-or-later
+License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libgudev
 Source0:        https://download.gnome.org/sources/libgudev/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.38.0
@@ -33,8 +34,7 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc) >= 1.18
 BuildRequires:  pkgconfig(libudev) >= 199
-# FIXME - not yet in openSUSE
-#BuildRequires:  pkgconfig(umockdev-1.0)
+BuildRequires:  pkgconfig(umockdev-1.0)
 
 %description
 Library provides GObject bindings for libudev. It used to be part
@@ -70,16 +70,17 @@ provides GObject access to udev device information.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	--disable-umockdev \
-	--enable-gtk-doc \
+%meson \
+	-Dvapi=disabled \
+	-Dgtk_doc=true \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
+
+%check
+%meson_test
 
 %post -n libgudev-1_0-0 -p /sbin/ldconfig
 %postun -n libgudev-1_0-0 -p /sbin/ldconfig
