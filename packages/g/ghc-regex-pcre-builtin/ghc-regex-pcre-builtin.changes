@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 13 08:26:18 UTC 2021 - psimons@suse.com
+
+- Update regex-pcre-builtin to version 0.95.2.3.8.44.
+  Upstream has not updated the file "ChangeLog.md" since the last
+  release.
+
+-------------------------------------------------------------------
 Fri Mar 12 08:00:32 UTC 2021 - psimons@suse.com
 
 - Update regex-pcre-builtin to version 0.95.2.3.8.43.
