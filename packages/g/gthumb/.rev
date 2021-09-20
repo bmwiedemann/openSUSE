@@ -819,4 +819,60 @@
     <comment></comment>
     <requestid>913941</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>2f3dee4e62d7698b39a39c315e24f1ce</srcmd5>
+    <version>3.12.0</version>
+    <time>1632173595</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.12.0:
+  + New features and user visible changes:
+    - Added ability to load AVIF/HEIF images using libheif.
+    - Added ability to save images as AVIF.
+    - Add JPEG XL (*.jxl) read support.
+    - File manager: added file actions to the viewer
+      context menu.
+    - Extensions: removed facebook and picasaweb uploaders.
+    - Image viewer: use a proportional zoom increment.
+    - Read color profiles from png files as well.
+    - Media viewer: use accurate seeking when clicking on
+      the progress bar.
+    - Media viewer: show the pointed time when hovering over
+      the progress bar.
+    - Preferences: added option to show/hide the statusbar.
+    - Rename files: added a button to revert to the last
+      used template.
+    - Added configurable shortcuts for Save and Save As.
+    - Media viewer: added keyboard shortcuts.
+    - File list: always allow to use Control-A to select
+      all files.
+    - Allow to set shortcuts to activate filters.
+    - Added a template editor to edit text values with
+      special codes: script commands, rename templates,
+      print header and footer, etc.
+    - Faster navigation when a directory contains
+      thousands of images.
+    - File list: start more thumbnailers in parallel.
+    - Allow to mount unmounted volumes.
+    - Color picker: added other formats: rgb in % and hsl.
+    - Allow to keep browsing while executing long-running
+      external tools.
+    - Status bar: added button to show the progress dialog.
+    - File properties: do not reset the selection after showing
+      another image.
+    - Histogram: show the properties in a single column
+      to save horizontal space.
+  + Bugs fixed:
+    - Install the gThumb import desktop file.
+    - Fix memory leak when loading webp, jxl, avif images.
+    - Check if image is null before using it. 
+    - Added a Flatpak manifest.
+    - Contact sheet: fixed themes list always empty.
+    - Raw: Make compatible with LibRaw 0.21
+    - Folder context menu: do not allow to move if cannot delete.
+    - Folder context menu: do not allow to copy not mounted
+      volumes.
+    - Terminal: enable only for local folders.
+    - Lots of others small fixes. (forwarded request 920243 from polslinux)</comment>
+    <requestid>920248</requestid>
+  </revision>
 </revisionlist>
