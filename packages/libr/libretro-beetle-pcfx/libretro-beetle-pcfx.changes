@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:04:48 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210906:
+  * (tremor) remove file I/O functions we don't need
+  * Reduce usage of WANT_32BPP/WANT_16BPP defines
+  * Remove unused YCbCyr colorspace
+  * Add support for 16 bpp color format
+  * king.cpp: Remove leftover debug log
+  * Remove references for 16bpp format
+  * Update Deinterlacer.cpp based on lastest changes
+  * Simply MDFN_Surface
+  * Sync some more savestate stuff
+  * Backport: Corrected handling of width/height of 0xA for KING BG1-3, per tests on a PC-FX.  Fixes a graphical glitch in "Sakuraigar Mode" in 	"Tyoushin Heiki Zeroigar".
+  * Selectively backport changes from 1.21.3
+  * Limit number of input descriptors for 2 ports
+  * Remove MDFNI_LoadGame
+  * Remove the use of MDFNGameInfo
+  * Remove misplaced 'return' keyword in retro_init()
+  * Implement RETRO_ENVIRONMENT_GET_INPUT_BITMASKS
+  * Update libretro-common
+  * Remove unused set_volume() func
+  * Fix indents and cleanup
+  * Make some functions static
+  * Fix minor controller info issue
+  * Remove these (unused)
+  * Cleanup retro_unload_game
+  * Make MDFNI_LoadGame() return as bool type
+  * Remove RETRO_ENVIRONMENT_GET_OVERSCAN
+  * Remove MDFN_MakeFName()
+  * dci: Add support for disc labels and initial index
+  * m3u: Implement very basic disk control interface
+  * Fix double free error when closing content
+  * Remove unused Sort.c
+  * Remove unnecessary files in dependencies
+  * Get rid of error_on_eos
+  * Clean up asserts
+  * Downscale error.cpp
+  * Get rid of FileWrapper
+  * Remove these dependency files and add them to .gitignore
+  * Add these files
+  * Backport updated libchdr
+  * Take file_stream_transforms header include out
+  * Put this behind DEBUG ifdef
+  * Add cdimagecache core option
+  * Cleanups, memory leaks
+  * Makefile: fix cross-compile
+  * * Fix memleak in FileStream
+  * Add ios-arm64/tvos-arm64
+  * Backport https://github.com/gameblabla/pcfxemu/commit/cff7d9d5e0549d2fef67e3b51a71451d6de0a481
+  * Add MSVC 2005/2010 cores
+  * Update for MSVC
+  * (macOS) Set up CROSS_COMPILE for ARM 64bit
+  * Add Mac x64 and ARM64 targets
+  * Add RPI4 / Odroid C2 C4 N2 / Vim3 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update
+  * Update
+  * Update
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * [iOS][tvOS] Add -DHAVE_UNISTD_H flag to compile zlib
+  * Update Makefile.common
+  * Buildfix
+  * Update libflac
+  * Update libchdr to upstream
+  * Fix CHD alignment issues with lzma/zlib
+  * Update rthreads.c
+  * Update libretro-common
+  * Get rid of PSS_STYLE
+  * Wrap around fseeko/ftello
+  * Remove register keyword
+  * Add gitlab
+  * Cleanups
+  * Convert jrevdct.cpp to C
+  * Cleanups
+  * Convert fxscsi.cpp to C
+  * Buildfix for Emscripten
+  * Cleanups
+  * Cleanup
+  * Cleanups
+  * Update .gitignore
+  * Get rid of IsAbsolutePath - use libretro-common equiv
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanup
+  * Convert settings.cpp to settings.c
+  * Cleanups - convert state.cpp to state.c
+  * Cleanup
+  * Updated internal core name to Beetle PC-FX
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+
+-------------------------------------------------------------------
 Sat May 30 16:12:29 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200520:
