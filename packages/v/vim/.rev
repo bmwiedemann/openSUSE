@@ -5339,4 +5339,12 @@ always built-in because vim has direct perl dependencies anyway.
   * Vim9: no error for using &quot;.&quot; for concatenation after &quot;:vim9cmd&quot;. (Naohiro</comment>
     <requestid>913480</requestid>
   </revision>
+  <revision rev="291" vrev="1">
+    <srcmd5>eca95dd2d3c3d3a87cc7bf1b8a89c8ae</srcmd5>
+    <version>8.2.3408</version>
+    <time>1632173545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920261</requestid>
+  </revision>
 </revisionlist>

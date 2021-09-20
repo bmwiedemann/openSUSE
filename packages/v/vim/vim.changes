@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Sep 17 10:34:34 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Changed used terminal description in %check scriptlet from "linux"
+  to "xterm" as the former does not map <S-Tab> to <ESC>[Z
+  found by a fix in terminfo database of ncurses 6.2 patch 20210904
+
+-------------------------------------------------------------------
+Wed Sep  8 08:59:35 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Updated to version 8.2.3408, fixes the following problems
+  * User function completion fails with dict function.
+  * Vim9: crash with nested :while.
+  * Buffer overflow when completing long tag name.
+  * When :edit reuses the current buffer the alternate file is set to the
+  same buffer.
+  * Vim9: crash when :for is skipped.
+  * Vim9: cannot use option for all operations.
+  * Vim9: debugging elseif does not stop before condition.
+  * Vim9: :@r executing a register is inconsistent.
+  * Not all Racket files are recognized.
+  * Auto formatting after "cw" leaves cursor in wrong spot.
+  * Vim9: no check for white space before type in declaration. (Naohiro Ono)
+  * Vim9: :$ENV cannot be followed by ->func() in next line.
+  * line2byte() value wrong when adding a text property. (Yuto Kimura)
+  * text property test fails on MS-Windows.
+  * Pyret files are not recognized.
+  * Using uninitialized memory.
+  * Vim9: no warning that "@r" does not do anything.
+  * Vim9: :disass completion does not understand "s:".
+  * Crash when using NULL job.
+  * Crash when using NULL string for funcref().
+  * Crash when using NULL list with sign functions.
+  * Crash when getting the type of a NULL partial.
+  * Vim9: completion for :disassemble adds parenthesis.
+  * Cannot disable modeline for an individual file.
+  * Escaping for fish shell does not work properly.
+  * Using uninitialized memory.
+  * Compiler warning for non-static function.
+  * fnamemodify('path/..', ':p') differs from using 'path/../'.
+  * Cannot stop insert mode completion without side effects.
+  * Included xdiff code is outdated.
+  * Crash with combination of 'linebreak' and other options.
+  * augroup completion escapes regexp pattern characters.
+  * Escaping for fish shell is skipping some characters.
+  * Filler lines are wrong when changing text in diff mode.
+  * Vim9: expression breakpoint not checked in :def function.
+  * When libcall() fails invalid pointer may be used.
+  * No test for what 8.2.3391 fixes.
+  * Html text objects are not fully tested.
+  * Octave files are not recognized.
+  * ":z!" is not supported.
+  * Vim9: cannot use a negative count with finddir() and findfile().
+  * Invalid memory access when using :retab with large value.
+  * Memory leak for :retab with invalid argument.
+  * Vim9: no error for white space before "(".
+  * Cannot have a comment line in a {} block of a user command.
+  * On some systems tests fail without _REENTRANT. (Elimar Riesebieter)
+  * Using uninitialized memory with "let g:['bar'] = 2".
+  * Can delete a numbered function. (Naohiro Ono)
+
+-------------------------------------------------------------------
 Fri Aug 20 08:55:25 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Updated to version 8.2.3360, fixes the following problems

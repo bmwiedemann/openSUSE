@@ -17,7 +17,7 @@
 
 
 %define pkg_version 8.2
-%define patchlevel 3360
+%define patchlevel 3408
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim82
 %define site_runtimepath %{_datadir}/vim/site
@@ -420,7 +420,7 @@ sed -i "s@%{_bindir}/env perl@%{_bindir}/perl@" %{buildroot}%{_datadir}/vim/%{VI
 # inside OBS, stdio is redirected to a serial console (where the build log
 # is being recorded/extracted. Systemd set non-local tty by default to vt220
 # in upcoming versions
-export TERM=linux
+export TERM=xterm
 # Reset the terminal scrolling region left behind by the testsuite
 trap "printf '\e[r'" EXIT
 # Look for "TEST FAILURE" in the build log
