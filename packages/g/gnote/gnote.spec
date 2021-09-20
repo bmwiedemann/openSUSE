@@ -34,7 +34,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libboost_test-devel >= 1.5.1
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.62
 BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
@@ -67,7 +66,6 @@ search results from documents.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure \
