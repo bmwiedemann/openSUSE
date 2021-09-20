@@ -143,4 +143,36 @@
   * fix: Refresh VM cache when node is not found</comment>
     <requestid>914239</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ea744d7020d90c923d24d6844edfcdf1</srcmd5>
+    <version>1.21.5</version>
+    <time>1632173532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.21.5:
+  * Update to go1.16.8
+  * legacy-cloud-providers: aws: Add support for consuming web identity credentials
+  * e2e iperf2 change threshold to 10MBps = 80 Mbps
+  * Fix NodeAuthenticator tests in dual stack
+  * Fix the key missing issue for structured log
+  * Fix a small regression in Service updates
+  * Service: Fix semantics for Update wrt allocations
+  * Don't prematurely close reflectors in case of slow initialization in watch based manager
+  * Fix storage class setup in regional_pd.go
+  * backport 104410 to release-1.21
+  * pkg/kubelet/cm: use SkipFreezeOnSet
+  * vendor: bump runc to 1.0.2
+  * Switch to non-deprecated timestamppb.Now()
+  * Fix buckets initialization
+  * fix: ensure InstanceShutdownByProviderID return false for creating Azure VMs
+  * fix: skip case sensitivity when checking Azure NSG rules
+  * Keep MakeMountArgSensitive and add a new signature that receives flags
+  * Update the unit tests to handle mountFlags
+  * Add missing interface method in mount_unsupported.go
+  * Pass additional flags to subpath mount to avoid flakes in certain conditions
+  * Update CHANGELOG/CHANGELOG-1.21.md for v1.21.4
+  * Copy golang license to staging copies
+  * delete stale UDP conntrack entries for loadbalancer IPs
+  * Set idle and readheader timeouts</comment>
+    <requestid>919511</requestid>
+  </revision>
 </revisionlist>
