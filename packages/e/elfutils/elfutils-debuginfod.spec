@@ -30,6 +30,7 @@ Source2:        elfutils.changes
 Source3:        elfutils.keyring
 Patch0:         disable-run-readelf-self-test.patch
 Patch1:         tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
+Patch2:         harden_debuginfod.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison

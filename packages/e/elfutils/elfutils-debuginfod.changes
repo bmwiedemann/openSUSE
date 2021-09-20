@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 14:14:57 UTC 2021 - Martin Liška <mliska@suse.cz>
+
+- Add harden_debuginfod.service.patch as
+  Automatic systemd hardening effort by the security team.
+
+-------------------------------------------------------------------
 Thu Aug  5 18:12:21 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Add tests-Allow-an-extra-pthread_kill-frame-in-backtrace.patch
