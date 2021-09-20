@@ -33,4 +33,12 @@
     <comment>- Handle gv and gsview</comment>
     <requestid>840066</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>512e41a93cc3606e48c273a259fb032d</srcmd5>
+    <version>0.1</version>
+    <time>1632173599</time>
+    <user>dimstar_suse</user>
+    <comment>- Map -o with its argument to -sOutputFile= (boo#1190614)</comment>
+    <requestid>920263</requestid>
+  </revision>
 </revisionlist>

@@ -71,6 +71,16 @@ do
     -dSAFER)
 	let safer++
 	;;
+    -o)
+	if ((argc+1 >= ${#argv[@]}))
+	then
+	    echo "GS: found -o without argument" 1>&2
+	    exit 1
+	else
+	    unset argv[argc]
+	    argv[argc+1]=-sOutputFile=${argv[argc+1]}
+	fi
+	;;
     -sOutputFile=*)
 	case "${arg#-sOutputFile=}" in
 	%stdout%|%stderr%|%stdout|%stderr|-|"")
