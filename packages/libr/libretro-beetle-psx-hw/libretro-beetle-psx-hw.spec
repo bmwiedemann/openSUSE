@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-beetle-psx-hw
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-beetle-psx-hw
-Version:        0~git20200921
+Version:        0~git20210830
 Release:        0
 Summary:        Mednafen PSX libretro core for Sony PlayStation emulation
 License:        GPL-2.0-only
