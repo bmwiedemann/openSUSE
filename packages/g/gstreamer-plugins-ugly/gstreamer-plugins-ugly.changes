@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 15 09:46:40 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + asfdemux/realmedia: Drop duplicate seek events
+  + Don't use volatile to mean atomic (fixes compiler warnings with
+    gcc 11)
+
+-------------------------------------------------------------------
 Tue Mar 30 09:05:24 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.18.4:
