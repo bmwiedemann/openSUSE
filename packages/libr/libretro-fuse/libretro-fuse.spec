@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-fuse
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-fuse
-Version:        0~git20200506
+Version:        0~git20210803
 Release:        0
 Summary:        Fuse libretro core for ZX Spectrum emulation
 License:        GPL-3.0-only

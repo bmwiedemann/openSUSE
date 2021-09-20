@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:03:45 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210803:
+  * add retrofw target
+  * Auto-load setting + shift keys support
+  * fix stereo separation setting
+  * Fix for startup manager on WiiU
+  * Fix to load 80-track disks
+  * Update README.md
+  * Do not autoload tapes on Scorpion
+  * fixed vita build
+  * (VITA) Fix stat
+  * Fixes for Windows
+  * Fix getopt crazyness
+  * Revert "Revert "Update to Fuse 1.6.0 and libspectrum 1.5.0""
+  * Fixes for Windows
+  * Fix getopt crazyness
+  * Revert "Update to Fuse 1.6.0 and libspectrum 1.5.0"
+  * Fix fastload settings
+  * Fix conflicting types
+  * Workaround to keep system getopt_long
+  * Update to Fuse 1.6.0
+  * Add ios targets
+  * Update .gitlab-ci.yml
+  * Fix Mac builds
+  * Add armv8 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Create .gitlab-ci.yml
+  * remove obsolete #define from util.c
+  * Update Makefile.libretro
+  * Try to see if this is actually necessary
+  * PS3 build fix
+
+-------------------------------------------------------------------
 Sun Jun 07 14:28:49 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200506:
