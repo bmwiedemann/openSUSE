@@ -33,4 +33,13 @@
     <comment></comment>
     <requestid>897201</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>cc6bd594ec8af34583a385e7edb540fa</srcmd5>
+    <version>1.1</version>
+    <time>1632173590</time>
+    <user>dimstar_suse</user>
+    <comment>- Add switch-to-pytest.patch
+  * Use assert and pytest rather than nose.</comment>
+    <requestid>920218</requestid>
+  </revision>
 </revisionlist>

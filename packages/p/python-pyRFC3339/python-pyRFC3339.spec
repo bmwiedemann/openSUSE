@@ -25,7 +25,7 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/kurtraschke/pyRFC3339
 Source:         https://github.com/kurtraschke/pyRFC3339/archive/refs/tags/v1.1.tar.gz#/pyRFC3339-%{version}.tar.gz
-BuildRequires:  %{python_module nose}
+Patch0:         switch-to-pytest.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
@@ -40,6 +40,7 @@ pyRFC3339 parses and generates :RFC:`3339`-compliant timestamps using Python `da
 
 %prep
 %setup -q -n pyRFC3339-%{version}
+%autopatch -p1
 
 %build
 %python_build

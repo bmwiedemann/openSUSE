@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 02:09:22 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add switch-to-pytest.patch
+  * Use assert and pytest rather than nose. 
+
+-------------------------------------------------------------------
 Thu Jun  3 11:27:14 UTC 2021 - pgajdos@suse.com
 
 - use github tarball with tests
