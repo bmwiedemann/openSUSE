@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 16 11:28:40 UTC 2021 - rbrown@suse.com
+
+- Update to version 1.20.11:
+  * Fix a small regression in Service updates
+  * Service: Fix semantics for Update wrt allocations
+  * Fix buckets initialization
+  * fix: ensure InstanceShutdownByProviderID return false for creating Azure VMs
+  * fix: skip case sensitivity when checking Azure NSG rules
+  * Keep MakeMountArgSensitive and add a new signature that receives flags
+  * Update the unit tests to handle mountFlags
+  * Add missing interface method in mount_unsupported.go
+  * Pass additional flags to subpath mount to avoid flakes in certain conditions
+  * Update CHANGELOG/CHANGELOG-1.20.md for v1.20.10
+  * Copy golang license to staging copies
+  * delete stale UDP conntrack entries for loadbalancer IPs
+  * job controller: don't mutate shared cache object
+  * Set idle and readheader timeouts
+
+-------------------------------------------------------------------
 Wed Aug 25 11:29:41 UTC 2021 - rbrown@suse.com
 
 - Update to version 1.20.10:
