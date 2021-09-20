@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 14 11:57:29 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.19
+  * Hold gestures are a new type of gestures that are triggered
+    by holding one or more fingers on a touchpad without
+    significant movement. They add to the existing pinch and
+    swipe gestures and allow for the implementation of
+    hold-to-click.
+  * High-resolution wheel scrolling has been long in the making
+    and the solution ends up replacing the existing pointer axis
+    API. Three new events are available:
+    LIBINPUT_EVENT_POINTER_SCROLL_WHEEL,
+    LIBINPUT_EVENT_POINTER_SCROLL_FINGER, and
+    LIBINPUT_EVENT_POINTER_SCROLL_CONTINUOUS. These events
+    replace the existing LIBINPUT_EVENT_POINTER_AXIS events, i.e.
+    if you are processing the new events simply discard the old
+    events.
+
+-------------------------------------------------------------------
 Tue Aug  3 00:05:19 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.18.1
