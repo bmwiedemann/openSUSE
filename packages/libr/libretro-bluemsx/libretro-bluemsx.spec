@@ -17,7 +17,7 @@
 
 
 Name:           libretro-bluemsx
-Version:        0~git20210515
+Version:        0~git20210808
 Release:        0
 Summary:        BlueMSX libretro core for MSX emulation
 License:        GPL-2.0-only
