@@ -1,4 +1,260 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:15:56 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210906:
+  * Fixed cheat codes not working when in uppercase
+  * Made it so the 'Auto' and 'Pixel Perfect' (previously '8:7') aspect ratios don't change to 10:9 when playing SGB games with 'Crop Overscan' set to off
+  * Added an option to hide the SGB border when playing GameBoy games, as well as using the GameBoy's 10:9 aspect ratio for the 'Auto' and 'Pixel Perfect' (previously '8:9') core aspect ratio option when the border option is enabled
+  * Revert last commit and add GB_VERSION to Android.mk
+  * Revert Sameboy upsync
+  * nall: File timestamp fix for OpenBSD and DragonFly BSD, add DragonFly BSD to PLATFORM_BSD definition
+  * Set up SameBoy log callback
+  * Build updates for SameBoy 0.14.4
+  * Whitespace cleanup in OpenBSD-specific code
+  * Update version to 0.14.4
+  * That was silly
+  * Minor cleanup
+  * Style fixes
+  * Major improvements to JoyKit, fixing Xbox and 8BitDo controllers as well as analog mappings in PS controllers in some situations
+  * Remove unnecessary WIN* defines.
+  * Actually do what the previous commit claimed to do
+  * Fix an issue where SameBoot gave DMG games the wrong palette and needlessly drew the DMG boot tilemap
+  * Improved OAM bug accuracy in several read edge cases
+  * Add a link to the official Discord.
+  * Fix blurry VRAM viewer grid lines
+  * Improved ticks command, more accurate speed switch timings, better odd-mode warnings
+  * More accurate emulation of STOP
+  * MBC5 RAM enable is 8 bit
+  * Port to OpenBSD
+  * [Libretro] Fix small typo in palette description
+  * [Libretro] Upgrade Core Options to v1.3
+  * Fixed double->single speed switch causing misaligned CPU timing
+  * Add "Harsh Reality" color correction mode
+  * Add -s/--stop-debugger flag to SDL, closes #392
+  * Fixed Switch Pro Controller in USB mode
+  * Vblank should occur 1 T-cycle later
+  * Disabled an accuracy-improvement-attempt that caused audio regressions until the proper behavior is well understood, fixes #390
+  * Fixed a bug that prevented STAT interrupt blocking from functioning correctly in the transition to VBlank while the OAM interrupt was disabled
+  * Add Italian translation of core options
+  * Fix Windows build in clang-cl
+  * Improved DualSense LEDs, fix several analog controls issues
+  * First-tier support for DualSense controllers with rumble and LED support
+  * Fix configuration of analog shoulder buttons for analog turbo/slow motion when using a PS5 controller
+  * Correct default mapping for PS5 and PS4 controllers
+  * Added optional OSD (SDL)
+  * Added optional OSD (Cocoa)
+  * Show commit hash in core version
+  * Fix vector<T>::acquire() arguments
+  * libretro.cpp - limit update_geometry calls
+  * libretro.cpp - minor cleanup and indentation fix
+  * Refactor and upgrade Core Options
+  * Added volume control to the Cocoa port
+  * That code made very little sense
+  * Fix #386
+  * Place a cap on the GBS file size
+  * Style fixes
+  * Fall back to .snX if no .sX save state found
+  * Allow Haiku build
+  * Display usage on invalid options
+  * A flag to disable OpenGL, better and more stable handling of no-OpenGL mode
+  * Updater support
+  * Fix the desktop categories.
+  * Don't save 0x6000 for MBC3 in BESS
+  * RTC accuracy fix
+  * gbs: function to load from memory buffer
+  * Support for non-standard GBS files with a loading address at 0
+  * Handle loading errors
+  * Add support for ugetab's GBS extensions, fixes #377
+  * Allow GBS files with loading addresses 0x6E-0x3FF, fixes #376
+  * Typo fix
+  * Update version, finalize BESS 1.0
+  * Fix an SDL crash, minor tweak to BESS SGB
+  * Redo TPP1 saving, fix RTC and HUC3 in BESS
+  * Added optional INFO block
+  * Use semantic popup icons instead of always using error
+  * ATTR_CHR does not seem to wrap around screen (only lines/columns)
+  * Update and clarify specification
+  * Fix critical undefined bit-shift length operation
+  * Use the older, more available API
+  * Allow drag&drop of state files
+  * KEY0 info
+  * More clarifications
+  * Clarify MBC block
+  * Hard fail on unexpected SGB blocks
+  * Clarify SGB multiplayer, handle count = 0
+  * TPP1 in BESS
+  * Don't use BESS for internal in-memory saves
+  * Allow writes to the $a000-$bfff range in the MBC block
+  * Update spec
+  * ATF is only 0xFD2 bytes, not 0xFE0
+  * Add HuC3 to BESS
+  * Wording
+  * Actually update spec
+  * Spec update
+  * Fixed a bug where the screen would not redraw when certain controllers are rumbling in specific strengths in the Cocoa port
+  * Respect TPP1 feature flags for rumble and RTC
+  * Fix Rumble support in TPP1
+  * Normalize invalid weekdays only after a $11 command
+  * Correct emulation of count overflow in ATTR_CHR, fixes #372
+  * Update .gitignore
+  * Update .gitignore
+  * TPP1 support
+  * Remove commented out code
+  * GCC build fix
+  * Another cheat bugfix
+  * Added visualizer to the GBS player, various GBS UI improvements
+  * Forgot to commit the document update
+  * sfc: You can turn off auto-joypad-polling while it's in progress.
+  * sfc: Remove unused auto-joypad-polling variables.
+  * BESS format updates
+  * Fix a potential crash/corruption when modifying cheats
+  * UI Updates
+  * Update .gitignore
+  * hiro: Disable padding for the GTK+3 backend.
+  * Cocoa GBS Player
+  * Add GBS APIs
+  * Fix memory leak
+  * Fix a bug where SameBoy would start in "faux turbo mode"
+  * Add BESS format documentation
+  * Change the border format to SNES-style
+  * (.gitlab-ci.yml) Do not compile with local=true - this is not portable - https://github.com/libretro/bsnes/commit/e089311f7ee16883d4365a4df359442b2c865847
+  * Correct usage of PREFIX with DATA_DIR
+  * SGB support in BESS, BE fixes, changes to SGB save state format on BE machines
+  * macosx-arm64 - proper platform name is macos for bsnes
+  * Add osx-arm64 target
+  * replace PREFIX/share/sameboy with DATA_DIR
+  * RTC support
+  * Make NAME come before CORE
+  * Initial BESS support, no SGB nor RTC yet
+  * Add ios-arm64/tvos-arm64 targets
+  * Better errnos
+  * Redo save states to remove severe code duplication between buffers and files
+  * Improved time syncing when turning the LCD on and off, fixes #193
+  * make it compilable on case-sensitive systems
+  * Update version
+  * Register ISX files on FreeDesktop
+  * This shouldn't have been here
+  * Close all related windows when closing a document
+  * Fix an APU regression that caused some games in DMG mode to play in the wrong pitch
+  * Add missing mkdir
+  * libretro: Remove APP_STL
+  * libretro: Remove empty CFLAGS
+  * Update version to 0.14.1
+  * No need for -1
+  * libretro: Sync updates from libretro
+  * Coding style, ensuring string termination.
+  * Addresses issues mentioned by #355
+  * Fix #353 better
+  * Fix #353
+  * Fix a sweep regression in DMG/SGB mode and CGB-C mode
+  * value_to_string: use snprintf
+  * Fix off-by-one in symbol search
+  * Fix DESTDIR installation
+  * Update version and copyright date
+  * Fix make install issues
+  * Fixes and improvements to XDG installation
+  * Update Windows icon
+  * Update readme
+  * Allow make install under FreeDesktop
+  * Update icon
+  * Make the printer not deadlock after a sudden termination
+  * Make the automation use the accurate RTC mode
+  * Add RTC setting to libretro
+  * Add RTC option to the SDL port, fix a bug where rewind setting didn't update
+  * Slightly improve MBC3 accuracy
+  * Accurate RTC emulation
+  * Fix PAL SGB in the Cocoa port
+  * Add accurate RTC emulation mode
+  * Allow creating sav files from the tester (Fixes #311)
+  * Fix #336
+  * Tell GCC to calm down
+  * I hate the audio thread
+  * Redo the volume envelope with better timings, locking emulation and zombie mode edge cases. Fixes #344
+  * More correct emulation of manual clocking of channels 1 and 2
+  * Rename UNROLL to unrolled (`unrolled for`)
+  * Emulate volume envelope locking
+  * Update targets.md
+  * Further accuracy improvements to the audio envelope
+  * Improved emulation of the volume envelope
+  * exit with error message instead of crash when a window cannot be opened
+  * Improved emulation of the NRx2 write glitch (Zombie mode) on models prior to CGB-D
+  * Fix more audio deadlocks
+  * Use a slider for temperature in the SDL GUI
+  * Emulation of NR43 bit 3 glitch on CGB-C and older
+  * Oops, that was reversed
+  * Fix for tolower extension signed char issue
+  * More NR43 obscurities
+  * doc: Document `co_serializable()`.
+  * doc: Add example programs using libco.
+  * Add a TODO
+  * Update the model enum so comparisons work correctly for SGB PAL and no-SFC SGBs
+  * Timing fix
+  * Revert "Further NR43 write glitch emulation" for now
+  * [Sameboy] Add type annotations to GBImageView's grid arrays.
+  * Revert nil check changes.
+  * Fix broken sprite rendering in the VRAM viewer due to mis-calculation of image data size.
+  * Resolve various deprecation warnings.
+  * Annotate properties as nonatomic.
+  * doc: Update usage.md
+  * Further NR43 write glitch emulation
+  * Oh boy, looks like my CGB-B is unique
+  * Improved emulation of NR43 writes on different revisions
+  * Better sample alignment on pre-CGB-D models
+  * Fix false positives in odd-mode detection
+  * More accurate emulation of NR10 writes
+  * Fix visibility of a few functions in the QuickLook plug-in.
+  * Better camera noise on frontends without camera support
+  * Emulation of a newly discovered revision specific APU quirk
+  * Minor APU bug fix
+  * Fix the last remaining APU test
+  * Fixing a bug where where zero-shift sweep wouldn't tick
+  * Interference emulation
+  * Capitalization
+  * Fix GCC9 build break
+  * Escape now returns to the previous menu if used from a submenu in the SDL port
+  * Fix it harder
+  * Fixed a bug where the SDL and libretro frontend would not update the border when loading a new ROM
+  * Something went wrong with the color temperature commit somehow
+  * Let the SDL port choose a boot ROMs folder
+  * Improved scrolling
+  * Scrollbar and mouse wheel support
+  * Better scrolling a spacing in the SDL UI
+  * Further improvements to STOP timing
+  * Fix a regression in speed switch timing, reset DIV on speed switch, better odd-mode detection and avoidance
+  * Color temperature control
+  * More accurate color correction curves
+  * More window fixes
+  * Better support for non-QWERTY Latin layouts
+  * More accurate emulation of window timing, actual correct fix of #123
+  * Add .gitattributes line ending settings
+  * LCDC write timing regression fix
+  * Warn about potential odd-mode triggers
+  * More accurate pausing behavior, including revision differences
+  * Minor changes to debugger output
+  * Whoops
+  * Emulate the delayed NR44 write on the DMG
+  * Fixed dark colors on Metal without frame blending
+  * Redo channel 4's timing accurately, emulate NR43 write quirks
+  * More sweep improvements
+  * Correct preservation of NRx1's state on pre-CGB models
+  * Further accuracy improvements to sweep; passes Blargg's APU tests again, this time for real
+  * Redo channel 1 sweep based on DMG schematics; emulates two newly discovered behaviors and also fixes #309
+  * Fix a window bug in CGB mode, fixes #123
+  * Add TGA output option to the tester, closes #310
+  * Added debugger "undo" command. Closes #156
+  * IR support in the libretro port
+  * More accurate IR emulation, simplify API
+  * More accurate emulation of the IR port
+  * Wave RAM reads 0xFF while active on AGBs
+  * Implement CGB-mode TILE_SEL mixing, fixes cgb-acid-hell and m3_lcdc_tile_sel_change2, closes #308
+  * More accurate interrupt emulation
+  * Local link cable and infrared emulation in the Cocoa port
+  * Minor bug fixes
+  * C89 requires __STDC__ to be defined, but not __STDC_VERSION__
+  * Windows is no longer officially supported in the standalone builds
+  * Update RGBDS links in README and build-faq
+
+-------------------------------------------------------------------
 Sat Mar 13 03:04:43 UTC 2021 - i@guoyunhe.me
 
 - Update to version 0~git20210308:

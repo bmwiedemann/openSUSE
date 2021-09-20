@@ -17,7 +17,7 @@
 
 
 Name:           libretro-bsnes
-Version:        0~git20210308
+Version:        0~git20210906
 Release:        0
 Summary:        The bsnes libretro core for SNES emulation
 License:        GPL-3.0-only
