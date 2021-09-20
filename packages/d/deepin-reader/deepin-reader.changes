@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Tue Aug 31 04:13:18 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Initial package for version 5.9.13
+- Add fix-library-link.patch.
+- Add fix-libdir.patch, fix the hardcode libdir
+- Add support-riscv.patch

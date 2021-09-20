@@ -1,0 +1,12 @@
+diff -Nur deepin-reader-5.9.13/3rdparty/deepin-pdfium/src/src.pro deepin-reader-5.9.13-new/3rdparty/deepin-pdfium/src/src.pro
+--- deepin-reader-5.9.13/3rdparty/deepin-pdfium/src/src.pro	2021-08-21 14:42:37.000000000 +0800
++++ deepin-reader-5.9.13-new/3rdparty/deepin-pdfium/src/src.pro	2021-08-30 20:57:10.531799766 +0800
+@@ -26,7 +26,7 @@
+ 
+ INCLUDEPATH += /usr/include/chardet
+ 
+-LIBS += -lchardet
++LIBS += -lchardet -ljpeg -licuuc -lz
+ 
+ public_headers += \
+     $$PWD/../include/dpdfglobal.h \
