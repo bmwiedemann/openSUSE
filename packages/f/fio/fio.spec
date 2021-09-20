@@ -16,33 +16,24 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%if 0%{?sles_version} == 11
-%bcond_with librbd
-%bcond_with libpmem
-%ifarch %{ix86}
-%bcond_with libnuma
-%else
-%bcond_without libnuma
-%endif
-%else
+%ifnarch s390x s390 ppc64le ppc64 ppc %{ix86} %{arm}
 %bcond_without librbd
+%endif
+%ifarch x86_64
 %bcond_without libpmem
+%endif
+%ifnarch s390x s390 %{arm}
 %bcond_without libnuma
 %endif
-%if 0%{?suse_version} < 1500
-%bcond_with librdmacm
-%else
 %bcond_without librdmacm
-%endif
 Name:           fio
-Version:        3.26
+Version:        3.28
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
 Group:          System/Benchmark
-URL:            http://git.kernel.dk/?p=fio.git;a=summary
-Source:         http://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
+URL:            https://git.kernel.dk/?p=fio.git;a=summary
+Source:         https://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
 BuildRequires:  gtk2-devel
 BuildRequires:  libaio-devel
 BuildRequires:  libcurl-devel
@@ -51,24 +42,18 @@ BuildRequires:  pkgconfig
 BuildRequires:  zlib-devel
 Suggests:       gfio
 Suggests:       gnuplot
-%if %{with libnuma}
-%ifnarch s390x s390 %{arm}
-BuildRequires:  libnuma-devel
-%endif
-%endif
-%if %{with librbd}
-%ifnarch s390x s390 ppc64le ppc64 ppc %{ix86} %{arm}
-BuildRequires:  librbd-devel
-%endif
-%endif
 %if 0%{?is_opensuse}
 BuildRequires:  glusterfs-devel
 %endif
+%if %{with libnuma}
+BuildRequires:  libnuma-devel
+%endif
+%if %{with librbd}
+BuildRequires:  librbd-devel
+%endif
 %if %{with libpmem}
-%ifarch x86_64
 BuildRequires:  libpmem-devel
 BuildRequires:  libpmemblk-devel
-%endif
 %endif
 %if %{with librdmacm}
 BuildRequires:  librdmacm-devel
@@ -111,8 +96,8 @@ make \
 
 %install
 %make_install \
-	prefix="%{_prefix}" \
-	mandir="%{_mandir}"
+  prefix="%{_prefix}" \
+  mandir="%{_mandir}"
 
 # Drop py2 only tool
 rm %{buildroot}%{_bindir}/fio-histo-log-pctiles.py
@@ -124,12 +109,7 @@ sed -i 's/\/usr\/bin\/env python3/\/usr\/bin\/python3/' %{buildroot}%{_bindir}/f
 make %{?_smp_mflags} test
 
 %files
-%defattr(-, root, root)
-%if 0%{?sles_version} == 11
 %license COPYING MORAL-LICENSE
-%else
-%license COPYING MORAL-LICENSE
-%endif
 %doc README examples
 %doc HOWTO REPORTING-BUGS
 %doc GFIO-TODO SERVER-TODO STEADYSTATE-TODO
@@ -145,13 +125,12 @@ make %{?_smp_mflags} test
 %{_bindir}/fiologparser_hist.py
 %{_bindir}/fio_jsonplus_clat2csv
 %{_datadir}/fio
-%{_mandir}/man1/fio.1%{ext_man}
-%{_mandir}/man1/fio_generate_plots.1%{ext_man}
-%{_mandir}/man1/fio2gnuplot.1%{ext_man}
-%{_mandir}/man1/fiologparser_hist.py.1%{ext_man}
+%{_mandir}/man1/fio.1%{?ext_man}
+%{_mandir}/man1/fio_generate_plots.1%{?ext_man}
+%{_mandir}/man1/fio2gnuplot.1%{?ext_man}
+%{_mandir}/man1/fiologparser_hist.py.1%{?ext_man}
 
 %files -n gfio
-%defattr(-, root, root)
 %{_bindir}/gfio
 
 %changelog
