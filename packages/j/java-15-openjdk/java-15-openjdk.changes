@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 26 13:45:59 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * openjdk-glibc234.patch
+    + fix build with glibc-2.34 (bsc#1189201)
+
+-------------------------------------------------------------------
 Thu Jul 22 07:36:04 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream tag jdk-15.0.4+5 (July 2021 CPU)
