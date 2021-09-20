@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:27:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Tue Jun  1 15:11:45 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add GCC 11 compatibility fix:

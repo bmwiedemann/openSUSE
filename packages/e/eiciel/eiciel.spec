@@ -1,7 +1,7 @@
 #
 # spec file for package eiciel
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.0.0
 BuildRequires:  pkgconfig(libnautilus-extension) >= 3.0.0
@@ -59,7 +58,6 @@ A Nautilus extension that allows viewing and editing ACL permissions.
 %prep
 %autosetup -p1
 sed -i -e 's!attr/xattr\.h!sys/xattr\.h!g' configure
-translation-update-upstream
 
 %build
 %configure \
