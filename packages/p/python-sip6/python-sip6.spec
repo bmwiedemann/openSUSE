@@ -26,11 +26,11 @@ License:        GPL-2.0-only OR GPL-3.0-only OR SUSE-SIP
 Group:          Development/Libraries/Python
 URL:            https://www.riverbankcomputing.com/software/sip
 Source0:        https://files.pythonhosted.org/packages/source/s/sip/sip-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
-BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -53,8 +53,12 @@ Requires:       python-devel
 Requires:       python-setuptools
 Requires:       python-toml
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Conflicts:      python-sip-impl
+# boo#1190441: remove erroneously created non-devel python3X-sip metapackages.
+# In order not to remove SIPv4 and possible future packages, we have to explicitly
+# name the only version which made it into Factory.
+Obsoletes:      python-sip = 6.1.1
 Provides:       python-sip-devel = %{version}-%{release}
 Provides:       python-sip-impl = %{version}-%{release}
 

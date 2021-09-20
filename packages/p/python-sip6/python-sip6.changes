@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 13 16:00:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Obsolete erroneously created non-devel metapackage -- boo#1190441
+
+-------------------------------------------------------------------
 Tue Jun 15 13:05:33 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.1.1
