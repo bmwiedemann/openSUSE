@@ -32,4 +32,14 @@ Add remove_unittest2.patch to facilitate that</comment>
     <comment></comment>
     <requestid>826974</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9ee2c9c1c955c6904b899bd1a9c0b4d9</srcmd5>
+    <version>1.5.3</version>
+    <time>1632173517</time>
+    <user>dimstar_suse</user>
+    <comment>- Add remove-nose.patch:
+  * Stop using nose to skip tests.
+- Adjust Requires from python-nose to python-pytest.</comment>
+    <requestid>919029</requestid>
+  </revision>
 </revisionlist>

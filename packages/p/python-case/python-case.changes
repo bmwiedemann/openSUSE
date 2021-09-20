@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 15 04:38:57 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add remove-nose.patch:
+  * Stop using nose to skip tests.
+- Adjust Requires from python-nose to python-pytest. 
+
+-------------------------------------------------------------------
 Sun Aug 16 06:43:43 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Remove test dependencies and %check as there are no tests
