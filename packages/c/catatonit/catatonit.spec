@@ -1,7 +1,7 @@
 #
 # spec file for package catatonit
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           catatonit
-Version:        0.1.5
+Version:        0.1.6
 Release:        0
 Summary:        A signal-forwarding process manager for containers
 License:        GPL-3.0-or-later

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 16 05:16:12 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Update to catatonit v0.1.6, which fixes a few bugs -- mainly ones related to
+  socket activation or features somewhat adjacent to socket activation (such as
+  passing file descriptors).
+- Update catatonit-rpmlintrc in order to cover that static binaries are now an
+  error not a warning.
+
+-------------------------------------------------------------------
 Mon Mar  2 16:20:29 UTC 2020 - Aleksa Sarai <asarai@suse.com>
 
 - Update to catatonit v0.1.5, which fixes two bugs where catatonit would hang
