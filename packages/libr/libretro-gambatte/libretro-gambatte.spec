@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-gambatte
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-gambatte
-Version:        0~git20200630
+Version:        0~git20210903
 Release:        0
 Summary:        Gambatte libretro core for GameBoy Color emulation
 License:        GPL-2.0-only

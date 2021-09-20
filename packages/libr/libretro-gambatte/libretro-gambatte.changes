@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:04:23 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210903:
+  * Set up fully automatic translations sync with Crowdin
+  * Add support for RETRO_ENVIRONMENT_SET_CORE_OPTIONS_UPDATE_DISPLAY_CALLBACK environment callback
+  * Revert "Update"
+  * Update
+  * Update core options
+  * Show commit hash in core version
+  * Remove unused variable in libretro_core_options.h
+  * Add core options v2 support
+  * add retrofw target:
+  * (.gitlab-ci.yml) Add RS-90 target
+  * RS90 support
+  * Add 'TI-83 Legacy' internal colourisation palette
+  * Update core options for compatibility with TheWolfBunny64's latest palettes + optimisations
+  * 200 Game Boy palettes, new and old, join Gambatte!
+  * 200 new Game Boy palettes join Gambatte!
+  * 54/200 Game Boy palettes join the selection!
+  * Prevent segfaults due to audio buffer overflows
+  * Add turbo A/B buttons
+  * Add dedicated RetroPad fast-forward button
+  * Add od-beta
+  * Ensure frame blending configuration is correctly reset in retro_deinit()
+  * Add ios-arm64 and tvos-arm64
+  * (MSVC) Embed MSVCRT runtime
+  * Add MSVC 2005/2010 cores
+  * (macOS) Set up CROSS_COMPILING for ARM 64bit
+  * Add PS2 to the CI
+  * Add PS2 and ABGR1555 support
+  * add armv8 + rpi4 support
+  * Update .gitlab-ci.yml
+  * (.gitlab-ci.yml) Add linux-i686 target
+  * (.gitlab-ci.yml) Add Emscripten target
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Revert "added per-sound channel individual volume core options (#166)"
+  * Revert "fix sound on platforms where 'unsigned long' is only 32 bits wide"
+  * fix sound on platforms where 'unsigned long' is only 32 bits wide
+  * Update
+  * Update
+  * fix inverted src/dest arguments to memmove which broke GameLink client mode
+  * Update .gitlab-ci.yml
+  * libretro: Update gitlab ci extends ordering
+  * Update .gitlab-ci.yml
+  * added per-channel volume core options (#166)
+  * Add OpenDingux target to .gitlab-ci.yml
+  * Add rumble support
+  * Optimise 'simple' frame mixing
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add .gitlab-ci.yml
+  * OpenDingux: Add -ffast-math compiler flag
+  * Interframe Blending: Improve accuracy of 'Simple (Fast)' method, remove 'Simple (Accurate)' method
+  * Fix 'GB - Pocket' internal palette
+  * Update GBC colour correction parameters
+
+-------------------------------------------------------------------
 Sat Aug 08 09:32:25 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200630:
