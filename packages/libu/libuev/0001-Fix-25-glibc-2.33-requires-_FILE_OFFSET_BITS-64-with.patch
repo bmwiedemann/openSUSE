@@ -1,0 +1,26 @@
+From b089ff6c95db5f3742511c1037c3885263df0329 Mon Sep 17 00:00:00 2001
+From: Joachim Wiberg <troglobit@gmail.com>
+Date: Sun, 1 Aug 2021 22:37:01 +0200
+Subject: [PATCH] Fix #25: glibc >= 2.33 requires _FILE_OFFSET_BITS=64 with
+ _TIME_BITS=64
+
+Signed-off-by: Joachim Wiberg <troglobit@gmail.com>
+---
+ src/Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 8e67e5a..eac1156 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -1,6 +1,6 @@
+ lib_LTLIBRARIES     = libuev.la
+ libuev_la_SOURCES   = uev.c uev.h private.h io.c timer.c signal.c cron.c event.c
+-libuev_la_CPPFLAGS  = -D_GNU_SOURCE -D_TIME_BITS=64
++libuev_la_CPPFLAGS  = -D_GNU_SOURCE -D_TIME_BITS=64 -D_FILE_OFFSET_BITS=64
+ libuev_la_CFLAGS    = -W -Wall -Wextra -std=gnu11
+ libuev_la_LDFLAGS   = $(AM_LDFLAGS) -version-info 4:0:2
+ 
+-- 
+2.33.0
+

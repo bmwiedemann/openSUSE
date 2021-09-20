@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 19 08:44:57 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add glibc >= 2.33 build fix:
+  * 0001-Fix-25-glibc-2.33-requires-_FILE_OFFSET_BITS-64-with.patch
+
+-------------------------------------------------------------------
 Sun Feb 14 19:42:17 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libuev 2.3.2:

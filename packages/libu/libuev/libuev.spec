@@ -26,6 +26,12 @@ License:        MIT
 Group:          Development/Languages/C and C++
 URL:            https://github.com/troglobit/libuev/
 Source:         https://github.com/troglobit/libuev/releases/download/v%{version}/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-25-glibc-2.33-requires-_FILE_OFFSET_BITS-64-with.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
+BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 
 %description
@@ -57,9 +63,10 @@ Requires:       libuev%{sover} = %{version}
 Development and header files for libuEv.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+autoreconf -fiv
 %configure \
   --disable-static
 %make_build
@@ -67,7 +74,7 @@ Development and header files for libuEv.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-rm -rf %{buildroot}/%{_datadir}/doc
+rm -r %{buildroot}%{_datadir}/doc
 
 %post   -n libuev%{sover} -p /sbin/ldconfig
 %postun -n libuev%{sover} -p /sbin/ldconfig
