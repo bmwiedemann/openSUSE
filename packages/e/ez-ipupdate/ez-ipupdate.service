@@ -3,6 +3,18 @@ Description=Ez-ipupdate Check and update your IP to dynamic DNS Server
 After=network.target
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=forking
 PIDFile=/run/ez-ipupdate/ez-ipupdate.pid
 ExecStart=/usr/bin/ez-ipupdate --daemon --config-file /etc/ez-ipupdate.conf --pid-file /run/ez-ipupdate/ez-ipupdate.pid

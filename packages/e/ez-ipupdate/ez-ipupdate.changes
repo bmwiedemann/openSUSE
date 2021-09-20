@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 14 07:36:51 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * ez-ipupdate.service
+
+-------------------------------------------------------------------
 Sat Dec 26 09:01:29 UTC 2015 - obs@botter.cc
 
 - fix location of configuration file in systemd service file
