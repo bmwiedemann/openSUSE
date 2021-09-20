@@ -16,7 +16,8 @@
 #
 
 
-%bcond_without  test
+# boo#1190482
+%bcond_with  test
 Name:           spyder
 Version:        5.1.5
 Release:        0
@@ -388,8 +389,6 @@ testcmd=(python3 runtests.py -m "not no_xvfb" --timeout 1800 -ra -k "not (${dont
 "${testcmd[@]}" --run-slow
 ' > runtests.sh
 xvfb-run --server-args "-screen 0 1920x1080x24" bash runtests.sh
-# wait a bit so that Xvfb can fully exit before the final build steps try to allocate memory
-sleep 10
 %endif
 
 %files
