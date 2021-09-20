@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:21:11 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210803:
+  * add retrofw target
+  * RS90 Support
+  * Cleanup
+  * Add persistent data buffer extension support
+  * Update .gitlab-ci.yml
+  * Add od-beta
+  * Add ios-arm64/tvos-arm64
+  * Add optional low pass audio filter + remove unnecessary audio resampling
+  * Add 'Dual Stick Controller' core option
+  * Add colour depth option + OpenDingux target
+  * (MSVC) Embed MSVCRT runtime
+  * Add msvc10 x64
+  * Add MSVC 2005/2010 targets
+  * Buildfix for previous commit - 'yaml invalid' error
+  * (macOS) Add arm64 support
+  * Update .gitlab-ci.yml
+  * Wii build
+  * Add armv8 + rpi4
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Fix state loading
+  * Add .gitlab-ci.yml
+  * Cleanups
+  * Cleanups
+  * remove unused variable
+  * Update Application.mk
+  * libretro: use input bitmask
+  * Attempt to fix linux-armv7-neon build
+  * Trigger a rebuild
+
+-------------------------------------------------------------------
 Tue Jun 16 06:51:36 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200107:
