@@ -18,14 +18,13 @@
 
 
 Name:           python-emoji
-Version:        1.4.2
+Version:        1.5.0
 Release:        0
 Summary:        Emoji for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/carpedm20/emoji/
 Source:         https://files.pythonhosted.org/packages/source/e/emoji/emoji-%{version}.tar.gz
-Patch1:         fix-python2.patch
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
