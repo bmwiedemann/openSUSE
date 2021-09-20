@@ -3003,4 +3003,38 @@ http://lists.opensuse.org/opensuse-packaging/2012-09/msg00254.html
     <comment></comment>
     <requestid>914988</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>dc5bd59825eca3b7de26e4ba8db8beee</srcmd5>
+    <version>3.6.15</version>
+    <time>1632173523</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.6.15:
+  - bpo-43124: Made the internal putcmd function in smtplib
+    sanitize input for presence of \r and \n characters to avoid
+    (unlikely) command injection. Library
+  - bpo-45001: Made email date parsing more robust against
+    malformed input, namely a whitespace-only Date: header. Patch
+    by Wouter Bolsterlee. Tests
+  - bpo-38965: Fix test_faulthandler on GCC 10. Use the
+    “volatile” keyword in faulthandler._stack_overflow() to
+    prevent tail call optimization on any compiler, rather than
+    relying on compiler specific pragma.
+- Remove upstreamed patches:
+  - faulthandler_stack_overflow_on_GCC10.patch
+
+    - bpo-44022 (bsc#1189241, CVE-2021-3737): mod:http.client now
+      avoids infinitely reading potential HTTP headers after
+      a 100 Continue status response from the server.
+    - bpo-42988 (CVE-2021-3426, bsc#1183374): Remove the getfile feature
+      of the pydoc module which could be abused to read arbitrary files
+      on the disk (directory traversal vulnerability). Moreover, even
+    - bpo-43075 (CVE-2021-3733, bsc#1189287): Fix Regular Expression
+      Denial of Service (ReDoS) vulnerability in
+      urllib.request.AbstractBasicAuthHandler. The ReDoS-vulnerable
+      regex has quadratic worst-case complexity and it allows cause
+      a denial of service when identifying crafted invalid RFCs. This
+      ReDoS issue is on the client side and needs remote attackers to
+      control the HTTP server.</comment>
+    <requestid>919164</requestid>
+  </revision>
 </revisionlist>

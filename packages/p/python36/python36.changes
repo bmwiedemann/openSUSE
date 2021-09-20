@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 15 11:30:35 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.6.15:
+  - bpo-43124: Made the internal putcmd function in smtplib
+    sanitize input for presence of \r and \n characters to avoid
+    (unlikely) command injection. Library
+  - bpo-45001: Made email date parsing more robust against
+    malformed input, namely a whitespace-only Date: header. Patch
+    by Wouter Bolsterlee. Tests
+  - bpo-38965: Fix test_faulthandler on GCC 10. Use the
+    “volatile” keyword in faulthandler._stack_overflow() to
+    prevent tail call optimization on any compiler, rather than
+    relying on compiler specific pragma.
+- Remove upstreamed patches:
+  - faulthandler_stack_overflow_on_GCC10.patch
+
+-------------------------------------------------------------------
 Thu Aug 26 11:29:10 UTC 2021 - Andreas Schwab <schwab@suse.de>
 
 - test_faulthandler is still problematic under qemu linux-user emulation,
@@ -9,17 +26,17 @@ Tue Aug 10 00:09:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.6.14:
   * Security
-    - bpo-44022 (boo#1189241): mod:http.client now avoids
-      infinitely reading potential HTTP headers after a 100
-      Continue status response from the server.
+    - bpo-44022 (bsc#1189241, CVE-2021-3737): mod:http.client now
+      avoids infinitely reading potential HTTP headers after
+      a 100 Continue status response from the server.
     - bpo-43882: The presence of newline or tab characters in parts
       of a URL could allow some forms of attacks.
       Following the controlling specification for URLs defined by
       WHATWG urllib.parse() now removes ASCII newlines and tabs
       from URLs, preventing such attacks.
-    - bpo-42988: CVE-2021-3426: Remove the getfile feature of the
-      pydoc module which could be abused to read arbitrary files on
-      the disk (directory traversal vulnerability). Moreover, even
+    - bpo-42988 (CVE-2021-3426, bsc#1183374): Remove the getfile feature
+      of the pydoc module which could be abused to read arbitrary files
+      on the disk (directory traversal vulnerability). Moreover, even
       source code of Python modules can contain sensitive data like
       passwords. Vulnerability reported by David Schwörer.
     - bpo-43285: ftplib no longer trusts the IP address value
@@ -30,12 +47,13 @@ Tue Aug 10 00:09:41 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
       Code that requires the former vulnerable behavior may set a
       trust_server_pasv_ipv4_address attribute on their ftplib.FTP
       instances to True to re-enable it.
-    - bpo-43075: Fix Regular Expression Denial of Service (ReDoS)
-      vulnerability in urllib.request.AbstractBasicAuthHandler. The
-      ReDoS-vulnerable regex has quadratic worst-case complexity
-      and it allows cause a denial of service when identifying
-      crafted invalid RFCs. This ReDoS issue is on the client side
-      and needs remote attackers to control the HTTP server.
+    - bpo-43075 (CVE-2021-3733, bsc#1189287): Fix Regular Expression
+      Denial of Service (ReDoS) vulnerability in
+      urllib.request.AbstractBasicAuthHandler. The ReDoS-vulnerable
+      regex has quadratic worst-case complexity and it allows cause
+      a denial of service when identifying crafted invalid RFCs. This
+      ReDoS issue is on the client side and needs remote attackers to
+      control the HTTP server.
 - Upstreamed patches were removed:
   - CVE-2021-3426-inf-disclosure-pydoc-getfile.patch
 - Refreshed patches:

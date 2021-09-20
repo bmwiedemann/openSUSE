@@ -87,7 +87,7 @@
 %bcond_with profileopt
 %endif
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.6.14
+Version:        3.6.15
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -108,7 +108,8 @@ Source21:       pip-20.2.3-py2.py3-none-any.whl
 # The following files are not used in the build.
 # They are listed here to work around missing functionality in rpmbuild,
 # which would otherwise exclude them from distributed src.rpm files.
-Source99:       https://www.python.org/static/files/pubkeys.txt#/python.keyring
+# Originally from https://www.python.org/static/files/pubkeys.txt#/python.keyring
+Source99:       python.keyring
 Source100:      PACKAGING-NOTES
 # implement "--record-rpm" option for distutils installations
 Patch01:        Python-3.0b1-record-rpm.patch
@@ -160,9 +161,6 @@ Patch35:        CVE-2019-9674-zip-bomb.patch
 Patch36:        riscv64-support.patch
 # PATCH-FIX-UPSTREAM riscv64-ctypes.patch bpo-35847: RISC-V needs CTYPES_PASS_BY_REF_HACK (GH-11694)
 Patch37:        riscv64-ctypes.patch
-# PATCH-FIX-UPSTREAM faulthandler._stack_overflow_on_GCC10.patch bpo#38965 mcepl@suse.com
-# Fix faulthandler._stack_overflow() on GCC 10
-Patch38:        faulthandler_stack_overflow_on_GCC10.patch
 # PATCH-FIX-UPSTREAM ignore_pip_deprec_warn.patch mcepl@suse.com
 # Ignore deprecation warning for old version of pip
 Patch39:        ignore_pip_deprec_warn.patch
@@ -430,7 +428,6 @@ other applications.
 %patch35 -p1
 %patch36 -p1
 %patch37 -p1
-%patch38 -p1
 %patch39 -p1
 %patch40 -p1
 %patch41 -p1
