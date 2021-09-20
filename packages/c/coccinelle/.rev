@@ -249,4 +249,12 @@
     <comment>- Add wrapper script to set COCCINELLE_HOME [boo#1184563]</comment>
     <requestid>895342</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>94aa94754d0c1fcb046ccb6c2945324e</srcmd5>
+    <version>1.1.0</version>
+    <time>1632173589</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>920201</requestid>
+  </revision>
 </revisionlist>

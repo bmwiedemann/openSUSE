@@ -61,8 +61,7 @@ fixing bugs in systems code.
 %build
 autoreconf -fi
 %configure
-# internal copy of stdcompat
-%make_build -j1
+%make_build -j1 VERBOSE=yes
 
 %install
 b="%buildroot"

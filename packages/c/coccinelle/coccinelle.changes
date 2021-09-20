@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- build with VERBOSE=yes
+
+-------------------------------------------------------------------
 Tue May 25 10:47:33 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add wrapper script to set COCCINELLE_HOME [boo#1184563]
