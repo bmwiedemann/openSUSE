@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:02:25 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210607:
+  * We don't need file.c for Mednafen NGP anymore
+  * Add missing header stddef.h for size_t
+  * Hook up persistent data buffer - note that the copy to ngpc_rom.data still happens and seems unavoidable for now since a temporary ROM buffer is needed for flash writes
+  * Flip things around - make ngpc_rom.orig_data the original persistent buffer
+  * Get rid of MDFNI_LoadGame
+  * Some cleanups + update libretro.h
+  * Take out puts/printf calls in state.c
+  * Fix LGTM warning
+  * Silence warnings (pointed out by LGTM)
+  * Remove unused file
+  * Add osx-arm64, tvos-arm64, ios-arm64
+  * (MSVC) Embed MSVCRT runtime
+  * Add MSVC 2005 and 2010 cores
+  * Fix Makefile
+  * Add armv8 and fix rpi aarch64
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Cleanups
+  * Update .gitlab-ci.yml
+  * Backport this - https://github.com/gameblabla/NGPCemu/commit/80cdf4aaeecc98f91c843d2b7b48237346dc5b6e Plus change C++ comments to C
+  * msvc2010: Buildfix
+  * Update libretro-common
+  * Update .gitlab-ci.yml
+  * Add .gitlab-ci.yml
+  * Get rid of require
+  * Get rid of osc_output mono
+  * Get rid of mono T6W28_Apu output
+  * Get rid of sms_type_t typedef
+  * system cleanup
+  * Cut down on stdio.h usage
+  * Cleanup
+  * Get rid of two unused structs
+  * Get rid of unused driver.h
+  * system - flash stateregs
+  * Cleanups
+  * Convert libretro.cpp to C
+  * Get rid of C++ functionality in state_helpers.h
+  * remove unused headers
+  * Make libretro.cpp no longer dependent on state_helpers.h
+  * Get rid of std::string dependencies
+  * Reimplement retro_base_name as C string
+  * MSVC buildfix
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Backport https://github.com/gameblabla/NGPCemu/commit/106fcebefeefd44ad06e26eb803c9456c08fd630
+  * Backport  https://github.com/gameblabla/NGPCemu/commit/3ece3a0575d349748b30d4ae006b5ee38d84126c
+  * Backport https://github.com/gameblabla/NGPCemu/commit/88404e4dfd4348ee3e0db8a5d7e78f1e259a62c9
+  * Cleanup
+  * Remove unnecessary templated functions/classes that were never used
+  * Buildfixes for MSVC
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Remove MDFNGameInfo
+  * Header include cleanups
+  * Cleanup
+  * Cleanups
+  * Cleanups
+  * Don't need scrc32.c
+  * Remove unused MPC_FIXED_POINT
+  * Cleanups
+  * Cleanups
+  * Convert ngp/mem.cpp to C
+  * Convert interrupt.cpp to C
+  * Convert gfx.cpp to C
+  * Convert Z80_interface.cpp to C
+  * Convert dma.cpp to dma.c
+  * Convert biosHLE.cpp to biosHLE.c
+  * Convert ngp/system.cpp to ngp/system.c
+  * Convert rom.cpp to rom.c
+  * Convert flash.cpp to flash.c
+  * Cleanups
+  * Remove DecodeCheat
+  * Cleanups
+  * tab formatting
+  * clear blip buffers on loadstate
+  * C89 buildfix
+  * Convret state.cpp to C
+  * Cleanup
+  * libretro: mingw: Use backslash for includes
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681
+
+-------------------------------------------------------------------
 Sat May 30 16:08:44 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200518:

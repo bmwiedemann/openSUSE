@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-beetle-ngp
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-beetle-ngp
-Version:        0~git20200518
+Version:        0~git20210607
 Release:        0
 Summary:        Mednafen NGP libretro core for NeoGeo Pocket emulation
 License:        GPL-3.0-only
