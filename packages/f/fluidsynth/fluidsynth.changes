@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 14 09:59:43 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_fluidsynth.service.patch
+  Modified:
+  * fluidsynth.service
+
+-------------------------------------------------------------------
 Sun Jul 11 17:21:21 UTC 2021 - Tom Mbrt <tom.mbrt@googlemail.com>
 
 - Update to 2.2.2

@@ -28,6 +28,7 @@ Source0:        https://github.com/FluidSynth/%{name}/archive/v%{version}.tar.gz
 Source1:        %{name}.conf
 Source2:        %{name}.service
 Source1000:     baselibs.conf
+Patch0:	harden_fluidsynth.service.patch
 BuildRequires:  cmake >= 3.1.0
 BuildRequires:  gcc-c++
 BuildRequires:  ladspa-devel
@@ -71,7 +72,7 @@ Group:          System/Libraries
 This package contains the shared library for Fluidsynth.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake \
