@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 14 09:12:40 UTC 2021 - adam.majer@suse.de
+
+- Update to version v1.2+3.b848aad:
+  * tests: fix array overrun in unit tests
+
+-------------------------------------------------------------------
+Mon Sep 13 21:29:01 UTC 2021 - adam.majer@suse.de
+
+- Update to version v1.2:
+  * Add config option=KeepArgv0 to keep original argument during
+    exec() call
+
+-------------------------------------------------------------------
 Mon Jun 21 22:00:23 UTC 2021 - adam.majer@suse.de
 
 - Update to version v1.1:

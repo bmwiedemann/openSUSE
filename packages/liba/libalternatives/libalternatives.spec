@@ -19,7 +19,7 @@
 %define sover 1
 
 Name:           libalternatives
-Version:        1.1
+Version:        1.2+3.b848aad
 Release:        0
 Summary:        Executes preferred application based on user preferences
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later

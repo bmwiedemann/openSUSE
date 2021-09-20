@@ -20,4 +20,17 @@
   * libalts_exec_default() sets errno on not found</comment>
     <requestid>901232</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14ebd337598b75f07e31c755f89b0130</srcmd5>
+    <version>1.2+3.b848aad</version>
+    <time>1632173510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.2+3.b848aad:
+  * tests: fix array overrun in unit tests
+
+- Update to version v1.2:
+  * Add config option=KeepArgv0 to keep original argument during
+    exec() call</comment>
+    <requestid>918866</requestid>
+  </revision>
 </revisionlist>
