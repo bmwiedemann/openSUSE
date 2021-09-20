@@ -17,7 +17,7 @@
 #
 
 Name:           votca-tools
-Version:        2021.1
+Version:        2021.2
 Release:        0
 %define         uversion %version
 %define         sover 2021
