@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 12 10:20:30 UTC 2021 - ohering@suse.de
+
+- Restore ExclusiveArch, continue to follow libguestfs
+  The 'almost' below is the reason.
+
+-------------------------------------------------------------------
+Thu Sep  9 19:19:19 UTC 2021 - ohering@suse.de
+
+- arm32 may have a kernel named /boot/zImage
+
+-------------------------------------------------------------------
 Thu Sep  9 11:38:07 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove arch exclusion, almost all of them build.

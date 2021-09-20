@@ -59,8 +59,10 @@ Requires:       xmlstarlet
 Requires:       zypper
 Provides:       febootstrap
 %{?ocaml_preserve_bytecode}
-# fails to run %%check
-ExcludeArch:    armv7l
+%if "%{?_ignore_exclusive_arch}" == ""
+# this must follow libguestfs, which is the only consumer of this pkg
+ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
+%endif
 
 %description
 supermin is a tool for building supermin appliances. These are tiny
@@ -90,7 +92,7 @@ find %{buildroot} -ls
 ls -alt /boot /lib/modules || :
 ls -altd /lib/modules/*/* || :
 
-for i in /boot/image* /boot/Image* /boot/vmlinu*
+for i in /boot/image* /boot/Image* /boot/vmlinu* /boot/zImage*
 do
   test -f "$i" || continue
   if get_kernel_version "${i}" > $$
