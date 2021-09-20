@@ -239,9 +239,9 @@ Mon Aug  9 11:14:15 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.6:
   * Security
-    - bpo-44022: mod:http.client now avoids infinitely reading
-      potential HTTP headers after a 100 Continue status response
-      from the server.
+    - bpo-44022 (bsc#1189241, CVE-2021-3737): http.client now
+      avoids infinitely reading potential HTTP headers after
+      a 100 Continue status response from the server.
   * Core and Builtins
     - bpo-44168: Fix error message in the parser involving keyword
       arguments with invalid expressions. Patch by Pablo Galindo
@@ -350,13 +350,13 @@ Wed May  5 15:16:58 UTC 2021 - Matej Cepl <mcepl@suse.com>
       notatation. glibc implementation of modern inet_pton() does
       not accept any leading zeros. For a while the ipaddress
       module used to accept ambiguous leading zeros.
-    - bpo-43075: Fix Regular Expression Denial of Service (ReDoS)
-      vulnerability in urllib.request.AbstractBasicAuthHandler.
-      The ReDoS-vulnerable regex has quadratic worst-case
-      complexity and it allows cause a denial of service when
-      identifying crafted invalid RFCs. This ReDoS issue is on
-      the client side and needs remote attackers to control the
-      HTTP server.
+    - bpo-43075 (CVE-2021-3733, bsc#1189287): Fix Regular
+      Expression Denial of Service (ReDoS) vulnerability in
+      urllib.request.AbstractBasicAuthHandler. The
+      ReDoS-vulnerable regex has quadratic worst-case complexity
+      and it allows cause a denial of service when identifying
+      crafted invalid RFCs. This ReDoS issue is on the client
+      side and needs remote attackers to control the HTTP server.
     - bpo-42800: Audit hooks are now fired for frame.f_code,
       traceback.tb_frame, and generator code/frame attribute
       access.
