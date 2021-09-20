@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:59:25 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210704:
+  * Flash: Erased memory is FFh-filled
+  * Update
+  * Cleanups
+  * Add ios-arm64/tvos-arm64
+  * (macOS) Add ARM64 macOS build
+  * Update .gitlab-ci.yml
+  * Update
+  * Update
+  * Update
+  * Update libretro-common
+  * Update .gitlab-ci.yml
+  * Add .gitlab-ci.yml and cleanups
+  * Boktai: Allow controlling solar levels using L2/R2
+  * Add rumble support
+  * Fix 'Solar sensor is broken' error in Boktai games
+  * Add hardware sensors (wip)
+  * Update RTC emulation
+  * Misc changes
+  * Restore GBA.cpp
+  * Updated internal core name to Beetle GBA
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+
+-------------------------------------------------------------------
 Sat May 30 15:07:43 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200518:
