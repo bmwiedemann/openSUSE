@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 10 08:11:16 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Fix calling dracut to regenerate all initrds (bsc#1189915)
+- 4.4.7
+
+-------------------------------------------------------------------
 Mon Aug 16 14:16:16 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
 
 - Replace mkinitrd with dracut (bsc#1189374, jsc#SLE-20347)
@@ -15,7 +21,7 @@ Wed Jul  7 09:22:03 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
 -------------------------------------------------------------------
 Fri Jun 18 07:28:57 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- add riscv64 support (jsc#PM-2612)
+- add riscv64 support (jsc#SLE-19562)
   * done by Andreas Schwab <schwab@suse.de>
 - 4.4.4
 
