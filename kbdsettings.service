@@ -3,6 +3,7 @@ Description=Apply settings from /etc/sysconfig/keyboard
 After=basic.target
 After=systemd-vconsole-setup.service
 PartOf=systemd-vconsole-setup.service
+ConditionPathExists=/etc/sysconfig/keyboard
 ConditionPathExists=/dev/tty0
 
 [Service]

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 23 12:03:51 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- Only run kbdsettings.service if /etc/sysconfig/keyboard exists.
+  Necessary for image based installations without admin made changes.
+
+-------------------------------------------------------------------
 Wed Jun  2 08:08:53 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update the installed license file.
