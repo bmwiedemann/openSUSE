@@ -7,4 +7,12 @@
     <comment>ipykernel for py3.6</comment>
     <requestid>908540</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>969696e98bbf9e8e39a97616940efc80</srcmd5>
+    <version>5.5.5</version>
+    <time>1632173534</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on nose_warnings_filters.</comment>
+    <requestid>919460</requestid>
+  </revision>
 </revisionlist>

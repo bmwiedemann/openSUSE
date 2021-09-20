@@ -1,5 +1,5 @@
 #
-# spec file for package python-ipykernel
+# spec file for package python-ipykernel5
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -66,7 +66,6 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module ipython >= 5.0.0}
 BuildRequires:  %{python_module jupyter-client}
 BuildRequires:  %{python_module jupyter-core}
-BuildRequires:  %{python_module nose_warnings_filters}
 BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tornado >= 4.2}
@@ -105,7 +104,6 @@ $python -m ipykernel install \
 sed -i "s|$(readlink -f %{__python3})|%{__python3}|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
 %endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-
 
 %check
 # These tests expect jedi 0.17.2 return messages, but we use patches to support jedi 0.18 in ipython715

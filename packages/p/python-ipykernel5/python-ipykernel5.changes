@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 16 08:35:54 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded BuildRequires on nose_warnings_filters. 
+
+-------------------------------------------------------------------
 Fri Jul 23 16:41:52 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Rename to python-ipykernel5 in order to provide a python36 flavor
