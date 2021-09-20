@@ -26,7 +26,7 @@
 
 Name:           mhvtl
 URL:            http://sites.google.com/site/linuxvtl2/
-Version:        1.63_release+754.ff8861da60c9
+Version:        1.63_release+759.35ddb48e5262
 Release:        0
 Requires:       mhvtl-kmp
 Requires:       module-init-tools
@@ -45,7 +45,6 @@ License:        GPL-2.0-only
 Group:          System/Daemons
 Source:         %{name}-%{version}.tar.xz
 Source2:        %{name}.preamble
-Patch1:         Handle-scsi_host_template-removal-of-unchecked_isa_d.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_ordering}
 
@@ -78,7 +77,6 @@ through to user-space daemons.
 
 %prep
 %setup -qn %{name}-%{version}
-%patch1 -p1
 
 %build
 make MHVTL_HOME_PATH=%{mhvtl_home_dir} VERSION=%{version} \

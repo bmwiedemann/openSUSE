@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 17 18:05:56 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Updated to upstream version 1.63_release+759.35ddb48e5262,
+  so that it will compile on latest (5.14 kernel). Changes:
+  * mhvtl.ko: Remove reference to DRIVER_SENSE (fixes our build)
+  * mhvtl.ko: reinstate HAVE_UNLOCKED_IOCTL
+  * mhvtl.ko: Compile on RH using 4.18 kernels
+  * Handle scsi_host_template removal of unchecked_isa_dma.
+  Removing previously-needed patch:
+  * Handle-scsi_host_template-removal-of-unchecked_isa_d.patch
+
+-------------------------------------------------------------------
 Fri Jul 09 00:22:26 UTC 2021 - lduncan@suse.com
 
 - Update to version 1.63_release+754.ff8861da60c9:
