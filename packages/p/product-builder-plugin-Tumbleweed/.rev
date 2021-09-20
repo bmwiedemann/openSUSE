@@ -152,4 +152,16 @@
     skelcd-installer-net-* packages. (forwarded request 885723 from oertel)</comment>
     <requestid>885724</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0dfbc11c50330bb0929ce1c5c774478e</srcmd5>
+    <version>1.4.3</version>
+    <time>1632173515</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.4.3
+  - comps meta data support
+
+- 1.4.0
+  - modulemd data support</comment>
+    <requestid>919730</requestid>
+  </revision>
 </revisionlist>
