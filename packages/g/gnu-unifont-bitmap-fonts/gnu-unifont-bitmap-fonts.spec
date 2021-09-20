@@ -18,7 +18,7 @@
 
 %define	fontdir     %{_fontsdir}/uni
 Name:           gnu-unifont-bitmap-fonts
-Version:        13.0.05
+Version:        14.0.01
 Release:        0
 Summary:        The GNU Unicode Bitmap Font
 License:        GPL-2.0-or-later

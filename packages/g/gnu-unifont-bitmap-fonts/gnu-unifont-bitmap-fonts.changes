@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 19 11:16:13 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 14.0.01:
+  * Support for Unicode 14.0.0 glyphs
+  * New glyphs for ranges in multiple planes
+
+-------------------------------------------------------------------
+Sun Sep 19 11:08:14 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 13.0.06:
+  * Fix a UCSUR Braille Extended glyph, U+EB63
+
+-------------------------------------------------------------------
 Wed Jan 27 07:57:34 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.0.05:
@@ -33,7 +46,7 @@ Sun Feb  9 11:46:37 UTC 2020 - Xaver Hellauer <xaver.hellauer@gmail.com>
 - unifont 12.1.04:
   * added two missing dots to Arabic Extended-A glyph U+08BA
   * added descending lines to coffin (U+26B0) so it looks more 3D
-  * removed dotted circles in Adlam and Nyiakeng Puachue Hmong
+  * removed dotted circles in Adlam and Nyiakeng Puachue Hmong
   * changed four Soyombo glyphs
   * improved several Duployan glyphs
 
