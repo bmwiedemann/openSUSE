@@ -50,4 +50,15 @@ https://www.knot-dns.cz/</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>904741</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>4aa7235a14b3c927554708b8bad9d8d4</srcmd5>
+    <version>3.1.2</version>
+    <time>1632173566</time>
+    <user>dimstar_suse</user>
+    <comment>- migrate to user creation via sysuser-tools
+- run spec-cleaner on spec file
+- update to version 3.1.2, see:
+  https://www.knot-dns.cz/2021-09-08-version-312.html</comment>
+    <requestid>919883</requestid>
+  </revision>
 </revisionlist>

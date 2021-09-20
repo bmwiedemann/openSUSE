@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 17 19:15:39 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- migrate to user creation via sysuser-tools
+- run spec-cleaner on spec file
+- update to version 3.1.2, see:
+  https://www.knot-dns.cz/2021-09-08-version-312.html
+
+-------------------------------------------------------------------
+Thu Aug 12 07:51:04 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.1.1, see:
+  https://www.knot-dns.cz/2021-08-10-version-311.html
+
+-------------------------------------------------------------------
+Wed Aug  4 17:31:13 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- update to version 3.1.0, see:
+  https://www.knot-dns.cz/2021-08-02-version-310.html
+
+-------------------------------------------------------------------
 Thu Jul  1 09:22:32 UTC 2021 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - update to version 3.0.7, see:

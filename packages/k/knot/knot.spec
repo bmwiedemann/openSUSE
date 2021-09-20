@@ -16,6 +16,10 @@
 #
 
 
+%define libdnssec   libdnssec8
+%define libknot     libknot12
+%define libzscanner libzscanner4
+%define pkg_name knot
 %if 0%{?suse_version} > 1320
 %bcond_without  dnstap
 %bcond_without  lto
@@ -33,50 +37,48 @@
 %else
 %bcond_with    maxminddb
 %endif
-
 %if 0%{?suse_version} > 1140 && ( 0%{?suse_version} != 1315 || ( 0%{?suse_version} == 1315 && 0%{?is_opensuse} ))
 %bcond_without docs
 %else
 %bcond_with    docs
 %endif
-
-%define libdnssec   libdnssec8
-%define libknot     libknot11
-%define libzscanner libzscanner3
-
+%if %{with systemd}
+%define has_systemd 1
+BuildRequires:  systemd-devel
+%{?systemd_requires}
+%endif
 Name:           knot
-Version:        3.0.7
+Version:        3.1.2
 Release:        0
-%define pkg_name knot
 Summary:        An authoritative DNS daemon
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/DNS/Servers
-URL:            http://www.knot-dns.cz/
+URL:            https://www.knot-dns.cz/
 Source0:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz
 Source1:        knot.service
 Source2:        knot-tmp.conf
 Source3:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz.asc
+Source4:        system-user-knot.conf
+BuildRequires:  libcap-ng-devel
 BuildRequires:  libedit-devel
+BuildRequires:  liburcu-devel
+BuildRequires:  lmdb-devel >= 0.9.15
+BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig
+BuildRequires:  sysuser-tools
+BuildRequires:  xz
+BuildRequires:  pkgconfig(gnutls) >= 3.3
+BuildRequires:  pkgconfig(nettle)
+Obsoletes:      knot2 < %{version}
+%sysusers_requires
 %if 0%{?suse_version} > 1320 || 0%{?leap_version} == 420300
 BuildRequires:  libidn2-devel
 %else
 BuildRequires:  libidn-devel
 %endif
-BuildRequires:  liburcu-devel
-BuildRequires:  openssl-devel
-BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(gnutls) >= 3.3
-BuildRequires:  pkgconfig(nettle)
 %if %{with maxminddb}
 BuildRequires:  pkgconfig(libmaxminddb)
 %endif
-BuildRequires:  libcap-ng-devel
-BuildRequires:  xz
-Requires(pre):  pwdutils
-Requires(pre):  shadow
-Requires(pre):  glibc
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-BuildRequires:  lmdb-devel >= 0.9.15
 %if %{with docs}
 BuildRequires:  makeinfo
 BuildRequires:  python3-Sphinx
@@ -86,12 +88,6 @@ BuildRequires:  libfstrm-devel
 BuildRequires:  libprotobuf-c-devel >= 1.0.0
 BuildRequires:  protobuf-c >= 1.0.0
 %endif
-%if %{with systemd}
-%define has_systemd 1
-BuildRequires:  systemd-devel
-%{?systemd_requires}
-%endif
-Obsoletes:      knot2 < %{version}
 
 %description
 Knot DNS is a DNS server. It implements only the authoritative domain
@@ -100,10 +96,10 @@ implementation and can operate non-stop during zone addition or
 removal.
 
 %package devel
-Group:          Development/Libraries/C and C++
-Requires:       knot = %{version}
 #
 Summary:        Development files for the knot libraries
+Group:          Development/Libraries/C and C++
+Requires:       knot = %{version}
 
 %description devel
 Knot DNS is a DNS server. It implements only the authoritative domain
@@ -114,9 +110,9 @@ removal.
 This package contains headers for knot.
 
 %package -n %{libdnssec}
-Group:          System/Libraries
 #
 Summary:        DNSSEC support functions for Knot DNS
+Group:          System/Libraries
 
 %description -n %{libdnssec}
 Knot DNS is a DNS server. It implements only the authoritative domain
@@ -127,9 +123,9 @@ removal.
 This package contains a library for DNSSEC support functions.
 
 %package -n %{libknot}
-Group:          System/Libraries
 #
 Summary:        Knot DNS support library
+Group:          System/Libraries
 
 %description -n %{libknot}
 Knot DNS is a DNS server. It implements only the authoritative domain
@@ -140,9 +136,9 @@ removal.
 This package contains the essential core library for Knot services.
 
 %package -n %{libzscanner}
-Group:          System/Libraries
 #
 Summary:        Zone record parsing functions for Knot DNS
+Group:          System/Libraries
 
 %description -n %{libzscanner}
 Knot DNS is a DNS server. It implements only the authoritative domain
@@ -186,9 +182,10 @@ This package contains a library for a zone record scanner.
   --with-module-stats=shared \
   --with-module-synthrecord=shared \
   --with-module-whoami=shared \
-  --with-bash-completions=/etc/bash_completion.d \
+  --with-bash-completions=%{_sysconfdir}/bash_completion.d \
   --disable-silent-rules
 %make_build STRIP="/bin/true"
+%sysusers_generate_pre %{SOURCE4} knot system-user-knot.conf
 
 %install
 %make_install STRIP="/bin/true"
@@ -205,15 +202,14 @@ ln -s service %{buildroot}%{_sbindir}/rcknot
 install -p -m644 COPYING NEWS README.md %{buildroot}%{_docdir}/%{pkg_name}
 install -p -m644 samples/*.conf samples/*.zone* %{buildroot}%{_docdir}/%{pkg_name}/samples/
 find %{buildroot} -type f -name "*.la" -delete -print
-install -d -m 0750 %{buildroot}/var/lib/knot/
+install -d -m 0750 %{buildroot}%{_localstatedir}/lib/knot/
+mkdir -p %{buildroot}%{_sysusersdir}
+install -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/
 
-%pre
-getent group knot >/dev/null || groupadd -r knot
-getent passwd knot >/dev/null || \
-  useradd -r -g knot -d %{_sysconfdir}/knot -s /sbin/nologin \
-  -c "Knot DNS server" knot
+%pre -f knot.pre
 %if %{with systemd}
 %service_add_pre %{pkg_name}.service
+
 %preun
 %service_del_preun %{pkg_name}.service
 
@@ -258,9 +254,10 @@ fi
 %if %{with systemd}
 %{_unitdir}/%{pkg_name}.service
 %{_tmpfilesdir}/knot.conf
+%{_sysusersdir}/system-user-knot.conf
 %endif
 %{_libdir}/knot/
-%dir %attr(-,knot,knot) /var/lib/knot/
+%dir %attr(-,knot,knot) %{_localstatedir}/lib/knot/
 %ghost %dir %(751,knot,knot) /run/knot
 
 %files -n %{libdnssec}
