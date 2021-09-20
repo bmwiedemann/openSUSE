@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 14 08:48:46 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.3.3 [bsc#1190400]
+  * update cmake to generate config.h in the build dir
+  * 2.3.3 release
+  * gdPutBuf return value check
+  * HEIF builds fail with latest distros
+  * segfault in heif tests due to missing label.heic
+  * Test failure avif/compare_avif_to_png with libavif-0.8.2
+  * imagecopyresampled() produce artifacts on transparent PNG
+  * Fixes to build v2.3.0 on Windows with MinGW-w64
+  * optimize option in gif animation causes segfault
+  * _gdContributionsCalc() always uses DEFAULT_BOX_RADIUS
+  * gdImageRotateInterpolated() converts the source image to truecolor
+  * CMake and Makefiles build broken on Windows
+  * gdImageScaleTwoPass() looses top row and left column
+
+-------------------------------------------------------------------
 Fri Mar 26 14:17:24 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Enable AVIF support

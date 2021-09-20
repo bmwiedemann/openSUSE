@@ -518,4 +518,25 @@
     <comment>- Enable AVIF support (forwarded request 881525 from gladiac)</comment>
     <requestid>881806</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>362330a04925b85d81f476164cc746e5</srcmd5>
+    <version>2.3.3</version>
+    <time>1632173509</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 2.3.3 [bsc#1190400]
+  * update cmake to generate config.h in the build dir
+  * 2.3.3 release
+  * gdPutBuf return value check
+  * HEIF builds fail with latest distros
+  * segfault in heif tests due to missing label.heic
+  * Test failure avif/compare_avif_to_png with libavif-0.8.2
+  * imagecopyresampled() produce artifacts on transparent PNG
+  * Fixes to build v2.3.0 on Windows with MinGW-w64
+  * optimize option in gif animation causes segfault
+  * _gdContributionsCalc() always uses DEFAULT_BOX_RADIUS
+  * gdImageRotateInterpolated() converts the source image to truecolor
+  * CMake and Makefiles build broken on Windows
+  * gdImageScaleTwoPass() looses top row and left column</comment>
+    <requestid>918865</requestid>
+  </revision>
 </revisionlist>

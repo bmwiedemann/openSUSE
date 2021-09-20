@@ -19,7 +19,7 @@
 %define prjname libgd
 %define lname libgd3
 Name:           gd
-Version:        2.3.2
+Version:        2.3.3
 Release:        0
 Summary:        A Drawing Library for Programs That Use PNG and JPEG Output
 License:        MIT
@@ -124,6 +124,8 @@ XFAIL_TESTS="gdimagegrayscale/basic $XFAIL_TESTS"
 %endif
 %endif
 export XFAIL_TESTS
+# https://github.com/libgd/libgd/issues/763#issuecomment-918049103
+export TMPDIR=/tmp
 %make_build check
 
 %install
