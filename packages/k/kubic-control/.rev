@@ -223,4 +223,13 @@
   - Remove cilium support</comment>
     <requestid>903239</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>da17555aeebacaff71b719763c8476fc</srcmd5>
+    <version>0.12.1</version>
+    <time>1632173507</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.1
+  - Fix cluster upgrade</comment>
+    <requestid>918852</requestid>
+  </revision>
 </revisionlist>
