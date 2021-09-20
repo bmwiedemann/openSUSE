@@ -208,6 +208,8 @@ Patch12:        adlc-parser.patch
 Patch13:        implicit-pointer-decl.patch
 Patch15:        system-pcsclite.patch
 #
+Patch17:        openjdk-glibc234.patch
+#
 Patch20:        loadAssistiveTechnologies.patch
 #
 # OpenJDK specific patches
@@ -488,6 +490,8 @@ rm -rvf src/java.desktop/share/native/liblcms/lcms2*
 %if %{with_system_pcsc}
 %patch15 -p1
 %endif
+
+%patch17 -p1
 
 %patch20 -p1
 
