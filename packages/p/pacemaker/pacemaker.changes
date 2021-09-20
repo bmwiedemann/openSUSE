@@ -1,8 +1,353 @@
 -------------------------------------------------------------------
+Fri Sep 10 14:17:49 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210816.c6a4f6e6c (Pacemaker-2.1.1-rc3) :
+- crm_resource: translate LSB rc to exit code and fix resources_find_service_class() call
+- controller: ensure newly joining node learns the node names of non-DCs (bsc#1180618)
+- controller: ensure lost node's transient attributes are cleared without DC (rh#1986998)
+  
+-------------------------------------------------------------------
+Fri Sep 10 14:04:23 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210806.a64ad221a (Pacemaker-2.1.1-rc2):
+- pacemakerd: show correct error message if can't request shutdown
+- scheduler: Output the clone header if there are no instances.
+- scheduler: Sort brief output of resources.
+- scheduler: Fix display of active resources on offline nodes.
+- tools: avoid memory leaks in crm_mon
+- tools: avoid (insignificant) memory leaks
+
+-------------------------------------------------------------------
+Fri Sep 10 13:45:08 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210727.9e3a841a3 (Pacemaker-2.1.1-rc1):
+- scheduler: Fix XML output of cloned groups.
+- scheduler: Condense group and clone status in output.
+- scheduler: Only output the clone header if necessary.
+- scheduler: Mark partially active groups in output.
+- scheduler: Tweak resource filtering for groups.
+- libcrmcommon: Also allow string arguments that start with a dash.
+- tools: Audit command line options.
+
+-------------------------------------------------------------------
+Fri Sep 10 11:30:27 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210721.0bf0e8547:
+- scheduler: respect runnable argument when creating pseudo op
+- scheduler: pe_order_implies_first should matter if 'then' is required
+- scheduler: don't make optional constraints with group members mandatory
+- scheduler: avoid invalid transition when group member unmanaged (clbz#5423)
+
+-------------------------------------------------------------------
+Fri Sep 10 11:00:25 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210720.202b37962:
+- libcrmcommon: Allow negative numbers as cmdline options.
+- tools: The --get-value option does not require an arg.
+
+-------------------------------------------------------------------
+Fri Sep 10 10:40:20 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210716.1ee04e687:
+- scheduler: add test for probe of unmanaged resource on pending node (bsc#1188653)
+- scheduler: update existing tests for probe scheduling change (bsc#1188653)
+- scheduler: don't schedule probes of unmanaged resources on pending nodes (bsc#1188653)
+
+-------------------------------------------------------------------
+Fri Sep 10 10:32:53 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210716.1029946ae:
+- crm_resource: report not supported for --force-* w/systemd, upstart, nagios and bundled resources
+- Pacemaker Explained: document how fence agent internal timeouts work (clbz#5473)
+- Pacemaker Explained: clarify pcmk_host_check default (clbz#5475)
+- cluster: Use most up-to-date corosync API calls
+- rpm: assume _rundir macro is present
+
+-------------------------------------------------------------------
+Thu Sep 09 12:40:48 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210701.9df198b18:
+- libcrmcommon: Correctly handle case-sensitive ids of xml objects when changing a value. (bsc#1187414)
+
+-------------------------------------------------------------------
+Thu Sep 09 12:33:10 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210701.b295080a7:
+- scheduler: Fix group-by-node resource HTML output.
+- scheduler: Fix list errors in bundle HTML output.
+- scheduler: Remove an unnecessary blank line in HTML output.
+- scheduler: Remove an unnecessary space in HTML output.
+
+-------------------------------------------------------------------
+Thu Sep 09 12:12:51 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210623.2a6d5ae68:
+- cts: Update test files with crm_mon new xml output. (bsc#1187694)
+- Increase PCMK__API_VERSION for new crm_mon xml output. (bsc#1187694)
+- libpe: Added crm_mon xml output cluster timing settings. (bsc#1187694)
+
+-------------------------------------------------------------------
+Thu Sep 09 12:09:27 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210623.34ef9b169:
+- pacemaker-attrd: avoid repeated unfencing of remote nodes (rh#1961857)
+- pacemaker-attrd: ensure node ID is only set for attributes when known
+- pacemaker-attrd: check for remote nodes in peer update callback
+- controller: check whether unfenced node was remote node
+
+-------------------------------------------------------------------
+Mon Aug 16 15:45:35 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210622.485ce3a4d:
+- libcrmcommon: Increase PCMK__API_VERSION for new crm_resource output. (rh#1686426)
+- tools: Add the node-summary to crm_simulate output. (rh#1686426)
+
+-------------------------------------------------------------------
+Mon Aug 16 15:24:26 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210617.8c0c4eff9:
+- Purge remote node attribute when the node is up. (bsc#1186693)
+- Merge:
+  * bsc#1186693-clean-attrd-attributes-when-remote-node-is-up.patch 
+
+-------------------------------------------------------------------
+Mon Aug 16 14:57:35 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210617.1df5eb2c1:
+- fenced: Wrong device may be selected when "dynamic-list" is specified. (cl#5474)
+
+-------------------------------------------------------------------
+Mon Aug 16 14:45:12 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210616.dee8cafe5:
+- attribute: Add OCF_CHECK_LEVEL handling in the validate-all action
+- attribute: Add unique-group to appropriate <parameter> entries
+- attribute: Remove unique from all <parameter> entries
+- attribute: Update OCF version to 1.1
+
+-------------------------------------------------------------------
+Mon Aug 16 13:26:54 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210609.40b86522a:
+- tools: Use the new resource-agent-action message. (rh#1644628)
+- tools: Add an output message for resource actions. (rh#1644628)
+- tools: Use simple XML lists for resource actions as well. (rh#1644628)
+- tools: Add an overridden params output message. (rh#1644628)
+- tools: Add an agent-status message for crm_resource. (rh#1644628)
+- libcrmcommon: Increase PCMK__API_VERSION for new crm_resource output. (rh#1644628)
+- xml: Update the crm_resource schema for XML output. (rh#1644628)
+- libcrmcommon: Add OCF_OUTPUT_FORMAT to crm_resource environment. (rh#1644628)
+
+-------------------------------------------------------------------
+Mon Aug 16 12:35:21 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210608.3c1bae500:
+- ping: Add OCF_CHECK_LEVEL handling in the validate-all action
+- ping: Add a reload-agent action to handle the reloadable parameters
+- include: Bump feature set to 3.10.2. (rh#1955792)
+- tools: Add OCF_CHECK_LEVEL to crm_resource environment. (rh#1955792)
+- ping: Add unique-group to appropriate <parameter> entries
+- ping: Remove unique from all <parameter> entries
+- ping: Update OCF version to 1.1
+- xml: Add schema for pacemakerd.
+- include: Bump CRM_FEATURE_SET for new pacemakerd args.
+- daemons: Conditionally enable logging in pacemakerd.
+- daemons: Output the pacemakerd feature list in XML.
+- daemons: Convert pacemakerd to formatted output.
+- pacemaker.service: Don't start pacemakerd with -f.
+- daemons: Use glib for command line handling in pacemakerd.
+- Add verbose debug mode which logs ping and fping output when set
+- daemons: Use the new IPC API in pacemakerd for shutdown.
+- daemons: Ignore ACK messages in pacemakerd dispatch.
+
+-------------------------------------------------------------------
+Mon Jul 19 17:48:58 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.1.0+20210608.7c3f66070 (Pacemaker-2.1.0):
+- schemas: Add "digests" and "digest" elements to digests.rng. (rh#1967087)
+
+-------------------------------------------------------------------
+Mon Jul 19 17:32:27 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210601.b7762381d (Pacemaker-2.1.0-rc3):
+- XML: bump API schema version
+- tools: get `crm_verify --xml-pipe/-p` working again (bsc#1186576)
+- rpm: respect prefix when installing resource agents
+- tools: Return ENXIO from show_metadata.
+- tools: Return ENOTUNIQ in find_resource_attr.
+- executor: log OCF resource agent search path at start-up
+- tools: Fix handling certain error codes in crm_resource.
+- pcmk__pid_active: Lower the log level when readlink() is EACCES
+
+- Drop obsolete:
+  * 0001-Log-libcrmcommon-lower-message-on-reading-proc-file-.patch
+
+-------------------------------------------------------------------
+Mon Jul 19 17:01:48 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210519.4edf50cc9 (Pacemaker-2.1.0-rc2):
+- rpm: add option for sbd sync default
+- tools: Return the right error codes in crm_resource.
+- configure: add --with-sbd-sync-default option
+- libcrmcommon: warn if sbd sync environment is invalid
+- libcrmcommon: warn if can't get user information for log file
+- pacemakerd: don't try to repeat shutdown when disconnecting CFG
+- executor,fencer: tell user if additional logfile is unusable
+- libcrmcommon: use return code correctly when getting daemon user ID
+- rpm: minor clean-up of spec
+- rpm: add configuration global for bug URL
+- liblrmd: improve messages when loading Pacemaker Remote key
+- liblrmd: return sensible value when remote connection fails
+- liblrmd: improve failure messages when initializing remote key
+- liblrmd: improve failure messages when cacheing remote key
+- liblrmd: return sensible code for unsupported executor type
+- liblrmd: improve messages for remote reply failures
+- liblrmd: use sensible return code for disconnection in remote send/reply
+- liblrmd: richer return code when sending remote message
+- fencing: register/remove the watchdog device
+- crm_resource: improve help text
+- libpe_status: Don't output an extraneous header under crm_mon -b.
+
+-------------------------------------------------------------------
+Fri Jul 16 14:35:43 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210427.aa4bdaa2f:
+- schedulerd: Correctly calculate priority-fencing-delay from Master resource stop failure.(Fix:#CLBZ5467)
+
+-------------------------------------------------------------------
+Fri Jul 16 14:32:18 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210427.529de7174:
+- tools: avoid exception when pcmk_simtimes is used without --verbose
+- libcrmcluster: improve CPG validation messages
+- libcrmcluster: use more efficient payload length check
+- liblrmd: correctly check for out-of-memory condition
+- executor: properly initiate quicker fence device monitor
+- Fix maint-mode output on curses mode.
+
+-------------------------------------------------------------------
+Fri Jul 16 13:42:39 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210422.d469c6340:
+- controller: check for empty OCF version as well as NULL
+- libcrmservice: always advertise OCF 1.1 support
+- controller: always refresh agent meta-data after start
+- controller: info message when agent supports newer OCF 1.x standard
+- libcrmcommon: bump feature set for reload-agent support
+- libcrmservice: advertise OCF 1.1 support to resource agents
+- scheduler: support OCF 1.1 reload-agent action
+- controller: support OCF 1.1 reload-agent action
+- resources: support OCF 1.1 standard in ocf:pacemaker:remote
+- resources: improve Pacemaker Remote meta-data
+- controller: log the OCF version supported by a resource agent
+
+-------------------------------------------------------------------
+Fri Jul 16 11:49:00 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210420.e82d2a1bc:
+- Convert crm_attribute to use glib for cmdline handling.
+- Support "sync-crash" option with PCMK_panic_action
+- tools: Don't reference the output object in cmdline processing.
+- libcib: revert deprecation of cib_apply_patch_event()
+- CIB: allow resource-stickiness default to be set at build time
+- rpm: detect when to use --enable-compat-2.0 correctly
+- Support "sync-reboot" option with PCMK_panic_action
+- tools: Set the output object when running crm_resource --restart.
+- pacemakerd,pacemaker-remoted: simplify help URL in systemd unit file
+- crm_mon: try to connect CIB while pacemakerd shutting down
+
+- Rebase:
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+  * pacemaker-cts-StartCmd.patch
+
+-------------------------------------------------------------------
+Fri Jul 16 09:47:23 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210409.6c31efd67:
+- libcrmcommon: bump feature set to 3.9.0
+- scheduler: provide notify_{,un}promoted_{resource,uname} variables
+- schema: add promoted-only to crm_mon API schema
+- libpe_status: use "promoted-only" in API schema for bans
+- tools: deprecate crm_master
+- tools: crm_attribute -p/--promotion option to operate on promotion score
+- tools: crm_resource now supports --promoted option
+- CIB: allow OCF 1.1 role names in configuration
+- scheduler: accept case-insensitive role names in actions in templates
+- tools: use OCF 1.1 role names in crm_resource --ban constraints
+- scheduler: use OCF 1.1 role names in output
+- scheduler: use OCF 1.1 role names in log messages
+- scheduler: support OCF 1.1 role names in configuration
+
+-------------------------------------------------------------------
+Thu Jul 15 13:28:52 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210408.c71bd880c:
+- tools: crm_simulate --pending is deprecated.
+- tools: Make some small changes to the crm_simulate man page.
+- controller: correctly handle remote node fencing after Y2038
+- controller: correctly handle node shutdowns after Y2038
+- libcrmcommon: bump feature set for recent configuration interpretation changes
+- tools: constrain node IDs to non-negative values for crm_node -N
+- tools: treat invalid error codes as unknown in crm_error
+- scheduler: don't treat invalid duration fields as -1
+- scheduler: constrain promoted-max and promoted-node-max to non-negative values
+- scheduler: constrain clone-max to non-negative values
+- scheduler: constrain clone-min to non-negative values
+- scheduler: constrain clone-node-max to non-negative values
+- all: allow full unsigned int range for PCMK_ipc_buffer
+- scheduler: Use default when series max value is out of bounds
+- scheduler: handle series max of 0 better
+- scheduler: handle exit via signal or main loop similarly
+- fencer: use 1 (default) instead of -1 (unlimited) for invalid pcmk_action_limit
+- all: constrain minimum when parsing certain internally generated integers
+- CIB: constrain remote-tls-port and remote-clear-port to port range
+- scheduler: constrain resource priorities and node-health-base to score range
+- controller: bound stonith-max-attempts to a minimum of 1
+- scheduler: handle last-rc-change values after Y2038
+- scheduler: handle ticket last-granted dates after 2038
+- all: use default value when a long long integer can't be parsed
+- tools: Don't print to stderr if crm_simulate -V is used.
+
+-------------------------------------------------------------------
+Thu Jul 15 12:45:07 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210406.6b23b2bb4:
+- Add schema for new crm_simulate options. (rh#1686426)
+- tools: Add new options to crm_simulate. (rh#1686426)
+
+-------------------------------------------------------------------
+Thu Jul 15 12:34:04 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210405.43fcdeb35:
+- xml: Add schema for new crm_simulate output.
+- include: Bump FEATURE_SET for new crm_simulate args.
+- scheduler: Use formatted output for node weights.
+- tools: Log crm_simulate output for certain cmdlines.
+- Use formatted output for scheduler node actions.
+- tools: Use formatted output for simulation timings.
+- tools: Add the beginnings of formatted output to crm_simulate.
+
+-------------------------------------------------------------------
+Thu Jul 15 12:17:34 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210330.7fa194778:
+- libcrmcommon: Allow setting the formatted output log level.
+- libcrmcommon: Flush output in text_list_item.
+
+-------------------------------------------------------------------
+Thu Jul 15 10:12:36 UTC 2021 - Yan Gao <ygao@suse.com>
+
+- Update to version 2.0.5+20210319.c75f0a34a:
+- crm/cib tools: implement CIB_file="-" to accept CIB from stdin
+- tools: Promote a couple info messages to errors.
+
+-------------------------------------------------------------------
 Sun Mar 21 17:21:29 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210310.83e765df6:
 - controller: re-joined node gets the host names of non-DC nodes (bsc#1180618)
+- Merge:
+  * bsc#1180618-0001-Fix-crmd-update-crm_peer_cache.patch 
 
 -------------------------------------------------------------------
 Sun Mar 21 16:05:07 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -16,6 +361,11 @@ Sun Mar 21 15:32:59 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210302.64e0c771d:
 - crm_mon.rng/crm_resource.rng: Change the schema type of 'expected' and 'call' to integer. (rh#1931332)
+- Merge:
+  * rh#1931332-0003-Med-Change-the-schema-type-of-expected-and-call-to-i.patch 
+  * rh#1931332-0002-Med-Copy-crm_mon.rng-and-crm_resource.rng-in-prepara.patch 
+  * rh#1931332-0001-Med-Generate-xml-crm_mon.rng-from-the-contents-of-xm.patch 
+  * rh#1931332-0000-Feature-xml-Move-resource-related-XML-schema-into-it.patch 
 
 -------------------------------------------------------------------
 Sun Mar 21 15:13:49 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -41,7 +391,11 @@ Sun Mar 21 14:39:24 UTC 2021 - Yan Gao <ygao@suse.com>
 - include: Bump CRM_FEATURE_SET to 3.7.2.
 - tools: Convert crm_verify to use formatted output.
 - tools: Use glib for command line handling in crm_verify.
+
 - iso8601: prevent sec overrun before adding up as long long
+- Merge:
+  * 0001-Fix-iso8601-prevent-sec-overrun-before-adding-up-as-.patch 
+
 - crmadmin: tweaks
 - scheduler: route monitor cancellations behind moving remote connections correctly
 - cluster: try to reconnect with corosync if it goes down
@@ -54,9 +408,20 @@ Sat Mar 20 13:53:24 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210223.dbc27b2ac:
 - fencer: optimize merging of fencing history by removing unneeded entries on creation of history diff (bsc#1181744)
+- Merge:
+  * bsc#1181744-0004-Refactor-fencer-optimize-merging-of-fencing-history-.patch 
+
 - fencing: new function stonith_op_state_pending() for checking if a fencing operation is in pending state (bsc#1181744)
+- Merge:
+  * bsc#1181744-0003-Refactor-fencing-new-function-stonith_op_state_pendi.patch 
+
 - fencer: update outdated pending operations according to returned ones from remote peer history (bsc#1181744)
+- Merge:
+  * bsc#1181744-0002-Fix-fencer-update-outdated-pending-operations-accord.patch 
+
 - fencer: broadcast returned fencing operations to update outdated pending ones in remote peer history (bsc#1181744)
+- Merge:
+  * bsc#1181744-0001-Fix-fencer-broadcast-returned-fencing-operations-to-.patch 
 
 -------------------------------------------------------------------
 Sat Mar 20 13:45:07 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -79,9 +444,19 @@ Sat Mar 20 12:38:19 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210205.46cf48d27:
 - execd: Skips merging of canceled fencing monitors.(Fix:#CLBZ5393)
+- Merge:
+  * 0001-Mid-execd-Skips-merging-of-canceled-fencing-monitors.patch 
+
 - crm_mon: detect when run on remote-node
+
 - tools: get cibsecret stash working again
+- Merge:
+  * 0001-Fix-tools-get-cibsecret-stash-working-again.patch 
+
 - fencing: remove any devices that are not installed
+- Merge:
+  * 0001-Fix-fencing-remove-any-devices-that-are-not-installe.patch 
+
 - crm_mon: suppress pacemakerd-status for non-text output
 - crm_mon: retry fencer connection as not fatal initially
 - tools: Report pacemakerd in state waiting for sbd
@@ -169,6 +544,9 @@ Tue Mar 16 13:48:17 UTC 2021 - Yan Gao <ygao@suse.com>
 - libcrmcommon: compare CRM_meta_ properly (rh#1872376)
 - liblrmd: Limit node name addition to proxied attrd update commands (rh#1907726)
 
+- Merge:
+  * rh#1907726-0001-Fix-liblrmd-Limit-node-name-addition-to-proxied-attr.patch 
+
 -------------------------------------------------------------------
 Fri Jan 29 12:42:52 UTC 2021 - Yan Gao <ygao@suse.com>
 
@@ -180,6 +558,8 @@ Thu Jan 28 14:28:18 UTC 2021 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.5+20210104.8ae19fdf9:
 - attrd: prevent leftover attributes of shutdown node in cib (bsc#1173668)
+- Merge:
+  * bsc#1173668-0001-Fix-attrd-prevent-leftover-attributes-of-shutdown-no.patch 
 
 -------------------------------------------------------------------
 Thu Jan 28 14:22:47 UTC 2021 - Yan Gao <ygao@suse.com>
@@ -268,6 +648,9 @@ Mon Jan 25 12:29:58 UTC 2021 - Yan Gao <ygao@suse.com>
 - libcrmcommon: Automatically lower case XML list names.
 - xml: add schema for new crmadmin output
 - crmadmin: implement formatted output (bsc#1178865)
+
+- Drop obsolete:
+  * bsc#1178865-0001-Fix-crmadmin-printing-DC-quietly-if-needed.patch 
 
 -------------------------------------------------------------------
 Sun Dec 06 12:32:29 UTC 2020 - Yan Gao <ygao@suse.com>
@@ -364,9 +747,9 @@ Fri Oct 30 13:45:28 UTC 2020 - Yan Gao <ygao@suse.com>
 Fri Oct 30 13:11:41 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.4+20200820.09f345c49:
-- controller, Pacemaker Explained: improve the documentation of `stonith-watchdog-timeout` cluster option (bsc#1174696)
-- scheduler: improve the documentation of `have-watchdog` cluster option (bsc#1174696)
-- libpe_status: downgrade the message about the meaning of `have-watchdog=true` to info (bsc#1174696)
+- controller, Pacemaker Explained: improve the documentation of `stonith-watchdog-timeout` cluster option (bsc#1174696, bsc#1184557)
+- scheduler: improve the documentation of `have-watchdog` cluster option (bsc#1174696, bsc#1184557)
+- libpe_status: downgrade the message about the meaning of `have-watchdog=true` to info (bsc#1174696, bsc#1184557)
 
 -------------------------------------------------------------------
 Fri Oct 30 13:10:26 UTC 2020 - Yan Gao <ygao@suse.com>
@@ -627,7 +1010,7 @@ Fri May 08 07:32:19 UTC 2020 - Yan Gao <ygao@suse.com>
 Thu May 07 21:48:11 UTC 2020 - Yan Gao <ygao@suse.com>
 
 - Update to version 2.0.3+20200506.a212e4fa3:
-- fenced: Remove relayed stonith operation.(Fix:CLBZ#5401)
+- fenced: Remove relayed stonith operation.(Fix:CLBZ#5401) (bsc#1181744)
 - controller: properly detect remote node info requests
 - cotrold: Notify tengine of completion of CRM_OP_LRM_DELETE.(Fix:CLBZ:#5424)
 
@@ -1151,16 +1534,16 @@ Fri Jul 12 13:54:03 UTC 2019 - Yan Gao <ygao@suse.com>
 - libcrmcommon: assert on ACL memory allocation errors
 - libcrmcommon: improve ACL messages
 - libcrmcommon: avoid use-after-free when enforcing creation ACLs
-- controld-fencing: add notice-log for successful fencer-connect
-- st_client: make safe to remove notifications from notifications
+- controld-fencing: add notice-log for successful fencer-connect (bsc#1181744)
+- st_client: make safe to remove notifications from notifications (bsc#1181744)
 - attrd: ensure node ID is initialized properly
 - tools: avoid unlikely small memory leaks in attrd_updater
-- fence-history: resync fence-history after fenced crash
+- fence-history: resync fence-history after fenced crash (bsc#1181744)
 - based: check for writeability of cib.xml.sig alongside cib.xml
 - based: make "preventive rename" on CIB access fault path-specific
-- fence-history: add notification upon history-synced
-- controld-fencing: remove-notifications upon connection-destroy
-- fence-history: fail leftover pending-actions after fenced-restart
+- fence-history: add notification upon history-synced (bsc#1181744)
+- controld-fencing: remove-notifications upon connection-destroy (bsc#1181744)
+- fence-history: fail leftover pending-actions after fenced-restart (bsc#1181744)
 
 -------------------------------------------------------------------
 Fri Jul 05 10:14:13 UTC 2019 - Yan Gao <ygao@suse.com>
@@ -1737,7 +2120,7 @@ Mon Jun  4 12:36:13 UTC 2018 - ygao@suse.com
 - scheduler: order implicit actions more strictly
 - all: prefer appropriate node when multiply active
 - libpe_status: find active instances properly according to requires
-- libpe_status: handle pending migrations correctly
+- libpe_status: handle pending migrations correctly (bsc#1177212)
 - tools: correctly check crm_resource --move for master role
 - scheduler: update wiki URL in log message
 - libcrmcommon: use proper IPC buffer size when reading
@@ -4310,7 +4693,7 @@ Fri Mar 21 05:51:05 UTC 2014 - ygao@suse.com
 -------------------------------------------------------------------
 Thu Mar 13 10:44:49 UTC 2014 - ygao@suse.com
 
-- Drop obsolete bug-792124_pacemaker-stonith-monitor-log.patch 
+- Drop obsolete bug-792124_pacemaker-stonith-monitor-log.patch
 
 -------------------------------------------------------------------
 Thu Mar 13 09:38:46 UTC 2014 - ygao@suse.com
@@ -4779,7 +5162,7 @@ Tue Sep 24 13:27:53 UTC 2013 - ygao@suse.com
 - Drop the obsolete patches:
   * pacemaker-cts-startcmd.patch
   * pacemaker-disable-listing-fence-agents.patch
-  * pacemaker-daemon-symlinks.patch 
+  * pacemaker-daemon-symlinks.patch
   * pacemaker-ptest-build.patch
   * pacemaker-lrmd-remote-disabled.patch
   * bug-815447_pacemaker-cib-strip-text-nodes.patch

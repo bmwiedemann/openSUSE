@@ -26,6 +26,12 @@
 ## Where to install Pacemaker documentation
 %global pcmk_docdir %{_docdir}/%{name}
 
+## Where bug reports should be submitted
+## Leave bug_url undefined to use ClusterLabs default, others define it here
+
+## What to use as the OCF resource agent root directory
+%global ocf_root %{_prefix}/lib/ocf
+
 # Define conditionals so that "rpmbuild --with <feature>" and
 # "rpmbuild --without <feature>" can enable and disable specific features
 
@@ -45,6 +51,15 @@
 ## (the build tools aren't available everywhere)
 %bcond_with doc
 
+## Add option to default to start-up synchronization with SBD.
+##
+## If enabled, SBD *MUST* be built to default similarly, otherwise data
+## corruption could occur. Building both Pacemaker and SBD to default
+## to synchronization improves safety, without requiring higher-level tools
+## to be aware of the setting or requiring users to modify configurations
+## after upgrading to versions that support synchronization.
+%bcond_without sbd_sync
+
 ## Add option to turn off hardening of libraries and daemon executables
 %bcond_with hardening
 
@@ -53,9 +68,21 @@
 
 # Define globals for convenient use later
 
-%define _rundir /run
-
 %global hacluster_id 90
+
+## Distro-specific configuration choices
+
+### Use 2.0-style output when other distro packages don't support current output
+%global compat20 --enable-compat-2.0
+
+### Default concurrent-fencing to true when distro prefers that
+%global concurrent_fencing --with-concurrent-fencing-default=true
+
+### Default resource-stickiness to 1 when distro prefers that
+%global resource_stickiness --with-resource-stickiness-default=1
+
+
+# Python-related definitions
 
 ## Path to Python interpreter (leave commented to auto-detect,
 ## or uncomment and edit to use a specific version)
@@ -80,7 +107,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        2.0.5+20210310.83e765df6
+Version:        2.1.0+20210816.c6a4f6e6c
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -101,8 +128,7 @@ Patch6:         bug-943295_pacemaker-lrmd-log-notice.patch
 Patch7:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch8:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch9:         pacemaker-cts-StartCmd.patch
-Patch10:        0001-Log-libcrmcommon-lower-message-on-reading-proc-file-.patch
-Patch11:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+Patch10:        bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
 # Required for core functionality
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -213,7 +239,11 @@ Summary:        Core Pacemaker libraries
 Group:          Productivity/Clustering/HA
 Requires(pre):  shadow
 # sbd 1.4.0+ supports the libpe_status API for pe_working_set_t
-Conflicts:      sbd < 1.4.0
+# sbd 1.4.2+ supports startup/shutdown handshake via pacemakerd-api
+#            and handshake defaults to enabled for rhel builds
+# sbd 1.5.0+ handshake defaults to enabled with upstream sbd-release
+#            implicitly supports handshake defaults to enabled in this spec
+Conflicts:      sbd < 1.5.0
 
 %description -n libpacemaker3
 Pacemaker is an advanced, scalable High-Availability cluster resource
@@ -235,7 +265,7 @@ The libpacemaker3-cluster package contains cluster-aware shared
 libraries needed for nodes that will form part of the cluster nodes.
 
 %package remote
-Summary:        Pacemaker remote daemon for non-cluster nodes
+Summary:        Pacemaker remote executor daemon for non-cluster nodes
 Group:          Productivity/Clustering/HA
 Requires:       %{name}-cli = %{version}-%{release}
 Requires:       libpacemaker3 = %{version}-%{release}
@@ -318,7 +348,6 @@ manager.
 %patch8 -p1
 %patch9 -p1
 %patch10 -p1
-%patch11 -p1
 
 %build
 
@@ -338,9 +367,6 @@ export LDFLAGS_HARDENED_LIB="%{?_hardening_ldflags}"
 
 autoreconf -fvi
 
-%global concurrent_fencing --with-concurrent-fencing-default=true
-%global compat20 --enable-compat-2.0
-
 %configure \
         --docdir=%{_docdir}/%{name}                \
         --disable-static                           \
@@ -357,7 +383,11 @@ autoreconf -fvi
         %{?with_profiling:     --with-profiling}       \
         %{?with_coverage:      --with-coverage}        \
         %{?with_cibsecrets:    --with-cibsecrets}      \
+        %{?with_sbd_sync:      --with-sbd-sync-default="true"} \
+        %{?bug_url:            --with-bug-url=%{bug_url}} \
+        %{?ocf_root:           --with-ocfdir=%{ocf_root}} \
         %{?concurrent_fencing}                         \
+        %{?resource_stickiness}                        \
         %{?compat20}                                   \
         --with-initdir=%{_initddir}                    \
         --with-runstatedir=%{_rundir}                  \
@@ -376,6 +406,7 @@ install -m 644 etc/sysconfig/crm_mon %{buildroot}%{_fillupdir}/sysconfig.crm_mon
 
 # Don't package static libs
 find %{buildroot} -type f -name "*.a" -delete -print
+# Don't package libtool archives
 find %{buildroot} -type f -name "*.la" -delete -print
 
 # For now, don't package the servicelog-related binaries built only for
@@ -405,7 +436,7 @@ ln -s service %{buildroot}%{_sbindir}/rccrm_mon
 mv %{buildroot}%{_sbindir}/crm_report %{buildroot}%{_sbindir}/crm_report.pacemaker
 install -m 755 %{SOURCE1} %{buildroot}%{_sbindir}/crm_report
 
-ln -s ../heartbeat/NodeUtilization %{buildroot}%{_prefix}/lib/ocf/resource.d/pacemaker/
+ln -s ../heartbeat/NodeUtilization %{buildroot}%{ocf_root}/resource.d/pacemaker/
 
 %fdupes -s %{buildroot}
 
@@ -524,9 +555,9 @@ fi
 
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/cib
 %dir %attr (750, %{uname}, %{gname}) %{_var}/lib/pacemaker/pengine
-%{_prefix}/lib/ocf/resource.d/pacemaker/controld
-%{_prefix}/lib/ocf/resource.d/pacemaker/o2cb
-%{_prefix}/lib/ocf/resource.d/pacemaker/remote
+%{ocf_root}/resource.d/pacemaker/controld
+%{ocf_root}/resource.d/pacemaker/o2cb
+%{ocf_root}/resource.d/pacemaker/remote
 
 %files cli
 %defattr(-,root,root)
@@ -564,13 +595,13 @@ fi
 %{_datadir}/pkgconfig/pacemaker-schemas.pc
 %{_datadir}/snmp/mibs/PCMK-MIB.txt
 
-%exclude %{_prefix}/lib/ocf/resource.d/pacemaker/controld
-%exclude %{_prefix}/lib/ocf/resource.d/pacemaker/o2cb
-%exclude %{_prefix}/lib/ocf/resource.d/pacemaker/remote
+%exclude %{ocf_root}/resource.d/pacemaker/controld
+%exclude %{ocf_root}/resource.d/pacemaker/o2cb
+%exclude %{ocf_root}/resource.d/pacemaker/remote
 
-%dir %{_prefix}/lib/ocf
-%dir %{_prefix}/lib/ocf/resource.d
-%{_prefix}/lib/ocf/resource.d/pacemaker
+%dir %{ocf_root}
+%dir %{ocf_root}/resource.d
+%{ocf_root}/resource.d/pacemaker
 
 %config(noreplace) %{_fillupdir}/sysconfig.pacemaker
 %config(noreplace) %{_fillupdir}/sysconfig.crm_mon

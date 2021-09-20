@@ -1,7 +1,7 @@
-Index: pacemaker/cts/CTSaudits.py
+Index: pacemaker/cts/lab/CTSaudits.py
 ===================================================================
---- pacemaker.orig/cts/CTSaudits.py
-+++ pacemaker/cts/CTSaudits.py
+--- pacemaker.orig/cts/lab/CTSaudits.py
++++ pacemaker/cts/lab/CTSaudits.py
 @@ -67,10 +67,8 @@ class LogAudit(ClusterAudit):
  
          for node in nodes:

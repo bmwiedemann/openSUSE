@@ -1855,4 +1855,30 @@
 - crmadmin: tweaks (forwarded request 884033 from yan_gao)</comment>
     <requestid>884034</requestid>
   </revision>
+  <revision rev="139" vrev="1">
+    <srcmd5>48bf2172f4b9c7d4975c84af910c340d</srcmd5>
+    <version>2.1.0+20210816.c6a4f6e6c</version>
+    <time>1632173538</time>
+    <user>dimstar_suse</user>
+    <comment>* bsc#1186693-clean-attrd-attributes-when-remote-node-is-up.patch 
+  * bsc#1180618-0001-Fix-crmd-update-crm_peer_cache.patch 
+  * rh#1931332-0003-Med-Change-the-schema-type-of-expected-and-call-to-i.patch 
+  * rh#1931332-0002-Med-Copy-crm_mon.rng-and-crm_resource.rng-in-prepara.patch 
+  * rh#1931332-0001-Med-Generate-xml-crm_mon.rng-from-the-contents-of-xm.patch 
+  * rh#1931332-0000-Feature-xml-Move-resource-related-XML-schema-into-it.patch 
+  * 0001-Fix-iso8601-prevent-sec-overrun-before-adding-up-as-.patch 
+  * bsc#1181744-0004-Refactor-fencer-optimize-merging-of-fencing-history-.patch 
+  * bsc#1181744-0003-Refactor-fencing-new-function-stonith_op_state_pendi.patch 
+  * bsc#1181744-0002-Fix-fencer-update-outdated-pending-operations-accord.patch 
+  * bsc#1181744-0001-Fix-fencer-broadcast-returned-fencing-operations-to-.patch 
+  * 0001-Mid-execd-Skips-merging-of-canceled-fencing-monitors.patch 
+  * 0001-Fix-tools-get-cibsecret-stash-working-again.patch 
+  * 0001-Fix-fencing-remove-any-devices-that-are-not-installe.patch 
+  * rh#1907726-0001-Fix-liblrmd-Limit-node-name-addition-to-proxied-attr.patch 
+  * bsc#1173668-0001-Fix-attrd-prevent-leftover-attributes-of-shutdown-no.patch 
+  * bsc#1178865-0001-Fix-crmadmin-printing-DC-quietly-if-needed.patch 
+- Drop obsolete bug-792124_pacemaker-stonith-monitor-log.patch
+  * pacemaker-daemon-symlinks.patch (forwarded request 919748 from yan_gao)</comment>
+    <requestid>919749</requestid>
+  </revision>
 </revisionlist>
