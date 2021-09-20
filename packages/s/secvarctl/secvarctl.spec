@@ -17,7 +17,7 @@
 
 
 Name:           secvarctl
-Version:        0.2+git20~652c950
+Version:        0.2+git31~26ea751
 Release:        0
 Summary:        Suite of tools to manipulate and generate Secure Boot variables on POWER
 License:        Apache-2.0
@@ -42,9 +42,6 @@ Updating of these secure variables requires a specific format for success. If up
 
 %install
 %make_install OPENSSL=1 DEBUG=1
-mkdir -p %{buildroot}%{_mandir}/man1
-mv -v %{buildroot}%{_prefix}/local/share/man/man1/secvarctl.1 %{buildroot}%{_mandir}/man1/secvarctl.1 ||:
-rmdir -p %{buildroot}%{_prefix}/local/share/man/man1 ||:
 
 %files
 %license LICENSE

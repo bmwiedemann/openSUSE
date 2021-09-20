@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 17:26:18 UTC 2021 - msuchanek@suse.com
+
+- Update to version 0.2+git31~26ea751:
+- Remove workaround for wrong man page location - fixed upstream.
+
+-------------------------------------------------------------------
 Wed Jun 16 11:09:59 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Initial packaging (jsc#SLE-18126).
