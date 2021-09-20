@@ -1,7 +1,7 @@
 #
 # spec file for package flashrom
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,7 @@ BuildRequires:  pkgconfig(libftdi1)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libusb)
 BuildRequires:  pkgconfig(zlib)
-Requires:       dmidecode
-ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64
+ExclusiveArch:  %{ix86} x86_64 %{arm} aarch64 riscv64
 
 %description
 flashrom is a utility for reading, writing, verifying and erasing flash ROM
