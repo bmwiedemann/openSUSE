@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 10 16:00:37 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20200828:
+  * Update libretro-common ctr_pthread.h
+
+-------------------------------------------------------------------
+Sat Aug 08 09:56:26 UTC 2020 - i@guoyunhe.me
+
+- Update to version 0~git20200504:
+  * QNX support
+  * Add libnx support
+  * Add missing default for STATIC_LINKING
+  * Rename LIBRETRO_SWITCH to LIBRETRO_EMBED_FFMPEG
+  * Show ffmpeg error in retro_load_game
+  * Fix poll.h filename
+  * Disable unix sockets on 3DS
+  * Add 3DS compilation
+  * Prefix filename with explicit file:// on 3DS
+  * Rename ThreadContext to avoid conflict with libctru
+  * Hook ffmpeg logging into libretro mechanism
+  * Upgrade fifo_queue.c
+  * Update rthreads
+  * Fix android compilation
+
+-------------------------------------------------------------------
 Wed Feb 26 09:28:52 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Remove binaries that was added to source archive by accident
