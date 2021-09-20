@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>914753</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a8710ef4879eb6aa00a2e9ffde5df8ae</srcmd5>
+    <version>0.12.3+git.1630438300.f43312a</version>
+    <time>1632173571</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.3+git.1630438300.f43312a:
+  * Add PYTHONPATH to the instructions (#38)
+</comment>
+    <requestid>920041</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/editorconfig/editorconfig-core-py.git</param>
+    <param name="scm">git</param>
+    <param name="versionprefix">0.12.3+git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">mcepl@cepl.eu</param>
+  </service>
+  <service mode="disabled" name="tar" />
+  <service mode="disabled" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="disabled" name="set_version" />
+</services>

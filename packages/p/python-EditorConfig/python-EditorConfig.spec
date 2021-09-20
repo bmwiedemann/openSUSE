@@ -17,14 +17,16 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define modname editorconfig-core-py
 Name:           python-EditorConfig
-Version:        0.12.3
+Version:        0.12.3+git.1630438300.f43312a
 Release:        0
 Summary:        File Locator and Interpreter for Python
 License:        BSD-2-Clause AND Python-2.0
 URL:            https://editorconfig.org
-Source0:        https://files.pythonhosted.org/packages/source/E/EditorConfig/EditorConfig-%{version}.tar.gz
+Source0:        %{modname}-%{version}.tar.xz
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
@@ -36,7 +38,7 @@ EditorConfig C Core. EditorConfig Python core can be used as a
 command line program or as an importable library.
 
 %prep
-%setup -q -n EditorConfig-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %python_build
@@ -47,10 +49,16 @@ command line program or as an importable library.
 rm -rf %{buildroot}%{_bindir}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
+%check
+# Still not resolved issues with tests, gh#editorconfig/editorconfig-core-py#37
+cmake .
+export PYTHONPATH=%{buildroot}%{$python_sitelib}
+ctest -VV --output-on-failure . || /bin/true
+
 %files %{python_files}
 %license LICENSE.* COPYING
 %doc README.rst
 %{python_sitelib}/editorconfig
-%{python_sitelib}/EditorConfig-%{version}-py%{python_version}.egg-info
+%{python_sitelib}/EditorConfig-*.egg-info
 
 %changelog
