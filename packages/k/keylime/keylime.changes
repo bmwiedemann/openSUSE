@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Thu Sep 16 08:39:35 UTC 2021 - aplanas@suse.com
+
+- Update to version 6.2.0:
+  * Fix bug #757 where revoc cert was treated as text
+  * Code improvement: removal of extra dependencies in measured boot attestation (#755)
+  * Sanitize the exclude list while it is ingested at `tenant` by removing comments (^#) and empty lines.
+  * tenant: show severity level and last event id in status
+  * verifier: move to new failure architecture
+  * pcr validation: move to new failure architecture
+  * measured boot: move to new failure architecture
+  * ima: move to new failure architecture
+  * failure: add infrastructure to tag and collect revocation events in Keylime
+  * Simulating use of SSLContext.minimum_version on ssl v3.6
+  * verifier: fix minor typos
+  * Add tests for ca_impl_cfssl and ca_util
+  * Replace M2Crypto with python-cryptography
+  * tenant: status now shows if a agent was added to the registrar
+  * tenant: open file to send utf-8 encoded
+  * Correct some comments about and remove vestige in MB policy
+  * fixing a small bug that resulted in malformed refstates not failing MBA
+  * agent: ensure that EK is in PEM format when used as uuid
+  * Solves #703 by adding a "non-trivial" example of a "measured boot policy" (#734)
+  * ci: build and publish container images
+  * codestyle: fix W0612 and R1735 pylint errors
+  * codestyle: fix W1514 pylint error
+  * systemd: Add KillSignal=SIGINT to keylime_agent.service
+  * One-liner to set the minimum version of TLS to v1.2
+  * pylint fix
+  * Typo fix: return list order confusion between measured_boot.py and tpm_abstract.py
+  * Refactor keylime_logging module
+  * ima: Implement ima-buf validator and validate keys on keyrings (#725)
+  * Remove Python 2 leftovers
+  * Additional fix for the processing of "tpm_policy"
+  * ima: Return an empty allowlist rather than a plain empty list
+  * verifier: convert (v)tpm_policy in DB from string to JSONPickleType
+  * verifier: Create AgentAttestState objects from entries in the db
+  * verifier: Persist the IMA attestation state after running the log verification
+  * db: Add DB migration file for boottime, ima_pcrs, pcr10, and next_ima_ml_entries
+  * verifier: Skip attestation one time if agent's boottime changed
+  * test: Add test case simulating iterative attestation
+  * verifier: Delete an AgentAttestState when deleting an agent
+  * ima: Remember the number of lines successfully processed and last IMA PCR value(s)
+  * ima: Reset the attestation if processing the measurement list fails
+  * debug: Show line number when PCR match occurs
+  * verifier: Extend AgentAttestState with state of the IMA PCR
+  * Consult the AgentAttestState for the next measurement list entry
+  * Introduce an AgentAttestState class for passing state through the APIs
+  * verifier: Request IMA log at entry 0 for now
+  * agent: Get boottime and transfer to verifier
+  * agent: Add support for optional IMA log offset parameter
+  * tests: Add a unit test for the IMA function and run it
+  * agent: Move IMA measurement list reading function to ima.py
+  * Add default verifier-check value
+  * Use tox for pylint
+  * Use Fedora 34 as base image for CI container
+  * Run ci jobs only when needed
+  * config: merge convert and list_convert into the same function
+  * Versioned APIs
+  * Refacator of check_pcrs to parse then validate (#716)
+  * Automatically calculates the boot_aggregate from the measured boot log. (#713)
+  * Set default UUID as lowercase (#699)
+  * tenant: do_cvdelete wait until 404
+  * Ensures the output of `bulkinfo` command in `keylime_tenant` is JSON
+  * ima: Convert pcrval to bytes to increase efficiency
+  * tests: extend ima tests for signature validation and exclude lists
+  * Allow agents to specify a contact ip address and port for the tenant and CV  (#690)
+  * verifer: Fix signature and allowlist evaluation bahavior change
+  * ima: Fix runtime error due to wrong datatype
+  * tenant: add the option to specify the registrar ip and port
+  * measured_boot: drop process_refstate
+  * check_pcrs: match PCR if no mb_refstate is provided
+  * ci: make run_local.sh work with newer docker versions
+  * Fixing pylint errors (#698)
+  * tests: add IMA test where validation should be ignored
+  * ima: Use ima_ast for parsing and validation
+  * tests: Add test for ima AST parser
+  * ima: Introducing a AST for parsing and validation
+  * Make stalebot a bit nicer
+  * enable tenant to fetch all (or verifier specific) agents info in a single call from the verifier
+  * Flush all sessions from TPM device (#682)
+  * multiple named verifiers sharing a single database
+  * webapp: fix tls certs paths (#659)
+  * Corrects markdown to have proper rendering (#673)
+  * ima_file_signatures: Extract keyidv2 from x509 certs
+  * installer: Add '-r' option to cp to copy directory (issue #671)
+  * config: Add optional fallback parameter to get()
+  * agent: Fix the usage of dmidecode during the agent startup (issue #664)
+  * agent: Rename allowlist to ima_allowlist in keylime.conf
+  * Fix decoding error in user_data_encrypt
+  * agent: Fix issue #667 by testing for an empty ima_sign_verification_keys list
+  * Addresses issue #660 (database path while running local tests) (#665)
+  * ima: Return 'None' when ImaKeyring.from_string() called with emtpy string
+  * tests: Move unittests into files with suffix _test.py
+  * Fixes and improvements for database configuration (#654)
+  * Add signature verification support for local and remote IMA signature verification keys (#597)
+  * install: Remove TPM 1.2 support from installer and bundeling scripts
+  * CI/CD: Remove tpm1.2 testing support
+  * Remove duplicated calls to verifier
+  * Remove adding entropy to system rng
+  * Cleanup and fix error case in encryptAIK (#648)
+  * Move measured boot related code into functions to make check_pcrs readable (#642)
+  * Move code related to tpm2_checkquote into its own function (#639)
+  * scripts: Cleanup shell script formatting
+  * installer.sh: Do not delete the local copy of the certificates.
+  * Fix user_data_encrypt to UTF8 decode before print
+  * tpm_abstract: Fix adding of entropy
+  * codestyle: Ignore R1732 implemented by pylint >=2.8.0
+  * a fix for letting JSON encoding bytes correctly
+  * Adding back reglist to the list of commands that don't need a -t argument
+  * Invoke tpm2_evictcontrol for 4.0 and 4.2 tools if aik_handle exists (#624)
+  * Addresses #436 (#611)
+  * Fixes #620
+  * Include PCR16 in the quote only when needed
+  * Close leaking file descriptors (#622)
+  * installer.sh: Add missing spaces when efivar is added
+  * More ima_emulator_adapter cleanups (#616)
+  * installer: Add json-c-devel/json-c-dev to BUILD_TOOLS for tpm2-tss build
+  * Remove more commented code in ca_util.py
+  * installer: Only install efi library on x86_64 systems
+  * Create allowlist table and basic API support
+  * installer: Add libuuid-devel/uuid-dev to BUILD_TOOLS for tpm2_tools build
+  * WIP: Some cleanups (#612)
+  * Remove _cLime.c
+  * config: Document the measured boot PCRs and what is using them
+  * Very simple fix for the agent (re: measured boot) The agent code does not need to import "measured boot policies"
+  * ima_emulator_adapater: Remove unnecessary global statement
+  * webapp: Fix private key and certificate path (issue #604)
+  * Add support for keylime_webapp service to read intervals from keylime.conf
+
+-------------------------------------------------------------------
 Mon Jul 26 09:31:01 UTC 2021 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to Keylime 6.1.1
