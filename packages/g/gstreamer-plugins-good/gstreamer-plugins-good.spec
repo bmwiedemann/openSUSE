@@ -29,7 +29,7 @@
 %define ENABLE_EXPERIMENTAL 1
 
 Name:           gstreamer-plugins-good
-Version:        1.18.4
+Version:        1.18.5
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -40,8 +40,7 @@ URL:            https://gstreamer.freedesktop.org
 Source0:        %{_name}-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM 612102fdbc3f813bf9d3406165692b5f742e51a6.patch dimstar@opensuse.org -- Fix build with GCC 11
-Patch0:         612102fdbc3f813bf9d3406165692b5f742e51a6.patch
+
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
@@ -61,7 +60,6 @@ BuildRequires:  orc >= 0.4.16
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  translation-update-upstream
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -175,8 +173,6 @@ This package provides the qmlglsink output plugin for gstreamer-plugins-good.
 
 %prep
 %autosetup -n %{_name}-%{version} -p1
-
-translation-update-upstream po gst-plugins-good-%{gst_branch}
 
 %build
 export PYTHON=%{_bindir}/python3

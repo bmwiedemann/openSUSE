@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:49:16 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support (PM-2938).
+
+-------------------------------------------------------------------
+Wed Sep 15 09:49:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.5:
+  + avidemux: Also detect 0x000001 as H264 byte-stream start code
+    in codec_data
+  + deinterlace:
+    - Plug a method subobject leak
+    - Drop field-order field if outputting progressive
+  + jpegdec: Fix crash when interlaced field height is not DCT
+    block size aligned
+  + qmlglsink: Keep old buffers around a bit longer if they were
+    bound by QML
+  + qml: qtitem: don't potentially leak a large number of buffers
+  + qtdemux: Force stream-start push when re-using EOS'd streams
+  + qtmux:
+    - For Apple ProRes, allow overriding pixel bit depth, e.g. when
+      exporting an opaque image, yet with alpha.
+    - Make sure to write 64-bit STCO table when needed.
+  + rtpjpegpay: fix image corruption when compiled with MSVC on
+    Windows
+  + rtpptdemux: Remove pads also in PAUSED->READY
+  + rtph265depay: update codec_data in caps regardless of format
+  + rtspsrc:
+    - Do not overwrite the known duration after a seek
+    - De-dup seek event seqnums to avoid multiple seeks
+    - Fix race saving seek event seqnum
+    - Using multicast UDP has no relation to seekability, also add
+      some logging
+    - Fix more signals
+    - Fix accumulation of before-send signal return values
+  + rtpjitterbuffer:
+    - Fix parsing of the mediaclk:direct= field
+    - Avoid generation of invalid timestamps
+    - Check srcresult before waiting on the condition variable too
+    - More logging when calculating rfc7273 timestamps
+  + souphttpsrc: Always use the content decoder but set
+    `Accept-Encoding:...
+  + udpsrc: Plug leaks of saddr in error cases
+  + multiudpsink: Fix broken SO_SNDBUF get/set on Windows
+  + v4l2object:
+    - Add interlace-mode back to caps for camera
+    - Use default colorimetry if that in caps is unknown
+    - Avoid colorimetry mismatch for streams with invalid
+      colorimetry
+    - Add support for hdr10 stream playback
+  + wavparse: adtl/note/labl chunk parsing fixes
+  + Don't use volatile to mean atomic (fixes compiler warnings with
+    gcc 11)
+  + 1.18.4: build fails with glib 2.67.6 and gcc-11: argument 2 of
+    ‘_atomicload’ must not be a pointer to a ‘volatile’ type
+- Drop 612102fdbc3f813bf9d3406165692b5f742e51a6.patch: Fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Apr 15 11:31:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 612102fdbc3f813bf9d3406165692b5f742e51a6.patch: Fix build
