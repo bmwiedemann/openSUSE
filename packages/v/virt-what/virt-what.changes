@@ -9,7 +9,7 @@ Wed May 12 22:07:50 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Mon Jan 27 18:33:06 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Add "which" to Requires
-  * Fixes boo#1161850
+  * Fixes boo#1161850, bsc#1176132
 
 -------------------------------------------------------------------
 Tue Jan 14 20:02:36 UTC 2020 - Martin Hauke <mardnh@gmx.de>
