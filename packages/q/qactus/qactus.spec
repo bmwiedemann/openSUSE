@@ -1,7 +1,7 @@
 #
 # spec file for package qactus
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 %global devname %{libprefix}-devel
 
 Name:           qactus
-Version:        2.0.3
+Version:        2.1.0
 Release:        0
 Summary:        A GUI client for OBS
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -44,14 +44,15 @@ BuildRequires:  cmake(Qt5Keychain)
 Requires:       %{libname}%{?_isa} = %{version}-%{release}
 
 %description
-A Qt-based Open Build Service (OBS) client featuring a browser, request management and more
+A Qt-based Open Build Service (OBS) client featuring a browser, request
+management and more.
 
 %package -n %{libname}
 Summary:        A Qt-based OBS library
 Group:          System/Libraries
 
 %description -n %{libname}
-A library for interacting with the Open Build Service (OBS)
+A library for interacting with the Open Build Service (OBS).
 
 %package -n %{devname}
 Summary:        Development files for %{libprefix}
@@ -60,25 +61,19 @@ Requires:       %{libname}%{?_isa} = %{version}-%{release}
 
 %description -n %{devname}
 This package contains the development files for %{libprefix}, a Qt-based
-Open Build Service (OBS) library
+Open Build Service (OBS) library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake
-%make_build
+%cmake_build
 
 %install
-%make_install -C build
+%cmake_install
 
 %suse_update_desktop_file %{name}
-
-%post
-%desktop_database_post
-
-%postun
-%desktop_database_postun
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig

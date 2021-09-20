@@ -71,4 +71,13 @@
     <comment></comment>
     <requestid>851593</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f606390047b8ed9965572d617556f875</srcmd5>
+    <version>2.1.0</version>
+    <time>1632173579</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1.0
+  * New feature: monitor an entire project</comment>
+    <requestid>920108</requestid>
+  </revision>
 </revisionlist>
