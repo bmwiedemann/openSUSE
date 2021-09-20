@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 10 17:09:46 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210324:
+  * Revert "Add OGA / H5 / N2 / RockPro 64 support"
+  * Add more targets
+  * Some buildfixes for Apple ARM64
+  * Add OGA / H5 / N2 / RockPro 64 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * simple fix for seg fault on game unload ;)
+  * Revert "Fix Seg Fault on Game Unload"
+  * Add Rpi4 platform in 64bit mode with Vulkan renderer.
+
+-------------------------------------------------------------------
 Thu Oct 15 12:26:32 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Fix aarch64 and armv7 builds

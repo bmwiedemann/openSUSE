@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-parallel-n64
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-parallel-n64
-Version:        0~git20201011
+Version:        0~git20210324
 Release:        0
 Summary:        Parallel N64 libretro core for Nintendo 64 emulation
 License:        GPL-3.0-only
