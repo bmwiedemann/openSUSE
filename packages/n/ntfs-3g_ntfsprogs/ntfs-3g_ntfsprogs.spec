@@ -22,17 +22,16 @@
 %define sbindir /sbin
 %endif
 
-%define sover 88
+%define sover 89
 
 Name:           ntfs-3g_ntfsprogs
 Summary:        NTFS Support in Userspace
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
-Version:        2017.3.23
+Version:        2021.8.22
 Release:        0
 Source:         http://tuxera.com/opensource/%{name}-%{version}.tgz
-Source2:        21-storage-ntfs-3g.fdi
-URL:            http://www.tuxera.com/community/ntfs-3g-download/
+URL:            https://github.com/tuxera/ntfs-3g/
 BuildRequires:  autoconf
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
@@ -55,7 +54,7 @@ Provides:       ntfsprogs-fuse = 1.13.1
 Obsoletes:      ntfsprogs-fuse < 1.13.1
 %if 0%{?suse_version}
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Supplements:    filesystem(ntfs-3g)
 %endif
 
@@ -105,11 +104,11 @@ Group:          System/Filesystems
 
 %description -n ntfsprogs-extra
 These are programs which are considered non-functional or only test-oriented.  They are kept in the source
-tarball so that volunteers can capitalize on them for improvement.  
+tarball so that volunteers can capitalize on them for improvement.
 
 In particular ntfsck is just a place holder.  Distributions are expected not to recommend inserting a positive value in the last field of /etc/fstab for ntfs partitions.
 
-They have been orphaned for ten years and are unlikely to be upgraded (except ntfsfallocate, if there is some demand). 
+They have been orphaned for ten years and are unlikely to be upgraded (except ntfsfallocate, if there is some demand).
 
 %prep
 %setup -q
@@ -204,7 +203,7 @@ fi
 %defattr(-, root, root)
 %doc AUTHORS ChangeLog CREDITS NEWS README
 %license COPYING
-%{sbindir}/mkfs.ntfs
+%{_sbindir}/mkfs.ntfs
 %{_sbindir}/mkntfs
 %{_sbindir}/ntfsclone
 %{_sbindir}/ntfscp
