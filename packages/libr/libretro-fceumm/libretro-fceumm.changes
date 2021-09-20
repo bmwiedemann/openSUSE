@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:55:13 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210729:
+  * (.gitlab-ci.yml) Add RetroFW target
+  * Add retrofw target
+  * Fix controller info index
+  * Buildfix
+  * Found a database mistake
+  * Comment style
+  * Add a few misheadered ROMs from a Nanjing ROM pack to ines-correct.h
+  * Add FF7 translation to ines-correct.h
+  * Cleanups; turn some functions static
+  * Cleanups
+  * Cleanup
+  * Remove unused functions
+  * Cleanup
+  * Get rid of obsolete variable
+  * Wrap all fopen access - go through FCEUD_UTF8fopen isntead
+  * Some cleanups + we don't need a non-libretro codepath
+  * Revert "some cleanups"
+  * iNESLoad - some code is not used except for printing some information, stub it out with DEBUG ifdefs
+  * Remove this (remnants of ppuview)
+  * Simplify palette core options
+  * - Simplify MakeMemWrapBuffer - FCEUI_LoadGame - UNIFLoad and FDSLoad never use 'name' so pass NULL here
+  * Remove ununsed, commented code
+  * Move overclock-related variables to ppu instead
+  * Move settings-related vars to FSettings struct
+  * Cleanup: Remove a few extern
+  * Update database for mappers 162-164/558
+  * Rewrite mappers 162,163,164; add mapper 558. Add EEPROM support to 164.
+  * Make sure the comments reflect what the code actually does.
+  * Improve the UNIF to subType heuristics, since UNIF ROMs do not use the database in ines-correct.h.
+  * Update the database for mapper 176 games. Set the iNES2 flag when the submapper field is used.
+  * Add support for Jncota variant, mapper 523
+  * Use submappers and apply latest hardware findings. Use a heuristic to determine whether to change the DIP switch on every reset.
+  * Update libretro_core_options.h
+  * Update Aspect Ratio
+  * Use fopen_utf8 instead of fopen
+  * Add lock bit, necessary for NT-234's Road Fighter
+  * Typo in ines.c
+  * Typos in 428.c
+  * Add TF2740 to unif.c
+  * Combine UNIF AB-G1L, WELL-NO-DG450 and TF2740 into NES 2.0 Mapper 428.
+  * Make mapper 59 always reset to menu. Add mapper 59 multicarts that had previously been set to 60, colliding with 'Reset-based 4-in-1', to CRC-based correction table.
+  * Forgot one KT-008 hack remnant.
+  * MINDKIDS accessible as NES 2.0 m268.1; mapper 224 is MINDKIDS; remove KT-008 remnants from mmc3.c
+  * Wrong Big Endian define for PSL1GHT system
+  * Add support for Konami Hyper Shot
+  * more C89 fixes
+  * C89 fixes
+  * Update PSL1GHT platform (#437)
+  * More C89 build fixes - for loop initial declarations
+  * Style nits, C89 build fixes
+  * readALU_DIP already returned a value in every case, but LGTM apparently did not get it.
+  * Rewrite and unify J.Y. ASIC emulation. Add multicart mappers.
+  * Mapper 332: Add CNROM mode, support larger multicarts
+  * Add od-beta
+  * Update .gitlab-ci.yml
+  * add back ios9 target
+  * Support iOS and tvOS in gitlab ci
+  * Apply region overrides when loading new rom (Fix#430)
+  * (MSVC) Embed MSVCR runtime
+  * (MSVC 2005/2010) Add core
+  * Combine the very similar mappers 126/422/534/BS400/BS4040 into one common source code file. Rewrite for accuracy and compatibility with all known game dumps. Replace FUTURE KIDS hack with correct CNROM masking.
+  * (OSX) Add cross compile rules for arm64
+  * Update Makefile.libretro
+  * Fix MSVC 2003 build
+  * Update Makefile.libretro
+  * Cleanup
+  * Update .gitlab-ci.yml
+  * Add Apple ARM64 rules
+  * Fix wrong aligment in the buffer
+  * make it to compile
+  * Add RPI3 + RPI4 and fix aarch64
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Prevent adding NULL terminator to save state extra list
+  * Fixed a bug that caused extended save state information to be truncated early.
+  * Update .gitlab-ci.yml
+  * Update
+  * Update .gitlab-ci.yml
+  * Add OpenDingux target to .gitlab-ci.yml
+  * Fix warning
+  * Directly apply NES 2.0 overrides when available
+  * Misc update
+  * Add mapper 401
+  * m293: Fix alignment and update
+  * Add mapper 293
+  * Update bs4xxxr
+  * Remove extraneous semicolons at top-level
+  * Add unif multicarts
+  * Fix #398
+  * Add mapper 370 and 395, update mapper 221
+  * Don't set pixel_format in retro_init
+  * Fix some warnings reported from LGTM
+  * Overclock: Remove this for region change
+  * APU: Move duty cycle swapping during apu writes
+  * Update libretro-common
+  * Fix some warnings
+  * UNIF: Ensure that used memory are freed on errors
+  * UNIF: Fix incorrect ines-mapper log and cleanup
+  * Change c++ to c comments
+  * Update mapper 059/060
+  * Typo
+  * m176: Fix battery save size, silence parenthesis warning
+  * Fix warnings [-Wimplicit-fallthrough=]
+  * Fix warnings [-Wmissing-field-initializers]
+  * m176: Fix address mask causing incorrect register writes
+  * Remove NETWORK branch
+  * Remove unused functions
+  * m176: Updates
+  * Fix overrides incorrectly setting flags
+  * Update .gitlab-ci.yml
+  * Add ps2 target
+  * Enable default 8K wram to unif fk32ca
+  * m176: Always enable wram for ines-headered roms
+  * Add mapper 411
+  * Add mapper 554
+  * Fix warnings
+  * (gitlab) Add vita
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Create .gitlab-ci.yml
+  * input: Fix warnings [-Wincompatible-pointer-types]
+  * Rename overscan-related variables
+  * ntsc: Remove magic numbers and cleanup
+  * Fix warning
+  * Cheats: Add check for valid game genie code format
+  * Cheats: Fix RAW cheats that use zero-page address
+  * Fix logs
+  * Cheat: Add raw codes support in xxxx?yy:zz format
+  * Cheats: Fix pro action replay cheat format
+  * Cheat: Add raw format and multiline cheat support
+  * Fix SIGSEGV error when using Famicom expansion devices (port 5)
+  * Add Micro Mages to fourscore_db_list
+
+-------------------------------------------------------------------
 Tue Jun 16 09:29:58 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200604:

@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-fceumm
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-fceumm
-Version:        0~git20200604
+Version:        0~git20210729
 Release:        0
 Summary:        FCE Ultra mappers modified libretro core
 License:        GPL-2.0-only
