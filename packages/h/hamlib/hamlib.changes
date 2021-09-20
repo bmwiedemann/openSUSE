@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Sep 19 21:52:15 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Fixed source URL
+
+-------------------------------------------------------------------
+Fri Sep 17 18:10:25 UTC 2021 - Wojciech Kazubski <wk@ire.pw.edu.pl>
+
+- Update to version 4.3.1
+  * Bug fix release
+    - Do not do vfo_fixup on satmode rigs
+    - Fix compilation of misc.c with gmtime_r replacement function
+      for mingw
+    - Fix python build.  For some reason casting tp vfo_t in the
+      RIG_VFO_N macro broke the swig parsing
+    - Append the missing information to build hamlib v4.3 for
+      Android NDK
+    - Change set_icom_set_mode_with_data to not change mode unless
+      necessary
+    - Since Icom rigs default to filter 2 if a filter is not
+      selected we will do the same when turning on data mode
+    - Fix segfault in kenwood_set_vfo
+    - scripts: Update example in readme, since 4.0 817 is 1020
+    - Make testlibusb.c compatible with libusb < 1.0.23
+      Note: On systems with libusb < 1.0.23 a warning will be
+      emmitted but compliation should proceed without error.
+    - Update testlibusb.c warning to "may be" instead of "will be"
+    - Change kenwood to only set VFOA default on 1st rig_open call
+- Update to version 4.3
+  * libusb-1.0.23 or greater is now required or use --without-libusb
+  * Generating documentation now requires GNU source-highlighter.
+  * Added IC-575
+  * Less VFO swapping of newer Icom rigs -- zero swapping in WSJTX
+    and JTDX
+  * Dual rotator control in rotctl -R option
+  * Started work on simulators -- very crude right now but usable
+    to debug some things
+  * Overhaul of rig split -- reverse split (VFOA=RX VFOB=TX) should
+    work for rigs capable of it
+    Starting VFO does not matter -- rig will end up on RX VFO
+      S VFOA 1 VFOB
+      S VFOB 1 VFOA
+      S Main 1 Sub
+      S Sub 1 Main
+  
+-------------------------------------------------------------------
 Tue May 18 20:43:10 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 4.2
