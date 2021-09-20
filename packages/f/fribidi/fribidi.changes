@@ -14,7 +14,7 @@ Sun Aug  9 20:02:12 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
   * A bug fix in the fribidi unicode algorithm for multiple isolate
     sequences.
   * Fixed a potential buffer overflow for a long sequence of isolate
-    overrides characters
+    overrides characters (bsc#1156260 CVE-2019-18397)
 - Changes from version 1.0.7:
   * This is a minor bugfix that removes symlinks and updates the meson
     version.
@@ -29,6 +29,7 @@ Sun Aug  9 20:02:12 UTC 2020 - Matthias Eliasson <elimat@opensuse.org>
 - Drop patches fixed upstream
   * Truncate-isolate_level-to-FRIBIDI_BIDI_MAX_EXPLICIT_.diff
   * no-config-h.diff
+  * fribidi-CVE-2019-18397.patch
 
 -------------------------------------------------------------------
 Fri May 22 14:43:34 UTC 2020 - Carsten Ziepke <kieltux@gmail.com>
