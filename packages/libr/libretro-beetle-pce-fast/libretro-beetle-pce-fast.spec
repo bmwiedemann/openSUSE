@@ -1,7 +1,7 @@
 #
 # spec file for package libretro-beetle-pce-fast
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           libretro-beetle-pce-fast
-Version:        0~git20200523
+Version:        0~git20210817
 Release:        0
 Summary:        Mednafen PCE Fast libretro core for TurboGrafx-16/PC Engine emulation
 License:        GPL-2.0-only

@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Fri Sep 10 15:02:43 UTC 2021 - i@guoyunhe.me
+
+- Update to version 0~git20210817:
+  * Revert "Update core options"
+  * Revert "move some options into hacks category"
+  * Update core options
+  * move some options into hacks category
+  * Implement core option categories - also sublabels finally show up properly
+  * add retrofw target
+  * Add RS-90 target
+  * Revert "Implement persistent buffer in a more efficient way - HuCROM is"
+  * Implement persistent buffer in a more efficient way - HuCROM is now assigned to the persistent buffer IF persistent buffer is supported by the frontend, saving us one additional malloc and memcpy
+  * Add support for RETRO_ENVIRONMENT_SET_CONTENT_INFO_OVERRIDE API extension - enables soft patching of non-CD content
+  * Cut down on strlens
+  * Fix emscripten linking
+  * Remove unused files
+  * Get rid of error_on_eos
+  * Get rid of asserts
+  * Make ReadM3U code use libretro-common file_stream
+  * Add od-beta
+  * Silence some LGTM warnings
+  * Enusure globals are intialised correctly
+  * Update libchdr (replace libflac with dr_flac) + fixes
+  * Add ios-arm64/tvos-arm64
+  * (MSVC) Add MSVCRT runtime
+  * Fix MSVC 2010
+  * Update MSVC 2005/2010 cores
+  * Add MSVC 2005 / 2010 cores
+  * (MacOS) Set up CROSS_COMPILING for ARM 64bit
+  * add armv8 support
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update Makefile
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Update
+  * Fix OSX compilation
+  * Update Makefile
+  * Update .gitlab-ci.yml
+  * Update .gitlab-ci.yml
+  * Add OpenDingux target to .gitlab-ci.yml
+  * [iOS][tvOS] Add -DHAVE_UNISTD_H flag to compile zlib
+  * Add Raspberry Pi 4 64bit platform.
+  * Add optional automatic frame skipping
+  * Update libflac
+  * Update libchdr to upstream
+  * Minimal fix for chd / lzma alignment issues
+  * Update .gitlab-ci.yml
+  * Simplify SimpleFIFO
+  * msvc2010: Buildfix
+  * Update libretro-common
+  * Cleanups
+  * Update
+  * Buildfixes
+  * Wrap around fseeko/ftello
+  * Add .gitlab-ci.yml
+  * Cleanups
+  * Get rid of MDFN_PrintError
+  * Merge ioread.inc into libretro.cpp
+  * Rename include file
+  * Cleanup
+  * Cleanups
+  * Cleanups
+  * Remove more unused switches
+  * Remove switches which are unneeded
+  * Remove unused function MDFND_DispMessage
+  * Get rid of MDFN_printf and MDFN_indent
+  * Remove some unused functions
+  * Cleanups
+  * scsicd.cpp not used
+  * Use SFVAR_BOOL
+  * (arcade_card) Cleanup
+  * Cleanup
+  * Cleanup
+  * Convert  to C
+  * Cleanups
+  * Buildfix
+  * Buildfix
+  * Buildfix
+  * Buildfix
+  * Cleanups
+  * SimpleFIFO - get rid of vector usage
+  * Type for SimpleFIFO is always uint8_t - get rid of template
+  * Convert vdc.cpp to C
+  * Convert input.cpp to C
+  * Convert huc6280.cpp to C
+  * Add SFVARN_BOOL
+  * Cleanups
+  * Get rid of unused math_ops.h
+  * Get rid of unused masmem.h
+  * Header cleanups
+  * Get rid of macro
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Add CTR / 3DS platform
+  * Add native cheat support
+  * update composite palette
+  * Get rid of CDIF_Message
+  * Buildfix for Windows
+  * Get rid of IsAbsolutePath
+  * Remove unused headers
+  * Update libretro.cpp
+  * Buildfix
+  * minor fixes, moved pce_cdspeed core option above the volume options
+  * MSVC buildfix
+  * replaced disable PSG sound channel core options with volume adjust (#160)
+  * Add custom palette support, add composite palette (backport https://github.com/libretro/beetle-pce-libretro/pull/7)
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Buildfixes for MSVC
+  * added sound channel disable options (#160)
+  * Cleanups
+  * Cleanups
+  * Remove unused header file
+  * Cleanups
+  * Header include cleanups
+  * Convert settings.cpp to settings.c
+  * OKIADPCMEncoder
+  * Cleanups
+  * Move setting_pce_fast_cdbios to libretro.cpp
+  * libretro: use input bitmask
+  * Cleanups
+  * Cleanup
+  * Cleanups
+  * Cleanups
+  * Buildfix
+  * C89 buildfix
+  * Refactor state.cpp to state.c
+  * Cleanups
+  * Cleanups
+  * Cleanups
+  * Backport https://github.com/libretro/beetle-psx-libretro/pull/681/commits/f725c34a50cc1a4058a8cf55b6ac383302b0d35c
+  * allow using system libs
+
+-------------------------------------------------------------------
 Sat May 30 16:10:10 UTC 2020 - i@guoyunhe.me
 
 - Update to version 0~git20200523:
