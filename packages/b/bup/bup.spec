@@ -28,7 +28,9 @@ Group:          Productivity/Archiving/Backup
 URL:            https://bup.github.io/
 Source0:        https://github.com/bup/bup/archive/%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  git-core >= 1.5.3.1
+%ifnarch %ix86
 BuildRequires:  pandoc
+%endif
 BuildRequires:  perl-Time-HiRes
 BuildRequires:  python3-devel
 BuildRequires:  python3-fuse
@@ -87,7 +89,6 @@ make check
 %license LICENSE
 %doc README
 %{_bindir}/%{name}
-%{_docdir}/%{name}/
 %dir %{_prefix}/lib/%{name}/
 %dir %{_prefix}/lib/%{name}/bup/
 %dir %{_prefix}/lib/%{name}/cmd/
@@ -97,6 +98,9 @@ make check
 %{_prefix}/lib/%{name}/cmd/*
 %{_prefix}/lib/%{name}/web/*
 %{_prefix}/lib/%{name}/web/static/*
+%ifnarch %ix86
+%{_docdir}/%{name}/
 %{_mandir}/man1/*
+%endif
 
 %changelog

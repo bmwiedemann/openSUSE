@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 10 12:27:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Do not build documentation/man pages on ix86, as pandoc is not
+  available.
+
+-------------------------------------------------------------------
 Thu Jan 14 11:49:29 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 0.32
@@ -43,7 +49,7 @@ Sat Jun  3 12:33:32 UTC 2017 - ecsos@opensuse.org
 
 - update to 0.29.1
   - See https://github.com/bup/bup/blob/master/note/0.29.1-from-0.29.md
-  
+
 -------------------------------------------------------------------
 Thu Mar  9 12:01:18 UTC 2017 - ecsos@opensuse.org
 
