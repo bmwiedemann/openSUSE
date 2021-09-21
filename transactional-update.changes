@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 14:02:17 UTC 2021 - Ignaz Forster <iforster@suse.com>
+
+- Version 3.5.5
+  - t-u: Use tukit for SUSEConnect call [bsc#1190574]
+    Correctly registers repositories
+
+-------------------------------------------------------------------
 Sat Sep 11 21:21:09 UTC 2021 - Ignaz Forster <iforster@suse.com>
 
 - Version 3.5.4
