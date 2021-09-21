@@ -1754,6 +1754,8 @@ unsorted:
   - cargo1.53-doc: [x86_64] 
   - cargo1.54 
   - cargo1.54-doc: [x86_64] 
+  - cargo1.55: [x86_64] 
+  - cargo1.55-doc: [x86_64] 
   - caribou 
   - caribou-common 
   - caribou-devel 
@@ -2766,6 +2768,8 @@ unsorted:
   - deepin-pw-check 
   - deepin-pw-check-devel 
   - deepin-pw-check-lang 
+  - deepin-reader 
+  - deepin-reader-lang 
   - deepin-screen-recorder 
   - deepin-screen-recorder-lang 
   - deepin-session-shell 
@@ -5883,6 +5887,9 @@ unsorted:
   - go1.16 
   - go1.16-doc 
   - go1.16-race: [x86_64] 
+  - go1.17 
+  - go1.17-doc 
+  - go1.17-race: [x86_64] 
   - go1.4 
   - go1.4-doc 
   - go1.4-race: [x86_64] 
@@ -10136,6 +10143,7 @@ unsorted:
   - libdebuginfod1-dummy 
   - libdecoration0 
   - libdecoration0-32bit: [x86_64] 
+  - libdeepin-pdfium1 
   - libdeepin-turbo0 
   - libdeepin_pw_check1 
   - libdeflate-devel 
@@ -10241,7 +10249,7 @@ unsorted:
   - libdwarves-devel-32bit: [x86_64] 
   - libdwarves1 
   - libdwarves1-32bit: [x86_64] 
-  - libdxflib-3_17_0-1 
+  - libdxflib-3_26_4-1 
   - libdxfrw-devel 
   - libdxfrw-tools 
   - libdxfrw1 
@@ -11464,7 +11472,7 @@ unsorted:
   - libknet1-crypto-plugins-all 
   - libknet1-devel 
   - libknet1-plugins-all 
-  - libknot11 
+  - libknot12 
   - libkokkos3: [x86_64] 
   - libkolabxml-devel 
   - libkomparediff2-devel 
@@ -12558,6 +12566,8 @@ unsorted:
   - libplplotqt2 
   - libplplotwxwidgets1 
   - libpmem-devel: [x86_64] # devel package of dvd:libpmemobj1 
+  - libpmem2-1: [x86_64] 
+  - libpmem2-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmemblk-devel: [x86_64] # devel package of dvd:libpmemobj1 
   - libpmemblk1: [x86_64] 
   - libpmemkv1: [x86_64] 
@@ -14631,7 +14641,7 @@ unsorted:
   - libzopflipng1 
   - libzrtpcpp-devel 
   - libzrtpcpp4 
-  - libzscanner3 
+  - libzscanner4 
   - libzsolve0 
   - libzstd-devel 
   - libzstd-devel-32bit: [x86_64] 
@@ -15732,7 +15742,7 @@ unsorted:
   - mgp 
   - mhash-devel 
   - mhvtl 
-  - mhvtl-kmp-default 
+  - mhvtl-kmp-default: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - mhvtl-kmp-pae: [i586] 
   - miao-fonts 
   - microcom 
@@ -17970,6 +17980,7 @@ unsorted:
   - os-autoinst-openvswitch 
   - os-autoinst-qemu-kvm: [x86_64] 
   - os-autoinst-qemu-x86: [x86_64] 
+  - os-autoinst-s390-deps 
   - os-maven-plugin 
   - os-maven-plugin-javadoc 
   - os-service-types-doc 
@@ -18114,8 +18125,6 @@ unsorted:
   - palette 
   - palette-lang 
   - palm-db-tools 
-  - pam-deprecated 
-  - pam-deprecated-32bit: [x86_64] 
   - pam-devel 
   - pam-devel-32bit: [x86_64] 
   - pam-extra 
@@ -23665,7 +23674,6 @@ unsorted:
   - python36-single-version 
   - python36-singledispatch 
   - python36-siosocks 
-  - python36-sip 
   - python36-sip-devel 
   - python36-sip4 
   - python36-sip4-devel 
@@ -26072,7 +26080,6 @@ unsorted:
   - python38-pygn 
   - python38-pyhcl 
   - python38-pyhibp 
-  - python38-pyinotify 
   - python38-pyipp 
   - python38-pyjavaproperties 
   - python38-pyjnius 
@@ -26573,7 +26580,6 @@ unsorted:
   - python38-single-version 
   - python38-singledispatch 
   - python38-siosocks 
-  - python38-sip 
   - python38-sip-devel 
   - python38-sip4 
   - python38-sip4-devel 
@@ -29679,7 +29685,6 @@ unsorted:
   - python39-single-version 
   - python39-singledispatch 
   - python39-siosocks 
-  - python39-sip 
   - python39-sip-devel 
   - python39-sip4 
   - python39-sip4-devel 
@@ -30808,6 +30813,7 @@ unsorted:
   - rls: [x86_64] 
   - rls1.53: [x86_64] 
   - rls1.54: [x86_64] 
+  - rls1.55: [x86_64] 
   - rlwrap 
   - rmail 
   - rmedigicontrol 
@@ -31317,6 +31323,11 @@ unsorted:
   - rust1.54-doc: [x86_64] 
   - rust1.54-gdb 
   - rust1.54-src 
+  - rust1.55: [x86_64] 
+  - rust1.55-analysis: [x86_64] 
+  - rust1.55-doc: [x86_64] 
+  - rust1.55-gdb: [x86_64] 
+  - rust1.55-src: [x86_64] 
   - rustscan 
   - rxp 
   - rxtx-java 
@@ -32155,7 +32166,6 @@ unsorted:
   - superlu_5_2_2-gnu-hpc-devel 
   - superlu_5_2_2-gnu-hpc-doc 
   - superlu_5_2_2-gnu-hpc-examples 
-  - supermin: [i586] 
   - superpaper 
   - supertux2 
   - supertuxkart 
@@ -42305,7 +42315,6 @@ unsorted:
   - yast2-iplb 
   - yast2-iscsi-lio-server 
   - yast2-online-update-configuration 
-  - yast2-online-update-frontend 
   - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
   - yast2-rear 
