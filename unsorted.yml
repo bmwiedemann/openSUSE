@@ -1828,9 +1828,6 @@ unsorted:
   - celt 
   - celt051 
   - celt051-devel 
-  - cepces 
-  - cepces-certmonger 
-  - cepces-selinux 
   - ceph: [x86_64] 
   - ceph-base: [x86_64] 
   - ceph-csi: [x86_64] 
@@ -1858,7 +1855,6 @@ unsorted:
   - cephfs-top: [x86_64] 
   - cereal-devel 
   - certbot-systemd-timer 
-  - certmonger 
   - certstrap: [i586] 
   - cf-cli 
   - cf-cli-test 
@@ -6441,6 +6437,7 @@ unsorted:
   - gvim: [i586] # suggested by dvd:suggested:patterns-media-rest_cd_core 
   - gwenhywfar 
   - gwenhywfar-devel 
+  - gwenhywfar-gwenbuild 
   - gwenhywfar-lang 
   - gwenhywfar-tools 
   - gypsy 
@@ -9818,9 +9815,9 @@ unsorted:
   - libcelt-devel-32bit: [x86_64] 
   - libcelt0-2-32bit: [x86_64] 
   - libcelt051-0 
-  - libcephfs-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephfs-devel: [x86_64] # devel package of dvd:librbd1 
   - libcephsqlite: [x86_64] 
-  - libcephsqlite-devel: [x86_64] # devel package of dvd:librados2 
+  - libcephsqlite-devel: [x86_64] # devel package of dvd:librbd1 
   - libceres-devel 
   - libceres2 
   - libcerf-devel 
@@ -11294,6 +11291,10 @@ unsorted:
   - libinput-devel 
   - libinput-tools 
   - libinput10-32bit: [x86_64] 
+  - libinsane-devel 
+  - libinsane1 
+  - libinsane_gobject-devel 
+  - libinsane_gobject1 
   - libinsighttoolkit5: [x86_64] 
   - libinstpatch-1_0-2 
   - libinstpatch-1_0-2-32bit: [x86_64] 
@@ -12930,7 +12931,9 @@ unsorted:
   - libqt5xdg-devel 
   - libqt6keychain1 
   - libqtcurve-cairo1 
+  - libqtcurve-cairo1-32bit: [x86_64] 
   - libqtcurve-utils2 
+  - libqtcurve-utils2-32bit: [x86_64] 
   - libqtermwidget5-0 
   - libqtolm-devel 
   - libquadmath0-32bit: [x86_64] 
@@ -12970,8 +12973,8 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli5 
-  - librados-devel: [x86_64] # devel package of dvd:librados2 
-  - libradospp-devel: [x86_64] # devel package of dvd:librados2 
+  - librados-devel: [x86_64] # devel package of dvd:librbd1 
+  - libradospp-devel: [x86_64] # devel package of dvd:librbd1 
   - libraft0 
   - libraptor-devel 
   - libraptor2-0-32bit: [x86_64] 
@@ -12994,7 +12997,7 @@ unsorted:
   - libraw1394-tools 
   - libraw20-32bit: [x86_64] 
   - libraylib351 
-  - librbd-devel: [x86_64] # devel package of dvd:librados2 
+  - librbd-devel: [x86_64] # devel package of dvd:librbd1 
   - librbio2 
   - librbl1 
   - librcc-devel 
@@ -13221,7 +13224,7 @@ unsorted:
   - librevenge-doc 
   - librevenge-generators-0_0-0 
   - librfxencode0 
-  - librgw-devel: [x86_64] # devel package of dvd:librados2 
+  - librgw-devel: [x86_64] # devel package of dvd:librbd1 
   - librhash0 
   - librime-devel 
   - librime-private-devel 
@@ -20564,6 +20567,7 @@ unsorted:
   - projectM-devel 
   - projectlibre 
   - prom2json 
+  - prometheus-blackbox_exporter 
   - prometheus-client-model-source 
   - prometheus-ha_cluster_exporter: [x86_64] 
   - prometheus-hanadb_exporter 
@@ -20973,7 +20977,6 @@ unsorted:
   - python3-casacore: [x86_64] 
   - python3-castellan 
   - python3-ccm 
-  - python3-cepces 
   - python3-cinderclient 
   - python3-clang 
   - python3-cliff 
@@ -24189,7 +24192,6 @@ unsorted:
   - python38-PyGithub 
   - python38-PyICU 
   - python38-PyInstaller 
-  - python38-PyJWT: [i586] 
   - python38-PyKMIP 
   - python38-PyLaTeX 
   - python38-PyMeeus 
@@ -24692,7 +24694,6 @@ unsorted:
   - python38-bleach 
   - python38-blessed 
   - python38-blessings 
-  - python38-blinker: [i586] 
   - python38-blist 
   - python38-blockdiag 
   - python38-blosc 
@@ -24726,7 +24727,6 @@ unsorted:
   - python38-bytecode 
   - python38-cPyparsing 
   - python38-cachelib 
-  - python38-cachetools: [i586] 
   - python38-cachey 
   - python38-cachy 
   - python38-cairocffi 
@@ -25230,14 +25230,11 @@ unsorted:
   - python38-funcy 
   - python38-furl 
   - python38-fuse 
-  - python38-fusepy: [i586] 
   - python38-fuzzywuzzy 
   - python38-fysom 
   - python38-gTTS 
   - python38-gTTS-token 
   - python38-gast 
-  - python38-gcsfs: [i586] # suggested by dvd:suggested:patterns-media-rest_dvd 
-  - python38-gcsfs-fuse: [i586] 
   - python38-gear 
   - python38-ged4py 
   - python38-genfire 
@@ -25269,9 +25266,7 @@ unsorted:
   - python38-goobook 
   - python38-google-api-core 
   - python38-google-api-python-client 
-  - python38-google-auth: [i586] 
   - python38-google-auth-httplib2 
-  - python38-google-auth-oauthlib: [i586] 
   - python38-google-cloud-core 
   - python38-google-cloud-kms 
   - python38-google-cloud-speech 
@@ -25782,7 +25777,6 @@ unsorted:
   - python38-oauth2client 
   - python38-oauth2client-flask 
   - python38-oauth2client-gce 
-  - python38-oauthlib: [i586] 
   - python38-objgraph 
   - python38-oci-sdk 
   - python38-oct2py 
@@ -26088,7 +26082,6 @@ unsorted:
   - python38-pyjwkest 
   - python38-pykafka 
   - python38-pykeepass 
-  - python38-pykerberos 
   - python38-pykickstart 
   - python38-pykwalify 
   - python38-pylama 
@@ -26455,9 +26448,7 @@ unsorted:
   - python38-requests-gssapi 
   - python38-requests-hawk 
   - python38-requests-html 
-  - python38-requests-kerberos 
   - python38-requests-mock 
-  - python38-requests-oauthlib: [i586] 
   - python38-requests-unixsocket 
   - python38-requests_ntlm 
   - python38-requestsexceptions 
@@ -30533,6 +30524,7 @@ unsorted:
   - qt6-xml-devel 
   - qt6-xml-private-devel 
   - qtcurve-gtk2 
+  - qtcurve-gtk2-32bit: [x86_64] 
   - qtcurve-qt5 
   - qtdbusextended-devel 
   - qtdeclarative-imports-provides-qt6 
@@ -30609,7 +30601,7 @@ unsorted:
   - radcli-devel 
   - radeontop 
   - radeontop-lang 
-  - rados-objclass-devel: [x86_64] # devel package of dvd:librados2 
+  - rados-objclass-devel: [x86_64] # devel package of dvd:librbd1 
   - raft-devel 
   - rage 
   - ragel 
@@ -32025,7 +32017,6 @@ unsorted:
   - srt 
   - srt-devel 
   - sscape-ctl: [i586] 
-  - sscep 
   - ssdeep 
   - ssdp-responder 
   - ssh-audit 
@@ -41063,6 +41054,7 @@ unsorted:
   - typelib-1_0-Keybinder-0_0 
   - typelib-1_0-Keybinder-3_0 
   - typelib-1_0-Libags-3_0 
+  - typelib-1_0-Libinsane-1_0 
   - typelib-1_0-Libmsi-1_0 
   - typelib-1_0-LibvirtGConfig-1_0 
   - typelib-1_0-LibvirtGObject-1_0 
