@@ -504,4 +504,12 @@
     <comment>New stable release (forwarded request 912023 from iznogood)</comment>
     <requestid>913686</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>2f15e5feddab6c49ff2fdeaedf7998ce</srcmd5>
+    <version>40.5</version>
+    <time>1632251539</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 920035 from iznogood)</comment>
+    <requestid>920046</requestid>
+  </revision>
 </revisionlist>
