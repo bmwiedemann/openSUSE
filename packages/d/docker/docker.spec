@@ -94,6 +94,8 @@ Patch200:       0003-PRIVATE-REGISTRY-add-private-registry-mirror-support.patch
 Patch300:       0004-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # SUSE-BACKPORT: Backport of https://github.com/moby/moby/pull/42273. bsc#1183855 bsc#1175081
 Patch301:       0005-bsc1183855-btrfs-Do-not-disable-quota-on-cleanup.patch
+# SUSE-BACKPORT: Backport of https://github.com/moby/moby/pull/42836. bsc#1190670
+Patch302:       0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -176,6 +178,7 @@ service-oriented architectures, etc.
 Summary:        Bash Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       bash-completion
 Supplements:    packageand(%{name}:bash-completion)
 BuildArch:      noarch
 # KUBIC-SPECIFIC: This was required when upgrading from the original kubic
@@ -197,6 +200,7 @@ Bash command line completion support for %{name}.
 Summary:        Zsh Completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       zsh
 Supplements:    packageand(%{name}:zsh)
 BuildArch:      noarch
 # KUBIC-SPECIFIC: This was required when upgrading from the original kubic
@@ -218,6 +222,7 @@ Zsh command line completion support for %{name}.
 Summary:        Fish completion for %{name}
 Group:          System/Shells
 Requires:       %{name} = %{version}
+Requires:       fish
 Supplements:    packageand(%{name}:fish)
 BuildArch:      noarch
 %if "%flavour" == "kubic"
@@ -261,6 +266,8 @@ docker container runtime configuration for kubeadm
 %patch300 -p1
 # bsc#1183855 bsc#1175081
 %patch301 -p1
+# bsc#1190670
+%patch302 -p1
 
 # README_SUSE.md for documentation.
 cp %{SOURCE103} .

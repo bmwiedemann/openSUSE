@@ -1,0 +1,195 @@
+From ec9265210aaf10fe5f810d0ac7f566cf1929283a Mon Sep 17 00:00:00 2001
+From: Tianon Gravi <admwiggin@gmail.com>
+Date: Thu, 9 Sep 2021 11:31:30 -0700
+Subject: [PATCH 6/6] bsc1190670: seccomp: add support for "clone3" syscall in
+ default policy
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is a backport of 9f6b562dd12ef7b1f9e2f8e6f2ab6477790a6594, adapted to avoid the refactoring that happened in d92739713c633c155c0f3d8065c8278b1d8a44e7.
+
+Original commit message is as follows:
+
+> If no seccomp policy is requested, then the built-in default policy in
+> dockerd applies. This has no rule for "clone3" defined, nor any default
+> errno defined. So when runc receives the config it attempts to determine
+> a default errno, using logic defined in its commit:
+>
+>   opencontainers/runc@7a8d716
+>
+> As explained in the above commit message, runc uses a heuristic to
+> decide which errno to return by default:
+>
+> [quote]
+>   The solution applied here is to prepend a "stub" filter which returns
+>   -ENOSYS if the requested syscall has a larger syscall number than any
+>   syscall mentioned in the filter. The reason for this specific rule is
+>   that syscall numbers are (roughly) allocated sequentially and thus newer
+>   syscalls will (usually) have a larger syscall number -- thus causing our
+>   filters to produce -ENOSYS if the filter was written before the syscall
+>   existed.
+> [/quote]
+>
+> Unfortunately clone3 appears to one of the edge cases that does not
+> result in use of ENOSYS, instead ending up with the historical EPERM
+> errno.
+>
+> Latest glibc (2.33.9000, in Fedora 35 rawhide) will attempt to use
+> clone3 by default. If it sees ENOSYS then it will automatically
+> fallback to using clone. Any other errno is treated as a fatal
+> error. Thus when docker seccomp policy triggers EPERM from clone3,
+> no fallback occurs and programs are thus unable to spawn threads.
+>
+> The clone3 syscall is much more complicated than clone, most notably its
+> flags are not exposed as a directly argument any more. Instead they are
+> hidden inside a struct. This means that seccomp filters are unable to
+> apply policy based on values seen in flags. Thus we can't directly
+> replicate the current "clone" filtering for "clone3". We can at least
+> ensure "clone3" returns ENOSYS errno, to trigger fallback to "clone"
+> at which point we can filter on flags.
+
+SUSE-Bugs: bsc#1190670
+Signed-off-by: Tianon Gravi <admwiggin@gmail.com>
+Co-authored-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+---
+ profiles/seccomp/default.json     | 16 ++++++++++++++++
+ profiles/seccomp/default_linux.go | 13 +++++++++++++
+ profiles/seccomp/seccomp.go       |  1 +
+ profiles/seccomp/seccomp_linux.go | 28 ++++++++++++----------------
+ 4 files changed, 42 insertions(+), 16 deletions(-)
+
+diff --git a/profiles/seccomp/default.json b/profiles/seccomp/default.json
+index 4213799ddb5c..ee5e04f781a8 100644
+--- a/profiles/seccomp/default.json
++++ b/profiles/seccomp/default.json
+@@ -591,6 +591,7 @@
+ 			"names": [
+ 				"bpf",
+ 				"clone",
++				"clone3",
+ 				"fanotify_init",
+ 				"fsconfig",
+ 				"fsmount",
+@@ -670,6 +671,21 @@
+ 				]
+ 			}
+ 		},
++		{
++			"names": [
++				"clone3"
++			],
++			"action": "SCMP_ACT_ERRNO",
++			"errnoRet": 38,
++			"args": [],
++			"comment": "",
++			"includes": {},
++			"excludes": {
++				"caps": [
++					"CAP_SYS_ADMIN"
++				]
++			}
++		},
+ 		{
+ 			"names": [
+ 				"reboot"
+diff --git a/profiles/seccomp/default_linux.go b/profiles/seccomp/default_linux.go
+index 879eb88c64f1..fb593f336f7a 100644
+--- a/profiles/seccomp/default_linux.go
++++ b/profiles/seccomp/default_linux.go
+@@ -42,6 +42,7 @@ func arches() []Architecture {
+ 
+ // DefaultProfile defines the allowed syscalls for the default seccomp profile.
+ func DefaultProfile() *Seccomp {
++	nosys := uint(unix.ENOSYS)
+ 	syscalls := []*Syscall{
+ 		{
+ 			Names: []string{
+@@ -522,6 +523,7 @@ func DefaultProfile() *Seccomp {
+ 			Names: []string{
+ 				"bpf",
+ 				"clone",
++				"clone3",
+ 				"fanotify_init",
+ 				"fsconfig",
+ 				"fsmount",
+@@ -587,6 +589,17 @@ func DefaultProfile() *Seccomp {
+ 				Caps: []string{"CAP_SYS_ADMIN"},
+ 			},
+ 		},
++		{
++			Names: []string{
++				"clone3",
++			},
++			Action:   specs.ActErrno,
++			ErrnoRet: &nosys,
++			Args:     []*specs.LinuxSeccompArg{},
++			Excludes: Filter{
++				Caps: []string{"CAP_SYS_ADMIN"},
++			},
++		},
+ 		{
+ 			Names: []string{
+ 				"reboot",
+diff --git a/profiles/seccomp/seccomp.go b/profiles/seccomp/seccomp.go
+index d2a21cddc4b2..9edec72db546 100644
+--- a/profiles/seccomp/seccomp.go
++++ b/profiles/seccomp/seccomp.go
+@@ -45,6 +45,7 @@ type Syscall struct {
+ 	Name     string                   `json:"name,omitempty"`
+ 	Names    []string                 `json:"names,omitempty"`
+ 	Action   specs.LinuxSeccompAction `json:"action"`
++	ErrnoRet *uint                    `json:"errnoRet,omitempty"`
+ 	Args     []*specs.LinuxSeccompArg `json:"args"`
+ 	Comment  string                   `json:"comment"`
+ 	Includes Filter                   `json:"includes"`
+diff --git a/profiles/seccomp/seccomp_linux.go b/profiles/seccomp/seccomp_linux.go
+index 566f173acd3a..e35e242cd500 100644
+--- a/profiles/seccomp/seccomp_linux.go
++++ b/profiles/seccomp/seccomp_linux.go
+@@ -150,29 +150,25 @@ Loop:
+ 			}
+ 		}
+ 
++		newCall := specs.LinuxSyscall{
++			Action:   call.Action,
++			ErrnoRet: call.ErrnoRet,
++		}
+ 		if call.Name != "" && len(call.Names) != 0 {
+ 			return nil, errors.New("'name' and 'names' were specified in the seccomp profile, use either 'name' or 'names'")
+ 		}
+-
+ 		if call.Name != "" {
+-			newConfig.Syscalls = append(newConfig.Syscalls, createSpecsSyscall([]string{call.Name}, call.Action, call.Args))
++			newCall.Names = []string{call.Name}
+ 		} else {
+-			newConfig.Syscalls = append(newConfig.Syscalls, createSpecsSyscall(call.Names, call.Action, call.Args))
++			newCall.Names = call.Names
++		}
++		// Loop through all the arguments of the syscall and convert them
++		for _, arg := range call.Args {
++			newCall.Args = append(newCall.Args, *arg)
+ 		}
+-	}
+-
+-	return newConfig, nil
+-}
+ 
+-func createSpecsSyscall(names []string, action specs.LinuxSeccompAction, args []*specs.LinuxSeccompArg) specs.LinuxSyscall {
+-	newCall := specs.LinuxSyscall{
+-		Names:  names,
+-		Action: action,
++		newConfig.Syscalls = append(newConfig.Syscalls, newCall)
+ 	}
+ 
+-	// Loop through all the arguments of the syscall and convert them
+-	for _, arg := range args {
+-		newCall.Args = append(newCall.Args, *arg)
+-	}
+-	return newCall
++	return newConfig, nil
+ }
+-- 
+2.33.0
+

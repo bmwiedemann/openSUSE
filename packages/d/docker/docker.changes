@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 20 23:59:05 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Add patch to return ENOSYS for clone3 to avoid breaking glibc again.
+  bsc#1190670
+  + 0006-bsc1190670-seccomp-add-support-for-clone3-syscall-in.patch
+
+-------------------------------------------------------------------
+Mon May  3 13:24:55 UTC 2021 - Aleksa Sarai <asarai@suse.com>
+
+- Add shell requires for the *-completion subpackages.
+
+-------------------------------------------------------------------
 Thu Apr 15 05:23:20 UTC 2021 - Aleksa Sarai <asarai@suse.com>
 
 - Update to Docker 20.10.6-ce. See upstream changelog in the packaged
