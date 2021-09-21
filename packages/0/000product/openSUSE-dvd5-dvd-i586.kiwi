@@ -469,6 +469,7 @@
       <repopackage name="exo-data"/>
       <repopackage name="exo-lang"/>
       <repopackage name="exo-tools"/>
+      <repopackage name="expat"/>
       <repopackage name="expect"/>
       <repopackage name="eyeD3"/>
       <repopackage name="f2fs-tools"/>
@@ -588,6 +589,11 @@
       <repopackage name="ghostscript-fonts-std"/>
       <repopackage name="ghostscript-fonts-std-converted"/>
       <repopackage name="ghostscript-x11"/>
+      <repopackage name="gimp"/>
+      <repopackage name="gimp-lang"/>
+      <repopackage name="gimp-plugin-aa"/>
+      <repopackage name="gimp-plugins-python"/>
+      <repopackage name="gimp-ufraw"/>
       <repopackage name="gio-branding-openSUSE"/>
       <repopackage name="girepository-1_0"/>
       <repopackage name="git"/>
@@ -933,6 +939,7 @@
       <repopackage name="initviocons"/>
       <repopackage name="inkscape"/>
       <repopackage name="inkscape-extensions-extra"/>
+      <repopackage name="inkscape-extensions-gimp"/>
       <repopackage name="inkscape-lang"/>
       <repopackage name="inotify-tools"/>
       <repopackage name="intel-vaapi-driver"/>
@@ -1688,11 +1695,14 @@
       <repopackage name="libgfrpc0"/>
       <repopackage name="libgfxdr0"/>
       <repopackage name="libgif7"/>
+      <repopackage name="libgimp-2_0-0"/>
+      <repopackage name="libgimpui-2_0-0"/>
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgiomm-2_4-1"/>
       <repopackage name="libgirepository-1_0-1"/>
       <repopackage name="libgit2-1_1"/>
       <repopackage name="libgjs0"/>
+      <repopackage name="libglade-2_0-0"/>
       <repopackage name="libgle3"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1"/>
@@ -2206,6 +2216,8 @@
       <repopackage name="libmwaw-0_3-3"/>
       <repopackage name="libmxml1"/>
       <repopackage name="libmygpo-qt5-1"/>
+      <repopackage name="libmypaint-1_6-1"/>
+      <repopackage name="libmypaint-lang"/>
       <repopackage name="libmysofa1"/>
       <repopackage name="libmythes-1_2-0"/>
       <repopackage name="libnautilus-extension1"/>
@@ -2380,6 +2392,7 @@
       <repopackage name="libpurple-tcl"/>
       <repopackage name="libpwquality-lang"/>
       <repopackage name="libpwquality1"/>
+      <repopackage name="libpython2_7-1_0"/>
       <repopackage name="libpython3_8-1_0"/>
       <repopackage name="libqaccessibilityclient-qt5-0"/>
       <repopackage name="libqalculate22"/>
@@ -2966,6 +2979,7 @@
       <repopackage name="media-player-info"/>
       <repopackage name="memcached"/>
       <repopackage name="memtest86+"/>
+      <repopackage name="menulibre"/>
       <repopackage name="Mesa"/>
       <repopackage name="Mesa-demo-x"/>
       <repopackage name="Mesa-dri"/>
@@ -3391,6 +3405,7 @@
       <repopackage name="perl-Mojolicious"/>
       <repopackage name="perl-MusicBrainz-DiscID"/>
       <repopackage name="perl-Net-CIDR-Lite"/>
+      <repopackage name="perl-Net-DBus"/>
       <repopackage name="perl-Net-DNS"/>
       <repopackage name="perl-Net-HTTP"/>
       <repopackage name="perl-Net-Ident"/>
@@ -3412,6 +3427,7 @@
       <repopackage name="perl-URI"/>
       <repopackage name="perl-WebService-MusicBrainz"/>
       <repopackage name="perl-WWW-RobotRules"/>
+      <repopackage name="perl-X11-Protocol"/>
       <repopackage name="perl-X500-DN"/>
       <repopackage name="perl-XML-Dumper"/>
       <repopackage name="perl-XML-LibXML"/>
@@ -3419,6 +3435,7 @@
       <repopackage name="perl-XML-Parser"/>
       <repopackage name="perl-XML-SAX"/>
       <repopackage name="perl-XML-SAX-Base"/>
+      <repopackage name="perl-XML-Twig"/>
       <repopackage name="perl-XML-Writer"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
@@ -3589,7 +3606,13 @@
       <repopackage name="purpose"/>
       <repopackage name="purpose-lang"/>
       <repopackage name="pwgen"/>
+      <repopackage name="python"/>
+      <repopackage name="python-base"/>
       <repopackage name="python-falcon-doc"/>
+      <repopackage name="python-gobject2"/>
+      <repopackage name="python-gtk"/>
+      <repopackage name="python-xml"/>
+      <repopackage name="python2-pycairo"/>
       <repopackage name="python3-apparmor"/>
       <repopackage name="python3-audit"/>
       <repopackage name="python3-bind"/>
@@ -4437,6 +4460,8 @@
       <repopackage name="signond"/>
       <repopackage name="signond-libs"/>
       <repopackage name="sil-charis-fonts"/>
+      <repopackage name="simple-scan"/>
+      <repopackage name="simple-scan-lang"/>
       <repopackage name="site-config"/>
       <repopackage name="skanlite"/>
       <repopackage name="skanlite-lang"/>
@@ -4830,6 +4855,7 @@
       <repopackage name="xdg-user-dirs-gtk"/>
       <repopackage name="xdg-user-dirs-gtk-lang"/>
       <repopackage name="xdg-user-dirs-lang"/>
+      <repopackage name="xdg-utils"/>
       <repopackage name="xdm"/>
       <repopackage name="xdm-xsession"/>
       <repopackage name="xdmbgrd"/>
@@ -4870,12 +4896,15 @@
       <repopackage name="xf86-video-voodoo"/>
       <repopackage name="xfce4-appfinder"/>
       <repopackage name="xfce4-appfinder-lang"/>
+      <repopackage name="xfce4-dict"/>
+      <repopackage name="xfce4-dict-lang"/>
       <repopackage name="xfce4-notifyd"/>
       <repopackage name="xfce4-notifyd-branding-openSUSE"/>
       <repopackage name="xfce4-notifyd-lang"/>
       <repopackage name="xfce4-panel"/>
       <repopackage name="xfce4-panel-branding-openSUSE"/>
       <repopackage name="xfce4-panel-lang"/>
+      <repopackage name="xfce4-panel-plugin-dict"/>
       <repopackage name="xfce4-panel-profiles"/>
       <repopackage name="xfce4-panel-restore-defaults"/>
       <repopackage name="xfce4-power-manager"/>
@@ -4941,6 +4970,7 @@
       <repopackage name="xprop"/>
       <repopackage name="xrandr"/>
       <repopackage name="xrdb"/>
+      <repopackage name="xsane"/>
       <repopackage name="xscreensaver"/>
       <repopackage name="xscreensaver-data"/>
       <repopackage name="xscreensaver-data-extra"/>
@@ -4989,6 +5019,7 @@
       <repopackage name="yast2-ldap"/>
       <repopackage name="yast2-logs"/>
       <repopackage name="yast2-mail"/>
+      <repopackage name="yast2-metapackage-handler"/>
       <repopackage name="yast2-multipath"/>
       <repopackage name="yast2-network"/>
       <repopackage name="yast2-nfs-client"/>
