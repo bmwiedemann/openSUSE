@@ -161,7 +161,7 @@ unsorted:
   - OpenLP 
   - OpenMoji-Black 
   - OpenMoji-Color 
-  - OpenPrintingPPDs 
+  - OpenPrintingPPDs: [i586] 
   - OpenRGB 
   - OpenSceneGraph 
   - OpenSceneGraph-examples 
@@ -1296,7 +1296,7 @@ unsorted:
   - bluemoon 
   - blueprint-cursor-theme 
   - bluez-auto-enable-devices 
-  - bluez-cups 
+  - bluez-cups: [i586] 
   - bluez-deprecated 
   - bluez-devel 
   - bluez-devel-32bit: [x86_64] 
@@ -2862,7 +2862,7 @@ unsorted:
   - dirvish 
   - discord-rpc-devel 
   - discount 
-  - discover-notifier 
+  - discover-notifier: [i586] 
   - diskimage-builder 
   - diskmonitor 
   - diskmonitor-lang 
@@ -2877,8 +2877,8 @@ unsorted:
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
   - distribution-logos-openSUSE-Kubic 
-  - distribution-logos-openSUSE-MicroOS 
-  - distribution-logos-openSUSE-icons 
+  - distribution-logos-openSUSE-MicroOS: [i586] 
+  - distribution-logos-openSUSE-icons: [i586] 
   - dita 
   - diy-devel: [x86_64] 
   - diy-mpich-devel: [x86_64] 
@@ -3377,7 +3377,6 @@ unsorted:
   - exmh 
   - exo-devel 
   - exodusii-devel 
-  - expat 
   - expect-devel 
   - ext3grep 
   - ext4magic 
@@ -4045,7 +4044,7 @@ unsorted:
   - gdl-devel 
   - gdl-lang 
   - gdlmm-devel 
-  - gdm-branding-MicroOS 
+  - gdm-branding-MicroOS: [i586] 
   - gdm-branding-upstream 
   - gdm-devel 
   - gdm-systemd 
@@ -5437,7 +5436,6 @@ unsorted:
   - gifsicle 
   - gigolo 
   - gigolo-lang 
-  - gimp 
   - gimp-devel 
   - gimp-gap 
   - gimp-gap-lang 
@@ -5464,18 +5462,14 @@ unsorted:
   - gimp-help-sl 
   - gimp-help-sv 
   - gimp-help-zh 
-  - gimp-lang 
-  - gimp-plugin-aa 
   - gimp-plugin-dds 
   - gimp-plugin-dds-doc 
   - gimp-plugin-gmic 
   - gimp-plugin-lqr 
   - gimp-plugin-lqr-lang 
   - gimp-plugin-resynthesizer 
-  - gimp-plugins-python 
   - gimp-save-for-web 
   - gimp-save-for-web-lang 
-  - gimp-ufraw 
   - ginac 
   - ginac-devel 
   - ginac-doc-html 
@@ -5681,7 +5675,7 @@ unsorted:
   - gnome-bluetooth-devel 
   - gnome-boxes 
   - gnome-boxes-lang 
-  - gnome-branding-MicroOS 
+  - gnome-branding-MicroOS: [i586] 
   - gnome-builder 
   - gnome-builder-doc 
   - gnome-builder-lang 
@@ -5791,7 +5785,7 @@ unsorted:
   - gnome-todo-lang 
   - gnome-tour 
   - gnome-tour-lang 
-  - gnome-usage 
+  - gnome-usage: [i586] 
   - gnome-usage-lang 
   - gnome-user-docs-lang 
   - gnome-vfs2 
@@ -6395,8 +6389,6 @@ unsorted:
   - gudev-sharp 
   - gudev-sharp-devel 
   - guess-changelog: [x86_64] 
-  - guestfs-tools: [x86_64] 
-  - guestfs-winsupport: [x86_64] 
   - guestfsd: [x86_64] 
   - guice-assistedinject 
   - guice-bom 
@@ -6958,7 +6950,6 @@ unsorted:
   - ini4j-javadoc 
   - injeqt-devel 
   - inkscape-extensions-fig 
-  - inkscape-extensions-gimp 
   - inkscape-extensions-scribus 
   - inn 
   - inn-devel 
@@ -10717,9 +10708,7 @@ unsorted:
   - libgig-devel 
   - libgig-tools 
   - libgig10 
-  - libgimp-2_0-0 
   - libgimp-2_0-0-32bit: [x86_64] 
-  - libgimpui-2_0-0 
   - libgimpui-2_0-0-32bit: [x86_64] 
   - libginac11 
   - libgio-fam 
@@ -10740,7 +10729,6 @@ unsorted:
   - libgivaro9 
   - libgjs-devel 
   - libgl2ps1 
-  - libglade-2_0-0 
   - libglade-2_0-0-32bit: [x86_64] 
   - libglade2-devel 
   - libglade2-doc 
@@ -11970,11 +11958,9 @@ unsorted:
   - libmwaw-tools 
   - libmxml1-32bit: [x86_64] 
   - libmygpo-qt5-devel 
-  - libmypaint-1_6-1 
   - libmypaint-devel 
   - libmypaint-gegl-devel 
   - libmypaint-gegl0 
-  - libmypaint-lang 
   - libmysofa-devel 
   - libmysofa1-32bit: [x86_64] 
   - libmysqlcppconn-devel 
@@ -12758,7 +12744,6 @@ unsorted:
   - libpystring0_0 
   - libpythia8 
   - libpythia8lhapdf6 
-  - libpython2_7-1_0 
   - libpython2_7-1_0-32bit: [x86_64] 
   - libpython3_10-1_0 
   - libpython3_10-1_0-32bit: [x86_64] 
@@ -15708,7 +15693,6 @@ unsorted:
   - memprof-lang 
   - menu-cache 
   - menu-cache-devel 
-  - menulibre 
   - mercurial 
   - mercurial-lang 
   - meslo-lg-fonts 
@@ -18360,9 +18344,6 @@ unsorted:
   - patterns-media-rest_cd_kde 
   - patterns-media-rest_cd_x11 
   - patterns-media-rest_core_dvd 
-  - patterns-microos-desktop-common: [x86_64] 
-  - patterns-microos-desktop-gnome: [x86_64] 
-  - patterns-microos-desktop-kde: [x86_64] 
   - patterns-openSUSEway 
   - patterns-rpm-macros 
   - patterns-server-dhcp_dns_server-32bit 
@@ -18705,7 +18686,7 @@ unsorted:
   - perl-Class-Factory-Util 
   - perl-Class-ISA 
   - perl-Class-Inner 
-  - perl-Class-Inspector 
+  - perl-Class-Inspector: [i586] 
   - perl-Class-Load 
   - perl-Class-Load-XS 
   - perl-Class-MakeMethods 
@@ -18920,7 +18901,7 @@ unsorted:
   - perl-Exporter-Declare 
   - perl-Exporter-Lite 
   - perl-Exporter-Tidy 
-  - perl-Exporter-Tiny 
+  - perl-Exporter-Tiny: [i586] 
   - perl-ExtUtils-CBuilder 
   - perl-ExtUtils-CChecker 
   - perl-ExtUtils-Config 
@@ -18966,7 +18947,7 @@ unsorted:
   - perl-File-Remove 
   - perl-File-Rsync 
   - perl-File-Share 
-  - perl-File-ShareDir 
+  - perl-File-ShareDir: [i586] 
   - perl-File-ShareDir-Install 
   - perl-File-ShareDir-ProjectDistDir 
   - perl-File-Slurp 
@@ -19142,8 +19123,8 @@ unsorted:
   - perl-List-BinarySearch 
   - perl-List-BinarySearch-XS 
   - perl-List-Compare 
-  - perl-List-MoreUtils 
-  - perl-List-MoreUtils-XS 
+  - perl-List-MoreUtils: [i586] 
+  - perl-List-MoreUtils-XS: [i586] 
   - perl-List-SomeUtils 
   - perl-List-SomeUtils-XS 
   - perl-List-UtilsBy 
@@ -19332,7 +19313,6 @@ unsorted:
   - perl-Net-AMQP-RabbitMQ 
   - perl-Net-CIDR 
   - perl-Net-CIDR-Set 
-  - perl-Net-DBus 
   - perl-Net-DNS-Resolver-Mock 
   - perl-Net-DNS-Resolver-Programmable 
   - perl-Net-Daemon 
@@ -19400,7 +19380,7 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
-  - perl-Params-Util 
+  - perl-Params-Util: [i586] 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -19549,7 +19529,7 @@ unsorted:
   - perl-String-Format 
   - perl-String-Formatter 
   - perl-String-RewritePrefix 
-  - perl-String-ShellQuote 
+  - perl-String-ShellQuote: [i586] 
   - perl-String-ToIdentifier-EN 
   - perl-String-Trim 
   - perl-String-Truncate 
@@ -19576,7 +19556,6 @@ unsorted:
   - perl-Syntax-Keyword-Junction 
   - perl-Syntax-Keyword-Try 
   - perl-Sys-CPU 
-  - perl-Sys-Guestfs: [x86_64] 
   - perl-Sys-Hostname-Long 
   - perl-Sys-LoadAvg 
   - perl-Sys-MemInfo 
@@ -19804,9 +19783,8 @@ unsorted:
   - perl-Web-MREST-CLI 
   - perl-Web-Machine 
   - perl-Web-Scraper 
-  - perl-Win-Hivex 
+  - perl-Win-Hivex: [i586] 
   - perl-Wx 
-  - perl-X11-Protocol 
   - perl-X11-Protocol-Other 
   - perl-XML-Atom 
   - perl-XML-Atom-SimpleFeed 
@@ -19836,7 +19814,6 @@ unsorted:
   - perl-XML-SimpleObject-LibXML 
   - perl-XML-Stream 
   - perl-XML-Structured 
-  - perl-XML-Twig 
   - perl-XML-Writer-String 
   - perl-XML-XPath 
   - perl-XML-XPathEngine 
@@ -19873,7 +19850,7 @@ unsorted:
   - perl-indirect 
   - perl-lib-relative 
   - perl-libconfigfile 
-  - perl-libintl-perl 
+  - perl-libintl-perl: [i586] 
   - perl-libprelude 
   - perl-libxml-perl 
   - perl-local-lib 
@@ -20141,7 +20118,7 @@ unsorted:
   - pinta-lang 
   - pipenightdreams 
   - piper 
-  - pipewire-alsa 
+  - pipewire-alsa: [i586] 
   - pipewire-alsa-32bit: [x86_64] 
   - pipewire-devel 
   - pipewire-doc 
@@ -20811,7 +20788,6 @@ unsorted:
   - pystring-devel 
   - pythia-devel 
   - pythia-doc 
-  - python 
   - python-32bit: [x86_64] 
   - python-Genshi-doc 
   - python-Kivy-doc 
@@ -20837,7 +20813,6 @@ unsorted:
   - python-azure-agent 
   - python-azure-agent-test 
   - python-barbicanclient-doc 
-  - python-base 
   - python-base-32bit: [x86_64] 
   - python-beautifulsoup4-doc 
   - python-billiard-doc 
@@ -20878,10 +20853,8 @@ unsorted:
   - python-glanceclient-doc 
   - python-gnome-dvb-daemon 
   - python-gobject-common-devel 
-  - python-gobject2 
   - python-gobject2-devel 
   - python-gr-fcdproplus 
-  - python-gtk 
   - python-gtk-devel 
   - python-gtk-doc 
   - python-gunicorn-doc 
@@ -20993,14 +20966,12 @@ unsorted:
   - python-tqdm-bash-completion 
   - python-translationstring-doc 
   - python-typeshed 
-  - python-xml 
   - python-zope.deprecation-doc 
   - python-zope.event-doc 
   - python-zope.hookable-doc 
   - python-zope.i18nmessageid-doc 
   - python2-appindicator 
   - python2-pip 
-  - python2-pycairo 
   - python2-pycairo-common-devel 
   - python2-pycairo-devel 
   - python2-setuptools 
@@ -25215,7 +25186,7 @@ unsorted:
   - python38-evdev 
   - python38-eventlet 
   - python38-evilunit 
-  - python38-evtx 
+  - python38-evtx: [i586] 
   - python38-exam 
   - python38-execnet 
   - python38-executing 
@@ -25411,7 +25382,7 @@ unsorted:
   - python38-hepunits 
   - python38-hetzner 
   - python38-hetznercloud 
-  - python38-hexdump 
+  - python38-hexdump: [i586] 
   - python38-hijri-converter 
   - python38-hkdf 
   - python38-hl7apy 
@@ -31780,8 +31751,6 @@ unsorted:
   - simple-multicast 
   - simple-obfs 
   - simple-obfs-doc 
-  - simple-scan 
-  - simple-scan-lang 
   - simplescreenrecorder 
   - simtrace2 
   - simutrans 
@@ -41943,7 +41912,6 @@ unsorted:
   - xdbedizzy 
   - xdg-desktop-portal-devel 
   - xdg-desktop-portal-wlr 
-  - xdg-utils 
   - xdiskusage 
   - xditview 
   - xdmsc 
@@ -42003,8 +41971,6 @@ unsorted:
   - xfce4-datetime-plugin 
   - xfce4-datetime-plugin-lang 
   - xfce4-dev-tools 
-  - xfce4-dict 
-  - xfce4-dict-lang 
   - xfce4-diskperf-plugin 
   - xfce4-diskperf-plugin-lang 
   - xfce4-eyes-plugin 
@@ -42029,7 +41995,6 @@ unsorted:
   - xfce4-panel-branding-upstream 
   - xfce4-panel-devel 
   - xfce4-panel-plugin-appmenu 
-  - xfce4-panel-plugin-dict 
   - xfce4-places-plugin 
   - xfce4-places-plugin-lang 
   - xfce4-power-manager-branding-upstream 
@@ -42288,7 +42253,6 @@ unsorted:
   - xrootd-server 
   - xrootd-server-devel 
   - xrootd-server-libs 
-  - xsane 
   - xscope 
   - xsd 
   - xsd-doc 
@@ -42394,7 +42358,6 @@ unsorted:
   - yast2-installation-control 
   - yast2-iplb 
   - yast2-iscsi-lio-server 
-  - yast2-metapackage-handler 
   - yast2-online-update-configuration 
   - yast2-pkg-bindings-devel-doc 
   - yast2-rdp 
