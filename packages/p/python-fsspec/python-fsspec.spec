@@ -26,17 +26,15 @@
 %bcond_with test
 %endif
 %define         skip_python2 1
-%define ghversion 2021.07.0
+%define ghversion 2021.08.1
 Name:           python-fsspec%{psuffix}
-Version:        2021.7.0
+Version:        2021.8.1
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
 URL:            https://github.com/intake/filesystem_spec
 # the tests are only in the GitHub archive
 Source:         %{url}/archive/%{ghversion}.tar.gz#/fsspec-%{ghversion}.tar.gz
-# PATCH-FIX-UPSTREAM fsspec-pr710-bytesreturn.patch -- gh#intake/filesystem_spec#710 and gh#zarr-developers/zarr-python#812
-Patch0:         %{url}/pull/710.patch#/fsspec-pr710-bytesreturn.patch
 BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
 BuildRequires:  %{python_module setuptools}

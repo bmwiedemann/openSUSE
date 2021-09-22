@@ -132,4 +132,12 @@ Required by the latest version of python-gcsfs</comment>
     <comment></comment>
     <requestid>914766</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae8ff7d830cdbff02a6f8f57f206c424</srcmd5>
+    <version>2021.8.1</version>
+    <time>1632341579</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920851</requestid>
+  </revision>
 </revisionlist>
