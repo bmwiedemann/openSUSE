@@ -129,4 +129,13 @@
     <comment></comment>
     <requestid>893902</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>459e705711d133201715596e05146a6c</srcmd5>
+    <version>0.26.2</version>
+    <time>1632341572</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-py39.patch:
+  * Deal with Python 3.9.x changes in argparse.</comment>
+    <requestid>920718</requestid>
+  </revision>
 </revisionlist>

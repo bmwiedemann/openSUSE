@@ -22,9 +22,9 @@ Version:        0.26.2
 Release:        0
 Summary:        An argparse wrapper
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://github.com/neithere/argh/
 Source:         https://files.pythonhosted.org/packages/source/a/argh/argh-%{version}.tar.gz
+Patch0:         support-py39.patch
 BuildRequires:  %{python_module iocapture}
 BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module pytest}
@@ -56,6 +56,7 @@ work that a custom dispatcher may not do.
 
 %prep
 %setup -q -n argh-%{version}
+%autopatch -p1
 
 %build
 %python_build
