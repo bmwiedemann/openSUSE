@@ -17,17 +17,17 @@
 
 
 Name:           msmtp
-Version:        1.8.15
+Version:        1.8.16
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
 BuildRequires:  pkg-config
 BuildRequires:  xz
-%if 0%{?suse_version} >= 1120 || 0%{?centos_version} == 700
+%if 0%{?suse_version} || 0%{?centos_version} == 700
 # keyring integration for recent openSUSE and CentOS
 BuildRequires:  libsecret-devel
 %endif
-%if 0%{?suse_version} >= 1120
+%if 0%{?suse_version}
 BuildRequires:  libgsasl-devel
 %endif
 # for the directory
@@ -40,7 +40,7 @@ BuildRequires:  vim-base
 %endif #centos_version
 %if 0%{?suse_version}
 Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(preun):%install_info_prereq
 %endif
 %if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
 Requires(post): /sbin/install-info
