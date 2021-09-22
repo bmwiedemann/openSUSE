@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 15 11:02:10 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.3.1:
+  * Fixed time response for first order systems.
+- Changes from version 3.3.0:
+  * New function rlocusx providing gain, damping and frequency for
+    selected poles together with the possibility to generate open
+    loop bode plots and simulations of the closed loop for
+    selected closed loop poles.
+  * Fixed several issues in bode, c2d, lsim and step.
+  * Fixed issues in legends of time and frequency responses when
+  * requested for multiple systems.
+  * Fixed usage of deprecated LAPACK routines.
+  * Added discretization method 'foh' to c2d.
+  * Added tests for c2d with 'foh' and to dlyapchol.
+  * Fixed transposing a tfploy.
+- Drop control-gcc-errors.patch: No longer required as fixed
+  upstream.
+
+-------------------------------------------------------------------
 Tue Nov 26 23:52:29 UTC 2019 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 3.2.0
