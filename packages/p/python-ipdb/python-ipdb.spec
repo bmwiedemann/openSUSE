@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipdb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,24 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-ipdb
-Version:        0.13.4
+Version:        0.13.9
 Release:        0
 Summary:        IPython-enabled pdb
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/gotcha/ipdb
 Source:         https://files.pythonhosted.org/packages/source/i/ipdb/ipdb-%{version}.tar.gz
-BuildRequires:  %{python_module ipython >= 5.1}
+BuildRequires:  %{python_module decorator}
+BuildRequires:  %{python_module ipython >= 7.10}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ipython >= 5.1
+Recommends:     python-decorator
+Recommends:     python-ipython >= 7.10
+Recommends:     python-toml >= 0.10.2
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Provides:       python-jupyter_ipdb = %{version}
 Obsoletes:      python-jupyter_ipdb < %{version}
 BuildArch:      noarch
