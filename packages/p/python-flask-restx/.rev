@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>912202</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d494bc1f154ff71c4568e97ea0d473e</srcmd5>
+    <version>0.5.1</version>
+    <time>1632341570</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to v0.5.1
+  + Optimize email regex (bsc#1190744)</comment>
+    <requestid>920814</requestid>
+  </revision>
 </revisionlist>

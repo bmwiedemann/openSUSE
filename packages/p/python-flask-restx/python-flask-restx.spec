@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-flask-restx
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Framework for fast, easy and documented API development with Flask
 License:        BSD-3-Clause
