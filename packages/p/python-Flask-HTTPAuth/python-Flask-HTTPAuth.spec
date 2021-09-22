@@ -51,7 +51,7 @@ Simple extension that provides Basic and Digest HTTP authentication for Flask ro
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %license LICENSE

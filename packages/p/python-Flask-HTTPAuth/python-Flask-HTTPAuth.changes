@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 14 11:55:17 UTC 2021 - pgajdos@suse.com
+
+- %check: use %pyunittest rpm macro
+
+-------------------------------------------------------------------
 Sun Jul  4 00:41:02 UTC 2021 - Arun Persaud <arun@gmx.de>
 
 - specfile:
