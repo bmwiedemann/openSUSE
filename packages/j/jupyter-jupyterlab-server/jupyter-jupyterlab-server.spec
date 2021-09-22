@@ -19,15 +19,13 @@
 %define skip_python2 1
 %define oldpython python
 Name:           jupyter-jupyterlab-server
-Version:        2.7.0
+Version:        2.8.1
 Release:        0
 Summary:        Server components for JupyterLab and JupyterLab-like applications
 License:        BSD-3-Clause
 URL:            https://github.com/jupyterlab/jupyterlab_server
 Source:         https://files.pythonhosted.org/packages/source/j/jupyterlab_server/jupyterlab_server-%{version}.tar.gz
 Source100:      jupyter-jupyterlab-server-rpmlintrc
-# PATCH-FIX-UPSTREAM jupyterlab-server-pr198-openapi014.patch -- gh#jupyterlab/jupyterlab_server#198
-Patch0:         jupyterlab-server-pr198-openapi014.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module Jinja2 >= 2.10}
 BuildRequires:  %{python_module base >= 3.5}
@@ -101,12 +99,7 @@ sed -i '/addopts/ d' pyproject.toml
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# we dont have the language packs installed, supposed to be tested here
-donttest+=" or (test_translation_api and (get_locale or backend_locale or get_installed or get_language) and not (_not_ or bad or fails))"
-# flaky
-donttest+=" or (test_workspaces_api and test_get_non_existant)"
-mv jupyterlab_server/tests/conftest.py ./
-%pytest -ra -k "not (${donttest:4})"
+%pytest --pyargs jupyterlab_server -ra
 
 %files %{python_files}
 %license LICENSE

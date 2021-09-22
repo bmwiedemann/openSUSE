@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 17 09:06:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.8.2
+  * Fall back to DEFAULT_LOCALE when translation settings schema is
+    invalid in get_current_locale
+  * Translate settings schema
+- Really remove the patch jupyterlab-server-pr198-openapi014.patch
+
+-------------------------------------------------------------------
+Mon Sep  6 17:27:13 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2.7.2
+  * Do not overwrite capitalization of region names #202
+  * Use Check Links Action #201
+  * Recommend pytest --pyargs jupyterlab_server #203
+- Changlog for release 2.7.1
+  * Fix reset user settings if validation failed #199
+  * support openapi-core 0.14 SpecPath #198
+- Drop jupyterlab-server-pr198-openapi014.patch merged upstream
+  * gh#jupyterlab/jupyterlab_server#198
+- Fix jupyter-jupyterlab-server-rpmlintrc for rpmlint 2 errors
+- All the test exceptions have been resolved upstream
+
+-------------------------------------------------------------------
 Mon Aug 16 13:45:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.7.0
