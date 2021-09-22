@@ -5,21 +5,11 @@ Copy also skeleton files from /usr/etc/skel (boo#1173321)
  src/useradd.c |   37 +++++++++++++++++++++++++++++++++++++
  2 files changed, 38 insertions(+)
 
-Index: etc/useradd
-===================================================================
---- etc/useradd.orig
-+++ etc/useradd
-@@ -5,4 +5,5 @@ INACTIVE=-1
- EXPIRE=
- SHELL=/bin/bash
- SKEL=/etc/skel
-+USRSKEL=/usr/etc/skel
- CREATE_MAIL_SPOOL=yes
 Index: src/useradd.c
 ===================================================================
 --- src/useradd.c.orig
 +++ src/useradd.c
-@@ -78,6 +78,9 @@
+@@ -82,6 +82,9 @@
  #ifndef SKEL_DIR
  #define SKEL_DIR "/etc/skel"
  #endif
@@ -29,15 +19,15 @@ Index: src/useradd.c
  #ifndef USER_DEFAULTS_FILE
  #define USER_DEFAULTS_FILE "/etc/default/useradd"
  #define NEW_USER_FILE "/etc/default/nuaddXXXXXX"
-@@ -101,6 +104,7 @@ static const char *def_gname = "other";
+@@ -106,6 +109,7 @@ static const char *def_gname = "other";
  static const char *def_home = "/home";
- static const char *def_shell = "";
+ static const char *def_shell = "/bin/bash";
  static const char *def_template = SKEL_DIR;
 +static const char *def_usrtemplate = USRSKELDIR;
- static const char *def_create_mail_spool = "no";
+ static const char *def_create_mail_spool = "yes";
  
  static long def_inactive = -1;
-@@ -202,6 +206,7 @@ static bool home_added = false;
+@@ -208,6 +212,7 @@ static bool home_added = false;
  #define DINACT			"INACTIVE="
  #define DEXPIRE			"EXPIRE="
  #define DSKEL			"SKEL="
@@ -45,7 +35,7 @@ Index: src/useradd.c
  #define DCREATE_MAIL_SPOOL	"CREATE_MAIL_SPOOL="
  
  /* local function prototypes */
-@@ -469,6 +474,29 @@ static void get_defaults (void)
+@@ -481,6 +486,29 @@ static void get_defaults (void)
  		}
  
  		/*
@@ -75,7 +65,7 @@ Index: src/useradd.c
  		 * Create by default user mail spool or not ?
  		 */
  		else if (MATCH (buf, DCREATE_MAIL_SPOOL)) {
-@@ -500,6 +528,7 @@ static void show_defaults (void)
+@@ -512,6 +540,7 @@ static void show_defaults (void)
  	printf ("EXPIRE=%s\n", def_expire);
  	printf ("SHELL=%s\n", def_shell);
  	printf ("SKEL=%s\n", def_template);
@@ -83,7 +73,7 @@ Index: src/useradd.c
  	printf ("CREATE_MAIL_SPOOL=%s\n", def_create_mail_spool);
  }
  
-@@ -526,6 +555,7 @@ static int set_defaults (void)
+@@ -538,6 +567,7 @@ static int set_defaults (void)
  	bool out_expire = false;
  	bool out_shell = false;
  	bool out_skel = false;
@@ -91,7 +81,7 @@ Index: src/useradd.c
  	bool out_create_mail_spool = false;
  	size_t len;
  	int ret = -1;
-@@ -620,6 +650,9 @@ static int set_defaults (void)
+@@ -632,6 +662,9 @@ static int set_defaults (void)
  		} else if (!out_skel && MATCH (buf, DSKEL)) {
  			fprintf (ofp, DSKEL "%s\n", def_template);
  			out_skel = true;
@@ -101,7 +91,7 @@ Index: src/useradd.c
  		} else if (!out_create_mail_spool
  			   && MATCH (buf, DCREATE_MAIL_SPOOL)) {
  			fprintf (ofp,
-@@ -649,6 +682,8 @@ static int set_defaults (void)
+@@ -661,6 +694,8 @@ static int set_defaults (void)
  		fprintf (ofp, DSHELL "%s\n", def_shell);
  	if (!out_skel)
  		fprintf (ofp, DSKEL "%s\n", def_template);
@@ -110,7 +100,7 @@ Index: src/useradd.c
  
  	if (!out_create_mail_spool)
  		fprintf (ofp, DCREATE_MAIL_SPOOL "%s\n", def_create_mail_spool);
-@@ -2507,6 +2542,8 @@ int main (int argc, char **argv)
+@@ -2679,6 +2714,8 @@ int main (int argc, char **argv)
  		if (home_added) {
  			copy_tree (def_template, prefix_user_home, false, false,
  			           (uid_t)-1, user_id, (gid_t)-1, user_gid);

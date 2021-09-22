@@ -66,13 +66,7 @@ if ! test -f shadow-login_defs-check-build/stamp ; then
 # In case of shadow, variables extraction is more complicated. The list
 # depends on configure options, so we have to perform a fake build and
 # extract variables from prepreocessed sources.
-		patch <<EOF
---- shadow.spec
-+++ shadow.spec
-@@ -133,1 +133,1 @@
--make %{?_smp_mflags} V=1
-+make %{?_smp_mflags} V=1 -k CPPFLAGS="-E"
-EOF
+        sed -i '/^%make_build/i\_smp_mpflags="%{?_smp_mpflags} -k CPPFLAGS=\\"-E\\""' shadow.spec
 	fi
 
 	osc build "$@" || :

@@ -602,4 +602,41 @@
     <comment></comment>
     <requestid>903625</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>502bd2ba87ee4c176b2bc9ce1c494fed</srcmd5>
+    <version>4.9</version>
+    <time>1632341566</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1190146: Fix empty subid range
+  Add shadow-4.9-useradd-subuid.patch
+  https://github.com/shadow-maint/shadow/pull/399
+
+- bsc#1190145: Fix double free in gpasswd:
+  Add shadow-4.9-sgent-free.patch upstreamed as
+  https://github.com/shadow-maint/shadow/pull/417
+
+- Fix shadow-login_defs-check.sh:
+  In the last update we switched from calling make to %make_build
+  macro. Using sed to adapt the spec file now.
+
+- libsubid-devel: add missing requires for libsubid3
+- Remove README.changes-pwdutils, all distros you can upgrade from
+  use already shadow
+
+- login.defs: Enable USERGROUPS_ENAB and CREATE_HOME to
+  be compatible with other Linux distros and the other tools
+  creating user accounts in use on openSUSE. Set HOME_MODE to 700
+  for security reasons and compatibility. [bsc#1189139] [bsc#1182850]
+
+- Update to 4.9:
+  * Updated translations
+  * Major salt updates
+  * Various coverity and cleanup fixes
+  * Consistently use 0 to disable PASS_MIN_DAYS in man
+  * Implement NSS support for subids and a libsubid
+  * setfcap: retain setfcap when mapping uid 0
+  * login.defs: include HMAC_CRYPTO_ALGO key
+  * selinux fixes</comment>
+    <requestid>920286</requestid>
+  </revision>
 </revisionlist>

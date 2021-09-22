@@ -2,23 +2,25 @@ Index: etc/login.defs
 ===================================================================
 --- etc/login.defs.orig
 +++ etc/login.defs
-@@ -299,3 +299,11 @@ USERGROUPS_ENAB yes
- # missing.
+@@ -329,6 +329,13 @@ USERGROUPS_ENAB yes
  #
  #FORCE_SHADOW    yes
-+
-+#
+ 
 +# User/group names must match the following regex expression.
 +# The default is [A-Za-z_][A-Za-z0-9_.-]*[A-Za-z0-9_.$-]\?,
 +# but be aware that the result could depend on the locale settings.
 +#
 +#CHARACTER_CLASS                [A-Za-z_][A-Za-z0-9_.-]*[A-Za-z0-9_.$-]\?
 +CHARACTER_CLASS         [ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz_][ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-]*[ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.$-]\?
++
+ #
+ # Allow newuidmap and newgidmap when running under an alternative
+ # primary group.
 Index: lib/getdef.c
 ===================================================================
 --- lib/getdef.c.orig
 +++ lib/getdef.c
-@@ -80,6 +80,7 @@ struct itemdef {
+@@ -91,6 +91,7 @@ struct itemdef {
  
  #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
  static struct itemdef def_table[] = {

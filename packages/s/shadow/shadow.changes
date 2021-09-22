@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Mon Sep 20 09:43:41 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1190146: Fix empty subid range
+  Add shadow-4.9-useradd-subuid.patch
+  https://github.com/shadow-maint/shadow/pull/399
+
+-------------------------------------------------------------------
+Mon Sep 20 09:09:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1190145: Fix double free in gpasswd:
+  Add shadow-4.9-sgent-free.patch upstreamed as
+  https://github.com/shadow-maint/shadow/pull/417
+
+-------------------------------------------------------------------
+Tue Sep  7 15:08:19 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Fix shadow-login_defs-check.sh:
+  In the last update we switched from calling make to %make_build
+  macro. Using sed to adapt the spec file now.
+
+-------------------------------------------------------------------
+Wed Aug 18 15:17:52 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- libsubid-devel: add missing requires for libsubid3
+- Remove README.changes-pwdutils, all distros you can upgrade from
+  use already shadow
+
+-------------------------------------------------------------------
+Wed Aug 18 14:59:15 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
+
+- login.defs: Enable USERGROUPS_ENAB and CREATE_HOME to
+  be compatible with other Linux distros and the other tools
+  creating user accounts in use on openSUSE. Set HOME_MODE to 700
+  for security reasons and compatibility. [bsc#1189139] [bsc#1182850]
+
+-------------------------------------------------------------------
+Tue Aug 17 15:08:09 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.9:
+  * Updated translations
+  * Major salt updates
+  * Various coverity and cleanup fixes
+  * Consistently use 0 to disable PASS_MIN_DAYS in man
+  * Implement NSS support for subids and a libsubid
+  * setfcap: retain setfcap when mapping uid 0
+  * login.defs: include HMAC_CRYPTO_ALGO key
+  * selinux fixes
+  * Fix path prefix path handling
+  * Manpage updates
+  * Treat an empty passwd field as invalid(Haelwenn Monnier)
+  * newxidmap: allow running under alternative gid
+  * usermod: check that shell is executable
+  * Add yescript support
+  * useradd memleak fixes
+  * useradd: use built-in settings by default
+  * getdefs: add foreign
+  * buffer overflow fixes
+  * Adding run-parts style for pre and post useradd/del
+- Refresh:
+  * shadow-login_defs-unused-by-pam.patch
+  * userdel-script.patch
+  * useradd-script.patch
+  * chkname-regex.patch
+  * useradd-default.patch: bbf4b79 stopped shipping default file.
+    change group in code now.
+  * shadow-login_defs-suse.patch
+  * useradd-userkeleton.patch
+- Remove because upstreamed:
+  * shadow-4.1.5.1-userdel-helpfix.patch
+  * shadow-4.1.5.1-logmsg.patch
+- Add libsubid-build-fix.patch:
+  See https://github.com/shadow-maint/shadow/issues/387
+- Add shadow-libeconf-include.patch:
+  See c6847011e8b656adacd9a0d2a78418cad0de34cb
+- Add shadow-fix-sigabrt.patch:
+  See https://github.com/shadow-maint/shadow/issues/394
+- Add shadow-passwd-handle-null.patch [bsc#1188307]:
+  See https://github.com/shadow-maint/shadow/pull/398
+- Remove %{_sysconfdir}/default/useradd: file not shipped anymore
+- Remove --disable-shared: Dont need it anymore
+  See https://github.com/shadow-maint/shadow/issues/336
+
+-------------------------------------------------------------------
 Thu Jul  1 11:51:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 
 - login.defs/MOTD_FILE: Use "" instead of blank entry [bsc#1187536]
@@ -7,7 +90,7 @@ Thu Jul  1 11:51:39 UTC 2021 - Thorsten Kukuk <kukuk@suse.com>
 -------------------------------------------------------------------
 Sat Jun  5 13:38:52 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
-- Enable shadowgrp so that we can set more secure group passwords 
+- Enable shadowgrp so that we can set more secure group passwords
   using shadow.
 
 -------------------------------------------------------------------
@@ -54,7 +137,7 @@ Mon Nov  2 15:54:02 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Fri Oct  9 13:12:11 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Add support for /usr/etc/skel to useradd.local script (boo#1173321) 
+- Add support for /usr/etc/skel to useradd.local script (boo#1173321)
 
 -------------------------------------------------------------------
 Thu Oct  8 03:16:58 UTC 2020 - Stanislav Brabec <sbrabec@suse.com>
@@ -530,7 +613,7 @@ Tue Nov 13 17:31:50 CET 2012 - kukuk@suse.de
 -------------------------------------------------------------------
 Tue Nov 13 10:36:28 CET 2012 - kukuk@suse.de
 
-- Fix default group value in /etc/default/useradd 
+- Fix default group value in /etc/default/useradd
   (useradd-default.diff)
 
 -------------------------------------------------------------------

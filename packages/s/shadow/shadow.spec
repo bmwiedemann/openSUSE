@@ -21,23 +21,21 @@
 %else
   %define no_config 1
 %endif
-
 Name:           shadow
-Version:        4.8.1
+Version:        4.9
 Release:        0
 Summary:        Utilities to Manage User and Group Accounts
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/Base
 URL:            https://github.com/shadow-maint/shadow
-Source:         https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz
+Source:         https://github.com/shadow-maint/shadow/releases/download/v%{version}/shadow-%{version}.tar.xz
 Source1:        pamd.tar.bz2
-Source2:        README.changes-pwdutils
 Source3:        useradd.local
 Source4:        userdel-pre.local
 Source5:        userdel-post.local
 Source6:        shadow.service
 Source7:        shadow.timer
-Source42:       https://github.com/shadow-maint/shadow/releases/download/%{version}/shadow-%{version}.tar.xz.asc
+Source42:       https://github.com/shadow-maint/shadow/releases/download/v%{version}/shadow-%{version}.tar.xz.asc
 Source43:       %{name}.keyring
 # SOURCE-FEATURE-SUSE shadow-login_defs-check.sh sbrabec@suse.com -- Supplementary script that verifies coverage of variables in shadow-login_defs-unused-by-pam.patch and other patches.
 Source44:       shadow-login_defs-check.sh
@@ -53,40 +51,48 @@ Patch3:         chkname-regex.patch
 Patch4:         useradd-default.patch
 # PATCH-FEATURE-SUSE shadow-util-linux.patch sbrabec@suse.com -- Add support for util-linux specific variables, delete shadow login, su runuser specific.
 Patch5:         shadow-util-linux.patch
-# PATCH-FEATURE-FEDORA shadow-4.1.5.1-userdel-helpfix.patch christian.brauner@mailbox.org -- Give a hint about what happens when you force the removal of a user.
-Patch6:         shadow-4.1.5.1-userdel-helpfix.patch
-# PATCH-FIX-FEDORA shadow-4.1.5.1-logmsg.patch kukuk@suse.com -- Fix error message.
-Patch7:         shadow-4.1.5.1-logmsg.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-comments.patch kukuk@suse.com -- Adjust login.defs comments.
-Patch13:        shadow-login_defs-comments.patch
+Patch6:         shadow-login_defs-comments.patch
 # PATCH-FEATURE-SUSE shadow-login_defs-suse.patch kukuk@suse.com -- Customize login.defs.
-Patch14:        shadow-login_defs-suse.patch
+Patch7:         shadow-login_defs-suse.patch
 # PATCH-FEATURE-SUSE Copy also skeleton files from /usr/etc/skel (boo#1173321)
-Patch15:        useradd-userkeleton.patch
+Patch8:         useradd-userkeleton.patch
 # PATCH-FIX-SUSE disable_new_audit_function.patch adam.majer@suse.de -- Disable newer libaudit functionality for older distributions.
-Patch20:        disable_new_audit_function.patch
+Patch9:         disable_new_audit_function.patch
+# PATCH-FIX-UPSTREAM libsubid-build-fix.patch mvetter@suse.de -- Fix build with libsubid (f4a84e, 537b8c, fa986b)
+Patch10:        libsubid-build-fix.patch
+# PATCH-FIX-UPSTREAM shadow-libeconf-include.patch mvetter@suse.de -- Include libeconf to new*idmap (c68470)
+Patch11:        shadow-libeconf-include.patch
+# PATCH-FIX-UPSTREAM shadow-fix-sigabrt.patch mvetter@suse.de -- Fix SIGABRT https://github.com/shadow-maint/shadow/issues/394
+Patch12:        shadow-fix-sigabrt.patch
+# PATCH-FIX-UPSTREAM shadow-passwd-handle-null.patch mvetter@suse.de -- Fix passwd NULL handling https://github.com/shadow-maint/shadow/pull/398
+Patch13:        shadow-passwd-handle-null.patch
+# PATCH-FIX-UPSTREAM shadow-4.9-sgent-free.patch mvetter@suse.de -- Fix double free (boo#1190145)
+Patch14:        shadow-4.9-sgent-free.patch
+# PATCH-FIX-UPSTREAM shadow-4.9-useradd-subuid.patch mvetter@suse.de -- Fix generating empty subid range and undeclared subid_count (boo#1190146)
+Patch15:        shadow-4.9-useradd-subuid.patch
 BuildRequires:  audit-devel > 2.3
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libacl-devel
 BuildRequires:  libattr-devel
-# It should be %%if %%{defined no_config}, but OBS cannot handle it:
-%if 0%{?suse_version} >= 1550
-BuildRequires:  libeconf-devel
-%endif
 BuildRequires:  libselinux-devel
 BuildRequires:  libsemanage-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRequires:  xz
+Requires:       login_defs >= %{version}
 Requires(pre):  group(root)
 Requires(pre):  group(shadow)
 Requires(pre):  permissions
 Requires(pre):  user(root)
 Provides:       pwdutils = 3.2.20
 Obsoletes:      pwdutils <= 3.2.19
-Requires:       login_defs >= %{version}
 Provides:       useradd_or_adduser_dep
+# It should be %%if %%{defined no_config}, but OBS cannot handle it:
+%if 0%{?suse_version} >= 1550
+BuildRequires:  libeconf-devel
+%endif
 
 %description
 This package includes the necessary programs for converting plain
@@ -94,20 +100,35 @@ password files to the shadow password format and to manage user and
 group accounts.
 
 %package -n login_defs
-Summary:        login.defs configuration file
-Group:          System/Base
-BuildArch:      noarch
+Summary:        The login.defs configuration file
 # Virtual provides for supported variables in login.defs.
 # It prevents references to unknown variables.
 # Upgrade them only if shadow-util-linux.patch or
 # encryption_method_nis.patch has to be ported!
 # Call shadow-login_defs-check.sh before!
+Group:          System/Base
 Provides:       login_defs-support-for-pam = 1.3.1
 Provides:       login_defs-support-for-util-linux = 2.36
+BuildArch:      noarch
 
 %description -n login_defs
 This package contains the default login.defs configuration file
 as used by util-linux, pam and shadow.
+
+%package -n libsubid3
+Summary:        A library to manage subordinate uid and gid ranges
+Group:          System/Base
+
+%description -n libsubid3
+Utility library that provides a way to manage subid ranges.
+
+%package -n libsubid-devel
+Summary:        Development files for libsubid3
+Group:          System/Base
+Requires:       libsubid3 = %{version}
+
+%description -n libsubid-devel
+Development files for libsubid3.
 
 %prep
 %setup -q -a 1
@@ -119,12 +140,16 @@ as used by util-linux, pam and shadow.
 %patch5
 %patch6
 %patch7
-%patch13
-%patch14
-%patch15
+%patch8
 %if 0%{?suse_version} < 1330
-%patch20 -p1
+%patch9 -p1
 %endif
+%patch10 -p1
+%patch11 -p1
+%patch12 -p1
+%patch13 -p1
+%patch14 -p1
+%patch15 -p1
 
 iconv -f ISO88591 -t utf-8  doc/HOWTO > doc/HOWTO.utf8
 mv -v doc/HOWTO.utf8 doc/HOWTO
@@ -145,14 +170,15 @@ autoreconf -fvi
   --with-nscd \
   --with-selinux \
   --without-libcrack \
-  --disable-shared \
   --with-group-name-max-length=32 \
   --enable-vendordir=%{_distconfdir}
-make %{?_smp_mflags} V=1
+%make_build
+#  --disable-shared \ currently doesn't build with this. See https://github.com/shadow-maint/shadow/issues/336
 
 %install
-cp %{SOURCE2} .
 %make_install gnulocaledir=%{buildroot}/%{_datadir}/locale MKINSTALLDIRS=`pwd`/mkinstalldirs
+# Separate call to install man pages. See https://github.com/shadow-maint/shadow/issues/389
+%make_install -C man install-man
 
 # install useradd.local, userdel.local, ...
 install -m 0755 %{SOURCE3} %{buildroot}/%{_sbindir}/
@@ -221,6 +247,8 @@ rm %{buildroot}/%{_mandir}/*/man5/passwd.5*
 
 rm -rf %{buildroot}%{_mandir}/{??,??_??}
 
+rm %{buildroot}/%{_libdir}/libsubid.la
+
 # Move /etc to /usr/etc
 if [ ! -d %{buildroot}%{_distconfdir} ]; then
     mkdir -p %{buildroot}%{_distconfdir}
@@ -233,11 +261,11 @@ fi
 %pre
 %service_add_pre shadow.service shadow.timer
 for i in pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
-  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+  test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 
 %pre -n login_defs
-test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs.rpmsave.old ||:
+test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpmsave %{_sysconfdir}/login.defs.rpmsave.old ||:
 
 %post
 %set_permissions %{_bindir}/chage
@@ -273,7 +301,7 @@ test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs
 %if %{defined no_config}
 # Migration to /usr/etc
 for i in pam.d/chage pam.d/chfn pam.d/chpasswd pam.d/chsh pam.d/groupadd pam.d/groupdel pam.d/groupmod pam.d/newusers pam.d/passwd pam.d/useradd pam.d/userdel pam.d/usermod; do
-  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+  test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 %endif
 
@@ -281,12 +309,14 @@ done
 # rpmsave file can be created by
 # - change of owning package (SLE15 SP2->SP3, Leap 15.2->15.3)
 # - Migration to /usr/etc (after SLE15 and Leap 15)
-test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs ||:
+test -f %{_sysconfdir}/login.defs.rpmsave && mv -v %{_sysconfdir}/login.defs.rpmsave %{_sysconfdir}/login.defs ||:
+
+%post -n libsubid3 -p /sbin/ldconfig
+%postun -n libsubid3 -p /sbin/ldconfig
 
 %files -f shadow.lang
 %license COPYING
-%doc NEWS doc/HOWTO README README.changes-pwdutils
-%attr(0644,root,root) %config(noreplace) %{_sysconfdir}/default/useradd
+%doc NEWS doc/HOWTO README
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subuid
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/subgid
 %if %{defined no_config}
@@ -308,7 +338,6 @@ test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs
 %config %{_sysconfdir}/pam.d/chfn
 %config %{_sysconfdir}/pam.d/chsh
 %config %{_sysconfdir}/pam.d/passwd
-%config %{_sysconfdir}/pam.d/useradd
 %config %{_sysconfdir}/pam.d/chpasswd
 %config %{_sysconfdir}/pam.d/groupadd
 %config %{_sysconfdir}/pam.d/groupdel
@@ -380,11 +409,19 @@ test -f /etc/login.defs.rpmsave && mv -v /etc/login.defs.rpmsave /etc/login.defs
 
 %files -n login_defs
 %if %{defined no_config}
-%dir /etc/login.defs.d
+%dir %{_sysconfdir}/login.defs.d
 %attr(0644,root,root) %{_distconfdir}/login.defs
 %else
 %attr(0644,root,root) %config %{_sysconfdir}/login.defs
 %endif
 %{_mandir}/man5/login.defs.5%{?ext_man}
+
+%files -n libsubid3
+%{_libdir}/libsubid.so.*
+
+%files -n libsubid-devel
+%dir %{_includedir}/shadow
+%{_includedir}/shadow/subid.h
+%{_libdir}/libsubid.so
 
 %changelog

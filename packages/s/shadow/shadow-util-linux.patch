@@ -113,7 +113,7 @@ Index: lib/getdef.c
 ===================================================================
 --- lib/getdef.c.orig
 +++ lib/getdef.c
-@@ -66,6 +66,7 @@ struct itemdef {
+@@ -67,6 +67,7 @@ struct itemdef {
  	{"LOGIN_STRING", NULL},			\
  	{"MAIL_CHECK_ENAB", NULL},		\
  	{"MOTD_FILE", NULL},			\
@@ -121,7 +121,7 @@ Index: lib/getdef.c
  	{"NOLOGINS_FILE", NULL},		\
  	{"OBSCURE_CHECKS_ENAB", NULL},		\
  	{"PASS_ALWAYS_WARN", NULL},		\
-@@ -80,6 +81,7 @@ struct itemdef {
+@@ -91,6 +92,7 @@ struct itemdef {
  
  #define NUMDEFS	(sizeof(def_table)/sizeof(def_table[0]))
  static struct itemdef def_table[] = {
@@ -129,7 +129,7 @@ Index: lib/getdef.c
  	{"CHARACTER_CLASS", NULL},
  	{"CHFN_RESTRICT", NULL},
  	{"CONSOLE_GROUPS", NULL},
-@@ -88,6 +90,7 @@ static struct itemdef def_table[] = {
+@@ -99,6 +101,7 @@ static struct itemdef def_table[] = {
  	{"DEFAULT_HOME", NULL},
  	{"ENCRYPT_METHOD", NULL},
  	{"ENV_PATH", NULL},
@@ -137,7 +137,7 @@ Index: lib/getdef.c
  	{"ENV_SUPATH", NULL},
  	{"ERASECHAR", NULL},
  	{"FAIL_DELAY", NULL},
-@@ -99,6 +102,7 @@ static struct itemdef def_table[] = {
+@@ -110,6 +113,7 @@ static struct itemdef def_table[] = {
  	{"KILLCHAR", NULL},
  	{"LASTLOG_UID_MAX", NULL},
  	{"LOGIN_RETRIES", NULL},
