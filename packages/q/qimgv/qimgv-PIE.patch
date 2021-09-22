@@ -1,8 +1,8 @@
-Index: qimgv-0.8.9/qimgv/CMakeLists.txt
+Index: qimgv-1.0.0/qimgv/CMakeLists.txt
 ===================================================================
---- qimgv-0.8.9.orig/qimgv/CMakeLists.txt
-+++ qimgv-0.8.9/qimgv/CMakeLists.txt
-@@ -21,6 +21,9 @@ add_subdirectory(utils)
+--- qimgv-1.0.0.orig/qimgv/CMakeLists.txt
++++ qimgv-1.0.0/qimgv/CMakeLists.txt
+@@ -36,6 +36,9 @@ endif()
  target_compile_features(qimgv PRIVATE cxx_std_17)
  set_target_properties(qimgv PROPERTIES CXX_EXTENSIONS OFF)
  
@@ -10,5 +10,5 @@ Index: qimgv-0.8.9/qimgv/CMakeLists.txt
 +set( CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pie")
 +
  # LINK STUFF
- target_link_libraries(qimgv PRIVATE Qt5::Core Qt5::Widgets Qt5::Concurrent)
- if(USING_LIBSTDCXX)
+ target_link_libraries(qimgv PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Widgets Qt${QT_VERSION_MAJOR}::Svg Qt${QT_VERSION_MAJOR}::PrintSupport)
+ if(QT_VERSION_MAJOR GREATER_EQUAL 6)

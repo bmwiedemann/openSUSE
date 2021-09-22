@@ -1,7 +1,7 @@
 #
 # spec file for package qimgv
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           qimgv
-Version:        0.9.1
+Version:        1.0.0
 Release:        0
 Summary:        Qt5 image viewer
 License:        GPL-3.0-only
@@ -27,23 +27,21 @@ Source0:        https://github.com/easymodo/qimgv/archive/v%{version}.tar.gz#/%{
 Patch1:         qimgv-PIE.patch
 # PATCH-FIX-OPENSUSE qimgv-includepath.patch # aloisio@gmx.com use correct path for opencv includes
 Patch2:         qimgv-includepath.patch
-# PATCH-FIX-UPSTREAM qimgv-pluginpath_1.patch
-Patch3:         qimgv-pluginpath_1.patch
-# PATCH-FIX-UPSTREAM qimgv-pluginpath_2.patch
-Patch4:         qimgv-pluginpath_2.patch
-# PATCH-FIX-UPSTREAM qimgv-pluginpath_3.patch
-Patch5:         qimgv-pluginpath_3.patch
+# PATCH-FIX-OPENSUSE qimgv-no_return_in_nonvoid.patch # aloisio@gmx.com pacify rpmlint
+Patch6:         qimgv-no_return_in_nonvoid.patch
 BuildRequires:  cmake >= 3.13
 %if 0%{?suse_version} > 1500
 BuildRequires:  gcc-c++
 %else
-BuildRequires:  gcc8-c++
+BuildRequires:  gcc9-c++
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Concurrent) >= 5.9
-BuildRequires:  pkgconfig(Qt5Widgets)
+BuildRequires:  pkgconfig(Qt5Core)
+BuildRequires:  pkgconfig(Qt5PrintSupport)
+BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Widgets) >= 5.14
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(mpv) >= 1.22.0
 Requires:       mpv >= 0.32.0
@@ -56,7 +54,7 @@ Qt5 image viewer with webm support.
 
 %build
 export CXX=g++
-test -x "$(type -p g++-8)" && export CXX=g++-8
+test -x "$(type -p g++-9)" && export CXX=g++-9
 %cmake
 %make_jobs
 

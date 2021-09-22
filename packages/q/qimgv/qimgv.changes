@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Sep 22 17:25:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.0
+  General:
+  * Qt6 support
+  * UI updates
+  * Custom theme support
+  * Printing support
+  * Export to pdf
+  * Improved image format compatibility
+  * Allow image resizing by percentage
+  * Tweak zoom step range
+  * Add absolute zoom step option
+  * Confirmation when overwriting files
+  * Allow Tab key in shortcuts
+  * Add slideshow / shuffle mode indication in window title
+  * Adjacent directory switching (shift+left / shift+right)
+  * Automatic seamless directory switching
+  * Allow more video formats besides webm/mp4
+  * Zoom Lock feature
+  * Shortcut for toggling fullscreen infobar
+  * Show in folder menu option now pre-selects current file
+  Folder view:
+  * Display folders
+  * Display image resolution
+  * Filesystem navigation via Enter / Backspace
+  * Show path bar (will be improved in future)
+  * Allow multi-selection
+  * Mass rotate / delete
+  * Improved drag'n'drop
+  * Renaming now works in folderview
+  * Improved thumbnail loading responsiveness
+  * Unload off-screen thumbnails option
+  Misc:
+  * Fix video playback with the latest mpv
+  * Fix window positioning under some window managers
+  * Allow custom cache folder location
+  * Change default thumbnailer thread count to 4
+  * Fix cursor autohide on wayland
+  * Fix context menu potentially appearing off-screen
+  * Other minor bug fixes
+  * Lots of visual fixes
+- Refresh qimgv-PIE.patch
+- Drop qimgv-pluginpath_1.patch, qimgv-pluginpath_2.patch and
+  qimgv-pluginpath_3.patch
+- Add qimgv-no_return_in_nonvoid.patch
+
+-------------------------------------------------------------------
 Sun May 31 09:12:40 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
 
 - Drop qimgv-nosharedlib.patch

@@ -1,0 +1,12 @@
+Index: qimgv-1.0.0/qimgv/utils/fileoperations.cpp
+===================================================================
+--- qimgv-1.0.0.orig/qimgv/utils/fileoperations.cpp
++++ qimgv-1.0.0/qimgv/utils/fileoperations.cpp
+@@ -60,6 +60,7 @@ QString FileOperations::decodeResult(con
+     case FileOpResult::OTHER_ERROR:
+         return "Other error.";
+     }
++    return NULL;
+ }
+ 
+ void FileOperations::copyFileTo(const QString &srcFilePath, const QString &destDirPath, bool force, FileOpResult &result) {
