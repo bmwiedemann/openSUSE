@@ -31,4 +31,12 @@
 - Drop fix-crash-bug.patch, fixed by upstream (forwarded request 910696 from hillwood)</comment>
     <requestid>910913</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2daefb2e10589e30322846e787bf367d</srcmd5>
+    <version>5.3.9</version>
+    <time>1632341573</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-library-links.patch, fix build on Tumbleweed (forwarded request 920721 from hillwood)</comment>
+    <requestid>920722</requestid>
+  </revision>
 </revisionlist>

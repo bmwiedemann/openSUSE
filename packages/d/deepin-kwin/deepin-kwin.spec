@@ -34,6 +34,9 @@ Patch0:         deepin-kwin-tabbox-chameleon-rename.patch
 Patch1:         deepin-kwin-crash.patch
 BuildRequires:  cmake(KWaylandServer)
 %endif
+# PATCH-FIX-UPSTRAM fix-library-links.patch hillwood@opensuse.org - Fix build on Tumbleweed
+# https://github.com/linuxdeepin/dde-kwin/pull/154
+Patch2:         fix-library-links.patch
 BuildRequires:  fdupes
 BuildRequires:  gtest
 BuildRequires:  libqt5-linguist

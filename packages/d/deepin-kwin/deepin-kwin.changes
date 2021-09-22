@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 22 04:09:04 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add fix-library-links.patch, fix build on Tumbleweed
+
+-------------------------------------------------------------------
 Tue Jun 15 04:07:03 UTC 2021 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 5.3.9
