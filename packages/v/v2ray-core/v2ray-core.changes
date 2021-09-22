@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 21 13:38:23 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
+
+- Update to 4.42.2
+  * TLS: support client certificate authentication #1169 Thanks @qq906907952
+  * Socks: support 4/4a version of the socks protocol (#1269 Thanks @nekohasekai)
+  * DNS: add option disableFallbackIfMatch for DNS (#1270 Thanks @nekohasekai)
+  * DoQ(DNS over QUIC) local mode supports IP destination
+  (#1226 Thanks @AkinoKaede)
+  * Observatory will now probe outbounds in a deterministic order
+  (#1230 Thanks @digglife)
+  * DNS response will respect request type(like AAAA, A)
+  (#1235 Thanks @AkinoKaede)
+  * Fix typo in DNS log output (#1183 Thanks @rurirei)
+  * Fix typo in observatory log output (#1211 Thanks @ihotte)
+  * Fix version string not updated to match release version
+  * Fix IP length not deterministic (#1267 Thanks @Loyalsoldier)
+  * Fix HTTP outbound not respect socket config (#1264 Thanks @Vigilans)
+  * Fix sockopt.mark type (#1264 Thanks @Vigilans)
+  * Fix typo in browser forwarder error message
+- Update in 4.41.1
+  * VMess: Added 2 VMess experiments AuthenticatedLength and NoTerminationSignal
+  #940 Thanks @RPRX
+  * Hardening Draining connection at client side when receiving invalid data.
+  #940 Thanks @RPRX
+  * Observatory Support custom probe interval and probe URL. Thanks @nekohasekai
+  * Fixed connection stability issue when in h2, grpc transport.
+  #1059 #1058 #1056 Thanks @IRN-Kawakaze @architecturers @lijinglin3
+  * Further fixed connection stability issue when in h2, grpc transport.
+  check https://github.com/v2fly/v2ray-core/releases/tag/v4.41.1 for more info
+- Update in 4.40.1
+  * DNS: support DNS over TCP. #983 Thanks @AkinoKaede
+  * Fix: new cert issuing is incorrectly delayed. #998 Thanks @bhoppi
+
+-------------------------------------------------------------------
 Wed Jun  2 08:15:09 UTC 2021 - opensuse-packaging <opensuse-packaging@opensuse.org>
 
 - Update version to 4.39.2
