@@ -20,28 +20,26 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-sparse
-Version:        0.11.2
+Version:        0.13.0
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/pydata/sparse
 Source:         https://files.pythonhosted.org/packages/source/s/sparse/sparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM sparse-pr421-fix-cootype.patch -- gh#pydata#sparse#421
-Patch0:         %{url}/pull/421.patch#/sparse-pr421-fix-cootype.patch
 BuildRequires:  %{python_module pathlib}
 BuildRequires:  %{python_module setuptools}
 # SECTION test requirements
 BuildRequires:  %{python_module dask-array}
 BuildRequires:  %{python_module numba >= 0.49}
-BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy >= 0.19}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numba >= 0.49
-Requires:       python-numpy
+Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
 BuildArch:      noarch
 

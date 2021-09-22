@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 22 12:39:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.13.0
+  * GCXS improvements and changes.
+  * Maintainence fixes
+  * sparse.DOK.from_scipy_sparse method
+  * Black re-formatting
+  * Add sparse.pad
+  * Switch to GitHub Actions
+  * Fix a number of bugs in format conversion.
+  * Fix bug in sparse.matmul for higher-dimensional arrays.
+  * Fix scalar conversion to COO
+  * Fix OOB memory accesses
+  * Fixes element-wise ops with scalar COO array.
+  * Fix scalar broadcast_to with nnz==0.
+  * Add order parameter to {zero, ones, full}[_like].
+  * Fix tensordot typing bugs.
+- Release 0.12.0
+  * There are a number of large changes in this release. For
+    example, we have implemented the GCXS type, and its
+    specializations CSR and CSC. We plan on gradually improving the
+    performance of these.
+  * A number of GCXS fixes and additions
+  * Ability to change the index dtype for better storage
+    characteristics.
+  * Some work on DOK arrays to bring them closer to the other
+    formats
+  * CSR and CSC specializations of GCXS
+  * Fix a number of bugs
+  * Add nnz parameter to sparse.random
+- Drop sparse-pr421-fix-cootype.patch merged upstream
+
+-------------------------------------------------------------------
 Fri Feb 12 14:15:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - skip python 3.6 build 
