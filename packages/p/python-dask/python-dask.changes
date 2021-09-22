@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Wed Sep 22 12:50:07 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 2021.09.1 
+  * Fix groupby for future pandas
+  * Remove warning filters in tests that are no longer needed
+  * Add link to diagnostic visualize function in local diagnostic
+    docs
+  * Add datetime_is_numeric to dataframe.describe
+  * Remove references to pd.Int64Index in anticipation of
+    deprecation
+  * Use loc if needed for series __get_item__
+  * Specifically ignore warnings on mean for empty slices
+  * Skip groupby nunique test for pandas >= 1.3.3
+  * Implement ascending arg for sort_values
+  * Replace operator.getitem
+  * Deprecate zero_broadcast_dimensions and homogeneous_deepmap
+  * Add error if drop_index is negative
+  * Allow scheduler to be an Executor
+  * Handle asarray/asanyarray cases where like is a dask.Array
+  * Fix index_col duplication if index_col is type str
+  * Add dtype and order to asarray and asanyarray definitions
+  * Deprecate dask.dataframe.Series.__contains__
+  * Fix edge case with like-arrays in _wrapped_qr
+  * Deprecate boundary_slice kwarg: kind for pandas compat
+- Release 2021.09.0
+  * Fewer open files
+  * Add FileNotFound to expected http errors
+  * Add DataFrame.sort_values to API docs
+  * Change to dask.order: be more eager at times
+  * Add pytest color to CI
+  * FIX: make_people works with processes scheduler
+  * Adds deep param to Dataframe copy method and restrict it to
+    False
+  * Fix typo in configuration docs
+  * Update formatting in DataFrame.query docstring
+  * Un-xfail sparse tests for 0.13.0 release
+  * Add axes property to DataFrame and Series
+  * Add CuPy support in da.unique (values only)
+  * Unit tests for sparse.zeros_like (xfailed)
+  * Add explicit like kwarg support to array creation functions
+  * Separate Array and DataFrame mindeps builds
+  * Fork out percentile_dispatch to dask.array
+  * Ensure filepath exists in to_parquet
+  * Update scheduler plugin usage in
+    test_scheduler_highlevel_graph_unpack_import
+  * Add DataFrame.shuffle to API docs
+  * Order requirements alphabetically
+- Release 2021.08.1
+  * Add ignore_metadata_file option to read_parquet
+    (pyarrow-dataset and fastparquet support only)
+  * Add reference to pytest-xdist in dev docs
+  * Include tz in meta from to_datetime
+  * CI Infra Docs
+  * Include invalid DataFrame key in assert_eq check
+  * Use __class__ when creating DataFrames
+  * Use development version of distributed in gpuCI build
+  * Ignore whitespace when gufunc signature
+  * Move pandas import and percentile dispatch refactor
+  * Add colors to represent high level layer types
+  * Upstream instance fix
+  * Add dask.widgets and migrate HTML reprs to jinja2
+  * Remove wrap_func_like_safe, not required with
+    NumPy >= 1.17
+  * Fix threaded scheduler memory backpressure regression
+  * Add percentile dispatch
+  * Use a publicly documented attribute obj in groupby rather than
+    private _selected_obj
+  * Specify module to import rechunk from
+  * Use dict to store data for {nan,}arg{min,max} in certain cases
+  * Fix blocksize description formatting in read_pandas
+  * Fix "point" -> "pointers" typo in docs
+- Release 2021.08.0
+  * Fix to_orc delayed compute behavior
+  * Don't convert to low-level task graph in
+    compute_as_if_collection
+  * Fix multifile read for hdf
+  * Resolve warning in distributed tests
+  * Update to_orc collection name
+  * Resolve skipfooter problem
+  * Raise NotImplementedError for non-indexable arg passed to
+    to_datetime
+  * Ensure we error on warnings from distributed
+  * Added dict format in to_bag accessories of DataFrame
+  * Delayed docs indirect dependencies
+  * Add tooltips to graphviz high-level graphs
+  * Close 2021 User Survey
+  * Reorganize CuPy tests into multiple files
+  * Refactor and Expand Dask-Dataframe ORC API
+  * Don't enforce columns if enforce=False
+  * Fix map_overlap trimming behavior when drop_axis is not None
+  * Mark gpuCI CuPy test as flaky
+  * Avoid using Delayed in to_csv and to_parquet
+  * Removed redundant check_dtypes
+  * Use pytest.warns instead of raises for checking parquet engine
+    deprecation
+  * Bump RAPIDS_VER in gpuCI to 21.10
+  * Add back pyarrow-legacy test coverage for pyarrow>=5
+  * Allow pyarrow>=5 in to_parquet and read_parquet
+  * Skip CuPy tests requiring NEP-35 when NumPy < 1.20 is available
+  * Add tail and head to SeriesGroupby
+  * Update Zoom link for monthly meeting
+  * Add gpuCI build script
+  * Deprecate daily_stock utility
+  * Add distributed.nanny to configuration reference docs
+  * Require NumPy 1.18+ & Pandas 1.0+
+- Add dask-fix8169-pandas13.patch -- gh#dask/dask#8169
+
+-------------------------------------------------------------------
 Sun Aug  8 14:42:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2021.7.2

@@ -29,21 +29,23 @@
 %define         skip_python36 1
 Name:           python-dask%{psuffix}
 # Note: please always update together with python-distributed!
-Version:        2021.7.2
+Version:        2021.9.1
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
 URL:            https://dask.org
 Source:         https://files.pythonhosted.org/packages/source/d/dask/dask-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM dask-fix8169-pandas13.patch -- gh#dask/dask#8169
+Patch0:         dask-fix8169-pandas13.patch
 BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-cloudpickle >= 1.1.1
 Requires:       python-fsspec >= 0.6.0
-Requires:       python-packaging
+Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 0.3.10
 Requires:       python-toolz >= 0.8.2
 Recommends:     %{name}-array = %{version}
@@ -144,7 +146,7 @@ This package pulls in all the optional dask components.
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-delayed = %{version}
-Requires:       python-numpy >= 1.16
+Requires:       python-numpy >= 1.18
 Recommends:     python-scipy
 
 %description array
@@ -191,8 +193,9 @@ or log files.
 Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
-Requires:       python-numpy >= 1.16
-Requires:       python-pandas >= 0.25.0
+Requires:       python-numpy >= 1.18
+# Patch0 requires pandas 1.3+ -- https://github.com/dask/dask/issues/8169
+Requires:       python-pandas >= 1.3
 
 %description dataframe
 A flexible library for parallel computing in Python.
@@ -236,6 +239,7 @@ This meta package pulls in the distributed module into the dask namespace.
 %package diagnostics
 Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
+Requires:       python-Jinja2
 Requires:       python-bokeh >= 1.0.0
 
 %description diagnostics
@@ -294,6 +298,8 @@ This package contains the graphviz dot rendering interface.
 
 %prep
 %autosetup -p1 -n dask-%{version}
+sed -i  '/addopts/ {s/--durations=10//; s/--color=yes//}' setup.cfg
+chmod a-x dask/dataframe/io/orc/utils.py
 
 %build
 %python_build
@@ -334,7 +340,7 @@ donttest+="or (test_distributed and test_serializable_groupby_agg)"
 donttest+="or (test_distributed and test_await)"
 donttest+="or (test_threaded and test_interrupt)"
 # requires otherwise optional pyarrow (not available on TW)
-donttest+="or (test_parquet and test_chunksize and fastparquet)"
+donttest+="or (test_parquet and test_chunksize)"
 %pytest --pyargs dask -rfEs -m "not network" -k "not ($donttest)" -n auto
 %endif
 
