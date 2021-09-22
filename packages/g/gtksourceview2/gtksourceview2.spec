@@ -1,7 +1,7 @@
 #
 # spec file for package gtksourceview2
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -24,14 +24,13 @@ Summary:        GTK+ Source Editing Widget
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            http://www.gnome.org/
-Source:         ftp://ftp.gnome.org/pub/GNOME/sources/gtksourceview/2.10/%{_name}-%{version}.tar.bz2
+Source:         http://download.gnome.org/sources/gtksourceview/2.10/%{_name}-%{version}.tar.bz2
 # PATCH-FEATURE-OPENSUSE gtksourceview-2.10.5-rpmspec_highlight.patch bgo#676261 lazy.kent@opensuse.org -- add SUSE-specific highlights for rpm spec
 Patch0:         gtksourceview-2.10.5-rpmspec_highlight.patch
 BuildRequires:  fdupes
 BuildRequires:  gtk2-devel
 BuildRequires:  intltool
 BuildRequires:  libxml2-devel
-BuildRequires:  translation-update-upstream
 
 %description
 GtkSourceView is a text widget that extends GtkTextView, the standard
@@ -75,7 +74,6 @@ features typical of a source editor.
 %prep
 %setup -q -n %{_name}-%{version}
 %patch0
-translation-update-upstream
 
 %build
 %configure \
