@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 18 17:15:49 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.4.8:
+  * New test file for uproot
+    [gh#scikit-hep/scikit-hep-testdata#65].
+- Changes from version 0.4.7:
+  * Fix for scikit-hep/uproot4#418.
+
+-------------------------------------------------------------------
 Mon Aug  9 23:17:52 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.4.6:
