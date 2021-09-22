@@ -17,7 +17,7 @@
 
 
 Name:           polybar
-Version:        3.5.6
+Version:        3.5.7
 Release:        0
 Summary:        A fast and easy-to-use status bar
 License:        MIT
