@@ -20,14 +20,14 @@
 %define sover 2
 %define libname lib%{name}%{sover}
 %define libversion 2.2.1
-%define release_name 2021.03
+%define release_name 2021.09
 %define bladerf_group bladerf
 %define use_syslog 0
 Name:           bladeRF
-Version:        2021.03
+Version:        2021.09
 Release:        0
 Summary:        SDR radio receiver
-License:        GPL-2.0-only AND AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-2.0-only
 Group:          Productivity/Hamradio/Other
 URL:            https://nuand.com/
 #Git-Clone:     https://github.com/Nuand/bladeRF.git
@@ -113,6 +113,7 @@ mv %{buildroot}/%{_datadir}/doc/libbladeRF %{buildroot}%{_docdir}
 
 %post -n %{libname} -p /sbin/ldconfig
 %postun  -n %{libname} -p /sbin/ldconfig
+
 %pre udev
 getent group %{bladerf_group} >/dev/null || groupadd -r %{bladerf_group}
 

@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 21 20:22:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2021.09
+  * Support new keywords in config file for bladerf2.0 clocking:
+    + Update doc for new keywords
+    + Add clock_out keyword
+    + Add clock_sel keyword
+    + Add refin_freq keyword
+    + Add clock_ref keyword
+    + Fix parsing of vctcxo_tamer key
+  * Python bindings: Fix get_gain_modes
+  * Make all of the get_*_range functions work
+  * Revert "hdl: bladerf-wlan: disable RX switch when tx_ota_req
+    is asserted"
+
+-------------------------------------------------------------------
 Tue Feb 16 08:40:33 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2021.03
