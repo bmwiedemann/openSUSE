@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.24
+Version:        2.25
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  libstdc++-devel
 BuildRequires:  libstfl-devel >= 0.21
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  rust >= 1.25.0
+BuildRequires:  rust >= 1.51.0
 BuildRequires:  sqlite3-devel >= 3.5
 BuildRequires:  zlib-devel
 BuildRequires:  rubygem(asciidoctor)
