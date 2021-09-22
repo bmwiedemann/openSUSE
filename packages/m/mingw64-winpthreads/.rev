@@ -23,4 +23,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>905552</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>1cb32b63228df8635cb0a37ece5a179c</srcmd5>
+    <version>9.0.0</version>
+    <time>1632341580</time>
+    <user>dimstar_suse</user>
+    <comment>- Add arch-independent-package-contains-binary-or-object to rpmlintrc</comment>
+    <requestid>920849</requestid>
+  </revision>
 </revisionlist>

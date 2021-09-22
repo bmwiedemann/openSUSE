@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 22 07:54:49 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Add arch-independent-package-contains-binary-or-object
+  to rpmlintrc
+
+-------------------------------------------------------------------
 Sat Jul  3 10:32:57 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.0
