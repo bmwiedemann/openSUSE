@@ -29,8 +29,6 @@ Source0:        %{url}/src/gstreamer-vaapi/gstreamer-vaapi-%{version}.tar.xz
 
 BuildRequires:  Mesa-devel
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  gtk-doc
-BuildRequires:  hotdoc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  vaapi-wayland-tools
@@ -60,21 +58,16 @@ BuildRequires:  pkgconfig(xrender)
 ExclusiveArch:  %{ix86} x86_64
 
 %description
-gstreamer-vaapi is a collection of GStreamer plugins and helper libraries that allow hardware accelerated video decoding through VA-API.
-
-%package doc
-Summary:        Documentation for gstreamer-plugins-vaapi
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description doc
-This package contains documentation for gstreamer-plugins-vaapi.
+gstreamer-vaapi is a collection of GStreamer plugins and helper
+libraries that allow hardware accelerated video decoding through
+VA-API.
 
 %prep
 %autosetup -n gstreamer-vaapi-%{version} -p1
 
 %build
 %meson \
+	-Ddoc=disabled \
 	-Dwith_egl=yes \
 	-Dwith_encoders=yes \
 	-Dwith_drm=yes \
@@ -93,9 +86,7 @@ This package contains documentation for gstreamer-plugins-vaapi.
 
 %files
 %license COPYING.LIB
-%{_libdir}/gstreamer-%{gst_branch}/libgstvaapi.so
-
-%files doc
 %doc AUTHORS NEWS README
+%{_libdir}/gstreamer-%{gst_branch}/libgstvaapi.so
 
 %changelog

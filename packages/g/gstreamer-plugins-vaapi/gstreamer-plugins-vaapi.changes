@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 10:04:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop building doc sub-package, we will in the future use
+  upstreams own standalone doc package. Following this: Drop
+  gtk-doc and hotdoc BuildRequires and pass doc=disabled to meson.
+
+-------------------------------------------------------------------
 Wed Sep 15 09:58:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.18.5:
