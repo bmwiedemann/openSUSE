@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 21 00:36:23 UTC 2021 - william.brown@suse.com
+
+- Update to version 2.0.10~git0.21dd2802c:
+  * Bump version to 2.0.10
+  * Issue 4908 - Updated several dsconf --help entries (typos, wrong descriptions, etc.)
+  * Issue 4912 - Account Policy plugin does not set the config entry DN
+  * Issue 4863 - typoes in logconv.pl
+  * Issue 4796 - Add support for nsslapd-state to CLI & UI
+  * Issue 4894 - IPA failure in ipa user-del --preserve (#4907)
+  * Issue 4912 - dsidm command crashing when account policy plugin is enabled
+  * Issue 4910 - db reindex corrupts RUV tombstone nsuiqueid index
+  * Issue 4869 - Fix retro cl trimming misuse of monotonic/realtime clocks
+  * Issue 4887 - UI - fix minor regression from camelCase fixup
+  * Bump version to 2.0.9
+  * Issue 4887 - UI - Update webpack.config.js and package.json
+  * Issue 4149 - UI - Migrate the remaining components to PF4
+  * Issue 4875 - CLI - Add some verbosity to installer
+  * Issue 4884 - server crashes when dnaInterval attribute is set to zero
+
+-------------------------------------------------------------------
 Mon Aug 23 23:10:28 UTC 2021 - william.brown@suse.com
 
 - Update to version 2.0.8~git0.553f26c87:
