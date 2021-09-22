@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 22 12:01:49 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.3.4
+  - desktop#3756 [stable-3.3] macOS client is not able to do auto
+    updates
+  - desktop#3757 [stable-3.3] prevent infinte recursion when
+    closing a websocket in case of SSL errors
+  - desktop#3791 [stable-3.3] Accept nc scheme in provider page
+
+-------------------------------------------------------------------
 Fri Sep  3 13:31:27 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.3.3
