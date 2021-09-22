@@ -23,4 +23,12 @@
     <comment>- Update to release 9.0.0</comment>
     <requestid>905553</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>5bd8343cb2009e34f2382d8f875b6260</srcmd5>
+    <version>9.0.0</version>
+    <time>1632341579</time>
+    <user>dimstar_suse</user>
+    <comment>- Add arch-independent-package-contains-binary-or-object to rpmlintrc</comment>
+    <requestid>920847</requestid>
+  </revision>
 </revisionlist>
