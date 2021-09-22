@@ -36,10 +36,10 @@
 %{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
-%define ghversiontag 2021.07.2
+%define ghversiontag 2021.09.1
 Name:           python-distributed%{psuffix}
 # Note: please always update together with python-dask
-Version:        2021.7.2
+Version:        2021.9.1
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -62,6 +62,8 @@ Requires:       python-tblib
 Requires:       python-toolz >= 0.8.2
 Requires:       python-tornado >= 6.0.3
 Requires:       python-zict >= 0.1.3
+Requires(post): update-alternatives
+Requires(postun):update-alternatives
 %if %{with cythonize}
 BuildRequires:  %{python_module Cython}
 # the cythonized scheduler needs Cython also as runtime dep for some checks
@@ -101,6 +103,7 @@ clusters.
 
 %prep
 %autosetup -p1 -n distributed-%{ghversiontag}
+sed -i  '/addopts/ {s/--durations=20//; s/--color=yes//}' setup.cfg
 
 %build
 %if ! %{with test}

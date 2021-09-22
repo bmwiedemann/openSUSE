@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Wed Sep 22 12:55:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 2021.9.1 
+  * Revert AMM ReduceReplicas and parallel AMMs updates
+  * Run multiple AMMs in parallel
+  * AMM ReduceReplicas to iterate only on replicated tasks
+  * Add type annotations to various functions within
+    distributed.worker
+  * Mark test_ucx_config_w_env_var flaky on UCX < 1.11
+  * Warn if CUDA context is created on incorrect device in UCX
+  * Remove redundant timeouts from test_client
+  * Allow Client to subscribe to events // Remote printing and
+    warning
+  * Test pickle protocols 4 & 5
+  * Fix-up test_pickle_empty
+  * Increase timeout for
+    test_worker_reconnects_mid_compute_multiple_states_on_scheduler
+  * Add synced dict between cluster and scheduler to store cluster
+    info
+  * Update test_sub_submit_priority
+  * Revert "Add test setup fixture
+  * Fix flaky test_worker_reconnects_mid_compute
+  * Use gen_test in test_adaptive
+  * Increase worker.suspicious_counter threshold
+  * Active Memory Manager framework + discard excess replicas
+  * Add test setup fixture
+- Release version 2021.9.0
+  * Fix add_plugin warnings 
+  * Add list around iterator in handle_missing_dep 
+  * Jupyter-client 7 compatiblity 
+  * Replace atop with blockwise
+  * Add pytest color to CI
+  * Fix test_map and others
+  * Use name argument with Scheduler.remove_plugin calls
+  * Downgrade to jupyter_client 6
+  * Migrate Security HTML repr to Jinja2
+  * Migrate ProcessInterface HTML repr to Jinja2
+  * Add support for diskless machines to system monitor
+  * Avoid during-iteration scheduler plugin changes
+  * Remove GroupProgress scheduler plugin
+  * Properly check for ipv6 availability
+  * Improved IPv6 dask-worker support
+  * Overwrite worker plugins
+  * Refactor scheduler plugins; store in a dictionary
+  * Fix "then" -> "than" typo in docs
+  * Fix typo (remove extra verb "creates") in docs
+  * Fix "fractiom" -> "fraction" typo in docstring
+  * Fix "schedulers" -> "scheduler" typo in docs
+  * Use non-histogram plots up to 100 workers
+- Release 2021.08.1
+  * Rename plots to fit in the labextension
+  * Log messages for CommClosedError now includes information
+    about remote address
+  * Add target='_blank' for redirects of dashboard link
+  * Update computation code retrieval logic
+  * Minor polish on cfexecutor
+  * Use development version of dask in gpuCI build
+  * Use upstream dask.widgets
+  * Fix flaky test_worker_reconnects_mid_compute
+  * Update WorkerPlugin docstring about usage of TaskState objects
+  * Worker Network Timeseries
+  * Add HTML Repr for ProcessInterface class and all its subclasses
+  * Fix an issue where a reconnecting worker could cause an
+    invalid transition
+  * Minor fixes for cfexecutor
+  * Add HTML Repr for Security class
+  * Fix performance report sizing issue
+  * Drop RMM compatibility code from RAPIDS < 0.11
+- Release 2021.08.0
+  * Include addresses in closed comm repr
+  * Test nanny.environ precedence
+  * Migrating HTML reprs to jinja2
+  * Fix test_process_executor_kills_process flakyness
+  * Remove urllib3 as a dependency downloading preloads
+  * Download preload urls in the Preload constructor
+  * Avoid recursion error in profile.merge
+  * Add text exceptions to the Scheduler
+  * Use kwarg for Theme filename
+  * Add a .git-ignore-revs file
+  * Replace not not with bool()
+  * Resolve deadlock cause by transition error after fetching
+    dependency
+  * Set z-index of data-table lower
+  * Add no-worker - memory transition to scheduler
+  * Deprecate worker plugin overwrite policy
+  * Fix flaky tests in CI
+  * Instructions for jemalloc with brew on macOS
+  * Bump RAPIDS_VER to 21.10
+  * Tweak verbiage around async functions
+  * Use Python 3 super() calls
+  * Support asynchronous tasks
+  * Rename total comm bytes and provide doc string
+  * Add GPU executor if GPU is present
+  * Fix RMM and UCX tests
+  * Remove excessive timeout of
+    test_steal_during_task_deserialization
+  * Add gpuCI build script
+  * Demote Worker.ensure_computing to function
+
+-------------------------------------------------------------------
 Sun Aug  8 14:36:34 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 2021.7.2
