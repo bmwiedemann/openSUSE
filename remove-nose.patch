@@ -1,0 +1,1253 @@
+Index: minio-7.1.0/tests/unit/legelhold_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/legelhold_test.py
++++ minio-7.1.0/tests/unit/legelhold_test.py
+@@ -16,8 +16,6 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import eq_
+-
+ from minio import xml
+ from minio.legalhold import LegalHold
+ 
+@@ -34,4 +32,4 @@ class LegalHoldTest(TestCase):
+ </LegalHold>""",
+         )
+         xml.marshal(config)
+-        eq_(config.status, False)
++        self.assertFalse(config.status)
+Index: minio-7.1.0/tests/unit/list_buckets_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/list_buckets_test.py
++++ minio-7.1.0/tests/unit/list_buckets_test.py
+@@ -18,7 +18,6 @@ from datetime import datetime, timezone
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import eq_
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -45,7 +44,7 @@ class ListBucketsTest(TestCase):
+         count = 0
+         for bucket in buckets:
+             count += 1
+-        eq_(0, count)
++        self.assertEqual(0, count)
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_list_buckets_works(self, mock_connection):
+@@ -72,14 +71,14 @@ class ListBucketsTest(TestCase):
+         for bucket in buckets:
+             count += 1
+             buckets_list.append(bucket)
+-        eq_(2, count)
+-        eq_('hello', buckets_list[0].name)
+-        eq_(
++        self.assertEqual(2, count)
++        self.assertEqual('hello', buckets_list[0].name)
++        self.assertEqual(
+             datetime(2015, 6, 22, 23, 7, 43, 240000, timezone.utc),
+             buckets_list[0].creation_date,
+         )
+-        eq_('world', buckets_list[1].name)
+-        eq_(
++        self.assertEqual('world', buckets_list[1].name)
++        self.assertEqual(
+             datetime(2015, 6, 22, 23, 7, 56, 766000, timezone.utc),
+             buckets_list[1].creation_date,
+         )
+Index: minio-7.1.0/tests/unit/minio_mocks.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/minio_mocks.py
++++ minio-7.1.0/tests/unit/minio_mocks.py
+@@ -16,8 +16,6 @@
+ 
+ from http import client as httplib
+ 
+-from nose.tools import eq_
+-
+ 
+ class MockResponse(object):
+     def __init__(self, method, url, headers, status_code,
+@@ -41,13 +39,13 @@ class MockResponse(object):
+         return self.data
+ 
+     def mock_verify(self, method, url, headers):
+-        eq_(self.method, method)
+-        eq_(self.url, url)
++        assert self.method == method
++        assert self.url == url
+         headers = {
+             key.lower(): value for key, value in headers.items()
+         }
+         for header in self.request_headers:
+-            eq_(self.request_headers[header], headers[header])
++            assert self.request_headers[header] == headers[header]
+ 
+     # noinspection PyUnusedLocal
+     def stream(self, chunk_size=1, decode_unicode=False):
+Index: minio-7.1.0/tests/unit/objectlockconfig_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/objectlockconfig_test.py
++++ minio-7.1.0/tests/unit/objectlockconfig_test.py
+@@ -16,8 +16,6 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import eq_
+-
+ from minio import xml
+ from minio.commonconfig import COMPLIANCE, GOVERNANCE
+ from minio.objectlockconfig import DAYS, YEARS, ObjectLockConfig
+@@ -41,5 +39,5 @@ class ObjectLockConfigTest(TestCase):
+ </ObjectLockConfiguration>""",
+         )
+         xml.marshal(config)
+-        eq_(config.mode, COMPLIANCE)
+-        eq_(config.duration, (3, YEARS))
++        self.assertEqual(config.mode, COMPLIANCE)
++        self.assertEqual(config.duration, (3, YEARS))
+Index: minio-7.1.0/tests/unit/retention_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/retention_test.py
++++ minio-7.1.0/tests/unit/retention_test.py
+@@ -17,8 +17,6 @@
+ from datetime import datetime, timedelta, timezone
+ from unittest import TestCase
+ 
+-from nose.tools import eq_
+-
+ from minio import xml
+ from minio.commonconfig import COMPLIANCE, GOVERNANCE
+ from minio.retention import Retention
+@@ -37,8 +35,8 @@ class RetentionTest(TestCase):
+ </Retention>""",
+         )
+         xml.marshal(config)
+-        eq_(config.mode, COMPLIANCE)
+-        eq_(
++        self.assertEqual(config.mode, COMPLIANCE)
++        self.assertEqual(
+             config.retain_until_date,
+             datetime(2020, 10, 2, 0, 0, 0, 0, timezone.utc),
+         )
+Index: minio-7.1.0/tests/unit/sign_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/sign_test.py
++++ minio-7.1.0/tests/unit/sign_test.py
+@@ -20,8 +20,6 @@ from datetime import datetime, timezone
+ from unittest import TestCase
+ from urllib.parse import urlsplit, urlunsplit
+ 
+-from nose.tools import eq_
+-
+ from minio import Minio
+ from minio.credentials import Credentials
+ from minio.helpers import queryencode, quote, sha256_hash
+@@ -49,7 +47,7 @@ class CanonicalRequestTest(TestCase):
+         actual_request = _get_canonical_request_hash(
+             "PUT", url, headers_to_sign, empty_hash,
+         )
+-        eq_(expected_request, actual_request[0])
++        self.assertEqual(expected_request, actual_request[0])
+ 
+     def test_request_with_query(self):
+         url = urlsplit('http://localhost:9000/hello?c=d&e=f&a=b')
+@@ -67,7 +65,7 @@ class CanonicalRequestTest(TestCase):
+         actual_request = _get_canonical_request_hash(
+             "PUT", url, headers_to_sign, empty_hash,
+         )
+-        eq_(expected_request, actual_request[0])
++        self.assertEqual(expected_request, actual_request[0])
+ 
+ 
+ class StringToSignTest(TestCase):
+@@ -81,7 +79,7 @@ class StringToSignTest(TestCase):
+         actual_signing_key = _get_string_to_sign(
+             dt, _get_scope(dt, 'us-east-1', "s3"),
+             'b93e86965c269a0dfef37a8bec231ef8acf8cdb101a64eb700a46c452c1ad233')
+-        eq_('\n'.join(expected_signing_key_list), actual_signing_key)
++        self.assertEqual('\n'.join(expected_signing_key_list), actual_signing_key)
+ 
+ 
+ class SigningKeyTest(TestCase):
+@@ -97,7 +95,7 @@ class SigningKeyTest(TestCase):
+             'utf-8'), hashlib.sha256).digest()
+ 
+         actual_result = _get_signing_key('S3CR3T', dt, 'region', "s3")
+-        eq_(expected_result, actual_result)
++        self.assertEqual(expected_result, actual_result)
+ 
+ 
+ class AuthorizationHeaderTest(TestCase):
+@@ -111,7 +109,7 @@ class AuthorizationHeaderTest(TestCase):
+         actual_authorization_header = _get_authorization(
+             'public_key', _get_scope(dt, 'region', "s3"),
+             'host;X-Amz-Content-Sha256;X-Amz-Date', 'signed_request')
+-        eq_(expected_authorization_header, actual_authorization_header)
++        self.assertEqual(expected_authorization_header, actual_authorization_header)
+ 
+ 
+ class PresignURLTest(TestCase):
+@@ -120,7 +118,7 @@ class PresignURLTest(TestCase):
+         url = presign_v4('GET', urlsplit('http://localhost:9000/bucket-name/objectName?versionId=uuid'),
+                          'us-east-1', credentials, dt, 604800)
+ 
+-        eq_(urlunsplit(url), 'http://localhost:9000/bucket-name/objectName?versionId=uuid&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minio%2F20150620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20150620T010203Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3ce13e2ca929fafa20581a05730e4e9435f2a5e20ec7c5a082d175692fb0a663')
++        self.assertEqual(urlunsplit(url), 'http://localhost:9000/bucket-name/objectName?versionId=uuid&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=minio%2F20150620%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20150620T010203Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3ce13e2ca929fafa20581a05730e4e9435f2a5e20ec7c5a082d175692fb0a663')
+ 
+ 
+ class SignV4Test(TestCase):
+@@ -150,7 +148,7 @@ class SignV4Test(TestCase):
+             "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+             dt,
+         )
+-        eq_(headers['Authorization'],
++        self.assertEqual(headers['Authorization'],
+             'AWS4-HMAC-SHA256 Credential='
+             'minio/20150620/us-east-1/s3/aws4_request, '
+             'SignedHeaders=host;x-amz-content-sha256;x-amz-date, '
+@@ -160,21 +158,21 @@ class SignV4Test(TestCase):
+ 
+ class UnicodeEncodeTest(TestCase):
+     def test_unicode_quote(self):
+-        eq_(quote('/test/123/汉字'), '/test/123/%E6%B1%89%E5%AD%97')
++        self.assertEqual(quote('/test/123/汉字'), '/test/123/%E6%B1%89%E5%AD%97')
+ 
+     def test_unicode_queryencode(self):
+-        eq_(queryencode('/test/123/汉字'), '%2Ftest%2F123%2F%E6%B1%89%E5%AD%97')
++        self.assertEqual(queryencode('/test/123/汉字'), '%2Ftest%2F123%2F%E6%B1%89%E5%AD%97')
+ 
+     def test_unicode_quote_u(self):
+-        eq_(quote(u'/test/123/汉字'), '/test/123/%E6%B1%89%E5%AD%97')
++        self.assertEqual(quote(u'/test/123/汉字'), '/test/123/%E6%B1%89%E5%AD%97')
+ 
+     def test_unicode_queryencode_u(self):
+-        eq_(queryencode(u'/test/123/汉字'), '%2Ftest%2F123%2F%E6%B1%89%E5%AD%97')
++        self.assertEqual(queryencode(u'/test/123/汉字'), '%2Ftest%2F123%2F%E6%B1%89%E5%AD%97')
+ 
+     def test_unicode_quote_b(self):
+-        eq_(quote(b'/test/123/\xe6\xb1\x89\xe5\xad\x97'),
++        self.assertEqual(quote(b'/test/123/\xe6\xb1\x89\xe5\xad\x97'),
+             '/test/123/%E6%B1%89%E5%AD%97')
+ 
+     def test_unicode_queryencode_b(self):
+-        eq_(queryencode(b'/test/123/\xe6\xb1\x89\xe5\xad\x97'),
++        self.assertEqual(queryencode(b'/test/123/\xe6\xb1\x89\xe5\xad\x97'),
+             '%2Ftest%2F123%2F%E6%B1%89%E5%AD%97')
+Index: minio-7.1.0/tests/unit/sseconfig_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/sseconfig_test.py
++++ minio-7.1.0/tests/unit/sseconfig_test.py
+@@ -16,8 +16,6 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import eq_
+-
+ from minio import xml
+ from minio.sseconfig import AWS_KMS, Rule, SSEConfig
+ 
+@@ -40,8 +38,8 @@ class ReplicationConfigTest(TestCase):
+         """,
+         )
+         xml.marshal(config)
+-        eq_(config.rule.sse_algorithm, AWS_KMS)
+-        eq_(
++        self.assertEqual(config.rule.sse_algorithm, AWS_KMS)
++        self.assertEqual(
+             config.rule.kms_master_key_id,
+             "arn:aws:kms:us-east-1:1234/5678example",
+         )
+Index: minio-7.1.0/tests/unit/versioningconfig_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/versioningconfig_test.py
++++ minio-7.1.0/tests/unit/versioningconfig_test.py
+@@ -16,8 +16,6 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import eq_
+-
+ from minio import xml
+ from minio.commonconfig import DISABLED, ENABLED
+ from minio.versioningconfig import OFF, SUSPENDED, VersioningConfig
+@@ -34,7 +32,7 @@ class VersioningConfigTest(TestCase):
+ </VersioningConfiguration>""",
+         )
+         xml.marshal(config)
+-        eq_(config.status, OFF)
++        self.assertEqual(config.status, OFF)
+ 
+         config = xml.unmarshal(
+             VersioningConfig,
+@@ -43,7 +41,7 @@ class VersioningConfigTest(TestCase):
+ </VersioningConfiguration>""",
+         )
+         xml.marshal(config)
+-        eq_(config.status, ENABLED)
++        self.assertEqual(config.status, ENABLED)
+ 
+         config = xml.unmarshal(
+             VersioningConfig,
+@@ -53,5 +51,5 @@ class VersioningConfigTest(TestCase):
+ </VersioningConfiguration>""",
+         )
+         xml.marshal(config)
+-        eq_(config.status, SUSPENDED)
+-        eq_(config.mfa_delete, DISABLED)
++        self.assertEqual(config.status, SUSPENDED)
++        self.assertEqual(config.mfa_delete, DISABLED)
+Index: minio-7.1.0/tests/unit/trace_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/trace_test.py
++++ minio-7.1.0/tests/unit/trace_test.py
+@@ -16,13 +16,10 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import raises
+-
+ from minio import Minio
+ 
+ 
+ class TraceTest(TestCase):
+-    @raises(ValueError)
+     def test_bucket_is_string(self):
+         client = Minio('localhost:9000')
+-        client.trace_on(None)
++        self.assertRaises(ValueError, client.trace_on, None)
+Index: minio-7.1.0/tests/unit/stat_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/stat_object_test.py
++++ minio-7.1.0/tests/unit/stat_object_test.py
+@@ -17,7 +17,6 @@
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -26,20 +25,17 @@ from .minio_mocks import MockConnection,
+ 
+ 
+ class StatObject(TestCase):
+-    @raises(TypeError)
+     def test_object_is_string(self):
+         client = Minio('localhost:9000')
+-        client.stat_object('hello', 1234)
++        self.assertRaises(TypeError, client.stat_object, 'hello', 1234)
+ 
+-    @raises(ValueError)
+     def test_object_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.stat_object('hello', '  \t \n  ')
++        self.assertRaises(ValueError, client.stat_object, 'hello', '  \t \n  ')
+ 
+-    @raises(ValueError)
+     def test_stat_object_invalid_name(self):
+         client = Minio('localhost:9000')
+-        client.stat_object('AB#CD', 'world')
++        self.assertRaises(ValueError, client.stat_object, 'AB#CD', 'world')
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_stat_object_works(self, mock_connection):
+Index: minio-7.1.0/tests/unit/remove_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/remove_object_test.py
++++ minio-7.1.0/tests/unit/remove_object_test.py
+@@ -17,7 +17,6 @@
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -26,20 +25,17 @@ from .minio_mocks import MockConnection,
+ 
+ 
+ class StatObject(TestCase):
+-    @raises(TypeError)
+     def test_object_is_string(self):
+         client = Minio('localhost:9000')
+-        client.remove_object('hello', 1234)
++        self.assertRaises(TypeError, client.remove_object, 'hello', 1234)
+ 
+-    @raises(ValueError)
+     def test_object_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.remove_object('hello', '  \t \n  ')
++        self.assertRaises(ValueError, client.remove_object, 'hello', '  \t \n  ')
+ 
+-    @raises(ValueError)
+     def test_remove_bucket_invalid_name(self):
+         client = Minio('localhost:9000')
+-        client.remove_object('AB*CD', 'world')
++        self.assertRaises(ValueError, client.remove_object, 'AB*CD', 'world')
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_remove_object_works(self, mock_connection):
+Index: minio-7.1.0/tests/unit/remove_bucket_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/remove_bucket_test.py
++++ minio-7.1.0/tests/unit/remove_bucket_test.py
+@@ -17,7 +17,6 @@
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -26,20 +25,17 @@ from .minio_mocks import MockConnection,
+ 
+ 
+ class RemoveBucket(TestCase):
+-    @raises(TypeError)
+     def test_bucket_is_string(self):
+         client = Minio('localhost:9000')
+-        client.remove_bucket(1234)
++        self.assertRaises(TypeError, client.remove_bucket, 1234)
+ 
+-    @raises(ValueError)
+     def test_bucket_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.remove_bucket('  \t \n  ')
++        self.assertRaises(ValueError, client.remove_bucket, '  \t \n  ')
+ 
+-    @raises(ValueError)
+     def test_remove_bucket_invalid_name(self):
+         client = Minio('localhost:9000')
+-        client.remove_bucket('AB*CD')
++        self.assertRaises(ValueError, client.remove_bucket, 'AB*CD')
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_remove_bucket_works(self, mock_connection):
+Index: minio-7.1.0/tests/unit/put_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/put_object_test.py
++++ minio-7.1.0/tests/unit/put_object_test.py
+@@ -16,28 +16,34 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import raises
+-
+ from minio import Minio
+ 
+ 
+ class PutObjectTest(TestCase):
+-    @raises(TypeError)
+     def test_object_is_string(self):
+         client = Minio('localhost:9000')
+-        client.put_object('hello', 1234, 1, iter([1, 2, 3]))
++        self.assertRaises(
++            TypeError,
++            client.put_object, 'hello', 1234, 1, iter([1, 2, 3])
++        )
+ 
+-    @raises(ValueError)
+     def test_object_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.put_object('hello', ' \t \n ', 1, iter([1, 2, 3]))
++        self.assertRaises(
++            ValueError,
++            client.put_object, 'hello', ' \t \n ', 1, iter([1, 2, 3])
++        )
+ 
+-    @raises(TypeError)
+     def test_length_is_string(self):
+         client = Minio('localhost:9000')
+-        client.put_object('hello', 1234, '1', iter([1, 2, 3]))
++        self.assertRaises(
++            TypeError,
++            client.put_object, 'hello', 1234, '1', iter([1, 2, 3])
++        )
+ 
+-    @raises(ValueError)
+     def test_length_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.put_object('hello', ' \t \n ', -1, iter([1, 2, 3]))
++        self.assertRaises(
++            ValueError,
++            client.put_object, 'hello', ' \t \n ', -1, iter([1, 2, 3])
++        )
+Index: minio-7.1.0/tests/unit/presigned_put_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/presigned_put_object_test.py
++++ minio-7.1.0/tests/unit/presigned_put_object_test.py
+@@ -17,23 +17,24 @@
+ from datetime import timedelta
+ from unittest import TestCase
+ 
+-from nose.tools import raises
+-
+ from minio import Minio
+ 
+ 
+ class PresignedPutObjectTest(TestCase):
+-    @raises(TypeError)
+     def test_object_is_string(self):
+         client = Minio('localhost:9000')
+-        client.presigned_put_object('hello', 1234)
++        self.assertRaises(
++            TypeError, client.presigned_put_object, 'hello', 1234)
+ 
+-    @raises(ValueError)
+     def test_object_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.presigned_put_object('hello', ' \t \n ')
++        self.assertRaises(
++            ValueError, client.presigned_put_object, 'hello', ' \t \n ')
+ 
+-    @raises(ValueError)
+     def test_expiry_limit(self):
+         client = Minio('localhost:9000')
+-        client.presigned_put_object('hello', 'key', expires=timedelta(days=8))
++        self.assertRaises(
++            ValueError,
++            client.presigned_put_object, 'hello', 'key',
++            expires=timedelta(days=8)
++        )
+Index: minio-7.1.0/tests/unit/presigned_get_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/presigned_get_object_test.py
++++ minio-7.1.0/tests/unit/presigned_get_object_test.py
+@@ -18,26 +18,28 @@ from datetime import timedelta
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import raises
+ 
+ from minio import Minio
+ 
+ 
+ class PresignedGetObjectTest(TestCase):
+-    @raises(TypeError)
+     def test_object_is_string(self):
+         client = Minio('localhost:9000')
+-        client.presigned_get_object('hello', 1234)
++        self.assertRaises(
++            TypeError, client.presigned_get_object, 'hello', 1234)
+ 
+-    @raises(ValueError)
+     def test_object_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.presigned_get_object('hello', ' \t \n ')
++        self.assertRaises(
++            ValueError, client.presigned_get_object, 'hello', ' \t \n ')
+ 
+-    @raises(ValueError)
+     def test_expiry_limit(self):
+         client = Minio('localhost:9000')
+-        client.presigned_get_object('hello', 'key', expires=timedelta(days=8))
++        self.assertRaises(
++            ValueError,
++            client.presigned_get_object, 'hello', 'key',
++            expires=timedelta(days=8)
++        )
+ 
+     def test_can_include_response_headers(self):
+         client = Minio('localhost:9000', 'my_access_key', 'my_secret_key',
+Index: minio-7.1.0/tests/unit/make_bucket_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/make_bucket_test.py
++++ minio-7.1.0/tests/unit/make_bucket_test.py
+@@ -17,7 +17,6 @@
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -28,15 +27,13 @@ from .minio_mocks import MockConnection,
+ 
+ 
+ class MakeBucket(TestCase):
+-    @raises(TypeError)
+     def test_bucket_is_string(self):
+         client = Minio('localhost:9000')
+-        client.make_bucket(1234)
++        self.assertRaises(TypeError, client.make_bucket, 1234)
+ 
+-    @raises(ValueError)
+     def test_bucket_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.make_bucket('  \t \n  ')
++        self.assertRaises(ValueError, client.make_bucket, '  \t \n  ')
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_make_bucket_works(self, mock_connection):
+@@ -51,7 +48,6 @@ class MakeBucket(TestCase):
+         Minio('localhost:9000')
+ 
+     @mock.patch('urllib3.PoolManager')
+-    @raises(S3Error)
+     def test_make_bucket_throws_fail(self, mock_connection):
+         error_xml = generate_error('code', 'message', 'request_id',
+                                    'host_id', 'resource', 'bucket',
+@@ -67,4 +63,4 @@ class MakeBucket(TestCase):
+                          content=error_xml.encode())
+         )
+         client = Minio('localhost:9000')
+-        client.make_bucket('hello')
++        self.assertRaises(S3Error, client.make_bucket, 'hello')
+Index: minio-7.1.0/tests/unit/get_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/get_object_test.py
++++ minio-7.1.0/tests/unit/get_object_test.py
+@@ -17,7 +17,6 @@
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -28,18 +27,15 @@ from .minio_mocks import MockConnection,
+ 
+ 
+ class GetObjectTest(TestCase):
+-    @raises(TypeError)
+     def test_object_is_string(self):
+         client = Minio('localhost:9000')
+-        client.get_object('hello', 1234)
++        self.assertRaises(TypeError, client.get_object, 'hello', 1234)
+ 
+-    @raises(ValueError)
+     def test_object_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.get_object('hello', ' \t \n ')
++        self.assertRaises(ValueError, client.get_object, 'hello', ' \t \n ')
+ 
+     @mock.patch('urllib3.PoolManager')
+-    @raises(S3Error)
+     def test_get_object_throws_fail(self, mock_connection):
+         error_xml = generate_error('code', 'message', 'request_id',
+                                    'host_id', 'resource', 'bucket',
+@@ -55,4 +51,4 @@ class GetObjectTest(TestCase):
+                          content=error_xml.encode())
+         )
+         client = Minio('localhost:9000')
+-        client.get_object('hello', 'key')
++        self.assertRaises(S3Error, client.get_object, 'hello', 'key')
+Index: minio-7.1.0/tests/unit/copy_object_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/copy_object_test.py
++++ minio-7.1.0/tests/unit/copy_object_test.py
+@@ -16,30 +16,36 @@
+ 
+ from unittest import TestCase
+ 
+-from nose.tools import raises
+-
+ from minio import Minio
+ from minio.commonconfig import CopySource
+ 
+ 
+ class CopyObjectTest(TestCase):
+-    @raises(ValueError)
+     def test_valid_copy_source(self):
+         client = Minio('localhost:9000')
+-        client.copy_object('hello', '1', '/testbucket/object')
++        self.assertRaises(
++            ValueError,
++            client.copy_object, 'hello', '1', '/testbucket/object'
++        )
+ 
+-    @raises(ValueError)
+     def test_valid_match_etag(self):
+-        CopySource("src-bucket", "src-object", match_etag='')
++        self.assertRaises(
++            ValueError, CopySource, "src-bucket", "src-object", match_etag='')
+ 
+-    @raises(ValueError)
+     def test_not_match_etag(self):
+-        CopySource("src-bucket", "src-object", not_match_etag='')
++        self.assertRaises(
++            ValueError,
++            CopySource, "src-bucket", "src-object", not_match_etag=''
++        )
+ 
+-    @raises(ValueError)
+     def test_valid_modified_since(self):
+-        CopySource("src-bucket", "src-object", modified_since='')
++        self.assertRaises(
++            ValueError,
++            CopySource, "src-bucket", "src-object", modified_since=''
++        )
+ 
+-    @raises(ValueError)
+     def test_valid_unmodified_since(self):
+-        CopySource("src-bucket", "src-object", unmodified_since='')
++        self.assertRaises(
++            ValueError,
++            CopySource, "src-bucket", "src-object", unmodified_since=''
++        )
+Index: minio-7.1.0/tests/unit/minio_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/minio_test.py
++++ minio-7.1.0/tests/unit/minio_test.py
+@@ -17,8 +17,6 @@
+ from unittest import TestCase
+ from urllib.parse import urlunsplit
+ 
+-from nose.tools import eq_, raises
+-
+ from minio import Minio
+ from minio import __version__ as minio_version
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -26,42 +24,37 @@ from minio.helpers import BaseURL, check
+ 
+ 
+ class ValidBucketName(TestCase):
+-    @raises(ValueError)
+     def test_bucket_name(self):
+-        check_bucket_name('bucketName=', False)
++        self.assertRaises(ValueError, check_bucket_name, 'bucketName=', False)
+ 
+-    @raises(ValueError)
+     def test_bucket_name_invalid_characters(self):
+-        check_bucket_name('$$$bcuket', False)
++        self.assertRaises(ValueError, check_bucket_name, '$$$bcuket', False)
+ 
+-    @raises(ValueError)
+     def test_bucket_name_length(self):
+-        check_bucket_name('dd', False)
++        self.assertRaises(ValueError, check_bucket_name, 'dd', False)
+ 
+-    @raises(ValueError)
+     def test_bucket_name_periods(self):
+-        check_bucket_name('dd..mybucket', False)
++        self.assertRaises(ValueError, check_bucket_name, 'dd..mybucket', False)
+ 
+-    @raises(ValueError)
+     def test_bucket_name_begins_period(self):
+-        check_bucket_name('.ddmybucket', False)
++        self.assertRaises(ValueError, check_bucket_name, '.ddmybucket', False)
+ 
+ 
+ class GetURLTests(TestCase):
+     def test_url_build(self):
+         url = BaseURL('http://localhost:9000', None)
+-        eq_(
++        self.assertEqual(
+             urlunsplit(url.build("GET", None, bucket_name='bucket-name')),
+             'http://localhost:9000/bucket-name',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", None, bucket_name='bucket-name',
+                           object_name='objectName'),
+             ),
+             'http://localhost:9000/bucket-name/objectName',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", 'us-east-1', bucket_name='bucket-name',
+                           object_name='objectName',
+@@ -69,7 +62,7 @@ class GetURLTests(TestCase):
+             ),
+             'http://localhost:9000/bucket-name/objectName?foo=bar',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", 'us-east-1', bucket_name='bucket-name',
+                           object_name='objectName',
+@@ -77,7 +70,7 @@ class GetURLTests(TestCase):
+             ),
+             'http://localhost:9000/bucket-name/objectName?a=b&b=c&foo=bar',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", 'us-east-1', bucket_name='bucket-name',
+                           object_name='path/to/objectName/'),
+@@ -87,24 +80,24 @@ class GetURLTests(TestCase):
+ 
+         # S3 urls.
+         url = BaseURL('https://s3.amazonaws.com', None)
+-        eq_(
++        self.assertEqual(
+             urlunsplit(url.build("GET", "us-east-1")),
+             'https://s3.us-east-1.amazonaws.com/',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", "eu-west-1", bucket_name='my.bucket.name'),
+             ),
+             'https://s3.eu-west-1.amazonaws.com/my.bucket.name',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", 'us-west-2', bucket_name='bucket-name',
+                           object_name='objectName'),
+             ),
+             'https://bucket-name.s3.us-west-2.amazonaws.com/objectName',
+         )
+-        eq_(
++        self.assertEqual(
+             urlunsplit(
+                 url.build("GET", "us-east-1", bucket_name='bucket-name',
+                           object_name='objectName',
+@@ -114,60 +107,55 @@ class GetURLTests(TestCase):
+             "/objectName?versionId=uuid",
+         )
+ 
+-    @raises(TypeError)
+     def test_minio_requires_string(self):
+-        Minio(10)
++        self.assertRaises(TypeError, Minio, 10)
+ 
+-    @raises(ValueError)
+     def test_minio_requires_hostname(self):
+-        Minio('http://')
++        self.assertRaises(ValueError, Minio, 'http://')
+ 
+ 
+ class UserAgentTests(TestCase):
+     def test_default_user_agent(self):
+         client = Minio('localhost')
+-        eq_(client._user_agent, _DEFAULT_USER_AGENT)
++        self.assertEqual(client._user_agent, _DEFAULT_USER_AGENT)
+ 
+     def test_set_app_info(self):
+         client = Minio('localhost')
+         expected_user_agent = _DEFAULT_USER_AGENT + ' hello/' + minio_version
+         client.set_app_info('hello', minio_version)
+-        eq_(client._user_agent, expected_user_agent)
++        self.assertEqual(client._user_agent, expected_user_agent)
+ 
+-    @raises(ValueError)
+     def test_set_app_info_requires_non_empty_name(self):
+         client = Minio('localhost:9000')
+-        client.set_app_info('', minio_version)
++        self.assertRaises(ValueError, client.set_app_info, '', minio_version)
+ 
+-    @raises(ValueError)
+     def test_set_app_info_requires_non_empty_version(self):
+         client = Minio('localhost:9000')
+-        client.set_app_info('hello', '')
++        self.assertRaises(ValueError, client.set_app_info, 'hello', '')
+ 
+ 
+ class GetRegionTests(TestCase):
+     def test_region_none(self):
+         region = BaseURL('http://localhost', None).region
+-        eq_(region, None)
++        self.assertIsNone(region)
+ 
+     def test_region_us_west(self):
+         region = BaseURL('https://s3-us-west-1.amazonaws.com', None).region
+-        eq_(region, None)
++        self.assertIsNone(region)
+ 
+     def test_region_with_dot(self):
+         region = BaseURL('https://s3.us-west-1.amazonaws.com', None).region
+-        eq_(region, 'us-west-1')
++        self.assertEqual(region, 'us-west-1')
+ 
+     def test_region_with_dualstack(self):
+         region = BaseURL(
+             'https://s3.dualstack.us-west-1.amazonaws.com', None,
+         ).region
+-        eq_(region, 'us-west-1')
++        self.assertEqual(region, 'us-west-1')
+ 
+     def test_region_us_east(self):
+         region = BaseURL('http://s3.amazonaws.com', None).region
+-        eq_(region, None)
++        self.assertIsNone(region)
+ 
+-    @raises(ValueError)
+     def test_invalid_value(self):
+-        BaseURL(None, None)
++        self.assertRaises(ValueError, BaseURL, None, None)
+Index: minio-7.1.0/tests/unit/credentials_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/credentials_test.py
++++ minio-7.1.0/tests/unit/credentials_test.py
+@@ -20,7 +20,6 @@ from datetime import datetime, timedelta
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import eq_, raises
+ 
+ from minio.credentials.credentials import Credentials
+ from minio.credentials.providers import (AWSConfigProvider, ChainedProvider,
+@@ -41,9 +40,9 @@ class CredentialsTest(TestCase):
+             alias="play",
+         )
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "Q3AM3UQ867SPQQA43P2F")
+-        eq_(creds.secret_key, "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "Q3AM3UQ867SPQQA43P2F")
++        self.assertEqual(creds.secret_key, "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
++        self.assertEqual(creds.session_token, None)
+ 
+ 
+ class CredListResponse(object):
+@@ -70,10 +69,10 @@ class IamAwsProviderTest(TestCase):
+         mock_connection.side_effect = [CredListResponse(), CredsResponse()]
+         provider = IamAwsProvider()
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "accessKey")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, "token")
+-        eq_(creds._expiration, datetime(2014, 12, 16, 1, 51, 37))
++        self.assertEqual(creds.access_key, "accessKey")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, "token")
++        self.assertEqual(creds._expiration, datetime(2014, 12, 16, 1, 51, 37))
+ 
+ 
+ class ChainedProviderTest(TestCase):
+@@ -97,9 +96,9 @@ class ChainedProviderTest(TestCase):
+         # retireve provider (env_aws) has priority
+         creds = provider.retrieve()
+         # assert provider credentials
+-        eq_(creds.access_key, "access_aws")
+-        eq_(creds.secret_key, "secret_aws")
+-        eq_(creds.session_token, "token_aws")
++        self.assertEqual(creds.access_key, "access_aws")
++        self.assertEqual(creds.secret_key, "secret_aws")
++        self.assertEqual(creds.session_token, "token_aws")
+ 
+ 
+ class EnvAWSProviderTest(TestCase):
+@@ -110,9 +109,9 @@ class EnvAWSProviderTest(TestCase):
+         os.environ["AWS_SESSION_TOKEN"] = "token"
+         provider = EnvAWSProvider()
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "access")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, "token")
++        self.assertEqual(creds.access_key, "access")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, "token")
+ 
+     def test_env_aws_retrieve_no_token(self):
+         os.environ.clear()
+@@ -120,9 +119,9 @@ class EnvAWSProviderTest(TestCase):
+         os.environ["AWS_SECRET_ACCESS_KEY"] = "secret"
+         provider = EnvAWSProvider()
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "access")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "access")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, None)
+ 
+ 
+ class EnvMinioTest(TestCase):
+@@ -132,9 +131,9 @@ class EnvMinioTest(TestCase):
+         os.environ["MINIO_SECRET_KEY"] = "secret"
+         provider = EnvMinioProvider()
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "access")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "access")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, None)
+ 
+ 
+ class AWSConfigProviderTest(TestCase):
+@@ -142,9 +141,9 @@ class AWSConfigProviderTest(TestCase):
+         os.environ.clear()
+         provider = AWSConfigProvider(CREDENTIALS_SAMPLE)
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "accessKey")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, "token")
++        self.assertEqual(creds.access_key, "accessKey")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, "token")
+ 
+     def test_file_aws_from_env(self):
+         os.environ.clear()
+@@ -153,18 +152,18 @@ class AWSConfigProviderTest(TestCase):
+         )
+         provider = AWSConfigProvider()
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "accessKey")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, "token")
++        self.assertEqual(creds.access_key, "accessKey")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, "token")
+ 
+     def test_file_aws_env_profile(self):
+         os.environ.clear()
+         os.environ["AWS_PROFILE"] = "no_token"
+         provider = AWSConfigProvider(CREDENTIALS_SAMPLE)
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "accessKey")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "accessKey")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, None)
+ 
+     def test_file_aws_arg_profile(self):
+         os.environ.clear()
+@@ -173,9 +172,9 @@ class AWSConfigProviderTest(TestCase):
+             "no_token",
+         )
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "accessKey")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "accessKey")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, None)
+ 
+     def test_file_aws_no_creds(self):
+         os.environ.clear()
+@@ -194,18 +193,18 @@ class MinioClientConfigProviderTest(Test
+         os.environ.clear()
+         provider = MinioClientConfigProvider(filename=CONFIG_JSON_SAMPLE)
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "accessKey")
+-        eq_(creds.secret_key, "secret")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "accessKey")
++        self.assertEqual(creds.secret_key, "secret")
++        self.assertEqual(creds.session_token, None)
+ 
+     def test_file_minio_env_alias(self):
+         os.environ.clear()
+         os.environ["MINIO_ALIAS"] = "play"
+         provider = MinioClientConfigProvider(filename=CONFIG_JSON_SAMPLE)
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "Q3AM3UQ867SPQQA43P2F")
+-        eq_(creds.secret_key, "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "Q3AM3UQ867SPQQA43P2F")
++        self.assertEqual(creds.secret_key, "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
++        self.assertEqual(creds.session_token, None)
+ 
+     def test_file_minio_arg_alias(self):
+         os.environ.clear()
+@@ -214,15 +213,15 @@ class MinioClientConfigProviderTest(Test
+             alias="play",
+         )
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "Q3AM3UQ867SPQQA43P2F")
+-        eq_(creds.secret_key, "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "Q3AM3UQ867SPQQA43P2F")
++        self.assertEqual(creds.secret_key, "zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG")
++        self.assertEqual(creds.session_token, None)
+ 
+ 
+ class StaticProviderTest(TestCase):
+     def test_static_credentials(self):
+         provider = StaticProvider("UXHW", "SECRET")
+         creds = provider.retrieve()
+-        eq_(creds.access_key, "UXHW")
+-        eq_(creds.secret_key, "SECRET")
+-        eq_(creds.session_token, None)
++        self.assertEqual(creds.access_key, "UXHW")
++        self.assertEqual(creds.secret_key, "SECRET")
++        self.assertEqual(creds.session_token, None)
+Index: minio-7.1.0/tests/unit/get_bucket_policy_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/get_bucket_policy_test.py
++++ minio-7.1.0/tests/unit/get_bucket_policy_test.py
+@@ -19,7 +19,6 @@ import json
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import eq_, raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -29,7 +28,6 @@ from tests.unit.minio_mocks import MockC
+ 
+ class GetBucketPolicyTest(TestCase):
+     @mock.patch('urllib3.PoolManager')
+-    @raises(S3Error)
+     def test_get_policy_for_non_existent_bucket(self, mock_connection):
+         mock_server = MockConnection()
+         mock_connection.return_value = mock_server
+@@ -52,7 +50,7 @@ class GetBucketPolicyTest(TestCase):
+             )
+         )
+         client = Minio('localhost:9000')
+-        client.get_bucket_policy(bucket_name)
++        self.assertRaises(S3Error, client.get_bucket_policy, bucket_name)
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_get_policy_for_existent_bucket(self, mock_connection):
+@@ -96,4 +94,4 @@ class GetBucketPolicyTest(TestCase):
+         )
+         client = Minio('localhost:9000')
+         response = client.get_bucket_policy(bucket_name)
+-        eq_(response, mock_data.decode())
++        self.assertEqual(response, mock_data.decode())
+Index: minio-7.1.0/tests/unit/bucket_exist_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/bucket_exist_test.py
++++ minio-7.1.0/tests/unit/bucket_exist_test.py
+@@ -17,7 +17,6 @@
+ from unittest import TestCase
+ 
+ import mock
+-from nose.tools import eq_, raises
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -27,23 +26,19 @@ from .minio_mocks import MockConnection,
+ 
+ 
+ class BucketExists(TestCase):
+-    @raises(TypeError)
+     def test_bucket_is_string(self):
+         client = Minio('localhost:9000')
+-        client.bucket_exists(1234)
++        self.assertRaises(TypeError, client.bucket_exists, 1234)
+ 
+-    @raises(ValueError)
+     def test_bucket_is_not_empty_string(self):
+         client = Minio('localhost:9000')
+-        client.bucket_exists('  \t \n  ')
++        self.assertRaises(ValueError, client.bucket_exists, '  \t \n  ')
+ 
+-    @raises(ValueError)
+     def test_bucket_exists_invalid_name(self):
+         client = Minio('localhost:9000')
+-        client.bucket_exists('AB*CD')
++        self.assertRaises(ValueError, client.bucket_exists, 'AB*CD')
+ 
+     @mock.patch('urllib3.PoolManager')
+-    @raises(S3Error)
+     def test_bucket_exists_bad_request(self, mock_connection):
+         mock_server = MockConnection()
+         mock_connection.return_value = mock_server
+@@ -54,7 +49,7 @@ class BucketExists(TestCase):
+                          400)
+         )
+         client = Minio('localhost:9000')
+-        client.bucket_exists('hello')
++        self.assertRaises(S3Error, client.bucket_exists, 'hello')
+ 
+     @mock.patch('urllib3.PoolManager')
+     def test_bucket_exists_works(self, mock_connection):
+@@ -68,7 +63,7 @@ class BucketExists(TestCase):
+         )
+         client = Minio('localhost:9000')
+         result = client.bucket_exists('hello')
+-        eq_(True, result)
++        self.assertTrue(result)
+         mock_server.mock_add_request(
+             MockResponse('HEAD',
+                          'https://localhost:9000/goodbye',
+@@ -76,4 +71,4 @@ class BucketExists(TestCase):
+                          404)
+         )
+         false_result = client.bucket_exists('goodbye')
+-        eq_(False, false_result)
++        self.assertFalse(false_result)
+Index: minio-7.1.0/tests/unit/list_objects_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/list_objects_test.py
++++ minio-7.1.0/tests/unit/list_objects_test.py
+@@ -15,9 +15,9 @@
+ # limitations under the License.
+ 
+ from unittest import TestCase
++import time
+ 
+ import mock
+-from nose.tools import eq_, timed
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -54,11 +54,11 @@ class ListObjectsTest(TestCase):
+         objects = []
+         for obj in object_iter:
+             objects.append(obj)
+-        eq_(0, len(objects))
++        self.assertEqual(0, len(objects))
+ 
+-    @timed(1)
+     @mock.patch('urllib3.PoolManager')
+     def test_list_objects_works(self, mock_connection):
++        start_time = time.time()
+         mock_data = '''<?xml version="1.0" encoding="UTF-8"?>
+ <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <Name>bucket</Name>
+@@ -99,4 +99,6 @@ class ListObjectsTest(TestCase):
+         for obj in objects_iter:
+             objects.append(obj)
+ 
+-        eq_(2, len(objects))
++        self.assertEqual(2, len(objects))
++        end_time = time.time()
++        self.assertLess(end_time-start_time, 1)
+Index: minio-7.1.0/tests/unit/list_objects_v1_test.py
+===================================================================
+--- minio-7.1.0.orig/tests/unit/list_objects_v1_test.py
++++ minio-7.1.0/tests/unit/list_objects_v1_test.py
+@@ -15,9 +15,9 @@
+ # limitations under the License.
+ 
+ from unittest import TestCase
++import time
+ 
+ import mock
+-from nose.tools import eq_, timed
+ 
+ from minio import Minio
+ from minio.api import _DEFAULT_USER_AGENT
+@@ -56,11 +56,11 @@ class ListObjectsV1Test(TestCase):
+         buckets = []
+         for bucket in bucket_iter:
+             buckets.append(bucket)
+-        eq_(0, len(buckets))
++        self.assertEqual(0, len(buckets))
+ 
+-    @timed(1)
+     @mock.patch('urllib3.PoolManager')
+     def test_list_objects_works(self, mock_connection):
++        start_time = time.time()
+         mock_data = '''<?xml version="1.0"?>
+ <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <Name>bucket</Name>
+@@ -121,11 +121,13 @@ class ListObjectsV1Test(TestCase):
+             )
+             buckets.append(bucket)
+ 
+-        eq_(2, len(buckets))
++        self.assertEqual(2, len(buckets))
++        end_time = time.time()
++        self.assertLess(end_time-start_time, 1)
+ 
+-    @timed(1)
+     @mock.patch('urllib3.PoolManager')
+     def test_list_objects_works_well(self, mock_connection):
++        start_time = time.time()
+         mock_data1 = '''<?xml version="1.0"?>
+ <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+   <Name>bucket</Name>
+@@ -219,4 +221,6 @@ class ListObjectsV1Test(TestCase):
+             )
+             buckets.append(bucket)
+ 
+-        eq_(4, len(buckets))
++        self.assertEqual(4, len(buckets))
++        end_time = time.time()
++        self.assertLess(end_time-start_time, 1)

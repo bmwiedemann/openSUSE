@@ -1,7 +1,7 @@
 #
 # spec file for package python-minio
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-minio
-Version:        6.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Minio library for Amazon S3 compatible cloud storage
 License:        Apache-2.0
 URL:            https://github.com/minio/minio-py
 Source:         https://files.pythonhosted.org/packages/source/m/minio/minio-%{version}.tar.gz
-# https://github.com/minio/minio-py/issues/961
-Source1:        https://raw.githubusercontent.com/minio/minio-py/master/tests/unit/config.json.sample
-Source2:        https://raw.githubusercontent.com/minio/minio-py/master/tests/unit/credentials.sample
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -42,7 +40,6 @@ BuildRequires:  %{python_module Faker}
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module future}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module pytz}
@@ -55,6 +52,7 @@ Minio library for Amazon S3 compatible cloud storage.
 
 %prep
 %setup -q -n minio-%{version}
+%autopatch -p1
 mv docs/zh_CN/API.md docs/API_zh_CN.md
 sed -i -e '/configparser/d' setup.py
 
@@ -66,7 +64,6 @@ sed -i -e '/configparser/d' setup.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cp %{SOURCE1} %{SOURCE2} tests/unit
 %pytest
 
 %files %{python_files}
