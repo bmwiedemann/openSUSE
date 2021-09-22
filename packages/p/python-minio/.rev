@@ -136,4 +136,41 @@
 - Update SOURCE1 and SOURCE2 to pull from tests/unit, the upstream path</comment>
     <requestid>828344</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>eaa626ec7dfaefaa485ec9ac6ed3dc0c</srcmd5>
+    <version>7.1.0</version>
+    <time>1632341572</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 7.1.0:
+  * EventIterable: use looping instead of tail recursion in next() (#1126) (07/07/21) (Bala FA)
+  * list_objects(): add url encoding type support. (#1107) (06/29/21) (Bala FA)
+  * listen_bucket_notification(): return EventIterable object as controlled iterator. (#1118) (06/25/21) (Bala FA)
+  * allow setting custom environment variables for mc admin subprocess (#1100) (05/24/21) (cbows)
+  * fix error when mc admin response has a trailing newline (#1099) (05/24/21) (cbows)
+  * Bucket: add string representation and equality method (#1095) (05/24/21) (Bahram Aghaei)
+  * list_objects(): identify delete marker generically (#1106) (05/24/21) (Bala FA)
+  * make_bucket: use region passed via constructor (#1103) (03/29/21) (Bala FA)
+  * Optimize logic of read_part_data() (#1085) (02/21/21) (Bala FA)
+  * Fix divided by zero error at part info computation. (#1083) (02/18/21) (Bala FA)
+  * Convert timedelta.total_seconds() to integer in credential providers. (#1081) (02/12/21) (Brian Thorne)
+  * fix data argument description of put_object() API (#1071) (01/29/21) (Bala FA)
+  * fix getbytes() usage in make_bucket() API (#1073) (01/29/21) (Bala FA)
+  * fix Retention properties usage (#1066) (01/27/21) (Bala FA)
+  * fix Tagging.tags usage properly (#1061) (01/27/21) (Bala FA)
+  * Add default 5 minutes timeout to default http client (#1069) (01/25/21) (Bala FA)
+  * Enhance HTTP trace (#1056) (01/09/21) (Bala FA)
+  * Allow empty prefix in Filter (#1053) (01/05/21) (Bala FA)
+  * fix: bring back previous change to functional test script (#1045) (12/10/20) (Harshavardhana)
+  * Remove configparser as dependency (#1046) (12/10/20) (Bala FA)
+  * Python2 support has been removed.
+  * Added support for S3 APIs related to object locking and versioning, tagging.
+  * Added support for compose object.
+  * fix: running functional tests issues (12/08/20) (Minio Trusted)
+  * Enhance put_object() API to support more parameters (#1022) (12/04/20) (Bala FA)
+  * Rename presigned_url() to get_presigned_url() (#1032) (12/03/20) (Bala FA)
+  * Refactor PostPolicy implementation (#1023) (12/01/20) (Bala FA)
+  * fix: allow tests to run properly on gateway setups (#1034) (11/28/20) (Harshavardhana)
+  * error.code() is a property not function (11/28/20) (Harshavardhana)</comment>
+    <requestid>920715</requestid>
+  </revision>
 </revisionlist>

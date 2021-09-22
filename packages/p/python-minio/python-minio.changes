@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Wed Sep 22 03:51:05 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.0:
+  * EventIterable: use looping instead of tail recursion in next() (#1126) (07/07/21) (Bala FA)
+  * list_objects(): add url encoding type support. (#1107) (06/29/21) (Bala FA)
+  * listen_bucket_notification(): return EventIterable object as controlled iterator. (#1118) (06/25/21) (Bala FA)
+  * allow setting custom environment variables for mc admin subprocess (#1100) (05/24/21) (cbows)
+  * fix error when mc admin response has a trailing newline (#1099) (05/24/21) (cbows)
+  * Bucket: add string representation and equality method (#1095) (05/24/21) (Bahram Aghaei)
+  * list_objects(): identify delete marker generically (#1106) (05/24/21) (Bala FA)
+  * make_bucket: use region passed via constructor (#1103) (03/29/21) (Bala FA)
+  * Optimize logic of read_part_data() (#1085) (02/21/21) (Bala FA)
+  * Fix divided by zero error at part info computation. (#1083) (02/18/21) (Bala FA)
+  * Convert timedelta.total_seconds() to integer in credential providers. (#1081) (02/12/21) (Brian Thorne)
+  * fix data argument description of put_object() API (#1071) (01/29/21) (Bala FA)
+  * fix getbytes() usage in make_bucket() API (#1073) (01/29/21) (Bala FA)
+  * fix Retention properties usage (#1066) (01/27/21) (Bala FA)
+  * fix Tagging.tags usage properly (#1061) (01/27/21) (Bala FA)
+  * Add default 5 minutes timeout to default http client (#1069) (01/25/21) (Bala FA)
+  * Enhance HTTP trace (#1056) (01/09/21) (Bala FA)
+  * Allow empty prefix in Filter (#1053) (01/05/21) (Bala FA)
+  * fix: bring back previous change to functional test script (#1045) (12/10/20) (Harshavardhana)
+  * Remove configparser as dependency (#1046) (12/10/20) (Bala FA)
+  * Python2 support has been removed.
+  * Added support for S3 APIs related to object locking and versioning, tagging.
+  * Added support for compose object.
+  * fix: running functional tests issues (12/08/20) (Minio Trusted)
+  * Enhance put_object() API to support more parameters (#1022) (12/04/20) (Bala FA)
+  * Rename presigned_url() to get_presigned_url() (#1032) (12/03/20) (Bala FA)
+  * Refactor PostPolicy implementation (#1023) (12/01/20) (Bala FA)
+  * fix: allow tests to run properly on gateway setups (#1034) (11/28/20) (Harshavardhana)
+  * error.code() is a property not function (11/28/20) (Harshavardhana)
+  * Handle locale-safe time formats (#1020) (11/24/20) (Bala FA)
+  * Make code property check optional in IamAwsProvider (#1025) (11/24/20) (Bala F:...skipping...
+  * Simplify select_object_content() response stream (#1018) (12/02/20) (Bala FA)
+  * Add compose_object() and enhance copy_object() APIs (#1021) (12/02/20) (Bala FA)
+  * Refactor PostPolicy implementation (#1023) (12/01/20) (Bala FA)
+  * fix: allow tests to run properly on gateway setups (#1034) (11/28/20) (Harshavardhana)
+  * error.code() is a property not function (11/28/20) (Harshavardhana)
+  * ignore NoSuchVersion returned in remove_objects (#1033) (11/28/20) (Harshavardhana)
+  * Merge thread_pool.py into helpers.py (#1024) (11/25/20) (Bala FA)
+  * Handle locale-safe time formats (#1020) (11/24/20) (Bala FA)
+  * fix client grants provider example (#1027) (11/24/20) (Bala FA)
+  * Make code property check optional in IamAwsProvider (#1025) (11/24/20) (Bala FA)
+  * fix examples of {fget,get,stat}_object() APIs (#1028) (11/23/20) (Bala FA)
+  * Merge definitions.py into helpers.py (#1017) (11/11/20) (Bala FA)
+  * Normalize user metadata in request headers properly (#1016) (11/11/20) (Bala FA)
+  * Update return type in put_object() and copy_object() API (#1012) (11/09/20) (Bala FA)
+  * add {set,get}_object_retention() APIs (#986) (10/23/20) (Bala FA)
+  * add {set,get,delete}_object_lock_config APIs (#985) (10/21/20) (Bala FA)
+  * add {enable,disable,is}_object_legal_hold[_enabled] APIs (#987) (10/19/20) (Bala FA)
+  * fix Host header in request correctly (#1004) (10/19/20) (Bala FA)
+  * Handle location constraints inside API methods (#992) (10/14/20) (Bala FA)
+  * Move http execution at one place (#968) (09/21/20) (Bala FA)
+  * fix: Pass request parameters in query string in LDAPIdentityProvider. (#976) (09/13/20) (stepanko7)
+  * IAMProvider accepts ECS IAM Task roles (#960) (08/22/20) (Nick Lavrov)
+  * Ship missing credential files in MANIFEST.in (#962) (08/21/20) (Steve Kowalik)
+- Drop use of SOURCE1 and SOURCE2, the files are now included in the sdist.
+- Add patch remove-nose.patch:
+  * Stop using nose methods.
+
+-------------------------------------------------------------------
 Wed Aug 19 06:19:13 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.0.0: 
