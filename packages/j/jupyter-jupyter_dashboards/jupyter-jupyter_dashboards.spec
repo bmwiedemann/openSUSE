@@ -1,7 +1,7 @@
 #
 # spec file for package jupyter-jupyter_dashboards
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without  test
 Name:           jupyter-jupyter_dashboards
 Version:        0.7.0
 Release:        0
@@ -33,7 +32,7 @@ BuildRequires:  python3-setuptools
 Requires:       jupyter-notebook >= 4.0
 Requires:       python3-certifi
 Requires(post): jupyter-notebook >= 4.0
-Requires(preun): jupyter-notebook >= 4.0
+Requires(preun):jupyter-notebook >= 4.0
 Provides:       python3-jupyter_dashboards = %{version}
 Obsoletes:      python3-jupyter_dashboards <= %{version}
 BuildArch:      noarch
@@ -83,10 +82,8 @@ rm -rf jupyter_dashboards/__pycache__/
 %preun
 %{jupyter_nbextension_disable jupyter_dashboards}
 
-%if %{with test}
 %check
-python3 setup.py test
-%endif
+# python3 setup.py test
 
 %files
 %license LICENSE.md
