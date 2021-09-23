@@ -26,6 +26,8 @@ Summary:        Tool to parametrize and run Jupyter and nteract Notebooks
 License:        BSD-3-Clause
 URL:            https://github.com/nteract/papermill
 Source:         https://files.pythonhosted.org/packages/source/p/papermill/papermill-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM papermill-pr624-gcsfs.patch -- gh#nteract/papermill#624
+Patch1:         https://github.com/nteract/papermill/pull/624.diff#/papermill-pr624-gcsfs.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -80,7 +82,7 @@ Papermill is a tool for parameterizing, executing,
 and analyzing Jupyter Notebooks.
 
 %prep
-%setup -q -n papermill-%{version}
+%autosetup -p1 -n papermill-%{version}
 
 %build
 %python_build
