@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 22 20:54:40 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.2
+  * Restrict MAX_BUFFER_SIZE_EXTENDED to 65535 and fix an issue
+    on Lenovo laptops with NXP NFC readers
+  * SmartcardException: display a positive PCSC error code
+
+-------------------------------------------------------------------
 Thu Aug 19 18:50:22 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.1
