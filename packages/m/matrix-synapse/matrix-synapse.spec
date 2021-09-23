@@ -47,7 +47,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.42.0
+Version:        1.43.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        Apache-2.0
@@ -65,6 +65,9 @@ Source51:       matrix-synapse-generate-config.sh
 Source99:       series
 Patch:          matrix-synapse-1.4.1-paths.patch
 Patch1:         dont-bump-cryptography-with-system-openssl.patch
+# https://github.com/matrix-org/synapse/pull/10719
+# disable by marking as source until we get a decision upstream
+Source100:      10719-Fix-instert-of-duplicate-key-into-event_json.patch
 BuildRequires:  %{use_python}-base >= 3.5
 BuildRequires:  %{use_python}-setuptools
 BuildRequires:  fdupes
@@ -73,7 +76,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  unzip
-%{?systemd_requires}
+%{?systemd_ordering}
 %{sysusers_requires}
 %requires_eq    %{use_python}-base
 # NOTE: Keep this is in the same order as synapse/python_dependencie.py.
