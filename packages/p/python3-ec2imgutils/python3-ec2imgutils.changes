@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 14 20:47:09 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 9.0.3 (bsc#1190538)
+  + Support setting the boot mode for EC2 images, either to legacy-bios
+    or uefi. Argument is optional, without it instance will use the default
+    boot mode for the given instance type.
+
+-------------------------------------------------------------------
 Fri Aug 20 14:37:01 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
 
 - Update to version 9.0.2 (bsc#1189649)

@@ -134,4 +134,15 @@
     when images are no longer supposed to be used.</comment>
     <requestid>914684</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>087757a187e0f3f93acda625ea6ffbdb</srcmd5>
+    <version>9.0.3</version>
+    <time>1632431063</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.0.3 (bsc#1190538)
+  + Support setting the boot mode for EC2 images, either to legacy-bios
+    or uefi. Argument is optional, without it instance will use the default
+    boot mode for the given instance type.</comment>
+    <requestid>921179</requestid>
+  </revision>
 </revisionlist>
