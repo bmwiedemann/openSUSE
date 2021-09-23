@@ -1,0 +1,14 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>7b7b955f4db3e34445ab5456e5edf380</srcmd5>
+    <version>2021.6.0</version>
+    <time>1632431051</time>
+    <user>dimstar_suse</user>
+    <comment>- created package libvpl (jira#SLE/SLE-19446)
+  * oneAPI Video Processing Library (oneVPL) dispatcher, tools, and
+    examples: The oneAPI Video Processing Library (oneVPL) provides
+    a single video processing API for encode, decode, and video
+    processing that works across a wide range of accelerators.</comment>
+    <requestid>921157</requestid>
+  </revision>
+</revisionlist>

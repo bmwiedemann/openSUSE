@@ -1,0 +1,5 @@
+<package name="libvpl" project="openSUSE:Factory">
+  <title>libvpl</title>
+  <description>oneAPI Video Processing Library (oneVPL) dispatcher, tools, and examples</description>
+  <devel project="X11:XOrg" package="libvpl"/>
+</package>
