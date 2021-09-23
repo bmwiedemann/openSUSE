@@ -18,9 +18,10 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %global modname awkward
+%global skip_python2 1
 %global skip_python36 1
 Name:           python-awkward
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause

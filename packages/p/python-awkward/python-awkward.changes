@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Sat Sep 18 20:15:02 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.5.0:
+  * Reverting the spelling of ak.nplike.NumPy → ak.nplike.Numpy,
+    etc. (including CuPy → Cupy) to avoid needlessly breaking
+    interfaces.
+  * Unrestricted the jaxlib version bounds, thanks to a fix that
+    he prompted in JAX: PR gh#scikit-hep/awkward#988.
+  * Added support for n-dimensional NumpyArrays in ak.where: PR
+    gh#scikit-hep/awkward#980.
+  * Added axis parameter to ak.fill_none: PR
+    gh#scikit-hep/awkward#917. Added np.ravel: PR
+    gh#scikit-hep/awkward#985.
+  * Fixed ak.from_buffers to support empty buffers: PR
+    gh#scikit-hep/awkward#1009.
+  * Fixed ak.packed for RegularArrays with size=0: PR
+    gh#scikit-hep/awkward#1008.
+  * Fixed ak.zip to not convert regular to jagged:
+    gh#scikit-hep/awkward#1013.
+  * Clarified the documentation of left and right broadcasting: PR
+    gh#scikit-hep/awkward#1016.
+  * Fixed ak.broadcast_arrays by setting numpy_to_regular=True: PR
+    gh#scikit-hep/awkward#1019.
+  * Added support for ak.Record in ak.packed: PR
+    gh#scikit-hep/awkward#1021.
+  * Fixed gh#scikit-hep/awkward#1026, jagged slicing of a
+    multidimensional NumpyArray: PR gh#scikit-hep/awkward#1029.
+  * Added a name parameter to ak.mixin_class: PR
+    gh#scikit-hep/awkward#1030.
+  * Added a spell-checker in pre-commit that fixed a lot of
+    spelling mistakes in comments and documentation: PR
+    gh#scikit-hep/awkward#1003.
+  * Fixed the stack level of the deprecation warning: PR
+    gh#scikit-hep/awkward#1058.
+  * Made the source code reproducible by allowing the build date
+    to be overridden by SOURCE_DATE_EPOCH: PR
+    gh#scikit-hep/awkward#1050.
+  * Optimized common array slice ("take") operations: PR
+    gh#scikit-hep/awkward#1062.
+  * Added a better set of kernel unit tests to continuous
+    integration, which will be important for testing GPU kernels:
+    PRs gh#scikit-hep/awkward#1065 and gh#scikit-hep/awkward#1081.
+  * Added a default for NEP-18, so now any NumPy function can be
+    used with Awkward Arrays, as long as the Awkward Array can be
+    cast as NumPy (i.e. is rectilinear):
+    gh#scikit-hep/awkward#1005.
+  * Reverted the ill-conceived gh#scikit-hep/awkward#694,
+    SliceVarNewAxis: PR gh#scikit-hep/awkward#1028.
+  * Made ak.Record iterable (iterates over field names, like
+    dict): PR gh#scikit-hep/awkward#1061.
+  * Fixed the UnionForm bug described in gh#scikit-hep/awkward#770
+    and gh#scikit-hep/awkward#930: PR gh#scikit-hep/awkward#991.
+  * Fixed gh#scikit-hep/awkward#546, ak.fill_none losing the
+    replacement's dtype: PR gh#scikit-hep/awkward#995.
+  * Fixed double-masking of reducers and unmasking of ak.ptp: PR
+    gh#scikit-hep/awkward#994.
+  * Fixed ak.Array.__dir__ to include methods/properties of
+    overridden classees: PR gh#scikit-hep/awkward#993.
+  * Fixed gh#scikit-hep/awkward#982 by accounting for another kind
+    of "gap" in nonlocal reducers: PR gh#scikit-hep/awkward#997.
+  * Fixed gh#scikit-hep/awkward#998 and
+    gh#scikit-hep/awkward#1000, ak.argmax for ListOffsetArray with
+    nonzero start: PR gh#scikit-hep/awkward#1001.
+  * Fixed ak.fill_none fill value's handling of NumPy dimension:
+    PR gh#scikit-hep/awkward#1056.
+  * Fixed ak.to_numpy for structured arrays that are also masked
+    arrays: PR gh#scikit-hep/awkward#1067.
+  * Finished __getitem__ for all array types: PRs
+    gh#scikit-hep/awkward#959, gh#scikit-hep/awkward#1031,
+    gh#scikit-hep/awkward#1036, and gh#scikit-hep/awkward#1073.
+  * Refactored ArrayBuilder to not depend on C++ that will be
+    removed in v2: PRs gh#scikit-hep/awkward#977,
+    gh#scikit-hep/awkward#1045, and gh#scikit-hep/awkward#1063.
+  * Implemented _localindex in v2: PR gh#scikit-hep/awkward#1059.
+    And combinations: PR gh#scikit-hep/awkward#1074.
+  * Renamed _getitem_array as _carry and made it take an Index: PR
+    gh#scikit-hep/awkward#1025. Added VirtualArray: PR
+    gh#scikit-hep/awkward#1079.
+- Disable python2 builds explicitly by setting skip_python2 in
+  specfile; otherwise builds for openSUSE <= 1550 fail.
+
+-------------------------------------------------------------------
 Sat Jul  3 00:39:43 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.0:
