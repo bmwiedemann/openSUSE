@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 23 09:48:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Mark example scripts as non-executable
+
+-------------------------------------------------------------------
 Sun Mar  7 12:17:37 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Fix Requires: python-<module> instead of %{python <module>} so

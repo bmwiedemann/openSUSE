@@ -32,6 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 # for tests we need i3 at build time
 BuildRequires:  %{python_module python-xlib}
+BuildRequires:  %{python_module asyncio}
 BuildRequires:  i3
 BuildRequires:  python-rpm-macros
 BuildRequires:  xvfb-run
@@ -56,6 +57,9 @@ sed -i "s/'enum-compat'//" setup.py
 # Remove shebang which is not needed (that script cannot be executed
 # standalone).
 sed -i '/^#!\/usr\/bin\/env.*/d' examples/*.py examples/i3-focus/*.py
+
+# Examples shouldn't be executable
+find examples/ -name \*.py -exec chmod -x '{}' \;
 
 %build
 %python_build
