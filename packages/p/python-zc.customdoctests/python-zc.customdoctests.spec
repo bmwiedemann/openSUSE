@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.customdoctests
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -21,17 +22,17 @@ Version:        1.0.1
 Release:        0
 License:        ZPL-2.1
 Summary:        zc.customdoctests -- Use doctest with other languages
-Url:            http://pypi.python.org/pypi/zc.customdoctests
+URL:            http://pypi.python.org/pypi/zc.customdoctests
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/z/zc.customdoctests/zc.customdoctests-%{version}.zip
 Source1:        LICENSE.txt
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module manuel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.testing}
-BuildRequires:  %{python_module manuel}
-BuildRequires:  unzip
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  unzip
 BuildArch:      noarch
 
 %python_subpackages
@@ -62,7 +63,11 @@ JavaScript, and sh.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+cd build/lib
+%{python_expand export PYTHONPATH='.'
+$python -m unittest -v zc.customdoctests.tests.test_suite
+$python -m doctest -v zc/customdoctests/tests.py
+}
 
 %files %{python_files}
 %license ../../SOURCES/LICENSE.txt
