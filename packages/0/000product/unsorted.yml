@@ -11772,6 +11772,9 @@ unsorted:
   - libmetrics0 
   - libmfx: [x86_64] 
   - libmfx-devel: [x86_64] # devel package of dvd:libmfx1 
+  - libmfx-gen: [x86_64] 
+  - libmfx-gen-devel: [x86_64] 
+  - libmfx-gen1_2: [x86_64] 
   - libmfx-samples: [x86_64] 
   - libmgl-fltk7_5_0 
   - libmgl-glut7_5_0 
@@ -14163,6 +14166,10 @@ unsorted:
   - libvpd2-32bit: [x86_64] 
   - libvpd2-devel 
   - libvpd2-devel-32bit: [x86_64] 
+  - libvpl: [x86_64] 
+  - libvpl-devel: [x86_64] 
+  - libvpl-samples: [x86_64] 
+  - libvpl2: [x86_64] 
   - libvpx-devel 
   - libvpx6-32bit: [x86_64] 
   - libvsapm-devel 
@@ -30941,6 +30948,7 @@ unsorted:
   - ruby2.7-doc-ri 
   - ruby2.7-rubygem-em-websocket 
   - ruby2.7-rubygem-gettext-setup 
+  - ruby2.7-rubygem-http 
   - ruby2.7-rubygem-jekyll 
   - ruby2.7-rubygem-rspec-rails-3.9 
   - ruby2.7-rubygem-ruby_dep-doc 
