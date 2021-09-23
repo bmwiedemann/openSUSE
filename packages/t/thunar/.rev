@@ -1661,4 +1661,14 @@
     <comment></comment>
     <requestid>918951</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>be5ba8771e153c0f5796ef0deb2f4d2a</srcmd5>
+    <version>4.16.10</version>
+    <time>1632431050</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.10
+  * Fix signal disconnect to prevent crash (bxo#xfce/thunar#553)
+  * Don't go beyond THUNAR_N_VISIBLE_COLUMNS while parsing col widths (forwarded request 919898 from tux93)</comment>
+    <requestid>921151</requestid>
+  </revision>
 </revisionlist>

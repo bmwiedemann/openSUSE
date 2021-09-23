@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 21:28:55 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.10
+  * Fix signal disconnect to prevent crash (bxo#xfce/thunar#553)
+  * Don't go beyond THUNAR_N_VISIBLE_COLUMNS while parsing col widths
+
+-------------------------------------------------------------------
 Sun Sep 12 15:45:32 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.9
