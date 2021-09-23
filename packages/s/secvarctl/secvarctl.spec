@@ -17,12 +17,12 @@
 
 
 Name:           secvarctl
-Version:        0.2+git31~26ea751
+Version:        0.3
 Release:        0
 Summary:        Suite of tools to manipulate and generate Secure Boot variables on POWER
 License:        Apache-2.0
 URL:            https://github.com/open-power/secvarctl
-Source:         %{name}-%{version}.tar.xz
+Source:         https://github.com/open-power/secvarctl/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  openssl-devel
 ExclusiveArch:  ppc64 ppc64le
 
