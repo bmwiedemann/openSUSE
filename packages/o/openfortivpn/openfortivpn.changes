@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  9 12:51:01 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Updat eto version 1.17.1
+  * fix regression: enable OpenSSL engines by default
+  * fix typos found by codespell
+  * fix LGTM alerts
+
+-------------------------------------------------------------------
 Fri Jul 16 20:03:25 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.17.0
