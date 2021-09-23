@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 23 07:18:43 UTC 2021 - Dan Čermák <dcermak@suse.com>
+
+- New upstream release 0.4.0
+
+  * add #25 Add support for resetting the parser (bryanp)
+  * chg #23 Update ffi to llhttp 6.0.5 (bryanp)
+
+-------------------------------------------------------------------
 Wed Aug 25 12:56:11 UTC 2021 - Dan Čermák <dcermak@suse.com>
 
 - Initial package version of rubygem-llhttp-ffi
