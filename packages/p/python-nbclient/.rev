@@ -89,4 +89,21 @@
     <comment></comment>
     <requestid>884008</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>989c77818724e7d952bb5fe26d3c75a7</srcmd5>
+    <version>0.5.4</version>
+    <time>1632431034</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix async_parallel_notebooks deselection expression
+- Add IPYKERNEL_CELL_NAME env var for test sanitization
+- Only require async_generator for Python &lt; 3.7
+- update to version 0.5.4:
+  * Replace km.cleanup with km.cleanup_resources #152 (@davidbrochart)
+  * Use async generator backport only on old python #154 (@mkoeppe)
+  * Support parsing of IPython dev version #150 (@cphyc)
+  * Set IPYKERNEL_CELL_NAME = &lt;IPY-INPUT&gt; #147 (@davidbrochart)
+  * Print useful error message on exception #142 (@certik)
+</comment>
+    <requestid>921032</requestid>
+  </revision>
 </revisionlist>

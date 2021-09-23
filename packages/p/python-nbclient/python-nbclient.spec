@@ -1,5 +1,5 @@
 #
-# spec file for package python-nbclient
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,11 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define         skip_python2 1
 Name:           python-nbclient%{psuffix}
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        A client library for executing notebooks
 License:        BSD-3-Clause
@@ -37,14 +36,16 @@ Source:         https://files.pythonhosted.org/packages/source/n/nbclient/nbclie
 BuildRequires:  %{python_module setuptools >= 38.6.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 37
 Requires:       python-async_generator
+%endif
 Requires:       python-jupyter-client >= 6.1.5
 Requires:       python-nbformat >= 5.0
 Requires:       python-nest-asyncio
 Requires:       python-traitlets >= 4.2
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module async_generator}
+BuildRequires:  %{python_module async_generator if %python-base < 3.7}
 BuildRequires:  %{python_module ipython}
 BuildRequires:  %{python_module ipywidgets}
 BuildRequires:  %{python_module jupyter-client >= 6.1.5}
@@ -66,7 +67,6 @@ NBClient is a tool for parameterizing andexecuting Jupyter Notebooks.
 
 %prep
 %setup -q -n nbclient-%{version}
-rm -r nbclient/tests/files/.ipynb_checkpoints
 
 %build
 %python_build
@@ -79,8 +79,9 @@ rm -r nbclient/tests/files/.ipynb_checkpoints
 
 %if %{with test}
 %check
-# test_many_parallel_notebooks randomly fails - https://github.com/jupyter/nbclient/pull/74#issuecomment-635929953
-%pytest -k 'not test_many_parallel_notebooks'
+export IPYKERNEL_CELL_NAME="<IPY-INPUT>"
+# tests on parallel notebooks randomly fail - https://github.com/jupyter/nbclient/pull/74#issuecomment-635929953
+%pytest -k 'not (test_many_parallel_notebooks or test_async_parallel_notebooks)'
 %endif
 
 %if ! %{with test}
