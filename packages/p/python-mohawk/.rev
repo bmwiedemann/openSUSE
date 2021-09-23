@@ -63,4 +63,13 @@
   the build.</comment>
     <requestid>873931</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>f059c715d8638e27f57b704285e866b0</srcmd5>
+    <version>1.1.0</version>
+    <time>1632431038</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch remove-nose.patch:
+  * Use unittest assert methods rather than requiring nose.</comment>
+    <requestid>921090</requestid>
+  </revision>
 </revisionlist>

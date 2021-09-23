@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 23 06:11:30 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-nose.patch:
+  * Use unittest assert methods rather than requiring nose. 
+
+-------------------------------------------------------------------
 Fri Feb 19 22:51:29 UTC 2021 - antoine.belvire@opensuse.org
 
 - Replace call to 'python setup.py test' by pyunittest macro: This

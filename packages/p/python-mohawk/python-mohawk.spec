@@ -23,9 +23,9 @@ Version:        1.1.0
 Release:        0
 Summary:        Library for Hawk HTTP authorization
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/kumar303/mohawk
 Source:         https://files.pythonhosted.org/packages/source/m/mohawk/mohawk-%{version}.tar.gz
+Patch0:         remove-nose.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -33,7 +33,6 @@ Requires:       python-six
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module nose}
 BuildRequires:  %{python_module six}
 %endif
 %python_subpackages
@@ -44,6 +43,7 @@ authorization scheme.
 
 %prep
 %setup -q -n mohawk-%{version}
+%autopatch -p1
 
 %build
 %python_build
