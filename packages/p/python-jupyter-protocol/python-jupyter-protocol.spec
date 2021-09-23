@@ -1,7 +1,7 @@
 #
-# spec file for package python-jupyter_protocol
+# spec file for package python-jupyter-protocol
 #
-# Copyright (c) 2020 SUSE LLC.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,8 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
@@ -22,20 +23,18 @@ Version:        0.2.0
 Release:        0
 License:        BSD-3-Clause
 Summary:        Jupyter protocol implementation
-Url:            https://jupyter.org
+URL:            https://jupyter.org
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/j/jupyter-protocol/jupyter_protocol-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module jupyter-core}
+BuildRequires:  %{python_module ipykernel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
 BuildRequires:  %{python_module pyzmq >= 13}
 BuildRequires:  %{python_module traitlets}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module mock}
-BuildRequires:  %{python_module ipykernel}
-BuildRequires:  %{python_module mock}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-jupyter-core
@@ -62,7 +61,7 @@ Jupyter protocol implementation.
 }
 
 %check
-%python_exec setup.py test
+%pyunittest discover -v
 
 %files %{python_files}
 %doc README.md
