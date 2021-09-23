@@ -1,7 +1,7 @@
 unsorted:
   - 2048-cli 
   - 2ping 
-  - 389-ds-devel: [x86_64] # devel package of dvd:lib389 
+  - 389-ds-devel: [x86_64] # devel package of dvd:libsvrcore0 
   - 389-ds-snmp: [x86_64] 
   - 3omns 
   - 4pane 
@@ -924,7 +924,6 @@ unsorted:
   - atril-lang 
   - atril-thumbnailer 
   - attica-qt5-devel 
-  - attractmode 
   - aubio-tools 
   - audacious 
   - audacious-devel 
@@ -1750,11 +1749,12 @@ unsorted:
   - cargo-audit: [x86_64] 
   - cargo-audit-advisory-db 
   - cargo-c 
+  - cargo-packaging 
   - cargo1.53 
   - cargo1.53-doc: [x86_64] 
   - cargo1.54 
   - cargo1.54-doc: [x86_64] 
-  - cargo1.55: [x86_64] 
+  - cargo1.55 
   - cargo1.55-doc: [x86_64] 
   - caribou 
   - caribou-common 
@@ -6213,7 +6213,6 @@ unsorted:
   - gstreamer-plugins-ugly-32bit: [x86_64] 
   - gstreamer-plugins-ugly-doc 
   - gstreamer-plugins-vaapi 
-  - gstreamer-plugins-vaapi-doc 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder-devel 
   - gstreamermm-devel 
@@ -13618,6 +13617,8 @@ unsorted:
   - libstroke-devel 
   - libstrophe-devel 
   - libstrophe0 
+  - libsubid-devel 
+  - libsubid3 
   - libsubtitleeditor-devel 
   - libsubtitleeditor0 
   - libsubunit0 
@@ -31315,11 +31316,11 @@ unsorted:
   - rust1.54-doc: [x86_64] 
   - rust1.54-gdb 
   - rust1.54-src 
-  - rust1.55: [x86_64] 
+  - rust1.55 
   - rust1.55-analysis: [x86_64] 
   - rust1.55-doc: [x86_64] 
-  - rust1.55-gdb: [x86_64] 
-  - rust1.55-src: [x86_64] 
+  - rust1.55-gdb 
+  - rust1.55-src 
   - rustscan 
   - rxp 
   - rxtx-java 
