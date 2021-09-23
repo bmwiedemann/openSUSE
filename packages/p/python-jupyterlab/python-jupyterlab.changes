@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 19 10:50:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.12
+  * Retain the rtc lock until the user releases it #11026
+    (@hbcarlos)
+  * Backport PR #11031 on branch 3.1.x (Use posix paths explicitly)
+    #11045 (@Mithil467)
+  * Adds the variable reference to the key of the component #11029
+    (@hbcarlos)
+  * Clean up bumpversion #11056 (@blink1073)
+  * Make debugger jest test more robust #11032 (@fcollonval)
+  * Remove status bar item flickering #11065 (@fcollonval)
+  * use path.posix explicitly for URLs #11048 (@mbektas)
+
+-------------------------------------------------------------------
+Tue Sep 14 11:22:23 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 3.1.11
+  * Full Changelog at
+    https://jupyterlab.readthedocs.io/en/stable/getting_started/changelog.html
+- Fix rpmlint 2 filter for required .orig files
+
+-------------------------------------------------------------------
 Mon Aug 16 15:33:25 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.1.7
