@@ -495,4 +495,41 @@
   * Added keybind 'N' for sorting by PID (drops 'n'/'N' as not used before much)</comment>
     <requestid>862804</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>4098b09333cf1b529ec68d71fc8adc58</srcmd5>
+    <version>3.1.0</version>
+    <time>1632431060</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable linux capabilities
+- Drop unsupported configure options 
+
+- Add autoconf and automake as dependencies
+- Switch the url to the Github release page
+- Update to 3.1.0:
+  * Updated COPYING file to remove the PLPA exemption (appendix 2)
+    With this change the license is now GPLv2 without any additional wording.
+  * Improved default sort ordering
+    Note for users: This may lead to an inverted sort order on startup of
+    htop 3.1.0 compared to previous versions.
+    This is due to what is stored in your htoprc file. Solution: Press I
+    (to invert sort order).
+    This changed setting will be saved by htop on exit as long as it can
+    write to your htoprc file.
+  * The compile-time option to cater specifically for running htop as
+    setuid has been removed
+  * Add read-only option
+    This allows htop to be run in an non-intrusive fashion where it acts only
+    as a process viewer disabling all functions to manipulate system state.
+    Note: This is not a security feature!
+  * Move the code for handling the command line formatting related tasks
+    to be shared across all platforms
+    This means important features like stale binary/library highlighting
+    can now be available on all supported platforms.
+  * Make the EXE and COMM columns available on all platforms
+    All supported platforms have the name of the executable (EXE) and a
+    self-chosen thread/command name (COMM) available one way or the other.
+    Moving this column to be handled as a platform-independently available
+    information simplifies the markup of the command line.</comment>
+    <requestid>921167</requestid>
+  </revision>
 </revisionlist>
