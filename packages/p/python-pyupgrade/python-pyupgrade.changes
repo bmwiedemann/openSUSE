@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 18 19:58:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.26.0.post1:
+ - BUG: fix broken tests for versioned_branches feature
+- update to version 2.26.0:
+ - ENH: expand versioned_branches feature to Python 3 minor version comparison (<, >, <=, >= with else)
+- update to version 2.25.1:
+ - don't rewrite %-format with width+s
+ - update timidity docs for f-strings
+- update to version 2.25.0:
+ - revert pep584 rewrit
+
+-------------------------------------------------------------------
 Fri Aug 20 19:49:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.24.0:

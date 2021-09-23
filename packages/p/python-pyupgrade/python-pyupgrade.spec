@@ -19,14 +19,14 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-pyupgrade
-Version:        2.24.0
+Version:        2.26.0.post1
 Release:        0
 Summary:        A tool to automatically upgrade syntax for newer versions
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/asottile/pyupgrade
 # pypi tarball does not include tests, use github instead. PR for inclusion was denied https://github.com/asottile/pyupgrade/pull/326
-Source:         https://github.com/asottile/pyupgrade/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/asottile/pyupgrade/archive/fd60bbecb9668e4392ade23dd8451b9f74d9d6c7.tar.gz#/%{name}-%{version}.tar.gz
 #Source:         https://files.pythonhosted.org/packages/source/p/pyupgrade/pyupgrade-%%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  python-rpm-macros
@@ -47,7 +47,7 @@ A tool to automatically upgrade syntax for newer versions of the Python
 programming language.
 
 %prep
-%setup -q -n pyupgrade-%{version}
+%setup -q -n pyupgrade-fd60bbecb9668e4392ade23dd8451b9f74d9d6c7
 
 %build
 %python_build

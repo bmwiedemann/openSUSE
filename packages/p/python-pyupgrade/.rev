@@ -151,4 +151,21 @@
 </comment>
     <requestid>917719</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>dd014afe870e6637ad9dedb06f0c746d</srcmd5>
+    <version>2.26.0.post1</version>
+    <time>1632431047</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.26.0.post1:
+ - BUG: fix broken tests for versioned_branches feature
+- update to version 2.26.0:
+ - ENH: expand versioned_branches feature to Python 3 minor version comparison (&lt;, &gt;, &lt;=, &gt;= with else)
+- update to version 2.25.1:
+ - don't rewrite %-format with width+s
+ - update timidity docs for f-strings
+- update to version 2.25.0:
+ - revert pep584 rewrit
+</comment>
+    <requestid>921122</requestid>
+  </revision>
 </revisionlist>
