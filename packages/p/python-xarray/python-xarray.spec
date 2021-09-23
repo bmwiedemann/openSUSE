@@ -69,6 +69,7 @@ Suggests:       python-cfgrib
 #/SECTION
 # SECTION tests
 BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module dask-diagnostics}
 BuildRequires:  %{python_module pooch}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}

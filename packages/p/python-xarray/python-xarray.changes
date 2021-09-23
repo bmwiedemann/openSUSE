@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 21 10:38:39 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Tests require dask[diagnostics] extra now (for Jinja2)
+
+-------------------------------------------------------------------
 Tue Jul 27 11:01:52 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - remove xarray-pr5449-dask-meta.patch, merged upstream.
