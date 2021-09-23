@@ -18,20 +18,19 @@
 
 %define skip_python2 1
 %define skip_python36 1
-# tests suite disabled by default. See below.
-%bcond_with     tests
+%bcond_without  tests
 Name:           python-bokeh
-Version:        2.3.3
+Version:        2.4.0
 Release:        0
 Summary:        Statistical interactive HTML plots for Python
 License:        BSD-3-Clause
 URL:            https://github.com/bokeh/bokeh/
-Source:         https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
-Patch0:         bokeh-pr11218-figure-toolbar-active-properties.patch
+Source0:        https://files.pythonhosted.org/packages/source/b/bokeh/bokeh-%{version}.tar.gz
+Source1:        https://github.com/bokeh/bokeh/raw/%{version}/conftest.py
 BuildRequires:  %{python_module Jinja2 >= 2.9}
 BuildRequires:  %{python_module Pillow >= 7.1.0}
 BuildRequires:  %{python_module PyYAML >= 3.10}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module numpy >= 1.11.3}
 BuildRequires:  %{python_module packaging >= 16.8}
 BuildRequires:  %{python_module python-dateutil >= 2.1}
@@ -57,13 +56,14 @@ BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module flaky}
-# Note: If you manage to activate the test suite, try to patch external mock out.
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module networkx}
+BuildRequires:  %{python_module pydot}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module selenium}
+BuildRequires:  nodejs >= 14
 %endif
 # /SECTION
 %python_subpackages
@@ -76,6 +76,15 @@ with interactivity over large or streaming datasets.
 
 %prep
 %autosetup -p1 -n bokeh-%{version}
+# add conftest.py for pytest fixtures
+cp %{SOURCE1} .
+# remove external mock in favor of unittest.mock
+find tests -name '*.py' -exec \
+  sed -i {} \
+  -e 's/^import mock/from unittest import mock/' \
+  -e 's/^from mock import mock/from unittest import mock/' \
+  -e 's/^from mock import/from unittest.mock import/' \
+  ';'
 
 %build
 %python_build
@@ -94,15 +103,26 @@ with interactivity over large or streaming datasets.
 
 %if %{with tests}
 %check
-# Running the test suite (with datafiles from the GitHub archive) fails
-# due to missing server/client setups, chromedriver, selenium etc.
-%pytest -k 'not (selenium or sampledata)'
+# GUI based selenium with chromedriver setup within OBS is hard/impossible
+deselectmarker="selenium"
+# sampledata: no download
+deselectmarker+=" or sampledata"
+# npm can't build inside obs without network
+deselectname="test_ext_commands"
+# testfile not packaged in sdist
+deselectname+=" or test_with_INLINE_resources"
+deselectname+=" or test_with_CDN_resources"
+# does not expect pytest-$binsuffix
+deselectname+=" or test_detect_current_filename"
+# no browser installed
+deselectname+=" or test_webdriver"
+%pytest -m "not ($deselectmarker)" -k "not ($deselectname)"
 %endif
 
 %post
 %python_install_alternative bokeh
 
-%preun
+%postun
 %python_uninstall_alternative bokeh
 
 %files %{python_files}

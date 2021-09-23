@@ -248,4 +248,22 @@
     <comment></comment>
     <requestid>907358</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>258a1e9227ac5ff3446d9a171055f635</srcmd5>
+    <version>2.4.0</version>
+    <time>1632431047</time>
+    <user>dimstar_suse</user>
+    <comment>- Bokeh requires Python &gt;= 3.7:  disable failing Leap builds
+- Reactivate test suite (at least the unit tests packaged in the
+  sdist) by adding conftest.py from the github archive
+
+- updates-alternatives actions should be in postun, not preun
+
+- Update to version 2.4.0:
+  * Long list, see
+    https://github.com/bokeh/bokeh/blob/2.4.0/CHANGELOG
+- Drop bokeh-pr11218-figure-toolbar-active-properties.patch,
+  upstream PR merged.</comment>
+    <requestid>921137</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 23 09:54:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Bokeh requires Python >= 3.7:  disable failing Leap builds
+- Reactivate test suite (at least the unit tests packaged in the
+  sdist) by adding conftest.py from the github archive
+
+-------------------------------------------------------------------
+Thu Sep 23 09:53:47 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- updates-alternatives actions should be in postun, not preun
+
+-------------------------------------------------------------------
+Sat Sep 18 18:05:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.4.0:
+  * Long list, see
+    https://github.com/bokeh/bokeh/blob/2.4.0/CHANGELOG
+- Drop bokeh-pr11218-figure-toolbar-active-properties.patch,
+  upstream PR merged.
+
+-------------------------------------------------------------------
 Tue Jul 20 13:56:14 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Remove URL for rebased patch
