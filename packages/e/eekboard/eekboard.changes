@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 21 07:31:09 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add port-to-python3.patch:
+  * Ports gen-keysym-entries.py to Python 3.
+- Remove unneeded BuildRequires on python and python-devel
+
+-------------------------------------------------------------------
 Mon Sep 28 05:34:45 UTC 2020 - Marguerite Su <i@marguerite.su>
 
 - fix libexecdir

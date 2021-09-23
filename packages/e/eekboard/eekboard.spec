@@ -1,7 +1,7 @@
 #
 # spec file for package eekboard
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -22,10 +22,11 @@ Name:           eekboard
 Version:        1.0.8
 Release:        0
 Summary:        An easy to use virtual keyboard toolkit
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          System/GUI/Other
-Url:            http://github.com/ueno/eekboard
+URL:            http://github.com/ueno/eekboard
 Source0:        %{name}-%{version}.tar.gz
+Patch0:         port-to-python3.patch
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -49,8 +50,6 @@ BuildRequires:  libXtst-devel
 %endif
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
-BuildRequires:  python
-BuildRequires:  python-devel
 BuildRequires:  update-desktop-files
 
 %glib2_gsettings_schema_requires
@@ -58,7 +57,6 @@ BuildRequires:  update-desktop-files
 %description
 eekboard is a virtual keyboard software package, including a set of
 tools to implement desktop virtual keyboards.
-
 
 %package -n typelib-1_0-Eek-0_90
 Summary:        Eekboard libraries -- Introspection bindings
@@ -78,6 +76,7 @@ The eekboard-devel package contains the header files.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 # ./autogen.sh
@@ -93,19 +92,19 @@ The eekboard-devel package contains the header files.
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install 
+make DESTDIR=$RPM_BUILD_ROOT install
 rm -rf %{buildroot}%{_libdir}/*.la
 
 %suse_update_desktop_file -i %{name} System Utility DesktopUtility settings
 %suse_update_desktop_file -i %{buildroot}%{_sysconfdir}/xdg/autostart/%{name}-autostart.desktop
 %find_lang %{name}
 
-%post 
+%post
 /sbin/ldconfig
 %icon_theme_cache_post
 %glib2_gsettings_schema_post
 
-%postun 
+%postun
 /sbin/ldconfig
 %icon_theme_cache_postun
 %glib2_gsettings_schema_postun

@@ -44,4 +44,14 @@
     <comment></comment>
     <requestid>838158</requestid>
   </revision>
+  <revision rev="7" vrev="10">
+    <srcmd5>694a1ff0280f39c5c823e9ce0ba9f1ef</srcmd5>
+    <version>1.0.8</version>
+    <time>1632431041</time>
+    <user>dimstar_suse</user>
+    <comment>- Add port-to-python3.patch:
+  * Ports gen-keysym-entries.py to Python 3.
+- Remove unneeded BuildRequires on python and python-devel (forwarded request 920540 from StevenK)</comment>
+    <requestid>921106</requestid>
+  </revision>
 </revisionlist>
