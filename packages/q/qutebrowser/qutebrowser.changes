@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 23 06:05:30 UTC 2021 - Mia Herkt <mia@0x0.st>
+
+- Disable test suite. This is too non-deterministic and random
+  BDD tests will fail most of the time even though the program
+  behaves correctly in practice.
+
+-------------------------------------------------------------------
 Tue Aug  3 00:07:38 UTC 2021 - Mia Herkt <mia@0x0.st>
 
 - Update to version 2.3.1

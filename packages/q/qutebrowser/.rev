@@ -1724,4 +1724,14 @@ Fixed
     opened.</comment>
     <requestid>909841</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>f985e561aafe4760c3d834bb2b569cf7</srcmd5>
+    <version>2.3.1</version>
+    <time>1632431039</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test suite. This is too non-deterministic and random
+  BDD tests will fail most of the time even though the program
+  behaves correctly in practice.</comment>
+    <requestid>921083</requestid>
+  </revision>
 </revisionlist>
