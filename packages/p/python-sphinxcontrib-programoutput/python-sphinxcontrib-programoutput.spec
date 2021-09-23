@@ -17,7 +17,6 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
-%bcond_without     test
 Name:           python-sphinxcontrib-programoutput
 Version:        0.17
 Release:        0
@@ -32,9 +31,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Sphinx >= 1.8
 BuildArch:      noarch
-%if %{with test}
+# SECTION test requirements
 BuildRequires:  %{python_module pytest}
-%endif
+# /SECTION
 %python_subpackages
 
 %description
@@ -55,12 +54,9 @@ export LANG=en_US.UTF-8
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
-%if %{with test}
 %check
-# https://github.com/NextThought/sphinxcontrib-programoutput/issues/38
 export LANG=en_US.UTF-8
-%python_exec setup.py test
-%endif
+%pyunittest -v src/sphinxcontrib/programoutput/tests/test*.py
 
 %files %{python_files}
 %license LICENSE

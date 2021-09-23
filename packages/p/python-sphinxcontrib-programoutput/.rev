@@ -82,4 +82,12 @@
     logged when a program returns an unexpected return code</comment>
     <requestid>906820</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>58ffc6d4016b457b44bbd65d07624715</srcmd5>
+    <version>0.17</version>
+    <time>1632431045</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921117</requestid>
+  </revision>
 </revisionlist>
