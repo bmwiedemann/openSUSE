@@ -117,4 +117,17 @@
     <comment></comment>
     <requestid>914443</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1763102a3d9a33b5cee117d4ac3bcf84</srcmd5>
+    <version>8.0.11</version>
+    <time>1632431062</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 8.0.11: This is a security release fixing CVE-2021-21706.
+  See https://www.php.net/ChangeLog-8.php#8.0.11
+
+- added patches
+  fix https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
+  + php8-gd-removed-unused-constants.patch</comment>
+    <requestid>921175</requestid>
+  </revision>
 </revisionlist>

@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.0.10
+Version:        8.0.11
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        PHP-3.01
@@ -94,6 +94,8 @@ Patch20:        php-crypt-tests.patch
 Patch22:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
 Patch19:        php-build-reproducible-phar.patch
+# https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
+Patch23:        php8-gd-removed-unused-constants.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison

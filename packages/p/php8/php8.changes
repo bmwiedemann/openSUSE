@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 23 16:47:21 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
+
+- updated to 8.0.11: This is a security release fixing CVE-2021-21706.
+  See https://www.php.net/ChangeLog-8.php#8.0.11
+
+-------------------------------------------------------------------
+Thu Sep 23 11:49:08 UTC 2021 - pgajdos@suse.com
+
+- added patches
+  fix https://github.com/php/php-src/commit/b3646440b1808abf0874b6f89027ce53ec5da03f
+  + php8-gd-removed-unused-constants.patch
+
+-------------------------------------------------------------------
 Thu Aug 26 11:51:51 UTC 2021 - Arjen de Korte <suse+build@de-korte.org>
 
 - updated to 8.0.10: This is a security release which also contains
