@@ -15,4 +15,14 @@
     <comment></comment>
     <requestid>888830</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5a042ae235e237cd75858637a94bcbcc</srcmd5>
+    <version>0.2.0</version>
+    <time>1632431048</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip test_golden_prefix_suffix_fstring to avoid
+  gh#google/pasta#91.
+</comment>
+    <requestid>921124</requestid>
+  </revision>
 </revisionlist>

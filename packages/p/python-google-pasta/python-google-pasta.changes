@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 23 10:09:24 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Skip test_golden_prefix_suffix_fstring to avoid
+  gh#google/pasta#91.
+
+-------------------------------------------------------------------
 Tue Apr 27 14:16:55 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - add golden39.patch to add test data for python 3.9
