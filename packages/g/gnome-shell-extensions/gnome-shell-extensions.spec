@@ -38,14 +38,12 @@ Patch1:         gnome-shell-add-app-to-desktop.patch
 # PATCH-FIX-SLE gse-sle-classic-ext.patch Fate#318572 cxiong@suse.com -- add sle classic support
 Patch1000:      gse-sle-classic-ext.patch
 BuildRequires:  fdupes
-BuildRequires:  gnome-patch-translation
 # Needed for directory ownership
 BuildRequires:  gnome-shell
 # gobject-introspection is needed for the typelib() rpm magic.
 BuildRequires:  gobject-introspection
 BuildRequires:  meson >= 0.44.0
 BuildRequires:  sassc
-BuildRequires:  translation-update-upstream
 
 %description
 GNOME Shell Extensions is a collection of extensions providing
@@ -103,8 +101,6 @@ to pick system installed themes or even themes installed in the user's home.
 %prep
 %setup -q
 %patch1 -p1
-translation-update-upstream po %{name}
-gnome-patch-translation-prepare po %{name}
 
 %patch1000 -p1
 # In openSUSE GNOME, we don't launch gnome-session directly, but wrap this through a shell script, /usr/bin/gnome
