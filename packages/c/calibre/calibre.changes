@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep 24 07:23:12 UTC 2021 - ecsos <ecsos@opensuse.org>
+
+- Update to 5.28.0
+  * New Features
+    - Edit metadata dialog: Customize cover generation: Allow
+      saving and loading cover generation settings as "themes"
+    - E-book viewer: Allow pressing the 0-9 keys to apply a quick
+      highlight style
+    - Book details panel: While clicking tags/authors/etc. holding
+      down the Ctrl+Shift modifier keys now add the tag to the
+      current search with "AND" instead of "OR" when using only Ctrl
+    - Add an option to the preferences drop down menu to restart
+      calibre without third party plugins
+  * Bug Fixes
+    - Edit book: When renaming classes in style sheets only
+      recognize class names preceded by a period
+    - E-book viewer: Fix lookup in Google partially hidden due to
+      change in Google results page markup
+    - Conversion dialog: Search replace expression builder: Fix
+      incorrect search result highlighting when non-BMP unicode
+      characters are present in the text
+    - E-book viewer: Fix popup footnote blank when the footnote
+      link points to a tag
+    - E-book viewer: Fix jumping to highlights in text that occurs
+      after a line break and newline character not working in paged
+      mode
+    - Kindle Output: Strip EXIF metadata from JPEG images as the
+      Kindle renderer has issues with it
+
+-------------------------------------------------------------------
 Fri Sep 10 04:47:31 UTC 2021 - ecsos <ecsos@opensuse.org>
 
 - Update to 5.27.0
