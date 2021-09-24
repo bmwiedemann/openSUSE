@@ -18,7 +18,7 @@
 
 %define oname   rocksndiamonds
 Name:           %{oname}-data
-Version:        20210103
+Version:        20210804
 Release:        0
 Summary:        Data files for Rocks'n'Diamonds
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ Group:          Amusements/Games/Action/Arcade
 URL:            https://www.artsoft.org/rocksndiamonds/
 Source0:        https://www.artsoft.org/RELEASES/%{oname}/levels/ZeldaII-1.0.0.zip
 Source1:        https://www.artsoft.org/RELEASES/%{oname}/levels/Zelda-1.0.0.zip
-Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.1.0.7z
+Source2:        https://www.artsoft.org/RELEASES/%{oname}/levels/Emerald_Mine_Club-3.1.2.7z
 Source3:        https://www.artsoft.org/RELEASES/%{oname}/levels/Sokoban-1.0.0.zip
 # Use supplied tarbal, fixed with fdupes -l sym -r -m .
 # and packed than rockslevels, repacked as tar.bz2
@@ -34,8 +34,9 @@ Source4:        Contributions-1.2.0.tar.bz2
 Source5:        https://www.artsoft.org/RELEASES/%{oname}/levels/Snake_Bite-1.0.0.zip
 Source6:        https://www.artsoft.org/RELEASES/%{oname}/levels/BD2K3-1.0.0.zip
 Source7:        https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash_Dream-1.0.0.zip
-Source8:        https://www.artsoft.org/RELEASES/unix/rocksndiamonds/levels/rockslevels-sp-1.0.tar.gz
+Source8:        https://www.artsoft.org/RELEASES/%{oname}/levels/Supaplex-2.0.0.7z
 Source9:        https://www.artsoft.org/RELEASES/unix/%{oname}/levels/rockslevels-dx-1.0.tar.gz
+Source68:       https://www.artsoft.org/RELEASES/%{oname}/levels/Better_Together-1.0.0.7z
 # Downloaded from http://www.jb-line.de/rnd/rnd_jue-3.3.0.0.tar.gz
 # Deleted directory rnd_jue/jue_sobigo and other which are not level
 # and packed than rockslevels, repacked as tar.gz
@@ -130,7 +131,7 @@ mkdir -p %{buildroot}%{_datadir}/%{oname}/levels
 
 tar -xjf %{SOURCE4} -C %{buildroot}%{_datadir}/%{oname}
 
-for l in %{SOURCE8} %{SOURCE9} %{SOURCE10} ; do
+for l in %{SOURCE9} %{SOURCE10} ; do
     tar xfvz $l -C %{buildroot}%{_datadir}/%{oname}
 done
 
@@ -145,7 +146,9 @@ for l in %{SOURCE0} %{SOURCE1} %{SOURCE3} %{SOURCE5} %{SOURCE6} %{SOURCE7} \
 done
 unzip %{SOURCE67} -d %{buildroot}%{_datadir}/%{oname}/levels/Tutorials
 
-7z x %{SOURCE2} -o%{buildroot}%{_datadir}/%{oname}/levels
+for l in %{SOURCE2} %{SOURCE8} %{SOURCE68} ; do
+    7z x $l -o%{buildroot}%{_datadir}/%{oname}/levels
+done
 
 # Remove not needed files
 find %{buildroot}%{_datadir}/%{oname}/levels -name '*.broken' -delete \
@@ -161,6 +164,7 @@ rm -fr %{buildroot}%{_datadir}/%{oname}/levels/Contributions/Contributions_2004/
 %post
 # Correct Permissions
 chmod 0664 -R %{_datadir}/%{oname}/levels/Contributions
+chmod 0664 -R %{_datadir}/%{oname}/levels/Supaplex
 
 %files
 %{_datadir}/%{oname}
