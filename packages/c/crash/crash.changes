@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 24 10:30:46 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix build on ppc64 - it needs full TOC as much as ppc64le.
+
+-------------------------------------------------------------------
+Thu Sep 23 12:41:11 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix module loading (bsc#1190743 ltc#194414).
+  + crash-mod-fix-module-object-file-lookup.patch
+
+-------------------------------------------------------------------
 Fri Jun 25 18:27:35 UTC 2021 - David Mair <dmair@suse.com>
 
 - Kernel commit 5c83511bdb9832c86be20fb86b783356e2f58062 removed

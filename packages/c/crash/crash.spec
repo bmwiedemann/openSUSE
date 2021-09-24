@@ -98,6 +98,8 @@ Patch44:        %{name}-printk-use-committed-finalized-state-values.patch
 # PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/9c881ab372010b46655dfed0a3c5cd78b3ff8fa0.patch
 Patch45:        %{name}-x86_64-VC-exception-stack-support.patch
 Patch46:        %{name}-xen-pvops.patch
+# PATCH-FIX-UPSTREAM - https://github.com/crash-utility/crash/commit/cf0c8d10e1870d89b39f40382634db51aa8fcf2c.patch
+Patch47:        %{name}-mod-fix-module-object-file-lookup.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 BuildRequires:  bison
 BuildRequires:  flex
@@ -301,6 +303,7 @@ Authors:
 %patch44 -p1
 %patch45 -p1
 %patch46 -p1
+%patch47 -p1
 %if %{have_snappy}
 %patch15 -p1
 %endif
@@ -326,7 +329,7 @@ mkdir kbuild
 cp %{S:6} memory_driver
 
 %build
-%ifarch ppc64le
+%ifarch ppc64le ppc64
 # for ppc64le use -mfull-toc needed by lto as per boo#1146646
 export CFLAGS="$RPM_OPT_FLAGS -fno-builtin-memset -fno-strict-aliasing -mfull-toc"
 %else

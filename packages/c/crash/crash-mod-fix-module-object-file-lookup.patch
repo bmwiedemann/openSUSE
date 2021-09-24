@@ -1,0 +1,51 @@
+From cf0c8d10e1870d89b39f40382634db51aa8fcf2c Mon Sep 17 00:00:00 2001
+From: Hari Bathini <hbathini@linux.ibm.com>
+Date: Fri, 3 Sep 2021 17:33:42 +0530
+Subject: [PATCH] mod: fix module object file lookup
+
+Upstream: merged - expected 7.3.1
+Git-commit: cf0c8d10e1870d89b39f40382634db51aa8fcf2c
+
+On systems where vmlinux file is not under /usr/lib/debug/lib/modules
+directory, 'mod -s|-S' command may fail to find the module's object
+file with the below error:
+
+    mod: cannot find or load object file for sd_mod module
+
+Fix it by trying all possible module object file extentions while
+searching for the object file under /usr/lib/debug/lib/modules
+directory.
+
+Signed-off-by: Naveen N. Rao <naveen.n.rao@linux.ibm.com>
+Signed-off-by: Hari Bathini <hbathini@linux.ibm.com>
+---
+ kernel.c | 13 ++++++++++++-
+ 1 file changed, 12 insertions(+), 1 deletion(-)
+
+diff --git a/kernel.c b/kernel.c
+index 36fdea29b1cb..b2c8a0ccb7ab 100644
+--- a/kernel.c
++++ b/kernel.c
+@@ -4796,7 +4796,18 @@ module_objfile_search(char *modref, char *filename, char *tree)
+ 
+ 	sprintf(dir, "%s/%s", DEFAULT_REDHAT_DEBUG_LOCATION, 
+ 		kt->utsname.release);
+-	retbuf = search_directory_tree(dir, file, 0);
++	if (!(retbuf = search_directory_tree(dir, file, 0))) {
++		switch (kt->flags & (KMOD_V1|KMOD_V2))
++		{
++		case KMOD_V2:
++			sprintf(file, "%s.ko", modref);
++			retbuf = search_directory_tree(dir, file, 0);
++			if (!retbuf) {
++				sprintf(file, "%s.ko.debug", modref);
++				retbuf = search_directory_tree(dir, file, 0);
++			}
++		}
++	}
+ 
+ 	if (!retbuf && (env = getenv("CRASH_MODULE_PATH"))) {
+ 		sprintf(dir, "%s", env);
+-- 
+2.31.1
+
