@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 19 19:00:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.32.4 (boo#1190701):
+  + Do not append .asc extension to downloaded text/plain files.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2021-30858.
+- Drop fix-lto.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Tue Aug 10 12:10:02 UTC 2021 - Martin Liška <mliska@suse.cz>
 
 - Enable LTO by using upstream patch fix-lto.patch.

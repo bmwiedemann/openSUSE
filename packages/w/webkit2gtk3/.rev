@@ -1092,4 +1092,12 @@
     <comment></comment>
     <requestid>912017</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>b94b7d055435a2ee998ad42a411c6007</srcmd5>
+    <version>2.32.4</version>
+    <time>1632522922</time>
+    <user>dimstar_suse</user>
+    <comment>Tweak change log (forwarded request 920661 from mgorse)</comment>
+    <requestid>920816</requestid>
+  </revision>
 </revisionlist>
