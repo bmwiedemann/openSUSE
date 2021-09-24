@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 20 02:54:50 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.2:
+  * fix(urllib3): interceptor is never really disabled (#68)
+  * Closes #75 Re consider @fluent decorator (#76)
+  * fix(#69): use match keyword in pytest.raises
+  * fix(History): invalid rst syntax
+  * fix(aiohttp): compatible with non aiohttp projects (#67)
+  * feat(History): add release changes 
+- Drop pytest5.patch, no longer required.
+- Drop nose BuildRequires, and its suite, the remainder covers it.
+
+-------------------------------------------------------------------
 Wed May  6 06:59:43 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
 
 - Add patch to work with pytest5:
