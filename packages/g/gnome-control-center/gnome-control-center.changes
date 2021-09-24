@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 17 21:40:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.1:
+  + About: Don't show GNOME micro version.
+  + Location: Fix permission store table and id.
+  + Network:
+    - Show all IPv6 addresses for an interface.
+    - Display IPv6 gateway.
+  + Power: Fix D-Bus proxy leak.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:37:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Mon Jul 19 08:31:29 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Add versioned BuildRequires to pkgconfig(udisks2):

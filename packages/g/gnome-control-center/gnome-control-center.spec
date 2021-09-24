@@ -26,7 +26,7 @@
 %endif
 
 Name:           gnome-control-center
-Version:        40.0
+Version:        40.1
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
@@ -51,7 +51,6 @@ BuildRequires:  krb5-devel
 BuildRequires:  meson >= 0.53.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-dbusmock
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(accountsservice) >= 0.6.39
 BuildRequires:  pkgconfig(cairo-gobject)
@@ -187,7 +186,6 @@ GNOME control center.
 
 %prep
 %setup -q
-translation-update-upstream po gnome-control-center-2.0
 
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
