@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 24 10:53:58 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Update to 3.9.7:
+  + All Components
+    * All bytecode is now compiled using the +deterministic
+      compiler flag. This should eliminate the capture of some
+      irrelevant build environment attributes in produced
+      artifacts, improve consistency between builds, and reduce the
+      file level diff between release artifacts.
+  + Core Server
+    * Enhancements
+      - Classic queue shutdown now uses a much higher timeout (up
+        to 10 minutes instead of 30 seconds).
+      - In environments with many queues (especially mirrored
+        queues) and many consumers this means that the chance of
+        queue indices rebuilding after node restart is now
+        substantially lower.
+    * Bug Fixes
+      - Quorum queues no longer leak memory and disk space when a
+        consumer is repeatedly added and cancelled on an empty
+        queue.
+  + Prometheus Plugin
+    * Enhancements
+      - More configurability for metrics exposed via the Prometheus
+        endpoint.
+  + Shovel Plugin
+    * Bug Fixes
+      - Shovel URIs could be logged with credentials in some
+        scenarios.
+  + Dependency Upgrades
+    * observer_cli has been upgraded from 1.6.2 to 1.7.1
+
+-------------------------------------------------------------------
 Fri Sep 17 00:15:42 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
 
 - Update to 3.9.6:
