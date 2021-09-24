@@ -17,7 +17,7 @@
 
 
 Name:           gama
-Version:        2.14
+Version:        2.15
 Release:        0
 Summary:        Adjustment of geodetic networks
 License:        GPL-3.0-or-later
@@ -26,7 +26,7 @@ URL:            https://www.gnu.org/software/gama/
 # git: http://git.savannah.gnu.org/cgit/gama.git
 Source:         http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source2:        http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz.sig
-Source3:        http://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
+Source3:        https://savannah.gnu.org/people/viewgpg.php?user_id=3448#/%{name}.keyring
 Source4:        %{name}-rpmlintrc
 BuildRequires:  gcc-c++
 BuildRequires:  libxml2-tools
