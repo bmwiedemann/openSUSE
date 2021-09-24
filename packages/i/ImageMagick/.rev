@@ -3117,4 +3117,27 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     video file with -define video:vsync=&lt;value&gt;. (forwarded request 908508 from dirkmueller)</comment>
     <requestid>909423</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>a9e37bf5f8e26f2da3f0f0345984cfc7</srcmd5>
+    <version>7.1.0.8</version>
+    <time>1632522920</time>
+    <user>dimstar_suse</user>
+    <comment>- version update to 7.1.0.8
+  * Check for `null` in InvokeDelegate() (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4225).
+  * Fixed incorrect check when module is used as the domain in policy.xml
+    that could allow the use of a disabled module. (reference
+    https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qvhr-jj4p-j2qr).
+  * Prevent color reduction merging into one color (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4059)
+  * Tweak the bilevel image type (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4121).
+  * Converting from LAB to RGB leads to wrong colors (reference
+    https://github.com/ImageMagick/ImageMagick/issues/4105).
+  * Added option (-dng:read-thumbnail=true) to read the thumbnail of a raw
+    Image and store it as a profile called dng:thumbnail.
+  * Heap-based buffer overflow in TIFF coder (alert from Hunter Mitchell).
+  * Grayscale image write optimization.</comment>
+    <requestid>920266</requestid>
+  </revision>
 </revisionlist>
