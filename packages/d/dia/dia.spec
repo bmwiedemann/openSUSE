@@ -1,7 +1,7 @@
 #
 # spec file for package dia
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,7 +48,6 @@ BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  swig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cairo)
@@ -85,7 +84,6 @@ pages).
 
 %prep
 %setup -q
-translation-update-upstream
 %patch0 -p1
 %patch3
 %patch17 -p1

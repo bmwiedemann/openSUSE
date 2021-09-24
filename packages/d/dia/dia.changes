@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 01:26:51 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Thu Jan 30 11:09:20 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use
