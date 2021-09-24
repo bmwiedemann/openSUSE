@@ -176,10 +176,18 @@ Patch00040:     roms-Makefile-add-cross-file-to-qboot-me.patch
 Patch00041:     usb-Help-compiler-out-to-avoid-a-warning.patch
 Patch00042:     qom-handle-case-of-chardev-spice-module-.patch
 Patch00043:     doc-add-our-support-doc-to-the-main-proj.patch
-Patch00044:     qemu-binfmt-conf.sh-allow-overriding-SUS.patch
-Patch00045:     Revert-qemu-img-Improve-error-for-rebase.patch
-Patch00046:     Revert-qemu-img-Require-F-with-b-backing.patch
-Patch00047:     tcg-arm-Fix-tcg_out_vec_op-function-sign.patch
+Patch00044:     Revert-qemu-img-Improve-error-for-rebase.patch
+Patch00045:     Revert-qemu-img-Require-F-with-b-backing.patch
+Patch00046:     tcg-arm-Fix-tcg_out_vec_op-function-sign.patch
+Patch00047:     i386-cpu-Remove-AVX_VNNI-feature-from-Co.patch
+Patch00048:     plugins-execlog-removed-unintended-s-at-.patch
+Patch00049:     plugins-do-not-limit-exported-symbols-if.patch
+Patch00050:     9pfs-fix-crash-in-v9fs_walk.patch
+Patch00051:     virtio-balloon-don-t-start-free-page-hin.patch
+Patch00052:     qemu-sockets-fix-unix-socket-path-copy-a.patch
+Patch00053:     target-i386-add-missing-bits-to-CR4_RESE.patch
+Patch00054:     qemu-binfmt-conf.sh-should-use-F-as-shor.patch
+Patch00055:     modules-quick-fix-a-fundamental-error-in.patch
 # Patches applied in roms/seabios/:
 Patch01000:     seabios-use-python2-explicitly-as-needed.patch
 Patch01001:     seabios-switch-to-python3-as-needed.patch
@@ -1118,6 +1126,14 @@ This package records qemu testsuite results and represents successful testing.
 %patch00045 -p1
 %patch00046 -p1
 %patch00047 -p1
+%patch00048 -p1
+%patch00049 -p1
+%patch00050 -p1
+%patch00051 -p1
+%patch00052 -p1
+%patch00053 -p1
+%patch00054 -p1
+%patch00055 -p1
 %patch01000 -p1
 %patch01001 -p1
 %patch01002 -p1

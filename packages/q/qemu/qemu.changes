@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 16 03:55:52 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Fix testsuite dependencies (bsc#1190573)
+* Patches added:
+  modules-quick-fix-a-fundamental-error-in.patch
+
+-------------------------------------------------------------------
+Tue Sep 14 17:19:23 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
+
+- Replace patch to fix hardcoded binfmt handler
+  (bsc#1186256)
+* Patches dropped:
+  qemu-binfmt-conf.sh-allow-overriding-SUS.patch
+* Patches added:
+  qemu-binfmt-conf.sh-should-use-F-as-shor.patch
+- Stable fixes from upstream
+* Patches added:
+  9pfs-fix-crash-in-v9fs_walk.patch
+  i386-cpu-Remove-AVX_VNNI-feature-from-Co.patch
+  plugins-do-not-limit-exported-symbols-if.patch
+  plugins-execlog-removed-unintended-s-at-.patch
+  qemu-sockets-fix-unix-socket-path-copy-a.patch
+  target-i386-add-missing-bits-to-CR4_RESE.patch
+  virtio-balloon-don-t-start-free-page-hin.patch
+
+-------------------------------------------------------------------
 Wed Sep  8 17:51:18 UTC 2021 - José Ricardo Ziviani <jose.ziviani@suse.com>
 
 - Fix qemu build on ARMv7 (bsc#1190211)
