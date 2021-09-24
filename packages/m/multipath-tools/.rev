@@ -1509,4 +1509,13 @@ I am resubmitting this one as that by accident I rejected the previous submit fr
   * fixes from 0.8.6+32+suse.f11c192 merged upstream (forwarded request 918046 from mwilck)</comment>
     <requestid>918047</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>fc2148b067fb907efe141f8b7e6cdf2f</srcmd5>
+    <version>0.8.7+14+suse.5a09bfa</version>
+    <time>1632522910</time>
+    <user>dimstar_suse</user>
+    <comment>- Add a versioned dependency of multipath-tools on libmpath0
+  (bsc#1190622)</comment>
+    <requestid>920633</requestid>
+  </revision>
 </revisionlist>

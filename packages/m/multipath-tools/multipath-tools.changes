@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 21 09:45:42 UTC 2021 - Martin Wilck <mwilck@suse.com>
+
+- Add a versioned dependency of multipath-tools on libmpath0
+  (bsc#1190622) 
+
+-------------------------------------------------------------------
 Fri Sep 10 20:36:51 UTC 2021 - Martin Wilck <mwilck@suse.com>
 
 - Update to version  0.8.7+14+suse.5a09bfa1:
@@ -3095,3 +3101,4 @@ Tue May 25 10:43:15 CEST 2004 - fehr@suse.de
   multipath tools
 
 -------------------------------------------------------------------
+Tue May 25 10:43:15 CEST 2004 - 

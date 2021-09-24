@@ -66,6 +66,7 @@ BuildRequires:  suse-module-tools
 Requires(post): suse-module-tools
 Requires:       device-mapper >= 1.2.78
 Requires:       kpartx
+Requires:       libmpath0 = %{version}
 Requires:       sg3_utils
 Obsoletes:      multipath-tools-rbd <= %{version}
 PreReq:         coreutils
@@ -78,6 +79,7 @@ multipath maps. multipathd sets up multipath maps automatically,
 monitors path devices for failure, removal, or addition, and applies
 the necessary changes to the multipath maps to ensure continuous
 availability of the map devices.
+
 
 
 
