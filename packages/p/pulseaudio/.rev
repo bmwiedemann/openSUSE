@@ -1470,4 +1470,12 @@ WANTED for 13.1 - Part of the BLUEZ5 stack (forwarded request 202417 from dimsta
     <comment></comment>
     <requestid>914222</requestid>
   </revision>
+  <revision rev="186" vrev="3">
+    <srcmd5>25e73dcc97966b8b1388787c37a26ef9</srcmd5>
+    <version>15.0</version>
+    <time>1632522915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920057</requestid>
+  </revision>
 </revisionlist>

@@ -69,10 +69,10 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig(libudev) >= 143
 BuildRequires:  libwebrtc_audio_processing-devel >= 0.3
 BuildRequires:  orc >= 0.4.9
+BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  speexdsp-devel
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  translation-update-upstream
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(check)

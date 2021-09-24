@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 16 02:05:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+- Require perl-XML-Parser explicitly, it's needed by build.
+
+-------------------------------------------------------------------
 Wed Aug 25 10:45:32 CEST 2021 - tiwai@suse.de
 
 - Drop SDL_AUDIODRIVER override, as SDL already prefers PA as
