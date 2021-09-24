@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        4.6.1632209573.6778e83a
+Version:        4.6.1632416043.04a757ed
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -74,7 +74,7 @@ Source0:        %{name}-%{version}.tar.xz
 %define python_style_requires %{nil}
 %endif
 # The following line is generated from dependencies.yaml
-%define test_base_requires %main_requires cpio perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Pod::Coverage) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::MockRandom) perl(Test::Mojo) perl(Test::Most) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 procps python3-setuptools qemu qemu-tools qemu-x86
+%define test_base_requires %main_requires cpio perl(Benchmark) perl(Devel::Cover) perl(FindBin) perl(Pod::Coverage) perl(Test::Fatal) perl(Test::Mock::Time) perl(Test::MockModule) perl(Test::MockObject) perl(Test::MockRandom) perl(Test::Mojo) perl(Test::Most) perl(Test::Output) perl(Test::Pod) perl(Test::Strict) perl(Test::Warnings) >= 0.029 procps python3-setuptools qemu >= 4.0 qemu-tools qemu-x86
 # The following line is generated from dependencies.yaml
 %define test_version_only_requires perl(Mojo::IOLoop::ReadWriteProcess) >= 0.28
 # The following line is generated from dependencies.yaml
@@ -84,9 +84,9 @@ Source0:        %{name}-%{version}.tar.xz
 %define s390_zvm_requires /usr/bin/xkbcomp /usr/bin/Xvnc x3270 icewm xterm xterm-console xdotool fonts-config mkfontdir mkfontscale
 BuildRequires:  %test_requires %test_version_only_requires
 Requires:       %main_requires
-Recommends:     /usr/bin/qemu-img
 Recommends:     dumponlyconsole %s390_zvm_requires
-Recommends:     qemu >= 2.0.0
+Recommends:     qemu >= 4.0.0
+Recommends:     qemu-tools
 Recommends:     tesseract-ocr
 # Optional dependency for Python test API support
 Recommends:     perl(Inline::Python)
@@ -126,7 +126,7 @@ This package contains openvswitch support for os-autoinst.
 Summary:        Convenience package providing os-autoinst+qemu-kvm
 Group:          Development/Tools/Other
 Requires:       os-autoinst
-Requires:       qemu-kvm
+Requires:       qemu-kvm >= 4.0.0
 Requires:       qemu-tools
 
 %description qemu-kvm
@@ -136,7 +136,7 @@ Summary:        Convenience package providing os-autoinst+qemu-x86
 Group:          Development/Tools/Other
 Requires:       os-autoinst
 Requires:       qemu-tools
-Requires:       qemu-x86
+Requires:       qemu-x86 >= 4.0.0
 
 %description qemu-x86
 Convenience package providing os-autoinst and qemu-x86 dependencies.
