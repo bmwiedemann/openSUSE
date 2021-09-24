@@ -32,4 +32,20 @@
   * pytest5.patch</comment>
     <requestid>800576</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9d2c7ca25c2f063aed72b3f5b1ed0075</srcmd5>
+    <version>1.0.2</version>
+    <time>1632522917</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.2:
+  * fix(urllib3): interceptor is never really disabled (#68)
+  * Closes #75 Re consider @fluent decorator (#76)
+  * fix(#69): use match keyword in pytest.raises
+  * fix(History): invalid rst syntax
+  * fix(aiohttp): compatible with non aiohttp projects (#67)
+  * feat(History): add release changes 
+- Drop pytest5.patch, no longer required.
+- Drop nose BuildRequires, and its suite, the remainder covers it.</comment>
+    <requestid>920219</requestid>
+  </revision>
 </revisionlist>
