@@ -355,4 +355,13 @@
   + Updated translations. (forwarded request 915065 from dimstar)</comment>
     <requestid>915443</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>ca73c469d8dcc8236f18a8c804667bcc</srcmd5>
+    <version>4.4.0</version>
+    <time>1632522902</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920425 from sbrabec)</comment>
+    <requestid>920586</requestid>
+  </revision>
 </revisionlist>

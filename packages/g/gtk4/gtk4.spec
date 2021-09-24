@@ -50,7 +50,6 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.50.1
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  translation-update-upstream
 BuildRequires:  vulkan-devel
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk) >= 2.15.1
@@ -212,7 +211,6 @@ This package enhances gettext with an International Tag Set for GTK+ 4
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
-translation-update-upstream
 
 %build
 %meson \
