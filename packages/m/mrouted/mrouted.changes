@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 22 19:01:57 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.3
+  Changes
+  * Add support for `-i,--ident=NAME` to change identity of an
+    instance.
+  * Add support for `-p,--pidfile=FILE` to override default PID
+    file.
+  * Touch PID file at SIGHUP to acknowledge done reloading .conf
+    file.
+  * Add support for `-t,--table-id=ID`, multicast routing tables.
+  * Add support for `-u,--ipc=FILE` to override
+    `/var/run/mrouted.sock` file, used for communication with
+    `mroutectl`.
+  Fixes
+  * Fix segfault when parsing `phyint` lines in .conf file
+    interface cannot be found, e.g.,
+    `phyint eth1 static-group 225.1.2.5`.
+  * Prevent cascading warnings when phyint interface names cannot
+    be found.
+
+-------------------------------------------------------------------
 Thu Jan  7 16:07:56 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2

@@ -18,7 +18,7 @@
 
 
 Name:           mrouted
-Version:        4.2
+Version:        4.3
 Release:        0
 Summary:        An implementation of the DVMRP multicast routing protocol
 License:        BSD-3-Clause AND BSD-4-Clause
