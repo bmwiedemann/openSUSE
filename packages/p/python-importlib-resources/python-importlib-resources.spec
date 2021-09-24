@@ -1,7 +1,7 @@
 #
 # spec file for package python-importlib-resources
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,56 +16,41 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python3-%{**}}
+%define skip_python2 1
 Name:           python-importlib-resources
-Version:        3.3.0
+Version:        5.2.2
 Release:        0
 Summary:        Read resources from Python packages
 License:        Apache-2.0
 URL:            https://importlib-resources.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/i/importlib_resources/importlib_resources-%{version}.tar.gz
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testsuite}
 BuildRequires:  %{python_module toml}
-BuildRequires:  (python3-zipp >= 0.4 if python3-base < 3.8)
-BuildRequires:  (python36-zipp >= 0.4 if python36-base)
+BuildRequires:  %{python_module zipp >= 3.1.0 if %python-base < 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-importlib_resources = %{version}
 Obsoletes:      python-importlib_resources < %{version}
 BuildArch:      noarch
-%if %{?suse_version} <= 1500
-BuildRequires:  python2-contextlib2
-BuildRequires:  python2-pathlib2
-BuildRequires:  python2-singledispatch
-BuildRequires:  python2-typing
-BuildRequires:  python2-zipp >= 0.4
-%endif
-%ifpython2
-Requires:       python-pathlib2
-Requires:       python-singledispatch
-Requires:       python-typing
-Requires:       python-zipp >= 0.4
-%endif
-%if "%{python_flavor}" == "python36"
-Requires:       python36-zipp >= 0.4
-%endif
-%if "%{python_flavor}" == "python3" && %{python3_version_nodots} < 38
-Requires:       python3-zipp >= 0.4
+%if 0%{python_version_nodots} < 310
+Requires:       python-zipp >= 3.1.0
 %endif
 %python_subpackages
 
 %description
-importlib_resources is a library which provides for access to resources in
-Python packages. It provides functionality similar to pkg_resources Basic
-Resource Access API, but without all of the overhead and performance problems of
-pkg_resources.
+importlib_resources is a backport of Python standard library
+importlib.resources module for older Pythons. Users of Python 3.9 and
+beyond should use the standard library module, since for these versions,
+importlib_resources just delegates to that module.
 
-importlib_resources is a backport of Python 3.9’s standard library
-importlib.resources module for Python 2.7, and 3.5 through 3.8. Users of Python
-3.9 and beyond are encouraged to use the standard library module. Developers
-looking fo
+The key goal of this module is to replace parts of pkg_resources with a
+solution in Python’s stdlib that relies on well-defined APIs. This makes
+reading resources included in packages easier, with more stable and
+consistent semantics.
 
 %prep
 %setup -q -n importlib_resources-%{version}
@@ -78,7 +63,9 @@ looking fo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+# create pycache so that update-zips.py does not fail with ValueError
+python3 -m compileall $PWD/importlib_resources/tests/
+%pytest
 
 %files %{python_files}
 %doc README.rst
