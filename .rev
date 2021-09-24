@@ -750,4 +750,13 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
 - Switch to meson (forwarded request 785253 from polslinux)</comment>
     <requestid>789269</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>98aa9c5ba721d03b1144d2edeb0682b0</srcmd5>
+    <version>13.0.0</version>
+    <time>1632522902</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920426 from sbrabec)</comment>
+    <requestid>920587</requestid>
+  </revision>
 </revisionlist>

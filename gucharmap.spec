@@ -1,7 +1,7 @@
 #
 # spec file for package gucharmap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,7 +37,6 @@ BuildRequires:  gtk3-devel >= 3.4.0
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  unicode-ucd
 BuildRequires:  unicode-ucd-unihan
 BuildRequires:  unzip
@@ -85,7 +84,6 @@ to develop applications that require these.
 
 %prep
 %setup -q
-translation-update-upstream po %{name}
 
 %build
 export LIBS="-ldl"
@@ -108,7 +106,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING COPYING.GFDL COPYING.UNICODE
-%doc README.md 
+%doc README.md
 %{_bindir}/gucharmap
 %{_datadir}/applications/gucharmap.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Charmap.gschema.xml
