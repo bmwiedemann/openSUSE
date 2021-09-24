@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-user-share
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,6 @@ Source0:        https://download.gnome.org/sources/gnome-user-share/3.34/%{name}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.58
@@ -57,7 +56,6 @@ up in the Network location in GNOME.
 
 %prep
 %autosetup -p1
-translation-update-upstream po %{name}
 
 %build
 %meson \
