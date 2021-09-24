@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 17 10:01:06 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Update to 0.3.20:
+  * add a parser for Student Writing Center files (v1)
+  * add a parser for Word Maker files (v1)
+  * add a parser for Canvas 9/10 files (Mac)
+
+-------------------------------------------------------------------
 Fri Jul 16 20:05:41 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.19:
