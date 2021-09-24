@@ -1,7 +1,7 @@
 #
 # spec file for package bubblewrap
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bubblewrap
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Core execution tool for unprivileged containers
 License:        LGPL-2.0-or-later
@@ -39,6 +39,14 @@ BuildRequires:  pkgconfig(libselinux)
 Bubblewrap (%{_bindir}/bwrap) is a core execution engine for unprivileged
 containers that works as a setuid binary on kernels without
 user namespaces.
+
+%package zsh-completion
+Summary:        Zsh tab-completion for bubblewrap
+Group:          System/Shells
+Supplements:    (%{name} and zsh)
+
+%description zsh-completion
+This package provides zsh tab-completion for bubblewrap.
 
 %prep
 %autosetup -p1 -n %{name}-%{version}
@@ -67,5 +75,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/bash-completion/completions/bwrap
 %{_bindir}/bwrap
 %{_mandir}/man1/*
+
+%files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_bwrap
 
 %changelog
