@@ -1,0 +1,32 @@
+--- FreeRDP-2.4.0/channels/video/client/CMakeLists.txt~	2021-07-27 11:58:27.000000000 +0200
++++ FreeRDP-2.4.0/channels/video/client/CMakeLists.txt	2021-08-20 10:35:04.496719927 +0200
+@@ -26,7 +26,8 @@ include_directories(..)
+ add_channel_client_library(${MODULE_PREFIX} ${MODULE_NAME} ${CHANNEL_NAME} TRUE "DVCPluginEntry")
+ 
+ 
+-
++set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} freerdp-client)
++set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} rdpgfx-client)
+ set(${MODULE_PREFIX}_LIBS ${${MODULE_PREFIX}_LIBS} winpr)
+ 
+ target_link_libraries(${MODULE_NAME} ${${MODULE_PREFIX}_LIBS})
+--- FreeRDP-2.4.0/channels/rdpsnd/client/proxy/CMakeLists.txt~	2021-07-27 11:58:27.000000000 +0200
++++ FreeRDP-2.4.0/channels/rdpsnd/client/proxy/CMakeLists.txt	2021-08-20 13:45:38.459395909 +0200
+@@ -25,6 +25,7 @@ include_directories(..)
+ 
+ add_channel_client_subsystem_library(${MODULE_PREFIX} ${MODULE_NAME} ${CHANNEL_NAME} "" TRUE "")
+ 
++list(APPEND ${MODULE_PREFIX}_LIBS freerdp-client)
+ list(APPEND ${MODULE_PREFIX}_LIBS freerdp)
+ list(APPEND ${MODULE_PREFIX}_LIBS winpr)
+ 
+--- FreeRDP-2.4.0/channels/rdp2tcp/client/CMakeLists.txt~	2021-07-27 11:58:27.000000000 +0200
++++ FreeRDP-2.4.0/channels/rdp2tcp/client/CMakeLists.txt	2021-08-21 13:15:02.847667180 +0200
+@@ -22,6 +22,6 @@ set(${MODULE_PREFIX}_SRCS
+ 
+ add_channel_client_library(${MODULE_PREFIX} ${MODULE_NAME} ${CHANNEL_NAME} TRUE "VirtualChannelEntryEx")
+ 
+-target_link_libraries(${MODULE_NAME} freerdp)
++target_link_libraries(${MODULE_NAME} winpr freerdp)
+ 
+ set_property(TARGET ${MODULE_NAME} PROPERTY FOLDER "Channels/${CHANNEL_NAME}/Client")

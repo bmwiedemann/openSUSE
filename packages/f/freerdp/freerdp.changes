@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Sep 18 10:21:29 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Create an explicit freerdp dependency for libwinpr
+
+-------------------------------------------------------------------
+Fri Sep 17 16:37:13 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add preliminary patch freerdp-fix-plugin-path.patch to fix dynamic
+  addin loading
+
+-------------------------------------------------------------------
+Fri Sep 17 10:27:03 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Modified spec to satisfy because obs-service-source_validator does not
+  support elif
+
+-------------------------------------------------------------------
+Wed Sep 15 17:18:29 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix the spec-cleaner mess
+- Enable a few options on TW
+- Build for 15.3 required another lib
+- Remove X264 option, no related backend exists and enabling it fails
+  in cmake creation stage
+
+-------------------------------------------------------------------
+Fri Aug 20 13:27:31 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Reorganize build flags
+- Apply fix for -DBUILTIN_CHANNELS=OFF: freerdp-builtin-channels-off-link-fix.diff
+- Add plugins to libwinpr
+
+-------------------------------------------------------------------
 Wed Aug 11 10:51:40 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Updated to release 2.4.0
@@ -80,7 +113,7 @@ Thu Feb 25 09:46:34 UTC 2021 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 -------------------------------------------------------------------
 Mon Jul 20 14:22:07 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
-- Updated to release 2.2.0 (boo#1174321)
+- Updated to release 2.2.0 (boo#1174321, gh#FreeRDP/FreeRDP#6381)
   * SECURITY: CVE-2020-15103 - Integer overflow due to missing input sanitation in rdpegfx channel
   * Sound & mic - filter GSM codec for microphone redirection (gh#FreeRDP/FreeRDP#6263)
   * windows client title length (gh#FreeRDP/FreeRDP#6335)
@@ -95,6 +128,7 @@ Mon Jul 20 14:22:07 UTC 2020 - Johannes Weberhofer <jweberhofer@weberhofer.at>
     - new: support for heartbeats
     - new: support for rail handshake ex flags
     - fix: possible race condition with redirects
+  * Drop upstream fixed patch: freerdp-CVE-2020-15103.patch
 
 - Removed freerdp_Mask_CACHED_BRUSH_when_checking_brush_style.patch
 

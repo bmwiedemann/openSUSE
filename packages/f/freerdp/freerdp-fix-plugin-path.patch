@@ -1,0 +1,78 @@
+Index: b/CMakeLists.txt
+===================================================================
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -948,11 +948,28 @@ set(FREERDP_EXTENSION_PATH "${CMAKE_INST
+ # Proxy plugins path
+ if(NOT DEFINED PROXY_PLUGINDIR)
+ 	message("using default plugins location")
+-  	set(FREERDP_PROXY_PLUGINDIR "${CMAKE_BINARY_DIR}/server/proxy/plugins")
++  	set(FREERDP_PROXY_PLUGINDIR "${FREERDP_PLUGIN_PATH}/server/proxy/plugins")
+ else()
+ 	set(FREERDP_PROXY_PLUGINDIR "${PROXY_PLUGINDIR}")
+ endif()
+ 
++function(dump_cmake_variables)
++    get_cmake_property(_variableNames VARIABLES)
++    list (SORT _variableNames)
++    foreach (_variableName ${_variableNames})
++        if (ARGV0)
++            unset(MATCHED)
++            string(REGEX MATCH ${ARGV0} MATCHED ${_variableName})
++            if (NOT MATCHED)
++                continue()
++            endif()
++        endif()
++        message(STATUS "${_variableName}=${${_variableName}}")
++    endforeach()
++endfunction()
++
++dump_cmake_variables("^FREERDP")
++
+ # Declare we have config.h, generated later on.
+ add_definitions("-DHAVE_CONFIG_H")
+ 
+Index: b/channels/client/addin.c
+===================================================================
+--- a/channels/client/addin.c
++++ b/channels/client/addin.c
+@@ -157,7 +157,7 @@ static FREERDP_ADDIN** freerdp_channels_
+ 	LPSTR pszPattern;
+ 	size_t cchPattern;
+ 	LPCSTR pszAddinPath = FREERDP_ADDIN_PATH;
+-	LPCSTR pszInstallPrefix = FREERDP_INSTALL_PREFIX;
++	LPCSTR pszInstallPrefix = "";
+ 	LPCSTR pszExtension;
+ 	LPSTR pszSearchPath;
+ 	size_t cchSearchPath;
+@@ -166,7 +166,7 @@ static FREERDP_ADDIN** freerdp_channels_
+ 	FREERDP_ADDIN** ppAddins;
+ 	WIN32_FIND_DATAA FindData;
+ 	cchAddinPath = strnlen(pszAddinPath, sizeof(FREERDP_ADDIN_PATH));
+-	cchInstallPrefix = strnlen(pszInstallPrefix, sizeof(FREERDP_INSTALL_PREFIX));
++	cchInstallPrefix = strnlen(pszInstallPrefix, 0);
+ 	pszExtension = PathGetSharedLibraryExtensionA(0);
+ 	cchPattern = 128 + strnlen(pszExtension, MAX_PATH) + 2;
+ 	pszPattern = (LPSTR)malloc(cchPattern + 1);
+Index: b/libfreerdp/common/addin.c
+===================================================================
+--- a/libfreerdp/common/addin.c
++++ b/libfreerdp/common/addin.c
+@@ -55,7 +55,7 @@ LPSTR freerdp_get_library_install_path(v
+ 	size_t cchInstallPrefix;
+ 	BOOL needLibPath, needInstallPath;
+ 	LPCSTR pszLibraryPath = FREERDP_LIBRARY_PATH;
+-	LPCSTR pszInstallPrefix = FREERDP_INSTALL_PREFIX;
++	LPCSTR pszInstallPrefix = "";
+ 	cchLibraryPath = strlen(pszLibraryPath) + 1;
+ 	cchInstallPrefix = strlen(pszInstallPrefix) + 1;
+ 	cchPath = cchInstallPrefix + cchLibraryPath;
+@@ -96,7 +96,7 @@ LPSTR freerdp_get_dynamic_addin_install_
+ 	size_t cchInstallPrefix;
+ 	BOOL needLibPath, needInstallPath;
+ 	LPCSTR pszAddinPath = FREERDP_ADDIN_PATH;
+-	LPCSTR pszInstallPrefix = FREERDP_INSTALL_PREFIX;
++	LPCSTR pszInstallPrefix = "";
+ 	cchAddinPath = strlen(pszAddinPath) + 1;
+ 	cchInstallPrefix = strlen(pszInstallPrefix) + 1;
+ 	cchPath = cchInstallPrefix + cchAddinPath;

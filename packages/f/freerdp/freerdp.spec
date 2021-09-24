@@ -16,16 +16,27 @@
 #
 
 
-# X264 and OPENH264 are disabled because openSUSE does not provide the codecs
+%if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
+%global _with_ffmpeg 1
+#global _with_openh264 1
+%global _with_soxr 1
+%global _with_lame 1
+%else
+%if 0%{?sle_version} == 150200 && 0%{?is_opensuse}
+%global _with_ffmpeg 1
+%endif
+%endif
+
 # enable -DWITH_GSSAPI=ON again after #gh/FreeRDP/FreeRDP/4348 has been fixed
 #global _with_gss 1
-#
+
 %define major_version 2
 %define uwac_version 0
 %define uwac_package %{uwac_version}-%{uwac_version}
 %ifarch aarch64 %{arm}
 %define _lto_cflags %{nil}
 %endif
+
 Name:           freerdp
 Version:        2.4.0
 Release:        0
@@ -35,6 +46,10 @@ Group:          Productivity/Networking/Other
 URL:            https://www.freerdp.com/
 Source0:        https://github.com/FreeRDP/FreeRDP/archive/%{version}.tar.gz#/FreeRDP-%{version}.tar.gz
 Source1:        freerdp-rpmlintrc
+# PATCH-FIX-UPSTREAM freerdp-channels-off-link-fix.diff -- based on https://github.com/FreeRDP/FreeRDP/pull/7235
+Patch0:         freerdp-builtin-channels-off-link-fix.diff
+# PATCH-FIX-SUSE freerdp-fix-plugin-path.patch -- preliminary fix addin loading
+Patch1:         freerdp-fix-plugin-path.patch
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 2.8
 BuildRequires:  cups-devel
@@ -52,12 +67,15 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(icu-i18n)
-BuildRequires:  pkgconfig(krb5)
+%{?_with_gss:BuildRequires:  pkgconfig(krb5) >= 1.13}
+%{?_with_lame:BuildRequires:  libmp3lame-devel}
 BuildRequires:  pkgconfig(libpcsclite)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libusb-1.0)
+%{?_with_openh264:BuildRequires:  libopenh264-devel}
 BuildRequires:  pkgconfig(openssl)
+%{?_with_soxr:BuildRequires:  pkgconfig(soxr)}
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(x11)
@@ -73,6 +91,11 @@ BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xtst)
 BuildRequires:  pkgconfig(xv)
 Requires:       lib%{name}%{major_version} = %{version}-%{release}
+Requires:       libwinpr%{major_version} = %{version}-%{release}
+%{?_with_ffmpeg:
+BuildRequires:  pkgconfig(libavcodec) >= 57.48.101
+BuildRequires:  pkgconfig(libavutil)
+}
 
 %description
 FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
@@ -182,17 +205,60 @@ export CFLAGS="%{optflags} -fPIE -pie"
 	-DCMAKE_INSTALL_PREFIX=%{_prefix} \
 	-DCMAKE_SKIP_RPATH=ON \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
-	-DWITH_SERVER=ON \
-	-DWITH_PCSC=ON \
+        -DWITH_ALSA=ON \
 	-DWITH_CAIRO=ON \
 	-DWITH_CUPS=ON \
-	-DWITH_JPEG=ON \
-	-DWITH_X264=OFF \
-	-DWITH_OPENH264=OFF \
+	-DWITH_CHANNELS=ON -DBUILTIN_CHANNELS=OFF \
+        -DWITH_CLIENT=ON \
+        -DWITH_DIRECTFB=OFF \
+        -DWITH_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
 	-DWITH_GSM=ON \
 	-DWITH_GSSAPI=%{?_with_gss:ON}%{?!_with_gss:OFF} \
-	-DWITH_CHANNELS=ON \
-	-DBUILTIN_CHANNELS=ON \
+        -DWITH_GSTREAMER_1_0=ON -DWITH_GSTREAMER_0_10=OFF \
+        -DWITH_ICU=ON \
+        -DWITH_IPP=OFF \
+	-DWITH_JPEG=ON \
+        -DWITH_LAME=%{?_with_lame:ON}%{?!_with_lame:OFF} \
+        -DWITH_MANPAGES=ON \
+        -DWITH_OPENH264=%{?_with_openh264:ON}%{?!_with_openh264:OFF} \
+        -DWITH_OPENSSL=ON \
+	-DWITH_PCSC=ON \
+        -DWITH_PULSE=ON \
+	-DWITH_SERVER=ON \
+        -DWITH_SERVER_INTERFACE=ON \
+        -DWITH_SHADOW_X11=ON \
+        -DWITH_SHADOW_MAC=ON \
+        -DWITH_SOXR=%{?_with_soxr:ON}%{?!_with_soxr:OFF} \
+        -DWITH_WAYLAND=ON \
+        -DWITH_X11=ON \
+        -DWITH_XCURSOR=ON \
+        -DWITH_XEXT=ON \
+        -DWITH_XKBFILE=ON \
+        -DWITH_XI=ON \
+        -DWITH_XINERAMA=ON \
+        -DWITH_XRENDER=ON \
+        -DWITH_XTEST=ON \
+        -DWITH_XV=ON \
+        -DWITH_ZLIB=ON \
+%ifarch x86_64
+        -DWITH_SSE2=ON \
+        -DWITH_VAAPI=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
+%else
+        -DWITH_SSE2=OFF \
+%endif
+%ifarch armv7hl
+        -DARM_FP_ABI=hard \
+        -DWITH_NEON=OFF \
+%endif
+%ifarch armv7hnl
+        -DARM_FP_ABI=hard \
+        -DWITH_NEON=ON \
+%endif
+%ifarch armv5tel armv6l armv7l
+        -DARM_FP_ABI=soft \
+        -DWITH_NEON=OFF \
+%endif
+	-DCHANNEL_GEOMETRY=ON -DCHANNEL_GEOMETRY_CLIENT=ON \
 	-DCHANNEL_URBDRC=ON \
 	-DCHANNEL_URBDRC_CLIENT=ON
 
@@ -237,6 +303,8 @@ cd build
 %{_libdir}/lib%{name}-shadow%{major_version}.so.*
 %{_libdir}/lib%{name}-server%{major_version}.so.*
 %{_libdir}/lib%{name}-shadow-subsystem%{major_version}.so.*
+%dir %{_libdir}/freerdp2
+%{_libdir}/freerdp2/*.so
 
 %files devel
 %{_libdir}/cmake/FreeRDP%{major_version}
