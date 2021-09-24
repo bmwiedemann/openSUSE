@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 16 09:41:13 UTC 2021 - aplanas@suse.com
+
+- Update to version 1.6.1:
+  * Support for DelegationUsage extension
+  * remove -u flag from readme, link to releases
+  * remove old go versions from travis
+  * fix upgrading transitive coreos dependency breakage
+
+-------------------------------------------------------------------
 Mon Jul 26 18:23:50 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Change to using systemd-sysusers

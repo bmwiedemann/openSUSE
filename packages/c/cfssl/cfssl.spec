@@ -15,12 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define configdir %{_sysconfdir}/cfssl
 %define datadir   %{_localstatedir}/lib/cfssl
 %define services cfssl-serve.service cfssl-ocspserve.service
 
 Name:           cfssl
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        CloudFlare's PKI/TLS toolkit
 License:        BSD-3-Clause
@@ -34,10 +35,10 @@ Source4:        %{name}-serve
 Source5:        %{name}-ocspserve
 Source6:        configs.tar.xz
 Source7:        system-user-cfssl.conf
-BuildRequires:  golang(API) >= 1.12
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
+BuildRequires:  golang(API) >= 1.12
 # There is a collision in /usr/bin/mkbundle
 Conflicts:      mono-devel
 Requires(pre):  %fillup_prereq
