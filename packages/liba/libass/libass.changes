@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 19 17:06:27 UTC 2021 - Oleg Oshmyan <chortos@inbox.lv>
+
+- Update to version 0.15.2
+  * Fix some format string bugs, which could lead to
+    garbled log messages or on some platforms crashes
+  * Fix ass_set_fonts_dir failing to load long paths
+  * Better handling of control characters that have no associated font glyphs
+- Update Requires and BuildRequires to actual pkgconfig versions
+
+-------------------------------------------------------------------
 Mon May  3 15:58:23 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.15.1

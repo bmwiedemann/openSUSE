@@ -18,7 +18,7 @@
 
 %define sover   9
 Name:           libass
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        Library for SSA/ASS-formatted subtitle rendering
 License:        ISC
@@ -31,7 +31,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig) >= 2.10.92
 BuildRequires:  pkgconfig(freetype2) >= 9.10.3
 BuildRequires:  pkgconfig(fribidi) >= 0.19.0
-BuildRequires:  pkgconfig(harfbuzz) >= 0.9.5
+BuildRequires:  pkgconfig(harfbuzz) >= 1.2.3
 
 %description
 libass is a subtitle renderer for the ASS/SSA
@@ -52,13 +52,13 @@ Summary:        Development files for libass, a subtitle rendering library
 Group:          Development/Libraries/C and C++
 Requires:       glibc-devel
 Requires:       libass%{sover} = %{version}
-Requires:       pkgconfig(fontconfig)
+Requires:       pkgconfig(fontconfig) >= 2.10.92
 Requires:       pkgconfig(freetype2) >= 9.10.3
 Requires:       pkgconfig(fribidi) >= 0.19.0
-Requires:       pkgconfig(harfbuzz)
+Requires:       pkgconfig(harfbuzz) >= 1.2.3
 
 %description devel
-This package is needed if you want to develop / compile against libASS.
+This package is needed if you want to develop / compile against libass.
 
 %prep
 %autosetup
