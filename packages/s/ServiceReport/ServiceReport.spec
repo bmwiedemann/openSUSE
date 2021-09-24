@@ -21,13 +21,13 @@
 # By default python 3 is used to build the package.
 %define python python3
 Name:           ServiceReport
-Version:        2.2.3
+Version:        2.2.3+git1.55a13db1c256
 Release:        0
 Summary:        A tool to validate and repair First Failure Data Capture (FFDC) configuration
 License:        GPL-2.0-only
 Group:          System/Management
 URL:            https://github.com/linux-ras/ServiceReport
-Source:         https://github.com/linux-ras/ServiceReport/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.xz
 Patch:          harden_servicereport.service.patch
 BuildRequires:  %{python}
 BuildRequires:  %{python}-setuptools

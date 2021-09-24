@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 24 11:32:11 UTC 2021 - msuchanek@suse.de
+
+- Update to version 2.2.3+git1.55a13db1c256:
+  * [fadump] Update crashkernel recommendation (tid#7023277).
+
+-------------------------------------------------------------------
 Tue Jul 27 09:15:52 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
 - Added hardening to systemd service(s). Added harden_servicereport.service.patch

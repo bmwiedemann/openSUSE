@@ -39,4 +39,12 @@
     <comment>- Added hardening to systemd service(s). Added harden_servicereport.service.patch</comment>
     <requestid>909402</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>77f8cb246bf0d087b419b8dadea9e3f8</srcmd5>
+    <version>2.2.3+git1.55a13db1c256</version>
+    <time>1632522936</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921331</requestid>
+  </revision>
 </revisionlist>
