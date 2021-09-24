@@ -29,23 +29,18 @@
 %define skip_python36 1
 %define modname panel
 Name:           python-panel%{psuffix}
-Version:        0.12.1
+Version:        0.12.3
 Release:        0
 Summary:        A high level app and dashboarding solution for Python
 License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://panel.holoviz.org
 Source:         https://files.pythonhosted.org/packages/source/p/panel/panel-%{version}.tar.gz
-# upstream forgot to package test files for 0.12.1 (See Patch1)
-Source1:        https://github.com/holoviz/panel/raw/v%{version}/panel/tests/pane/assets/mp3.mp3
-Source2:        https://github.com/holoviz/panel/raw/v%{version}/panel/tests/pane/assets/mp4.mp4
 Source99:       python-panel-rpmlintrc
-# PATCH-FIX-UPSTREAM panel-pr2636-fixtests.patch -- gh#holoviz/panel#2636
-Patch1:         https://github.com/holoviz/panel/pull/2636.patch#/panel-pr2636-fixtests.patch
 BuildRequires:  %{python_module Markdown}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module bokeh >= 2.2.2}
-BuildRequires:  %{python_module param >= 1.9.3}
+BuildRequires:  %{python_module bokeh >= 2.4.0}
+BuildRequires:  %{python_module param >= 1.10.0}
 BuildRequires:  %{python_module pyct >= 0.4.4}
 BuildRequires:  %{python_module pyviz-comms >= 0.7.4}
 BuildRequires:  %{python_module requests}
@@ -74,8 +69,9 @@ BuildRequires:  %{python_module twine}
 %endif
 Requires:       jupyter-panel
 Requires:       python-Markdown
-Requires:       python-bokeh >= 2.2.2
-Requires:       python-param >= 1.9.3
+Requires:       python-bleach
+Requires:       python-bokeh >= 2.4.0
+Requires:       python-param >= 1.10.0
 Requires:       python-pyct >= 0.4.4
 Requires:       python-pyviz-comms >= 0.7.4
 Requires:       python-requests
@@ -83,7 +79,7 @@ Requires:       python-tqdm >= 4.48.0
 Requires(post): update-alternatives
 Requires(postun):update-alternatives
 Recommends:     python-Pillow
-Recommends:     python-holoviews >= 1.13.2
+Recommends:     python-holoviews > 1.14.1
 Recommends:     python-matplotlib
 Recommends:     python-notebook >= 5.4
 Recommends:     python-plotly >= 4.0
@@ -111,8 +107,6 @@ to all Python flavors.
 %autosetup -p1 -n panel-%{version}
 # Do not try to rebuild the bundled npm stuff. We don't have network. Just use the shipped bundle.
 sed -i '/def _build_paneljs/ a \    return' setup.py
-mkdir panel/tests/pane/assets
-cp %{SOURCE1} %{SOURCE2} panel/tests/pane/assets/
 
 %build
 %python_build
