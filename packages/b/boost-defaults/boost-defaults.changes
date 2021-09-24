@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 17 09:32:07 CEST 2021 - aschnell@suse.com
+
+- Update for Boost 1.77.0
+
+-------------------------------------------------------------------
 Mon Apr 19 15:14:28 CEST 2021 - aschnell@suse.com
 
 - Update for Boost 1.76.0
@@ -22,12 +27,12 @@ Tue Nov 10 11:15:03 UTC 2020 - Adam Majer <adam.majer@suse.de>
 Thu Aug 27 09:20:07 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - remove python2 variants, no longer available
-- fix dependency on libboost_mpi_python 
+- fix dependency on libboost_mpi_python
 
 -------------------------------------------------------------------
 Fri Aug 21 20:03:10 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- update for Boost 1.74.0 
+- update for Boost 1.74.0
 
 -------------------------------------------------------------------
 Fri Apr 17 07:58:34 UTC 2020 - Tomáš Chvátal <tchvatal@suse.com>
@@ -49,4 +54,3 @@ Mon Mar 11 16:14:10 UTC 2019 - Adam Majer <adam.majer@suse.de>
 Fri Dec 14 01:19:27 UTC 2018 - adam.majer@suse.de
 
 - Initial release of the package (bsc#1098432)
-
