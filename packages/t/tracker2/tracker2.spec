@@ -46,7 +46,6 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  sqlite3-devel >= 3.8.3
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.18.0
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(dbus-1)
@@ -87,12 +86,12 @@ It provides context linking and audit trails for file objects.
 It has the ability to index, store, harvest metadata, retrieve
 and search all types of files and other first class objects.
 
+
 # This package name is not correct as per SLPP, but the 'lib' lives in a
 # private directory: the symbol provided is libtracker-common.so() (same
 # name across multiple versions of tracker).
 # Yet, different libtracker-miner-* packages require their explicit
 # version of libtracker-common.so as they link is done using rpath.
-
 %package -n libtracker-common-%{RPMTrackerAPI}
 Summary:        Convenience libraries for Tracker
 Group:          System/Libraries
@@ -221,7 +220,6 @@ This subpackage contains the headers to make use of its libraries.
 
 %prep
 %autosetup -p1 -n %{_name}-%{version}
-translation-update-upstream po %{_name}
 
 %build
 %meson \
