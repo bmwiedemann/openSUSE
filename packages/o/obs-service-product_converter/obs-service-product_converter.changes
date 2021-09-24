@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 24 15:42:24 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.5.0
+  * support run_depenendency_check="warn" or ="error"
+
+-------------------------------------------------------------------
+Wed Sep 22 07:45:50 UTC 2021 - Adrian Schröter <adrian@suse.de>
+
+- 1.4.9
+  * fix use_undecided="true" special case
+
+-------------------------------------------------------------------
 Wed Sep  8 13:35:11 UTC 2021 - Adrian Schröter <adrian@suse.de>
 
 - 1.4.8

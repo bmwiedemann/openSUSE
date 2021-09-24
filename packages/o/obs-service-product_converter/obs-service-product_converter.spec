@@ -19,7 +19,7 @@
 %define service product_converter
 
 Name:           obs-service-%service
-Version:        1.4.8
+Version:        1.5.0
 Release:        0
 Summary:        An OBS source service: create product media build descriptions
 License:        GPL-2.0-or-later

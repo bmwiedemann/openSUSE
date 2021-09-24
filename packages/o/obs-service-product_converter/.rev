@@ -157,4 +157,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>919245</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4bd686de5697131c4d2e1b026fd509ba</srcmd5>
+    <version>1.5.0</version>
+    <time>1632522939</time>
+    <user>dimstar_suse</user>
+    <comment>- 1.5.0
+  * support run_depenendency_check=&quot;warn&quot; or =&quot;error&quot;
+
+- 1.4.9
+  * fix use_undecided=&quot;true&quot; special case</comment>
+    <requestid>921347</requestid>
+  </revision>
 </revisionlist>
