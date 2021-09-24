@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 23 18:13:04 UTC 2021 - Matthew Trescott <matthewtrescott@gmail.com>
+
+- Packaging changes:
+  * Fix build dependencies to include X libs for interactive build
+  * Add build dependency on Xft for FreeType rendering in plotter
+
+-------------------------------------------------------------------
 Mon Aug 16 02:27:21 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
 
 - Update to version 35:

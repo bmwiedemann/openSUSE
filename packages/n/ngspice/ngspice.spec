@@ -41,9 +41,10 @@ BuildRequires:  fftw3-devel
 BuildRequires:  gcc-c++
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(tinfo)
-%if 0%{?build_shared}
+%if ! 0%{?build_shared}
 BuildRequires:  libXaw-devel
 BuildRequires:  libXext-devel
+BuildRequires:  libXft-devel
 BuildRequires:  libXmu-devel
 %endif
 Requires:       %{pname}-scripts = %{version}
