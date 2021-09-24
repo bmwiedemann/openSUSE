@@ -33,7 +33,6 @@ BuildRequires:  fdupes
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
-BuildRequires:  translation-update-upstream
 # configure tests for python gi-bindings of gucharmap
 BuildRequires:  typelib-1_0-Gucharmap-2_90
 BuildRequires:  vala >= 0.28.0
@@ -275,7 +274,6 @@ The gedit wordcompletion plugin
 %autosetup -p1
 
 install -m644 %{SOURCE1} .
-translation-update-upstream po %{name}
 
 %build
 %meson
