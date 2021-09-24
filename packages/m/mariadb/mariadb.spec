@@ -611,8 +611,8 @@ filelist galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariaback
 touch mariadb-galera-exclude.files
 %else
 filelist_excludes galera_new_cluster galera_recovery wsrep_sst_common wsrep_sst_mariabackup wsrep_sst_mysqldump wsrep_sst_rsync wsrep_sst_rsync_wan >mariadb-galera-exclude.files
-echo /usr/share/mysql/systemd/use_galera_new_cluster.conf >>mariadb-galera-exclude.files
-echo /usr/share/mysql/wsrep_notify >>mariadb-galera-exclude.files
+echo %{_datadir}/mysql/systemd/use_galera_new_cluster.conf >>mariadb-galera-exclude.files
+echo %{_datadir}/mysql/wsrep_notify >>mariadb-galera-exclude.files
 %endif
 
 # mariadb-bench.files
@@ -714,8 +714,8 @@ rm -rf '%{buildroot}'%{_datadir}/mysql/{solaris,SELinux}
 mkdir -p '%{buildroot}'%{_localstatedir}/lib/mysql-files
 
 # install rpm macros file
-mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d
-install -m 644 %{SOURCE19} %{buildroot}%{_rpmconfigdir}/macros.d
+mkdir -p %{buildroot}%{_rpmmacrodir}
+install -m 644 %{SOURCE19} %{buildroot}%{_rpmmacrodir}
 
 # Install sysusers.d file
 mkdir -p %{buildroot}%{_sysusersdir}
@@ -905,8 +905,7 @@ exit 0
 %{_datadir}/mysql/systemd/mariadb@.socket
 
 %files rpm-macros
-%dir %{_rpmconfigdir}/macros.d
-%{_rpmconfigdir}/macros.d/macros.mariadb-test
+%{_rpmmacrodir}/macros.mariadb-test
 
 %files -n libmariadbd%{soname}
 %{_libdir}/libmariadbd.so.*

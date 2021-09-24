@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 20 09:01:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
+
+- Replace %{_rpmconfigdir}/macros.d with %{_rpmmacrodir},
+  remove ownership of this directory. Fixes boo#1182218
+- Run spec-cleaner
+
+-------------------------------------------------------------------
 Mon Sep  6 08:35:07 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Update to 10.6.4
