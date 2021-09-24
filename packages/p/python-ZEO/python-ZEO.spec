@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,17 +20,18 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-ZEO
-Version:        5.2.1
+Version:        5.2.3
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/ZEO
 Source:         https://files.pythonhosted.org/packages/source/Z/ZEO/ZEO-%{version}.tar.gz
 Source99:       %{name}-rpmlintrc
+# https://github.com/zopefoundation/ZEO/issues/184
+Patch0:         python-ZEO-no-mock.patch
 BuildRequires:  %{python_module ZConfig}
 BuildRequires:  %{python_module ZODB >= 5.5.1}
 BuildRequires:  %{python_module manuel}
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module random2}
 BuildRequires:  %{python_module setuptools}
@@ -53,7 +54,7 @@ Requires:       python-zc.lockfile
 Requires:       python-zdaemon
 Requires:       python-zope.interface
 Requires(post): update-alternatives
-Requires(preun): update-alternatives
+Requires(preun):update-alternatives
 BuildArch:      noarch
 %if %{with python2}
 BuildRequires:  python-futures
@@ -76,6 +77,7 @@ This package contains documentation files for %{name}.
 
 %prep
 %setup -q -n ZEO-%{version}
+%patch0 -p1
 # delete backup files
 find . -name "*~" -print -delete
 # remove unwanted shebang
@@ -97,7 +99,8 @@ sed -i -e 's:msgpack < 0.6:msgpack:g' setup.py
 %python_clone -a %{buildroot}%{_bindir}/zeo-nagios
 
 %check
-%python_exec setup.py test
+pushd src
+%pyunittest -v ZEO/tests/test*.py
 
 %post
 %python_install_alternative runzeo zeoctl zeopack zeo-nagios
