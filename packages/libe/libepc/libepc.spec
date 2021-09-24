@@ -1,7 +1,7 @@
 #
 # spec file for package libepc
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2009 Dominique Leuenberger, Almere, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,7 +30,6 @@ BuildRequires:  gdbm-devel
 BuildRequires:  intltool
 BuildRequires:  libgnutls-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  xz
 BuildRequires:  pkgconfig(avahi-ui-gtk3)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36
@@ -73,7 +72,6 @@ data.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure --disable-static
