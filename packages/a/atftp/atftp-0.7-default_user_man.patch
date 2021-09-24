@@ -1,7 +1,7 @@
-Index: atftpd.8
+Index: atftp-0.7.5/atftpd.8
 ===================================================================
---- atftpd.8.orig
-+++ atftpd.8
+--- atftp-0.7.5.orig/atftpd.8
++++ atftp-0.7.5/atftpd.8
 @@ -80,10 +80,10 @@ acknowledging the 'multicast' request by
  
  .TP

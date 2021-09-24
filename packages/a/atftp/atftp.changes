@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 15 13:17:41 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to version 0.7.5 [bsc#1190522, CVE-2021-41054]
+  * text files: mark/convert all textfiles to UTF-8
+  * fix some compiler warnings
+  * fix buffer overflow in atftpd (CVE-2021-41054)
+  * test.sh: check for root no longer necessary
+  * tftpd.c: Only drop privs if requested or running as root + check for failure
+  * fix invalid read of 1 byte in tftp_send_request.
+  * Check return value of fseek(), abort if != 0
+  * options.c: Proper fix for the read-past-end-of-array
+  * configure.ac: Add -std=gnu89 if gcc/clang is detected
+  * tftpd.c: Fix memleak if thread spawning fails
+  * atftp: Check return value of fgets, buffer might be uninitialized on NULL
+  * Fix check for argz support (HAVE_ARGZ -> HAVE_ARGZ_H)
+  * replace LICENSE with current version
+  * Remove patches fixed upstream:
+    - atftp-0.7-sorcerers_apprentice.patch
+    - atftp-0.7-server_receive_race.patch
+    - atftp-0.7-ack_heuristic.patch
+  * Rebase patches:
+    - atftp-drop_privileges_non-daemon.patch
+    - atftp-0.7-default_dir_man.patch
+    - atftp-0.7-default_user_man.patch
+
+-------------------------------------------------------------------
+Tue Sep 14 09:57:25 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * atftpd.service
+
+-------------------------------------------------------------------
 Tue May 25 23:26:52 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.7.4

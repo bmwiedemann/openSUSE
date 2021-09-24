@@ -2,6 +2,19 @@
 Description=Advanced TFTP Server
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+PrivateDevices=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 EnvironmentFile=/etc/sysconfig/atftpd
 # atftpd does not create logfile when there is none
 ExecStartPre=-/usr/bin/su -c "/usr/bin/touch $ATFTPD_LOGFILE" -s /bin/bash $ATFTPD_USER

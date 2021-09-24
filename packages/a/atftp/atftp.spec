@@ -23,27 +23,21 @@
 %endif
 
 Name:           atftp
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        Advanced TFTP Server and Client
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://sourceforge.net/projects/atftp/
-Source:         %{name}-%{version}.tar.gz
+Source:         https://sourceforge.net/projects/atftp/files/%{name}-%{version}.tar.gz
 Source2:        atftpd.sysconfig
 Source3:        atftpd.logrotate
 Source5:        atftpd.service
 Source6:        atftpd.socket
-# PATCH-FIX-SUSE sorcerer's apprentice syndrom (bnc#727843)
-Patch1:         atftp-0.7-sorcerers_apprentice.patch
-# PATCH-FIX-SUSE server receive thread race (bnc#599856)
-Patch2:         atftp-0.7-server_receive_race.patch
-# PATCH-FIX-SUSE drop one duplicated ACK each round (bnc#774376)
-Patch3:         atftp-0.7-ack_heuristic.patch
-Patch4:         atftp-0.7-default_user_man.patch
+Patch1:         atftp-0.7-default_user_man.patch
 # PATCH-FIX-SUSE update default directory in man (bnc#507011)
-Patch5:         atftp-0.7-default_dir_man.patch
-Patch6:         atftp-drop_privileges_non-daemon.patch
+Patch2:         atftp-0.7-default_dir_man.patch
+Patch3:         atftp-drop_privileges_non-daemon.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pcre-devel
@@ -68,13 +62,7 @@ multithreaded and will eventually support multicast, allowing faster
 boot of hundreds of machines simultaneously.
 
 %prep
-%setup -q -n %{name}-%{version}
-%patch1
-%patch2
-%patch3
-%patch4
-%patch5
-%patch6 -p1
+%autosetup -p1
 
 %build
 autoreconf -fi
