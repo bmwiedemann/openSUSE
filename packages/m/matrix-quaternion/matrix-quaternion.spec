@@ -17,19 +17,22 @@
 
 
 Name:           matrix-quaternion
-Version:        0.0.9.4f
+Version:        0.0.95
 Release:        0
 Summary:        QT Matrix client
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
-URL:            https://github.com/QMatrixClient/Quaternion
-Source0:        https://github.com/QMatrixClient/Quaternion/archive/%{version}/%{name}-%{version}.tar.gz
+URL:            https://github.com/quotient-im/Quaternion
+Source0:        https://github.com/quotient-im/Quaternion/archive/%{version}/matrix-quaternion-%{version}.tar.gz
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Olm)
 BuildRequires:  cmake(Qt5Keychain)
 BuildRequires:  cmake(Qt5LinguistTools)
-BuildRequires:  pkgconfig(QMatrixClient) >= 0.5.3
+BuildRequires:  cmake(QtOlm)
+BuildRequires:  cmake(Quotient) >= 0.6.2
 BuildRequires:  pkgconfig(Qt5Core) >= 5.9
 BuildRequires:  pkgconfig(Qt5DBus)
 BuildRequires:  pkgconfig(Qt5Gui)
@@ -37,17 +40,14 @@ BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
+BuildRequires:  pkgconfig(Qt5QuickControls2)
 BuildRequires:  pkgconfig(Qt5Widgets)
 Requires:       %{name}-lang
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquickcontrols2
-%if 0%{?suse_version} < 1500
-BuildRequires:  gcc7-c++
-%else
-BuildRequires:  gcc-c++
-%endif
-# upstream use instead Qt5Core, Qt5Gui, Qt5Network, Qt5Quick, Qt5Widgets:
-# BuildRequires:  libqt5-qtdeclarative-devel libqt5-qtquickcontrols
+Conflicts:      matrix-quaternion-git
+Provides:       matrix-quaternion = %{version}
+Provides:       matrix-quaternion-git = %{version}
+Provides:       quaternion = %{version}
+Provides:       quaternion-git = %{version}
 
 %description
 Quaternion is a desktop IM client for the Matrix protocol using QT.
@@ -58,10 +58,6 @@ Quaternion is a desktop IM client for the Matrix protocol using QT.
 %setup -q -n Quaternion-%{version}
 
 %build
-%if 0%{?suse_version} < 1500
-export CC="gcc-7"
-export CXX="g++-7"
-%endif
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags}"
 %cmake
@@ -88,9 +84,10 @@ export CXXFLAGS="%{optflags}"
 %{_datadir}/icons/hicolor/*/apps/*
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/*
-%dir %{_datadir}/QMatrixClient/quaternion
+%dir %{_datadir}/Quotient
+%dir %{_datadir}/Quotient/quaternion
 
 %files lang
-%{_datadir}/QMatrixClient/quaternion/translations/
+%{_datadir}/Quotient/quaternion/translations/
 
 %changelog
