@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 17 08:29:43 CEST 2021 - aschnell@suse.com
+
+- update to 1.77.0:
+  * new libraries:
+    + Describe - Reflection Library
+    + Lambda2 - Lambda Library
+  * for details on all changes see,
+    https://www.boost.org/users/history/version_1_77_0.html
+- dynamic_linking.patch: updated
+- boost-math.patch and boost-process.patch: added from upstream
+
+-------------------------------------------------------------------
 Tue Jun  1 06:43:16 UTC 2021 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
 
 - Compile boost iostreams with lzma support for reading .xz files
@@ -6,7 +18,7 @@ Tue Jun  1 06:43:16 UTC 2021 - Haochuan Chen <yjcoshc@mail.nankai.edu.cn>
 -------------------------------------------------------------------
 Sat May  8 16:29:23 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
-- use https:// 
+- use https:// in spec file
 
 -------------------------------------------------------------------
 Wed May  5 18:18:21 UTC 2021 - Andreas Schwab <schwab@suse.de>
@@ -66,7 +78,7 @@ Thu Dec 17 10:42:56 UTC 2020 - Adam Majer <adam.majer@suse.de>
 Mon Dec 14 15:14:58 UTC 2020 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.75.0:
-  * new library: 
+  * new library:
     + Boost.JSON - JSON parsing library
     + Boost.LEAF - error handling library
     + Boost.PFR  - basic reflection without macros or boilderplate code
@@ -103,12 +115,12 @@ Thu Sep  3 21:30:24 UTC 2020 - Berthold Gunreben <azouhr@opensuse.org>
 -------------------------------------------------------------------
 Thu Aug 27 09:15:59 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- fix nothing provides libboost_mpi_python-py3-1_74_0 
+- fix nothing provides libboost_mpi_python-py3-1_74_0
 
 -------------------------------------------------------------------
 Fri Aug 21 20:06:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- provide/obsolete boost-nowide 10.0.2 
+- provide/obsolete boost-nowide 10.0.2
 
 -------------------------------------------------------------------
 Mon Aug 17 17:23:18 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -276,12 +288,12 @@ Wed Mar  6 15:24:01 UTC 2019 - Adam Majer <adam.majer@suse.de>
 -------------------------------------------------------------------
 Fri Feb  1 08:35:06 UTC 2019 - cgoll@suse.com
 
-- fixed hpc build for python3.7 
+- fixed hpc build for python3.7
 
 -------------------------------------------------------------------
 Wed Jan 23 20:23:54 UTC 2019 - cgoll@suse.com
 
-- added hpc modularized versions, which have a different naming 
+- added hpc modularized versions, which have a different naming
   scheme so that they do not collide with existing libraries
   * hpc builds miss the documentation
   * three new _mulitbuild flavors which are
@@ -336,7 +348,7 @@ Mon Oct  1 12:36:07 UTC 2018 - schwab@suse.de
 -------------------------------------------------------------------
 Wed Sep 12 12:17:23 UTC 2018 - aeszter@gwdg.de
 
-- Fix build on Leap < 15.0 
+- Fix build on Leap < 15.0
 
 -------------------------------------------------------------------
 Fri Aug 10 12:48:51 UTC 2018 - adam.majer@suse.de
@@ -573,7 +585,7 @@ Thu Apr 20 13:52:20 EST 2017 - adam.majer@suse.de
     intrusive, lexicalcast, math, multi-index containers,
     multiprecision, predef, program options, regex, smart pointers,
     test ,typeindex, typetraits, unordered, variant
-  + for details, see 
+  + for details, see
     http://www.boost.org/users/history/version_1_64_0.html
 - Build PyNumpy module
   + add build requires on python-numpy
@@ -598,7 +610,7 @@ Fri Feb  3 15:58:17 UTC 2017 - adam.majer@suse.de
 -------------------------------------------------------------------
 Wed Jan 25 13:24:39 UTC 2017 - adam.majer@suse.de
 
-- Fix dependency typos. 
+- Fix dependency typos.
 
 -------------------------------------------------------------------
 Tue Jan 17 12:00:48 UTC 2017 - adam.majer@suse.de
@@ -690,7 +702,7 @@ Thu Aug 18 14:40:43 UTC 2016 - mvetter@suse.com
 
 - Fix boo#994378, boo#994381, boo#994382 boo#994383:
   Fix build issues when optional_fwd.hpp is used before
-  including boost/config.hpp 
+  including boost/config.hpp
 - Add boost-fix_include_config.patch from
   gh#boostorg/optional#19
 
@@ -796,15 +808,15 @@ Fri Oct 23 11:29:11 UTC 2015 - idonmez@suse.com
 - context now builds on aarch64
 - Import two patches from Fedora: boost-1.59-python-make_setter.patch,
   boost-1.59-test-fenv.patch
-- Drop 0001-Fix-exec_file-for-Python-3-3.4.patch, 
-  0002-Fix-a-regression-with-non-constexpr-types.patch, 
+- Drop 0001-Fix-exec_file-for-Python-3-3.4.patch,
+  0002-Fix-a-regression-with-non-constexpr-types.patch,
   boost-uuid-comparison.patch, boost-unrecognized-option.patch.
   Fixed upstream.
 
 -------------------------------------------------------------------
 Thu Jun 11 08:26:58 UTC 2015 - idonmez@suse.com
 
-- Remove unneeded dependency on xorg-x11-devel 
+- Remove unneeded dependency on xorg-x11-devel
 
 -------------------------------------------------------------------
 Thu May 21 13:04:18 UTC 2015 - schwab@suse.de
@@ -914,7 +926,7 @@ Tue Jul 22 12:22:13 UTC 2014 - fcrozat@suse.com
 -------------------------------------------------------------------
 Tue Apr 29 14:34:41 UTC 2014 - dvaleev@suse.com
 
-- ppc64 ABIv2 support 
+- ppc64 ABIv2 support
 - enable build_context for ppc64le
 - added patches:
   * boost-ppc64-abiv2-context.patch
@@ -936,23 +948,23 @@ Tue Mar 11 12:04:13 UTC 2014 - Rene.vanPaassen@gmail.com
 
 - further improved the use of supplied b2 / bootstrap.sh,
   include user-config.jam, and remove superfluous python
-  and gcc instructions from user-config.jam 
+  and gcc instructions from user-config.jam
 
 -------------------------------------------------------------------
 Mon Mar 10 16:26:29 UTC 2014 - Rene.vanPaassen@gmail.com
 
 - fix problem with executable .pdf in doc by correcting
-  permissions after install (%attr with a dir failed on 
-  sled/sles) 
-- add dependency on zlib-devel and libbz2-devel and use the 
-  supplied bootstrap.sh script in building. This adds 
+  permissions after install (%attr with a dir failed on
+  sled/sles)
+- add dependency on zlib-devel and libbz2-devel and use the
+  supplied bootstrap.sh script in building. This adds
   on-the-fly compression to boost-iostreams
 
 -------------------------------------------------------------------
 Thu Feb 27 06:13:01 UTC 2014 - coolo@suse.com
 
 - remove broken python module mpi.so
-- trying to make the build more reliable: 
+- trying to make the build more reliable:
   * use -fno-var-tracking in cxxflags as recommended by richi
   * disable parallel build on low memory
 
@@ -966,12 +978,12 @@ Fri Feb  7 14:48:30 CET 2014 - ro@suse.de
 
 - add boost-1.54.0-thread-link_atomic.patch fixing upstream issue
   https://svn.boost.org/trac/boost/ticket/9041
-  (fixes compilation failure of snapper on various platforms) 
+  (fixes compilation failure of snapper on various platforms)
 
 -------------------------------------------------------------------
 Wed Feb  5 13:58:30 CET 2014 - ro@suse.de
 
-- enable build_mpi on s390/s390x 
+- enable build_mpi on s390/s390x
 
 -------------------------------------------------------------------
 Tue Jan  7 11:02:00 UTC 2014 - schwab@suse.de
@@ -1060,10 +1072,10 @@ Sat Mar 16 11:35:15 UTC 2013 - dap.darkness@gmail.com
 - Update to 1.53.0. Major changes since 1.49.0:
 
   New libraries:
-  * Algorithm:  A collection of useful generic algorithms. 
+  * Algorithm:  A collection of useful generic algorithms.
   * Context:  Context switching library.
-  * Functional/OverloadedFunction: Overload different functions. 
-  * LocalFunction: Program functions locally, within other functions. 
+  * Functional/OverloadedFunction: Overload different functions.
+  * LocalFunction: Program functions locally, within other functions.
   * Utility/IdentityType: Wrap types within round parenthesis.
 
   For a detailed descriptions see
@@ -1075,11 +1087,11 @@ Sat Mar 16 11:35:15 UTC 2013 - dap.darkness@gmail.com
   * boost-chrono_add_function_return.patch
   * boost-fix_documentation.patch
   * boost-time_utc.patch
-  
+
 -------------------------------------------------------------------
 Wed Feb 27 18:34:09 UTC 2013 - dmueller@suse.com
 
-- build without openmpi on aarch64 for now 
+- build without openmpi on aarch64 for now
 
 -------------------------------------------------------------------
 Wed Jan 23 13:30:18 UTC 2013 - BSipos@rkf-eng.com
@@ -1140,7 +1152,7 @@ Tue Mar 13 12:45:31 CET 2012 - pth@suse.de
   * Phoenix
   * Ratio
 
-  For a detailed descriptions see 
+  For a detailed descriptions see
   http://www.boost.org/users/history/version_1_47_0.html
   http://www.boost.org/users/history/version_1_48_0.html
   http://www.boost.org/users/history/version_1_49_0.html
@@ -1150,7 +1162,7 @@ Tue Mar 13 12:45:31 CET 2012 - pth@suse.de
 - Package PDF documentation independent of whether we build it
   ourselves.
 - Fix missing function return in Boost::Chrono's process_cpu_clocks.hpp
-  
+
 -------------------------------------------------------------------
 Mon Feb 13 10:44:37 UTC 2012 - coolo@suse.com
 
@@ -1179,7 +1191,7 @@ Mon Oct  3 12:17:41 CEST 2011 - dmueller@suse.de
 -------------------------------------------------------------------
 Tue Apr 19 00:13:36 CEST 2011 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 
 -------------------------------------------------------------------
 Sun Mar 21 11:53:29 UTC 2011 - idoenmez@novell.com
@@ -1248,8 +1260,8 @@ Thu Nov 25 12:01:42 CET 2010 - pth@suse.de
 -------------------------------------------------------------------
 Mon Oct 25 07:32:01 UTC 2010 - jslaby@novell.com
 
-- take care of random library (build 32bit on x86_64 and 
-  require it in boost-devel) 
+- take care of random library (build 32bit on x86_64 and
+  require it in boost-devel)
 
 -------------------------------------------------------------------
 Wed Sep 29 09:42:52 UTC 2010 - coolo@novell.com
@@ -1313,7 +1325,7 @@ Thu Aug 26 10:55:59 CEST 2010 - pth@suse.de
       o Several fixes for file descriptors class, including a
         breaking change to the constructors and open methods for
         file_descriptor, file_descriptor_source and
-        file_descriptor_sink.  See the documentation for details. 
+        file_descriptor_sink.  See the documentation for details.
         The old methods are still available if you define
         BOOST_IOSTREAMS_USE_DEPRECATED
 
@@ -1339,8 +1351,8 @@ Thu Aug 26 10:55:59 CEST 2010 - pth@suse.de
  For a complete list of changes see
  http://www.boost.org/users/news/version_1_43_0 and
  http://www.boost.org/users/news/version_1_44_0.
-          
-                                          
+
+
 -------------------------------------------------------------------
 Fri Jul  9 13:17:57 CEST 2010 - pth@suse.de
 
@@ -1423,7 +1435,7 @@ Sat Apr  3 00:00:00 CET 2010 - freespacer@gmx.de
    New Libraries
 
      * Property Tree: A tree data structure especially suited to storing
-       configuration data, from Marcin Kalicinski and Sebastian Redl. 
+       configuration data, from Marcin Kalicinski and Sebastian Redl.
 
    Updated Libraries (see README for details)
 
@@ -1491,7 +1503,7 @@ Mon Oct 19 15:20:52 CEST 2009 - pth@suse.de
 -------------------------------------------------------------------
 Thu Aug  6 18:50:30 CEST 2009 - pth@suse.de
 
-- Add a fix from boost bugtracker that fixes the hash resizing 
+- Add a fix from boost bugtracker that fixes the hash resizing
   (boost#54376)
 - Add a test for cancelling deadline timers from the same changeset.
 
@@ -1508,7 +1520,7 @@ Tue Jul 28 22:01:41 CEST 2009 - coolo@novell.com
 
    New Libraries
 
-     * Signals2: Managed signals & slots callback implementation (thread-safe version 2), 
+     * Signals2: Managed signals & slots callback implementation (thread-safe version 2),
        from Frank Mori Hess.
 
    Updated Libraries (see README for details)
@@ -1531,12 +1543,12 @@ Tue Jul 28 22:01:41 CEST 2009 - coolo@novell.com
 -------------------------------------------------------------------
 Thu Apr 16 23:35:40 CEST 2009 - crrodriguez@suse.de
 
-- as agreed with maintainer, get rid of static libraries 
+- as agreed with maintainer, get rid of static libraries
 
 -------------------------------------------------------------------
 Thu Apr 16 01:11:10 CEST 2009 - ro@suse.de
 
-- buildfix: fix typo in specfile 
+- buildfix: fix typo in specfile
 
 -------------------------------------------------------------------
 Mon Mar 16 14:39:20 CET 2009 - pth@suse.de
@@ -1682,7 +1694,7 @@ Wed Feb 11 17:19:21 CET 2009 - pth@suse.de
 
       * Regex:
             o Breaking change: empty expressions, and empty alternatives are
-              now allowed when using the Perl regular expression syntax. 
+              now allowed when using the Perl regular expression syntax.
               This change has been added for Perl compatibility, when the
               new syntax_option_type no_empty_expressions is set then the
               old behaviour is preserved and empty expressions are
@@ -1749,12 +1761,12 @@ Wed Jan  7 18:50:21 CET 2009 - pth@suse.de
 Thu Dec 11 17:08:05 CET 2008 - ro@suse.de
 
 - fix baselibs.conf (no requirement for boost-xxbit)
-  (bnc#457699) 
+  (bnc#457699)
 
 -------------------------------------------------------------------
 Thu Nov 27 15:11:54 CET 2008 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 - package mpi.so only in mpi package, not in devel
 
 -------------------------------------------------------------------
@@ -1766,7 +1778,7 @@ Wed Nov 19 18:54:54 CET 2008 - jjolly@suse.de
 -------------------------------------------------------------------
 Tue Nov 11 16:55:39 CET 2008 - ro@suse.de
 
-- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf 
+- SLE-11 uses PPC64 instead of PPC, adapt baselibs.conf
 
 -------------------------------------------------------------------
 Fri Oct 31 12:40:57 CET 2008 - pth@suse.de
@@ -1784,19 +1796,19 @@ Fri Oct 31 12:40:57 CET 2008 - pth@suse.de
 - boost.rpm isn't needed, even for updates, so don't build it and
   remove the README file needeed only for this package.
 - Make debug package require all library subpackages.
-- Add pre_checkin.sh to ensure that boost.spec is regenerated 
+- Add pre_checkin.sh to ensure that boost.spec is regenerated
   at check-in time.
 - Make boost.build use sane library names. Only the multi-threaded
   libraries are built and these have no -mt in their name.
   Symlinks for convenience are spupplied.
 - Use -fno-strict-aliasing only for boost.python, where it's needed.
-- Don't use configure and make (only convenience wrappers) but 
+- Don't use configure and make (only convenience wrappers) but
   call bjam directly.
 
 -------------------------------------------------------------------
 Mon Oct 27 11:57:35 CET 2008 - ro@suse.de
 
-- do not remove full-name symlinks for shared libs 
+- do not remove full-name symlinks for shared libs
 
 -------------------------------------------------------------------
 Thu Oct 23 18:31:36 CEST 2008 - pth@suse.de
@@ -1810,7 +1822,7 @@ Thu Oct 23 16:13:56 CEST 2008 - ro@suse.de
 
 - fix regexp for short symlinks
 - hook all mpi related parts to build_mpi macro
-- disable build_mpi on ia64 s390 s390x for the moment 
+- disable build_mpi on ia64 s390 s390x for the moment
 
 -------------------------------------------------------------------
 Fri Oct 17 12:18:16 CEST 2008 - pth@suse.de
@@ -1859,18 +1871,18 @@ Tue Sep  2 12:14:27 CEST 2008 - pth@suse.de
           o Added new read_until() and async_read_until() overloads that
             take a user-defined function object for locating message
             boundaries.
-          o Added an experimental two-lock queue (enabled by defining 
+          o Added an experimental two-lock queue (enabled by defining
             BOOST_ASIO_ENABLE_TWO_LOCK_QUEUE) that may provide better
             io_service scalability across many processors.
           o Various fixes, performance improvements, and more complete
-            coverage of the custom memory allocation support. 
+            coverage of the custom memory allocation support.
     * Assign:list_of() (and its variants) now has overloaded comparison
-             operators. This allows you to write test code such as 
+             operators. This allows you to write test code such as
              BOOST_CHECK_EQUAL(my_container,list_of(2)(3)(4)(5));.
     * Foreach:BOOST_FOREACH macro for easily iterating over the elements
              of a sequence.
           o New BOOST_REVERSE_FOREACH macro for iterating over a sequence
-            in reverse. 
+            in reverse.
     * Function:
           o Improved allocator support.
     * Hash: Minor updates and fixes, for more info see the change log.
@@ -1879,14 +1891,14 @@ Tue Sep  2 12:14:27 CEST 2008 - pth@suse.de
           o Fixed missing move semantics on managed memory classes.
           o Added copy_on_write and open_read_only options for shared
             memory and mapped file managed classes.
-          o shared_ptr is movable and supports aliasing. 
+          o shared_ptr is movable and supports aliasing.
     * Intrusive:
           o Added linear<> and cache_last<> options to singly linked lists.
           o Added optimize_multikey<> option to unordered container hooks.
           o Optimized unordered containers when store_hash option is used
             in the hook.
           o Implementation changed to avoid explicit use of try-catch
-            blocks and be compilable with exceptions disabled. 
+            blocks and be compilable with exceptions disabled.
     * Math:
           o Added new non-central Chi-Square, Beta, F and T distributions.
           o Added Exponential Integral and Zeta special functions.
@@ -1894,10 +1906,10 @@ Tue Sep  2 12:14:27 CEST 2008 - pth@suse.de
             functions.
           o Added support for compile time powers of a runtime base.
           o Added a few SSE2 based optimisations for the Lanczos
-            approximations. 
+            approximations.
     * MPI:
           o Added support for non-blocking operations in Python
-          o Added support for graph topologies. 
+          o Added support for graph topologies.
     * Multi-index Containers: Minor additions and maintenance fixes.
                               Consult the library release notes for
                               further information.
@@ -1915,11 +1927,11 @@ Tue Sep  2 12:14:27 CEST 2008 - pth@suse.de
             the serious win32 condition variable bug).
           o scoped_try_lock types are now backwards-compatible with
             Boost 1.34.0 and previous releases.
-          o Support for passing function arguments to the thread 
+          o Support for passing function arguments to the thread
             function by supplying additional arguments to the thread
             constructor.
           o Backwards-compatibility overloads added for timed_lock and
-            timed_wait functions to allow use of xtime for timeouts. 
+            timed_wait functions to allow use of xtime for timeouts.
     * Wave:
           o Wave V2.0 is a new major release introducing some breaking
             API changes, preventing it to be used with Boost versions
@@ -1927,7 +1939,7 @@ Tue Sep  2 12:14:27 CEST 2008 - pth@suse.de
             have been streamlined for more consistency.
           o Fixed a couple of bugs, improved regression test system to
             include testing of the preporcessing hooks interface
-            (for details see: Changelog). 
+            (for details see: Changelog).
     * Xpressive:
           o Regular expressions that can be written as strings or as
             expression templates, and that can refer to each other and
@@ -1939,7 +1951,7 @@ Tue Sep  2 12:14:27 CEST 2008 - pth@suse.de
             expressions in addition to format strings.
           o Range-based regex_replace() algorithm.
           o Fix crash when semantic actions are placed in look-aheads,
-            look-behinds or independent sub-expressions. 
+            look-behinds or independent sub-expressions.
 
 
 -------------------------------------------------------------------
@@ -2035,7 +2047,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
                    Size Array, Hash Function Objects, Regular Expressions,
                    and Complex Number Additional Algorithms.
 
-    * Typeof Library: Typeof operator emulation, from Arkadiy Vertleyb 
+    * Typeof Library: Typeof operator emulation, from Arkadiy Vertleyb
                       and Peder Holt.
 
     * Xpressive Library: Regular expressions that can be written as strings
@@ -2048,11 +2060,11 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
     * Assign Library:
           o Support for ptr_map<key,T> via the new function ptr_map_insert()
           o Support for initialization of Pointer Containers when the
-            containers hold pointers to an abstract base class. 
+            containers hold pointers to an abstract base class.
 
     * Date_time library:
           o Support for new US/Canada timezone rules and other bug fixes.
-            See Change History for details. 
+            See Change History for details.
 
     * Filesystem Library: Major upgrade in preparation for submission to the
                           C++ Standards Committee for TR2. Changes include:
@@ -2073,7 +2085,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
 
           o Preservation of existing user code whenever possible.
           o More efficient directory iteration.
-          o Addition of a recursive directory iterator. 
+          o Addition of a recursive directory iterator.
 
     * Function Library: Boost.Function now implements a small buffer
                         optimization, which can drastically improve the
@@ -2092,7 +2104,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
           o Add support for the BOOST_HASH_NO_EXTENSIONS macro, which
             disables the extensions to TR1
 
-          o Minor improvements to the hash functions for floating point numbers. 
+          o Minor improvements to the hash functions for floating point numbers.
 
     * Graph Library:
           o edmonds_maximum_cardinality_matching,
@@ -2111,7 +2123,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
           o Note: the name of the compiled library for the GraphViz reader has
             changed to boost_graph (from bgl-viz) to match Boost conventions.
 
-          o See the complete revision history for more information. 
+          o See the complete revision history for more information.
 
     * MultiArray Library: Boost.MultiArray now by default provides
                           range-checking for operator[]. Range checking can
@@ -2145,7 +2157,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
 
           o Member function get_value_or(alternative_value) added.
           o Incompatbility bug with mpl::apply<> fixed.
-          o Converting assignment bug with uninitialized lvalues fixed. 
+          o Converting assignment bug with uninitialized lvalues fixed.
 
     * Parameter Library:
           o Every ArgumentPack is now a valid MPL Forward Sequence.
@@ -2158,7 +2170,7 @@ Thu Aug  9 15:16:09 CEST 2007 - pth@suse.de
           o New overload generation macros solve the forwarding problem
             directly.
 
-          o See also the Python library changes, below. 
+          o See also the Python library changes, below.
 
     * Pointer Container Library:
           o Support for serialization via Boost.Serialization.
@@ -2265,9 +2277,9 @@ Fixes in 1.34.1:
   * ::boost::detail::empty_base improved
   * Fix failing uild of libs/python/example/quickstart.
   * Fix problems when building Python modules on boost 1.34.0
-  * Patches to allow boost 1.34.0 to compile with stricter warning 
+  * Patches to allow boost 1.34.0 to compile with stricter warning
     checking under mac OS and gcc
-  * Unable to compile Python example, tutorial, or quickstart with 
+  * Unable to compile Python example, tutorial, or quickstart with
     Boost 1_34_0
   * Improper overflow handling in shortest paths algorithms
   * Multiple include paths for Python
@@ -2300,13 +2312,13 @@ Fri Sep 22 13:49:48 CEST 2006 - pth@suse.de
 -------------------------------------------------------------------
 Fri Jul 14 11:02:21 CEST 2006 - sf@suse.de
 
-- fixed wrong usage of visit_each() (Bug #192116 ) 
+- fixed wrong usage of visit_each() (Bug #192116)
 
 -------------------------------------------------------------------
 Thu Jul 13 15:47:57 CEST 2006 - sf@suse.de
 
-- fixed link creation to libboost_thread.so, using %_lib instead 
-  of lib  
+- fixed link creation to libboost_thread.so, using %_lib instead
+  of lib
 
 -------------------------------------------------------------------
 Mon Jun 19 19:46:37 CEST 2006 - jw@suse.de
@@ -2411,5 +2423,3 @@ Wed Jul 23 14:52:15 CEST 2003 - pthomas@suse.de
 
 - Initial package, based on the work by Robert Schiele.
 - Fix building with Python 2.3
-
-

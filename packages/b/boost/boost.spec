@@ -19,9 +19,9 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.76.0
-%define _ver 1_76_0
-%define package_version 1_76_0
+%define ver 1.77.0
+%define _ver 1_77_0
+%define package_version 1_77_0
 %define file_version %_ver
 %define lib_appendix %_ver
 %define docs_version 1.56.0
@@ -235,15 +235,15 @@ ExcludeArch:    s390x %{ix86} ppc64 ppc64le
 %endif
 
 Name:           %{base_name}
-Version:        1.76.0
+Version:        1.77.0
 Release:        0
-%define library_version 1_76_0
+%define library_version 1_77_0
 
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.boost.org
-Source0:        https://dl.bintray.com/boostorg/release/%{version}/source/boost_%{library_version}.tar.bz2
+Source0:	https://boostorg.jfrog.io/artifactory/main/release/%{version}/source/boost_%{_ver}.tar.bz2
 Source1:        boost-rpmlintrc
 Source3:        https://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
 Source4:        existing_extra_docs
@@ -265,6 +265,8 @@ Patch17:        python_mpi.patch
 Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
+Patch22:        boost-process.patch
+Patch23:        boost-math.patch
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  libbz2-devel
@@ -640,6 +642,7 @@ Summary:        Development headers for Boost.Filesystem library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_filesystem%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_atomic%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_filesystem-devel-impl
@@ -1252,6 +1255,8 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch18 -p1
 %patch20 -p1
 %patch21 -p1
+%patch22 -p2
+%patch23 -p2
 
 %build
 find . -type f -exec chmod u+w {} +
