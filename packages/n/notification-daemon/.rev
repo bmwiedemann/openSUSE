@@ -356,4 +356,13 @@
     <comment>Eliminate the -lang recommends (forwarded request 767210 from dimstar)</comment>
     <requestid>767471</requestid>
   </revision>
+  <revision rev="50" vrev="6">
+    <srcmd5>a6ab5cfec4de02107fb71971afdefd97</srcmd5>
+    <version>3.20.0</version>
+    <time>1632522905</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920435 from sbrabec)</comment>
+    <requestid>920592</requestid>
+  </revision>
 </revisionlist>

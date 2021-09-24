@@ -1,7 +1,7 @@
 #
 # spec file for package notification-daemon
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -26,7 +26,6 @@ Group:          System/Daemons
 URL:            http://galago-project.org/
 Source:         https://download.gnome.org/sources/notification-daemon/%{_version}/%{name}-%{version}.tar.xz
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(glib-2.0) >= 2.27.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.19.5
@@ -40,7 +39,6 @@ D-BUS notification daemon.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure \
