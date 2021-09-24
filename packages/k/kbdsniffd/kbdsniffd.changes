@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 23 07:15:08 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * kbdsniffd.service
+
+-------------------------------------------------------------------
 Thu Dec  6 21:12:22 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
 
 - Follow through with more $RPM_* shell var replacement.
