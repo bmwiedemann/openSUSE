@@ -21,7 +21,7 @@
 %define WLETCDIR %{_sysconfdir}/weblate
 %define _name Weblate
 Name:           weblate
-Version:        4.8
+Version:        4.8.1
 Release:        0
 Summary:        Web-based translation tool
 License:        GPL-3.0-or-later
