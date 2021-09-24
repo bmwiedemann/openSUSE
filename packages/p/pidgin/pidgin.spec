@@ -18,7 +18,7 @@
 
 %define _name   Pidgin
 Name:           pidgin
-Version:        2.14.6
+Version:        2.14.7
 Release:        0
 Summary:        Multiprotocol Instant Messaging Client
 License:        GPL-2.0-only
@@ -49,7 +49,6 @@ BuildRequires:  libtool
 BuildRequires:  libxslt
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(avahi-glib)
 BuildRequires:  pkgconfig(dbus-1)
@@ -214,7 +213,6 @@ scripts and plugins.
 
 %prep
 %setup -q
-translation-update-upstream
 %patch0 -p1
 %patch1 -p1
 %patch2 -p1

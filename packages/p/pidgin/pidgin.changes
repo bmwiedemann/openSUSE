@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 20 20:19:21 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
+Sun Sep 19 13:17:28 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.14.7:
+  * Fix leak in purple_markup_find_tag on error
+  * Fix an assert in purple_markup_html_to_xhtml
+  * Correctly free parse tags at end of purple_html_to_xhtml
+  * Fix leak that may occur when xmlnode_from_str fails
+  * Port purple_str_to_time to use a regular expressions
+
+-------------------------------------------------------------------
 Fri Jul  9 07:40:54 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.14.6:
