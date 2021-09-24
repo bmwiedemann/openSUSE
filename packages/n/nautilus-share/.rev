@@ -221,4 +221,13 @@
   which is a client tool (identified as part of boo#1183047).</comment>
     <requestid>877078</requestid>
   </revision>
+  <revision rev="33" vrev="18">
+    <srcmd5>305929d505cbddbf867fc23ff708309e</srcmd5>
+    <version>0.7.3</version>
+    <time>1632522894</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920432 from sbrabec)</comment>
+    <requestid>920555</requestid>
+  </revision>
 </revisionlist>

@@ -28,7 +28,6 @@ Source:         http://download.gnome.org/sources/nautilus-share/0.7/%{name}-%{v
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  nautilus-devel
-BuildRequires:  translation-update-upstream
 Requires:       samba-client >= 3.0.23
 
 %description
@@ -56,7 +55,6 @@ Features:
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 autoreconf -f -i
