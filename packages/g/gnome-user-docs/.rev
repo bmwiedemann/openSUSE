@@ -676,4 +676,15 @@
     <comment>New stable release (forwarded request 912287 from iznogood)</comment>
     <requestid>913689</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>fa20259d0e8c89435bcd9f51e9f03e79</srcmd5>
+    <version>40.5</version>
+    <time>1632522918</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.5:
+  + Updates to Files documentation.
+  + Updated terminology.
+  + Updated translations. (forwarded request 920114 from iznogood)</comment>
+    <requestid>920249</requestid>
+  </revision>
 </revisionlist>
