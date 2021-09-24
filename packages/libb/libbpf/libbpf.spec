@@ -28,6 +28,8 @@ Source:         https://github.com/libbpf/libbpf/archive/v%{version}.tar.gz#/%{n
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/issues/337
 Patch:          libdir.patch
+# PATCH-FIX-UPSTREAM https://github.com/libbpf/libbpf/pull/373
+Patch1:         libbpf-Fix-build-with-latest-gcc-binutils-with-LTO.patch
 BuildRequires:  libelf-devel
 BuildRequires:  linux-glibc-devel >= 4.5
 BuildRequires:  python3
@@ -51,14 +53,15 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 
 %prep
 %setup -q
+%autopatch -p1
 
 %build
 cd src
-%make_build V=1 CFLAGS="%{optflags} -fno-lto"
+%make_build V=1 CFLAGS="%{optflags}"
 
 %install
 cd src
-%make_install V=1 LIBDIR=%{_libdir}
+%make_install V=1
 rm -f %{buildroot}%{_libdir}/%{name}.a
 
 %post -n %{libname} -p /sbin/ldconfig
