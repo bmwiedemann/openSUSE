@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Fri Sep 17 11:46:44 UTC 2021 - pousaduarte@gmail.com
+
+- Update to version 1.11.3~git20210917:
+  * Try to workaround git tag fetch failure
+  * Update SDL and try faster commit history fetch
+  * Dialog: Allow termination of access thread at ret.
+  * Silence submodule fetch error screaming
+  * Switch to submodules and fix release version generation
+  * Drop bundled SDL2 for macOS
+  * Dialog: Try to recover on double init, report.
+  * Include macOS name in the zip archive
+  * Fix git describe not fetching version tag
+  * Qt as well
+  * Fix chat here position
+  * Fix jumpy resolve while typing
+  * UI: Oops, remove silly mistake.
+  * Windows: Disable auto-enable chat on Ctrl-C.
+  * UI: When enabling chat, recreate views.
+  * GPU: Default vertex cache to off.
+  * Vulkan: Fix faster alt speed with vsync.
+  * Vulkan: Skip flips, not draw, for vsync unthrottle.
+  * Net: Fix various chat threading hazards.
+  * UI: Decouple new chat display and tracking logic.
+  * UI: Track chat log changes more clearly.
+  * Fix freezing issue during GameMode initialization on some games (ie. Hammerin' Hero)
+  * Unix: Use shm_open in case not /dev/shm/.
+  * Fix Socket error 10014 on Windows when hosting a game of Vulcanus Seek and Destroy
+  * Android: Fix UI background on scoped storage.
+  * UI: Correct enable reporting setting resetting.
+  * Font: Cleanup logging for invalid pointers.
+  * Core: Fix some minor gcc warnings.
+  * headless: Fix some Python warnings.
+  * Allow drag over touch DPAD and avoid analog drag to trigger other button
+  * Vulkan: Only force 32-bit if needed.
+  * Vulkan: Expand 16-bit textures to generate mips.
+  * UI: Update flags more correctly in chat.
+  * UI: Cleanup input box for chat.
+  * UI: Move the chat message box to just a view.
+  * UI: Allow UI keys on emuscreen of focused.
+  * TexCache: Correct confusing red/blue var names.
+  * softgpu: Implement DXT5 in samplerx86.
+  * it_IT translation update, thanks giona.
+  * Add FAT support for macOS with automatic GitHub releases
+  * softgpu: Implement DXT3 in samplerx86.
+  * softgpu: Implement DXT1 decoding in samplerx86.
+  * Update libMoltenVK.dylib to support M1 chips
+  * softgpu: Decode DXT texels directly.
+  * TexCache: Correct DXT5 alpha calculation.
+  * Savedata: Respect IO timing method setting.
+  * Edit psp screen a bit
+  * Fix setting info on multi choice
+  * Android: Avoid crash without ext dir.
+  * Auto-fix case of manually specified paths.
+  * Move FixPathCase to Common/File/Path
+  * Fix weird linker problem
+  * Remove another redundant check, comment fixes
+  * SFO return value fix, oops
+  * Wire inflight frames config setting to render managers.
+  * Optimize away a couple of existence checks
+  * Optimize ReadPSPFile (which should probably be replaced with ReadEntireFile anyway)
+  * Minor gradle upgrade, why not
+  * Optimize MetaFileSystem::ReadEntireFile
+  * Feedback
+  * Log the duration of directory size computations too
+  * Add back the dir listing logging. Add hack to avoid confusing Wipeout :(
+  * Fix the Android recursive size computation and hook it up.
+  * Add metafilesystem hook to add optimized implementations of compute recursive directory size
+  * Add untested function Android_ComputeRecursiveDirectorySize
+  * Fix another GetFileInfo loop (GetFilesInDir now does return sizes)
+  * Io: Assume a write may have happened on resume.
+  * Io: Cache SAVEDATA usage between writes.
+  * Cleanup
+  * Also hide SHADERS directory from games
+  * Optimize install data size calculation.
+  * Optimize savedata size calculation
+  * Cleanup
+  * Hide directories games should not know about from them.
+  * VK mip gen: Could end up with a zero dimension in the lowest mipmap, prevent that.
+  * Vulkan: MSVC 2017 buildfix.
+  * UI: Fix non-Android build error.
+  * Add back the ability to manually specify a folder, on Android 9 and earlier.
+  * Hide the folder selector for memstick directory on Android 9 and earlier.
+  * Draw bullet points as circles for a consistent look regardless of system font.
+  * Minor polish to MemStickScreen
+  * Decouple Vulkan context object destruction from retroarch's ContextDestroy call
+  * softgpu: Clip only on -Z, cull if entirely outside.
+  * softgpu: Correct guardband cull behavior.
+  * Support ScrollView for focus position
+  * Moving Background
+  * Vulkan scissor fix (validation errors).
+  * Fix a couple sort comparators for the savedata screen
+  * Keep track of focus position
+  * Fix wave on different dps
+  * More shortcut fixes
+  * Set a couple flags on the ShortcutIntent
+  * Avoid calling into C++ when creating game shortcuts. Use scoped storage-compatible file chooser when possible.
+  * Valiant attempt to fix queryGameName
+  * Fix error message
+  * ThreadManager cleanups
+  * Implement support for new file chooser on Android 11+.
+  * Expose texture shader core option.
+  * Add some antialiasing
+  * Wave animation
+  * Expose new texture filtering option and fix runtime changing texture upscale mode
+  * Double binding fix
+  * No longer need to specify build tools version, gradle now has a default.
+  * Fix typo (and maybe a bug).
+  * Round the location of single-pixel lines to the nearest pixel.
+  * Bezier/Spline: Fix logical error (must flush buffered data before we modify submitType).
+  * VK: Only autogenerate mipmaps for R8G8B8A8 format textures.
+  * Add info check
+  * Don't show CRC button when we can't get it
+  * softgpu: Prevent pixel gaps when drawing sprites.
+  * libretro: Fix typo.
+  * Reporting: Calculate CRC for PSN games.
+  * Core: Use FileBlockDevice for PBPs without an ISO.
+  * libretro: Fix defaults for texture_scaling_level and inflight_frames
+  * Review style fixes.
+  * Expose inflight frames as core option.
+  * Fix capitalization in core option labels.
+  * Move core initialization code out of retro_load_game method
+  * Do not fast forward by default.
+  * Do not skip SwapBuffer() when skipDrawReason set.
+  * softgpu: Avoid overflow infinite loop.
+  * Fix windows menus for the new tex filtering options.
+  * Add new texture filtering "Auto Max Quality" that tweaks texture filtering for best quality.
+  * Update gradle again.
+  * Fix opacity
+  * Configurable analog head size
+
+-------------------------------------------------------------------
 Thu Sep 02 16:14:42 UTC 2021 - pousaduarte@gmail.com
 
 - Update to version 1.11.3~git20210902:
