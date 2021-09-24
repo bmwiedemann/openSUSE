@@ -1,0 +1,43 @@
+From 85bb62f47ac2f518bfdb36c5dfedf5938219a9b7 Mon Sep 17 00:00:00 2001
+From: Santiago Zarate <santiago@zarate.co>
+Date: Thu, 23 Sep 2021 14:45:43 +0200
+Subject: Default to xclip if wl-clip is not found
+
+In the strange case that the user is jumping back and forth from X11 to
+Wayland and viceversa, xclip might be installed but wl-clip might not,
+and in such combination user might end up with the -c opion not working.
+---
+ src/password-store.sh | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/password-store.sh b/src/password-store.sh
+index a0dcf2e..7c6ea35 100755
+--- a/src/password-store.sh
++++ b/src/password-store.sh
+@@ -155,7 +155,7 @@ check_sneaky_paths() {
+ #
+ 
+ clip() {
+-	if [[ -n $WAYLAND_DISPLAY ]]; then
++	if [[ -n $WAYLAND_DISPLAY ]] && command -v wl-copy > /dev/null; then
+ 		local copy_cmd=( wl-copy )
+ 		local paste_cmd=( wl-paste -n )
+ 		if [[ $X_SELECTION == primary ]]; then
+@@ -163,12 +163,12 @@ clip() {
+ 			paste_cmd+=( --primary )
+ 		fi
+ 		local display_name="$WAYLAND_DISPLAY"
+-	elif [[ -n $DISPLAY ]]; then
++	elif [[ -n $DISPLAY ]] && command -v xclip > /dev/null; then
+ 		local copy_cmd=( xclip -selection "$X_SELECTION" )
+ 		local paste_cmd=( xclip -o -selection "$X_SELECTION" )
+ 		local display_name="$DISPLAY"
+ 	else
+-		die "Error: No X11 or Wayland display detected"
++		die "Error: No X11 or Wayland display and clipper detected"
+ 	fi
+ 	local sleep_argv0="password store sleep on display $display_name"
+ 
+-- 
+cgit v1.2.3-11-g984f
+

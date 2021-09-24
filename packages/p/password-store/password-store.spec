@@ -22,7 +22,9 @@ Release:        0
 Summary:        Utility to store, retrieve, generate and synchronize passwords
 License:        GPL-2.0-or-later
 URL:            https://zx2c4.com/projects/%{name}/
-Source:         %{name}-%{version}.tar.xz
+Source:         https://git.zx2c4.com/password-store/snapshot/%{name}-%{version}.tar.xz
+# remove on the next release after 1.7.4
+Patch0:         https://git.zx2c4.com/password-store/patch/?id=85bb62f47ac2f518bfdb36c5dfedf5938219a9b7#/default-to-xclip.patch
 BuildRequires:  bash-completion
 BuildRequires:  git
 BuildRequires:  gpg2
@@ -60,7 +62,7 @@ BuildArch:      noarch
 A dmenu interface to "pass", a password manager.
 
 %prep
-%autosetup
+%autosetup -p1
 for shell_script in src/%{name}.sh contrib/dmenu/passmenu; do
     sed -i "s|#\!%{_bindir}/env bash|#\!/bin/bash|" $shell_script
 done
