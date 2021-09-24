@@ -287,4 +287,21 @@
   * v6.14.2-dev</comment>
     <requestid>915700</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7bd8d205a3f5e82fd9e576c111fd0aaf</srcmd5>
+    <version>6.15.1</version>
+    <time>1632522926</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 6.15.1:
+  * v6.15.1
+  * Update CHANGELOG.md
+  * Added Windows taskbar icon colors
+  * Remove unnecessary string.
+  * Fix --threads generates &quot;*&quot; profile without &quot;kawpow&quot;:false to negate it.
+  * Fix compile warning when WITH_RANDOMX=OFF
+  * Fixed Windows 7 compatibility
+  * Fixup RandomX naming consistency
+  * v6.15.1-dev</comment>
+    <requestid>921224</requestid>
+  </revision>
 </revisionlist>

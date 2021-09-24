@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 24 06:55:36 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.1:
+  * v6.15.1
+  * Update CHANGELOG.md
+  * Added Windows taskbar icon colors
+  * Remove unnecessary string.
+  * Fix --threads generates "*" profile without "kawpow":false to negate it.
+  * Fix compile warning when WITH_RANDOMX=OFF
+  * Fixed Windows 7 compatibility
+  * Fixup RandomX naming consistency
+  * v6.15.1-dev
+
+-------------------------------------------------------------------
 Thu Sep  2 07:57:05 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.15.0:
