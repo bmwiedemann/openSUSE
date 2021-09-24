@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>843381</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a3caffc2b0a110bcd6f239eab12b89bd</srcmd5>
+    <version>1.10.0</version>
+    <time>1632522894</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 919870 from iznogood)</comment>
+    <requestid>920560</requestid>
+  </revision>
 </revisionlist>

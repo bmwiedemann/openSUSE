@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 17 19:04:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + Added API to query whether receiving rendered audio has been
+    configured.
+  + Added API to obtain the wl_resource for SHM exported buffers.
+  + The CMake build system has been removed in favor of Meson.
+  + Made it easier to override where Meson looks for
+    wayland-scanner during cross-compilation, using a native
+    machine file.
+  + Fixed invalid usage of Wayland client connections in the nested
+    compositor which caused sporadic crashes in certain conditions.
+  + Fixed file descriptor and memory leaks.
+
+-------------------------------------------------------------------
 Thu Sep 17 22:59:56 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 1.8.0:
