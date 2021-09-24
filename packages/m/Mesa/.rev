@@ -4532,4 +4532,17 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   * first bugfix release</comment>
     <requestid>914913</requestid>
   </revision>
+  <revision rev="414" vrev="286">
+    <srcmd5>34a0bf044fd9a996e28a8253e13f1d29</srcmd5>
+    <version>unknown</version>
+    <time>1632522913</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 21.2.2
+  * second bugfix release: a ton of work went into panfrost, 
+    getting it closer to being conformant (it is conformant on
+    21.3!); fixes for ir3, croccus, nir, utils, llvmpipe, gallivm,
+    zink, glsl, v3d, vc4, intel, mesa, aco, iris, radv, and even
+    osmesa.</comment>
+    <requestid>920685</requestid>
+  </revision>
 </revisionlist>
