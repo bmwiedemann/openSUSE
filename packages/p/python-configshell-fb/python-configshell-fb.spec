@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-configshell-fb
-Version:        1.1.28
+Version:        1.1.29
 Release:        0%{?dist}
 Summary:        A Python library for building configuration shells
 License:        Apache-2.0

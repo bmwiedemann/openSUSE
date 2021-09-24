@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 19 20:06:38 UTC 2021 - Lee Duncan <lduncan@suse.com>
+
+- Upgrade to latest upstream version v1.1.29 (jre#SLE-17360):
+  * setup.py: specify a version range for pyparsing
+  * setup.py: lets stick to pyparsing v2.4.7
+  * Don't warn if prefs file doesn't exist
+
+-------------------------------------------------------------------
 Sat Jan 30 21:39:26 UTC 2021 - Lee Duncan <lduncan@suse.com>
 
 - Update to version v1.1.28 from v1.1.27 (jre#SLE-17360):
