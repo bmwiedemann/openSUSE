@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 20 17:06:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.14.0:
+  + Fix BMFF compile test.
+- Changes from version 0.13.0:
+  + Update gexiv2-dump tool
+  + More additions to API and _try versions that support GErorr if
+    exiv2 might throw
+  + Some additions to gexiv2-tool
+  + Changes in build configuration
+
+-------------------------------------------------------------------
 Tue Aug 17 10:46:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.12.3:
