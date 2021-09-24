@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 20:16:55 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Tue Aug 31 13:47:59 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add GnuPG 2.3.x to the list of supported GnuPG versions.

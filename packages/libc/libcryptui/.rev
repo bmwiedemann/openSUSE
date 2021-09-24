@@ -187,4 +187,13 @@
     <comment>- Add GnuPG 2.3.x to the list of supported GnuPG versions. (forwarded request 915275 from dimstar)</comment>
     <requestid>915445</requestid>
   </revision>
+  <revision rev="25" vrev="9">
+    <srcmd5>9de147d21432d3bfac76183ab3c44f46</srcmd5>
+    <version>3.12.2</version>
+    <time>1632522903</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920428 from sbrabec)</comment>
+    <requestid>920588</requestid>
+  </revision>
 </revisionlist>

@@ -31,7 +31,6 @@ BuildRequires:  gpgme-devel
 BuildRequires:  intltool
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gnome-keyring-1)
@@ -103,7 +102,6 @@ Libcryptui is a library used for prompting for PGP keys.
 %prep
 %setup -q
 sed -i "s:1.2 1.4 2.0:1.2 1.4 2.0 2.1 2.2 2.3:" configure
-translation-update-upstream
 
 %build
 %configure \
