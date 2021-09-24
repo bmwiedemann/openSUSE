@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 18 13:16:35 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
+
+- lessopen.sh profile: allow reading files that live on NFS over UDP
+  (added to apparmor-lessopen-nfs-workaround.diff) (boo#1190552)
+
+-------------------------------------------------------------------
 Wed Aug 11 19:44:15 UTC 2021 - Christian Boltz <suse-beta@cboltz.de>
 
 - add profiles-python-3.10-mr783.diff: update abstractions/python and

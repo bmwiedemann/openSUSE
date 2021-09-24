@@ -2180,4 +2180,13 @@ libapparmor:
   profiles for python 3.10 (forwarded request 911594 from cboltz)</comment>
     <requestid>911600</requestid>
   </revision>
+  <revision rev="157" vrev="3">
+    <srcmd5>7f930287b1c3478fe67b30e4887a021e</srcmd5>
+    <version>3.0.3</version>
+    <time>1632522913</time>
+    <user>dimstar_suse</user>
+    <comment>- lessopen.sh profile: allow reading files that live on NFS over UDP
+  (added to apparmor-lessopen-nfs-workaround.diff) (boo#1190552) (forwarded request 920053 from cboltz)</comment>
+    <requestid>920054</requestid>
+  </revision>
 </revisionlist>
