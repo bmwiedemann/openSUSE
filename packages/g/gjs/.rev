@@ -1639,4 +1639,13 @@ Fri Dec  18 23:51:08 UTC 2015 - damjanovic.ivo@gmail.com
     <comment>New stable release (forwarded request 912298 from iznogood)</comment>
     <requestid>913690</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>f8a6859c78231104ab2e734d4d0a2df5</srcmd5>
+    <version>1.68.4</version>
+    <time>1632522919</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.68.4:
+  + Build fix backported from the development branch. (forwarded request 920116 from iznogood)</comment>
+    <requestid>920250</requestid>
+  </revision>
 </revisionlist>
