@@ -18,7 +18,7 @@
 
 %define sover  1
 Name:           libfido2
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        FIDO U2F and FIDO 2.0 protocols
 License:        BSD-2-Clause
@@ -26,8 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://developers.yubico.com/
 Source0:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz
 Source1:        https://developers.yubico.com/libfido2/Releases/%{name}-%{version}.tar.gz.sig
-# PATCH-FIX-UPSTREAM fix-cmake-linking.patch -- Fix linking when building with hidapi, gh#323
-Patch0:         fix-cmake-linking.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libopenssl-1_1-devel
@@ -44,7 +42,7 @@ over USB as well as verifying attestation and assertion signatures.
 
 %package     -n %{name}-%{sover}
 Summary:        FIDO U2F and FIDO 2.0 protocols
-Requires:       %{name}-udev
+Group:          Development/Libraries/C and C++
 Provides:       %{name} = %{version}
 Obsoletes:      %{name} < %{version}
 
@@ -55,6 +53,7 @@ Client-to-Authenticator Protocol (CTAP 1 and 2).
 
 %package     -n %{name}-devel
 Summary:        Development files for FIDO U2F and FIDO 2.0 protocols
+Group:          Development/Libraries/C and C++
 Requires:       %{name}-%{sover} = %{version}
 Requires:       libopenssl-1_1-devel
 Conflicts:      libfido2-0_4_0
@@ -65,19 +64,20 @@ This package contains the header file needed to develop applications that
 use FIDO U2F and FIDO 2.0 protocols.
 
 %package     -n %{name}-utils
-Group:          Hardware/Other
 Summary:        Utility programs making use of libfido2, a library for FIDO U2F and FIDO 2.0
+Group:          Hardware/Other
 Conflicts:      libfido2-0_4_0
 Conflicts:      libfido2-1_0_0
 
 %description -n %{name}-utils
 This package contains utilities to use FIDO U2F and FIDO 2.0 protocols.
 
-%package        udev
+%package      -n %{name}-udev
 Summary:        Udev rules for libfido2
+Group:          Development/Libraries/C and C++
 BuildArch:      noarch
 
-%description    udev
+%description -n %{name}-udev
 This package contains the udev rules for FIDO2 compatible devices.
 
 %prep

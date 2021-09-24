@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep 21 08:33:36 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Removed fix-cmake-linking.patch because no longer needed
+
+-------------------------------------------------------------------
+Tue Sep 14 13:49:56 UTC 2021 - Paolo Perego <paolo.perego@suse.com>
+
+- Update to version 1.8.0:
+    * Dropped 'Requires.private' entry from pkg-config file.
+	* Better support for FIDO 2.1 authenticators.
+	* Support for Windows's native webauthn API.
+	* Support for attestation format 'none'.
+	* New API calls:
+		- fido_assert_set_clientdata;
+		- fido_cbor_info_algorithm_cose;
+		- fido_cbor_info_algorithm_count;
+		- fido_cbor_info_algorithm_type;
+		- fido_cbor_info_transports_len;
+		- fido_cbor_info_transports_ptr;
+		- fido_cred_set_clientdata;
+		- fido_cred_set_id;
+		- fido_credman_set_dev_rk;
+		- fido_dev_is_winhello.
+	* fido2-token: new -Sc option to update a resident credential.
+	* Documentation and reliability fixes.
+	* HID access serialisation on Linux.
+- disable fix-cmake-linking.patch, not needed currently
+
+-------------------------------------------------------------------
 Sat Apr 17 01:41:49 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.7.0:
@@ -75,7 +104,7 @@ Fri Jul 24 19:33:15 UTC 2020 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 -------------------------------------------------------------------
 Fri Jul  3 09:11:31 UTC 2020 -  Ismail Dönmez <idonmez@suse.com>
 
-- Create a udev subpackage and ship the udev rule 
+- Create a udev subpackage and ship the udev rule
 
 -------------------------------------------------------------------
 Thu Jul  2 13:03:31 UTC 2020 - Ismail Dönmez <idonmez@suse.com>
@@ -157,7 +186,7 @@ Sat Apr 20 18:50:23 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 Tue Apr 16 06:52:58 UTC 2019 - Karol Babioch <kbabioch@suse.de>
 
 - Added Conflicts to libfido2-0_4_0 to make sure upgrade goes smoothly as
-  outline in sr#690566 
+  outline in sr#690566
 
 -------------------------------------------------------------------
 Tue Apr  2 07:05:19 UTC 2019 - Karol Babioch <kbabioch@suse.de>
@@ -195,7 +224,7 @@ Mon Oct  1 16:35:14 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 -------------------------------------------------------------------
 Mon Oct  1 06:56:58 UTC 2018 - Karol Babioch <kbabioch@suse.com>
 
-- Applied spec-cleaner 
+- Applied spec-cleaner
 
 -------------------------------------------------------------------
 Sun Sep 30 08:41:05 UTC 2018 - t.gruner@katodev.de
@@ -213,7 +242,7 @@ Sun Sep 30 08:41:05 UTC 2018 - t.gruner@katodev.de
     * fido_assert_set_hmac_salt;
     * fido_cred_set_extensions;
     * fido_dev_force_fido2.
-  - Support for native builds with Microsoft Visual Studio 17. 
+  - Support for native builds with Microsoft Visual Studio 17.
 
 -------------------------------------------------------------------
 Fri Sep 28 19:05:32 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
