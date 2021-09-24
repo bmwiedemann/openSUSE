@@ -4,7 +4,7 @@
     <param name="url">https://github.com/openSUSE/lldpad.git</param>
     <param name="subdir"></param>
     <param name="filename">open-lldp</param>
-    <param name="version">v1.1</param>
+    <param name="version">0f781b4162d3</param>
     <param name="versionformat">v1.1+@TAG_OFFSET@.%h</param>
     <param name="match-tag">v1.[0-9]</param>
     <param name="changesgenerate">enable</param>

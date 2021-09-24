@@ -185,4 +185,14 @@
     <comment></comment>
     <requestid>861815</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>84d58f1aa7592fcdad675c2d453de468</srcmd5>
+    <version>1.1+44.0f781b4162d3</version>
+    <time>1632522886</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version v1.1+44.0f781b4162d3:
+  * agent: reset frame status on message delete
+  * Avoiding null pointer dereference</comment>
+    <requestid>920350</requestid>
+  </revision>
 </revisionlist>

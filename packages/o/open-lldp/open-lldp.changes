@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 20 16:03:06 UTC 2021 - lduncan@suse.com
+
+- Update to version v1.1+44.0f781b4162d3:
+  * agent: reset frame status on message delete
+  * Avoiding null pointer dereference
+
+-------------------------------------------------------------------
 Fri Jan 08 22:14:35 UTC 2021 - lduncan@suse.com
 
 - Update to version v1.1+36.e926f7172b96:
