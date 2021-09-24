@@ -52,4 +52,12 @@
     <comment>- Use python_module macro for BuildRequires on the testsuite module</comment>
     <requestid>865548</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0917ad43054cacadaec75ba4ffdaa8e0</srcmd5>
+    <version>2.1.0</version>
+    <time>1632522944</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921375</requestid>
+  </revision>
 </revisionlist>

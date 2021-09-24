@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 24 09:50:50 UTC 2021 - pgajdos@suse.com
+
+- version update to 2.1.0
+  * Add support for Python 3.9.
+- use %pyunittest_arch rpm macro
+
+-------------------------------------------------------------------
 Fri Jan 22 05:49:25 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use python_module macro for BuildRequires on the testsuite module 

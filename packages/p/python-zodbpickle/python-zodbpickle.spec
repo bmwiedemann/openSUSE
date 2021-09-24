@@ -18,7 +18,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-zodbpickle
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Fork of Python 3 pickle module
 License:        Python-2.0 AND ZPL-2.1
@@ -57,7 +57,9 @@ rm -rf src/zodbpickle.egg-info
 }
 
 %check
-%python_exec setup.py test
+pushd src
+mv zodbpickle{,_hide}
+%pyunittest_arch -v zodbpickle_hide.tests.test_pickle.test_suite
 
 %files %{python_files}
 %license LICENSE.txt
