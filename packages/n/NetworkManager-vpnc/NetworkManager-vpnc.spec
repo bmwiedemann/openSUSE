@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-vpnc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            http://www.gnome.org/projects/NetworkManager
 Source0:        http://download.gnome.org/sources/NetworkManager-vpnc/1.2/%{name}-%{version}.tar.xz
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(libnm) >= 1.2.0
@@ -54,7 +53,6 @@ NetworkManager-vpnc provides VPN support to NetworkManager for vpnc.
 
 %prep
 %setup -q
-translation-update-upstream
 
 %build
 %configure\
