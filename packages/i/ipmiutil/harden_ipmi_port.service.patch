@@ -1,0 +1,23 @@
+Index: ipmiutil-3.1.7/scripts/ipmi_port.service
+===================================================================
+--- ipmiutil-3.1.7.orig/scripts/ipmi_port.service
++++ ipmiutil-3.1.7/scripts/ipmi_port.service
+@@ -3,6 +3,18 @@ Description=ipmiutil ipmi_port service
+ After=network.target
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectHostname=true
++ProtectClock=true
++ProtectKernelTunables=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Type=forking
+ PIDFile=/run/ipmi_port.pid
+ EnvironmentFile=/usr/share/ipmiutil/ipmiutil.env

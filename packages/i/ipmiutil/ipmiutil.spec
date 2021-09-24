@@ -26,6 +26,10 @@ License:        BSD-3-Clause
 Group:          System/Management
 URL:            http://ipmiutil.sourceforge.net
 Source:         https://sourceforge.net/projects/ipmiutil/files/%{name}-%{version}.tar.gz
+Patch0:	harden_ipmi_port.service.patch
+Patch1:	harden_ipmiutil_asy.service.patch
+Patch2:	harden_ipmiutil_evt.service.patch
+Patch3:	harden_ipmiutil_wdt.service.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc
@@ -67,6 +71,10 @@ useful for building custom IPMI applications.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 autoreconf -fiv

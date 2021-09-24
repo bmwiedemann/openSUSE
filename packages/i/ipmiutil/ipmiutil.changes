@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:47:30 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_ipmi_port.service.patch
+  * harden_ipmiutil_asy.service.patch
+  * harden_ipmiutil_evt.service.patch
+  * harden_ipmiutil_wdt.service.patch
+
+-------------------------------------------------------------------
 Wed May 12 17:56:58 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 3.1.7
