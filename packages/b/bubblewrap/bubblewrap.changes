@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 20 18:52:20 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.0:
+  + New features:
+    - --chmod changes permissions
+    - --clearenv unsets every environment variable (except PWD)
+    - --perms sets permissions for one subsequent --bind-data,
+      --dir, --file, --ro-bind-data or --tmpfs
+  + Other enhancements:
+    - Better diagnostics when a --bind or other bind-mount fails
+    - zsh tab-completion
+    - Better test coverage
+  + Bug fixes:
+    - Use Python 3 for tests and examples
+    - Mount points for non-directories are created with permissions
+      -r--r--r-- instead of -rw-rw-rw-
+    - Don't remount items in /proc read-only if already EROFS,
+      required to run under Docker
+    - Allow mounting an non-directory over an existing
+      non-directory, e.g. --bind "$XDG_RUNTIME_DIR/my-log-socket"
+      /dev/log
+    - Silence kernel messages for our bind-mounts
+    - Make sure pkg-config is checked for, regardless of build
+      options
+    - Improve ability to bind-mount directories on case-insensitive
+      filesystems
+    - Fix -Wshadow warnings
+    - Fix deprecation warnings with newer SELinux
+- Add new subpackage bubblewrap-zsh-completion
+
+-------------------------------------------------------------------
 Wed Apr  1 10:03:39 UTC 2020 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - Update to version 0.4.1:
