@@ -778,10 +778,14 @@ export CLANG_TOOLS_EXTRA_DIR=${PWD}/tools/clang/tools/extra
     -DCMAKE_AR="${LLVM_AR}" \
     -DCMAKE_RANLIB="${LLVM_RANLIB}" \
 %if %{with gold}
+    -DCMAKE_LINKER=%{_bindir}/ld.gold \
     -DLLVM_USE_LINKER=gold \
 %else
+    -DCMAKE_LINKER=${LLD} \
     -DLLVM_USE_LINKER=${LLD} \
 %endif
+%else
+    -DCMAKE_LINKER=%{_bindir}/ld \
 %endif
 %ifarch %arm ppc s390 %{ix86}
     -DCMAKE_C_FLAGS_RELWITHDEBINFO="-g1" \

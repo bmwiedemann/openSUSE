@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 18 13:54:44 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Set CMAKE_LINKER to workaround CMake wanting to use lld just
+  because we're using clang as compiler. Fixes build on aarch64.
+  (https://bugs.llvm.org/show_bug.cgi?id=51115)
+
+-------------------------------------------------------------------
 Sat Jul 10 21:30:44 UTC 2021 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 12.0.1.
