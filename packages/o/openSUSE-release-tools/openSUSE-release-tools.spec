@@ -20,7 +20,7 @@
 %define source_dir openSUSE-release-tools
 %define announcer_filename factory-package-news
 Name:           openSUSE-release-tools
-Version:        20210922.75227421
+Version:        20210923.153aea36
 Release:        0
 Summary:        Tools to aid in staging and release work for openSUSE/SUSE
 License:        GPL-2.0-or-later AND MIT
@@ -127,17 +127,6 @@ Requires(pre):  shadow
 
 %description check-source
 Check source review bot that performs basic source analysis and assigns reviews.
-
-%package leaper
-Summary:        Leap-style services
-Group:          Development/Tools/Other
-BuildArch:      noarch
-Requires:       %{name} = %{version}
-Requires:       osclib = %{version}
-Requires(pre):  shadow
-
-%description leaper
-Leap-style services for non-Factory projects.
 
 %package maintenance
 Summary:        Maintenance related services
@@ -314,7 +303,7 @@ make %{?_smp_mflags}
 
 %pre announcer
 getent passwd osrt-announcer > /dev/null || \
-  useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-leaper" osrt-announcer
+  useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-announcer" osrt-announcer
 exit 0
 
 %postun announcer
@@ -326,14 +315,6 @@ getent passwd osrt-check-source > /dev/null || \
 exit 0
 
 %postun check-source
-%systemd_postun
-
-%pre leaper
-getent passwd osrt-leaper > /dev/null || \
-  useradd -r -m -s /sbin/nologin -c "user for openSUSE-release-tools-leaper" osrt-leaper
-exit 0
-
-%postun leaper
 %systemd_postun
 
 %pre maintenance
@@ -411,13 +392,8 @@ exit 0
 %{_bindir}/osrt-issue-diff
 %{_bindir}/osrt-k8s-secret
 %{_bindir}/osrt-legal-auto
-%{_bindir}/osrt-obs_clone
 %{_bindir}/osrt-openqa-maintenance
 %{_bindir}/osrt-requestfinder
-%{_bindir}/osrt-scan_baselibs
-%{_bindir}/osrt-status
-%{_bindir}/osrt-sync-rebuild
-%{_bindir}/osrt-unmaintained
 %{_bindir}/osrt-totest-manager
 %{_datadir}/%{source_dir}
 %exclude %{_datadir}/%{source_dir}/abichecker
@@ -426,8 +402,6 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/check_source.pl
 %exclude %{_datadir}/%{source_dir}/check_source.py
 %exclude %{_datadir}/%{source_dir}/devel-project.py
-%exclude %{_datadir}/%{source_dir}/leaper.py
-%exclude %{_datadir}/%{source_dir}/manager_42.py
 %exclude %{_datadir}/%{source_dir}/metrics
 %exclude %{_datadir}/%{source_dir}/metrics.py
 %exclude %{_datadir}/%{source_dir}/metrics_release.py
@@ -443,7 +417,6 @@ exit 0
 %exclude %{_datadir}/%{source_dir}/osc-cycle.py
 %exclude %{_datadir}/%{source_dir}/osc-origin.py
 %exclude %{_datadir}/%{source_dir}/osc-staging.py
-%exclude %{_datadir}/%{source_dir}/update_crawler.py
 %exclude %{_datadir}/%{source_dir}/findfileconflicts
 %exclude %{_datadir}/%{source_dir}/write_repo_susetags_file.pl
 %dir %{_sysconfdir}/openSUSE-release-tools
@@ -473,17 +446,6 @@ exit 0
 %{_bindir}/osrt-check_source
 %{_datadir}/%{source_dir}/check_source.pl
 %{_datadir}/%{source_dir}/check_source.py
-
-%files leaper
-%defattr(-,root,root,-)
-%{_bindir}/osrt-leaper
-%{_bindir}/osrt-leaper-crawler-*
-%{_bindir}/osrt-manager_42
-%{_bindir}/osrt-update_crawler
-%{_datadir}/%{source_dir}/leaper.py
-%{_datadir}/%{source_dir}/manager_42.py
-%{_datadir}/%{source_dir}/update_crawler.py
-%config(noreplace) %{_sysconfdir}/openSUSE-release-tools/manager_42
 
 %files maintenance
 %defattr(-,root,root,-)

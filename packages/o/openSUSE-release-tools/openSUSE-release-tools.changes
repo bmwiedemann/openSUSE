@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 23 12:30:29 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210923.153aea36:
+  * check_source: Fix revert case for patch detection (fix#2640)
+
+-------------------------------------------------------------------
+Thu Sep 23 10:43:50 UTC 2021 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20210923.8f4795d1:
+  * Clarify status and deployment of check_source_in_factory
+  * Delete scan_baselibs.py
+  * Delete obs_clone.py
+  * Delete unmaintained.py
+  * Delete sync-rebuild.py
+  * Delete leaper, update_crawler and manager_42
+  * Delete status.py
+
+-------------------------------------------------------------------
 Wed Sep 22 21:49:55 UTC 2021 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20210922.75227421:
