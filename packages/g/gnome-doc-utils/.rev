@@ -465,4 +465,13 @@
   package was called python3-libxml2-python, conditionally added). (forwarded request 915232 from dimstar)</comment>
     <requestid>915444</requestid>
   </revision>
+  <revision rev="65" vrev="20">
+    <srcmd5>76d4076eea063038d7de9aff5e70bb93</srcmd5>
+    <version>0.20.10</version>
+    <time>1632522898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920403 from sbrabec)</comment>
+    <requestid>920572</requestid>
+  </revision>
 </revisionlist>

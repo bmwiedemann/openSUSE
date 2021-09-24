@@ -41,7 +41,6 @@ BuildRequires:  python3-libxml2-python
 BuildRequires:  libxml2-tools
 BuildRequires:  libxslt-devel
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 Requires:       libxslt
 %if %suse_version > 1500
 Requires:       python3-libxml2
@@ -99,7 +98,6 @@ free-form XML documents and outputs gettext compatible POT files.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 export LANG=C.UTF-8
