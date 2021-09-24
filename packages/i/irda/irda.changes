@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:57:51 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * irattach.service
+
+-------------------------------------------------------------------
 Mon Aug 26 22:15:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Add irda-fix_build_with_recent_kernels.diff
