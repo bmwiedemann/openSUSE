@@ -1,0 +1,84 @@
+From 99c50fe5264aaae05bd06206030eb9b3088dfa71 Mon Sep 17 00:00:00 2001
+From: Ahmad Samir <a.samirh78@gmail.com>
+Date: Fri, 27 Aug 2021 19:59:30 +0200
+Subject: [PATCH 1/2] Don't resize window when switching virtual desktops in
+ OpenBox
+
+It looks like switching virtual desktops in OpenBox invokes a show event
+(this doesn't happen while running Plasma).
+
+The code in MainWindow::showEvent() should only be run once on first show,
+so guard it with a bool member.
+
+BUG: 441610
+FIXED-IN: 21.08.1
+(cherry picked from commit 68f1505d5f6ffe6406a48732a76dbc43ff88f352)
+---
+ src/MainWindow.cpp | 23 +++++++++++------------
+ src/MainWindow.h   |  2 +-
+ 2 files changed, 12 insertions(+), 13 deletions(-)
+
+diff --git a/src/MainWindow.cpp b/src/MainWindow.cpp
+index 9b025c8f..3709759e 100644
+--- a/src/MainWindow.cpp
++++ b/src/MainWindow.cpp
+@@ -67,8 +67,7 @@ MainWindow::MainWindow() :
+     _toggleMenuBarAction(nullptr),
+     _newTabMenuAction(nullptr),
+     _pluggedController(nullptr),
+-    _menuBarInitialVisibility(true),
+-    _menuBarInitialVisibilityApplied(false)
++    _menuBarInitialVisibility(true)
+ {
+     KSharedConfigPtr konsoleConfig = KSharedConfig::openConfig(QStringLiteral("konsolerc"));
+     KConfigGroup cg = konsoleConfig->group(QStringLiteral("MainWindow"));
+@@ -947,23 +946,23 @@ void MainWindow::setRemoveWindowTitleBarAndFrame(bool frameless)
+ 
+ void MainWindow::showEvent(QShowEvent *event)
+ {
+-    // Make sure the 'initial' visibility is applied only once.
+-    if (!_menuBarInitialVisibilityApplied) {
++    // Apply this code on first show only
++    if (_firstShowEvent) {
++        _firstShowEvent = false;
+         // the initial visibility of menubar should be applied at this last
+         // moment. Otherwise, the initial visibility will be determined by
+         // what KMainWindow has automatically stored in konsolerc, but not by
+         // what users has explicitly configured .
+         menuBar()->setVisible(_menuBarInitialVisibility);
+         _toggleMenuBarAction->setChecked(_menuBarInitialVisibility);
+-        _menuBarInitialVisibilityApplied = true;
+-    }
+ 
+-    if (!_isSavedUiState || !KonsoleSettings::saveGeometryOnExit()) {
+-        // Delay resizing to here, so that the other parts of the UI
+-        // (ViewManager, TabbedViewContainer, TerminalDisplay ... etc)
+-        // have been created and TabbedViewContainer::sizeHint() returns
+-        // a usuable size.
+-        resize(sizeHint());
++        if (!_isSavedUiState || !KonsoleSettings::saveGeometryOnExit()) {
++            // Delay resizing to here, so that the other parts of the UI
++            // (ViewManager, TabbedViewContainer, TerminalDisplay ... etc)
++            // have been created and TabbedViewContainer::sizeHint() returns
++            // a usuable size.
++            resize(sizeHint());
++        }
+     }
+ 
+     // Call parent method
+diff --git a/src/MainWindow.h b/src/MainWindow.h
+index 876a81d7..e598b3b6 100644
+--- a/src/MainWindow.h
++++ b/src/MainWindow.h
+@@ -198,7 +198,7 @@ private:
+     QPointer<SessionController> _pluggedController;
+     QList<IKonsolePlugin*> _plugins;
+     bool _menuBarInitialVisibility;
+-    bool _menuBarInitialVisibilityApplied;
++    bool _firstShowEvent = true;
+     bool _blurEnabled = false;
+     bool _isSavedUiState = false;
+ };
+-- 
+2.33.0
+

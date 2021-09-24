@@ -40,6 +40,9 @@ Source23:       utilities-terminal-su-32.png
 Source24:       utilities-terminal-su-48.png
 Source25:       utilities-terminal-su-64.png
 Source26:       utilities-terminal-su-128.png
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Don-t-resize-window-when-switching-virtual-desktops-.patch
+Patch2:         0002-Always-save-the-window-state-and-geometry.patch
 BuildRequires:  fdupes
 BuildRequires:  kf5-filesystem
 BuildRequires:  update-desktop-files
