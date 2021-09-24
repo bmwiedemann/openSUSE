@@ -190,4 +190,21 @@
     <comment></comment>
     <requestid>891267</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7f75291cca228de50577c7c81bf4d5da</srcmd5>
+    <version>1.10.0</version>
+    <time>1632522896</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.10.0:
+  + Remap /run/flatpak/app, for Flatpak 1.11.x
+  + Remap /var/config and /var/data
+  + permission-store: Avoid a crash
+  + permissions-store: Add GetPermission
+  + screencast: Add 'virtual' source type
+  + openuri: Use real path for OpenDirectory
+  + location: Fix accuracy levels
+  + Add power profile monitor implementation
+  + Updated translations. (forwarded request 920369 from iznogood)</comment>
+    <requestid>920562</requestid>
+  </revision>
 </revisionlist>
