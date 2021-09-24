@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 22 17:31:59 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
+
+- Update to version 0.5.4:
+  + Keyboard Shortcuts Page (KSP) available.
+  + Port to Meson build system.
+  + Migrate from Gtk.FileChooserDialog to Gtk.FileChooserNative to
+    avoid having to grant full $HOME access in Flatpak.
+  + KeepassXC CSV importer.
+- Port to meson build system:
+  + Add meson BuildRequires.
+  + Drop automake and autoconf BuildRequires.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install.
+- Add gobject-introspection BuildRequires: new dependency.
+- Drop desktop.patch (included upstream)
+
+-------------------------------------------------------------------
 Sun Sep 27 21:26:57 UTC 2020 - Matthias Mailänder <mailaender@opensuse.org>
 
 - Update to version 0.5.3

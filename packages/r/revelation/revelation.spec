@@ -1,7 +1,7 @@
 #
 # spec file for package revelation
 #
-# Copyright (c) 2016 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,40 +12,35 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           revelation
-Version:        0.5.3
+Version:        0.5.4
 Release:        0
 Summary:        Password manager for GNOME
-License:        GPL-2.0
+License:        GPL-2.0-only
 Group:          Productivity/Security
-Url:            http://revelation.olasagasti.info
-Source:         https://github.com/mikelolasagasti/revelation/releases/download/revelation-%{version}/revelation-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM https://github.com/mikelolasagasti/revelation/pull/61
-Patch0:         desktop.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
-BuildRequires:  desktop-file-utils
+URL:            http://revelation.olasagasti.info
+Source:         https://github.com/mikelolasagasti/revelation/releases/download/revelation-%{version}/revelation-%{version}.tar.xz
 BuildRequires:  fdupes
+BuildRequires:  gobject-introspection
 BuildRequires:  intltool >= 0.35.0
+BuildRequires:  meson
 BuildRequires:  perl-XML-Parser
-BuildRequires:  python3-pycryptodomex
 BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
-BuildRequires:  pkgconfig(pygobject-3.0)
-BuildRequires:  pkgconfig(dconf)
 BuildRequires:  python3-gobject-devel
 BuildRequires:  python3-pwquality
-BuildRequires:  gobject-introspection
+BuildRequires:  python3-pycryptodomex
+BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(dconf)
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
+BuildRequires:  pkgconfig(pygobject-3.0)
 Requires:       python3-gobject
+Requires:       python3-gobject-Gdk
 Requires:       python3-pwquality
 Requires:       python3-pycryptodomex
-Requires:       python3-gobject-Gdk
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -53,32 +48,31 @@ Revelation is a password manager. It organizes accounts in
 a tree structure, and stores them as AES-encrypted XML files.
 
 %lang_package
+
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-./autogen.sh
-%configure --disable-schemas-install --disable-desktop-update --disable-mime-update
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%meson_install
 %find_lang %{name}
 %fdupes %{buildroot}%{_prefix}
 
 %files
 %defattr(-, root, root)
 %license COPYING
-%doc AUTHORS ChangeLog README TODO
+%doc AUTHORS ChangeLog README.md TODO NEWS
 %{_bindir}/revelation
 %{_datadir}/applications/info.olasagasti.revelation.desktop
 %{_datadir}/metainfo/info.olasagasti.revelation.appdata.xml
 %{_datadir}/revelation/
 %{_datadir}/icons/hicolor/*/apps/info.olasagasti.revelation*
-%{_datadir}/icons/hicolor/*/mimetypes/gnome-mime-application-x-revelation.png
-%{_datadir}/mime/packages/*
+%{_datadir}/mime/packages/revelation.xml
 %{python3_sitelib}/revelation/
-%{_datadir}/glib-2.0/schemas/org.revelation.gschema.xml
+%{_datadir}/glib-2.0/schemas/info.olasagasti.revelation.gschema.xml
 
 %files lang -f %{name}.lang
 

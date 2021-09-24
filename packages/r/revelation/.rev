@@ -7,4 +7,24 @@
     <comment>back with GNOME 3 support</comment>
     <requestid>839639</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f172c7d91904c7f589899aadffbbe3b7</srcmd5>
+    <version>0.5.4</version>
+    <time>1632522932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.4:
+  + Keyboard Shortcuts Page (KSP) available.
+  + Port to Meson build system.
+  + Migrate from Gtk.FileChooserDialog to Gtk.FileChooserNative to
+    avoid having to grant full $HOME access in Flatpak.
+  + KeepassXC CSV importer.
+- Port to meson build system:
+  + Add meson BuildRequires.
+  + Drop automake and autoconf BuildRequires.
+  + Replace configure/make/make_install macros with
+    meson/meson_build/meson_install.
+- Add gobject-introspection BuildRequires: new dependency.
+- Drop desktop.patch (included upstream)</comment>
+    <requestid>921249</requestid>
+  </revision>
 </revisionlist>
