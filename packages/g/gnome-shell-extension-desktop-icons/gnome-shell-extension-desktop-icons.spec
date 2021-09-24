@@ -29,13 +29,11 @@ Patch0:         desktop-icon-gnome-40.patch
 # PATCH-FIX-UPSTREAM desktop-icons-show-iso-file-icon.patch bsc#1183504 glgo#GNOME/World/ShellExtensions/desktop-icons!196 xwang@suse.com -- Show ISO file icon.
 Patch1:         desktop-icons-show-iso-file-icon.patch
 
-BuildRequires:  gnome-patch-translation
 # Needed for directory ownership
 BuildRequires:  gnome-shell >= 3.30
 # gobject-introspection is needed for the typelib() rpm magic.
 BuildRequires:  gobject-introspection
 BuildRequires:  meson >= 0.44.0
-BuildRequires:  translation-update-upstream
 Requires:       gnome-shell
 Requires:       nautilus >= 3.30.4
 Requires:       xdg-desktop-portal-gtk
@@ -49,8 +47,6 @@ supported.
 
 %prep
 %autosetup -n desktop-icons-%{version}
-translation-update-upstream po %{name}
-gnome-patch-translation-prepare po %{name}
 
 %build
 %meson \

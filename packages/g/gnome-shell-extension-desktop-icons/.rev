@@ -56,4 +56,13 @@
   under strict version checking (bsc#1176911). (forwarded request 910260 from xiaoguang_wang)</comment>
     <requestid>910287</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>767a502d34c71fd34cb002409db2c871</srcmd5>
+    <version>20.10.0</version>
+    <time>1632522898</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream and
+  gnome-patch-translation support (jsc#SLE-21105). (forwarded request 920410 from sbrabec)</comment>
+    <requestid>920576</requestid>
+  </revision>
 </revisionlist>

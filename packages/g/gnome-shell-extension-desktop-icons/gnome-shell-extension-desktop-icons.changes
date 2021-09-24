@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 19:50:11 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream and
+  gnome-patch-translation support (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Thu Aug  5 07:19:44 UTC 2021 - xiaoguang wang <xiaoguang.wang@suse.com>
 
 - Add desktop-icons-show-iso-file-icon.patch: Show ISO file icon as
