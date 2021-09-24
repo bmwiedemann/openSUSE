@@ -32,7 +32,6 @@ BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 Requires:       gnome-settings-daemon
 # Gsettings Schemas are needed from: gnome-shell, g-d-s and mutter
 Requires:       gnome-shell >= 3.24
@@ -55,7 +54,6 @@ of GNOME 3.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 # Tiny tweak to shut up rpmlint
 sed -i 's:Pantheon:X-Pantheon:g' */org.gnome.tweaks.desktop.in
 # Tweak to fix python env
