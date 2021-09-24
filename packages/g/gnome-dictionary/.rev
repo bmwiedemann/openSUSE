@@ -270,4 +270,13 @@
     <comment>GNOME 40 - here we come (forwarded request 880950 from dimstar)</comment>
     <requestid>881122</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>3e6a6632c842635fd3d209d72fa253f1</srcmd5>
+    <version>40.0</version>
+    <time>1632522897</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105). (forwarded request 920402 from sbrabec)</comment>
+    <requestid>920571</requestid>
+  </revision>
 </revisionlist>

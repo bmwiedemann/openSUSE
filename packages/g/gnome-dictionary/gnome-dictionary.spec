@@ -30,7 +30,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.39.0
@@ -49,7 +48,6 @@ dictionary source.
 
 %prep
 %autosetup
-translation-update-upstream po %{name}
 
 %build
 %meson \
