@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Sep 24 11:40:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- initial specfile for 2.6.0
+- required by tensorflow2 2.6.0 -- boo#1190856
