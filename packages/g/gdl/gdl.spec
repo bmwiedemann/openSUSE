@@ -29,7 +29,6 @@ BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk3-devel
 BuildRequires:  intltool >= 0.40.4
 BuildRequires:  libxml2-devel
-BuildRequires:  translation-update-upstream
 
 %description
 Gnome Devtool Libraries contains components and libraries that are
@@ -73,7 +72,6 @@ gnome-debug, gnome-build, and anjuta2.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 %configure
