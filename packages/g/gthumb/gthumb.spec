@@ -37,6 +37,8 @@ BuildRequires:  libjpeg-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(champlain-0.12) >= 0.12.0
+BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12.0
 BuildRequires:  pkgconfig(clutter-1.0) >= 1.12.0
 BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.0.0
 BuildRequires:  pkgconfig(colord) >= 1.3
@@ -53,6 +55,7 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.16
 BuildRequires:  pkgconfig(json-glib-1.0) >= 0.15.0
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libbrasero-burn3) >= 3.2.0
+BuildRequires:  pkgconfig(libheif) >= 1.11
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libraw) >= 0.14
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.34.0
@@ -92,6 +95,7 @@ slide shows, set your desktop background, and more.
 %meson \
 	-Dtracing=false \
 	-Ddocumentation=true \
+	-Dlibchamplain=true \
 	%{nil}
 %meson_build
 

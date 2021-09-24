@@ -884,4 +884,12 @@
   (jsc#SLE-21105). (forwarded request 920421 from sbrabec)</comment>
     <requestid>920552</requestid>
   </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>09279f0f62b4e6042691455ec0f166b7</srcmd5>
+    <version>3.12.0</version>
+    <time>1632522931</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920909 from dimstar)</comment>
+    <requestid>921244</requestid>
+  </revision>
 </revisionlist>

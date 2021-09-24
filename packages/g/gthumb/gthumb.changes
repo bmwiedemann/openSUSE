@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 20 20:14:53 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libheif) BuildRequires: Add support for heif/avif.
+- Add pkgconfig(champlain-0.12) and pkgconfig(champlain-gtk-0.12)
+  BuildRequires and pass libchamplain=true to meson: Use
+  libchamplain to show the position the image refers to.
+
+-------------------------------------------------------------------
 Mon Sep 20 20:14:52 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support
