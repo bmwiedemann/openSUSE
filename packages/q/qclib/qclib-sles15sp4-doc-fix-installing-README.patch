@@ -1,0 +1,29 @@
+From 9519834a61906dafa55a332c537d68af6a9e4bec Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20Hor=C3=A1k?= <dan@danny.cz>
+Date: Fri, 30 Apr 2021 09:39:39 +0200
+Subject: [PATCH] doc: fix installing README
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Dan Horák <dan@danny.cz>
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index ec5d6df..25a83d4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -88,7 +88,7 @@ install: libqc.a libqc.so.$(VERSION) zhypinfo zname
+ 	install $(INSTFLAGS) -Dm 644 zname.8 $(DESTDIR)$(MANDIR)/man8/zname.8
+ 	install $(INSTFLAGS) -Dm 644 zhypinfo.8 $(DESTDIR)$(MANDIR)/man8/zhypinfo.8
+ 	install $(INSTFLAGS) -Dm 644 query_capacity.h $(DESTDIR)$(INCDIR)/query_capacity.h
+-	install $(INSTFLAGS) -Dm 644 README $(DESTDIR)$(DOCDIR)/qclib/README
++	install $(INSTFLAGS) -Dm 644 README.md $(DESTDIR)$(DOCDIR)/qclib/README.md
+ 	install $(INSTFLAGS) -Dm 644 LICENSE $(DESTDIR)$(DOCDIR)/qclib/LICENSE
+ 
+ installdoc: doc
+-- 
+2.26.2
+

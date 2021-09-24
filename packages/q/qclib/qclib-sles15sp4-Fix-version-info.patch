@@ -1,0 +1,26 @@
+From 9cbcf8a85b93f6b18ef42c2ae0ffef4c3da6244f Mon Sep 17 00:00:00 2001
+From: Stefan Raspl <raspl@linux.ibm.com>
+Date: Mon, 28 Jun 2021 14:28:04 +0200
+Subject: [PATCH] Fix version info
+
+Signed-off-by: Stefan Raspl <raspl@linux.ibm.com>
+---
+ query_capacity.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/query_capacity.h b/query_capacity.h
+index e8a69ed..f3bfc49 100644
+--- a/query_capacity.h
++++ b/query_capacity.h
+@@ -5,7 +5,7 @@
+ #ifndef QUERY_CAPACITY
+ #define QUERY_CAPACITY
+ 
+-#define QC_VERSION	"2.2.99"
++#define QC_VERSION	"2.3.0"
+ 
+ 
+ /* Build Customization */
+-- 
+2.26.2
+

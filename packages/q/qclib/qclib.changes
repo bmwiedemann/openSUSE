@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 21 15:44:51 UTC 2021 - Mark Post <mpost@suse.com>
+
+- Upgraded to version 2.3.0 (jsc#SLE-18327)
+  * Changes:
+    - Only export symbols exposed in public header
+    - `config.doxygen`: Remove obsolete variables
+    - `zname`, `zhypinfo`: Add version switch
+- Updated the URL in the spec file to point to the github repository
+- Added the following patches from IBM's git repository
+  * qclib-sles15sp4-doc-fix-installing-README.patch
+  * qclib-sles15sp4-Fix-version-info.patch
+
+-------------------------------------------------------------------
 Mon Oct 19 17:58:26 UTC 2020 - Mark Post <mpost@suse.com>
 
 - Upgraded to version 2.2.1 (jsc#SLE-13711)

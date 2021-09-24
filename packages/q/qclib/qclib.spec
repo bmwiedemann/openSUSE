@@ -1,7 +1,7 @@
 #
 # spec file for package qclib
 #
-# Copyright (c) 2017-2020 SUSE LLC
+# Copyright (c) 2017-2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,16 @@
 
 
 Name:           qclib
-Version:        2.2.1
+Version:        2.3.0
 Release:        0
 Summary:        Query Capacity library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
-URL:            https://public.dhe.ibm.com/software/dw/linux390/ht_src/%{name}-%{version}.tgz
-Source:         %{name}-%{version}.tgz
+URL:            https://github.com/ibm-s390-linux/%{name}/archive/refs/tags/%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+Patch1:         qclib-sles15sp4-doc-fix-installing-README.patch
+Patch2:         qclib-sles15sp4-Fix-version-info.patch
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 ExclusiveArch:  s390 s390x
