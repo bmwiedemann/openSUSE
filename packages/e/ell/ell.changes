@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 19 10:11:39 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
+
+- update to release 0.44
+  * Fix issue with allowing zero byte input for AEAD cipher.
+  * Fix issue with filling in DNS info in DHCP lease objects.
+  * Add support neighbor discovery utility helpers.
+
+
+-------------------------------------------------------------------
 Tue Sep  7 10:11:09 UTC 2021 - Malte Ohmstede <malte.ohmstede@gmail.com>
 
 - Update to release 0.43
