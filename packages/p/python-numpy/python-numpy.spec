@@ -17,8 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%define ver 1.21.0
-%define _ver 1_21_0
+%define ver 1.21.2
+%define _ver 1_21_2
 %define pname python-numpy
 %define hpc_upcase_trans_hyph() %(echo %{**} | tr [a-z] [A-Z] | tr '-' '_')
 %if "%{flavor}" == ""
@@ -77,11 +77,8 @@ Source99:       python-numpy-rpmlintrc
 Patch0:         numpy-buildfix.patch
 # PATCH-FIX-OPENSUSE numpy-1.9.0-remove-__declspec.patch -- fix for spurious compiler warnings that cause build failure
 Patch1:         numpy-1.9.0-remove-__declspec.patch
-# PATCH-FIX-UPSTREAM 0001-BUG-Fix-infinite-loop-on-gcc11.patch
-Patch2:         0001-BUG-Fix-infinite-loop-on-gcc11.patch
-# PATCH-FIX-UPSTREAM numpy-pr19326-fix-subarray-segfault.patch -- gh#numpy/numpy#19326
-Patch3:         https://github.com/numpy/numpy/pull/19326.patch#/numpy-pr19326-fix-subarray-segfault.patch
-BuildRequires:  %{python_module Cython >= 0.29.23}
+BuildConflicts: gcc11 < 11.2
+BuildRequires:  %{python_module Cython >= 0.29.24}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis >= 6.12.0}

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Sep 20 16:51:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.21.2
+  * #19497: MAINT: set Python version for 1.21.x to <3.11
+  * #19533: BUG: Fix an issue wherein importing numpy.typing could raise
+  * #19646: MAINT: Update Cython version for Python 3.10.
+  * #19648: TST: Bump the python 3.10 test version from beta4 to rc1
+  * #19651: TST: avoid distutils.sysconfig in runtests.py
+  * #19652: MAINT: add missing dunder method to nditer type hints
+  * #19656: BLD, SIMD: Fix testing extra checks when -Werror isn't applicable...
+  * #19657: BUG: Remove logical object ufuncs with bool output
+  * #19658: MAINT: Include .coveragerc in source distributions to support...
+  * #19659: BUG: Fix bad write in masked iterator output copy paths
+  * #19660: ENH: Add support for windows on arm targets
+  * #19661: BUG: add base to templated arguments for platlib
+  * #19662: BUG,DEP: Non-default UFunc signature/dtype usage should be deprecated
+  * #19666: MAINT: Add Python 3.10 to supported versions.
+  * #19668: TST,BUG: Sanitize path-separators when running runtest.py
+  * #19671: BLD: load extra flags when checking for libflame
+  * #19676: BLD: update circleCI docker image
+  * #19677: REL: Prepare for 1.21.2 release.
+- Release 1.21.1
+  * #19311: REV,BUG: Replace NotImplemented with typing.Any
+  * #19324: MAINT: Fixed the return-dtype of ndarray.real and imag
+  * #19330: MAINT: Replace "dtype[Any]" with dtype in the definiton of...
+  * #19342: DOC: Fix some docstrings that crash pdf generation.
+  * #19343: MAINT: bump scipy-mathjax
+  * #19347: BUG: Fix arr.flat.index for large arrays and big-endian machines
+  * #19348: ENH: add numpy.f2py.get_include function
+  * #19349: BUG: Fix reference count leak in ufunc dtype handling
+  * #19350: MAINT: Annotate missing attributes of np.number subclasses
+  * #19351: BUG: Fix cast safety and comparisons for zero sized voids
+  * #19352: BUG: Correct Cython declaration in random
+  * #19353: BUG: protect against accessing base attribute of a NULL subarray
+  * #19365: BUG, SIMD: Fix detecting AVX512 features on Darwin
+  * #19366: MAINT: remove print()'s in distutils template handling
+  * #19390: ENH: SIMD architectures to show_config
+  * #19391: BUG: Do not raise deprecation warning for all nans in unique...
+  * #19392: BUG: Fix NULL special case in object-to-any cast code
+  * #19430: MAINT: Use arm64-graviton2 for testing on travis
+  * #19495: BUILD: update OpenBLAS to v0.3.17
+  * #19496: MAINT: Avoid unicode characters in division SIMD code comments
+  * #19499: BUG, SIMD: Fix infinite loop during count non-zero on GCC-11
+  * #19500: BUG: fix a numpy.npiter leak in npyiter_multi_index_set
+  * #19501: TST: Fix a GenericAlias test failure for python 3.9.0
+  * #19502: MAINT: Start testing with Python 3.10.0b3.
+  * #19503: MAINT: Add missing dtype overloads for object- and ctypes-based...
+  * #19510: REL: Prepare for NumPy 1.21.1 release.
+- Drop 0001-BUG-Fix-infinite-loop-on-gcc11.patch fixed upstream
+  (by gcc 11.2)
+- Drop numpy-pr19326-fix-subarray-segfault.patch merged upstream
+  (backported)
+
+-------------------------------------------------------------------
 Fri Jul 16 15:14:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix segfault with subarray access
