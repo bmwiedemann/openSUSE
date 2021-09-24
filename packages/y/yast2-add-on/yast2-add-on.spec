@@ -17,7 +17,7 @@
 
 
 Name:           yast2-add-on
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 Summary:        YaST2 - Add-On media installation code
 License:        GPL-2.0-only
@@ -27,16 +27,17 @@ URL:            https://github.com/yast/yast-add-on
 Source0:        %{name}-%{version}.tar.bz2
 
 BuildRequires:  update-desktop-files
-BuildRequires:  yast2 >= 3.0.1
-BuildRequires:  yast2-devtools >= 3.1.10
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
+# UIExtensionChecker
+BuildRequires:  yast2 >= 4.4.19
+BuildRequires:  yast2-devtools >= 3.1.10
 # Y2packager::Resolvables
 BuildRequires:  yast2-packager >= 4.2.11
 
 Requires:       autoyast2-installation
-# ProductProfile
-Requires:       yast2 >= 3.0.1
+# UIExtensionChecker
+Requires:       yast2 >= 4.4.19
 Requires:       yast2-country
 Requires:       yast2-installation
 # Packager ProductLicense#HandleLicenseDialogRet allowing "refuse" action

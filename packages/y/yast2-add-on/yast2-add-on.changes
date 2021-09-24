@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 15 13:56:13 UTC 2021 - Stefan Hundhammer <shundhammer@suse.com>
+
+- When the user clicks on "Run Software Manager", check for the
+  "pkg" UI extension and prompt user to install it if not present
+  (jsc#SLE-20346, jsc#SLE-20462)
+- 4.4.3
+
+-------------------------------------------------------------------
 Tue Aug 31 11:15:52 UTC 2021 - David Diaz <dgonzalez@suse.com>
 
 - Auto client does not crash when trying to import from an
