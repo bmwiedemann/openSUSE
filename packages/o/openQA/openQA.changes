@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 24 00:03:19 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1632424784.6736f5e9a:
+  * templates: Clarify which filter options in /overview apply to the job
+  * Trigger minion tasks when jobs are done
+  * Fix typo in jobs API documentation
+  * Document installing test distri deps for containerized setup
+  * Follow symlinks when installing test distri dependencies
+  * Fix config for cloning with container setup
+  * Set a default `base_url` for containerized setup and document config
+  * Utils.pm: Add missing spaces in human_readable_size()
+  * downloads: Print asset size
+  * Plugin/Helpers.pm: Add human_readable_size() helper
+  * Revert mistaken worker write access to needles
+  * Improve cleanup documentation
+  * Allow configuring concurrent cleanup
+
+-------------------------------------------------------------------
 Tue Sep 21 16:13:16 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1632228188.ad82e8315:
