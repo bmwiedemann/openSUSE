@@ -42,7 +42,6 @@ BuildRequires:  lirc-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-pylint
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala >= 0.14.1
 BuildRequires:  yelp-tools
