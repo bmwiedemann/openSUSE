@@ -43,6 +43,8 @@ Source3:        README.SUSE
 Source4:        snmptrapd.service
 Source5:        net-snmp.logrotate
 Source6:        test_installed
+Source7:        https://sourceforge.net/projects/net-snmp/files/net-snmp/%{version}/%{name}-%{version}.tar.gz.asc
+Source8:        http://www.net-snmp.org/net-snmp-admin.asc#/%{name}.keyring
 Source10:       snmpd.sysconfig
 Source11:       snmptrapd.sysconfig
 Source20:       net-snmp-tmpfs.conf
@@ -199,6 +201,7 @@ SNMPv2c, SNMPv1) client API. The 'netsnmp' module internals rely on the
 Net-SNMP toolkit library.
 
 %else
+
 %package -n python2-%{name}
 Summary:        The Python 'netsnmp' module for the Net-SNMP
 License:        BSD-3-Clause AND MIT

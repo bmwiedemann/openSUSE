@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 19 18:54:20 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- add upstream signing keyring and validate source signature
+
+-------------------------------------------------------------------
 Thu Mar 25 16:27:58 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Can't assume non-existence of python38 macros in Leap.
