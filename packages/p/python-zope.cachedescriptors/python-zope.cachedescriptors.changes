@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 24 12:39:41 UTC 2021 - pgajdos@suse.com
+
+- %check: do no use deprecated setup.py test
+
+-------------------------------------------------------------------
 Tue Dec  4 12:56:27 UTC 2018 - Matej Cepl <mcepl@suse.com>
 
 - Remove superfluous devel dependency for noarch package

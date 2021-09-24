@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.cachedescriptors
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@ Release:        0
 Summary:        Method and property caching decorators
 License:        ZPL-2.1
 Group:          Development/Languages/Python
-Url:            http://github.com/zopefoundation/zope.cachedescriptors
+URL:            http://github.com/zopefoundation/zope.cachedescriptors
 Source:         https://files.pythonhosted.org/packages/source/z/zope.cachedescriptors/zope.cachedescriptors-%{version}.tar.gz
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -53,7 +53,11 @@ persistent objects.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py -q test -q
+cd build/lib
+%{python_expand \
+$python -m unittest -v zope.cachedescriptors.tests
+$python -m doctest -v zope/cachedescriptors/*.rst
+}
 
 %files %{python_files}
 %doc CHANGES.rst README.rst
