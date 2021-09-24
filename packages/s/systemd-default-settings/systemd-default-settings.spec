@@ -16,6 +16,8 @@
 #
 
 
+%define extra_version -1-g6b8dde1
+
 Name:           systemd-default-settings
 URL:            https://github.com/openSUSE/systemd-default-settings
 Version:        0.7
@@ -23,7 +25,7 @@ Release:        0
 Summary:        Customization of systemd default settings for SUSE distributions
 License:        GPL-2.0-or-later
 Group:          System/Base
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}%{extra_version}.tar.gz
 BuildArch:      noarch
 BuildRequires:  systemd-rpm-macros
 Requires:       %{name}-branding = %{version}-%{release}
@@ -84,7 +86,7 @@ This package overrides some of the upstream default settings to make
 them better suited for SLE-Micro distributions.
 
 %prep
-%setup -q
+%setup -q -n %name-%{version}%{extra_version}
 
 %build
 

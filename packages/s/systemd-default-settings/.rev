@@ -62,4 +62,13 @@
   d3fab7c Introduce SLE-Micro branding</comment>
     <requestid>874410</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>e7274888fe30f9c7eccbf165eb9e03e1</srcmd5>
+    <version>0.7</version>
+    <time>1632522907</time>
+    <user>dimstar_suse</user>
+    <comment>- Import commit 6b8dde1d4f867aff713af6d6830510a84fad58d2
+  6b8dde1 Convert more drop-ins into early ones</comment>
+    <requestid>920608</requestid>
+  </revision>
 </revisionlist>
