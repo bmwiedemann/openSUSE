@@ -1022,4 +1022,12 @@
     <comment>submitted by yast2-maintainers via jenkins</comment>
     <requestid>916855</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>b6322890da0b94e16f9c6c385b73982f</srcmd5>
+    <version>4.4.37</version>
+    <time>1632522909</time>
+    <user>dimstar_suse</user>
+    <comment>submitted by yast2-maintainers via jenkins</comment>
+    <requestid>920622</requestid>
+  </revision>
 </revisionlist>
