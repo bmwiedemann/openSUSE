@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 24 07:53:45 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Add PrusaSlicer-catch2upd.patch
+  * gh#prusa3d/PrusaSlicer#6518
+  * Update of Catch2 test framework from v2.13.3 to v2.13.6
+  * Fixes build failure due to change of MINSIGSTKSZ in glibc 2.34
+
+-------------------------------------------------------------------
 Mon Aug 30 11:37:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Add PrusaSlicer-issue6681-openvdb.patch

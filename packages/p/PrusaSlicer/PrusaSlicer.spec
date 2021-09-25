@@ -26,6 +26,8 @@ URL:            https://www.prusa3d.com/prusaslicer/
 Source0:        https://github.com/prusa3d/PrusaSlicer/archive/version_%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM PrusaSlicer-issue6681-openvdb.patch -- gh#prusa3d/PrusaSlicer#6681
 Patch0:         https://github.com/prusa3d/PrusaSlicer/commit/e6507594fb6893156056c2123822a2b37f7f179d.patch#/PrusaSlicer-issue6681-openvdb.patch
+# PATCH-FIX-UPSTREAM PrusaSlicer-catch2upd.patch -- gh#prusa3d/PrusaSlicer#6518
+Patch1:         https://github.com/prusa3d/PrusaSlicer/commit/60768d32486cf05635cc355cbdea906aa60b17a8.patch#/PrusaSlicer-catch2upd.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 4.13.2
