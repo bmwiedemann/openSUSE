@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 25 08:00:47 UTC 2021 - Dave Plater <davejplater@gmail.com>
+
+- Update to 8.6.0
+-upstream changes:
+  *This release clears CVE-2021-40530 and fixes a problem with
+   ChaCha20 AVX2 implementation.
+  *The CVE was due to ElGamal encryption using a work estimate to
+   size encryption exponents instead subgroup order.
+  *The ChaCha20 issue was due to mishandling a carry in the AVX2
+   code path. The ChaCha20 issue was difficult to duplicate, so
+   most users should not experience it.
+
+-------------------------------------------------------------------
 Wed Mar 17 20:03:35 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.5.0:

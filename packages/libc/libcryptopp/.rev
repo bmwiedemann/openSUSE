@@ -304,4 +304,15 @@ Filter out -flto= flag for arm7 see cryptopp issue#865</comment>
 </comment>
     <requestid>879764</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>fe5ed68c902118349d7bd9becaa83aef</srcmd5>
+    <version>8.6.0</version>
+    <time>1632603089</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 8.6.0
+-upstream changes:
+  *This release clears CVE-2021-40530 and fixes a problem with
+   ChaCha20 AVX2 implementation.</comment>
+    <requestid>921434</requestid>
+  </revision>
 </revisionlist>

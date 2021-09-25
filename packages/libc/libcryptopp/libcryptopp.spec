@@ -17,7 +17,7 @@
 
 
 %define major 8
-%define minor 5
+%define minor 6
 %define patch 0
 %define pkg_version %{major}%{minor}%patch
 # There is no upstream interface version information.
@@ -59,7 +59,7 @@ curve crypto.
 %package -n %{name}-devel
 Summary:        Development files for libcryptopp, a cryptographic library for C++
 Requires:       %{name}%{sover} = %{version}
-Obsoletes:      %{name}-devel-static
+Obsoletes:      %{name}-devel-static <= %{version}
 
 %description -n %{name}-devel
 The Crypto++ library provides authenticated encryption, stream and
