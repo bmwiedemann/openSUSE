@@ -78,7 +78,8 @@ This subpackage contains debug utilities for the seccomp interface.
 
 %if 0%{?qemu_user_space_build}
 # The qemu linux-user emulation does not allow executing
-# prctl(PR_SET_SECCOMP), which breaks this test.  Stub it out.
+# prctl(PR_SET_SECCOMP), which breaks these tests.  Stub them out.
+echo 'int main () { return 0; }' >tests/11-basic-basic_errors.c
 echo 'int main () { return 0; }' >tests/52-basic-load.c
 %endif
 
