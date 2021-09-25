@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 23 13:48:21 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 0.5.7
+  * Update Appdata file and use the same description everywhere
+  * Prevent warning when saving a deleted file via a symlink
+    (gxo#apps/mousepad#135)
+  * Conform to Freedesktop.org standard for file naming
+  * Properly disconnect signal handlers
+  * Be sure not to disable highlighting when disabling regex search
+  * Check for realpath()
+  * Check for `errno.h` required by CI
+  * Fix a nasty memory leak
+  * Fix "Save As" procedure when it recurses
+  * Allow drag and drop on selections in the textview
+  * Code cleanup: Remove a useless dnd signal forwarding
+  * Code cleanup: Simplify `mousepad_file_save()`
+  * Fix a small memory leak
+  * Improve trash can management
+  * Update read-only status on file location change/validation
+  * Monitor also the target of broken links
+  * Fix monitoring of files opened through a symlink
+  * Allow drag and drop of broken links
+  * Follow symlinks if necessary when checking if a file exists
+  * Replace `g_realloc()` with `g_renew()`
+  * Replace `g_malloc*()` with `g_new*()` (gxo#apps/mousepad!113)
+  * Make sure that `gtk_selection_data_get_uris()` returned non-NULL
+    (gxo#apps/mousepad!113)
+  * Initialize `contents` and use it to guard `g_file_replace_contents`
+    (gxo#apps/mousepad!113)
+  * Fix an unlikely memory leak
+  * Make CSD consistent with other Xfce windows (gxo#apps/mousepad#145)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sat Jul 31 22:42:56 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 0.5.6

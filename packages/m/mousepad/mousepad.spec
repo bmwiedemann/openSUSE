@@ -18,7 +18,7 @@
 
 %define libname libmousepad0
 Name:           mousepad
-Version:        0.5.6
+Version:        0.5.7
 Release:        0
 Summary:        Simple Text Editor for Xfce
 License:        GPL-2.0-or-later
@@ -70,7 +70,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %find_lang %{name} %{?no_lang_C}
 
-%suse_update_desktop_file %{name}
+%suse_update_desktop_file org.xfce.%{name}
 
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
@@ -81,12 +81,12 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %doc AUTHORS NEWS ChangeLog README.md
 %license COPYING
 %{_bindir}/mousepad
-%{_datadir}/applications/mousepad.desktop
-%{_datadir}/applications/mousepad-settings.desktop
+%{_datadir}/applications/org.xfce.mousepad.desktop
+%{_datadir}/applications/org.xfce.mousepad-settings.desktop
 %{_datadir}/glib-2.0/schemas/org.xfce.mousepad.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.xfce.mousepad.plugins.gspell.gschema.xml
 %{_datadir}/polkit-1/
-%{_datadir}/metainfo/%{name}.appdata.xml
+%{_datadir}/metainfo/org.xfce.%{name}.appdata.xml
 %{_datadir}/icons/hicolor/*/apps/org.xfce.mousepad.*
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/plugins
