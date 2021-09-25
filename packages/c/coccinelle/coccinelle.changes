@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 24 22:36:26 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
+
+- Further testing shows that grep, which and findutils are also 
+  required.
+
+-------------------------------------------------------------------
 Tue Sep 21 00:36:44 UTC 2021 - Cristian Rodríguez <crrodriguez@opensuse.org>
 
 - Fix totally broken python support, set the correct python3

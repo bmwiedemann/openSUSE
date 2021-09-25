@@ -39,7 +39,10 @@ BuildRequires:  ocamlfind(pcre)
 BuildRequires:  ocamlfind(pyml)
 BuildRequires:  ocamlfind(stdcompat)
 BuildRequires:  pkgconfig(python3)
+Requires:       findutils
+Requires:       grep
 Requires:       python3-base
+Requires:       which
 
 %description
 Coccinelle is a program matching and transformation engine which

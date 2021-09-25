@@ -267,4 +267,13 @@
   is python 2.7. (changed kill-env.diff, spec) (forwarded request 920465 from elvigia)</comment>
     <requestid>920539</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>d6508a3a61ffb61473a600b8cd1471e0</srcmd5>
+    <version>1.1.0</version>
+    <time>1632603086</time>
+    <user>dimstar_suse</user>
+    <comment>- Further testing shows that grep, which and findutils are also 
+  required. (forwarded request 921379 from elvigia)</comment>
+    <requestid>921384</requestid>
+  </revision>
 </revisionlist>
