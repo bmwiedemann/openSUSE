@@ -168,4 +168,147 @@
 </comment>
     <requestid>921122</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>bb390df5a80f716963848786ecb03d2b</srcmd5>
+    <version>2.27.0</version>
+    <time>1632603084</time>
+    <user>dimstar_suse</user>
+    <comment>- update to version 2.27.0:
+ - handle named escape sequences in format upgrades
+ - remove splatting of listcomp -&gt; splat of generator
+- update to version 2.26.0.post1:
+ - BUG: fix broken tests for versioned_branches feature
+- update to version 2.26.0:
+ - ENH: expand versioned_branches feature to Python 3 minor version comparison (&lt;, &gt;, &lt;=, &gt;= with else)
+- update to version 2.25.1:
+ - don't rewrite %-format with width+s
+ - update timidity docs for f-strings
+- update to version 2.25.0:
+ - revert pep584 rewrite
+- update to version 2.24.0:
+ - Rewrite unittest deprecated aliases
+   Fixes #519
+- update to version 2.23.3:
+ - can't splat async generators
+ - cannot unpack async generators
+ - add extra test for pep584
+- update to version 2.23.2:
+ - correctly compute indent for typeddict after dedent
+- update to version 2.23.1:
+ - fix bug in merge dicts: look for comma backwards
+- update to version 2.23.0:
+ - rewrite type of primitive
+- update to version 2.22.0:
+ - rewrite six.moves.range
+ - rewrite lru_cache with maxsize=None and typed=False
+   Co-authored-by: Max Rozentsveyg &lt;maxr@outlook.com&gt;
+- update to version 2.21.2:
+ - dont do generator rewrite if list comp contains await
+- update to version 2.21.1:
+ - fix breakage from async generator
+ - Fix etree heading, non-breaking space to space
+- update to version 2.21.0:
+ - remove redunant encoding even for f-strings
+- update to version 2.20.1:
+ - dont rewrite fstring if await in py3
+- Update to version 2.20.0:
+ - stricter mypy settings
+ - remove unused type ignore
+ - fix six.with_metaclass and trailing commas
+ - rewrite cElementTree to ElementTree
+- update to version 2.19.1
+ - unpack argument list comprehensions
+ - revert string join for potential perf reasons
+- update to version 2.19.2
+ - replace open modes with string flags
+- update to version 2.19.3
+ - ignore unrelated calls to .encode(...)
+ - fix elif -&gt; else when indented
+- update to version 2.19.4
+ - fix __metaclass__ = type replacement without extra newline
+- update to versio 2.18.3:
+ - remove trailing comma after removed list comp
+- update to version 2.18.2:
+ -  don't rewrite list comp to generator expression in short-circuiting functions
+- update to version 2.18.1:
+ - check argument count for generator rewrite
+- update to version 2.18.0:
+ - use generator expressions in single arg func calls
+- update to version 2.17.0:
+ - Fix typo in the &quot;is&quot; example of README
+ - use generator to unpack list comprehension
+- update to version 2.16.0:
+ - don't crash on --py311-plus
+ - Use more inclusive language
+ - pep584-rewrite
+ - note pep584 change in README
+- update to version 2.15.0:
+ - only replace argument token
+ - CLN only replace argument token
+ - replace stdout=PIPE and stderr=PIPE with capture_output=True
+- update to version 2.14.0:
+ - replace universal_newlines with text if py37+
+ - upgrade subprocess.run(universal_newlines=True) to subprocess.run(text=True) in --py37-plus
+ - reorder_python_imports: v2.4.0 → v2.5.0
+- Update to version 2.13.0:
+ - move pep563 rewrite to py311
+- Update to version 2.12.0:
+ - document annotation unquote
+ - use dict comprehension
+ - rewrite typeddict even with total= option
+ - Update azure-pipelines template repositories
+ - _to_fstring: Use original token stream instead of unparsed AST
+- Update to version 2.10.1
+ - fix nested union replaces
+- Update to version 2.11.0
+ - dequote annotations: quoted annotations + `from __future__ import annotations`
+ - rewrite open even with mode=: Rewrite open_mode even if mode is passed by name
+- Disable build on Python 2 as the build fails with the latest version.
+- Update to version 1.10.0:
+ - lru_cache(maxsize=None) =&gt; functools.cache
+- Update to version 2.9.0:
+ - Document correct minimum version for PEP 604
+ - fix propagation of --keep-mock
+ - Add --keep-runtime-typing
+- Update to version 2.8.0:
+ - genericize future import detection
+ - rewrite pep585 generic builtins
+ - move py2 compat fixer to plugins
+ - move %-format rewrite to a plugin
+ - move py3+ base class removal to plugins
+ - move lru_cache rewrite to a plugin
+ - move six decorator removal to a plugin
+ - move six.b / six.ensure_binary to a plugin
+ - move __metaclass__ = test checker to a plugin
+ - move io.open rewriting to a plugin
+ - move simple six attrs to a plugin
+ - move typing pep585 rewrite to a plugin
+ - move default encoding to a plugin
+ - move native literals to a plugin
+ - move versioned branches rewrite to a plugin
+ - move open mode fix to a plugin
+ - move os error alias rename to a plugin
+ - move six calls / metaclass rewrites to plugins
+ - settings in separate class
+ - move mock rewrite to a plugin
+ - refactor Py3Plus scope management
+ - move super and yield from to a legacy plugin
+ - combine six_b into six_calls plugin
+ - replace typing.Text with str
+ - rewrite pep604 (+ add --py310-plus)
+ - document PEP 604 rewrites
+- Use python_clone and alternatives to provide the executable.
+- Update to version 2.7.4:
+ - parenthesize expressions when replacing six calls when needed
+- Update to 2.7.3:
+ - fix off-by-one in encode() call fixer
+ - upgrade mypy to get typeshed fix 
+- update to 2.7.2
+  * fix any call with *sys.exc_info()
+  * leave f'string'.format(...) alone
+  * `reraise` and `raise_from` doc examples
+- initial package for version 2.6.2.
+</comment>
+    <requestid>921380</requestid>
+  </revision>
 </revisionlist>

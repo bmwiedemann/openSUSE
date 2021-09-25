@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 24 19:39:14 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.27.0:
+ - handle named escape sequences in format upgrades
+ - remove splatting of listcomp -> splat of generator
+
+-------------------------------------------------------------------
 Sat Sep 18 19:58:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - update to version 2.26.0.post1:
@@ -9,7 +16,7 @@ Sat Sep 18 19:58:40 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
  - don't rewrite %-format with width+s
  - update timidity docs for f-strings
 - update to version 2.25.0:
- - revert pep584 rewrit
+ - revert pep584 rewrite
 
 -------------------------------------------------------------------
 Fri Aug 20 19:49:12 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
