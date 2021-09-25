@@ -1,7 +1,61 @@
 -------------------------------------------------------------------
+Thu Sep 23 13:00:03 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.3
+  * Improved .interactive Dataframe support: max_rows display,
+    column access (#640)
+  * Improved accessor and attribute behavior for .interactive
+    (#633, #635, #641, #642)
+  * Add .holoviews() terminal method to .interactive pipelines
+  * Add support for kwargs to .interactive.layout
+  * Misc fixes to .interactive API (#630, #632)
+  * Allow dynspread=True to be used with rasterize=True (now that
+    Datashader supports it)
+- remove unnecessary no-network.patch
+
+-------------------------------------------------------------------
 Mon Jul 19 10:13:57 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix pooch cache dir for xarray tutorial data
+
+-------------------------------------------------------------------
+Tue May 25 10:10:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 0.7.2:
+  - Add support for geographic features (#622)
+  - Added support for OHLC plot (#623)
+  - Add Ibis backend, providing hvPlot features for lazy SQL
+    queries (#507)
+  - Support setting options for diagonal plots in scatter_matrix
+    (#602)
+  - Take group_label from columns if available (#615)
+  - Add kwargs to interactive.layout()
+  - Fix support for clim on contours (#587)
+  - Adding default coordinates to datasets with missing coords
+    (#605)
+  - Do not plot streamz example point (#614)
+  - Fix passing in multiple z-values (#616)
+  - Ensure violin and boxplot color is applied (#619)
+  - Ensure categorical colormapping is applied during datashade
+    (#621)
+  - Switch default tile source to OSM (since Wikipedia tiles are
+    no longer available) (#610)
+  - Correctly document .hist rather than .histogram (#571)
+  - Use strings rather than bytes when referring to airplane
+    dataset columns (#538)
+  - Preserve function signature and docstring in
+    with_hv_extension (#601)
+  - Add hover_cols example (#612)
+  - Switch to pydata sphinx theme (#613)
+  - Update available options in customization docs (#620)
+  - Add hover='vline' hover='hline' options to expose Bokeh HoverTool mode (#493)
+  - Support streaming plots from HoloViews streams (not needing
+    a streamz source) (#542)
+  - Misc: GitHub Actions (#568), melting wide data (#566), 'by'
+    columns (#565), NetworkX (#549), cycles for continuous
+    colormaps (#548), interactivity warning (#550)
+- Add no-network.patch to allow testing without a network
+  connection (gh#holoviz/hvplot#662).
 
 -------------------------------------------------------------------
 Sat Feb 13 10:37:40 UTC 2021 - Ben Greiner <code@bnavigator.de>

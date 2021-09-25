@@ -21,7 +21,7 @@
 # NEP 29: python36-numpy is no longer available on Tumbleweed
 %define         skip_python36 1
 Name:           python-hvplot
-Version:        0.7.0
+Version:        0.7.3
 Release:        0
 Summary:        High-level plotting API for the PyData ecosystem built on HoloViews
 License:        BSD-3-Clause
@@ -72,7 +72,7 @@ BuildRequires:  %{python_module dask}
 BuildRequires:  %{python_module datashader >= 0.6.5}
 BuildRequires:  %{python_module holoviews >= 1.11.0}
 BuildRequires:  %{python_module networkx}
-BuildRequires:  %{python_module numpy >= 1.15}
+BuildRequires:  %{python_module numpy >= 1.7}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module param >= 1.6.1}
 BuildRequires:  %{python_module parameterized}
@@ -93,9 +93,8 @@ individual PyData libraries if an extension mechanism for the native
 plot APIs is offered, or it can be used as a standalone component.
 
 %prep
-%setup -q -n hvplot-%{version} -a1
-mkdir cache
-mv xarray-data-master cache/xarray_tutorial_data
+%autosetup -p1 -n hvplot-%{version}
+tar -x -f %{SOURCE1} --transform='s/xarray-data-master/cache\/xarray_tutorial_data/'
 
 %build
 %python_build
