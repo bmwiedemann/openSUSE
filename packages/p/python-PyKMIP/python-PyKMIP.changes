@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 24 22:07:08 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Remove SQL-issues.patch with the patch
+  fix-tests-SQLAlchemy-140.patch which actually resolves the
+  problems (gh#OpenKMIP/PyKMIP#656).
+
+-------------------------------------------------------------------
 Sat Jun  5 12:12:59 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Add SQL-issues.patch skipping tests failing due to

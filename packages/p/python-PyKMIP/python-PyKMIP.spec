@@ -26,9 +26,9 @@ License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/OpenKMIP/PyKMIP
 Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM SQL-issues.patch gh#OpenKMIP/PyKMIP#649 mcepl@suse.com
-# skip tests failing due to gh#OpenKMIP/PyKMIP#649
-Patch0:         SQL-issues.patch
+# PATCH-FIX-UPSTREAM fix-tests-SQLAlchemy-140.patch gh#OpenKMIP/PyKMIP#656 mcepl@suse.com
+# fix tests to work with SQLAlchemy >= 1.4.0
+Patch0:         fix-tests-SQLAlchemy-140.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}

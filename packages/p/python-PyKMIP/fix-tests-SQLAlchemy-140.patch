@@ -1,0 +1,496 @@
+From 01307c08937890db38b9ae6135c5b8d5f720e595 Mon Sep 17 00:00:00 2001
+From: Tim Burke <tim.burke@gmail.com>
+Date: Tue, 21 Sep 2021 18:16:09 -0700
+Subject: [PATCH] Fix tests to pass with SQLAlchemy>=1.4.0
+
+I'm not *entirely* sure what's going on here, but it seems that when we
+do something like
+
+    obj = OpaqueObject(...)
+    Session = sessionmaker(...)
+    session = Session()
+    ...
+    session.add(obj)
+    session.commit()
+
+the primary key (and maybe some foreign relations?) aren't automatically
+populated on `obj` following the commit, and will attempt to lazy-load
+on next reference. Since expire_on_commit defaults to True, the session
+attached to `obj` (which is no longer the `session` in locals!) is closed
+out when we later do
+
+    session = Session()
+    get_obj = session.query(OpaqueObject).filter(
+        ManagedObject.unique_identifier == obj.unique_identifier).one()
+
+leading to a DetachedInstanceError.
+
+There seem to be a few different ways we can fix this:
+
+* Set expire_on_commit=False so the old session is still useful for the
+  lazy-loading.
+* Re-use the same session instead of creating a new one.
+* Explicitly refresh added objects post-commit.
+
+Generally prefer the first one; there's some prior art to follow in
+services/server/test_engine.py. Curiously, that same file runs into
+trouble despite already setting expire_on_commit=False -- so do the
+explicit refresh, on the assumption that there was a reason we went to
+the trouble of creating a fresh session.
+
+Closes #649
+---
+ kmip/tests/unit/pie/objects/test_opaque_object.py  | 14 +++++++-------
+ kmip/tests/unit/pie/objects/test_private_key.py    | 14 +++++++-------
+ kmip/tests/unit/pie/objects/test_public_key.py     | 14 +++++++-------
+ kmip/tests/unit/pie/objects/test_secret_data.py    | 14 +++++++-------
+ kmip/tests/unit/pie/objects/test_split_key.py      |  3 ++-
+ kmip/tests/unit/pie/objects/test_symmetric_key.py  | 14 +++++++-------
+ .../unit/pie/objects/test_x509_certificate.py      | 14 +++++++-------
+ kmip/tests/unit/services/server/test_engine.py     |  3 +++
+ 8 files changed, 47 insertions(+), 43 deletions(-)
+
+diff --git a/kmip/tests/unit/pie/objects/test_opaque_object.py b/kmip/tests/unit/pie/objects/test_opaque_object.py
+index c742a17e..f41f1b0e 100644
+--- a/kmip/tests/unit/pie/objects/test_opaque_object.py
++++ b/kmip/tests/unit/pie/objects/test_opaque_object.py
+@@ -224,7 +224,7 @@ def test_get(self):
+         test_name = 'bowser'
+         obj = OpaqueObject(
+             self.bytes_a, enums.OpaqueDataType.NONE, name=test_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -259,7 +259,7 @@ def test_add_multiple_names(self):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+         self.assertEquals(expected_mo_names, obj._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -295,7 +295,7 @@ def test_remove_name(self):
+         self.assertEquals(expected_names, obj.names)
+         self.assertEquals(expected_mo_names, obj._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -334,7 +334,7 @@ def test_remove_and_add_name(self):
+         self.assertEquals(expected_names, obj.names)
+         self.assertEquals(expected_mo_names, obj._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -362,7 +362,7 @@ def test_update_with_add_name(self):
+         first_name = 'bowser'
+         obj = OpaqueObject(
+             self.bytes_a, enums.OpaqueDataType.NONE, name=first_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -402,7 +402,7 @@ def test_update_with_remove_name(self):
+         obj.names.append(names[1])
+         obj.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -444,7 +444,7 @@ def test_update_with_remove_and_add_name(self):
+         obj.names.append(names[1])
+         obj.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+diff --git a/kmip/tests/unit/pie/objects/test_private_key.py b/kmip/tests/unit/pie/objects/test_private_key.py
+index c58daf83..0ad425f4 100644
+--- a/kmip/tests/unit/pie/objects/test_private_key.py
++++ b/kmip/tests/unit/pie/objects/test_private_key.py
+@@ -563,7 +563,7 @@ def test_get(self):
+         key = PrivateKey(
+             enums.CryptographicAlgorithm.RSA, 2048, self.bytes_2048,
+             enums.KeyFormatType.PKCS_1, masks=masks, name=test_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -603,7 +603,7 @@ def test_add_multiple_names(self):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -640,7 +640,7 @@ def test_remove_name(self):
+         self.assertEquals(expected_names, key.names)
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -680,7 +680,7 @@ def test_remove_and_add_name(self):
+         self.assertEquals(expected_names, key.names)
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -709,7 +709,7 @@ def test_update_with_add_name(self):
+         key = PrivateKey(
+             enums.CryptographicAlgorithm.RSA, 2048, self.bytes_2048,
+             enums.KeyFormatType.PKCS_1, name=first_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -750,7 +750,7 @@ def test_update_with_remove_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -793,7 +793,7 @@ def test_update_with_remove_and_add_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+diff --git a/kmip/tests/unit/pie/objects/test_public_key.py b/kmip/tests/unit/pie/objects/test_public_key.py
+index f0571913..cf71833b 100644
+--- a/kmip/tests/unit/pie/objects/test_public_key.py
++++ b/kmip/tests/unit/pie/objects/test_public_key.py
+@@ -461,7 +461,7 @@ def test_get(self):
+         key = PublicKey(
+             enums.CryptographicAlgorithm.RSA, 2048, self.bytes_2048,
+             enums.KeyFormatType.PKCS_1, masks=masks, name=test_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -501,7 +501,7 @@ def test_add_multiple_names(self):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -538,7 +538,7 @@ def test_remove_name(self):
+         self.assertEquals(expected_names, key.names)
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -578,7 +578,7 @@ def test_remove_and_add_name(self):
+         self.assertEquals(expected_names, key.names)
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -607,7 +607,7 @@ def test_update_with_add_name(self):
+         key = PublicKey(
+             enums.CryptographicAlgorithm.RSA, 2048, self.bytes_2048,
+             enums.KeyFormatType.PKCS_1, name=first_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -648,7 +648,7 @@ def test_update_with_remove_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -691,7 +691,7 @@ def test_update_with_remove_and_add_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+diff --git a/kmip/tests/unit/pie/objects/test_secret_data.py b/kmip/tests/unit/pie/objects/test_secret_data.py
+index 5a12132d..1cfe075d 100644
+--- a/kmip/tests/unit/pie/objects/test_secret_data.py
++++ b/kmip/tests/unit/pie/objects/test_secret_data.py
+@@ -243,7 +243,7 @@ def test_get(self):
+         test_name = 'bowser'
+         obj = SecretData(self.bytes_a, enums.SecretDataType.PASSWORD,
+                          name=test_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -278,7 +278,7 @@ def test_add_multiple_names(self):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+         self.assertEquals(expected_mo_names, obj._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -314,7 +314,7 @@ def test_remove_name(self):
+         self.assertEquals(expected_names, obj.names)
+         self.assertEquals(expected_mo_names, obj._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -353,7 +353,7 @@ def test_remove_and_add_name(self):
+         self.assertEquals(expected_names, obj.names)
+         self.assertEquals(expected_mo_names, obj._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -381,7 +381,7 @@ def test_update_with_add_name(self):
+         first_name = 'bowser'
+         obj = SecretData(self.bytes_a, enums.SecretDataType.PASSWORD,
+                          name=first_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -421,7 +421,7 @@ def test_update_with_remove_name(self):
+         obj.names.append(names[1])
+         obj.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+@@ -463,7 +463,7 @@ def test_update_with_remove_and_add_name(self):
+         obj.names.append(names[1])
+         obj.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(obj)
+         session.commit()
+diff --git a/kmip/tests/unit/pie/objects/test_split_key.py b/kmip/tests/unit/pie/objects/test_split_key.py
+index a81c304d..755d7bc8 100644
+--- a/kmip/tests/unit/pie/objects/test_split_key.py
++++ b/kmip/tests/unit/pie/objects/test_split_key.py
+@@ -595,7 +595,8 @@ def test_get(self):
+             prime_field_size=104729
+         )
+ 
+-        session = sqlalchemy.orm.sessionmaker(bind=self.engine)()
++        session = sqlalchemy.orm.sessionmaker(
++            bind=self.engine, expire_on_commit=False)()
+         session.add(split_key)
+         session.commit()
+ 
+diff --git a/kmip/tests/unit/pie/objects/test_symmetric_key.py b/kmip/tests/unit/pie/objects/test_symmetric_key.py
+index ccc4cdfa..cf7f5dff 100644
+--- a/kmip/tests/unit/pie/objects/test_symmetric_key.py
++++ b/kmip/tests/unit/pie/objects/test_symmetric_key.py
+@@ -408,7 +408,7 @@ def test_get(self):
+             enums.CryptographicAlgorithm.AES, 128, self.bytes_128a,
+             masks=masks,
+             name=test_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -448,7 +448,7 @@ def test_add_multiple_names(self):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -485,7 +485,7 @@ def test_remove_name(self):
+         self.assertEquals(expected_names, key.names)
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -525,7 +525,7 @@ def test_remove_and_add_name(self):
+         self.assertEquals(expected_names, key.names)
+         self.assertEquals(expected_mo_names, key._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -554,7 +554,7 @@ def test_update_with_add_name(self):
+         key = SymmetricKey(
+             enums.CryptographicAlgorithm.AES, 128, self.bytes_128a,
+             name=first_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -595,7 +595,7 @@ def test_update_with_remove_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+@@ -638,7 +638,7 @@ def test_update_with_remove_and_add_name(self):
+         key.names.append(names[1])
+         key.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(key)
+         session.commit()
+diff --git a/kmip/tests/unit/pie/objects/test_x509_certificate.py b/kmip/tests/unit/pie/objects/test_x509_certificate.py
+index 43d66ca4..f4d76ada 100644
+--- a/kmip/tests/unit/pie/objects/test_x509_certificate.py
++++ b/kmip/tests/unit/pie/objects/test_x509_certificate.py
+@@ -320,7 +320,7 @@ def test_get(self):
+         masks = [enums.CryptographicUsageMask.ENCRYPT,
+                  enums.CryptographicUsageMask.WRAP_KEY]
+         cert = X509Certificate(self.bytes_a, masks=masks, name=test_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+@@ -354,7 +354,7 @@ def test_add_multiple_names(self):
+             expected_mo_names.append(sqltypes.ManagedObjectName(name, i))
+         self.assertEquals(expected_mo_names, cert._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+@@ -389,7 +389,7 @@ def test_remove_name(self):
+         self.assertEquals(expected_names, cert.names)
+         self.assertEquals(expected_mo_names, cert._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+@@ -427,7 +427,7 @@ def test_remove_and_add_name(self):
+         self.assertEquals(expected_names, cert.names)
+         self.assertEquals(expected_mo_names, cert._names)
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+@@ -454,7 +454,7 @@ def test_update_with_add_name(self):
+         """
+         first_name = 'bowser'
+         cert = X509Certificate(self.bytes_a, name=first_name)
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+@@ -493,7 +493,7 @@ def test_update_with_remove_name(self):
+         cert.names.append(names[1])
+         cert.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+@@ -534,7 +534,7 @@ def test_update_with_remove_and_add_name(self):
+         cert.names.append(names[1])
+         cert.names.append(names[2])
+ 
+-        Session = sessionmaker(bind=self.engine)
++        Session = sessionmaker(bind=self.engine, expire_on_commit=False)
+         session = Session()
+         session.add(cert)
+         session.commit()
+diff --git a/kmip/tests/unit/services/server/test_engine.py b/kmip/tests/unit/services/server/test_engine.py
+index 617fcc1b..ad596dfe 100644
+--- a/kmip/tests/unit/services/server/test_engine.py
++++ b/kmip/tests/unit/services/server/test_engine.py
+@@ -1386,6 +1386,7 @@ def test_get_attribute_from_managed_object(self):
+         e._data_session.add(certificate)
+         e._data_session.add(opaque_object)
+         e._data_session.commit()
++        e._data_session.refresh(symmetric_key)
+         e._data_session = e._data_store_session_factory()
+ 
+         result = e._get_attribute_from_managed_object(
+@@ -1660,6 +1661,7 @@ def test_get_attribute_index_from_managed_object(self):
+         e._data_session.add(symmetric_key)
+         e._data_session.add(certificate)
+         e._data_session.commit()
++        e._data_session.refresh(symmetric_key)
+         e._data_session = e._data_store_session_factory()
+ 
+         e._set_attribute_on_managed_object(
+@@ -2302,6 +2304,7 @@ def test_set_attribute_on_managed_object_by_index(self):
+ 
+         e._data_session.add(symmetric_key)
+         e._data_session.commit()
++        e._data_session.refresh(symmetric_key)
+         e._data_session = e._data_store_session_factory()
+ 
+         e._set_attribute_on_managed_object(
