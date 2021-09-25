@@ -54,4 +54,13 @@
     <comment></comment>
     <requestid>781844</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>2b0652817b820aeb3690d767ac44dcf9</srcmd5>
+    <version>0.15.1</version>
+    <time>1632603085</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch off the test suite, because of https://storyboard.openstack.org/#!/story/2009250
+</comment>
+    <requestid>921382</requestid>
+  </revision>
 </revisionlist>
