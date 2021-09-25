@@ -4135,4 +4135,19 @@
 - update staging to 6.17 release</comment>
     <requestid>918510</requestid>
   </revision>
+  <revision rev="353" vrev="1">
+    <srcmd5>64ef7d0f4abc4cfe4de4ad861ff533b2</srcmd5>
+    <version>6.18</version>
+    <time>1632603092</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.18 development release
+  - Shell32 and WineBus libraries converted to PE.
+  - Unicode data updated to Unicode version 14.
+  - Mono engine updated to version 6.4.0, with COM improvements.
+  - More work towards Dwarf 3/4 debug support.
+  - HID joystick enabled by default.
+  - Various bug fixes.
+- update staging to 6.18 release</comment>
+    <requestid>921429</requestid>
+  </revision>
 </revisionlist>

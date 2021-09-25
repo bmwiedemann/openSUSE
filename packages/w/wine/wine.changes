@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 25 10:02:13 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 6.18 development release
+  - Shell32 and WineBus libraries converted to PE.
+  - Unicode data updated to Unicode version 14.
+  - Mono engine updated to version 6.4.0, with COM improvements.
+  - More work towards Dwarf 3/4 debug support.
+  - HID joystick enabled by default.
+  - Various bug fixes.
+- update staging to 6.18 release
+
+-------------------------------------------------------------------
 Sat Sep 11 13:26:35 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 6.17 development release
