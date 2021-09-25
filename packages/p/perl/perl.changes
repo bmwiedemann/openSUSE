@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep  2 15:22:45 UTC 2021 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 5.34.0
+  * Experimental Try/Catch Syntax
+  * Blanks freely allowed within but adjacent to curly braces
+  * New octal syntax 0oddddd
+  * Fix a memory leak in RegEx [GH #18604]
+  * ExtUtils::PL2Bat 0.004 has been added to the Perl core.
+  * Updated Modules and Pragmata
+- Rebase perl-5.28.0.dif to perl-5.34.0.dif
+- Rebase perl-incfix.diff
+- Rebase perl_skip_flaky_tests_powerpc.patch
+- Drop perl-gdbm-test-no-mmap.diff (no longer needed with gdbm 1.20)
+- Add c029d660f2fe60699cf64bbb3fa9f671a1a370d5.patch to fix build with
+  gdbm 1.20
+- Drop perl-fix2020.patch (included upstream)
+
+-------------------------------------------------------------------
 Sun Mar 14 20:57:51 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.32.1:

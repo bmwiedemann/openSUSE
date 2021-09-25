@@ -1010,4 +1010,26 @@ e.g. https://build.opensuse.org/package/show/devel:languages:perl/perl-Pod-Parse
     <comment></comment>
     <requestid>879434</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>7bfc7f5746a8d50c4777540827e49d65</srcmd5>
+    <version>5.34.0</version>
+    <time>1632603080</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.34.0
+  * Experimental Try/Catch Syntax
+  * Blanks freely allowed within but adjacent to curly braces
+  * New octal syntax 0oddddd
+  * Fix a memory leak in RegEx [GH #18604]
+  * ExtUtils::PL2Bat 0.004 has been added to the Perl core.
+  * Updated Modules and Pragmata
+- Rebase perl-5.28.0.dif to perl-5.34.0.dif
+- Rebase perl-incfix.diff
+- Rebase perl_skip_flaky_tests_powerpc.patch
+- Drop perl-gdbm-test-no-mmap.diff (no longer needed with gdbm 1.20)
+- Add c029d660f2fe60699cf64bbb3fa9f671a1a370d5.patch to fix build with
+  gdbm 1.20
+- Drop perl-fix2020.patch (included upstream)
+</comment>
+    <requestid>921020</requestid>
+  </revision>
 </revisionlist>
