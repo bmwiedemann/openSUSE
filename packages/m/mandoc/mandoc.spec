@@ -1,7 +1,7 @@
 #
 # spec file for package mandoc
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           mandoc
-Version:        1.14.5
+Version:        1.14.6
 Release:        0
 %define nvr %{name}-%{version}-%{release}
 Summary:        UNIX manpage compiler
@@ -25,17 +25,12 @@ License:        ISC
 Group:          Productivity/Publishing/Troff
 URL:            http://mandoc.bsd.lv/
 Source:         http://mandoc.bsd.lv/snapshots/mandoc-%{version}.tar.gz
-# PATCH-FEATURE-UPSTREAM empty_w-manpath.patch gh#neovim/neovim#11794 mcepl@suse.com
-# Add man -w producing manpath (among many other things)
-Patch0:         1.14.5-master.patch
-# PATCH-FIX-openSUSE looks like newer gcc doesn't like those duplicated dummy variables lnussel@suse.com
-Patch1:         mandoc-1.14.5-dummy.diff
 BuildRequires:  zlib-devel
 Provides:       man = %{version}
-Conflicts:      man
 Conflicts:      groff
 Conflicts:      groff-full
 Conflicts:      makewhat
+Conflicts:      man
 # file triggers use rpm.execute()
 Conflicts:      rpm < 4.15
 
@@ -49,8 +44,7 @@ It includes a man(1) manual viewer and additional tools.
 For general information, see <http://mandoc.bsd.lv/>.
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 %{?!make_build:%define make_build make %{?_smp_mflags} V=1 VERBOSE=1}
