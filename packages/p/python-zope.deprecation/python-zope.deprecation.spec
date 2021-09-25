@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.deprecation
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -61,7 +61,8 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py -q test
+pushd build/lib
+%pyunittest -v zope.deprecation.tests
 
 %files %{python_files}
 %license LICENSE.txt
