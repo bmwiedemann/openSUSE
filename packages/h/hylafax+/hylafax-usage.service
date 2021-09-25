@@ -8,5 +8,17 @@ Description=Daily usage statistics for hylafax
 Documentation=man:faxcron(8) 
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=oneshot
 ExecStart=/bin/bash -c '/usr/sbin/faxcron | mail -s "HylaFAX Usage Report" faxmaster'
