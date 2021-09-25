@@ -893,7 +893,9 @@ check_single_file()
          monodis "new/$file" 2>/dev/null|sed -e 's/GUID = {.*}/GUID = { 42 }/;'> ${file2}
          if ! cmp -s "${file1}" "${file2}"; then
            wprint "$file differs ($ftype)"
-           diff --speed-large-files -u "${file1}" "${file2}"
+           diff --speed-large-files -u \
+             --label "old $file (monodis)" "${file1}" \
+             --label "new $file (monodis)" "${file2}"
            return 1
          fi
        else
@@ -904,9 +906,9 @@ check_single_file()
     ELF*executable*|\
     ELF*[LM]SB\ relocatable*|\
     ELF*[LM]SB\ shared\ object*|\
-    setuid\ ELF*[LM]SB\ shared\ object*|\
+    set?id\ ELF*[LM]SB\ shared\ object*|\
     ELF*[LM]SB\ pie\ executable*|\
-    setuid\ ELF*[LM]SB\ pie\ executable*)
+    set?id\ ELF*[LM]SB\ pie\ executable*)
       diff --speed-large-files --unified \
         --label "old $file (disasm)" \
         --label "new $file (disasm)" \

@@ -1021,4 +1021,14 @@ In home:RedDwarf/kdenlive makes a difference. You can see the openSUSE_Factory/x
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912957</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>1c3cc6a7f94418dfb0a405d31c89c762</srcmd5>
+    <version>20210921T214418.86d06d9</version>
+    <time>1632603077</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build-compare for shadow package
+- Properly drop another duration from rpmlint.log
+- Drop another duration from rpmlint.log</comment>
+    <requestid>920691</requestid>
+  </revision>
 </revisionlist>
