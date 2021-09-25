@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 24 15:16:30 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- updated to 0.1.58 release (jsc#ECO-3319)
+- Support for Script Checking Engine (SCE)
+- Split RHEL 8 CIS profile using new controls file format
+- CIS Profiles for SLE12
+- Initial Ubuntu 20.04 STIG Profiles
+- Addition of an automated CCE adder
+
+-------------------------------------------------------------------
 Tue Jul 13 14:41:16 UTC 2021 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.1.57 release (jsc#ECO-3319)
