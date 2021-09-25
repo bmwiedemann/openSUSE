@@ -17,16 +17,13 @@
 
 
 Name:           micropython
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        Implementation of Python 3 with very low memory footprint
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://micropython.org/
 Source:         https://micropython.org/resources/source/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM fix-uasyncio_heaplock-test.patch gh#micropython/micropython#7449 mcepl@suse.com
-# Make uasyncio_heaplock test more deterministic.
-Patch0:         fix-uasyncio_heaplock-test.patch
 BuildRequires:  openssl
 BuildRequires:  python3
 BuildRequires:  readline-devel

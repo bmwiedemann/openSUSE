@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 24 23:42:55 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 1.17:
+  The release notes are REALLY long, so please go to
+  https://github.com/micropython/micropython/releases/tag/v1.17
+  to read them.
+- Remove already upstreamed patch fix-uasyncio_heaplock-test.patch.
+
+-------------------------------------------------------------------
 Mon Aug  2 15:11:39 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 
 - Add fix-uasyncio_heaplock-test.patchto fix uasyncio_heaplock

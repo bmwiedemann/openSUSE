@@ -17,4 +17,17 @@
 </comment>
     <requestid>909831</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1a67e881dc551178be510a32b21a0f04</srcmd5>
+    <version>1.17</version>
+    <time>1632603088</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17:
+  The release notes are REALLY long, so please go to
+  https://github.com/micropython/micropython/releases/tag/v1.17
+  to read them.
+- Remove already upstreamed patch fix-uasyncio_heaplock-test.patch.
+</comment>
+    <requestid>921407</requestid>
+  </revision>
 </revisionlist>
