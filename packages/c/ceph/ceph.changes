@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 20 13:15:38 UTC 2021 - Stefen Allen <sallen@suse.com>
+
+- Update to Version: 16.2.6.45+g8fda9838398:
+  + rebased on top of upstream commit SHA1 dbc87327c37d0f305c2107e487cb98a072ae858b
+    upstream 16.2.6 release
+    https://ceph.io/releases/v16-2-6-pacific-released/
+ 
+-------------------------------------------------------------------
+Thu Sep  2 10:02:15 UTC 2021 - Nathan Cutler <ncutler@suse.com>
+
+- Update to 16.2.5-504-g6a3a59bd19e:
+  + rebased on top of upstream commit SHA1 0d1e1f2973cae7645126fc88a72743367c790d9d
+  + (bsc#1189605) cmake: exclude "grafonnet-lib" target from "all"
+
+-------------------------------------------------------------------
 Fri Jul 30 15:01:29 UTC 2021 - Nathan Cutler <ncutler@suse.com>
 
 - Update to 16.2.5-113-g8b5bda7684e:

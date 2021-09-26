@@ -50,6 +50,8 @@
 %bcond_without lttng
 %bcond_without libradosstriper
 %bcond_without ocf
+%global luarocks_package_name luarocks
+%bcond_without lua_packages
 %global _remote_tarball_prefix https://download.ceph.com/tarballs/
 %endif
 %if 0%{?suse_version}
@@ -74,6 +76,21 @@
 %if ! %{defined _fillupdir}
 %global _fillupdir /var/adm/fillup-templates
 %endif
+#luarocks
+%if 0%{?is_opensuse}
+# openSUSE
+%bcond_without lua_packages
+%if 0%{?sle_version}
+# openSUSE Leap
+%global luarocks_package_name lua53-luarocks
+%else
+# openSUSE Tumbleweed
+%global luarocks_package_name lua54-luarocks
+%endif
+%else
+# SLE
+%bcond_with lua_packages
+%endif
 %endif
 %bcond_with seastar
 %bcond_with jaeger
@@ -97,19 +114,6 @@
 %endif
 %endif
 
-%if 0%{?suse_version}
-%if !0%{?is_opensuse}
-# SLE does not support luarocks
-%bcond_with lua_packages
-%else
-%global luarocks_package_name lua53-luarocks
-%bcond_without lua_packages
-%endif
-%else
-%global luarocks_package_name luarocks
-%bcond_without lua_packages
-%endif
-
 %{!?_udevrulesdir: %global _udevrulesdir /lib/udev/rules.d}
 %{!?tmpfiles_create: %global tmpfiles_create systemd-tmpfiles --create}
 %{!?python3_pkgversion: %global python3_pkgversion 3}
@@ -123,7 +127,7 @@
 # main package definition
 #################################################################################
 Name: ceph-test
-Version: 16.2.5.113+g8b5bda7684e
+Version: 16.2.6.45+g8fda9838398
 Release: 0%{?dist}
 %if 0%{?fedora} || 0%{?rhel}
 Epoch: 2
@@ -139,7 +143,7 @@ License: LGPL-2.1 and LGPL-3.0 and CC-BY-SA-3.0 and GPL-2.0 and BSL-1.0 and BSD-
 Group: System/Filesystems
 %endif
 URL: http://ceph.com/
-Source0: %{?_remote_tarball_prefix}ceph-16.2.5-113-g8b5bda7684e.tar.bz2
+Source0: %{?_remote_tarball_prefix}ceph-16.2.6-45-g8fda9838398.tar.bz2
 %if 0%{?suse_version}
 Source94: ceph-rpmlintrc
 Source95: checkin.sh
@@ -179,7 +183,6 @@ BuildRequires:	gcc-toolset-9-gcc-c++ >= 9.2.1-2.3
 %else
 BuildRequires:	gcc-c++
 %endif
-BuildRequires:	gdbm
 %if 0%{with tcmalloc}
 # libprofiler did not build on ppc64le until 2.7.90
 %if 0%{?fedora} || 0%{?rhel} >= 8
@@ -243,7 +246,6 @@ BuildRequires:	python%{python3_pkgversion}-nose
 BuildRequires:	python%{python3_pkgversion}-pecan
 BuildRequires:	python%{python3_pkgversion}-requests
 BuildRequires:	python%{python3_pkgversion}-dateutil
-BuildRequires:	python%{python3_pkgversion}-virtualenv
 BuildRequires:	python%{python3_pkgversion}-coverage
 BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
 BuildRequires:	socat
@@ -303,7 +305,6 @@ BuildRequires:	libbz2-devel
 BuildRequires:	mozilla-nss-devel
 BuildRequires:	keyutils-devel
 BuildRequires:  libopenssl-devel
-BuildRequires:  lsb-release
 BuildRequires:  openldap2-devel
 #BuildRequires:  krb5
 #BuildRequires:  krb5-devel
@@ -328,7 +329,6 @@ BuildRequires:  openldap-devel
 #BuildRequires:  krb5-devel
 BuildRequires:  openssl-devel
 BuildRequires:  CUnit-devel
-BuildRequires:  redhat-lsb-core
 BuildRequires:	python%{python3_pkgversion}-devel
 BuildRequires:	python%{python3_pkgversion}-setuptools
 BuildRequires:	python%{python3_pkgversion}-Cython
@@ -340,6 +340,7 @@ BuildRequires:	lz4-devel >= 1.7
 %if 0%{with make_check}
 %if 0%{?fedora} || 0%{?rhel}
 BuildRequires:	golang-github-prometheus
+BuildRequires:	jsonnet
 BuildRequires:	libtool-ltdl-devel
 BuildRequires:	xmlsec1
 BuildRequires:	xmlsec1-devel
@@ -357,6 +358,7 @@ BuildRequires:	python%{python3_pkgversion}-pyOpenSSL
 %endif
 %if 0%{?suse_version}
 BuildRequires:	golang-github-prometheus-prometheus
+BuildRequires:	jsonnet
 BuildRequires:	libxmlsec1-1
 BuildRequires:	libxmlsec1-nss1
 BuildRequires:	libxmlsec1-openssl1
@@ -592,7 +594,7 @@ This package contains Ceph benchmarks and test tools.
 %if 0%{?suse_version}
 %endif
 %prep
-%autosetup -p1 -n ceph-16.2.5-113-g8b5bda7684e
+%autosetup -p1 -n ceph-16.2.6-45-g8fda9838398
 
 %build
 # LTO can be enabled as soon as the following GCC bug is fixed:
@@ -726,6 +728,9 @@ ${CMAKE} .. \
     -DWITH_SYSTEM_PMDK:BOOL=ON \
 %endif
     -DBOOST_J=$CEPH_SMP_NCPUS \
+%if 0%{?rhel}
+    -DWITH_FMT_HEADER_ONLY:BOOL=ON \
+%endif
     -DWITH_GRAFANA=ON
 
 %if %{with cmake_verbose_logging}
