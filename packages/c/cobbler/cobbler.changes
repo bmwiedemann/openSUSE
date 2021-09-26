@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Sep 19 18:19:37 UTC 2021 - trenn@suse.de
+
+- Update to version 3.2.1.336+git.5639a3af:
+  * Autoinstall Manager: Fix utils.die calls and removed unused variable
+  * Docs: Add the mkgrub command to the CLI
+  * Add docstring to new API method
+  * Added new keys to the migration module for 3.3.0
+  * spec file needs an open source license header to be build in open build service
+  * Expose GrubImage Action in api.py and cli.py
+  * Add GrubImage action
+  * Refactor the hardlink command to support non default web directories.
+  * Cobbler-settings: Change options order
+  * docs: Fix docstrings and logger formatting
+  * Adjustments to cobbler-settings validate
+  * Update sleep time in setup-supervisor script
+  * reposync_ssl
+  * Feat.: add support for Debian 11 Bullseye
+  * fix: cobbler reposync
+
+-------------------------------------------------------------------
+Fri Sep  3 12:07:14 UTC 2021 - Thomas Renninger <trenn@suse.de>
+
+- Do not export spec file from git, due to bad licence format
+- Add rpmlintrc to sources
+
+-------------------------------------------------------------------
+Thu Sep 02 09:46:37 UTC 2021 - trenn@suse.de
+
+- Update to version v3.2.1.295+git.af118f52:
+  * Refactor the hardlink command to support non default web directories.
+  * Cobbler-settings: Change options order
+  * docs: Fix docstrings and logger formatting
+  * docs: Update and cleanup
+  * Adjustments to cobbler-settings validate
+  * fix/windows
+  * Applied suggestions from @agraul and @vzhestkov
+  * Update sleep time in setup-supervisor script
+  * reposync_ssl
+  * Feat.: add support for Debian 11 Bullseye
+  * fix: cobbler reposync
+- Set disabled service to localonly
+- Remove unused patch
+D    prevent-race-condition-writting-tftpboot-files-bsc1186124.patch
+
+-------------------------------------------------------------------
 Tue May 18 12:01:22 UTC 2021 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Prevent some race conditions when writting tftpboot files and

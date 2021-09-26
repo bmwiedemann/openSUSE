@@ -1,6 +1,6 @@
-# RPM spec file for all Cobbler packages
 #
-# Copyright (c) 2021 SUSE LLC
+# spec file for package cobbler
+#
 # Copyright (c) 2006 Michael DeHaan <mdehaan@redhat.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -11,8 +11,6 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 # Supported/tested build targets:
 # - Fedora: 30, 31, Rawhide
@@ -145,7 +143,7 @@
 %endif
 
 Name:           cobbler
-Version:        3.2.1+git20210315.f7482f6b
+Version:        3.2.1.336+git.5639a3af
 Release:        0%{?dist}
 Summary:        Boot server configurator
 URL:            https://cobbler.github.io/
@@ -161,10 +159,8 @@ Group:          Development/System
 %endif
 
 License:        GPL-2.0-or-later
-Source0:        %{name}-%{version}.tar.gz
-Source1:        %{name}.rpmlintrc
+Source:         %{name}-%{version}.tar.gz
 BuildArch:      noarch
-Patch0:         prevent-race-condition-writting-tftpboot-files-bsc1186124.patch
 
 BuildRequires:  git-core
 BuildRequires:  %{system_release_pkg}
@@ -189,7 +185,6 @@ BuildRequires:  %{py3_module_sphinx}
 BuildRequires:  bash-completion
 BuildRequires:  %{apache_pkg}
 BuildRequires:  %{tftpsrv_pkg}
-BuildRequires:  aaa_base
 %endif
 
 %if 0%{?rhel}
@@ -227,7 +222,6 @@ Requires:       %{apache_mod_wsgi}
 Requires:       python%{python3_pkgversion}-netaddr
 Requires:       %{py3_module_pyyaml}
 Requires:       python%{python3_pkgversion}-requests
-Requires:       python%{python3_pkgversion}-simplejson
 Requires:       python%{python3_pkgversion}-distro
 Requires:       python%{python3_pkgversion}-schema
 Requires:       %{py3_module_file}
@@ -279,7 +273,6 @@ Unit test files from the Cobbler project
 
 %prep
 %setup
-%patch0 -p1
 
 %if 0%{?suse_version}
 # Set tftpboot location correctly for SUSE distributions
@@ -318,7 +311,7 @@ mv %{buildroot}%{_sysconfdir}/cobbler/cobblerd_rotate %{buildroot}%{_sysconfdir}
 mkdir -p %{buildroot}%{_unitdir}
 mv %{buildroot}%{_sysconfdir}/cobbler/cobblerd.service %{buildroot}%{_unitdir}
 %if 0%{?suse_version}
-mkdir %{buildroot}%{_sbindir}
+mkdir -p %{buildroot}%{_sbindir}
 ln -sf service %{buildroot}%{_sbindir}/rccobblerd
 %endif
 
@@ -390,37 +383,19 @@ fi
 %dir %{_sysconfdir}/cobbler
 %config(noreplace) %{_sysconfdir}/cobbler/auth.conf
 %dir %{_sysconfdir}/cobbler/boot_loader_conf
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi5.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi51.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi55.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi60.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi65.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi67.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg_esxi70.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_esxi5.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_esxi6.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_esxi7.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_freebsd.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_linux.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_local.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/gpxe_system_windows.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grublocal.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grubprofile.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grubsystem.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxedefault.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxelocal.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxelocal_ia64.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxeprofile.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxeprofile_arm.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxeprofile_esxi.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_arm.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_esxi.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_ia64.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxesystem_ppc.template
-%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/yaboot_ppc.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/bootcfg.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grub.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grub_menu.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/grub_submenu.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/ipxe.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/ipxe_menu.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/ipxe_submenu.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxe.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxe_menu.template
+%config(noreplace) %{_sysconfdir}/cobbler/boot_loader_conf/pxe_submenu.template
 %config(noreplace) %{_sysconfdir}/cobbler/cheetah_macros
 %config(noreplace) %{_sysconfdir}/cobbler/dhcp.template
+%config(noreplace) %{_sysconfdir}/cobbler/dhcp6.template
 %config(noreplace) %{_sysconfdir}/cobbler/dnsmasq.template
 %config(noreplace) %{_sysconfdir}/cobbler/genders.template
 %config(noreplace) %{_sysconfdir}/cobbler/import_rsync_whitelist
@@ -441,6 +416,7 @@ fi
 %config(noreplace) %{_sysconfdir}/cobbler/settings.d/bind_manage_ipmi.settings
 %config(noreplace) %{_sysconfdir}/cobbler/settings.d/manage_genders.settings
 %config(noreplace) %{_sysconfdir}/cobbler/settings.d/nsupdate.settings
+%config(noreplace) %{_sysconfdir}/cobbler/settings.d/windows.settings
 %config(noreplace) %{_sysconfdir}/cobbler/users.conf
 %config(noreplace) %{_sysconfdir}/cobbler/users.digest
 %config(noreplace) %{_sysconfdir}/cobbler/version
@@ -449,9 +425,14 @@ fi
 %config(noreplace) %{_sysconfdir}/cobbler/zone_templates/foo.example.com
 %config(noreplace) %{_sysconfdir}/logrotate.d/cobblerd
 %config(noreplace) %{apache_webconfigdir}/cobbler.conf
+%dir %{_sysconfdir}/cobbler/windows
+%config(noreplace) %{_sysconfdir}/cobbler/windows/answerfile.template
+%config(noreplace) %{_sysconfdir}/cobbler/windows/post_inst_cmd.template
+%config(noreplace) %{_sysconfdir}/cobbler/windows/startnet.template
 %{_bindir}/cobbler
 %{_bindir}/cobbler-ext-nodes
 %{_bindir}/cobblerd
+%{_bindir}/cobbler-settings
 %dir %{_datadir}/cobbler
 %{_datadir}/cobbler/bin
 %{_mandir}/man1/cobbler.1*
