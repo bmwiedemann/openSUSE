@@ -38,8 +38,6 @@ Source0:        %{_name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc >= 1.12
-BuildRequires:  hotdoc
 BuildRequires:  liba52-devel
 BuildRequires:  libcdio-devel >= 0.76
 BuildRequires:  libdvdread-devel
@@ -101,19 +99,6 @@ simply by installing new plug-ins.
 This package contains well-written plug-ins that can't be shipped in
 openSUSE because of patent problems.
 
-%package doc
-Summary:        GStreamer Streaming-Media Framework Plug-Ins
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description doc
-GStreamer is a streaming media framework, based on graphs of filters
-which operate on media data. Applications using this library can do
-anything from real-time sound processing to playing videos, and just
-about anything else media-related.  Its plugin-based architecture means
-that new data types or processing capabilities can be added simply by
-installing new plug-ins.
-
 %lang_package
 
 %prep
@@ -131,16 +116,17 @@ export PYTHON=%{_bindir}/python3
 	-Dx264=disabled \
 %endif
 	-Dsidplay=disabled \
+	-Ddoc=disabled \
 	%{nil}
 %meson_build
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
 
 %files
 %license COPYING
+%doc AUTHORS NEWS README RELEASE REQUIREMENTS
 %{_libdir}/gstreamer-%{gst_branch}/libgsta52dec.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstcdio.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstdvdlpcmdec.so
@@ -163,8 +149,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 
 %files lang -f %{_name}-%{gst_branch}.lang
-
-%files doc
-%doc AUTHORS NEWS README RELEASE REQUIREMENTS
 
 %changelog
