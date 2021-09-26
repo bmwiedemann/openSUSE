@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 21 20:25:03 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.5:
+  + Optimize rendering of fullscreen zoom.
+  + Fix glitchy launch animations when leaving overview.
+  + Fix wrong separator position in dash.
+  + Fix OSK not registering button presses on X11.
+  + Fix work area getting messed up by hidden panels.
+  + Fix IM candidate popover position.
+  + Misc. bug fixes and cleanups.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 01:42:43 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Aug 18 17:33:23 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.4:

@@ -1822,4 +1822,20 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
     <comment>New stable rel (forwarded request 913178 from iznogood)</comment>
     <requestid>913700</requestid>
   </revision>
+  <revision rev="206" vrev="1">
+    <srcmd5>90eda94e61ae9756206bed37f87ee95a</srcmd5>
+    <version>40.5</version>
+    <time>1632685690</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.5:
+  + Optimize rendering of fullscreen zoom.
+  + Fix glitchy launch animations when leaving overview.
+  + Fix wrong separator position in dash.
+  + Fix OSK not registering button presses on X11.
+  + Fix work area getting messed up by hidden panels.
+  + Fix IM candidate popover position.
+  + Misc. bug fixes and cleanups.
+  + Updated translations. (forwarded request 920697 from iznogood)</comment>
+    <requestid>920818</requestid>
+  </revision>
 </revisionlist>

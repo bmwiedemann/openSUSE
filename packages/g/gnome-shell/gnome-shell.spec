@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Meta\\)
 
 Name:           gnome-shell
-Version:        40.4
+Version:        40.5
 Release:        0
 Summary:        GNOME Shell
 # shew extension is LGPL 2.1; gnome-shell-extension-tool is GPL-3.0-or-later
@@ -67,7 +67,6 @@ BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.47.0
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  translation-update-upstream
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(bash-completion)
@@ -182,8 +181,6 @@ This package contains an optional extensions app for managing GNOME Shell extens
 %patch6 -p1
 %endif
 %patch7 -p1
-
-translation-update-upstream
 
 %if 0%{?sle_version}
 %patch1001 -p1
