@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep  9 11:30:06 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add patch to fix issue with some files being incorrectly
+  detected as symlinks (boo#1190273)
+  + unzip-initialize-the-symlink-flag.patch
+
+-------------------------------------------------------------------
 Fri May 22 09:27:01 UTC 2020 - Yunhe Guo <i@guoyunhe.me>
 
 - Change unzip-doc to noarch

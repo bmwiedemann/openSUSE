@@ -1,7 +1,7 @@
 #
 # spec file for package unzip
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -37,7 +37,7 @@ Release:        0
 Summary:        A program to unpack compressed files
 License:        BSD-3-Clause
 Group:          Productivity/Archiving/Compression
-Url:            http://www.info-zip.org/
+URL:            http://www.info-zip.org/
 Source:         http://sourceforge.net/projects/infozip/files/UnZip%%206.x%%20%%28latest%%29/UnZip%%206.0/%{_name}%{fileversion}.tar.gz
 Source1:        pre_checkin.sh
 Patch0:         unzip.dif
@@ -60,8 +60,9 @@ Patch19:        CVE-2018-1000035.patch
 Patch20:        Fix-CVE-2014-9636-unzip-buffer-overflow.patch
 Patch21:        unzip60-total_disks_zero.patch
 Patch22:        unzip60-cfactorstr_overflow.patch
+Patch23:        unzip-initialize-the-symlink-flag.patch
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 Recommends:     %{_name}-doc
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -107,6 +108,7 @@ functionality. This version can also extract encrypted archives.
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
+%patch23 -p1
 
 %build
 export RPM_OPT_FLAGS="%{optflags} \
