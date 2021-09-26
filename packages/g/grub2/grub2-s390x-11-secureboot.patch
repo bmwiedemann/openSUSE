@@ -37,15 +37,15 @@
    checkd() {
      [ -d $1 ] && echo true || echo false
    }
-@@ -63,6 +66,7 @@ if getargbool 0 initgrub && [ ! -e /grub
-     export grub2bootfs=$(checkboot)
+@@ -76,6 +79,7 @@ if getargbool 0 initgrub && [ ! -e /grub
+     export grub2bootw=$(checksubvol /boot/writable)
      export grub2devfs=$(checkd /sysroot/dev/disk)
      export grub2snap=$(checksnap)
 +    export grub2secure=$(checkcat /sys/firmware/ipl/secure)
      debug "" export -p
  
          _ctty="$(RD_DEBUG= getarg rd.ctty=)" && _ctty="/dev/${_ctty##*/}"
-@@ -93,7 +97,7 @@ if getargbool 0 initgrub && [ ! -e /grub
+@@ -107,7 +111,7 @@ if getargbool 0 initgrub && [ ! -e /grub
      debug "Trying grub2-emu (ro=$grub2rofs, TERM=$TERM, ctty=$_ctty)..."
      setsid $CTTY -- chroot /sysroot $bindir/grub2-emu -X -X 0<>$_ctty 1>&0 2>&0
  
@@ -54,7 +54,7 @@
  	setsid $CTTY -- /sysroot@libdir@/grub2/zipl-refresh 0<>$_ctty 1>&0 2>&0
  	if [ $? != 0 ]; then
  	    warn "Not continuing"
-@@ -103,12 +107,18 @@ if getargbool 0 initgrub && [ ! -e /grub
+@@ -117,12 +121,18 @@ if getargbool 0 initgrub && [ ! -e /grub
  	    sleep 3
  	    reboot
  	fi

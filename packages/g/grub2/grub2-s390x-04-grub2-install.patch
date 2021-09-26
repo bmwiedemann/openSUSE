@@ -53,6 +53,9 @@ V18:
    to an emergency shell otherwise
 V19:
  * dracut-grub2.sh: use 'grep -P' instead of '-E'.  [bsc#1136970]
+V20:
+ * dracut-grub2.sh: add support for '/boot/writable'.  [bsc#1190395]
+
 
 ---
  Makefile.util.def                      |   46 +++
@@ -64,17 +67,15 @@ V19:
  include/grub/util/install.h            |    4 
  util/grub-install-common.c             |    1 
  util/grub-install.c                    |   43 +++
- util/s390x/dracut-grub2.sh.in          |  126 +++++++++
+ util/s390x/dracut-grub2.sh.in          |  141 +++++++++++
  util/s390x/dracut-module-setup.sh.in   |   19 +
  util/s390x/dracut-zipl-refresh.sh.in   |  183 ++++++++++++++
  util/s390x/zipl2grub.conf.in           |   26 ++
  util/s390x/zipl2grub.pl.in             |  423 +++++++++++++++++++++++++++++++++
- 14 files changed, 908 insertions(+), 3 deletions(-)
+ 14 files changed, 923 insertions(+), 3 deletions(-)
 
-Index: grub-2.06~rc1/Makefile.util.def
-===================================================================
---- grub-2.06~rc1.orig/Makefile.util.def
-+++ grub-2.06~rc1/Makefile.util.def
+--- a/Makefile.util.def
++++ b/Makefile.util.def
 @@ -374,6 +374,7 @@ program = {
    ldadd = grub-core/lib/gnulib/libgnu.a;
    ldadd = '$(LIBINTL) $(LIBDEVMAPPER) $(LIBUTIL) $(LIBZFS) $(LIBNVPAIR) $(LIBGEOM)';
@@ -170,10 +171,8 @@ Index: grub-2.06~rc1/Makefile.util.def
  };
  
  program = {
-Index: grub-2.06~rc1/configure.ac
-===================================================================
---- grub-2.06~rc1.orig/configure.ac
-+++ grub-2.06~rc1/configure.ac
+--- a/configure.ac
++++ b/configure.ac
 @@ -206,9 +206,9 @@ if test x$platform != xemu ; then
     esac
  fi
@@ -197,10 +196,8 @@ Index: grub-2.06~rc1/configure.ac
  
  AM_CONDITIONAL([COND_HOST_HURD], [test x$host_kernel = xhurd])
  AM_CONDITIONAL([COND_HOST_LINUX], [test x$host_kernel = xlinux])
-Index: grub-2.06~rc1/grub-core/Makefile.core.def
-===================================================================
---- grub-2.06~rc1.orig/grub-core/Makefile.core.def
-+++ grub-2.06~rc1/grub-core/Makefile.core.def
+--- a/grub-core/Makefile.core.def
++++ b/grub-core/Makefile.core.def
 @@ -1147,6 +1147,7 @@ module = {
  module = {
    name = videotest;
@@ -217,7 +214,7 @@ Index: grub-2.06~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2030,11 +2032,13 @@ module = {
+@@ -2029,11 +2031,13 @@ module = {
    name = gfxterm;
    common = term/gfxterm.c;
    enable = videomodules;
@@ -231,7 +228,7 @@ Index: grub-2.06~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2155,6 +2159,7 @@ module = {
+@@ -2154,6 +2158,7 @@ module = {
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -239,7 +236,7 @@ Index: grub-2.06~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2201,6 +2206,7 @@ module = {
+@@ -2200,6 +2205,7 @@ module = {
  module = {
    name = gfxterm_menu;
    common = tests/gfxterm_menu.c;
@@ -247,7 +244,7 @@ Index: grub-2.06~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-@@ -2354,6 +2360,7 @@ module = {
+@@ -2353,6 +2359,7 @@ module = {
    enable = x86_64_efi;
    enable = emu;
    enable = xen;
@@ -255,10 +252,8 @@ Index: grub-2.06~rc1/grub-core/Makefile.core.def
  };
  
  module = {
-Index: grub-2.06~rc1/grub-core/osdep/basic/no_platform.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/osdep/basic/no_platform.c
-+++ grub-2.06~rc1/grub-core/osdep/basic/no_platform.c
+--- a/grub-core/osdep/basic/no_platform.c
++++ b/grub-core/osdep/basic/no_platform.c
 @@ -44,3 +44,10 @@ grub_install_sgi_setup (const char *inst
  {
    grub_util_error ("%s", _("no SGI routines are available for your platform"));
@@ -270,10 +265,8 @@ Index: grub-2.06~rc1/grub-core/osdep/basic/no_platform.c
 +  grub_util_error ("%s", _("no zIPL routines are available for your platform"));
 +}
 +
-Index: grub-2.06~rc1/grub-core/osdep/unix/platform.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/osdep/unix/platform.c
-+++ grub-2.06~rc1/grub-core/osdep/unix/platform.c
+--- a/grub-core/osdep/unix/platform.c
++++ b/grub-core/osdep/unix/platform.c
 @@ -239,3 +239,14 @@ grub_install_sgi_setup (const char *inst
  	imgfile, destname, NULL });
    grub_util_warn ("%s", _("You will have to set `SystemPartition' and `OSLoader' manually."));
@@ -289,10 +282,8 @@ Index: grub-2.06~rc1/grub-core/osdep/unix/platform.c
 +	"-z", dest, NULL }))
 +    grub_util_error (_("`%s' failed.\n"), PACKAGE"-zipl-setup");
 +}
-Index: grub-2.06~rc1/grub-core/osdep/windows/platform.c
-===================================================================
---- grub-2.06~rc1.orig/grub-core/osdep/windows/platform.c
-+++ grub-2.06~rc1/grub-core/osdep/windows/platform.c
+--- a/grub-core/osdep/windows/platform.c
++++ b/grub-core/osdep/windows/platform.c
 @@ -424,3 +424,9 @@ grub_install_sgi_setup (const char *inst
  {
    grub_util_error ("%s", _("no SGI routines are available for your platform"));
@@ -303,10 +294,8 @@ Index: grub-2.06~rc1/grub-core/osdep/windows/platform.c
 +{
 +  grub_util_error ("%s", _("no zIPL routines are available for your platform"));
 +}
-Index: grub-2.06~rc1/include/grub/util/install.h
-===================================================================
---- grub-2.06~rc1.orig/include/grub/util/install.h
-+++ grub-2.06~rc1/include/grub/util/install.h
+--- a/include/grub/util/install.h
++++ b/include/grub/util/install.h
 @@ -109,6 +109,7 @@ enum grub_install_plat
      GRUB_INSTALL_PLATFORM_ARM_COREBOOT,
      GRUB_INSTALL_PLATFORM_RISCV32_EFI,
@@ -325,11 +314,9 @@ Index: grub-2.06~rc1/include/grub/util/install.h
  int 
  grub_install_compress_gzip (const char *src, const char *dest);
  int 
-Index: grub-2.06~rc1/util/grub-install-common.c
-===================================================================
---- grub-2.06~rc1.orig/util/grub-install-common.c
-+++ grub-2.06~rc1/util/grub-install-common.c
-@@ -776,6 +776,7 @@ static struct
+--- a/util/grub-install-common.c
++++ b/util/grub-install-common.c
+@@ -902,6 +902,7 @@ static struct
      [GRUB_INSTALL_PLATFORM_ARM_COREBOOT] =     { "arm",     "coreboot"  },
      [GRUB_INSTALL_PLATFORM_RISCV32_EFI] =      { "riscv32", "efi"       },
      [GRUB_INSTALL_PLATFORM_RISCV64_EFI] =      { "riscv64", "efi"       },
@@ -337,10 +324,8 @@ Index: grub-2.06~rc1/util/grub-install-common.c
    }; 
  
  char *
-Index: grub-2.06~rc1/util/grub-install.c
-===================================================================
---- grub-2.06~rc1.orig/util/grub-install.c
-+++ grub-2.06~rc1/util/grub-install.c
+--- a/util/grub-install.c
++++ b/util/grub-install.c
 @@ -66,6 +66,7 @@ static int force_file_id = 0;
  static char *disk_module = NULL;
  static char *efidir = NULL;
@@ -471,7 +456,7 @@ Index: grub-2.06~rc1/util/grub-install.c
      case GRUB_INSTALL_PLATFORM_ARM_EFI:
      case GRUB_INSTALL_PLATFORM_ARM64_EFI:
      case GRUB_INSTALL_PLATFORM_RISCV32_EFI:
-@@ -1947,6 +1986,10 @@ main (int argc, char *argv[])
+@@ -1962,6 +2001,10 @@ main (int argc, char *argv[])
  	}
        break;
  
@@ -482,11 +467,9 @@ Index: grub-2.06~rc1/util/grub-install.c
      case GRUB_INSTALL_PLATFORM_MIPSEL_LOONGSON:
      case GRUB_INSTALL_PLATFORM_MIPSEL_QEMU_MIPS:
      case GRUB_INSTALL_PLATFORM_MIPS_QEMU_MIPS:
-Index: grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
-===================================================================
 --- /dev/null
-+++ grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
-@@ -0,0 +1,126 @@
++++ b/util/s390x/dracut-grub2.sh.in
+@@ -0,0 +1,141 @@
 +#!/bin/sh
 +# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
 +# ex: ts=8 sw=4 sts=4 et filetype=sh
@@ -513,7 +496,19 @@ Index: grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
 +  checke() {
 +    [ -e $1 ] && echo true || echo false
 +  }
++  checksubvol() {
++    local tgt="$1"
++    local tst="$2"
++    if [ -n "$tst" -a -e "/sysroot$tgt/$tst" ]; then
++      echo true
++    elif grep  -qP '^[^#\s]+\s+'"$tgt"'\s+' /sysroot/etc/fstab; then
++      echo false
++    else
++      echo true
++    fi
++  }
 +  checksnap() {
++    # checksubvol /.snapshots grub-snapshot.cfg
 +    if [ -e /sysroot/.snapshots/grub-snapshot.cfg ]; then
 +      echo true
 +    elif grep  -qP '^[^#\s]+\s+/.snapshots\s+' /sysroot/etc/fstab; then
@@ -550,6 +545,7 @@ Index: grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
 +    export grub2sysfs=$(checkd /sysroot/sys/devices/system/memory)
 +    export grub2procfs=$(checkd /sysroot/proc/self)
 +    export grub2bootfs=$(checkboot)
++    export grub2bootw=$(checksubvol /boot/writable)
 +    export grub2devfs=$(checkd /sysroot/dev/disk)
 +    export grub2snap=$(checksnap)
 +    debug "" export -p
@@ -577,6 +573,7 @@ Index: grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
 +    $grub2bootfs || mount --bind {,/sysroot}/boot
 +    $grub2devfs || mount --bind {,/sysroot}/dev
 +    $grub2snap || chroot /sysroot mount -rn /.snapshots
++    $grub2bootw || chroot /sysroot mount -rn /boot/writable
 +    debug "" cat /proc/mounts
 +
 +    debug "Trying grub2-emu (ro=$grub2rofs, TERM=$TERM, ctty=$_ctty)..."
@@ -602,6 +599,7 @@ Index: grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
 +
 +    $grub2snap || umount /sysroot/.snapshots
 +    $grub2devfs || umount /sysroot/dev
++    $grub2bootw || umount /sysroot/boot/writable
 +    $grub2bootfs || umount /sysroot/boot
 +    $grub2procfs || umount /sysroot/proc
 +    $grub2sysfs || umount /sysroot/sys
@@ -613,10 +611,8 @@ Index: grub-2.06~rc1/util/s390x/dracut-grub2.sh.in
 +  fi
 +fi
 +
-Index: grub-2.06~rc1/util/s390x/dracut-module-setup.sh.in
-===================================================================
 --- /dev/null
-+++ grub-2.06~rc1/util/s390x/dracut-module-setup.sh.in
++++ b/util/s390x/dracut-module-setup.sh.in
 @@ -0,0 +1,19 @@
 +#!/bin/bash
 +# -*- mode: shell-script; indent-tabs-mode: nil; sh-basic-offset: 4; -*-
@@ -637,10 +633,8 @@ Index: grub-2.06~rc1/util/s390x/dracut-module-setup.sh.in
 +    #inst_multiple grub2-emu kexec
 +}
 +
-Index: grub-2.06~rc1/util/s390x/zipl2grub.conf.in
-===================================================================
 --- /dev/null
-+++ grub-2.06~rc1/util/s390x/zipl2grub.conf.in
++++ b/util/s390x/zipl2grub.conf.in
 @@ -0,0 +1,26 @@
 +## This is the template for '@zipldir@/config' and is subject to
 +## rpm's %config file handling in case of grub2-s390x-emu package update.
@@ -668,10 +662,8 @@ Index: grub-2.06~rc1/util/s390x/zipl2grub.conf.in
 +    1 = grub2
 +    2 = skip-grub2
 +
-Index: grub-2.06~rc1/util/s390x/zipl2grub.pl.in
-===================================================================
 --- /dev/null
-+++ grub-2.06~rc1/util/s390x/zipl2grub.pl.in
++++ b/util/s390x/zipl2grub.pl.in
 @@ -0,0 +1,423 @@
 +#!/usr/bin/perl
 +use strict;
@@ -1096,10 +1088,8 @@ Index: grub-2.06~rc1/util/s390x/zipl2grub.pl.in
 +System( @C);
 +exit( $miss);
 +
-Index: grub-2.06~rc1/util/s390x/dracut-zipl-refresh.sh.in
-===================================================================
 --- /dev/null
-+++ grub-2.06~rc1/util/s390x/dracut-zipl-refresh.sh.in
++++ b/util/s390x/dracut-zipl-refresh.sh.in
 @@ -0,0 +1,183 @@
 +#!/bin/bash
 +# ex: ts=8 sw=4 sts=4 et filetype=sh syntax=off
