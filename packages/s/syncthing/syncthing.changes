@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 26 08:51:40 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
+
+- Use /var/lib/syncthing-relaysrv in strelaysrv.service (boo#1190877).
+
+-------------------------------------------------------------------
 Tue Sep  7 12:24:57 UTC 2021 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 1.18.2

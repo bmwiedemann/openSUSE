@@ -74,7 +74,7 @@ cd ../src/github.com/syncthing/%{name}
 mv LICENSE AUTHORS CONDUCT.md CONTRIBUTING.md README.md "$st_dir"
 install -Dpm 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dpm 0755 bin/strelaysrv %{buildroot}%{_bindir}/strelaysrv
-install -dm 0750 %{buildroot}/%{_localstatedir}/lib/strelaysrv
+install -dm 0750 %{buildroot}/%{_localstatedir}/lib/syncthing-relaysrv
 install -Dpm 0644 cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
   %{buildroot}%{_unitdir}/strelaysrv.service
 sed -i '/Service\]/a EnvironmentFile=-\/etc\/default/strelaysrv'    \
@@ -87,7 +87,7 @@ sed -i 's/^User=.*/User=strelaysrv/'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 sed -i 's/^Group=.*/Group=strelaysrv/'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
-sed -i 's,^ReadWritePaths=.*,ReadWritePaths=/var/lib/strelaysrv,'    \
+sed -i 's,^ReadWritePaths=.*,ReadWritePaths=/var/lib/syncthing-relaysrv,'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 install -Dpm 0644 etc/linux-systemd/system/%{name}@.service        \
   %{buildroot}%{_unitdir}/%{name}@.service
@@ -149,6 +149,6 @@ getent passwd strelaysrv >/dev/null || \
 %license LICENSE
 %{_bindir}/strelaysrv
 %{_unitdir}/strelaysrv.service
-%dir %attr(750,strelaysrv,strelaysrv) %{_localstatedir}/lib/strelaysrv
+%dir %attr(750,strelaysrv,strelaysrv) %{_localstatedir}/lib/syncthing-relaysrv
 
 %changelog
