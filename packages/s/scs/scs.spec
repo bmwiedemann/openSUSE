@@ -17,7 +17,7 @@
 
 
 Name:           scs
-Version:        2.1.3
+Version:        2.1.4
 Release:        0
 Summary:        Numerical package for solving large-scale convex cone problems
 License:        MIT
