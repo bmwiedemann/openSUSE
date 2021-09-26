@@ -17,7 +17,7 @@
 
 
 Name:           conmon
-Version:        2.0.29
+Version:        2.0.30
 Release:        0
 Summary:        An OCI container runtime monitor
 License:        Apache-2.0
@@ -25,7 +25,9 @@ Group:          System/Management
 URL:            https://github.com/containers/conmon
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  glib2-devel
+BuildRequires:  pkgconfig
 BuildRequires:  golang(API) >= 1.16
+BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsystemd)
 
 %description
@@ -46,6 +48,6 @@ runc or crun) for a single container.
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_mandir}/man8/conmon*.8*
+%{_mandir}/man8/conmon*.8%{?ext_man}
 
 %changelog

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 24 07:31:03 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 2.0.30:
+  * Remove unreachable code path
+  * exit: report if the exit command was killed
+  * exit: fix race zombie reaper
+  * conn_sock: allow watchdog messages through the notify socket proxy
+  * seccomp: add support for seccomp notify
+
+-------------------------------------------------------------------
 Fri Jul 23 09:51:11 UTC 2021 - alexandre.vicenzi@suse.com
 
 - Update to version 2.0.29:
