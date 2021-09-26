@@ -388,4 +388,12 @@ x86-64 when building with python 3.5.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>883654</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>db4b45c1f8b176effd1dda5286388e62</srcmd5>
+    <version>2.3.3</version>
+    <time>1632685708</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921251</requestid>
+  </revision>
 </revisionlist>

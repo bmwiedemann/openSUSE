@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 17 07:54:14 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
+
+- Update to 2.3.3
+  + python: Ensure reference counts are properly incremented
+  + Change pytalloc source to LGPL;(bso#9931);
+
+-------------------------------------------------------------------
 Wed Mar 31 15:34:08 UTC 2021 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to 2.3.2
