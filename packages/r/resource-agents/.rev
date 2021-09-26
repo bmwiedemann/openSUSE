@@ -1389,4 +1389,40 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>903585</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>051cce739ac1e6d91a70014e3afaa786</srcmd5>
+    <version>4.9.0+git10.8dc8b40b</version>
+    <time>1632685714</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.0+git10.8dc8b40b:
+  * storage-mon: update metadata to suggest usage in combination with HealthSMART agent
+  * configure: use new SYSTEMD_ parameters
+  * tools: add nfsconvert for RHEL-based distros
+  * [tools] fix build on opensuse 15.3
+  * nfsnotify: fix default value for &quot;notify_args&quot;
+
+- Update to version 4.9.0+git0.55a4e2c9:
+  * build: update ChangeLog for 4.9.0
+  * Filesystem: force_unmount: remove &quot;Default value&quot; to avoid confusion on RHEL9+ where default value is safe
+  * build: update ChangeLog for 4.9.0-rc1
+  * MySQL: add Support for local SSL connection (#1682)
+  * SAPInstance: Fix for issue #1680 - SAPInstance fails to detect systemd integration (#1681)
+  * [build] fix out-of-tree build for man pages
+  * Filesystem: do not call partprobe for bind mounts
+  * VirtualDomain: drop prefix xenmigr from migrate uri
+  * iSCSILogicalUnit: lio-t: support setting product_id
+  * storage-mon: new resource agent (#1675)
+  * nvme-*: spelling fixes in meta data text
+  * spec: remove chkconfig dependency for Fedora &lt; 34
+  * Remove a bashism in ocf-shellfuncs.in
+  * NVMe-oF-Target: New RAs nvmet-subsystem nvmet-namespace nvmet-port
+  * gcp-ilb: add to Makefiles
+  * mdraid: add option description for OCF_CHECK_LEVEL
+  * CTDB: replace timeout override with ctdb_timeout parameter (#1661)
+  * findif: popen requires pclose and not fclose (#1664)
+  * SAPInstance: add systemd compatability (#1662)
+    (bsc#1189535) SAPInstance fails to detect SAP unit files for systemd
+  * lvmlockd: remove cmirrord support as it's incompatible with lvmlockd</comment>
+    <requestid>921052</requestid>
+  </revision>
 </revisionlist>

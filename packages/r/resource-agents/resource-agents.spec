@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.8.0+git38.c6c53268
+Version:        4.9.0+git10.8dc8b40b
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -228,13 +228,7 @@ ln -s %{_prefix}/lib/ocf/resource.d/heartbeat/aws-vpc-move-ip aws-vpc-move-ip
 %dir %{_sysconfdir}/ha.d
 %config %{_sysconfdir}/ha.d/shellfuncs
 %dir %{_libdir}/heartbeat
-%{_libdir}/heartbeat/ocf-shellfuncs
-%{_libdir}/heartbeat/ocf-returncodes
-%{_libdir}/heartbeat/send_arp
-%{_libdir}/heartbeat/send_ua
-%{_libdir}/heartbeat/sfex_daemon
-%{_libdir}/heartbeat/findif
-%{_libdir}/heartbeat/tickle_tcp
+%{_libdir}/heartbeat/*
 %{_datadir}/pkgconfig/resource-agents.pc
 
 %files -n ldirectord
