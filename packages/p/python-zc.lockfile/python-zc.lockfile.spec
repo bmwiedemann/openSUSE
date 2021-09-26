@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.lockfile
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -26,11 +26,13 @@ License:        ZPL-2.1
 Group:          Development/Libraries/Python
 URL:            https://pypi.python.org/pypi/zc.lockfile
 Source:         https://files.pythonhosted.org/packages/source/z/zc.lockfile/zc.lockfile-%{version}.tar.gz
-BuildRequires:  %{python_module mock}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?suse_version} <= 1500
+BuildRequires:  python2-mock
+%endif
 Provides:       python-zc-lockfile = %{version}
 Obsoletes:      python-zc-lockfile < %{version}
 BuildArch:      noarch
@@ -61,7 +63,11 @@ rm %{buildroot}%{python_sitelib}/zc/lockfile/README.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+cd build/lib
+%{python_expand export PYTHONPATH='.'
+$python -m unittest -v zc.lockfile.tests
+$python -m doctest -v zc/lockfile/README.txt
+}
 
 %files %{python_files}
 %license LICENSE.txt
