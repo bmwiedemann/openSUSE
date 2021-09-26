@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 21 20:36:02 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- cmake 3.21.3:
+  * The AMD ROCm Platform hipcc compiler was identifed by CMake
+    3.21.0 through 3.21.2 as a distinct compiler with id ROCMClang.
+    This has been removed because it caused regressions. Instead:
+    hipcc may no longer be used as a HIP compiler because it
+    interferes with flags CMake needs to pass to Clang. Use Clang
+    directly. hipcc may once again be used as a CXX compiler, and
+    is treated as whatever compiler it selects underneath, as
+    CMake 3.20 and below did.
+
+-------------------------------------------------------------------
 Wed Sep  8 12:46:31 UTC 2021 - Max Lin <mlin@suse.com>
 
 - fix a typo in cmake.macros bsc#1190302
