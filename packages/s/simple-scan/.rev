@@ -643,4 +643,14 @@
   + Updated translations. (forwarded request 895325 from iznogood)</comment>
     <requestid>895974</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>0ce44c7fc1be06e254e052e3b140cfed</srcmd5>
+    <version>40.5</version>
+    <time>1632685706</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.5:
+  + Fix automatic size detection on Brother scanners.
+  * Updated translations. (forwarded request 921111 from iznogood)</comment>
+    <requestid>921245</requestid>
+  </revision>
 </revisionlist>
