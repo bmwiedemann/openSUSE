@@ -744,4 +744,12 @@
     <comment>Qt WebEngine 5.15.6 (forwarded request 917830 from cgiboudeaux)</comment>
     <requestid>917890</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>669df762d1d4069f690a943e886564ed</srcmd5>
+    <version>5.15.6</version>
+    <time>1632685713</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921014</requestid>
+  </revision>
 </revisionlist>

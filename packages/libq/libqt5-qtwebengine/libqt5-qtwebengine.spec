@@ -54,6 +54,10 @@ Patch5:         chromium-glibc-2.33.patch
 Patch6:         0001-Fix-build-with-glibc-2.34.patch
 # PATCH-FIX-UPSTREAM
 Patch7:         0001-return-ENOSYS-for-clone3.patch
+Patch8:         chromium-harfbuzz-3.0.0.patch
+Patch9:         skia-harfbuzz-3.0.0.patch
+# PATCH-FIX-OPENSUSE
+Patch10:        chromium-older-harfbuzz.patch
 # http://www.chromium.org/blink is not ported to PowerPC & s390
 ExcludeArch:    ppc ppc64 ppc64le s390 s390x
 # Try to fix i586 MemoryErrors with rpmlint

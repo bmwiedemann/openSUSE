@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 21 11:34:41 UTC 2021 - Fabian Vogt <fvogt@suse.com>
+
+- Add patches from Arch to fix build with HarfBuzz 3.0.0:
+  * chromium-harfbuzz-3.0.0.patch
+  * skia-harfbuzz-3.0.0.patch
+- ... but don't break with < 2.9.0:
+  * chromium-older-harfbuzz.patch
+
+-------------------------------------------------------------------
 Thu Sep 09 07:19:58 UTC 2021 - christophe@krop.fr
 
 - Update to version 5.15.6:
