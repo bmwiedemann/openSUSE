@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 14 07:09:49 UTC 2021 - nick wang <nwang@suse.com>
+
+- bsc#1190466, add /etc/crm/crm.conf and /etc/crm/profiles.yml
+  to the default csync2 list
+- Version 4.4.2
+
+-------------------------------------------------------------------
 Thu Jun 10 06:43:10 UTC 2021 - nick wang <nwang@suse.com>
 
 - bsc#1187157, add "none" for "crypto_hash" and "crypto_cipher"
