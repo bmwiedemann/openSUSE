@@ -19,7 +19,7 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-poetry
-Version:        1.1.6
+Version:        1.1.10
 Release:        0
 Summary:        Python dependency management and packaging
 License:        MIT
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module lockfile}
 BuildRequires:  %{python_module pexpect >= 4.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkginfo >= 1.4}
-BuildRequires:  %{python_module poetry-core >= 1.0.3}
+BuildRequires:  %{python_module poetry-core >= 1.0.6}
 BuildRequires:  %{python_module requests >= 2.18}
 BuildRequires:  %{python_module requests-toolbelt >= 0.9.1}
 BuildRequires:  %{python_module setuptools}

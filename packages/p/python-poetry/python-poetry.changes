@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Sep 22 09:42:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.1.10
+  * Fixed an issue where non-sha256 hashes were not checked.
+    (#4529)
+- Release 1.1.9
+  * Fixed a security issue where file hashes were not checked
+    prior to installation. (#4420, #4444, python-poetry/
+    poetry-core#193)
+  * Fixed the detection of the system environment when the setting
+    virtualenvs.create is deactivated. (#4507)
+  * Fixed an issue where unsafe parameters could be passed to git
+    commands. (python-poetry/poetry-core#203)
+  * Fixed an issue where the wrong git executable could be used on
+    Windows. (python-poetry/poetry-core#205)
+- Release 1.1
+  * Fixed an error with repository prioritization when specifying
+    secondary repositories. (#4241)
+  * Fixed the detection of the system environment when the setting
+    virtualenvs.create is deactivated. (#4330, #4407)
+  * Fixed the evaluation of relative path dependencies. (#4246)
+  * Fixed environment detection for Python 3.10 environments.
+    (#4387)
+  * Fixed an error in the evaluation of in/not in markers
+    (python-poetry/poetry-core#189)
+- Release 1.1.7
+  * Note: Lock files might need to be regenerated for the first
+    fix below to take effect. You can use poetry lock to do so
+    without the --no-update option.
+  * This release is compatible with the install-poetry.py
+    installation script to ease the migration path from 1.1
+    releases to 1.2 releases. (#4192)
+  * Fixed an issue where transitive dependencies of directory or
+    VCS dependencies were not installed or otherwise removed.
+    (#4203)
+  * Fixed an issue where the combination of the --tree and
+    --no-dev options for the show command was still displaying
+    development dependencies. (#3992)
+
+-------------------------------------------------------------------
 Wed Jun 16 08:53:33 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add patch to adapt code to pytest-mock > 3.3.1 where MockFixture
@@ -33,7 +73,7 @@ Wed Apr 14 21:36:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
   * Fixed errors when trying to handle newer wheels by using the
     latest version of poetry-core and packaging. (#3677)
   * Fixed an error when using some versions of poetry-core due to
-    an incorrect import . (#3696) 
+    an incorrect import . (#3696)
 - Time to drop simplify-toml.patch instead of refresh -- let
   dephell burn in its own &1
 
