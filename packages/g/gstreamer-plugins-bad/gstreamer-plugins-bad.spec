@@ -38,11 +38,8 @@ Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 
 BuildRequires:  Mesa-libGLESv3-devel
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gobject-introspection-devel
-BuildRequires:  gtk-doc
-BuildRequires:  hotdoc
 BuildRequires:  ladspa-devel
 BuildRequires:  libgme-devel
 BuildRequires:  libgsm-devel
@@ -409,18 +406,6 @@ anything media-related,from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
-%package doc
-Summary:        GStreamer Streaming-Media Framework Plug-Ins
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description doc
-GStreamer is a streaming media framework based on graphs of filters
-that operate on media data. Applications using this library can do
-anything media-related,from real-time sound processing to playing
-videos. Its plug-in-based architecture means that new data types or
-processing capabilities can be added simply by installing new plug-ins.
-
 %package orig-addon
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 Group:          Productivity/Multimedia/Other
@@ -603,6 +588,7 @@ export PYTHON=%{_bindir}/python3
 	-Dfdkaac=disabled \
 %endif
 	-Ddirectfb=disabled \
+	-Ddoc=disabled \
 	-Dexamples=disabled \
 	-Dfestival=disabled \
 	-Dflite=disabled \
@@ -646,7 +632,6 @@ fi
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
-%fdupes %{buildroot}%{_datadir}/gtk-doc/html/
 
 %post -n libgstadaptivedemux-1_0-0 -p /sbin/ldconfig
 %postun -n libgstadaptivedemux-1_0-0 -p /sbin/ldconfig
@@ -898,6 +883,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GstWebRTC-1.0.typelib
 
 %files devel
+%doc AUTHORS NEWS README RELEASE REQUIREMENTS
 %{_includedir}/gstreamer-%{gst_branch}
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/gstreamer-bad-audio-%{gst_branch}.pc
@@ -916,8 +902,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files lang -f %{_name}-%{gst_branch}.lang
 
-%files doc
-%doc AUTHORS NEWS README RELEASE REQUIREMENTS
 #%%{_datadir}/gtk-doc/html/gst-plugins-bad-plugins-%%{gst_branch}/
 #%%{_datadir}/gtk-doc/html/gst-plugins-bad-libs-%%{gst_branch}/
 
