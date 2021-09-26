@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 15 05:36:58 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- update to version 7.27.0:
+  * Add support for GTK4 :ghpull:`131011`
+  * Add support for Qt6 :ghpull:`13085`
+  * Fix an issue with pip magic on windows :ghpull:`13093`
+
+- changes from version 7.26.0:
+  * We'll highlight this issue
+    <https://github.com/ipython/ipython/issues/13039> pointing out we
+    were including and refereeing to code from Stack Overflow which
+    was CC-BY-SA, hence incompatible with the BSD license of
+    IPython. This lead us to a rewriting of the corresponding logic
+    which in our case was done in a more efficient way (in our case we
+    were searching string prefixes instead of full strings).
+  * You will notice also a number of documentation improvements and
+    cleanup.
+  * Of particular interest are the following Pull-requests:
+    + The IPython directive now uses Sphinx logging for
+      warnings. :ghpull:`13030`.
+    + Add expiry days option to pastebin magic and change http
+      protocol to https. :ghpull:`13056`
+    + Make Ipython.utils.timing work with jupyterlite :ghpull:`13050`.
+
+-------------------------------------------------------------------
 Sat Jun 26 14:45:40 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 7.25.0
