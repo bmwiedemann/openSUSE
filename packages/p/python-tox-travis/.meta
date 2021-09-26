@@ -1,5 +1,0 @@
-<package name="python-tox-travis" project="openSUSE:Factory">
-  <title></title>
-  <description>Seamless integration of Tox into Travis CI</description>
-  <devel project="devel:languages:python" package="python-tox-travis"/>
-</package>
