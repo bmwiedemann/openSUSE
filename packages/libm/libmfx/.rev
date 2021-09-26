@@ -114,4 +114,15 @@
   * fixes build against gcc11 (boo#1181871)</comment>
     <requestid>870902</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>414f75234c837fe7d3d928fbe610e65e</srcmd5>
+    <version>21.3.3</version>
+    <time>1632685698</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 21.3.3
+  * latest version 
+- refreshed cmake-sle12.patch
+- supersedes u_gcc11.patch</comment>
+    <requestid>920861</requestid>
+  </revision>
 </revisionlist>

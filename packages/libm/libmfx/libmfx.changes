@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 22 10:42:59 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 21.3.3
+  * latest version 
+- refreshed cmake-sle12.patch
+- supersedes u_gcc11.patch
+
+-------------------------------------------------------------------
 Wed Feb 10 13:16:39 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_gcc11.patch

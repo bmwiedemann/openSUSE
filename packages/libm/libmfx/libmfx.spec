@@ -19,7 +19,7 @@
 %global sover 1
 Name:           libmfx
 %define lname   libmfx%{sover}
-Version:        20.3.0
+Version:        21.3.3
 Release:        0
 Summary:        The Intel Media SDK
 License:        MIT
@@ -27,7 +27,6 @@ Group:          Development/Languages/C and C++
 URL:            https://github.com/Intel-Media-SDK/MediaSDK
 Source0:        https://github.com/Intel-Media-SDK/MediaSDK/archive/intel-mediasdk-%{version}.tar.gz
 Patch0:         cmake-sle12.patch
-Patch1:         u_gcc11.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} < 1500
 BuildRequires:  gcc7-c++
@@ -109,7 +108,7 @@ rmdir %{buildroot}/%{_datadir}/mfx/samples
 %postun -n %lname -p /sbin/ldconfig
 
 %files
-%doc CHANGELOG.md CODEOWNERS README.md
+%doc CHANGELOG.md CODEOWNERS README.rst
 %{_bindir}/asg-hevc
 %{_bindir}/hevc_fei_extractor
 %{_bindir}/mfx-tracer-config
