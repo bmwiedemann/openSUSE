@@ -231,4 +231,15 @@
     <comment>New stable release (forwarded request 840876 from iznogood)</comment>
     <requestid>841169</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>f1bb0bc2aafb2b296e4f166f8083fe46</srcmd5>
+    <version>0.20.4</version>
+    <time>1632685691</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsecret-handle-UnknownObject.patch: some Secret Service
+  API backend implementations (like keepassxc) throws
+  UnknownObject instead of UnknownMethod, this patch handles it.
+  (bsc#1190499, glgo#GNOME/libsecret!94) (forwarded request 920800 from AZhou)</comment>
+    <requestid>920820</requestid>
+  </revision>
 </revisionlist>
