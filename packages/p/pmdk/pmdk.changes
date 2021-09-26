@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 21 20:21:42 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim old specfile constructs like defattr.
+
+-------------------------------------------------------------------
 Wed Sep 15 08:36:35 UTC 2021 - Christian Vögl <christian.voegl@suse.com>
 
 - Renamed libpmem2-1-devel to libpmem2-devel

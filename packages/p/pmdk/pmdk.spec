@@ -17,7 +17,7 @@
 #
 
 
-%if 0%{suse_version} > 1315
+%if 0%{?suse_version} > 1315
 %define with_fabric 1
 %endif
 
@@ -44,11 +44,10 @@ BuildRequires:  pkg-config
 %if 0%{?with_fabric}
 BuildRequires:  libfabric-devel >= %min_libfabric_ver
 %endif
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # NVML was renamed upstream to PMDK between 1.3 and 1.3.1
 Obsoletes:      nvml < %version-%release
 Provides:       nvml = %version-%release
-BuildRequires:  libndctl-devel >= %{min_ndctl_ver}
+BuildRequires:  libndctl-devel >= %min_ndctl_ver
 
 # By design, NVML does not support any 32-bit architecture.
 # Due to dependency on xmmintrin.h and some inline assembly, it can be
@@ -137,7 +136,6 @@ pmem and needs to flush those changes to durability. Most developers
 will find higher level libraries like libpmemobj to be much more
 convenient. libpmem2 has a new API that addresses many of the shortcommings
 of libpmem1
-
 
 %package -n libpmemblk1
 Summary:        Persistent Memory Resident Block library
@@ -266,14 +264,10 @@ Group:          Documentation/Man
 Documentation for the pmem library interface.
 
 %prep
-%setup -q
-%patch0
-
-#Extract pre generated documentation
-tar xf %{S:1}
+%autosetup -p0 -a1
 
 %build
-%define _lto_cflags %{nil}
+%define _lto_cflags %nil
 # Currently, NVML makefiles do not allow to easily override CFLAGS,
 # so the build flags are passed via EXTRA_CFLAGS.  For debug build
 # selected flags are overriden to disable compiler optimizations.
@@ -292,7 +286,7 @@ make %{?_smp_mflags} BINDIR="%_bindir" EXTRA_CFLAGS="-Wno-error" \
 # Override LIB_AR with empty string to skip installation of static libraries
 %install
 b="%buildroot"
-make install DESTDIR="$b" LIB_AR= \
+%make_install LIB_AR= \
 	prefix="%_prefix" \
 	libdir="%_libdir" \
 	includedir="%_includedir" \
@@ -304,8 +298,8 @@ mkdir -p "$b/%_datadir/pmdk"
 cp utils/pmdk.magic "$b/%_datadir/pmdk/"
 
 #Fix installation dir for bash completion
-mkdir -p %buildroot%{_datadir}/bash-completion/completions
-mv %buildroot%_sysconfdir/bash_completion.d/* %buildroot%{_datadir}/bash-completion/completions
+mkdir -p %buildroot/%_datadir/bash-completion/completions
+mv %buildroot/%_sysconfdir/bash_completion.d/* %buildroot/%_datadir/bash-completion/completions
 
 %fdupes %buildroot/%_prefix
 
@@ -329,13 +323,11 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %postun -n librpmem1 -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root)
 %_datadir/pmdk/
 %doc ChangeLog
 
 %files tools
-%defattr(-,root,root)
-%{_datadir}/bash-completion/completions/*
+%_datadir/bash-completion/completions/*
 %_bindir/daxio
 %_bindir/pmempool
 %_bindir/pmreorder
@@ -348,11 +340,9 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %doc LICENSE
 
 %files -n libpmem1
-%defattr(-,root,root)
 %_libdir/libpmem.so.1*
 
 %files -n libpmem-devel
-%defattr(-,root,root)
 %_libdir/libpmem.so
 %_libdir/pkgconfig/libpmem.pc
 %dir %_libdir/pmdk_debug/
@@ -360,11 +350,9 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %_includedir/libpmem.h
 
 %files -n libpmem2-1
-%defattr(-,root,root)
 %_libdir/libpmem2.so.1*
 
 %files -n libpmem2-devel
-%defattr(-,root,root)
 %_libdir/libpmem2.so
 %_libdir/pkgconfig/libpmem2.pc
 %dir %_libdir/pmdk_debug/
@@ -372,11 +360,9 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %_includedir/libpmem2.h
 
 %files -n libpmemblk1
-%defattr(-,root,root)
 %_libdir/libpmemblk.so.1*
 
 %files -n libpmemblk-devel
-%defattr(-,root,root)
 %_libdir/libpmemblk.so
 %_libdir/pkgconfig/libpmemblk.pc
 %dir %_libdir/pmdk_debug/
@@ -384,11 +370,9 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %_includedir/libpmemblk.h
 
 %files -n libpmemlog1
-%defattr(-,root,root)
 %_libdir/libpmemlog.so.1*
 
 %files -n libpmemlog-devel
-%defattr(-,root,root)
 %_libdir/libpmemlog.so
 %_libdir/pkgconfig/libpmemlog.pc
 %dir %_libdir/pmdk_debug/
@@ -396,11 +380,9 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %_includedir/libpmemlog.h
 
 %files -n libpmemobj1
-%defattr(-,root,root)
 %_libdir/libpmemobj.so.1*
 
 %files -n libpmemobj-devel
-%defattr(-,root,root)
 %_libdir/libpmemobj.so
 %dir %_libdir/pmdk_debug/
 %_libdir/pkgconfig/libpmemobj.pc
@@ -409,11 +391,9 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 %_includedir/libpmemobj/
 
 %files -n libpmempool1
-%defattr(-,root,root)
 %_libdir/libpmempool.so.1*
 
 %files -n libpmempool-devel
-%defattr(-,root,root)
 %_libdir/libpmempool.so
 %_libdir/pkgconfig/libpmempool.pc
 %dir %_libdir/pmdk_debug
@@ -422,12 +402,10 @@ cp src/test/testconfig.sh.example src/test/testconfig.sh
 
 %if 0%{?with_fabric}
 %files -n librpmem1
-%defattr(-,root,root,-)
 %_libdir/librpmem.so.*
 %license LICENSE
 
 %files -n librpmem-devel
-%defattr(-,root,root,-)
 %_libdir/librpmem.so
 %_libdir/pkgconfig/librpmem.pc
 %dir %_libdir/pmdk_debug
