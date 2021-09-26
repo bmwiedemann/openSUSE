@@ -51,7 +51,6 @@
       <repopackage name="skelcd-openSUSE" medium="0" removearch="src,nosrc" onlyarch="i586"/>
     </metadata>
     <repopackages>
-      <repopackage name=" patterns-base-basic_desktop uninstallable: nothing provides perl(:MODULE_COMPAT_5.32.1) needed by perl-XML-Parser-2.46-1.9.i586" arch="i586,i686"/>
       <repopackage name="aaa_base"/>
       <repopackage name="aaa_base-extras"/>
       <repopackage name="abcde"/>
@@ -168,11 +167,6 @@
       <repopackage name="avahi"/>
       <repopackage name="avahi-lang"/>
       <repopackage name="awesfx"/>
-      <repopackage name="awesome"/>
-      <repopackage name="awesome-branding-openSUSE"/>
-      <repopackage name="awesome-freedesktop"/>
-      <repopackage name="awesome-shifty"/>
-      <repopackage name="awesome-vicious"/>
       <repopackage name="aws-cli"/>
       <repopackage name="b43-fwcutter"/>
       <repopackage name="babeltrace"/>
@@ -469,6 +463,7 @@
       <repopackage name="evolution-plugin-pst-import"/>
       <repopackage name="evolution-plugin-rss"/>
       <repopackage name="evolution-plugin-rss-lang"/>
+      <repopackage name="evolution-plugin-spamassassin"/>
       <repopackage name="evolution-plugin-text-highlight"/>
       <repopackage name="exiftool"/>
       <repopackage name="exo-data"/>
@@ -502,6 +497,7 @@
       <repopackage name="fcitx-table-tw-cangjie5"/>
       <repopackage name="fcitx-table-tw-smart-cangjie6"/>
       <repopackage name="fcitx-zhuyin"/>
+      <repopackage name="fd0ssh"/>
       <repopackage name="fdupes"/>
       <repopackage name="festival"/>
       <repopackage name="fetchmail"/>
@@ -917,12 +913,18 @@
       <repopackage name="ibus-table-rustrad"/>
       <repopackage name="ibus-table-translit"/>
       <repopackage name="iceauth"/>
+      <repopackage name="icewm"/>
       <repopackage name="icewm-config-upstream"/>
+      <repopackage name="icewm-default"/>
+      <repopackage name="icewm-lang"/>
+      <repopackage name="icewm-lite"/>
+      <repopackage name="icewm-theme-branding"/>
       <repopackage name="iftop"/>
       <repopackage name="iio-sensor-proxy"/>
       <repopackage name="ImageMagick"/>
       <repopackage name="ImageMagick-config-7-SUSE"/>
       <repopackage name="ImageMagick-extra"/>
+      <repopackage name="imlib2-loaders"/>
       <repopackage name="incidenceeditor"/>
       <repopackage name="incidenceeditor-lang"/>
       <repopackage name="indic-fonts"/>
@@ -1514,6 +1516,7 @@
       <repopackage name="libcreaterepo_c0"/>
       <repopackage name="libcroco-0_6-3"/>
       <repopackage name="libcrypt1"/>
+      <repopackage name="libcryptmount0"/>
       <repopackage name="libcryptsetup12"/>
       <repopackage name="libcryptsetup12-hmac"/>
       <repopackage name="libcryptui-data"/>
@@ -1671,6 +1674,7 @@
       <repopackage name="libgdbm6"/>
       <repopackage name="libgdbm_compat4"/>
       <repopackage name="libgdk_pixbuf-2_0-0"/>
+      <repopackage name="libgdk_pixbuf_xlib-2_0-0"/>
       <repopackage name="libgdm1"/>
       <repopackage name="libgee-0_8-2"/>
       <repopackage name="libgegl-0_4-0"/>
@@ -1689,6 +1693,7 @@
       <repopackage name="libgirepository-1_0-1"/>
       <repopackage name="libgit2-1_1"/>
       <repopackage name="libgjs0"/>
+      <repopackage name="libgle3"/>
       <repopackage name="libglib-2_0-0"/>
       <repopackage name="libglibmm-2_4-1"/>
       <repopackage name="libglslang11"/>
@@ -1845,6 +1850,7 @@
       <repopackage name="libIlmThread-3_1-30"/>
       <repopackage name="libimagequant0"/>
       <repopackage name="libImath-3_1-29"/>
+      <repopackage name="libImlib2-1"/>
       <repopackage name="libimobiledevice-1_0-6"/>
       <repopackage name="libindicator3-7"/>
       <repopackage name="libini_config5"/>
@@ -2798,15 +2804,12 @@
       <repopackage name="libxcb-xinerama0"/>
       <repopackage name="libxcb-xinput0"/>
       <repopackage name="libxcb-xkb1"/>
-      <repopackage name="libxcb-xrm0"/>
-      <repopackage name="libxcb-xtest0"/>
       <repopackage name="libxcb-xv0"/>
       <repopackage name="libxcb1"/>
       <repopackage name="libXcomposite1"/>
       <repopackage name="libxcrypt-devel"/>
       <repopackage name="libXcursor1"/>
       <repopackage name="libXdamage1"/>
-      <repopackage name="libxdg-basedir1"/>
       <repopackage name="libXdmcp6"/>
       <repopackage name="libxerces-c-3_2"/>
       <repopackage name="libXext6"/>
@@ -2885,8 +2888,6 @@
       <repopackage name="libzypp"/>
       <repopackage name="libzypp-plugin-appdata"/>
       <repopackage name="lifecycle-data-openSUSE"/>
-      <repopackage name="light-locker"/>
-      <repopackage name="light-locker-lang"/>
       <repopackage name="lightdm"/>
       <repopackage name="lightdm-gtk-greeter"/>
       <repopackage name="lightdm-gtk-greeter-branding-openSUSE"/>
@@ -2910,9 +2911,6 @@
       <repopackage name="lskat-lang"/>
       <repopackage name="lsof"/>
       <repopackage name="lsscsi"/>
-      <repopackage name="lua54"/>
-      <repopackage name="lua54-doc"/>
-      <repopackage name="lua54-lgi"/>
       <repopackage name="luit"/>
       <repopackage name="lunar-calendar"/>
       <repopackage name="lunar-calendar-gtk3-module"/>
@@ -3166,6 +3164,7 @@
       <repopackage name="nvme-cli"/>
       <repopackage name="nvme-cli-bash-completion"/>
       <repopackage name="ocfs2-tools"/>
+      <repopackage name="ofl"/>
       <repopackage name="okteta"/>
       <repopackage name="okteta-data"/>
       <repopackage name="okteta-lang"/>
@@ -3227,6 +3226,7 @@
       <repopackage name="pam-config"/>
       <repopackage name="pam-doc"/>
       <repopackage name="pam_apparmor"/>
+      <repopackage name="pam_mount"/>
       <repopackage name="pam_pwquality"/>
       <repopackage name="pam_ssh"/>
       <repopackage name="pam_unix"/>
@@ -3246,6 +3246,7 @@
       <repopackage name="patterns-base-apparmor"/>
       <repopackage name="patterns-base-base"/>
       <repopackage name="patterns-base-basesystem"/>
+      <repopackage name="patterns-base-basic_desktop"/>
       <repopackage name="patterns-base-console"/>
       <repopackage name="patterns-base-documentation"/>
       <repopackage name="patterns-base-enhanced_base"/>
@@ -3328,10 +3329,12 @@
       <repopackage name="perl-Authen-SASL"/>
       <repopackage name="perl-base"/>
       <repopackage name="perl-Bootloader"/>
+      <repopackage name="perl-BSD-Resource"/>
       <repopackage name="perl-CDDB_get"/>
       <repopackage name="perl-CGI"/>
       <repopackage name="perl-common-sense"/>
       <repopackage name="perl-Config-General"/>
+      <repopackage name="perl-Convert-ASN1"/>
       <repopackage name="perl-Convert-BinHex"/>
       <repopackage name="perl-Cpanel-JSON-XS"/>
       <repopackage name="perl-Crypt-DES"/>
@@ -3339,19 +3342,23 @@
       <repopackage name="perl-Crypt-OpenSSL-Random"/>
       <repopackage name="perl-Crypt-OpenSSL-RSA"/>
       <repopackage name="perl-Crypt-Rijndael"/>
+      <repopackage name="perl-Crypt-SmbHash"/>
       <repopackage name="perl-Data-Validate-IP"/>
       <repopackage name="perl-Date-Manip"/>
       <repopackage name="perl-DBD-mysql"/>
       <repopackage name="perl-DBD-SQLite"/>
       <repopackage name="perl-DBI"/>
       <repopackage name="perl-Digest-HMAC"/>
+      <repopackage name="perl-Digest-MD4"/>
       <repopackage name="perl-Digest-SHA1"/>
       <repopackage name="perl-doc"/>
+      <repopackage name="perl-Encode-Detect"/>
       <repopackage name="perl-Encode-Locale"/>
       <repopackage name="perl-Error"/>
       <repopackage name="perl-Expect"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-FileHandle-Unget"/>
+      <repopackage name="perl-Geography-Countries"/>
       <repopackage name="perl-gettext"/>
       <repopackage name="perl-Git"/>
       <repopackage name="perl-HTML-Parser"/>
@@ -3364,27 +3371,37 @@
       <repopackage name="perl-IO-HTML"/>
       <repopackage name="perl-IO-Socket-INET6"/>
       <repopackage name="perl-IO-Socket-SSL"/>
+      <repopackage name="perl-IO-String"/>
       <repopackage name="perl-IO-Tty"/>
+      <repopackage name="perl-IP-Country"/>
       <repopackage name="perl-IPC-Run3"/>
       <repopackage name="perl-JSON"/>
       <repopackage name="perl-JSON-XS"/>
+      <repopackage name="perl-ldap"/>
       <repopackage name="perl-libwww-perl"/>
       <repopackage name="perl-LWP-MediaTypes"/>
+      <repopackage name="perl-LWP-Protocol-https"/>
       <repopackage name="perl-Mail-AuthenticationResults"/>
       <repopackage name="perl-Mail-DKIM"/>
       <repopackage name="perl-Mail-Mbox-MessageParser"/>
+      <repopackage name="perl-Mail-SpamAssassin"/>
+      <repopackage name="perl-Mail-SPF"/>
       <repopackage name="perl-MailTools"/>
       <repopackage name="perl-MIME-tools"/>
       <repopackage name="perl-Mojolicious"/>
       <repopackage name="perl-MusicBrainz-DiscID"/>
+      <repopackage name="perl-Net-CIDR-Lite"/>
       <repopackage name="perl-Net-DNS"/>
       <repopackage name="perl-Net-HTTP"/>
+      <repopackage name="perl-Net-Ident"/>
+      <repopackage name="perl-Net-Patricia"/>
       <repopackage name="perl-Net-Server"/>
       <repopackage name="perl-Net-SMTP-SSL"/>
       <repopackage name="perl-Net-SNMP"/>
       <repopackage name="perl-Net-SSLeay"/>
       <repopackage name="perl-NetAddr-IP"/>
       <repopackage name="perl-Parse-RecDescent"/>
+      <repopackage name="perl-razor-agents"/>
       <repopackage name="perl-SNMP"/>
       <repopackage name="perl-Socket6"/>
       <repopackage name="perl-Term-ReadKey"/>
@@ -3396,6 +3413,13 @@
       <repopackage name="perl-WebService-MusicBrainz"/>
       <repopackage name="perl-WWW-RobotRules"/>
       <repopackage name="perl-X500-DN"/>
+      <repopackage name="perl-XML-Dumper"/>
+      <repopackage name="perl-XML-LibXML"/>
+      <repopackage name="perl-XML-NamespaceSupport"/>
+      <repopackage name="perl-XML-Parser"/>
+      <repopackage name="perl-XML-SAX"/>
+      <repopackage name="perl-XML-SAX-Base"/>
+      <repopackage name="perl-XML-Writer"/>
       <repopackage name="permissions"/>
       <repopackage name="permissions-config"/>
       <repopackage name="pfscalibration"/>
@@ -3875,6 +3899,7 @@
       <repopackage name="rarpd"/>
       <repopackage name="rdesktop"/>
       <repopackage name="rdma-core"/>
+      <repopackage name="re2c"/>
       <repopackage name="read-only-root-fs"/>
       <repopackage name="readcd"/>
       <repopackage name="readline-doc"/>
@@ -4431,6 +4456,8 @@
       <repopackage name="sound-theme-freedesktop"/>
       <repopackage name="sox"/>
       <repopackage name="spacenavd"/>
+      <repopackage name="spamassassin"/>
+      <repopackage name="spamassassin-spamc"/>
       <repopackage name="spax"/>
       <repopackage name="spectacle"/>
       <repopackage name="spectacle-lang"/>
@@ -4767,6 +4794,8 @@
       <repopackage name="whois"/>
       <repopackage name="wicked"/>
       <repopackage name="wicked-service"/>
+      <repopackage name="WindowMaker"/>
+      <repopackage name="WindowMaker-themes"/>
       <repopackage name="wireless-regdb"/>
       <repopackage name="wireless-tools"/>
       <repopackage name="wmctrl"/>
@@ -4786,6 +4815,7 @@
       <repopackage name="xbitmaps"/>
       <repopackage name="xbrlapi"/>
       <repopackage name="xclip"/>
+      <repopackage name="xclock"/>
       <repopackage name="xconsole"/>
       <repopackage name="xdelta3"/>
       <repopackage name="xdg-dbus-proxy"/>
@@ -4795,6 +4825,7 @@
       <repopackage name="xdg-desktop-portal-kde"/>
       <repopackage name="xdg-desktop-portal-kde-lang"/>
       <repopackage name="xdg-desktop-portal-lang"/>
+      <repopackage name="xdg-menu"/>
       <repopackage name="xdg-user-dirs"/>
       <repopackage name="xdg-user-dirs-gtk"/>
       <repopackage name="xdg-user-dirs-gtk-lang"/>
@@ -4910,6 +4941,10 @@
       <repopackage name="xprop"/>
       <repopackage name="xrandr"/>
       <repopackage name="xrdb"/>
+      <repopackage name="xscreensaver"/>
+      <repopackage name="xscreensaver-data"/>
+      <repopackage name="xscreensaver-data-extra"/>
+      <repopackage name="xscreensaver-lang"/>
       <repopackage name="xsel"/>
       <repopackage name="xset"/>
       <repopackage name="xsetroot"/>
@@ -4973,6 +5008,8 @@
       <repopackage name="yast2-python3-bindings"/>
       <repopackage name="yast2-qt-branding-openSUSE"/>
       <repopackage name="yast2-ruby-bindings"/>
+      <repopackage name="yast2-samba-client"/>
+      <repopackage name="yast2-samba-server"/>
       <repopackage name="yast2-scanner"/>
       <repopackage name="yast2-schema"/>
       <repopackage name="yast2-security"/>
