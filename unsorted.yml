@@ -276,9 +276,7 @@ unsorted:
   - VirtualGL-devel 
   - WSL-DistroLauncher 
   - WSL-DistroLauncher-debug 
-  - WindowMaker 
   - WindowMaker-devel 
-  - WindowMaker-themes 
   - WoeUSB 
   - XSStrike 
   - XyGrib 
@@ -1000,7 +998,12 @@ unsorted:
   - avr-libc 
   - avrdude 
   - avrdude-devel 
+  - awesome 
+  - awesome-branding-openSUSE 
   - awesome-branding-upstream 
+  - awesome-freedesktop 
+  - awesome-shifty 
+  - awesome-vicious 
   - awf-gtk2 
   - awf-gtk3 
   - awf-gtk4 
@@ -3351,7 +3354,6 @@ unsorted:
   - evmctl: [i586] 
   - evolution-data-server-devel 
   - evolution-devel 
-  - evolution-plugin-spamassassin 
   - evtest 
   - exa: [x86_64] 
   - exa-bash-completion: [x86_64] 
@@ -3507,7 +3509,6 @@ unsorted:
   - fd-bash-completion 
   - fd-fish-completion 
   - fd-zsh-completion 
-  - fd0ssh 
   - featherpad 
   - featherpad-lang 
   - fec-devel 
@@ -6838,11 +6839,6 @@ unsorted:
   - icedtea-web 
   - icedtea-web-javadoc 
   - ices 
-  - icewm 
-  - icewm-default 
-  - icewm-lang 
-  - icewm-lite 
-  - icewm-theme-branding 
   - icewm-theme-yast-installation 
   - icewm-themes 
   - icinga2 
@@ -6934,7 +6930,6 @@ unsorted:
   - imlib2 
   - imlib2-devel 
   - imlib2-filters 
-  - imlib2-loaders 
   - imobiledevice-tools 
   - import-properties-plugin 
   - impressive 
@@ -8617,7 +8612,6 @@ unsorted:
   - libHACD3_17 
   - libHX-devel 
   - libHX-devel-32bit: [x86_64] 
-  - libHX32-32bit: [x86_64] 
   - libHYPRE-gnu-mpich-hpc 
   - libHYPRE-gnu-mvapich2-hpc 
   - libHYPRE-gnu-openmpi1-hpc 
@@ -8656,7 +8650,6 @@ unsorted:
   - libIex-3_1-30-32bit: [x86_64] 
   - libIlmThread-3_1-30-32bit: [x86_64] 
   - libImath-3_1-29-32bit: [x86_64] 
-  - libImlib2-1 
   - libIrrlicht1_8 
   - libKDb3-4 
   - libKF5JsEmbed5 
@@ -9360,7 +9353,6 @@ unsorted:
   - libarb2 
   - libarchive-devel 
   - libarchive13-32bit: [x86_64] 
-  - libargon2-1-32bit: [x86_64] 
   - libargtable2-0 
   - libargtable2-devel 
   - libarm_compute24: [x86_64] 
@@ -10020,15 +10012,12 @@ unsorted:
   - libcroco-devel 
   - libcrossguid0 
   - libcryptmount-devel 
-  - libcryptmount0 
-  - libcryptmount0-32bit: [x86_64] 
   - libcrypto46 
   - libcrypto46-32bit: [x86_64] 
   - libcryptopp-devel 
   - libcryptopp8_6_0 
   - libcryptopp8_6_0-32bit: [x86_64] 
   - libcryptsetup-devel 
-  - libcryptsetup12-32bit: [x86_64] 
   - libcryptsetup12-hmac-32bit: [x86_64] 
   - libcryptui-devel 
   - libcrystalhd-devel 
@@ -10172,7 +10161,6 @@ unsorted:
   - libdeflate0 
   - libdevil-tools 
   - libdevmapper-event1_03-32bit: [x86_64] 
-  - libdevmapper1_03-32bit: [x86_64] 
   - libdframeworkdbus-devel 
   - libdframeworkdbus2 
   - libdhash-devel 
@@ -10688,7 +10676,6 @@ unsorted:
   - libgdbm_compat4-32bit: [x86_64] 
   - libgdiplus-devel 
   - libgdiplus0 
-  - libgdk_pixbuf_xlib-2_0-0 
   - libgdk_pixbuf_xlib-2_0-0-32bit: [x86_64] 
   - libgdl-3-5 
   - libgdlmm-3_0-2 
@@ -10760,7 +10747,6 @@ unsorted:
   - libgladeui-2-13 
   - libgladeui-2-devel 
   - libgle-devel 
-  - libgle3 
   - libglfw-devel 
   - libglfw2 
   - libglfw3 
@@ -11418,7 +11404,6 @@ unsorted:
   - libjsmn0 
   - libjson-c-devel 
   - libjson-c-doc 
-  - libjson-c5-32bit: [x86_64] 
   - libjson-glib-1_0-0-32bit: [x86_64] 
   - libjsoncpp24 
   - libjsonrpc-glib-1_0-1 
@@ -13977,7 +13962,6 @@ unsorted:
   - libudev-devel-32bit: [x86_64] 
   - libudev-mini-devel 
   - libudev-mini1 
-  - libudev1-32bit: [x86_64] 
   - libudf0 
   - libudf0-32bit: [x86_64] 
   - libudisks2-0-devel 
@@ -14490,6 +14474,8 @@ unsorted:
   - libxcb-xinerama0-32bit: [x86_64] 
   - libxcb-xinput0-32bit: [x86_64] 
   - libxcb-xkb1-32bit: [x86_64] 
+  - libxcb-xrm0 
+  - libxcb-xtest0: [i586] 
   - libxcb-xtest0-32bit: [x86_64] 
   - libxcb-xv0-32bit: [x86_64] 
   - libxcb-xvmc0: [i586] 
@@ -14499,6 +14485,7 @@ unsorted:
   - libxcrypt-devel-32bit: [x86_64] 
   - libxcrypt-devel-static 
   - libxdg-basedir-devel 
+  - libxdg-basedir1 
   - libxerces-c-3_2-32bit: [x86_64] 
   - libxerces-c-devel 
   - libxfce4ui-branding-upstream 
@@ -14547,7 +14534,6 @@ unsorted:
   - libxml++30-devel 
   - libxml-security-c-devel 
   - libxml-security-c20 
-  - libxml2-2-32bit: [x86_64] 
   - libxml2-devel 
   - libxml2-devel-32bit: [x86_64] 
   - libxml2-doc 
@@ -14705,6 +14691,8 @@ unsorted:
   - lifelines 
   - liferea 
   - liferea-lang 
+  - light-locker 
+  - light-locker-lang 
   - lightdm-deepin-greeter 
   - lightdm-gobject-devel 
   - lightdm-gtk-greeter-branding-upstream 
@@ -15082,6 +15070,7 @@ unsorted:
   - lua53-say 
   - lua53-slaxml 
   - lua53-zlib 
+  - lua54 
   - lua54-alt-getopt 
   - lua54-argparse 
   - lua54-bit32 
@@ -15094,9 +15083,11 @@ unsorted:
   - lua54-cyrussasl 
   - lua54-devel 
   - lua54-dkjson 
+  - lua54-doc 
   - lua54-editorconfig-core-lua 
   - lua54-ldbus 
   - lua54-ldoc 
+  - lua54-lgi 
   - lua54-lgi-doc 
   - lua54-loadkit 
   - lua54-lpeg 
@@ -17598,7 +17589,6 @@ unsorted:
   - ode-devel 
   - odt2txt 
   - officecodepro-fonts 
-  - ofl 
   - ofono 
   - ofono-devel 
   - ofono-tests 
@@ -18189,8 +18179,6 @@ unsorted:
   - pam_kwallet-common 
   - pam_mktemp 
   - pam_mktemp-32bit: [x86_64] 
-  - pam_mount 
-  - pam_mount-32bit: [x86_64] 
   - pam_oath 
   - pam_p11 
   - pam_p11-32bit: [x86_64] 
@@ -18305,7 +18293,6 @@ unsorted:
   - patterns-base-32bit: [x86_64] 
   - patterns-base-apparmor-32bit 
   - patterns-base-base-32bit 
-  - patterns-base-basic_desktop 
   - patterns-base-bootloader: [i586] 
   - patterns-base-enhanced_base-32bit 
   - patterns-base-fips 
@@ -18655,7 +18642,6 @@ unsorted:
   - perl-B-Keywords 
   - perl-B-Utils 
   - perl-BIND-Conf_Parser 
-  - perl-BSD-Resource 
   - perl-Benchmark-Timer 
   - perl-BerkeleyDB 
   - perl-Bit-Vector 
@@ -18765,7 +18751,6 @@ unsorted:
   - perl-Const-Fast 
   - perl-Context-Preserve 
   - perl-Contextual-Return 
-  - perl-Convert-ASN1 
   - perl-Convert-BER 
   - perl-Convert-TNEF 
   - perl-Convert-UUlib 
@@ -18783,7 +18768,6 @@ unsorted:
   - perl-Crypt-Rot13 
   - perl-Crypt-SSLeay 
   - perl-Crypt-SaltedHash 
-  - perl-Crypt-SmbHash 
   - perl-Crypt-UnixCrypt_XS 
   - perl-CryptX 
   - perl-Curses 
@@ -18904,7 +18888,6 @@ unsorted:
   - perl-Device-Yeelight 
   - perl-Digest-CRC 
   - perl-Digest-JHash 
-  - perl-Digest-MD4 
   - perl-Digest-MD5 
   - perl-Digest-Perl-MD5 
   - perl-Digest-SHA3 
@@ -18925,7 +18908,6 @@ unsorted:
   - perl-Email-Simple 
   - perl-Email-Valid 
   - perl-Encode 
-  - perl-Encode-Detect 
   - perl-Encode-EUCJPASCII 
   - perl-Encode-HanExtra 
   - perl-Encode-JIS2K 
@@ -19018,7 +19000,6 @@ unsorted:
   - perl-GDTextUtil 
   - perl-GStreamer1 
   - perl-Geo-Coordinates-UTM 
-  - perl-Geography-Countries 
   - perl-Getopt-ArgvFile 
   - perl-Getopt-Long-Descriptive 
   - perl-Getopt-Tabular 
@@ -19109,12 +19090,10 @@ unsorted:
   - perl-IO-Socket-Multicast 
   - perl-IO-Socket-PortState 
   - perl-IO-Socket-Timeout 
-  - perl-IO-String 
   - perl-IO-Stty 
   - perl-IO-Tee 
   - perl-IO-TieCombine 
   - perl-IO-stringy 
-  - perl-IP-Country 
   - perl-IPC-Run 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
@@ -19138,7 +19117,6 @@ unsorted:
   - perl-JavaScript-Minifier-XS 
   - perl-LWP-ConsoleLogger 
   - perl-LWP-Online 
-  - perl-LWP-Protocol-https 
   - perl-Lexical-Persistence 
   - perl-Lexical-SealRequireHints 
   - perl-Lingua-EN-FindNumber 
@@ -19197,12 +19175,10 @@ unsorted:
   - perl-Mac-PropertyList 
   - perl-Mail-IMAPClient 
   - perl-Mail-Message 
-  - perl-Mail-SPF 
   - perl-Mail-SPF-Test 
   - perl-Mail-SPF_XS 
   - perl-Mail-Sender 
   - perl-Mail-Sendmail 
-  - perl-Mail-SpamAssassin 
   - perl-Mail-SpamAssassin-Plugin-iXhash2 
   - perl-Mail-Transport 
   - perl-Mason 
@@ -19355,7 +19331,6 @@ unsorted:
   - perl-Net-AMQP: [x86_64] 
   - perl-Net-AMQP-RabbitMQ 
   - perl-Net-CIDR 
-  - perl-Net-CIDR-Lite 
   - perl-Net-CIDR-Set 
   - perl-Net-DBus 
   - perl-Net-DNS-Resolver-Mock 
@@ -19369,7 +19344,6 @@ unsorted:
   - perl-Net-INET6Glue 
   - perl-Net-IP 
   - perl-Net-IPv4Addr 
-  - perl-Net-Ident 
   - perl-Net-Jabber 
   - perl-Net-LibIDN 
   - perl-Net-Libproxy 
@@ -19380,7 +19354,6 @@ unsorted:
   - perl-Net-OpenID-Consumer 
   - perl-Net-OpenStack-Compute 
   - perl-Net-Oping 
-  - perl-Net-Patricia 
   - perl-Net-Pcap 
   - perl-Net-SSH2 
   - perl-Net-SSLGlue 
@@ -19841,26 +19814,20 @@ unsorted:
   - perl-XML-CommonNS 
   - perl-XML-DOM 
   - perl-XML-DOM-XPath 
-  - perl-XML-Dumper 
   - perl-XML-Entities 
   - perl-XML-Feed 
   - perl-XML-Filter-BufferText 
   - perl-XML-Generator-PerlData 
   - perl-XML-Handler-YAWriter 
-  - perl-XML-LibXML 
   - perl-XML-LibXML-PrettyPrint 
   - perl-XML-LibXML-Simple 
   - perl-XML-LibXSLT 
   - perl-XML-Namespace 
   - perl-XML-NamespaceFactory 
-  - perl-XML-NamespaceSupport 
   - perl-XML-NodeFilter 
-  - perl-XML-Parser 
   - perl-XML-Parser-Lite 
   - perl-XML-RSS 
   - perl-XML-RegExp 
-  - perl-XML-SAX 
-  - perl-XML-SAX-Base 
   - perl-XML-SAX-Expat 
   - perl-XML-SAX-ExpatXS 
   - perl-XML-SAX-Writer 
@@ -19870,7 +19837,6 @@ unsorted:
   - perl-XML-Stream 
   - perl-XML-Structured 
   - perl-XML-Twig 
-  - perl-XML-Writer 
   - perl-XML-Writer-String 
   - perl-XML-XPath 
   - perl-XML-XPathEngine 
@@ -19905,7 +19871,6 @@ unsorted:
   - perl-genders 
   - perl-homedir 
   - perl-indirect 
-  - perl-ldap 
   - perl-lib-relative 
   - perl-libconfigfile 
   - perl-libintl-perl 
@@ -19920,7 +19885,6 @@ unsorted:
   - perl-obexftp 
   - perl-pcsc 
   - perl-prefork 
-  - perl-razor-agents 
   - perl-rrdtool 
   - perl-slurm: [x86_64] 
   - perl-solv 
@@ -30775,7 +30739,6 @@ unsorted:
   - rds-tools-devel 
   - re-devel 
   - re2-devel 
-  - re2c 
   - read-edid 
   - read-only-root-fs-volatile 
   - readline-devel 
@@ -32047,8 +32010,6 @@ unsorted:
   - spack-man 
   - spack-recipes 
   - spamass-milter 
-  - spamassassin 
-  - spamassassin-spamc 
   - spandsp-devel 
   - spandsp-doc 
   - sparse 
@@ -41970,7 +41931,6 @@ unsorted:
   - xclass 
   - xclass-devel 
   - xclipboard 
-  - xclock 
   - xcm 
   - xcmsdb 
   - xcolors 
@@ -41983,7 +41943,6 @@ unsorted:
   - xdbedizzy 
   - xdg-desktop-portal-devel 
   - xdg-desktop-portal-wlr 
-  - xdg-menu 
   - xdg-utils 
   - xdiskusage 
   - xditview 
@@ -42331,10 +42290,6 @@ unsorted:
   - xrootd-server-libs 
   - xsane 
   - xscope 
-  - xscreensaver 
-  - xscreensaver-data 
-  - xscreensaver-data-extra 
-  - xscreensaver-lang 
   - xsd 
   - xsd-doc 
   - xselection 
@@ -42446,9 +42401,7 @@ unsorted:
   - yast2-rear 
   - yast2-registration: [x86_64] 
   - yast2-rmt 
-  - yast2-samba-client 
   - yast2-samba-provision 
-  - yast2-samba-server 
   - yast2-schema-collection 
   - yast2-slide-show 
   - yast2-support 
