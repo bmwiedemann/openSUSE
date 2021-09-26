@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 26 13:01:03 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.7.2
+  * fix(PlayListItem): set correct height
+  * GIT_SILENT made messages (after extraction)
+  * fix: make mouse action filtering case insensitive
+  * fix: change how cursor is hidden in fullscreen
+  * Delete FUNDING.yml
+  * Update README.md
+  * Settings: dont open window at startup
+
+-------------------------------------------------------------------
 Mon Sep 13 14:50:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.7.1
