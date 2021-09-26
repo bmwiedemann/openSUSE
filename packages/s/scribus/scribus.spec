@@ -28,6 +28,9 @@ URL:            https://www.scribus.net/
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-Use-new-hb-subset-api-with-harfbuzz-2.9.0-in-order-t.patch
+Patch2:         0002-16635-Replace-hb_subset-removed-in-harfbuzz-3.0-by-h.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix
@@ -98,12 +101,9 @@ Group:          Documentation/HTML
 This package provides the documentation for Scribus.
 
 %prep
-%setup -q
+%autosetup -p1
 # W: wrong-script-end-of-line-encoding
-# also required for cherry-picked patches
 find . -type f \( -iname \*.py -o -iname \*.cpp -o -iname \*.h \) -exec dos2unix {} \;
-
-%autopatch -p1
 
 %build
 # Don't use the %%cmake macro, it causes crashes when starting scribus

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 24 09:13:39 UTC 2021 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Add patches to fix build with harfbuzz 3.0.0:
+  * 0001-Use-new-hb-subset-api-with-harfbuzz-2.9.0-in-order-t.patch
+  * 0002-16635-Replace-hb_subset-removed-in-harfbuzz-3.0-by-h.patch
+- Run dos2unix after applying patches
+
+-------------------------------------------------------------------
 Mon Apr 26 09:23:12 UTC 2021 - Wolfgang Bauer <wbauer@tmo.at>
 
 - Update to 1.5.7
