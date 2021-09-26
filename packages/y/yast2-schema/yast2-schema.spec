@@ -17,7 +17,7 @@
 
 
 Name:           yast2-schema
-Version:        4.4.2
+Version:        4.4.3
 Release:        0
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -34,9 +34,8 @@ BuildRequires:  yast2-devtools
 # All packages providing RNG files for AutoYaST
 # in /usr/share/YaST2/schema/autoyast/rng/*.rng
 
-# update <ask> section: add 'static_text' as a possible value for the 'ask/type' element
-# and extend 'script' and 'default_value_script' definitions
-BuildRequires:  autoyast2 >= 4.4.4
+# add 'hostname' element to the rules.xml schema
+BuildRequires:  autoyast2 >= 4.4.16
 BuildRequires:  yast2
 # add_on_products and add_on_others types
 BuildRequires:  yast2-add-on >= 4.3.3

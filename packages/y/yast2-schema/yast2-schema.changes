@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 21 12:03:42 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the "hostname" element to the rules schema (bsc#1190696).
+- 4.4.3
+
+-------------------------------------------------------------------
 Tue May 11 11:35:36 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Consider 'static_text' as a valid value for 'ask/type' elements
