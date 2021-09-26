@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 15 15:37:55 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 91.1.1
+  * Menu item for disabling subject encryption for a single message added
+  * Printing messages that are not currently displayed is no longer
+    supported, including printing multiple messages at once
+  * for bugfixes see
+    https://www.thunderbird.net/en-US/thunderbird/91.1.1/releasenotes
+- MOZ_ENABLE_WAYLAND env variable now overrides automatic detection
+  if already set before startup
+
+-------------------------------------------------------------------
 Thu Sep  2 07:03:59 UTC 2021 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 91.1.0
