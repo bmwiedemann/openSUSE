@@ -1,0 +1,21 @@
+From d34581b83f75e12e2c021577aa2523eea8a9b590 Mon Sep 17 00:00:00 2001
+From: Anthony Sottile <asottile@umich.edu>
+Date: Sun, 15 Aug 2021 18:47:16 -0400
+Subject: [PATCH] test using python3.10
+
+---
+ .github/workflows/main.yml             |  3 +++
+ pytest.ini                             |  4 +++-
+ tests/integration/test_main.py         |  8 ++++++--
+ tests/unit/test_plugin_type_manager.py | 21 +++++++--------------
+ 4 files changed, 19 insertions(+), 17 deletions(-)
+
+Index: flake8-3.9.2/pytest.ini
+===================================================================
+--- flake8-3.9.2.orig/pytest.ini
++++ flake8-3.9.2/pytest.ini
+@@ -8,3 +8,4 @@ filterwarnings =
+     # python3 raises this when importing setuptools
+     ignore:the imp module is deprecated in favour of importlib.*:PendingDeprecationWarning
+     ignore:the imp module is deprecated in favour of importlib.*:DeprecationWarning
++    ignore:SelectableGroups:DeprecationWarning

@@ -26,6 +26,7 @@ License:        MIT
 URL:            https://gitlab.com/pycqa/flake8
 Source:         https://files.pythonhosted.org/packages/source/f/flake8/flake8-%{version}.tar.gz
 Patch0:         fix-mock-patch-with-python3.4.patch
+Patch1:         ignore-selectable-groups-warning.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
