@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 20 13:35:30 UTC 2021 - FSchreiner@suse.com
+
+- Update to version 0.10.28.1632141620.a8837d3:
+  * fix missing "checkout" when running in osc
+  * fix breakage on version detection
+  * change locale
+
+-------------------------------------------------------------------
 Wed Jul 14 09:21:11 UTC 2021 - FSchreiner@suse.com
 
 - Update to version 0.10.27.1626072657.0fb7a03:
