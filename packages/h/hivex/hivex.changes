@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 26 06:06:06 UTC 2021 - ohering@suse.de
+
+- move all ocaml libraries to devel package to align with our
+  OCaml packaging
+
+-------------------------------------------------------------------
 Fri Aug  6 11:24:54 MDT 2021 - carnold@suse.com
 
 - bsc#1189060 - VUL-0: CVE-2021-3622: hivex: hivex: stack overflow

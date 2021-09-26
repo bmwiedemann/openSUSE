@@ -101,7 +101,7 @@ Hivex is a Windows Registry Hive extraction library.
 
 %package -n ocaml-hivex-devel
 Summary:        OCAML bindings development files for libhivex
-Requires:       hivex-devel = %{version}
+Requires:       %{name}-devel = %{version}
 Requires:       ocaml-hivex = %{version}
 
 %description -n ocaml-hivex-devel
@@ -159,6 +159,7 @@ touch %{name}.lang
 %{_libdir}/*.so
 
 %files -n libhivex0
+%license LICENSE
 %{_libdir}/*.so.*
 
 %if %{with python_bindings}
@@ -176,16 +177,11 @@ touch %{name}.lang
 
 %if %{with ocaml_bindings}
 %files -n ocaml-hivex
-%dir %{_libdir}/ocaml/hivex
-%{_libdir}/ocaml/hivex/META
-%{_libdir}/ocaml/hivex/hivex.cmi
-%{_libdir}/ocaml/hivex/mlhivex.cma
-%{_libdir}/ocaml/stublibs/*hivex.so*
+%license LICENSE
 
 %files -n ocaml-hivex-devel
-%{_libdir}/ocaml/hivex/*hivex.a
-%{_libdir}/ocaml/hivex/*hivex.cmx*
-%{_libdir}/ocaml/hivex/hivex.mli
+%{_libdir}/ocaml/hivex
+%{_libdir}/ocaml/stublibs
 %endif
 
 %files lang -f %{name}.lang
