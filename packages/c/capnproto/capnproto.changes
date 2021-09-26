@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 26 11:50:17 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 0.9.1
+  * only import fiber related headers when fibers are enabled
+  * use more accurate names for tests
+  * Fix copy-pasto resulting in uninitialized use of kind
+  * Fix capnp/capnpc --version when built using CMake
+  * Fix feed.xml
+
+-------------------------------------------------------------------
 Sun Aug 15 08:57:13 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.9
