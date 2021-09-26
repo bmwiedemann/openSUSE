@@ -1,7 +1,7 @@
 #
 # spec file for package hsqldb
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,6 +46,7 @@ Patch0:         %{name}-apidocs.patch
 Patch1:         %{name}-cmdline.patch
 # Jdk10's javadoc ends up in error when a remote url cannot be reached
 Patch2:         hsqldb-2.4.1-javadoc10.patch
+Patch3:         harden_hsqldb.service.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  glassfish-servlet-api
@@ -129,6 +130,7 @@ sed -i -e 's|doc/apidocs|%{_javadocdir}/%{name}|g' index.html
 %patch0 -p1
 %patch1 -p1
 %patch2 -p2
+%patch3 -p2
 
 %build
 pushd build

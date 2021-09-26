@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 22 08:34:22 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_hsqldb.service.patch
+
+-------------------------------------------------------------------
 Mon Dec 14 19:30:22 UTC 2020 - Pedro Monreal <pmonreal@suse.com>
 
 - Fix service section to use the libexec directory [bsc#1179973]
