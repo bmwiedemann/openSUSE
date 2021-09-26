@@ -48,4 +48,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>912783</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>61ce5147adbd02e9a5b4c1c52572a45f</srcmd5>
+    <version>0.6.1</version>
+    <time>1632685697</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.1:
+  - swtpm:
+    - Clear keys from stack and heap
+  - swtpm-localca:
+    - Add missing else branch for pkcs11 and PIN
+  - swtpm_setup:
+    - Initialize Gerror and free it
+    - Replace '\\s' in regex with [[:space:]] to fix cygwin
+  - tests:
+    - Kill tpm2-abrmd with SIGKILL rather SIGTERM
+  - build-sys:
+    - Use -DOPENSSL_SUPPRESS_DEPRECATED to suppress deprecation warnings (OSSL 3)
+    - Enable configuring with CFLAGS and passing additional CFLAGS on build</comment>
+    <requestid>920852</requestid>
+  </revision>
 </revisionlist>

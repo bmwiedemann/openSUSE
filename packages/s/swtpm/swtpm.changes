@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 22 09:33:29 UTC 2021 - Marcus Meissner <meissner@suse.com>
+
+- Update to version 0.6.1:
+  - swtpm:
+    - Clear keys from stack and heap
+  - swtpm-localca:
+    - Add missing else branch for pkcs11 and PIN
+  - swtpm_setup:
+    - Initialize Gerror and free it
+    - Replace '\\s' in regex with [[:space:]] to fix cygwin
+  - tests:
+    - Kill tpm2-abrmd with SIGKILL rather SIGTERM
+  - build-sys:
+    - Use -DOPENSSL_SUPPRESS_DEPRECATED to suppress deprecation warnings (OSSL 3)
+    - Enable configuring with CFLAGS and passing additional CFLAGS on build
+
+-------------------------------------------------------------------
 Sat Aug  7 15:02:40 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>
 
 - Update to version 0.6.0:

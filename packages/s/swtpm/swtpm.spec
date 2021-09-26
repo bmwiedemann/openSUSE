@@ -24,7 +24,7 @@
 %define modulename2 swtpm_svirt
 %define modulename3 swtpmcuse
 Name:           swtpm
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Software TPM emulator
 License:        BSD-3-Clause
