@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 19 10:02:32 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.2
+  Fixed
+  * Crashes on destruction. (#242)
+  * Memory leaks caught by ASAN. (#243)
+  Changed
+  * Use system font provided by QGuiApplication as default for
+    text tool.
+
+-------------------------------------------------------------------
 Sat Jun  5 12:34:43 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.5.1

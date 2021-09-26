@@ -19,7 +19,7 @@
 %define sover   0
 %define libname libkImageAnnotator%{sover}
 Name:           kImageAnnotator
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        Tool for annotating images
 License:        GPL-2.0-or-later
