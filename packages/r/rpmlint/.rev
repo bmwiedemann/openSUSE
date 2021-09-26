@@ -3232,4 +3232,34 @@ oddjob-gpupdate isn't blocked)</comment>
     <comment>- Skip .cargo-checksum.json files in hidden-file-or-dir.</comment>
     <requestid>917128</requestid>
   </revision>
+  <revision rev="360" vrev="1">
+    <srcmd5>5c085a58b78ebc14d4325771d3ccbe16</srcmd5>
+    <version>2.1+git20210924.ad0cf53</version>
+    <time>1632685709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.1+git20210924.ad0cf53
+  * Copied additional systemd whitelistings to match systemd-mini 
+
+- Update to version 2.1+git20210923.5ff1403 
+  * whitelist pam_systemd.so for systemd-mini
+
+- Update to version 2.1+git20210923.a41591b 
+  * whitelist pam_systemd_home.so for systemd-experimental
+
+- Update to version 2.1+git20210922.d20a3f1
+  * Added mechanism to add exceptions for %ghost'd files
+  * Remove deprecated entries for world-writable entries
+  * Remove malcontent whitelisting
+  * Remove storeBackup cron whitelisting
+  * Some path and package name fixes
+
+- Synchronize security whitelistings with whitelists from old rpmlint 1. This
+  should fix some package build errors like in sssd.
+- Use correct camel case package names for packages like NetworkManager in
+  whitelists. This should fix some package build errors.
+- Some general cleanup of whitelists.
+
+- Bump to tip (various security fixes).</comment>
+    <requestid>921230</requestid>
+  </revision>
 </revisionlist>
