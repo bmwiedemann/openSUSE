@@ -16,19 +16,19 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-photutils
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        An Astropy package for photometry
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Astronomy
 URL:            https://github.com/astropy/photutils
 Source:         https://files.pythonhosted.org/packages/source/p/photutils/photutils-%{version}.tar.gz
-BuildRequires:  %{python_module Cython >= 0.29.14}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module Cython >= 0.29.22}
+BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module extension-helpers}
 BuildRequires:  %{python_module numpy-devel >= 1.17}
 BuildRequires:  %{python_module setuptools_scm}
@@ -38,16 +38,17 @@ BuildRequires:  python-rpm-macros
 Requires:       python >= 3.7
 Requires:       python-astropy >= 4.0
 Requires:       python-numpy >= 1.17
-Requires:       python-scipy >= 0.19
 Recommends:     python-gwcs >= 0.12
 Recommends:     python-matplotlib >= 2.2
 Recommends:     python-scikit-image >= 0.14.2
-Recommends:     python-scikit-learn >= 0.19
+Recommends:     python-scikit-learn
+Recommends:     python-scipy >= 1.6.0
 # SECTION test requirements
 BuildRequires:  %{python_module astropy >= 4.0}
 BuildRequires:  %{python_module pytest-astropy >= 0.7}
 BuildRequires:  %{python_module scikit-image >= 0.14.2}
-BuildRequires:  %{python_module scikit-learn >= 0.19}
+BuildRequires:  %{python_module scikit-learn}
+BuildRequires:  %{python_module scipy >= 1.6.0}
 BuildRequires:  python3-dbm
 # /SECTION
 %python_subpackages
@@ -80,6 +81,6 @@ $python -B -c "import photutils, sys; sys.exit(photutils.test(args=\"-v\"))"
 %doc CHANGES.rst CITATION.rst README.rst
 %license LICENSE.rst
 %{python_sitearch}/photutils
-%{python_sitearch}/photutils-%{version}-py*.egg-info
+%{python_sitearch}/photutils-%{version}*-info
 
 %changelog

@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Sun Sep 26 14:11:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.2.0
+  * The minimum required scipy version is 1.6.0 [#1239]
+  photutils.aperture
+  * Added a mask keyword to the area_overlap method. [#1241]
+  photutils.background
+  * Improved the performance of Background2D by up to 10-50% when
+    the optional bottleneck package is installed. [#1232]
+  * Added a masked keyword to the background classes
+    MeanBackground, MedianBackground, ModeEstimatorBackground,
+    MMMBackground, SExtractorBackground,
+    BiweightLocationBackground, StdBackgroundRMS,
+    MADStdBackgroundRMS, and BiweightScaleBackgroundRMS. [#1232]
+  * Enable all background classes to work with Quantity inputs.
+    [#1233]
+  * Added a markersize keyword to the Background2D method
+    plot_meshes. [#1234]
+  * Added __repr__ methods to all background classes. [#1236]
+  * Added a grid_mode keyword to BkgZoomInterpolator. [#1239]
+  photutils.detection
+  * Added a xycoords keyword to DAOStarFinder and IRAFStarFinder.
+    [#1248]
+  photutils.psf
+  * Enabled the reuse of an output table from BasicPSFPhotometry
+    and its subclasses as an initial guess for another photometry
+    run. [#1251]
+  * Added the ability to skip the group_maker step by inputing an
+    initial guess table with a group_id column. [#1251]
+  photutils.aperture
+  * Fixed a bug when converting between pixel and sky apertures
+    with a gwcs object. [#1221]
+  photutils.background
+  * Fixed an issue where Background2D could fail when using the
+    'pad' edge method. [#1227]
+  photutils.detection
+  * Fixed the DAOStarFinder import deprecation message. [#1195]
+  photutils.morphology
+  * Fixed an issue in data_properties where a scalar background
+    input would raise an error. [#1198]
+  photutils.psf
+  * Fixed an issue in prepare_psf_model when xname or yname was
+    None where the model offsets were applied in the wrong
+    direction, resulting in the initial photometry guesses not
+    being improved by the fit. [#1199]
+  photutils.segmentation
+  * Fixed an issue in SourceCatalog where the user-input mask was
+    ignored when apermask_method='correct' for Kron-related
+    calculations. [#1210]
+  * Fixed an issue in SourceCatalog where the segment array could
+    incorrectly have units. [#1220]
+  photutils.utils
+  * Fixed an issue in ShepardIDWInterpolator to allow its
+    initialization with scalar data values and coordinate arrays
+    having more than one dimension. [#1226]
+  API changes
+  photutils.aperture
+  * The ApertureMask.get_values() function now returns an empty
+    array if there is no overlap with the data. [#1212]
+  * Removed the deprecated BoundingBox.slices and PixelAperture.
+    bounding_boxes attributes. [#1215]
+  photutils.background
+  * Invalid data values (i.e., NaN or inf) are now automatically
+    masked in Background2D. [#1232]
+  * The background classes MeanBackground, MedianBackground,
+    ModeEstimatorBackground, MMMBackground, SExtractorBackground,
+    BiweightLocationBackground, StdBackgroundRMS,
+    MADStdBackgroundRMS, and BiweightScaleBackgroundRMS now return
+    by default a numpy.ndarray with np.nan values representing
+    masked pixels instead of a masked array. A masked array can be
+    returned by setting masked=True. [#1232]
+  * Deprecated the Background2D attributes background_mesh_ma and
+    background_rms_mesh_ma. They have been renamed to
+    background_mesh_masked and background_rms_mesh_masked. [#1232]
+  * By default, BkgZoomInterpolator now uses grid_mode=True. For
+    zooming 2D images, this keyword should be set to True, which
+    makes the interpolator’s behavior consistent with scipy.
+    ndimage.map_coordinates, skimage.transform.resize, and OpenCV
+    (cv2.resize). If backwards-compatiblity is needed with older
+    Photutils’ versions, set grid_mode=False. [#1239]
+  photutils.centroid
+  * Deprecated the gaussian1d_moments and centroid_epsf functions.
+    [#1240]
+  photutils.datasets
+  * Removed the deprecated random_state keyword in the
+    apply_poisson_noise, make_noise_image,
+    make_random_models_table, and make_random_gaussians_table
+    functions. [#1244]
+  * make_random_models_table and make_random_gaussians_table now
+    return an astropy QTable with version metadata. [#1247]
+  photutils.detection
+  * DAOStarFinder, IRAFStarFinder, and find_peaks now return an
+    astropy QTable with version metadata. [#1247]
+  * The StarFinder label column was renamed to id for consistency
+    with the other star finder classes. [#1254]
+  photutils.isophote
+  * The Isophote to_table method nows return an astropy QTable
+    with version metadata. [#1247]
+  photutils.psf
+  * BasicPSFPhotometry, IterativelySubtractedPSFPhotometry, and
+    DAOPhotPSFPhotometry now return an astropy QTable with version
+    metadata. [#1247]
+  photutils.segmentation
+  * Deprecated the filter_kernel keyword in the detect_sources,
+    deblend_sources, and make_source_mask functions. It has been
+    renamed to simply kernel for consistency with SourceCatalog.
+    [#1242]
+  * Removed the deprecated random_state keyword in the make_cmap
+    method. [#1244]
+  * The SourceCatalog to_table method nows return an astropy
+    QTable with version metadata. [#1247]
+  photutils.utils
+  * Removed the deprecated check_random_state function. [#1244]
+  * Removed the deprecated random_state keyword in the
+    make_random_cmap function. [#1244]
+
+-------------------------------------------------------------------
 Sat Mar 20 18:02:02 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update ot Version 1.1.0
