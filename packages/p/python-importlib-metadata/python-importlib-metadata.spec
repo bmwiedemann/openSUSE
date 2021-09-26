@@ -1,5 +1,5 @@
 #
-# spec file for package python-importlib-metadata-test
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -24,10 +24,10 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define skip_python2 1
 Name:           python-importlib-metadata%{psuffix}
-Version:        3.7.2
+Version:        4.8.1
 Release:        0
 Summary:        Read metadata from Python packages
 License:        Apache-2.0
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module base >= 3.6}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module zipp >= 0.5}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-zipp >= 0.5
@@ -46,35 +47,21 @@ Requires:       python-typing_extensions >= 3.6.4
 Provides:       python-importlib_metadata = %{version}
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module importlib_resources >= 1.3}
+BuildRequires:  %{python_module importlib_resources >= 1.3 if %python-base < 3.9}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pep517}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyfakefs}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
+BuildRequires:  %{python_module typing_extensions >= 3.6.4 if %python-base < 3.8}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module zipp >= 0.5}
-BuildRequires:  (python3-typing_extensions  >= 3.6.4 if python3-base < 3.8)
-BuildRequires:  (python36-typing_extensions  >= 3.6.4 if python36-base)
 %endif
 %python_subpackages
 
 %description
-importlib_metadata is a library which provides an API for accessing an installed
-package’s metadata (see PEP 566), such as its entry points or its top-level
-name. This functionality intends to replace most uses of pkg_resources entry
-point API and metadata API. Along with importlib.resources in Python 3.7 and
-newer (backported as importlib_resources for older versions of Python), this can
-eliminate the need to use the older and less efficient pkg_resources package.
-
-importlib_metadata is a backport of Python 3.8’s standard library
-importlib.metadata module for Python 2.7, and 3.4 through 3.7. Users of Python
-3.8 and beyond are encouraged to use the standard library module. When imported
-on Python 3.8 and later, importlib_metadata replaces the DistributionFinder
-behavior from the stdlib, but leaves the API in tact. Developers looking for
-detailed API descriptions should refer to the Python 3.8 standard library
-documentation.
+This package supplies third-party access to the functionality of
+importlib.metadata including improvements added to subsequent Python versions.
 
 %prep
 %setup -q -n importlib_metadata-%{version}
@@ -92,7 +79,8 @@ sed -i -e 's/norecursedirs.*/& importlib_metadata/' pytest.ini
 
 %check
 %if %{with test}
-%pytest
+# no pytest_perf available
+%pytest --ignore exercises.py
 %endif
 
 %if !%{with test}

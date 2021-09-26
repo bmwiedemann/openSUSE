@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Mon Sep 20 11:37:47 UTC 2021 - Ben Greiner <code@bnavigator.de>
+  
+- Update to v4.8.1 
+   * #348: Restored support for EntryPoint access by item,
+     deprecating support in the process. Users are advised to use
+     direct member access instead of item-based access:
+      - ep[0] -> ep.name
+      - ep[1] -> ep.value
+      - ep[2] -> ep.group
+      - ep[:] -> ep.name, ep.value, ep.group
+- Release v4.8.0
+  * #337: Rewrote EntryPoint as a simple class, still immutable
+    and still with the attributes, but without any expectation for
+    namedtuple functionality such as _asdict.
+- Release v4.7.1
+  * #344: Fixed regression in packages_distributions when neither
+    top-level.txt nor a files manifest is present.
+- Release v4.7.0
+  * #330: In packages_distributions, now infer top-level names
+    from .files() when a top-level.txt (Setuptools-specific
+    metadata) is not present.
+- Release v4.6.4
+  * #334: Correct SimplePath protocol to match pathlib protocol 
+    for __truediv__.
+- Release v4.6.3
+  * Moved workaround for #327 to _compat module.
+- Release v4.6.2
+  * bpo-44784: Avoid errors in test suite when DeprecationWarnings 
+    are treated as errors.
+- Release v4.6.1
+  * #327: Deprecation warnings now honor call stack variance on 
+    PyPy.
+- Release v4.6.0
+  * #326: Performance tests now rely on pytest-perf. To disable 
+    these tests, which require network access and a git checkout, 
+    pass -p no:perf to pytest.
+- Release v4.5.0
+  * #319: Remove SelectableGroups deprecation exception for flake8.
+- Release v4.4.0
+  * #300: Restore compatibility in the result from Distribution.
+    entry_points (EntryPoints) to honor expectations in older 
+    implementations and issuing deprecation warnings for these 
+    cases:
+  * EntryPoints objects are once again mutable, allowing for sort
+    () and other list-based mutation operations. Avoid deprecation 
+    warnings by casting to a mutable sequence (e.g. list(dist.
+    entry_points).sort()).
+  * EntryPoints results once again allow for access by index. To 
+    avoid deprecation warnings, cast the result to a Sequence 
+    first (e.g. tuple(dist.entry_points)[0]).
+- Release v4.3.1
+  * #320: Fix issue where normalized name for eggs was incorrectly 
+    solicited, leading to metadata being unavailable for eggs.
+- Release v4.3.0
+  * #317: De-duplication of distributions no longer requires 
+    loading the full metadata for PathDistribution objects, entry 
+    point loading performance by ~10x.
+- Release v4.2.0
+  * Prefer f-strings to .format calls.
+- Release v4.1.0
+  * #312: Add support for metadata 2.2 (Dynamic field).
+  * #315: Add SimplePath protocol for interface clarity in 
+    PathDistribution.
+- Release v4.0.1
+  * #306: Clearer guidance about compatibility in readme.
+- Release v4.0.0
+  * #304: PackageMetadata as returned by metadata() and 
+    Distribution.metadata() now provides normalized metadata 
+    honoring PEP 566:
+  * If a long description is provided in the payload of the RFC 
+    822 value, it can be retrieved as the Description field.
+  * Any multi-line values in the metadata will be returned as such.
+  * For any multi-line values, line continuation characters are 
+    removed. This backward-incompatible change means that any 
+    projects relying on the RFC 822 line continuation characters 
+    being present must be tolerant to them having been removed.
+  * Add a json property that provides the metadata converted to a 
+    JSON-compatible form per PEP 566.
+- Release v3.10.1
+  * Minor tweaks from CPython.
+- Release v3.10.0
+  * #295: Internal refactoring to unify section parsing logic.
+- Release v3.9.1
+  * #296: Exclude 'prepare' package.
+  * #297: Fix ValueError when entry points contains comments.
+- Release v3.9.0
+  * Use of Mapping (dict) interfaces on SelectableGroups is now 
+    flagged as deprecated. Instead, users are advised to use the 
+    select interface for future compatibility.
+  * Suppress the warning with this filter: ignore:SelectableGroups 
+    dict interface.  
+  * Or with this invocation in the Python environment: warnings.
+    filterwarnings('ignore', 'SelectableGroups dict interface').
+  * Preferably, switch to the select interface introduced in
+    3.7.0. See the entry points documentation and changelog for 
+    the 3.6 release below for more detail.
+  * For some use-cases, especially those that rely on importlib.
+    metadata in Python 3.8 and 3.9 or those relying on older 
+    importlib_metadata (especially on Python 3.5 and earlier), 
+    backports.entry_points_selectable was created to ease the 
+    transition. Please have a look at that project if simply 
+    relying on importlib_metadata 3.6+ is not straightforward. 
+    Background in #298.
+  * #283: Entry point parsing no longer relies on ConfigParser and 
+    instead uses a custom, one-pass parser to load the config, 
+    resulting in a ~20% performance improvement when loading entry 
+    points.
+- Release v3.8.2
+  * #293: Re-enabled lazy evaluation of path lookup through a 
+    FreezableDefaultDict.
+- Release v3.8.1
+  * #293: Workaround for error in distribution search.
+- Release v3.8.0
+  * #290: Add mtime-based caching for FastPath and its lookups, 
+    dramatically increasing performance for repeated distribution 
+    lookups.
+- Release v3.7.3
+  * Docs enhancements and cleanup following review in GH-24782. 
+
+-------------------------------------------------------------------
 Fri Mar 12 21:29:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.2:

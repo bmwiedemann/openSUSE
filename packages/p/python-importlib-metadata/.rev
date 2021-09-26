@@ -87,4 +87,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
     deprecation.</comment>
     <requestid>888422</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3950d447922cc9e8b41144276b137d99</srcmd5>
+    <version>4.8.1</version>
+    <time>1632685712</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920613</requestid>
+  </revision>
 </revisionlist>
