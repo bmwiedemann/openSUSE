@@ -24,6 +24,7 @@ License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://github.com/iputils/iputils
 Source0:        https://github.com/iputils/iputils/archive/%{version}.tar.gz
+Patch0:	harden_rdisc.service.patch
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  docbook_5
 BuildRequires:  iproute2

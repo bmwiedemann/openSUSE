@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:49:53 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_rdisc.service.patch
+
+-------------------------------------------------------------------
 Thu Jul 22 16:18:11 UTC 2021 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 20210722
