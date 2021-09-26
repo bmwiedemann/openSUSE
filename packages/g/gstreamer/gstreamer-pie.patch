@@ -1,6 +1,7 @@
-diff -urp gstreamer-1.16.0.orig/libs/gst/helpers/meson.build gstreamer-1.16.0/libs/gst/helpers/meson.build
---- gstreamer-1.16.0.orig/libs/gst/helpers/meson.build	2019-01-26 19:10:08.000000000 -0600
-+++ gstreamer-1.16.0/libs/gst/helpers/meson.build	2019-06-12 15:06:33.120486636 -0500
+Index: gstreamer-1.18.5/libs/gst/helpers/meson.build
+===================================================================
+--- gstreamer-1.18.5.orig/libs/gst/helpers/meson.build
++++ gstreamer-1.18.5/libs/gst/helpers/meson.build
 @@ -5,6 +5,7 @@ executable('gst-plugin-scanner',
    dependencies : [gobject_dep, gmodule_dep, glib_dep, mathlib, gst_dep],
    install_dir : helpers_install_dir,
@@ -17,7 +18,7 @@ diff -urp gstreamer-1.16.0.orig/libs/gst/helpers/meson.build gstreamer-1.16.0/li
    )
  endif
  
-@@ -118,7 +120,8 @@ if have_ptp
+@@ -114,7 +116,8 @@ if have_ptp
      include_directories : [configinc, libsinc],
      dependencies : [gio_dep, gobject_dep, glib_dep, mathlib, gst_dep, cap_dep],
      install_dir : helpers_install_dir,

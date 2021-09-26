@@ -37,11 +37,8 @@ Patch2:         gstreamer-pie.patch
 
 BuildRequires:  bison >= 2.4
 BuildRequires:  check-devel
-BuildRequires:  fdupes
 BuildRequires:  flex >= 2.5.31
 BuildRequires:  gobject-introspection-devel >= 1.31.1
-BuildRequires:  gtk-doc >= 1.12
-BuildRequires:  hotdoc
 BuildRequires:  libcap-devel
 BuildRequires:  libcap-progs
 BuildRequires:  meson >= 0.47.0
@@ -103,19 +100,6 @@ installing new plug-ins.
 
 This package provides the GObject Introspection bindings for GStreamer.
 
-%package doc
-Summary:        GStreamer Streaming-Media Framework Plug-Ins
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description doc
-GStreamer is a streaming media framework, based on graphs of filters
-which operate on media data. Applications using this library can do
-anything from real-time sound processing to playing videos, and just
-about anything else media-related.  Its plugin-based architecture means
-that new data types or processing capabilities can be added simply by
-installing new plug-ins.
-
 %package utils
 Summary:        Streaming-Media Framework Runtime
 # Generic name, never used in SuSE:
@@ -148,9 +132,7 @@ to develop applications that require these.
 %lang_package
 
 %prep
-%setup -q -n gstreamer-%{version}
-%patch1 -p1
-%patch2 -p1
+%autosetup -p1
 sed -i -e '1{s,^#!/usr/bin/env python3,#!%{_bindir}/python3,}' docs/gst-plugins-doc-cache-generator.py
 
 %build
@@ -164,7 +146,7 @@ sed -i "s/gst-plugin-scanner/gst-plugin-scanner-%{_target_cpu}/" meson.build
 	-Dpackage-origin='http://download.opensuse.org' \
 	-Dintrospection=enabled \
 	-Dbenchmarks=disabled \
-	-Ddoc=enabled \
+	-Ddoc=disabled \
 	-Dexamples=disabled \
 	-Ddbghelp=disabled \
 %ifnarch %{libunwind_archs}
@@ -181,7 +163,6 @@ mkdir -p %{buildroot}%{_datadir}/gstreamer-%{gst_branch}/presets
 # Install the rpm macros
 install -m644 -D %{SOURCE1} %{buildroot}%{_fileattrsdir}/gstreamer.attr
 install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
-%fdupes %{buildroot}%{_datadir}/gtk-doc
 
 %verifyscript
 %verify_permissions -e %{_libexecdir}/gstreamer-%{gst_branch}/gst-ptp-helper
@@ -222,6 +203,7 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_mandir}/man?/*-%{gst_branch}*%{ext_man}
 
 %files devel
+%doc AUTHORS ChangeLog NEWS README RELEASE
 %{_datadir}/aclocal/*.m4
 # Own these directories to avoid build requirement on gdb
 # only for directories ownership
@@ -240,10 +222,6 @@ install -m755 -D %{SOURCE2} %{buildroot}%{_rpmconfigdir}/gstreamer-provides
 %{_rpmconfigdir}/gstreamer-provides
 %{_fileattrsdir}/gstreamer.attr
 %{_datadir}/gir-1.0/*.gir
-
-%files doc
-%doc AUTHORS ChangeLog NEWS README RELEASE
-#%%{_datadir}/gtk-doc/html/*
 
 %files lang -f %{name}-%{gst_branch}.lang
 
