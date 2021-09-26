@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:07:55 UTC 2021 - Scott Bradnick <sbradnick@suse.com>
+
+- Adding check for WSL so that 'systemd start syslog.socket' isn't run
+  for every run of YaST2.Firstboot (related to bsc#1190789).
+- 4.4.5
+
+-------------------------------------------------------------------
 Tue Aug 10 16:29:28 UTC 2021 - José Iván López González <jlopez@suse.com>
 
 - Move the home directory when the user login is modified in the
