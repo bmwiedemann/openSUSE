@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 20 08:47:19 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.0 
+  * This release introduces support for touchpad gestures that will
+    be available as part of X server 21.1. Additionally high-resolution
+    scrolling data is now acquired from libinput if available and sent
+    downstream to X server. The default scroll distance has been bumped
+    to 120 in the process, but this should not affect correctly written
+    clients.
+
+-------------------------------------------------------------------
 Wed Jun 23 23:09:49 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.0

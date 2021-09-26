@@ -17,14 +17,14 @@
 
 
 Name:           xf86-input-libinput
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Libinput driver for the Xorg X server
 License:        MIT
 Group:          System/X11/Servers/XF86_4
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2
-Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
+#Source1:        https://xorg.freedesktop.org/releases/individual/driver/%{name}-%{version}.tar.bz2.sig
 Source2:        %{name}.keyring
 Patch0:         n_enable-tapping.patch
 BuildRequires:  pkgconfig

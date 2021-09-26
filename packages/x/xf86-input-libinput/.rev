@@ -425,4 +425,18 @@ In short, do not use this driver for tablets on production workstations yet.</co
     can thus help speeding up or slowing down two-finger/edge scrolling.</comment>
     <requestid>901597</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>1e020d041db27e83ce260962873bd46c</srcmd5>
+    <version>1.2.0</version>
+    <time>1632685709</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0 
+  * This release introduces support for touchpad gestures that will
+    be available as part of X server 21.1. Additionally high-resolution
+    scrolling data is now acquired from libinput if available and sent
+    downstream to X server. The default scroll distance has been bumped
+    to 120 in the process, but this should not affect correctly written
+    clients.</comment>
+    <requestid>920283</requestid>
+  </revision>
 </revisionlist>
