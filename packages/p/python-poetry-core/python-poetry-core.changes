@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 22 09:47:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to 1.0.6
+  * Added support for more hash types gen generating hashes. (#207)
+- Release 1.0.5
+  * Fixed the copy of Package instances which led to file hashes
+    not being available. (#193)
+  * Fixed an issue where unsafe parameters could be passed to git
+    commands. (#203)
+  * Fixed an issue where the wrong git executable could be used on
+    Windows. (#205)
+- Release 1.0.4
+  * Fixed an error in the way python markers with a precision >= 3
+    were handled. (#180)
+  * Fixed an error in the evaluation of in/not in markers (#189)
+
+-------------------------------------------------------------------
 Wed Apr 14 21:43:18 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.0.3
