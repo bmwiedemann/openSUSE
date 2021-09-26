@@ -38,12 +38,9 @@ Patch5:         MR-221-video-anc-add-two-new-CEA-608-caption-formats.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cdparanoia-devel
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  glib2-devel >= 2.40.0
 BuildRequires:  gobject-introspection-devel >= 1.31.1
-BuildRequires:  gtk-doc >= 1.12
-BuildRequires:  hotdoc
 BuildRequires:  libICE-devel
 BuildRequires:  libSM-devel
 BuildRequires:  libXext-devel
@@ -492,17 +489,6 @@ Provides:       gst-plugins-base-devel = %{version}
 This package contains all necessary include files and libraries needed
 to compile and link applications that use gstreamer-plugins-base.
 
-%package doc
-Summary:        Documentation for gstreamer-plugins-base
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-# Generic name, never used in SuSE:
-Provides:       gst-plugins-base-doc = %{version}
-
-%description doc
-This package contains documentation for the gstreamer-plugins-base
-package.
-
 %lang_package
 
 %prep
@@ -514,7 +500,7 @@ export PYTHON=%{_bindir}/python3
 %meson \
 	-Dpackage-name='openSUSE GStreamer-plugins-base package'\
 	-Dpackage-origin='http://download.opensuse.org'\
-	-Ddoc=enabled \
+	-Ddoc=disabled \
 	-Dintrospection=enabled \
 	-Dorc=enabled \
 	-Dexamples=disabled \
@@ -534,7 +520,6 @@ fi
 
 find %{buildroot} -type f -name "*.la" -delete -print
 %find_lang %{_name}-%{gst_branch}
-%fdupes %{buildroot}%{_datadir}/gtk-doc/html/
 
 %post -n libgstallocators-1_0-0 -p /sbin/ldconfig
 %postun -n libgstallocators-1_0-0 -p /sbin/ldconfig
@@ -680,6 +665,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/girepository-1.0/GstVideo-*.typelib
 
 %files devel
+%doc AUTHORS NEWS README RELEASE REQUIREMENTS
 %{_includedir}/gstreamer-%{gst_branch}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
@@ -691,9 +677,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %dir %{_libdir}/gstreamer-%{gst_branch}/include/gst
 %dir %{_libdir}/gstreamer-%{gst_branch}/include/gst/gl
 %{_libdir}/gstreamer-%{gst_branch}/include/gst/gl/gstglconfig.h
-
-%files doc
-%doc AUTHORS NEWS README RELEASE REQUIREMENTS
 
 %files lang -f %{_name}-%{gst_branch}.lang
 

@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 16 09:14:32 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Stop building doc sub-package, we will in the future use
+  upstreams own standalone doc package. Following this: Drop
+  fdupes, gtk-doc and hotdoc BuildRequires, and fdupes call, no
+  longer needed nor usefull.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:48:48 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
-- Remove obsolete translation-update-upstream support (PM-2938).
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
 
 -------------------------------------------------------------------
 Wed Sep 15 08:46:50 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
