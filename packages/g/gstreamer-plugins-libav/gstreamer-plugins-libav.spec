@@ -30,7 +30,6 @@ Source1000:     baselibs.conf
 Patch0:         add-gpl-option.patch
 
 BuildRequires:  gcc-c++
-BuildRequires:  hotdoc
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yasm
@@ -91,19 +90,17 @@ This plugin contains the documentation
 	-Dpackage-name='openSUSE GStreamer-plugins-libav package' \
 	-Dpackage-origin='http://download.opensuse.org' \
         -Dgpl=enabled \
+        -Ddoc=disabled \
 	%{nil}
 
 %meson_build
 
 %install
 %meson_install
-find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license COPYING
-%{_libdir}/gstreamer-%{gst_branch}/libgstlibav.so
-
-%files doc
 %doc AUTHORS NEWS README.md
+%{_libdir}/gstreamer-%{gst_branch}/libgstlibav.so
 
 %changelog
