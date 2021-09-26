@@ -1,5 +1,15 @@
 -------------------------------------------------------------------
-Tue Jul 13 12:20:48 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
+Wed Sep 22 11:02:24 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 2.13.0
+  * add new surface format fourcc XYUV
+  * Fix av1 dec doc page link issue
+  * unify the code styles using the style_unify script
+  * Check the function pointer before using (fixes github issue#536)
+  * update NEWS for 2.13.0
+
+-------------------------------------------------------------------
+Tue Jul 13 12:17:31 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
 
 - update to 2.12.0:
   * add: Report the capability of vaCopy support
@@ -11,7 +21,7 @@ Tue Jul 13 12:20:48 UTC 2021 - Aaron Stern <ukbeast89@protonmail.com>
   * doc: Update log2_tile_column description for vp9enc
   * trace: Correct av1 film grain trace information
   * ci: Fix freebsd build by switching to vmactions/freebsd-vm@v0.1.3
-
+    
 -------------------------------------------------------------------
 Wed Mar 24 09:30:01 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
