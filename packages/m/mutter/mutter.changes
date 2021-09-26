@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 21 20:23:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.5:
+  + Fix monitor screencast scanouts.
+  + Fix middle-click emulation support on X11.
+  + Fixed crashes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep 16 02:03:59 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Wed Aug 18 17:30:34 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.4:

@@ -23,7 +23,7 @@
 %define api_minor 0
 %define libmutter libmutter-%{api_major}-%{api_minor}
 Name:           mutter
-Version:        40.4
+Version:        40.5
 Release:        0
 Summary:        Window and compositing manager based on Clutter
 License:        GPL-2.0-or-later
@@ -48,7 +48,6 @@ BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  xorg-x11-server
 BuildRequires:  xorg-x11-server-wayland
 BuildRequires:  zenity
@@ -141,7 +140,6 @@ applications that want to make use of the mutter library.
 %patch4 -p1
 
 # SLE-only patches and translations.
-translation-update-upstream po mutter
 %if 0%{?sle_version}
 %patch1000 -p1
 %patch1001 -p1

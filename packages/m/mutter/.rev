@@ -1463,4 +1463,16 @@ Possibly fixes boo#1063871, along with the gnome-shell patch for bgo#788607 (for
   + Updated translations. (forwarded request 912941 from iznogood)</comment>
     <requestid>913695</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>ed9b84fba8cc19f4a060650d8ad6cf81</srcmd5>
+    <version>40.5</version>
+    <time>1632685689</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 40.5:
+  + Fix monitor screencast scanouts.
+  + Fix middle-click emulation support on X11.
+  + Fixed crashes.
+  + Updated translations. (forwarded request 920696 from iznogood)</comment>
+    <requestid>920817</requestid>
+  </revision>
 </revisionlist>
