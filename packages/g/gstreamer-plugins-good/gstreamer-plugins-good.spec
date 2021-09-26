@@ -44,7 +44,6 @@ Source99:       baselibs.conf
 BuildRequires:  Mesa-libGLESv2-devel
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc >= 1.12
 BuildRequires:  libICE-devel
 BuildRequires:  libQt5PlatformHeaders-devel
 BuildRequires:  libSM-devel
@@ -124,14 +123,6 @@ anything media-related, from real-time sound processing to playing
 videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
-%package doc
-Summary:        Documentation for gstreamer-plugins-good
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description doc
-This package contains documentation for gstreamer-plugins-good.
-
 %package extra
 Summary:        Complementary plugins for gstreamer-plugins-good
 Group:          Productivity/Multimedia/Other
@@ -201,7 +192,7 @@ fi
 
 %files
 %license COPYING
-%doc NEWS
+%doc AUTHORS README RELEASE REQUIREMENTS NEWS
 %dir %{_datadir}/appdata
 %{_datadir}/appdata/gstreamer-plugins-good.appdata.xml
 %{_datadir}/gstreamer-%{gst_branch}/presets/GstIirEqualizer10Bands.prs
@@ -270,9 +261,6 @@ fi
 %{_libdir}/gstreamer-%{gst_branch}/libgstwavparse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstximagesrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgsty4menc.so
-
-%files doc
-%doc AUTHORS README RELEASE REQUIREMENTS
 
 %files extra
 %{_libdir}/gstreamer-%{gst_branch}/libgst1394.so

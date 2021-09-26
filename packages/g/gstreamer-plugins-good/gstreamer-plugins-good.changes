@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 16 09:27:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop doc sub-package, following this drop gtk-doc BuildRequires.
+
+-------------------------------------------------------------------
 Thu Sep 16 01:49:16 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
-- Remove obsolete translation-update-upstream support (PM-2938).
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
 
 -------------------------------------------------------------------
 Wed Sep 15 09:49:15 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
