@@ -22,7 +22,7 @@
 %bcond_without tftp_user_package
 %endif
 Name:           dnsmasq
-Version:        2.85
+Version:        2.86
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -101,9 +101,21 @@ sed -i -e 's|CACHESIZ 150|CACHESIZ 2000|;
 	   s|CHGRP "dip"|CHGRP "nogroup"|' \
 	src/config.h
 
-# Fix trust-anchor.conf location and include /etc/dnsmasq.d/*.conf by default
+# Tweaks to the default configuration:
+# - Fix trust-anchor.conf location
+# - Include /etc/dnsmasq.d/*.conf by default
+# - Only answer queries coming from the local network
 sed -i -e '/trust-anchors.conf/c\#conf-file=%{_sysconfdir}/dnsmasq.d/trust-anchors.conf' \
        -e '/conf-dir=.*conf/s/^\#//' \
+       -e '0,/^$/{/^$/a \
+# Accept DNS queries only from hosts whose address is on a local\
+# subnet, ie a subnet for which an interface exists on the server.\
+# It is intended to be set as a default on installation, to allow\
+# unconfigured installations to be useful but also safe from being\
+# used for DNS amplification attacks.\
+local-service\
+
+}' \
 	dnsmasq.conf.example
 
 %build
