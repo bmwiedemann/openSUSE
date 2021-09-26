@@ -24,6 +24,8 @@ License:        MIT
 URL:            https://apitrace.github.io/
 Source0:        https://github.com/apitrace/apitrace/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# https://github.com/apitrace/apitrace/issues/756
+Patch0:         apitrace-fix-glibc-2.34.patch
 BuildRequires:  cmake >= 2.8.11
 BuildRequires:  gcc-c++ >= 4.9
 BuildRequires:  libdwarf-devel
@@ -59,7 +61,7 @@ Summary:        Tools for tracing OpenGL
 This package contains libs that are preloaded into traced programs.
 
 %prep
-%setup -q
+%autosetup -p1
 
 # Apitrace uses glibc private symbols
 # and author claims they have good reasons to do so:
