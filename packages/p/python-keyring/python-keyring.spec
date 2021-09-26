@@ -19,14 +19,13 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python2 1
 Name:           python-keyring
-Version:        23.0.1
+Version:        23.2.1
 Release:        0
 Summary:        System keyring service access from Python
 License:        MIT AND Python-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/jaraco/keyring
 Source:         https://files.pythonhosted.org/packages/source/k/keyring/keyring-%{version}.tar.gz
-# Patch:          fix-kwallet-tests.patch
+Patch0:         support-new-importlib.patch
 BuildRequires:  %{python_module SecretStorage >= 3}
 BuildRequires:  %{python_module entrypoints}
 BuildRequires:  %{python_module importlib-metadata}

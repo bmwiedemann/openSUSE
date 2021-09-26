@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 24 09:21:13 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 23.2.1:
+  * #530: In libsecret tests, use a session collection to allow tests
+    to pass on Debian.
+  * #521: Add libsecret backend.
+  * #519: macOS backend APIs updated to newer, non-legacy APIs.
+- Add patch support-new-importlib.patch:
+  * Support new importlib-metadata.
+
+-------------------------------------------------------------------
 Thu Jun 17 14:52:19 UTC 2021 - Matej Cepl <mcepl@suse.com>
 
 - Update to 23.0.1 (bsc#1184133):

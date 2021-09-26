@@ -1,0 +1,13 @@
+Index: keyring-23.2.1/tests/test_packaging.py
+===================================================================
+--- keyring-23.2.1.orig/tests/test_packaging.py
++++ keyring-23.2.1/tests/test_packaging.py
+@@ -9,7 +9,7 @@ def test_entry_point():
+     that's a callable.
+     """
+     matches = metadata.entry_points(group='console_scripts', name='keyring')
+-    (script,) = matches
++    script = matches[0]
+     assert callable(script.load())
+ 
+ 
