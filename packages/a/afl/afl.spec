@@ -27,6 +27,12 @@ Source1:        afl-rpmlintrc
 Patch1:         afl-3.0c-fix-paths.patch
 BuildRequires:  clang
 BuildRequires:  gcc-c++
+%ifarch x86_64
+BuildRequires:  gcc-32bit
+%endif
+%if %?suse_version >= 1550
+BuildRequires:  gcc-devel
+%endif
 BuildRequires:  lld
 BuildRequires:  llvm-devel >= 11.0.0
 BuildRequires:  python3-devel
@@ -82,11 +88,11 @@ chmod -x %{buildroot}/%{_libexecdir}/%{name}/*.o
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-64.o
 %endif
 %endif
-%ifarch %ix86 %{arm} s390x ppc64le
+%ifarch %ix86 %{arm} s390x ppc64le x86_64
 %{_libexecdir}/%{name}/afl-compiler-rt-32.o
 %{_libexecdir}/%{name}/afl-llvm-rt-32.o
 %endif
-%ifarch %ix86 aarch64 s390x ppc64le
+%ifarch %ix86 aarch64 s390x ppc64le x86_64
 %{_libexecdir}/%{name}/afl-llvm-rt-lto-32.o
 %endif
 %{_libexecdir}/%{name}/afl-compiler-rt.o

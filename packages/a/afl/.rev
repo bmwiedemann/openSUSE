@@ -1011,4 +1011,13 @@
     - fix timeout handling (forwarded request 907257 from msmeissn)</comment>
     <requestid>907258</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>b567db90a386b5bb7044540191bda887</srcmd5>
+    <version>3.14c</version>
+    <time>1632685726</time>
+    <user>dimstar_suse</user>
+    <comment>- enable gcc-plugin on factory
+- build with 32bit plugins on x86_64 (forwarded request 921492 from msmeissn)</comment>
+    <requestid>921493</requestid>
+  </revision>
 </revisionlist>
