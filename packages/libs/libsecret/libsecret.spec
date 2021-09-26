@@ -1,7 +1,7 @@
 #
 # spec file for package libsecret
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://wiki.gnome.org/Projects/Libsecret
 Source0:        https://download.gnome.org/sources/libsecret/0.20/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+# PATCH-FIX-UPSTREAM libsecret-handle-UnknownObject.patch bsc#1190499, glgo#GNOME/libsecret!94 alynx.zhou@suse.com -- handle UnknownObject which is thrown by some implementations
+Patch0:         libsecret-handle-UnknownObject.patch
 ## SLE-only patches start at 1000
 # PATCH-FIX-SLE libsecret-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com -- use libgcrypt allocators for FIPS mode
 Patch1000:      libsecret-bsc932232-use-libgcrypt-allocators.patch
@@ -37,7 +39,6 @@ BuildRequires:  gtk-doc
 BuildRequires:  libgcrypt-devel >= 1.2.2
 BuildRequires:  meson >= 0.50
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  vala >= 0.17.2.12
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gio-2.0)
@@ -92,10 +93,10 @@ secrets. It communicates with the "Secret Service" using DBus.
 
 %prep
 %setup -q
+%patch0 -p1
 %if 0%{?sle_version}
 %patch1000 -p1
 %endif
-translation-update-upstream
 
 %build
 %meson \
