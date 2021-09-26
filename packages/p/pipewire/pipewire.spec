@@ -44,7 +44,7 @@
 %endif
 
 Name:           pipewire
-Version:        0.3.36
+Version:        0.3.37
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -53,10 +53,6 @@ URL:            https://pipewire.org/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-media-session-dont-use-after-free-if-linking-node-removed.patch
-# PATCH-FIX-UPSTREAM
-Patch1:         0002-update-version-number-as-well.patch
 
 BuildRequires:  docutils
 BuildRequires:  doxygen
@@ -538,7 +534,6 @@ fi
 %{_userunitdir}/pipewire-media-session.service
 %dir %{_datadir}/pipewire/media-session.d/
 %{_datadir}/pipewire/media-session.d/alsa-monitor.conf
-%{_datadir}/pipewire/media-session.d/bluez-hardware.conf
 %{_datadir}/pipewire/media-session.d/bluez-monitor.conf
 %{_datadir}/pipewire/media-session.d/media-session.conf
 %{_datadir}/pipewire/media-session.d/v4l2-monitor.conf
@@ -580,6 +575,7 @@ fi
 %{_bindir}/pw-cat
 %{_bindir}/pw-cli
 %{_bindir}/pw-dot
+%{_bindir}/pw-dsdplay
 %{_bindir}/pw-dump
 %{_bindir}/pw-loopback
 %{_bindir}/pw-link
@@ -701,6 +697,10 @@ fi
 %dir %{_libdir}/spa-%{spa_ver}/audiotestsrc
 %dir %{_libdir}/spa-%{spa_ver}/videotestsrc
 %dir %{_libdir}/spa-%{spa_ver}/test
+
+%dir %{_datadir}/spa-%{spa_ver}
+%dir %{_datadir}/spa-%{spa_ver}/bluez5
+%{_datadir}/spa-%{spa_ver}/bluez5/bluez-hardware.conf
 
 %files devel
 %{_libdir}/libpipewire-%{apiver}.so
