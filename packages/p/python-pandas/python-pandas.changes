@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Sep 20 18:28:29 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Update to version 1.3.3
+  * Fixed regression in DataFrame constructor failing to broadcast
+    for defined Index and len one list of Timestamp (GH42810)
+  * Fixed regression in GroupBy.agg() incorrectly raising in some
+    cases (GH42390)
+  * Fixed regression in GroupBy.apply() where nan values were
+    dropped even with dropna=False (GH43205)
+  * Fixed regression in GroupBy.quantile() which was failing with
+    pandas.NA (GH42849)
+  * Fixed regression in merge() where on columns with
+    ExtensionDtype or bool data types were cast to object in right
+    and outer merge (GH40073)
+  * Fixed regression in RangeIndex.where() and RangeIndex.putmask()
+    raising AssertionError when result did not represent a
+    RangeIndex (GH43240)
+  * Fixed regression in read_parquet() where the fastparquet engine
+    would not work properly with fastparquet 0.7.0 (GH43075)
+  * Fixed regression in DataFrame.loc.__setitem__() raising
+    ValueError when setting array as cell value (GH43422)
+  * Fixed regression in is_list_like() where objects with __iter__
+    set to None would be identified as iterable (GH43373)
+  * Fixed regression in DataFrame.__getitem__() raising error for
+    slice of DatetimeIndex when index is non monotonic (GH43223)
+  * Fixed regression in Resampler.aggregate() when used after
+    column selection would raise if func is a list of aggregation
+    functions (GH42905)
+  * Fixed regression in DataFrame.corr() where Kendall correlation
+    would produce incorrect results for columns with repeated
+    values (GH43401)
+  * Fixed regression in DataFrame.groupby() where aggregation on
+    columns with object types dropped results on those columns
+    (GH42395, GH43108)
+  * Fixed regression in Series.fillna() raising TypeError when
+    filling float Series with list-like fill value having a dtype
+    which couldn’t cast lostlessly (like float32 filled with
+    float64) (GH43424)
+  * Fixed regression in read_csv() raising AttributeError when the
+    file handle is an tempfile.SpooledTemporaryFile object
+    (GH43439)
+  * Fixed performance regression in core.window.ewm.
+    ExponentialMovingWindow.mean() (GH42333)
+  * Performance improvement for DataFrame.__setitem__() when the
+    key or value is not a DataFrame, or key is not list-like
+    (GH43274)
+  * Fixed bug in DataFrameGroupBy.agg() and DataFrameGroupBy.
+    transform() with engine="numba" where index data was not being
+    correctly passed into func (GH43133)
+- Release 1.3.2
+  * Performance regression in DataFrame.isin() and Series.isin()
+    for nullable data types (GH42714)
+  * Regression in updating values of Series using boolean index,
+    created by using DataFrame.pop() (GH42530)
+  * Regression in DataFrame.from_records() with empty records
+    (GH42456)
+  * Fixed regression in DataFrame.shift() where TypeError occurred
+    when shifting DataFrame created by concatenation of slices and
+    fills with values (GH42719)
+  * Regression in DataFrame.agg() when the func argument returned
+    lists and axis=1 (GH42727)
+  * Regression in DataFrame.drop() does nothing if MultiIndex has
+    duplicates and indexer is a tuple or list of tuples (GH42771)
+  * Fixed regression where read_csv() raised a ValueError when
+    parameters names and prefix were both set to None (GH42387)
+  * Fixed regression in comparisons between Timestamp object and
+    datetime64 objects outside the implementation bounds for
+    nanosecond datetime64 (GH42794)
+  * Fixed regression in Styler.highlight_min() and Styler.
+    highlight_max() where pandas.NA was not successfully ignored
+    (GH42650)
+  * Fixed regression in concat() where copy=False was not honored
+    in axis=1 Series concatenation (GH42501)
+  * Regression in Series.nlargest() and Series.nsmallest() with
+    nullable integer or float dtype (GH42816)
+  * Fixed regression in Series.quantile() with Int64Dtype (GH42626)
+  * Fixed regression in Series.groupby() and DataFrame.groupby()
+    where supplying the by argument with a Series named with a
+    tuple would incorrectly raise (GH42731)
+  * Bug in read_excel() modifies the dtypes dictionary when reading
+    a file with duplicate columns (GH42462)
+  * 1D slices over extension types turn into N-dimensional slices
+    over ExtensionArrays (GH42430)
+  * Fixed bug in Series.rolling() and DataFrame.rolling() not
+    calculating window bounds correctly for the first row when
+    center=True and window is an offset that covers all the rows
+    (GH42753)
+  * Styler.hide_columns() now hides the index name header row as
+    well as column headers (GH42101)
+  * Styler.set_sticky() has amended CSS to control the column/index
+    names and ensure the correct sticky positions (GH42537)
+  * Bug in de-serializing datetime indexes in PYTHONOPTIMIZED mode
+    (GH42866)
+
+-------------------------------------------------------------------
 Tue Aug 17 09:09:49 UTC 2021 - Fabian Vogt <fvogt@suse.com>
 
 - Drop suggests of python-numba (pulls in LLVM10) and python-QtPy

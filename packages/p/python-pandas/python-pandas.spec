@@ -16,7 +16,7 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%{?!python_module:%define python_module() python3-%{**}}
 %define         skip_python2 1
 %define         skip_python36 1
 %global flavor @BUILD_FLAVOR@%{nil}
@@ -28,7 +28,7 @@
 %bcond_with test
 %endif
 Name:           python-pandas%{psuffix}
-Version:        1.3.1
+Version:        1.3.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -42,7 +42,7 @@ BuildRequires:  %{python_module numpy >= 1.17.3}
 BuildRequires:  %{python_module numpy-devel >= 1.16.5}
 BuildRequires:  %{python_module python-dateutil >= 2.7.3}
 BuildRequires:  %{python_module pytz >= 2017.3}
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module setuptools >= 51.0.0}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -192,7 +192,7 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n 4 \
 %license LICENSE
 %doc README.md RELEASE.md
 %{python_sitearch}/pandas/
-%{python_sitearch}/pandas-%{version}-py*.egg-info
+%{python_sitearch}/pandas-%{version}*-info
 %endif
 
 %changelog
