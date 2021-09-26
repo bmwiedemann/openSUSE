@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 21 11:13:59 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Add the "hostname" element to the rules schema (bsc#1190696).
+- 4.4.16
+
+-------------------------------------------------------------------
 Tue Jul 20 14:45:51 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - Fixed handling of the "final_reboot" and "final_halt" options,
