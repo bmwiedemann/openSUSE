@@ -30,6 +30,8 @@ Source0:        %{name}-%{version}.tar.xz
 Patch1:         chessx-install.patch
 # PATCH-FEATURE-OPENSUSE chessx-use_system_quazip.patch
 Patch2:         chessx-use_system_quazip.patch
+# PATCH-FIX-OPENSUSE chessx-use_system_doctest.patch aloisio@gmx.com -- use system doctest instead of embedded
+Patch3:         chessx-use_system_doctest.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
@@ -44,6 +46,7 @@ BuildRequires:  cmake(Qt5Svg)
 BuildRequires:  cmake(Qt5TextToSpeech)
 BuildRequires:  cmake(Qt5Widgets)
 BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  pkgconfig(doctest)
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150200
 BuildRequires:  pkgconfig(quazip1-qt5)
 %else

@@ -1,0 +1,39 @@
+Index: chessx-1.5.6/dep/CMakeLists.txt
+===================================================================
+--- chessx-1.5.6.orig/dep/CMakeLists.txt
++++ chessx-1.5.6/dep/CMakeLists.txt
+@@ -1,5 +1,3 @@
+-add_subdirectory(doctest)
+-
+ if (ENABLE_SCID_SUPPORT)
+   add_subdirectory(scid)
+ endif()
+Index: chessx-1.5.6/CMakeLists.txt
+===================================================================
+--- chessx-1.5.6.orig/CMakeLists.txt
++++ chessx-1.5.6/CMakeLists.txt
+@@ -164,6 +164,9 @@ set(CMAKE_AUTOUIC OFF)
+ 
+ option(ENABLE_TESTING "Enable testing" ON)
+ if (ENABLE_TESTING)
++  if(LINUX)
++    pkg_search_module(DOCTEST REQUIRED doctest)
++  endif(LINUX)
+   enable_testing()
+   add_subdirectory(tests/unittests)
+ endif()
+Index: chessx-1.5.6/tests/unittests/CMakeLists.txt
+===================================================================
+--- chessx-1.5.6.orig/tests/unittests/CMakeLists.txt
++++ chessx-1.5.6/tests/unittests/CMakeLists.txt
+@@ -12,8 +12,8 @@ add_executable(doctestrunner
+   test_resultscounter.cpp
+ )
+ 
+-target_include_directories(doctestrunner PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+-target_link_libraries(doctestrunner PRIVATE doctest ${COMMON_DEPENDENCIES})
++target_include_directories(doctestrunner PRIVATE ${CMAKE_CURRENT_BINARY_DIR} ${DOCTEST_INCLUDE_DIRS})
++target_link_libraries(doctestrunner PRIVATE ${DOCTEST_LIBS} ${COMMON_DEPENDENCIES})
+ add_test(NAME unit.doctest COMMAND doctestrunner)
+ 
+ #
