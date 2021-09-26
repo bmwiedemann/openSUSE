@@ -1136,4 +1136,14 @@ file with an '_' (PHP loads extensions in alphabetical order) (forwarded request
   + php7-gd-removed-unused-constants.patch</comment>
     <requestid>919076</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>f27b34256e779b4dd9c71729fb39654f</srcmd5>
+    <version>7.4.24</version>
+    <time>1632685704</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 7.4.24: This is a security release (CVE-2021-21706)
+  which also contains several bug fixes.
+  See https://www.php.net/ChangeLog-7.php#7.4.24</comment>
+    <requestid>921178</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
 #
-# spec file
+# spec file for package php7
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -53,7 +53,7 @@
 %define build_argon2 1
 %endif
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        7.4.23
+Version:        7.4.24
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 7
 License:        PHP-3.01
