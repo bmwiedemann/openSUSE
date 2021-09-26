@@ -35,7 +35,7 @@
 %bcond_with tcmalloc
 
 Name:           tcmu-runner
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        A userspace daemon that handles the LIO TCM-User backstore
 License:        Apache-2.0

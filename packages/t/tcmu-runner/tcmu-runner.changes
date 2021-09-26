@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 21 20:12:35 UTC 2021 - lduncan@suse.com
+
+- Updated to latest upstream (jsc#SLE-17360). Added file:
+  * tcmu-runner-updates-since-v1.5.4.xz
+  with latest upstream changes since v1.5.4:
+  * rbd: switch strtok to strtok_r
+  * tcmur_device: rename the state_lock to rdev_lock
+  * tcmur_device: rename lock to cmds_list_lock
+  * rbd: fix and add more debug logs
+  * rbd: fix the possible warning of incorrect return value type
+  * rbd: remove the reduntant logs
+  * rbd: fix memory leak when fails to get the address
+  * Revert "Create codeql-analysis.yml"
+  * rbd: fix use-after-free of addr
+  * Create codeql-analysis.yml
+  * main: fix g_object_unref: assertion 'G_IS_OBJECT (object)' failed
+  * remove pthread_getname_np calls
+  * implicitly cast pthread_t to long unsigned int
+  * add missing pthread.h include
+  * replace assert_perror with assert
+  * cast time_t to intmax_t when printing
+  * spec: make dist tag optional (#659)
+  * install-dep.sh: do not install multiple packages in one single line (#657)
+  * tcmu_read_config() check read() return value. (#656)
+
+  And added these changes in v1.5.4 from v1.5.3:
+  * Bump version to 1.5.4 (#652)
+  * handler: add writesame/caw hooks support
+  * tcmur: fall back to writesame without unmap if not aligned
+  * tcmur: clean up the code
+  * rbd: fix the unmap align and granularity size
+  * rbd: use the new format of the daemon name
+  * file_zbc: Remove unnecessary zone boundary check
+
+-------------------------------------------------------------------
 Sat Jan 30 19:34:44 UTC 2021 - lduncan@suse.com
 
 - Update to version 1.5.3:
