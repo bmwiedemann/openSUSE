@@ -16,6 +16,13 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%define mpiver 4
+%endif
+%if 0%{?sle_version} >= 150000
+%define mpiver 2
+%endif
+
 %define modname pytest_mpi
 %define skip_python2 1
 # mpi4py depends on numpy, which is not available for python36
@@ -37,7 +44,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
-BuildRequires:  openmpi2
+BuildRequires:  openmpi%{mpiver}
 # /SECTION
 %python_subpackages
 
@@ -55,9 +62,9 @@ mpi plugin for pytest to collect information from openmpi-based tests.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PATH=${PATH}:%{_libdir}/mpi/gcc/openmpi2/bin
-source %{_libdir}/mpi/gcc/openmpi2/bin/mpivars.sh
-%pytest -v -p pytester
+export PATH=${PATH}:%{_libdir}/mpi/gcc/openmpi%{mpiver}/bin
+source %{_libdir}/mpi/gcc/openmpi%{mpiver}/bin/mpivars.sh
+%pytest -v -p pytester --runpytest=subprocess
 
 %files %{python_files}
 %doc README.md
