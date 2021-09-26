@@ -20,7 +20,7 @@
 %define         skip_python2 1
 %define         skip_python36 1
 Name:           python-ipykernel
-Version:        6.3.1
+Version:        6.4.1
 Release:        0
 Summary:        IPython Kernel for Jupyter
 License:        BSD-3-Clause
@@ -51,11 +51,11 @@ Provides:       %{python_module jupyter_ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter_ipykernel-doc < %{version}}
 Provides:       %{python_module jupyter-ipykernel-doc = %{version}}
 Obsoletes:      %{python_module jupyter-ipykernel-doc < %{version}}
+BuildArch:      noarch
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
 Provides:       jupyter-ipykernel = %{version}-%{release}
 Obsoletes:      jupyter-ipykernel < %{version}-%{release}
 %endif
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module debugpy >= 1.0.0}
 BuildRequires:  %{python_module flaky}
@@ -90,7 +90,10 @@ rm ipykernel/tests/test_pickleutil.py
 
 %install
 %python_install
-%if %suse_version >= 1550
+%if 0%{?suse_version} >= 1550
+# use the symlink for the default python3 flavor, which was installed during the install but used python3.X name
+# from the primary flavor.
+sed -i "s|$(readlink -f %{__python3})|%{__python3}|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
 %{python_expand # install kernelspecs for each flavor
 PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -m ipykernel install \
@@ -98,10 +101,9 @@ $python -m ipykernel install \
     --name python%{$python_bin_suffix} \
     --display-name 'Python %{$python_bin_suffix} (ipykernel)'
 }
-# use the symlink for the default python3 flavor
-sed -i "s|$(readlink -f %{__python3})|%{__python3}|" %{buildroot}%{_jupyter_kernel_dir}/python3/kernel.json
 %endif
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%fdupes  %{buildroot}%{_jupyter_kernel_dir}
 
 %check
 %pytest -ra
@@ -113,7 +115,7 @@ sed -i "s|$(readlink -f %{__python3})|%{__python3}|" %{buildroot}%{_jupyter_kern
 %{python_sitelib}/ipykernel_launcher.py
 %{python_sitelib}/ipykernel-%{version}-py*.egg-info
 %pycache_only %{python_sitelib}/__pycache__/*.pyc
-%if %suse_version >= 1550
+%if 0%{?suse_version} >= 1550
 %{_jupyter_kernel_dir}/python%{python_bin_suffix}
 %endif
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"

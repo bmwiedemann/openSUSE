@@ -131,4 +131,35 @@
     <comment></comment>
     <requestid>917665</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2f3d320244652fa551e597a924548f6a</srcmd5>
+    <version>6.4.1</version>
+    <time>1632685701</time>
+    <user>dimstar_suse</user>
+    <comment>- Deduplicate files in _jupyter_kernel_dir.
+
+- Revert and clarify some specfile changes:
+  * fix kernelspec install for primary flavor
+  * BuildRequires debugpy is sufficiently declared once
+
+- specfile:
+  * require debugpy for build
+- update to version 6.4.1:
+  * Merged PRs
+    + debugpy is now a build requirement #773 (@minrk)
+- changes from version 6.4.0:
+  * Enhancements made
+    + Make json_clean a no-op for jupyter-client &gt;= 7 #708
+      (@martinRenou)
+  * Bugs fixed
+    + Do not assume kernels have loops #766 (@Carreau)
+    + Fix undefined variable #765 (@martinRenou)
+  * Maintenance and upkeep improvements
+    + Make ipykernel work without debugpy #767 (@frenzymadness)
+    + Stop using deprecated recv_multipart when using in-process
+      socket. #762 (@Carreau)
+    + Update some warnings with instructions and version number. #761
+      (@Carreau)</comment>
+    <requestid>921010</requestid>
+  </revision>
 </revisionlist>

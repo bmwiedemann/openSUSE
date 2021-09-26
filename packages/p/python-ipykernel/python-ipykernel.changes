@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Sep 22 15:23:38 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Deduplicate files in _jupyter_kernel_dir.
+
+-------------------------------------------------------------------
+Wed Sep 22 15:15:06 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Revert and clarify some specfile changes:
+  * fix kernelspec install for primary flavor
+  * BuildRequires debugpy is sufficiently declared once
+
+-------------------------------------------------------------------
+Wed Sep 15 05:29:16 UTC 2021 - Arun Persaud <arun@gmx.de>
+
+- specfile:
+  * require debugpy for build
+
+- update to version 6.4.1:
+  * Merged PRs
+    + debugpy is now a build requirement #773 (@minrk)
+
+- changes from version 6.4.0:
+  * Enhancements made
+    + Make json_clean a no-op for jupyter-client >= 7 #708
+      (@martinRenou)
+  * Bugs fixed
+    + Do not assume kernels have loops #766 (@Carreau)
+    + Fix undefined variable #765 (@martinRenou)
+  * Maintenance and upkeep improvements
+    + Make ipykernel work without debugpy #767 (@frenzymadness)
+    + Stop using deprecated recv_multipart when using in-process
+      socket. #762 (@Carreau)
+    + Update some warnings with instructions and version number. #761
+      (@Carreau)
+
+-------------------------------------------------------------------
 Mon Sep  6 11:20:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to version 6.3.1
