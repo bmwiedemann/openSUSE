@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 22 02:25:11 UTC 2021 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Drop nm-add-CAP_CHOWN-capability.patch: This solution was denied
+  by upstream maintainers.
+
+-------------------------------------------------------------------
+Tue Sep 14 10:58:29 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Thu Aug 19 08:04:33 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.32.10:

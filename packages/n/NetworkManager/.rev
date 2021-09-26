@@ -1921,4 +1921,13 @@ WANTED for 13.1 - BLUEZ5 FIX (forwarded request 203010 from Zaitor)</comment>
   + cloud-setup: fix gateway address for Aliyun cloud. (forwarded request 913183 from iznogood)</comment>
     <requestid>913701</requestid>
   </revision>
+  <revision rev="231" vrev="2">
+    <srcmd5>37c8db128b708cc0599af8336a7b1316</srcmd5>
+    <version>1.32.10</version>
+    <time>1632685690</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop nm-add-CAP_CHOWN-capability.patch: This solution was denied
+  by upstream maintainers. (forwarded request 920713 from JonathanKang)</comment>
+    <requestid>920819</requestid>
+  </revision>
 </revisionlist>

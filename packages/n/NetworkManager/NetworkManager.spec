@@ -49,8 +49,6 @@ Patch6:         0001-Coerce-connectivity-LIMITED-to-NONE-when-device-is-d.patch
 Patch7:         nm-add-CAP_SYS_ADMIN-permission.patch
 # PATCH-FIX-UPSTREAM nm-dhcp-use-valid-lease-on-timeout.patch glfd#NetworkManager/NetworkManager!811, bsc#1183202 sckang@suse.com Support valid lease file on dhcp timeout
 Patch8:         nm-dhcp-use-valid-lease-on-timeout.patch
-# PATCH-FIX-UPSTREAM nm-add-CAP_CHOWN-capability.patch glfd#NetworkManager/NetworkManager!860, bsc#1185424 sckang@suse.com Add CAP_CHOWN to CapabilityBoundingSet to make teamd work properly
-Patch9:         nm-add-CAP_CHOWN-capability.patch
 
 BuildRequires:  dnsmasq
 BuildRequires:  fdupes
@@ -70,7 +68,6 @@ BuildRequires:  rp-pppoe
 #BuildRequires:  suse-release
 # for /sbin/netconfig: integration with netconfig is required
 BuildRequires:  sysconfig-netconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  wireless-tools
 BuildRequires:  perl(YAML)
 BuildRequires:  pkgconfig(bluez) >= 5
@@ -178,7 +175,6 @@ checking, install %{name}-branding-openSUSE.
 
 %prep
 %setup -q
-translation-update-upstream
 %patch0 -p1
 %if %{with_cacert_patch}
 %patch1 -p1
@@ -188,7 +184,6 @@ translation-update-upstream
 %patch6 -p1
 %patch7 -p1
 %patch8 -p1
-%patch9 -p1
 
 %build
 NOCONFIGURE=1 ./autogen.sh
