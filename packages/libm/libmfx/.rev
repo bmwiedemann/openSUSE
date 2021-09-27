@@ -125,4 +125,12 @@
 - supersedes u_gcc11.patch</comment>
     <requestid>920861</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>c45e33a5b4a9f90462b47244f9788f7a</srcmd5>
+    <version>21.3.3</version>
+    <time>1632766148</time>
+    <user>dimstar_suse</user>
+    <comment>- covers jira#SLE/SLE-19446</comment>
+    <requestid>921802</requestid>
+  </revision>
 </revisionlist>
