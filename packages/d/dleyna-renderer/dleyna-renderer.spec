@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-renderer
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,22 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           dleyna-renderer
-Version:        0.6.0
+Version:        0.7.1
 Release:        0
 Summary:        Discover and manipulate Digital Media Renderers
-License:        LGPL-2.1
+License:        LGPL-2.1-only
 Group:          System/Libraries
-URL:            http://01.org/dleyna
-Source:         https://01.org/sites/default/files/downloads/dleyna/%{name}-%{version}.tar_2.gz
-# PATCH-FIX-UPSTREAM dleyna-renderer-port-gupnp.patch -- Port to gunpn-1.2
-Patch:          dleyna-renderer-port-gupnp.patch
+URL:            https://github.com/phako/dleyna-renderer
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  libtool
+BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  libxslt-tools
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dleyna-core-1.0) >= 0.6.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
@@ -57,19 +57,17 @@ Digital Media Renderers. An implementation of such a service for linux is also i
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-%make_build
+%meson_build
 
 %install
-%make_install
-find %{buildroot}%{_libdir} -type f -name '*.la' -delete -print
+%meson_install
 
 %files
 %license COPYING
-%doc ChangeLog README
+%doc ChangeLog README.md
+%{_mandir}/man5/dleyna-renderer-service.conf.5%{ext_man}
 %dir %{_datadir}/dbus-1
 %dir %{_datadir}/dbus-1/services
 %{_datadir}/dbus-1/services/com.intel.dleyna-renderer.service
