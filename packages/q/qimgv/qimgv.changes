@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 26 19:40:25 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.0.1
+  Bug fixes:
+  * fix mouse wheel not working with libinput 1.19
+  * fix thumbnails not rendering properly when fractional
+    scaling is enabled
+  * fix "Save As" working incorrectly when changing file
+    extension (KDE)
+  * add confirmation when editing from folderview
+  * fix crop selection not working when another aspect ratio is
+    selected first
+  * fix possible crash when opening the context menu
+  * fix WheelUp / WheelDown being swapped around (no user action
+    needed)
+
+-------------------------------------------------------------------
 Wed Sep 22 17:25:37 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.0.0
