@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>51d6d9533e5e797146a71af4424cbaf9</srcmd5>
+    <version>0.1</version>
+    <time>1632766123</time>
+    <user>dimstar_suse</user>
+    <comment>This package is required to generate openQA's documentation and is therefore required for openQA development. The version from dlp worked fine for years but it would make sense to have the package in Factory.</comment>
+    <requestid>921832</requestid>
+  </revision>
+</revisionlist>

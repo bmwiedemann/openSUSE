@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Sat Nov 28 12:41:27 UTC 2020 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- fix build, regenerate spec-file
+
+-------------------------------------------------------------------
+Tue Jan  3 07:08:48 UTC 2017 - coolo@suse.com
+
+- updated to 0.1
+   see /usr/share/doc/packages/perl-Pod-AsciiDoctor/Changes
+
+-------------------------------------------------------------------
+Mon Jan  2 09:31:37 UTC 2017 - coolo@suse.com
+
+- initial package 0.03
+ * created by cpanspec 1.78.08
+
