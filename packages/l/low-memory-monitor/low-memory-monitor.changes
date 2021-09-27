@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Mon Sep 27 13:55:47 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Use pkgconfig(systemd) for BuildRequires instead of systemd.
+
+-------------------------------------------------------------------
+Thu Aug 26 22:13:18 UTC 2021 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Initial package.
