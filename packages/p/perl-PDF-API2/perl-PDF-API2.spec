@@ -18,9 +18,9 @@
 
 %define cpan_name PDF-API2
 Name:           perl-PDF-API2
-Version:        2.041
+Version:        2.042
 Release:        0
-Summary:        Facilitates the creation and modification of PDF files
+Summary:        Create, modify, and examine PDF files
 License:        LGPL-2.1-or-later
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SS/SSIMMS/%{cpan_name}-%{version}.tar.gz
@@ -37,7 +37,7 @@ Requires:       perl(Font::TTF)
 %{perl_requires}
 
 %description
-Facilitates the creation and modification of PDF files
+Create, modify, and examine PDF files
 
 %prep
 %autosetup  -n %{cpan_name}-%{version}

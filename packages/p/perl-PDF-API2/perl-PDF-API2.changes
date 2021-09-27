@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Fri Sep 17 03:08:03 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.042
+   see /usr/share/doc/packages/perl-PDF-API2/Changes
+
+  2.042     2021-09-16
+      - This release includes many changes to method names, options, and
+        documentation aimed at improving approachability, but existing code should
+        continue to work.  See the new Backward Compatibility section in the main
+        PDF::API2 documentation for details about deprecation timelines and a
+        suggested workflow for handling upgrades.  See the new Migration section
+        for a consolidated list of deprecated methods/options and their
+        replacements.
+      - Renamed several methods in the PDF::API2 base class:
+        - end -> close
+        - open_scalar -> from_string
+        - stringify -> to_string
+        - pages -> page_count
+        - importPageIntoForm -> embed_page
+        - isEncrypted -> is_encrypted
+        - xmpMetadata -> xml_metadata
+        - outlines -> outline
+      - Merged saveas into save.
+      - Added individual accessors for PDF metadata (title, author, producer,
+        etc.).  Replaced info and infoMetaAttributes with info_metadata for custom
+        metadata.
+      - Renamed the following methods in the PDF::API2::Page class:
+        - gfx -> graphics
+        - rotate -> rotation
+      - Added $page->boundaries() and $pdf->default_page_boundaries() to replace
+        the separate methods for the various page boundaries.  The supported
+        arguments are slightly different; some edge cases have been removed and
+        new options have been added.  See below and the PDF::API2::Page
+        documentation for details.
+      - Added $page->size() and $pdf->default_page_size() as a shortcut for
+        setting the media box.
+      - Both $page->size() and $page->boundaries() (and their $pdf default
+        equivalents) now accept "WxH" page sizes in inches (e.g. 11x17 or 8.5x11).
+        This does not apply to the deprecated versions of these methods.
+      - Both $page->size() and $page->boundaries() (and their $pdf default
+        equivalents) now accept a single number for page boundaries other than the
+        media box, representing an amount in points to shrink the next larger box.
+        This does not apply to the deprecated versions of these methods.
+      - Replaced pageLabel with page_labels.  The option syntax is slightly
+        different (pass options as a hash instead of a hashref; remove hyphens
+        from option names).
+      - Replaced image_jpeg, image_tiff, image_pnm, image_png, image_gif, and
+        image_gd with $pdf->image.
+      - Replaced the individual barcode methods with $pdf->barcode, which is
+        fully documented and includes reasonable defaults based on the chosen
+        barcode format.
+      - Improved spacing between barcodes and labels when both bar_extend
+        (formerly -lmzn) and font_size (formerly -fnsz) are set and the font size
+        is larger than the bar extension.
+      - Replaced corefont, ttfont, psfont, and bdfont with $pdf->font.  Unlike
+        corefont, font requires the exact name of one of the standard fonts.
+        Kerning is on by default (vs. off by default in the type-specific
+        methods).
+      - Renamed synfont to synthetic_font.  Renamed and documented the options.
+        The new hscale option (formerly -slant) now takes a percentage (100 = no
+        change, vs. 1 = no change for -slant) to match the hscale method in
+        Content.  The new "bold" option is in thousandths of a text unit,
+        vs. hundredths for "-bold", so multiply the old value by 10 when
+        migrating.
+      - Replaced the individual colorspace methods with $pdf->colorspace.  Added
+        documentation and examples for the various colorspace types except for the
+        former colorspace_hue, because I couldn't find the standard that it
+        implements (if one exists).
+      - Renamed several methods in PDF::API2::Content:
+        - linewidth -> line_width
+        - linecap -> line_cap
+        - linejoin -> line_join
+        - miterlimit -> miter_limit
+        - flatness -> flatness_tolerance
+        - endpath -> end
+        - rectxy -> rectangle
+        - fillstroke -> paint
+        - charspace -> character_spacing
+        - wordspace -> word_spacing
+        - nl -> crlf
+        - advancewidth -> text_width
+      - In PDF::API2::Content, replaced image and formimage with object.  Added a
+        $page->object() convenience method that is equivalent to
+        $page->graphics->object().
+      - In PDF::API2::Content, merged text_center and text_right into text.  Use
+        the "align" option to set alignment to "center" or "right".
+      - In PDF::API2::Content, merged paragraphs into paragraph.
+      - In PDF::API2::Content, deprecated poly and added polyline.  poly was the
+        only path-drawing method that took a starting position as its first two
+        arguments.  These should be passed to a move call instead, with the
+        remaining arguments passed to the new polyline method.
+      - In PDF::API2::Content, added position, which combines the functionality of
+        distance and textpos2 (which was undocumented).  Deprecated textpos, which
+        attempted to return the position of the "cursor" after taking into account
+        coordinate transformations.  textpos2 and the new position method return
+        the text position before any coordinate transformations are applied, which
+        is consistent with how the other methods in this class behave.
+      - In PDF::API2::Content, deprecated bogen.  Recreate using arc, if feasible.
+        If not, I'm likely to leave the code in place indefinitely as an
+        undocumented method.
+      - In PDF::API2::Content, deprecated cr.  Replace with either position (if
+        called with arguments) or crlf (if called without arguments).
+      - Tentatively deprecated $pdf->cjkfont.  If you're successfully using this
+        method for CJK font support, read PDF::API2::Resource::CIDFont::CJKFont
+        and contact me to discuss your use case.
+      - Tentatively deprecated $pdf->unifont.  If you're successfully using this
+        method for Unicode support, please contact me to discuss your use case.
+      - Replaced $pdf->preferences() with separate page_mode, page_layout,
+        viewer_preferences, and open_action methods, all of which are now fully
+        documented.
+      - Added font_path and set_font_path accessors for the font search path (the
+        list of directories searched when a font name is included without its full
+        path).  Renamed addFontDirs to add_to_font_path.
+      - Removed C:/WinNT/Fonts from the default font search path.
+      - Named Destinations are now fully documented, with updated method names and
+        arguments.
+      - Outlines are now fully documented, with additional methods for examining
+        and modifying the outline tree.  Existing method names and arguments have
+        been updated to match those used in Named Destinations.  Various bugs have
+        been fixed when reading or modifying outlines in existing PDFs.
+      - Updated annotation documentation.  Revised methods and arguments to match
+        those used in Named Destinations and Outlines.
+      - A PDF version number specified in the document catalog is now respected by
+        $pdf->version().
+      - Fixed space calculation between words in justified text (report and fix by
+        Vladislav Glinsky).
+
+-------------------------------------------------------------------
 Wed Jul 28 03:09:00 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.041
