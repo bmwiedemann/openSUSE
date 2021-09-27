@@ -1503,4 +1503,12 @@ Man pages are disabled for this build, upstream disabled them for this release. 
     <comment></comment>
     <requestid>905683</requestid>
   </revision>
+  <revision rev="156" vrev="2">
+    <srcmd5>aee7a6748f8ece752162512b2abf5f4c</srcmd5>
+    <version>2.4.107</version>
+    <time>1632766150</time>
+    <user>dimstar_suse</user>
+    <comment>- covers jira#SLE/SLE-18743</comment>
+    <requestid>921808</requestid>
+  </revision>
 </revisionlist>
