@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 23 03:06:04 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.27
+   see /usr/share/doc/packages/perl-Config-Tiny/Changelog.ini
+
+  [V 2.27]
+  Date=2021-09-21T15:48:00
+  Comments= <<EOT
+  - Add the option of passing a hashref to the constructor, where it is turned into an
+  object of the class. See POD under new([$config]) for details.
+  This patch to the code and POD includes the new test t/08.constructor.t.
+  The patch was provided by D Hauke, with thanx.
+  - Move test.conf back into t/, where it was years ago, before someone tried to remove
+  all uses of File::Spec. But since File::Spec is used often now, there is no point
+  in keeping test.conf in the root directory of the distro.
+  EOT
+
+-------------------------------------------------------------------
 Tue Feb  2 03:06:12 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.26
