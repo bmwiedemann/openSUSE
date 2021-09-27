@@ -61,6 +61,14 @@ Fri Feb 12 09:50:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
   bsc#1159130 - CVE-2019-19746: transfig,xfig: segmentation fault and
                 out-of-bounds write because of an integer overflow via
                 a large arrow type
+  bsc#1189343 - CVE-2020-21680: transfig: A stack-based buffer overflow in the
+                put_arrow() component in genpict2e.c
+  bsc#1189345 - CVE-2020-21681: transfig: A global buffer overflow in the
+                set_color component in genge.c
+  bsc#1189325 - CVE-2020-21683: transfig: A global buffer overflow in the
+                shade_or_tint_name_after_declare_color in genpstricks.c
+  bsc#1189346 - CVE-2020-21682: transfig: A global buffer overflow in the
+                set_fill component in genge.c
   and many more
 - Port and rename patch transfig-3.2.6.dif which is now transfig-3.2.8.dif
 - Remove patches now obsolete
@@ -180,6 +188,7 @@ Tue Oct 29 11:07:12 UTC 2019 - Dr. Werner Fink <werner@suse.de>
   * fig2dev-3.2.6a-man-typo.patch
   * transfig-03ea4578.patch
   * transfig-e0c4b024.patch
+  * transfig-fix-of-e0c4b024.patch
 - Port patches to new version
   * transfig-3.2.6.dif
   * transfig-fix-afl.patch
