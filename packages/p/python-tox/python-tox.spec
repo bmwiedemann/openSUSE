@@ -19,17 +19,20 @@
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %bcond_without python2
 Name:           python-tox
-Version:        3.21.1
+Version:        3.24.4
 Release:        0
 Summary:        Virtualenv-based automation of test activities
 License:        MIT
 URL:            https://github.com/tox-dev/tox
 Source:         https://files.pythonhosted.org/packages/source/t/tox/tox-%{version}.tar.gz
+BuildRequires:  %{python_module backports.entry_points_selectable >= 1.0.4}
 BuildRequires:  %{python_module filelock >= 3.0.0}
 BuildRequires:  %{python_module packaging >= 14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy >= 0.12.0}
+BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module py >= 1.4.17}
+BuildRequires:  %{python_module pytoml >= 0.1}
 BuildRequires:  %{python_module setuptools >= 41.0.1}
 BuildRequires:  %{python_module setuptools_scm >= 2.0.0}
 BuildRequires:  %{python_module six >= 1.14.0}
@@ -41,6 +44,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  (python3-importlib-metadata >= 0.12 if python3-base < 3.8)
 BuildRequires:  (python36-importlib-metadata >= 0.12 if python36-base)
+Requires:       python-backports.entry_points_selectable >= 1.0.4
 Requires:       python-filelock >= 3.0.0
 Requires:       python-packaging >= 14
 Requires:       python-pip
@@ -49,11 +53,9 @@ Requires:       python-py >= 1.4.17
 Requires:       python-six >= 1.14.0
 Requires:       python-toml >= 0.9.4
 Requires:       python-virtualenv >= 20.0.8
-%if 0%{?python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 0.12
-%endif
+Requires:       (python-importlib-metadata >= 0.12 if python3-base < 3.8)
 Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires(postun):update-alternatives
 # last detox version is 0.19
 Obsoletes:      python-detox <= 0.19
 BuildArch:      noarch
@@ -64,6 +66,7 @@ BuildRequires:  %{python_module freezegun >= 0.3.11}
 BuildRequires:  %{python_module psutil >= 5.6.1}
 BuildRequires:  %{python_module pytest >= 4.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.0}
+BuildRequires:  %{python_module pytest-randomly >= 1.0.0}
 BuildRequires:  %{python_module pytest-xdist >= 1.22.2}
 %if %{with python2}
 BuildRequires:  python-pathlib2 >= 2.3.3
@@ -128,11 +131,13 @@ export LANG=en_US.UTF8
 # Upstream suggests to  provide them manually to avoid downloading, but with indirect dependencies the number of
 # wheels is too large. Plus, defining PIP_NO_INDEX PIP_FIND_LINKS as suggested will be deprecated in a future
 # pip and it does not propagate  to the test calling pip themselves without patching.
+# enscons are not packaged
 donttest+=" or test_provision_missing or test_provision_interrupt_child or test_provision_from_pyvenv"
 donttest+=" or test_provision_cli_args_ignore or test_provision_non_canonical_dep"
 donttest+=" or test_test_usedevelop"
 donttest+=" or test_different_config_cwd"
 donttest+=" or test_toxuone_env"
+donttest+=" or test_isolated_build_backend_missing_hook"
 donttest+=" or test_parallel_live or (test_parallel and not test_parallel_)"
 %if %{with python2}
 # wants to install pathlib2 wheel on python2
@@ -142,7 +147,7 @@ donttest+=" or test_build_backend_without_submodule"
 %{python_expand # tests expect an active virtualenv with a clean python name as sys.executable
 virtualenv-%{$python_bin_suffix} --system-site-packages testenv-%{$python_bin_suffix}
 source testenv-%{$python_bin_suffix}/bin/activate
-pip install ./build/tox*.whl
+pip install --no-deps ./build/tox*.whl
 python -B -m pytest -v -m "not network" -k "not (${donttest:4})" -n auto
 deactivate
 }

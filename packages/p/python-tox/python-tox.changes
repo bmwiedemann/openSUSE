@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Sep 26 21:52:18 UTC 2021 - Matej Cepl <mcepl@suse.com>
+
+- Update to 3.24.4:
+  - Fixed handling of -e ALL in parallel mode by ignoring the ALL
+    in subprocesses -- by :user:`guahki`. #2167
+  - Prevent tox from using a truncated interpreter when using
+    TOX_LIMITED_SHEBANG -- by :user:`jdknight`. #2208
+  - Enabled the use of the favicon in the Sphinx docs first
+    introduced in :pull:`764` but not integrated fully --
+    :user:`webknjaz` #2177
+  - --parallel reports now show ASCII OK/FAIL/SKIP lines when
+    full Unicode output is not available - by :user:`brettcs`
+    #1421
+  - Started enforcing valid references in Sphinx docs --
+    :user:`webknjaz` #2168
+  - include LC_ALL to implicit list of passenv variables - by
+    :user:`ssbarnea` #2162
+  - get_requires_for_build_sdist hook (PEP 517) is assumed to
+    return an empty list if left unimplemented by the backend
+    build system - by :user:`oczkoisse` #2130
+  - The documentation of install_command now also mentions that
+    you can provide arbitrary commands - by :user:`jugmac00`
+    #2081
+  - --devenv no longer modifies the directory in which the .tox
+    environment is provisioned - by :user:`isaac-ped` #2065
+  - Fix show config when the package names are not in canonical
+    form - by :user:`gaborbernat`. #2103
+  - Extended environment variables section - by :user:`majiang`
+    #2036
+  - tox no longer shows deprecation warnings for
+    distutils.sysconfig on Python 3.10 - by :user:`9999years`
+    #2100
+  - Distinguish between normal Windows Python and MSYS2 Python
+    when looking for virtualenv executable path. Adds os.sep to
+    :class:`~tox.interpreters.InterpreterInfo` - by
+    :user:`jschwartzentruber` #1982
+  - Fix a tox-conda isolation build bug - by :user:`AntoineD`.
+    #2056
+  - Update examples in the documentation to use setenv in the
+    [testenv] sections, not wrongly in the [tox] main section.
+    - by :user:`AndreyNautilus` #1999
+  - Enable building tox with setuptools_scm 6+ by :user:`hroncok`
+    #1984
+  - tox can now be invoked with a new --no-provision flag that
+    prevents provision, if :conf:`requires` or :conf:`minversion`
+    are not satisfied, tox will fail; if a path is specified as
+    an argument to the flag (e.g. as tox --no-provision
+    missing.json) and provision is prevented, provision metadata
+    are written as JSON to that path - by :user:`hroncok` #1921
+  - Unicode support in pyproject.toml - by :user:`domdfcoding`
+    #1940
+  - The value of the :conf:`requires` configuration option is now
+    exposed via the :class:`tox.config.Config` object - by
+    :user:`hroncok` #1918
+  - Adapt tests not to assume the easy_install command exists, as
+    it was removed from setuptools 52.0.0+ - by :user:`hroncok`
+    #1893
+  - Fix a killed tox (via SIGTERM) leaving the commands
+    subprocesses running by handling it as if it were
+    a KeyboardInterrupt - by :user:`dajose` #1772
+  - Newer coverage tools update the COV_CORE_CONTEXT environment
+    variable, add it to the list of environment variables that
+    can change in our pytest plugin - by :user:`gaborbernat`.
+    #1854
+
+-------------------------------------------------------------------
 Mon Feb 22 11:44:36 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Fix wheel location when custom installing into test venv.
