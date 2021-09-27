@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 10:17:58 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Some fonts in the used fontsets do not exist anymore, try
+  smaller fonts 
+
+-------------------------------------------------------------------
 Fri Jun 18 13:26:56 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - Make spec file build with older SLE versions as well to be able

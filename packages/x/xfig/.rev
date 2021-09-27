@@ -511,4 +511,12 @@ SPDX compliant license short name. MIT chosen as majority of files are under thi
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>902847</requestid>
   </revision>
+  <revision rev="53" vrev="3">
+    <srcmd5>1e02ea2259f6541388634a1d5addf2c8</srcmd5>
+    <version>3.2.8a</version>
+    <time>1632766139</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921733</requestid>
+  </revision>
 </revisionlist>
