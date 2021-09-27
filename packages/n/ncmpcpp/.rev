@@ -58,4 +58,13 @@
     <comment></comment>
     <requestid>876283</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>39fd1be92caa9bd5973e8d1164419291</srcmd5>
+    <version>0.9.2</version>
+    <time>1632766132</time>
+    <user>dimstar_suse</user>
+    <comment>- pass --enable-outputs to configure
+</comment>
+    <requestid>921552</requestid>
+  </revision>
 </revisionlist>

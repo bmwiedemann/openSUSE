@@ -58,6 +58,7 @@ information fetcher and an alternative user interface.
 autoreconf -fiv
 %configure \
   --enable-clock \
+  --enable-outputs \
   --enable-visualizer
 %make_build
 
