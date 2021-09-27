@@ -1,0 +1,14 @@
+diff -u -p -r rcs-5.10.0.orig/src/b-isr.c rcs-5.10.0/src/b-isr.c
+--- rcs-5.10.0.orig/src/b-isr.c	2021-09-27 09:23:33.795459606 +0000
++++ rcs-5.10.0/src/b-isr.c	2021-09-27 09:26:40.747266154 +0000
+@@ -26,6 +26,10 @@
+ 
+ #include "base.h"
+ #include <errno.h>
++
++/* workaround needed since glibc-devel 2.34 */
++#undef __USE_DYNAMIC_STACK_SIZE
++
+ #include <signal.h>
+ #include <unistd.h>
+ #include <string.h>

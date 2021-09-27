@@ -1,7 +1,7 @@
 #
 # spec file for package rcs
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://www.gnu.org/software/rcs/
 Source:         http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.xz
 Source2:        http://ftp.gnu.org/pub/gnu/rcs/%{name}-%{version}.tar.xz.sig
 Source3:        rcs.keyring
+Patch0:         rcs-glibc-2.34.patch
 BuildRequires:  ed
 Requires:       diffutils
 Requires(pre):  %{install_info_prereq}
@@ -38,6 +39,9 @@ documentation, graphics, and papers.
 
 %prep
 %setup -q
+%if 0%{?suse_version} >= 1550
+%patch0 -p1
+%endif
 
 %build
 ac_cv_path_SENDMAIL=%{_sbindir}/sendmail \
