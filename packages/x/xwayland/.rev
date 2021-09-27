@@ -35,4 +35,12 @@
     <comment></comment>
     <requestid>906524</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>17d815ef8284a15c409c48475b90f940</srcmd5>
+    <version>21.1.2</version>
+    <time>1632766143</time>
+    <user>dimstar_suse</user>
+    <comment>- covers jira#SLE/SLE-18653</comment>
+    <requestid>921771</requestid>
+  </revision>
 </revisionlist>
