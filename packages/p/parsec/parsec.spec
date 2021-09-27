@@ -40,6 +40,8 @@ BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  python3
+# jwt-svid-authenticator (SPIFFE-based authenticator) needs rust >= 1.53
+BuildRequires:  rust >= 1.53
 BuildRequires:  rust-packaging
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(tss2-esys) >= 2.3.3
@@ -71,16 +73,8 @@ sed -i -e 's#default = \["unix-peer-credentials-authenticator"\]##' Cargo.toml
 # Features available in 0.8.0:
 # all-providers = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "trusted-service-provider"]
 # all-authenticators = ["direct-authenticator", "unix-peer-credentials-authenticator", "jwt-svid-authenticator"]
-%if 0%{suse_version} > 1500
-# Tumbleweed
-# Disable "trusted-service-provider" until we have a trusted-services package
+# But disable "trusted-service-provider" until we have a trusted-services package
 echo 'default = ["tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider", "all-authenticators"]' >> Cargo.toml
-%else
-# Leap/SLE
-# Disable jwt-svid-authenticator (SPIFFE-based authenticator) as it cannot be compiled with rust 1.43.1
-# Disable "trusted-service-provider" until we have a trusted-services package
-echo 'default = ["direct-authenticator", "unix-peer-credentials-authenticator", "tpm-provider", "pkcs11-provider", "mbed-crypto-provider", "cryptoauthlib-provider"]' >> Cargo.toml
-%endif
 
 %build
 export PROTOC=%{_bindir}/protoc
