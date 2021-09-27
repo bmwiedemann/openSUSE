@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 26 21:14:46 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.3:
+  * This release fixes builds with libc++ < 11 (#187)
+
+-------------------------------------------------------------------
+Sun Sep 26 21:13:58 UTC 2021 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.6.2:
+  * nwgbar contents can be scrolled (#182);
+  * max icon size is increased up to 2048 (#180);
+  * fixed broken pins ordering (#176);
+  * fixed nwggrid spawning server with messed up arguments;
+  * launchers will no longer fail to start after being improperly closed
+    (e.g. SIGKILL) (#178);
+  * nwggrid prints an error if started with -p or -f and -d at the same
+    time;
+  * fixed potential data race when accessing pid file.
+
+-------------------------------------------------------------------
 Fri Sep 17 12:42:13 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.6.1:

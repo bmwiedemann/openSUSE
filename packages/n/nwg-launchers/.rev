@@ -123,4 +123,24 @@
     inner representation when necessary.</comment>
     <requestid>919743</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>44ee5a6ae12dffdd77f5ccac2d3a3b62</srcmd5>
+    <version>0.6.3</version>
+    <time>1632766126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.3:
+  * This release fixes builds with libc++ &lt; 11 (#187)
+
+- Update to 0.6.2:
+  * nwgbar contents can be scrolled (#182);
+  * max icon size is increased up to 2048 (#180);
+  * fixed broken pins ordering (#176);
+  * fixed nwggrid spawning server with messed up arguments;
+  * launchers will no longer fail to start after being improperly closed
+    (e.g. SIGKILL) (#178);
+  * nwggrid prints an error if started with -p or -f and -d at the same
+    time;
+  * fixed potential data race when accessing pid file.</comment>
+    <requestid>921535</requestid>
+  </revision>
 </revisionlist>
