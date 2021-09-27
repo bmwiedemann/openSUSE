@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>562451</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e8385cfa57053d925dea34a0a330dc7b</srcmd5>
+    <version>1.0.1</version>
+    <time>1632766127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0.1:
+  * Updated output for nms -v to match release version.
+
+- Update to 1.0.0:
+  * Added cyan for color output.
+  * Fixed issues with the ncurses implementation.
+  * Improved code for getting input and error reporting.
+  * Turned on optimizations for the c compiler.
+  * Various other small code improvements and small bug/typo fixes.</comment>
+    <requestid>921534</requestid>
+  </revision>
 </revisionlist>

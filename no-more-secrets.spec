@@ -1,7 +1,7 @@
 #
 # spec file for package no-more-secrets
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,17 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           no-more-secrets
-Version:        0.3.3
+Version:        1.0.1
 Release:        0
 Summary:        A recreation of the "decrypting text" effect from the 1992 movie Sneakers
-License:        GPL-3.0+
+License:        GPL-3.0-or-later
 Group:          Amusements/Toys/Other
-Url:            https://github.com/bartobri/%{name}
+URL:            https://github.com/bartobri/%{name}
 Source0:        https://github.com/bartobri/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  ncurses-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
