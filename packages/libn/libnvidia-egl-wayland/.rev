@@ -26,4 +26,12 @@
     <comment></comment>
     <requestid>904072</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>7ee2df66d818b52f145b6df9486bdbb2</srcmd5>
+    <version>1.1.7</version>
+    <time>1632766152</time>
+    <user>dimstar_suse</user>
+    <comment>- needed for jira#SLE/SLE-19965, jira#SLE/SLE-19964, jira#SLE/SLE-18653</comment>
+    <requestid>921811</requestid>
+  </revision>
 </revisionlist>
