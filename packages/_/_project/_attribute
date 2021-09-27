@@ -36,7 +36,7 @@
   boo#1182894: '20210308'
   boo#1182961: '20210519'
   boo#1183082: '20210826'
-  boo#1183454: '20210924'
+  boo#1183454: '20210925'
   boo#1183461: '20210414'
   boo#1183521: '20210329'
   boo#1183786: '20210607'
@@ -82,18 +82,18 @@
   boo#1189784: '20210824'
   boo#1189810: '20210906'
   boo#1189853: '20210902'
-  boo#1189868: '20210924'
-  boo#1189869: '20210924'
+  boo#1189868: '20210925'
+  boo#1189869: '20210925'
   boo#1189909: '20210916'
   boo#1189913: '20210903'
   boo#1189915: '20210918'
   boo#1189927: '20210923'
   boo#1190434: '20210924'
   boo#1190529: '20210914'
-  boo#1190762: '20210924'
-  boo#1190764: '20210924'
-  boo#1190823: '20210924'
-  bsc#1161276: '20210924'
+  boo#1190762: '20210925'
+  boo#1190764: '20210925'
+  boo#1190823: '20210925'
+  bsc#1161276: '20210925'
   bsc#1179395: '20210308'
   bsc#1181835: '20210307'
   bsc#1182891: '20210311'
@@ -160,7 +160,7 @@
   poo#91058: '20210517'
   poo#91079: '20210524'
   poo#91088: '20210502'
-  poo#91383: '20210924'
+  poo#91383: '20210925'
   poo#91533: '20210427'
   poo#91545: '20210521'
   poo#91581: '20210527'
@@ -215,9 +215,9 @@
   poo#98646: '20210921'
   poo#98739: '20210921'
   poo#99039: '20210924'
-  poo#99057: '20210920'
+  poo#99057: '20210925'
   poo#99102: '20210921'
-  poo#99312: '20210924'
+  poo#99312: '20210925'
 </value>
   </attribute>
   <attribute namespace="OSRT" name="Config">
@@ -261,7 +261,7 @@ bad-rpmlint-entries = suse-dbus-unauthorized-service suse-pam-unauthorized-modul
     <value>s/openSUSE-/openSUSE-Staging:$LETTER-/</value>
   </attribute>
   <attribute namespace="OSRT" name="ProductVersion">
-    <value>20210925</value>
+    <value>20210926</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerConfig">
     <value>arch: x86_64
@@ -586,7 +586,7 @@ test_subproject: ToTest
 set_snapshot_number: True</value>
   </attribute>
   <attribute namespace="OSRT" name="ToTestManagerStatus">
-    <value>failed: ''
+    <value>failed: '20210925'
 published: '20210924'
 publishing: '20210924'
 testing: '20210925'
