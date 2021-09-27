@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 27 11:47:57 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.7:
+  * Fixed multiple issues related to audio and video playback
+  * GStreamer media playback engine rewrite
+  * Subtitle lines displayed on the video are now immediately
+    refreshed if changed
+  * Fixed an issue which didn't allow for multiple Gnome Subtitles
+    instances to be running simultaneously
+  * Fixed an issue which prevented the application from appearing
+    translated/localized
+  * Fixed an issue with Autocheck Spelling not working immediately
+    when the app is opened
+  * Help menu items now open correctly
+  * Improved the Set Languages dialog window with information on
+    how to install additional language packs
+  * Fixed an issue with the side bar constantly resizing
+    during playback
+  * Fixed an issue where opening an audio file after a video
+    would show the last frame played from the video
+  * Added support for Enchant 2 (in addition to Enchant 1
+    which is still supported)
+  * Optimization to only save the window state when closing
+    the application
+  * AppData and Desktop files have been updated
+
+-------------------------------------------------------------------
 Mon Sep 20 19:51:46 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove obsolete translation-update-upstream support

@@ -17,7 +17,7 @@
 
 
 Name:           gnome-subtitles
-Version:        1.6
+Version:        1.7
 Release:        0
 Summary:        Subtitle editor for GNOME
 License:        GPL-2.0-or-later
@@ -26,7 +26,7 @@ URL:            http://gnomesubtitles.org/
 Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE gnome-subtitles-gtk-sharp-build-fix.patch mgorse@suse.com -- fix build against new gtk-sharp.
 Patch0:         gnome-subtitles-gtk-sharp-build-fix.patch
-
+BuildRequires:  enchant-devel > 2.0
 BuildRequires:  fdupes
 BuildRequires:  gtk-doc
 BuildRequires:  intltool >= 0.50
@@ -55,13 +55,14 @@ editing, translation and synchronization.
 %configure \
 	--enable-gtk-doc \
 	%{nil}
-# Disable parallel build - mono fails to often with it
+# Disable parallel build - mono fails too often with it
 make -j1
 
 %install
 %make_install
 find %{buildroot}%{_libdir} -type f -name "*.la" -delete
 %find_lang %{name} %{?no_lang_C}
+%find_lang org.gnome.GnomeSubtitles %{?no_lang_C}
 
 %files
 %license COPYING
@@ -76,6 +77,6 @@ find %{buildroot}%{_libdir} -type f -name "*.la" -delete
 %dir %{_datadir}/metainfo
 %{_datadir}/metainfo/org.gnome.GnomeSubtitles.appdata.xml
 
-%files lang -f %{name}.lang
+%files lang -f %{name}.lang -f org.gnome.GnomeSubtitles.lang
 
 %changelog
