@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 20 03:06:47 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.11
+   see /usr/share/doc/packages/perl-Devel-NYTProf/Changes
+
+  =head2 Changes in Devel::NYTProf 6.11 - 19th Sep 2021
+
+  Removed F<lib/Devel/NYTProf/js/jquery.floatThead.min.js> in L<GH 194: Remove
+  jquery.floatThead.min.js|https://github.com/timbunce/devel-nytprof/pull/194>.
+  In L<GH 192: nytprofhtml - internal anchor links in html pages go to wrong
+  locations|https://github.com/timbunce/devel-nytprof/issues/192> Shawn Laffan
+  reported that internal links to anchors in the generated HTML pages were not
+  correctly positioned in the vertical dimension.   Discontinuing use of this
+  Javascript file appears to correct the problem.
+
+-------------------------------------------------------------------
 Mon May 10 03:06:15 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.10
