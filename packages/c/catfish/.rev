@@ -246,4 +246,21 @@
     <comment>- Update to version 4.16.2</comment>
     <requestid>909638</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>274ebe6fd274c0f2ac56cea42682ff93</srcmd5>
+    <version>4.16.3</version>
+    <time>1632766131</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.16.3
+  * Update &quot;Searching...&quot; Cursor
+  * Sidebar background color bugfix
+  * Fixes for syntax, fulltext zip search, special files
+    (gxo#apps/catfish#62)
+  * Adds symbolic link icons, better icon updating
+    (gxo#apps/catfish#46)
+  * Translation Updates
+- Fixed package sources that disappeared 
+</comment>
+    <requestid>921550</requestid>
+  </revision>
 </revisionlist>

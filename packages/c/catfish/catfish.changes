@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 26 19:29:32 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 4.16.3
+  * Update "Searching..." Cursor
+  * Sidebar background color bugfix
+  * Fixes for syntax, fulltext zip search, special files
+    (gxo#apps/catfish#62)
+  * Adds symbolic link icons, better icon updating
+    (gxo#apps/catfish#46)
+  * Translation Updates
+
+-------------------------------------------------------------------
+Tue Aug 24 07:44:58 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed package sources that disappeared 
+
+-------------------------------------------------------------------
 Sat Jul 31 22:33:53 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
 
 - Update to version 4.16.2
