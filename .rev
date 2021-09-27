@@ -613,4 +613,12 @@ ARM builds fine. (forwarded request 141176 from Guillaume_G)</comment>
   * update NEWS for 2.13.0</comment>
     <requestid>920862</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>91bdfdf01707ab5e0fcde38ecce4cc90</srcmd5>
+    <version>2.13.0</version>
+    <time>1632766149</time>
+    <user>dimstar_suse</user>
+    <comment>- covers jira#SLE/SLE-19446</comment>
+    <requestid>921803</requestid>
+  </revision>
 </revisionlist>
