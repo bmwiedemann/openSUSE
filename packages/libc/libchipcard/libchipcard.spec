@@ -17,15 +17,15 @@
 
 
 Name:           libchipcard
-Version:        5.1.5
+Version:        5.1.6
 Release:        0
-%define _version 5.1.5rc2
+%define _version 5.1.6
 Summary:        Library That Allows Access to Smart Cards (Chipcards)
 License:        GPL-2.0-or-later
 Group:          Hardware/Other
-URL:            http://www.aquamaniac.de/sites/libchipcard/index.php
-Source:         %{name}-%{_version}.tar.gz
-#Source:        https://www.aquamaniac.de/rdm/attachments/download/229/libchipcard-5.1.5rc2.tar.gz
+URL:            https://www.aquamaniac.de/rdm/projects/libchipcard/
+Source:         https://www.aquamaniac.de/rdm/attachments/download/382/libchipcard-5.1.6.tar.gz
+Source1:        https://www.aquamaniac.de/rdm/attachments/download/381/libchipcard-5.1.6.tar.gz.asc
 Source100:      libchipcard-rpmlintrc
 Patch0:         libchipcard-buildsrcdoc.patch
 BuildRequires:  doxygen
