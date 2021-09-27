@@ -1,7 +1,7 @@
 #
 # spec file for package terminus-ttf-fonts
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %define fontname terminus-ttf
 Name:           terminus-ttf-fonts
-Version:        4.47.0
+Version:        4.49.1
 Release:        0
 Summary:        Terminus Truetype Fonts
 License:        OFL-1.1
 Group:          System/X11/Fonts
-Url:            http://files.ax86.net/terminus-ttf
-Source:         http://files.ax86.net/%{fontname}/files/%{version}/%{fontname}-%{version}.zip
+URL:            https://files.ax86.net/terminus-ttf
+Source:         https://files.ax86.net/%{fontname}/files/%{version}/%{fontname}-%{version}.zip
 BuildRequires:  fontpackages-devel
 BuildRequires:  unzip
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 %reconfigure_fonts_prereq
 

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 23 09:53:10 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.49.1
+  * Added the basic 27 hebrew letters and sheqel, with uppercase
+    height.
+  * Altered ascii grave in some sizes to be more useful as a back
+    quote.
+  * Fixed 21B5, added 21B2 and 21B3.
+
+-------------------------------------------------------------------
 Sat Jan  5 17:20:38 UTC 2019 - aloisio@gmx.com
 
 - Update to version 4.47.0
