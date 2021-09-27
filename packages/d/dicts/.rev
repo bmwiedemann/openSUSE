@@ -211,4 +211,16 @@ Use a license from the spreadsheet linked at http://license.opensuse.org (forwar
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>792005</requestid>
   </revision>
+  <revision rev="30" vrev="422">
+    <srcmd5>7c078605371356a313dfb15eca47938b</srcmd5>
+    <version>1.5</version>
+    <time>1632766125</time>
+    <user>dimstar_suse</user>
+    <comment>- OK, it is a package rename and it is noarch 
+
+- Mark the package split dicts into dicts and dicts-devel as such 
+
+- Smaller cleanups</comment>
+    <requestid>921789</requestid>
+  </revision>
 </revisionlist>

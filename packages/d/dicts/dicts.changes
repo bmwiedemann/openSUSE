@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 27 09:39:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- OK, it is a package rename and it is noarch 
+
+-------------------------------------------------------------------
+Fri Sep 24 06:07:30 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Mark the package split dicts into dicts and dicts-devel as such 
+
+-------------------------------------------------------------------
+Mon Sep  6 08:00:10 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Smaller cleanups 
+
+-------------------------------------------------------------------
 Tue Mar 31 15:06:13 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
 - Declare string functions

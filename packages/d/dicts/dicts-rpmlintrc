@@ -1,4 +1,7 @@
-addFilter(".*suse-filelist-forbidden.*/usr/src/dicts/rus-ispell/old/README.orig")
+addFilter(".*filelist-forbidden.*/usr/src/dicts/rus-ispell/old/README.orig")
 # see the comment in the spec file
-addFilter("no-binary")
-addFilter("not recommended to have unversioned Obsoletes:")
+addFilter(".*non-executable-script.*")
+addFilter(".*self-obsoletion.*")
+addFilter(".*hidden-file-or-dir.*")
+addFilter(".*filelist-forbidden-fhs23.*")
+addFilter(".*backup-file-in-package.*")

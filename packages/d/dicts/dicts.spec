@@ -1,7 +1,7 @@
 #
 # spec file for package dicts
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,6 +103,17 @@ ispell-estonian)
 
 Read the READMEs under /usr/src/dicts.
 
+%package     devel
+Summary:        Source code of ispell dicts packages
+License:        BSD-3-Clause AND GPL-2.0-or-later AND SUSE-Permissive AND LGPL-2.1-only AND MPL-1.1 AND CC-BY-SA-1.0
+Group:          Productivity/Text/Spell
+Provides:       dicts:/usr/src/dicts/fix8bit.c
+Obsoletes:      dicts
+BuildArch:      noarch
+
+%description devel
+This package includes the source code of various ispell
+dicts packages for completeness.
 
 %package     -n ispell-german
 Summary:        German ispell dictionary
@@ -272,7 +283,7 @@ the package dicts.
 
 %package     -n ispell-polish
 Summary:        Polish ispell dictionary
-License:        GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1 AND CC-BY-SA-1.0
+License:        CC-BY-SA-1.0 AND GPL-2.0-only AND LGPL-2.1-only AND MPL-1.1
 Group:          Productivity/Text/Spell
 Provides:       ipolish
 Provides:       ispell_dictionary
@@ -410,6 +421,7 @@ find . -type f -exec chmod 0644 {} +
 
 %install
   make -f Makefile.Linux DESTDIR=$RPM_BUILD_ROOT install
+  find $RPM_BUILD_ROOT/usr/src/dicts -size 0c -exec rm -vf '{}' \+
   %fdupes $RPM_BUILD_ROOT/usr/src/dicts
 
 %files -n ispell-german
@@ -563,7 +575,7 @@ find . -type f -exec chmod 0644 {} +
 /usr/lib/ispell/estonian.hash
 %doc /usr/share/doc/packages/ispell-estonian/
 
-%files
+%files devel
 %defattr(-, root, root)
 /usr/src/dicts/
 %doc /usr/share/doc/packages/dicts/

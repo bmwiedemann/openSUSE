@@ -92,7 +92,7 @@
 +#
 +#
 +#
-+# Makefile.Linux to integrate package into source tree of SuSE Linux.
++# Makefile.Linux to integrate package into source tree of SUSE Linux.
 +#
 +# Copyright (c) 1996-99 SuSE GmbH Fuerth, Germany.   
 +#
@@ -408,7 +408,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-$(LANGUAGE)
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ../README.SuSE
++DOCSOURCE	=	README ../README.SUSE
 +
 +prefix=/usr
  BINDIR=$(prefix)/bin
@@ -630,7 +630,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -644,7 +644,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-dutch
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ../README.SuSE
++DOCSOURCE	=	README ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -715,7 +715,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -729,7 +729,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-greek
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	../README.SuSE
++DOCSOURCE	=	../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -870,7 +870,7 @@
 @@ -0,0 +1,44 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -884,7 +884,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-esperanto
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README legumin.l3 ../README.SuSE
++DOCSOURCE	=	README legumin.l3 ../README.SUSE
 +DICTALWAYS	=	etnoland.txt kancero.txt kerno.txt komputo.txt \
 +			movado.txt personoj.txt pok.txt
 +
@@ -932,7 +932,7 @@
 @@ -0,0 +1,43 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -947,7 +947,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-spanish
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	LEAME README ../README.SuSE
++DOCSOURCE	=	LEAME README ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1028,7 +1028,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1042,7 +1042,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-estonian
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	lesser.txt ../README.SuSE
++DOCSOURCE	=	lesser.txt ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1112,7 +1112,7 @@
 @@ -0,0 +1,43 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1126,7 +1126,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-finnish
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	CHANGELOG COPYING ../README.SuSE
++DOCSOURCE	=	CHANGELOG COPYING ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1193,7 +1193,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1207,7 +1207,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-french
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	LISEZMOI COPYING MANIFEST ChangeLog ../README.SuSE
++DOCSOURCE	=	LISEZMOI COPYING MANIFEST ChangeLog ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1333,7 +1333,7 @@
 @@ -0,0 +1,75 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1369,7 +1369,7 @@
 +AFFIXES		=	deutsch.aff
 +PACKNAME	=	ispell-german
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ANNOUNCE Changes Contributors ../README.SuSE
++DOCSOURCE	=	README ANNOUNCE Changes Contributors ../README.SUSE
 +
 +
 +all:	deutschmed.hash deutschlxg.hash
@@ -1468,7 +1468,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1482,7 +1482,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-danish
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	COPYING danish.html ../README.SuSE
++DOCSOURCE	=	COPYING danish.html ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1596,7 +1596,7 @@
  
 +PACKNAME	= ispell-$(LANGUAGE)
 +DOCDIR		= /usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	= README ../README.SuSE
++DOCSOURCE	= README ../README.SUSE
 +MAKE_SORTTMP	= -T /var/tmp
 +
  all: $(LANGUAGE).hash
@@ -1662,7 +1662,7 @@
 +helps to go on.
 +
 +
-+Your SuSE Team
++Your SUSE Team
 --- ispellcat/LC_CTYPE
 +++ ispellcat/LC_CTYPE	2020-03-31 14:57:25.765678656 +0000
 @@ -0,0 +1 @@
@@ -1672,7 +1672,7 @@
 @@ -0,0 +1,43 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1687,7 +1687,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-catalan
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	LLEGEIX CENTERDOT ../README.SuSE
++DOCSOURCE	=	LLEGEIX CENTERDOT ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1867,7 +1867,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -1881,7 +1881,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-swedish
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	LaeSMIG COPYING Copyright ../README.SuSE
++DOCSOURCE	=	LaeSMIG COPYING Copyright ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -1990,7 +1990,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -2004,7 +2004,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-italian
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ../README.SuSE
++DOCSOURCE	=	README ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -2174,7 +2174,7 @@
  
 +PACKNAME	=	ispell-norsk
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ../README.SuSE
++DOCSOURCE	=	README ../README.SUSE
 +
 +
  #
@@ -2391,7 +2391,7 @@
 @@ -0,0 +1,40 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -2405,7 +2405,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-portuguese
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ../README.SuSE
++DOCSOURCE	=	README ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
@@ -2486,7 +2486,7 @@
 @@ -0,0 +1,46 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -2500,7 +2500,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-russian
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README README.koi ../README.SuSE
++DOCSOURCE	=	README README.koi ../README.SUSE
 +DICTALWAYS	=	base.koi \
 +			computer.koi \
 +			geography.koi \
@@ -2622,7 +2622,7 @@
 @@ -0,0 +1,45 @@
 +#
 +# Simple Makefile to integrate this language into
-+# SuSE Linux
++# SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -2636,7 +2636,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-polish
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	../README.SuSE
++DOCSOURCE	=	../README.SUSE
 +DICTALWAYS	=	polish.all polish.minus
 +
 +
@@ -2720,7 +2720,7 @@
 +++ slovensko/Makefile	2020-03-31 14:57:25.789678192 +0000
 @@ -0,0 +1,39 @@
 +#
-+# Simple Makefile to integrate this language into SuSE Linux
++# Simple Makefile to integrate this language into SUSE Linux
 +#
 +BUILDHASH	=	buildhash
 +LIBDIR		=	/usr/lib/ispell
@@ -2734,7 +2734,7 @@
 +HASHFILE	=	$(LANGUAGE).hash
 +PACKNAME	=	ispell-slovene
 +DOCDIR		=	/usr/share/doc/packages/$(PACKNAME)
-+DOCSOURCE	=	README ../README.SuSE
++DOCSOURCE	=	README ../README.SUSE
 +
 +
 +all:	$(HASHFILE)
