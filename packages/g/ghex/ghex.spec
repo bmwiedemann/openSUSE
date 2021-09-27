@@ -1,7 +1,7 @@
 #
 # spec file for package ghex
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,16 @@
 
 
 Name:           ghex
-Version:        3.18.4
+Version:        3.41.0
 Release:        0
 Summary:        GNOME Binary Editor
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
-URL:            http://www.gnome.org/
-Source:         http://download.gnome.org/sources/ghex/3.18/%{name}-%{version}.tar.xz
+URL:            https://wiki.gnome.org/Apps/Ghex
+Source:         https://download.gnome.org/sources/ghex/3.41/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
-BuildRequires:  meson
+BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  yelp-tools
@@ -73,14 +73,14 @@ a non-ASCII format for saving.
 
 %suse_update_desktop_file -r org.gnome.GHex GNOME Utility Editor
 %find_lang %{name} ghex-3.0.lang %{?no_lang_C}
-%fdupes -s %{buildroot}
+%fdupes -s %{buildroot}%{_datadir}
 
 %post -n libgtkhex-3-0 -p /sbin/ldconfig
 %postun -n libgtkhex-3-0 -p /sbin/ldconfig
 
 %files
 %license COPYING
-%doc README COPYING-DOCS AUTHORS
+%doc README.md COPYING-DOCS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/ghex
 %{_datadir}/metainfo/org.gnome.GHex.appdata.xml

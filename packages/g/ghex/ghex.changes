@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 24 18:43:43 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.41.0:
+  + No changes, version bump only.
+- Changes from version 3.41.rc:
+  + Fix internal copy/paste between multiple GHex windows.
+  + Install symbolic icon in correct location.
+- Changes from version 3.41.beta:
+  + Meson build fixes.
+  + Update HACKING guide.
+  + Show top 32-bits of 64-bit integers.
+  + Update app icon.
+  + Add padding after offset.
+  + Fix cut, copy and paste behaviour.
+  + Remove/rework outdated/obsolete documentation.
+  + Updated translations.
+- Update URL to new GNOME wiki home.
+- Tweak fdupes macro call.
+
+-------------------------------------------------------------------
 Thu Jan 30 11:10:15 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - No longer recommend -lang: supplements are in use

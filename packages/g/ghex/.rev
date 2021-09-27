@@ -405,4 +405,27 @@ Proposed for 12.3, as having a patch addressing the same fix as was done in anot
     <comment>Removal of -lang recommends (forwarded request 768589 from dimstar)</comment>
     <requestid>768667</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>b70676b43233a63271c3c60a09f5843b</srcmd5>
+    <version>3.41.0</version>
+    <time>1632766133</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.41.0:
+  + No changes, version bump only.
+- Changes from version 3.41.rc:
+  + Fix internal copy/paste between multiple GHex windows.
+  + Install symbolic icon in correct location.
+- Changes from version 3.41.beta:
+  + Meson build fixes.
+  + Update HACKING guide.
+  + Show top 32-bits of 64-bit integers.
+  + Update app icon.
+  + Add padding after offset.
+  + Fix cut, copy and paste behaviour.
+  + Remove/rework outdated/obsolete documentation.
+  + Updated translations.
+- Update URL to new GNOME wiki home.
+- Tweak fdupes macro call. (forwarded request 921363 from iznogood)</comment>
+    <requestid>921592</requestid>
+  </revision>
 </revisionlist>
