@@ -336,6 +336,7 @@ Patch30:        gcc7-pr88522.patch
 Patch31:        gcc7-testsuite-fixes.patch
 Patch32:        gcc7-pr81942.patch
 Patch33:        gcc7-sanitizer-cyclades.patch
+Patch34:        gcc7-ada-MINSTKSZ.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -485,6 +486,7 @@ ln -s nvptx-newlib/newlib .
 %patch31 -p1
 %patch32 -p1
 %patch33 -p1
+%patch34 -p1
 %patch51
 %patch60
 %patch61

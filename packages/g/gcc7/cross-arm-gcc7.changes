@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 27 07:35:46 UTC 2021 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-ada-MINSTKSZ.patch to fix build with glibc 2.34.
+- Add bits/unistd_ext.h to the list of removed fixed includes.
+
+-------------------------------------------------------------------
 Wed Jul 21 06:27:06 UTC 2021 - Richard Biener <rguenther@suse.com>
 
 - Add gcc7-sanitizer-cyclades.patch to remove cyclades.h use from
