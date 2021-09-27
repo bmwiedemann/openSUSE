@@ -6187,7 +6187,6 @@ unsorted:
   - gstreamer-devel-32bit: [x86_64] 
   - gstreamer-devtools 
   - gstreamer-devtools-devel 
-  - gstreamer-doc 
   - gstreamer-docs 
   - gstreamer-editing-services 
   - gstreamer-editing-services-devel 
@@ -6197,23 +6196,18 @@ unsorted:
   - gstreamer-plugins-bad-chromaprint 
   - gstreamer-plugins-bad-chromaprint-32bit: [x86_64] 
   - gstreamer-plugins-bad-devel 
-  - gstreamer-plugins-bad-doc 
   - gstreamer-plugins-bad-fluidsynth 
   - gstreamer-plugins-bad-fluidsynth-32bit: [x86_64] 
   - gstreamer-plugins-base-32bit: [x86_64] 
   - gstreamer-plugins-base-devel 
   - gstreamer-plugins-base-devel-32bit: [x86_64] 
-  - gstreamer-plugins-base-doc 
   - gstreamer-plugins-farstream-32bit: [x86_64] 
   - gstreamer-plugins-good-32bit: [x86_64] 
-  - gstreamer-plugins-good-doc 
   - gstreamer-plugins-good-extra-32bit: [x86_64] 
   - gstreamer-plugins-good-jack-32bit: [x86_64] 
   - gstreamer-plugins-libav-32bit: [x86_64] 
-  - gstreamer-plugins-libav-doc 
   - gstreamer-plugins-libcamera 
   - gstreamer-plugins-ugly-32bit: [x86_64] 
-  - gstreamer-plugins-ugly-doc 
   - gstreamer-plugins-vaapi 
   - gstreamer-rtsp-server-devel 
   - gstreamer-transcoder-devel 
@@ -23762,7 +23756,6 @@ unsorted:
   - python36-spake2 
   - python36-spark_parser 
   - python36-speaklater 
-  - python36-spec 
   - python36-sphinx-argparse 
   - python36-sphinx-autodoc-typehints 
   - python36-sphinx-bootstrap-theme 
@@ -23907,7 +23900,6 @@ unsorted:
   - python36-towncrier 
   - python36-tox 
   - python36-tox-no-internet 
-  - python36-tox-travis 
   - python36-tox-wheel 
   - python36-tpfd 
   - python36-tqdm 
@@ -26656,7 +26648,6 @@ unsorted:
   - python38-spark_parser 
   - python38-sparse 
   - python38-speaklater 
-  - python38-spec 
   - python38-sphinx-argparse 
   - python38-sphinx-autodoc-typehints 
   - python38-sphinx-book-theme 
@@ -26817,7 +26808,6 @@ unsorted:
   - python38-towncrier 
   - python38-tox 
   - python38-tox-no-internet 
-  - python38-tox-travis 
   - python38-tox-wheel 
   - python38-tpfd 
   - python38-tqdm 
@@ -29766,7 +29756,6 @@ unsorted:
   - python39-spark_parser 
   - python39-sparse 
   - python39-speaklater 
-  - python39-spec 
   - python39-sphinx-argparse 
   - python39-sphinx-autodoc-typehints 
   - python39-sphinx-book-theme 
@@ -29933,7 +29922,6 @@ unsorted:
   - python39-towncrier 
   - python39-tox 
   - python39-tox-no-internet 
-  - python39-tox-travis 
   - python39-tox-wheel 
   - python39-tpfd 
   - python39-tqdm 
