@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 26 11:11:24 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Add issue-2485156-Fix-fc35-issues.patch from upstream to fix
+  compilation with newer glibc (deprecated pthread_yield)
+
+-------------------------------------------------------------------
 Mon Jun 28 12:54:15 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to 9.3.1
