@@ -69,16 +69,20 @@ corporate firewall, or in a datacenter.
 This package provides the command if it is meant to be used without tensorflow2
 
 %prep
-%setup -q -c tensorboard-%{version}
+%setup -q -c tensorboard-%{version} -T
 
 %build
-:
+# deprecated usage of wheel in cwd for pyproject_install due to old python-rpm-macros on Leap 15.X
+cp %{SOURCE0} .
 
 %install
-%pyproject_install %{SOURCE0}
+%pyproject_install
 cp %{buildroot}%{python3_sitelib}/tensorboard-%{version}.dist-info/LICENSE .
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand chmod a-x  %{buildroot}%{$python_sitelib}/tensorboard/webfiles.zip tensorboard/plugins/projector/tf_projector_plugin//projector_binary.{html,js}
+%{python_expand #
+%fdupes %{buildroot}%{$python_sitelib}
+chmod a-x %{buildroot}%{$python_sitelib}/tensorboard/webfiles.zip \
+          %{buildroot}%{$python_sitelib}/tensorboard/plugins/projector/tf_projector_plugin/projector_binary.{html,js}
+}
 
 #%%check
 # no testsuite without bazel
