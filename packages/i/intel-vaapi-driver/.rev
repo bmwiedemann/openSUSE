@@ -146,4 +146,12 @@ vaapi-intel-driver needs to be dropped then.</comment>
 - fixed sha1sum checksum file</comment>
     <requestid>888751</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>fd77faef94b3d969eb2c54b2cc009e3a</srcmd5>
+    <version>2.4.1</version>
+    <time>1632766147</time>
+    <user>dimstar_suse</user>
+    <comment>- covers jira#SLE/SLE-19446</comment>
+    <requestid>921801</requestid>
+  </revision>
 </revisionlist>
