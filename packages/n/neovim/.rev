@@ -397,4 +397,54 @@
   - neovim-0.4.4-findlua54.patch</comment>
     <requestid>905327</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e7955e3ea7b5bfb18a20b3be84be93bc</srcmd5>
+    <version>0.5.1</version>
+    <time>1632766134</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily switch off failing builds on aarch64
+- Update to 0.5.1:
+BREAKING CHANGES:
+  - feat(lua)!: register_keystroke_callback =&gt; on_key
+  - feat(lsp)!: change handler signature #15504
+FEATURES:
+  - feat(jobstart): add parameter to close stdin
+FIXES:
+  - #15732 fix(inccommand): ignore trailing commands only for *previewed* command
+  - backport: fix(windowing): positioning of relative floats
+  - #15495 backport: tests(lua/on_yank): assert conditions that fail correctly
+  - #15482 backport: fix(lua): verify buffer in highlight.on_yank
+  - #15454 backport: fix(window.c): win_close from other tabpage
+  - #15372 backport: fix(autocmd.c): fix conditions in block_autocmds, unblock_autocmds
+  - backport: refactor(sign): include longer sign column option
+  - backport: fix(sign): reset auto sign column with minimum in float win minimal style
+  - backport: fix(decorations): crash when :bdelete (extmark_free_all) after clear_namespace
+  - #15111 backport: fix(:source): copy curbuf lines to memory before sourcing
+  - #14809 backport: fix(:source, nvim_exec): handle Vimscript line continuations
+  - #15043 backport: test/memory_usage_spec: skip on MacOS
+  - #14984 backport: fixup(clipboard): Fix error not properly handled
+  - #14982 backport: fix(vim.opt): vimL map string values not trimmed
+  - #14962 backport: fixup(clipboard): Use case matching
+  - #15489 fix(man.vim): filetype=man is too eager
+  - build: use RelWithDebInfo build for nightlies, Release for releases
+  - build: update appdata.xml version in release commit
+  - test(treesitter): skip all parsers tests if parsers aren't installed
+  - Rename stdin to stdin_mode (fixes Windows build)
+FIXES (LSP):
+  - #15523 backport: fix(lsp): resolve bufnr in buf_is_attached
+  - backport: fix(lsp): Ensure human readable errors are printed
+  - backport: fix(lsp): Ensure users get feedback on references/symbols errors or empty results
+  - #14954 backport: fix(lsp): correctly check for windows in lsp logger
+  - #15023 backport: fix(lsp): restore diagnostics extmarks that were moved to the last edit line
+  - #15011 backport: fix(lsp): restore diagnostics extmarks on buffer changes
+  - backport: fix(lsp): prevent double &lt;text&gt; for cached plaintext markup
+  - feat(lsp): allow root_dir to be nil (#15430) (Mathias Fußenegger)
+  - lsp(start_client): Allow passing custom workspaceFolders to the LSP (#15132) (sim)
+  - fix(lsp): check if buffer is valid in changetracking (#15505) (Jose Alvarez)
+  - fix(lsp): avoid ipairs on non-sequential tables (#15059) (Michael Lingelbach)
+  - feat(lsp): improve vim.lsp.util.apply_text_edits (#15561) (hrsh7th)
+  - feat(lsp): improve logging (#15636) (Michael Lingelbach)
+</comment>
+    <requestid>921678</requestid>
+  </revision>
 </revisionlist>

@@ -36,12 +36,14 @@
 %endif
 %endif
 Name:           neovim
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        Vim-fork focused on extensibility and agility
 License:        Apache-2.0 AND Vim
 Group:          Productivity/Text/Editors
 URL:            https://neovim.io/
+# Temporary measure before we can figure out what to do
+ExcludeArch:    aarch64
 Source0:        https://github.com/neovim/neovim/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        sysinit.vim
 Source2:        spec-template
@@ -129,7 +131,12 @@ parts of Vim, without compromise, and more.
 %define vimplugin_dir %{_datadir}/vim/site
 
 %prep
-%autosetup -p1
+%setup -q
+%patch0 -p1
+# %%if %%{without luajit}
+%patch1 -p1
+# %%endif
+%patch2 -p1
 
 # Remove __DATE__ and __TIME__.
 BUILD_TIME=$(LC_ALL=C date -ur %{_sourcedir}/%{name}.changes +'%{H}:%{M}')
@@ -148,15 +155,15 @@ export CXXFLAGS="%{optflags} -fcommon"
 %{__cmake} .. -DCMAKE_BUILD_TYPE=RelWithDebInfo \
        -DPREFER_LUA=%{?with_luajit:OFF}%{!?with_luajit:ON} \
        -DLUA_PRG=%{_bindir}/%{?with_luajit:luajit}%{!?with_luajit:lua} \
-       -DLIBLUV_INCLUDE_DIR=%{_includedir}/lua-%{luaver} \
+       -DLIBLUV_INCLUDE_DIR=%{_includedir}/lua%{luaver} \
        -DLIBLUV_LIBRARY=%{_libdir}/lua/%{luaver}/luv.so \
        -DCMAKE_SKIP_RPATH=ON -DCMAKE_VERBOSE_MAKEFILE=ON \
        -DUSE_BUNDLED=OFF -DLUAJIT_USE_BUNDLED=OFF \
        -DCMAKE_COLOR_MAKEFILE=OFF \
        -DCMAKE_C_FLAGS_RELWITHDEBINFO="$opts" \
        -DCMAKE_INSTALL_PREFIX:PATH=%{_prefix} \
-       -DLIBLUV_LIBRARY=%{lua_archdir}/luv.so \
-       -DLIBLUV_INCLUDE_DIR:PATH=%{lua_incdir}
+       -DLUA_LIBRARY=%{lua_archdir}/luv.so \
+       -DLUA_INCLUDE_DIR:PATH=%{lua_incdir}
 %make_build
 
 popd
