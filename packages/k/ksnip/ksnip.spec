@@ -17,7 +17,7 @@
 
 
 Name:           ksnip
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Screenshot tool
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  kColorPicker-devel
-BuildRequires:  kImageAnnotator-devel >= 0.5.1
+BuildRequires:  kImageAnnotator-devel >= 0.5.2
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
 BuildRequires:  xvfb-run
