@@ -18,7 +18,7 @@
 
 %define cpan_name Proc-ProcessTable
 Name:           perl-Proc-ProcessTable
-Version:        0.611
+Version:        0.634
 Release:        0
 #Upstream: Artistic-2.0
 Summary:        Perl extension to access the unix process table
