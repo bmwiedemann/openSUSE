@@ -373,6 +373,15 @@ Wed Sep  1 14:19:19 UTC 2021 - Michal Vyskocil <mvyskocil@opensuse.org>
   available manner.
   * api-change:``batch``: [``botocore``] Add support for ListJob filters
 
+
+-------------------------------------------------------------------
+Tue Aug 24 12:44:10 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Disables Py 2 build for SLE 15
+  + Py 2 is considered legacy with limited support. Should not have been
+    built or released for Py 2. This was a mistake.
+
+
 -------------------------------------------------------------------
 Tue Jul 27 14:34:59 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
@@ -713,6 +722,12 @@ Wed Jul 21 10:35:46 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
     that allows users to customize AutoML strategy. If provided in CreatePredictor request, this field is visible
     in DescribePredictor and GetAccuracyMetrics responses.
 - Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
+Tue Jul  6 08:46:48 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable python2 builds for SLE-15
+
 
 -------------------------------------------------------------------
 Thu Jun  3 13:14:17 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
