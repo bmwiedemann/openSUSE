@@ -623,4 +623,17 @@
     <comment>Hardening: link as PIE (bsc#1184123). (forwarded request 887317 from wfrisch)</comment>
     <requestid>887564</requestid>
   </revision>
+  <revision rev="60" vrev="4">
+    <srcmd5>5429b0345ab0e3c522031186e159ea2e</srcmd5>
+    <version>0.20.2</version>
+    <time>1632766152</time>
+    <user>dimstar_suse</user>
+    <comment>- previous version updates fixed also:
+  * CVE-2018-20337,CVE-2018-20363,CVE-2018-20364,CVE-2018-20365,
+    CVE-2018-5815,CVE-2018-5816,CVE-2018-5817,CVE-2018-5818,
+    CVE-2018-5819
+   (bsc#1097975,bsc#1103206,bsc#1120498,bsc#1120499,bsc#1120500,
+    bsc#1120515,bsc#1120516,bsc#1120517,bsc#1120519)</comment>
+    <requestid>921823</requestid>
+  </revision>
 </revisionlist>

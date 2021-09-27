@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 27 14:51:25 UTC 2021 - pgajdos@suse.com
+
+- previous version updates fixed also:
+  * CVE-2018-20337,CVE-2018-20363,CVE-2018-20364,CVE-2018-20365,
+    CVE-2018-5815,CVE-2018-5816,CVE-2018-5817,CVE-2018-5818,
+    CVE-2018-5819
+   (bsc#1097975,bsc#1103206,bsc#1120498,bsc#1120499,bsc#1120500,
+    bsc#1120515,bsc#1120516,bsc#1120517,bsc#1120519)
+
+-------------------------------------------------------------------
 Wed Apr 21 13:31:51 UTC 2021 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Hardening: link as PIE (bsc#1184123).
