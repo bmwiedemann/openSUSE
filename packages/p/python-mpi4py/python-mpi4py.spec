@@ -17,14 +17,15 @@
 
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
+%define skip_python2 1
 %define skip_python36 1
-%if 0%{?sle_version} && 0%{?sle_version} < 150000
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
   %define mpiver  openmpi
 %else
   %define mpiver  openmpi4
 %endif
 Name:           python-mpi4py
-Version:        3.0.3
+Version:        3.1.1
 Release:        0
 Summary:        MPI for Python
 License:        BSD-2-Clause
@@ -103,8 +104,9 @@ Documentation files and demos for %{name}.
 
 %prep
 %setup -q -n mpi4py-%{version}
-rm demo/*/runtests.bat docs/source/usrman/make.bat
+rm demo/*/runtests.bat docs/source/usrman/make.bat docs/source/usrman/.gitignore
 sed -i 's/\r$//' docs/usrman/objects.inv
+sed -i '1!b;/^#!\/usr\/bin\/python/d' demo/python-config
 
 %build
 source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Sep 26 13:11:39 UTC 2021 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 3.1.1
+  + Warning
+  + This is the last release supporting Python 2.
+    * Fix typo in Requires-Python package metadata.
+    * Regenerate C sources with Cython 0.29.24.
+
+- Update to 3.1.0
+  + Warning
+  + This is the last release supporting Python 2.
+    * New features:
+    * mpi4py.util: New package collecting miscellaneous utilities.
+    * Enhancements:
+    * Add pickle-based Request.waitsome() and Request.testsome().
+    * Add lowercase methods Request.get_status() and
+      Request.cancel().
+    * Support for passing Python GPU arrays compliant with the
+      DLPack data interchange mechanism (link) and the
+      __cuda_array_interface__ (CAI) standard (link) to uppercase
+      methods. This support requires that mpi4py is built against
+      CUDA-aware MPI implementations. This feature is currently
+      experimental and subject to future changes.
+    * mpi4py.futures: Add support for initializers and canceling
+      futures at shutdown. Environment variables names now follow
+      the pattern MPI4PY_FUTURES_*, the previous MPI4PY_* names are
+      deprecated.
+    * Add type annotations to Cython code. The first line of the
+      docstring of functions and methods displays a signature
+      including type annotations.
+    * Add companion stub files to support type checkers.
+    * Support for weak references.
+    * Miscellaneous:
+    * Add a new mpi4py publication (link) to the citation listing.
+
+- Minor packaging cleanups
+- Disable Python2 builds
+
+-------------------------------------------------------------------
 Sat Sep 18 01:29:32 UTC 2021 - Christoph Junghans <junghans@votca.org>
 
 - Reactivate test_msgspec, disable test_spawn
