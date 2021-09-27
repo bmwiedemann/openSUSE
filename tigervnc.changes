@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 27 12:51:25 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- covers SLE/SLE-18630
+
+-------------------------------------------------------------------
 Mon Aug 23 13:49:20 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Remove --with-pic which has no effect with --disable-static.
