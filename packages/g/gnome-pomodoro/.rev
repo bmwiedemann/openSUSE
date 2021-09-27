@@ -234,4 +234,13 @@ doesn't work anyway. (forwarded request 796279 from develop7)</comment>
   * Fix indicator opacity after lock screen (forwarded request 920337 from jubalh)</comment>
     <requestid>920542</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8b46fc44b21e4511d81fd50f3c13202c</srcmd5>
+    <version>0.20.0</version>
+    <time>1632766134</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.20.0:
+  * Support for GNOME Shell 41 (forwarded request 921536 from jubalh)</comment>
+    <requestid>921594</requestid>
+  </revision>
 </revisionlist>

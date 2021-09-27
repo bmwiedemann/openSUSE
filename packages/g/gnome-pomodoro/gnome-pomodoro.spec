@@ -18,7 +18,7 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           gnome-pomodoro
-Version:        0.19.2
+Version:        0.20.0
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
@@ -32,6 +32,7 @@ BuildRequires:  gettext >= 0.19.6
 BuildRequires:  gnome-common
 BuildRequires:  gnome-shell < 41
 BuildRequires:  gnome-shell >= 3.36.0
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
@@ -63,12 +64,11 @@ intends to improve productivity and focus by taking short breaks after every
 %setup -q
 
 %build
-NOCONFIGURE=1 ./autogen.sh
-LDFLAGS="-Wl,--as-needed" %configure --disable-static
-%make_build
+%meson
+%meson_build
 
 %install
-make install DESTDIR=%{buildroot} INSTALL="install -p"
+%meson_install
 find %{buildroot} -type f -name "*.la" -delete -print
 desktop-file-edit %{buildroot}/%{_datadir}/applications/*.desktop \
     --set-key=X-AppInstall-Package --set-value=%{name}
