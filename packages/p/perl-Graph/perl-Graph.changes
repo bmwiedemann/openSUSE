@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 14 03:06:13 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.9724
+   see /usr/share/doc/packages/perl-Graph/Changes
+
+  0.9724 2021-09-13
+  - make deep_copy not interfere with $. - thanks @merkys for report
+
+-------------------------------------------------------------------
 Thu Sep  2 03:06:51 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.9723
