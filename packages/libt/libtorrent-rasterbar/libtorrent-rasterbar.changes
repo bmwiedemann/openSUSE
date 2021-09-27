@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 25 17:02:38 UTC 2021 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Add libtorrent-rasterbar-2.0.4-handler-buffer.patch: bump handler
+  allocation sizes for boost-1.77 (commit 8ed34b67d).
+
+-------------------------------------------------------------------
 Mon Jun  7 08:51:48 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.4
