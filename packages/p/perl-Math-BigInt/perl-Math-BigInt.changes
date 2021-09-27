@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 22 03:06:37 UTC 2021 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.999824
+   see /usr/share/doc/packages/perl-Math-BigInt/CHANGES
+
+  1.999824 2021-09-20
+   * Don't allow mixing math libraries. Use the first backend math library that is
+     successfully loaded, and ignore any further attempts at loading a different
+     backend library. This is a solution to the re-occurring problem of using
+     objects using different math libraries.
+   * Add missing documentation.
+   * Miscellaneous minor improvements.
+
+-------------------------------------------------------------------
 Tue Jul 13 03:07:40 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.999823
