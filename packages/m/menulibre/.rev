@@ -19,4 +19,12 @@
     <comment></comment>
     <requestid>706728</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>12a76821fdaeced6790d3151c7215b20</srcmd5>
+    <version>2.2.3</version>
+    <time>1632766136</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed Source URL (previous commit was wrong) (forwarded request 921555 from mauriziogalli)</comment>
+    <requestid>921691</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep 27 05:33:07 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed Source URL (previous commit was wrong)
+
+-------------------------------------------------------------------
+Mon Sep 27 03:19:35 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
+
+- Fixed Source URL
+
+-------------------------------------------------------------------
+Sun Sep 26 19:36:10 UTC 2021 - Marcel Kuehlhorn <tux93@opensuse.org>
+
+- Update to version 2.2.3
+  * Fixed making diagnostic text selectable on KDE
+  * Fixed loading from non-existent directories
+  * Added diagnostics for failed menu loading
+  * Added support for GNOME-specific categories
+    (gh#bluesabre/menulibre#56)
+  * Added support for PrefersNonDefaultGPU (gh#bluesabre/menulibre#50)
+  * Added support for unprefixed applications.menu
+    (gh#bluesabre/menulibre#67)
+  * Added support for X-GNOME-UsesNotifications
+    (gh#bluesabre/menulibre#79)
+  * Added support for XFCE specific categories
+    (gh#bluesabre/menulibre#54)
+  * Enabled opening a root editor for root-owned files with pkexec
+    (gh#bluesabre/menulibre#62)
+  * Enabled searching for Exec key and desktop entry
+    (gh#bluesabre/menulibre#52)
+  * Added AppData file (gh#bluesabre/menulibre#61)
+  * Documented intltool build requirement (gh#bluesabre/menulibre#59)
+  * Switched to the MenuLibre wiki for key descriptions
+    (gh#bluesabre/menulibre#48)
+  * Added valid types to validator, reducing false positives
+    (gh#bluesabre/menulibre#66)
+  * Fixed builds with newer versions of GTK (gh#bluesabre/menulibre#77)
+  * Fixed history state when editing Name and Comment
+    (gh#bluesabre/menulibre#57)
+  * Fixed msgfmt errors
+  * Fixed running with newer versions of GTK (gh#bluesabre/menulibre#82)
+  * Fixed selection leaving screen while moving items
+    (gh#bluesabre/menulibre#25)
+  * Fixed typo in desktop file processing error
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri May 31 15:33:30 UTC 2019 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Polished spec file: 

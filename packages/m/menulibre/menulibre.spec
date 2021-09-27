@@ -1,7 +1,7 @@
 #
 # spec file for package menulibre
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 %bcond_with git
 
 Name:           menulibre
-Version:        2.2.1
+Version:        2.2.3
 Release:        0
 Summary:        Desktop menu editor
 License:        GPL-3.0-only
 Group:          System/GUI/Other
 URL:            https://bluesabre.org/projects/menulibre/
-Source:         https://launchpad.net/menulibre/2.2/%{version}/+download/%{name}-%{version}.tar.gz
+Source:         https://github.com/bluesabre/menulibre/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  appstream-glib
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gnome-menus
@@ -89,28 +90,20 @@ rm -rf %{buildroot}%{_datadir}/doc
 
 desktop-file-validate %{buildroot}/%{_datadir}/applications/menulibre.desktop
 
+rm -f %{buildroot}%{_datadir}/menulibre/metainfo/menulibre.appdata.xml.in
+appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
+
 %find_lang %{name}
 
 %files -f %{name}.lang
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README
+%doc AUTHORS NEWS README.md
 %{_bindir}/%{name}*
 %{_datadir}/applications/%{name}.desktop
-%dir %{_datadir}/icons/hicolor/
-%dir %{_datadir}/icons/hicolor/64x64/apps/
-%dir %{_datadir}/icons/hicolor/48x48/apps/
-%dir %{_datadir}/icons/hicolor/32x32/apps/
-%dir %{_datadir}/icons/hicolor/24x24/apps/
-%dir %{_datadir}/icons/hicolor/16x16/apps/
-%dir %{_datadir}/icons/hicolor/scalable/apps/
-%{_datadir}/icons/hicolor/64x64/apps/%{name}.svg
-%{_datadir}/icons/hicolor/48x48/apps/%{name}.svg
-%{_datadir}/icons/hicolor/32x32/apps/%{name}.svg
-%{_datadir}/icons/hicolor/24x24/apps/%{name}.svg
-%{_datadir}/icons/hicolor/16x16/apps/%{name}.svg
-%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+%{_datadir}/icons/hicolor/*/apps/%{name}.svg
+%{_datadir}/metainfo/%{name}.appdata.xml
 %{_datadir}/pixmaps/%{name}.png
 %{_mandir}/man?/%{name}*.?%{ext_man}
 %{python3_sitelib}/%{name}-%{version}-py%{py3_ver}.egg-info
