@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 26 21:15:03 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.0
+- Drop test-buffer-printf.patch, test-dl.patch (no longer applies)
+
+-------------------------------------------------------------------
 Tue Apr 14 11:47:51 UTC 2020 - Andreas Schwab <schwab@suse.de>
 
 - test-dl.patch, test-buffer-printf.patch: Fix undefined behviour in

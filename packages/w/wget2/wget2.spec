@@ -1,7 +1,7 @@
 #
 # spec file for package wget2
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           wget2
-Version:        1.99.2
+Version:        2.0.0
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -25,8 +25,7 @@ Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.gnu.org/software/wget/
 
 Source:         https://ftp.gnu.org/gnu/wget/%name-%version.tar.gz
-Patch1:         test-dl.patch
-Patch2:         test-buffer-printf.patch
+Source2:        https://ftp.gnu.org/gnu/wget/%name-%version.tar.gz.sig
 BuildRequires:  doxygen
 BuildRequires:  flex
 BuildRequires:  gettext-devel >= 0.18.1
@@ -53,12 +52,12 @@ zlib compression, parallel connections and use of If-Modified-Since
 HTTP header. HTTP/2 has been implemented. Wget2 also consumes less
 system and user CPU cycles than Wget1.x.
 
-%package -n libwget0
+%package -n libwget1
 Summary:        A library to download and mirror FTP/HTTP sites
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
-%description -n libwget0
+%description -n libwget1
 Wget enables you to retrieve WWW documents or FTP files from a
 server. This can be done in script files or via the command line.
 
@@ -83,31 +82,31 @@ to build against libwget.
 %build
 #./bootstrap --no-git --gnulib-srcdir="$PWD/gnulib"
 %configure --disable-static
-make %{?_smp_mflags}
+%make_build
 
 %check
-make %{?_smp_mflags} check
+%make_build check
 
 %install
 %make_install
 rm -f "%buildroot/%_bindir"/*_noinstall "%buildroot/%_libdir"/*.la
 %find_lang %name
 
-%post   -n libwget0 -p /sbin/ldconfig
-%postun -n libwget0 -p /sbin/ldconfig
+%post   -n libwget1 -p /sbin/ldconfig
+%postun -n libwget1 -p /sbin/ldconfig
 
 %files -f %name.lang
 %_bindir/wget*
 %license COPYING
 
-%files -n libwget0
-%_libdir/libwget.so.*
+%files -n libwget1
+%_libdir/libwget*.so.*
 %license COPYING.LESSER
 
 %files -n libwget-devel
 %_mandir/man3/*.3*
 %_libdir/pkgconfig/*.pc
-%_libdir/libwget.so
+%_libdir/libwget*.so
 %_includedir/wget*
 
 %changelog
