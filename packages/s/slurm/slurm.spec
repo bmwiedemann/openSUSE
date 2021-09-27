@@ -1,5 +1,5 @@
 #
-# spec file for package slurm
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -18,7 +18,7 @@
 
 # Check file META in sources: update so_version to (API_CURRENT - API_AGE)
 %define so_version 37
-%define ver 21.08.0
+%define ver 21.08.1
 %define _ver _21_08
 %define dl_ver %{ver}
 # so-version is 0 and seems to be stable
@@ -135,7 +135,6 @@ Patch0:         Remove-rpath-from-build.patch
 Patch1:         slurm-2.4.4-init.patch
 Patch2:         pam_slurm-Initialize-arrays-and-pass-sizes.patch
 Patch3:         load-pmix-major-version.patch
-Patch100:       Fix-statement-condition-in-netloc-autoconf-macro.patch
 
 %{?upgrade:Provides: %{pname} = %{version}}
 %{?upgrade:Conflicts: %{pname}}
@@ -547,7 +546,6 @@ Contains also cray specific documentation.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
-%patch100 -p1
 %if 0%{?python_ver} < 3
 # Workaround for wrongly flagged python3 to keep SLE-11-SP4 building
 mkdir -p mybin; ln -s /usr/bin/python2 mybin/python3

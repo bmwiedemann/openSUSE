@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Sep 17 07:22:44 UTC 2021 - Christian Goll <cgoll@suse.com>
+
+- updated to 21.08.1 with following bug fixes:
+  * Fix potential memory leak if a problem happens while allocating GRES for
+    a job.
+  * If an overallocation of GRES happens terminate the creation of a job.
+  * AutoDetect=nvml: Fatal if no devices found in MIG mode.
+  * Print federation and cluster sacctmgr error messages to stderr.
+  * Fix off by one error in --gpu-bind=mask_gpu.
+  * Add --gpu-bind=none to disable gpu binding when using --gpus-per-task.
+  * Handle the burst buffer state "alloc-revoke" which previously would not
+    display in the job correctly.
+  * Fix issue in the slurmstepd SPANK prolog/epilog handler where configuration
+    values were used before being initialized.
+  * Restore a step's ability to utilize all of an allocations memory if --mem=0.
+  * Fix --cpu-bind=verbose garbage taskid.
+  * Fix cgroup task affinity issues from garbage taskid info.
+  * Make gres_job_state_validate() client logging behavior as before 44466a4641.
+  * Fix steps with --hint overriding an allocation with --threads-per-core.
+  * Require requesting a GPU if --mem-per-gpu is requested.
+  * Return error early if a job is requesting --ntasks-per-gpu and no gpus or
+    task count.
+  * Properly clear out pending step if unavailable to run with available
+    resources.
+  * Kill all processes spawned by burst_buffer.lua including decendents.
+  * openapi/v0.0.{35,36,37} - Avoid setting default values of min_cpus,
+    job name, cwd, mail_type, and contiguous on job update.
+  * openapi/v0.0.{35,36,37} - Clear user hold on job update if hold=false.
+  * Prevent CRON_JOB flag from being cleared when loading job state.
+  * sacctmgr - Fix deleting WCKeys when not specifying a cluster.
+  * Fix getting memory for a step when the first node in the step isn't the
+    first node in the allocation.
+  * Make SelectTypeParameters=CR_Core_Memory default for cons_tres and cons_res.
+  * Correctly handle mutex unlocks in the gres code if failures happen.
+  * Give better error message if -m plane is given with no size.
+  * Fix --distribution=arbitrary for salloc.
+  * Fix jobcomp/script regression introduced in 21.08.0rc1 0c75b9ac9d.
+  * Only send the batch node in the step_hostlist in the job credential.
+  * When setting affinity for the batch step don't assume the batch host is node
+    0.
+  * In task/affinity better checking for node existence when laying out
+    affinity.
+  * slurmrestd - fix job submission with auth/jwt.
+
+- removed Fix-statement-condition-in-netloc-autoconf-macro.patch 
+  issue was fixed upstream
+
+-------------------------------------------------------------------
 Mon Sep  6 15:34:06 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Fix-statement-condition-in-netloc-autoconf-macro.patch:
@@ -9,7 +57,7 @@ Mon Sep  6 15:34:06 UTC 2021 - Egbert Eich <eich@suse.com>
 -------------------------------------------------------------------
 Thu Sep  2 13:19:33 UTC 2021 - Christian Goll <cgoll@suse.com>
 
-- updated to 21.08.1, major changes:
+- updated to 21.08.0, major changes:
   * A new "AccountingStoreFlags=job_script" option to store the job scripts
     directly in SlurmDBD.
   * Added "sacct -o SubmitLine" format option to get the submit line 
