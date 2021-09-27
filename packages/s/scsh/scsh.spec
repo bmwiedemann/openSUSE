@@ -1,5 +1,5 @@
 #
-# spec file for package scsh%{base}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -60,12 +60,12 @@ BuildRequires:  tex(hyphenat.sty)
 BuildRequires:  tex(inputenc.sty)
 BuildRequires:  tex(mathabx.map)
 BuildRequires:  tex(mathabx.sty)
+BuildRequires:  tex(newtxmath.sty)
 BuildRequires:  tex(pdftex.map)
 BuildRequires:  tex(ptmr8t.tfm)
 BuildRequires:  tex(relsize.sty)
 BuildRequires:  tex(t1ptm.fd)
 BuildRequires:  tex(textcomp.sty)
-BuildRequires:  tex(tocstyle.sty)
 BuildRequires:  tex(txfonts.sty)
 BuildRequires:  tex(wasyb10.tfm)
 BuildRequires:  tex(wasysym.sty)

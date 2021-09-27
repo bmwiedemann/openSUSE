@@ -25,4 +25,15 @@
 - prepare usrmerge (boo#1029961)</comment>
     <requestid>882117</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>320aee66519ccdab8bc57dafeb0f118b</srcmd5>
+    <version>0.7+git114432435e4eadd54334df6b37fcae505079b49f</version>
+    <time>1632766135</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build dependencies: Add tex(newtxmath.sty) BuildRequires, but
+  remove no longer existing tex(tocstyle.sty).
+
+- Make it build again (forwarded request 918884 from dimstar)</comment>
+    <requestid>921673</requestid>
+  </revision>
 </revisionlist>
