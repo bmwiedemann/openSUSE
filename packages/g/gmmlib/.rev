@@ -101,4 +101,12 @@
   * No upstream changelog available.</comment>
     <requestid>919556</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9ab874009cdd89c7d2a3e3410196ba11</srcmd5>
+    <version>21.2.2</version>
+    <time>1632766146</time>
+    <user>dimstar_suse</user>
+    <comment>- covers jira#SLE/SLE-19446</comment>
+    <requestid>921799</requestid>
+  </revision>
 </revisionlist>
