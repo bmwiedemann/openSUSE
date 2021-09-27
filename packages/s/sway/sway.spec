@@ -85,6 +85,9 @@ Contributed scripts from %{name} package.
 
 %prep
 %autosetup -p1
+for script in contrib/autoname-workspaces.py contrib/inactive-windows-transparency.py ; do
+  sed -i1 's,#!/usr/bin/python$,#!/usr/bin/python3,' $script
+done
 
 %build
 export CFLAGS="%{optflags}"

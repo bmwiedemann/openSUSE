@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 24 04:26:15 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Change shebang of two Python scripts to /usr/bin/python3 
+
+-------------------------------------------------------------------
 Thu Jun 24 20:20:07 UTC 2021 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.1:
