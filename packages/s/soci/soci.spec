@@ -26,6 +26,8 @@ License:        BSL-1.0
 Group:          Productivity/Databases/Tools
 URL:            https://soci.sourceforge.io/
 Source:         https://github.com/SOCI/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE fix-build-when-SIGSTKSZ-is-no-longer-a-constant.patch -- upstream commit
+Patch0:         fix-build-when-SIGSTKSZ-is-no-longer-a-constant.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel
@@ -207,6 +209,7 @@ which will use soci with unixODBC.
 
 %prep
 %setup -q
+%patch0 -p1
 
 sed -i 's/-Werror //' cmake/SociConfig.cmake
 
@@ -255,7 +258,8 @@ export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:%{buildroot}%{_libdir}
 %postun -n lib%{name}_odbc%{sover} -p /sbin/ldconfig
 
 %files -n lib%{name}_core%{sover}
-%doc AUTHORS CHANGES LICENSE_1_0.txt README.md
+%license LICENSE_1_0.txt
+%doc AUTHORS CHANGES README.md
 %{_libdir}/lib%{name}_core.so.*
 
 %files devel

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep 26 19:39:54 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.0.2
+
+- add fix-build-when-SIGSTKSZ-is-no-longer-a-constant.patch
+
+-------------------------------------------------------------------
 Tue Aug 31 12:59:35 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.0.2
 
 - Add build option SOCI_CXX11=ON, some packages (lime) needs it
