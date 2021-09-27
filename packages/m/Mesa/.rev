@@ -4545,4 +4545,12 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     osmesa.</comment>
     <requestid>920685</requestid>
   </revision>
+  <revision rev="415" vrev="287">
+    <srcmd5>43925a341bd1df00b931fd3c58d08bfa</srcmd5>
+    <version>unknown</version>
+    <time>1632766149</time>
+    <user>dimstar_suse</user>
+    <comment> - covers jira#SLE/SLE-18743</comment>
+    <requestid>921806</requestid>
+  </revision>
 </revisionlist>
