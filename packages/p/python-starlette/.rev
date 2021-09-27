@@ -58,4 +58,14 @@
 </comment>
     <requestid>907723</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>18caed469487da587265c3192e11c782</srcmd5>
+    <version>0.16.0</version>
+    <time>1632766140</time>
+    <user>dimstar_suse</user>
+    <comment>- Add py39-ignore-loop-deprecation.patch to fix failing tests
+  (gh#encode/starlette#1293).
+</comment>
+    <requestid>921787</requestid>
+  </revision>
 </revisionlist>

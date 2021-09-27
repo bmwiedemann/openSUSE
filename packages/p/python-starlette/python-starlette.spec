@@ -26,6 +26,9 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM py39-ignore-loop-deprecation.patch gh#encode/starlette#1293 mcepl@suse.com
+# Ignore loop deprecation warnings originating inside asyncio; bpo#45097
+Patch0:         py39-ignore-loop-deprecation.patch
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module aiofiles}
@@ -65,7 +68,7 @@ building high performance asyncio services.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# Deprecate built-in GraphQL support #1135
+# Deprecate built-in GraphQL support gh#encode/starlette#1135
 rm tests/test_graphql.py
 # Remove unrecognized arguments: --strict-config --strict-markers
 sed -i "s|--strict-config||" setup.cfg
