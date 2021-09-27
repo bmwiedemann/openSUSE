@@ -16,23 +16,23 @@
 #
 
 
-%define base_version 40
+%define base_version 41
 
 Name:           gnote
-Version:        40.2
+Version:        41.0
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Gnote
-Source0:        https://download.gnome.org/sources/gnote/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnote/41/%{name}-%{version}.tar.xz
 Source99:       gnote-rpmlintrc
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  intltool
 BuildRequires:  libboost_test-devel >= 1.5.1
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.62
@@ -68,23 +68,18 @@ search results from documents.
 %autosetup -p1
 
 %build
-%configure \
-	--disable-static \
-	%{nil}
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
+%meson_install
 desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications/org.gnome.Gnote.desktop
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
-%post
-/sbin/ldconfig
+%post -p /sbin/ldconfig
 
-%postun
-/sbin/ldconfig
+%postun -p /sbin/ldconfig
 
 %files
 %license COPYING
@@ -94,7 +89,6 @@ desktop-file-edit --add-category TextEditor %{buildroot}%{_datadir}/applications
 %{_libdir}/gnote/
 # Splitting does not make sense as it's just a lib for gnote itself (and it's plugins)
 %{_libdir}/libgnote-%{base_version}.so*
-%{_libdir}/libgnote.so
 %{_datadir}/applications/org.gnome.Gnote.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.gnote.gschema.xml
 %{_datadir}/gnote/
