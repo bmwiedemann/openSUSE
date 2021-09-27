@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 21 13:00:56 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix 32-bit test failures
+  * Add statsmodels-pr7737-32bit-iloc-dtype.patch
+  * gh#statsmodels/statsmodels#7736
+
+-------------------------------------------------------------------
+Mon Sep 20 16:32:48 UTC 2021 - Ben Greiner <code@bnavigator.de>
+
+- Fix rpmlint: executable bits and script interpreter lines
+- Add statsmodels-pr7373-future-sp-pd-mpl.patch for test errors due
+  to updated dependencies.
+
+-------------------------------------------------------------------
 Fri Feb 19 15:49:51 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.12.2

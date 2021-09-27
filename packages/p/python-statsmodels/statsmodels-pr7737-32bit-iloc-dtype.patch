@@ -1,0 +1,33 @@
+From 0fa59b93a21faf88561f34e02cbc6d5fa2569ea9 Mon Sep 17 00:00:00 2001
+From: Ben Greiner <code@bnavigator.de>
+Date: Tue, 21 Sep 2021 14:48:06 +0200
+Subject: [PATCH] TST: Assert correct iloc dtypes
+
+---
+ statsmodels/tsa/statespace/tests/test_news.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/statsmodels/tsa/statespace/tests/test_news.py b/statsmodels/tsa/statespace/tests/test_news.py
+index 1397236032b..b4a875ebcc9 100644
+--- a/statsmodels/tsa/statespace/tests/test_news.py
++++ b/statsmodels/tsa/statespace/tests/test_news.py
+@@ -63,7 +63,8 @@ def check_revision_indices(news, revisions_index):
+             endog_names.index(name)
+             for name in desired_ix['revised variable']]
+ 
+-        assert_(news.revisions_iloc.equals(desired_iloc))
++        assert_(news.revisions_iloc.equals(
++            desired_iloc.astype(news.revisions_iloc.dtypes)))
+         assert_(news.revisions_ix.equals(desired_ix))
+ 
+ 
+@@ -91,7 +92,8 @@ def check_update_indices(news, updates_index):
+             endog_names.index(name)
+             for name in desired_ix['updated variable']]
+ 
+-        assert_(news.updates_iloc.equals(desired_iloc))
++        assert_(news.updates_iloc.equals(
++            desired_iloc.astype(news.updates_iloc.dtypes)))
+         assert_(news.updates_ix.equals(desired_ix))
+ 
+ 

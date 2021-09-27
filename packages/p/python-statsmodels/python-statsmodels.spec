@@ -1,5 +1,5 @@
 #
-# spec file for package python-statsmodels
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -34,6 +34,10 @@ Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
 URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM statsmodels-pr7373-future-sp-pd-mpl.patch -- gh#statsmodels/statsmodels#7373
+Patch1:         https://github.com/statsmodels/statsmodels/pull/7373.patch#/statsmodels-pr7373-future-sp-pd-mpl.patch
+# PATCH-FiX-UPSTREAM statsmodels-pr7737-32bit-iloc-dtype.patch gh#statsmodels/statsmodels#7737
+Patch2:         https://github.com/statsmodels/statsmodels/pull/7737.patch#/statsmodels-pr7737-32bit-iloc-dtype.patch
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.15}
@@ -49,7 +53,8 @@ Requires:       python-scipy >= 1.1
 Recommends:     python-matplotlib >= 2.2
 %if %{with test}
 BuildRequires:  %{python_module matplotlib >= 2.2}
-BuildRequires:  %{python_module pandas >= 0.21}
+# https://github.com/pandas-dev/pandas/issues/42626
+BuildRequires:  %{python_module pandas >= 0.23 without (%python-pandas >= 1.3 with %python-pandas < 1.3.2)}
 BuildRequires:  %{python_module patsy >= 0.5.1}
 BuildRequires:  %{python_module statsmodels >= %{version}}
 %endif
@@ -69,26 +74,16 @@ that statsmodels fully meets their needs for statistical computing
 and data analysis in Python.
 
 %prep
-%setup -q -n statsmodels-%{version}
+%autosetup -p1 -n statsmodels-%{version}
 rm -rf statsmodels/.pytest_cache
-find . -type f -name "*.py" -exec sed -i 's/\r$//' {} \;
-find statsmodels -type f -name "*.py" -exec sed -i "/#! \/usr\/bin\/env python/d" {} \;
-find statsmodels -type f -name "*.py" -exec sed -i "/#!\/usr\/bin\/env python/d" {} \;
-find statsmodels -type f -name "*.py" -exec sed -i "/#! \/usr\/bin\/env python3/d" {} \;
-find statsmodels -type f -name "*.py" -exec sed -i "/#!\/usr\/bin\/env python3/d" {} \;
+find . -type f -name "*.py" -exec sed -i -e '1{/env python/ d}' -e 's/\r$//' {} \;
+find . -type f -exec chmod a-x {} \;
 find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} \;
+find . -type f -name "*.csv" -exec sed -i 's/\r$//' {} \;
 sed -i 's/\r$//' COPYRIGHTS.txt
 sed -i 's/\r$//' LICENSE.txt
 sed -i 's/\r$//' README.rst
 sed -i 's/\r$//' README_l1.txt
-sed -i 's/\r$//' statsmodels/tsa/statespace/tests/results/results_wpi1_ar3_stata.csv
-sed -i 's/\r$//' statsmodels/tsa/regime_switching/tests/results/mar_filardo.csv
-sed -i 's/\r$//' statsmodels/tsa/statespace/tests/results/results_wpi1_ar3_stata.csv
-sed -i 's/\r$//' statsmodels/tsa/regime_switching/tests/results/mar_filardo.csv
-chmod a-x COPYRIGHTS.txt
-chmod a-x LICENSE.txt
-chmod a-x README.rst
-chmod a-x README_l1.txt
 
 %build
 %if !%{with test}
@@ -103,7 +98,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 # Remove unwanted setup files
 %python_expand find %{buildroot}%{$python_sitearch} -name 'setup.py*' -exec rm {} \;
-%python_expand find %{buildroot}%{$python_sitearch} -type f -exec chmod a-x {} \;
 rm -f %{buildroot}%{_prefix}/LICENSE.txt
 rm -f %{buildroot}%{_prefix}/setup.cfg
 %endif
@@ -113,6 +107,7 @@ rm -f %{buildroot}%{_prefix}/setup.cfg
 # The tests expect an in-place built source tree. Work around conftest import conflicts
 # by directly discovering tests in installed sitearch.
 testdir=/tmp/%{name}-testdir
+rm -rf $testdir
 mkdir $testdir
 cp setup.cfg $testdir
 pushd $testdir
@@ -128,7 +123,7 @@ rm -r $testdir
 %doc examples/
 %license COPYRIGHTS.txt LICENSE.txt
 %{python_sitearch}/statsmodels/
-%{python_sitearch}/statsmodels-%{version}-py*.egg-info
+%{python_sitearch}/statsmodels-%{version}*-info
 %endif
 
 %changelog

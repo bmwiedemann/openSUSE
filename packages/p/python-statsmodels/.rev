@@ -77,4 +77,12 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>873933</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>2ae654cce3f8cddf8184e6e936d2afc0</srcmd5>
+    <version>0.12.2</version>
+    <time>1632766124</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>920821</requestid>
+  </revision>
 </revisionlist>
