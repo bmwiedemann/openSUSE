@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 29 09:43:08 UTC 2021 - Josef Reidinger <jreidinger@suse.com>
+
+- Support systemd mount options in fstab (bsc#1187781)
+- 4.4.1
+
+-------------------------------------------------------------------
 Tue Apr 20 13:51:55 UTC 2021 - Ladislav Slezák <lslezak@suse.cz>
 
 - 4.4.0 (bsc#1185510)
