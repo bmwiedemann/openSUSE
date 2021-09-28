@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 22 11:17:15 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 7.79.1:
+  * Bugfixes:
+    - Curl_http2_setup: don't change connection data on repeat invokes
+    - curl_multi_fdset: make FD_SET() not operate on sockets out of range
+    - dist: provide lib/.checksrc in the tarball
+    - FAQ: add GOPHERS + curl works on data, not files
+    - hsts: CURLSTS_FAIL from hsts read callback should fail transfer
+    - hsts: handle unlimited expiry
+    - http: fix the broken >3 digit response code detection
+    - strerror: use sys_errlist instead of strerror on Windows
+    - test1184: disable: https://github.com/curl/curl/issues/7725
+    - tests/sshserver.pl: make it work with openssh-8.7p1 
+
+-------------------------------------------------------------------
 Wed Sep 15 15:08:18 UTC 2021 - Pedro Monreal <pmonreal@suse.com>
 
 - Temporarily disable flaky test 1184

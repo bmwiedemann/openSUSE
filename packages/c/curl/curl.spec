@@ -21,7 +21,7 @@
 # need ssl always for python-pycurl
 %bcond_without openssl
 Name:           curl
-Version:        7.79.0
+Version:        7.79.1
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -141,9 +141,6 @@ pushd tests
 
 find -type f -name "*.pl" -exec sed -i 's|#!.*/usr/bin/env perl|#!/usr/bin/perl|' "{}" +
 find -type f -name "*.py" -exec sed -i 's|#!.*/usr/bin/env python.*|#!/usr/bin/python3|' "{}" +
-
-# temporarily disable flaky test 1184, see https://github.com/curl/curl/issues/7725
-printf "1184\n" >> data/DISABLED
 
 perl ./runtests.pl -a -v -p '!flaky' || exit
 popd
