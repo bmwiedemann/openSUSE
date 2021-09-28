@@ -18,7 +18,7 @@
 
 
 Name:           smcroute
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        Static multicast routing for UNIX
 License:        GPL-3.0-only

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 23 20:32:44 UTC 2021 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.3
+  Changes
+  * New tests to verify add/del of IPv4/IPv6 routes in kernel MFC.
+  Fixes
+  * Fix #166: build warning with gcc 10.2.1: "comparison is always
+    true due to limited range of data type".
+  * Fix build warning with --disable-mrdisc configure option.
+  * Fix #167: cannot remove routes added with smcroutectl add,
+    only affects add/del at runtime with smcroutectl, not .conf
+    reload.
+
+-------------------------------------------------------------------
 Fri Aug 27 16:26:10 UTC 2021 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.2
