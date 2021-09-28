@@ -1,0 +1,21 @@
+Index: frr-frr-7.5.1/tools/frr.service
+===================================================================
+--- frr-frr-7.5.1.orig/tools/frr.service
++++ frr-frr-7.5.1/tools/frr.service
+@@ -7,6 +7,16 @@ Before=network.target
+ OnFailure=heartbeat-failed@%n.service
+ 
+ [Service]
++# added automatically, for details please see
++# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
++ProtectSystem=full
++ProtectHome=true
++ProtectClock=true
++ProtectKernelModules=true
++ProtectKernelLogs=true
++ProtectControlGroups=true
++RestrictRealtime=true
++# end of automatic additions 
+ Nice=-5
+ Type=forking
+ NotifyAccess=all

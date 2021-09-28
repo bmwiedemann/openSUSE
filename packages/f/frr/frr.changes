@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 16 07:12:55 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_frr.service.patch
+
+-------------------------------------------------------------------
 Fri Apr 23 03:05:06 UTC 2021 - Marius Tomaschewski <mt@suse.com>
 
 - Use skip, not xfail in 0001-disable-zmq-test.patch to disable
