@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 27 09:12:23 UTC 2021 - Knut Anderssen <kanderssen@suse.com>
+
+- Do not crash when the interfaces table contains a not configured
+  one (bnc#1190645, bsc#1190915)
+- Fix the shown description using the interface friendly name when
+  it is empty (bsc#1190933)
+- 4.4.26
+
+-------------------------------------------------------------------
 Thu Sep 23 10:01:21 UTC 2021 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 
 - Consider aliases sections as case insensitive (bsc#1190739).
