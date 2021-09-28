@@ -266,13 +266,12 @@ Requires:       %{name} = %{version}
 A module to provide SASL authentication in lighttpd.
 
 %package mod_authn_pam
-Summary:        pam authentication in lighttpd
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          productivity/networking/web/servers
+Summary:        PAM authentication in lighttpd
+Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
 
 %description mod_authn_pam
-a module to provide pam authentication in lighttpd.
+A module to provide PAM authentication in lighttpd.
 
 %prep
 %setup -q -n %{pkg_name}-%{pkg_version}
