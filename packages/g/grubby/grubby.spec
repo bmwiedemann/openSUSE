@@ -70,15 +70,15 @@ diff -u "$_"~ "$_" && exit 1
 %endif
 
 %install
-make install DESTDIR=%{buildroot} mandir="%{_mandir}"
+make install DESTDIR=%buildroot mandir="%_mandir" 'PREFIX=%_prefix'
 # Remove installkernel as it is provided with mkinitrd package
-rm %{buildroot}/sbin/installkernel
-rm %{buildroot}/%{_mandir}/man8/installkernel.8
+rm %buildroot%_sbindir/installkernel
+rm %buildroot%_mandir/man8/installkernel.8
 
 %files
 %license COPYING
-/sbin/new-kernel-pkg
-/sbin/grubby
+%_sbindir/new-kernel-pkg
+%_sbindir/grubby
 %{_mandir}/man8/*.8%{?ext_man}
 
 %changelog
