@@ -12,6 +12,7 @@
     <conditions>
       <arch>armv6l</arch>
       <arch>armv7l</arch>
+      <arch>ppc64le</arch>
     </conditions>
     <hardware>
       <memory>

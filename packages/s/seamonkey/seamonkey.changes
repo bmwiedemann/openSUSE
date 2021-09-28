@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 28 07:09:11 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
+
+- update to SeaMonkey 2.53.9.1
+  * Fix the lazy loading of images from some websites bug 1727967.
+  * Move certain font family defaults from serif to sans serif bug
+    1727982.
+  * SeaMonkey 2.53.9.1 uses the same backend as Firefox and contains
+    the relevant Firefox 60.8 security fixes.
+  * SeaMonkey 2.53.9.1 shares most parts of the mail and news code
+    with Thunderbird. Please read the Thunderbird 60.0 release notes
+    for specific changes and security fixes in this release.
+  * Additional important security fixes up to Current Firefox 78.14
+    ESR and a few enhancements have been backported. We will continue
+    to enhance SeaMonkey security in subsequent 2.53.x beta and
+    release versions as fast as we are able to.
+- requested inclusion in Leap 15.3 and Leap 15.2:
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1191022 
+
+-------------------------------------------------------------------
 Thu Aug 26 12:27:32 UTC 2021 - Tristan Miller <psychonaut@nothingisreal.com>
 
 - update to SeaMonkey 2.53.9
