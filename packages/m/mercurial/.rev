@@ -1400,4 +1400,12 @@
     <comment>Mercurial 5.9.1 (forwarded request 915710 from develop7)</comment>
     <requestid>915719</requestid>
   </revision>
+  <revision rev="166" vrev="2">
+    <srcmd5>ccd81ed072d07ddba0b9acdfa86d3301</srcmd5>
+    <version>5.9.1</version>
+    <time>1632849383</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>921356</requestid>
+  </revision>
 </revisionlist>

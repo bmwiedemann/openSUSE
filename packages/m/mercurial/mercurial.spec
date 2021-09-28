@@ -70,6 +70,17 @@ designed for efficient handling of very large distributed projects.
 
 %lang_package
 
+%package tests
+Summary:        Mercurial tests
+Group:          Development/Tools/Version Control
+Requires:       %name = %version
+
+%description tests
+Mercurial is a fast, lightweight source control management system
+designed for efficient handling of very large distributed projects.
+
+This package contains its tests.
+
 %prep
 %setup -q
 %patch0
@@ -105,12 +116,19 @@ install -m0644 contrib/*.el %{buildroot}%{_datadir}/xemacs/site-lisp
 install -Dm0644 %{SOURCE1} %{buildroot}%{_sysconfdir}/mercurial/hgrc.d/cacerts.rc
 %fdupes -s %{buildroot}%{_prefix}
 
+mkdir -p %{buildroot}%{_datadir}/mercurial
+cp -a tests/. %{buildroot}%{_datadir}/mercurial/tests
+
 %if 0%{?with_tests}
 %check
 make %{?_smp_mflags} tests TESTFLAGS="-v --blacklist=%{SOURCE90}" PYTHON=python3
 %endif
 
 %files lang -f hg.lang
+
+%files tests
+%dir %{_datadir}/mercurial
+%{_datadir}/mercurial/tests
 
 %files
 %license COPYING

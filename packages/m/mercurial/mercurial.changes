@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep 24 09:19:10 UTC 2021 - Stefan Weiberg <sweiberg@suse.com>
+
+- Adding bug and CVE references from SLE to prepare the submission
+  for SLE 15 SP4/Leap 15.4
+- CVE-2019-3902 (bsc#1133035) not affecting versions 5.0+ SLE
+  internal patches removed:
+  * hg-CVE-2019-3902-fix1.patch
+  * hg-CVE-2019-3902-fix2.patch
+  * hg-CVE-2019-3902-fix3.patch
+- CVE-2018-17983 (bsc#1110899) not affecting versions 4.7.2+ SLE
+  internal patch removed:
+  * hg-CVE-2018-17983.patch
+- CVE-2018-13346 (bsc#1100354), CVE-2018-13347 (bsc#1100355),
+  CVE-2018-13348 (bsc#1100353) not affecting versions 4.6.1+ SLE
+  internal patches removed:
+  * hg-mpatch-fix01.patch
+  * hg-mpatch-fix02.patch
+  * hg-mpatch-fix03.patch
+  * hg-mpatch-fix04.patch
+  * hg-mpatch-fix05.patch
+  * hg-mpatch-fix06.patch
+  * hg-mpatch-fix07.patch
+  * hg-mpatch-fix08.patch
+  * hg-mpatch-fix09.patch
+
+-------------------------------------------------------------------
+Mon Sep 20 19:27:59 UTC 2021 - Lukas Müller <expeehaa@outlook.com>
+
+- Provide mercurial tests in a package mercurial-tests.
+
+-------------------------------------------------------------------
 Thu Sep  2 08:47:47 UTC 2021 - Andrei Dziahel <develop7@develop7.info>
 
 - Mercurial 5.9.1
