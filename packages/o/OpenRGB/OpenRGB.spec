@@ -25,6 +25,10 @@ URL:            https://gitlab.com/CalcProgrammer1/OpenRGB
 Source0:        https://gitlab.com/CalcProgrammer1/OpenRGB/-/archive/release_%{version}/OpenRGB-release_%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE OpenRGB-use_system_libs.patch
 Patch1:         OpenRGB-use_system_libs.patch
+# PATCH-FIX-UPSTREAM OpenRGB-Logitch_G502_detect.patch
+Patch2:         OpenRGB-Logitch_G502_detect.patch
+# PATCH-FIX-UPSTREAM OpenRGB-Logitch_G502_PID.patch
+Patch3:         OpenRGB-Logitch_G502_PID.patch
 BuildRequires:  gcc-c++
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Core)
