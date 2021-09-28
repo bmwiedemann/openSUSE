@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Sep 24 19:46:34 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.2.0:
+ - The return type for ``maxminddb.open_database()`` has been simplified
+   to be just the ``Reader`` class as opposed to a union of that with
+   the extension class. This is done by casting the extension to
+   ``Reader``. The extension class has the same public API as the
+   pure Python implementation. This simplifies type checking for users of
+   this library. The ``Reader`` class is exposed as ``maxminddb.Reader``.
+   Pull request by wouter bolsterlee. GitHub #88.
+ - ``maxminddb.__all__`` is now set to define a public API. Pull request
+   by wouter bolsterlee. GitHub #88.
+ - Fix minor regression in ``repr`` output of ``maxminddb.reader.Metadata``
+   in 2.1.0.
+
+-------------------------------------------------------------------
+Sat Sep 18 20:19:51 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+- update to version 2.1.0:
+ - The C extension now correctly supports objects that implement the
+   ``os.PathLike`` interface.
+ - When opening a database fails due to an access issue, the correct
+   ``OSError`` subclass will now be thrown.
+ - The ``Metadata`` class object is now available from the C extension
+   module as ``maxminddb.extension.Metadata`` rather than
+   ``maxminddb.extension.extension``.
+ - Type stubs have been added for ``maxminddb.extension``.
+
+-------------------------------------------------------------------
 Sat Jun  5 14:03:36 UTC 2021 - Sebastian Wagner <sebix+novell.com@sebix.at>
 
 - disable python 2, fixes Leap builds. Python 2 is no longer supported.
