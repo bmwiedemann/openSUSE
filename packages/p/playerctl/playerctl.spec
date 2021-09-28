@@ -1,7 +1,7 @@
 #
 # spec file for package playerctl
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2017 Dakota Williams <raineforest@raineforest.me>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,14 +23,14 @@
 %global libname lib%{name}%{sover}
 %global typelibname typelib-1_0-Playerctl-%{majorver}_%{minorver}
 Name:           playerctl
-Version:        2.3.1
+Version:        2.4.1
 Release:        0
 Summary:        MPRIS command-line controller and library for media players
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://github.com/acrisci/playerctl
 Source0:        https://github.com/acrisci/playerctl/archive/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.50.0
+BuildRequires:  meson >= 0.56.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gio-unix-2.0)
