@@ -42,7 +42,7 @@
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.12.0
+Version:        4.12.1
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}
@@ -53,14 +53,14 @@ License:        MIT
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            http://www.ocaml.org
-Source0:        http://caml.inria.fr/pub/distrib/ocaml-%{ocaml_base_version}/ocaml-%{version}.tar.xz
+Source0:        ocaml-%{version}.tar.xz
 Source2:        %{name}-rpmlintrc
 Patch0:         ocaml-configure-Allow-user-defined-C-compiler-flags.patch
 Patch1:         ocaml-SIGSTKSZ.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  fdupes
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml-rpm-macros >= 20210421
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  pkgconfig
 Requires:       ncurses-devel
 Requires:       ocaml(runtime) = %{version}-%{release}
