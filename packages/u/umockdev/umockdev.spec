@@ -65,6 +65,7 @@ This package provides the shared library for umockdev-preload.
 
 %package devel
 Summary:        Headers and sources for developing apps with umockdev
+Requires:       %{name} = %{version}
 Requires:       %{shlibpre} = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       typelib-1_0-UMockdev-1_0 = %{version}
