@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 28 15:06:30 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.48.1:
+  + GlyphItem: Fix a memory leak in split()
+  + Layout: Speed up get_log_attrs()
+  + Build:
+    - Meson build: Use relative paths to untracked/
+    - pangommconfig.h.*: Don't dllimport on MinGW
+    - Meson build: Make it possible to use pangomm as a subproject
+    - Meson build: No implicit_include_directories
+- Add pangomm-docs-without-timestamp.patch: Do not add timestamp to
+  generated doc files.
+
+-------------------------------------------------------------------
 Sat Dec 19 10:14:55 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.48.0:
