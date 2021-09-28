@@ -1,0 +1,36 @@
+diff -Nraub liblinphone-4.5.25.ori/src/conference/session/audio-stream.cpp liblinphone-4.5.25/src/conference/session/audio-stream.cpp
+--- liblinphone-4.5.25.ori/src/conference/session/audio-stream.cpp	2021-07-14 06:04:44.000000000 -0400
++++ liblinphone-4.5.25/src/conference/session/audio-stream.cpp	2021-07-30 00:43:34.689234048 -0400
+@@ -92,10 +92,13 @@
+ 					params->ciphers[params->ciphersCount++] = MS_ZRTP_CIPHER_AES1;
+ 					params->authTags[params->authTagsCount++] = MS_ZRTP_AUTHTAG_HS32;
+ 					break;
+-				case MS_AES_128_NO_AUTH:
++				case MS_AES_128_SHA1_80_NO_AUTH:
++				case MS_AES_128_SHA1_32_NO_AUTH:
+ 					params->ciphers[params->ciphersCount++] = MS_ZRTP_CIPHER_AES1;
+ 					break;
+-				case MS_NO_CIPHER_SHA1_80:
++				case MS_AES_128_SHA1_80_SRTP_NO_CIPHER:
++				case MS_AES_128_SHA1_80_SRTCP_NO_CIPHER:
++				case MS_AES_128_SHA1_80_NO_CIPHER:
+ 					params->authTags[params->authTagsCount++] = MS_ZRTP_AUTHTAG_HS80;
+ 					break;
+ 				case MS_AES_128_SHA1_80:
+diff -Nraub liblinphone-4.5.25.ori/src/conference/session/media-session.cpp liblinphone-4.5.25/src/conference/session/media-session.cpp
+--- liblinphone-4.5.25.ori/src/conference/session/media-session.cpp	2021-07-14 06:04:44.000000000 -0400
++++ liblinphone-4.5.25/src/conference/session/media-session.cpp	2021-07-30 00:44:55.690652113 -0400
+@@ -1368,8 +1368,11 @@
+ 	switch (suite) {
+ 		case MS_AES_128_SHA1_80:
+ 		case MS_AES_128_SHA1_32:
+-		case MS_AES_128_NO_AUTH:
+-		case MS_NO_CIPHER_SHA1_80: /* Not sure for this one */
++		case MS_AES_128_SHA1_80_NO_AUTH:
++		case MS_AES_128_SHA1_32_NO_AUTH:
++		case MS_AES_128_SHA1_80_SRTP_NO_CIPHER: /* Not sure for this one */
++		case MS_AES_128_SHA1_80_SRTCP_NO_CIPHER: /* Not sure for this one */
++		case MS_AES_128_SHA1_80_NO_CIPHER: /* Not sure for this one */
+ 			keylen = 30;
+ 			break;
+ 		case MS_AES_256_SHA1_80:

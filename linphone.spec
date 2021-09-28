@@ -1,7 +1,7 @@
 #
 # spec file for package linphone
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %define sover   10
 Name:           linphone
-Version:        4.4.0
+Version:        4.5.25
 Release:        0
 Summary:        Web Phone
 License:        GPL-3.0-or-later
-URL:            https://linphone.org/technical-corner/liblinphone/overview
+Group:          Productivity/Telephony/SIP/Clients
+URL:            https://linphone.org/technical-corner/liblinphone/
 Source:         https://gitlab.linphone.org/BC/public/liblinphone/-/archive/%{version}/liblinphone-%{version}.tar.bz2
 Source1:        %{name}-manual.tar.bz2
-Source2:        baselibs.conf
 # PATCH-FIX-OPENSUSE linphone-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install linphone.pc.
 Patch0:         linphone-fix-pkgconfig.patch
 # PATCH-FEATURE-OPENSUSE linphone-build-readline.patch sor.alexei@meowr.ru -- Add the ability to compile with readline to the build system.
@@ -34,6 +34,8 @@ Patch1:         linphone-build-readline.patch
 Patch2:         reproducible.patch
 # PATCH-FIX-OPENSUSE linphone-link-soci-sqlite3.patch -- force linking to libsoci_sqlite3 so that RPM finds the requirement boo#1140595 -- code@bnavigator.de
 Patch3:         linphone-link-soci-sqlite3.patch
+# PATCH-FIX-OPENSUSE build-liblinphone4-with-mediastreamer5.patch -- allow build with mediastreamer 5.x
+Patch4:         build-liblinphone4-with-mediastreamer5.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
@@ -41,7 +43,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  graphviz
 BuildRequires:  libeXosip2-devel
 BuildRequires:  libgsm-devel
-BuildRequires:  lime-devel
+BuildRequires:  lime-devel >= 4.5.0
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3
@@ -54,11 +56,11 @@ BuildRequires:  soci-devel
 BuildRequires:  soci-sqlite3-devel
 BuildRequires:  xsd
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(bctoolbox) >= 4.4.0
-BuildRequires:  pkgconfig(belcard) >= 4.4.0
-BuildRequires:  pkgconfig(belle-sip) >= 4.4.0
+BuildRequires:  pkgconfig(bctoolbox) >= 4.5.0
+BuildRequires:  pkgconfig(belcard) >= 4.5.0
+BuildRequires:  pkgconfig(belle-sip) >= 4.5.0
 BuildRequires:  pkgconfig(libavcodec) >= 51.0.0
-BuildRequires:  pkgconfig(libbzrtp) >= 4.4.0
+BuildRequires:  pkgconfig(libbzrtp) >= 4.5.0
 BuildRequires:  pkgconfig(libosip2)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libswscale) >= 0.7.0
@@ -66,9 +68,9 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(libupnp)
 BuildRequires:  pkgconfig(libv4l2) >= 0.8.4
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(mediastreamer) >= 4.4.0
+BuildRequires:  pkgconfig(mediastreamer) >= 4.5.0
 BuildRequires:  pkgconfig(opus)
-BuildRequires:  pkgconfig(ortp) >= 4.4.0
+BuildRequires:  pkgconfig(ortp) >= 4.5.0
 BuildRequires:  pkgconfig(speex) >= 1.1.6
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(xerces-c)
@@ -141,6 +143,7 @@ This package contains data files such as sounds.
 
 %package -n lib%{name}-devel
 Summary:        Web Phone Development files
+Group:          Development/Languages/C and C++
 Requires:       glibc-devel
 Requires:       lib%{name}%{sover} = %{version}
 Requires:       lib%{name}++%{sover} = %{version}
@@ -181,6 +184,7 @@ with high speed connections as well as 28k modems.
   -DENABLE_STRICT=OFF          \
   -DENABLE_STATIC=OFF          \
   -DCMAKE_LINK_WHAT_YOU_USE=ON
+
 %cmake_build
 
 %install
@@ -219,6 +223,7 @@ cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 %doc CHANGELOG.md README.md
 %{_datadir}/%{name}/
 %{_datadir}/sounds/%{name}/
+%{_datadir}/belr/grammars/*_grammar
 
 %files -n lib%{name}-devel
 %{_includedir}/%{name}*/
@@ -230,6 +235,6 @@ cp -a %{name} %{buildroot}%{_datadir}/gnome/help/%{name}/
 %{_libdir}/pkgconfig/%{name}.pc
 %{_datadir}/Linphone/
 %{_datadir}/LinphoneCxx/
-%{_datadir}/belr/grammars/*_grammar
+%{_datadir}/doc/lib%{name}-4.5.0/
 
 %changelog

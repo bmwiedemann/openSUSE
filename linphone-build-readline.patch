@@ -68,7 +68,7 @@
 +cmake_dependent_option(ENABLE_READLINE "Enable readline support." YES "ENABLE_CONSOLE_UI" NO)
  cmake_dependent_option(ENABLE_ASSISTANT "Turn on assistant compiling." YES "ENABLE_GTK_UI" NO)
  
- set(CMAKE_CXX_STANDARD 11)
+ set(CMAKE_CXX_STANDARD 14)
 @@ -156,6 +157,15 @@ if(ENABLE_TUNNEL)
  		set(ENABLE_TUNNEL OFF CACHE BOOL "Enable tunnel support." FORCE)
  	endif()
