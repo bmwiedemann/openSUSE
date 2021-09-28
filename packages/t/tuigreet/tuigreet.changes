@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 05:44:40 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Mon Sep  7 16:06:27 UTC 2020 - Denis Kondratenko <denis.kondratenko@suse.com>
 
 - Initial package tuigreet 0.2.0 
