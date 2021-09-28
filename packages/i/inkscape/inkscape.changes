@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 24 07:55:50 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.1.1:
+  * Pressure sensitivity should work again in Windows
+  * Stroke to path working on text again
+  * Startup time improved
+  * Fix various crashes
+
+-------------------------------------------------------------------
 Thu Jun 17 16:41:27 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use gcc10-c++ to build in Leap. gcc7 is too old.
