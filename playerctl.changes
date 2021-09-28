@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 25 16:21:35 UTC 2021 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.4.1
+  * Fix a crash in playerctld when players use TrackList and
+    Playlists interfaces
+  * Add the trunc() template function
+  * Allow to use playerctl as a subproject and cpp linking
+  * bugfix: subscribe to all signals when multiple template
+    functions are used
+  * bugfix: workaround for players that use uint64 values in the
+    formatter
+
+-------------------------------------------------------------------
 Tue Dec  1 14:42:17 UTC 2020 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Obsolete typelib-1_0-Playerctl-2_0_1: the package was wrongly
