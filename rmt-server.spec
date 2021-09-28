@@ -29,7 +29,7 @@
 %define ruby_version          %{rb_default_ruby_suffix}
 
 Name:           rmt-server
-Version:        2.6.12
+Version:        2.6.13
 Release:        0
 Summary:        Repository mirroring tool and registration proxy for SCC
 License:        GPL-2.0-or-later
@@ -62,8 +62,8 @@ Requires(pre):  shadow
 Requires(post): timezone
 Requires(post): util-linux
 Conflicts:      yast2-rmt < 1.0.3
-Recommends:     rmt-server-config
 Recommends:     yast2-rmt >= 1.3.0
+Recommends:     rmt-server-config
 # Does not build for i586 and s390 and is not supported on those architectures
 ExcludeArch:    %{ix86} s390
 %{systemd_ordering}
