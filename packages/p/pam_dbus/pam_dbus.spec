@@ -48,6 +48,12 @@ Requires:       python3
 Requires:       python3-base
 Requires:       python3-notify2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if ! %{defined _pam_moduledir}
+%define _pam_moduledir /%{_lib}/security
+%endif
+%if ! %{defined _pam_libdir}
+%define _pam_libdir /%{_lib}
+%endif
 
 %description
 This PAM module will, when being used to authenticate a
@@ -59,7 +65,7 @@ test -h %{name}-%{version} || ln -sf darcs-mirror-pam-dbus.debian-%{commit} %{na
 %setup -q -D
 %patch0
 %patch1
-sed -ri '/^PAM_MODDIR/{ s@/lib/@/%{_lib}/@p }' configure.ac
+sed -ri '/^PAM_MODDIR/{ s@/lib/@%{_pam_libdir}/@p }' configure.ac
 autoreconf -fis
 
 %build
@@ -68,16 +74,21 @@ make %{?_smp_mflags}
 
 %install
 make install DESTDIR=%{buildroot}
-rm -vf %{buildroot}/%{_lib}/security/*.la
+rm -vf %{buildroot}%{_pam_moduledir}/*.la
 install -d %{buildroot}%{_mandir}/man8
 install -m 0644 %{S:1} %{buildroot}%{_mandir}/man8
 
 %files
 %defattr(-,root,root)
+%if %{defined license}
+%license LICENSE
+%doc README
+%else
 %doc README LICENSE
+%endif
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/%{name}.conf
 %config(noreplace) %{_sysconfdir}/xdg/autostart/pam-dbus-notify.desktop
-%attr(0755, root, root) /%{_lib}/security/%{name}.so
+%attr(0755, root, root) %{_pam_moduledir}/%{name}.so
 %dir %{_datadir}/%{name}/
 %attr(0755, root, root) %{_datadir}/%{name}/pam-dbus-notify
 %{_mandir}/man8/%{name}.8*
