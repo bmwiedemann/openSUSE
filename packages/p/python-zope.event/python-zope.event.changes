@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 24 10:53:37 UTC 2021 - pgajdos@suse.com
+
+- %check: do not use setup.py test
+
+-------------------------------------------------------------------
 Fri Jul  9 22:27:07 UTC 2021 - Jason Craig <os@jacraig.com>
 
 - Update to 4.5.0

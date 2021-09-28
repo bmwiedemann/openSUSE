@@ -66,7 +66,11 @@ python3 setup.py build_sphinx && rm build/sphinx/html/.buildinfo
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec setup.py test
+cd build/lib
+%{python_expand \
+$python -m unittest -v zope.event.tests
+$python -m doctest -v zope/event/classhandler.py
+}
 
 %files %{python_files}
 %license COPYRIGHT.txt LICENSE.txt
