@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 23 14:03:54 UTC 2021 - Manfred Schwarb <manfred99@gmx.ch>
+
+- remove update-alternatives support, as on linux systems GNU software
+    (i.e. gawk in this case) is usually considered the default implementation. 
+- use %make macros
+- modify patch reproducible.patch to use __DATE__ and __TIME__, as
+    these macros are reproducible now (SOURCE_DATE_EPOCH support since GCC 7)
+
+-------------------------------------------------------------------
 Thu Feb  4 10:41:36 UTC 2021 - Ludwig Nussel <lnussel@suse.de>
 
 - fix update-alternatives usage. Needs to be in %postun according to
