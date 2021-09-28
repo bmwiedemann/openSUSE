@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 26 12:09:32 CEST 2021 - tumic@cbox.cz
+
+- Update to version 9.7
+  * Added Chinese translation.
+  * Added support for location FIT files.
+  * Improved Mapsforge maps zoom performance.
+  * Added DEM tiles overview.
+  * Multiple settings handling fixes and enhancements.
+
+-------------------------------------------------------------------
 Sun Sep  5 16:29:19 CEST 2021 - tumic@cbox.cz
 
 - Update to version 9.6

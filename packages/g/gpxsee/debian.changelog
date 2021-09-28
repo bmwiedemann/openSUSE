@@ -1,3 +1,13 @@
+gpxsee (9.7) stable; urgency=low
+
+  * Added Chinese translation.
+  * Added support for location FIT files.
+  * Improved Mapsforge maps zoom performance.
+  * Added DEM tiles overview.
+  * Multiple settings handling fixes and enhancements.
+
+ -- Martin Tuma <tumic@cbox.cz>  Sun, 26 Sep 2021 12:17:10 +0200
+
 gpxsee (9.6) stable; urgency=medium
 
   * Added support for downloading DEM files.
