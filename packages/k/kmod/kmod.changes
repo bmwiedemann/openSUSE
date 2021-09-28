@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 24 10:40:22 UTC 2021 - Michal Suchanek <msuchanek@suse.de>
+
+- Enable ZSTD on 15.4 (jsc#SLE-21256).
+
+-------------------------------------------------------------------
 Mon Sep  6 12:29:23 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 
 - Use docbook 4 rather than docbook 5 for building man pages (bsc#1190190).
