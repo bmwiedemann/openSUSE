@@ -16,11 +16,10 @@
 #
 
 
-%if 0%{?suse_version} > 1500
-%define mpiver 4
-%endif
-%if 0%{?sle_version} >= 150000
-%define mpiver 2
+%if 0%{?sle_version} && 0%{?sle_version} < 150300
+  %define mpiver openmpi
+%else
+  %define mpiver openmpi4
 %endif
 
 %define modname pytest_mpi
@@ -42,9 +41,9 @@ Recommends:     python-mpi4py
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module mpi4py}
+BuildRequires:  %{mpiver}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
-BuildRequires:  openmpi%{mpiver}
 # /SECTION
 %python_subpackages
 
@@ -62,8 +61,8 @@ mpi plugin for pytest to collect information from openmpi-based tests.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-export PATH=${PATH}:%{_libdir}/mpi/gcc/openmpi%{mpiver}/bin
-source %{_libdir}/mpi/gcc/openmpi%{mpiver}/bin/mpivars.sh
+export PATH=${PATH}:%{_libdir}/mpi/gcc/%{mpiver}/bin
+source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
 %pytest -v -p pytester --runpytest=subprocess
 
 %files %{python_files}
