@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  7 17:05:13 CEST 2021 - tiwai@suse.de
+
+- Install the topology binary for skl_hda_dsp_generic-tplg, too
+  (boo#1189688)
+  Add the supplements for Skylake and Kabylake-LP (8086:9d70 and
+  8086:9d71), too
+
+-------------------------------------------------------------------
 Mon May 31 12:09:56 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.2.5
