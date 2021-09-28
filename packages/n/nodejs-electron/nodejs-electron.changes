@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 25 23:46:53 UTC 2021 - Marcus Rueckert <mrueckert@suse.de>
+
+- fixes to make it work with glibc 2.34 
+  a9831f1cbf93fb18dd951453635f488037454ce9.patch
+  linux_sandbox_return_enosys_for_clone3.patch
+  linux_sandbox_update_syscall_numbers_for_all_platforms.patch
+
+-------------------------------------------------------------------
+Tue Sep 21 21:12:57 UTC 2021 - Dominik Heidler <dheidler@suse.de>
+
+- Version 13.4.0
+
+-------------------------------------------------------------------
 Tue Aug 10 12:18:01 UTC 2021 - Andreas Schneider <asn@cryptomilk.org>
 
 - Update to version 13.1.8
