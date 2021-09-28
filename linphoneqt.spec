@@ -22,7 +22,8 @@ Version:        4.2.5
 Release:        0
 Summary:        Qt interface for Linphone
 License:        GPL-3.0-or-later
-URL:            https://linphone.org/
+Group:          Productivity/Telephony/SIP/Clients
+URL:            https://linphone.org/technical-corner/linphone
 Source:         https://gitlab.linphone.org/BC/public/linphone-desktop/-/archive/%{version}/%{_name}-desktop-%{version}.tar.bz2
 Source1:        %{_name}.appdata.xml
 # PATCH-FIX-OPENSUSE linphoneqt-fix-no-git.patch -- Fix building out-of-git.
@@ -46,6 +47,7 @@ BuildRequires:  pkgconfig(Qt5Svg)
 BuildRequires:  pkgconfig(Qt5Widgets)
 BuildRequires:  pkgconfig(linphone) >= 4.5.0
 BuildRequires:  pkgconfig(mediastreamer) >= 4.5.0
+BuildRequires:  Mesa-libGLESv2-devel
 
 %description
 Linphone is a Web phone with a Qt interface. It lets you make
@@ -57,10 +59,6 @@ with high speed connections as well as 28k modems.
 
 %package -n %{_name}
 Summary:        Web Phone
-Requires:       lib%{_name}-data
-Requires:       libqt5-qtgraphicaleffects
-Requires:       libqt5-qtquickcontrols
-Requires:       libqt5-qtquickcontrols2
 Recommends:     %{_name}-cli
 Obsoletes:      %{_name}-lang < %{version}
 
@@ -85,6 +83,7 @@ echo "project(linphoneqt VERSION %{version})" > linphone-app/linphoneqt_version.
 
 %build
 %cmake \
+  -DCMAKE_CXX_FLAGS="-fpermissive" \
   -DCMAKE_BUILD_TYPE=Release \
   -DLINPHONE_OUTPUT_DIR="$PWD" \
   -DENABLE_UPDATE_CHECK=OFF \

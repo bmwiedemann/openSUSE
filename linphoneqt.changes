@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 30 05:47:12 UTC 2021 - Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- add BuildRequires:  Mesa-libGLESv2-devel
+- add CMAKE_CXX_FLAGS=-fpermissive
+
+-------------------------------------------------------------------
+Sun Jul 4 2021 Giacomo Comes <gcomes.obs@gmail.com> - 4.2.5
+
+- fixed several RPMLINT warning
+
+-------------------------------------------------------------------
 Thu Apr 15 20:20:19 UTC 2021 - Luiz Angelo Daros de Luca <luizluca@tre-sc.jus.br>
 
 - Added linphoneqt-0002-remove-bc_compute_full_version-usage.patch
