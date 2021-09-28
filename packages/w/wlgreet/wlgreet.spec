@@ -26,26 +26,23 @@ URL:            https://git.sr.ht/~kennylevinsen/wlgreet
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        cargo_config
-BuildRequires:  cargo
-BuildRequires:  rust
-BuildRequires:  rust-packaging
+BuildRequires:  cargo-packaging
 Recommends:     greetd
 
 %description
-Raw wayland greeter for greetd, to be run under sway or similar. 
+Raw wayland greeter for greetd, to be run under sway or similar.
 Note that cage is currently not supported due to it lacking wlr-layer-shell-unstable support.
 
 %prep
 %setup -qa1
-%cargo_prep
+mkdir .cargo
 cp %{SOURCE2} .cargo/config
 
 %build
-%cargo_build
+%{cargo_build}
 
 %install
-
-install -D -p -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
+%{cargo_install}
 
 %files
 %license LICENSE

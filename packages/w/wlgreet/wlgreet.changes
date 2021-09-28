@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 05:38:19 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Sat Feb 20 17:10:49 UTC 2021 - Denys Kondratenko <stdden@opensuse.org>
 
 - Update to 0.3. This release is a minor maintenance release, 
