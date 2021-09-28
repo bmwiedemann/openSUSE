@@ -24,6 +24,7 @@ License:        MIT
 Group:          Productivity/Networking/System
 URL:            https://github.com/gssapi/gssproxy 
 Source0:        https://github.com/gssapi/gssproxy/releases/download/v%{version}/gssproxy-%{version}.tar.gz
+Patch0:	harden_gssproxy.service.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  krb5-client
@@ -63,6 +64,7 @@ keys directly.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 autoreconf -fvi

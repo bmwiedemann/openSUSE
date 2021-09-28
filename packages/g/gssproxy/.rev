@@ -59,4 +59,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>880736</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>9ed5db0ed376577e55ee4707ce5a1ba8</srcmd5>
+    <version>0.8.4</version>
+    <time>1632849396</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic systemd hardening effort by the security team. This has not been tested. For details please see https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort (forwarded request 920642 from jsegitz)</comment>
+    <requestid>921908</requestid>
+  </revision>
 </revisionlist>
