@@ -2,6 +2,18 @@
 Description=HP DriveGuard Daemon
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Type=dbus
 BusName=com.hp.DriveGuard
 ExecStart=/usr/sbin/hp-drive-guard-daemon

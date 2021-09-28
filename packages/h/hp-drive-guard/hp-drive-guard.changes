@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 22 08:32:16 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * hp-drive-guard.service
+
+-------------------------------------------------------------------
 Mon Sep 11 12:19:28 UTC 2017 - fcrozat@suse.com
 
 - Fix spelling of SUSE and replace old email address.
