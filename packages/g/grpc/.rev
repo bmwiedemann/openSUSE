@@ -313,4 +313,12 @@ put together with abseil-cpp</comment>
     <comment>- Update to release 1.39.1</comment>
     <requestid>915134</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>57f122e49e81a5d8bf6eb9c370cf6bfe</srcmd5>
+    <version>1.41.0</version>
+    <time>1632849394</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.41.0</comment>
+    <requestid>921901</requestid>
+  </revision>
 </revisionlist>
