@@ -2839,7 +2839,7 @@ unsorted:
   - dico-modules 
   - dictd 
   - dictd-devel 
-  - dicts 
+  - dicts-devel 
   - diff-pdf 
   - diffmk 
   - diffoscope 
@@ -14237,7 +14237,7 @@ unsorted:
   - libweston-9-0 
   - libweston-desktop-9-0 
   - libwget-devel 
-  - libwget0 
+  - libwget1 
   - libwhich 
   - libwiiuse0 
   - libwim15 
@@ -14912,6 +14912,8 @@ unsorted:
   - lout 
   - love 
   - love-0_7_2 
+  - low-memory-monitor 
+  - low-memory-monitor-doc 
   - lpairs 
   - lpe 
   - lpsolve 
@@ -19416,6 +19418,7 @@ unsorted:
   - perl-Plack-Middleware-RemoveRedundantBody 
   - perl-Plack-Middleware-Session 
   - perl-Plack-Test-Agent 
+  - perl-Pod-AsciiDoctor 
   - perl-Pod-Coverage 
   - perl-Pod-Coverage-Moose 
   - perl-Pod-Coverage-TrustPod 
@@ -31596,6 +31599,7 @@ unsorted:
   - scrub 
   - scrypt 
   - scs-devel 
+  - scsh 
   - scsh-base 
   - scsirastools 
   - scsires 
