@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 12:58:00 UTC 2021 - Dr. Werner Fink <werner@suse.de>
+
+- Use spec file macros for pam (boo#1190959) 
+
+-------------------------------------------------------------------
 Sun Aug 13 14:40:06 UTC 2017 - werner@suse.de
 
 - Update to pam_script version 1.9.1

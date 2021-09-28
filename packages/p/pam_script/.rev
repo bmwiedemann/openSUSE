@@ -7,4 +7,12 @@
     <comment>New package, see bug#1039848</comment>
     <requestid>516621</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25a86d58ab0760df62cd7156cd257c7c</srcmd5>
+    <version>1.1.9</version>
+    <time>1632849405</time>
+    <user>dimstar_suse</user>
+    <comment>- Use spec file macros for pam (boo#1190959)</comment>
+    <requestid>922002</requestid>
+  </revision>
 </revisionlist>

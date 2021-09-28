@@ -1,6 +1,7 @@
 #
 # spec file for package pam_script
 #
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) specCURRENT_YEAR SUSE LINUX Products GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,15 +13,16 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 Name:           pam_script
 Version:        1.1.9
 Release:        0
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Summary:        PAM module which allows executing a script
-Url:            https://github.com/jeroennijhof/pam_script
+URL:            https://github.com/jeroennijhof/pam_script
 Group:          Productivity/Networking
 Source0:        https://github.com/jeroennijhof/pam_script/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         pam_script-man-section.patch
@@ -31,6 +33,9 @@ BuildRequires:  glib2-devel
 BuildRequires:  libtool
 BuildRequires:  pam-devel
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if ! %{defined _pam_moduledir}
+%define _pam_moduledir /%{_lib}/security
+%endif
 
 %description
 This module will allow you to execute scripts during authorization,
@@ -44,12 +49,12 @@ or other scripts.
 autoreconf -fis
 
 %build
-%configure --disable-static --with-gnu-ld --libdir=/%{_lib}/security
+%configure --disable-static --with-gnu-ld --libdir=%{_pam_moduledir}
 make %{?_smp_mflags}
 
 %install
 make install DESTDIR=%{buildroot} man7dir='$(mandir)/man8'
-rm -vf %{buildroot}/%{_lib}/security/*.la
+rm -vf %{buildroot}%{_pam_moduledir}/*.la
 rm -vf %{buildroot}%{_sysconfdir}/README
 for file in %{buildroot}%{_mandir}/man8/*.7*
 do
@@ -60,10 +65,15 @@ done
 
 %files
 %defattr(-,root,root)
+%if %{defined license}
+%license COPYING
+%doc AUTHORS ChangeLog README NEWS etc/README.pam_script
+%else
 %doc AUTHORS COPYING ChangeLog README NEWS etc/README.pam_script
+%endif
 %config(noreplace) %dir %{_sysconfdir}/pam-script.d/
 %config(noreplace) %{_sysconfdir}/pam_script*
-/%{_lib}/security/*
+%{_pam_moduledir}/*
 %{_mandir}/man8/%{name}.8*
 
 %changelog
