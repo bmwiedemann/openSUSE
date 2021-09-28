@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 28 04:30:55 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1632803445.44df68079:
+  * Avoid warning in `untie_asset_from_job_and_unregister_if_unused`
+  * Fix computation of missing assets if there are no relevant assets
+  * Ensure nightly job for deps prefers openQA:devel
+  * Try to fix sporadic CircleCI issues in 05-scheduler-full.t
+  * Fix build in tests/overview when groupid is defined
+  * Speed up asset cleanup by only updating last job on changes
+  * Speed up asset cleanup by only updating the "fixed status" on changes
+  * Speed-up asset cleanup by caching path of asset file on disk
+  * Ignore shellcheck false positives in tools/generate-documentation
+  * Remove useless x in if in tools/run-tests-within-container
+  * Remove useless assignment in tools/generate-documentation
+  * Change shell to bash in tools/generate-packed-assets
+
+-------------------------------------------------------------------
 Fri Sep 24 00:03:19 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1632424784.6736f5e9a:
