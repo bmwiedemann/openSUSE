@@ -1058,4 +1058,12 @@ This references bsc#1186798</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>915441</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>b3df064bf5dd82b75b408cf6d7408305</srcmd5>
+    <version>2.6.13</version>
+    <time>1632849387</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>922026</requestid>
+  </revision>
 </revisionlist>
