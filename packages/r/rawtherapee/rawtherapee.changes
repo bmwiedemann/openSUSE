@@ -1,8 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 27 23:19:02 UTC 2021 - Marcin Bajor <marcin.bajor@gmail.com>
+
+- Backport patch for glibc 2.34 compatibility, add
+  fix-glibc_234-build.patch
+
+-------------------------------------------------------------------
 Wed May 26 08:30:03 UTC 2021 - Marcin Bajor <marcin.bajor@gmail.com>
 
 - Fix sgfault on exit, add patch fix-segfault-on-exit.patch
-  boo#1186455 
+  boo#1186455
 
 -------------------------------------------------------------------
 Mon Jun  8 11:35:53 UTC 2020 - Paolo Stivanin <info@paolostivanin.com>
