@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 01:17:05 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Replace rust-packaging with cargo-packaging
+
+-------------------------------------------------------------------
 Mon Jul 19 19:37:30 UTC 2021 - Ben Greiner <code@bnavigator.de>
 
 - Update to 2.3.2

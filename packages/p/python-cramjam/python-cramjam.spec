@@ -16,7 +16,6 @@
 #
 
 
-%global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 %define skip_python36 1
 Name:           python-cramjam
@@ -31,8 +30,8 @@ Source1:        vendor.tar.xz
 Source2:        cargo_config
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
+BuildRequires:  cargo-packaging
 BuildRequires:  python-rpm-macros
-BuildRequires:  rust-packaging
 # SECTION test dependencies
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest}
