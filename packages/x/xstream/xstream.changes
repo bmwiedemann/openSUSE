@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Sep 28 05:49:16 UTC 2021 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.18
+  * Security fixes
+    + This maintenance release addresses following security
+      vulnerabilities, when unmarshalling with an XStream instance
+      using the default blacklist of an uninitialized security
+      framework. XStream is therefore now using a whitelist by
+      default. (CVE-2021-39139, CVE-2021-39140, CVE-2021-39141,
+      CVE-2021-39144, CVE-2021-39145, CVE-2021-39146,
+      CVE-2021-39147, CVE-2021-39148, CVE-2021-39149,
+      CVE-2021-39150, CVE-2021-39151, CVE-2021-39152,
+      CVE-2021-39153, CVE-2021-39154, bsc#1189798)
+  * Minor changes
+    + Support serializable types with non-serializable parent with
+      PureJavaReflectionConverter.
+  * Stream compatibility
+    + Starting with version 1.14.12 nine years ago, XStream contains
+      a Security Framework to implement a black- or whitelist for
+      the allowed types at deserialization time. Until version
+      1.4.17, XStream kept a default blacklist in order to deny all
+      types of the Java runtime, which are used for all kinds of
+      security attacks, in order to guarantee optimal runtime
+      compatibility for existing users. However, this approach has
+      failed. The last months have shown, that the Java runtime
+      alone contains dozens of types that can be used for an attack,
+      not even looking at the 3rd party libraries on a classpath.
+      The new version of XStream uses therefore now by default a
+      whitelist, which is recommended since nine years. It also has
+      been complaining on the console for a long time about an
+      uninitialized security framework the first time it was run.
+      Anyone who has followed the advice and initialized the
+      security framework for their own scenario can easily update
+      to the new version without any problem. Everyone else will
+      have to do a proper initialization now, otherwise the new
+      version will fail with certainty at deserialization time.
+- Modified patch:
+  * Revert-MXParser-changes.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Mon May 31 07:59:25 UTC 2021 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.4.17
@@ -113,7 +154,7 @@ Tue Apr  5 21:17:09 UTC 2016 - moio@suse.com
 -------------------------------------------------------------------
 Tue Mar 29 12:50:05 UTC 2016 - moio@suse.com
 
-- Upgrade to version 1.4.9, which fixes CVE-2016-3674 (bsc#972950) 
+- Upgrade to version 1.4.9, which fixes CVE-2016-3674 (bsc#972950)
 
 -------------------------------------------------------------------
 Tue Nov 10 07:25:59 UTC 2015 - moio@suse.com
