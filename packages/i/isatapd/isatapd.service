@@ -3,6 +3,17 @@ Description=isatapd creates and maintains an ISATAP client tunnel (RFC 5214) in 
 Documentation=man:isatapd(8)
 
 [Service]
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectSystem=full
+ProtectHome=true
+ProtectHostname=true
+ProtectClock=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+RestrictRealtime=true
+# end of automatic additions 
 Environment="MTU=1280"
 EnvironmentFile=-/etc/sysconfig/isatapd
 ExecStart=/usr/sbin/isatapd --mtu $MTU $DAEMON_OPTS $ISATAP_ROUTERS
