@@ -764,4 +764,13 @@
     <comment>- covers SLE/SLE-18630</comment>
     <requestid>921786</requestid>
   </revision>
+  <revision rev="82" vrev="17">
+    <srcmd5>ebb0dd3d909196121a81d25387c0ae82</srcmd5>
+    <version>1.10.1</version>
+    <time>1632849401</time>
+    <user>dimstar_suse</user>
+    <comment>- contains fix for crash in free() when using &quot;-f&quot; option of
+  vncpasswd  command (bsc#1171519)</comment>
+    <requestid>921976</requestid>
+  </revision>
 </revisionlist>
