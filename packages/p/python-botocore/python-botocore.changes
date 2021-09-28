@@ -288,6 +288,13 @@ Wed Sep  1 06:49:55 UTC 2021 - Michal Vyskocil <mvyskocil@opensuse.org>
    * api-change:batch: Add support for ListJob filters
 
 -------------------------------------------------------------------
+Tue Aug 24 12:44:10 UTC 2021 - Robert Schweikert <rjschwei@suse.com>
+
+- Disables Py 2 build for SLE 15
+  + Py 2 is considered legacy with limited support. Should not have been
+    built or released for Py 2. This was a mistake.
+
+-------------------------------------------------------------------
 Tue Jul 27 12:39:08 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Version update to 1.21.7 (bsc#1189649)
@@ -612,6 +619,11 @@ Wed Jul 21 09:57:19 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * api-change:``forecast``: Added optional field AutoMLOverrideStrategy to CreatePredictor API that allows users to
     customize AutoML strategy. If provided in CreatePredictor request, this field is visible in DescribePredictor and
     GetAccuracyMetrics responses.
+
+-------------------------------------------------------------------
+Tue Jul  6 08:46:11 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Enable python2 builds for SLE-15
 
 -------------------------------------------------------------------
 Thu Jun  3 12:54:41 UTC 2021 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
