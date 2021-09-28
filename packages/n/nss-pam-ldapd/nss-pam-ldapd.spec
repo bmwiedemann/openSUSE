@@ -1,7 +1,7 @@
 #
 # spec file for package nss-pam-ldapd
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -57,7 +57,7 @@ connections, authentication, attribute translation, etc.
 autoreconf
 export CPPFLAGS="-I/usr/include/sasl"
 %configure --libdir=/%{_lib} \
-	    --with-pam-seclib-dir=/%{_lib}/security \
+	    --with-pam-seclib-dir=%{_pam_moduledir} \
 		--disable-utils
 make %{?_smp_mflags}
 
@@ -91,7 +91,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcnslcd
 %license COPYING
 %doc AUTHORS ChangeLog NEWS README
 /%{_lib}/libnss_ldap.so.2
-/%{_lib}/security/pam_ldap.so
+%{_pam_moduledir}/pam_ldap.so
 %{_mandir}/man?/*
 %config(noreplace) %attr(640,root,root) %{_sysconfdir}/nslcd.conf
 /%{_unitdir}/nslcd.service
