@@ -1,5 +1,5 @@
 #
-# spec file for package mvapich2
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -276,7 +276,6 @@ BuildRequires:  libnuma-devel
 %endif
 BuildRequires:  libtool
 BuildRequires:  libtool
-BuildRequires:  python-devel
 BuildRequires:  sysfsutils
 %if %{without hpc}
 BuildRequires:  gcc-c++

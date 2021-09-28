@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 28 07:20:18 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
+
+- Remove obsolete python dependency (bsc#1190996)
+
+-------------------------------------------------------------------
 Tue May 18 08:08:52 UTC 2021 - Nicolas Morey-Chaisemartin <nmoreychaisemartin@suse.com>
 
 - Update to mvapich2 2.3.6
