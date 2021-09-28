@@ -7,4 +7,15 @@
     <comment> </comment>
     <requestid>815520</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b5a430ee2c5087d9fb1f3e0aea24f7bb</srcmd5>
+    <version>1.14.0</version>
+    <time>1632849395</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.14.0:
+  * bug: accept all VAPID key instances (thanks @mthu)
+  * Support requests_session param in webpush fn too
+  * chore: library update, remove nose tests</comment>
+    <requestid>921903</requestid>
+  </revision>
 </revisionlist>

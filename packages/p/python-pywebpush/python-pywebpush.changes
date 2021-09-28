@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 28 01:08:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.14.0:
+  * bug: accept all VAPID key instances (thanks @mthu)
+  * Support requests_session param in webpush fn too
+  * chore: library update, remove nose tests 
+
+-------------------------------------------------------------------
 Sun Jun  7 05:11:49 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
 
 - Tidy spec, removing unnecessary build dependencies and suggests
