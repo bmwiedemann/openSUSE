@@ -155,7 +155,7 @@ help2man ./Orthanc -N -n "Lightweight, RESTful DICOM server for healthcare and m
 %ifarch != ix86
 build/UnitTests
 %else
-build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression
+build/UnitTests --gtest_filter=-ImageProcessing.Convolution --gtest_filter=-Version.CivetwebCompression --gtest_filter=-SharedLibrary.Basic
 %endif
 
 %install
