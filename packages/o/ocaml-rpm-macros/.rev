@@ -155,4 +155,12 @@ trim changes file</comment>
 - Add conditional to disable debug_package macro when building with broken rpm variants</comment>
     <requestid>887313</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>68e6f30502940dcbefff8532cc8bc873</srcmd5>
+    <version>20210911</version>
+    <time>1632849378</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921281</requestid>
+  </revision>
 </revisionlist>

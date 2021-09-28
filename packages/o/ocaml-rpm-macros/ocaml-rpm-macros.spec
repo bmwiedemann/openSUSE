@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20210421
+Version:        20210911
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
@@ -414,6 +414,13 @@ ocaml setup.ml -configure \\\
 %ifarch ppc64 ppc64le
 	ulimit -s $((1024 * 64)) ; \
 %endif
+%if 0
+	# obviously this works just with a single entry in dune_release_pkgs=
+%endif
+	if test -n "${dune_release_pkgs}" ; \
+	then \
+		test -f 'opam' && mv -v 'opam' "${dune_release_pkgs}.opam" ; \
+	fi ; \
 	echo '%%{version}' | tee VERSION ; \
 	for opam in *.opam \
 	do\

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- Rename a single opam file to $dune_release_pkgs.opam
+
+-------------------------------------------------------------------
 Wed Apr 21 12:34:56 UTC 2021 - ohering@suse.de
 
 - Remove ocaml_native_compiler flag, assume native target
