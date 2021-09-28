@@ -16,18 +16,17 @@
 #
 
 
-
 Name:           cargo-packaging
-Version:        1.0.0~git3.e0b8dad
+Version:        1.0.0~git5.05b6425
 Release:        0
 BuildArch:      noarch
 Summary:        Some macros to assist with cargo and rust packaging
 License:        MPL-2.0
 URL:            https://github.com/Firstyear/cargo-packaging
 Source0:        %{name}-%{version}.tar.xz
-Requires: cargo
+Requires:       cargo
 
-Conflicts: rust-packaging
+Conflicts:      rust-packaging
 
 %description
 A set of macros to assist with cargo and rust packaging, written in a manner

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 06:12:00 UTC 2021 - william.brown@suse.com
+
+- Update to version 1.0.0~git5.05b6425:
+  * Add rust arches macro and update t1 arches
+
+-------------------------------------------------------------------
 Wed Sep 22 00:53:22 UTC 2021 - William Brown <william.brown@suse.com>
 
 - Update spec based on reviewer feedback
