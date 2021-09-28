@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 22 14:30:27 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
+
+- Added hardening to systemd service(s) (bsc#1181400). Modified:
+  * icecast.service
+
+-------------------------------------------------------------------
 Fri Nov  2 11:55:28 CET 2018 - tiwai@suse.de
 
 - update to version 2.4.4:
