@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 28 16:03:44 UTC 2021 - okurz@suse.com
+
+- Update to version 4.6.1632799442.f77d4e14:
+  * Add support for timeout on SSH based commands if possible
+  * Allow spaces and comma as delimiter for SCHEDULE variable
+  * Flush Python's `stderr` to ensure error messages end up in logs
+  * Adapt container path in README in accordance with 16d2b42e0960
+  * Use Leap 15.3 container
+  * Correctly use QEMU_COMPRESS_QCOW2
+  * Use Leap 15.3 as TW's glibc 2.34 breaks CI
+
+-------------------------------------------------------------------
 Fri Sep 24 02:23:41 UTC 2021 - okurz@suse.com
 
 - Update to version 4.6.1632416043.04a757ed:
