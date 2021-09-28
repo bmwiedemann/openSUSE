@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} < 1550
+%define _firmwaredir /lib/firmware
+%endif
+
 %define src_ver 1.2.4.2.g15998
 Name:           alsa-topology-conf
 Version:        1.2.5
@@ -24,8 +28,12 @@ Summary:        ALSA topology configurations
 License:        BSD-3-Clause
 URL:            https://www.alsa-project.org/
 Source:         https://www.alsa-project.org/files/pub/lib/alsa-topology-conf-%{version}.tar.bz2
+BuildRequires:  alsa-utils
 BuildArch:      noarch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+# Skylake and Kayblake-LP
+Supplements:    modalias(pci:v00008086d00009D70sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00009D71sv*sd*bc*sc*i*)
 
 %description
 This package contains the configuration files for ALSA topology support.
@@ -38,11 +46,15 @@ This package contains the configuration files for ALSA topology support.
 %install
 mkdir -p %{buildroot}%{_datadir}/alsa
 cp -a topology %{buildroot}%{_datadir}/alsa/
+mkdir -p %{buildroot}%{_firmwaredir}
+alsatplg -c topology/hda-dsp/skl_hda_dsp_generic-tplg.conf \
+    -o %{buildroot}%{_firmwaredir}/skl_hda_dsp_generic-tplg.bin
 
 %files
 %defattr(-, root, root)
 %doc README.md
 %license LICENSE
 %{_datadir}/alsa
+%{_firmwaredir}/*
 
 %changelog
