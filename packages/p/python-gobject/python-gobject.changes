@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 20 10:21:08 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.42.0:
+  + meson: Bump minimum meson_version to 0.47.0.
+  + Expose GObject.Object.run_dispose().
+  + docs: document Gtk.Template.
+  + dev: Add poetry support.
+  + meson: use main branch for glib subproject.
+  + Fix some small memory leaks.
+
+-------------------------------------------------------------------
 Wed Aug  4 09:17:18 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust BuildRequires for python_module cairo to python-module

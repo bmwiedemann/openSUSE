@@ -713,4 +713,12 @@ not get invalid dependencies (forwarded request 390575 from dimstar)</comment>
 - Skip build for python2: not supported anymore since 3.38.0. (forwarded request 910099 from yfjiang)</comment>
     <requestid>910106</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>222a129b0f95b02f3ff4d9d5501539db</srcmd5>
+    <version>3.42.0</version>
+    <time>1632939471</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920974 from dimstar)</comment>
+    <requestid>921651</requestid>
+  </revision>
 </revisionlist>
