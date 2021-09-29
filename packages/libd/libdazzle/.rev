@@ -187,4 +187,12 @@
     <comment>GNOME 40 - here we come (forwarded request 880984 from dimstar)</comment>
     <requestid>881153</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e3ccda00d02cc41a057bc83179d57ffd</srcmd5>
+    <version>3.42.0</version>
+    <time>1632939499</time>
+    <user>dimstar_suse</user>
+    <comment>Now with added provides (forwarded request 922155 from iznogood)</comment>
+    <requestid>922157</requestid>
+  </revision>
 </revisionlist>

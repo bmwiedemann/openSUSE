@@ -17,13 +17,13 @@
 
 
 Name:           libdazzle
-Version:        3.40.0
+Version:        3.42.0
 Release:        0
 Summary:        Collection of fancy features for GLib and Gtk+
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://gitlab.gnome.org/GNOME/libdazzle
-Source0:        https://download.gnome.org/sources/libdazzle/3.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/libdazzle/3.42/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.50.0
@@ -53,6 +53,8 @@ This package provides the dazzle-list-counters binary.
 %package -n     libdazzle-1_0-0
 Summary:        Collection of fancy features for GLib and Gtk+ -- Library file
 Group:          System/Libraries
+# Manual provides to make the lang pack installable
+Provides:       libdazzle = %{version}
 
 %description -n libdazzle-1_0-0
 This library is a companion library to GObject and Gtk+.
@@ -92,6 +94,8 @@ isn't quite generic enough to work for everyone. -- Development Files
 
 This package provides the development files, and its documentation, for libdazzle.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -113,6 +117,7 @@ This package provides the development files, and its documentation, for libdazzl
 
 %install
 %meson_install
+%find_lang %{name}-1.0 %{?no_lang_C}
 
 %post -n libdazzle-1_0-0 -p /sbin/ldconfig
 %postun -n libdazzle-1_0-0 -p /sbin/ldconfig
@@ -138,5 +143,7 @@ This package provides the development files, and its documentation, for libdazzl
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/libdazzle-1.0.deps
 %{_datadir}/vala/vapi/libdazzle-1.0.vapi
+
+%files lang -f %{name}-1.0.lang
 
 %changelog

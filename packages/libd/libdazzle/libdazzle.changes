@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 29 10:37:39 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add manual libdazzle = %{version} Provides to make the lang pack
+  auto installable.
+
+-------------------------------------------------------------------
+Fri Sep  3 21:47:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.42.0:
+  + Panel fixes.
+  + Allow DzlTaskCache to use NULL copy/free funcs.
+  + Updated translations.
+- Add lang sub-package now that there are translations.
+
+-------------------------------------------------------------------
 Sat Mar 20 09:17:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.40.0:
