@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- Add ocaml-ppx_variants_conv.patch for compatibility with ppxlib 0.23
+
+-------------------------------------------------------------------
 Fri Apr  9 09:09:09 UTC 2021 - ohering@suse.de
 
 - Initial version 0.14.1

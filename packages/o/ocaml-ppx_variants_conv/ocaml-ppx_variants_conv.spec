@@ -26,8 +26,9 @@ Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ppx_variants_conv
 Source0:        %{name}-%{version}.tar.xz
+Patch0:         ocaml-ppx_variants_conv.patch
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
 BuildRequires:  ocamlfind(base)
 BuildRequires:  ocamlfind(ppxlib)
@@ -55,7 +56,7 @@ The %{name}-devel package contains libraries and signature files for
 developing applications that use %{name}.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 dune_release_pkgs='ppx_variants_conv'
