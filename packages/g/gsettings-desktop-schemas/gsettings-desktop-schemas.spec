@@ -18,13 +18,13 @@
 
 
 Name:           gsettings-desktop-schemas
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Shared GSettings Schemas for the Desktop
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://gnome.org/
-Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gsettings-desktop-schemas/41/%{name}-%{version}.tar.xz
 # SOURCE-FIX-SLE 00_org.gnome.desktop.peripherals.gschema.override bsc#1171593 alynx.zhou@suse.com -- Change touchpad click method to default
 Source1:        00_org.gnome.desktop.peripherals.gschema.override
 
@@ -34,7 +34,6 @@ Patch0:         gsettings-desktop-schemas-fate324570-Add-key-for-GDM-background-
 BuildRequires:  gobject-introspection-devel >= 1.31.0
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  pkgconfig(gio-2.0) >= 2.31.0
 # Default fonts in the schemas
 Recommends:     cantarell-fonts
@@ -64,7 +63,6 @@ This package contains development files.
 %if 0%{?sle_version}
 cp -a %{SOURCE1} .
 %endif
-translation-update-upstream po %{name}
 
 %build
 %meson \
