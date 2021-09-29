@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 17 09:16:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 14 14:26:01 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Documentation was added
+  + Updated translations.
+- Add itstool BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Wed Jun 16 12:34:07 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 40.1:

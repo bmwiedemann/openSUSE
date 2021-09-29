@@ -18,14 +18,15 @@
 
 
 Name:           gnome-todo
-Version:        40.1
+Version:        41.0
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Text/Editors
 URL:            https://wiki.gnome.org/Apps/Todo
-Source0:        https://download.gnome.org/sources/gnome-todo/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-todo/41/%{name}-%{version}.tar.xz
 
+BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  update-desktop-files
@@ -88,14 +89,15 @@ GNOME desktop environment.
 %license COPYING
 %doc NEWS
 %{_bindir}/%{name}
-%dir %{_datadir}/metainfo
-%{_datadir}/metainfo/org.gnome.Todo.appdata.xml
 %{_datadir}/applications/org.gnome.Todo.desktop
 %{_datadir}/dbus-1/services/org.gnome.Todo.service
-%{_datadir}/glib-2.0/schemas/org.gnome.todo.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.todo.background.gschema.xml
+%{_datadir}/glib-2.0/schemas/org.gnome.todo.gschema.xml
+%{_datadir}/help/C/%{name}/
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Todo*
 %{_datadir}/icons/hicolor/symbolic/actions/
+%dir %{_datadir}/metainfo
+%{_datadir}/metainfo/org.gnome.Todo.appdata.xml
 
 %files devel
 %doc doc/CONTRIBUTING.md doc/HACKING.md README.md
