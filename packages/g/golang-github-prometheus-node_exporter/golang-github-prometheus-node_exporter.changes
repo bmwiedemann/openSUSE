@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 23 09:43:19 UTC 2021 - Patrick Seidensal <pseidensal@suse.com>
+
+- Apply patch to capture permission denied error for "energy_uj" file (bsc#1190535)
+    * Adds patch capture-permission-denied-error-energy_uj.patch
+      from https://github.com/prometheus/node_exporter/pull/2092
+
+-------------------------------------------------------------------
 Tue Mar  9 14:02:29 UTC 2021 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to 1.1.2

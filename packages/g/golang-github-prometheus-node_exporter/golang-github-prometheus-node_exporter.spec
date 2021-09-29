@@ -30,6 +30,7 @@ Source:         node_exporter-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        prometheus-node_exporter.service
 Source4:        prometheus-node_exporter.sysconfig
+Patch0:         capture-permission-denied-error-energy_uj.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API) = 1.14
@@ -71,6 +72,7 @@ getent passwd prometheus >/dev/null || %{_sbindir}/useradd -r -g prometheus -d %
 %post
 %service_add_post prometheus-node_exporter.service
 %fillup_only -n prometheus-node_exporter
+
 %preun
 %service_del_preun prometheus-node_exporter.service
 

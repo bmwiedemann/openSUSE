@@ -1,0 +1,31 @@
+From 502f287c960f910eb4cc019ff6b8a877cfa15f5d Mon Sep 17 00:00:00 2001
+From: Ben Kochie <superq@gmail.com>
+Date: Wed, 21 Jul 2021 19:28:54 +0200
+Subject: [PATCH] Fix rapl collector log noise
+References: https://github.com/prometheus/node_exporter/pull/2092 (bsc#1190535)
+Upstream: submitted
+
+Capture permission denied error for "energy_uj" file.
+
+Fixes: https://github.com/prometheus/node_exporter/issues/1892
+
+Signed-off-by: Ben Kochie <superq@gmail.com>
+---
+ collector/rapl_linux.go | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/collector/rapl_linux.go b/collector/rapl_linux.go
+index a0f90119b..b73c0dd83 100644
+--- a/collector/rapl_linux.go
++++ b/collector/rapl_linux.go
+@@ -70,6 +70,10 @@ func (c *raplCollector) Update(ch chan<- prometheus.Metric) error {
+ 	for _, rz := range zones {
+ 		newMicrojoules, err := rz.GetEnergyMicrojoules()
+ 		if err != nil {
++			if errors.Is(err, os.ErrPermission) {
++				level.Debug(c.logger).Log("msg", "Can't access energy_uj file", "zone", rz, "err", err)
++				return ErrNoData
++			}
+ 			return err
+ 		}
+ 		index := strconv.Itoa(rz.Index)
