@@ -17,7 +17,7 @@
 
 
 Name:           xdg-desktop-portal-gtk
-Version:        1.8.0
+Version:        1.10.0
 Release:        0
 Summary:        Backend implementation for xdg-desktop-portal using GTK+
 License:        LGPL-2.1-or-later
@@ -27,9 +27,7 @@ Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(gnome-desktop-3.0)
+BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14
 BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk+-x11-3.0)
@@ -53,12 +51,28 @@ or org.gnome.SessionManager D-Bus interfaces.
 %autosetup -p1
 
 %build
-%configure
+# All backends that are disabled are instead provided by
+# xdg-desktop-portal-gnome, to keep this package free of GNOME dependencies.
+%configure \
+	--disable-silent-rules \
+	--disable-appchooser \
+	--disable-background \
+	--disable-screencast \
+	--disable-screenshot \
+	--disable-settings \
+	--disable-wallpaper \
+	%{nil}
 %make_build
 
 %install
 %make_install
 %find_lang %{name}
+
+%post
+%systemd_user_post %{name}.service
+
+%preun
+%systemd_user_preun %{name}.service
 
 %files
 %license COPYING
