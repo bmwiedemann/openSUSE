@@ -791,4 +791,12 @@
     <comment></comment>
     <requestid>793809</requestid>
   </revision>
+  <revision rev="105" vrev="15">
+    <srcmd5>0e414df44d50ea47482c170223e4265f</srcmd5>
+    <version>3.22.0</version>
+    <time>1632939476</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920983 from dimstar)</comment>
+    <requestid>921659</requestid>
+  </revision>
 </revisionlist>

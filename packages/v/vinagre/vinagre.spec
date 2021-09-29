@@ -1,7 +1,7 @@
 #
 # spec file for package vinagre
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -45,7 +45,6 @@ BuildRequires:  intltool >= 0.50.0
 BuildRequires:  pkgconfig
 # We need the %%mime_database_* macros
 BuildRequires:  shared-mime-info
-BuildRequires:  translation-update-upstream
 BuildRequires:  update-desktop-files
 BuildRequires:  vala
 BuildRequires:  yelp-tools
@@ -79,7 +78,6 @@ gnome-keyring.
 
 %prep
 %autosetup -p1
-translation-update-upstream
 
 %build
 # Needed for Patch1

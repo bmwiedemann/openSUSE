@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 20 20:21:08 UTC 2021 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove obsolete translation-update-upstream support
+  (jsc#SLE-21105).
+
+-------------------------------------------------------------------
 Tue Apr 14 09:55:06 UTC 2020 - Martin Liška <mliska@suse.cz>
 
 - Add -fcommon in order to fix boo#1160419.
