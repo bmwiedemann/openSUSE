@@ -7,4 +7,12 @@
     <comment> </comment>
     <requestid>813139</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e8ede6c62d480a01286a0bffceca3368</srcmd5>
+    <version>1.1.0</version>
+    <time>1632939541</time>
+    <user>dimstar_suse</user>
+    <comment>- Modify test_ece.py to stop using nose.</comment>
+    <requestid>922082</requestid>
+  </revision>
 </revisionlist>
