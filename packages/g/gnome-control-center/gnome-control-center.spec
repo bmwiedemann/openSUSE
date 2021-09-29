@@ -26,14 +26,16 @@
 %endif
 
 Name:           gnome-control-center
-Version:        40.1
+Version:        41.0
 Release:        0
 Summary:        The GNOME Control Center
 License:        GPL-2.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-control-center/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-control-center/41/%{name}-%{version}.tar.xz
 
+# PATCH-FIX-OPENSUSE gnome-control-center-disable-error-message-for-NM.patch bsc#989801 sckang@suse.com -- network: Improve the check for whether NM or wicked is running
+Patch0:         gnome-control-center-disable-error-message-for-NM.patch
 ### patches for Leap >= 15 plus SLE >= 15, but not TW
 # PATCH-FEATURE-SLE gnome-control-center-info-never-use-gnome-software.patch bsc#999336 fezhang@suse.com -- info: Never search for gnome-software as an option when checking for updates on SLE and Leap 42.2, because we use gpk-update-viewer.
 Patch1001:      gnome-control-center-info-never-use-gnome-software.patch
@@ -59,11 +61,12 @@ BuildRequires:  pkgconfig(cheese-gtk) >= 3.5.91
 BuildRequires:  pkgconfig(colord) >= 0.1.34
 BuildRequires:  pkgconfig(colord-gtk) >= 0.1.24
 BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(gcr-3)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.23.0
 BuildRequires:  pkgconfig(gdk-wayland-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.53.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.68.0
 BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gnome-bluetooth-1.0) >= 3.18.2
 BuildRequires:  pkgconfig(gnome-desktop-3.0) >= 3.33.4
@@ -72,14 +75,13 @@ BuildRequires:  pkgconfig(goa-1.0) >= 3.25.3
 BuildRequires:  pkgconfig(goa-backend-1.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
-BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.0
-BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 3.37.1
+BuildRequires:  pkgconfig(gsettings-desktop-schemas) >= 40.alpha
 BuildRequires:  pkgconfig(gsound)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.20
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libgtop-2.0)
-BuildRequires:  pkgconfig(libhandy-1) >= 1.0.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libnm) >= 1.24.0
 BuildRequires:  pkgconfig(libnma) >= 1.8.0
 BuildRequires:  pkgconfig(libpulse) >= 2.0
@@ -114,6 +116,8 @@ Recommends:     cups-pk-helper
 Recommends:     dbus(com.intel.dleyna-server)
 # the printers panel can use the dbus service
 Recommends:     system-config-printer-dbus-service
+# For the power panel
+Recommends:     power-profiles-daemon
 Provides:       acme
 Provides:       fontilus
 Provides:       themus
@@ -187,6 +191,7 @@ GNOME control center.
 %prep
 %setup -q
 
+%patch0 -p1
 # patches for Leap >= 15 plus SLE >= 15, but not TW
 %if 0%{?sle_version} >= 150000
 %patch1001 -p1
@@ -233,6 +238,8 @@ rm %{buildroot}%{_datadir}/polkit-1/rules.d/gnome-control-center.rules
 %{_datadir}/gnome-shell/search-providers/gnome-control-center-search-provider.ini
 %{_datadir}/icons/hicolor/*/*/*.png
 %{_datadir}/icons/hicolor/*/*/*.svg
+%{_datadir}/icons/gnome-logo-text-dark.svg
+%{_datadir}/icons/gnome-logo-text.svg
 %{_datadir}/locale/en/
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.datetime.policy
 %{_datadir}/polkit-1/actions/org.gnome.controlcenter.remote-login-helper.policy

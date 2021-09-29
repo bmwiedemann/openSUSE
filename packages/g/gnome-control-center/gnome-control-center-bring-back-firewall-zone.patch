@@ -1,7 +1,7 @@
-Index: gnome-control-center-40.0/panels/network/connection-editor/ce-page-ethernet.c
+Index: gnome-control-center-41.0/panels/network/connection-editor/ce-page-ethernet.c
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/ce-page-ethernet.c
-+++ gnome-control-center-40.0/panels/network/connection-editor/ce-page-ethernet.c
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/ce-page-ethernet.c
++++ gnome-control-center-41.0/panels/network/connection-editor/ce-page-ethernet.c
 @@ -27,6 +27,7 @@
  
  #include "ce-page.h"
@@ -96,10 +96,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/ce-page-ethern
          self->setting_connection = nm_connection_get_setting_connection (connection);
          self->setting_wired = nm_connection_get_setting_wired (connection);
  
-Index: gnome-control-center-40.0/panels/network/connection-editor/ce-page-security.c
+Index: gnome-control-center-41.0/panels/network/connection-editor/ce-page-security.c
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/ce-page-security.c
-+++ gnome-control-center-40.0/panels/network/connection-editor/ce-page-security.c
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/ce-page-security.c
++++ gnome-control-center-41.0/panels/network/connection-editor/ce-page-security.c
 @@ -27,6 +27,7 @@
  
  #include "ce-page.h"
@@ -171,10 +171,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/ce-page-securi
  }
  
  static void
-Index: gnome-control-center-40.0/panels/network/connection-editor/ce-page-vpn.c
+Index: gnome-control-center-41.0/panels/network/connection-editor/ce-page-vpn.c
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/ce-page-vpn.c
-+++ gnome-control-center-40.0/panels/network/connection-editor/ce-page-vpn.c
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/ce-page-vpn.c
++++ gnome-control-center-41.0/panels/network/connection-editor/ce-page-vpn.c
 @@ -35,6 +35,8 @@ struct _CEPageVpn
  
          GtkLabel   *failure_label;
@@ -211,10 +211,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/ce-page-vpn.c
  }
  
  static void
-Index: gnome-control-center-40.0/panels/network/connection-editor/ethernet-page.ui
+Index: gnome-control-center-41.0/panels/network/connection-editor/ethernet-page.ui
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/ethernet-page.ui
-+++ gnome-control-center-40.0/panels/network/connection-editor/ethernet-page.ui
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/ethernet-page.ui
++++ gnome-control-center-41.0/panels/network/connection-editor/ethernet-page.ui
 @@ -159,6 +159,36 @@
        </packing>
      </child>
@@ -252,10 +252,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/ethernet-page.
        <placeholder/>
      </child>
      <child>
-Index: gnome-control-center-40.0/panels/network/connection-editor/firewall-helpers.c
+Index: gnome-control-center-41.0/panels/network/connection-editor/firewall-helpers.c
 ===================================================================
 --- /dev/null
-+++ gnome-control-center-40.0/panels/network/connection-editor/firewall-helpers.c
++++ gnome-control-center-41.0/panels/network/connection-editor/firewall-helpers.c
 @@ -0,0 +1,125 @@
 +/* -*- Mode: C; tab-width: 8; indent-tabs-mode: nil; c-basic-offset: 8 -*-
 + *
@@ -382,10 +382,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/firewall-helpe
 +        g_object_set (setting, NM_SETTING_CONNECTION_ZONE, zone, NULL);
 +        g_free (zone);
 +}
-Index: gnome-control-center-40.0/panels/network/connection-editor/firewall-helpers.h
+Index: gnome-control-center-41.0/panels/network/connection-editor/firewall-helpers.h
 ===================================================================
 --- /dev/null
-+++ gnome-control-center-40.0/panels/network/connection-editor/firewall-helpers.h
++++ gnome-control-center-41.0/panels/network/connection-editor/firewall-helpers.h
 @@ -0,0 +1,33 @@
 +/*
 + * This program is free software; you can redistribute it and/or modify
@@ -420,10 +420,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/firewall-helpe
 +
 +
 +#endif  /* _FIREWALL_HELPERS_H_ */
-Index: gnome-control-center-40.0/panels/network/connection-editor/meson.build
+Index: gnome-control-center-41.0/panels/network/connection-editor/meson.build
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/meson.build
-+++ gnome-control-center-40.0/panels/network/connection-editor/meson.build
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/meson.build
++++ gnome-control-center-41.0/panels/network/connection-editor/meson.build
 @@ -12,6 +12,7 @@ sources = files(
    'ce-page-vpn.c',
    'ce-page-wifi.c',
@@ -432,10 +432,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/meson.build
    'net-connection-editor.c',
    'vpn-helpers.c'
  )
-Index: gnome-control-center-40.0/panels/network/connection-editor/security-page.ui
+Index: gnome-control-center-41.0/panels/network/connection-editor/security-page.ui
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/security-page.ui
-+++ gnome-control-center-40.0/panels/network/connection-editor/security-page.ui
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/security-page.ui
++++ gnome-control-center-41.0/panels/network/connection-editor/security-page.ui
 @@ -47,6 +47,37 @@
          <property name="can_focus">False</property>
          <property name="orientation">vertical</property>
@@ -474,10 +474,10 @@ Index: gnome-control-center-40.0/panels/network/connection-editor/security-page.
            <placeholder/>
          </child>
        </object>
-Index: gnome-control-center-40.0/panels/network/connection-editor/vpn-page.ui
+Index: gnome-control-center-41.0/panels/network/connection-editor/vpn-page.ui
 ===================================================================
---- gnome-control-center-40.0.orig/panels/network/connection-editor/vpn-page.ui
-+++ gnome-control-center-40.0/panels/network/connection-editor/vpn-page.ui
+--- gnome-control-center-41.0.orig/panels/network/connection-editor/vpn-page.ui
++++ gnome-control-center-41.0/panels/network/connection-editor/vpn-page.ui
 @@ -51,6 +51,45 @@
        </packing>
      </child>
