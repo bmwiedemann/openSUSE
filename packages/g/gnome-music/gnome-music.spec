@@ -17,14 +17,15 @@
 
 
 Name:           gnome-music
-Version:        40.1.1
+Version:        41.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
-Source0:        https://download.gnome.org/sources/gnome-music/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-music/41/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
+
 # PATCH-FIX-SLE 0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch yfjiang@suse.com -- disable python 3.7 related feature to allow gnome-music built on SLE/Leap
 Patch0:         0001-Revert-grltrackerwrapper-Add-static-type-annotations.patch
 # PATCH-FIX-SLE 0002-Revert-coresong-Add-static-type-annotations.patch yfjiang@suse.com -- disable python 3.7 related feature to allow gnome-music built on SLE/Leap
@@ -41,13 +42,14 @@ BuildRequires:  python3-devel >= 3.6
 %else
 BuildRequires:  python3-devel >= 3.7
 %endif
-BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.67.1
 BuildRequires:  pkgconfig(goa-1.0) >= 3.35.90
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.35.0
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3.13
 BuildRequires:  pkgconfig(grilo-plugins-0.3) >= 0.3.12
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.7
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.14
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.28.0
+BuildRequires:  pkgconfig(libhandy-1) >= 1.2.0
 BuildRequires:  pkgconfig(libmediaart-2.0) >= 1.9.1
 BuildRequires:  pkgconfig(libsoup-2.4)
 BuildRequires:  pkgconfig(pango) >= 1.44.0
@@ -71,6 +73,7 @@ Requires:       tracker >= 2.99
 Requires:       tracker-miner-files >= 2.99
 # The versioned format depenency is written in a form not understood by our gi-scanner
 Requires:       typelib(Tracker) = 3.0
+Requires:       typelib(GstTag) = 1.0
 Recommends:     gstreamer-plugins-ugly
 
 %description

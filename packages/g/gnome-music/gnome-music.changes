@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 29 12:08:25 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add missing typelib (GstTag) Requires: the gi-dep-scanner does
+  not understand the format used in gnome-music.
+
+-------------------------------------------------------------------
+Sun Sep 19 19:20:06 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 41.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Sep  6 07:00:39 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.rc:
+  + Touch-ups for the new design.
+  + Async improvements.
+  + Bugs fixed:
+    - Fix duplicated playlist song removal.
+    - Fix flowbox selection state.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 23 14:01:09 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta:
+  + Implemented much of the new design mockups.
+  + Updated translations.
+- Add pkgconfig(libhandy-1) BuildRequires: new dependency.
+
+-------------------------------------------------------------------
 Wed Aug 11 08:34:46 UTC 2021 - Yifan Jiang <yfjiang@suse.com>
 
 - Revert to support python 3.6 as SLE and Leap use the version to
