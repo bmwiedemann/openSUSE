@@ -15,12 +15,12 @@ of makefilery.
  Source/cmake/WebKitCompilerFlags.cmake |    9 ---------
  1 file changed, 9 deletions(-)
 
-Index: webkitgtk-2.26.3/Source/cmake/WebKitCompilerFlags.cmake
+Index: webkitgtk-2.33.3/Source/cmake/WebKitCompilerFlags.cmake
 ===================================================================
---- webkitgtk-2.26.3.orig/Source/cmake/WebKitCompilerFlags.cmake
-+++ webkitgtk-2.26.3/Source/cmake/WebKitCompilerFlags.cmake
-@@ -137,15 +137,6 @@ if (COMPILER_IS_GCC_OR_CLANG)
-     if (CMAKE_COMPILER_IS_GNUCXX)
+--- webkitgtk-2.33.3.orig/Source/cmake/WebKitCompilerFlags.cmake
++++ webkitgtk-2.33.3/Source/cmake/WebKitCompilerFlags.cmake
+@@ -148,15 +148,6 @@ if (COMPILER_IS_GCC_OR_CLANG)
+     if (CMAKE_CXX_COMPILER_ID MATCHES "GNU")
          WEBKIT_PREPEND_GLOBAL_COMPILER_FLAGS(-Wno-expansion-to-defined)
      endif ()
 -

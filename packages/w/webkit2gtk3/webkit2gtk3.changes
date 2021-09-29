@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Sep 29 10:16:33 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add libjavascriptcoregtk-4_0-18 and llibwebkit2gtk-4_0-37 to
+  baselibs.conf: provide those libraries as multilib version.
+
+-------------------------------------------------------------------
+Wed Sep 29 06:47:28 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Rename -lang packages to WebKit2GTK-%{_apiver}, making the
+  translations between the three flavors co-exist.
+
+-------------------------------------------------------------------
+Wed Sep 22 16:18:00 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.34.0:
+  + Fix another regression in JavaScriptCore on 32bit systems.
+
+-------------------------------------------------------------------
+Mon Sep 20 02:33:51 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.33.91:
+  + Use the right display refresh monitor for animations in
+    accelerated compositng mode.
+  + Fix several issues in JavaScriptCore on 32bit systems.
+  + Prefer python3 over python2 in CMake.
+
+-------------------------------------------------------------------
+Mon Sep 20 02:33:50 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.33.90:
+  + Show TLS protocol version and ciphersuite name in the
+    inspector when building with libsoup3.
+  + Add multi-track support to media backend.
+  + Avoid strong alias computations in font fallback code.
+  + Fix deadlock tearing down pipeline when using fallback sink.
+  + Fix the build with gtk-doc enabled.
+  + Fix several crashes and rendering issues.
+- Add fix-warnings.patch: silence return-type warnings.
+
+-------------------------------------------------------------------
+Mon Sep 20 02:33:05 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add a 3rd flavor: gtk3 with libsoup2 (which retains compatibility
+  to the olderversions, identified as API version 4.0).
+
+-------------------------------------------------------------------
+Mon Sep 20 02:33:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add _multibuild file and enable build of webkit2gtk4.
+
+-------------------------------------------------------------------
+Mon Sep 20 02:33:03 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.33.3:
+  + Add support for display capture.
+  + Add new API to access/modify capture devices states.
+  + Add new API to configure the memory pressure handler.
+  + Add support for client side certifiates authentication.
+  + Add support color-schemes CSS property.
+  + Add support for dark scrollbars.
+  + Keep GtkSettings used by web processes in sync with the
+    settings set in the UI process.
+  + Add support for drawing the scrollbars corner.
+  + Allow to opt-out of GL rendering at runtime for media player.
+  + Add support for A420 compositing in media player.
+  + Improve pinch to zoom gesture in accerlerated compositing mode.
+  + Fix cookies configuration after a network process crash.
+  + Fix touchscreen navigation swipe when the page scrolls
+    horizontally.
+  + Fix rendering of elliptic radial gradients.
+  + Fix several crashes and rendering issues.
+  + Updated translations.
+- Drop fix-lto.patch: fixed upstream.
+- Add pkgconfig(lcms2) BuildRequires: new dependency.
+- Replace pkgconfig(libsoup-2.4) BuildRequires with
+  pkgconfig(libsoup-3.0): Follow upstreams port to Libsoup 3.0.
+
+-------------------------------------------------------------------
 Sun Sep 19 19:00:09 UTC 2021 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.32.4 (boo#1190701):
@@ -70,6 +148,22 @@ Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
 - Fix webkit2gtk3-restore-npapi.patch to install the plugin
     process.
 - Disable WPE renderer: our FDO backend is now too old.
+
+-------------------------------------------------------------------
+Mon Jul 26 15:38:26 UTC 2021 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2.32.3 (boo#1188697):
+  + Properly set the cookies settings after a network process
+    crash.
+  + Fix accessibility tree after a cross site navigation with PSON
+    enabled.
+  + Ensure WebKitScriptWorld::window-object-cleared signal is
+    always emitted.
+  + Fix several crashes and rendering issues.
+  + Security fixes: CVE-2021-21775, CVE-2021-21779, CVE-2021-30663,
+  CVE-2021-30665, CVE-2021-30689, CVE-2021-30720, CVE-2021-30734,
+  CVE-2021-30744, CVE-2021-30749, CVE-2021-30795, CVE-2021-30797,
+  CVE-2021-30799.
 
 -------------------------------------------------------------------
 Mon Jul 19 18:36:42 UTC 2021 - Michael Gorse <mgorse@suse.com>

@@ -1100,4 +1100,13 @@
     <comment>Tweak change log (forwarded request 920661 from mgorse)</comment>
     <requestid>920816</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>456cd91d20b22bb5961a5dee97aec047</srcmd5>
+    <version>2.34.0</version>
+    <time>1632939498</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libjavascriptcoregtk-4_0-18 and llibwebkit2gtk-4_0-37 to
+  baselibs.conf: provide those libraries as multilib version. (forwarded request 922145 from dimstar)</comment>
+    <requestid>922149</requestid>
+  </revision>
 </revisionlist>

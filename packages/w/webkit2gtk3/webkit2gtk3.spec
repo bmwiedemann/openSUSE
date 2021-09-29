@@ -1,5 +1,5 @@
 #
-# spec file for package webkit2gtk3
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -16,7 +16,33 @@
 #
 
 
+%define flavor @BUILD_FLAVOR@%nil
+
+%define _name webkitgtk
+%if "%{flavor}" == ""
+# gtknamesuffix is just so we do not have to rename the source package - no package is generated here
+%define _gtknamesuffix gtk3
+ExclusiveArch:  do-not-build
+%endif
+
+%if "%{flavor}" == "gtk3"
+%define _gtknamesuffix gtk3
 %define _pkgname_no_slpp libwebkit2gtk3
+%define _apiver 4.1
+%define _sover -4_1-0
+%define _wk2sover -4_1-0
+%define _sonamever 4.1
+%define _sonameverpkg 4_1
+%define _gtkver 3.0
+%define _jscver 4.1
+%define _pkgconfig_suffix gtk-3.0
+%define _usesoup2 0
+%endif
+
+%if "%{flavor}" == "gtk3-soup2"
+%define _gtknamesuffix gtk3-soup2
+%define _pkgname_no_slpp libwebkit2gtk3
+%define _apiver 4.0
 %define _sover -4_0-18
 %define _wk2sover -4_0-37
 %define _sonamever 4.0
@@ -24,14 +50,30 @@
 %define _gtkver 3.0
 %define _jscver 4
 %define _pkgconfig_suffix gtk-3.0
-%define _name webkitgtk
+%define _usesoup2 1
+%endif
+
+%if "%{flavor}" == "gtk4"
+%define _gtknamesuffix gtk4
+%define _pkgname_no_slpp libwebkit2gtk4
+%define _apiver 5.0
+%define _sover -5_0-0
+%define _wk2sover -5_0-0
+%define _sonamever 5.0
+%define _sonameverpkg 5_0
+%define _gtkver 4.0
+%define _jscver 5.0
+%define _pkgconfig_suffix gtk-4.0
+%define _usesoup2 0
+%endif
+
 # gold linker not available on old s390/s390x
 %define _gold_linker 1
 %ifarch ppc ppc64le s390
 %define _gold_linker 0
 %endif
-Name:           webkit2gtk3
-Version:        2.32.4
+Name:           webkit2%{_gtknamesuffix}
+Version:        2.34.0
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -44,6 +86,8 @@ Source99:       webkit2gtk3.keyring
 
 # PATCH-FIX-OPENSUSE no-forced-sse.patch jengelh@iani.de -- cure execution of illegal instruction in i586 firefox.
 Patch0:         no-forced-sse.patch
+# PATCH-FIX-UPSTREAM fix-warnings.patch mgorse@suse.com -- silence return-type warnings.
+Patch1:         fix-warnings.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -90,15 +134,26 @@ BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-tag-1.0)
 BuildRequires:  pkgconfig(gstreamer-video-1.0)
+%if "%{flavor}" == "gtk3" || "%{flavor}" == "gtk3-soup2"
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.0
+%endif
+%if "%{flavor}" == "gtk4"
+BuildRequires:  pkgconfig(gtk4) >= 3.98.50
+BuildRequires:  pkgconfig(xcomposite)
+%endif
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(harfbuzz) >= 0.9.2
+BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libbrotlidec) >= 1.0.1
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libsoup-2.4) >= 2.61.90
+%if %{_usesoup2}
+BuildRequires:  pkgconfig(libsoup-2.4) >= 2.54.0
+%else
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.9
+%endif
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwoff2dec)
@@ -130,9 +185,10 @@ Summary:        Library for rendering web content, GTK+ Port
 Group:          System/Libraries
 Requires:       bubblewrap
 Requires:       libjavascriptcoregtk%{_sover} = %{version}
-Requires:       webkit2gtk-4_0-injected-bundles
+Requires:       webkit2gtk-%{_sonameverpkg}-injected-bundles
 Requires:       xdg-dbus-proxy
 Provides:       %{_pkgname_no_slpp} = %{version}
+Provides:       WebKit2GTK-%{_apiver}
 Obsoletes:      webkit2gtk3-plugin-process-gtk2
 
 %description -n libwebkit2gtk%{_wk2sover}
@@ -144,11 +200,11 @@ It is able to display content such as HTML, SVG, XML, and others. It
 also supports DOM, XMLHttpRequest, XSLT, CSS, Javascript/ECMAscript and
 more.
 
-%package -n webkit2gtk-4_0-injected-bundles
+%package -n webkit2gtk-%{_sonameverpkg}-injected-bundles
 Summary:        Injected bundles for %{name}
 Group:          System/Libraries
 
-%description -n webkit2gtk-4_0-injected-bundles
+%description -n webkit2gtk-%{_sonameverpkg}-injected-bundles
 WebKit is a web content engine, derived from KHTML and KJS from KDE,
 and used primarily in Apple's Safari browser.  It is made to be
 embedded in other applications, such as mail readers, or web browsers.
@@ -257,7 +313,7 @@ Group:          Development/Tools/Other
 %description minibrowser
 A small test browswer from webkit, useful for testing features.
 
-%lang_package -n %{_pkgname_no_slpp}
+%lang_package -n WebKit2GTK-%{_apiver}
 
 %prep
 %autosetup -p1 -n webkitgtk-%{version}
@@ -290,11 +346,17 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_BUILD_TYPE=Release \
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libwebkit2gtk%{_wk2sover} \
   -DPORT=GTK \
+%if "%{flavor}" == "gtk4"
+  -DUSE_GTK4=ON \
+%endif
   -DENABLE_MINIBROWSER=ON \
   -DCMAKE_EXE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
+%if %{_usesoup2}
+  -DUSE_SOUP2=ON \
+%endif
 %ifarch aarch64
   -DENABLE_JIT=OFF \
   -DENABLE_C_LOOP=ON \
@@ -306,7 +368,8 @@ export PYTHON=%{_bindir}/python3
 
 %install
 %ninja_install -C build
-%find_lang WebKit2GTK-4.0
+rm %{buildroot}%{_bindir}/WebKitWebDriver
+%find_lang WebKit2GTK-%{_apiver}
 
 %post -n libwebkit2gtk%{_wk2sover} -p /sbin/ldconfig
 %postun -n libwebkit2gtk%{_wk2sover} -p /sbin/ldconfig
@@ -318,17 +381,16 @@ export PYTHON=%{_bindir}/python3
 %exclude %{_libexecdir}/libwebkit2gtk%{_wk2sover}/jsc
 %exclude %{_libexecdir}/libwebkit2gtk%{_wk2sover}/MiniBrowser
 %{_libexecdir}/libwebkit2gtk%{_wk2sover}/
-%{_libdir}/libwebkit2gtk-4.0.so.*
-%{_bindir}/WebKitWebDriver
+%{_libdir}/libwebkit2gtk-%{_apiver}.so.*
 
-%files -n webkit2gtk-4_0-injected-bundles
-%dir %{_libdir}/webkit2gtk-4.0
-%dir %{_libdir}/webkit2gtk-4.0/injected-bundle
-%{_libdir}/webkit2gtk-4.0/injected-bundle/libwebkit2gtkinjectedbundle.so
+%files -n webkit2gtk-%{_sonameverpkg}-injected-bundles
+%dir %{_libdir}/webkit2gtk-%{_apiver}
+%dir %{_libdir}/webkit2gtk-%{_apiver}/injected-bundle
+%{_libdir}/webkit2gtk-%{_apiver}/injected-bundle/libwebkit2gtkinjectedbundle.so
 
 %files -n libjavascriptcoregtk%{_sover}
 %license Source/JavaScriptCore/COPYING.LIB
-%{_libdir}/libjavascriptcoregtk-4.0.so.*
+%{_libdir}/libjavascriptcoregtk-%{_apiver}.so.*
 
 %files -n typelib-1_0-WebKit2-%{_sonameverpkg}
 %{_libdir}/girepository-1.0/WebKit2-%{_sonamever}.typelib
@@ -341,12 +403,12 @@ export PYTHON=%{_bindir}/python3
 
 %files devel
 %{_datadir}/gir-1.0/*.gir
-%{_includedir}/webkitgtk-4.0/
-%{_libdir}/libwebkit2gtk-4.0.so
-%{_libdir}/libjavascriptcoregtk-4.0.so
-%{_libdir}/pkgconfig/javascriptcoregtk-4.0.pc
-%{_libdir}/pkgconfig/webkit2gtk-4.0.pc
-%{_libdir}/pkgconfig/webkit2gtk-web-extension-4.0.pc
+%{_includedir}/webkitgtk-%{_apiver}/
+%{_libdir}/libwebkit2gtk-%{_sonamever}.so
+%{_libdir}/libjavascriptcoregtk-%{_sonamever}.so
+%{_libdir}/pkgconfig/javascriptcoregtk-%{_apiver}.pc
+%{_libdir}/pkgconfig/webkit2gtk-%{_apiver}.pc
+%{_libdir}/pkgconfig/webkit2gtk-web-extension-%{_apiver}.pc
 
 %files -n webkit-jsc-%{_jscver}
 %{_libexecdir}/libwebkit2gtk%{_wk2sover}/jsc
@@ -354,6 +416,6 @@ export PYTHON=%{_bindir}/python3
 %files minibrowser
 %{_libexecdir}/libwebkit2gtk%{_wk2sover}/MiniBrowser
 
-%files -n %{_pkgname_no_slpp}-lang -f WebKit2GTK-4.0.lang
+%files -n WebKit2GTK-%{_apiver}-lang -f WebKit2GTK-%{_apiver}.lang
 
 %changelog
