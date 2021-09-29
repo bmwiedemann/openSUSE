@@ -7,4 +7,12 @@
     <comment>new BuildRequires for ocaml-ppxlib</comment>
     <requestid>885018</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bf3f9cc0b9b68c5bf12c535fe697ce47</srcmd5>
+    <version>0.12.4</version>
+    <time>1632939513</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921274</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-ocaml-compiler-libs
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Compiler libraries repackaged
@@ -26,10 +26,9 @@ Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/ocaml-compiler-libs
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         ocaml-ocaml-compiler-libs.patch
 BuildRequires:  ocaml(ocaml_base_version) >= 4.04
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-dune >= 2.8
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(compiler-libs.bytecomp)
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(compiler-libs.optcomp)
@@ -51,7 +50,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1
 
 %build
 dune_release_pkgs='ocaml-compiler-libs'
