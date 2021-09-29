@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep  6 06:47:15 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Sep  2 09:00:27 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.3.90:
+  + HdyAvatar: Fix giving it the .image style class when needed.
+  + HdyCarousel:
+    - Add the allow-scroll-wheel property.
+    - Fix the child size allocation.
+  + HdyPreferencesGroup: Add the use-markup property.
+  + Deprecate HdySwipeGroup and HdyTitleBar.
+  + Fix translations by setting the translation domain in UI files.
+  + Updated translations.
+- Move to regular tarballs: drop _service file.
+
+-------------------------------------------------------------------
 Mon Jun 21 13:21:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.3:
