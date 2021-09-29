@@ -1,9 +1,9 @@
-Index: vte/meson.build
+Index: vte-0.65.91/meson.build
 ===================================================================
---- vte.orig/meson.build
-+++ vte/meson.build
-@@ -25,6 +25,7 @@ project(
-     'cpp_std=gnu++17',
+--- vte-0.65.91.orig/meson.build
++++ vte-0.65.91/meson.build
+@@ -23,6 +23,7 @@ project(
+     'buildtype=release',
      'warning_level=0',
      'b_ndebug=false',
 +    'b_pie=true',

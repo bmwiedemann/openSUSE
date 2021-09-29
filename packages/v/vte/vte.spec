@@ -23,7 +23,7 @@
 %define _name   vte
 
 Name:           vte
-Version:        0.64.2
+Version:        0.66.0
 Release:        0
 Summary:        Terminal Emulator Library
 License:        CC-BY-4.0 AND LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
@@ -32,6 +32,8 @@ URL:            https://gitlab.gnome.org/GNOME/vte
 Source:         %{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE vte-enable-build-flag-pie.patch yfjiang@suse.com -- enable PIE flag to be compatible with gcc default linking option
 Patch0:         vte-enable-build-flag-pie.patch
+# PATCH-FIX-UPSTREAM vte-silence-COMMAND_PROMPT.patch dimstar@opensuse.org -- Silence warning when opening terminal
+Patch1:         vte-silence-COMMAND_PROMPT.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
@@ -42,7 +44,6 @@ BuildRequires:  gtk-doc
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  translation-update-upstream
 BuildRequires:  (python3-dataclasses if python3-base < 3.7)
 BuildRequires:  pkgconfig(fribidi) >= 1.0.0
 BuildRequires:  pkgconfig(gio-2.0)
@@ -133,7 +134,6 @@ widgets in Glade.
 
 %prep
 %autosetup -n %{_name}-%{version} -p1
-translation-update-upstream po vte-%{_apiver}
 
 %build
 %meson \
@@ -171,7 +171,7 @@ translation-update-upstream po vte-%{_apiver}
 %{_libdir}/*.so
 %{_includedir}/vte-%{_apiver}/
 %{_datadir}/gir-1.0/*.gir
-%{_datadir}/gtk-doc/html/vte-%{_apiver}/
+%{_datadir}/gtk-doc/html/vte-gtk3-%{_apiver}/
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/vte-2.91.vapi
 %{_datadir}/vala/vapi/vte-2.91.deps
