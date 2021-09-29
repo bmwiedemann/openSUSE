@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 11 12:34:56 UTC 2021 - ohering@suse.de
+
+- Update to version 2.1.0
+  See included CHANGES for details
+  refresh opam.patch
+
+-------------------------------------------------------------------
 Thu Jan 21 21:21:21 UTC 2021 - ohering@suse.de
 
 - Update to 2.0.8, via _service file

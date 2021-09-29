@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.0.8
+Version:        2.1.0
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(cudf)
@@ -91,7 +91,7 @@ developing applications that use %{name}.
 %build
 # wipe bogus FETCH
 grep -n FETCH configure.ac
-sed -i~ '/FETCH/d;246,+7d' configure.ac
+sed -i~ '/FETCH/d;287,+7d' configure.ac
 diff -u "$_"~ "$_" && exit 1
 export DUNE=$(type -P dune)
 export CPPO=$(type -P cppo)
@@ -99,7 +99,7 @@ export PATCH=$(type -P false)
 export BUNZIP2=$(type -P false)
 autoreconf -fi
 %configure
-dune_release_pkgs='opam,opam-client,opam-core,opam-format,opam-installer,opam-repository,opam-solver,opam-state'
+dune_release_pkgs='opam-admin,opam-client,opam-core,opam-format,opam-installer,opam-repository,opam-solver,opam-state,opam'
 %ocaml_dune_setup
 %ocaml_dune_build
 
@@ -109,6 +109,7 @@ dune_release_pkgs='opam,opam-client,opam-core,opam-format,opam-installer,opam-re
 
 %files -f %{name}.files
 %{_bindir}/opam
+%{_bindir}/opam-admin.top
 %{_mandir}/man*/*
 
 %files devel -f %{name}.files.devel

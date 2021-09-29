@@ -1,6 +1,6 @@
 --- a/src/client/opamAdminCheck.ml
 +++ b/src/client/opamAdminCheck.ml
-@@ -109,9 +109,9 @@ let cycle_check univ =
+@@ -110,9 +110,9 @@ let cycle_check univ =
    in
    (* conflicts break cycles *)
    let conflicts =
@@ -12,7 +12,7 @@
    CGraph.iter_edges (fun nv1 nv2 ->
        OpamCudf.Graph.remove_edge graph nv1 nv2;
        OpamCudf.Graph.remove_edge graph nv2 nv1)
-@@ -126,7 +126,7 @@ let cycle_check univ =
+@@ -127,7 +127,7 @@ let cycle_check univ =
          let univ = Cudf.load_universe pkgs in
          let g = OpamCudf.Graph.of_universe univ in
          let conflicts =
@@ -31,21 +31,30 @@
 +  (libraries   opam-format cudf dose3.algo dose3.common
                 (select opamBuiltinMccs.ml from
                   (mccs -> opamBuiltinMccs.ml.real)
-                  (     -> opamBuiltinMccs.ml.dummy)))
+                  (     -> opamBuiltinMccs.ml.dummy))
 --- a/src/solver/opamBuiltinMccs.ml.real
 +++ b/src/solver/opamBuiltinMccs.ml.real
-@@ -35,7 +35,7 @@ let call solver_backend ext ~criteria ?t
-       ~verbose:OpamCoreConfig.(!r.debug_level >= 2)
+@@ -42,7 +42,7 @@ let call solver_backend ext ~criteria ?t
+       ~verbose:OpamCoreConfig.(abs !r.debug_level >= 2)
        ?timeout criteria cudf
    with
 -  | None -> raise Common.CudfSolver.Unsat
 +  | None -> raise Dose_common.CudfSolver.Unsat
    | Some (preamble, univ) -> Some preamble, univ
-   | exception Mccs.Timeout -> raise Timeout
+   | exception Mccs.Timeout -> raise (Timeout None)
  
 --- a/src/solver/opamCudf.ml
 +++ b/src/solver/opamCudf.ml
-@@ -40,7 +40,7 @@ let cudfnv2opam ?version_map ?cudf_unive
+@@ -24,7 +24,7 @@ let s_pinned = "pinned"
+ let s_version_lag = "version-lag"
+ 
+ let opam_invariant_package_name =
+-  Common.CudfAdd.encode "=opam-invariant"
++  Dose_common.CudfAdd.encode "=opam-invariant"
+ 
+ let opam_invariant_package_version = 1
+ 
+@@ -55,7 +55,7 @@ let cudfnv2opam ?version_map ?cudf_unive
    match nv with
    | Some nv -> nv
    | None ->
@@ -54,16 +63,16 @@
      match version_map with
      | Some vmap ->
        let nvset =
-@@ -69,7 +69,7 @@ let to_json p =
+@@ -394,7 +394,7 @@ let of_json = Json.package_of_json
  (* Graph of cudf packages *)
- module Pkg = struct
+ module Package = struct
    type t = Cudf.package
 -  include Common.CudfAdd
 +  include Dose_common.CudfAdd
    let to_string = string_of_package
    let name_to_string t = t.Cudf.package
    let version_to_string t = string_of_int t.Cudf.version
-@@ -88,7 +88,7 @@ exception Solver_failure of string
+@@ -414,7 +414,7 @@ exception Solver_failure of string
  exception Cyclic_actions of Action.t list list
  
  type conflict_case =
@@ -72,7 +81,16 @@
    | Conflict_cycle of string list list
  type conflict =
    Cudf.universe * int package_map * conflict_case
-@@ -98,18 +98,18 @@ module Set = OpamStd.Set.Make(Pkg)
+@@ -463,7 +463,7 @@ let strong_and_weak_deps u deps =
+ (* From a CUDF dependency CNF, extract the set of packages that can possibly be
+    part of a solution.
+ 
+-   This is much finer than [Common.CudfAdd.resolve_deps] which doesn't handle
++   This is much finer than [Dose_common.CudfAdd.resolve_deps] which doesn't handle
+    conjunctions of versions (see [Graph.of_universe] below) *)
+ let dependency_set u deps =
+   let strong_deps, weak_deps = strong_and_weak_deps u deps in
+@@ -517,18 +517,18 @@ let _rec_strong_dependency_set u deps =
  module Graph = struct
  
    module PG = struct
@@ -94,16 +112,16 @@
         -> doesn't handle conjunctive dependencies correctly
         (e.g. (a>3 & a<=4) is considered as (a>3 | a<=4) and results in extra
         edges).
-@@ -118,7 +118,7 @@ module Graph = struct
+@@ -537,7 +537,7 @@ module Graph = struct
      let t = OpamConsole.timer () in
      let g = PG.create ~size:(Cudf.universe_size u) () in
      let iter_deps f deps =
 -      (* List.iter (fun d -> List.iter f (Common.CudfAdd.resolve_deps u d)) deps *)
 +      (* List.iter (fun d -> List.iter f (Dose_common.CudfAdd.resolve_deps u d)) deps *)
-       let strong_deps, weak_deps =
-         (* strong deps are mandatory (constraint appearing in the top
-            conjunction)
-@@ -168,7 +168,7 @@ module Graph = struct
+       Set.iter f (dependency_set u deps)
+     in
+     Cudf.iter_packages
+@@ -550,7 +550,7 @@ module Graph = struct
  
    let output g filename =
      let fd = open_out (filename ^ ".dot") in
@@ -112,30 +130,31 @@
      close_out fd
  
    let transitive_closure g =
-@@ -194,7 +194,7 @@ module Graph = struct
+@@ -565,20 +565,20 @@ module Graph = struct
  end
  
  (** Special package used by Dose internally, should generally be filtered out *)
 -let dose_dummy_request = Algo.Depsolver.dummy_request.Cudf.package
 +let dose_dummy_request = Dose_algo.Depsolver.dummy_request.Cudf.package
- let is_dose_request cpkg = cpkg.Cudf.package = dose_dummy_request
+ let is_artefact cpkg =
+   is_opam_invariant cpkg ||
+   cpkg.Cudf.package = dose_dummy_request
  
- let filter_dependencies f_direction universe packages =
-@@ -207,11 +207,11 @@ let filter_dependencies f_direction univ
-   r
- 
- let dependencies = filter_dependencies (fun x -> x)
+ let dependencies universe packages =
+   Set.fixpoint (fun p -> dependency_set universe p.Cudf.depends) packages
 -(* similar to Algo.Depsolver.dependency_closure but with finer results on
 +(* similar to Dose_algo.Depsolver.dependency_closure but with finer results on
     version sets *)
  
- let reverse_dependencies = filter_dependencies Graph.mirror
+ let reverse_dependencies universe packages =
+   let graph = Graph.of_universe universe in
+   Set.fixpoint (fun p -> Set.of_list (Graph.pred graph p)) packages
 -(* similar to Algo.Depsolver.reverse_dependency_closure but more reliable *)
 +(* similar to Dose_algo.Depsolver.reverse_dependency_closure but more reliable *)
  
- let string_of_atom (p, c) =
-   let const = function
-@@ -224,12 +224,12 @@ let string_of_vpkgs constr =
+ let dependency_sort universe packages =
+   let graph = Graph.of_universe universe in
+@@ -595,12 +595,12 @@ let string_of_vpkgs constr =
    OpamFormula.string_of_conjunction string_of_atom constr
  
  let string_of_universe u =
@@ -150,7 +169,7 @@
    | Some (relop,v) ->
      let nv = cudfnv2opam (name,v) in
      nv.name, Some (relop, nv.version)
-@@ -247,7 +247,7 @@ let vpkg2atom cudfnv2opam (name,cstr) =
+@@ -618,7 +618,7 @@ let vpkg2atom cudfnv2opam (name,cstr) =
            (List.map (fun p -> OpamPackage.version (cudf2opam p)) l) in
        let solutions = to_version_set solutions in
        let others = OVS.Op.(to_version_set candidates -- solutions) in
@@ -159,7 +178,7 @@
        match relop, OVS.is_empty solutions, OVS.is_empty others with
        | _, true, true -> None
        | `Leq, false, _ | `Lt, false, true -> Some (`Leq, OVS.max_elt solutions)
-@@ -270,9 +270,9 @@ let vpkg2opam cudfnv2opam vpkg =
+@@ -636,9 +636,9 @@ let vpkg2atom cudfnv2opam (name,cstr) =
  let conflict_empty ~version_map univ =
    Conflicts (univ, version_map, Conflict_dep (fun () -> []))
  let make_conflicts ~version_map univ = function
@@ -171,43 +190,25 @@
      raise (Invalid_argument "make_conflicts")
  let cycle_conflict ~version_map univ cycle =
    Conflicts (univ, version_map, Conflict_cycle cycle)
-@@ -285,7 +285,7 @@ let arrow_concat sl =
-   String.concat (OpamConsole.colorise `yellow arrow) sl
+@@ -655,7 +655,7 @@ let formula_of_vpkgl cudfnv2opam all_pac
+     List.map (fun vp ->
+         try vpkg2atom cudfnv2opam vp
+         with Not_found ->
+-          OpamPackage.Name.of_string (Common.CudfAdd.decode (fst vp)), None)
++          OpamPackage.Name.of_string (Dose_common.CudfAdd.decode (fst vp)), None)
+       vpkgl
+   in
+   let names = OpamStd.List.sort_nodup compare (List.map fst atoms) in
+@@ -727,7 +727,7 @@ type explanation =
  
- let strings_of_reasons packages cudfnv2opam unav_reasons rs =
+ let extract_explanations packages cudfnv2opam reasons : explanation list =
+   log "Conflict reporting";
 -  let open Algo.Diagnostic in
 +  let open Dose_algo.Diagnostic in
-   let is_base cpkg = cpkg.Cudf.keep = `Keep_version in
-   let rec aux = function
-     | [] -> []
-@@ -344,7 +344,7 @@ let strings_of_reasons packages cudfnv2o
-         List.map (fun vp ->
-             try vpkg2atom cudfnv2opam vp
-             with Not_found ->
--              OpamPackage.Name.of_string (Common.CudfAdd.decode (fst vp)), None)
-+              OpamPackage.Name.of_string (Dose_common.CudfAdd.decode (fst vp)), None)
-           missing
-       in
-       let names = OpamStd.List.sort_nodup compare (List.map fst atoms) in
-@@ -367,7 +367,7 @@ let strings_of_reasons packages cudfnv2o
- 
- 
- let make_chains packages cudfnv2opam depends =
--  let open Algo.Diagnostic in
-+  let open Dose_algo.Diagnostic in
-   let map_addlist k v map =
-     try Map.add k (v @ Map.find k map) map
-     with Not_found -> Map.add k v map in
-@@ -419,7 +419,7 @@ let make_chains packages cudfnv2opam dep
-                 name_constrs)
-         in
-         let opam_name =
--          OpamPackage.Name.of_string (Common.CudfAdd.decode name)
-+          OpamPackage.Name.of_string (Dose_common.CudfAdd.decode name)
-         in
-         let all_versions = OpamPackage.versions_of_name packages opam_name in
-         let formula = OpamFormula.simplify_version_set all_versions formula in
-@@ -529,7 +529,7 @@ let default_preamble =
+   let open Set.Op in
+   let module CS = ChainSet in
+   (* Definitions and printers *)
+@@ -1058,7 +1058,7 @@ let default_preamble =
      (s_pinned,         `Bool (Some false));
      (s_version_lag,    `Nat (Some 0));
    ] in
@@ -216,7 +217,7 @@
  
  let remove universe name constr =
    let filter p =
-@@ -562,7 +562,7 @@ let remove_all_uninstalled_versions_but
+@@ -1091,7 +1091,7 @@ let remove_all_uninstalled_versions_but
    Cudf.load_universe packages
  
  let to_cudf univ req = (
@@ -225,19 +226,52 @@
      (List.map (fun s -> s, `Int (Some 0)) req.extra_attributes),
    univ,
    { Cudf.request_id = "opam";
-@@ -632,9 +632,9 @@ let call_external_solver ~version_map un
+@@ -1178,7 +1178,7 @@ let preprocess_cudf_request (props, univ
+   in
+   let univ =
+     let open Set.Op in
+-    let vpkg2set vp = Set.of_list (Common.CudfAdd.resolve_deps univ vp) in
++    let vpkg2set vp = Set.of_list (Dose_common.CudfAdd.resolve_deps univ vp) in
+     let to_install =
+       vpkg2set creq.Cudf.install
+       ++ Set.of_list (Cudf.lookup_packages univ opam_invariant_package_name)
+@@ -1305,7 +1305,7 @@ let preprocess_cudf_request (props, univ
+     (chrono ());
+   props, univ, creq
+ 
+-exception Timeout of Algo.Depsolver.solver_result option
++exception Timeout of Dose_algo.Depsolver.solver_result option
+ 
+ let call_external_solver ~version_map univ req =
+   let cudf_request = to_cudf univ req in
+@@ -1315,7 +1315,7 @@ let call_external_solver ~version_map un
+     ignore (dump_cudf_request ~version_map cudf_request
                criteria OpamSolverConfig.(!r.cudf_file));
-     try
+     (* Wrap a return of exn Timeout through Depsolver *)
+-    let check_request_using ~call_solver ~criteria ~explain req =
++    let check_request_using ~call_solver ~explain req =
+       let timed_out = ref false in
+       let call_solver args =
+         try call_solver args with
+@@ -1323,7 +1323,7 @@ let call_external_solver ~version_map un
+         | OpamCudfSolver.Timeout None -> raise (Timeout None)
+       in
        let r =
--        Algo.Depsolver.check_request_using
-+        Dose_algo.Depsolver.check_request_using
+-        Algo.Depsolver.check_request_using ~call_solver ~criteria ~explain req
++        Dose_algo.Depsolver.check_request_using ~call_solver ~explain req
+       in
+       if !timed_out then raise (Timeout (Some r)) else r
+     in
+@@ -1335,7 +1335,7 @@ let call_external_solver ~version_map un
+       let r =
+         check_request_using
            ~call_solver:(OpamSolverConfig.call_solver ~criteria)
 -          ~criteria ~explain:true cudf_request
 +                    ~explain:true cudf_request
        in
-       log "Solver call done in %.3f" (chrono ());
+       log "Solver call done in %.3fs" (chrono ());
        r
-@@ -665,23 +665,23 @@ let call_external_solver ~version_map un
+@@ -1375,23 +1375,23 @@ let call_external_solver ~version_map un
        in
        raise (Solver_failure msg)
    else
@@ -268,7 +302,7 @@
      conflict_empty ~version_map univ
  
  (* Return the universe in which the system has to go *)
-@@ -694,16 +694,16 @@ let get_final_universe ~version_map univ
+@@ -1404,12 +1404,12 @@ let get_final_universe ~version_map univ
      in
      raise (Solver_failure msg) in
    match call_external_solver ~version_map univ req with
@@ -282,16 +316,23 @@
 -  | Algo.Depsolver.Unsat r   ->
 +  | Dose_algo.Depsolver.Error str -> fail str
 +  | Dose_algo.Depsolver.Unsat r   ->
+     let msg =
+       Printf.sprintf
+         "The solver (%s) pretends there is no solution while that's apparently \
+@@ -1420,10 +1420,10 @@ let get_final_universe ~version_map univ
+          Solver.name)
+     in
      match r with
 -    | Some ({Algo.Diagnostic.result = Algo.Diagnostic.Failure _; _} as r) ->
 +    | Some ({Dose_algo.Diagnostic.result = Dose_algo.Diagnostic.Failure _; _} as r) ->
+       OpamConsole.error "%s" msg;
        make_conflicts ~version_map univ r
--    | Some {Algo.Diagnostic.result = Algo.Diagnostic.Success _; _}(*  -> *)
-+    | Some {Dose_algo.Diagnostic.result = Dose_algo.Diagnostic.Success _; _}(*  -> *)
-       (* fail "inconsistent return value." *)
+-    | Some {Algo.Diagnostic.result = Algo.Diagnostic.Success _; _}
++    | Some {Dose_algo.Diagnostic.result = Dose_algo.Diagnostic.Success _; _}
      | None ->
-       (* External solver did not provide explanations, hopefully this will *)
-@@ -787,11 +787,11 @@ let compute_root_causes g requested rein
+       raise (Solver_failure msg)
+ 
+@@ -1516,11 +1516,11 @@ let compute_root_causes g requested rein
    let module StringSet = OpamStd.String.Set in
    let requested_pkgnames =
      OpamPackage.Name.Set.fold (fun n s ->
@@ -305,7 +346,7 @@
        reinstall StringSet.empty in
    let actions =
      ActionGraph.fold_vertex (fun a acc -> Map.add (action_contents a) a acc)
-@@ -981,10 +981,10 @@ let atomic_actions ~simple_universe ~com
+@@ -1711,10 +1711,10 @@ let atomic_actions ~simple_universe ~com
    (* conflicts *)
    let conflicts_graph =
      let filter p = Set.mem p to_remove || Set.mem p to_install in
@@ -320,7 +361,7 @@
        else if Set.mem p2 to_remove && Set.mem p1 to_install then
 --- a/src/solver/opamCudf.mli
 +++ b/src/solver/opamCudf.mli
-@@ -24,7 +24,7 @@ module Map: OpamStd.MAP with type key =
+@@ -32,7 +32,7 @@ module Map: OpamStd.MAP with type key =
  module Graph: sig
    (** Graph of cudf packages *)
  
@@ -329,7 +370,7 @@
  
    (** Build a graph from a CUDF universe. Warning: dependency edges are towards
        the dependency, which is the reverse of what happens in the action
-@@ -180,7 +180,7 @@ val string_of_vpkgs: Cudf_types.vpkg lis
+@@ -198,7 +198,7 @@ val string_of_vpkgs: Cudf_types.vpkg lis
  
  val make_conflicts:
    version_map:int package_map -> Cudf.universe ->
@@ -360,7 +401,7 @@
        Cudf_parser.load_solution_from_file
 --- a/src/solver/opamSolver.ml
 +++ b/src/solver/opamSolver.ml
-@@ -84,7 +84,7 @@ let cudf_versions_map universe packages
+@@ -90,7 +90,7 @@ let cudf_versions_map universe packages
      pmap OpamPackage.Map.empty
  
  let name_to_cudf name =
@@ -369,7 +410,7 @@
  
  let constraint_to_cudf version_map name (op,v) =
    let nv = OpamPackage.create name v in
-@@ -318,7 +318,7 @@ let load_cudf_universe
+@@ -343,7 +343,7 @@ let load_cudf_universe
        OpamConsole.error_and_exit `Solver_failure "Malformed CUDF universe (%s)" s
    in
    log ~level:3 "Secondary load of cudf universe: done in %.3fs" (chrono ());
@@ -378,8 +419,8 @@
    cudf_universe
  
  let string_of_request r =
-@@ -446,13 +446,13 @@ let installable universe =
-     load_cudf_universe universe universe.u_available ~build:true ~post:true ()
+@@ -478,13 +478,13 @@ let installable universe =
+       universe.u_available ~build:true ~post:true ()
    in
    let trimmed_universe =
 -    (* Algo.Depsolver.trim simple_universe => this can explode memory, we need
@@ -395,7 +436,7 @@
          match d.Diagnostic.request with
          |[p] -> trimmed_pkgs := p::!trimmed_pkgs
          |_ -> assert false
-@@ -478,12 +478,12 @@ let installable_subset universe packages
+@@ -515,12 +515,12 @@ let installable_subset universe packages
        simple_universe
    in
    let trimmed_universe =
@@ -411,7 +452,7 @@
          match d.Diagnostic.request with
          |[p] -> trimmed_pkgs := p::!trimmed_pkgs
          |_ -> assert false
-@@ -535,10 +535,10 @@ let coinstallability_check universe pack
+@@ -619,10 +619,10 @@ let coinstallability_check universe pack
      opam2cudf universe ~depopts:false ~build:true ~post:true
        version_map packages
    in
@@ -425,14 +466,14 @@
      match OpamCudf.make_conflicts ~version_map cudf_universe c with
      | Conflicts cs -> Some cs
      | _ -> None
-@@ -568,8 +568,8 @@ let atom_coinstallability_check universe
-         :: acc)
-       map []
+@@ -644,8 +644,8 @@ let atom_coinstallability_check universe
+        opam2cudf universe version_map universe.u_available
+          ~depopts:false ~build:true ~post:true)
    in
--  let result = Algo.Depsolver.edos_coinstall_prod cudf_universe cudf_ll in
--  List.exists Algo.Diagnostic.is_solution result
-+  let result = Dose_algo.Depsolver.edos_coinstall_prod cudf_universe cudf_ll in
-+  List.exists Dose_algo.Diagnostic.is_solution result
+-  Algo.Depsolver.edos_install cudf_universe check_pkg
+-  |> Algo.Diagnostic.is_solution
++  Dose_algo.Depsolver.edos_install cudf_universe check_pkg
++  |> Dose_algo.Diagnostic.is_solution
  
  let new_packages sol =
    OpamCudf.ActionGraph.fold_vertex (fun action packages ->
