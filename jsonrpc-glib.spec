@@ -1,7 +1,7 @@
 #
 # spec file for package jsonrpc-glib
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define sover 1_0-1
 Name:           jsonrpc-glib
-Version:        3.38.0
+Version:        3.40.0
 Release:        0
 Summary:        Library to communicate with JSON-RPC based peers
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            https://gitlab.gnome.org/GNOME/jsonrpc-glib
-Source0:        https://download.gnome.org/sources/jsonrpc-glib/3.38/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/jsonrpc-glib/3.40/%{name}-%{version}.tar.xz
 
 BuildRequires:  gtk-doc
 BuildRequires:  meson >= 0.49.2
