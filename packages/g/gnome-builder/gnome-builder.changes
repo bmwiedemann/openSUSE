@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Sep 23 07:09:48 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.1:
+  + Make system/user fonts available when running application.
+  + Project template updates.
+  + Snippet updates.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  3 21:00:13 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 41.0:
+  + Fixes to markdown presentation with Pango.
+  + Template fixes.
+  + Allow installation of KDE and elementary Flatpak runtimes
+    through private flatpak installation.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 30 08:10:12 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.beta1:
+  + Builder now uses a private Flatpak installation for SDKs to
+    avoid modifying the user's flatpak installation.
+  + Style scheme improvements.
+  + Improvements in the foundry to build pipelines.
+  + Allow loading buffers without addins to speed up text
+    replacements.
+  + Use jedi-language-server instead of loading Jedi in process.
+  + Enable rust global search if the project is known to contain
+    rust.
+  + Improvements to Flatpak SDK extension integration.
+  + A new markdown renderer.
+  + Improvements to LSP autocompletion features.
+  + Accessibility improvements.
+  + Improved devhelp integration.
+  + Session support for additional page types other than editors.
+  + Improvements to grep integration including project search and
+    replace.
+- Replace gtk-doc BuildRequires with python3-gi-docgen: follow
+  upstreams move from gtk-doc to gi-docgen.
+
+-------------------------------------------------------------------
+Fri Aug  6 13:38:02 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 41.alpha1:
+  + New and improved templates.
+  + Toolbox improvements from Flatpak.
+  + A new gnome-builder-flatpak helper, removing libflatpak from
+    the gnome-builder UI process.
+  + Improvements to gnome-builder-git to use default branch name.
+  + Improved session management.
+  + A11y improvements.
+  + Upudted translations.
+
+-------------------------------------------------------------------
 Fri May 14 15:40:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.40.2:

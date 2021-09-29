@@ -446,4 +446,12 @@
     <comment>Scripted push from GNOME:Next (forwarded request 893930 from dimstar)</comment>
     <requestid>893957</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>7c01339487c3699a055e00a60e5c758c</srcmd5>
+    <version>41.1</version>
+    <time>1632939532</time>
+    <user>dimstar_suse</user>
+    <comment>New stable release (forwarded request 921100 from iznogood)</comment>
+    <requestid>921668</requestid>
+  </revision>
 </revisionlist>

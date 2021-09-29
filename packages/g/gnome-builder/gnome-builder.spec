@@ -20,38 +20,39 @@
 %global __requires_exclude typelib\\(Ide\\)
 
 # Update this on every major/minor bump
-%define basever 3.40
+%define basever 41
 
 Name:           gnome-builder
-Version:        3.40.2
+Version:        41.1
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Other
 URL:            https://wiki.gnome.org/Apps/Builder
-Source0:        https://download.gnome.org/sources/gnome-builder/3.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-builder/41/%{name}-%{version}.tar.xz
 Source99:       %{name}-rpmlintrc
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gtk-doc
 BuildRequires:  llvm-clang-devel >= 3.5
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-gi-docgen
 BuildRequires:  python3-gobject
 BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(flatpak) >= 0.8.0
 BuildRequires:  pkgconfig(gio-2.0) >= 2.61.2
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(gladeui-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.65.0
+BuildRequires:  pkgconfig(glib-2.0) >= 2.69.1
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.48.0
 BuildRequires:  pkgconfig(gspell-1) >= 1.2.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22.26
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.30.1
+BuildRequires:  pkgconfig(libcmark)
 BuildRequires:  pkgconfig(libdazzle-1.0) >= 3.37.0
 BuildRequires:  pkgconfig(libdevhelp-3.0) >= 3.25.1
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 0.25.0
@@ -76,7 +77,6 @@ Requires:       typelib(Jsonrpc) = 1.0
 Recommends:     %{name}-doc
 Recommends:     flatpak
 Recommends:     flatpak-builder
-Recommends:     gnome-builder-plugin-jedi = %{version}
 Recommends:     gnome-builder-plugin-jhbuild = %{version}
 Obsoletes:      gnome-builder-plugin-beautifier < 3.27.4
 Obsoletes:      gnome-builder-plugin-clang < %{version}
@@ -107,17 +107,6 @@ BuildArch:      noarch
 %description doc
 Builder is an IDE for GNOME and a tool to help writing GNOME-based
 applications.
-
-%package plugin-jedi
-Summary:        Jedi plugin for python3 code completion in %{name}
-Group:          Development/Tools/IDE
-Requires:       %{name} = %{version}
-Requires:       python3-jedi
-Requires:       python3-lxml
-Supplements:    packageand(%{name}:python3-jedi)
-
-%description plugin-jedi
-This package provides the jedi plugin for code completion assistance in Python3 inside %{name}'s editor.
 
 %package plugin-jhbuild
 Summary:        Jhbuild plugin for %{name}
@@ -165,10 +154,9 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_libexecdir}/%{name}-clang
+%{_libexecdir}/%{name}-flatpak
 %{_libexecdir}/%{name}-git
 # EXCLUDE THE OPTIONAL PLUGINS FROM THE MAIN PACKAGE
-%exclude %{_libdir}/%{name}/plugins/jedi.plugin
-%exclude %{_libdir}/%{name}/plugins/jedi_plugin.py
 %exclude %{_libdir}/%{name}/plugins/jhbuild.plugin
 %exclude %{_libdir}/%{name}/plugins/jhbuild_plugin.py
 %{_datadir}/metainfo/org.gnome.Builder.appdata.xml
@@ -205,12 +193,7 @@ rm -fr %{buildroot}%{_datadir}/doc/%{name}/*/.doctrees
 %{python3_sitelib}/gi/overrides/*
 
 %files doc
-%doc %{_datadir}/gtk-doc/html/libide
-
-%files plugin-jedi
-%dir %{_libdir}/%{name}/plugins
-%{_libdir}/%{name}/plugins/jedi.plugin
-%{_libdir}/%{name}/plugins/jedi_plugin.py
+%doc %{_datadir}/doc/libide/
 
 %files plugin-jhbuild
 %dir %{_libdir}/%{name}/plugins
