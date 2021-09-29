@@ -17,13 +17,13 @@
 
 
 Name:           at-spi2-core
-Version:        2.40.3
+Version:        2.42.0
 Release:        0
 Summary:        Assistive Technology Service Provider Interface - D-Bus based implementation
 License:        LGPL-2.1-or-later
 Group:          System/GUI/GNOME
 URL:            https://www.gnome.org/
-Source0:        https://download.gnome.org/sources/at-spi2-core/2.40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/at-spi2-core/2.42/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gtk-doc
@@ -103,6 +103,8 @@ to develop applications that require these.
 %files
 %license COPYING
 %{_libexecdir}/at-spi2/
+%dir %{_sysconfdir}/xdg/Xwayland-session.d
+%{_sysconfdir}/xdg/Xwayland-session.d/00-at-spi
 %{_sysconfdir}/xdg/autostart/at-spi-dbus-bus.desktop
 %{_userunitdir}/at-spi-dbus-bus.service
 %dir %{_datadir}/dbus-1/accessibility-services/
