@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 27 09:30:31 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- BuildRequire pkgconfig(libsoup-2.4) instead of the package
+  name libsoup-devel: with libsoup 3.0 appearing, the old version
+  receives a compat-name (libsoup2).
+
+-------------------------------------------------------------------
 Tue Mar  2 10:14:38 MST 2021 - carnold@suse.com
 
 - Update to version 1.9.0
