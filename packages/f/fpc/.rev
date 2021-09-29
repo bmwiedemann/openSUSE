@@ -104,4 +104,23 @@
     <comment></comment>
     <requestid>889201</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>693d686cf0d8bb57112b142f4c61fb8d</srcmd5>
+    <version>3.2.2</version>
+    <time>1632939555</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.2.2
+  * See https://wiki.freepascal.org/User_Changes_3.2.2 for
+    the changelog
+- Drop aarch64-fpc-compilation-fix.patch and
+  aarch64-fpu-initialization.patch (merged upstream)
+- Drop fpc-fix-library-paths-on-aarch64.patch (no longer
+  required)
+- Refresh fpc-fix-library-paths-on-ppc64.patch
+- Add fpc-3.2.0-glibc-2.34.patch (courtesy of Fedora)
+- Add source URLS
+- Add _constraints
+</comment>
+    <requestid>922199</requestid>
+  </revision>
 </revisionlist>

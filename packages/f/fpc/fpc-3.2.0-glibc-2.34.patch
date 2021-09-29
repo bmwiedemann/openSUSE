@@ -1,0 +1,154 @@
+From a6c82b6642871e1c68f3839e090b055bee4254b0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Dan=20Hor=C3=A1k?= <dan@danny.cz>
+Date: Tue, 21 Sep 2021 12:47:28 +0200
+Subject: [PATCH] update startup data structs for glibc >= 2.34
+
+Fixes: https://bugzilla.redhat.com/show_bug.cgi?id=2005910
+Fixes: https://gitlab.com/freepascal.org/fpc/source/-/issues/39295
+---
+ fpcsrc/rtl/linux/aarch64/cprt0.as   | 6 ++----
+ fpcsrc/rtl/linux/i386/si_c21.inc    | 7 +++----
+ fpcsrc/rtl/linux/powerpc64/cprt0.as | 4 ++--
+ fpcsrc/rtl/linux/powerpc64/gprt0.as | 4 ++--
+ fpcsrc/rtl/linux/powerpc64/si_c.inc | 7 ++-----
+ fpcsrc/rtl/linux/powerpc64/si_g.inc | 7 ++-----
+ fpcsrc/rtl/linux/powerpc/cprt0.as   | 4 ++--
+ 7 files changed, 15 insertions(+), 24 deletions(-)
+
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/aarch64/cprt0.as
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/aarch64/cprt0.as
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/aarch64/cprt0.as
+@@ -41,10 +41,8 @@ _start:
+ 	                     init, fini, rtld_fini, stack_end) */
+ 	adrp	x0,:got:PASCALMAIN
+ 	ldr	x0,[x0,#:got_lo12:PASCALMAIN]
+-	adrp	x3,:got:__libc_csu_init
+-	ldr	x3,[x3,#:got_lo12:__libc_csu_init]
+-	adrp	x4,:got:__libc_csu_fini
+-	ldr	x4,[x4,#:got_lo12:__libc_csu_fini]
++	mov	x3, #0		/* Used to be init.  */
++	mov	x4, #0		/* Used to be fini.  */
+ 	bl	__libc_start_main
+ 
+ 	/* This should never happen */
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/i386/si_c21.inc
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/i386/si_c21.inc
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/i386/si_c21.inc
+@@ -35,8 +35,6 @@
+ 
+ {$asmmode att}
+ 
+-procedure __libc_csu_init; cdecl; external;
+-procedure __libc_csu_fini; cdecl; external;
+ procedure libc_start_main; external name '__libc_start_main';
+ procedure libc_exit(code: longint); cdecl; external name 'exit';
+ 
+@@ -93,8 +91,9 @@ asm
+         pushl %esp   			{ stack_end }
+         pushl %edx   			{ function to be registered with
+                       			  atexit(), passed by loader }
+-        pushl $__libc_csu_fini
+-        pushl $__libc_csu_init
++        { This used to be the addresses of .fini and .init.  }
++        pushl $0
++        pushl $0
+         pushl %esi                      { Push second argument: argv.  }
+         pushl %ecx                      { Push first argument: argc.  }
+ 
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/cprt0.as
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/powerpc64/cprt0.as
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/cprt0.as
+@@ -351,8 +351,8 @@ _restvr_31: addi r12,r0,-16
+ start_addresses:
+     .quad   0 /* was _SDA_BASE_  but not in 64-bit ABI*/
+     .quad   main_stub
+-    .quad   __libc_csu_init
+-    .quad   __libc_csu_fini
++    .quad   0 /* Used to be init. */
++    .quad   0 /* Used to be fini. */
+     .size   start_adresses, .-start_addresses
+ 
+ /*
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/gprt0.as
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/powerpc64/gprt0.as
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/gprt0.as
+@@ -351,8 +351,8 @@ _restvr_31: addi r12,r0,-16
+ start_addresses:
+     .quad   0 /* was _SDA_BASE_  but not in 64-bit ABI*/
+     .quad   main_stub
+-    .quad   __libc_csu_init
+-    .quad   __libc_csu_fini
++    .quad   0 /* Used to be init. */
++    .quad   0 /* Used to be fini. */
+     .size   start_adresses, .-start_addresses
+ 
+ /*
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/si_c.inc
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/powerpc64/si_c.inc
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/si_c.inc
+@@ -657,9 +657,6 @@ _restvr_31: addi r12,r0,-16
+                           Process start/halt
+  ******************************************************************************}
+ 
+-procedure __libc_csu_init; cdecl; external;
+-procedure __libc_csu_fini; cdecl; external;
+-
+ procedure __libc_start_main(r3,r4,r5,r6,r7,r8,r9: pointer); cdecl; external;
+ 
+ var
+@@ -724,8 +721,8 @@ const
+   end
+   = (sda_base: nil; {* was _SDA_BASE_  but not in 64-bit ABI }
+      main: @main_stub;
+-     libc_csu_init: @__libc_csu_init;
+-     libc_csu_fini: @__libc_csu_fini
++     libc_csu_init: nil;
++     libc_csu_fini: nil
+     );
+ 
+ 
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/si_g.inc
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/powerpc64/si_g.inc
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc64/si_g.inc
+@@ -657,9 +657,6 @@ _restvr_31: addi r12,r0,-16
+                           Process start/halt
+  ******************************************************************************}
+ 
+-procedure __libc_csu_init; cdecl; external;
+-procedure __libc_csu_fini; cdecl; external;
+-
+ procedure __libc_start_main(r3,r4,r5,r6,r7,r8,r9: pointer); cdecl; external;
+ 
+ type
+@@ -745,8 +742,8 @@ const
+   end
+   = (sda_base: nil; {* was _SDA_BASE_  but not in 64-bit ABI }
+      main: @main_stub;
+-     libc_csu_init: @__libc_csu_init;
+-     libc_csu_fini: @__libc_csu_fini
++     libc_csu_init: nil;
++     libc_csu_fini: nil
+     );
+ 
+ procedure call_libc_start_main(r3,r4,r5,r6,r7,r8,r9: pointer); cdecl;
+Index: fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc/cprt0.as
+===================================================================
+--- fpcbuild-3.2.2.orig/fpcsrc/rtl/linux/powerpc/cprt0.as
++++ fpcbuild-3.2.2/fpcsrc/rtl/linux/powerpc/cprt0.as
+@@ -35,8 +35,8 @@
+ start_addresses:
+     .long     _SDA_BASE_
+     .long     main_stub
+-    .long     __libc_csu_init
+-    .long     __libc_csu_fini
++    .long   0 /* Used to be init. */
++    .long   0 /* Used to be fini. */
+     .size   start_adresses, .-start_addresses
+ 
+     .section ".text"

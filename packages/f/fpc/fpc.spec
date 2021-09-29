@@ -1,5 +1,5 @@
 #
-# spec file for package fpc
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 #
@@ -64,7 +64,7 @@
 %endif
 
 Name:           fpc%{?psuffix}
-Version:        3.2.0
+Version:        3.2.2
 Release:        0
 %if "%{flavor}" == ""
 Summary:        Free Pascal Compiler
@@ -76,30 +76,22 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Documentation/Other
 %endif
 URL:            https://www.freepascal.org/
-Source:         fpcbuild-%{version}.tar.gz
-Source1:        fpc-3.2.0-aarch64.zip
-Source2:        fpc-3.2.0-ppc64le.zip
-Source3:        fpc-3.2.0-ppc64.zip
-Source4:        fpc-3.2.0-ppc.zip
+Source:         https://mirror.freemirror.org/pub/fpc/dist/%{version}/source/fpcbuild-%{version}.tar.gz
+Source1:        https://mirror.freemirror.org/pub/fpc/dist/%{version}/aarch64-linux/fpc-%{version}.aarch64-linux.tar
+Source2:        https://mirror.freemirror.org/pub/fpc/dist/%{version}/powerpc64le-linux/fpc-%{version}.powerpc64le-linux.tar
+Source3:        https://mirror.freemirror.org/pub/fpc/dist/%{version}/powerpc64-linux/fpc-%{version}.powerpc64-linux.tar
+Source4:        https://mirror.freemirror.org/pub/fpc/dist/%{version}/powerpc-linux/fpc-%{version}.powerpc-linux.tar
 Source90:       fpc-rpmlintrc
-Patch0:         fpc-fix-library-paths-on-aarch64.patch
 Patch1:         fpc-si_c-x86_64-plt.patch
-Patch2:         aarch64-fpc-compilation-fix.patch
-# From https://github.com/graemeg/freepascal/commit/aad68409bec902e39f9292930238edd32dbc5ac7
-Patch3:         aarch64-fpu-initialization.patch
 Patch4:         fpc-fix-library-paths-on-ppc64.patch
+# PATCH-FIX-UPSTREAM fpc-3.2.0-glibc-2.34.patch -- aloisio@gmx.com not quite upstream but close enough
+Patch5:         fpc-3.2.0-glibc-2.34.patch
 BuildRequires:  binutils
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 %endif
-%if %{without bootstrap}
+%if %{without bootstrap} || "%{flavor}" == "doc"
 BuildRequires:  fpc
-%else
-%if "%{flavor}" == "doc"
-BuildRequires:  fpc
-%else
-BuildRequires:  unzip
-%endif
 %endif
 BuildRequires:  glibc-devel
 %if "%{flavor}" == "doc"
@@ -113,6 +105,7 @@ BuildRequires:  tex(enumitem.sty)
 BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(float.sty)
 BuildRequires:  tex(hyperref.sty)
+BuildRequires:  tex(imakeidx.sty)
 BuildRequires:  tex(listings.sty)
 BuildRequires:  tex(pcrr8t.tfm)
 BuildRequires:  tex(phvr8t.tfm)
@@ -120,6 +113,7 @@ BuildRequires:  tex(ptmr8t.tfm)
 BuildRequires:  tex(syntax.sty)
 BuildRequires:  tex(tabularx.sty)
 BuildRequires:  tex(times.sty)
+BuildRequires:  tex(upquote.sty)
 %endif
 Requires:       binutils
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc ppc64 ppc64le
@@ -159,25 +153,41 @@ documentation or automatical-code generation purposes.
 
 %prep
 %setup -q -n fpcbuild-%{version}
-%patch0 -p1
 %patch1 -p0
-%patch2 -p1
-%patch3 -p1
 %patch4 -p1
+%if 0%{?suse_version} > 1500
+%patch5 -p1
+%endif
 
 %if %{with bootstrap}
 %if "%{flavor}" == ""
 %ifarch aarch64
-unzip %{SOURCE1}
+mkdir %{name}-%{version}-aarch64
+tar xf %{SOURCE1}
+tar xf fpc-%{version}.aarch64-linux/binary.aarch64-linux.tar -C fpc-%{version}.aarch64-linux
+tar xf fpc-%{version}.aarch64-linux/base.aarch64-linux.tar.gz -C fpc-%{version}-aarch64
+rm -fr fpc-%{version}.aarch64-linux
 %endif
 %ifarch ppc64le
-unzip %{SOURCE2}
+mkdir %{name}-%{version}-ppc64le
+tar xf %{SOURCE2}
+tar xf fpc-%{version}.powerpc64-linux/binary.powerpc64-linux.tar -C fpc-%{version}.powerpc64-linux
+tar xf fpc-%{version}.powerpc64-linux/base.powerpc64-linux.tar.gz -C fpc-%{version}-ppc64le
+rm -fr fpc-%{version}.powerpc64-linux
 %endif
 %ifarch ppc64
-unzip %{SOURCE3}
+mkdir %{name}-%{version}-ppc64
+tar xf %{SOURCE3}
+tar xf fpc-%{version}.powerpc64-linux/binary.powerpc64-linux.tar -C fpc-%{version}.powerpc64-linux
+tar xf fpc-%{version}.powerpc64-linux/base.powerpc64-linux.tar.gz -C fpc-%{version}-ppc64
+rm -fr fpc-%{version}.powerpc64-linux/
 %endif
 %ifarch ppc
-unzip %{SOURCE4}
+mkdir %{name}-%{version}-ppc
+tar xf %{SOURCE4}
+tar xf fpc-%{version}.powerpc-linux/binary.powerpc-linux.tar -C fpc-%{version}.powerpc-linux
+tar xf fpc-%{version}.powerpc-linux/base.powerpc-linux.tar.gz -C fpc-%{version}-ppc
+rm -fr fpc-%{version}.powerpc-linux
 %endif
 %endif
 %endif
@@ -199,7 +209,7 @@ date --date=@${SOURCE_DATE_EPOCH:-0} +'\date{%B %Y}' > fpcdocs/date.inc
 %build
 %if "%{flavor}" == ""
 %if %{with bootstrap}
-STARTPP=$(pwd)/fpc-%{version}-%{_arch}/bin/%{ppcname}
+STARTPP=$(pwd)/fpc-%{version}-%{_arch}/lib/fpc/%{version}/%{ppcname}
 %else
 STARTPP=%{ppcname}
 %endif
