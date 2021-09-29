@@ -18,7 +18,7 @@
 
 %define _name   gtksourceview
 Name:           gtksourceview4
-Version:        4.8.1
+Version:        4.8.2
 Release:        0
 Summary:        GTK+ Source Editing Widget
 License:        LGPL-2.1-or-later
@@ -26,8 +26,6 @@ Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Projects/GtkSourceView
 Source0:        https://download.gnome.org/sources/gtksourceview/4.8/%{_name}-%{version}.tar.xz
 Source1:        changes.lang
-# PATCH-FIX-UPSTREAM d1ed58b2ab82bd5be55881088fc17ff1527511db.patch dimstar@opensuse.org -- build: disable -Werror for incompatible-pointer-types
-Patch0:         https://gitlab.gnome.org/GNOME/gtksourceview/-/commit/d1ed58b2ab82bd5be55881088fc17ff1527511db.patch
 
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  gtk-doc

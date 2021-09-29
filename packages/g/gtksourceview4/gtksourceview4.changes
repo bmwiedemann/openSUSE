@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep  3 19:34:21 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.8.2:
+  + New syntax highlighting definition file for: STAR
+  + Improved syntax highlighting definition file for: YARA, LLVM
+  + GtkSourceMap now avoids animation while scrolling in response
+    to clicks. This should help prevent some hysteresis.
+  + GObject Introspection fixes
+  + Fixed decrement of negative numbers in GtkSourceView
+  + Improvements to style schemes: kate
+  + Fixed build-time macros for version checking in some scenarios
+  + Updated translations.
+- Drop d1ed58b2ab82bd5be55881088fc17ff1527511db.patch: fixed
+  upstream.
+
+-------------------------------------------------------------------
 Thu Apr 22 11:36:46 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add d1ed58b2ab82bd5be55881088fc17ff1527511db.patch: build:

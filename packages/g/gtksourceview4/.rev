@@ -178,4 +178,12 @@ Hi legal / babelworx -- you already reviewed this ok in previous sr (sr#452943),
   build failure with GCC 11. (forwarded request 887553 from dimstar)</comment>
     <requestid>887557</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b71034d384e9055aba9a2858bc81a44a</srcmd5>
+    <version>4.8.2</version>
+    <time>1632939464</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920960 from dimstar)</comment>
+    <requestid>921639</requestid>
+  </revision>
 </revisionlist>
