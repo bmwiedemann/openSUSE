@@ -1,7 +1,7 @@
 #
 # spec file for package gnome-online-miners
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2013 Dominique Leuenberger, Amsterdam, The Netherlands
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,16 +25,19 @@ License:        GPL-2.0-or-later
 Group:          System/Libraries
 URL:            https://wiki.gnome.org/Projects/GnomeOnlineMiners
 Source:         https://download.gnome.org/sources/gnome-online-miners/3.34/%{name}-%{version}.tar.xz
+# PATCH-FEATURE-UPSTREAM gom-port-tracker3.patch https://gitlab.gnome.org/GNOME/gnome-online-miners/-/merge_requests/3
+Patch0:         gom-port-tracker3.patch
 
+BuildRequires:  autoconf-archive
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(glib-2.0) >= 2.35.1
+BuildRequires:  pkgconfig(glib-2.0) >= 2.56.0
 BuildRequires:  pkgconfig(goa-1.0) >= 3.13.3
 BuildRequires:  pkgconfig(grilo-0.3) >= 0.3
 BuildRequires:  pkgconfig(libgdata) >= 0.15.2
 BuildRequires:  pkgconfig(libgfbgraph-0.2) >= 0.2.2
-BuildRequires:  pkgconfig(tracker-miner-2.0)
-BuildRequires:  pkgconfig(tracker-sparql-2.0)
+BuildRequires:  pkgconfig(tracker-sparql-3.0)
 BuildRequires:  pkgconfig(zapojit-0.0) >= 0.0.2
 # Provide the respective DBus services
 Provides:       dbus(org.gnome.OnlineMiners.Flickr)
@@ -48,12 +51,16 @@ your online content and index them locally in Tracker. It has miners for
 Flickr, Google, OwnCloud and SkyDrive.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
+# For patch0
+autoreconf -fiv
+
 %configure \
-    --disable-static
-make %{?_smp_mflags}
+	--disable-static \
+	%{nil}
+%make_build
 
 %install
 %make_install

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  4 20:50:26 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Port to use tracker 3:
+  + Add gom-port-tracker3.patch, from upstream/fedora.
+  + Following this, replace pkgconfig(tracker-sparql-2.0 with
+    pkgconfig(tracker-sparql-3.0) BuildRequires and drop
+    pkgconfig(tracker-miner-2.0) BuildRequires, as it is no longer
+    checked for nor needed.
+  + Add autoconf-archive and libtool BuildRequires and pass
+    autoreconf, as the above patch touches the buildsystem.
+
+-------------------------------------------------------------------
 Wed Sep 11 18:09:53 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.34.0:
