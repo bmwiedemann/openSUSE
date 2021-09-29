@@ -1,0 +1,13 @@
+Index: pangomm-2.46.1/docs/reference/Doxyfile.in
+===================================================================
+--- pangomm-2.46.1.orig/docs/reference/Doxyfile.in
++++ pangomm-2.46.1/docs/reference/Doxyfile.in
+@@ -164,7 +164,7 @@ HTML_EXTRA_FILES       =
+ HTML_COLORSTYLE_HUE    = 220
+ HTML_COLORSTYLE_SAT    = 100
+ HTML_COLORSTYLE_GAMMA  = 80
+-HTML_TIMESTAMP         = YES
++HTML_TIMESTAMP         = NO
+ HTML_DYNAMIC_SECTIONS  = NO
+ HTML_INDEX_NUM_ENTRIES = 100
+ GENERATE_DOCSET        = NO
