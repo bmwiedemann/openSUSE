@@ -24,7 +24,7 @@
 
 %define     pkg ocaml-dune
 Name:           %{pkg}%{nsuffix}
-Version:        2.8.5
+Version:        2.9.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        A composable build system for OCaml
@@ -34,7 +34,7 @@ BuildRoot:      %_tmppath/%name-%version-build
 URL:            https://opam.ocaml.org/packages/dune
 Source0:        %{pkg}-%{version}.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 %if "%{build_flavor}" == ""
 BuildRequires:  ocamlfind(compiler-libs)
