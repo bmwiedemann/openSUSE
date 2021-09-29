@@ -29,7 +29,7 @@ Index: gzdoom-g4.4.1/src/common/platform/posix/sdl/sdlglvideo.cpp
  		polyvsync = vsync;
  
 +		Priv::DestroyWindow();
-+		Priv::CreateWindow(Priv::VulkanWindowFlag | (Priv::softpolyEnabled ? SDL_WINDOW_HIDDEN : 0));
++		Priv::CreateWindow(SDL_WINDOW_VULKAN | (Priv::softpolyEnabled ? SDL_WINDOW_HIDDEN : 0));
  		polyrendertarget = SDL_CreateRenderer(Priv::window, -1, vsync ? SDL_RENDERER_PRESENTVSYNC : 0);
  		if (!polyrendertarget)
  		{

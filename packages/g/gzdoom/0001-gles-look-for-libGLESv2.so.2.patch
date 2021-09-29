@@ -1,0 +1,27 @@
+From 0fc59ec057f8ce4ae2a92821d6edb49da9be300e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 22 Sep 2021 14:41:30 +0200
+Subject: [PATCH] gles: look for libGLESv2.so.2
+References: https://github.com/coelckers/gzdoom/pull/1464
+
+Distros do not have the .so files at all times, because those are
+counted as development and not runtime.
+---
+ src/common/rendering/gles/gles_system.cpp |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+Index: gzdoom-g4.7.0/src/common/rendering/gles/gles_system.cpp
+===================================================================
+--- gzdoom-g4.7.0.orig/src/common/rendering/gles/gles_system.cpp
++++ gzdoom-g4.7.0/src/common/rendering/gles/gles_system.cpp
+@@ -32,6 +32,10 @@ static void* LoadGLES2Proc(const char* n
+ 		{
+ 			glesLib = dlopen("libGLESv2.so", flags);
+ 		}
++		if(!glesLib)
++		{
++			glesLib = dlopen("libGLESv2.so.2", flags);
++		}
+ 	}
+ 
+ 	void * ret = NULL;

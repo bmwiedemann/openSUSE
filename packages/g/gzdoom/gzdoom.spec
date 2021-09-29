@@ -17,7 +17,7 @@
 
 
 Name:           gzdoom
-Version:        4.6.1
+Version:        4.7.0
 Release:        0
 Summary:        A DOOM source port with graphic and modding extensions
 License:        GPL-3.0-only
@@ -31,6 +31,7 @@ Patch2:         gzdoom-lzma.patch
 Patch3:         gzdoom-asmjit.patch
 Patch4:         gzdoom-sdlbug.patch
 Patch5:         gzdoom-vulkan.patch
+Patch6:         0001-gles-look-for-libGLESv2.so.2.patch
 BuildRequires:  cmake >= 2.8.7
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
@@ -44,7 +45,7 @@ BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl2) >= 2.0.6
 BuildRequires:  pkgconfig(zlib)
 %if 0%{?sle_version} >= 150200
 BuildRequires:  glslang-devel >= 6.3
@@ -75,7 +76,7 @@ GZDoom is a port (a modification) of the original Doom source code, featuring:
 
 %prep
 %setup -qn %name-g%version
-%patch -P 1 -P 2 -P 3 -P 4 -p1
+%patch -P 1 -P 2 -P 3 -P 4 -P 6 -p1
 %if 0%{?sle_version} >= 150200
 %patch -P 5 -p1
 rm -Rf glslang src/common/rendering/vulkan/thirdparty/vulkan

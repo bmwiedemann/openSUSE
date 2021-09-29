@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 22 11:26:37 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.0
+  * GLES2 backend
+  * Widescreen graphics for Strife
+  * MBF21 support (beta)
+  * DEHEXTRA works properly now
+  * Various enhancements and fixes for ZScript
+- Add 0001-gles-look-for-libGLESv2.so.2.patch
+
+-------------------------------------------------------------------
 Wed Jul 28 11:24:38 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.6.1
