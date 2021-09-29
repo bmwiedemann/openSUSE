@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Sep 29 09:07:33 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 21.3.4
+  * [vp9d] fix unsigned qindex issue for vp9 segmentation case (#569)
+  * [EncTools] Add closed GOP support for LPLA (#585)
+  * [Jpegd] Modify the resolution judgment condition of the current jpeg (#522)
+  * [LPLA] Zero sao_enabled flag for LPLA (#538)
+  * [AVCe] Fix typos in NumRefActive (#595)
+  * Refactor cmake (#466)
+  * Refactor root cmake (#467)
+  * cm: set correct timeout (#604)
+  * [EncTools] Make IDRDist U32 (#596)
+  * Refine for commit 2bc6fab
+  * Revert "[Jpegd] Modify the resolution judgment condition of the current jpeg (#522)" (#619)
+  * Revert "Fix vpp_reset and mfxvideovpp_query beh test (#573)" (#620)
+  * [Jpegd] modify the resolution judgment condition of the current jpeg (#623)
+  * Fix exception handling issue (#581)
+  * [VPP] Enabled Denoise2(as known as HVS) on Linux (#592)
+  * core: removed VPL / MSDK1.x RT switch (#603)
+  * umc allocator adapter: decoders will not accept locked surface (#629)
+  * [MPEG2d] fix bug when the bitstream end with slice start code (#598)
+  * [VPP] Fix increasing num of input channels doesn't work (#647)
+  * CM: refactored CM integration (#413)
+  * Refine for commit 8221d4a
+  * [UMC] remove vm_shared_object file (#492)
+  * Revert "CM: refactored CM integration" (#654)
+  * Revert "umc allocator adapter: decoders will not accept locked surface (#629)" (#655)
+  * umc allocator adapter: decoders will not accept locked surface (#3114) (#657)
+  * [Jpeg]modify color range on Linux (#653)
+  * Fixes. Code review 1 (#640)
+  * Revert "[Jpegd] modify the resolution judgment condition of the current jpeg (#623)" (#663)
+  * [Encode] MFX_EXT_BRC_ENABLE rename to MFX_ENABLE_EXT_BRC (#627)
+  * vaapi core: clean up unused interface (#667)
+  * [VPP] Add surface support(in CPU memory) for HVS denoise (#601)
+  * [SCD] Fix sys mem allocate issue (#690)
+  * Disable SCD (#708)
+  * [core] Move CloneSession to RT (#695)
+  * [Encode] Support main10 still picture profile (#713)
+  * Refine for commit 0a3c8e7
+  * [Decode]Enable AVC CSC via sfc pipeline (#712)
+  * [Decode]Enable VP9 CSC via sfc pipeline (#722)
+  * Removed multiple calls vaGetConfigAttributes (#716)
+  * Remove assert in ConvertRateControlMFX2VAAPI (#717)
+
+-------------------------------------------------------------------
 Thu Sep 23 13:03:55 UTC 2021 - Stefan Dirsch <sndirsch@suse.com>
 
 - created package libmfx-gen (jira#SLE/SLE-19446)
