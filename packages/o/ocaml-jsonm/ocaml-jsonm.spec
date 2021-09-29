@@ -28,7 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         ocaml-jsonm.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(uutf)
 
 %description
@@ -53,7 +53,6 @@ developing applications that use %{name}.
 
 %build
 dune_release_pkgs='jsonm'
-mv opam ${dune_release_pkgs}.opam
 %ocaml_dune_setup
 %ocaml_dune_build
 
