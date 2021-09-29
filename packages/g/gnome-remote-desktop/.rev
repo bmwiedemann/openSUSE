@@ -44,4 +44,12 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment></comment>
     <requestid>919670</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8cb848db04a15f24a656aabb95995e03</srcmd5>
+    <version>41.0</version>
+    <time>1632939527</time>
+    <user>dimstar_suse</user>
+    <comment>Scripted push from GNOME:Next (forwarded request 920945 from dimstar)</comment>
+    <requestid>921625</requestid>
+  </revision>
 </revisionlist>

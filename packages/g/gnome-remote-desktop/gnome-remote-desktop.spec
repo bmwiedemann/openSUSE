@@ -21,7 +21,7 @@
 %define freerdp_version 2.2.0
 
 Name:           gnome-remote-desktop
-Version:        40.2
+Version:        41.0
 Release:        0
 Summary:        GNOME Remote Desktop screen sharing service
 License:        GPL-2.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  meson >= 0.36.0
 BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(ffnvcodec)
 BuildRequires:  pkgconfig(freerdp-client2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp-server2) >= %{freerdp_version}
 BuildRequires:  pkgconfig(freerdp2) >= %{freerdp_version}
@@ -58,6 +59,8 @@ Requires:       pipewire >= 0.3.0
 GNOME Remote Desktop is a remote desktop and screen sharing service for the
 GNOME desktop environment.
 
+%lang_package
+
 %prep
 %autosetup -p1
 
@@ -67,6 +70,7 @@ GNOME desktop environment.
 
 %install
 %meson_install
+%find_lang %{name}
 
 %post
 %systemd_user_post %{systemd_unit}
@@ -84,5 +88,8 @@ GNOME desktop environment.
 %{_userunitdir}/gnome-remote-desktop.service
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.desktop.remote-desktop.enums.xml
+%{_datadir}/%{name}/
+
+%files lang -f %{name}.lang
 
 %changelog
