@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Aug  6 19:18:00 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.15.3:
+  + Fix build against newer eds version.
+- Changes from version 0.15.2:
+  + Fixed build errors after API version bump.
+  + Fixed gtk-doc errors due to missing version entities.
+- Changes from version 0.15.1:
+  + Dependencies:
+    - No more dependencies on libtracker
+    - GLib minimal requirement: 0.58
+    - E-D-S minimal requirement: 3.38
+  + Major changes:
+    - This release drops the Tracker backend (along with it's
+      dependencies).
+    - A selection of (small) performance improvements.
+    - Auto-generation and deployment of the docs using CI.
+- Drop conditional pkgconfig(tracker-sparql-2.0) BuildRequires, no
+  longer needed, nor used. Following this, drop sub-packages
+  typelib-1_0-FolksTracker-0_6 and libfolks-tracker25.
+- Bump soversion and module version following upstream changes.
+- Rename sub-packages (typelibs) following api/abi bump.
+
+-------------------------------------------------------------------
 Tue Feb  9 19:57:04 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Enable telepathy support again: set with_telepathy to 1.

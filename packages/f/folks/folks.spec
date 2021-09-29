@@ -16,19 +16,20 @@
 #
 
 
-%define soversion      25
-%define module_version 46
+%define soversion      26
+%define module_version 26
 %define with_telepathy  1
-%define with_tracker    0
 %define with_zeitgeist  0
+
 Name:           folks
-Version:        0.14.0
+Version:        0.15.3
 Release:        0
 Summary:        Library to create metacontacts from multiple sources
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://telepathy.freedesktop.org/wiki/Folks
-Source:         https://download.gnome.org/sources/folks/0.14/%{name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/folks/0.15/%{name}-%{version}.tar.xz
+
 BuildRequires:  gettext
 BuildRequires:  gobject-introspection-devel
 BuildRequires:  meson >= 0.49
@@ -39,15 +40,12 @@ BuildRequires:  vala >= 0.22.0.28
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gee-0.8) >= 0.8.6
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.44.0
-BuildRequires:  pkgconfig(libebook-1.2) >= 3.13.90
-BuildRequires:  pkgconfig(libebook-contacts-1.2) >= 3.7.90
-BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.33.2
+BuildRequires:  pkgconfig(libebook-1.2) >= 3.38.0
+BuildRequires:  pkgconfig(libebook-contacts-1.2) >= 3.38.0
+BuildRequires:  pkgconfig(libedataserver-1.2) >= 3.38.0
 BuildRequires:  pkgconfig(libxml-2.0)
 %if %{with_telepathy}
 BuildRequires:  pkgconfig(telepathy-glib) >= 0.19.9
-%endif
-%if %{with_tracker}
-BuildRequires:  pkgconfig(tracker-sparql-2.0)
 %endif
 %if %{with_zeitgeist}
 BuildRequires:  pkgconfig(zeitgeist-2.0) >= 0.9.14
@@ -83,41 +81,31 @@ Telepathy connection managers) to create metacontacts.
 
 This package provides mandatory data files for the library to work.
 
-%package -n typelib-1_0-Folks-0_6
+%package -n typelib-1_0-Folks-0_7
 Summary:        Introspection bindings for libfolks
 Group:          System/Libraries
 
-%description -n typelib-1_0-Folks-0_6
+%description -n typelib-1_0-Folks-0_7
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
 
 This package provides the GObject Introspection bindings for libfolks.
 
-%package -n typelib-1_0-FolksEds-0_6
+%package -n typelib-1_0-FolksEds-0_7
 Summary:        Introspection bindings for libfolks-eds
 Group:          System/Libraries
 
-%description -n typelib-1_0-FolksEds-0_6
+%description -n typelib-1_0-FolksEds-0_7
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
 
 This package provides the GObject Introspection bindings for libfolks.
 
-%package -n typelib-1_0-FolksTelepathy-0_6
+%package -n typelib-1_0-FolksTelepathy-0_7
 Summary:        Introspection bindings for libfolks-telepathy
 Group:          System/Libraries
 
-%description -n typelib-1_0-FolksTelepathy-0_6
-libfolks is a library that aggregates people from multiple sources (e.g.
-Telepathy connection managers) to create metacontacts.
-
-This package provides the GObject Introspection bindings for libfolks.
-
-%package -n typelib-1_0-FolksTracker-0_6
-Summary:        Introspection bindings for libfolks-tracker
-Group:          System/Libraries
-
-%description -n typelib-1_0-FolksTracker-0_6
+%description -n typelib-1_0-FolksTelepathy-0_7
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
 
@@ -129,15 +117,6 @@ Group:          System/Libraries
 Supplements:    packageand(libfolks%{soversion}:evolution-data-server)
 
 %description -n libfolks-eds%{soversion}
-libfolks is a library that aggregates people from multiple sources (e.g.
-Telepathy connection managers) to create metacontacts.
-
-%package -n libfolks-tracker%{soversion}
-Summary:        Tracker backend for libfolks
-Group:          System/Libraries
-Supplements:    packageand(libfolks%{soversion}:libtracker-sparql-1_0-0)
-
-%description -n libfolks-tracker%{soversion}
 libfolks is a library that aggregates people from multiple sources (e.g.
 Telepathy connection managers) to create metacontacts.
 
@@ -167,16 +146,9 @@ Summary:        Development files for libfolks
 Group:          Development/Libraries/GNOME
 Requires:       libfolks%{soversion} = %{version}
 Requires:       libfolks-eds%{soversion} = %{version}
-%if %{with_telepathy}
-Requires:       libfolks-telepathy%{soversion} = %{version}
-%endif
-Requires:       typelib-1_0-Folks-0_6 = %{version}
-Requires:       typelib-1_0-FolksEds-0_6 = %{version}
-Requires:       typelib-1_0-FolksTelepathy-0_6 = %{version}
-%if %{with_tracker}
-Requires:       libfolks-tracker%{soversion} = %{version}
-Requires:       typelib-1_0-FolksTracker-0_6 = %{version}
-%endif
+Requires:       typelib-1_0-Folks-0_7 = %{version}
+Requires:       typelib-1_0-FolksEds-0_7 = %{version}
+Requires:       typelib-1_0-FolksTelepathy-0_7 = %{version}
 
 %description devel
 libfolks is a library that aggregates people from multiple sources (e.g.
@@ -192,9 +164,6 @@ This package provides the development files.
 %build
 %define _lto_cflags %{nil}
 %meson \
-%if %{with_tracker}
-	-Dtracker_backend=true \
-%endif
 %if %{with_zeitgeist}
 	-Dzeitgeist=true \
 %endif
@@ -219,9 +188,6 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %post -n libfolks-eds%{soversion} -p /sbin/ldconfig
 %postun -n libfolks-eds%{soversion} -p /sbin/ldconfig
 
-%post -n libfolks-tracker%{soversion} -p /sbin/ldconfig
-%postun -n libfolks-tracker%{soversion} -p /sbin/ldconfig
-
 %post -n libfolks-telepathy%{soversion} -p /sbin/ldconfig
 %postun -n libfolks-telepathy%{soversion} -p /sbin/ldconfig
 
@@ -241,12 +207,12 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %files data
 %{_datadir}/glib-2.0/schemas/org.freedesktop.folks.gschema.xml
 
-%files -n typelib-1_0-Folks-0_6
-%{_libdir}/girepository-1.0/Folks-0.6.typelib
-%{_libdir}/girepository-1.0/FolksDummy-0.6.typelib
+%files -n typelib-1_0-Folks-0_7
+%{_libdir}/girepository-1.0/Folks-0.7.typelib
+%{_libdir}/girepository-1.0/FolksDummy-0.7.typelib
 
-%files -n typelib-1_0-FolksEds-0_6
-%{_libdir}/girepository-1.0/FolksEds-0.6.typelib
+%files -n typelib-1_0-FolksEds-0_7
+%{_libdir}/girepository-1.0/FolksEds-0.7.typelib
 
 %files -n libfolks-eds%{soversion}
 %{_libdir}/libfolks-eds.so.%{soversion}*
@@ -254,23 +220,13 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %{_libdir}/folks/%{module_version}/backends/eds/eds.so
 
 %if %{with_telepathy}
-%files -n typelib-1_0-FolksTelepathy-0_6
-%{_libdir}/girepository-1.0/FolksTelepathy-0.6.typelib
+%files -n typelib-1_0-FolksTelepathy-0_7
+%{_libdir}/girepository-1.0/FolksTelepathy-0.7.typelib
 
 %files -n libfolks-telepathy%{soversion}
 %{_libdir}/libfolks-telepathy.so.%{soversion}*
 %dir %{_libdir}/folks/%{module_version}/backends/telepathy
 %{_libdir}/folks/%{module_version}/backends/telepathy/telepathy.so
-%endif
-
-%if %{with_tracker}
-%files -n typelib-1_0-FolksTracker-0_6
-%{_libdir}/girepository-1.0/FolksTracker-0.6.typelib
-
-%files -n libfolks-tracker%{soversion}
-%{_libdir}/libfolks-tracker.so.%{soversion}*
-%dir %{_libdir}/folks/%{module_version}/backends/tracker
-%{_libdir}/folks/%{module_version}/backends/tracker/tracker.so
 %endif
 
 %files tools
@@ -281,16 +237,12 @@ rm %{buildroot}/usr/share/GConf/gsettings/folks.convert
 %{_includedir}/folks/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
-%{_datadir}/gir-1.0/Folks-0.6.gir
-%{_datadir}/gir-1.0/FolksDummy-0.6.gir
-%{_datadir}/gir-1.0/FolksEds-0.6.gir
+%{_datadir}/gir-1.0/Folks-0.7.gir
+%{_datadir}/gir-1.0/FolksDummy-0.7.gir
+%{_datadir}/gir-1.0/FolksEds-0.7.gir
 %if %{with_telepathy}
-%{_datadir}/gir-1.0/FolksTelepathy-0.6.gir
+%{_datadir}/gir-1.0/FolksTelepathy-0.7.gir
 %{_datadir}/vala/vapi/folks-telepathy.*
-%endif
-%if %{with_tracker}
-%{_datadir}/gir-1.0/FolksTracker-0.6.gir
-%{_datadir}/vala/vapi/folks-tracker.*
 %endif
 %{_datadir}/vala/vapi/folks.*
 %{_datadir}/vala/vapi/folks-dummy.*
