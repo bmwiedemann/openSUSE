@@ -7,4 +7,12 @@
     <comment>Initial version ocaml-graphics-5.1.0, split from ocaml-x11-4.09</comment>
     <requestid>780716</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f6e3d82aea07f214923f2bf2ced9da1</srcmd5>
+    <version>5.1.2</version>
+    <time>1632939508</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>921268</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-graphics
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-graphics
-Version:        5.1.0
+Version:        5.1.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        The OCaml graphics library
@@ -26,7 +26,7 @@ Group:          Development/Languages/OCaml
 Url:            https://github.com/ocaml/graphics
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  ocaml(ocaml_base_version)  >= 4.09
-BuildRequires:  ocaml-rpm-macros >= 20200220
+BuildRequires:  ocaml-rpm-macros >= 20210911
 BuildRequires:  ocamlfind(dune)
 BuildRequires:  pkgconfig(x11)
 

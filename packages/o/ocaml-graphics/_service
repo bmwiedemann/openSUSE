@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="disabled">
     <param name="filename">ocaml-graphics</param>
-    <param name="revision">b8d606a17827f47f6e7b67019caa0cb17d780e7a</param>
+    <param name="revision">fbfa38f50f9df5d562d5c892ae12cec2c695776d</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/graphics.git</param>
