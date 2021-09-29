@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 26 10:50:25 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.7.0:
+  + Port to GUPnP 1.2 API
+  + Switch build system to meson
+  + Make connector search path overridable by setting
+    DLEYNA_CONNECTOR_PATH environment variable
+  + Stability improvements for the task processor
+- Add meson BuildRequires and macros, and drop libtool
+  BuildRequires, following upstreams port.
+- Drop dleyna-core-port-to-gupnp1_2.patch: Fixed upstream.
+- Update URL and Source to new home, as intel have dropped
+  maintenance of this package, go with the leading fork.
+
+-------------------------------------------------------------------
 Sun Jul  7 22:53:30 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
 
 - Fixup RPM category groups. Avoid em dashes in summaries.

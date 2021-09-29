@@ -1,7 +1,7 @@
 #
 # spec file for package dleyna-core
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2021 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,17 +19,16 @@
 %define _sover 5
 
 Name:           dleyna-core
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        Utility functions used by higher level dLeyna libraries
 License:        LGPL-2.1-only
 Group:          Productivity/Multimedia/Other
-Url:            http://01.org/dleyna
-Source:         https://01.org/sites/default/files/downloads/dleyna/%{name}-%{version}.tar_3.gz
-# PATCH-FIX-UPSTREAM dleyna-core-port-to-gupnp1_2.patch -- Port to gupnp-1.2
-Patch0:         dleyna-core-port-to-gupnp1_2.patch
+URL:            https://github.com/phako/dleyna-core
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 
-BuildRequires:  libtool
+
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gio-2.0) >= 2.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.28
@@ -67,15 +66,12 @@ In brief, it provides APIs for logging, error, settings and task management and 
 %autosetup -p1
 
 %build
-autoreconf -fi
-%configure \
-	--disable-static \
+%meson \
 	%{nil}
-make %{?_smp_mflags}
+%meson_build
 
 %install
-%make_install
-find %{buildroot}%{_libdir} -type f -name '*.la' -delete -print
+%meson_install
 
 %post -n libdleyna-core-1_0-%{_sover} -p /sbin/ldconfig
 %postun -n libdleyna-core-1_0-%{_sover} -p /sbin/ldconfig
@@ -85,7 +81,7 @@ find %{buildroot}%{_libdir} -type f -name '*.la' -delete -print
 %{_libdir}/libdleyna-core-1.0.so.*
 
 %files devel
-%doc ChangeLog README
+%doc ChangeLog README.md
 %{_includedir}/dleyna-1.0/
 %{_libdir}/libdleyna-core-1.0.so
 %{_libdir}/pkgconfig/dleyna-core-1.0.pc
