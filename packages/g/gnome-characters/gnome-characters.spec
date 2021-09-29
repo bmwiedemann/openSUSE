@@ -17,13 +17,13 @@
 
 
 Name:           gnome-characters
-Version:        40.0
+Version:        41.0
 Release:        0
 Summary:        Character Map
 License:        GPL-3.0-or-later
 Group:          System/GUI/GNOME
 URL:            https://wiki.gnome.org/Design/Apps/CharacterMap
-Source0:        https://download.gnome.org/sources/gnome-characters/40/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/gnome-characters/41/%{name}-%{version}.tar.xz
 
 BuildRequires:  gobject-introspection-devel >= 1.35.9
 BuildRequires:  intltool >= 0.50.1
