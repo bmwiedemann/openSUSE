@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Sep 24 11:51:57 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Pass --disable-silent-rules, --disable-appchooser,
+  --disable-background, --disable-screencast, --disable-screenshot,
+  --disable-settings, and --disable-wallpaper to configure, make
+  use of xdg-desktop-portal-gnome, and more importantly, remove all
+  gnome-dependencies from this package.
+- Following the above, drop pkgconfig(gio-2.0),
+  pkgconfig(gio-unix-2.0) and pkgconfig(gnome-desktop-3.0)
+  BuildRequires.
+- Add explicit pkgconfig(fontconfig) BuildRequires.
+- Add systemd_user_post and systemd_user_preun macros to post/preun
+  sections.
+
+-------------------------------------------------------------------
+Sat Sep 18 08:44:42 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.10.0:
+  + filechooser: Fix a focus issue
+  + inhibit: Autostart org.gnome.ScreenSaver
+  + screencast: Force window icon size
+  + Make portal backends with GNOME dependencies optional and
+    disable them by default. Use xdg-desktop-portal-gnome, or use
+    --enable-wallpaper to build with the wallpaper backend
+    --enable-screenshot to build with the screenshot backend
+    --enable-screencast to build with screencast/remoting backends
+    --enable-background to build with the background backend
+    --enable-settings to build with the settings backend
+    --enable-appchooser to build with the appchooser backend
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Jan  4 01:25:49 UTC 2021 - Aria Buckles <aria@toole1.com>
 
 - Update to version 1.8.0:
