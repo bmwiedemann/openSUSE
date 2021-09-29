@@ -1,5 +1,5 @@
 #
-# spec file for package sysprof%{_name_suffix}
+# spec file
 #
 # Copyright (c) 2021 SUSE LLC
 # Copyright (c) 2016 Bjørn Lie, Bryne, Norway.
@@ -29,15 +29,15 @@
 %define sover 4
 
 Name:           sysprof%{_name_suffix}
-Version:        3.40.1
+Version:        3.42.0
 Release:        0
 Summary:        A system-wide Linux profiler
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Tools/Debuggers
 URL:            https://wiki.gnome.org/Apps/Sysprof
-Source0:        https://download.gnome.org/sources/sysprof/3.40/sysprof-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/sysprof/3.42/sysprof-%{version}.tar.xz
 
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.51.0
 BuildRequires:  pkgconfig
