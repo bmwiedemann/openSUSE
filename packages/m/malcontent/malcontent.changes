@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 28 13:36:51 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Use %_pam_moduledir instead of harcoding %{_lib}/security
+  (boo#1191037).
+
+-------------------------------------------------------------------
 Mon May 31 16:38:20 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.10.1
